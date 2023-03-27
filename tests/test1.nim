@@ -1,5 +1,6 @@
 import
   unittest,
+  strformat,
   ../src/happyx
 
 
@@ -7,10 +8,14 @@ proc main =
   var server = newServer("127.0.0.1", 5000)
 
   server.routes:
-    echo "Hello, world!"
-    
     route("/"):
-      echo "Hello world!"
+      req.answer "Hello, world!"
+    "/bye":
+      req.answer "Bye!"
+    "/bye{id:int}":
+      req.answer fmt"Bye!, {id}"
+    notfound:
+      req.answer "Oops! Not found!"
   
   server.start()
 

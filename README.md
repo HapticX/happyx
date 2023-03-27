@@ -22,6 +22,20 @@ nimble install https://github.com/HapticX/happyx
 ```
 
 ## Usage
+```nim
+import happyx
+
+proc main =
+  var server = newServer("127.0.0.1", 5000)
+
+  server.routes:
+    route("/"):
+      echo "Hello, world!"
+  
+  server.start()
+  
+main()
+```
 
 
 # Contributing 🌀
