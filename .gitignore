@@ -1,0 +1,10 @@
+nimcache/
+.idea/
+.vs-code/
+.vscode/
+.vs/
+nimble/
+
+*.log
+*.js
+*.exe
