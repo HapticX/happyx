@@ -13,7 +13,7 @@ on:
       - 'LICENSE'
 
 jobs:
-  UbuntuBuild:
+  build:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -24,7 +24,6 @@ jobs:
           - '1.2.18'
           - '1.4.8'
           - 'stable'
-    needs: before
     env:
       TIMEOUT_EXIT_STATUS: 124
     steps:
