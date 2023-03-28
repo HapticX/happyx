@@ -45,7 +45,7 @@ template start*(server: Server): untyped =
   waitFor server.instance.serve(Port(server.port), handleRequest, server.address)
 
 
-proc answer*(req: Request, message: string, code: HttpCode = Http200) {.async, discardable.} =
+template answer*(req: Request, message: string, code: HttpCode = Http200) =
   ## Answers to the request
   ## 
   ## Arguments:
