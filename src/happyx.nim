@@ -7,6 +7,7 @@ import
   strtabs,
   strutils,
   strformat,
+  logging,
   regex,
   core/[server]
 
@@ -16,5 +17,6 @@ export
   strtabs,
   strutils,
   strformat,
+  logging,
   regex,
   server

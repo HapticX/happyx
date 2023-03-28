@@ -7,6 +7,9 @@ import
   asynchttpserver,
   asyncdispatch,
   strtabs,
+  logging,
+  terminal,
+  colors,
   uri,
   regex
 
@@ -16,14 +19,29 @@ type
     address*: string
     port*: int
     instance*: AsyncHttpServer
+    logger*: Logger
+
+
+func fgColored*(text: string, clr: ForegroundColor): string =
+  ansiForegroundColorCode(clr) & text & ansiResetCode
 
 
 proc newServer*(address: string = "127.0.0.1", port: int = 5000): Server =
   ## Initializes a new Server object
-  Server(address: address, port: port, instance: newAsyncHttpServer())
+  result = Server(
+    address: address,
+    port: port,
+    instance: newAsyncHttpServer(),
+    logger: newConsoleLogger(fmtStr=fgColored("[$date at $time]", fgYellow) & ":$levelname - ")
+  )
+  addHandler(result.logger)
 
 
 template start*(server: Server): untyped =
+  when defined(debug):
+    server.logger.log(
+      lvlInfo, fmt"Server started at http://{server.address}:{server.port}"
+    )
   waitFor server.instance.serve(Port(server.port), handleRequest, server.address)
 
 
@@ -86,49 +104,22 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.
       letSection = newNimNode(nnkLetSection).add(
         newNimNode(nnkIdentDefs).add(name, newEmptyNode())
       )
+      foundGroup = newNimNode(nnkBracketExpr).add(
+        newCall(
+          "group",
+          newNimNode(nnkBracketExpr).add(ident("founded_regexp_matches"), newIntLitNode(0)),
+          newIntLitNode(idx),  # group index,
+          urlPath
+        ),
+        newIntLitNode(0)
+      )
     case argTypeStr:
     of "int":
-      letSection[0].add(
-        newCall(
-          "parseInt",
-          newNimNode(nnkBracketExpr).add(
-            newCall(
-              "group",
-              newNimNode(nnkBracketExpr).add(ident("founded_regexp_matches"), newIntLitNode(0)),
-              newIntLitNode(idx),  # group index,
-              urlPath
-            ),
-            newIntLitNode(0)
-          )
-        )
-      )
+      letSection[0].add(newCall("parseInt", foundGroup))
     of "float":
-      letSection[0].add(
-        newCall(
-          "parseFloat",
-          newNimNode(nnkBracketExpr).add(
-            newCall(
-              "group",
-              newNimNode(nnkBracketExpr).add(ident("founded_regexp_matches"), newIntLitNode(0)),
-              newIntLitNode(idx),  # group index,
-              urlPath
-            ),
-            newIntLitNode(0)
-          )
-        )
-      )
+      letSection[0].add(newCall("parseFloat", foundGroup))
     of "path", "string":
-      letSection[0].add(
-        newNimNode(nnkBracketExpr).add(
-          newCall(
-            "group",
-            newNimNode(nnkBracketExpr).add(ident("founded_regexp_matches"), newIntLitNode(0)),
-            newIntLitNode(idx),  # group index,
-            urlPath
-          ),
-          newIntLitNode(0)
-        )
-      )
+      letSection[0].add(foundGroup)
     elifBranch[1].insert(0, letSection)
     hasChildren = true
     inc idx
@@ -152,13 +143,7 @@ macro routes*(server: Server, body: untyped): untyped =
     ifStmt = newNimNode(nnkIfStmt)
     procStmt = newProc(
       ident("handleRequest"),
-      [
-        newEmptyNode(),
-        newIdentDefs(
-          ident("req"),
-          ident("Request"),
-        )
-      ],
+      [newEmptyNode(), newIdentDefs(ident("req"), ident("Request"))],
       stmtList
     )
     path = newDotExpr(newDotExpr(ident("req"), ident("url")), ident("path"))
@@ -183,26 +168,36 @@ macro routes*(server: Server, body: untyped): untyped =
       elif statement[1].kind == nnkStmtList and statement[0].kind == nnkIdent:
         let name = $statement[0]
         if name == "notfound":
-          ifStmt.add(
-            newNimNode(nnkElse).add(
-              statement[1]
-            )
-          )
+          ifStmt.add(newNimNode(nnkElse).add(statement[1]))
       else:
         let
           name = $statement[0]
           arg = statement[1]
         if name == "route":
-          ifStmt.add(
-            newNimNode(nnkElifBranch).add(
-              newCall(ident("=="), path, arg),
-              statement[2]
+          var exported = exportRouteArgs(path, statement[0], statement[1])
+          if exported.len > 0:  # /my/path/with{custom:int}/{param:path}
+            ifStmt.add(exported)
+          else:  # just my path
+            ifStmt.add(
+              newNimNode(nnkElifBranch).add(
+                newCall("==", path, arg),
+                statement[2]
+              )
             )
-          )
   
+  stmtList.add(newNimNode(nnkLetSection).add(newIdentDefs(ident("urlPath"), newEmptyNode(), path)))
+  when defined(debug):
+    stmtList.add(
+      newCall(
+        "log",
+        newDotExpr(ident("server"), ident("logger")),
+        ident("lvlInfo"),
+        newCall("fmt", newStrLitNode("{req.reqMethod}::{urlPath}"))
+      )
+    )
+
   if ifStmt.len > 0:
     stmtList.add(ifStmt)
   else:
     stmtList.add(newCall(ident("answer"), ident("req"), newStrLitNode("Not found")))
-
-  return procStmt
+  procStmt

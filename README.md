@@ -15,7 +15,13 @@
 # Why HappyX? 💁‍♀️
 Because it's simple to use 🙂
 
+## Features ⚡
+- Support `asynchttpserver` as default http server
+- Support `httpbeast` via `-d:beast`
+- Logging with `-d:debug`
+
 # Get Started 👨‍🔬
+
 ## Installing 📥
 ```bash
 nimble install https://github.com/HapticX/happyx

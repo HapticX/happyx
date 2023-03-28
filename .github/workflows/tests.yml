@@ -44,6 +44,11 @@ jobs:
           sudo sed -i 's/azure\.//' /etc/apt/sources.list
           sudo apt update -yqq
       
+      - name: Install Dependencies
+        run: |
+          nimble install regex
+          nimble install httpbeast
+      
       - name: Build tests
         run: |
           cd tests
