@@ -158,17 +158,15 @@ macro routes*(server: Server, body: untyped): untyped =
         if exported.len > 0:  # /my/path/with{custom:int}/{param:path}
           ifStmt.add(exported)
         else:  # just my path
-          ifStmt.add(
-            newNimNode(nnkElifBranch).add(
-              newCall("==", path, statement[0]),
-              statement[1]
-            )
-          )
-      # func("/..."): statement list
+          ifStmt.add(newNimNode(nnkElifBranch).add(
+            newCall("==", path, statement[0]), statement[1]
+          ))
+      # notfound: statement list
       elif statement[1].kind == nnkStmtList and statement[0].kind == nnkIdent:
         let name = $statement[0]
         if name == "notfound":
           ifStmt.add(newNimNode(nnkElse).add(statement[1]))
+      # func("/..."): statement list
       else:
         let
           name = $statement[0]
@@ -178,23 +176,18 @@ macro routes*(server: Server, body: untyped): untyped =
           if exported.len > 0:  # /my/path/with{custom:int}/{param:path}
             ifStmt.add(exported)
           else:  # just my path
-            ifStmt.add(
-              newNimNode(nnkElifBranch).add(
-                newCall("==", path, arg),
-                statement[2]
-              )
-            )
+            ifStmt.add(newNimNode(nnkElifBranch).add(
+              newCall("==", path, arg), statement[2]
+            ))
   
   stmtList.add(newNimNode(nnkLetSection).add(newIdentDefs(ident("urlPath"), newEmptyNode(), path)))
   when defined(debug):
-    stmtList.add(
-      newCall(
-        "log",
-        newDotExpr(ident("server"), ident("logger")),
-        ident("lvlInfo"),
-        newCall("fmt", newStrLitNode("{req.reqMethod}::{urlPath}"))
-      )
-    )
+    stmtList.add(newCall(
+      "log",
+      newDotExpr(ident("server"), ident("logger")),
+      ident("lvlInfo"),
+      newCall("fmt", newStrLitNode("{req.reqMethod}::{urlPath}"))
+    ))
 
   if ifStmt.len > 0:
     stmtList.add(ifStmt)

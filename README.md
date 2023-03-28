@@ -45,6 +45,10 @@ proc main =
   
 main()
 ```
+## Run
+```bash
+nim c -r -d:ssl -d:debug main
+```
 
 
 # Contributing 🌀

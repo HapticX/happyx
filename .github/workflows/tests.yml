@@ -46,6 +46,7 @@ jobs:
       
       - name: Install Dependencies
         run: |
+          nimble refresh
           nimble install regex
           nimble install httpbeast
       
