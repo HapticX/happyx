@@ -4,11 +4,17 @@
 import
   asynchttpserver,
   asyncdispatch,
-  json,
+  strtabs,
+  strutils,
+  strformat,
+  regex,
   core/[server]
 
 export
   asynchttpserver,
   asyncdispatch,
-  json,
+  strtabs,
+  strutils,
+  strformat,
+  regex,
   server

@@ -6,8 +6,9 @@ import
   strutils,
   asynchttpserver,
   asyncdispatch,
-  json,
-  uri
+  strtabs,
+  uri,
+  regex
 
 
 type
@@ -43,34 +44,165 @@ template answer*(req: Request, message: string, code: HttpCode = Http200): untyp
   )
 
 
-func parseQuery*(path: string): JsonNode =
-  ## Parses query and retrieves
-  result = newJObject()
-  for i in path.split('&'):
+func parseQuery*(query: string): owned(StringTableRef) =
+  ## Parses query and retrieves JSON object
+  runnableExamples:
+    let
+      query = "a=1000&b=8000&password=mystrongpass"
+      parsedQuery = parseQuery(query)
+    assert parseQuery["a"] == "1000"
+  result = newStringTable()
+  for i in query.split('&'):
     let splitted = i.split('=')
-    result[splitted[0]] = %*splitted[1]
+    result[splitted[0]] = splitted[1]
+
+
+proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.} =
+  ## Finds and exports route arguments
+  let
+    elifBranch = newNimNode(nnkElifBranch)
+    path = $routePath
+  var
+    routePathStr = $routePath
+    hasChildren = false
+  routePathStr = routePathStr.replace(re"\{[a-zA-Z][a-zA-Z0-9_]*:int\}", "(\\d+)")
+  routePathStr = routePathStr.replace(re"\{[a-zA-Z][a-zA-Z0-9_]*:float\}", "(\\d+\\.\\d+)")
+  routePathStr = routePathStr.replace(re"\{[a-zA-Z][a-zA-Z0-9_]*:string\}", "([^/]+?)")
+  routePathStr = routePathStr.replace(re"\{[a-zA-Z][a-zA-Z0-9_]*:path\}", "([\\S]+)")
+
+  let
+    regExp = newCall("re", newStrLitNode(routePathStr))
+    found = path.findAll(re"\{([a-zA-Z][a-zA-Z0-9_]*):(int|float|string|path)\}")
+    foundLen = found.len
+
+  elifBranch.add(newCall("contains", urlPath, regExp), body)
+
+  var idx = 0
+  for i in found:
+    let
+      name = ident(i.group(0, path)[0])
+      argTypeStr = i.group(1, path)[0]
+      argType = ident(argTypeStr)
+      letSection = newNimNode(nnkLetSection).add(
+        newNimNode(nnkIdentDefs).add(name, newEmptyNode())
+      )
+    case argTypeStr:
+    of "int":
+      letSection[0].add(
+        newCall(
+          "parseInt",
+          newNimNode(nnkBracketExpr).add(
+            newCall(
+              "group",
+              newNimNode(nnkBracketExpr).add(ident("founded_regexp_matches"), newIntLitNode(0)),
+              newIntLitNode(idx),  # group index,
+              urlPath
+            ),
+            newIntLitNode(0)
+          )
+        )
+      )
+    of "float":
+      letSection[0].add(
+        newCall(
+          "parseFloat",
+          newNimNode(nnkBracketExpr).add(
+            newCall(
+              "group",
+              newNimNode(nnkBracketExpr).add(ident("founded_regexp_matches"), newIntLitNode(0)),
+              newIntLitNode(idx),  # group index,
+              urlPath
+            ),
+            newIntLitNode(0)
+          )
+        )
+      )
+    of "path", "string":
+      letSection[0].add(
+        newNimNode(nnkBracketExpr).add(
+          newCall(
+            "group",
+            newNimNode(nnkBracketExpr).add(ident("founded_regexp_matches"), newIntLitNode(0)),
+            newIntLitNode(idx),  # group index,
+            urlPath
+          ),
+          newIntLitNode(0)
+        )
+      )
+    elifBranch[1].insert(0, letSection)
+    hasChildren = true
+    inc idx
+  
+  if hasChildren:
+    elifBranch[1].insert(
+      0, newNimNode(nnkLetSection).add(
+        newIdentDefs(
+          ident("founded_regexp_matches"), newEmptyNode(), newCall("findAll", urlPath, regExp)
+        )
+      )
+    )
+    return elifBranch
+  return newEmptyNode()
 
 
 macro routes*(server: Server, body: untyped): untyped =
   ## You can create routes with this marco
   var
     stmtList = newStmtList()
+    ifStmt = newNimNode(nnkIfStmt)
+    procStmt = newProc(
+      ident("handleRequest"),
+      [
+        newEmptyNode(),
+        newIdentDefs(
+          ident("req"),
+          ident("Request"),
+        )
+      ],
+      stmtList
+    )
+    path = newDotExpr(newDotExpr(ident("req"), ident("url")), ident("path"))
+  
+  procStmt.addPragma(ident("async"))
   
   for statement in body:
     if statement.kind == nnkCall:
       # "/...": statement list
-      if statement[1].kind == nnkStmtList:
-        echo statement[0]
+      if statement[1].kind == nnkStmtList and statement[0].kind == nnkStrLit:
+        var exported = exportRouteArgs(path, statement[0], statement[1])
+        if exported.len > 0:  # /my/path/with{custom:int}/{param:path}
+          ifStmt.add(exported)
+        else:  # just my path
+          ifStmt.add(
+            newNimNode(nnkElifBranch).add(
+              newCall("==", path, statement[0]),
+              statement[1]
+            )
+          )
       # func("/..."): statement list
+      elif statement[1].kind == nnkStmtList and statement[0].kind == nnkIdent:
+        let name = $statement[0]
+        if name == "notfound":
+          ifStmt.add(
+            newNimNode(nnkElse).add(
+              statement[1]
+            )
+          )
       else:
-        echo statement[1]
+        let
+          name = $statement[0]
+          arg = statement[1]
+        if name == "route":
+          ifStmt.add(
+            newNimNode(nnkElifBranch).add(
+              newCall(ident("=="), path, arg),
+              statement[2]
+            )
+          )
+  
+  if ifStmt.len > 0:
+    stmtList.add(ifStmt)
+  else:
+    stmtList.add(newCall(ident("answer"), ident("req"), newStrLitNode("Not found")))
 
-  quote do:
-    proc handleRequest(req: Request) {.async, gcsafe.} =
-      let
-        query = parseQuery(req.url.query)
-        path = req.url.path
-      echo req.reqMethod
-      echo path
-      echo query
-      `stmtList`
+  return procStmt

@@ -26,11 +26,14 @@ nimble install https://github.com/HapticX/happyx
 import happyx
 
 proc main =
-  var server = newServer("127.0.0.1", 5000)
+  var server = newServer()
 
   server.routes:
-    route("/"):
-      echo "Hello, world!"
+    "/":
+      req.answer("Hello, world!")
+    
+    "/user{id:int}"
+      req.answer(fmt"Hello, user with ID {id}!")
   
   server.start()
   
