@@ -7,7 +7,7 @@ proc main =
   var server = newServer()
   server.routes:  
     "/":
-      await req.answer "Hello, world!"
+      req.answer "Hello, world!"
     "/calc/{left:int}{operator:string}{right:int}":
       if operator == "+":
         req.answer fmt"Result of {left} + {right} is {left + right}"
