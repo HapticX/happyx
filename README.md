@@ -46,8 +46,13 @@ proc main =
 main()
 ```
 ## Run 💻
+### Default
 ```bash
 nim c -r -d:ssl -d:debug main
+```
+### Httpx
+```bash
+nim c -r -d:ssl -d:debug -d:httpx main
 ```
 
 
