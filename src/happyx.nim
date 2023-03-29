@@ -2,7 +2,6 @@
   Provides Happyx main file
 ]#
 import
-  asynchttpserver,
   asyncdispatch,
   strtabs,
   strutils,
@@ -11,8 +10,14 @@ import
   regex,
   core/[server]
 
+when defined(httpx):
+  import
+    options,
+    httpx
+else:
+  import asynchttpserver
+
 export
-  asynchttpserver,
   asyncdispatch,
   strtabs,
   strutils,
@@ -20,3 +25,10 @@ export
   logging,
   regex,
   server
+
+when defined(httpx):
+  export
+    options,
+    httpx
+else:
+  export asynchttpserver

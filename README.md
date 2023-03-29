@@ -17,7 +17,7 @@ Because it's simple to use 🙂
 
 ## Features ⚡
 - Support `asynchttpserver` as default http server
-- Support `httpbeast` via `-d:beast`
+- Support `httpx` via `-d:httpx`
 - Logging with `-d:debug`
 
 # Get Started 👨‍🔬
@@ -27,7 +27,7 @@ Because it's simple to use 🙂
 nimble install https://github.com/HapticX/happyx
 ```
 
-## Usage
+## Usage ▶
 ```nim
 import happyx
 
@@ -45,7 +45,7 @@ proc main =
   
 main()
 ```
-## Run
+## Run 💻
 ```bash
 nim c -r -d:ssl -d:debug main
 ```

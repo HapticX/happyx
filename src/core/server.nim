@@ -4,7 +4,6 @@
 import
   macros,
   strutils,
-  asynchttpserver,
   asyncdispatch,
   strtabs,
   logging,
@@ -14,15 +13,24 @@ import
   regex
 
 
+when defined(httpx):
+  import httpx
+else:
+  import asynchttpserver
+
+
 type
   Server* = object
     address*: string
     port*: int
-    instance*: AsyncHttpServer
     logger*: Logger
+    when defined(httpx):
+      instance*: Settings
+    else:
+      instance*: AsyncHttpServer
 
 
-func fgColored*(text: string, clr: ForegroundColor): string =
+func fgColored*(text: string, clr: ForegroundColor): string {.inline.} =
   ansiForegroundColorCode(clr) & text & ansiResetCode
 
 
@@ -31,9 +39,12 @@ proc newServer*(address: string = "127.0.0.1", port: int = 5000): Server =
   result = Server(
     address: address,
     port: port,
-    instance: newAsyncHttpServer(),
     logger: newConsoleLogger(fmtStr=fgColored("[$date at $time]", fgYellow) & ":$levelname - ")
   )
+  when defined(httpx):
+    result.instance = initSettings(Port(port), bindAddr=address)
+  else:
+    result.instance = newAsyncHttpServer()
   addHandler(result.logger)
 
 
@@ -42,7 +53,10 @@ template start*(server: Server): untyped =
     server.logger.log(
       lvlInfo, fmt"Server started at http://{server.address}:{server.port}"
     )
-  waitFor server.instance.serve(Port(server.port), handleRequest, server.address)
+  when defined(httpx):
+    run(handleRequest, server.instance)
+  else:
+    waitFor server.instance.serve(Port(server.port), handleRequest, server.address)
 
 
 template answer*(req: Request, message: string, code: HttpCode = Http200) =
@@ -53,13 +67,16 @@ template answer*(req: Request, message: string, code: HttpCode = Http200) =
   ##   `message: string`: The message that we want to include in the response body.
   ##   `code: HttpCode = Http200`: The HTTP status code that we want to send in the response.
   ##                               This argument is optional, with a default value of Http200 (OK).
-  await req.respond(
-    code,
-    message,
-    {
-      "Content-type": "text/plain; charset=utf-8"
-    }.newHttpHeaders()
-  )
+  when defined(httpx):
+    req.send(code, message, "Content-type: text/plain; charset=utf-8")
+  else:
+    await req.respond(
+      code,
+      message,
+      {
+        "Content-type": "text/plain; charset=utf-8"
+      }.newHttpHeaders()
+    )
 
 
 func parseQuery*(query: string): owned(StringTableRef) =
@@ -146,7 +163,10 @@ macro routes*(server: Server, body: untyped): untyped =
       [newEmptyNode(), newIdentDefs(ident("req"), ident("Request"))],
       stmtList
     )
-    path = newDotExpr(newDotExpr(ident("req"), ident("url")), ident("path"))
+  when defined(httpx):
+    var path = newCall("get", newCall("path", ident("req")))
+  else:
+    var path = newDotExpr(newDotExpr(ident("req"), ident("url")), ident("path"))
   
   procStmt.addPragma(ident("async"))
   
@@ -182,11 +202,15 @@ macro routes*(server: Server, body: untyped): untyped =
   
   stmtList.add(newNimNode(nnkLetSection).add(newIdentDefs(ident("urlPath"), newEmptyNode(), path)))
   when defined(debug):
+    when defined(httpx):
+      let reqMethod = "req.httpMethod"
+    else:
+      let reqMethod = "req.reqMethod"
     stmtList.add(newCall(
       "log",
       newDotExpr(ident("server"), ident("logger")),
       ident("lvlInfo"),
-      newCall("fmt", newStrLitNode("{req.reqMethod}::{urlPath}"))
+      newCall("fmt", newStrLitNode("{" & reqMethod & "}::{urlPath}"))
     ))
 
   if ifStmt.len > 0:
