@@ -23,6 +23,11 @@ Because it's simple to use 🙂
 # Get Started 👨‍🔬
 
 ## Installing 📥
+### Via Nimble
+```bash
+nimble install happyx
+```
+### Via GitHub
 ```bash
 nimble install https://github.com/HapticX/happyx
 ```

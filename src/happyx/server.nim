@@ -106,7 +106,6 @@ template start*(server: Server): untyped =
   ## Returns:
   ## - `untyped`: This template does not return any value.
   runnableExamples:
-    var server = newServer()
     server.start()
   when defined(debug):
     server.logger.log(
