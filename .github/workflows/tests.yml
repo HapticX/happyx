@@ -45,8 +45,8 @@ jobs:
       - name: Install Dependencies
         run: |
           nimble refresh
-          nimble install regex
-          nimble install httpx
+          nimble install -y regex
+          nimble install -y httpx
       
       - name: Build tests
         run: |
