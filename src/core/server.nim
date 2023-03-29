@@ -31,7 +31,21 @@ type
 
 
 func fgColored*(text: string, clr: ForegroundColor): string {.inline.} =
+  ## return colored text
+  ## 
+  ## Arguments:
+  ## - `text`: source string
+  ## - `clr`: Foreground color
   ansiForegroundColorCode(clr) & text & ansiResetCode
+
+
+func fgStyled*(text: string, style: Style): string {.inline.} =
+  ## return styled text
+  ## 
+  ## Arguments:
+  ## - `text`: source string
+  ## - `style`: style
+  ansiStyleCode(style) & text & ansiResetCode
 
 
 proc newServer*(address: string = "127.0.0.1", port: int = 5000): Server =
@@ -79,7 +93,7 @@ template answer*(req: Request, message: string, code: HttpCode = Http200) =
     )
 
 
-func parseQuery*(query: string): owned(StringTableRef) =
+proc parseQuery*(query: string): owned(StringTableRef) =
   ## Parses query and retrieves JSON object
   runnableExamples:
     let
@@ -185,20 +199,10 @@ macro routes*(server: Server, body: untyped): untyped =
       elif statement[1].kind == nnkStmtList and statement[0].kind == nnkIdent:
         let name = $statement[0]
         if name == "notfound":
-          ifStmt.add(newNimNode(nnkElse).add(statement[1]))
-      # func("/..."): statement list
-      else:
-        let
-          name = $statement[0]
-          arg = statement[1]
-        if name == "route":
-          var exported = exportRouteArgs(path, statement[0], statement[1])
-          if exported.len > 0:  # /my/path/with{custom:int}/{param:path}
-            ifStmt.add(exported)
-          else:  # just my path
-            ifStmt.add(newNimNode(nnkElifBranch).add(
-              newCall("==", path, arg), statement[2]
-            ))
+          if ifStmt.len > 0:
+            ifStmt.add(newNimNode(nnkElse).add(statement[1]))
+          else:
+            stmtList.add(statement[1])
   
   stmtList.add(newNimNode(nnkLetSection).add(newIdentDefs(ident("urlPath"), newEmptyNode(), path)))
   when defined(debug):
@@ -215,6 +219,6 @@ macro routes*(server: Server, body: untyped): untyped =
 
   if ifStmt.len > 0:
     stmtList.add(ifStmt)
-  else:
+  elif stmtList.len < 1:
     stmtList.add(newCall(ident("answer"), ident("req"), newStrLitNode("Not found")))
   procStmt

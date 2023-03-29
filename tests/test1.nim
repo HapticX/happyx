@@ -5,7 +5,8 @@ import
 
 proc main =
   var server = newServer()
-  server.routes:  
+
+  server.routes:
     "/":
       req.answer "Hello, world!"
     "/calc/{left:int}{operator:string}{right:int}":
