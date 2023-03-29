@@ -31,13 +31,8 @@ jobs:
           key: ${{ runner.os }}-nimble-${{ hashFiles('*.nimble') }}
       - uses: jiro4989/setup-nim-action@v1
         with:
-          nim-version: ${{ env.nim_version }}
+          nim-version: ${{ env.nim_versi
 
-      - name: Fix apt packages
-        run: |
-          # see. https://github.com/actions/virtual-environments/issues/675
-          sudo sed -i 's/azure\.//' /etc/apt/sources.list
-          sudo apt update -yqq
       - name: Install Dependencies
         run: |
           nimble refresh

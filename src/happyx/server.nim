@@ -99,7 +99,7 @@ proc parseQuery*(query: string): owned(StringTableRef) =
     let
       query = "a=1000&b=8000&password=mystrongpass"
       parsedQuery = parseQuery(query)
-    assert parseQuery["a"] == "1000"
+    assert parsedQuery["a"] == "1000"
   result = newStringTable()
   for i in query.split('&'):
     let splitted = i.split('=')
