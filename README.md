@@ -43,7 +43,7 @@ proc main =
     "/":
       req.answer("Hello, world!")
     
-    "/user{id:int}"
+    "/user{id:int}":
       req.answer(fmt"Hello, user with ID {id}!")
   
   server.start()
