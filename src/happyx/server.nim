@@ -10,8 +10,9 @@
 import
   macros,
   strutils,
-  asyncdispatch,
   strtabs,
+  strformat,
+  asyncdispatch,
   logging,
   terminal,
   colors,
@@ -20,8 +21,9 @@ import
 
 export
   strutils,
-  asyncdispatch,
   strtabs,
+  strformat,
+  asyncdispatch,
   logging,
   terminal,
   colors,
@@ -270,7 +272,7 @@ macro routes*(server: Server, body: untyped): untyped =
       let reqMethod = "req.reqMethod"
     stmtList.add(newCall(
       "log",
-      newDotExpr(ident("server"), ident("logger")),
+      newDotExpr(server, ident("logger")),
       ident("lvlInfo"),
       newCall("fmt", newStrLitNode("{" & reqMethod & "}::{urlPath}"))
     ))

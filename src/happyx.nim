@@ -1,8 +1,15 @@
 #[
   Provides Happyx main file
 ]#
-import
-  happyx/[server]
+when not defined(js):
+  import
+    happyx/[server]
 
-export
-  server
+  export
+    server
+else:
+  import
+    happyx/[renderer]
+  
+  export
+    renderer

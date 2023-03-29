@@ -42,18 +42,19 @@ jobs:
           nimble install -y regex
           nimble install -y httpx
       
-      - name: Build tests
+      - name: Build C tests
         run: |
           cd tests
-          for file in $(ls -v test*.nim); do
+          for file in $(ls -v testc*.nim); do
             nim c -d:ssl -d:debug $file
+            nim c -d:ssl -d:httpx -d:debug $file
           done
         shell: bash
       
-      - name: Build tests [httpx]
+      - name: Build JS tests
         run: |
           cd tests
-          for file in $(ls -v test*.nim); do
-            nim c -d:ssl -d:httpx -d:debug $file
+          for file in $(ls -v testjs*.nim); do
+            nim js -d:debug $file
           done
         shell: bash

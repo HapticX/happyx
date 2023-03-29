@@ -1,6 +1,4 @@
-import
-  strformat,
-  ../src/happyx
+import ../src/happyx
 
 
 proc main =
