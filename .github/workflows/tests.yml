@@ -35,12 +35,6 @@ jobs:
       - uses: jiro4989/setup-nim-action@v1
         with:
           nim-version: ${{ matrix.nim_version }}
-
-      - name: Fix apt packages
-        run: |
-          # see. https://github.com/actions/virtual-environments/issues/675
-          sudo sed -i 's/azure\.//' /etc/apt/sources.list
-          sudo apt update -yqq
       
       - name: Install Dependencies
         run: |

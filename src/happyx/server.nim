@@ -96,6 +96,7 @@ template answer*(req: Request, message: string, code: HttpCode = Http200) =
 proc parseQuery*(query: string): owned(StringTableRef) =
   ## Parses query and retrieves JSON object
   runnableExamples:
+    import strtabs
     let
       query = "a=1000&b=8000&password=mystrongpass"
       parsedQuery = parseQuery(query)
