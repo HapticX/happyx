@@ -18,11 +18,26 @@ import
   uri,
   regex
 
+export
+  strutils,
+  asyncdispatch,
+  strtabs,
+  logging,
+  terminal,
+  colors,
+  regex
+
 
 when defined(httpx):
-  import httpx
+  import
+    options,
+    httpx
+  export
+    options,
+    httpx
 else:
   import asynchttpserver
+  export asynchttpserver
 
 
 type
@@ -47,7 +62,6 @@ func fgColored*(text: string, clr: ForegroundColor): string {.inline.} =
   ## Return value:
   ## - The function returns a string value with the specified color applied to the input text.
   runnableExamples:
-    import terminal
     echo fgColored("Hello, world!", fgRed)
   ansiForegroundColorCode(clr) & text & ansiResetCode
 
@@ -63,7 +77,6 @@ func fgStyled*(text: string, style: Style): string {.inline.} =
   ## Return value:
   ## - The function returns a string value with the specified style applied to the input text.
   runnableExamples:
-    import terminal
     echo fgStyled("Hello, world!", styleBlink)
   ansiStyleCode(style) & text & ansiResetCode
 
@@ -84,8 +97,8 @@ proc newServer*(address: string = "127.0.0.1", port: int = 5000): Server =
   ## Returns:
   ## - A new instance of the `Server` object.
   runnableExamples:
-    var server = newServer()
-    assert server.address == "127.0.0.1"
+    var s = newServer()
+    assert s.address == "127.0.0.1"
   result = Server(
     address: address,
     port: port,
@@ -106,18 +119,19 @@ template start*(server: Server): untyped =
   ## Returns:
   ## - `untyped`: This template does not return any value.
   runnableExamples:
-    server.start()
+    var s = newServer()
+    s.start()
   when defined(debug):
-    server.logger.log(
+    `server`.logger.log(
       lvlInfo, fmt"Server started at http://{server.address}:{server.port}"
     )
   when not declared(handleRequest):
     proc handleRequest(req: Request) {.async.} =
       discard
   when defined(httpx):
-    run(handleRequest, server.instance)
+    run(handleRequest, `server`.instance)
   else:
-    waitFor server.instance.serve(Port(server.port), handleRequest, server.address)
+    waitFor `server`.instance.serve(Port(`server`.port), handleRequest, `server`.address)
 
 
 template answer*(req: Request, message: string, code: HttpCode = Http200) =
@@ -143,7 +157,6 @@ template answer*(req: Request, message: string, code: HttpCode = Http200) =
 proc parseQuery*(query: string): owned(StringTableRef) =
   ## Parses query and retrieves JSON object
   runnableExamples:
-    import strtabs
     let
       query = "a=1000&b=8000&password=mystrongpass"
       parsedQuery = parseQuery(query)
