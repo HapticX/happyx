@@ -8,7 +8,7 @@ import
   strformat,
   logging,
   regex,
-  core/[server]
+  happyx/[server]
 
 when defined(httpx):
   import
