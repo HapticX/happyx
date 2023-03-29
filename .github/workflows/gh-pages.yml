@@ -1,0 +1,55 @@
+name: gh-pages
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  skip:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Skip job"
+
+  before:
+    runs-on: ubuntu-latest
+    if: "! contains(github.event.head_commit.message, '[skip ci]')"
+    steps:
+      - run: echo "not contains '[skip ci]'"
+
+  docs:
+    runs-on: ubuntu-latest
+    needs: before
+    env:
+      nim_version: '1.6.12'
+    steps:
+      - uses: actions/checkout@v1
+      - name: Cache nimble
+        id: cache-nimble
+        uses: actions/cache@v1
+        with:
+          path: ~/.nimble
+          key: ${{ runner.os }}-nimble-${{ hashFiles('*.nimble') }}
+      - uses: jiro4989/setup-nim-action@v1
+        with:
+          nim-version: ${{ env.nim_version }}
+
+      - name: Fix apt packages
+        run: |
+          # see. https://github.com/actions/virtual-environments/issues/675
+          sudo sed -i 's/azure\.//' /etc/apt/sources.list
+          sudo apt update -yqq
+      - name: Install Dependencies
+        run: |
+          nimble refresh
+          nimble install -y regex
+          nimble install -y httpx
+
+      - name: Generate API documents
+        run: nim doc --index:on --project --out:docs --hints:off src/happyx.nim
+
+      - name: Deploy documents
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs
+        if: github.ref == 'refs/heads/master'
