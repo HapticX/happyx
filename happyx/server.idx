@@ -1,0 +1,9 @@
+Server	happyx/server.html#Server	server: Server	
+fgColored	happyx/server.html#fgColored,string,ForegroundColor	server: fgColored(text: string; clr: ForegroundColor): string	
+fgStyled	happyx/server.html#fgStyled,string,Style	server: fgStyled(text: string; style: Style): string	
+newServer	happyx/server.html#newServer,string,int	server: newServer(address: string = &quot;127.0.0.1&quot;; port: int = 5000): Server	
+start	happyx/server.html#start.t,Server	server: start(server: Server): untyped	
+answer	happyx/server.html#answer.t,Request,string,HttpCode	server: answer(req: Request; message: string; code: HttpCode = Http200)	
+parseQuery	happyx/server.html#parseQuery,string	server: parseQuery(query: string): owned(StringTableRef)	
+exportRouteArgs	happyx/server.html#exportRouteArgs,NimNode,NimNode,NimNode	server: exportRouteArgs(urlPath, routePath, body: NimNode): NimNode	
+routes	happyx/server.html#routes.m,Server,untyped	server: routes(server: Server; body: untyped): untyped	
