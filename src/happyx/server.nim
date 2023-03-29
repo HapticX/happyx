@@ -1,6 +1,12 @@
-#[
-  Provides working with server
-]#
+## # HappyX
+## 
+## Provides a Server object that encapsulates the server's address, port, and logger.
+## Developers can customize the logger's format using the built-in newConsoleLogger function.
+## HappyX provides two options for handling HTTP requests: httpx and asynchttpserver.
+## Developers can define which library to use by setting the httpx flag.
+## 
+## 
+
 import
   macros,
   strutils,
@@ -31,25 +37,55 @@ type
 
 
 func fgColored*(text: string, clr: ForegroundColor): string {.inline.} =
-  ## return colored text
+  ## This function takes in a string of text and a ForegroundColor enum
+  ## value and returns the same text with the specified color applied.
   ## 
   ## Arguments:
-  ## - `text`: source string
-  ## - `clr`: Foreground color
+  ## - `text`: A string value representing the text to apply color to.
+  ## - `clr`: A ForegroundColor enum value representing the color to apply to the text.
+  ## 
+  ## Return value:
+  ## - The function returns a string value with the specified color applied to the input text.
+  runnableExamples:
+    import terminal
+    echo fgColored("Hello, world!", fgRed)
   ansiForegroundColorCode(clr) & text & ansiResetCode
 
 
 func fgStyled*(text: string, style: Style): string {.inline.} =
-  ## return styled text
+  ## This function takes in a string of text and a Style enum
+  ## value and returns the same text with the specified style applied.
   ## 
   ## Arguments:
-  ## - `text`: source string
-  ## - `style`: style
+  ## - `text`: A string value representing the text to apply style to.
+  ## - `clr`: A Style enum value representing the style to apply to the text.
+  ## 
+  ## Return value:
+  ## - The function returns a string value with the specified style applied to the input text.
+  runnableExamples:
+    import terminal
+    echo fgStyled("Hello, world!", styleBlink)
   ansiStyleCode(style) & text & ansiResetCode
 
 
 proc newServer*(address: string = "127.0.0.1", port: int = 5000): Server =
-  ## Initializes a new Server object
+  ## This procedure creates and returns a new instance of the `Server` object,
+  ## which listens for incoming connections on the specified IP address and port.
+  ## If no address is provided, it defaults to `127.0.0.1`,
+  ## which is the local loopback address.
+  ## If no port is provided, it defaults to `5000`.
+  ## 
+  ## Parameters:
+  ## - `address` (optional): A string representing the IP address that the server should listen on.
+  ##   Defaults to `"127.0.0.1"`.
+  ## - `port` (optional): An integer representing the port number that the server should listen on.
+  ##   Defaults to `5000`.
+  ## 
+  ## Returns:
+  ## - A new instance of the `Server` object.
+  runnableExamples:
+    var server = newServer()
+    assert server.address == "127.0.0.1"
   result = Server(
     address: address,
     port: port,
@@ -63,10 +99,22 @@ proc newServer*(address: string = "127.0.0.1", port: int = 5000): Server =
 
 
 template start*(server: Server): untyped =
+  ## The `start` template starts the given server and listens for incoming connections.
+  ## Parameters:
+  ## - `server`: A `Server` instance that needs to be started.
+  ## 
+  ## Returns:
+  ## - `untyped`: This template does not return any value.
+  runnableExamples:
+    var server = newServer()
+    server.start()
   when defined(debug):
     server.logger.log(
       lvlInfo, fmt"Server started at http://{server.address}:{server.port}"
     )
+  when not declared(handleRequest):
+    proc handleRequest(req: Request) {.async.} =
+      discard
   when defined(httpx):
     run(handleRequest, server.instance)
   else:
