@@ -118,9 +118,6 @@ template start*(server: Server): untyped =
   ## 
   ## Returns:
   ## - `untyped`: This template does not return any value.
-  runnableExamples:
-    var s = newServer()
-    s.start()
   when defined(debug):
     `server`.logger.log(
       lvlInfo, fmt"Server started at http://{server.address}:{server.port}"
