@@ -31,7 +31,7 @@ jobs:
           key: ${{ runner.os }}-nimble-${{ hashFiles('*.nimble') }}
       - uses: jiro4989/setup-nim-action@v1
         with:
-          nim-version: ${{ env.nim_versi
+          nim-version: ${{ env.nim_version }}
 
       - name: Install Dependencies
         run: |
