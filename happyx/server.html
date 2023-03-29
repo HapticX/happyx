@@ -98,6 +98,7 @@ window.addEventListener('DOMContentLoaded', main);
     </select>
   </div>
   <ul class="simple simple-toc" id="toc-list">
+<li><a class="reference" id="happyx_toc" href="#happyx">HappyX</a></li>
 <li>
   <a class="reference reference-toplevel" href="#7" id="57">Types</a>
   <ul class="simple simple-toc-section">
@@ -180,7 +181,9 @@ window.addEventListener('DOMContentLoaded', main);
   <div class="nine columns" id="content">
   <div id="tocRoot"></div>
   
-  <p class="module-desc"></p>
+  <p class="module-desc">
+<h1><a class="toc-backref" id="happyx" href="#happyx">HappyX</a></h1><p>Provides a Server object that encapsulates the server's address, port, and logger. Developers can customize the logger's format using the built-in newConsoleLogger function. HappyX provides two options for handling HTTP requests: httpx and asynchttpserver. Developers can define which library to use by setting the httpx flag.</p>
+</p>
   <div class="section" id="7">
 <h1><a class="toc-backref" href="#7">Types</a></h1>
 <dl class="item">
@@ -221,12 +224,17 @@ Finds and exports route arguments
     <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
-<p>return colored text</p>
+<p>This function takes in a string of text and a ForegroundColor enum value and returns the same text with the specified color applied.</p>
 <p>Arguments:</p>
-<ul class="simple"><li><tt class="docutils literal"><span class="pre"><span class="Identifier">text</span></span></tt>: source string</li>
-<li><tt class="docutils literal"><span class="pre"><span class="Identifier">clr</span></span></tt>: Foreground color</li>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre"><span class="Identifier">text</span></span></tt>: A string value representing the text to apply color to.</li>
+<li><tt class="docutils literal"><span class="pre"><span class="Identifier">clr</span></span></tt>: A ForegroundColor enum value representing the color to apply to the text.</li>
+</ul>
+<p>Return value:</p>
+<ul class="simple"><li>The function returns a string value with the specified color applied to the input text.</li>
 </ul>
 
+<p><strong class="examples_text">Example:</strong></p>
+<pre class="listing"><span class="Identifier">echo</span> <span class="Identifier">fgColored</span><span class="Punctuation">(</span><span class="StringLit">&quot;Hello, world!&quot;</span><span class="Punctuation">,</span> <span class="Identifier">fgRed</span><span class="Punctuation">)</span></pre>
 
 </dd>
 </div>
@@ -235,12 +243,17 @@ Finds and exports route arguments
     <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
-<p>return styled text</p>
+<p>This function takes in a string of text and a Style enum value and returns the same text with the specified style applied.</p>
 <p>Arguments:</p>
-<ul class="simple"><li><tt class="docutils literal"><span class="pre"><span class="Identifier">text</span></span></tt>: source string</li>
-<li><tt class="docutils literal"><span class="pre"><span class="Identifier">style</span></span></tt>: style</li>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre"><span class="Identifier">text</span></span></tt>: A string value representing the text to apply style to.</li>
+<li><tt class="docutils literal"><span class="pre"><span class="Identifier">clr</span></span></tt>: A Style enum value representing the style to apply to the text.</li>
+</ul>
+<p>Return value:</p>
+<ul class="simple"><li>The function returns a string value with the specified style applied to the input text.</li>
 </ul>
 
+<p><strong class="examples_text">Example:</strong></p>
+<pre class="listing"><span class="Identifier">echo</span> <span class="Identifier">fgStyled</span><span class="Punctuation">(</span><span class="StringLit">&quot;Hello, world!&quot;</span><span class="Punctuation">,</span> <span class="Identifier">styleBlink</span><span class="Punctuation">)</span></pre>
 
 </dd>
 </div>
@@ -249,7 +262,18 @@ Finds and exports route arguments
     <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
-Initializes a new Server object
+<p>This procedure creates and returns a new instance of the <tt class="docutils literal"><span class="pre"><span class="Identifier">Server</span></span></tt> object, which listens for incoming connections on the specified IP address and port. If no address is provided, it defaults to <tt class="docutils literal"><span class="pre"><span class="FloatNumber">127.0</span><span class="Operator">.</span><span class="FloatNumber">0.1</span></span></tt>, which is the local loopback address. If no port is provided, it defaults to <tt class="docutils literal"><span class="pre"><span class="DecNumber">5000</span></span></tt>.</p>
+<p>Parameters:</p>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre"><span class="Identifier">address</span></span></tt> (optional): A string representing the IP address that the server should listen on. Defaults to <tt class="docutils literal"><span class="pre"><span class="StringLit">&quot;127.0.0.1&quot;</span></span></tt>.</li>
+<li><tt class="docutils literal"><span class="pre"><span class="Identifier">port</span></span></tt> (optional): An integer representing the port number that the server should listen on. Defaults to <tt class="docutils literal"><span class="pre"><span class="DecNumber">5000</span></span></tt>.</li>
+</ul>
+<p>Returns:</p>
+<ul class="simple"><li>A new instance of the <tt class="docutils literal"><span class="pre"><span class="Identifier">Server</span></span></tt> object.</li>
+</ul>
+
+<p><strong class="examples_text">Example:</strong></p>
+<pre class="listing"><span class="Keyword">var</span> <span class="Identifier">s</span> <span class="Operator">=</span> <span class="Identifier">newServer</span><span class="Punctuation">(</span><span class="Punctuation">)</span>
+<span class="Identifier">assert</span> <span class="Identifier">s</span><span class="Operator">.</span><span class="Identifier">address</span> <span class="Operator">==</span> <span class="StringLit">&quot;127.0.0.1&quot;</span></pre>
 
 </dd>
 </div>
@@ -259,8 +283,7 @@ Initializes a new Server object
 
 Parses query and retrieves JSON object
 <p><strong class="examples_text">Example:</strong></p>
-<pre class="listing"><span class="Keyword">import</span> <span class="Identifier">strtabs</span>
-<span class="Keyword">let</span>
+<pre class="listing"><span class="Keyword">let</span>
   <span class="Identifier">query</span> <span class="Operator">=</span> <span class="StringLit">&quot;a=1000&amp;b=8000&amp;password=mystrongpass&quot;</span>
   <span class="Identifier">parsedQuery</span> <span class="Operator">=</span> <span class="Identifier">parseQuery</span><span class="Punctuation">(</span><span class="Identifier">query</span><span class="Punctuation">)</span>
 <span class="Identifier">assert</span> <span class="Identifier">parsedQuery</span><span class="Punctuation">[</span><span class="StringLit">&quot;a&quot;</span><span class="Punctuation">]</span> <span class="Operator">==</span> <span class="StringLit">&quot;1000&quot;</span></pre>
@@ -303,6 +326,11 @@ Answers to the request<dl class="docutils"><dt>Arguments:</dt>
 <dt><pre><span class="Keyword">template</span> <a href="#start.t%2CServer"><span class="Identifier">start</span></a><span class="Other">(</span><span class="Identifier">server</span><span class="Other">:</span> <a href="server.html#Server"><span class="Identifier">Server</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
 
+The <tt class="docutils literal"><span class="pre"><span class="Identifier">start</span></span></tt> template starts the given server and listens for incoming connections. Parameters:<ul class="simple"><li><tt class="docutils literal"><span class="pre"><span class="Identifier">server</span></span></tt>: A <tt class="docutils literal"><span class="pre"><span class="Identifier">Server</span></span></tt> instance that needs to be started.</li>
+</ul>
+<p>Returns:</p>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre"><span class="Identifier">untyped</span></span></tt>: This template does not return any value.</li>
+</ul>
 
 
 </dd>
@@ -317,7 +345,7 @@ Answers to the request<dl class="docutils"><dt>Arguments:</dt>
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-03-29 07:31:08 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-03-29 08:03:33 UTC</small>
       </div>
     </div>
   </div>
