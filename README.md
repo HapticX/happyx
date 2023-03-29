@@ -1,6 +1,6 @@
 <div align="center">
 
-# `H a p p y x`
+![Happyx](https://user-images.githubusercontent.com/49402667/228402522-6dd72d4b-c21c-4acf-b1e2-8318b6e809da.png)
 ### Asynchronous web-framework written in Nim with ♥
 
 ![Nim language](https://img.shields.io/badge/>=1.4.0-1b1e2b?style=for-the-badge&logo=nim&logoColor=f1fa8c&label=Nim&labelColor=2b2e3b)
