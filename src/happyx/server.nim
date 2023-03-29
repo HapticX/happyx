@@ -1,4 +1,4 @@
-## # HappyX
+## # Server
 ## 
 ## Provides a Server object that encapsulates the server's address, port, and logger.
 ## Developers can customize the logger's format using the built-in newConsoleLogger function.

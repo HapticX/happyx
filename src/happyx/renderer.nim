@@ -1,5 +1,6 @@
-## The renderer.nim module in the HappyX web-async framework provides
-## a single-page application (SPA) renderer with reactivity features.
+## # Renderer
+## 
+## Provides a single-page application (SPA) renderer with reactivity features.
 ## It likely contains functions or classes that allow developers to
 ## dynamically update the content of a web page without reloading the entire page.
 
