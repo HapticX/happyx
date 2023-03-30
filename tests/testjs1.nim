@@ -3,6 +3,7 @@ import ../src/happyx
 
 var state = remember true
 var state1 = remember 1
+var state2 = remember @["h1", "h2", "h3", "h4", "h5", "h6"]
 
 var html =
   buildHtml(`div`):
@@ -28,6 +29,8 @@ var html =
     input(`type`="password")
     button:
       "click!"
+    for i in state2:  # FOR STMT
+      i
 
 html.get("input")["class"] = "a"
 

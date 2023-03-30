@@ -23,7 +23,7 @@ type
     isText*: bool  ## Ignore attributes and children when true
 
 
-func initTag*(name: string, attrs: StringTableRef, children: varargs[TagRef]): TagRef =
+func initTag*(name: string, attrs: StringTableRef, children: seq[TagRef] = @[]): TagRef =
   ## Initializes a new HTML tag with the given name, attributes, and children.
   ## 
   ## Args:
@@ -39,7 +39,7 @@ func initTag*(name: string, attrs: StringTableRef, children: varargs[TagRef]): T
     result.children.add(child)
 
 
-func initTag*(name: string, children: varargs[TagRef]): TagRef =
+func initTag*(name: string, children: seq[TagRef] = @[]): TagRef =
   ## Initializes a new HTML tag without attributes but with children
   ## 
   ## Args:
@@ -54,7 +54,7 @@ func initTag*(name: string, children: varargs[TagRef]): TagRef =
     result.children.add(child)
 
 
-func initTag*(name: string, isText: bool, attrs: StringTableRef, children: varargs[TagRef]): TagRef =
+func initTag*(name: string, isText: bool, attrs: StringTableRef, children: seq[TagRef] = @[]): TagRef =
   ## Initializes a new HTML tag with the given name, whether it's text or not, attributes, and children.
   ## 
   ## Args:
@@ -71,7 +71,7 @@ func initTag*(name: string, isText: bool, attrs: StringTableRef, children: varar
     result.children.add(child)
 
 
-func initTag*(name: string, isText: bool, children: varargs[TagRef]): TagRef =
+func initTag*(name: string, isText: bool, children: seq[TagRef] = @[]): TagRef =
   ## Initializes a new HTML tag
   result = TagRef(name: name, isText: isText, parent: nil, attrs: newStringTable(), children: @[])
   for child in children:
@@ -146,8 +146,11 @@ func `$`*(self: TagRef): string =
   if self.isText:
     return level & self.name
   
-  let children = "\n" & self.children.join("\n") & "\n"
   var attrs = ""
   for key, value in self.attrs.pairs():
     attrs &= " " & key & "=" & "\"" & value & "\""
-  fmt"{level}<{self.name}{attrs}>{children}{level}</{self.name}>"
+  if self.children.len > 0:
+    let children = "\n" & self.children.join("\n") & "\n"
+    fmt"{level}<{self.name}{attrs}>{children}{level}</{self.name}>"
+  else:
+    fmt"{level}<{self.name}{attrs} />"

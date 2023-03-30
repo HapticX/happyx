@@ -9,12 +9,14 @@ import
   logging,
   htmlgen,
   strtabs,
+  sugar,
   ./tag
 
 export
   logging,
   htmlgen,
   strtabs,
+  sugar,
   tag
 
 
@@ -28,6 +30,17 @@ func newRenderer*(appId: string): Renderer =
   result = Renderer(
     appId: appId
   )
+
+
+proc replaceIter*(
+    root: NimNode,
+    search: proc(x: NimNode): bool,
+    replace: proc(x: NimNode): NimNode
+) =
+  for i in 0..root.len-1:
+    root[i].replaceIter(search, replace)
+    if search(root[i]):
+      root[i] = replace(root[i])
 
 
 proc buildHtmlProcedure*(root: NimNode, body: NimNode): NimNode {.compileTime.} =
@@ -47,7 +60,9 @@ proc buildHtmlProcedure*(root: NimNode, body: NimNode): NimNode {.compileTime.} 
       if statement.len-2 > 0 and statementList.kind == nnkStmtList:
         for attr in statement[1 .. statement.len-2]:
           attrs.add(newColonExpr(newStrLitNode($attr[0]), attr[1]))
-        result.add(newCall("newStringTable", attrs), buildHtmlProcedure(tagName, statementList))
+        var builded = buildHtmlProcedure(tagName, statementList)
+        builded.insert(2, newCall("newStringTable", attrs))
+        result.add(builded)
       # tag(attr="value")
       elif statementList.kind != nnkStmtList:
         for attr in statement[1 .. statement.len-1]:
@@ -77,23 +92,71 @@ proc buildHtmlProcedure*(root: NimNode, body: NimNode): NimNode {.compileTime.} 
       var ifExpr = newNimNode(nnkIfExpr)
       for branch in statement:
         if branch.kind == nnkElifBranch:
-          let r = buildHtmlProcedure(ident("div"), branch[1])
-          echo treeRepr r
-          let elifExpr = newNimNode(nnkElifExpr).add(branch[0])
+          let
+            r = buildHtmlProcedure(ident("div"), branch[1])
+            elifExpr = newNimNode(nnkElifExpr).add(branch[0])
           for i in r[2..^1]:
-            elifExpr.add(i)
+            if i.kind == nnkCall and $i[0] == "@":
+              for j in i[1]:
+                elifExpr.add(j)
+            else:
+              elifExpr.add(i)
           ifExpr.add(elifExpr)
         else:
-          let r = buildHtmlProcedure(ident("div"), branch[0])
-          let elseExpr = newNimNode(nnkElseExpr)
+          let
+            r = buildHtmlProcedure(ident("div"), branch[0])
+            elseExpr = newNimNode(nnkElseExpr)
           for i in r[2..^1]:
-            elseExpr.add(i)
+            if i.kind == nnkCall and $i[0] == "@":
+              for j in i[1]:
+                elseExpr.add(j)
+            else:
+              elseExpr.add(i)
           ifExpr.add(elseExpr)
       if ifExpr.len == 1:
         ifExpr.add(newNimNode(nnkElseExpr).add(
           newCall("tag", newStrLitNode("div"))
         ))
       result.add(ifExpr)
+    
+    # for ... in ...:
+    #   ...
+    elif statement.kind == nnkForStmt:
+      let
+        arguments = collect:
+          for i in statement[0..statement.len-3]:
+            $i
+      statement[^1].replaceIter(
+        (x) => x.kind == nnkIdent and $x in arguments,
+        (x) => newNimNode(nnkIfExpr).add(
+          newNimNode(nnkElifExpr).add(
+            newCall("is", newCall("typeof", x), ident("string")),
+            newCall("initTag", x)
+          )
+        )
+      )
+      result.add(
+        newCall("initTag", newStrLitNode("div"), newCall("collect", newNimNode(nnkStmtList).add(statement)))
+      )
+  
+  # varargs -> seq
+  if result.len > 2:
+    if result[2].kind == nnkCall and $result[2][0] == "newStringTable":
+      var
+        tagRefs = result[3..result.len-1]
+        arr = newNimNode(nnkBracket)
+      result.del(3, result.len - 3)
+      for tag in tagRefs:
+        arr.add(tag)
+      result.add(newCall("@", arr))
+    else:
+      var
+        tagRefs = result[2..result.len-1]
+        arr = newNimNode(nnkBracket)
+      result.del(2, result.len - 2)
+      for tag in tagRefs:
+        arr.add(tag)
+      result.add(newCall("@", arr))
 
 
 macro buildHtml*(root, html: untyped): untyped =
@@ -104,16 +167,20 @@ macro buildHtml*(root, html: untyped): untyped =
   ## - `html`: YAML-like structure.
   ## 
   runnableExamples:
-    var state = true
-    var html = buildHtml(`div`):
-      h1(class="title"):
-        "Title"
-      input(`type`="password")
-      button:
-        "click!"
-      if state:
-        "state is true!"
-      else:
-        "state is false"
+    var
+      state = true
+      stateArr = @["h1", "h2"]
+      html = buildHtml(`div`):
+        h1(class="title"):
+          "Title"
+        input(`type`="password")
+        button:
+          "click!"
+        if state:
+          "state is true!"
+        else:
+          "state is false"
+        for i in stateArr:
+          i
   result = buildHtmlProcedure(root, html)
   echo treeRepr result

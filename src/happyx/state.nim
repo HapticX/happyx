@@ -21,6 +21,11 @@ func `$`*(self: State): string =
   $self.val.get()
 
 
+iterator items*[T](self: State[T]): auto =
+  for item in self.val.get():
+    yield item
+
+
 converter bool*(self: State): bool = self.val.get()
 converter string*(self: State): string = self.val.get()
 converter int*(self: State): int = self.val.get()
