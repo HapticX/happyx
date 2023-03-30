@@ -122,20 +122,31 @@ window.addEventListener('DOMContentLoaded', main);
     title="`$`(self: TagRef): string">`$`(self: TagRef): string</a></li>
 
   </ul>
+  <ul class="simple nested-toc-section">[]
+      <li><a class="reference" href="#%5B%5D%2CTagRef%2Cstring"
+    title="`[]`(self: TagRef; attrName: string): string">`[]`(self: TagRef; attrName: string): string</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">[]=
+      <li><a class="reference" href="#%5B%5D%3D%2CTagRef%2Cstring%2Cstring"
+    title="`[]=`(self: TagRef; attrName: string; attrValue: string)">`[]=`(self: TagRef; attrName: string; attrValue: string)</a></li>
+
+  </ul>
   <ul class="simple nested-toc-section">add
       <li><a class="reference" href="#add%2CTagRef%2Cvarargs%5BTagRef%5D"
     title="add(self: TagRef; tags: varargs[TagRef])">add(self: TagRef; tags: varargs[TagRef])</a></li>
 
   </ul>
+  <ul class="simple nested-toc-section">get
+      <li><a class="reference" href="#get%2CTagRef%2Cstring"
+    title="get(self: TagRef; tag: string): TagRef">get(self: TagRef; tag: string): TagRef</a></li>
+
+  </ul>
   <ul class="simple nested-toc-section">initTag
-      <li><a class="reference" href="#initTag%2Cstring%2CStringTableRef"
-    title="initTag(name: string; attrs: StringTableRef): TagRef">initTag(name: string; attrs: StringTableRef): TagRef</a></li>
-  <li><a class="reference" href="#initTag%2Cstring%2CStringTableRef%2Cvarargs%5BTagRef%5D"
+      <li><a class="reference" href="#initTag%2Cstring%2CStringTableRef%2Cvarargs%5BTagRef%5D"
     title="initTag(name: string; attrs: StringTableRef; children: varargs[TagRef]): TagRef">initTag(name: string; attrs: StringTableRef; children: varargs[TagRef]): TagRef</a></li>
   <li><a class="reference" href="#initTag%2Cstring%2Cvarargs%5BTagRef%5D"
     title="initTag(name: string; children: varargs[TagRef]): TagRef">initTag(name: string; children: varargs[TagRef]): TagRef</a></li>
-  <li><a class="reference" href="#initTag%2Cstring%2Cbool%2CStringTableRef"
-    title="initTag(name: string; isText: bool; attrs: StringTableRef): TagRef">initTag(name: string; isText: bool; attrs: StringTableRef): TagRef</a></li>
   <li><a class="reference" href="#initTag%2Cstring%2Cbool%2CStringTableRef%2Cvarargs%5BTagRef%5D"
     title="initTag(name: string; isText: bool; attrs: StringTableRef;
         children: varargs[TagRef]): TagRef">initTag(name: string; isText: bool; attrs: StringTableRef;
@@ -206,6 +217,24 @@ This function returns a string representation of the current tag and its child t
 
 </dd>
 </div>
+<div id="[]=,TagRef,string,string">
+<dt><pre><span class="Keyword">func</span> <a href="#%5B%5D%3D%2CTagRef%2Cstring%2Cstring"><span class="Identifier">`[]=`</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a><span class="Other">;</span> <span class="Identifier">attrName</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">attrValue</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span> {.<span class="Identifier">inline</span><span class="Other">,</span>
+    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<dd>
+
+Sets a new value for attribute or create new attribute
+
+</dd>
+</div>
+<div id="[],TagRef,string">
+<dt><pre><span class="Keyword">func</span> <a href="#%5B%5D%2CTagRef%2Cstring"><span class="Identifier">`[]`</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a><span class="Other">;</span> <span class="Identifier">attrName</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> {.<span class="Identifier">inline</span><span class="Other">,</span> <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<dd>
+
+
+
+</dd>
+</div>
 <div id="add,TagRef,varargs[TagRef]">
 <dt><pre><span class="Keyword">func</span> <a href="#add%2CTagRef%2Cvarargs%5BTagRef%5D"><span class="Identifier">add</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a><span class="Other">;</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Identifier">varargs</span><span class="Other">[</span><a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a><span class="Other">]</span><span class="Other">)</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
@@ -220,20 +249,11 @@ Adds <tt class="docutils literal"><span class="pre"><span class="Identifier">oth
 
 </dd>
 </div>
-<div id="initTag,string,StringTableRef">
-<dt><pre><span class="Keyword">func</span> <a href="#initTag%2Cstring%2CStringTableRef"><span class="Identifier">initTag</span></a><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">attrs</span><span class="Other">:</span> <span class="Identifier">StringTableRef</span><span class="Other">)</span><span class="Other">:</span> <a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a> {.<span class="Identifier">inline</span><span class="Other">,</span> <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
-    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<div id="get,TagRef,string">
+<dt><pre><span class="Keyword">func</span> <a href="#get%2CTagRef%2Cstring"><span class="Identifier">get</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a><span class="Other">;</span> <span class="Identifier">tag</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
-<p>Initializes a new HTML tag with the given name and attributes.</p>
-<p>Args:</p>
-<ul class="simple"><li><tt class="docutils literal"><span class="pre"><span class="Identifier">name</span></span></tt>: The name of the HTML tag to create.</li>
-<li><tt class="docutils literal"><span class="pre"><span class="Identifier">attrs</span></span></tt>: The attributes to set for the HTML tag.</li>
-</ul>
-<p>Returns:</p>
-<ul class="simple"><li>A reference to the newly created HTML tag.</li>
-</ul>
-
+Returns tag by name
 
 </dd>
 </div>
@@ -269,15 +289,6 @@ Adds <tt class="docutils literal"><span class="pre"><span class="Identifier">oth
 <ul class="simple"><li>A reference to the newly created HTML tag.</li>
 </ul>
 
-
-</dd>
-</div>
-<div id="initTag,string,bool,StringTableRef">
-<dt><pre><span class="Keyword">func</span> <a href="#initTag%2Cstring%2Cbool%2CStringTableRef"><span class="Identifier">initTag</span></a><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">isText</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">;</span> <span class="Identifier">attrs</span><span class="Other">:</span> <span class="Identifier">StringTableRef</span><span class="Other">)</span><span class="Other">:</span> <a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a> {.
-    <span class="Identifier">inline</span><span class="Other">,</span> <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
-<dd>
-
-Initializes a new HTML tag with no children
 
 </dd>
 </div>
@@ -347,7 +358,7 @@ Shortcut for <a class="reference external" href="#initTag,string,varargs[TagRef]
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-03-30 02:20:04 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-03-30 02:44:22 UTC</small>
       </div>
     </div>
   </div>

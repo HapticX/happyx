@@ -2,12 +2,13 @@ TagRef	happyx/tag.html#TagRef	tag: TagRef
 Tag	happyx/tag.html#Tag	tag: Tag	
 initTag	happyx/tag.html#initTag,string,StringTableRef,varargs[TagRef]	tag: initTag(name: string; attrs: StringTableRef; children: varargs[TagRef]): TagRef	
 initTag	happyx/tag.html#initTag,string,varargs[TagRef]	tag: initTag(name: string; children: varargs[TagRef]): TagRef	
-initTag	happyx/tag.html#initTag,string,StringTableRef	tag: initTag(name: string; attrs: StringTableRef): TagRef	
 initTag	happyx/tag.html#initTag,string,bool,StringTableRef,varargs[TagRef]	tag: initTag(name: string; isText: bool; attrs: StringTableRef;\n        children: varargs[TagRef]): TagRef	
 initTag	happyx/tag.html#initTag,string,bool,varargs[TagRef]	tag: initTag(name: string; isText: bool; children: varargs[TagRef]): TagRef	
-initTag	happyx/tag.html#initTag,string,bool,StringTableRef	tag: initTag(name: string; isText: bool; attrs: StringTableRef): TagRef	
 tag	happyx/tag.html#tag,string	tag: tag(name: string): TagRef	
 add	happyx/tag.html#add,TagRef,varargs[TagRef]	tag: add(self: TagRef; tags: varargs[TagRef])	
 lvl	happyx/tag.html#lvl,TagRef	tag: lvl(self: TagRef): int	
+`[]`	happyx/tag.html#[],TagRef,string	tag: `[]`(self: TagRef; attrName: string): string	
+`[]=`	happyx/tag.html#[]=,TagRef,string,string	tag: `[]=`(self: TagRef; attrName: string; attrValue: string)	
+get	happyx/tag.html#get,TagRef,string	tag: get(self: TagRef; tag: string): TagRef	
 `$`	happyx/tag.html#$,TagRef	tag: `$`(self: TagRef): string	
 Tag	happyx/tag.html#tag	 Tag	
