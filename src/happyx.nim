@@ -10,9 +10,8 @@ when not defined(js):
     server
 
 import
-  happyx/[renderer, state, tag]
+  happyx/[renderer, state]
 
 export
   renderer,
-  state,
-  tag
+  state

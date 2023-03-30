@@ -14,7 +14,8 @@ import
 export
   logging,
   htmlgen,
-  strtabs
+  strtabs,
+  tag
 
 
 type
@@ -110,7 +111,7 @@ macro buildHtml*(root, html: untyped): untyped =
       input(`type`="password")
       button:
         "click!"
-      if state:  # generates <div></div>
+      if state:
         "state is true!"
       else:
         "state is false"
