@@ -70,10 +70,26 @@ window.addEventListener('DOMContentLoaded', main);
 <div class="document" id="documentId">
   <div class="container">
     <h1 class="title">Index</h1>
-    Modules: <a href="happyx/server.html">happyx/server</a>.<br/><p /><h2>API symbols</h2>
-<dl><dt><a name="answer" href="#answer"><span>answer:</span></a></dt><dd><ul class="simple">
+    Modules: <a href="happyx.html">happyx</a>, <a href="happyx/renderer.html">happyx/renderer</a>, <a href="happyx/server.html">happyx/server</a>, <a href="happyx/tag.html">happyx/tag</a>.<br/><p /><h2>API symbols</h2>
+<dl><dt><a name="%60%24%60" href="#%60%24%60"><span>`$`:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="tag: `$`(self: TagRef): string" href="happyx/tag.html#%24%2CTagRef">tag: `$`(self: TagRef): string</a></li>
+          </ul></dd>
+<dt><a name="add" href="#add"><span>add:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="tag: add(self: TagRef; tags: varargs[TagRef])" href="happyx/tag.html#add%2CTagRef%2Cvarargs%5BTagRef%5D">tag: add(self: TagRef; tags: varargs[TagRef])</a></li>
+          </ul></dd>
+<dt><a name="answer" href="#answer"><span>answer:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="server: answer(req: Request; message: string; code: HttpCode = Http200)" href="happyx/server.html#answer.t%2CRequest%2Cstring%2CHttpCode">server: answer(req: Request; message: string; code: HttpCode = Http200)</a></li>
+          </ul></dd>
+<dt><a name="buildHtml" href="#buildHtml"><span>buildHtml:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="renderer: buildHtml(root, html: untyped): untyped" href="happyx/renderer.html#buildHtml.m%2Cuntyped%2Cuntyped">renderer: buildHtml(root, html: untyped): untyped</a></li>
+          </ul></dd>
+<dt><a name="buildHtmlProcedure" href="#buildHtmlProcedure"><span>buildHtmlProcedure:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="renderer: buildHtmlProcedure(root, body: NimNode): NimNode" href="happyx/renderer.html#buildHtmlProcedure%2CNimNode%2CNimNode">renderer: buildHtmlProcedure(root, body: NimNode): NimNode</a></li>
           </ul></dd>
 <dt><a name="exportRouteArgs" href="#exportRouteArgs"><span>exportRouteArgs:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -87,6 +103,30 @@ window.addEventListener('DOMContentLoaded', main);
 <li><a class="reference external"
           data-doc-search-tag="server: fgStyled(text: string; style: Style): string" href="happyx/server.html#fgStyled%2Cstring%2CStyle">server: fgStyled(text: string; style: Style): string</a></li>
           </ul></dd>
+<dt><a name="initTag" href="#initTag"><span>initTag:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="tag: initTag(name: string; isText: bool; attrs: StringTableRef): TagRef" href="happyx/tag.html#initTag%2Cstring%2Cbool%2CStringTableRef">tag: initTag(name: string; isText: bool; attrs: StringTableRef): TagRef</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="tag: initTag(name: string; isText: bool; attrs: StringTableRef;
+        children: varargs[TagRef]): TagRef" href="happyx/tag.html#initTag%2Cstring%2Cbool%2CStringTableRef%2Cvarargs%5BTagRef%5D">tag: initTag(name: string; isText: bool; attrs: StringTableRef;
+        children: varargs[TagRef]): TagRef</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="tag: initTag(name: string; isText: bool; children: varargs[TagRef]): TagRef" href="happyx/tag.html#initTag%2Cstring%2Cbool%2Cvarargs%5BTagRef%5D">tag: initTag(name: string; isText: bool; children: varargs[TagRef]): TagRef</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="tag: initTag(name: string; attrs: StringTableRef): TagRef" href="happyx/tag.html#initTag%2Cstring%2CStringTableRef">tag: initTag(name: string; attrs: StringTableRef): TagRef</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="tag: initTag(name: string; attrs: StringTableRef; children: varargs[TagRef]): TagRef" href="happyx/tag.html#initTag%2Cstring%2CStringTableRef%2Cvarargs%5BTagRef%5D">tag: initTag(name: string; attrs: StringTableRef; children: varargs[TagRef]): TagRef</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="tag: initTag(name: string; children: varargs[TagRef]): TagRef" href="happyx/tag.html#initTag%2Cstring%2Cvarargs%5BTagRef%5D">tag: initTag(name: string; children: varargs[TagRef]): TagRef</a></li>
+          </ul></dd>
+<dt><a name="lvl" href="#lvl"><span>lvl:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="tag: lvl(self: TagRef): int" href="happyx/tag.html#lvl%2CTagRef">tag: lvl(self: TagRef): int</a></li>
+          </ul></dd>
+<dt><a name="newRenderer" href="#newRenderer"><span>newRenderer:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="renderer: newRenderer(appId: string): Renderer" href="happyx/renderer.html#newRenderer%2Cstring">renderer: newRenderer(appId: string): Renderer</a></li>
+          </ul></dd>
 <dt><a name="newServer" href="#newServer"><span>newServer:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="server: newServer(address: string = &quot;127.0.0.1&quot;; port: int = 5000): Server" href="happyx/server.html#newServer%2Cstring%2Cint">server: newServer(address: string = &quot;127.0.0.1&quot;; port: int = 5000): Server</a></li>
@@ -94,6 +134,10 @@ window.addEventListener('DOMContentLoaded', main);
 <dt><a name="parseQuery" href="#parseQuery"><span>parseQuery:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="server: parseQuery(query: string): owned(StringTableRef)" href="happyx/server.html#parseQuery%2Cstring">server: parseQuery(query: string): owned(StringTableRef)</a></li>
+          </ul></dd>
+<dt><a name="Renderer" href="#Renderer"><span>Renderer:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="renderer: Renderer" href="happyx/renderer.html#Renderer">renderer: Renderer</a></li>
           </ul></dd>
 <dt><a name="routes" href="#routes"><span>routes:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -107,12 +151,24 @@ window.addEventListener('DOMContentLoaded', main);
 <li><a class="reference external"
           data-doc-search-tag="server: start(server: Server): untyped" href="happyx/server.html#start.t%2CServer">server: start(server: Server): untyped</a></li>
           </ul></dd>
+<dt><a name="Tag" href="#Tag"><span>Tag:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="tag: Tag" href="happyx/tag.html#Tag">tag: Tag</a></li>
+          </ul></dd>
+<dt><a name="tag" href="#tag"><span>tag:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="tag: tag(name: string): TagRef" href="happyx/tag.html#tag%2Cstring">tag: tag(name: string): TagRef</a></li>
+          </ul></dd>
+<dt><a name="TagRef" href="#TagRef"><span>TagRef:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="tag: TagRef" href="happyx/tag.html#TagRef">tag: TagRef</a></li>
+          </ul></dd>
 </dl>
     <div class="row">
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-03-29 23:14:17 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-03-30 01:56:30 UTC</small>
       </div>
     </div>
   </div>
