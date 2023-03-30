@@ -70,9 +70,11 @@ window.addEventListener('DOMContentLoaded', main);
 <div class="document" id="documentId">
   <div class="container">
     <h1 class="title">Index</h1>
-    Modules: <a href="happyx.html">happyx</a>, <a href="happyx/renderer.html">happyx/renderer</a>, <a href="happyx/server.html">happyx/server</a>, <a href="happyx/tag.html">happyx/tag</a>.<br/><p /><h2>API symbols</h2>
+    Modules: <a href="happyx.html">happyx</a>, <a href="happyx/renderer.html">happyx/renderer</a>, <a href="happyx/server.html">happyx/server</a>, <a href="happyx/state.html">happyx/state</a>, <a href="happyx/tag.html">happyx/tag</a>.<br/><p /><h2>API symbols</h2>
 <dl><dt><a name="%60%24%60" href="#%60%24%60"><span>`$`:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
+          data-doc-search-tag="state: `$`(self: State): string" href="happyx/state.html#%24%2CState">state: `$`(self: State): string</a></li>
+          <li><a class="reference external"
           data-doc-search-tag="tag: `$`(self: TagRef): string" href="happyx/tag.html#%24%2CTagRef">tag: `$`(self: TagRef): string</a></li>
           </ul></dd>
 <dt><a name="%60%5B%5D%3D%60" href="#%60%5B%5D%3D%60"><span>`[]=`:</span></a></dt><dd><ul class="simple">
@@ -91,13 +93,21 @@ window.addEventListener('DOMContentLoaded', main);
 <li><a class="reference external"
           data-doc-search-tag="server: answer(req: Request; message: string; code: HttpCode = Http200)" href="happyx/server.html#answer.t%2CRequest%2Cstring%2CHttpCode">server: answer(req: Request; message: string; code: HttpCode = Http200)</a></li>
           </ul></dd>
+<dt><a name="bool" href="#bool"><span>bool:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="state: bool(self: State): bool" href="happyx/state.html#bool.c%2CState">state: bool(self: State): bool</a></li>
+          </ul></dd>
 <dt><a name="buildHtml" href="#buildHtml"><span>buildHtml:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="renderer: buildHtml(root, html: untyped): untyped" href="happyx/renderer.html#buildHtml.m%2Cuntyped%2Cuntyped">renderer: buildHtml(root, html: untyped): untyped</a></li>
           </ul></dd>
 <dt><a name="buildHtmlProcedure" href="#buildHtmlProcedure"><span>buildHtmlProcedure:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="renderer: buildHtmlProcedure(root, body: NimNode): NimNode" href="happyx/renderer.html#buildHtmlProcedure%2CNimNode%2CNimNode">renderer: buildHtmlProcedure(root, body: NimNode): NimNode</a></li>
+          data-doc-search-tag="renderer: buildHtmlProcedure(root: NimNode; body: NimNode): NimNode" href="happyx/renderer.html#buildHtmlProcedure%2CNimNode%2CNimNode">renderer: buildHtmlProcedure(root: NimNode; body: NimNode): NimNode</a></li>
+          </ul></dd>
+<dt><a name="char" href="#char"><span>char:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="state: char(self: State): char" href="happyx/state.html#char.c%2CState">state: char(self: State): char</a></li>
           </ul></dd>
 <dt><a name="exportRouteArgs" href="#exportRouteArgs"><span>exportRouteArgs:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -110,6 +120,18 @@ window.addEventListener('DOMContentLoaded', main);
 <dt><a name="fgStyled" href="#fgStyled"><span>fgStyled:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="server: fgStyled(text: string; style: Style): string" href="happyx/server.html#fgStyled%2Cstring%2CStyle">server: fgStyled(text: string; style: Style): string</a></li>
+          </ul></dd>
+<dt><a name="float" href="#float"><span>float:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="state: float(self: State): float" href="happyx/state.html#float.c%2CState">state: float(self: State): float</a></li>
+          </ul></dd>
+<dt><a name="float32" href="#float32"><span>float32:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="state: float32(self: State): float32" href="happyx/state.html#float32.c%2CState">state: float32(self: State): float32</a></li>
+          </ul></dd>
+<dt><a name="float64" href="#float64"><span>float64:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="state: float64(self: State): float64" href="happyx/state.html#float64.c%2CState">state: float64(self: State): float64</a></li>
           </ul></dd>
 <dt><a name="get" href="#get"><span>get:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -127,6 +149,26 @@ window.addEventListener('DOMContentLoaded', main);
           <li><a class="reference external"
           data-doc-search-tag="tag: initTag(name: string; children: varargs[TagRef]): TagRef" href="happyx/tag.html#initTag%2Cstring%2Cvarargs%5BTagRef%5D">tag: initTag(name: string; children: varargs[TagRef]): TagRef</a></li>
           </ul></dd>
+<dt><a name="int" href="#int"><span>int:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="state: int(self: State): int" href="happyx/state.html#int.c%2CState">state: int(self: State): int</a></li>
+          </ul></dd>
+<dt><a name="int16" href="#int16"><span>int16:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="state: int16(self: State): int16" href="happyx/state.html#int16.c%2CState">state: int16(self: State): int16</a></li>
+          </ul></dd>
+<dt><a name="int32" href="#int32"><span>int32:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="state: int32(self: State): int32" href="happyx/state.html#int32.c%2CState">state: int32(self: State): int32</a></li>
+          </ul></dd>
+<dt><a name="int64" href="#int64"><span>int64:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="state: int64(self: State): int64" href="happyx/state.html#int64.c%2CState">state: int64(self: State): int64</a></li>
+          </ul></dd>
+<dt><a name="int8" href="#int8"><span>int8:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="state: int8(self: State): int8" href="happyx/state.html#int8.c%2CState">state: int8(self: State): int8</a></li>
+          </ul></dd>
 <dt><a name="lvl" href="#lvl"><span>lvl:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="tag: lvl(self: TagRef): int" href="happyx/tag.html#lvl%2CTagRef">tag: lvl(self: TagRef): int</a></li>
@@ -143,6 +185,10 @@ window.addEventListener('DOMContentLoaded', main);
 <li><a class="reference external"
           data-doc-search-tag="server: parseQuery(query: string): owned(StringTableRef)" href="happyx/server.html#parseQuery%2Cstring">server: parseQuery(query: string): owned(StringTableRef)</a></li>
           </ul></dd>
+<dt><a name="remember" href="#remember"><span>remember:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="state: remember[T](val: T): State[T]" href="happyx/state.html#remember%2CT">state: remember[T](val: T): State[T]</a></li>
+          </ul></dd>
 <dt><a name="Renderer" href="#Renderer"><span>Renderer:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="renderer: Renderer" href="happyx/renderer.html#Renderer">renderer: Renderer</a></li>
@@ -158,6 +204,14 @@ window.addEventListener('DOMContentLoaded', main);
 <dt><a name="start" href="#start"><span>start:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="server: start(server: Server): untyped" href="happyx/server.html#start.t%2CServer">server: start(server: Server): untyped</a></li>
+          </ul></dd>
+<dt><a name="State" href="#State"><span>State:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="state: State" href="happyx/state.html#State">state: State</a></li>
+          </ul></dd>
+<dt><a name="string" href="#string"><span>string:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="state: string(self: State): string" href="happyx/state.html#string.c%2CState">state: string(self: State): string</a></li>
           </ul></dd>
 <dt><a name="Tag" href="#Tag"><span>Tag:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -176,7 +230,7 @@ window.addEventListener('DOMContentLoaded', main);
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-03-30 02:44:23 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-03-30 04:29:02 UTC</small>
       </div>
     </div>
   </div>

@@ -1,0 +1,15 @@
+State	happyx/state.html#State	state: State	
+remember	happyx/state.html#remember,T	state: remember[T](val: T): State[T]	
+`$`	happyx/state.html#$,State	state: `$`(self: State): string	
+bool	happyx/state.html#bool.c,State	state: bool(self: State): bool	
+string	happyx/state.html#string.c,State	state: string(self: State): string	
+int	happyx/state.html#int.c,State	state: int(self: State): int	
+float	happyx/state.html#float.c,State	state: float(self: State): float	
+char	happyx/state.html#char.c,State	state: char(self: State): char	
+int8	happyx/state.html#int8.c,State	state: int8(self: State): int8	
+int16	happyx/state.html#int16.c,State	state: int16(self: State): int16	
+int32	happyx/state.html#int32.c,State	state: int32(self: State): int32	
+int64	happyx/state.html#int64.c,State	state: int64(self: State): int64	
+float32	happyx/state.html#float32.c,State	state: float32(self: State): float32	
+float64	happyx/state.html#float64.c,State	state: float64(self: State): float64	
+State	happyx/state.html#state	 State	

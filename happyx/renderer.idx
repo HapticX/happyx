@@ -1,5 +1,5 @@
 Renderer	happyx/renderer.html#Renderer	renderer: Renderer	
 newRenderer	happyx/renderer.html#newRenderer,string	renderer: newRenderer(appId: string): Renderer	
-buildHtmlProcedure	happyx/renderer.html#buildHtmlProcedure,NimNode,NimNode	renderer: buildHtmlProcedure(root, body: NimNode): NimNode	
+buildHtmlProcedure	happyx/renderer.html#buildHtmlProcedure,NimNode,NimNode	renderer: buildHtmlProcedure(root: NimNode; body: NimNode): NimNode	
 buildHtml	happyx/renderer.html#buildHtml.m,untyped,untyped	renderer: buildHtml(root, html: untyped): untyped	
 Renderer	happyx/renderer.html#renderer	 Renderer	
