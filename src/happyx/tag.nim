@@ -9,7 +9,8 @@
 import
   strutils,
   strformat,
-  strtabs
+  strtabs,
+  logging
 
 
 type
@@ -53,18 +54,6 @@ func initTag*(name: string, children: varargs[TagRef]): TagRef =
     result.children.add(child)
 
 
-func initTag*(name: string, attrs: StringTableRef): TagRef {.inline.} =
-  ## Initializes a new HTML tag with the given name and attributes.
-  ## 
-  ## Args:
-  ## - `name`: The name of the HTML tag to create.
-  ## - `attrs`: The attributes to set for the HTML tag.
-  ## 
-  ## Returns:
-  ## - A reference to the newly created HTML tag.
-  TagRef(name: name, isText: false, parent: nil, attrs: attrs, children: @[])
-
-
 func initTag*(name: string, isText: bool, attrs: StringTableRef, children: varargs[TagRef]): TagRef =
   ## Initializes a new HTML tag with the given name, whether it's text or not, attributes, and children.
   ## 
@@ -88,11 +77,6 @@ func initTag*(name: string, isText: bool, children: varargs[TagRef]): TagRef =
   for child in children:
     child.parent = result
     result.children.add(child)
-
-
-func initTag*(name: string, isText: bool, attrs: StringTableRef): TagRef {.inline.} =
-  ## Initializes a new HTML tag with no children
-  TagRef(name: name, isText: isText, parent: nil, attrs: attrs, children: @[])
 
 
 func tag*(name: string): TagRef {.inline.} =
@@ -132,6 +116,24 @@ func lvl*(self: TagRef): int =
   while not isNil(tag.parent):
     tag = tag.parent
     inc result
+
+
+func `[]`*(self: TagRef, attrName: string): string {.inline.} =
+  ## Returns attribute by name
+  self.attrs[attrName]
+
+
+func `[]=`*(self: TagRef, attrName: string, attrValue: string) {.inline.} =
+  ## Sets a new value for attribute or create new attribute
+  self.attrs[attrName] = attrValue
+
+
+func get*(self: TagRef, tag: string): TagRef =
+  ## Returns tag by name
+  for child in self.children:
+    if tag == child.name:
+      return child
+  raise newException(ValueError, fmt"<{self.name}> at level [{self.lvl}] doesn't have tag <{tag}>")
 
 
 func `$`*(self: TagRef): string =

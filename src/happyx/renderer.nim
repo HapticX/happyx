@@ -41,15 +41,26 @@ proc buildHtmlProcedure*(root, body: NimNode): NimNode {.compileTime.} =
       let
         tagName = newStrLitNode($statement[0])
         statementList = statement[^1]
-      if statement.len-2 > 0:
-        var attrs = newNimNode(nnkTableConstr).add()
+      var attrs = newNimNode(nnkTableConstr)
+      if statement.len-2 > 0 and statementList.kind == nnkStmtList:
         for attr in statement[1 .. statement.len-2]:
           attrs.add(newColonExpr(newStrLitNode($attr[0]), attr[1]))
-        result.add(newCall("newStringTable", attrs))
-      result.add(buildHtmlProcedure(tagName, statementList))
+        result.add(newCall("newStringTable", attrs), buildHtmlProcedure(tagName, statementList))
+      elif statementList.kind != nnkStmtList:
+        for attr in statement[1 .. statement.len-1]:
+          attrs.add(newColonExpr(newStrLitNode($attr[0]), attr[1]))
+        if attrs.len > 0:
+          result.add(newCall("initTag", tagName, newCall("newStringTable", attrs)))
+        else:
+          result.add(newCall("initTag", tagName))
+      else:
+        result.add(buildHtmlProcedure(tagName, statementList))
     
     elif statement.kind == nnkStrLit:
       result.add(newCall("initTag", statement, newLit(true)))
+    
+    elif statement.kind == nnkIdent:
+      result.add(newCall("tag", newStrLitNode($statement)))
     
     elif statement.kind == nnkIfStmt:
       var ifExpr = newNimNode(nnkIfExpr)
@@ -67,6 +78,12 @@ proc buildHtmlProcedure*(root, body: NimNode): NimNode {.compileTime.} =
 
 macro buildHtml*(root, html: untyped): untyped =
   ## Builds HTML
-  echo treeRepr root
+  runnableExamples:
+    var html = buildHtml(`div`):
+      h1(class="title"):
+        "Title"
+      input(`type`="password")
+      button:
+        "click!"
   result = buildHtmlProcedure(root, html)
   echo treeRepr result

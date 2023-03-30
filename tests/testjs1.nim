@@ -16,5 +16,10 @@ var html =
       "True!"
     else:
       "False :("
+    input(`type`="password")
+    button:
+      "click!"
+
+html.get("input")["class"] = "a"
 
 echo html

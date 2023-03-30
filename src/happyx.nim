@@ -11,6 +11,6 @@ when not defined(js):
 
 import
   happyx/[renderer]
-  
+
 export
   renderer
