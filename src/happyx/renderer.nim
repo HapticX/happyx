@@ -123,7 +123,7 @@ proc buildHtmlProcedure*(root: NimNode, body: NimNode): NimNode {.compileTime.} 
     #   ...
     elif statement.kind == nnkForStmt:
       let
-        arguments = collect:
+        arguments = collect(newSeq):
           for i in statement[0..statement.len-3]:
             $i
       statement[^1].replaceIter(
@@ -136,7 +136,15 @@ proc buildHtmlProcedure*(root: NimNode, body: NimNode): NimNode {.compileTime.} 
         )
       )
       result.add(
-        newCall("initTag", newStrLitNode("div"), newCall("collect", newNimNode(nnkStmtList).add(statement)))
+        newCall(
+          "initTag",
+          newStrLitNode("div"),
+          newCall(
+            "collect",
+            ident("newSeq"),
+            newNimNode(nnkStmtList).add(statement)
+          )
+        )
       )
   
   # varargs -> seq
