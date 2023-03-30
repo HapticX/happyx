@@ -139,15 +139,15 @@ window.addEventListener('DOMContentLoaded', main);
           </ul></dd>
 <dt><a name="initTag" href="#initTag"><span>initTag:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
+          data-doc-search-tag="tag: initTag(name: string; isText: bool; children: seq[TagRef] = @[]): TagRef" href="happyx/tag.html#initTag%2Cstring%2Cbool%2Cseq%5BTagRef%5D">tag: initTag(name: string; isText: bool; children: seq[TagRef] = @[]): TagRef</a></li>
+          <li><a class="reference external"
           data-doc-search-tag="tag: initTag(name: string; isText: bool; attrs: StringTableRef;
-        children: varargs[TagRef]): TagRef" href="happyx/tag.html#initTag%2Cstring%2Cbool%2CStringTableRef%2Cvarargs%5BTagRef%5D">tag: initTag(name: string; isText: bool; attrs: StringTableRef;
-        children: varargs[TagRef]): TagRef</a></li>
+        children: seq[TagRef] = @[]): TagRef" href="happyx/tag.html#initTag%2Cstring%2Cbool%2CStringTableRef%2Cseq%5BTagRef%5D">tag: initTag(name: string; isText: bool; attrs: StringTableRef;
+        children: seq[TagRef] = @[]): TagRef</a></li>
           <li><a class="reference external"
-          data-doc-search-tag="tag: initTag(name: string; isText: bool; children: varargs[TagRef]): TagRef" href="happyx/tag.html#initTag%2Cstring%2Cbool%2Cvarargs%5BTagRef%5D">tag: initTag(name: string; isText: bool; children: varargs[TagRef]): TagRef</a></li>
+          data-doc-search-tag="tag: initTag(name: string; children: seq[TagRef] = @[]): TagRef" href="happyx/tag.html#initTag%2Cstring%2Cseq%5BTagRef%5D">tag: initTag(name: string; children: seq[TagRef] = @[]): TagRef</a></li>
           <li><a class="reference external"
-          data-doc-search-tag="tag: initTag(name: string; attrs: StringTableRef; children: varargs[TagRef]): TagRef" href="happyx/tag.html#initTag%2Cstring%2CStringTableRef%2Cvarargs%5BTagRef%5D">tag: initTag(name: string; attrs: StringTableRef; children: varargs[TagRef]): TagRef</a></li>
-          <li><a class="reference external"
-          data-doc-search-tag="tag: initTag(name: string; children: varargs[TagRef]): TagRef" href="happyx/tag.html#initTag%2Cstring%2Cvarargs%5BTagRef%5D">tag: initTag(name: string; children: varargs[TagRef]): TagRef</a></li>
+          data-doc-search-tag="tag: initTag(name: string; attrs: StringTableRef; children: seq[TagRef] = @[]): TagRef" href="happyx/tag.html#initTag%2Cstring%2CStringTableRef%2Cseq%5BTagRef%5D">tag: initTag(name: string; attrs: StringTableRef; children: seq[TagRef] = @[]): TagRef</a></li>
           </ul></dd>
 <dt><a name="int" href="#int"><span>int:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -168,6 +168,10 @@ window.addEventListener('DOMContentLoaded', main);
 <dt><a name="int8" href="#int8"><span>int8:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="state: int8(self: State): int8" href="happyx/state.html#int8.c%2CState">state: int8(self: State): int8</a></li>
+          </ul></dd>
+<dt><a name="items" href="#items"><span>items:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="state: items[T](self: State[T]): auto" href="happyx/state.html#items.i%2CState%5BT%5D">state: items[T](self: State[T]): auto</a></li>
           </ul></dd>
 <dt><a name="lvl" href="#lvl"><span>lvl:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -192,6 +196,12 @@ window.addEventListener('DOMContentLoaded', main);
 <dt><a name="Renderer" href="#Renderer"><span>Renderer:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="renderer: Renderer" href="happyx/renderer.html#Renderer">renderer: Renderer</a></li>
+          </ul></dd>
+<dt><a name="replaceIter" href="#replaceIter"><span>replaceIter:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="renderer: replaceIter(root: NimNode; search: proc (x: NimNode): bool;
+            replace: proc (x: NimNode): NimNode)" href="happyx/renderer.html#replaceIter%2CNimNode%2Cproc%28NimNode%29%2Cproc%28NimNode%29">renderer: replaceIter(root: NimNode; search: proc (x: NimNode): bool;
+            replace: proc (x: NimNode): NimNode)</a></li>
           </ul></dd>
 <dt><a name="routes" href="#routes"><span>routes:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -230,7 +240,7 @@ window.addEventListener('DOMContentLoaded', main);
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-03-30 04:29:02 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-03-30 15:34:53 UTC</small>
       </div>
     </div>
   </div>

@@ -1,6 +1,7 @@
 State	happyx/state.html#State	state: State	
 remember	happyx/state.html#remember,T	state: remember[T](val: T): State[T]	
 `$`	happyx/state.html#$,State	state: `$`(self: State): string	
+items	happyx/state.html#items.i,State[T]	state: items[T](self: State[T]): auto	
 bool	happyx/state.html#bool.c,State	state: bool(self: State): bool	
 string	happyx/state.html#string.c,State	state: string(self: State): string	
 int	happyx/state.html#int.c,State	state: int(self: State): int	
