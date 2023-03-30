@@ -62,4 +62,4 @@ nim c -r -d:ssl -d:debug -d:httpx main
 
 
 # Contributing 🌀
-You make us happy when sending PR or help us to find bugs and errors 🐛
+See [Contributing.md](https://github.com/HapticX/happyx/blob/master/.github/CONTRIBUTING.md) for more information
