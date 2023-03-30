@@ -8,9 +8,7 @@ import
   macros,
   logging,
   htmlgen,
-  strutils,
   strtabs,
-  strformat,
   ./tag
 
 export

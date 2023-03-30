@@ -16,7 +16,6 @@ import
   logging,
   terminal,
   colors,
-  uri,
   regex
 
 export
