@@ -31,9 +31,10 @@ var html =
       "click!"
     for i in state2:  # FOR STMT
       i
-    for i in state2:  # FOR STMT
-      i(attr="{i}{i}{i}"):
-        "current tag is {i}"
+    `div`(style="{background: red}"):
+      for i in state2:  # FOR STMT
+        i(attr="{i}{i}{i}"):
+          "current tag is {i}"
 
 html.get("input")["class"] = "a"
 

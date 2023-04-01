@@ -98,30 +98,16 @@ proc buildHtmlProcedure*(root: NimNode, body: NimNode): NimNode {.compileTime.} 
       var ifExpr = newNimNode(nnkIfExpr)
       for branch in statement:
         if branch.kind == nnkElifBranch:
-          let
-            r = buildHtmlProcedure(ident("div"), branch[1])
-            elifExpr = newNimNode(nnkElifExpr).add(branch[0])
-          for i in r[2..^1]:
-            if i.kind == nnkCall and $i[0] == "@":
-              for j in i[1]:
-                elifExpr.add(j)
-            else:
-              elifExpr.add(i)
-          ifExpr.add(elifExpr)
+          ifExpr.add(newNimNode(nnkElifExpr).add(
+            branch[0], buildHtmlProcedure(ident("div"), branch[1]).add(newLit(true))
+          ))
         else:
-          let
-            r = buildHtmlProcedure(ident("div"), branch[0])
-            elseExpr = newNimNode(nnkElseExpr)
-          for i in r[2..^1]:
-            if i.kind == nnkCall and $i[0] == "@":
-              for j in i[1]:
-                elseExpr.add(j)
-            else:
-              elseExpr.add(i)
-          ifExpr.add(elseExpr)
+          ifExpr.add(newNimNode(nnkElseExpr).add(
+            buildHtmlProcedure(ident("div"), branch[0]).add(newLit(true))
+          ))
       if ifExpr.len == 1:
         ifExpr.add(newNimNode(nnkElseExpr).add(
-          newCall("tag", newStrLitNode("div"))
+          newCall("initTag", newStrLitNode("div"), newCall("@", newNimNode(nnkBracket)), newLit(true))
         ))
       result.add(ifExpr)
     
@@ -186,7 +172,8 @@ proc buildHtmlProcedure*(root: NimNode, body: NimNode): NimNode {.compileTime.} 
             "collect",
             ident("newSeq"),
             newNimNode(nnkStmtList).add(statement)
-          )
+          ),
+          newLit(true)
         )
       )
   

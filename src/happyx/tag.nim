@@ -21,9 +21,10 @@ type
     attrs*: StringTableRef
     children*: seq[TagRef]
     isText*: bool  ## Ignore attributes and children when true
+    childrenToParent*: bool
 
 
-func initTag*(name: string, attrs: StringTableRef, children: seq[TagRef] = @[]): TagRef =
+func initTag*(name: string, attrs: StringTableRef, children: seq[TagRef] = @[], childrenToParent: bool = false): TagRef =
   ## Initializes a new HTML tag with the given name, attributes, and children.
   ## 
   ## Args:
@@ -35,11 +36,17 @@ func initTag*(name: string, attrs: StringTableRef, children: seq[TagRef] = @[]):
   ## - A reference to the newly created HTML tag.
   result = TagRef(name: name, isText: false, parent: nil, attrs: attrs, children: @[])
   for child in children:
+    if child.childrenToParent:
+      for c in child.children:
+        c.parent = result
+        result.children.add(c)
+      child.children = @[]
+      continue
     child.parent = result
     result.children.add(child)
 
 
-func initTag*(name: string, children: seq[TagRef] = @[]): TagRef =
+func initTag*(name: string, children: seq[TagRef] = @[], childrenToParent: bool = false): TagRef =
   ## Initializes a new HTML tag without attributes but with children
   ## 
   ## Args:
@@ -48,13 +55,23 @@ func initTag*(name: string, children: seq[TagRef] = @[]): TagRef =
   ## 
   ## Returns:
   ## - A reference to the newly created HTML tag.
-  result = TagRef(name: name, isText: false, parent: nil, attrs: newStringTable(), children: @[])
+  result = TagRef(
+    name: name, isText: false, parent: nil,
+    attrs: newStringTable(), children: @[],
+    childrenToParent: childrenToParent
+  )
   for child in children:
+    if child.childrenToParent:
+      for c in child.children:
+        c.parent = result
+        result.children.add(c)
+      child.children = @[]
+      continue
     child.parent = result
     result.children.add(child)
 
 
-func initTag*(name: string, isText: bool, attrs: StringTableRef, children: seq[TagRef] = @[]): TagRef =
+func initTag*(name: string, isText: bool, attrs: StringTableRef, children: seq[TagRef] = @[], childrenToParent: bool = false): TagRef =
   ## Initializes a new HTML tag with the given name, whether it's text or not, attributes, and children.
   ## 
   ## Args:
@@ -65,16 +82,34 @@ func initTag*(name: string, isText: bool, attrs: StringTableRef, children: seq[T
   ## 
   ## Returns:
   ## - A reference to the newly created HTML tag.
-  result = TagRef(name: name, isText: isText, parent: nil, attrs: attrs, children: @[])
+  result = TagRef(
+    name: name, isText: isText, parent: nil,
+    attrs: attrs, children: @[], childrenToParent: childrenToParent
+  )
   for child in children:
+    if child.childrenToParent:
+      for c in child.children:
+        c.parent = result
+        result.children.add(c)
+      child.children = @[]
+      continue
     child.parent = result
     result.children.add(child)
 
 
-func initTag*(name: string, isText: bool, children: seq[TagRef] = @[]): TagRef =
+func initTag*(name: string, isText: bool, children: seq[TagRef] = @[], childrenToParent: bool = false): TagRef =
   ## Initializes a new HTML tag
-  result = TagRef(name: name, isText: isText, parent: nil, attrs: newStringTable(), children: @[])
+  result = TagRef(
+    name: name, isText: isText, parent: nil,
+    attrs: newStringTable(), children: @[], childrenToParent: childrenToParent
+  )
   for child in children:
+    if child.childrenToParent:
+      for c in child.children:
+        c.parent = result
+        result.children.add(c)
+      child.children = @[]
+      continue
     child.parent = result
     result.children.add(child)
 
