@@ -104,7 +104,7 @@ window.addEventListener('DOMContentLoaded', main);
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#State"
     title="State[T] = object
-  val*: Option[T]">State</a></li>
+  val*: T">State</a></li>
 
   </ul>
 </li>
@@ -129,6 +129,11 @@ window.addEventListener('DOMContentLoaded', main);
   <ul class="simple nested-toc-section">==
       <li><a class="reference" href="#%3D%3D%2CState%5BT%5D%2CState%5BT%5D"
     title="`==`[T](self, other: State[T]): bool">`==`[T](self, other: State[T]): bool</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">[]
+      <li><a class="reference" href="#%5B%5D%2CState%5BT%5D%2Cint"
+    title="`[]`[T](self: State[T]; idx: int): auto">`[]`[T](self: State[T]; idx: int): auto</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">get
@@ -237,7 +242,7 @@ window.addEventListener('DOMContentLoaded', main);
 <dl class="item">
 <div id="State">
 <dt><pre><a href="state.html#State"><span class="Identifier">State</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span> <span class="Other">=</span> <span class="Keyword">object</span>
-  <span class="Identifier">val</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">Option</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span>
+  <span class="Identifier">val</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">T</span>
 </pre></dt>
 <dd>
 
@@ -279,6 +284,14 @@ Returns self + other
 <dd>
 
 Returns self == other
+
+</dd>
+</div>
+<div id="[],State[T],int">
+<dt><pre><span class="Keyword">func</span> <a href="#%5B%5D%2CState%5BT%5D%2Cint"><span class="Identifier">`[]`</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="state.html#State"><span class="Identifier">State</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">idx</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">auto</span></pre></dt>
+<dd>
+
+
 
 </dd>
 </div>
@@ -422,7 +435,7 @@ Changes state value
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-04-01 14:38:54 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-04-01 15:06:23 UTC</small>
       </div>
     </div>
   </div>
