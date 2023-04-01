@@ -35,6 +35,10 @@ var html =
       for i in state2:  # FOR STMT
         i(attr="{i}{i}{i}"):
           "current tag is {i}"
+          {i}
+    {state}
+    {state1}
+    {state2}
 
 html.get("input")["class"] = "a"
 

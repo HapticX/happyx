@@ -90,6 +90,10 @@ proc buildHtmlProcedure*(root: NimNode, body: NimNode): NimNode {.compileTime.} 
       # tag
       result.add(newCall("tag", newStrLitNode($statement)))
     
+    elif statement.kind == nnkCurly and statement.len == 1:
+      # variables
+      result.add(newCall("initTag", newCall("$", statement[0]), newLit(true)))
+    
     # if a:
     #   ...
     # else:
@@ -163,6 +167,11 @@ proc buildHtmlProcedure*(root: NimNode, body: NimNode): NimNode {.compileTime.} 
       discard statement[^1].replaceIter(
         (x) => x.kind == nnkStrLit and ($x).find(pattern, matches),
         (x) => newCall("fmt", x)
+      )
+      # as varibale with {}
+      discard statement[^1].replaceIter(
+        (x) => x.kind == nnkCurly and x.len == 1 and x[0].kind == nnkIdent and $x[0] in arguments,
+        (x) => newCall("initTag", newCall("$", x[0]), newLit(true))
       )
       result.add(
         newCall(
