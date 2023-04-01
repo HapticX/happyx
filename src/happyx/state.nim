@@ -21,6 +21,31 @@ func `$`*(self: State): string =
   $self.val.get()
 
 
+func `==`*[T](self, other: State[T]): bool =
+  ## Returns self == other
+  self.val == other.val
+
+
+func `&`*[T](self, other: State[T]): T =
+  ## Returns self and other
+  self.val & other.val
+
+
+func `+`*[T](self, other: State[T]): T =
+  ## Returns self + other
+  self.val + other.val
+
+
+func get*[T](self: State[T]): T =
+  ## Returns state value
+  self.val.get()
+
+
+func set*[T](self: State[T], value: T) =
+  ## Changes state value
+  self.val = some(value)
+
+
 iterator items*[T](self: State[T]): auto =
   for item in self.val.get():
     yield item

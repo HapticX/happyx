@@ -10,9 +10,13 @@ import
   htmlgen,
   strtabs,
   sugar,
+  strutils,
+  strformat,
+  regex,
   ./tag
 
 export
+  strformat,
   logging,
   htmlgen,
   strtabs,
@@ -36,11 +40,13 @@ proc replaceIter*(
     root: NimNode,
     search: proc(x: NimNode): bool,
     replace: proc(x: NimNode): NimNode
-) =
+): bool =
+  result = false
   for i in 0..root.len-1:
-    root[i].replaceIter(search, replace)
+    result = root[i].replaceIter(search, replace)
     if search(root[i]):
       root[i] = replace(root[i])
+      result = true
 
 
 proc buildHtmlProcedure*(root: NimNode, body: NimNode): NimNode {.compileTime.} =
@@ -126,14 +132,51 @@ proc buildHtmlProcedure*(root: NimNode, body: NimNode): NimNode {.compileTime.} 
         arguments = collect(newSeq):
           for i in statement[0..statement.len-3]:
             $i
-      statement[^1].replaceIter(
-        (x) => x.kind == nnkIdent and $x in arguments,
-        (x) => newNimNode(nnkIfExpr).add(
-          newNimNode(nnkElifExpr).add(
-            newCall("is", newCall("typeof", x), ident("string")),
-            newCall("initTag", x)
+        pattern = re("\\{(" & arguments.join("|") & ")\\}")
+      var matches: RegexMatch
+      # nnkCall
+      var replaced = statement[^1].replaceIter(
+        (x) => x.kind == nnkCall and $x[0] in arguments,
+        proc(x: NimNode): NimNode =
+          let stmtList = x[^1]
+          var
+            builded: NimNode
+            attrs = newNimNode(nnkTableConstr)
+          if stmtList.kind == nnkStmtList:
+            builded = buildHtmlProcedure(x[0], x[^1])
+            # tag(attr="value"):
+            #   ...
+            for attr in x[1 .. x.len-2]:
+              attrs.add(newColonExpr(newStrLitNode($attr[0]), attr[1]))
+          else:
+            builded = buildHtmlProcedure(x[0], newStmtList())
+            # tag(attr="value"):
+            #   ...
+            for attr in x[1 .. x.len-1]:
+              attrs.add(newColonExpr(newStrLitNode($attr[0]), attr[1]))
+          builded.insert(2, newCall("newStringTable", attrs))
+          newNimNode(nnkIfExpr).add(
+            newNimNode(nnkElifExpr).add(
+              newCall("is", newCall("typeof", x[0]), ident("string")),
+              builded
+            )
+          )
+      )
+      if not replaced:
+        # nnkIdent
+        replaced = statement[^1].replaceIter(
+          (x) => x.kind == nnkIdent and $x in arguments,
+          (x) => newNimNode(nnkIfExpr).add(
+            newNimNode(nnkElifExpr).add(
+              newCall("is", newCall("typeof", x), ident("string")),
+              newCall("initTag", x)
+            )
           )
         )
+      # nnkStrLit with {}
+      discard statement[^1].replaceIter(
+        (x) => x.kind == nnkStrLit and ($x).find(pattern, matches),
+        (x) => newCall("fmt", x)
       )
       result.add(
         newCall(
@@ -168,27 +211,46 @@ proc buildHtmlProcedure*(root: NimNode, body: NimNode): NimNode {.compileTime.} 
 
 
 macro buildHtml*(root, html: untyped): untyped =
-  ## Builds HTML
+  ## `buildHtml` macro provides building HTML tags with YAML-like syntax.
   ## 
   ## Args:
   ## - `root`: root element. It's can be `tag`, tag or tTag
   ## - `html`: YAML-like structure.
   ## 
-  runnableExamples:
-    var
-      state = true
-      stateArr = @["h1", "h2"]
-      html = buildHtml(`div`):
-        h1(class="title"):
-          "Title"
-        input(`type`="password")
-        button:
-          "click!"
-        if state:
-          "state is true!"
-        else:
-          "state is false"
-        for i in stateArr:
-          i
+  ## Syntax support:
+  ##   - attributes via exprEqExpr
+  ##   
+  ##     .. code-block:: nim
+  ##        echo buildHtml(`div`):
+  ##          h1(class="myClass", align="center")
+  ##          input(`type`="password", align="center")
+  ##   
+  ##   - nested tags
+  ##   
+  ##     .. code-block:: nim
+  ##        echo buildHtml(`div`):
+  ##          tag:
+  ##            tag1:
+  ##              tag2:
+  ##            tag1withattrs(attr="value")
+  ##   
+  ##   - if-elif-else expressions
+  ## 
+  ##     .. code-block:: nim
+  ##        var state = true
+  ##        echo buildHtml(`div`):
+  ##          if state:
+  ##            "True!"
+  ##          else:
+  ##            "False("
+  ##   
+  ##   - for statements
+  ## 
+  ##     .. code-block:: nim
+  ##        var state = @["h1", "h2", "input"]
+  ##        echo buildHtml(`div`):
+  ##          for i in state:
+  ##            i
+  ## 
   result = buildHtmlProcedure(root, html)
   echo treeRepr result

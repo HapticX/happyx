@@ -1,10 +1,17 @@
-nimcache/
+# IDE
 .idea/
 .vs-code/
 .vscode/
 .vs/
-nimble/
 
+# Cache
+nimcache/
+nimble/
+docs/
+
+# Logs
 *.log
+
+# Compiled
 *.js
 *.exe
