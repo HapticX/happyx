@@ -130,8 +130,8 @@ window.addEventListener('DOMContentLoaded', main);
   <ul class="simple nested-toc-section">replaceIter
       <li><a class="reference" href="#replaceIter%2CNimNode%2Cproc%28NimNode%29%2Cproc%28NimNode%29"
     title="replaceIter(root: NimNode; search: proc (x: NimNode): bool;
-            replace: proc (x: NimNode): NimNode)">replaceIter(root: NimNode; search: proc (x: NimNode): bool;
-            replace: proc (x: NimNode): NimNode)</a></li>
+            replace: proc (x: NimNode): NimNode): bool">replaceIter(root: NimNode; search: proc (x: NimNode): bool;
+            replace: proc (x: NimNode): NimNode): bool</a></li>
 
   </ul>
 
@@ -190,7 +190,7 @@ window.addEventListener('DOMContentLoaded', main);
 <dl class="item">
 <div id="buildHtmlProcedure,NimNode,NimNode">
 <dt><pre><span class="Keyword">proc</span> <a href="#buildHtmlProcedure%2CNimNode%2CNimNode"><span class="Identifier">buildHtmlProcedure</span></a><span class="Other">(</span><span class="Identifier">root</span><span class="Other">:</span> <span class="Identifier">NimNode</span><span class="Other">;</span> <span class="Identifier">body</span><span class="Other">:</span> <span class="Identifier">NimNode</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">NimNode</span> {.<span class="Identifier">compileTime</span><span class="Other">,</span>
-    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RegexError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 Builds HTML
@@ -207,7 +207,8 @@ Creates a new renderer
 </div>
 <div id="replaceIter,NimNode,proc(NimNode),proc(NimNode)">
 <dt><pre><span class="Keyword">proc</span> <a href="#replaceIter%2CNimNode%2Cproc%28NimNode%29%2Cproc%28NimNode%29"><span class="Identifier">replaceIter</span></a><span class="Other">(</span><span class="Identifier">root</span><span class="Other">:</span> <span class="Identifier">NimNode</span><span class="Other">;</span> <span class="Identifier">search</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">x</span><span class="Other">:</span> <span class="Identifier">NimNode</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">;</span>
-                 <span class="Identifier">replace</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">x</span><span class="Other">:</span> <span class="Identifier">NimNode</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">NimNode</span><span class="Other">)</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+                 <span class="Identifier">replace</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">x</span><span class="Other">:</span> <span class="Identifier">NimNode</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">NimNode</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 
@@ -223,28 +224,34 @@ Creates a new renderer
 <dt><pre><span class="Keyword">macro</span> <a href="#buildHtml.m%2Cuntyped%2Cuntyped"><span class="Identifier">buildHtml</span></a><span class="Other">(</span><span class="Identifier">root</span><span class="Other">,</span> <span class="Identifier">html</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
 
-<p>Builds HTML</p>
+<p><tt class="docutils literal"><span class="pre"><span class="Identifier">buildHtml</span></span></tt> macro provides building HTML tags with YAML-like syntax.</p>
 <p>Args:</p>
 <ul class="simple"><li><tt class="docutils literal"><span class="pre"><span class="Identifier">root</span></span></tt>: root element. It's can be <tt class="docutils literal"><span class="pre"><span class="Identifier">tag</span></span></tt>, tag or tTag</li>
 <li><tt class="docutils literal"><span class="pre"><span class="Identifier">html</span></span></tt>: YAML-like structure.</li>
 </ul>
+<dl class="docutils"><dt>Syntax support:</dt>
+<dd><ul class="simple"><li>attributes via exprEqExpr<pre class="listing"><span class="Identifier">echo</span> <span class="Identifier">buildHtml</span><span class="Punctuation">(</span><span class="Punctuation">`</span><span class="Keyword">div</span><span class="Punctuation">`</span><span class="Punctuation">)</span><span class="Punctuation">:</span>
+  <span class="Identifier">h1</span><span class="Punctuation">(</span><span class="Identifier">class</span><span class="Operator">=</span><span class="StringLit">&quot;myClass&quot;</span><span class="Punctuation">,</span> <span class="Identifier">align</span><span class="Operator">=</span><span class="StringLit">&quot;center&quot;</span><span class="Punctuation">)</span>
+  <span class="Identifier">input</span><span class="Punctuation">(</span><span class="Punctuation">`</span><span class="Keyword">type</span><span class="Punctuation">`</span><span class="Operator">=</span><span class="StringLit">&quot;password&quot;</span><span class="Punctuation">,</span> <span class="Identifier">align</span><span class="Operator">=</span><span class="StringLit">&quot;center&quot;</span><span class="Punctuation">)</span></pre></li>
+<li>nested tags<pre class="listing"><span class="Identifier">echo</span> <span class="Identifier">buildHtml</span><span class="Punctuation">(</span><span class="Punctuation">`</span><span class="Keyword">div</span><span class="Punctuation">`</span><span class="Punctuation">)</span><span class="Punctuation">:</span>
+  <span class="Identifier">tag</span><span class="Punctuation">:</span>
+    <span class="Identifier">tag1</span><span class="Punctuation">:</span>
+      <span class="Identifier">tag2</span><span class="Punctuation">:</span>
+    <span class="Identifier">tag1withattrs</span><span class="Punctuation">(</span><span class="Identifier">attr</span><span class="Operator">=</span><span class="StringLit">&quot;value&quot;</span><span class="Punctuation">)</span></pre></li>
+<li>if-elif-else expressions<pre class="listing"><span class="Keyword">var</span> <span class="Identifier">state</span> <span class="Operator">=</span> <span class="Identifier">true</span>
+<span class="Identifier">echo</span> <span class="Identifier">buildHtml</span><span class="Punctuation">(</span><span class="Punctuation">`</span><span class="Keyword">div</span><span class="Punctuation">`</span><span class="Punctuation">)</span><span class="Punctuation">:</span>
+  <span class="Keyword">if</span> <span class="Identifier">state</span><span class="Punctuation">:</span>
+    <span class="StringLit">&quot;True!&quot;</span>
+  <span class="Keyword">else</span><span class="Punctuation">:</span>
+    <span class="StringLit">&quot;False(&quot;</span></pre></li>
+<li>for statements<pre class="listing"><span class="Keyword">var</span> <span class="Identifier">state</span> <span class="Operator">=</span> <span class="Operator">@</span><span class="Punctuation">[</span><span class="StringLit">&quot;h1&quot;</span><span class="Punctuation">,</span> <span class="StringLit">&quot;h2&quot;</span><span class="Punctuation">,</span> <span class="StringLit">&quot;input&quot;</span><span class="Punctuation">]</span>
+<span class="Identifier">echo</span> <span class="Identifier">buildHtml</span><span class="Punctuation">(</span><span class="Punctuation">`</span><span class="Keyword">div</span><span class="Punctuation">`</span><span class="Punctuation">)</span><span class="Punctuation">:</span>
+  <span class="Keyword">for</span> <span class="Identifier">i</span> <span class="Keyword">in</span> <span class="Identifier">state</span><span class="Punctuation">:</span>
+    <span class="Identifier">i</span></pre></li>
+</ul>
+</dd>
+</dl>
 
-<p><strong class="examples_text">Example:</strong></p>
-<pre class="listing"><span class="Keyword">var</span>
-  <span class="Identifier">state</span> <span class="Operator">=</span> <span class="Identifier">true</span>
-  <span class="Identifier">stateArr</span> <span class="Operator">=</span> <span class="Operator">@</span><span class="Punctuation">[</span><span class="StringLit">&quot;h1&quot;</span><span class="Punctuation">,</span> <span class="StringLit">&quot;h2&quot;</span><span class="Punctuation">]</span>
-  <span class="Identifier">html</span> <span class="Operator">=</span> <span class="Identifier">buildHtml</span><span class="Punctuation">(</span><span class="Punctuation">`</span><span class="Keyword">div</span><span class="Punctuation">`</span><span class="Punctuation">)</span><span class="Punctuation">:</span>
-    <span class="Identifier">h1</span><span class="Punctuation">(</span><span class="Identifier">class</span><span class="Operator">=</span><span class="StringLit">&quot;title&quot;</span><span class="Punctuation">)</span><span class="Punctuation">:</span>
-      <span class="StringLit">&quot;Title&quot;</span>
-    <span class="Identifier">input</span><span class="Punctuation">(</span><span class="Punctuation">`</span><span class="Keyword">type</span><span class="Punctuation">`</span><span class="Operator">=</span><span class="StringLit">&quot;password&quot;</span><span class="Punctuation">)</span>
-    <span class="Identifier">button</span><span class="Punctuation">:</span>
-      <span class="StringLit">&quot;click!&quot;</span>
-    <span class="Keyword">if</span> <span class="Identifier">state</span><span class="Punctuation">:</span>
-      <span class="StringLit">&quot;state is true!&quot;</span>
-    <span class="Keyword">else</span><span class="Punctuation">:</span>
-      <span class="StringLit">&quot;state is false&quot;</span>
-    <span class="Keyword">for</span> <span class="Identifier">i</span> <span class="Keyword">in</span> <span class="Identifier">stateArr</span><span class="Punctuation">:</span>
-      <span class="Identifier">i</span></pre>
 
 </dd>
 </div>
@@ -263,7 +270,7 @@ Creates a new renderer
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-03-30 15:41:51 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-04-01 14:19:06 UTC</small>
       </div>
     </div>
   </div>

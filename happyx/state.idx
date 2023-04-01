@@ -1,6 +1,11 @@
 State	happyx/state.html#State	state: State	
 remember	happyx/state.html#remember,T	state: remember[T](val: T): State[T]	
 `$`	happyx/state.html#$,State	state: `$`(self: State): string	
+`==`	happyx/state.html#==,State[T],State[T]	state: `==`[T](self, other: State[T]): bool	
+`&amp;`	happyx/state.html#&,State[T],State[T]	state: `&amp;`[T](self, other: State[T]): T	
+`+`	happyx/state.html#+,State[T],State[T]	state: `+`[T](self, other: State[T]): T	
+get	happyx/state.html#get,State[T]	state: get[T](self: State[T]): T	
+set	happyx/state.html#set,State[T],T	state: set[T](self: State[T]; value: T)	
 items	happyx/state.html#items.i,State[T]	state: items[T](self: State[T]): auto	
 bool	happyx/state.html#bool.c,State	state: bool(self: State): bool	
 string	happyx/state.html#string.c,State	state: string(self: State): string	

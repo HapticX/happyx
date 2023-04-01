@@ -116,9 +116,34 @@ window.addEventListener('DOMContentLoaded', main);
     title="`$`(self: State): string">`$`(self: State): string</a></li>
 
   </ul>
+  <ul class="simple nested-toc-section">&
+      <li><a class="reference" href="#%26%2CState%5BT%5D%2CState%5BT%5D"
+    title="`&amp;`[T](self, other: State[T]): T">`&amp;`[T](self, other: State[T]): T</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">+
+      <li><a class="reference" href="#%2B%2CState%5BT%5D%2CState%5BT%5D"
+    title="`+`[T](self, other: State[T]): T">`+`[T](self, other: State[T]): T</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">==
+      <li><a class="reference" href="#%3D%3D%2CState%5BT%5D%2CState%5BT%5D"
+    title="`==`[T](self, other: State[T]): bool">`==`[T](self, other: State[T]): bool</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">get
+      <li><a class="reference" href="#get%2CState%5BT%5D"
+    title="get[T](self: State[T]): T">get[T](self: State[T]): T</a></li>
+
+  </ul>
   <ul class="simple nested-toc-section">remember
       <li><a class="reference" href="#remember%2CT"
     title="remember[T](val: T): State[T]">remember[T](val: T): State[T]</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">set
+      <li><a class="reference" href="#set%2CState%5BT%5D%2CT"
+    title="set[T](self: State[T]; value: T)">set[T](self: State[T]; value: T)</a></li>
 
   </ul>
 
@@ -233,11 +258,51 @@ Returns string representation
 
 </dd>
 </div>
+<div id="&,State[T],State[T]">
+<dt><pre><span class="Keyword">func</span> <a href="#%26%2CState%5BT%5D%2CState%5BT%5D"><span class="Identifier">`&amp;`</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">self</span><span class="Other">,</span> <span class="Identifier">other</span><span class="Other">:</span> <a href="state.html#State"><span class="Identifier">State</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">T</span></pre></dt>
+<dd>
+
+Returns self and other
+
+</dd>
+</div>
+<div id="+,State[T],State[T]">
+<dt><pre><span class="Keyword">func</span> <a href="#%2B%2CState%5BT%5D%2CState%5BT%5D"><span class="Identifier">`+`</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">self</span><span class="Other">,</span> <span class="Identifier">other</span><span class="Other">:</span> <a href="state.html#State"><span class="Identifier">State</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">T</span></pre></dt>
+<dd>
+
+Returns self + other
+
+</dd>
+</div>
+<div id="==,State[T],State[T]">
+<dt><pre><span class="Keyword">func</span> <a href="#%3D%3D%2CState%5BT%5D%2CState%5BT%5D"><span class="Identifier">`==`</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">self</span><span class="Other">,</span> <span class="Identifier">other</span><span class="Other">:</span> <a href="state.html#State"><span class="Identifier">State</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span></pre></dt>
+<dd>
+
+Returns self == other
+
+</dd>
+</div>
+<div id="get,State[T]">
+<dt><pre><span class="Keyword">func</span> <a href="#get%2CState%5BT%5D"><span class="Identifier">get</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="state.html#State"><span class="Identifier">State</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">T</span></pre></dt>
+<dd>
+
+Returns state value
+
+</dd>
+</div>
 <div id="remember,T">
 <dt><pre><span class="Keyword">func</span> <a href="#remember%2CT"><span class="Identifier">remember</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">val</span><span class="Other">:</span> <span class="Identifier">T</span><span class="Other">)</span><span class="Other">:</span> <a href="state.html#State"><span class="Identifier">State</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span></pre></dt>
 <dd>
 
 Creates a new state
+
+</dd>
+</div>
+<div id="set,State[T],T">
+<dt><pre><span class="Keyword">func</span> <a href="#set%2CState%5BT%5D%2CT"><span class="Identifier">set</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="state.html#State"><span class="Identifier">State</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">T</span><span class="Other">)</span></pre></dt>
+<dd>
+
+Changes state value
 
 </dd>
 </div>
@@ -357,7 +422,7 @@ Creates a new state
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-03-30 15:41:51 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-04-01 14:19:06 UTC</small>
       </div>
     </div>
   </div>
