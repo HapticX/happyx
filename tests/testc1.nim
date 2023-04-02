@@ -5,8 +5,10 @@ proc main =
   var server = newServer()
 
   server.routes:
-    "/":
+    get "/":
       req.answer "Hello, world!"
+    post "/":
+      req.answer "Hello world with POST method!"
     "/calc/{left:int}{operator:string}{right:int}":
       if operator == "+":
         req.answer fmt"Result of {left} + {right} is {left + right}"
@@ -17,7 +19,7 @@ proc main =
     notfound:
       req.answer "Oops! Not found!"
     middleware:
-      echo req
+      echo reqMethod
   
   server.start()
 

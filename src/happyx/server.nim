@@ -242,6 +242,12 @@ macro routes*(server: Server, body: untyped): untyped =
   ## - `string`: any string excludes `"/"`.
   ## - `path`: any float number includes `"/"`.
   ## 
+  ## #### Available Route Types
+  ## - `"/path/with/{args:path}" - Just string with route path. Matches any request method
+  ## - `get "/path/{args:word}"` - Route with request method. Method can be`get`, `post`, `patch`, etc.
+  ## - `notfound` - Route that matches when no other matched.
+  ## - `middleware` - Always executes first.
+  ## 
   runnableExamples:
     var myServer = newServer()
     myServer.routes:
@@ -264,19 +270,27 @@ macro routes*(server: Server, body: untyped): untyped =
     )
   when defined(httpx):
     var path = newCall("get", newCall("path", ident("req")))
+    let
+      reqMethod = newCall("get", newDotExpr(ident("req"), ident("httpMethod")))
+      reqMethodStringify = newCall("$", reqMethod)
+      reqMethodStr = "req.httpMethod"
   else:
     var path = newDotExpr(newDotExpr(ident("req"), ident("url")), ident("path"))
+    let
+      reqMethod = newDotExpr(ident("req"), ident("reqMethod"))
+      reqMethodStringify = newCall("$", reqMethod)
+      reqMethodStr = "req.reqMethod"
   
   procStmt.addPragma(ident("async"))
   
   for statement in body:
-    if statement.kind == nnkCall:
+    if statement.kind in [nnkCall, nnkCommand]:
       # "/...": statement list
       if statement[1].kind == nnkStmtList and statement[0].kind == nnkStrLit:
         var exported = exportRouteArgs(path, statement[0], statement[1])
         if exported.len > 0:  # /my/path/with{custom:int}/{param:path}
           ifStmt.add(exported)
-        else:  # just my path
+        else:  # /just-my-path
           ifStmt.add(newNimNode(nnkElifBranch).add(
             newCall("==", path, statement[0]), statement[1]
           ))
@@ -287,27 +301,54 @@ macro routes*(server: Server, body: untyped): untyped =
           notFoundNode = statement[1]
         elif name == "middleware" and statement.len == 2:
           stmtList.insert(0, statement[1])
+      # reqMethod("/..."):
+      #   ...
+      elif statement[0].kind == nnkIdent and statement[1].kind == nnkStrLit:
+        let name = ($statement[0]).toUpper()
+        echo name
+        var exported = exportRouteArgs(path, statement[1], statement[2])
+        if exported.len > 0:  # /my/path/with{custom:int}/{param:path}
+          exported[0] = newCall("and", exported[0], newCall("==", reqMethodStringify, newStrLitNode(name)))
+          ifStmt.add(exported)
+        else:  # /just-my-path
+          ifStmt.add(newNimNode(nnkElifBranch).add(
+            newCall(
+              "and",
+              newCall("==", path, statement[1]),
+              newCall("==", reqMethodStringify, newStrLitNode(name))
+            ),
+            statement[2]
+          ))
+
+  # urlPath
+  stmtList.insert(
+    0, newNimNode(nnkLetSection).add(
+      newIdentDefs(ident("urlPath"), newEmptyNode(), path),
+      newIdentDefs(ident("reqMethod"), newEmptyNode(), reqMethod),
+    )
+  )
   
-  stmtList.add(newNimNode(nnkLetSection).add(newIdentDefs(ident("urlPath"), newEmptyNode(), path)))
   when defined(debug):
-    let reqMethod =
-      when defined(httpx):
-        "req.httpMethod"
-      else:
-        "req.reqMethod"
     stmtList.add(newCall(
       "log",
       newDotExpr(server, ident("logger")),
       ident("lvlInfo"),
-      newCall("fmt", newStrLitNode("{" & reqMethod & "}::{urlPath}"))
+      newCall("fmt", newStrLitNode("{" & reqMethodStr & "}::{urlPath}"))
     ))
 
   if ifStmt.len > 0:
     stmtList.add(ifStmt)
-  
-  # return 404
-  if notFoundNode.kind == nnkEmpty:
-    stmtList.add(newCall(ident("answer"), ident("req"), newStrLitNode("Not found"), ident("Http404")))
+    # return 404
+    if notFoundNode.kind == nnkEmpty:
+      ifStmt.add(newNimNode(nnkElse).add(
+        newCall(ident("answer"), ident("req"), newStrLitNode("Not found"), ident("Http404")))
+      )
+    else:
+      ifStmt.add(newNimNode(nnkElse).add(notFoundNode))
   else:
-    stmtList.add(notFoundNode)
+    # return 404
+    if notFoundNode.kind == nnkEmpty:
+      stmtList.add(newCall(ident("answer"), ident("req"), newStrLitNode("Not found"), ident("Http404")))
+    else:
+      stmtList.add(notFoundNode)
   procStmt
