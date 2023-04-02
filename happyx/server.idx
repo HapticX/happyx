@@ -8,4 +8,5 @@ parseQuery	happyx/server.html#parseQuery,string	server: parseQuery(query: string
 exportRouteArgs	happyx/server.html#exportRouteArgs,NimNode,NimNode,NimNode	server: exportRouteArgs(urlPath, routePath, body: NimNode): NimNode	
 routes	happyx/server.html#routes.m,Server,untyped	server: routes(server: Server; body: untyped): untyped	
 Available Path Params	happyx/server.html#available-path-params	    Available Path Params	
+Available Route Types	happyx/server.html#available-route-types	    Available Route Types	
 Server	happyx/server.html#server	 Server	
