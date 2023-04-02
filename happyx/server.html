@@ -102,6 +102,12 @@ window.addEventListener('DOMContentLoaded', main);
 <li><a class="reference" id="available-route-types_toc" href="#available-route-types">Available Route Types</a></li>
 </ul><li><a class="reference" id="server_toc" href="#server">Server</a></li>
 <li>
+  <a class="reference reference-toplevel" href="#6" id="56">Imports</a>
+  <ul class="simple simple-toc-section">
+    
+  </ul>
+</li>
+<li>
   <a class="reference reference-toplevel" href="#7" id="57">Types</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#Server"
@@ -170,8 +176,8 @@ window.addEventListener('DOMContentLoaded', main);
 
   </ul>
   <ul class="simple nested-toc-section">answerHtml
-      <li><a class="reference" href="#answerHtml.t%2CRequest%2Cstring%2CHttpCode"
-    title="answerHtml(req: Request; data: string; code: HttpCode = Http200): untyped">answerHtml(req: Request; data: string; code: HttpCode = Http200): untyped</a></li>
+      <li><a class="reference" href="#answerHtml.t%2CRequest%2C%2CHttpCode"
+    title="answerHtml(req: Request; data: string | TagRef; code: HttpCode = Http200): untyped">answerHtml(req: Request; data: string | TagRef; code: HttpCode = Http200): untyped</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">answerJson
@@ -198,7 +204,12 @@ window.addEventListener('DOMContentLoaded', main);
   <p class="module-desc">
 <h1><a class="toc-backref" id="server" href="#server">Server</a></h1><p>Provides a Server object that encapsulates the server's address, port, and logger. Developers can customize the logger's format using the built-in newConsoleLogger function. HappyX provides two options for handling HTTP requests: httpx and asynchttpserver. Developers can define which library to use by setting the httpx flag.</p>
 </p>
-  <div class="section" id="7">
+  <div class="section" id="6">
+<h1><a class="toc-backref" href="#6">Imports</a></h1>
+<dl class="item">
+<a class="reference external" href="tag.html">tag</a>
+</dl></div>
+<div class="section" id="7">
 <h1><a class="toc-backref" href="#7">Types</a></h1>
 <dl class="item">
 <div id="Server">
@@ -361,8 +372,9 @@ Answers to the request<dl class="docutils"><dt>Arguments:</dt>
 
 </dd>
 </div>
-<div id="answerHtml.t,Request,string,HttpCode">
-<dt><pre><span class="Keyword">template</span> <a href="#answerHtml.t%2CRequest%2Cstring%2CHttpCode"><span class="Identifier">answerHtml</span></a><span class="Other">(</span><span class="Identifier">req</span><span class="Other">:</span> <span class="Identifier">Request</span><span class="Other">;</span> <span class="Identifier">data</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">code</span><span class="Other">:</span> <span class="Identifier">HttpCode</span> <span class="Other">=</span> <span class="Identifier">Http200</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
+<div id="answerHtml.t,Request,,HttpCode">
+<dt><pre><span class="Keyword">template</span> <a href="#answerHtml.t%2CRequest%2C%2CHttpCode"><span class="Identifier">answerHtml</span></a><span class="Other">(</span><span class="Identifier">req</span><span class="Other">:</span> <span class="Identifier">Request</span><span class="Other">;</span> <span class="Identifier">data</span><span class="Other">:</span> <span class="Identifier">string</span> <span class="Operator">|</span> <a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a><span class="Other">;</span>
+                    <span class="Identifier">code</span><span class="Other">:</span> <span class="Identifier">HttpCode</span> <span class="Other">=</span> <span class="Identifier">Http200</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
 
 Answers to request with HTML data
@@ -400,7 +412,7 @@ The <tt class="docutils literal"><span class="pre"><span class="Identifier">star
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-04-02 06:30:58 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-04-02 06:36:01 UTC</small>
       </div>
     </div>
   </div>
