@@ -23,6 +23,10 @@ type
     childrenToParent*: bool
 
 
+const
+  UnclosedTags* = ["input", "img"]
+
+
 func initTag*(name: string, attrs: StringTableRef, children: seq[TagRef] = @[], childrenToParent: bool = false): TagRef =
   ## Initializes a new HTML tag with the given name, attributes, and children.
   ## 
@@ -33,7 +37,10 @@ func initTag*(name: string, attrs: StringTableRef, children: seq[TagRef] = @[], 
   ## 
   ## Returns:
   ## - A reference to the newly created HTML tag.
-  result = TagRef(name: name, isText: false, parent: nil, attrs: attrs, children: @[])
+  result = TagRef(
+    name: name, isText: false, parent: nil,
+    attrs: attrs, children: @[], childrenToParent: childrenToParent
+  )
   for child in children:
     if child.childrenToParent:
       for c in child.children:
@@ -186,5 +193,7 @@ func `$`*(self: TagRef): string =
   if self.children.len > 0:
     let children = "\n" & self.children.join("\n") & "\n"
     fmt"{level}<{self.name}{attrs}>{children}{level}</{self.name}>"
+  elif self.name in UnclosedTags:
+    fmt"{level}<{self.name}{attrs}>"
   else:
-    fmt"{level}<{self.name}{attrs} />"
+    fmt"{level}<{self.name}{attrs}></{self.name}>"

@@ -23,15 +23,10 @@ proc main =
 
     get "/html":
       let html = buildHtml(`div`):
-        `div`(class="div"):
+        script(src="https://cdn.tailwindcss.com")  # Tailwind CSS :D
+        `div`(class="bg-gray-700 text-pink-400 px-8 py-24"):
           "Hello, world!"
-        style:
-          """
-          .div {
-            background-color: #212121;
-            color: #fecefe;
-          }
-          """
+      echo html
       req.answerHtml $html
 
     post "/user":
