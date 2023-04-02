@@ -16,7 +16,8 @@ import
   logging,
   terminal,
   colors,
-  regex
+  regex,
+  json
 
 export
   strutils,
@@ -26,7 +27,8 @@ export
   logging,
   terminal,
   colors,
-  regex
+  regex,
+  json
 
 
 when defined(httpx):
@@ -132,7 +134,14 @@ template start*(server: Server): untyped =
     waitFor `server`.instance.serve(Port(`server`.port), handleRequest, `server`.address)
 
 
-template answer*(req: Request, message: string, code: HttpCode = Http200) =
+template answer*(
+    req: Request,
+    message: string,
+    code: HttpCode = Http200,
+    headers: HttpHeaders = newHttpHeaders([
+      ("Content-Type", "text/plain; charset=utf-8")
+    ])
+) =
   ## Answers to the request
   ## 
   ## Arguments:
@@ -141,15 +150,22 @@ template answer*(req: Request, message: string, code: HttpCode = Http200) =
   ##   `code: HttpCode = Http200`: The HTTP status code that we want to send in the response.
   ##                               This argument is optional, with a default value of Http200 (OK).
   when defined(httpx):
-    req.send(code, message, "Content-type: text/plain; charset=utf-8")
+    var headersArr: seq[string] = @[]
+    for key, value in headers.pairs():
+      headersArr.add(key & ": " & value)
+    req.send(code, message, headersArr.join("\r\n"))
   else:
-    await req.respond(
-      code,
-      message,
-      {
-        "Content-type": "text/plain; charset=utf-8"
-      }.newHttpHeaders()
-    )
+    await req.respond(code, message, headers)
+
+
+template answerJson*(req: Request, data: JsonNode, code: HttpCode = Http200,): untyped =
+  ## Answers to request with json data
+  answer(req, $data, code, newHttpHeaders([("Content-Type", "application/json; charset=utf-8")]))
+
+
+template answerHtml*(req: Request, data: string, code: HttpCode = Http200,): untyped =
+  ## Answers to request with HTML data
+  answer(req, data, code, newHttpHeaders([("Content-Type", "text/html; charset=utf-8")]))
 
 
 proc parseQuery*(query: string): owned(StringTableRef) =

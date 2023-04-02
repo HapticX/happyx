@@ -82,7 +82,7 @@ proc buildHtmlProcedure*(root: NimNode, body: NimNode): NimNode {.compileTime.} 
       else:
         result.add(buildHtmlProcedure(tagName, statementList))
     
-    elif statement.kind == nnkStrLit:
+    elif statement.kind in [nnkStrLit, nnkTripleStrLit]:
       # "Raw text"
       result.add(newCall("initTag", statement, newLit(true)))
     
