@@ -17,7 +17,8 @@ import
   terminal,
   colors,
   regex,
-  json
+  json,
+  ./tag
 
 export
   strutils,
@@ -163,9 +164,13 @@ template answerJson*(req: Request, data: untyped, code: HttpCode = Http200,): un
   answer(req, $(%*`data`), code, newHttpHeaders([("Content-Type", "application/json; charset=utf-8")]))
 
 
-template answerHtml*(req: Request, data: string, code: HttpCode = Http200,): untyped =
+template answerHtml*(req: Request, data: string | TagRef, code: HttpCode = Http200,): untyped =
   ## Answers to request with HTML data
-  answer(req, data, code, newHttpHeaders([("Content-Type", "text/html; charset=utf-8")]))
+  when data is string:
+    let d = data
+  else:
+    let d = $data
+  answer(req, d, code, newHttpHeaders([("Content-Type", "text/html; charset=utf-8")]))
 
 
 proc parseQuery*(query: string): owned(StringTableRef) =

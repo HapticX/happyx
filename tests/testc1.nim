@@ -26,7 +26,7 @@ proc main =
         script(src="https://cdn.tailwindcss.com")  # Tailwind CSS :D
         `div`(class="bg-gray-700 text-pink-400 px-8 py-24"):
           "Hello, world!"
-      req.answerHtml $html
+      req.answerHtml html
 
     post "/user":
       inc userId
