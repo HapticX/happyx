@@ -7,4 +7,5 @@ answer	happyx/server.html#answer.t,Request,string,HttpCode	server: answer(req: R
 parseQuery	happyx/server.html#parseQuery,string	server: parseQuery(query: string): owned(StringTableRef)	
 exportRouteArgs	happyx/server.html#exportRouteArgs,NimNode,NimNode,NimNode	server: exportRouteArgs(urlPath, routePath, body: NimNode): NimNode	
 routes	happyx/server.html#routes.m,Server,untyped	server: routes(server: Server; body: untyped): untyped	
+Available Path Params	happyx/server.html#available-path-params	    Available Path Params	
 Server	happyx/server.html#server	 Server	
