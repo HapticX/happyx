@@ -22,11 +22,11 @@ proc main =
         req.answer fmt"Oops! Unknown operator"
 
     get "/html":
-      let html = buildHtml(`div`):
-        script(src="https://cdn.tailwindcss.com")  # Tailwind CSS :D
-        `div`(class="bg-gray-700 text-pink-400 px-8 py-24"):
-          "Hello, world!"
-      req.answerHtml html
+      req.answerHtml:
+        buildHtml(`div`):
+          script(src="https://cdn.tailwindcss.com")  # Tailwind CSS :D
+          `div`(class="bg-gray-700 text-pink-400 px-8 py-24"):
+            "Hello, world!"
 
     post "/user":
       inc userId
