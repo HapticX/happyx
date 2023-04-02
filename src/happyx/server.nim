@@ -158,9 +158,9 @@ template answer*(
     await req.respond(code, message, headers)
 
 
-template answerJson*(req: Request, data: JsonNode, code: HttpCode = Http200,): untyped =
+template answerJson*(req: Request, data: untyped, code: HttpCode = Http200,): untyped =
   ## Answers to request with json data
-  answer(req, $data, code, newHttpHeaders([("Content-Type", "application/json; charset=utf-8")]))
+  answer(req, $(%*`data`), code, newHttpHeaders([("Content-Type", "application/json; charset=utf-8")]))
 
 
 template answerHtml*(req: Request, data: string, code: HttpCode = Http200,): untyped =

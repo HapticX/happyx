@@ -26,16 +26,11 @@ proc main =
         script(src="https://cdn.tailwindcss.com")  # Tailwind CSS :D
         `div`(class="bg-gray-700 text-pink-400 px-8 py-24"):
           "Hello, world!"
-      echo html
       req.answerHtml $html
 
     post "/user":
       inc userId
-      req.answerJson %*{
-        "response": {
-          "id": %userId
-        }
-      }
+      req.answerJson {"response": {"id": %userId}}
 
     notfound:
       req.answer "Oops! Not found!"
