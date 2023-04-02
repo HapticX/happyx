@@ -4,7 +4,7 @@ fgStyled	happyx/server.html#fgStyled,string,Style	server: fgStyled(text: string;
 newServer	happyx/server.html#newServer,string,int	server: newServer(address: string = &quot;127.0.0.1&quot;; port: int = 5000): Server	
 start	happyx/server.html#start.t,Server	server: start(server: Server): untyped	
 answer	happyx/server.html#answer.t,Request,string,HttpCode,HttpHeaders	server: answer(req: Request; message: string; code: HttpCode = Http200; headers: HttpHeaders = newHttpHeaders(\n    [(&quot;Content-Type&quot;, &quot;text/plain; charset=utf-8&quot;)]))	
-answerJson	happyx/server.html#answerJson.t,Request,JsonNode,HttpCode	server: answerJson(req: Request; data: JsonNode; code: HttpCode = Http200): untyped	
+answerJson	happyx/server.html#answerJson.t,Request,untyped,HttpCode	server: answerJson(req: Request; data: untyped; code: HttpCode = Http200): untyped	
 answerHtml	happyx/server.html#answerHtml.t,Request,string,HttpCode	server: answerHtml(req: Request; data: string; code: HttpCode = Http200): untyped	
 parseQuery	happyx/server.html#parseQuery,string	server: parseQuery(query: string): owned(StringTableRef)	
 exportRouteArgs	happyx/server.html#exportRouteArgs,NimNode,NimNode,NimNode	server: exportRouteArgs(urlPath, routePath, body: NimNode): NimNode	
