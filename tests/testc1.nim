@@ -16,6 +16,8 @@ proc main =
         req.answer fmt"Oops! Unknown operator"
     notfound:
       req.answer "Oops! Not found!"
+    middleware:
+      echo req
   
   server.start()
 

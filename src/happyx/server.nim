@@ -173,14 +173,20 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.
   var
     routePathStr = $routePath
     hasChildren = false
+  # integer param
   routePathStr = routePathStr.replace(re"\{[a-zA-Z][a-zA-Z0-9_]*:int\}", "(\\d+)")
-  routePathStr = routePathStr.replace(re"\{[a-zA-Z][a-zA-Z0-9_]*:float\}", "(\\d+\\.\\d+)")
+  # float param
+  routePathStr = routePathStr.replace(re"\{[a-zA-Z][a-zA-Z0-9_]*:float\}", "(\\d+\\.\\d+|\\d+)")
+  # word param
+  routePathStr = routePathStr.replace(re"\{[a-zA-Z][a-zA-Z0-9_]*:word\}", "(\\w+?)")
+  # string param
   routePathStr = routePathStr.replace(re"\{[a-zA-Z][a-zA-Z0-9_]*:string\}", "([^/]+?)")
+  # path param
   routePathStr = routePathStr.replace(re"\{[a-zA-Z][a-zA-Z0-9_]*:path\}", "([\\S]+)")
 
   let
-    regExp = newCall("re", newStrLitNode(routePathStr))
-    found = path.findAll(re"\{([a-zA-Z][a-zA-Z0-9_]*):(int|float|string|path)\}")
+    regExp = newCall("re", newStrLitNode("^" & routePathStr & "$"))
+    found = path.findAll(re"\{([a-zA-Z][a-zA-Z0-9_]*):(int|float|string|path|word)\}")
     foundLen = found.len
 
   elifBranch.add(newCall("contains", urlPath, regExp), body)
@@ -208,7 +214,7 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.
       letSection[0].add(newCall("parseInt", foundGroup))
     of "float":
       letSection[0].add(newCall("parseFloat", foundGroup))
-    of "path", "string":
+    of "path", "string", "word":
       letSection[0].add(foundGroup)
     elifBranch[1].insert(0, letSection)
     hasChildren = true
@@ -228,9 +234,29 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.
 
 macro routes*(server: Server, body: untyped): untyped =
   ## You can create routes with this marco
+  ## 
+  ## #### Available Path Params
+  ## - `int`: any integer.
+  ## - `float`: any float number.
+  ## - `word`: any word includes `re"\w+"`.
+  ## - `string`: any string excludes `"/"`.
+  ## - `path`: any float number includes `"/"`.
+  ## 
+  runnableExamples:
+    var myServer = newServer()
+    myServer.routes:
+      "/":
+        req.answer "root"
+      "/user{id:int}":
+        req.answer fmt"hello, user {id}!"
+      middleware:
+        echo req
+      notfound:
+        req.answer "Oops! Not found!"
   var
     stmtList = newStmtList()
     ifStmt = newNimNode(nnkIfStmt)
+    notFoundNode = newEmptyNode()
     procStmt = newProc(
       ident("handleRequest"),
       [newEmptyNode(), newIdentDefs(ident("req"), ident("Request"))],
@@ -258,17 +284,17 @@ macro routes*(server: Server, body: untyped): untyped =
       elif statement[1].kind == nnkStmtList and statement[0].kind == nnkIdent:
         let name = $statement[0]
         if name == "notfound":
-          if ifStmt.len > 0:
-            ifStmt.add(newNimNode(nnkElse).add(statement[1]))
-          else:
-            stmtList.add(statement[1])
+          notFoundNode = statement[1]
+        elif name == "middleware" and statement.len == 2:
+          stmtList.insert(0, statement[1])
   
   stmtList.add(newNimNode(nnkLetSection).add(newIdentDefs(ident("urlPath"), newEmptyNode(), path)))
   when defined(debug):
-    when defined(httpx):
-      let reqMethod = "req.httpMethod"
-    else:
-      let reqMethod = "req.reqMethod"
+    let reqMethod =
+      when defined(httpx):
+        "req.httpMethod"
+      else:
+        "req.reqMethod"
     stmtList.add(newCall(
       "log",
       newDotExpr(server, ident("logger")),
@@ -278,6 +304,10 @@ macro routes*(server: Server, body: untyped): untyped =
 
   if ifStmt.len > 0:
     stmtList.add(ifStmt)
-  elif stmtList.len < 1:
-    stmtList.add(newCall(ident("answer"), ident("req"), newStrLitNode("Not found")))
+  
+  # return 404
+  if notFoundNode.kind == nnkEmpty:
+    stmtList.add(newCall(ident("answer"), ident("req"), newStrLitNode("Not found"), ident("Http404")))
+  else:
+    stmtList.add(notFoundNode)
   procStmt
