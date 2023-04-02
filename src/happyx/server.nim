@@ -243,7 +243,7 @@ macro routes*(server: Server, body: untyped): untyped =
   ## - `path`: any float number includes `"/"`.
   ## 
   ## #### Available Route Types
-  ## - `"/path/with/{args:path}" - Just string with route path. Matches any request method
+  ## - `"/path/with/{args:path}"` - Just string with route path. Matches any request method
   ## - `get "/path/{args:word}"` - Route with request method. Method can be`get`, `post`, `patch`, etc.
   ## - `notfound` - Route that matches when no other matched.
   ## - `middleware` - Always executes first.
