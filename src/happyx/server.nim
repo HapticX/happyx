@@ -346,7 +346,7 @@ macro routes*(server: Server, body: untyped): untyped =
                 newCall("startsWith", path, statement[1]),
                 newCall("startsWith", path, newStrLitNode("/" & $statement[1])),
               ),
-              newStmtList().add(
+              newStmtList(
                 newVarStmt(
                   ident("content"),
                   newCall("readFile", directoryFromPath)
@@ -402,3 +402,33 @@ macro routes*(server: Server, body: untyped): untyped =
     else:
       stmtList.add(notFoundNode)
   procStmt
+
+
+macro initServer*(body: untyped): untyped =
+  result = newStmtList(
+    newProc(
+      ident("main"),
+      [newEmptyNode()],
+      body,
+      nnkProcDef
+    ),
+    newCall("main")
+  )
+  result[0].addPragma(ident("gcsafe"))
+
+
+macro serve*(address: string, port: int, body: untyped): untyped =
+  result = newStmtList(
+    newProc(
+      ident("main"),
+      [newEmptyNode()],
+      newStmtList(
+        newVarStmt(ident("server"), newCall("newServer", address, port)),
+        newCall("routes", ident("server"), body),
+        newCall("start", ident("server"))
+      ),
+      nnkProcDef
+    ),
+    newCall("main")
+  )
+  result[0].addPragma(ident("gcsafe"))

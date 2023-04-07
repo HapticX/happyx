@@ -1,7 +1,7 @@
 import ../src/happyx
 
 
-proc main =
+initServer:
   var
     server = newServer()
     userId = 0
@@ -48,5 +48,3 @@ proc main =
     staticDir "testdir"
   
   server.start()
-
-main()

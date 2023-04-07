@@ -36,7 +36,7 @@ nimble install https://github.com/HapticX/happyx
 ```nim
 import happyx
 
-proc main =
+initServer:
   var server = newServer()
 
   server.routes:
@@ -47,8 +47,6 @@ proc main =
       req.answer(fmt"Hello, user with ID {id}!")
   
   server.start()
-  
-main()
 ```
 ## Run 💻
 ### Default
