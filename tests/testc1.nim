@@ -23,6 +23,9 @@ proc main =
     
     get "/pattern{patternId:/[a-zA-Z0-9_]+/}":
       req.answer fmt"pattern ID is {patternId}"
+    
+    get "/file/{file:path}":
+      echo file
 
     get "/html":
       req.answerHtml:
@@ -40,6 +43,9 @@ proc main =
 
     middleware:
       echo reqMethod
+      echo urlPath
+    
+    staticDir "testdir"
   
   server.start()
 

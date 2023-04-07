@@ -18,6 +18,7 @@ import
   colors,
   regex,
   json,
+  os,
   ./tag
 
 export
@@ -29,7 +30,8 @@ export
   terminal,
   colors,
   regex,
-  json
+  json,
+  os
 
 
 when defined(httpx):
@@ -306,6 +308,11 @@ macro routes*(server: Server, body: untyped): untyped =
       reqMethod = newDotExpr(ident("req"), ident("reqMethod"))
       reqMethodStringify = newCall("$", reqMethod)
       reqMethodStr = "req.reqMethod"
+  let directoryFromPath = newCall(
+    "&",
+    newStrLitNode("."),
+    newCall("replace", path, newLit('/'), ident("DirSep"))
+  )
   
   procStmt.addPragma(ident("async"))
   
@@ -331,7 +338,24 @@ macro routes*(server: Server, body: untyped): untyped =
       #   ...
       elif statement[0].kind == nnkIdent and statement[1].kind == nnkStrLit:
         let name = ($statement[0]).toUpper()
-        echo name
+        if name == "STATICDIR":
+          ifStmt.insert(
+            0, newNimNode(nnkElifBranch).add(
+              newCall(
+                "or",
+                newCall("startsWith", path, statement[1]),
+                newCall("startsWith", path, newStrLitNode("/" & $statement[1])),
+              ),
+              newStmtList().add(
+                newVarStmt(
+                  ident("content"),
+                  newCall("readFile", directoryFromPath)
+                ),
+                newCall("answer", ident("req"), ident("content"))
+              )
+            )
+          )
+          continue
         var exported = exportRouteArgs(path, statement[1], statement[2])
         if exported.len > 0:  # /my/path/with{custom:int}/{param:path}
           exported[0] = newCall("and", exported[0], newCall("==", reqMethodStringify, newStrLitNode(name)))
