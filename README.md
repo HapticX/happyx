@@ -17,7 +17,7 @@ Because it's simple to use 🙂
 
 ## Features ⚡
 - Support `asynchttpserver` as default http server
-- Support `httpx` via `-d:httpx`
+- Support `httpx` via `-d:httpx` as alternative HTTP server.
 - Logging with `-d:debug`
 
 # Get Started 👨‍🔬

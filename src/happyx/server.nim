@@ -204,10 +204,12 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.
   routePathStr = routePathStr.replace(re"\{[a-zA-Z][a-zA-Z0-9_]*:string\}", "([^/]+?)")
   # path param
   routePathStr = routePathStr.replace(re"\{[a-zA-Z][a-zA-Z0-9_]*:path\}", "([\\S]+)")
+  # path param
+  routePathStr = routePathStr.replace(re"\{[a-zA-Z][a-zA-Z0-9_]*:/([\s\S]+?)/\}", "($1)")
 
   let
     regExp = newCall("re", newStrLitNode("^" & routePathStr & "$"))
-    found = path.findAll(re"\{([a-zA-Z][a-zA-Z0-9_]*):(int|float|string|path|word)\}")
+    found = path.findAll(re"\{([a-zA-Z][a-zA-Z0-9_]*):(int|float|string|path|word|/[\s\S]+?/)\}")
     foundLen = found.len
 
   elifBranch.add(newCall("contains", urlPath, regExp), body)
@@ -236,6 +238,9 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.
     of "float":
       letSection[0].add(newCall("parseFloat", foundGroup))
     of "path", "string", "word":
+      letSection[0].add(foundGroup)
+    else:
+      # regex
       letSection[0].add(foundGroup)
     elifBranch[1].insert(0, letSection)
     hasChildren = true

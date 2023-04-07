@@ -20,6 +20,9 @@ proc main =
         req.answer fmt"Result of {left} - {right} is {left - right}"
       else:
         req.answer fmt"Oops! Unknown operator"
+    
+    get "/pattern{patternId:/[a-zA-Z0-9_]+/}":
+      req.answer fmt"pattern ID is {patternId}"
 
     get "/html":
       req.answerHtml:
