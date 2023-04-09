@@ -301,13 +301,13 @@ macro routes*(server: Server, body: untyped): untyped =
     let
       reqMethod = newCall("get", newDotExpr(ident("req"), ident("httpMethod")))
       reqMethodStringify = newCall("$", reqMethod)
-      reqMethodStr = "req.httpMethod"
+      reqMethodStr = "req.httpMethod.get()"
   else:
     var path = newDotExpr(newDotExpr(ident("req"), ident("url")), ident("path"))
     let
       reqMethod = newDotExpr(ident("req"), ident("reqMethod"))
       reqMethodStringify = newCall("$", reqMethod)
-      reqMethodStr = "req.reqMethod.get()"
+      reqMethodStr = "req.reqMethod"
   let directoryFromPath = newCall(
     "&",
     newStrLitNode("."),
