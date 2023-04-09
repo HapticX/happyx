@@ -38,8 +38,8 @@ initServer:
       inc userId
       req.answerJson {"response": {"id": %userId}}
 
-    notfound:
-      req.answer "Oops! Not found!"
+    # notfound:
+    #   req.answer "Oops! Not found!"
 
     middleware:
       echo reqMethod

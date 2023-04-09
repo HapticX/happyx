@@ -307,7 +307,7 @@ macro routes*(server: Server, body: untyped): untyped =
     let
       reqMethod = newDotExpr(ident("req"), ident("reqMethod"))
       reqMethodStringify = newCall("$", reqMethod)
-      reqMethodStr = "req.reqMethod"
+      reqMethodStr = "req.reqMethod.get()"
   let directoryFromPath = newCall(
     "&",
     newStrLitNode("."),
@@ -390,6 +390,19 @@ macro routes*(server: Server, body: untyped): untyped =
     stmtList.add(ifStmt)
     # return 404
     if notFoundNode.kind == nnkEmpty:
+      ifStmt.add(newNimNode(nnkElse).add(newStmtList()))
+      when defined(debug):
+        ifStmt[^1][^1].add(
+          newCall(
+            "log",
+            newDotExpr(ident("server"), ident("logger")),
+            ident("lvlWarn"),
+            newCall(
+              "fgColored", 
+              newCall("fmt", newStrLitNode("{urlPath} is not found.")), ident("fgYellow")
+            )
+          )
+        )
       ifStmt.add(newNimNode(nnkElse).add(
         newCall(ident("answer"), ident("req"), newStrLitNode("Not found"), ident("Http404")))
       )
@@ -398,7 +411,19 @@ macro routes*(server: Server, body: untyped): untyped =
   else:
     # return 404
     if notFoundNode.kind == nnkEmpty:
-      stmtList.add(newCall(ident("answer"), ident("req"), newStrLitNode("Not found"), ident("Http404")))
+      when defined(debug):
+        stmtList.add(newCall(
+          "log",
+          newDotExpr(ident("server"), ident("logger")),
+          ident("lvlWarn"),
+          newCall(
+            "fgColored",
+            newCall("fmt", newStrLitNode("{urlPath} is not found.")), ident("fgYellow")
+          )
+        ))
+      stmtList.add(
+        newCall(ident("answer"), ident("req"), newStrLitNode("Not found"), ident("Http404"))
+      )
     else:
       stmtList.add(notFoundNode)
   procStmt
