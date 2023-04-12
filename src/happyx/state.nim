@@ -13,6 +13,11 @@ func remember*[T](val: T): State[T] =
   State[T](val: val)
 
 
+template operator(op: untyped): untyped =
+  func `op`*[T](self, other: State[T]): T =
+    `op`(self.val, other.val)
+
+
 func `$`*(self: State): string =
   ## Returns string representation
   repr self.val
@@ -23,14 +28,11 @@ func `==`*[T](self, other: State[T]): bool =
   self.val == other.val
 
 
-func `&`*[T](self, other: State[T]): T =
-  ## Returns self and other
-  self.val & other.val
-
-
-func `+`*[T](self, other: State[T]): T =
-  ## Returns self + other
-  self.val + other.val
+operator(`&`)
+operator(`+`)
+operator(`-`)
+operator(`*`)
+operator(`/`)
 
 
 func get*[T](self: State[T]): T =

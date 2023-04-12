@@ -121,10 +121,17 @@ func initTag*(name: string, isText: bool, children: seq[TagRef] = @[], childrenT
 
 
 func tag*(name: string): TagRef {.inline.} =
-  ## Shortcut for `initTag func<#initTag,string,varargs[TagRef]>`_
+  ## Shortcut for `initTag func<#initTag,string,seq[TagRef]>`_
   runnableExamples:
     var root = tag"div"
   TagRef(name: name, isText: false, parent: nil, attrs: newStringTable(), children: @[])
+
+
+func textTag*(text: string): TagRef {.inline.} =
+  ## Shortcur for `initTag func<#initTag,string,bool,seq[TagRef],bool>`_
+  runnableExamples:
+    var root = textTag"Hello, world!"
+  TagRef(name: "", isText: true, parent: nil, attrs: newStringTable(), children: @[])
 
 
 func add*(self: TagRef, tags: varargs[TagRef]) =

@@ -430,6 +430,13 @@ macro routes*(server: Server, body: untyped): untyped =
 
 
 macro initServer*(body: untyped): untyped =
+  ## Shortcut for
+  ## 
+  ## .. code-block::nim
+  ##    proc main() {.gcsafe.} =
+  ##      `body`
+  ##    main()
+  ## 
   result = newStmtList(
     newProc(
       ident("main"),
@@ -443,6 +450,16 @@ macro initServer*(body: untyped): untyped =
 
 
 macro serve*(address: string, port: int, body: untyped): untyped =
+  ## Initializes a new server and start it. Shortcut for
+  ## 
+  ## .. code-block::nim
+  ##    proc main() =
+  ##      var server = newServer(`address`, `port`)
+  ##      server.routes:
+  ##        `body`
+  ##      server.start()
+  ##    main()
+  ## 
   result = newStmtList(
     newProc(
       ident("main"),
