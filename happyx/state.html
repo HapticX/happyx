@@ -117,13 +117,28 @@ window.addEventListener('DOMContentLoaded', main);
 
   </ul>
   <ul class="simple nested-toc-section">&
-      <li><a class="reference" href="#%26%2CState%5BT%5D%2CState%5BT%5D"
-    title="`&amp;`[T](self, other: State[T]): T">`&amp;`[T](self, other: State[T]): T</a></li>
+      <li><a class="reference" href="#%26%2C%2C"
+    title="`&amp;`[T](self`gensym0, other`gensym0: State[T]): T">`&amp;`[T](self`gensym0, other`gensym0: State[T]): T</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">*
+      <li><a class="reference" href="#%2A%2C%2C"
+    title="`*`[T](self`gensym3, other`gensym3: State[T]): T">`*`[T](self`gensym3, other`gensym3: State[T]): T</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">+
-      <li><a class="reference" href="#%2B%2CState%5BT%5D%2CState%5BT%5D"
-    title="`+`[T](self, other: State[T]): T">`+`[T](self, other: State[T]): T</a></li>
+      <li><a class="reference" href="#%2B%2C%2C"
+    title="`+`[T](self`gensym1, other`gensym1: State[T]): T">`+`[T](self`gensym1, other`gensym1: State[T]): T</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">-
+      <li><a class="reference" href="#-%2C%2C"
+    title="`-`[T](self`gensym2, other`gensym2: State[T]): T">`-`[T](self`gensym2, other`gensym2: State[T]): T</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">/
+      <li><a class="reference" href="#%2F%2C%2C"
+    title="`/`[T](self`gensym4, other`gensym4: State[T]): T">`/`[T](self`gensym4, other`gensym4: State[T]): T</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">==
@@ -263,19 +278,43 @@ Returns string representation
 
 </dd>
 </div>
-<div id="&,State[T],State[T]">
-<dt><pre><span class="Keyword">func</span> <a href="#%26%2CState%5BT%5D%2CState%5BT%5D"><span class="Identifier">`&amp;`</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">self</span><span class="Other">,</span> <span class="Identifier">other</span><span class="Other">:</span> <a href="state.html#State"><span class="Identifier">State</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">T</span></pre></dt>
+<div id="&,,">
+<dt><pre><span class="Keyword">func</span> <a href="#%26%2C%2C"><span class="Identifier">`&amp;`</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">self`gensym0</span><span class="Other">,</span> <span class="Identifier">other`gensym0</span><span class="Other">:</span> <a href="state.html#State"><span class="Identifier">State</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">T</span></pre></dt>
 <dd>
 
-Returns self and other
+
 
 </dd>
 </div>
-<div id="+,State[T],State[T]">
-<dt><pre><span class="Keyword">func</span> <a href="#%2B%2CState%5BT%5D%2CState%5BT%5D"><span class="Identifier">`+`</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">self</span><span class="Other">,</span> <span class="Identifier">other</span><span class="Other">:</span> <a href="state.html#State"><span class="Identifier">State</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">T</span></pre></dt>
+<div id="*,,">
+<dt><pre><span class="Keyword">func</span> <a href="#%2A%2C%2C"><span class="Identifier">`*`</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">self`gensym3</span><span class="Other">,</span> <span class="Identifier">other`gensym3</span><span class="Other">:</span> <a href="state.html#State"><span class="Identifier">State</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">T</span></pre></dt>
 <dd>
 
-Returns self + other
+
+
+</dd>
+</div>
+<div id="+,,">
+<dt><pre><span class="Keyword">func</span> <a href="#%2B%2C%2C"><span class="Identifier">`+`</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">self`gensym1</span><span class="Other">,</span> <span class="Identifier">other`gensym1</span><span class="Other">:</span> <a href="state.html#State"><span class="Identifier">State</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">T</span></pre></dt>
+<dd>
+
+
+
+</dd>
+</div>
+<div id="-,,">
+<dt><pre><span class="Keyword">func</span> <a href="#-%2C%2C"><span class="Identifier">`-`</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">self`gensym2</span><span class="Other">,</span> <span class="Identifier">other`gensym2</span><span class="Other">:</span> <a href="state.html#State"><span class="Identifier">State</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">T</span></pre></dt>
+<dd>
+
+
+
+</dd>
+</div>
+<div id="/,,">
+<dt><pre><span class="Keyword">func</span> <a href="#%2F%2C%2C"><span class="Identifier">`/`</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">self`gensym4</span><span class="Other">,</span> <span class="Identifier">other`gensym4</span><span class="Other">:</span> <a href="state.html#State"><span class="Identifier">State</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">T</span></pre></dt>
+<dd>
+
+
 
 </dd>
 </div>
@@ -435,7 +474,7 @@ Changes state value
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-04-09 11:09:50 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-04-12 03:50:30 UTC</small>
       </div>
     </div>
   </div>

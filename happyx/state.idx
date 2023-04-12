@@ -2,8 +2,11 @@ State	happyx/state.html#State	state: State
 remember	happyx/state.html#remember,T	state: remember[T](val: T): State[T]	
 `$`	happyx/state.html#$,State	state: `$`(self: State): string	
 `==`	happyx/state.html#==,State[T],State[T]	state: `==`[T](self, other: State[T]): bool	
-`&amp;`	happyx/state.html#&,State[T],State[T]	state: `&amp;`[T](self, other: State[T]): T	
-`+`	happyx/state.html#+,State[T],State[T]	state: `+`[T](self, other: State[T]): T	
+`&amp;`	happyx/state.html#&,,	state: `&amp;`[T](self`gensym0, other`gensym0: State[T]): T	
+`+`	happyx/state.html#+,,	state: `+`[T](self`gensym1, other`gensym1: State[T]): T	
+`-`	happyx/state.html#-,,	state: `-`[T](self`gensym2, other`gensym2: State[T]): T	
+`*`	happyx/state.html#*,,	state: `*`[T](self`gensym3, other`gensym3: State[T]): T	
+`/`	happyx/state.html#/,,	state: `/`[T](self`gensym4, other`gensym4: State[T]): T	
 get	happyx/state.html#get,State[T]	state: get[T](self: State[T]): T	
 set	happyx/state.html#set,State[T],T	state: set[T](self: State[T]; value: T)	
 `[]`	happyx/state.html#[],State[T],int	state: `[]`[T](self: State[T]; idx: int): auto	

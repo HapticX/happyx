@@ -334,7 +334,9 @@ Parses query and retrieves JSON object
 <dt><pre><span class="Keyword">macro</span> <a href="#initServer.m%2Cuntyped"><span class="Identifier">initServer</span></a><span class="Other">(</span><span class="Identifier">body</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
 
-
+Shortcut for<pre class="listing"><span class="Keyword">proc</span> <span class="Identifier">main</span><span class="Punctuation">(</span><span class="Punctuation">)</span> <span class="Punctuation">{</span><span class="Operator">.</span><span class="Identifier">gcsafe</span><span class="Operator">.</span><span class="Punctuation">}</span> <span class="Operator">=</span>
+  <span class="Punctuation">`</span><span class="Identifier">body</span><span class="Punctuation">`</span>
+<span class="Identifier">main</span><span class="Punctuation">(</span><span class="Punctuation">)</span></pre>
 
 </dd>
 </div>
@@ -374,7 +376,12 @@ You can create routes with this marco
 <dt><pre><span class="Keyword">macro</span> <a href="#serve.m%2Cstring%2Cint%2Cuntyped"><span class="Identifier">serve</span></a><span class="Other">(</span><span class="Identifier">address</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">port</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">;</span> <span class="Identifier">body</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
 
-
+Initializes a new server and start it. Shortcut for<pre class="listing"><span class="Keyword">proc</span> <span class="Identifier">main</span><span class="Punctuation">(</span><span class="Punctuation">)</span> <span class="Operator">=</span>
+  <span class="Keyword">var</span> <span class="Identifier">server</span> <span class="Operator">=</span> <span class="Identifier">newServer</span><span class="Punctuation">(</span><span class="Punctuation">`</span><span class="Identifier">address</span><span class="Punctuation">`</span><span class="Punctuation">,</span> <span class="Punctuation">`</span><span class="Identifier">port</span><span class="Punctuation">`</span><span class="Punctuation">)</span>
+  <span class="Identifier">server</span><span class="Operator">.</span><span class="Identifier">routes</span><span class="Punctuation">:</span>
+    <span class="Punctuation">`</span><span class="Identifier">body</span><span class="Punctuation">`</span>
+  <span class="Identifier">server</span><span class="Operator">.</span><span class="Identifier">start</span><span class="Punctuation">(</span><span class="Punctuation">)</span>
+<span class="Identifier">main</span><span class="Punctuation">(</span><span class="Punctuation">)</span></pre>
 
 </dd>
 </div>
@@ -438,7 +445,7 @@ The <tt class="docutils literal"><span class="pre"><span class="Identifier">star
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-04-09 11:09:50 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-04-12 03:50:30 UTC</small>
       </div>
     </div>
   </div>

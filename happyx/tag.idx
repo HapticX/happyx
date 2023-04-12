@@ -6,6 +6,7 @@ initTag	happyx/tag.html#initTag,string,seq[TagRef],bool	tag: initTag(name: strin
 initTag	happyx/tag.html#initTag,string,bool,StringTableRef,seq[TagRef],bool	tag: initTag(name: string; isText: bool; attrs: StringTableRef;\n        children: seq[TagRef] = @[]; childrenToParent: bool = false): TagRef	
 initTag	happyx/tag.html#initTag,string,bool,seq[TagRef],bool	tag: initTag(name: string; isText: bool; children: seq[TagRef] = @[];\n        childrenToParent: bool = false): TagRef	
 tag	happyx/tag.html#tag,string	tag: tag(name: string): TagRef	
+textTag	happyx/tag.html#textTag,string	tag: textTag(text: string): TagRef	
 add	happyx/tag.html#add,TagRef,varargs[TagRef]	tag: add(self: TagRef; tags: varargs[TagRef])	
 lvl	happyx/tag.html#lvl,TagRef	tag: lvl(self: TagRef): int	
 `[]`	happyx/tag.html#[],TagRef,string	tag: `[]`(self: TagRef; attrName: string): string	
