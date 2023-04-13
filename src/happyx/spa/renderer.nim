@@ -13,17 +13,16 @@ import
   strutils,
   strformat,
   regex,
-  dom,
-  jsconsole,
-  jsre,
   ./tag,
   ../private/cmpltime
 
 when defined(js):
-  export
-    jsconsole,
+  import
     dom,
-    jsre
+    jsconsole
+  export
+    dom,
+    jsconsole
 
 export
   strformat,
