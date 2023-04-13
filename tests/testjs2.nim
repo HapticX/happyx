@@ -5,13 +5,12 @@ import ../src/happyx
 var app = newApp()
 
 app.routes:
-  "/":
+  "#/":
+    echo path
     buildHtml(`div`):
       "Hello, world!"
-  "/hello!":
+  "#/hello!":
     buildHtml(`div`):
       "No, bye!"
-
-router("asd")
 
 app.start()

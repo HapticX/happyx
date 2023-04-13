@@ -176,6 +176,20 @@ func `[]=`*(self: TagRef, attrName: string, attrValue: string) {.inline.} =
   self.attrs[attrName] = attrValue
 
 
+func findByTag*(self: TagRef, tag: string): seq[TagRef] =
+  ## Finds all tags by name
+  result = @[]
+  if self.childrenToParent:
+    return result
+  for child in self.children:
+    if child.isText:
+      continue
+    for i in child.findByTag(tag):
+      result.add(i)
+    if child.name == tag:
+      result.add(child)
+
+
 func get*(self: TagRef, tag: string): TagRef =
   ## Returns tag by name
   for child in self.children:

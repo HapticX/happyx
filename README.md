@@ -45,9 +45,11 @@ initServer:
   var server = newServer()
 
   server.routes:
+    # By default routing takes any request method
     "/":
       req.answer("Hello, world!")
     
+    # You can use let variables in the routes!
     "/user{id:int}":
       req.answer(fmt"Hello, user with ID {id}!")
   

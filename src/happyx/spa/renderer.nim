@@ -15,11 +15,15 @@ import
   regex,
   dom,
   jsconsole,
-  ./tag
+  jsre,
+  ./tag,
+  ../private/cmpltime
 
 when defined(js):
   export
-    jsconsole
+    jsconsole,
+    dom,
+    jsre
 
 export
   strformat,
@@ -37,14 +41,13 @@ type
 
 func newApp*(appId: string = "app"): App =
   ## Creates a new Singla Page Application
-  result = App(
-    appId: appId
-  )
+  result = App(appId: appId)
 
 
-func start*(app: App) =
+template start*(app: App) =
   ## Starts single page application
-  discard
+  document.addEventListener("DOMContentLoaded", onDOMContentLoaded)
+  window.addEventListener("popstate", onDOMContentLoaded)
 
 
 proc replaceIter*(
@@ -65,8 +68,6 @@ proc buildHtmlProcedure*(root: NimNode, body: NimNode): NimNode {.compileTime.} 
   result = newCall("initTag", newStrLitNode($root))
 
   for statement in body:
-    echo statement.kind
-
     if statement.kind == nnkCall:
       let
         tagName = newStrLitNode($statement[0])
@@ -265,10 +266,71 @@ macro buildHtml*(root, html: untyped): untyped =
 
 macro routes*(app: App, body: untyped): untyped =
   ## Provides JS router for Single page application
-  result = newProc(
-    ident("router"),
-    [newEmptyNode(), newIdentDefs(ident("path"), ident("string"))]
+  let
+    router = newProc(ident("router"))
+    navigateTo = newProc(
+      ident("navigateTo"),
+      [newEmptyNode(), newIdentDefs(ident("path"), ident("string"))]
+    )
+    onDOMContentLoaded = newProc(
+      ident("onDOMContentLoaded"),
+      [newEmptyNode(), newIdentDefs(ident("ev"), ident("Event"))]
+    )
+    ifStmt = newNimNode(nnkIfStmt)
+    iPath = ident("path")
+    iHtml = ident("html")
+  navigateTo.body = newStmtList(
+    newCall(
+      "pushState",
+      newDotExpr(ident("window"), ident("history")),
+      newLit(""),
+      newLit(""),
+      iPath
+    ),
+    newCall("router")
   )
-  result.body = newStmtList()
+  onDOMContentLoaded.body = newStmtList(newCall("router"))
+  router.body = newStmtList()
+
+  router.body.add(
+    newLetStmt(
+      ident("elem"),
+      newCall("getElementById", ident("document"), newDotExpr(ident("app"), ident("appId")))
+    ),
+    newLetStmt(
+      ident("path"),
+      newDotExpr(newDotExpr(ident("window"), ident("location")), ident("hash"))
+    ),
+    newNimNode(nnkVarSection).add(newIdentDefs(
+      iHtml, ident("TagRef"), newNilLit()
+    ))
+  )
+
   for statement in body:
-    discard
+    if statement.kind in [nnkCommand, nnkCall]:
+      if statement.len == 2 and statement[0].kind == nnkStrLit:
+        ifStmt.add(newNimNode(nnkElifBranch).add(
+          newCall("==", iPath, statement[0]),
+          newAssignment(iHtml, statement[1])
+        ))
+  
+  if ifStmt.len > 0:
+    router.body.add(ifStmt)
+  
+  router.body.add(
+    newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
+      newCall("not", newCall("isNil", iHtml)),
+      newStmtList(
+        newAssignment(
+          newDotExpr(ident("elem"), ident("innerHTML")),
+          newCall("$", iHtml)
+        )
+      )
+    ))
+  )
+
+  newStmtList(
+    router,
+    onDOMContentLoaded,
+    navigateTo
+  )
