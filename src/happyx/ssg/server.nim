@@ -198,6 +198,7 @@ macro routes*(server: Server, body: untyped): untyped =
   ## - `word`: any word includes `re"\w+"`.
   ## - `string`: any string excludes `"/"`.
   ## - `path`: any float number includes `"/"`.
+  ## - `regex`: any regex pattern excludes groups. Usage - `"/path{pattern:/yourRegex/}"`
   ## 
   ## #### Available Route Types
   ## - `"/path/with/{args:path}"` - Just string with route path. Matches any request method
