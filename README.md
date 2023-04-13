@@ -19,11 +19,12 @@ Because it's simple to use 🙂
 Jester doesn't provides some features that provides Happyx.
 
 ## Features ⚡
-- Support `asynchttpserver` as default http server
+- Support `asynchttpserver` as default http server.
 - Support `httpx` via `-d:httpx` as alternative HTTP server.
+- Support `SPA` on `JS` backend and `SSG` on other backends.
 - Building HTML with `buildHtml` macro.
-- Routing with `routes` marco.
-- Logging with `-d:debug`
+- Routing `SPA`/`SSG` with `routes` marco.
+- Logging with `-d:debug`.
 
 # Get Started 👨‍🔬
 
