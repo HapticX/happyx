@@ -1,6 +1,0 @@
-Renderer	happyx/renderer.html#Renderer	renderer: Renderer	
-newRenderer	happyx/renderer.html#newRenderer,string	renderer: newRenderer(appId: string): Renderer	
-replaceIter	happyx/renderer.html#replaceIter,NimNode,proc(NimNode),proc(NimNode)	renderer: replaceIter(root: NimNode; search: proc (x: NimNode): bool;\n            replace: proc (x: NimNode): NimNode): bool	
-buildHtmlProcedure	happyx/renderer.html#buildHtmlProcedure,NimNode,NimNode	renderer: buildHtmlProcedure(root: NimNode; body: NimNode): NimNode	
-buildHtml	happyx/renderer.html#buildHtml.m,untyped,untyped	renderer: buildHtml(root, html: untyped): untyped	
-Renderer	happyx/renderer.html#renderer	 Renderer	

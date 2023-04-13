@@ -1,0 +1,15 @@
+Server	happyx/ssg/server.html#Server	server: Server	
+fgColored	happyx/ssg/server.html#fgColored,string,ForegroundColor	server: fgColored(text: string; clr: ForegroundColor): string	
+fgStyled	happyx/ssg/server.html#fgStyled,string,Style	server: fgStyled(text: string; style: Style): string	
+newServer	happyx/ssg/server.html#newServer,string,int	server: newServer(address: string = &quot;127.0.0.1&quot;; port: int = 5000): Server	
+start	happyx/ssg/server.html#start.t,Server	server: start(server: Server): untyped	
+answer	happyx/ssg/server.html#answer.t,Request,string,HttpCode,HttpHeaders	server: answer(req: Request; message: string; code: HttpCode = Http200; headers: HttpHeaders = newHttpHeaders(\n    [(&quot;Content-Type&quot;, &quot;text/plain; charset=utf-8&quot;)]))	
+answerJson	happyx/ssg/server.html#answerJson.t,Request,untyped,HttpCode	server: answerJson(req: Request; data: untyped; code: HttpCode = Http200): untyped	
+answerHtml	happyx/ssg/server.html#answerHtml.t,Request,,HttpCode	server: answerHtml(req: Request; data: string | TagRef; code: HttpCode = Http200): untyped	
+parseQuery	happyx/ssg/server.html#parseQuery,string	server: parseQuery(query: string): owned(StringTableRef)	
+routes	happyx/ssg/server.html#routes.m,Server,untyped	server: routes(server: Server; body: untyped): untyped	
+initServer	happyx/ssg/server.html#initServer.m,untyped	server: initServer(body: untyped): untyped	
+serve	happyx/ssg/server.html#serve.m,string,int,untyped	server: serve(address: string; port: int; body: untyped): untyped	
+Available Path Params	happyx/ssg/server.html#available-path-params	    Available Path Params	
+Available Route Types	happyx/ssg/server.html#available-route-types	    Available Route Types	
+Server	happyx/ssg/server.html#server	 Server	

@@ -1,0 +1,8 @@
+App	happyx/spa/renderer.html#App	renderer: App	
+newApp	happyx/spa/renderer.html#newApp,string	renderer: newApp(appId: string = &quot;app&quot;): App	
+start	happyx/spa/renderer.html#start.t,App	renderer: start(app: App)	
+replaceIter	happyx/spa/renderer.html#replaceIter,NimNode,proc(NimNode),proc(NimNode)	renderer: replaceIter(root: NimNode; search: proc (x: NimNode): bool;\n            replace: proc (x: NimNode): NimNode): bool	
+buildHtmlProcedure	happyx/spa/renderer.html#buildHtmlProcedure,NimNode,NimNode	renderer: buildHtmlProcedure(root: NimNode; body: NimNode): NimNode	
+buildHtml	happyx/spa/renderer.html#buildHtml.m,untyped,untyped	renderer: buildHtml(root, html: untyped): untyped	
+routes	happyx/spa/renderer.html#routes.m,App,untyped	renderer: routes(app: App; body: untyped): untyped	
+Renderer	happyx/spa/renderer.html#renderer	 Renderer	

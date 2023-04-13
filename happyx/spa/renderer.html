@@ -17,10 +17,10 @@
 <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600' rel='stylesheet' type='text/css'/>
 
 <!-- CSS -->
-<title>src/happyx/renderer</title>
-<link rel="stylesheet" type="text/css" href="../nimdoc.out.css">
+<title>src/happyx/spa/renderer</title>
+<link rel="stylesheet" type="text/css" href="../../nimdoc.out.css">
 
-<script type="text/javascript" src="../dochack.js"></script>
+<script type="text/javascript" src="../../dochack.js"></script>
 
 <script type="text/javascript">
 function main() {
@@ -69,7 +69,7 @@ window.addEventListener('DOMContentLoaded', main);
 <body>
 <div class="document" id="documentId">
   <div class="container">
-    <h1 class="title">src/happyx/renderer</h1>
+    <h1 class="title">src/happyx/spa/renderer</h1>
     <div class="row">
   <div class="three columns">
   <div class="theme-switch-wrapper">
@@ -82,7 +82,7 @@ window.addEventListener('DOMContentLoaded', main);
   <div id="global-links">
     <ul class="simple">
     <li>
-      <a href="../theindex.html">Index</a>
+      <a href="../../theindex.html">Index</a>
     </li>
     </ul>
   </div>
@@ -108,9 +108,9 @@ window.addEventListener('DOMContentLoaded', main);
 <li>
   <a class="reference reference-toplevel" href="#7" id="57">Types</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#Renderer"
-    title="Renderer = object
-  appId*: string">Renderer</a></li>
+      <li><a class="reference" href="#App"
+    title="App = object
+  appId*: string">App</a></li>
 
   </ul>
 </li>
@@ -122,9 +122,9 @@ window.addEventListener('DOMContentLoaded', main);
     title="buildHtmlProcedure(root: NimNode; body: NimNode): NimNode">buildHtmlProcedure(root: NimNode; body: NimNode): NimNode</a></li>
 
   </ul>
-  <ul class="simple nested-toc-section">newRenderer
-      <li><a class="reference" href="#newRenderer%2Cstring"
-    title="newRenderer(appId: string): Renderer">newRenderer(appId: string): Renderer</a></li>
+  <ul class="simple nested-toc-section">newApp
+      <li><a class="reference" href="#newApp%2Cstring"
+    title="newApp(appId: string = &quot;app&quot;): App">newApp(appId: string = &quot;app&quot;): App</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">replaceIter
@@ -143,6 +143,22 @@ window.addEventListener('DOMContentLoaded', main);
       <ul class="simple nested-toc-section">buildHtml
       <li><a class="reference" href="#buildHtml.m%2Cuntyped%2Cuntyped"
     title="buildHtml(root, html: untyped): untyped">buildHtml(root, html: untyped): untyped</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">routes
+      <li><a class="reference" href="#routes.m%2CApp%2Cuntyped"
+    title="routes(app: App; body: untyped): untyped">routes(app: App; body: untyped): untyped</a></li>
+
+  </ul>
+
+  </ul>
+</li>
+<li>
+  <a class="reference reference-toplevel" href="#18" id="68">Templates</a>
+  <ul class="simple simple-toc-section">
+      <ul class="simple nested-toc-section">start
+      <li><a class="reference" href="#start.t%2CApp"
+    title="start(app: App)">start(app: App)</a></li>
 
   </ul>
 
@@ -168,13 +184,13 @@ window.addEventListener('DOMContentLoaded', main);
   <div class="section" id="6">
 <h1><a class="toc-backref" href="#6">Imports</a></h1>
 <dl class="item">
-<a class="reference external" href="tag.html">tag</a>
+<a class="reference external" href="tag.html">tag</a>, <a class="reference external" href="../private/cmpltime.html">../private/cmpltime</a>
 </dl></div>
 <div class="section" id="7">
 <h1><a class="toc-backref" href="#7">Types</a></h1>
 <dl class="item">
-<div id="Renderer">
-<dt><pre><a href="renderer.html#Renderer"><span class="Identifier">Renderer</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
+<div id="App">
+<dt><pre><a href="renderer.html#App"><span class="Identifier">App</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">appId</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
 </pre></dt>
 <dd>
@@ -197,11 +213,11 @@ Builds HTML
 
 </dd>
 </div>
-<div id="newRenderer,string">
-<dt><pre><span class="Keyword">func</span> <a href="#newRenderer%2Cstring"><span class="Identifier">newRenderer</span></a><span class="Other">(</span><span class="Identifier">appId</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <a href="renderer.html#Renderer"><span class="Identifier">Renderer</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<div id="newApp,string">
+<dt><pre><span class="Keyword">func</span> <a href="#newApp%2Cstring"><span class="Identifier">newApp</span></a><span class="Other">(</span><span class="Identifier">appId</span><span class="Other">:</span> <span class="Identifier">string</span> <span class="Other">=</span> <span class="StringLit">&quot;app&quot;</span><span class="Other">)</span><span class="Other">:</span> <a href="renderer.html#App"><span class="Identifier">App</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
-Creates a new renderer
+Creates a new Singla Page Application
 
 </dd>
 </div>
@@ -255,12 +271,33 @@ Creates a new renderer
 
 </dd>
 </div>
+<div id="routes.m,App,untyped">
+<dt><pre><span class="Keyword">macro</span> <a href="#routes.m%2CApp%2Cuntyped"><span class="Identifier">routes</span></a><span class="Other">(</span><span class="Identifier">app</span><span class="Other">:</span> <a href="renderer.html#App"><span class="Identifier">App</span></a><span class="Other">;</span> <span class="Identifier">body</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
+<dd>
+
+Provides JS router for Single page application
+
+</dd>
+</div>
+
+</dl></div>
+<div class="section" id="18">
+<h1><a class="toc-backref" href="#18">Templates</a></h1>
+<dl class="item">
+<div id="start.t,App">
+<dt><pre><span class="Keyword">template</span> <a href="#start.t%2CApp"><span class="Identifier">start</span></a><span class="Other">(</span><span class="Identifier">app</span><span class="Other">:</span> <a href="renderer.html#App"><span class="Identifier">App</span></a><span class="Other">)</span></pre></dt>
+<dd>
+
+Starts single page application
+
+</dd>
+</div>
 
 </dl></div>
 <div class="section" id="19">
 <h1><a class="toc-backref" href="#19">Exports</a></h1>
 <dl class="item">
-<a href="tag.html#initTag,string,bool,StringTableRef,seq[TagRef],bool"><span class="Identifier">initTag</span></a>, <a href="tag.html#$,TagRef"><span class="Identifier">$</span></a>, <a href="tag.html#add,TagRef,varargs[TagRef]"><span class="Identifier">add</span></a>, <a href="tag.html#initTag,string,bool,seq[TagRef],bool"><span class="Identifier">initTag</span></a>, <a href="tag.html#textTag,string"><span class="Identifier">textTag</span></a>, <a href="tag.html#initTag,string,StringTableRef,seq[TagRef],bool"><span class="Identifier">initTag</span></a>, <a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a>, <a href="tag.html#get,TagRef,string"><span class="Identifier">get</span></a>, <a href="tag.html#tag,string"><span class="Identifier">tag</span></a>, <a href="tag.html#lvl,TagRef"><span class="Identifier">lvl</span></a>, <a href="tag.html#UnclosedTags"><span class="Identifier">UnclosedTags</span></a>, <a href="tag.html#initTag,string,seq[TagRef],bool"><span class="Identifier">initTag</span></a>, <a href="tag.html#Tag"><span class="Identifier">Tag</span></a>, <a href="tag.html#[]=,TagRef,string,string"><span class="Identifier">[]=</span></a>, <a href="tag.html#[],TagRef,string"><span class="Identifier">[]</span></a>
+<a href="tag.html#initTag,string,bool,StringTableRef,seq[TagRef],bool"><span class="Identifier">initTag</span></a>, <a href="tag.html#$,TagRef"><span class="Identifier">$</span></a>, <a href="tag.html#add,TagRef,varargs[TagRef]"><span class="Identifier">add</span></a>, <a href="tag.html#initTag,string,bool,seq[TagRef],bool"><span class="Identifier">initTag</span></a>, <a href="tag.html#textTag,string"><span class="Identifier">textTag</span></a>, <a href="tag.html#initTag,string,StringTableRef,seq[TagRef],bool"><span class="Identifier">initTag</span></a>, <a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a>, <a href="tag.html#get,TagRef,string"><span class="Identifier">get</span></a>, <a href="tag.html#tag,string"><span class="Identifier">tag</span></a>, <a href="tag.html#lvl,TagRef"><span class="Identifier">lvl</span></a>, <a href="tag.html#UnclosedTags"><span class="Identifier">UnclosedTags</span></a>, <a href="tag.html#initTag,string,seq[TagRef],bool"><span class="Identifier">initTag</span></a>, <a href="tag.html#findByTag,TagRef,string"><span class="Identifier">findByTag</span></a>, <a href="tag.html#Tag"><span class="Identifier">Tag</span></a>, <a href="tag.html#[]=,TagRef,string,string"><span class="Identifier">[]=</span></a>, <a href="tag.html#[],TagRef,string"><span class="Identifier">[]</span></a>
 </dl></div>
 
   </div>
@@ -270,7 +307,7 @@ Creates a new renderer
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-04-12 03:50:30 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-04-13 13:10:29 UTC</small>
       </div>
     </div>
   </div>

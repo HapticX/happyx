@@ -1,0 +1,25 @@
+State	happyx/spa/state.html#State	state: State	
+remember	happyx/spa/state.html#remember,T	state: remember[T](val: T): State[T]	
+`$`	happyx/spa/state.html#$,State	state: `$`(self: State): string	
+`==`	happyx/spa/state.html#==,State[T],State[T]	state: `==`[T](self, other: State[T]): bool	
+`&amp;`	happyx/spa/state.html#&,,	state: `&amp;`[T](self`gensym0, other`gensym0: State[T]): T	
+`+`	happyx/spa/state.html#+,,	state: `+`[T](self`gensym1, other`gensym1: State[T]): T	
+`-`	happyx/spa/state.html#-,,	state: `-`[T](self`gensym2, other`gensym2: State[T]): T	
+`*`	happyx/spa/state.html#*,,	state: `*`[T](self`gensym3, other`gensym3: State[T]): T	
+`/`	happyx/spa/state.html#/,,	state: `/`[T](self`gensym4, other`gensym4: State[T]): T	
+get	happyx/spa/state.html#get,State[T]	state: get[T](self: State[T]): T	
+set	happyx/spa/state.html#set,State[T],T	state: set[T](self: State[T]; value: T)	
+`[]`	happyx/spa/state.html#[],State[T],int	state: `[]`[T](self: State[T]; idx: int): auto	
+items	happyx/spa/state.html#items.i,State[T]	state: items[T](self: State[T]): auto	
+bool	happyx/spa/state.html#bool.c,State	state: bool(self: State): bool	
+string	happyx/spa/state.html#string.c,State	state: string(self: State): string	
+int	happyx/spa/state.html#int.c,State	state: int(self: State): int	
+float	happyx/spa/state.html#float.c,State	state: float(self: State): float	
+char	happyx/spa/state.html#char.c,State	state: char(self: State): char	
+int8	happyx/spa/state.html#int8.c,State	state: int8(self: State): int8	
+int16	happyx/spa/state.html#int16.c,State	state: int16(self: State): int16	
+int32	happyx/spa/state.html#int32.c,State	state: int32(self: State): int32	
+int64	happyx/spa/state.html#int64.c,State	state: int64(self: State): int64	
+float32	happyx/spa/state.html#float32.c,State	state: float32(self: State): float32	
+float64	happyx/spa/state.html#float64.c,State	state: float64(self: State): float64	
+State	happyx/spa/state.html#state	 State	

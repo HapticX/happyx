@@ -17,10 +17,10 @@
 <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600' rel='stylesheet' type='text/css'/>
 
 <!-- CSS -->
-<title>src/happyx/tag</title>
-<link rel="stylesheet" type="text/css" href="../nimdoc.out.css">
+<title>src/happyx/spa/tag</title>
+<link rel="stylesheet" type="text/css" href="../../nimdoc.out.css">
 
-<script type="text/javascript" src="../dochack.js"></script>
+<script type="text/javascript" src="../../dochack.js"></script>
 
 <script type="text/javascript">
 function main() {
@@ -69,7 +69,7 @@ window.addEventListener('DOMContentLoaded', main);
 <body>
 <div class="document" id="documentId">
   <div class="container">
-    <h1 class="title">src/happyx/tag</h1>
+    <h1 class="title">src/happyx/spa/tag</h1>
     <div class="row">
   <div class="three columns">
   <div class="theme-switch-wrapper">
@@ -82,7 +82,7 @@ window.addEventListener('DOMContentLoaded', main);
   <div id="global-links">
     <ul class="simple">
     <li>
-      <a href="../theindex.html">Index</a>
+      <a href="../../theindex.html">Index</a>
     </li>
     </ul>
   </div>
@@ -144,6 +144,11 @@ window.addEventListener('DOMContentLoaded', main);
   <ul class="simple nested-toc-section">add
       <li><a class="reference" href="#add%2CTagRef%2Cvarargs%5BTagRef%5D"
     title="add(self: TagRef; tags: varargs[TagRef])">add(self: TagRef; tags: varargs[TagRef])</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">findByTag
+      <li><a class="reference" href="#findByTag%2CTagRef%2Cstring"
+    title="findByTag(self: TagRef; tag: string): seq[TagRef]">findByTag(self: TagRef; tag: string): seq[TagRef]</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">get
@@ -283,6 +288,14 @@ Adds <tt class="docutils literal"><span class="pre"><span class="Identifier">oth
 
 </dd>
 </div>
+<div id="findByTag,TagRef,string">
+<dt><pre><span class="Keyword">func</span> <a href="#findByTag%2CTagRef%2Cstring"><span class="Identifier">findByTag</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a><span class="Other">;</span> <span class="Identifier">tag</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a><span class="Other">]</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<dd>
+
+Finds all tags by name
+
+</dd>
+</div>
 <div id="get,TagRef,string">
 <dt><pre><span class="Keyword">func</span> <a href="#get%2CTagRef%2Cstring"><span class="Identifier">get</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a><span class="Other">;</span> <span class="Identifier">tag</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
@@ -403,7 +416,7 @@ Shortcur for <a class="reference external" href="#initTag,string,bool,seq[TagRef
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-04-12 03:50:27 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-04-13 13:10:25 UTC</small>
       </div>
     </div>
   </div>
