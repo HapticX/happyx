@@ -19,7 +19,7 @@ import
   regex,
   json,
   os,
-  ./tag
+  ../spa/tag
 
 export
   strutils,

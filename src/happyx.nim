@@ -4,13 +4,13 @@
 ## 
 when not defined(js):
   import
-    happyx/[server]
+    happyx/ssg/[server]
 
   export
     server
 
 import
-  happyx/[renderer, state]
+  happyx/spa/[renderer, state]
 
 export
   renderer,

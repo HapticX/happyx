@@ -13,7 +13,13 @@ import
   strutils,
   strformat,
   regex,
+  dom,
+  jsconsole,
   ./tag
+
+when defined(js):
+  export
+    jsconsole
 
 export
   strformat,
@@ -25,15 +31,20 @@ export
 
 
 type
-  Renderer* = object
+  App* = object
     appId*: string
 
 
-func newRenderer*(appId: string): Renderer =
-  ## Creates a new renderer
-  result = Renderer(
+func newApp*(appId: string = "app"): App =
+  ## Creates a new Singla Page Application
+  result = App(
     appId: appId
   )
+
+
+func start*(app: App) =
+  ## Starts single page application
+  discard
 
 
 proc replaceIter*(
@@ -250,3 +261,14 @@ macro buildHtml*(root, html: untyped): untyped =
   ## 
   result = buildHtmlProcedure(root, html)
   echo treeRepr result
+
+
+macro routes*(app: App, body: untyped): untyped =
+  ## Provides JS router for Single page application
+  result = newProc(
+    ident("router"),
+    [newEmptyNode(), newIdentDefs(ident("path"), ident("string"))]
+  )
+  result.body = newStmtList()
+  for statement in body:
+    discard
