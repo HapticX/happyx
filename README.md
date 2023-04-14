@@ -60,11 +60,11 @@ initServer:
 #### Run 💻
 ##### Default
 ```bash
-nim c -r -d:ssl -d:debug main
+nim c -r -d:debug main
 ```
 ##### Httpx
 ```bash
-nim c -r -d:ssl -d:debug -d:httpx main
+nim c -r -d:debug -d:httpx main
 ```
 
 ### SPA
