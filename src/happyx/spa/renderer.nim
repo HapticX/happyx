@@ -76,6 +76,16 @@ proc getTagName*(name: string): string {.compileTime.} =
     name
 
 
+proc attribute(attr: NimNode): NimNode {. compileTime .} =
+  newColonExpr(
+    newStrLitNode($attr[0]),
+    if attr[1].kind in [nnkStrLit, nnkTripleStrLit]:
+      newCall("fmt", attr[1])
+    else:
+      attr[1]
+  )
+
+
 proc buildHtmlProcedure*(root: NimNode, body: NimNode): NimNode {.compileTime.} =
   ## Builds HTML
   result = newCall("initTag", newStrLitNode(getTagName($root)))
@@ -90,14 +100,14 @@ proc buildHtmlProcedure*(root: NimNode, body: NimNode): NimNode {.compileTime.} 
       #   ...
       if statement.len-2 > 0 and statementList.kind == nnkStmtList:
         for attr in statement[1 .. statement.len-2]:
-          attrs.add(newColonExpr(newStrLitNode($attr[0]), attr[1]))
+          attrs.add(attribute(attr))
         var builded = buildHtmlProcedure(tagName, statementList)
         builded.insert(2, newCall("newStringTable", attrs))
         result.add(builded)
       # tag(attr="value")
       elif statementList.kind != nnkStmtList:
         for attr in statement[1 .. statement.len-1]:
-          attrs.add(newColonExpr(newStrLitNode($attr[0]), attr[1]))
+          attrs.add(attribute(attr))
         if attrs.len > 0:
           result.add(newCall("initTag", tagName, newCall("newStringTable", attrs)))
         else:
@@ -181,13 +191,13 @@ proc buildHtmlProcedure*(root: NimNode, body: NimNode): NimNode {.compileTime.} 
             # tag(attr="value"):
             #   ...
             for attr in x[1 .. x.len-2]:
-              attrs.add(newColonExpr(newStrLitNode($attr[0]), attr[1]))
+              attrs.add(attribute(attr))
           else:
             builded = buildHtmlProcedure(x[0], newStmtList())
             # tag(attr="value"):
             #   ...
             for attr in x[1 .. x.len-1]:
-              attrs.add(newColonExpr(newStrLitNode($attr[0]), attr[1]))
+              attrs.add(attribute(attr))
           builded.insert(2, newCall("newStringTable", attrs))
           newNimNode(nnkIfExpr).add(
             newNimNode(nnkElifExpr).add(
@@ -207,11 +217,6 @@ proc buildHtmlProcedure*(root: NimNode, body: NimNode): NimNode {.compileTime.} 
             )
           )
         )
-      # nnkStrLit with {}
-      discard statement[^1].replaceIter(
-        (x) => x.kind == nnkStrLit and ($x).find(pattern, matches),
-        (x) => newCall("fmt", x)
-      )
       # as varibale with {}
       discard statement[^1].replaceIter(
         (x) => x.kind == nnkCurly and x.len == 1 and x[0].kind == nnkIdent and $x[0] in arguments,
