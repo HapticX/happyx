@@ -39,6 +39,7 @@ nimble install https://github.com/HapticX/happyx
 ```
 
 ## Usage ▶
+### SSG
 ```nim
 import happyx
 
@@ -56,17 +57,17 @@ initServer:
   
   server.start()
 ```
-## Run 💻
-### Default
+#### Run 💻
+##### Default
 ```bash
 nim c -r -d:ssl -d:debug main
 ```
-### Httpx
+##### Httpx
 ```bash
 nim c -r -d:ssl -d:debug -d:httpx main
 ```
 
-## SPA
+### SPA
 `index.html`
 ```html
 <html>
@@ -89,7 +90,7 @@ app.routes:
       "User ID is {userId}"
 app.start()
 ```
-### Run 💻
+#### Run 💻
 Compile nim script and open HTML file in your browser.
 ```bash
 nim js main
