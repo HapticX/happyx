@@ -20,7 +20,7 @@ app.routes:
         else:
           {left - right}
   notfound:
-    buildHtml(`div`):
+    buildHtml(tDiv):
       class = "myClass"
       "Oops! Not found!"
 

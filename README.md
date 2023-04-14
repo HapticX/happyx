@@ -66,6 +66,30 @@ nim c -r -d:ssl -d:debug main
 nim c -r -d:ssl -d:debug -d:httpx main
 ```
 
+## SPA
+`index.html`
+```html
+<html>
+  <head></head>
+  <body><div id="app"></div></body>
+</html>
+```
+`main.nim`
+```nim
+import happyx
+
+var app = newApp()
+app.routes:
+  "/user{userId:int}":
+    buildHtml(h1):
+      "User ID is {userId}"
+app.start()
+```
+### Run 💻
+```bash
+nim js main
+```
+
 
 # Contributing 🌀
 See [Contributing.md](https://github.com/HapticX/happyx/blob/master/.github/CONTRIBUTING.md) for more information
