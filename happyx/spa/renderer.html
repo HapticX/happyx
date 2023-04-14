@@ -147,7 +147,7 @@ window.addEventListener('DOMContentLoaded', main);
   <ul class="simple simple-toc-section">
       <ul class="simple nested-toc-section">buildHtml
       <li><a class="reference" href="#buildHtml.m%2Cuntyped%2Cuntyped"
-    title="buildHtml(root, html: untyped): untyped">buildHtml(root, html: untyped): untyped</a></li>
+    title="buildHtml(root: untyped; html: untyped): untyped">buildHtml(root: untyped; html: untyped): untyped</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">routes
@@ -223,6 +223,8 @@ Builds HTML
                                         <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
+<p>Checks tag name at compile time</p>
+<p>tagDiv, tDiv, hDiv -&gt; div</p>
 
 
 </dd>
@@ -251,7 +253,7 @@ Creates a new Singla Page Application
 <h1><a class="toc-backref" href="#17">Macros</a></h1>
 <dl class="item">
 <div id="buildHtml.m,untyped,untyped">
-<dt><pre><span class="Keyword">macro</span> <a href="#buildHtml.m%2Cuntyped%2Cuntyped"><span class="Identifier">buildHtml</span></a><span class="Other">(</span><span class="Identifier">root</span><span class="Other">,</span> <span class="Identifier">html</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
+<dt><pre><span class="Keyword">macro</span> <a href="#buildHtml.m%2Cuntyped%2Cuntyped"><span class="Identifier">buildHtml</span></a><span class="Other">(</span><span class="Identifier">root</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">;</span> <span class="Identifier">html</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
 
 <p><tt class="docutils literal"><span class="pre"><span class="Identifier">buildHtml</span></span></tt> macro provides building HTML tags with YAML-like syntax.</p>
@@ -321,7 +323,7 @@ Starts single page application
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-04-14 06:10:54 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-04-14 12:27:06 UTC</small>
       </div>
     </div>
   </div>
