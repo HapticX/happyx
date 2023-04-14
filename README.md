@@ -90,6 +90,7 @@ app.routes:
 app.start()
 ```
 ### Run 💻
+Compile nim script and open HTML file in your browser.
 ```bash
 nim js main
 ```
