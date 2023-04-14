@@ -29,6 +29,8 @@ export
   logging,
   htmlgen,
   strtabs,
+  strutils,
+  regex,
   sugar,
   tag
 
@@ -63,9 +65,12 @@ proc replaceIter*(
 
 
 proc getTagName*(name: string): string {.compileTime.} =
+  ## Checks tag name at compile time
+  ## 
+  ## tagDiv, tDiv, hDiv -> div
   if re"^tag[A-Z]" in name:
     name[3..^1].toLower()
-  elif re"^h[A-Z]" in name:
+  elif re"^[ht][A-Z]" in name:
     name[1..^1].toLower()
   else:
     name
@@ -73,7 +78,7 @@ proc getTagName*(name: string): string {.compileTime.} =
 
 proc buildHtmlProcedure*(root: NimNode, body: NimNode): NimNode {.compileTime.} =
   ## Builds HTML
-  result = newCall("initTag", newStrLitNode($root))
+  result = newCall("initTag", newStrLitNode(getTagName($root)))
 
   for statement in body:
     if statement.kind == nnkCall:
@@ -104,7 +109,22 @@ proc buildHtmlProcedure*(root: NimNode, body: NimNode): NimNode {.compileTime.} 
     
     elif statement.kind in [nnkStrLit, nnkTripleStrLit]:
       # "Raw text"
-      result.add(newCall("initTag", statement, newLit(true)))
+      result.add(newCall("initTag", newCall("fmt", statement), newLit(true)))
+    
+    elif statement.kind == nnkAsgn:
+      # Attributes
+      if result.len == 2:
+        result.add(newCall("newStringTable", newNimNode(nnkTableConstr).add(
+          newColonExpr(newStrLitNode($statement[0]), statement[1])
+        )))
+      elif result[2][1].kind == nnkTableConstr:
+        result[2][1].add(
+          newColonExpr(newStrLitNode($statement[0]), statement[1])
+        )
+      else:
+        result.insert(2, newCall("newStringTable", newNimNode(nnkTableConstr).add(
+          newColonExpr(newStrLitNode($statement[0]), statement[1])
+        )))
     
     elif statement.kind == nnkIdent:
       # tag
@@ -230,7 +250,7 @@ proc buildHtmlProcedure*(root: NimNode, body: NimNode): NimNode {.compileTime.} 
       result.add(newCall("@", arr))
 
 
-macro buildHtml*(root, html: untyped): untyped =
+macro buildHtml*(root: untyped, html: untyped): untyped =
   ## `buildHtml` macro provides building HTML tags with YAML-like syntax.
   ## 
   ## Args:
@@ -272,16 +292,18 @@ macro buildHtml*(root, html: untyped): untyped =
   ##          for i in state:
   ##            i
   ## 
-  result = buildHtmlProcedure(root, html)
-  echo treeRepr result
+  buildHtmlProcedure(root, html)
 
 
 macro routes*(app: App, body: untyped): untyped =
   ## Provides JS router for Single page application
   let
-    router = newProc(ident("router"))
-    navigateTo = newProc(
-      ident("navigateTo"),
+    iPath = ident("path")
+    iHtml = ident("html")
+    iRouter = ident("router")
+    router = newProc(iRouter)
+    navigate = newProc(
+      ident("navigate"),
       [newEmptyNode(), newIdentDefs(ident("path"), ident("string"))]
     )
     onDOMContentLoaded = newProc(
@@ -289,9 +311,9 @@ macro routes*(app: App, body: untyped): untyped =
       [newEmptyNode(), newIdentDefs(ident("ev"), ident("Event"))]
     )
     ifStmt = newNimNode(nnkIfStmt)
-    iPath = ident("path")
-    iHtml = ident("html")
-  navigateTo.body = newStmtList(
+
+  # Navigate proc
+  navigate.body = newStmtList(
     newCall(
       "pushState",
       newDotExpr(ident("window"), ident("history")),
@@ -299,11 +321,14 @@ macro routes*(app: App, body: untyped): untyped =
       newLit(""),
       iPath
     ),
-    newCall("router")
+    newCall(iRouter)
   )
-  onDOMContentLoaded.body = newStmtList(newCall("router"))
+
+  # On DOM Content Loaded
+  onDOMContentLoaded.body = newStmtList(newCall(iRouter))
   router.body = newStmtList()
 
+  # Router
   router.body.add(
     newLetStmt(
       ident("elem"),
@@ -311,7 +336,13 @@ macro routes*(app: App, body: untyped): untyped =
     ),
     newLetStmt(
       ident("path"),
-      newDotExpr(newDotExpr(ident("window"), ident("location")), ident("hash"))
+      newCall(
+        "strip",
+        newCall("$", newDotExpr(newDotExpr(ident("window"), ident("location")), ident("hash"))),
+        newLit(true),
+        newLit(false),
+        newNimNode(nnkCurly).add(newLit('#'))
+      )
     ),
     newNimNode(nnkVarSection).add(newIdentDefs(
       iHtml, ident("TagRef"), newNilLit()
@@ -321,10 +352,27 @@ macro routes*(app: App, body: untyped): untyped =
   for statement in body:
     if statement.kind in [nnkCommand, nnkCall]:
       if statement.len == 2 and statement[0].kind == nnkStrLit:
-        ifStmt.add(newNimNode(nnkElifBranch).add(
-          newCall("==", iPath, statement[0]),
-          newAssignment(iHtml, statement[1])
-        ))
+        let exported = exportRouteArgs(
+          iPath,
+          statement[0],
+          statement[1]
+        )
+        # Route contains params
+        if exported.len > 0:
+          exported[^1][^1] = newAssignment(iHtml, exported[^1][^1])
+          ifStmt.add(exported)
+        # Route doesn't contains any params
+        else:
+          ifStmt.add(newNimNode(nnkElifBranch).add(
+            newCall("==", iPath, statement[0]),
+            newAssignment(iHtml, statement[1])
+          ))
+      elif statement[1].kind == nnkStmtList and statement[0].kind == nnkIdent:
+        case $statement[0]
+        of "notfound":
+          router.body.add(
+            newAssignment(iHtml, statement[1])
+          )
   
   if ifStmt.len > 0:
     router.body.add(ifStmt)
@@ -344,5 +392,5 @@ macro routes*(app: App, body: untyped): untyped =
   newStmtList(
     router,
     onDOMContentLoaded,
-    navigateTo
+    navigate,
   )

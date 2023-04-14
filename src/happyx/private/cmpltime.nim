@@ -27,14 +27,12 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.
   let
     regExp = newCall("re", newStrLitNode("^" & routePathStr & "$"))
     found = path.findAll(re"\{([a-zA-Z][a-zA-Z0-9_]*):(int|float|string|path|word|/[\s\S]+?/)\}")
-    foundLen = found.len
   elifBranch.add(newCall("contains", urlPath, regExp), body)
   var idx = 0
   for i in found:
     let
       name = ident(i.group(0, path)[0])
       argTypeStr = i.group(1, path)[0]
-      argType = ident(argTypeStr)
       letSection = newNimNode(nnkLetSection).add(
         newNimNode(nnkIdentDefs).add(name, newEmptyNode())
       )

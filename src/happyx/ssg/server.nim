@@ -250,7 +250,7 @@ macro routes*(server: Server, body: untyped): untyped =
     if statement.kind in [nnkCall, nnkCommand]:
       # "/...": statement list
       if statement[1].kind == nnkStmtList and statement[0].kind == nnkStrLit:
-        var exported = exportRouteArgs(path, statement[0], statement[1])
+        let exported = exportRouteArgs(path, statement[0], statement[1])
         if exported.len > 0:  # /my/path/with{custom:int}/{param:path}
           ifStmt.add(exported)
         else:  # /just-my-path
@@ -259,10 +259,10 @@ macro routes*(server: Server, body: untyped): untyped =
           ))
       # notfound: statement list
       elif statement[1].kind == nnkStmtList and statement[0].kind == nnkIdent:
-        let name = $statement[0]
-        if name == "notfound":
+        case $statement[0]
+        of "notfound":
           notFoundNode = statement[1]
-        elif name == "middleware" and statement.len == 2:
+        of "middleware":
           stmtList.insert(0, statement[1])
       # reqMethod("/..."):
       #   ...
@@ -286,7 +286,7 @@ macro routes*(server: Server, body: untyped): untyped =
             )
           )
           continue
-        var exported = exportRouteArgs(path, statement[1], statement[2])
+        let exported = exportRouteArgs(path, statement[1], statement[2])
         if exported.len > 0:  # /my/path/with{custom:int}/{param:path}
           exported[0] = newCall("and", exported[0], newCall("==", reqMethodStringify, newStrLitNode(name)))
           ifStmt.add(exported)
