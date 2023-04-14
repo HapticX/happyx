@@ -7,13 +7,14 @@ var state2 = remember @["h1", "h2", "h3", "h4", "h5", "h6"]
 
 var html =
   buildHtml(`div`):
-    h1(class="myClass", style="{color:red}"):
+    h1(class="myClass", style="color: red"):
       "Hello, world!"
-    `div`:
-      h5:
-        "Hello, world!"
-      h6:
-        "Hello, world!"
+    # Different styles of tag naming
+    # <h1></h1>
+    hH1
+    tagH1
+    `h1`
+    h1
     if state:  # IF-ELIF-ELSE
       `div`:
         "True!"
@@ -31,7 +32,7 @@ var html =
       "click!"
     for i in state2:  # FOR STMT
       i
-    `div`(style="{background: red}"):
+    `div`(style="background: red"):
       for i in state2:  # FOR STMT
         i(attr="{i}{i}{i}"):
           "current tag is {i}"

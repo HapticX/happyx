@@ -62,6 +62,15 @@ proc replaceIter*(
       result = true
 
 
+proc getTagName*(name: string): string {.compileTime.} =
+  if re"^tag[A-Z]" in name:
+    name[3..^1].toLower()
+  elif re"^h[A-Z]" in name:
+    name[1..^1].toLower()
+  else:
+    name
+
+
 proc buildHtmlProcedure*(root: NimNode, body: NimNode): NimNode {.compileTime.} =
   ## Builds HTML
   result = newCall("initTag", newStrLitNode($root))
@@ -69,7 +78,7 @@ proc buildHtmlProcedure*(root: NimNode, body: NimNode): NimNode {.compileTime.} 
   for statement in body:
     if statement.kind == nnkCall:
       let
-        tagName = newStrLitNode($statement[0])
+        tagName = newStrLitNode(getTagName($statement[0]))
         statementList = statement[^1]
       var attrs = newNimNode(nnkTableConstr)
       # tag(attr="value"):
@@ -99,7 +108,11 @@ proc buildHtmlProcedure*(root: NimNode, body: NimNode): NimNode {.compileTime.} 
     
     elif statement.kind == nnkIdent:
       # tag
-      result.add(newCall("tag", newStrLitNode($statement)))
+      result.add(newCall("tag", newStrLitNode(getTagName($statement))))
+    
+    elif statement.kind == nnkAccQuoted:
+      # `tag`
+      result.add(newCall("tag", newStrLitNode(getTagName($statement[0]))))
     
     elif statement.kind == nnkCurly and statement.len == 1:
       # variables
