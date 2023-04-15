@@ -12,6 +12,7 @@ import
   sugar,
   strutils,
   strformat,
+  tables,
   regex,
   ./tag,
   ../private/cmpltime
@@ -30,14 +31,27 @@ export
   htmlgen,
   strtabs,
   strutils,
+  tables,
   regex,
   sugar,
   tag
 
 
 type
+  AppEventHandler* = proc()
   App* = object
     appId*: string
+
+
+var eventHandlers*: seq[AppEventHandler] = @[]
+
+
+when defined(js):
+  {.emit: "function callEventHandler(idx) {".}
+  var idx: int
+  {.emit: "`idx` = idx;" .}
+  eventHandlers[idx]()
+  {.emit: "}" .}
 
 
 func newApp*(appId: string = "app"): App =
@@ -86,9 +100,23 @@ proc attribute(attr: NimNode): NimNode {. compileTime .} =
   )
 
 
-proc buildHtmlProcedure*(root: NimNode, body: NimNode): NimNode {.compileTime.} =
+proc addAttribute(node, key, value: NimNode) {. compileTime .} =
+  if node.len == 2:
+    node.add(newCall("newStringTable", newNimNode(nnkTableConstr).add(
+      newColonExpr(newStrLitNode($key), value)
+    )))
+  elif node[2][1].kind == nnkTableConstr:
+    node[2][1].add(newColonExpr(newStrLitNode($key), value))
+  else:
+    node.insert(2, newCall("newStringTable", newNimNode(nnkTableConstr).add(
+      newColonExpr(newStrLitNode($key), value)
+    )))
+
+
+proc buildHtmlProcedure*(root, body: NimNode, uniqueId: ptr int): NimNode {.compileTime.} =
   ## Builds HTML
-  result = newCall("initTag", newStrLitNode(getTagName($root)))
+  let elementName = newStrLitNode(getTagName($root))
+  result = newCall("initTag", elementName)
 
   for statement in body:
     if statement.kind == nnkCall:
@@ -101,7 +129,7 @@ proc buildHtmlProcedure*(root: NimNode, body: NimNode): NimNode {.compileTime.} 
       if statement.len-2 > 0 and statementList.kind == nnkStmtList:
         for attr in statement[1 .. statement.len-2]:
           attrs.add(attribute(attr))
-        var builded = buildHtmlProcedure(tagName, statementList)
+        var builded = buildHtmlProcedure(tagName, statementList, uniqueId)
         builded.insert(2, newCall("newStringTable", attrs))
         result.add(builded)
       # tag(attr="value")
@@ -115,7 +143,7 @@ proc buildHtmlProcedure*(root: NimNode, body: NimNode): NimNode {.compileTime.} 
       # tag:
       #   ...
       else:
-        result.add(buildHtmlProcedure(tagName, statementList))
+        result.add(buildHtmlProcedure(tagName, statementList, uniqueId))
     
     elif statement.kind in [nnkStrLit, nnkTripleStrLit]:
       # "Raw text"
@@ -123,18 +151,31 @@ proc buildHtmlProcedure*(root: NimNode, body: NimNode): NimNode {.compileTime.} 
     
     elif statement.kind == nnkAsgn:
       # Attributes
-      if result.len == 2:
-        result.add(newCall("newStringTable", newNimNode(nnkTableConstr).add(
-          newColonExpr(newStrLitNode($statement[0]), statement[1])
-        )))
-      elif result[2][1].kind == nnkTableConstr:
-        result[2][1].add(
-          newColonExpr(newStrLitNode($statement[0]), statement[1])
+      result.addAttribute(statement[0], statement[1])
+    
+    # Events handling
+    elif statement.kind == nnkPrefix and $statement[0] == "@":
+      let
+        event = $statement[1]
+        uId = uniqueId[]
+        procedure = newNimNode(nnkLambda).add(
+          newEmptyNode(), newEmptyNode(), newEmptyNode(),
+          newNimNode(nnkFormalParams).add(
+            newEmptyNode()
+          ),
+          newEmptyNode(), newEmptyNode(),
+          newStmtList()
         )
-      else:
-        result.insert(2, newCall("newStringTable", newNimNode(nnkTableConstr).add(
-          newColonExpr(newStrLitNode($statement[0]), statement[1])
-        )))
+      inc uniqueId[]
+      procedure.body = statement[2]
+      result.addAttribute(
+        newStrLitNode(fmt"on{event}"),
+        newStrLitNode(fmt"callEventHandler({uId})")
+      )
+      result.add(newStmtList(
+        newCall("add", ident("eventHandlers"), procedure),
+        newNilLit()
+      ))
     
     elif statement.kind == nnkIdent:
       # tag
@@ -157,11 +198,11 @@ proc buildHtmlProcedure*(root: NimNode, body: NimNode): NimNode {.compileTime.} 
       for branch in statement:
         if branch.kind == nnkElifBranch:
           ifExpr.add(newNimNode(nnkElifExpr).add(
-            branch[0], buildHtmlProcedure(ident("div"), branch[1]).add(newLit(true))
+            branch[0], buildHtmlProcedure(ident("div"), branch[1], uniqueId).add(newLit(true))
           ))
         else:
           ifExpr.add(newNimNode(nnkElseExpr).add(
-            buildHtmlProcedure(ident("div"), branch[0]).add(newLit(true))
+            buildHtmlProcedure(ident("div"), branch[0], uniqueId).add(newLit(true))
           ))
       if ifExpr.len == 1:
         ifExpr.add(newNimNode(nnkElseExpr).add(
@@ -176,8 +217,6 @@ proc buildHtmlProcedure*(root: NimNode, body: NimNode): NimNode {.compileTime.} 
         arguments = collect(newSeq):
           for i in statement[0..statement.len-3]:
             $i
-        pattern = re("\\{(" & arguments.join("|") & ")\\}")
-      var matches: RegexMatch
       # nnkCall
       var replaced = statement[^1].replaceIter(
         (x) => x.kind == nnkCall and $x[0] in arguments,
@@ -187,13 +226,13 @@ proc buildHtmlProcedure*(root: NimNode, body: NimNode): NimNode {.compileTime.} 
             builded: NimNode
             attrs = newNimNode(nnkTableConstr)
           if stmtList.kind == nnkStmtList:
-            builded = buildHtmlProcedure(x[0], x[^1])
+            builded = buildHtmlProcedure(x[0], x[^1], uniqueId)
             # tag(attr="value"):
             #   ...
             for attr in x[1 .. x.len-2]:
               attrs.add(attribute(attr))
           else:
-            builded = buildHtmlProcedure(x[0], newStmtList())
+            builded = buildHtmlProcedure(x[0], newStmtList(), uniqueId)
             # tag(attr="value"):
             #   ...
             for attr in x[1 .. x.len-1]:
@@ -297,7 +336,8 @@ macro buildHtml*(root: untyped, html: untyped): untyped =
   ##          for i in state:
   ##            i
   ## 
-  buildHtmlProcedure(root, html)
+  var uniqueId = 0
+  buildHtmlProcedure(root, html, addr uniqueId)
 
 
 macro routes*(app: App, body: untyped): untyped =

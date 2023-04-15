@@ -42,6 +42,8 @@ func initTag*(name: string, attrs: StringTableRef, children: seq[TagRef] = @[], 
     attrs: attrs, children: @[], childrenToParent: childrenToParent
   )
   for child in children:
+    if child.isNil():
+      continue
     if child.childrenToParent:
       for c in child.children:
         c.parent = result
@@ -67,6 +69,8 @@ func initTag*(name: string, children: seq[TagRef] = @[], childrenToParent: bool 
     childrenToParent: childrenToParent
   )
   for child in children:
+    if child.isNil():
+      continue
     if child.childrenToParent:
       for c in child.children:
         c.parent = result
@@ -93,6 +97,8 @@ func initTag*(name: string, isText: bool, attrs: StringTableRef, children: seq[T
     attrs: attrs, children: @[], childrenToParent: childrenToParent
   )
   for child in children:
+    if child.isNil():
+      continue
     if child.childrenToParent:
       for c in child.children:
         c.parent = result
@@ -110,6 +116,8 @@ func initTag*(name: string, isText: bool, children: seq[TagRef] = @[], childrenT
     attrs: newStringTable(), children: @[], childrenToParent: childrenToParent
   )
   for child in children:
+    if child.isNil():
+      continue
     if child.childrenToParent:
       for c in child.children:
         c.parent = result
@@ -174,6 +182,13 @@ func `[]`*(self: TagRef, attrName: string): string {.inline.} =
 func `[]=`*(self: TagRef, attrName: string, attrValue: string) {.inline.} =
   ## Sets a new value for attribute or create new attribute
   self.attrs[attrName] = attrValue
+
+
+func get*(self: TagRef, attrName: string, default: string): string {.inline.} =
+  if attrName in self.attrs:
+    self.attrs[attrName]
+  else:
+    default
 
 
 func findByTag*(self: TagRef, tag: string): seq[TagRef] =
