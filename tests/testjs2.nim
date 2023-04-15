@@ -10,6 +10,11 @@ app.routes:
     echo path
     buildHtml(`div`):
       "Hello, world!"
+      button:
+        "Go to /visit"
+        @click:
+          echo "Clicked!"
+          app.route("/visit")
 
   "/visit":
     buildHtml(tDiv):
@@ -17,9 +22,18 @@ app.routes:
       tDiv(class="bg-gray-700 text-pink-400 px-8 py-24"):
         "This page visited 0 times"
       button:
-        "Click for increase"
+        "Go to /visit"
         @click:
           echo "Clicked!"
+          app.route("/visit")
+      button:
+        "Go to /"
+        @click:
+          app.route("/")
+      button:
+        "Go to /calc"
+        @click:
+          app.route("/calc5+5")
 
   "/calc{left:int}{op:/[\\+\\-]/}{right:int}":
     echo op
@@ -31,6 +45,11 @@ app.routes:
           {left + right}
         else:
           {left - right}
+      button:
+        "Go to /visit"
+        @click:
+          echo "Clicked!"
+          app.route("/visit")
 
   notfound:
     buildHtml(tDiv):

@@ -41,9 +41,12 @@ type
   AppEventHandler* = proc()
   App* = object
     appId*: string
+    router*: proc()
 
 
-var eventHandlers*: seq[AppEventHandler] = @[]
+var
+  eventHandlers* = newTable[int, AppEventHandler]()
+  uniqueId {.compileTime.} = 0
 
 
 when defined(js):
@@ -52,6 +55,13 @@ when defined(js):
   {.emit: "`idx` = idx;" .}
   eventHandlers[idx]()
   {.emit: "}" .}
+
+
+func route*(app: App, path: cstring) =
+  when defined(js):
+    {.emit: "console.log('#' + `path`);" .}
+    {.emit: "window.history.pushState(null, null, '#' + `path`);" .}
+    {.emit: "`app`.`router`();" .}
 
 
 func newApp*(appId: string = "app"): App =
@@ -113,7 +123,7 @@ proc addAttribute(node, key, value: NimNode) {. compileTime .} =
     )))
 
 
-proc buildHtmlProcedure*(root, body: NimNode, uniqueId: ptr int): NimNode {.compileTime.} =
+proc buildHtmlProcedure*(root, body: NimNode): NimNode {.compileTime.} =
   ## Builds HTML
   let elementName = newStrLitNode(getTagName($root))
   result = newCall("initTag", elementName)
@@ -129,7 +139,7 @@ proc buildHtmlProcedure*(root, body: NimNode, uniqueId: ptr int): NimNode {.comp
       if statement.len-2 > 0 and statementList.kind == nnkStmtList:
         for attr in statement[1 .. statement.len-2]:
           attrs.add(attribute(attr))
-        var builded = buildHtmlProcedure(tagName, statementList, uniqueId)
+        var builded = buildHtmlProcedure(tagName, statementList)
         builded.insert(2, newCall("newStringTable", attrs))
         result.add(builded)
       # tag(attr="value")
@@ -143,7 +153,7 @@ proc buildHtmlProcedure*(root, body: NimNode, uniqueId: ptr int): NimNode {.comp
       # tag:
       #   ...
       else:
-        result.add(buildHtmlProcedure(tagName, statementList, uniqueId))
+        result.add(buildHtmlProcedure(tagName, statementList))
     
     elif statement.kind in [nnkStrLit, nnkTripleStrLit]:
       # "Raw text"
@@ -157,7 +167,6 @@ proc buildHtmlProcedure*(root, body: NimNode, uniqueId: ptr int): NimNode {.comp
     elif statement.kind == nnkPrefix and $statement[0] == "@":
       let
         event = $statement[1]
-        uId = uniqueId[]
         procedure = newNimNode(nnkLambda).add(
           newEmptyNode(), newEmptyNode(), newEmptyNode(),
           newNimNode(nnkFormalParams).add(
@@ -166,16 +175,18 @@ proc buildHtmlProcedure*(root, body: NimNode, uniqueId: ptr int): NimNode {.comp
           newEmptyNode(), newEmptyNode(),
           newStmtList()
         )
-      inc uniqueId[]
       procedure.body = statement[2]
       result.addAttribute(
         newStrLitNode(fmt"on{event}"),
-        newStrLitNode(fmt"callEventHandler({uId})")
+        newStrLitNode(fmt"callEventHandler({uniqueId})")
       )
       result.add(newStmtList(
-        newCall("add", ident("eventHandlers"), procedure),
+        newCall("once",
+          newCall("[]=", ident("eventHandlers"), newIntLitNode(uniqueId), procedure)
+        ),
         newNilLit()
       ))
+      inc uniqueId
     
     elif statement.kind == nnkIdent:
       # tag
@@ -198,11 +209,11 @@ proc buildHtmlProcedure*(root, body: NimNode, uniqueId: ptr int): NimNode {.comp
       for branch in statement:
         if branch.kind == nnkElifBranch:
           ifExpr.add(newNimNode(nnkElifExpr).add(
-            branch[0], buildHtmlProcedure(ident("div"), branch[1], uniqueId).add(newLit(true))
+            branch[0], buildHtmlProcedure(ident("div"), branch[1]).add(newLit(true))
           ))
         else:
           ifExpr.add(newNimNode(nnkElseExpr).add(
-            buildHtmlProcedure(ident("div"), branch[0], uniqueId).add(newLit(true))
+            buildHtmlProcedure(ident("div"), branch[0]).add(newLit(true))
           ))
       if ifExpr.len == 1:
         ifExpr.add(newNimNode(nnkElseExpr).add(
@@ -226,13 +237,13 @@ proc buildHtmlProcedure*(root, body: NimNode, uniqueId: ptr int): NimNode {.comp
             builded: NimNode
             attrs = newNimNode(nnkTableConstr)
           if stmtList.kind == nnkStmtList:
-            builded = buildHtmlProcedure(x[0], x[^1], uniqueId)
+            builded = buildHtmlProcedure(x[0], x[^1])
             # tag(attr="value"):
             #   ...
             for attr in x[1 .. x.len-2]:
               attrs.add(attribute(attr))
           else:
-            builded = buildHtmlProcedure(x[0], newStmtList(), uniqueId)
+            builded = buildHtmlProcedure(x[0], newStmtList())
             # tag(attr="value"):
             #   ...
             for attr in x[1 .. x.len-1]:
@@ -294,7 +305,7 @@ proc buildHtmlProcedure*(root, body: NimNode, uniqueId: ptr int): NimNode {.comp
       result.add(newCall("@", arr))
 
 
-macro buildHtml*(root: untyped, html: untyped): untyped =
+macro buildHtml*(root, html: untyped): untyped =
   ## `buildHtml` macro provides building HTML tags with YAML-like syntax.
   ## 
   ## Args:
@@ -336,8 +347,7 @@ macro buildHtml*(root: untyped, html: untyped): untyped =
   ##          for i in state:
   ##            i
   ## 
-  var uniqueId = 0
-  buildHtmlProcedure(root, html, addr uniqueId)
+  buildHtmlProcedure(root, html)
 
 
 macro routes*(app: App, body: untyped): untyped =
@@ -345,29 +355,13 @@ macro routes*(app: App, body: untyped): untyped =
   let
     iPath = ident("path")
     iHtml = ident("html")
-    iRouter = ident("router")
+    iRouter = ident("callRouter")
     router = newProc(iRouter)
-    navigate = newProc(
-      ident("navigate"),
-      [newEmptyNode(), newIdentDefs(ident("path"), ident("string"))]
-    )
     onDOMContentLoaded = newProc(
       ident("onDOMContentLoaded"),
       [newEmptyNode(), newIdentDefs(ident("ev"), ident("Event"))]
     )
     ifStmt = newNimNode(nnkIfStmt)
-
-  # Navigate proc
-  navigate.body = newStmtList(
-    newCall(
-      "pushState",
-      newDotExpr(ident("window"), ident("history")),
-      newLit(""),
-      newLit(""),
-      iPath
-    ),
-    newCall(iRouter)
-  )
 
   # On DOM Content Loaded
   onDOMContentLoaded.body = newStmtList(newCall(iRouter))
@@ -436,6 +430,6 @@ macro routes*(app: App, body: untyped): untyped =
 
   newStmtList(
     router,
-    onDOMContentLoaded,
-    navigate,
+    newAssignment(newDotExpr(ident("app"), ident("router")), router.name),
+    onDOMContentLoaded
   )

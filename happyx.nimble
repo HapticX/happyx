@@ -2,7 +2,7 @@
 name = "happyx"
 description = "Asynchronous web-framework written with ♥"
 author = "HapticX"
-version = "0.4.9"
+version = "0.5.0"
 license = "GNU GPLv3"
 srcDir = "src"
 
