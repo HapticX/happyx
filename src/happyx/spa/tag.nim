@@ -20,14 +20,17 @@ type
     attrs*: StringTableRef
     children*: seq[TagRef]
     isText*: bool  ## Ignore attributes and children when true
-    childrenToParent*: bool
+    childrenToParent*: bool  ## Ignore self and binds all children to parent
+    onlyChildren*: bool  ## Ignore self and shows only children
 
 
 const
   UnclosedTags* = ["input", "img"]
 
 
-func initTag*(name: string, attrs: StringTableRef, children: seq[TagRef] = @[], childrenToParent: bool = false): TagRef =
+func initTag*(name: string, attrs: StringTableRef,
+              children: seq[TagRef] = @[], childrenToParent: bool = false,
+              onlyChildren: bool = false): TagRef =
   ## Initializes a new HTML tag with the given name, attributes, and children.
   ## 
   ## Args:
@@ -39,7 +42,8 @@ func initTag*(name: string, attrs: StringTableRef, children: seq[TagRef] = @[], 
   ## - A reference to the newly created HTML tag.
   result = TagRef(
     name: name, isText: false, parent: nil,
-    attrs: attrs, children: @[], childrenToParent: childrenToParent
+    attrs: attrs, children: @[], childrenToParent: childrenToParent,
+    onlyChildren: onlyChildren
   )
   for child in children:
     if child.isNil():
@@ -54,7 +58,8 @@ func initTag*(name: string, attrs: StringTableRef, children: seq[TagRef] = @[], 
     result.children.add(child)
 
 
-func initTag*(name: string, children: seq[TagRef] = @[], childrenToParent: bool = false): TagRef =
+func initTag*(name: string, children: seq[TagRef] = @[],
+              childrenToParent: bool = false, onlyChildren: bool = false): TagRef =
   ## Initializes a new HTML tag without attributes but with children
   ## 
   ## Args:
@@ -66,7 +71,8 @@ func initTag*(name: string, children: seq[TagRef] = @[], childrenToParent: bool 
   result = TagRef(
     name: name, isText: false, parent: nil,
     attrs: newStringTable(), children: @[],
-    childrenToParent: childrenToParent
+    childrenToParent: childrenToParent,
+    onlyChildren: onlyChildren
   )
   for child in children:
     if child.isNil():
@@ -81,7 +87,9 @@ func initTag*(name: string, children: seq[TagRef] = @[], childrenToParent: bool 
     result.children.add(child)
 
 
-func initTag*(name: string, isText: bool, attrs: StringTableRef, children: seq[TagRef] = @[], childrenToParent: bool = false): TagRef =
+func initTag*(name: string, isText: bool, attrs: StringTableRef,
+              children: seq[TagRef] = @[], childrenToParent: bool = false,
+              onlyChildren: bool = false): TagRef =
   ## Initializes a new HTML tag with the given name, whether it's text or not, attributes, and children.
   ## 
   ## Args:
@@ -94,7 +102,8 @@ func initTag*(name: string, isText: bool, attrs: StringTableRef, children: seq[T
   ## - A reference to the newly created HTML tag.
   result = TagRef(
     name: name, isText: isText, parent: nil,
-    attrs: attrs, children: @[], childrenToParent: childrenToParent
+    attrs: attrs, children: @[], childrenToParent: childrenToParent,
+    onlyChildren: onlyChildren
   )
   for child in children:
     if child.isNil():
@@ -109,11 +118,13 @@ func initTag*(name: string, isText: bool, attrs: StringTableRef, children: seq[T
     result.children.add(child)
 
 
-func initTag*(name: string, isText: bool, children: seq[TagRef] = @[], childrenToParent: bool = false): TagRef =
+func initTag*(name: string, isText: bool, children: seq[TagRef] = @[],
+              childrenToParent: bool = false, onlyChildren: bool = false): TagRef =
   ## Initializes a new HTML tag
   result = TagRef(
     name: name, isText: isText, parent: nil,
-    attrs: newStringTable(), children: @[], childrenToParent: childrenToParent
+    attrs: newStringTable(), children: @[], childrenToParent: childrenToParent,
+    onlyChildren: onlyChildren
   )
   for child in children:
     if child.isNil():
@@ -132,14 +143,22 @@ func tag*(name: string): TagRef {.inline.} =
   ## Shortcut for `initTag func<#initTag,string,seq[TagRef]>`_
   runnableExamples:
     var root = tag"div"
-  TagRef(name: name, isText: false, parent: nil, attrs: newStringTable(), children: @[])
+  TagRef(
+    name: name, isText: false, parent: nil,
+    attrs: newStringTable(), children: @[],
+    onlyChildren: false
+  )
 
 
 func textTag*(text: string): TagRef {.inline.} =
   ## Shortcur for `initTag func<#initTag,string,bool,seq[TagRef],bool>`_
   runnableExamples:
     var root = textTag"Hello, world!"
-  TagRef(name: "", isText: true, parent: nil, attrs: newStringTable(), children: @[])
+  TagRef(
+    name: "", isText: true, parent: nil,
+    attrs: newStringTable(), children: @[],
+    onlyChildren: false
+  )
 
 
 func add*(self: TagRef, tags: varargs[TagRef]) =
@@ -170,8 +189,9 @@ func lvl*(self: TagRef): int =
   result = 0
   var tag = self
   while not isNil(tag.parent):
+    if not tag.onlyChildren:
+      inc result
     tag = tag.parent
-    inc result
 
 
 func `[]`*(self: TagRef, attrName: string): string {.inline.} =
@@ -227,8 +247,12 @@ func `$`*(self: TagRef): string =
   for key, value in self.attrs.pairs():
     attrs &= " " & key & "=" & "\"" & value & "\""
   if self.children.len > 0:
-    let children = "\n" & self.children.join("\n") & "\n"
-    fmt"{level}<{self.name}{attrs}>{children}{level}</{self.name}>"
+    if self.onlyChildren:
+      let children = "\n" & self.children.join("\n") & "\n"
+      fmt"{level}{children}{level}"
+    else:
+      let children = "\n" & self.children.join("\n") & "\n"
+      fmt"{level}<{self.name}{attrs}>{children}{level}</{self.name}>"
   elif self.name in UnclosedTags:
     fmt"{level}<{self.name}{attrs}>"
   else:

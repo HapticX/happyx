@@ -57,9 +57,7 @@ when defined(js):
   {.emit: "}" .}
 
 
-func route*(app: App, path: cstring) =
-  when defined(js):
-    {.emit: "console.log('#' + `path`);" .}
+  func route*(app: App, path: cstring) =
     {.emit: "window.history.pushState(null, null, '#' + `path`);" .}
     {.emit: "`app`.`router`();" .}
 
@@ -79,7 +77,7 @@ proc replaceIter*(
     root: NimNode,
     search: proc(x: NimNode): bool,
     replace: proc(x: NimNode): NimNode
-): bool =
+): bool {. compileTime .} =
   result = false
   for i in 0..root.len-1:
     result = root[i].replaceIter(search, replace)
@@ -88,7 +86,7 @@ proc replaceIter*(
       result = true
 
 
-proc getTagName*(name: string): string {.compileTime.} =
+proc getTagName*(name: string): string {. compileTime .} =
   ## Checks tag name at compile time
   ## 
   ## tagDiv, tDiv, hDiv -> div
@@ -123,7 +121,11 @@ proc addAttribute(node, key, value: NimNode) {. compileTime .} =
     )))
 
 
-proc buildHtmlProcedure*(root, body: NimNode): NimNode {.compileTime.} =
+proc endsWithBuildHtml(statement: NimNode): bool {. compileTime .} =
+  statement[^1].kind == nnkCall and $statement[^1][0] == "buildHtml"
+
+
+proc buildHtmlProcedure*(root, body: NimNode): NimNode {. compileTime .} =
   ## Builds HTML
   let elementName = newStrLitNode(getTagName($root))
   result = newCall("initTag", elementName)
@@ -350,6 +352,18 @@ macro buildHtml*(root, html: untyped): untyped =
   buildHtmlProcedure(root, html)
 
 
+macro buildHtml*(html: untyped): untyped =
+  ## `buildHtml` macro provides building HTML tags with YAML-like syntax.
+  ## This macro doesn't generate Root tag
+  ## 
+  ## Args:
+  ## - `html`: YAML-like structure.
+  ## 
+  result = buildHtmlProcedure(ident("tDiv"), html)
+  if result[^1].kind == nnkCall and $result[^1][0] == "@":
+    result.add(newLit(false), newLit(true))
+
+
 macro routes*(app: App, body: untyped): untyped =
   ## Provides JS router for Single page application
   let
@@ -398,20 +412,42 @@ macro routes*(app: App, body: untyped): untyped =
         )
         # Route contains params
         if exported.len > 0:
-          exported[^1][^1] = newAssignment(iHtml, exported[^1][^1])
+          for i in 0..<statement[1].len:
+            exported[^1].del(exported[^1].len-1)
+          exported[^1] = newStmtList(
+            exported[^1],
+            newAssignment(
+              iHtml,
+              if statement[1].endsWithBuildHtml:
+                statement[1]
+              else:
+                newCall("buildHtml", statement[1])
+            )
+          )
           ifStmt.add(exported)
         # Route doesn't contains any params
         else:
           ifStmt.add(newNimNode(nnkElifBranch).add(
             newCall("==", iPath, statement[0]),
-            newAssignment(iHtml, statement[1])
+            newAssignment(
+              iHtml,
+              if statement[1].endsWithBuildHtml:
+                statement[1]
+              else:
+                newCall("buildHtml", statement[1])
+            )
           ))
       elif statement[1].kind == nnkStmtList and statement[0].kind == nnkIdent:
         case $statement[0]
         of "notfound":
-          router.body.add(
-            newAssignment(iHtml, statement[1])
-          )
+          if statement[1].endsWithBuildHtml:
+            router.body.add(
+              newAssignment(iHtml, statement[1])
+            )
+          else:
+            router.body.add(
+              newAssignment(iHtml, newCall("buildHtml", statement[1]))
+            )
   
   if ifStmt.len > 0:
     router.body.add(ifStmt)
@@ -427,6 +463,8 @@ macro routes*(app: App, body: untyped): untyped =
       )
     ))
   )
+
+  echo treeRepr router
 
   newStmtList(
     router,
