@@ -218,10 +218,15 @@ proc buildHtmlProcedure*(root, body: NimNode): NimNode {. compileTime .} =
             buildHtmlProcedure(ident("div"), branch[0]).add(newLit(true))
           ))
       if ifExpr.len == 1:
-        ifExpr.add(newNimNode(nnkElseExpr).add(
-          newCall("initTag", newStrLitNode("div"), newCall("@", newNimNode(nnkBracket)), newLit(true))
-        ))
+        ifExpr.add(newNimNode(nnkElseExpr).add(newNilLit()))
       result.add(ifExpr)
+    
+    elif statement.kind == nnkCaseStmt:
+      for i in 1..<statement.len:
+        statement[i][^1] = buildHtmlProcedure(ident("div"), statement[i][^1]).add(newLit(true))
+      if statement[^1].kind != nnkElse:
+        statement.add(newNimNode(nnkElse).add(newNilLit()))
+      result.add(statement)
     
     # for ... in ...:
     #   ...

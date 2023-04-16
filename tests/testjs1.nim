@@ -1,9 +1,20 @@
 import ../src/happyx
 
 
-var state = remember true
-var state1 = remember 1
-var state2 = remember @["h1", "h2", "h3", "h4", "h5", "h6"]
+type
+  TestEnum = enum
+    teOne,
+    teTwo,
+    teThree,
+    teFour,
+    teFive
+
+
+var
+  state = remember true
+  state1 = remember 1
+  state2 = remember @["h1", "h2", "h3", "h4", "h5", "h6"]
+  state3 = teTwo
 
 var html =
   buildHtml(`div`):
@@ -37,9 +48,21 @@ var html =
         i(attr="{i}{i}{i}"):
           "current tag is {i}"
           {i}
+    # VARIABLES
     {state}
     {state1}
     {state2}
+    # CASE-OF STMT
+    case state3:
+    of teOne:
+      h1:
+        "Hello"
+    of teTwo:
+      h2:
+        "Hi"
+    of teThree:
+      h3:
+        "Oops"
 
 html.get("input")["class"] = "a"
 
