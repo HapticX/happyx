@@ -143,6 +143,8 @@ window.addEventListener('DOMContentLoaded', main);
           </ul></dd>
 <dt><a name="buildHtml" href="#buildHtml"><span>buildHtml:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
+          data-doc-search-tag="renderer: buildHtml(html: untyped): untyped" href="happyx/spa/renderer.html#buildHtml.m%2Cuntyped">renderer: buildHtml(html: untyped): untyped</a></li>
+          <li><a class="reference external"
           data-doc-search-tag="renderer: buildHtml(root, html: untyped): untyped" href="happyx/spa/renderer.html#buildHtml.m%2Cuntyped%2Cuntyped">renderer: buildHtml(root, html: untyped): untyped</a></li>
           </ul></dd>
 <dt><a name="buildHtmlProcedure" href="#buildHtmlProcedure"><span>buildHtmlProcedure:</span></a></dt><dd><ul class="simple">
@@ -204,20 +206,22 @@ window.addEventListener('DOMContentLoaded', main);
 <dt><a name="initTag" href="#initTag"><span>initTag:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="tag: initTag(name: string; isText: bool; children: seq[TagRef] = @[];
-        childrenToParent: bool = false): TagRef" href="happyx/spa/tag.html#initTag%2Cstring%2Cbool%2Cseq%5BTagRef%5D%2Cbool">tag: initTag(name: string; isText: bool; children: seq[TagRef] = @[];
-        childrenToParent: bool = false): TagRef</a></li>
+        childrenToParent: bool = false; onlyChildren: bool = false): TagRef" href="happyx/spa/tag.html#initTag%2Cstring%2Cbool%2Cseq%5BTagRef%5D%2Cbool%2Cbool">tag: initTag(name: string; isText: bool; children: seq[TagRef] = @[];
+        childrenToParent: bool = false; onlyChildren: bool = false): TagRef</a></li>
           <li><a class="reference external"
           data-doc-search-tag="tag: initTag(name: string; isText: bool; attrs: StringTableRef;
-        children: seq[TagRef] = @[]; childrenToParent: bool = false): TagRef" href="happyx/spa/tag.html#initTag%2Cstring%2Cbool%2CStringTableRef%2Cseq%5BTagRef%5D%2Cbool">tag: initTag(name: string; isText: bool; attrs: StringTableRef;
-        children: seq[TagRef] = @[]; childrenToParent: bool = false): TagRef</a></li>
+        children: seq[TagRef] = @[]; childrenToParent: bool = false;
+        onlyChildren: bool = false): TagRef" href="happyx/spa/tag.html#initTag%2Cstring%2Cbool%2CStringTableRef%2Cseq%5BTagRef%5D%2Cbool%2Cbool">tag: initTag(name: string; isText: bool; attrs: StringTableRef;
+        children: seq[TagRef] = @[]; childrenToParent: bool = false;
+        onlyChildren: bool = false): TagRef</a></li>
           <li><a class="reference external"
           data-doc-search-tag="tag: initTag(name: string; children: seq[TagRef] = @[];
-        childrenToParent: bool = false): TagRef" href="happyx/spa/tag.html#initTag%2Cstring%2Cseq%5BTagRef%5D%2Cbool">tag: initTag(name: string; children: seq[TagRef] = @[];
-        childrenToParent: bool = false): TagRef</a></li>
+        childrenToParent: bool = false; onlyChildren: bool = false): TagRef" href="happyx/spa/tag.html#initTag%2Cstring%2Cseq%5BTagRef%5D%2Cbool%2Cbool">tag: initTag(name: string; children: seq[TagRef] = @[];
+        childrenToParent: bool = false; onlyChildren: bool = false): TagRef</a></li>
           <li><a class="reference external"
           data-doc-search-tag="tag: initTag(name: string; attrs: StringTableRef; children: seq[TagRef] = @[];
-        childrenToParent: bool = false): TagRef" href="happyx/spa/tag.html#initTag%2Cstring%2CStringTableRef%2Cseq%5BTagRef%5D%2Cbool">tag: initTag(name: string; attrs: StringTableRef; children: seq[TagRef] = @[];
-        childrenToParent: bool = false): TagRef</a></li>
+        childrenToParent: bool = false; onlyChildren: bool = false): TagRef" href="happyx/spa/tag.html#initTag%2Cstring%2CStringTableRef%2Cseq%5BTagRef%5D%2Cbool%2Cbool">tag: initTag(name: string; attrs: StringTableRef; children: seq[TagRef] = @[];
+        childrenToParent: bool = false; onlyChildren: bool = false): TagRef</a></li>
           </ul></dd>
 <dt><a name="int" href="#int"><span>int:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -268,10 +272,6 @@ window.addEventListener('DOMContentLoaded', main);
           data-doc-search-tag="renderer: replaceIter(root: NimNode; search: proc (x: NimNode): bool;
             replace: proc (x: NimNode): NimNode): bool" href="happyx/spa/renderer.html#replaceIter%2CNimNode%2Cproc%28NimNode%29%2Cproc%28NimNode%29">renderer: replaceIter(root: NimNode; search: proc (x: NimNode): bool;
             replace: proc (x: NimNode): NimNode): bool</a></li>
-          </ul></dd>
-<dt><a name="route" href="#route"><span>route:</span></a></dt><dd><ul class="simple">
-<li><a class="reference external"
-          data-doc-search-tag="renderer: route(app: App; path: cstring)" href="happyx/spa/renderer.html#route%2CApp%2Ccstring">renderer: route(app: App; path: cstring)</a></li>
           </ul></dd>
 <dt><a name="routes" href="#routes"><span>routes:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -330,7 +330,7 @@ window.addEventListener('DOMContentLoaded', main);
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-04-15 07:25:44 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-04-16 08:42:04 UTC</small>
       </div>
     </div>
   </div>

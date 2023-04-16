@@ -150,11 +150,6 @@ window.addEventListener('DOMContentLoaded', main);
             replace: proc (x: NimNode): NimNode): bool</a></li>
 
   </ul>
-  <ul class="simple nested-toc-section">route
-      <li><a class="reference" href="#route%2CApp%2Ccstring"
-    title="route(app: App; path: cstring)">route(app: App; path: cstring)</a></li>
-
-  </ul>
 
   </ul>
 </li>
@@ -162,7 +157,9 @@ window.addEventListener('DOMContentLoaded', main);
   <a class="reference reference-toplevel" href="#17" id="67">Macros</a>
   <ul class="simple simple-toc-section">
       <ul class="simple nested-toc-section">buildHtml
-      <li><a class="reference" href="#buildHtml.m%2Cuntyped%2Cuntyped"
+      <li><a class="reference" href="#buildHtml.m%2Cuntyped"
+    title="buildHtml(html: untyped): untyped">buildHtml(html: untyped): untyped</a></li>
+  <li><a class="reference" href="#buildHtml.m%2Cuntyped%2Cuntyped"
     title="buildHtml(root, html: untyped): untyped">buildHtml(root, html: untyped): untyped</a></li>
 
   </ul>
@@ -277,16 +274,8 @@ Creates a new Singla Page Application
 </div>
 <div id="replaceIter,NimNode,proc(NimNode),proc(NimNode)">
 <dt><pre><span class="Keyword">proc</span> <a href="#replaceIter%2CNimNode%2Cproc%28NimNode%29%2Cproc%28NimNode%29"><span class="Identifier">replaceIter</span></a><span class="Other">(</span><span class="Identifier">root</span><span class="Other">:</span> <span class="Identifier">NimNode</span><span class="Other">;</span> <span class="Identifier">search</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">x</span><span class="Other">:</span> <span class="Identifier">NimNode</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">;</span>
-                 <span class="Identifier">replace</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">x</span><span class="Other">:</span> <span class="Identifier">NimNode</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">NimNode</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
-    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
-<dd>
-
-
-
-</dd>
-</div>
-<div id="route,App,cstring">
-<dt><pre><span class="Keyword">func</span> <a href="#route%2CApp%2Ccstring"><span class="Identifier">route</span></a><span class="Other">(</span><span class="Identifier">app</span><span class="Other">:</span> <a href="renderer.html#App"><span class="Identifier">App</span></a><span class="Other">;</span> <span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+                 <span class="Identifier">replace</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">x</span><span class="Other">:</span> <span class="Identifier">NimNode</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">NimNode</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> {.<span class="Identifier">compileTime</span><span class="Other">,</span>
+    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 
@@ -298,6 +287,18 @@ Creates a new Singla Page Application
 <div class="section" id="17">
 <h1><a class="toc-backref" href="#17">Macros</a></h1>
 <dl class="item">
+<div id="buildHtml.m,untyped">
+<dt><pre><span class="Keyword">macro</span> <a href="#buildHtml.m%2Cuntyped"><span class="Identifier">buildHtml</span></a><span class="Other">(</span><span class="Identifier">html</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
+<dd>
+
+<p><tt class="docutils literal"><span class="pre"><span class="Identifier">buildHtml</span></span></tt> macro provides building HTML tags with YAML-like syntax. This macro doesn't generate Root tag</p>
+<p>Args:</p>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre"><span class="Identifier">html</span></span></tt>: YAML-like structure.</li>
+</ul>
+
+
+</dd>
+</div>
 <div id="buildHtml.m,untyped,untyped">
 <dt><pre><span class="Keyword">macro</span> <a href="#buildHtml.m%2Cuntyped%2Cuntyped"><span class="Identifier">buildHtml</span></a><span class="Other">(</span><span class="Identifier">root</span><span class="Other">,</span> <span class="Identifier">html</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
@@ -359,7 +360,7 @@ Starts single page application
 <div class="section" id="19">
 <h1><a class="toc-backref" href="#19">Exports</a></h1>
 <dl class="item">
-<a href="tag.html#initTag,string,bool,StringTableRef,seq[TagRef],bool"><span class="Identifier">initTag</span></a>, <a href="tag.html#$,TagRef"><span class="Identifier">$</span></a>, <a href="tag.html#add,TagRef,varargs[TagRef]"><span class="Identifier">add</span></a>, <a href="tag.html#initTag,string,bool,seq[TagRef],bool"><span class="Identifier">initTag</span></a>, <a href="tag.html#textTag,string"><span class="Identifier">textTag</span></a>, <a href="tag.html#initTag,string,StringTableRef,seq[TagRef],bool"><span class="Identifier">initTag</span></a>, <a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a>, <a href="tag.html#get,TagRef,string,string"><span class="Identifier">get</span></a>, <a href="tag.html#tag,string"><span class="Identifier">tag</span></a>, <a href="tag.html#lvl,TagRef"><span class="Identifier">lvl</span></a>, <a href="tag.html#UnclosedTags"><span class="Identifier">UnclosedTags</span></a>, <a href="tag.html#initTag,string,seq[TagRef],bool"><span class="Identifier">initTag</span></a>, <a href="tag.html#findByTag,TagRef,string"><span class="Identifier">findByTag</span></a>, <a href="tag.html#Tag"><span class="Identifier">Tag</span></a>, <a href="tag.html#[]=,TagRef,string,string"><span class="Identifier">[]=</span></a>, <a href="tag.html#get,TagRef,string"><span class="Identifier">get</span></a>, <a href="tag.html#[],TagRef,string"><span class="Identifier">[]</span></a>
+<a href="tag.html#initTag,string,bool,StringTableRef,seq[TagRef],bool,bool"><span class="Identifier">initTag</span></a>, <a href="tag.html#$,TagRef"><span class="Identifier">$</span></a>, <a href="tag.html#add,TagRef,varargs[TagRef]"><span class="Identifier">add</span></a>, <a href="tag.html#initTag,string,bool,seq[TagRef],bool,bool"><span class="Identifier">initTag</span></a>, <a href="tag.html#textTag,string"><span class="Identifier">textTag</span></a>, <a href="tag.html#initTag,string,StringTableRef,seq[TagRef],bool,bool"><span class="Identifier">initTag</span></a>, <a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a>, <a href="tag.html#get,TagRef,string,string"><span class="Identifier">get</span></a>, <a href="tag.html#tag,string"><span class="Identifier">tag</span></a>, <a href="tag.html#lvl,TagRef"><span class="Identifier">lvl</span></a>, <a href="tag.html#UnclosedTags"><span class="Identifier">UnclosedTags</span></a>, <a href="tag.html#initTag,string,seq[TagRef],bool,bool"><span class="Identifier">initTag</span></a>, <a href="tag.html#findByTag,TagRef,string"><span class="Identifier">findByTag</span></a>, <a href="tag.html#Tag"><span class="Identifier">Tag</span></a>, <a href="tag.html#[]=,TagRef,string,string"><span class="Identifier">[]=</span></a>, <a href="tag.html#get,TagRef,string"><span class="Identifier">get</span></a>, <a href="tag.html#[],TagRef,string"><span class="Identifier">[]</span></a>
 </dl></div>
 
   </div>
@@ -369,7 +370,7 @@ Starts single page application
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-04-15 07:25:44 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-04-16 08:42:04 UTC</small>
       </div>
     </div>
   </div>

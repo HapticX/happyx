@@ -1,10 +1,10 @@
 TagRef	happyx/spa/tag.html#TagRef	tag: TagRef	
 Tag	happyx/spa/tag.html#Tag	tag: Tag	
 UnclosedTags	happyx/spa/tag.html#UnclosedTags	tag: UnclosedTags	
-initTag	happyx/spa/tag.html#initTag,string,StringTableRef,seq[TagRef],bool	tag: initTag(name: string; attrs: StringTableRef; children: seq[TagRef] = @[];\n        childrenToParent: bool = false): TagRef	
-initTag	happyx/spa/tag.html#initTag,string,seq[TagRef],bool	tag: initTag(name: string; children: seq[TagRef] = @[];\n        childrenToParent: bool = false): TagRef	
-initTag	happyx/spa/tag.html#initTag,string,bool,StringTableRef,seq[TagRef],bool	tag: initTag(name: string; isText: bool; attrs: StringTableRef;\n        children: seq[TagRef] = @[]; childrenToParent: bool = false): TagRef	
-initTag	happyx/spa/tag.html#initTag,string,bool,seq[TagRef],bool	tag: initTag(name: string; isText: bool; children: seq[TagRef] = @[];\n        childrenToParent: bool = false): TagRef	
+initTag	happyx/spa/tag.html#initTag,string,StringTableRef,seq[TagRef],bool,bool	tag: initTag(name: string; attrs: StringTableRef; children: seq[TagRef] = @[];\n        childrenToParent: bool = false; onlyChildren: bool = false): TagRef	
+initTag	happyx/spa/tag.html#initTag,string,seq[TagRef],bool,bool	tag: initTag(name: string; children: seq[TagRef] = @[];\n        childrenToParent: bool = false; onlyChildren: bool = false): TagRef	
+initTag	happyx/spa/tag.html#initTag,string,bool,StringTableRef,seq[TagRef],bool,bool	tag: initTag(name: string; isText: bool; attrs: StringTableRef;\n        children: seq[TagRef] = @[]; childrenToParent: bool = false;\n        onlyChildren: bool = false): TagRef	
+initTag	happyx/spa/tag.html#initTag,string,bool,seq[TagRef],bool,bool	tag: initTag(name: string; isText: bool; children: seq[TagRef] = @[];\n        childrenToParent: bool = false; onlyChildren: bool = false): TagRef	
 tag	happyx/spa/tag.html#tag,string	tag: tag(name: string): TagRef	
 textTag	happyx/spa/tag.html#textTag,string	tag: textTag(text: string): TagRef	
 add	happyx/spa/tag.html#add,TagRef,varargs[TagRef]	tag: add(self: TagRef; tags: varargs[TagRef])	
