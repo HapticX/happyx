@@ -43,19 +43,14 @@ nimble install https://github.com/HapticX/happyx
 ```nim
 import happyx
 
-initServer:
-  var server = newServer()
-
-  server.routes:
-    # By default routing takes any request method
-    "/":
-      "Hello, world!"
-    
-    # You can use let variables in the routes!
-    "/user{id:int}":
-      fmt"Hello, user with ID {id}!"
+serve("127.0.0.1", 5000):
+  # By default routing takes any request method
+  "/":
+    "Hello, world!"
   
-  server.start()
+  # You can use let variables in the routes!
+  "/user{id:int}":
+    fmt"Hello, user with ID {id}!"
 ```
 #### Run 💻
 ##### Default
