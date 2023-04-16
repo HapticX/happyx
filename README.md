@@ -49,11 +49,11 @@ initServer:
   server.routes:
     # By default routing takes any request method
     "/":
-      req.answer("Hello, world!")
+      "Hello, world!"
     
     # You can use let variables in the routes!
     "/user{id:int}":
-      req.answer(fmt"Hello, user with ID {id}!")
+      fmt"Hello, user with ID {id}!"
   
   server.start()
 ```
@@ -86,8 +86,7 @@ import happyx
 var app = newApp()
 app.routes:
   "/user{userId:int}":
-    buildHtml(h1):
-      "User ID is {userId}"
+    "User ID is {userId}"
 app.start()
 ```
 #### Run 💻

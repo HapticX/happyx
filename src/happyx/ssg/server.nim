@@ -118,6 +118,19 @@ proc newServer*(address: string = "127.0.0.1", port: int = 5000): Server =
   addHandler(result.logger)
 
 
+proc parseQuery*(query: string): owned(StringTableRef) =
+  ## Parses query and retrieves JSON object
+  runnableExamples:
+    let
+      query = "a=1000&b=8000&password=mystrongpass"
+      parsedQuery = parseQuery(query)
+    assert parsedQuery["a"] == "1000"
+  result = newStringTable()
+  for i in query.split('&'):
+    let splitted = i.split('=')
+    result[splitted[0]] = splitted[1]
+
+
 template start*(server: Server): untyped =
   ## The `start` template starts the given server and listens for incoming connections.
   ## Parameters:
@@ -160,11 +173,13 @@ template answer*(
     req.send(code, message, headersArr.join("\r\n"))
   else:
     await req.respond(code, message, headers)
+  return
 
 
 template answerJson*(req: Request, data: untyped, code: HttpCode = Http200,): untyped =
   ## Answers to request with json data
   answer(req, $(%*`data`), code, newHttpHeaders([("Content-Type", "application/json; charset=utf-8")]))
+  return
 
 
 template answerHtml*(req: Request, data: string | TagRef, code: HttpCode = Http200,): untyped =
@@ -174,19 +189,16 @@ template answerHtml*(req: Request, data: string | TagRef, code: HttpCode = Http2
   else:
     let d = $data
   answer(req, d, code, newHttpHeaders([("Content-Type", "text/html; charset=utf-8")]))
+  return
 
 
-proc parseQuery*(query: string): owned(StringTableRef) =
-  ## Parses query and retrieves JSON object
-  runnableExamples:
-    let
-      query = "a=1000&b=8000&password=mystrongpass"
-      parsedQuery = parseQuery(query)
-    assert parsedQuery["a"] == "1000"
-  result = newStringTable()
-  for i in query.split('&'):
-    let splitted = i.split('=')
-    result[splitted[0]] = splitted[1]
+proc detectEnd(node: NimNode) {. compileTime .} =
+  if node[^1].kind in [nnkCall, nnkCommand]:
+    if node[^1][0].kind == nnkIdent and re"^(answer|echo)" in $node[^1][0]:
+      return
+    elif node[^1][0].kind == nnkDotExpr and ($node[^1][0][1]).toLower().startsWith("answer"):
+      return
+  node[^1] = newCall("answer", ident("req"), node[^1])
 
 
 macro routes*(server: Server, body: untyped): untyped =
@@ -210,13 +222,13 @@ macro routes*(server: Server, body: untyped): untyped =
     var myServer = newServer()
     myServer.routes:
       "/":
-        req.answer "root"
+        "root"
       "/user{id:int}":
-        req.answer fmt"hello, user {id}!"
+        fmt"hello, user {id}!"
       middleware:
         echo req
       notfound:
-        req.answer "Oops! Not found!"
+        "Oops! Not found!"
   var
     stmtList = newStmtList()
     ifStmt = newNimNode(nnkIfStmt)
@@ -250,6 +262,7 @@ macro routes*(server: Server, body: untyped): untyped =
     if statement.kind in [nnkCall, nnkCommand]:
       # "/...": statement list
       if statement[1].kind == nnkStmtList and statement[0].kind == nnkStrLit:
+        detectEnd(statement[1])
         let exported = exportRouteArgs(path, statement[0], statement[1])
         if exported.len > 0:  # /my/path/with{custom:int}/{param:path}
           ifStmt.add(exported)
@@ -259,6 +272,7 @@ macro routes*(server: Server, body: untyped): untyped =
           ))
       # notfound: statement list
       elif statement[1].kind == nnkStmtList and statement[0].kind == nnkIdent:
+        detectEnd(statement[1])
         case $statement[0]
         of "notfound":
           notFoundNode = statement[1]
@@ -289,8 +303,10 @@ macro routes*(server: Server, body: untyped): untyped =
         let exported = exportRouteArgs(path, statement[1], statement[2])
         if exported.len > 0:  # /my/path/with{custom:int}/{param:path}
           exported[0] = newCall("and", exported[0], newCall("==", reqMethodStringify, newStrLitNode(name)))
+          detectEnd(exported[1])
           ifStmt.add(exported)
         else:  # /just-my-path
+          detectEnd(statement[2])
           ifStmt.add(newNimNode(nnkElifBranch).add(
             newCall(
               "and",
