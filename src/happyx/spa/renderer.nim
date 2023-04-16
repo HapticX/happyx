@@ -202,27 +202,14 @@ proc buildHtmlProcedure*(root, body: NimNode): NimNode {. compileTime .} =
       # variables
       result.add(newCall("initTag", newCall("$", statement[0]), newLit(true)))
     
-    # if a:
-    #   ...
-    # else:
-    #   ...
-    elif statement.kind == nnkIfStmt:
-      var ifExpr = newNimNode(nnkIfExpr)
-      for branch in statement:
-        if branch.kind == nnkElifBranch:
-          ifExpr.add(newNimNode(nnkElifExpr).add(
-            branch[0], buildHtmlProcedure(ident("div"), branch[1]).add(newLit(true))
-          ))
+    # if-elif or case-of
+    elif statement.kind in [nnkCaseStmt, nnkIfStmt, nnkIfExpr]:
+      let start =
+        if statement.kind == nnkCaseStmt:
+          1
         else:
-          ifExpr.add(newNimNode(nnkElseExpr).add(
-            buildHtmlProcedure(ident("div"), branch[0]).add(newLit(true))
-          ))
-      if ifExpr.len == 1:
-        ifExpr.add(newNimNode(nnkElseExpr).add(newNilLit()))
-      result.add(ifExpr)
-    
-    elif statement.kind == nnkCaseStmt:
-      for i in 1..<statement.len:
+          0
+      for i in start..<statement.len:
         statement[i][^1] = buildHtmlProcedure(ident("div"), statement[i][^1]).add(newLit(true))
       if statement[^1].kind != nnkElse:
         statement.add(newNimNode(nnkElse).add(newNilLit()))
