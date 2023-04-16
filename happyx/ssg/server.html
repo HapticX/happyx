@@ -349,13 +349,13 @@ You can create routes with this marco
 <pre class="listing"><span class="Keyword">var</span> <span class="Identifier">myServer</span> <span class="Operator">=</span> <span class="Identifier">newServer</span><span class="Punctuation">(</span><span class="Punctuation">)</span>
 <span class="Identifier">myServer</span><span class="Operator">.</span><span class="Identifier">routes</span><span class="Punctuation">:</span>
   <span class="StringLit">&quot;/&quot;</span><span class="Punctuation">:</span>
-    <span class="Identifier">req</span><span class="Operator">.</span><span class="Identifier">answer</span> <span class="StringLit">&quot;root&quot;</span>
+    <span class="StringLit">&quot;root&quot;</span>
   <span class="StringLit">&quot;/user{id:int}&quot;</span><span class="Punctuation">:</span>
-    <span class="Identifier">req</span><span class="Operator">.</span><span class="Identifier">answer</span> <span class="RawData">fmt&quot;hello, user {id}!&quot;</span>
+    <span class="RawData">fmt&quot;hello, user {id}!&quot;</span>
   <span class="Identifier">middleware</span><span class="Punctuation">:</span>
     <span class="Identifier">echo</span> <span class="Identifier">req</span>
   <span class="Identifier">notfound</span><span class="Punctuation">:</span>
-    <span class="Identifier">req</span><span class="Operator">.</span><span class="Identifier">answer</span> <span class="StringLit">&quot;Oops! Not found!&quot;</span></pre>
+    <span class="StringLit">&quot;Oops! Not found!&quot;</span></pre>
 
 </dd>
 </div>
@@ -432,7 +432,7 @@ The <tt class="docutils literal"><span class="pre"><span class="Identifier">star
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-04-16 08:42:03 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-04-16 09:43:03 UTC</small>
       </div>
     </div>
   </div>
