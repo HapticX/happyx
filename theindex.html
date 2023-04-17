@@ -137,6 +137,18 @@ window.addEventListener('DOMContentLoaded', main);
 <li><a class="reference external"
           data-doc-search-tag="renderer: AppEventHandler" href="happyx/spa/renderer.html#AppEventHandler">renderer: AppEventHandler</a></li>
           </ul></dd>
+<dt><a name="application" href="#application"><span>application:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="renderer: application" href="happyx/spa/renderer.html#application">renderer: application</a></li>
+          </ul></dd>
+<dt><a name="BaseComponent" href="#BaseComponent"><span>BaseComponent:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="renderer: BaseComponent" href="happyx/spa/renderer.html#BaseComponent">renderer: BaseComponent</a></li>
+          </ul></dd>
+<dt><a name="BaseComponentObj" href="#BaseComponentObj"><span>BaseComponentObj:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="renderer: BaseComponentObj" href="happyx/spa/renderer.html#BaseComponentObj">renderer: BaseComponentObj</a></li>
+          </ul></dd>
 <dt><a name="bool" href="#bool"><span>bool:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="state: bool(self: State): bool" href="happyx/spa/state.html#bool.c%2CState">state: bool(self: State): bool</a></li>
@@ -154,6 +166,14 @@ window.addEventListener('DOMContentLoaded', main);
 <dt><a name="char" href="#char"><span>char:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="state: char(self: State): char" href="happyx/spa/state.html#char.c%2CState">state: char(self: State): char</a></li>
+          </ul></dd>
+<dt><a name="component" href="#component"><span>component:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="renderer: component(name, body: untyped): untyped" href="happyx/spa/renderer.html#component.m%2Cuntyped%2Cuntyped">renderer: component(name, body: untyped): untyped</a></li>
+          </ul></dd>
+<dt><a name="components" href="#components"><span>components:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="renderer: components" href="happyx/spa/renderer.html#components">renderer: components</a></li>
           </ul></dd>
 <dt><a name="eventHandlers" href="#eventHandlers"><span>eventHandlers:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -251,10 +271,6 @@ window.addEventListener('DOMContentLoaded', main);
 <li><a class="reference external"
           data-doc-search-tag="tag: lvl(self: TagRef): int" href="happyx/spa/tag.html#lvl%2CTagRef">tag: lvl(self: TagRef): int</a></li>
           </ul></dd>
-<dt><a name="newApp" href="#newApp"><span>newApp:</span></a></dt><dd><ul class="simple">
-<li><a class="reference external"
-          data-doc-search-tag="renderer: newApp(appId: string = &quot;app&quot;): App" href="happyx/spa/renderer.html#newApp%2Cstring">renderer: newApp(appId: string = &quot;app&quot;): App</a></li>
-          </ul></dd>
 <dt><a name="newServer" href="#newServer"><span>newServer:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="server: newServer(address: string = &quot;127.0.0.1&quot;; port: int = 5000): Server" href="happyx/ssg/server.html#newServer%2Cstring%2Cint">server: newServer(address: string = &quot;127.0.0.1&quot;; port: int = 5000): Server</a></li>
@@ -263,15 +279,31 @@ window.addEventListener('DOMContentLoaded', main);
 <li><a class="reference external"
           data-doc-search-tag="server: parseQuery(query: string): owned(StringTableRef)" href="happyx/ssg/server.html#parseQuery%2Cstring">server: parseQuery(query: string): owned(StringTableRef)</a></li>
           </ul></dd>
+<dt><a name="registerApp" href="#registerApp"><span>registerApp:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="renderer: registerApp(appId: string = &quot;app&quot;): App" href="happyx/spa/renderer.html#registerApp%2Cstring">renderer: registerApp(appId: string = &quot;app&quot;): App</a></li>
+          </ul></dd>
+<dt><a name="registerComponent" href="#registerComponent"><span>registerComponent:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="renderer: registerComponent(name: string; component: BaseComponent): BaseComponent" href="happyx/spa/renderer.html#registerComponent%2Cstring%2CBaseComponent">renderer: registerComponent(name: string; component: BaseComponent): BaseComponent</a></li>
+          </ul></dd>
 <dt><a name="remember" href="#remember"><span>remember:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="state: remember[T](val: T): State[T]" href="happyx/spa/state.html#remember%2CT">state: remember[T](val: T): State[T]</a></li>
+          </ul></dd>
+<dt><a name="render" href="#render"><span>render:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="renderer: render(self: var BaseComponent): TagRef" href="happyx/spa/renderer.html#render%2CBaseComponent">renderer: render(self: var BaseComponent): TagRef</a></li>
           </ul></dd>
 <dt><a name="replaceIter" href="#replaceIter"><span>replaceIter:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="renderer: replaceIter(root: NimNode; search: proc (x: NimNode): bool;
             replace: proc (x: NimNode): NimNode): bool" href="happyx/spa/renderer.html#replaceIter%2CNimNode%2Cproc%28NimNode%29%2Cproc%28NimNode%29">renderer: replaceIter(root: NimNode; search: proc (x: NimNode): bool;
             replace: proc (x: NimNode): NimNode): bool</a></li>
+          </ul></dd>
+<dt><a name="route" href="#route"><span>route:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="renderer: route(path: cstring)" href="happyx/spa/renderer.html#route%2Ccstring">renderer: route(path: cstring)</a></li>
           </ul></dd>
 <dt><a name="routes" href="#routes"><span>routes:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -312,6 +344,8 @@ window.addEventListener('DOMContentLoaded', main);
 <dt><a name="tag" href="#tag"><span>tag:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="tag: tag(name: string): TagRef" href="happyx/spa/tag.html#tag%2Cstring">tag: tag(name: string): TagRef</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="tag: tag(tag: TagRef): TagRef" href="happyx/spa/tag.html#tag%2CTagRef">tag: tag(tag: TagRef): TagRef</a></li>
           </ul></dd>
 <dt><a name="TagRef" href="#TagRef"><span>TagRef:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -330,7 +364,7 @@ window.addEventListener('DOMContentLoaded', main);
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-04-16 14:55:33 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-04-17 15:22:33 UTC</small>
       </div>
     </div>
   </div>

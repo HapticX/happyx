@@ -1,7 +1,14 @@
 AppEventHandler	happyx/spa/renderer.html#AppEventHandler	renderer: AppEventHandler	
 App	happyx/spa/renderer.html#App	renderer: App	
+BaseComponent	happyx/spa/renderer.html#BaseComponent	renderer: BaseComponent	
+BaseComponentObj	happyx/spa/renderer.html#BaseComponentObj	renderer: BaseComponentObj	
+application	happyx/spa/renderer.html#application	renderer: application	
 eventHandlers	happyx/spa/renderer.html#eventHandlers	renderer: eventHandlers	
-newApp	happyx/spa/renderer.html#newApp,string	renderer: newApp(appId: string = &quot;app&quot;): App	
+components	happyx/spa/renderer.html#components	renderer: components	
+route	happyx/spa/renderer.html#route,cstring	renderer: route(path: cstring)	
+registerApp	happyx/spa/renderer.html#registerApp,string	renderer: registerApp(appId: string = &quot;app&quot;): App	
+registerComponent	happyx/spa/renderer.html#registerComponent,string,BaseComponent	renderer: registerComponent(name: string; component: BaseComponent): BaseComponent	
+render	happyx/spa/renderer.html#render,BaseComponent	renderer: render(self: var BaseComponent): TagRef	
 start	happyx/spa/renderer.html#start.t,App	renderer: start(app: App)	
 replaceIter	happyx/spa/renderer.html#replaceIter,NimNode,proc(NimNode),proc(NimNode)	renderer: replaceIter(root: NimNode; search: proc (x: NimNode): bool;\n            replace: proc (x: NimNode): NimNode): bool	
 getTagName	happyx/spa/renderer.html#getTagName,string	renderer: getTagName(name: string): string	
@@ -9,4 +16,5 @@ buildHtmlProcedure	happyx/spa/renderer.html#buildHtmlProcedure,NimNode,NimNode	r
 buildHtml	happyx/spa/renderer.html#buildHtml.m,untyped,untyped	renderer: buildHtml(root, html: untyped): untyped	
 buildHtml	happyx/spa/renderer.html#buildHtml.m,untyped	renderer: buildHtml(html: untyped): untyped	
 routes	happyx/spa/renderer.html#routes.m,App,untyped	renderer: routes(app: App; body: untyped): untyped	
+component	happyx/spa/renderer.html#component.m,untyped,untyped	renderer: component(name, body: untyped): untyped	
 Renderer	happyx/spa/renderer.html#renderer	 Renderer	
