@@ -1,36 +1,33 @@
-import ../src/happyx
+import
+  ../src/happyx,
+  components/[main, hello_world]
 
-
-# Create a new app
-var
-  app = newApp()
 
 app.routes:
   "/":
-    "Hello, world!"
-    button:
-      "Go to /visit"
-      @click:
-        echo "Clicked!"
-        app.route("/visit")
+    component HelloWorld(counter = 1)
+    component HelloWorld(counter = 2)
+    component HelloWorld(counter = 4)
+    component HelloWorld(counter = 8)
+    component HelloWorld(counter = 16)
 
   "/visit":
     script(src="https://cdn.tailwindcss.com")  # Tailwind CSS :D
     tDiv(class="bg-gray-700 text-pink-400 px-8 py-24"):
-      "This page visited 0 times"
+      "This page was visited"
     button:
       "Go to /visit"
       @click:
         echo "Clicked!"
-        app.route("/visit")
+        route("/visit")
     button:
       "Go to /"
       @click:
-        app.route("/")
+        route("/")
     button:
       "Go to /calc"
       @click:
-        app.route("/calc5+5")
+        route("/calc5+5")
 
   "/calc{left:int}{op:/[\\+\\-]/}{right:int}":
     h1:
@@ -44,7 +41,7 @@ app.routes:
       "Go to /visit"
       @click:
         echo "Clicked!"
-        app.route("/visit")
+        route("/visit")
   
   "/shop":
     echo "When statement list ends with buildHtml macro you can use Nim"

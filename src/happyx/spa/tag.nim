@@ -150,6 +150,14 @@ func tag*(name: string): TagRef {.inline.} =
   )
 
 
+func tag*(tag: TagRef): TagRef {.inline.} =
+  TagRef(
+    name: tag.name, isText: tag.isText, parent: tag.parent,
+    attrs: tag.attrs, children: tag.children,
+    onlyChildren: tag.onlyChildren, childrenToParent: tag.childrenToParent
+  )
+
+
 func textTag*(text: string): TagRef {.inline.} =
   ## Shortcur for `initTag func<#initTag,string,bool,seq[TagRef],bool>`_
   runnableExamples:
@@ -170,6 +178,8 @@ func add*(self: TagRef, tags: varargs[TagRef]) =
       child2 = tag"p"
     rootTag.add(child1, child2)
   for tag in tags:
+    if tag.isNil():
+      continue
     self.children.add(tag)
     tag.parent = self
 
@@ -189,9 +199,9 @@ func lvl*(self: TagRef): int =
   result = 0
   var tag = self
   while not isNil(tag.parent):
+    tag = tag.parent
     if not tag.onlyChildren:
       inc result
-    tag = tag.parent
 
 
 func `[]`*(self: TagRef, attrName: string): string {.inline.} =
@@ -248,7 +258,7 @@ func `$`*(self: TagRef): string =
     attrs &= " " & key & "=" & "\"" & value & "\""
   if self.children.len > 0:
     if self.onlyChildren:
-      let children = "\n" & self.children.join("\n") & "\n"
+      let children = self.children.join("\n")
       fmt"{level}{children}{level}"
     else:
       let children = "\n" & self.children.join("\n") & "\n"

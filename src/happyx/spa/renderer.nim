@@ -39,13 +39,21 @@ export
 
 type
   AppEventHandler* = proc()
-  App* = object
+  App* = ref object
     appId*: string
     router*: proc()
+  BaseComponent* = ref BaseComponentObj
+  BaseComponentObj* = object of RootObj
 
 
+# Global variables
 var
+  application*: App = nil
   eventHandlers* = newTable[int, AppEventHandler]()
+  components* = newTable[string, BaseComponent]()
+
+# Compile time variables
+var
   uniqueId {.compileTime.} = 0
 
 
@@ -57,14 +65,28 @@ when defined(js):
   {.emit: "}" .}
 
 
-  func route*(app: App, path: cstring) =
+func route*(path: cstring) =
+  when defined(js):
     {.emit: "window.history.pushState(null, null, '#' + `path`);" .}
-    {.emit: "`app`.`router`();" .}
+    {.emit: "`application`.`router`();" .}
 
 
-func newApp*(appId: string = "app"): App =
+proc registerApp*(appId: string = "app"): App {. discardable, inline .} =
   ## Creates a new Singla Page Application
-  result = App(appId: appId)
+  application = App(appId: appId)
+  application
+
+
+proc registerComponent*(name: string, component: BaseComponent): BaseComponent =
+  if components.hasKey(name):
+    return components[name]
+  components[name] = component
+  return component
+
+
+func render*(self: var BaseComponent): TagRef {. inline .} =
+  ## Basic function that needs to overload
+  nil
 
 
 template start*(app: App) =
@@ -156,6 +178,32 @@ proc buildHtmlProcedure*(root, body: NimNode): NimNode {. compileTime .} =
       #   ...
       else:
         result.add(buildHtmlProcedure(tagName, statementList))
+    
+    elif statement.kind == nnkCommand:
+      if $statement[0] == "component":
+        let
+          name =
+            if statement[1].kind == nnkCall:
+              statement[1][0]
+            else:
+              statement[1]
+          objConstr = newNimNode(nnkObjConstr).add(name)
+          componentName = fmt"comp{name}{uniqueId}"
+        inc uniqueId
+        if statement[1].kind == nnkCall:
+          for i in 1..<statement[1].len:
+            objConstr.add(newNimNode(nnkExprColonExpr).add(statement[1][i][0], statement[1][i][1]))
+        result.add(newStmtList(
+          newVarStmt(ident("_" & componentName), objConstr),
+          newVarStmt(
+            ident(componentName),
+            newCall(
+              name,
+              newCall("registerComponent", newStrLitNode(componentName), ident("_" & componentName))
+            )
+          ),
+          newCall("render", ident(componentName))
+        ))
     
     elif statement.kind in [nnkStrLit, nnkTripleStrLit]:
       # "Raw text"
@@ -362,7 +410,7 @@ macro routes*(app: App, body: untyped): untyped =
     iPath = ident("path")
     iHtml = ident("html")
     iRouter = ident("callRouter")
-    router = newProc(iRouter)
+    router = newProc(postfix(iRouter, "*"))
     onDOMContentLoaded = newProc(
       ident("onDOMContentLoaded"),
       [newEmptyNode(), newIdentDefs(ident("ev"), ident("Event"))]
@@ -456,10 +504,91 @@ macro routes*(app: App, body: untyped): untyped =
     ))
   )
 
-  echo treeRepr router
-
   newStmtList(
     router,
     newAssignment(newDotExpr(ident("app"), ident("router")), router.name),
     onDOMContentLoaded
+  )
+
+
+macro component*(name, body: untyped): untyped =
+  ## Register a new component.
+  ## 
+  ## Returns string
+  ## 
+  let
+    name = $name
+    nameObj = $name & "Obj"
+    params = newNimNode(nnkRecList)
+  
+  var
+    templateStmtList = newStmtList()
+    scriptStmtList = newStmtList()
+    styleStmtList = newStmtList()
+  
+  for s in body.children:
+    if s.kind == nnkCall:
+      if s[0].kind == nnkIdent and s.len == 2 and s[^1].kind == nnkStmtList and s[^1].len == 1:
+        params.add(newNimNode(nnkIdentDefs).add(
+          postfix(s[0], "*"), s[1][0], newEmptyNode()
+        ))
+    
+      elif s[0].kind == nnkAccQuoted:
+        case $s[0]
+        of "template":
+          templateStmtList = newStmtList(
+            newCall("script", ident("self")),
+            newCall(
+              "buildHtml",
+              s[1].add(newCall(
+                "style", newStmtList(newStrLitNode("{self.style()}"))
+              ))
+            )
+          )
+        of "style":
+          styleStmtList = s[1]
+        of "script":
+          scriptStmtList = s[1]
+
+  result = newStmtList(
+    newNimNode(nnkTypeSection).add(
+      newNimNode(nnkTypeDef).add(
+        postfix(ident(nameObj), "*"),  # name
+        newEmptyNode(),
+        newNimNode(nnkObjectTy).add(
+          newEmptyNode(),  # no pragma
+          newNimNode(nnkOfInherit).add(ident("BaseComponentObj")),
+          params
+        )
+      ),
+      newNimNode(nnkTypeDef).add(
+        postfix(ident(name), "*"),  # name
+        newEmptyNode(),
+        newNimNode(nnkRefTy).add(ident(nameObj))
+      )
+    ),
+    newProc(
+      ident("script"),
+      [
+        newEmptyNode(),
+        newIdentDefs(ident("self"), ident(name))
+      ],
+      scriptStmtList
+    ),
+    newProc(
+      ident("style"),
+      [
+        ident("string"),
+        newIdentDefs(ident("self"), ident(name))
+      ],
+      styleStmtList
+    ),
+    newProc(
+      postfix(ident("render"), "*"),
+      [
+        ident("TagRef"),
+        newIdentDefs(ident("self"), ident(name))
+      ],
+      templateStmtList
+    ),
   )
