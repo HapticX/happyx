@@ -167,13 +167,11 @@ proc replaceSelfComponent(statement, componentName: NimNode) {. compileTime .} =
 
 
 proc replaceSelfStateVal(statement: NimNode) {. compileTime .} =
-  if statement.kind == nnkDotExpr:
-    if $statement[0] == "self":
-      statement[0] = newDotExpr(statement[0], statement[1])
-      statement[1] = ident("val")
-    return
-  
-  for i in statement.children:
+  for idx, i in statement.pairs:
+    if i.kind == nnkDotExpr:
+      if $i[0] == "self":
+        statement[idx] = newCall("get", newDotExpr(i[0], i[1]))
+      continue
     if i.kind in RoutineNodes:
       continue
     i.replaceSelfStateVal()
@@ -612,10 +610,6 @@ macro component*(name, body: untyped): untyped =
       newEmptyNode()
     ),
   )
-
-  echo treeRepr quote do:
-    self.counter += 1
-    self.counter.val += 1
   
   for s in body.children:
     if s.kind == nnkCall:

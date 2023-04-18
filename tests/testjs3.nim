@@ -11,7 +11,7 @@ component HelloWorld:
     button:
       "Increase"
       @button:
-        inc self.counter
+        self.counter += 1
   
   `script`:
     echo "Hello, world!"
@@ -25,7 +25,7 @@ component HelloWorld:
     """
 
 var html = buildHtml:
-  component HelloWorld
+  component HelloWorld(counter = 0)
   component HelloWorld(counter = 100)
 
 echo html
