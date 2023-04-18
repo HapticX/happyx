@@ -1,25 +1,74 @@
 State	happyx/spa/state.html#State	state: State	
 remember	happyx/spa/state.html#remember,T	state: remember[T](val: T): State[T]	
 `$`	happyx/spa/state.html#$,State	state: `$`(self: State): string	
-`==`	happyx/spa/state.html#==,State[T],State[T]	state: `==`[T](self, other: State[T]): bool	
-`&amp;`	happyx/spa/state.html#&,,	state: `&amp;`[T](self`gensym0, other`gensym0: State[T]): T	
-`+`	happyx/spa/state.html#+,,	state: `+`[T](self`gensym1, other`gensym1: State[T]): T	
-`-`	happyx/spa/state.html#-,,	state: `-`[T](self`gensym2, other`gensym2: State[T]): T	
-`*`	happyx/spa/state.html#*,,	state: `*`[T](self`gensym3, other`gensym3: State[T]): T	
-`/`	happyx/spa/state.html#/,,	state: `/`[T](self`gensym4, other`gensym4: State[T]): T	
+`==`	happyx/spa/state.html#==,,	state: `==`[T](self`gensym0, other`gensym0: State[T]): bool	
+`==`	happyx/spa/state.html#==,,T	state: `==`[T](self`gensym0: State[T]; other`gensym0: T): bool	
+`!=`	happyx/spa/state.html#!=,,	state: `!=`[T](self`gensym1, other`gensym1: State[T]): bool	
+`!=`	happyx/spa/state.html#!=,,T	state: `!=`[T](self`gensym1: State[T]; other`gensym1: T): bool	
+`&gt;=`	happyx/spa/state.html#>=,,	state: `&gt;=`[T](self`gensym2, other`gensym2: State[T]): bool	
+`&gt;=`	happyx/spa/state.html#>=,,T	state: `&gt;=`[T](self`gensym2: State[T]; other`gensym2: T): bool	
+`&lt;=`	happyx/spa/state.html#<=,,	state: `&lt;=`[T](self`gensym3, other`gensym3: State[T]): bool	
+`&lt;=`	happyx/spa/state.html#<=,,T	state: `&lt;=`[T](self`gensym3: State[T]; other`gensym3: T): bool	
+`&amp;`	happyx/spa/state.html#&,,	state: `&amp;`[T](self`gensym4, other`gensym4: State[T]): T	
+`&amp;`	happyx/spa/state.html#&,,T	state: `&amp;`[T](self`gensym4: State[T]; other`gensym4: T): T	
+`+`	happyx/spa/state.html#+,,	state: `+`[T](self`gensym5, other`gensym5: State[T]): T	
+`+`	happyx/spa/state.html#+,,T	state: `+`[T](self`gensym5: State[T]; other`gensym5: T): T	
+`-`	happyx/spa/state.html#-,,	state: `-`[T](self`gensym6, other`gensym6: State[T]): T	
+`-`	happyx/spa/state.html#-,,T	state: `-`[T](self`gensym6: State[T]; other`gensym6: T): T	
+`*`	happyx/spa/state.html#*,,	state: `*`[T](self`gensym7, other`gensym7: State[T]): T	
+`*`	happyx/spa/state.html#*,,T	state: `*`[T](self`gensym7: State[T]; other`gensym7: T): T	
+`/`	happyx/spa/state.html#/,,	state: `/`[T](self`gensym8, other`gensym8: State[T]): T	
+`/`	happyx/spa/state.html#/,,T	state: `/`[T](self`gensym8: State[T]; other`gensym8: T): T	
+`!`	happyx/spa/state.html#!,,	state: `!`[T](self`gensym9, other`gensym9: State[T]): T	
+`!`	happyx/spa/state.html#!,,T	state: `!`[T](self`gensym9: State[T]; other`gensym9: T): T	
+`^`	happyx/spa/state.html#^,,	state: `^`[T](self`gensym10, other`gensym10: State[T]): T	
+`^`	happyx/spa/state.html#^,,T	state: `^`[T](self`gensym10: State[T]; other`gensym10: T): T	
+`%`	happyx/spa/state.html#%,,	state: `%`[T](self`gensym11, other`gensym11: State[T]): T	
+`%`	happyx/spa/state.html#%,,T	state: `%`[T](self`gensym11: State[T]; other`gensym11: T): T	
+`@`	happyx/spa/state.html#@,,	state: `@`[T](self`gensym12, other`gensym12: State[T]): T	
+`@`	happyx/spa/state.html#@,,T	state: `@`[T](self`gensym12: State[T]; other`gensym12: T): T	
+`&gt;`	happyx/spa/state.html#>,,	state: `&gt;`[T](self`gensym13, other`gensym13: State[T]): T	
+`&gt;`	happyx/spa/state.html#>,,T	state: `&gt;`[T](self`gensym13: State[T]; other`gensym13: T): T	
+`&lt;`	happyx/spa/state.html#<,,	state: `&lt;`[T](self`gensym14, other`gensym14: State[T]): T	
+`&lt;`	happyx/spa/state.html#<,,T	state: `&lt;`[T](self`gensym14: State[T]; other`gensym14: T): T	
+`*=`	happyx/spa/state.html#*=,,	state: `*=`[T](self`gensym15: State[T]; other`gensym15: State[T])	
+`*=`	happyx/spa/state.html#*=,,T	state: `*=`[T](self`gensym15: State[T]; other`gensym15: T)	
+`+=`	happyx/spa/state.html#+=,,	state: `+=`[T](self`gensym16: State[T]; other`gensym16: State[T])	
+`+=`	happyx/spa/state.html#+=,,T	state: `+=`[T](self`gensym16: State[T]; other`gensym16: T)	
+`-=`	happyx/spa/state.html#-=,,	state: `-=`[T](self`gensym17: State[T]; other`gensym17: State[T])	
+`-=`	happyx/spa/state.html#-=,,T	state: `-=`[T](self`gensym17: State[T]; other`gensym17: T)	
+`/=`	happyx/spa/state.html#/=,,	state: `/=`[T](self`gensym18: State[T]; other`gensym18: State[T])	
+`/=`	happyx/spa/state.html#/=,,T	state: `/=`[T](self`gensym18: State[T]; other`gensym18: T)	
+`^=`	happyx/spa/state.html#^=,,	state: `^=`[T](self`gensym19: State[T]; other`gensym19: State[T])	
+`^=`	happyx/spa/state.html#^=,,T	state: `^=`[T](self`gensym19: State[T]; other`gensym19: T)	
+`&amp;=`	happyx/spa/state.html#&=,,	state: `&amp;=`[T](self`gensym20: State[T]; other`gensym20: State[T])	
+`&amp;=`	happyx/spa/state.html#&=,,T	state: `&amp;=`[T](self`gensym20: State[T]; other`gensym20: T)	
+`%=`	happyx/spa/state.html#%=,,	state: `%=`[T](self`gensym21: State[T]; other`gensym21: State[T])	
+`%=`	happyx/spa/state.html#%=,,T	state: `%=`[T](self`gensym21: State[T]; other`gensym21: T)	
+`$=`	happyx/spa/state.html#$=,,	state: `$=`[T](self`gensym22: State[T]; other`gensym22: State[T])	
+`$=`	happyx/spa/state.html#$=,,T	state: `$=`[T](self`gensym22: State[T]; other`gensym22: T)	
+`@=`	happyx/spa/state.html#@=,,	state: `@=`[T](self`gensym23: State[T]; other`gensym23: State[T])	
+`@=`	happyx/spa/state.html#@=,,T	state: `@=`[T](self`gensym23: State[T]; other`gensym23: T)	
+`:=`	happyx/spa/state.html#:=,,	state: `:=`[T](self`gensym24: State[T]; other`gensym24: State[T])	
+`:=`	happyx/spa/state.html#:=,,T	state: `:=`[T](self`gensym24: State[T]; other`gensym24: T)	
+`|=`	happyx/spa/state.html#|=,,	state: `|=`[T](self`gensym25: State[T]; other`gensym25: State[T])	
+`|=`	happyx/spa/state.html#|=,,T	state: `|=`[T](self`gensym25: State[T]; other`gensym25: T)	
+`~=`	happyx/spa/state.html#~=,,	state: `~=`[T](self`gensym26: State[T]; other`gensym26: State[T])	
+`~=`	happyx/spa/state.html#~=,,T	state: `~=`[T](self`gensym26: State[T]; other`gensym26: T)	
 get	happyx/spa/state.html#get,State[T]	state: get[T](self: State[T]): T	
 set	happyx/spa/state.html#set,State[T],T	state: set[T](self: State[T]; value: T)	
 `[]`	happyx/spa/state.html#[],State[T],int	state: `[]`[T](self: State[T]; idx: int): auto	
 items	happyx/spa/state.html#items.i,State[T]	state: items[T](self: State[T]): auto	
-bool	happyx/spa/state.html#bool.c,State	state: bool(self: State): bool	
-string	happyx/spa/state.html#string.c,State	state: string(self: State): string	
-int	happyx/spa/state.html#int.c,State	state: int(self: State): int	
-float	happyx/spa/state.html#float.c,State	state: float(self: State): float	
-char	happyx/spa/state.html#char.c,State	state: char(self: State): char	
-int8	happyx/spa/state.html#int8.c,State	state: int8(self: State): int8	
-int16	happyx/spa/state.html#int16.c,State	state: int16(self: State): int16	
-int32	happyx/spa/state.html#int32.c,State	state: int32(self: State): int32	
-int64	happyx/spa/state.html#int64.c,State	state: int64(self: State): int64	
-float32	happyx/spa/state.html#float32.c,State	state: float32(self: State): float32	
-float64	happyx/spa/state.html#float64.c,State	state: float64(self: State): float64	
+toBool	happyx/spa/state.html#toBool.c,State	state: toBool(self: State): bool	
+toString	happyx/spa/state.html#toString.c,State	state: toString(self: State): string	
+toCString	happyx/spa/state.html#toCString.c,State	state: toCString(self: State): cstring	
+toInt	happyx/spa/state.html#toInt.c,State	state: toInt(self: State): int	
+toFloat	happyx/spa/state.html#toFloat.c,State	state: toFloat(self: State): float	
+toChar	happyx/spa/state.html#toChar.c,State	state: toChar(self: State): char	
+toInt8	happyx/spa/state.html#toInt8.c,State	state: toInt8(self: State): int8	
+toInt16	happyx/spa/state.html#toInt16.c,State	state: toInt16(self: State): int16	
+toInt32	happyx/spa/state.html#toInt32.c,State	state: toInt32(self: State): int32	
+toInt64	happyx/spa/state.html#toInt64.c,State	state: toInt64(self: State): int64	
+toFloat32	happyx/spa/state.html#toFloat32.c,State	state: toFloat32(self: State): float32	
+toFloat64	happyx/spa/state.html#toFloat64.c,State	state: toFloat64(self: State): float64	
 State	happyx/spa/state.html#state	 State	

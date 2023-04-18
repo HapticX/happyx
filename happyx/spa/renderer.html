@@ -118,6 +118,8 @@ window.addEventListener('DOMContentLoaded', main);
     title="BaseComponent = ref BaseComponentObj">BaseComponent</a></li>
   <li><a class="reference" href="#BaseComponentObj"
     title="BaseComponentObj = object of RootObj">BaseComponentObj</a></li>
+  <li><a class="reference" href="#ComponentEventHandler"
+    title="ComponentEventHandler = proc (self: BaseComponent)">ComponentEventHandler</a></li>
 
   </ul>
 </li>
@@ -126,6 +128,8 @@ window.addEventListener('DOMContentLoaded', main);
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#application"
     title="application: App = nil">application</a></li>
+  <li><a class="reference" href="#componentEventHandlers"
+    title="componentEventHandlers = newTable(32)">componentEventHandlers</a></li>
   <li><a class="reference" href="#components"
     title="components = newTable(32)">components</a></li>
   <li><a class="reference" href="#eventHandlers"
@@ -137,8 +141,10 @@ window.addEventListener('DOMContentLoaded', main);
   <a class="reference reference-toplevel" href="#12" id="62">Procs</a>
   <ul class="simple simple-toc-section">
       <ul class="simple nested-toc-section">buildHtmlProcedure
-      <li><a class="reference" href="#buildHtmlProcedure%2CNimNode%2CNimNode"
-    title="buildHtmlProcedure(root, body: NimNode): NimNode">buildHtmlProcedure(root, body: NimNode): NimNode</a></li>
+      <li><a class="reference" href="#buildHtmlProcedure%2CNimNode%2CNimNode%2Cbool%2CNimNode"
+    title="buildHtmlProcedure(root, body: NimNode; inComponent: bool = false;
+                   componentName: NimNode = newEmptyNode()): NimNode">buildHtmlProcedure(root, body: NimNode; inComponent: bool = false;
+                   componentName: NimNode = newEmptyNode()): NimNode</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">getTagName
@@ -179,7 +185,12 @@ window.addEventListener('DOMContentLoaded', main);
 <li>
   <a class="reference reference-toplevel" href="#17" id="67">Macros</a>
   <ul class="simple simple-toc-section">
-      <ul class="simple nested-toc-section">buildHtml
+      <ul class="simple nested-toc-section">buildComponentHtml
+      <li><a class="reference" href="#buildComponentHtml.m%2Cuntyped%2Cuntyped"
+    title="buildComponentHtml(componentName, html: untyped): untyped">buildComponentHtml(componentName, html: untyped): untyped</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">buildHtml
       <li><a class="reference" href="#buildHtml.m%2Cuntyped"
     title="buildHtml(html: untyped): untyped">buildHtml(html: untyped): untyped</a></li>
   <li><a class="reference" href="#buildHtml.m%2Cuntyped%2Cuntyped"
@@ -270,6 +281,14 @@ window.addEventListener('DOMContentLoaded', main);
 
 </dd>
 </div>
+<div id="ComponentEventHandler">
+<dt><pre><a href="renderer.html#ComponentEventHandler"><span class="Identifier">ComponentEventHandler</span></a> <span class="Other">=</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="renderer.html#BaseComponent"><span class="Identifier">BaseComponent</span></a><span class="Other">)</span></pre></dt>
+<dd>
+
+
+
+</dd>
+</div>
 
 </dl></div>
 <div class="section" id="8">
@@ -277,6 +296,14 @@ window.addEventListener('DOMContentLoaded', main);
 <dl class="item">
 <div id="application">
 <dt><pre><a href="renderer.html#application"><span class="Identifier">application</span></a><span class="Other">:</span> <a href="renderer.html#App"><span class="Identifier">App</span></a> <span class="Other">=</span> <span class="Keyword">nil</span></pre></dt>
+<dd>
+
+
+
+</dd>
+</div>
+<div id="componentEventHandlers">
+<dt><pre><a href="renderer.html#componentEventHandlers"><span class="Identifier">componentEventHandlers</span></a> <span class="Other">=</span> <span class="Identifier">newTable</span><span class="Other">(</span><span class="DecNumber">32</span><span class="Other">)</span></pre></dt>
 <dd>
 
 
@@ -304,9 +331,10 @@ window.addEventListener('DOMContentLoaded', main);
 <div class="section" id="12">
 <h1><a class="toc-backref" href="#12">Procs</a></h1>
 <dl class="item">
-<div id="buildHtmlProcedure,NimNode,NimNode">
-<dt><pre><span class="Keyword">proc</span> <a href="#buildHtmlProcedure%2CNimNode%2CNimNode"><span class="Identifier">buildHtmlProcedure</span></a><span class="Other">(</span><span class="Identifier">root</span><span class="Other">,</span> <span class="Identifier">body</span><span class="Other">:</span> <span class="Identifier">NimNode</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">NimNode</span> {.<span class="Identifier">compileTime</span><span class="Other">,</span>
-    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span></span>.}</pre></dt>
+<div id="buildHtmlProcedure,NimNode,NimNode,bool,NimNode">
+<dt><pre><span class="Keyword">proc</span> <a href="#buildHtmlProcedure%2CNimNode%2CNimNode%2Cbool%2CNimNode"><span class="Identifier">buildHtmlProcedure</span></a><span class="Other">(</span><span class="Identifier">root</span><span class="Other">,</span> <span class="Identifier">body</span><span class="Other">:</span> <span class="Identifier">NimNode</span><span class="Other">;</span> <span class="Identifier">inComponent</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">;</span>
+                        <span class="Identifier">componentName</span><span class="Other">:</span> <span class="Identifier">NimNode</span> <span class="Other">=</span> <span class="Identifier">newEmptyNode</span><span class="Other">(</span><span class="Other">)</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">NimNode</span> {.
+    <span class="Identifier">compileTime</span><span class="Other">,</span> <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 Builds HTML
@@ -335,7 +363,7 @@ Creates a new Singla Page Application
 </div>
 <div id="registerComponent,string,BaseComponent">
 <dt><pre><span class="Keyword">proc</span> <a href="#registerComponent%2Cstring%2CBaseComponent"><span class="Identifier">registerComponent</span></a><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">component</span><span class="Other">:</span> <a href="renderer.html#BaseComponent"><span class="Identifier">BaseComponent</span></a><span class="Other">)</span><span class="Other">:</span> <a href="renderer.html#BaseComponent"><span class="Identifier">BaseComponent</span></a> {.
-    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+    <span class="Identifier">inline</span><span class="Other">,</span> <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 
@@ -361,7 +389,7 @@ Basic function that needs to overload
 </dd>
 </div>
 <div id="route,cstring">
-<dt><pre><span class="Keyword">func</span> <a href="#route%2Ccstring"><span class="Identifier">route</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#route%2Ccstring"><span class="Identifier">route</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span> {.<span class="Identifier">inline</span><span class="Other">,</span> <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 
@@ -373,6 +401,18 @@ Basic function that needs to overload
 <div class="section" id="17">
 <h1><a class="toc-backref" href="#17">Macros</a></h1>
 <dl class="item">
+<div id="buildComponentHtml.m,untyped,untyped">
+<dt><pre><span class="Keyword">macro</span> <a href="#buildComponentHtml.m%2Cuntyped%2Cuntyped"><span class="Identifier">buildComponentHtml</span></a><span class="Other">(</span><span class="Identifier">componentName</span><span class="Other">,</span> <span class="Identifier">html</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
+<dd>
+
+<p><tt class="docutils literal"><span class="pre"><span class="Identifier">buildHtml</span></span></tt> macro provides building HTML tags with YAML-like syntax. This macro doesn't generate Root tag</p>
+<p>Args:</p>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre"><span class="Identifier">html</span></span></tt>: YAML-like structure.</li>
+</ul>
+
+
+</dd>
+</div>
 <div id="buildHtml.m,untyped">
 <dt><pre><span class="Keyword">macro</span> <a href="#buildHtml.m%2Cuntyped"><span class="Identifier">buildHtml</span></a><span class="Other">(</span><span class="Identifier">html</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
@@ -456,7 +496,7 @@ Starts single page application
 <div class="section" id="19">
 <h1><a class="toc-backref" href="#19">Exports</a></h1>
 <dl class="item">
-<a href="tag.html#initTag,string,bool,StringTableRef,seq[TagRef],bool,bool"><span class="Identifier">initTag</span></a>, <a href="tag.html#$,TagRef"><span class="Identifier">$</span></a>, <a href="tag.html#tag,TagRef"><span class="Identifier">tag</span></a>, <a href="tag.html#initTag,string,bool,seq[TagRef],bool,bool"><span class="Identifier">initTag</span></a>, <a href="tag.html#textTag,string"><span class="Identifier">textTag</span></a>, <a href="tag.html#initTag,string,StringTableRef,seq[TagRef],bool,bool"><span class="Identifier">initTag</span></a>, <a href="tag.html#add,TagRef,varargs[TagRef]"><span class="Identifier">add</span></a>, <a href="tag.html#get,TagRef,string,string"><span class="Identifier">get</span></a>, <a href="tag.html#tag,string"><span class="Identifier">tag</span></a>, <a href="tag.html#lvl,TagRef"><span class="Identifier">lvl</span></a>, <a href="tag.html#UnclosedTags"><span class="Identifier">UnclosedTags</span></a>, <a href="tag.html#initTag,string,seq[TagRef],bool,bool"><span class="Identifier">initTag</span></a>, <a href="tag.html#findByTag,TagRef,string"><span class="Identifier">findByTag</span></a>, <a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a>, <a href="tag.html#Tag"><span class="Identifier">Tag</span></a>, <a href="tag.html#[]=,TagRef,string,string"><span class="Identifier">[]=</span></a>, <a href="tag.html#get,TagRef,string"><span class="Identifier">get</span></a>, <a href="tag.html#[],TagRef,string"><span class="Identifier">[]</span></a>
+<a href="tag.html#initTag,string,bool,StringTableRef,seq[TagRef],bool"><span class="Identifier">initTag</span></a>, <a href="tag.html#$,TagRef"><span class="Identifier">$</span></a>, <a href="tag.html#tag,TagRef"><span class="Identifier">tag</span></a>, <a href="tag.html#initTag,string,bool,seq[TagRef],bool"><span class="Identifier">initTag</span></a>, <a href="tag.html#textTag,string"><span class="Identifier">textTag</span></a>, <a href="tag.html#addArgIter,TagRef,string"><span class="Identifier">addArgIter</span></a>, <a href="tag.html#initTag,string,StringTableRef,seq[TagRef],bool"><span class="Identifier">initTag</span></a>, <a href="tag.html#add,TagRef,varargs[TagRef]"><span class="Identifier">add</span></a>, <a href="tag.html#get,TagRef,string,string"><span class="Identifier">get</span></a>, <a href="tag.html#tag,string"><span class="Identifier">tag</span></a>, <a href="tag.html#lvl,TagRef"><span class="Identifier">lvl</span></a>, <a href="tag.html#UnclosedTags"><span class="Identifier">UnclosedTags</span></a>, <a href="tag.html#initTag,string,seq[TagRef],bool"><span class="Identifier">initTag</span></a>, <a href="tag.html#findByTag,TagRef,string"><span class="Identifier">findByTag</span></a>, <a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a>, <a href="tag.html#Tag"><span class="Identifier">Tag</span></a>, <a href="tag.html#[]=,TagRef,string,string"><span class="Identifier">[]=</span></a>, <a href="tag.html#get,TagRef,string"><span class="Identifier">get</span></a>, <a href="tag.html#addArg,TagRef,string"><span class="Identifier">addArg</span></a>, <a href="tag.html#[],TagRef,string"><span class="Identifier">[]</span></a>
 </dl></div>
 
   </div>
@@ -466,7 +506,7 @@ Starts single page application
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-04-17 15:22:33 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-04-18 14:00:48 UTC</small>
       </div>
     </div>
   </div>

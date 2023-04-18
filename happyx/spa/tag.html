@@ -107,9 +107,9 @@ window.addEventListener('DOMContentLoaded', main);
   name*: string
   parent*: TagRef
   attrs*: StringTableRef
+  args*: seq[string]
   children*: seq[TagRef]
   isText*: bool              ## Ignore attributes and children when true
-  childrenToParent*: bool    ## Ignore self and binds all children to parent
   onlyChildren*: bool        ## Ignore self and shows only children">Tag</a></li>
   <li><a class="reference" href="#TagRef"
     title="TagRef = ref Tag">TagRef</a></li>
@@ -147,6 +147,16 @@ window.addEventListener('DOMContentLoaded', main);
     title="add(self: TagRef; tags: varargs[TagRef])">add(self: TagRef; tags: varargs[TagRef])</a></li>
 
   </ul>
+  <ul class="simple nested-toc-section">addArg
+      <li><a class="reference" href="#addArg%2CTagRef%2Cstring"
+    title="addArg(self: TagRef; arg: string)">addArg(self: TagRef; arg: string)</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">addArgIter
+      <li><a class="reference" href="#addArgIter%2CTagRef%2Cstring"
+    title="addArgIter(self: TagRef; arg: string)">addArgIter(self: TagRef; arg: string)</a></li>
+
+  </ul>
   <ul class="simple nested-toc-section">findByTag
       <li><a class="reference" href="#findByTag%2CTagRef%2Cstring"
     title="findByTag(self: TagRef; tag: string): seq[TagRef]">findByTag(self: TagRef; tag: string): seq[TagRef]</a></li>
@@ -160,24 +170,20 @@ window.addEventListener('DOMContentLoaded', main);
 
   </ul>
   <ul class="simple nested-toc-section">initTag
-      <li><a class="reference" href="#initTag%2Cstring%2CStringTableRef%2Cseq%5BTagRef%5D%2Cbool%2Cbool"
+      <li><a class="reference" href="#initTag%2Cstring%2CStringTableRef%2Cseq%5BTagRef%5D%2Cbool"
     title="initTag(name: string; attrs: StringTableRef; children: seq[TagRef] = @[];
-        childrenToParent: bool = false; onlyChildren: bool = false): TagRef">initTag(name: string; attrs: StringTableRef; children: seq[TagRef] = @[];
-        childrenToParent: bool = false; onlyChildren: bool = false): TagRef</a></li>
-  <li><a class="reference" href="#initTag%2Cstring%2Cseq%5BTagRef%5D%2Cbool%2Cbool"
-    title="initTag(name: string; children: seq[TagRef] = @[];
-        childrenToParent: bool = false; onlyChildren: bool = false): TagRef">initTag(name: string; children: seq[TagRef] = @[];
-        childrenToParent: bool = false; onlyChildren: bool = false): TagRef</a></li>
-  <li><a class="reference" href="#initTag%2Cstring%2Cbool%2CStringTableRef%2Cseq%5BTagRef%5D%2Cbool%2Cbool"
-    title="initTag(name: string; isText: bool; attrs: StringTableRef;
-        children: seq[TagRef] = @[]; childrenToParent: bool = false;
-        onlyChildren: bool = false): TagRef">initTag(name: string; isText: bool; attrs: StringTableRef;
-        children: seq[TagRef] = @[]; childrenToParent: bool = false;
+        onlyChildren: bool = false): TagRef">initTag(name: string; attrs: StringTableRef; children: seq[TagRef] = @[];
         onlyChildren: bool = false): TagRef</a></li>
-  <li><a class="reference" href="#initTag%2Cstring%2Cbool%2Cseq%5BTagRef%5D%2Cbool%2Cbool"
+  <li><a class="reference" href="#initTag%2Cstring%2Cseq%5BTagRef%5D%2Cbool"
+    title="initTag(name: string; children: seq[TagRef] = @[]; onlyChildren: bool = false): TagRef">initTag(name: string; children: seq[TagRef] = @[]; onlyChildren: bool = false): TagRef</a></li>
+  <li><a class="reference" href="#initTag%2Cstring%2Cbool%2CStringTableRef%2Cseq%5BTagRef%5D%2Cbool"
+    title="initTag(name: string; isText: bool; attrs: StringTableRef;
+        children: seq[TagRef] = @[]; onlyChildren: bool = false): TagRef">initTag(name: string; isText: bool; attrs: StringTableRef;
+        children: seq[TagRef] = @[]; onlyChildren: bool = false): TagRef</a></li>
+  <li><a class="reference" href="#initTag%2Cstring%2Cbool%2Cseq%5BTagRef%5D%2Cbool"
     title="initTag(name: string; isText: bool; children: seq[TagRef] = @[];
-        childrenToParent: bool = false; onlyChildren: bool = false): TagRef">initTag(name: string; isText: bool; children: seq[TagRef] = @[];
-        childrenToParent: bool = false; onlyChildren: bool = false): TagRef</a></li>
+        onlyChildren: bool = false): TagRef">initTag(name: string; isText: bool; children: seq[TagRef] = @[];
+        onlyChildren: bool = false): TagRef</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">lvl
@@ -219,9 +225,9 @@ window.addEventListener('DOMContentLoaded', main);
   <span class="Identifier">name</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
   <span class="Identifier">parent</span><span class="Operator">*</span><span class="Other">:</span> <a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a>
   <span class="Identifier">attrs</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">StringTableRef</span>
+  <span class="Identifier">args</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">]</span>
   <span class="Identifier">children</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a><span class="Other">]</span>
   <span class="Identifier">isText</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>              <span class="Comment">## Ignore attributes and children when true</span>
-  <span class="Identifier">childrenToParent</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>    <span class="Comment">## Ignore self and binds all children to parent</span>
   <span class="Identifier">onlyChildren</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>        <span class="Comment">## Ignore self and shows only children</span>
   </pre></dt>
 <dd>
@@ -296,6 +302,22 @@ Adds <tt class="docutils literal"><span class="pre"><span class="Identifier">oth
 
 </dd>
 </div>
+<div id="addArg,TagRef,string">
+<dt><pre><span class="Keyword">func</span> <a href="#addArg%2CTagRef%2Cstring"><span class="Identifier">addArg</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a><span class="Other">;</span> <span class="Identifier">arg</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<dd>
+
+
+
+</dd>
+</div>
+<div id="addArgIter,TagRef,string">
+<dt><pre><span class="Keyword">func</span> <a href="#addArgIter%2CTagRef%2Cstring"><span class="Identifier">addArgIter</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a><span class="Other">;</span> <span class="Identifier">arg</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<dd>
+
+
+
+</dd>
+</div>
 <div id="findByTag,TagRef,string">
 <dt><pre><span class="Keyword">func</span> <a href="#findByTag%2CTagRef%2Cstring"><span class="Identifier">findByTag</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a><span class="Other">;</span> <span class="Identifier">tag</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a><span class="Other">]</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
@@ -321,10 +343,9 @@ Returns tag by name
 
 </dd>
 </div>
-<div id="initTag,string,StringTableRef,seq[TagRef],bool,bool">
-<dt><pre><span class="Keyword">func</span> <a href="#initTag%2Cstring%2CStringTableRef%2Cseq%5BTagRef%5D%2Cbool%2Cbool"><span class="Identifier">initTag</span></a><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">attrs</span><span class="Other">:</span> <span class="Identifier">StringTableRef</span><span class="Other">;</span> <span class="Identifier">children</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a><span class="Other">]</span> <span class="Other">=</span> <span class="Operator">@</span><span class="Other">[</span><span class="Other">]</span><span class="Other">;</span>
-             <span class="Identifier">childrenToParent</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">;</span> <span class="Identifier">onlyChildren</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">)</span><span class="Other">:</span> <a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a> {.
-    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<div id="initTag,string,StringTableRef,seq[TagRef],bool">
+<dt><pre><span class="Keyword">func</span> <a href="#initTag%2Cstring%2CStringTableRef%2Cseq%5BTagRef%5D%2Cbool"><span class="Identifier">initTag</span></a><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">attrs</span><span class="Other">:</span> <span class="Identifier">StringTableRef</span><span class="Other">;</span> <span class="Identifier">children</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a><span class="Other">]</span> <span class="Other">=</span> <span class="Operator">@</span><span class="Other">[</span><span class="Other">]</span><span class="Other">;</span>
+             <span class="Identifier">onlyChildren</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">)</span><span class="Other">:</span> <a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 <p>Initializes a new HTML tag with the given name, attributes, and children.</p>
@@ -340,10 +361,9 @@ Returns tag by name
 
 </dd>
 </div>
-<div id="initTag,string,seq[TagRef],bool,bool">
-<dt><pre><span class="Keyword">func</span> <a href="#initTag%2Cstring%2Cseq%5BTagRef%5D%2Cbool%2Cbool"><span class="Identifier">initTag</span></a><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">children</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a><span class="Other">]</span> <span class="Other">=</span> <span class="Operator">@</span><span class="Other">[</span><span class="Other">]</span><span class="Other">;</span>
-             <span class="Identifier">childrenToParent</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">;</span> <span class="Identifier">onlyChildren</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">)</span><span class="Other">:</span> <a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a> {.
-    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<div id="initTag,string,seq[TagRef],bool">
+<dt><pre><span class="Keyword">func</span> <a href="#initTag%2Cstring%2Cseq%5BTagRef%5D%2Cbool"><span class="Identifier">initTag</span></a><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">children</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a><span class="Other">]</span> <span class="Other">=</span> <span class="Operator">@</span><span class="Other">[</span><span class="Other">]</span><span class="Other">;</span>
+             <span class="Identifier">onlyChildren</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">)</span><span class="Other">:</span> <a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 <p>Initializes a new HTML tag without attributes but with children</p>
@@ -358,10 +378,10 @@ Returns tag by name
 
 </dd>
 </div>
-<div id="initTag,string,bool,StringTableRef,seq[TagRef],bool,bool">
-<dt><pre><span class="Keyword">func</span> <a href="#initTag%2Cstring%2Cbool%2CStringTableRef%2Cseq%5BTagRef%5D%2Cbool%2Cbool"><span class="Identifier">initTag</span></a><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">isText</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">;</span> <span class="Identifier">attrs</span><span class="Other">:</span> <span class="Identifier">StringTableRef</span><span class="Other">;</span>
-             <span class="Identifier">children</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a><span class="Other">]</span> <span class="Other">=</span> <span class="Operator">@</span><span class="Other">[</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">childrenToParent</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">;</span>
-             <span class="Identifier">onlyChildren</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">)</span><span class="Other">:</span> <a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<div id="initTag,string,bool,StringTableRef,seq[TagRef],bool">
+<dt><pre><span class="Keyword">func</span> <a href="#initTag%2Cstring%2Cbool%2CStringTableRef%2Cseq%5BTagRef%5D%2Cbool"><span class="Identifier">initTag</span></a><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">isText</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">;</span> <span class="Identifier">attrs</span><span class="Other">:</span> <span class="Identifier">StringTableRef</span><span class="Other">;</span>
+             <span class="Identifier">children</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a><span class="Other">]</span> <span class="Other">=</span> <span class="Operator">@</span><span class="Other">[</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">onlyChildren</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">)</span><span class="Other">:</span> <a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a> {.
+    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 <p>Initializes a new HTML tag with the given name, whether it's text or not, attributes, and children.</p>
@@ -378,10 +398,9 @@ Returns tag by name
 
 </dd>
 </div>
-<div id="initTag,string,bool,seq[TagRef],bool,bool">
-<dt><pre><span class="Keyword">func</span> <a href="#initTag%2Cstring%2Cbool%2Cseq%5BTagRef%5D%2Cbool%2Cbool"><span class="Identifier">initTag</span></a><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">isText</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">;</span> <span class="Identifier">children</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a><span class="Other">]</span> <span class="Other">=</span> <span class="Operator">@</span><span class="Other">[</span><span class="Other">]</span><span class="Other">;</span>
-             <span class="Identifier">childrenToParent</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">;</span> <span class="Identifier">onlyChildren</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">)</span><span class="Other">:</span> <a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a> {.
-    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<div id="initTag,string,bool,seq[TagRef],bool">
+<dt><pre><span class="Keyword">func</span> <a href="#initTag%2Cstring%2Cbool%2Cseq%5BTagRef%5D%2Cbool"><span class="Identifier">initTag</span></a><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">isText</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">;</span> <span class="Identifier">children</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a><span class="Other">]</span> <span class="Other">=</span> <span class="Operator">@</span><span class="Other">[</span><span class="Other">]</span><span class="Other">;</span>
+             <span class="Identifier">onlyChildren</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">)</span><span class="Other">:</span> <a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 Initializes a new HTML tag
@@ -444,7 +463,7 @@ Shortcur for <a class="reference external" href="#initTag,string,bool,seq[TagRef
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-04-17 15:22:30 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-04-18 14:00:43 UTC</small>
       </div>
     </div>
   </div>
