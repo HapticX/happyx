@@ -78,7 +78,7 @@ nim c -r -d:debug -d:httpx main
 ```nim
 import happyx
 
-var app = newApp()
+var app = registerApp()
 app.routes:
   "/user{userId:int}":
     "User ID is {userId}"
