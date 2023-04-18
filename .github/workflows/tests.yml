@@ -20,7 +20,6 @@ jobs:
         os:
           - ubuntu-latest
         nim_version:
-          - '1.4.8'
           - 'stable'
     env:
       TIMEOUT_EXIT_STATUS: 124

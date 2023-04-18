@@ -7,6 +7,6 @@ license = "GNU GPLv3"
 srcDir = "src"
 
 [Deps]
-Requires: "nim >= 1.4.0"
+Requires: "nim >= 1.6.12"
 Requires: "regex"
 Requires: "httpx"
