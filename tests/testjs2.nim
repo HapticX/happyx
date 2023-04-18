@@ -5,11 +5,11 @@ import
 
 app.routes:
   "/":
-    component HelloWorld(counter = 1)
-    component HelloWorld(counter = 2)
-    component HelloWorld(counter = 4)
-    component HelloWorld(counter = 8)
-    component HelloWorld(counter = 16)
+    component HelloWorld(counter = 1.0)
+    component HelloWorld(counter = 2.0)
+    component HelloWorld(counter = 4.0)
+    component HelloWorld(counter = 8.0)
+    component HelloWorld(counter = 16.0)
 
   "/visit":
     script(src="https://cdn.tailwindcss.com")  # Tailwind CSS :D

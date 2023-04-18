@@ -39,6 +39,7 @@ export
 
 type
   AppEventHandler* = proc()
+  ComponentEventHandler* = proc(self: BaseComponent)
   App* = ref object
     appId*: string
     router*: proc()
@@ -50,7 +51,8 @@ type
 var
   application*: App = nil
   eventHandlers* = newTable[int, AppEventHandler]()
-  components* = newTable[string, BaseComponent]()
+  componentEventHandlers* = newTable[int, ComponentEventHandler]()
+  components* = newTable[cstring, BaseComponent]()
 
 # Compile time variables
 var
@@ -63,12 +65,19 @@ when defined(js):
   {.emit: "`idx` = idx;" .}
   eventHandlers[idx]()
   {.emit: "}" .}
+  {.emit: "function callComponentEventHandler(componentId, idx) {".}
+  var
+    callbackIdx: int
+    componentId: cstring
+  {.emit: "`callbackIdx` = idx; `componentId` = componentId;" .}
+  componentEventHandlers[callbackIdx](components[componentId])
+  {.emit: "}" .}
 
 
-func route*(path: cstring) =
+proc route*(path: cstring) {. inline .} =
   when defined(js):
     {.emit: "window.history.pushState(null, null, '#' + `path`);" .}
-    {.emit: "`application`.`router`();" .}
+    application.router()
 
 
 proc registerApp*(appId: string = "app"): App {. discardable, inline .} =
@@ -77,7 +86,7 @@ proc registerApp*(appId: string = "app"): App {. discardable, inline .} =
   application
 
 
-proc registerComponent*(name: string, component: BaseComponent): BaseComponent =
+proc registerComponent*(name: string, component: BaseComponent): BaseComponent {. inline .} =
   if components.hasKey(name):
     return components[name]
   components[name] = component
@@ -147,7 +156,31 @@ proc endsWithBuildHtml(statement: NimNode): bool {. compileTime .} =
   statement[^1].kind == nnkCall and $statement[^1][0] == "buildHtml"
 
 
-proc buildHtmlProcedure*(root, body: NimNode): NimNode {. compileTime .} =
+proc replaceSelfComponent(statement, componentName: NimNode) {. compileTime .} =
+  if statement.kind == nnkDotExpr:
+    if $statement[0] == "self":
+      statement[0] = newDotExpr(ident("self"), componentName)
+    return
+  
+  for i in statement.children:
+    i.replaceSelfComponent(componentName)
+
+
+proc replaceSelfStateVal(statement: NimNode) {. compileTime .} =
+  if statement.kind == nnkDotExpr:
+    if $statement[0] == "self":
+      statement[0] = newDotExpr(statement[0], statement[1])
+      statement[1] = ident("val")
+    return
+  
+  for i in statement.children:
+    if i.kind in RoutineNodes:
+      continue
+    i.replaceSelfStateVal()
+
+
+proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
+                         componentName: NimNode = newEmptyNode()): NimNode {. compileTime .} =
   ## Builds HTML
   let elementName = newStrLitNode(getTagName($root))
   result = newCall("initTag", elementName)
@@ -163,7 +196,7 @@ proc buildHtmlProcedure*(root, body: NimNode): NimNode {. compileTime .} =
       if statement.len-2 > 0 and statementList.kind == nnkStmtList:
         for attr in statement[1 .. statement.len-2]:
           attrs.add(attribute(attr))
-        var builded = buildHtmlProcedure(tagName, statementList)
+        var builded = buildHtmlProcedure(tagName, statementList, inComponent, componentName)
         builded.insert(2, newCall("newStringTable", attrs))
         result.add(builded)
       # tag(attr="value")
@@ -177,9 +210,10 @@ proc buildHtmlProcedure*(root, body: NimNode): NimNode {. compileTime .} =
       # tag:
       #   ...
       else:
-        result.add(buildHtmlProcedure(tagName, statementList))
+        result.add(buildHtmlProcedure(tagName, statementList, inComponent, componentName))
     
     elif statement.kind == nnkCommand:
+      # Component usage
       if $statement[0] == "component":
         let
           name =
@@ -188,21 +222,37 @@ proc buildHtmlProcedure*(root, body: NimNode): NimNode {. compileTime .} =
             else:
               statement[1]
           objConstr = newNimNode(nnkObjConstr).add(name)
-          componentName = fmt"comp{name}{uniqueId}"
+          componentName = fmt"comp{name}{uniqueId}{uniqueId + 2}{uniqueId * 2}{uniqueId + 7}"
+          componentNameTmp = "_" & componentName
+          componentData = "data_" & componentName
         inc uniqueId
         if statement[1].kind == nnkCall:
           for i in 1..<statement[1].len:
-            objConstr.add(newNimNode(nnkExprColonExpr).add(statement[1][i][0], statement[1][i][1]))
+            objConstr.add(newNimNode(nnkExprColonExpr).add(
+              statement[1][i][0], newCall("remember", statement[1][i][1])
+            ))
+        objConstr.add(newNimNode(nnkExprColonExpr).add(
+          ident("uniqCompId"), newStrLitNode(componentName)
+        ))
         result.add(newStmtList(
-          newVarStmt(ident("_" & componentName), objConstr),
+          newVarStmt(ident(componentNameTmp), objConstr),
           newVarStmt(
             ident(componentName),
             newCall(
               name,
-              newCall("registerComponent", newStrLitNode(componentName), ident("_" & componentName))
+              newCall("registerComponent", newStrLitNode(componentName), ident(componentNameTmp))
             )
           ),
-          newCall("render", ident(componentName))
+          newLetStmt(
+            ident(componentData),
+            newCall("render", ident(componentName))
+          ),
+          newCall(
+            "addArgIter",
+            ident(componentData),
+            newCall("&", newStrLitNode("data-"), newDotExpr(ident(componentName), ident("uniqCompId")))
+          ),
+          ident(componentData)
         ))
     
     elif statement.kind in [nnkStrLit, nnkTripleStrLit]:
@@ -217,25 +267,42 @@ proc buildHtmlProcedure*(root, body: NimNode): NimNode {. compileTime .} =
     elif statement.kind == nnkPrefix and $statement[0] == "@":
       let
         event = $statement[1]
+        args = newNimNode(nnkFormalParams).add(
+          newEmptyNode()
+        )
         procedure = newNimNode(nnkLambda).add(
-          newEmptyNode(), newEmptyNode(), newEmptyNode(),
-          newNimNode(nnkFormalParams).add(
-            newEmptyNode()
-          ),
+          newEmptyNode(), newEmptyNode(), newEmptyNode(), args,
           newEmptyNode(), newEmptyNode(),
           newStmtList()
         )
-      procedure.body = statement[2]
-      result.addAttribute(
-        newStrLitNode(fmt"on{event}"),
-        newStrLitNode(fmt"callEventHandler({uniqueId})")
-      )
-      result.add(newStmtList(
-        newCall("once",
-          newCall("[]=", ident("eventHandlers"), newIntLitNode(uniqueId), procedure)
-        ),
-        newNilLit()
-      ))
+      
+      if inComponent:
+        statement[2].replaceSelfComponent(componentName)
+        procedure.body = statement[2]
+        args.add(newIdentDefs(ident("self"), ident("BaseComponent")))
+        result.addAttribute(
+          newStrLitNode(fmt"on{event}"),
+          newCall(
+            "fmt",
+            newStrLitNode("callComponentEventHandler('{self.uniqCompId}', " & fmt"{uniqueId})")
+          )
+        )
+        result.add(newStmtList(
+          newCall("once",
+            newCall("[]=", ident("componentEventHandlers"), newIntLitNode(uniqueId), procedure)
+          ), newNilLit()
+        ))
+      else:
+        procedure.body = statement[2]
+        result.addAttribute(
+          newStrLitNode(fmt"on{event}"),
+          newStrLitNode(fmt"callEventHandler({uniqueId})")
+        )
+        result.add(newStmtList(
+          newCall("once",
+            newCall("[]=", ident("eventHandlers"), newIntLitNode(uniqueId), procedure)
+          ), newNilLit()
+        ))
       inc uniqueId
     
     elif statement.kind == nnkIdent:
@@ -258,7 +325,9 @@ proc buildHtmlProcedure*(root, body: NimNode): NimNode {. compileTime .} =
         else:
           0
       for i in start..<statement.len:
-        statement[i][^1] = buildHtmlProcedure(ident("div"), statement[i][^1]).add(newLit(true))
+        statement[i][^1] = buildHtmlProcedure(
+          ident("div"), statement[i][^1], inComponent, componentName
+        ).add(newLit(true))
       if statement[^1].kind != nnkElse:
         statement.add(newNimNode(nnkElse).add(newNilLit()))
       result.add(statement)
@@ -279,13 +348,13 @@ proc buildHtmlProcedure*(root, body: NimNode): NimNode {. compileTime .} =
             builded: NimNode
             attrs = newNimNode(nnkTableConstr)
           if stmtList.kind == nnkStmtList:
-            builded = buildHtmlProcedure(x[0], x[^1])
+            builded = buildHtmlProcedure(x[0], x[^1], inComponent, componentName)
             # tag(attr="value"):
             #   ...
             for attr in x[1 .. x.len-2]:
               attrs.add(attribute(attr))
           else:
-            builded = buildHtmlProcedure(x[0], newStmtList())
+            builded = buildHtmlProcedure(x[0], newStmtList(), inComponent, componentName)
             # tag(attr="value"):
             #   ...
             for attr in x[1 .. x.len-1]:
@@ -401,7 +470,17 @@ macro buildHtml*(html: untyped): untyped =
   ## 
   result = buildHtmlProcedure(ident("tDiv"), html)
   if result[^1].kind == nnkCall and $result[^1][0] == "@":
-    result.add(newLit(false), newLit(true))
+    result.add(newLit(true))
+
+
+macro buildComponentHtml*(componentName, html: untyped): untyped =
+  ## `buildHtml` macro provides building HTML tags with YAML-like syntax.
+  ## This macro doesn't generate Root tag
+  ## 
+  ## Args:
+  ## - `html`: YAML-like structure.
+  ## 
+  result = buildHtmlProcedure(ident("tDiv"), html, true, componentName)
 
 
 macro routes*(app: App, body: untyped): untyped =
@@ -526,11 +605,25 @@ macro component*(name, body: untyped): untyped =
     scriptStmtList = newStmtList()
     styleStmtList = newStmtList()
   
+  params.add(
+    newNimNode(nnkIdentDefs).add(
+      postfix(ident("uniqCompId"), "*"),
+      bindSym("string"),
+      newEmptyNode()
+    ),
+  )
+
+  echo treeRepr quote do:
+    self.counter += 1
+    self.counter.val += 1
+  
   for s in body.children:
     if s.kind == nnkCall:
       if s[0].kind == nnkIdent and s.len == 2 and s[^1].kind == nnkStmtList and s[^1].len == 1:
         params.add(newNimNode(nnkIdentDefs).add(
-          postfix(s[0], "*"), s[1][0], newEmptyNode()
+          postfix(s[0], "*"), newCall(
+            bindSym("[]", brForceOpen), ident("State"), s[1][0]
+          ), newEmptyNode()
         ))
     
       elif s[0].kind == nnkAccQuoted:
@@ -538,17 +631,32 @@ macro component*(name, body: untyped): untyped =
         of "template":
           templateStmtList = newStmtList(
             newCall("script", ident("self")),
-            newCall(
-              "buildHtml",
-              s[1].add(newCall(
-                "style", newStmtList(newStrLitNode("{self.style()}"))
-              ))
-            )
+            newAssignment(
+              ident("result"),
+              newCall(
+                "buildComponentHtml",
+                ident(name),
+                s[1].add(newCall(
+                  "style", newStmtList(newStrLitNode("{self.style()}"))
+                ))
+              )
+            ),
           )
         of "style":
-          styleStmtList = s[1]
+          let str = ($s[1][0]).replace(
+            re"^([\S ]+?) *\{(?im)", "$1[data-{self.uniqCompId}]{{"
+          ).replace(re"(^ *|\{ *|\n *)\}(?im)", "$1}}")
+          echo str
+          styleStmtList = newStmtList(
+            newAssignment(
+              ident("result"),
+              newCall("fmt", newStrLitNode(str))
+            )
+          )
         of "script":
+          s[1].replaceSelfStateVal()
           scriptStmtList = s[1]
+          echo treeRepr s[1]
 
   result = newStmtList(
     newNimNode(nnkTypeSection).add(

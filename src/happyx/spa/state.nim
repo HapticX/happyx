@@ -2,9 +2,11 @@
 ## 
 ## Provides reactivity states
 ##
+import ./renderer
+
 
 type
-  State*[T] = object
+  State*[T] = ref object
     val*: T
 
 
@@ -13,9 +15,27 @@ func remember*[T](val: T): State[T] =
   State[T](val: val)
 
 
-template operator(op: untyped): untyped =
-  func `op`*[T](self, other: State[T]): T =
+template operator(funcname, op: untyped): untyped =
+  func `funcname`*[T](self, other: State[T]): T =
     `op`(self.val, other.val)
+  func `funcname`*[T](self: State[T], other: T): T =
+    `op`(self.val, other)
+
+
+template reRenderOperator(funcname, op: untyped): untyped =
+  proc `funcname`*[T](self: State[T], other: State[T]) =
+    `op`(self.val, other.val)
+    application.router()
+  proc `funcname`*[T](self: State[T], other: T) =
+    `op`(self.val, other)
+    application.router()
+
+
+template boolOperator(funcname, op: untyped): untyped =
+  proc `funcname`*[T](self, other: State[T]): bool =
+    `op`(self.val, other.val)
+  proc `funcname`*[T](self: State[T], other: T): bool =
+    `op`(self.val, other)
 
 
 func `$`*(self: State): string =
@@ -23,16 +43,35 @@ func `$`*(self: State): string =
   repr self.val
 
 
-func `==`*[T](self, other: State[T]): bool =
-  ## Returns self == other
-  self.val == other.val
+boolOperator(`==`, `==`)
+boolOperator(`!=`, `!=`)
+boolOperator(`>=`, `>=`)
+boolOperator(`<=`, `<=`)
 
+operator(`&`, `&`)
+operator(`+`, `+`)
+operator(`-`, `-`)
+operator(`*`, `*`)
+operator(`/`, `/`)
+operator(`!`, `!`)
+operator(`^`, `^`)
+operator(`%`, `%`)
+operator(`@`, `@`)
+operator(`>`, `>`)
+operator(`<`, `<`)
 
-operator(`&`)
-operator(`+`)
-operator(`-`)
-operator(`*`)
-operator(`/`)
+reRenderOperator(`*=`, `*=`)
+reRenderOperator(`+=`, `+=`)
+reRenderOperator(`-=`, `-=`)
+reRenderOperator(`/=`, `/=`)
+reRenderOperator(`^=`, `^=`)
+reRenderOperator(`&=`, `&=`)
+reRenderOperator(`%=`, `%=`)
+reRenderOperator(`$=`, `$=`)
+reRenderOperator(`@=`, `@=`)
+reRenderOperator(`:=`, `:=`)
+reRenderOperator(`|=`, `|=`)
+reRenderOperator(`~=`, `~=`)
 
 
 func get*[T](self: State[T]): T =
@@ -40,9 +79,10 @@ func get*[T](self: State[T]): T =
   self.val
 
 
-func set*[T](self: State[T], value: T) =
+proc set*[T](self: State[T], value: T) =
   ## Changes state value
   self.val = value
+  application.router()
 
 
 func `[]`*[T](self: State[T], idx: int): auto =
@@ -54,14 +94,15 @@ iterator items*[T](self: State[T]): auto =
     yield item
 
 
-converter bool*(self: State): bool = self.val
-converter string*(self: State): string = self.val
-converter int*(self: State): int = self.val
-converter float*(self: State): float = self.val
-converter char*(self: State): char = self.val
-converter int8*(self: State): int8 = self.val
-converter int16*(self: State): int16 = self.val
-converter int32*(self: State): int32 = self.val
-converter int64*(self: State): int64 = self.val
-converter float32*(self: State): float32 = self.val
-converter float64*(self: State): float64 = self.val
+converter toBool*(self: State): bool = self.val
+converter toString*(self: State): string = self.val
+converter toCString*(self: State): cstring = self.val
+converter toInt*(self: State): int = self.val
+converter toFloat*(self: State): float = self.val
+converter toChar*(self: State): char = self.val
+converter toInt8*(self: State): int8 = self.val
+converter toInt16*(self: State): int16 = self.val
+converter toInt32*(self: State): int32 = self.val
+converter toInt64*(self: State): int64 = self.val
+converter toFloat32*(self: State): float32 = self.val
+converter toFloat64*(self: State): float64 = self.val
