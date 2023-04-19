@@ -312,8 +312,10 @@ window.addEventListener('DOMContentLoaded', main);
 <dt><a name="buildHtmlProcedure" href="#buildHtmlProcedure"><span>buildHtmlProcedure:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="renderer: buildHtmlProcedure(root, body: NimNode; inComponent: bool = false;
-                   componentName: NimNode = newEmptyNode()): NimNode" href="happyx/spa/renderer.html#buildHtmlProcedure%2CNimNode%2CNimNode%2Cbool%2CNimNode">renderer: buildHtmlProcedure(root, body: NimNode; inComponent: bool = false;
-                   componentName: NimNode = newEmptyNode()): NimNode</a></li>
+                   componentName: NimNode = newEmptyNode();
+                   inCycle: bool = false; cycleTmpVar: string = &quot;&quot;): NimNode" href="happyx/spa/renderer.html#buildHtmlProcedure%2CNimNode%2CNimNode%2Cbool%2CNimNode%2Cbool%2Cstring">renderer: buildHtmlProcedure(root, body: NimNode; inComponent: bool = false;
+                   componentName: NimNode = newEmptyNode();
+                   inCycle: bool = false; cycleTmpVar: string = &quot;&quot;): NimNode</a></li>
           </ul></dd>
 <dt><a name="component" href="#component"><span>component:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -528,7 +530,7 @@ window.addEventListener('DOMContentLoaded', main);
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-04-19 16:01:19 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-04-19 18:20:40 UTC</small>
       </div>
     </div>
   </div>
