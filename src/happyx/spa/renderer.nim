@@ -454,12 +454,33 @@ macro buildHtml*(root, html: untyped): untyped =
   ##   - if-elif-else expressions
   ## 
   ##     .. code-block:: nim
-  ##        var state = true
+  ##        var
+  ##          state = true
+  ##          state2 = true
   ##        echo buildHtml(`div`):
   ##          if state:
   ##            "True!"
   ##          else:
   ##            "False("
+  ##          if state2:
+  ##            "State2 is true"
+  ## 
+  ##   - case-of statement:
+  ## 
+  ##     .. code-block:: nim
+  ##        type X = enum:
+  ##          xA,
+  ##          xB,
+  ##          xC
+  ##        var x = xA
+  ##        echo buildHtml(`div`):
+  ##          case x:
+  ##          of xA:
+  ##            "xA"
+  ##          of xB:
+  ##            "xB"
+  ##          else:
+  ##            "Other
   ##   
   ##   - for statements
   ## 
@@ -468,6 +489,12 @@ macro buildHtml*(root, html: untyped): untyped =
   ##        echo buildHtml(`div`):
   ##          for i in state:
   ##            i
+  ## 
+  ##   - components
+  ## 
+  ##     .. code-block:: nim
+  ##        component MyComponent
+  ##        component MyComponent(field1 = value1, field2 = value2)
   ## 
   buildHtmlProcedure(root, html)
 
@@ -496,6 +523,23 @@ macro buildComponentHtml*(componentName, html: untyped): untyped =
 
 macro routes*(app: App, body: untyped): untyped =
   ## Provides JS router for Single page application
+  ## 
+  ## ## Usage:
+  ## 
+  ## .. code-block:: nim
+  ##    app.routes:
+  ##      "/":
+  ##        "Hello, world!"
+  ##      
+  ##      "/user{id:int}":
+  ##        "User {id}"
+  ## 
+  ##      "/pattern{rePattern:/\d+\.\d+\+\d+\S[a-z]/}":
+  ##        {rePattern}
+  ## 
+  ##      "/get{file:path}":
+  ##        "path to file is '{file}'"
+  ## 
   let
     iPath = ident("path")
     iHtml = ident("html")
@@ -604,7 +648,30 @@ macro routes*(app: App, body: untyped): untyped =
 macro component*(name, body: untyped): untyped =
   ## Register a new component.
   ## 
-  ## Returns string
+  ## ## Basic Usage:
+  ## 
+  ## .. code-block::nim
+  ##    component Component:
+  ##      requiredField: int
+  ##      optionalField: int = 100
+  ##      
+  ##      `template`:
+  ##        tDiv:
+  ##          "requiredField is {self.requiredField}"
+  ##        tDiv:
+  ##          "optionalField is {self.optionalField}
+  ##       
+  ##      `script`:
+  ##        echo self.requiredField
+  ##        echo self.optionalField
+  ##      
+  ##      `style`:
+  ##        """
+  ##        div {
+  ##          width: {self.requiredField}px;
+  ##          height: {self.optionalField}px;
+  ##        }
+  ##        """
   ## 
   let
     name = $name
