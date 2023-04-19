@@ -110,7 +110,7 @@ window.addEventListener('DOMContentLoaded', main);
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#App"
     title="App = ref object
-  appId*: string
+  appId*: cstring
   router*: proc ()">App</a></li>
   <li><a class="reference" href="#AppEventHandler"
     title="AppEventHandler = proc ()">AppEventHandler</a></li>
@@ -153,13 +153,13 @@ window.addEventListener('DOMContentLoaded', main);
 
   </ul>
   <ul class="simple nested-toc-section">registerApp
-      <li><a class="reference" href="#registerApp%2Cstring"
-    title="registerApp(appId: string = &quot;app&quot;): App">registerApp(appId: string = &quot;app&quot;): App</a></li>
+      <li><a class="reference" href="#registerApp%2Ccstring"
+    title="registerApp(appId: cstring = &quot;app&quot;): App">registerApp(appId: cstring = &quot;app&quot;): App</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">registerComponent
-      <li><a class="reference" href="#registerComponent%2Cstring%2CBaseComponent"
-    title="registerComponent(name: string; component: BaseComponent): BaseComponent">registerComponent(name: string; component: BaseComponent): BaseComponent</a></li>
+      <li><a class="reference" href="#registerComponent%2Ccstring%2CBaseComponent"
+    title="registerComponent(name: cstring; component: BaseComponent): BaseComponent">registerComponent(name: cstring; component: BaseComponent): BaseComponent</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">render
@@ -248,7 +248,7 @@ window.addEventListener('DOMContentLoaded', main);
 <dl class="item">
 <div id="App">
 <dt><pre><a href="renderer.html#App"><span class="Identifier">App</span></a> <span class="Other">=</span> <span class="Keyword">ref</span> <span class="Keyword">object</span>
-  <span class="Identifier">appId</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
+  <span class="Identifier">appId</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cstring</span>
   <span class="Identifier">router</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Other">)</span>
 </pre></dt>
 <dd>
@@ -352,8 +352,8 @@ Builds HTML
 
 </dd>
 </div>
-<div id="registerApp,string">
-<dt><pre><span class="Keyword">proc</span> <a href="#registerApp%2Cstring"><span class="Identifier">registerApp</span></a><span class="Other">(</span><span class="Identifier">appId</span><span class="Other">:</span> <span class="Identifier">string</span> <span class="Other">=</span> <span class="StringLit">&quot;app&quot;</span><span class="Other">)</span><span class="Other">:</span> <a href="renderer.html#App"><span class="Identifier">App</span></a> {.<span class="Identifier">discardable</span><span class="Other">,</span> <span class="Identifier">inline</span><span class="Other">,</span> <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+<div id="registerApp,cstring">
+<dt><pre><span class="Keyword">proc</span> <a href="#registerApp%2Ccstring"><span class="Identifier">registerApp</span></a><span class="Other">(</span><span class="Identifier">appId</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span class="Other">=</span> <span class="StringLit">&quot;app&quot;</span><span class="Other">)</span><span class="Other">:</span> <a href="renderer.html#App"><span class="Identifier">App</span></a> {.<span class="Identifier">discardable</span><span class="Other">,</span> <span class="Identifier">inline</span><span class="Other">,</span> <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
     <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
@@ -361,8 +361,8 @@ Creates a new Singla Page Application
 
 </dd>
 </div>
-<div id="registerComponent,string,BaseComponent">
-<dt><pre><span class="Keyword">proc</span> <a href="#registerComponent%2Cstring%2CBaseComponent"><span class="Identifier">registerComponent</span></a><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">component</span><span class="Other">:</span> <a href="renderer.html#BaseComponent"><span class="Identifier">BaseComponent</span></a><span class="Other">)</span><span class="Other">:</span> <a href="renderer.html#BaseComponent"><span class="Identifier">BaseComponent</span></a> {.
+<div id="registerComponent,cstring,BaseComponent">
+<dt><pre><span class="Keyword">proc</span> <a href="#registerComponent%2Ccstring%2CBaseComponent"><span class="Identifier">registerComponent</span></a><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">component</span><span class="Other">:</span> <a href="renderer.html#BaseComponent"><span class="Identifier">BaseComponent</span></a><span class="Other">)</span><span class="Other">:</span> <a href="renderer.html#BaseComponent"><span class="Identifier">BaseComponent</span></a> {.
     <span class="Identifier">inline</span><span class="Other">,</span> <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
@@ -506,7 +506,7 @@ Starts single page application
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-04-18 14:47:36 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-04-19 15:42:06 UTC</small>
       </div>
     </div>
   </div>
