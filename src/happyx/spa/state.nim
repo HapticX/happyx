@@ -38,15 +38,25 @@ template boolOperator(funcname, op: untyped): untyped =
     `op`(self.val, other)
 
 
-func `$`*(self: State): string =
+template unaryBoolOperator(funcname, op: untyped): untyped =
+  proc `funcname`*[T](self: State[T]): bool =
+    `op`(self.val)
+
+
+func `$`*[T](self: State[T]): string =
   ## Returns string representation
-  repr self.val
+  when T is string:
+    self.val
+  else:
+    repr self.val
 
 
 boolOperator(`==`, `==`)
 boolOperator(`!=`, `!=`)
 boolOperator(`>=`, `>=`)
 boolOperator(`<=`, `<=`)
+
+unaryBoolOperator(`not`, `not`)
 
 operator(`&`, `&`)
 operator(`+`, `+`)

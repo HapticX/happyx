@@ -1,7 +1,9 @@
 import
   ../src/happyx,
-  components/[main, hello_world]
+  components/[hello_world]
 
+
+var app = registerApp()
 
 app.routes:
   "/":

@@ -41,7 +41,7 @@ type
   AppEventHandler* = proc()
   ComponentEventHandler* = proc(self: BaseComponent)
   App* = ref object
-    appId*: string
+    appId*: cstring
     router*: proc()
   BaseComponent* = ref BaseComponentObj
   BaseComponentObj* = object of RootObj
@@ -80,13 +80,13 @@ proc route*(path: cstring) {. inline .} =
     application.router()
 
 
-proc registerApp*(appId: string = "app"): App {. discardable, inline .} =
+proc registerApp*(appId: cstring = "app"): App {. discardable, inline .} =
   ## Creates a new Singla Page Application
   application = App(appId: appId)
   application
 
 
-proc registerComponent*(name: string, component: BaseComponent): BaseComponent {. inline .} =
+proc registerComponent*(name: cstring, component: BaseComponent): BaseComponent {. inline .} =
   if components.hasKey(name):
     return components[name]
   components[name] = component
@@ -158,12 +158,25 @@ proc endsWithBuildHtml(statement: NimNode): bool {. compileTime .} =
 
 proc replaceSelfComponent(statement, componentName: NimNode) {. compileTime .} =
   if statement.kind == nnkDotExpr:
-    if $statement[0] == "self":
+    if statement[0].kind == nnkIdent and $statement[0] == "self":
       statement[0] = newDotExpr(ident("self"), componentName)
     return
-  
-  for i in statement.children:
-    i.replaceSelfComponent(componentName)
+
+  if statement.kind == nnkAsgn:
+    if statement[0].kind == nnkDotExpr and $statement[0][0] == "self":
+      statement[0] = newDotExpr(statement[0], ident("val"))
+      statement[0][0][0] = newDotExpr(ident("self"), componentName)
+
+    for idx, i in statement.pairs:
+      if idx == 0:
+        continue
+      i.replaceSelfComponent(componentName)
+  else:
+    for idx, i in statement.pairs:
+      if i.kind == nnkAsgn and i[0].kind == nnkDotExpr and $i[0][0] == "self":
+        statement.insert(idx+1, newCall(newDotExpr(ident("application"), ident("router"))))
+    for i in statement.children:
+      i.replaceSelfComponent(componentName)
 
 
 proc replaceSelfStateVal(statement: NimNode) {. compileTime .} =
@@ -219,19 +232,19 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
               statement[1][0]
             else:
               statement[1]
-          objConstr = newNimNode(nnkObjConstr).add(name)
+          objConstr = newCall(fmt"init{name}")
           componentName = fmt"comp{name}{uniqueId}{uniqueId + 2}{uniqueId * 2}{uniqueId + 7}"
           componentNameTmp = "_" & componentName
           componentData = "data_" & componentName
         inc uniqueId
-        if statement[1].kind == nnkCall:
-          for i in 1..<statement[1].len:
-            objConstr.add(newNimNode(nnkExprColonExpr).add(
-              statement[1][i][0], newCall("remember", statement[1][i][1])
-            ))
-        objConstr.add(newNimNode(nnkExprColonExpr).add(
+        objConstr.add(newNimNode(nnkExprEqExpr).add(
           ident("uniqCompId"), newStrLitNode(componentName)
         ))
+        if statement[1].kind == nnkCall:
+          for i in 1..<statement[1].len:
+            objConstr.add(newNimNode(nnkExprEqExpr).add(
+              statement[1][i][0], statement[1][i][1]
+            ))
         result.add(newStmtList(
           newVarStmt(ident(componentNameTmp), objConstr),
           newVarStmt(
@@ -597,6 +610,11 @@ macro component*(name, body: untyped): untyped =
     name = $name
     nameObj = $name & "Obj"
     params = newNimNode(nnkRecList)
+    initParams = newNimNode(nnkFormalParams)
+    initProc = newProc(postfix(ident(fmt"init{name}"), "*"))
+    initObjConstr = newNimNode(nnkObjConstr).add(
+      ident(name), newColonExpr(ident("uniqCompId"), ident("uniqCompId"))
+    )
   
   var
     templateStmtList = newStmtList()
@@ -610,15 +628,31 @@ macro component*(name, body: untyped): untyped =
       newEmptyNode()
     ),
   )
+  initParams.add(
+    ident(name),
+    newIdentDefs(ident("uniqCompId"), bindSym("string"))
+  )
   
   for s in body.children:
     if s.kind == nnkCall:
       if s[0].kind == nnkIdent and s.len == 2 and s[^1].kind == nnkStmtList and s[^1].len == 1:
+        # Extract default value and field type
+        let (fieldType, defaultValue) =
+          if s[^1][0].kind == nnkIdent:
+            (s[^1][0], newEmptyNode())
+          else:  # assignment statement
+            (s[^1][0][0], s[^1][0][1])
         params.add(newNimNode(nnkIdentDefs).add(
-          postfix(s[0], "*"), newCall(
-            bindSym("[]", brForceOpen), ident("State"), s[1][0]
-          ), newEmptyNode()
+          postfix(s[0], "*"),
+          newCall(
+            bindSym("[]", brForceOpen), ident("State"), fieldType
+          ),
+          newEmptyNode()
         ))
+        initParams.add(newNimNode(nnkIdentDefs).add(
+          s[0], fieldType, defaultValue
+        ))
+        initObjConstr.add(newColonExpr(s[0], newCall("remember", s[0])))
     
       elif s[0].kind == nnkAccQuoted:
         case $s[0]
@@ -651,6 +685,9 @@ macro component*(name, body: untyped): untyped =
           s[1].replaceSelfStateVal()
           scriptStmtList = s[1]
           echo treeRepr s[1]
+  
+  initProc.params = initParams
+  initProc.body = initObjConstr
 
   result = newStmtList(
     newNimNode(nnkTypeSection).add(
@@ -669,6 +706,7 @@ macro component*(name, body: untyped): untyped =
         newNimNode(nnkRefTy).add(ident(nameObj))
       )
     ),
+    initProc,
     newProc(
       ident("script"),
       [

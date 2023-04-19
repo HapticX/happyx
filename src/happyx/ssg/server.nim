@@ -173,13 +173,11 @@ template answer*(
     req.send(code, message, headersArr.join("\r\n"))
   else:
     await req.respond(code, message, headers)
-  return
 
 
 template answerJson*(req: Request, data: untyped, code: HttpCode = Http200,): untyped =
   ## Answers to request with json data
   answer(req, $(%*`data`), code, newHttpHeaders([("Content-Type", "application/json; charset=utf-8")]))
-  return
 
 
 template answerHtml*(req: Request, data: string | TagRef, code: HttpCode = Http200,): untyped =
@@ -189,7 +187,6 @@ template answerHtml*(req: Request, data: string | TagRef, code: HttpCode = Http2
   else:
     let d = $data
   answer(req, d, code, newHttpHeaders([("Content-Type", "text/html; charset=utf-8")]))
-  return
 
 
 proc detectEnd(node: NimNode) {. compileTime .} =
