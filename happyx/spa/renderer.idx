@@ -20,4 +20,6 @@ buildHtml	happyx/spa/renderer.html#buildHtml.m,untyped	renderer: buildHtml(html:
 buildComponentHtml	happyx/spa/renderer.html#buildComponentHtml.m,untyped,untyped	renderer: buildComponentHtml(componentName, html: untyped): untyped	
 routes	happyx/spa/renderer.html#routes.m,App,untyped	renderer: routes(app: App; body: untyped): untyped	
 component	happyx/spa/renderer.html#component.m,untyped,untyped	renderer: component(name, body: untyped): untyped	
+Basic Usage:	happyx/spa/renderer.html#basic-usagecolon	  Basic Usage:	
+Usage:	happyx/spa/renderer.html#usagecolon	  Usage:	
 Renderer	happyx/spa/renderer.html#renderer	 Renderer	

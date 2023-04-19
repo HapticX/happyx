@@ -98,7 +98,9 @@ window.addEventListener('DOMContentLoaded', main);
     </select>
   </div>
   <ul class="simple simple-toc" id="toc-list">
-<li><a class="reference" id="renderer_toc" href="#renderer">Renderer</a></li>
+<ul class="simple"><li><a class="reference" id="basic-usagecolon_toc" href="#basic-usagecolon">Basic Usage:</a></li>
+<li><a class="reference" id="usagecolon_toc" href="#usagecolon">Usage:</a></li>
+</ul><li><a class="reference" id="renderer_toc" href="#renderer">Renderer</a></li>
 <li>
   <a class="reference reference-toplevel" href="#6" id="56">Imports</a>
   <ul class="simple simple-toc-section">
@@ -443,16 +445,35 @@ Basic function that needs to overload
     <span class="Identifier">tag1</span><span class="Punctuation">:</span>
       <span class="Identifier">tag2</span><span class="Punctuation">:</span>
     <span class="Identifier">tag1withattrs</span><span class="Punctuation">(</span><span class="Identifier">attr</span><span class="Operator">=</span><span class="StringLit">&quot;value&quot;</span><span class="Punctuation">)</span></pre></li>
-<li>if-elif-else expressions<pre class="listing"><span class="Keyword">var</span> <span class="Identifier">state</span> <span class="Operator">=</span> <span class="Identifier">true</span>
+<li>if-elif-else expressions<pre class="listing"><span class="Keyword">var</span>
+  <span class="Identifier">state</span> <span class="Operator">=</span> <span class="Identifier">true</span>
+  <span class="Identifier">state2</span> <span class="Operator">=</span> <span class="Identifier">true</span>
 <span class="Identifier">echo</span> <span class="Identifier">buildHtml</span><span class="Punctuation">(</span><span class="Punctuation">`</span><span class="Keyword">div</span><span class="Punctuation">`</span><span class="Punctuation">)</span><span class="Punctuation">:</span>
   <span class="Keyword">if</span> <span class="Identifier">state</span><span class="Punctuation">:</span>
     <span class="StringLit">&quot;True!&quot;</span>
   <span class="Keyword">else</span><span class="Punctuation">:</span>
-    <span class="StringLit">&quot;False(&quot;</span></pre></li>
+    <span class="StringLit">&quot;False(&quot;</span>
+  <span class="Keyword">if</span> <span class="Identifier">state2</span><span class="Punctuation">:</span>
+    <span class="StringLit">&quot;State2 is true&quot;</span></pre></li>
+<li>case-of statement:<pre class="listing"><span class="Keyword">type</span> <span class="Identifier">X</span> <span class="Operator">=</span> <span class="Keyword">enum</span><span class="Punctuation">:</span>
+  <span class="Identifier">xA</span><span class="Punctuation">,</span>
+  <span class="Identifier">xB</span><span class="Punctuation">,</span>
+  <span class="Identifier">xC</span>
+<span class="Keyword">var</span> <span class="Identifier">x</span> <span class="Operator">=</span> <span class="Identifier">xA</span>
+<span class="Identifier">echo</span> <span class="Identifier">buildHtml</span><span class="Punctuation">(</span><span class="Punctuation">`</span><span class="Keyword">div</span><span class="Punctuation">`</span><span class="Punctuation">)</span><span class="Punctuation">:</span>
+  <span class="Keyword">case</span> <span class="Identifier">x</span><span class="Punctuation">:</span>
+  <span class="Keyword">of</span> <span class="Identifier">xA</span><span class="Punctuation">:</span>
+    <span class="StringLit">&quot;xA&quot;</span>
+  <span class="Keyword">of</span> <span class="Identifier">xB</span><span class="Punctuation">:</span>
+    <span class="StringLit">&quot;xB&quot;</span>
+  <span class="Keyword">else</span><span class="Punctuation">:</span>
+    <span class="StringLit">&quot;Other</span></pre></li>
 <li>for statements<pre class="listing"><span class="Keyword">var</span> <span class="Identifier">state</span> <span class="Operator">=</span> <span class="Operator">@</span><span class="Punctuation">[</span><span class="StringLit">&quot;h1&quot;</span><span class="Punctuation">,</span> <span class="StringLit">&quot;h2&quot;</span><span class="Punctuation">,</span> <span class="StringLit">&quot;input&quot;</span><span class="Punctuation">]</span>
 <span class="Identifier">echo</span> <span class="Identifier">buildHtml</span><span class="Punctuation">(</span><span class="Punctuation">`</span><span class="Keyword">div</span><span class="Punctuation">`</span><span class="Punctuation">)</span><span class="Punctuation">:</span>
   <span class="Keyword">for</span> <span class="Identifier">i</span> <span class="Keyword">in</span> <span class="Identifier">state</span><span class="Punctuation">:</span>
     <span class="Identifier">i</span></pre></li>
+<li>components<pre class="listing"><span class="Identifier">component</span> <span class="Identifier">MyComponent</span>
+<span class="Identifier">component</span> <span class="Identifier">MyComponent</span><span class="Punctuation">(</span><span class="Identifier">field1</span> <span class="Operator">=</span> <span class="Identifier">value1</span><span class="Punctuation">,</span> <span class="Identifier">field2</span> <span class="Operator">=</span> <span class="Identifier">value2</span><span class="Punctuation">)</span></pre></li>
 </ul>
 </dd>
 </dl>
@@ -464,9 +485,28 @@ Basic function that needs to overload
 <dt><pre><span class="Keyword">macro</span> <a href="#component.m%2Cuntyped%2Cuntyped"><span class="Identifier">component</span></a><span class="Other">(</span><span class="Identifier">name</span><span class="Other">,</span> <span class="Identifier">body</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
 
-<p>Register a new component.</p>
-<p>Returns string </p>
-
+Register a new component.
+<h2><a class="toc-backref" id="basic-usagecolon" href="#basic-usagecolon">Basic Usage:</a></h2><pre class="listing"><span class="Identifier">component</span> <span class="Identifier">Component</span><span class="Punctuation">:</span>
+  <span class="Identifier">requiredField</span><span class="Punctuation">:</span> <span class="Identifier">int</span>
+  <span class="Identifier">optionalField</span><span class="Punctuation">:</span> <span class="Identifier">int</span> <span class="Operator">=</span> <span class="DecNumber">100</span>
+  
+  <span class="Punctuation">`</span><span class="Keyword">template</span><span class="Punctuation">`</span><span class="Punctuation">:</span>
+    <span class="Identifier">tDiv</span><span class="Punctuation">:</span>
+      <span class="StringLit">&quot;requiredField is {self.requiredField}&quot;</span>
+    <span class="Identifier">tDiv</span><span class="Punctuation">:</span>
+      <span class="StringLit">&quot;optionalField is {self.optionalField}</span>
+  
+  <span class="Punctuation">`</span><span class="Identifier">script</span><span class="Punctuation">`</span><span class="Punctuation">:</span>
+    <span class="Identifier">echo</span> <span class="Identifier">self</span><span class="Operator">.</span><span class="Identifier">requiredField</span>
+    <span class="Identifier">echo</span> <span class="Identifier">self</span><span class="Operator">.</span><span class="Identifier">optionalField</span>
+  
+  <span class="Punctuation">`</span><span class="Identifier">style</span><span class="Punctuation">`</span><span class="Punctuation">:</span>
+    <span class="LongStringLit">&quot;&quot;&quot;
+    div {
+      width: {self.requiredField}px;
+      height: {self.optionalField}px;
+    }
+    &quot;&quot;&quot;</span></pre>
 
 </dd>
 </div>
@@ -475,6 +515,18 @@ Basic function that needs to overload
 <dd>
 
 Provides JS router for Single page application
+<h2><a class="toc-backref" id="usagecolon" href="#usagecolon">Usage:</a></h2><pre class="listing"><span class="Identifier">app</span><span class="Operator">.</span><span class="Identifier">routes</span><span class="Punctuation">:</span>
+  <span class="StringLit">&quot;/&quot;</span><span class="Punctuation">:</span>
+    <span class="StringLit">&quot;Hello, world!&quot;</span>
+  
+  <span class="StringLit">&quot;/user{id:int}&quot;</span><span class="Punctuation">:</span>
+    <span class="StringLit">&quot;User {id}&quot;</span>
+  
+  <span class="StringLit">&quot;/pattern{rePattern:/</span><span class="EscapeSequence">\d</span><span class="StringLit">+</span><span class="EscapeSequence">\.</span><span class="EscapeSequence">\d</span><span class="StringLit">+</span><span class="EscapeSequence">\+</span><span class="EscapeSequence">\d</span><span class="StringLit">+</span><span class="EscapeSequence">\S</span><span class="StringLit">[a-z]/}&quot;</span><span class="Punctuation">:</span>
+    <span class="Punctuation">{</span><span class="Identifier">rePattern</span><span class="Punctuation">}</span>
+  
+  <span class="StringLit">&quot;/get{file:path}&quot;</span><span class="Punctuation">:</span>
+    <span class="StringLit">&quot;path to file is '{file}'&quot;</span></pre>
 
 </dd>
 </div>
@@ -506,7 +558,7 @@ Starts single page application
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-04-19 15:42:06 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-04-19 16:01:19 UTC</small>
       </div>
     </div>
   </div>
