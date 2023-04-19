@@ -45,9 +45,8 @@ var html =
       i
     `div`(style="background: red"):
       for i in state2:  # FOR STMT
-        i(attr="{i}{i}{i}"):
-          "current tag is {i}"
-          {i}
+        "current tag is {i}"
+        {i}
     # VARIABLES
     {state}
     {state1}

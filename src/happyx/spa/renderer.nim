@@ -12,6 +12,7 @@ import
   sugar,
   strutils,
   strformat,
+  random,
   tables,
   regex,
   ./tag,
@@ -31,10 +32,14 @@ export
   htmlgen,
   strtabs,
   strutils,
+  random,
   tables,
   regex,
   sugar,
   tag
+
+
+randomize()
 
 
 type
@@ -144,7 +149,7 @@ proc addAttribute(node, key, value: NimNode) {. compileTime .} =
     node.add(newCall("newStringTable", newNimNode(nnkTableConstr).add(
       newColonExpr(newStrLitNode($key), value)
     )))
-  elif node[2][1].kind == nnkTableConstr:
+  elif node[2].kind == nnkCall and $node[2][0] == "newStringTable":
     node[2][1].add(newColonExpr(newStrLitNode($key), value))
   else:
     node.insert(2, newCall("newStringTable", newNimNode(nnkTableConstr).add(
@@ -191,7 +196,8 @@ proc replaceSelfStateVal(statement: NimNode) {. compileTime .} =
 
 
 proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
-                         componentName: NimNode = newEmptyNode()): NimNode {. compileTime .} =
+                         componentName: NimNode = newEmptyNode(), inCycle: bool = false,
+                         cycleTmpVar: string = ""): NimNode {. compileTime .} =
   ## Builds HTML
   let elementName = newStrLitNode(getTagName($root))
   result = newCall("initTag", elementName)
@@ -207,8 +213,9 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
       if statement.len-2 > 0 and statementList.kind == nnkStmtList:
         for attr in statement[1 .. statement.len-2]:
           attrs.add(attribute(attr))
-        var builded = buildHtmlProcedure(tagName, statementList, inComponent, componentName)
-        builded.insert(2, newCall("newStringTable", attrs))
+        var builded = buildHtmlProcedure(tagName, statementList, inComponent, componentName, inCycle, cycleTmpVar)
+        if builded.len >= 3 and $builded[2][0] != "newStringTable":
+          builded.insert(2, newCall("newStringTable", attrs))
         result.add(builded)
       # tag(attr="value")
       elif statementList.kind != nnkStmtList:
@@ -221,7 +228,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
       # tag:
       #   ...
       else:
-        result.add(buildHtmlProcedure(tagName, statementList, inComponent, componentName))
+        result.add(buildHtmlProcedure(tagName, statementList, inComponent, componentName, inCycle, cycleTmpVar))
     
     elif statement.kind == nnkCommand:
       # Component usage
@@ -232,13 +239,19 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
               statement[1][0]
             else:
               statement[1]
+          componentName = fmt"comp{uniqueId}{uniqueId + 2}{uniqueId * 2}{uniqueId + 7}"
           objConstr = newCall(fmt"init{name}")
-          componentName = fmt"comp{name}{uniqueId}{uniqueId + 2}{uniqueId * 2}{uniqueId + 7}"
           componentNameTmp = "_" & componentName
           componentData = "data_" & componentName
+          stringId =
+            if inCycle:
+              newCall("&", newStrLitNode(componentName), newCall("$", ident(cycleTmpVar)))
+            else:
+              newStrLitNode(componentName)
         inc uniqueId
         objConstr.add(newNimNode(nnkExprEqExpr).add(
-          ident("uniqCompId"), newStrLitNode(componentName)
+          ident("uniqCompId"),
+          stringId
         ))
         if statement[1].kind == nnkCall:
           for i in 1..<statement[1].len:
@@ -251,7 +264,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
             ident(componentName),
             newCall(
               name,
-              newCall("registerComponent", newStrLitNode(componentName), ident(componentNameTmp))
+              newCall("registerComponent", stringId, ident(componentNameTmp))
             )
           ),
           newLetStmt(
@@ -301,7 +314,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
         result.add(newStmtList(
           newCall("once",
             newCall("[]=", ident("componentEventHandlers"), newIntLitNode(uniqueId), procedure)
-          ), newNilLit()
+          ), newCall("initTag", newStrLitNode("div"), newCall("@", newNimNode(nnkBracket)), newLit(true))
         ))
       else:
         procedure.body = statement[2]
@@ -312,7 +325,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
         result.add(newStmtList(
           newCall("once",
             newCall("[]=", ident("eventHandlers"), newIntLitNode(uniqueId), procedure)
-          ), newNilLit()
+          ), newCall("initTag", newStrLitNode("div"), newCall("@", newNimNode(nnkBracket)), newLit(true))
         ))
       inc uniqueId
     
@@ -337,7 +350,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
           0
       for i in start..<statement.len:
         statement[i][^1] = buildHtmlProcedure(
-          ident("div"), statement[i][^1], inComponent, componentName
+          ident("div"), statement[i][^1], inComponent, componentName, inCycle, cycleTmpVar
         ).add(newLit(true))
       if statement[^1].kind != nnkElse:
         statement.add(newNimNode(nnkElse).add(newNilLit()))
@@ -349,59 +362,31 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
       let
         arguments = collect(newSeq):
           for i in statement[0..statement.len-3]:
-            $i
-      # nnkCall
-      var replaced = statement[^1].replaceIter(
-        (x) => x.kind == nnkCall and $x[0] in arguments,
-        proc(x: NimNode): NimNode =
-          let stmtList = x[^1]
-          var
-            builded: NimNode
-            attrs = newNimNode(nnkTableConstr)
-          if stmtList.kind == nnkStmtList:
-            builded = buildHtmlProcedure(x[0], x[^1], inComponent, componentName)
-            # tag(attr="value"):
-            #   ...
-            for attr in x[1 .. x.len-2]:
-              attrs.add(attribute(attr))
-          else:
-            builded = buildHtmlProcedure(x[0], newStmtList(), inComponent, componentName)
-            # tag(attr="value"):
-            #   ...
-            for attr in x[1 .. x.len-1]:
-              attrs.add(attribute(attr))
-          builded.insert(2, newCall("newStringTable", attrs))
-          newNimNode(nnkIfExpr).add(
-            newNimNode(nnkElifExpr).add(
-              newCall("is", newCall("typeof", x[0]), ident("string")),
-              builded
-            )
-          )
+            if i.kind == nnkVarTuple:
+              for idx, j in i.pairs:
+                if idx != i.len-1:
+                  $j
+            else:
+              $i
+      var unqn = fmt"tmpCycleIdx_{uniqueId}"
+      inc uniqueId
+      statement[^1] = newStmtList(
+        buildHtmlProcedure(ident("tDiv"), statement[^1], inComponent, componentName, true, unqn)
       )
-      if not replaced:
-        # nnkIdent
-        replaced = statement[^1].replaceIter(
-          (x) => x.kind == nnkIdent and $x in arguments,
-          (x) => newNimNode(nnkIfExpr).add(
-            newNimNode(nnkElifExpr).add(
-              newCall("is", newCall("typeof", x), ident("string")),
-              newCall("initTag", x)
-            )
-          )
-        )
-      # as varibale with {}
-      discard statement[^1].replaceIter(
-        (x) => x.kind == nnkCurly and x.len == 1 and x[0].kind == nnkIdent and $x[0] in arguments,
-        (x) => newCall("initTag", newCall("$", x[0]), newLit(true))
-      )
+      statement[^1].insert(0, newCall("inc", ident(unqn)))
       result.add(
         newCall(
           "initTag",
           newStrLitNode("div"),
-          newCall(
-            "collect",
-            ident("newSeq"),
-            newNimNode(nnkStmtList).add(statement)
+          newStmtList(
+            newVarStmt(ident(unqn), newLit(0)),
+            newCall(
+              "collect",
+              ident("newSeq"),
+              newStmtList(
+                statement
+              )
+            ),
           ),
           newLit(true)
         )

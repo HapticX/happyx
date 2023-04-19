@@ -3,15 +3,40 @@ import
   components/task
 
 
-var app = registerApp()
+var
+  app = registerApp()
+  inputText = ""
+  tasks = @[
+    ("Send post to Reddit", true),
+    ("Rest", false),
+  ]
 
 
 app.routes:
   "/":
-    tDiv:
-      class = "flex gap-2 p-2"
-      component Task(text = "Send post to Reddit", isChecked = true)
-      component Task(text = "Rest")
-      component Task
+    tDiv(class = "flex justify-center items-center w-screen h-screen bg-gray-100"):
+      tDiv(class = "flex flex-col gap-4 px-8 py-4 bg-white rounded-2xl drop-shadow-xl"):
+        # Create a new task
+        tDiv(class = "flex justify-between gap-2 items-center"):
+          input:
+            id = "input"
+            class = "rounded-full bg-gray-100 px-4 py-2 outline-0 border-0"
+            placeholder = "Enter task ..."
+            @input:
+              let inp = document.getElementById("input")
+              inputText = $inp.value
+          button:
+            class = "flex text-xl font-semibold w-10 h-10 justify-center items-center rounded-full cursor-pointer bg-green-300"
+            "+"
+            @click:
+              if inputText.len > 0:
+                tasks.add((inputText, false))
+                application.router()
+        tDiv(class = "flex flex-col gap-2"):
+          for (t, c) in tasks:
+            component Task(text = t, isChecked = c)
+        # component Task(text = "Send post to Reddit", isChecked = true)
+        # component Task(text = "Rest")
+        # component Task
 
 app.start()
