@@ -726,7 +726,6 @@ macro component*(name, body: untyped): untyped =
           let str = ($s[1][0]).replace(
             re"^([\S ]+?) *\{(?im)", "$1[data-{self.uniqCompId}]{{"
           ).replace(re"(^ *|\{ *|\n *)\}(?im)", "$1}}")
-          echo str
           styleStmtList = newStmtList(
             newAssignment(
               ident("result"),
@@ -736,7 +735,6 @@ macro component*(name, body: untyped): untyped =
         of "script":
           s[1].replaceSelfStateVal()
           scriptStmtList = s[1]
-          echo treeRepr s[1]
   
   initProc.params = initParams
   initProc.body = initObjConstr
