@@ -368,7 +368,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
                   $j
             else:
               $i
-      var unqn = fmt"tmpCycleIdx_{uniqueId}"
+      var unqn = fmt"tmpCycleIdx{uniqueId}"
       inc uniqueId
       statement[^1] = newStmtList(
         buildHtmlProcedure(ident("tDiv"), statement[^1], inComponent, componentName, true, unqn)

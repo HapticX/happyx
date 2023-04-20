@@ -1,4 +1,4 @@
-name: Testing
+name: Examples
 
 on:
   push:
@@ -42,19 +42,20 @@ jobs:
           nimble install -y cligen
           nimble install -y httpx
       
-      - name: Build C tests
+      - name: Staring Working ...
         run: |
-          cd tests
-          for file in $(ls -v testc*.nim); do
-            nim c -d:ssl -d:debug $file
-            nim c -d:ssl -d:httpx -d:debug $file
-          done
+          cd examples
+      
+      - name: Hello World
+        run: |
+          cd hello_world
+          nim c -d:httpx main
+          cd ..
         shell: bash
       
-      - name: Build JS tests
+      - name: TODO App
         run: |
-          cd tests
-          for file in $(ls -v testjs*.nim); do
-            nim js -d:debug $file
-          done
+          cd todo
+          nim js main
+          cd ..
         shell: bash
