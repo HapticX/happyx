@@ -32,11 +32,9 @@ app.routes:
               if inputText.len > 0:
                 tasks.add((inputText, false))
                 application.router()
+              inputText = ""
         tDiv(class = "flex flex-col gap-2"):
           for (t, c) in tasks:
             component Task(text = t, isChecked = c)
-        # component Task(text = "Send post to Reddit", isChecked = true)
-        # component Task(text = "Rest")
-        # component Task
 
 app.start()

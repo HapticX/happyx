@@ -7,28 +7,36 @@ import ./renderer
 
 type
   State*[T] = ref object
-    val*: T
+    value: T
 
 
 func remember*[T](val: T): State[T] =
   ## Creates a new state
-  State[T](val: val)
+  State[T](value: val)
+
+
+proc `val=`*[T](self: State[T], value: T) =
+  self.value = value
+  application.router()
+
+
+func val*[T](self: State[T]): T = self.value
 
 
 template operator(funcname, op: untyped): untyped =
   func `funcname`*[T](self, other: State[T]): T =
-    `op`(self.val, other.val)
+    `op`(self.value, other.value)
+    application.router()
   func `funcname`*[T](self: State[T], other: T): T =
-    `op`(self.val, other)
+    `op`(self.value, other)
+    application.router()
 
 
 template reRenderOperator(funcname, op: untyped): untyped =
   proc `funcname`*[T](self: State[T], other: State[T]) =
     `op`(self.val, other.val)
-    application.router()
   proc `funcname`*[T](self: State[T], other: T) =
-    `op`(self.val, other)
-    application.router()
+    `op`(self.value, other)
 
 
 template boolOperator(funcname, op: untyped): untyped =
@@ -92,7 +100,6 @@ func get*[T](self: State[T]): T =
 proc set*[T](self: State[T], value: T) =
   ## Changes state value
   self.val = value
-  application.router()
 
 
 func `[]`*[T](self: State[T], idx: int): auto =
