@@ -7,10 +7,12 @@ application	happyx/spa/renderer.html#application	renderer: application
 eventHandlers	happyx/spa/renderer.html#eventHandlers	renderer: eventHandlers	
 componentEventHandlers	happyx/spa/renderer.html#componentEventHandlers	renderer: componentEventHandlers	
 components	happyx/spa/renderer.html#components	renderer: components	
+currentComponent	happyx/spa/renderer.html#currentComponent	renderer: currentComponent	
 route	happyx/spa/renderer.html#route,cstring	renderer: route(path: cstring)	
 registerApp	happyx/spa/renderer.html#registerApp,cstring	renderer: registerApp(appId: cstring = &quot;app&quot;): App	
 registerComponent	happyx/spa/renderer.html#registerComponent,cstring,BaseComponent	renderer: registerComponent(name: cstring; component: BaseComponent): BaseComponent	
-render	happyx/spa/renderer.html#render,BaseComponent	renderer: render(self: var BaseComponent): TagRef	
+render	happyx/spa/renderer.html#render.e,BaseComponent	renderer: render(self: BaseComponent): TagRef	
+reRender	happyx/spa/renderer.html#reRender.e,BaseComponent	renderer: reRender(self: BaseComponent)	
 start	happyx/spa/renderer.html#start.t,App	renderer: start(app: App)	
 replaceIter	happyx/spa/renderer.html#replaceIter,NimNode,proc(NimNode),proc(NimNode)	renderer: replaceIter(root: NimNode; search: proc (x: NimNode): bool;\n            replace: proc (x: NimNode): NimNode): bool	
 getTagName	happyx/spa/renderer.html#getTagName,string	renderer: getTagName(name: string): string	
