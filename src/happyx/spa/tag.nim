@@ -162,7 +162,8 @@ func addArg*(self: TagRef, arg: string) =
 
 
 func addArgIter*(self: TagRef, arg: string) =
-  self.args.add(arg)
+  if self.args.len == 0:
+    self.args.add(arg)
   for i in self.children:
     i.addArgIter(arg)
 
@@ -240,13 +241,13 @@ func `$`*(self: TagRef): string =
   for key, value in self.attrs.pairs():
     attrs &= " " & key & "=" & "\"" & value & "\""
 
+  if self.onlyChildren:
+    let children = self.children.join("\n")
+    return fmt"{level}{children}{level}"
+
   if self.children.len > 0:
-    if self.onlyChildren:
-      let children = self.children.join("\n")
-      fmt"{level}{children}{level}"
-    else:
-      let children = "\n" & self.children.join("\n") & "\n"
-      fmt"{level}<{self.name}{attrs} {argsStr}>{children}{level}</{self.name}>"
+    let children = "\n" & self.children.join("\n") & "\n"
+    fmt"{level}<{self.name}{attrs} {argsStr}>{children}{level}</{self.name}>"
   elif self.name in UnclosedTags:
     fmt"{level}<{self.name}{attrs} {argsStr}>"
   else:

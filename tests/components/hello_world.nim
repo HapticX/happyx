@@ -1,5 +1,4 @@
-import
-  ../../src/happyx
+import ../../src/happyx
 
 
 component HelloWorld:

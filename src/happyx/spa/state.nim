@@ -26,17 +26,17 @@ func val*[T](self: State[T]): T = self.value
 template operator(funcname, op: untyped): untyped =
   func `funcname`*[T](self, other: State[T]): T =
     `op`(self.value, other.value)
-    application.router()
   func `funcname`*[T](self: State[T], other: T): T =
     `op`(self.value, other)
-    application.router()
 
 
 template reRenderOperator(funcname, op: untyped): untyped =
   proc `funcname`*[T](self: State[T], other: State[T]) =
     `op`(self.val, other.val)
+    application.router()
   proc `funcname`*[T](self: State[T], other: T) =
     `op`(self.value, other)
+    application.router()
 
 
 template boolOperator(funcname, op: untyped): untyped =

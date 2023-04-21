@@ -1,6 +1,6 @@
 import
   ../src/happyx,
-  components/[hello_world]
+  components/[hello_world, nested_component]
 
 
 var app = registerApp()
@@ -12,6 +12,9 @@ app.routes:
     component HelloWorld(counter = 4.0)
     component HelloWorld(counter = 8.0)
     component HelloWorld(counter = 16.0)
+  
+  "/nested":
+    component NestedComponent2
 
   "/visit":
     script(src="https://cdn.tailwindcss.com")  # Tailwind CSS :D

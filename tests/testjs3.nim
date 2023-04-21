@@ -1,5 +1,5 @@
 import ../src/happyx
-import macros
+import components/[nested_component]
 
 
 component HelloWorld:
@@ -24,8 +24,7 @@ component HelloWorld:
     }
     """
 
-var html = buildHtml:
-  component HelloWorld(counter = 0)
-  component HelloWorld(counter = 100)
+var nested = buildHtml:
+  component NestedComponent2(counter = 100)
 
-echo html
+echo nested
