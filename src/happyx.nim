@@ -10,8 +10,10 @@ when not defined(js):
     server
 
 import
-  happyx/spa/[renderer, state]
+  happyx/spa/[renderer, state],
+  nimja
 
 export
   renderer,
-  state
+  state,
+  nimja

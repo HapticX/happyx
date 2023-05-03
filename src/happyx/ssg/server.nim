@@ -13,6 +13,7 @@ import
   strtabs,
   strformat,
   asyncdispatch,
+  asyncfile,
   logging,
   terminal,
   colors,
@@ -27,6 +28,7 @@ export
   strtabs,
   strformat,
   asyncdispatch,
+  asyncfile,
   logging,
   terminal,
   colors,
@@ -288,9 +290,13 @@ macro routes*(server: Server, body: untyped): untyped =
                 newCall("startsWith", path, newStrLitNode("/" & $statement[1])),
               ),
               newStmtList(
-                newVarStmt(
+                newLetStmt(
+                  ident("file"),
+                  newCall("openAsync", directoryFromPath)
+                ),
+                newLetStmt(
                   ident("content"),
-                  newCall("readFile", directoryFromPath)
+                  newCall("await", newCall("readAll", ident("file")))
                 ),
                 newCall("answer", ident("req"), ident("content"))
               )

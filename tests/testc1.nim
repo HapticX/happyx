@@ -46,5 +46,6 @@ initServer:
       echo urlPath
     
     staticDir "testdir"
+    staticDir "components"
   
   server.start()
