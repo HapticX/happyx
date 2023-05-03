@@ -39,7 +39,7 @@ jobs:
         run: |
           nimble refresh
           nimble install -y regex
-          nimble install -y cligen
+          nimble install -y nimja
           nimble install -y httpx
       
       - name: Hello World
