@@ -1,0 +1,3 @@
+templatesFolder	happyx/tmpl_engine/engine.html#templatesFolder	engine: templatesFolder	
+templateFolder	happyx/tmpl_engine/engine.html#templateFolder,static[string]	engine: templateFolder(f: static[string])	
+renderTemplate	happyx/tmpl_engine/engine.html#renderTemplate.t,static[string]	engine: renderTemplate(name: static[string])	
