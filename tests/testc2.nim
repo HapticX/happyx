@@ -1,10 +1,10 @@
-import
-  ../src/happyx,
-  os
+import ../src/happyx
 
+
+templateFolder("templates")
 
 proc render(title: string, left: float, right: float): string =
-  compileTemplateFile(getScriptDir() / "templates" / "index.html")
+  renderTemplate("index.html")
 
 
 serve("127.0.0.1", 5000):

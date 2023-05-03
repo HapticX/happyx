@@ -11,9 +11,9 @@ when not defined(js):
 
 import
   happyx/spa/[renderer, state],
-  nimja
+  happyx/tmpl_engine/[engine]
 
 export
   renderer,
   state,
-  nimja
+  engine
