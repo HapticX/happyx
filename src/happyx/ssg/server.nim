@@ -191,7 +191,7 @@ template answerHtml*(req: Request, data: string | TagRef, code: HttpCode = Http2
   answer(req, d, code, newHttpHeaders([("Content-Type", "text/html; charset=utf-8")]))
 
 
-proc detectEnd(node: NimNode) {. compileTime .} =
+proc detectEndFunction(node: NimNode) {. compileTime .} =
   if node[^1].kind in [nnkCall, nnkCommand]:
     if node[^1][0].kind == nnkIdent and re"^(answer|echo)" in $node[^1][0]:
       return
@@ -238,17 +238,25 @@ macro routes*(server: Server, body: untyped): untyped =
       stmtList
     )
   when defined(httpx):
-    var path = newCall("get", newCall("path", ident("req")))
+    var path = newNimNode(nnkBracketExpr).add(
+      newCall("split", newCall("get", newCall("path", ident("req"))), newStrLitNode("?")),
+      newIntLitNode(0)
+    )
     let
       reqMethod = newCall("get", newDotExpr(ident("req"), ident("httpMethod")))
       reqMethodStringify = newCall("$", reqMethod)
       reqMethodStr = "req.httpMethod.get()"
+      url = newNimNode(nnkBracketExpr).add(
+        newCall("split", newCall("get", newCall("path", ident("req"))), newStrLitNode("?")),
+        newIntLitNode(1)
+      )
   else:
     var path = newDotExpr(newDotExpr(ident("req"), ident("url")), ident("path"))
     let
       reqMethod = newDotExpr(ident("req"), ident("reqMethod"))
       reqMethodStringify = newCall("$", reqMethod)
       reqMethodStr = "req.reqMethod"
+      url = newDotExpr(newDotExpr(ident("req"), ident("url")), ident("query"))
   let directoryFromPath = newCall(
     "&",
     newStrLitNode("."),
@@ -261,7 +269,7 @@ macro routes*(server: Server, body: untyped): untyped =
     if statement.kind in [nnkCall, nnkCommand]:
       # "/...": statement list
       if statement[1].kind == nnkStmtList and statement[0].kind == nnkStrLit:
-        detectEnd(statement[1])
+        detectEndFunction(statement[1])
         let exported = exportRouteArgs(path, statement[0], statement[1])
         if exported.len > 0:  # /my/path/with{custom:int}/{param:path}
           ifStmt.add(exported)
@@ -271,7 +279,7 @@ macro routes*(server: Server, body: untyped): untyped =
           ))
       # notfound: statement list
       elif statement[1].kind == nnkStmtList and statement[0].kind == nnkIdent:
-        detectEnd(statement[1])
+        detectEndFunction(statement[1])
         case $statement[0]
         of "notfound":
           notFoundNode = statement[1]
@@ -306,10 +314,10 @@ macro routes*(server: Server, body: untyped): untyped =
         let exported = exportRouteArgs(path, statement[1], statement[2])
         if exported.len > 0:  # /my/path/with{custom:int}/{param:path}
           exported[0] = newCall("and", exported[0], newCall("==", reqMethodStringify, newStrLitNode(name)))
-          detectEnd(exported[1])
+          detectEndFunction(exported[1])
           ifStmt.add(exported)
         else:  # /just-my-path
-          detectEnd(statement[2])
+          detectEndFunction(statement[2])
           ifStmt.add(newNimNode(nnkElifBranch).add(
             newCall(
               "and",
@@ -324,6 +332,7 @@ macro routes*(server: Server, body: untyped): untyped =
     0, newNimNode(nnkLetSection).add(
       newIdentDefs(ident("urlPath"), newEmptyNode(), path),
       newIdentDefs(ident("reqMethod"), newEmptyNode(), reqMethod),
+      newIdentDefs(ident("query"), newEmptyNode(), newCall("parseQuery", url)),
     )
   )
   
