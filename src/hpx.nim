@@ -48,7 +48,7 @@ proc createCommand(): int =
       needRefresh = false
       for i, val in projectTypes:
         if i == selected:
-          styledEcho fgGreen, "> ", val
+          styledEcho styleUnderscore, fgGreen, "> ", val
         else:
           styledEcho fgYellow, "  ", val
     case getKey()
