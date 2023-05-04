@@ -85,7 +85,7 @@ proc createCommand(): int =
     f.write("# Nimcache\nnimcache/\ncache/\n\n# Garbage\n*.exe\n*.log\n*.lg")
     f.close()
     f = open(projectName / "README.md", fmWrite)
-    f.write(fmt"# {projectName}\n\n{projectTypes[selected]} project written in Nim with HappyX ❤")
+    f.write("# " & projectName & "\n\n" & projectTypes[selected] & " project written in Nim with HappyX ❤")
     f.close()
 
     case selected
