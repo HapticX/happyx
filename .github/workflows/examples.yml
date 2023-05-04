@@ -42,6 +42,7 @@ jobs:
           nimble install -y nimja
           nimble install -y cligen
           nimble install -y httpx
+          nimble install -y illwill
       
       - name: Hello World
         run: |

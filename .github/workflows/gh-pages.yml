@@ -52,6 +52,7 @@ jobs:
           nimble install -y httpx
           nimble install -y cligen
           nimble install -y nimja
+          nimble install -y illwill
 
       - name: Generate API documents
         run: nim doc --index:on --project --out:docs --hints:off src/happyx.nim

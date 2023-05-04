@@ -2,7 +2,7 @@
 
 description = "Asynchronous web-framework written with ♥"
 author = "HapticX"
-version = "0.7.0"
+version = "0.7.1"
 license = "GNU GPLv3"
 srcDir = "src"
 bin = @["hpx"]
@@ -13,4 +13,5 @@ requires "nim >= 1.6.12"
 requires "cligen"
 requires "regex"
 requires "httpx"
+requires "illwill"
 requires "nimja"
