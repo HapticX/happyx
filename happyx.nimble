@@ -2,9 +2,10 @@
 
 description = "Asynchronous web-framework written with ♥"
 author = "HapticX"
-version = "0.6.1"
+version = "0.7.0"
 license = "GNU GPLv3"
 srcDir = "src"
+bin = @["hpx"]
 
 # Deps
 

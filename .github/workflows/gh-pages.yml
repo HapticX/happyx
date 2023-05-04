@@ -50,6 +50,7 @@ jobs:
           nimble refresh
           nimble install -y regex
           nimble install -y httpx
+          nimble install -y cligen
           nimble install -y nimja
 
       - name: Generate API documents

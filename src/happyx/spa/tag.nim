@@ -25,7 +25,7 @@ type
 
 
 const
-  UnclosedTags* = ["input", "img"]
+  UnclosedTags* = ["input", "img", "meta", "br", "hr", "link"]
 
 
 func initTag*(name: string, attrs: StringTableRef,
@@ -52,7 +52,8 @@ func initTag*(name: string, attrs: StringTableRef,
     result.children.add(child)
 
 
-func initTag*(name: string, children: seq[TagRef] = @[], onlyChildren: bool = false): TagRef =
+func initTag*(name: string, children: seq[TagRef] = @[],
+              onlyChildren: bool = false): TagRef =
   ## Initializes a new HTML tag without attributes but with children
   ## 
   ## Args:
@@ -98,7 +99,8 @@ func initTag*(name: string, isText: bool, attrs: StringTableRef,
     result.children.add(child)
 
 
-func initTag*(name: string, isText: bool, children: seq[TagRef] = @[], onlyChildren: bool = false): TagRef =
+func initTag*(name: string, isText: bool, children: seq[TagRef] = @[],
+              onlyChildren: bool = false): TagRef =
   ## Initializes a new HTML tag
   result = TagRef(
     name: name, isText: isText, parent: nil,
@@ -164,6 +166,8 @@ func addArg*(self: TagRef, arg: string) =
 func addArgIter*(self: TagRef, arg: string) =
   if self.args.len == 0:
     self.args.add(arg)
+  elif self.args.len == 1:
+    self.args[0] = arg
   for i in self.children:
     i.addArgIter(arg)
 
