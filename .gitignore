@@ -9,6 +9,12 @@ nimcache/
 nimble/
 docs/
 
+# Test SPA project
+test_app/
+
+# Test SSG project
+test_ssg/
+
 # Logs
 *.log
 

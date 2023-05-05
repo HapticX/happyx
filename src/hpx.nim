@@ -1,23 +1,102 @@
 import
+  regex,
+  cligen,
   happyx,
   strutils,
   terminal,
-  regex,
-  cligen,
+  browsers,
+  locks,
+  osproc,
+  times,
   os
 
 import illwill except fgBlue, fgGreen, fgMagenta, fgRed, fgWhite, fgYellow, bgBlue, bgGreen, bgMagenta, bgRed, bgWhite, bgYellow
 
 
-const VERSION = "0.7.1"
+const
+  VERSION = "0.8.0"
+  SPA_MAIN_FILE = "main"
+
+var
+  thr: Thread[void]
+  L: Lock
 
 
 proc ctrlC {. noconv .} =
   illwillDeinit()
+  deinitLock(L)
   quit(QuitSuccess)
 
-illwillInit(fullscreen=true)
+illwillInit()
 setControlCHook(ctrlC)
+
+
+proc compileProject() =
+  ## Compiling SPA Project
+  var
+    idx = 0
+    arr = ["/", "|", "\\", "-"]
+  styledEcho "Compiling ", fgMagenta, SPA_MAIN_FILE, ".js ", fgWhite, "script ... /"
+  # Only errors will shows
+  var p = startProcess(
+    "nim", getCurrentDir() / "src",
+    ["js", "--hints:off", "--warnings:off", SPA_MAIN_FILE]
+  )
+  while p.running:
+    if idx < arr.len-1:
+      inc idx
+    else:
+      idx = 0
+    eraseLine()
+    cursorUp()
+    styledEcho "Compiling ", fgMagenta, SPA_MAIN_FILE, ".js ", fgWhite, "script ... ", arr[idx]
+    sleep(60)
+  eraseLine()
+  cursorUp()
+  let (lines, i) = p.readLines()
+  if lines.len == 0:
+    styledEcho fgGreen, "Successfully compiled ", fgMagenta, SPA_MAIN_FILE, ".js                  "
+  else:
+    styledEcho fgRed, "An error was occurred when compiling ", fgMagenta, SPA_MAIN_FILE, ".js     "
+    for line in lines:
+      echo line
+
+
+proc godEye() {. thread .} =
+  let directory = getCurrentDir()
+  var
+    lastCheck: seq[tuple[path: string, time: times.Time]] = @[]
+    currentCheck: seq[tuple[path: string, time: times.Time]] = @[]
+  
+  for file in directory.walkDirRec():
+    lastCheck.add((path: file, time: file.getFileInfo().lastWriteTime))
+  
+  while true:
+    # Get file write times
+    for file in directory.walkDirRec():
+      currentCheck.add((path: file, time: file.getFileInfo().lastWriteTime))
+    # Check
+    if currentCheck.len != lastCheck.len:
+      acquire(L)
+      styledEcho "Changing ", fgGreen, "found", fgWhite, " reloading ..."
+      release(L)
+      compileProject()
+      lastCheck = @[]
+      for i in currentCheck:
+        lastCheck.add(i)
+      currentCheck = @[]
+    else:
+      for idx, val in lastCheck:
+        if currentCheck[idx] > val and not val.path.endsWith(fmt"{SPA_MAIN_FILE}.js"):
+          acquire(L)
+          styledEcho "Changing ", fgGreen, "found in ", fgMagenta, val.path, fgWhite, " reloading ..."
+          release(L)
+          compileProject()
+      lastCheck = @[]
+      for i in currentCheck:
+        lastCheck.add(i)
+      currentCheck = @[]
+    sleep(20)
 
 
 proc buildCommand(): int =
@@ -70,51 +149,75 @@ proc createCommand(): int =
         eraseLine(stdout)
         cursorUp(stdout)
   
-  styledEcho "You choose:"
-  styledEcho "Project name is ", fgMagenta, projectName
-  styledEcho fgMagenta, projectTypes[selected], fgWhite, " project type"
-  styledEcho "Continue? ", fgYellow, "[Y/N]"
-  let isContinue = ($readChar(stdin)).toLower()
+  styledEcho "Initializing project ..."
+  createDir(projectName)
+  createDir(projectName / "src")
+  createDir(projectName / "public")
+  var f = open(projectName / ".gitignore", fmWrite)
+  f.write("# Nimcache\nnimcache/\ncache/\n\n# Garbage\n*.exe\n*.log\n*.lg")
+  f.close()
+  f = open(projectName / "README.md", fmWrite)
+  f.write("# " & projectName & "\n\n" & projectTypes[selected] & " project written in Nim with HappyX ❤")
+  f.close()
 
-  if isContinue == "y":
-    styledEcho "Initializing project ..."
-    createDir(projectName)
-    createDir(projectName / "src")
-    createDir(projectName / "public")
-    var f = open(projectName / ".gitignore", fmWrite)
-    f.write("# Nimcache\nnimcache/\ncache/\n\n# Garbage\n*.exe\n*.log\n*.lg")
+  case selected
+  of 0:
+    # SSG
+    f = open(projectName / "src" / fmt"{SPA_MAIN_FILE}.nim", fmWrite)
+    f.write("import happyx\n\nserve(\"127.0.0.1\", 5000):\n  get \"/\":\n    \"Hello, world!\"\n")
     f.close()
-    f = open(projectName / "README.md", fmWrite)
-    f.write("# " & projectName & "\n\n" & projectTypes[selected] & " project written in Nim with HappyX ❤")
+  of 1:
+    # SPA
+    createDir(projectName / "src" / "components")
+    f = open(projectName / "src" / fmt"{SPA_MAIN_FILE}.nim", fmWrite)
+    f.write(
+      "import\n  happyx,\n  components/[hello_world]\n\n\nvar app = registerApp()\n\n" &
+      "app.routes:\n  \"/\":\n    component HelloWorld\n\napp.start()\n"
+    )
     f.close()
-
-    case selected
-    of 0:
-      # SSG
-      f = open(projectName / "src" / "main.nim", fmWrite)
-      f.write("import happyx\n\nserve(\"127.0.0.1\", 5000):\n  get \"/\":\n    \"Hello, world!\"\n")
-      f.close()
-    of 1:
-      # SPA
-      createDir(projectName / "src" / "components")
-      f = open(projectName / "src" / "main.nim", fmWrite)
-      f.write("import happyx\n\n\nvar app = registerApp()\n\napp.routes:\n  \"/\":\n    component HelloWorld\n\napp.start()\n")
-      f.close()
-      f = open(projectName / "src" / "components" / "hello_world.nim", fmWrite)
-      f.write("import happyx\n\n\ncomponent HelloWorld:\n  `template`:\n    \"Hello, world!\"\n\n`script`:\n    echo \"Start coding!\"\n")
-      f.close()
-    else:
-      discard
-    styledEcho fgGreen, "Successfully created!"
-    return QuitSuccess
+    f = open(projectName / "src" / "index.html", fmWrite)
+    f.write(
+      "<!DOCTYPE html><html>\n  <head>\n    <meta charset=\"utf-8\">\n    <title>" & projectName &
+      "</title>\n  </head>\n  <body>\n    " &
+      "<div id=\"app\"></div>\n    <script src=\"" & SPA_MAIN_FILE & ".js\"></script>" &
+      "\n  </body>\n</html>"
+    )
+    f.close()
+    f = open(projectName / "src" / "components" / "hello_world.nim", fmWrite)
+    f.write("import happyx\n\n\ncomponent HelloWorld:\n  `template`:\n    \"Hello, world!\"\n\n  `script`:\n    echo \"Start coding!\"\n")
+    f.close()
   else:
-    return createCommand()
-
-
-proc devCommand(host: string = "127.0.0.1", port: int = 5000): int =
-  styledEcho "Starting serve at ", fgGreen, "http://", host, ":", $port, fgWhite, "!"
+    discard
+  styledEcho fgGreen, "Successfully created ", fgMagenta, projectName, fgGreen, " project!"
   QuitSuccess
 
+
+proc devCommand(host: string = "127.0.0.1", port: int = 5000,
+                reload: bool = false): int =
+  compileProject()
+  initLock(L)
+  createThread(thr, godEye)
+  # Start server
+  styledEcho "Server launched at ", fgGreen, styleUnderscore, "http://", host, ":", $port, fgWhite
+  openDefaultBrowser("http://" & host & ":" & $port & "/#/")
+  serve(host, port):
+    get "/":
+      let
+        f = open(getCurrentDir() / "src" / "index.html")
+        data = f.readAll()
+      f.close()
+      req.answerHtml(data)
+    
+    get "/{file:path}":
+      var result = ""
+      let path = getCurrentDir() / "src" / file
+      if fileExists(path):
+        let
+          f = open(path)
+          data = f.readAll()
+        f.close()
+        result = data
+      req.answer(result)
 
 proc mainCommand(version = false): int =
   if version:
@@ -172,7 +275,7 @@ when isMainModule:
       styledEcho "Usage:\n"
       styledEcho fgMagenta, "hpx build"
     of "dev":
-      styledEcho fgBlue, "HappyX", fgMagenta, " dev ", fgWhite, "command creates a new HappyX project."
+      styledEcho fgBlue, "HappyX", fgMagenta, " dev ", fgWhite, "command starting dev server for SPA project."
       styledEcho "\nUsage:"
       styledEcho fgMagenta, "hpx dev\n"
       styledEcho "Optional arguments:"

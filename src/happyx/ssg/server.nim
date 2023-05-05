@@ -130,7 +130,8 @@ proc parseQuery*(query: string): owned(StringTableRef) =
   result = newStringTable()
   for i in query.split('&'):
     let splitted = i.split('=')
-    result[splitted[0]] = splitted[1]
+    if splitted.len >= 2:
+      result[splitted[0]] = splitted[1]
 
 
 template start*(server: Server): untyped =
