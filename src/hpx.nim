@@ -102,7 +102,7 @@ proc godEye() {. thread .} =
     sleep(20)
 
 
-proc buildCommand(): int =
+proc buildCommand(optSize: bool = false): int =
   ## TODO
   styledEcho "Welcome to ", styleBright, fgMagenta, "HappyX ", terminal.TerminalCmd.resetStyle, fgWhite, "builder"
   styledEcho fgGreen, "Try to detect SPA project"
@@ -128,19 +128,22 @@ proc buildCommand(): int =
   data = data.replace(re"(\.?)parent(\s*:?)", "$1prnt$2")
   data = data.replace(re"lastJSError", "ljse")
   data = data.replace(re"prevJSError", "pjse")
-  data = data.replace(re"Uint32Array", "U32A")
-  data = data.replace(re"Int32Array", "I32A")
-  data = data.replace(re"Array", "A")
-  data = data.replace(re"Number", "N")
-  data = data.replace(re"String", "S")
-  data = data.replace(re"Math", "M")
-  data = data.replace(re"BigInt", "B")
-  data = data.replace(
-    re"\A",
-    "const M=Math;const S=String;const B=BigInt;const A=Array;" &
-    "const U32A=Uint32Array;const I32A=Int32Array;const N=Number;"
-  )
   data = data.replace(re"/\*[\s\S]+?\*/\s+", "")
+  if optSize:
+    data = data.replace(re"Uint32Array", "U32A")
+    data = data.replace(re"Int32Array", "I32A")
+    data = data.replace(re"Array", "A")
+    data = data.replace(re"Number", "N")
+    data = data.replace(re"String", "S")
+    data = data.replace(re"Math", "M")
+    data = data.replace(re"BigInt", "B")
+    data = data.replace(
+      re"\A",
+      "const M=Math;const S=String;const B=BigInt;const A=Array;" &
+      "const U32A=Uint32Array;const I32A=Int32Array;const N=Number;"
+    )
+    data = data.replace(re"true", "1")
+    data = data.replace(re"false", "0")
   data = data.replace(re"(if|while|for|else if|do|else|switch)\s+", "$1")
   # Find variables and functions
   var
@@ -173,8 +176,6 @@ proc buildCommand(): int =
   data = data.replace(re"([;{}\]:,\(\)])\s+", "$1")
   data = data.replace(re"  ", " ")
   data = data.replace(re";;", ";")
-  data = data.replace(re"true", "1")
-  data = data.replace(re"false", "0")
   data = data.replace(
     re"\s*([\-\+=<\|\*&>^/%!$\?]{1,3})\s*", "$1"
   )
@@ -384,6 +385,8 @@ when isMainModule:
       styledEcho fgBlue, "HappyX", fgMagenta, " build ", fgWhite, " command builds standalone SPA project."
       styledEcho "Usage:\n"
       styledEcho fgMagenta, "hpx build"
+      styledEcho "Optional arguments:"
+      styledEcho align("opt-size", 8), "|o - Optimize JS file size"
     of "dev":
       styledEcho fgBlue, "HappyX", fgMagenta, " dev ", fgWhite, "command starting dev server for SPA project."
       styledEcho "\nUsage:"
