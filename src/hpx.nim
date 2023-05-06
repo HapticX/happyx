@@ -23,6 +23,7 @@ var
 
 
 proc ctrlC {. noconv .} =
+  ## Hook for Ctrl+C
   illwillDeinit()
   deinitLock(L)
   quit(QuitSuccess)
@@ -63,6 +64,7 @@ proc compileProject() =
 
 
 proc godEye() {. thread .} =
+  ## Got eye that watch all changes in your project files
   let directory = getCurrentDir()
   var
     lastCheck: seq[tuple[path: string, time: times.Time]] = @[]
@@ -78,7 +80,7 @@ proc godEye() {. thread .} =
     # Check
     if currentCheck.len != lastCheck.len:
       acquire(L)
-      styledEcho "Changing ", fgGreen, "found", fgWhite, " reloading ..."
+      styledEcho fgGreen, "Changing found ", fgWhite, " reloading ..."
       release(L)
       compileProject()
       lastCheck = @[]
@@ -89,7 +91,7 @@ proc godEye() {. thread .} =
       for idx, val in lastCheck:
         if currentCheck[idx] > val and not val.path.endsWith(fmt"{SPA_MAIN_FILE}.js"):
           acquire(L)
-          styledEcho "Changing ", fgGreen, "found in ", fgMagenta, val.path, fgWhite, " reloading ..."
+          styledEcho fgGreen, "Changing found in ", fgMagenta, val.path, fgWhite, " reloading ..."
           release(L)
           compileProject()
       lastCheck = @[]
@@ -100,16 +102,18 @@ proc godEye() {. thread .} =
 
 
 proc buildCommand(): int =
+  ## TODO
   styledEcho "Builded!"
   QuitSuccess
 
 
 proc createCommand(): int =
+  ## Create command that asks user for project name and project type
   var
     projectName: string
     selected: int = 0
   let projectTypes = ["SSG", "SPA"]
-  styledEcho "New ", fgBlue, "HappyX", fgWhite, " project ..."
+  styledEcho "New ", fgBlue, styleBright, "HappyX", fgWhite, " project ..."
   # Get project name
   styledWrite stdout, fgYellow, align("Project name: ", 14)
   projectName = readLine(stdin)
@@ -153,9 +157,11 @@ proc createCommand(): int =
   createDir(projectName)
   createDir(projectName / "src")
   createDir(projectName / "public")
+  # Create .gitignore
   var f = open(projectName / ".gitignore", fmWrite)
   f.write("# Nimcache\nnimcache/\ncache/\n\n# Garbage\n*.exe\n*.log\n*.lg")
   f.close()
+  # Create README.md
   f = open(projectName / "README.md", fmWrite)
   f.write("# " & projectName & "\n\n" & projectTypes[selected] & " project written in Nim with HappyX ❤")
   f.close()
@@ -163,16 +169,35 @@ proc createCommand(): int =
   case selected
   of 0:
     # SSG
+    stdout.styledWrite fgMagenta, "SSG", fgWhite, " was selected. Want to use templates? ", fgYellow, "[Y/N]: "
+    var want = ($stdin.readChar()).toLower()
+    if want == "y":
+      createDir(projectName / "src" / "templates")
+      f = open(projectName / "src" / "templates" / "index.html", fmWrite)
+      f.write(
+        "<!DOCTYPE html><html>\n  <head>\n    <meta charset=\"utf-8\">\n    <title>{{ title }}" &
+        "</title>\n  </head>\n  <body>\n    You at {{ title }} page ✨" &
+        "\n  </body>\n</html>"
+      )
+      f.close()
+    # Create main file
     f = open(projectName / "src" / fmt"{SPA_MAIN_FILE}.nim", fmWrite)
-    f.write("import happyx\n\nserve(\"127.0.0.1\", 5000):\n  get \"/\":\n    \"Hello, world!\"\n")
+    if want == "y":
+      f.write(
+        "import happyx\n\ntemplateFolder(\"templates\")\n\n" &
+        "proc render(title: string): string =\n  renderTemplate(\"index.html\")\n\n" &
+        "serve(\"127.0.0.1\", 5000):\n  get \"/{title:string}\":\n    req.answerHtml render(title)\n"
+      )
+    else:
+      f.write("import happyx\n\nserve(\"127.0.0.1\", 5000):\n  get \"/\":\n    \"Hello, world!\"\n")
     f.close()
   of 1:
     # SPA
     createDir(projectName / "src" / "components")
     f = open(projectName / "src" / fmt"{SPA_MAIN_FILE}.nim", fmWrite)
     f.write(
-      "import\n  happyx,\n  components/[hello_world]\n\n\nvar app = registerApp()\n\n" &
-      "app.routes:\n  \"/\":\n    component HelloWorld\n\napp.start()\n"
+      "import\n  happyx,\n  components/[hello_world]\n\n\n" &
+      "appRoutes(\"app\"):\n  \"/\":\n    component HelloWorld\n"
     )
     f.close()
     f = open(projectName / "src" / "index.html", fmWrite)
@@ -194,9 +219,11 @@ proc createCommand(): int =
 
 proc devCommand(host: string = "127.0.0.1", port: int = 5000,
                 reload: bool = false): int =
+  ## Serve
   compileProject()
-  initLock(L)
-  createThread(thr, godEye)
+  if reload:
+    initLock(L)
+    createThread(thr, godEye)
   # Start server
   styledEcho "Server launched at ", fgGreen, styleUnderscore, "http://", host, ":", $port, fgWhite
   openDefaultBrowser("http://" & host & ":" & $port & "/#/")
@@ -230,7 +257,10 @@ proc mainCommand(version = false): int =
 when isMainModule:
   dispatchMultiGen(
     [buildCommand, cmdName = "build"],
-    [devCommand, cmdName = "dev"],
+    [
+      devCommand,
+      cmdName = "dev"
+    ],
     [createCommand, cmdName = "create"],
     [
       mainCommand,
@@ -281,6 +311,7 @@ when isMainModule:
       styledEcho "Optional arguments:"
       styledEcho align("host", 8), "|h - change address (default is 127.0.0.1)"
       styledEcho align("port", 8), "|p - change port (default is 5000)"
+      styledEcho align("reload", 8), "|r - enable autoreloading"
     of "create":
       styledEcho fgBlue, "HappyX", fgMagenta, " create ", fgWhite, "command creates a new HappyX project."
       styledEcho "\nUsage:"

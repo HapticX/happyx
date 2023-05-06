@@ -655,6 +655,23 @@ macro routes*(app: App, body: untyped): untyped =
   )
 
 
+macro appRoutes*(name: string, body: untyped): untyped =
+  ## Registers a new Single page application, creates routing for it and starts SPA.
+  ##
+  ## ## Basic Usage:
+  ## 
+  ## .. code-block::nim
+  ##    appRoutes("app"):
+  ##      "/":
+  ##        "Hello, world!"
+  ## 
+  newStmtList(
+    newVarStmt(ident("app"), newCall("registerApp", name)),
+    newCall("routes", ident("app"), body),
+    newCall("start", ident("app"))
+  )
+
+
 macro component*(name, body: untyped): untyped =
   ## Register a new component.
   ## 

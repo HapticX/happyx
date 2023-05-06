@@ -247,9 +247,16 @@ macro routes*(server: Server, body: untyped): untyped =
       reqMethod = newCall("get", newDotExpr(ident("req"), ident("httpMethod")))
       reqMethodStringify = newCall("$", reqMethod)
       reqMethodStr = "req.httpMethod.get()"
-      url = newNimNode(nnkBracketExpr).add(
-        newCall("split", newCall("get", newCall("path", ident("req"))), newStrLitNode("?")),
-        newIntLitNode(1)
+      url = newStmtList(
+        newLetStmt(ident("_val"), newCall("split", newCall("get", newCall("path", ident("req"))), newStrLitNode("?"))),
+        newNimNode(nnkIfStmt).add(
+          newNimNode(nnkElifBranch).add(
+            newCall(">=", newCall("len", ident("_val")), newIntLitNode(2)),
+            newNimNode(nnkBracketExpr).add(ident("_val"), newIntLitNode(1))
+          ), newNimNode(nnkElse).add(
+            newStrLitNode("")
+          )
+        )
       )
   else:
     var path = newDotExpr(newDotExpr(ident("req"), ident("url")), ident("path"))
