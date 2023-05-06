@@ -99,6 +99,7 @@ window.addEventListener('DOMContentLoaded', main);
   </div>
   <ul class="simple simple-toc" id="toc-list">
 <ul class="simple"><li><a class="reference" id="basic-usagecolon_toc" href="#basic-usagecolon">Basic Usage:</a></li>
+<li><a class="reference" id="basic-usagecolon_toc" href="#basic-usagecolon">Basic Usage:</a></li>
 <li><a class="reference" id="usagecolon_toc" href="#usagecolon">Usage:</a></li>
 </ul><li><a class="reference" id="renderer_toc" href="#renderer">Renderer</a></li>
 <li>
@@ -203,7 +204,12 @@ window.addEventListener('DOMContentLoaded', main);
 <li>
   <a class="reference reference-toplevel" href="#17" id="67">Macros</a>
   <ul class="simple simple-toc-section">
-      <ul class="simple nested-toc-section">buildComponentHtml
+      <ul class="simple nested-toc-section">appRoutes
+      <li><a class="reference" href="#appRoutes.m%2Cstring%2Cuntyped"
+    title="appRoutes(name: string; body: untyped): untyped">appRoutes(name: string; body: untyped): untyped</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">buildComponentHtml
       <li><a class="reference" href="#buildComponentHtml.m%2Cuntyped%2Cuntyped"
     title="buildComponentHtml(componentName, html: untyped): untyped">buildComponentHtml(componentName, html: untyped): untyped</a></li>
 
@@ -443,6 +449,17 @@ Basic method that needs to overload
 <div class="section" id="17">
 <h1><a class="toc-backref" href="#17">Macros</a></h1>
 <dl class="item">
+<div id="appRoutes.m,string,untyped">
+<dt><pre><span class="Keyword">macro</span> <a href="#appRoutes.m%2Cstring%2Cuntyped"><span class="Identifier">appRoutes</span></a><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">body</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
+<dd>
+
+Registers a new Single page application, creates routing for it and starts SPA.
+<h2><a class="toc-backref" id="basic-usagecolon" href="#basic-usagecolon">Basic Usage:</a></h2><pre class="listing"><span class="Identifier">appRoutes</span><span class="Punctuation">(</span><span class="StringLit">&quot;app&quot;</span><span class="Punctuation">)</span><span class="Punctuation">:</span>
+  <span class="StringLit">&quot;/&quot;</span><span class="Punctuation">:</span>
+    <span class="StringLit">&quot;Hello, world!&quot;</span></pre>
+
+</dd>
+</div>
 <div id="buildComponentHtml.m,untyped,untyped">
 <dt><pre><span class="Keyword">macro</span> <a href="#buildComponentHtml.m%2Cuntyped%2Cuntyped"><span class="Identifier">buildComponentHtml</span></a><span class="Other">(</span><span class="Identifier">componentName</span><span class="Other">,</span> <span class="Identifier">html</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
@@ -598,7 +615,7 @@ Starts single page application
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-05-06 05:04:43 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-05-06 11:37:52 UTC</small>
       </div>
     </div>
   </div>
