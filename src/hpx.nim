@@ -14,7 +14,7 @@ import illwill except fgBlue, fgGreen, fgMagenta, fgRed, fgWhite, fgYellow, bgBl
 
 
 const
-  VERSION = "0.8.1"
+  VERSION = "0.9.0"
   SPA_MAIN_FILE = "main"
 
 var
@@ -32,7 +32,7 @@ illwillInit()
 setControlCHook(ctrlC)
 
 
-proc compileProject() =
+proc compileProject(): seq[string] {. discardable .} =
   ## Compiling SPA Project
   var
     idx = 0
@@ -41,7 +41,7 @@ proc compileProject() =
   # Only errors will shows
   var p = startProcess(
     "nim", getCurrentDir() / "src",
-    ["js", "--hints:off", "--warnings:off", SPA_MAIN_FILE]
+    ["js", "--hints:off", "--warnings:off", "--opt:size", "--d:danger", SPA_MAIN_FILE]
   )
   while p.running:
     if idx < arr.len-1:
@@ -61,6 +61,7 @@ proc compileProject() =
     styledEcho fgRed, "An error was occurred when compiling ", fgMagenta, SPA_MAIN_FILE, ".js     "
     for line in lines:
       echo line
+    return lines
 
 
 proc godEye() {. thread .} =
@@ -103,7 +104,86 @@ proc godEye() {. thread .} =
 
 proc buildCommand(): int =
   ## TODO
-  styledEcho "Builded!"
+  styledEcho "Welcome to ", styleBright, fgMagenta, "HappyX ", terminal.TerminalCmd.resetStyle, fgWhite, "builder"
+  styledEcho fgGreen, "Try to detect SPA project"
+  let lines = compileProject()
+  if lines.len > 0:
+    styledEcho fgRed, "Failure! Project isn't SPA or error wass occurred."
+    return QuitFailure
+  if not dirExists("build"):
+    createDir("build")
+  else:
+    removeDir("build")
+    createDir("build")
+  styledEcho fgYellow, "Copying ..."
+  copyFileToDir("src" / fmt"{SPA_MAIN_FILE}.js", "build")
+  copyFileToDir("src" / "index.html", "build")
+  eraseLine()
+  cursorUp()
+  styledEcho fgGreen, "Obfuscation ..."
+  var
+    f = open("build" / fmt"{SPA_MAIN_FILE}.js")
+    data = f.readAll()
+  f.close()
+  data = data.replace(re"(\.?)parent(\s*:?)", "$1prnt$2")
+  data = data.replace(re"lastJSError", "ljse")
+  data = data.replace(re"prevJSError", "pjse")
+  data = data.replace(re"Uint32Array", "U32A")
+  data = data.replace(re"Int32Array", "I32A")
+  data = data.replace(re"Array", "A")
+  data = data.replace(re"Number", "N")
+  data = data.replace(re"String", "S")
+  data = data.replace(re"Math", "M")
+  data = data.replace(re"BigInt", "B")
+  data = data.replace(
+    re"\A",
+    "const M=Math;const S=String;const B=BigInt;const A=Array;" &
+    "const U32A=Uint32Array;const I32A=Int32Array;const N=Number;"
+  )
+  data = data.replace(re"/\*[\s\S]+?\*/\s+", "")
+  data = data.replace(re"(if|while|for|else if|do|else|switch)\s+", "$1")
+  # Find variables and functions
+  var
+    counter = 0
+    found: seq[string] = @[]
+  for i in data.findAndCaptureAll(re"\b\w+_\d+\b"):
+    if i notin found:
+      found.add(i)
+      data = data.replace(i, fmt"a{counter}")
+      inc counter
+  # Find ConstSet, Temporary, Field, NTI\d+ and NNI\d+
+  found = @[]
+  counter = 0
+  for i in data.findAndCaptureAll(re"(ConstSet|Temporary|Field|N[TN]I)\d+"):
+    if i notin found:
+      found.add(i)
+      data = data.replace(i, fmt"b{counter}")
+      inc counter
+  # Find functions
+  found = @[]
+  counter = 0
+  for i in data.findAndCaptureAll(re"function [c-z][a-zA-Z0-9_]*"):
+    if i notin found:
+      found.add(i)
+      data = data.replace(i[9..^1], fmt" c{counter}")
+      inc counter
+  data = data.replace(re"(size|base|node):\S+?,", "")
+  data = data.replace(re"filename:\S+?,", "")
+  data = data.replace(re"finalizer:\S+?}", "}")
+  data = data.replace(re"([;{}\]:,\(\)])\s+", "$1")
+  data = data.replace(re"  ", " ")
+  data = data.replace(re";;", ";")
+  data = data.replace(re"true", "1")
+  data = data.replace(re"false", "0")
+  data = data.replace(
+    re"\s*([\-\+=<\|\*&>^/%!$\?]{1,3})\s*", "$1"
+  )
+  data = data.replace(
+    re"\[\s*", "["
+  )
+  f = open("build" / fmt"{SPA_MAIN_FILE}.js", fmWrite)
+  f.write(data)
+  f.close()
   QuitSuccess
 
 
@@ -301,7 +381,7 @@ when isMainModule:
       styledEcho "Usage:"
       styledEcho fgMagenta, "hpx ", fgBlue, "build|dev|create|help ", fgYellow, "[subcommand-args]"
     of "build":
-      styledEcho fgBlue, "HappyX", fgMagenta, " build ", fgWhite, " command builds existing HappyX project."
+      styledEcho fgBlue, "HappyX", fgMagenta, " build ", fgWhite, " command builds standalone SPA project."
       styledEcho "Usage:\n"
       styledEcho fgMagenta, "hpx build"
     of "dev":

@@ -46,14 +46,14 @@ jobs:
       
       - name: Hello World
         run: |
-          cd examples/hello_world
+          cd examples/hello_world/src
           nim c -d:httpx main
-          cd ../../
+          cd ../../../
         shell: bash
       
       - name: TODO App
         run: |
-          cd examples/todo
+          cd examples/todo/src
           nim js main
-          cd ../../
+          cd ../../../
         shell: bash
