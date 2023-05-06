@@ -14,7 +14,7 @@ import illwill except fgBlue, fgGreen, fgMagenta, fgRed, fgWhite, fgYellow, bgBl
 
 
 const
-  VERSION = "0.8.0"
+  VERSION = "0.8.1"
   SPA_MAIN_FILE = "main"
 
 var
