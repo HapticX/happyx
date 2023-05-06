@@ -4,7 +4,6 @@ import
 
 
 var
-  app = registerApp()
   inputText = ""
   tasks = @[
     ("Send post to Reddit", true),
@@ -12,7 +11,7 @@ var
   ]
 
 
-app.routes:
+appRoutes("app"):
   "/":
     tDiv(class = "flex justify-center items-center w-screen h-screen bg-gray-100"):
       tDiv(class = "flex flex-col gap-4 px-8 py-4 bg-white rounded-2xl drop-shadow-xl"):
@@ -36,5 +35,3 @@ app.routes:
         tDiv(class = "flex flex-col gap-2"):
           for (t, c) in tasks:
             component Task(text = t, isChecked = c)
-
-app.start()

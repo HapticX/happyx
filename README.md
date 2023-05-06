@@ -79,11 +79,9 @@ nim c -r -d:debug -d:httpx main
 ```nim
 import happyx
 
-var app = registerApp()
-app.routes:
+appRoutes("app"):
   "/user{userId:int}":
     "User ID is {userId}"
-app.start()
 ```
 #### Run 💻
 Compile nim script and open HTML file in your browser.
