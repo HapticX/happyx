@@ -301,9 +301,15 @@ macro routes*(server: Server, body: untyped): untyped =
           ifStmt.insert(
             0, newNimNode(nnkElifBranch).add(
               newCall(
-                "or",
-                newCall("startsWith", path, statement[1]),
-                newCall("startsWith", path, newStrLitNode("/" & $statement[1])),
+                "and",
+                newCall(
+                  "or",
+                  newCall("startsWith", path, statement[1]),
+                  newCall("startsWith", path, newStrLitNode("/" & $statement[1])),
+                ), newCall(
+                  "fileExists",
+                  directoryFromPath
+                )
               ),
               newStmtList(
                 newLetStmt(
@@ -356,9 +362,10 @@ macro routes*(server: Server, body: untyped): untyped =
     stmtList.add(ifStmt)
     # return 404
     if notFoundNode.kind == nnkEmpty:
-      ifStmt.add(newNimNode(nnkElse).add(newStmtList()))
+      let elseStmtList = newStmtList()
+      ifStmt.add(newNimNode(nnkElse).add(elseStmtList))
       when defined(debug):
-        ifStmt[^1][^1].add(
+        elseStmtList.add(
           newCall(
             "log",
             newDotExpr(ident("server"), ident("logger")),
@@ -369,8 +376,8 @@ macro routes*(server: Server, body: untyped): untyped =
             )
           )
         )
-      ifStmt.add(newNimNode(nnkElse).add(
-        newCall(ident("answer"), ident("req"), newStrLitNode("Not found"), ident("Http404")))
+      elseStmtList.add(
+        newCall(ident("answer"), ident("req"), newStrLitNode("Not found"), ident("Http404"))
       )
     else:
       ifStmt.add(newNimNode(nnkElse).add(notFoundNode))
@@ -392,6 +399,7 @@ macro routes*(server: Server, body: untyped): untyped =
       )
     else:
       stmtList.add(notFoundNode)
+  echo treeRepr procStmt
   procStmt
 
 

@@ -10,11 +10,11 @@ import
   times,
   os
 
-import illwill except fgBlue, fgGreen, fgMagenta, fgRed, fgWhite, fgYellow, bgBlue, bgGreen, bgMagenta, bgRed, bgWhite, bgYellow
+import illwill except fgBlue, fgGreen, fgMagenta, fgRed, fgWhite, fgYellow, bgBlue, bgGreen, bgMagenta, bgRed, bgWhite, bgYellow, resetStyle
 
 
 const
-  VERSION = "0.9.0"
+  VERSION = "0.9.1"
   SPA_MAIN_FILE = "main"
 
 var
@@ -102,9 +102,21 @@ proc godEye() {. thread .} =
     sleep(20)
 
 
+proc mainHelpMessage() =
+  styledEcho fgBlue, center("# ---=== HappyX CLI ===--- #", 28)
+  styledEcho fgGreen, align("v" & VERSION, 28)
+  styledEcho(
+    "\nCLI for ", fgGreen, "creating", fgWhite, ", ",
+    fgGreen, "serving", fgWhite, " and ", fgGreen, "building",
+    fgWhite, " HappyX projects\n"
+  )
+  styledEcho "Usage:"
+  styledEcho fgMagenta, "hpx ", fgBlue, "build|dev|create|help ", fgYellow, "[subcommand-args]"
+
+
 proc buildCommand(optSize: bool = false): int =
   ## TODO
-  styledEcho "Welcome to ", styleBright, fgMagenta, "HappyX ", terminal.TerminalCmd.resetStyle, fgWhite, "builder"
+  styledEcho "Welcome to ", styleBright, fgMagenta, "HappyX ", resetStyle, fgWhite, "builder"
   styledEcho fgGreen, "Try to detect SPA project"
   let lines = compileProject()
   if lines.len > 0:
@@ -237,7 +249,6 @@ proc createCommand(): int =
   styledEcho "Initializing project ..."
   createDir(projectName)
   createDir(projectName / "src")
-  createDir(projectName / "public")
   # Create .gitignore
   var f = open(projectName / ".gitignore", fmWrite)
   f.write("# Nimcache\nnimcache/\ncache/\n\n# Garbage\n*.exe\n*.log\n*.lg")
@@ -250,6 +261,7 @@ proc createCommand(): int =
   case selected
   of 0:
     # SSG
+    createDir(projectName / "src" / "public")
     stdout.styledWrite fgMagenta, "SSG", fgWhite, " was selected. Want to use templates? ", fgYellow, "[Y/N]: "
     var want = ($stdin.readChar()).toLower()
     if want == "y":
@@ -274,6 +286,7 @@ proc createCommand(): int =
     f.close()
   of 1:
     # SPA
+    createDir(projectName / "public")
     createDir(projectName / "src" / "components")
     f = open(projectName / "src" / fmt"{SPA_MAIN_FILE}.nim", fmWrite)
     f.write(
@@ -331,7 +344,7 @@ proc mainCommand(version = false): int =
   if version:
     styledEcho "HappyX ", fgGreen, VERSION
   else:
-    styledEcho fgYellow, "[Warning] ", fgWhite, "no arguments"
+    mainHelpMessage()
   QuitSuccess
 
 
@@ -372,15 +385,7 @@ when isMainModule:
       use = "hpx $command $args\n$doc\nOptions:\n$options"
     case subcmdHelp:
     of "":
-      styledEcho fgBlue, center("# ---=== HappyX CLI ===--- #", 28)
-      styledEcho fgGreen, align("v" & VERSION, 28)
-      styledEcho(
-        "\nCLI for ", fgGreen, "creating", fgWhite, ", ",
-        fgGreen, "serving", fgWhite, " and ", fgGreen, "building",
-        fgWhite, " HappyX projects\n"
-      )
-      styledEcho "Usage:"
-      styledEcho fgMagenta, "hpx ", fgBlue, "build|dev|create|help ", fgYellow, "[subcommand-args]"
+      mainHelpMessage()
     of "build":
       styledEcho fgBlue, "HappyX", fgMagenta, " build ", fgWhite, " command builds standalone SPA project."
       styledEcho "Usage:\n"

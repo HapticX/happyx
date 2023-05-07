@@ -136,6 +136,8 @@
 ## 
 ## `hpx dev` command will see all changes in your project and recompile `main.nim`
 ## 
+## `hpx build` command will builds your project as standalone web application (HTML + JS files)
+## 
 ## 
 when not defined(js):
   import
