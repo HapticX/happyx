@@ -391,7 +391,6 @@ macro routes*(server: Server, body: untyped): untyped =
               newCall("==", path, statement[1]),
               wsStmtList
             ))
-          echo treeRepr ifStmt
           continue
         if exported.len > 0:  # /my/path/with{custom:int}/{param:path}
           exported[0] = newCall("and", exported[0], newCall("==", reqMethodStringify, newStrLitNode(name)))

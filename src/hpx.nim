@@ -14,11 +14,11 @@ import illwill except fgBlue, fgGreen, fgMagenta, fgRed, fgWhite, fgYellow, bgBl
 
 
 const
-  VERSION = "0.10.0"
+  VERSION = "0.10.1"
   SPA_MAIN_FILE = "main"
 
 var
-  thr: Thread[var bool]
+  thr: Thread[ptr bool]
   L: Lock
 
 
@@ -64,7 +64,7 @@ proc compileProject(): seq[string] {. discardable .} =
     return lines
 
 
-proc godEye(needReload: var bool) {. thread .} =
+proc godEye(arg: ptr bool) {. thread, nimcall .} =
   ## Got eye that watch all changes in your project files
   let directory = getCurrentDir()
   var
@@ -88,7 +88,7 @@ proc godEye(needReload: var bool) {. thread .} =
       for i in currentCheck:
         lastCheck.add(i)
       currentCheck = @[]
-      needReload = true
+      arg[] = true
     else:
       for idx, val in lastCheck:
         if currentCheck[idx] > val and not val.path.endsWith(fmt"{SPA_MAIN_FILE}.js"):
@@ -96,11 +96,11 @@ proc godEye(needReload: var bool) {. thread .} =
           styledEcho fgGreen, "Changing found in ", fgMagenta, val.path, fgWhite, " reloading ..."
           release(L)
           compileProject()
+          arg[] = true
       lastCheck = @[]
       for i in currentCheck:
         lastCheck.add(i)
       currentCheck = @[]
-      needReload = true
     sleep(20)
 
 
@@ -317,22 +317,39 @@ proc devCommand(host: string = "127.0.0.1", port: int = 5000,
                 reload: bool = false): int =
   ## Serve
   compileProject()
+  var needReload = false
   if reload:
     initLock(L)
-    createThread(thr, godEye)
+    createThread(thr, godEye, addr needReload)
   # Start server
   styledEcho "Server launched at ", fgGreen, styleUnderscore, "http://", host, ":", $port, fgWhite
   openDefaultBrowser("http://" & host & ":" & $port & "/#/")
 
-  var needReload = false
-
   serve(host, port):
     get "/":
-      let
-        f = open(getCurrentDir() / "src" / "index.html")
-        data = f.readAll()
+      let f = open(getCurrentDir() / "src" / "index.html")
+      var data = f.readAll()
       f.close()
+      data = data.replace(
+        "</body>",
+        "<script>" &
+        fmt"let socket = new WebSocket('ws://{host}:{port}/hcr');" &
+        "\nsocket.onmessage = (event) => {\n" &
+        "  if(event.data === 'true'){\n    window.location.reload();\n  }\n" &
+        "};\n\n" &
+        "function intervalSending(){\n  socket.send('reload')\n}\n\n" &
+        "setInterval(intervalSending, 100);\n" &
+        "</script></body>"
+      )
       req.answerHtml(data)
+    
+    ws "/hcr":
+      if wsData == "reload":
+        if needReload:
+          needReload = false
+          await wsClient.send("true")
+        else:
+          await wsClient.send("false")
     
     get "/{file:path}":
       var result = ""
