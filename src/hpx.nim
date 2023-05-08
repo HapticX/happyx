@@ -14,11 +14,11 @@ import illwill except fgBlue, fgGreen, fgMagenta, fgRed, fgWhite, fgYellow, bgBl
 
 
 const
-  VERSION = "0.9.1"
+  VERSION = "0.10.0"
   SPA_MAIN_FILE = "main"
 
 var
-  thr: Thread[void]
+  thr: Thread[var bool]
   L: Lock
 
 
@@ -64,7 +64,7 @@ proc compileProject(): seq[string] {. discardable .} =
     return lines
 
 
-proc godEye() {. thread .} =
+proc godEye(needReload: var bool) {. thread .} =
   ## Got eye that watch all changes in your project files
   let directory = getCurrentDir()
   var
@@ -88,6 +88,7 @@ proc godEye() {. thread .} =
       for i in currentCheck:
         lastCheck.add(i)
       currentCheck = @[]
+      needReload = true
     else:
       for idx, val in lastCheck:
         if currentCheck[idx] > val and not val.path.endsWith(fmt"{SPA_MAIN_FILE}.js"):
@@ -99,6 +100,7 @@ proc godEye() {. thread .} =
       for i in currentCheck:
         lastCheck.add(i)
       currentCheck = @[]
+      needReload = true
     sleep(20)
 
 
@@ -321,6 +323,9 @@ proc devCommand(host: string = "127.0.0.1", port: int = 5000,
   # Start server
   styledEcho "Server launched at ", fgGreen, styleUnderscore, "http://", host, ":", $port, fgWhite
   openDefaultBrowser("http://" & host & ":" & $port & "/#/")
+
+  var needReload = false
+
   serve(host, port):
     get "/":
       let

@@ -43,6 +43,7 @@ jobs:
           nimble install -y cligen
           nimble install -y illwill
           nimble install -y nimja
+          nimble install -y ws
       
       - name: Build C tests
         run: |

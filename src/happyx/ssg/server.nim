@@ -20,6 +20,7 @@ import
   regex,
   json,
   os,
+  ws,
   ../spa/tag,
   ../private/cmpltime
 
@@ -34,7 +35,8 @@ export
   colors,
   regex,
   json,
-  os
+  os,
+  ws
 
 
 when defined(httpx):
@@ -151,7 +153,8 @@ template start*(server: Server): untyped =
   when defined(httpx):
     run(handleRequest, `server`.instance)
   else:
-    waitFor `server`.instance.serve(Port(`server`.port), handleRequest, `server`.address)
+    asyncCheck `server`.instance.serve(Port(`server`.port), handleRequest, `server`.address)
+    runForever()
 
 
 template answer*(
@@ -230,6 +233,7 @@ macro routes*(server: Server, body: untyped): untyped =
       notfound:
         "Oops! Not found!"
   var
+    # Handle requests
     stmtList = newStmtList()
     ifStmt = newNimNode(nnkIfStmt)
     notFoundNode = newEmptyNode()
@@ -288,12 +292,12 @@ macro routes*(server: Server, body: untyped): untyped =
       # notfound: statement list
       elif statement[1].kind == nnkStmtList and statement[0].kind == nnkIdent:
         detectEndFunction(statement[1])
-        case $statement[0]
+        case ($statement[0]).toLower()
         of "notfound":
           notFoundNode = statement[1]
         of "middleware":
           stmtList.insert(0, statement[1])
-      # reqMethod("/..."):
+      # reqMethod "/...":
       #   ...
       elif statement[0].kind == nnkIdent and statement[1].kind == nnkStrLit:
         let name = ($statement[0]).toUpper()
@@ -326,6 +330,69 @@ macro routes*(server: Server, body: untyped): untyped =
           )
           continue
         let exported = exportRouteArgs(path, statement[1], statement[2])
+        # Handle websockets
+        if name == "WS":
+          var insertWsList = newStmtList()
+          let wsStmtList = newStmtList(
+            newNimNode(nnkTryStmt).add(
+              newStmtList(
+                newLetStmt(ident("wsClient"), newCall("await", newCall("newWebSocket", ident("req")))),
+                newCall("add", ident("wsConnections"), ident("wsClient")),
+                newCall("await", newCall("send", ident("wsClient"), newStrLitNode("Welcome"))),
+                newNimNode(nnkWhileStmt).add(
+                  newCall("==", newDotExpr(ident("wsClient"), ident("readyState")), ident("Open")),
+                  newStmtList(
+                    newLetStmt(ident("wsData"), newCall("await", newCall("receiveStrPacket", ident("wsClient")))),
+                    insertWsList
+                  )
+                )
+              ),
+              newNimNode(nnkExceptBranch).add(
+                ident("WebSocketClosedError"),
+                when defined(debug):
+                  newCall(
+                    "log", newDotExpr(server, ident("logger")),
+                    ident("lvlError"), newStrLitNode("Socket closed")
+                  )
+                else:
+                  newNimNode(nnkDiscardStmt).add(newEmptyNode())
+              ),
+              newNimNode(nnkExceptBranch).add(
+                ident("WebSocketProtocolMismatchError"),
+                when defined(debug):
+                  newCall(
+                    "log", newDotExpr(server, ident("logger")),
+                    ident("lvlError"),
+                    newCall("fmt", newStrLitNode("Socket tried to use an unknown protocol: {getCurrentExceptionMsg()}"))
+                  )
+                else:
+                  newNimNode(nnkDiscardStmt).add(newEmptyNode())
+              ),
+              newNimNode(nnkExceptBranch).add(
+                ident("WebSocketError"),
+                when defined(debug):
+                  newCall(
+                    "log", newDotExpr(server, ident("logger")),
+                    ident("lvlError"),
+                    newCall("fmt", newStrLitNode("Unexpected socket error: {getCurrentExceptionMsg()}"))
+                  )
+                else:
+                  newNimNode(nnkDiscardStmt).add(newEmptyNode())
+              )
+            )
+          )
+          if exported.len > 0:
+            insertWsList.add(exported[1])
+            exported[1].add(wsStmtList)
+            ifStmt.add(exported)
+          else:
+            insertWsList.add(statement[2])
+            ifStmt.add(newNimNode(nnkElifBranch).add(
+              newCall("==", path, statement[1]),
+              wsStmtList
+            ))
+          echo treeRepr ifStmt
+          continue
         if exported.len > 0:  # /my/path/with{custom:int}/{param:path}
           exported[0] = newCall("and", exported[0], newCall("==", reqMethodStringify, newStrLitNode(name)))
           detectEndFunction(exported[1])
@@ -399,8 +466,14 @@ macro routes*(server: Server, body: untyped): untyped =
       )
     else:
       stmtList.add(notFoundNode)
-  echo treeRepr procStmt
-  procStmt
+  newStmtList(
+    newNimNode(nnkVarSection).add(newIdentDefs(
+      ident("wsConnections"),
+      newNimNode(nnkBracketExpr).add(ident("seq"), ident("WebSocket")),
+      newCall("@", newNimNode(nnkBracket)),
+    )),
+    procStmt
+  )
 
 
 macro initServer*(body: untyped): untyped =

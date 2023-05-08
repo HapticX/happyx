@@ -9,6 +9,12 @@ initServer:
   server.routes:
     get "/":
       req.answer "Hello, world!"
+    
+    ws "/ws":
+      echo wsData
+      echo wsClient.key
+      echo wsClient.version
+      echo wsClient.protocol
 
     post "/":
       "Hello world with POST method!"
