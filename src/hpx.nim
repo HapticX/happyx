@@ -203,7 +203,7 @@ proc buildCommand(optSize: bool = false): int =
   QuitSuccess
 
 
-proc createCommand(name: string = "", kind: string = ""): int =
+proc createCommand(name: string = "", kind: string = "", templates: bool = false): int =
   ## Create command that asks user for project name and project type
   var
     projectName: string
@@ -283,9 +283,8 @@ proc createCommand(name: string = "", kind: string = ""): int =
   of 0:
     # SSG
     createDir(projectName / "src" / "public")
-    stdout.styledWrite fgMagenta, "SSG", fgWhite, " was selected. Want to use templates? ", fgYellow, "[Y/N]: "
-    var want = ($stdin.readChar()).toLower()
-    if want == "y":
+    if templates:
+      styledEcho fgYellow "Templates in SSG was enabled. To disable it remove --templates flag."
       createDir(projectName / "src" / "templates")
       f = open(projectName / "src" / "templates" / "index.html", fmWrite)
       f.write(
@@ -294,9 +293,11 @@ proc createCommand(name: string = "", kind: string = ""): int =
         "\n  </body>\n</html>"
       )
       f.close()
+    else:
+      styledEcho fgYellow "Templates in SSG was disabled. To enable it add --templates flag."
     # Create main file
     f = open(projectName / "src" / fmt"{SPA_MAIN_FILE}.nim", fmWrite)
-    if want == "y":
+    if templates:
       f.write(
         "import happyx\n\ntemplateFolder(\"templates\")\n\n" &
         "proc render(title: string): string =\n  renderTemplate(\"index.html\")\n\n" &
