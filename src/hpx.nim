@@ -210,11 +210,11 @@ proc createCommand(): int =
   let projectTypes = ["SSG", "SPA"]
   styledEcho "New ", fgBlue, styleBright, "HappyX", fgWhite, " project ..."
   # Get project name
-  styledWrite stdout, fgYellow, align("Project name: ", 14)
+  styledEcho stdout, fgYellow, align("Project name: ", 14)
   projectName = readLine(stdin)
   while projectName.len < 1 or projectName.contains(re"[,!\\/':@~`]"):
     styledEcho fgRed, "Invalid name! It doesn't contains one of these symbols: , ! \\ / ' : @ ~ `"
-    styledWrite stdout, fgYellow, align("Project name: ", 14)
+    styledEcho stdout, fgYellow, align("Project name: ", 14)
     projectName = readLine(stdin)
 
   styledEcho "Ok, now, choose project type ", fgYellow, "(via arrow keys)"
