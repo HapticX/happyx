@@ -199,6 +199,7 @@ proc buildCommand(optSize: bool = false): int =
   f = open("build" / fmt"{SPA_MAIN_FILE}.js", fmWrite)
   f.write(data)
   f.close()
+  illwillDeinit()
   QuitSuccess
 
 
@@ -328,6 +329,7 @@ proc createCommand(name: string = "", kind: string = ""): int =
   else:
     discard
   styledEcho fgGreen, "Successfully created ", fgMagenta, projectName, fgGreen, " project!"
+  illwillDeinit()
   QuitSuccess
 
 
@@ -379,12 +381,14 @@ proc devCommand(host: string = "127.0.0.1", port: int = 5000,
         f.close()
         result = data
       req.answer(result)
+  illwillDeinit()
 
 proc mainCommand(version = false): int =
   if version:
     styledEcho "HappyX ", fgGreen, VERSION
   else:
     mainHelpMessage()
+  illwillDeinit()
   QuitSuccess
 
 
