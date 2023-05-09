@@ -14,7 +14,7 @@ import illwill except fgBlue, fgGreen, fgMagenta, fgRed, fgWhite, fgYellow, bgBl
 
 
 const
-  VERSION = "0.10.2"
+  VERSION = "0.10.1"
   SPA_MAIN_FILE = "main"
 
 var
@@ -202,7 +202,7 @@ proc buildCommand(optSize: bool = false): int =
   QuitSuccess
 
 
-proc createCommand(name: string = "", kind: string = ""): int =
+proc createCommand(): int =
   ## Create command that asks user for project name and project type
   var
     projectName: string
@@ -210,61 +210,43 @@ proc createCommand(name: string = "", kind: string = ""): int =
   let projectTypes = ["SSG", "SPA"]
   styledEcho "New ", fgBlue, styleBright, "HappyX", fgWhite, " project ..."
   # Get project name
-  styledWrite stdout, fgYellow, align("Project name: ", 14)
-  if name == "":
-    try:
-      projectName = readLine(stdin)
-    except EOFError:
-      styledEcho fgRed, "EOF error was occurred!"
-      styledEcho fgYellow, "Please, try with flags:"
-      styledEcho fgMagenta, "hpx create ", styleBright, "--name=app --kind=SPA"
-      return QuitFailure
-    while projectName.len < 1 or projectName.contains(re"[,!\\/':@~`]"):
-      styledEcho fgRed, "Invalid name! It doesn't contains one of these symbols: , ! \\ / ' : @ ~ `"
-      styledWrite stdout, fgYellow, align("Project name: ", 14)
-      projectName = readLine(stdin)
-  else:
-    if projectName.contains(re"[,!\\/':@~`]"):
-      styledEcho fgRed, "Invalid name! It doesn't contains one of these symbols: , ! \\ / ' : @ ~ `"
-      return QuitFailure
-    projectName = name
+  styledEcho fgYellow, align("Project name: ", 14)
+  projectName = readLine(stdin)
+  while projectName.len < 1 or projectName.contains(re"[,!\\/':@~`]"):
+    styledEcho fgRed, "Invalid name! It doesn't contains one of these symbols: , ! \\ / ' : @ ~ `"
+    styledEcho fgYellow, align("Project name: ", 14)
+    projectName = readLine(stdin)
 
-  if kind == "":
-    styledEcho "Ok, now, choose project type ", fgYellow, "(via arrow keys)"
-    var
-      choosen = false
-      needRefresh = true
-    while not choosen:
-      if needRefresh:
-        needRefresh = false
-        for i, val in projectTypes:
-          if i == selected:
-            styledEcho styleUnderscore, fgGreen, "> ", val
-          else:
-            styledEcho fgYellow, "  ", val
-      case getKey()
-      of Key.Up, Key.ShiftH:
-        if selected > 0:
-          needRefresh = true
-          dec selected
-      of Key.Down, Key.ShiftP:
-        if selected < projectTypes.len-1:
-          needRefresh = true
-          inc selected
-      of Key.Enter:
-        choosen = true
-        break
-      else:
-        discard
-      if needRefresh:
-        for i in projectTypes:
-          eraseLine(stdout)
-          cursorUp(stdout)
-  else:
-    selected = projectTypes.find(kind.toUpper())
-    if selected < 0:
-      styledEcho fgRed, "Invalid project type! it should be one of these [", projectTypes.join(", "), "]"
-      return QuitFailure
+  styledEcho "Ok, now, choose project type ", fgYellow, "(via arrow keys)"
+  var
+    choosen = false
+    needRefresh = true
+  while not choosen:
+    if needRefresh:
+      needRefresh = false
+      for i, val in projectTypes:
+        if i == selected:
+          styledEcho styleUnderscore, fgGreen, "> ", val
+        else:
+          styledEcho fgYellow, "  ", val
+    case getKey()
+    of Key.Up, Key.ShiftH:
+      if selected > 0:
+        needRefresh = true
+        dec selected
+    of Key.Down, Key.ShiftP:
+      if selected < projectTypes.len-1:
+        needRefresh = true
+        inc selected
+    of Key.Enter:
+      choosen = true
+      break
+    else:
+      discard
+    if needRefresh:
+      for i in projectTypes:
+        eraseLine(stdout)
+        cursorUp(stdout)
   
   styledEcho "Initializing project ..."
   createDir(projectName)
@@ -429,7 +411,7 @@ when isMainModule:
     of "build":
       styledEcho fgBlue, "HappyX", fgMagenta, " build ", fgWhite, " command builds standalone SPA project."
       styledEcho "Usage:\n"
-      styledEcho fgMagenta, "hpx build\n"
+      styledEcho fgMagenta, "hpx build"
       styledEcho "Optional arguments:"
       styledEcho align("opt-size", 8), "|o - Optimize JS file size"
     of "dev":
@@ -443,10 +425,7 @@ when isMainModule:
     of "create":
       styledEcho fgBlue, "HappyX", fgMagenta, " create ", fgWhite, "command creates a new HappyX project."
       styledEcho "\nUsage:"
-      styledEcho fgMagenta, "hpx create\n"
-      styledEcho "Optional arguments:"
-      styledEcho align("name", 8), "|n - Project name"
-      styledEcho align("kind", 8), "|k - Project type [SPA, SSG]"
+      styledEcho fgMagenta, "hpx create"
     else:
       styledEcho fgRed, "Unknown subcommand: ", fgWhite, subcmdHelp
   of "":
