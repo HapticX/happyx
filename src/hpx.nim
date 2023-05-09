@@ -28,7 +28,7 @@ proc ctrlC {. noconv .} =
   deinitLock(L)
   quit(QuitSuccess)
 
-illwillInit()
+illwillInit(false)
 setControlCHook(ctrlC)
 
 
