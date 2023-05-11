@@ -60,9 +60,6 @@ type
       instance*: Settings
     else:
       instance*: AsyncHttpServer
-  WSConnection* = object
-    ws*: WebSocket
-    id*: int
 
 
 var pointerServer: ptr Server
@@ -111,10 +108,6 @@ func fgStyled*(text: string, style: Style): string {.inline.} =
   runnableExamples:
     echo fgStyled("Hello, world!", styleBlink)
   ansiStyleCode(style) & text & ansiResetCode
-
-
-proc newWSConnection*(ws: WebSocket, id: int): WSConnection =
-  WSConnection(ws: ws, id: id)
 
 
 proc newServer*(address: string = "127.0.0.1", port: int = 5000): Server =
@@ -239,10 +232,30 @@ macro routes*(server: Server, body: untyped): untyped =
   ## - `regex`: any regex pattern excludes groups. Usage - `"/path{pattern:/yourRegex/}"`
   ## 
   ## #### Available Route Types
-  ## - `"/path/with/{args:path}"` - Just string with route path. Matches any request method
-  ## - `get "/path/{args:word}"` - Route with request method. Method can be`get`, `post`, `patch`, etc.
-  ## - `notfound` - Route that matches when no other matched.
-  ## - `middleware` - Always executes first.
+  ## - `"/path/with/{args:path}"`: Just string with route path. Matches any request method
+  ## - `get "/path/{args:word}"`: Route with request method. Method can be`get`, `post`, `patch`, etc.
+  ## - `notfound`: Route that matches when no other matched.
+  ## - `middleware`: Always executes first.
+  ## 
+  ## #### In Route Types Scope:
+  ## - `req`: Current request
+  ## - `urlPath`: Current url path
+  ## - `query`: Current url path queries
+  ## - `wsConnections`: All websocket connections
+  ## 
+  ## #### Available Websocket Routing
+  ## - `ws "/path/to/websockets/{args:word}`: Route with websockets
+  ## - `wsConnect`: Calls on any websocket client was connected
+  ## - `wsClosed`: Calls on any websocket client was disconnected
+  ## - `wsMismatchProtocol`: Calls on mismatch protocol
+  ## - `wsError`: Calls on any other ws error
+  ## 
+  ## #### In Websocket Scope:
+  ## - `req`: Current request
+  ## - `urlPath`: Current url path
+  ## - `query`: Current url path queries
+  ## - `wsClient`: Current websocket client
+  ## - `wsConnections`: All websocket connections
   ## 
   runnableExamples:
     var myServer = newServer()
