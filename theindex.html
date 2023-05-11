@@ -70,7 +70,7 @@ window.addEventListener('DOMContentLoaded', main);
 <div class="document" id="documentId">
   <div class="container">
     <h1 class="title">Index</h1>
-    Modules: <a href="happyx.html">happyx</a>, <a href="happyx/private/cmpltime.html">happyx/private/cmpltime</a>, <a href="happyx/spa/renderer.html">happyx/spa/renderer</a>, <a href="happyx/spa/state.html">happyx/spa/state</a>, <a href="happyx/spa/tag.html">happyx/spa/tag</a>, <a href="happyx/ssg/server.html">happyx/ssg/server</a>, <a href="happyx/tmpl_engine/engine.html">happyx/tmpl_engine/engine</a>.<br/><p /><h2>API symbols</h2>
+    Modules: <a href="happyx.html">happyx</a>, <a href="happyx/private/cmpltime.html">happyx/private/cmpltime</a>, <a href="happyx/private/macro_utils.html">happyx/private/macro_utils</a>, <a href="happyx/spa/renderer.html">happyx/spa/renderer</a>, <a href="happyx/spa/state.html">happyx/spa/state</a>, <a href="happyx/spa/tag.html">happyx/spa/tag</a>, <a href="happyx/ssg/server.html">happyx/ssg/server</a>, <a href="happyx/tmpl_engine/engine.html">happyx/tmpl_engine/engine</a>.<br/><p /><h2>API symbols</h2>
 <dl><dt><a name="%60%21%3D%60" href="#%60%21%3D%60"><span>`!=`:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="state: `!=`[T](self`gensym1, other`gensym1: State[T]): bool" href="happyx/spa/state.html#%21%3D%2C%2C">state: `!=`[T](self`gensym1, other`gensym1: State[T]): bool</a></li>
@@ -393,6 +393,10 @@ window.addEventListener('DOMContentLoaded', main);
         onlyChildren: bool = false): TagRef" href="happyx/spa/tag.html#initTag%2Cstring%2CStringTableRef%2Cseq%5BTagRef%5D%2Cbool">tag: initTag(name: string; attrs: StringTableRef; children: seq[TagRef] = @[];
         onlyChildren: bool = false): TagRef</a></li>
           </ul></dd>
+<dt><a name="isExpr" href="#isExpr"><span>isExpr:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="macro_utils: isExpr(node: NimNode): bool" href="happyx/private/macro_utils.html#isExpr%2CNimNode">macro_utils: isExpr(node: NimNode): bool</a></li>
+          </ul></dd>
 <dt><a name="items" href="#items"><span>items:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="state: items[T](self: State[T]): auto" href="happyx/spa/state.html#items.i%2CState%5BT%5D">state: items[T](self: State[T]): auto</a></li>
@@ -562,7 +566,7 @@ window.addEventListener('DOMContentLoaded', main);
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-05-11 13:28:38 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-05-11 18:12:00 UTC</small>
       </div>
     </div>
   </div>
