@@ -71,7 +71,7 @@ proc ctrlCHook() {.noconv.} =
 proc onQuit() {.noconv.} =
   echo "Shutdown ..."
   when not defined(httpx):
-    if not pointerServer.isNil():
+    if not pointerServer.isNil() and not pointerServer[].instance.isNil():
       pointerServer[].instance.close()
       echo "Server closed"
 
