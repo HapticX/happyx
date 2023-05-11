@@ -14,6 +14,7 @@ import
   strformat,
   asyncdispatch,
   asyncfile,
+  segfaults,
   logging,
   terminal,
   colors,
@@ -71,9 +72,11 @@ proc ctrlCHook() {.noconv.} =
 proc onQuit() {.noconv.} =
   echo "Shutdown ..."
   when not defined(httpx):
-    if not pointerServer.isNil() and not pointerServer[].instance.isNil():
+    try:
       pointerServer[].instance.close()
       echo "Server closed"
+    except NilAccessDefect:
+      discard
 
 
 setControlCHook(ctrlCHook)
