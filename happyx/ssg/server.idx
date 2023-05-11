@@ -12,4 +12,7 @@ initServer	happyx/ssg/server.html#initServer.m,untyped	server: initServer(body: 
 serve	happyx/ssg/server.html#serve.m,string,int,untyped	server: serve(address: string; port: int; body: untyped): untyped	
 Available Path Params	happyx/ssg/server.html#available-path-params	    Available Path Params	
 Available Route Types	happyx/ssg/server.html#available-route-types	    Available Route Types	
+In Route Types Scope:	happyx/ssg/server.html#in-route-types-scopecolon	    In Route Types Scope:	
+Available Websocket Routing	happyx/ssg/server.html#available-websocket-routing	    Available Websocket Routing	
+In Websocket Scope:	happyx/ssg/server.html#in-websocket-scopecolon	    In Websocket Scope:	
 Server	happyx/ssg/server.html#server	 Server	
