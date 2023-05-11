@@ -62,6 +62,20 @@ type
       instance*: AsyncHttpServer
 
 
+var pointerServer: ptr Server
+
+proc ctrlCHook() {.noconv.} =
+  echo "Shutdown ..."
+  if not pointerServer.isNil():
+    pointerServer[].instance.close()
+    echo "Server closed"
+  quit(QuitSuccess)
+
+
+setControlCHook(ctrlCHook)
+addQuitProc(ctrlCHook)
+
+
 func fgColored*(text: string, clr: ForegroundColor): string {.inline.} =
   ## This function takes in a string of text and a ForegroundColor enum
   ## value and returns the same text with the specified color applied.
@@ -119,6 +133,7 @@ proc newServer*(address: string = "127.0.0.1", port: int = 5000): Server =
     result.instance = initSettings(Port(port), bindAddr=address)
   else:
     result.instance = newAsyncHttpServer()
+  pointerServer = addr result
   addHandler(result.logger)
 
 
@@ -144,17 +159,14 @@ template start*(server: Server): untyped =
   ## Returns:
   ## - `untyped`: This template does not return any value.
   when defined(debug):
-    `server`.logger.log(
-      lvlInfo, fmt"Server started at http://{server.address}:{server.port}"
-    )
+    info fmt"Server started at http://{server.address}:{server.port}"
   when not declared(handleRequest):
     proc handleRequest(req: Request) {.async.} =
       discard
   when defined(httpx):
     run(handleRequest, `server`.instance)
   else:
-    asyncCheck `server`.instance.serve(Port(`server`.port), handleRequest, `server`.address)
-    runForever()
+    waitFor `server`.instance.serve(Port(`server`.port), handleRequest, `server`.address)
 
 
 template answer*(
@@ -352,8 +364,7 @@ macro routes*(server: Server, body: untyped): untyped =
                   ident("WebSocketClosedError"),
                   when defined(debug):
                     newCall(
-                      "log", newDotExpr(server, ident("logger")),
-                      ident("lvlError"), newStrLitNode("Socket closed")
+                      "error", newStrLitNode("Socket closed")
                     )
                   else:
                     newNimNode(nnkDiscardStmt).add(newEmptyNode())
@@ -362,8 +373,7 @@ macro routes*(server: Server, body: untyped): untyped =
                   ident("WebSocketProtocolMismatchError"),
                   when defined(debug):
                     newCall(
-                      "log", newDotExpr(server, ident("logger")),
-                      ident("lvlError"),
+                      "error",
                       newCall("fmt", newStrLitNode("Socket tried to use an unknown protocol: {getCurrentExceptionMsg()}"))
                     )
                   else:
@@ -373,8 +383,7 @@ macro routes*(server: Server, body: untyped): untyped =
                   ident("WebSocketError"),
                   when defined(debug):
                     newCall(
-                      "log", newDotExpr(server, ident("logger")),
-                      ident("lvlError"),
+                      "error",
                       newCall("fmt", newStrLitNode("Unexpected socket error: {getCurrentExceptionMsg()}"))
                     )
                   else:
@@ -421,9 +430,7 @@ macro routes*(server: Server, body: untyped): untyped =
   
   when defined(debug):
     stmtList.add(newCall(
-      "log",
-      newDotExpr(server, ident("logger")),
-      ident("lvlInfo"),
+      "info",
       newCall("fmt", newStrLitNode("{" & reqMethodStr & "}::{urlPath}"))
     ))
 
@@ -436,9 +443,7 @@ macro routes*(server: Server, body: untyped): untyped =
       when defined(debug):
         elseStmtList.add(
           newCall(
-            "log",
-            newDotExpr(ident("server"), ident("logger")),
-            ident("lvlWarn"),
+            "warn",
             newCall(
               "fgColored", 
               newCall("fmt", newStrLitNode("{urlPath} is not found.")), ident("fgYellow")
@@ -455,9 +460,7 @@ macro routes*(server: Server, body: untyped): untyped =
     if notFoundNode.kind == nnkEmpty:
       when defined(debug):
         stmtList.add(newCall(
-          "log",
-          newDotExpr(ident("server"), ident("logger")),
-          ident("lvlWarn"),
+          "warn",
           newCall(
             "fgColored",
             newCall("fmt", newStrLitNode("{urlPath} is not found.")), ident("fgYellow")
@@ -493,7 +496,7 @@ macro initServer*(body: untyped): untyped =
       body,
       nnkProcDef
     ),
-    newCall("main")
+    newCall("asyncCheck", newCall("main"))
   )
   result[0].addPragma(ident("gcsafe"))
 
@@ -520,6 +523,6 @@ macro serve*(address: string, port: int, body: untyped): untyped =
       ),
       nnkProcDef
     ),
-    newCall("main")
+    newCall("main"),
   )
   result[0].addPragma(ident("gcsafe"))

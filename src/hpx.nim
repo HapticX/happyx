@@ -1,24 +1,47 @@
 import
-  regex,
-  cligen,
-  happyx,
+  # stdlib
+  asyncdispatch,
   strutils,
   terminal,
   browsers,
+  parsecfg,
+  streams,
   locks,
   osproc,
   times,
-  os
+  os,
+  # thirdparty
+  regex,
+  cligen,
+  # main library
+  happyx
 
 import illwill except fgBlue, fgGreen, fgMagenta, fgRed, fgWhite, fgYellow, bgBlue, bgGreen, bgMagenta, bgRed, bgWhite, bgYellow, resetStyle
 
 
+type
+  ProjectType {.pure, size: sizeof(int8).} = enum
+    ptSPA = "SPA",
+    ptSSG = "SSG"
+  ProjectData = object
+    process: Process
+    mainFile: string
+    srcDir: string
+    projectType: ProjectType
+    error: string
+  GodEyeData = object
+    needReload: ptr bool
+    project: ptr ProjectData
+
+
 const
-  VERSION = "0.10.2"
+  VERSION = "0.11.0"
   SPA_MAIN_FILE = "main"
+  CONFIG_FILE = "happyx.cfg"
+
 
 var
-  thr: Thread[ptr bool]
+  godEyeThread: Thread[ptr GodEyeData]
   L: Lock
 
 
@@ -32,39 +55,62 @@ illwillInit(false)
 setControlCHook(ctrlC)
 
 
-proc compileProject(): seq[string] {. discardable .} =
-  ## Compiling SPA Project
+proc compileProject(): ProjectData {. discardable .} =
+  ## Compiling Project
   var
     idx = 0
     arr = ["/", "|", "\\", "-"]
-  styledEcho "Compiling ", fgMagenta, SPA_MAIN_FILE, ".js ", fgWhite, "script ... /"
+  result = ProjectData(
+      projectType: ptSPA, srcDir: "src",
+      mainFile: SPA_MAIN_FILE,
+      process: nil, error: ""
+    )
+
+  # Trying to get project config
+  if fileExists(getCurrentDir() / CONFIG_FILE):
+    let cfg = loadConfig(getCurrentDir() / CONFIG_FILE)
+    result.projectType = parseEnum[ProjectType](
+      cfg.getSectionValue("Main", "projectType", "SPA").toUpper()
+    )
+    result.mainFile = cfg.getSectionValue("Main", "mainFile", SPA_MAIN_FILE)
+    result.srcDir = cfg.getSectionValue("Main", "srcDir", "src")
   # Only errors will shows
-  var p = startProcess(
-    "nim", getCurrentDir() / "src",
-    ["js", "--hints:off", "--warnings:off", "--opt:size", "--d:danger", SPA_MAIN_FILE]
-  )
-  while p.running:
+  
+  case result.projectType:
+  of ptSPA:
+    result.process = startProcess(
+      "nim", getCurrentDir() / result.srcDir,
+      ["js", "--hints:off", "--warnings:off", "--opt:size", "--d:danger", result.mainFile]
+    )
+  of ptSSG:
+    return result
+
+  styledEcho "Compiling ", fgMagenta, result.mainFile, fgWhite, " script ... /"
+
+  while result.process.running:
     if idx < arr.len-1:
       inc idx
     else:
       idx = 0
     eraseLine()
     cursorUp()
-    styledEcho "Compiling ", fgMagenta, SPA_MAIN_FILE, ".js ", fgWhite, "script ... ", arr[idx]
+    styledEcho "Compiling ", fgMagenta, result.mainFile, fgWhite, " script ... ", arr[idx]
     sleep(60)
   eraseLine()
   cursorUp()
-  let (lines, i) = p.readLines()
+  let (lines, i) = result.process.readLines()
   if lines.len == 0:
-    styledEcho fgGreen, "Successfully compiled ", fgMagenta, SPA_MAIN_FILE, ".js                  "
+    styledEcho fgGreen, "Successfully compiled ", fgMagenta, result.mainFile, "                     "
   else:
-    styledEcho fgRed, "An error was occurred when compiling ", fgMagenta, SPA_MAIN_FILE, ".js     "
+    styledEcho fgRed, "An error was occurred when compiling ", fgMagenta, result.mainFile, "        "
     for line in lines:
       echo line
-    return lines
+      result.error &= line
+  if not result.process.isNil():
+    result.process.close()
 
 
-proc godEye(arg: ptr bool) {. thread, nimcall .} =
+proc godEye(arg: ptr GodEyeData) {. thread, nimcall .} =
   ## Got eye that watch all changes in your project files
   let directory = getCurrentDir()
   var
@@ -73,6 +119,8 @@ proc godEye(arg: ptr bool) {. thread, nimcall .} =
   
   for file in directory.walkDirRec():
     lastCheck.add((path: file, time: file.getFileInfo().lastWriteTime))
+  
+  let mainFile = arg[].project[].mainFile
   
   while true:
     # Get file write times
@@ -88,15 +136,17 @@ proc godEye(arg: ptr bool) {. thread, nimcall .} =
       for i in currentCheck:
         lastCheck.add(i)
       currentCheck = @[]
-      arg[] = true
+      arg[].needReload[] = true
     else:
       for idx, val in lastCheck:
-        if currentCheck[idx] > val and not val.path.endsWith(fmt"{SPA_MAIN_FILE}.js"):
+        if currentCheck[idx] > val and not val.path.endsWith(fmt"{mainFile}.js"):
+          if val.path.endsWith(fmt"{mainFile}.exe") or val.path.endsWith(fmt"{mainFile}"):
+            continue
           acquire(L)
           styledEcho fgGreen, "Changing found in ", fgMagenta, val.path, fgWhite, " reloading ..."
           release(L)
           compileProject()
-          arg[] = true
+          arg[].needReload[] = true
       lastCheck = @[]
       for i in currentCheck:
         lastCheck.add(i)
@@ -119,9 +169,8 @@ proc mainHelpMessage() =
 proc buildCommand(optSize: bool = false): int =
   ## TODO
   styledEcho "Welcome to ", styleBright, fgMagenta, "HappyX ", resetStyle, fgWhite, "builder"
-  styledEcho fgGreen, "Try to detect SPA project"
-  let lines = compileProject()
-  if lines.len > 0:
+  let project = compileProject()
+  if project.projectType != ptSSG:
     styledEcho fgRed, "Failure! Project isn't SPA or error wass occurred."
     return QuitFailure
   if not dirExists("build"):
@@ -134,7 +183,7 @@ proc buildCommand(optSize: bool = false): int =
   copyFileToDir("src" / "index.html", "build")
   eraseLine()
   cursorUp()
-  styledEcho fgGreen, "Obfuscation ..."
+  styledEcho fgGreen, "Building ..."
   var
     f = open("build" / fmt"{SPA_MAIN_FILE}.js")
     data = f.readAll()
@@ -279,12 +328,24 @@ proc createCommand(name: string = "", kind: string = "", templates: bool = false
   f.write("# " & projectName & "\n\n" & projectTypes[selected] & " project written in Nim with HappyX ❤")
   f.close()
 
+  # Write config
+  f = open(projectName / CONFIG_FILE, fmWrite)
+  f.write(
+    "# HappyX project configuration.\n\n" &
+    "[Main]\n" &
+    "projectName = " & projectName & "\n" &
+    "projectType = " & projectTypes[selected] & "\n" &
+    "mainFile = main  # main script filename (without extension) that should be launched with hpx dev command\n" &
+    "srcDir = src  # source directory\n"
+  )
+  f.close()
+  
   case selected
   of 0:
     # SSG
     createDir(projectName / "src" / "public")
     if templates:
-      styledEcho fgYellow "Templates in SSG was enabled. To disable it remove --templates flag."
+      styledEcho fgYellow, "Templates in SSG was enabled. To disable it remove --templates flag."
       createDir(projectName / "src" / "templates")
       f = open(projectName / "src" / "templates" / "index.html", fmWrite)
       f.write(
@@ -294,7 +355,7 @@ proc createCommand(name: string = "", kind: string = "", templates: bool = false
       )
       f.close()
     else:
-      styledEcho fgYellow "Templates in SSG was disabled. To enable it add --templates flag."
+      styledEcho fgYellow, "Templates in SSG was disabled. To enable it add --templates flag."
     # Create main file
     f = open(projectName / "src" / fmt"{SPA_MAIN_FILE}.nim", fmWrite)
     if templates:
@@ -337,12 +398,32 @@ proc createCommand(name: string = "", kind: string = "", templates: bool = false
 proc devCommand(host: string = "127.0.0.1", port: int = 5000,
                 reload: bool = false): int =
   ## Serve
-  compileProject()
-  var needReload = false
+  var
+    project = compileProject()
+    needReload = false
+    godEyeData = GodEyeData(
+      project: addr project,
+      needReload: addr needReload,
+    )
+    idx = 0
+    arr = ["/", "|", "\\", "-"]
+  
+  if project.error.len > 0:
+    return QuitFailure
+
   if reload:
     initLock(L)
-    createThread(thr, godEye, addr needReload)
-  # Start server
+    createThread(godEyeThread, godEye, addr godEyeData)
+
+  # Launch SSG app
+  if project.projectType == ptSSG:
+    styledEcho fgRed, "SSG projects not available in the dev mode."
+    styledEcho fgMagenta, "Make SSG for dev mode and send Pull Request if you want!"
+    illwillDeinit()
+    deinitLock(L)
+    return QuitSuccess
+
+  # Start server for SPA
   styledEcho "Server launched at ", fgGreen, styleUnderscore, "http://", host, ":", $port, fgWhite
   openDefaultBrowser("http://" & host & ":" & $port & "/#/")
 
@@ -382,6 +463,7 @@ proc devCommand(host: string = "127.0.0.1", port: int = 5000,
         f.close()
         result = data
       req.answer(result)
+  deinitLock(L)
   illwillDeinit()
 
 proc mainCommand(version = false): int =
@@ -450,8 +532,9 @@ when isMainModule:
       styledEcho "\nUsage:"
       styledEcho fgMagenta, "hpx create\n"
       styledEcho "Optional arguments:"
-      styledEcho align("name", 8), "|n - Project name"
-      styledEcho align("kind", 8), "|k - Project type [SPA, SSG]"
+      styledEcho align("name", 12), "|n - Project name"
+      styledEcho align("kind", 12), "|k - Project type [SPA, SSG]"
+      styledEcho align("templates", 12), "|t - Enable templates (only for SSG)"
     else:
       styledEcho fgRed, "Unknown subcommand: ", fgWhite, subcmdHelp
   of "":
