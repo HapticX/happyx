@@ -2,7 +2,7 @@
 
 description = "Asynchronous web-framework written with ♥"
 author = "HapticX"
-version = "0.11.0"
+version = "0.12.0"
 license = "GNU GPLv3"
 srcDir = "src"
 installExt = @["nim"]

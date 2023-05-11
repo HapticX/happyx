@@ -23,7 +23,8 @@ import
   os,
   websocketx,
   ../spa/tag,
-  ../private/cmpltime
+  ../private/cmpltime,
+  ../private/macro_utils
 
 export
   strutils,
@@ -220,6 +221,8 @@ proc detectEndFunction(node: NimNode) {. compileTime .} =
       return
     elif node[^1][0].kind == nnkDotExpr and ($node[^1][0][1]).toLower().startsWith("answer"):
       return
+  if not node[^1].isExpr:
+    return
   node[^1] = newCall("answer", ident("req"), node[^1])
 
 
@@ -227,6 +230,7 @@ macro routes*(server: Server, body: untyped): untyped =
   ## You can create routes with this marco
   ## 
   ## #### Available Path Params
+  ## - `bool`: any boolean (`y`, `yes`, `on`, `1` and `true` for true; `n`, `no`, `off`, `0` and `false` for false).
   ## - `int`: any integer.
   ## - `float`: any float number.
   ## - `word`: any word includes `re"\w+"`.

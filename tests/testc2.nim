@@ -14,6 +14,12 @@ serve("127.0.0.1", 5000):
   get "/":
     echo query
   
+  get "/setCheckTo{arg:bool}":
+    if arg:
+      "true!"
+    else:
+      "false!"
+  
   wsConnect:
     echo "New connection!"
     await wsClient.send("You're welcome!")

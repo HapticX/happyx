@@ -11,6 +11,8 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.
   var
     routePathStr = $routePath
     hasChildren = false
+  # boolean param
+  routePathStr = routePathStr.replace(re"\{[a-zA-Z][a-zA-Z0-9_]*:bool\}", "(n|y|no|yes|true|false|1|0|on|off)")
   # integer param
   routePathStr = routePathStr.replace(re"\{[a-zA-Z][a-zA-Z0-9_]*:int\}", "(\\d+)")
   # float param
@@ -25,7 +27,7 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.
   routePathStr = routePathStr.replace(re"\{[a-zA-Z][a-zA-Z0-9_]*:/([\s\S]+?)/\}", "($1)")
   let
     regExp = newCall("re", newStrLitNode("^" & routePathStr & "$"))
-    found = path.findAll(re"\{([a-zA-Z][a-zA-Z0-9_]*):(int|float|string|path|word|/[\s\S]+?/)\}")
+    found = path.findAll(re"\{([a-zA-Z][a-zA-Z0-9_]*):(bool|int|float|string|path|word|/[\s\S]+?/)\}")
   elifBranch.add(newCall("contains", urlPath, regExp), body)
   var idx = 0
   for i in found:
@@ -45,6 +47,8 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.
         newIntLitNode(0)
       )
     case argTypeStr:
+    of "bool":
+      letSection[0].add(newCall("parseBool", foundGroup))
     of "int":
       letSection[0].add(newCall("parseInt", foundGroup))
     of "float":
