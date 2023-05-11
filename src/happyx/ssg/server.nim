@@ -417,10 +417,11 @@ macro routes*(server: Server, body: untyped): untyped =
                     wsDelStmt,
                     wsClosedConnection
                   )
-                elif wsClosedConnection.len == 0:
-                  wsDelStmt
                 else:
-                  wsClosedConnection.add(wsDelStmt)
+                  if wsClosedConnection.len == 0:
+                    wsDelStmt
+                  else:
+                    wsClosedConnection.add(wsDelStmt)
               ),
               newNimNode(nnkExceptBranch).add(
                 ident("WebSocketProtocolMismatchError"),
@@ -433,10 +434,11 @@ macro routes*(server: Server, body: untyped): untyped =
                     wsDelStmt,
                     wsMismatchProtocol
                   )
-                elif wsMismatchProtocol.len == 0:
-                  wsDelStmt
                 else:
-                  wsMismatchProtocol.add(wsDelStmt)
+                  if wsMismatchProtocol.len == 0:
+                    wsDelStmt
+                  else:
+                    wsMismatchProtocol.add(wsDelStmt)
               ),
               newNimNode(nnkExceptBranch).add(
                 ident("WebSocketError"),
@@ -449,10 +451,11 @@ macro routes*(server: Server, body: untyped): untyped =
                     wsDelStmt,
                     wsError
                   )
-                elif wsError.len == 0:
-                  wsDelStmt
                 else:
-                  wsError.add(wsDelStmt)
+                  if wsError.len == 0:
+                    wsDelStmt
+                  else:
+                    wsError.add(wsDelStmt)
               )
             )
           )
