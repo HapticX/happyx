@@ -5,7 +5,6 @@ import
   terminal,
   browsers,
   parsecfg,
-  streams,
   locks,
   osproc,
   times,

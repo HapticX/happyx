@@ -20,7 +20,7 @@ import
   regex,
   json,
   os,
-  ws,
+  websocketx,
   ../spa/tag,
   ../private/cmpltime
 
@@ -36,7 +36,7 @@ export
   regex,
   json,
   os,
-  ws
+  websocketx
 
 
 when defined(httpx):
@@ -60,20 +60,27 @@ type
       instance*: Settings
     else:
       instance*: AsyncHttpServer
+  WSConnection* = object
+    ws*: WebSocket
+    id*: int
 
 
 var pointerServer: ptr Server
 
+
 proc ctrlCHook() {.noconv.} =
-  echo "Shutdown ..."
-  if not pointerServer.isNil():
-    pointerServer[].instance.close()
-    echo "Server closed"
   quit(QuitSuccess)
+
+proc onQuit() {.noconv.} =
+  echo "Shutdown ..."
+  when not defined(httpx):
+    if not pointerServer.isNil():
+      pointerServer[].instance.close()
+      echo "Server closed"
 
 
 setControlCHook(ctrlCHook)
-addQuitProc(ctrlCHook)
+addQuitProc(onQuit)
 
 
 func fgColored*(text: string, clr: ForegroundColor): string {.inline.} =
@@ -106,6 +113,10 @@ func fgStyled*(text: string, style: Style): string {.inline.} =
   ansiStyleCode(style) & text & ansiResetCode
 
 
+proc newWSConnection*(ws: WebSocket, id: int): WSConnection =
+  WSConnection(ws: ws, id: id)
+
+
 proc newServer*(address: string = "127.0.0.1", port: int = 5000): Server =
   ## This procedure creates and returns a new instance of the `Server` object,
   ## which listens for incoming connections on the specified IP address and port.
@@ -127,7 +138,7 @@ proc newServer*(address: string = "127.0.0.1", port: int = 5000): Server =
   result = Server(
     address: address,
     port: port,
-    logger: newConsoleLogger(fmtStr=fgColored("[$date at $time]", fgYellow) & ":$levelname - ")
+    logger: newConsoleLogger(lvlInfo, fgColored("[$date at $time]:$levelname ", fgYellow)),
   )
   when defined(httpx):
     result.instance = initSettings(Port(port), bindAddr=address)
@@ -249,6 +260,10 @@ macro routes*(server: Server, body: untyped): untyped =
     stmtList = newStmtList()
     ifStmt = newNimNode(nnkIfStmt)
     notFoundNode = newEmptyNode()
+    wsNewConnection = newStmtList()
+    wsClosedConnection = newStmtList()
+    wsMismatchProtocol = newStmtList()
+    wsError = newStmtList()
     procStmt = newProc(
       ident("handleRequest"),
       [newEmptyNode(), newIdentDefs(ident("req"), ident("Request"))],
@@ -303,11 +318,20 @@ macro routes*(server: Server, body: untyped): untyped =
           ))
       # notfound: statement list
       elif statement[1].kind == nnkStmtList and statement[0].kind == nnkIdent:
-        detectEndFunction(statement[1])
         case ($statement[0]).toLower()
+        of "wsconnect":
+          wsNewConnection = statement[1]
+        of "wsclosed":
+          wsClosedConnection = statement[1]
+        of "wsmismatchprotocol":
+          wsMismatchProtocol = statement[1]
+        of "wserror":
+          wsError = statement[1]
         of "notfound":
+          detectEndFunction(statement[1])
           notFoundNode = statement[1]
         of "middleware":
+          detectEndFunction(statement[1])
           stmtList.insert(0, statement[1])
       # reqMethod "/...":
       #   ...
@@ -344,65 +368,90 @@ macro routes*(server: Server, body: untyped): untyped =
         let exported = exportRouteArgs(path, statement[1], statement[2])
         # Handle websockets
         if name == "WS":
-          when not defined(httpx):
-            var insertWsList = newStmtList()
-            let wsStmtList = newStmtList(
-              newNimNode(nnkTryStmt).add(
-                newStmtList(
-                  newLetStmt(ident("wsClient"), newCall("await", newCall("newWebSocket", ident("req")))),
-                  newCall("add", ident("wsConnections"), ident("wsClient")),
-                  newCall("await", newCall("send", ident("wsClient"), newStrLitNode("Welcome"))),
-                  newNimNode(nnkWhileStmt).add(
-                    newCall("==", newDotExpr(ident("wsClient"), ident("readyState")), ident("Open")),
-                    newStmtList(
-                      newLetStmt(ident("wsData"), newCall("await", newCall("receiveStrPacket", ident("wsClient")))),
-                      insertWsList
-                    )
+          var insertWsList = newStmtList()
+          let wsDelStmt = newStmtList(
+            newCall(
+              "del",
+              ident("wsConnections"),
+              newCall("find", ident("wsConnections"), ident("wsClient")))
+          )
+          when defined(httpx):
+            wsDelStmt.add(
+              newCall("close", ident("wsClient"))
+            )
+          let wsStmtList = newStmtList(
+            newLetStmt(ident("wsClient"), newCall("await", newCall("newWebSocket", ident("req")))),
+            newCall("add", ident("wsConnections"), ident("wsClient")),
+            newNimNode(nnkTryStmt).add(
+              newStmtList(
+                wsNewConnection,
+                newNimNode(nnkWhileStmt).add(
+                  newCall("==", newDotExpr(ident("wsClient"), ident("readyState")), ident("Open")),
+                  newStmtList(
+                    newLetStmt(ident("wsData"), newCall("await", newCall("receiveStrPacket", ident("wsClient")))),
+                    insertWsList
                   )
-                ),
-                newNimNode(nnkExceptBranch).add(
-                  ident("WebSocketClosedError"),
-                  when defined(debug):
+                )
+              ),
+              newNimNode(nnkExceptBranch).add(
+                ident("WebSocketClosedError"),
+                when defined(debug):
+                  newStmtList(
                     newCall(
                       "error", newStrLitNode("Socket closed")
-                    )
-                  else:
-                    newNimNode(nnkDiscardStmt).add(newEmptyNode())
-                ),
-                newNimNode(nnkExceptBranch).add(
-                  ident("WebSocketProtocolMismatchError"),
-                  when defined(debug):
+                    ),
+                    wsDelStmt,
+                    wsClosedConnection
+                  )
+                elif wsClosedConnection.len == 0:
+                  wsDelStmt
+                else:
+                  wsClosedConnection.add(wsDelStmt)
+              ),
+              newNimNode(nnkExceptBranch).add(
+                ident("WebSocketProtocolMismatchError"),
+                when defined(debug):
+                  newStmtList(
                     newCall(
                       "error",
                       newCall("fmt", newStrLitNode("Socket tried to use an unknown protocol: {getCurrentExceptionMsg()}"))
-                    )
-                  else:
-                    newNimNode(nnkDiscardStmt).add(newEmptyNode())
-                ),
-                newNimNode(nnkExceptBranch).add(
-                  ident("WebSocketError"),
-                  when defined(debug):
+                    ),
+                    wsDelStmt,
+                    wsMismatchProtocol
+                  )
+                elif wsMismatchProtocol.len == 0:
+                  wsDelStmt
+                else:
+                  wsMismatchProtocol.add(wsDelStmt)
+              ),
+              newNimNode(nnkExceptBranch).add(
+                ident("WebSocketError"),
+                when defined(debug):
+                  newStmtList(
                     newCall(
                       "error",
                       newCall("fmt", newStrLitNode("Unexpected socket error: {getCurrentExceptionMsg()}"))
-                    )
-                  else:
-                    newNimNode(nnkDiscardStmt).add(newEmptyNode())
-                )
+                    ),
+                    wsDelStmt,
+                    wsError
+                  )
+                elif wsError.len == 0:
+                  wsDelStmt
+                else:
+                  wsError.add(wsDelStmt)
               )
             )
-            if exported.len > 0:
-              insertWsList.add(exported[1])
-              exported[1].add(wsStmtList)
-              ifStmt.add(exported)
-            else:
-              insertWsList.add(statement[2])
-              ifStmt.add(newNimNode(nnkElifBranch).add(
-                newCall("==", path, statement[1]),
-                wsStmtList
-              ))
+          )
+          if exported.len > 0:
+            insertWsList.add(exported[1])
+            exported[1].add(wsStmtList)
+            ifStmt.add(exported)
           else:
-            echo "websockets is not available with HTTPX"
+            insertWsList.add(statement[2])
+            ifStmt.add(newNimNode(nnkElifBranch).add(
+              newCall("==", path, statement[1]),
+              wsStmtList
+            ))
           continue
         if exported.len > 0:  # /my/path/with{custom:int}/{param:path}
           exported[0] = newCall("and", exported[0], newCall("==", reqMethodStringify, newStrLitNode(name)))

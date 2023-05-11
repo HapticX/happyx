@@ -48,7 +48,7 @@ jobs:
       - name: Install Dependencies
         run: |
           nimble refresh
-          nimble install -y regex nimja cligen httpx illwill asynctools ws
+          nimble install -y regex nimja cligen httpx illwill websocketx
 
       - name: Generate API documents
         run: nim doc --index:on --project --out:docs --hints:off src/happyx.nim

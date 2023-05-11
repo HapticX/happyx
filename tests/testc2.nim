@@ -13,3 +13,13 @@ serve("127.0.0.1", 5000):
   
   get "/":
     echo query
+  
+  wsConnect:
+    echo "New connection!"
+    await wsClient.send("You're welcome!")
+  
+  wsClosed:
+    echo "connect is closed"
+  
+  ws "/ws":
+    await wsClient.send("hello")
