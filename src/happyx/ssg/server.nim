@@ -381,13 +381,14 @@ macro routes*(server: Server, body: untyped): untyped =
         let exported = exportRouteArgs(path, statement[1], statement[2])
         # Handle websockets
         if name == "WS":
-          var insertWsList = newStmtList()
-          let wsDelStmt = newStmtList(
-            newCall(
-              "del",
-              ident("wsConnections"),
-              newCall("find", ident("wsConnections"), ident("wsClient")))
-          )
+          var
+            insertWsList = newStmtList()
+            wsDelStmt = newStmtList(
+              newCall(
+                "del",
+                ident("wsConnections"),
+                newCall("find", ident("wsConnections"), ident("wsClient")))
+            )
           when defined(httpx):
             wsDelStmt.add(
               newCall("close", ident("wsClient"))
@@ -546,7 +547,7 @@ macro routes*(server: Server, body: untyped): untyped =
 macro initServer*(body: untyped): untyped =
   ## Shortcut for
   ## 
-  ## .. code-block::nim
+  ## .. code-block:: nim
   ##    proc main() {.gcsafe.} =
   ##      `body`
   ##    main()
@@ -558,7 +559,7 @@ macro initServer*(body: untyped): untyped =
       body,
       nnkProcDef
     ),
-    newCall("asyncCheck", newCall("main"))
+    newCall("main")
   )
   result[0].addPragma(ident("gcsafe"))
 
@@ -566,7 +567,7 @@ macro initServer*(body: untyped): untyped =
 macro serve*(address: string, port: int, body: untyped): untyped =
   ## Initializes a new server and start it. Shortcut for
   ## 
-  ## .. code-block::nim
+  ## .. code-block:: nim
   ##    proc main() =
   ##      var server = newServer(`address`, `port`)
   ##      server.routes:
