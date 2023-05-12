@@ -31,7 +31,7 @@
 ## 
 ## ## Examples
 ## 
-## ### SPA
+## ### [SPA](happyx/spa/renderer.html)
 ## 
 ## SPA works only on JS backend
 ## 
@@ -83,7 +83,7 @@
 ##      app.start()
 ## 
 ## 
-## ### SSG
+## ### [SSG](happyx/ssg/server.html)
 ## 
 ## SSG works only on C/Cpp/ObjC backends
 ## 

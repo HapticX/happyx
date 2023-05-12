@@ -6,6 +6,22 @@
 ## Developers can define which library to use by setting the httpx flag.
 ## 
 ## 
+## To enable httpx just compile with `-d:httpx`.
+## 
+## To enable debugging just compile with `-d:debug`.
+## 
+## ## Queries
+## In any request you can get queries.
+## 
+## Just use `query~name` to get any query param. By default returns `""`
+## 
+## ## WebSockets
+## In any request you can get connected websocket clients.
+## Just use `wsConnections` that type is `seq[WebSocket]`
+## 
+## In any websocket route you can use `wsClient` for working with current websocket client.
+## `wsClient` type is `WebSocket`.
+## 
 
 import
   macros,
@@ -224,6 +240,12 @@ proc detectEndFunction(node: NimNode) {. compileTime .} =
   if not node[^1].isExpr:
     return
   node[^1] = newCall("answer", ident("req"), node[^1])
+
+
+macro `~`*(strTable: StringTableRef, key: untyped): untyped =
+  let
+    keyStr = newStrLitNode($key)
+  newCall("getOrDefault", strTable, keyStr)
 
 
 macro routes*(server: Server, body: untyped): untyped =

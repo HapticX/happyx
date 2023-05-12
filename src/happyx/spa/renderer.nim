@@ -3,6 +3,11 @@
 ## Provides a single-page application (SPA) renderer with reactivity features.
 ## It likely contains functions or classes that allow developers to
 ## dynamically update the content of a web page without reloading the entire page.
+## 
+## 
+## ## Moving Between Routes
+## To move to other location just use `route("/path")`
+## 
 
 import
   macros,

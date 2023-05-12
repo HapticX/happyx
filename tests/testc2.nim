@@ -21,6 +21,7 @@ serve("127.0.0.1", 5000):
       "false!"
   
   get "/pathParams/$arg/$arg1:bool/$arg2=2":
+    let name = query~name
     req.answerHtml:
       buildHtml:
         tDiv:
@@ -29,6 +30,8 @@ serve("127.0.0.1", 5000):
           "arg1 is {arg1}"
         tDiv:
           "arg2 is {arg2}"
+        tDiv:
+          "My name is {name}"
 
 
   get "/optional/{arg?:bool}{arg1?:int}{arg2?:bool}{arg3?:float}{arg4?:string}":
