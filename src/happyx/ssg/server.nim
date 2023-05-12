@@ -79,7 +79,7 @@ type
     logger*: Logger
     when defined(httpx):
       instance*: Settings
-    when defined(micro):
+    elif defined(micro):
       instance*: MicroAsyncHttpServer
     else:
       instance*: AsyncHttpServer
