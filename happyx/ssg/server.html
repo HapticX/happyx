@@ -123,6 +123,9 @@ window.addEventListener('DOMContentLoaded', main);
   when defined(httpx):
       instance*: Settings
 
+  when defined(micro):
+      instance*: MicroAsyncHttpServer
+
   else:
       instance*: AsyncHttpServer">Server</a></li>
 
@@ -242,6 +245,9 @@ window.addEventListener('DOMContentLoaded', main);
   <span class="Identifier">logger</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">Logger</span>
   <span class="Keyword">when</span> <span class="Identifier">defined</span><span class="Other">(</span><span class="Identifier">httpx</span><span class="Other">)</span><span class="Other">:</span>
       <span class="Identifier">instance</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">Settings</span>
+
+  <span class="Keyword">when</span> <span class="Identifier">defined</span><span class="Other">(</span><span class="Identifier">micro</span><span class="Other">)</span><span class="Other">:</span>
+      <span class="Identifier">instance</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">MicroAsyncHttpServer</span>
 
   <span class="Keyword">else</span><span class="Other">:</span>
       <span class="Identifier">instance</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">AsyncHttpServer</span>
@@ -479,7 +485,7 @@ The <tt class="docutils literal"><span class="pre"><span class="Identifier">star
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-05-12 17:21:34 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-05-12 17:27:57 UTC</small>
       </div>
     </div>
   </div>
