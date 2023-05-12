@@ -64,6 +64,9 @@ when defined(httpx):
   export
     options,
     httpx
+elif defined(micro):
+  import microasynchttpserver, asynchttpserver
+  export microasynchttpserver, asynchttpserver
 else:
   import asynchttpserver
   export asynchttpserver
@@ -76,6 +79,8 @@ type
     logger*: Logger
     when defined(httpx):
       instance*: Settings
+    when defined(micro):
+      instance*: MicroAsyncHttpServer
     else:
       instance*: AsyncHttpServer
 
@@ -88,7 +93,7 @@ proc ctrlCHook() {.noconv.} =
 
 proc onQuit() {.noconv.} =
   echo "Shutdown ..."
-  when not defined(httpx):
+  when not defined(httpx) and not defined(micro):
     try:
       pointerServer[].instance.close()
       echo "Server closed"
@@ -155,6 +160,8 @@ proc newServer*(address: string = "127.0.0.1", port: int = 5000): Server =
   )
   when defined(httpx):
     result.instance = initSettings(Port(port), bindAddr=address)
+  elif defined(micro):
+    result.instance = newMicroAsyncHttpServer()
   else:
     result.instance = newAsyncHttpServer()
   pointerServer = addr result
