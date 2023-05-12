@@ -19,6 +19,17 @@ serve("127.0.0.1", 5000):
       "true!"
     else:
       "false!"
+  
+  get "/pathParams/$arg/$arg1:bool/$arg2:int=2":
+    req.answerHtml:
+      buildHtml:
+        tDiv:
+          "arg is {arg}"
+        tDiv:
+          "arg1 is {arg1}"
+        tDiv:
+          "arg2 is {arg2}"
+
 
   get "/optional/{arg?:bool}{arg1?:int}{arg2?:bool}{arg3?:float}{arg4?:string}":
     req.answerHtml:

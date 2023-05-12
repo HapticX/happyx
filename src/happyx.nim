@@ -139,6 +139,40 @@
 ## `hpx build` command will builds your project as standalone web application (HTML + JS files)
 ## 
 ## 
+## ## Path Params
+## 
+## Routing provides powerful path params.
+## 
+## ### Example
+## 
+## .. code-block::nim
+##    "/user{id:int}":
+##      # In this scope you can use `id` as assigned immutable variable
+##      ...
+##    "/user{username}":
+##      # In this scope you can use `username` as assigned immutable variable
+##      ...
+## 
+## ### Validation
+## 
+## In path params you can describe every param if you need. Here is syntax overview.
+## - Required param: `{arg:type}`, `$arg:type`, `{arg}`, `$arg`
+## - Optional param: `{arg?:type}`, `$arg?:type`, `{arg?}`, `$arg?`
+## - Optional param with default value: `{arg:type=val}`, `$arg:type=val`, `{arg=val}`, `$arg=val`
+## 
+## ### Typing
+## 
+## Every path param keeps type (default is string)
+## 
+## List of types:
+## - `bool`: can be `on`, `1`, `yes`, `true`, `y` for true and `off`, `0`, `n`, `no` and `false` for false
+## - `string`: string that excludes `/` chars
+## - `word`: like `string` but excludes any symbols
+## - `int`: any integer
+## - `float`: any float
+## - `path`: like `string` but includes `/` chars. Doesn't provides optional and default.
+## - regex pattern: any regex pattern translates in string. Usage: `/patternHere/`. Doesn't provides optional and default.
+## 
 when not defined(js):
   import
     happyx/ssg/[server]

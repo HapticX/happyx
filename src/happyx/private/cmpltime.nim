@@ -8,10 +8,17 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.
   ## Finds and exports route arguments
   let
     elifBranch = newNimNode(nnkElifBranch)
-    path = $routePath
+    dollarToCurve = re"\$([^:\/\{\}]+)(:\w+)?(=[^\/\{\}]+)?"
+    defaultWithoutQuestion = re"\{([^:\/\{\}\?]+)(:\w+)?(=[^\/\{\}]+)\}"
   var
+    path = $routePath
     routePathStr = $routePath
     hasChildren = false
+  # adaptive $params and repair default params
+  path = path.replace(dollarToCurve, "{$1$2$3}")
+  routePathStr = routePathStr.replace(dollarToCurve, "{$1$2$3}")
+  path = path.replace(defaultWithoutQuestion, "{$1?$2$3}")
+  routePathStr = routePathStr.replace(defaultWithoutQuestion, "{$1?$2$3}")
   # boolean param
   routePathStr = routePathStr.replace(re"\{[a-zA-Z][a-zA-Z0-9_]*(\??):bool(=\S+?)?\}", "(n|y|no|yes|true|false|1|0|on|off)$1")
   # integer param
@@ -22,16 +29,17 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.
   routePathStr = routePathStr.replace(re"\{[a-zA-Z][a-zA-Z0-9_]*(\??):word(=\S+?)?\}", "(\\w+?)$1")
   # string param
   routePathStr = routePathStr.replace(re"\{[a-zA-Z][a-zA-Z0-9_]*(\??):string(=\S+?)?\}", "([^/]+?)$1")
+  routePathStr = routePathStr.replace(re"\{[a-zA-Z][a-zA-Z0-9_]*(\??)\}", "([^/]+?)$1")
   # path param
   routePathStr = routePathStr.replace(re"\{[a-zA-Z][a-zA-Z0-9_]*:path\}", "([\\S]+)")
-  # path param
+  # regex param
   routePathStr = routePathStr.replace(re"\{[a-zA-Z][a-zA-Z0-9_]*:/([\s\S]+?)/\}", "($1)")
   # repair param
-  routePathStr = routePathStr.replace(re"(\([^\(\)]+?\))(?!\?)", "$1?")
+  # routePathStr = routePathStr.replace(re"(\([^\(\)]+?\))(?!\?)", "$1?")
   let
     regExp = newCall("re", newStrLitNode("^" & routePathStr & "$"))
     found = path.findAll(
-      re"\{([a-zA-Z][a-zA-Z0-9_]*\??):(bool|int|float|string|path|word|/[\s\S]+?/)(=(\S+?))?\}"
+      re"\{([a-zA-Z][a-zA-Z0-9_]*\??)(:(bool|int|float|string|path|word|/[\s\S]+?/))?(=(\S+?))?\}"
     )
   echo treeRepr regExp
   elifBranch.add(newCall("contains", urlPath, regExp), body)
@@ -45,11 +53,11 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.
     name = i.group(0, path)[0]
     isOptional = false
     defaultVal =
-      if i.groupsCount < 4 or i.group(3, path).len == 0:
+      if i.group(4, path).len == 0:
         ""
       else:
-        echo i.group(3, path)[0]
-        i.group(3, path)[0]
+        echo i.group(4, path)[0]
+        i.group(4, path)[0]
     # detect optional
     if name.endsWith(re"\?"):
       name = name[0..^2]
@@ -57,7 +65,12 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.
     elif defaultVal.len > 0:
       isOptional = true
     let
-      argTypeStr = i.group(1, path)[0]
+      argTypeStr =
+        if i.group(2, path).len == 0:
+          "string"
+        else:
+          echo i.group(2, path)[0]
+          i.group(2, path)[0]
       letSection = newNimNode(nnkLetSection).add(
         newNimNode(nnkIdentDefs).add(ident(name), newEmptyNode())
       )
