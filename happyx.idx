@@ -2,8 +2,8 @@ HappyX	happyx.html#happyx	 HappyX
 Web framework written in Nim with ❤	happyx.html#happyx-web-framework-written-in-nim-with-❤	   Web framework written in Nim with ❤	
 Why HappyX? 🤔	happyx.html#happyx-why-happyxqmark-🤔	  Why HappyX? 🤔	
 Examples	happyx.html#happyx-examples	  Examples	
-SPA	happyx.html#examples-spahappyxslashspaslashrendererdothtml	   <a class="reference external" href="happyx/spa/renderer.html">SPA</a>	
-SSG	happyx.html#examples-ssghappyxslashssgslashserverdothtml	   <a class="reference external" href="happyx/ssg/server.html">SSG</a>	
+SPA	happyx.html#examples-spa	   SPA	
+SSG	happyx.html#examples-ssg	   SSG	
 CLI Usage	happyx.html#examples-cli-usage	   CLI Usage	
 SSG	happyx.html#cli-usage-ssg	    SSG	
 SPA	happyx.html#cli-usage-spa	    SPA	
