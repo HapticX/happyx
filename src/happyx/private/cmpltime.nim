@@ -82,7 +82,6 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.
         ),
         newIntLitNode(0)
       )
-    echo fmt"{name}: {argTypeStr} = {defaultVal} [{isOptional}]"
     if isOptional:
       case argTypeStr:
       of "bool":

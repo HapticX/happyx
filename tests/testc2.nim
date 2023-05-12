@@ -8,11 +8,15 @@ proc render(title: string, left: float, right: float): string =
 
 
 serve("127.0.0.1", 5000):
+  let some = 100
+  var counter = 0
+
   get "/{title:string}/{left:float}/{right:float}":
     req.answerHtml render(title, left, right)
   
   get "/":
-    echo query
+    inc counter
+    req.answer $counter
   
   get "/setCheckTo{arg:bool}":
     if arg:

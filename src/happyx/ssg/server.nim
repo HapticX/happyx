@@ -312,6 +312,7 @@ macro routes*(server: Server, body: untyped): untyped =
     wsNewConnection = newStmtList()
     wsClosedConnection = newStmtList()
     wsMismatchProtocol = newStmtList()
+    variables = newStmtList()
     wsError = newStmtList()
     procStmt = newProc(
       ident("handleRequest"),
@@ -520,6 +521,8 @@ macro routes*(server: Server, body: untyped): untyped =
             ),
             statement[2]
           ))
+    elif statement.kind in [nnkVarSection, nnkLetSection]:
+      variables.add(statement)
 
   # urlPath
   stmtList.insert(
@@ -573,7 +576,7 @@ macro routes*(server: Server, body: untyped): untyped =
       )
     else:
       stmtList.add(notFoundNode)
-  newStmtList(
+  result = newStmtList(
     newNimNode(nnkVarSection).add(newIdentDefs(
       ident("wsConnections"),
       newNimNode(nnkBracketExpr).add(ident("seq"), ident("WebSocket")),
@@ -581,6 +584,9 @@ macro routes*(server: Server, body: untyped): untyped =
     )),
     procStmt
   )
+
+  for v in countdown(variables.len-1, 0, 1):
+    result.insert(0, variables[v])
 
 
 macro initServer*(body: untyped): untyped =
