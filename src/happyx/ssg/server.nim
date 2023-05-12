@@ -246,7 +246,10 @@ proc detectEndFunction(node: NimNode) {. compileTime .} =
       return
   if not node[^1].isExpr:
     return
-  node[^1] = newCall("answer", ident("req"), node[^1])
+  if node[^1].kind in [nnkStrLit, nnkTripleStrLit]:
+    node[^1] = newCall("answer", ident("req"), newCall("fmt", node[^1]))
+  else:
+    node[^1] = newCall("answer", ident("req"), node[^1])
 
 
 macro `~`*(strTable: StringTableRef, key: untyped): untyped =

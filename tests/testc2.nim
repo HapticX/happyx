@@ -16,7 +16,7 @@ serve("127.0.0.1", 5000):
   
   get "/":
     inc counter
-    req.answer $counter
+    "counter = {counter}"
   
   get "/setCheckTo{arg:bool}":
     if arg:
