@@ -51,7 +51,7 @@ serve("127.0.0.1", 5000):
   
   # You can use let variables in the routes!
   "/user{id:int}":
-    fmt"Hello, user with ID {id}!"
+    "Hello, user with ID {id}!"
 ```
 #### Run 💻
 ##### Default
