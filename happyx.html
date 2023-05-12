@@ -107,7 +107,11 @@ window.addEventListener('DOMContentLoaded', main);
 <li><a class="reference" id="examples-cli-usage_toc" href="#examples-cli-usage">CLI Usage</a></li>
 <ul class="simple"><li><a class="reference" id="cli-usage-ssg_toc" href="#cli-usage-ssg">SSG</a></li>
 <li><a class="reference" id="cli-usage-spa_toc" href="#cli-usage-spa">SPA</a></li>
-</ul></ul></ul><li>
+</ul></ul><li><a class="reference" id="happyx-path-params_toc" href="#happyx-path-params">Path Params</a></li>
+<ul class="simple"><li><a class="reference" id="path-params-example_toc" href="#path-params-example">Example</a></li>
+<li><a class="reference" id="path-params-validation_toc" href="#path-params-validation">Validation</a></li>
+<li><a class="reference" id="path-params-typing_toc" href="#path-params-typing">Typing</a></li>
+</ul></ul><li>
   <a class="reference reference-toplevel" href="#6" id="56">Imports</a>
   <ul class="simple simple-toc-section">
     
@@ -227,6 +231,31 @@ hpx dev
 </pre></p>
 <p><tt class="docutils literal"><span class="pre"><span class="Identifier">hpx</span> <span class="Identifier">dev</span></span></tt> command will see all changes in your project and recompile <tt class="docutils literal"><span class="pre"><span class="Identifier">main</span><span class="Operator">.</span><span class="Identifier">nim</span></span></tt></p>
 <p><tt class="docutils literal"><span class="pre"><span class="Identifier">hpx</span> <span class="Identifier">build</span></span></tt> command will builds your project as standalone web application (HTML + JS files)</p>
+
+<h2><a class="toc-backref" id="happyx-path-params" href="#happyx-path-params">Path Params</a></h2><p>Routing provides powerful path params.</p>
+
+<h3><a class="toc-backref" id="path-params-example" href="#path-params-example">Example</a></h3><pre class="listing"><span class="StringLit">&quot;/user{id:int}&quot;</span><span class="Punctuation">:</span>
+  <span class="Comment"># In this scope you can use `id` as assigned immutable variable</span>
+  <span class="Operator">...</span>
+<span class="StringLit">&quot;/user{username}&quot;</span><span class="Punctuation">:</span>
+  <span class="Comment"># In this scope you can use `username` as assigned immutable variable</span>
+  <span class="Operator">...</span></pre>
+<h3><a class="toc-backref" id="path-params-validation" href="#path-params-validation">Validation</a></h3><p>In path params you can describe every param if you need. Here is syntax overview.</p>
+<ul class="simple"><li>Required param: <tt class="docutils literal"><span class="pre"><span class="Punctuation">{</span><span class="Identifier">arg</span><span class="Punctuation">:</span><span class="Keyword">type</span><span class="Punctuation">}</span></span></tt>, <tt class="docutils literal"><span class="pre"><span class="Operator">$</span><span class="Identifier">arg</span><span class="Punctuation">:</span><span class="Keyword">type</span></span></tt>, <tt class="docutils literal"><span class="pre"><span class="Punctuation">{</span><span class="Identifier">arg</span><span class="Punctuation">}</span></span></tt>, <tt class="docutils literal"><span class="pre"><span class="Operator">$</span><span class="Identifier">arg</span></span></tt></li>
+<li>Optional param: <tt class="docutils literal"><span class="pre"><span class="Punctuation">{</span><span class="Identifier">arg</span><span class="Operator">?:</span><span class="Keyword">type</span><span class="Punctuation">}</span></span></tt>, <tt class="docutils literal"><span class="pre"><span class="Operator">$</span><span class="Identifier">arg</span><span class="Operator">?:</span><span class="Keyword">type</span></span></tt>, <tt class="docutils literal"><span class="pre"><span class="Punctuation">{</span><span class="Identifier">arg</span><span class="Operator">?</span><span class="Punctuation">}</span></span></tt>, <tt class="docutils literal"><span class="pre"><span class="Operator">$</span><span class="Identifier">arg</span><span class="Operator">?</span></span></tt></li>
+<li>Optional param with default value: <tt class="docutils literal"><span class="pre"><span class="Punctuation">{</span><span class="Identifier">arg</span><span class="Punctuation">:</span><span class="Keyword">type</span><span class="Operator">=</span><span class="Identifier">val</span><span class="Punctuation">}</span></span></tt>, <tt class="docutils literal"><span class="pre"><span class="Operator">$</span><span class="Identifier">arg</span><span class="Punctuation">:</span><span class="Keyword">type</span><span class="Operator">=</span><span class="Identifier">val</span></span></tt>, <tt class="docutils literal"><span class="pre"><span class="Punctuation">{</span><span class="Identifier">arg</span><span class="Operator">=</span><span class="Identifier">val</span><span class="Punctuation">}</span></span></tt>, <tt class="docutils literal"><span class="pre"><span class="Operator">$</span><span class="Identifier">arg</span><span class="Operator">=</span><span class="Identifier">val</span></span></tt></li>
+</ul>
+
+<h3><a class="toc-backref" id="path-params-typing" href="#path-params-typing">Typing</a></h3><p>Every path param keeps type (default is string)</p>
+<p>List of types:</p>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre"><span class="Identifier">bool</span></span></tt>: can be <tt class="docutils literal"><span class="pre"><span class="Identifier">on</span></span></tt>, <tt class="docutils literal"><span class="pre"><span class="DecNumber">1</span></span></tt>, <tt class="docutils literal"><span class="pre"><span class="Identifier">yes</span></span></tt>, <tt class="docutils literal"><span class="pre"><span class="Identifier">true</span></span></tt>, <tt class="docutils literal"><span class="pre"><span class="Identifier">y</span></span></tt> for true and <tt class="docutils literal"><span class="pre"><span class="Identifier">off</span></span></tt>, <tt class="docutils literal"><span class="pre"><span class="DecNumber">0</span></span></tt>, <tt class="docutils literal"><span class="pre"><span class="Identifier">n</span></span></tt>, <tt class="docutils literal"><span class="pre"><span class="Identifier">no</span></span></tt> and <tt class="docutils literal"><span class="pre"><span class="Identifier">false</span></span></tt> for false</li>
+<li><tt class="docutils literal"><span class="pre"><span class="Identifier">string</span></span></tt>: string that excludes <tt class="docutils literal"><span class="pre"><span class="Operator">/</span></span></tt> chars</li>
+<li><tt class="docutils literal"><span class="pre"><span class="Identifier">word</span></span></tt>: like <tt class="docutils literal"><span class="pre"><span class="Identifier">string</span></span></tt> but excludes any symbols</li>
+<li><tt class="docutils literal"><span class="pre"><span class="Identifier">int</span></span></tt>: any integer</li>
+<li><tt class="docutils literal"><span class="pre"><span class="Identifier">float</span></span></tt>: any float</li>
+<li><tt class="docutils literal"><span class="pre"><span class="Identifier">path</span></span></tt>: like <tt class="docutils literal"><span class="pre"><span class="Identifier">string</span></span></tt> but includes <tt class="docutils literal"><span class="pre"><span class="Operator">/</span></span></tt> chars. Doesn't provides optional and default.</li>
+<li>regex pattern: any regex pattern translates in string. Usage: <tt class="docutils literal"><span class="pre"><span class="Operator">/</span><span class="Identifier">patternHere</span><span class="Operator">/</span></span></tt>. Doesn't provides optional and default.</li>
+</ul>
 </p>
   <div class="section" id="6">
 <h1><a class="toc-backref" href="#6">Imports</a></h1>
@@ -246,7 +275,7 @@ hpx dev
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-05-12 10:05:29 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-05-12 16:49:47 UTC</small>
       </div>
     </div>
   </div>
