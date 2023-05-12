@@ -42,7 +42,6 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.
     found = path.findAll(
       re"\{([a-zA-Z][a-zA-Z0-9_]*\??)(:(bool|int|float|string|path|word|/[\s\S]+?/))?(=(\S+?))?\}"
     )
-  echo treeRepr regExp
   elifBranch.add(newCall("contains", urlPath, regExp), body)
   var
     idx = 0
