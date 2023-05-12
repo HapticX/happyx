@@ -25,7 +25,7 @@ Jester doesn't provides some features that provides Happyx.
 - Building HTML with `buildHtml` macro.
 - Routing `SPA`/`SSG` with `routes` marco.
 - Logging with `-d:debug`.
-- CLI tool for `creating` and `serving` your projects.
+- CLI tool for `creating`, `serving` and `building` your projects.
 
 # Get Started 👨‍🔬
 
