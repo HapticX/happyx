@@ -1,4 +1,5 @@
 import
+  strformat,
   strutils,
   macros,
   regex
@@ -26,10 +27,10 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.
   # float param
   routePathStr = routePathStr.replace(re"\{[a-zA-Z][a-zA-Z0-9_]*(\??):float(=\S+?)?\}", "(\\d+\\.\\d+|\\d+)$1")
   # word param
-  routePathStr = routePathStr.replace(re"\{[a-zA-Z][a-zA-Z0-9_]*(\??):word(=\S+?)?\}", "(\\w+?)$1")
+  routePathStr = routePathStr.replace(re"\{[a-zA-Z][a-zA-Z0-9_]*(\??):word(=\S+?)?\}", "(\\w+)$1")
   # string param
-  routePathStr = routePathStr.replace(re"\{[a-zA-Z][a-zA-Z0-9_]*(\??):string(=\S+?)?\}", "([^/]+?)$1")
-  routePathStr = routePathStr.replace(re"\{[a-zA-Z][a-zA-Z0-9_]*(\??)\}", "([^/]+?)$1")
+  routePathStr = routePathStr.replace(re"\{[a-zA-Z][a-zA-Z0-9_]*(\??):string(=\S+?)?\}", "([^/]+)$1")
+  routePathStr = routePathStr.replace(re"\{[a-zA-Z][a-zA-Z0-9_]*(\??)(=\S+?)?\}", "([^/]+)$1")
   # path param
   routePathStr = routePathStr.replace(re"\{[a-zA-Z][a-zA-Z0-9_]*:path\}", "([\\S]+)")
   # regex param
@@ -56,7 +57,6 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.
       if i.group(4, path).len == 0:
         ""
       else:
-        echo i.group(4, path)[0]
         i.group(4, path)[0]
     # detect optional
     if name.endsWith(re"\?"):
@@ -69,7 +69,6 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.
         if i.group(2, path).len == 0:
           "string"
         else:
-          echo i.group(2, path)[0]
           i.group(2, path)[0]
       letSection = newNimNode(nnkLetSection).add(
         newNimNode(nnkIdentDefs).add(ident(name), newEmptyNode())
@@ -83,6 +82,7 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.
         ),
         newIntLitNode(0)
       )
+    echo fmt"{name}: {argTypeStr} = {defaultVal} [{isOptional}]"
     if isOptional:
       case argTypeStr:
       of "bool":

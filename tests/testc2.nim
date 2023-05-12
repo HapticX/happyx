@@ -20,7 +20,7 @@ serve("127.0.0.1", 5000):
     else:
       "false!"
   
-  get "/pathParams/$arg/$arg1:bool/$arg2:int=2":
+  get "/pathParams/$arg/$arg1:bool/$arg2=2":
     req.answerHtml:
       buildHtml:
         tDiv:
