@@ -26,6 +26,16 @@ nimble install happyx
 ```
 
 
+### CLI Tool 🛠
+
+To use CLI tool just run
+```bash
+hpx help [subcommand]
+```
+
+Read more about it [`here`](https://hapticx.github.io/happyx/cli.html)
+
+
 ### Single Page Application ✨
 
 To create `SPA` project you should use
