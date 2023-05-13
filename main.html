@@ -100,19 +100,36 @@
       <div class="w-full h-full pt-20 flex px-12 xl:px-32 gap-20">
         <!-- Page data -->
         <div class="flex flex-col gap-4 w-full xl:w-3/4">
-          <h1 class="titleRef" id="fce09a4c5eec6ffe">HappyX ⚡</h1><p>
+          <h1 class="titleRef" id="1083715ff6b7c3ce">HappyX ⚡</h1><p>
 
 HappyX is an asynchronous web framework written in Nim with ❤
 
-</p><h2 class="titleRef" id="5385f6f359bc758b">Why Nim? 👑</h2><p>
+</p><h2 class="titleRef" id="212f99641e11b036">Why Nim? 👑</h2><p>
 
 <a href="nim-lang.org">Nim</a> is the beautiful, powerful and fast programming language that compiles into JS, C++, C and Objective C.
 
 You can learn it step-by-step <a href="https://nim-lang.org/documentation.html"><code class="command">here</code></a>:
-</p><ul style="list-style-type: disc"><li><a href="https://nim-lang.org/docs/tut1.html"><code class="command">Tutorial part 1</code></a></li><li><a href="https://nim-lang.org/docs/tut2.html"><code class="command">Tutorial part 2</code></a></li><li><a href="https://nim-lang.org/docs/tut3.html"><code class="command">Macro tutorial</code></a></li>
+</p><ul style="list-style-type: disc"><li><a href="https://nim-lang.org/docs/tut1.html"><code class="command">Tutorial part 1</code></a></li><li><a href="https://nim-lang.org/docs/tut2.html"><code class="command">Tutorial part 2</code></a></li><li><a href="https://nim-lang.org/docs/tut3.html"><code class="command">Macro tutorial</code></a></ul></li>
 
 
-</ul>
+<h2 class="titleRef" id="95da2a255515f0fa">Getting Started 📃</h2><p>
+
+HappyX provides tools for creating <code class="command">SPA</code> and <code class="command">SSG</code> web applications 💡
+
+Also HappyX provides own CLI tool for <code class="command">creating</code>, <code class="command">serving</code> and <code class="command">building</code> your projects 🍍
+
+</p><h3 class="titleRef" id="b5abda7b1b753a7a">Installing</h3><p>
+
+</p><pre><button class="flex gap-2 items-center text-white"><p>Copy code</p><i class="fas fa-copy"></i></button><code class="language-bash">nimble install happyx
+</code></pre><p>
+
+
+</p><h3 class="titleRef" id="05ae39b2a97d7334">Single Page Application ✨</h3><p>
+
+To create <code class="command">SPA</code> project you should use
+</p><pre><button class="flex gap-2 items-center text-white"><p>Copy code</p><i class="fas fa-copy"></i></button><code class="language-bash">hpx create
+</code></pre>
+
         </div>
         <!-- Page navigation (desktop) -->
         <div class="hidden xl:flex flex-col fixed right-0 w-1/4 h-fit text-sm pt-2">
@@ -120,14 +137,29 @@ You can learn it step-by-step <a href="https://nim-lang.org/documentation.html">
             On this page
           </p>
           
-          <a id="pagefce09a4c5eec6ffe" href="#fce09a4c5eec6ffe"
+          <a id="page1083715ff6b7c3ce" href="#1083715ff6b7c3ce"
             class="select-none border-l-[1px] py-0.5 font-semibold pl-[1.0em] opacity-50 hover:opacity-100 dark:border-white border-black border-opacity-100 pl-5 cursor-pointer transition-all duration-200">
             HappyX ⚡
           </a>
           
-          <a id="page5385f6f359bc758b" href="#5385f6f359bc758b"
+          <a id="page212f99641e11b036" href="#212f99641e11b036"
             class="select-none border-l-[1px] py-0.5 font-semibold pl-[1.5em] opacity-50 hover:opacity-100 dark:border-white border-black border-opacity-100 pl-5 cursor-pointer transition-all duration-200">
             Why Nim? 👑
+          </a>
+          
+          <a id="page95da2a255515f0fa" href="#95da2a255515f0fa"
+            class="select-none border-l-[1px] py-0.5 font-semibold pl-[1.5em] opacity-50 hover:opacity-100 dark:border-white border-black border-opacity-100 pl-5 cursor-pointer transition-all duration-200">
+            Getting Started 📃
+          </a>
+          
+          <a id="pageb5abda7b1b753a7a" href="#b5abda7b1b753a7a"
+            class="select-none border-l-[1px] py-0.5 font-semibold pl-[2.0em] opacity-50 hover:opacity-100 dark:border-white border-black border-opacity-100 pl-5 cursor-pointer transition-all duration-200">
+            Installing
+          </a>
+          
+          <a id="page05ae39b2a97d7334" href="#05ae39b2a97d7334"
+            class="select-none border-l-[1px] py-0.5 font-semibold pl-[2.0em] opacity-50 hover:opacity-100 dark:border-white border-black border-opacity-100 pl-5 cursor-pointer transition-all duration-200">
+            Single Page Application ✨
           </a>
           
         </div>
@@ -364,7 +396,7 @@ You can learn it step-by-step <a href="https://nim-lang.org/documentation.html">
     }
 
     // Mobile
-    let showSidebar = true;
+    let showSidebar = false;
     function sideBarSwitcher() {
       showSidebar = !showSidebar;
       sidebar.style.transform = showSidebar ? '' : `translateX(-${screen.width}px)`;
