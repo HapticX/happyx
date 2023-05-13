@@ -34,21 +34,34 @@ jobs:
     env:
       nim_version: '1.6.12'
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v3
+
       - name: Cache nimble
         id: cache-nimble
         uses: actions/cache@v1
         with:
           path: ~/.nimble
           key: ${{ runner.os }}-nimble-${{ hashFiles('*.nimble') }}
+      
       - uses: jiro4989/setup-nim-action@v1
         with:
           nim-version: ${{ env.nim_version }}
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v3
+        with:
+          python-version: ${{ matrix.python-version }}
 
       - name: Install Dependencies
         run: |
           nimble refresh
           nimble install -y regex nimja cligen httpx illwill websocketx
+          python -m pip install --upgrade pip
+          pip install hapdoc -U
+
+      - name: Build HapDoc Documentation
+        run: |
+          hapdoc build docs -t default -o ""
 
       - name: Generate API documents
         run: nim doc --index:on --project --out:docs --hints:off src/happyx.nim
@@ -57,5 +70,5 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs
+          publish_dir: ./documentation
         if: github.ref == 'refs/heads/master'

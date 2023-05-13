@@ -1,0 +1,4 @@
+[HapDoc]
+version = 0.15.1  # Documentation version
+title = HappyX  # Documentation title
+root = /happyx/happyx
