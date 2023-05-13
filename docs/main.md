@@ -51,3 +51,8 @@ Read more about it [`here`](https://hapticx.github.io/happyx/ssg.html)
 HappyX provides powerful routing system.
 
 Read more about it [`here`](https://hapticx.github.io/happyx/routing.html)
+
+
+---
+
+This documentation was generated with [`HapDoc`](https://github.com/HapticX/hapdoc)
