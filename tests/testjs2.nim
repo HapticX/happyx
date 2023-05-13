@@ -1,6 +1,6 @@
 import
   ../src/happyx,
-  components/[hello_world, nested_component]
+  components/[hello_world, nested_component, component_for]
 
 
 var app = registerApp()
@@ -53,6 +53,13 @@ app.routes:
     let someArg = 0
     buildHtml:
       "Like this"
+      for i in 0..10:
+        tButton(id="{i}", asd="123", class="rounded-full px-16 py-1 my-1 bg-gray-200 hover:bg-gray-300 transition-colors"):
+          {i}
+          @click:
+            echo document.getElementById(fmt"{i}").innerHTML
+            echo i
+      component ComponentFor(counter = 5)
       {someArg}
 
   notfound:
