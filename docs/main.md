@@ -33,6 +33,8 @@ To create `SPA` project you should use
 hpx create
 ```
 
+Read more about it [`here`](https://hapticx.github.io/happyx/spa.html)
+
 
 ### Static Site Generation 🛠
 
@@ -40,3 +42,12 @@ To create `SSG` project you should use
 ```bash
 hpx create
 ```
+
+Read more about it [`here`](https://hapticx.github.io/happyx/ssg.html)
+
+
+### Routing ⚙
+
+HappyX provides powerful routing system.
+
+Read more about it [`here`](https://hapticx.github.io/happyx/routing.html)
