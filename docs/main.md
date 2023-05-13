@@ -55,6 +55,4 @@ Read more about it [`here`](https://hapticx.github.io/happyx/routing.html)
 
 ---
 
-<p>
-  This documentation was generated with [`HapDoc`](https://github.com/HapticX/hapdoc)
-</p>
+This documentation was generated with [`HapDoc`](https://github.com/HapticX/hapdoc)
