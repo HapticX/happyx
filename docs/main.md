@@ -32,3 +32,11 @@ To create `SPA` project you should use
 ```bash
 hpx create
 ```
+
+
+### Static Site Generation 🛠
+
+To create `SSG` project you should use
+```bash
+hpx create
+```
