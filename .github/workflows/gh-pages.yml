@@ -61,6 +61,7 @@ jobs:
 
       - name: Build HapDoc Documentation
         run: |
+          hapdoc -v
           hapdoc build docs -t default -o ""
 
       - name: Generate API documents
