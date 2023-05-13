@@ -13,3 +13,22 @@ You can learn it step-by-step [`here`](https://nim-lang.org/documentation.html):
 - [`Macro tutorial`](https://nim-lang.org/docs/tut3.html)
 
 
+## Getting Started 📃
+
+HappyX provides tools for creating `SPA` and `SSG` web applications 💡
+
+Also HappyX provides own CLI tool for `creating`, `serving` and `building` your projects 🍍
+
+### Installing
+
+```bash
+nimble install happyx
+```
+
+
+### Single Page Application ✨
+
+To create `SPA` project you should use
+```bash
+hpx create
+```
