@@ -1,1 +1,0 @@
-exportRouteArgs	happyx/private/cmpltime.html#exportRouteArgs,NimNode,NimNode,NimNode	cmpltime: exportRouteArgs(urlPath, routePath, body: NimNode): NimNode	
