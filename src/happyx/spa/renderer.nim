@@ -17,11 +17,11 @@ import
   sugar,
   strutils,
   strformat,
-  random,
   tables,
   regex,
   ./tag,
-  ../private/cmpltime
+  ../private/cmpltime,
+  ../private/macro_utils
 
 when defined(js):
   import
@@ -37,14 +37,10 @@ export
   htmlgen,
   strtabs,
   strutils,
-  random,
   tables,
   regex,
   sugar,
   tag
-
-
-randomize()
 
 
 type
@@ -56,6 +52,13 @@ type
   BaseComponent* = ref BaseComponentObj
   BaseComponentObj* = object of RootObj
     uniqCompId*: string
+    isCreated*: bool
+    created*: ComponentEventHandler  ## Calls before first rendering
+    exited*: ComponentEventHandler  ## Calls after last rendering
+    updated*: ComponentEventHandler  ## Calls after every rendering
+    pageHide*: ComponentEventHandler  ## Calls after every rendering
+    pageShow*: ComponentEventHandler  ## Calls after every rendering
+    beforeUpdated*: ComponentEventHandler  ## Calls before every rendering
 
 
 # Global variables
@@ -107,7 +110,7 @@ proc registerComponent*(name: cstring, component: BaseComponent): BaseComponent 
   if components.hasKey(name):
     return components[name]
   components[name] = component
-  return component
+  component
 
 
 method render*(self: BaseComponent): TagRef {.base.} =
@@ -301,8 +304,21 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
             ident(componentData),
             newCall("&", newStrLitNode("data-"), newDotExpr(ident(componentName), ident(UniqueComponentId)))
           ),
+          newNimNode(nnkPragma).add(newNimNode(nnkExprColonExpr).add(
+            ident("emit"),
+            newStrLitNode(fmt"window.addEventListener('beforeunload', `{componentData}`.`exited`)")
+          )),
+          newNimNode(nnkPragma).add(newNimNode(nnkExprColonExpr).add(
+            ident("emit"),
+            newStrLitNode(fmt"window.addEventListener('pagehide', `{componentData}`.`pageHide`)")
+          )),
+          newNimNode(nnkPragma).add(newNimNode(nnkExprColonExpr).add(
+            ident("emit"),
+            newStrLitNode(fmt"window.addEventListener('pageshow', `{componentData}`.`pageShow`)")
+          )),
           ident(componentData)
         ))
+        echo result.toStrLit
     
     elif statement.kind in [nnkStrLit, nnkTripleStrLit]:
       # "Raw text"
@@ -320,11 +336,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
         args = newNimNode(nnkFormalParams).add(
           newEmptyNode()
         )
-        procedure = newNimNode(nnkLambda).add(
-          newEmptyNode(), newEmptyNode(), newEmptyNode(), args,
-          newEmptyNode(), newEmptyNode(),
-          newStmtList()
-        )
+        procedure = newLambda(newStmtList(), args)
       
       if inComponent:
         statement[2].replaceSelfComponent(componentName)
@@ -459,6 +471,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
       var
         unqn = fmt"tmpCycleIdx{uniqueId}"
         idents: seq[NimNode] = @[]
+      # extract cycle variables
       for i in 0..statement.len-3:
         idents.add statement[i]
       inc uniqueId
@@ -483,7 +496,6 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
           newLit(true)
         )
       )
-      echo treeRepr result
   
   # varargs -> seq
   if result.len > 2:
@@ -791,6 +803,8 @@ macro component*(name, body: untyped): untyped =
     initObjConstr = newNimNode(nnkObjConstr).add(
       ident(name), newColonExpr(ident(UniqueComponentId), ident(UniqueComponentId))
     )
+    beforeStmtList = newStmtList()
+    afterStmtList = newStmtList()
     reRenderProc = newProc(
       postfix(ident("reRender"), "*"),
       [newEmptyNode(), newIdentDefs(ident("self"), ident(name))],
@@ -827,6 +841,15 @@ macro component*(name, body: untyped): untyped =
     templateStmtList = newStmtList()
     scriptStmtList = newStmtList()
     styleStmtList = newStmtList()
+    arguments = @[newEmptyNode(), newIdentDefs(ident("self"), ident("BaseComponent"))]
+    usedLifeCycles = {
+      "created": false,
+      "updated": false,
+      "beforeUpdated": false,
+      "exited": false,
+      "pageShow": false,
+      "pageHide": false,
+    }.newTable()
   
   initParams.add(
     ident(name),
@@ -857,9 +880,11 @@ macro component*(name, body: untyped): untyped =
       elif s[0].kind == nnkAccQuoted:
         case $s[0]
         of "template":
+          # Component template
           templateStmtList = newStmtList(
             newAssignment(ident("currentComponent"), newDotExpr(ident("self"), ident(UniqueComponentId))),
             newCall("script", ident("self")),
+            beforeStmtList,
             newAssignment(
               ident("result"),
               newCall(
@@ -870,9 +895,11 @@ macro component*(name, body: untyped): untyped =
                 ))
               )
             ),
+            afterStmtList,
             newAssignment(ident("currentComponent"), newStrLitNode(""))
           )
         of "style":
+          # Component styles
           let str = ($s[1][0]).replace(
             re"^([\S ]+?) *\{(?im)", "$1[data-{self.uniqCompId}]{{"
           ).replace(re"(^ *|\{ *|\n *)\}(?im)", "$1}}")
@@ -883,11 +910,56 @@ macro component*(name, body: untyped): untyped =
             )
           )
         of "script":
+          # Component main script
           s[1].replaceSelfStateVal()
-          scriptStmtList = s[1]
+          if scriptStmtList.len == 0:
+            scriptStmtList = s[1]
+          else:
+            for child in s[1].children:
+              scriptStmtList.add(child)
+      
+    elif s.kind == nnkPrefix:
+      if s[0].kind == nnkIdent and $s[0] == "@" and s.len == 3 and s[1].kind == nnkIdent:
+        # Component life cycles
+        let key = $s[1]
+        if usedLifeCycles.hasKey(key) and not usedLifeCycles[key]:
+          scriptStmtList.insert(0, newAssignment(
+            newDotExpr(ident("self"), ident(key)),
+            newLambda(s[2], arguments)
+          ))
+          usedLifeCycles[key] = true
+  
+  for key in usedLifeCycles.keys:
+    if not usedLifeCycles[key]:
+      scriptStmtList.insert(0, newAssignment(
+        newDotExpr(ident("self"), ident(key)),
+        newLambda(newStmtList(discardStmt), arguments)
+      ))
   
   initProc.params = initParams
   initProc.body = initObjConstr
+
+  # Life cycles
+  beforeStmtList.add(
+    # Is created
+    newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
+      newCall("==", newDotExpr(ident("self"), ident("isCreated")), newLit(false)),
+      newStmtList(
+        newCall(newDotExpr(ident("self"), ident("created")), ident("self")),
+        newAssignment(
+          newDotExpr(ident("self"), ident("isCreated")),
+          newLit(true)
+        )
+      )
+    ))
+  ).add(
+    # beforeUpdated
+    newCall(newDotExpr(ident("self"), ident("beforeUpdated")), ident("self"))
+  )
+  # updated
+  afterStmtList.add(
+    newCall(newDotExpr(ident("self"), ident("updated")), ident("self"))
+  )
 
   result = newStmtList(
     newNimNode(nnkTypeSection).add(
