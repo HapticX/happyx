@@ -1,1 +1,3 @@
+discardStmt	happyx/private/macro_utils.html#discardStmt	macro_utils: discardStmt	
 isExpr	happyx/private/macro_utils.html#isExpr,NimNode	macro_utils: isExpr(node: NimNode): bool	
+newLambda	happyx/private/macro_utils.html#newLambda,NimNode	macro_utils: newLambda(body: NimNode; params: seq[NimNode] | NimNode = @[newEmptyNode()];\n          pragmas: seq[NimNode] | seq[string] = @[newEmptyNode()]): NimNode	
