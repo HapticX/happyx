@@ -13,10 +13,13 @@
 
 
 # Why HappyX? 💁‍♀️
-Because it's simple to use 🙂
+> HappyX is macro-oriented asynchronous web framework.
 
-## Why not Jester? 🤔
-Jester doesn't provides some features that provides Happyx.
+In HappyX you can write `single page`, `static site generation` and `server side rendering` applications 💡
+
+You can writing Rest API with HappyX also 🔌
+
+HappyX is very simple to use. Keep it mind 🙂
 
 ## Features ⚡
 - Support `asynchttpserver` as default http server.
@@ -24,8 +27,12 @@ Jester doesn't provides some features that provides Happyx.
 - Support `SPA` on `JS` backend and `SSG` on other backends.
 - Building HTML with `buildHtml` macro.
 - Routing `SPA`/`SSG` with `routes` marco.
+- Powerful path params for routing.
 - Logging with `-d:debug`.
 - CLI tool for `creating`, `serving` and `building` your projects.
+
+## Why not Jester? 🤔
+Jester doesn't provides some features that provides Happyx.
 
 # Get Started 👨‍🔬
 
