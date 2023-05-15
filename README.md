@@ -22,7 +22,7 @@ You can writing Rest API with HappyX also 🔌
 HappyX is very simple to use. Keep it mind 🙂
 
 ## Features ⚡
-- Support `asynchttpserver` as default http server.
+- Support `asynchttpserver` as default HTTP server.
 - Support `httpx` via `-d:httpx` and `microhttpserver` via `-d:micro` as alternative HTTP servers.
 - Support `SPA` on `JS` backend and `SSG` on other backends.
 - Building HTML with `buildHtml` macro.
@@ -30,6 +30,7 @@ HappyX is very simple to use. Keep it mind 🙂
 - Powerful path params for routing.
 - Logging with `-d:debug`.
 - CLI tool for `creating`, `serving` and `building` your projects.
+- Hot code reloading (now only for `SPA` projects).
 
 ## Why not Jester? 🤔
 Jester doesn't provides some features that provides Happyx.
@@ -48,52 +49,31 @@ nimble install https://github.com/HapticX/happyx
 
 ## Usage ▶
 ### SSG
-```nim
-import happyx
+```bash
+hpx create --name ssg_project --kind SSG
+cd ssg_project
+```
 
-serve("127.0.0.1", 5000):
-  # By default routing takes any request method
-  "/":
-    "Hello, world!"
-  
-  # You can use let variables in the routes!
-  "/user{id:int}":
-    "Hello, user with ID {id}!"
-```
+Main script will be able in `/ssg_project/src/main.nim`
+
 #### Run 💻
-##### Default
-```bash
-nim c -r -d:debug main
-```
-##### Httpx
-```bash
-nim c -r -d:debug -d:httpx main
-```
+
+|           Default        |             Httpx                 |       microasynchttpserver        |
+|           :---:          |             :---:                 |             :---:                 |
+| `nim c -r -d:debug main` | `nim c -r -d:debug -d:httpx main` | `nim c -r -d:debug -d:micro main` |
 
 ### SPA
-`index.html`
-```html
-<html>
-  <head>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script src="main.js"></script>
-  </body>
-</html>
-```
-`main.nim`
-```nim
-import happyx
-
-appRoutes("app"):
-  "/user{userId:int}":
-    "User ID is {userId}"
-```
-#### Run 💻
-Compile nim script and open HTML file in your browser.
 ```bash
-nim js main
+hpx create --name spa_project --kind SPA --path-params
+cd spa_project
+```
+
+Main script will be able in `/spa_project/src/main.nim`
+
+#### Run 💻
+Just run this command and see magic ✨
+```bash
+hpx dev --reload
 ```
 
 
