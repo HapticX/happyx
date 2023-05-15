@@ -9,8 +9,11 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.7.0/build/styles/vs2015.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
-  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.7.0/build/highlight.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.7.0/build/languages/http.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/http.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/nim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/python.min.js"></script>
+
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -357,11 +360,11 @@
       <div class="w-full h-full pt-20 flex px-12 xl:px-32 gap-20">
         <!-- Page data -->
         <div class="flex flex-col gap-4 w-full xl:w-3/4">
-          <h1 class="titleRef" id="7907acdabe2756ee">HappyX ⚡</h1><p>
+          <h1 class="titleRef" id="c0c3a5eb09e27a2d">HappyX ⚡</h1><p>
 
 HappyX is an asynchronous web framework written in Nim with ❤
 
-</p><h2 class="titleRef" id="bb1685c2a0b725ff">Why Nim? 👑</h2><p>
+</p><h2 class="titleRef" id="ea808840d5276044">Why Nim? 👑</h2><p>
 
 <a class="hreflink" href="nim-lang.org">Nim</a> is the beautiful, powerful and fast programming language that compiles into JS, C++, C and Objective C.
 
@@ -369,19 +372,19 @@ You can learn it step-by-step <a class="hreflink" href="https://nim-lang.org/doc
 <ul style="list-style-type: disc"><li><a class="hreflink" href="https://nim-lang.org/docs/tut1.html"><code class="command">Tutorial part 1</code></a></li><li><a class="hreflink" href="https://nim-lang.org/docs/tut2.html"><code class="command">Tutorial part 2</code></a></li><li><a class="hreflink" href="https://nim-lang.org/docs/tut3.html"><code class="command">Macro tutorial</code></a></ul></li>
 
 
-</p><h2 class="titleRef" id="60db2a0286fa03ba">Getting Started 📃</h2><p>
+</p><h2 class="titleRef" id="e5b578ac7180153e">Getting Started 📃</h2><p>
 
 HappyX provides tools for creating <code class="command">SPA</code> and <code class="command">SSG</code> web applications 💡
 
 Also HappyX provides own CLI tool for <code class="command">creating</code>, <code class="command">serving</code> and <code class="command">building</code> your projects 🍍
 
-</p><h3 class="titleRef" id="8f49670ee3928308">Installing</h3><p>
+</p><h3 class="titleRef" id="2ac89162ea9b9393">Installing</h3><p>
 
 </p><pre><button class="flex gap-2 items-center text-white"><p>Copy code</p><i class="fas fa-copy"></i></button><code class="language-bash">nimble install happyx
 </code></pre><p>
 
 
-</p><h3 class="titleRef" id="ea5ebb1dc1e06107">CLI Tool 🛠</h3><p>
+</p><h3 class="titleRef" id="9fe8b25bb40ae090">CLI Tool 🛠</h3><p>
 
 To use CLI tool just run
 </p><pre><button class="flex gap-2 items-center text-white"><p>Copy code</p><i class="fas fa-copy"></i></button><code class="language-bash">hpx help [subcommand]
@@ -390,7 +393,7 @@ To use CLI tool just run
 Read more about it <a class="hreflink" href="https://hapticx.github.io/happyx/cli.html"><code class="command">here</code></a>
 
 
-</p><h3 class="titleRef" id="59c51555677342e3">Single Page Application ✨</h3><p>
+</p><h3 class="titleRef" id="672d93171629e1ea">Single Page Application ✨</h3><p>
 
 To create <code class="command">SPA</code> project you should use
 </p><pre><button class="flex gap-2 items-center text-white"><p>Copy code</p><i class="fas fa-copy"></i></button><code class="language-bash">hpx create
@@ -399,7 +402,7 @@ To create <code class="command">SPA</code> project you should use
 Read more about it <a class="hreflink" href="https://hapticx.github.io/happyx/spa.html"><code class="command">here</code></a>
 
 
-</p><h3 class="titleRef" id="db10cf26c54fbbf8">Static Site Generation 🛠</h3><p>
+</p><h3 class="titleRef" id="390a2420b6b5fdcb">Static Site Generation 🛠</h3><p>
 
 To create <code class="command">SSG</code> project you should use
 </p><pre><button class="flex gap-2 items-center text-white"><p>Copy code</p><i class="fas fa-copy"></i></button><code class="language-bash">hpx create
@@ -408,7 +411,7 @@ To create <code class="command">SSG</code> project you should use
 Read more about it <a class="hreflink" href="https://hapticx.github.io/happyx/ssg.html"><code class="command">here</code></a>
 
 
-</p><h3 class="titleRef" id="9b05fe8e8502af76">Routing ⚙</h3><p>
+</p><h3 class="titleRef" id="1b96346463852acd">Routing ⚙</h3><p>
 
 HappyX provides powerful routing system.
 
@@ -422,42 +425,42 @@ Read more about it <a class="hreflink" href="https://hapticx.github.io/happyx/ro
             On this page
           </p>
           
-          <a id="page7907acdabe2756ee" href="#7907acdabe2756ee"
+          <a id="pagec0c3a5eb09e27a2d" href="#c0c3a5eb09e27a2d"
             class="select-none border-l-[1px] py-0.5 font-semibold pl-[1.0em] opacity-50 hover:opacity-100 dark:border-white border-black border-opacity-100 pl-5 cursor-pointer transition-all duration-200">
             HappyX ⚡
           </a>
           
-          <a id="pagebb1685c2a0b725ff" href="#bb1685c2a0b725ff"
+          <a id="pageea808840d5276044" href="#ea808840d5276044"
             class="select-none border-l-[1px] py-0.5 font-semibold pl-[1.5em] opacity-50 hover:opacity-100 dark:border-white border-black border-opacity-100 pl-5 cursor-pointer transition-all duration-200">
             Why Nim? 👑
           </a>
           
-          <a id="page60db2a0286fa03ba" href="#60db2a0286fa03ba"
+          <a id="pagee5b578ac7180153e" href="#e5b578ac7180153e"
             class="select-none border-l-[1px] py-0.5 font-semibold pl-[1.5em] opacity-50 hover:opacity-100 dark:border-white border-black border-opacity-100 pl-5 cursor-pointer transition-all duration-200">
             Getting Started 📃
           </a>
           
-          <a id="page8f49670ee3928308" href="#8f49670ee3928308"
+          <a id="page2ac89162ea9b9393" href="#2ac89162ea9b9393"
             class="select-none border-l-[1px] py-0.5 font-semibold pl-[2.0em] opacity-50 hover:opacity-100 dark:border-white border-black border-opacity-100 pl-5 cursor-pointer transition-all duration-200">
             Installing
           </a>
           
-          <a id="pageea5ebb1dc1e06107" href="#ea5ebb1dc1e06107"
+          <a id="page9fe8b25bb40ae090" href="#9fe8b25bb40ae090"
             class="select-none border-l-[1px] py-0.5 font-semibold pl-[2.0em] opacity-50 hover:opacity-100 dark:border-white border-black border-opacity-100 pl-5 cursor-pointer transition-all duration-200">
             CLI Tool 🛠
           </a>
           
-          <a id="page59c51555677342e3" href="#59c51555677342e3"
+          <a id="page672d93171629e1ea" href="#672d93171629e1ea"
             class="select-none border-l-[1px] py-0.5 font-semibold pl-[2.0em] opacity-50 hover:opacity-100 dark:border-white border-black border-opacity-100 pl-5 cursor-pointer transition-all duration-200">
             Single Page Application ✨
           </a>
           
-          <a id="pagedb10cf26c54fbbf8" href="#db10cf26c54fbbf8"
+          <a id="page390a2420b6b5fdcb" href="#390a2420b6b5fdcb"
             class="select-none border-l-[1px] py-0.5 font-semibold pl-[2.0em] opacity-50 hover:opacity-100 dark:border-white border-black border-opacity-100 pl-5 cursor-pointer transition-all duration-200">
             Static Site Generation 🛠
           </a>
           
-          <a id="page9b05fe8e8502af76" href="#9b05fe8e8502af76"
+          <a id="page1b96346463852acd" href="#1b96346463852acd"
             class="select-none border-l-[1px] py-0.5 font-semibold pl-[2.0em] opacity-50 hover:opacity-100 dark:border-white border-black border-opacity-100 pl-5 cursor-pointer transition-all duration-200">
             Routing ⚙
           </a>

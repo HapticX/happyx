@@ -9,8 +9,11 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.7.0/build/styles/vs2015.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
-  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.7.0/build/highlight.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.7.0/build/languages/http.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/http.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/nim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/python.min.js"></script>
+
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -357,45 +360,45 @@
       <div class="w-full h-full pt-20 flex px-12 xl:px-32 gap-20">
         <!-- Page data -->
         <div class="flex flex-col gap-4 w-full xl:w-3/4">
-          <h1 class="titleRef" id="0d6503b020df4350">CLI tool 🛠</h1><p>
+          <h1 class="titleRef" id="2d1ccaa92f03fa69">CLI tool 🛠</h1><p>
 
 HappyX provides CLI tool for creating, building and serving your projects 🎈
 
-</p><h2 class="titleRef" id="d7c26e3845b9139e">Getting Started ✨</h2><p>
+</p><h2 class="titleRef" id="dca786945146be78">Getting Started ✨</h2><p>
 
-</p><h3 class="titleRef" id="6c11a7499f602b37">Create Project 💡</h3><p>
+</p><h3 class="titleRef" id="21288fc094ae6c94">Create Project 💡</h3><p>
 
 </p><div class="quote"><p>Main command is <code class="command">hpx create</code>. This command creates project. You can choose project name and project type. 💡
 
-</p></div><p></p><h4 class="titleRef" id="6161b694328ae159">Usage 🔌</h4><p>
+</p></div><p></p><h4 class="titleRef" id="85fd1bd2a742533b">Usage 🔌</h4><p>
 </p><pre><button class="flex gap-2 items-center text-white"><p>Copy code</p><i class="fas fa-copy"></i></button><code class="language-bash">hpx create [optional-arguments]
 </code></pre><p>
 
-</p><h4 class="titleRef" id="3b9dfe9b3db4baf7">Flags 🚩</h4><p>
+</p><h4 class="titleRef" id="acbb3b7720149f48">Flags 🚩</h4><p>
 <ul style="list-style-type: disc"><li><code class="command">-n</code> or <code class="command">--name</code>: project name;</li><li><code class="command">-k</code> or <code class="command">--kind</code>: project kind. May be <code class="command">SPA</code> or <code class="command">SSG</code>;</li><li><code class="command">-t</code> or <code class="command">--templates</code>: enable templates. Works only for <code class="command">SSG</code>.</ul></li>
 
 
-</p><h3 class="titleRef" id="b255d6ef5c3dd8ff">Build project 🔨</h3><p>
+</p><h3 class="titleRef" id="425a756ff70c6734">Build project 🔨</h3><p>
 
 </p><div class="quote"><p>You can build single page application project and minimize JS file size 💡
 
-</p></div><p></p><h4 class="titleRef" id="29c4f556c639c9da">Usage 🔌</h4><p>
+</p></div><p></p><h4 class="titleRef" id="2149c374d5e18ae4">Usage 🔌</h4><p>
 </p><pre><button class="flex gap-2 items-center text-white"><p>Copy code</p><i class="fas fa-copy"></i></button><code class="language-bash">hpx build [optional-arguments]
 </code></pre><p>
 
-</p><h4 class="titleRef" id="b53a5461fd2a1b29">Flags 🚩</h4><p>
+</p><h4 class="titleRef" id="b3e4e353132ce86b">Flags 🚩</h4><p>
 <ul style="list-style-type: disc"><li><code class="command">-o</code> or <code class="command">--opt-size</code>: optimize output file size</ul></li>
 
 
-</p><h3 class="titleRef" id="177bdf0b00e13ff0">Serve project 👨‍🔬</h3><p>
+</p><h3 class="titleRef" id="20fa98f9826859b1">Serve project 👨‍🔬</h3><p>
 
 </p><div class="quote"><p>You can run your single page application in browser with hot code reloading 💡
 
-</p></div><p></p><h4 class="titleRef" id="2cd0cb58512b8058">Usage 🔌</h4><p>
+</p></div><p></p><h4 class="titleRef" id="8d5a69f4dd888b31">Usage 🔌</h4><p>
 </p><pre><button class="flex gap-2 items-center text-white"><p>Copy code</p><i class="fas fa-copy"></i></button><code class="language-bash">hpx dev [optional-arguments]
 </code></pre><p>
 
-</p><h4 class="titleRef" id="5d30105c27a9fb36">Flags 🚩</h4><p>
+</p><h4 class="titleRef" id="427627122fa672e7">Flags 🚩</h4><p>
 <ul style="list-style-type: disc"><li><code class="command">-h</code> or <code class="command">--host</code>: address where need to serve</li><li><code class="command">-p</code> or <code class="command">--port</code>: port where need to serve</li><li><code class="command">-r</code> or <code class="command">--reload</code>: enable hot code reloading</ul></li>
 <hr>This documentation was generated with <a class="hreflink" href="https://github.com/HapticX/hapdoc"><code class="command">HapDoc</code></a>
 </p>
@@ -406,57 +409,57 @@ HappyX provides CLI tool for creating, building and serving your projects 🎈
             On this page
           </p>
           
-          <a id="page0d6503b020df4350" href="#0d6503b020df4350"
+          <a id="page2d1ccaa92f03fa69" href="#2d1ccaa92f03fa69"
             class="select-none border-l-[1px] py-0.5 font-semibold pl-[1.0em] opacity-50 hover:opacity-100 dark:border-white border-black border-opacity-100 pl-5 cursor-pointer transition-all duration-200">
             CLI tool 🛠
           </a>
           
-          <a id="paged7c26e3845b9139e" href="#d7c26e3845b9139e"
+          <a id="pagedca786945146be78" href="#dca786945146be78"
             class="select-none border-l-[1px] py-0.5 font-semibold pl-[1.5em] opacity-50 hover:opacity-100 dark:border-white border-black border-opacity-100 pl-5 cursor-pointer transition-all duration-200">
             Getting Started ✨
           </a>
           
-          <a id="page6c11a7499f602b37" href="#6c11a7499f602b37"
+          <a id="page21288fc094ae6c94" href="#21288fc094ae6c94"
             class="select-none border-l-[1px] py-0.5 font-semibold pl-[2.0em] opacity-50 hover:opacity-100 dark:border-white border-black border-opacity-100 pl-5 cursor-pointer transition-all duration-200">
             Create Project 💡
           </a>
           
-          <a id="page6161b694328ae159" href="#6161b694328ae159"
+          <a id="page85fd1bd2a742533b" href="#85fd1bd2a742533b"
             class="select-none border-l-[1px] py-0.5 font-semibold pl-[2.5em] opacity-50 hover:opacity-100 dark:border-white border-black border-opacity-100 pl-5 cursor-pointer transition-all duration-200">
             Usage 🔌
           </a>
           
-          <a id="page3b9dfe9b3db4baf7" href="#3b9dfe9b3db4baf7"
+          <a id="pageacbb3b7720149f48" href="#acbb3b7720149f48"
             class="select-none border-l-[1px] py-0.5 font-semibold pl-[2.5em] opacity-50 hover:opacity-100 dark:border-white border-black border-opacity-100 pl-5 cursor-pointer transition-all duration-200">
             Flags 🚩
           </a>
           
-          <a id="pageb255d6ef5c3dd8ff" href="#b255d6ef5c3dd8ff"
+          <a id="page425a756ff70c6734" href="#425a756ff70c6734"
             class="select-none border-l-[1px] py-0.5 font-semibold pl-[2.0em] opacity-50 hover:opacity-100 dark:border-white border-black border-opacity-100 pl-5 cursor-pointer transition-all duration-200">
             Build project 🔨
           </a>
           
-          <a id="page29c4f556c639c9da" href="#29c4f556c639c9da"
+          <a id="page2149c374d5e18ae4" href="#2149c374d5e18ae4"
             class="select-none border-l-[1px] py-0.5 font-semibold pl-[2.5em] opacity-50 hover:opacity-100 dark:border-white border-black border-opacity-100 pl-5 cursor-pointer transition-all duration-200">
             Usage 🔌
           </a>
           
-          <a id="pageb53a5461fd2a1b29" href="#b53a5461fd2a1b29"
+          <a id="pageb3e4e353132ce86b" href="#b3e4e353132ce86b"
             class="select-none border-l-[1px] py-0.5 font-semibold pl-[2.5em] opacity-50 hover:opacity-100 dark:border-white border-black border-opacity-100 pl-5 cursor-pointer transition-all duration-200">
             Flags 🚩
           </a>
           
-          <a id="page177bdf0b00e13ff0" href="#177bdf0b00e13ff0"
+          <a id="page20fa98f9826859b1" href="#20fa98f9826859b1"
             class="select-none border-l-[1px] py-0.5 font-semibold pl-[2.0em] opacity-50 hover:opacity-100 dark:border-white border-black border-opacity-100 pl-5 cursor-pointer transition-all duration-200">
             Serve project 👨‍🔬
           </a>
           
-          <a id="page2cd0cb58512b8058" href="#2cd0cb58512b8058"
+          <a id="page8d5a69f4dd888b31" href="#8d5a69f4dd888b31"
             class="select-none border-l-[1px] py-0.5 font-semibold pl-[2.5em] opacity-50 hover:opacity-100 dark:border-white border-black border-opacity-100 pl-5 cursor-pointer transition-all duration-200">
             Usage 🔌
           </a>
           
-          <a id="page5d30105c27a9fb36" href="#5d30105c27a9fb36"
+          <a id="page427627122fa672e7" href="#427627122fa672e7"
             class="select-none border-l-[1px] py-0.5 font-semibold pl-[2.5em] opacity-50 hover:opacity-100 dark:border-white border-black border-opacity-100 pl-5 cursor-pointer transition-all duration-200">
             Flags 🚩
           </a>
