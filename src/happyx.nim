@@ -2,7 +2,7 @@
 ## 
 ##   ### Web framework written in Nim with ❤
 ## 
-## [See wiki documentation](/happyx/happyx/main.html)
+## [See wiki documentation](/happyx/main.html)
 ## 
 ## 
 ## ## Why HappyX? 🤔
