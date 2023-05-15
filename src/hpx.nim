@@ -34,7 +34,7 @@ type
 
 
 const
-  VERSION = "0.16.0"
+  VERSION = "0.16.1"
   SPA_MAIN_FILE = "main"
   CONFIG_FILE = "happyx.cfg"
 
@@ -258,10 +258,10 @@ proc createCommand(name: string = "", kind: string = "", templates: bool = false
     selected: int = 0
   let projectTypes = ["SSG", "SPA"]
   styledEcho "New ", fgBlue, styleBright, "HappyX", fgWhite, " project ..."
-  # Get project name
-  styledWrite stdout, fgYellow, align("Project name: ", 14)
   if name == "":
     try:
+      # Get project name
+      styledWrite stdout, fgYellow, align("Project name: ", 14)
       projectName = readLine(stdin)
     except EOFError:
       styledEcho fgRed, "EOF error was occurred!"
@@ -279,7 +279,7 @@ proc createCommand(name: string = "", kind: string = "", templates: bool = false
     projectName = name
 
   if kind == "":
-    styledEcho "Ok, now, choose project type ", fgYellow, "(via arrow keys)"
+    styledEcho "Choose project type ", fgYellow, "(via arrow keys)"
     var
       choosen = false
       needRefresh = true

@@ -2,6 +2,8 @@
 ## 
 ##   ### Web framework written in Nim with ❤
 ## 
+## [See wiki documentation](happyx/main.html)
+## 
 ## 
 ## ## Why HappyX? 🤔
 ## HappyX is SPA/SSG web framework that provides same syntax in both parts of framework (SPA and SSG).
