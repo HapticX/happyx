@@ -357,40 +357,35 @@
       <div class="w-full h-full pt-20 flex px-12 xl:px-32 gap-20">
         <!-- Page data -->
         <div class="flex flex-col gap-4 w-full xl:w-3/4">
-          <h1 class="titleRef" id="d72edcfbba282652">Routing ✨</h1><p>
+          <h1 class="titleRef" id="a5ae80a063dc8c1b">TODO App ✨</h1><p>
 
-</p><div class="quote"><p>HappyX provides powerful routing system for both parts (<code class="command">SSG</code> and <code class="command">SPA</code>) 💡
+</p><h2 class="titleRef" id="1a3e8b8616397a05">Part 1</h2><p>
 
-</p></div><p></p><h2 class="titleRef" id="dcb4da603ace9b67">Path Params 🍍</h2><p>
 
-Every route has typed <code class="command">path params</code> 🙂
+</p><h3 class="titleRef" id="7684b1463419cfa4">Create project</h3><p>
 
-Here is example syntax of route 💡
-</p><pre><button class="flex gap-2 items-center text-white"><p>Copy code</p><i class="fas fa-copy"></i></button><code class="language-nim">"/user{id:int}"
+In this tutorial series we create todo single page application.
+
+We should to create project at first.
+
+</p><pre><button class="flex gap-2 items-center text-white"><p>Copy code</p><i class="fas fa-copy"></i></button><code class="language-bash">hpx create
 </code></pre><p>
 
-This route will match any text like this:
-<ul style="list-style-type: disc"><li><code class="command">/user1</code></li><li><code class="command">/user100</code></li><li><code class="command">/user1293</code></ul></li>
+</p><h3 class="titleRef" id="cc954fb8a7e0db69"><code class="command">main.nim</code></h3><p>
 
-And you can use <code class="command">id</code> as immutable declared variable 🔥
+Let's open main script. We'll see
 
-</p><pre><button class="flex gap-2 items-center text-white"><p>Copy code</p><i class="fas fa-copy"></i></button><code class="language-nim">"/user{id:int}":
-  echo id
+</p><pre><button class="flex gap-2 items-center text-white"><p>Copy code</p><i class="fas fa-copy"></i></button><code class="language-nim">import
+  happyx,
+  components/[hello_world]
+
+
+appRoutes("app"):
+  "/":
+    component HelloWorld
 </code></pre><p>
-
-
-</p><h2 class="titleRef" id="b71cf42231ef74d9">Typing 👮</h2><p>
-
-</p><div class="quote"><p>Every <code class="command">path param</code> is typed 💡
-
-</p></div><p>Routes <code class="command">"/user{id:int}"</code> and <code class="command">"/user{id:word}"</code> is different routes that matches different variables.
-
-In case of <code class="command">{id:int}</code> variable is integer.
-In case of <code class="command">{id:word}</code> variable is string.
-
-Here is list of all available types:
-<ul style="list-style-type: disc"><li><code class="command">int</code>: matches any integer</li><li><code class="command">float</code>: matches any float</li><li><code class="command">bool</code>: matches any boolean (y, n, yes, no, true, false, 1, 0, on, off)</li><li><code class="command">word</code>: matches any word as string</li><li><code class="command">string</code>: matches any string excludes <code class="command">'/'</code> chars</li><li><code class="command">path</code>: matches any string includes <code class="command">'/'</code> chars</li><li><code class="command">regex</code>: matches any regex pattern as string (as example <code class="command">{var:/[a-z][0-9]+/}</code>)</ul></li>
 <hr>This documentation was generated with <a class="hreflink" href="https://github.com/HapticX/hapdoc"><code class="command">HapDoc</code></a>
+
 </p>
         </div>
         <!-- Page navigation (desktop) -->
@@ -399,19 +394,24 @@ Here is list of all available types:
             On this page
           </p>
           
-          <a id="paged72edcfbba282652" href="#d72edcfbba282652"
+          <a id="pagea5ae80a063dc8c1b" href="#a5ae80a063dc8c1b"
             class="select-none border-l-[1px] py-0.5 font-semibold pl-[1.0em] opacity-50 hover:opacity-100 dark:border-white border-black border-opacity-100 pl-5 cursor-pointer transition-all duration-200">
-            Routing ✨
+            TODO App ✨
           </a>
           
-          <a id="pagedcb4da603ace9b67" href="#dcb4da603ace9b67"
+          <a id="page1a3e8b8616397a05" href="#1a3e8b8616397a05"
             class="select-none border-l-[1px] py-0.5 font-semibold pl-[1.5em] opacity-50 hover:opacity-100 dark:border-white border-black border-opacity-100 pl-5 cursor-pointer transition-all duration-200">
-            Path Params 🍍
+            Part 1
           </a>
           
-          <a id="pageb71cf42231ef74d9" href="#b71cf42231ef74d9"
-            class="select-none border-l-[1px] py-0.5 font-semibold pl-[1.5em] opacity-50 hover:opacity-100 dark:border-white border-black border-opacity-100 pl-5 cursor-pointer transition-all duration-200">
-            Typing 👮
+          <a id="page7684b1463419cfa4" href="#7684b1463419cfa4"
+            class="select-none border-l-[1px] py-0.5 font-semibold pl-[2.0em] opacity-50 hover:opacity-100 dark:border-white border-black border-opacity-100 pl-5 cursor-pointer transition-all duration-200">
+            Create project
+          </a>
+          
+          <a id="pagecc954fb8a7e0db69" href="#cc954fb8a7e0db69"
+            class="select-none border-l-[1px] py-0.5 font-semibold pl-[2.0em] opacity-50 hover:opacity-100 dark:border-white border-black border-opacity-100 pl-5 cursor-pointer transition-all duration-200">
+            <code class="command">main.nim</code>
           </a>
           
         </div>
@@ -691,7 +691,7 @@ Here is list of all available types:
     }
 
     
-      const href = document.getElementById("/happyx/routing.htmlhref");
+      const href = document.getElementById("/happyx/tutorials/todoApp/first.htmlhref");
       href.className += " opacity-90 dark:text-accent-color text-light-accent-color";
     
 
