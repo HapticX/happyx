@@ -1117,14 +1117,6 @@ macro pathParams*(body: untyped): untyped =
             "Invalid path param default value (should be atomic const types)" & current,
             lineInfoObj(statement[1])
           )
-      else:
-        let current = $statement.toStrLit
-        throwDefect(
-          InvalidPathParamDefect,
-          "Invalid path param syntax: " & current,
-          lineInfoObj(statement[0])
-        )
-
     
     # infix
     # argument? type[m]
