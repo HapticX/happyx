@@ -318,7 +318,6 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
           )),
           ident(componentData)
         ))
-        echo result.toStrLit
     
     elif statement.kind in [nnkStrLit, nnkTripleStrLit]:
       # "Raw text"

@@ -34,7 +34,7 @@ type
 
 
 const
-  VERSION = "0.15.1"
+  VERSION = "0.16.0"
   SPA_MAIN_FILE = "main"
   CONFIG_FILE = "happyx.cfg"
 
@@ -169,7 +169,7 @@ proc buildCommand(optSize: bool = false): int =
   ## TODO
   styledEcho "Welcome to ", styleBright, fgMagenta, "HappyX ", resetStyle, fgWhite, "builder"
   let project = compileProject()
-  if project.projectType != ptSSG:
+  if project.projectType != ptSPA:
     styledEcho fgRed, "Failure! Project isn't SPA or error wass occurred."
     return QuitFailure
   if not dirExists("build"):
