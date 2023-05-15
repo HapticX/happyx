@@ -236,6 +236,11 @@ window.addEventListener('DOMContentLoaded', main);
     title="component(name, body: untyped): untyped">component(name, body: untyped): untyped</a></li>
 
   </ul>
+  <ul class="simple nested-toc-section">pathParams
+      <li><a class="reference" href="#pathParams.m%2Cuntyped"
+    title="pathParams(body: untyped): untyped">pathParams(body: untyped): untyped</a></li>
+
+  </ul>
   <ul class="simple nested-toc-section">routes
       <li><a class="reference" href="#routes.m%2CApp%2Cuntyped"
     title="routes(app: App; body: untyped): untyped">routes(app: App; body: untyped): untyped</a></li>
@@ -587,6 +592,30 @@ Register a new component.
 
 </dd>
 </div>
+<div id="pathParams.m,untyped">
+<dt><pre><span class="Keyword">macro</span> <a href="#pathParams.m%2Cuntyped"><span class="Identifier">pathParams</span></a><span class="Other">(</span><span class="Identifier">body</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
+<dd>
+
+<p><tt class="docutils literal"><span class="pre"><span class="Identifier">pathParams</span></span></tt> provides path params assignment ✨.</p>
+<p>Simple usage:</p>
+<pre class="listing"><span class="Identifier">pathParams</span><span class="Punctuation">:</span>
+  <span class="Comment"># means that `arg` of type `int` is optional mutable param with default value `5`</span>
+  <span class="Identifier">arg</span><span class="Operator">?</span> <span class="Identifier">int</span><span class="Punctuation">[</span><span class="Identifier">m</span><span class="Punctuation">]</span> <span class="Operator">=</span> <span class="DecNumber">5</span>
+  <span class="Comment"># means that `arg1` of type `string` is optional mutable param with default value `&quot;Hello&quot;`</span>
+  <span class="Identifier">arg1</span><span class="Punctuation">[</span><span class="Identifier">m</span><span class="Punctuation">]</span> <span class="Operator">=</span> <span class="StringLit">&quot;Hello&quot;</span>
+  <span class="Comment"># means that `arg2` of type `string` is immutable regex param</span>
+  <span class="Identifier">arg2</span> <span class="RawData">re&quot;\d+u&quot;</span>
+  <span class="Comment"># means that `arg3` of type `float` is mutable param</span>
+  <span class="Identifier">arg3</span> <span class="Identifier">float</span><span class="Punctuation">[</span><span class="Identifier">m</span><span class="Punctuation">]</span>
+  <span class="Comment"># means that `arg4` of type `int` is optional mutable param with default value `10`</span>
+  <span class="Identifier">arg4</span><span class="Punctuation">:</span>
+    <span class="Keyword">type</span> <span class="Identifier">int</span>
+    <span class="Identifier">mutable</span>
+    <span class="Identifier">optional</span>
+    <span class="Identifier">default</span> <span class="Operator">=</span> <span class="DecNumber">10</span></pre>
+
+</dd>
+</div>
 <div id="routes.m,App,untyped">
 <dt><pre><span class="Keyword">macro</span> <a href="#routes.m%2CApp%2Cuntyped"><span class="Identifier">routes</span></a><span class="Other">(</span><span class="Identifier">app</span><span class="Other">:</span> <a href="renderer.html#App"><span class="Identifier">App</span></a><span class="Other">;</span> <span class="Identifier">body</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
@@ -635,7 +664,7 @@ Starts single page application
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-05-15 04:45:05 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-05-15 11:15:57 UTC</small>
       </div>
     </div>
   </div>

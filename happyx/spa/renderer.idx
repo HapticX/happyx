@@ -23,6 +23,7 @@ buildComponentHtml	happyx/spa/renderer.html#buildComponentHtml.m,untyped,untyped
 routes	happyx/spa/renderer.html#routes.m,App,untyped	renderer: routes(app: App; body: untyped): untyped	
 appRoutes	happyx/spa/renderer.html#appRoutes.m,string,untyped	renderer: appRoutes(name: string; body: untyped): untyped	
 component	happyx/spa/renderer.html#component.m,untyped,untyped	renderer: component(name, body: untyped): untyped	
+pathParams	happyx/spa/renderer.html#pathParams.m,untyped	renderer: pathParams(body: untyped): untyped	
 Basic Usage:	happyx/spa/renderer.html#basic-usagecolon	  Basic Usage:	
 Basic Usage:	happyx/spa/renderer.html#basic-usagecolon	  Basic Usage:	
 Usage:	happyx/spa/renderer.html#usagecolon	  Usage:	
