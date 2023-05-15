@@ -13,7 +13,7 @@ hpx create
 
 You can follow these tutorials:
 
-- [todo app](/happyx/tutorials/todoApp/first.md)
+- [todo app](/happyx/tutorials/todoApp/first.html)
 
 ---
 
