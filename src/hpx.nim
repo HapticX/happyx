@@ -34,7 +34,7 @@ type
 
 
 const
-  VERSION = "0.17.0"
+  VERSION = "0.17.1"
   SPA_MAIN_FILE = "main"
   CONFIG_FILE = "happyx.cfg"
 
@@ -251,11 +251,13 @@ proc buildCommand(optSize: bool = false): int =
   QuitSuccess
 
 
-proc createCommand(name: string = "", kind: string = "", templates: bool = false): int =
+proc createCommand(name: string = "", kind: string = "", templates: bool = false,
+                   pathParams: bool = false): int =
   ## Create command that asks user for project name and project type
   var
     projectName: string
     selected: int = 0
+    imports = @["happyx"]
   let projectTypes = ["SSG", "SPA"]
   styledEcho "New ", fgBlue, styleBright, "HappyX", fgWhite, " project ..."
   if name == "":
@@ -338,6 +340,12 @@ proc createCommand(name: string = "", kind: string = "", templates: bool = false
     "srcDir = src  # source directory\n"
   )
   f.close()
+
+  if pathParams:
+    imports.add("path_params")
+    f = open(projectName / "src" / "path_params.nim", fmWrite)
+    f.write("import happyx\n\n\npathParams:\n  id int\n")
+    f.close()
   
   case selected
   of 0:
@@ -359,20 +367,24 @@ proc createCommand(name: string = "", kind: string = "", templates: bool = false
     f = open(projectName / "src" / fmt"{SPA_MAIN_FILE}.nim", fmWrite)
     if templates:
       f.write(
-        "import happyx\n\ntemplateFolder(\"templates\")\n\n" &
+        "import\n  " & imports.join(",\n  ") & "\n\ntemplateFolder(\"templates\")\n\n" &
         "proc render(title: string): string =\n  renderTemplate(\"index.html\")\n\n" &
         "serve(\"127.0.0.1\", 5000):\n  get \"/{title:string}\":\n    req.answerHtml render(title)\n"
       )
     else:
-      f.write("import happyx\n\nserve(\"127.0.0.1\", 5000):\n  get \"/\":\n    \"Hello, world!\"\n")
+      f.write(
+        "import\n  " & imports.join(",\n  ") &
+        "\n\nserve(\"127.0.0.1\", 5000):\n  get \"/\":\n    \"Hello, world!\"\n"
+      )
     f.close()
   of 1:
     # SPA
+    imports.add("components/[hello_world]")
     createDir(projectName / "public")
     createDir(projectName / "src" / "components")
     f = open(projectName / "src" / fmt"{SPA_MAIN_FILE}.nim", fmWrite)
     f.write(
-      "import\n  happyx,\n  components/[hello_world]\n\n\n" &
+      "import\n  " & imports.join(",\n  ") & "\n\n\n" &
       "appRoutes(\"app\"):\n  \"/\":\n    component HelloWorld\n"
     )
     f.close()
@@ -534,6 +546,7 @@ when isMainModule:
       styledEcho align("name", 12), "|n - Project name"
       styledEcho align("kind", 12), "|k - Project type [SPA, SSG]"
       styledEcho align("templates", 12), "|t - Enable templates (only for SSG)"
+      styledEcho align("path-params", 12), "|p - Use path params assignment"
     else:
       styledEcho fgRed, "Unknown subcommand: ", fgWhite, subcmdHelp
   of "":
