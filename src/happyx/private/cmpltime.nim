@@ -3,7 +3,8 @@ import
   strutils,
   strtabs,
   macros,
-  regex
+  regex,
+  ./exceptions
 
 
 var
@@ -26,6 +27,12 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.
     let name = i.group(0, path)[0]
     if declaredPathParams.hasKey(name):
       path = path.replace(fmt"<{name}>", declaredPathParams[name])
+    else:
+      throwDefect(
+        InvalidPathParamDefect,
+        "Unknown path param name: " & name & "\n" & $routePath.toStrLit,
+        lineInfoObj(routePath)
+      )
   # adaptive $params and repair default params
   path = path.replace(dollarToCurve, "{$1$2$3$4}")
   path = path.replace(defaultWithoutQuestion, "{$1?$2$3$4}")

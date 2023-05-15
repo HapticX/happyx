@@ -20,8 +20,7 @@ import
   tables,
   regex,
   ./tag,
-  ../private/cmpltime,
-  ../private/macro_utils
+  ../private/[cmpltime, macro_utils, exceptions]
 
 when defined(js):
   import
@@ -916,6 +915,13 @@ macro component*(name, body: untyped): untyped =
           else:
             for child in s[1].children:
               scriptStmtList.add(child)
+        else:
+          let structure = $s[0]
+          throwDefect(
+            InvalidComponentSyntaxDefect,
+            fmt"undefined component structure ({structure}).",
+            lineInfoObj(s)
+          )
       
     elif s.kind == nnkPrefix:
       if s[0].kind == nnkIdent and $s[0] == "@" and s.len == 3 and s[1].kind == nnkIdent:
@@ -927,6 +933,12 @@ macro component*(name, body: untyped): untyped =
             newLambda(s[2], arguments)
           ))
           usedLifeCycles[key] = true
+        elif not usedLifeCycles.hasKey(key):
+          throwDefect(
+            InvalidComponentSyntaxDefect,
+            fmt"Wrong component event ({key})",
+            lineInfoObj(s)
+          )
   
   for key in usedLifeCycles.keys:
     if not usedLifeCycles[key]:
@@ -1058,6 +1070,13 @@ macro pathParams*(body: untyped): untyped =
             elif statement[0][2][0].kind == nnkCallStrLit and $statement[0][2][0][0] == "re":
               kind = "regex"
               regexVal = $statement[0][2][0][1]
+            else:
+              let current = $statement[0][2].toStrLit
+              throwDefect(
+                InvalidPathParamDefect,
+                "Invalid path param type: " & current,
+                lineInfoObj(statement[0][2])
+              )
           # type
           elif statement[0][2].kind == nnkIdent:
             kind = $statement[0][2]
@@ -1065,10 +1084,24 @@ macro pathParams*(body: untyped): untyped =
           elif statement[0][2].kind == nnkCallStrLit and $statement[0][2][0] == "re":
             kind = "regex"
             regexVal = $statement[0][2][1]
+          else:
+            let current = $statement[0][2].toStrLit
+            throwDefect(
+              InvalidPathParamDefect,
+              "Invalid path param type: " & current,
+              lineInfoObj(statement[0][2])
+            )
         # default val
         if statement[1].kind in AtomicNodes:
           defaultVal = $statement[1].toStrLit
           isOptional = true
+        else:
+          let current = $statement[1].toStrLit
+          throwDefect(
+            InvalidPathParamDefect,
+            "Invalid path param default value (should be atomic const types)" & current,
+            lineInfoObj(statement[1])
+          )
       # arg[m]
       elif statement[0].kind == nnkBracketExpr and $statement[0][1] == "m":
         isMutable = true
@@ -1077,6 +1110,20 @@ macro pathParams*(body: untyped): untyped =
         if statement[1].kind in AtomicNodes:
           defaultVal = $statement[1].toStrLit
           isOptional = true
+        else:
+          let current = $statement[1].toStrLit
+          throwDefect(
+            InvalidPathParamDefect,
+            "Invalid path param default value (should be atomic const types)" & current,
+            lineInfoObj(statement[1])
+          )
+      else:
+        let current = $statement.toStrLit
+        throwDefect(
+          InvalidPathParamDefect,
+          "Invalid path param syntax: " & current,
+          lineInfoObj(statement[0])
+        )
 
     
     # infix
@@ -1096,6 +1143,13 @@ macro pathParams*(body: untyped): untyped =
           elif statement[2][0].kind == nnkCallStrLit and $statement[2][0][0] == "re":
             kind = "regex"
             regexVal = $statement[2][0][1]
+          else:
+            let current = $statement[2].toStrLit
+            throwDefect(
+              InvalidPathParamDefect,
+              "Invalid path param type: " & current,
+              lineInfoObj(statement[2])
+            )
         # type
         elif statement[2].kind == nnkIdent:
           kind = $statement[2]
@@ -1103,6 +1157,13 @@ macro pathParams*(body: untyped): untyped =
         elif statement[2].kind == nnkCallStrLit and $statement[2][0] == "re":
           kind = "regex"
           regexVal = $statement[2][1]
+        else:
+          let current = $statement[2].toStrLit
+          throwDefect(
+            InvalidPathParamDefect,
+            "Invalid path param type: " & current,
+            lineInfoObj(statement[2])
+          )
     
     # command
     elif statement.kind in [nnkCall, nnkCommand]:
@@ -1116,6 +1177,13 @@ macro pathParams*(body: untyped): untyped =
         elif statement[1][0].kind == nnkCallStrLit and $statement[1][0][0] == "re":
           kind = "regex"
           regexVal = $statement[1][0][1]
+        else:
+          let current = $statement[1].toStrLit
+          throwDefect(
+            InvalidPathParamDefect,
+            "Invalid path param type: " & current,
+            lineInfoObj(statement[1])
+          )
       # type
       elif statement[1].kind == nnkIdent:
         kind = $statement[1]
@@ -1123,6 +1191,13 @@ macro pathParams*(body: untyped): untyped =
       elif statement[1].kind == nnkCallStrLit and $statement[1][0] == "re":
         kind = "regex"
         regexVal = $statement[1][1]
+      else:
+        let current = $statement[1].toStrLit
+        throwDefect(
+          InvalidPathParamDefect,
+          "Invalid path param type: " & current,
+          lineInfoObj(statement[1])
+        )
       # stmt list
       if statement[^1].kind == nnkStmtList:
         for child in statement[^1].children:
@@ -1134,6 +1209,13 @@ macro pathParams*(body: untyped): untyped =
               isOptional = true
             elif childStr == "mutable":
               isMutable = true
+            else:
+              let current = childStr
+              throwDefect(
+                InvalidPathParamDefect,
+                "Invalid flag for path param: " & childStr,
+                lineInfoObj(child)
+              )
           of nnkTypeSection:
             # param type
             if child[0].kind == nnkTypeDef and child[0][0].kind == nnkIdent:
@@ -1146,7 +1228,14 @@ macro pathParams*(body: untyped): untyped =
                 defaultVal = $child[1].toStrLit
                 isOptional = true
           else:
-            discard
+            let
+              current = $child.toStrLit
+              allStatement = ($statement[^1].toStrLit).replace(current, "> " & current)
+            throwDefect(
+              InvalidPathParamDefect,
+              "invalid path param assignment:" & allStatement,
+              lineInfoObj(child)
+            )
     
     if name.len > 0:
       var res = "{" & name
