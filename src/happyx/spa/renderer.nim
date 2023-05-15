@@ -1005,3 +1005,159 @@ macro component*(name, body: untyped): untyped =
       nnkMethodDef
     ),
   )
+
+
+macro pathParams*(body: untyped): untyped =
+  ## `pathParams` provides path params assignment ✨.
+  ## 
+  ## Simple usage:
+  ## 
+  ## .. code-block:: nim
+  ##    pathParams:
+  ##      # means that `arg` of type `int` is optional mutable param with default value `5`
+  ##      arg? int[m] = 5
+  ##      # means that `arg1` of type `string` is optional mutable param with default value `"Hello"`
+  ##      arg1[m] = "Hello"
+  ##      # means that `arg2` of type `string` is immutable regex param
+  ##      arg2 re"\d+u"
+  ##      # means that `arg3` of type `float` is mutable param
+  ##      arg3 float[m]
+  ##      # means that `arg4` of type `int` is optional mutable param with default value `10`
+  ##      arg4:
+  ##        type int
+  ##        mutable
+  ##        optional
+  ##        default = 10
+  ## 
+  for statement in body:
+    var
+      name = ""
+      kind = "string"
+      regexVal = ""
+      isMutable = false
+      isOptional = false
+      defaultVal = ""
+    
+    # Just ident
+    if statement.kind == nnkIdent:
+      name = $statement
+    
+    # Assignment
+    # argument? type[m] = val
+    elif statement.kind == nnkAsgn:
+      if statement[0].kind == nnkInfix and $statement[0][0] == "?":
+        # name
+        name = $statement[0][1]
+        # type
+        if statement[0].len == 3:
+          # type[m]
+          if statement[0][2].kind == nnkBracketExpr and $statement[0][2][1] == "m":
+            isMutable = true
+            if statement[0][2][0].kind == nnkIdent:
+              kind = $statement[0][2][0]
+            elif statement[0][2][0].kind == nnkCallStrLit and $statement[0][2][0][0] == "re":
+              kind = "regex"
+              regexVal = $statement[0][2][0][1]
+          # type
+          elif statement[0][2].kind == nnkIdent:
+            kind = $statement[0][2]
+          # regex type
+          elif statement[0][2].kind == nnkCallStrLit and $statement[0][2][0] == "re":
+            kind = "regex"
+            regexVal = $statement[0][2][1]
+        # default val
+        if statement[1].kind in AtomicNodes:
+          defaultVal = $statement[1].toStrLit
+          isOptional = true
+      # arg[m]
+      elif statement[0].kind == nnkBracketExpr and $statement[0][1] == "m":
+        isMutable = true
+        name = $statement[0][0]
+        # default val
+        if statement[1].kind in AtomicNodes:
+          defaultVal = $statement[1].toStrLit
+          isOptional = true
+
+    
+    # infix
+    # argument? type[m]
+    elif statement.kind == nnkInfix and $statement[0] == "?":
+      # name
+      name = $statement[1]
+      isOptional = true
+      # type
+      if statement.len == 3:
+        # type[m]
+        if statement[2].kind == nnkBracketExpr and $statement[2][1] == "m":
+          isMutable = true
+          if statement[2][0].kind == nnkIdent:
+            kind = $statement[2][0]
+          # regex type
+          elif statement[2][0].kind == nnkCallStrLit and $statement[2][0][0] == "re":
+            kind = "regex"
+            regexVal = $statement[2][0][1]
+        # type
+        elif statement[2].kind == nnkIdent:
+          kind = $statement[2]
+        # regex type
+        elif statement[2].kind == nnkCallStrLit and $statement[2][0] == "re":
+          kind = "regex"
+          regexVal = $statement[2][1]
+    
+    # command
+    elif statement.kind in [nnkCall, nnkCommand]:
+      name = $statement[0]
+      # type[m]
+      if statement[1].kind == nnkBracketExpr and $statement[1][1] == "m":
+        isMutable = true
+        if statement[1][0].kind == nnkIdent:
+          kind = $statement[1][0]
+        # regex type
+        elif statement[1][0].kind == nnkCallStrLit and $statement[1][0][0] == "re":
+          kind = "regex"
+          regexVal = $statement[1][0][1]
+      # type
+      elif statement[1].kind == nnkIdent:
+        kind = $statement[1]
+      # Regex type
+      elif statement[1].kind == nnkCallStrLit and $statement[1][0] == "re":
+        kind = "regex"
+        regexVal = $statement[1][1]
+      # stmt list
+      if statement[^1].kind == nnkStmtList:
+        for child in statement[^1].children:
+          case child.kind
+          # optional, mutable etc.
+          of nnkIdent:
+            let childStr = $child
+            if childStr == "optional":
+              isOptional = true
+            elif childStr == "mutable":
+              isMutable = true
+          of nnkTypeSection:
+            # param type
+            if child[0].kind == nnkTypeDef and child[0][0].kind == nnkIdent:
+              kind = $child[0][0]
+          of nnkAsgn:
+            let childStr = $child[0]
+            # default val
+            if childStr == "default":
+              if child[1].kind in AtomicNodes:
+                defaultVal = $child[1].toStrLit
+                isOptional = true
+          else:
+            discard
+    
+    if name.len > 0:
+      var res = "{" & name
+      if isOptional:
+        res &= "?"
+      if kind != "regex":
+        res &= ":" & kind
+      else:
+        res &= ":/" & regexVal & "/"
+      if isMutable:
+        res &= "[m]"
+      if defaultVal.len > 0:
+        res &= "=" & defaultVal
+      declaredPathParams[name] = res & "}"

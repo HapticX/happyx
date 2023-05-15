@@ -7,6 +7,27 @@ proc render(title: string, left: float, right: float): string =
   renderTemplate("index.html")
 
 
+pathParams:
+  arg1? int[m] = 100
+  arg1? int = 100
+  arg1 int = 100
+  arg1
+  arg1?[m] = 100
+  arg1 int
+  arg1 int[m]
+  arg1 = "100"
+  arg1[m] = 100
+  arg1 re"\d+"
+  arg1? re"\d+"
+  arg1? re"\d+"[m] = 100
+  arg1? re"\d+"[m]
+  arg1 int:
+    type int
+    optional
+    mutable
+    default = 100
+
+
 serve("127.0.0.1", 5000):
   let some = 100
   var counter = 0
@@ -17,6 +38,11 @@ serve("127.0.0.1", 5000):
   get "/":
     inc counter
     "counter = {counter}"
+  
+  get "/mutablePathParams/$arg[m]/<arg1>":
+    arg &= "00000000000"
+    arg1 += 100
+    "\"{arg}\" and \"{arg1}\""
   
   get "/setCheckTo{arg:bool}":
     if arg:
