@@ -12,7 +12,6 @@ pathParams:
   arg1? int = 100
   arg1 int = 100
   arg1
-  arg1?[m] = 100
   arg1 int
   arg1 int[m]
   arg1 = "100"
