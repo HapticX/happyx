@@ -21,3 +21,6 @@ test_ssg/
 # Compiled
 *.js
 *.exe
+
+# Testing :)
+a.nim

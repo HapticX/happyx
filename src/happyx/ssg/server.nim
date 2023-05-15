@@ -302,11 +302,14 @@ macro routes*(server: Server, body: untyped): untyped =
       "/":
         "root"
       "/user{id:int}":
-        fmt"hello, user {id}!"
+        "hello, user {id}!"
       middleware:
         echo req
       notfound:
         "Oops! Not found!"
+  let
+    pathIdent = ident("urlPath")
+    reqMethodIdent = ident("reqMethodStr")
   var
     # Handle requests
     stmtList = newStmtList()
@@ -329,7 +332,6 @@ macro routes*(server: Server, body: untyped): untyped =
     )
     let
       reqMethod = newCall("get", newDotExpr(ident("req"), ident("httpMethod")))
-      reqMethodStringify = newCall("$", reqMethod)
       reqMethodStr = "req.httpMethod.get()"
       url = newStmtList(
         newLetStmt(ident("_val"), newCall("split", newCall("get", newCall("path", ident("req"))), newStrLitNode("?"))),
@@ -346,13 +348,12 @@ macro routes*(server: Server, body: untyped): untyped =
     var path = newDotExpr(newDotExpr(ident("req"), ident("url")), ident("path"))
     let
       reqMethod = newDotExpr(ident("req"), ident("reqMethod"))
-      reqMethodStringify = newCall("$", reqMethod)
       reqMethodStr = "req.reqMethod"
       url = newDotExpr(newDotExpr(ident("req"), ident("url")), ident("query"))
   let directoryFromPath = newCall(
     "&",
     newStrLitNode("."),
-    newCall("replace", path, newLit('/'), ident("DirSep"))
+    newCall("replace", pathIdent, newLit('/'), ident("DirSep"))
   )
   
   procStmt.addPragma(ident("async"))
@@ -362,12 +363,12 @@ macro routes*(server: Server, body: untyped): untyped =
       # "/...": statement list
       if statement[1].kind == nnkStmtList and statement[0].kind == nnkStrLit:
         detectEndFunction(statement[1])
-        let exported = exportRouteArgs(path, statement[0], statement[1])
+        let exported = exportRouteArgs(pathIdent, statement[0], statement[1])
         if exported.len > 0:  # /my/path/with{custom:int}/{param:path}
           ifStmt.add(exported)
         else:  # /just-my-path
           ifStmt.add(newNimNode(nnkElifBranch).add(
-            newCall("==", path, statement[0]), statement[1]
+            newCall("==", pathIdent, statement[0]), statement[1]
           ))
       # notfound: statement list
       elif statement[1].kind == nnkStmtList and statement[0].kind == nnkIdent:
@@ -397,8 +398,8 @@ macro routes*(server: Server, body: untyped): untyped =
                 "and",
                 newCall(
                   "or",
-                  newCall("startsWith", path, statement[1]),
-                  newCall("startsWith", path, newStrLitNode("/" & $statement[1])),
+                  newCall("startsWith", pathIdent, statement[1]),
+                  newCall("startsWith", pathIdent, newStrLitNode("/" & $statement[1])),
                 ), newCall(
                   "fileExists",
                   directoryFromPath
@@ -418,7 +419,7 @@ macro routes*(server: Server, body: untyped): untyped =
             )
           )
           continue
-        let exported = exportRouteArgs(path, statement[1], statement[2])
+        let exported = exportRouteArgs(pathIdent, statement[1], statement[2])
         # Handle websockets
         if name == "WS":
           var
@@ -506,12 +507,12 @@ macro routes*(server: Server, body: untyped): untyped =
           else:
             insertWsList.add(statement[2])
             ifStmt.add(newNimNode(nnkElifBranch).add(
-              newCall("==", path, statement[1]),
+              newCall("==", pathIdent, statement[1]),
               wsStmtList
             ))
           continue
         if exported.len > 0:  # /my/path/with{custom:int}/{param:path}
-          exported[0] = newCall("and", exported[0], newCall("==", reqMethodStringify, newStrLitNode(name)))
+          exported[0] = newCall("and", exported[0], newCall("==", reqMethodIdent, newStrLitNode(name)))
           detectEndFunction(exported[1])
           ifStmt.add(exported)
         else:  # /just-my-path
@@ -519,8 +520,8 @@ macro routes*(server: Server, body: untyped): untyped =
           ifStmt.add(newNimNode(nnkElifBranch).add(
             newCall(
               "and",
-              newCall("==", path, statement[1]),
-              newCall("==", reqMethodStringify, newStrLitNode(name))
+              newCall("==", pathIdent, statement[1]),
+              newCall("==", reqMethodIdent, newStrLitNode(name))
             ),
             statement[2]
           ))
@@ -532,6 +533,7 @@ macro routes*(server: Server, body: untyped): untyped =
     0, newNimNode(nnkLetSection).add(
       newIdentDefs(ident("urlPath"), newEmptyNode(), path),
       newIdentDefs(ident("reqMethod"), newEmptyNode(), reqMethod),
+      newIdentDefs(ident("reqMethodStr"), newEmptyNode(), newCall("$", reqMethod)),
       newIdentDefs(ident("query"), newEmptyNode(), newCall("parseQuery", url)),
     )
   )
@@ -539,7 +541,7 @@ macro routes*(server: Server, body: untyped): untyped =
   when defined(debug):
     stmtList.add(newCall(
       "info",
-      newCall("fmt", newStrLitNode("{" & reqMethodStr & "}::{urlPath}"))
+      newCall("fmt", newStrLitNode("{reqMethod}::{urlPath}"))
     ))
 
   if ifStmt.len > 0:
