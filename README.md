@@ -22,12 +22,10 @@ You can writing Rest API with HappyX also 🔌
 HappyX is very simple to use. Keep it mind 🙂
 
 ## Features ⚡
-- Support `asynchttpserver` as default HTTP server.
-- Support `httpx` via `-d:httpx` and `microhttpserver` via `-d:micro` as alternative HTTP servers.
+- Use `asynchttpserver` as default HTTP server (`httpx` via `-d:httpx` and `microhttpserver` via `-d:micro` as alternative HTTP servers).
 - Support `SPA` on `JS` backend and `SSG` on other backends.
 - Building HTML with `buildHtml` macro.
-- Routing `SPA`/`SSG` with `routes` marco.
-- Powerful path params for routing.
+- Routing and powerful path params.
 - Logging with `-d:debug`.
 - CLI tool for `creating`, `serving` and `building` your projects.
 - Hot code reloading (now only for `SPA` projects).
