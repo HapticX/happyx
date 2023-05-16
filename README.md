@@ -38,14 +38,10 @@ Jester doesn't provides some features that provides Happyx.
 # Get Started 👨‍🔬
 
 ## Installing 📥
-### Via Nimble
-```bash
-nimble install happyx
-```
-### Via GitHub
-```bash
-nimble install https://github.com/HapticX/happyx
-```
+
+|        Nimble           |                   GitHub                           |
+|        :---:            |                   :---:                            |
+| `nimble install happyx` | `nimble install https://github.com/HapticX/happyx` |
 
 ## Usage ▶
 ### SSG
