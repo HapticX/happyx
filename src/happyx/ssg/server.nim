@@ -24,23 +24,26 @@
 ## 
 
 import
-  macros,
-  strutils,
-  strtabs,
-  strformat,
+  # Stdlib
   asyncdispatch,
+  strformat,
   asyncfile,
   segfaults,
-  logging,
+  strutils,
   terminal,
+  strtabs,
+  logging,
+  macros,
+  tables,
   colors,
-  regex,
   json,
   os,
+  # Deps
+  regex,
   websocketx,
+  # HappyX
   ../spa/tag,
-  ../private/cmpltime,
-  ../private/macro_utils
+  ../private/[cmpltime, macro_utils, exceptions]
 
 export
   strutils,
@@ -325,6 +328,9 @@ macro routes*(server: Server, body: untyped): untyped =
       [newEmptyNode(), newIdentDefs(ident("req"), ident("Request"))],
       stmtList
     )
+    caseRequestMethodsStmt = newNimNode(nnkCaseStmt).add(ident("reqMethod"))
+    methodTable = newTable[string, NimNode]()
+
   when defined(httpx):
     var path = newNimNode(nnkBracketExpr).add(
       newCall("split", newCall("get", newCall("path", ident("req"))), newStrLitNode("?")),
@@ -387,6 +393,12 @@ macro routes*(server: Server, body: untyped): untyped =
         of "middleware":
           detectEndFunction(statement[1])
           stmtList.insert(0, statement[1])
+        else:
+          throwDefect(
+            InvalidServeRouteDefect,
+            "Wrong serve route detected ",
+            lineInfoObj(statement[0])
+          )
       # reqMethod "/...":
       #   ...
       elif statement[0].kind == nnkIdent and statement[1].kind == nnkStrLit:
@@ -511,18 +523,16 @@ macro routes*(server: Server, body: untyped): untyped =
               wsStmtList
             ))
           continue
+        let methodName = $name
+        if not methodTable.hasKey(methodName):
+          methodTable[methodName] = newNimNode(nnkIfStmt)
         if exported.len > 0:  # /my/path/with{custom:int}/{param:path}
-          exported[0] = newCall("and", exported[0], newCall("==", reqMethodIdent, newStrLitNode(name)))
           detectEndFunction(exported[1])
-          ifStmt.add(exported)
+          methodTable[methodName].add(exported)
         else:  # /just-my-path
           detectEndFunction(statement[2])
-          ifStmt.add(newNimNode(nnkElifBranch).add(
-            newCall(
-              "and",
-              newCall("==", pathIdent, statement[1]),
-              newCall("==", reqMethodIdent, newStrLitNode(name))
-            ),
+          methodTable[methodName].add(newNimNode(nnkElifBranch).add(
+            newCall("==", pathIdent, statement[1]),
             statement[2]
           ))
     elif statement.kind in [nnkVarSection, nnkLetSection]:
@@ -543,6 +553,14 @@ macro routes*(server: Server, body: untyped): untyped =
       "info",
       newCall("fmt", newStrLitNode("{reqMethod}::{urlPath}"))
     ))
+  
+  stmtList.add(caseRequestMethodsStmt)
+  for key in methodTable.keys():
+    caseRequestMethodsStmt.add(newNimNode(nnkOfBranch).add(
+      newLit(parseEnum[HttpMethod](key)),
+      methodTable[key]
+    ))
+  caseRequestMethodsStmt.add(newNimNode(nnkElse).add(newStmtList()))
 
   if ifStmt.len > 0:
     stmtList.add(ifStmt)
@@ -592,6 +610,7 @@ macro routes*(server: Server, body: untyped): untyped =
 
   for v in countdown(variables.len-1, 0, 1):
     result.insert(0, variables[v])
+  echo result.toStrLit
 
 
 macro initServer*(body: untyped): untyped =

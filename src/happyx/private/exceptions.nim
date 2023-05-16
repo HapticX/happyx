@@ -7,6 +7,7 @@ import
 type
   InvalidComponentSyntaxDefect* = object of Defect
   InvalidPathParamDefect* = object of Defect
+  InvalidServeRouteDefect* = object of Defect
 
 
 proc throwDefect*(defect: typedesc, msg: string, lineInfo: LineInfo) =

@@ -91,36 +91,30 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.
       letSection = newNimNode(if isMutable: nnkVarSection else: nnkLetSection).add(
         newNimNode(nnkIdentDefs).add(ident(name), newEmptyNode())
       )
-      foundGroup = newNimNode(nnkBracketExpr).add(
-        newCall(
-          "group",
-          newNimNode(nnkBracketExpr).add(ident("founded_regexp_matches"), newIntLitNode(0)),
-          newIntLitNode(idx),  # group index,
-          urlPath
-        ),
-        newIntLitNode(0)
+      group = newCall(
+        "group",
+        newNimNode(nnkBracketExpr).add(ident("founded_regexp_matches"), newIntLitNode(0)),
+        newIntLitNode(idx),  # group index,
+        urlPath
       )
+      foundGroup = newNimNode(nnkBracketExpr).add(group, newIntLitNode(0))
+      # _groupLen < 1
+      conditionOptional = newCall("<", newCall("len", group), newIntLitNode(1))
+      # _foundGroupLen == 0
+      conditionSecondOptional = newCall("==", newCall("len", foundGroup), newIntLitNode(0))
+
     if isOptional:
       case argTypeStr:
       of "bool":
         letSection[0].add(newNimNode(nnkIfStmt).add(
             newNimNode(nnkElifBranch).add(
-              newCall(
-                "<",
-                newCall("len", newCall(
-                  "group",
-                  newNimNode(nnkBracketExpr).add(ident("founded_regexp_matches"), newIntLitNode(0)),
-                  newIntLitNode(idx),  # group index,
-                  urlPath
-                )),
-                newIntLitNode(1)
-              ),
+              conditionOptional,
               newLit(
                 if defaultVal == "": false else: parseBool(defaultVal)
               )
             ),
             newNimNode(nnkElifBranch).add(
-              newCall("==", newCall("len", foundGroup), newIntLitNode(0)),
+              conditionSecondOptional,
               newLit(
                 if defaultVal == "": false else: parseBool(defaultVal)
               )
@@ -131,22 +125,13 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.
       of "int":
         letSection[0].add(newNimNode(nnkIfStmt).add(
             newNimNode(nnkElifBranch).add(
-              newCall(
-                "<",
-                newCall("len", newCall(
-                  "group",
-                  newNimNode(nnkBracketExpr).add(ident("founded_regexp_matches"), newIntLitNode(0)),
-                  newIntLitNode(idx),  # group index,
-                  urlPath
-                )),
-                newIntLitNode(1)
-              ),
+              conditionOptional,
               newLit(
                 if defaultVal == "": 0 else: parseInt(defaultVal)
               )
             ),
             newNimNode(nnkElifBranch).add(
-              newCall("==", newCall("len", foundGroup), newIntLitNode(0)),
+              conditionSecondOptional,
               newLit(
                 if defaultVal == "": 0 else: parseInt(defaultVal)
               )
@@ -157,22 +142,13 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.
       of "float":
         letSection[0].add(newNimNode(nnkIfStmt).add(
             newNimNode(nnkElifBranch).add(
-              newCall(
-                "<",
-                newCall("len", newCall(
-                  "group",
-                  newNimNode(nnkBracketExpr).add(ident("founded_regexp_matches"), newIntLitNode(0)),
-                  newIntLitNode(idx),  # group index,
-                  urlPath
-                )),
-                newIntLitNode(1)
-              ),
+              conditionOptional,
               newLit(
                 if defaultVal == "": 0.0 else: parseFloat(defaultVal)
               )
             ),
             newNimNode(nnkElifBranch).add(
-              newCall("==", newCall("len", foundGroup), newIntLitNode(0)),
+              conditionSecondOptional,
               newLit(
                 if defaultVal == "": 0.0 else: parseFloat(defaultVal)
               )
@@ -183,22 +159,13 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.
       of "string", "word":
         letSection[0].add(newNimNode(nnkIfStmt).add(
             newNimNode(nnkElifBranch).add(
-              newCall(
-                "<",
-                newCall("len", newCall(
-                  "group",
-                  newNimNode(nnkBracketExpr).add(ident("founded_regexp_matches"), newIntLitNode(0)),
-                  newIntLitNode(idx),  # group index,
-                  urlPath
-                )),
-                newIntLitNode(1)
-              ),
+              conditionOptional,
               newLit(
                 if defaultVal == "": "" else: defaultVal
               )
             ),
             newNimNode(nnkElifBranch).add(
-              newCall("==", newCall("len", foundGroup), newIntLitNode(0)),
+              conditionSecondOptional,
               newLit(
                 if defaultVal == "": "" else: defaultVal
               )

@@ -218,6 +218,22 @@ proc replaceSelfStateVal(statement: NimNode) =
     i.replaceSelfStateVal()
 
 
+proc pathParamsBoilerplate(node: NimNode, kind, regexVal: var string) =
+  if node.kind == nnkIdent:
+    kind = $node
+  # regex type
+  elif node.kind == nnkCallStrLit and $node[0] == "re":
+    kind = "regex"
+    regexVal = $node[1]
+  else:
+    let current = $node.toStrLit
+    throwDefect(
+      InvalidPathParamDefect,
+      "Invalid path param type: " & current,
+      lineInfoObj(node)
+    )
+
+
 proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
                          componentName: NimNode = newEmptyNode(), inCycle: bool = false,
                          cycleTmpVar: string = "", cycleVars: seq[NimNode] = @[]): NimNode =
@@ -1065,32 +1081,11 @@ macro pathParams*(body: untyped): untyped =
           # type[m]
           if statement[0][2].kind == nnkBracketExpr and $statement[0][2][1] == "m":
             isMutable = true
-            if statement[0][2][0].kind == nnkIdent:
-              kind = $statement[0][2][0]
-            elif statement[0][2][0].kind == nnkCallStrLit and $statement[0][2][0][0] == "re":
-              kind = "regex"
-              regexVal = $statement[0][2][0][1]
-            else:
-              let current = $statement[0][2].toStrLit
-              throwDefect(
-                InvalidPathParamDefect,
-                "Invalid path param type: " & current,
-                lineInfoObj(statement[0][2])
-              )
+            pathParamsBoilerplate(statement[0][2][0], kind, regexVal)
           # type
-          elif statement[0][2].kind == nnkIdent:
-            kind = $statement[0][2]
-          # regex type
-          elif statement[0][2].kind == nnkCallStrLit and $statement[0][2][0] == "re":
-            kind = "regex"
-            regexVal = $statement[0][2][1]
           else:
-            let current = $statement[0][2].toStrLit
-            throwDefect(
-              InvalidPathParamDefect,
-              "Invalid path param type: " & current,
-              lineInfoObj(statement[0][2])
-            )
+            pathParamsBoilerplate(statement[0][2], kind, regexVal)
+            kind = $statement[0][2]
         # default val
         if statement[1].kind in AtomicNodes:
           defaultVal = $statement[1].toStrLit
@@ -1128,34 +1123,10 @@ macro pathParams*(body: untyped): untyped =
       if statement.len == 3:
         # type[m]
         if statement[2].kind == nnkBracketExpr and $statement[2][1] == "m":
-          isMutable = true
-          if statement[2][0].kind == nnkIdent:
-            kind = $statement[2][0]
-          # regex type
-          elif statement[2][0].kind == nnkCallStrLit and $statement[2][0][0] == "re":
-            kind = "regex"
-            regexVal = $statement[2][0][1]
-          else:
-            let current = $statement[2].toStrLit
-            throwDefect(
-              InvalidPathParamDefect,
-              "Invalid path param type: " & current,
-              lineInfoObj(statement[2])
-            )
+          pathParamsBoilerplate(statement[2][0], kind, regexVal)
         # type
-        elif statement[2].kind == nnkIdent:
-          kind = $statement[2]
-        # regex type
-        elif statement[2].kind == nnkCallStrLit and $statement[2][0] == "re":
-          kind = "regex"
-          regexVal = $statement[2][1]
         else:
-          let current = $statement[2].toStrLit
-          throwDefect(
-            InvalidPathParamDefect,
-            "Invalid path param type: " & current,
-            lineInfoObj(statement[2])
-          )
+          pathParamsBoilerplate(statement[2], kind, regexVal)
     
     # command
     elif statement.kind in [nnkCall, nnkCommand]:
@@ -1163,33 +1134,10 @@ macro pathParams*(body: untyped): untyped =
       # type[m]
       if statement[1].kind == nnkBracketExpr and $statement[1][1] == "m":
         isMutable = true
-        if statement[1][0].kind == nnkIdent:
-          kind = $statement[1][0]
-        # regex type
-        elif statement[1][0].kind == nnkCallStrLit and $statement[1][0][0] == "re":
-          kind = "regex"
-          regexVal = $statement[1][0][1]
-        else:
-          let current = $statement[1].toStrLit
-          throwDefect(
-            InvalidPathParamDefect,
-            "Invalid path param type: " & current,
-            lineInfoObj(statement[1])
-          )
+        pathParamsBoilerplate(statement[1][0], kind, regexVal)
       # type
-      elif statement[1].kind == nnkIdent:
-        kind = $statement[1]
-      # Regex type
-      elif statement[1].kind == nnkCallStrLit and $statement[1][0] == "re":
-        kind = "regex"
-        regexVal = $statement[1][1]
       else:
-        let current = $statement[1].toStrLit
-        throwDefect(
-          InvalidPathParamDefect,
-          "Invalid path param type: " & current,
-          lineInfoObj(statement[1])
-        )
+        pathParamsBoilerplate(statement[1], kind, regexVal)
       # stmt list
       if statement[^1].kind == nnkStmtList:
         for child in statement[^1].children:
