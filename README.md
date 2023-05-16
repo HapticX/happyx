@@ -39,9 +39,9 @@ Jester doesn't provides some features that provides Happyx.
 
 ## Installing 📥
 
-|        Nimble           |                   GitHub                           |
-|        :---:            |                   :---:                            |
-| `nimble install happyx` | `nimble install https://github.com/HapticX/happyx` |
+|        Nimble   |  GitHub    |
+|        :---     |  :---      |
+| <pre lang="bash">nimble install happyx</pre> | <pre lang="bash">nimble install https://github.com/HapticX/happyx</pre> |
 
 ## Usage ▶
 ### SSG
@@ -55,8 +55,8 @@ Main script will be able in `/ssg_project/src/main.nim`
 #### Run 💻
 
 |           Default        |             Httpx                 |       microasynchttpserver        |
-|           :---:          |             :---:                 |             :---:                 |
-| `nim c -r -d:debug main` | `nim c -r -d:debug -d:httpx main` | `nim c -r -d:debug -d:micro main` |
+|           :---           |             :---                  |             :---                  |
+| <pre lang="bash">nim c -r -d:debug main</pre> | <pre lang="bash">nim c -r -d:debug -d:httpx main</pre> | <pre lang="bash">nim c -r -d:debug -d:micro main</pre> |
 
 ### SPA
 ```bash
