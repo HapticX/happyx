@@ -7,6 +7,7 @@ start	happyx/ssg/server.html#start.t,Server	server: start(server: Server): untyp
 answer	happyx/ssg/server.html#answer.t,Request,string,HttpCode,HttpHeaders	server: answer(req: Request; message: string; code: HttpCode = Http200; headers: HttpHeaders = newHttpHeaders(\n    [(&quot;Content-Type&quot;, &quot;text/plain; charset=utf-8&quot;)]))	
 answerJson	happyx/ssg/server.html#answerJson.t,Request,untyped,HttpCode	server: answerJson(req: Request; data: untyped; code: HttpCode = Http200): untyped	
 answerHtml	happyx/ssg/server.html#answerHtml.t,Request,,HttpCode	server: answerHtml(req: Request; data: string | TagRef; code: HttpCode = Http200): untyped	
+answerFile	happyx/ssg/server.html#answerFile,Request,string,HttpCode	server: answerFile(req: Request; filename: string; code: HttpCode = Http200): owned(\n    Future[void])	
 `~`	happyx/ssg/server.html#~.m,StringTableRef,untyped	server: `~`(strTable: StringTableRef; key: untyped): untyped	
 routes	happyx/ssg/server.html#routes.m,Server,untyped	server: routes(server: Server; body: untyped): untyped	
 initServer	happyx/ssg/server.html#initServer.m,untyped	server: initServer(body: untyped): untyped	

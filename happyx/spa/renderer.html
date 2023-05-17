@@ -115,7 +115,7 @@ window.addEventListener('DOMContentLoaded', main);
       <li><a class="reference" href="#App"
     title="App = ref object
   appId*: cstring
-  router*: proc ()">App</a></li>
+  router*: proc (force: bool = false)">App</a></li>
   <li><a class="reference" href="#AppEventHandler"
     title="AppEventHandler = proc ()">AppEventHandler</a></li>
   <li><a class="reference" href="#BaseComponent"
@@ -146,6 +146,8 @@ window.addEventListener('DOMContentLoaded', main);
     title="components = newTable(32)">components</a></li>
   <li><a class="reference" href="#currentComponent"
     title="currentComponent = &quot;&quot;">currentComponent</a></li>
+  <li><a class="reference" href="#currentRoute"
+    title="currentRoute: cstring = &quot;/&quot;">currentRoute</a></li>
   <li><a class="reference" href="#eventHandlers"
     title="eventHandlers = newTable(32)">eventHandlers</a></li>
 
@@ -290,7 +292,7 @@ window.addEventListener('DOMContentLoaded', main);
 <div id="App">
 <dt><pre><a href="renderer.html#App"><span class="Identifier">App</span></a> <span class="Other">=</span> <span class="Keyword">ref</span> <span class="Keyword">object</span>
   <span class="Identifier">appId</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cstring</span>
-  <span class="Identifier">router</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Other">)</span>
+  <span class="Identifier">router</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">force</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">)</span>
 </pre></dt>
 <dd>
 
@@ -370,6 +372,14 @@ window.addEventListener('DOMContentLoaded', main);
 </div>
 <div id="currentComponent">
 <dt><pre><a href="renderer.html#currentComponent"><span class="Identifier">currentComponent</span></a> <span class="Other">=</span> <span class="StringLit">&quot;&quot;</span></pre></dt>
+<dd>
+
+
+
+</dd>
+</div>
+<div id="currentRoute">
+<dt><pre><a href="renderer.html#currentRoute"><span class="Identifier">currentRoute</span></a><span class="Other">:</span> <span class="Identifier">cstring</span> <span class="Other">=</span> <span class="StringLit">&quot;/&quot;</span></pre></dt>
 <dd>
 
 
@@ -664,7 +674,7 @@ Starts single page application
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-05-16 07:14:58 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-05-17 12:16:28 UTC</small>
       </div>
     </div>
   </div>
