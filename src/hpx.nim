@@ -34,7 +34,7 @@ type
 
 
 const
-  VERSION = "0.18.1"
+  VERSION = "0.18.2"
   SPA_MAIN_FILE = "main"
   CONFIG_FILE = "happyx.cfg"
 
@@ -79,7 +79,10 @@ proc compileProject(): ProjectData {. discardable .} =
   of ptSPA:
     result.process = startProcess(
       "nim", getCurrentDir() / result.srcDir,
-      ["js", "--hints:off", "--warnings:off", "--opt:size", "--d:danger", result.mainFile]
+      [
+        "js", "-c", "--hints:off", "--warnings:off",
+        "--opt:size", "--d:danger", "-x:off", "-a:off", result.mainFile
+      ]
     )
   of ptSSG:
     return result
@@ -174,12 +177,18 @@ proc buildCommand(optSize: bool = false): int =
     return QuitFailure
   if not dirExists("build"):
     createDir("build")
+    createDir("build" / "public")
   else:
     removeDir("build")
     createDir("build")
+    createDir("build" / "public")
   styledEcho fgYellow, "Copying ..."
   copyFileToDir("src" / fmt"{SPA_MAIN_FILE}.js", "build")
   copyFileToDir("src" / "index.html", "build")
+  if dirExists("src" / "public"):
+    copyDirWithPermissions("src" / "public", "build" / "public")
+  if dirExists("public"):
+    copyDirWithPermissions("public", "build" / "public")
   eraseLine()
   cursorUp()
   styledEcho fgGreen, "Building ..."
@@ -252,7 +261,7 @@ proc buildCommand(optSize: bool = false): int =
 
 
 proc createCommand(name: string = "", kind: string = "", templates: bool = false,
-                   pathParams: bool = false): int =
+                   pathParams: bool = false, useTailwind: bool = false): int =
   ## Create command that asks user for project name and project type
   var
     projectName: string
@@ -380,7 +389,7 @@ proc createCommand(name: string = "", kind: string = "", templates: bool = false
   of 1:
     # SPA
     imports.add("components/[hello_world]")
-    createDir(projectName / "public")
+    createDir(projectName / "src" / "public")
     createDir(projectName / "src" / "components")
     f = open(projectName / "src" / fmt"{SPA_MAIN_FILE}.nim", fmWrite)
     f.write(
@@ -389,9 +398,12 @@ proc createCommand(name: string = "", kind: string = "", templates: bool = false
     )
     f.close()
     f = open(projectName / "src" / "index.html", fmWrite)
+    var additionalHead = ""
+    if useTailwind:
+      additionalHead &= "<script src=\"https://cdn.tailwindcss.com\"></script>\n  "
     f.write(
-      "<!DOCTYPE html><html>\n  <head>\n    <meta charset=\"utf-8\">\n    <title>" & projectName &
-      "</title>\n  </head>\n  <body>\n    " &
+      "<!DOCTYPE html>\n<html>\n  <head>\n    <meta charset=\"utf-8\">\n    <title>" & projectName &
+      "</title>\n  " & additionalHead & "</head>\n  <body>\n    " &
       "<div id=\"app\"></div>\n    <script src=\"" & SPA_MAIN_FILE & ".js\"></script>" &
       "\n  </body>\n</html>"
     )
@@ -466,14 +478,11 @@ proc devCommand(host: string = "127.0.0.1", port: int = 5000,
     
     get "/{file:path}":
       var result = ""
-      let path = getCurrentDir() / "src" / file
+      let path = getCurrentDir() / "src" / file.replace('\\', '/').replace('/', DirSep)
+      echo file
+      echo path
       if fileExists(path):
-        let
-          f = open(path)
-          data = f.readAll()
-        f.close()
-        result = data
-      req.answer(result)
+        await req.answerFile(path)
   deinitLock(L)
   illwillDeinit()
 
@@ -547,6 +556,7 @@ when isMainModule:
       styledEcho align("kind", 12), "|k - Project type [SPA, SSG]"
       styledEcho align("templates", 12), "|t - Enable templates (only for SSG)"
       styledEcho align("path-params", 12), "|p - Use path params assignment"
+      styledEcho align("use-tailwind", 12), "|u - Use Tailwind CSS 3 (only for SPA)"
     else:
       styledEcho fgRed, "Unknown subcommand: ", fgWhite, subcmdHelp
   of "":

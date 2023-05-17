@@ -47,7 +47,7 @@ type
   ComponentEventHandler* = proc(self: BaseComponent)
   App* = ref object
     appId*: cstring
-    router*: proc()
+    router*: proc(force: bool = false)
   BaseComponent* = ref BaseComponentObj
   BaseComponentObj* = object of RootObj
     uniqCompId*: string
@@ -67,6 +67,7 @@ var
   componentEventHandlers* = newTable[int, ComponentEventHandler]()
   components* = newTable[cstring, BaseComponent]()
   currentComponent* = ""
+  currentRoute*: cstring = "/"
 
 # Compile time variables
 var
@@ -96,7 +97,9 @@ when defined(js):
 proc route*(path: cstring) =
   when defined(js):
     {.emit: "window.history.pushState(null, null, '#' + `path`);" .}
-    application.router()
+    let force = currentRoute != path
+    currentRoute = path
+    application.router(force)
 
 
 proc registerApp*(appId: cstring = "app"): App {. discardable .} =
@@ -128,6 +131,9 @@ template start*(app: App) =
   ## Starts single page application
   document.addEventListener("DOMContentLoaded", onDOMContentLoaded)
   window.addEventListener("popstate", onDOMContentLoaded)
+  {. emit: "if (window.location.href.split('#').length == 1) {" .}
+  route("/")
+  {. emit: "}" .}
 
 
 {.push compileTime.}
@@ -321,15 +327,15 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
           ),
           newNimNode(nnkPragma).add(newNimNode(nnkExprColonExpr).add(
             ident("emit"),
-            newStrLitNode(fmt"window.addEventListener('beforeunload', `{componentData}`.`exited`)")
+            newStrLitNode(fmt"window.addEventListener('beforeunload', `{componentData}`.`exited`);")
           )),
           newNimNode(nnkPragma).add(newNimNode(nnkExprColonExpr).add(
             ident("emit"),
-            newStrLitNode(fmt"window.addEventListener('pagehide', `{componentData}`.`pageHide`)")
+            newStrLitNode(fmt"window.addEventListener('pagehide', `{componentData}`.`pageHide`);")
           )),
           newNimNode(nnkPragma).add(newNimNode(nnkExprColonExpr).add(
             ident("emit"),
-            newStrLitNode(fmt"window.addEventListener('pageshow', `{componentData}`.`pageShow`)")
+            newStrLitNode(fmt"window.addEventListener('pageshow', `{componentData}`.`pageShow`);")
           )),
           ident(componentData)
         ))
@@ -650,7 +656,10 @@ macro routes*(app: App, body: untyped): untyped =
     iPath = ident("path")
     iHtml = ident("html")
     iRouter = ident("callRouter")
-    router = newProc(postfix(iRouter, "*"))
+    router = newProc(
+      postfix(iRouter, "*"),
+      [newEmptyNode(), newIdentDefs(ident("force"), ident("bool"), newLit(false))]
+    )
     onDOMContentLoaded = newProc(
       ident("onDOMContentLoaded"),
       [newEmptyNode(), newIdentDefs(ident("ev"), ident("Event"))]
@@ -679,7 +688,10 @@ macro routes*(app: App, body: untyped): untyped =
     ),
     newNimNode(nnkVarSection).add(newIdentDefs(iHtml, ident("TagRef"), newNilLit())),
     newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
-      newCall(">", newCall("len", ident("currentComponent")), newLit(0)),
+      newCall("and",
+        newCall("not", ident("force")),
+        newCall(">", newCall("len", ident("currentComponent")), newLit(0)),
+      ),
       newStmtList(
         newCall(
           "reRender",

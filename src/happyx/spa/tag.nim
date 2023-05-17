@@ -166,8 +166,8 @@ func addArg*(self: TagRef, arg: string) =
 func addArgIter*(self: TagRef, arg: string) =
   if self.args.len == 0:
     self.args.add(arg)
-  elif self.args.len == 1:
-    self.args[0] = arg
+  # elif self.args.len == 1:
+  #   self.args[0] = arg
   for i in self.children:
     i.addArgIter(arg)
 

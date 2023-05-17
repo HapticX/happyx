@@ -9,6 +9,9 @@ nimcache/
 nimble/
 htmldocs/
 
+# builded
+**/build/
+
 # Test SPA project
 test_app/
 

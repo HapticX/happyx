@@ -60,6 +60,17 @@ app.routes:
             echo i
       component ComponentFor(counter = 5)
       {someArg}
+  
+  "/asd":
+    tDiv(a = "1"):
+      b = "2"
+      @click:
+        echo 3
+    tDiv:
+      a = "1"
+      b = "2"
+      @click:
+        echo 3
 
   notfound:
     class = "myClass"

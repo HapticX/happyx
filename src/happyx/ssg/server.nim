@@ -232,13 +232,87 @@ template answerJson*(req: Request, data: untyped, code: HttpCode = Http200,): un
   answer(req, $(%*`data`), code, newHttpHeaders([("Content-Type", "application/json; charset=utf-8")]))
 
 
-template answerHtml*(req: Request, data: string | TagRef, code: HttpCode = Http200,): untyped =
+template answerHtml*(req: Request, data: string | TagRef, code: HttpCode = Http200): untyped =
   ## Answers to request with HTML data
   when data is string:
     let d = data
   else:
     let d = $data
   answer(req, d, code, newHttpHeaders([("Content-Type", "text/html; charset=utf-8")]))
+
+
+proc answerFile*(req: Request, filename: string, code: HttpCode = Http200) {.async.} =
+  let
+    splitted = filename.split('.')
+    extension = if splitted.len > 1: splitted[^1] else: ""
+    contentType =
+      case extension.toLower()
+      # images
+      of "jpeg",  "jpg":
+        "image/jpeg"
+      of "png":
+        "image/png"
+      of "webp":
+        "image/webp"
+      of "svg":
+        "image/svg+xml"
+      of "djvu":
+        "image/vnd.djvu"
+      of "gif":
+        "image/gif"
+      of "tiff":
+        "image/tiff"
+      of "ico":
+        "image/vnd.microsoft.icon"
+      # text
+      of "xml":
+        "text/xml"
+      of "css":
+        "text/css"
+      of "html":
+        "text/html"
+      of "md":
+        "text/markdown"
+      of "php":
+        "text/php"
+      # application
+      of "json":
+        "application/json"
+      of "ogg":
+        "application/ogg"
+      of "pdf":
+        "application/pdf"
+      of "js", "ts":
+        "application/javascript"
+      # audio
+      of "mp3":
+        "audio/mpeg"
+      of "webm":
+        "audio/webm"
+      of "wav":
+        "audio/vnd.wave"
+      of "vorbis":
+        "audio/vorbis"
+      of "aac":
+        "audio/aac"
+      # video
+      of "mp4":
+        "video/mp4"
+      of "mpg", "mpeg", "mp1", "mp2", "m1v", "mpv", "m1a", "m2a", "mpa":
+        "video/mpeg"
+      of "avi":
+        "video/x-msvideo"
+      of "flv":
+        "video/x-flv"
+      # any other
+      else:
+        "text/plain"
+  var f = openAsync(filename, fmRead)
+  let content = await f.readAll()
+  f.close()
+  req.answer(content, headers = newHttpHeaders([
+    ("Content-Type", fmt"{contentType}; charset=utf-8")
+  ]))
 
 
 proc detectEndFunction(node: NimNode) {. compileTime .} =
@@ -465,7 +539,7 @@ macro routes*(server: Server, body: untyped): untyped =
                 when defined(debug):
                   newStmtList(
                     newCall(
-                      "error", newStrLitNode("Socket closed")
+                      "error", newCall("fmt", newStrLitNode("Socket closed: {getCurrentExceptionMsg()}"))
                     ),
                     wsDelStmt,
                     wsClosedConnection
@@ -512,13 +586,15 @@ macro routes*(server: Server, body: untyped): untyped =
               )
             )
           )
+          if not methodTable.hasKey("GET"):
+            methodTable["GET"] = newNimNode(nnkIfStmt)
           if exported.len > 0:
             insertWsList.add(exported[1])
             exported[1].add(wsStmtList)
-            ifStmt.add(exported)
+            methodTable["GET"].add(exported)
           else:
             insertWsList.add(statement[2])
-            ifStmt.add(newNimNode(nnkElifBranch).add(
+            methodTable["GET"].add(newNimNode(nnkElifBranch).add(
               newCall("==", pathIdent, statement[1]),
               wsStmtList
             ))
@@ -610,7 +686,6 @@ macro routes*(server: Server, body: untyped): untyped =
 
   for v in countdown(variables.len-1, 0, 1):
     result.insert(0, variables[v])
-  echo result.toStrLit
 
 
 macro initServer*(body: untyped): untyped =
