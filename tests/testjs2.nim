@@ -1,6 +1,6 @@
 import
   ../src/happyx,
-  components/[hello_world, nested_component, component_for]
+  components/[hello_world, nested_component, component_for, component_with_slot]
 
 
 var app = registerApp()
@@ -12,6 +12,12 @@ app.routes:
     component HelloWorld(counter = 4.0)
     component HelloWorld(counter = 8.0)
     component HelloWorld(counter = 16.0)
+  
+  "/slots":
+    component CompWithSlot:
+      "hello, world!"
+    component CompWithSlot(counter = 100):
+      "Hello"
   
   "/nested":
     component NestedComponent2

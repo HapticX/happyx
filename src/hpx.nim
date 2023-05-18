@@ -34,7 +34,7 @@ type
 
 
 const
-  VERSION = "0.18.2"
+  VERSION = "0.19.0"
   SPA_MAIN_FILE = "main"
   CONFIG_FILE = "happyx.cfg"
 
@@ -479,8 +479,8 @@ proc devCommand(host: string = "127.0.0.1", port: int = 5000,
     get "/{file:path}":
       var result = ""
       let path = getCurrentDir() / "src" / file.replace('\\', '/').replace('/', DirSep)
-      echo file
-      echo path
+      echo "File: ", file
+      echo "Path: ", path
       if fileExists(path):
         await req.answerFile(path)
   deinitLock(L)

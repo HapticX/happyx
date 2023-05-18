@@ -52,6 +52,7 @@ type
   BaseComponentObj* = object of RootObj
     uniqCompId*: string
     isCreated*: bool
+    slot*: TagRef
     created*: ComponentEventHandler  ## Calls before first rendering
     exited*: ComponentEventHandler  ## Calls after last rendering
     updated*: ComponentEventHandler  ## Calls after every rendering
@@ -297,6 +298,11 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
               newCall("&", newStrLitNode(componentName), newCall("$", ident(cycleTmpVar)))
             else:
               newStrLitNode(componentName)
+          componentSlot =
+            if statement.len > 1 and statement[^1].kind == nnkStmtList:
+              statement[^1]
+            else:
+              newStmtList()
         inc uniqueId
         objConstr.add(newNimNode(nnkExprEqExpr).add(
           ident(UniqueComponentId),
@@ -315,6 +321,12 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
               name,
               newCall("registerComponent", stringId, ident(componentNameTmp))
             )
+          ),
+          newAssignment(
+            newDotExpr(ident(componentName), ident("slot")),
+            buildHtmlProcedure(
+              ident("div"), componentSlot, inComponent, ident(componentName), inCycle, cycleTmpVar, cycleVars
+            ).add(newLit(true))
           ),
           newLetStmt(
             ident(componentData),
@@ -459,8 +471,18 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
       inc uniqueId
     
     elif statement.kind == nnkIdent:
-      # tag
-      result.add(newCall("tag", newStrLitNode(getTagName($statement))))
+      if $statement == "slot":
+        # slot
+        if not inComponent:
+          throwDefect(
+            InvalidComponentSyntaxDefect,
+            fmt"Slots can be used only in components!",
+            lineInfoObj(statement)
+          )
+        result.add(newDotExpr(ident("self"), ident("slot")))
+      else:
+        # tag
+        result.add(newCall("tag", newStrLitNode(getTagName($statement))))
     
     elif statement.kind == nnkAccQuoted:
       # `tag`
