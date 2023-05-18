@@ -124,6 +124,7 @@ window.addEventListener('DOMContentLoaded', main);
     title="BaseComponentObj = object of RootObj
   uniqCompId*: string
   isCreated*: bool
+  slot*: TagRef
   created*: ComponentEventHandler ## Calls before first rendering
   exited*: ComponentEventHandler ## Calls after last rendering
   updated*: ComponentEventHandler ## Calls after every rendering
@@ -320,6 +321,7 @@ window.addEventListener('DOMContentLoaded', main);
 <dt><pre><a href="renderer.html#BaseComponentObj"><span class="Identifier">BaseComponentObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <span class="Identifier">RootObj</span>
   <span class="Identifier">uniqCompId</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
   <span class="Identifier">isCreated</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>
+  <span class="Identifier">slot</span><span class="Operator">*</span><span class="Other">:</span> <a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a>
   <span class="Identifier">created</span><span class="Operator">*</span><span class="Other">:</span> <a href="renderer.html#ComponentEventHandler"><span class="Identifier">ComponentEventHandler</span></a> <span class="Comment">## Calls before first rendering</span>
   <span class="Identifier">exited</span><span class="Operator">*</span><span class="Other">:</span> <a href="renderer.html#ComponentEventHandler"><span class="Identifier">ComponentEventHandler</span></a> <span class="Comment">## Calls after last rendering</span>
   <span class="Identifier">updated</span><span class="Operator">*</span><span class="Other">:</span> <a href="renderer.html#ComponentEventHandler"><span class="Identifier">ComponentEventHandler</span></a> <span class="Comment">## Calls after every rendering</span>
@@ -674,7 +676,7 @@ Starts single page application
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-05-17 12:16:28 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-05-18 14:19:14 UTC</small>
       </div>
     </div>
   </div>
