@@ -25,7 +25,9 @@ HappyX is very simple to use. Keep it mind 🙂
 - Use `asynchttpserver` as default HTTP server (`httpx` via `-d:httpx` and `microhttpserver` via `-d:micro` as alternative HTTP servers).
 - Support `SPA` on `JS` backend and `SSG` on other backends.
 - Building HTML with `buildHtml` macro.
+- Request JSON models with `model` macro.
 - Routing and powerful path params.
+- Assignment path params with `pathParams` macro.
 - Logging with `-d:debug`.
 - CLI tool for `creating`, `serving` and `building` your projects.
 - Hot code reloading (now only for `SPA` projects).

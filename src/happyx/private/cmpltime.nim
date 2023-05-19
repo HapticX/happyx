@@ -1,10 +1,15 @@
 import
+  # stdlib
   strformat,
   strutils,
   strtabs,
+  tables,
   macros,
+  # deps
   regex,
-  ./exceptions
+  # happyx
+  ./exceptions,
+  ./macro_utils
 
 
 var
@@ -52,12 +57,15 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.
   routePathStr = routePathStr.replace(re"\{[a-zA-Z][a-zA-Z0-9_]*:path(\[m\])?\}", "([\\S]+)")
   # regex param
   routePathStr = routePathStr.replace(re"\{[a-zA-Z][a-zA-Z0-9_]*:/([\s\S]+?)/(\[m\])?\}", "($1)")
-  # repair param
-  # routePathStr = routePathStr.replace(re"(\([^\(\)]+?\))(?!\?)", "$1?")
+  # Remove models
+  routePathStr = routePathStr.replace(re"\[[a-zA-Z][a-zA-Z0-9_]*:[a-zA-Z][a-zA-Z0-9_]*(\[m\])?\]", "")
   let
     regExp = newCall("re", newStrLitNode("^" & routePathStr & "$"))
     found = path.findAll(
       re"\{([a-zA-Z][a-zA-Z0-9_]*\??)(:(bool|int|float|string|path|word|/[\s\S]+?/))?(\[m\])?(=(\S+?))?\}"
+    )
+    foundModels = path.findAll(
+      re"\[([a-zA-Z][a-zA-Z0-9_]*):([a-zA-Z][a-zA-Z0-9_]*)(\[m\])?\]"
     )
   elifBranch.add(newCall("contains", urlPath, regExp), body)
   var
@@ -192,6 +200,39 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.
     elifBranch[1].insert(0, letSection)
     hasChildren = true
     inc idx
+  
+  let body =
+    when defined(httpx):
+      newCall("get", newDotExpr(ident("req"), ident("body")))
+    else:
+      newDotExpr(ident("req"), ident("body"))
+
+  for i in foundModels:
+    name = i.group(1, path)[0]
+    isMutable = i.group(2, path).len != 0
+    let modelKey = $name
+    elifBranch[1].insert(
+      0,
+      newNimNode(if isMutable: nnkVarSection else: nnkLetSection).add(
+        newIdentDefs(
+          ident(i.group(0, path)[0]),
+          newEmptyNode(),
+          newNimNode(nnkTryStmt).add(
+            newCall("jsonTo" & modelKey, newCall("parseJson", body))
+          ).add(newNimNode(nnkExceptBranch).add(
+            ident("JsonParsingError"),
+            newStmtList(
+              when defined(debug):
+                newCall("echo", newCall("fmt", newStrLitNode("json parse error: {getCurrentExceptionMsg()}")))
+              else:
+                discardStmt,
+              newCall("jsonTo" & modelKey, newCall("newJObject"))
+            )
+          ))
+        )
+      ) 
+    )
+    hasChildren = true
   
   if hasChildren:
     elifBranch[1].insert(

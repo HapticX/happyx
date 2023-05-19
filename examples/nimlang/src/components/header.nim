@@ -6,7 +6,7 @@ import
 
 component Header:
   `template`:
-    tDiv(class = "fixed flex w-full px-2 items-center h-12 justify-between bg-[{backHeader}]"):
+    tDiv(class = "fixed flex w-full items-center h-12 justify-between bg-[{backHeader}]"):
       tDiv(class = "flex items-center h-full px-2 cursor-pointer hover:bg-white/10 active:bg-white/20 transition-colors duration-500"):
         img(src = "public/logo.svg", class="h-6")
         @click:
