@@ -115,7 +115,9 @@ window.addEventListener('DOMContentLoaded', main);
 <li>
   <a class="reference reference-toplevel" href="#7" id="57">Types</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#Server"
+      <li><a class="reference" href="#ModelBase"
+    title="ModelBase = object of RootObj">ModelBase</a></li>
+  <li><a class="reference" href="#Server"
     title="Server = object
   address*: string
   port*: int
@@ -170,6 +172,11 @@ window.addEventListener('DOMContentLoaded', main);
       <ul class="simple nested-toc-section">initServer
       <li><a class="reference" href="#initServer.m%2Cuntyped"
     title="initServer(body: untyped): untyped">initServer(body: untyped): untyped</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">model
+      <li><a class="reference" href="#model.m%2Cuntyped%2Cuntyped"
+    title="model(modelName, body: untyped): untyped">model(modelName, body: untyped): untyped</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">routes
@@ -245,6 +252,14 @@ window.addEventListener('DOMContentLoaded', main);
 <div class="section" id="7">
 <h1><a class="toc-backref" href="#7">Types</a></h1>
 <dl class="item">
+<div id="ModelBase">
+<dt><pre><a href="server.html#ModelBase"><span class="Identifier">ModelBase</span></a> <span class="Other">=</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <span class="Identifier">RootObj</span></pre></dt>
+<dd>
+
+
+
+</dd>
+</div>
 <div id="Server">
 <dt><pre><a href="server.html#Server"><span class="Identifier">Server</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">address</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
@@ -371,6 +386,14 @@ Parses query and retrieves JSON object
 Shortcut for<pre class="listing"><span class="Keyword">proc</span> <span class="Identifier">main</span><span class="Punctuation">(</span><span class="Punctuation">)</span> <span class="Punctuation">{</span><span class="Operator">.</span><span class="Identifier">gcsafe</span><span class="Operator">.</span><span class="Punctuation">}</span> <span class="Operator">=</span>
   <span class="Punctuation">`</span><span class="Identifier">body</span><span class="Punctuation">`</span>
 <span class="Identifier">main</span><span class="Punctuation">(</span><span class="Punctuation">)</span></pre>
+
+</dd>
+</div>
+<div id="model.m,untyped,untyped">
+<dt><pre><span class="Keyword">macro</span> <a href="#model.m%2Cuntyped%2Cuntyped"><span class="Identifier">model</span></a><span class="Other">(</span><span class="Identifier">modelName</span><span class="Other">,</span> <span class="Identifier">body</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
+<dd>
+
+Creates a new request JSON body.
 
 </dd>
 </div>
@@ -501,7 +524,7 @@ The <tt class="docutils literal"><span class="pre"><span class="Identifier">star
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-05-18 14:19:14 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-05-19 15:40:52 UTC</small>
       </div>
     </div>
   </div>

@@ -1,4 +1,5 @@
 Server	happyx/ssg/server.html#Server	server: Server	
+ModelBase	happyx/ssg/server.html#ModelBase	server: ModelBase	
 fgColored	happyx/ssg/server.html#fgColored,string,ForegroundColor	server: fgColored(text: string; clr: ForegroundColor): string	
 fgStyled	happyx/ssg/server.html#fgStyled,string,Style	server: fgStyled(text: string; style: Style): string	
 newServer	happyx/ssg/server.html#newServer,string,int	server: newServer(address: string = &quot;127.0.0.1&quot;; port: int = 5000): Server	
@@ -10,6 +11,7 @@ answerHtml	happyx/ssg/server.html#answerHtml.t,Request,,HttpCode	server: answerH
 answerFile	happyx/ssg/server.html#answerFile,Request,string,HttpCode	server: answerFile(req: Request; filename: string; code: HttpCode = Http200): owned(\n    Future[void])	
 `~`	happyx/ssg/server.html#~.m,StringTableRef,untyped	server: `~`(strTable: StringTableRef; key: untyped): untyped	
 routes	happyx/ssg/server.html#routes.m,Server,untyped	server: routes(server: Server; body: untyped): untyped	
+model	happyx/ssg/server.html#model.m,untyped,untyped	server: model(modelName, body: untyped): untyped	
 initServer	happyx/ssg/server.html#initServer.m,untyped	server: initServer(body: untyped): untyped	
 serve	happyx/ssg/server.html#serve.m,string,int,untyped	server: serve(address: string; port: int; body: untyped): untyped	
 Available Path Params	happyx/ssg/server.html#available-path-params	    Available Path Params	
