@@ -26,6 +26,7 @@ HappyX is very simple to use. Keep it mind 🙂
 - Request JSON models with `model` macro.
 - Routing and powerful path params.
 - Assignment path params with `pathParams` macro.
+- Powerful mounting sub-applications with `mount` macro. 
 - Logging with `-d:debug`.
 - CLI tool for `creating`, `serving` and `building` your projects.
 - Hot code reloading (now only for `SPA` projects).
