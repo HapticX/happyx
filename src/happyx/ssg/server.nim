@@ -223,7 +223,7 @@ template answer*(
   var h = headers
   h.addCORSHeaders()
   when defined(httpx):
-    let headersArr: seq[string] = @[]
+    var headersArr: seq[string] = @[]
     for key, value in h.pairs():
       headersArr.add(key & ": " & value)
     req.send(code, message, headersArr.join("\r\n"))

@@ -35,7 +35,6 @@ macro addCORSHeaders*(headers: HttpHeaders) =
       `headers`["Access-Control-Allow-Methods"] = `allowMethods`
     if `allowOrigins`.len > 0:
       `headers`["Access-Control-Allow-Origin"] = `allowOrigins`
-  echo result.toStrLit
 
 
 macro regCORS*(body: untyped): untyped =
