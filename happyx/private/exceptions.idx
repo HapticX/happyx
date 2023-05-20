@@ -2,4 +2,5 @@ InvalidComponentSyntaxDefect	happyx/private/exceptions.html#InvalidComponentSynt
 InvalidPathParamDefect	happyx/private/exceptions.html#InvalidPathParamDefect	exceptions: InvalidPathParamDefect	
 InvalidServeRouteDefect	happyx/private/exceptions.html#InvalidServeRouteDefect	exceptions: InvalidServeRouteDefect	
 InvalidModelSyntaxDefect	happyx/private/exceptions.html#InvalidModelSyntaxDefect	exceptions: InvalidModelSyntaxDefect	
+InvalidCORSSyntaxDefect	happyx/private/exceptions.html#InvalidCORSSyntaxDefect	exceptions: InvalidCORSSyntaxDefect	
 throwDefect	happyx/private/exceptions.html#throwDefect,typedesc,string,LineInfo	exceptions: throwDefect(defect: typedesc; msg: string; lineInfo: LineInfo)	

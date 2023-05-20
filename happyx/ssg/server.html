@@ -103,7 +103,8 @@ window.addEventListener('DOMContentLoaded', main);
 <li><a class="reference" id="in-route-types-scopecolon_toc" href="#in-route-types-scopecolon">In Route Types Scope:</a></li>
 <li><a class="reference" id="available-websocket-routing_toc" href="#available-websocket-routing">Available Websocket Routing</a></li>
 <li><a class="reference" id="in-websocket-scopecolon_toc" href="#in-websocket-scopecolon">In Websocket Scope:</a></li>
-</ul><li><a class="reference" id="server_toc" href="#server">Server</a></li>
+</ul><li><a class="reference" id="example_toc" href="#example">Example</a></li>
+<li><a class="reference" id="server_toc" href="#server">Server</a></li>
 <ul class="simple"><li><a class="reference" id="server-queries_toc" href="#server-queries">Queries</a></li>
 <li><a class="reference" id="server-websockets_toc" href="#server-websockets">WebSockets</a></li>
 </ul><li>
@@ -247,7 +248,7 @@ window.addEventListener('DOMContentLoaded', main);
   <div class="section" id="6">
 <h1><a class="toc-backref" href="#6">Imports</a></h1>
 <dl class="item">
-<a class="reference external" href="../spa/tag.html">../spa/tag</a>, <a class="reference external" href="../private/cmpltime.html">../private/cmpltime</a>, <a class="reference external" href="../private/macro_utils.html">../private/macro_utils</a>, <a class="reference external" href="../private/exceptions.html">../private/exceptions</a>
+<a class="reference external" href="cors.html">cors</a>, <a class="reference external" href="../spa/tag.html">../spa/tag</a>, <a class="reference external" href="../private/cmpltime.html">../private/cmpltime</a>, <a class="reference external" href="../private/macro_utils.html">../private/macro_utils</a>, <a class="reference external" href="../private/exceptions.html">../private/exceptions</a>
 </dl></div>
 <div class="section" id="7">
 <h1><a class="toc-backref" href="#7">Types</a></h1>
@@ -437,8 +438,7 @@ You can create routes with this marco
 <li><tt class="docutils literal"><span class="pre"><span class="Identifier">wsConnections</span></span></tt>: All websocket connections</li>
 </ul>
 
-<p><strong class="examples_text">Example:</strong></p>
-<pre class="listing"><span class="Keyword">var</span> <span class="Identifier">myServer</span> <span class="Operator">=</span> <span class="Identifier">newServer</span><span class="Punctuation">(</span><span class="Punctuation">)</span>
+<h1><a class="toc-backref" id="example" href="#example">Example</a></h1><pre class="listing"><span class="Keyword">var</span> <span class="Identifier">myServer</span> <span class="Operator">=</span> <span class="Identifier">newServer</span><span class="Punctuation">(</span><span class="Punctuation">)</span>
 <span class="Identifier">myServer</span><span class="Operator">.</span><span class="Identifier">routes</span><span class="Punctuation">:</span>
   <span class="StringLit">&quot;/&quot;</span><span class="Punctuation">:</span>
     <span class="StringLit">&quot;root&quot;</span>
@@ -524,7 +524,7 @@ The <tt class="docutils literal"><span class="pre"><span class="Identifier">star
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-05-20 01:41:16 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-05-20 09:43:27 UTC</small>
       </div>
     </div>
   </div>

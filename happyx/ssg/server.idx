@@ -19,6 +19,7 @@ Available Route Types	happyx/ssg/server.html#available-route-types	    Available
 In Route Types Scope:	happyx/ssg/server.html#in-route-types-scopecolon	    In Route Types Scope:	
 Available Websocket Routing	happyx/ssg/server.html#available-websocket-routing	    Available Websocket Routing	
 In Websocket Scope:	happyx/ssg/server.html#in-websocket-scopecolon	    In Websocket Scope:	
+Example	happyx/ssg/server.html#example	 Example	
 Server	happyx/ssg/server.html#server	 Server	
 Queries	happyx/ssg/server.html#server-queries	  Queries	
 WebSockets	happyx/ssg/server.html#server-websockets	  WebSockets	
