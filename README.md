@@ -75,3 +75,8 @@ hpx dev --reload
 
 # Contributing 🌀
 See [Contributing.md](https://github.com/HapticX/happyx/blob/master/.github/CONTRIBUTING.md) for more information
+
+
+## Star History ✨
+
+[![Star History Chart](https://api.star-history.com/svg?repos=HapticX/happyx&type=Date)](https://star-history.com/#HapticX/happyx&Date)
