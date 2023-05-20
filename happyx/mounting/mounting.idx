@@ -1,0 +1,3 @@
+registeredMounts	happyx/mounting/mounting.html#registeredMounts	mounting: registeredMounts	
+findAndReplaceMount	happyx/mounting/mounting.html#findAndReplaceMount,NimNode	mounting: findAndReplaceMount(body: NimNode)	
+mount	happyx/mounting/mounting.html#mount.m,untyped,untyped	mounting: mount(mountName, body: untyped): untyped	

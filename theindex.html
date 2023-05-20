@@ -70,7 +70,7 @@ window.addEventListener('DOMContentLoaded', main);
 <div class="document" id="documentId">
   <div class="container">
     <h1 class="title">Index</h1>
-    Modules: <a href="happyx.html">happyx</a>, <a href="happyx/private/cmpltime.html">happyx/private/cmpltime</a>, <a href="happyx/private/exceptions.html">happyx/private/exceptions</a>, <a href="happyx/private/macro_utils.html">happyx/private/macro_utils</a>, <a href="happyx/spa/renderer.html">happyx/spa/renderer</a>, <a href="happyx/spa/state.html">happyx/spa/state</a>, <a href="happyx/spa/tag.html">happyx/spa/tag</a>, <a href="happyx/ssg/cors.html">happyx/ssg/cors</a>, <a href="happyx/ssg/server.html">happyx/ssg/server</a>, <a href="happyx/tmpl_engine/engine.html">happyx/tmpl_engine/engine</a>.<br/><p /><h2>API symbols</h2>
+    Modules: <a href="happyx.html">happyx</a>, <a href="happyx/mounting/mounting.html">happyx/mounting/mounting</a>, <a href="happyx/private/cmpltime.html">happyx/private/cmpltime</a>, <a href="happyx/private/exceptions.html">happyx/private/exceptions</a>, <a href="happyx/private/macro_utils.html">happyx/private/macro_utils</a>, <a href="happyx/spa/renderer.html">happyx/spa/renderer</a>, <a href="happyx/spa/state.html">happyx/spa/state</a>, <a href="happyx/spa/tag.html">happyx/spa/tag</a>, <a href="happyx/ssg/cors.html">happyx/ssg/cors</a>, <a href="happyx/ssg/server.html">happyx/ssg/server</a>, <a href="happyx/tmpl_engine/engine.html">happyx/tmpl_engine/engine</a>.<br/><p /><h2>API symbols</h2>
 <dl><dt><a name="%60%21%3D%60" href="#%60%21%3D%60"><span>`!=`:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="state: `!=`[T](self`gensym1, other`gensym1: State[T]): bool" href="happyx/spa/state.html#%21%3D%2C%2C">state: `!=`[T](self`gensym1, other`gensym1: State[T]): bool</a></li>
@@ -389,6 +389,10 @@ window.addEventListener('DOMContentLoaded', main);
 <li><a class="reference external"
           data-doc-search-tag="server: fgStyled(text: string; style: Style): string" href="happyx/ssg/server.html#fgStyled%2Cstring%2CStyle">server: fgStyled(text: string; style: Style): string</a></li>
           </ul></dd>
+<dt><a name="findAndReplaceMount" href="#findAndReplaceMount"><span>findAndReplaceMount:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="mounting: findAndReplaceMount(body: NimNode)" href="happyx/mounting/mounting.html#findAndReplaceMount%2CNimNode">mounting: findAndReplaceMount(body: NimNode)</a></li>
+          </ul></dd>
 <dt><a name="findByTag" href="#findByTag"><span>findByTag:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="tag: findByTag(self: TagRef; tag: string): seq[TagRef]" href="happyx/spa/tag.html#findByTag%2CTagRef%2Cstring">tag: findByTag(self: TagRef; tag: string): seq[TagRef]</a></li>
@@ -465,6 +469,14 @@ window.addEventListener('DOMContentLoaded', main);
 <li><a class="reference external"
           data-doc-search-tag="server: ModelBase" href="happyx/ssg/server.html#ModelBase">server: ModelBase</a></li>
           </ul></dd>
+<dt><a name="mount" href="#mount"><span>mount:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="mounting: mount(mountName, body: untyped): untyped" href="happyx/mounting/mounting.html#mount.m%2Cuntyped%2Cuntyped">mounting: mount(mountName, body: untyped): untyped</a></li>
+          </ul></dd>
+<dt><a name="MountDefect" href="#MountDefect"><span>MountDefect:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="exceptions: MountDefect" href="happyx/private/exceptions.html#MountDefect">exceptions: MountDefect</a></li>
+          </ul></dd>
 <dt><a name="newLambda" href="#newLambda"><span>newLambda:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="macro_utils: newLambda(body: NimNode; params: seq[NimNode] | NimNode = @[newEmptyNode()];
@@ -494,6 +506,10 @@ window.addEventListener('DOMContentLoaded', main);
 <dt><a name="registerComponent" href="#registerComponent"><span>registerComponent:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="renderer: registerComponent(name: cstring; component: BaseComponent): BaseComponent" href="happyx/spa/renderer.html#registerComponent%2Ccstring%2CBaseComponent">renderer: registerComponent(name: cstring; component: BaseComponent): BaseComponent</a></li>
+          </ul></dd>
+<dt><a name="registeredMounts" href="#registeredMounts"><span>registeredMounts:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="mounting: registeredMounts" href="happyx/mounting/mounting.html#registeredMounts">mounting: registeredMounts</a></li>
           </ul></dd>
 <dt><a name="remember" href="#remember"><span>remember:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -644,7 +660,7 @@ window.addEventListener('DOMContentLoaded', main);
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-05-20 10:48:38 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-05-20 13:44:00 UTC</small>
       </div>
     </div>
   </div>
