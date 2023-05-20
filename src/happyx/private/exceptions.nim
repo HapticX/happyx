@@ -9,6 +9,7 @@ type
   InvalidPathParamDefect* = object of Defect
   InvalidServeRouteDefect* = object of Defect
   InvalidModelSyntaxDefect* = object of Defect
+  InvalidCORSSyntaxDefect* = object of Defect
 
 
 proc throwDefect*(defect: typedesc, msg: string, lineInfo: LineInfo) =
@@ -16,6 +17,6 @@ proc throwDefect*(defect: typedesc, msg: string, lineInfo: LineInfo) =
   raise newException(
     defect,
     "\n\x1b[31mUnhandled exception " & $defect &
-    fmt" in {lineInfo.filename} at {lineInfo.line}:{lineInfo.column}" &
+    fmt" in {lineInfo.filename}({lineInfo.line}, {lineInfo.column})" &
     "\n  " & lines.join("\n  ") & "\e[0m"
   )

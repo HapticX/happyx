@@ -42,6 +42,7 @@ import
   regex,
   websocketx,
   # HappyX
+  ./cors,
   ../spa/tag,
   ../private/[cmpltime, macro_utils, exceptions]
 
@@ -219,13 +220,15 @@ template answer*(
   ##   `message: string`: The message that we want to include in the response body.
   ##   `code: HttpCode = Http200`: The HTTP status code that we want to send in the response.
   ##                               This argument is optional, with a default value of Http200 (OK).
+  var h = headers
+  h.addCORSHeaders()
   when defined(httpx):
-    var headersArr: seq[string] = @[]
-    for key, value in headers.pairs():
+    let headersArr: seq[string] = @[]
+    for key, value in h.pairs():
       headersArr.add(key & ": " & value)
     req.send(code, message, headersArr.join("\r\n"))
   else:
-    await req.respond(code, message, headers)
+    await req.respond(code, message, h)
 
 
 template answerJson*(req: Request, data: untyped, code: HttpCode = Http200,): untyped =
@@ -247,9 +250,14 @@ proc answerFile*(req: Request, filename: string, code: HttpCode = Http200) {.asy
     splitted = filename.split('.')
     extension = if splitted.len > 1: splitted[^1] else: ""
     contentType =
+      # https://datatracker.ietf.org/doc/html/rfc2045
+      # https://datatracker.ietf.org/doc/html/rfc2046
+      # https://datatracker.ietf.org/doc/html/rfc4288
+      # https://datatracker.ietf.org/doc/html/rfc4289
+      # https://datatracker.ietf.org/doc/html/rfc4855
       case extension.toLower()
       # images
-      of "jpeg",  "jpg":
+      of "jpeg", "jpg":
         "image/jpeg"
       of "png":
         "image/png"
@@ -283,6 +291,12 @@ proc answerFile*(req: Request, filename: string, code: HttpCode = Http200) {.asy
         "application/ogg"
       of "pdf":
         "application/pdf"
+      of "zip":
+        "application/zip"
+      of "gzip":
+        "application/gzip"
+      of "doc", "docx":
+        "application/mcword"
       of "js", "ts":
         "application/javascript"
       # audio

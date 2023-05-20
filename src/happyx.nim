@@ -181,10 +181,11 @@
 ## 
 when not defined(js):
   import
-    happyx/ssg/[server]
+    happyx/ssg/[server, cors]
 
   export
-    server
+    server,
+    cors
 
 import
   happyx/spa/[renderer, state],
