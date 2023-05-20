@@ -44,7 +44,8 @@ import
   # HappyX
   ./cors,
   ../spa/tag,
-  ../private/[cmpltime, macro_utils, exceptions]
+  ../private/[cmpltime, macro_utils, exceptions],
+  ../mounting/mounting
 
 export
   strutils,
@@ -475,6 +476,8 @@ macro routes*(server: Server, body: untyped): untyped =
   )
   
   procStmt.addPragma(ident("async"))
+
+  body.findAndReplaceMount()
   
   for statement in body:
     if statement.kind in [nnkCall, nnkCommand]:

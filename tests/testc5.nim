@@ -18,3 +18,12 @@ serve("127.0.0.1", 5000):
       "age": myModel.age,
       "data": myModel.data
     }}
+
+  "/mutable[myModel:MyModel[m]]":
+    echo myModel.username, ", ", myModel.age, ", ", myModel.data
+    myModel.age += 10
+    return { "response": {
+      "username": myModel.username,
+      "age": myModel.age,
+      "data": myModel.data
+    }}

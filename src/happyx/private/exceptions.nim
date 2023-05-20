@@ -10,6 +10,7 @@ type
   InvalidServeRouteDefect* = object of Defect
   InvalidModelSyntaxDefect* = object of Defect
   InvalidCORSSyntaxDefect* = object of Defect
+  MountDefect* = object of Defect
 
 
 proc throwDefect*(defect: typedesc, msg: string, lineInfo: LineInfo) =

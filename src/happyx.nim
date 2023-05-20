@@ -189,9 +189,11 @@ when not defined(js):
 
 import
   happyx/spa/[renderer, state],
-  happyx/tmpl_engine/[engine]
+  happyx/tmpl_engine/[engine],
+  happyx/mounting/[mounting]
 
 export
   renderer,
   state,
-  engine
+  engine,
+  mounting

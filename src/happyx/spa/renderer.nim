@@ -20,7 +20,8 @@ import
   tables,
   regex,
   ./tag,
-  ../private/[cmpltime, macro_utils, exceptions]
+  ../private/[cmpltime, macro_utils, exceptions],
+  ../mounting/mounting
 
 when defined(js):
   import
@@ -728,6 +729,8 @@ macro routes*(app: App, body: untyped): untyped =
     ))
   )
 
+  body.findAndReplaceMount()
+  
   for statement in body:
     if statement.kind in [nnkCommand, nnkCall]:
       if statement.len == 2 and statement[0].kind == nnkStrLit:
