@@ -388,17 +388,19 @@ macro routes*(server: Server, body: untyped): untyped =
   ## - `wsClient`: Current websocket client
   ## - `wsConnections`: All websocket connections
   ## 
-  runnableExamples:
-    var myServer = newServer()
-    myServer.routes:
-      "/":
-        "root"
-      "/user{id:int}":
-        "hello, user {id}!"
-      middleware:
-        echo req
-      notfound:
-        "Oops! Not found!"
+  ## # Example
+  ## 
+  ## .. code-block:: nim
+  ##    var myServer = newServer()
+  ##    myServer.routes:
+  ##      "/":
+  ##        "root"
+  ##      "/user{id:int}":
+  ##        "hello, user {id}!"
+  ##      middleware:
+  ##        echo req
+  ##      notfound:
+  ##        "Oops! Not found!"
   let
     pathIdent = ident("urlPath")
     reqMethodIdent = ident("reqMethodStr")
