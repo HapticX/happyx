@@ -330,7 +330,24 @@ proc answerFile*(req: Request, filename: string, code: HttpCode = Http200) {.asy
   ]))
 
 
-proc detectEndFunction(node: NimNode) {. compileTime .} =
+proc detectReturnStmt(node: NimNode, replaceReturn: bool = false) {. compileTime .} =
+  # Replaces all `return` statements with req answer*
+  for i in 0..<node.len:
+    var child = node[i]
+    if child.kind == nnkReturnStmt and child[0].kind != nnkEmpty:
+      if child[0].kind == nnkCall and $child[0][0] == "buildHtml":
+        node[i] = newCall("answerHtml", ident("req"), child[0])
+      elif child[0].kind == nnkTableConstr:
+        node[i] = newCall("answerJson", ident("req"), child[0])
+      elif child[0].kind in [nnkStrLit, nnkTripleStrLit]:
+        node[i] = newCall("answer", ident("req"), newCall("fmt", child[0]))
+      else:
+        node[i] = newCall("answer", ident("req"), child[0])
+    else:
+      node[i].detectReturnStmt(true)
+  # Replace last node
+  if replaceReturn:
+    return
   if node[^1].kind in [nnkCall, nnkCommand]:
     if node[^1][0].kind == nnkIdent and re"^(answer|echo)" in $node[^1][0]:
       return
@@ -338,7 +355,11 @@ proc detectEndFunction(node: NimNode) {. compileTime .} =
       return
   if not node[^1].isExpr:
     return
-  if node[^1].kind in [nnkStrLit, nnkTripleStrLit]:
+  if node[^1].kind == nnkCall and $node[^1][0] == "buildHtml":
+    node[^1] = newCall("answerHtml", ident("req"), node[^1])
+  elif node[^1].kind == nnkTableConstr:
+    node[^1] = newCall("answerJson", ident("req"), node[^1])
+  elif node[^1].kind in [nnkStrLit, nnkTripleStrLit]:
     node[^1] = newCall("answer", ident("req"), newCall("fmt", node[^1]))
   else:
     node[^1] = newCall("answer", ident("req"), node[^1])
@@ -459,7 +480,7 @@ macro routes*(server: Server, body: untyped): untyped =
     if statement.kind in [nnkCall, nnkCommand]:
       # "/...": statement list
       if statement[1].kind == nnkStmtList and statement[0].kind == nnkStrLit:
-        detectEndFunction(statement[1])
+        detectReturnStmt(statement[1])
         let exported = exportRouteArgs(pathIdent, statement[0], statement[1])
         if exported.len > 0:  # /my/path/with{custom:int}/{param:path}
           ifStmt.add(exported)
@@ -479,10 +500,10 @@ macro routes*(server: Server, body: untyped): untyped =
         of "wserror":
           wsError = statement[1]
         of "notfound":
-          detectEndFunction(statement[1])
+          detectReturnStmt(statement[1])
           notFoundNode = statement[1]
         of "middleware":
-          detectEndFunction(statement[1])
+          detectReturnStmt(statement[1])
           stmtList.insert(0, statement[1])
         else:
           throwDefect(
@@ -620,10 +641,10 @@ macro routes*(server: Server, body: untyped): untyped =
         if not methodTable.hasKey(methodName):
           methodTable[methodName] = newNimNode(nnkIfStmt)
         if exported.len > 0:  # /my/path/with{custom:int}/{param:path}
-          detectEndFunction(exported[1])
+          detectReturnStmt(exported[1])
           methodTable[methodName].add(exported)
         else:  # /just-my-path
-          detectEndFunction(statement[2])
+          detectReturnStmt(statement[2])
           methodTable[methodName].add(newNimNode(nnkElifBranch).add(
             newCall("==", pathIdent, statement[1]),
             statement[2]

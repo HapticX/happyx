@@ -11,5 +11,5 @@ regCORS:
 
 serve("127.0.0.1", 5000):
   "/":
-    "Hello, world!"
+    return "Hello, world!"
 

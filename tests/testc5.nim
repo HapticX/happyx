@@ -13,7 +13,7 @@ serve("127.0.0.1", 5000):
   # MyModel is model name
   "/[myModel:MyModel]":
     echo myModel.username, ", ", myModel.age, ", ", myModel.data
-    req.answerJson { "response": {
+    return { "response": {
       "username": myModel.username,
       "age": myModel.age,
       "data": myModel.data

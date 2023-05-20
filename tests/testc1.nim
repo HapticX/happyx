@@ -25,7 +25,7 @@ serve("127.0.0.1", 5000):
       fmt"Oops! Unknown operator"
   
   get "/pattern{patternId:/[a-zA-Z0-9_]+/}":
-    fmt"pattern ID is {patternId}"
+    "pattern ID is {patternId}"
   
   get "/file/{file:path}":
     echo file
@@ -39,7 +39,7 @@ serve("127.0.0.1", 5000):
 
   post "/user":
     inc userId
-    req.answerJson {"response": {"id": %userId}}
+    return {"response": {"id": %userId}}
 
   notfound:
     "Oops! Not found!"
