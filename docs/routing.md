@@ -78,6 +78,27 @@ pathParams:
     default = 10
 ```
 
+## Mounting 🔌
+
+HappyX routing supports mounting also 🔥
+
+Here is mounting declaration
+```nim
+mount Settings:
+  "/":
+    ...
+
+mount Profile:
+  mount "/settings" -> Settings
+  mount "/config" -> Settings
+```
+
+And here is mounting usage 🎈
+```nim
+serve(...):  # or appRoutes
+  mount "/profile" -> Profile
+```
+
 ---
 
 This documentation was generated with [`HapDoc`](https://github.com/HapticX/hapdoc)
