@@ -360,7 +360,43 @@
       <div class="w-full h-full pt-20 flex px-12 xl:px-32 gap-20">
         <!-- Page data -->
         <div class="flex flex-col gap-4 w-full xl:w-3/4">
-          <h1 class="titleRef" id="e6e1dd0ac8571704">SSG ✨</h1><p>
+          <h1 class="titleRef" id="53fbe16d281f0b50">SSG ✨</h1><p>
+
+HappyX provides powerful tools to create server side applications.
+
+</p><h2 class="titleRef" id="b9d201cd41d7ca67">CORS ⚙</h2><p>
+To setting Cross-Origin Resource Sharing (CORS) you should use <code class="command">regCORS</code> macro
+
+</p><pre><button class="flex gap-2 items-center text-white"><p>Copy code</p><i class="fas fa-copy"></i></button><code class="language-nim">regCORS:
+  credentials: true
+  origins: "domen.com"  # or "*"
+  methods: ["GET", "POST"]  # or "*"
+  headers: "*"  # or ["Header-Name", "Other-Header"]
+</code></pre><p>
+
+
+</p><h2 class="titleRef" id="e1dca8da07487259">Request Models 🔨</h2><p>
+
+In RestAPI you can send JSON body. To work with it you should use <code class="command">model</code> macro
+
+</p><h3 class="titleRef" id="9eabcfdbfb3c76e7">Model Declaring ✨</h3><p>
+</p><pre><button class="flex gap-2 items-center text-white"><p>Copy code</p><i class="fas fa-copy"></i></button><code class="language-nim">model User:
+  login: string
+  password: string
+  optionalData: string = "something"
+</code></pre><p>
+
+</p><h3 class="titleRef" id="33599992c7382659">Model Usage 🎈</h3><p>
+</p><pre><button class="flex gap-2 items-center text-white"><p>Copy code</p><i class="fas fa-copy"></i></button><code class="language-nim">serve(...):
+  var id = 0
+<br>
+  "/path[u:User]":
+    echo u.login
+    inc id
+    return {"response": {
+      "id": id
+    }}
+</code></pre><p>
 <hr>This documentation was generated with <a class="hreflink" href="https://github.com/HapticX/hapdoc"><code class="command">HapDoc</code></a>
 </p>
         </div>
@@ -370,9 +406,29 @@
             On this page
           </p>
           
-          <a id="pagee6e1dd0ac8571704" href="#e6e1dd0ac8571704"
+          <a id="page53fbe16d281f0b50" href="#53fbe16d281f0b50"
             class="select-none border-l-[1px] py-0.5 font-semibold pl-[1.0em] opacity-50 hover:opacity-100 dark:border-white border-black border-opacity-100 pl-5 cursor-pointer transition-all duration-200">
             SSG ✨
+          </a>
+          
+          <a id="pageb9d201cd41d7ca67" href="#b9d201cd41d7ca67"
+            class="select-none border-l-[1px] py-0.5 font-semibold pl-[1.5em] opacity-50 hover:opacity-100 dark:border-white border-black border-opacity-100 pl-5 cursor-pointer transition-all duration-200">
+            CORS ⚙
+          </a>
+          
+          <a id="pagee1dca8da07487259" href="#e1dca8da07487259"
+            class="select-none border-l-[1px] py-0.5 font-semibold pl-[1.5em] opacity-50 hover:opacity-100 dark:border-white border-black border-opacity-100 pl-5 cursor-pointer transition-all duration-200">
+            Request Models 🔨
+          </a>
+          
+          <a id="page9eabcfdbfb3c76e7" href="#9eabcfdbfb3c76e7"
+            class="select-none border-l-[1px] py-0.5 font-semibold pl-[2.0em] opacity-50 hover:opacity-100 dark:border-white border-black border-opacity-100 pl-5 cursor-pointer transition-all duration-200">
+            Model Declaring ✨
+          </a>
+          
+          <a id="page33599992c7382659" href="#33599992c7382659"
+            class="select-none border-l-[1px] py-0.5 font-semibold pl-[2.0em] opacity-50 hover:opacity-100 dark:border-white border-black border-opacity-100 pl-5 cursor-pointer transition-all duration-200">
+            Model Usage 🎈
           </a>
           
         </div>
