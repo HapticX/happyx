@@ -34,6 +34,39 @@ HappyX is very simple to use. Keep it mind 🙂
 ## Why not Jester? 🤔
 Jester doesn't provides some features that provides Happyx.
 
+## Minimal Example
+
+<table height="180px">
+  <thead>
+    <tr>
+      <td align="center">SPA</td>
+      <td align="center">SSG</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <pre lang="nim"><code>
+import happyx
+
+    appRoutes("app"):
+      "/":
+        "Hello, world!"
+</code></pre>
+      </td><td>
+      <pre lang="nim"><code>
+      import happyx
+    
+      
+    serve("127.0.0.1", 5000):
+      "/":
+        "Hello, world!"
+</code></pre>
+      </td>
+    <tr>
+  </tbody>
+</table
+
 # Get Started 👨‍🔬
 
 ## Installing 📥
