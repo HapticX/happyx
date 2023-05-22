@@ -806,19 +806,19 @@ macro routes*(app: App, body: untyped): untyped =
     router,
     newAssignment(newDotExpr(ident("app"), ident("router")), router.name),
     onDOMContentLoaded,
-    newNimNode(nnkPragma).add(
+    newNimNode(nnkPragma).add(newNimNode(nnkExprColonExpr).add(
       ident("emit"),
       newStrLitNode(
         "window.addEventListener('beforeunload', (e) => {"
       )
-    ),
+    )),
     finalize,
-    newNimNode(nnkPragma).add(
+    newNimNode(nnkPragma).add(newNimNode(nnkExprColonExpr).add(
       ident("emit"),
       newStrLitNode(
         "});"
       )
-    )
+    ))
   )
 
 

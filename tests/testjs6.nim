@@ -13,3 +13,6 @@ import
 appRoutes("app"):
   "/":
     "Hello, world!"
+
+  finalize:
+    echo "bye"
