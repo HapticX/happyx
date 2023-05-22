@@ -734,7 +734,7 @@ macro routes*(app: App, body: untyped): untyped =
   body.findAndReplaceMount()
 
   for key in sugarRoutes.keys():
-    if sugarRoutes[key].httpMethod.toLower() == "build":
+    if sugarRoutes[key].httpMethod.toLower() in ["build", "page"]:
       body.add(newCall(newStrLitNode(key), sugarRoutes[key].body))
   
   for statement in body:
