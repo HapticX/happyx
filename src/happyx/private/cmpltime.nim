@@ -230,7 +230,7 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.
             )
           ))
         )
-      ) 
+      )
     )
     hasChildren = true
   

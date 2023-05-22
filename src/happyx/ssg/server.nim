@@ -494,7 +494,6 @@ macro routes*(server: Server, body: untyped): untyped =
       ))
   
   for statement in body:
-    echo treeRepr statement
     if statement.kind in [nnkCall, nnkCommand]:
       # "/...": statement list
       if statement[1].kind == nnkStmtList and statement[0].kind == nnkStrLit:
