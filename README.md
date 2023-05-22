@@ -34,7 +34,7 @@ HappyX is very simple to use. Keep it mind 🙂
 ## Why not Jester? 🤔
 Jester doesn't provides some features that provides Happyx.
 
-## Minimal Example
+## Minimal Example 👩‍💻
 
 <table height="180px">
   <thead>
