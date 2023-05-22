@@ -689,7 +689,7 @@ macro routes*(app: App, body: untyped): untyped =
       [newEmptyNode(), newIdentDefs(ident("ev"), ident("Event"))]
     )
     ifStmt = newNimNode(nnkIfStmt)
-    finalize = newStmtList()
+  var finalize = newStmtList()
 
   # On DOM Content Loaded
   onDOMContentLoaded.body = newStmtList(newCall(iRouter))
@@ -812,7 +812,7 @@ macro routes*(app: App, body: untyped): untyped =
         "window.addEventListener('beforeunload', (e) => {"
       )
     ),
-    finalize
+    finalize,
     newNimNode(nnkPragma).add(
       ident("emit"),
       newStrLitNode(

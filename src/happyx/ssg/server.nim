@@ -743,7 +743,7 @@ macro routes*(server: Server, body: untyped): untyped =
     newProc(
       ident("finalizeProgram"),
       [newEmptyNode()],
-      finalize()
+      finalize
     )
   )
 
@@ -846,11 +846,12 @@ macro initServer*(body: untyped): untyped =
     newProc(
       ident("main"),
       [newEmptyNode()],
-      body,
+      body.add(
+        newCall("finalizeProgram")
+      ),
       nnkProcDef
     ),
-    newCall("main"),
-    newCall("finalize")
+    newCall("main")
   )
   result[0].addPragma(ident("gcsafe"))
 
@@ -873,11 +874,11 @@ macro serve*(address: string, port: int, body: untyped): untyped =
       newStmtList(
         newVarStmt(ident("server"), newCall("newServer", address, port)),
         newCall("routes", ident("server"), body),
-        newCall("start", ident("server"))
+        newCall("start", ident("server")),
+        newCall("finalizeProgram")
       ),
       nnkProcDef
     ),
-    newCall("main"),
-    newCall("finalize")
+    newCall("main")
   )
   result[0].addPragma(ident("gcsafe"))
