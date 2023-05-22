@@ -33,7 +33,7 @@
 ## 
 ## ## Examples
 ## 
-## ### SPA
+## ### SPA 🎴
 ## 
 ## [See more information](happyx/spa/renderer.html)
 ## 
@@ -87,7 +87,7 @@
 ##      app.start()
 ## 
 ## 
-## ### SSG
+## ### SSG 💻
 ## 
 ## [See more information](happyx/ssg/server.html)
 ## 
@@ -112,7 +112,7 @@
 ##        notfound:
 ##          req.answer "Oops, not found!"
 ## 
-## ### CLI Usage
+## ### CLI Usage 🎈
 ## 
 ## #### SSG
 ## 
@@ -145,7 +145,7 @@
 ## `hpx build` command will builds your project as standalone web application (HTML + JS files)
 ## 
 ## 
-## ## Path Params
+## ## Path Params 🛠
 ## 
 ## Routing provides powerful path params.
 ## 
@@ -159,14 +159,14 @@
 ##      # In this scope you can use `username` as assigned immutable variable
 ##      ...
 ## 
-## ### Validation
+## ### Validation ⚙
 ## 
 ## In path params you can describe every param if you need. Here is syntax overview.
 ## - Required param: `{arg:type}`, `$arg:type`, `{arg}`, `$arg`
 ## - Optional param: `{arg?:type}`, `$arg?:type`, `{arg?}`, `$arg?`
 ## - Optional param with default value: `{arg:type=val}`, `$arg:type=val`, `{arg=val}`, `$arg=val`
 ## 
-## ### Typing
+## ### Typing 👮‍♀️
 ## 
 ## Every path param keeps type (default is string)
 ## 
@@ -179,6 +179,41 @@
 ## - `path`: like `string` but includes `/` chars. Doesn't provides optional and default.
 ## - regex pattern: any regex pattern translates in string. Usage: `/patternHere/`. Doesn't provides optional and default.
 ## 
+## ### (Im)mutable ⚙
+## 
+## Every path param by default is immutable, but you can change it to mutable by add `[m]` after param type:
+## 
+## | Immutable            | Mutable                 | Immutable Alias     | Mutable Alias          |
+## | :--:                 | :--:                    | :--:                | :--:                   | 
+## | `{arg}`              | `{arg[m]}`              | `$arg`              | `$arg[m]`              |
+## | `{arg:type}`         | `{arg:type[m]}`         | `$arg:type`         | `$arg:type[m]`         |
+## | `{arg:type=default}` | `{arg:type[m]=default}` | `$arg:type=default` | `$arg:type[m]=default` |
+## | `{arg=default}`      | `{arg=default}`         | `$arg=default`      | `$arg[m]=default`      |
+## | `{arg?:type}`        | `{arg?:type[m]}`        | `$arg?:type`        | `$arg?:type[m]`        |
+## 
+## ## Mounting 🔌
+## 
+## HappyX routing provides mounting also.
+## 
+## Here is example of mount declaration ✨
+## 
+## .. code-block:: nim
+##    mount Settings:
+##      "/":
+##        ...
+##    mount Profile:
+##      mount "/settings" -> Settings
+##      mount "/config" -> Settings
+## 
+## Here is example of mount usage 🎈
+## 
+## .. code-block:: nim
+##    serve(...):  # or appRoutes 🍍
+##      # /profile does not works
+##      # /profile/settings does not works
+##      # /profile/settings/ works!
+##      mount "/profile" -> Profile
+## 
 when not defined(js):
   import
     happyx/ssg/[server, cors]
@@ -190,10 +225,12 @@ when not defined(js):
 import
   happyx/spa/[renderer, state],
   happyx/tmpl_engine/[engine],
-  happyx/mounting/[mounting]
+  happyx/mounting/[mounting],
+  happyx/sugar/[sgr]
 
 export
   renderer,
   state,
   engine,
-  mounting
+  mounting,
+  sgr

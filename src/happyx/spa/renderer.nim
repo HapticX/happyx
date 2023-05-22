@@ -21,7 +21,8 @@ import
   regex,
   ./tag,
   ../private/[cmpltime, macro_utils, exceptions],
-  ../mounting/mounting
+  ../mounting/mounting,
+  ../sugar/sgr
 
 when defined(js):
   import
@@ -476,7 +477,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
         # slot
         if not inComponent:
           throwDefect(
-            InvalidComponentSyntaxDefect,
+            ComponentSyntaxDefect,
             fmt"Slots can be used only in components!",
             lineInfoObj(statement)
           )
@@ -729,7 +730,12 @@ macro routes*(app: App, body: untyped): untyped =
     ))
   )
 
+  # Find mounts
   body.findAndReplaceMount()
+
+  for key in sugarRoutes.keys():
+    if sugarRoutes[key].httpMethod.toLower() == "build":
+      body.add(newCall(newStrLitNode(key), sugarRoutes[key].body))
   
   for statement in body:
     if statement.kind in [nnkCommand, nnkCall]:
@@ -971,7 +977,7 @@ macro component*(name, body: untyped): untyped =
         else:
           let structure = $s[0]
           throwDefect(
-            InvalidComponentSyntaxDefect,
+            ComponentSyntaxDefect,
             fmt"undefined component structure ({structure}).",
             lineInfoObj(s)
           )
@@ -988,7 +994,7 @@ macro component*(name, body: untyped): untyped =
           usedLifeCycles[key] = true
         elif not usedLifeCycles.hasKey(key):
           throwDefect(
-            InvalidComponentSyntaxDefect,
+            ComponentSyntaxDefect,
             fmt"Wrong component event ({key})",
             lineInfoObj(s)
           )

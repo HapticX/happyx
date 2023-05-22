@@ -60,7 +60,7 @@ macro regCORS*(body: untyped): untyped =
               methods.add($i)
             else:
               throwDefect(
-                InvalidCORSSyntaxDefect,
+                CORSSyntaxDefect,
                 fmt"invalid regCORS methods syntax: ",
                 lineInfoObj(val)
               )
@@ -77,7 +77,7 @@ macro regCORS*(body: untyped): untyped =
               headers.add($i)
             else:
               throwDefect(
-                InvalidCORSSyntaxDefect,
+                CORSSyntaxDefect,
                 fmt"invalid regCORS headers syntax: ",
                 lineInfoObj(val)
               )
@@ -89,13 +89,13 @@ macro regCORS*(body: untyped): untyped =
           continue
       else:
         throwDefect(
-          InvalidCORSSyntaxDefect,
+          CORSSyntaxDefect,
           fmt"invalid regCORS statement syntax: ",
           lineInfoObj(statement)
         )
           
     throwDefect(
-      InvalidCORSSyntaxDefect,
+      CORSSyntaxDefect,
       fmt"invalid regCORS syntax: ",
       lineInfoObj(statement)
     )

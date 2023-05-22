@@ -5,12 +5,13 @@ import
 
 
 type
-  InvalidComponentSyntaxDefect* = object of Defect
   InvalidPathParamDefect* = object of Defect
   InvalidServeRouteDefect* = object of Defect
-  InvalidModelSyntaxDefect* = object of Defect
-  InvalidCORSSyntaxDefect* = object of Defect
+  CORSSyntaxDefect* = object of Defect
+  ComponentSyntaxDefect* = object of Defect
+  ModelSyntaxDefect* = object of Defect
   MountDefect* = object of Defect
+  SyntaxSugarDefect* = object of Defect
 
 
 proc throwDefect*(defect: typedesc, msg: string, lineInfo: LineInfo) =

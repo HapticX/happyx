@@ -45,7 +45,8 @@ import
   ./cors,
   ../spa/tag,
   ../private/[cmpltime, macro_utils, exceptions],
-  ../mounting/mounting
+  ../mounting/mounting,
+  ../sugar/sgr
 
 export
   strutils,
@@ -477,9 +478,23 @@ macro routes*(server: Server, body: untyped): untyped =
   
   procStmt.addPragma(ident("async"))
 
+  # Find mounts
   body.findAndReplaceMount()
+
+  let httpMethods = ["get", "post", "put", "patch", "link", "options", "head", "delete"]
+
+  for key in sugarRoutes.keys():
+    if sugarRoutes[key].httpMethod.toLower() == "any":
+      body.add(newCall(newStrLitNode(key), sugarRoutes[key].body))
+    elif sugarRoutes[key].httpMethod.toLower() in httpMethods:
+      body.add(newNimNode(nnkCommand).add(
+        ident(sugarRoutes[key].httpMethod),
+        newStrLitNode(key),
+        sugarRoutes[key].body
+      ))
   
   for statement in body:
+    echo treeRepr statement
     if statement.kind in [nnkCall, nnkCommand]:
       # "/...": statement list
       if statement[1].kind == nnkStmtList and statement[0].kind == nnkStrLit:
@@ -783,7 +798,7 @@ macro model*(modelName, body: untyped): untyped =
         ))
         continue
     throwDefect(
-      InvalidModelSyntaxDefect,
+      ModelSyntaxDefect,
       fmt"Wrong model syntax: ",
       lineInfoObj(i)
     )
