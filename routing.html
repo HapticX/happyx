@@ -43,7 +43,7 @@
       <i class="fas fa-bars text-xl block xl:hidden" id="sandwich"></i>
       <div class="flex items-end gap-2 text-2xl">
         <p>HappyX</p>
-        <p class="text-base">v0.22.0</p>
+        <p class="text-base">v0.23.0</p>
       </div>
       <div class="flex gap-2">
         
@@ -360,11 +360,11 @@
       <div class="w-full h-full pt-20 flex px-12 xl:px-32 gap-20">
         <!-- Page data -->
         <div class="flex flex-col gap-4 w-full xl:w-3/4">
-          <h1 class="titleRef" id="3d1b183c57cac3e2">Routing ✨</h1><p>
+          <h1 class="titleRef" id="42c69f0d6051141d">Routing ✨</h1><p>
 
 </p><div class="quote"><p>HappyX provides powerful routing system for both parts (<code class="command">SSG</code> and <code class="command">SPA</code>) 💡
 
-</p></div><p></p><h2 class="titleRef" id="3af8340f46b98393">Path Params 🍍</h2><p>
+</p></div><p></p><h2 class="titleRef" id="f7d75469c769059c">Path Params 🍍</h2><p>
 
 Every route has typed <code class="command">path params</code> 🙂
 
@@ -382,7 +382,7 @@ And you can use <code class="command">id</code> as immutable declared variable �
 </code></pre><p>
 
 
-</p><h2 class="titleRef" id="c88a7d4c2ac0348d">Typing 👮</h2><p>
+</p><h2 class="titleRef" id="fde18d844ee6cb4d">Typing 👮</h2><p>
 
 </p><div class="quote"><p>Every <code class="command">path param</code> is typed 💡
 
@@ -395,13 +395,13 @@ Here is list of all available types:
 <ul style="list-style-type: disc"><li><code class="command">int</code>: matches any integer</li><li><code class="command">float</code>: matches any float</li><li><code class="command">bool</code>: matches any boolean (y, n, yes, no, true, false, 1, 0, on, off)</li><li><code class="command">word</code>: matches any word as string</li><li><code class="command">string</code>: matches any string excludes <code class="command">'/'</code> chars</li><li><code class="command">path</code>: matches any string includes <code class="command">'/'</code> chars</li><li><code class="command">regex</code>: matches any regex pattern as string (as example <code class="command">{var:/[a-z][0-9]+/}</code>)</ul></li>
 
 
-</p><h2 class="titleRef" id="e2ed45c28471b7d2">(Im)mutable Params ⚙</h2><p>
+</p><h2 class="titleRef" id="7024df288eb45761">(Im)mutable Params ⚙</h2><p>
 
 Route path params is immutable by default. You can change it by add <code class="command">[m]</code> after type:
 <ul style="list-style-type: disc"><li><code class="command">$arg:type[m]=val</code></li><li><code class="command">$arg:type[m]</code></li><li><code class="command">$arg[m]</code></li><li><code class="command">$arg?[m]</code></ul></li>
 
 
-</p><h2 class="titleRef" id="75dfd89f4efb52bd">pathParams Macro 🛠</h2><p>
+</p><h2 class="titleRef" id="b125b9776e1f4bbb">pathParams Macro 🛠</h2><p>
 
 macro <code class="command">pathParams</code> provides path params assignment. With it you can assign path params and use it in routes.
 
@@ -423,7 +423,7 @@ Example syntax:
     default = 10
 </code></pre><p>
 
-</p><h2 class="titleRef" id="1539243407e7f633">Mounting 🔌</h2><p>
+</p><h2 class="titleRef" id="46e5f977f5905737">Mounting 🔌</h2><p>
 
 HappyX routing supports mounting also 🔥
 
@@ -450,32 +450,32 @@ And here is mounting usage 🎈
             On this page
           </p>
           
-          <a id="page3d1b183c57cac3e2" href="#3d1b183c57cac3e2"
+          <a id="page42c69f0d6051141d" href="#42c69f0d6051141d"
             class="select-none border-l-[1px] py-0.5 font-semibold pl-[1.0em] opacity-50 hover:opacity-100 dark:border-white border-black border-opacity-100 pl-5 cursor-pointer transition-all duration-200">
             Routing ✨
           </a>
           
-          <a id="page3af8340f46b98393" href="#3af8340f46b98393"
+          <a id="pagef7d75469c769059c" href="#f7d75469c769059c"
             class="select-none border-l-[1px] py-0.5 font-semibold pl-[1.5em] opacity-50 hover:opacity-100 dark:border-white border-black border-opacity-100 pl-5 cursor-pointer transition-all duration-200">
             Path Params 🍍
           </a>
           
-          <a id="pagec88a7d4c2ac0348d" href="#c88a7d4c2ac0348d"
+          <a id="pagefde18d844ee6cb4d" href="#fde18d844ee6cb4d"
             class="select-none border-l-[1px] py-0.5 font-semibold pl-[1.5em] opacity-50 hover:opacity-100 dark:border-white border-black border-opacity-100 pl-5 cursor-pointer transition-all duration-200">
             Typing 👮
           </a>
           
-          <a id="pagee2ed45c28471b7d2" href="#e2ed45c28471b7d2"
+          <a id="page7024df288eb45761" href="#7024df288eb45761"
             class="select-none border-l-[1px] py-0.5 font-semibold pl-[1.5em] opacity-50 hover:opacity-100 dark:border-white border-black border-opacity-100 pl-5 cursor-pointer transition-all duration-200">
             (Im)mutable Params ⚙
           </a>
           
-          <a id="page75dfd89f4efb52bd" href="#75dfd89f4efb52bd"
+          <a id="pageb125b9776e1f4bbb" href="#b125b9776e1f4bbb"
             class="select-none border-l-[1px] py-0.5 font-semibold pl-[1.5em] opacity-50 hover:opacity-100 dark:border-white border-black border-opacity-100 pl-5 cursor-pointer transition-all duration-200">
             pathParams Macro 🛠
           </a>
           
-          <a id="page1539243407e7f633" href="#1539243407e7f633"
+          <a id="page46e5f977f5905737" href="#46e5f977f5905737"
             class="select-none border-l-[1px] py-0.5 font-semibold pl-[1.5em] opacity-50 hover:opacity-100 dark:border-white border-black border-opacity-100 pl-5 cursor-pointer transition-all duration-200">
             Mounting 🔌
           </a>

@@ -17,7 +17,7 @@
 <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600' rel='stylesheet' type='text/css'/>
 
 <!-- CSS -->
-<title>src/happyx/private/exceptions</title>
+<title>src/happyx/sugar/sgr</title>
 <link rel="stylesheet" type="text/css" href="../../nimdoc.out.css">
 
 <script type="text/javascript" src="../../dochack.js"></script>
@@ -69,7 +69,7 @@ window.addEventListener('DOMContentLoaded', main);
 <body>
 <div class="document" id="documentId">
   <div class="container">
-    <h1 class="title">src/happyx/private/exceptions</h1>
+    <h1 class="title">src/happyx/sugar/sgr</h1>
     <div class="row">
   <div class="three columns">
   <div class="theme-switch-wrapper">
@@ -99,31 +99,25 @@ window.addEventListener('DOMContentLoaded', main);
   </div>
   <ul class="simple simple-toc" id="toc-list">
 <li>
-  <a class="reference reference-toplevel" href="#7" id="57">Types</a>
+  <a class="reference reference-toplevel" href="#6" id="56">Imports</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#ComponentSyntaxDefect"
-    title="ComponentSyntaxDefect = object of Defect">ComponentSyntaxDefect</a></li>
-  <li><a class="reference" href="#CORSSyntaxDefect"
-    title="CORSSyntaxDefect = object of Defect">CORSSyntaxDefect</a></li>
-  <li><a class="reference" href="#InvalidPathParamDefect"
-    title="InvalidPathParamDefect = object of Defect">InvalidPathParamDefect</a></li>
-  <li><a class="reference" href="#InvalidServeRouteDefect"
-    title="InvalidServeRouteDefect = object of Defect">InvalidServeRouteDefect</a></li>
-  <li><a class="reference" href="#ModelSyntaxDefect"
-    title="ModelSyntaxDefect = object of Defect">ModelSyntaxDefect</a></li>
-  <li><a class="reference" href="#MountDefect"
-    title="MountDefect = object of Defect">MountDefect</a></li>
-  <li><a class="reference" href="#SyntaxSugarDefect"
-    title="SyntaxSugarDefect = object of Defect">SyntaxSugarDefect</a></li>
+    
+  </ul>
+</li>
+<li>
+  <a class="reference reference-toplevel" href="#8" id="58">Vars</a>
+  <ul class="simple simple-toc-section">
+      <li><a class="reference" href="#sugarRoutes"
+    title="sugarRoutes = newTable(32)">sugarRoutes</a></li>
 
   </ul>
 </li>
 <li>
-  <a class="reference reference-toplevel" href="#12" id="62">Procs</a>
+  <a class="reference reference-toplevel" href="#17" id="67">Macros</a>
   <ul class="simple simple-toc-section">
-      <ul class="simple nested-toc-section">throwDefect
-      <li><a class="reference" href="#throwDefect%2Ctypedesc%2Cstring%2CLineInfo"
-    title="throwDefect(defect: typedesc; msg: string; lineInfo: LineInfo)">throwDefect(defect: typedesc; msg: string; lineInfo: LineInfo)</a></li>
+      <ul class="simple nested-toc-section">->
+      <li><a class="reference" href="#-%3E.m%2Cuntyped%2Cuntyped%2Cuntyped"
+    title="`-&gt;`(route, at, body: untyped): untyped">`-&gt;`(route, at, body: untyped): untyped</a></li>
 
   </ul>
 
@@ -137,60 +131,17 @@ window.addEventListener('DOMContentLoaded', main);
   <div class="nine columns" id="content">
   <div id="tocRoot"></div>
   
-  <p class="module-desc">Provides HappyX exceptions</p>
-  <div class="section" id="7">
-<h1><a class="toc-backref" href="#7">Types</a></h1>
+  <p class="module-desc">Provides syntax sugar macros</p>
+  <div class="section" id="6">
+<h1><a class="toc-backref" href="#6">Imports</a></h1>
 <dl class="item">
-<div id="ComponentSyntaxDefect">
-<dt><pre><a href="exceptions.html#ComponentSyntaxDefect"><span class="Identifier">ComponentSyntaxDefect</span></a> <span class="Other">=</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <span class="Identifier">Defect</span></pre></dt>
-<dd>
-
-
-
-</dd>
-</div>
-<div id="CORSSyntaxDefect">
-<dt><pre><a href="exceptions.html#CORSSyntaxDefect"><span class="Identifier">CORSSyntaxDefect</span></a> <span class="Other">=</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <span class="Identifier">Defect</span></pre></dt>
-<dd>
-
-
-
-</dd>
-</div>
-<div id="InvalidPathParamDefect">
-<dt><pre><a href="exceptions.html#InvalidPathParamDefect"><span class="Identifier">InvalidPathParamDefect</span></a> <span class="Other">=</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <span class="Identifier">Defect</span></pre></dt>
-<dd>
-
-
-
-</dd>
-</div>
-<div id="InvalidServeRouteDefect">
-<dt><pre><a href="exceptions.html#InvalidServeRouteDefect"><span class="Identifier">InvalidServeRouteDefect</span></a> <span class="Other">=</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <span class="Identifier">Defect</span></pre></dt>
-<dd>
-
-
-
-</dd>
-</div>
-<div id="ModelSyntaxDefect">
-<dt><pre><a href="exceptions.html#ModelSyntaxDefect"><span class="Identifier">ModelSyntaxDefect</span></a> <span class="Other">=</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <span class="Identifier">Defect</span></pre></dt>
-<dd>
-
-
-
-</dd>
-</div>
-<div id="MountDefect">
-<dt><pre><a href="exceptions.html#MountDefect"><span class="Identifier">MountDefect</span></a> <span class="Other">=</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <span class="Identifier">Defect</span></pre></dt>
-<dd>
-
-
-
-</dd>
-</div>
-<div id="SyntaxSugarDefect">
-<dt><pre><a href="exceptions.html#SyntaxSugarDefect"><span class="Identifier">SyntaxSugarDefect</span></a> <span class="Other">=</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <span class="Identifier">Defect</span></pre></dt>
+<a class="reference external" href="../private/exceptions.html">../private/exceptions</a>
+</dl></div>
+<div class="section" id="8">
+<h1><a class="toc-backref" href="#8">Vars</a></h1>
+<dl class="item">
+<div id="sugarRoutes">
+<dt><pre><a href="sgr.html#sugarRoutes"><span class="Identifier">sugarRoutes</span></a> <span class="Other">=</span> <span class="Identifier">newTable</span><span class="Other">(</span><span class="DecNumber">32</span><span class="Other">)</span></pre></dt>
 <dd>
 
 
@@ -199,14 +150,24 @@ window.addEventListener('DOMContentLoaded', main);
 </div>
 
 </dl></div>
-<div class="section" id="12">
-<h1><a class="toc-backref" href="#12">Procs</a></h1>
+<div class="section" id="17">
+<h1><a class="toc-backref" href="#17">Macros</a></h1>
 <dl class="item">
-<div id="throwDefect,typedesc,string,LineInfo">
-<dt><pre><span class="Keyword">proc</span> <a href="#throwDefect%2Ctypedesc%2Cstring%2CLineInfo"><span class="Identifier">throwDefect</span></a><span class="Other">(</span><span class="Identifier">defect</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">;</span> <span class="Identifier">msg</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">lineInfo</span><span class="Other">:</span> <span class="Identifier">LineInfo</span><span class="Other">)</span></pre></dt>
+<div id="->.m,untyped,untyped,untyped">
+<dt><pre><span class="Keyword">macro</span> <a href="#-%3E.m%2Cuntyped%2Cuntyped%2Cuntyped"><span class="Identifier">`-&gt;`</span></a><span class="Other">(</span><span class="Identifier">route</span><span class="Other">,</span> <span class="Identifier">at</span><span class="Other">,</span> <span class="Identifier">body</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
 
-
+<p>Syntax sugar for routing</p>
+<p>For SPA you can use:</p>
+<pre class="listing"><span class="StringLit">&quot;/route&quot;</span> <span class="Operator">-&gt;</span> <span class="Identifier">build</span><span class="Punctuation">:</span>
+  <span class="Operator">...</span></pre><p>For SSG you can use:</p>
+<pre class="listing"><span class="StringLit">&quot;/route&quot;</span> <span class="Operator">-&gt;</span> <span class="Identifier">any</span><span class="Punctuation">:</span>
+  <span class="Operator">...</span>
+<span class="StringLit">&quot;/otherRoute&quot;</span> <span class="Operator">-&gt;</span> <span class="Identifier">get</span><span class="Punctuation">:</span>
+  <span class="Operator">...</span></pre>
+<p><strong class="examples_text">Example:</strong></p>
+<pre class="listing"><span class="StringLit">&quot;/syntaxSugar&quot;</span> <span class="Operator">-&gt;</span> <span class="Identifier">get</span><span class="Punctuation">:</span>
+  <span class="Keyword">return</span> <span class="StringLit">&quot;Hello, world&quot;</span></pre>
 
 </dd>
 </div>
@@ -220,7 +181,7 @@ window.addEventListener('DOMContentLoaded', main);
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-05-22 13:24:20 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-05-22 13:24:23 UTC</small>
       </div>
     </div>
   </div>

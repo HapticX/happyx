@@ -2,12 +2,14 @@ HappyX	happyx.html#happyx	 HappyX
 Web framework written in Nim with ❤	happyx.html#happyx-web-framework-written-in-nim-with-❤	   Web framework written in Nim with ❤	
 Why HappyX? 🤔	happyx.html#happyx-why-happyxqmark-🤔	  Why HappyX? 🤔	
 Examples	happyx.html#happyx-examples	  Examples	
-SPA	happyx.html#examples-spa	   SPA	
-SSG	happyx.html#examples-ssg	   SSG	
-CLI Usage	happyx.html#examples-cli-usage	   CLI Usage	
-SSG	happyx.html#cli-usage-ssg	    SSG	
-SPA	happyx.html#cli-usage-spa	    SPA	
-Path Params	happyx.html#happyx-path-params	  Path Params	
-Example	happyx.html#path-params-example	   Example	
-Validation	happyx.html#path-params-validation	   Validation	
-Typing	happyx.html#path-params-typing	   Typing	
+SPA 🎴	happyx.html#examples-spa-🎴	   SPA 🎴	
+SSG 💻	happyx.html#examples-ssg-💻	   SSG 💻	
+CLI Usage 🎈	happyx.html#examples-cli-usage-🎈	   CLI Usage 🎈	
+SSG	happyx.html#cli-usage-🎈-ssg	    SSG	
+SPA	happyx.html#cli-usage-🎈-spa	    SPA	
+Path Params 🛠	happyx.html#happyx-path-params-🛠	  Path Params 🛠	
+Example	happyx.html#path-params-🛠-example	   Example	
+Validation ⚙	happyx.html#path-params-🛠-validation-⚙	   Validation ⚙	
+Typing 👮‍♀️	happyx.html#path-params-🛠-typing-👮‍♀️	   Typing 👮‍♀️	
+(Im)mutable ⚙	happyx.html#path-params-🛠-im-mutable-⚙	   (Im)mutable ⚙	
+Mounting 🔌	happyx.html#happyx-mounting-🔌	  Mounting 🔌	
