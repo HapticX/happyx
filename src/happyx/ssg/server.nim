@@ -444,6 +444,7 @@ macro routes*(server: Server, body: untyped): untyped =
     )
     caseRequestMethodsStmt = newNimNode(nnkCaseStmt).add(ident("reqMethod"))
     methodTable = newTable[string, NimNode]()
+    finalize = newStmtList()
 
   when defined(httpx):
     var path = newNimNode(nnkBracketExpr).add(
@@ -516,6 +517,8 @@ macro routes*(server: Server, body: untyped): untyped =
           wsMismatchProtocol = statement[1]
         of "wserror":
           wsError = statement[1]
+        of "finalize":
+          finalize = statement[1]
         of "notfound":
           detectReturnStmt(statement[1])
           notFoundNode = statement[1]
@@ -736,7 +739,12 @@ macro routes*(server: Server, body: untyped): untyped =
       newNimNode(nnkBracketExpr).add(ident("seq"), ident("WebSocket")),
       newCall("@", newNimNode(nnkBracket)),
     )),
-    procStmt
+    procStmt,
+    newProc(
+      ident("finalizeProgram"),
+      [newEmptyNode()],
+      finalize()
+    )
   )
 
   for v in countdown(variables.len-1, 0, 1):
@@ -841,7 +849,8 @@ macro initServer*(body: untyped): untyped =
       body,
       nnkProcDef
     ),
-    newCall("main")
+    newCall("main"),
+    newCall("finalize")
   )
   result[0].addPragma(ident("gcsafe"))
 
@@ -869,5 +878,6 @@ macro serve*(address: string, port: int, body: untyped): untyped =
       nnkProcDef
     ),
     newCall("main"),
+    newCall("finalize")
   )
   result[0].addPragma(ident("gcsafe"))

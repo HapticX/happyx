@@ -689,6 +689,7 @@ macro routes*(app: App, body: untyped): untyped =
       [newEmptyNode(), newIdentDefs(ident("ev"), ident("Event"))]
     )
     ifStmt = newNimNode(nnkIfStmt)
+    finalize = newStmtList()
 
   # On DOM Content Loaded
   onDOMContentLoaded.body = newStmtList(newCall(iRouter))
@@ -774,6 +775,8 @@ macro routes*(app: App, body: untyped): untyped =
           ))
       elif statement[1].kind == nnkStmtList and statement[0].kind == nnkIdent:
         case $statement[0]
+        of "finalize":
+          finalize = statement[1]
         of "notfound":
           if statement[1].endsWithBuildHtml:
             router.body.add(
@@ -802,7 +805,20 @@ macro routes*(app: App, body: untyped): untyped =
   newStmtList(
     router,
     newAssignment(newDotExpr(ident("app"), ident("router")), router.name),
-    onDOMContentLoaded
+    onDOMContentLoaded,
+    newNimNode(nnkPragma).add(
+      ident("emit"),
+      newStrLitNode(
+        "window.addEventListener('beforeunload', (e) => {"
+      )
+    ),
+    finalize
+    newNimNode(nnkPragma).add(
+      ident("emit"),
+      newStrLitNode(
+        "});"
+      )
+    )
   )
 
 
