@@ -229,10 +229,8 @@ template answer*(
     for key, value in h.pairs():
       headersArr.add(key & ": " & value)
     req.send(code, message, headersArr.join("\r\n"))
-    return Future[void]()
   else:
     await req.respond(code, message, h)
-    return Future[void]()
 
 
 template answerJson*(req: Request, data: untyped, code: HttpCode = Http200,): untyped =
