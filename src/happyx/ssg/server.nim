@@ -44,7 +44,7 @@ import
   # HappyX
   ./cors,
   ../spa/tag,
-  ../private/[cmpltime, macro_utils, exceptions],
+  ../private/[routing, macro_utils, exceptions],
   ../mounting/mounting,
   ../sugar/sgr
 
