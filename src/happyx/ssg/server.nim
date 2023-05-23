@@ -229,8 +229,10 @@ template answer*(
     for key, value in h.pairs():
       headersArr.add(key & ": " & value)
     req.send(code, message, headersArr.join("\r\n"))
+    return Future[void]()
   else:
     await req.respond(code, message, h)
+    return Future[void]()
 
 
 template answerJson*(req: Request, data: untyped, code: HttpCode = Http200,): untyped =
@@ -671,16 +673,13 @@ macro routes*(server: Server, body: untyped): untyped =
           ))
     elif statement.kind in [nnkVarSection, nnkLetSection]:
       variables.add(statement)
-
-  # urlPath
-  stmtList.insert(
-    0, newNimNode(nnkLetSection).add(
-      newIdentDefs(ident("urlPath"), newEmptyNode(), path),
-      newIdentDefs(ident("reqMethod"), newEmptyNode(), reqMethod),
-      newIdentDefs(ident("reqMethodStr"), newEmptyNode(), newCall("$", reqMethod)),
-      newIdentDefs(ident("query"), newEmptyNode(), newCall("parseQuery", url)),
-    )
+  
+  let immutableVars = newNimNode(nnkLetSection).add(
+    newIdentDefs(ident("urlPath"), newEmptyNode(), path),
   )
+
+  # immutable variables
+  stmtList.insert(0, immutableVars)
   
   when defined(debug):
     stmtList.add(newCall(
@@ -749,6 +748,13 @@ macro routes*(server: Server, body: untyped): untyped =
 
   for v in countdown(variables.len-1, 0, 1):
     result.insert(0, variables[v])
+  
+  if stmtList.isIdentUsed(ident("query")):
+    immutableVars.add(newIdentDefs(ident("query"), newEmptyNode(), newCall("parseQuery", url)))
+  if stmtList.isIdentUsed(ident("reqMethod")):
+    immutableVars.add(newIdentDefs(ident("reqMethod"), newEmptyNode(), reqMethod))
+  
+  echo result.toStrLit
 
 
 macro model*(modelName, body: untyped): untyped =

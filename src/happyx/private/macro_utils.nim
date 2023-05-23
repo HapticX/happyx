@@ -37,6 +37,15 @@ proc isExpr*(node: NimNode): bool =
   false
 
 
+proc isIdentUsed*(body, name: NimNode): bool =
+  ## Finds usage ident `name` in `body`
+  for statement in body:
+    if statement.kind == nnkIdent and $statement == $name:
+      return true
+    elif statement.kind notin AtomicNodes and statement.isIdentUsed(name):
+      return true
+  false
+
 
 proc newLambda*(body: NimNode, params: seq[NimNode] | NimNode = @[newEmptyNode()],
                 pragmas: seq[NimNode] | seq[string] = @[newEmptyNode()]): NimNode =
