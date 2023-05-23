@@ -753,8 +753,6 @@ macro routes*(server: Server, body: untyped): untyped =
     immutableVars.add(newIdentDefs(ident("query"), newEmptyNode(), newCall("parseQuery", url)))
   if stmtList.isIdentUsed(ident("reqMethod")):
     immutableVars.add(newIdentDefs(ident("reqMethod"), newEmptyNode(), reqMethod))
-  
-  echo result.toStrLit
 
 
 macro model*(modelName, body: untyped): untyped =
