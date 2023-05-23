@@ -137,8 +137,8 @@ template start*(app: App) =
   if window.location.hash.len == 0:
     route("/")
   else:
-    {.emit : "if(window.location.hash[0]=='#'){window.location.hash=window.location.hash.substr(1);}".}
-    route(window.location.hash)
+    {.emit : "if(window.location.hash[0]=='#'){`route`(window.location.hash.substr(1));}".}
+    {.emit : "else{`route`(window.location.hash);}".}
 
 
 {.push compileTime.}
