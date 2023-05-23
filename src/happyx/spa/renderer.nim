@@ -134,8 +134,10 @@ template start*(app: App) =
   ## Starts single page application
   document.addEventListener("DOMContentLoaded", onDOMContentLoaded)
   window.addEventListener("popstate", onDOMContentLoaded)
-  {. emit: "if (window.location.href.split('#').length == 1) {" .}
+  {. emit: "if (window.location.hash.length == 0) {" .}
   route("/")
+  {. emit: "} else {" .}
+  currentRoute = window.location.hash
   {. emit: "}" .}
 
 

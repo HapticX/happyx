@@ -2,7 +2,7 @@
 
 description = "Macro-oriented asynchronous web-framework written with ♥"
 author = "HapticX"
-version = "0.24.4"
+version = "0.24.5"
 license = "GNU GPLv3"
 srcDir = "src"
 installExt = @["nim"]
