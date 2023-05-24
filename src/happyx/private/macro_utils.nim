@@ -15,10 +15,11 @@ proc isExpr*(node: NimNode): bool =
   if node.kind in AtomicNodes:
     return true
   if node.kind in nnkCallKinds:
-    let fnName = $node[0]
-    if re"^(answer|echo|styledEcho|styledWrite|write|await)" in fnName.toLower():
-      return false
-    return true
+    if node.kind == nnkIdent:
+      let fnName = $node[0]
+      if re"^(answer|echo|styledEcho|styledWrite|write|await)" in fnName.toLower():
+        return false
+      return true
   if node.kind in [nnkIfExpr, nnkIfStmt]:
     for child in node.children:
       if child.kind notin [nnkElse, nnkElseExpr] and not child[^1].isExpr:

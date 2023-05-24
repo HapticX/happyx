@@ -34,7 +34,7 @@ type
 
 
 const
-  VERSION = "0.24.7"
+  VERSION = "0.24.8"
   SPA_MAIN_FILE = "main"
   CONFIG_FILE = "happyx.cfg"
 
