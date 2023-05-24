@@ -70,7 +70,7 @@ window.addEventListener('DOMContentLoaded', main);
 <div class="document" id="documentId">
   <div class="container">
     <h1 class="title">Index</h1>
-    Modules: <a href="happyx.html">happyx</a>, <a href="happyx/mounting/mounting.html">happyx/mounting/mounting</a>, <a href="happyx/private/exceptions.html">happyx/private/exceptions</a>, <a href="happyx/private/macro_utils.html">happyx/private/macro_utils</a>, <a href="happyx/private/routing.html">happyx/private/routing</a>, <a href="happyx/spa/renderer.html">happyx/spa/renderer</a>, <a href="happyx/spa/state.html">happyx/spa/state</a>, <a href="happyx/spa/tag.html">happyx/spa/tag</a>, <a href="happyx/ssg/cors.html">happyx/ssg/cors</a>, <a href="happyx/ssg/server.html">happyx/ssg/server</a>, <a href="happyx/sugar/sgr.html">happyx/sugar/sgr</a>, <a href="happyx/tmpl_engine/engine.html">happyx/tmpl_engine/engine</a>.<br/><p /><h2>API symbols</h2>
+    Modules: <a href="happyx.html">happyx</a>, <a href="happyx/mounting/mounting.html">happyx/mounting/mounting</a>, <a href="happyx/private/exceptions.html">happyx/private/exceptions</a>, <a href="happyx/private/macro_utils.html">happyx/private/macro_utils</a>, <a href="happyx/private/routing.html">happyx/private/routing</a>, <a href="happyx/spa/renderer.html">happyx/spa/renderer</a>, <a href="happyx/spa/state.html">happyx/spa/state</a>, <a href="happyx/spa/style.html">happyx/spa/style</a>, <a href="happyx/spa/tag.html">happyx/spa/tag</a>, <a href="happyx/ssg/cors.html">happyx/ssg/cors</a>, <a href="happyx/ssg/server.html">happyx/ssg/server</a>, <a href="happyx/sugar/sgr.html">happyx/sugar/sgr</a>, <a href="happyx/tmpl_engine/engine.html">happyx/tmpl_engine/engine</a>.<br/><p /><h2>API symbols</h2>
 <dl><dt><a name="%60%21%3D%60" href="#%60%21%3D%60"><span>`!=`:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="state: `!=`[T](self`gensym1, other`gensym1: State[T]): bool" href="happyx/spa/state.html#%21%3D%2C%2C">state: `!=`[T](self`gensym1, other`gensym1: State[T]): bool</a></li>
@@ -341,6 +341,10 @@ window.addEventListener('DOMContentLoaded', main);
                    inCycle: bool = false; cycleTmpVar: string = &quot;&quot;;
                    cycleVars: seq[NimNode] = @[]): NimNode</a></li>
           </ul></dd>
+<dt><a name="buildStyle" href="#buildStyle"><span>buildStyle:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="style: buildStyle(body: untyped): untyped" href="happyx/spa/style.html#buildStyle.m%2Cuntyped">style: buildStyle(body: untyped): untyped</a></li>
+          </ul></dd>
 <dt><a name="component" href="#component"><span>component:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="renderer: component(name, body: untyped): untyped" href="happyx/spa/renderer.html#component.m%2Cuntyped%2Cuntyped">renderer: component(name, body: untyped): untyped</a></li>
@@ -495,6 +499,10 @@ window.addEventListener('DOMContentLoaded', main);
 <li><a class="reference external"
           data-doc-search-tag="server: newServer(address: string = &quot;127.0.0.1&quot;; port: int = 5000): Server" href="happyx/ssg/server.html#newServer%2Cstring%2Cint">server: newServer(address: string = &quot;127.0.0.1&quot;; port: int = 5000): Server</a></li>
           </ul></dd>
+<dt><a name="nnkNumbers" href="#nnkNumbers"><span>nnkNumbers:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="style: nnkNumbers" href="happyx/spa/style.html#nnkNumbers">style: nnkNumbers</a></li>
+          </ul></dd>
 <dt><a name="parseQuery" href="#parseQuery"><span>parseQuery:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="server: parseQuery(query: string): owned(StringTableRef)" href="happyx/ssg/server.html#parseQuery%2Cstring">server: parseQuery(query: string): owned(StringTableRef)</a></li>
@@ -576,6 +584,10 @@ window.addEventListener('DOMContentLoaded', main);
 <dt><a name="sugarRoutes" href="#sugarRoutes"><span>sugarRoutes:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="sgr: sugarRoutes" href="happyx/sugar/sgr.html#sugarRoutes">sgr: sugarRoutes</a></li>
+          </ul></dd>
+<dt><a name="SyntaxStyleDefect" href="#SyntaxStyleDefect"><span>SyntaxStyleDefect:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="exceptions: SyntaxStyleDefect" href="happyx/private/exceptions.html#SyntaxStyleDefect">exceptions: SyntaxStyleDefect</a></li>
           </ul></dd>
 <dt><a name="SyntaxSugarDefect" href="#SyntaxSugarDefect"><span>SyntaxSugarDefect:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -676,7 +688,7 @@ window.addEventListener('DOMContentLoaded', main);
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-05-24 09:28:17 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-05-24 15:39:03 UTC</small>
       </div>
     </div>
   </div>
