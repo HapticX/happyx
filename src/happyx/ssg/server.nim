@@ -247,7 +247,7 @@ template answerHtml*(req: Request, data: string | TagRef, code: HttpCode = Http2
   answer(req, d, code, newHttpHeaders([("Content-Type", "text/html; charset=utf-8")]))
 
 
-proc answerFile*(req: Request, filename: string, code: HttpCode = Http200) {.async.} =
+proc answerFile*(req: Request, filename: string, code: HttpCode = Http200, asAttachment = false) {.async.} =
   let
     splitted = filename.split('.')
     extension = if splitted.len > 1: splitted[^1] else: ""
@@ -327,9 +327,10 @@ proc answerFile*(req: Request, filename: string, code: HttpCode = Http200) {.asy
   var f = openAsync(filename, fmRead)
   let content = await f.readAll()
   f.close()
-  req.answer(content, headers = newHttpHeaders([
-    ("Content-Type", fmt"{contentType}; charset=utf-8")
-  ]))
+  var headers = @[("Content-Type", fmt"{contentType}; charset=utf-8")]
+  if asAttachment:
+    headers.add(("Content-Disposition", "attachment"))
+  req.answer(content, headers = newHttpHeaders(headers))
 
 
 proc detectReturnStmt(node: NimNode, replaceReturn: bool = false) {. compileTime .} =
