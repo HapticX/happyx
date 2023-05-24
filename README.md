@@ -11,7 +11,7 @@
 
 
 # Why HappyX? 💁‍♀️
-> HappyX is macro-oriented asynchronous full stack web framework.
+> HappyX is a web framework with asynchronous, macro-oriented, full stack support.
 
 In HappyX you can write `single page`, `static site generation` and `server side rendering` applications 💡
 
@@ -19,8 +19,11 @@ You can write Rest API with HappyX also 🔌
 
 HappyX is very simple to use. Keep your peace of mind 🙂
 
+## Why not Jester? 🤔
+Jester doesn't provide some features that Happyx provides.
+
 ## Features ⚡
-- Use `asynchttpserver` as default HTTP server (`httpx` via `-d:httpx` and `microhttpserver` via `-d:micro` as alternative HTTP servers).
+- Multiple options for HTTP server! Happyx use `asynchttpserver` as default HTTP server (`httpx` via `-d:httpx` and `microhttpserver` via `-d:micro` as alternative HTTP servers).
 - Support `SPA` on `JS` backend and `SSG` on other backends.
 - Build HTML with `buildHtml` macro.
 - Request JSON models with `model` macro.
@@ -29,10 +32,7 @@ HappyX is very simple to use. Keep your peace of mind 🙂
 - Powerful mounting sub-applications with `mount` macro. 
 - Logging with `-d:debug`.
 - CLI tool for `creating`, `serving` and `building` your projects.
-- Hot code reloading (now only for `SPA` projects).
-
-## Why not Jester? 🤔
-Jester doesn't provides some features that Happyx provides.
+- Hot code reloading (only for `SPA` projects as of now).
 
 ## Minimal Example 👩‍💻
 
