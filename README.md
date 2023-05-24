@@ -20,7 +20,7 @@ You can write Rest API with HappyX also 🔌
 HappyX is very simple to use. Keep your peace of mind 🙂
 
 ## Why Not Jester/Karax? 🤔
-Jester and Karax have many functions, but Jester is a `backend web framework`, and Karax is a `frontend web framework`. HappyX  is a `full-stack web framework` that combines the functions of Jester and Karax and slightly improves them 🛠
+Jester and Karax have many features, but Jester is a `backend web framework`, and Karax is a `frontend web framework`. HappyX  is a `full-stack web framework` that combines the features of Jester and Karax and slightly improves them 🛠
 
 With HappyX you mustn't learn new libraries/frameworks to switch between `frontend` and `backend`. You can switch between them easily with HappyX ✌
 
