@@ -69,7 +69,7 @@ import happyx
       </td>
     <tr>
   </tbody>
-</table
+</table>
 
 # Get Started 👨‍🔬
 
