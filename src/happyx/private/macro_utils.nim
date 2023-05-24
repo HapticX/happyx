@@ -15,7 +15,7 @@ proc isExpr*(node: NimNode): bool =
   if node.kind in AtomicNodes:
     return true
   if node.kind in nnkCallKinds:
-    if node.kind == nnkIdent:
+    if node[0].kind == nnkIdent:
       let fnName = $node[0]
       if re"^(answer|echo|styledEcho|styledWrite|write|await)" in fnName.toLower():
         return false
