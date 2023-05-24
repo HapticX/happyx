@@ -337,14 +337,33 @@ proc detectReturnStmt(node: NimNode, replaceReturn: bool = false) {. compileTime
   for i in 0..<node.len:
     var child = node[i]
     if child.kind == nnkReturnStmt and child[0].kind != nnkEmpty:
-      if child[0].kind == nnkCall and $child[0][0] == "buildHtml":
+      # HTML
+      if child[0].kind == nnkCall and child[0][0].kind == nnkIdent and $child[0][0] == "buildHtml":
         node[i] = newCall("answerHtml", ident("req"), child[0])
-      elif child[0].kind == nnkTableConstr:
+      # File
+      elif child[0].kind in nnkCallKinds and child[0][0].kind == nnkIdent and $child[0][0] == "FileResponse":
+        node[i] = newCall("await", newCall("answerFile", ident("req"), child[0][1]))
+      # JSON
+      elif child[0].kind in [nnkTableConstr, nnkBracket]:
         node[i] = newCall("answerJson", ident("req"), child[0])
+      # Any string
       elif child[0].kind in [nnkStrLit, nnkTripleStrLit]:
         node[i] = newCall("answer", ident("req"), newCall("fmt", child[0]))
+      # Variable
       else:
-        node[i] = newCall("answer", ident("req"), child[0])
+        node[i] = newNimNode(nnkWhenStmt).add(
+          newNimNode(nnkElifBranch).add(
+            newCall("is", child[0], ident("JsonNode")),
+            newCall("answerJson", ident("req"), child[0])
+          ),
+          newNimNode(nnkElifBranch).add(
+            newCall("is", child[0], ident("TagRef")),
+            newCall("answerHtml", ident("req"), child[0])
+          ),
+          newNimNode(nnkElse).add(
+            newCall("answer", ident("req"), child[0])
+          )
+        )
     else:
       node[i].detectReturnStmt(true)
   # Replace last node
