@@ -83,7 +83,7 @@ import happyx
 ### SSG
 ```bash
 hpx create --name ssg_project --kind SSG
-cd ssg_project
+cd ssg_project/src
 ```
 
 Main script will be able in `/ssg_project/src/main.nim`
