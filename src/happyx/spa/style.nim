@@ -142,6 +142,7 @@ macro buildStyle*(body: untyped): untyped =
   ## - nim variables via `!!` prefix
   ## 
   runnableExamples:
+    import strformat
     var
       nimVariable = "#fefefe"
       otherNimVariable = "rgb(100, 255, 100)"
