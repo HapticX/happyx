@@ -109,6 +109,11 @@ hpx dev --reload
 ```
 
 
+# Have A Nice Idea? 🍍
+
+[Open issue](https://github.com/HapticX/happyx/issues/new/choose) or contact us hapticx.company@gmail.com
+
+
 # Contributing 🌀
 See [Contributing.md](https://github.com/HapticX/happyx/blob/master/.github/CONTRIBUTING.md) for more information
 
