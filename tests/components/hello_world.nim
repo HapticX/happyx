@@ -22,11 +22,18 @@ component HelloWorld:
     echo self.counter
   
   `style`:
-    """
-    button {
-      border-radius: 5rem;
-      padding: 0.4rem {self.counter * 0.2}rem;
-      border: 0;
-      background: #dedede;
-      color: #212121;
-    }"""
+    buildStyle:
+      tag button:
+        border-radius: 5.rem
+        padding: 0.4.rem {{self.counter * 0.2}}.rem
+        border: 0
+        background: rgb(200, 200, 200)
+        color: rgb(33, 33, 33)
+    # """
+    # button {
+    #   border-radius: 5rem;
+    #   padding: 0.4rem {self.counter * 0.2}rem;
+    #   border: 0;
+    #   background: #dedede;
+    #   color: #212121;
+    # }"""

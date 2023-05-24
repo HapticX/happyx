@@ -20,6 +20,7 @@ import
   tables,
   regex,
   ./tag,
+  ./style,
   ../private/[routing, macro_utils, exceptions],
   ../mounting/mounting,
   ../sugar/sgr
@@ -137,8 +138,7 @@ template start*(app: App) =
   if window.location.hash.len == 0:
     route("/")
   else:
-    {.emit : "if(window.location.hash[0]=='#'){`route`(window.location.hash.substr(1));}".}
-    {.emit : "else{`route`(window.location.hash);}".}
+    {.emit : "if(window.location.hash[0]=='#'){`route`(window.location.hash.substr(1));}else{`route`(window.location.hash);}".}
 
 
 {.push compileTime.}
@@ -975,15 +975,28 @@ macro component*(name, body: untyped): untyped =
           )
         of "style":
           # Component styles
-          let str = ($s[1][0]).replace(
-            re"^([\S ]+?) *\{(?im)", "$1[data-{self.uniqCompId}]{{"
-          ).replace(re"(^ *|\{ *|\n *)\}(?im)", "$1}}")
-          styleStmtList = newStmtList(
-            newAssignment(
-              ident("result"),
-              newCall("fmt", newStrLitNode(str))
+          echo s[1][0].toStrLit
+          if s[1][0].kind in [nnkStrLit, nnkTripleStrLit]:
+            let str = ($s[1][0]).replace(
+              re"^([\S ]+?) *\{(?im)", "$1[data-{self.uniqCompId}]{{"
+            ).replace(re"(^ *|\{ *|\n *)\}(?im)", "$1}}")
+            styleStmtList = newStmtList(
+              newAssignment(
+                ident("result"),
+                newCall("fmt", newStrLitNode(str))
+              )
             )
-          )
+          elif s[1][0].kind == nnkCall and s[1][0][0].kind == nnkIdent and $s[1][0][0] == "buildStyle":
+            let css = getAst(buildStyle(s[1][0][1]))[1]
+            let str = ($css).replace(
+              re"^([\S ]+?) *\{(?im)", "$1[data-<self.uniqCompId>]{"
+            ).replace(re"(^ *|\{ *|\n *)\}(?im)", "$1}")
+            styleStmtList = newStmtList(
+              newAssignment(
+                ident("result"),
+                newCall("fmt", newStrLitNode(str), newLit('<'), newLit('>'))
+              )
+            )
         of "script":
           # Component main script
           s[1].replaceSelfStateVal()

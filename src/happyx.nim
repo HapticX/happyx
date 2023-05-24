@@ -223,7 +223,7 @@ when not defined(js):
     cors
 
 import
-  happyx/spa/[renderer, state],
+  happyx/spa/[renderer, state, style],
   happyx/tmpl_engine/[engine],
   happyx/mounting/[mounting],
   happyx/sugar/[sgr]
@@ -231,6 +231,7 @@ import
 export
   renderer,
   state,
+  style,
   engine,
   mounting,
   sgr

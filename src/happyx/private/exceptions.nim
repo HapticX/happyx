@@ -12,6 +12,7 @@ type
   ModelSyntaxDefect* = object of Defect
   MountDefect* = object of Defect
   SyntaxSugarDefect* = object of Defect
+  SyntaxStyleDefect* = object of Defect
 
 
 proc throwDefect*(defect: typedesc, msg: string, lineInfo: LineInfo) =
