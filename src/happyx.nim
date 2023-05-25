@@ -214,6 +214,31 @@
 ##      # /profile/settings/ works!
 ##      mount "/profile" -> Profile
 ## 
+## 
+## # API Reference 📄
+## 
+## ## Automatic Import 🎈
+## 
+## ### Single Page Application ✨
+## 
+## - [renderer](happyx/spa/renderer.html) provides SPA renderer, routing and components.
+## - [state](happyx/spa/state.html) provides reactivity.
+## - [style](happyx/spa/style.html) provides `buildStyle` macro.
+## - [tag](happyx/spa/tag.html) provides VDOM.
+## 
+## ### Static Site Generation 🍍
+## 
+## - [cors](happyx/ssg/cors.html) provides CORS registration.
+## - [server](happyx/ssg/server.html) provides routing and working with server.
+## 
+## ### Template Engine 🎴
+## 
+## - [engine](happyx/tmpl_engine/engine.html) provides templates for SSG.
+## 
+## ### Mounting 🔌
+## 
+## - [mounting](happyx/mounting/mounting.html) provides powerful mounting.
+## 
 when not defined(js):
   import
     happyx/ssg/[server, cors]
