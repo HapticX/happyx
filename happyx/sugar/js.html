@@ -17,7 +17,7 @@
 <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600' rel='stylesheet' type='text/css'/>
 
 <!-- CSS -->
-<title>src/happyx/ssg/cors</title>
+<title>src/happyx/sugar/js</title>
 <link rel="stylesheet" type="text/css" href="../../nimdoc.out.css">
 
 <script type="text/javascript" src="../../dochack.js"></script>
@@ -69,7 +69,7 @@ window.addEventListener('DOMContentLoaded', main);
 <body>
 <div class="document" id="documentId">
   <div class="container">
-    <h1 class="title">src/happyx/ssg/cors</h1>
+    <h1 class="title">src/happyx/sugar/js</h1>
     <div class="row">
   <div class="three columns">
   <div class="theme-switch-wrapper">
@@ -105,28 +105,11 @@ window.addEventListener('DOMContentLoaded', main);
   </ul>
 </li>
 <li>
-  <a class="reference reference-toplevel" href="#7" id="57">Types</a>
-  <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#CORSObj"
-    title="CORSObj = object
-  allowHeaders*: string
-  allowOrigins*: string
-  allowMethods*: string
-  allowCredentials*: bool">CORSObj</a></li>
-
-  </ul>
-</li>
-<li>
   <a class="reference reference-toplevel" href="#17" id="67">Macros</a>
   <ul class="simple simple-toc-section">
-      <ul class="simple nested-toc-section">addCORSHeaders
-      <li><a class="reference" href="#addCORSHeaders.m%2CHttpHeaders"
-    title="addCORSHeaders(headers: HttpHeaders)">addCORSHeaders(headers: HttpHeaders)</a></li>
-
-  </ul>
-  <ul class="simple nested-toc-section">regCORS
-      <li><a class="reference" href="#regCORS.m%2Cuntyped"
-    title="regCORS(body: untyped): untyped">regCORS(body: untyped): untyped</a></li>
+      <ul class="simple nested-toc-section">buildJs
+      <li><a class="reference" href="#buildJs.m%2Cuntyped"
+    title="buildJs(body: untyped): untyped">buildJs(body: untyped): untyped</a></li>
 
   </ul>
 
@@ -140,46 +123,64 @@ window.addEventListener('DOMContentLoaded', main);
   <div class="nine columns" id="content">
   <div id="tocRoot"></div>
   
-  <p class="module-desc">Provides working with Cross-Origin Resource Sharing (CORS)</p>
+  <p class="module-desc"><p>Provides JS2Nim bridge</p>
+<p>You can write PURE JS in PURE Nim with it ✌</p>
+</p>
   <div class="section" id="6">
 <h1><a class="toc-backref" href="#6">Imports</a></h1>
 <dl class="item">
 <a class="reference external" href="../private/exceptions.html">../private/exceptions</a>
 </dl></div>
-<div class="section" id="7">
-<h1><a class="toc-backref" href="#7">Types</a></h1>
-<dl class="item">
-<div id="CORSObj">
-<dt><pre><a href="cors.html#CORSObj"><span class="Identifier">CORSObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
-  <span class="Identifier">allowHeaders</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
-  <span class="Identifier">allowOrigins</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
-  <span class="Identifier">allowMethods</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
-  <span class="Identifier">allowCredentials</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>
-</pre></dt>
-<dd>
-
-
-
-</dd>
-</div>
-
-</dl></div>
 <div class="section" id="17">
 <h1><a class="toc-backref" href="#17">Macros</a></h1>
 <dl class="item">
-<div id="addCORSHeaders.m,HttpHeaders">
-<dt><pre><span class="Keyword">macro</span> <a href="#addCORSHeaders.m%2CHttpHeaders"><span class="Identifier">addCORSHeaders</span></a><span class="Other">(</span><span class="Identifier">headers</span><span class="Other">:</span> <span class="Identifier">HttpHeaders</span><span class="Other">)</span></pre></dt>
+<div id="buildJs.m,untyped">
+<dt><pre><span class="Keyword">macro</span> <a href="#buildJs.m%2Cuntyped"><span class="Identifier">buildJs</span></a><span class="Other">(</span><span class="Identifier">body</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
 
+<p>With this macro you can use PURE JavaScript in PURE Nim 👑</p>
+<p>Available only on <tt class="docutils literal"><span class="pre"><span class="Identifier">JS</span></span></tt> backend ✌</p>
+<p>Supported syntax statements 👀</p>
+<ul class="simple"><li>IF-ELIF-ELSE</li>
+<li>CASE-OF</li>
+<li>FOR/WHILE</li>
+<li>variable/constant declaration</li>
+</ul>
+<p>Also you can use ES6 classes 🥳</p>
+<pre class="listing"><span class="Identifier">class</span> <span class="Identifier">Animal</span><span class="Punctuation">:</span>
+  <span class="Identifier">say</span><span class="Punctuation">(</span><span class="Punctuation">)</span><span class="Punctuation">:</span>
+    <span class="Keyword">discard</span>
 
+<span class="Identifier">class</span> <span class="Identifier">Cat</span> <span class="Identifier">extends</span> <span class="Identifier">Animal</span><span class="Punctuation">:</span>
+  <span class="Identifier">say</span><span class="Punctuation">(</span><span class="Punctuation">)</span><span class="Punctuation">:</span>
+    <span class="Identifier">echo</span> <span class="StringLit">&quot;Meow&quot;</span>
 
-</dd>
-</div>
-<div id="regCORS.m,untyped">
-<dt><pre><span class="Keyword">macro</span> <a href="#regCORS.m%2Cuntyped"><span class="Identifier">regCORS</span></a><span class="Other">(</span><span class="Identifier">body</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
-<dd>
+<span class="Identifier">class</span> <span class="Identifier">Dog</span> <span class="Identifier">extends</span> <span class="Identifier">Animal</span><span class="Punctuation">:</span>
+  <span class="Identifier">say</span><span class="Punctuation">(</span><span class="Punctuation">)</span><span class="Punctuation">:</span>
+    <span class="Identifier">echo</span> <span class="StringLit">&quot;Woof!&quot;</span>
 
-Register CORS
+<span class="Keyword">var</span> <span class="Identifier">dog</span> <span class="Operator">=</span> <span class="Identifier">new</span> <span class="Identifier">Dog</span><span class="Punctuation">(</span><span class="Punctuation">)</span><span class="Punctuation">;</span>
+<span class="Keyword">var</span> <span class="Identifier">cat</span> <span class="Operator">=</span> <span class="Identifier">new</span> <span class="Identifier">Cat</span><span class="Punctuation">(</span><span class="Punctuation">)</span><span class="Punctuation">;</span>
+<span class="Identifier">dog</span><span class="Operator">.</span><span class="Identifier">say</span><span class="Punctuation">(</span><span class="Punctuation">)</span><span class="Punctuation">;</span>
+<span class="Identifier">cat</span><span class="Operator">.</span><span class="Identifier">say</span><span class="Punctuation">(</span><span class="Punctuation">)</span><span class="Punctuation">;</span></pre><p>This translates into 💻</p>
+<pre class="listing">class Animal {
+  say() {
+  }
+}
+class Cat extends Animal {
+  say() {
+    console.log(&quot;Meow&quot;);
+  }
+}
+class Dog extends Animal {
+  say() {
+    console.log(&quot;Woof!&quot;);
+  }
+}
+let dog = new Dog();
+let cat = new Cat();
+dog.say();
+cat.say();</pre>
 
 </dd>
 </div>
@@ -193,7 +194,7 @@ Register CORS
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-05-25 23:15:33 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-05-25 23:15:42 UTC</small>
       </div>
     </div>
   </div>
