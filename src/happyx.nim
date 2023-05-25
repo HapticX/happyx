@@ -226,7 +226,7 @@ import
   happyx/spa/[renderer, state, style],
   happyx/tmpl_engine/[engine],
   happyx/mounting/[mounting],
-  happyx/sugar/[sgr]
+  happyx/sugar/[sgr, js]
 
 export
   renderer,
@@ -234,4 +234,5 @@ export
   style,
   engine,
   mounting,
-  sgr
+  sgr,
+  js

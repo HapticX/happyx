@@ -1,5 +1,5 @@
 import
-  ../src/happyx/sugar/js
+  ../src/happyx
 
 
 var nimVar = 100
