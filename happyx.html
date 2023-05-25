@@ -113,7 +113,13 @@ window.addEventListener('DOMContentLoaded', main);
 <li><a class="reference" id="path-params-🛠-typing-👮‍♀️_toc" href="#path-params-🛠-typing-👮‍♀️">Typing 👮‍♀️</a></li>
 <li><a class="reference" id="path-params-🛠-im-mutable-⚙_toc" href="#path-params-🛠-im-mutable-⚙">(Im)mutable ⚙</a></li>
 </ul><li><a class="reference" id="happyx-mounting-🔌_toc" href="#happyx-mounting-🔌">Mounting 🔌</a></li>
-</ul><li>
+</ul><li><a class="reference" id="api-reference-📄_toc" href="#api-reference-📄">API Reference 📄</a></li>
+<ul class="simple"><li><a class="reference" id="api-reference-📄-automatic-import-🎈_toc" href="#api-reference-📄-automatic-import-🎈">Automatic Import 🎈</a></li>
+<ul class="simple"><li><a class="reference" id="automatic-import-🎈-single-page-application-✨_toc" href="#automatic-import-🎈-single-page-application-✨">Single Page Application ✨</a></li>
+<li><a class="reference" id="automatic-import-🎈-static-site-generation-🍍_toc" href="#automatic-import-🎈-static-site-generation-🍍">Static Site Generation 🍍</a></li>
+<li><a class="reference" id="automatic-import-🎈-template-engine-🎴_toc" href="#automatic-import-🎈-template-engine-🎴">Template Engine 🎴</a></li>
+<li><a class="reference" id="automatic-import-🎈-mounting-🔌_toc" href="#automatic-import-🎈-mounting-🔌">Mounting 🔌</a></li>
+</ul></ul><li>
   <a class="reference reference-toplevel" href="#6" id="56">Imports</a>
   <ul class="simple simple-toc-section">
     
@@ -282,7 +288,25 @@ hpx dev
   <span class="Comment"># /profile does not works</span>
   <span class="Comment"># /profile/settings does not works</span>
   <span class="Comment"># /profile/settings/ works!</span>
-  <span class="Identifier">mount</span> <span class="StringLit">&quot;/profile&quot;</span> <span class="Operator">-&gt;</span> <span class="Identifier">Profile</span></pre></p>
+  <span class="Identifier">mount</span> <span class="StringLit">&quot;/profile&quot;</span> <span class="Operator">-&gt;</span> <span class="Identifier">Profile</span></pre>
+<h1><a class="toc-backref" id="api-reference-📄" href="#api-reference-📄">API Reference 📄</a></h1>
+<h2><a class="toc-backref" id="api-reference-📄-automatic-import-🎈" href="#api-reference-📄-automatic-import-🎈">Automatic Import 🎈</a></h2>
+<h3><a class="toc-backref" id="automatic-import-🎈-single-page-application-✨" href="#automatic-import-🎈-single-page-application-✨">Single Page Application ✨</a></h3><ul class="simple"><li><a class="reference external" href="happyx/spa/renderer.html">renderer</a> provides SPA renderer, routing and components.</li>
+<li><a class="reference external" href="happyx/spa/state.html">state</a> provides reactivity.</li>
+<li><a class="reference external" href="happyx/spa/style.html">style</a> provides <tt class="docutils literal"><span class="pre"><span class="Identifier">buildStyle</span></span></tt> macro.</li>
+<li><a class="reference external" href="happyx/spa/tag.html">tag</a> provides VDOM.</li>
+</ul>
+
+<h3><a class="toc-backref" id="automatic-import-🎈-static-site-generation-🍍" href="#automatic-import-🎈-static-site-generation-🍍">Static Site Generation 🍍</a></h3><ul class="simple"><li><a class="reference external" href="happyx/ssg/cors.html">cors</a> provides CORS registration.</li>
+<li><a class="reference external" href="happyx/ssg/server.html">server</a> provides routing and working with server.</li>
+</ul>
+
+<h3><a class="toc-backref" id="automatic-import-🎈-template-engine-🎴" href="#automatic-import-🎈-template-engine-🎴">Template Engine 🎴</a></h3><ul class="simple"><li><a class="reference external" href="happyx/tmpl_engine/engine.html">engine</a> provides templates for SSG.</li>
+</ul>
+
+<h3><a class="toc-backref" id="automatic-import-🎈-mounting-🔌" href="#automatic-import-🎈-mounting-🔌">Mounting 🔌</a></h3><ul class="simple"><li><a class="reference external" href="happyx/mounting/mounting.html">mounting</a> provides powerful mounting.</li>
+</ul>
+</p>
   <div class="section" id="6">
 <h1><a class="toc-backref" href="#6">Imports</a></h1>
 <dl class="item">
@@ -301,7 +325,7 @@ hpx dev
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-05-25 23:15:42 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-05-25 23:26:31 UTC</small>
       </div>
     </div>
   </div>
