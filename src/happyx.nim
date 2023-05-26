@@ -166,6 +166,11 @@
 ## - Optional param: `{arg?:type}`, `$arg?:type`, `{arg?}`, `$arg?`
 ## - Optional param with default value: `{arg:type=val}`, `$arg:type=val`, `{arg=val}`, `$arg=val`
 ## 
+## ### Aliases
+## 
+## Path params can be used by default in curly brackets: `{arg}`
+## But you can use syntax sugar (alias) also: `$arg`
+## 
 ## ### Typing 👮‍♀️
 ## 
 ## Every path param keeps type (default is string)
@@ -183,13 +188,13 @@
 ## 
 ## Every path param by default is immutable, but you can change it to mutable by add `[m]` after param type:
 ## 
-## | Immutable            | Mutable                 | Immutable Alias     | Mutable Alias          |
-## | :--:                 | :--:                    | :--:                | :--:                   | 
-## | `{arg}`              | `{arg[m]}`              | `$arg`              | `$arg[m]`              |
-## | `{arg:type}`         | `{arg:type[m]}`         | `$arg:type`         | `$arg:type[m]`         |
-## | `{arg:type=default}` | `{arg:type[m]=default}` | `$arg:type=default` | `$arg:type[m]=default` |
-## | `{arg=default}`      | `{arg=default}`         | `$arg=default`      | `$arg[m]=default`      |
-## | `{arg?:type}`        | `{arg?:type[m]}`        | `$arg?:type`        | `$arg?:type[m]`        |
+## | Immutable            | Mutable                 | Immutable Via Alias     | Mutable Via Alias          |
+## | :--:                 | :--:                    | :--:                    | :--:                       | 
+## | `{arg}`              | `{arg[m]}`              | `$arg`                  | `$arg[m]`                  |
+## | `{arg:type}`         | `{arg:type[m]}`         | `$arg:type`             | `$arg:type[m]`             |
+## | `{arg:type=default}` | `{arg:type[m]=default}` | `$arg:type=default`     | `$arg:type[m]=default`     |
+## | `{arg=default}`      | `{arg=default}`         | `$arg=default`          | `$arg[m]=default`          |
+## | `{arg?:type}`        | `{arg?:type[m]}`        | `$arg?:type`            | `$arg?:type[m]`            |
 ## 
 ## ## Mounting 🔌
 ## 
