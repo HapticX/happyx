@@ -17,12 +17,12 @@ component Overview:
           # Install and Playground buttons
           tDiv(class = "flex justify-center items-center p-2 gap-2 text-lg rounded-lg"):
             # Install
-            tButton(class = "px-4 py-2 bg-[{yellow}] text-[{background}] hover:bg-opacity-90 transition-all dutation-500"):
+            tButton(class = "px-4 py-2 bg-[{yellow}] text-[{background}] hover:bg-opacity-90 active:bg-opacity-80 transition-all dutation-500"):
               "Install Nim 1.6.12"
               @click:
                 route("/install")
             # Try it online
-            tButton(class = "px-4 py-2 bg-[{gray}] text-[{background}] hover:bg-opacity-90 transition-all dutation-500"):
+            tButton(class = "px-4 py-2 bg-[{gray}] text-[{background}] hover:bg-opacity-90 active:bg-opacity-80 transition-all dutation-500"):
               "Try it online"
               @click:
                 route("/playground")
