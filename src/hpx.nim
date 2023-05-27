@@ -75,6 +75,12 @@ proc compileProject(): ProjectData {. discardable .} =
     result.srcDir = cfg.getSectionValue("Main", "srcDir", "src")
   # Only errors will shows
   
+  let options: set[ProcessOption] =
+    when defined(windows):
+      {poStdErrToStdOut}
+    else:
+      {poStdErrToStdOut, poUsePath}
+
   case result.projectType:
   of ptSPA:
     result.process = startProcess(
@@ -82,7 +88,7 @@ proc compileProject(): ProjectData {. discardable .} =
       [
         "js", "-c", "--hints:off", "--warnings:off",
         "--opt:size", "--d:danger", "-x:off", "-a:off", result.mainFile
-      ]
+      ], nil, options
     )
   of ptSSG:
     return result

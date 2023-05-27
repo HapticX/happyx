@@ -166,7 +166,7 @@
 ## - Optional param: `{arg?:type}`, `$arg?:type`, `{arg?}`, `$arg?`
 ## - Optional param with default value: `{arg:type=val}`, `$arg:type=val`, `{arg=val}`, `$arg=val`
 ## 
-## ### Aliases
+## ### Aliases 🎈
 ## 
 ## Path params can be used by default in curly brackets: `{arg}`
 ## But you can use syntax sugar (alias) also: `$arg`
