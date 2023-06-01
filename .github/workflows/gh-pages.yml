@@ -55,7 +55,7 @@ jobs:
       - name: Install Dependencies
         run: |
           nimble refresh
-          nimble install -y regex nimja cligen httpx illwill websocketx
+          nimble install -y regex nimja cligen httpx microasynchttpserver illwill websocketx
           python -m pip install --upgrade pip
           pip install hapdoc>=1.9.25 -U
 
@@ -65,7 +65,7 @@ jobs:
           hapdoc build docs -t default -o ""
 
       - name: Generate API documents
-        run: nim doc --index:on --project --out:docs --hints:off src/happyx.nim
+        run: nim doc --index:on -d:docgen --project --out:docs --hints:off src/happyx.nim
 
       - name: Deploy documents
         uses: peaceiris/actions-gh-pages@v3

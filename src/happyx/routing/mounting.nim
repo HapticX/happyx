@@ -1,11 +1,28 @@
-## Provides effective mounting ✨
+## # Mounting 🔌
+## 
+## Provides powerful and effective mounting ✨
+## 
+## ## Usage Example 🔨
+## 
+## .. code-block:: nim
+##    mount Settings:
+##      "/":
+##        ...
+##    mount Profile:
+##      mount "/settings" -> Settings
+##      mount "/config" -> Settings
+## 
+##    serve(...):  # or appRoutes
+##      mount "/profile" -> Profile
+## 
 import
   # stdlib
   macros,
   tables,
   strformat,
   # HappyX
-  ../private/exceptions
+  ../core/[exceptions],
+  ../private/[macro_utils]
 
 
 var registeredMounts* {. compileTime .} = newTable[string, NimNode]()
@@ -24,7 +41,7 @@ proc findAndReplaceMount*(body: NimNode) {. compileTime .} =
           route = body[idx][1][1]
         if not registeredMounts.hasKey($name):
           throwDefect(
-            MountDefect,
+            HpxMountDefect,
             fmt"Mount {name} is not declared",
             lineInfoObj(body[idx])
           )
@@ -48,6 +65,16 @@ proc findAndReplaceMount*(body: NimNode) {. compileTime .} =
 
 macro mount*(mountName, body: untyped): untyped =
   ## Registers new mount
-  assert mountName.kind == nnkIdent
-  assert body.kind == nnkStmtList
+  if mountName.kind != nnkIdent:
+    throwDefect(
+      HpxMountDefect,
+      "Mount name should be ident! ",
+      lineInfoObj(mountName)
+    )
+  if body.kind != nnkStmtList:
+    throwDefect(
+      HpxMountDefect,
+      "Mount body should be statement list! ",
+      lineInfoObj(body)
+    )
   registeredMounts[$mountName] = body

@@ -8,7 +8,8 @@ import
   # deps
   regex,
   # HappyX
-  ../private/exceptions
+  ../core/[exceptions],
+  ../private/[macro_utils]
 
 
 const nnkNumbers* = nnkIntLit..nnkFloat128Lit
@@ -26,7 +27,7 @@ proc buildStyleProc(body: NimNode, css: var string, level: int = 0, pretty: bool
     elif statement.kind in nnkCallKinds and statement[0].kind == nnkIdent and $statement[0] == "class":
       if statement.len != 3 and statement[^1].kind != nnkStmtList:
         throwDefect(
-          SyntaxStyleDefect,
+          HpxBuildStyleDefect,
           fmt"Invalid buildStyle syntax! classes should have name and body! ",
           lineInfoObj(statement)
         )
@@ -37,7 +38,7 @@ proc buildStyleProc(body: NimNode, css: var string, level: int = 0, pretty: bool
     elif statement.kind in nnkCallKinds and statement[0].kind == nnkIdent and $statement[0] == "id":
       if statement.len != 3 and statement[^1].kind != nnkStmtList:
         throwDefect(
-          SyntaxStyleDefect,
+          HpxBuildStyleDefect,
           fmt"Invalid buildStyle syntax! IDs should have name and body! ",
           lineInfoObj(statement)
         )
@@ -48,11 +49,11 @@ proc buildStyleProc(body: NimNode, css: var string, level: int = 0, pretty: bool
     elif statement.kind in nnkCallKinds and statement[0].kind == nnkIdent and $statement[0] == "tag":
       if statement.len != 3 and statement[^1].kind != nnkStmtList:
         throwDefect(
-          SyntaxStyleDefect,
+          HpxBuildStyleDefect,
           fmt"Invalid buildStyle syntax! tags should have name and body! ",
           lineInfoObj(statement)
         )
-      css &= levelStr & $statement[1] & " {" & newLine
+      css &= levelStr & getTagName($statement[1]) & " {" & newLine
       statement[^1].buildStyleProc(css, level + 2, pretty)
       css &= levelStr & "}" & newLine
     # at-rules
@@ -60,13 +61,13 @@ proc buildStyleProc(body: NimNode, css: var string, level: int = 0, pretty: bool
     elif statement.kind in nnkCallKinds and statement[0].kind == nnkPrefix and $statement[0][0] == "@":
       if statement.len < 3 and $statement[0][1] != "charset":
         throwDefect(
-          SyntaxStyleDefect,
+          HpxBuildStyleDefect,
           fmt"Invalid buildStyle syntax! At-rule should have name and body! ",
           lineInfoObj(statement)
         )
       if statement[0][1].kind != nnkIdent:
         throwDefect(
-          SyntaxStyleDefect,
+          HpxBuildStyleDefect,
           "Invalid buildStyle syntax! At-rule should have ident (@AtRuleName).\nAs example:\n@keyframes\n",
           lineInfoObj(statement[0][1])
         )
@@ -89,7 +90,7 @@ proc buildStyleProc(body: NimNode, css: var string, level: int = 0, pretty: bool
     elif statement.kind in nnkCallKinds and statement[0].kind in nnkNumbers:
       if statement.len != 2 and statement[^1].kind != nnkStmtList:
         throwDefect(
-          SyntaxStyleDefect,
+          HpxBuildStyleDefect,
           fmt"Invalid buildStyle syntax! IDs should have name and body! ",
           lineInfoObj(statement)
         )
@@ -99,14 +100,19 @@ proc buildStyleProc(body: NimNode, css: var string, level: int = 0, pretty: bool
       css &= levelStr & "}" & newLine
     # pseudo classes
     elif statement.kind == nnkInfix and $statement[0] == "@":
-      css &= levelStr & $statement[1].toStrLit & ":" & $statement[2].toStrLit & " {" & newLine
+      let tagName =
+        if statement[1].kind == nnkIdent:
+          getTagName($statement[1])
+        else:
+          $statement[1].toStrLit
+      css &= levelStr & tagName & ":" & $statement[2].toStrLit & " {" & newLine
       statement[^1].buildStyleProc(css, level + 2, pretty)
       css &= levelStr & "}" & newLine
     # complex property
     elif statement.kind == nnkInfix and statement.len == 4 and statement[^1].kind == nnkStmtList:
       if statement[3].len != 1:
         throwDefect(
-          SyntaxStyleDefect,
+          HpxBuildStyleDefect,
           fmt"Invalid buildStyle syntax! Property should have only one value ",
           lineInfoObj(statement[1])
         )
@@ -117,13 +123,13 @@ proc buildStyleProc(body: NimNode, css: var string, level: int = 0, pretty: bool
     elif statement.kind in nnkCallKinds and statement.len == 2 and statement[0].kind == nnkIdent and statement[^1].kind == nnkStmtList:
       if statement[1].len != 1:
         throwDefect(
-          SyntaxStyleDefect,
+          HpxBuildStyleDefect,
           fmt"Invalid buildStyle syntax! Property should have only one value ",
           lineInfoObj(statement[1])
         )
       if statement[0].kind != nnkIdent:
         throwDefect(
-          SyntaxStyleDefect,
+          HpxBuildStyleDefect,
           fmt"Invalid buildStyle syntax! Property name should be ident! ",
           lineInfoObj(statement[1])
         )
@@ -139,7 +145,7 @@ macro buildStyle*(body: untyped): untyped =
   ## - @keyframes;
   ## - @media queries;
   ## - @charset, @supports, @container;
-  ## - nim variables via `!!` prefix
+  ## - nim variables in double curly brackets
   ## 
   runnableExamples:
     import strformat

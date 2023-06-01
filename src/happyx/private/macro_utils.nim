@@ -9,6 +9,18 @@ let discardStmt* {. compileTime .} = newNimNode(nnkDiscardStmt).add(newEmptyNode
 
 {. push compileTime .}
 
+proc getTagName*(name: string): string =
+  ## Checks tag name at compile time
+  ## 
+  ## tagDiv, tDiv, hDiv -> div
+  if re"^tag[A-Z]" in name:
+    name[3..^1].toLower()
+  elif re"^[ht][A-Z]" in name:
+    name[1..^1].toLower()
+  else:
+    name
+
+
 proc isExpr*(node: NimNode): bool =
   if node.kind == nnkStmtList and node.len > 0:
     return node[^1].isExpr

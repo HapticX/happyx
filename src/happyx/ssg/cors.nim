@@ -1,4 +1,5 @@
-## Provides working with Cross-Origin Resource Sharing (CORS)
+## Provides working with Cross-Origin Resource Sharing (CORS) ✨
+## 
 import
   # stdlib
   macros,
@@ -6,16 +7,16 @@ import
   strutils,
   strformat,
   # Happyx
-  ../private/exceptions
+  ../core/[exceptions]
 
 
 
 type
   CORSObj* = object
+    allowCredentials*: bool
     allowHeaders*: string
     allowOrigins*: string
     allowMethods*: string
-    allowCredentials*: bool
 
 
 var currentCORS {. compileTime .} = CORSObj()
@@ -60,11 +61,11 @@ macro regCORS*(body: untyped): untyped =
               methods.add($i)
             else:
               throwDefect(
-                CORSSyntaxDefect,
+                HpxCorsDefect,
                 fmt"invalid regCORS methods syntax: ",
                 lineInfoObj(val)
               )
-          currentCORS.allowMethods = methods.join(", ")
+          currentCORS.allowMethods = methods.join(",")
           continue
       of "headers":
         if val.kind in [nnkStrLit, nnkTripleStrLit]:
@@ -77,11 +78,11 @@ macro regCORS*(body: untyped): untyped =
               headers.add($i)
             else:
               throwDefect(
-                CORSSyntaxDefect,
+                HpxCorsDefect,
                 fmt"invalid regCORS headers syntax: ",
                 lineInfoObj(val)
               )
-          currentCORS.allowMethods = headers.join(", ")
+          currentCORS.allowMethods = headers.join(",")
           continue
       of "origins":
         if val.kind in [nnkStrLit, nnkTripleStrLit]:
@@ -89,13 +90,13 @@ macro regCORS*(body: untyped): untyped =
           continue
       else:
         throwDefect(
-          CORSSyntaxDefect,
+          HpxCorsDefect,
           fmt"invalid regCORS statement syntax: ",
           lineInfoObj(statement)
         )
           
     throwDefect(
-      CORSSyntaxDefect,
+      HpxCorsDefect,
       fmt"invalid regCORS syntax: ",
       lineInfoObj(statement)
     )

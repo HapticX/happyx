@@ -6,6 +6,41 @@ var nimVar = 100
 
 
 buildJs:
+  # Create class
+  class Animal:
+    say():
+      discard
+  class Cat extends Animal:
+    say():
+      echo "Meow"
+  class Dog extends Animal:
+    say():
+      echo "Woof!"
+  var dog = new Dog()
+  var cat = new Cat()
+  dog.say()
+  cat.say()
+
+
+proc myNimFunc(arg: string) =
+  echo arg
+
+buildJs:
+  # using nim code inside buildJs
+  nim:
+    myNimFunc("Hello!")
+    # and nested ...
+    buildJs:
+      echo "Hello from JS"
+      nim:
+        echo "Hello from Nim"
+        buildJs:
+          echo "Hello from nested nested Js"
+          nim:
+            echo "Hello from nested nested Nim"
+
+
+buildJs:
   # translates into
   # let name = 123;
   var name = 123
@@ -99,21 +134,34 @@ buildJs:
     
       # Using nim variables:
       echo ~nimVar
-  
   var rect = new Rectangle(100)
   echo rect.a
-  class Animal:
-    say():
-      discard
-  class Cat extends Animal:
-    say():
-      echo "Meow"
-  class Dog extends Animal:
-    say():
-      echo "Woof!"
-  var dog = new Dog();
-  var cat = new Cat();
-  dog.say();
-  cat.say();
+
+  type
+    A = enum
+      One, Two, Three,
+      Four = 100
+    B = object
+      a: int
+      b: string
+      c*: seq[string]
+  
+  var enumA = A.One
+
+  eval("console.log('Hello, world!')")
+
+  case enumA:
+  of A.One:
+    echo "Hi!"
+  else:
+    echo "Bye!"
+  
+  block loop1:
+    for i in 0..<3:
+      block loop2:
+        for j in 0..<3:
+          if i == 1 && j == 1:
+            continue loop1
+          echo "i =", i, "j =", j
 
 echo nimVar

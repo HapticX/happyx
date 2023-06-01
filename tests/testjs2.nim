@@ -48,6 +48,8 @@ app.routes:
         {left + right}
       else:
         {left - right}
+      nim:
+        echo fmt"Hello from {path}!"
     button:
       "Go to /visit"
       @click:

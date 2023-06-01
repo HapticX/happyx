@@ -38,7 +38,7 @@ jobs:
       - name: Install Dependencies
         run: |
           nimble refresh
-          nimble install -y regex nimja cligen httpx illwill websocketx
+          nimble install -y regex nimja cligen httpx microasynchttpserver illwill websocketx
       
       - name: Hello World
         run: |
@@ -50,6 +50,13 @@ jobs:
       - name: TODO App
         run: |
           cd examples/todo/src
+          nim js main
+          cd ../../../
+        shell: bash
+      
+      - name: NimLang
+        run: |
+          cd examples/nimlang/src
           nim js main
           cd ../../../
         shell: bash

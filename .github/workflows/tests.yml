@@ -38,14 +38,14 @@ jobs:
       - name: Install Dependencies
         run: |
           nimble refresh
-          nimble install -y regex nimja cligen httpx illwill websocketx
+          nimble install -y regex nimja cligen httpx microasynchttpserver illwill websocketx
       
       - name: Build C tests
         run: |
           cd tests
           for file in $(ls -v testc*.nim); do
-            nim c -d:ssl -d:debug $file
-            nim c -d:ssl -d:httpx -d:debug $file
+            nim c -d:debug $file
+            nim c -d:httpx -d:debug $file
           done
         shell: bash
       

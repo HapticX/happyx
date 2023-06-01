@@ -5,7 +5,7 @@ import
   macros,
   tables,
   # HappyX
-  ../private/exceptions
+  ../core/[exceptions]
 
 
 var
@@ -35,7 +35,7 @@ macro `->`*(route, at, body: untyped): untyped =
     sugarRoutes[$route] = (httpMethod: $at, body: body)
   else:
     throwDefect(
-      SyntaxSugarDefect,
+      HpxSyntaxSugarDefect,
       fmt"Invalid syntax sugar: ",
       lineInfoObj(route)
     )

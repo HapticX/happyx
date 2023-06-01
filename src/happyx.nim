@@ -6,9 +6,15 @@
 ## 
 ## 
 ## ## Why HappyX? 🤔
-## HappyX is SPA/SSG web framework that provides same syntax in both parts of framework (SPA and SSG).
-## - SPA part provides `components` and powerful state management.
-## - SSG part provides `buildHtml`.
+## HappyX is macro-oriented full-stack web framework that provides same syntax in both parts of framework (SPA and SSG).
+## - SPA part compiles only on `JS` and provides these features:
+##   - `components`;
+##   - `event handlers`;
+##   - `buildJs` macro;
+##   - state management
+## - SSG part compiles only on `C`/`Cpp`/`Obj-C` and provides these features:
+##   - `CORS` registration;
+##   - Request models;
 ## 
 ## SPA and SSG also provides both syntax for routing.
 ## You don't need to learn new syntax for new projects.
@@ -99,18 +105,21 @@
 ##      import happyx
 ##      
 ##      serve("127.0.0.1", 5000):
+##        var myVar = 0
+##        
 ##        get "/":
 ##          # available only on GET method
-##          "Hello, world"
+##          myVar += 1
+##          return "Hello, world! myVar is {myVar}"
 ##        
 ##        "/framework":
-##          req.answer "This method available from any method (POST, GET, PUT, etc.)"
+##          return "This method available from any method (POST, GET, PUT, etc.)"
 ##        
 ##        middleware:
 ##          echo "This will printed first"
 ##        
 ##        notfound:
-##          req.answer "Oops, not found!"
+##          return "Oops, not found!"
 ## 
 ## ### CLI Usage 🎈
 ## 
@@ -224,11 +233,14 @@
 ## 
 ## ## Automatic Import 🎈
 ## 
+## ### Core 🔋
+## 
+## - [exceptions](happyx/core/exceptions.html) - describes all HappyX exceptions.
+## 
 ## ### Single Page Application ✨
 ## 
 ## - [renderer](happyx/spa/renderer.html) provides SPA renderer, routing and components.
 ## - [state](happyx/spa/state.html) provides reactivity.
-## - [style](happyx/spa/style.html) provides `buildStyle` macro.
 ## - [tag](happyx/spa/tag.html) provides VDOM.
 ## 
 ## ### Static Site Generation 🍍
@@ -240,9 +252,16 @@
 ## 
 ## - [engine](happyx/tmpl_engine/engine.html) provides templates for SSG.
 ## 
-## ### Mounting 🔌
+## ### Routing 🔌
 ## 
-## - [mounting](happyx/mounting/mounting.html) provides powerful mounting.
+## - [routing](happyx/routing/routing.html) provides powerful routing and `pathParams` macro.
+## - [mounting](happyx/routing/mounting.html) provides powerful mounting.
+## 
+## ### Syntax Sugar ✨
+## 
+## - [style](happyx/sugar/style.html) provides `buildStyle` macro.
+## - [sgr](happyx/sugar/sgr.html) provides `->` macro.
+## - [js](happyx/sugar/js.html) provides `buildJs` macro.
 ## 
 when not defined(js):
   import
@@ -253,16 +272,20 @@ when not defined(js):
     cors
 
 import
-  happyx/spa/[renderer, state, style],
+  happyx/core/[exceptions],
+  happyx/spa/[renderer, state, components],
   happyx/tmpl_engine/[engine],
-  happyx/mounting/[mounting],
-  happyx/sugar/[sgr, js]
+  happyx/routing/[mounting, routing],
+  happyx/sugar/[sgr, js, style]
 
 export
+  exceptions,
   renderer,
   state,
+  components,
   style,
   engine,
+  routing,
   mounting,
   sgr,
   js

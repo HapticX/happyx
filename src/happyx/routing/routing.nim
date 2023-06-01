@@ -1,3 +1,6 @@
+## Provides powerful routing ✨
+## 
+
 import
   # stdlib
   strformat,
@@ -8,12 +11,12 @@ import
   # deps
   regex,
   # happyx
-  ./exceptions,
-  ./macro_utils
+  ../core/[exceptions],
+  ../private/[macro_utils]
 
 
 var
-  declaredPathParams* {. compileTime .} = newStringTable()
+  declaredPathParams {. compileTime .} = newStringTable()
 
 
 proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.} =
@@ -34,7 +37,7 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.
       path = path.replace(fmt"<{name}>", declaredPathParams[name])
     else:
       throwDefect(
-        InvalidPathParamDefect,
+        HpxPathParamDefect,
         "Unknown path param name: " & name & "\n" & $routePath.toStrLit,
         lineInfoObj(routePath)
       )
@@ -244,3 +247,182 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.
     )
     return elifBranch
   return newEmptyNode()
+
+
+proc pathParamsBoilerplate(node: NimNode, kind, regexVal: var string) =
+  if node.kind == nnkIdent:
+    kind = $node
+  # regex type
+  elif node.kind == nnkCallStrLit and $node[0] == "re":
+    kind = "regex"
+    regexVal = $node[1]
+  else:
+    let current = $node.toStrLit
+    throwDefect(
+      HpxPathParamDefect,
+      "Invalid path param type: " & current,
+      lineInfoObj(node)
+    )
+
+
+macro pathParams*(body: untyped): untyped =
+  ## `pathParams` provides path params assignment ✨.
+  ## 
+  ## Simple usage:
+  ## 
+  ## .. code-block:: nim
+  ##    pathParams:
+  ##      # means that `arg` of type `int` is optional mutable param with default value `5`
+  ##      arg? int[m] = 5
+  ##      # means that `arg1` of type `string` is optional mutable param with default value `"Hello"`
+  ##      arg1[m] = "Hello"
+  ##      # means that `arg2` of type `string` is immutable regex param
+  ##      arg2 re"\d+u"
+  ##      # means that `arg3` of type `float` is mutable param
+  ##      arg3 float[m]
+  ##      # means that `arg4` of type `int` is optional mutable param with default value `10`
+  ##      arg4:
+  ##        type int
+  ##        mutable
+  ##        optional
+  ##        default = 10
+  ## 
+  for statement in body:
+    var
+      name = ""
+      kind = "string"
+      regexVal = ""
+      isMutable = false
+      isOptional = false
+      defaultVal = ""
+    
+    # Just ident
+    if statement.kind == nnkIdent:
+      name = $statement
+    
+    # Assignment
+    # argument? type[m] = val
+    elif statement.kind == nnkAsgn:
+      if statement[0].kind == nnkInfix and $statement[0][0] == "?":
+        # name
+        name = $statement[0][1]
+        # type
+        if statement[0].len == 3:
+          # type[m]
+          if statement[0][2].kind == nnkBracketExpr and $statement[0][2][1] == "m":
+            isMutable = true
+            pathParamsBoilerplate(statement[0][2][0], kind, regexVal)
+          # type
+          else:
+            pathParamsBoilerplate(statement[0][2], kind, regexVal)
+            kind = $statement[0][2]
+        # default val
+        if statement[1].kind in AtomicNodes:
+          defaultVal = $statement[1].toStrLit
+          isOptional = true
+        else:
+          let current = $statement[1].toStrLit
+          throwDefect(
+            HpxPathParamDefect,
+            "Invalid path param default value (should be atomic const types)" & current,
+            lineInfoObj(statement[1])
+          )
+      # arg[m]
+      elif statement[0].kind == nnkBracketExpr and $statement[0][1] == "m":
+        isMutable = true
+        name = $statement[0][0]
+        # default val
+        if statement[1].kind in AtomicNodes:
+          defaultVal = $statement[1].toStrLit
+          isOptional = true
+        else:
+          let current = $statement[1].toStrLit
+          throwDefect(
+            HpxPathParamDefect,
+            "Invalid path param default value (should be atomic const types)" & current,
+            lineInfoObj(statement[1])
+          )
+    
+    # infix
+    # argument? type[m]
+    elif statement.kind == nnkInfix and $statement[0] == "?":
+      # name
+      name = $statement[1]
+      isOptional = true
+      # type
+      if statement.len == 3:
+        # type[m]
+        if statement[2].kind == nnkBracketExpr and $statement[2][1] == "m":
+          pathParamsBoilerplate(statement[2][0], kind, regexVal)
+        # type
+        else:
+          pathParamsBoilerplate(statement[2], kind, regexVal)
+    
+    # command
+    elif statement.kind in [nnkCall, nnkCommand]:
+      name = $statement[0]
+      # type[m]
+      if statement[1].kind == nnkBracketExpr and $statement[1][1] == "m":
+        isMutable = true
+        pathParamsBoilerplate(statement[1][0], kind, regexVal)
+      # type
+      else:
+        pathParamsBoilerplate(statement[1], kind, regexVal)
+      # stmt list
+      if statement[^1].kind == nnkStmtList:
+        for child in statement[^1].children:
+          case child.kind
+          # optional, mutable etc.
+          of nnkIdent:
+            let childStr = $child
+            if childStr == "optional":
+              isOptional = true
+            elif childStr == "mutable":
+              isMutable = true
+            else:
+              let current = childStr
+              throwDefect(
+                HpxPathParamDefect,
+                "Invalid flag for path param: " & childStr,
+                lineInfoObj(child)
+              )
+          of nnkTypeSection:
+            # param type
+            if child[0].kind == nnkTypeDef and child[0][0].kind == nnkIdent:
+              kind = $child[0][0]
+          of nnkAsgn:
+            let childStr = $child[0]
+            # default val
+            if childStr == "default":
+              if child[1].kind in AtomicNodes:
+                defaultVal = $child[1].toStrLit
+                isOptional = true
+          else:
+            let
+              current = $child.toStrLit
+              allStatement = ($statement[^1].toStrLit).replace(current, "> " & current)
+            throwDefect(
+              HpxPathParamDefect,
+              "invalid path param assignment:" & allStatement,
+              lineInfoObj(child)
+            )
+    
+    if name.len > 0:
+      var res = "{" & name
+      if isOptional:
+        res &= "?"
+      if kind != "regex":
+        res &= ":" & kind
+      else:
+        res &= ":/" & regexVal & "/"
+      if isMutable:
+        res &= "[m]"
+      if defaultVal.len > 0:
+        res &= "=" & defaultVal
+      if declaredPathParams.hasKey(name):
+        throwDefect(
+          HpxPathParamDefect,
+          fmt"param {name} is declared! ",
+          lineInfoObj(statement)
+        )
+      declaredPathParams[name] = res & "}"

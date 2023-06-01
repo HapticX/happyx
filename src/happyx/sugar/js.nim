@@ -6,10 +6,17 @@ import
   strformat,
   strutils,
   macros,
+  tables,
   # Deps
   regex,
   # HappyX
-  ../private/exceptions
+  ../core/[exceptions]
+
+
+var
+  enums {. compileTime .} = newTable[string, seq[string]]()
+  declaredVariables {. compileTime .} = newSeq[string]()
+  nimNodes {. compileTime .} = newSeq[NimNode]()
 
 
 proc buildJsProc(body: NimNode, src: var string, lvl: int = 0,
@@ -24,13 +31,13 @@ proc buildJsProc(body: NimNode, src: var string, lvl: int = 0,
       for i in statement[1]:
         if i.kind != nnkIdent:
           throwDefect(
-            SyntaxJsDefect,
+            HpxBuildJsDefect,
             "Wrong function declaration! function name and function arguments should be idents! ",
             lineInfoObj(statement[1])
           )
       if statement[^1].kind != nnkStmtList:
         throwDefect(
-          SyntaxJsDefect,
+          HpxBuildJsDefect,
           "Wrong function declaration! Function should have body! ",
           lineInfoObj(statement[^1])
         )
@@ -43,7 +50,7 @@ proc buildJsProc(body: NimNode, src: var string, lvl: int = 0,
       for i in statement:
         if i[0].kind != nnkIdent:
           throwDefect(
-            SyntaxJsDefect,
+            HpxBuildJsDefect,
             "Wrong var declaration! Variable name should be ident! ",
             lineInfoObj(i)
           )
@@ -54,11 +61,16 @@ proc buildJsProc(body: NimNode, src: var string, lvl: int = 0,
       for i in statement:
         if i[0].kind != nnkIdent:
           throwDefect(
-            SyntaxJsDefect,
+            HpxBuildJsDefect,
             "Wrong var declaration! Variable name should be ident! ",
             lineInfoObj(i)
           )
         src &= level & "const " & $i[0].toStrLit & " = " & $i[2].toStrLit & ";" & newLine
+    
+    # nim code
+    elif statement.kind == nnkCall and statement[0] == ident("nim") and statement.len == 2 and statement[1].kind == nnkStmtList:
+      src &= level & "![#=#]!" & newLine
+      nimNodes.add(statement[1])
     
     # echo to console.log convertion
     elif statement.kind in nnkCallKinds and statement[0] == ident("echo"):
@@ -75,11 +87,11 @@ proc buildJsProc(body: NimNode, src: var string, lvl: int = 0,
         forStmt = statement[2]
       if arr.kind == nnkInfix:
         if $arr[0] == "..":
-          src &= fmt"{level}for (var {arg} = {arr[1].toStrLit}; {arg} < {arr[2].toStrLit}; ++{arg})" & "{" & newLine
+          src &= fmt"{level}for (var {arg} = {arr[1].toStrLit}; {arg} <= {arr[2].toStrLit}; ++{arg})" & "{" & newLine
           forStmt.buildJsProc(src, lvl + 2, pretty)
           src &= level & "}" & newLine
         elif $arr[0] == "..<":
-          src &= fmt"{level}for (var {arg} = {arr[1].toStrLit}; {arg} < {arr[2].toStrLit}-1; ++{arg})" & "{" & newLine
+          src &= fmt"{level}for (var {arg} = {arr[1].toStrLit}; {arg} < {arr[2].toStrLit}; ++{arg})" & "{" & newLine
           forStmt.buildJsProc(src, lvl + 2, pretty)
           src &= level & "}" & newLine
       else:
@@ -91,7 +103,7 @@ proc buildJsProc(body: NimNode, src: var string, lvl: int = 0,
     elif statement.kind == nnkCommand and statement[0] == ident("class"):
       if statement[^1].kind != nnkStmtList or statement.len != 3:
         throwDefect(
-          SyntaxJsDefect,
+          HpxBuildJsDefect,
           "Wrong buildJs syntax! class should have name and body ",
           lineInfoObj(statement)
         )
@@ -149,20 +161,44 @@ proc buildJsProc(body: NimNode, src: var string, lvl: int = 0,
     # switch-case statement
     elif statement.kind == nnkCaseStmt:
       src &= level & "switch (" & $statement[0].toStrLit & "){" & newLine
+      var
+        enumType = ""
+        enumCases: seq[string] = @[]
       for i in 1..<statement.len:
         let branch = statement[i]
         # iterate over "of a, b, c ..."
         if branch.kind == nnkOfBranch:
           for ofIdx in 0..<branch.len-1:
-            let arg = branch[ofIdx]
+            let
+              arg = branch[ofIdx]
+              val = $arg.toStrLit
+            # Detect enum type
+            if enumType == "" and arg.kind == nnkDotExpr:
+              let k = arg[0]
+              if enums.hasKey($k.toStrLit):
+                enumType = $k.toStrLit
+            # Add val in enumCases if availbale
+            if enumType != "":
+              enumCases.add($arg[1].toStrLit)
+            # Build case statement
             src &= level & "  case " & $arg.toStrLit & ":" & newLine
           branch[1].buildJsProc(src, lvl + 4, pretty)
           src &= level & "    break;" & newLine
         # default
         elif branch.kind == nnkElse:
+          # Detect if enumType is detected
+          if enumType != "":
+            enumCases = enums[enumType]
           src &= level & "  default:" & newLine
           branch[0].buildJsProc(src, lvl + 4, pretty)
           src &= level & "    break;" & newLine
+      # Throw error if not all enum
+      if enumType != "" and enums[enumType] != enumCases:
+        throwDefect(
+          HpxBuildJsDefect,
+          "Not all enum values are handled in a case-of ",
+          lineInfoObj(statement)
+        )
       src &= level & "}" & newLine
     
     # while statement
@@ -171,11 +207,61 @@ proc buildJsProc(body: NimNode, src: var string, lvl: int = 0,
       statement[1].buildJsProc(src, lvl + 2, pretty)
       src &= level & "}" & newLine
     
+    # discard statement
     elif statement.kind == nnkDiscardStmt:
       if statement[0].kind == nnkEmpty:
         discard
       else:
         src &= level & $statement[0].toStrLit & ";" & newLine
+    
+    # block statement
+    elif statement.kind == nnkBlockStmt and statement[0].kind == nnkIdent:
+      src &= level & $statement[0] & ":" & newLine
+      statement[^1].buildJsProc(src, lvl, pretty)
+    
+    # Type section
+    elif statement.kind == nnkTypeSection:
+      for typeDef in statement:
+        # Enumerate declaration
+        if typeDef[^1].kind == nnkEnumTy and typeDef[0].kind == nnkIdent:
+          # Enum value index
+          var index = 0
+          # Enum name
+          let name = $typeDef[0]
+          enums[name] = @[]
+          # Build enum object
+          src &= level & "const " & name & " = {" & newLine
+          for field in typeDef[^1]:
+            if field.kind == nnkIdent:
+              enums[name].add($field)
+              src &= level & "  " & $field & ": " & $index & "," & newLine
+              inc index
+            elif field.kind == nnkEnumFieldDef and field[0].kind == nnkIdent:
+              src &= level & "  " & $field[0] & ": " & $field[1].toStrLit & "," & newLine
+          src &= level & "}" & newLine
+        elif typeDef[^1].kind == nnkObjectTy and typeDef[0].kind == nnkIdent:
+          # Object name
+          let name = $typeDef[0]
+          # Fields
+          let recList = typeDef[^1][^1]
+          # Build enum object
+          src &= level & "class " & name & " {" & newLine
+          # Iterate over fields
+          for field in recList:
+            if field[0].kind == nnkIdent:
+              # Private field
+              src &= level & "  #" & $field[0] & ";" & newLine
+            elif field[0].kind == nnkPostfix:
+              # Public field
+              src &= level & "  " & $field[0][1].toStrLit & ";" & newLine
+          src &= level & "}" & newLine
+    
+    # call any function
+    elif statement.kind in nnkCallKinds:
+      var args: seq[string] = @[]
+      for i in 1..<statement.len:
+        args.add($statement[i].toStrLit)
+      src &= level & $statement[0].toStrLit & "(" & args.join(", ") & ");" & newLine
     
     # any other statement just converts to string
     else:
@@ -237,12 +323,34 @@ macro buildJs*(body: untyped): untyped =
   ##    cat.say();
   ## 
   var emitSrc = ""
+  # Clear compile time variables
+  declaredVariables = @[]
+  nimNodes = @[]
+  enums = newTable[string, seq[string]]()
+  # Build JS
   body.buildJsProc(emitSrc)
   # nim variables
   emitSrc = emitSrc.replace(re"~([a-zA-Z][a-zA-Z0-9_]*)", "`$1`")
   # self -> this
   emitSrc = emitSrc.replace(re"self\.([a-zA-Z][a-zA-Z0-9_]*)", "this.$1")
-  newNimNode(nnkPragma).add(newColonExpr(
-    ident("emit"),
-    newStrLitNode(emitSrc)
-  ))
+  when not defined(js) and not defined(docgen):
+    throwDefect(
+      HpxBuildJsDefect,
+      "buildJs macro worked only on JS backend!",
+      lineInfoObj(body)
+    )
+
+  result = newStmtList()
+  # Split text for injecting Nim code  
+  var
+    i = 0
+    splitted = emitSrc.split("![#=#]!")
+  for text in splitted:
+    if text.len != 0:
+      result.add(newNimNode(nnkPragma).add(newColonExpr(
+        ident("emit"),
+        newStrLitNode(text)
+      )))
+    if (i != splitted.len-1 or splitted.len == 1) and nimNodes.len != 0:
+      result.add(nimNodes[i])
+    inc i

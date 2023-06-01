@@ -1,21 +1,21 @@
-## # Server
+## # Server 🔨
 ## 
 ## Provides a Server object that encapsulates the server's address, port, and logger.
 ## Developers can customize the logger's format using the built-in newConsoleLogger function.
-## HappyX provides two options for handling HTTP requests: httpx and asynchttpserver.
-## Developers can define which library to use by setting the httpx flag.
+## HappyX provides two options for handling HTTP requests: httpx, microasynchttpserver and asynchttpserver.
 ## 
 ## 
-## To enable httpx just compile with `-d:httpx`.
+## To enable httpx just compile with `-d:httpx` or `-d:happyxHttpx`.
+## To enable MicroAsyncHttpServer just compile with `-d:micro` or `-d:happyxMicro`.
 ## 
-## To enable debugging just compile with `-d:debug`.
+## To enable debugging just compile with `-d:happyxDebug`.
 ## 
-## ## Queries
+## ## Queries ❔
 ## In any request you can get queries.
 ## 
 ## Just use `query~name` to get any query param. By default returns `""`
 ## 
-## ## WebSockets
+## ## WebSockets 🍍
 ## In any request you can get connected websocket clients.
 ## Just use `wsConnections` that type is `seq[WebSocket]`
 ## 
@@ -43,9 +43,10 @@ import
   websocketx,
   # HappyX
   ./cors,
-  ../spa/tag,
-  ../private/[routing, macro_utils, exceptions],
-  ../mounting/mounting,
+  ../spa/[tag, renderer],
+  ../core/[exceptions],
+  ../private/[macro_utils],
+  ../routing/[routing, mounting],
   ../sugar/sgr
 
 export
@@ -63,14 +64,27 @@ export
   websocketx
 
 
-when defined(httpx):
+# Configuration via `-d`/`--define`
+const
+  # Alternative HTTP Servers
+  enableHttpx = defined(httpx) or defined(happyxHttpx)
+  enableMicro = defined(micro) or defined(happyxMicro)
+  # Debug mode
+  enableDebug = defined(debug) or defined(happyxDebug)
+
+
+when enableHttpx and enableMicro:
+  {. error: "You can't use two alternative servers at one time!" .}
+
+
+when enableHttpx:
   import
     options,
     httpx
   export
     options,
     httpx
-elif defined(micro):
+elif enableMicro:
   import microasynchttpserver, asynchttpserver
   export microasynchttpserver, asynchttpserver
 else:
@@ -83,12 +97,13 @@ type
     address*: string
     port*: int
     logger*: Logger
-    when defined(httpx):
+    when enableHttpx:
       instance*: Settings
-    elif defined(micro):
+    elif enableMicro:
       instance*: MicroAsyncHttpServer
     else:
       instance*: AsyncHttpServer
+    components: TableRef[string, BaseComponent]
   ModelBase* = object of RootObj
 
 
@@ -100,7 +115,7 @@ proc ctrlCHook() {.noconv.} =
 
 proc onQuit() {.noconv.} =
   echo "Shutdown ..."
-  when not defined(httpx) and not defined(micro):
+  when not enableHttpx and not enableMicro:
     try:
       pointerServer[].instance.close()
       echo "Server closed"
@@ -163,11 +178,12 @@ proc newServer*(address: string = "127.0.0.1", port: int = 5000): Server =
   result = Server(
     address: address,
     port: port,
+    components: newTable[string, BaseComponent](),
     logger: newConsoleLogger(lvlInfo, fgColored("[$date at $time]:$levelname ", fgYellow)),
   )
-  when defined(httpx):
+  when enableHttpx:
     result.instance = initSettings(Port(port), bindAddr=address)
-  elif defined(micro):
+  elif enableMicro:
     result.instance = newMicroAsyncHttpServer()
   else:
     result.instance = newAsyncHttpServer()
@@ -176,7 +192,7 @@ proc newServer*(address: string = "127.0.0.1", port: int = 5000): Server =
 
 
 proc parseQuery*(query: string): owned(StringTableRef) =
-  ## Parses query and retrieves JSON object
+  ## Parses query and retrieves StringTableRef object
   runnableExamples:
     let
       query = "a=1000&b=8000&password=mystrongpass"
@@ -196,12 +212,12 @@ template start*(server: Server): untyped =
   ## 
   ## Returns:
   ## - `untyped`: This template does not return any value.
-  when defined(debug):
+  when enableDebug:
     info fmt"Server started at http://{server.address}:{server.port}"
   when not declared(handleRequest):
     proc handleRequest(req: Request) {.async.} =
       discard
-  when defined(httpx):
+  when enableHttpx:
     run(handleRequest, `server`.instance)
   else:
     waitFor `server`.instance.serve(Port(`server`.port), handleRequest, `server`.address)
@@ -224,7 +240,7 @@ template answer*(
   ##                               This argument is optional, with a default value of Http200 (OK).
   var h = headers
   h.addCORSHeaders()
-  when defined(httpx):
+  when enableHttpx:
     var headersArr: seq[string] = @[]
     for key, value in h.pairs():
       headersArr.add(key & ": " & value)
@@ -410,8 +426,9 @@ macro routes*(server: Server, body: untyped): untyped =
   ## - `get "/path/{args:word}"`: Route with request method. Method can be`get`, `post`, `patch`, etc.
   ## - `notfound`: Route that matches when no other matched.
   ## - `middleware`: Always executes first.
+  ## - `finalize`: Executes when server is closing
   ## 
-  ## #### In Route Types Scope:
+  ## #### Route Scope:
   ## - `req`: Current request
   ## - `urlPath`: Current url path
   ## - `query`: Current url path queries
@@ -424,7 +441,7 @@ macro routes*(server: Server, body: untyped): untyped =
   ## - `wsMismatchProtocol`: Calls on mismatch protocol
   ## - `wsError`: Calls on any other ws error
   ## 
-  ## #### In Websocket Scope:
+  ## #### Websocket Scope:
   ## - `req`: Current request
   ## - `urlPath`: Current url path
   ## - `query`: Current url path queries
@@ -466,7 +483,7 @@ macro routes*(server: Server, body: untyped): untyped =
     methodTable = newTable[string, NimNode]()
     finalize = newStmtList()
 
-  when defined(httpx):
+  when enableHttpx:
     var path = newNimNode(nnkBracketExpr).add(
       newCall("split", newCall("get", newCall("path", ident("req"))), newStrLitNode("?")),
       newIntLitNode(0)
@@ -547,7 +564,7 @@ macro routes*(server: Server, body: untyped): untyped =
           stmtList.insert(0, statement[1])
         else:
           throwDefect(
-            InvalidServeRouteDefect,
+            HpxServeRouteDefect,
             "Wrong serve route detected ",
             lineInfoObj(statement[0])
           )
@@ -594,7 +611,7 @@ macro routes*(server: Server, body: untyped): untyped =
                 ident("wsConnections"),
                 newCall("find", ident("wsConnections"), ident("wsClient")))
             )
-          when defined(httpx):
+          when enableHttpx:
             wsDelStmt.add(
               newCall("close", ident("wsClient"))
             )
@@ -614,7 +631,7 @@ macro routes*(server: Server, body: untyped): untyped =
               ),
               newNimNode(nnkExceptBranch).add(
                 ident("WebSocketClosedError"),
-                when defined(debug):
+                when enableDebug:
                   newStmtList(
                     newCall(
                       "error", newCall("fmt", newStrLitNode("Socket closed: {getCurrentExceptionMsg()}"))
@@ -630,7 +647,7 @@ macro routes*(server: Server, body: untyped): untyped =
               ),
               newNimNode(nnkExceptBranch).add(
                 ident("WebSocketProtocolMismatchError"),
-                when defined(debug):
+                when enableDebug:
                   newStmtList(
                     newCall(
                       "error",
@@ -647,7 +664,7 @@ macro routes*(server: Server, body: untyped): untyped =
               ),
               newNimNode(nnkExceptBranch).add(
                 ident("WebSocketError"),
-                when defined(debug):
+                when enableDebug:
                   newStmtList(
                     newCall(
                       "error",
@@ -699,7 +716,7 @@ macro routes*(server: Server, body: untyped): untyped =
   # immutable variables
   stmtList.insert(0, immutableVars)
   
-  when defined(debug):
+  when enableDebug:
     stmtList.add(newCall(
       "info",
       newCall("fmt", newStrLitNode("{reqMethod}::{urlPath}"))
@@ -719,7 +736,7 @@ macro routes*(server: Server, body: untyped): untyped =
     if notFoundNode.kind == nnkEmpty:
       let elseStmtList = newStmtList()
       ifStmt.add(newNimNode(nnkElse).add(elseStmtList))
-      when defined(debug):
+      when enableDebug:
         elseStmtList.add(
           newCall(
             "warn",
@@ -737,7 +754,7 @@ macro routes*(server: Server, body: untyped): untyped =
   else:
     # return 404
     if notFoundNode.kind == nnkEmpty:
-      when defined(debug):
+      when enableDebug:
         stmtList.add(newCall(
           "warn",
           newCall(
@@ -760,7 +777,8 @@ macro routes*(server: Server, body: untyped): untyped =
     newProc(
       ident("finalizeProgram"),
       [newEmptyNode()],
-      finalize
+      finalize,
+      pragmas = newNimNode(nnkPragma).add(ident("noconv"))
     )
   )
 
@@ -827,7 +845,7 @@ macro model*(modelName, body: untyped): untyped =
         ))
         continue
     throwDefect(
-      ModelSyntaxDefect,
+      HpxModelSyntaxDefect,
       fmt"Wrong model syntax: ",
       lineInfoObj(i)
     )
@@ -853,7 +871,6 @@ macro model*(modelName, body: untyped): untyped =
       )
     )
   )
-  echo result.toStrLit
 
 
 macro initServer*(body: untyped): untyped =
@@ -869,7 +886,7 @@ macro initServer*(body: untyped): untyped =
       ident("main"),
       [newEmptyNode()],
       body.add(
-        newCall("finalizeProgram")
+        newCall("addQuitProc", ident("finalizeProgram"))
       ),
       nnkProcDef
     ),
@@ -889,6 +906,20 @@ macro serve*(address: string, port: int, body: untyped): untyped =
   ##      server.start()
   ##    main()
   ## 
+  ## For GC Safety you can declare your variables inside `serve` macro ✌
+  ## 
+  ## .. code-block:: nim
+  ##    serve(...):
+  ##      var index = 0
+  ##      let some = "some"
+  ##      
+  ##      "/":
+  ##        inc index
+  ##        return {"index": index}
+  ##      
+  ##      "/some":
+  ##        return some
+  ## 
   result = newStmtList(
     newProc(
       ident("main"),
@@ -897,7 +928,7 @@ macro serve*(address: string, port: int, body: untyped): untyped =
         newVarStmt(ident("server"), newCall("newServer", address, port)),
         newCall("routes", ident("server"), body),
         newCall("start", ident("server")),
-        newCall("finalizeProgram")
+        newCall("addQuitProc", ident("finalizeProgram"))
       ),
       nnkProcDef
     ),

@@ -9,18 +9,18 @@ proc render(title: string, left: float, right: float): string =
 
 pathParams:
   arg1? int[m] = 100
-  arg1? int = 100
-  arg1 int = 100
-  arg1
-  arg1 int
-  arg1 int[m]
-  arg1 = "100"
-  arg1[m] = 100
-  arg1 re"\d+"
-  arg1? re"\d+"
-  arg1? re"\d+"[m] = 100
-  arg1? re"\d+"[m]
-  arg1 int:
+  arg2? int = 100
+  arg3 int = 100
+  arg4
+  arg5 int
+  arg6 int[m]
+  arg7 = "100"
+  arg8[m] = 100
+  arg9 re"\d+"
+  arg10? re"\d+"
+  arg11? re"\d+"[m] = 100
+  arg12? re"\d+"[m]
+  arg13 int:
     type int
     optional
     mutable

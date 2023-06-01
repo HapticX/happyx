@@ -63,6 +63,12 @@ HappyX provides powerful routing system.
 Read more about it [`here`](https://hapticx.github.io/happyx/routing.html)
 
 
+## Tutorials 📕
+
+You can follow these tutorials:
+
+- [Simple RestAPI in Nim with HappyX](https://dev.to/ethosa/writing-simple-restapi-in-nim-with-happyx-1-47f1)
+
 ---
 
 This documentation was generated with [`HapDoc`](https://github.com/HapticX/hapdoc)

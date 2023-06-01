@@ -18,6 +18,8 @@ hpx create [optional-arguments]
 - `-n` or `--name`: project name;
 - `-k` or `--kind`: project kind. May be `SPA` or `SSG`;
 - `-t` or `--templates`: enable templates. Works only for `SSG`.
+- `-u` or `--use-tailwind`: Use Tailwind CSS 3 (only for `SPA`).
+- `-p` or `--path-params`: Use path params assignment.
 
 
 ### Build project 🔨

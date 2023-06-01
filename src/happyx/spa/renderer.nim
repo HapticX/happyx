@@ -1,12 +1,22 @@
-## # Renderer
+## # Renderer ✨
 ## 
 ## Provides a single-page application (SPA) renderer with reactivity features.
 ## It likely contains functions or classes that allow developers to
 ## dynamically update the content of a web page without reloading the entire page.
 ## 
 ## 
-## ## Moving Between Routes
+## ## Moving Between Routes 🎈
 ## To move to other location just use `route("/path")`
+## 
+## ## Usage 🔨
+## 
+## .. code-block:: nim
+##    import happyx
+##    
+##    appRoutes("app"):
+##      "/":
+##        tDiv:
+##          "Hello, world!"
 ## 
 
 import
@@ -20,10 +30,11 @@ import
   tables,
   regex,
   ./tag,
-  ./style,
-  ../private/[routing, macro_utils, exceptions],
-  ../mounting/mounting,
-  ../sugar/sgr
+  ../core/[exceptions],
+  ../private/[macro_utils],
+  ../routing/[routing, mounting],
+  ../sugar/[sgr, style, js]
+
 
 when defined(js):
   import
@@ -32,6 +43,9 @@ when defined(js):
   export
     dom,
     jsconsole
+  
+  const
+    enableOldRenderer = defined(oldRenderer) or defined(happyxOldRenrerer)
 
 export
   strformat,
@@ -78,7 +92,7 @@ var
   uniqueId {.compileTime.} = 0
 
 const
-  UniqueComponentId = "uniqCompId"
+  UniqueComponentId* = "uniqCompId"
 
 
 when defined(js):
@@ -119,6 +133,27 @@ proc registerComponent*(name: cstring, component: BaseComponent): BaseComponent 
   component
 
 
+when defined(js):
+  proc renderVdom*(app: App, tag: TagRef) =
+    ## Rerender DOM with VDOM
+    # compile with `-d:oldRenderer` to work with old renderer
+    when enableOldRenderer:
+      document.getElementById(app.appId).innerHTML = $tag
+    else:
+      let elem = document.getElementById(app.appId)
+      var
+        realDom = elem.Node
+        virtualDom = tag.toDom().n
+      # echo virtualDom.innerHTML
+      # echo realDom.innerHTML
+      realDom.innerHTML = virtualDom.innerHTML
+      # compareEdit(realDom, virtualDom)
+else:
+  proc renderVdom*(app: App, tag: TagRef) =
+    ## Rerender DOM with VDOM
+    discard
+
+
 method render*(self: BaseComponent): TagRef {.base.} =
   ## Basic method that needs to overload
   nil
@@ -156,19 +191,8 @@ proc replaceIter*(
       result = true
 
 
-proc getTagName*(name: string): string =
-  ## Checks tag name at compile time
-  ## 
-  ## tagDiv, tDiv, hDiv -> div
-  if re"^tag[A-Z]" in name:
-    name[3..^1].toLower()
-  elif re"^[ht][A-Z]" in name:
-    name[1..^1].toLower()
-  else:
-    name
-
-
 proc attribute(attr: NimNode): NimNode =
+  ## Converts `nnkExprEqExpr` to `nnkColonExpr`
   newColonExpr(
     newStrLitNode($attr[0]),
     if attr[1].kind in [nnkStrLit, nnkTripleStrLit]:
@@ -218,33 +242,6 @@ proc replaceSelfComponent(statement, componentName: NimNode) =
       i.replaceSelfComponent(componentName)
 
 
-proc replaceSelfStateVal(statement: NimNode) =
-  for idx, i in statement.pairs:
-    if i.kind == nnkDotExpr:
-      if $i[0] == "self":
-        statement[idx] = newCall("get", newDotExpr(i[0], i[1]))
-      continue
-    if i.kind in RoutineNodes:
-      continue
-    i.replaceSelfStateVal()
-
-
-proc pathParamsBoilerplate(node: NimNode, kind, regexVal: var string) =
-  if node.kind == nnkIdent:
-    kind = $node
-  # regex type
-  elif node.kind == nnkCallStrLit and $node[0] == "re":
-    kind = "regex"
-    regexVal = $node[1]
-  else:
-    let current = $node.toStrLit
-    throwDefect(
-      InvalidPathParamDefect,
-      "Invalid path param type: " & current,
-      lineInfoObj(node)
-    )
-
-
 proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
                          componentName: NimNode = newEmptyNode(), inCycle: bool = false,
                          cycleTmpVar: string = "", cycleVars: seq[NimNode] = @[]): NimNode =
@@ -253,7 +250,15 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
   result = newCall("initTag", elementName)
 
   for statement in body:
-    if statement.kind == nnkCall:
+    if statement.kind == nnkCall and statement[0] == ident("nim") and statement.len == 2 and statement[1].kind == nnkStmtList:
+      # Real Nim code
+      result.add(newStmtList(
+        statement[1],
+        newCall("initTag", newStrLitNode("div"), newCall("@", newNimNode(nnkBracket)), newLit(true))
+      ))
+      echo result.toStrLit
+
+    elif statement.kind == nnkCall:
       let
         tagName = newStrLitNode(getTagName($statement[0]))
         statementList = statement[^1]
@@ -319,13 +324,18 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
             ))
         result.add(newStmtList(
           newVarStmt(ident(componentNameTmp), objConstr),
-          newVarStmt(
-            ident(componentName),
-            newCall(
-              name,
-              newCall("registerComponent", stringId, ident(componentNameTmp))
+          when defined(js):
+            newVarStmt(
+              ident(componentName),
+              newCall(
+                name,
+                newCall("registerComponent", stringId, ident(componentNameTmp))
+              )
             )
-          ),
+          else:
+            newVarStmt(
+              ident(componentName), ident(componentNameTmp)
+            ),
           newAssignment(
             newDotExpr(ident(componentName), ident("slot")),
             buildHtmlProcedure(
@@ -341,24 +351,36 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
             ident(componentData),
             newCall("&", newStrLitNode("data-"), newDotExpr(ident(componentName), ident(UniqueComponentId)))
           ),
-          newNimNode(nnkPragma).add(newNimNode(nnkExprColonExpr).add(
-            ident("emit"),
-            newStrLitNode(fmt"window.addEventListener('beforeunload', `{componentData}`.`exited`);")
-          )),
-          newNimNode(nnkPragma).add(newNimNode(nnkExprColonExpr).add(
-            ident("emit"),
-            newStrLitNode(fmt"window.addEventListener('pagehide', `{componentData}`.`pageHide`);")
-          )),
-          newNimNode(nnkPragma).add(newNimNode(nnkExprColonExpr).add(
-            ident("emit"),
-            newStrLitNode(fmt"window.addEventListener('pageshow', `{componentData}`.`pageShow`);")
-          )),
+          when defined(js):
+            newStmtList(
+              newNimNode(nnkPragma).add(newNimNode(nnkExprColonExpr).add(
+                ident("emit"),
+                newStrLitNode(fmt"window.addEventListener('beforeunload', `{componentData}`.`exited`);")
+              )),
+              newNimNode(nnkPragma).add(newNimNode(nnkExprColonExpr).add(
+                ident("emit"),
+                newStrLitNode(fmt"window.addEventListener('pagehide', `{componentData}`.`pageHide`);")
+              )),
+              newNimNode(nnkPragma).add(newNimNode(nnkExprColonExpr).add(
+                ident("emit"),
+                newStrLitNode(fmt"window.addEventListener('pageshow', `{componentData}`.`pageShow`);")
+              )),
+            )
+          else:
+            newEmptyNode(),
           ident(componentData)
         ))
     
     elif statement.kind in [nnkStrLit, nnkTripleStrLit]:
       # "Raw text"
       result.add(newCall("initTag", newCall("fmt", statement), newLit(true)))
+    
+    elif statement.kind in [nnkVarSection, nnkLetSection, nnkConstSection]:
+      # Nim variable declaration
+      result.add(newStmtList(
+        statement,
+        newCall("initTag", newStrLitNode("div"), newCall("@", newNimNode(nnkBracket)), newLit(true))
+      ))
     
     elif statement.kind == nnkAsgn:
       # Attributes
@@ -479,7 +501,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
         # slot
         if not inComponent:
           throwDefect(
-            ComponentSyntaxDefect,
+            HpxComponentDefect,
             fmt"Slots can be used only in components!",
             lineInfoObj(statement)
           )
@@ -525,6 +547,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
         buildHtmlProcedure(ident("tDiv"), statement[^1], inComponent, componentName, true, unqn, idents)
       )
       statement[^1].insert(0, newCall("inc", ident(unqn)))
+      statement[^1][^1].add(newLit(true))
       result.add(
         newCall(
           "initTag",
@@ -541,6 +564,12 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
           ),
           newLit(true)
         )
+      )
+    else:
+      throwDefect(
+        HpxBuildHtmlDefect,
+        "invalid syntax: ",
+        lineInfoObj(statement)
       )
   
   # varargs -> seq
@@ -633,6 +662,8 @@ macro buildHtml*(root, html: untyped): untyped =
   ##     .. code-block:: nim
   ##        component MyComponent
   ##        component MyComponent(field1 = value1, field2 = value2)
+  ##        component MyComponent:
+  ##          slotHtml
   ## 
   buildHtmlProcedure(root, html)
 
@@ -788,6 +819,12 @@ macro routes*(app: App, body: untyped): untyped =
             router.body.add(
               newAssignment(iHtml, newCall("buildHtml", statement[1]))
             )
+      elif statement[0].kind != nnkIdent and $statement[0] != "mount":
+        throwDefect(
+          HpxAppRouteDefect,
+          "Unknown statement for Single Page Application routes ",
+          lineInfoObj(statement)
+        )
   
   if ifStmt.len > 0:
     router.body.add(ifStmt)
@@ -796,10 +833,7 @@ macro routes*(app: App, body: untyped): untyped =
     newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
       newCall("not", newCall("isNil", iHtml)),
       newStmtList(
-        newAssignment(
-          newDotExpr(ident("elem"), ident("innerHTML")),
-          newCall("$", iHtml)
-        )
+        newCall("renderVdom", ident("application"), iHtml)
       )
     ))
   )
@@ -839,428 +873,3 @@ macro appRoutes*(name: string, body: untyped): untyped =
     newCall("routes", ident("app"), body),
     newCall("start", ident("app"))
   )
-
-
-macro component*(name, body: untyped): untyped =
-  ## Register a new component.
-  ## 
-  ## ## Basic Usage:
-  ## 
-  ## .. code-block::nim
-  ##    component Component:
-  ##      requiredField: int
-  ##      optionalField: int = 100
-  ##      
-  ##      `template`:
-  ##        tDiv:
-  ##          "requiredField is {self.requiredField}"
-  ##        tDiv:
-  ##          "optionalField is {self.optionalField}
-  ##       
-  ##      `script`:
-  ##        echo self.requiredField
-  ##        echo self.optionalField
-  ##      
-  ##      `style`:
-  ##        """
-  ##        div {
-  ##          width: {self.requiredField}px;
-  ##          height: {self.optionalField}px;
-  ##        }
-  ##        """
-  ## 
-  let
-    name = $name
-    nameObj = $name & "Obj"
-    params = newNimNode(nnkRecList)
-    initParams = newNimNode(nnkFormalParams)
-    initProc = newProc(postfix(ident(fmt"init{name}"), "*"))
-    initObjConstr = newNimNode(nnkObjConstr).add(
-      ident(name), newColonExpr(ident(UniqueComponentId), ident(UniqueComponentId))
-    )
-    beforeStmtList = newStmtList()
-    afterStmtList = newStmtList()
-    reRenderProc = newProc(
-      postfix(ident("reRender"), "*"),
-      [newEmptyNode(), newIdentDefs(ident("self"), ident(name))],
-      newStmtList(
-        newLetStmt(
-          ident("tmpData"),
-          newCall(
-            "&",
-            newCall("&", newStrLitNode("[data-"), (newDotExpr(ident("self"), ident(UniqueComponentId)))),
-            newStrLitNode("]")
-          )
-        ),
-        newLetStmt(
-          ident("compTmpData"),
-          newCall(newDotExpr(ident("self"), ident("render")))
-        ),
-        newCall(
-          "addArgIter",
-          ident("compTmpData"),
-          newCall("&", newStrLitNode("data-"), newDotExpr(ident("self"), ident(UniqueComponentId)))
-        ),
-        newAssignment(
-          newDotExpr(
-            newCall("querySelector", ident("document"), ident("tmpData")),
-            ident("outerHTML")
-          ),
-          newCall("cstring", newCall("$", ident("compTmpData")))
-        )
-      ),
-      nnkMethodDef
-    )
-  
-  var
-    templateStmtList = newStmtList()
-    scriptStmtList = newStmtList()
-    styleStmtList = newStmtList()
-    arguments = @[newEmptyNode(), newIdentDefs(ident("self"), ident("BaseComponent"))]
-    usedLifeCycles = {
-      "created": false,
-      "updated": false,
-      "beforeUpdated": false,
-      "exited": false,
-      "pageShow": false,
-      "pageHide": false,
-    }.newTable()
-  
-  initParams.add(
-    ident(name),
-    newIdentDefs(ident(UniqueComponentId), bindSym("string"))
-  )
-  
-  for s in body.children:
-    if s.kind == nnkCall:
-      if s[0].kind == nnkIdent and s.len == 2 and s[^1].kind == nnkStmtList and s[^1].len == 1:
-        # Extract default value and field type
-        let (fieldType, defaultValue) =
-          if s[^1][0].kind == nnkIdent:
-            (s[^1][0], newEmptyNode())
-          else:  # assignment statement
-            (s[^1][0][0], s[^1][0][1])
-        params.add(newNimNode(nnkIdentDefs).add(
-          postfix(s[0], "*"),
-          newCall(
-            bindSym("[]", brForceOpen), ident("State"), fieldType
-          ),
-          newEmptyNode()
-        ))
-        initParams.add(newNimNode(nnkIdentDefs).add(
-          s[0], fieldType, defaultValue
-        ))
-        initObjConstr.add(newColonExpr(s[0], newCall("remember", s[0])))
-    
-      elif s[0].kind == nnkAccQuoted:
-        case $s[0]
-        of "template":
-          # Component template
-          templateStmtList = newStmtList(
-            newAssignment(ident("currentComponent"), newDotExpr(ident("self"), ident(UniqueComponentId))),
-            newCall("script", ident("self")),
-            beforeStmtList,
-            newAssignment(
-              ident("result"),
-              newCall(
-                "buildComponentHtml",
-                ident(name),
-                s[1].add(newCall(
-                  "style", newStmtList(newStrLitNode("{self.style()}"))
-                ))
-              )
-            ),
-            afterStmtList,
-            newAssignment(ident("currentComponent"), newStrLitNode(""))
-          )
-        of "style":
-          # Component styles
-          echo s[1][0].toStrLit
-          if s[1][0].kind in [nnkStrLit, nnkTripleStrLit]:
-            let str = ($s[1][0]).replace(
-              re"^([\S ]+?) *\{(?im)", "$1[data-{self.uniqCompId}]{{"
-            ).replace(re"(^ *|\{ *|\n *)\}(?im)", "$1}}")
-            styleStmtList = newStmtList(
-              newAssignment(
-                ident("result"),
-                newCall("fmt", newStrLitNode(str))
-              )
-            )
-          elif s[1][0].kind == nnkCall and s[1][0][0].kind == nnkIdent and $s[1][0][0] == "buildStyle":
-            let css = getAst(buildStyle(s[1][0][1]))[1]
-            let str = ($css).replace(
-              re"^([\S ]+?) *\{(?im)", "$1[data-<self.uniqCompId>]{"
-            ).replace(re"(^ *|\{ *|\n *)\}(?im)", "$1}")
-            styleStmtList = newStmtList(
-              newAssignment(
-                ident("result"),
-                newCall("fmt", newStrLitNode(str), newLit('<'), newLit('>'))
-              )
-            )
-        of "script":
-          # Component main script
-          s[1].replaceSelfStateVal()
-          if scriptStmtList.len == 0:
-            scriptStmtList = s[1]
-          else:
-            for child in s[1].children:
-              scriptStmtList.add(child)
-        else:
-          let structure = $s[0]
-          throwDefect(
-            ComponentSyntaxDefect,
-            fmt"undefined component structure ({structure}).",
-            lineInfoObj(s)
-          )
-      
-    elif s.kind == nnkPrefix:
-      if s[0].kind == nnkIdent and $s[0] == "@" and s.len == 3 and s[1].kind == nnkIdent:
-        # Component life cycles
-        let key = $s[1]
-        if usedLifeCycles.hasKey(key) and not usedLifeCycles[key]:
-          scriptStmtList.insert(0, newAssignment(
-            newDotExpr(ident("self"), ident(key)),
-            newLambda(s[2], arguments)
-          ))
-          usedLifeCycles[key] = true
-        elif not usedLifeCycles.hasKey(key):
-          throwDefect(
-            ComponentSyntaxDefect,
-            fmt"Wrong component event ({key})",
-            lineInfoObj(s)
-          )
-  
-  for key in usedLifeCycles.keys:
-    if not usedLifeCycles[key]:
-      scriptStmtList.insert(0, newAssignment(
-        newDotExpr(ident("self"), ident(key)),
-        newLambda(newStmtList(discardStmt), arguments)
-      ))
-  
-  initProc.params = initParams
-  initProc.body = initObjConstr
-
-  # Life cycles
-  beforeStmtList.add(
-    # Is created
-    newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
-      newCall("==", newDotExpr(ident("self"), ident("isCreated")), newLit(false)),
-      newStmtList(
-        newCall(newDotExpr(ident("self"), ident("created")), ident("self")),
-        newAssignment(
-          newDotExpr(ident("self"), ident("isCreated")),
-          newLit(true)
-        )
-      )
-    ))
-  ).add(
-    # beforeUpdated
-    newCall(newDotExpr(ident("self"), ident("beforeUpdated")), ident("self"))
-  )
-  # updated
-  afterStmtList.add(
-    newCall(newDotExpr(ident("self"), ident("updated")), ident("self"))
-  )
-
-  result = newStmtList(
-    newNimNode(nnkTypeSection).add(
-      newNimNode(nnkTypeDef).add(
-        postfix(ident(nameObj), "*"),  # name
-        newEmptyNode(),
-        newNimNode(nnkObjectTy).add(
-          newEmptyNode(),  # no pragma
-          newNimNode(nnkOfInherit).add(ident("BaseComponentObj")),
-          params
-        )
-      ),
-      newNimNode(nnkTypeDef).add(
-        postfix(ident(name), "*"),  # name
-        newEmptyNode(),
-        newNimNode(nnkRefTy).add(ident(nameObj))
-      )
-    ),
-    initProc,
-    reRenderProc,
-    newProc(
-      ident("script"),
-      [
-        newEmptyNode(),
-        newIdentDefs(ident("self"), ident(name))
-      ],
-      scriptStmtList
-    ),
-    newProc(
-      ident("style"),
-      [
-        ident("string"),
-        newIdentDefs(ident("self"), ident(name))
-      ],
-      styleStmtList
-    ),
-    newProc(
-      postfix(ident("render"), "*"),
-      [
-        ident("TagRef"),
-        newIdentDefs(ident("self"), ident(name))
-      ],
-      templateStmtList,
-      nnkMethodDef
-    ),
-  )
-
-
-macro pathParams*(body: untyped): untyped =
-  ## `pathParams` provides path params assignment ✨.
-  ## 
-  ## Simple usage:
-  ## 
-  ## .. code-block:: nim
-  ##    pathParams:
-  ##      # means that `arg` of type `int` is optional mutable param with default value `5`
-  ##      arg? int[m] = 5
-  ##      # means that `arg1` of type `string` is optional mutable param with default value `"Hello"`
-  ##      arg1[m] = "Hello"
-  ##      # means that `arg2` of type `string` is immutable regex param
-  ##      arg2 re"\d+u"
-  ##      # means that `arg3` of type `float` is mutable param
-  ##      arg3 float[m]
-  ##      # means that `arg4` of type `int` is optional mutable param with default value `10`
-  ##      arg4:
-  ##        type int
-  ##        mutable
-  ##        optional
-  ##        default = 10
-  ## 
-  for statement in body:
-    var
-      name = ""
-      kind = "string"
-      regexVal = ""
-      isMutable = false
-      isOptional = false
-      defaultVal = ""
-    
-    # Just ident
-    if statement.kind == nnkIdent:
-      name = $statement
-    
-    # Assignment
-    # argument? type[m] = val
-    elif statement.kind == nnkAsgn:
-      if statement[0].kind == nnkInfix and $statement[0][0] == "?":
-        # name
-        name = $statement[0][1]
-        # type
-        if statement[0].len == 3:
-          # type[m]
-          if statement[0][2].kind == nnkBracketExpr and $statement[0][2][1] == "m":
-            isMutable = true
-            pathParamsBoilerplate(statement[0][2][0], kind, regexVal)
-          # type
-          else:
-            pathParamsBoilerplate(statement[0][2], kind, regexVal)
-            kind = $statement[0][2]
-        # default val
-        if statement[1].kind in AtomicNodes:
-          defaultVal = $statement[1].toStrLit
-          isOptional = true
-        else:
-          let current = $statement[1].toStrLit
-          throwDefect(
-            InvalidPathParamDefect,
-            "Invalid path param default value (should be atomic const types)" & current,
-            lineInfoObj(statement[1])
-          )
-      # arg[m]
-      elif statement[0].kind == nnkBracketExpr and $statement[0][1] == "m":
-        isMutable = true
-        name = $statement[0][0]
-        # default val
-        if statement[1].kind in AtomicNodes:
-          defaultVal = $statement[1].toStrLit
-          isOptional = true
-        else:
-          let current = $statement[1].toStrLit
-          throwDefect(
-            InvalidPathParamDefect,
-            "Invalid path param default value (should be atomic const types)" & current,
-            lineInfoObj(statement[1])
-          )
-    
-    # infix
-    # argument? type[m]
-    elif statement.kind == nnkInfix and $statement[0] == "?":
-      # name
-      name = $statement[1]
-      isOptional = true
-      # type
-      if statement.len == 3:
-        # type[m]
-        if statement[2].kind == nnkBracketExpr and $statement[2][1] == "m":
-          pathParamsBoilerplate(statement[2][0], kind, regexVal)
-        # type
-        else:
-          pathParamsBoilerplate(statement[2], kind, regexVal)
-    
-    # command
-    elif statement.kind in [nnkCall, nnkCommand]:
-      name = $statement[0]
-      # type[m]
-      if statement[1].kind == nnkBracketExpr and $statement[1][1] == "m":
-        isMutable = true
-        pathParamsBoilerplate(statement[1][0], kind, regexVal)
-      # type
-      else:
-        pathParamsBoilerplate(statement[1], kind, regexVal)
-      # stmt list
-      if statement[^1].kind == nnkStmtList:
-        for child in statement[^1].children:
-          case child.kind
-          # optional, mutable etc.
-          of nnkIdent:
-            let childStr = $child
-            if childStr == "optional":
-              isOptional = true
-            elif childStr == "mutable":
-              isMutable = true
-            else:
-              let current = childStr
-              throwDefect(
-                InvalidPathParamDefect,
-                "Invalid flag for path param: " & childStr,
-                lineInfoObj(child)
-              )
-          of nnkTypeSection:
-            # param type
-            if child[0].kind == nnkTypeDef and child[0][0].kind == nnkIdent:
-              kind = $child[0][0]
-          of nnkAsgn:
-            let childStr = $child[0]
-            # default val
-            if childStr == "default":
-              if child[1].kind in AtomicNodes:
-                defaultVal = $child[1].toStrLit
-                isOptional = true
-          else:
-            let
-              current = $child.toStrLit
-              allStatement = ($statement[^1].toStrLit).replace(current, "> " & current)
-            throwDefect(
-              InvalidPathParamDefect,
-              "invalid path param assignment:" & allStatement,
-              lineInfoObj(child)
-            )
-    
-    if name.len > 0:
-      var res = "{" & name
-      if isOptional:
-        res &= "?"
-      if kind != "regex":
-        res &= ":" & kind
-      else:
-        res &= ":/" & regexVal & "/"
-      if isMutable:
-        res &= "[m]"
-      if defaultVal.len > 0:
-        res &= "=" & defaultVal
-      declaredPathParams[name] = res & "}"

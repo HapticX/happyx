@@ -1,4 +1,4 @@
-## # Tag
+## # Tag ✨
 ## 
 ## Provides a Tag type that represents an HTML tag.
 ## The file includes several functions for initializing new HTML tags,
@@ -6,10 +6,34 @@
 ## getting the level of nesting for a tag within its parent tags.
 ## The file also includes a function for converting a tag and
 ## its child tags to a string representation with proper indentation and attributes.
+## 
+## ## Usage 🔨
+## 
+## .. code-block:: nim
+##    var html = initTag(
+##      "div",
+##      @[
+##        textTag("Hello, world!"),
+##        textTag("This is text tag"),
+##      ]
+##    )
+## 
+## It's low-level usage. At high-level you'll write HTML with `buildHtml` macro:
+## 
+## .. code-block:: nim
+##    var html = buildHtml:
+##      tDiv:
+##        "Hello, world!"
+##        "This is text tag"
+## 
 import
   strutils,
   strformat,
   strtabs
+
+
+when defined(js):
+  import dom
 
 
 type
@@ -164,12 +188,49 @@ func addArg*(self: TagRef, arg: string) =
 
 
 func addArgIter*(self: TagRef, arg: string) =
+  ## Adds argument into current tag and all children
   if self.args.len == 0:
     self.args.add(arg)
-  # elif self.args.len == 1:
-  #   self.args[0] = arg
   for i in self.children:
     i.addArgIter(arg)
+
+
+when defined(js):
+  proc toDom*(self: TagRef): tuple[n: Node, b: bool] =
+    ## converts tag into DOM Element
+    if self.isText:
+      # detect text node
+      return (n: document.createTextNode(self.name), b: false)
+    elif self.onlyChildren:
+      # detect all children
+      var res = document.createElement("div")
+      # iter over all children
+      for child in self.children:
+        let dom = child.toDom()
+        if dom.b:
+          while dom.n.len > 0:
+            res.appendChild(dom.n.childNodes[0])
+        else:
+          res.appendChild(dom.n)
+      return (n: res, b: true)
+    # normal tag
+    var res = document.createElement(self.name)
+    # attributes
+    for key in self.attrs.keys():
+      res.setAttribute(key, self.attrs[key])
+    # args
+    for arg in self.args:
+      res.setAttribute(arg, "")
+    # children
+    for child in self.children:
+      let dom = child.toDom()
+      # only children
+      if dom.b:
+        while dom.n.len > 0:
+          res.appendChild(dom.n.childNodes[0])
+      else:
+        res.appendChild(dom.n)
+    return (n: res, b: false)
 
 
 func lvl*(self: TagRef): int =
@@ -192,21 +253,26 @@ func lvl*(self: TagRef): int =
       inc result
 
 
-func `[]`*(self: TagRef, attrName: string): string {.inline.} =
+{. push inline .}
+
+func `[]`*(self: TagRef, attrName: string): string =
   ## Returns attribute by name
   self.attrs[attrName]
 
 
-func `[]=`*(self: TagRef, attrName: string, attrValue: string) {.inline.} =
+func `[]=`*(self: TagRef, attrName: string, attrValue: string) =
   ## Sets a new value for attribute or create new attribute
   self.attrs[attrName] = attrValue
 
 
-func get*(self: TagRef, attrName: string, default: string): string {.inline.} =
+func getAttribute*(self: TagRef, attrName: string, default: string = ""): string =
+  ## Returns attribute value if exists or default value if not.
   if attrName in self.attrs:
     self.attrs[attrName]
   else:
     default
+
+{. pop .}
 
 
 func findByTag*(self: TagRef, tag: string): seq[TagRef] =
@@ -239,7 +305,7 @@ func `$`*(self: TagRef): string =
     argsStr = self.args.join(" ")
 
   if self.isText:
-    return level & self.name
+    return self.name
   
   var attrs = ""
   for key, value in self.attrs.pairs():
