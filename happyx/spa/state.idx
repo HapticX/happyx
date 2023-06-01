@@ -1,7 +1,8 @@
 State	happyx/spa/state.html#State	state: State	
 remember	happyx/spa/state.html#remember,T	state: remember[T](val: T): State[T]	
 val=	happyx/spa/state.html#val=,State[T],T	state: val=[T](self: State[T]; value: T)	
-val	happyx/spa/state.html#val,State[T]	state: val[T](self: State[T]): T	
+val	happyx/spa/state.html#val,State[T]	state: val[T](self: var State[T]): var T	
+val	happyx/spa/state.html#val,State[T]_2	state: val[T](self: State[T]): T	
 `$`	happyx/spa/state.html#$,State[T]	state: `$`[T](self: State[T]): string	
 `==`	happyx/spa/state.html#==,,	state: `==`[T](self`gensym0, other`gensym0: State[T]): bool	
 `==`	happyx/spa/state.html#==,,T	state: `==`[T](self`gensym0: State[T]; other`gensym0: T): bool	
@@ -58,7 +59,9 @@ val	happyx/spa/state.html#val,State[T]	state: val[T](self: State[T]): T
 `|=`	happyx/spa/state.html#|=,,T	state: `|=`[T](self`gensym26: State[T]; other`gensym26: T)	
 `~=`	happyx/spa/state.html#~=,,	state: `~=`[T](self`gensym27: State[T]; other`gensym27: State[T])	
 `~=`	happyx/spa/state.html#~=,,T	state: `~=`[T](self`gensym27: State[T]; other`gensym27: T)	
+`-&gt;`	happyx/spa/state.html#->.m,State,untyped	state: `-&gt;`(self: State; field: untyped): untyped	
 get	happyx/spa/state.html#get,State[T]	state: get[T](self: State[T]): T	
+len	happyx/spa/state.html#len,State[T]	state: len[T](self: State[T]): int	
 set	happyx/spa/state.html#set,State[T],T	state: set[T](self: State[T]; value: T)	
 `[]`	happyx/spa/state.html#[],State[T],int	state: `[]`[T](self: State[T]; idx: int): auto	
 items	happyx/spa/state.html#items.i,State[T]	state: items[T](self: State[T]): auto	
@@ -74,4 +77,6 @@ toInt32	happyx/spa/state.html#toInt32.c,State	state: toInt32(self: State): int32
 toInt64	happyx/spa/state.html#toInt64.c,State	state: toInt64(self: State): int64	
 toFloat32	happyx/spa/state.html#toFloat32.c,State	state: toFloat32(self: State): float32	
 toFloat64	happyx/spa/state.html#toFloat64.c,State	state: toFloat64(self: State): float64	
-State	happyx/spa/state.html#state	 State	
+toSeq	happyx/spa/state.html#toSeq.c,State[seq[T]]	state: toSeq[T](self: State[seq[T]]): seq[T]	
+State 🍍	happyx/spa/state.html#state-🍍	 State 🍍	
+Usage ⚡	happyx/spa/state.html#state-🍍-usage-⚡	  Usage ⚡	

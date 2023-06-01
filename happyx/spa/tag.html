@@ -98,8 +98,9 @@ window.addEventListener('DOMContentLoaded', main);
     </select>
   </div>
   <ul class="simple simple-toc" id="toc-list">
-<li><a class="reference" id="tag_toc" href="#tag">Tag</a></li>
-<li>
+<li><a class="reference" id="tag-✨_toc" href="#tag-✨">Tag ✨</a></li>
+<ul class="simple"><li><a class="reference" id="tag-✨-usage-🔨_toc" href="#tag-✨-usage-🔨">Usage 🔨</a></li>
+</ul><li>
   <a class="reference reference-toplevel" href="#7" id="57">Types</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#Tag"
@@ -163,10 +164,13 @@ window.addEventListener('DOMContentLoaded', main);
 
   </ul>
   <ul class="simple nested-toc-section">get
-      <li><a class="reference" href="#get%2CTagRef%2Cstring%2Cstring"
-    title="get(self: TagRef; attrName: string; default: string): string">get(self: TagRef; attrName: string; default: string): string</a></li>
-  <li><a class="reference" href="#get%2CTagRef%2Cstring"
+      <li><a class="reference" href="#get%2CTagRef%2Cstring"
     title="get(self: TagRef; tag: string): TagRef">get(self: TagRef; tag: string): TagRef</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">getAttribute
+      <li><a class="reference" href="#getAttribute%2CTagRef%2Cstring%2Cstring"
+    title="getAttribute(self: TagRef; attrName: string; default: string = &quot;&quot;): string">getAttribute(self: TagRef; attrName: string; default: string = &quot;&quot;): string</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">initTag
@@ -215,8 +219,19 @@ window.addEventListener('DOMContentLoaded', main);
   <div id="tocRoot"></div>
   
   <p class="module-desc">
-<h1><a class="toc-backref" id="tag" href="#tag">Tag</a></h1><p>Provides a Tag type that represents an HTML tag. The file includes several functions for initializing new HTML tags, adding child tags to existing tags, and getting the level of nesting for a tag within its parent tags. The file also includes a function for converting a tag and its child tags to a string representation with proper indentation and attributes.</p>
-</p>
+<h1><a class="toc-backref" id="tag-✨" href="#tag-✨">Tag ✨</a></h1><p>Provides a Tag type that represents an HTML tag. The file includes several functions for initializing new HTML tags, adding child tags to existing tags, and getting the level of nesting for a tag within its parent tags. The file also includes a function for converting a tag and its child tags to a string representation with proper indentation and attributes.</p>
+
+<h2><a class="toc-backref" id="tag-✨-usage-🔨" href="#tag-✨-usage-🔨">Usage 🔨</a></h2><pre class="listing"><span class="Keyword">var</span> <span class="Identifier">html</span> <span class="Operator">=</span> <span class="Identifier">initTag</span><span class="Punctuation">(</span>
+  <span class="StringLit">&quot;div&quot;</span><span class="Punctuation">,</span>
+  <span class="Operator">@</span><span class="Punctuation">[</span>
+    <span class="Identifier">textTag</span><span class="Punctuation">(</span><span class="StringLit">&quot;Hello, world!&quot;</span><span class="Punctuation">)</span><span class="Punctuation">,</span>
+    <span class="Identifier">textTag</span><span class="Punctuation">(</span><span class="StringLit">&quot;This is text tag&quot;</span><span class="Punctuation">)</span><span class="Punctuation">,</span>
+  <span class="Punctuation">]</span>
+<span class="Punctuation">)</span></pre><p>It's low-level usage. At high-level you'll write HTML with <tt class="docutils literal"><span class="pre"><span class="Identifier">buildHtml</span></span></tt> macro:</p>
+<pre class="listing"><span class="Keyword">var</span> <span class="Identifier">html</span> <span class="Operator">=</span> <span class="Identifier">buildHtml</span><span class="Punctuation">:</span>
+  <span class="Identifier">tDiv</span><span class="Punctuation">:</span>
+    <span class="StringLit">&quot;Hello, world!&quot;</span>
+    <span class="StringLit">&quot;This is text tag&quot;</span></pre></p>
   <div class="section" id="7">
 <h1><a class="toc-backref" href="#7">Types</a></h1>
 <dl class="item">
@@ -314,7 +329,7 @@ Adds <tt class="docutils literal"><span class="pre"><span class="Identifier">oth
 <dt><pre><span class="Keyword">func</span> <a href="#addArgIter%2CTagRef%2Cstring"><span class="Identifier">addArgIter</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a><span class="Other">;</span> <span class="Identifier">arg</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
-
+Adds argument into current tag and all children
 
 </dd>
 </div>
@@ -326,20 +341,20 @@ Finds all tags by name
 
 </dd>
 </div>
-<div id="get,TagRef,string,string">
-<dt><pre><span class="Keyword">func</span> <a href="#get%2CTagRef%2Cstring%2Cstring"><span class="Identifier">get</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a><span class="Other">;</span> <span class="Identifier">attrName</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">default</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> {.<span class="Identifier">inline</span><span class="Other">,</span>
-    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
-<dd>
-
-
-
-</dd>
-</div>
 <div id="get,TagRef,string">
 <dt><pre><span class="Keyword">func</span> <a href="#get%2CTagRef%2Cstring"><span class="Identifier">get</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a><span class="Other">;</span> <span class="Identifier">tag</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 Returns tag by name
+
+</dd>
+</div>
+<div id="getAttribute,TagRef,string,string">
+<dt><pre><span class="Keyword">func</span> <a href="#getAttribute%2CTagRef%2Cstring%2Cstring"><span class="Identifier">getAttribute</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a><span class="Other">;</span> <span class="Identifier">attrName</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">default</span><span class="Other">:</span> <span class="Identifier">string</span> <span class="Other">=</span> <span class="StringLit">&quot;&quot;</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> {.
+    <span class="Identifier">inline</span><span class="Other">,</span> <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<dd>
+
+Returns attribute value if exists or default value if not.
 
 </dd>
 </div>
@@ -463,7 +478,7 @@ Shortcur for <a class="reference external" href="#initTag,string,bool,seq[TagRef
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-05-31 05:24:21 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-06-01 14:09:53 UTC</small>
       </div>
     </div>
   </div>

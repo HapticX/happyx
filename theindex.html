@@ -70,7 +70,7 @@ window.addEventListener('DOMContentLoaded', main);
 <div class="document" id="documentId">
   <div class="container">
     <h1 class="title">Index</h1>
-    Modules: <a href="happyx.html">happyx</a>, <a href="happyx/mounting/mounting.html">happyx/mounting/mounting</a>, <a href="happyx/private/exceptions.html">happyx/private/exceptions</a>, <a href="happyx/private/macro_utils.html">happyx/private/macro_utils</a>, <a href="happyx/private/routing.html">happyx/private/routing</a>, <a href="happyx/spa/renderer.html">happyx/spa/renderer</a>, <a href="happyx/spa/state.html">happyx/spa/state</a>, <a href="happyx/spa/style.html">happyx/spa/style</a>, <a href="happyx/spa/tag.html">happyx/spa/tag</a>, <a href="happyx/ssg/cors.html">happyx/ssg/cors</a>, <a href="happyx/ssg/server.html">happyx/ssg/server</a>, <a href="happyx/sugar/js.html">happyx/sugar/js</a>, <a href="happyx/sugar/sgr.html">happyx/sugar/sgr</a>, <a href="happyx/tmpl_engine/engine.html">happyx/tmpl_engine/engine</a>.<br/><p /><h2>API symbols</h2>
+    Modules: <a href="happyx.html">happyx</a>, <a href="happyx/core/exceptions.html">happyx/core/exceptions</a>, <a href="happyx/private/macro_utils.html">happyx/private/macro_utils</a>, <a href="happyx/routing/mounting.html">happyx/routing/mounting</a>, <a href="happyx/routing/routing.html">happyx/routing/routing</a>, <a href="happyx/spa/components.html">happyx/spa/components</a>, <a href="happyx/spa/renderer.html">happyx/spa/renderer</a>, <a href="happyx/spa/state.html">happyx/spa/state</a>, <a href="happyx/spa/tag.html">happyx/spa/tag</a>, <a href="happyx/ssg/cors.html">happyx/ssg/cors</a>, <a href="happyx/ssg/server.html">happyx/ssg/server</a>, <a href="happyx/sugar/js.html">happyx/sugar/js</a>, <a href="happyx/sugar/sgr.html">happyx/sugar/sgr</a>, <a href="happyx/sugar/style.html">happyx/sugar/style</a>, <a href="happyx/tmpl_engine/engine.html">happyx/tmpl_engine/engine</a>.<br/><p /><h2>API symbols</h2>
 <dl><dt><a name="%60%21%3D%60" href="#%60%21%3D%60"><span>`!=`:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="state: `!=`[T](self`gensym1, other`gensym1: State[T]): bool" href="happyx/spa/state.html#%21%3D%2C%2C">state: `!=`[T](self`gensym1, other`gensym1: State[T]): bool</a></li>
@@ -169,6 +169,8 @@ window.addEventListener('DOMContentLoaded', main);
           </ul></dd>
 <dt><a name="%60-%26gt%3B%60" href="#%60-%26gt%3B%60"><span>`-&gt;`:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
+          data-doc-search-tag="state: `-&gt;`(self: State; field: untyped): untyped" href="happyx/spa/state.html#-%3E.m%2CState%2Cuntyped">state: `-&gt;`(self: State; field: untyped): untyped</a></li>
+          <li><a class="reference external"
           data-doc-search-tag="sgr: `-&gt;`(route, at, body: untyped): untyped" href="happyx/sugar/sgr.html#-%3E.m%2Cuntyped%2Cuntyped%2Cuntyped">sgr: `-&gt;`(route, at, body: untyped): untyped</a></li>
           </ul></dd>
 <dt><a name="%60-%3D%60" href="#%60-%3D%60"><span>`-=`:</span></a></dt><dd><ul class="simple">
@@ -347,11 +349,11 @@ window.addEventListener('DOMContentLoaded', main);
           </ul></dd>
 <dt><a name="buildStyle" href="#buildStyle"><span>buildStyle:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="style: buildStyle(body: untyped): untyped" href="happyx/spa/style.html#buildStyle.m%2Cuntyped">style: buildStyle(body: untyped): untyped</a></li>
+          data-doc-search-tag="style: buildStyle(body: untyped): untyped" href="happyx/sugar/style.html#buildStyle.m%2Cuntyped">style: buildStyle(body: untyped): untyped</a></li>
           </ul></dd>
 <dt><a name="component" href="#component"><span>component:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="renderer: component(name, body: untyped): untyped" href="happyx/spa/renderer.html#component.m%2Cuntyped%2Cuntyped">renderer: component(name, body: untyped): untyped</a></li>
+          data-doc-search-tag="components: component(name, body: untyped): untyped" href="happyx/spa/components.html#component.m%2Cuntyped%2Cuntyped">components: component(name, body: untyped): untyped</a></li>
           </ul></dd>
 <dt><a name="ComponentEventHandler" href="#ComponentEventHandler"><span>ComponentEventHandler:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -365,17 +367,9 @@ window.addEventListener('DOMContentLoaded', main);
 <li><a class="reference external"
           data-doc-search-tag="renderer: components" href="happyx/spa/renderer.html#components">renderer: components</a></li>
           </ul></dd>
-<dt><a name="ComponentSyntaxDefect" href="#ComponentSyntaxDefect"><span>ComponentSyntaxDefect:</span></a></dt><dd><ul class="simple">
-<li><a class="reference external"
-          data-doc-search-tag="exceptions: ComponentSyntaxDefect" href="happyx/private/exceptions.html#ComponentSyntaxDefect">exceptions: ComponentSyntaxDefect</a></li>
-          </ul></dd>
 <dt><a name="CORSObj" href="#CORSObj"><span>CORSObj:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="cors: CORSObj" href="happyx/ssg/cors.html#CORSObj">cors: CORSObj</a></li>
-          </ul></dd>
-<dt><a name="CORSSyntaxDefect" href="#CORSSyntaxDefect"><span>CORSSyntaxDefect:</span></a></dt><dd><ul class="simple">
-<li><a class="reference external"
-          data-doc-search-tag="exceptions: CORSSyntaxDefect" href="happyx/private/exceptions.html#CORSSyntaxDefect">exceptions: CORSSyntaxDefect</a></li>
           </ul></dd>
 <dt><a name="currentComponent" href="#currentComponent"><span>currentComponent:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -384,10 +378,6 @@ window.addEventListener('DOMContentLoaded', main);
 <dt><a name="currentRoute" href="#currentRoute"><span>currentRoute:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="renderer: currentRoute" href="happyx/spa/renderer.html#currentRoute">renderer: currentRoute</a></li>
-          </ul></dd>
-<dt><a name="declaredPathParams" href="#declaredPathParams"><span>declaredPathParams:</span></a></dt><dd><ul class="simple">
-<li><a class="reference external"
-          data-doc-search-tag="routing: declaredPathParams" href="happyx/private/routing.html#declaredPathParams">routing: declaredPathParams</a></li>
           </ul></dd>
 <dt><a name="discardStmt" href="#discardStmt"><span>discardStmt:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -399,7 +389,7 @@ window.addEventListener('DOMContentLoaded', main);
           </ul></dd>
 <dt><a name="exportRouteArgs" href="#exportRouteArgs"><span>exportRouteArgs:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="routing: exportRouteArgs(urlPath, routePath, body: NimNode): NimNode" href="happyx/private/routing.html#exportRouteArgs%2CNimNode%2CNimNode%2CNimNode">routing: exportRouteArgs(urlPath, routePath, body: NimNode): NimNode</a></li>
+          data-doc-search-tag="routing: exportRouteArgs(urlPath, routePath, body: NimNode): NimNode" href="happyx/routing/routing.html#exportRouteArgs%2CNimNode%2CNimNode%2CNimNode">routing: exportRouteArgs(urlPath, routePath, body: NimNode): NimNode</a></li>
           </ul></dd>
 <dt><a name="fgColored" href="#fgColored"><span>fgColored:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -411,7 +401,7 @@ window.addEventListener('DOMContentLoaded', main);
           </ul></dd>
 <dt><a name="findAndReplaceMount" href="#findAndReplaceMount"><span>findAndReplaceMount:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="mounting: findAndReplaceMount(body: NimNode)" href="happyx/mounting/mounting.html#findAndReplaceMount%2CNimNode">mounting: findAndReplaceMount(body: NimNode)</a></li>
+          data-doc-search-tag="mounting: findAndReplaceMount(body: NimNode)" href="happyx/routing/mounting.html#findAndReplaceMount%2CNimNode">mounting: findAndReplaceMount(body: NimNode)</a></li>
           </ul></dd>
 <dt><a name="findByTag" href="#findByTag"><span>findByTag:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -422,12 +412,58 @@ window.addEventListener('DOMContentLoaded', main);
           data-doc-search-tag="state: get[T](self: State[T]): T" href="happyx/spa/state.html#get%2CState%5BT%5D">state: get[T](self: State[T]): T</a></li>
           <li><a class="reference external"
           data-doc-search-tag="tag: get(self: TagRef; tag: string): TagRef" href="happyx/spa/tag.html#get%2CTagRef%2Cstring">tag: get(self: TagRef; tag: string): TagRef</a></li>
-          <li><a class="reference external"
-          data-doc-search-tag="tag: get(self: TagRef; attrName: string; default: string): string" href="happyx/spa/tag.html#get%2CTagRef%2Cstring%2Cstring">tag: get(self: TagRef; attrName: string; default: string): string</a></li>
+          </ul></dd>
+<dt><a name="getAttribute" href="#getAttribute"><span>getAttribute:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="tag: getAttribute(self: TagRef; attrName: string; default: string = &quot;&quot;): string" href="happyx/spa/tag.html#getAttribute%2CTagRef%2Cstring%2Cstring">tag: getAttribute(self: TagRef; attrName: string; default: string = &quot;&quot;): string</a></li>
           </ul></dd>
 <dt><a name="getTagName" href="#getTagName"><span>getTagName:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="renderer: getTagName(name: string): string" href="happyx/spa/renderer.html#getTagName%2Cstring">renderer: getTagName(name: string): string</a></li>
+          data-doc-search-tag="macro_utils: getTagName(name: string): string" href="happyx/private/macro_utils.html#getTagName%2Cstring">macro_utils: getTagName(name: string): string</a></li>
+          </ul></dd>
+<dt><a name="HpxAppRouteDefect" href="#HpxAppRouteDefect"><span>HpxAppRouteDefect:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="exceptions: HpxAppRouteDefect" href="happyx/core/exceptions.html#HpxAppRouteDefect">exceptions: HpxAppRouteDefect</a></li>
+          </ul></dd>
+<dt><a name="HpxBuildHtmlDefect" href="#HpxBuildHtmlDefect"><span>HpxBuildHtmlDefect:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="exceptions: HpxBuildHtmlDefect" href="happyx/core/exceptions.html#HpxBuildHtmlDefect">exceptions: HpxBuildHtmlDefect</a></li>
+          </ul></dd>
+<dt><a name="HpxBuildJsDefect" href="#HpxBuildJsDefect"><span>HpxBuildJsDefect:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="exceptions: HpxBuildJsDefect" href="happyx/core/exceptions.html#HpxBuildJsDefect">exceptions: HpxBuildJsDefect</a></li>
+          </ul></dd>
+<dt><a name="HpxBuildStyleDefect" href="#HpxBuildStyleDefect"><span>HpxBuildStyleDefect:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="exceptions: HpxBuildStyleDefect" href="happyx/core/exceptions.html#HpxBuildStyleDefect">exceptions: HpxBuildStyleDefect</a></li>
+          </ul></dd>
+<dt><a name="HpxComponentDefect" href="#HpxComponentDefect"><span>HpxComponentDefect:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="exceptions: HpxComponentDefect" href="happyx/core/exceptions.html#HpxComponentDefect">exceptions: HpxComponentDefect</a></li>
+          </ul></dd>
+<dt><a name="HpxCorsDefect" href="#HpxCorsDefect"><span>HpxCorsDefect:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="exceptions: HpxCorsDefect" href="happyx/core/exceptions.html#HpxCorsDefect">exceptions: HpxCorsDefect</a></li>
+          </ul></dd>
+<dt><a name="HpxModelSyntaxDefect" href="#HpxModelSyntaxDefect"><span>HpxModelSyntaxDefect:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="exceptions: HpxModelSyntaxDefect" href="happyx/core/exceptions.html#HpxModelSyntaxDefect">exceptions: HpxModelSyntaxDefect</a></li>
+          </ul></dd>
+<dt><a name="HpxMountDefect" href="#HpxMountDefect"><span>HpxMountDefect:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="exceptions: HpxMountDefect" href="happyx/core/exceptions.html#HpxMountDefect">exceptions: HpxMountDefect</a></li>
+          </ul></dd>
+<dt><a name="HpxPathParamDefect" href="#HpxPathParamDefect"><span>HpxPathParamDefect:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="exceptions: HpxPathParamDefect" href="happyx/core/exceptions.html#HpxPathParamDefect">exceptions: HpxPathParamDefect</a></li>
+          </ul></dd>
+<dt><a name="HpxServeRouteDefect" href="#HpxServeRouteDefect"><span>HpxServeRouteDefect:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="exceptions: HpxServeRouteDefect" href="happyx/core/exceptions.html#HpxServeRouteDefect">exceptions: HpxServeRouteDefect</a></li>
+          </ul></dd>
+<dt><a name="HpxSyntaxSugarDefect" href="#HpxSyntaxSugarDefect"><span>HpxSyntaxSugarDefect:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="exceptions: HpxSyntaxSugarDefect" href="happyx/core/exceptions.html#HpxSyntaxSugarDefect">exceptions: HpxSyntaxSugarDefect</a></li>
           </ul></dd>
 <dt><a name="initServer" href="#initServer"><span>initServer:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -449,14 +485,6 @@ window.addEventListener('DOMContentLoaded', main);
         onlyChildren: bool = false): TagRef" href="happyx/spa/tag.html#initTag%2Cstring%2CStringTableRef%2Cseq%5BTagRef%5D%2Cbool">tag: initTag(name: string; attrs: StringTableRef; children: seq[TagRef] = @[];
         onlyChildren: bool = false): TagRef</a></li>
           </ul></dd>
-<dt><a name="InvalidPathParamDefect" href="#InvalidPathParamDefect"><span>InvalidPathParamDefect:</span></a></dt><dd><ul class="simple">
-<li><a class="reference external"
-          data-doc-search-tag="exceptions: InvalidPathParamDefect" href="happyx/private/exceptions.html#InvalidPathParamDefect">exceptions: InvalidPathParamDefect</a></li>
-          </ul></dd>
-<dt><a name="InvalidServeRouteDefect" href="#InvalidServeRouteDefect"><span>InvalidServeRouteDefect:</span></a></dt><dd><ul class="simple">
-<li><a class="reference external"
-          data-doc-search-tag="exceptions: InvalidServeRouteDefect" href="happyx/private/exceptions.html#InvalidServeRouteDefect">exceptions: InvalidServeRouteDefect</a></li>
-          </ul></dd>
 <dt><a name="isExpr" href="#isExpr"><span>isExpr:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="macro_utils: isExpr(node: NimNode): bool" href="happyx/private/macro_utils.html#isExpr%2CNimNode">macro_utils: isExpr(node: NimNode): bool</a></li>
@@ -468,6 +496,10 @@ window.addEventListener('DOMContentLoaded', main);
 <dt><a name="items" href="#items"><span>items:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="state: items[T](self: State[T]): auto" href="happyx/spa/state.html#items.i%2CState%5BT%5D">state: items[T](self: State[T]): auto</a></li>
+          </ul></dd>
+<dt><a name="len" href="#len"><span>len:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="state: len[T](self: State[T]): int" href="happyx/spa/state.html#len%2CState%5BT%5D">state: len[T](self: State[T]): int</a></li>
           </ul></dd>
 <dt><a name="lvl" href="#lvl"><span>lvl:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -481,17 +513,9 @@ window.addEventListener('DOMContentLoaded', main);
 <li><a class="reference external"
           data-doc-search-tag="server: ModelBase" href="happyx/ssg/server.html#ModelBase">server: ModelBase</a></li>
           </ul></dd>
-<dt><a name="ModelSyntaxDefect" href="#ModelSyntaxDefect"><span>ModelSyntaxDefect:</span></a></dt><dd><ul class="simple">
-<li><a class="reference external"
-          data-doc-search-tag="exceptions: ModelSyntaxDefect" href="happyx/private/exceptions.html#ModelSyntaxDefect">exceptions: ModelSyntaxDefect</a></li>
-          </ul></dd>
 <dt><a name="mount" href="#mount"><span>mount:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="mounting: mount(mountName, body: untyped): untyped" href="happyx/mounting/mounting.html#mount.m%2Cuntyped%2Cuntyped">mounting: mount(mountName, body: untyped): untyped</a></li>
-          </ul></dd>
-<dt><a name="MountDefect" href="#MountDefect"><span>MountDefect:</span></a></dt><dd><ul class="simple">
-<li><a class="reference external"
-          data-doc-search-tag="exceptions: MountDefect" href="happyx/private/exceptions.html#MountDefect">exceptions: MountDefect</a></li>
+          data-doc-search-tag="mounting: mount(mountName, body: untyped): untyped" href="happyx/routing/mounting.html#mount.m%2Cuntyped%2Cuntyped">mounting: mount(mountName, body: untyped): untyped</a></li>
           </ul></dd>
 <dt><a name="newLambda" href="#newLambda"><span>newLambda:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -505,7 +529,7 @@ window.addEventListener('DOMContentLoaded', main);
           </ul></dd>
 <dt><a name="nnkNumbers" href="#nnkNumbers"><span>nnkNumbers:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="style: nnkNumbers" href="happyx/spa/style.html#nnkNumbers">style: nnkNumbers</a></li>
+          data-doc-search-tag="style: nnkNumbers" href="happyx/sugar/style.html#nnkNumbers">style: nnkNumbers</a></li>
           </ul></dd>
 <dt><a name="parseQuery" href="#parseQuery"><span>parseQuery:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -513,7 +537,7 @@ window.addEventListener('DOMContentLoaded', main);
           </ul></dd>
 <dt><a name="pathParams" href="#pathParams"><span>pathParams:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="renderer: pathParams(body: untyped): untyped" href="happyx/spa/renderer.html#pathParams.m%2Cuntyped">renderer: pathParams(body: untyped): untyped</a></li>
+          data-doc-search-tag="routing: pathParams(body: untyped): untyped" href="happyx/routing/routing.html#pathParams.m%2Cuntyped">routing: pathParams(body: untyped): untyped</a></li>
           </ul></dd>
 <dt><a name="regCORS" href="#regCORS"><span>regCORS:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -529,7 +553,7 @@ window.addEventListener('DOMContentLoaded', main);
           </ul></dd>
 <dt><a name="registeredMounts" href="#registeredMounts"><span>registeredMounts:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="mounting: registeredMounts" href="happyx/mounting/mounting.html#registeredMounts">mounting: registeredMounts</a></li>
+          data-doc-search-tag="mounting: registeredMounts" href="happyx/routing/mounting.html#registeredMounts">mounting: registeredMounts</a></li>
           </ul></dd>
 <dt><a name="remember" href="#remember"><span>remember:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -542,6 +566,10 @@ window.addEventListener('DOMContentLoaded', main);
 <dt><a name="renderTemplate" href="#renderTemplate"><span>renderTemplate:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="engine: renderTemplate(name: static[string])" href="happyx/tmpl_engine/engine.html#renderTemplate.t%2Cstatic%5Bstring%5D">engine: renderTemplate(name: static[string])</a></li>
+          </ul></dd>
+<dt><a name="renderVdom" href="#renderVdom"><span>renderVdom:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="renderer: renderVdom(app: App; tag: TagRef)" href="happyx/spa/renderer.html#renderVdom%2CApp%2CTagRef">renderer: renderVdom(app: App; tag: TagRef)</a></li>
           </ul></dd>
 <dt><a name="replaceIter" href="#replaceIter"><span>replaceIter:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -589,18 +617,6 @@ window.addEventListener('DOMContentLoaded', main);
 <li><a class="reference external"
           data-doc-search-tag="sgr: sugarRoutes" href="happyx/sugar/sgr.html#sugarRoutes">sgr: sugarRoutes</a></li>
           </ul></dd>
-<dt><a name="SyntaxJsDefect" href="#SyntaxJsDefect"><span>SyntaxJsDefect:</span></a></dt><dd><ul class="simple">
-<li><a class="reference external"
-          data-doc-search-tag="exceptions: SyntaxJsDefect" href="happyx/private/exceptions.html#SyntaxJsDefect">exceptions: SyntaxJsDefect</a></li>
-          </ul></dd>
-<dt><a name="SyntaxStyleDefect" href="#SyntaxStyleDefect"><span>SyntaxStyleDefect:</span></a></dt><dd><ul class="simple">
-<li><a class="reference external"
-          data-doc-search-tag="exceptions: SyntaxStyleDefect" href="happyx/private/exceptions.html#SyntaxStyleDefect">exceptions: SyntaxStyleDefect</a></li>
-          </ul></dd>
-<dt><a name="SyntaxSugarDefect" href="#SyntaxSugarDefect"><span>SyntaxSugarDefect:</span></a></dt><dd><ul class="simple">
-<li><a class="reference external"
-          data-doc-search-tag="exceptions: SyntaxSugarDefect" href="happyx/private/exceptions.html#SyntaxSugarDefect">exceptions: SyntaxSugarDefect</a></li>
-          </ul></dd>
 <dt><a name="Tag" href="#Tag"><span>Tag:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="tag: Tag" href="happyx/spa/tag.html#Tag">tag: Tag</a></li>
@@ -629,7 +645,7 @@ window.addEventListener('DOMContentLoaded', main);
           </ul></dd>
 <dt><a name="throwDefect" href="#throwDefect"><span>throwDefect:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="exceptions: throwDefect(defect: typedesc; msg: string; lineInfo: LineInfo)" href="happyx/private/exceptions.html#throwDefect%2Ctypedesc%2Cstring%2CLineInfo">exceptions: throwDefect(defect: typedesc; msg: string; lineInfo: LineInfo)</a></li>
+          data-doc-search-tag="exceptions: throwDefect(defect: typedesc; msg: string; lineInfo: LineInfo)" href="happyx/core/exceptions.html#throwDefect%2Ctypedesc%2Cstring%2CLineInfo">exceptions: throwDefect(defect: typedesc; msg: string; lineInfo: LineInfo)</a></li>
           </ul></dd>
 <dt><a name="toBool" href="#toBool"><span>toBool:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -675,6 +691,10 @@ window.addEventListener('DOMContentLoaded', main);
 <li><a class="reference external"
           data-doc-search-tag="state: toInt8(self: State): int8" href="happyx/spa/state.html#toInt8.c%2CState">state: toInt8(self: State): int8</a></li>
           </ul></dd>
+<dt><a name="toSeq" href="#toSeq"><span>toSeq:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="state: toSeq[T](self: State[seq[T]]): seq[T]" href="happyx/spa/state.html#toSeq.c%2CState%5Bseq%5BT%5D%5D">state: toSeq[T](self: State[seq[T]]): seq[T]</a></li>
+          </ul></dd>
 <dt><a name="toString" href="#toString"><span>toString:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="state: toString(self: State): string" href="happyx/spa/state.html#toString.c%2CState">state: toString(self: State): string</a></li>
@@ -683,9 +703,15 @@ window.addEventListener('DOMContentLoaded', main);
 <li><a class="reference external"
           data-doc-search-tag="tag: UnclosedTags" href="happyx/spa/tag.html#UnclosedTags">tag: UnclosedTags</a></li>
           </ul></dd>
+<dt><a name="UniqueComponentId" href="#UniqueComponentId"><span>UniqueComponentId:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="renderer: UniqueComponentId" href="happyx/spa/renderer.html#UniqueComponentId">renderer: UniqueComponentId</a></li>
+          </ul></dd>
 <dt><a name="val" href="#val"><span>val:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="state: val[T](self: State[T]): T" href="happyx/spa/state.html#val%2CState%5BT%5D">state: val[T](self: State[T]): T</a></li>
+          data-doc-search-tag="state: val[T](self: var State[T]): var T" href="happyx/spa/state.html#val%2CState%5BT%5D">state: val[T](self: var State[T]): var T</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="state: val[T](self: State[T]): T" href="happyx/spa/state.html#val%2CState%5BT%5D_2">state: val[T](self: State[T]): T</a></li>
           </ul></dd>
 <dt><a name="val%3D" href="#val%3D"><span>val=:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -696,7 +722,7 @@ window.addEventListener('DOMContentLoaded', main);
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-05-31 05:24:29 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-06-01 14:10:01 UTC</small>
       </div>
     </div>
   </div>

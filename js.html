@@ -316,46 +316,66 @@
       <div class="w-full h-full pt-20 flex px-12 xl:px-32 gap-20">
         <!-- Page data -->
         <div class="flex flex-col gap-4 w-full xl:w-3/4">
-          <h1 class="titleRef" id="92f69b01ed78063b">CLI tool 🛠</h1><p>
+          <h1 class="titleRef" id="f6aee1e30b5e89aa">Pure JS In Nim 👑</h1><p>
 
-HappyX provides CLI tool for creating, building and serving your projects 🎈
+HappyX provides <code class="command">buildJs</code> macro that provides PURE Js in Nim.
 
-</p><h2 class="titleRef" id="5f32428344309ced">Getting Started ✨</h2><p>
+Here is example ✌
+</p><pre><button class="flex gap-2 items-center text-white"><p>Copy code</p><i class="fas fa-copy"></i></button><code class="language-nim">func myNimFunc(a: string) =
+  echo a & " meow"
 
-</p><h3 class="titleRef" id="72dd460608004709">Create Project 💡</h3><p>
+var myNimVar = "Hello!"
 
-</p><div class="quote"><p>Main command is <code class="command">hpx create</code>. This command creates project. You can choose project name and project type. 💡
+buildJs:
+  # Translated into
+  # let some = 0
+  var some = 0
 
-</p></div><p></p><h4 class="titleRef" id="230c8d813af9f7c6">Usage 🔌</h4><p>
-</p><pre><button class="flex gap-2 items-center text-white"><p>Copy code</p><i class="fas fa-copy"></i></button><code class="language-bash">hpx create [optional-arguments]
+  # A lot of Nim code is available to convert to pure JavaScript
+  block loop1:
+    for i in 0..&lt3:
+      block loop2:
+        for j in 0..&lt3:
+          if i == 1 && j == 1:
+            continue loop1
+          echo "i =", i, "j =", j
+<br>
+  type
+    MyEnum = enum
+      A, B, C
+<br>
+  var myEnum = MyEnum.A
+  case myEnum:
+  of A:
+    ...
+  else:  # if not all enum values in case than throws error
+    ...
+<br>
+  class Rectangle:
+    width*: float
+    height*: float
+
+    constructor(w, h):
+      self.width = w
+      self.height = h
+  <br>
+    area():
+      return self.width * self.height
+<br>
+  function myJsFunc(a, b, c):
+    # work with a, b and c
+    console.log(a)
+    echo b, c
+<br>
+  myJsFunc(1, 2, 3)
+
+  ~myNimVar = "Woof"
+  echo ~myNimVar
+
+  # You can use Nim code here:
+  nim:
+    myNimFunc(myNimVar)
 </code></pre><p>
-
-</p><h4 class="titleRef" id="df747dc87662dbcd">Flags 🚩</h4><p>
-<ul style="list-style-type: disc"><li><code class="command">-n</code> or <code class="command">--name</code>: project name;</li><li><code class="command">-k</code> or <code class="command">--kind</code>: project kind. May be <code class="command">SPA</code> or <code class="command">SSG</code>;</li><li><code class="command">-t</code> or <code class="command">--templates</code>: enable templates. Works only for <code class="command">SSG</code>.</li><li><code class="command">-u</code> or <code class="command">--use-tailwind</code>: Use Tailwind CSS 3 (only for <code class="command">SPA</code>).</li><li><code class="command">-p</code> or <code class="command">--path-params</code>: Use path params assignment.</ul></li>
-
-
-</p><h3 class="titleRef" id="98d7e2790b32e6f8">Build project 🔨</h3><p>
-
-</p><div class="quote"><p>You can build single page application project and minimize JS file size 💡
-
-</p></div><p></p><h4 class="titleRef" id="f747039e1a4984da">Usage 🔌</h4><p>
-</p><pre><button class="flex gap-2 items-center text-white"><p>Copy code</p><i class="fas fa-copy"></i></button><code class="language-bash">hpx build [optional-arguments]
-</code></pre><p>
-
-</p><h4 class="titleRef" id="ecf556da333fa08a">Flags 🚩</h4><p>
-<ul style="list-style-type: disc"><li><code class="command">-o</code> or <code class="command">--opt-size</code>: optimize output file size</ul></li>
-
-
-</p><h3 class="titleRef" id="b20a62d65d6468cf">Serve project 👨‍🔬</h3><p>
-
-</p><div class="quote"><p>You can run your single page application in browser with hot code reloading 💡
-
-</p></div><p></p><h4 class="titleRef" id="291a7a5cb96d6b52">Usage 🔌</h4><p>
-</p><pre><button class="flex gap-2 items-center text-white"><p>Copy code</p><i class="fas fa-copy"></i></button><code class="language-bash">hpx dev [optional-arguments]
-</code></pre><p>
-
-</p><h4 class="titleRef" id="21badbe20aca5d0c">Flags 🚩</h4><p>
-<ul style="list-style-type: disc"><li><code class="command">-h</code> or <code class="command">--host</code>: address where need to serve</li><li><code class="command">-p</code> or <code class="command">--port</code>: port where need to serve</li><li><code class="command">-r</code> or <code class="command">--reload</code>: enable hot code reloading</ul></li>
 <hr>This documentation was generated with <a class="hreflink" href="https://github.com/HapticX/hapdoc"><code class="command">HapDoc</code></a>
 </p>
         </div>
@@ -365,59 +385,9 @@ HappyX provides CLI tool for creating, building and serving your projects 🎈
             On this page
           </p>
           
-          <a id="page92f69b01ed78063b" href="#92f69b01ed78063b"
+          <a id="pagef6aee1e30b5e89aa" href="#f6aee1e30b5e89aa"
             class="select-none border-l-[1px] py-0.5 font-semibold pl-[1.0em] opacity-50 hover:opacity-100 dark:border-white border-black border-opacity-100 pl-5 cursor-pointer transition-all duration-200">
-            CLI tool 🛠
-          </a>
-          
-          <a id="page5f32428344309ced" href="#5f32428344309ced"
-            class="select-none border-l-[1px] py-0.5 font-semibold pl-[1.5em] opacity-50 hover:opacity-100 dark:border-white border-black border-opacity-100 pl-5 cursor-pointer transition-all duration-200">
-            Getting Started ✨
-          </a>
-          
-          <a id="page72dd460608004709" href="#72dd460608004709"
-            class="select-none border-l-[1px] py-0.5 font-semibold pl-[2.0em] opacity-50 hover:opacity-100 dark:border-white border-black border-opacity-100 pl-5 cursor-pointer transition-all duration-200">
-            Create Project 💡
-          </a>
-          
-          <a id="page230c8d813af9f7c6" href="#230c8d813af9f7c6"
-            class="select-none border-l-[1px] py-0.5 font-semibold pl-[2.5em] opacity-50 hover:opacity-100 dark:border-white border-black border-opacity-100 pl-5 cursor-pointer transition-all duration-200">
-            Usage 🔌
-          </a>
-          
-          <a id="pagedf747dc87662dbcd" href="#df747dc87662dbcd"
-            class="select-none border-l-[1px] py-0.5 font-semibold pl-[2.5em] opacity-50 hover:opacity-100 dark:border-white border-black border-opacity-100 pl-5 cursor-pointer transition-all duration-200">
-            Flags 🚩
-          </a>
-          
-          <a id="page98d7e2790b32e6f8" href="#98d7e2790b32e6f8"
-            class="select-none border-l-[1px] py-0.5 font-semibold pl-[2.0em] opacity-50 hover:opacity-100 dark:border-white border-black border-opacity-100 pl-5 cursor-pointer transition-all duration-200">
-            Build project 🔨
-          </a>
-          
-          <a id="pagef747039e1a4984da" href="#f747039e1a4984da"
-            class="select-none border-l-[1px] py-0.5 font-semibold pl-[2.5em] opacity-50 hover:opacity-100 dark:border-white border-black border-opacity-100 pl-5 cursor-pointer transition-all duration-200">
-            Usage 🔌
-          </a>
-          
-          <a id="pageecf556da333fa08a" href="#ecf556da333fa08a"
-            class="select-none border-l-[1px] py-0.5 font-semibold pl-[2.5em] opacity-50 hover:opacity-100 dark:border-white border-black border-opacity-100 pl-5 cursor-pointer transition-all duration-200">
-            Flags 🚩
-          </a>
-          
-          <a id="pageb20a62d65d6468cf" href="#b20a62d65d6468cf"
-            class="select-none border-l-[1px] py-0.5 font-semibold pl-[2.0em] opacity-50 hover:opacity-100 dark:border-white border-black border-opacity-100 pl-5 cursor-pointer transition-all duration-200">
-            Serve project 👨‍🔬
-          </a>
-          
-          <a id="page291a7a5cb96d6b52" href="#291a7a5cb96d6b52"
-            class="select-none border-l-[1px] py-0.5 font-semibold pl-[2.5em] opacity-50 hover:opacity-100 dark:border-white border-black border-opacity-100 pl-5 cursor-pointer transition-all duration-200">
-            Usage 🔌
-          </a>
-          
-          <a id="page21badbe20aca5d0c" href="#21badbe20aca5d0c"
-            class="select-none border-l-[1px] py-0.5 font-semibold pl-[2.5em] opacity-50 hover:opacity-100 dark:border-white border-black border-opacity-100 pl-5 cursor-pointer transition-all duration-200">
-            Flags 🚩
+            Pure JS In Nim 👑
           </a>
           
         </div>
@@ -697,7 +667,7 @@ HappyX provides CLI tool for creating, building and serving your projects 🎈
     }
 
     
-      const href = document.getElementById("/happyx/cli.htmlhref");
+      const href = document.getElementById("/happyx/js.htmlhref");
       href.className += " opacity-90 dark:text-accent-color text-light-accent-color";
     
 

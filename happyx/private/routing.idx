@@ -1,2 +1,0 @@
-declaredPathParams	happyx/private/routing.html#declaredPathParams	routing: declaredPathParams	
-exportRouteArgs	happyx/private/routing.html#exportRouteArgs,NimNode,NimNode,NimNode	routing: exportRouteArgs(urlPath, routePath, body: NimNode): NimNode	

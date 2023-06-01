@@ -98,8 +98,9 @@ window.addEventListener('DOMContentLoaded', main);
     </select>
   </div>
   <ul class="simple simple-toc" id="toc-list">
-<li><a class="reference" id="state_toc" href="#state">State</a></li>
-<li>
+<li><a class="reference" id="state-🍍_toc" href="#state-🍍">State 🍍</a></li>
+<ul class="simple"><li><a class="reference" id="state-🍍-usage-⚡_toc" href="#state-🍍-usage-⚡">Usage ⚡</a></li>
+</ul><li>
   <a class="reference reference-toplevel" href="#6" id="56">Imports</a>
   <ul class="simple simple-toc-section">
     
@@ -307,6 +308,11 @@ window.addEventListener('DOMContentLoaded', main);
     title="get[T](self: State[T]): T">get[T](self: State[T]): T</a></li>
 
   </ul>
+  <ul class="simple nested-toc-section">len
+      <li><a class="reference" href="#len%2CState%5BT%5D"
+    title="len[T](self: State[T]): int">len[T](self: State[T]): int</a></li>
+
+  </ul>
   <ul class="simple nested-toc-section">not
       <li><a class="reference" href="#not"
     title="`not`[T](self`gensym4: State[T]): bool">`not`[T](self`gensym4: State[T]): bool</a></li>
@@ -323,8 +329,10 @@ window.addEventListener('DOMContentLoaded', main);
 
   </ul>
   <ul class="simple nested-toc-section">val
-      <li><a class="reference" href="#val%2CState%5BT%5D"
+      <li><a class="reference" href="#val%2CState%5BT%5D_2"
     title="val[T](self: State[T]): T">val[T](self: State[T]): T</a></li>
+  <li><a class="reference" href="#val%2CState%5BT%5D"
+    title="val[T](self: var State[T]): var T">val[T](self: var State[T]): var T</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">val=
@@ -418,9 +426,25 @@ window.addEventListener('DOMContentLoaded', main);
     title="toInt64(self: State): int64">toInt64(self: State): int64</a></li>
 
   </ul>
+  <ul class="simple nested-toc-section">toSeq
+      <li><a class="reference" href="#toSeq.c%2CState%5Bseq%5BT%5D%5D"
+    title="toSeq[T](self: State[seq[T]]): seq[T]">toSeq[T](self: State[seq[T]]): seq[T]</a></li>
+
+  </ul>
   <ul class="simple nested-toc-section">toString
       <li><a class="reference" href="#toString.c%2CState"
     title="toString(self: State): string">toString(self: State): string</a></li>
+
+  </ul>
+
+  </ul>
+</li>
+<li>
+  <a class="reference reference-toplevel" href="#17" id="67">Macros</a>
+  <ul class="simple simple-toc-section">
+      <ul class="simple nested-toc-section">->
+      <li><a class="reference" href="#-%3E.m%2CState%2Cuntyped"
+    title="`-&gt;`(self: State; field: untyped): untyped">`-&gt;`(self: State; field: untyped): untyped</a></li>
 
   </ul>
 
@@ -435,8 +459,26 @@ window.addEventListener('DOMContentLoaded', main);
   <div id="tocRoot"></div>
   
   <p class="module-desc">
-<h1><a class="toc-backref" id="state" href="#state">State</a></h1><p>Provides reactivity states </p>
-</p>
+<h1><a class="toc-backref" id="state-🍍" href="#state-🍍">State 🍍</a></h1><p>Provides reactivity states</p>
+
+<h2><a class="toc-backref" id="state-🍍-usage-⚡" href="#state-🍍-usage-⚡">Usage ⚡</a></h2><pre class="listing"><span class="Keyword">var</span>
+  <span class="Identifier">lvl</span> <span class="Operator">=</span> <span class="Identifier">remember</span> <span class="DecNumber">1</span>
+  <span class="Identifier">exp</span> <span class="Operator">=</span> <span class="Identifier">remember</span> <span class="DecNumber">0</span>
+  <span class="Identifier">maxExp</span> <span class="Operator">=</span> <span class="Identifier">remember</span> <span class="DecNumber">10</span>
+  <span class="Identifier">name</span> <span class="Operator">=</span> <span class="Identifier">remember</span> <span class="StringLit">&quot;Ethosa&quot;</span>
+
+<span class="Identifier">appRoutes</span><span class="Punctuation">(</span><span class="StringLit">&quot;app&quot;</span><span class="Punctuation">)</span><span class="Punctuation">:</span>
+  <span class="StringLit">&quot;/&quot;</span><span class="Punctuation">:</span>
+    <span class="Identifier">tDiv</span><span class="Punctuation">:</span>
+      <span class="StringLit">&quot;Hello, {name}, your level is {lvl} [{exp}/{maxExp}&quot;</span>
+    <span class="Identifier">tButton</span><span class="Punctuation">:</span>
+      <span class="StringLit">&quot;Increase exp&quot;</span>
+      <span class="Operator">@</span><span class="Identifier">click</span><span class="Punctuation">:</span>
+        <span class="Identifier">inc</span> <span class="Identifier">exp</span>
+        <span class="Keyword">while</span> <span class="Identifier">exp</span> <span class="Operator">&gt;=</span> <span class="Identifier">maxExp</span><span class="Punctuation">:</span>
+          <span class="Identifier">exp</span> <span class="Operator">-=</span> <span class="Identifier">maxExp</span>
+          <span class="Identifier">inc</span> <span class="Identifier">lvl</span>
+          <span class="Identifier">maxExp</span> <span class="Operator">+=</span> <span class="DecNumber">5</span></pre></p>
   <div class="section" id="6">
 <h1><a class="toc-backref" href="#6">Imports</a></h1>
 <dl class="item">
@@ -924,6 +966,14 @@ Returns state value
 
 </dd>
 </div>
+<div id="len,State[T]">
+<dt><pre><span class="Keyword">func</span> <a href="#len%2CState%5BT%5D"><span class="Identifier">len</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="state.html#State"><span class="Identifier">State</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int</span></pre></dt>
+<dd>
+
+Returns state value length
+
+</dd>
+</div>
 <div id="remember,T">
 <dt><pre><span class="Keyword">func</span> <a href="#remember%2CT"><span class="Identifier">remember</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">val</span><span class="Other">:</span> <span class="Identifier">T</span><span class="Other">)</span><span class="Other">:</span> <a href="state.html#State"><span class="Identifier">State</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span></pre></dt>
 <dd>
@@ -948,8 +998,16 @@ Changes state value
 
 </dd>
 </div>
+<div id="val,State[T]_2">
+<dt><pre><span class="Keyword">func</span> <a href="#val%2CState%5BT%5D_2"><span class="Identifier">val</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="state.html#State"><span class="Identifier">State</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">T</span></pre></dt>
+<dd>
+
+
+
+</dd>
+</div>
 <div id="val,State[T]">
-<dt><pre><span class="Keyword">func</span> <a href="#val%2CState%5BT%5D"><span class="Identifier">val</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="state.html#State"><span class="Identifier">State</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">T</span></pre></dt>
+<dt><pre><span class="Keyword">func</span> <a href="#val%2CState%5BT%5D"><span class="Identifier">val</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="state.html#State"><span class="Identifier">State</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">T</span></pre></dt>
 <dd>
 
 
@@ -1062,11 +1120,32 @@ Changes state value
 
 </dd>
 </div>
+<div id="toSeq.c,State[seq[T]]">
+<dt><pre><span class="Keyword">converter</span> <a href="#toSeq.c%2CState%5Bseq%5BT%5D%5D"><span class="Identifier">toSeq</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="state.html#State"><span class="Identifier">State</span></a><span class="Other">[</span><span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span></pre></dt>
+<dd>
+
+
+
+</dd>
+</div>
 <div id="toString.c,State">
 <dt><pre><span class="Keyword">converter</span> <a href="#toString.c%2CState"><span class="Identifier">toString</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="state.html#State"><span class="Identifier">State</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span></pre></dt>
 <dd>
 
 
+
+</dd>
+</div>
+
+</dl></div>
+<div class="section" id="17">
+<h1><a class="toc-backref" href="#17">Macros</a></h1>
+<dl class="item">
+<div id="->.m,State,untyped">
+<dt><pre><span class="Keyword">macro</span> <a href="#-%3E.m%2CState%2Cuntyped"><span class="Identifier">`-&gt;`</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="state.html#State"><span class="Identifier">State</span></a><span class="Other">;</span> <span class="Identifier">field</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
+<dd>
+
+Call any function that available for state value
 
 </dd>
 </div>
@@ -1080,7 +1159,7 @@ Changes state value
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-05-31 05:24:28 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-06-01 14:10:01 UTC</small>
       </div>
     </div>
   </div>

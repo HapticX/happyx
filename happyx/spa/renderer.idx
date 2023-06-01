@@ -9,24 +9,23 @@ componentEventHandlers	happyx/spa/renderer.html#componentEventHandlers	renderer:
 components	happyx/spa/renderer.html#components	renderer: components	
 currentComponent	happyx/spa/renderer.html#currentComponent	renderer: currentComponent	
 currentRoute	happyx/spa/renderer.html#currentRoute	renderer: currentRoute	
+UniqueComponentId	happyx/spa/renderer.html#UniqueComponentId	renderer: UniqueComponentId	
 route	happyx/spa/renderer.html#route,cstring	renderer: route(path: cstring)	
 registerApp	happyx/spa/renderer.html#registerApp,cstring	renderer: registerApp(appId: cstring = &quot;app&quot;): App	
 registerComponent	happyx/spa/renderer.html#registerComponent,cstring,BaseComponent	renderer: registerComponent(name: cstring; component: BaseComponent): BaseComponent	
+renderVdom	happyx/spa/renderer.html#renderVdom,App,TagRef	renderer: renderVdom(app: App; tag: TagRef)	
 render	happyx/spa/renderer.html#render.e,BaseComponent	renderer: render(self: BaseComponent): TagRef	
 reRender	happyx/spa/renderer.html#reRender.e,BaseComponent	renderer: reRender(self: BaseComponent)	
 start	happyx/spa/renderer.html#start.t,App	renderer: start(app: App)	
 replaceIter	happyx/spa/renderer.html#replaceIter,NimNode,proc(NimNode),proc(NimNode)	renderer: replaceIter(root: NimNode; search: proc (x: NimNode): bool;\n            replace: proc (x: NimNode): NimNode): bool	
-getTagName	happyx/spa/renderer.html#getTagName,string	renderer: getTagName(name: string): string	
 buildHtmlProcedure	happyx/spa/renderer.html#buildHtmlProcedure,NimNode,NimNode,bool,NimNode,bool,string,seq[NimNode]	renderer: buildHtmlProcedure(root, body: NimNode; inComponent: bool = false;\n                   componentName: NimNode = newEmptyNode();\n                   inCycle: bool = false; cycleTmpVar: string = &quot;&quot;;\n                   cycleVars: seq[NimNode] = @[]): NimNode	
 buildHtml	happyx/spa/renderer.html#buildHtml.m,untyped,untyped	renderer: buildHtml(root, html: untyped): untyped	
 buildHtml	happyx/spa/renderer.html#buildHtml.m,untyped	renderer: buildHtml(html: untyped): untyped	
 buildComponentHtml	happyx/spa/renderer.html#buildComponentHtml.m,untyped,untyped	renderer: buildComponentHtml(componentName, html: untyped): untyped	
 routes	happyx/spa/renderer.html#routes.m,App,untyped	renderer: routes(app: App; body: untyped): untyped	
 appRoutes	happyx/spa/renderer.html#appRoutes.m,string,untyped	renderer: appRoutes(name: string; body: untyped): untyped	
-component	happyx/spa/renderer.html#component.m,untyped,untyped	renderer: component(name, body: untyped): untyped	
-pathParams	happyx/spa/renderer.html#pathParams.m,untyped	renderer: pathParams(body: untyped): untyped	
-Basic Usage:	happyx/spa/renderer.html#basic-usagecolon	  Basic Usage:	
 Basic Usage:	happyx/spa/renderer.html#basic-usagecolon	  Basic Usage:	
 Usage:	happyx/spa/renderer.html#usagecolon	  Usage:	
-Renderer	happyx/spa/renderer.html#renderer	 Renderer	
-Moving Between Routes	happyx/spa/renderer.html#renderer-moving-between-routes	  Moving Between Routes	
+Renderer ✨	happyx/spa/renderer.html#renderer-✨	 Renderer ✨	
+Moving Between Routes 🎈	happyx/spa/renderer.html#renderer-✨-moving-between-routes-🎈	  Moving Between Routes 🎈	
+Usage 🔨	happyx/spa/renderer.html#renderer-✨-usage-🔨	  Usage 🔨	

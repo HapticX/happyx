@@ -1,0 +1,2 @@
+exportRouteArgs	happyx/routing/routing.html#exportRouteArgs,NimNode,NimNode,NimNode	routing: exportRouteArgs(urlPath, routePath, body: NimNode): NimNode	
+pathParams	happyx/routing/routing.html#pathParams.m,untyped	routing: pathParams(body: untyped): untyped	
