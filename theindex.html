@@ -70,7 +70,7 @@ window.addEventListener('DOMContentLoaded', main);
 <div class="document" id="documentId">
   <div class="container">
     <h1 class="title">Index</h1>
-    Modules: <a href="happyx.html">happyx</a>, <a href="happyx/core/exceptions.html">happyx/core/exceptions</a>, <a href="happyx/private/macro_utils.html">happyx/private/macro_utils</a>, <a href="happyx/routing/mounting.html">happyx/routing/mounting</a>, <a href="happyx/routing/routing.html">happyx/routing/routing</a>, <a href="happyx/spa/components.html">happyx/spa/components</a>, <a href="happyx/spa/renderer.html">happyx/spa/renderer</a>, <a href="happyx/spa/state.html">happyx/spa/state</a>, <a href="happyx/spa/tag.html">happyx/spa/tag</a>, <a href="happyx/ssg/cors.html">happyx/ssg/cors</a>, <a href="happyx/ssg/server.html">happyx/ssg/server</a>, <a href="happyx/sugar/js.html">happyx/sugar/js</a>, <a href="happyx/sugar/sgr.html">happyx/sugar/sgr</a>, <a href="happyx/sugar/style.html">happyx/sugar/style</a>, <a href="happyx/tmpl_engine/engine.html">happyx/tmpl_engine/engine</a>.<br/><p /><h2>API symbols</h2>
+    Modules: <a href="happyx.html">happyx</a>, <a href="happyx/core/exceptions.html">happyx/core/exceptions</a>, <a href="happyx/private/macro_utils.html">happyx/private/macro_utils</a>, <a href="happyx/routing/mounting.html">happyx/routing/mounting</a>, <a href="happyx/routing/routing.html">happyx/routing/routing</a>, <a href="happyx/spa/components.html">happyx/spa/components</a>, <a href="happyx/spa/renderer.html">happyx/spa/renderer</a>, <a href="happyx/spa/state.html">happyx/spa/state</a>, <a href="happyx/spa/tag.html">happyx/spa/tag</a>, <a href="happyx/ssr/cors.html">happyx/ssr/cors</a>, <a href="happyx/ssr/server.html">happyx/ssr/server</a>, <a href="happyx/sugar/js.html">happyx/sugar/js</a>, <a href="happyx/sugar/sgr.html">happyx/sugar/sgr</a>, <a href="happyx/sugar/style.html">happyx/sugar/style</a>, <a href="happyx/tmpl_engine/engine.html">happyx/tmpl_engine/engine</a>.<br/><p /><h2>API symbols</h2>
 <dl><dt><a name="%60%21%3D%60" href="#%60%21%3D%60"><span>`!=`:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="state: `!=`[T](self`gensym1, other`gensym1: State[T]): bool" href="happyx/spa/state.html#%21%3D%2C%2C">state: `!=`[T](self`gensym1, other`gensym1: State[T]): bool</a></li>
@@ -261,7 +261,7 @@ window.addEventListener('DOMContentLoaded', main);
           </ul></dd>
 <dt><a name="%60~%60" href="#%60~%60"><span>`~`:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="server: `~`(strTable: StringTableRef; key: untyped): untyped" href="happyx/ssg/server.html#~.m%2CStringTableRef%2Cuntyped">server: `~`(strTable: StringTableRef; key: untyped): untyped</a></li>
+          data-doc-search-tag="server: `~`(strTable: StringTableRef; key: untyped): untyped" href="happyx/ssr/server.html#~.m%2CStringTableRef%2Cuntyped">server: `~`(strTable: StringTableRef; key: untyped): untyped</a></li>
           </ul></dd>
 <dt><a name="add" href="#add"><span>add:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -277,27 +277,27 @@ window.addEventListener('DOMContentLoaded', main);
           </ul></dd>
 <dt><a name="addCORSHeaders" href="#addCORSHeaders"><span>addCORSHeaders:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="cors: addCORSHeaders(headers: HttpHeaders)" href="happyx/ssg/cors.html#addCORSHeaders.m%2CHttpHeaders">cors: addCORSHeaders(headers: HttpHeaders)</a></li>
+          data-doc-search-tag="cors: addCORSHeaders(headers: HttpHeaders)" href="happyx/ssr/cors.html#addCORSHeaders.m%2CHttpHeaders">cors: addCORSHeaders(headers: HttpHeaders)</a></li>
           </ul></dd>
 <dt><a name="answer" href="#answer"><span>answer:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="server: answer(req: Request; message: string; code: HttpCode = Http200; headers: HttpHeaders = newHttpHeaders(
-    [(&quot;Content-Type&quot;, &quot;text/plain; charset=utf-8&quot;)]))" href="happyx/ssg/server.html#answer.t%2CRequest%2Cstring%2CHttpCode%2CHttpHeaders">server: answer(req: Request; message: string; code: HttpCode = Http200; headers: HttpHeaders = newHttpHeaders(
+    [(&quot;Content-Type&quot;, &quot;text/plain; charset=utf-8&quot;)]))" href="happyx/ssr/server.html#answer.t%2CRequest%2Cstring%2CHttpCode%2CHttpHeaders">server: answer(req: Request; message: string; code: HttpCode = Http200; headers: HttpHeaders = newHttpHeaders(
     [(&quot;Content-Type&quot;, &quot;text/plain; charset=utf-8&quot;)]))</a></li>
           </ul></dd>
 <dt><a name="answerFile" href="#answerFile"><span>answerFile:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="server: answerFile(req: Request; filename: string; code: HttpCode = Http200;
-           asAttachment = false): owned(Future[void])" href="happyx/ssg/server.html#answerFile%2CRequest%2Cstring%2CHttpCode">server: answerFile(req: Request; filename: string; code: HttpCode = Http200;
+           asAttachment = false): owned(Future[void])" href="happyx/ssr/server.html#answerFile%2CRequest%2Cstring%2CHttpCode">server: answerFile(req: Request; filename: string; code: HttpCode = Http200;
            asAttachment = false): owned(Future[void])</a></li>
           </ul></dd>
 <dt><a name="answerHtml" href="#answerHtml"><span>answerHtml:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="server: answerHtml(req: Request; data: string | TagRef; code: HttpCode = Http200): untyped" href="happyx/ssg/server.html#answerHtml.t%2CRequest%2C%2CHttpCode">server: answerHtml(req: Request; data: string | TagRef; code: HttpCode = Http200): untyped</a></li>
+          data-doc-search-tag="server: answerHtml(req: Request; data: string | TagRef; code: HttpCode = Http200): untyped" href="happyx/ssr/server.html#answerHtml.t%2CRequest%2C%2CHttpCode">server: answerHtml(req: Request; data: string | TagRef; code: HttpCode = Http200): untyped</a></li>
           </ul></dd>
 <dt><a name="answerJson" href="#answerJson"><span>answerJson:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="server: answerJson(req: Request; data: untyped; code: HttpCode = Http200): untyped" href="happyx/ssg/server.html#answerJson.t%2CRequest%2Cuntyped%2CHttpCode">server: answerJson(req: Request; data: untyped; code: HttpCode = Http200): untyped</a></li>
+          data-doc-search-tag="server: answerJson(req: Request; data: untyped; code: HttpCode = Http200): untyped" href="happyx/ssr/server.html#answerJson.t%2CRequest%2Cuntyped%2CHttpCode">server: answerJson(req: Request; data: untyped; code: HttpCode = Http200): untyped</a></li>
           </ul></dd>
 <dt><a name="App" href="#App"><span>App:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -369,7 +369,7 @@ window.addEventListener('DOMContentLoaded', main);
           </ul></dd>
 <dt><a name="CORSObj" href="#CORSObj"><span>CORSObj:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="cors: CORSObj" href="happyx/ssg/cors.html#CORSObj">cors: CORSObj</a></li>
+          data-doc-search-tag="cors: CORSObj" href="happyx/ssr/cors.html#CORSObj">cors: CORSObj</a></li>
           </ul></dd>
 <dt><a name="currentComponent" href="#currentComponent"><span>currentComponent:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -393,11 +393,11 @@ window.addEventListener('DOMContentLoaded', main);
           </ul></dd>
 <dt><a name="fgColored" href="#fgColored"><span>fgColored:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="server: fgColored(text: string; clr: ForegroundColor): string" href="happyx/ssg/server.html#fgColored%2Cstring%2CForegroundColor">server: fgColored(text: string; clr: ForegroundColor): string</a></li>
+          data-doc-search-tag="server: fgColored(text: string; clr: ForegroundColor): string" href="happyx/ssr/server.html#fgColored%2Cstring%2CForegroundColor">server: fgColored(text: string; clr: ForegroundColor): string</a></li>
           </ul></dd>
 <dt><a name="fgStyled" href="#fgStyled"><span>fgStyled:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="server: fgStyled(text: string; style: Style): string" href="happyx/ssg/server.html#fgStyled%2Cstring%2CStyle">server: fgStyled(text: string; style: Style): string</a></li>
+          data-doc-search-tag="server: fgStyled(text: string; style: Style): string" href="happyx/ssr/server.html#fgStyled%2Cstring%2CStyle">server: fgStyled(text: string; style: Style): string</a></li>
           </ul></dd>
 <dt><a name="findAndReplaceMount" href="#findAndReplaceMount"><span>findAndReplaceMount:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -467,7 +467,7 @@ window.addEventListener('DOMContentLoaded', main);
           </ul></dd>
 <dt><a name="initServer" href="#initServer"><span>initServer:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="server: initServer(body: untyped): untyped" href="happyx/ssg/server.html#initServer.m%2Cuntyped">server: initServer(body: untyped): untyped</a></li>
+          data-doc-search-tag="server: initServer(body: untyped): untyped" href="happyx/ssr/server.html#initServer.m%2Cuntyped">server: initServer(body: untyped): untyped</a></li>
           </ul></dd>
 <dt><a name="initTag" href="#initTag"><span>initTag:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -507,11 +507,11 @@ window.addEventListener('DOMContentLoaded', main);
           </ul></dd>
 <dt><a name="model" href="#model"><span>model:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="server: model(modelName, body: untyped): untyped" href="happyx/ssg/server.html#model.m%2Cuntyped%2Cuntyped">server: model(modelName, body: untyped): untyped</a></li>
+          data-doc-search-tag="server: model(modelName, body: untyped): untyped" href="happyx/ssr/server.html#model.m%2Cuntyped%2Cuntyped">server: model(modelName, body: untyped): untyped</a></li>
           </ul></dd>
 <dt><a name="ModelBase" href="#ModelBase"><span>ModelBase:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="server: ModelBase" href="happyx/ssg/server.html#ModelBase">server: ModelBase</a></li>
+          data-doc-search-tag="server: ModelBase" href="happyx/ssr/server.html#ModelBase">server: ModelBase</a></li>
           </ul></dd>
 <dt><a name="mount" href="#mount"><span>mount:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -525,7 +525,7 @@ window.addEventListener('DOMContentLoaded', main);
           </ul></dd>
 <dt><a name="newServer" href="#newServer"><span>newServer:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="server: newServer(address: string = &quot;127.0.0.1&quot;; port: int = 5000): Server" href="happyx/ssg/server.html#newServer%2Cstring%2Cint">server: newServer(address: string = &quot;127.0.0.1&quot;; port: int = 5000): Server</a></li>
+          data-doc-search-tag="server: newServer(address: string = &quot;127.0.0.1&quot;; port: int = 5000): Server" href="happyx/ssr/server.html#newServer%2Cstring%2Cint">server: newServer(address: string = &quot;127.0.0.1&quot;; port: int = 5000): Server</a></li>
           </ul></dd>
 <dt><a name="nnkNumbers" href="#nnkNumbers"><span>nnkNumbers:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -533,7 +533,7 @@ window.addEventListener('DOMContentLoaded', main);
           </ul></dd>
 <dt><a name="parseQuery" href="#parseQuery"><span>parseQuery:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="server: parseQuery(query: string): owned(StringTableRef)" href="happyx/ssg/server.html#parseQuery%2Cstring">server: parseQuery(query: string): owned(StringTableRef)</a></li>
+          data-doc-search-tag="server: parseQuery(query: string): owned(StringTableRef)" href="happyx/ssr/server.html#parseQuery%2Cstring">server: parseQuery(query: string): owned(StringTableRef)</a></li>
           </ul></dd>
 <dt><a name="pathParams" href="#pathParams"><span>pathParams:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -541,7 +541,7 @@ window.addEventListener('DOMContentLoaded', main);
           </ul></dd>
 <dt><a name="regCORS" href="#regCORS"><span>regCORS:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="cors: regCORS(body: untyped): untyped" href="happyx/ssg/cors.html#regCORS.m%2Cuntyped">cors: regCORS(body: untyped): untyped</a></li>
+          data-doc-search-tag="cors: regCORS(body: untyped): untyped" href="happyx/ssr/cors.html#regCORS.m%2Cuntyped">cors: regCORS(body: untyped): untyped</a></li>
           </ul></dd>
 <dt><a name="registerApp" href="#registerApp"><span>registerApp:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -589,15 +589,15 @@ window.addEventListener('DOMContentLoaded', main);
 <li><a class="reference external"
           data-doc-search-tag="renderer: routes(app: App; body: untyped): untyped" href="happyx/spa/renderer.html#routes.m%2CApp%2Cuntyped">renderer: routes(app: App; body: untyped): untyped</a></li>
           <li><a class="reference external"
-          data-doc-search-tag="server: routes(server: Server; body: untyped): untyped" href="happyx/ssg/server.html#routes.m%2CServer%2Cuntyped">server: routes(server: Server; body: untyped): untyped</a></li>
+          data-doc-search-tag="server: routes(server: Server; body: untyped): untyped" href="happyx/ssr/server.html#routes.m%2CServer%2Cuntyped">server: routes(server: Server; body: untyped): untyped</a></li>
           </ul></dd>
 <dt><a name="serve" href="#serve"><span>serve:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="server: serve(address: string; port: int; body: untyped): untyped" href="happyx/ssg/server.html#serve.m%2Cstring%2Cint%2Cuntyped">server: serve(address: string; port: int; body: untyped): untyped</a></li>
+          data-doc-search-tag="server: serve(address: string; port: int; body: untyped): untyped" href="happyx/ssr/server.html#serve.m%2Cstring%2Cint%2Cuntyped">server: serve(address: string; port: int; body: untyped): untyped</a></li>
           </ul></dd>
 <dt><a name="Server" href="#Server"><span>Server:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="server: Server" href="happyx/ssg/server.html#Server">server: Server</a></li>
+          data-doc-search-tag="server: Server" href="happyx/ssr/server.html#Server">server: Server</a></li>
           </ul></dd>
 <dt><a name="set" href="#set"><span>set:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -607,7 +607,7 @@ window.addEventListener('DOMContentLoaded', main);
 <li><a class="reference external"
           data-doc-search-tag="renderer: start(app: App)" href="happyx/spa/renderer.html#start.t%2CApp">renderer: start(app: App)</a></li>
           <li><a class="reference external"
-          data-doc-search-tag="server: start(server: Server): untyped" href="happyx/ssg/server.html#start.t%2CServer">server: start(server: Server): untyped</a></li>
+          data-doc-search-tag="server: start(server: Server): untyped" href="happyx/ssr/server.html#start.t%2CServer">server: start(server: Server): untyped</a></li>
           </ul></dd>
 <dt><a name="State" href="#State"><span>State:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -722,7 +722,7 @@ window.addEventListener('DOMContentLoaded', main);
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-06-01 14:13:56 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-06-05 13:26:02 UTC</small>
       </div>
     </div>
   </div>

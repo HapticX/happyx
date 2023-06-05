@@ -3,9 +3,9 @@ Web framework written in Nim with ❤	happyx.html#happyx-web-framework-written-i
 Why HappyX? 🤔	happyx.html#happyx-why-happyxqmark-🤔	  Why HappyX? 🤔	
 Examples	happyx.html#happyx-examples	  Examples	
 SPA 🎴	happyx.html#examples-spa-🎴	   SPA 🎴	
-SSG 💻	happyx.html#examples-ssg-💻	   SSG 💻	
+SSR 💻	happyx.html#examples-ssr-💻	   SSR 💻	
 CLI Usage 🎈	happyx.html#examples-cli-usage-🎈	   CLI Usage 🎈	
-SSG	happyx.html#cli-usage-🎈-ssg	    SSG	
+SSR	happyx.html#cli-usage-🎈-ssr	    SSR	
 SPA	happyx.html#cli-usage-🎈-spa	    SPA	
 Path Params 🛠	happyx.html#happyx-path-params-🛠	  Path Params 🛠	
 Example	happyx.html#path-params-🛠-example	   Example	
@@ -18,7 +18,7 @@ API Reference 📄	happyx.html#api-reference-📄	 API Reference 📄
 Automatic Import 🎈	happyx.html#api-reference-📄-automatic-import-🎈	  Automatic Import 🎈	
 Core 🔋	happyx.html#automatic-import-🎈-core-🔋	   Core 🔋	
 Single Page Application ✨	happyx.html#automatic-import-🎈-single-page-application-✨	   Single Page Application ✨	
-Static Site Generation 🍍	happyx.html#automatic-import-🎈-static-site-generation-🍍	   Static Site Generation 🍍	
+Server Side Rendering 🍍	happyx.html#automatic-import-🎈-server-side-rendering-🍍	   Server Side Rendering 🍍	
 Template Engine 🎴	happyx.html#automatic-import-🎈-template-engine-🎴	   Template Engine 🎴	
 Routing 🔌	happyx.html#automatic-import-🎈-routing-🔌	   Routing 🔌	
 Syntax Sugar ✨	happyx.html#automatic-import-🎈-syntax-sugar-✨	   Syntax Sugar ✨	
