@@ -23,3 +23,5 @@ Example	happyx/ssr/server.html#example	 Example
 Server 🔨	happyx/ssr/server.html#server-🔨	 Server 🔨	
 Queries ❔	happyx/ssr/server.html#server-🔨-queries-❔	  Queries ❔	
 WebSockets 🍍	happyx/ssr/server.html#server-🔨-websockets-🍍	  WebSockets 🍍	
+Static directories 🍍	happyx/ssr/server.html#server-🔨-static-directories-🍍	  Static directories 🍍	
+Custom static directory ⚙	happyx/ssr/server.html#static-directories-🍍-custom-static-directory-⚙	   Custom static directory ⚙	
