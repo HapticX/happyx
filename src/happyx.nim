@@ -6,17 +6,17 @@
 ## 
 ## 
 ## ## Why HappyX? 🤔
-## HappyX is macro-oriented full-stack web framework that provides same syntax in both parts of framework (SPA and SSG).
+## HappyX is macro-oriented full-stack web framework that provides same syntax in both parts of framework (SPA and SSR).
 ## - SPA part compiles only on `JS` and provides these features:
 ##   - `components`;
 ##   - `event handlers`;
 ##   - `buildJs` macro;
 ##   - state management
-## - SSG part compiles only on `C`/`Cpp`/`Obj-C` and provides these features:
+## - SSR part compiles only on `C`/`Cpp`/`Obj-C` and provides these features:
 ##   - `CORS` registration;
 ##   - Request models;
 ## 
-## SPA and SSG also provides both syntax for routing.
+## SPA and SSR also provides both syntax for routing.
 ## You don't need to learn new syntax for new projects.
 ## 
 ## HappyX provides CLI tool for creating and serving your projects 🛠
@@ -93,11 +93,11 @@
 ##      app.start()
 ## 
 ## 
-## ### SSG 💻
+## ### SSR 💻
 ## 
-## [See more information](happyx/ssg/server.html)
+## [See more information](happyx/ssr/server.html)
 ## 
-## SSG works only on C/Cpp/ObjC backends
+## SSR works only on C/Cpp/ObjC backends
 ## 
 ## - `main.nim`
 ## 
@@ -123,9 +123,9 @@
 ## 
 ## ### CLI Usage 🎈
 ## 
-## #### SSG
+## #### SSR
 ## 
-## At first we need to create project and choose SSG project type.
+## At first we need to create project and choose SSR project type.
 ## ```bash
 ## hpx create
 ## ```
@@ -155,6 +155,8 @@
 ## 
 ## 
 ## ## Path Params 🛠
+## 
+## [See more information](happyx/routing/routing.html)
 ## 
 ## Routing provides powerful path params.
 ## 
@@ -207,6 +209,8 @@
 ## 
 ## ## Mounting 🔌
 ## 
+## [See more information](happyx/routing/mounting.html)
+## 
 ## HappyX routing provides mounting also.
 ## 
 ## Here is example of mount declaration ✨
@@ -243,14 +247,14 @@
 ## - [state](happyx/spa/state.html) provides reactivity.
 ## - [tag](happyx/spa/tag.html) provides VDOM.
 ## 
-## ### Static Site Generation 🍍
+## ### Server Side Rendering 🍍
 ## 
-## - [cors](happyx/ssg/cors.html) provides CORS registration.
-## - [server](happyx/ssg/server.html) provides routing and working with server.
+## - [cors](happyx/ssr/cors.html) provides CORS registration.
+## - [server](happyx/ssr/server.html) provides routing and working with server.
 ## 
 ## ### Template Engine 🎴
 ## 
-## - [engine](happyx/tmpl_engine/engine.html) provides templates for SSG.
+## - [engine](happyx/tmpl_engine/engine.html) provides templates for SSR.
 ## 
 ## ### Routing 🔌
 ## 
@@ -265,7 +269,7 @@
 ## 
 when not defined(js):
   import
-    happyx/ssg/[server, cors]
+    happyx/ssr/[server, cors]
 
   export
     server,

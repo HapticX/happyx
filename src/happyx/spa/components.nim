@@ -2,7 +2,7 @@
 ## 
 ## Now components fully support in `SPA` projects.
 ## 
-## `SSG` project support components without event handlers and JS features.
+## `SSR` project support components without event handlers and JS features.
 ## 
 import
   # Stdlib

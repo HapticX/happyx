@@ -1,4 +1,4 @@
-# SSG ✨
+# SSR ✨
 
 HappyX provides powerful tools to create server side applications.
 

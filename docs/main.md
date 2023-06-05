@@ -46,14 +46,14 @@ hpx create
 Read more about it [`here`](https://hapticx.github.io/happyx/spa.html)
 
 
-### Static Site Generation 🛠
+### Server Side Rendering 🛠
 
-To create `SSG` project you should use
+To create `SSR` project you should use
 ```bash
 hpx create
 ```
 
-Read more about it [`here`](https://hapticx.github.io/happyx/ssg.html)
+Read more about it [`here`](https://hapticx.github.io/happyx/ssr.html)
 
 
 ### Routing ⚙

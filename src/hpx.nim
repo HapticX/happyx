@@ -21,7 +21,7 @@ import illwill except fgBlue, fgGreen, fgMagenta, fgRed, fgWhite, fgYellow, bgBl
 type
   ProjectType {.pure, size: sizeof(int8).} = enum
     ptSPA = "SPA",
-    ptSSG = "SSG"
+    ptSSR = "SSR"
   ProjectData = object
     process: Process
     mainFile: string
@@ -34,7 +34,7 @@ type
 
 
 const
-  VERSION = "1.0.0"
+  VERSION = "1.1.0"
   SPA_MAIN_FILE = "main"
   CONFIG_FILE = "happyx.cfg"
 
@@ -90,7 +90,7 @@ proc compileProject(): ProjectData {. discardable .} =
         "--opt:size", "--d:danger", "-x:off", "-a:off", result.mainFile
       ], nil, options
     )
-  of ptSSG:
+  of ptSSR:
     return result
 
   styledEcho "Compiling ", fgMagenta, result.mainFile, fgWhite, " script ... /"
@@ -273,7 +273,7 @@ proc createCommand(name: string = "", kind: string = "", templates: bool = false
     projectName: string
     selected: int = 0
     imports = @["happyx"]
-  let projectTypes = ["SSG", "SPA"]
+  let projectTypes = ["SSR", "SSG", "SPA"]
   styledEcho "New ", fgBlue, styleBright, "HappyX", fgWhite, " project ..."
   if name == "":
     try:
@@ -363,11 +363,11 @@ proc createCommand(name: string = "", kind: string = "", templates: bool = false
     f.close()
   
   case selected
-  of 0:
-    # SSG
+  of 0, 1:
+    # SSR/SSG
     createDir(projectName / "src" / "public")
     if templates:
-      styledEcho fgYellow, "Templates in SSG was enabled. To disable it remove --templates flag."
+      styledEcho fgYellow, "Templates in SSR was enabled. To disable it remove --templates flag."
       createDir(projectName / "src" / "templates")
       f = open(projectName / "src" / "templates" / "index.html", fmWrite)
       f.write(
@@ -377,7 +377,7 @@ proc createCommand(name: string = "", kind: string = "", templates: bool = false
       )
       f.close()
     else:
-      styledEcho fgYellow, "Templates in SSG was disabled. To enable it add --templates flag."
+      styledEcho fgYellow, "Templates in SSR was disabled. To enable it add --templates flag."
     # Create main file
     f = open(projectName / "src" / fmt"{SPA_MAIN_FILE}.nim", fmWrite)
     if templates:
@@ -392,7 +392,7 @@ proc createCommand(name: string = "", kind: string = "", templates: bool = false
         "\n\nserve(\"127.0.0.1\", 5000):\n  get \"/\":\n    \"Hello, world!\"\n"
       )
     f.close()
-  of 1:
+  of 2:
     # SPA
     imports.add("components/[hello_world]")
     createDir(projectName / "src" / "public")
@@ -444,10 +444,10 @@ proc devCommand(host: string = "127.0.0.1", port: int = 5000,
     initLock(L)
     createThread(godEyeThread, godEye, addr godEyeData)
 
-  # Launch SSG app
-  if project.projectType == ptSSG:
-    styledEcho fgRed, "SSG projects not available in the dev mode."
-    styledEcho fgMagenta, "Make SSG for dev mode and send Pull Request if you want!"
+  # Launch SSR app
+  if project.projectType == ptSSR:
+    styledEcho fgRed, "SSR projects not available in the dev mode."
+    styledEcho fgMagenta, "Make SSR for dev mode and send Pull Request if you want!"
     illwillDeinit()
     deinitLock(L)
     return QuitSuccess
@@ -559,8 +559,8 @@ when isMainModule:
       styledEcho fgMagenta, "hpx create\n"
       styledEcho "Optional arguments:"
       styledEcho align("name", 12), "|n - Project name"
-      styledEcho align("kind", 12), "|k - Project type [SPA, SSG]"
-      styledEcho align("templates", 12), "|t - Enable templates (only for SSG)"
+      styledEcho align("kind", 12), "|k - Project type [SPA, SSR]"
+      styledEcho align("templates", 12), "|t - Enable templates (only for SSR)"
       styledEcho align("path-params", 12), "|p - Use path params assignment"
       styledEcho align("use-tailwind", 12), "|u - Use Tailwind CSS 3 (only for SPA)"
     else:

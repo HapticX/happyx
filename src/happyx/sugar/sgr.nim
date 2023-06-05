@@ -21,7 +21,7 @@ macro `->`*(route, at, body: untyped): untyped =
   ##    "/route" -> build:
   ##      ...
   ## 
-  ## For SSG you can use:
+  ## For SSR you can use:
   ## 
   ## .. code-block:: nim
   ##    "/route" -> any:

@@ -47,7 +47,7 @@ HappyX is macro-oriented web framework so you mustn't write a lot of code ✨
   <thead>
     <tr>
       <td align="center">SPA</td>
-      <td align="center">SSG</td>
+      <td align="center">SSR</td>
     </tr>
   </thead>
   <tbody>
@@ -85,7 +85,7 @@ import happyx
 ## Usage ▶
 ### SSG
 ```bash
-hpx create --name ssg_project --kind SSG
+hpx create --name ssg_project --kind SSR
 cd ssg_project/src
 ```
 

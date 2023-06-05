@@ -15,8 +15,9 @@ htmldocs/
 # Test SPA project
 test_app/
 
-# Test SSG project
+# Test SSR project
 test_ssg/
+test_ssr/
 
 # Logs
 *.log
@@ -27,3 +28,4 @@ test_ssg/
 
 # Testing :)
 a.nim
+private_test*.nim

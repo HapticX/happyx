@@ -38,7 +38,7 @@ jobs:
       - name: Install Dependencies
         run: |
           nimble refresh
-          nimble install -y regex nimja cligen httpx microasynchttpserver illwill websocketx
+          nimble install -y
       
       - name: Build C tests
         run: |

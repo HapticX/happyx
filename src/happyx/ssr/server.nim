@@ -508,11 +508,12 @@ macro routes*(server: Server, body: untyped): untyped =
       reqMethod = newDotExpr(ident("req"), ident("reqMethod"))
       reqMethodStr = "req.reqMethod"
       url = newDotExpr(newDotExpr(ident("req"), ident("url")), ident("query"))
-  let directoryFromPath = newCall(
-    "&",
-    newStrLitNode("."),
-    newCall("replace", pathIdent, newLit('/'), ident("DirSep"))
-  )
+  let
+    directoryFromPath = newCall(
+      "&",
+      newStrLitNode("."),
+      newCall("replace", pathIdent, newLit('/'), ident("DirSep"))
+    )
   
   procStmt.addPragma(ident("async"))
 
@@ -570,35 +571,50 @@ macro routes*(server: Server, body: untyped): untyped =
           )
       # reqMethod "/...":
       #   ...
-      elif statement[0].kind == nnkIdent and statement[1].kind == nnkStrLit:
+      elif statement[0].kind == nnkIdent and statement[1].kind in [nnkStrLit, nnkTripleStrLit, nnkInfix]:
         let name = ($statement[0]).toUpper()
         if name == "STATICDIR":
-          ifStmt.insert(
-            0, newNimNode(nnkElifBranch).add(
-              newCall(
-                "and",
+          if statement[1].kind in [nnkStrLit, nnkTripleStrLit]:
+            ifStmt.insert(
+              0, newNimNode(nnkElifBranch).add(
                 newCall(
-                  "or",
-                  newCall("startsWith", pathIdent, statement[1]),
-                  newCall("startsWith", pathIdent, newStrLitNode("/" & $statement[1])),
-                ), newCall(
-                  "fileExists",
-                  directoryFromPath
+                  "and",
+                  newCall(
+                    "or",
+                    newCall("startsWith", pathIdent, statement[1]),
+                    newCall("startsWith", pathIdent, newStrLitNode("/" & $statement[1])),
+                  ), newCall(
+                    "fileExists",
+                    directoryFromPath
+                  )
+                ),
+                newStmtList(
+                  newCall("await", newCall("answerFile", ident("req"), directoryFromPath))
                 )
-              ),
-              newStmtList(
-                newLetStmt(
-                  ident("file"),
-                  newCall("openAsync", directoryFromPath)
-                ),
-                newLetStmt(
-                  ident("content"),
-                  newCall("await", newCall("readAll", ident("file")))
-                ),
-                newCall("answer", ident("req"), ident("content"))
               )
             )
-          )
+          else:
+            let dirFromPath = newCall(
+              "&",
+              newCall("&", newStrLitNode("."), newLit("/")),
+              newCall(
+                "replace",
+                newCall("replace", pathIdent, statement[1][1], statement[1][2]),
+                newLit('/'), ident("DirSep")
+              )
+            )
+            ifStmt.insert(
+              0, newNimNode(nnkElifBranch).add(
+                newCall(
+                  "and",
+                  newCall("startsWith", pathIdent, statement[1][1]),
+                  newCall("fileExists", dirFromPath)
+                ),
+                newStmtList(
+                  newCall("await", newCall("answerFile", ident("req"), dirFromPath))
+                )
+              )
+            )
           continue
         let exported = exportRouteArgs(pathIdent, statement[1], statement[2])
         # Handle websockets
