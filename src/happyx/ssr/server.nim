@@ -571,7 +571,7 @@ macro routes*(server: Server, body: untyped): untyped =
           )
       # reqMethod "/...":
       #   ...
-      elif statement[0].kind == nnkIdent and statement[1].kind in [nnkStrLit, nnkTripleStrLit, nnkInfix]:
+      elif statement[0].kind == nnkIdent and statement[0] != ident("mount") and statement[1].kind in [nnkStrLit, nnkTripleStrLit, nnkInfix]:
         let name = ($statement[0]).toUpper()
         if name == "STATICDIR":
           if statement[1].kind in [nnkStrLit, nnkTripleStrLit]:
