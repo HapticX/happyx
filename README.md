@@ -32,7 +32,7 @@ HappyX is macro-oriented web framework so you mustn't write a lot of code ✨
 
 ## Features ⚡
 - Multiple options for HTTP server! Happyx use `asynchttpserver` as default HTTP server (`httpx` via `-d:happyxHttpx` and `microhttpserver` via `-d:happyxMicro` as alternative HTTP servers).
-- Support `SPA` on `JS` backend and `SSG` on other backends.
+- Support `SPA` on `JS` backend and `SSR` on other backends.
 - Build HTML, CSS and pure JS with `buildHtml`, `buildStyle` and `buildJs` macros.
 - Request JSON models with `model` macro.
 - Routing and powerful path params.
@@ -84,13 +84,13 @@ import happyx
 | <pre lang="bash">nimble install happyx</pre> | <pre lang="bash">nimble install https://github.com/HapticX/happyx</pre> |
 
 ## Usage ▶
-### SSG
+### SSR
 ```bash
-hpx create --name ssg_project --kind SSR
-cd ssg_project/src
+hpx create --name ssr_project --kind SSR
+cd ssr_project/src
 ```
 
-Main script will be able in `/ssg_project/src/main.nim`
+Main script will be able in `/ssr_project/src/main.nim`
 
 #### Run 💻
 
