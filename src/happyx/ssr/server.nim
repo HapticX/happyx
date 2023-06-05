@@ -22,6 +22,27 @@
 ## In any websocket route you can use `wsClient` for working with current websocket client.
 ## `wsClient` type is `WebSocket`.
 ## 
+## 
+## ## Static directories 🍍
+## To declare static directory you just should mark it as static directory 🙂
+## 
+## .. code-block:: nim
+##    serve(...):
+##      # Users can get all files in /myDirectory via
+##      # http://.../myDirectory/path/to/file
+##      staticDir "myDirectory"
+## 
+## ### Custom static directory ⚙
+## To declare custom path for static dir just use this
+## 
+## .. code-block:: nim
+##    serve(...):
+##      # Users can get all files in /myDirectory via
+##      # http://.../customPath/path/to/file
+##      staticDir "/customPath" -> "myDirectory"
+## 
+## > Note: here you can't use path params
+## 
 
 import
   # Stdlib
@@ -594,12 +615,16 @@ macro routes*(server: Server, body: untyped): untyped =
               )
             )
           else:
+            let
+              route = if $statement[1][1] == "/": newStrLitNode("") else: statement[1][1]
+              path = if $statement[1][1] == "/": newStrLitNode($statement[1][2] & "/") else: statement[1][2]
+              replace = if $statement[1][1] == "/": newStrLitNode(".") else: newCall("&", newStrLitNode("."), newLit("/"))
             let dirFromPath = newCall(
               "&",
               newCall("&", newStrLitNode("."), newLit("/")),
               newCall(
                 "replace",
-                newCall("replace", pathIdent, statement[1][1], statement[1][2]),
+                newCall("replace", pathIdent, statement[1][1], path),
                 newLit('/'), ident("DirSep")
               )
             )
@@ -607,7 +632,7 @@ macro routes*(server: Server, body: untyped): untyped =
               0, newNimNode(nnkElifBranch).add(
                 newCall(
                   "and",
-                  newCall("startsWith", pathIdent, statement[1][1]),
+                  newCall("startsWith", pathIdent, route),
                   newCall("fileExists", dirFromPath)
                 ),
                 newStmtList(
@@ -615,6 +640,8 @@ macro routes*(server: Server, body: untyped): untyped =
                 )
               )
             )
+            stmtList.add(newCall("echo", dirFromPath))
+            echo stmtList.toStrLit
           continue
         let exported = exportRouteArgs(pathIdent, statement[1], statement[2])
         # Handle websockets
