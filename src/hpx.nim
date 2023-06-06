@@ -34,7 +34,7 @@ type
 
 
 const
-  VERSION = "1.1.0"
+  VERSION = "1.1.1"
   SPA_MAIN_FILE = "main"
   CONFIG_FILE = "happyx.cfg"
 
@@ -262,6 +262,7 @@ proc buildCommand(optSize: bool = false): int =
   f = open("build" / fmt"{SPA_MAIN_FILE}.js", fmWrite)
   f.write(data)
   f.close()
+  styledEcho fgGreen, "Build completed"
   illwillDeinit()
   QuitSuccess
 
@@ -382,14 +383,35 @@ proc createCommand(name: string = "", kind: string = "", templates: bool = false
     f = open(projectName / "src" / fmt"{SPA_MAIN_FILE}.nim", fmWrite)
     if templates:
       f.write(
-        "import\n  " & imports.join(",\n  ") & "\n\ntemplateFolder(\"templates\")\n\n" &
-        "proc render(title: string): string =\n  renderTemplate(\"index.html\")\n\n" &
-        "serve(\"127.0.0.1\", 5000):\n  get \"/{title:string}\":\n    req.answerHtml render(title)\n"
+        "# Import HappyX\n" &
+        "import\n  " & imports.join(",\n  ") & "\n\n" &
+        "# Declare template folder\n" &
+        "templateFolder(\"templates\")\n\n" &
+        "proc render(title: string): string =\n" &
+        "  ## Renders template and returns HTML string\n" &
+        "  ## \n" &
+        "  ## `title` is template argument\n" &
+        "  renderTemplate(\"index.html\")\n\n" &
+        "# Serve at http://127.0.0.1:5000\n" &
+        "serve(\"127.0.0.1\", 5000):\n" &
+        "  # on GET HTTP method at http://127.0.0.1:5000/TEXT\n" &
+        "  get \"/{title:string}\":\n" &
+        "    req.answerHtml render(title)\n" &
+        "  # on any HTTP method at http://127.0.0.1:5000/public/path/to/file.ext\n" &
+        "  staticDir \"public\"\n\n"
       )
     else:
       f.write(
-        "import\n  " & imports.join(",\n  ") &
-        "\n\nserve(\"127.0.0.1\", 5000):\n  get \"/\":\n    \"Hello, world!\"\n"
+        "# Import HappyX\n" &
+        "import\n  " & imports.join(",\n  ") & "\n\n" &
+        "# Serve at http://127.0.0.1:5000\n" &
+        "serve(\"127.0.0.1\", 5000):\n" &
+        "  # on GET HTTP method at http://127.0.0.1:5000/\n" &
+        "  get \"/\":\n" &
+        "    # Return plain text\n" &
+        "    \"Hello, world!\"\n" &
+        "  # on any HTTP method at http://127.0.0.1:5000/public/path/to/file.ext\n" &
+        "  staticDir \"public\"\n\n"
       )
     f.close()
   of 2:
@@ -399,8 +421,13 @@ proc createCommand(name: string = "", kind: string = "", templates: bool = false
     createDir(projectName / "src" / "components")
     f = open(projectName / "src" / fmt"{SPA_MAIN_FILE}.nim", fmWrite)
     f.write(
+      "# Import HappyX\n" &
       "import\n  " & imports.join(",\n  ") & "\n\n\n" &
-      "appRoutes(\"app\"):\n  \"/\":\n    component HelloWorld\n"
+      "# Declare application with ID \"app\"\n" &
+      "appRoutes(\"app\"):\n" &
+      "  \"/\":\n" &
+      "    # Component usage\n" &
+      "    component HelloWorld\n"
     )
     f.close()
     f = open(projectName / "src" / "index.html", fmWrite)
@@ -415,7 +442,18 @@ proc createCommand(name: string = "", kind: string = "", templates: bool = false
     )
     f.close()
     f = open(projectName / "src" / "components" / "hello_world.nim", fmWrite)
-    f.write("import happyx\n\n\ncomponent HelloWorld:\n  `template`:\n    \"Hello, world!\"\n\n  `script`:\n    echo \"Start coding!\"\n")
+    f.write(
+      "# Import HappyX\n" &
+      "import happyx\n\n\n" &
+      "# Declare component\n" &
+      "component HelloWorld:\n" &
+      "  # Declare HTML template\n" &
+      "  `template`:\n" &
+      "    tDiv(class = \"someClass\"):" &
+      "      \"Hello, world!\"\n\n" &
+      "  `script`:\n" &
+      "    echo \"Start coding!\"\n"
+    )
     f.close()
   else:
     discard
