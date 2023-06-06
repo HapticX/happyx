@@ -500,7 +500,7 @@ macro routes*(server: Server, body: untyped): untyped =
       [newEmptyNode(), newIdentDefs(ident("req"), ident("Request"))],
       stmtList
     )
-    caseRequestMethodsStmt = newNimNode(nnkCaseStmt).add(ident("reqMethod"))
+    caseRequestMethodsStmt = newNimNode(nnkCaseStmt)
     methodTable = newTable[string, NimNode]()
     finalize = newStmtList()
 
@@ -535,6 +535,11 @@ macro routes*(server: Server, body: untyped): untyped =
       newStrLitNode("."),
       newCall("replace", pathIdent, newLit('/'), ident("DirSep"))
     )
+  
+  when defined(debug):
+    caseRequestMethodsStmt.add(ident("reqMethod"))
+  else:
+    caseRequestMethodsStmt.add(reqMethod)
   
   procStmt.addPragma(ident("async"))
 
@@ -640,8 +645,6 @@ macro routes*(server: Server, body: untyped): untyped =
                 )
               )
             )
-            stmtList.add(newCall("echo", dirFromPath))
-            echo stmtList.toStrLit
           continue
         let exported = exportRouteArgs(pathIdent, statement[1], statement[2])
         # Handle websockets
@@ -811,11 +814,14 @@ macro routes*(server: Server, body: untyped): untyped =
     else:
       stmtList.add(notFoundNode)
   result = newStmtList(
-    newNimNode(nnkVarSection).add(newIdentDefs(
-      ident("wsConnections"),
-      newNimNode(nnkBracketExpr).add(ident("seq"), ident("WebSocket")),
-      newCall("@", newNimNode(nnkBracket)),
-    )),
+    if stmtList.isIdentUsed(ident("wsConnections")):
+      newNimNode(nnkVarSection).add(newIdentDefs(
+        ident("wsConnections"),
+        newNimNode(nnkBracketExpr).add(ident("seq"), ident("WebSocket")),
+        newCall("@", newNimNode(nnkBracket)),
+      ))
+    else:
+      newEmptyNode(),
     procStmt,
     newProc(
       ident("finalizeProgram"),
@@ -830,8 +836,11 @@ macro routes*(server: Server, body: untyped): untyped =
   
   if stmtList.isIdentUsed(ident("query")):
     immutableVars.add(newIdentDefs(ident("query"), newEmptyNode(), newCall("parseQuery", url)))
-  if stmtList.isIdentUsed(ident("reqMethod")):
-    immutableVars.add(newIdentDefs(ident("reqMethod"), newEmptyNode(), reqMethod))
+  when defined(debug):
+    if stmtList.isIdentUsed(ident("reqMethod")):
+      immutableVars.add(newIdentDefs(ident("reqMethod"), newEmptyNode(), reqMethod))
+  
+  echo result.toStrLit
 
 
 macro model*(modelName, body: untyped): untyped =
