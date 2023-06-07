@@ -31,7 +31,7 @@ With HappyX you mustn't learn new libraries/frameworks to switch between `fronte
 HappyX is macro-oriented web framework so you mustn't write a lot of code ✨
 
 ## Features ⚡
-- Multiple options for HTTP server! Happyx use `asynchttpserver` as default HTTP server (`httpx` via `-d:happyxHttpx` and `microhttpserver` via `-d:happyxMicro` as alternative HTTP servers).
+- Multiple options for HTTP server! Happyx use `asynchttpserver` as default HTTP server (`httpx` via `-d:happyxHttpx`, `httpbeast` via `-d:happyxBeast` and `microhttpserver` via `-d:happyxMicro` as alternative HTTP servers).
 - Support `SPA` on `JS` backend and `SSR` on other backends.
 - Build HTML, CSS and pure JS with `buildHtml`, `buildStyle` and `buildJs` macros.
 - Request JSON models with `model` macro.
@@ -94,9 +94,13 @@ Main script will be able in `/ssr_project/src/main.nim`
 
 #### Run 💻
 
-|           Default        |             Httpx                 |       microasynchttpserver        |
-|           :---           |             :---                  |             :---                  |
-| <pre lang="bash">nim c -r main</pre> | <pre lang="bash">nim c -r -d:httpx main</pre> | <pre lang="bash">nim c -r -d:micro main</pre> |
+
+| HTTP Server          | Flag       |
+| -------------------- | ---------- |
+| Default              | no flags   |
+| Httpx                | `-d:httpx` |
+| MicroAsyncHttpServer | `-d:micro` |
+| HttpBeast            | `-d:beast` |
 
 ### SPA
 ```bash

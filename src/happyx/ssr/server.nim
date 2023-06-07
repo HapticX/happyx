@@ -90,11 +90,12 @@ const
   # Alternative HTTP Servers
   enableHttpx = defined(httpx) or defined(happyxHttpx)
   enableMicro = defined(micro) or defined(happyxMicro)
+  enableHttpBeast = defined(beast) or defined(happyxBeast)
   # Debug mode
   enableDebug = defined(debug) or defined(happyxDebug)
 
 
-when enableHttpx and enableMicro:
+when int(enableHttpx) + int(enableMicro) + int(enableHttpBeast) > 1:
   {. error: "You can't use two alternative servers at one time!" .}
 
 
@@ -105,6 +106,9 @@ when enableHttpx:
   export
     options,
     httpx
+elif enableHttpBeast:
+  import httpbeast
+  export httpbeast
 elif enableMicro:
   import microasynchttpserver, asynchttpserver
   export microasynchttpserver, asynchttpserver
@@ -119,6 +123,8 @@ type
     port*: int
     logger*: Logger
     when enableHttpx:
+      instance*: Settings
+    elif enableHttpBeast:
       instance*: Settings
     elif enableMicro:
       instance*: MicroAsyncHttpServer
@@ -136,7 +142,7 @@ proc ctrlCHook() {.noconv.} =
 
 proc onQuit() {.noconv.} =
   echo "Shutdown ..."
-  when not enableHttpx and not enableMicro:
+  when int(enableHttpBeast) + int(enableHttpx) + int(enableMicro) == 0:
     try:
       pointerServer[].instance.close()
       echo "Server closed"
@@ -204,6 +210,8 @@ proc newServer*(address: string = "127.0.0.1", port: int = 5000): Server =
   )
   when enableHttpx:
     result.instance = initSettings(Port(port), bindAddr=address)
+  elif enableHttpBeast:
+    result.instance = initSettings(Port(port), bindAddr=address)
   elif enableMicro:
     result.instance = newMicroAsyncHttpServer()
   else:
@@ -238,7 +246,7 @@ template start*(server: Server): untyped =
   when not declared(handleRequest):
     proc handleRequest(req: Request) {.async.} =
       discard
-  when enableHttpx:
+  when enableHttpx or enableHttpBeast:
     run(handleRequest, `server`.instance)
   else:
     waitFor `server`.instance.serve(Port(`server`.port), handleRequest, `server`.address)
@@ -261,7 +269,7 @@ template answer*(
   ##                               This argument is optional, with a default value of Http200 (OK).
   var h = headers
   h.addCORSHeaders()
-  when enableHttpx:
+  when enableHttpx or enableHttpBeast:
     var headersArr: seq[string] = @[]
     for key, value in h.pairs():
       headersArr.add(key & ": " & value)
@@ -504,7 +512,7 @@ macro routes*(server: Server, body: untyped): untyped =
     methodTable = newTable[string, NimNode]()
     finalize = newStmtList()
 
-  when enableHttpx:
+  when enableHttpx or enableHttpBeast:
     var path = newNimNode(nnkBracketExpr).add(
       newCall("split", newCall("get", newCall("path", ident("req"))), newStrLitNode("?")),
       newIntLitNode(0)

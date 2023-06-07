@@ -2,7 +2,7 @@
 
 description = "Macro-oriented asynchronous web-framework written with ♥"
 author = "HapticX"
-version = "1.2.0"
+version = "1.3.0"
 license = "GNU GPLv3"
 srcDir = "src"
 installExt = @["nim"]
@@ -19,6 +19,7 @@ requires "regex"
 # alternative HTTP servers
 requires "httpx"
 requires "microasynchttpserver"
+requires "httpbeast"
 # Template engines
 requires "nimja"
 # Websockets
