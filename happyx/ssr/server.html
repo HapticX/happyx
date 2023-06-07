@@ -128,6 +128,9 @@ window.addEventListener('DOMContentLoaded', main);
   when enableHttpx:
       instance*: Settings
 
+  elif enableHttpBeast:
+      instance*: Settings
+
   elif enableMicro:
       instance*: MicroAsyncHttpServer
 
@@ -282,6 +285,9 @@ window.addEventListener('DOMContentLoaded', main);
   <span class="Identifier">port</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int</span>
   <span class="Identifier">logger</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">Logger</span>
   <span class="Keyword">when</span> <span class="Identifier">enableHttpx</span><span class="Other">:</span>
+      <span class="Identifier">instance</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">Settings</span>
+
+  <span class="Keyword">elif</span> <span class="Identifier">enableHttpBeast</span><span class="Other">:</span>
       <span class="Identifier">instance</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">Settings</span>
 
   <span class="Keyword">elif</span> <span class="Identifier">enableMicro</span><span class="Other">:</span>
@@ -552,7 +558,7 @@ The <tt class="docutils literal"><span class="pre"><span class="Identifier">star
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-06-07 05:10:38 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-06-07 05:52:29 UTC</small>
       </div>
     </div>
   </div>
