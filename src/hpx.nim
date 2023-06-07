@@ -21,6 +21,7 @@ import illwill except fgBlue, fgGreen, fgMagenta, fgRed, fgWhite, fgYellow, bgBl
 type
   ProjectType {.pure, size: sizeof(int8).} = enum
     ptSPA = "SPA",
+    ptSSG = "SSG",
     ptSSR = "SSR"
   ProjectData = object
     process: Process
@@ -90,7 +91,7 @@ proc compileProject(): ProjectData {. discardable .} =
         "--opt:size", "--d:danger", "-x:off", "-a:off", result.mainFile
       ], nil, options
     )
-  of ptSSR:
+  of ptSSR, ptSSG:
     return result
 
   styledEcho "Compiling ", fgMagenta, result.mainFile, fgWhite, " script ... /"
@@ -148,7 +149,7 @@ proc godEye(arg: ptr GodEyeData) {. thread, nimcall .} =
     else:
       for idx, val in lastCheck:
         if currentCheck[idx] > val and not val.path.endsWith(fmt"{mainFile}.js"):
-          if val.path.endsWith(fmt"{mainFile}.exe") or val.path.endsWith(fmt"{mainFile}"):
+          if val.path.endsWith(fmt"{mainFile}.exe") or val.path.endsWith(mainFile):
             continue
           acquire(L)
           styledEcho fgGreen, "Changing found in ", fgMagenta, val.path, fgWhite, " reloading ..."
