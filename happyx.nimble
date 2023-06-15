@@ -23,4 +23,5 @@ requires "httpbeast"
 # Template engines
 requires "nimja"
 # Websockets
+requires "websocket"
 requires "websocketx"

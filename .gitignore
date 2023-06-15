@@ -25,6 +25,8 @@ test_ssr/
 # Compiled
 *.js
 *.exe
+tests/test*
+!tests/test*.nim
 
 # Testing :)
 a.nim

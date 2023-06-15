@@ -61,7 +61,6 @@ import
   os,
   # Deps
   regex,
-  websocketx,
   # HappyX
   ./cors,
   ../spa/[tag, renderer],
@@ -81,8 +80,7 @@ export
   colors,
   regex,
   json,
-  os,
-  websocketx
+  os
 
 
 # Configuration via `-d`/`--define`
@@ -107,14 +105,22 @@ when enableHttpx:
     options,
     httpx
 elif enableHttpBeast:
-  import httpbeast
-  export httpbeast
+  import httpbeast, asyncnet
+  export httpbeast, asyncnet
 elif enableMicro:
   import microasynchttpserver, asynchttpserver
   export microasynchttpserver, asynchttpserver
 else:
   import asynchttpserver
   export asynchttpserver
+
+
+when enableHttpBeast:
+  import websocket
+  export websocket
+else:
+  import websocketx
+  export websocketx
 
 
 type
@@ -276,6 +282,11 @@ template answer*(
     req.send(code, message, headersArr.join("\r\n"))
   else:
     await req.respond(code, message, h)
+
+
+when enableHttpBeast:
+  proc send*(ws: AsyncWebSocket, data: string) {.async.} =
+    await ws.sendText(data)
 
 
 template answerJson*(req: Request, data: untyped, code: HttpCode = Http200,): untyped =
@@ -669,72 +680,145 @@ macro routes*(server: Server, body: untyped): untyped =
             wsDelStmt.add(
               newCall("close", ident("wsClient"))
             )
-          let wsStmtList = newStmtList(
-            newLetStmt(ident("wsClient"), newCall("await", newCall("newWebSocket", ident("req")))),
-            newCall("add", ident("wsConnections"), ident("wsClient")),
-            newNimNode(nnkTryStmt).add(
-              newStmtList(
-                wsNewConnection,
-                newNimNode(nnkWhileStmt).add(
-                  newCall("==", newDotExpr(ident("wsClient"), ident("readyState")), ident("Open")),
-                  newStmtList(
-                    newLetStmt(ident("wsData"), newCall("await", newCall("receiveStrPacket", ident("wsClient")))),
-                    insertWsList
-                  )
+          when enableHttpBeast:
+            let asyncFd = newDotExpr(newDotExpr(ident("req"), ident("client")), ident("AsyncFD"))
+            let wsStmtList = newStmtList(
+              newLetStmt(
+                ident("headers"),
+                newCall("get", newDotExpr(ident("req"), ident("headers")))
+              ),
+              newCall("forget", ident("req")),
+              newCall("register", asyncFd),
+              newLetStmt(ident("socket"), newCall("newAsyncSocket", asyncFd)),
+              newMultiVarStmt(
+                [ident("wsClient"), ident("error")],
+                newCall("await", newCall("verifyWebsocketRequest", ident("socket"), ident("headers"), newLit(""))),
+                true
+              ),
+              newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
+                newCall("isNil", ident("wsClient")),
+                newStmtList(
+                  newCall("close", ident("socket"))
                 )
-              ),
-              newNimNode(nnkExceptBranch).add(
-                ident("WebSocketClosedError"),
-                when enableDebug:
-                  newStmtList(
-                    newCall(
-                      "error", newCall("fmt", newStrLitNode("Socket closed: {getCurrentExceptionMsg()}"))
-                    ),
-                    wsDelStmt,
-                    wsClosedConnection
+              ), newNimNode(nnkElse).add(newStmtList(
+                newCall("add", ident("wsConnections"), ident("wsClient")),
+                wsNewConnection,
+                newNimNode(nnkWhileStmt).add(newLit(true), newStmtList(
+                  newMultiVarStmt(
+                    [ident("opcode"), ident("wsData")],
+                    newCall("await", newCall("readData", ident("wsClient"))),
+                    true
+                  ),
+                  newCall("echo", ident("wsData")),
+                  newNimNode(nnkTryStmt).add(
+                    # TRY
+                    newStmtList(
+                      newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
+                        newCall("==", ident("opcode"), newDotExpr(ident("Opcode"), ident("Close"))),
+                        newStmtList(
+                          when enableDebug:
+                            newStmtList(
+                              newCall("error", newStrLitNode("Socket closed")),
+                              wsDelStmt,
+                              wsClosedConnection
+                            )
+                          else:
+                            if wsClosedConnection.len == 0:
+                              wsDelStmt
+                            else:
+                              wsClosedConnection.add(wsDelStmt),
+                          newNimNode(nnkBreakStmt).add(newEmptyNode())
+                        )
+                      )),
+                      insertWsList
+                    # OTHER WS ERROR
+                    ), newNimNode(nnkExceptBranch).add(
+                      when enableDebug:
+                        newStmtList(
+                          newCall(
+                            "error",
+                            newCall("fmt", newStrLitNode("Unexpected socket error: {getCurrentExceptionMsg()}"))
+                          ),
+                          wsDelStmt,
+                          wsError
+                        )
+                      else:
+                        if wsError.len == 0:
+                          wsDelStmt
+                        else:
+                          wsError.add(wsDelStmt)
+                    )
                   )
-                else:
-                  if wsClosedConnection.len == 0:
-                    wsDelStmt
-                  else:
-                    wsClosedConnection.add(wsDelStmt)
-              ),
-              newNimNode(nnkExceptBranch).add(
-                ident("WebSocketProtocolMismatchError"),
-                when enableDebug:
-                  newStmtList(
-                    newCall(
-                      "error",
-                      newCall("fmt", newStrLitNode("Socket tried to use an unknown protocol: {getCurrentExceptionMsg()}"))
-                    ),
-                    wsDelStmt,
-                    wsMismatchProtocol
+                ))
+              ))),
+            )
+          else:
+            let wsStmtList = newStmtList(
+              newLetStmt(ident("wsClient"), newCall("await", newCall("newWebSocket", ident("req")))),
+              newCall("add", ident("wsConnections"), ident("wsClient")),
+              newNimNode(nnkTryStmt).add(
+                newStmtList(
+                  wsNewConnection,
+                  newNimNode(nnkWhileStmt).add(
+                    newCall("==", newDotExpr(ident("wsClient"), ident("readyState")), ident("Open")),
+                    newStmtList(
+                      newLetStmt(ident("wsData"), newCall("await", newCall("receiveStrPacket", ident("wsClient")))),
+                      insertWsList
+                    )
                   )
-                else:
-                  if wsMismatchProtocol.len == 0:
-                    wsDelStmt
+                ),
+                newNimNode(nnkExceptBranch).add(
+                  ident("WebSocketClosedError"),
+                  when enableDebug:
+                    newStmtList(
+                      newCall(
+                        "error", newCall("fmt", newStrLitNode("Socket closed: {getCurrentExceptionMsg()}"))
+                      ),
+                      wsDelStmt,
+                      wsClosedConnection
+                    )
                   else:
-                    wsMismatchProtocol.add(wsDelStmt)
-              ),
-              newNimNode(nnkExceptBranch).add(
-                ident("WebSocketError"),
-                when enableDebug:
-                  newStmtList(
-                    newCall(
-                      "error",
-                      newCall("fmt", newStrLitNode("Unexpected socket error: {getCurrentExceptionMsg()}"))
-                    ),
-                    wsDelStmt,
-                    wsError
-                  )
-                else:
-                  if wsError.len == 0:
-                    wsDelStmt
+                    if wsClosedConnection.len == 0:
+                      wsDelStmt
+                    else:
+                      wsClosedConnection.add(wsDelStmt)
+                ),
+                newNimNode(nnkExceptBranch).add(
+                  ident("WebSocketProtocolMismatchError"),
+                  when enableDebug:
+                    newStmtList(
+                      newCall(
+                        "error",
+                        newCall("fmt", newStrLitNode("Socket tried to use an unknown protocol: {getCurrentExceptionMsg()}"))
+                      ),
+                      wsDelStmt,
+                      wsMismatchProtocol
+                    )
                   else:
-                    wsError.add(wsDelStmt)
+                    if wsMismatchProtocol.len == 0:
+                      wsDelStmt
+                    else:
+                      wsMismatchProtocol.add(wsDelStmt)
+                ),
+                newNimNode(nnkExceptBranch).add(
+                  ident("WebSocketError"),
+                  when enableDebug:
+                    newStmtList(
+                      newCall(
+                        "error",
+                        newCall("fmt", newStrLitNode("Unexpected socket error: {getCurrentExceptionMsg()}"))
+                      ),
+                      wsDelStmt,
+                      wsError
+                    )
+                  else:
+                    if wsError.len == 0:
+                      wsDelStmt
+                    else:
+                      wsError.add(wsDelStmt)
+                )
               )
             )
-          )
           if not methodTable.hasKey("GET"):
             methodTable["GET"] = newNimNode(nnkIfStmt)
           if exported.len > 0:
@@ -825,7 +909,10 @@ macro routes*(server: Server, body: untyped): untyped =
     if stmtList.isIdentUsed(ident("wsConnections")):
       newNimNode(nnkVarSection).add(newIdentDefs(
         ident("wsConnections"),
-        newNimNode(nnkBracketExpr).add(ident("seq"), ident("WebSocket")),
+        when enableHttpBeast:
+          newNimNode(nnkBracketExpr).add(ident("seq"), ident("AsyncWebSocket"))
+        else:
+          newNimNode(nnkBracketExpr).add(ident("seq"), ident("WebSocket")),
         newCall("@", newNimNode(nnkBracket)),
       ))
     else:
@@ -906,7 +993,7 @@ macro model*(modelName, body: untyped): untyped =
         continue
     throwDefect(
       HpxModelSyntaxDefect,
-      fmt"Wrong model syntax: ",
+      "Wrong model syntax: ",
       lineInfoObj(i)
     )
 

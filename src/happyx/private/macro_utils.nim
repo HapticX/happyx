@@ -21,6 +21,16 @@ proc getTagName*(name: string): string =
     name
 
 
+proc newMultiVarStmt*(extractNames: openArray[NimNode], val: NimNode, isLet: bool = false): NimNode =
+  result = newNimNode(
+    if isLet: nnkLetSection else: nnkVarSection
+  ).add(newNimNode(nnkVarTuple))
+  for i in extractNames:
+    result[0].add(i)
+  result[0].add(newEmptyNode())
+  result[0].add(val)
+
+
 proc isExpr*(node: NimNode): bool =
   if node.kind == nnkStmtList and node.len > 0:
     return node[^1].isExpr
