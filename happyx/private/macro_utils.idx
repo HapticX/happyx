@@ -1,5 +1,6 @@
 discardStmt	happyx/private/macro_utils.html#discardStmt	macro_utils: discardStmt	
 getTagName	happyx/private/macro_utils.html#getTagName,string	macro_utils: getTagName(name: string): string	
+newMultiVarStmt	happyx/private/macro_utils.html#newMultiVarStmt,openArray[NimNode],NimNode,bool	macro_utils: newMultiVarStmt(extractNames: openArray[NimNode]; val: NimNode;\n                isLet: bool = false): NimNode	
 isExpr	happyx/private/macro_utils.html#isExpr,NimNode	macro_utils: isExpr(node: NimNode): bool	
 isIdentUsed	happyx/private/macro_utils.html#isIdentUsed,NimNode,NimNode	macro_utils: isIdentUsed(body, name: NimNode): bool	
 newLambda	happyx/private/macro_utils.html#newLambda,NimNode	macro_utils: newLambda(body: NimNode; params: seq[NimNode] | NimNode = @[newEmptyNode()];\n          pragmas: seq[NimNode] | seq[string] = @[newEmptyNode()]): NimNode	
