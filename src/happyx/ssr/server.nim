@@ -50,6 +50,7 @@ import
   strformat,
   asyncfile,
   segfaults,
+  mimetypes,
   strutils,
   terminal,
   strtabs,
@@ -307,79 +308,7 @@ proc answerFile*(req: Request, filename: string, code: HttpCode = Http200, asAtt
   let
     splitted = filename.split('.')
     extension = if splitted.len > 1: splitted[^1] else: ""
-    contentType =
-      # https://datatracker.ietf.org/doc/html/rfc2045
-      # https://datatracker.ietf.org/doc/html/rfc2046
-      # https://datatracker.ietf.org/doc/html/rfc4288
-      # https://datatracker.ietf.org/doc/html/rfc4289
-      # https://datatracker.ietf.org/doc/html/rfc4855
-      case extension.toLower()
-      # images
-      of "jpeg", "jpg":
-        "image/jpeg"
-      of "png":
-        "image/png"
-      of "webp":
-        "image/webp"
-      of "svg":
-        "image/svg+xml"
-      of "djvu":
-        "image/vnd.djvu"
-      of "gif":
-        "image/gif"
-      of "tiff":
-        "image/tiff"
-      of "ico":
-        "image/vnd.microsoft.icon"
-      # text
-      of "xml":
-        "text/xml"
-      of "css":
-        "text/css"
-      of "html":
-        "text/html"
-      of "md":
-        "text/markdown"
-      of "php":
-        "text/php"
-      # application
-      of "json":
-        "application/json"
-      of "ogg":
-        "application/ogg"
-      of "pdf":
-        "application/pdf"
-      of "zip":
-        "application/zip"
-      of "gzip":
-        "application/gzip"
-      of "doc", "docx":
-        "application/mcword"
-      of "js", "ts":
-        "application/javascript"
-      # audio
-      of "mp3":
-        "audio/mpeg"
-      of "webm":
-        "audio/webm"
-      of "wav":
-        "audio/vnd.wave"
-      of "vorbis":
-        "audio/vorbis"
-      of "aac":
-        "audio/aac"
-      # video
-      of "mp4":
-        "video/mp4"
-      of "mpg", "mpeg", "mp1", "mp2", "m1v", "mpv", "m1a", "m2a", "mpa":
-        "video/mpeg"
-      of "avi":
-        "video/x-msvideo"
-      of "flv":
-        "video/x-flv"
-      # any other
-      else:
-        "text/plain"
+    contentType = newMimetypes().getMimetype(extension)
   var f = openAsync(filename, fmRead)
   let content = await f.readAll()
   f.close()

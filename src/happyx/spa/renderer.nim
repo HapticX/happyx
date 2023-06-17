@@ -256,7 +256,6 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
         statement[1],
         newCall("initTag", newStrLitNode("div"), newCall("@", newNimNode(nnkBracket)), newLit(true))
       ))
-      echo result.toStrLit
 
     elif statement.kind == nnkCall:
       let
@@ -533,6 +532,30 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
         statement.add(newNimNode(nnkElse).add(newNilLit()))
       result.add(statement)
     
+    # while ...:
+    #   ...
+    elif statement.kind == nnkWhileStmt:
+      let
+        condition = statement[0]
+        body = statement[1]
+      result.add(newCall(
+        ident("initTag"),
+        newStrLitNode("div"),
+        newStmtList(
+          newVarStmt(ident("_while_result"), newCall(newNimNode(nnkBracketExpr).add(ident("newSeq"), ident("TagRef")))),
+          newNimNode(nnkWhileStmt).add(
+            condition,
+            newCall(
+              "add",
+              ident("_while_result"),
+              buildHtmlProcedure(ident("div"), body, inComponent, componentName, inCycle, cycleTmpVar, cycleVars)
+            )
+          ),
+          ident("_while_result")
+        ),
+        newLit(true)
+      ))
+    
     # for ... in ...:
     #   ...
     elif statement.kind == nnkForStmt:
@@ -544,7 +567,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
         idents.add statement[i]
       inc uniqueId
       statement[^1] = newStmtList(
-        buildHtmlProcedure(ident("tDiv"), statement[^1], inComponent, componentName, true, unqn, idents)
+        buildHtmlProcedure(ident("div"), statement[^1], inComponent, componentName, true, unqn, idents)
       )
       statement[^1].insert(0, newCall("inc", ident(unqn)))
       statement[^1][^1].add(newLit(true))
