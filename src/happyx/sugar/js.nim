@@ -26,7 +26,7 @@ proc buildJsProc(body: NimNode, src: var string, lvl: int = 0,
     level = repeat(' ', lvl)
   for statement in body:
     # function funcName(args) { ... }
-    if statement.kind == nnkCommand and statement[0] == ident("function") and statement[1].kind == nnkCall:
+    if statement.kind == nnkCommand and statement[0] == ident"function" and statement[1].kind == nnkCall:
       # check syntax
       for i in statement[1]:
         if i.kind != nnkIdent:
@@ -68,12 +68,12 @@ proc buildJsProc(body: NimNode, src: var string, lvl: int = 0,
         src &= level & "const " & $i[0].toStrLit & " = " & $i[2].toStrLit & ";" & newLine
     
     # nim code
-    elif statement.kind == nnkCall and statement[0] == ident("nim") and statement.len == 2 and statement[1].kind == nnkStmtList:
+    elif statement.kind == nnkCall and statement[0] == ident"nim" and statement.len == 2 and statement[1].kind == nnkStmtList:
       src &= level & "![#=#]!" & newLine
       nimNodes.add(statement[1])
     
     # echo to console.log convertion
-    elif statement.kind in nnkCallKinds and statement[0] == ident("echo"):
+    elif statement.kind in nnkCallKinds and statement[0] == ident"echo":
       var args: seq[string] = @[]
       for i in 1..<statement.len:
         args.add($statement[i].toStrLit)
@@ -100,7 +100,7 @@ proc buildJsProc(body: NimNode, src: var string, lvl: int = 0,
         src &= level & "});" & newLine
     
     # class statement
-    elif statement.kind == nnkCommand and statement[0] == ident("class"):
+    elif statement.kind == nnkCommand and statement[0] == ident"class":
       if statement[^1].kind != nnkStmtList or statement.len != 3:
         throwDefect(
           HpxBuildJsDefect,
@@ -115,13 +115,13 @@ proc buildJsProc(body: NimNode, src: var string, lvl: int = 0,
     elif statement.kind == nnkAsgn and inClass:
       if statement[0].kind == nnkIdent:
         src &= fmt"{level}#{statement[0]} = {statement[1].toStrLit};{newLine}"
-      elif statement[0].kind == nnkCommand and statement[0][0] == ident("pub"):
+      elif statement[0].kind == nnkCommand and statement[0][0] == ident"pub":
         src &= fmt"{level}{statement[0][1].toStrLit} = {statement[1].toStrLit};{newLine}"
     # class private fields
     elif statement.kind == nnkIdent and inClass:
       src &= fmt"{level}#{statement};{newLine}"
     # class public fields
-    elif statement.kind == nnkCommand and statement[0] == ident("pub"):
+    elif statement.kind == nnkCommand and statement[0] == ident"pub":
       src &= fmt"{level}{statement[1].toStrLit};{newLine}"
     
     # class functions
@@ -348,7 +348,7 @@ macro buildJs*(body: untyped): untyped =
   for text in splitted:
     if text.len != 0:
       result.add(newNimNode(nnkPragma).add(newColonExpr(
-        ident("emit"),
+        ident"emit",
         newStrLitNode(text)
       )))
     if (i != splitted.len-1 or splitted.len == 1) and nimNodes.len != 0:

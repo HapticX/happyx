@@ -30,7 +30,8 @@ import
   tables,
   regex,
   ./tag,
-  ../core/[exceptions],
+  ./translatable,
+  ../core/[exceptions, constants],
   ../private/[macro_utils],
   ../routing/[routing, mounting],
   ../sugar/[sgr, style, js]
@@ -43,9 +44,6 @@ when defined(js):
   export
     dom,
     jsconsole
-  
-  const
-    enableOldRenderer = defined(oldRenderer) or defined(happyxOldRenrerer)
 
 export
   strformat,
@@ -96,18 +94,22 @@ const
 
 
 when defined(js):
-  {.emit: "function callEventHandler(idx) {".}
-  var idx: int
-  {.emit: "`idx` = idx;" .}
-  eventHandlers[idx]()
-  {.emit: "}" .}
-  {.emit: "function callComponentEventHandler(componentId, idx) {".}
-  var
-    callbackIdx: int
-    componentId: cstring
-  {.emit: "`callbackIdx` = idx; `componentId` = componentId;" .}
-  componentEventHandlers[callbackIdx](components[componentId])
-  {.emit: "}" .}
+  buildJs:
+    function callEventHandler(idx):
+      nim:
+        var idx: int
+      ~idx = idx
+      nim:
+        eventHandlers[idx]()
+    function callComponentEventHandler(componentId, idx):
+      nim:
+        var
+          callbackIdx: int
+          componentId: cstring
+      ~callbackIdx = idx
+      ~componentId = componentId
+      nim:
+        componentEventHandlers[callbackIdx](components[componentId])
 
 
 {.push inline.}
@@ -222,13 +224,13 @@ proc endsWithBuildHtml(statement: NimNode): bool =
 proc replaceSelfComponent(statement, componentName: NimNode) =
   if statement.kind == nnkDotExpr:
     if statement[0].kind == nnkIdent and $statement[0] == "self":
-      statement[0] = newDotExpr(ident("self"), componentName)
+      statement[0] = newDotExpr(ident"self", componentName)
     return
 
   if statement.kind == nnkAsgn:
     if statement[0].kind == nnkDotExpr and $statement[0][0] == "self":
-      statement[0] = newDotExpr(statement[0], ident("val"))
-      statement[0][0][0] = newDotExpr(ident("self"), componentName)
+      statement[0] = newDotExpr(statement[0], ident"val")
+      statement[0][0][0] = newDotExpr(ident"self", componentName)
 
     for idx, i in statement.pairs:
       if idx == 0:
@@ -237,7 +239,7 @@ proc replaceSelfComponent(statement, componentName: NimNode) =
   else:
     for idx, i in statement.pairs:
       if i.kind == nnkAsgn and i[0].kind == nnkDotExpr and $i[0][0] == "self":
-        statement.insert(idx+1, newCall(newDotExpr(ident("self"), ident("reRender"))))
+        statement.insert(idx+1, newCall(newDotExpr(ident"self", ident"reRender")))
     for i in statement.children:
       i.replaceSelfComponent(componentName)
 
@@ -250,7 +252,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
   result = newCall("initTag", elementName)
 
   for statement in body:
-    if statement.kind == nnkCall and statement[0] == ident("nim") and statement.len == 2 and statement[1].kind == nnkStmtList:
+    if statement.kind == nnkCall and statement[0] == ident"nim" and statement.len == 2 and statement[1].kind == nnkStmtList:
       # Real Nim code
       result.add(newStmtList(
         statement[1],
@@ -336,9 +338,9 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
               ident(componentName), ident(componentNameTmp)
             ),
           newAssignment(
-            newDotExpr(ident(componentName), ident("slot")),
+            newDotExpr(ident(componentName), ident"slot"),
             buildHtmlProcedure(
-              ident("div"), componentSlot, inComponent, ident(componentName), inCycle, cycleTmpVar, cycleVars
+              ident"div", componentSlot, inComponent, ident(componentName), inCycle, cycleTmpVar, cycleVars
             ).add(newLit(true))
           ),
           newLetStmt(
@@ -353,15 +355,15 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
           when defined(js):
             newStmtList(
               newNimNode(nnkPragma).add(newNimNode(nnkExprColonExpr).add(
-                ident("emit"),
+                ident"emit",
                 newStrLitNode(fmt"window.addEventListener('beforeunload', `{componentData}`.`exited`);")
               )),
               newNimNode(nnkPragma).add(newNimNode(nnkExprColonExpr).add(
-                ident("emit"),
+                ident"emit",
                 newStrLitNode(fmt"window.addEventListener('pagehide', `{componentData}`.`pageHide`);")
               )),
               newNimNode(nnkPragma).add(newNimNode(nnkExprColonExpr).add(
-                ident("emit"),
+                ident"emit",
                 newStrLitNode(fmt"window.addEventListener('pageshow', `{componentData}`.`pageShow`);")
               )),
             )
@@ -398,16 +400,16 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
       if inComponent:
         statement[2].replaceSelfComponent(componentName)
         procedure.body = statement[2]
-        args.add(newIdentDefs(ident("self"), ident("BaseComponent")))
+        args.add(newIdentDefs(ident"self", ident"BaseComponent"))
         # Detect in component and in cycle
         if inCycle:
           let
             cycleVar = " + " & cycleTmpVar  & "}"
             registerEvent = fmt"registerEventScoped{uniqueId}{uniqueId+2}"
             callRegister = newCall(registerEvent)
-          var procParams = @[ident("ComponentEventHandler")]
+          var procParams = @[ident"ComponentEventHandler"]
           for i in cycleVars:
-            procParams.add(newIdentDefs(i, ident("any")))
+            procParams.add(newIdentDefs(i, ident"any"))
             callRegister.add(i)
           result.addAttribute(
             newStrLitNode(evname),
@@ -424,7 +426,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
               newProc(ident(registerEvent), procParams, procedure),
               newCall(
                 "[]=",
-                ident("componentEventHandlers"),
+                ident"componentEventHandlers",
                 newCall("+", newIntLitNode(uniqueId), ident(cycleTmpVar)),
                 callRegister
               ),
@@ -445,11 +447,11 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
           )
           result.add(newStmtList(
             newCall("once",
-              newCall("[]=", ident("componentEventHandlers"), newIntLitNode(uniqueId), procedure)
+              newCall("[]=", ident"componentEventHandlers", newIntLitNode(uniqueId), procedure)
             ), newCall("initTag", newStrLitNode("div"), newCall("@", newNimNode(nnkBracket)), newLit(true))
           ))
-        procedure.body.insert(0, newAssignment(ident("currentComponent"), newCall("fmt", newStrLitNode("{self.uniqCompId}"))))
-        procedure.body.add(newAssignment(ident("currentComponent"), newStrLitNode("")))
+        procedure.body.insert(0, newAssignment(ident"currentComponent", newCall("fmt", newStrLitNode("{self.uniqCompId}"))))
+        procedure.body.add(newAssignment(ident"currentComponent", newStrLitNode("")))
       else:
         procedure.body = statement[2]
         # not in component but in cycle
@@ -458,9 +460,9 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
             cycleVar = " + " & cycleTmpVar  & "}"
             registerEvent = fmt"registerEventScoped{uniqueId}{uniqueId+2}"
             callRegister = newCall(registerEvent)
-          var procParams = @[ident("AppEventHandler")]
+          var procParams = @[ident"AppEventHandler"]
           for i in cycleVars:
-            procParams.add(newIdentDefs(i, ident("any")))
+            procParams.add(newIdentDefs(i, ident"any"))
             callRegister.add(i)
           result.addAttribute(
             newStrLitNode(evname),
@@ -474,7 +476,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
               newProc(ident(registerEvent), procParams, procedure),
               newCall(
                 "[]=",
-                ident("eventHandlers"),
+                ident"eventHandlers",
                 newCall("+", newIntLitNode(uniqueId), ident(cycleTmpVar)),
                 callRegister
               ),
@@ -490,7 +492,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
           )
           result.add(newStmtList(
             newCall("once",
-              newCall("[]=", ident("eventHandlers"), newIntLitNode(uniqueId), procedure)
+              newCall("[]=", ident"eventHandlers", newIntLitNode(uniqueId), procedure)
             ), newCall("initTag", newStrLitNode("div"), newCall("@", newNimNode(nnkBracket)), newLit(true))
           ))
       inc uniqueId
@@ -504,7 +506,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
             fmt"Slots can be used only in components!",
             lineInfoObj(statement)
           )
-        result.add(newDotExpr(ident("self"), ident("slot")))
+        result.add(newDotExpr(ident"self", ident"slot"))
       else:
         # tag
         result.add(newCall("tag", newStrLitNode(getTagName($statement))))
@@ -526,7 +528,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
           0
       for i in start..<statement.len:
         statement[i][^1] = buildHtmlProcedure(
-          ident("div"), statement[i][^1], inComponent, componentName, inCycle, cycleTmpVar, cycleVars
+          ident"div", statement[i][^1], inComponent, componentName, inCycle, cycleTmpVar, cycleVars
         ).add(newLit(true))
       if statement[^1].kind != nnkElse:
         statement.add(newNimNode(nnkElse).add(newNilLit()))
@@ -539,19 +541,19 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
         condition = statement[0]
         body = statement[1]
       result.add(newCall(
-        ident("initTag"),
+        ident"initTag",
         newStrLitNode("div"),
         newStmtList(
-          newVarStmt(ident("_while_result"), newCall(newNimNode(nnkBracketExpr).add(ident("newSeq"), ident("TagRef")))),
+          newVarStmt(ident"_while_result", newCall(newNimNode(nnkBracketExpr).add(ident"newSeq", ident"TagRef"))),
           newNimNode(nnkWhileStmt).add(
             condition,
             newCall(
               "add",
-              ident("_while_result"),
-              buildHtmlProcedure(ident("div"), body, inComponent, componentName, inCycle, cycleTmpVar, cycleVars)
+              ident"_while_result",
+              buildHtmlProcedure(ident"div", body, inComponent, componentName, inCycle, cycleTmpVar, cycleVars)
             )
           ),
-          ident("_while_result")
+          ident"_while_result"
         ),
         newLit(true)
       ))
@@ -567,7 +569,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
         idents.add statement[i]
       inc uniqueId
       statement[^1] = newStmtList(
-        buildHtmlProcedure(ident("div"), statement[^1], inComponent, componentName, true, unqn, idents)
+        buildHtmlProcedure(ident"div", statement[^1], inComponent, componentName, true, unqn, idents)
       )
       statement[^1].insert(0, newCall("inc", ident(unqn)))
       statement[^1][^1].add(newLit(true))
@@ -579,7 +581,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
             newVarStmt(ident(unqn), newLit(0)),
             newCall(
               "collect",
-              ident("newSeq"),
+              ident"newSeq",
               newStmtList(
                 statement
               )
@@ -698,7 +700,7 @@ macro buildHtml*(html: untyped): untyped =
   ## Args:
   ## - `html`: YAML-like structure.
   ## 
-  result = buildHtmlProcedure(ident("tDiv"), html)
+  result = buildHtmlProcedure(ident"tDiv", html)
   if result[^1].kind == nnkCall and $result[^1][0] == "@":
     result.add(newLit(true))
 
@@ -710,7 +712,7 @@ macro buildComponentHtml*(componentName, html: untyped): untyped =
   ## Args:
   ## - `html`: YAML-like structure.
   ## 
-  result = buildHtmlProcedure(ident("tDiv"), html, true, componentName)
+  result = buildHtmlProcedure(ident"tDiv", html, true, componentName)
 
 
 macro routes*(app: App, body: untyped): untyped =
@@ -733,16 +735,16 @@ macro routes*(app: App, body: untyped): untyped =
   ##        "path to file is '{file}'"
   ## 
   let
-    iPath = ident("path")
-    iHtml = ident("html")
-    iRouter = ident("callRouter")
+    iPath = ident"path"
+    iHtml = ident"html"
+    iRouter = ident"callRouter"
     router = newProc(
       postfix(iRouter, "*"),
-      [newEmptyNode(), newIdentDefs(ident("force"), ident("bool"), newLit(false))]
+      [newEmptyNode(), newIdentDefs(ident"force", ident"bool", newLit(false))]
     )
     onDOMContentLoaded = newProc(
-      ident("onDOMContentLoaded"),
-      [newEmptyNode(), newIdentDefs(ident("ev"), ident("Event"))]
+      ident"onDOMContentLoaded",
+      [newEmptyNode(), newIdentDefs(ident"ev", ident"Event")]
     )
     ifStmt = newNimNode(nnkIfStmt)
   var finalize = newStmtList()
@@ -754,34 +756,34 @@ macro routes*(app: App, body: untyped): untyped =
   # Router
   router.body.add(
     newLetStmt(
-      ident("elem"),
-      newCall("getElementById", ident("document"), newDotExpr(ident("app"), ident("appId")))
+      ident"elem",
+      newCall("getElementById", ident"document", newDotExpr(ident"app", ident"appId"))
     ),
     newLetStmt(
-      ident("path"),
+      ident"path",
       newCall(
         "strip",
-        newCall("$", newDotExpr(newDotExpr(ident("window"), ident("location")), ident("hash"))),
+        newCall("$", newDotExpr(newDotExpr(ident"window", ident"location"), ident"hash")),
         newLit(true),
         newLit(false),
         newNimNode(nnkCurly).add(newLit('#'))
       )
     ),
-    newNimNode(nnkVarSection).add(newIdentDefs(iHtml, ident("TagRef"), newNilLit())),
+    newNimNode(nnkVarSection).add(newIdentDefs(iHtml, ident"TagRef", newNilLit())),
     newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
       newCall("and",
-        newCall("not", ident("force")),
-        newCall(">", newCall("len", ident("currentComponent")), newLit(0)),
+        newCall("not", ident"force"),
+        newCall(">", newCall("len", ident"currentComponent"), newLit(0)),
       ),
       newStmtList(
         newCall(
           "reRender",
           newNimNode(nnkBracketExpr).add(
-            ident("components"),
-            ident("currentComponent")
+            ident"components",
+            ident"currentComponent"
           )
         ),
-        newCall("echo", ident("currentComponent")),
+        newCall("echo", ident"currentComponent"),
         newNimNode(nnkReturnStmt).add(newEmptyNode())
       )
     ))
@@ -856,24 +858,24 @@ macro routes*(app: App, body: untyped): untyped =
     newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
       newCall("not", newCall("isNil", iHtml)),
       newStmtList(
-        newCall("renderVdom", ident("application"), iHtml)
+        newCall("renderVdom", ident"application", iHtml)
       )
     ))
   )
 
   newStmtList(
     router,
-    newAssignment(newDotExpr(ident("app"), ident("router")), router.name),
+    newAssignment(newDotExpr(ident"app", ident"router"), router.name),
     onDOMContentLoaded,
     newNimNode(nnkPragma).add(newNimNode(nnkExprColonExpr).add(
-      ident("emit"),
+      ident"emit",
       newStrLitNode(
         "window.addEventListener('beforeunload', (e) => {"
       )
     )),
     finalize,
     newNimNode(nnkPragma).add(newNimNode(nnkExprColonExpr).add(
-      ident("emit"),
+      ident"emit",
       newStrLitNode(
         "});"
       )
@@ -892,7 +894,8 @@ macro appRoutes*(name: string, body: untyped): untyped =
   ##        "Hello, world!"
   ## 
   newStmtList(
-    newVarStmt(ident("app"), newCall("registerApp", name)),
-    newCall("routes", ident("app"), body),
-    newCall("start", ident("app"))
+    newVarStmt(ident"app", newCall("registerApp", name)),
+    translatesStatement,
+    newCall("routes", ident"app", body),
+    newCall("start", ident"app")
   )

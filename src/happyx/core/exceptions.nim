@@ -19,6 +19,7 @@ type
   HpxBuildHtmlDefect* = object of Defect  ## Throws when buildHtml syntax is invalid
   HpxBuildStyleDefect* = object of Defect  ## Throws when buildStyle syntax is invalid
   HpxBuildJsDefect* = object of Defect  ## Throws when buildJs syntax is invalid
+  HpxTranslatableDefect* = object of Defect  ## Throws on invalid translatable syntax
 
 
 proc throwDefect*(defect: typedesc, msg: string, lineInfo: LineInfo) =

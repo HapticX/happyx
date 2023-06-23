@@ -64,8 +64,8 @@ import
   regex,
   # HappyX
   ./cors,
-  ../spa/[tag, renderer],
-  ../core/[exceptions],
+  ../spa/[tag, renderer, translatable],
+  ../core/[exceptions, constants],
   ../private/[macro_utils],
   ../routing/[routing, mounting],
   ../sugar/sgr
@@ -82,16 +82,6 @@ export
   regex,
   json,
   os
-
-
-# Configuration via `-d`/`--define`
-const
-  # Alternative HTTP Servers
-  enableHttpx = defined(httpx) or defined(happyxHttpx)
-  enableMicro = defined(micro) or defined(happyxMicro)
-  enableHttpBeast = defined(beast) or defined(happyxBeast)
-  # Debug mode
-  enableDebug = defined(debug) or defined(happyxDebug)
 
 
 when int(enableHttpx) + int(enableMicro) + int(enableHttpBeast) > 1:
@@ -325,51 +315,51 @@ proc detectReturnStmt(node: NimNode, replaceReturn: bool = false) {. compileTime
     if child.kind == nnkReturnStmt and child[0].kind != nnkEmpty:
       # HTML
       if child[0].kind == nnkCall and child[0][0].kind == nnkIdent and $child[0][0] == "buildHtml":
-        node[i] = newCall("answerHtml", ident("req"), child[0])
+        node[i] = newCall("answerHtml", ident"req", child[0])
       # File
       elif child[0].kind in nnkCallKinds and child[0][0].kind == nnkIdent and $child[0][0] == "FileResponse":
-        node[i] = newCall("await", newCall("answerFile", ident("req"), child[0][1]))
+        node[i] = newCall("await", newCall("answerFile", ident"req", child[0][1]))
       # JSON
       elif child[0].kind in [nnkTableConstr, nnkBracket]:
-        node[i] = newCall("answerJson", ident("req"), child[0])
+        node[i] = newCall("answerJson", ident"req", child[0])
       # Any string
       elif child[0].kind in [nnkStrLit, nnkTripleStrLit]:
-        node[i] = newCall("answer", ident("req"), newCall("fmt", child[0]))
+        node[i] = newCall("answer", ident"req", newCall("fmt", child[0]))
       # Variable
       else:
         node[i] = newNimNode(nnkWhenStmt).add(
           newNimNode(nnkElifBranch).add(
-            newCall("is", child[0], ident("JsonNode")),
-            newCall("answerJson", ident("req"), child[0])
+            newCall("is", child[0], ident"JsonNode"),
+            newCall("answerJson", ident"req", child[0])
           ),
           newNimNode(nnkElifBranch).add(
-            newCall("is", child[0], ident("TagRef")),
-            newCall("answerHtml", ident("req"), child[0])
+            newCall("is", child[0], ident"TagRef"),
+            newCall("answerHtml", ident"req", child[0])
           ),
           newNimNode(nnkElse).add(
-            newCall("answer", ident("req"), child[0])
+            newCall("answer", ident"req", child[0])
           )
         )
     else:
       node[i].detectReturnStmt(true)
   # Replace last node
-  if replaceReturn:
+  if replaceReturn or node.kind in AtomicNodes:
     return
   if node[^1].kind in [nnkCall, nnkCommand]:
-    if node[^1][0].kind == nnkIdent and re"^(answer|echo)" in $node[^1][0]:
+    if node[^1][0].kind == nnkIdent and re"^(answer|echo|translate)" in $node[^1][0]:
       return
     elif node[^1][0].kind == nnkDotExpr and ($node[^1][0][1]).toLower().startsWith("answer"):
       return
   if not node[^1].isExpr:
     return
   if node[^1].kind == nnkCall and $node[^1][0] == "buildHtml":
-    node[^1] = newCall("answerHtml", ident("req"), node[^1])
+    node[^1] = newCall("answerHtml", ident"req", node[^1])
   elif node[^1].kind == nnkTableConstr:
-    node[^1] = newCall("answerJson", ident("req"), node[^1])
+    node[^1] = newCall("answerJson", ident"req", node[^1])
   elif node[^1].kind in [nnkStrLit, nnkTripleStrLit]:
-    node[^1] = newCall("answer", ident("req"), newCall("fmt", node[^1]))
+    node[^1] = newCall("answer", ident"req", newCall("fmt", node[^1]))
   else:
-    node[^1] = newCall("answer", ident("req"), node[^1])
+    node[^1] = newCall("answer", ident"req", node[^1])
 
 
 macro `~`*(strTable: StringTableRef, key: untyped): untyped =
@@ -431,8 +421,8 @@ macro routes*(server: Server, body: untyped): untyped =
   ##      notfound:
   ##        "Oops! Not found!"
   let
-    pathIdent = ident("urlPath")
-    reqMethodIdent = ident("reqMethodStr")
+    pathIdent = ident"urlPath"
+    reqMethodIdent = ident"reqMethodStr"
   var
     # Handle requests
     stmtList = newStmtList()
@@ -444,8 +434,8 @@ macro routes*(server: Server, body: untyped): untyped =
     variables = newStmtList()
     wsError = newStmtList()
     procStmt = newProc(
-      ident("handleRequest"),
-      [newEmptyNode(), newIdentDefs(ident("req"), ident("Request"))],
+      ident"handleRequest",
+      [newEmptyNode(), newIdentDefs(ident"req", ident"Request")],
       stmtList
     )
     caseRequestMethodsStmt = newNimNode(nnkCaseStmt)
@@ -454,42 +444,54 @@ macro routes*(server: Server, body: untyped): untyped =
 
   when enableHttpx or enableHttpBeast:
     var path = newNimNode(nnkBracketExpr).add(
-      newCall("split", newCall("get", newCall("path", ident("req"))), newStrLitNode("?")),
+      newCall("split", newCall("get", newCall("path", ident"req")), newStrLitNode("?")),
       newIntLitNode(0)
     )
     let
-      reqMethod = newCall("get", newDotExpr(ident("req"), ident("httpMethod")))
+      reqMethod = newCall("get", newDotExpr(ident"req", ident"httpMethod"))
+      headers = newCall("get", newDotExpr(ident"req", ident"headers"))
+      acceptLanguage = newNimNode(nnkBracketExpr).add(
+        newCall(
+          "split", newNimNode(nnkBracketExpr).add(headers, newStrLitNode("accept-language")), newLit(',')
+        ), newLit(0)
+      )
       reqMethodStr = "req.httpMethod.get()"
       url = newStmtList(
-        newLetStmt(ident("_val"), newCall("split", newCall("get", newCall("path", ident("req"))), newStrLitNode("?"))),
+        newLetStmt(ident"_val", newCall("split", newCall("get", newCall("path", ident"req")), newStrLitNode("?"))),
         newNimNode(nnkIfStmt).add(
           newNimNode(nnkElifBranch).add(
-            newCall(">=", newCall("len", ident("_val")), newIntLitNode(2)),
-            newNimNode(nnkBracketExpr).add(ident("_val"), newIntLitNode(1))
+            newCall(">=", newCall("len", ident"_val"), newIntLitNode(2)),
+            newNimNode(nnkBracketExpr).add(ident"_val", newIntLitNode(1))
           ), newNimNode(nnkElse).add(
             newStrLitNode("")
           )
         )
       )
   else:
-    var path = newDotExpr(newDotExpr(ident("req"), ident("url")), ident("path"))
+    var path = newDotExpr(newDotExpr(ident"req", ident"url"), ident"path")
     let
-      reqMethod = newDotExpr(ident("req"), ident("reqMethod"))
+      reqMethod = newDotExpr(ident"req", ident"reqMethod")
+      headers = newDotExpr(ident"req", ident"headers")
+      acceptLanguage = newNimNode(nnkBracketExpr).add(
+        newCall(
+          "split", newNimNode(nnkBracketExpr).add(headers, newStrLitNode("accept-language")), newLit(',')
+        ), newLit(0)
+      )
       reqMethodStr = "req.reqMethod"
-      url = newDotExpr(newDotExpr(ident("req"), ident("url")), ident("query"))
+      url = newDotExpr(newDotExpr(ident"req", ident"url"), ident"query")
   let
     directoryFromPath = newCall(
       "&",
       newStrLitNode("."),
-      newCall("replace", pathIdent, newLit('/'), ident("DirSep"))
+      newCall("replace", pathIdent, newLit('/'), ident"DirSep")
     )
   
   when defined(debug):
-    caseRequestMethodsStmt.add(ident("reqMethod"))
+    caseRequestMethodsStmt.add(ident"reqMethod")
   else:
     caseRequestMethodsStmt.add(reqMethod)
   
-  procStmt.addPragma(ident("async"))
+  procStmt.addPragma(ident"async")
 
   # Find mounts
   body.findAndReplaceMount()
@@ -545,7 +547,7 @@ macro routes*(server: Server, body: untyped): untyped =
           )
       # reqMethod "/...":
       #   ...
-      elif statement[0].kind == nnkIdent and statement[0] != ident("mount") and statement[1].kind in [nnkStrLit, nnkTripleStrLit, nnkInfix]:
+      elif statement[0].kind == nnkIdent and statement[0] != ident"mount" and statement[1].kind in [nnkStrLit, nnkTripleStrLit, nnkInfix]:
         let name = ($statement[0]).toUpper()
         if name == "STATICDIR":
           if statement[1].kind in [nnkStrLit, nnkTripleStrLit]:
@@ -563,7 +565,7 @@ macro routes*(server: Server, body: untyped): untyped =
                   )
                 ),
                 newStmtList(
-                  newCall("await", newCall("answerFile", ident("req"), directoryFromPath))
+                  newCall("await", newCall("answerFile", ident"req", directoryFromPath))
                 )
               )
             )
@@ -578,7 +580,7 @@ macro routes*(server: Server, body: untyped): untyped =
               newCall(
                 "replace",
                 newCall("replace", pathIdent, statement[1][1], path),
-                newLit('/'), ident("DirSep")
+                newLit('/'), ident"DirSep"
               )
             )
             ifStmt.insert(
@@ -589,7 +591,7 @@ macro routes*(server: Server, body: untyped): untyped =
                   newCall("fileExists", dirFromPath)
                 ),
                 newStmtList(
-                  newCall("await", newCall("answerFile", ident("req"), dirFromPath))
+                  newCall("await", newCall("answerFile", ident"req", dirFromPath))
                 )
               )
             )
@@ -602,48 +604,48 @@ macro routes*(server: Server, body: untyped): untyped =
             wsDelStmt = newStmtList(
               newCall(
                 "del",
-                ident("wsConnections"),
-                newCall("find", ident("wsConnections"), ident("wsClient")))
+                ident"wsConnections",
+                newCall("find", ident"wsConnections", ident"wsClient"))
             )
           when enableHttpx:
             wsDelStmt.add(
-              newCall("close", ident("wsClient"))
+              newCall("close", ident"wsClient")
             )
           when enableHttpBeast:
-            let asyncFd = newDotExpr(newDotExpr(ident("req"), ident("client")), ident("AsyncFD"))
+            let asyncFd = newDotExpr(newDotExpr(ident"req", ident"client"), ident"AsyncFD")
             let wsStmtList = newStmtList(
               newLetStmt(
-                ident("headers"),
-                newCall("get", newDotExpr(ident("req"), ident("headers")))
+                ident"headers",
+                newCall("get", newDotExpr(ident"req", ident"headers"))
               ),
-              newCall("forget", ident("req")),
+              newCall("forget", ident"req"),
               newCall("register", asyncFd),
-              newLetStmt(ident("socket"), newCall("newAsyncSocket", asyncFd)),
+              newLetStmt(ident"socket", newCall("newAsyncSocket", asyncFd)),
               newMultiVarStmt(
-                [ident("wsClient"), ident("error")],
-                newCall("await", newCall("verifyWebsocketRequest", ident("socket"), ident("headers"), newLit(""))),
+                [ident"wsClient", ident"error"],
+                newCall("await", newCall("verifyWebsocketRequest", ident"socket", ident"headers", newLit(""))),
                 true
               ),
               newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
-                newCall("isNil", ident("wsClient")),
+                newCall("isNil", ident"wsClient"),
                 newStmtList(
-                  newCall("close", ident("socket"))
+                  newCall("close", ident"socket")
                 )
               ), newNimNode(nnkElse).add(newStmtList(
-                newCall("add", ident("wsConnections"), ident("wsClient")),
+                newCall("add", ident"wsConnections", ident"wsClient"),
                 wsNewConnection,
                 newNimNode(nnkWhileStmt).add(newLit(true), newStmtList(
                   newMultiVarStmt(
-                    [ident("opcode"), ident("wsData")],
-                    newCall("await", newCall("readData", ident("wsClient"))),
+                    [ident"opcode", ident"wsData"],
+                    newCall("await", newCall("readData", ident"wsClient")),
                     true
                   ),
-                  newCall("echo", ident("wsData")),
+                  newCall("echo", ident"wsData"),
                   newNimNode(nnkTryStmt).add(
                     # TRY
                     newStmtList(
                       newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
-                        newCall("==", ident("opcode"), newDotExpr(ident("Opcode"), ident("Close"))),
+                        newCall("==", ident"opcode", newDotExpr(ident"Opcode", ident"Close")),
                         newStmtList(
                           when enableDebug:
                             newStmtList(
@@ -683,21 +685,21 @@ macro routes*(server: Server, body: untyped): untyped =
             )
           else:
             let wsStmtList = newStmtList(
-              newLetStmt(ident("wsClient"), newCall("await", newCall("newWebSocket", ident("req")))),
-              newCall("add", ident("wsConnections"), ident("wsClient")),
+              newLetStmt(ident"wsClient", newCall("await", newCall("newWebSocket", ident"req"))),
+              newCall("add", ident"wsConnections", ident"wsClient"),
               newNimNode(nnkTryStmt).add(
                 newStmtList(
                   wsNewConnection,
                   newNimNode(nnkWhileStmt).add(
-                    newCall("==", newDotExpr(ident("wsClient"), ident("readyState")), ident("Open")),
+                    newCall("==", newDotExpr(ident"wsClient", ident"readyState"), ident"Open"),
                     newStmtList(
-                      newLetStmt(ident("wsData"), newCall("await", newCall("receiveStrPacket", ident("wsClient")))),
+                      newLetStmt(ident"wsData", newCall("await", newCall("receiveStrPacket", ident"wsClient"))),
                       insertWsList
                     )
                   )
                 ),
                 newNimNode(nnkExceptBranch).add(
-                  ident("WebSocketClosedError"),
+                  ident"WebSocketClosedError",
                   when enableDebug:
                     newStmtList(
                       newCall(
@@ -713,7 +715,7 @@ macro routes*(server: Server, body: untyped): untyped =
                       wsClosedConnection.add(wsDelStmt)
                 ),
                 newNimNode(nnkExceptBranch).add(
-                  ident("WebSocketProtocolMismatchError"),
+                  ident"WebSocketProtocolMismatchError",
                   when enableDebug:
                     newStmtList(
                       newCall(
@@ -730,7 +732,7 @@ macro routes*(server: Server, body: untyped): untyped =
                       wsMismatchProtocol.add(wsDelStmt)
                 ),
                 newNimNode(nnkExceptBranch).add(
-                  ident("WebSocketError"),
+                  ident"WebSocketError",
                   when enableDebug:
                     newStmtList(
                       newCall(
@@ -777,7 +779,7 @@ macro routes*(server: Server, body: untyped): untyped =
       variables.add(statement)
   
   let immutableVars = newNimNode(nnkLetSection).add(
-    newIdentDefs(ident("urlPath"), newEmptyNode(), path),
+    newIdentDefs(ident"urlPath", newEmptyNode(), path),
   )
 
   # immutable variables
@@ -809,12 +811,12 @@ macro routes*(server: Server, body: untyped): untyped =
             "warn",
             newCall(
               "fgColored", 
-              newCall("fmt", newStrLitNode("{urlPath} is not found.")), ident("fgYellow")
+              newCall("fmt", newStrLitNode("{urlPath} is not found.")), ident"fgYellow"
             )
           )
         )
       elseStmtList.add(
-        newCall(ident("answer"), ident("req"), newStrLitNode("Not found"), ident("Http404"))
+        newCall(ident"answer", ident"req", newStrLitNode("Not found"), ident"Http404")
       )
     else:
       ifStmt.add(newNimNode(nnkElse).add(notFoundNode))
@@ -826,45 +828,45 @@ macro routes*(server: Server, body: untyped): untyped =
           "warn",
           newCall(
             "fgColored",
-            newCall("fmt", newStrLitNode("{urlPath} is not found.")), ident("fgYellow")
+            newCall("fmt", newStrLitNode("{urlPath} is not found.")), ident"fgYellow"
           )
         ))
       stmtList.add(
-        newCall(ident("answer"), ident("req"), newStrLitNode("Not found"), ident("Http404"))
+        newCall(ident"answer", ident"req", newStrLitNode("Not found"), ident"Http404")
       )
     else:
       stmtList.add(notFoundNode)
   result = newStmtList(
-    if stmtList.isIdentUsed(ident("wsConnections")):
+    if stmtList.isIdentUsed(ident"wsConnections"):
       newNimNode(nnkVarSection).add(newIdentDefs(
-        ident("wsConnections"),
+        ident"wsConnections",
         when enableHttpBeast:
-          newNimNode(nnkBracketExpr).add(ident("seq"), ident("AsyncWebSocket"))
+          newNimNode(nnkBracketExpr).add(ident"seq", ident"AsyncWebSocket")
         else:
-          newNimNode(nnkBracketExpr).add(ident("seq"), ident("WebSocket")),
+          newNimNode(nnkBracketExpr).add(ident"seq", ident"WebSocket"),
         newCall("@", newNimNode(nnkBracket)),
       ))
     else:
       newEmptyNode(),
     procStmt,
     newProc(
-      ident("finalizeProgram"),
+      ident"finalizeProgram",
       [newEmptyNode()],
       finalize,
-      pragmas = newNimNode(nnkPragma).add(ident("noconv"))
+      pragmas = newNimNode(nnkPragma).add(ident"noconv")
     )
   )
 
   for v in countdown(variables.len-1, 0, 1):
     result.insert(0, variables[v])
   
-  if stmtList.isIdentUsed(ident("query")):
-    immutableVars.add(newIdentDefs(ident("query"), newEmptyNode(), newCall("parseQuery", url)))
+  if stmtList.isIdentUsed(ident"query"):
+    immutableVars.add(newIdentDefs(ident"query", newEmptyNode(), newCall("parseQuery", url)))
+  if stmtList.isIdentUsed(ident"translate"):
+    immutableVars.add(newIdentDefs(ident"acceptLanguage", newEmptyNode(), acceptLanguage))
   when defined(debug):
-    if stmtList.isIdentUsed(ident("reqMethod")):
-      immutableVars.add(newIdentDefs(ident("reqMethod"), newEmptyNode(), reqMethod))
-  
-  echo result.toStrLit
+    if stmtList.isIdentUsed(ident"reqMethod"):
+      immutableVars.add(newIdentDefs(ident"reqMethod", newEmptyNode(), reqMethod))
 
 
 macro model*(modelName, body: untyped): untyped =
@@ -884,14 +886,14 @@ macro model*(modelName, body: untyped): untyped =
         ))
         asgnStmt.add(newNimNode(nnkIfStmt).add(
           newNimNode(nnkElifBranch).add(
-            newCall("hasKey", ident("node"), newStrLitNode($argName)),
+            newCall("hasKey", ident"node", newStrLitNode($argName)),
             newAssignment(
-              newDotExpr(ident("result"), argName),
-              newCall("to", newCall("[]", ident("node"), newStrLitNode($argName)), argType)
+              newDotExpr(ident"result", argName),
+              newCall("to", newCall("[]", ident"node", newStrLitNode($argName)), argType)
             )
           ), newNimNode(nnkElse).add(
             newAssignment(
-              newDotExpr(ident("result"), argName),
+              newDotExpr(ident"result", argName),
               newCall("default", argType)
             )
           )
@@ -907,14 +909,14 @@ macro model*(modelName, body: untyped): untyped =
         ))
         asgnStmt.add(newNimNode(nnkIfStmt).add(
           newNimNode(nnkElifBranch).add(
-            newCall("hasKey", ident("node"), newStrLitNode($argName)),
+            newCall("hasKey", ident"node", newStrLitNode($argName)),
             newAssignment(
-              newDotExpr(ident("result"), argName),
-              newCall("to", newCall("[]", ident("node"), newStrLitNode($argName)), argType)
+              newDotExpr(ident"result", argName),
+              newCall("to", newCall("[]", ident"node", newStrLitNode($argName)), argType)
             )
           ), newNimNode(nnkElse).add(
             newAssignment(
-              newDotExpr(ident("result"), argName),
+              newDotExpr(ident"result", argName),
               argDefault
             )
           )
@@ -933,16 +935,16 @@ macro model*(modelName, body: untyped): untyped =
         newEmptyNode(),
         newNimNode(nnkObjectTy).add(
           newEmptyNode(),  # no pragma
-          newNimNode(nnkOfInherit).add(ident("ModelBase")),
+          newNimNode(nnkOfInherit).add(ident"ModelBase"),
           params
         )
       )
     ),
     newProc(
       ident("jsonTo" & $modelName),
-      [modelName, newIdentDefs(ident("node"), ident("JsonNode"))],
+      [modelName, newIdentDefs(ident"node", ident"JsonNode")],
       newStmtList(
-        newAssignment(ident("result"), newNimNode(nnkObjConstr).add(ident($modelName))),
+        newAssignment(ident"result", newNimNode(nnkObjConstr).add(ident($modelName))),
         if asgnStmt.len > 0: asgnStmt else: newStmtList()
       )
     )
@@ -957,18 +959,19 @@ macro initServer*(body: untyped): untyped =
   ##      `body`
   ##    main()
   ## 
+  body.insert(0, translatesStatement)
   result = newStmtList(
     newProc(
-      ident("main"),
+      ident"main",
       [newEmptyNode()],
       body.add(
-        newCall("addQuitProc", ident("finalizeProgram"))
+        newCall("addQuitProc", ident"finalizeProgram")
       ),
       nnkProcDef
     ),
     newCall("main")
   )
-  result[0].addPragma(ident("gcsafe"))
+  result[0].addPragma(ident"gcsafe")
 
 
 macro serve*(address: string, port: int, body: untyped): untyped =
@@ -998,16 +1001,17 @@ macro serve*(address: string, port: int, body: untyped): untyped =
   ## 
   result = newStmtList(
     newProc(
-      ident("main"),
+      ident"main",
       [newEmptyNode()],
       newStmtList(
-        newVarStmt(ident("server"), newCall("newServer", address, port)),
-        newCall("routes", ident("server"), body),
-        newCall("start", ident("server")),
-        newCall("addQuitProc", ident("finalizeProgram"))
+        newVarStmt(ident"server", newCall("newServer", address, port)),
+        translatesStatement,
+        newCall("routes", ident"server", body),
+        newCall("start", ident"server"),
+        newCall("addQuitProc", ident"finalizeProgram")
       ),
       nnkProcDef
     ),
     newCall("main")
   )
-  result[0].addPragma(ident("gcsafe"))
+  result[0].addPragma(ident"gcsafe")

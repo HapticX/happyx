@@ -104,7 +104,7 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.
       )
       group = newCall(
         "group",
-        newNimNode(nnkBracketExpr).add(ident("founded_regexp_matches"), newIntLitNode(0)),
+        newNimNode(nnkBracketExpr).add(ident"founded_regexp_matches", newIntLitNode(0)),
         newIntLitNode(idx),  # group index,
         urlPath
       )
@@ -206,9 +206,9 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.
   
   let body =
     when defined(httpx):
-      newCall("get", newDotExpr(ident("req"), ident("body")))
+      newCall("get", newDotExpr(ident"req", ident"body"))
     else:
-      newDotExpr(ident("req"), ident("body"))
+      newDotExpr(ident"req", ident"body")
 
   for i in foundModels:
     name = i.group(1, path)[0]
@@ -223,7 +223,7 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.
           newNimNode(nnkTryStmt).add(
             newCall("jsonTo" & modelKey, newCall("parseJson", body))
           ).add(newNimNode(nnkExceptBranch).add(
-            ident("JsonParsingError"),
+            ident"JsonParsingError",
             newStmtList(
               when defined(debug):
                 newCall("echo", newCall("fmt", newStrLitNode("json parse error: {getCurrentExceptionMsg()}")))
@@ -241,7 +241,7 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.
     elifBranch[1].insert(
       0, newNimNode(nnkLetSection).add(
         newIdentDefs(
-          ident("founded_regexp_matches"), newEmptyNode(), newCall("findAll", urlPath, regExp)
+          ident"founded_regexp_matches", newEmptyNode(), newCall("findAll", urlPath, regExp)
         )
       )
     )

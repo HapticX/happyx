@@ -277,7 +277,7 @@ when not defined(js):
 
 import
   happyx/core/[exceptions],
-  happyx/spa/[renderer, state, components],
+  happyx/spa/[renderer, state, components, translatable],
   happyx/tmpl_engine/[engine],
   happyx/routing/[mounting, routing],
   happyx/sugar/[sgr, js, style]
@@ -287,6 +287,7 @@ export
   renderer,
   state,
   components,
+  translatable,
   style,
   engine,
   routing,
