@@ -9,5 +9,6 @@ HpxSyntaxSugarDefect	happyx/core/exceptions.html#HpxSyntaxSugarDefect	exceptions
 HpxBuildHtmlDefect	happyx/core/exceptions.html#HpxBuildHtmlDefect	exceptions: HpxBuildHtmlDefect	
 HpxBuildStyleDefect	happyx/core/exceptions.html#HpxBuildStyleDefect	exceptions: HpxBuildStyleDefect	
 HpxBuildJsDefect	happyx/core/exceptions.html#HpxBuildJsDefect	exceptions: HpxBuildJsDefect	
+HpxTranslatableDefect	happyx/core/exceptions.html#HpxTranslatableDefect	exceptions: HpxTranslatableDefect	
 throwDefect	happyx/core/exceptions.html#throwDefect,typedesc,string,LineInfo	exceptions: throwDefect(defect: typedesc; msg: string; lineInfo: LineInfo)	
 HappyX Exceptions 🧨	happyx/core/exceptions.html#happyx-exceptions-🧨	 HappyX Exceptions 🧨	
