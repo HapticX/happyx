@@ -10,8 +10,8 @@ translatable:
 
 serve("127.0.0.1", 5000):
   get "/":
-    return translate("Hello, world!")
+    return "Hello, world!"
   
   get "/nonStatic":
     var x = "Hello, "
-    return translate(x & "world!")
+    return x & "world!"

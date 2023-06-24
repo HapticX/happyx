@@ -276,7 +276,7 @@ when not defined(js):
     cors
 
 import
-  happyx/core/[exceptions],
+  happyx/core/[exceptions, constants],
   happyx/spa/[renderer, state, components, translatable],
   happyx/tmpl_engine/[engine],
   happyx/routing/[mounting, routing],

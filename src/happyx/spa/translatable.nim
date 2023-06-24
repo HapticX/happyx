@@ -45,14 +45,17 @@ macro translatable*(body: untyped): untyped =
   ## 
   if translatesStatement.len == 0:
     when defined(js):
-      translatesStatement.add(newVarStmt(ident"translates", newCall(
+      translatesStatement.add(newVarStmt(
+        ident"translates", # newNimNode(nnkPragmaExpr).add(ident"translates", newNimNode(nnkPragma).add(ident"global")),
+        newCall(
         newNimNode(nnkBracketExpr).add(
-          ident"newTable", ident"cstring",
-          newNimNode(nnkBracketExpr).add(
-            ident"TableRef", ident"cstring", ident"string"
+            ident"newTable", ident"cstring",
+            newNimNode(nnkBracketExpr).add(
+              ident"TableRef", ident"cstring", ident"string"
+            )
           )
         )
-      )))
+      ))
     else:
       translatesStatement.add(newVarStmt(ident"translates", newCall(
         newNimNode(nnkBracketExpr).add(

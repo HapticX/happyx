@@ -41,6 +41,7 @@ HappyX is macro-oriented web framework so you mustn't write a lot of code ✨
 - Assignment path params with `pathParams` macro.
 - Powerful mounting sub-applications with `mount` macro. 
 - Logging with `-d:debug`.
+- Automatic translate with `-d:hpxTranslate` or `-d:translate` flags.
 - CLI tool for `creating`, `serving` and `building` your projects.
 - Hot code reloading (only for `SPA` projects as of now).
 

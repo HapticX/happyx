@@ -13,6 +13,8 @@ translatable:
 appRoutes("app"):
   "/":
     component Pure
+    tDiv:
+      "Hello"
     nim:
       var
         x = 0

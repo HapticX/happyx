@@ -84,10 +84,6 @@ export
   os
 
 
-when int(enableHttpx) + int(enableMicro) + int(enableHttpBeast) > 1:
-  {. error: "You can't use two alternative servers at one time!" .}
-
-
 when enableHttpx:
   import
     options,
@@ -324,22 +320,40 @@ proc detectReturnStmt(node: NimNode, replaceReturn: bool = false) {. compileTime
         node[i] = newCall("answerJson", ident"req", child[0])
       # Any string
       elif child[0].kind in [nnkStrLit, nnkTripleStrLit]:
-        node[i] = newCall("answer", ident"req", newCall("fmt", child[0]))
+        when enableAutoTranslate:
+          node[i] = newCall("answer", ident"req", newCall("fmt", newCall("translate", child[0])))
+        else:
+          node[i] = newCall("answer", ident"req", newCall("fmt", child[0]))
       # Variable
       else:
-        node[i] = newNimNode(nnkWhenStmt).add(
-          newNimNode(nnkElifBranch).add(
-            newCall("is", child[0], ident"JsonNode"),
-            newCall("answerJson", ident"req", child[0])
-          ),
-          newNimNode(nnkElifBranch).add(
-            newCall("is", child[0], ident"TagRef"),
-            newCall("answerHtml", ident"req", child[0])
-          ),
-          newNimNode(nnkElse).add(
-            newCall("answer", ident"req", child[0])
+        when enableAutoTranslate:
+          node[i] = newNimNode(nnkWhenStmt).add(
+            newNimNode(nnkElifBranch).add(
+              newCall("is", child[0], ident"JsonNode"),
+              newCall("answerJson", ident"req", child[0])
+            ),
+            newNimNode(nnkElifBranch).add(
+              newCall("is", child[0], ident"TagRef"),
+              newCall("answerHtml", ident"req", child[0])
+            ),
+            newNimNode(nnkElse).add(
+              newCall("answer", ident"req", newCall("translate", child[0]))
+            )
           )
-        )
+        else:
+          node[i] = newNimNode(nnkWhenStmt).add(
+            newNimNode(nnkElifBranch).add(
+              newCall("is", child[0], ident"JsonNode"),
+              newCall("answerJson", ident"req", child[0])
+            ),
+            newNimNode(nnkElifBranch).add(
+              newCall("is", child[0], ident"TagRef"),
+              newCall("answerHtml", ident"req", child[0])
+            ),
+            newNimNode(nnkElse).add(
+              newCall("answer", ident"req", child[0])
+            )
+          )
     else:
       node[i].detectReturnStmt(true)
   # Replace last node
@@ -357,9 +371,15 @@ proc detectReturnStmt(node: NimNode, replaceReturn: bool = false) {. compileTime
   elif node[^1].kind == nnkTableConstr:
     node[^1] = newCall("answerJson", ident"req", node[^1])
   elif node[^1].kind in [nnkStrLit, nnkTripleStrLit]:
-    node[^1] = newCall("answer", ident"req", newCall("fmt", node[^1]))
+    when enableAutoTranslate:
+      node[^1] = newCall("answer", ident"req", newCall("fmt", newCall("translate", node[^1])))
+    else:
+      node[^1] = newCall("answer", ident"req", newCall("fmt", node[^1]))
   else:
-    node[^1] = newCall("answer", ident"req", node[^1])
+    when enableAutoTranslate:
+      node[^1] = newCall("answer", ident"req", newCall("translate", node[^1]))
+    else:
+      node[^1] = newCall("answer", ident"req", node[^1])
 
 
 macro `~`*(strTable: StringTableRef, key: untyped): untyped =
@@ -867,6 +887,8 @@ macro routes*(server: Server, body: untyped): untyped =
   when defined(debug):
     if stmtList.isIdentUsed(ident"reqMethod"):
       immutableVars.add(newIdentDefs(ident"reqMethod", newEmptyNode(), reqMethod))
+    
+    echo result.toStrLit
 
 
 macro model*(modelName, body: untyped): untyped =

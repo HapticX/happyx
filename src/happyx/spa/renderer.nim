@@ -374,7 +374,15 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
     
     elif statement.kind in [nnkStrLit, nnkTripleStrLit]:
       # "Raw text"
-      result.add(newCall("initTag", newCall("fmt", statement), newLit(true)))
+      when enableAutoTranslate:
+        result.add(newCall("initTag", newNimNode(nnkWhenStmt).add(
+            newNimNode(nnkElifBranch).add(
+              newCall("declared", ident"translates"),
+              newCall("translate", newCall("fmt", statement))
+            ), newNimNode(nnkElse).add(
+              newCall("fmt", statement)
+            )
+        ), newLit(true)))
     
     elif statement.kind in [nnkVarSection, nnkLetSection, nnkConstSection]:
       # Nim variable declaration
