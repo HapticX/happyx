@@ -77,6 +77,7 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.
     isOptional = false
     defaultVal = ""
     isMutable = false
+  let paramsCount = found.len
   for i in found:
     # clean
     name = i.group(0, path)[0]
@@ -104,7 +105,13 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.
       )
       group = newCall(
         "group",
-        newNimNode(nnkBracketExpr).add(ident"founded_regexp_matches", newIntLitNode(0)),
+        newNimNode(nnkBracketExpr).add(
+          if paramsCount > 1:
+            ident"founded_regexp_matches"
+          else:
+            newCall("findAll", urlPath, regExp),
+          newIntLitNode(0)
+        ),
         newIntLitNode(idx),  # group index,
         urlPath
       )
@@ -238,13 +245,14 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.
     hasChildren = true
   
   if hasChildren:
-    elifBranch[1].insert(
-      0, newNimNode(nnkLetSection).add(
-        newIdentDefs(
-          ident"founded_regexp_matches", newEmptyNode(), newCall("findAll", urlPath, regExp)
+    if paramsCount > 1:
+      elifBranch[1].insert(
+        0, newNimNode(nnkLetSection).add(
+          newIdentDefs(
+            ident"founded_regexp_matches", newEmptyNode(), newCall("findAll", urlPath, regExp)
+          )
         )
       )
-    )
     return elifBranch
   return newEmptyNode()
 

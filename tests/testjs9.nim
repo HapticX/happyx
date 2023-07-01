@@ -26,6 +26,8 @@ appRoutes("app"):
             "{str}, {x}th world!"
           tDiv(class = "rounded-lg bg-white drop-shadow-md px-4"):
             """{str}, {x}th world!"""
+          tDiv(class = "rounded-lg bg-white drop-shadow-md px-4"):
+            {fmt"""{str}, {x}th world!"""}
         nim:
           if x == 6:
             x *= 2

@@ -6,21 +6,16 @@ pathParams:
   count? int = 1
 
 
-serve("127.0.0.1", 5000):
-  var counter = 10
 
-  get "/user/<id>":
-    "User {id}"
+serve("127.0.0.1", 5000):
+  get "/":
+    """"""
   
-  get "/add/<count>":
-    counter += count
-    "Now counter = {counter}"
+  get "/user/$id":
+    id
   
-  post "/":
-    "/"
+  post "/user":
+    """"""
   
-  patch "/asdasd":
-    "asdasd"
-  
-  "/any":
-    "asdasdasdasdasd"
+  notfound:
+    """method not allowed"""

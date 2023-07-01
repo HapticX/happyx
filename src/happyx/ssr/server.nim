@@ -265,7 +265,7 @@ template answer*(
   when enableHttpx or enableHttpBeast:
     var headersArr: seq[string] = @[]
     for key, value in h.pairs():
-      headersArr.add(key & ": " & value)
+      headersArr.add(key & ':' & value)
     req.send(code, message, headersArr.join("\r\n"))
   else:
     await req.respond(code, message, h)
@@ -888,7 +888,7 @@ macro routes*(server: Server, body: untyped): untyped =
     if stmtList.isIdentUsed(ident"reqMethod"):
       immutableVars.add(newIdentDefs(ident"reqMethod", newEmptyNode(), reqMethod))
     
-    echo result.toStrLit
+  echo result.toStrLit
 
 
 macro model*(modelName, body: untyped): untyped =
