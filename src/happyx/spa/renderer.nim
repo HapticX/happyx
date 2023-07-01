@@ -197,10 +197,7 @@ proc attribute(attr: NimNode): NimNode =
   ## Converts `nnkExprEqExpr` to `nnkColonExpr`
   newColonExpr(
     newStrLitNode($attr[0]),
-    if attr[1].kind in [nnkStrLit, nnkTripleStrLit]:
-      newCall("fmt", attr[1])
-    else:
-      attr[1]
+    formatNode(attr[1])
   )
 
 
@@ -271,10 +268,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
         for attr in statement[1 .. statement.len-2]:
           builded.addAttribute(
             newStrLitNode($attr[0]),
-            if attr[1].kind in [nnkStrLit, nnkTripleStrLit]:
-              newCall("fmt", attr[1])
-            else:
-              attr[1]
+            formatNode(attr[1])
           )
         result.add(builded)
       # tag(attr="value")
@@ -378,11 +372,13 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
         result.add(newCall("initTag", newNimNode(nnkWhenStmt).add(
             newNimNode(nnkElifBranch).add(
               newCall("declared", ident"translates"),
-              newCall("translate", newCall("fmt", statement))
+              newCall("translate", formatNode(statement))
             ), newNimNode(nnkElse).add(
-              newCall("fmt", statement)
+              formatNode(statement)
             )
         ), newLit(true)))
+      else:
+        result.add(newCall("initTag", formatNode(statement), newLit(true)))
     
     elif statement.kind in [nnkVarSection, nnkLetSection, nnkConstSection]:
       # Nim variable declaration

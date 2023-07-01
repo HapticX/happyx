@@ -321,9 +321,9 @@ proc detectReturnStmt(node: NimNode, replaceReturn: bool = false) {. compileTime
       # Any string
       elif child[0].kind in [nnkStrLit, nnkTripleStrLit]:
         when enableAutoTranslate:
-          node[i] = newCall("answer", ident"req", newCall("fmt", newCall("translate", child[0])))
+          node[i] = newCall("answer", ident"req", formatNode(newCall("translate", child[0])))
         else:
-          node[i] = newCall("answer", ident"req", newCall("fmt", child[0]))
+          node[i] = newCall("answer", ident"req", formatNode(child[0]))
       # Variable
       else:
         when enableAutoTranslate:
@@ -372,9 +372,9 @@ proc detectReturnStmt(node: NimNode, replaceReturn: bool = false) {. compileTime
     node[^1] = newCall("answerJson", ident"req", node[^1])
   elif node[^1].kind in [nnkStrLit, nnkTripleStrLit]:
     when enableAutoTranslate:
-      node[^1] = newCall("answer", ident"req", newCall("fmt", newCall("translate", node[^1])))
+      node[^1] = newCall("answer", ident"req", formatNode(newCall("translate", node[^1])))
     else:
-      node[^1] = newCall("answer", ident"req", newCall("fmt", node[^1]))
+      node[^1] = newCall("answer", ident"req", formatNode(node[^1]))
   else:
     when enableAutoTranslate:
       node[^1] = newCall("answer", ident"req", newCall("translate", node[^1]))

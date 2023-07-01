@@ -21,6 +21,13 @@ proc getTagName*(name: string): string =
     name
 
 
+proc formatNode*(node: NimNode): NimNode =
+  if node.kind == nnkStrLit:
+    newCall("fmt", node)
+  else:
+    node
+
+
 proc newMultiVarStmt*(extractNames: openArray[NimNode], val: NimNode, isLet: bool = false): NimNode =
   result = newNimNode(
     if isLet: nnkLetSection else: nnkVarSection
