@@ -239,11 +239,14 @@
 ## 
 ## ### Core 🔋
 ## 
+## - [constants](happyx/core/constants.html) - describes all HappyX flags and consts.
 ## - [exceptions](happyx/core/exceptions.html) - describes all HappyX exceptions.
 ## 
 ## ### Single Page Application ✨
 ## 
-## - [renderer](happyx/spa/renderer.html) provides SPA renderer, routing and components.
+## - [renderer](happyx/spa/renderer.html) provides SPA renderer.
+## - [components](happyx/spa/components.html) provides working with components.
+## - [translatable](happyx/spa/translatable.html) provides working with translatable strings.
 ## - [state](happyx/spa/state.html) provides reactivity.
 ## - [tag](happyx/spa/tag.html) provides VDOM.
 ## 
