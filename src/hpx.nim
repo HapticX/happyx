@@ -37,7 +37,7 @@ type
 
 
 const
-  VERSION = "1.8.0"
+  VERSION = "1.8.1"
   SPA_MAIN_FILE = "main"
   CONFIG_FILE = "happyx.cfg"
 
@@ -209,7 +209,7 @@ proc mainHelpMessage() =
     fgWhite, " HappyX projects\n"
   )
   styledEcho "Usage:"
-  styledEcho fgMagenta, "hpx ", fgBlue, "build|dev|create|help ", fgYellow, "[subcommand-args]"
+  styledEcho fgMagenta, "hpx ", fgBlue, "build|dev|create|html2tag|help ", fgYellow, "[subcommand-args]"
 
 
 proc buildCommand(optSize: bool = false): int =
@@ -686,7 +686,7 @@ when isMainModule:
       styledEcho fgBlue, "HappyX", fgMagenta, " html2tag ", fgWhite, "command converts html code into buildHtml macro"
       styledEcho "\nUsage:"
       styledEcho fgMagenta, "hpx html2tag source.html\n"
-      styledEcho align("output", 12), "|o - Output file (ex. --output:source.nim)"
+      styledEcho align("output", 12), "|o - Output file (ex. --output:source)"
     else:
       styledEcho fgRed, "Unknown subcommand: ", fgWhite, subcmdHelp
   of "":
