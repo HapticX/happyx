@@ -2,4 +2,4 @@ import happyx
 
 
 pathParams:
-  id int
+  blogId int
