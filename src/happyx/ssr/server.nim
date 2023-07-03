@@ -134,11 +134,9 @@ proc ctrlCHook() {.noconv.} =
   quit(QuitSuccess)
 
 proc onQuit() {.noconv.} =
-  echo "Shutdown ..."
   when int(enableHttpBeast) + int(enableHttpx) + int(enableMicro) == 0:
     try:
       pointerServer[].instance.close()
-      echo "Server closed"
     except NilAccessDefect:
       discard
 
@@ -888,7 +886,7 @@ macro routes*(server: Server, body: untyped): untyped =
     if stmtList.isIdentUsed(ident"reqMethod"):
       immutableVars.add(newIdentDefs(ident"reqMethod", newEmptyNode(), reqMethod))
     
-  echo result.toStrLit
+    echo result.toStrLit
 
 
 macro model*(modelName, body: untyped): untyped =

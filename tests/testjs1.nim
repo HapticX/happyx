@@ -62,6 +62,18 @@ var html =
     of teThree:
       h3:
         "Oops"
+    rawHtml: """
+      <div>
+        <input type="password" />
+        <hr>
+        <script>
+          var x = "Hello, world!";
+        </script>
+      </div>
+      """
+    rawHtml: """
+      Hello, world!
+      """
 
 html.get("input")["class"] = "a"
 

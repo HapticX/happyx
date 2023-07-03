@@ -5,6 +5,8 @@ import
   terminal,
   browsers,
   parsecfg,
+  htmlparser,
+  xmltree,
   locks,
   osproc,
   times,
@@ -35,7 +37,7 @@ type
 
 
 const
-  VERSION = "1.7.1"
+  VERSION = "1.8.0"
   SPA_MAIN_FILE = "main"
   CONFIG_FILE = "happyx.cfg"
 
@@ -88,7 +90,7 @@ proc compileProject(): ProjectData {. discardable .} =
       "nim", getCurrentDir() / result.srcDir,
       [
         "js", "-c", "--hints:off", "--warnings:off",
-        "--opt:size", "--d:danger", "-x:off", "-a:off", result.mainFile
+        "--opt:size", "-d:danger", "-x:off", "-a:off", result.mainFile
       ], nil, options
     )
   of ptSSR, ptSSG:
@@ -161,6 +163,41 @@ proc godEye(arg: ptr GodEyeData) {. thread, nimcall .} =
         lastCheck.add(i)
       currentCheck = @[]
     sleep(20)
+
+
+proc xml2Text(xml: XmlNode): string =
+  case xml.kind
+  of xnElement:
+    result = "t" & xml.tag.capitalizeAscii()
+    if xml.attrsLen > 0:
+      result &= "("
+      var attrs: seq[string] = @[]
+      for key, value in xml.attrs:
+        let k = if key notin NimKeywords: key else: "`" & key & "`"
+        if value == "":
+          attrs.add(k)
+        else:
+          attrs.add(k & " = \"" & value & "\"")
+      result &= attrs.join(", ") & ")"
+    if xml.len > 0:
+      result &= ":"
+  of xnText:
+    if re"\A\s+\z" notin xml.text:
+      result = "\"\"\"" & xml.text.replace(re" +\z", "") & "\"\"\""
+  of xnComment:
+    result = "#[" & xml.text & "]#"
+  else:
+    discard
+
+
+proc xmlTree2Text(data: var string, tree: XmlNode, lvl: int = 2) =
+  let text = tree.xml2Text()
+  if text.len > 0:
+    data &= ' '.repeat(lvl) & tree.xml2Text() & "\n"
+  
+  if tree.kind == xnElement:
+    for child in tree.items:
+      data.xmlTree2Text(child, lvl+2)
 
 
 proc mainHelpMessage() =
@@ -266,6 +303,46 @@ proc buildCommand(optSize: bool = false): int =
   styledEcho fgGreen, "Build completed"
   illwillDeinit()
   QuitSuccess
+
+
+proc html2tagCommand(output: string = "", args: seq[string]): int =
+  var o = output
+  
+  # Check args
+  if args.len != 1:
+    if args.len == 0:
+      styledEcho fgRed, "Argument required!"
+    else:
+      styledEcho fgRed, "Only one argument allowed!"
+    styledEcho fgRed, "Ex. ", fgMagenta, "hpx html2tag ", fgYellow, "source.html"
+  
+  # input file
+  var filename = args[0]
+  
+  # Check output
+  if o.len == 0:
+    o = "source.nim"
+  # Check output extension
+  if o.split('.').len == 1:
+    o &= ".nim"
+  # Check input extension
+  if filename.split('.').len == 1:
+    filename &= ".html"
+
+  var file = open(filename, fmRead)
+  let input = file.readAll()
+  file.close()
+
+  var
+    tree = parseHtml(input)
+    outputData = "import happyx\n\n\nvar html = buildHtml:\n"
+  xmlTree2Text(outputData, tree, 2)
+
+  outputData = outputData.replace(re"""( +)(tScript.*?:)\s+(\"{3})\s*([\s\S]+?)(\"{3})""", "$1$2 $3\n  $1$4$1$5")
+
+  file = open(o, fmWrite)
+  file.write(outputData)
+  file.close()
 
 
 proc createCommand(name: string = "", kind: string = "", templates: bool = false,
@@ -450,7 +527,7 @@ proc createCommand(name: string = "", kind: string = "", templates: bool = false
       "component HelloWorld:\n" &
       "  # Declare HTML template\n" &
       "  `template`:\n" &
-      "    tDiv(class = \"someClass\"):" &
+      "    tDiv(class = \"someClass\"):\n" &
       "      \"Hello, world!\"\n\n" &
       "  `script`:\n" &
       "    echo \"Start coding!\"\n"
@@ -548,6 +625,7 @@ when isMainModule:
       cmdName = "dev"
     ],
     [createCommand, cmdName = "create"],
+    [html2tagCommand, cmdName = "html2tag"],
     [
       mainCommand,
       short = {"version": 'v'}
@@ -567,6 +645,8 @@ when isMainModule:
     quit(dispatchdev(cmdline = pars[1..^1]))
   of "create":
     quit(dispatchcreate(cmdline = pars[1..^1]))
+  of "html2tag":
+    quit(dispatchhtml2tag(cmdline = pars[1..^1]))
   of "help":
     let
       subcmdHelp =
@@ -589,19 +669,24 @@ when isMainModule:
       styledEcho "\nUsage:"
       styledEcho fgMagenta, "hpx dev\n"
       styledEcho "Optional arguments:"
-      styledEcho align("host", 8), "|h - change address (default is 127.0.0.1)"
-      styledEcho align("port", 8), "|p - change port (default is 5000)"
-      styledEcho align("reload", 8), "|r - enable autoreloading"
+      styledEcho align("host", 8), "|h - change address (default is 127.0.0.1) (ex. --host:127.0.0.1)"
+      styledEcho align("port", 8), "|p - change port (default is 5000) (ex. --port:5000)"
+      styledEcho align("reload", 8), "|r - enable autoreloading (ex. --reload)"
     of "create":
       styledEcho fgBlue, "HappyX", fgMagenta, " create ", fgWhite, "command creates a new HappyX project."
       styledEcho "\nUsage:"
       styledEcho fgMagenta, "hpx create\n"
       styledEcho "Optional arguments:"
-      styledEcho align("name", 12), "|n - Project name"
-      styledEcho align("kind", 12), "|k - Project type [SPA, SSR]"
-      styledEcho align("templates", 12), "|t - Enable templates (only for SSR)"
-      styledEcho align("path-params", 12), "|p - Use path params assignment"
-      styledEcho align("use-tailwind", 12), "|u - Use Tailwind CSS 3 (only for SPA)"
+      styledEcho align("name", 12), "|n - Project name (ex. --name:\"Hello, world!\")"
+      styledEcho align("kind", 12), "|k - Project type [SPA, SSR] (ex. --kind:SPA)"
+      styledEcho align("templates", 12), "|t - Enable templates (only for SSR) (ex. --templates)"
+      styledEcho align("path-params", 12), "|p - Use path params assignment (ex. --path-params)"
+      styledEcho align("use-tailwind", 12), "|u - Use Tailwind CSS 3 (only for SPA) (ex. --use-tailwind)"
+    of "html2tag":
+      styledEcho fgBlue, "HappyX", fgMagenta, " html2tag ", fgWhite, "command converts html code into buildHtml macro"
+      styledEcho "\nUsage:"
+      styledEcho fgMagenta, "hpx html2tag source.html\n"
+      styledEcho align("output", 12), "|o - Output file (ex. --output:source.nim)"
     else:
       styledEcho fgRed, "Unknown subcommand: ", fgWhite, subcmdHelp
   of "":

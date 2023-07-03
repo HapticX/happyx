@@ -255,6 +255,20 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
         statement[1],
         newCall("initTag", newStrLitNode("div"), newCall("@", newNimNode(nnkBracket)), newLit(true))
       ))
+    
+    elif statement.kind == nnkCall and statement[0] == ident"rawHtml":
+      var node: NimNode
+      if statement[1].kind in nnkStrLit..nnkTripleStrLit:
+        node = statement[1]
+      elif statement[1].kind == nnkStmtList and statement[1][0].kind in nnkStrLit..nnkTripleStrLit:
+        node = statement[1][0]
+      else:
+        throwDefect(
+          HpxBuildHtmlDefect,
+          "rawHtml allows only static string! ",
+          lineInfoObj(statement[1])
+        )
+      result.add(newCall("tagFromString", node))
 
     elif statement.kind == nnkCall:
       let
@@ -678,7 +692,7 @@ macro buildHtml*(root, html: untyped): untyped =
   ##          else:
   ##            "Other
   ##   
-  ##   - for statements
+  ##   - for statement
   ## 
   ##     .. code-block:: nim
   ##        var state = @["h1", "h2", "input"]
@@ -686,7 +700,35 @@ macro buildHtml*(root, html: untyped): untyped =
   ##          for i in state:
   ##            i
   ## 
-  ##   - components
+  ##   - while statement
+  ## 
+  ##     .. code-block:: nim
+  ##        var state = 0
+  ##        echo buildHtml(`div`):
+  ##          while state < 10:
+  ##            nim:
+  ##              inc state
+  ##            "{state}th"
+  ## 
+  ##   - rawHtml statement
+  ## 
+  ##     .. code-block:: nim
+  ##        echo buildHtml(`div`):
+  ##          rawHtml:  """
+  ##            <div>
+  ##              Hello, world!
+  ##            </div>
+  ##            """
+  ## 
+  ##   - script statement
+  ## 
+  ##     .. code-block:: nim
+  ##        echo buildHtml(`div`):
+  ##          tScript(...): """
+  ##            console.log("Hello, world!");
+  ##            """
+  ## 
+  ##   - component usage
   ## 
   ##     .. code-block:: nim
   ##        component MyComponent

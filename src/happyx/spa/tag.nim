@@ -29,7 +29,10 @@
 import
   strutils,
   strformat,
-  strtabs
+  strtabs,
+  htmlparser,
+  xmltree,
+  regex
 
 
 when defined(js):
@@ -49,7 +52,21 @@ type
 
 
 const
-  UnclosedTags* = ["input", "img", "meta", "br", "hr", "link"]
+  UnclosedTags* = [
+    "area", "base", "basefont", "br", "col", "frame", "hr",
+    "img", "isindex", "link", "meta", "param", "wbr", "source",
+    "input"
+  ]
+  NimKeywords* = [
+    "if", "elif", "else", "using", "type", "of", "in", "notin", "and",
+    "binding", "mixin", "type", "div", "mod", "case", "while", "for",
+    "method", "proc", "func", "iterator", "template", "converter", "macro",
+    "typed", "untyped", "int", "int8", "int16", "int32", "int64", "int128",
+    "float", "float32", "float64", "string", "cstring", "when", "defined",
+    "declared", "import", "from", "try", "except", "finally", "as", "var",
+    "let", "const"
+  ]
+
 
 
 func initTag*(name: string, attrs: StringTableRef,
@@ -181,6 +198,42 @@ func add*(self: TagRef, tags: varargs[TagRef]) =
       continue
     self.children.add(tag)
     tag.parent = self
+
+
+proc xml2Tag(xml: XmlNode): TagRef =
+  case xml.kind
+  of xnElement:
+    if xml.attrsLen > 0:
+      result = initTag(xml.tag)
+      for key, value in xml.attrs:
+        if value == "":
+          result.args.add(key)
+        else:
+          result.attrs[key] = value
+    else:
+      result = initTag(xml.tag)
+  of xnText:
+    if re"\A\s+\z" notin xml.text:
+      result = initTag(xml.text.replace(re" +\z", ""), true)
+  else:
+    discard
+
+
+proc xmlTree2Tag(current, parent: TagRef, tree: XmlNode) =
+  let tag = tree.xml2Tag()
+  if not tag.isNil():
+    current.add(tag)
+  if tree.kind == xnElement:
+    for child in tree.items:
+      tag.xmlTree2Tag(current, child)
+
+
+proc tagFromString*(source: string): TagRef {.inline.} =
+  ## Translates raw HTML string into TagRef
+  let xmlNode = parseHtml(source)
+  result = initTag("div", @[], true)
+  result.xmlTree2Tag(nil, xmlNode)
+  result = result.children[0].children[0]
 
 
 func addArg*(self: TagRef, arg: string) =

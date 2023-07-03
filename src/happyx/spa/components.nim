@@ -85,6 +85,26 @@ macro component*(name, body: untyped): untyped =
   ##      var myCls = new MyClass()
   ##      myFunc(1, 2, 3)
   ## 
+  ## ## Slots 👨‍🔬
+  ## 
+  ## Slots is extends your component
+  ## 
+  ## Declaration:
+  ## 
+  ## .. code-block::nim
+  ##    component Component:
+  ##      `template`:
+  ##        tDiv:
+  ##          slot
+  ## 
+  ## Usage:
+  ## 
+  ## .. code-block::nim
+  ##    buildHtml:
+  ##      component Component(...):
+  ##        tDiv(...):
+  ##          "This div tag with this text will shown in component slot"
+  ## 
   let
     name = $name
     nameObj = $name & "Obj"
