@@ -55,8 +55,7 @@ jobs:
       - name: Install Dependencies
         run: |
           nimble refresh
-          nimble install -y regex nimja cligen httpx microasynchttpserver illwill websocketx
-          nimble build -y
+          nimble install -y
           python -m pip install --upgrade pip
           pip install hapdoc>=1.9.25 -U
 
