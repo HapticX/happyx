@@ -15,10 +15,19 @@ component Header:
         @click:
           route("/")
       tDiv(class = "flex gap-2 h-full"):  # buttons
-        component Button(flat = true):
-          "Blog"
         component Button(
           action = proc() =
-            route("/docs")
+            {.emit:"""//js
+            window.open('https://github.com/HapticX/happyx', '_blank').focus();
+            """.}
         ):
-          "Docs"
+          tDiv(class = "flex items-center gap-4"):
+            tImg(src = "/happyx/public/git.svg", class = "h-6 w-6")
+            tP: "Source code"
+        component Button(
+          action = proc() =
+            {.emit: """//js
+            window.open('https://hapticx.github.io/happyx/happyx.html', '_blank').focus();
+            """.}
+        ):
+          "API Docs"
