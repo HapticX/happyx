@@ -24,8 +24,8 @@ appRoutes("app"):
     # Component usage
     tDiv(class = "flex flex-col gap-2"):
       tDiv(id = "cover", class = "flex relative justify-center items-center h-screen"):
-        tImg(src = "/public/cover_gradient.svg", class = "absolute h-screen w-screen object-cover pointer-events-none")
-        tImg(src = "/public/cover.svg", class = "absolute z-10 pointer-events-none")
+        tImg(src = "/happyx/public/cover_gradient.svg", class = "absolute h-screen w-screen object-cover pointer-events-none")
+        tImg(src = "/happyx/public/cover.svg", class = "absolute z-10 pointer-events-none")
       tDiv(class = "flex flex-col gap-4 bg-[{Background}]"):
         tDiv(class = "sticky top-0"):
           component Header
