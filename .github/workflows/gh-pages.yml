@@ -69,11 +69,12 @@ jobs:
       
       - name: Build HappyX website
         run: |
-          cd ./examples/website
-          hpx build
+          cd ./examples/website/src
+          nim js main
           cd ../..
-          mv ./examples/website/build/index.html ./docs/
-          mv ./examples/website/build/main.js ./docs/
+          mv ./examples/website/src/index.html ./docs/
+          mv ./examples/website/src/main.js ./docs/
+          mv ./examples/website/src/public ./docs/
 
       - name: Deploy documents
         uses: peaceiris/actions-gh-pages@v3
