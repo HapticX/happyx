@@ -73,9 +73,10 @@ jobs:
           nim js main
           ls
           cd ../../..
+          mkdir ./docs/public/
           mv ./examples/website/src/index.html ./docs/
           mv ./examples/website/src/main.js ./docs/
-          mv ./examples/website/src/public ./docs/
+          mv ./examples/website/src/happyx/public/* ./docs/public/
 
       - name: Deploy documents
         uses: peaceiris/actions-gh-pages@v3
