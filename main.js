@@ -13100,7 +13100,7 @@ function callRouter_452984905(force_452984906) {
     F.line = 27;
     var fmtRes_452985014 = mnewString(0);
     F.line = 27;
-    fmtRes_452985014.push.apply(fmtRes_452985014, makeNimstrLit("/public/cover_gradient.svg"));;
+    fmtRes_452985014.push.apply(fmtRes_452985014, makeNimstrLit("/happyx/public/cover_gradient.svg"));;
     F.line = 27;
     var fmtRes_452985019 = mnewString(0);
     F.line = 27;
@@ -13108,7 +13108,7 @@ function callRouter_452984905(force_452984906) {
     F.line = 28;
     var fmtRes_452985027 = mnewString(0);
     F.line = 28;
-    fmtRes_452985027.push.apply(fmtRes_452985027, makeNimstrLit("/public/cover.svg"));;
+    fmtRes_452985027.push.apply(fmtRes_452985027, makeNimstrLit("/happyx/public/cover.svg"));;
     F.line = 28;
     var fmtRes_452985032 = mnewString(0);
     F.line = 28;
@@ -14633,7 +14633,7 @@ function HEX3Aanonymous_2130706652() {
     F.line = 14;
     var fmtRes_2130706498 = mnewString(0);
     F.line = 14;
-    fmtRes_2130706498.push.apply(fmtRes_2130706498, makeNimstrLit("/public/logo.svg"));;
+    fmtRes_2130706498.push.apply(fmtRes_2130706498, makeNimstrLit("/happyx/public/logo.svg"));;
     F.line = 14;
     var fmtRes_2130706503 = mnewString(0);
     F.line = 14;
