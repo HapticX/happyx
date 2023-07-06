@@ -66,6 +66,14 @@ jobs:
 
       - name: Generate API documents
         run: nim doc --index:on -d:docgen --project --out:docs --hints:off src/happyx.nim
+      
+      - name: Build HappyX website
+        run: |
+          cd ./examples/website
+          hpx build
+          cd ../..
+          mv ./examples/website/build/index.html ./docs/
+          mv ./examples/website/build/main.js ./docs/
 
       - name: Deploy documents
         uses: peaceiris/actions-gh-pages@v3
