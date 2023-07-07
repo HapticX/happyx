@@ -19,7 +19,7 @@ window.addEventListener('scroll', (ev) => {
   for(let i = 0; i < children.length; i++) {
     let state = clamp(0, window.pageYOffset, window.pageYOffset - (100 * i)) * children.length / i;
     children[i].style.transform = 'translateY(-' + state * 0.5 + 'px)';
-    children[i].style.opacity = (1.0 - state * 0.005);
+    children[i].style.opacity = (1.0 - state * 0.001);
   }
 }, false);
 
