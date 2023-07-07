@@ -5,5 +5,5 @@ import
 
 component Section:
   `template`:
-    tDiv(class = "flex flex-col items-center bg-[{BackgroundSecondary}] w-full px-36 xl:px-96 py-36 text-3xl md:text-2xl lg:text-xl xl:text-base"):
+    tDiv(class = "flex flex-col items-center bg-[{BackgroundSecondary}] dark:bg-[{BackgroundSecondaryDark}] w-full px-36 xl:px-96 py-36 text-3xl md:text-2xl lg:text-xl xl:text-base"):
       slot

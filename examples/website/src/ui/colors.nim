@@ -3,5 +3,8 @@ const
   Orange* = "#EF7575"
   Pink* = "#A8377B"
   Background* = "#FEFEFE"
+  BackgroundDark* = "#181326"
+  BackgroundSecondaryDark* = "#282336"
+  ForegroundDark* = "#E0EFFE"
   BackgroundSecondary* = "#EFEFEF"
   Foreground* = "#212121"

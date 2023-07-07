@@ -47,18 +47,18 @@ window.addEventListener('mousemove', (ev) => {
 appRoutes("app"):
   "/":
     # Component usage
-    tDiv(class = "flex flex-col gap-2"):
+    tDiv(class = "flex flex-col gap-2 bg-[{Background}] dark:bg-[{BackgroundDark}] text-[{Foreground}] dark:text-[{ForegroundDark}]"):
       tDiv(id = "cover", class = "flex flex-col gap-2 relative justify-center items-center h-screen"):
         tImg(src = "/happyx/public/cover_gradient.svg", class = "absolute h-screen w-screen object-cover pointer-events-none")
         tImg(src = "/happyx/public/nim_logo.svg", class = "z-10 pointer-events-none")
         tImg(src = "/happyx/public/HappyX.svg", class = "z-10 pointer-events-none")
         tImg(src = "/happyx/public/desc.svg", class = "z-10 pointer-events-none")
-      tDiv(class = "flex flex-col gap-4 bg-[{Background}]"):
+      tDiv(class = "flex flex-col gap-4"):
         tDiv(class = "sticky top-0 z-20"):
           component Header
         tDiv(class = "flex flex-col gap-16 items-center justify-center items-center w-full"):
           component Card(id = "ssr"):
-            tImg(src = "/happyx/public/ssr.png", class = "w-96 h-96 pointer-events-none select-none rounded-tl-md rounded-bl-md drop-shadow-2xl")
+            tImg(src = "/happyx/public/ssr.png", class = "w-96 h-96 pointer-events-none select-none rounded-tl-md rounded-bl-md")
             tDiv(class = "w-96 text-center subpixel-antialiased"):
               "Make server-side applications easily with powerful DSL 🔥"
           component Section:
@@ -73,7 +73,7 @@ appRoutes("app"):
               tLi: "Mounting 🔌"
               tLi: "App logic ✨"
           component Card(id = "spa"):
-            tImg(src = "/happyx/public/spa.png", class = "w-96 h-96 pointer-events-none select-none rounded-tl-md rounded-bl-md drop-shadow-2xl")
+            tImg(src = "/happyx/public/spa.png", class = "w-96 h-96 pointer-events-none select-none rounded-tl-md rounded-bl-md")
             tDiv(class = "w-96 text-center subpixel-antialiased"):
               "Make powerful full-stack apps with really same syntax ⚡"
           component Section:
