@@ -4,11 +4,11 @@ import
 
 
 component Card:
-  id: cstring
+  pathToImg: string = ""
 
   `template`:
-    tDiv(
-      id = "{self.id}",
-      class = "flex will-change-transform justify-center items-center gap-12 w-fit drop-shadow-2xl rounded-md bg-gradient-to-r bg-[{Background}] dark:from-[{BackgroundDark}] dark:to-[{BackgroundSecondaryDark}] text-3xl md:text-2xl lg:text-xl xl:text-base pr-4"
-    ):
-      slot
+    tDiv(class = "flex flex-col justify-center items-center gap-4 select-none px-8 pt-2 pb-12 bg-[{Background}] bg-gradient-to-r dark:from-[{BackgroundDark}] dark:to-[{BackgroundSecondaryDark}] drop-shadow-2xl hover:scale-110 transition-all duration-300 rounded-md"):
+      if self.pathToImg.len > 0:
+        tImg(src = "{self.pathToImg}", class = "-mt-8 h-16 w-16 pointer-events-none")
+      tDiv:
+        slot
