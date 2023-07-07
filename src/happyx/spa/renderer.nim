@@ -759,6 +759,8 @@ macro buildComponentHtml*(componentName, html: untyped): untyped =
   ## - `html`: YAML-like structure.
   ## 
   result = buildHtmlProcedure(ident"tDiv", html, true, componentName)
+  if result[^1].kind == nnkCall and $result[^1][0] == "@":
+    result.add(newLit(true))
 
 
 macro routes*(app: App, body: untyped): untyped =

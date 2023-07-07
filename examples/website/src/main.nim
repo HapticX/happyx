@@ -2,7 +2,7 @@
 import
   happyx,
   path_params,
-  components/[header],
+  components/[header, card, section],
   ui/colors
 
 
@@ -11,13 +11,15 @@ let clamp = (min, max, value) => {
   return Math.max(min, Math.min(max, value));
 }
 
-window.addEventListener('scroll', () => {
+window.addEventListener('scroll', (ev) => {
   if (window.location.href.split('#')[1] != "/")
     return
+  // Animate
   let children = document.getElementById("cover").children;
   for(let i = 0; i < children.length; i++) {
-    let state = clamp(0, window.pageYOffset, window.pageYOffset - 50) * children.length / i;
+    let state = clamp(0, window.pageYOffset, window.pageYOffset - (100 * i)) * children.length / i;
     children[i].style.transform = 'translateY(-' + state * 0.5 + 'px)';
+    children[i].style.opacity = (1.0 - state * 0.005);
   }
 }, false);
 
@@ -55,11 +57,11 @@ appRoutes("app"):
         tDiv(class = "sticky top-0 z-20"):
           component Header
         tDiv(class = "flex flex-col gap-16 items-center justify-center items-center w-full"):
-          tDiv(id = "ssr", class = "flex will-change-transform justify-center items-center gap-12 w-fit drop-shadow-2xl rounded-md bg-white"):
+          component Card(id = "ssr"):
             tImg(src = "/happyx/public/ssr.png", class = "w-96 h-96 pointer-events-none select-none rounded-tl-md rounded-bl-md drop-shadow-2xl")
             tDiv(class = "w-96 text-center subpixel-antialiased"):
               "Make server-side applications easily with powerful DSL 🔥"
-          tDiv(class = "flex flex-col bg-[{BackgroundSecondary}] w-full px-96 py-36"):
+          component Section:
             tP: "One of the main features of HappyX is DSL ✌."
             tP: "DSL supports:"
             tUl(class = "list-disc px-2 list-inside indent-2"):
@@ -70,9 +72,10 @@ appRoutes("app"):
               tLi: "Path params 🛠"
               tLi: "Mounting 🔌"
               tLi: "App logic ✨"
-          tDiv(id = "spa", class = "flex will-change-transform justify-center items-center gap-12 w-fit drop-shadow-2xl rounded-md bg-white"):
+          component Card(id = "spa"):
             tImg(src = "/happyx/public/spa.png", class = "w-96 h-96 pointer-events-none select-none rounded-tl-md rounded-bl-md drop-shadow-2xl")
             tDiv(class = "w-96 text-center subpixel-antialiased"):
               "Make powerful full-stack apps with really same syntax ⚡"
-          tDiv(class = "flex flex-col bg-[{BackgroundSecondary}] w-full px-96 py-36"):
-            tP: ""
+          component Section:
+            tP: "You can easily and effectively create powerful modern web apps ✌"
+            tP: "You'll never have to learn new web frameworks again ✨"

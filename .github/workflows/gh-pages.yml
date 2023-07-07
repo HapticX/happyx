@@ -71,7 +71,6 @@ jobs:
         run: |
           cd ./examples/website/src
           nim js main
-          ls
           cd ../../..
           mkdir ./docs/public/
           mv ./examples/website/src/index.html ./docs/
