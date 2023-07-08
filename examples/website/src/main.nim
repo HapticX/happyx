@@ -64,7 +64,7 @@ appRoutes("app"):
           component Section:
             tP: "One of the main features of HappyX is DSL ✌."
             tP: "DSL supports:"
-            tDiv(class = "flex gap-4 py-8"):
+            tDiv(class = "flex gap-6 py-8"):
               component Card(pathToImg = "/happyx/public/html5.svg"):
                 "Buil HTML/CSS/JS"
               component Card(pathToImg = "/happyx/public/setting.svg"):
