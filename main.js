@@ -13377,11 +13377,11 @@ function callRouter_452984908(force_452984909) {
     F.line = 61;
     var fmtRes_452985119 = mnewString(0);
     F.line = 61;
-    fmtRes_452985119.push.apply(fmtRes_452985119, makeNimstrLit("w-96 h-96 pointer-events-none select-none rounded-tl-md rounded-bl-md"));;
+    fmtRes_452985119.push.apply(fmtRes_452985119, makeNimstrLit("w-36 xl:w-96 h-36 xl:h-96 pointer-events-none select-none rounded-tl-md rounded-bl-md"));;
     F.line = 62;
     var fmtRes_452985127 = mnewString(0);
     F.line = 62;
-    fmtRes_452985127.push.apply(fmtRes_452985127, makeNimstrLit("w-96 text-center subpixel-antialiased"));;
+    fmtRes_452985127.push.apply(fmtRes_452985127, makeNimstrLit("w-36 xl:w-96 text-lg xl:text-base text-center subpixel-antialiased"));;
     F.line = 63;
     var fmtRes_452985135 = mnewString(0);
     F.line = 63;
@@ -13413,7 +13413,7 @@ function callRouter_452984908(force_452984909) {
     F.line = 67;
     var fmtRes_452985185 = mnewString(0);
     F.line = 67;
-    fmtRes_452985185.push.apply(fmtRes_452985185, makeNimstrLit("flex gap-4 py-8"));;
+    fmtRes_452985185.push.apply(fmtRes_452985185, makeNimstrLit("flex flex-col md:flex-row gap-6 py-8"));;
     F.line = 68;
     var _comp791414_452985189 = initCard_2197815304(makeNimstrLit("comp791414"), makeNimstrLit("/happyx/public/html5.svg"));
     F.line = 68;
@@ -13497,11 +13497,11 @@ function callRouter_452984908(force_452984909) {
     F.line = 75;
     var fmtRes_452985265 = mnewString(0);
     F.line = 75;
-    fmtRes_452985265.push.apply(fmtRes_452985265, makeNimstrLit("w-96 h-96 pointer-events-none select-none rounded-tl-md rounded-bl-md"));;
+    fmtRes_452985265.push.apply(fmtRes_452985265, makeNimstrLit("w-36 xl:w-96 h-36 xl:h-96 pointer-events-none select-none rounded-tl-md rounded-bl-md"));;
     F.line = 76;
     var fmtRes_452985273 = mnewString(0);
     F.line = 76;
-    fmtRes_452985273.push.apply(fmtRes_452985273, makeNimstrLit("w-96 text-center subpixel-antialiased"));;
+    fmtRes_452985273.push.apply(fmtRes_452985273, makeNimstrLit("w-36 xl:w-96 text-lg xl:text-base text-center subpixel-antialiased"));;
     F.line = 77;
     var fmtRes_452985281 = mnewString(0);
     F.line = 77;
@@ -14988,7 +14988,7 @@ function HEX3Aanonymous_2164261206(self_2164261207) {
     F.line = 20;
     var fmtRes_2164261123 = [mnewString(0)];
     F.line = 20;
-    fmtRes_2164261123[0].push.apply(fmtRes_2164261123[0], makeNimstrLit("px-8 py-1 text-["));;
+    fmtRes_2164261123[0].push.apply(fmtRes_2164261123[0], makeNimstrLit("px-2 md:px-4 xl:px-8 py-1 text-["));;
     F.line = 20;
     formatValue_922747042(fmtRes_2164261123, 0, makeNimstrLit("#212121"), []);
     F.line = 20;
@@ -14996,14 +14996,14 @@ function HEX3Aanonymous_2164261206(self_2164261207) {
     F.line = 20;
     formatValue_922747042(fmtRes_2164261123, 0, makeNimstrLit("#E0EFFE"), []);
     F.line = 20;
-    fmtRes_2164261123[0].push.apply(fmtRes_2164261123[0], makeNimstrLit("] text-3xl md:text-2xl lg:text-xl xl:text-base hover:opacity-80 active:opacity-60 transition-all duration-300"));;
+    fmtRes_2164261123[0].push.apply(fmtRes_2164261123[0], makeNimstrLit("] text-base hover:opacity-80 active:opacity-60 transition-all duration-300"));;
     Temporary1 = initTag_1543503992(makeNimstrLit("div"), [initTag_1543503909(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2164261123[0], NTI33554439)}, NTI2164261094)], 0), [self_2164260991.slot], false)], true);
     }
     else {
       F.line = 23;
       var fmtRes_2164261147 = [mnewString(0)];
       F.line = 23;
-      fmtRes_2164261147[0].push.apply(fmtRes_2164261147[0], makeNimstrLit("px-8 py-1 text-["));;
+      fmtRes_2164261147[0].push.apply(fmtRes_2164261147[0], makeNimstrLit("px-2 md:px-4 xl:px-8 py-1 text-["));;
       F.line = 23;
       formatValue_922747042(fmtRes_2164261147, 0, makeNimstrLit("#FEFEFE"), []);
       F.line = 23;
@@ -15011,7 +15011,7 @@ function HEX3Aanonymous_2164261206(self_2164261207) {
       F.line = 23;
       formatValue_922747042(fmtRes_2164261147, 0, makeNimstrLit("#181326"), []);
       F.line = 23;
-      fmtRes_2164261147[0].push.apply(fmtRes_2164261147[0], makeNimstrLit("] text-3xl md:text-2xl lg:text-xl xl:text-base rounded-full bg-["));;
+      fmtRes_2164261147[0].push.apply(fmtRes_2164261147[0], makeNimstrLit("] text-base rounded-full bg-["));;
       F.line = 23;
       formatValue_922747042(fmtRes_2164261147, 0, makeNimstrLit("#212121"), []);
       F.line = 23;
@@ -15636,7 +15636,7 @@ function render_2214592554(self_2214592555) {
     F.line = 8;
     formatValue_922747042(fmtRes_2214592561, 0, makeNimstrLit("#282336"), []);
     F.line = 8;
-    fmtRes_2214592561[0].push.apply(fmtRes_2214592561[0], makeNimstrLit("] w-full px-36 xl:px-96 py-24 text-3xl md:text-2xl lg:text-xl xl:text-base"));;
+    fmtRes_2214592561[0].push.apply(fmtRes_2214592561[0], makeNimstrLit("] w-full px-36 xl:px-96 py-24 text-lg xl:text-base"));;
     F.line = 7;
     var fmtRes_2214592577 = [mnewString(0)];
     F.line = 7;
@@ -15805,7 +15805,7 @@ function render_2197815356(self_2197815357) {
     F.line = 10;
     var fmtRes_2197815363 = [mnewString(0)];
     F.line = 10;
-    fmtRes_2197815363[0].push.apply(fmtRes_2197815363[0], makeNimstrLit("flex flex-col justify-center items-center gap-4 select-none px-8 pt-2 pb-12 bg-["));;
+    fmtRes_2197815363[0].push.apply(fmtRes_2197815363[0], makeNimstrLit("flex flex-col justify-center text-base items-center gap-4 select-none px-8 pt-2 pb-12 bg-["));;
     F.line = 10;
     formatValue_922747042(fmtRes_2197815363, 0, makeNimstrLit("#FEFEFE"), []);
     F.line = 10;
