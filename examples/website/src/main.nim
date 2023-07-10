@@ -58,13 +58,13 @@ appRoutes("app"):
           component Header
         tDiv(class = "flex flex-col gap-16 items-center justify-center items-center w-full"):
           component SmartCard(id = "ssr"):
-            tImg(src = "/happyx/public/ssr.png", class = "w-96 h-96 pointer-events-none select-none rounded-tl-md rounded-bl-md")
-            tDiv(class = "w-96 text-center subpixel-antialiased"):
+            tImg(src = "/happyx/public/ssr.png", class = "w-36 xl:w-96 h-36 xl:h-96 pointer-events-none select-none rounded-tl-md rounded-bl-md")
+            tDiv(class = "w-36 xl:w-96 text-lg xl:text-base text-center subpixel-antialiased"):
               "Make server-side applications easily with powerful DSL 🔥"
           component Section:
             tP: "One of the main features of HappyX is DSL ✌."
             tP: "DSL supports:"
-            tDiv(class = "flex gap-6 py-8"):
+            tDiv(class = "flex flex-col md:flex-row gap-6 py-8"):
               component Card(pathToImg = "/happyx/public/html5.svg"):
                 "Buil HTML/CSS/JS"
               component Card(pathToImg = "/happyx/public/setting.svg"):
@@ -72,8 +72,8 @@ appRoutes("app"):
               component Card(pathToImg = "/happyx/public/routing.svg"):
                 "Routing/Mounting"
           component SmartCard(id = "spa"):
-            tImg(src = "/happyx/public/spa.png", class = "w-96 h-96 pointer-events-none select-none rounded-tl-md rounded-bl-md")
-            tDiv(class = "w-96 text-center subpixel-antialiased"):
+            tImg(src = "/happyx/public/spa.png", class = "w-36 xl:w-96 h-36 xl:h-96 pointer-events-none select-none rounded-tl-md rounded-bl-md")
+            tDiv(class = "w-36 xl:w-96 text-lg xl:text-base text-center subpixel-antialiased"):
               "Make powerful full-stack apps with really same syntax ⚡"
           component Section:
             tP: "You can easily and effectively create powerful modern web apps ✌"
