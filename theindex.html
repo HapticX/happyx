@@ -70,7 +70,7 @@ window.addEventListener('DOMContentLoaded', main);
 <div class="document" id="documentId">
   <div class="container">
     <h1 class="title">Index</h1>
-    Modules: <a href="happyx.html">happyx</a>, <a href="happyx/core/constants.html">happyx/core/constants</a>, <a href="happyx/core/exceptions.html">happyx/core/exceptions</a>, <a href="happyx/private/macro_utils.html">happyx/private/macro_utils</a>, <a href="happyx/routing/mounting.html">happyx/routing/mounting</a>, <a href="happyx/routing/routing.html">happyx/routing/routing</a>, <a href="happyx/spa/components.html">happyx/spa/components</a>, <a href="happyx/spa/renderer.html">happyx/spa/renderer</a>, <a href="happyx/spa/state.html">happyx/spa/state</a>, <a href="happyx/spa/tag.html">happyx/spa/tag</a>, <a href="happyx/spa/translatable.html">happyx/spa/translatable</a>, <a href="happyx/ssr/cors.html">happyx/ssr/cors</a>, <a href="happyx/ssr/server.html">happyx/ssr/server</a>, <a href="happyx/sugar/js.html">happyx/sugar/js</a>, <a href="happyx/sugar/sgr.html">happyx/sugar/sgr</a>, <a href="happyx/sugar/style.html">happyx/sugar/style</a>, <a href="happyx/tmpl_engine/engine.html">happyx/tmpl_engine/engine</a>.<br/><p /><h2>API symbols</h2>
+    Modules: <a href="happyx.html">happyx</a>, <a href="happyx/core/constants.html">happyx/core/constants</a>, <a href="happyx/core/exceptions.html">happyx/core/exceptions</a>, <a href="happyx/private/macro_utils.html">happyx/private/macro_utils</a>, <a href="happyx/routing/mounting.html">happyx/routing/mounting</a>, <a href="happyx/routing/routing.html">happyx/routing/routing</a>, <a href="happyx/spa/components.html">happyx/spa/components</a>, <a href="happyx/spa/renderer.html">happyx/spa/renderer</a>, <a href="happyx/spa/state.html">happyx/spa/state</a>, <a href="happyx/spa/tag.html">happyx/spa/tag</a>, <a href="happyx/spa/translatable.html">happyx/spa/translatable</a>, <a href="happyx/ssr/cors.html">happyx/ssr/cors</a>, <a href="happyx/ssr/server.html">happyx/ssr/server</a>, <a href="happyx/sugar/js.html">happyx/sugar/js</a>, <a href="happyx/sugar/sgr.html">happyx/sugar/sgr</a>, <a href="happyx/sugar/style.html">happyx/sugar/style</a>, <a href="happyx/sugar/use.html">happyx/sugar/use</a>, <a href="happyx/tmpl_engine/engine.html">happyx/tmpl_engine/engine</a>.<br/><p /><h2>API symbols</h2>
 <dl><dt><a name="%60%21%3D%60" href="#%60%21%3D%60"><span>`!=`:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="state: `!=`[T](self`gensym1, other`gensym1: State[T]): bool" href="happyx/spa/state.html#%21%3D%2C%2C">state: `!=`[T](self`gensym1, other`gensym1: State[T]): bool</a></li>
@@ -275,6 +275,10 @@ window.addEventListener('DOMContentLoaded', main);
 <li><a class="reference external"
           data-doc-search-tag="tag: addArgIter(self: TagRef; arg: string)" href="happyx/spa/tag.html#addArgIter%2CTagRef%2Cstring">tag: addArgIter(self: TagRef; arg: string)</a></li>
           </ul></dd>
+<dt><a name="addAttribute" href="#addAttribute"><span>addAttribute:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="macro_utils: addAttribute(node, key, value: NimNode)" href="happyx/private/macro_utils.html#addAttribute%2CNimNode%2CNimNode%2CNimNode">macro_utils: addAttribute(node, key, value: NimNode)</a></li>
+          </ul></dd>
 <dt><a name="addCORSHeaders" href="#addCORSHeaders"><span>addCORSHeaders:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="cors: addCORSHeaders(headers: HttpHeaders)" href="happyx/ssr/cors.html#addCORSHeaders.m%2CHttpHeaders">cors: addCORSHeaders(headers: HttpHeaders)</a></li>
@@ -315,6 +319,10 @@ window.addEventListener('DOMContentLoaded', main);
 <li><a class="reference external"
           data-doc-search-tag="renderer: appRoutes(name: string; body: untyped): untyped" href="happyx/spa/renderer.html#appRoutes.m%2Cstring%2Cuntyped">renderer: appRoutes(name: string; body: untyped): untyped</a></li>
           </ul></dd>
+<dt><a name="attribute" href="#attribute"><span>attribute:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="macro_utils: attribute(attr: NimNode): NimNode" href="happyx/private/macro_utils.html#attribute%2CNimNode">macro_utils: attribute(attr: NimNode): NimNode</a></li>
+          </ul></dd>
 <dt><a name="BaseComponent" href="#BaseComponent"><span>BaseComponent:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="renderer: BaseComponent" href="happyx/spa/renderer.html#BaseComponent">renderer: BaseComponent</a></li>
@@ -335,10 +343,10 @@ window.addEventListener('DOMContentLoaded', main);
           </ul></dd>
 <dt><a name="buildHtmlProcedure" href="#buildHtmlProcedure"><span>buildHtmlProcedure:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="renderer: buildHtmlProcedure(root, body: NimNode; inComponent: bool = false;
+          data-doc-search-tag="macro_utils: buildHtmlProcedure(root, body: NimNode; inComponent: bool = false;
                    componentName: NimNode = newEmptyNode();
                    inCycle: bool = false; cycleTmpVar: string = &quot;&quot;;
-                   cycleVars: seq[NimNode] = @[]): NimNode" href="happyx/spa/renderer.html#buildHtmlProcedure%2CNimNode%2CNimNode%2Cbool%2CNimNode%2Cbool%2Cstring%2Cseq%5BNimNode%5D">renderer: buildHtmlProcedure(root, body: NimNode; inComponent: bool = false;
+                   cycleVars: seq[NimNode] = @[]): NimNode" href="happyx/private/macro_utils.html#buildHtmlProcedure%2CNimNode%2CNimNode%2Cbool%2CNimNode%2Cbool%2Cstring%2Cseq%5BNimNode%5D">macro_utils: buildHtmlProcedure(root, body: NimNode; inComponent: bool = false;
                    componentName: NimNode = newEmptyNode();
                    inCycle: bool = false; cycleTmpVar: string = &quot;&quot;;
                    cycleVars: seq[NimNode] = @[]): NimNode</a></li>
@@ -402,6 +410,14 @@ window.addEventListener('DOMContentLoaded', main);
 <dt><a name="enableMicro" href="#enableMicro"><span>enableMicro:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="constants: enableMicro" href="happyx/core/constants.html#enableMicro">constants: enableMicro</a></li>
+          </ul></dd>
+<dt><a name="enableUi" href="#enableUi"><span>enableUi:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="constants: enableUi" href="happyx/core/constants.html#enableUi">constants: enableUi</a></li>
+          </ul></dd>
+<dt><a name="endsWithBuildHtml" href="#endsWithBuildHtml"><span>endsWithBuildHtml:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="macro_utils: endsWithBuildHtml(statement: NimNode): bool" href="happyx/private/macro_utils.html#endsWithBuildHtml%2CNimNode">macro_utils: endsWithBuildHtml(statement: NimNode): bool</a></li>
           </ul></dd>
 <dt><a name="eventHandlers" href="#eventHandlers"><span>eventHandlers:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -492,6 +508,10 @@ window.addEventListener('DOMContentLoaded', main);
 <dt><a name="HpxTranslatableDefect" href="#HpxTranslatableDefect"><span>HpxTranslatableDefect:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="exceptions: HpxTranslatableDefect" href="happyx/core/exceptions.html#HpxTranslatableDefect">exceptions: HpxTranslatableDefect</a></li>
+          </ul></dd>
+<dt><a name="HpxUseDefect" href="#HpxUseDefect"><span>HpxUseDefect:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="exceptions: HpxUseDefect" href="happyx/core/exceptions.html#HpxUseDefect">exceptions: HpxUseDefect</a></li>
           </ul></dd>
 <dt><a name="initServer" href="#initServer"><span>initServer:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -611,9 +631,13 @@ window.addEventListener('DOMContentLoaded', main);
           </ul></dd>
 <dt><a name="replaceIter" href="#replaceIter"><span>replaceIter:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="renderer: replaceIter(root: NimNode; search: proc (x: NimNode): bool;
-            replace: proc (x: NimNode): NimNode): bool" href="happyx/spa/renderer.html#replaceIter%2CNimNode%2Cproc%28NimNode%29%2Cproc%28NimNode%29">renderer: replaceIter(root: NimNode; search: proc (x: NimNode): bool;
+          data-doc-search-tag="macro_utils: replaceIter(root: NimNode; search: proc (x: NimNode): bool;
+            replace: proc (x: NimNode): NimNode): bool" href="happyx/private/macro_utils.html#replaceIter%2CNimNode%2Cproc%28NimNode%29%2Cproc%28NimNode%29">macro_utils: replaceIter(root: NimNode; search: proc (x: NimNode): bool;
             replace: proc (x: NimNode): NimNode): bool</a></li>
+          </ul></dd>
+<dt><a name="replaceSelfComponent" href="#replaceSelfComponent"><span>replaceSelfComponent:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="macro_utils: replaceSelfComponent(statement, componentName: NimNode; parent: NimNode = nil)" href="happyx/private/macro_utils.html#replaceSelfComponent%2CNimNode%2CNimNode%2CNimNode">macro_utils: replaceSelfComponent(statement, componentName: NimNode; parent: NimNode = nil)</a></li>
           </ul></dd>
 <dt><a name="reRender" href="#reRender"><span>reRender:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -763,7 +787,23 @@ window.addEventListener('DOMContentLoaded', main);
           </ul></dd>
 <dt><a name="UniqueComponentId" href="#UniqueComponentId"><span>UniqueComponentId:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="renderer: UniqueComponentId" href="happyx/spa/renderer.html#UniqueComponentId">renderer: UniqueComponentId</a></li>
+          data-doc-search-tag="macro_utils: UniqueComponentId" href="happyx/private/macro_utils.html#UniqueComponentId">macro_utils: UniqueComponentId</a></li>
+          </ul></dd>
+<dt><a name="uniqueId" href="#uniqueId"><span>uniqueId:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="macro_utils: uniqueId" href="happyx/private/macro_utils.html#uniqueId">macro_utils: uniqueId</a></li>
+          </ul></dd>
+<dt><a name="use" href="#use"><span>use:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="use: use(expr: untyped): untyped" href="happyx/sugar/use.html#use.m%2Cuntyped">use: use(expr: untyped): untyped</a></li>
+          </ul></dd>
+<dt><a name="useComponent" href="#useComponent"><span>useComponent:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="macro_utils: useComponent(statement: NimNode; inCycle, inComponent: bool;
+             cycleTmpVar: string; cycleVars: seq[NimNode];
+             returnTagRef: bool = true): NimNode" href="happyx/private/macro_utils.html#useComponent%2CNimNode%2Cbool%2Cbool%2Cstring%2Cseq%5BNimNode%5D%2Cbool">macro_utils: useComponent(statement: NimNode; inCycle, inComponent: bool;
+             cycleTmpVar: string; cycleVars: seq[NimNode];
+             returnTagRef: bool = true): NimNode</a></li>
           </ul></dd>
 <dt><a name="val" href="#val"><span>val:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -780,7 +820,7 @@ window.addEventListener('DOMContentLoaded', main);
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-07-10 06:01:41 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-07-15 10:37:56 UTC</small>
       </div>
     </div>
   </div>

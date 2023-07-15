@@ -1,7 +1,16 @@
+uniqueId	happyx/private/macro_utils.html#uniqueId	macro_utils: uniqueId	
 discardStmt	happyx/private/macro_utils.html#discardStmt	macro_utils: discardStmt	
+UniqueComponentId	happyx/private/macro_utils.html#UniqueComponentId	macro_utils: UniqueComponentId	
 getTagName	happyx/private/macro_utils.html#getTagName,string	macro_utils: getTagName(name: string): string	
 formatNode	happyx/private/macro_utils.html#formatNode,NimNode	macro_utils: formatNode(node: NimNode): NimNode	
+useComponent	happyx/private/macro_utils.html#useComponent,NimNode,bool,bool,string,seq[NimNode],bool	macro_utils: useComponent(statement: NimNode; inCycle, inComponent: bool;\n             cycleTmpVar: string; cycleVars: seq[NimNode];\n             returnTagRef: bool = true): NimNode	
 newMultiVarStmt	happyx/private/macro_utils.html#newMultiVarStmt,openArray[NimNode],NimNode,bool	macro_utils: newMultiVarStmt(extractNames: openArray[NimNode]; val: NimNode;\n                isLet: bool = false): NimNode	
 isExpr	happyx/private/macro_utils.html#isExpr,NimNode	macro_utils: isExpr(node: NimNode): bool	
 isIdentUsed	happyx/private/macro_utils.html#isIdentUsed,NimNode,NimNode	macro_utils: isIdentUsed(body, name: NimNode): bool	
 newLambda	happyx/private/macro_utils.html#newLambda,NimNode	macro_utils: newLambda(body: NimNode; params: seq[NimNode] | NimNode = @[newEmptyNode()];\n          pragmas: seq[NimNode] | seq[string] = @[newEmptyNode()]): NimNode	
+replaceIter	happyx/private/macro_utils.html#replaceIter,NimNode,proc(NimNode),proc(NimNode)	macro_utils: replaceIter(root: NimNode; search: proc (x: NimNode): bool;\n            replace: proc (x: NimNode): NimNode): bool	
+attribute	happyx/private/macro_utils.html#attribute,NimNode	macro_utils: attribute(attr: NimNode): NimNode	
+addAttribute	happyx/private/macro_utils.html#addAttribute,NimNode,NimNode,NimNode	macro_utils: addAttribute(node, key, value: NimNode)	
+endsWithBuildHtml	happyx/private/macro_utils.html#endsWithBuildHtml,NimNode	macro_utils: endsWithBuildHtml(statement: NimNode): bool	
+replaceSelfComponent	happyx/private/macro_utils.html#replaceSelfComponent,NimNode,NimNode,NimNode	macro_utils: replaceSelfComponent(statement, componentName: NimNode; parent: NimNode = nil)	
+buildHtmlProcedure	happyx/private/macro_utils.html#buildHtmlProcedure,NimNode,NimNode,bool,NimNode,bool,string,seq[NimNode]	macro_utils: buildHtmlProcedure(root, body: NimNode; inComponent: bool = false;\n                   componentName: NimNode = newEmptyNode();\n                   inCycle: bool = false; cycleTmpVar: string = &quot;&quot;;\n                   cycleVars: seq[NimNode] = @[]): NimNode	

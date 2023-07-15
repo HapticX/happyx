@@ -10,5 +10,6 @@ HpxBuildHtmlDefect	happyx/core/exceptions.html#HpxBuildHtmlDefect	exceptions: Hp
 HpxBuildStyleDefect	happyx/core/exceptions.html#HpxBuildStyleDefect	exceptions: HpxBuildStyleDefect	
 HpxBuildJsDefect	happyx/core/exceptions.html#HpxBuildJsDefect	exceptions: HpxBuildJsDefect	
 HpxTranslatableDefect	happyx/core/exceptions.html#HpxTranslatableDefect	exceptions: HpxTranslatableDefect	
+HpxUseDefect	happyx/core/exceptions.html#HpxUseDefect	exceptions: HpxUseDefect	
 throwDefect	happyx/core/exceptions.html#throwDefect,typedesc,string,LineInfo	exceptions: throwDefect(defect: typedesc; msg: string; lineInfo: LineInfo)	
 HappyX Exceptions 🧨	happyx/core/exceptions.html#happyx-exceptions-🧨	 HappyX Exceptions 🧨	
