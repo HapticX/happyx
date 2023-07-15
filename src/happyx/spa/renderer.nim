@@ -57,23 +57,42 @@ export
   tag
 
 
-type
-  AppEventHandler* = proc(ev: Event = nil)
-  ComponentEventHandler* = proc(self: BaseComponent, ev: Event = nil)
-  App* = ref object
-    appId*: cstring
-    router*: proc(force: bool = false)
-  BaseComponent* = ref BaseComponentObj
-  BaseComponentObj* = object of RootObj
-    uniqCompId*: string
-    isCreated*: bool
-    slot*: TagRef
-    created*: ComponentEventHandler  ## Calls before first rendering
-    exited*: ComponentEventHandler  ## Calls after last rendering
-    updated*: ComponentEventHandler  ## Calls after every rendering
-    pageHide*: ComponentEventHandler  ## Calls after every rendering
-    pageShow*: ComponentEventHandler  ## Calls after every rendering
-    beforeUpdated*: ComponentEventHandler  ## Calls before every rendering
+when defined(js):
+  type
+    AppEventHandler* = proc(ev: Event = nil)
+    ComponentEventHandler* = proc(self: BaseComponent, ev: Event = nil)
+    App* = ref object
+      appId*: cstring
+      router*: proc(force: bool = false)
+    BaseComponent* = ref BaseComponentObj
+    BaseComponentObj* = object of RootObj
+      uniqCompId*: string
+      isCreated*: bool
+      slot*: TagRef
+      created*: ComponentEventHandler  ## Calls before first rendering
+      exited*: ComponentEventHandler  ## Calls after last rendering
+      updated*: ComponentEventHandler  ## Calls after every rendering
+      pageHide*: ComponentEventHandler  ## Calls after every rendering
+      pageShow*: ComponentEventHandler  ## Calls after every rendering
+      beforeUpdated*: ComponentEventHandler  ## Calls before every rendering
+else:
+  type
+    AppEventHandler* = proc(ev: int = 0)
+    ComponentEventHandler* = proc(self: BaseComponent, ev: int = 0)
+    App* = ref object
+      appId*: cstring
+      router*: proc(force: bool = false)
+    BaseComponent* = ref BaseComponentObj
+    BaseComponentObj* = object of RootObj
+      uniqCompId*: string
+      isCreated*: bool
+      slot*: TagRef
+      created*: ComponentEventHandler  ## Calls before first rendering
+      exited*: ComponentEventHandler  ## Calls after last rendering
+      updated*: ComponentEventHandler  ## Calls after every rendering
+      pageHide*: ComponentEventHandler  ## Calls after every rendering
+      pageShow*: ComponentEventHandler  ## Calls after every rendering
+      beforeUpdated*: ComponentEventHandler  ## Calls before every rendering
 
 
 # Global variables
