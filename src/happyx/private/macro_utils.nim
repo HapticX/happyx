@@ -263,7 +263,7 @@ proc endsWithBuildHtml*(statement: NimNode): bool =
 proc replaceSelfComponent*(statement, componentName: NimNode, parent: NimNode = nil) =
   if statement.kind == nnkDotExpr:
     if statement[0].kind == nnkIdent and $statement[0] == "self":
-      if not parent.isNil() and parent.kind == nnkCall:
+      if not parent.isNil() and parent.kind == nnkCall and parent[0] == statement:
         parent[0] = newCall(
           newDotExpr(
             newDotExpr(
@@ -446,12 +446,20 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
         )
         procedure = newLambda(newStmtList(), args)
 
-      if statement.len == 4 and statement.kind == nnkPrefix:
-        args.add(newIdentDefs(statement[2], ident"Event"))
-      elif statement.len == 3 and statement.kind == nnkCall:
-        args.add(newIdentDefs(statement[1], ident"Event"))
+      when defined(js):
+        if statement.len == 4 and statement.kind == nnkPrefix:
+          args.add(newIdentDefs(statement[2], ident"Event"))
+        elif statement.len == 3 and statement.kind == nnkCall:
+          args.add(newIdentDefs(statement[1], ident"Event"))
+        else:
+          args.add(newIdentDefs(ident"ev", ident"Event", newNilLit()))
       else:
-        args.add(newIdentDefs(ident"ev", ident"Event", newNilLit()))
+        if statement.len == 4 and statement.kind == nnkPrefix:
+          args.add(newIdentDefs(statement[2], ident"int"))
+        elif statement.len == 3 and statement.kind == nnkCall:
+          args.add(newIdentDefs(statement[1], ident"int"))
+        else:
+          args.add(newIdentDefs(ident"ev", ident"int", newNilLit()))
       
       if inComponent:
         procedure.body = statement[^1]
