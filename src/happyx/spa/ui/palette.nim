@@ -1,7 +1,8 @@
 ## # Default UI Theme Palette 🎴
 ## 
 
-import dom
+when not defined(docgen):
+  import dom
 
 
 const
