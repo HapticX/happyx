@@ -294,7 +294,7 @@ import
   happyx/tmpl_engine/[engine],
   happyx/routing/[mounting, routing]
 
-when enableUi:
+when enableUi or defined(docgen):
   import
     happyx/spa/ui/[button, input]
   export
