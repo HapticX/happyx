@@ -1,0 +1,9 @@
+ButtonAction	happyx/spa/ui/button.html#ButtonAction	button: ButtonAction	
+DefaultButtonAction	happyx/spa/ui/button.html#DefaultButtonAction	button: DefaultButtonAction	
+ButtonObj	happyx/spa/ui/button.html#ButtonObj	button: ButtonObj	
+Button	happyx/spa/ui/button.html#Button	button: Button	
+initButton	happyx/spa/ui/button.html#initButton,string,ButtonAction	button: initButton(uniqCompId: string; action: ButtonAction = DefaultButtonAction): Button	
+reRender	happyx/spa/ui/button.html#reRender.e,Button	button: reRender(self: Button)	
+render	happyx/spa/ui/button.html#render.e,Button	button: render(self: Button): TagRef	
+Button Component ✨	happyx/spa/ui/button.html#button-component-✨	 Button Component ✨	
+Params ⚙	happyx/spa/ui/button.html#button-component-✨-params-⚙	   Params ⚙	
