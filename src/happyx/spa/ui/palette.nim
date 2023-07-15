@@ -16,33 +16,34 @@ const
   SecondaryActiveColor* = "#88175b"
 
 
-var
-  body = document.getElementsByTagName("body")[0]
-  styleElem = document.createElement("style")
+when not defined(docgen):
+  var
+    body = document.getElementsByTagName("body")[0]
+    styleElem = document.createElement("style")
 
-styleElem.innerHTML = """
-@import url('https://fonts.googleapis.com/css?family=Nunito');
-body {
-  font-family: 'Nunito', sans-serif;
-  margin: 0;
-  padding: 0;
-}
-::placeholder {
-  font-family: 'Nunito', sans-serif;
-  font-size: 1rem;
-}
-:-ms-input-placeholder {
-  font-family: 'Nunito', sans-serif;
-  font-size: 1rem;
-}
-:-moz-placeholder {
-  font-family: 'Nunito', sans-serif;
-  font-size: 1rem;
-}
-:-webkit-input-placeholder  {
-  font-family: 'Nunito', sans-serif;
-  font-size: 1rem;
-}
-"""
-body.style.backgroundColor = BackgroundColor
-body.appendChild(styleElem)
+  styleElem.innerHTML = """
+  @import url('https://fonts.googleapis.com/css?family=Nunito');
+  body {
+    font-family: 'Nunito', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  ::placeholder {
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
+  }
+  :-ms-input-placeholder {
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
+  }
+  :-moz-placeholder {
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
+  }
+  :-webkit-input-placeholder  {
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
+  }
+  """
+  body.style.backgroundColor = BackgroundColor
+  body.appendChild(styleElem)
