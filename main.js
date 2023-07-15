@@ -13,9 +13,9 @@ var NTI2147483713 = {size: 0, kind: 18, base: null, node: null, finalizer: null}
 var NTI2147483699 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI2147483686 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI2197815348 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI2181038352 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI2181038316 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI2181038289 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2181038351 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2181038315 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2181038288 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI2181038084 = {size: 0,kind: 25,base: null,node: null,finalizer: null};
 var NTI2181038145 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI2181038144 = {size: 0, kind: 22, base: null, node: null, finalizer: null};
@@ -1010,15 +1010,15 @@ var NNI2181038130 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{
 {kind: 1, offset: "action", len: 0, typ: NTI2181038144, name: "action", sons: null}]};
 NTI2181038130.node = NNI2181038130;
 NTI2181038130.base = NTI973078535;
-var NNI2181038289 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+var NNI2181038288 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI2181038289.node = NNI2181038289;
-var NNI2181038316 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+NTI2181038288.node = NNI2181038288;
+var NNI2181038315 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI2181038316.node = NNI2181038316;
-var NNI2181038352 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+NTI2181038315.node = NNI2181038315;
+var NNI2181038351 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI2181038352.node = NNI2181038352;
+NTI2181038351.node = NNI2181038351;
 var NNI2197815348 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
 NTI2197815348.node = NNI2197815348;
@@ -15018,7 +15018,7 @@ function HEX3Aanonymous_2181038428(self_2181038429, ev_2181038430) {
     formatValue_637534370(fmtRes_2181038345, 0, makeNimstrLit("#E0EFFE"), []);
     F.line = 20;
     fmtRes_2181038345[0].push.apply(fmtRes_2181038345[0], makeNimstrLit("] text-base hover:opacity-80 active:opacity-60 transition-all duration-300"));;
-    Temporary1 = initTag_1577058424(makeNimstrLit("div"), [initTag_1577058341(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2181038345[0], NTI33554439)}, NTI2181038316)], 0), [self_2181038217.slot], false)], true);
+    Temporary1 = initTag_1577058424(makeNimstrLit("div"), [initTag_1577058341(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2181038345[0], NTI33554439)}, NTI2181038315)], 0), [self_2181038217.slot], false)], true);
     }
     else {
       F.line = 23;
@@ -15041,7 +15041,7 @@ function HEX3Aanonymous_2181038428(self_2181038429, ev_2181038430) {
       formatValue_637534370(fmtRes_2181038369, 0, makeNimstrLit("#E0EFFE"), []);
       F.line = 23;
       fmtRes_2181038369[0].push.apply(fmtRes_2181038369[0], makeNimstrLit("] hover:opacity-90 active:opacity-75 transition-all duration-300"));;
-    Temporary1 = initTag_1577058424(makeNimstrLit("div"), [initTag_1577058341(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2181038369[0], NTI33554439)}, NTI2181038352)], 0), [self_2181038217.slot], false)], true);
+    Temporary1 = initTag_1577058424(makeNimstrLit("div"), [initTag_1577058341(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2181038369[0], NTI33554439)}, NTI2181038351)], 0), [self_2181038217.slot], false)], true);
     }
     
     F.line = 3033;
@@ -15059,7 +15059,7 @@ function HEX3Aanonymous_2181038428(self_2181038429, ev_2181038430) {
     var fmtRes_2181038665 = [mnewString(0)];
     F.line = 16;
     formatValue_637534370(fmtRes_2181038665, 0, style_2181038213(self_2181038217), []);
-    result_2181038218 = initTag_1577058424(makeNimstrLit("div"), [initTag_1577058341(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("onclick"), Field1: nimCopy(null, fmtRes_2181038322[0], NTI33554439)}, NTI2181038289), nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2181038327, NTI33554439)}, NTI2181038289)], 0), [Temporary1, initTag_1577058424(makeNimstrLit("div"), [], true)], false), initTag_1577058424(makeNimstrLit("style"), [initTag_1577058482(fmtRes_2181038665[0], true, [], false)], false)], true);
+    result_2181038218 = initTag_1577058424(makeNimstrLit("div"), [initTag_1577058341(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("onclick"), Field1: nimCopy(null, fmtRes_2181038322[0], NTI33554439)}, NTI2181038288), nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2181038327, NTI33554439)}, NTI2181038288)], 0), [Temporary1, initTag_1577058424(makeNimstrLit("div"), [], true)], false), initTag_1577058424(makeNimstrLit("style"), [initTag_1577058482(fmtRes_2181038665[0], true, [], false)], false)], true);
     F.line = 12;
     self_2181038217.updated(self_2181038217, null);
     F.line = 16;
