@@ -372,58 +372,58 @@ window.addEventListener('DOMContentLoaded', main);
   <a class="reference reference-toplevel" href="#16" id="66">Converters</a>
   <ul class="simple simple-toc-section">
       <ul class="simple nested-toc-section">toBool
-      <li><a class="reference" href="#toBool.c%2CState"
-    title="toBool(self: State): bool">toBool(self: State): bool</a></li>
+      <li><a class="reference" href="#toBool.c%2CState%5Bbool%5D"
+    title="toBool(self: State[bool]): bool">toBool(self: State[bool]): bool</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">toChar
-      <li><a class="reference" href="#toChar.c%2CState"
-    title="toChar(self: State): char">toChar(self: State): char</a></li>
+      <li><a class="reference" href="#toChar.c%2CState%5Bchar%5D"
+    title="toChar(self: State[char]): char">toChar(self: State[char]): char</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">toCString
-      <li><a class="reference" href="#toCString.c%2CState"
-    title="toCString(self: State): cstring">toCString(self: State): cstring</a></li>
+      <li><a class="reference" href="#toCString.c%2CState%5Bcstring%5D"
+    title="toCString(self: State[cstring]): cstring">toCString(self: State[cstring]): cstring</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">toFloat
-      <li><a class="reference" href="#toFloat.c%2CState"
-    title="toFloat(self: State): float">toFloat(self: State): float</a></li>
+      <li><a class="reference" href="#toFloat.c%2CState%5Bfloat%5D"
+    title="toFloat(self: State[float]): float">toFloat(self: State[float]): float</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">toFloat32
-      <li><a class="reference" href="#toFloat32.c%2CState"
-    title="toFloat32(self: State): float32">toFloat32(self: State): float32</a></li>
+      <li><a class="reference" href="#toFloat32.c%2CState%5Bfloat32%5D"
+    title="toFloat32(self: State[float32]): float32">toFloat32(self: State[float32]): float32</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">toFloat64
-      <li><a class="reference" href="#toFloat64.c%2CState"
-    title="toFloat64(self: State): float64">toFloat64(self: State): float64</a></li>
+      <li><a class="reference" href="#toFloat64.c%2CState%5Bfloat64%5D"
+    title="toFloat64(self: State[float64]): float64">toFloat64(self: State[float64]): float64</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">toInt
-      <li><a class="reference" href="#toInt.c%2CState"
-    title="toInt(self: State): int">toInt(self: State): int</a></li>
+      <li><a class="reference" href="#toInt.c%2CState%5Bint%5D"
+    title="toInt(self: State[int]): int">toInt(self: State[int]): int</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">toInt8
-      <li><a class="reference" href="#toInt8.c%2CState"
-    title="toInt8(self: State): int8">toInt8(self: State): int8</a></li>
+      <li><a class="reference" href="#toInt8.c%2CState%5Bint8%5D"
+    title="toInt8(self: State[int8]): int8">toInt8(self: State[int8]): int8</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">toInt16
-      <li><a class="reference" href="#toInt16.c%2CState"
-    title="toInt16(self: State): int16">toInt16(self: State): int16</a></li>
+      <li><a class="reference" href="#toInt16.c%2CState%5Bint16%5D"
+    title="toInt16(self: State[int16]): int16">toInt16(self: State[int16]): int16</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">toInt32
-      <li><a class="reference" href="#toInt32.c%2CState"
-    title="toInt32(self: State): int32">toInt32(self: State): int32</a></li>
+      <li><a class="reference" href="#toInt32.c%2CState%5Bint32%5D"
+    title="toInt32(self: State[int32]): int32">toInt32(self: State[int32]): int32</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">toInt64
-      <li><a class="reference" href="#toInt64.c%2CState"
-    title="toInt64(self: State): int64">toInt64(self: State): int64</a></li>
+      <li><a class="reference" href="#toInt64.c%2CState%5Bint64%5D"
+    title="toInt64(self: State[int64]): int64">toInt64(self: State[int64]): int64</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">toSeq
@@ -432,8 +432,8 @@ window.addEventListener('DOMContentLoaded', main);
 
   </ul>
   <ul class="simple nested-toc-section">toString
-      <li><a class="reference" href="#toString.c%2CState"
-    title="toString(self: State): string">toString(self: State): string</a></li>
+      <li><a class="reference" href="#toString.c%2CState%5Bstring%5D"
+    title="toString(self: State[string]): string">toString(self: State[string]): string</a></li>
 
   </ul>
 
@@ -1032,88 +1032,88 @@ Changes state value
 <div class="section" id="16">
 <h1><a class="toc-backref" href="#16">Converters</a></h1>
 <dl class="item">
-<div id="toBool.c,State">
-<dt><pre><span class="Keyword">converter</span> <a href="#toBool.c%2CState"><span class="Identifier">toBool</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="state.html#State"><span class="Identifier">State</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span></pre></dt>
+<div id="toBool.c,State[bool]">
+<dt><pre><span class="Keyword">converter</span> <a href="#toBool.c%2CState%5Bbool%5D"><span class="Identifier">toBool</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="state.html#State"><span class="Identifier">State</span></a><span class="Other">[</span><span class="Identifier">bool</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 
 
 </dd>
 </div>
-<div id="toChar.c,State">
-<dt><pre><span class="Keyword">converter</span> <a href="#toChar.c%2CState"><span class="Identifier">toChar</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="state.html#State"><span class="Identifier">State</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">char</span></pre></dt>
+<div id="toChar.c,State[char]">
+<dt><pre><span class="Keyword">converter</span> <a href="#toChar.c%2CState%5Bchar%5D"><span class="Identifier">toChar</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="state.html#State"><span class="Identifier">State</span></a><span class="Other">[</span><span class="Identifier">char</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">char</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 
 
 </dd>
 </div>
-<div id="toCString.c,State">
-<dt><pre><span class="Keyword">converter</span> <a href="#toCString.c%2CState"><span class="Identifier">toCString</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="state.html#State"><span class="Identifier">State</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span></pre></dt>
+<div id="toCString.c,State[cstring]">
+<dt><pre><span class="Keyword">converter</span> <a href="#toCString.c%2CState%5Bcstring%5D"><span class="Identifier">toCString</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="state.html#State"><span class="Identifier">State</span></a><span class="Other">[</span><span class="Identifier">cstring</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 
 
 </dd>
 </div>
-<div id="toFloat.c,State">
-<dt><pre><span class="Keyword">converter</span> <a href="#toFloat.c%2CState"><span class="Identifier">toFloat</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="state.html#State"><span class="Identifier">State</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">float</span></pre></dt>
+<div id="toFloat.c,State[float]">
+<dt><pre><span class="Keyword">converter</span> <a href="#toFloat.c%2CState%5Bfloat%5D"><span class="Identifier">toFloat</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="state.html#State"><span class="Identifier">State</span></a><span class="Other">[</span><span class="Identifier">float</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">float</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 
 
 </dd>
 </div>
-<div id="toFloat32.c,State">
-<dt><pre><span class="Keyword">converter</span> <a href="#toFloat32.c%2CState"><span class="Identifier">toFloat32</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="state.html#State"><span class="Identifier">State</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">float32</span></pre></dt>
+<div id="toFloat32.c,State[float32]">
+<dt><pre><span class="Keyword">converter</span> <a href="#toFloat32.c%2CState%5Bfloat32%5D"><span class="Identifier">toFloat32</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="state.html#State"><span class="Identifier">State</span></a><span class="Other">[</span><span class="Identifier">float32</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">float32</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 
 
 </dd>
 </div>
-<div id="toFloat64.c,State">
-<dt><pre><span class="Keyword">converter</span> <a href="#toFloat64.c%2CState"><span class="Identifier">toFloat64</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="state.html#State"><span class="Identifier">State</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">float64</span></pre></dt>
+<div id="toFloat64.c,State[float64]">
+<dt><pre><span class="Keyword">converter</span> <a href="#toFloat64.c%2CState%5Bfloat64%5D"><span class="Identifier">toFloat64</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="state.html#State"><span class="Identifier">State</span></a><span class="Other">[</span><span class="Identifier">float64</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">float64</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 
 
 </dd>
 </div>
-<div id="toInt.c,State">
-<dt><pre><span class="Keyword">converter</span> <a href="#toInt.c%2CState"><span class="Identifier">toInt</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="state.html#State"><span class="Identifier">State</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int</span></pre></dt>
+<div id="toInt.c,State[int]">
+<dt><pre><span class="Keyword">converter</span> <a href="#toInt.c%2CState%5Bint%5D"><span class="Identifier">toInt</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="state.html#State"><span class="Identifier">State</span></a><span class="Other">[</span><span class="Identifier">int</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 
 
 </dd>
 </div>
-<div id="toInt8.c,State">
-<dt><pre><span class="Keyword">converter</span> <a href="#toInt8.c%2CState"><span class="Identifier">toInt8</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="state.html#State"><span class="Identifier">State</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int8</span></pre></dt>
+<div id="toInt8.c,State[int8]">
+<dt><pre><span class="Keyword">converter</span> <a href="#toInt8.c%2CState%5Bint8%5D"><span class="Identifier">toInt8</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="state.html#State"><span class="Identifier">State</span></a><span class="Other">[</span><span class="Identifier">int8</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int8</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 
 
 </dd>
 </div>
-<div id="toInt16.c,State">
-<dt><pre><span class="Keyword">converter</span> <a href="#toInt16.c%2CState"><span class="Identifier">toInt16</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="state.html#State"><span class="Identifier">State</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int16</span></pre></dt>
+<div id="toInt16.c,State[int16]">
+<dt><pre><span class="Keyword">converter</span> <a href="#toInt16.c%2CState%5Bint16%5D"><span class="Identifier">toInt16</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="state.html#State"><span class="Identifier">State</span></a><span class="Other">[</span><span class="Identifier">int16</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int16</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 
 
 </dd>
 </div>
-<div id="toInt32.c,State">
-<dt><pre><span class="Keyword">converter</span> <a href="#toInt32.c%2CState"><span class="Identifier">toInt32</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="state.html#State"><span class="Identifier">State</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int32</span></pre></dt>
+<div id="toInt32.c,State[int32]">
+<dt><pre><span class="Keyword">converter</span> <a href="#toInt32.c%2CState%5Bint32%5D"><span class="Identifier">toInt32</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="state.html#State"><span class="Identifier">State</span></a><span class="Other">[</span><span class="Identifier">int32</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int32</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 
 
 </dd>
 </div>
-<div id="toInt64.c,State">
-<dt><pre><span class="Keyword">converter</span> <a href="#toInt64.c%2CState"><span class="Identifier">toInt64</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="state.html#State"><span class="Identifier">State</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int64</span></pre></dt>
+<div id="toInt64.c,State[int64]">
+<dt><pre><span class="Keyword">converter</span> <a href="#toInt64.c%2CState%5Bint64%5D"><span class="Identifier">toInt64</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="state.html#State"><span class="Identifier">State</span></a><span class="Other">[</span><span class="Identifier">int64</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int64</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 
@@ -1128,8 +1128,8 @@ Changes state value
 
 </dd>
 </div>
-<div id="toString.c,State">
-<dt><pre><span class="Keyword">converter</span> <a href="#toString.c%2CState"><span class="Identifier">toString</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="state.html#State"><span class="Identifier">State</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span></pre></dt>
+<div id="toString.c,State[string]">
+<dt><pre><span class="Keyword">converter</span> <a href="#toString.c%2CState%5Bstring%5D"><span class="Identifier">toString</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="state.html#State"><span class="Identifier">State</span></a><span class="Other">[</span><span class="Identifier">string</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 
@@ -1159,7 +1159,7 @@ Call any function that available for state value
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-07-15 11:17:57 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-07-15 11:40:40 UTC</small>
       </div>
     </div>
   </div>
