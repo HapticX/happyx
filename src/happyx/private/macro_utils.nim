@@ -298,7 +298,7 @@ proc replaceSelfComponent*(statement, componentName: NimNode, parent: NimNode = 
   else:
     for idx, i in statement.pairs:
       if i.kind == nnkAsgn and i[0].kind == nnkDotExpr and $i[0][0] == "self":
-        statement.insert(idx+1, newCall(newDotExpr(ident"self", ident"reRender")))
+        statement.insert(idx+1, newCall("reRender", ident"self"))
     for i in statement.children:
       i.replaceSelfComponent(componentName, statement)
 

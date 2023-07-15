@@ -171,7 +171,14 @@ macro component*(name, body: untyped): untyped =
     templateStmtList = newStmtList()
     scriptStmtList = newStmtList()
     styleStmtList = newStmtList()
-    arguments = @[newEmptyNode(), newIdentDefs(ident"self", ident"BaseComponent"), newIdentDefs(ident"ev", ident"Event", newNilLit())]
+    arguments = @[
+      newEmptyNode(),
+      newIdentDefs(ident"self", ident"BaseComponent"),
+      when defined(js):
+        newIdentDefs(ident"ev", ident"Event", newNilLit())
+      else:
+        newIdentDefs(ident"ev", ident"int", newLit(0))
+    ]
     usedLifeCycles = {
       "created": false,
       "updated": false,
