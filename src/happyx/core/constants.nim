@@ -26,6 +26,8 @@ const
   enableAutoTranslate* = defined(translate) or defined(happyxTranslate) or defined(hpxTranslate)
   # Debug mode
   enableDebug* = defined(debug) or defined(happyxDebug) or defined(hpxDebug)
+  # Framework features
+  enableUi* = defined(enableUi) or defined(happyxEnableUi) or defined(hpxEnableUi)
 
 
 when defined(js):

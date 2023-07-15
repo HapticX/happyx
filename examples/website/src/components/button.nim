@@ -23,4 +23,4 @@ component Button:
         tDiv(class = "px-2 md:px-4 xl:px-8 py-1 text-[{Background}] dark:text-[{BackgroundDark}] text-base rounded-full bg-[{Foreground}] dark:bg-[{ForegroundDark}] hover:opacity-90 active:opacity-75 transition-all duration-300"):
           slot
       @click:
-        self.Button.action.val()()
+        self.action()

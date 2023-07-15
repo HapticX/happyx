@@ -171,7 +171,7 @@ macro component*(name, body: untyped): untyped =
     templateStmtList = newStmtList()
     scriptStmtList = newStmtList()
     styleStmtList = newStmtList()
-    arguments = @[newEmptyNode(), newIdentDefs(ident("self"), ident("BaseComponent"))]
+    arguments = @[newEmptyNode(), newIdentDefs(ident"self", ident"BaseComponent"), newIdentDefs(ident"ev", ident"Event", newNilLit())]
     usedLifeCycles = {
       "created": false,
       "updated": false,
@@ -259,8 +259,8 @@ macro component*(name, body: untyped): untyped =
           elif s[^1][0].kind in [nnkStrLit, nnkTripleStrLit]:
             # String CSS
             let str = ($s[1][0]).replace(
-              re"^([\S ]+?) *\{(?im)", "$1[data-{self.uniqCompId}]{{"
-            ).replace(re"(^ *|\{ *|\n *)\}(?im)", "$1}}")
+              re"([\S ]+?)(?<!\[data-\{self.uniqCompId\}\]) *\{([\S\s]+?)\}(?! *[\d;\w])", "$1[data-{self.uniqCompId}] {{$2}}"
+            )
             styleStmtList = newStmtList(
               newAssignment(
                 ident("result"),

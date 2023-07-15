@@ -1,4 +1,4 @@
-# CLI tool 🛠
+# CLI Tool 🛠
 
 HappyX provides CLI tool for creating, building and serving your projects 🎈
 
@@ -22,7 +22,7 @@ hpx create [optional-arguments]
 - `-p` or `--path-params`: Use path params assignment.
 
 
-### Build project 🔨
+### Build Project 🔨
 
 > You can build single page application project and minimize JS file size 💡
 
@@ -36,7 +36,7 @@ hpx build [optional-arguments]
 - `-o` or `--opt-size`: optimize output file size
 
 
-### Serve project 👨‍🔬
+### Serve Project 👨‍🔬
 
 > You can run your single page application in browser with hot code reloading 💡
 
@@ -50,6 +50,20 @@ hpx dev [optional-arguments]
 - `-h` or `--host`: address where need to serve
 - `-p` or `--port`: port where need to serve
 - `-r` or `--reload`: enable hot code reloading
+
+
+### Convert HTML To HappyX 👨‍🔬
+
+> You can convert your HTML file into happyx file💡
+
+#### Usage 🔌
+```bash
+hpx html2tag INPUT_FILE [optional-arguments]
+```
+
+#### Flags 🚩
+
+- `-o` or `--output`: output file
 
 ---
 

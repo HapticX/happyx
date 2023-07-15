@@ -3,6 +3,7 @@
 ## Describes all defect types that can be thrown
 ## 
 import
+  strformat,
   strutils,
   macros
 
@@ -20,6 +21,7 @@ type
   HpxBuildStyleDefect* = object of Defect  ## Throws when buildStyle syntax is invalid
   HpxBuildJsDefect* = object of Defect  ## Throws when buildJs syntax is invalid
   HpxTranslatableDefect* = object of Defect  ## Throws on invalid translatable syntax
+  HpxUseDefect* = object of Defect  ## Throws on invalid use syntax
 
 
 proc throwDefect*(defect: typedesc, msg: string, lineInfo: LineInfo) =

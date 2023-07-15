@@ -41,7 +41,8 @@ func remember*[T](val: T): State[T] =
 
 proc `val=`*[T](self: State[T], value: T) =
   self.value = value
-  application.router()
+  if not application.isNil() and not application.router.isNil():
+    application.router()
 
 
 func val*[T](self: var State[T]): var T = self.value
@@ -58,10 +59,12 @@ template operator(funcname, op: untyped): untyped =
 template reRenderOperator(funcname, op: untyped): untyped =
   proc `funcname`*[T](self: State[T], other: State[T]) =
     `op`(self.val, other.val)
-    application.router()
+    if not application.isNil() and not application.router.isNil():
+      application.router()
   proc `funcname`*[T](self: State[T], other: T) =
     `op`(self.value, other)
-    application.router()
+    if not application.isNil() and not application.router.isNil():
+      application.router()
 
 
 template boolOperator(funcname, op: untyped): untyped =
@@ -167,7 +170,8 @@ func len*[T](self: State[T]): int =
 proc set*[T](self: State[T], value: T) =
   ## Changes state value
   self.val = value
-  application.router()
+  if not application.isNil() and not application.router.isNil():
+    application.router()
 
 
 func `[]`*[T](self: State[T], idx: int): auto =

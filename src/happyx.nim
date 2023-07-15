@@ -255,6 +255,14 @@
 ## - [cors](happyx/ssr/cors.html) provides CORS registration.
 ## - [server](happyx/ssr/server.html) provides routing and working with server.
 ## 
+## ### Built-In UI 🎴
+## 
+## > ⚠ !Warning! It works only with `-d:enableUi` flag! ⚠
+## 
+## - [palette](happyx/spa/ui/palette.html) provides built-in color palette
+## - [button](happyx/spa/ui/button.html) provides built-in Button component
+## - [input](happyx/spa/ui/input.html) provides built-in Input component
+## 
 ## ### Template Engine 🎴
 ## 
 ## - [engine](happyx/tmpl_engine/engine.html) provides templates for SSR.
@@ -266,6 +274,7 @@
 ## 
 ## ### Syntax Sugar ✨
 ## 
+## - [use](happyx/sugar/use.html) provides `use` macro.
 ## - [style](happyx/sugar/style.html) provides `buildStyle` macro.
 ## - [sgr](happyx/sugar/sgr.html) provides `->` macro.
 ## - [js](happyx/sugar/js.html) provides `buildJs` macro.
@@ -280,13 +289,20 @@ when not defined(js):
 
 import
   happyx/core/[exceptions, constants],
+  happyx/sugar/[use, sgr, js, style],
   happyx/spa/[renderer, state, components, translatable],
   happyx/tmpl_engine/[engine],
-  happyx/routing/[mounting, routing],
-  happyx/sugar/[sgr, js, style]
+  happyx/routing/[mounting, routing]
+
+when enableUi:
+  import
+    happyx/spa/ui/[button, input]
+  export
+    button, input
 
 export
   exceptions,
+  use,
   renderer,
   state,
   components,

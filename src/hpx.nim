@@ -37,7 +37,7 @@ type
 
 
 const
-  VERSION = "1.8.2"
+  VERSION = "1.9.0"
   SPA_MAIN_FILE = "main"
   CONFIG_FILE = "happyx.cfg"
 
@@ -240,10 +240,13 @@ proc buildCommand(optSize: bool = false): int =
     f = open("build" / fmt"{SPA_MAIN_FILE}.js")
     data = f.readAll()
   f.close()
-  data = data.replace(re"(\.?)parent(\s*:?)", "$1prnt$2")
-  data = data.replace(re"lastJSError", "ljse")
-  data = data.replace(re"prevJSError", "pjse")
-  data = data.replace(re"/\*[\s\S]+?\*/\s+", "")
+  # Delete comments
+  data = data.replace(re"//[^\n]+\s+", "")
+  data = data.replace(re"/\*[^\*]+?\*/\s+", "")
+  # Small optimize
+  data = data.replace(re"(\.?)parent(\s*:?)", "$1p$2")
+  data = data.replace(re"\blastJSError\b", "le")
+  data = data.replace(re"\bprevJSError\b", "pe")
   if optSize:
     data = data.replace(re"Uint32Array", "U32A")
     data = data.replace(re"Int32Array", "I32A")
@@ -259,6 +262,7 @@ proc buildCommand(optSize: bool = false): int =
     )
     data = data.replace(re"true", "1")
     data = data.replace(re"false", "0")
+  # Compress expressions
   data = data.replace(re"(if|while|for|else if|do|else|switch)\s+", "$1")
   # Find variables and functions
   var
