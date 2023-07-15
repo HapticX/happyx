@@ -45,6 +45,14 @@ proc `val=`*[T](self: State[T], value: T) =
     application.router()
 
 
+func `$`*[T](self: State[T]): string =
+  ## Returns string representation
+  when T is string:
+    self.value
+  else:
+    $self.value
+
+
 func val*[T](self: var State[T]): var T = self.value
 func val*[T](self: State[T]): T = self.value
 
@@ -77,14 +85,6 @@ template boolOperator(funcname, op: untyped): untyped =
 template unaryBoolOperator(funcname, op: untyped): untyped =
   proc `funcname`*[T](self: State[T]): bool =
     `op`(self.val)
-
-
-func `$`*[T](self: State[T]): string =
-  ## Returns string representation
-  when T is string:
-    self.val
-  else:
-    $self.val
 
 
 boolOperator(`==`, `==`)
@@ -183,17 +183,17 @@ iterator items*[T](self: State[T]): auto =
     yield item
 
 
-converter toBool*(self: State): bool = self.val
-converter toString*(self: State): string = self.val
-converter toCString*(self: State): cstring = self.val
-converter toInt*(self: State): int = self.val
-converter toFloat*(self: State): float = self.val
-converter toChar*(self: State): char = self.val
-converter toInt8*(self: State): int8 = self.val
-converter toInt16*(self: State): int16 = self.val
-converter toInt32*(self: State): int32 = self.val
-converter toInt64*(self: State): int64 = self.val
-converter toFloat32*(self: State): float32 = self.val
-converter toFloat64*(self: State): float64 = self.val
-converter toSeq*[T](self: State[seq[T]]): seq[T] = self.val
+converter toBool*(self: State[bool]): bool = self.value
+converter toString*(self: State[string]): string = self.value
+converter toCString*(self: State[cstring]): cstring = self.value
+converter toInt*(self: State[int]): int = self.value
+converter toFloat*(self: State[float]): float = self.value
+converter toChar*(self: State[char]): char = self.value
+converter toInt8*(self: State[int8]): int8 = self.value
+converter toInt16*(self: State[int16]): int16 = self.value
+converter toInt32*(self: State[int32]): int32 = self.value
+converter toInt64*(self: State[int64]): int64 = self.value
+converter toFloat32*(self: State[float32]): float32 = self.value
+converter toFloat64*(self: State[float64]): float64 = self.value
+converter toSeq*[T](self: State[seq[T]]): seq[T] = self.value
 
