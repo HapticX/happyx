@@ -59,8 +59,8 @@ export
 
 when defined(js):
   type
-    AppEventHandler* = proc(ev: Event = nil)
-    ComponentEventHandler* = proc(self: BaseComponent, ev: Event = nil)
+    AppEventHandler* = proc(ev: Event = nil): void
+    ComponentEventHandler* = proc(self: BaseComponent, ev: Event = nil): void
     App* = ref object
       appId*: cstring
       router*: proc(force: bool = false)
@@ -77,8 +77,8 @@ when defined(js):
       beforeUpdated*: ComponentEventHandler  ## Calls before every rendering
 else:
   type
-    AppEventHandler* = proc(ev: int = 0)
-    ComponentEventHandler* = proc(self: BaseComponent, ev: int = 0)
+    AppEventHandler* = proc(ev: int = 0): void
+    ComponentEventHandler* = proc(self: BaseComponent, ev: int = 0): void
     App* = ref object
       appId*: cstring
       router*: proc(force: bool = false)

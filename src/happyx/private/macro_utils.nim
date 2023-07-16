@@ -307,6 +307,8 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
                          componentName: NimNode = newEmptyNode(), inCycle: bool = false,
                          cycleTmpVar: string = "", cycleVars: seq[NimNode] = @[]): NimNode =
   ## Builds HTML
+  ## 
+  ## Here you can use components and event handlers
   let elementName = newStrLitNode(getTagName($root))
   result = newCall("initTag", elementName)
 

@@ -17,6 +17,9 @@ component HelloWorld:
         "Go to /visit"
         @click:
           route("/visit")
+
+  # @updated:
+  #   echo self.render()
   
   `script`:
     echo self.counter

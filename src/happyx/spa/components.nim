@@ -138,12 +138,29 @@ macro component*(name, body: untyped): untyped =
           newCall("&", newStrLitNode("data-"), newDotExpr(ident("self"), ident(UniqueComponentId)))
         ),
         when defined(js):
-          newAssignment(
-            newDotExpr(
-              newCall("querySelector", ident("document"), ident("tmpData")),
-              ident("outerHTML")
-            ),
-            newCall("cstring", newCall("$", ident("compTmpData")))
+          newStmtList(
+            newVarStmt(ident"current", newCall("querySelector", ident("document"), ident("tmpData"))),
+            newNimNode(nnkForStmt).add(
+              ident"tag",
+              newDotExpr(
+                ident"compTmpData", ident"children"
+              ),
+              newNimNode(nnkIfStmt).add(
+                newNimNode(nnkElifBranch).add(
+                  newCall("not", newCall("isNil", ident"current")),
+                  newStmtList(
+                    newAssignment(
+                      newDotExpr(ident"current", ident"outerHTML"),
+                      newCall("cstring", newCall("$", ident"tag"))
+                    ),
+                    newAssignment(
+                      ident"current",
+                      newDotExpr(newDotExpr(ident"current", ident"nextSibling"), ident"Element")
+                    )
+                  )
+                )
+              )
+            )
           )
         else:
           newCall(
@@ -437,3 +454,4 @@ macro component*(name, body: untyped): untyped =
           newNimNode(nnkPragma).add(ident("gcsafe"))
     ),
   )
+  echo result.toStrLit
