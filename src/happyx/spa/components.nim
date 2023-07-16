@@ -132,13 +132,11 @@ macro component*(name, body: untyped): untyped =
           ident("compTmpData"),
           newCall(newDotExpr(ident"self", ident"render"))
         ),
-        newCall("echo", newDotExpr(ident"compTmpData", ident"children")),
         newCall(
           "addArgIter",
           ident("compTmpData"),
           newCall("&", newStrLitNode("data-"), newDotExpr(ident"self", ident(UniqueComponentId)))
         ),
-        newCall("echo", ident"tmpData"),
         when defined(js):
           newStmtList(
             newVarStmt(ident"_current", newCall("querySelector", ident"document", ident"tmpData")),
