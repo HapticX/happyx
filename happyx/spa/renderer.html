@@ -117,7 +117,7 @@ window.addEventListener('DOMContentLoaded', main);
   appId*: cstring
   router*: proc (force: bool = false)">App</a></li>
   <li><a class="reference" href="#AppEventHandler"
-    title="AppEventHandler = proc (ev: int = 0)">AppEventHandler</a></li>
+    title="AppEventHandler = proc (ev: int = 0): void">AppEventHandler</a></li>
   <li><a class="reference" href="#BaseComponent"
     title="BaseComponent = ref BaseComponentObj">BaseComponent</a></li>
   <li><a class="reference" href="#BaseComponentObj"
@@ -132,7 +132,7 @@ window.addEventListener('DOMContentLoaded', main);
   pageShow*: ComponentEventHandler ## Calls after every rendering
   beforeUpdated*: ComponentEventHandler ## Calls before every rendering">BaseComponentObj</a></li>
   <li><a class="reference" href="#ComponentEventHandler"
-    title="ComponentEventHandler = proc (self: BaseComponent; ev: int = 0)">ComponentEventHandler</a></li>
+    title="ComponentEventHandler = proc (self: BaseComponent; ev: int = 0): void">ComponentEventHandler</a></li>
 
   </ul>
 </li>
@@ -280,7 +280,7 @@ window.addEventListener('DOMContentLoaded', main);
 </dd>
 </div>
 <div id="AppEventHandler">
-<dt><pre><a href="renderer.html#AppEventHandler"><span class="Identifier">AppEventHandler</span></a> <span class="Other">=</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">ev</span><span class="Other">:</span> <span class="Identifier">int</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">)</span></pre></dt>
+<dt><pre><a href="renderer.html#AppEventHandler"><span class="Identifier">AppEventHandler</span></a> <span class="Other">=</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">ev</span><span class="Other">:</span> <span class="Identifier">int</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">void</span></pre></dt>
 <dd>
 
 
@@ -314,7 +314,7 @@ window.addEventListener('DOMContentLoaded', main);
 </dd>
 </div>
 <div id="ComponentEventHandler">
-<dt><pre><a href="renderer.html#ComponentEventHandler"><span class="Identifier">ComponentEventHandler</span></a> <span class="Other">=</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="renderer.html#BaseComponent"><span class="Identifier">BaseComponent</span></a><span class="Other">;</span> <span class="Identifier">ev</span><span class="Other">:</span> <span class="Identifier">int</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">)</span></pre></dt>
+<dt><pre><a href="renderer.html#ComponentEventHandler"><span class="Identifier">ComponentEventHandler</span></a> <span class="Other">=</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="renderer.html#BaseComponent"><span class="Identifier">BaseComponent</span></a><span class="Other">;</span> <span class="Identifier">ev</span><span class="Other">:</span> <span class="Identifier">int</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">void</span></pre></dt>
 <dd>
 
 
@@ -594,7 +594,7 @@ Starts single page application
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-07-15 13:42:54 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-07-16 14:51:54 UTC</small>
       </div>
     </div>
   </div>

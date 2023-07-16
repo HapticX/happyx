@@ -2,20 +2,20 @@
 var framePtr = null;
 var excHandler = 0;
 var lastJSError = null;
-var NTI2214592650 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI2214592560 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI2231369762 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI2147483895 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI2147483853 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI2147483841 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI2147483826 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI2147483713 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI2147483699 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI2147483686 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI2197815344 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI2181038342 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI2181038306 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI2181038284 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2214592656 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2214592566 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2231369768 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2147483901 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2147483859 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2147483847 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2147483832 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2147483719 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2147483705 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2147483692 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2197815350 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2181038348 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2181038312 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2181038290 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI2181038084 = {size: 0,kind: 25,base: null,node: null,finalizer: null};
 var NTI2181038141 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI2181038140 = {size: 0, kind: 22, base: null, node: null, finalizer: null};
@@ -1010,48 +1010,48 @@ var NNI2181038130 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{
 {kind: 1, offset: "action", len: 0, typ: NTI2181038140, name: "action", sons: null}]};
 NTI2181038130.node = NNI2181038130;
 NTI2181038130.base = NTI973078535;
-var NNI2181038284 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+var NNI2181038290 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI2181038284.node = NNI2181038284;
-var NNI2181038306 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+NTI2181038290.node = NNI2181038290;
+var NNI2181038312 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI2181038306.node = NNI2181038306;
-var NNI2181038342 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+NTI2181038312.node = NNI2181038312;
+var NNI2181038348 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI2181038342.node = NNI2181038342;
-var NNI2197815344 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+NTI2181038348.node = NNI2181038348;
+var NNI2197815350 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI2197815344.node = NNI2197815344;
-var NNI2147483686 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+NTI2197815350.node = NNI2197815350;
+var NNI2147483692 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI2147483686.node = NNI2147483686;
-var NNI2147483699 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+NTI2147483692.node = NNI2147483692;
+var NNI2147483705 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI2147483699.node = NNI2147483699;
-var NNI2147483713 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+NTI2147483705.node = NNI2147483705;
+var NNI2147483719 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI2147483713.node = NNI2147483713;
-var NNI2147483826 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+NTI2147483719.node = NNI2147483719;
+var NNI2147483832 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI2147483826.node = NNI2147483826;
-var NNI2147483841 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+NTI2147483832.node = NNI2147483832;
+var NNI2147483847 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI2147483841.node = NNI2147483841;
-var NNI2147483853 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+NTI2147483847.node = NNI2147483847;
+var NNI2147483859 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI2147483853.node = NNI2147483853;
-var NNI2147483895 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+NTI2147483859.node = NNI2147483859;
+var NNI2147483901 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI2147483895.node = NNI2147483895;
-var NNI2231369762 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+NTI2147483901.node = NNI2147483901;
+var NNI2231369768 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI2231369762.node = NNI2231369762;
-var NNI2214592560 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+NTI2231369768.node = NNI2231369768;
+var NNI2214592566 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI2214592560.node = NNI2214592560;
-var NNI2214592650 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+NTI2214592566.node = NNI2214592566;
+var NNI2214592656 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI2214592650.node = NNI2214592650;
+NTI2214592656.node = NNI2214592656;
 
 function makeNimstrLit(c_33556801) {
       var result = [];
@@ -1574,10 +1574,10 @@ if (!Math.trunc) {
   };
 }
 
-var F = {procname: "module happyx", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx.nim", line: 0};
+var F = {procname: "module happyx", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module exceptions", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/core/exceptions.nim", line: 0};
+var F = {procname: "module exceptions", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/core/exceptions.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
 var F = {procname: "module strformat", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.12/lib/pure/strformat.nim", line: 0};
@@ -3674,40 +3674,40 @@ framePtr = F.prev;
 var F = {procname: "module strformat", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.12/lib/pure/strformat.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module exceptions", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/core/exceptions.nim", line: 0};
+var F = {procname: "module exceptions", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/core/exceptions.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module exceptions", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/core/exceptions.nim", line: 0};
+var F = {procname: "module exceptions", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/core/exceptions.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module exceptions", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/core/exceptions.nim", line: 0};
+var F = {procname: "module exceptions", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/core/exceptions.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module exceptions", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/core/exceptions.nim", line: 0};
+var F = {procname: "module exceptions", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/core/exceptions.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module constants", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/core/constants.nim", line: 0};
+var F = {procname: "module constants", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/core/constants.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module constants", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/core/constants.nim", line: 0};
+var F = {procname: "module constants", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/core/constants.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module constants", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/core/constants.nim", line: 0};
+var F = {procname: "module constants", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/core/constants.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module constants", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/core/constants.nim", line: 0};
+var F = {procname: "module constants", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/core/constants.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module constants", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/core/constants.nim", line: 0};
+var F = {procname: "module constants", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/core/constants.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module use", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/sugar/use.nim", line: 0};
+var F = {procname: "module use", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/sugar/use.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module components", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/components.nim", line: 0};
+var F = {procname: "module components", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/components.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/renderer.nim", line: 0};
+var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/renderer.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
 var F = {procname: "module logging", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.12/lib/pure/logging.nim", line: 0};
@@ -7574,7 +7574,7 @@ framePtr = F.prev;
 var F = {procname: "module regex", prev: framePtr, filename: "/home/runner/.nimble/pkgs/regex-0.20.2/regex.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/tag.nim", line: 0};
+var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/tag.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
 var F = {procname: "module htmlparser", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.12/lib/pure/htmlparser.nim", line: 0};
@@ -8174,7 +8174,7 @@ framePtr = F.prev;
 var F = {procname: "module htmlparser", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.12/lib/pure/htmlparser.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/tag.nim", line: 0};
+var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/tag.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
 var F = {procname: "module dom", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.12/lib/js/dom.nim", line: 0};
@@ -8720,257 +8720,254 @@ framePtr = F.prev;
 var F = {procname: "module dom", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.12/lib/js/dom.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/tag.nim", line: 0};
+var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/tag.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/tag.nim", line: 0};
+var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/tag.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/tag.nim", line: 0};
+var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/tag.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/tag.nim", line: 0};
+var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/tag.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/tag.nim", line: 0};
+var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/tag.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/tag.nim", line: 0};
+var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/tag.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/tag.nim", line: 0};
+var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/tag.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/tag.nim", line: 0};
+var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/tag.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/tag.nim", line: 0};
+var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/tag.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/tag.nim", line: 0};
+var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/tag.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/tag.nim", line: 0};
+var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/tag.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/tag.nim", line: 0};
+var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/tag.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/tag.nim", line: 0};
+var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/tag.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/tag.nim", line: 0};
+var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/tag.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/tag.nim", line: 0};
+var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/tag.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/tag.nim", line: 0};
+var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/tag.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/tag.nim", line: 0};
+var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/tag.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/tag.nim", line: 0};
+var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/tag.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/tag.nim", line: 0};
+var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/tag.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/tag.nim", line: 0};
+var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/tag.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/tag.nim", line: 0};
+var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/tag.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/tag.nim", line: 0};
+var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/tag.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/tag.nim", line: 0};
+var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/tag.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/tag.nim", line: 0};
+var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/tag.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/tag.nim", line: 0};
+var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/tag.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module translatable", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/translatable.nim", line: 0};
+var F = {procname: "module translatable", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/translatable.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module translatable", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/translatable.nim", line: 0};
+var F = {procname: "module translatable", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/translatable.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module translatable", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/translatable.nim", line: 0};
+var F = {procname: "module translatable", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/translatable.nim", line: 0};
 framePtr = F;
 F.line = 28;
 F.line = 29;
 framePtr = F.prev;
-var F = {procname: "module translatable", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/translatable.nim", line: 0};
+var F = {procname: "module translatable", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/translatable.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module translatable", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/translatable.nim", line: 0};
+var F = {procname: "module translatable", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/translatable.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module translatable", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/translatable.nim", line: 0};
+var F = {procname: "module translatable", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/translatable.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module macro_utils", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/private/macro_utils.nim", line: 0};
+var F = {procname: "module macro_utils", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/private/macro_utils.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module macro_utils", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/private/macro_utils.nim", line: 0};
+var F = {procname: "module macro_utils", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/private/macro_utils.nim", line: 0};
 framePtr = F;
 F.line = 11;
 F.line = 13;
 framePtr = F.prev;
-var F = {procname: "module macro_utils", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/private/macro_utils.nim", line: 0};
+var F = {procname: "module macro_utils", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/private/macro_utils.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module macro_utils", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/private/macro_utils.nim", line: 0};
+var F = {procname: "module macro_utils", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/private/macro_utils.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module macro_utils", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/private/macro_utils.nim", line: 0};
+var F = {procname: "module macro_utils", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/private/macro_utils.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module macro_utils", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/private/macro_utils.nim", line: 0};
+var F = {procname: "module macro_utils", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/private/macro_utils.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module macro_utils", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/private/macro_utils.nim", line: 0};
+var F = {procname: "module macro_utils", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/private/macro_utils.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module macro_utils", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/private/macro_utils.nim", line: 0};
+var F = {procname: "module macro_utils", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/private/macro_utils.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module macro_utils", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/private/macro_utils.nim", line: 0};
+var F = {procname: "module macro_utils", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/private/macro_utils.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module macro_utils", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/private/macro_utils.nim", line: 0};
+var F = {procname: "module macro_utils", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/private/macro_utils.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module macro_utils", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/private/macro_utils.nim", line: 0};
+var F = {procname: "module macro_utils", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/private/macro_utils.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module macro_utils", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/private/macro_utils.nim", line: 0};
+var F = {procname: "module macro_utils", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/private/macro_utils.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module macro_utils", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/private/macro_utils.nim", line: 0};
+var F = {procname: "module macro_utils", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/private/macro_utils.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module macro_utils", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/private/macro_utils.nim", line: 0};
+var F = {procname: "module macro_utils", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/private/macro_utils.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module macro_utils", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/private/macro_utils.nim", line: 0};
+var F = {procname: "module macro_utils", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/private/macro_utils.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module macro_utils", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/private/macro_utils.nim", line: 0};
+var F = {procname: "module macro_utils", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/private/macro_utils.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module macro_utils", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/private/macro_utils.nim", line: 0};
+var F = {procname: "module macro_utils", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/private/macro_utils.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module macro_utils", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/private/macro_utils.nim", line: 0};
+var F = {procname: "module macro_utils", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/private/macro_utils.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module routing", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/routing/routing.nim", line: 0};
+var F = {procname: "module routing", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/routing/routing.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module routing", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/routing/routing.nim", line: 0};
+var F = {procname: "module routing", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/routing/routing.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module routing", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/routing/routing.nim", line: 0};
+var F = {procname: "module routing", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/routing/routing.nim", line: 0};
 framePtr = F;
 F.line = 19;
 framePtr = F.prev;
-var F = {procname: "module routing", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/routing/routing.nim", line: 0};
+var F = {procname: "module routing", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/routing/routing.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module routing", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/routing/routing.nim", line: 0};
+var F = {procname: "module routing", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/routing/routing.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module routing", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/routing/routing.nim", line: 0};
+var F = {procname: "module routing", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/routing/routing.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module routing", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/routing/routing.nim", line: 0};
+var F = {procname: "module routing", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/routing/routing.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module mounting", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/routing/mounting.nim", line: 0};
+var F = {procname: "module mounting", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/routing/mounting.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module mounting", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/routing/mounting.nim", line: 0};
+var F = {procname: "module mounting", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/routing/mounting.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module mounting", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/routing/mounting.nim", line: 0};
+var F = {procname: "module mounting", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/routing/mounting.nim", line: 0};
 framePtr = F;
 F.line = 28;
 framePtr = F.prev;
-var F = {procname: "module mounting", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/routing/mounting.nim", line: 0};
+var F = {procname: "module mounting", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/routing/mounting.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module mounting", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/routing/mounting.nim", line: 0};
+var F = {procname: "module mounting", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/routing/mounting.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module mounting", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/routing/mounting.nim", line: 0};
+var F = {procname: "module mounting", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/routing/mounting.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module sgr", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/sugar/sgr.nim", line: 0};
+var F = {procname: "module sgr", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/sugar/sgr.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module sgr", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/sugar/sgr.nim", line: 0};
+var F = {procname: "module sgr", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/sugar/sgr.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module sgr", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/sugar/sgr.nim", line: 0};
+var F = {procname: "module sgr", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/sugar/sgr.nim", line: 0};
 framePtr = F;
 F.line = 12;
 framePtr = F.prev;
-var F = {procname: "module sgr", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/sugar/sgr.nim", line: 0};
+var F = {procname: "module sgr", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/sugar/sgr.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module sgr", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/sugar/sgr.nim", line: 0};
+var F = {procname: "module sgr", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/sugar/sgr.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module style", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/sugar/style.nim", line: 0};
+var F = {procname: "module style", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/sugar/style.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module style", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/sugar/style.nim", line: 0};
+var F = {procname: "module style", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/sugar/style.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module style", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/sugar/style.nim", line: 0};
+var F = {procname: "module style", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/sugar/style.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module style", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/sugar/style.nim", line: 0};
+var F = {procname: "module style", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/sugar/style.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module style", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/sugar/style.nim", line: 0};
+var F = {procname: "module style", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/sugar/style.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module style", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/sugar/style.nim", line: 0};
+var F = {procname: "module style", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/sugar/style.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module js", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/sugar/js.nim", line: 0};
+var F = {procname: "module js", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/sugar/js.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module js", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/sugar/js.nim", line: 0};
+var F = {procname: "module js", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/sugar/js.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module js", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/sugar/js.nim", line: 0};
+var F = {procname: "module js", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/sugar/js.nim", line: 0};
 framePtr = F;
 F.line = 17;
 F.line = 18;
 F.line = 19;
 framePtr = F.prev;
-var F = {procname: "module js", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/sugar/js.nim", line: 0};
+var F = {procname: "module js", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/sugar/js.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module js", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/sugar/js.nim", line: 0};
+var F = {procname: "module js", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/sugar/js.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module js", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/sugar/js.nim", line: 0};
+var F = {procname: "module js", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/sugar/js.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/renderer.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module jsconsole", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.12/lib/js/jsconsole.nim", line: 0};
+var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/renderer.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
 var F = {procname: "module jsconsole", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.12/lib/js/jsconsole.nim", line: 0};
@@ -9039,10 +9036,13 @@ framePtr = F.prev;
 var F = {procname: "module jsconsole", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.12/lib/js/jsconsole.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/renderer.nim", line: 0};
+var F = {procname: "module jsconsole", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.12/lib/js/jsconsole.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/renderer.nim", line: 0};
+var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/renderer.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/renderer.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
 
@@ -9972,7 +9972,7 @@ function HEX5BHEX5D_973083834(t_973083837, key_973083838) {
 var Temporary1;
 var Temporary2;
 var Temporary3;
-var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/renderer.nim", line: 0};
+var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/renderer.nim", line: 0};
 framePtr = F;
 F.line = 100;
 var application_973078576 = [null];
@@ -10024,172 +10024,172 @@ F.line = 129;
 }
 
 framePtr = F.prev;
-var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/renderer.nim", line: 0};
+var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/renderer.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/renderer.nim", line: 0};
+var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/renderer.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/renderer.nim", line: 0};
+var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/renderer.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/renderer.nim", line: 0};
+var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/renderer.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/renderer.nim", line: 0};
+var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/renderer.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/renderer.nim", line: 0};
+var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/renderer.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/renderer.nim", line: 0};
+var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/renderer.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/renderer.nim", line: 0};
+var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/renderer.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/renderer.nim", line: 0};
+var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/renderer.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/renderer.nim", line: 0};
+var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/renderer.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/renderer.nim", line: 0};
+var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/renderer.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/renderer.nim", line: 0};
+var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/renderer.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/renderer.nim", line: 0};
+var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/renderer.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/renderer.nim", line: 0};
+var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/renderer.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/renderer.nim", line: 0};
+var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/renderer.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module components", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/components.nim", line: 0};
+var F = {procname: "module components", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/components.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module components", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/components.nim", line: 0};
+var F = {procname: "module components", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/components.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module components", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/components.nim", line: 0};
+var F = {procname: "module components", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/components.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module components", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/components.nim", line: 0};
+var F = {procname: "module components", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/components.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module use", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/sugar/use.nim", line: 0};
+var F = {procname: "module use", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/sugar/use.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module use", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/sugar/use.nim", line: 0};
+var F = {procname: "module use", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/sugar/use.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module use", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/sugar/use.nim", line: 0};
+var F = {procname: "module use", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/sugar/use.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/state.nim", line: 0};
+var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/state.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/state.nim", line: 0};
+var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/state.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/state.nim", line: 0};
+var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/state.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/state.nim", line: 0};
+var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/state.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/state.nim", line: 0};
+var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/state.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/state.nim", line: 0};
+var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/state.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/state.nim", line: 0};
+var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/state.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/state.nim", line: 0};
+var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/state.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/state.nim", line: 0};
+var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/state.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/state.nim", line: 0};
+var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/state.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/state.nim", line: 0};
+var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/state.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/state.nim", line: 0};
+var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/state.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/state.nim", line: 0};
+var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/state.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/state.nim", line: 0};
+var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/state.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/state.nim", line: 0};
+var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/state.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/state.nim", line: 0};
+var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/state.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/state.nim", line: 0};
+var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/state.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/state.nim", line: 0};
+var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/state.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/state.nim", line: 0};
+var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/state.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/state.nim", line: 0};
+var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/state.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/state.nim", line: 0};
+var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/state.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/state.nim", line: 0};
+var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/state.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/state.nim", line: 0};
+var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/state.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/state.nim", line: 0};
+var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/state.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/state.nim", line: 0};
+var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/state.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/state.nim", line: 0};
+var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/state.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/state.nim", line: 0};
+var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/state.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/state.nim", line: 0};
+var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/state.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/state.nim", line: 0};
+var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/state.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/state.nim", line: 0};
+var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/state.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/state.nim", line: 0};
+var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/state.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/state.nim", line: 0};
+var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/state.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/state.nim", line: 0};
+var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/state.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module engine", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/tmpl_engine/engine.nim", line: 0};
+var F = {procname: "module engine", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/tmpl_engine/engine.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
 var F = {procname: "module os", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.12/lib/pure/os.nim", line: 0};
@@ -11189,35 +11189,35 @@ framePtr = F.prev;
 var F = {procname: "module nimja", prev: framePtr, filename: "/home/runner/.nimble/pkgs/nimja-0.8.7/nimja.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module engine", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/tmpl_engine/engine.nim", line: 0};
+var F = {procname: "module engine", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/tmpl_engine/engine.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module engine", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/tmpl_engine/engine.nim", line: 0};
+var F = {procname: "module engine", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/tmpl_engine/engine.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module engine", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/tmpl_engine/engine.nim", line: 0};
+var F = {procname: "module engine", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/tmpl_engine/engine.nim", line: 0};
 framePtr = F;
 F.line = 14;
 framePtr = F.prev;
-var F = {procname: "module engine", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/tmpl_engine/engine.nim", line: 0};
+var F = {procname: "module engine", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/tmpl_engine/engine.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module engine", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/tmpl_engine/engine.nim", line: 0};
+var F = {procname: "module engine", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/tmpl_engine/engine.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module engine", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/tmpl_engine/engine.nim", line: 0};
+var F = {procname: "module engine", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/tmpl_engine/engine.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module happyx", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx.nim", line: 0};
+var F = {procname: "module happyx", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module happyx", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx.nim", line: 0};
+var F = {procname: "module happyx", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module happyx", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx.nim", line: 0};
+var F = {procname: "module happyx", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module happyx", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx.nim", line: 0};
+var F = {procname: "module happyx", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
 var F = {procname: "module path_params", prev: framePtr, filename: "/home/runner/work/happyx/happyx/examples/website/src/path_params.nim", line: 0};
@@ -11347,7 +11347,7 @@ framePtr = F.prev;
 function registerApp_973084079(appId_973084080) {
   var result_973084081 = null;
 
-  var F = {procname: "renderer.registerApp", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/renderer.nim", line: 0};
+  var F = {procname: "renderer.registerApp", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/renderer.nim", line: 0};
   framePtr = F;
     F.line = 156;
     F.line = 157;
@@ -12030,7 +12030,7 @@ function nstnewStringTableWithTableConstr(keyValuePairs_1023410483, mode_1023410
 function initTag_1577058424(name_1577058425, children_1577058430, onlyChildren_1577058431) {
   var result_1577058432 = null;
 
-  var F = {procname: "tag.initTag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/tag.nim", line: 0};
+  var F = {procname: "tag.initTag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/tag.nim", line: 0};
   framePtr = F;
     F.line = 106;
     result_1577058432 = {name: nimCopy(null, name_1577058425, NTI33554439), isText: false, parent: null, attrs: nstnewStringTableWithTableConstr([], 0), children: [], args: [], onlyChildren: onlyChildren_1577058431};
@@ -12077,7 +12077,7 @@ function initTag_1577058424(name_1577058425, children_1577058430, onlyChildren_1
 function initTag_1577058341(name_1577058342, attrs_1577058343, children_1577058348, onlyChildren_1577058349) {
   var result_1577058350 = null;
 
-  var F = {procname: "tag.initTag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/tag.nim", line: 0};
+  var F = {procname: "tag.initTag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/tag.nim", line: 0};
   framePtr = F;
     F.line = 84;
     result_1577058350 = {name: nimCopy(null, name_1577058342, NTI33554439), isText: false, parent: null, attrs: attrs_1577058343, children: [], args: [], onlyChildren: onlyChildren_1577058349};
@@ -12191,17 +12191,17 @@ function HEX5BHEX5D_704646315(s_704646318, x_704646319) {
       F.line = 2552;
       var i_704646329 = 0;
       F.line = 119;
-      var i_2181038305 = 0;
+      var i_2181038313 = 0;
       Label2: do {
         F.line = 120;
           Label3: while (true) {
-          if (!(i_2181038305 < L_704646324)) break Label3;
+          if (!(i_2181038313 < L_704646324)) break Label3;
             F.line = 2552;
-            i_704646329 = i_2181038305;
+            i_704646329 = i_2181038313;
             F.line = 2552;
             result_704646320[chckIndx(i_704646329, 0, (result_704646320).length - 1)] = s_704646318[chckIndx(addInt(i_704646329, a_704646322), 0, (s_704646318).length - 1)];
             F.line = 122;
-            i_2181038305 = addInt(i_2181038305, 1);
+            i_2181038313 = addInt(i_2181038313, 1);
           }
       } while (false);
     } while (false);
@@ -12663,7 +12663,7 @@ function formatValue_637534370(result_637534371, result_637534371_Idx, value_637
 function initHeader_2147483654(uniqCompId_2147483655) {
   var result_2147483656 = null;
 
-  var F = {procname: "header.initHeader", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/components.nim", line: 0};
+  var F = {procname: "header.initHeader", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/components.nim", line: 0};
   framePtr = F;
     F.line = 9;
     result_2147483656 = {uniqCompId: nimCopy(null, uniqCompId_2147483655, NTI33554439), m_type: NTI2147483651, isCreated: false, slot: null, created: null, exited: null, updated: null, pageHide: null, pageShow: null, beforeUpdated: null};
@@ -12882,7 +12882,7 @@ function registerComponent_973084091(name_973084092, component_973084093) {
 
   var result_973084094 = null;
 
-  var F = {procname: "renderer.registerComponent", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/renderer.nim", line: 0};
+  var F = {procname: "renderer.registerComponent", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/renderer.nim", line: 0};
   framePtr = F;
   BeforeRet: do {
     F.line = 162;
@@ -12905,7 +12905,7 @@ function registerComponent_973084091(name_973084092, component_973084093) {
 function initTag_1577058482(name_1577058483, isText_1577058484, children_1577058489, onlyChildren_1577058490) {
   var result_1577058491 = null;
 
-  var F = {procname: "tag.initTag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/tag.nim", line: 0};
+  var F = {procname: "tag.initTag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/tag.nim", line: 0};
   framePtr = F;
     F.line = 146;
     result_1577058491 = {name: nimCopy(null, name_1577058483, NTI33554439), isText: isText_1577058484, parent: null, attrs: nstnewStringTableWithTableConstr([], 0), children: [], args: [], onlyChildren: onlyChildren_1577058490};
@@ -12950,7 +12950,7 @@ function initTag_1577058482(name_1577058483, isText_1577058484, children_1577058
 }
 
 function addArgIter_1577058859(self_1577058860, arg_1577058861) {
-  var F = {procname: "tag.addArgIter", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/tag.nim", line: 0};
+  var F = {procname: "tag.addArgIter", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/tag.nim", line: 0};
   framePtr = F;
     if (((self_1577058860.args).length == 0)) {
     F.line = 246;
@@ -12991,7 +12991,7 @@ function addArgIter_1577058859(self_1577058860, arg_1577058861) {
 function remember_2197815307(val_2197815309) {
   var result_2197815310 = null;
 
-  var F = {procname: "remember.remember", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/state.nim", line: 0};
+  var F = {procname: "remember.remember", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/state.nim", line: 0};
   framePtr = F;
     F.line = 38;
     result_2197815310 = {value: val_2197815309};
@@ -13004,7 +13004,7 @@ function remember_2197815307(val_2197815309) {
 function initSmartCard_2197815303(uniqCompId_2197815304, id_2197815305) {
   var result_2197815306 = null;
 
-  var F = {procname: "smart_card.initSmartCard", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/components.nim", line: 0};
+  var F = {procname: "smart_card.initSmartCard", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/components.nim", line: 0};
   framePtr = F;
     F.line = 6;
     result_2197815306 = {uniqCompId: nimCopy(null, uniqCompId_2197815304, NTI33554439), id: remember_2197815307(id_2197815305), m_type: NTI2197815299, isCreated: false, slot: null, created: null, exited: null, updated: null, pageHide: null, pageShow: null, beforeUpdated: null};
@@ -13017,7 +13017,7 @@ function initSmartCard_2197815303(uniqCompId_2197815304, id_2197815305) {
 function initSection_2231369733(uniqCompId_2231369734) {
   var result_2231369735 = null;
 
-  var F = {procname: "section.initSection", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/components.nim", line: 0};
+  var F = {procname: "section.initSection", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/components.nim", line: 0};
   framePtr = F;
     F.line = 6;
     result_2231369735 = {uniqCompId: nimCopy(null, uniqCompId_2231369734, NTI33554439), m_type: NTI2231369731, isCreated: false, slot: null, created: null, exited: null, updated: null, pageHide: null, pageShow: null, beforeUpdated: null};
@@ -13030,7 +13030,7 @@ function initSection_2231369733(uniqCompId_2231369734) {
 function remember_2214592523(val_2214592525) {
   var result_2214592526 = null;
 
-  var F = {procname: "remember.remember", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/state.nim", line: 0};
+  var F = {procname: "remember.remember", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/state.nim", line: 0};
   framePtr = F;
     F.line = 38;
     result_2214592526 = {value: nimCopy(null, val_2214592525, NTI33554439)};
@@ -13043,7 +13043,7 @@ function remember_2214592523(val_2214592525) {
 function initCard_2214592519(uniqCompId_2214592520, pathToImg_2214592521) {
   var result_2214592522 = null;
 
-  var F = {procname: "card.initCard", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/components.nim", line: 0};
+  var F = {procname: "card.initCard", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/components.nim", line: 0};
   framePtr = F;
     F.line = 6;
     result_2214592522 = {uniqCompId: nimCopy(null, uniqCompId_2214592520, NTI33554439), pathToImg: remember_2214592523(pathToImg_2214592521), m_type: NTI2214592515, isCreated: false, slot: null, created: null, exited: null, updated: null, pageHide: null, pageShow: null, beforeUpdated: null};
@@ -13081,7 +13081,7 @@ function toDom_1577058873(self_1577058874) {
 
   var result_1577058877 = {Field0: null, Field1: false};
 
-  var F = {procname: "tag.toDom", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/tag.nim", line: 0};
+  var F = {procname: "tag.toDom", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/tag.nim", line: 0};
   framePtr = F;
   BeforeRet: do {
     if (self_1577058874.isText) {
@@ -13259,7 +13259,7 @@ function toDom_1577058873(self_1577058874) {
 }
 
 function renderVdom_973084450(app_973084451, tag_973084452) {
-  var F = {procname: "renderer.renderVdom", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/renderer.nim", line: 0};
+  var F = {procname: "renderer.renderVdom", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/renderer.nim", line: 0};
   framePtr = F;
     F.line = 175;
     var elem_973084453 = document.getElementById(app_973084451.appId);
@@ -13278,7 +13278,7 @@ function callRouter_452984908(force_452984909) {
       var Temporary1;
     var Temporary2;
 
-  var F = {procname: "main.callRouter", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/renderer.nim", line: 0};
+  var F = {procname: "main.callRouter", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/renderer.nim", line: 0};
   framePtr = F;
   BeforeRet: do {
     F.line = 520;
@@ -13577,7 +13577,7 @@ function callRouter_452984908(force_452984909) {
 }
 
 function onDOMContentLoaded_452985392(ev_452985393) {
-  var F = {procname: "main.onDOMContentLoaded", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/renderer.nim", line: 0};
+  var F = {procname: "main.onDOMContentLoaded", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/renderer.nim", line: 0};
   framePtr = F;
     F.line = 520;
     callRouter_452984908(false);
@@ -13587,7 +13587,7 @@ function onDOMContentLoaded_452985392(ev_452985393) {
 }
 
 function route_973084074(path_973084075) {
-  var F = {procname: "renderer.route", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/renderer.nim", line: 0};
+  var F = {procname: "renderer.route", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/renderer.nim", line: 0};
   framePtr = F;
     F.line = 149;
     window.history.pushState(null, null, '#' + path_973084075);
@@ -14656,9 +14656,9 @@ function log_989855839(logger_989855836, level_989855837, args_989855838) {
   
 }
 
-function script_2181038193(self_2181038194) {
+function script_2181038201(self_2181038202) {
     
-function HEX3Aanonymous_2181038195(self_2181038196, ev_2181038197) {
+function HEX3Aanonymous_2181038203(self_2181038204, ev_2181038205) {
       var F = {procname: "script.:anonymous", prev: framePtr, filename: "/home/runner/work/happyx/happyx/examples/website/src/components/button.nim", line: 0};
       framePtr = F;
       framePtr = F.prev;
@@ -14666,7 +14666,7 @@ function HEX3Aanonymous_2181038195(self_2181038196, ev_2181038197) {
       
     }
     
-function HEX3Aanonymous_2181038198(self_2181038196, ev_2181038197) {
+function HEX3Aanonymous_2181038206(self_2181038204, ev_2181038205) {
       var F = {procname: "script.:anonymous", prev: framePtr, filename: "/home/runner/work/happyx/happyx/examples/website/src/components/button.nim", line: 0};
       framePtr = F;
       framePtr = F.prev;
@@ -14674,7 +14674,7 @@ function HEX3Aanonymous_2181038198(self_2181038196, ev_2181038197) {
       
     }
     
-function HEX3Aanonymous_2181038199(self_2181038196, ev_2181038197) {
+function HEX3Aanonymous_2181038207(self_2181038204, ev_2181038205) {
       var F = {procname: "script.:anonymous", prev: framePtr, filename: "/home/runner/work/happyx/happyx/examples/website/src/components/button.nim", line: 0};
       framePtr = F;
       framePtr = F.prev;
@@ -14682,7 +14682,7 @@ function HEX3Aanonymous_2181038199(self_2181038196, ev_2181038197) {
       
     }
     
-function HEX3Aanonymous_2181038200(self_2181038196, ev_2181038197) {
+function HEX3Aanonymous_2181038208(self_2181038204, ev_2181038205) {
       var F = {procname: "script.:anonymous", prev: framePtr, filename: "/home/runner/work/happyx/happyx/examples/website/src/components/button.nim", line: 0};
       framePtr = F;
       framePtr = F.prev;
@@ -14690,7 +14690,7 @@ function HEX3Aanonymous_2181038200(self_2181038196, ev_2181038197) {
       
     }
     
-function HEX3Aanonymous_2181038201(self_2181038196, ev_2181038197) {
+function HEX3Aanonymous_2181038209(self_2181038204, ev_2181038205) {
       var F = {procname: "script.:anonymous", prev: framePtr, filename: "/home/runner/work/happyx/happyx/examples/website/src/components/button.nim", line: 0};
       framePtr = F;
       framePtr = F.prev;
@@ -14698,7 +14698,7 @@ function HEX3Aanonymous_2181038201(self_2181038196, ev_2181038197) {
       
     }
     
-function HEX3Aanonymous_2181038202(self_2181038196, ev_2181038197) {
+function HEX3Aanonymous_2181038210(self_2181038204, ev_2181038205) {
       var F = {procname: "script.:anonymous", prev: framePtr, filename: "/home/runner/work/happyx/happyx/examples/website/src/components/button.nim", line: 0};
       framePtr = F;
       framePtr = F.prev;
@@ -14706,20 +14706,20 @@ function HEX3Aanonymous_2181038202(self_2181038196, ev_2181038197) {
       
     }
 
-  var F = {procname: "button.script", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/components.nim", line: 0};
+  var F = {procname: "button.script", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/components.nim", line: 0};
   framePtr = F;
     F.line = 16;
-    self_2181038194.beforeUpdated = HEX3Aanonymous_2181038195;
+    self_2181038202.beforeUpdated = HEX3Aanonymous_2181038203;
     F.line = 16;
-    self_2181038194.pageShow = HEX3Aanonymous_2181038198;
+    self_2181038202.pageShow = HEX3Aanonymous_2181038206;
     F.line = 16;
-    self_2181038194.pageHide = HEX3Aanonymous_2181038199;
+    self_2181038202.pageHide = HEX3Aanonymous_2181038207;
     F.line = 16;
-    self_2181038194.exited = HEX3Aanonymous_2181038200;
+    self_2181038202.exited = HEX3Aanonymous_2181038208;
     F.line = 16;
-    self_2181038194.created = HEX3Aanonymous_2181038201;
+    self_2181038202.created = HEX3Aanonymous_2181038209;
     F.line = 16;
-    self_2181038194.updated = HEX3Aanonymous_2181038202;
+    self_2181038202.updated = HEX3Aanonymous_2181038210;
   framePtr = F.prev;
 
   
@@ -14728,7 +14728,7 @@ function HEX3Aanonymous_2181038202(self_2181038196, ev_2181038197) {
 function toBool_1828717001(self_1828717004) {
   var result_1828717005 = false;
 
-  var F = {procname: "state.toBool", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/state.nim", line: 0};
+  var F = {procname: "state.toBool", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/state.nim", line: 0};
   framePtr = F;
     F.line = 186;
     result_1828717005 = self_1828717004.value;
@@ -14904,57 +14904,57 @@ function HEX5BHEX5DHEX3D_973080258(t_973080261, key_973080262, val_973080263) {
   
 }
 
-function HEX5BHEX5DHEX3D_2181038495(t_2181038498, key_2181038499, val_2181038500) {
+function HEX5BHEX5DHEX3D_2181038503(t_2181038506, key_2181038507, val_2181038508) {
   var F = {procname: "[]=.[]=", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.12/lib/pure/collections/tables.nim", line: 0};
   framePtr = F;
     F.line = 891;
-    HEX5BHEX5DHEX3D_973080258(t_2181038498, key_2181038499, val_2181038500);
+    HEX5BHEX5DHEX3D_973080258(t_2181038506, key_2181038507, val_2181038508);
   framePtr = F.prev;
 
   
 }
 
-function val_2181038427(self_2181038429, self_2181038429_Idx) {
-  var result_2181038430 = null;
-  var result_2181038430_Idx = 0;
+function val_2181038435(self_2181038437, self_2181038437_Idx) {
+  var result_2181038438 = null;
+  var result_2181038438_Idx = 0;
 
-  var F = {procname: "val.val", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/state.nim", line: 0};
+  var F = {procname: "val.val", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/state.nim", line: 0};
   framePtr = F;
     F.line = 56;
-    result_2181038430 = self_2181038429[self_2181038429_Idx]; result_2181038430_Idx = "value";
+    result_2181038438 = self_2181038437[self_2181038437_Idx]; result_2181038438_Idx = "value";
   framePtr = F.prev;
 
-  return [result_2181038430, result_2181038430_Idx];
+  return [result_2181038438, result_2181038438_Idx];
 
 }
 
-function style_2181038212(self_2181038213) {
-  var result_2181038214 = [];
+function style_2181038220(self_2181038221) {
+  var result_2181038222 = [];
 
-  var F = {procname: "button.style", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/components.nim", line: 0};
+  var F = {procname: "button.style", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/components.nim", line: 0};
   framePtr = F;
   framePtr = F.prev;
 
-  return result_2181038214;
+  return result_2181038222;
 
 }
 
-function render_2181038215(self_2181038216) {
+function render_2181038223(self_2181038224) {
     var Temporary1;
     
-function HEX3Aanonymous_2181038417(self_2181038418, ev_2181038419) {
+function HEX3Aanonymous_2181038425(self_2181038426, ev_2181038427) {
         var Temporary1;
 
       var F = {procname: "render.:anonymous", prev: framePtr, filename: "/home/runner/work/happyx/happyx/examples/website/src/components/button.nim", line: 0};
       framePtr = F;
         F.line = 707;
         F.line = 25;
-        var fmtRes_2181038424 = [mnewString(0)];
+        var fmtRes_2181038432 = [mnewString(0)];
         F.line = 25;
-        formatValue_637534370(fmtRes_2181038424, 0, self_2181038418.uniqCompId, []);
-        currentComponent_973083042[0] = nimCopy(null, fmtRes_2181038424[0], NTI33554439);
+        formatValue_637534370(fmtRes_2181038432, 0, self_2181038426.uniqCompId, []);
+        currentComponent_973083042[0] = nimCopy(null, fmtRes_2181038432[0], NTI33554439);
         F.line = 26;
-        (Temporary1 = val_2181038427(self_2181038418, "action"), Temporary1)[0][Temporary1[1]]();
+        (Temporary1 = val_2181038435(self_2181038426, "action"), Temporary1)[0][Temporary1[1]]();
         F.line = 25;
         currentComponent_973083042[0] = nimCopy(null, [], NTI33554439);
       framePtr = F.prev;
@@ -14962,104 +14962,104 @@ function HEX3Aanonymous_2181038417(self_2181038418, ev_2181038419) {
       
     }
 
-  var result_2181038217 = null;
+  var result_2181038225 = null;
 
-  var F = {procname: "button.render", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/components.nim", line: 0};
+  var F = {procname: "button.render", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/components.nim", line: 0};
   framePtr = F;
     F.line = 16;
-    currentComponent_973083042[0] = nimCopy(null, self_2181038216.uniqCompId, NTI33554439);
+    currentComponent_973083042[0] = nimCopy(null, self_2181038224.uniqCompId, NTI33554439);
     F.line = 16;
-    script_2181038193(self_2181038216);
-    if ((self_2181038216.isCreated == false)) {
+    script_2181038201(self_2181038224);
+    if ((self_2181038224.isCreated == false)) {
     F.line = 12;
-    self_2181038216.created(self_2181038216, null);
+    self_2181038224.created(self_2181038224, null);
     F.line = 767;
-    self_2181038216.isCreated = true;
+    self_2181038224.isCreated = true;
     }
     
     F.line = 12;
-    self_2181038216.beforeUpdated(self_2181038216, null);
+    self_2181038224.beforeUpdated(self_2181038224, null);
     F.line = 16;
     F.line = 25;
-    var fmtRes_2181038321 = [mnewString(0)];
+    var fmtRes_2181038329 = [mnewString(0)];
     F.line = 25;
-    fmtRes_2181038321[0].push.apply(fmtRes_2181038321[0], makeNimstrLit("callComponentEventHandler(\'"));;
+    fmtRes_2181038329[0].push.apply(fmtRes_2181038329[0], makeNimstrLit("callComponentEventHandler(\'"));;
     F.line = 25;
-    formatValue_637534370(fmtRes_2181038321, 0, self_2181038216.uniqCompId, []);
+    formatValue_637534370(fmtRes_2181038329, 0, self_2181038224.uniqCompId, []);
     F.line = 25;
-    fmtRes_2181038321[0].push.apply(fmtRes_2181038321[0], makeNimstrLit("\', 0, event)"));;
+    fmtRes_2181038329[0].push.apply(fmtRes_2181038329[0], makeNimstrLit("\', 0, event)"));;
     F.line = 18;
-    var fmtRes_2181038326 = mnewString(0);
+    var fmtRes_2181038334 = mnewString(0);
     F.line = 18;
-    fmtRes_2181038326.push.apply(fmtRes_2181038326, makeNimstrLit("flex justify-center items-center lowercase font-bold text-lg cursor-pointer select-none"));;
-    if (toBool_1828717001(self_2181038216.flat)) {
+    fmtRes_2181038334.push.apply(fmtRes_2181038334, makeNimstrLit("flex justify-center items-center lowercase font-bold text-lg cursor-pointer select-none"));;
+    if (toBool_1828717001(self_2181038224.flat)) {
     F.line = 20;
-    var fmtRes_2181038334 = [mnewString(0)];
+    var fmtRes_2181038342 = [mnewString(0)];
     F.line = 20;
-    fmtRes_2181038334[0].push.apply(fmtRes_2181038334[0], makeNimstrLit("px-2 md:px-4 xl:px-8 py-1 text-["));;
+    fmtRes_2181038342[0].push.apply(fmtRes_2181038342[0], makeNimstrLit("px-2 md:px-4 xl:px-8 py-1 text-["));;
     F.line = 20;
-    formatValue_637534370(fmtRes_2181038334, 0, makeNimstrLit("#212121"), []);
+    formatValue_637534370(fmtRes_2181038342, 0, makeNimstrLit("#212121"), []);
     F.line = 20;
-    fmtRes_2181038334[0].push.apply(fmtRes_2181038334[0], makeNimstrLit("] dark:text-["));;
+    fmtRes_2181038342[0].push.apply(fmtRes_2181038342[0], makeNimstrLit("] dark:text-["));;
     F.line = 20;
-    formatValue_637534370(fmtRes_2181038334, 0, makeNimstrLit("#E0EFFE"), []);
+    formatValue_637534370(fmtRes_2181038342, 0, makeNimstrLit("#E0EFFE"), []);
     F.line = 20;
-    fmtRes_2181038334[0].push.apply(fmtRes_2181038334[0], makeNimstrLit("] text-base hover:opacity-80 active:opacity-60 transition-all duration-300"));;
-    Temporary1 = initTag_1577058424(makeNimstrLit("div"), [initTag_1577058341(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2181038334[0], NTI33554439)}, NTI2181038306)], 0), [self_2181038216.slot], false)], true);
+    fmtRes_2181038342[0].push.apply(fmtRes_2181038342[0], makeNimstrLit("] text-base hover:opacity-80 active:opacity-60 transition-all duration-300"));;
+    Temporary1 = initTag_1577058424(makeNimstrLit("div"), [initTag_1577058341(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2181038342[0], NTI33554439)}, NTI2181038312)], 0), [self_2181038224.slot], false)], true);
     }
     else {
       F.line = 23;
-      var fmtRes_2181038358 = [mnewString(0)];
+      var fmtRes_2181038366 = [mnewString(0)];
       F.line = 23;
-      fmtRes_2181038358[0].push.apply(fmtRes_2181038358[0], makeNimstrLit("px-2 md:px-4 xl:px-8 py-1 text-["));;
+      fmtRes_2181038366[0].push.apply(fmtRes_2181038366[0], makeNimstrLit("px-2 md:px-4 xl:px-8 py-1 text-["));;
       F.line = 23;
-      formatValue_637534370(fmtRes_2181038358, 0, makeNimstrLit("#FEFEFE"), []);
+      formatValue_637534370(fmtRes_2181038366, 0, makeNimstrLit("#FEFEFE"), []);
       F.line = 23;
-      fmtRes_2181038358[0].push.apply(fmtRes_2181038358[0], makeNimstrLit("] dark:text-["));;
+      fmtRes_2181038366[0].push.apply(fmtRes_2181038366[0], makeNimstrLit("] dark:text-["));;
       F.line = 23;
-      formatValue_637534370(fmtRes_2181038358, 0, makeNimstrLit("#181326"), []);
+      formatValue_637534370(fmtRes_2181038366, 0, makeNimstrLit("#181326"), []);
       F.line = 23;
-      fmtRes_2181038358[0].push.apply(fmtRes_2181038358[0], makeNimstrLit("] text-base rounded-full bg-["));;
+      fmtRes_2181038366[0].push.apply(fmtRes_2181038366[0], makeNimstrLit("] text-base rounded-full bg-["));;
       F.line = 23;
-      formatValue_637534370(fmtRes_2181038358, 0, makeNimstrLit("#212121"), []);
+      formatValue_637534370(fmtRes_2181038366, 0, makeNimstrLit("#212121"), []);
       F.line = 23;
-      fmtRes_2181038358[0].push.apply(fmtRes_2181038358[0], makeNimstrLit("] dark:bg-["));;
+      fmtRes_2181038366[0].push.apply(fmtRes_2181038366[0], makeNimstrLit("] dark:bg-["));;
       F.line = 23;
-      formatValue_637534370(fmtRes_2181038358, 0, makeNimstrLit("#E0EFFE"), []);
+      formatValue_637534370(fmtRes_2181038366, 0, makeNimstrLit("#E0EFFE"), []);
       F.line = 23;
-      fmtRes_2181038358[0].push.apply(fmtRes_2181038358[0], makeNimstrLit("] hover:opacity-90 active:opacity-75 transition-all duration-300"));;
-    Temporary1 = initTag_1577058424(makeNimstrLit("div"), [initTag_1577058341(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2181038358[0], NTI33554439)}, NTI2181038342)], 0), [self_2181038216.slot], false)], true);
+      fmtRes_2181038366[0].push.apply(fmtRes_2181038366[0], makeNimstrLit("] hover:opacity-90 active:opacity-75 transition-all duration-300"));;
+    Temporary1 = initTag_1577058424(makeNimstrLit("div"), [initTag_1577058341(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2181038366[0], NTI33554439)}, NTI2181038348)], 0), [self_2181038224.slot], false)], true);
     }
     
     F.line = 3033;
-    if (globalThis.alreadyExecutedHEX60gensym4_2181038379 === undefined) {
-      globalThis.alreadyExecutedHEX60gensym4_2181038379 = [false];
+    if (globalThis.alreadyExecutedHEX60gensym4_2181038387 === undefined) {
+      globalThis.alreadyExecutedHEX60gensym4_2181038387 = [false];
     }
-    if (!(alreadyExecutedHEX60gensym4_2181038379[0])) {
+    if (!(alreadyExecutedHEX60gensym4_2181038387[0])) {
     F.line = 3035;
-    alreadyExecutedHEX60gensym4_2181038379[0] = true;
+    alreadyExecutedHEX60gensym4_2181038387[0] = true;
     F.line = 25;
-    HEX5BHEX5DHEX3D_2181038495(componentEventHandlers_973081556[0], 0, HEX3Aanonymous_2181038417);
+    HEX5BHEX5DHEX3D_2181038503(componentEventHandlers_973081556[0], 0, HEX3Aanonymous_2181038425);
     }
     
     F.line = 16;
-    var fmtRes_2181038654 = [mnewString(0)];
+    var fmtRes_2181038662 = [mnewString(0)];
     F.line = 16;
-    formatValue_637534370(fmtRes_2181038654, 0, style_2181038212(self_2181038216), []);
-    result_2181038217 = initTag_1577058424(makeNimstrLit("div"), [initTag_1577058341(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("onclick"), Field1: nimCopy(null, fmtRes_2181038321[0], NTI33554439)}, NTI2181038284), nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2181038326, NTI33554439)}, NTI2181038284)], 0), [Temporary1, initTag_1577058424(makeNimstrLit("div"), [], true)], false), initTag_1577058424(makeNimstrLit("style"), [initTag_1577058482(fmtRes_2181038654[0], true, [], false)], false)], true);
+    formatValue_637534370(fmtRes_2181038662, 0, style_2181038220(self_2181038224), []);
+    result_2181038225 = initTag_1577058424(makeNimstrLit("div"), [initTag_1577058341(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("onclick"), Field1: nimCopy(null, fmtRes_2181038329[0], NTI33554439)}, NTI2181038290), nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2181038334, NTI33554439)}, NTI2181038290)], 0), [Temporary1, initTag_1577058424(makeNimstrLit("div"), [], true)], false), initTag_1577058424(makeNimstrLit("style"), [initTag_1577058482(fmtRes_2181038662[0], true, [], false)], false)], true);
     F.line = 12;
-    self_2181038216.updated(self_2181038216, null);
+    self_2181038224.updated(self_2181038224, null);
     F.line = 16;
     currentComponent_973083042[0] = nimCopy(null, [], NTI33554439);
   framePtr = F.prev;
 
-  return result_2181038217;
+  return result_2181038225;
 
 }
 
-function script_2197815343(self_2197815344) {
+function script_2197815351(self_2197815352) {
     
-function HEX3Aanonymous_2197815345(self_2197815346, ev_2197815347) {
+function HEX3Aanonymous_2197815353(self_2197815354, ev_2197815355) {
       var F = {procname: "script.:anonymous", prev: framePtr, filename: "/home/runner/work/happyx/happyx/examples/website/src/components/smart_card.nim", line: 0};
       framePtr = F;
       framePtr = F.prev;
@@ -15067,7 +15067,7 @@ function HEX3Aanonymous_2197815345(self_2197815346, ev_2197815347) {
       
     }
     
-function HEX3Aanonymous_2197815348(self_2197815346, ev_2197815347) {
+function HEX3Aanonymous_2197815356(self_2197815354, ev_2197815355) {
       var F = {procname: "script.:anonymous", prev: framePtr, filename: "/home/runner/work/happyx/happyx/examples/website/src/components/smart_card.nim", line: 0};
       framePtr = F;
       framePtr = F.prev;
@@ -15075,7 +15075,7 @@ function HEX3Aanonymous_2197815348(self_2197815346, ev_2197815347) {
       
     }
     
-function HEX3Aanonymous_2197815349(self_2197815346, ev_2197815347) {
+function HEX3Aanonymous_2197815357(self_2197815354, ev_2197815355) {
       var F = {procname: "script.:anonymous", prev: framePtr, filename: "/home/runner/work/happyx/happyx/examples/website/src/components/smart_card.nim", line: 0};
       framePtr = F;
       framePtr = F.prev;
@@ -15083,7 +15083,7 @@ function HEX3Aanonymous_2197815349(self_2197815346, ev_2197815347) {
       
     }
     
-function HEX3Aanonymous_2197815350(self_2197815346, ev_2197815347) {
+function HEX3Aanonymous_2197815358(self_2197815354, ev_2197815355) {
       var F = {procname: "script.:anonymous", prev: framePtr, filename: "/home/runner/work/happyx/happyx/examples/website/src/components/smart_card.nim", line: 0};
       framePtr = F;
       framePtr = F.prev;
@@ -15091,7 +15091,7 @@ function HEX3Aanonymous_2197815350(self_2197815346, ev_2197815347) {
       
     }
     
-function HEX3Aanonymous_2197815351(self_2197815346, ev_2197815347) {
+function HEX3Aanonymous_2197815359(self_2197815354, ev_2197815355) {
       var F = {procname: "script.:anonymous", prev: framePtr, filename: "/home/runner/work/happyx/happyx/examples/website/src/components/smart_card.nim", line: 0};
       framePtr = F;
       framePtr = F.prev;
@@ -15099,7 +15099,7 @@ function HEX3Aanonymous_2197815351(self_2197815346, ev_2197815347) {
       
     }
     
-function HEX3Aanonymous_2197815352(self_2197815346, ev_2197815347) {
+function HEX3Aanonymous_2197815360(self_2197815354, ev_2197815355) {
       var F = {procname: "script.:anonymous", prev: framePtr, filename: "/home/runner/work/happyx/happyx/examples/website/src/components/smart_card.nim", line: 0};
       framePtr = F;
       framePtr = F.prev;
@@ -15107,116 +15107,116 @@ function HEX3Aanonymous_2197815352(self_2197815346, ev_2197815347) {
       
     }
 
-  var F = {procname: "smart_card.script", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/components.nim", line: 0};
+  var F = {procname: "smart_card.script", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/components.nim", line: 0};
   framePtr = F;
     F.line = 9;
-    self_2197815344.beforeUpdated = HEX3Aanonymous_2197815345;
+    self_2197815352.beforeUpdated = HEX3Aanonymous_2197815353;
     F.line = 9;
-    self_2197815344.pageShow = HEX3Aanonymous_2197815348;
+    self_2197815352.pageShow = HEX3Aanonymous_2197815356;
     F.line = 9;
-    self_2197815344.pageHide = HEX3Aanonymous_2197815349;
+    self_2197815352.pageHide = HEX3Aanonymous_2197815357;
     F.line = 9;
-    self_2197815344.exited = HEX3Aanonymous_2197815350;
+    self_2197815352.exited = HEX3Aanonymous_2197815358;
     F.line = 9;
-    self_2197815344.created = HEX3Aanonymous_2197815351;
+    self_2197815352.created = HEX3Aanonymous_2197815359;
     F.line = 9;
-    self_2197815344.updated = HEX3Aanonymous_2197815352;
+    self_2197815352.updated = HEX3Aanonymous_2197815360;
   framePtr = F.prev;
 
   
 }
 
-function HEX24_2197815457(self_2197815459) {
-  var result_2197815460 = [];
+function HEX24_2197815465(self_2197815467) {
+  var result_2197815468 = [];
 
-  var F = {procname: "$.$", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/state.nim", line: 0};
+  var F = {procname: "$.$", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/state.nim", line: 0};
   framePtr = F;
     F.line = 49;
-    result_2197815460 = nimCopy(null, cstrToNimstr(self_2197815459.value), NTI33554439);
+    result_2197815468 = nimCopy(null, cstrToNimstr(self_2197815467.value), NTI33554439);
   framePtr = F.prev;
 
-  return result_2197815460;
+  return result_2197815468;
 
 }
 
-function formatValue_2197815367(result_2197815369, result_2197815369_Idx, value_2197815370, specifier_2197815371) {
+function formatValue_2197815375(result_2197815377, result_2197815377_Idx, value_2197815378, specifier_2197815379) {
   var F = {procname: "formatValue.formatValue", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.12/lib/pure/strformat.nim", line: 0};
   framePtr = F;
     F.line = 568;
-    formatValue_637534370(result_2197815369, result_2197815369_Idx, HEX24_2197815457(value_2197815370), specifier_2197815371);
+    formatValue_637534370(result_2197815377, result_2197815377_Idx, HEX24_2197815465(value_2197815378), specifier_2197815379);
   framePtr = F.prev;
 
   
 }
 
-function style_2197815353(self_2197815354) {
-  var result_2197815355 = [];
+function style_2197815361(self_2197815362) {
+  var result_2197815363 = [];
 
-  var F = {procname: "smart_card.style", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/components.nim", line: 0};
+  var F = {procname: "smart_card.style", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/components.nim", line: 0};
   framePtr = F;
   framePtr = F.prev;
 
-  return result_2197815355;
+  return result_2197815363;
 
 }
 
-function render_2197815356(self_2197815357) {
-  var result_2197815358 = null;
+function render_2197815364(self_2197815365) {
+  var result_2197815366 = null;
 
-  var F = {procname: "smart_card.render", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/components.nim", line: 0};
+  var F = {procname: "smart_card.render", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/components.nim", line: 0};
   framePtr = F;
     F.line = 9;
-    currentComponent_973083042[0] = nimCopy(null, self_2197815357.uniqCompId, NTI33554439);
+    currentComponent_973083042[0] = nimCopy(null, self_2197815365.uniqCompId, NTI33554439);
     F.line = 9;
-    script_2197815343(self_2197815357);
-    if ((self_2197815357.isCreated == false)) {
+    script_2197815351(self_2197815365);
+    if ((self_2197815365.isCreated == false)) {
     F.line = 6;
-    self_2197815357.created(self_2197815357, null);
+    self_2197815365.created(self_2197815365, null);
     F.line = 767;
-    self_2197815357.isCreated = true;
+    self_2197815365.isCreated = true;
     }
     
     F.line = 6;
-    self_2197815357.beforeUpdated(self_2197815357, null);
+    self_2197815365.beforeUpdated(self_2197815365, null);
     F.line = 9;
     F.line = 11;
-    var fmtRes_2197815363 = [mnewString(0)];
+    var fmtRes_2197815371 = [mnewString(0)];
     F.line = 11;
-    formatValue_2197815367(fmtRes_2197815363, 0, self_2197815357.id, []);
+    formatValue_2197815375(fmtRes_2197815371, 0, self_2197815365.id, []);
     F.line = 12;
-    var fmtRes_2197815465 = [mnewString(0)];
+    var fmtRes_2197815473 = [mnewString(0)];
     F.line = 12;
-    fmtRes_2197815465[0].push.apply(fmtRes_2197815465[0], makeNimstrLit("flex will-change-transform justify-center items-center gap-12 w-fit drop-shadow-2xl rounded-md bg-gradient-to-r bg-["));;
+    fmtRes_2197815473[0].push.apply(fmtRes_2197815473[0], makeNimstrLit("flex will-change-transform justify-center items-center gap-12 w-fit drop-shadow-2xl rounded-md bg-gradient-to-r bg-["));;
     F.line = 12;
-    formatValue_637534370(fmtRes_2197815465, 0, makeNimstrLit("#FEFEFE"), []);
+    formatValue_637534370(fmtRes_2197815473, 0, makeNimstrLit("#FEFEFE"), []);
     F.line = 12;
-    fmtRes_2197815465[0].push.apply(fmtRes_2197815465[0], makeNimstrLit("] dark:from-["));;
+    fmtRes_2197815473[0].push.apply(fmtRes_2197815473[0], makeNimstrLit("] dark:from-["));;
     F.line = 12;
-    formatValue_637534370(fmtRes_2197815465, 0, makeNimstrLit("#181326"), []);
+    formatValue_637534370(fmtRes_2197815473, 0, makeNimstrLit("#181326"), []);
     F.line = 12;
-    fmtRes_2197815465[0].push.apply(fmtRes_2197815465[0], makeNimstrLit("] dark:to-["));;
+    fmtRes_2197815473[0].push.apply(fmtRes_2197815473[0], makeNimstrLit("] dark:to-["));;
     F.line = 12;
-    formatValue_637534370(fmtRes_2197815465, 0, makeNimstrLit("#282336"), []);
+    formatValue_637534370(fmtRes_2197815473, 0, makeNimstrLit("#282336"), []);
     F.line = 12;
-    fmtRes_2197815465[0].push.apply(fmtRes_2197815465[0], makeNimstrLit("] text-3xl md:text-2xl lg:text-xl xl:text-base pr-4"));;
+    fmtRes_2197815473[0].push.apply(fmtRes_2197815473[0], makeNimstrLit("] text-3xl md:text-2xl lg:text-xl xl:text-base pr-4"));;
     F.line = 9;
-    var fmtRes_2197815481 = [mnewString(0)];
+    var fmtRes_2197815489 = [mnewString(0)];
     F.line = 9;
-    formatValue_637534370(fmtRes_2197815481, 0, style_2197815353(self_2197815357), []);
-    result_2197815358 = initTag_1577058424(makeNimstrLit("div"), [initTag_1577058341(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("id"), Field1: nimCopy(null, fmtRes_2197815363[0], NTI33554439)}, NTI2197815344), nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2197815465[0], NTI33554439)}, NTI2197815344)], 0), [self_2197815357.slot], false), initTag_1577058424(makeNimstrLit("style"), [initTag_1577058482(fmtRes_2197815481[0], true, [], false)], false)], true);
+    formatValue_637534370(fmtRes_2197815489, 0, style_2197815361(self_2197815365), []);
+    result_2197815366 = initTag_1577058424(makeNimstrLit("div"), [initTag_1577058341(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("id"), Field1: nimCopy(null, fmtRes_2197815371[0], NTI33554439)}, NTI2197815350), nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2197815473[0], NTI33554439)}, NTI2197815350)], 0), [self_2197815365.slot], false), initTag_1577058424(makeNimstrLit("style"), [initTag_1577058482(fmtRes_2197815489[0], true, [], false)], false)], true);
     F.line = 6;
-    self_2197815357.updated(self_2197815357, null);
+    self_2197815365.updated(self_2197815365, null);
     F.line = 9;
     currentComponent_973083042[0] = nimCopy(null, [], NTI33554439);
   framePtr = F.prev;
 
-  return result_2197815358;
+  return result_2197815366;
 
 }
 
-function script_2147483679(self_2147483680) {
+function script_2147483687(self_2147483688) {
     
-function HEX3Aanonymous_2147483681(self_2147483682, ev_2147483683) {
+function HEX3Aanonymous_2147483689(self_2147483690, ev_2147483691) {
       var F = {procname: "script.:anonymous", prev: framePtr, filename: "/home/runner/work/happyx/happyx/examples/website/src/components/header.nim", line: 0};
       framePtr = F;
       framePtr = F.prev;
@@ -15224,7 +15224,7 @@ function HEX3Aanonymous_2147483681(self_2147483682, ev_2147483683) {
       
     }
     
-function HEX3Aanonymous_2147483684(self_2147483682, ev_2147483683) {
+function HEX3Aanonymous_2147483692(self_2147483690, ev_2147483691) {
       var F = {procname: "script.:anonymous", prev: framePtr, filename: "/home/runner/work/happyx/happyx/examples/website/src/components/header.nim", line: 0};
       framePtr = F;
       framePtr = F.prev;
@@ -15232,7 +15232,7 @@ function HEX3Aanonymous_2147483684(self_2147483682, ev_2147483683) {
       
     }
     
-function HEX3Aanonymous_2147483685(self_2147483682, ev_2147483683) {
+function HEX3Aanonymous_2147483693(self_2147483690, ev_2147483691) {
       var F = {procname: "script.:anonymous", prev: framePtr, filename: "/home/runner/work/happyx/happyx/examples/website/src/components/header.nim", line: 0};
       framePtr = F;
       framePtr = F.prev;
@@ -15240,7 +15240,7 @@ function HEX3Aanonymous_2147483685(self_2147483682, ev_2147483683) {
       
     }
     
-function HEX3Aanonymous_2147483686(self_2147483682, ev_2147483683) {
+function HEX3Aanonymous_2147483694(self_2147483690, ev_2147483691) {
       var F = {procname: "script.:anonymous", prev: framePtr, filename: "/home/runner/work/happyx/happyx/examples/website/src/components/header.nim", line: 0};
       framePtr = F;
       framePtr = F.prev;
@@ -15248,7 +15248,7 @@ function HEX3Aanonymous_2147483686(self_2147483682, ev_2147483683) {
       
     }
     
-function HEX3Aanonymous_2147483687(self_2147483682, ev_2147483683) {
+function HEX3Aanonymous_2147483695(self_2147483690, ev_2147483691) {
       var F = {procname: "script.:anonymous", prev: framePtr, filename: "/home/runner/work/happyx/happyx/examples/website/src/components/header.nim", line: 0};
       framePtr = F;
       framePtr = F.prev;
@@ -15256,7 +15256,7 @@ function HEX3Aanonymous_2147483687(self_2147483682, ev_2147483683) {
       
     }
     
-function HEX3Aanonymous_2147483688(self_2147483682, ev_2147483683) {
+function HEX3Aanonymous_2147483696(self_2147483690, ev_2147483691) {
       var F = {procname: "script.:anonymous", prev: framePtr, filename: "/home/runner/work/happyx/happyx/examples/website/src/components/header.nim", line: 0};
       framePtr = F;
       framePtr = F.prev;
@@ -15264,20 +15264,20 @@ function HEX3Aanonymous_2147483688(self_2147483682, ev_2147483683) {
       
     }
 
-  var F = {procname: "header.script", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/components.nim", line: 0};
+  var F = {procname: "header.script", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/components.nim", line: 0};
   framePtr = F;
     F.line = 11;
-    self_2147483680.beforeUpdated = HEX3Aanonymous_2147483681;
+    self_2147483688.beforeUpdated = HEX3Aanonymous_2147483689;
     F.line = 11;
-    self_2147483680.pageShow = HEX3Aanonymous_2147483684;
+    self_2147483688.pageShow = HEX3Aanonymous_2147483692;
     F.line = 11;
-    self_2147483680.pageHide = HEX3Aanonymous_2147483685;
+    self_2147483688.pageHide = HEX3Aanonymous_2147483693;
     F.line = 11;
-    self_2147483680.exited = HEX3Aanonymous_2147483686;
+    self_2147483688.exited = HEX3Aanonymous_2147483694;
     F.line = 11;
-    self_2147483680.created = HEX3Aanonymous_2147483687;
+    self_2147483688.created = HEX3Aanonymous_2147483695;
     F.line = 11;
-    self_2147483680.updated = HEX3Aanonymous_2147483688;
+    self_2147483688.updated = HEX3Aanonymous_2147483696;
   framePtr = F.prev;
 
   
@@ -15286,7 +15286,7 @@ function HEX3Aanonymous_2147483688(self_2147483682, ev_2147483683) {
 function remember_2181038134(val_2181038136) {
   var result_2181038137 = null;
 
-  var F = {procname: "remember.remember", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/state.nim", line: 0};
+  var F = {procname: "remember.remember", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/state.nim", line: 0};
   framePtr = F;
     F.line = 38;
     result_2181038137 = {value: val_2181038136};
@@ -15299,7 +15299,7 @@ function remember_2181038134(val_2181038136) {
 function remember_2181038148(val_2181038150) {
   var result_2181038151 = null;
 
-  var F = {procname: "remember.remember", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/state.nim", line: 0};
+  var F = {procname: "remember.remember", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/state.nim", line: 0};
   framePtr = F;
     F.line = 38;
     result_2181038151 = {value: val_2181038150};
@@ -15312,7 +15312,7 @@ function remember_2181038148(val_2181038150) {
 function initButton_2181038129(uniqCompId_2181038130, flat_2181038131, action_2181038132) {
   var result_2181038133 = null;
 
-  var F = {procname: "button.initButton", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/components.nim", line: 0};
+  var F = {procname: "button.initButton", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/components.nim", line: 0};
   framePtr = F;
     F.line = 12;
     result_2181038133 = {uniqCompId: nimCopy(null, uniqCompId_2181038130, NTI33554439), flat: remember_2181038134(flat_2181038131), action: remember_2181038148(action_2181038132), m_type: NTI2181038130, isCreated: false, slot: null, created: null, exited: null, updated: null, pageHide: null, pageShow: null, beforeUpdated: null};
@@ -15322,28 +15322,28 @@ function initButton_2181038129(uniqCompId_2181038130, flat_2181038131, action_21
 
 }
 
-function style_2147483689(self_2147483690) {
-  var result_2147483691 = [];
+function style_2147483697(self_2147483698) {
+  var result_2147483699 = [];
 
-  var F = {procname: "header.style", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/components.nim", line: 0};
+  var F = {procname: "header.style", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/components.nim", line: 0};
   framePtr = F;
   framePtr = F.prev;
 
-  return result_2147483691;
+  return result_2147483699;
 
 }
 
-function render_2147483692(self_2147483693) {
+function render_2147483700(self_2147483701) {
     
-function HEX3Aanonymous_2147483767(self_2147483768, ev_2147483769) {
+function HEX3Aanonymous_2147483775(self_2147483776, ev_2147483777) {
       var F = {procname: "render.:anonymous", prev: framePtr, filename: "/home/runner/work/happyx/happyx/examples/website/src/components/header.nim", line: 0};
       framePtr = F;
         F.line = 707;
         F.line = 15;
-        var fmtRes_2147483774 = [mnewString(0)];
+        var fmtRes_2147483782 = [mnewString(0)];
         F.line = 15;
-        formatValue_637534370(fmtRes_2147483774, 0, self_2147483768.uniqCompId, []);
-        currentComponent_973083042[0] = nimCopy(null, fmtRes_2147483774[0], NTI33554439);
+        formatValue_637534370(fmtRes_2147483782, 0, self_2147483776.uniqCompId, []);
+        currentComponent_973083042[0] = nimCopy(null, fmtRes_2147483782[0], NTI33554439);
         F.line = 16;
         route_973084074("/");
         F.line = 15;
@@ -15353,7 +15353,7 @@ function HEX3Aanonymous_2147483767(self_2147483768, ev_2147483769) {
       
     }
     
-function HEX3Aanonymous_2147483858() {
+function HEX3Aanonymous_2147483866() {
       var F = {procname: "render.:anonymous", prev: framePtr, filename: "/home/runner/work/happyx/happyx/examples/website/src/components/header.nim", line: 0};
       framePtr = F;
         F.line = 20;
@@ -15365,7 +15365,7 @@ function HEX3Aanonymous_2147483858() {
       
     }
     
-function HEX3Aanonymous_2147483943() {
+function HEX3Aanonymous_2147483951() {
       var F = {procname: "render.:anonymous", prev: framePtr, filename: "/home/runner/work/happyx/happyx/examples/website/src/components/header.nim", line: 0};
       framePtr = F;
         F.line = 34;
@@ -15377,153 +15377,153 @@ function HEX3Aanonymous_2147483943() {
       
     }
 
-  var result_2147483694 = null;
+  var result_2147483702 = null;
 
-  var F = {procname: "header.render", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/components.nim", line: 0};
+  var F = {procname: "header.render", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/components.nim", line: 0};
   framePtr = F;
     F.line = 11;
-    currentComponent_973083042[0] = nimCopy(null, self_2147483693.uniqCompId, NTI33554439);
+    currentComponent_973083042[0] = nimCopy(null, self_2147483701.uniqCompId, NTI33554439);
     F.line = 11;
-    script_2147483679(self_2147483693);
-    if ((self_2147483693.isCreated == false)) {
+    script_2147483687(self_2147483701);
+    if ((self_2147483701.isCreated == false)) {
     F.line = 9;
-    self_2147483693.created(self_2147483693, null);
+    self_2147483701.created(self_2147483701, null);
     F.line = 767;
-    self_2147483693.isCreated = true;
+    self_2147483701.isCreated = true;
     }
     
     F.line = 9;
-    self_2147483693.beforeUpdated(self_2147483693, null);
+    self_2147483701.beforeUpdated(self_2147483701, null);
     F.line = 11;
     F.line = 12;
-    var fmtRes_2147483703 = mnewString(0);
+    var fmtRes_2147483711 = mnewString(0);
     F.line = 12;
-    fmtRes_2147483703.push.apply(fmtRes_2147483703, makeNimstrLit("flex justify-between items-center px-8 py-2 backdrop-blur-sm h-fit"));;
+    fmtRes_2147483711.push.apply(fmtRes_2147483711, makeNimstrLit("flex justify-between items-center px-8 py-2 backdrop-blur-sm h-fit"));;
     F.line = 15;
-    var fmtRes_2147483711 = [mnewString(0)];
+    var fmtRes_2147483719 = [mnewString(0)];
     F.line = 15;
-    fmtRes_2147483711[0].push.apply(fmtRes_2147483711[0], makeNimstrLit("callComponentEventHandler(\'"));;
+    fmtRes_2147483719[0].push.apply(fmtRes_2147483719[0], makeNimstrLit("callComponentEventHandler(\'"));;
     F.line = 15;
-    formatValue_637534370(fmtRes_2147483711, 0, self_2147483693.uniqCompId, []);
+    formatValue_637534370(fmtRes_2147483719, 0, self_2147483701.uniqCompId, []);
     F.line = 15;
-    fmtRes_2147483711[0].push.apply(fmtRes_2147483711[0], makeNimstrLit("\', 1, event)"));;
+    fmtRes_2147483719[0].push.apply(fmtRes_2147483719[0], makeNimstrLit("\', 1, event)"));;
     F.line = 14;
-    var fmtRes_2147483719 = mnewString(0);
+    var fmtRes_2147483727 = mnewString(0);
     F.line = 14;
-    fmtRes_2147483719.push.apply(fmtRes_2147483719, makeNimstrLit("/happyx/public/logo.svg"));;
+    fmtRes_2147483727.push.apply(fmtRes_2147483727, makeNimstrLit("/happyx/public/logo.svg"));;
     F.line = 14;
-    var fmtRes_2147483724 = mnewString(0);
+    var fmtRes_2147483732 = mnewString(0);
     F.line = 14;
-    fmtRes_2147483724.push.apply(fmtRes_2147483724, makeNimstrLit("h-24 md:h-16 xl:h-12"));;
+    fmtRes_2147483732.push.apply(fmtRes_2147483732, makeNimstrLit("h-24 md:h-16 xl:h-12"));;
     F.line = 3033;
-    if (globalThis.alreadyExecutedHEX60gensym4_2147483729 === undefined) {
-      globalThis.alreadyExecutedHEX60gensym4_2147483729 = [false];
+    if (globalThis.alreadyExecutedHEX60gensym4_2147483737 === undefined) {
+      globalThis.alreadyExecutedHEX60gensym4_2147483737 = [false];
     }
-    if (!(alreadyExecutedHEX60gensym4_2147483729[0])) {
+    if (!(alreadyExecutedHEX60gensym4_2147483737[0])) {
     F.line = 3035;
-    alreadyExecutedHEX60gensym4_2147483729[0] = true;
+    alreadyExecutedHEX60gensym4_2147483737[0] = true;
     F.line = 15;
-    HEX5BHEX5DHEX3D_2181038495(componentEventHandlers_973081556[0], 1, HEX3Aanonymous_2147483767);
+    HEX5BHEX5DHEX3D_2181038503(componentEventHandlers_973081556[0], 1, HEX3Aanonymous_2147483775);
     }
     
     F.line = 17;
-    var fmtRes_2147483854 = mnewString(0);
+    var fmtRes_2147483862 = mnewString(0);
     F.line = 17;
-    fmtRes_2147483854.push.apply(fmtRes_2147483854, makeNimstrLit("flex gap-2 h-full"));;
+    fmtRes_2147483862.push.apply(fmtRes_2147483862, makeNimstrLit("flex gap-2 h-full"));;
     F.line = 18;
-    var _comp2449_2147483859 = initButton_2181038129(makeNimstrLit("comp2449"), false, HEX3Aanonymous_2147483858);
+    var _comp2449_2147483867 = initButton_2181038129(makeNimstrLit("comp2449"), false, HEX3Aanonymous_2147483866);
     F.line = 18;
-    var comp2449_2147483860 = registerComponent_973084091("comp2449", _comp2449_2147483859);
+    var comp2449_2147483868 = registerComponent_973084091("comp2449", _comp2449_2147483867);
     F.line = 94;
     F.line = 24;
-    var fmtRes_2147483865 = mnewString(0);
-    F.line = 24;
-    fmtRes_2147483865.push.apply(fmtRes_2147483865, makeNimstrLit("flex items-center gap-4"));;
-    F.line = 26;
     var fmtRes_2147483873 = mnewString(0);
+    F.line = 24;
+    fmtRes_2147483873.push.apply(fmtRes_2147483873, makeNimstrLit("flex items-center gap-4"));;
     F.line = 26;
-    fmtRes_2147483873.push.apply(fmtRes_2147483873, makeNimstrLit("98"));;
+    var fmtRes_2147483881 = mnewString(0);
     F.line = 26;
-    var fmtRes_2147483878 = mnewString(0);
+    fmtRes_2147483881.push.apply(fmtRes_2147483881, makeNimstrLit("98"));;
     F.line = 26;
-    fmtRes_2147483878.push.apply(fmtRes_2147483878, makeNimstrLit("96"));;
+    var fmtRes_2147483886 = mnewString(0);
     F.line = 26;
-    var fmtRes_2147483883 = mnewString(0);
+    fmtRes_2147483886.push.apply(fmtRes_2147483886, makeNimstrLit("96"));;
     F.line = 26;
-    fmtRes_2147483883.push.apply(fmtRes_2147483883, makeNimstrLit("0 0 98 96"));;
+    var fmtRes_2147483891 = mnewString(0);
     F.line = 26;
-    var fmtRes_2147483888 = mnewString(0);
+    fmtRes_2147483891.push.apply(fmtRes_2147483891, makeNimstrLit("0 0 98 96"));;
     F.line = 26;
-    fmtRes_2147483888.push.apply(fmtRes_2147483888, makeNimstrLit("http://www.w3.org/2000/svg"));;
+    var fmtRes_2147483896 = mnewString(0);
     F.line = 26;
-    var fmtRes_2147483893 = [mnewString(0)];
+    fmtRes_2147483896.push.apply(fmtRes_2147483896, makeNimstrLit("http://www.w3.org/2000/svg"));;
     F.line = 26;
-    fmtRes_2147483893[0].push.apply(fmtRes_2147483893[0], makeNimstrLit("h-6 w-6 fill-["));;
+    var fmtRes_2147483901 = [mnewString(0)];
     F.line = 26;
-    formatValue_637534370(fmtRes_2147483893, 0, makeNimstrLit("#FEFEFE"), []);
+    fmtRes_2147483901[0].push.apply(fmtRes_2147483901[0], makeNimstrLit("h-6 w-6 fill-["));;
     F.line = 26;
-    fmtRes_2147483893[0].push.apply(fmtRes_2147483893[0], makeNimstrLit("] dark:fill-["));;
+    formatValue_637534370(fmtRes_2147483901, 0, makeNimstrLit("#FEFEFE"), []);
     F.line = 26;
-    formatValue_637534370(fmtRes_2147483893, 0, makeNimstrLit("#181326"), []);
+    fmtRes_2147483901[0].push.apply(fmtRes_2147483901[0], makeNimstrLit("] dark:fill-["));;
     F.line = 26;
-    fmtRes_2147483893[0].push.apply(fmtRes_2147483893[0], makeNimstrLit("]"));;
+    formatValue_637534370(fmtRes_2147483901, 0, makeNimstrLit("#181326"), []);
+    F.line = 26;
+    fmtRes_2147483901[0].push.apply(fmtRes_2147483901[0], makeNimstrLit("]"));;
     F.line = 29;
-    var fmtRes_2147483901 = mnewString(0);
+    var fmtRes_2147483909 = mnewString(0);
     F.line = 29;
-    fmtRes_2147483901.push.apply(fmtRes_2147483901, makeNimstrLit("M48.854 0C21.839 0 0 22 0 49.217c0 21.756 13.993 40.172 33.405 46.69 2.427.49 3.316-1.059 3.316-2.362 0-1.141-.08-5.052-.08-9.127-13.59 2.934-16.42-5.867-16.42-5.867-2.184-5.704-5.42-7.17-5.42-7.17-4.448-3.015.324-3.015.324-3.015 4.934.326 7.523 5.052 7.523 5.052 4.367 7.496 11.404 5.378 14.235 4.074.404-3.178 1.699-5.378 3.074-6.6-10.839-1.141-22.243-5.378-22.243-24.283 0-5.378 1.94-9.778 5.014-13.2-.485-1.222-2.184-6.275.486-13.038 0 0 4.125-1.304 13.426 5.052a46.97 46.97 0 0 1 12.214-1.63c4.125 0 8.33.571 12.213 1.63 9.302-6.356 13.427-5.052 13.427-5.052 2.67 6.763.97 11.816.485 13.038 3.155 3.422 5.015 7.822 5.015 13.2 0 18.905-11.404 23.06-22.324 24.283 1.78 1.548 3.316 4.481 3.316 9.126 0 6.6-.08 11.897-.08 13.526 0 1.304.89 2.853 3.316 2.364 19.412-6.52 33.405-24.935 33.405-46.691C97.707 22 75.788 0 48.854 0z"));;
+    fmtRes_2147483909.push.apply(fmtRes_2147483909, makeNimstrLit("M48.854 0C21.839 0 0 22 0 49.217c0 21.756 13.993 40.172 33.405 46.69 2.427.49 3.316-1.059 3.316-2.362 0-1.141-.08-5.052-.08-9.127-13.59 2.934-16.42-5.867-16.42-5.867-2.184-5.704-5.42-7.17-5.42-7.17-4.448-3.015.324-3.015.324-3.015 4.934.326 7.523 5.052 7.523 5.052 4.367 7.496 11.404 5.378 14.235 4.074.404-3.178 1.699-5.378 3.074-6.6-10.839-1.141-22.243-5.378-22.243-24.283 0-5.378 1.94-9.778 5.014-13.2-.485-1.222-2.184-6.275.486-13.038 0 0 4.125-1.304 13.426 5.052a46.97 46.97 0 0 1 12.214-1.63c4.125 0 8.33.571 12.213 1.63 9.302-6.356 13.427-5.052 13.427-5.052 2.67 6.763.97 11.816.485 13.038 3.155 3.422 5.015 7.822 5.015 13.2 0 18.905-11.404 23.06-22.324 24.283 1.78 1.548 3.316 4.481 3.316 9.126 0 6.6-.08 11.897-.08 13.526 0 1.304.89 2.853 3.316 2.364 19.412-6.52 33.405-24.935 33.405-46.691C97.707 22 75.788 0 48.854 0z"));;
     F.line = 31;
-    var fmtRes_2147483917 = mnewString(0);
+    var fmtRes_2147483925 = mnewString(0);
     F.line = 31;
-    fmtRes_2147483917.push.apply(fmtRes_2147483917, makeNimstrLit("Source code"));;
-    comp2449_2147483860.slot = initTag_1577058424(makeNimstrLit("div"), [initTag_1577058341(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2147483865, NTI33554439)}, NTI2147483841)], 0), [initTag_1577058341(makeNimstrLit("svg"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("width"), Field1: nimCopy(null, fmtRes_2147483873, NTI33554439)}, NTI2147483853), nimCopy(null, {Field0: makeNimstrLit("height"), Field1: nimCopy(null, fmtRes_2147483878, NTI33554439)}, NTI2147483853), nimCopy(null, {Field0: makeNimstrLit("viewBox"), Field1: nimCopy(null, fmtRes_2147483883, NTI33554439)}, NTI2147483853), nimCopy(null, {Field0: makeNimstrLit("xmlns"), Field1: nimCopy(null, fmtRes_2147483888, NTI33554439)}, NTI2147483853), nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2147483893[0], NTI33554439)}, NTI2147483853)], 0), [initTag_1577058341(makeNimstrLit("path"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("d"), Field1: nimCopy(null, fmtRes_2147483901, NTI33554439)}, NTI2147483895)], 0), [], false)], false), initTag_1577058424(makeNimstrLit("p"), [initTag_1577058482(fmtRes_2147483917, true, [], false)], false)], false)], true);
+    fmtRes_2147483925.push.apply(fmtRes_2147483925, makeNimstrLit("Source code"));;
+    comp2449_2147483868.slot = initTag_1577058424(makeNimstrLit("div"), [initTag_1577058341(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2147483873, NTI33554439)}, NTI2147483847)], 0), [initTag_1577058341(makeNimstrLit("svg"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("width"), Field1: nimCopy(null, fmtRes_2147483881, NTI33554439)}, NTI2147483859), nimCopy(null, {Field0: makeNimstrLit("height"), Field1: nimCopy(null, fmtRes_2147483886, NTI33554439)}, NTI2147483859), nimCopy(null, {Field0: makeNimstrLit("viewBox"), Field1: nimCopy(null, fmtRes_2147483891, NTI33554439)}, NTI2147483859), nimCopy(null, {Field0: makeNimstrLit("xmlns"), Field1: nimCopy(null, fmtRes_2147483896, NTI33554439)}, NTI2147483859), nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2147483901[0], NTI33554439)}, NTI2147483859)], 0), [initTag_1577058341(makeNimstrLit("path"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("d"), Field1: nimCopy(null, fmtRes_2147483909, NTI33554439)}, NTI2147483901)], 0), [], false)], false), initTag_1577058424(makeNimstrLit("p"), [initTag_1577058482(fmtRes_2147483925, true, [], false)], false)], false)], true);
     F.line = 707;
-    var data_comp2449_2147483942 = render_973084459(comp2449_2147483860);
+    var data_comp2449_2147483950 = render_973084459(comp2449_2147483868);
     F.line = 707;
-    addArgIter_1577058859(data_comp2449_2147483942, (makeNimstrLit("data-") || []).concat(comp2449_2147483860.uniqCompId || []));
+    addArgIter_1577058859(data_comp2449_2147483950, (makeNimstrLit("data-") || []).concat(comp2449_2147483868.uniqCompId || []));
     F.line = 707;
-    window.addEventListener('beforeunload', data_comp2449_2147483942.exited);
+    window.addEventListener('beforeunload', data_comp2449_2147483950.exited);
     F.line = 707;
-    window.addEventListener('pagehide', data_comp2449_2147483942.pageHide);
+    window.addEventListener('pagehide', data_comp2449_2147483950.pageHide);
     F.line = 707;
-    window.addEventListener('pageshow', data_comp2449_2147483942.pageShow);
+    window.addEventListener('pageshow', data_comp2449_2147483950.pageShow);
     F.line = 32;
-    var _comp35610_2147483944 = initButton_2181038129(makeNimstrLit("comp35610"), false, HEX3Aanonymous_2147483943);
+    var _comp35610_2147483952 = initButton_2181038129(makeNimstrLit("comp35610"), false, HEX3Aanonymous_2147483951);
     F.line = 32;
-    var comp35610_2147483945 = registerComponent_973084091("comp35610", _comp35610_2147483944);
+    var comp35610_2147483953 = registerComponent_973084091("comp35610", _comp35610_2147483952);
     F.line = 94;
     F.line = 38;
-    var fmtRes_2147483950 = mnewString(0);
+    var fmtRes_2147483958 = mnewString(0);
     F.line = 38;
-    fmtRes_2147483950.push.apply(fmtRes_2147483950, makeNimstrLit("API Docs"));;
-    comp35610_2147483945.slot = initTag_1577058424(makeNimstrLit("div"), [initTag_1577058482(fmtRes_2147483950, true, [], false)], true);
+    fmtRes_2147483958.push.apply(fmtRes_2147483958, makeNimstrLit("API Docs"));;
+    comp35610_2147483953.slot = initTag_1577058424(makeNimstrLit("div"), [initTag_1577058482(fmtRes_2147483958, true, [], false)], true);
     F.line = 707;
-    var data_comp35610_2147483959 = render_973084459(comp35610_2147483945);
+    var data_comp35610_2147483967 = render_973084459(comp35610_2147483953);
     F.line = 707;
-    addArgIter_1577058859(data_comp35610_2147483959, (makeNimstrLit("data-") || []).concat(comp35610_2147483945.uniqCompId || []));
+    addArgIter_1577058859(data_comp35610_2147483967, (makeNimstrLit("data-") || []).concat(comp35610_2147483953.uniqCompId || []));
     F.line = 707;
-    window.addEventListener('beforeunload', data_comp35610_2147483959.exited);
+    window.addEventListener('beforeunload', data_comp35610_2147483967.exited);
     F.line = 707;
-    window.addEventListener('pagehide', data_comp35610_2147483959.pageHide);
+    window.addEventListener('pagehide', data_comp35610_2147483967.pageHide);
     F.line = 707;
-    window.addEventListener('pageshow', data_comp35610_2147483959.pageShow);
+    window.addEventListener('pageshow', data_comp35610_2147483967.pageShow);
     F.line = 11;
-    var fmtRes_2147483980 = [mnewString(0)];
+    var fmtRes_2147483988 = [mnewString(0)];
     F.line = 11;
-    formatValue_637534370(fmtRes_2147483980, 0, style_2147483689(self_2147483693), []);
-    result_2147483694 = initTag_1577058424(makeNimstrLit("div"), [initTag_1577058341(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2147483703, NTI33554439)}, NTI2147483686)], 0), [initTag_1577058341(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("onclick"), Field1: nimCopy(null, fmtRes_2147483711[0], NTI33554439)}, NTI2147483699)], 0), [initTag_1577058341(makeNimstrLit("img"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("src"), Field1: nimCopy(null, fmtRes_2147483719, NTI33554439)}, NTI2147483713), nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2147483724, NTI33554439)}, NTI2147483713)], 0), [], false), initTag_1577058424(makeNimstrLit("div"), [], true)], false), initTag_1577058341(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2147483854, NTI33554439)}, NTI2147483826)], 0), [data_comp2449_2147483942, data_comp35610_2147483959], false)], false), initTag_1577058424(makeNimstrLit("style"), [initTag_1577058482(fmtRes_2147483980[0], true, [], false)], false)], true);
+    formatValue_637534370(fmtRes_2147483988, 0, style_2147483697(self_2147483701), []);
+    result_2147483702 = initTag_1577058424(makeNimstrLit("div"), [initTag_1577058341(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2147483711, NTI33554439)}, NTI2147483692)], 0), [initTag_1577058341(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("onclick"), Field1: nimCopy(null, fmtRes_2147483719[0], NTI33554439)}, NTI2147483705)], 0), [initTag_1577058341(makeNimstrLit("img"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("src"), Field1: nimCopy(null, fmtRes_2147483727, NTI33554439)}, NTI2147483719), nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2147483732, NTI33554439)}, NTI2147483719)], 0), [], false), initTag_1577058424(makeNimstrLit("div"), [], true)], false), initTag_1577058341(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2147483862, NTI33554439)}, NTI2147483832)], 0), [data_comp2449_2147483950, data_comp35610_2147483967], false)], false), initTag_1577058424(makeNimstrLit("style"), [initTag_1577058482(fmtRes_2147483988[0], true, [], false)], false)], true);
     F.line = 9;
-    self_2147483693.updated(self_2147483693, null);
+    self_2147483701.updated(self_2147483701, null);
     F.line = 11;
     currentComponent_973083042[0] = nimCopy(null, [], NTI33554439);
   framePtr = F.prev;
 
-  return result_2147483694;
+  return result_2147483702;
 
 }
 
-function script_2231369758(self_2231369759) {
+function script_2231369766(self_2231369767) {
     
-function HEX3Aanonymous_2231369760(self_2231369761, ev_2231369762) {
+function HEX3Aanonymous_2231369768(self_2231369769, ev_2231369770) {
       var F = {procname: "script.:anonymous", prev: framePtr, filename: "/home/runner/work/happyx/happyx/examples/website/src/components/section.nim", line: 0};
       framePtr = F;
       framePtr = F.prev;
@@ -15531,7 +15531,7 @@ function HEX3Aanonymous_2231369760(self_2231369761, ev_2231369762) {
       
     }
     
-function HEX3Aanonymous_2231369763(self_2231369761, ev_2231369762) {
+function HEX3Aanonymous_2231369771(self_2231369769, ev_2231369770) {
       var F = {procname: "script.:anonymous", prev: framePtr, filename: "/home/runner/work/happyx/happyx/examples/website/src/components/section.nim", line: 0};
       framePtr = F;
       framePtr = F.prev;
@@ -15539,7 +15539,7 @@ function HEX3Aanonymous_2231369763(self_2231369761, ev_2231369762) {
       
     }
     
-function HEX3Aanonymous_2231369764(self_2231369761, ev_2231369762) {
+function HEX3Aanonymous_2231369772(self_2231369769, ev_2231369770) {
       var F = {procname: "script.:anonymous", prev: framePtr, filename: "/home/runner/work/happyx/happyx/examples/website/src/components/section.nim", line: 0};
       framePtr = F;
       framePtr = F.prev;
@@ -15547,7 +15547,7 @@ function HEX3Aanonymous_2231369764(self_2231369761, ev_2231369762) {
       
     }
     
-function HEX3Aanonymous_2231369765(self_2231369761, ev_2231369762) {
+function HEX3Aanonymous_2231369773(self_2231369769, ev_2231369770) {
       var F = {procname: "script.:anonymous", prev: framePtr, filename: "/home/runner/work/happyx/happyx/examples/website/src/components/section.nim", line: 0};
       framePtr = F;
       framePtr = F.prev;
@@ -15555,7 +15555,7 @@ function HEX3Aanonymous_2231369765(self_2231369761, ev_2231369762) {
       
     }
     
-function HEX3Aanonymous_2231369766(self_2231369761, ev_2231369762) {
+function HEX3Aanonymous_2231369774(self_2231369769, ev_2231369770) {
       var F = {procname: "script.:anonymous", prev: framePtr, filename: "/home/runner/work/happyx/happyx/examples/website/src/components/section.nim", line: 0};
       framePtr = F;
       framePtr = F.prev;
@@ -15563,7 +15563,7 @@ function HEX3Aanonymous_2231369766(self_2231369761, ev_2231369762) {
       
     }
     
-function HEX3Aanonymous_2231369767(self_2231369761, ev_2231369762) {
+function HEX3Aanonymous_2231369775(self_2231369769, ev_2231369770) {
       var F = {procname: "script.:anonymous", prev: framePtr, filename: "/home/runner/work/happyx/happyx/examples/website/src/components/section.nim", line: 0};
       framePtr = F;
       framePtr = F.prev;
@@ -15571,85 +15571,85 @@ function HEX3Aanonymous_2231369767(self_2231369761, ev_2231369762) {
       
     }
 
-  var F = {procname: "section.script", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/components.nim", line: 0};
+  var F = {procname: "section.script", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/components.nim", line: 0};
   framePtr = F;
     F.line = 7;
-    self_2231369759.beforeUpdated = HEX3Aanonymous_2231369760;
+    self_2231369767.beforeUpdated = HEX3Aanonymous_2231369768;
     F.line = 7;
-    self_2231369759.pageShow = HEX3Aanonymous_2231369763;
+    self_2231369767.pageShow = HEX3Aanonymous_2231369771;
     F.line = 7;
-    self_2231369759.pageHide = HEX3Aanonymous_2231369764;
+    self_2231369767.pageHide = HEX3Aanonymous_2231369772;
     F.line = 7;
-    self_2231369759.exited = HEX3Aanonymous_2231369765;
+    self_2231369767.exited = HEX3Aanonymous_2231369773;
     F.line = 7;
-    self_2231369759.created = HEX3Aanonymous_2231369766;
+    self_2231369767.created = HEX3Aanonymous_2231369774;
     F.line = 7;
-    self_2231369759.updated = HEX3Aanonymous_2231369767;
+    self_2231369767.updated = HEX3Aanonymous_2231369775;
   framePtr = F.prev;
 
   
 }
 
-function style_2231369768(self_2231369769) {
-  var result_2231369770 = [];
+function style_2231369776(self_2231369777) {
+  var result_2231369778 = [];
 
-  var F = {procname: "section.style", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/components.nim", line: 0};
+  var F = {procname: "section.style", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/components.nim", line: 0};
   framePtr = F;
   framePtr = F.prev;
 
-  return result_2231369770;
+  return result_2231369778;
 
 }
 
-function render_2231369771(self_2231369772) {
-  var result_2231369773 = null;
+function render_2231369779(self_2231369780) {
+  var result_2231369781 = null;
 
-  var F = {procname: "section.render", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/components.nim", line: 0};
+  var F = {procname: "section.render", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/components.nim", line: 0};
   framePtr = F;
     F.line = 7;
-    currentComponent_973083042[0] = nimCopy(null, self_2231369772.uniqCompId, NTI33554439);
+    currentComponent_973083042[0] = nimCopy(null, self_2231369780.uniqCompId, NTI33554439);
     F.line = 7;
-    script_2231369758(self_2231369772);
-    if ((self_2231369772.isCreated == false)) {
+    script_2231369766(self_2231369780);
+    if ((self_2231369780.isCreated == false)) {
     F.line = 6;
-    self_2231369772.created(self_2231369772, null);
+    self_2231369780.created(self_2231369780, null);
     F.line = 767;
-    self_2231369772.isCreated = true;
+    self_2231369780.isCreated = true;
     }
     
     F.line = 6;
-    self_2231369772.beforeUpdated(self_2231369772, null);
+    self_2231369780.beforeUpdated(self_2231369780, null);
     F.line = 7;
     F.line = 8;
-    var fmtRes_2231369778 = [mnewString(0)];
+    var fmtRes_2231369786 = [mnewString(0)];
     F.line = 8;
-    fmtRes_2231369778[0].push.apply(fmtRes_2231369778[0], makeNimstrLit("flex flex-col items-center bg-["));;
+    fmtRes_2231369786[0].push.apply(fmtRes_2231369786[0], makeNimstrLit("flex flex-col items-center bg-["));;
     F.line = 8;
-    formatValue_637534370(fmtRes_2231369778, 0, makeNimstrLit("#EFEFEF"), []);
+    formatValue_637534370(fmtRes_2231369786, 0, makeNimstrLit("#EFEFEF"), []);
     F.line = 8;
-    fmtRes_2231369778[0].push.apply(fmtRes_2231369778[0], makeNimstrLit("] dark:bg-["));;
+    fmtRes_2231369786[0].push.apply(fmtRes_2231369786[0], makeNimstrLit("] dark:bg-["));;
     F.line = 8;
-    formatValue_637534370(fmtRes_2231369778, 0, makeNimstrLit("#282336"), []);
+    formatValue_637534370(fmtRes_2231369786, 0, makeNimstrLit("#282336"), []);
     F.line = 8;
-    fmtRes_2231369778[0].push.apply(fmtRes_2231369778[0], makeNimstrLit("] w-full px-36 xl:px-96 py-24 text-lg xl:text-base"));;
+    fmtRes_2231369786[0].push.apply(fmtRes_2231369786[0], makeNimstrLit("] w-full px-36 xl:px-96 py-24 text-lg xl:text-base"));;
     F.line = 7;
-    var fmtRes_2231369794 = [mnewString(0)];
+    var fmtRes_2231369802 = [mnewString(0)];
     F.line = 7;
-    formatValue_637534370(fmtRes_2231369794, 0, style_2231369768(self_2231369772), []);
-    result_2231369773 = initTag_1577058424(makeNimstrLit("div"), [initTag_1577058341(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2231369778[0], NTI33554439)}, NTI2231369762)], 0), [self_2231369772.slot], false), initTag_1577058424(makeNimstrLit("style"), [initTag_1577058482(fmtRes_2231369794[0], true, [], false)], false)], true);
+    formatValue_637534370(fmtRes_2231369802, 0, style_2231369776(self_2231369780), []);
+    result_2231369781 = initTag_1577058424(makeNimstrLit("div"), [initTag_1577058341(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2231369786[0], NTI33554439)}, NTI2231369768)], 0), [self_2231369780.slot], false), initTag_1577058424(makeNimstrLit("style"), [initTag_1577058482(fmtRes_2231369802[0], true, [], false)], false)], true);
     F.line = 6;
-    self_2231369772.updated(self_2231369772, null);
+    self_2231369780.updated(self_2231369780, null);
     F.line = 7;
     currentComponent_973083042[0] = nimCopy(null, [], NTI33554439);
   framePtr = F.prev;
 
-  return result_2231369773;
+  return result_2231369781;
 
 }
 
-function script_2214592559(self_2214592560) {
+function script_2214592567(self_2214592568) {
     
-function HEX3Aanonymous_2214592561(self_2214592562, ev_2214592563) {
+function HEX3Aanonymous_2214592569(self_2214592570, ev_2214592571) {
       var F = {procname: "script.:anonymous", prev: framePtr, filename: "/home/runner/work/happyx/happyx/examples/website/src/components/card.nim", line: 0};
       framePtr = F;
       framePtr = F.prev;
@@ -15657,7 +15657,7 @@ function HEX3Aanonymous_2214592561(self_2214592562, ev_2214592563) {
       
     }
     
-function HEX3Aanonymous_2214592564(self_2214592562, ev_2214592563) {
+function HEX3Aanonymous_2214592572(self_2214592570, ev_2214592571) {
       var F = {procname: "script.:anonymous", prev: framePtr, filename: "/home/runner/work/happyx/happyx/examples/website/src/components/card.nim", line: 0};
       framePtr = F;
       framePtr = F.prev;
@@ -15665,7 +15665,7 @@ function HEX3Aanonymous_2214592564(self_2214592562, ev_2214592563) {
       
     }
     
-function HEX3Aanonymous_2214592565(self_2214592562, ev_2214592563) {
+function HEX3Aanonymous_2214592573(self_2214592570, ev_2214592571) {
       var F = {procname: "script.:anonymous", prev: framePtr, filename: "/home/runner/work/happyx/happyx/examples/website/src/components/card.nim", line: 0};
       framePtr = F;
       framePtr = F.prev;
@@ -15673,7 +15673,7 @@ function HEX3Aanonymous_2214592565(self_2214592562, ev_2214592563) {
       
     }
     
-function HEX3Aanonymous_2214592566(self_2214592562, ev_2214592563) {
+function HEX3Aanonymous_2214592574(self_2214592570, ev_2214592571) {
       var F = {procname: "script.:anonymous", prev: framePtr, filename: "/home/runner/work/happyx/happyx/examples/website/src/components/card.nim", line: 0};
       framePtr = F;
       framePtr = F.prev;
@@ -15681,7 +15681,7 @@ function HEX3Aanonymous_2214592566(self_2214592562, ev_2214592563) {
       
     }
     
-function HEX3Aanonymous_2214592567(self_2214592562, ev_2214592563) {
+function HEX3Aanonymous_2214592575(self_2214592570, ev_2214592571) {
       var F = {procname: "script.:anonymous", prev: framePtr, filename: "/home/runner/work/happyx/happyx/examples/website/src/components/card.nim", line: 0};
       framePtr = F;
       framePtr = F.prev;
@@ -15689,7 +15689,7 @@ function HEX3Aanonymous_2214592567(self_2214592562, ev_2214592563) {
       
     }
     
-function HEX3Aanonymous_2214592568(self_2214592562, ev_2214592563) {
+function HEX3Aanonymous_2214592576(self_2214592570, ev_2214592571) {
       var F = {procname: "script.:anonymous", prev: framePtr, filename: "/home/runner/work/happyx/happyx/examples/website/src/components/card.nim", line: 0};
       framePtr = F;
       framePtr = F.prev;
@@ -15697,143 +15697,143 @@ function HEX3Aanonymous_2214592568(self_2214592562, ev_2214592563) {
       
     }
 
-  var F = {procname: "card.script", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/components.nim", line: 0};
+  var F = {procname: "card.script", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/components.nim", line: 0};
   framePtr = F;
     F.line = 9;
-    self_2214592560.beforeUpdated = HEX3Aanonymous_2214592561;
+    self_2214592568.beforeUpdated = HEX3Aanonymous_2214592569;
     F.line = 9;
-    self_2214592560.pageShow = HEX3Aanonymous_2214592564;
+    self_2214592568.pageShow = HEX3Aanonymous_2214592572;
     F.line = 9;
-    self_2214592560.pageHide = HEX3Aanonymous_2214592565;
+    self_2214592568.pageHide = HEX3Aanonymous_2214592573;
     F.line = 9;
-    self_2214592560.exited = HEX3Aanonymous_2214592566;
+    self_2214592568.exited = HEX3Aanonymous_2214592574;
     F.line = 9;
-    self_2214592560.created = HEX3Aanonymous_2214592567;
+    self_2214592568.created = HEX3Aanonymous_2214592575;
     F.line = 9;
-    self_2214592560.updated = HEX3Aanonymous_2214592568;
+    self_2214592568.updated = HEX3Aanonymous_2214592576;
   framePtr = F.prev;
 
   
 }
 
-function len_2214592643(self_2214592645) {
-  var result_2214592646 = 0;
+function len_2214592651(self_2214592653) {
+  var result_2214592654 = 0;
 
-  var F = {procname: "len.len", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/state.nim", line: 0};
+  var F = {procname: "len.len", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/state.nim", line: 0};
   framePtr = F;
     F.line = 166;
-    result_2214592646 = (self_2214592645.value).length;
+    result_2214592654 = (self_2214592653.value).length;
   framePtr = F.prev;
 
-  return result_2214592646;
+  return result_2214592654;
 
 }
 
-function HEX24_2214592807(self_2214592809) {
-  var result_2214592810 = [];
+function HEX24_2214592815(self_2214592817) {
+  var result_2214592818 = [];
 
-  var F = {procname: "$.$", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/state.nim", line: 0};
+  var F = {procname: "$.$", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/state.nim", line: 0};
   framePtr = F;
     F.line = 49;
-    result_2214592810 = nimCopy(null, self_2214592809.value, NTI33554439);
+    result_2214592818 = nimCopy(null, self_2214592817.value, NTI33554439);
   framePtr = F.prev;
 
-  return result_2214592810;
+  return result_2214592818;
 
 }
 
-function formatValue_2214592717(result_2214592719, result_2214592719_Idx, value_2214592720, specifier_2214592721) {
+function formatValue_2214592725(result_2214592727, result_2214592727_Idx, value_2214592728, specifier_2214592729) {
   var F = {procname: "formatValue.formatValue", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.12/lib/pure/strformat.nim", line: 0};
   framePtr = F;
     F.line = 568;
-    formatValue_637534370(result_2214592719, result_2214592719_Idx, HEX24_2214592807(value_2214592720), specifier_2214592721);
+    formatValue_637534370(result_2214592727, result_2214592727_Idx, HEX24_2214592815(value_2214592728), specifier_2214592729);
   framePtr = F.prev;
 
   
 }
 
-function style_2214592569(self_2214592570) {
-  var result_2214592571 = [];
+function style_2214592577(self_2214592578) {
+  var result_2214592579 = [];
 
-  var F = {procname: "card.style", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/components.nim", line: 0};
+  var F = {procname: "card.style", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/components.nim", line: 0};
   framePtr = F;
   framePtr = F.prev;
 
-  return result_2214592571;
+  return result_2214592579;
 
 }
 
-function render_2214592572(self_2214592573) {
+function render_2214592580(self_2214592581) {
     var Temporary1;
 
-  var result_2214592574 = null;
+  var result_2214592582 = null;
 
-  var F = {procname: "card.render", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/components.nim", line: 0};
+  var F = {procname: "card.render", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/components.nim", line: 0};
   framePtr = F;
     F.line = 9;
-    currentComponent_973083042[0] = nimCopy(null, self_2214592573.uniqCompId, NTI33554439);
+    currentComponent_973083042[0] = nimCopy(null, self_2214592581.uniqCompId, NTI33554439);
     F.line = 9;
-    script_2214592559(self_2214592573);
-    if ((self_2214592573.isCreated == false)) {
+    script_2214592567(self_2214592581);
+    if ((self_2214592581.isCreated == false)) {
     F.line = 6;
-    self_2214592573.created(self_2214592573, null);
+    self_2214592581.created(self_2214592581, null);
     F.line = 767;
-    self_2214592573.isCreated = true;
+    self_2214592581.isCreated = true;
     }
     
     F.line = 6;
-    self_2214592573.beforeUpdated(self_2214592573, null);
+    self_2214592581.beforeUpdated(self_2214592581, null);
     F.line = 9;
     F.line = 10;
-    var fmtRes_2214592579 = [mnewString(0)];
+    var fmtRes_2214592587 = [mnewString(0)];
     F.line = 10;
-    fmtRes_2214592579[0].push.apply(fmtRes_2214592579[0], makeNimstrLit("flex flex-col justify-center text-base items-center gap-4 select-none px-8 pt-2 pb-12 bg-["));;
+    fmtRes_2214592587[0].push.apply(fmtRes_2214592587[0], makeNimstrLit("flex flex-col justify-center text-base items-center gap-4 select-none px-8 pt-2 pb-12 bg-["));;
     F.line = 10;
-    formatValue_637534370(fmtRes_2214592579, 0, makeNimstrLit("#FEFEFE"), []);
+    formatValue_637534370(fmtRes_2214592587, 0, makeNimstrLit("#FEFEFE"), []);
     F.line = 10;
-    fmtRes_2214592579[0].push.apply(fmtRes_2214592579[0], makeNimstrLit("] bg-gradient-to-r dark:from-["));;
+    fmtRes_2214592587[0].push.apply(fmtRes_2214592587[0], makeNimstrLit("] bg-gradient-to-r dark:from-["));;
     F.line = 10;
-    formatValue_637534370(fmtRes_2214592579, 0, makeNimstrLit("#181326"), []);
+    formatValue_637534370(fmtRes_2214592587, 0, makeNimstrLit("#181326"), []);
     F.line = 10;
-    fmtRes_2214592579[0].push.apply(fmtRes_2214592579[0], makeNimstrLit("] dark:to-["));;
+    fmtRes_2214592587[0].push.apply(fmtRes_2214592587[0], makeNimstrLit("] dark:to-["));;
     F.line = 10;
-    formatValue_637534370(fmtRes_2214592579, 0, makeNimstrLit("#282336"), []);
+    formatValue_637534370(fmtRes_2214592587, 0, makeNimstrLit("#282336"), []);
     F.line = 10;
-    fmtRes_2214592579[0].push.apply(fmtRes_2214592579[0], makeNimstrLit("] drop-shadow-2xl hover:scale-110 transition-all duration-300 rounded-md"));;
-    if ((0 < len_2214592643(self_2214592573.pathToImg))) {
+    fmtRes_2214592587[0].push.apply(fmtRes_2214592587[0], makeNimstrLit("] drop-shadow-2xl hover:scale-110 transition-all duration-300 rounded-md"));;
+    if ((0 < len_2214592651(self_2214592581.pathToImg))) {
     F.line = 12;
-    var fmtRes_2214592714 = [mnewString(0)];
+    var fmtRes_2214592722 = [mnewString(0)];
     F.line = 12;
-    formatValue_2214592717(fmtRes_2214592714, 0, self_2214592573.pathToImg, []);
+    formatValue_2214592725(fmtRes_2214592722, 0, self_2214592581.pathToImg, []);
     F.line = 12;
-    var fmtRes_2214592815 = mnewString(0);
+    var fmtRes_2214592823 = mnewString(0);
     F.line = 12;
-    fmtRes_2214592815.push.apply(fmtRes_2214592815, makeNimstrLit("-mt-8 h-16 w-16 pointer-events-none"));;
-    Temporary1 = initTag_1577058424(makeNimstrLit("div"), [initTag_1577058341(makeNimstrLit("img"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("src"), Field1: nimCopy(null, fmtRes_2214592714[0], NTI33554439)}, NTI2214592650), nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2214592815, NTI33554439)}, NTI2214592650)], 0), [], false)], true);
+    fmtRes_2214592823.push.apply(fmtRes_2214592823, makeNimstrLit("-mt-8 h-16 w-16 pointer-events-none"));;
+    Temporary1 = initTag_1577058424(makeNimstrLit("div"), [initTag_1577058341(makeNimstrLit("img"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("src"), Field1: nimCopy(null, fmtRes_2214592722[0], NTI33554439)}, NTI2214592656), nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2214592823, NTI33554439)}, NTI2214592656)], 0), [], false)], true);
     }
     else {
     Temporary1 = null;
     }
     
     F.line = 9;
-    var fmtRes_2214592847 = [mnewString(0)];
+    var fmtRes_2214592855 = [mnewString(0)];
     F.line = 9;
-    formatValue_637534370(fmtRes_2214592847, 0, style_2214592569(self_2214592573), []);
-    result_2214592574 = initTag_1577058424(makeNimstrLit("div"), [initTag_1577058341(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2214592579[0], NTI33554439)}, NTI2214592560)], 0), [Temporary1, initTag_1577058424(makeNimstrLit("div"), [self_2214592573.slot], false)], false), initTag_1577058424(makeNimstrLit("style"), [initTag_1577058482(fmtRes_2214592847[0], true, [], false)], false)], true);
+    formatValue_637534370(fmtRes_2214592855, 0, style_2214592577(self_2214592581), []);
+    result_2214592582 = initTag_1577058424(makeNimstrLit("div"), [initTag_1577058341(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2214592587[0], NTI33554439)}, NTI2214592566)], 0), [Temporary1, initTag_1577058424(makeNimstrLit("div"), [self_2214592581.slot], false)], false), initTag_1577058424(makeNimstrLit("style"), [initTag_1577058482(fmtRes_2214592855[0], true, [], false)], false)], true);
     F.line = 6;
-    self_2214592573.updated(self_2214592573, null);
+    self_2214592581.updated(self_2214592581, null);
     F.line = 9;
     currentComponent_973083042[0] = nimCopy(null, [], NTI33554439);
   framePtr = F.prev;
 
-  return result_2214592574;
+  return result_2214592582;
 
 }
 
 function render_973084456(self_973084457) {
   var result_973084458 = null;
 
-  var F = {procname: "renderer.render", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/renderer.nim", line: 0};
+  var F = {procname: "renderer.render", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/renderer.nim", line: 0};
   framePtr = F;
   framePtr = F.prev;
 
@@ -15844,38 +15844,38 @@ function render_973084456(self_973084457) {
 function render_973084459(self_973084457) {
   var result_973084460 = null;
 
-  var F = {procname: "renderer.render", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/renderer.nim", line: 0};
+  var F = {procname: "renderer.render", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/renderer.nim", line: 0};
   framePtr = F;
   BeforeRet: do {
     F.line = 530;
     chckNilDisp(self_973084457);
     if (isObj(self_973084457.m_type, NTI2181038130)) {
     F.line = 189;
-    result_973084460 = render_2181038215(self_973084457);
+    result_973084460 = render_2181038223(self_973084457);
     break BeforeRet;
     }
     else {
     if (isObj(self_973084457.m_type, NTI2197815299)) {
     F.line = 189;
-    result_973084460 = render_2197815356(self_973084457);
+    result_973084460 = render_2197815364(self_973084457);
     break BeforeRet;
     }
     else {
     if (isObj(self_973084457.m_type, NTI2147483651)) {
     F.line = 189;
-    result_973084460 = render_2147483692(self_973084457);
+    result_973084460 = render_2147483700(self_973084457);
     break BeforeRet;
     }
     else {
     if (isObj(self_973084457.m_type, NTI2231369731)) {
     F.line = 189;
-    result_973084460 = render_2231369771(self_973084457);
+    result_973084460 = render_2231369779(self_973084457);
     break BeforeRet;
     }
     else {
     if (isObj(self_973084457.m_type, NTI2214592515)) {
     F.line = 189;
-    result_973084460 = render_2214592572(self_973084457);
+    result_973084460 = render_2214592580(self_973084457);
     break BeforeRet;
     }
     else {
@@ -15903,21 +15903,21 @@ function nsuRepeatStr(s_654312452, n_654312453) {
       F.line = 1272;
       var i_654312459 = 0;
       F.line = 75;
-      var colontmp__452985541 = 0;
+      var colontmp__452985545 = 0;
       F.line = 1272;
-      colontmp__452985541 = n_654312453;
+      colontmp__452985545 = n_654312453;
       F.line = 90;
-      var res_452985542 = 1;
+      var res_452985546 = 1;
       Label2: do {
         F.line = 91;
           Label3: while (true) {
-          if (!(res_452985542 <= colontmp__452985541)) break Label3;
+          if (!(res_452985546 <= colontmp__452985545)) break Label3;
             F.line = 1272;
-            i_654312459 = res_452985542;
+            i_654312459 = res_452985546;
             F.line = 1272;
             result_654312454.push.apply(result_654312454, s_654312452);;
             F.line = 93;
-            res_452985542 = addInt(res_452985542, 1);
+            res_452985546 = addInt(res_452985546, 1);
           }
       } while (false);
     } while (false);
@@ -15930,7 +15930,7 @@ function nsuRepeatStr(s_654312452, n_654312453) {
 function lvl_1577058928(self_1577058929) {
   var result_1577058930 = 0;
 
-  var F = {procname: "tag.lvl", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/tag.nim", line: 0};
+  var F = {procname: "tag.lvl", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/tag.nim", line: 0};
   framePtr = F;
     F.line = 301;
     result_1577058930 = 0;
@@ -15967,21 +15967,21 @@ function nsuJoinSep(a_654312849, sep_654312850) {
       F.line = 1780;
       var i_654312866 = 0;
       F.line = 75;
-      var colontmp__452985546 = 0;
+      var colontmp__452985550 = 0;
       F.line = 1780;
-      colontmp__452985546 = (a_654312849).length - 1;
+      colontmp__452985550 = (a_654312849).length - 1;
       F.line = 90;
-      var res_452985547 = 0;
+      var res_452985551 = 0;
       Label2: do {
         F.line = 91;
           Label3: while (true) {
-          if (!(res_452985547 <= colontmp__452985546)) break Label3;
+          if (!(res_452985551 <= colontmp__452985550)) break Label3;
             F.line = 1780;
-            i_654312866 = res_452985547;
+            i_654312866 = res_452985551;
             F.line = 1780;
             L_654312858 = addInt(L_654312858, (a_654312849[chckIndx(i_654312866, 0, (a_654312849).length - 1)]).length);
             F.line = 93;
-            res_452985547 = addInt(res_452985547, 1);
+            res_452985551 = addInt(res_452985551, 1);
           }
       } while (false);
     } while (false);
@@ -15993,23 +15993,23 @@ function nsuJoinSep(a_654312849, sep_654312850) {
       F.line = 1783;
       var i_654312878 = 0;
       F.line = 75;
-      var colontmp__452985550 = 0;
+      var colontmp__452985554 = 0;
       F.line = 1783;
-      colontmp__452985550 = (a_654312849).length - 1;
+      colontmp__452985554 = (a_654312849).length - 1;
       F.line = 90;
-      var res_452985551 = 1;
+      var res_452985555 = 1;
       Label5: do {
         F.line = 91;
           Label6: while (true) {
-          if (!(res_452985551 <= colontmp__452985550)) break Label6;
+          if (!(res_452985555 <= colontmp__452985554)) break Label6;
             F.line = 1783;
-            i_654312878 = res_452985551;
+            i_654312878 = res_452985555;
             F.line = 1783;
             result_654312851.push.apply(result_654312851, sep_654312850);;
             F.line = 1783;
             result_654312851.push.apply(result_654312851, a_654312849[chckIndx(i_654312878, 0, (a_654312849).length - 1)]);;
             F.line = 93;
-            res_452985551 = addInt(res_452985551, 1);
+            res_452985555 = addInt(res_452985555, 1);
           }
       } while (false);
     } while (false);
@@ -16038,15 +16038,15 @@ function join_1577059048(a_1577059050, sep_1577059051) {
       F.line = 1796;
       var x_1577059076 = null;
       F.line = 134;
-      var i_452985555 = 0;
+      var i_452985559 = 0;
       Label2: do {
         F.line = 135;
           Label3: while (true) {
-          if (!(i_452985555 < (a_1577059050).length)) break Label3;
+          if (!(i_452985559 < (a_1577059050).length)) break Label3;
             F.line = 1796;
-            i_1577059075 = i_452985555;
+            i_1577059075 = i_452985559;
             F.line = 1796;
-            x_1577059076 = a_1577059050[chckIndx(i_452985555, 0, (a_1577059050).length - 1)];
+            x_1577059076 = a_1577059050[chckIndx(i_452985559, 0, (a_1577059050).length - 1)];
             if ((0 < i_1577059075)) {
             F.line = 1798;
             result_1577059052.push.apply(result_1577059052, sep_1577059051);;
@@ -16055,7 +16055,7 @@ function join_1577059048(a_1577059050, sep_1577059051) {
             F.line = 1796;
             result_1577059052.push.apply(result_1577059052, HEX24_1577059040(x_1577059076));;
             F.line = 137;
-            i_452985555 = addInt(i_452985555, 1);
+            i_452985559 = addInt(i_452985559, 1);
           }
       } while (false);
     } while (false);
@@ -16077,13 +16077,13 @@ function find_872415280(a_872415283, item_872415284) {
       F.line = 1838;
       var i_872415289 = [];
       F.line = 8;
-      var i_452985558 = 0;
+      var i_452985562 = 0;
       Label2: do {
         F.line = 9;
           Label3: while (true) {
-          if (!(i_452985558 < (a_872415283).length)) break Label3;
+          if (!(i_452985562 < (a_872415283).length)) break Label3;
             F.line = 1838;
-            i_872415289 = a_872415283[chckIndx(i_452985558, 0, (a_872415283).length - 1)];
+            i_872415289 = a_872415283[chckIndx(i_452985562, 0, (a_872415283).length - 1)];
             if (eqStrings(i_872415289, item_872415284)) {
             F.line = 1839;
             break BeforeRet;
@@ -16092,7 +16092,7 @@ function find_872415280(a_872415283, item_872415284) {
             F.line = 1838;
             result_872415285 = addInt(result_872415285, 1);
             F.line = 11;
-            i_452985558 = addInt(i_452985558, 1);
+            i_452985562 = addInt(i_452985562, 1);
           }
       } while (false);
     } while (false);
@@ -16126,7 +16126,7 @@ function HEX24_1577059040(self_1577059041) {
 
   var result_1577059042 = [];
 
-  var F = {procname: "tag.$", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/tag.nim", line: 0};
+  var F = {procname: "tag.$", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/tag.nim", line: 0};
   framePtr = F;
   BeforeRet: do {
     F.line = 352;
@@ -16149,30 +16149,30 @@ function HEX24_1577059040(self_1577059041) {
       var value_1577059047 = [];
       Label2: do {
         F.line = 96;
-        var h_452985536 = 0;
+        var h_452985540 = 0;
         F.line = 75;
-        var colontmp__452985537 = 0;
+        var colontmp__452985541 = 0;
         F.line = 96;
-        colontmp__452985537 = (self_1577059041.attrs.data).length - 1;
+        colontmp__452985541 = (self_1577059041.attrs.data).length - 1;
         F.line = 90;
-        var res_452985538 = 0;
+        var res_452985542 = 0;
         Label3: do {
           F.line = 91;
             Label4: while (true) {
-            if (!(res_452985538 <= colontmp__452985537)) break Label4;
+            if (!(res_452985542 <= colontmp__452985541)) break Label4;
               F.line = 96;
-              h_452985536 = res_452985538;
-              if (self_1577059041.attrs.data[chckIndx(h_452985536, 0, (self_1577059041.attrs.data).length - 1)].Field2) {
+              h_452985540 = res_452985542;
+              if (self_1577059041.attrs.data[chckIndx(h_452985540, 0, (self_1577059041.attrs.data).length - 1)].Field2) {
               F.line = 364;
-              key_1577059046 = self_1577059041.attrs.data[chckIndx(h_452985536, 0, (self_1577059041.attrs.data).length - 1)].Field0;
+              key_1577059046 = self_1577059041.attrs.data[chckIndx(h_452985540, 0, (self_1577059041.attrs.data).length - 1)].Field0;
               F.line = 364;
-              value_1577059047 = self_1577059041.attrs.data[chckIndx(h_452985536, 0, (self_1577059041.attrs.data).length - 1)].Field1;
+              value_1577059047 = self_1577059041.attrs.data[chckIndx(h_452985540, 0, (self_1577059041.attrs.data).length - 1)].Field1;
               F.line = 364;
               attrs_1577059045.push.apply(attrs_1577059045, (makeNimstrLit(" ") || []).concat(key_1577059046 || [],makeNimstrLit("=\"") || [],value_1577059047 || [],makeNimstrLit("\"") || []));;
               }
               
               F.line = 93;
-              res_452985538 = addInt(res_452985538, 1);
+              res_452985542 = addInt(res_452985542, 1);
             }
         } while (false);
       } while (false);
@@ -16277,7 +16277,7 @@ function HEX24_1577059040(self_1577059041) {
 }
 
 function reRender_2181038189(self_2181038190) {
-  var F = {procname: "button.reRender", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/components.nim", line: 0};
+  var F = {procname: "button.reRender", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/components.nim", line: 0};
   framePtr = F;
     F.line = 12;
     var tmpData_2181038191 = (makeNimstrLit("[data-") || []).concat(self_2181038190.uniqCompId || [],makeNimstrLit("]") || []);
@@ -16286,14 +16286,44 @@ function reRender_2181038189(self_2181038190) {
     F.line = 12;
     addArgIter_1577058859(compTmpData_2181038192, (makeNimstrLit("data-") || []).concat(self_2181038190.uniqCompId || []));
     F.line = 12;
-    document.querySelector(toJSStr(tmpData_2181038191)).outerHTML = toJSStr(HEX24_1577059040(compTmpData_2181038192));
+    var current_2181038193 = document.querySelector(toJSStr(tmpData_2181038191));
+    Label1: do {
+      F.line = 144;
+      var tag_2181038197 = null;
+      F.line = 235;
+      var i_452985531 = 0;
+      F.line = 236;
+      var L_452985532 = (compTmpData_2181038192.children).length;
+      Label2: do {
+        F.line = 237;
+          Label3: while (true) {
+          if (!(i_452985531 < L_452985532)) break Label3;
+            F.line = 12;
+            tag_2181038197 = compTmpData_2181038192.children[chckIndx(i_452985531, 0, (compTmpData_2181038192.children).length - 1)];
+            if (!((current_2181038193 == null))) {
+            F.line = 12;
+            current_2181038193.outerHTML = toJSStr(HEX24_1577059040(tag_2181038197));
+            F.line = 12;
+            current_2181038193 = current_2181038193.nextSibling;
+            }
+            
+            F.line = 239;
+            i_452985531 = addInt(i_452985531, 1);
+            if (!(((compTmpData_2181038192.children).length == L_452985532))) {
+            F.line = 240;
+            failedAssertImpl_218103864(makeNimstrLit("/home/runner/.choosenim/toolchains/nim-1.6.12/lib/system/iterators.nim(240, 11) `len(a) == L` the length of the seq changed while iterating over it"));
+            }
+            
+          }
+      } while (false);
+    } while (false);
   framePtr = F.prev;
 
   
 }
 
 function reRender_2197815339(self_2197815340) {
-  var F = {procname: "smart_card.reRender", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/components.nim", line: 0};
+  var F = {procname: "smart_card.reRender", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/components.nim", line: 0};
   framePtr = F;
     F.line = 6;
     var tmpData_2197815341 = (makeNimstrLit("[data-") || []).concat(self_2197815340.uniqCompId || [],makeNimstrLit("]") || []);
@@ -16302,14 +16332,44 @@ function reRender_2197815339(self_2197815340) {
     F.line = 6;
     addArgIter_1577058859(compTmpData_2197815342, (makeNimstrLit("data-") || []).concat(self_2197815340.uniqCompId || []));
     F.line = 6;
-    document.querySelector(toJSStr(tmpData_2197815341)).outerHTML = toJSStr(HEX24_1577059040(compTmpData_2197815342));
+    var current_2197815343 = document.querySelector(toJSStr(tmpData_2197815341));
+    Label1: do {
+      F.line = 144;
+      var tag_2197815347 = null;
+      F.line = 235;
+      var i_452985565 = 0;
+      F.line = 236;
+      var L_452985566 = (compTmpData_2197815342.children).length;
+      Label2: do {
+        F.line = 237;
+          Label3: while (true) {
+          if (!(i_452985565 < L_452985566)) break Label3;
+            F.line = 6;
+            tag_2197815347 = compTmpData_2197815342.children[chckIndx(i_452985565, 0, (compTmpData_2197815342.children).length - 1)];
+            if (!((current_2197815343 == null))) {
+            F.line = 6;
+            current_2197815343.outerHTML = toJSStr(HEX24_1577059040(tag_2197815347));
+            F.line = 6;
+            current_2197815343 = current_2197815343.nextSibling;
+            }
+            
+            F.line = 239;
+            i_452985565 = addInt(i_452985565, 1);
+            if (!(((compTmpData_2197815342.children).length == L_452985566))) {
+            F.line = 240;
+            failedAssertImpl_218103864(makeNimstrLit("/home/runner/.choosenim/toolchains/nim-1.6.12/lib/system/iterators.nim(240, 11) `len(a) == L` the length of the seq changed while iterating over it"));
+            }
+            
+          }
+      } while (false);
+    } while (false);
   framePtr = F.prev;
 
   
 }
 
 function reRender_2147483675(self_2147483676) {
-  var F = {procname: "header.reRender", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/components.nim", line: 0};
+  var F = {procname: "header.reRender", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/components.nim", line: 0};
   framePtr = F;
     F.line = 9;
     var tmpData_2147483677 = (makeNimstrLit("[data-") || []).concat(self_2147483676.uniqCompId || [],makeNimstrLit("]") || []);
@@ -16318,14 +16378,44 @@ function reRender_2147483675(self_2147483676) {
     F.line = 9;
     addArgIter_1577058859(compTmpData_2147483678, (makeNimstrLit("data-") || []).concat(self_2147483676.uniqCompId || []));
     F.line = 9;
-    document.querySelector(toJSStr(tmpData_2147483677)).outerHTML = toJSStr(HEX24_1577059040(compTmpData_2147483678));
+    var current_2147483679 = document.querySelector(toJSStr(tmpData_2147483677));
+    Label1: do {
+      F.line = 144;
+      var tag_2147483683 = null;
+      F.line = 235;
+      var i_452985569 = 0;
+      F.line = 236;
+      var L_452985570 = (compTmpData_2147483678.children).length;
+      Label2: do {
+        F.line = 237;
+          Label3: while (true) {
+          if (!(i_452985569 < L_452985570)) break Label3;
+            F.line = 9;
+            tag_2147483683 = compTmpData_2147483678.children[chckIndx(i_452985569, 0, (compTmpData_2147483678.children).length - 1)];
+            if (!((current_2147483679 == null))) {
+            F.line = 9;
+            current_2147483679.outerHTML = toJSStr(HEX24_1577059040(tag_2147483683));
+            F.line = 9;
+            current_2147483679 = current_2147483679.nextSibling;
+            }
+            
+            F.line = 239;
+            i_452985569 = addInt(i_452985569, 1);
+            if (!(((compTmpData_2147483678.children).length == L_452985570))) {
+            F.line = 240;
+            failedAssertImpl_218103864(makeNimstrLit("/home/runner/.choosenim/toolchains/nim-1.6.12/lib/system/iterators.nim(240, 11) `len(a) == L` the length of the seq changed while iterating over it"));
+            }
+            
+          }
+      } while (false);
+    } while (false);
   framePtr = F.prev;
 
   
 }
 
 function reRender_2231369754(self_2231369755) {
-  var F = {procname: "section.reRender", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/components.nim", line: 0};
+  var F = {procname: "section.reRender", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/components.nim", line: 0};
   framePtr = F;
     F.line = 6;
     var tmpData_2231369756 = (makeNimstrLit("[data-") || []).concat(self_2231369755.uniqCompId || [],makeNimstrLit("]") || []);
@@ -16334,14 +16424,44 @@ function reRender_2231369754(self_2231369755) {
     F.line = 6;
     addArgIter_1577058859(compTmpData_2231369757, (makeNimstrLit("data-") || []).concat(self_2231369755.uniqCompId || []));
     F.line = 6;
-    document.querySelector(toJSStr(tmpData_2231369756)).outerHTML = toJSStr(HEX24_1577059040(compTmpData_2231369757));
+    var current_2231369758 = document.querySelector(toJSStr(tmpData_2231369756));
+    Label1: do {
+      F.line = 144;
+      var tag_2231369762 = null;
+      F.line = 235;
+      var i_452985573 = 0;
+      F.line = 236;
+      var L_452985574 = (compTmpData_2231369757.children).length;
+      Label2: do {
+        F.line = 237;
+          Label3: while (true) {
+          if (!(i_452985573 < L_452985574)) break Label3;
+            F.line = 6;
+            tag_2231369762 = compTmpData_2231369757.children[chckIndx(i_452985573, 0, (compTmpData_2231369757.children).length - 1)];
+            if (!((current_2231369758 == null))) {
+            F.line = 6;
+            current_2231369758.outerHTML = toJSStr(HEX24_1577059040(tag_2231369762));
+            F.line = 6;
+            current_2231369758 = current_2231369758.nextSibling;
+            }
+            
+            F.line = 239;
+            i_452985573 = addInt(i_452985573, 1);
+            if (!(((compTmpData_2231369757.children).length == L_452985574))) {
+            F.line = 240;
+            failedAssertImpl_218103864(makeNimstrLit("/home/runner/.choosenim/toolchains/nim-1.6.12/lib/system/iterators.nim(240, 11) `len(a) == L` the length of the seq changed while iterating over it"));
+            }
+            
+          }
+      } while (false);
+    } while (false);
   framePtr = F.prev;
 
   
 }
 
 function reRender_2214592555(self_2214592556) {
-  var F = {procname: "card.reRender", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/components.nim", line: 0};
+  var F = {procname: "card.reRender", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/components.nim", line: 0};
   framePtr = F;
     F.line = 6;
     var tmpData_2214592557 = (makeNimstrLit("[data-") || []).concat(self_2214592556.uniqCompId || [],makeNimstrLit("]") || []);
@@ -16350,14 +16470,44 @@ function reRender_2214592555(self_2214592556) {
     F.line = 6;
     addArgIter_1577058859(compTmpData_2214592558, (makeNimstrLit("data-") || []).concat(self_2214592556.uniqCompId || []));
     F.line = 6;
-    document.querySelector(toJSStr(tmpData_2214592557)).outerHTML = toJSStr(HEX24_1577059040(compTmpData_2214592558));
+    var current_2214592559 = document.querySelector(toJSStr(tmpData_2214592557));
+    Label1: do {
+      F.line = 144;
+      var tag_2214592563 = null;
+      F.line = 235;
+      var i_452985577 = 0;
+      F.line = 236;
+      var L_452985578 = (compTmpData_2214592558.children).length;
+      Label2: do {
+        F.line = 237;
+          Label3: while (true) {
+          if (!(i_452985577 < L_452985578)) break Label3;
+            F.line = 6;
+            tag_2214592563 = compTmpData_2214592558.children[chckIndx(i_452985577, 0, (compTmpData_2214592558.children).length - 1)];
+            if (!((current_2214592559 == null))) {
+            F.line = 6;
+            current_2214592559.outerHTML = toJSStr(HEX24_1577059040(tag_2214592563));
+            F.line = 6;
+            current_2214592559 = current_2214592559.nextSibling;
+            }
+            
+            F.line = 239;
+            i_452985577 = addInt(i_452985577, 1);
+            if (!(((compTmpData_2214592558.children).length == L_452985578))) {
+            F.line = 240;
+            failedAssertImpl_218103864(makeNimstrLit("/home/runner/.choosenim/toolchains/nim-1.6.12/lib/system/iterators.nim(240, 11) `len(a) == L` the length of the seq changed while iterating over it"));
+            }
+            
+          }
+      } while (false);
+    } while (false);
   framePtr = F.prev;
 
   
 }
 
 function reRender_973084461(self_973084462) {
-  var F = {procname: "renderer.reRender", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/renderer.nim", line: 0};
+  var F = {procname: "renderer.reRender", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/renderer.nim", line: 0};
   framePtr = F;
   framePtr = F.prev;
 
@@ -16365,7 +16515,7 @@ function reRender_973084461(self_973084462) {
 }
 
 function reRender_973084463(self_973084462) {
-  var F = {procname: "renderer.reRender", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.0/happyx/spa/renderer.nim", line: 0};
+  var F = {procname: "renderer.reRender", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.1/happyx/spa/renderer.nim", line: 0};
   framePtr = F;
     F.line = 530;
     chckNilDisp(self_973084462);
