@@ -121,43 +121,64 @@ macro component*(name, body: untyped): untyped =
       [newEmptyNode(), newIdentDefs(ident("self"), ident(name))],
       newStmtList(
         newLetStmt(
-          ident("tmpData"),
+          ident"tmpData",
           newCall(
             "&",
-            newCall("&", newStrLitNode("[data-"), (newDotExpr(ident("self"), ident(UniqueComponentId)))),
+            newCall("&", newStrLitNode("[data-"), (newDotExpr(ident"self", ident(UniqueComponentId)))),
             newStrLitNode("]")
           )
         ),
         newLetStmt(
           ident("compTmpData"),
-          newCall(newDotExpr(ident("self"), ident("render")))
+          newCall(newDotExpr(ident"self", ident"render"))
         ),
+        newCall("echo", newDotExpr(ident"compTmpData", ident"children")),
         newCall(
           "addArgIter",
           ident("compTmpData"),
-          newCall("&", newStrLitNode("data-"), newDotExpr(ident("self"), ident(UniqueComponentId)))
+          newCall("&", newStrLitNode("data-"), newDotExpr(ident"self", ident(UniqueComponentId)))
         ),
+        newCall("echo", ident"tmpData"),
         when defined(js):
           newStmtList(
-            newVarStmt(ident"current", newCall("querySelector", ident("document"), ident("tmpData"))),
+            newVarStmt(ident"_current", newCall("querySelector", ident"document", ident"tmpData")),
+            newVarStmt(
+              ident"_elements", newCall(newNimNode(nnkBracketExpr).add(ident"newSeq", ident"Element"))
+            ),
             newNimNode(nnkForStmt).add(
               ident"tag",
               newDotExpr(
                 ident"compTmpData", ident"children"
               ),
-              newNimNode(nnkIfStmt).add(
-                newNimNode(nnkElifBranch).add(
-                  newCall("not", newCall("isNil", ident"current")),
-                  newStmtList(
-                    newAssignment(
-                      newDotExpr(ident"current", ident"outerHTML"),
-                      newCall("cstring", newCall("$", ident"tag"))
-                    ),
-                    newAssignment(
-                      ident"current",
-                      newDotExpr(newDotExpr(ident"current", ident"nextSibling"), ident"Element")
+              newStmtList(
+                newNimNode(nnkIfStmt).add(
+                  newNimNode(nnkElifBranch).add(
+                    newCall("not", newCall("isNil", ident"_current")),
+                    newStmtList(
+                      newCall("add", ident"_elements", ident"_current"),
+                      newAssignment(
+                        ident"_current",
+                        newDotExpr(newDotExpr(ident"_current", ident"nextSibling"), ident"Element")
+                      )
                     )
                   )
+                ),
+              )
+            ),
+            newNimNode(nnkForStmt).add(
+              ident"__i",
+              newCall("..<", newLit(0), newCall("len", ident"_elements")),
+              newStmtList(
+                newLetStmt(ident"elem", newNimNode(nnkBracketExpr).add(ident"_elements", ident"__i")),
+                newLetStmt(
+                  ident"tag",
+                  newNimNode(nnkBracketExpr).add(
+                    newDotExpr(ident"compTmpData", ident"children"), ident"__i"
+                  )
+                ),
+                newAssignment(
+                  newDotExpr(ident"elem", ident"outerHTML"),
+                  newCall("cstring", newCall("$", ident"tag"))
                 )
               )
             )
@@ -174,7 +195,7 @@ macro component*(name, body: untyped): untyped =
                     "&", newCall(
                       "fmt", newStrLitNode("document.querySelector('{tmpData}').outerHTML = `")
                     ),
-                    newCall("$", ident("compTmpData"))
+                    newCall("$", ident"compTmpData")
                   ), newStrLitNode("`;")
                 )
               )))
@@ -454,4 +475,3 @@ macro component*(name, body: untyped): untyped =
           newNimNode(nnkPragma).add(ident("gcsafe"))
     ),
   )
-  echo result.toStrLit
