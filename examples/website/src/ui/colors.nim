@@ -4,7 +4,7 @@ const
   Pink* = "#A8377B"
   Background* = "#FEFEFE"
   BackgroundDark* = "#181326"
-  BackgroundSecondaryDark* = "#282336"
+  BackgroundSecondaryDark* = "#1c172a"
   ForegroundDark* = "#E0EFFE"
   BackgroundSecondary* = "#EFEFEF"
   Foreground* = "#212121"

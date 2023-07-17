@@ -2,7 +2,7 @@
 import
   happyx,
   path_params,
-  components/[header, smart_card, card, section],
+  components/[header, smart_card, card, section, code_block],
   ui/colors
 
 
@@ -22,24 +22,6 @@ window.addEventListener('scroll', (ev) => {
     children[i].style.opacity = (1.0 - state * 0.001);
   }
 }, false);
-
-function rotate(mouseEvent, element) {
-  let elemRect = element.getBoundingClientRect();
-  let elemX = elemRect.left + (elemRect.right - elemRect.left) / 2.0;
-  let elemY = elemRect.top + (elemRect.bottom - elemRect.top) / 2.0;
-  let x = elemX - mouseEvent.pageX;
-  let y = elemY + mouseEvent.pageY;
-  element.style.transform = 'rotateX(' + y * 0.01 + 'deg) rotateY(' + x * 0.01 + 'deg) translatez(0) perspective(80px)';
-  element.style.webkitTransform = 'rotateX(' + y * 0.01 + 'deg) rotateY(' + x * 0.01 + 'deg) translatez(0) perspective(80px)';
-  element.style.transformStyle = 'preserve-3d';
-}
-
-window.addEventListener('mousemove', (ev) => {
-  if (window.location.href.split('#')[1] != "/")
-    return
-  rotate(ev, document.getElementById("ssr"));
-  rotate(ev, document.getElementById("spa"));
-});
 """.}
 
 
@@ -57,8 +39,12 @@ appRoutes("app"):
         tDiv(class = "sticky top-0 z-20"):
           component Header
         tDiv(class = "flex flex-col gap-16 items-center justify-center items-center w-full"):
-          component SmartCard(id = "ssr"):
-            tImg(src = "/happyx/public/ssr.png", class = "w-36 xl:w-96 h-36 xl:h-96 pointer-events-none select-none rounded-tl-md rounded-bl-md")
+          component SmartCard:
+            component CodeBlock(source = """import happyx
+
+serve("127.0.0.1", 5000):
+  get "/":
+    return "Hello, world!" """)
             tDiv(class = "w-36 xl:w-96 text-lg xl:text-base text-center subpixel-antialiased"):
               "Make server-side applications easily with powerful DSL 🔥"
           component Section:
@@ -71,8 +57,12 @@ appRoutes("app"):
                 "Path Params"
               component Card(pathToImg = "/happyx/public/routing.svg"):
                 "Routing/Mounting"
-          component SmartCard(id = "spa"):
-            tImg(src = "/happyx/public/spa.png", class = "w-36 xl:w-96 h-36 xl:h-96 pointer-events-none select-none rounded-tl-md rounded-bl-md")
+          component SmartCard:
+            component CodeBlock(source = """import happyx
+
+appRoutes("app"):
+  "/":
+    "Hello, world!" """)
             tDiv(class = "w-36 xl:w-96 text-lg xl:text-base text-center subpixel-antialiased"):
               "Make powerful full-stack apps with really same syntax ⚡"
           component Section:
