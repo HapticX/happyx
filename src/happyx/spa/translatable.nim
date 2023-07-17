@@ -34,14 +34,18 @@ var
 
 
 macro translatable*(body: untyped): untyped =
-  ## Make strings translatable
+  ## Make translations for strings
+  ## 
+  ## > Use standalone file with your translations for good practice.
   ## 
   ## # Example
   ## 
   ## .. code-block:: nim
   ##    translatable:
+  ##      # If lang is unknown than used "My own string"
   ##      "My own string":
   ##        "ru" -> "Моя собственная строка"
+  ##        "fr" -> "..."
   ## 
   if translatesStatement.len == 0:
     when defined(js):

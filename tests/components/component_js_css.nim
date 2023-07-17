@@ -4,6 +4,9 @@ import ../../src/happyx
 
 
 component Pure:
+  *pub_field: int = 0
+  priv_field: int = 1
+
   `template`:
     # HTML here
     "Hi, HTML is here ✨"

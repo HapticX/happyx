@@ -29,6 +29,8 @@ proc replaceSelfStateVal(statement: NimNode) =
 macro component*(name, body: untyped): untyped =
   ## Register a new component.
   ## 
+  ## Component can have fields
+  ## 
   ## ## Basic Usage 🔨
   ## 
   ## .. code-block::nim
@@ -230,9 +232,30 @@ macro component*(name, body: untyped): untyped =
   )
   
   for s in body.children:
-    if s.kind in [nnkCall, nnkCommand, nnkInfix]:
+    if s.kind in [nnkCall, nnkCommand, nnkInfix, nnkPrefix]:
+      # Private field
       if s[0].kind == nnkIdent and s.len == 2 and s[^1].kind == nnkStmtList and s[^1].len == 1:
         # Extract default value and field type
+        let (fieldType, defaultValue) =
+          if s[^1][0].kind == nnkIdent:
+            (s[^1][0], newEmptyNode())
+          else:  # assignment statement
+            (s[^1][0][0], s[^1][0][1])
+        params.add(newNimNode(nnkIdentDefs).add(
+          s[0],
+          newCall(
+            bindSym("[]", brForceOpen), ident("State"), fieldType
+          ),
+          newEmptyNode()
+        ))
+        initParams.add(newNimNode(nnkIdentDefs).add(
+          s[0], fieldType, defaultValue
+        ))
+        initObjConstr.add(newColonExpr(s[0], newCall("remember", s[0])))
+      
+      # Public field
+      elif s.kind == nnkPrefix and s[0] == ident"*" and s[2].len == 1:
+        # Extract field type and default value
         let (fieldType, defaultValue) =
           if s[^1][0].kind == nnkIdent:
             (s[^1][0], newEmptyNode())
@@ -250,6 +273,7 @@ macro component*(name, body: untyped): untyped =
         ))
         initObjConstr.add(newColonExpr(s[0], newCall("remember", s[0])))
     
+      # template, style or script
       elif s[0].kind == nnkAccQuoted or s.kind == nnkInfix and s[1].kind == nnkAccQuoted:
         var
           asType = ""
