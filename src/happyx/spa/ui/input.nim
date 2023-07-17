@@ -31,10 +31,10 @@ const DefaultInputAction*: InputAction = proc(str: cstring) = discard
 
 component Input:
   # action when any input
-  action: InputAction = DefaultInputAction
-  placeholder: string = ""
-  label: string = ""
-  inputType: string = ""
+  *action: InputAction = DefaultInputAction
+  *placeholder: string = ""
+  *label: string = ""
+  *inputType: string = ""
 
   `template`:
     tDiv:

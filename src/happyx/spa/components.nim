@@ -254,7 +254,7 @@ macro component*(name, body: untyped): untyped =
         initObjConstr.add(newColonExpr(s[0], newCall("remember", s[0])))
       
       # Public field
-      elif s.kind == nnkPrefix and s[0] == ident"*" and s[2].len == 1:
+      elif s.kind == nnkPrefix and s[0] == ident"*" and s[1].kind == nnkIdent and s[2].len == 1:
         # Extract field type and default value
         let (fieldType, defaultValue) =
           if s[^1][0].kind == nnkIdent:
@@ -262,16 +262,16 @@ macro component*(name, body: untyped): untyped =
           else:  # assignment statement
             (s[^1][0][0], s[^1][0][1])
         params.add(newNimNode(nnkIdentDefs).add(
-          postfix(s[0], "*"),
+          postfix(s[1], "*"),
           newCall(
             bindSym("[]", brForceOpen), ident("State"), fieldType
           ),
           newEmptyNode()
         ))
         initParams.add(newNimNode(nnkIdentDefs).add(
-          s[0], fieldType, defaultValue
+          s[1], fieldType, defaultValue
         ))
-        initObjConstr.add(newColonExpr(s[0], newCall("remember", s[0])))
+        initObjConstr.add(newColonExpr(s[1], newCall("remember", s[1])))
     
       # template, style or script
       elif s[0].kind == nnkAccQuoted or s.kind == nnkInfix and s[1].kind == nnkAccQuoted:

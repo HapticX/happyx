@@ -28,14 +28,14 @@ const DefaultButtonAction*: ButtonAction = proc() = discard
 
 component Button:
   # action when button is clicked
-  action: ButtonAction = DefaultButtonAction
+  *action: ButtonAction = DefaultButtonAction
 
   `template`:
     tButton:
       slot
       @click:
         self.action()
-    
+  
   `style`: """
     button {
       display: flex;
