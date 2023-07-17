@@ -20,5 +20,6 @@ getAttribute	happyx/spa/tag.html#getAttribute,TagRef,string,string	tag: getAttri
 findByTag	happyx/spa/tag.html#findByTag,TagRef,string	tag: findByTag(self: TagRef; tag: string): seq[TagRef]	
 get	happyx/spa/tag.html#get,TagRef,string	tag: get(self: TagRef; tag: string): TagRef	
 `$`	happyx/spa/tag.html#$,TagRef	tag: `$`(self: TagRef): string	
+Example	happyx/spa/tag.html#example	  Example	
 Tag ✨	happyx/spa/tag.html#tag-✨	 Tag ✨	
 Usage 🔨	happyx/spa/tag.html#tag-✨-usage-🔨	  Usage 🔨	

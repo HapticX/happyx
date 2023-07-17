@@ -98,7 +98,8 @@ window.addEventListener('DOMContentLoaded', main);
     </select>
   </div>
   <ul class="simple simple-toc" id="toc-list">
-<li><a class="reference" id="tag-✨_toc" href="#tag-✨">Tag ✨</a></li>
+<ul class="simple"><li><a class="reference" id="example_toc" href="#example">Example</a></li>
+</ul><li><a class="reference" id="tag-✨_toc" href="#tag-✨">Tag ✨</a></li>
 <ul class="simple"><li><a class="reference" id="tag-✨-usage-🔨_toc" href="#tag-✨-usage-🔨">Usage 🔨</a></li>
 </ul><li>
   <a class="reference reference-toplevel" href="#7" id="57">Types</a>
@@ -350,7 +351,11 @@ Adds <tt class="docutils literal"><span class="pre"><span class="Identifier">oth
 <dt><pre><span class="Keyword">func</span> <a href="#addArg%2CTagRef%2Cstring"><span class="Identifier">addArg</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a><span class="Other">;</span> <span class="Identifier">arg</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
-
+Adds arg into tag
+<h2><a class="toc-backref" id="example" href="#example">Example</a></h2><pre class="listing"><span class="Keyword">var</span> <span class="Identifier">tag</span> <span class="Operator">=</span> <span class="Identifier">initTag</span><span class="Punctuation">(</span><span class="StringLit">&quot;div&quot;</span><span class="Punctuation">)</span>
+<span class="Identifier">echo</span> <span class="Identifier">tag</span>  <span class="Comment"># &lt;div&gt;&lt;/div&gt;</span>
+<span class="Identifier">tag</span><span class="Operator">.</span><span class="Identifier">addArg</span><span class="Punctuation">(</span><span class="StringLit">&quot;data-1&quot;</span><span class="Punctuation">)</span>
+<span class="Identifier">echo</span> <span class="Identifier">tag</span>  <span class="Comment"># &lt;div data-1&gt;&lt;/div&gt;</span></pre>
 
 </dd>
 </div>
@@ -358,7 +363,9 @@ Adds <tt class="docutils literal"><span class="pre"><span class="Identifier">oth
 <dt><pre><span class="Keyword">func</span> <a href="#addArgIter%2CTagRef%2Cstring"><span class="Identifier">addArgIter</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a><span class="Other">;</span> <span class="Identifier">arg</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
-Adds argument into current tag and all children
+<p>Adds argument into current tag and all children</p>
+<p>See also <a class="reference internal" href="#addArg">addArg</a></p>
+
 
 </dd>
 </div>
@@ -517,7 +524,7 @@ Shortcur for <a class="reference external" href="#initTag,string,bool,seq[TagRef
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-07-16 15:30:52 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-07-17 11:25:37 UTC</small>
       </div>
     </div>
   </div>

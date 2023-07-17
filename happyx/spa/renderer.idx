@@ -9,6 +9,7 @@ componentEventHandlers	happyx/spa/renderer.html#componentEventHandlers	renderer:
 components	happyx/spa/renderer.html#components	renderer: components	
 currentComponent	happyx/spa/renderer.html#currentComponent	renderer: currentComponent	
 currentRoute	happyx/spa/renderer.html#currentRoute	renderer: currentRoute	
+elem	happyx/spa/renderer.html#elem.m,untyped	renderer: elem(name: untyped): untyped	
 route	happyx/spa/renderer.html#route,cstring	renderer: route(path: cstring)	
 registerApp	happyx/spa/renderer.html#registerApp,cstring	renderer: registerApp(appId: cstring = &quot;app&quot;): App	
 registerComponent	happyx/spa/renderer.html#registerComponent,cstring,BaseComponent	renderer: registerComponent(name: cstring; component: BaseComponent): BaseComponent	

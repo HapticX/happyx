@@ -78,5 +78,6 @@ toInt64	happyx/spa/state.html#toInt64.c,State[int64]	state: toInt64(self: State[
 toFloat32	happyx/spa/state.html#toFloat32.c,State[float32]	state: toFloat32(self: State[float32]): float32	
 toFloat64	happyx/spa/state.html#toFloat64.c,State[float64]	state: toFloat64(self: State[float64]): float64	
 toSeq	happyx/spa/state.html#toSeq.c,State[seq[T]]	state: toSeq[T](self: State[seq[T]]): seq[T]	
+Examples:	happyx/spa/state.html#examplescolon	  Examples:	
 State 🍍	happyx/spa/state.html#state-🍍	 State 🍍	
 Usage ⚡	happyx/spa/state.html#state-🍍-usage-⚡	  Usage ⚡	

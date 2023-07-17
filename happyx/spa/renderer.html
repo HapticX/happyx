@@ -216,6 +216,11 @@ window.addEventListener('DOMContentLoaded', main);
     title="buildHtml(root, html: untyped): untyped">buildHtml(root, html: untyped): untyped</a></li>
 
   </ul>
+  <ul class="simple nested-toc-section">elem
+      <li><a class="reference" href="#elem.m%2Cuntyped"
+    title="elem(name: untyped): untyped">elem(name: untyped): untyped</a></li>
+
+  </ul>
   <ul class="simple nested-toc-section">routes
       <li><a class="reference" href="#routes.m%2CApp%2Cuntyped"
     title="routes(app: App; body: untyped): untyped">routes(app: App; body: untyped): untyped</a></li>
@@ -330,7 +335,7 @@ window.addEventListener('DOMContentLoaded', main);
 <dt><pre><a href="renderer.html#application"><span class="Identifier">application</span></a><span class="Other">:</span> <a href="renderer.html#App"><span class="Identifier">App</span></a> <span class="Other">=</span> <span class="Keyword">nil</span></pre></dt>
 <dd>
 
-
+global application variable
 
 </dd>
 </div>
@@ -354,7 +359,7 @@ window.addEventListener('DOMContentLoaded', main);
 <dt><pre><a href="renderer.html#currentComponent"><span class="Identifier">currentComponent</span></a> <span class="Other">=</span> <span class="StringLit">&quot;&quot;</span></pre></dt>
 <dd>
 
-
+Current component unique ID
 
 </dd>
 </div>
@@ -362,7 +367,7 @@ window.addEventListener('DOMContentLoaded', main);
 <dt><pre><a href="renderer.html#currentRoute"><span class="Identifier">currentRoute</span></a><span class="Other">:</span> <span class="Identifier">cstring</span> <span class="Other">=</span> <span class="StringLit">&quot;/&quot;</span></pre></dt>
 <dd>
 
-
+Current route path
 
 </dd>
 </div>
@@ -384,7 +389,7 @@ window.addEventListener('DOMContentLoaded', main);
     <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
-Creates a new Singla Page Application
+Creates a new Single Page Application
 
 </dd>
 </div>
@@ -393,6 +398,8 @@ Creates a new Singla Page Application
     <span class="Identifier">inline</span><span class="Other">,</span> <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
+<p>Register a new component.</p>
+<p>Don't use it because it used in <tt class="docutils literal"><span class="pre"><span class="Identifier">component</span></span></tt> macro. </p>
 
 
 </dd>
@@ -409,7 +416,7 @@ Rerender DOM with VDOM
 <dt><pre><span class="Keyword">proc</span> <a href="#route%2Ccstring"><span class="Identifier">route</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span> {.<span class="Identifier">inline</span><span class="Other">,</span> <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
-
+Change current page to <tt class="docutils literal"><span class="pre"><span class="Identifier">path</span></span></tt> and rerender
 
 </dd>
 </div>
@@ -443,7 +450,9 @@ Basic method that needs to overload
 <dt><pre><span class="Keyword">macro</span> <a href="#appRoutes.m%2Cstring%2Cuntyped"><span class="Identifier">appRoutes</span></a><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">body</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
 
-Registers a new Single page application, creates routing for it and starts SPA.
+<p>Registers a new Single page application, creates routing for it and starts SPA.</p>
+<p>Automatically creates <tt class="docutils literal"><span class="pre"><span class="Identifier">app</span></span></tt> variable</p>
+
 <h2><a class="toc-backref" id="basic-usagecolon" href="#basic-usagecolon">Basic Usage:</a></h2><pre class="listing"><span class="Identifier">appRoutes</span><span class="Punctuation">(</span><span class="StringLit">&quot;app&quot;</span><span class="Punctuation">)</span><span class="Punctuation">:</span>
   <span class="StringLit">&quot;/&quot;</span><span class="Punctuation">:</span>
     <span class="StringLit">&quot;Hello, world!&quot;</span></pre>
@@ -546,6 +555,18 @@ Registers a new Single page application, creates routing for it and starts SPA.
 
 </dd>
 </div>
+<div id="elem.m,untyped">
+<dt><pre><span class="Keyword">macro</span> <a href="#elem.m%2Cuntyped"><span class="Identifier">elem</span></a><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
+<dd>
+
+<tt class="docutils literal"><span class="pre"><span class="Identifier">elem</span></span></tt> macro is just shortcut for<pre class="listing"><span class="Keyword">block</span><span class="Punctuation">:</span>
+  <span class="Keyword">var</span> <span class="Identifier">res</span><span class="Punctuation">:</span> <span class="Identifier">Element</span>
+  <span class="Punctuation">{</span><span class="Operator">.</span><span class="Identifier">emit</span><span class="Punctuation">:</span> <span class="StringLit">&quot;`res` = document.getElementById('name')&quot;</span><span class="Operator">.</span><span class="Punctuation">}</span>
+  <span class="Identifier">res</span></pre><p>⚠ Works only on JS backend ⚠ </p>
+
+
+</dd>
+</div>
 <div id="routes.m,App,untyped">
 <dt><pre><span class="Keyword">macro</span> <a href="#routes.m%2CApp%2Cuntyped"><span class="Identifier">routes</span></a><span class="Other">(</span><span class="Identifier">app</span><span class="Other">:</span> <a href="renderer.html#App"><span class="Identifier">App</span></a><span class="Other">;</span> <span class="Identifier">body</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
@@ -594,7 +615,7 @@ Starts single page application
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-07-16 15:30:56 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-07-17 11:25:41 UTC</small>
       </div>
     </div>
   </div>

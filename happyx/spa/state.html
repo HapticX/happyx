@@ -98,7 +98,8 @@ window.addEventListener('DOMContentLoaded', main);
     </select>
   </div>
   <ul class="simple simple-toc" id="toc-list">
-<li><a class="reference" id="state-🍍_toc" href="#state-🍍">State 🍍</a></li>
+<ul class="simple"><li><a class="reference" id="examplescolon_toc" href="#examplescolon">Examples:</a></li>
+</ul><li><a class="reference" id="state-🍍_toc" href="#state-🍍">State 🍍</a></li>
 <ul class="simple"><li><a class="reference" id="state-🍍-usage-⚡_toc" href="#state-🍍-usage-⚡">Usage ⚡</a></li>
 </ul><li>
   <a class="reference reference-toplevel" href="#6" id="56">Imports</a>
@@ -470,14 +471,14 @@ window.addEventListener('DOMContentLoaded', main);
 <span class="Identifier">appRoutes</span><span class="Punctuation">(</span><span class="StringLit">&quot;app&quot;</span><span class="Punctuation">)</span><span class="Punctuation">:</span>
   <span class="StringLit">&quot;/&quot;</span><span class="Punctuation">:</span>
     <span class="Identifier">tDiv</span><span class="Punctuation">:</span>
-      <span class="StringLit">&quot;Hello, {name}, your level is {lvl} [{exp}/{maxExp}&quot;</span>
+      <span class="StringLit">&quot;Hello, {name}, your level is {lvl} [{exp}/{maxExp}]&quot;</span>
     <span class="Identifier">tButton</span><span class="Punctuation">:</span>
       <span class="StringLit">&quot;Increase exp&quot;</span>
       <span class="Operator">@</span><span class="Identifier">click</span><span class="Punctuation">:</span>
-        <span class="Identifier">inc</span> <span class="Identifier">exp</span>
+        <span class="Identifier">exp</span> <span class="Operator">+=</span> <span class="DecNumber">1</span>
         <span class="Keyword">while</span> <span class="Identifier">exp</span> <span class="Operator">&gt;=</span> <span class="Identifier">maxExp</span><span class="Punctuation">:</span>
           <span class="Identifier">exp</span> <span class="Operator">-=</span> <span class="Identifier">maxExp</span>
-          <span class="Identifier">inc</span> <span class="Identifier">lvl</span>
+          <span class="Identifier">lvl</span> <span class="Operator">+=</span> <span class="DecNumber">1</span>
           <span class="Identifier">maxExp</span> <span class="Operator">+=</span> <span class="DecNumber">5</span></pre></p>
   <div class="section" id="6">
 <h1><a class="toc-backref" href="#6">Imports</a></h1>
@@ -554,7 +555,7 @@ window.addEventListener('DOMContentLoaded', main);
 <dt><pre><span class="Keyword">func</span> <a href="#%24%2CState%5BT%5D"><span class="Identifier">`$`</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="state.html#State"><span class="Identifier">State</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span></pre></dt>
 <dd>
 
-Returns string representation
+Returns State's string representation
 
 </dd>
 </div>
@@ -882,7 +883,7 @@ Returns string representation
 <dt><pre><span class="Keyword">func</span> <a href="#%5B%5D%2CState%5BT%5D%2Cint"><span class="Identifier">`[]`</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="state.html#State"><span class="Identifier">State</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">idx</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">auto</span></pre></dt>
 <dd>
 
-
+Returns State's item at <tt class="docutils literal"><span class="pre"><span class="Identifier">idx</span></span></tt> index.
 
 </dd>
 </div>
@@ -994,7 +995,7 @@ Changes state value
 <dt><pre><span class="Keyword">proc</span> <a href="#val%3D%2CState%5BT%5D%2CT"><span class="Identifier">val=</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="state.html#State"><span class="Identifier">State</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">T</span><span class="Other">)</span></pre></dt>
 <dd>
 
-
+Change state's value
 
 </dd>
 </div>
@@ -1023,7 +1024,7 @@ Changes state value
 <dt><pre><span class="Keyword">iterator</span> <a href="#items.i%2CState%5BT%5D"><span class="Identifier">items</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="state.html#State"><span class="Identifier">State</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">auto</span></pre></dt>
 <dd>
 
-
+Iterate over state items
 
 </dd>
 </div>
@@ -1146,6 +1147,9 @@ Changes state value
 <dd>
 
 Call any function that available for state value
+<h2><a class="toc-backref" id="examplescolon" href="#examplescolon">Examples:</a></h2><p><tt class="docutils literal"><span class="pre"><span class="Identifier">Seqs</span></span></tt> .. code-block::nim</p>
+<blockquote><p>var arr: State[seq[int]] = remember @[] arr-&gt;add(1) echo arr</p></blockquote>
+
 
 </dd>
 </div>
@@ -1159,7 +1163,7 @@ Call any function that available for state value
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-07-16 15:31:01 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-07-17 11:25:47 UTC</small>
       </div>
     </div>
   </div>
