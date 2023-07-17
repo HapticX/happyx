@@ -115,10 +115,10 @@ window.addEventListener('DOMContentLoaded', main);
     title="InputAction = proc (str: cstring): void">InputAction</a></li>
   <li><a class="reference" href="#InputObj"
     title="InputObj = object of BaseComponentObj
-  action: State[InputAction]
-  placeholder: State[string]
-  label: State[string]
-  inputType: State[string]">InputObj</a></li>
+  action*: State[InputAction]
+  placeholder*: State[string]
+  label*: State[string]
+  inputType*: State[string]">InputObj</a></li>
 
   </ul>
 </li>
@@ -203,10 +203,10 @@ window.addEventListener('DOMContentLoaded', main);
 </div>
 <div id="InputObj">
 <dt><pre><a href="input.html#InputObj"><span class="Identifier">InputObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <a href="../renderer.html#BaseComponentObj"><span class="Identifier">BaseComponentObj</span></a>
-  <span class="Identifier">action</span><span class="Other">:</span> <a href="../state.html#State"><span class="Identifier">State</span></a><span class="Other">[</span><span class="Identifier">InputAction</span><span class="Other">]</span>
-  <span class="Identifier">placeholder</span><span class="Other">:</span> <a href="../state.html#State"><span class="Identifier">State</span></a><span class="Other">[</span><span class="Identifier">string</span><span class="Other">]</span>
-  <span class="Identifier">label</span><span class="Other">:</span> <a href="../state.html#State"><span class="Identifier">State</span></a><span class="Other">[</span><span class="Identifier">string</span><span class="Other">]</span>
-  <span class="Identifier">inputType</span><span class="Other">:</span> <a href="../state.html#State"><span class="Identifier">State</span></a><span class="Other">[</span><span class="Identifier">string</span><span class="Other">]</span>
+  <span class="Identifier">action</span><span class="Operator">*</span><span class="Other">:</span> <a href="../state.html#State"><span class="Identifier">State</span></a><span class="Other">[</span><span class="Identifier">InputAction</span><span class="Other">]</span>
+  <span class="Identifier">placeholder</span><span class="Operator">*</span><span class="Other">:</span> <a href="../state.html#State"><span class="Identifier">State</span></a><span class="Other">[</span><span class="Identifier">string</span><span class="Other">]</span>
+  <span class="Identifier">label</span><span class="Operator">*</span><span class="Other">:</span> <a href="../state.html#State"><span class="Identifier">State</span></a><span class="Other">[</span><span class="Identifier">string</span><span class="Other">]</span>
+  <span class="Identifier">inputType</span><span class="Operator">*</span><span class="Other">:</span> <a href="../state.html#State"><span class="Identifier">State</span></a><span class="Other">[</span><span class="Identifier">string</span><span class="Other">]</span>
 </pre></dt>
 <dd>
 
@@ -274,7 +274,7 @@ window.addEventListener('DOMContentLoaded', main);
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-07-17 11:41:40 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-07-17 11:43:41 UTC</small>
       </div>
     </div>
   </div>
