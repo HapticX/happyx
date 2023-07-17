@@ -124,27 +124,27 @@ var NTI1677721714 = {size: 0, kind: 24, base: null, node: null, finalizer: null}
 var NTI1677721713 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
 var NTI1677721616 = {size: 0, kind: 22, base: null, node: null, finalizer: null};
 var NTI1577058881 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI452985264 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI452985266 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI2214592515 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
-var NTI452985176 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI452985178 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI2231369731 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
-var NTI452985099 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI452985101 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI1828717088 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI1828717087 = {size: 0, kind: 22, base: null, node: null, finalizer: null};
 var NTI1828717080 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI1828717079 = {size: 0, kind: 22, base: null, node: null, finalizer: null};
 var NTI2248146947 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
 var NTI2197815299 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
-var NTI452985083 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI452985085 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI2147483651 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
-var NTI452985057 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI452985044 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI452985016 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI452984998 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI452984979 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI452984960 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI452984940 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI452984923 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI452985059 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI452985046 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI452985018 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI452985000 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI452984981 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI452984962 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI452984942 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI452984925 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI704652999 = {size: 0,kind: 31,base: null,node: null,finalizer: null};
 var NTI704653478 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI33555124 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
@@ -299,36 +299,36 @@ NTI33555124.base = NTI33555113;
 var NNI704653478 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "a", len: 0, typ: NTI704652999, name: "a", sons: null}, 
 {kind: 1, offset: "b", len: 0, typ: NTI33554456, name: "b", sons: null}]};
 NTI704653478.node = NNI704653478;
-var NNI452984923 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+var NNI452984925 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI452984923.node = NNI452984923;
-var NNI452984940 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+NTI452984925.node = NNI452984925;
+var NNI452984942 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI452984940.node = NNI452984940;
-var NNI452984960 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+NTI452984942.node = NNI452984942;
+var NNI452984962 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI452984960.node = NNI452984960;
-var NNI452984979 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+NTI452984962.node = NNI452984962;
+var NNI452984981 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI452984979.node = NNI452984979;
-var NNI452984998 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+NTI452984981.node = NNI452984981;
+var NNI452985000 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI452984998.node = NNI452984998;
-var NNI452985016 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+NTI452985000.node = NNI452985000;
+var NNI452985018 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI452985016.node = NNI452985016;
-var NNI452985044 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+NTI452985018.node = NNI452985018;
+var NNI452985046 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI452985044.node = NNI452985044;
-var NNI452985057 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+NTI452985046.node = NNI452985046;
+var NNI452985059 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI452985057.node = NNI452985057;
+NTI452985059.node = NNI452985059;
 var NNI2147483651 = {kind: 2, len: 0, offset: 0, typ: null, name: null, sons: []};
 NTI2147483651.node = NNI2147483651;
 NTI2147483651.base = NTI973078535;
-var NNI452985083 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+var NNI452985085 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI452985083.node = NNI452985083;
+NTI452985085.node = NNI452985085;
 var NNI2197815299 = {kind: 2, len: 0, offset: 0, typ: null, name: null, sons: []};
 NTI2197815299.node = NNI2197815299;
 NTI2197815299.base = NTI973078535;
@@ -342,21 +342,21 @@ var NNI2248146947 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{
 {kind: 1, offset: "source", len: 0, typ: NTI1828717087, name: "source", sons: null}]};
 NTI2248146947.node = NNI2248146947;
 NTI2248146947.base = NTI973078535;
-var NNI452985099 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+var NNI452985101 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI452985099.node = NNI452985099;
+NTI452985101.node = NNI452985101;
 var NNI2231369731 = {kind: 2, len: 0, offset: 0, typ: null, name: null, sons: []};
 NTI2231369731.node = NNI2231369731;
 NTI2231369731.base = NTI973078535;
-var NNI452985176 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+var NNI452985178 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI452985176.node = NNI452985176;
+NTI452985178.node = NNI452985178;
 var NNI2214592515 = {kind: 1, offset: "pathToImg", len: 0, typ: NTI1828717079, name: "pathToImg", sons: null};
 NTI2214592515.node = NNI2214592515;
 NTI2214592515.base = NTI973078535;
-var NNI452985264 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+var NNI452985266 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI452985264.node = NNI452985264;
+NTI452985266.node = NNI452985266;
 NTI1677721714.base = NTI1677721616;
 NTI1677721715.base = NTI1677721616;
 NTI1677721716.base = NTI1677721616;
@@ -13446,7 +13446,7 @@ function callRouter_452984909(force_452984910) {
     var fmtRes_452985128 = mnewString(0);
     F.line = 49;
     fmtRes_452985128.push.apply(fmtRes_452985128, makeNimstrLit("Make server-side applications easily with powerful DSL \xF0\x9F\x94\xA5"));;
-    comp681213_452985112.slot = initTag_1577058424(makeNimstrLit("div"), [data_comp791414_452985115, initTag_1577058341(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_452985120, NTI33554439)}, NTI452985099)], 0), [initTag_1577058482(fmtRes_452985128, true, [], false)], false)], true);
+    comp681213_452985112.slot = initTag_1577058424(makeNimstrLit("div"), [data_comp791414_452985115, initTag_1577058341(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_452985120, NTI33554439)}, NTI452985101)], 0), [initTag_1577058482(fmtRes_452985128, true, [], false)], false)], true);
     F.line = 94;
     var data_comp681213_452985145 = render_973084459(comp681213_452985112);
     F.line = 94;
@@ -13534,7 +13534,7 @@ function callRouter_452984909(force_452984910) {
     window.addEventListener('pagehide', data_comp11132218_452985230.pageHide);
     F.line = 707;
     window.addEventListener('pageshow', data_comp11132218_452985230.pageShow);
-    comp8101615_452985148.slot = initTag_1577058424(makeNimstrLit("div"), [initTag_1577058424(makeNimstrLit("p"), [initTag_1577058482(fmtRes_452985153, true, [], false)], false), initTag_1577058424(makeNimstrLit("p"), [initTag_1577058482(fmtRes_452985166, true, [], false)], false), initTag_1577058341(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_452985179, NTI33554439)}, NTI452985176)], 0), [data_comp9111816_452985198, data_comp10122017_452985214, data_comp11132218_452985230], false)], true);
+    comp8101615_452985148.slot = initTag_1577058424(makeNimstrLit("div"), [initTag_1577058424(makeNimstrLit("p"), [initTag_1577058482(fmtRes_452985153, true, [], false)], false), initTag_1577058424(makeNimstrLit("p"), [initTag_1577058482(fmtRes_452985166, true, [], false)], false), initTag_1577058341(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_452985179, NTI33554439)}, NTI452985178)], 0), [data_comp9111816_452985198, data_comp10122017_452985214, data_comp11132218_452985230], false)], true);
     F.line = 707;
     var data_comp8101615_452985247 = render_973084459(comp8101615_452985148);
     F.line = 707;
@@ -13574,7 +13574,7 @@ function callRouter_452984909(force_452984910) {
     var fmtRes_452985266 = mnewString(0);
     F.line = 67;
     fmtRes_452985266.push.apply(fmtRes_452985266, makeNimstrLit("Make powerful full-stack apps with really same syntax \xE2\x9A\xA1"));;
-    comp12142419_452985250.slot = initTag_1577058424(makeNimstrLit("div"), [data_comp13152620_452985253, initTag_1577058341(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_452985258, NTI33554439)}, NTI452985264)], 0), [initTag_1577058482(fmtRes_452985266, true, [], false)], false)], true);
+    comp12142419_452985250.slot = initTag_1577058424(makeNimstrLit("div"), [data_comp13152620_452985253, initTag_1577058341(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_452985258, NTI33554439)}, NTI452985266)], 0), [initTag_1577058482(fmtRes_452985266, true, [], false)], false)], true);
     F.line = 94;
     var data_comp12142419_452985283 = render_973084459(comp12142419_452985250);
     F.line = 94;
@@ -13609,7 +13609,7 @@ function callRouter_452984909(force_452984910) {
     window.addEventListener('pagehide', data_comp14162821_452985321.pageHide);
     F.line = 707;
     window.addEventListener('pageshow', data_comp14162821_452985321.pageShow);
-    html_452984913 = initTag_1577058424(makeNimstrLit("div"), [initTag_1577058341(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_452984997[0], NTI33554439)}, NTI452984923)], 0), [initTag_1577058341(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("id"), Field1: nimCopy(null, fmtRes_452985005, NTI33554439)}, NTI452984940), nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_452985010, NTI33554439)}, NTI452984940)], 0), [initTag_1577058341(makeNimstrLit("img"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("src"), Field1: nimCopy(null, fmtRes_452985018, NTI33554439)}, NTI452984960), nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_452985023, NTI33554439)}, NTI452984960)], 0), [], false), initTag_1577058341(makeNimstrLit("img"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("src"), Field1: nimCopy(null, fmtRes_452985031, NTI33554439)}, NTI452984979), nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_452985036, NTI33554439)}, NTI452984979)], 0), [], false), initTag_1577058341(makeNimstrLit("img"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("src"), Field1: nimCopy(null, fmtRes_452985044, NTI33554439)}, NTI452984998), nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_452985049, NTI33554439)}, NTI452984998)], 0), [], false), initTag_1577058341(makeNimstrLit("img"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("src"), Field1: nimCopy(null, fmtRes_452985057, NTI33554439)}, NTI452985016), nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_452985062, NTI33554439)}, NTI452985016)], 0), [], false)], false), initTag_1577058341(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_452985078, NTI33554439)}, NTI452985044)], 0), [initTag_1577058341(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_452985086, NTI33554439)}, NTI452985057)], 0), [data_comp571012_452985093], false), initTag_1577058341(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_452985106, NTI33554439)}, NTI452985083)], 0), [data_comp681213_452985145, data_comp8101615_452985247, data_comp12142419_452985283, data_comp14162821_452985321], false)], false)], false)], true);
+    html_452984913 = initTag_1577058424(makeNimstrLit("div"), [initTag_1577058341(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_452984997[0], NTI33554439)}, NTI452984925)], 0), [initTag_1577058341(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("id"), Field1: nimCopy(null, fmtRes_452985005, NTI33554439)}, NTI452984942), nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_452985010, NTI33554439)}, NTI452984942)], 0), [initTag_1577058341(makeNimstrLit("img"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("src"), Field1: nimCopy(null, fmtRes_452985018, NTI33554439)}, NTI452984962), nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_452985023, NTI33554439)}, NTI452984962)], 0), [], false), initTag_1577058341(makeNimstrLit("img"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("src"), Field1: nimCopy(null, fmtRes_452985031, NTI33554439)}, NTI452984981), nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_452985036, NTI33554439)}, NTI452984981)], 0), [], false), initTag_1577058341(makeNimstrLit("img"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("src"), Field1: nimCopy(null, fmtRes_452985044, NTI33554439)}, NTI452985000), nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_452985049, NTI33554439)}, NTI452985000)], 0), [], false), initTag_1577058341(makeNimstrLit("img"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("src"), Field1: nimCopy(null, fmtRes_452985057, NTI33554439)}, NTI452985018), nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_452985062, NTI33554439)}, NTI452985018)], 0), [], false)], false), initTag_1577058341(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_452985078, NTI33554439)}, NTI452985046)], 0), [initTag_1577058341(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_452985086, NTI33554439)}, NTI452985059)], 0), [data_comp571012_452985093], false), initTag_1577058341(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_452985106, NTI33554439)}, NTI452985085)], 0), [data_comp681213_452985145, data_comp8101615_452985247, data_comp12142419_452985283, data_comp14162821_452985321], false)], false)], false)], true);
     }
     
     if (!((html_452984913 == null))) {

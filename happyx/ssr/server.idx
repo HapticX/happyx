@@ -11,7 +11,6 @@ answerHtml	happyx/ssr/server.html#answerHtml.t,Request,,HttpCode	server: answerH
 answerFile	happyx/ssr/server.html#answerFile,Request,string,HttpCode	server: answerFile(req: Request; filename: string; code: HttpCode = Http200;\n           asAttachment = false): owned(Future[void])	
 `~`	happyx/ssr/server.html#~.m,StringTableRef,untyped	server: `~`(strTable: StringTableRef; key: untyped): untyped	
 routes	happyx/ssr/server.html#routes.m,Server,untyped	server: routes(server: Server; body: untyped): untyped	
-model	happyx/ssr/server.html#model.m,untyped,untyped	server: model(modelName, body: untyped): untyped	
 initServer	happyx/ssr/server.html#initServer.m,untyped	server: initServer(body: untyped): untyped	
 serve	happyx/ssr/server.html#serve.m,string,int,untyped	server: serve(address: string; port: int; body: untyped): untyped	
 Available Path Params	happyx/ssr/server.html#available-path-params	    Available Path Params	

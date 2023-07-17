@@ -1,0 +1,5 @@
+FormDataItem	happyx/ssr/form_data.html#FormDataItem	form_data: FormDataItem	
+FormData	happyx/ssr/form_data.html#FormData	form_data: FormData	
+parseFormData	happyx/ssr/form_data.html#parseFormData,string	form_data: parseFormData(formData: string): FormData	
+parseXWwwFormUrlencoded	happyx/ssr/form_data.html#parseXWwwFormUrlencoded,string	form_data: parseXWwwFormUrlencoded(data: string): StringTableRef	
+Form Data 👨‍🔬	happyx/ssr/form_data.html#form-data-👨‍🔬	 Form Data 👨‍🔬	

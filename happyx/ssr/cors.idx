@@ -1,3 +1,4 @@
 CORSObj	happyx/ssr/cors.html#CORSObj	cors: CORSObj	
 addCORSHeaders	happyx/ssr/cors.html#addCORSHeaders.m,HttpHeaders	cors: addCORSHeaders(headers: HttpHeaders)	
 regCORS	happyx/ssr/cors.html#regCORS.m,untyped	cors: regCORS(body: untyped): untyped	
+Example	happyx/ssr/cors.html#example	  Example	
