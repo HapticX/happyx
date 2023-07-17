@@ -237,11 +237,23 @@ proc tagFromString*(source: string): TagRef {.inline.} =
 
 
 func addArg*(self: TagRef, arg: string) =
+  ## Adds arg into tag
+  ## 
+  ## ## Example
+  ## 
+  ## .. code-block:: nim
+  ##    var tag = initTag("div")
+  ##    echo tag  # <div></div>
+  ##    tag.addArg("data-1")
+  ##    echo tag  # <div data-1></div>
+  ## 
   self.args.add(arg)
 
 
 func addArgIter*(self: TagRef, arg: string) =
   ## Adds argument into current tag and all children
+  ## 
+  ## See also `addArg function #addArg,TagRef,string`_
   if self.args.len == 0:
     self.args.add(arg)
   for i in self.children:

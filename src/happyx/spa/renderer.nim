@@ -131,11 +131,11 @@ when defined(js):
 macro elem*(name: untyped): untyped =
   ## `elem` macro is just shortcut for
   ## 
-  ## ..code-block::nim
-  ##   block:
-  ##     var res: Element
-  ##     {.emit: "`res` = document.getElementById('name')".}
-  ##     res
+  ## .. code-block::nim
+  ##    block:
+  ##      var res: Element
+  ##      {.emit: "`res` = document.getElementById('name')".}
+  ##      res
   ## 
   ## ⚠ Works only on JS backend ⚠
   ## 

@@ -127,10 +127,10 @@ macro `->`*(self: State, field: untyped): untyped =
   ## ## Examples:
   ## 
   ## `Seqs`
-  ## ..code-block::nim
-  ##   var arr: State[seq[int]] = remember @[]
-  ##   arr->add(1)
-  ##   echo arr
+  ## .. code-block::nim
+  ##    var arr: State[seq[int]] = remember @[]
+  ##    arr->add(1)
+  ##    echo arr
   ## 
   if field.kind in nnkCallKinds:
     let
