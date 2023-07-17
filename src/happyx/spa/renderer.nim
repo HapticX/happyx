@@ -97,12 +97,12 @@ else:
 
 # Global variables
 var
-  application*: App = nil
+  application*: App = nil  ## global application variable
   eventHandlers* = newTable[int, AppEventHandler]()
   componentEventHandlers* = newTable[int, ComponentEventHandler]()
   components* = newTable[cstring, BaseComponent]()
-  currentComponent* = ""
-  currentRoute*: cstring = "/"
+  currentComponent* = ""  ## Current component unique ID
+  currentRoute*: cstring = "/"  ## Current route path
 
 
 when defined(js):
@@ -128,8 +128,19 @@ when defined(js):
       nim:
         componentEventHandlers[callbackIdx](components[componentId], evComponent)
   
-  macro elem*(name: untyped): untyped =
-    let nameStr = $name
+macro elem*(name: untyped): untyped =
+  ## `elem` macro is just shortcut for
+  ## 
+  ## ..code-block::nim
+  ##   block:
+  ##     var res: Element
+  ##     {.emit: "`res` = document.getElementById('name')".}
+  ##     res
+  ## 
+  ## ⚠ Works only on JS backend ⚠
+  ## 
+  let nameStr = $name
+  when defined(js):
     newStmtList(
       newNimNode(nnkVarSection).add(newIdentDefs(
         ident"res", ident"Element"
@@ -145,6 +156,7 @@ when defined(js):
 {.push inline.}
 
 proc route*(path: cstring) =
+  ## Change current page to `path` and rerender
   when defined(js):
     {.emit: "window.history.pushState(null, null, '#' + `path`);" .}
     let force = currentRoute != path
@@ -153,12 +165,16 @@ proc route*(path: cstring) =
 
 
 proc registerApp*(appId: cstring = "app"): App {. discardable .} =
-  ## Creates a new Singla Page Application
+  ## Creates a new Single Page Application
   application = App(appId: appId)
   application
 
 
 proc registerComponent*(name: cstring, component: BaseComponent): BaseComponent =
+  ## Register a new component.
+  ## 
+  ## Don't use it because it used in `component` macro.
+  ## 
   if components.hasKey(name):
     return components[name]
   components[name] = component
@@ -506,6 +522,8 @@ macro routes*(app: App, body: untyped): untyped =
 
 macro appRoutes*(name: string, body: untyped): untyped =
   ## Registers a new Single page application, creates routing for it and starts SPA.
+  ## 
+  ## Automatically creates `app` variable
   ##
   ## ## Basic Usage:
   ## 

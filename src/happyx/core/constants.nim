@@ -9,6 +9,7 @@
 ## | `-d:translate`   | enables automatic translate for returns                 |
 ## | `-d:debug`       | enables debug logging                                   |
 ## | `-d:oldRenderer` | enables old renderer for SPA                            |
+## | `-d:enableUi`    | enables built-in UI components                          |
 ## 
 import strformat
 
