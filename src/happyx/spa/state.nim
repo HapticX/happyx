@@ -14,14 +14,14 @@
 ##    appRoutes("app"):
 ##      "/":
 ##        tDiv:
-##          "Hello, {name}, your level is {lvl} [{exp}/{maxExp}"
+##          "Hello, {name}, your level is {lvl} [{exp}/{maxExp}]"
 ##        tButton:
 ##          "Increase exp"
 ##          @click:
-##            inc exp
+##            exp += 1
 ##            while exp >= maxExp:
 ##              exp -= maxExp
-##              inc lvl
+##              lvl += 1
 ##              maxExp += 5
 ##
 import
@@ -40,13 +40,14 @@ func remember*[T](val: T): State[T] =
 
 
 proc `val=`*[T](self: State[T], value: T) =
+  ## Change state's value
   self.value = value
   if not application.isNil() and not application.router.isNil():
     application.router()
 
 
 func `$`*[T](self: State[T]): string =
-  ## Returns string representation
+  ## Returns State's string representation
   when T is string:
     self.value
   else:
@@ -122,6 +123,15 @@ reRenderOperator(`~=`, `~=`)
 
 macro `->`*(self: State, field: untyped): untyped =
   ## Call any function that available for state value
+  ## 
+  ## ## Examples:
+  ## 
+  ## `Seqs`
+  ## ..code-block::nim
+  ##   var arr: State[seq[int]] = remember @[]
+  ##   arr->add(1)
+  ##   echo arr
+  ## 
   if field.kind in nnkCallKinds:
     let
       funcName = $field[0].toStrLit
@@ -175,10 +185,12 @@ proc set*[T](self: State[T], value: T) =
 
 
 func `[]`*[T](self: State[T], idx: int): auto =
+  ## Returns State's item at `idx` index.
   self.val[idx]
 
 
 iterator items*[T](self: State[T]): auto =
+  ## Iterate over state items
   for item in self.val:
     yield item
 
