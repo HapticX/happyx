@@ -186,10 +186,14 @@ window.addEventListener('DOMContentLoaded', main);
 <dt><pre><span class="Keyword">macro</span> <a href="#translatable.m%2Cuntyped"><span class="Identifier">translatable</span></a><span class="Other">(</span><span class="Identifier">body</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
 
-Make strings translatable
+<p>Make translations for strings</p>
+<p>&gt; Use standalone file with your translations for good practice.</p>
+
 <h1><a class="toc-backref" id="example" href="#example">Example</a></h1><pre class="listing"><span class="Identifier">translatable</span><span class="Punctuation">:</span>
+  <span class="Comment"># If lang is unknown than used &quot;My own string&quot;</span>
   <span class="StringLit">&quot;My own string&quot;</span><span class="Punctuation">:</span>
-    <span class="StringLit">&quot;ru&quot;</span> <span class="Operator">-&gt;</span> <span class="StringLit">&quot;Моя собственная строка&quot;</span></pre>
+    <span class="StringLit">&quot;ru&quot;</span> <span class="Operator">-&gt;</span> <span class="StringLit">&quot;Моя собственная строка&quot;</span>
+    <span class="StringLit">&quot;fr&quot;</span> <span class="Operator">-&gt;</span> <span class="StringLit">&quot;...&quot;</span></pre>
 
 </dd>
 </div>
@@ -211,7 +215,7 @@ Translates <tt class="docutils literal"><span class="pre"><span class="Identifie
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-07-17 11:25:37 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-07-17 11:36:52 UTC</small>
       </div>
     </div>
   </div>
