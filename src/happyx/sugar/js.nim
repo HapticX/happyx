@@ -1,6 +1,28 @@
-## Provides JS2Nim bridge
+## # JS ✨
+## 
+## > Provides JS2Nim bridge
 ## 
 ## You can write PURE JS in PURE Nim with it ✌
+## 
+## ## Example
+## 
+## .. code-block::nim
+##    var myNimVariable = 10
+##    
+##    buildJs:
+##      # JavaScript starts here
+##      function myJsFunction(a, b, c):
+##        # Embedded Nim code
+##        nim:
+##          echo "Hello, world!"
+##        # console.log(myNimVariable)
+##        echo ~myNimVariable
+##      
+##      class Animal:
+##        x: int
+##        constructor(x):
+##          self.x = x
+## 
 import
   # Stdlib
   strformat,
