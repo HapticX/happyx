@@ -61,14 +61,14 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.
   # regex param
   routePathStr = routePathStr.replace(re"\{[a-zA-Z][a-zA-Z0-9_]*:/([\s\S]+?)/(\[m\])?\}", "($1)")
   # Remove models
-  routePathStr = routePathStr.replace(re"\[[a-zA-Z][a-zA-Z0-9_]*:[a-zA-Z][a-zA-Z0-9_]*(\[m\])?\]", "")
+  routePathStr = routePathStr.replace(re"\[[a-zA-Z][a-zA-Z0-9_]*:[a-zA-Z][a-zA-Z0-9_]*(\[m\])?(:[a-zA-Z]+)?\]", "")
   let
     regExp = newCall("re", newStrLitNode("^" & routePathStr & "$"))
     found = path.findAll(
       re"\{([a-zA-Z][a-zA-Z0-9_]*\??)(:(bool|int|float|string|path|word|/[\s\S]+?/))?(\[m\])?(=(\S+?))?\}"
     )
     foundModels = path.findAll(
-      re"\[([a-zA-Z][a-zA-Z0-9_]*):([a-zA-Z][a-zA-Z0-9_]*)(\[m\])?\]"
+      re"\[([a-zA-Z][a-zA-Z0-9_]*):([a-zA-Z][a-zA-Z0-9_]*)(\[m\])?(:[a-zA-Z]+)?\]"
     )
   elifBranch.add(newCall("contains", urlPath, regExp), body)
   var
@@ -217,28 +217,42 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.
     else:
       newDotExpr(ident"req", ident"body")
 
+  # Models
   for i in foundModels:
-    name = i.group(1, path)[0]
+    let
+      modelType = i.group(1, path)[0]
+      modelKey = $modelType
+      modelName = i.group(0, path)[0]
+      modelTarget =
+        if i.group(3, path).len != 0:
+          i.group(3, path)[0][1..^1]
+        else:
+          "JSON"
     isMutable = i.group(2, path).len != 0
-    let modelKey = $name
     elifBranch[1].insert(
       0,
       newNimNode(if isMutable: nnkVarSection else: nnkLetSection).add(
         newIdentDefs(
-          ident(i.group(0, path)[0]),
+          ident(modelName),
           newEmptyNode(),
-          newNimNode(nnkTryStmt).add(
-            newCall("jsonTo" & modelKey, newCall("parseJson", body))
-          ).add(newNimNode(nnkExceptBranch).add(
-            ident"JsonParsingError",
-            newStmtList(
-              when defined(debug):
-                newCall("echo", newCall("fmt", newStrLitNode("json parse error: {getCurrentExceptionMsg()}")))
-              else:
-                discardStmt,
-              newCall("jsonTo" & modelKey, newCall("newJObject"))
-            )
-          ))
+          case modelTarget.toLower():
+          of "json":
+            newNimNode(nnkTryStmt).add(
+              newCall("jsonTo" & modelKey, newCall("parseJson", body))
+            ).add(newNimNode(nnkExceptBranch).add(
+              ident"JsonParsingError",
+              newStmtList(
+                when defined(debug):
+                  newCall("echo", newCall("fmt", newStrLitNode("json parse error: {getCurrentExceptionMsg()}")))
+                else:
+                  newEmptyNode(),
+                newCall("jsonTo" & modelKey, newCall("newJObject"))
+              )
+            ))
+          of "urlencoded":
+            newCall("xWwwUrlencodedTo" & modelKey, body)
+          else:
+            newCall("jsonTo" & modelKey, newCall("newJObject"))
         )
       )
     )
@@ -253,6 +267,7 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.
           )
         )
       )
+    echo elifBranch.toStrLit
     return elifBranch
   return newEmptyNode()
 

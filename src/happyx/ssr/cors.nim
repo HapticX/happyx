@@ -1,5 +1,14 @@
 ## Provides working with Cross-Origin Resource Sharing (CORS) ✨
 ## 
+## ## Example
+## 
+## .. code-block::nim
+##    regCORS:
+##      origins: ["https://google.com", "http://localhost:5000"]
+##      methods: ["GET", "POST"]
+##      headers: ["*"]
+##      credentials: true
+## 
 import
   # stdlib
   macros,
@@ -87,6 +96,19 @@ macro regCORS*(body: untyped): untyped =
       of "origins":
         if val.kind in [nnkStrLit, nnkTripleStrLit]:
           currentCORS.allowOrigins = $val
+          continue
+        elif val.kind == nnkBracket:
+          var origins: seq[string] = @[]
+          for i in val.children:
+            if i.kind in [nnkStrLit, nnkTripleStrLit]:
+              origins.add($i)
+            else:
+              throwDefect(
+                HpxCorsDefect,
+                fmt"invalid regCORS origins syntax: ",
+                lineInfoObj(val)
+              )
+          currentCORS.allowOrigins = origins.join(",")
           continue
       else:
         throwDefect(
