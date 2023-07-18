@@ -25,8 +25,8 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.
   ## [Read more about it](/happyx/happyx/routing.html)
   let
     elifBranch = newNimNode(nnkElifBranch)
-    dollarToCurve = re"\$([^:\/\{\}]+)(:\w+)?(\[m\])?(=[^\/\{\}]+)?(m)?"
-    defaultWithoutQuestion = re"\{([^:\/\{\}\?]+)(:\w+)?(\[m\])?(=[^\/\{\}]+)\}"
+    dollarToCurve = re"\$([^:\/\{\}]+)(:enum\(\w+\)|:\w+)?(\[m\])?(=[^\/\{\}]+)?(m)?"
+    defaultWithoutQuestion = re"\{([^:\/\{\}\?]+)(:enum\(\w+\)|:\w+)?(\[m\])?(=[^\/\{\}]+)\}"
   var
     path = $routePath
     hasChildren = false
@@ -53,6 +53,8 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.
   routePathStr = routePathStr.replace(re"\{[a-zA-Z][a-zA-Z0-9_]*(\??):float(\[m\])?(=\S+?)?\}", "(\\d+\\.\\d+|\\d+)$1")
   # word param
   routePathStr = routePathStr.replace(re"\{[a-zA-Z][a-zA-Z0-9_]*(\??):word(\[m\])?(=\S+?)?\}", "(\\w+)$1")
+  # string enum
+  routePathStr = routePathStr.replace(re"\{[a-zA-Z][a-zA-Z0-9_]*(\??):enum\((\w+)\)(\[m\])?(=\S+?)?\}", "(\\w+)$1")
   # string param
   routePathStr = routePathStr.replace(re"\{[a-zA-Z][a-zA-Z0-9_]*(\??):string(\[m\])?(=\S+?)?\}", "([^/]+)$1")
   routePathStr = routePathStr.replace(re"\{[a-zA-Z][a-zA-Z0-9_]*(\??)(\[m\])?(=\S+?)?\}", "([^/]+)$1")
@@ -65,7 +67,7 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.
   let
     regExp = newCall("re", newStrLitNode("^" & routePathStr & "$"))
     found = path.findAll(
-      re"\{([a-zA-Z][a-zA-Z0-9_]*\??)(:(bool|int|float|string|path|word|/[\s\S]+?/))?(\[m\])?(=(\S+?))?\}"
+      re"\{([a-zA-Z][a-zA-Z0-9_]*\??)(:(bool|int|float|string|path|word|/[\s\S]+?/|enum\(\w+\)))?(\[m\])?(=(\S+?))?\}"
     )
     foundModels = path.findAll(
       re"\[([a-zA-Z][a-zA-Z0-9_]*):([a-zA-Z][a-zA-Z0-9_]*)(\[m\])?(:[a-zA-Z]+)?\]"
@@ -192,8 +194,31 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.
           )
         )
       else:
+        # string Enum
+        if ($argTypeStr).startsWith("enum"):
+          let enumName = ($argTypeStr)[5..^2]
+          letSection[0].add(newNimNode(nnkIfStmt).add(
+            newNimNode(nnkElifBranch).add(
+              conditionOptional,
+              if defaultVal == "":
+                newCall("default", ident(enumName))
+              else:
+                newCall(newNimNode(nnkBracketExpr).add(ident"parseEnum", ident(enumName)), newStrLitNode(defaultVal), newCall("default", ident(enumName)))
+            ),
+            newNimNode(nnkElifBranch).add(
+              conditionSecondOptional,
+              if defaultVal == "":
+                newCall("default", ident(enumName))
+              else:
+                newCall(newNimNode(nnkBracketExpr).add(ident"parseEnum", ident(enumName)), newStrLitNode(defaultVal), newCall("default", ident(enumName)))
+            ),
+            newNimNode(nnkElse).add(
+              newCall(newNimNode(nnkBracketExpr).add(ident"parseEnum", ident(enumName)), foundGroup, newCall("default", ident(enumName)))
+            )
+          ))
         # regex
-        letSection[0].add(foundGroup)
+        else:
+          letSection[0].add(foundGroup)
     else:
       case argTypeStr:
       of "bool":
@@ -205,8 +230,13 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.
       of "path", "string", "word":
         letSection[0].add(foundGroup)
       else:
+        # string Enum
+        if ($argTypeStr).startsWith("enum"):
+          let enumName = ($argTypeStr)[5..^2]
+          letSection[0].add(newCall(newNimNode(nnkBracketExpr).add(ident"parseEnum", ident(enumName)), foundGroup, newCall("default", ident(enumName))))
         # regex
-        letSection[0].add(foundGroup)
+        else:
+          letSection[0].add(foundGroup)
     elifBranch[1].insert(0, letSection)
     hasChildren = true
     inc idx
@@ -267,7 +297,6 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.
           )
         )
       )
-    echo elifBranch.toStrLit
     return elifBranch
   return newEmptyNode()
 

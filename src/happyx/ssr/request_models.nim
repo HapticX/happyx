@@ -17,7 +17,7 @@ import
   strtabs,
   strutils,
   # Happyx
-  ../core/[exceptions],
+  ../core/[exceptions, constants],
   ./form_data
 
 
@@ -136,7 +136,8 @@ macro model*(modelName, body: untyped): untyped =
       )
     ),
   )
-  echo result.toStrLit
+  when enableDebug:
+    echo result.toStrLit
 
 
 # ------WebKitFormBoundary4UxTJlWbkrmPNAYe
