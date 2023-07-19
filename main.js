@@ -13377,7 +13377,7 @@ function callRouter_452984909(force_452984910) {
     F.line = 37;
     var fmtRes_452985044 = mnewString(0);
     F.line = 37;
-    fmtRes_452985044.push.apply(fmtRes_452985044, makeNimstrLit("/happyx/public/happyx.svg"));;
+    fmtRes_452985044.push.apply(fmtRes_452985044, makeNimstrLit("/happyx/public/HappyX.svg"));;
     F.line = 37;
     var fmtRes_452985049 = mnewString(0);
     F.line = 37;
