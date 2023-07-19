@@ -15,8 +15,8 @@ var NTI2197815354 = {size: 0, kind: 18, base: null, node: null, finalizer: null}
 var NTI2181038380 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI2181038344 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI2181038322 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI2147483920 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI2147483878 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2147483919 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2147483877 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI2147483865 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI2181038084 = {size: 0,kind: 25,base: null,node: null,finalizer: null};
 var NTI2181038146 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
@@ -124,22 +124,22 @@ var NTI1677721714 = {size: 0, kind: 24, base: null, node: null, finalizer: null}
 var NTI1677721713 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
 var NTI1677721616 = {size: 0, kind: 22, base: null, node: null, finalizer: null};
 var NTI1577058881 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI452985267 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI452985268 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI2214592515 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
-var NTI452985179 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI452985180 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI2231369731 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
-var NTI452985102 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI452985103 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI1828717088 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI1828717087 = {size: 0, kind: 22, base: null, node: null, finalizer: null};
 var NTI1828717080 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI1828717079 = {size: 0, kind: 22, base: null, node: null, finalizer: null};
 var NTI2248146947 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
 var NTI2197815299 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
-var NTI452985086 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI452985087 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI2147483651 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
-var NTI452985060 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI452985047 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI452985019 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI452985061 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI452985048 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI452985020 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI452985002 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI452984983 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI452984964 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
@@ -314,21 +314,21 @@ NTI452984983.node = NNI452984983;
 var NNI452985002 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
 NTI452985002.node = NNI452985002;
-var NNI452985019 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+var NNI452985020 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI452985019.node = NNI452985019;
-var NNI452985047 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+NTI452985020.node = NNI452985020;
+var NNI452985048 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI452985047.node = NNI452985047;
-var NNI452985060 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+NTI452985048.node = NNI452985048;
+var NNI452985061 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI452985060.node = NNI452985060;
+NTI452985061.node = NNI452985061;
 var NNI2147483651 = {kind: 2, len: 0, offset: 0, typ: null, name: null, sons: []};
 NTI2147483651.node = NNI2147483651;
 NTI2147483651.base = NTI973078535;
-var NNI452985086 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+var NNI452985087 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI452985086.node = NNI452985086;
+NTI452985087.node = NNI452985087;
 var NNI2197815299 = {kind: 2, len: 0, offset: 0, typ: null, name: null, sons: []};
 NTI2197815299.node = NNI2197815299;
 NTI2197815299.base = NTI973078535;
@@ -342,21 +342,21 @@ var NNI2248146947 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{
 {kind: 1, offset: "source", len: 0, typ: NTI1828717087, name: "source", sons: null}]};
 NTI2248146947.node = NNI2248146947;
 NTI2248146947.base = NTI973078535;
-var NNI452985102 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+var NNI452985103 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI452985102.node = NNI452985102;
+NTI452985103.node = NNI452985103;
 var NNI2231369731 = {kind: 2, len: 0, offset: 0, typ: null, name: null, sons: []};
 NTI2231369731.node = NNI2231369731;
 NTI2231369731.base = NTI973078535;
-var NNI452985179 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+var NNI452985180 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI452985179.node = NNI452985179;
+NTI452985180.node = NNI452985180;
 var NNI2214592515 = {kind: 1, offset: "pathToImg", len: 0, typ: NTI1828717079, name: "pathToImg", sons: null};
 NTI2214592515.node = NNI2214592515;
 NTI2214592515.base = NTI973078535;
-var NNI452985267 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+var NNI452985268 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI452985267.node = NNI452985267;
+NTI452985268.node = NNI452985268;
 NTI1677721714.base = NTI1677721616;
 NTI1677721715.base = NTI1677721616;
 NTI1677721716.base = NTI1677721616;
@@ -1028,12 +1028,12 @@ NTI2181038135.base = NTI973078535;
 var NNI2147483865 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
 NTI2147483865.node = NNI2147483865;
-var NNI2147483878 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+var NNI2147483877 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI2147483878.node = NNI2147483878;
-var NNI2147483920 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+NTI2147483877.node = NNI2147483877;
+var NNI2147483919 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI2147483920.node = NNI2147483920;
+NTI2147483919.node = NNI2147483919;
 var NNI2181038322 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
 NTI2181038322.node = NNI2181038322;
@@ -13361,7 +13361,7 @@ function callRouter_452984909(force_452984910) {
     F.line = 35;
     var fmtRes_452985018 = mnewString(0);
     F.line = 35;
-    fmtRes_452985018.push.apply(fmtRes_452985018, makeNimstrLit("happyx/public/cover_gradient.svg"));;
+    fmtRes_452985018.push.apply(fmtRes_452985018, makeNimstrLit("/happyx/public/cover_gradient.svg"));;
     F.line = 35;
     var fmtRes_452985023 = mnewString(0);
     F.line = 35;
@@ -13369,7 +13369,7 @@ function callRouter_452984909(force_452984910) {
     F.line = 36;
     var fmtRes_452985031 = mnewString(0);
     F.line = 36;
-    fmtRes_452985031.push.apply(fmtRes_452985031, makeNimstrLit("happyx/public/nim_logo.svg"));;
+    fmtRes_452985031.push.apply(fmtRes_452985031, makeNimstrLit("/happyx/public/nim_logo.svg"));;
     F.line = 36;
     var fmtRes_452985036 = mnewString(0);
     F.line = 36;
@@ -13377,7 +13377,7 @@ function callRouter_452984909(force_452984910) {
     F.line = 37;
     var fmtRes_452985044 = mnewString(0);
     F.line = 37;
-    fmtRes_452985044.push.apply(fmtRes_452985044, makeNimstrLit("happyx/public/happyx.svg"));;
+    fmtRes_452985044.push.apply(fmtRes_452985044, makeNimstrLit("/happyx/public/happyx.svg"));;
     F.line = 37;
     var fmtRes_452985049 = mnewString(0);
     F.line = 37;
@@ -13385,7 +13385,7 @@ function callRouter_452984909(force_452984910) {
     F.line = 38;
     var fmtRes_452985057 = mnewString(0);
     F.line = 38;
-    fmtRes_452985057.push.apply(fmtRes_452985057, makeNimstrLit("happyx/public/desc.svg"));;
+    fmtRes_452985057.push.apply(fmtRes_452985057, makeNimstrLit("/happyx/public/desc.svg"));;
     F.line = 38;
     var fmtRes_452985062 = mnewString(0);
     F.line = 38;
@@ -13447,7 +13447,7 @@ function callRouter_452984909(force_452984910) {
     var fmtRes_452985128 = mnewString(0);
     F.line = 50;
     fmtRes_452985128.push.apply(fmtRes_452985128, makeNimstrLit("Make server-side applications easily with powerful DSL \xF0\x9F\x94\xA5"));;
-    comp681213_452985112.slot = initTag_1577058424(makeNimstrLit("div"), [data_comp791414_452985115, initTag_1577058341(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_452985120, NTI33554439)}, NTI452985102)], 0), [initTag_1577058482(fmtRes_452985128, true, [], false)], false)], true);
+    comp681213_452985112.slot = initTag_1577058424(makeNimstrLit("div"), [data_comp791414_452985115, initTag_1577058341(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_452985120, NTI33554439)}, NTI452985103)], 0), [initTag_1577058482(fmtRes_452985128, true, [], false)], false)], true);
     F.line = 94;
     var data_comp681213_452985145 = render_973084459(comp681213_452985112);
     F.line = 94;
@@ -13476,7 +13476,7 @@ function callRouter_452984909(force_452984910) {
     F.line = 54;
     fmtRes_452985179.push.apply(fmtRes_452985179, makeNimstrLit("flex flex-col md:flex-row gap-6 py-8"));;
     F.line = 55;
-    var _comp9111816_452985183 = initCard_2214592519(makeNimstrLit("comp9111816"), makeNimstrLit("happyx/public/html5.svg"));
+    var _comp9111816_452985183 = initCard_2214592519(makeNimstrLit("comp9111816"), makeNimstrLit("/happyx/public/html5.svg"));
     F.line = 55;
     var comp9111816_452985184 = registerComponent_973084091("comp9111816", _comp9111816_452985183);
     F.line = 94;
@@ -13496,7 +13496,7 @@ function callRouter_452984909(force_452984910) {
     F.line = 707;
     window.addEventListener('pageshow', data_comp9111816_452985198.pageShow);
     F.line = 57;
-    var _comp10122017_452985199 = initCard_2214592519(makeNimstrLit("comp10122017"), makeNimstrLit("happyx/public/setting.svg"));
+    var _comp10122017_452985199 = initCard_2214592519(makeNimstrLit("comp10122017"), makeNimstrLit("/happyx/public/setting.svg"));
     F.line = 57;
     var comp10122017_452985200 = registerComponent_973084091("comp10122017", _comp10122017_452985199);
     F.line = 94;
@@ -13516,7 +13516,7 @@ function callRouter_452984909(force_452984910) {
     F.line = 707;
     window.addEventListener('pageshow', data_comp10122017_452985214.pageShow);
     F.line = 59;
-    var _comp11132218_452985215 = initCard_2214592519(makeNimstrLit("comp11132218"), makeNimstrLit("happyx/public/routing.svg"));
+    var _comp11132218_452985215 = initCard_2214592519(makeNimstrLit("comp11132218"), makeNimstrLit("/happyx/public/routing.svg"));
     F.line = 59;
     var comp11132218_452985216 = registerComponent_973084091("comp11132218", _comp11132218_452985215);
     F.line = 94;
@@ -13535,7 +13535,7 @@ function callRouter_452984909(force_452984910) {
     window.addEventListener('pagehide', data_comp11132218_452985230.pageHide);
     F.line = 707;
     window.addEventListener('pageshow', data_comp11132218_452985230.pageShow);
-    comp8101615_452985148.slot = initTag_1577058424(makeNimstrLit("div"), [initTag_1577058424(makeNimstrLit("p"), [initTag_1577058482(fmtRes_452985153, true, [], false)], false), initTag_1577058424(makeNimstrLit("p"), [initTag_1577058482(fmtRes_452985166, true, [], false)], false), initTag_1577058341(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_452985179, NTI33554439)}, NTI452985179)], 0), [data_comp9111816_452985198, data_comp10122017_452985214, data_comp11132218_452985230], false)], true);
+    comp8101615_452985148.slot = initTag_1577058424(makeNimstrLit("div"), [initTag_1577058424(makeNimstrLit("p"), [initTag_1577058482(fmtRes_452985153, true, [], false)], false), initTag_1577058424(makeNimstrLit("p"), [initTag_1577058482(fmtRes_452985166, true, [], false)], false), initTag_1577058341(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_452985179, NTI33554439)}, NTI452985180)], 0), [data_comp9111816_452985198, data_comp10122017_452985214, data_comp11132218_452985230], false)], true);
     F.line = 707;
     var data_comp8101615_452985247 = render_973084459(comp8101615_452985148);
     F.line = 707;
@@ -13575,7 +13575,7 @@ function callRouter_452984909(force_452984910) {
     var fmtRes_452985266 = mnewString(0);
     F.line = 68;
     fmtRes_452985266.push.apply(fmtRes_452985266, makeNimstrLit("Make powerful full-stack apps with really same syntax \xE2\x9A\xA1"));;
-    comp12142419_452985250.slot = initTag_1577058424(makeNimstrLit("div"), [data_comp13152620_452985253, initTag_1577058341(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_452985258, NTI33554439)}, NTI452985267)], 0), [initTag_1577058482(fmtRes_452985266, true, [], false)], false)], true);
+    comp12142419_452985250.slot = initTag_1577058424(makeNimstrLit("div"), [data_comp13152620_452985253, initTag_1577058341(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_452985258, NTI33554439)}, NTI452985268)], 0), [initTag_1577058482(fmtRes_452985266, true, [], false)], false)], true);
     F.line = 94;
     var data_comp12142419_452985283 = render_973084459(comp12142419_452985250);
     F.line = 94;
@@ -13610,7 +13610,7 @@ function callRouter_452984909(force_452984910) {
     window.addEventListener('pagehide', data_comp14162821_452985321.pageHide);
     F.line = 707;
     window.addEventListener('pageshow', data_comp14162821_452985321.pageShow);
-    html_452984913 = initTag_1577058424(makeNimstrLit("div"), [initTag_1577058341(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_452984997[0], NTI33554439)}, NTI452984927)], 0), [initTag_1577058341(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("id"), Field1: nimCopy(null, fmtRes_452985005, NTI33554439)}, NTI452984944), nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_452985010, NTI33554439)}, NTI452984944)], 0), [initTag_1577058341(makeNimstrLit("img"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("src"), Field1: nimCopy(null, fmtRes_452985018, NTI33554439)}, NTI452984964), nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_452985023, NTI33554439)}, NTI452984964)], 0), [], false), initTag_1577058341(makeNimstrLit("img"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("src"), Field1: nimCopy(null, fmtRes_452985031, NTI33554439)}, NTI452984983), nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_452985036, NTI33554439)}, NTI452984983)], 0), [], false), initTag_1577058341(makeNimstrLit("img"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("src"), Field1: nimCopy(null, fmtRes_452985044, NTI33554439)}, NTI452985002), nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_452985049, NTI33554439)}, NTI452985002)], 0), [], false), initTag_1577058341(makeNimstrLit("img"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("src"), Field1: nimCopy(null, fmtRes_452985057, NTI33554439)}, NTI452985019), nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_452985062, NTI33554439)}, NTI452985019)], 0), [], false)], false), initTag_1577058341(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_452985078, NTI33554439)}, NTI452985047)], 0), [initTag_1577058341(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_452985086, NTI33554439)}, NTI452985060)], 0), [data_comp571012_452985093], false), initTag_1577058341(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_452985106, NTI33554439)}, NTI452985086)], 0), [data_comp681213_452985145, data_comp8101615_452985247, data_comp12142419_452985283, data_comp14162821_452985321], false)], false)], false)], true);
+    html_452984913 = initTag_1577058424(makeNimstrLit("div"), [initTag_1577058341(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_452984997[0], NTI33554439)}, NTI452984927)], 0), [initTag_1577058341(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("id"), Field1: nimCopy(null, fmtRes_452985005, NTI33554439)}, NTI452984944), nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_452985010, NTI33554439)}, NTI452984944)], 0), [initTag_1577058341(makeNimstrLit("img"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("src"), Field1: nimCopy(null, fmtRes_452985018, NTI33554439)}, NTI452984964), nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_452985023, NTI33554439)}, NTI452984964)], 0), [], false), initTag_1577058341(makeNimstrLit("img"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("src"), Field1: nimCopy(null, fmtRes_452985031, NTI33554439)}, NTI452984983), nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_452985036, NTI33554439)}, NTI452984983)], 0), [], false), initTag_1577058341(makeNimstrLit("img"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("src"), Field1: nimCopy(null, fmtRes_452985044, NTI33554439)}, NTI452985002), nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_452985049, NTI33554439)}, NTI452985002)], 0), [], false), initTag_1577058341(makeNimstrLit("img"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("src"), Field1: nimCopy(null, fmtRes_452985057, NTI33554439)}, NTI452985020), nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_452985062, NTI33554439)}, NTI452985020)], 0), [], false)], false), initTag_1577058341(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_452985078, NTI33554439)}, NTI452985048)], 0), [initTag_1577058341(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_452985086, NTI33554439)}, NTI452985061)], 0), [data_comp571012_452985093], false), initTag_1577058341(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_452985106, NTI33554439)}, NTI452985087)], 0), [data_comp681213_452985145, data_comp8101615_452985247, data_comp12142419_452985283, data_comp14162821_452985321], false)], false)], false)], true);
     }
     
     if (!((html_452984913 == null))) {
@@ -15076,7 +15076,7 @@ function HEX3Aanonymous_2147483973() {
     F.line = 14;
     var fmtRes_2147483749 = mnewString(0);
     F.line = 14;
-    fmtRes_2147483749.push.apply(fmtRes_2147483749, makeNimstrLit("happyx/public/logo.svg"));;
+    fmtRes_2147483749.push.apply(fmtRes_2147483749, makeNimstrLit("/happyx/public/logo.svg"));;
     F.line = 14;
     var fmtRes_2147483754 = mnewString(0);
     F.line = 14;
@@ -15141,7 +15141,7 @@ function HEX3Aanonymous_2147483973() {
     var fmtRes_2147483947 = mnewString(0);
     F.line = 31;
     fmtRes_2147483947.push.apply(fmtRes_2147483947, makeNimstrLit("Source code"));;
-    comp2449_2147483890.slot = initTag_1577058424(makeNimstrLit("div"), [initTag_1577058341(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2147483895, NTI33554439)}, NTI2147483865)], 0), [initTag_1577058341(makeNimstrLit("svg"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("width"), Field1: nimCopy(null, fmtRes_2147483903, NTI33554439)}, NTI2147483878), nimCopy(null, {Field0: makeNimstrLit("height"), Field1: nimCopy(null, fmtRes_2147483908, NTI33554439)}, NTI2147483878), nimCopy(null, {Field0: makeNimstrLit("viewBox"), Field1: nimCopy(null, fmtRes_2147483913, NTI33554439)}, NTI2147483878), nimCopy(null, {Field0: makeNimstrLit("xmlns"), Field1: nimCopy(null, fmtRes_2147483918, NTI33554439)}, NTI2147483878), nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2147483923[0], NTI33554439)}, NTI2147483878)], 0), [initTag_1577058341(makeNimstrLit("path"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("d"), Field1: nimCopy(null, fmtRes_2147483931, NTI33554439)}, NTI2147483920)], 0), [], false)], false), initTag_1577058424(makeNimstrLit("p"), [initTag_1577058482(fmtRes_2147483947, true, [], false)], false)], false)], true);
+    comp2449_2147483890.slot = initTag_1577058424(makeNimstrLit("div"), [initTag_1577058341(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2147483895, NTI33554439)}, NTI2147483865)], 0), [initTag_1577058341(makeNimstrLit("svg"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("width"), Field1: nimCopy(null, fmtRes_2147483903, NTI33554439)}, NTI2147483877), nimCopy(null, {Field0: makeNimstrLit("height"), Field1: nimCopy(null, fmtRes_2147483908, NTI33554439)}, NTI2147483877), nimCopy(null, {Field0: makeNimstrLit("viewBox"), Field1: nimCopy(null, fmtRes_2147483913, NTI33554439)}, NTI2147483877), nimCopy(null, {Field0: makeNimstrLit("xmlns"), Field1: nimCopy(null, fmtRes_2147483918, NTI33554439)}, NTI2147483877), nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2147483923[0], NTI33554439)}, NTI2147483877)], 0), [initTag_1577058341(makeNimstrLit("path"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("d"), Field1: nimCopy(null, fmtRes_2147483931, NTI33554439)}, NTI2147483919)], 0), [], false)], false), initTag_1577058424(makeNimstrLit("p"), [initTag_1577058482(fmtRes_2147483947, true, [], false)], false)], false)], true);
     F.line = 707;
     var data_comp2449_2147483972 = render_973084459(comp2449_2147483890);
     F.line = 707;
