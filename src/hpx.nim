@@ -27,10 +27,12 @@ type
     ptSSR = "SSR"
   ProjectData = object
     process: Process
-    mainFile: string
-    srcDir: string
-    projectType: ProjectType
+    mainFile: string  ## Main file without extension
+    srcDir: string  ## Source directory
+    projectType: ProjectType  ## Project type (SPA/SSR/SSG)
     error: string
+    assetsDir: string  ## Assets directory
+    buildDir: string  ## Build directory
   GodEyeData = object
     needReload: ptr bool
     project: ptr ProjectData
@@ -65,7 +67,9 @@ proc compileProject(): ProjectData {. discardable .} =
   result = ProjectData(
       projectType: ptSPA, srcDir: "src",
       mainFile: SPA_MAIN_FILE,
-      process: nil, error: ""
+      process: nil, error: "",
+      assetsDir: "public",
+      buildDir: "build"
     )
 
   # Trying to get project config
@@ -76,6 +80,8 @@ proc compileProject(): ProjectData {. discardable .} =
     )
     result.mainFile = cfg.getSectionValue("Main", "mainFile", SPA_MAIN_FILE)
     result.srcDir = cfg.getSectionValue("Main", "srcDir", "src")
+    result.assetsDir = cfg.getSectionValue("Main", "assetsDir", "public")
+    result.buildDir = cfg.getSectionValue("Main", "buildDir", "build")
   # Only errors will shows
   
   let options: set[ProcessOption] =
@@ -201,6 +207,10 @@ proc xmlTree2Text(data: var string, tree: XmlNode, lvl: int = 2) =
 
 
 proc mainHelpMessage() =
+  ## Shows the general help message that describes
+  let subcommands = [
+    "build", "dev", "serve", "create", "html2tag", "help"
+  ]
   styledEcho fgBlue, center("# ---=== HappyX CLI ===--- #", 28)
   styledEcho fgGreen, align("v" & VERSION, 28)
   styledEcho(
@@ -209,39 +219,43 @@ proc mainHelpMessage() =
     fgWhite, " HappyX projects\n"
   )
   styledEcho "Usage:"
-  styledEcho fgMagenta, "hpx ", fgBlue, "build|dev|create|html2tag|help ", fgYellow, "[subcommand-args]"
+  styledEcho fgMagenta, "hpx ", fgBlue, subcommands.join("|"), fgYellow, " [subcommand-args]"
 
 
 proc buildCommand(optSize: bool = false): int =
-  ## TODO
+  ## Builds Single page application project into one HTML and JS files
   styledEcho "Welcome to ", styleBright, fgMagenta, "HappyX ", resetStyle, fgWhite, "builder"
-  let project = compileProject()
+  let
+    project = compileProject()
+    assetsDir = project.assetsDir.replace("\\", "/").replace('/', DirSep)
   if project.projectType != ptSPA:
     styledEcho fgRed, "Failure! Project isn't SPA or error wass occurred."
     return QuitFailure
-  if not dirExists("build"):
-    createDir("build")
-    createDir("build" / "public")
+  if not dirExists(project.buildDir):
+    # Create directory if not exists
+    createDir(project.buildDir)
+    createDir(project.buildDir / assetsDir)
   else:
-    removeDir("build")
-    createDir("build")
-    createDir("build" / "public")
+    # Recreate directory
+    removeDir(project.buildDir)
+    createDir(project.buildDir)
+    createDir(project.buildDir / assetsDir)
+  # Start copying
   styledEcho fgYellow, "Copying ..."
-  copyFileToDir("src" / fmt"{SPA_MAIN_FILE}.js", "build")
-  copyFileToDir("src" / "index.html", "build")
-  if dirExists("src" / "public"):
-    copyDirWithPermissions("src" / "public", "build" / "public")
-  if dirExists("public"):
-    copyDirWithPermissions("public", "build" / "public")
+  copyFileToDir(project.srcDir / fmt"{SPA_MAIN_FILE}.js",project.buildDir)
+  copyFileToDir(project.srcDir / "index.html", project.buildDir)
+  if dirExists(project.srcDir / assetsDir):
+    copyDirWithPermissions(project.srcDir / assetsDir, project.buildDir / assetsDir)
   eraseLine()
   cursorUp()
+  # Start building
   styledEcho fgGreen, "Building ..."
   var
-    f = open("build" / fmt"{SPA_MAIN_FILE}.js")
+    f = open(project.buildDir / fmt"{SPA_MAIN_FILE}.js")
     data = f.readAll()
   f.close()
   # Delete comments
-  data = data.replace(re"//[^\n]+\s+", "")
+  data = data.replace(re"(?<!https?:)//[^\n]+\s+", "")
   data = data.replace(re"/\*[^\*]+?\*/\s+", "")
   # Small optimize
   data = data.replace(re"(\.?)parent(\s*:?)", "$1p$2")
@@ -301,7 +315,7 @@ proc buildCommand(optSize: bool = false): int =
   data = data.replace(
     re"\[\s*", "["
   )
-  f = open("build" / fmt"{SPA_MAIN_FILE}.js", fmWrite)
+  f = open(project.buildDir / fmt"{SPA_MAIN_FILE}.js", fmWrite)
   f.write(data)
   f.close()
   styledEcho fgGreen, "Build completed"
@@ -310,8 +324,8 @@ proc buildCommand(optSize: bool = false): int =
 
 
 proc html2tagCommand(output: string = "", args: seq[string]): int =
+  ## Converts HTML into `buildHtml` macro
   var o = output
-  
   # Check args
   if args.len != 1:
     if args.len == 0:
@@ -435,7 +449,9 @@ proc createCommand(name: string = "", kind: string = "", templates: bool = false
     "projectName = " & projectName & "\n" &
     "projectType = " & projectTypes[selected] & "\n" &
     "mainFile = main  # main script filename (without extension) that should be launched with hpx dev command\n" &
-    "srcDir = src  # source directory\n"
+    "srcDir = src  # source directory in project root\n",
+    "buildDir = build  # build directory in project root\n",
+    "assetsDir = public  # assets directory in srcDir, will copied into build/public\n"
   )
   f.close()
 
@@ -578,7 +594,7 @@ proc devCommand(host: string = "127.0.0.1", port: int = 5000,
 
   serve(host, port):
     get "/":
-      let f = open(getCurrentDir() / "src" / "index.html")
+      let f = open(getCurrentDir() / project.srcDir / "index.html")
       var data = f.readAll()
       f.close()
       data = data.replace(
@@ -604,7 +620,7 @@ proc devCommand(host: string = "127.0.0.1", port: int = 5000,
     
     get "/{file:path}":
       var result = ""
-      let path = getCurrentDir() / "src" / file.replace('\\', '/').replace('/', DirSep)
+      let path = getCurrentDir() / project.srcDir / file.replace('\\', '/').replace('/', DirSep)
       echo "File: ", file
       echo "Path: ", path
       if fileExists(path):
