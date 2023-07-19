@@ -34,7 +34,7 @@ appRoutes("app"):
       tDiv(id = "cover", class = "flex flex-col gap-2 relative justify-center items-center h-screen"):
         tImg(src = "/happyx/public/cover_gradient.svg", class = "absolute h-screen w-screen object-cover pointer-events-none")
         tImg(src = "/happyx/public/nim_logo.svg", class = "z-10 pointer-events-none")
-        tImg(src = "/happyx/public/happyx.svg", class = "z-10 pointer-events-none")
+        tImg(src = "/happyx/public/HappyX.svg", class = "z-10 pointer-events-none")
         tImg(src = "/happyx/public/desc.svg", class = "z-10 pointer-events-none")
       tDiv(class = "flex flex-col gap-4"):
         tDiv(class = "sticky top-0 z-20"):
