@@ -32,10 +32,10 @@ appRoutes("app"):
     # Component usage
     tDiv(class = "flex flex-col gap-2 bg-[{Background}] dark:bg-[{BackgroundDark}] text-[{Foreground}] dark:text-[{ForegroundDark}]"):
       tDiv(id = "cover", class = "flex flex-col gap-2 relative justify-center items-center h-screen"):
-        tImg(src = "happyx/public/cover_gradient.svg", class = "absolute h-screen w-screen object-cover pointer-events-none")
-        tImg(src = "happyx/public/nim_logo.svg", class = "z-10 pointer-events-none")
-        tImg(src = "happyx/public/happyx.svg", class = "z-10 pointer-events-none")
-        tImg(src = "happyx/public/desc.svg", class = "z-10 pointer-events-none")
+        tImg(src = "/happyx/public/cover_gradient.svg", class = "absolute h-screen w-screen object-cover pointer-events-none")
+        tImg(src = "/happyx/public/nim_logo.svg", class = "z-10 pointer-events-none")
+        tImg(src = "/happyx/public/happyx.svg", class = "z-10 pointer-events-none")
+        tImg(src = "/happyx/public/desc.svg", class = "z-10 pointer-events-none")
       tDiv(class = "flex flex-col gap-4"):
         tDiv(class = "sticky top-0 z-20"):
           component Header
@@ -52,11 +52,11 @@ serve("127.0.0.1", 5000):
             tP: "One of the main features of HappyX is DSL ✌."
             tP: "DSL supports:"
             tDiv(class = "flex flex-col md:flex-row gap-6 py-8"):
-              component Card(pathToImg = "happyx/public/html5.svg"):
+              component Card(pathToImg = "/happyx/public/html5.svg"):
                 "Buil HTML/CSS/JS"
-              component Card(pathToImg = "happyx/public/setting.svg"):
+              component Card(pathToImg = "/happyx/public/setting.svg"):
                 "Path Params"
-              component Card(pathToImg = "happyx/public/routing.svg"):
+              component Card(pathToImg = "/happyx/public/routing.svg"):
                 "Routing/Mounting"
           component SmartCard:
             component CodeBlock(source = """import happyx
