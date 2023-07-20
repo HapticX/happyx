@@ -1,14 +1,54 @@
-## # Queries 🔥
+## # Request Models 🔥
 ## 
-## Provides working with queries
+## Provides working with request models
 ## 
 ## ## Example
 ## 
 ## .. code-block::nim
-##    serve("127.0.0.1", 5000):
-##      get "/":
-##        id::int = 10
-##        echo id
+##    model Message:
+##      text: string
+##      authorId: int
+##    serve "127.0.0.1", 5000:
+##      post "/[msg:Message]":
+##        return {"response": {
+##          "text": msg.text, "author": msg.authorId
+##        }}
+## 
+## 
+## ## Modes 🛠
+## 
+## Request models parses only JSON raw data by default. To use `form-data` or `x-www-form-urlencoded`
+## you should enable it in path params
+## 
+## ### Form-Data ✨
+## 
+## .. code-block::nim
+##    model UploadImg:
+##      img: FormDataItem  # this field will parse all data from form-data
+##      additionalContext: string = ""  # optional string field
+##    
+##    serve "127.0.0.1", 5000:
+##      # Use UploadImg model as form-data model
+##      post "/upload/[data:UploadImg:formData]":
+##        # working with UploadImg model
+##        echo data.img.filename
+##        echo data.additionalContext
+##        return "Hello"
+## 
+## ### X-WWW-Form-Urlencoded ✨
+## 
+## .. code-block::nim
+##    model Query:
+##      author: int
+##      additionalContext: string = ""  # optional string field
+##    
+##    serve "127.0.0.1", 5000:
+##      # Use Query model as x-www-form-urlencoded model
+##      post "/upload/[data:Query:urlencoded]":
+##        # working with Query model
+##        echo data.author
+##        echo data.additionalContext
+##        return "Hello"
 ##
 
 import
@@ -26,13 +66,14 @@ macro model*(modelName, body: untyped): untyped =
   ## 
   ## Allow:
   ## - [X] JSON
-  ## - [ ] Form-Data
-  ## - [ ] x-www-form-urlencoded
+  ## - [X] Form-Data
+  ## - [X] x-www-form-urlencoded
   ## 
   var
     params = newNimNode(nnkRecList)
     asgnStmt = newStmtList()
     asgnUrlencoded = newStmtList()
+    asgnFormData = newStmtList()
   
   for i in body:
     if i.kind == nnkCall and i.len == 2 :
@@ -43,20 +84,85 @@ macro model*(modelName, body: untyped): untyped =
         params.add(newIdentDefs(
           postfix(argName, "*"), argType
         ))
-        asgnStmt.add(newNimNode(nnkIfStmt).add(
-          newNimNode(nnkElifBranch).add(
-            newCall("hasKey", ident"node", newStrLitNode($argName)),
-            newAssignment(
-              newDotExpr(ident"result", argName),
-              newCall("to", newCall("[]", ident"node", newStrLitNode($argName)), argType)
+        if ($argType).toLower() != "formdataitem":
+          # JSON raw data
+          asgnStmt.add(newNimNode(nnkIfStmt).add(
+            newNimNode(nnkElifBranch).add(
+              newCall("hasKey", ident"node", newStrLitNode($argName)),
+              newAssignment(
+                newDotExpr(ident"result", argName),
+                newCall("to", newCall("[]", ident"node", newStrLitNode($argName)), argType)
+              )
+            ), newNimNode(nnkElse).add(
+              newAssignment(
+                newDotExpr(ident"result", argName),
+                newCall("default", argType)
+              )
             )
-          ), newNimNode(nnkElse).add(
-            newAssignment(
-              newDotExpr(ident"result", argName),
-              newCall("default", argType)
+          ))
+          # x-www-form-urlencode
+          asgnUrlencoded.add(newNimNode(nnkIfStmt).add(
+            newNimNode(nnkElifBranch).add(
+              newCall("hasKey", ident"dataTable", newStrLitNode($argName)),
+              newAssignment(
+                newDotExpr(ident"result", argName),
+                case ($argType).toLower()
+                of "int":
+                  newCall("parseInt", newCall("[]", ident"dataTable", newStrLitNode($argName)))
+                of "float":
+                  newCall("parseFloat", newCall("[]", ident"dataTable", newStrLitNode($argName)))
+                of "bool":
+                  newCall("parseBool", newCall("[]", ident"dataTable", newStrLitNode($argName)))
+                else:
+                  newCall("[]", ident"dataTable", newStrLitNode($argName))
+              )
+            ), newNimNode(nnkElse).add(
+              newAssignment(
+                newDotExpr(ident"result", argName),
+                newCall("default", argType)
+              )
             )
-          )
-        ))
+          ))
+        # form-data
+        echo ($argType).toLower()
+        asgnFormData.add(
+          if ($argType).toLower() != "formdataitem":
+            newNimNode(nnkIfStmt).add(
+              newNimNode(nnkElifBranch).add(
+              newCall("hasKey", ident"dataTable", newStrLitNode($argName)),
+              newAssignment(
+                newDotExpr(ident"result", argName),
+                case ($argType).toLower()
+                of "int":
+                  newCall("parseInt", newCall("[]", ident"dataTable", newStrLitNode($argName)))
+                of "float":
+                  newCall("parseFloat", newCall("[]", ident"dataTable", newStrLitNode($argName)))
+                of "bool":
+                  newCall("parseBool", newCall("[]", ident"dataTable", newStrLitNode($argName)))
+                else:
+                  newCall("[]", ident"dataTable", newStrLitNode($argName))
+              )
+            ), newNimNode(nnkElse).add(
+              newAssignment(
+                newDotExpr(ident"result", argName),
+                newCall("default", argType)
+              )
+            ))
+          else:
+            newNimNode(nnkIfStmt).add(
+              newNimNode(nnkElifBranch).add(
+              newCall("hasKey", ident"dataTable", newStrLitNode($argName)),
+              newAssignment(
+                newDotExpr(ident"result", argName),
+                newCall("[]", ident"formDataItemsTable", newStrLitNode($argName))
+              )
+            ), newNimNode(nnkElse).add(
+              newAssignment(
+                newDotExpr(ident"result", argName),
+                newCall("default", argType)
+              )
+            ))
+        )
         continue
       # arg: type = default
       elif i[1][0].kind == nnkAsgn and i[1][0][0].kind == nnkIdent:
@@ -66,46 +172,77 @@ macro model*(modelName, body: untyped): untyped =
         params.add(newIdentDefs(
           postfix(argName, "*"), argType
         ))
-        # JSON raw data
-        asgnStmt.add(newNimNode(nnkIfStmt).add(
-          newNimNode(nnkElifBranch).add(
-            newCall("hasKey", ident"node", newStrLitNode($argName)),
-            newAssignment(
-              newDotExpr(ident"result", argName),
-              newCall("to", newCall("[]", ident"node", newStrLitNode($argName)), argType)
+        if ($argType).toLower() != "formdataitem":
+          # JSON raw data
+          asgnStmt.add(newNimNode(nnkIfStmt).add(
+            newNimNode(nnkElifBranch).add(
+              newCall("hasKey", ident"node", newStrLitNode($argName)),
+              newAssignment(
+                newDotExpr(ident"result", argName),
+                newCall("to", newCall("[]", ident"node", newStrLitNode($argName)), argType)
+              )
+            ), newNimNode(nnkElse).add(
+              newAssignment(
+                newDotExpr(ident"result", argName),
+                argDefault
+              )
             )
-          ), newNimNode(nnkElse).add(
-            newAssignment(
-              newDotExpr(ident"result", argName),
-              argDefault
+          ))
+          # x-www-form-urlencode
+          asgnUrlencoded.add(newNimNode(nnkIfStmt).add(
+            newNimNode(nnkElifBranch).add(
+              newCall("hasKey", ident"dataTable", newStrLitNode($argName)),
+              newAssignment(
+                newDotExpr(ident"result", argName),
+                case ($argType).toLower()
+                of "int":
+                  newCall("parseInt", newCall("[]", ident"dataTable", newStrLitNode($argName)))
+                of "float":
+                  newCall("parseFloat", newCall("[]", ident"dataTable", newStrLitNode($argName)))
+                of "bool":
+                  newCall("parseBool", newCall("[]", ident"dataTable", newStrLitNode($argName)))
+                else:
+                  newCall("[]", ident"dataTable", newStrLitNode($argName))
+              )
             )
-          )
-        ))
-        # x-www-form-urlencode
-        asgnUrlencoded.add(newNimNode(nnkIfStmt).add(
-          newNimNode(nnkElifBranch).add(
-            newCall("hasKey", ident"xWwwUrlencodedTable", newStrLitNode($argName)),
-            newAssignment(
-              newDotExpr(ident"result", argName),
-              case ($argType).toLower()
-              of "int":
-                newCall("parseInt", newCall("[]", ident"xWwwUrlencodedTable", newStrLitNode($argName)))
-              of "float":
-                newCall("parseFloat", newCall("[]", ident"xWwwUrlencodedTable", newStrLitNode($argName)))
-              of "bool":
-                newCall("parseBool", newCall("[]", ident"xWwwUrlencodedTable", newStrLitNode($argName)))
-              else:
-                newCall("[]", ident"xWwwUrlencodedTable", newStrLitNode($argName))
-            )
-          )
-        ))
+          ))
+        # form-data
+        echo ($argType).toLower()
+        asgnFormData.add(
+          if ($argType).toLower() != "formdataitem":
+            newNimNode(nnkIfStmt).add(
+              newNimNode(nnkElifBranch).add(
+              newCall("hasKey", ident"dataTable", newStrLitNode($argName)),
+              newAssignment(
+                newDotExpr(ident"result", argName),
+                case ($argType).toLower()
+                of "int":
+                  newCall("parseInt", newCall("[]", ident"dataTable", newStrLitNode($argName)))
+                of "float":
+                  newCall("parseFloat", newCall("[]", ident"dataTable", newStrLitNode($argName)))
+                of "bool":
+                  newCall("parseBool", newCall("[]", ident"dataTable", newStrLitNode($argName)))
+                else:
+                  newCall("[]", ident"dataTable", newStrLitNode($argName))
+              )
+            ))
+          else:
+            newNimNode(nnkIfStmt).add(
+              newNimNode(nnkElifBranch).add(
+              newCall("hasKey", ident"dataTable", newStrLitNode($argName)),
+              newAssignment(
+                newDotExpr(ident"result", argName),
+                newCall("[]", ident"formDataItemsTable", newStrLitNode($argName))
+              )
+            ))
+        )
         continue
     throwDefect(
       HpxModelSyntaxDefect,
       "Wrong model syntax: ",
       lineInfoObj(i)
     )
-
+  
   result = newStmtList(
     newNimNode(nnkTypeSection).add(
       newNimNode(nnkTypeDef).add(
@@ -131,30 +268,22 @@ macro model*(modelName, body: untyped): untyped =
       [modelName, newIdentDefs(ident"formData", ident"string")],
       newStmtList(
         newAssignment(ident"result", newNimNode(nnkObjConstr).add(ident($modelName))),
-        newLetStmt(ident"xWwwUrlencodedTable", newCall("parseXWwwFormUrlencoded", ident"formData")),
+        newLetStmt(ident"dataTable", newCall("parseXWwwFormUrlencoded", ident"formData")),
         if asgnStmt.len > 0: asgnUrlencoded else: newStmtList()
+      )
+    ),
+    newProc(
+      ident("formDataTo" & $modelName),
+      [modelName, newIdentDefs(ident"data", ident"string")],
+      newStmtList(
+        newAssignment(ident"result", newNimNode(nnkObjConstr).add(ident($modelName))),
+        newNimNode(nnkLetSection).add(newNimNode(nnkVarTuple).add(
+          ident"dataTable", ident"formDataItemsTable", newEmptyNode(),
+          newCall("parseFormData", ident"data")
+        )),
+        if asgnStmt.len > 0: asgnFormData else: newStmtList()
       )
     ),
   )
   when enableDebug:
     echo result.toStrLit
-
-
-# ------WebKitFormBoundary4UxTJlWbkrmPNAYe
-# Content-Disposition: form-data; name="x"
-# 
-# 100
-# ------WebKitFormBoundary4UxTJlWbkrmPNAYe
-# Content-Disposition: form-data; name="y"
-# 
-# Hello, world!
-# ------WebKitFormBoundary4UxTJlWbkrmPNAYe
-# Content-Disposition: form-data; name="img"; filename="depth-blue-aerugo-1x.png"
-# Content-Type: image/png
-# 
-# PNG
-# 
-# IHDR%W3l0PLTE!#-& :02MDJe]h||$.5/H\Fdadz pHYs+DAc`TvM\}=
-#                                                         U��pIENDB`
-# ------WebKitFormBoundary4UxTJlWbkrmPNAYe--
-# 

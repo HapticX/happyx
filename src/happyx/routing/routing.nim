@@ -279,8 +279,10 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.
                 newCall("jsonTo" & modelKey, newCall("newJObject"))
               )
             ))
-          of "urlencoded":
+          of "urlencoded", "x-www-form-urlencoded", "xwwwformurlencoded":
             newCall("xWwwUrlencodedTo" & modelKey, body)
+          of "form-data", "formdata":
+            newCall("formDataTo" & modelKey, body)
           else:
             newCall("jsonTo" & modelKey, newCall("newJObject"))
         )
