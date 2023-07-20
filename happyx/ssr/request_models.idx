@@ -1,3 +1,6 @@
 model	happyx/ssr/request_models.html#model.m,untyped,untyped	request_models: model(modelName, body: untyped): untyped	
-Queries 🔥	happyx/ssr/request_models.html#queries-🔥	 Queries 🔥	
-Example	happyx/ssr/request_models.html#queries-🔥-example	  Example	
+Request Models 🔥	happyx/ssr/request_models.html#request-models-🔥	 Request Models 🔥	
+Example	happyx/ssr/request_models.html#request-models-🔥-example	  Example	
+Modes 🛠	happyx/ssr/request_models.html#request-models-🔥-modes-🛠	  Modes 🛠	
+Form-Data ✨	happyx/ssr/request_models.html#modes-🛠-formminusdata-✨	   Form-Data ✨	
+X-WWW-Form-Urlencoded ✨	happyx/ssr/request_models.html#modes-🛠-xminuswwwminusformminusurlencoded-✨	   X-WWW-Form-Urlencoded ✨	
