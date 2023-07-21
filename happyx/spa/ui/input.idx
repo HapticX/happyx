@@ -2,7 +2,7 @@ InputAction	happyx/spa/ui/input.html#InputAction	input: InputAction
 DefaultInputAction	happyx/spa/ui/input.html#DefaultInputAction	input: DefaultInputAction	
 InputObj	happyx/spa/ui/input.html#InputObj	input: InputObj	
 Input	happyx/spa/ui/input.html#Input	input: Input	
-initInput	happyx/spa/ui/input.html#initInput,string,InputAction,string,string,string	input: initInput(uniqCompId: string; action: InputAction = DefaultInputAction;\n          placeholder: string = &quot;&quot;; label: string = &quot;&quot;; inputType: string = &quot;&quot;): Input	
+initInput	happyx/spa/ui/input.html#initInput,string,InputAction,string,string,string	input: initInput(uniqCompId: string; inputAction: InputAction = DefaultInputAction;\n          placeholder: string = &quot;&quot;; label: string = &quot;&quot;; inputType: string = &quot;&quot;): Input	
 reRender	happyx/spa/ui/input.html#reRender.e,Input	input: reRender(self: Input)	
 render	happyx/spa/ui/input.html#render.e,Input	input: render(self: Input): TagRef	
 Input Component ✨	happyx/spa/ui/input.html#input-component-✨	 Input Component ✨	

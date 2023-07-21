@@ -1595,10 +1595,10 @@ if (!Math.trunc) {
   };
 }
 
-var F = {procname: "module happyx", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx.nim", line: 0};
+var F = {procname: "module happyx", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module exceptions", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/core/exceptions.nim", line: 0};
+var F = {procname: "module exceptions", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/core/exceptions.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
 var F = {procname: "module strformat", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.12/lib/pure/strformat.nim", line: 0};
@@ -3695,40 +3695,40 @@ framePtr = F.prev;
 var F = {procname: "module strformat", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.12/lib/pure/strformat.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module exceptions", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/core/exceptions.nim", line: 0};
+var F = {procname: "module exceptions", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/core/exceptions.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module exceptions", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/core/exceptions.nim", line: 0};
+var F = {procname: "module exceptions", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/core/exceptions.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module exceptions", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/core/exceptions.nim", line: 0};
+var F = {procname: "module exceptions", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/core/exceptions.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module exceptions", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/core/exceptions.nim", line: 0};
+var F = {procname: "module exceptions", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/core/exceptions.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module constants", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/core/constants.nim", line: 0};
+var F = {procname: "module constants", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/core/constants.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module constants", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/core/constants.nim", line: 0};
+var F = {procname: "module constants", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/core/constants.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module constants", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/core/constants.nim", line: 0};
+var F = {procname: "module constants", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/core/constants.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module constants", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/core/constants.nim", line: 0};
+var F = {procname: "module constants", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/core/constants.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module constants", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/core/constants.nim", line: 0};
+var F = {procname: "module constants", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/core/constants.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module use", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/sugar/use.nim", line: 0};
+var F = {procname: "module use", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/sugar/use.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module components", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/components.nim", line: 0};
+var F = {procname: "module components", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/components.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/renderer.nim", line: 0};
+var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/renderer.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
 var F = {procname: "module logging", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.12/lib/pure/logging.nim", line: 0};
@@ -7595,7 +7595,7 @@ framePtr = F.prev;
 var F = {procname: "module regex", prev: framePtr, filename: "/home/runner/.nimble/pkgs/regex-0.20.2/regex.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/tag.nim", line: 0};
+var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/tag.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
 var F = {procname: "module htmlparser", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.12/lib/pure/htmlparser.nim", line: 0};
@@ -8195,7 +8195,7 @@ framePtr = F.prev;
 var F = {procname: "module htmlparser", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.12/lib/pure/htmlparser.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/tag.nim", line: 0};
+var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/tag.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
 var F = {procname: "module dom", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.12/lib/js/dom.nim", line: 0};
@@ -8741,257 +8741,254 @@ framePtr = F.prev;
 var F = {procname: "module dom", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.12/lib/js/dom.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/tag.nim", line: 0};
+var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/tag.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/tag.nim", line: 0};
+var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/tag.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/tag.nim", line: 0};
+var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/tag.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/tag.nim", line: 0};
+var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/tag.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/tag.nim", line: 0};
+var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/tag.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/tag.nim", line: 0};
+var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/tag.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/tag.nim", line: 0};
+var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/tag.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/tag.nim", line: 0};
+var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/tag.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/tag.nim", line: 0};
+var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/tag.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/tag.nim", line: 0};
+var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/tag.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/tag.nim", line: 0};
+var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/tag.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/tag.nim", line: 0};
+var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/tag.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/tag.nim", line: 0};
+var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/tag.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/tag.nim", line: 0};
+var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/tag.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/tag.nim", line: 0};
+var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/tag.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/tag.nim", line: 0};
+var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/tag.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/tag.nim", line: 0};
+var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/tag.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/tag.nim", line: 0};
+var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/tag.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/tag.nim", line: 0};
+var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/tag.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/tag.nim", line: 0};
+var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/tag.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/tag.nim", line: 0};
+var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/tag.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/tag.nim", line: 0};
+var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/tag.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/tag.nim", line: 0};
+var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/tag.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/tag.nim", line: 0};
+var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/tag.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/tag.nim", line: 0};
+var F = {procname: "module tag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/tag.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module translatable", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/translatable.nim", line: 0};
+var F = {procname: "module translatable", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/translatable.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module translatable", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/translatable.nim", line: 0};
+var F = {procname: "module translatable", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/translatable.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module translatable", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/translatable.nim", line: 0};
+var F = {procname: "module translatable", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/translatable.nim", line: 0};
 framePtr = F;
 F.line = 28;
 F.line = 29;
 framePtr = F.prev;
-var F = {procname: "module translatable", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/translatable.nim", line: 0};
+var F = {procname: "module translatable", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/translatable.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module translatable", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/translatable.nim", line: 0};
+var F = {procname: "module translatable", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/translatable.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module translatable", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/translatable.nim", line: 0};
+var F = {procname: "module translatable", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/translatable.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module macro_utils", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/private/macro_utils.nim", line: 0};
+var F = {procname: "module macro_utils", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/private/macro_utils.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module macro_utils", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/private/macro_utils.nim", line: 0};
+var F = {procname: "module macro_utils", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/private/macro_utils.nim", line: 0};
 framePtr = F;
 F.line = 11;
 F.line = 13;
 framePtr = F.prev;
-var F = {procname: "module macro_utils", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/private/macro_utils.nim", line: 0};
+var F = {procname: "module macro_utils", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/private/macro_utils.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module macro_utils", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/private/macro_utils.nim", line: 0};
+var F = {procname: "module macro_utils", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/private/macro_utils.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module macro_utils", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/private/macro_utils.nim", line: 0};
+var F = {procname: "module macro_utils", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/private/macro_utils.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module macro_utils", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/private/macro_utils.nim", line: 0};
+var F = {procname: "module macro_utils", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/private/macro_utils.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module macro_utils", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/private/macro_utils.nim", line: 0};
+var F = {procname: "module macro_utils", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/private/macro_utils.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module macro_utils", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/private/macro_utils.nim", line: 0};
+var F = {procname: "module macro_utils", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/private/macro_utils.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module macro_utils", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/private/macro_utils.nim", line: 0};
+var F = {procname: "module macro_utils", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/private/macro_utils.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module macro_utils", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/private/macro_utils.nim", line: 0};
+var F = {procname: "module macro_utils", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/private/macro_utils.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module macro_utils", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/private/macro_utils.nim", line: 0};
+var F = {procname: "module macro_utils", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/private/macro_utils.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module macro_utils", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/private/macro_utils.nim", line: 0};
+var F = {procname: "module macro_utils", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/private/macro_utils.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module macro_utils", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/private/macro_utils.nim", line: 0};
+var F = {procname: "module macro_utils", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/private/macro_utils.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module macro_utils", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/private/macro_utils.nim", line: 0};
+var F = {procname: "module macro_utils", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/private/macro_utils.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module macro_utils", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/private/macro_utils.nim", line: 0};
+var F = {procname: "module macro_utils", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/private/macro_utils.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module macro_utils", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/private/macro_utils.nim", line: 0};
+var F = {procname: "module macro_utils", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/private/macro_utils.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module macro_utils", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/private/macro_utils.nim", line: 0};
+var F = {procname: "module macro_utils", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/private/macro_utils.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module macro_utils", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/private/macro_utils.nim", line: 0};
+var F = {procname: "module macro_utils", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/private/macro_utils.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module routing", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/routing/routing.nim", line: 0};
+var F = {procname: "module routing", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/routing/routing.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module routing", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/routing/routing.nim", line: 0};
+var F = {procname: "module routing", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/routing/routing.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module routing", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/routing/routing.nim", line: 0};
+var F = {procname: "module routing", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/routing/routing.nim", line: 0};
 framePtr = F;
 F.line = 19;
 framePtr = F.prev;
-var F = {procname: "module routing", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/routing/routing.nim", line: 0};
+var F = {procname: "module routing", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/routing/routing.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module routing", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/routing/routing.nim", line: 0};
+var F = {procname: "module routing", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/routing/routing.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module routing", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/routing/routing.nim", line: 0};
+var F = {procname: "module routing", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/routing/routing.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module routing", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/routing/routing.nim", line: 0};
+var F = {procname: "module routing", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/routing/routing.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module mounting", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/routing/mounting.nim", line: 0};
+var F = {procname: "module mounting", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/routing/mounting.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module mounting", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/routing/mounting.nim", line: 0};
+var F = {procname: "module mounting", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/routing/mounting.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module mounting", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/routing/mounting.nim", line: 0};
+var F = {procname: "module mounting", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/routing/mounting.nim", line: 0};
 framePtr = F;
 F.line = 28;
 framePtr = F.prev;
-var F = {procname: "module mounting", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/routing/mounting.nim", line: 0};
+var F = {procname: "module mounting", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/routing/mounting.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module mounting", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/routing/mounting.nim", line: 0};
+var F = {procname: "module mounting", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/routing/mounting.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module mounting", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/routing/mounting.nim", line: 0};
+var F = {procname: "module mounting", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/routing/mounting.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module sgr", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/sugar/sgr.nim", line: 0};
+var F = {procname: "module sgr", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/sugar/sgr.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module sgr", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/sugar/sgr.nim", line: 0};
+var F = {procname: "module sgr", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/sugar/sgr.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module sgr", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/sugar/sgr.nim", line: 0};
+var F = {procname: "module sgr", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/sugar/sgr.nim", line: 0};
 framePtr = F;
 F.line = 12;
 framePtr = F.prev;
-var F = {procname: "module sgr", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/sugar/sgr.nim", line: 0};
+var F = {procname: "module sgr", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/sugar/sgr.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module sgr", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/sugar/sgr.nim", line: 0};
+var F = {procname: "module sgr", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/sugar/sgr.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module style", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/sugar/style.nim", line: 0};
+var F = {procname: "module style", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/sugar/style.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module style", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/sugar/style.nim", line: 0};
+var F = {procname: "module style", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/sugar/style.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module style", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/sugar/style.nim", line: 0};
+var F = {procname: "module style", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/sugar/style.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module style", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/sugar/style.nim", line: 0};
+var F = {procname: "module style", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/sugar/style.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module style", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/sugar/style.nim", line: 0};
+var F = {procname: "module style", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/sugar/style.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module style", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/sugar/style.nim", line: 0};
+var F = {procname: "module style", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/sugar/style.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module js", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/sugar/js.nim", line: 0};
+var F = {procname: "module js", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/sugar/js.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module js", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/sugar/js.nim", line: 0};
+var F = {procname: "module js", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/sugar/js.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module js", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/sugar/js.nim", line: 0};
+var F = {procname: "module js", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/sugar/js.nim", line: 0};
 framePtr = F;
 F.line = 39;
 F.line = 40;
 F.line = 41;
 framePtr = F.prev;
-var F = {procname: "module js", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/sugar/js.nim", line: 0};
+var F = {procname: "module js", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/sugar/js.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module js", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/sugar/js.nim", line: 0};
+var F = {procname: "module js", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/sugar/js.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module js", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/sugar/js.nim", line: 0};
+var F = {procname: "module js", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/sugar/js.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/renderer.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module jsconsole", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.12/lib/js/jsconsole.nim", line: 0};
+var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/renderer.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
 var F = {procname: "module jsconsole", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.12/lib/js/jsconsole.nim", line: 0};
@@ -9060,10 +9057,13 @@ framePtr = F.prev;
 var F = {procname: "module jsconsole", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.12/lib/js/jsconsole.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/renderer.nim", line: 0};
+var F = {procname: "module jsconsole", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.12/lib/js/jsconsole.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/renderer.nim", line: 0};
+var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/renderer.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/renderer.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
 
@@ -9993,7 +9993,7 @@ function HEX5BHEX5D_973083834(t_973083837, key_973083838) {
 var Temporary1;
 var Temporary2;
 var Temporary3;
-var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/renderer.nim", line: 0};
+var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/renderer.nim", line: 0};
 framePtr = F;
 F.line = 100;
 var application_973078576 = [null];
@@ -10045,175 +10045,175 @@ F.line = 129;
 }
 
 framePtr = F.prev;
-var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/renderer.nim", line: 0};
+var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/renderer.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/renderer.nim", line: 0};
+var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/renderer.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/renderer.nim", line: 0};
+var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/renderer.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/renderer.nim", line: 0};
+var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/renderer.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/renderer.nim", line: 0};
+var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/renderer.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/renderer.nim", line: 0};
+var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/renderer.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/renderer.nim", line: 0};
+var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/renderer.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/renderer.nim", line: 0};
+var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/renderer.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/renderer.nim", line: 0};
+var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/renderer.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/renderer.nim", line: 0};
+var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/renderer.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/renderer.nim", line: 0};
+var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/renderer.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/renderer.nim", line: 0};
+var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/renderer.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/renderer.nim", line: 0};
+var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/renderer.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/renderer.nim", line: 0};
+var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/renderer.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/renderer.nim", line: 0};
+var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/renderer.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/renderer.nim", line: 0};
+var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/renderer.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module components", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/components.nim", line: 0};
+var F = {procname: "module components", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/components.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module components", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/components.nim", line: 0};
+var F = {procname: "module components", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/components.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module components", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/components.nim", line: 0};
+var F = {procname: "module components", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/components.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module components", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/components.nim", line: 0};
+var F = {procname: "module components", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/components.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module use", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/sugar/use.nim", line: 0};
+var F = {procname: "module use", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/sugar/use.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module use", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/sugar/use.nim", line: 0};
+var F = {procname: "module use", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/sugar/use.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module use", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/sugar/use.nim", line: 0};
+var F = {procname: "module use", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/sugar/use.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/state.nim", line: 0};
+var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/state.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/state.nim", line: 0};
+var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/state.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/state.nim", line: 0};
+var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/state.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/state.nim", line: 0};
+var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/state.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/state.nim", line: 0};
+var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/state.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/state.nim", line: 0};
+var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/state.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/state.nim", line: 0};
+var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/state.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/state.nim", line: 0};
+var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/state.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/state.nim", line: 0};
+var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/state.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/state.nim", line: 0};
+var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/state.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/state.nim", line: 0};
+var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/state.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/state.nim", line: 0};
+var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/state.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/state.nim", line: 0};
+var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/state.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/state.nim", line: 0};
+var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/state.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/state.nim", line: 0};
+var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/state.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/state.nim", line: 0};
+var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/state.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/state.nim", line: 0};
+var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/state.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/state.nim", line: 0};
+var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/state.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/state.nim", line: 0};
+var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/state.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/state.nim", line: 0};
+var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/state.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/state.nim", line: 0};
+var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/state.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/state.nim", line: 0};
+var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/state.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/state.nim", line: 0};
+var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/state.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/state.nim", line: 0};
+var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/state.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/state.nim", line: 0};
+var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/state.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/state.nim", line: 0};
+var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/state.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/state.nim", line: 0};
+var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/state.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/state.nim", line: 0};
+var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/state.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/state.nim", line: 0};
+var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/state.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/state.nim", line: 0};
+var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/state.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/state.nim", line: 0};
+var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/state.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/state.nim", line: 0};
+var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/state.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/state.nim", line: 0};
+var F = {procname: "module state", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/state.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module engine", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/tmpl_engine/engine.nim", line: 0};
+var F = {procname: "module engine", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/tmpl_engine/engine.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
 var F = {procname: "module os", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.12/lib/pure/os.nim", line: 0};
@@ -11213,35 +11213,35 @@ framePtr = F.prev;
 var F = {procname: "module nimja", prev: framePtr, filename: "/home/runner/.nimble/pkgs/nimja-0.8.7/nimja.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module engine", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/tmpl_engine/engine.nim", line: 0};
+var F = {procname: "module engine", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/tmpl_engine/engine.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module engine", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/tmpl_engine/engine.nim", line: 0};
+var F = {procname: "module engine", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/tmpl_engine/engine.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module engine", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/tmpl_engine/engine.nim", line: 0};
+var F = {procname: "module engine", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/tmpl_engine/engine.nim", line: 0};
 framePtr = F;
 F.line = 14;
 framePtr = F.prev;
-var F = {procname: "module engine", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/tmpl_engine/engine.nim", line: 0};
+var F = {procname: "module engine", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/tmpl_engine/engine.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module engine", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/tmpl_engine/engine.nim", line: 0};
+var F = {procname: "module engine", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/tmpl_engine/engine.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module engine", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/tmpl_engine/engine.nim", line: 0};
+var F = {procname: "module engine", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/tmpl_engine/engine.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module happyx", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx.nim", line: 0};
+var F = {procname: "module happyx", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module happyx", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx.nim", line: 0};
+var F = {procname: "module happyx", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module happyx", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx.nim", line: 0};
+var F = {procname: "module happyx", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module happyx", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx.nim", line: 0};
+var F = {procname: "module happyx", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
 var F = {procname: "module path_params", prev: framePtr, filename: "/home/runner/work/happyx/happyx/examples/website/src/path_params.nim", line: 0};
@@ -11366,7 +11366,7 @@ framePtr = F.prev;
 function registerApp_973084079(appId_973084080) {
   var result_973084081 = null;
 
-  var F = {procname: "renderer.registerApp", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/renderer.nim", line: 0};
+  var F = {procname: "renderer.registerApp", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/renderer.nim", line: 0};
   framePtr = F;
     F.line = 168;
     F.line = 169;
@@ -12049,7 +12049,7 @@ function nstnewStringTableWithTableConstr(keyValuePairs_1023410483, mode_1023410
 function initTag_1577058424(name_1577058425, children_1577058430, onlyChildren_1577058431) {
   var result_1577058432 = null;
 
-  var F = {procname: "tag.initTag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/tag.nim", line: 0};
+  var F = {procname: "tag.initTag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/tag.nim", line: 0};
   framePtr = F;
     F.line = 106;
     result_1577058432 = {name: nimCopy(null, name_1577058425, NTI33554439), isText: false, parent: null, attrs: nstnewStringTableWithTableConstr([], 0), children: [], args: [], onlyChildren: onlyChildren_1577058431};
@@ -12096,7 +12096,7 @@ function initTag_1577058424(name_1577058425, children_1577058430, onlyChildren_1
 function initTag_1577058341(name_1577058342, attrs_1577058343, children_1577058348, onlyChildren_1577058349) {
   var result_1577058350 = null;
 
-  var F = {procname: "tag.initTag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/tag.nim", line: 0};
+  var F = {procname: "tag.initTag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/tag.nim", line: 0};
   framePtr = F;
     F.line = 84;
     result_1577058350 = {name: nimCopy(null, name_1577058342, NTI33554439), isText: false, parent: null, attrs: attrs_1577058343, children: [], args: [], onlyChildren: onlyChildren_1577058349};
@@ -12682,7 +12682,7 @@ function formatValue_637534370(result_637534371, result_637534371_Idx, value_637
 function initHeader_2147483654(uniqCompId_2147483655) {
   var result_2147483656 = null;
 
-  var F = {procname: "header.initHeader", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/components.nim", line: 0};
+  var F = {procname: "header.initHeader", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/components.nim", line: 0};
   framePtr = F;
     F.line = 9;
     result_2147483656 = {uniqCompId: nimCopy(null, uniqCompId_2147483655, NTI33554439), m_type: NTI2147483651, isCreated: false, slot: null, created: null, exited: null, updated: null, pageHide: null, pageShow: null, beforeUpdated: null};
@@ -12901,7 +12901,7 @@ function registerComponent_973084091(name_973084092, component_973084093) {
 
   var result_973084094 = null;
 
-  var F = {procname: "renderer.registerComponent", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/renderer.nim", line: 0};
+  var F = {procname: "renderer.registerComponent", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/renderer.nim", line: 0};
   framePtr = F;
   BeforeRet: do {
     F.line = 174;
@@ -12924,7 +12924,7 @@ function registerComponent_973084091(name_973084092, component_973084093) {
 function initTag_1577058482(name_1577058483, isText_1577058484, children_1577058489, onlyChildren_1577058490) {
   var result_1577058491 = null;
 
-  var F = {procname: "tag.initTag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/tag.nim", line: 0};
+  var F = {procname: "tag.initTag", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/tag.nim", line: 0};
   framePtr = F;
     F.line = 146;
     result_1577058491 = {name: nimCopy(null, name_1577058483, NTI33554439), isText: isText_1577058484, parent: null, attrs: nstnewStringTableWithTableConstr([], 0), children: [], args: [], onlyChildren: onlyChildren_1577058490};
@@ -12969,7 +12969,7 @@ function initTag_1577058482(name_1577058483, isText_1577058484, children_1577058
 }
 
 function addArgIter_1577058859(self_1577058860, arg_1577058861) {
-  var F = {procname: "tag.addArgIter", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/tag.nim", line: 0};
+  var F = {procname: "tag.addArgIter", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/tag.nim", line: 0};
   framePtr = F;
     if (((self_1577058860.args).length == 0)) {
     F.line = 258;
@@ -13010,7 +13010,7 @@ function addArgIter_1577058859(self_1577058860, arg_1577058861) {
 function initSmartCard_2197815301(uniqCompId_2197815302) {
   var result_2197815303 = null;
 
-  var F = {procname: "smart_card.initSmartCard", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/components.nim", line: 0};
+  var F = {procname: "smart_card.initSmartCard", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/components.nim", line: 0};
   framePtr = F;
     F.line = 6;
     result_2197815303 = {uniqCompId: nimCopy(null, uniqCompId_2197815302, NTI33554439), m_type: NTI2197815299, isCreated: false, slot: null, created: null, exited: null, updated: null, pageHide: null, pageShow: null, beforeUpdated: null};
@@ -13023,7 +13023,7 @@ function initSmartCard_2197815301(uniqCompId_2197815302) {
 function remember_2214592523(val_2214592525) {
   var result_2214592526 = null;
 
-  var F = {procname: "remember.remember", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/state.nim", line: 0};
+  var F = {procname: "remember.remember", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/state.nim", line: 0};
   framePtr = F;
     F.line = 38;
     result_2214592526 = {value: nimCopy(null, val_2214592525, NTI33554439)};
@@ -13036,7 +13036,7 @@ function remember_2214592523(val_2214592525) {
 function remember_2248146960(val_2248146962) {
   var result_2248146963 = null;
 
-  var F = {procname: "remember.remember", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/state.nim", line: 0};
+  var F = {procname: "remember.remember", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/state.nim", line: 0};
   framePtr = F;
     F.line = 38;
     result_2248146963 = {value: val_2248146962};
@@ -13049,7 +13049,7 @@ function remember_2248146960(val_2248146962) {
 function initCodeBlock_2248146952(uniqCompId_2248146953, language_2248146954, source_2248146955) {
   var result_2248146956 = null;
 
-  var F = {procname: "code_block.initCodeBlock", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/components.nim", line: 0};
+  var F = {procname: "code_block.initCodeBlock", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/components.nim", line: 0};
   framePtr = F;
     F.line = 4;
     result_2248146956 = {uniqCompId: nimCopy(null, uniqCompId_2248146953, NTI33554439), language: remember_2214592523(language_2248146954), source: remember_2248146960(source_2248146955), m_type: NTI2248146947, isCreated: false, slot: null, created: null, exited: null, updated: null, pageHide: null, pageShow: null, beforeUpdated: null};
@@ -13062,7 +13062,7 @@ function initCodeBlock_2248146952(uniqCompId_2248146953, language_2248146954, so
 function initSection_2231369733(uniqCompId_2231369734) {
   var result_2231369735 = null;
 
-  var F = {procname: "section.initSection", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/components.nim", line: 0};
+  var F = {procname: "section.initSection", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/components.nim", line: 0};
   framePtr = F;
     F.line = 6;
     result_2231369735 = {uniqCompId: nimCopy(null, uniqCompId_2231369734, NTI33554439), m_type: NTI2231369731, isCreated: false, slot: null, created: null, exited: null, updated: null, pageHide: null, pageShow: null, beforeUpdated: null};
@@ -13075,7 +13075,7 @@ function initSection_2231369733(uniqCompId_2231369734) {
 function initCard_2214592519(uniqCompId_2214592520, pathToImg_2214592521) {
   var result_2214592522 = null;
 
-  var F = {procname: "card.initCard", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/components.nim", line: 0};
+  var F = {procname: "card.initCard", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/components.nim", line: 0};
   framePtr = F;
     F.line = 6;
     result_2214592522 = {uniqCompId: nimCopy(null, uniqCompId_2214592520, NTI33554439), pathToImg: remember_2214592523(pathToImg_2214592521), m_type: NTI2214592515, isCreated: false, slot: null, created: null, exited: null, updated: null, pageHide: null, pageShow: null, beforeUpdated: null};
@@ -13113,7 +13113,7 @@ function toDom_1577058873(self_1577058874) {
 
   var result_1577058877 = {Field0: null, Field1: false};
 
-  var F = {procname: "tag.toDom", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/tag.nim", line: 0};
+  var F = {procname: "tag.toDom", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/tag.nim", line: 0};
   framePtr = F;
   BeforeRet: do {
     if (self_1577058874.isText) {
@@ -13291,7 +13291,7 @@ function toDom_1577058873(self_1577058874) {
 }
 
 function renderVdom_973084450(app_973084451, tag_973084452) {
-  var F = {procname: "renderer.renderVdom", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/renderer.nim", line: 0};
+  var F = {procname: "renderer.renderVdom", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/renderer.nim", line: 0};
   framePtr = F;
     F.line = 191;
     var elem_973084453 = document.getElementById(app_973084451.appId);
@@ -13310,7 +13310,7 @@ function callRouter_452984909(force_452984910) {
       var Temporary1;
     var Temporary2;
 
-  var F = {procname: "main.callRouter", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/renderer.nim", line: 0};
+  var F = {procname: "main.callRouter", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/renderer.nim", line: 0};
   framePtr = F;
   BeforeRet: do {
     F.line = 538;
@@ -13625,7 +13625,7 @@ function callRouter_452984909(force_452984910) {
 }
 
 function onDOMContentLoaded_452985366(ev_452985367) {
-  var F = {procname: "main.onDOMContentLoaded", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/renderer.nim", line: 0};
+  var F = {procname: "main.onDOMContentLoaded", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/renderer.nim", line: 0};
   framePtr = F;
     F.line = 538;
     callRouter_452984909(false);
@@ -13635,7 +13635,7 @@ function onDOMContentLoaded_452985366(ev_452985367) {
 }
 
 function route_973084074(path_973084075) {
-  var F = {procname: "renderer.route", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/renderer.nim", line: 0};
+  var F = {procname: "renderer.route", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/renderer.nim", line: 0};
   framePtr = F;
     F.line = 161;
     window.history.pushState(null, null, '#' + path_973084075);
@@ -14754,7 +14754,7 @@ function HEX3Aanonymous_2147483718(self_2147483712, ev_2147483713) {
       
     }
 
-  var F = {procname: "header.script", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/components.nim", line: 0};
+  var F = {procname: "header.script", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/components.nim", line: 0};
   framePtr = F;
     F.line = 11;
     self_2147483710.beforeUpdated = HEX3Aanonymous_2147483711;
@@ -14952,7 +14952,7 @@ function HEX5BHEX5DHEX3D_2181038541(t_2181038544, key_2181038545, val_2181038546
 function remember_2181038135(val_2181038137) {
   var result_2181038138 = null;
 
-  var F = {procname: "remember.remember", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/state.nim", line: 0};
+  var F = {procname: "remember.remember", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/state.nim", line: 0};
   framePtr = F;
     F.line = 38;
     result_2181038138 = {value: val_2181038137};
@@ -14965,7 +14965,7 @@ function remember_2181038135(val_2181038137) {
 function remember_2181038149(val_2181038151) {
   var result_2181038152 = null;
 
-  var F = {procname: "remember.remember", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/state.nim", line: 0};
+  var F = {procname: "remember.remember", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/state.nim", line: 0};
   framePtr = F;
     F.line = 38;
     result_2181038152 = {value: val_2181038151};
@@ -14978,7 +14978,7 @@ function remember_2181038149(val_2181038151) {
 function initButton_2181038130(uniqCompId_2181038131, flat_2181038132, action_2181038133) {
   var result_2181038134 = null;
 
-  var F = {procname: "button.initButton", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/components.nim", line: 0};
+  var F = {procname: "button.initButton", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/components.nim", line: 0};
   framePtr = F;
     F.line = 12;
     result_2181038134 = {uniqCompId: nimCopy(null, uniqCompId_2181038131, NTI33554439), flat: remember_2181038135(flat_2181038132), action: remember_2181038149(action_2181038133), m_type: NTI2181038135, isCreated: false, slot: null, created: null, exited: null, updated: null, pageHide: null, pageShow: null, beforeUpdated: null};
@@ -14991,7 +14991,7 @@ function initButton_2181038130(uniqCompId_2181038131, flat_2181038132, action_21
 function style_2147483719(self_2147483720) {
   var result_2147483721 = [];
 
-  var F = {procname: "header.style", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/components.nim", line: 0};
+  var F = {procname: "header.style", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/components.nim", line: 0};
   framePtr = F;
   framePtr = F.prev;
 
@@ -15045,7 +15045,7 @@ function HEX3Aanonymous_2147483973() {
 
   var result_2147483724 = null;
 
-  var F = {procname: "header.render", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/components.nim", line: 0};
+  var F = {procname: "header.render", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/components.nim", line: 0};
   framePtr = F;
     F.line = 11;
     currentComponent_973083042[0] = nimCopy(null, self_2147483723.uniqCompId, NTI33554439);
@@ -15237,7 +15237,7 @@ function HEX3Aanonymous_2181038248(self_2181038242, ev_2181038243) {
       
     }
 
-  var F = {procname: "button.script", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/components.nim", line: 0};
+  var F = {procname: "button.script", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/components.nim", line: 0};
   framePtr = F;
     F.line = 16;
     self_2181038240.beforeUpdated = HEX3Aanonymous_2181038241;
@@ -15259,7 +15259,7 @@ function HEX3Aanonymous_2181038248(self_2181038242, ev_2181038243) {
 function toBool_1828717001(self_1828717004) {
   var result_1828717005 = false;
 
-  var F = {procname: "state.toBool", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/state.nim", line: 0};
+  var F = {procname: "state.toBool", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/state.nim", line: 0};
   framePtr = F;
     F.line = 198;
     result_1828717005 = self_1828717004.value;
@@ -15273,7 +15273,7 @@ function val_2181038473(self_2181038475, self_2181038475_Idx) {
   var result_2181038476 = null;
   var result_2181038476_Idx = 0;
 
-  var F = {procname: "val.val", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/state.nim", line: 0};
+  var F = {procname: "val.val", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/state.nim", line: 0};
   framePtr = F;
     F.line = 57;
     result_2181038476 = self_2181038475[self_2181038475_Idx]; result_2181038476_Idx = "value";
@@ -15286,7 +15286,7 @@ function val_2181038473(self_2181038475, self_2181038475_Idx) {
 function style_2181038258(self_2181038259) {
   var result_2181038260 = [];
 
-  var F = {procname: "button.style", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/components.nim", line: 0};
+  var F = {procname: "button.style", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/components.nim", line: 0};
   framePtr = F;
   framePtr = F.prev;
 
@@ -15319,7 +15319,7 @@ function HEX3Aanonymous_2181038463(self_2181038464, ev_2181038465) {
 
   var result_2181038263 = null;
 
-  var F = {procname: "button.render", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/components.nim", line: 0};
+  var F = {procname: "button.render", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/components.nim", line: 0};
   framePtr = F;
     F.line = 16;
     currentComponent_973083042[0] = nimCopy(null, self_2181038262.uniqCompId, NTI33554439);
@@ -15462,7 +15462,7 @@ function HEX3Aanonymous_2197815365(self_2197815359, ev_2197815360) {
       
     }
 
-  var F = {procname: "smart_card.script", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/components.nim", line: 0};
+  var F = {procname: "smart_card.script", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/components.nim", line: 0};
   framePtr = F;
     F.line = 7;
     self_2197815357.beforeUpdated = HEX3Aanonymous_2197815358;
@@ -15484,7 +15484,7 @@ function HEX3Aanonymous_2197815365(self_2197815359, ev_2197815360) {
 function style_2197815366(self_2197815367) {
   var result_2197815368 = [];
 
-  var F = {procname: "smart_card.style", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/components.nim", line: 0};
+  var F = {procname: "smart_card.style", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/components.nim", line: 0};
   framePtr = F;
   framePtr = F.prev;
 
@@ -15495,7 +15495,7 @@ function style_2197815366(self_2197815367) {
 function render_2197815369(self_2197815370) {
   var result_2197815371 = null;
 
-  var F = {procname: "smart_card.render", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/components.nim", line: 0};
+  var F = {procname: "smart_card.render", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/components.nim", line: 0};
   framePtr = F;
     F.line = 7;
     currentComponent_973083042[0] = nimCopy(null, self_2197815370.uniqCompId, NTI33554439);
@@ -15592,7 +15592,7 @@ function HEX3Aanonymous_2248147035(self_2248147029, ev_2248147030) {
       
     }
 
-  var F = {procname: "code_block.script", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/components.nim", line: 0};
+  var F = {procname: "code_block.script", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/components.nim", line: 0};
   framePtr = F;
     F.line = 8;
     self_2248147027.beforeUpdated = HEX3Aanonymous_2248147028;
@@ -15615,7 +15615,7 @@ function val_2248147052(self_2248147054, self_2248147054_Idx) {
   var result_2248147055 = null;
   var result_2248147055_Idx = 0;
 
-  var F = {procname: "val.val", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/state.nim", line: 0};
+  var F = {procname: "val.val", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/state.nim", line: 0};
   framePtr = F;
     F.line = 57;
     result_2248147055 = self_2248147054[self_2248147054_Idx]; result_2248147055_Idx = "value";
@@ -15628,7 +15628,7 @@ function val_2248147052(self_2248147054, self_2248147054_Idx) {
 function HEX24_2248147143(self_2248147145) {
   var result_2248147146 = [];
 
-  var F = {procname: "$.$", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/state.nim", line: 0};
+  var F = {procname: "$.$", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/state.nim", line: 0};
   framePtr = F;
     F.line = 50;
     result_2248147146 = nimCopy(null, cstrToNimstr(self_2248147145.value), NTI33554439);
@@ -15642,7 +15642,7 @@ function val_2248147266(self_2248147268, self_2248147268_Idx) {
   var result_2248147269 = null;
   var result_2248147269_Idx = 0;
 
-  var F = {procname: "val.val", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/state.nim", line: 0};
+  var F = {procname: "val.val", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/state.nim", line: 0};
   framePtr = F;
     F.line = 57;
     result_2248147269 = self_2248147268[self_2248147268_Idx]; result_2248147269_Idx = "value";
@@ -15655,7 +15655,7 @@ function val_2248147266(self_2248147268, self_2248147268_Idx) {
 function style_2248147036(self_2248147037) {
   var result_2248147038 = [];
 
-  var F = {procname: "code_block.style", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/components.nim", line: 0};
+  var F = {procname: "code_block.style", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/components.nim", line: 0};
   framePtr = F;
   framePtr = F.prev;
 
@@ -15690,7 +15690,7 @@ function HEX3Aanonymous_2248147256(self_2248147257, ev_2248147258) {
 
   var result_2248147041 = null;
 
-  var F = {procname: "code_block.render", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/components.nim", line: 0};
+  var F = {procname: "code_block.render", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/components.nim", line: 0};
   framePtr = F;
     F.line = 8;
     currentComponent_973083042[0] = nimCopy(null, self_2248147040.uniqCompId, NTI33554439);
@@ -15834,7 +15834,7 @@ function HEX3Aanonymous_2231369797(self_2231369791, ev_2231369792) {
       
     }
 
-  var F = {procname: "section.script", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/components.nim", line: 0};
+  var F = {procname: "section.script", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/components.nim", line: 0};
   framePtr = F;
     F.line = 7;
     self_2231369789.beforeUpdated = HEX3Aanonymous_2231369790;
@@ -15856,7 +15856,7 @@ function HEX3Aanonymous_2231369797(self_2231369791, ev_2231369792) {
 function style_2231369798(self_2231369799) {
   var result_2231369800 = [];
 
-  var F = {procname: "section.style", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/components.nim", line: 0};
+  var F = {procname: "section.style", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/components.nim", line: 0};
   framePtr = F;
   framePtr = F.prev;
 
@@ -15867,7 +15867,7 @@ function style_2231369798(self_2231369799) {
 function render_2231369801(self_2231369802) {
   var result_2231369803 = null;
 
-  var F = {procname: "section.render", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/components.nim", line: 0};
+  var F = {procname: "section.render", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/components.nim", line: 0};
   framePtr = F;
     F.line = 7;
     currentComponent_973083042[0] = nimCopy(null, self_2231369802.uniqCompId, NTI33554439);
@@ -15960,7 +15960,7 @@ function HEX3Aanonymous_2214592598(self_2214592592, ev_2214592593) {
       
     }
 
-  var F = {procname: "card.script", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/components.nim", line: 0};
+  var F = {procname: "card.script", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/components.nim", line: 0};
   framePtr = F;
     F.line = 9;
     self_2214592590.beforeUpdated = HEX3Aanonymous_2214592591;
@@ -15982,7 +15982,7 @@ function HEX3Aanonymous_2214592598(self_2214592592, ev_2214592593) {
 function len_2214592673(self_2214592675) {
   var result_2214592676 = 0;
 
-  var F = {procname: "len.len", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/state.nim", line: 0};
+  var F = {procname: "len.len", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/state.nim", line: 0};
   framePtr = F;
     F.line = 176;
     result_2214592676 = (self_2214592675.value).length;
@@ -15995,7 +15995,7 @@ function len_2214592673(self_2214592675) {
 function HEX24_2214592837(self_2214592839) {
   var result_2214592840 = [];
 
-  var F = {procname: "$.$", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/state.nim", line: 0};
+  var F = {procname: "$.$", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/state.nim", line: 0};
   framePtr = F;
     F.line = 50;
     result_2214592840 = nimCopy(null, self_2214592839.value, NTI33554439);
@@ -16018,7 +16018,7 @@ function formatValue_2214592747(result_2214592749, result_2214592749_Idx, value_
 function style_2214592599(self_2214592600) {
   var result_2214592601 = [];
 
-  var F = {procname: "card.style", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/components.nim", line: 0};
+  var F = {procname: "card.style", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/components.nim", line: 0};
   framePtr = F;
   framePtr = F.prev;
 
@@ -16031,7 +16031,7 @@ function render_2214592602(self_2214592603) {
 
   var result_2214592604 = null;
 
-  var F = {procname: "card.render", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/components.nim", line: 0};
+  var F = {procname: "card.render", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/components.nim", line: 0};
   framePtr = F;
     F.line = 9;
     currentComponent_973083042[0] = nimCopy(null, self_2214592603.uniqCompId, NTI33554439);
@@ -16096,7 +16096,7 @@ function render_2214592602(self_2214592603) {
 function render_973084456(self_973084457) {
   var result_973084458 = null;
 
-  var F = {procname: "renderer.render", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/renderer.nim", line: 0};
+  var F = {procname: "renderer.render", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/renderer.nim", line: 0};
   framePtr = F;
   framePtr = F.prev;
 
@@ -16107,7 +16107,7 @@ function render_973084456(self_973084457) {
 function render_973084459(self_973084457) {
   var result_973084460 = null;
 
-  var F = {procname: "renderer.render", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/renderer.nim", line: 0};
+  var F = {procname: "renderer.render", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/renderer.nim", line: 0};
   framePtr = F;
   BeforeRet: do {
     F.line = 530;
@@ -16211,7 +16211,7 @@ function nsuRepeatStr(s_654312452, n_654312453) {
 function lvl_1577058928(self_1577058929) {
   var result_1577058930 = 0;
 
-  var F = {procname: "tag.lvl", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/tag.nim", line: 0};
+  var F = {procname: "tag.lvl", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/tag.nim", line: 0};
   framePtr = F;
     F.line = 313;
     result_1577058930 = 0;
@@ -16407,7 +16407,7 @@ function HEX24_1577059040(self_1577059041) {
 
   var result_1577059042 = [];
 
-  var F = {procname: "tag.$", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/tag.nim", line: 0};
+  var F = {procname: "tag.$", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/tag.nim", line: 0};
   framePtr = F;
   BeforeRet: do {
     F.line = 364;
@@ -16558,7 +16558,7 @@ function HEX24_1577059040(self_1577059041) {
 }
 
 function reRender_2147483675(self_2147483676) {
-  var F = {procname: "header.reRender", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/components.nim", line: 0};
+  var F = {procname: "header.reRender", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/components.nim", line: 0};
   framePtr = F;
     F.line = 9;
     var tmpData_2147483677 = (makeNimstrLit("[data-") || []).concat(self_2147483676.uniqCompId || [],makeNimstrLit("]") || []);
@@ -16632,7 +16632,7 @@ function reRender_2147483675(self_2147483676) {
 }
 
 function reRender_2181038190(self_2181038191) {
-  var F = {procname: "button.reRender", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/components.nim", line: 0};
+  var F = {procname: "button.reRender", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/components.nim", line: 0};
   framePtr = F;
     F.line = 12;
     var tmpData_2181038192 = (makeNimstrLit("[data-") || []).concat(self_2181038191.uniqCompId || [],makeNimstrLit("]") || []);
@@ -16706,7 +16706,7 @@ function reRender_2181038190(self_2181038191) {
 }
 
 function reRender_2197815322(self_2197815323) {
-  var F = {procname: "smart_card.reRender", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/components.nim", line: 0};
+  var F = {procname: "smart_card.reRender", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/components.nim", line: 0};
   framePtr = F;
     F.line = 6;
     var tmpData_2197815324 = (makeNimstrLit("[data-") || []).concat(self_2197815323.uniqCompId || [],makeNimstrLit("]") || []);
@@ -16780,7 +16780,7 @@ function reRender_2197815322(self_2197815323) {
 }
 
 function reRender_2248146992(self_2248146993) {
-  var F = {procname: "code_block.reRender", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/components.nim", line: 0};
+  var F = {procname: "code_block.reRender", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/components.nim", line: 0};
   framePtr = F;
     F.line = 4;
     var tmpData_2248146994 = (makeNimstrLit("[data-") || []).concat(self_2248146993.uniqCompId || [],makeNimstrLit("]") || []);
@@ -16854,7 +16854,7 @@ function reRender_2248146992(self_2248146993) {
 }
 
 function reRender_2231369754(self_2231369755) {
-  var F = {procname: "section.reRender", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/components.nim", line: 0};
+  var F = {procname: "section.reRender", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/components.nim", line: 0};
   framePtr = F;
     F.line = 6;
     var tmpData_2231369756 = (makeNimstrLit("[data-") || []).concat(self_2231369755.uniqCompId || [],makeNimstrLit("]") || []);
@@ -16928,7 +16928,7 @@ function reRender_2231369754(self_2231369755) {
 }
 
 function reRender_2214592555(self_2214592556) {
-  var F = {procname: "card.reRender", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/components.nim", line: 0};
+  var F = {procname: "card.reRender", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/components.nim", line: 0};
   framePtr = F;
     F.line = 6;
     var tmpData_2214592557 = (makeNimstrLit("[data-") || []).concat(self_2214592556.uniqCompId || [],makeNimstrLit("]") || []);
@@ -17002,7 +17002,7 @@ function reRender_2214592555(self_2214592556) {
 }
 
 function reRender_973084461(self_973084462) {
-  var F = {procname: "renderer.reRender", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/renderer.nim", line: 0};
+  var F = {procname: "renderer.reRender", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/renderer.nim", line: 0};
   framePtr = F;
   framePtr = F.prev;
 
@@ -17010,7 +17010,7 @@ function reRender_973084461(self_973084462) {
 }
 
 function reRender_973084463(self_973084462) {
-  var F = {procname: "renderer.reRender", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.9.4/happyx/spa/renderer.nim", line: 0};
+  var F = {procname: "renderer.reRender", prev: framePtr, filename: "/home/runner/.nimble/pkgs/happyx-1.10.0/happyx/spa/renderer.nim", line: 0};
   framePtr = F;
     F.line = 530;
     chckNilDisp(self_973084462);

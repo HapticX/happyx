@@ -1,4 +1,6 @@
 BackgroundColor	happyx/spa/ui/palette.html#BackgroundColor	palette: BackgroundColor	
+BackgroundSecondaryColor	happyx/spa/ui/palette.html#BackgroundSecondaryColor	palette: BackgroundSecondaryColor	
+BackgroundTerniaryColor	happyx/spa/ui/palette.html#BackgroundTerniaryColor	palette: BackgroundTerniaryColor	
 ForegroundColor	happyx/spa/ui/palette.html#ForegroundColor	palette: ForegroundColor	
 AccentColor	happyx/spa/ui/palette.html#AccentColor	palette: AccentColor	
 AccentHoverColor	happyx/spa/ui/palette.html#AccentHoverColor	palette: AccentHoverColor	
