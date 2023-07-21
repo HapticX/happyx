@@ -514,8 +514,6 @@ macro routes*(server: Server, body: untyped): untyped =
   # Find mounts
   body.findAndReplaceMount()
 
-  let httpMethods = ["get", "post", "put", "patch", "link", "options", "head", "delete"]
-
   for key in sugarRoutes.keys():
     if sugarRoutes[key].httpMethod.toLower() == "any":
       body.add(newCall(newStrLitNode(key), sugarRoutes[key].body))

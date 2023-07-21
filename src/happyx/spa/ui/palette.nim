@@ -7,6 +7,8 @@ when not defined(docgen):
 
 const
   BackgroundColor* = "#0e090b"
+  BackgroundSecondaryColor* = "#1e191b"
+  BackgroundTerniaryColor* = "#2e292b"
   ForegroundColor* = "#ecedea"
   AccentColor* = "#fcff82"
   AccentHoverColor* = "#ecef72"

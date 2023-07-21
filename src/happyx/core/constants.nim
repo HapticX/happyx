@@ -29,6 +29,9 @@ const
   enableDebug* = defined(debug) or defined(happyxDebug) or defined(hpxDebug)
   # Framework features
   enableUi* = defined(enableUi) or defined(happyxEnableUi) or defined(hpxEnableUi)
+  httpMethods* = [
+    "get", "post", "put", "patch", "link", "options", "head", "delete", "unlink", "purge", "copy"
+  ]
 
 
 when defined(js):

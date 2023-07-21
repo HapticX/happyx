@@ -9,6 +9,7 @@
 ## | Name     | Type           | Required | Default Value            |
 ## | :---:    | :---:          | :---:    | :---:                    |
 ## | `action` | `proc(): void` | ❌       | `proc(): void = discard` |
+## | `flat`   | `bool`         | ❌       | `false`                  |
 ## 
 ## Button has slot
 ## 
@@ -29,9 +30,10 @@ const DefaultButtonAction*: ButtonAction = proc() = discard
 component Button:
   # action when button is clicked
   *action: ButtonAction = DefaultButtonAction
+  *flat: bool = false
 
   `template`:
-    tButton:
+    tButton(class = if self.flat: "flat" else: ""):
       slot
       @click:
         self.action()
@@ -59,5 +61,20 @@ component Button:
 
     button:active {
       background: {AccentActiveColor};
+    }
+    
+    .flat {
+      background: none;
+      color: {AccentColor};
+    }
+
+    .flat:hover {
+      background: none;
+      color: {AccentHoverColor};
+    }
+
+    .flat:active {
+      background: none;
+      color: {AccentActiveColor};
     }
   """

@@ -9,8 +9,9 @@
 ## 
 ## | Name          | Type                       | Required | Default Value                        |
 ## | :---:         | :---:                      | :---:    | :---:                                |
-## | `action`      | `proc(str: cstring): void` |  ❌      | `proc(str: cstring): void = discard` |
+## | `inputAction` | `proc(str: cstring): void` |  ❌      | `proc(str: cstring): void = discard` |
 ## | `placeholder` | `string`                   |  ❌      | `""`                                 |
+## | `label`       | `string`                   |  ❌      | `""`                                 |
 ## | `inputType`   | `string`                   |  ❌      | `""`                                 |
 ## 
 ## Input hasn't slot
@@ -31,7 +32,7 @@ const DefaultInputAction*: InputAction = proc(str: cstring) = discard
 
 component Input:
   # action when any input
-  *action: InputAction = DefaultInputAction
+  *inputAction: InputAction = DefaultInputAction
   *placeholder: string = ""
   *label: string = ""
   *inputType: string = ""
@@ -40,7 +41,9 @@ component Input:
     tDiv:
       tInput(`type` = self.inputType, placeholder = self.placeholder):
         @input(ev):
-          {.emit: "console.log(`ev`.data);".}
+          var data: cstring
+          {.emit: "`data` = `ev`.data".}
+          self.inputAction(data)
       tLabel:
         {self.label}
     

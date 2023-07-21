@@ -262,8 +262,9 @@
 ## > ⚠ !Warning! It works only with `-d:enableUi` flag! ⚠
 ## 
 ## - [palette](happyx/spa/ui/palette.html) provides built-in color palette
-## - [button](happyx/spa/ui/button.html) provides built-in Button component
-## - [input](happyx/spa/ui/input.html) provides built-in Input component
+## - [card](happyx/spa/ui/card.html) provides built-in `Card` component
+## - [button](happyx/spa/ui/button.html) provides built-in `Button` component
+## - [input](happyx/spa/ui/input.html) provides built-in `Input` component
 ## 
 ## ### Template Engine 🎴
 ## 
@@ -300,9 +301,9 @@ import
 
 when enableUi or defined(docgen):
   import
-    happyx/spa/ui/[button, input]
+    happyx/spa/ui/[enums, palette, button, input, card]
   export
-    button, input
+    enums, palette, button, input, card
 
 export
   exceptions,
