@@ -2,5 +2,7 @@ model	happyx/ssr/request_models.html#model.m,untyped,untyped	request_models: mod
 Request Models 🔥	happyx/ssr/request_models.html#request-models-🔥	 Request Models 🔥	
 Example	happyx/ssr/request_models.html#request-models-🔥-example	  Example	
 Modes 🛠	happyx/ssr/request_models.html#request-models-🔥-modes-🛠	  Modes 🛠	
+JSON ✨	happyx/ssr/request_models.html#modes-🛠-json-✨	   JSON ✨	
+XML ✨	happyx/ssr/request_models.html#modes-🛠-xml-✨	   XML ✨	
 Form-Data ✨	happyx/ssr/request_models.html#modes-🛠-formminusdata-✨	   Form-Data ✨	
 X-WWW-Form-Urlencoded ✨	happyx/ssr/request_models.html#modes-🛠-xminuswwwminusformminusurlencoded-✨	   X-WWW-Form-Urlencoded ✨	

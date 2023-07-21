@@ -116,6 +116,11 @@ window.addEventListener('DOMContentLoaded', main);
     title="parseFormData(formData: string): (StringTableRef, TableRef[string, FormDataItem])">parseFormData(formData: string): (StringTableRef, TableRef[string, FormDataItem])</a></li>
 
   </ul>
+  <ul class="simple nested-toc-section">parseXmlBody
+      <li><a class="reference" href="#parseXmlBody%2Cstring"
+    title="parseXmlBody(data: string): JsonNode">parseXmlBody(data: string): JsonNode</a></li>
+
+  </ul>
   <ul class="simple nested-toc-section">parseXWwwFormUrlencoded
       <li><a class="reference" href="#parseXWwwFormUrlencoded%2Cstring"
     title="parseXWwwFormUrlencoded(data: string): StringTableRef">parseXWwwFormUrlencoded(data: string): StringTableRef</a></li>
@@ -133,7 +138,7 @@ window.addEventListener('DOMContentLoaded', main);
   <div id="tocRoot"></div>
   
   <p class="module-desc">
-<h1><a class="toc-backref" id="form-data-👨‍🔬" href="#form-data-👨‍🔬">Form Data 👨‍🔬</a></h1><p>Provides working with <tt class="docutils literal"><span class="pre"><span class="Identifier">form</span><span class="Operator">-</span><span class="Identifier">data</span></span></tt> and <tt class="docutils literal"><span class="pre"><span class="Identifier">x</span><span class="Operator">-</span><span class="Identifier">www</span><span class="Operator">-</span><span class="Identifier">form</span><span class="Operator">-</span><span class="Identifier">urlencoded</span></span></tt>.</p>
+<h1><a class="toc-backref" id="form-data-👨‍🔬" href="#form-data-👨‍🔬">Form Data 👨‍🔬</a></h1><p>Provides working with <tt class="docutils literal"><span class="pre"><span class="Identifier">XML</span></span></tt>, <tt class="docutils literal"><span class="pre"><span class="Identifier">form</span><span class="Operator">-</span><span class="Identifier">data</span></span></tt> and <tt class="docutils literal"><span class="pre"><span class="Identifier">x</span><span class="Operator">-</span><span class="Identifier">www</span><span class="Operator">-</span><span class="Identifier">form</span><span class="Operator">-</span><span class="Identifier">urlencoded</span></span></tt>.</p>
 <p>This module used by request models so you can use it at high-level</p>
 <pre class="listing"><span class="Identifier">model</span> <span class="Identifier">MyModel</span><span class="Punctuation">:</span>
   <span class="Identifier">img</span><span class="Punctuation">:</span> <span class="Identifier">FormDataItem</span>
@@ -175,6 +180,16 @@ Parses <tt class="docutils literal"><span class="pre"><span class="Identifier">f
 
 </dd>
 </div>
+<div id="parseXmlBody,string">
+<dt><pre><span class="Keyword">proc</span> <a href="#parseXmlBody%2Cstring"><span class="Identifier">parseXmlBody</span></a><span class="Other">(</span><span class="Identifier">data</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">JsonNode</span> {.
+    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">IOError</span><span class="Other">,</span> <span class="Identifier">OSError</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">,</span> <span class="Identifier">Exception</span><span class="Other">,</span> <span class="Identifier">XmlError</span><span class="Other">,</span> <span class="Identifier">KeyError</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ReadIOEffect</span><span class="Other">,</span> <span class="Identifier">RootEffect</span><span class="Other">,</span> <span class="Identifier">WriteIOEffect</span><span class="Other">]</span></span>.}</pre></dt>
+<dd>
+
+
+
+</dd>
+</div>
 <div id="parseXWwwFormUrlencoded,string">
 <dt><pre><span class="Keyword">proc</span> <a href="#parseXWwwFormUrlencoded%2Cstring"><span class="Identifier">parseXWwwFormUrlencoded</span></a><span class="Other">(</span><span class="Identifier">data</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">StringTableRef</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
     <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
@@ -194,7 +209,7 @@ Parses <tt class="docutils literal"><span class="pre"><span class="Identifier">x
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-07-20 06:02:34 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-07-21 08:21:30 UTC</small>
       </div>
     </div>
   </div>
