@@ -8,6 +8,7 @@
 ## ### Params ⚙
 ## 
 ## | Name    | Type     | Required | Default Value |
+## | :---:   | :---:    | :---:    | :---:         |
 ## | `class` | `string` |  ❌      | `""`          |
 ## 
 ## Card has slot
