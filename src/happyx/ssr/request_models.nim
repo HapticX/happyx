@@ -2,6 +2,8 @@
 ## 
 ## Provides working with request models
 ## 
+## Available `JSON`, `XML`, `form-data` and `x-www-form-urlencoded`.
+## 
 ## ## Example
 ## 
 ## .. code-block::nim
@@ -9,7 +11,7 @@
 ##      text: string
 ##      authorId: int
 ##    serve "127.0.0.1", 5000:
-##      post "/[msg:Message]":
+##      post "/[msg:Message]":  # by default uses JSON mode
 ##        return {"response": {
 ##          "text": msg.text, "author": msg.authorId
 ##        }}
@@ -19,6 +21,33 @@
 ## 
 ## Request models parses only JSON raw data by default. To use `form-data` or `x-www-form-urlencoded`
 ## you should enable it in path params
+## 
+## ### JSON ✨
+## 
+## This mode used by default
+## 
+## .. code-block::nim
+##    model MyModel:
+##      x: int
+## 
+##    serve "127.0.0.1", 5000:
+##      post "/[m:MyModel:json]":
+##        return {"response": m.x}
+## 
+## ### XML ✨
+## 
+## .. code-block::nim
+##    model MyModel:
+##      x: int
+## 
+##    serve "127.0.0.1", 5000:
+##      post "/[m:MyModel:xml]":
+##        # Body is
+##        # <MyModel>
+##        #   <x type="int">1000</x>
+##        # </MyModel>
+##        return {"response": m.x}
+## 
 ## 
 ## ### Form-Data ✨
 ## 
@@ -56,6 +85,7 @@ import
   macros,
   strtabs,
   strutils,
+  strformat,
   # Happyx
   ../core/[exceptions, constants],
   ./form_data
@@ -66,6 +96,7 @@ macro model*(modelName, body: untyped): untyped =
   ## 
   ## Allow:
   ## - [X] JSON
+  ## - [X] XML
   ## - [X] Form-Data
   ## - [X] x-www-form-urlencoded
   ## 
@@ -74,6 +105,7 @@ macro model*(modelName, body: untyped): untyped =
     asgnStmt = newStmtList()
     asgnUrlencoded = newStmtList()
     asgnFormData = newStmtList()
+    asgnXml = newStmtList()
   
   for i in body:
     if i.kind == nnkCall and i.len == 2 :
@@ -123,8 +155,33 @@ macro model*(modelName, body: untyped): untyped =
               )
             )
           ))
+          # XML
+          asgnXml.add(newNimNode(nnkIfStmt).add(
+            newNimNode(nnkElifBranch).add(
+              newCall("hasKey", ident"xmlBody", newStrLitNode($argName)),
+              newNimNode(nnkTryStmt).add(
+                newAssignment(
+                  newDotExpr(ident"result", argName),
+                  newCall("to", newCall("[]", ident"xmlBody", newStrLitNode($argName)), argType)
+                ), newNimNode(nnkExceptBranch).add(
+                  ident"JsonKindError",
+                  newStmtList(
+                      newCall(
+                        "error", newCall(
+                          "fmt", newStrLitNode(
+                            fmt"Couldn't parse XML model ({modelName}.{argName}: {argType.toStrLit}) - " & "{getCurrentExceptionMsg()}"))
+                      ),
+                  )
+                )
+              )
+            ), newNimNode(nnkElse).add(
+              newAssignment(
+                newDotExpr(ident"result", argName),
+                newCall("default", argType)
+              )
+            ))
+          )
         # form-data
-        echo ($argType).toLower()
         asgnFormData.add(
           if ($argType).toLower() != "formdataitem":
             newNimNode(nnkIfStmt).add(
@@ -204,10 +261,40 @@ macro model*(modelName, body: untyped): untyped =
                 else:
                   newCall("[]", ident"dataTable", newStrLitNode($argName))
               )
+            ), newNimNode(nnkElse).add(
+              newAssignment(
+                newDotExpr(ident"result", argName),
+                argDefault
+              )
             )
           ))
+          # XML
+          asgnXml.add(newNimNode(nnkIfStmt).add(
+            newNimNode(nnkElifBranch).add(
+              newCall("hasKey", ident"xmlBody", newStrLitNode($argName)),
+              newNimNode(nnkTryStmt).add(
+                newAssignment(
+                  newDotExpr(ident"result", argName),
+                  newCall("to", newCall("[]", ident"xmlBody", newStrLitNode($argName)), argType)
+                ), newNimNode(nnkExceptBranch).add(
+                  ident"JsonKindError",
+                  newStmtList(
+                      newCall(
+                        "error", newCall(
+                          "fmt", newStrLitNode(
+                            fmt"Couldn't parse XML model ({modelName}.{argName}: {argType.toStrLit}) - " & "{getCurrentExceptionMsg()}"))
+                      ),
+                  )
+                )
+              )
+            ), newNimNode(nnkElse).add(
+              newAssignment(
+                newDotExpr(ident"result", argName),
+                argDefault
+              )
+            ))
+          )
         # form-data
-        echo ($argType).toLower()
         asgnFormData.add(
           if ($argType).toLower() != "formdataitem":
             newNimNode(nnkIfStmt).add(
@@ -270,6 +357,15 @@ macro model*(modelName, body: untyped): untyped =
         newAssignment(ident"result", newNimNode(nnkObjConstr).add(ident($modelName))),
         newLetStmt(ident"dataTable", newCall("parseXWwwFormUrlencoded", ident"formData")),
         if asgnStmt.len > 0: asgnUrlencoded else: newStmtList()
+      )
+    ),
+    newProc(
+      ident("xmlBodyTo" & $modelName),
+      [modelName, newIdentDefs(ident"data", ident"string")],
+      newStmtList(
+        newAssignment(ident"result", newNimNode(nnkObjConstr).add(ident($modelName))),
+        newLetStmt(ident"xmlBody", newCall("parseXmlBody", ident"data")),
+        if asgnStmt.len > 0: asgnXml else: newStmtList()
       )
     ),
     newProc(

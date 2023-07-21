@@ -63,14 +63,14 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.
   # regex param
   routePathStr = routePathStr.replace(re"\{[a-zA-Z][a-zA-Z0-9_]*:/([\s\S]+?)/(\[m\])?\}", "($1)")
   # Remove models
-  routePathStr = routePathStr.replace(re"\[[a-zA-Z][a-zA-Z0-9_]*:[a-zA-Z][a-zA-Z0-9_]*(\[m\])?(:[a-zA-Z]+)?\]", "")
+  routePathStr = routePathStr.replace(re"\[[a-zA-Z][a-zA-Z0-9_]*:[a-zA-Z][a-zA-Z0-9_]*(\[m\])?(:[a-zA-Z\\-]+)?\]", "")
   let
     regExp = newCall("re", newStrLitNode("^" & routePathStr & "$"))
     found = path.findAll(
       re"\{([a-zA-Z][a-zA-Z0-9_]*\??)(:(bool|int|float|string|path|word|/[\s\S]+?/|enum\(\w+\)))?(\[m\])?(=(\S+?))?\}"
     )
     foundModels = path.findAll(
-      re"\[([a-zA-Z][a-zA-Z0-9_]*):([a-zA-Z][a-zA-Z0-9_]*)(\[m\])?(:[a-zA-Z]+)?\]"
+      re"\[([a-zA-Z][a-zA-Z0-9_]*):([a-zA-Z][a-zA-Z0-9_]*)(\[m\])?(:[a-zA-Z\\-]+)?\]"
     )
   elifBranch.add(newCall("contains", urlPath, regExp), body)
   var
@@ -283,6 +283,8 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.
             newCall("xWwwUrlencodedTo" & modelKey, body)
           of "form-data", "formdata":
             newCall("formDataTo" & modelKey, body)
+          of "xml":
+            newCall("xmlBodyTo" & modelKey, body)
           else:
             newCall("jsonTo" & modelKey, newCall("newJObject"))
         )

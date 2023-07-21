@@ -1,6 +1,6 @@
 ## # Form Data 👨‍🔬
 ## 
-## Provides working with `form-data` and `x-www-form-urlencoded`.
+## Provides working with `XML`, `form-data` and `x-www-form-urlencoded`.
 ## 
 ## This module used by request models so you can use it at high-level
 ## 
@@ -26,6 +26,10 @@ import
   strutils,
   mimetypes,
   uri,
+  xmltree,
+  parsexml,
+  xmlparser,
+  json,
   # Thirdparty
   regex
 
@@ -69,17 +73,70 @@ proc parseFormData*(formData: string): (StringTableRef, TableRef[string, FormDat
     if key.len > 0 and data.len > 0:
       let d =
         if filename.len == 0:
-          data.replace(re"\A\s*([\s\S]+?)\s*\z", "$1")
+          data.replace(re"\A\s+", "").replace(re"\s+\z", "")
         else:
           data
       result[0][key] = d
       result[1][key] = FormDataItem(data: d, name: key, filename: filename, contentType: contentType)
 
 
+proc iterateOverXml(tree: XmlNode, jsonNode: var JsonNode, path: var seq[string], parent: XmlNode = nil) =
+  for child in tree.items:
+    if child.kind == xnElement:
+      # Working with all children
+      path.add(child.tag)
+      iterateOverXml(child, jsonNode, path, tree)
+      discard path.pop()
+    elif child.kind == xnText:
+      # Working with text
+      var
+        current = jsonNode
+        i = 0
+      for p in path:
+        if current.kind == JObject:
+          if not current.hasKey(p) and i < path.len-1:
+            # If current hasn't key `p` and i < path last elem idx
+            current[p] = newJObject()
+          elif not current.hasKey(p):
+            # current hasn't key p
+            let
+              nodeType =
+                if not tree.isNil() and not tree.attrs.isNil() and tree.attrs.hasKey("type"):
+                  tree.attrs["type"]
+                else:
+                  "string"
+              text = child.text.replace(re"\A\s+", "").replace(re"\s+\z", "")
+            # Parse type
+            current[p] =
+              case nodeType.toLower()
+              of "int":
+                newJInt(parseInt(text))
+              of "float":
+                newJFloat(parseFloat(text))
+              of "bool", "boolean":
+                newJBool(parseBool(text))
+              else:
+                newJString(child.text)
+          current = current[p]
+        inc i
+
+
+proc parseXmlBody*(data: string): JsonNode =
+  let xml = parseXml(data)
+  var
+    res = newJObject()
+    path: seq[string] = @[]
+  iterateOverXml(xml, res, path)
+  res
+
+
 proc parseXWwwFormUrlencoded*(data: string): StringTableRef =
   ## Parses `x-www-form-urlencoded` into `StringTableRef`.
   result = newStringTable()
-  let decoded = decodeUrl(data)
-  for param in decoded.split("&"):
+  let
+    decoded = decodeUrl(data)
+    splitted = decoded.split("&")
+  for param in splitted:
     let data = param.split("=")
-    result[data[0]] = data[1]
+    if data.len == 2:
+      result[data[0]] = data[1]

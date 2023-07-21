@@ -13,7 +13,7 @@
 ##        "fr" -> "Bonjour, monde!"
 ##    serve("127.0.0.1", 5000):
 ##      get "/":
-##        return translatable("Hello, world!")
+##        return translate("Hello, world!")
 ## 
 
 import

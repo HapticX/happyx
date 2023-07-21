@@ -254,6 +254,8 @@
 ## 
 ## - [cors](happyx/ssr/cors.html) provides CORS registration.
 ## - [server](happyx/ssr/server.html) provides routing and working with server.
+## - [form data](happyx/ssr/form_data.html) provides routing and working with server.
+## - [request models](happyx/ssr/request_models.html) provides routing and working with server.
 ## 
 ## ### Built-In UI 🎴
 ## 

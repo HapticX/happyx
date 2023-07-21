@@ -36,7 +36,7 @@ HappyX is macro-oriented web framework so you mustn't write a lot of code ✨
 - Multiple options for HTTP server! Happyx use `asynchttpserver` as default HTTP server (`httpx` via `-d:happyxHttpx`, `httpbeast` via `-d:happyxBeast` and `microhttpserver` via `-d:happyxMicro` as alternative HTTP servers).
 - Support `SPA` on `JS` backend and `SSR` on other backends.
 - Build HTML, CSS and pure JS with `buildHtml`, `buildStyle` and `buildJs` macros.
-- Request JSON models with `model` macro.
+- Request `JSON`/`XML`/`Form-Data`/`x-www-form-urlencoded` models with `model` macro.
 - Routing and powerful path params.
 - Assignment path params with `pathParams` macro.
 - Powerful mounting sub-applications with `mount` macro. 
@@ -120,6 +120,9 @@ Just run this command and see magic ✨
 hpx dev --reload
 ```
 
+# Have A Question? 👀
+
+[![StackOverflow](https://img.shields.io/badge/Overflow-1b1e2b?style=for-the-badge&logo=stackoverflow&logoColor=f1fa8c&label=Stack&labelColor=2b2e3b)](https://stackoverflow.com/search?q=%5Bnim-lang%5D+HappyX)
 
 # Have A Nice Idea? 🍍
 

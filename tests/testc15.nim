@@ -37,6 +37,14 @@ serve "127.0.0.1", 5000:
     echo m.x
     return {"response": m.x}
   
+  post "/xml/[m:MyModel:xml]":
+    # Body:
+    # <MyModel>
+    #   <x type="int">10000</x>
+    # </MyModel>
+    echo m.x
+    return {"response": m.x}
+  
   get "/language/$lang?:enum(Language)":
     # lang is lNim by default
     return fmt"Hello from {lang}"
