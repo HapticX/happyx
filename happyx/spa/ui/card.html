@@ -172,7 +172,11 @@ window.addEventListener('DOMContentLoaded', main);
 <p>&gt; ⚠ Works only with <tt class="docutils literal"><span class="pre"><span class="Operator">-</span><span class="Identifier">d</span><span class="Punctuation">:</span><span class="Identifier">enableUi</span></span></tt> flag ⚠</p>
 <img src="https://raw.githubusercontent.com/HapticX/happyx/master/screenshots/component_card.gif"/><pre class="listing"><span class="Identifier">appRoutes</span> <span class="StringLit">&quot;app&quot;</span><span class="Punctuation">:</span>
   <span class="StringLit">&quot;/&quot;</span><span class="Punctuation">:</span>
-    <span class="Identifier">component</span> <span class="Identifier">Input</span><span class="Punctuation">(</span><span class="Identifier">placeholder</span> <span class="Operator">=</span> <span class="StringLit">&quot;Edit text ...&quot;</span><span class="Punctuation">,</span> <span class="Identifier">label</span> <span class="Operator">=</span> <span class="StringLit">&quot;Edit text ...&quot;</span><span class="Punctuation">)</span></pre>
+    <span class="Identifier">component</span> <span class="Identifier">Card</span><span class="Punctuation">(</span><span class="Identifier">hAlign</span> <span class="Operator">=</span> <span class="Identifier">Alignment</span><span class="Operator">.</span><span class="Identifier">aCenter</span><span class="Punctuation">)</span><span class="Punctuation">:</span>
+      <span class="Identifier">tH1</span><span class="Punctuation">:</span>
+        <span class="StringLit">&quot;Hello, world!&quot;</span>
+      <span class="Identifier">component</span> <span class="Identifier">Button</span><span class="Punctuation">:</span>
+        <span class="StringLit">&quot;Click me!&quot;</span></pre>
 <h3><a class="toc-backref" id="card-🎴-params-⚙" href="#card-🎴-params-⚙">Params ⚙</a></h3><table border="1" class="docutils"><tr><th>Name</th><th>Type</th><th>Required</th><th>Default Value</th></tr>
 <tr><td><tt class="docutils literal"><span class="pre"><span class="Identifier">class</span></span></tt></td><td><tt class="docutils literal"><span class="pre"><span class="Identifier">string</span></span></tt></td><td>❌</td><td><tt class="docutils literal"><span class="pre"><span class="StringLit">&quot;&quot;</span></span></tt></td></tr>
 <tr><td><tt class="docutils literal"><span class="pre"><span class="Identifier">hAlign</span></span></tt></td><td><tt class="docutils literal"><span class="pre"><span class="Identifier">Alignment</span></span></tt></td><td>❌</td><td><tt class="docutils literal"><span class="pre"><span class="Identifier">Alignment</span><span class="Operator">.</span><span class="Identifier">aStart</span></span></tt></td></tr>
@@ -266,7 +270,7 @@ Changes Card alignment
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-07-22 15:05:14 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-07-22 15:06:24 UTC</small>
       </div>
     </div>
   </div>
