@@ -206,9 +206,13 @@ macro component*(name, body: untyped): untyped =
     )
   
   var
+    # Components general
     templateStmtList = newStmtList()
     scriptStmtList = newStmtList()
     styleStmtList = newStmtList()
+    # Functions
+    methodsStmtList = newStmtList()
+    # Args
     arguments = @[
       newEmptyNode(),
       newIdentDefs(ident"self", ident"BaseComponent"),
@@ -272,6 +276,21 @@ macro component*(name, body: untyped): untyped =
           s[1], fieldType, defaultValue
         ))
         initObjConstr.add(newColonExpr(s[1], newCall("remember", s[1])))
+      
+      # funcs, procs, methods, iterators, converters
+      elif s[0].kind == nnkBracket and s[0][0] == ident"methods" and s.len == 2 and s[1].kind == nnkStmtList:
+        let procType = $s[0][0]
+
+        for statement in s[1]:
+          if statement.kind in [nnkProcDef, nnkMethodDef, nnkIteratorDef, nnkConverterDef]:
+            statement[3].insert(1, newIdentDefs(ident"self", ident(name)))
+            methodsStmtList.add(statement)
+          else:
+            throwDefect(
+              HpxComponentDefect,
+              fmt"only procedures, methods, iterators and converters available here. ",
+              lineInfoObj(statement)
+            )
     
       # template, style or script
       elif s[0].kind == nnkAccQuoted or s.kind == nnkInfix and s[1].kind == nnkAccQuoted:
@@ -496,4 +515,7 @@ macro component*(name, body: untyped): untyped =
         else:
           newNimNode(nnkPragma).add(ident("gcsafe"))
     ),
+    methodsStmtList,
   )
+
+  echo result.toStrLit
