@@ -41,8 +41,6 @@
 ## 
 ## ### SPA 🎴
 ## 
-## [See more information](happyx/spa/renderer.html)
-## 
 ## SPA works only on JS backend
 ## 
 ## - `index.html`
@@ -94,8 +92,6 @@
 ## 
 ## 
 ## ### SSR 💻
-## 
-## [See more information](happyx/ssr/server.html)
 ## 
 ## SSR works only on C/Cpp/ObjC backends
 ## 
@@ -156,8 +152,6 @@
 ## 
 ## ## Path Params 🛠
 ## 
-## [See more information](happyx/routing/routing.html)
-## 
 ## Routing provides powerful path params.
 ## 
 ## ### Example
@@ -208,8 +202,6 @@
 ## | `{arg?:type}`        | `{arg?:type[m]}`        | `$arg?:type`            | `$arg?:type[m]`            |
 ## 
 ## ## Mounting 🔌
-## 
-## [See more information](happyx/routing/mounting.html)
 ## 
 ## HappyX routing provides mounting also.
 ## 

@@ -345,8 +345,8 @@ macro component*(name, body: untyped): untyped =
           elif s[^1][0].kind in [nnkStrLit, nnkTripleStrLit]:
             # String CSS
             let str = ($s[1][0]).replace(
-              re"([\S ]+?)(?<!\[data-\{self.uniqCompId\}\]) *\{([\S\s]+?)\}(?! *[\d;\w])", "$1[data-{self.uniqCompId}] {{$2}}"
-            )
+              re"([\S ]+?) *\{(?![ \S]+?\}\s*[;])", "$1[data-{self.uniqCompId}] {{"
+            ).replace(re"(\n[ \t]+)\}", "$1}}")
             styleStmtList = newStmtList(
               newAssignment(
                 ident("result"),
@@ -517,5 +517,3 @@ macro component*(name, body: untyped): untyped =
     ),
     methodsStmtList,
   )
-
-  echo result.toStrLit

@@ -4,12 +4,16 @@
 ## 
 ## > ⚠ Works only with `-d:enableUi` flag ⚠
 ## 
+## .. image:: https://github.com/HapticX/happyx/blob/master/screenshots/component_card.gif
+## 
 ## 
 ## ### Params ⚙
 ## 
-## | Name    | Type     | Required | Default Value |
-## | :---:   | :---:    | :---:    | :---:         |
-## | `class` | `string` |  ❌      | `""`          |
+## | Name     | Type        | Required | Default Value      |
+## | :---:    | :---:       | :---:    | :---:              |
+## | `class`  | `string`    |  ❌      | `""`               |
+## | `hAlign` | `Alignment` |  ❌      | `Alignment.aStart` |
+## | `vAlign` | `Alignment` |  ❌      | `Alignment.aStart` |
 ## 
 ## Card has slot
 ## 
@@ -22,11 +26,6 @@ import
   ../components,
   ./palette,
   ./enums
-
-
-type InputAction* = proc(str: cstring): void
-
-const DefaultInputAction*: InputAction = proc(str: cstring) = discard
 
 
 component Card:
@@ -42,21 +41,19 @@ component Card:
     tDiv(class = self.class):
       slot
   
-  `script`:
-    self.vAlignHidden =
-      if self.vAlign == aStart:
-        remember "start"
-      elif self.vAlign == aCenter:
-        remember "center"
-      else:
-        remember "end"
-    self.hAlignHidden =
-      if self.hAlign == aStart:
-        remember "start"
-      elif self.hAlign == aCenter:
-        remember "center"
-      else:
-        remember "end"
+  [methods]:
+    proc setAlign*(vertical, horizontal: Alignment) =
+      ## Changes Card alignment
+      self.vAlignHidden =
+        case vertical
+        of aStart: remember "start"
+        of aCenter: remember "center"
+        else: remember "end"
+      self.hAlignHidden =
+        case horizontal
+        of aStart: remember "start"
+        of aCenter: remember "center"
+        else: remember "end"
     
   `style`: """
     div {
