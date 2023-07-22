@@ -4,7 +4,7 @@
 ## 
 ## > ⚠ Works only with `-d:enableUi` flag ⚠
 ## 
-## .. image:: https://github.com/HapticX/happyx/blob/master/screenshots/component_input.gif
+## .. image:: https://raw.githubusercontent.com/HapticX/happyx/master/screenshots/component_input.gif
 ## 
 ## 
 ## ### Params ⚙
