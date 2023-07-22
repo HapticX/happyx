@@ -10,6 +10,7 @@ on:
       - '*.nimble'
       - '.gitignore'
       - 'LICENSE'
+      - 'FUNDING.yml'
   pull_request:
     paths-ignore:
       - '.github/ISSUE_TEMPLATE/*'
@@ -17,6 +18,7 @@ on:
       - '*.nimble'
       - '.gitignore'
       - 'LICENSE'
+      - 'FUNDING.yml'
 
 permissions:
   contents: write
@@ -47,22 +49,10 @@ jobs:
         with:
           nim-version: ${{ env.nim_version }}
 
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v3
-        with:
-          python-version: ${{ matrix.python-version }}
-
       - name: Install Dependencies
         run: |
           nimble refresh
           nimble install -y
-          python -m pip install --upgrade pip
-          pip install hapdoc>=1.9.25 -U
-
-      - name: Build HapDoc Documentation
-        run: |
-          hapdoc -v
-          hapdoc build docs -t default -o ""
 
       - name: Generate API documents
         run: nim doc --index:on -d:docgen --project --out:docs --hints:off src/happyx.nim

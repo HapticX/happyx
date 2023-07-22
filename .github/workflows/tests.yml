@@ -11,6 +11,16 @@ on:
       - '*.nimble'
       - '.gitignore'
       - 'LICENSE'
+      - 'FUNDING.yml'
+  pull_request:
+    paths-ignore:
+      - 'docs/**'
+      - '.github/ISSUE_TEMPLATE/*'
+      - '*.md'
+      - '*.nimble'
+      - '.gitignore'
+      - 'LICENSE'
+      - 'FUNDING.yml'
 
 jobs:
   build:
