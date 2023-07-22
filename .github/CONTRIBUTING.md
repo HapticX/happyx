@@ -56,4 +56,4 @@ We use community standard [Nim Style Guide](https://nim-lang.org/docs/nep1.html)
 
 ## License 📄
 
-By contributing to HappyX, you agree that your contributions will be licensed under the GPL-3.0 license.
+By contributing to HappyX, you agree that your contributions will be licensed under the MIT license.
