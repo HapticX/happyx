@@ -6,6 +6,10 @@
 ## 
 ## .. image:: https://raw.githubusercontent.com/HapticX/happyx/master/screenshots/component_card.gif
 ## 
+## .. code-block:: nim
+##    appRoutes "app":
+##      "/":
+##        component Input(placeholder = "Edit text ...", label = "Edit text ...")
 ## 
 ## ### Params ⚙
 ## 

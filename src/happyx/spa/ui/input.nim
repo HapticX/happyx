@@ -6,6 +6,15 @@
 ## 
 ## .. image:: https://raw.githubusercontent.com/HapticX/happyx/master/screenshots/component_input.gif
 ## 
+## .. code-block:: nim
+##    appRoutes "app":
+##      "/":
+##        component Card(hAlign = Alignment.aCenter):
+##          tH1:
+##            "Hello, world!"
+##          component Button:
+##            "Click me!"
+## 
 ## 
 ## ### Params ⚙
 ## 

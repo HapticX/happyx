@@ -6,6 +6,15 @@
 ## 
 ## .. image:: https://raw.githubusercontent.com/HapticX/happyx/master/screenshots/component_button.gif
 ## 
+## .. code-block:: nim
+##    appRoutes "app":
+##      "/":
+##        component Button:
+##          "Click me!"
+##        tBr
+##        component Button(flat = true):
+##          "Click me!"
+## 
 ## ### Params ⚙
 ## 
 ## | Name     | Type           | Required | Default Value            |
