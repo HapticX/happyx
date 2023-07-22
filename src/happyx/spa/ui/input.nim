@@ -9,11 +9,7 @@
 ## .. code-block:: nim
 ##    appRoutes "app":
 ##      "/":
-##        component Card(hAlign = Alignment.aCenter):
-##          tH1:
-##            "Hello, world!"
-##          component Button:
-##            "Click me!"
+##        component Input(placeholder = "Edit text ...", label = "Edit text ...")
 ## 
 ## 
 ## ### Params ⚙
