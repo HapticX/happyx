@@ -13,11 +13,12 @@ answerFile	happyx/ssr/server.html#answerFile,Request,string,HttpCode	server: ans
 routes	happyx/ssr/server.html#routes.m,Server,untyped	server: routes(server: Server; body: untyped): untyped	
 initServer	happyx/ssr/server.html#initServer.m,untyped	server: initServer(body: untyped): untyped	
 serve	happyx/ssr/server.html#serve.m,string,int,untyped	server: serve(address: string; port: int; body: untyped): untyped	
-Available Path Params	happyx/ssr/server.html#available-path-params	    Available Path Params	
-Available Route Types	happyx/ssr/server.html#available-route-types	    Available Route Types	
-Route Scope:	happyx/ssr/server.html#route-scopecolon	    Route Scope:	
-Available Websocket Routing	happyx/ssr/server.html#available-websocket-routing	    Available Websocket Routing	
-Websocket Scope:	happyx/ssr/server.html#websocket-scopecolon	    Websocket Scope:	
+Example	happyx/ssr/server.html#example	  Example	
+Available Path Params	happyx/ssr/server.html#example-available-path-params	    Available Path Params	
+Available Route Types	happyx/ssr/server.html#example-available-route-types	    Available Route Types	
+Route Scope:	happyx/ssr/server.html#example-route-scopecolon	    Route Scope:	
+Available Websocket Routing	happyx/ssr/server.html#example-available-websocket-routing	    Available Websocket Routing	
+Websocket Scope:	happyx/ssr/server.html#example-websocket-scopecolon	    Websocket Scope:	
 Example	happyx/ssr/server.html#example	 Example	
 Server 🔨	happyx/ssr/server.html#server-🔨	 Server 🔨	
 Queries ❔	happyx/ssr/server.html#server-🔨-queries-❔	  Queries ❔	
