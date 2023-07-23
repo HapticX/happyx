@@ -2,3 +2,4 @@ templatesFolder	happyx/tmpl_engine/engine.html#templatesFolder	engine: templates
 templateFolder	happyx/tmpl_engine/engine.html#templateFolder,static[string]	engine: templateFolder(f: static[string])	
 renderTemplate	happyx/tmpl_engine/engine.html#renderTemplate.t,static[string]	engine: renderTemplate(name: static[string])	
 Template Engine 🎴	happyx/tmpl_engine/engine.html#template-engine-🎴	 Template Engine 🎴	
+Usage ❔	happyx/tmpl_engine/engine.html#template-engine-🎴-usage-❔	  Usage ❔	

@@ -389,7 +389,10 @@ Current route path
     <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
-Creates a new Single Page Application
+<p>Creates a new Single Page Application</p>
+<p>⚠ This is <tt class="docutils literal"><span class="pre"><span class="Identifier">Low</span><span class="Operator">-</span><span class="Identifier">level</span> <span class="Identifier">API</span></span></tt> ⚠</p>
+<p>use <a class="reference external" href="#appRoutes.m,string">appRoutes proc</a> instead of this because this procedure calls automatically. </p>
+
 
 </dd>
 </div>
@@ -399,6 +402,7 @@ Creates a new Single Page Application
 <dd>
 
 <p>Register a new component.</p>
+<p>⚠ This is <tt class="docutils literal"><span class="pre"><span class="Identifier">Low</span><span class="Operator">-</span><span class="Identifier">level</span> <span class="Identifier">API</span></span></tt> ⚠</p>
 <p>Don't use it because it used in <tt class="docutils literal"><span class="pre"><span class="Identifier">component</span></span></tt> macro. </p>
 
 
@@ -429,7 +433,7 @@ Change current page to <tt class="docutils literal"><span class="pre"><span clas
 <dt><pre><span class="Keyword">method</span> <a href="#render.e%2CBaseComponent"><span class="Identifier">render</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="renderer.html#BaseComponent"><span class="Identifier">BaseComponent</span></a><span class="Other">)</span><span class="Other">:</span> <a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a> {.<span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">inline</span><span class="Other">,</span> <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
-Basic method that needs to overload
+Basic method that needs to overload in components
 
 </dd>
 </div>
@@ -437,7 +441,7 @@ Basic method that needs to overload
 <dt><pre><span class="Keyword">method</span> <a href="#reRender.e%2CBaseComponent"><span class="Identifier">reRender</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="renderer.html#BaseComponent"><span class="Identifier">BaseComponent</span></a><span class="Other">)</span> {.<span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">inline</span><span class="Other">,</span> <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
-Basic method that needs to overload
+Basic method that needs to overload in components
 
 </dd>
 </div>
@@ -451,6 +455,8 @@ Basic method that needs to overload
 <dd>
 
 <p>Registers a new Single page application, creates routing for it and starts SPA.</p>
+<p><tt class="docutils literal"><span class="pre"><span class="Identifier">High</span><span class="Operator">-</span><span class="Identifier">level</span> <span class="Identifier">API</span></span></tt></p>
+<p>Use it to write your application.</p>
 <p>Automatically creates <tt class="docutils literal"><span class="pre"><span class="Identifier">app</span></span></tt> variable</p>
 
 <h2><a class="toc-backref" id="basic-usagecolon" href="#basic-usagecolon">Basic Usage:</a></h2><pre class="listing"><span class="Identifier">appRoutes</span><span class="Punctuation">(</span><span class="StringLit">&quot;app&quot;</span><span class="Punctuation">)</span><span class="Punctuation">:</span>
@@ -596,7 +602,10 @@ Provides JS router for Single page application
 <dt><pre><span class="Keyword">template</span> <a href="#start.t%2CApp"><span class="Identifier">start</span></a><span class="Other">(</span><span class="Identifier">app</span><span class="Other">:</span> <a href="renderer.html#App"><span class="Identifier">App</span></a><span class="Other">)</span></pre></dt>
 <dd>
 
-Starts single page application
+<p>Starts single page application</p>
+<p>⚠ This is <tt class="docutils literal"><span class="pre"><span class="Identifier">Low</span><span class="Operator">-</span><span class="Identifier">level</span> <span class="Identifier">API</span></span></tt> ⚠</p>
+<p>use <a class="reference external" href="#appRoutes.m,string">appRoutes proc</a> instead of this because this procedure calls automatically. </p>
+
 
 </dd>
 </div>
@@ -615,7 +624,7 @@ Starts single page application
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-07-23 07:01:07 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-07-23 15:34:53 UTC</small>
       </div>
     </div>
   </div>

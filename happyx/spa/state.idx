@@ -2,7 +2,7 @@ State	happyx/spa/state.html#State	state: State
 remember	happyx/spa/state.html#remember,T	state: remember[T](val: T): State[T]	
 val=	happyx/spa/state.html#val=,State[T],T	state: val=[T](self: State[T]; value: T)	
 `$`	happyx/spa/state.html#$,State[T]	state: `$`[T](self: State[T]): string	
-val	happyx/spa/state.html#val,State[T]	state: val[T](self: var State[T]): var T	
+val	happyx/spa/state.html#val,State[T]	state: val[T](self: State[var T]): var T	
 val	happyx/spa/state.html#val,State[T]_2	state: val[T](self: State[T]): T	
 `==`	happyx/spa/state.html#==,,	state: `==`[T](self`gensym0, other`gensym0: State[T]): bool	
 `==`	happyx/spa/state.html#==,,T	state: `==`[T](self`gensym0: State[T]; other`gensym0: T): bool	
