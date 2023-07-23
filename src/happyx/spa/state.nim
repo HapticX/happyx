@@ -54,9 +54,6 @@ func `$`*[T](self: State[T]): string =
     $self.value
 
 
-func val*[T](self: State[var T]): var T =
-  ## Returns mutable state value
-  self.value
 func val*[T](self: State[T]): T =
   ## Returns immutable state value
   self.value
