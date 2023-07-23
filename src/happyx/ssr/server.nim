@@ -7,6 +7,7 @@
 ## 
 ## To enable httpx just compile with `-d:httpx` or `-d:happyxHttpx`.
 ## To enable MicroAsyncHttpServer just compile with `-d:micro` or `-d:happyxMicro`.
+## To enable HttpBeast just compile with `-d:beast` or `-d:happyxBeast`
 ## 
 ## To enable debugging just compile with `-d:happyxDebug`.
 ## 
@@ -381,6 +382,15 @@ proc detectReturnStmt(node: NimNode, replaceReturn: bool = false) {. compileTime
 
 
 macro `~`*(strTable: StringTableRef, key: untyped): untyped =
+  ## Shortcut to get query param.
+  ## 
+  ## ## Example
+  ## 
+  ## .. code-block::nim
+  ##    get "/":
+  ##      # exmple.com/?myParam=100
+  ##      echo query~myParam
+  ## 
   let
     keyStr = newStrLitNode($key)
   newCall("getOrDefault", strTable, keyStr)
@@ -395,6 +405,7 @@ macro routes*(server: Server, body: untyped): untyped =
   ## - `float`: any float number.
   ## - `word`: any word includes `re"\w+"`.
   ## - `string`: any string excludes `"/"`.
+  ## - `enum(EnumName)`: any string excludes `"/"`. Converts into `EnumName`.
   ## - `path`: any float number includes `"/"`.
   ## - `regex`: any regex pattern excludes groups. Usage - `"/path{pattern:/yourRegex/}"`
   ## 

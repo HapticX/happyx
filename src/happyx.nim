@@ -2,8 +2,6 @@
 ## 
 ##   ### Web framework written in Nim with ❤
 ## 
-## [See wiki documentation](/happyx/main.html)
-## 
 ## 
 ## ## Why HappyX? 🤔
 ## HappyX is macro-oriented full-stack web framework that provides same syntax in both parts of framework (SPA and SSR).
@@ -64,12 +62,14 @@
 ##      
 ##      component HelloWorld:
 ##        `template`:
+##          # Use HTML here
 ##          tDiv:
 ##            "Hello, world!"
 ##        `script`:
+##          # Use real Nim code here
 ##          discard
-##        `style`:
-##          """
+##        `style`: """
+##          /* Use pure CSS here */
 ##          div {
 ##            color: green;
 ##          }
@@ -82,13 +82,9 @@
 ##        happyx,
 ##        components/[hello_world]
 ##      
-##      var app = registerApp()
-##      
-##      app.routes:
+##      appRoutes "app":
 ##        "/":
 ##          component HelloWorld
-##      
-##      app.start()
 ## 
 ## 
 ## ### SSR 💻
@@ -101,10 +97,15 @@
 ##      import happyx
 ##      
 ##      serve("127.0.0.1", 5000):
+##        # In this scope you can declare gc-safe vars/lets
 ##        var myVar = 0
 ##        
 ##        get "/":
 ##          # available only on GET method
+##          # In this scope you can access to
+##          # req: Request  - current request
+##          # query: StringTableRef  - current queries
+##          # path: string  - current path
 ##          myVar += 1
 ##          return "Hello, world! myVar is {myVar}"
 ##        

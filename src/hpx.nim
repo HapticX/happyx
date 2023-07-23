@@ -434,7 +434,7 @@ proc createCommand(name: string = "", kind: string = "", templates: bool = false
   createDir(projectName / "src")
   # Create .gitignore
   var f = open(projectName / ".gitignore", fmWrite)
-  f.write("# Nimcache\nnimcache/\ncache/\n\n# Garbage\n*.exe\n*.log\n*.lg")
+  f.write("# Nimcache\nnimcache/\ncache/\nbuild/\n\n# Garbage\n*.exe\n*.js\n*.log\n*.lg")
   f.close()
   # Create README.md
   f = open(projectName / "README.md", fmWrite)
