@@ -330,8 +330,10 @@ window.addEventListener('DOMContentLoaded', main);
 
   </ul>
   <ul class="simple nested-toc-section">val
-      <li><a class="reference" href="#val%2CState%5BT%5D"
+      <li><a class="reference" href="#val%2CState%5BT%5D_2"
     title="val[T](self: State[T]): T">val[T](self: State[T]): T</a></li>
+  <li><a class="reference" href="#val%2CState%5BT%5D"
+    title="val[T](self: var State[T]): var T">val[T](self: var State[T]): var T</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">val=
@@ -997,11 +999,19 @@ Changes state value
 
 </dd>
 </div>
-<div id="val,State[T]">
-<dt><pre><span class="Keyword">func</span> <a href="#val%2CState%5BT%5D"><span class="Identifier">val</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="state.html#State"><span class="Identifier">State</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">T</span></pre></dt>
+<div id="val,State[T]_2">
+<dt><pre><span class="Keyword">func</span> <a href="#val%2CState%5BT%5D_2"><span class="Identifier">val</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="state.html#State"><span class="Identifier">State</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">T</span></pre></dt>
 <dd>
 
 Returns immutable state value
+
+</dd>
+</div>
+<div id="val,State[T]">
+<dt><pre><span class="Keyword">func</span> <a href="#val%2CState%5BT%5D"><span class="Identifier">val</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="state.html#State"><span class="Identifier">State</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">T</span></pre></dt>
+<dd>
+
+Returns mutable state value
 
 </dd>
 </div>
@@ -1157,7 +1167,7 @@ Call any function that available for state value
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-07-23 16:46:50 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-07-23 16:56:30 UTC</small>
       </div>
     </div>
   </div>
