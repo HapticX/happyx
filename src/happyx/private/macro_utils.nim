@@ -1,3 +1,7 @@
+## # Macro Utils
+## 
+## ## ⚠ Warning: This Module Is LOW-LEVEL API ⚠
+## 
 import
   regex,
   strutils,

@@ -1,4 +1,70 @@
-## Provides powerful CSS builder 🍍
+## # Style 🎴
+## 
+## > Provides powerful CSS builder 🍍
+## 
+## ## Usage
+## 
+## ### Tags
+## 
+## In CSS tags is
+## 
+## .. code-block::css
+##    div {
+##      background: url("image.png")
+##    }
+## 
+## .. code-block::nim
+##    buildStyle:
+##      tag tDiv:
+##        background: url("image.png")
+## 
+## ### Classes
+## 
+## In CSS classes is
+## 
+## .. code-block::css
+##    .myClass {
+##      background: url("image.png")
+##    }
+## 
+## .. code-block::nim
+##    buildStyle:
+##      class myClass:
+##        background: url("image.png")
+## 
+## ### IDs
+## 
+## In CSS IDs is
+## 
+## .. code-block::css
+##    #myElement {
+##      background: url("image.png")
+##    }
+## 
+## .. code-block::nim
+##    buildStyle:
+##      id myElement:
+##        background: url("image.png")
+## 
+## ### Media, Supports, Etc.
+## 
+## In CSS it maybe:
+## 
+## .. code-block::css
+##    @supports (display: flex) {
+##      @media screen and (min-width: 900px) {
+##        article {
+##          display: flex;
+##        }
+##      }
+##    }
+## 
+## .. code-block::nim
+##    buildStyle:
+##      @supports (display: flex):
+##        @media screen and (min-width: 900.px):
+##          tag article:
+##            display: flex
 ## 
 import
   # stdlib

@@ -1,4 +1,14 @@
-## Provides syntax sugar macros
+## # Sugar 🍎
+## 
+## > Provides syntax sugar macros
+## 
+## # `->` Macro
+## 
+## .. code-block::nim
+##    "/home" -> any:
+##      # at any HTTP method
+##      return "Hello, world!"
+## 
 import
   # stdlib
   strformat,

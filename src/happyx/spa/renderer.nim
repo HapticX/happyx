@@ -166,12 +166,20 @@ proc route*(path: cstring) =
 
 proc registerApp*(appId: cstring = "app"): App {. discardable .} =
   ## Creates a new Single Page Application
+  ## 
+  ## ⚠ This is `Low-level API` ⚠
+  ## 
+  ## use `appRoutes proc<#appRoutes.m,string>`_ instead of this
+  ## because this procedure calls automatically.
+  ## 
   application = App(appId: appId)
   application
 
 
 proc registerComponent*(name: cstring, component: BaseComponent): BaseComponent =
   ## Register a new component.
+  ## 
+  ## ⚠ This is `Low-level API` ⚠
   ## 
   ## Don't use it because it used in `component` macro.
   ## 
@@ -203,12 +211,12 @@ else:
 
 
 method render*(self: BaseComponent): TagRef {.base.} =
-  ## Basic method that needs to overload
+  ## Basic method that needs to overload in components
   nil
 
 
 method reRender*(self: BaseComponent) {.base.} =
-  ## Basic method that needs to overload
+  ## Basic method that needs to overload in components
   discard
 
 {.pop.}
@@ -216,6 +224,12 @@ method reRender*(self: BaseComponent) {.base.} =
 
 template start*(app: App) =
   ## Starts single page application
+  ## 
+  ## ⚠ This is `Low-level API` ⚠
+  ## 
+  ## use `appRoutes proc<#appRoutes.m,string>`_ instead of this
+  ## because this procedure calls automatically.
+  ## 
   document.addEventListener("DOMContentLoaded", onDOMContentLoaded)
   window.addEventListener("popstate", onDOMContentLoaded)
   if window.location.hash.len == 0:
@@ -522,6 +536,10 @@ macro routes*(app: App, body: untyped): untyped =
 
 macro appRoutes*(name: string, body: untyped): untyped =
   ## Registers a new Single page application, creates routing for it and starts SPA.
+  ## 
+  ## `High-level API`
+  ## 
+  ## Use it to write your application.
   ## 
   ## Automatically creates `app` variable
   ##

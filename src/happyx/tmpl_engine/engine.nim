@@ -2,6 +2,18 @@
 ## 
 ## Provides templates render with nimja library
 ## 
+## ## Usage ❔
+## 
+## .. code-block:: nim
+##    templateFolder("/public/templates")
+## 
+##    proc renderIndex(name: string): string =
+##      renderTemplate("index.html")
+##    
+##    serve "127.0.0.1", 5000:
+##      get "/":
+##        return renderIndex("Ethosa")
+## 
 
 import
   nimja,

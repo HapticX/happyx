@@ -40,7 +40,7 @@ func remember*[T](val: T): State[T] =
 
 
 proc `val=`*[T](self: State[T], value: T) =
-  ## Change state's value
+  ## Changes state value
   self.value = value
   if not application.isNil() and not application.router.isNil():
     application.router()
@@ -54,8 +54,12 @@ func `$`*[T](self: State[T]): string =
     $self.value
 
 
-func val*[T](self: var State[T]): var T = self.value
-func val*[T](self: State[T]): T = self.value
+func val*[T](self: State[var T]): var T =
+  ## Returns mutable state value
+  self.value
+func val*[T](self: State[T]): T =
+  ## Returns immutable state value
+  self.value
 
 
 template operator(funcname, op: untyped): untyped =
@@ -126,11 +130,19 @@ macro `->`*(self: State, field: untyped): untyped =
   ## 
   ## ## Examples:
   ## 
-  ## `Seqs`
+  ## `Seqs`:
+  ## 
   ## .. code-block::nim
   ##    var arr: State[seq[int]] = remember @[]
   ##    arr->add(1)
   ##    echo arr
+  ## 
+  ## `int`:
+  ## 
+  ## .. code-block::nim
+  ##    var num = remember 0
+  ##    num->inc()
+  ##    echo num
   ## 
   if field.kind in nnkCallKinds:
     let
@@ -178,7 +190,7 @@ func len*[T](self: State[T]): int =
 
 
 proc set*[T](self: State[T], value: T) =
-  ## Changes state value
+  ## Changes state value and rerenders SPA
   self.val = value
   if not application.isNil() and not application.router.isNil():
     application.router()
@@ -195,17 +207,43 @@ iterator items*[T](self: State[T]): auto =
     yield item
 
 
-converter toBool*(self: State[bool]): bool = self.value
-converter toString*(self: State[string]): string = self.value
-converter toCString*(self: State[cstring]): cstring = self.value
-converter toInt*(self: State[int]): int = self.value
-converter toFloat*(self: State[float]): float = self.value
-converter toChar*(self: State[char]): char = self.value
-converter toInt8*(self: State[int8]): int8 = self.value
-converter toInt16*(self: State[int16]): int16 = self.value
-converter toInt32*(self: State[int32]): int32 = self.value
-converter toInt64*(self: State[int64]): int64 = self.value
-converter toFloat32*(self: State[float32]): float32 = self.value
-converter toFloat64*(self: State[float64]): float64 = self.value
-converter toSeq*[T](self: State[seq[T]]): seq[T] = self.value
+converter toBool*(self: State[bool]): bool =
+  ## Converts `State` into `boolean` if possible
+  self.value
+converter toString*(self: State[string]): string =
+  ## Converts `State` into `string` if possible
+  self.value
+converter toCString*(self: State[cstring]): cstring =
+  ## Converts `State` into `cstring` if possible
+  self.value
+converter toInt*(self: State[int]): int =
+  ## Converts `State` into `int` if possible
+  self.value
+converter toFloat*(self: State[float]): float =
+  ## Converts `State` into `float` if possible
+  self.value
+converter toChar*(self: State[char]): char =
+  ## Converts `State` into `char` if possible
+  self.value
+converter toInt8*(self: State[int8]): int8 =
+  ## Converts `State` into `int8` if possible
+  self.value
+converter toInt16*(self: State[int16]): int16 =
+  ## Converts `State` into `int16` if possible
+  self.value
+converter toInt32*(self: State[int32]): int32 =
+  ## Converts `State` into `int32` if possible
+  self.value
+converter toInt64*(self: State[int64]): int64 =
+  ## Converts `State` into `int64` if possible
+  self.value
+converter toFloat32*(self: State[float32]): float32 =
+  ## Converts `State` into `float32` if possible
+  self.value
+converter toFloat64*(self: State[float64]): float64 =
+  ## Converts `State` into `float64` if possible
+  self.value
+converter toSeq*[T](self: State[seq[T]]): seq[T] =
+  ## Converts `State` into `seq[T]` if possible
+  self.value
 

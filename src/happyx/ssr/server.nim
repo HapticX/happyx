@@ -254,11 +254,20 @@ template answer*(
 ) =
   ## Answers to the request
   ## 
+  ## ⚠ `Low-level API` ⚠
+  ## 
   ## Arguments:
   ##   `req: Request`: An instance of the Request type, representing the request that we are responding to.
   ##   `message: string`: The message that we want to include in the response body.
   ##   `code: HttpCode = Http200`: The HTTP status code that we want to send in the response.
   ##                               This argument is optional, with a default value of Http200 (OK).
+  ## 
+  ## Use this example instead
+  ## 
+  ## .. code-block::nim
+  ##    get "/":
+  ##      return "Hello, world!"
+  ## 
   var h = headers
   h.addCORSHeaders()
   when enableHttpx or enableHttpBeast:
@@ -277,11 +286,45 @@ when enableHttpBeast:
 
 template answerJson*(req: Request, data: untyped, code: HttpCode = Http200,): untyped =
   ## Answers to request with json data
+  ## 
+  ## ⚠ `Low-level API` ⚠
+  ## 
+  ## Use this example instead
+  ## 
+  ## .. code-block::nim
+  ##    var json = %*{"response": 1}
+  ##    
+  ##    get "/1":
+  ##      # respond variable
+  ##      return json
+  ##    get "/2":
+  ##      # respond JSON directly
+  ##      return {"response": 1}
+  ## 
   answer(req, $(%*`data`), code, newHttpHeaders([("Content-Type", "application/json; charset=utf-8")]))
 
 
 template answerHtml*(req: Request, data: string | TagRef, code: HttpCode = Http200): untyped =
   ## Answers to request with HTML data
+  ## 
+  ## ⚠ `Low-level API` ⚠
+  ## 
+  ## Use this example instead:
+  ##
+  ## .. code-block::nim
+  ##    var html = buildHtml:
+  ##      tDiv:
+  ##        "Hello, world!"
+  ##    
+  ##    get "/1":
+  ##      # Respond HTML variable
+  ##      return html
+  ##    get "/2":
+  ##      # Respond HTML directly
+  ##      return buildHtml:
+  ##        tDiv:
+  ##          "Hello, world!"
+  ## 
   when data is string:
     let d = data
   else:
@@ -290,6 +333,16 @@ template answerHtml*(req: Request, data: string | TagRef, code: HttpCode = Http2
 
 
 proc answerFile*(req: Request, filename: string, code: HttpCode = Http200, asAttachment = false) {.async.} =
+  ## Respond file to request.
+  ## 
+  ## ⚠ `Low-level API` ⚠
+  ## 
+  ## Use this example instead of this procedure
+  ## 
+  ## .. code-block::nim
+  ##    get "/$filename":
+  ##      return FileResponse("/publicFolder" / filename)
+  ## 
   let
     splitted = filename.split('.')
     extension = if splitted.len > 1: splitted[^1] else: ""
@@ -383,6 +436,8 @@ proc detectReturnStmt(node: NimNode, replaceReturn: bool = false) {. compileTime
 
 macro `~`*(strTable: StringTableRef, key: untyped): untyped =
   ## Shortcut to get query param.
+  ## 
+  ## `High-level API`
   ## 
   ## ## Example
   ## 
@@ -901,6 +956,8 @@ macro routes*(server: Server, body: untyped): untyped =
 macro initServer*(body: untyped): untyped =
   ## Shortcut for
   ## 
+  ## ⚠ `Low-level API` ⚠
+  ## 
   ## .. code-block:: nim
   ##    proc main() {.gcsafe.} =
   ##      `body`
@@ -923,6 +980,8 @@ macro initServer*(body: untyped): untyped =
 
 macro serve*(address: string, port: int, body: untyped): untyped =
   ## Initializes a new server and start it. Shortcut for
+  ## 
+  ## `High-level API`
   ## 
   ## .. code-block:: nim
   ##    proc main() =

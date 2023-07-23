@@ -95,10 +95,10 @@ macro model*(modelName, body: untyped): untyped =
   ## Creates a new request body model
   ## 
   ## Allow:
-  ## - [X] JSON
-  ## - [X] XML
-  ## - [X] Form-Data
-  ## - [X] x-www-form-urlencoded
+  ## - [x] JSON
+  ## - [x] XML
+  ## - [x] Form-Data
+  ## - [x] x-www-form-urlencoded
   ## 
   var
     params = newNimNode(nnkRecList)

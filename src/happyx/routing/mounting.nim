@@ -29,7 +29,10 @@ var registeredMounts* {. compileTime .} = newTable[string, NimNode]()
 
 
 proc findAndReplaceMount*(body: NimNode) {. compileTime .} =
-  # Find mounts
+  ## ⚠ `Low-level API` ⚠
+  ## 
+  ## Don't use it in product
+  ## 
   var offset =  0
   for i in 0..<body.len:
     let idx = i+offset
@@ -65,16 +68,27 @@ proc findAndReplaceMount*(body: NimNode) {. compileTime .} =
 
 macro mount*(mountName, body: untyped): untyped =
   ## Registers new mount
+  ## 
+  ## ## Usage
+  ## 
+  ## .. code-block::nim
+  ##    mount User:
+  ##      get "/":
+  ##        "Hello, from user"
+  ## 
+  ##    serve "127.0.0.1", 5000:
+  ##      mount "/user" -> User
+  ## 
   if mountName.kind != nnkIdent:
     throwDefect(
       HpxMountDefect,
-      "Mount name should be ident! ",
+      fmt"Mount names should be identifier, but got {mountName.kind} ",
       lineInfoObj(mountName)
     )
   if body.kind != nnkStmtList:
     throwDefect(
       HpxMountDefect,
-      "Mount body should be statement list! ",
+      fmt"Mount body should be statement list, but got {body.kind}",
       lineInfoObj(body)
     )
   registeredMounts[$mountName] = body

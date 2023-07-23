@@ -324,7 +324,7 @@ macro buildJs*(body: untyped): untyped =
   ## 
   ## This translates into 💻
   ## 
-  ## .. code-block:: js
+  ## .. code-block:: javascript
   ##    class Animal {
   ##      say() {
   ##      }
