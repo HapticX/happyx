@@ -36,7 +36,7 @@ HappyX is macro-oriented web framework so you mustn't write a lot of code ✨
 - Multiple options for HTTP server! Happyx use `asynchttpserver` as default HTTP server (`httpx` via `-d:happyxHttpx`, `httpbeast` via `-d:happyxBeast` and `microhttpserver` via `-d:happyxMicro` as alternative HTTP servers).
 - Support `SPA` on `JS` backend and `SSR` on other backends.
 - Build HTML, CSS and pure JS with `buildHtml`, `buildStyle` and `buildJs` macros.
-- Request `JSON`/`XML`/`Form-Data`/`x-www-form-urlencoded` models with `model` macro.
+- Request models that supports `JSON`/`XML`/`Form-Data`/`x-www-form-urlencoded` with `model` macro.
 - Routing and powerful path params.
 - Assignment path params with `pathParams` macro.
 - Powerful mounting sub-applications with `mount` macro. 
