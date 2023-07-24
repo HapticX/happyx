@@ -201,17 +201,19 @@ window.addEventListener('DOMContentLoaded', main);
 
   </ul>
   <ul class="simple nested-toc-section">replaceSelfComponent
-      <li><a class="reference" href="#replaceSelfComponent%2CNimNode%2CNimNode%2CNimNode"
-    title="replaceSelfComponent(statement, componentName: NimNode; parent: NimNode = nil)">replaceSelfComponent(statement, componentName: NimNode; parent: NimNode = nil)</a></li>
+      <li><a class="reference" href="#replaceSelfComponent%2CNimNode%2CNimNode%2CNimNode%2Cbool%2Cbool"
+    title="replaceSelfComponent(statement, componentName: NimNode; parent: NimNode = nil;
+                     convert: bool = false; is_constructor: bool = false)">replaceSelfComponent(statement, componentName: NimNode; parent: NimNode = nil;
+                     convert: bool = false; is_constructor: bool = false)</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">useComponent
-      <li><a class="reference" href="#useComponent%2CNimNode%2Cbool%2Cbool%2Cstring%2Cseq%5BNimNode%5D%2Cbool"
+      <li><a class="reference" href="#useComponent%2CNimNode%2Cbool%2Cbool%2Cstring%2Cseq%5BNimNode%5D%2Cbool%2Cbool"
     title="useComponent(statement: NimNode; inCycle, inComponent: bool;
              cycleTmpVar: string; cycleVars: seq[NimNode];
-             returnTagRef: bool = true): NimNode">useComponent(statement: NimNode; inCycle, inComponent: bool;
+             returnTagRef: bool = true; constructor: bool = false): NimNode">useComponent(statement: NimNode; inCycle, inComponent: bool;
              cycleTmpVar: string; cycleVars: seq[NimNode];
-             returnTagRef: bool = true): NimNode</a></li>
+             returnTagRef: bool = true; constructor: bool = false): NimNode</a></li>
 
   </ul>
 
@@ -380,21 +382,22 @@ Creates a new lambda
 
 </dd>
 </div>
-<div id="replaceSelfComponent,NimNode,NimNode,NimNode">
-<dt><pre><span class="Keyword">proc</span> <a href="#replaceSelfComponent%2CNimNode%2CNimNode%2CNimNode"><span class="Identifier">replaceSelfComponent</span></a><span class="Other">(</span><span class="Identifier">statement</span><span class="Other">,</span> <span class="Identifier">componentName</span><span class="Other">:</span> <span class="Identifier">NimNode</span><span class="Other">;</span>
-                          <span class="Identifier">parent</span><span class="Other">:</span> <span class="Identifier">NimNode</span> <span class="Other">=</span> <span class="Keyword">nil</span><span class="Other">)</span> {.<span class="Identifier">compileTime</span><span class="Other">,</span> <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
-    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<div id="replaceSelfComponent,NimNode,NimNode,NimNode,bool,bool">
+<dt><pre><span class="Keyword">proc</span> <a href="#replaceSelfComponent%2CNimNode%2CNimNode%2CNimNode%2Cbool%2Cbool"><span class="Identifier">replaceSelfComponent</span></a><span class="Other">(</span><span class="Identifier">statement</span><span class="Other">,</span> <span class="Identifier">componentName</span><span class="Other">:</span> <span class="Identifier">NimNode</span><span class="Other">;</span>
+                          <span class="Identifier">parent</span><span class="Other">:</span> <span class="Identifier">NimNode</span> <span class="Other">=</span> <span class="Keyword">nil</span><span class="Other">;</span> <span class="Identifier">convert</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">;</span>
+                          <span class="Identifier">is_constructor</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">)</span> {.<span class="Identifier">compileTime</span><span class="Other">,</span>
+    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 
 
 </dd>
 </div>
-<div id="useComponent,NimNode,bool,bool,string,seq[NimNode],bool">
-<dt><pre><span class="Keyword">proc</span> <a href="#useComponent%2CNimNode%2Cbool%2Cbool%2Cstring%2Cseq%5BNimNode%5D%2Cbool"><span class="Identifier">useComponent</span></a><span class="Other">(</span><span class="Identifier">statement</span><span class="Other">:</span> <span class="Identifier">NimNode</span><span class="Other">;</span> <span class="Identifier">inCycle</span><span class="Other">,</span> <span class="Identifier">inComponent</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">;</span>
+<div id="useComponent,NimNode,bool,bool,string,seq[NimNode],bool,bool">
+<dt><pre><span class="Keyword">proc</span> <a href="#useComponent%2CNimNode%2Cbool%2Cbool%2Cstring%2Cseq%5BNimNode%5D%2Cbool%2Cbool"><span class="Identifier">useComponent</span></a><span class="Other">(</span><span class="Identifier">statement</span><span class="Other">:</span> <span class="Identifier">NimNode</span><span class="Other">;</span> <span class="Identifier">inCycle</span><span class="Other">,</span> <span class="Identifier">inComponent</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">;</span>
                   <span class="Identifier">cycleTmpVar</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">cycleVars</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">NimNode</span><span class="Other">]</span><span class="Other">;</span>
-                  <span class="Identifier">returnTagRef</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">true</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">NimNode</span> {.<span class="Identifier">compileTime</span><span class="Other">,</span>
-    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ValueError</span><span class="Other">,</span> <span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span></span>.}</pre></dt>
+                  <span class="Identifier">returnTagRef</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">true</span><span class="Other">;</span> <span class="Identifier">constructor</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">NimNode</span> {.
+    <span class="Identifier">compileTime</span><span class="Other">,</span> <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ValueError</span><span class="Other">,</span> <span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 
@@ -411,7 +414,7 @@ Creates a new lambda
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-07-23 16:56:19 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-07-24 08:10:57 UTC</small>
       </div>
     </div>
   </div>
