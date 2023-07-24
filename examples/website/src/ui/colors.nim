@@ -8,3 +8,6 @@ const
   ForegroundDark* = "#E0EFFE"
   BackgroundSecondary* = "#EFEFEF"
   Foreground* = "#212121"
+  LinkForeground* = "#aca7fa"
+  LinkActiveForeground* = "#ccccff"
+  LinkVisitedForeground* = "#8c87aa"

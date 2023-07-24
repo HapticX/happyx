@@ -35,4 +35,4 @@ component Header:
             window.open('https://hapticx.github.io/happyx/happyx.html', '_blank').focus();
             """.}
         ):
-          "API Docs"
+          "📕 API Docs"

@@ -2,8 +2,9 @@
 import
   happyx,
   path_params,
-  components/[header, smart_card, card, section, code_block],
-  ui/colors
+  ui/colors,
+  components/[button, card, code_block, header, section, smart_card, about_section],
+  pages/[home]
 
 
 {.emit: """//js
@@ -28,44 +29,32 @@ window.addEventListener('scroll', (ev) => {
 
 # Declare application with ID "app"
 appRoutes("app"):
-  "/":
-    # Component usage
-    tDiv(class = "flex flex-col gap-2 bg-[{Background}] dark:bg-[{BackgroundDark}] text-[{Foreground}] dark:text-[{ForegroundDark}]"):
-      tDiv(id = "cover", class = "flex flex-col gap-2 relative justify-center items-center h-screen"):
-        tImg(src = "/happyx/public/cover_gradient.svg", class = "absolute h-screen w-screen object-cover pointer-events-none")
-        tImg(src = "/happyx/public/nim_logo.svg", class = "z-10 pointer-events-none")
-        tImg(src = "/happyx/public/HappyX.svg", class = "z-10 pointer-events-none")
-        tImg(src = "/happyx/public/desc.svg", class = "z-10 pointer-events-none")
-      tDiv(class = "flex flex-col gap-4"):
-        tDiv(class = "sticky top-0 z-20"):
-          component Header
-        tDiv(class = "flex flex-col gap-16 items-center justify-center items-center w-full"):
-          component SmartCard:
-            component CodeBlock(source = """import happyx
+  mount "/" -> Home
 
-serve("127.0.0.1", 5000):
-  get "/":
-    return "Hello, world!" """)
-            tDiv(class = "w-36 xl:w-96 text-lg xl:text-base text-center subpixel-antialiased"):
-              "Make server-side applications easily with powerful DSL 🔥"
-          component Section:
-            tP: "One of the main features of HappyX is DSL ✌."
-            tP: "DSL supports:"
-            tDiv(class = "flex flex-col md:flex-row gap-6 py-8"):
-              component Card(pathToImg = "/happyx/public/html5.svg"):
-                "Buil HTML/CSS/JS"
-              component Card(pathToImg = "/happyx/public/setting.svg"):
-                "Path Params"
-              component Card(pathToImg = "/happyx/public/routing.svg"):
-                "Routing/Mounting"
-          component SmartCard:
-            component CodeBlock(source = """import happyx
+  notfound:
+    tDiv(class = "flex flex-col gap-2 justify-center items-center w-screen h-screen dark:text-[{ForegroundDark}] text-[{Foreground}] dark:bg-[{BackgroundDark}] bg-[{Background}]"):
+      tP(class = "text-9xl font-semibold"):
+        "404"
+      tP(class = "text-xl font-semibold"):
+        "Oops! Not found"
+      
+    tDiv(class = "flex flex-col justify-end items-center absolute top-0 left-0 bottom-24 right-0 upper"):
+      component Button():
+        "go to home"
+    
+    tStyle: """
+      @keyframes upper-anim {
+        0% {
+          opacity: 0;
+          transform: translateY(50px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
 
-appRoutes("app"):
-  "/":
-    "Hello, world!" """)
-            tDiv(class = "w-36 xl:w-96 text-lg xl:text-base text-center subpixel-antialiased"):
-              "Make powerful full-stack apps with really same syntax ⚡"
-          component Section:
-            tP: "You can easily and effectively create powerful modern web apps ✌"
-            tP: "You'll never have to learn new web frameworks again ✨"
+      .upper {
+        animation: upper-anim .5s cubic-bezier(.57,-0.05,.85,.43)
+      }
+    """
