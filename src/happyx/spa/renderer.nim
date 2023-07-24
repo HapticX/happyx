@@ -360,7 +360,7 @@ macro buildComponentHtml*(componentName, html: untyped): untyped =
   ## - `html`: YAML-like structure.
   ## 
   var h = html
-  h.replaceSelfComponent(componentName)
+  h.replaceSelfComponent(componentName, convert = false)
   result = buildHtmlProcedure(ident"tDiv", h, true, componentName)
   if result[^1].kind == nnkCall and $result[^1][0] == "@":
     result.add(newLit(true))
@@ -514,7 +514,7 @@ macro routes*(app: App, body: untyped): untyped =
     ))
   )
 
-  newStmtList(
+  result = newStmtList(
     router,
     newAssignment(newDotExpr(ident"app", ident"router"), router.name),
     onDOMContentLoaded,

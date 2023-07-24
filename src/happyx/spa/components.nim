@@ -212,6 +212,8 @@ macro component*(name, body: untyped): untyped =
     styleStmtList = newStmtList()
     # Functions
     methodsStmtList = newStmtList()
+    # Component constructors
+    componentConstructors = newStmtList()
     # Args
     arguments = @[
       newEmptyNode(),
@@ -276,6 +278,50 @@ macro component*(name, body: untyped): untyped =
           s[1], fieldType, defaultValue
         ))
         initObjConstr.add(newColonExpr(s[1], newCall("remember", s[1])))
+      
+      # Constructors
+      elif s.kind == nnkCall and s[0] == ident"constructor" or (s[0].kind == nnkObjConstr and s[0][0] == ident"constructor"):
+        # Ignore body comments and insert self declaration
+        var
+          body = s[1]
+          i = 0
+        for child in body.children:
+          if child.kind == nnkCommentStmt:
+            continue
+            inc i
+          else:
+            body.insert(
+              i+1,
+              newVarStmt(
+                ident"self",
+                newCall(fmt"init{name}", ident(UniqueComponentId))
+              )
+            )
+            body.add(newNimNode(nnkReturnStmt).add(ident"self"))
+            # body.replaceSelfComponent(ident(name), is_constructor = true)
+            break
+        # Constructor without arguments
+        if s[0].kind == nnkIdent:
+          componentConstructors.add(
+            newProc(
+              ident(fmt"constructor_{name}"),
+              [ident(name), newIdentDefs(ident(UniqueComponentId), bindSym("string"))],
+              body
+            )
+          )
+        # Constructor with arguments
+        else:
+          var args = @[ident(name), newIdentDefs(ident(UniqueComponentId), bindSym("string"))]
+          for arg in s[0].children:
+            if arg.kind == nnkExprColonExpr:
+              args.add(newIdentDefs(arg[0], arg[1]))
+          componentConstructors.add(
+            newProc(
+              ident(fmt"constructor_{name}"),
+              args,
+              body
+            )
+          )
       
       # funcs, procs, methods, iterators, converters
       elif s[0].kind == nnkBracket and s[0][0] == ident"methods" and s.len == 2 and s[1].kind == nnkStmtList:
@@ -474,6 +520,7 @@ macro component*(name, body: untyped): untyped =
       )
     ),
     initProc,
+    componentConstructors,
     reRenderProc,
     newProc(
       ident("script"),

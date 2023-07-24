@@ -47,15 +47,21 @@ proc formatNode*(node: NimNode): NimNode =
 
 proc useComponent*(statement: NimNode, inCycle, inComponent: bool,
                    cycleTmpVar: string, cycleVars: seq[NimNode],
-                   returnTagRef: bool = true): NimNode =
+                   returnTagRef: bool = true, constructor: bool = false): NimNode =
   let
     name =
       if statement[1].kind == nnkCall:
         statement[1][0]
+      elif statement[1].kind == nnkInfix:
+        statement[1][1]
       else:
         statement[1]
     componentName = fmt"comp{uniqueId}{uniqueId + 2}{uniqueId * 2}{uniqueId + 7}"
-    objConstr = newCall(fmt"init{name}")
+    objConstr =
+      if constructor:
+        newCall(fmt"constructor_{name}")
+      else:
+        newCall(fmt"init{name}")
     componentNameTmp = "_" & componentName
     componentData = "data_" & componentName
     stringId =
@@ -69,15 +75,16 @@ proc useComponent*(statement: NimNode, inCycle, inComponent: bool,
       else:
         newStmtList()
   inc uniqueId
-  objConstr.add(newNimNode(nnkExprEqExpr).add(
-    ident(UniqueComponentId),
-    stringId
-  ))
+  objConstr.add(stringId)
   if statement[1].kind == nnkCall:
     for i in 1..<statement[1].len:
-      objConstr.add(newNimNode(nnkExprEqExpr).add(
-        statement[1][i][0], statement[1][i][1]
-      ))
+      # call -> arg
+      objConstr.add(statement[1][i])
+  # Constructor
+  elif statement[1].kind == nnkInfix and statement[1][0] == ident"->":
+    for i in 1..<statement[1][2].len:
+      # infix -> call -> arg
+      objConstr.add(statement[1][2][i])
   newStmtList(
     newVarStmt(ident(componentNameTmp), objConstr),
     when defined(js):
@@ -264,14 +271,18 @@ proc endsWithBuildHtml*(statement: NimNode): bool =
   statement[^1].kind == nnkCall and $statement[^1][0] == "buildHtml"
 
 
-proc replaceSelfComponent*(statement, componentName: NimNode, parent: NimNode = nil) =
+proc replaceSelfComponent*(statement, componentName: NimNode, parent: NimNode = nil,
+                           convert: bool = false, is_constructor: bool = false) =
   if statement.kind == nnkDotExpr:
     if statement[0].kind == nnkIdent and $statement[0] == "self":
       if not parent.isNil() and parent.kind == nnkCall and parent[0] == statement:
         parent[0] = newCall(
           newDotExpr(
             newDotExpr(
-              newDotExpr(ident"self", componentName),
+              if convert:
+                ident"self"
+              else:
+                newDotExpr(ident"self", componentName),
               statement[1]
             ),
             ident"val"
@@ -280,31 +291,47 @@ proc replaceSelfComponent*(statement, componentName: NimNode, parent: NimNode = 
       elif not parent.isNil() and parent.kind == nnkExprEqExpr:
         parent[1] = newDotExpr(
           newDotExpr(
-            newDotExpr(ident"self", componentName),
+            if convert:
+              ident"self"
+            else:
+              newDotExpr(ident"self", componentName),
             statement[1]
           ),
           ident"val"
         )
-        statement[0] = newDotExpr(ident"self", componentName)
+        statement[0] =
+          if convert:
+            ident"self"
+          else:
+            newDotExpr(ident"self", componentName)
       else:
-        statement[0] = newDotExpr(ident"self", componentName)
+        statement[0] =
+          if convert:
+            ident"self"
+          else:
+            newDotExpr(ident"self", componentName)
     return
 
   if statement.kind == nnkAsgn:
     if statement[0].kind == nnkDotExpr and $statement[0][0] == "self":
       statement[0] = newDotExpr(statement[0], ident"val")
-      statement[0][0][0] = newDotExpr(ident"self", componentName)
+      statement[0][0][0] =
+          if convert:
+            ident"self"
+          else:
+            newDotExpr(ident"self", componentName)
 
     for idx, i in statement.pairs:
       if idx == 0:
         continue
-      i.replaceSelfComponent(componentName, statement)
+      i.replaceSelfComponent(componentName, statement, convert, is_constructor)
   else:
     for idx, i in statement.pairs:
       if i.kind == nnkAsgn and i[0].kind == nnkDotExpr and $i[0][0] == "self":
-        statement.insert(idx+1, newCall("reRender", ident"self"))
+        if not is_constructor:
+          statement.insert(idx+1, newCall("reRender", ident"self"))
     for i in statement.children:
-      i.replaceSelfComponent(componentName, statement)
+      i.replaceSelfComponent(componentName, statement, convert, is_constructor)
 
 
 proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
@@ -369,6 +396,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
     elif statement.kind == nnkCommand:
       # Component usage
       if $statement[0] == "component":
+        # Component without arguments
         if statement[1].kind == nnkIdent:
           let
             componentName = statement[1]
@@ -410,6 +438,10 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
                 useComponent(statement, inCycle, inComponent, cycleTmpVar, cycleVars)
               )
             ))
+        # Component constructor
+        elif statement[1].kind == nnkInfix and statement[1][0] == ident"->":
+          result.add(useComponent(statement, inCycle, inComponent, cycleTmpVar, cycleVars, constructor = true))
+        # Component default constructor
         else:
           result.add(useComponent(statement, inCycle, inComponent, cycleTmpVar, cycleVars))
     
