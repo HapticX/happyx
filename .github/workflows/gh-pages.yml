@@ -34,7 +34,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: before
     env:
-      nim_version: '1.6.12'
+      nim_version: 'stable'
     steps:
       - uses: actions/checkout@v3
 
