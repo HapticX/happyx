@@ -127,6 +127,14 @@ when defined(js):
       ~evComponent = event
       nim:
         componentEventHandlers[callbackIdx](components[componentId], evComponent)
+
+    function onHashChangeCallback():
+      if window.location.hash[0] == "#":
+        ~currentRoute = window.location.hash.substr(1)
+      else:
+        ~currentRoute = window.location.hash
+    
+    window.addEventListener("hashchange", onHashChangeCallback)
   
 macro elem*(name: untyped): untyped =
   ## `elem` macro is just shortcut for
@@ -434,7 +442,6 @@ macro routes*(app: App, body: untyped): untyped =
             ident"currentComponent"
           )
         ),
-        newCall("echo", ident"currentComponent"),
         newNimNode(nnkReturnStmt).add(newEmptyNode())
       )
     ))
