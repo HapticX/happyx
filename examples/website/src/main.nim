@@ -3,7 +3,7 @@ import
   happyx,
   path_params,
   ui/colors,
-  components/[button, card, code_block, header, section, smart_card, about_section],
+  components/[button, card, code_block, header, section, smart_card, about_section, drawer],
   pages/[home]
 
 

@@ -39,7 +39,7 @@ type
 
 
 const
-  VERSION = "1.10.0"
+  VERSION = "1.10.1"
   SPA_MAIN_FILE = "main"
   CONFIG_FILE = "happyx.cfg"
 
@@ -605,7 +605,7 @@ proc devCommand(host: string = "127.0.0.1", port: int = 5000,
         "  if(event.data === 'true'){\n    window.location.reload();\n  }\n" &
         "};\n\n" &
         "function intervalSending(){\n  socket.send('reload')\n}\n\n" &
-        "setInterval(intervalSending, 100);\n" &
+        "setInterval(intervalSending, 1000);\n" &
         "</script></body>"
       )
       req.answerHtml(data)

@@ -11,6 +11,13 @@ model UploadImage:
   img: FormDataItem
 
 
+mount Issue84:
+  get "/":
+    "Hello, world!"
+  post "/":
+    "Bye world"
+
+
 type
   Language = enum
     lNim = "nim",
@@ -19,6 +26,8 @@ type
 
 
 serve "127.0.0.1", 5000:
+  mount "/issue84" -> Issue84
+
   post "/urlencoded/[m:MyModel:urlencoded]":
     echo m.x
     return {"response": m.x}

@@ -252,7 +252,7 @@
 ## 
 ## ### Built-In UI 🎴
 ## 
-## > ⚠ !Warning! It works only with `-d:enableUi` flag! ⚠
+##   **⚠ !Warning! It works only with `-d:enableUi` flag! ⚠**
 ## 
 ## - [palette](happyx/spa/ui/palette.html) provides built-in color palette
 ## - [card](happyx/spa/ui/card.html) provides built-in `Card` component

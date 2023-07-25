@@ -2,8 +2,12 @@
 import
   happyx,
   ../path_params,
-  ../components/[header, smart_card, card, section, code_block, about_section],
+  ../components/[header, smart_card, card, section, code_block, about_section, drawer],
   ../ui/colors
+
+
+var drawer_comp* = use:
+  component Drawer
 
 
 mount Home:
@@ -15,46 +19,49 @@ mount Home:
         tImg(src = "/happyx/public/nim_logo.svg", class = "z-10 pointer-events-none")
         tImg(src = "/happyx/public/HappyX.svg", class = "z-10 pointer-events-none")
         tImg(src = "/happyx/public/desc.svg", class = "z-10 pointer-events-none")
+      # Drawer
+      component drawer_comp
+      # Main content
       tDiv(class = "flex flex-col gap-4"):
         tDiv(class = "sticky top-0 z-20"):
-          component Header
+          component Header(drawer = drawer_comp)
         tDiv(class = "flex flex-col gap-16 items-center justify-center items-center w-full"):
           # Why HappyX is really required?
           component Section:
-            tDiv(class = "flex gap-4"):
-              tDiv(class = "flex flex-col gap-2"):
+            tDiv(class = "flex flex-col xl:flex-row gap-8 lg:gap-4"):
+              tDiv(class = "flex flex-col gap-4 lg:"):
                 tDiv(class = "cursor-pointer hover:scale-110 hover:z-10 transition-all duration-500 flex flex-col rounded-xl px-6 py-4 drop-shadow-2xl bg-gradient-to-r from-[{Background}] to-[{BackgroundSecondary}] dark:from-[{BackgroundDark}] dark:to-[{BackgroundSecondaryDark}]"):
-                  tP(class = "text-2xl md:text-3xl xl:text-5xl font-semibold"):
+                  tP(class = "text-7xl lg:text-3xl xl:text-5xl font-semibold"):
                     "HappyX"
-                  tP:
+                  tP(class = "text-3xl lg:text-base"):
                     "Powerful macro-oriented full-stack web framework"
-                  tP(class = "text-xs font-thin"):
+                  tP(class = "text-lg lg:text-xs font-thin"):
                     "modern and powerful ready-to-product web framework"
                 tDiv(class = "cursor-pointer hover:scale-110 hover:z-10 transition-all duration-500 flex flex-col rounded-xl px-6 py-4 drop-shadow-2xl bg-gradient-to-r from-[{Background}] to-[{BackgroundSecondary}] dark:from-[{BackgroundDark}] dark:to-[{BackgroundSecondaryDark}]"):
-                  tP(class = "text-lg md:text-xl xl:text-3xl font-semibold"):
+                  tP(class = "text-5xl lg:text-xl xl:text-3xl font-semibold"):
                     "metaprogramming"
-                  tP:
+                  tP(class = "text-3xl lg:text-base"):
                     "HappyX based on metaprogramming"
-                  tP:
+                  tP(class = "text-3xl lg:text-base"):
                     "so most part of code runs at compile-time."
-                  tP(class = "text-xs"):
+                  tP(class = "text-lg lg:text-xs"):
                     "This means that HappyX is REALLY fastest web framework"
-              tDiv(class = "cursor-pointer flex flex-col gap-2"):
+              tDiv(class = "cursor-pointer flex flex-col gap-4 lg:gap-2"):
                 tDiv(class = "hover:scale-110 hover:z-10 transition-all duration-500 flex flex-col rounded-xl px-6 py-4 drop-shadow-2xl bg-gradient-to-r from-[{Background}] to-[{BackgroundSecondary}] dark:from-[{BackgroundDark}] dark:to-[{BackgroundSecondaryDark}]"):
-                  tP(class = "text-lg md:text-xl xl:text-3xl font-semibold"):
+                  tP(class = "text-5xl lg:text-xl xl:text-3xl font-semibold"):
                     "full-stack"
-                  tP:
+                  tP(class = "text-3xl lg:text-base"):
                     "HappyX is full-stack web framework"
-                  tP:
+                  tP(class = "text-3xl lg:text-base"):
                     "so you shouldn't learn a new syntax/libraries/frameworks"
-                  tP:
+                  tP(class = "text-3xl lg:text-base"):
                     "to create modern and powerful web applications"
                 tDiv(class = "cursor-pointer hover:scale-110 hover:z-10 transition-all duration-500 flex flex-col rounded-xl px-6 py-4 drop-shadow-2xl bg-gradient-to-r from-[{Background}] to-[{BackgroundSecondary}] dark:from-[{BackgroundDark}] dark:to-[{BackgroundSecondaryDark}]"):
-                  tP(class = "text-lg md:text-xl xl:text-3xl font-semibold"):
+                  tP(class = "text-5xl lg:text-xl xl:text-3xl font-semibold"):
                     "ready-to-product"
-                  tP:
+                  tP(class = "text-3xl lg:text-base"):
                     "HappyX is ready-to-product web framework"
-                  tP:
+                  tP(class = "text-3xl lg:text-base"):
                     "your company may use HappyX"
 
           # SSR Code example
@@ -64,7 +71,7 @@ mount Home:
 serve("127.0.0.1", 5000):
   get "/":
     return "Hello, world!" """)
-            tDiv(class = "w-36 xl:w-96 text-lg xl:text-base text-center subpixel-antialiased"):
+            tDiv(class = "w-48 xl:w-96 text-3xl lg:text-lg xl:text-base text-center subpixel-antialiased"):
               "Make server-side applications easily with powerful DSL 🔥"
           
           # Features
@@ -86,7 +93,7 @@ serve("127.0.0.1", 5000):
 appRoutes("app"):
   "/":
     "Hello, world!" """)
-            tDiv(class = "w-36 xl:w-96 text-lg xl:text-base text-center subpixel-antialiased"):
+            tDiv(class = "w-48 xl:w-96 text-3xl lg:text-lg xl:text-base text-center subpixel-antialiased"):
               "Make powerful full-stack apps with really same syntax ⚡"
           
           # Macros
@@ -99,6 +106,7 @@ appRoutes("app"):
             component AboutSection(
               name = "HappyX For ... Programmers",
               data = @[
-                ("FastAPI programmers", "https://github.com/HapticX/happyx/wiki/HappyX-for-FastAPI-Programmers")
+                ("FastAPI programmers", "https://github.com/HapticX/happyx/wiki/HappyX-for-FastAPI-Programmers"),
+                ("Prologue programmers", "https://github.com/HapticX/happyx/wiki/HappyX-for-Prologue-Programmers"),
               ]
             )

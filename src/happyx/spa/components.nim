@@ -212,6 +212,7 @@ macro component*(name, body: untyped): untyped =
     styleStmtList = newStmtList()
     # Functions
     methodsStmtList = newStmtList()
+    declareMethodsStmtList = newStmtList()
     # Component constructors
     componentConstructors = newStmtList()
     # Args
@@ -331,6 +332,9 @@ macro component*(name, body: untyped): untyped =
           if statement.kind in [nnkProcDef, nnkMethodDef, nnkIteratorDef, nnkConverterDef]:
             statement[3].insert(1, newIdentDefs(ident"self", ident(name)))
             methodsStmtList.add(statement)
+            var declaration = statement.copy()
+            declaration.body = newEmptyNode()
+            declareMethodsStmtList.add(declaration)
           else:
             throwDefect(
               HpxComponentDefect,
@@ -437,8 +441,10 @@ macro component*(name, body: untyped): untyped =
               getAst(buildJs(s[^1]))
             )
           else:
-            s[^1].replaceSelfStateVal()
+            s[^1].replaceSelfComponent(ident(name), convert = false, is_constructor = true)
             scriptStmtList = s[^1]
+            scriptStmtList.insert(0, newAssignment(ident"enableRouting", newLit(false)))
+            scriptStmtList.add(newAssignment(ident"enableRouting", newLit(true)))
         else:
           let structure = $s[0]
           throwDefect(
@@ -519,6 +525,7 @@ macro component*(name, body: untyped): untyped =
         newNimNode(nnkRefTy).add(ident(nameObj))
       )
     ),
+    declareMethodsStmtList,
     initProc,
     componentConstructors,
     reRenderProc,
@@ -554,7 +561,28 @@ macro component*(name, body: untyped): untyped =
         ident("TagRef"),
         newIdentDefs(ident("self"), ident(name))
       ],
-      templateStmtList,
+      if templateStmtList.len == 0:
+        newStmtList(
+          newAssignment(ident("currentComponent"), newDotExpr(ident("self"), ident(UniqueComponentId))),
+          newCall("script", ident("self")),
+          beforeStmtList,
+          newAssignment(
+            ident("result"),
+            newCall(
+              "buildComponentHtml",
+              ident(name),
+              newStmtList(
+                newCall(
+                  "style", newStmtList(newStrLitNode("{self.style()}"))
+                )
+              )
+            )
+          ),
+          afterStmtList,
+          newAssignment(ident("currentComponent"), newStrLitNode(""))
+        )
+      else:
+        templateStmtList,
       nnkMethodDef,
       pragmas =
         when defined(js):

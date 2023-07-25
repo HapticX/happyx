@@ -272,66 +272,77 @@ proc endsWithBuildHtml*(statement: NimNode): bool =
 
 
 proc replaceSelfComponent*(statement, componentName: NimNode, parent: NimNode = nil,
-                           convert: bool = false, is_constructor: bool = false) =
+                           convert: bool = false, is_constructor: bool = false, is_field: bool = true) =
+  let self = if convert: ident"self" else: newDotExpr(ident"self", componentName)
   if statement.kind == nnkDotExpr:
-    if statement[0].kind == nnkIdent and $statement[0] == "self":
+    if statement[0] == ident"self":
       if not parent.isNil() and parent.kind == nnkCall and parent[0] == statement:
-        parent[0] = newCall(
-          newDotExpr(
-            newDotExpr(
-              if convert:
-                ident"self"
-              else:
-                newDotExpr(ident"self", componentName),
-              statement[1]
-            ),
-            ident"val"
-          )
-        )
+        # Call field
+        parent[0] = newCall(newDotExpr(newDotExpr(self, statement[1]), ident"val"))
       elif not parent.isNil() and parent.kind == nnkExprEqExpr:
         parent[1] = newDotExpr(
-          newDotExpr(
-            if convert:
-              ident"self"
-            else:
-              newDotExpr(ident"self", componentName),
-            statement[1]
-          ),
-          ident"val"
+          newDotExpr(self, statement[1]), ident"val"
         )
-        statement[0] =
-          if convert:
-            ident"self"
-          else:
-            newDotExpr(ident"self", componentName)
+        statement[0] = self
       else:
-        statement[0] =
-          if convert:
-            ident"self"
-          else:
-            newDotExpr(ident"self", componentName)
+        statement[0] = self
     return
 
   if statement.kind == nnkAsgn:
-    if statement[0].kind == nnkDotExpr and $statement[0][0] == "self":
+    if statement[0].kind == nnkDotExpr and statement[0][0] == ident"self":
       statement[0] = newDotExpr(statement[0], ident"val")
-      statement[0][0][0] =
-          if convert:
-            ident"self"
-          else:
-            newDotExpr(ident"self", componentName)
-
+      statement[0][0][0] = self
+    var idxes: seq[tuple[node: NimNode, idx: int]] = @[]
     for idx, i in statement.pairs:
-      if idx == 0:
-        continue
-      i.replaceSelfComponent(componentName, statement, convert, is_constructor)
+      if i.kind == nnkCall and i[0].kind == nnkDotExpr and i[0][0] == ident"self":
+        idxes.add((i, idx))
+      else:
+        i.replaceSelfComponent(componentName, statement, convert, is_constructor)
+    for (i, idx) in idxes:
+      var
+        methodCall = newCall(newDotExpr(self, i[0][1]))
+        fieldCall = newCall(newCall(newDotExpr(newDotExpr(self, i[0][1]), ident"val")))
+      for arg_idx, arg in i.pairs:
+        if arg_idx == 0:
+          continue
+        fieldCall.add(arg)
+        methodCall.add(arg)
+      statement[idx] = newNimNode(nnkWhenStmt).add(
+        newNimNode(nnkElifBranch).add(
+          newCall("is", newCall("typeof", newDotExpr(self, i[0][1])), ident"State"),
+          fieldCall
+        ), newNimNode(nnkElse).add(
+          methodCall
+        )
+      )
   else:
     for idx, i in statement.pairs:
-      if i.kind == nnkAsgn and i[0].kind == nnkDotExpr and $i[0][0] == "self":
+      if i.kind == nnkAsgn and i[0].kind == nnkDotExpr and i[0][0] == ident"self":
         if not is_constructor:
           statement.insert(idx+1, newCall("reRender", ident"self"))
-    for i in statement.children:
-      i.replaceSelfComponent(componentName, statement, convert, is_constructor)
+    var idxes: seq[tuple[node: NimNode, idx: int]] = @[]
+    for idx, i in statement.pairs:
+      if i.kind == nnkCall and i[0].kind == nnkDotExpr and i[0][0] == ident"self":
+        idxes.add((i, idx))
+      else:
+        i.replaceSelfComponent(componentName, statement, convert, is_constructor)
+    for (i, idx) in idxes:
+      var
+        methodCall = newCall(newDotExpr(self, i[0][1]))
+        fieldCall = newCall(newCall(newDotExpr(newDotExpr(self, i[0][1]), ident"val")))
+      for arg_idx, arg in i.pairs:
+        if arg_idx == 0:
+          continue
+        fieldCall.add(arg)
+        methodCall.add(arg)
+      statement[idx] = newNimNode(nnkWhenStmt).add(
+        newNimNode(nnkElifBranch).add(
+          newCall("is", newCall("typeof", newDotExpr(self, i[0][1])), ident"State"),
+          fieldCall
+        ), newNimNode(nnkElse).add(
+          methodCall
+        )
+      )
 
 
 proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
@@ -395,7 +406,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
     
     elif statement.kind == nnkCommand:
       # Component usage
-      if $statement[0] == "component":
+      if statement[0] == ident"component":
         # Component without arguments
         if statement[1].kind == nnkIdent:
           let
@@ -599,7 +610,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
       inc uniqueId
     
     elif statement.kind == nnkIdent:
-      if $statement == "slot":
+      if statement == ident"slot":
         # slot
         if not inComponent:
           throwDefect(

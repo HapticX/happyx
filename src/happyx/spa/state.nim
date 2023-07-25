@@ -34,6 +34,9 @@ type
     value: T
 
 
+var enableRouting* = true  ## `Low-level API` to disable/enable routing
+
+
 func remember*[T](val: T): State[T] =
   ## Creates a new state
   State[T](value: val)
@@ -42,7 +45,7 @@ func remember*[T](val: T): State[T] =
 proc `val=`*[T](self: State[T], value: T) =
   ## Changes state value
   self.value = value
-  if not application.isNil() and not application.router.isNil():
+  if not application.isNil() and not application.router.isNil() and enableRouting:
     application.router()
 
 
@@ -72,11 +75,11 @@ template operator(funcname, op: untyped): untyped =
 template reRenderOperator(funcname, op: untyped): untyped =
   proc `funcname`*[T](self: State[T], other: State[T]) =
     `op`(self.val, other.val)
-    if not application.isNil() and not application.router.isNil():
+    if not application.isNil() and not application.router.isNil() and enableRouting:
       application.router()
   proc `funcname`*[T](self: State[T], other: T) =
     `op`(self.value, other)
-    if not application.isNil() and not application.router.isNil():
+    if not application.isNil() and not application.router.isNil() and enableRouting:
       application.router()
 
 
@@ -163,9 +166,9 @@ macro `->`*(self: State, field: untyped): untyped =
         # When defined JS
         newNimNode(nnkWhenStmt).add(newNimNode(nnkElifBranch).add(
           newCall("defined", ident("js")),
-          # If not application.isNil()
+          # If enableRouting and not application.isNil()
           newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
-            newCall("not", newCall("isNil", ident("application"))),
+            newCall("and", ident"enableRouting", newCall("not", newCall("isNil", ident("application")))),
             # application.router()
             newCall(newDotExpr(ident("application"), ident("router")))
           )),
@@ -192,7 +195,7 @@ func len*[T](self: State[T]): int =
 proc set*[T](self: State[T], value: T) =
   ## Changes state value and rerenders SPA
   self.val = value
-  if not application.isNil() and not application.router.isNil():
+  if not application.isNil() and not application.router.isNil() and enableRouting:
     application.router()
 
 

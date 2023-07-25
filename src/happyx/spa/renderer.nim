@@ -104,6 +104,8 @@ var
   currentComponent* = ""  ## Current component unique ID
   currentRoute*: cstring = "/"  ## Current route path
 
+  uniqueMacroIndex {.compileTime.} = 0
+
 
 when defined(js):
   buildJs:
@@ -135,7 +137,8 @@ when defined(js):
         ~currentRoute = window.location.hash
     
     window.addEventListener("hashchange", onHashChangeCallback)
-  
+
+
 macro elem*(name: untyped): untyped =
   ## `elem` macro is just shortcut for
   ## 
@@ -149,15 +152,17 @@ macro elem*(name: untyped): untyped =
   ## 
   let nameStr = $name
   when defined(js):
+    inc uniqueMacroIndex
+    let uniqName = fmt"_res{uniqueMacroIndex}"
     newStmtList(
       newNimNode(nnkVarSection).add(newIdentDefs(
-        ident"res", ident"Element"
+        ident(uniqName), ident"Element"
       )),
       newNimNode(nnkPragma).add(newNimNode(nnkExprColonExpr).add(
         ident"emit",
-        newStrLitNode(fmt"`res` = document.getElementById('{nameStr}');")
+        newStrLitNode(fmt"`{uniqName}` = document.getElementById('{nameStr}');")
       )),
-      ident"res"
+      ident(uniqName)
     )
 
 

@@ -381,5 +381,3 @@ macro model*(modelName, body: untyped): untyped =
       )
     ),
   )
-  when enableDebug:
-    echo result.toStrLit

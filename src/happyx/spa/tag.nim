@@ -250,7 +250,7 @@ func addArg*(self: TagRef, arg: string) =
   self.args.add(arg)
 
 
-func addArgIter*(self: TagRef, arg: string) =
+proc addArgIter*(self: TagRef, arg: string) =
   ## Adds argument into current tag and all children
   ## 
   ## See also `addArg function #addArg,TagRef,string`_
