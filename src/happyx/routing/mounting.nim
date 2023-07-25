@@ -61,7 +61,7 @@ proc findAndReplaceMount*(body: NimNode) {. compileTime .} =
             elif statement[1].kind in [nnkStrLit, nnkTripleStrLit]:
               statement[1] = newStrLitNode($route & $statement[1])
           # Add mount routes
-          if statement.kind != nnkCommand and $statement[0] != "mount":
+          if statement.kind in [nnkCall, nnkCommand] and $statement[0] != "mount":
             inc offset
             body.insert(i, statement)
 
