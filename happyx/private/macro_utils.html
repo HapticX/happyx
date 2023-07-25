@@ -201,10 +201,12 @@ window.addEventListener('DOMContentLoaded', main);
 
   </ul>
   <ul class="simple nested-toc-section">replaceSelfComponent
-      <li><a class="reference" href="#replaceSelfComponent%2CNimNode%2CNimNode%2CNimNode%2Cbool%2Cbool"
+      <li><a class="reference" href="#replaceSelfComponent%2CNimNode%2CNimNode%2CNimNode%2Cbool%2Cbool%2Cbool"
     title="replaceSelfComponent(statement, componentName: NimNode; parent: NimNode = nil;
-                     convert: bool = false; is_constructor: bool = false)">replaceSelfComponent(statement, componentName: NimNode; parent: NimNode = nil;
-                     convert: bool = false; is_constructor: bool = false)</a></li>
+                     convert: bool = false; is_constructor: bool = false;
+                     is_field: bool = true)">replaceSelfComponent(statement, componentName: NimNode; parent: NimNode = nil;
+                     convert: bool = false; is_constructor: bool = false;
+                     is_field: bool = true)</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">useComponent
@@ -382,11 +384,11 @@ Creates a new lambda
 
 </dd>
 </div>
-<div id="replaceSelfComponent,NimNode,NimNode,NimNode,bool,bool">
-<dt><pre><span class="Keyword">proc</span> <a href="#replaceSelfComponent%2CNimNode%2CNimNode%2CNimNode%2Cbool%2Cbool"><span class="Identifier">replaceSelfComponent</span></a><span class="Other">(</span><span class="Identifier">statement</span><span class="Other">,</span> <span class="Identifier">componentName</span><span class="Other">:</span> <span class="Identifier">NimNode</span><span class="Other">;</span>
+<div id="replaceSelfComponent,NimNode,NimNode,NimNode,bool,bool,bool">
+<dt><pre><span class="Keyword">proc</span> <a href="#replaceSelfComponent%2CNimNode%2CNimNode%2CNimNode%2Cbool%2Cbool%2Cbool"><span class="Identifier">replaceSelfComponent</span></a><span class="Other">(</span><span class="Identifier">statement</span><span class="Other">,</span> <span class="Identifier">componentName</span><span class="Other">:</span> <span class="Identifier">NimNode</span><span class="Other">;</span>
                           <span class="Identifier">parent</span><span class="Other">:</span> <span class="Identifier">NimNode</span> <span class="Other">=</span> <span class="Keyword">nil</span><span class="Other">;</span> <span class="Identifier">convert</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">;</span>
-                          <span class="Identifier">is_constructor</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">)</span> {.<span class="Identifier">compileTime</span><span class="Other">,</span>
-    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+                          <span class="Identifier">is_constructor</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">;</span> <span class="Identifier">is_field</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">true</span><span class="Other">)</span> {.
+    <span class="Identifier">compileTime</span><span class="Other">,</span> <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 
@@ -414,7 +416,7 @@ Creates a new lambda
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-07-25 06:40:16 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-07-25 16:26:33 UTC</small>
       </div>
     </div>
   </div>

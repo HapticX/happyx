@@ -1,4 +1,5 @@
 State	happyx/spa/state.html#State	state: State	
+enableRouting	happyx/spa/state.html#enableRouting	state: enableRouting	
 remember	happyx/spa/state.html#remember,T	state: remember[T](val: T): State[T]	
 val=	happyx/spa/state.html#val=,State[T],T	state: val=[T](self: State[T]; value: T)	
 `$`	happyx/spa/state.html#$,State[T]	state: `$`[T](self: State[T]): string	
