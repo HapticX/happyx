@@ -16335,24 +16335,28 @@ function toggle_2231369736(self_2231369737) {
     F.line = 51;
     drawerBack_2231370160.classList.add("opacity-100");
     F.line = 52;
-    drawer_2231370162.classList.remove("translate-x-full");
+    drawerBack_2231370160.classList.remove("pointer-events-none");
     F.line = 53;
+    drawer_2231370162.classList.remove("translate-x-full");
+    F.line = 54;
     drawer_2231370162.classList.add("translate-x-0");
     }
     else {
-      F.line = 55;
-      drawerBack_2231370160.classList.remove("opacity-100");
       F.line = 56;
-      drawerBack_2231370160.classList.add("opacity-0");
+      drawerBack_2231370160.classList.remove("opacity-100");
       F.line = 57;
-      drawer_2231370162.classList.remove("translate-x-0");
+      drawerBack_2231370160.classList.add("opacity-0");
       F.line = 58;
+      drawerBack_2231370160.classList.add("pointer-events-none");
+      F.line = 59;
+      drawer_2231370162.classList.remove("translate-x-0");
+      F.line = 60;
       drawer_2231370162.classList.add("translate-x-full");
     }
     
-    F.line = 59;
+    F.line = 61;
     rawEcho(makeNimstrLit("toggled!"));
-    F.line = 60;
+    F.line = 62;
     enableRouting_1828716551[0] = true;
   framePtr = F.prev;
 
@@ -16449,7 +16453,7 @@ function HEX3Aanonymous_2231370078() {
     F.line = 14;
     var fmtRes_2231369843 = mnewString(0);
     F.line = 14;
-    fmtRes_2231369843.push.apply(fmtRes_2231369843, makeNimstrLit("fixed duration-500 opacity-0 transition-all w-screen h-screen z-40 bg-[#00000060]"));;
+    fmtRes_2231369843.push.apply(fmtRes_2231369843, makeNimstrLit("fixed duration-500 opacity-0 pointer-events-none transition-all w-screen h-screen z-40 bg-[#00000060]"));;
     F.line = 3043;
     if (globalThis.alreadyExecutedHEX60gensym3_2231369848 === undefined) {
       globalThis.alreadyExecutedHEX60gensym3_2231369848 = [false];
