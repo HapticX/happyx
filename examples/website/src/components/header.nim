@@ -17,7 +17,7 @@ component Header:
         @click:
           route("/")
       # drawer here
-      tDiv(class = "flex xl:hidden text-8xl font-bold"):
+      tDiv(class = "flex xl:hidden text-8xl font-bold select-none cursor-pointer"):
         "≡"
         @click:
           enableRouting = false
