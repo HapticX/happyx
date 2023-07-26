@@ -90,10 +90,11 @@ else:
       slot*: TagRef
       created*: ComponentEventHandler  ## Calls before first rendering
       exited*: ComponentEventHandler  ## Calls after last rendering
-      updated*: ComponentEventHandler  ## Calls after every rendering
+      rendered*: ComponentEventHandler  ## Calls after every rendering
       pageHide*: ComponentEventHandler  ## Calls after every rendering
       pageShow*: ComponentEventHandler  ## Calls after every rendering
       beforeUpdated*: ComponentEventHandler  ## Calls before every rendering
+      updated*: ComponentEventHandler  ## Calls after every DOM rendering
 
 
 # Global variables
