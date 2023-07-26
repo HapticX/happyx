@@ -291,11 +291,11 @@ macro component*(name, body: untyped): untyped =
           i = 0
         for child in body.children:
           if child.kind == nnkCommentStmt:
-            continue
             inc i
+            continue
           else:
             body.insert(
-              i+1,
+              i,
               newVarStmt(
                 ident"self",
                 newCall(fmt"init{name}", ident(UniqueComponentId))
@@ -308,7 +308,7 @@ macro component*(name, body: untyped): untyped =
         if s[0].kind == nnkIdent:
           componentConstructors.add(
             newProc(
-              ident(fmt"constructor_{name}"),
+              postfix(ident(fmt"constructor_{name}"), "*"),
               [ident(name), newIdentDefs(ident(UniqueComponentId), bindSym("string"))],
               body
             )
@@ -321,7 +321,7 @@ macro component*(name, body: untyped): untyped =
               args.add(newIdentDefs(arg[0], arg[1]))
           componentConstructors.add(
             newProc(
-              ident(fmt"constructor_{name}"),
+              postfix(ident(fmt"constructor_{name}"), "*"),
               args,
               body
             )

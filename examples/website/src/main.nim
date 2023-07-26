@@ -3,7 +3,11 @@ import
   ../../../src/happyx,
   ./path_params,
   ./ui/colors,
-  ./components/[button, card, code_block, header, section, smart_card, about_section, drawer, divider],
+  ./components/[
+    button, card, code_block, header,
+    section, smart_card, about_section,
+    drawer, divider, sponsors_arr
+  ],
   ./pages/[home, sponsors]
 
 
