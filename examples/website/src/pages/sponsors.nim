@@ -20,20 +20,28 @@ type
 
 var sponsor_list* = @[
   Sponsor(
-    name: "Ethosa", amount: 1.0, url: "https://github.com/Ethosa",
-    avatarUrl: "https://avatars.githubusercontent.com/u/49402667?v=4"
+    name: "Example sponsor", amount: 100.0, url: "https://thispersondoesnotexist.com/",
+    avatarUrl: "https://thispersondoesnotexist.com/", status: ssSilver
   ),
   Sponsor(
-    name: "Dmitry Kotov", amount: 255.0, url: "https://github.com/dmitrijkotov634",
-    avatarUrl: "https://avatars.githubusercontent.com/u/53375304?v=4", status: ssGold
+    name: "Example sponsor", amount: 100.0, url: "https://montreally.com/wp-content/uploads/cache/images/man-2/man-2-3683696497.jpg",
+    avatarUrl: "https://montreally.com/wp-content/uploads/cache/images/man-2/man-2-3683696497.jpg", status: ssGold
   ),
   Sponsor(
-    name: "Pisya Popa", amount: 1000.0, url: "https://vk.com/bbfulbe2",
-    avatarUrl: "https://sun9-20.userapi.com/impg/hp4zSGSSU5qhjVI4FS9T3Fto5EeIotQr2ZkVnQ/5_6yfsCPTCk.jpg?size=807x1080&quality=96&sign=f5db819ee722921d326f7973857c9f7d&type=album", status: ssPlatinum,
+    name: "Example sponsor", amount: 100.0, url: "https://beatmaker.tv/Default/General/Image/136200?type=BeatImageOriginal&ver=1",
+    avatarUrl: "https://beatmaker.tv/Default/General/Image/136200?type=BeatImageOriginal&ver=1", status: ssGold
   ),
   Sponsor(
-    name: "Vadim Morozov", amount: 100.0, url: "https://github.com/horanchikk",
-    avatarUrl: "https://avatars.githubusercontent.com/u/46918417?v=4", status: ssSilver
+    name: "Example sponsor", amount: 100.0, url: "https://dspncdn.com/a1/avatars/400x/4b/75/4b756433f80f0f1a4e0b335a56a74e79.jpg",
+    avatarUrl: "https://dspncdn.com/a1/avatars/400x/4b/75/4b756433f80f0f1a4e0b335a56a74e79.jpg", status: ssPlatinum
+  ),
+  Sponsor(
+    name: "Example sponsor", amount: 100.0, url: "https://i.ytimg.com/vi/YONXRJ3OOFw/maxresdefault.jpg",
+    avatarUrl: "https://i.ytimg.com/vi/YONXRJ3OOFw/maxresdefault.jpg", status: ssDefault
+  ),
+  Sponsor(
+    name: "Example sponsor", amount: 100.0, url: "https://i.imgflip.com/1ndfj0.jpg",
+    avatarUrl: "https://i.imgflip.com/1ndfj0.jpg", status: ssSilver
   ),
 ]
 
