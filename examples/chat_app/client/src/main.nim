@@ -1,6 +1,6 @@
 import
   ../../../../src/happyx,
-  components/[chat]
+  ./components/[chat, message]
 
 
 appRoutes("app"):

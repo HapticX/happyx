@@ -1,7 +1,7 @@
 import
   jscore,
   ./message,
-  happyx
+  ../../../../../src/happyx
 
 
 type
