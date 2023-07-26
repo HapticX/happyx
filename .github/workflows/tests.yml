@@ -48,7 +48,7 @@ jobs:
       - name: Install Dependencies
         run: |
           nimble refresh
-          nimble install -y
+          nimble install -y -d
       
       - name: Build C tests
         run: |
