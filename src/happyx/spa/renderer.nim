@@ -71,10 +71,11 @@ when defined(js):
       slot*: TagRef
       created*: ComponentEventHandler  ## Calls before first rendering
       exited*: ComponentEventHandler  ## Calls after last rendering
-      updated*: ComponentEventHandler  ## Calls after every rendering
+      rendered*: ComponentEventHandler  ## Calls after every rendering
       pageHide*: ComponentEventHandler  ## Calls after every rendering
       pageShow*: ComponentEventHandler  ## Calls after every rendering
       beforeUpdated*: ComponentEventHandler  ## Calls before every rendering
+      updated*: ComponentEventHandler  ## Calls after every DOM rendering
 else:
   type
     AppEventHandler* = proc(ev: int = 0): void
@@ -103,6 +104,7 @@ var
   components* = newTable[cstring, BaseComponent]()
   currentComponent* = ""  ## Current component unique ID
   currentRoute*: cstring = "/"  ## Current route path
+  currentComponentsList*: seq[BaseComponent] = @[]
 
   uniqueMacroIndex {.compileTime.} = 0
 
@@ -216,6 +218,9 @@ when defined(js):
       # echo virtualDom.innerHTML
       # echo realDom.innerHTML
       realDom.innerHTML = virtualDom.innerHTML
+      for comp in currentComponentsList:
+        comp.updated(comp, nil)
+      currentComponentsList.setLen(0)
       # compareEdit(realDom, virtualDom)
 else:
   proc renderVdom*(app: App, tag: TagRef) =

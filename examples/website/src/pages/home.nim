@@ -66,7 +66,7 @@ mount Home:
 
           # SSR Code example
           component SmartCard:
-            component CodeBlock(source = """import happyx
+            component CodeBlock(id = "ssrCode", source = """import happyx
 
 serve("127.0.0.1", 5000):
   get "/":
@@ -88,7 +88,7 @@ serve("127.0.0.1", 5000):
 
           # SPA
           component SmartCard:
-            component CodeBlock(source = """import happyx
+            component CodeBlock(id = "spaCode", source = """import happyx
 
 appRoutes("app"):
   "/":

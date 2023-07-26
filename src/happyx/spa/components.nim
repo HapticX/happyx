@@ -119,8 +119,8 @@ macro component*(name, body: untyped): untyped =
     beforeStmtList = newStmtList()
     afterStmtList = newStmtList()
     reRenderProc = newProc(
-      postfix(ident("reRender"), "*"),
-      [newEmptyNode(), newIdentDefs(ident("self"), ident(name))],
+      postfix(ident"reRender", "*"),
+      [newEmptyNode(), newIdentDefs(ident"self", ident(name))],
       newStmtList(
         newLetStmt(
           ident"tmpData",
@@ -131,12 +131,12 @@ macro component*(name, body: untyped): untyped =
           )
         ),
         newLetStmt(
-          ident("compTmpData"),
+          ident"compTmpData",
           newCall(newDotExpr(ident"self", ident"render"))
         ),
         newCall(
           "addArgIter",
-          ident("compTmpData"),
+          ident"compTmpData",
           newCall("&", newStrLitNode("data-"), newDotExpr(ident"self", ident(UniqueComponentId)))
         ),
         when defined(js):
@@ -186,7 +186,7 @@ macro component*(name, body: untyped): untyped =
         else:
           newCall(
             "add",
-            ident("compTmpData"),
+            ident"compTmpData",
             newCall(
               "initTag",
               newStrLitNode("script"),
@@ -200,7 +200,8 @@ macro component*(name, body: untyped): untyped =
                 )
               )))
             )
-          )
+          ),
+        newCall(newDotExpr(ident"self", ident"rendered"), ident"self")
       ),
       nnkMethodDef
     )
@@ -210,6 +211,7 @@ macro component*(name, body: untyped): untyped =
     templateStmtList = newStmtList()
     scriptStmtList = newStmtList()
     styleStmtList = newStmtList()
+    lifeCyclesDeclare = newStmtList()
     # Functions
     methodsStmtList = newStmtList()
     declareMethodsStmtList = newStmtList()
@@ -225,9 +227,10 @@ macro component*(name, body: untyped): untyped =
         newIdentDefs(ident"ev", ident"int", newLit(0))
     ]
     usedLifeCycles = {
-      "created": false,
-      "updated": false,
-      "beforeUpdated": false,
+      "created": false,  # at created
+      "updated": false,  # at HTML render end
+      "rendered": false,  # at render/reRender end
+      "beforeUpdated": false,  # before render/reRender
       "exited": false,
       "pageShow": false,
       "pageHide": false,
@@ -251,7 +254,7 @@ macro component*(name, body: untyped): untyped =
         params.add(newNimNode(nnkIdentDefs).add(
           s[0],
           newCall(
-            bindSym("[]", brForceOpen), ident("State"), fieldType
+            bindSym("[]", brForceOpen), ident"State", fieldType
           ),
           newEmptyNode()
         ))
@@ -271,7 +274,7 @@ macro component*(name, body: untyped): untyped =
         params.add(newNimNode(nnkIdentDefs).add(
           postfix(s[1], "*"),
           newCall(
-            bindSym("[]", brForceOpen), ident("State"), fieldType
+            bindSym("[]", brForceOpen), ident"State", fieldType
           ),
           newEmptyNode()
         ))
@@ -356,11 +359,12 @@ macro component*(name, body: untyped): untyped =
         of "template":
           # Component template
           templateStmtList = newStmtList(
-            newAssignment(ident("currentComponent"), newDotExpr(ident("self"), ident(UniqueComponentId))),
-            newCall("script", ident("self")),
+            newCall("add", ident"currentComponentsList", ident"self"),
+            newAssignment(ident"currentComponent", newDotExpr(ident"self", ident(UniqueComponentId))),
+            newCall("script", ident"self"),
             beforeStmtList,
             newAssignment(
-              ident("result"),
+              ident"result",
               newCall(
                 "buildComponentHtml",
                 ident(name),
@@ -370,7 +374,7 @@ macro component*(name, body: untyped): untyped =
               )
             ),
             afterStmtList,
-            newAssignment(ident("currentComponent"), newStrLitNode(""))
+            newAssignment(ident"currentComponent", newStrLitNode(""))
           )
         of "style":
           # Component styles
@@ -388,7 +392,7 @@ macro component*(name, body: untyped): untyped =
             ).replace(re"(^ *|\{ *|\n *)\}(?im)", "$1}")
             styleStmtList = newStmtList(
               newAssignment(
-                ident("result"),
+                ident"result",
                 newCall("fmt", newStrLitNode(str), newLit('<'), newLit('>'))
               )
             )
@@ -399,7 +403,7 @@ macro component*(name, body: untyped): untyped =
             ).replace(re"(\n[ \t]+)\}", "$1}}")
             styleStmtList = newStmtList(
               newAssignment(
-                ident("result"),
+                ident"result",
                 newCall("fmt", newStrLitNode(str))
               )
             )
@@ -411,7 +415,7 @@ macro component*(name, body: untyped): untyped =
             ).replace(re"(^ *|\{ *|\n *)\}(?im)", "$1}")
             styleStmtList = newStmtList(
               newAssignment(
-                ident("result"),
+                ident"result",
                 newCall("fmt", newStrLitNode(str), newLit('<'), newLit('>'))
               )
             )
@@ -453,59 +457,63 @@ macro component*(name, body: untyped): untyped =
             lineInfoObj(s)
           )
       
-    elif s.kind == nnkPrefix:
-      if s[0].kind == nnkIdent and $s[0] == "@" and s.len == 3 and s[1].kind == nnkIdent:
-        # Component life cycles
-        let key = $s[1]
-        if usedLifeCycles.hasKey(key) and not usedLifeCycles[key]:
-          scriptStmtList.insert(0, newAssignment(
-            newDotExpr(ident("self"), ident(key)),
-            newLambda(s[2], arguments)
-          ))
-          usedLifeCycles[key] = true
-        elif not usedLifeCycles.hasKey(key):
-          throwDefect(
-            HpxComponentDefect,
-            fmt"Wrong component event ({key})",
-            lineInfoObj(s)
-          )
-    else:
-      throwDefect(
-        HpxComponentDefect,
-        "Unknown component declaration syntax ",
-        lineInfoObj(s)
-      )
+      elif s.kind == nnkPrefix and s[0] == ident"@":
+        if s.len == 3 and s[1].kind == nnkIdent:
+          # Component life cycles
+          let key = $s[1]
+          if usedLifeCycles.hasKey(key) and not usedLifeCycles[key]:
+            var lambdaBody = s[2]
+            lambdaBody.replaceSelfComponent(ident(name), convert = false, is_constructor = true)
+            lifeCyclesDeclare.insert(0, newAssignment(
+              newDotExpr(ident"result", ident(key)),
+              newLambda(lambdaBody, arguments)
+            ))
+            usedLifeCycles[key] = true
+          elif not usedLifeCycles.hasKey(key):
+            throwDefect(
+              HpxComponentDefect,
+              fmt"Wrong component event ({key})",
+              lineInfoObj(s)
+            )
+      else:
+        throwDefect(
+          HpxComponentDefect,
+          "Unknown component declaration syntax ",
+          lineInfoObj(s)
+        )
   
   for key in usedLifeCycles.keys:
     if not usedLifeCycles[key]:
-      scriptStmtList.insert(0, newAssignment(
-        newDotExpr(ident("self"), ident(key)),
+      lifeCyclesDeclare.insert(0, newAssignment(
+        newDotExpr(ident"result", ident(key)),
         newLambda(newStmtList(discardStmt), arguments)
       ))
   
   initProc.params = initParams
-  initProc.body = initObjConstr
+  initProc.body = newStmtList(
+    newAssignment(ident"result", initObjConstr),
+    lifeCyclesDeclare
+  )
 
   # Life cycles
   beforeStmtList.add(
     # Is created
     newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
-      newCall("==", newDotExpr(ident("self"), ident("isCreated")), newLit(false)),
+      newCall("==", newDotExpr(ident"self", ident"isCreated"), newLit(false)),
       newStmtList(
-        newCall(newDotExpr(ident("self"), ident("created")), ident("self")),
+        newCall(newDotExpr(ident"self", ident"created"), ident"self"),
         newAssignment(
-          newDotExpr(ident("self"), ident("isCreated")),
+          newDotExpr(ident"self", ident"isCreated"),
           newLit(true)
         )
       )
     ))
   ).add(
     # beforeUpdated
-    newCall(newDotExpr(ident("self"), ident("beforeUpdated")), ident("self"))
+    newCall(newDotExpr(ident"self", ident"beforeUpdated"), ident"self")
   )
-  # updated
   afterStmtList.add(
-    newCall(newDotExpr(ident("self"), ident("updated")), ident("self"))
+    newCall(newDotExpr(ident"self", ident"rendered"), ident"self")
   )
 
   result = newStmtList(
@@ -515,7 +523,7 @@ macro component*(name, body: untyped): untyped =
         newEmptyNode(),
         newNimNode(nnkObjectTy).add(
           newEmptyNode(),  # no pragma
-          newNimNode(nnkOfInherit).add(ident("BaseComponentObj")),
+          newNimNode(nnkOfInherit).add(ident"BaseComponentObj"),
           params
         )
       ),
@@ -530,44 +538,45 @@ macro component*(name, body: untyped): untyped =
     componentConstructors,
     reRenderProc,
     newProc(
-      ident("script"),
+      ident"script",
       [
         newEmptyNode(),
-        newIdentDefs(ident("self"), ident(name))
+        newIdentDefs(ident"self", ident(name))
       ],
       scriptStmtList,
       pragmas =
         when defined(js):
           newEmptyNode()
         else:
-          newNimNode(nnkPragma).add(ident("gcsafe"))
+          newNimNode(nnkPragma).add(ident"gcsafe")
     ),
     newProc(
-      ident("style"),
+      ident"style",
       [
-        ident("string"),
-        newIdentDefs(ident("self"), ident(name))
+        ident"string",
+        newIdentDefs(ident"self", ident(name))
       ],
       styleStmtList,
       pragmas =
         when defined(js):
           newEmptyNode()
         else:
-          newNimNode(nnkPragma).add(ident("gcsafe"))
+          newNimNode(nnkPragma).add(ident"gcsafe")
     ),
     newProc(
-      postfix(ident("render"), "*"),
+      postfix(ident"render", "*"),
       [
-        ident("TagRef"),
-        newIdentDefs(ident("self"), ident(name))
+        ident"TagRef",
+        newIdentDefs(ident"self", ident(name))
       ],
       if templateStmtList.len == 0:
         newStmtList(
-          newAssignment(ident("currentComponent"), newDotExpr(ident("self"), ident(UniqueComponentId))),
-          newCall("script", ident("self")),
+          newCall("add", ident"currentComponentsList", ident"self"),
+          newAssignment(ident"currentComponent", newDotExpr(ident"self", ident(UniqueComponentId))),
+          newCall("script", ident"self"),
           beforeStmtList,
           newAssignment(
-            ident("result"),
+            ident"result",
             newCall(
               "buildComponentHtml",
               ident(name),
@@ -579,7 +588,7 @@ macro component*(name, body: untyped): untyped =
             )
           ),
           afterStmtList,
-          newAssignment(ident("currentComponent"), newStrLitNode(""))
+          newAssignment(ident"currentComponent", newStrLitNode(""))
         )
       else:
         templateStmtList,
@@ -588,7 +597,7 @@ macro component*(name, body: untyped): untyped =
         when defined(js):
           newEmptyNode()
         else:
-          newNimNode(nnkPragma).add(ident("gcsafe"))
+          newNimNode(nnkPragma).add(ident"gcsafe")
     ),
     methodsStmtList,
   )

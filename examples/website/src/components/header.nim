@@ -13,7 +13,7 @@ component Header:
   `template`:
     tDiv(class = "flex justify-between items-center px-8 py-2 backdrop-blur-sm h-32 xl:h-fit"):
       tDiv:  # logo
-        tImg(src = "/happyx/public/logo.svg", class = "h-24 md:h-16 xl:h-12")
+        tImg(src = "/happyx/public/logo.svg", class = "h-24 md:h-16 xl:h-12 cursor-pointer select-none")
         @click:
           route("/")
       # drawer here
@@ -47,3 +47,8 @@ component Header:
             """.}
         ):
           "📕 API Docs"
+        component Button(
+          action = proc() =
+            route("/sponsors/")
+        ):
+          "🔥 Sponsors"

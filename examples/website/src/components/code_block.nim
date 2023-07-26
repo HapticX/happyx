@@ -3,11 +3,12 @@ import happyx
 
 component CodeBlock:
   language: string = "nim"
-  source: cstring = ""
+  source: string = ""
+  id: cstring = ""
 
   `template`:
     tPre(class = "relative"):
-      tCode(language = self.language, class = "rounded-md text-3xl lg:text-lg xl:text-base"):
+      tCode(id = "{self.id}", language = self.language, class = "rounded-md text-3xl lg:text-lg xl:text-base"):
         {self.source}
       tDiv(class = "absolute right-4 top-4"):
         tSvg(
@@ -19,3 +20,10 @@ component CodeBlock:
           @click:
             var data = self.CodeBlock.source.val
             {.emit: "navigator.clipboard.writeText(`data`);".}
+  
+  @updated:
+    let id = self.id
+    {.emit: """//js
+    let codeBlock = document.getElementById(`id`.value);
+    hljs.highlightElement(codeBlock);
+    """.}

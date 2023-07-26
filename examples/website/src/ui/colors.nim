@@ -11,3 +11,8 @@ const
   LinkForeground* = "#aca7fa"
   LinkActiveForeground* = "#ccccff"
   LinkVisitedForeground* = "#8c87aa"
+  # Sponsors
+  DefaultSponsor* = "#cefefe"
+  SilverSponsor* = "#c0c0c0"
+  GoldSponsor* = "#ffd700"
+  PlatinumSponsor* = "#e5e4e2"

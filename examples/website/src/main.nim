@@ -3,8 +3,8 @@ import
   happyx,
   path_params,
   ui/colors,
-  components/[button, card, code_block, header, section, smart_card, about_section, drawer],
-  pages/[home]
+  components/[button, card, code_block, header, section, smart_card, about_section, drawer, divider],
+  pages/[home, sponsors]
 
 
 {.emit: """//js
@@ -30,6 +30,7 @@ window.addEventListener('scroll', (ev) => {
 # Declare application with ID "app"
 appRoutes("app"):
   mount "/" -> Home
+  mount "/sponsors" -> Sponsors
 
   notfound:
     tDiv(class = "flex flex-col gap-2 justify-center items-center w-screen h-screen dark:text-[{ForegroundDark}] text-[{Foreground}] dark:bg-[{BackgroundDark}] bg-[{Background}]"):

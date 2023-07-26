@@ -38,6 +38,11 @@ component Drawer:
             """.}
         ):
           "📕 API Docs"
+        component Button(
+          action = proc() =
+            route("/sponsors/")
+        ):
+          "🔥 Sponsors"
   
   [methods]:
     proc toggle*() =
