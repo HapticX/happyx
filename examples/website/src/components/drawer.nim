@@ -11,7 +11,7 @@ component Drawer:
     # Drawer background
     nim:
       echo 2
-    tDiv(id = "drawerBack", class = "fixed duration-500 opacity-0 transition-all w-screen h-screen z-40 bg-[#00000060]"):
+    tDiv(id = "drawerBack", class = "fixed duration-500 opacity-0 pointer-events-none transition-all w-screen h-screen z-40 bg-[#00000060]"):
       @click:
         self.toggle()
     tDiv(id = "drawer", class = "fixed right-0 duration-500 transition-all w-2/3 translate-x-full h-screen z-50 bg-[{BackgroundSecondary}] dark:bg-[{BackgroundSecondaryDark}]"):
@@ -49,11 +49,13 @@ component Drawer:
       if self.isOpen:
         drawerBack.classList.remove("opacity-0")
         drawerBack.classList.add("opacity-100")
+        drawerBack.classList.remove("pointer-events-none")
         drawer.classList.remove("translate-x-full")
         drawer.classList.add("translate-x-0")
       else:
         drawerBack.classList.remove("opacity-100")
         drawerBack.classList.add("opacity-0")
+        drawerBack.classList.add("pointer-events-none")
         drawer.classList.remove("translate-x-0")
         drawer.classList.add("translate-x-full")
       echo "toggled!"
