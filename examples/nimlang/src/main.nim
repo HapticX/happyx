@@ -1,5 +1,5 @@
 import
-  happyx,
+  ../../../src/happyx,
   path_params,
   components/[overview, header],
   app_config

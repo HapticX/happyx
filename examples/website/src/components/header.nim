@@ -1,6 +1,6 @@
 # Import HappyX
 import
-  happyx,
+  ../../../../src/happyx,
   ../ui/colors,
   ./[button, drawer]
 

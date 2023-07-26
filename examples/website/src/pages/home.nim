@@ -1,6 +1,6 @@
 # Import HappyX
 import
-  happyx,
+  ../../../../src/happyx,
   ../path_params,
   ../components/[header, smart_card, card, section, code_block, about_section, drawer],
   ../ui/colors

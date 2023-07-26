@@ -1,10 +1,10 @@
 # Import HappyX
 import
-  happyx,
-  path_params,
-  ui/colors,
-  components/[button, card, code_block, header, section, smart_card, about_section, drawer, divider],
-  pages/[home, sponsors]
+  ../../../src/happyx,
+  ./path_params,
+  ./ui/colors,
+  ./components/[button, card, code_block, header, section, smart_card, about_section, drawer, divider],
+  ./pages/[home, sponsors]
 
 
 {.emit: """//js

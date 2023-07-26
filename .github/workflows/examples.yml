@@ -70,3 +70,10 @@ jobs:
           nim js main
           cd ../../../
         shell: bash
+      
+      - name: Website
+        run: |
+          cd examples/website/src
+          nim js main
+          cd ../../../
+        shell: bash

@@ -1,4 +1,4 @@
-import happyx
+import ../../../../src/happyx
 
 
 component CodeBlock:

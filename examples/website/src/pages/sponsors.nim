@@ -1,5 +1,5 @@
 import
-  happyx,
+  ../../../../src/happyx,
   ../ui/colors,
   ../components/[header, drawer]
 
