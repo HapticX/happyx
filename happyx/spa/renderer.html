@@ -127,10 +127,11 @@ window.addEventListener('DOMContentLoaded', main);
   slot*: TagRef
   created*: ComponentEventHandler ## Calls before first rendering
   exited*: ComponentEventHandler ## Calls after last rendering
-  updated*: ComponentEventHandler ## Calls after every rendering
+  rendered*: ComponentEventHandler ## Calls after every rendering
   pageHide*: ComponentEventHandler ## Calls after every rendering
   pageShow*: ComponentEventHandler ## Calls after every rendering
-  beforeUpdated*: ComponentEventHandler ## Calls before every rendering">BaseComponentObj</a></li>
+  beforeUpdated*: ComponentEventHandler ## Calls before every rendering
+  updated*: ComponentEventHandler ## Calls after every DOM rendering">BaseComponentObj</a></li>
   <li><a class="reference" href="#ComponentEventHandler"
     title="ComponentEventHandler = proc (self: BaseComponent; ev: int = 0): void">ComponentEventHandler</a></li>
 
@@ -147,6 +148,8 @@ window.addEventListener('DOMContentLoaded', main);
     title="components = newTable(32)">components</a></li>
   <li><a class="reference" href="#currentComponent"
     title="currentComponent = &quot;&quot;">currentComponent</a></li>
+  <li><a class="reference" href="#currentComponentsList"
+    title="currentComponentsList: seq[BaseComponent] = @[]">currentComponentsList</a></li>
   <li><a class="reference" href="#currentRoute"
     title="currentRoute: cstring = &quot;/&quot;">currentRoute</a></li>
   <li><a class="reference" href="#eventHandlers"
@@ -307,10 +310,11 @@ window.addEventListener('DOMContentLoaded', main);
   <span class="Identifier">slot</span><span class="Operator">*</span><span class="Other">:</span> <a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a>
   <span class="Identifier">created</span><span class="Operator">*</span><span class="Other">:</span> <a href="renderer.html#ComponentEventHandler"><span class="Identifier">ComponentEventHandler</span></a> <span class="Comment">## Calls before first rendering</span>
   <span class="Identifier">exited</span><span class="Operator">*</span><span class="Other">:</span> <a href="renderer.html#ComponentEventHandler"><span class="Identifier">ComponentEventHandler</span></a> <span class="Comment">## Calls after last rendering</span>
-  <span class="Identifier">updated</span><span class="Operator">*</span><span class="Other">:</span> <a href="renderer.html#ComponentEventHandler"><span class="Identifier">ComponentEventHandler</span></a> <span class="Comment">## Calls after every rendering</span>
+  <span class="Identifier">rendered</span><span class="Operator">*</span><span class="Other">:</span> <a href="renderer.html#ComponentEventHandler"><span class="Identifier">ComponentEventHandler</span></a> <span class="Comment">## Calls after every rendering</span>
   <span class="Identifier">pageHide</span><span class="Operator">*</span><span class="Other">:</span> <a href="renderer.html#ComponentEventHandler"><span class="Identifier">ComponentEventHandler</span></a> <span class="Comment">## Calls after every rendering</span>
   <span class="Identifier">pageShow</span><span class="Operator">*</span><span class="Other">:</span> <a href="renderer.html#ComponentEventHandler"><span class="Identifier">ComponentEventHandler</span></a> <span class="Comment">## Calls after every rendering</span>
   <span class="Identifier">beforeUpdated</span><span class="Operator">*</span><span class="Other">:</span> <a href="renderer.html#ComponentEventHandler"><span class="Identifier">ComponentEventHandler</span></a> <span class="Comment">## Calls before every rendering</span>
+  <span class="Identifier">updated</span><span class="Operator">*</span><span class="Other">:</span> <a href="renderer.html#ComponentEventHandler"><span class="Identifier">ComponentEventHandler</span></a> <span class="Comment">## Calls after every DOM rendering</span>
   </pre></dt>
 <dd>
 
@@ -360,6 +364,14 @@ global application variable
 <dd>
 
 Current component unique ID
+
+</dd>
+</div>
+<div id="currentComponentsList">
+<dt><pre><a href="renderer.html#currentComponentsList"><span class="Identifier">currentComponentsList</span></a><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="renderer.html#BaseComponent"><span class="Identifier">BaseComponent</span></a><span class="Other">]</span> <span class="Other">=</span> <span class="Operator">@</span><span class="Other">[</span><span class="Other">]</span></pre></dt>
+<dd>
+
+
 
 </dd>
 </div>
@@ -624,7 +636,7 @@ Provides JS router for Single page application
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-07-26 05:31:09 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-07-26 12:25:10 UTC</small>
       </div>
     </div>
   </div>
