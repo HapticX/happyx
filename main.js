@@ -17067,7 +17067,7 @@ function HEX3Aanonymous_2214593030() {
     F.line = 20;
     var fmtRes_2214592768 = mnewString(0);
     F.line = 20;
-    fmtRes_2214592768.push.apply(fmtRes_2214592768, makeNimstrLit("flex xl:hidden text-8xl font-bold"));;
+    fmtRes_2214592768.push.apply(fmtRes_2214592768, makeNimstrLit("flex xl:hidden text-8xl font-bold select-none cursor-pointer"));;
     F.line = 21;
     var fmtRes_2214592776 = mnewString(0);
     F.line = 21;
