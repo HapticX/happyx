@@ -355,7 +355,9 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
   result = newCall("initTag", elementName)
 
   for statement in body:
-    if statement.kind == nnkCall and statement[0] == ident"nim" and statement.len == 2 and statement[1].kind == nnkStmtList:
+    if statement.kind == nnkCall and statement[0] == ident"procCall" and inComponent:
+      result.add(statement)
+    elif statement.kind == nnkCall and statement[0] == ident"nim" and statement.len == 2 and statement[1].kind == nnkStmtList:
       # Real Nim code
       result.add(newStmtList(
         statement[1],

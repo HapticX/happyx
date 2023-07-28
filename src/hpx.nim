@@ -17,7 +17,9 @@ import
   # main library
   happyx
 
-import illwill except fgBlue, fgGreen, fgMagenta, fgRed, fgWhite, fgYellow, bgBlue, bgGreen, bgMagenta, bgRed, bgWhite, bgYellow, resetStyle
+import illwill except
+  fgBlue, fgGreen, fgMagenta, fgRed, fgWhite, fgYellow, bgBlue,
+  bgGreen, bgMagenta, bgRed, bgWhite, bgYellow, resetStyle
 
 
 type
@@ -39,7 +41,7 @@ type
 
 
 const
-  VERSION = "1.10.3"
+  VERSION = "1.11.0"
   SPA_MAIN_FILE = "main"
   CONFIG_FILE = "happyx.cfg"
 

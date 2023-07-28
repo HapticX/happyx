@@ -179,7 +179,7 @@ func textTag*(text: string): TagRef {.inline.} =
   runnableExamples:
     var root = textTag"Hello, world!"
   TagRef(
-    name: "", isText: true, parent: nil,
+    name: text, isText: true, parent: nil,
     attrs: newStringTable(), children: @[], args: @[],
     onlyChildren: false
   )

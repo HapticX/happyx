@@ -343,7 +343,7 @@ macro model*(modelName, body: untyped): untyped =
       )
     ),
     newProc(
-      ident("jsonTo" & $modelName),
+      postfix(ident("jsonTo" & $modelName), "*"),
       [modelName, newIdentDefs(ident"node", ident"JsonNode")],
       newStmtList(
         newAssignment(ident"result", newNimNode(nnkObjConstr).add(ident($modelName))),
@@ -351,7 +351,7 @@ macro model*(modelName, body: untyped): untyped =
       )
     ),
     newProc(
-      ident("xWwwUrlencodedTo" & $modelName),
+      postfix(ident("xWwwUrlencodedTo" & $modelName), "*"),
       [modelName, newIdentDefs(ident"formData", ident"string")],
       newStmtList(
         newAssignment(ident"result", newNimNode(nnkObjConstr).add(ident($modelName))),
@@ -360,7 +360,7 @@ macro model*(modelName, body: untyped): untyped =
       )
     ),
     newProc(
-      ident("xmlBodyTo" & $modelName),
+      postfix(ident("xmlBodyTo" & $modelName), "*"),
       [modelName, newIdentDefs(ident"data", ident"string")],
       newStmtList(
         newAssignment(ident"result", newNimNode(nnkObjConstr).add(ident($modelName))),
@@ -369,7 +369,7 @@ macro model*(modelName, body: untyped): untyped =
       )
     ),
     newProc(
-      ident("formDataTo" & $modelName),
+      postfix(ident("formDataTo" & $modelName), "*"),
       [modelName, newIdentDefs(ident"data", ident"string")],
       newStmtList(
         newAssignment(ident"result", newNimNode(nnkObjConstr).add(ident($modelName))),

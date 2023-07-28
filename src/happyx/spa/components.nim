@@ -8,11 +8,21 @@ import
   # Stdlib
   strformat,
   macros,
+  tables,
   # HappyX
   ./renderer,
   ../sugar/[js, style],
   ../core/[exceptions],
   ../private/[macro_utils]
+
+
+type
+  ComponentInfo = object
+    extendsOf: string
+    fields: seq[string]
+
+
+var createdComponents {.compileTime.} = newTable[string, ComponentInfo]()
 
 
 proc replaceSelfStateVal(statement: NimNode) =
@@ -24,6 +34,30 @@ proc replaceSelfStateVal(statement: NimNode) =
     if i.kind in RoutineNodes:
       continue
     i.replaceSelfStateVal()
+
+
+proc replaceSuperCall(statement: NimNode, parentComponent, funcName: string, needDiscard: bool = false) =
+  ## Replaces super() calls in `statement`
+  echo treeRepr statement
+  var superCallsIdx: seq[int] = @[]
+  for idx, child in statement.pairs:
+    if child.kind == nnkCall and child[0] == ident"super" and child.len == 1:
+      superCallsIdx.add(idx)
+  
+  for i in superCallsIdx:
+    if needDiscard:
+      statement[i] = newNimNode(nnkDiscardStmt).add(
+        newCall("procCall", newDotExpr(newDotExpr(ident"self", ident(parentComponent)), ident(funcName)))
+      )
+    else:
+      statement[i] = newCall(
+        "procCall",
+        newDotExpr(newDotExpr(ident"self", ident(parentComponent)), ident(funcName))
+      )
+  
+  for child in statement.children:
+    if child.kind notin AtomicNodes:
+      replaceSuperCall(child, parentComponent, funcName, needDiscard)
 
 
 macro component*(name, body: untyped): untyped =
@@ -107,20 +141,70 @@ macro component*(name, body: untyped): untyped =
   ##        tDiv(...):
   ##          "This div tag with this text will shown in component slot"
   ## 
+  ## ## Inheritance 📦
+  ## 
+  ## Components may be inherited from other component.
+  ## 
+  ## Here is minimal example:
+  ## 
+  ## .. code-block::nim
+  ##    component A:
+  ##      a: int = 0
+  ##      `template`:
+  ##        tDiv:
+  ##          "Hello, world!"
+  ##    component B of A:
+  ##      `template`:
+  ##        tDiv:
+  ##          super()
+  ##          {self.a}
+  ## 
   let
-    name = $name
-    nameObj = $name & "Obj"
+    componentName =
+      if name.kind == nnkIdent:
+        $name
+      elif name.kind == nnkInfix:
+        $name[1]
+      else:
+        ""
+    extendsOf =
+      if name.kind == nnkInfix:
+        $name[2]
+      else:
+        ""
+  
+  if componentName == "":
+    throwDefect(
+      HpxComponentDefect,
+      fmt"component name should be identifier, but got {name.toStrLit}",
+      lineInfoObj(name)
+    )
+  if createdComponents.hasKey(componentName):
+    throwDefect(
+      HpxComponentDefect,
+      fmt"Components with both names is forbidden! component {componentName} has been declared ",
+      lineInfoObj(name)
+    )
+  if extendsOf != "" and not createdComponents.hasKey(extendsOf):
+    throwDefect(
+      HpxComponentDefect,
+      fmt"Component {extendsOf} is not exists!",
+      lineInfoObj(name)
+    )
+
+  let
+    componentNameObj = componentName & "Obj"
     params = newNimNode(nnkRecList)
     initParams = newNimNode(nnkFormalParams)
-    initProc = newProc(postfix(ident(fmt"init{name}"), "*"))
+    initProc = newProc(postfix(ident(fmt"init{componentName}"), "*"))
     initObjConstr = newNimNode(nnkObjConstr).add(
-      ident(name), newColonExpr(ident(UniqueComponentId), ident(UniqueComponentId))
+      ident(componentName), newColonExpr(ident(UniqueComponentId), ident(UniqueComponentId))
     )
     beforeStmtList = newStmtList()
     afterStmtList = newStmtList()
     reRenderProc = newProc(
       postfix(ident"reRender", "*"),
-      [newEmptyNode(), newIdentDefs(ident"self", ident(name))],
+      [newEmptyNode(), newIdentDefs(ident"self", ident(componentName))],
       newStmtList(
         newLetStmt(
           ident"tmpData",
@@ -237,14 +321,16 @@ macro component*(name, body: untyped): untyped =
     }.newTable()
   
   initParams.add(
-    ident(name),
+    ident(componentName),
     newIdentDefs(ident(UniqueComponentId), bindSym("string"))
   )
+
+  var fields: seq[string] = @[]
   
   for s in body.children:
     if s.kind in [nnkCall, nnkCommand, nnkInfix, nnkPrefix]:
       # Private field
-      if s[0].kind == nnkIdent and s.len == 2 and s[^1].kind == nnkStmtList and s[^1].len == 1:
+      if s[0] != ident"constructor" and s[0].kind == nnkIdent and s.len == 2 and s[^1].kind == nnkStmtList and s[^1].len == 1:
         # Extract default value and field type
         let (fieldType, defaultValue) =
           if s[^1][0].kind == nnkIdent:
@@ -262,6 +348,7 @@ macro component*(name, body: untyped): untyped =
           s[0], fieldType, defaultValue
         ))
         initObjConstr.add(newColonExpr(s[0], newCall("remember", s[0])))
+        fields.add($(s[0]))
       
       # Public field
       elif s.kind == nnkPrefix and s[0] == ident"*" and s[1].kind == nnkIdent and s[2].len == 1:
@@ -282,48 +369,48 @@ macro component*(name, body: untyped): untyped =
           s[1], fieldType, defaultValue
         ))
         initObjConstr.add(newColonExpr(s[1], newCall("remember", s[1])))
+        fields.add($(s[1]))
       
       # Constructors
       elif s.kind == nnkCall and s[0] == ident"constructor" or (s[0].kind == nnkObjConstr and s[0][0] == ident"constructor"):
-        # Ignore body comments and insert self declaration
+        # Ignore constructorBody comments and insert self declaration
         var
-          body = s[1]
+          constructorBody = s[1]
           i = 0
-        for child in body.children:
+        for child in constructorBody.children:
           if child.kind == nnkCommentStmt:
             inc i
             continue
           else:
-            body.insert(
+            constructorBody.insert(
               i,
               newVarStmt(
                 ident"self",
-                newCall(fmt"init{name}", ident(UniqueComponentId))
+                newCall(fmt"init{componentName}", ident(UniqueComponentId))
               )
             )
-            body.add(newNimNode(nnkReturnStmt).add(ident"self"))
-            # body.replaceSelfComponent(ident(name), is_constructor = true)
+            constructorBody.add(newNimNode(nnkReturnStmt).add(ident"self"))
             break
         # Constructor without arguments
         if s[0].kind == nnkIdent:
           componentConstructors.add(
             newProc(
-              postfix(ident(fmt"constructor_{name}"), "*"),
-              [ident(name), newIdentDefs(ident(UniqueComponentId), bindSym("string"))],
-              body
+              postfix(ident(fmt"constructor_{componentName}"), "*"),
+              [ident(componentName), newIdentDefs(ident(UniqueComponentId), bindSym("string"))],
+              constructorBody
             )
           )
         # Constructor with arguments
         else:
-          var args = @[ident(name), newIdentDefs(ident(UniqueComponentId), bindSym("string"))]
+          var args = @[ident(componentName), newIdentDefs(ident(UniqueComponentId), bindSym("string"))]
           for arg in s[0].children:
             if arg.kind == nnkExprColonExpr:
               args.add(newIdentDefs(arg[0], arg[1]))
           componentConstructors.add(
             newProc(
-              postfix(ident(fmt"constructor_{name}"), "*"),
+              postfix(ident(fmt"constructor_{componentName}"), "*"),
               args,
-              body
+              constructorBody
             )
           )
       
@@ -333,7 +420,7 @@ macro component*(name, body: untyped): untyped =
 
         for statement in s[1]:
           if statement.kind in [nnkProcDef, nnkMethodDef, nnkIteratorDef, nnkConverterDef]:
-            statement[3].insert(1, newIdentDefs(ident"self", ident(name)))
+            statement[3].insert(1, newIdentDefs(ident"self", ident(componentName)))
             methodsStmtList.add(statement)
             var declaration = statement.copy()
             declaration.body = newEmptyNode()
@@ -358,23 +445,17 @@ macro component*(name, body: untyped): untyped =
         case $acc
         of "template":
           # Component template
+          s[^1].replaceSuperCall(extendsOf, "renderTag")
+          echo treeRepr s[^1]
           templateStmtList = newStmtList(
-            newCall("add", ident"currentComponentsList", ident"self"),
-            newAssignment(ident"currentComponent", newDotExpr(ident"self", ident(UniqueComponentId))),
-            newCall("script", ident"self"),
-            beforeStmtList,
             newAssignment(
               ident"result",
               newCall(
                 "buildComponentHtml",
-                ident(name),
-                s[^1].add(newCall(
-                  "style", newStmtList(newStrLitNode("{self.style()}"))
-                ))
+                ident(componentName),
+                s[^1]
               )
-            ),
-            afterStmtList,
-            newAssignment(ident"currentComponent", newStrLitNode(""))
+            )
           )
         of "style":
           # Component styles
@@ -445,7 +526,7 @@ macro component*(name, body: untyped): untyped =
               getAst(buildJs(s[^1]))
             )
           else:
-            s[^1].replaceSelfComponent(ident(name), convert = false, is_constructor = true)
+            s[^1].replaceSelfComponent(ident(componentName), convert = false, is_constructor = true)
             scriptStmtList = s[^1]
             scriptStmtList.insert(0, newAssignment(ident"enableRouting", newLit(false)))
             scriptStmtList.add(newAssignment(ident"enableRouting", newLit(true)))
@@ -463,7 +544,7 @@ macro component*(name, body: untyped): untyped =
           let key = $s[1]
           if usedLifeCycles.hasKey(key) and not usedLifeCycles[key]:
             var lambdaBody = s[2]
-            lambdaBody.replaceSelfComponent(ident(name), convert = false, is_constructor = true)
+            lambdaBody.replaceSelfComponent(ident(componentName), convert = false, is_constructor = true)
             lifeCyclesDeclare.insert(0, newAssignment(
               newDotExpr(ident"result", ident(key)),
               newLambda(lambdaBody, arguments)
@@ -516,21 +597,29 @@ macro component*(name, body: untyped): untyped =
     newCall(newDotExpr(ident"self", ident"rendered"), ident"self")
   )
 
+  createdComponents[componentName] = ComponentInfo(extendsOf: extendsOf, fields: fields)
+
+  if extendsOf != "":
+    scriptStmtList.replaceSuperCall(extendsOf, "script")
+
   result = newStmtList(
     newNimNode(nnkTypeSection).add(
       newNimNode(nnkTypeDef).add(
-        postfix(ident(nameObj), "*"),  # name
+        postfix(ident(componentNameObj), "*"),  # componentName
         newEmptyNode(),
         newNimNode(nnkObjectTy).add(
           newEmptyNode(),  # no pragma
-          newNimNode(nnkOfInherit).add(ident"BaseComponentObj"),
+          if extendsOf == "":
+            newNimNode(nnkOfInherit).add(ident"BaseComponentObj")
+          else:
+            newNimNode(nnkOfInherit).add(ident(extendsOf)),
           params
         )
       ),
       newNimNode(nnkTypeDef).add(
-        postfix(ident(name), "*"),  # name
+        postfix(ident(componentName), "*"),  # componentName
         newEmptyNode(),
-        newNimNode(nnkRefTy).add(ident(nameObj))
+        newNimNode(nnkRefTy).add(ident(componentNameObj))
       )
     ),
     declareMethodsStmtList,
@@ -541,9 +630,14 @@ macro component*(name, body: untyped): untyped =
       ident"script",
       [
         newEmptyNode(),
-        newIdentDefs(ident"self", ident(name))
+        newIdentDefs(ident"self", ident(componentName))
       ],
-      scriptStmtList,
+      if scriptStmtList.len != 0:
+        scriptStmtList
+      elif extendsOf == "":
+        discardStmt
+      else:
+        newCall("procCall", newDotExpr(newDotExpr(ident"self", ident(extendsOf)), ident"script")),
       pragmas =
         when defined(js):
           newEmptyNode()
@@ -554,9 +648,26 @@ macro component*(name, body: untyped): untyped =
       ident"style",
       [
         ident"string",
-        newIdentDefs(ident"self", ident(name))
+        newIdentDefs(ident"self", ident(componentName))
       ],
-      styleStmtList,
+      if styleStmtList.len != 0 and extendsOf == "":
+        styleStmtList
+      elif styleStmtList.len != 0 and extendsOf != "":
+        newStmtList(
+          styleStmtList,
+          newAssignment(
+            ident"result",
+            newCall(
+              "&",
+              newCall("procCall", newDotExpr(newDotExpr(ident"self", ident(extendsOf)), ident"style")),
+              ident"result"
+            )
+          )
+        )
+      elif extendsOf == "":
+        newStrLitNode("")
+      else:
+        newCall("procCall", newDotExpr(newDotExpr(ident"self", ident(extendsOf)), ident"style")),
       pragmas =
         when defined(js):
           newEmptyNode()
@@ -564,34 +675,52 @@ macro component*(name, body: untyped): untyped =
           newNimNode(nnkPragma).add(ident"gcsafe")
     ),
     newProc(
-      postfix(ident"render", "*"),
-      [
-        ident"TagRef",
-        newIdentDefs(ident"self", ident(name))
-      ],
-      if templateStmtList.len == 0:
-        newStmtList(
-          newCall("add", ident"currentComponentsList", ident"self"),
-          newAssignment(ident"currentComponent", newDotExpr(ident"self", ident(UniqueComponentId))),
-          newCall("script", ident"self"),
-          beforeStmtList,
+      postfix(ident"renderTag", "*"),
+      [ident"TagRef", newIdentDefs(ident"self", ident(componentName))],
+      newStmtList(
+        if templateStmtList.len != 0:
+          templateStmtList
+        elif extendsOf != "":
+          newAssignment(
+            ident"result",
+            newCall("procCall", newDotExpr(newDotExpr(ident"self", ident(extendsOf)), ident"renderTag"))
+          )
+        else:
           newAssignment(
             ident"result",
             newCall(
               "buildComponentHtml",
-              ident(name),
-              newStmtList(
-                newCall(
-                  "style", newStmtList(newStrLitNode("{self.style()}"))
-                )
-              )
+              ident(componentName),
+              newStmtList()
             )
-          ),
-          afterStmtList,
-          newAssignment(ident"currentComponent", newStrLitNode(""))
-        )
-      else:
-        templateStmtList,
+          )
+      )
+    ),
+    newProc(
+      postfix(ident"render", "*"),
+      [
+        ident"TagRef",
+        newIdentDefs(ident"self", ident(componentName))
+      ],
+      newStmtList(
+        newCall("add", ident"currentComponentsList", ident"self"),
+        newAssignment(ident"currentComponent", newDotExpr(ident"self", ident(UniqueComponentId))),
+        newCall("script", ident"self"),
+        beforeStmtList,
+        newAssignment(
+          ident"result", newCall("renderTag", ident"self")
+        ),
+        newCall(
+          "add",
+          ident"result",
+          newCall("initTag", newStrLitNode("style"), newCall("@", newNimNode(nnkBracket).add(
+            newCall("textTag", newCall("style", ident"self"))
+          )))
+        ),
+        newCall("echo", ident"result"),
+        afterStmtList,
+        newAssignment(ident"currentComponent", newStrLitNode(""))
+      ),
       nnkMethodDef,
       pragmas =
         when defined(js):
@@ -601,3 +730,4 @@ macro component*(name, body: untyped): untyped =
     ),
     methodsStmtList,
   )
+  echo result.toStrLit

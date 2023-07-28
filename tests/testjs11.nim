@@ -4,20 +4,46 @@ import
 
 component Constructor:
   privateField: int = 0
-
   constructor(val: int):
     ## Some information about this constructor
     echo 1
     self.privateField = remember val * 2
-
   constructor():
     ## Some information about this constructor
     echo 2
     self.privateField = remember 10
-
   `template`:
     tDiv:
       {self.privateField}
+  `script`:
+    echo fmt"Hello from Constructor {self.uniqCompId} ({self.privateField})"
+  
+  `style`: """
+    div {
+      background: #ffeced
+    }
+  """
+
+
+component ConstructorChild of Constructor:
+  constructor():
+    self.privateField = remember 100_000
+  
+  `template`:
+    tDiv:
+      "ConstructorChild"
+      tDiv(style = "padding-left: .5rem"):
+        super()
+  
+  `script`:
+    super()
+    echo "Hi from child"
+  
+  `style`: """
+    div {
+      color: green;
+    }
+  """
 
 
 var constructor = use:
@@ -35,3 +61,4 @@ appRoutes "app":
     component Constructor->construct()
     component Constructor->construct(val = 100):
       "Hello, world!"
+    component ConstructorChild->construct()
