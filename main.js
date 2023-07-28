@@ -2,69 +2,69 @@
 var framePtr = null;
 var excHandler = 0;
 var lastJSError = null;
-var NTI2281701678 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI2281701560 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI2281701480 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI2281701467 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI2298478687 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI2298478662 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI2315256326 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI2315255931 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI2264924224 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI2231370038 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI2231369997 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI2231369984 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI2231369969 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI2231369947 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI2231369820 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI2214592949 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI2214592907 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI2214592895 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI2214592881 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI2214592734 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI2214592621 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI2214592607 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI2214592594 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI2248147008 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI2197815641 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI2197815616 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI2197815575 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI2197815562 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI2197815397 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI2197815384 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI2164261175 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI2164261139 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI2164261117 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI2181038247 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI2181038158 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2281701670 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2281701552 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2281701472 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2281701459 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2298478679 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2298478654 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2315256318 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2315255923 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2264924216 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2231370030 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2231369989 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2231369976 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2231369961 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2231369939 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2231369812 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2214592941 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2214592899 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2214592887 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2214592873 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2214592726 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2214592613 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2214592599 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2214592586 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2248147000 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2197815633 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2197815608 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2197815567 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2197815554 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2197815389 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2197815376 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2164261178 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2164261142 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2164261120 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2181038239 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2181038150 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI687867858 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI1073741861 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI1073741841 = {size: 0, kind: 14, base: null, node: null, finalizer: null};
-var NTI1073742009 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI1073741866 = {size: 0,kind: 31,base: null,node: null,finalizer: null};
-var NTI1073741848 = {size: 0, kind: 20, base: null, node: null, finalizer: null};
-var NTI1073741856 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI1124073509 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI1124073489 = {size: 0, kind: 14, base: null, node: null, finalizer: null};
+var NTI1124073657 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI1124073514 = {size: 0,kind: 31,base: null,node: null,finalizer: null};
+var NTI1124073496 = {size: 0, kind: 20, base: null, node: null, finalizer: null};
+var NTI1124073504 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI33554460 = {size: 0,kind: 35,base: null,node: null,finalizer: null};
-var NTI1073741854 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI1073741893 = {size: 0,kind: 25,base: null,node: null,finalizer: null};
-var NTI1073741892 = {size: 0,kind: 25,base: null,node: null,finalizer: null};
-var NTI1073741891 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI1073741860 = {size: 0, kind: 22, base: null, node: null, finalizer: null};
-var NTI1073741883 = {size: 0,kind: 31,base: null,node: null,finalizer: null};
-var NTI1073741852 = {size: 0, kind: 20, base: null, node: null, finalizer: null};
-var NTI1073741842 = {size: 0, kind: 14, base: null, node: null, finalizer: null};
-var NTI1073741871 = {size: 0,kind: 31,base: null,node: null,finalizer: null};
-var NTI1073741849 = {size: 0, kind: 20, base: null, node: null, finalizer: null};
-var NTI1073741875 = {size: 0,kind: 31,base: null,node: null,finalizer: null};
-var NTI1073741850 = {size: 0, kind: 20, base: null, node: null, finalizer: null};
-var NTI1073741879 = {size: 0,kind: 31,base: null,node: null,finalizer: null};
-var NTI1073741851 = {size: 0, kind: 20, base: null, node: null, finalizer: null};
-var NTI1073741887 = {size: 0,kind: 31,base: null,node: null,finalizer: null};
-var NTI1073741853 = {size: 0, kind: 20, base: null, node: null, finalizer: null};
-var NTI1073741855 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
-var NTI973078531 = {size: 0, kind: 14, base: null, node: null, finalizer: null};
-var NTI973078540 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
-var NTI973078541 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
+var NTI1124073502 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI1124073541 = {size: 0,kind: 25,base: null,node: null,finalizer: null};
+var NTI1124073540 = {size: 0,kind: 25,base: null,node: null,finalizer: null};
+var NTI1124073539 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI1124073508 = {size: 0, kind: 22, base: null, node: null, finalizer: null};
+var NTI1124073531 = {size: 0,kind: 31,base: null,node: null,finalizer: null};
+var NTI1124073500 = {size: 0, kind: 20, base: null, node: null, finalizer: null};
+var NTI1124073490 = {size: 0, kind: 14, base: null, node: null, finalizer: null};
+var NTI1124073519 = {size: 0,kind: 31,base: null,node: null,finalizer: null};
+var NTI1124073497 = {size: 0, kind: 20, base: null, node: null, finalizer: null};
+var NTI1124073523 = {size: 0,kind: 31,base: null,node: null,finalizer: null};
+var NTI1124073498 = {size: 0, kind: 20, base: null, node: null, finalizer: null};
+var NTI1124073527 = {size: 0,kind: 31,base: null,node: null,finalizer: null};
+var NTI1124073499 = {size: 0, kind: 20, base: null, node: null, finalizer: null};
+var NTI1124073535 = {size: 0,kind: 31,base: null,node: null,finalizer: null};
+var NTI1124073501 = {size: 0, kind: 20, base: null, node: null, finalizer: null};
+var NTI1124073503 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
+var NTI1040187395 = {size: 0, kind: 14, base: null, node: null, finalizer: null};
+var NTI1040187404 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
+var NTI1040187405 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
 var NTI33555142 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
 var NTI1660944476 = {size: 0,kind: 25,base: null,node: null,finalizer: null};
 var NTI1660944475 = {size: 0,kind: 25,base: null,node: null,finalizer: null};
@@ -212,9 +212,9 @@ var NTI452985110 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI452985090 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI452985073 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI2164260868 = {size: 0,kind: 25,base: null,node: null,finalizer: null};
-var NTI2164260929 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI2164260928 = {size: 0, kind: 22, base: null, node: null, finalizer: null};
-var NTI2164260918 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
+var NTI2164260940 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2164260939 = {size: 0, kind: 22, base: null, node: null, finalizer: null};
+var NTI2164260929 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
 var NTI452985006 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI452984967 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI452984938 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
@@ -230,28 +230,28 @@ var NTI33555125 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
 var NTI33555126 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
 var NTI1560281094 = {size: 0, kind: 24, base: null, node: null, finalizer: null};
 var NTI1560281093 = {size: 0, kind: 24, base: null, node: null, finalizer: null};
-var NTI1006632963 = {size: 0, kind: 14, base: null, node: null, finalizer: null};
-var NTI1006632964 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI1006632965 = {size: 0, kind: 24, base: null, node: null, finalizer: null};
-var NTI1006632966 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
-var NTI1006632967 = {size: 0, kind: 22, base: null, node: null, finalizer: null};
+var NTI1073741827 = {size: 0, kind: 14, base: null, node: null, finalizer: null};
+var NTI1073741828 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI1073741829 = {size: 0, kind: 24, base: null, node: null, finalizer: null};
+var NTI1073741830 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
+var NTI1073741831 = {size: 0, kind: 22, base: null, node: null, finalizer: null};
 var NTI1560281092 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI1560281091 = {size: 0, kind: 22, base: null, node: null, finalizer: null};
 var NTI33554466 = {size: 0,kind: 1,base: null,node: null,finalizer: null};
-var NTI956301319 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
-var NTI956301318 = {size: 0, kind: 22, base: null, node: null, finalizer: null};
-var NTI956302870 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI956302867 = {size: 0, kind: 24, base: null, node: null, finalizer: null};
-var NTI956302864 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI956301324 = {size: 0,kind: 25,base: null,node: null,finalizer: null};
-var NTI956302108 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI956302105 = {size: 0, kind: 24, base: null, node: null, finalizer: null};
-var NTI956302102 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI956301323 = {size: 0,kind: 25,base: null,node: null,finalizer: null};
-var NTI1124073475 = {size: 0,kind: 31,base: null,node: null,finalizer: null};
-var NTI956301341 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI956301338 = {size: 0, kind: 24, base: null, node: null, finalizer: null};
-var NTI956301335 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI1023410183 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
+var NTI1023410182 = {size: 0, kind: 22, base: null, node: null, finalizer: null};
+var NTI1023411734 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI1023411731 = {size: 0, kind: 24, base: null, node: null, finalizer: null};
+var NTI1023411728 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI1023410188 = {size: 0,kind: 25,base: null,node: null,finalizer: null};
+var NTI1023410972 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI1023410969 = {size: 0, kind: 24, base: null, node: null, finalizer: null};
+var NTI1023410966 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI1023410187 = {size: 0,kind: 25,base: null,node: null,finalizer: null};
+var NTI973078531 = {size: 0,kind: 31,base: null,node: null,finalizer: null};
+var NTI1023410205 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI1023410202 = {size: 0, kind: 24, base: null, node: null, finalizer: null};
+var NTI1023410199 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI33555121 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
 var NTI33555128 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
 var NTI33555130 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
@@ -299,69 +299,69 @@ NTI33555128.base = NTI33555113;
 var NNI33555121 = {kind: 2, len: 0, offset: 0, typ: null, name: null, sons: []};
 NTI33555121.node = NNI33555121;
 NTI33555121.base = NTI33555120;
-var NNI956301341 = {kind: 2, len: 3, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI1124073475, name: "Field0", sons: null}, 
+var NNI1023410205 = {kind: 2, len: 3, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI973078531, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554456, name: "Field1", sons: null}, 
-{kind: 1, offset: "Field2", len: 0, typ: NTI956301323, name: "Field2", sons: null}]};
-NTI956301341.node = NNI956301341;
-NTI956301338.base = NTI956301341;
-var NNI956301335 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "data", len: 0, typ: NTI956301338, name: "data", sons: null}, 
+{kind: 1, offset: "Field2", len: 0, typ: NTI1023410187, name: "Field2", sons: null}]};
+NTI1023410205.node = NNI1023410205;
+NTI1023410202.base = NTI1023410205;
+var NNI1023410199 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "data", len: 0, typ: NTI1023410202, name: "data", sons: null}, 
 {kind: 1, offset: "counter", len: 0, typ: NTI33554456, name: "counter", sons: null}]};
-NTI956301335.node = NNI956301335;
-var NNI956302108 = {kind: 2, len: 3, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI1124073475, name: "Field0", sons: null}, 
+NTI1023410199.node = NNI1023410199;
+var NNI1023410972 = {kind: 2, len: 3, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI973078531, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554456, name: "Field1", sons: null}, 
-{kind: 1, offset: "Field2", len: 0, typ: NTI956301324, name: "Field2", sons: null}]};
-NTI956302108.node = NNI956302108;
-NTI956302105.base = NTI956302108;
-var NNI956302102 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "data", len: 0, typ: NTI956302105, name: "data", sons: null}, 
+{kind: 1, offset: "Field2", len: 0, typ: NTI1023410188, name: "Field2", sons: null}]};
+NTI1023410972.node = NNI1023410972;
+NTI1023410969.base = NTI1023410972;
+var NNI1023410966 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "data", len: 0, typ: NTI1023410969, name: "data", sons: null}, 
 {kind: 1, offset: "counter", len: 0, typ: NTI33554456, name: "counter", sons: null}]};
-NTI956302102.node = NNI956302102;
-var NNI1006632964 = {kind: 2, len: 3, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+NTI1023410966.node = NNI1023410966;
+var NNI1073741828 = {kind: 2, len: 3, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}, 
 {kind: 1, offset: "Field2", len: 0, typ: NTI33554466, name: "Field2", sons: null}]};
-NTI1006632964.node = NNI1006632964;
-NTI1006632965.base = NTI1006632964;
-var NNI1006632963 = {kind: 2, offset: 0, typ: null, name: null, len: 3, sons: {"0": {kind: 1, offset: 0, typ: NTI1006632963, name: "modeCaseSensitive", len: 0, sons: null}, 
-"1": {kind: 1, offset: 1, typ: NTI1006632963, name: "modeCaseInsensitive", len: 0, sons: null}, 
-"2": {kind: 1, offset: 2, typ: NTI1006632963, name: "modeStyleInsensitive", len: 0, sons: null}}};
-NTI1006632963.node = NNI1006632963;
-var NNI1006632966 = {kind: 2, len: 3, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "counter", len: 0, typ: NTI33554456, name: "counter", sons: null}, 
-{kind: 1, offset: "data", len: 0, typ: NTI1006632965, name: "data", sons: null}, 
-{kind: 1, offset: "mode", len: 0, typ: NTI1006632963, name: "mode", sons: null}]};
-NTI1006632966.node = NNI1006632966;
-NTI1006632966.base = NTI33555083;
-NTI1006632967.base = NTI1006632966;
+NTI1073741828.node = NNI1073741828;
+NTI1073741829.base = NTI1073741828;
+var NNI1073741827 = {kind: 2, offset: 0, typ: null, name: null, len: 3, sons: {"0": {kind: 1, offset: 0, typ: NTI1073741827, name: "modeCaseSensitive", len: 0, sons: null}, 
+"1": {kind: 1, offset: 1, typ: NTI1073741827, name: "modeCaseInsensitive", len: 0, sons: null}, 
+"2": {kind: 1, offset: 2, typ: NTI1073741827, name: "modeStyleInsensitive", len: 0, sons: null}}};
+NTI1073741827.node = NNI1073741827;
+var NNI1073741830 = {kind: 2, len: 3, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "counter", len: 0, typ: NTI33554456, name: "counter", sons: null}, 
+{kind: 1, offset: "data", len: 0, typ: NTI1073741829, name: "data", sons: null}, 
+{kind: 1, offset: "mode", len: 0, typ: NTI1073741827, name: "mode", sons: null}]};
+NTI1073741830.node = NNI1073741830;
+NTI1073741830.base = NTI33555083;
+NTI1073741831.base = NTI1073741830;
 NTI1560281093.base = NTI33554439;
 NTI1560281094.base = NTI1560281091;
 var NNI1560281092 = {kind: 2, len: 7, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "name", len: 0, typ: NTI33554439, name: "name", sons: null}, 
 {kind: 1, offset: "parent", len: 0, typ: NTI1560281091, name: "parent", sons: null}, 
-{kind: 1, offset: "attrs", len: 0, typ: NTI1006632967, name: "attrs", sons: null}, 
+{kind: 1, offset: "attrs", len: 0, typ: NTI1073741831, name: "attrs", sons: null}, 
 {kind: 1, offset: "args", len: 0, typ: NTI1560281093, name: "args", sons: null}, 
 {kind: 1, offset: "children", len: 0, typ: NTI1560281094, name: "children", sons: null}, 
 {kind: 1, offset: "isText", len: 0, typ: NTI33554466, name: "isText", sons: null}, 
 {kind: 1, offset: "onlyChildren", len: 0, typ: NTI33554466, name: "onlyChildren", sons: null}]};
 NTI1560281092.node = NNI1560281092;
 NTI1560281091.base = NTI1560281092;
-var NNI956301319 = {kind: 2, len: 10, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "uniqCompId", len: 0, typ: NTI33554439, name: "uniqCompId", sons: null}, 
+var NNI1023410183 = {kind: 2, len: 10, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "uniqCompId", len: 0, typ: NTI33554439, name: "uniqCompId", sons: null}, 
 {kind: 1, offset: "isCreated", len: 0, typ: NTI33554466, name: "isCreated", sons: null}, 
 {kind: 1, offset: "slot", len: 0, typ: NTI1560281091, name: "slot", sons: null}, 
-{kind: 1, offset: "created", len: 0, typ: NTI956301324, name: "created", sons: null}, 
-{kind: 1, offset: "exited", len: 0, typ: NTI956301324, name: "exited", sons: null}, 
-{kind: 1, offset: "rendered", len: 0, typ: NTI956301324, name: "rendered", sons: null}, 
-{kind: 1, offset: "pageHide", len: 0, typ: NTI956301324, name: "pageHide", sons: null}, 
-{kind: 1, offset: "pageShow", len: 0, typ: NTI956301324, name: "pageShow", sons: null}, 
-{kind: 1, offset: "beforeUpdated", len: 0, typ: NTI956301324, name: "beforeUpdated", sons: null}, 
-{kind: 1, offset: "updated", len: 0, typ: NTI956301324, name: "updated", sons: null}]};
-NTI956301319.node = NNI956301319;
-NTI956301319.base = NTI33555083;
-NTI956301318.base = NTI956301319;
-var NNI956302870 = {kind: 2, len: 3, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI1124073475, name: "Field0", sons: null}, 
+{kind: 1, offset: "created", len: 0, typ: NTI1023410188, name: "created", sons: null}, 
+{kind: 1, offset: "exited", len: 0, typ: NTI1023410188, name: "exited", sons: null}, 
+{kind: 1, offset: "rendered", len: 0, typ: NTI1023410188, name: "rendered", sons: null}, 
+{kind: 1, offset: "pageHide", len: 0, typ: NTI1023410188, name: "pageHide", sons: null}, 
+{kind: 1, offset: "pageShow", len: 0, typ: NTI1023410188, name: "pageShow", sons: null}, 
+{kind: 1, offset: "beforeUpdated", len: 0, typ: NTI1023410188, name: "beforeUpdated", sons: null}, 
+{kind: 1, offset: "updated", len: 0, typ: NTI1023410188, name: "updated", sons: null}]};
+NTI1023410183.node = NNI1023410183;
+NTI1023410183.base = NTI33555083;
+NTI1023410182.base = NTI1023410183;
+var NNI1023411734 = {kind: 2, len: 3, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI973078531, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554440, name: "Field1", sons: null}, 
-{kind: 1, offset: "Field2", len: 0, typ: NTI956301318, name: "Field2", sons: null}]};
-NTI956302870.node = NNI956302870;
-NTI956302867.base = NTI956302870;
-var NNI956302864 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "data", len: 0, typ: NTI956302867, name: "data", sons: null}, 
+{kind: 1, offset: "Field2", len: 0, typ: NTI1023410182, name: "Field2", sons: null}]};
+NTI1023411734.node = NNI1023411734;
+NTI1023411731.base = NTI1023411734;
+var NNI1023411728 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "data", len: 0, typ: NTI1023411731, name: "data", sons: null}, 
 {kind: 1, offset: "counter", len: 0, typ: NTI33554456, name: "counter", sons: null}]};
-NTI956302864.node = NNI956302864;
+NTI1023411728.node = NNI1023411728;
 var NNI33555126 = {kind: 2, len: 0, offset: 0, typ: null, name: null, sons: []};
 NTI33555126.node = NNI33555126;
 var NNI33555125 = {kind: 2, len: 0, offset: 0, typ: null, name: null, sons: []};
@@ -376,7 +376,7 @@ NTI1811939864.node = NNI1811939864;
 NTI1811939863.base = NTI1811939864;
 var NNI2231369731 = {kind: 1, offset: "isOpen", len: 0, typ: NTI1811939863, name: "isOpen", sons: null};
 NTI2231369731.node = NNI2231369731;
-NTI2231369731.base = NTI956301319;
+NTI2231369731.base = NTI1023410183;
 var NNI33555124 = {kind: 2, len: 0, offset: 0, typ: null, name: null, sons: []};
 NTI33555124.node = NNI33555124;
 NTI33555124.base = NTI33555113;
@@ -395,13 +395,13 @@ NTI452984967.node = NNI452984967;
 var NNI452985006 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
 NTI452985006.node = NNI452985006;
-var NNI2164260929 = {kind: 1, offset: "value", len: 0, typ: NTI2164260868, name: "value", sons: null};
+var NNI2164260940 = {kind: 1, offset: "value", len: 0, typ: NTI2164260868, name: "value", sons: null};
+NTI2164260940.node = NNI2164260940;
+NTI2164260939.base = NTI2164260940;
+var NNI2164260929 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "flat", len: 0, typ: NTI1811939863, name: "flat", sons: null}, 
+{kind: 1, offset: "action", len: 0, typ: NTI2164260939, name: "action", sons: null}]};
 NTI2164260929.node = NNI2164260929;
-NTI2164260928.base = NTI2164260929;
-var NNI2164260918 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "flat", len: 0, typ: NTI1811939863, name: "flat", sons: null}, 
-{kind: 1, offset: "action", len: 0, typ: NTI2164260928, name: "action", sons: null}]};
-NTI2164260918.node = NNI2164260918;
-NTI2164260918.base = NTI956301319;
+NTI2164260929.base = NTI1023410183;
 var NNI452985073 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
 NTI452985073.node = NNI452985073;
@@ -432,13 +432,13 @@ NTI2214592523.node = NNI2214592523;
 NTI2214592522.base = NTI2214592523;
 var NNI2214592515 = {kind: 1, offset: "drawer", len: 0, typ: NTI2214592522, name: "drawer", sons: null};
 NTI2214592515.node = NNI2214592515;
-NTI2214592515.base = NTI956301319;
+NTI2214592515.base = NTI1023410183;
 var NNI452985232 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
 NTI452985232.node = NNI452985232;
 var NNI2248146947 = {kind: 2, len: 0, offset: 0, typ: null, name: null, sons: []};
 NTI2248146947.node = NNI2248146947;
-NTI2248146947.base = NTI956301319;
+NTI2248146947.base = NTI1023410183;
 var NNI452985248 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
 NTI452985248.node = NNI452985248;
@@ -504,7 +504,7 @@ var NNI452985762 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{k
 NTI452985762.node = NNI452985762;
 var NNI2264924163 = {kind: 2, len: 0, offset: 0, typ: null, name: null, sons: []};
 NTI2264924163.node = NNI2264924163;
-NTI2264924163.base = NTI956301319;
+NTI2264924163.base = NTI1023410183;
 var NNI1811939872 = {kind: 1, offset: "value", len: 0, typ: NTI33554439, name: "value", sons: null};
 NTI1811939872.node = NNI1811939872;
 NTI1811939871.base = NTI1811939872;
@@ -515,7 +515,7 @@ var NNI2197815299 = {kind: 2, len: 3, offset: 0, typ: null, name: null, sons: [{
 {kind: 1, offset: "source", len: 0, typ: NTI1811939871, name: "source", sons: null}, 
 {kind: 1, offset: "id", len: 0, typ: NTI1811939879, name: "id", sons: null}]};
 NTI2197815299.node = NNI2197815299;
-NTI2197815299.base = NTI956301319;
+NTI2197815299.base = NTI1023410183;
 var NNI452985832 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
 NTI452985832.node = NNI452985832;
@@ -524,7 +524,7 @@ var NNI452985909 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{k
 NTI452985909.node = NNI452985909;
 var NNI2181038083 = {kind: 1, offset: "pathToImg", len: 0, typ: NTI1811939871, name: "pathToImg", sons: null};
 NTI2181038083.node = NNI2181038083;
-NTI2181038083.base = NTI956301319;
+NTI2181038083.base = NTI1023410183;
 var NNI452985996 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
 NTI452985996.node = NNI452985996;
@@ -541,7 +541,7 @@ NTI2281701393.base = NTI2281701394;
 var NNI2281701383 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "name", len: 0, typ: NTI1811939871, name: "name", sons: null}, 
 {kind: 1, offset: "data", len: 0, typ: NTI2281701393, name: "data", sons: null}]};
 NTI2281701383.node = NNI2281701383;
-NTI2281701383.base = NTI956301319;
+NTI2281701383.base = NTI1023410183;
 var NNI452986167 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
 NTI452986167.node = NNI452986167;
@@ -556,7 +556,7 @@ var NNI452986221 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{k
 NTI452986221.node = NNI452986221;
 var NNI2298478595 = {kind: 1, offset: "horizontal", len: 0, typ: NTI1811939863, name: "horizontal", sons: null};
 NTI2298478595.node = NNI2298478595;
-NTI2298478595.base = NTI956301319;
+NTI2298478595.base = NTI1023410183;
 var NNI452986252 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
 NTI452986252.node = NNI452986252;
@@ -589,7 +589,7 @@ var NNI2315255811 = {kind: 2, len: 3, offset: 0, typ: null, name: null, sons: [{
 {kind: 1, offset: "sponsorStatus", len: 0, typ: NTI2315255827, name: "sponsorStatus", sons: null}, 
 {kind: 1, offset: "colorBorder", len: 0, typ: NTI1811939871, name: "colorBorder", sons: null}]};
 NTI2315255811.node = NNI2315255811;
-NTI2315255811.base = NTI956301319;
+NTI2315255811.base = NTI1023410183;
 var NNI452986325 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
 NTI452986325.node = NNI452986325;
@@ -1184,190 +1184,190 @@ NTI1560281632.node = NNI1560281632;
 var NNI33555142 = {kind: 2, len: 0, offset: 0, typ: null, name: null, sons: []};
 NTI33555142.node = NNI33555142;
 NTI33555142.base = NTI33555113;
-var NNI973078541 = {kind: 1, offset: "useStderr", len: 0, typ: NTI33554466, name: "useStderr", sons: null};
-NTI973078541.node = NNI973078541;
-var NNI973078531 = {kind: 2, offset: 0, typ: null, name: null, len: 8, sons: {"0": {kind: 1, offset: 0, typ: NTI973078531, name: "lvlAll", len: 0, sons: null}, 
-"1": {kind: 1, offset: 1, typ: NTI973078531, name: "lvlDebug", len: 0, sons: null}, 
-"2": {kind: 1, offset: 2, typ: NTI973078531, name: "lvlInfo", len: 0, sons: null}, 
-"3": {kind: 1, offset: 3, typ: NTI973078531, name: "lvlNotice", len: 0, sons: null}, 
-"4": {kind: 1, offset: 4, typ: NTI973078531, name: "lvlWarn", len: 0, sons: null}, 
-"5": {kind: 1, offset: 5, typ: NTI973078531, name: "lvlError", len: 0, sons: null}, 
-"6": {kind: 1, offset: 6, typ: NTI973078531, name: "lvlFatal", len: 0, sons: null}, 
-"7": {kind: 1, offset: 7, typ: NTI973078531, name: "lvlNone", len: 0, sons: null}}};
-NTI973078531.node = NNI973078531;
-var NNI973078540 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "levelThreshold", len: 0, typ: NTI973078531, name: "levelThreshold", sons: null}, 
+var NNI1040187405 = {kind: 1, offset: "useStderr", len: 0, typ: NTI33554466, name: "useStderr", sons: null};
+NTI1040187405.node = NNI1040187405;
+var NNI1040187395 = {kind: 2, offset: 0, typ: null, name: null, len: 8, sons: {"0": {kind: 1, offset: 0, typ: NTI1040187395, name: "lvlAll", len: 0, sons: null}, 
+"1": {kind: 1, offset: 1, typ: NTI1040187395, name: "lvlDebug", len: 0, sons: null}, 
+"2": {kind: 1, offset: 2, typ: NTI1040187395, name: "lvlInfo", len: 0, sons: null}, 
+"3": {kind: 1, offset: 3, typ: NTI1040187395, name: "lvlNotice", len: 0, sons: null}, 
+"4": {kind: 1, offset: 4, typ: NTI1040187395, name: "lvlWarn", len: 0, sons: null}, 
+"5": {kind: 1, offset: 5, typ: NTI1040187395, name: "lvlError", len: 0, sons: null}, 
+"6": {kind: 1, offset: 6, typ: NTI1040187395, name: "lvlFatal", len: 0, sons: null}, 
+"7": {kind: 1, offset: 7, typ: NTI1040187395, name: "lvlNone", len: 0, sons: null}}};
+NTI1040187395.node = NNI1040187395;
+var NNI1040187404 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "levelThreshold", len: 0, typ: NTI1040187395, name: "levelThreshold", sons: null}, 
 {kind: 1, offset: "fmtStr", len: 0, typ: NTI33554439, name: "fmtStr", sons: null}]};
-NTI973078540.node = NNI973078540;
-NTI973078540.base = NTI33555083;
-NTI973078541.base = NTI973078540;
-NTI1073741853.base = NTI1073741887;
-NTI1073741851.base = NTI1073741879;
-NTI1073741850.base = NTI1073741875;
-NTI1073741849.base = NTI1073741871;
-var NNI1073741842 = {kind: 2, offset: 0, typ: null, name: null, len: 7, sons: {"0": {kind: 1, offset: 0, typ: NTI1073741842, name: "Monday", len: 0, sons: null}, 
-"1": {kind: 1, offset: 1, typ: NTI1073741842, name: "Tuesday", len: 0, sons: null}, 
-"2": {kind: 1, offset: 2, typ: NTI1073741842, name: "Wednesday", len: 0, sons: null}, 
-"3": {kind: 1, offset: 3, typ: NTI1073741842, name: "Thursday", len: 0, sons: null}, 
-"4": {kind: 1, offset: 4, typ: NTI1073741842, name: "Friday", len: 0, sons: null}, 
-"5": {kind: 1, offset: 5, typ: NTI1073741842, name: "Saturday", len: 0, sons: null}, 
-"6": {kind: 1, offset: 6, typ: NTI1073741842, name: "Sunday", len: 0, sons: null}}};
-NTI1073741842.node = NNI1073741842;
-NTI1073741852.base = NTI1073741883;
-var NNI1073741891 = {kind: 2, len: 3, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "zonedTimeFromTimeImpl", len: 0, typ: NTI1073741892, name: "zonedTimeFromTimeImpl", sons: null}, 
-{kind: 1, offset: "zonedTimeFromAdjTimeImpl", len: 0, typ: NTI1073741893, name: "zonedTimeFromAdjTimeImpl", sons: null}, 
+NTI1040187404.node = NNI1040187404;
+NTI1040187404.base = NTI33555083;
+NTI1040187405.base = NTI1040187404;
+NTI1124073501.base = NTI1124073535;
+NTI1124073499.base = NTI1124073527;
+NTI1124073498.base = NTI1124073523;
+NTI1124073497.base = NTI1124073519;
+var NNI1124073490 = {kind: 2, offset: 0, typ: null, name: null, len: 7, sons: {"0": {kind: 1, offset: 0, typ: NTI1124073490, name: "Monday", len: 0, sons: null}, 
+"1": {kind: 1, offset: 1, typ: NTI1124073490, name: "Tuesday", len: 0, sons: null}, 
+"2": {kind: 1, offset: 2, typ: NTI1124073490, name: "Wednesday", len: 0, sons: null}, 
+"3": {kind: 1, offset: 3, typ: NTI1124073490, name: "Thursday", len: 0, sons: null}, 
+"4": {kind: 1, offset: 4, typ: NTI1124073490, name: "Friday", len: 0, sons: null}, 
+"5": {kind: 1, offset: 5, typ: NTI1124073490, name: "Saturday", len: 0, sons: null}, 
+"6": {kind: 1, offset: 6, typ: NTI1124073490, name: "Sunday", len: 0, sons: null}}};
+NTI1124073490.node = NNI1124073490;
+NTI1124073500.base = NTI1124073531;
+var NNI1124073539 = {kind: 2, len: 3, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "zonedTimeFromTimeImpl", len: 0, typ: NTI1124073540, name: "zonedTimeFromTimeImpl", sons: null}, 
+{kind: 1, offset: "zonedTimeFromAdjTimeImpl", len: 0, typ: NTI1124073541, name: "zonedTimeFromAdjTimeImpl", sons: null}, 
 {kind: 1, offset: "name", len: 0, typ: NTI33554439, name: "name", sons: null}]};
-NTI1073741891.node = NNI1073741891;
-NTI1073741860.base = NTI1073741891;
-var NNI1073741855 = {kind: 2, len: 12, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "nanosecond", len: 0, typ: NTI1073741853, name: "nanosecond", sons: null}, 
-{kind: 1, offset: "second", len: 0, typ: NTI1073741851, name: "second", sons: null}, 
-{kind: 1, offset: "minute", len: 0, typ: NTI1073741850, name: "minute", sons: null}, 
-{kind: 1, offset: "hour", len: 0, typ: NTI1073741849, name: "hour", sons: null}, 
+NTI1124073539.node = NNI1124073539;
+NTI1124073508.base = NTI1124073539;
+var NNI1124073503 = {kind: 2, len: 12, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "nanosecond", len: 0, typ: NTI1124073501, name: "nanosecond", sons: null}, 
+{kind: 1, offset: "second", len: 0, typ: NTI1124073499, name: "second", sons: null}, 
+{kind: 1, offset: "minute", len: 0, typ: NTI1124073498, name: "minute", sons: null}, 
+{kind: 1, offset: "hour", len: 0, typ: NTI1124073497, name: "hour", sons: null}, 
 {kind: 1, offset: "monthdayZero", len: 0, typ: NTI33554456, name: "monthdayZero", sons: null}, 
 {kind: 1, offset: "monthZero", len: 0, typ: NTI33554456, name: "monthZero", sons: null}, 
 {kind: 1, offset: "year", len: 0, typ: NTI33554456, name: "year", sons: null}, 
-{kind: 1, offset: "weekday", len: 0, typ: NTI1073741842, name: "weekday", sons: null}, 
-{kind: 1, offset: "yearday", len: 0, typ: NTI1073741852, name: "yearday", sons: null}, 
+{kind: 1, offset: "weekday", len: 0, typ: NTI1124073490, name: "weekday", sons: null}, 
+{kind: 1, offset: "yearday", len: 0, typ: NTI1124073500, name: "yearday", sons: null}, 
 {kind: 1, offset: "isDst", len: 0, typ: NTI33554466, name: "isDst", sons: null}, 
-{kind: 1, offset: "timezone", len: 0, typ: NTI1073741860, name: "timezone", sons: null}, 
+{kind: 1, offset: "timezone", len: 0, typ: NTI1124073508, name: "timezone", sons: null}, 
 {kind: 1, offset: "utcOffset", len: 0, typ: NTI33554456, name: "utcOffset", sons: null}]};
-NTI1073741855.node = NNI1073741855;
-NTI1073741855.base = NTI33555083;
-var NNI1073741854 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "seconds", len: 0, typ: NTI33554460, name: "seconds", sons: null}, 
-{kind: 1, offset: "nanosecond", len: 0, typ: NTI1073741853, name: "nanosecond", sons: null}]};
-NTI1073741854.node = NNI1073741854;
-var NNI1073741856 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "seconds", len: 0, typ: NTI33554460, name: "seconds", sons: null}, 
-{kind: 1, offset: "nanosecond", len: 0, typ: NTI1073741853, name: "nanosecond", sons: null}]};
-NTI1073741856.node = NNI1073741856;
-NTI1073741848.base = NTI1073741866;
-var NNI1073741841 = {kind: 2, offset: 0, typ: null, name: null, len: 12, sons: {"1": {kind: 1, offset: 1, typ: NTI1073741841, name: "January", len: 0, sons: null}, 
-"2": {kind: 1, offset: 2, typ: NTI1073741841, name: "February", len: 0, sons: null}, 
-"3": {kind: 1, offset: 3, typ: NTI1073741841, name: "March", len: 0, sons: null}, 
-"4": {kind: 1, offset: 4, typ: NTI1073741841, name: "April", len: 0, sons: null}, 
-"5": {kind: 1, offset: 5, typ: NTI1073741841, name: "May", len: 0, sons: null}, 
-"6": {kind: 1, offset: 6, typ: NTI1073741841, name: "June", len: 0, sons: null}, 
-"7": {kind: 1, offset: 7, typ: NTI1073741841, name: "July", len: 0, sons: null}, 
-"8": {kind: 1, offset: 8, typ: NTI1073741841, name: "August", len: 0, sons: null}, 
-"9": {kind: 1, offset: 9, typ: NTI1073741841, name: "September", len: 0, sons: null}, 
-"10": {kind: 1, offset: 10, typ: NTI1073741841, name: "October", len: 0, sons: null}, 
-"11": {kind: 1, offset: 11, typ: NTI1073741841, name: "November", len: 0, sons: null}, 
-"12": {kind: 1, offset: 12, typ: NTI1073741841, name: "December", len: 0, sons: null}}};
-NTI1073741841.node = NNI1073741841;
-var NNI1073742009 = {kind: 2, len: 3, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI1073741848, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI1073741841, name: "Field1", sons: null}, 
+NTI1124073503.node = NNI1124073503;
+NTI1124073503.base = NTI33555083;
+var NNI1124073502 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "seconds", len: 0, typ: NTI33554460, name: "seconds", sons: null}, 
+{kind: 1, offset: "nanosecond", len: 0, typ: NTI1124073501, name: "nanosecond", sons: null}]};
+NTI1124073502.node = NNI1124073502;
+var NNI1124073504 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "seconds", len: 0, typ: NTI33554460, name: "seconds", sons: null}, 
+{kind: 1, offset: "nanosecond", len: 0, typ: NTI1124073501, name: "nanosecond", sons: null}]};
+NTI1124073504.node = NNI1124073504;
+NTI1124073496.base = NTI1124073514;
+var NNI1124073489 = {kind: 2, offset: 0, typ: null, name: null, len: 12, sons: {"1": {kind: 1, offset: 1, typ: NTI1124073489, name: "January", len: 0, sons: null}, 
+"2": {kind: 1, offset: 2, typ: NTI1124073489, name: "February", len: 0, sons: null}, 
+"3": {kind: 1, offset: 3, typ: NTI1124073489, name: "March", len: 0, sons: null}, 
+"4": {kind: 1, offset: 4, typ: NTI1124073489, name: "April", len: 0, sons: null}, 
+"5": {kind: 1, offset: 5, typ: NTI1124073489, name: "May", len: 0, sons: null}, 
+"6": {kind: 1, offset: 6, typ: NTI1124073489, name: "June", len: 0, sons: null}, 
+"7": {kind: 1, offset: 7, typ: NTI1124073489, name: "July", len: 0, sons: null}, 
+"8": {kind: 1, offset: 8, typ: NTI1124073489, name: "August", len: 0, sons: null}, 
+"9": {kind: 1, offset: 9, typ: NTI1124073489, name: "September", len: 0, sons: null}, 
+"10": {kind: 1, offset: 10, typ: NTI1124073489, name: "October", len: 0, sons: null}, 
+"11": {kind: 1, offset: 11, typ: NTI1124073489, name: "November", len: 0, sons: null}, 
+"12": {kind: 1, offset: 12, typ: NTI1124073489, name: "December", len: 0, sons: null}}};
+NTI1124073489.node = NNI1124073489;
+var NNI1124073657 = {kind: 2, len: 3, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI1124073496, name: "Field0", sons: null}, 
+{kind: 1, offset: "Field1", len: 0, typ: NTI1124073489, name: "Field1", sons: null}, 
 {kind: 1, offset: "Field2", len: 0, typ: NTI33554456, name: "Field2", sons: null}]};
-NTI1073742009.node = NNI1073742009;
-var NNI1073741861 = {kind: 2, len: 3, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "time", len: 0, typ: NTI1073741854, name: "time", sons: null}, 
+NTI1124073657.node = NNI1124073657;
+var NNI1124073509 = {kind: 2, len: 3, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "time", len: 0, typ: NTI1124073502, name: "time", sons: null}, 
 {kind: 1, offset: "utcOffset", len: 0, typ: NTI33554456, name: "utcOffset", sons: null}, 
 {kind: 1, offset: "isDst", len: 0, typ: NTI33554466, name: "isDst", sons: null}]};
-NTI1073741861.node = NNI1073741861;
+NTI1124073509.node = NNI1124073509;
 var NNI687867858 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "a", len: 0, typ: NTI33554456, name: "a", sons: null}, 
 {kind: 1, offset: "b", len: 0, typ: NTI33554456, name: "b", sons: null}]};
 NTI687867858.node = NNI687867858;
-var NNI2181038158 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+var NNI2181038150 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI2181038158.node = NNI2181038158;
-var NNI2181038247 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+NTI2181038150.node = NNI2181038150;
+var NNI2181038239 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI2181038247.node = NNI2181038247;
-var NNI2164261117 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+NTI2181038239.node = NNI2181038239;
+var NNI2164261120 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI2164261117.node = NNI2164261117;
-var NNI2164261139 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+NTI2164261120.node = NNI2164261120;
+var NNI2164261142 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI2164261139.node = NNI2164261139;
-var NNI2164261175 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+NTI2164261142.node = NNI2164261142;
+var NNI2164261178 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI2164261175.node = NNI2164261175;
-var NNI2197815384 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+NTI2164261178.node = NNI2164261178;
+var NNI2197815376 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI2197815384.node = NNI2197815384;
-var NNI2197815397 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+NTI2197815376.node = NNI2197815376;
+var NNI2197815389 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI2197815397.node = NNI2197815397;
-var NNI2197815562 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+NTI2197815389.node = NNI2197815389;
+var NNI2197815554 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI2197815562.node = NNI2197815562;
-var NNI2197815575 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+NTI2197815554.node = NNI2197815554;
+var NNI2197815567 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI2197815575.node = NNI2197815575;
-var NNI2197815616 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+NTI2197815567.node = NNI2197815567;
+var NNI2197815608 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI2197815616.node = NNI2197815616;
-var NNI2197815641 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+NTI2197815608.node = NNI2197815608;
+var NNI2197815633 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI2197815641.node = NNI2197815641;
-var NNI2248147008 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+NTI2197815633.node = NNI2197815633;
+var NNI2248147000 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI2248147008.node = NNI2248147008;
-var NNI2214592594 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+NTI2248147000.node = NNI2248147000;
+var NNI2214592586 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI2214592594.node = NNI2214592594;
-var NNI2214592607 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+NTI2214592586.node = NNI2214592586;
+var NNI2214592599 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI2214592607.node = NNI2214592607;
-var NNI2214592621 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+NTI2214592599.node = NNI2214592599;
+var NNI2214592613 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI2214592621.node = NNI2214592621;
-var NNI2214592734 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+NTI2214592613.node = NNI2214592613;
+var NNI2214592726 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI2214592734.node = NNI2214592734;
-var NNI2214592881 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+NTI2214592726.node = NNI2214592726;
+var NNI2214592873 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI2214592881.node = NNI2214592881;
-var NNI2214592895 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+NTI2214592873.node = NNI2214592873;
+var NNI2214592887 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI2214592895.node = NNI2214592895;
-var NNI2214592907 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+NTI2214592887.node = NNI2214592887;
+var NNI2214592899 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI2214592907.node = NNI2214592907;
-var NNI2214592949 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+NTI2214592899.node = NNI2214592899;
+var NNI2214592941 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI2214592949.node = NNI2214592949;
-var NNI2231369820 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+NTI2214592941.node = NNI2214592941;
+var NNI2231369812 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI2231369820.node = NNI2231369820;
-var NNI2231369947 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+NTI2231369812.node = NNI2231369812;
+var NNI2231369939 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI2231369947.node = NNI2231369947;
-var NNI2231369969 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+NTI2231369939.node = NNI2231369939;
+var NNI2231369961 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI2231369969.node = NNI2231369969;
-var NNI2231369984 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+NTI2231369961.node = NNI2231369961;
+var NNI2231369976 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI2231369984.node = NNI2231369984;
-var NNI2231369997 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+NTI2231369976.node = NNI2231369976;
+var NNI2231369989 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI2231369997.node = NNI2231369997;
-var NNI2231370038 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+NTI2231369989.node = NNI2231369989;
+var NNI2231370030 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI2231370038.node = NNI2231370038;
-var NNI2264924224 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+NTI2231370030.node = NNI2231370030;
+var NNI2264924216 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI2264924224.node = NNI2264924224;
-var NNI2315255931 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+NTI2264924216.node = NNI2264924216;
+var NNI2315255923 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI2315255931.node = NNI2315255931;
-var NNI2315256326 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+NTI2315255923.node = NNI2315255923;
+var NNI2315256318 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI2315256326.node = NNI2315256326;
-var NNI2298478662 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+NTI2315256318.node = NNI2315256318;
+var NNI2298478654 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI2298478662.node = NNI2298478662;
-var NNI2298478687 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+NTI2298478654.node = NNI2298478654;
+var NNI2298478679 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI2298478687.node = NNI2298478687;
-var NNI2281701467 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+NTI2298478679.node = NNI2298478679;
+var NNI2281701459 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI2281701467.node = NNI2281701467;
-var NNI2281701480 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+NTI2281701459.node = NNI2281701459;
+var NNI2281701472 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI2281701480.node = NNI2281701480;
-var NNI2281701560 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+NTI2281701472.node = NNI2281701472;
+var NNI2281701552 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI2281701560.node = NNI2281701560;
-var NNI2281701678 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+NTI2281701552.node = NNI2281701552;
+var NNI2281701670 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI2281701678.node = NNI2281701678;
+NTI2281701670.node = NNI2281701670;
 
 function makeNimstrLit(c_33556801) {
       var result = [];
@@ -1862,10 +1862,10 @@ function absInt(a_33556988) {
   return result_33556989;
 
 }
-    var unitWeights_1073741970 = [1, 1000, 1000000, 1000000000, 60000000000, 3600000000000, 86400000000000, 604800000000000];
-    var daysUntilMonthLeap_1073742092 = new Int32Array([0, 31, 60, 91, 121, 152, 182, 213, 244, 274, 305, 335]);
-      var daysUntilMonth_1073742091 = new Int32Array([0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334]);
-              var LevelNames_973078543 = [makeNimstrLit("DEBUG"), makeNimstrLit("DEBUG"), makeNimstrLit("INFO"), makeNimstrLit("NOTICE"), makeNimstrLit("WARN"), makeNimstrLit("ERROR"), makeNimstrLit("FATAL"), makeNimstrLit("NONE")];
+    var unitWeights_1124073618 = [1, 1000, 1000000, 1000000000, 60000000000, 3600000000000, 86400000000000, 604800000000000];
+    var daysUntilMonthLeap_1124073740 = new Int32Array([0, 31, 60, 91, 121, 152, 182, 213, 244, 274, 305, 335]);
+      var daysUntilMonth_1124073739 = new Int32Array([0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334]);
+              var LevelNames_1040187407 = [makeNimstrLit("DEBUG"), makeNimstrLit("DEBUG"), makeNimstrLit("INFO"), makeNimstrLit("NOTICE"), makeNimstrLit("WARN"), makeNimstrLit("ERROR"), makeNimstrLit("FATAL"), makeNimstrLit("NONE")];
 
 function rawEcho() {
           var buf = "";
@@ -1877,6 +1877,7 @@ function rawEcho() {
 
   
 }
+      var UnclosedTags_1560281105 = [makeNimstrLit("area"), makeNimstrLit("base"), makeNimstrLit("basefont"), makeNimstrLit("br"), makeNimstrLit("col"), makeNimstrLit("frame"), makeNimstrLit("hr"), makeNimstrLit("img"), makeNimstrLit("isindex"), makeNimstrLit("link"), makeNimstrLit("meta"), makeNimstrLit("param"), makeNimstrLit("wbr"), makeNimstrLit("source"), makeNimstrLit("input")];
 
 function nimCharToStr(x_33556517) {
   var result_33556518 = [];
@@ -1890,7 +1891,6 @@ function nimCharToStr(x_33556517) {
 var ConstSet15 = setConstr(46, 44);
 var ConstSet16 = setConstr([65, 90]);
 var ConstSet17 = setConstr([97, 122]);
-      var UnclosedTags_1560281105 = [makeNimstrLit("area"), makeNimstrLit("base"), makeNimstrLit("basefont"), makeNimstrLit("br"), makeNimstrLit("col"), makeNimstrLit("frame"), makeNimstrLit("hr"), makeNimstrLit("img"), makeNimstrLit("isindex"), makeNimstrLit("link"), makeNimstrLit("meta"), makeNimstrLit("param"), makeNimstrLit("wbr"), makeNimstrLit("source"), makeNimstrLit("input")];
 if (!Math.trunc) {
   Math.trunc = function(v) {
     v = +v;
@@ -4035,6 +4035,653 @@ framePtr = F.prev;
 var F = {procname: "module components", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/components.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
+framePtr = F;
+F.line = 214;
+var objectID_973078690 = [0];
+framePtr = F.prev;
+var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
 var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/renderer.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
@@ -4611,12 +5258,12 @@ framePtr = F.prev;
 var F = {procname: "module times", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/times.nim", line: 0};
 framePtr = F;
 F.line = 1290;
-if (globalThis.utcInstance_1073743233 === undefined) {
-  globalThis.utcInstance_1073743233 = [null];
+if (globalThis.utcInstance_1124074881 === undefined) {
+  globalThis.utcInstance_1124074881 = [null];
 }
 F.line = 1291;
-if (globalThis.localInstance_1073743234 === undefined) {
-  globalThis.localInstance_1073743234 = [null];
+if (globalThis.localInstance_1124074882 === undefined) {
+  globalThis.localInstance_1124074882 = [null];
 }
 framePtr = F.prev;
 var F = {procname: "module times", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/times.nim", line: 0};
@@ -4892,12 +5539,12 @@ framePtr = F.prev;
 var F = {procname: "module logging", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/logging.nim", line: 0};
 framePtr = F;
 F.line = 264;
-if (globalThis.level_973078553 === undefined) {
-  globalThis.level_973078553 = [0];
+if (globalThis.level_1040187417 === undefined) {
+  globalThis.level_1040187417 = [0];
 }
 F.line = 265;
-if (globalThis.handlers_973078554 === undefined) {
-  globalThis.handlers_973078554 = [[]];
+if (globalThis.handlers_1040187418 === undefined) {
+  globalThis.handlers_1040187418 = [[]];
 }
 framePtr = F.prev;
 var F = {procname: "module logging", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/logging.nim", line: 0};
@@ -5443,119 +6090,6 @@ framePtr = F.prev;
 var F = {procname: "module strtabs", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/strtabs.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
-var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
-framePtr = F;
-F.line = 214;
-var objectID_1124073634 = [0];
-framePtr = F.prev;
-var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module hashes", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
 var F = {procname: "module strtabs", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/strtabs.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
@@ -5716,540 +6250,6 @@ var F = {procname: "module sugar", prev: framePtr, filename: "/home/runner/.choo
 framePtr = F;
 framePtr = F.prev;
 var F = {procname: "module sugar", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/sugar.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
-framePtr = F;
-framePtr = F.prev;
-var F = {procname: "module tables", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
 framePtr = F;
 framePtr = F.prev;
 var F = {procname: "module regex", prev: framePtr, filename: "/home/runner/.nimble/pkgs/regex-0.20.2/regex.nim", line: 0};
@@ -9474,17 +9474,17 @@ function addChars_251658415(result_251658417, result_251658417_Idx, x_251658418,
       F.line = 46;
       var iHEX60gensym4_251658435 = 0;
       F.line = 119;
-      var i_956306872 = 0;
+      var i_1023415736 = 0;
       Label2: do {
         F.line = 120;
           Label3: while (true) {
-          if (!(i_956306872 < n_251658420)) break Label3;
+          if (!(i_1023415736 < n_251658420)) break Label3;
             F.line = 49;
-            iHEX60gensym4_251658435 = i_956306872;
+            iHEX60gensym4_251658435 = i_1023415736;
             F.line = 49;
             result_251658417[result_251658417_Idx][chckIndx(addInt(old_251658421, iHEX60gensym4_251658435), 0, (result_251658417[result_251658417_Idx]).length - 1)] = x_251658418.charCodeAt(chckIndx(addInt(start_251658419, iHEX60gensym4_251658435), 0, (x_251658418).length - 1));
             F.line = 122;
-            i_956306872 = addInt(i_956306872, 1);
+            i_1023415736 = addInt(i_1023415736, 1);
           }
       } while (false);
     } while (false);
@@ -9572,13 +9572,13 @@ function auxWriteStackTrace_33556559(f_33556560) {
     
     Label6: do {
       var j_33556602 = 0;
-      var colontmp__956306865 = 0;
-      colontmp__956306865 = (i_33556570 - 1);
-      var res_956306866 = colontmp__956306865;
+      var colontmp__1023415729 = 0;
+      colontmp__1023415729 = (i_33556570 - 1);
+      var res_1023415730 = colontmp__1023415729;
       Label7: do {
           Label8: while (true) {
-          if (!(0 <= res_956306866)) break Label8;
-            j_33556602 = res_956306866;
+          if (!(0 <= res_1023415730)) break Label8;
+            j_33556602 = res_1023415730;
             result_33556561[0].push.apply(result_33556561[0], cstrToNimstr(tempFrames_33556572[j_33556602].Field2));;
             if ((0 < tempFrames_33556572[j_33556602].Field1)) {
             result_33556561[0].push.apply(result_33556561[0], makeNimstrLit("("));;
@@ -9594,7 +9594,7 @@ function auxWriteStackTrace_33556559(f_33556560) {
             result_33556561[0].push.apply(result_33556561[0], makeNimstrLit(" at "));;
             add_33556419(result_33556561, 0, tempFrames_33556572[j_33556602].Field0);
             result_33556561[0].push.apply(result_33556561[0], makeNimstrLit("\x0A"));;
-            res_956306866 -= 1;
+            res_1023415730 -= 1;
           }
       } while (false);
     } while (false);
@@ -9676,109 +9676,109 @@ function raiseDivByZero() {
   
 }
 
-function slotsNeeded_1040187434(count_1040187435) {
-  var result_1040187436 = 0;
+function slotsNeeded_956301354(count_956301355) {
+  var result_956301356 = 0;
 
   var F = {procname: "tables.slotsNeeded", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/hashcommon.nim", line: 0};
   framePtr = F;
     F.line = 34;
-    result_1040187436 = nextPowerOfTwo_721420490(addInt(divInt(mulInt(count_1040187435, 3), 2), 4));
+    result_956301356 = nextPowerOfTwo_721420490(addInt(divInt(mulInt(count_956301355, 3), 2), 4));
   framePtr = F.prev;
 
-  return result_1040187436;
+  return result_956301356;
 
 }
 
-function initTable_956301401(initialSize_956301404) {
-  var result_956301405 = ({data: [], counter: 0});
+function initTable_1023410265(initialSize_1023410268) {
+  var result_1023410269 = ({data: [], counter: 0});
 
   var F = {procname: "initTable.initTable", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
   framePtr = F;
     F.line = 163;
-    var correctSizeHEX60gensym0_956301407 = slotsNeeded_1040187434(chckRange(initialSize_956301404, 0, 2147483647));
+    var correctSizeHEX60gensym0_1023410271 = slotsNeeded_956301354(chckRange(initialSize_1023410268, 0, 2147483647));
     F.line = 167;
-    result_956301405.counter = 0;
+    result_1023410269.counter = 0;
     F.line = 168;
-    result_956301405.data = new Array(chckRange(correctSizeHEX60gensym0_956301407, 0, 2147483647)); for (var i = 0 ; i < chckRange(correctSizeHEX60gensym0_956301407, 0, 2147483647) ; ++i) { result_956301405.data[i] = {Field0: 0, Field1: 0, Field2: null}; }  framePtr = F.prev;
+    result_1023410269.data = new Array(chckRange(correctSizeHEX60gensym0_1023410271, 0, 2147483647)); for (var i = 0 ; i < chckRange(correctSizeHEX60gensym0_1023410271, 0, 2147483647) ; ++i) { result_1023410269.data[i] = {Field0: 0, Field1: 0, Field2: null}; }  framePtr = F.prev;
 
-  return result_956301405;
+  return result_1023410269;
 
 }
 
-function newTable_956301362(initialSize_956301365) {
-  var result_956301371 = null;
+function newTable_1023410226(initialSize_1023410229) {
+  var result_1023410235 = null;
 
   var F = {procname: "newTable.newTable", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
   framePtr = F;
     F.line = 827;
-    result_956301371 = ({data: [], counter: 0});
+    result_1023410235 = ({data: [], counter: 0});
     F.line = 828;
-    result_956301371 = nimCopy(result_956301371, initTable_956301401(initialSize_956301365), NTI956301335);
+    result_1023410235 = nimCopy(result_1023410235, initTable_1023410265(initialSize_1023410229), NTI1023410199);
   framePtr = F.prev;
 
-  return result_956301371;
+  return result_1023410235;
 
 }
 
-function initTable_956302891(initialSize_956302894) {
-  var result_956302895 = ({data: [], counter: 0});
+function initTable_1023411755(initialSize_1023411758) {
+  var result_1023411759 = ({data: [], counter: 0});
 
   var F = {procname: "initTable.initTable", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
   framePtr = F;
     F.line = 163;
-    var correctSizeHEX60gensym16_956302897 = slotsNeeded_1040187434(chckRange(initialSize_956302894, 0, 2147483647));
+    var correctSizeHEX60gensym16_1023411761 = slotsNeeded_956301354(chckRange(initialSize_1023411758, 0, 2147483647));
     F.line = 167;
-    result_956302895.counter = 0;
+    result_1023411759.counter = 0;
     F.line = 168;
-    result_956302895.data = new Array(chckRange(correctSizeHEX60gensym16_956302897, 0, 2147483647)); for (var i = 0 ; i < chckRange(correctSizeHEX60gensym16_956302897, 0, 2147483647) ; ++i) { result_956302895.data[i] = {Field0: 0, Field1: 0, Field2: null}; }  framePtr = F.prev;
+    result_1023411759.data = new Array(chckRange(correctSizeHEX60gensym16_1023411761, 0, 2147483647)); for (var i = 0 ; i < chckRange(correctSizeHEX60gensym16_1023411761, 0, 2147483647) ; ++i) { result_1023411759.data[i] = {Field0: 0, Field1: 0, Field2: null}; }  framePtr = F.prev;
 
-  return result_956302895;
+  return result_1023411759;
 
 }
 
-function newTable_956302852(initialSize_956302855) {
-  var result_956302861 = null;
+function newTable_1023411716(initialSize_1023411719) {
+  var result_1023411725 = null;
 
   var F = {procname: "newTable.newTable", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
   framePtr = F;
     F.line = 827;
-    result_956302861 = ({data: [], counter: 0});
+    result_1023411725 = ({data: [], counter: 0});
     F.line = 828;
-    result_956302861 = nimCopy(result_956302861, initTable_956302891(initialSize_956302855), NTI956302102);
+    result_1023411725 = nimCopy(result_1023411725, initTable_1023411755(initialSize_1023411719), NTI1023410966);
   framePtr = F.prev;
 
-  return result_956302861;
+  return result_1023411725;
 
 }
 
-function initTable_956304381(initialSize_956304384) {
-  var result_956304385 = ({data: [], counter: 0});
+function initTable_1023413245(initialSize_1023413248) {
+  var result_1023413249 = ({data: [], counter: 0});
 
   var F = {procname: "initTable.initTable", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
   framePtr = F;
     F.line = 163;
-    var correctSizeHEX60gensym32_956304387 = slotsNeeded_1040187434(chckRange(initialSize_956304384, 0, 2147483647));
+    var correctSizeHEX60gensym32_1023413251 = slotsNeeded_956301354(chckRange(initialSize_1023413248, 0, 2147483647));
     F.line = 167;
-    result_956304385.counter = 0;
+    result_1023413249.counter = 0;
     F.line = 168;
-    result_956304385.data = new Array(chckRange(correctSizeHEX60gensym32_956304387, 0, 2147483647)); for (var i = 0 ; i < chckRange(correctSizeHEX60gensym32_956304387, 0, 2147483647) ; ++i) { result_956304385.data[i] = {Field0: 0, Field1: null, Field2: null}; }  framePtr = F.prev;
+    result_1023413249.data = new Array(chckRange(correctSizeHEX60gensym32_1023413251, 0, 2147483647)); for (var i = 0 ; i < chckRange(correctSizeHEX60gensym32_1023413251, 0, 2147483647) ; ++i) { result_1023413249.data[i] = {Field0: 0, Field1: null, Field2: null}; }  framePtr = F.prev;
 
-  return result_956304385;
+  return result_1023413249;
 
 }
 
-function newTable_956304342(initialSize_956304345) {
-  var result_956304351 = null;
+function newTable_1023413206(initialSize_1023413209) {
+  var result_1023413215 = null;
 
   var F = {procname: "newTable.newTable", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
   framePtr = F;
     F.line = 827;
-    result_956304351 = ({data: [], counter: 0});
+    result_1023413215 = ({data: [], counter: 0});
     F.line = 828;
-    result_956304351 = nimCopy(result_956304351, initTable_956304381(initialSize_956304345), NTI956302864);
+    result_1023413215 = nimCopy(result_1023413215, initTable_1023413245(initialSize_1023413209), NTI1023411728);
   framePtr = F.prev;
 
-  return result_956304351;
+  return result_1023413215;
 
 }
 
@@ -9791,462 +9791,462 @@ function hasJsBigInt_805306411() {
 
 }
 
-function hiXorLoJs_1124073557(a_1124073558, b_1124073559) {
-  var result_1124073560 = 0n;
+function hiXorLoJs_973078613(a_973078614, b_973078615) {
+  var result_973078616 = 0n;
 
   var F = {procname: "hashes.hiXorLoJs", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
   framePtr = F;
     F.line = 136;
-    var prod_1124073561 = (a_1124073558 * b_1124073559);
+    var prod_973078617 = (a_973078614 * b_973078615);
     F.line = 137;
-    var mask_1124073562 = BigInt("0xffffffffffffffff");
+    var mask_973078618 = BigInt("0xffffffffffffffff");
     F.line = 138;
-    result_1124073560 = ((prod_1124073561 >> BigInt("64")) ^ (prod_1124073561 & mask_1124073562));
+    result_973078616 = ((prod_973078617 >> BigInt("64")) ^ (prod_973078617 & mask_973078618));
   framePtr = F.prev;
 
-  return result_1124073560;
+  return result_973078616;
 
 }
 
-function hashWangYi1_1124073650(x_1124073652) {
-  var result_1124073653 = 0;
+function hashWangYi1_973078706(x_973078708) {
+  var result_973078709 = 0;
 
   var F = {procname: "hashWangYi1.hashWangYi1", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
   framePtr = F;
     if (hasJsBigInt_805306411()) {
     F.line = 178;
     F.line = 142;
-    var P0HEX60gensym6_1124073672 = BigInt("0xa0761d6478bd642f");
+    var P0HEX60gensym6_973078728 = BigInt("0xa0761d6478bd642f");
     F.line = 143;
-    var P1HEX60gensym6_1124073673 = BigInt("0xe7037ed1a0b428db");
+    var P1HEX60gensym6_973078729 = BigInt("0xe7037ed1a0b428db");
     F.line = 144;
-    var P58HEX60gensym6_1124073674 = BigInt("0xeb44accab455d16d");
+    var P58HEX60gensym6_973078730 = BigInt("0xeb44accab455d16d");
     F.line = 145;
-    var resHEX60gensym6_1124073675 = hiXorLoJs_1124073557(hiXorLoJs_1124073557(P0HEX60gensym6_1124073672, (BigInt(x_1124073652) ^ P1HEX60gensym6_1124073673)), P58HEX60gensym6_1124073674);
-    result_1124073653 = Number((() => { const i = resHEX60gensym6_1124073675, b = 32; return BigInt.asIntN(b, i) })());
+    var resHEX60gensym6_973078731 = hiXorLoJs_973078613(hiXorLoJs_973078613(P0HEX60gensym6_973078728, (BigInt(x_973078708) ^ P1HEX60gensym6_973078729)), P58HEX60gensym6_973078730);
+    result_973078709 = Number((() => { const i = resHEX60gensym6_973078731, b = 32; return BigInt.asIntN(b, i) })());
     }
     else {
       F.line = 180;
-      result_1124073653 = (x_1124073652 & 4294967295);
+      result_973078709 = (x_973078708 & 4294967295);
     }
     
   framePtr = F.prev;
 
-  return result_1124073653;
+  return result_973078709;
 
 }
 
-function hash_1124073642(x_1124073644) {
-  var result_1124073645 = 0;
+function hash_973078698(x_973078700) {
+  var result_973078701 = 0;
 
   var F = {procname: "hash.hash", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
   framePtr = F;
     F.line = 210;
-    result_1124073645 = hashWangYi1_1124073650(x_1124073644);
+    result_973078701 = hashWangYi1_973078706(x_973078700);
   framePtr = F.prev;
 
-  return result_1124073645;
+  return result_973078701;
 
 }
 
-function isFilled_1040187423(hcode_1040187424) {
-  var result_1040187425 = false;
+function isFilled_956301343(hcode_956301344) {
+  var result_956301345 = false;
 
   var F = {procname: "tables.isFilled", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/hashcommon.nim", line: 0};
   framePtr = F;
     F.line = 22;
-    result_1040187425 = !((hcode_1040187424 == 0));
+    result_956301345 = !((hcode_956301344 == 0));
   framePtr = F.prev;
 
-  return result_1040187425;
+  return result_956301345;
 
 }
 
-function nextTry_1040187426(h_1040187427, maxHash_1040187428) {
-  var result_1040187429 = 0;
+function nextTry_956301346(h_956301347, maxHash_956301348) {
+  var result_956301349 = 0;
 
   var F = {procname: "tables.nextTry", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/hashcommon.nim", line: 0};
   framePtr = F;
     F.line = 25;
-    result_1040187429 = (addInt(h_1040187427, 1) & maxHash_1040187428);
+    result_956301349 = (addInt(h_956301347, 1) & maxHash_956301348);
   framePtr = F.prev;
 
-  return result_1040187429;
+  return result_956301349;
 
 }
 
-function rawGet_956301614(t_956301617, key_956301618, hc_956301619, hc_956301619_Idx) {
+function rawGet_1023410478(t_1023410481, key_1023410482, hc_1023410483, hc_1023410483_Idx) {
             var Temporary3;
 
-  var result_956301620 = 0;
+  var result_1023410484 = 0;
 
   var F = {procname: "rawGet.rawGet", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/hashcommon.nim", line: 0};
   framePtr = F;
   BeforeRet: do {
     F.line = 64;
-    hc_956301619[hc_956301619_Idx] = hash_1124073642(key_956301618);
-    if ((hc_956301619[hc_956301619_Idx] == 0)) {
+    hc_1023410483[hc_1023410483_Idx] = hash_973078698(key_1023410482);
+    if ((hc_1023410483[hc_1023410483_Idx] == 0)) {
     F.line = 66;
-    hc_956301619[hc_956301619_Idx] = 314159265;
+    hc_1023410483[hc_1023410483_Idx] = 314159265;
     }
     
-    if (((t_956301617.data).length == 0)) {
+    if (((t_1023410481.data).length == 0)) {
     F.line = 48;
-    result_956301620 = -1;
+    result_1023410484 = -1;
     break BeforeRet;
     }
     
     F.line = 49;
-    var h_956301674 = (hc_956301619[hc_956301619_Idx] & (t_956301617.data).length - 1);
+    var h_1023410538 = (hc_1023410483[hc_1023410483_Idx] & (t_1023410481.data).length - 1);
     Label1: do {
       F.line = 50;
         Label2: while (true) {
-        if (!isFilled_1040187423(t_956301617.data[chckIndx(h_956301674, 0, (t_956301617.data).length - 1)].Field0)) break Label2;
-            if (!(t_956301617.data[chckIndx(h_956301674, 0, (t_956301617.data).length - 1)].Field0 == hc_956301619[hc_956301619_Idx])) Temporary3 = false; else {              Temporary3 = (t_956301617.data[chckIndx(h_956301674, 0, (t_956301617.data).length - 1)].Field1 == key_956301618);            }          if (Temporary3) {
+        if (!isFilled_956301343(t_1023410481.data[chckIndx(h_1023410538, 0, (t_1023410481.data).length - 1)].Field0)) break Label2;
+            if (!(t_1023410481.data[chckIndx(h_1023410538, 0, (t_1023410481.data).length - 1)].Field0 == hc_1023410483[hc_1023410483_Idx])) Temporary3 = false; else {              Temporary3 = (t_1023410481.data[chckIndx(h_1023410538, 0, (t_1023410481.data).length - 1)].Field1 == key_1023410482);            }          if (Temporary3) {
           F.line = 56;
-          result_956301620 = h_956301674;
+          result_1023410484 = h_1023410538;
           break BeforeRet;
           }
           
           F.line = 57;
-          h_956301674 = nextTry_1040187426(h_956301674, (t_956301617.data).length - 1);
+          h_1023410538 = nextTry_956301346(h_1023410538, (t_1023410481.data).length - 1);
         }
     } while (false);
     F.line = 58;
-    result_956301620 = subInt(-1, h_956301674);
+    result_1023410484 = subInt(-1, h_1023410538);
   } while (false);
   framePtr = F.prev;
 
-  return result_956301620;
+  return result_1023410484;
 
 }
 
-function raiseKeyError_956306322(key_956306324) {
+function raiseKeyError_1023415186(key_1023415188) {
   var F = {procname: "raiseKeyError.raiseKeyError", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
   framePtr = F;
     F.line = 234;
-    raiseException({message: (makeNimstrLit("key not found: ") || []).concat(HEX24_335544323(key_956306324) || []), parent: null, m_type: NTI33555126, name: null, trace: [], up: null}, "KeyError");
+    raiseException({message: (makeNimstrLit("key not found: ") || []).concat(HEX24_335544323(key_1023415188) || []), parent: null, m_type: NTI33555126, name: null, trace: [], up: null}, "KeyError");
   framePtr = F.prev;
 
   
 }
 
-function HEX5BHEX5D_956306255(t_956306258, key_956306259) {
-  var result_956306260 = null;
-  var result_956306260_Idx = 0;
+function HEX5BHEX5D_1023415119(t_1023415122, key_1023415123) {
+  var result_1023415124 = null;
+  var result_1023415124_Idx = 0;
 
   var F = {procname: "[].[]", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
   framePtr = F;
     F.line = 242;
-    var hcHEX60gensym22_956306261 = [0];
+    var hcHEX60gensym22_1023415125 = [0];
     F.line = 243;
-    var indexHEX60gensym22_956306268 = rawGet_956301614(t_956306258, key_956306259, hcHEX60gensym22_956306261, 0);
-    if ((0 <= indexHEX60gensym22_956306268)) {
+    var indexHEX60gensym22_1023415132 = rawGet_1023410478(t_1023415122, key_1023415123, hcHEX60gensym22_1023415125, 0);
+    if ((0 <= indexHEX60gensym22_1023415132)) {
     F.line = 244;
-    result_956306260 = t_956306258.data[chckIndx(indexHEX60gensym22_956306268, 0, (t_956306258.data).length - 1)]; result_956306260_Idx = "Field2";
+    result_1023415124 = t_1023415122.data[chckIndx(indexHEX60gensym22_1023415132, 0, (t_1023415122.data).length - 1)]; result_1023415124_Idx = "Field2";
     }
     else {
       F.line = 246;
-    raiseKeyError_956306322(key_956306259);
+    raiseKeyError_1023415186(key_1023415123);
     }
     
   framePtr = F.prev;
 
-  return [result_956306260, result_956306260_Idx];
+  return [result_1023415124, result_1023415124_Idx];
 
 }
 
-function HEX5BHEX5D_956306143(t_956306146, key_956306147) {
+function HEX5BHEX5D_1023415007(t_1023415010, key_1023415011) {
     var Temporary1;
 
-  var result_956306148 = null;
-  var result_956306148_Idx = 0;
+  var result_1023415012 = null;
+  var result_1023415012_Idx = 0;
 
   var F = {procname: "[].[]", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
   framePtr = F;
     F.line = 875;
-    result_956306148 = (Temporary1 = HEX5BHEX5D_956306255(t_956306146, key_956306147), Temporary1)[0]; result_956306148_Idx = Temporary1[1];
+    result_1023415012 = (Temporary1 = HEX5BHEX5D_1023415119(t_1023415010, key_1023415011), Temporary1)[0]; result_1023415012_Idx = Temporary1[1];
   framePtr = F.prev;
 
-  return [result_956306148, result_956306148_Idx];
+  return [result_1023415012, result_1023415012_Idx];
 
 }
 
-function rawGet_956303104(t_956303107, key_956303108, hc_956303109, hc_956303109_Idx) {
+function rawGet_1023411968(t_1023411971, key_1023411972, hc_1023411973, hc_1023411973_Idx) {
             var Temporary3;
 
-  var result_956303110 = 0;
+  var result_1023411974 = 0;
 
   var F = {procname: "rawGet.rawGet", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/hashcommon.nim", line: 0};
   framePtr = F;
   BeforeRet: do {
     F.line = 64;
-    hc_956303109[hc_956303109_Idx] = hash_1124073642(key_956303108);
-    if ((hc_956303109[hc_956303109_Idx] == 0)) {
+    hc_1023411973[hc_1023411973_Idx] = hash_973078698(key_1023411972);
+    if ((hc_1023411973[hc_1023411973_Idx] == 0)) {
     F.line = 66;
-    hc_956303109[hc_956303109_Idx] = 314159265;
+    hc_1023411973[hc_1023411973_Idx] = 314159265;
     }
     
-    if (((t_956303107.data).length == 0)) {
+    if (((t_1023411971.data).length == 0)) {
     F.line = 48;
-    result_956303110 = -1;
+    result_1023411974 = -1;
     break BeforeRet;
     }
     
     F.line = 49;
-    var h_956303164 = (hc_956303109[hc_956303109_Idx] & (t_956303107.data).length - 1);
+    var h_1023412028 = (hc_1023411973[hc_1023411973_Idx] & (t_1023411971.data).length - 1);
     Label1: do {
       F.line = 50;
         Label2: while (true) {
-        if (!isFilled_1040187423(t_956303107.data[chckIndx(h_956303164, 0, (t_956303107.data).length - 1)].Field0)) break Label2;
-            if (!(t_956303107.data[chckIndx(h_956303164, 0, (t_956303107.data).length - 1)].Field0 == hc_956303109[hc_956303109_Idx])) Temporary3 = false; else {              Temporary3 = (t_956303107.data[chckIndx(h_956303164, 0, (t_956303107.data).length - 1)].Field1 == key_956303108);            }          if (Temporary3) {
+        if (!isFilled_956301343(t_1023411971.data[chckIndx(h_1023412028, 0, (t_1023411971.data).length - 1)].Field0)) break Label2;
+            if (!(t_1023411971.data[chckIndx(h_1023412028, 0, (t_1023411971.data).length - 1)].Field0 == hc_1023411973[hc_1023411973_Idx])) Temporary3 = false; else {              Temporary3 = (t_1023411971.data[chckIndx(h_1023412028, 0, (t_1023411971.data).length - 1)].Field1 == key_1023411972);            }          if (Temporary3) {
           F.line = 56;
-          result_956303110 = h_956303164;
+          result_1023411974 = h_1023412028;
           break BeforeRet;
           }
           
           F.line = 57;
-          h_956303164 = nextTry_1040187426(h_956303164, (t_956303107.data).length - 1);
+          h_1023412028 = nextTry_956301346(h_1023412028, (t_1023411971.data).length - 1);
         }
     } while (false);
     F.line = 58;
-    result_956303110 = subInt(-1, h_956303164);
+    result_1023411974 = subInt(-1, h_1023412028);
   } while (false);
   framePtr = F.prev;
 
-  return result_956303110;
+  return result_1023411974;
 
 }
 
-function HEX5BHEX5D_956306503(t_956306506, key_956306507) {
-  var result_956306508 = null;
-  var result_956306508_Idx = 0;
+function HEX5BHEX5D_1023415367(t_1023415370, key_1023415371) {
+  var result_1023415372 = null;
+  var result_1023415372_Idx = 0;
 
   var F = {procname: "[].[]", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
   framePtr = F;
     F.line = 242;
-    var hcHEX60gensym22_956306509 = [0];
+    var hcHEX60gensym22_1023415373 = [0];
     F.line = 243;
-    var indexHEX60gensym22_956306516 = rawGet_956303104(t_956306506, key_956306507, hcHEX60gensym22_956306509, 0);
-    if ((0 <= indexHEX60gensym22_956306516)) {
+    var indexHEX60gensym22_1023415380 = rawGet_1023411968(t_1023415370, key_1023415371, hcHEX60gensym22_1023415373, 0);
+    if ((0 <= indexHEX60gensym22_1023415380)) {
     F.line = 244;
-    result_956306508 = t_956306506.data[chckIndx(indexHEX60gensym22_956306516, 0, (t_956306506.data).length - 1)]; result_956306508_Idx = "Field2";
+    result_1023415372 = t_1023415370.data[chckIndx(indexHEX60gensym22_1023415380, 0, (t_1023415370.data).length - 1)]; result_1023415372_Idx = "Field2";
     }
     else {
       F.line = 246;
-    raiseKeyError_956306322(key_956306507);
+    raiseKeyError_1023415186(key_1023415371);
     }
     
   framePtr = F.prev;
 
-  return [result_956306508, result_956306508_Idx];
+  return [result_1023415372, result_1023415372_Idx];
 
 }
 
-function HEX5BHEX5D_956306391(t_956306394, key_956306395) {
+function HEX5BHEX5D_1023415255(t_1023415258, key_1023415259) {
     var Temporary1;
 
-  var result_956306396 = null;
-  var result_956306396_Idx = 0;
+  var result_1023415260 = null;
+  var result_1023415260_Idx = 0;
 
   var F = {procname: "[].[]", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
   framePtr = F;
     F.line = 875;
-    result_956306396 = (Temporary1 = HEX5BHEX5D_956306503(t_956306394, key_956306395), Temporary1)[0]; result_956306396_Idx = Temporary1[1];
+    result_1023415260 = (Temporary1 = HEX5BHEX5D_1023415367(t_1023415258, key_1023415259), Temporary1)[0]; result_1023415260_Idx = Temporary1[1];
   framePtr = F.prev;
 
-  return [result_956306396, result_956306396_Idx];
+  return [result_1023415260, result_1023415260_Idx];
 
 }
 
-function imul_1124073762(a_1124073763, b_1124073764) {
-  var result_1124073765 = 0;
+function imul_973078818(a_973078819, b_973078820) {
+  var result_973078821 = 0;
 
   var F = {procname: "hashes.imul", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
   framePtr = F;
     F.line = 289;
-    var mask_1124073766 = 65535;
+    var mask_973078822 = 65535;
     F.line = 291;
-    var aHi_1124073771 = ((a_1124073763 >>> 16) & mask_1124073766);
+    var aHi_973078827 = ((a_973078819 >>> 16) & mask_973078822);
     F.line = 292;
-    var aLo_1124073772 = (a_1124073763 & mask_1124073766);
+    var aLo_973078828 = (a_973078819 & mask_973078822);
     F.line = 293;
-    var bHi_1124073777 = ((b_1124073764 >>> 16) & mask_1124073766);
+    var bHi_973078833 = ((b_973078820 >>> 16) & mask_973078822);
     F.line = 294;
-    var bLo_1124073778 = (b_1124073764 & mask_1124073766);
+    var bLo_973078834 = (b_973078820 & mask_973078822);
     F.line = 295;
-    result_1124073765 = ((((aLo_1124073772 * bLo_1124073778) >>> 0) + (((((aHi_1124073771 * bLo_1124073778) >>> 0) + ((aLo_1124073772 * bHi_1124073777) >>> 0)) >>> 0) << 16)) >>> 0);
+    result_973078821 = ((((aLo_973078828 * bLo_973078834) >>> 0) + (((((aHi_973078827 * bLo_973078834) >>> 0) + ((aLo_973078828 * bHi_973078833) >>> 0)) >>> 0) << 16)) >>> 0);
   framePtr = F.prev;
 
-  return result_1124073765;
+  return result_973078821;
 
 }
 
-function rotl32_1124073783(x_1124073784, r_1124073785) {
-  var result_1124073786 = 0;
+function rotl32_973078839(x_973078840, r_973078841) {
+  var result_973078842 = 0;
 
   var F = {procname: "hashes.rotl32", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
   framePtr = F;
     F.line = 300;
-    result_1124073786 = ((x_1124073784 << r_1124073785) | (x_1124073784 >>> subInt(32, r_1124073785)));
+    result_973078842 = ((x_973078840 << r_973078841) | (x_973078840 >>> subInt(32, r_973078841)));
   framePtr = F.prev;
 
-  return result_1124073786;
+  return result_973078842;
 
 }
 
-function murmurHash_1124073795(x_1124073796) {
-  var result_1124073797 = 0;
+function murmurHash_973078851(x_973078852) {
+  var result_973078853 = 0;
 
   var F = {procname: "hashes.murmurHash", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
   framePtr = F;
   BeforeRet: do {
     F.line = 311;
-    var size_1124073806 = (x_1124073796).length;
+    var size_973078862 = (x_973078852).length;
     F.line = 312;
-    var stepSize_1124073807 = 4;
+    var stepSize_973078863 = 4;
     F.line = 313;
-    var n_1124073808 = divInt(size_1124073806, stepSize_1124073807);
+    var n_973078864 = divInt(size_973078862, stepSize_973078863);
     F.line = 315;
-    var h1_1124073809 = 0;
+    var h1_973078865 = 0;
     F.line = 316;
-    var i_1124073810 = 0;
+    var i_973078866 = 0;
     Label1: do {
       F.line = 319;
         Label2: while (true) {
-        if (!(i_1124073810 < mulInt(n_1124073808, stepSize_1124073807))) break Label2;
+        if (!(i_973078866 < mulInt(n_973078864, stepSize_973078863))) break Label2;
           F.line = 320;
-          var k1_1124073811 = 0;
+          var k1_973078867 = 0;
           F.line = 322;
-          var j_1124073812 = stepSize_1124073807;
+          var j_973078868 = stepSize_973078863;
           Label3: do {
             F.line = 323;
               Label4: while (true) {
-              if (!(0 < j_1124073812)) break Label4;
+              if (!(0 < j_973078868)) break Label4;
                 F.line = 324;
-                j_1124073812 = subInt(j_1124073812, 1);
+                j_973078868 = subInt(j_973078868, 1);
                 F.line = 325;
-                k1_1124073811 = ((k1_1124073811 << 8) | x_1124073796[chckIndx(addInt(i_1124073810, j_1124073812), 0, (x_1124073796).length - 1)]);
+                k1_973078867 = ((k1_973078867 << 8) | x_973078852[chckIndx(addInt(i_973078866, j_973078868), 0, (x_973078852).length - 1)]);
               }
           } while (false);
           F.line = 328;
-          i_1124073810 = addInt(i_1124073810, stepSize_1124073807);
+          i_973078866 = addInt(i_973078866, stepSize_973078863);
           F.line = 330;
-          k1_1124073811 = imul_1124073762(k1_1124073811, 3432918353);
+          k1_973078867 = imul_973078818(k1_973078867, 3432918353);
           F.line = 331;
-          k1_1124073811 = rotl32_1124073783(k1_1124073811, 15);
+          k1_973078867 = rotl32_973078839(k1_973078867, 15);
           F.line = 332;
-          k1_1124073811 = imul_1124073762(k1_1124073811, 461845907);
+          k1_973078867 = imul_973078818(k1_973078867, 461845907);
           F.line = 334;
-          h1_1124073809 = (h1_1124073809 ^ k1_1124073811);
+          h1_973078865 = (h1_973078865 ^ k1_973078867);
           F.line = 335;
-          h1_1124073809 = rotl32_1124073783(h1_1124073809, 13);
+          h1_973078865 = rotl32_973078839(h1_973078865, 13);
           F.line = 336;
-          h1_1124073809 = ((((h1_1124073809 * 5) >>> 0) + 3864292196) >>> 0);
+          h1_973078865 = ((((h1_973078865 * 5) >>> 0) + 3864292196) >>> 0);
         }
     } while (false);
     F.line = 339;
-    var k1_1124073829 = 0;
+    var k1_973078885 = 0;
     F.line = 340;
-    var rem_1124073830 = modInt(size_1124073806, stepSize_1124073807);
+    var rem_973078886 = modInt(size_973078862, stepSize_973078863);
     Label5: do {
       F.line = 341;
         Label6: while (true) {
-        if (!(0 < rem_1124073830)) break Label6;
+        if (!(0 < rem_973078886)) break Label6;
           F.line = 342;
-          rem_1124073830 = subInt(rem_1124073830, 1);
+          rem_973078886 = subInt(rem_973078886, 1);
           F.line = 343;
-          k1_1124073829 = ((k1_1124073829 << 8) | x_1124073796[chckIndx(addInt(i_1124073810, rem_1124073830), 0, (x_1124073796).length - 1)]);
+          k1_973078885 = ((k1_973078885 << 8) | x_973078852[chckIndx(addInt(i_973078866, rem_973078886), 0, (x_973078852).length - 1)]);
         }
     } while (false);
     F.line = 344;
-    k1_1124073829 = imul_1124073762(k1_1124073829, 3432918353);
+    k1_973078885 = imul_973078818(k1_973078885, 3432918353);
     F.line = 345;
-    k1_1124073829 = rotl32_1124073783(k1_1124073829, 15);
+    k1_973078885 = rotl32_973078839(k1_973078885, 15);
     F.line = 346;
-    k1_1124073829 = imul_1124073762(k1_1124073829, 461845907);
+    k1_973078885 = imul_973078818(k1_973078885, 461845907);
     F.line = 347;
-    h1_1124073809 = (h1_1124073809 ^ k1_1124073829);
+    h1_973078865 = (h1_973078865 ^ k1_973078885);
     F.line = 350;
-    h1_1124073809 = (h1_1124073809 ^ size_1124073806);
+    h1_973078865 = (h1_973078865 ^ size_973078862);
     F.line = 351;
-    h1_1124073809 = (h1_1124073809 ^ (h1_1124073809 >>> 16));
+    h1_973078865 = (h1_973078865 ^ (h1_973078865 >>> 16));
     F.line = 352;
-    h1_1124073809 = imul_1124073762(h1_1124073809, 2246822507);
+    h1_973078865 = imul_973078818(h1_973078865, 2246822507);
     F.line = 353;
-    h1_1124073809 = (h1_1124073809 ^ (h1_1124073809 >>> 13));
+    h1_973078865 = (h1_973078865 ^ (h1_973078865 >>> 13));
     F.line = 354;
-    h1_1124073809 = imul_1124073762(h1_1124073809, 3266489909);
+    h1_973078865 = imul_973078818(h1_973078865, 3266489909);
     F.line = 355;
-    h1_1124073809 = (h1_1124073809 ^ (h1_1124073809 >>> 16));
+    h1_973078865 = (h1_973078865 ^ (h1_973078865 >>> 16));
     F.line = 356;
-    result_1124073797 = (h1_1124073809 | 0);
+    result_973078853 = (h1_973078865 | 0);
     break BeforeRet;
   } while (false);
   framePtr = F.prev;
 
-  return result_1124073797;
+  return result_973078853;
 
 }
 
-function hash_1124073897(x_1124073898) {
-  var result_1124073899 = 0;
+function hash_973078953(x_973078954) {
+  var result_973078955 = 0;
 
   var F = {procname: "hashes.hash", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
   framePtr = F;
     F.line = 391;
     F.line = 411;
-    var xx_1124073900 = cstrToNimstr(x_1124073898);
-    result_1124073899 = murmurHash_1124073795((xx_1124073900.slice(0, (xx_1124073900).length - 1 + 1)));
+    var xx_973078956 = cstrToNimstr(x_973078954);
+    result_973078955 = murmurHash_973078851((xx_973078956.slice(0, (xx_973078956).length - 1 + 1)));
   framePtr = F.prev;
 
-  return result_1124073899;
+  return result_973078955;
 
 }
 
-function rawGet_956304594(t_956304597, key_956304598, hc_956304599, hc_956304599_Idx) {
+function rawGet_1023413458(t_1023413461, key_1023413462, hc_1023413463, hc_1023413463_Idx) {
             var Temporary3;
 
-  var result_956304600 = 0;
+  var result_1023413464 = 0;
 
   var F = {procname: "rawGet.rawGet", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/hashcommon.nim", line: 0};
   framePtr = F;
   BeforeRet: do {
     F.line = 64;
-    hc_956304599[hc_956304599_Idx] = hash_1124073897(key_956304598);
-    if ((hc_956304599[hc_956304599_Idx] == 0)) {
+    hc_1023413463[hc_1023413463_Idx] = hash_973078953(key_1023413462);
+    if ((hc_1023413463[hc_1023413463_Idx] == 0)) {
     F.line = 66;
-    hc_956304599[hc_956304599_Idx] = 314159265;
+    hc_1023413463[hc_1023413463_Idx] = 314159265;
     }
     
-    if (((t_956304597.data).length == 0)) {
+    if (((t_1023413461.data).length == 0)) {
     F.line = 48;
-    result_956304600 = -1;
+    result_1023413464 = -1;
     break BeforeRet;
     }
     
     F.line = 49;
-    var h_956304651 = (hc_956304599[hc_956304599_Idx] & (t_956304597.data).length - 1);
+    var h_1023413515 = (hc_1023413463[hc_1023413463_Idx] & (t_1023413461.data).length - 1);
     Label1: do {
       F.line = 50;
         Label2: while (true) {
-        if (!isFilled_1040187423(t_956304597.data[chckIndx(h_956304651, 0, (t_956304597.data).length - 1)].Field0)) break Label2;
-            if (!(t_956304597.data[chckIndx(h_956304651, 0, (t_956304597.data).length - 1)].Field0 == hc_956304599[hc_956304599_Idx])) Temporary3 = false; else {              Temporary3 = (t_956304597.data[chckIndx(h_956304651, 0, (t_956304597.data).length - 1)].Field1 == key_956304598);            }          if (Temporary3) {
+        if (!isFilled_956301343(t_1023413461.data[chckIndx(h_1023413515, 0, (t_1023413461.data).length - 1)].Field0)) break Label2;
+            if (!(t_1023413461.data[chckIndx(h_1023413515, 0, (t_1023413461.data).length - 1)].Field0 == hc_1023413463[hc_1023413463_Idx])) Temporary3 = false; else {              Temporary3 = (t_1023413461.data[chckIndx(h_1023413515, 0, (t_1023413461.data).length - 1)].Field1 == key_1023413462);            }          if (Temporary3) {
           F.line = 56;
-          result_956304600 = h_956304651;
+          result_1023413464 = h_1023413515;
           break BeforeRet;
           }
           
           F.line = 57;
-          h_956304651 = nextTry_1040187426(h_956304651, (t_956304597.data).length - 1);
+          h_1023413515 = nextTry_956301346(h_1023413515, (t_1023413461.data).length - 1);
         }
     } while (false);
     F.line = 58;
-    result_956304600 = subInt(-1, h_956304651);
+    result_1023413464 = subInt(-1, h_1023413515);
   } while (false);
   framePtr = F.prev;
 
-  return result_956304600;
+  return result_1023413464;
 
 }
 
@@ -10260,44 +10260,44 @@ function raiseKeyError_1677724958(key_1677724960) {
   
 }
 
-function HEX5BHEX5D_956306747(t_956306750, key_956306751) {
-  var result_956306752 = null;
-  var result_956306752_Idx = 0;
+function HEX5BHEX5D_1023415611(t_1023415614, key_1023415615) {
+  var result_1023415616 = null;
+  var result_1023415616_Idx = 0;
 
   var F = {procname: "[].[]", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
   framePtr = F;
     F.line = 242;
-    var hcHEX60gensym22_956306753 = [0];
+    var hcHEX60gensym22_1023415617 = [0];
     F.line = 243;
-    var indexHEX60gensym22_956306760 = rawGet_956304594(t_956306750, key_956306751, hcHEX60gensym22_956306753, 0);
-    if ((0 <= indexHEX60gensym22_956306760)) {
+    var indexHEX60gensym22_1023415624 = rawGet_1023413458(t_1023415614, key_1023415615, hcHEX60gensym22_1023415617, 0);
+    if ((0 <= indexHEX60gensym22_1023415624)) {
     F.line = 244;
-    result_956306752 = t_956306750.data[chckIndx(indexHEX60gensym22_956306760, 0, (t_956306750.data).length - 1)]; result_956306752_Idx = "Field2";
+    result_1023415616 = t_1023415614.data[chckIndx(indexHEX60gensym22_1023415624, 0, (t_1023415614.data).length - 1)]; result_1023415616_Idx = "Field2";
     }
     else {
       F.line = 246;
-    raiseKeyError_1677724958(key_956306751);
+    raiseKeyError_1677724958(key_1023415615);
     }
     
   framePtr = F.prev;
 
-  return [result_956306752, result_956306752_Idx];
+  return [result_1023415616, result_1023415616_Idx];
 
 }
 
-function HEX5BHEX5D_956306635(t_956306638, key_956306639) {
+function HEX5BHEX5D_1023415499(t_1023415502, key_1023415503) {
     var Temporary1;
 
-  var result_956306640 = null;
-  var result_956306640_Idx = 0;
+  var result_1023415504 = null;
+  var result_1023415504_Idx = 0;
 
   var F = {procname: "[].[]", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
   framePtr = F;
     F.line = 875;
-    result_956306640 = (Temporary1 = HEX5BHEX5D_956306747(t_956306638, key_956306639), Temporary1)[0]; result_956306640_Idx = Temporary1[1];
+    result_1023415504 = (Temporary1 = HEX5BHEX5D_1023415611(t_1023415502, key_1023415503), Temporary1)[0]; result_1023415504_Idx = Temporary1[1];
   framePtr = F.prev;
 
-  return [result_956306640, result_956306640_Idx];
+  return [result_1023415504, result_1023415504_Idx];
 
 }
 var Temporary1;
@@ -10306,61 +10306,61 @@ var Temporary3;
 var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/renderer.nim", line: 0};
 framePtr = F;
 F.line = 102;
-var application_956301361 = [null];
+var application_1023410225 = [null];
 F.line = 103;
-var eventHandlers_956302851 = [newTable_956301362(32)];
+var eventHandlers_1023411715 = [newTable_1023410226(32)];
 F.line = 104;
-var componentEventHandlers_956304341 = [newTable_956302852(32)];
+var componentEventHandlers_1023413205 = [newTable_1023411716(32)];
 F.line = 105;
-var components_956305826 = [newTable_956304342(32)];
+var components_1023414690 = [newTable_1023413206(32)];
 F.line = 106;
-var currentComponent_956305827 = [[]];
+var currentComponent_1023414691 = [[]];
 F.line = 107;
-var currentRoute_956305828 = ["/"];
+var currentRoute_1023414692 = ["/"];
 F.line = 108;
-var currentComponentsList_956305833 = [[]];
+var currentComponentsList_1023414697 = [[]];
 F.line = 110;
 F.line = 142;
 function callEventHandler(idx, event) {
   
 F.line = 118;
-var idx_956306088 = [0];
+var idx_1023414952 = [0];
 F.line = 119;
-var ev_956306089 = [null];
+var ev_1023414953 = [null];
 F.line = 142;
 
-  idx_956306088[0] = idx;
-  ev_956306089[0] = event;
+  idx_1023414952[0] = idx;
+  ev_1023414953[0] = event;
   
 F.line = 123;
-(Temporary1 = HEX5BHEX5D_956306143(eventHandlers_956302851[0], idx_956306088[0]), Temporary1)[0][Temporary1[1]](ev_956306089[0]);
+(Temporary1 = HEX5BHEX5D_1023415007(eventHandlers_1023411715[0], idx_1023414952[0]), Temporary1)[0][Temporary1[1]](ev_1023414953[0]);
 F.line = 142;
 
 }
 function callComponentEventHandler(componentId, idx, event) {
   
 F.line = 127;
-var callbackIdx_956306335 = [0];
+var callbackIdx_1023415199 = [0];
 F.line = 128;
-var componentId_956306336 = [null];
+var componentId_1023415200 = [null];
 F.line = 129;
-var evComponent_956306337 = [null];
+var evComponent_1023415201 = [null];
 F.line = 142;
 
-  callbackIdx_956306335[0] = idx;
-  componentId_956306336[0] = componentId;
-  evComponent_956306337[0] = event;
+  callbackIdx_1023415199[0] = idx;
+  componentId_1023415200[0] = componentId;
+  evComponent_1023415201[0] = event;
   
 F.line = 134;
-(Temporary2 = HEX5BHEX5D_956306391(componentEventHandlers_956304341[0], callbackIdx_956306335[0]), Temporary2)[0][Temporary2[1]]((Temporary3 = HEX5BHEX5D_956306635(components_956305826[0], componentId_956306336[0]), Temporary3)[0][Temporary3[1]], evComponent_956306337[0]);
+(Temporary2 = HEX5BHEX5D_1023415255(componentEventHandlers_1023413205[0], callbackIdx_1023415199[0]), Temporary2)[0][Temporary2[1]]((Temporary3 = HEX5BHEX5D_1023415499(components_1023414690[0], componentId_1023415200[0]), Temporary3)[0][Temporary3[1]], evComponent_1023415201[0]);
 F.line = 142;
 
 }
 function onHashChangeCallback() {
   if (window.location.hash[0] == "#") {
-    currentRoute_956305828[0] = window.location.hash.substr(1);
+    currentRoute_1023414692[0] = window.location.hash.substr(1);
 } else {
-    currentRoute_956305828[0] = window.location.hash;
+    currentRoute_1023414692[0] = window.location.hash;
   }
 }
 window.addEventListener("hashchange", onHashChangeCallback);
@@ -10413,6 +10413,13 @@ framePtr = F;
 framePtr = F.prev;
 var F = {procname: "module renderer", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/renderer.nim", line: 0};
 framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module components", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/components.nim", line: 0};
+framePtr = F;
+framePtr = F.prev;
+var F = {procname: "module components", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/components.nim", line: 0};
+framePtr = F;
+F.line = 25;
 framePtr = F.prev;
 var F = {procname: "module components", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/components.nim", line: 0};
 framePtr = F;
@@ -11726,16 +11733,16 @@ var F = {procname: "module home", prev: framePtr, filename: "/home/runner/work/h
 framePtr = F;
 framePtr = F.prev;
 
-function remember_2164260938(val_2164260940) {
-  var result_2164260941 = null;
+function remember_2164260976(val_2164260978) {
+  var result_2164260979 = null;
 
   var F = {procname: "remember.remember", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/state.nim", line: 0};
   framePtr = F;
     F.line = 41;
-    result_2164260941 = {value: val_2164260940};
+    result_2164260979 = {value: val_2164260978};
   framePtr = F.prev;
 
-  return result_2164260941;
+  return result_2164260979;
 
 }
 
@@ -11802,7 +11809,7 @@ function HEX3Aanonymous_2231369753(self_2231369746, ev_2231369747) {
   var F = {procname: "drawer.initDrawer", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/components.nim", line: 0};
   framePtr = F;
     F.line = 7;
-    result_2231369741 = {uniqCompId: nimCopy(null, uniqCompId_2231369739, NTI33554439), isOpen: remember_2164260938(isOpen_2231369740), m_type: NTI2231369731, isCreated: false, slot: null, created: null, exited: null, rendered: null, pageHide: null, pageShow: null, beforeUpdated: null, updated: null};
+    result_2231369741 = {uniqCompId: nimCopy(null, uniqCompId_2231369739, NTI33554439), isOpen: remember_2164260976(isOpen_2231369740), m_type: NTI2231369731, isCreated: false, slot: null, created: null, exited: null, rendered: null, pageHide: null, pageShow: null, beforeUpdated: null, updated: null};
     F.line = 48;
     result_2231369741.beforeUpdated = HEX3Aanonymous_2231369745;
     F.line = 48;
@@ -11823,31 +11830,31 @@ function HEX3Aanonymous_2231369753(self_2231369746, ev_2231369747) {
 
 }
 
-function hasKey_956307068(t_956307071, key_956307072) {
-  var result_956307073 = false;
+function hasKey_1023415932(t_1023415935, key_1023415936) {
+  var result_1023415937 = false;
 
   var F = {procname: "hasKey.hasKey", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
   framePtr = F;
     F.line = 371;
-    var hc_956307074 = [0];
+    var hc_1023415938 = [0];
     F.line = 372;
-    result_956307073 = (0 <= rawGet_956304594(t_956307071, key_956307072, hc_956307074, 0));
+    result_1023415937 = (0 <= rawGet_1023413458(t_1023415935, key_1023415936, hc_1023415938, 0));
   framePtr = F.prev;
 
-  return result_956307073;
+  return result_1023415937;
 
 }
 
-function hasKey_956306969(t_956306972, key_956306973) {
-  var result_956306974 = false;
+function hasKey_1023415833(t_1023415836, key_1023415837) {
+  var result_1023415838 = false;
 
   var F = {procname: "hasKey.hasKey", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
   framePtr = F;
     F.line = 909;
-    result_956306974 = hasKey_956307068(t_956306972, key_956306973);
+    result_1023415838 = hasKey_1023415932(t_1023415836, key_1023415837);
   framePtr = F.prev;
 
-  return result_956306974;
+  return result_1023415838;
 
 }
 
@@ -11881,52 +11888,52 @@ function failedAssertImpl_218103864(msg_218103865) {
   
 }
 
-function mustRehash_956304930(t_956304932) {
-  var result_956304933 = false;
+function mustRehash_1023413794(t_1023413796) {
+  var result_1023413797 = false;
 
   var F = {procname: "mustRehash.mustRehash", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/hashcommon.nim", line: 0};
   framePtr = F;
-    if (!((t_956304932.counter < (t_956304932.data).length))) {
+    if (!((t_1023413796.counter < (t_1023413796.data).length))) {
     F.line = 29;
     failedAssertImpl_218103864(makeNimstrLit("/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/hashcommon.nim(29, 9) `\x0At.counter < t.dataLen` "));
     }
     
     F.line = 30;
-    result_956304933 = ((mulInt((t_956304932.data).length, 2) < mulInt(t_956304932.counter, 3)) || (subInt((t_956304932.data).length, t_956304932.counter) < 4));
+    result_1023413797 = ((mulInt((t_1023413796.data).length, 2) < mulInt(t_1023413796.counter, 3)) || (subInt((t_1023413796.data).length, t_1023413796.counter) < 4));
   framePtr = F.prev;
 
-  return result_956304933;
+  return result_1023413797;
 
 }
 
-function rawInsert_956305379(t_956305383, data_956305384, data_956305384_Idx, key_956305385, val_956305386, hc_956305387, h_956305388) {
+function rawInsert_1023414243(t_1023414247, data_1023414248, data_1023414248_Idx, key_1023414249, val_1023414250, hc_1023414251, h_1023414252) {
   var F = {procname: "rawInsert.rawInsert", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tableimpl.nim", line: 0};
   framePtr = F;
     F.line = 22;
-    data_956305384[data_956305384_Idx][chckIndx(h_956305388, 0, (data_956305384[data_956305384_Idx]).length - 1)].Field1 = key_956305385;
+    data_1023414248[data_1023414248_Idx][chckIndx(h_1023414252, 0, (data_1023414248[data_1023414248_Idx]).length - 1)].Field1 = key_1023414249;
     F.line = 23;
-    data_956305384[data_956305384_Idx][chckIndx(h_956305388, 0, (data_956305384[data_956305384_Idx]).length - 1)].Field2 = val_956305386;
+    data_1023414248[data_1023414248_Idx][chckIndx(h_1023414252, 0, (data_1023414248[data_1023414248_Idx]).length - 1)].Field2 = val_1023414250;
     F.line = 24;
-    data_956305384[data_956305384_Idx][chckIndx(h_956305388, 0, (data_956305384[data_956305384_Idx]).length - 1)].Field0 = hc_956305387;
+    data_1023414248[data_1023414248_Idx][chckIndx(h_1023414252, 0, (data_1023414248[data_1023414248_Idx]).length - 1)].Field0 = hc_1023414251;
   framePtr = F.prev;
 
   
 }
 
-function enlarge_956305085(t_956305088) {
+function enlarge_1023413949(t_1023413952) {
   var F = {procname: "enlarge.enlarge", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
   framePtr = F;
     F.line = 249;
-    var n_956305091 = [];
+    var n_1023413955 = [];
     F.line = 250;
-    n_956305091 = new Array(chckRange(mulInt((t_956305088.data).length, 2), 0, 2147483647)); for (var i = 0 ; i < chckRange(mulInt((t_956305088.data).length, 2), 0, 2147483647) ; ++i) { n_956305091[i] = {Field0: 0, Field1: null, Field2: null}; }    F.line = 251;
-    var Temporary1 = t_956305088.data; t_956305088.data = n_956305091; n_956305091 = Temporary1;    Label2: do {
+    n_1023413955 = new Array(chckRange(mulInt((t_1023413952.data).length, 2), 0, 2147483647)); for (var i = 0 ; i < chckRange(mulInt((t_1023413952.data).length, 2), 0, 2147483647) ; ++i) { n_1023413955[i] = {Field0: 0, Field1: null, Field2: null}; }    F.line = 251;
+    var Temporary1 = t_1023413952.data; t_1023413952.data = n_1023413955; n_1023413955 = Temporary1;    Label2: do {
       F.line = 252;
-      var i_956305155 = 0;
+      var i_1023414019 = 0;
       F.line = 43;
       var colontmp__2348810256 = 0;
       F.line = 252;
-      colontmp__2348810256 = (n_956305091).length - 1;
+      colontmp__2348810256 = (n_1023413955).length - 1;
       F.line = 65;
       var res_2348810258 = 0;
       Label3: do {
@@ -11934,22 +11941,22 @@ function enlarge_956305085(t_956305088) {
           Label4: while (true) {
           if (!(res_2348810258 <= colontmp__2348810256)) break Label4;
             F.line = 252;
-            i_956305155 = res_2348810258;
+            i_1023414019 = res_2348810258;
             F.line = 253;
-            var eh_956305209 = n_956305091[chckIndx(i_956305155, 0, (n_956305091).length - 1)].Field0;
-            if (isFilled_1040187423(eh_956305209)) {
+            var eh_1023414073 = n_1023413955[chckIndx(i_1023414019, 0, (n_1023413955).length - 1)].Field0;
+            if (isFilled_956301343(eh_1023414073)) {
             F.line = 255;
-            var j_956305213 = (eh_956305209 & (t_956305088.data).length - 1);
+            var j_1023414077 = (eh_1023414073 & (t_1023413952.data).length - 1);
             Label5: do {
               F.line = 256;
                 Label6: while (true) {
-                if (!isFilled_1040187423(t_956305088.data[chckIndx(j_956305213, 0, (t_956305088.data).length - 1)].Field0)) break Label6;
+                if (!isFilled_956301343(t_1023413952.data[chckIndx(j_1023414077, 0, (t_1023413952.data).length - 1)].Field0)) break Label6;
                   F.line = 257;
-                  j_956305213 = nextTry_1040187426(j_956305213, (t_956305088.data).length - 1);
+                  j_1023414077 = nextTry_956301346(j_1023414077, (t_1023413952.data).length - 1);
                 }
             } while (false);
             F.line = 259;
-            rawInsert_956305379(t_956305088, t_956305088, "data", n_956305091[chckIndx(i_956305155, 0, (n_956305091).length - 1)].Field1, n_956305091[chckIndx(i_956305155, 0, (n_956305091).length - 1)].Field2, eh_956305209, j_956305213);
+            rawInsert_1023414243(t_1023413952, t_1023413952, "data", n_1023413955[chckIndx(i_1023414019, 0, (n_1023413955).length - 1)].Field1, n_1023413955[chckIndx(i_1023414019, 0, (n_1023413955).length - 1)].Field2, eh_1023414073, j_1023414077);
             }
             
             F.line = 68;
@@ -11962,84 +11969,84 @@ function enlarge_956305085(t_956305088) {
   
 }
 
-function rawGetKnownHC_956305557(t_956305560, key_956305561, hc_956305562) {
-  var result_956305563 = 0;
+function rawGetKnownHC_1023414421(t_1023414424, key_1023414425, hc_1023414426) {
+  var result_1023414427 = 0;
 
   var F = {procname: "rawGetKnownHC.rawGetKnownHC", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/hashcommon.nim", line: 0};
   framePtr = F;
   BeforeRet: do {
-    if (((t_956305560.data).length == 0)) {
+    if (((t_1023414424.data).length == 0)) {
     F.line = 48;
-    result_956305563 = -1;
+    result_1023414427 = -1;
     break BeforeRet;
     }
     
     F.line = 49;
-    var h_956305614 = (hc_956305562 & (t_956305560.data).length - 1);
+    var h_1023414478 = (hc_1023414426 & (t_1023414424.data).length - 1);
     Label1: do {
       F.line = 50;
         Label2: while (true) {
-        if (!isFilled_1040187423(t_956305560.data[chckIndx(h_956305614, 0, (t_956305560.data).length - 1)].Field0)) break Label2;
-          if (((t_956305560.data[chckIndx(h_956305614, 0, (t_956305560.data).length - 1)].Field0 == hc_956305562) && (t_956305560.data[chckIndx(h_956305614, 0, (t_956305560.data).length - 1)].Field1 == key_956305561))) {
+        if (!isFilled_956301343(t_1023414424.data[chckIndx(h_1023414478, 0, (t_1023414424.data).length - 1)].Field0)) break Label2;
+          if (((t_1023414424.data[chckIndx(h_1023414478, 0, (t_1023414424.data).length - 1)].Field0 == hc_1023414426) && (t_1023414424.data[chckIndx(h_1023414478, 0, (t_1023414424.data).length - 1)].Field1 == key_1023414425))) {
           F.line = 56;
-          result_956305563 = h_956305614;
+          result_1023414427 = h_1023414478;
           break BeforeRet;
           }
           
           F.line = 57;
-          h_956305614 = nextTry_1040187426(h_956305614, (t_956305560.data).length - 1);
+          h_1023414478 = nextTry_956301346(h_1023414478, (t_1023414424.data).length - 1);
         }
     } while (false);
     F.line = 58;
-    result_956305563 = subInt(-1, h_956305614);
+    result_1023414427 = subInt(-1, h_1023414478);
   } while (false);
   framePtr = F.prev;
 
-  return result_956305563;
+  return result_1023414427;
 
 }
 
-function HEX5BHEX5DHEX3D_956304533(t_956304536, key_956304537, val_956304538) {
+function HEX5BHEX5DHEX3D_1023413397(t_1023413400, key_1023413401, val_1023413402) {
   var F = {procname: "[]=.[]=", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
   framePtr = F;
-    if (((t_956304536.data).length == 0)) {
+    if (((t_1023413400.data).length == 0)) {
     F.line = 163;
-    var correctSizeHEX60gensym35_956304588 = slotsNeeded_1040187434(32);
+    var correctSizeHEX60gensym35_1023413452 = slotsNeeded_956301354(32);
     F.line = 167;
-    t_956304536.counter = 0;
+    t_1023413400.counter = 0;
     F.line = 168;
-    t_956304536.data = new Array(chckRange(correctSizeHEX60gensym35_956304588, 0, 2147483647)); for (var i = 0 ; i < chckRange(correctSizeHEX60gensym35_956304588, 0, 2147483647) ; ++i) { t_956304536.data[i] = {Field0: 0, Field1: null, Field2: null}; }    }
+    t_1023413400.data = new Array(chckRange(correctSizeHEX60gensym35_1023413452, 0, 2147483647)); for (var i = 0 ; i < chckRange(correctSizeHEX60gensym35_1023413452, 0, 2147483647) ; ++i) { t_1023413400.data[i] = {Field0: 0, Field1: null, Field2: null}; }    }
     
     F.line = 57;
-    var hc_956304593 = [0];
+    var hc_1023413457 = [0];
     F.line = 58;
-    var index_956304823 = rawGet_956304594(t_956304536, key_956304537, hc_956304593, 0);
-    if ((0 <= index_956304823)) {
+    var index_1023413687 = rawGet_1023413458(t_1023413400, key_1023413401, hc_1023413457, 0);
+    if ((0 <= index_1023413687)) {
     F.line = 59;
-    t_956304536.data[chckIndx(index_956304823, 0, (t_956304536.data).length - 1)].Field2 = val_956304538;
+    t_1023413400.data[chckIndx(index_1023413687, 0, (t_1023413400.data).length - 1)].Field2 = val_1023413402;
     }
     else {
-      if (((t_956304536.data).length == 0)) {
+      if (((t_1023413400.data).length == 0)) {
       F.line = 163;
-      var correctSizeHEX60gensym40_956304925 = slotsNeeded_1040187434(32);
+      var correctSizeHEX60gensym40_1023413789 = slotsNeeded_956301354(32);
       F.line = 167;
-      t_956304536.counter = 0;
+      t_1023413400.counter = 0;
       F.line = 168;
-      t_956304536.data = new Array(chckRange(correctSizeHEX60gensym40_956304925, 0, 2147483647)); for (var i = 0 ; i < chckRange(correctSizeHEX60gensym40_956304925, 0, 2147483647) ; ++i) { t_956304536.data[i] = {Field0: 0, Field1: null, Field2: null}; }      }
+      t_1023413400.data = new Array(chckRange(correctSizeHEX60gensym40_1023413789, 0, 2147483647)); for (var i = 0 ; i < chckRange(correctSizeHEX60gensym40_1023413789, 0, 2147483647) ; ++i) { t_1023413400.data[i] = {Field0: 0, Field1: null, Field2: null}; }      }
       
-      if (mustRehash_956304930(t_956304536)) {
+      if (mustRehash_1023413794(t_1023413400)) {
       F.line = 49;
-      enlarge_956305085(t_956304536);
+      enlarge_1023413949(t_1023413400);
       F.line = 50;
-      index_956304823 = rawGetKnownHC_956305557(t_956304536, key_956304537, hc_956304593[0]);
+      index_1023413687 = rawGetKnownHC_1023414421(t_1023413400, key_1023413401, hc_1023413457[0]);
       }
       
       F.line = 51;
-      index_956304823 = subInt(-1, index_956304823);
+      index_1023413687 = subInt(-1, index_1023413687);
       F.line = 52;
-      rawInsert_956305379(t_956304536, t_956304536, "data", key_956304537, val_956304538, hc_956304593[0], index_956304823);
+      rawInsert_1023414243(t_1023413400, t_1023413400, "data", key_1023413401, val_1023413402, hc_1023413457[0], index_1023413687);
       F.line = 60;
-      t_956304536.counter = addInt(t_956304536.counter, 1);
+      t_1023413400.counter = addInt(t_1023413400.counter, 1);
     }
     
   framePtr = F.prev;
@@ -12047,130 +12054,130 @@ function HEX5BHEX5DHEX3D_956304533(t_956304536, key_956304537, val_956304538) {
   
 }
 
-function HEX5BHEX5DHEX3D_956307179(t_956307182, key_956307183, val_956307184) {
+function HEX5BHEX5DHEX3D_1023416043(t_1023416046, key_1023416047, val_1023416048) {
   var F = {procname: "[]=.[]=", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
   framePtr = F;
     F.line = 891;
-    HEX5BHEX5DHEX3D_956304533(t_956307182, key_956307183, val_956307184);
+    HEX5BHEX5DHEX3D_1023413397(t_1023416046, key_1023416047, val_1023416048);
   framePtr = F.prev;
 
   
 }
 
-function registerComponent_956306925(name_956306926, component_956306927) {
+function registerComponent_1023415789(name_1023415790, component_1023415791) {
     var Temporary1;
 
-  var result_956306928 = null;
+  var result_1023415792 = null;
 
   var F = {procname: "renderer.registerComponent", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/renderer.nim", line: 0};
   framePtr = F;
   BeforeRet: do {
     F.line = 196;
-    if (hasKey_956306969(components_956305826[0], name_956306926)) {
+    if (hasKey_1023415833(components_1023414690[0], name_1023415790)) {
     F.line = 203;
-    result_956306928 = (Temporary1 = HEX5BHEX5D_956306635(components_956305826[0], name_956306926), Temporary1)[0][Temporary1[1]];
+    result_1023415792 = (Temporary1 = HEX5BHEX5D_1023415499(components_1023414690[0], name_1023415790), Temporary1)[0][Temporary1[1]];
     break BeforeRet;
     }
     
     F.line = 204;
-    HEX5BHEX5DHEX3D_956307179(components_956305826[0], name_956306926, component_956306927);
-    result_956306928 = component_956306927;
+    HEX5BHEX5DHEX3D_1023416043(components_1023414690[0], name_1023415790, component_1023415791);
+    result_1023415792 = component_1023415791;
   } while (false);
   framePtr = F.prev;
 
-  return result_956306928;
+  return result_1023415792;
 
 }
 
-function nstnewStringTable(mode_1006633225) {
-  var result_1006633226 = null;
+function nstnewStringTable(mode_1073742089) {
+  var result_1073742090 = null;
 
   var F = {procname: "strtabs.newStringTable", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/strtabs.nim", line: 0};
   framePtr = F;
     F.line = 260;
-    result_1006633226 = ({m_type: NTI1006632966, counter: 0, data: [], mode: 0});
+    result_1073742090 = ({m_type: NTI1073741830, counter: 0, data: [], mode: 0});
     F.line = 261;
-    result_1006633226.mode = mode_1006633225;
+    result_1073742090.mode = mode_1073742089;
     F.line = 262;
-    result_1006633226.counter = 0;
+    result_1073742090.counter = 0;
     F.line = 263;
-    result_1006633226.data = new Array(64); for (var i = 0 ; i < 64 ; ++i) { result_1006633226.data[i] = {Field0: [], Field1: [], Field2: false}; }  framePtr = F.prev;
+    result_1073742090.data = new Array(64); for (var i = 0 ; i < 64 ; ++i) { result_1073742090.data[i] = {Field0: [], Field1: [], Field2: false}; }  framePtr = F.prev;
 
-  return result_1006633226;
+  return result_1073742090;
 
 }
 
-function hash_1124073894(x_1124073895) {
-  var result_1124073896 = 0;
+function hash_973078950(x_973078951) {
+  var result_973078952 = 0;
 
   var F = {procname: "hashes.hash", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
   framePtr = F;
     F.line = 388;
-    result_1124073896 = murmurHash_1124073795((x_1124073895.slice(0, (x_1124073895).length - 1 + 1)));
+    result_973078952 = murmurHash_973078851((x_973078951.slice(0, (x_973078951).length - 1 + 1)));
   framePtr = F.prev;
 
-  return result_1124073896;
+  return result_973078952;
 
 }
 
-function HEX21HEX26_1124073475(h_1124073476, val_1124073477) {
-  var result_1124073478 = 0;
+function HEX21HEX26_973078531(h_973078532, val_973078533) {
+  var result_973078534 = 0;
 
   var F = {procname: "hashes.!&", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
   framePtr = F;
     F.line = 79;
-    var h_1124073479 = (h_1124073476 >>> 0);
+    var h_973078535 = (h_973078532 >>> 0);
     F.line = 80;
-    var val_1124073480 = (val_1124073477 >>> 0);
+    var val_973078536 = (val_973078533 >>> 0);
     F.line = 81;
-    var res_1124073481 = ((h_1124073479 + val_1124073480) >>> 0);
+    var res_973078537 = ((h_973078535 + val_973078536) >>> 0);
     F.line = 82;
-    res_1124073481 = ((res_1124073481 + (res_1124073481 << 10)) >>> 0);
+    res_973078537 = ((res_973078537 + (res_973078537 << 10)) >>> 0);
     F.line = 83;
-    res_1124073481 = (res_1124073481 ^ (res_1124073481 >>> 6));
+    res_973078537 = (res_973078537 ^ (res_973078537 >>> 6));
     F.line = 84;
-    result_1124073478 = (res_1124073481 | 0);
+    result_973078534 = (res_973078537 | 0);
   framePtr = F.prev;
 
-  return result_1124073478;
+  return result_973078534;
 
 }
 
-function HEX21HEX24_1124073490(h_1124073491) {
-  var result_1124073492 = 0;
+function HEX21HEX24_973078546(h_973078547) {
+  var result_973078548 = 0;
 
   var F = {procname: "hashes.!$", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
   framePtr = F;
     F.line = 90;
-    var h_1124073493 = (h_1124073491 >>> 0);
+    var h_973078549 = (h_973078547 >>> 0);
     F.line = 91;
-    var res_1124073498 = ((h_1124073493 + (h_1124073493 << 3)) >>> 0);
+    var res_973078554 = ((h_973078549 + (h_973078549 << 3)) >>> 0);
     F.line = 92;
-    res_1124073498 = (res_1124073498 ^ (res_1124073498 >>> 11));
+    res_973078554 = (res_973078554 ^ (res_973078554 >>> 11));
     F.line = 93;
-    res_1124073498 = ((res_1124073498 + (res_1124073498 << 15)) >>> 0);
+    res_973078554 = ((res_973078554 + (res_973078554 << 15)) >>> 0);
     F.line = 94;
-    result_1124073492 = (res_1124073498 | 0);
+    result_973078548 = (res_973078554 | 0);
   framePtr = F.prev;
 
-  return result_1124073492;
+  return result_973078548;
 
 }
 
-function hashIgnoreCase_1124073969(x_1124073970) {
-  var result_1124073971 = 0;
+function hashIgnoreCase_973079025(x_973079026) {
+  var result_973079027 = 0;
 
   var F = {procname: "hashes.hashIgnoreCase", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
   framePtr = F;
     F.line = 492;
-    var h_1124073972 = 0;
+    var h_973079028 = 0;
     Label1: do {
       F.line = 493;
-      var i_1124073977 = 0;
+      var i_973079033 = 0;
       F.line = 75;
       var colontmp__2348810268 = 0;
       F.line = 493;
-      colontmp__2348810268 = subInt((x_1124073970).length, 1);
+      colontmp__2348810268 = subInt((x_973079026).length, 1);
       F.line = 90;
       var res_2348810269 = 0;
       Label2: do {
@@ -12178,95 +12185,95 @@ function hashIgnoreCase_1124073969(x_1124073970) {
           Label3: while (true) {
           if (!(res_2348810269 <= colontmp__2348810268)) break Label3;
             F.line = 493;
-            i_1124073977 = res_2348810269;
+            i_973079033 = res_2348810269;
             F.line = 494;
-            var c_1124073978 = x_1124073970[chckIndx(i_1124073977, 0, (x_1124073970).length - 1)];
-            if ((ConstSet2[c_1124073978] != undefined)) {
+            var c_973079034 = x_973079026[chckIndx(i_973079033, 0, (x_973079026).length - 1)];
+            if ((ConstSet2[c_973079034] != undefined)) {
             F.line = 496;
-            c_1124073978 = chckRange(addInt(c_1124073978, 32), 0, 255);
+            c_973079034 = chckRange(addInt(c_973079034, 32), 0, 255);
             }
             
             F.line = 497;
-            h_1124073972 = HEX21HEX26_1124073475(h_1124073972, c_1124073978);
+            h_973079028 = HEX21HEX26_973078531(h_973079028, c_973079034);
             F.line = 93;
             res_2348810269 = addInt(res_2348810269, 1);
           }
       } while (false);
     } while (false);
     F.line = 498;
-    result_1124073971 = HEX21HEX24_1124073490(h_1124073972);
+    result_973079027 = HEX21HEX24_973078546(h_973079028);
   framePtr = F.prev;
 
-  return result_1124073971;
+  return result_973079027;
 
 }
 
-function hashIgnoreStyle_1124073906(x_1124073907) {
-  var result_1124073908 = 0;
+function hashIgnoreStyle_973078962(x_973078963) {
+  var result_973078964 = 0;
 
   var F = {procname: "hashes.hashIgnoreStyle", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/hashes.nim", line: 0};
   framePtr = F;
     F.line = 442;
-    var h_1124073909 = 0;
+    var h_973078965 = 0;
     F.line = 443;
-    var i_1124073910 = 0;
+    var i_973078966 = 0;
     F.line = 444;
-    var xLen_1124073911 = (x_1124073907).length;
+    var xLen_973078967 = (x_973078963).length;
     Label1: do {
       F.line = 445;
         Label2: while (true) {
-        if (!(i_1124073910 < xLen_1124073911)) break Label2;
+        if (!(i_973078966 < xLen_973078967)) break Label2;
           F.line = 446;
-          var c_1124073912 = x_1124073907[chckIndx(i_1124073910, 0, (x_1124073907).length - 1)];
-          if ((c_1124073912 == 95)) {
+          var c_973078968 = x_973078963[chckIndx(i_973078966, 0, (x_973078963).length - 1)];
+          if ((c_973078968 == 95)) {
           F.line = 448;
-          i_1124073910 = addInt(i_1124073910, 1);
+          i_973078966 = addInt(i_973078966, 1);
           }
           else {
-            if ((ConstSet3[c_1124073912] != undefined)) {
+            if ((ConstSet3[c_973078968] != undefined)) {
             F.line = 451;
-            c_1124073912 = chckRange(addInt(c_1124073912, 32), 0, 255);
+            c_973078968 = chckRange(addInt(c_973078968, 32), 0, 255);
             }
             
             F.line = 452;
-            h_1124073909 = HEX21HEX26_1124073475(h_1124073909, c_1124073912);
+            h_973078965 = HEX21HEX26_973078531(h_973078965, c_973078968);
             F.line = 453;
-            i_1124073910 = addInt(i_1124073910, 1);
+            i_973078966 = addInt(i_973078966, 1);
           }
           
         }
     } while (false);
     F.line = 454;
-    result_1124073908 = HEX21HEX24_1124073490(h_1124073909);
+    result_973078964 = HEX21HEX24_973078546(h_973078965);
   framePtr = F.prev;
 
-  return result_1124073908;
+  return result_973078964;
 
 }
 
-function myhash_1006633069(t_1006633070, key_1006633071) {
-  var result_1006633072 = 0;
+function myhash_1073741933(t_1073741934, key_1073741935) {
+  var result_1073741936 = 0;
 
   var F = {procname: "strtabs.myhash", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/strtabs.nim", line: 0};
   framePtr = F;
     F.line = 114;
-    switch (t_1006633070.mode) {
+    switch (t_1073741934.mode) {
     case 0:
       F.line = 115;
-      result_1006633072 = hash_1124073894(key_1006633071);
+      result_1073741936 = hash_973078950(key_1073741935);
       break;
     case 1:
       F.line = 116;
-      result_1006633072 = hashIgnoreCase_1124073969(key_1006633071);
+      result_1073741936 = hashIgnoreCase_973079025(key_1073741935);
       break;
     case 2:
       F.line = 117;
-      result_1006633072 = hashIgnoreStyle_1124073906(key_1006633071);
+      result_1073741936 = hashIgnoreStyle_973078962(key_1073741935);
       break;
     }
   framePtr = F.prev;
 
-  return result_1006633072;
+  return result_1073741936;
 
 }
 
@@ -12423,134 +12430,134 @@ function nsuCmpIgnoreStyle(a_637534398, b_637534399) {
 
 }
 
-function myCmp_1006633073(t_1006633074, a_1006633075, b_1006633076) {
-  var result_1006633077 = false;
+function myCmp_1073741937(t_1073741938, a_1073741939, b_1073741940) {
+  var result_1073741941 = false;
 
   var F = {procname: "strtabs.myCmp", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/strtabs.nim", line: 0};
   framePtr = F;
     F.line = 120;
-    switch (t_1006633074.mode) {
+    switch (t_1073741938.mode) {
     case 0:
       F.line = 121;
-      result_1006633077 = (cmp_33555863(a_1006633075, b_1006633076) == 0);
+      result_1073741941 = (cmp_33555863(a_1073741939, b_1073741940) == 0);
       break;
     case 1:
       F.line = 122;
-      result_1006633077 = (nsuCmpIgnoreCase(a_1006633075, b_1006633076) == 0);
+      result_1073741941 = (nsuCmpIgnoreCase(a_1073741939, b_1073741940) == 0);
       break;
     case 2:
       F.line = 123;
-      result_1006633077 = (nsuCmpIgnoreStyle(a_1006633075, b_1006633076) == 0);
+      result_1073741941 = (nsuCmpIgnoreStyle(a_1073741939, b_1073741940) == 0);
       break;
     }
   framePtr = F.prev;
 
-  return result_1006633077;
+  return result_1073741941;
 
 }
 
-function nextTry_1006633087(h_1006633088, maxHash_1006633089) {
-  var result_1006633090 = 0;
+function nextTry_1073741951(h_1073741952, maxHash_1073741953) {
+  var result_1073741954 = 0;
 
   var F = {procname: "strtabs.nextTry", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/strtabs.nim", line: 0};
   framePtr = F;
     F.line = 130;
-    result_1006633090 = (addInt(h_1006633088, 1) & maxHash_1006633089);
+    result_1073741954 = (addInt(h_1073741952, 1) & maxHash_1073741953);
   framePtr = F.prev;
 
-  return result_1006633090;
+  return result_1073741954;
 
 }
 
-function rawGet_1006633091(t_1006633092, key_1006633093) {
-  var result_1006633094 = 0;
+function rawGet_1073741955(t_1073741956, key_1073741957) {
+  var result_1073741958 = 0;
 
   var F = {procname: "strtabs.rawGet", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/strtabs.nim", line: 0};
   framePtr = F;
   BeforeRet: do {
     F.line = 133;
-    var h_1006633098 = (myhash_1006633069(t_1006633092, key_1006633093) & (t_1006633092.data).length - 1);
+    var h_1073741962 = (myhash_1073741933(t_1073741956, key_1073741957) & (t_1073741956.data).length - 1);
     Label1: do {
       F.line = 134;
         Label2: while (true) {
-        if (!t_1006633092.data[chckIndx(h_1006633098, 0, (t_1006633092.data).length - 1)].Field2) break Label2;
-          if (myCmp_1006633073(t_1006633092, t_1006633092.data[chckIndx(h_1006633098, 0, (t_1006633092.data).length - 1)].Field0, key_1006633093)) {
+        if (!t_1073741956.data[chckIndx(h_1073741962, 0, (t_1073741956.data).length - 1)].Field2) break Label2;
+          if (myCmp_1073741937(t_1073741956, t_1073741956.data[chckIndx(h_1073741962, 0, (t_1073741956.data).length - 1)].Field0, key_1073741957)) {
           F.line = 136;
-          result_1006633094 = h_1006633098;
+          result_1073741958 = h_1073741962;
           break BeforeRet;
           }
           
           F.line = 137;
-          h_1006633098 = nextTry_1006633087(h_1006633098, (t_1006633092.data).length - 1);
+          h_1073741962 = nextTry_1073741951(h_1073741962, (t_1073741956.data).length - 1);
         }
     } while (false);
     F.line = 138;
-    result_1006633094 = -1;
+    result_1073741958 = -1;
   } while (false);
   framePtr = F.prev;
 
-  return result_1006633094;
+  return result_1073741958;
 
 }
 
-function mustRehash_1006633078(length_1006633079, counter_1006633080) {
-  var result_1006633081 = false;
+function mustRehash_1073741942(length_1073741943, counter_1073741944) {
+  var result_1073741945 = false;
 
   var F = {procname: "strtabs.mustRehash", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/strtabs.nim", line: 0};
   framePtr = F;
-    if (!((counter_1006633080 < length_1006633079))) {
+    if (!((counter_1073741944 < length_1073741943))) {
     F.line = 126;
     failedAssertImpl_218103864(makeNimstrLit("/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/strtabs.nim(126, 9) `length > counter` "));
     }
     
     F.line = 127;
-    result_1006633081 = ((mulInt(length_1006633079, 2) < mulInt(counter_1006633080, 3)) || (subInt(length_1006633079, counter_1006633080) < 4));
+    result_1073741945 = ((mulInt(length_1073741943, 2) < mulInt(counter_1073741944, 3)) || (subInt(length_1073741943, counter_1073741944) < 4));
   framePtr = F.prev;
 
-  return result_1006633081;
+  return result_1073741945;
 
 }
 
-function rawInsert_1006633157(t_1006633158, data_1006633159, data_1006633159_Idx, key_1006633160, val_1006633161) {
+function rawInsert_1073742021(t_1073742022, data_1073742023, data_1073742023_Idx, key_1073742024, val_1073742025) {
   var F = {procname: "strtabs.rawInsert", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/strtabs.nim", line: 0};
   framePtr = F;
     F.line = 219;
-    var h_1006633165 = (myhash_1006633069(t_1006633158, key_1006633160) & (data_1006633159[data_1006633159_Idx]).length - 1);
+    var h_1073742029 = (myhash_1073741933(t_1073742022, key_1073742024) & (data_1073742023[data_1073742023_Idx]).length - 1);
     Label1: do {
       F.line = 220;
         Label2: while (true) {
-        if (!data_1006633159[data_1006633159_Idx][chckIndx(h_1006633165, 0, (data_1006633159[data_1006633159_Idx]).length - 1)].Field2) break Label2;
+        if (!data_1073742023[data_1073742023_Idx][chckIndx(h_1073742029, 0, (data_1073742023[data_1073742023_Idx]).length - 1)].Field2) break Label2;
           F.line = 221;
-          h_1006633165 = nextTry_1006633087(h_1006633165, (data_1006633159[data_1006633159_Idx]).length - 1);
+          h_1073742029 = nextTry_1073741951(h_1073742029, (data_1073742023[data_1073742023_Idx]).length - 1);
         }
     } while (false);
     F.line = 222;
-    data_1006633159[data_1006633159_Idx][chckIndx(h_1006633165, 0, (data_1006633159[data_1006633159_Idx]).length - 1)].Field0 = nimCopy(null, key_1006633160, NTI33554439);
+    data_1073742023[data_1073742023_Idx][chckIndx(h_1073742029, 0, (data_1073742023[data_1073742023_Idx]).length - 1)].Field0 = nimCopy(null, key_1073742024, NTI33554439);
     F.line = 223;
-    data_1006633159[data_1006633159_Idx][chckIndx(h_1006633165, 0, (data_1006633159[data_1006633159_Idx]).length - 1)].Field1 = nimCopy(null, val_1006633161, NTI33554439);
+    data_1073742023[data_1073742023_Idx][chckIndx(h_1073742029, 0, (data_1073742023[data_1073742023_Idx]).length - 1)].Field1 = nimCopy(null, val_1073742025, NTI33554439);
     F.line = 224;
-    data_1006633159[data_1006633159_Idx][chckIndx(h_1006633165, 0, (data_1006633159[data_1006633159_Idx]).length - 1)].Field2 = true;
+    data_1073742023[data_1073742023_Idx][chckIndx(h_1073742029, 0, (data_1073742023[data_1073742023_Idx]).length - 1)].Field2 = true;
   framePtr = F.prev;
 
   
 }
 
-function enlarge_1006633169(t_1006633170) {
+function enlarge_1073742033(t_1073742034) {
             var Temporary4;
             var Temporary5;
 
   var F = {procname: "strtabs.enlarge", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/strtabs.nim", line: 0};
   framePtr = F;
     F.line = 227;
-    var n_1006633171 = [[]];
+    var n_1073742035 = [[]];
     F.line = 228;
-    n_1006633171[0] = new Array(chckRange(mulInt((t_1006633170.data).length, 2), 0, 2147483647)); for (var i = 0 ; i < chckRange(mulInt((t_1006633170.data).length, 2), 0, 2147483647) ; ++i) { n_1006633171[0][i] = {Field0: [], Field1: [], Field2: false}; }    Label1: do {
+    n_1073742035[0] = new Array(chckRange(mulInt((t_1073742034.data).length, 2), 0, 2147483647)); for (var i = 0 ; i < chckRange(mulInt((t_1073742034.data).length, 2), 0, 2147483647) ; ++i) { n_1073742035[0][i] = {Field0: [], Field1: [], Field2: false}; }    Label1: do {
       F.line = 229;
-      var i_1006633188 = 0;
+      var i_1073742052 = 0;
       F.line = 43;
       var colontmp__2348810277 = 0;
       F.line = 229;
-      colontmp__2348810277 = (t_1006633170.data).length - 1;
+      colontmp__2348810277 = (t_1073742034.data).length - 1;
       F.line = 65;
       var res_2348810278 = 0;
       Label2: do {
@@ -12558,14 +12565,14 @@ function enlarge_1006633169(t_1006633170) {
           Label3: while (true) {
           if (!(res_2348810278 <= colontmp__2348810277)) break Label3;
             F.line = 229;
-            i_1006633188 = res_2348810278;
-            if (t_1006633170.data[chckIndx(i_1006633188, 0, (t_1006633170.data).length - 1)].Field2) {
+            i_1073742052 = res_2348810278;
+            if (t_1073742034.data[chckIndx(i_1073742052, 0, (t_1073742034.data).length - 1)].Field2) {
             F.line = 230;
-            Temporary4 = t_1006633170.data[chckIndx(i_1006633188, 0, (t_1006633170.data).length - 1)].Field0;
-            t_1006633170.data[chckIndx(i_1006633188, 0, (t_1006633170.data).length - 1)].Field0 = genericReset(t_1006633170.data[chckIndx(i_1006633188, 0, (t_1006633170.data).length - 1)].Field0, NTI33554439);
-            Temporary5 = t_1006633170.data[chckIndx(i_1006633188, 0, (t_1006633170.data).length - 1)].Field1;
-            t_1006633170.data[chckIndx(i_1006633188, 0, (t_1006633170.data).length - 1)].Field1 = genericReset(t_1006633170.data[chckIndx(i_1006633188, 0, (t_1006633170.data).length - 1)].Field1, NTI33554439);
-            rawInsert_1006633157(t_1006633170, n_1006633171, 0, Temporary4, Temporary5);
+            Temporary4 = t_1073742034.data[chckIndx(i_1073742052, 0, (t_1073742034.data).length - 1)].Field0;
+            t_1073742034.data[chckIndx(i_1073742052, 0, (t_1073742034.data).length - 1)].Field0 = genericReset(t_1073742034.data[chckIndx(i_1073742052, 0, (t_1073742034.data).length - 1)].Field0, NTI33554439);
+            Temporary5 = t_1073742034.data[chckIndx(i_1073742052, 0, (t_1073742034.data).length - 1)].Field1;
+            t_1073742034.data[chckIndx(i_1073742052, 0, (t_1073742034.data).length - 1)].Field1 = genericReset(t_1073742034.data[chckIndx(i_1073742052, 0, (t_1073742034.data).length - 1)].Field1, NTI33554439);
+            rawInsert_1073742021(t_1073742034, n_1073742035, 0, Temporary4, Temporary5);
             }
             
             F.line = 68;
@@ -12574,30 +12581,30 @@ function enlarge_1006633169(t_1006633170) {
       } while (false);
     } while (false);
     F.line = 231;
-    var Temporary6 = t_1006633170.data; t_1006633170.data = n_1006633171[0]; n_1006633171[0] = Temporary6;  framePtr = F.prev;
+    var Temporary6 = t_1073742034.data; t_1073742034.data = n_1073742035[0]; n_1073742035[0] = Temporary6;  framePtr = F.prev;
 
   
 }
 
-function nstPut(t_1006633213, key_1006633214, val_1006633215) {
+function nstPut(t_1073742077, key_1073742078, val_1073742079) {
   var F = {procname: "strtabs.[]=", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/strtabs.nim", line: 0};
   framePtr = F;
     F.line = 245;
-    var index_1006633216 = rawGet_1006633091(t_1006633213, key_1006633214);
-    if ((0 <= index_1006633216)) {
+    var index_1073742080 = rawGet_1073741955(t_1073742077, key_1073742078);
+    if ((0 <= index_1073742080)) {
     F.line = 247;
-    t_1006633213.data[chckIndx(index_1006633216, 0, (t_1006633213.data).length - 1)].Field1 = nimCopy(null, val_1006633215, NTI33554439);
+    t_1073742077.data[chckIndx(index_1073742080, 0, (t_1073742077.data).length - 1)].Field1 = nimCopy(null, val_1073742079, NTI33554439);
     }
     else {
-      if (mustRehash_1006633078((t_1006633213.data).length, t_1006633213.counter)) {
+      if (mustRehash_1073741942((t_1073742077.data).length, t_1073742077.counter)) {
       F.line = 249;
-      enlarge_1006633169(t_1006633213);
+      enlarge_1073742033(t_1073742077);
       }
       
       F.line = 250;
-      rawInsert_1006633157(t_1006633213, t_1006633213, "data", key_1006633214, val_1006633215);
+      rawInsert_1073742021(t_1073742077, t_1073742077, "data", key_1073742078, val_1073742079);
       F.line = 251;
-      t_1006633213.counter = addInt(t_1006633213.counter, 1);
+      t_1073742077.counter = addInt(t_1073742077.counter, 1);
     }
     
   framePtr = F.prev;
@@ -12605,30 +12612,30 @@ function nstPut(t_1006633213, key_1006633214, val_1006633215) {
   
 }
 
-function nstnewStringTableWithTableConstr(keyValuePairs_1006633267, mode_1006633268) {
-  var result_1006633269 = null;
+function nstnewStringTableWithTableConstr(keyValuePairs_1073742131, mode_1073742132) {
+  var result_1073742133 = null;
 
   var F = {procname: "strtabs.newStringTable", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/strtabs.nim", line: 0};
   framePtr = F;
     F.line = 293;
-    result_1006633269 = nstnewStringTable(mode_1006633268);
+    result_1073742133 = nstnewStringTable(mode_1073742132);
     Label1: do {
       F.line = 294;
-      var key_1006633282 = [];
+      var key_1073742146 = [];
       F.line = 294;
-      var val_1006633283 = [];
+      var val_1073742147 = [];
       F.line = 8;
       var i_1711276044 = 0;
       Label2: do {
         F.line = 9;
           Label3: while (true) {
-          if (!(i_1711276044 < (keyValuePairs_1006633267).length)) break Label3;
+          if (!(i_1711276044 < (keyValuePairs_1073742131).length)) break Label3;
             F.line = 294;
-            key_1006633282 = keyValuePairs_1006633267[chckIndx(i_1711276044, 0, (keyValuePairs_1006633267).length - 1)]["Field0"];
+            key_1073742146 = keyValuePairs_1073742131[chckIndx(i_1711276044, 0, (keyValuePairs_1073742131).length - 1)]["Field0"];
             F.line = 294;
-            val_1006633283 = keyValuePairs_1006633267[chckIndx(i_1711276044, 0, (keyValuePairs_1006633267).length - 1)]["Field1"];
+            val_1073742147 = keyValuePairs_1073742131[chckIndx(i_1711276044, 0, (keyValuePairs_1073742131).length - 1)]["Field1"];
             F.line = 294;
-            nstPut(result_1006633269, key_1006633282, val_1006633283);
+            nstPut(result_1073742133, key_1073742146, val_1073742147);
             F.line = 11;
             i_1711276044 = addInt(i_1711276044, 1);
           }
@@ -12636,7 +12643,7 @@ function nstnewStringTableWithTableConstr(keyValuePairs_1006633267, mode_1006633
     } while (false);
   framePtr = F.prev;
 
-  return result_1006633269;
+  return result_1073742133;
 
 }
 
@@ -12692,7 +12699,7 @@ F.line = 9;
 F.line = 10;
 var _comp14162821_2348810251 = [initDrawer_2231369738(makeNimstrLit("comp14162821"), false)];
 F.line = 10;
-var comp14162821_2348810252 = [registerComponent_956306925("comp14162821", _comp14162821_2348810251[0])];
+var comp14162821_2348810252 = [registerComponent_1023415789("comp14162821", _comp14162821_2348810251[0])];
 F.line = 105;
 comp14162821_2348810252[0].slot = initTag_1560281217(makeNimstrLit("div"), [], true);
 var drawer_comp_2348810253 = [comp14162821_2348810252[0]];
@@ -12729,18 +12736,18 @@ window.addEventListener('scroll', (ev) => {
 
 framePtr = F.prev;
 
-function registerApp_956306913(appId_956306914) {
-  var result_956306915 = null;
+function registerApp_1023415777(appId_1023415778) {
+  var result_1023415779 = null;
 
   var F = {procname: "renderer.registerApp", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/renderer.nim", line: 0};
   framePtr = F;
     F.line = 184;
     F.line = 191;
-    application_956301361[0] = {appId: appId_956306914, router: null};
-    result_956306915 = application_956301361[0];
+    application_1023410225[0] = {appId: appId_1023415778, router: null};
+    result_1023415779 = application_1023410225[0];
   framePtr = F.prev;
 
-  return result_956306915;
+  return result_1023415779;
 
 }
 
@@ -12759,21 +12766,21 @@ function substr_33557906(s_33557907, first_33557908, last_33557909) {
       F.line = 3068;
       var i_33557917 = 0;
       F.line = 75;
-      var colontmp__956306085 = 0;
+      var colontmp__1023414949 = 0;
       F.line = 3068;
-      colontmp__956306085 = subInt(L_33557912, 1);
+      colontmp__1023414949 = subInt(L_33557912, 1);
       F.line = 90;
-      var res_956306086 = 0;
+      var res_1023414950 = 0;
       Label2: do {
         F.line = 91;
           Label3: while (true) {
-          if (!(res_956306086 <= colontmp__956306085)) break Label3;
+          if (!(res_1023414950 <= colontmp__1023414949)) break Label3;
             F.line = 3068;
-            i_33557917 = res_956306086;
+            i_33557917 = res_1023414950;
             F.line = 3068;
             result_33557910[chckIndx(i_33557917, 0, (result_33557910).length - 1)] = s_33557907[chckIndx(addInt(i_33557917, first_33557911), 0, (s_33557907).length - 1)];
             F.line = 93;
-            res_956306086 = addInt(res_956306086, 1);
+            res_1023414950 = addInt(res_1023414950, 1);
           }
       } while (false);
     } while (false);
@@ -12835,15 +12842,15 @@ function initTag_1560281125(name_1560281126, attrs_1560281127, children_15602811
       F.line = 89;
       var child_1560281164 = null;
       F.line = 235;
-      var i_452986283 = 0;
+      var i_452986292 = 0;
       F.line = 236;
-      var L_452986284 = (children_1560281132).length;
+      var L_452986293 = (children_1560281132).length;
       Label2: do {
         F.line = 237;
           Label3: while (true) {
-          if (!(i_452986283 < L_452986284)) break Label3;
+          if (!(i_452986292 < L_452986293)) break Label3;
             F.line = 89;
-            child_1560281164 = children_1560281132[chckIndx(i_452986283, 0, (children_1560281132).length - 1)];
+            child_1560281164 = children_1560281132[chckIndx(i_452986292, 0, (children_1560281132).length - 1)];
             Label4: do {
               if ((child_1560281164 == null)) {
               F.line = 91;
@@ -12856,8 +12863,8 @@ function initTag_1560281125(name_1560281126, attrs_1560281127, children_15602811
               result_1560281134.children.push(child_1560281164);;
             } while (false);
             F.line = 239;
-            i_452986283 = addInt(i_452986283, 1);
-            if (!(((children_1560281132).length == L_452986284))) {
+            i_452986292 = addInt(i_452986292, 1);
+            if (!(((children_1560281132).length == L_452986293))) {
             F.line = 240;
             failedAssertImpl_218103864(makeNimstrLit("/home/runner/.choosenim/toolchains/nim-1.6.14/lib/system/iterators.nim(240, 11) `len(a) == L` the length of the seq changed while iterating over it"));
             }
@@ -12941,17 +12948,17 @@ function HEX5BHEX5D_687869099(s_687869102, x_687869103) {
       F.line = 2562;
       var i_687869113 = 0;
       F.line = 119;
-      var i_2164261183 = 0;
+      var i_2164261213 = 0;
       Label2: do {
         F.line = 120;
           Label3: while (true) {
-          if (!(i_2164261183 < L_687869108)) break Label3;
+          if (!(i_2164261213 < L_687869108)) break Label3;
             F.line = 2562;
-            i_687869113 = i_2164261183;
+            i_687869113 = i_2164261213;
             F.line = 2562;
             result_687869104[chckIndx(i_687869113, 0, (result_687869104).length - 1)] = s_687869102[chckIndx(addInt(i_687869113, a_687869106), 0, (s_687869102).length - 1)];
             F.line = 122;
-            i_2164261183 = addInt(i_2164261183, 1);
+            i_2164261213 = addInt(i_2164261213, 1);
           }
       } while (false);
     } while (false);
@@ -13421,15 +13428,15 @@ function initTag_1560281275(name_1560281276, isText_1560281277, children_1560281
       F.line = 151;
       var child_1560281296 = null;
       F.line = 235;
-      var i_452986291 = 0;
+      var i_452986300 = 0;
       F.line = 236;
-      var L_452986292 = (children_1560281282).length;
+      var L_452986301 = (children_1560281282).length;
       Label2: do {
         F.line = 237;
           Label3: while (true) {
-          if (!(i_452986291 < L_452986292)) break Label3;
+          if (!(i_452986300 < L_452986301)) break Label3;
             F.line = 151;
-            child_1560281296 = children_1560281282[chckIndx(i_452986291, 0, (children_1560281282).length - 1)];
+            child_1560281296 = children_1560281282[chckIndx(i_452986300, 0, (children_1560281282).length - 1)];
             Label4: do {
               if ((child_1560281296 == null)) {
               F.line = 153;
@@ -13442,8 +13449,8 @@ function initTag_1560281275(name_1560281276, isText_1560281277, children_1560281
               result_1560281284.children.push(child_1560281296);;
             } while (false);
             F.line = 239;
-            i_452986291 = addInt(i_452986291, 1);
-            if (!(((children_1560281282).length == L_452986292))) {
+            i_452986300 = addInt(i_452986300, 1);
+            if (!(((children_1560281282).length == L_452986301))) {
             F.line = 240;
             failedAssertImpl_218103864(makeNimstrLit("/home/runner/.choosenim/toolchains/nim-1.6.14/lib/system/iterators.nim(240, 11) `len(a) == L` the length of the seq changed while iterating over it"));
             }
@@ -13457,22 +13464,22 @@ function initTag_1560281275(name_1560281276, isText_1560281277, children_1560281
 
 }
 
-function remember_2164260952(val_2164260954) {
-  var result_2164260955 = null;
+function remember_2164260990(val_2164260992) {
+  var result_2164260993 = null;
 
   var F = {procname: "remember.remember", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/state.nim", line: 0};
   framePtr = F;
     F.line = 41;
-    result_2164260955 = {value: val_2164260954};
+    result_2164260993 = {value: val_2164260992};
   framePtr = F.prev;
 
-  return result_2164260955;
+  return result_2164260993;
 
 }
 
-function initButton_2164260933(uniqCompId_2164260934, flat_2164260935, action_2164260936) {
+function initButton_2164260971(uniqCompId_2164260972, flat_2164260973, action_2164260974) {
     
-function HEX3Aanonymous_2164260975(self_2164260976, ev_2164260977) {
+function HEX3Aanonymous_2164261013(self_2164261014, ev_2164261015) {
       var F = {procname: "initButton.:anonymous", prev: framePtr, filename: "/home/runner/work/happyx/happyx/examples/website/src/components/button.nim", line: 0};
       framePtr = F;
       framePtr = F.prev;
@@ -13480,7 +13487,7 @@ function HEX3Aanonymous_2164260975(self_2164260976, ev_2164260977) {
       
     }
     
-function HEX3Aanonymous_2164260978(self_2164260976, ev_2164260977) {
+function HEX3Aanonymous_2164261016(self_2164261014, ev_2164261015) {
       var F = {procname: "initButton.:anonymous", prev: framePtr, filename: "/home/runner/work/happyx/happyx/examples/website/src/components/button.nim", line: 0};
       framePtr = F;
       framePtr = F.prev;
@@ -13488,7 +13495,7 @@ function HEX3Aanonymous_2164260978(self_2164260976, ev_2164260977) {
       
     }
     
-function HEX3Aanonymous_2164260979(self_2164260976, ev_2164260977) {
+function HEX3Aanonymous_2164261017(self_2164261014, ev_2164261015) {
       var F = {procname: "initButton.:anonymous", prev: framePtr, filename: "/home/runner/work/happyx/happyx/examples/website/src/components/button.nim", line: 0};
       framePtr = F;
       framePtr = F.prev;
@@ -13496,7 +13503,7 @@ function HEX3Aanonymous_2164260979(self_2164260976, ev_2164260977) {
       
     }
     
-function HEX3Aanonymous_2164260980(self_2164260976, ev_2164260977) {
+function HEX3Aanonymous_2164261018(self_2164261014, ev_2164261015) {
       var F = {procname: "initButton.:anonymous", prev: framePtr, filename: "/home/runner/work/happyx/happyx/examples/website/src/components/button.nim", line: 0};
       framePtr = F;
       framePtr = F.prev;
@@ -13504,7 +13511,7 @@ function HEX3Aanonymous_2164260980(self_2164260976, ev_2164260977) {
       
     }
     
-function HEX3Aanonymous_2164260981(self_2164260976, ev_2164260977) {
+function HEX3Aanonymous_2164261019(self_2164261014, ev_2164261015) {
       var F = {procname: "initButton.:anonymous", prev: framePtr, filename: "/home/runner/work/happyx/happyx/examples/website/src/components/button.nim", line: 0};
       framePtr = F;
       framePtr = F.prev;
@@ -13512,7 +13519,7 @@ function HEX3Aanonymous_2164260981(self_2164260976, ev_2164260977) {
       
     }
     
-function HEX3Aanonymous_2164260982(self_2164260976, ev_2164260977) {
+function HEX3Aanonymous_2164261020(self_2164261014, ev_2164261015) {
       var F = {procname: "initButton.:anonymous", prev: framePtr, filename: "/home/runner/work/happyx/happyx/examples/website/src/components/button.nim", line: 0};
       framePtr = F;
       framePtr = F.prev;
@@ -13520,7 +13527,7 @@ function HEX3Aanonymous_2164260982(self_2164260976, ev_2164260977) {
       
     }
     
-function HEX3Aanonymous_2164260983(self_2164260976, ev_2164260977) {
+function HEX3Aanonymous_2164261021(self_2164261014, ev_2164261015) {
       var F = {procname: "initButton.:anonymous", prev: framePtr, filename: "/home/runner/work/happyx/happyx/examples/website/src/components/button.nim", line: 0};
       framePtr = F;
       framePtr = F.prev;
@@ -13528,43 +13535,43 @@ function HEX3Aanonymous_2164260983(self_2164260976, ev_2164260977) {
       
     }
 
-  var result_2164260937 = null;
+  var result_2164260975 = null;
 
   var F = {procname: "button.initButton", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/components.nim", line: 0};
   framePtr = F;
     F.line = 12;
-    result_2164260937 = {uniqCompId: nimCopy(null, uniqCompId_2164260934, NTI33554439), flat: remember_2164260938(flat_2164260935), action: remember_2164260952(action_2164260936), m_type: NTI2164260918, isCreated: false, slot: null, created: null, exited: null, rendered: null, pageHide: null, pageShow: null, beforeUpdated: null, updated: null};
-    F.line = 16;
-    result_2164260937.beforeUpdated = HEX3Aanonymous_2164260975;
-    F.line = 16;
-    result_2164260937.pageShow = HEX3Aanonymous_2164260978;
-    F.line = 16;
-    result_2164260937.pageHide = HEX3Aanonymous_2164260979;
-    F.line = 16;
-    result_2164260937.rendered = HEX3Aanonymous_2164260980;
-    F.line = 16;
-    result_2164260937.exited = HEX3Aanonymous_2164260981;
-    F.line = 16;
-    result_2164260937.created = HEX3Aanonymous_2164260982;
-    F.line = 16;
-    result_2164260937.updated = HEX3Aanonymous_2164260983;
+    result_2164260975 = {uniqCompId: nimCopy(null, uniqCompId_2164260972, NTI33554439), flat: remember_2164260976(flat_2164260973), action: remember_2164260990(action_2164260974), m_type: NTI2164260929, isCreated: false, slot: null, created: null, exited: null, rendered: null, pageHide: null, pageShow: null, beforeUpdated: null, updated: null};
+    F.line = 26;
+    result_2164260975.beforeUpdated = HEX3Aanonymous_2164261013;
+    F.line = 26;
+    result_2164260975.pageShow = HEX3Aanonymous_2164261016;
+    F.line = 26;
+    result_2164260975.pageHide = HEX3Aanonymous_2164261017;
+    F.line = 26;
+    result_2164260975.rendered = HEX3Aanonymous_2164261018;
+    F.line = 26;
+    result_2164260975.exited = HEX3Aanonymous_2164261019;
+    F.line = 26;
+    result_2164260975.created = HEX3Aanonymous_2164261020;
+    F.line = 26;
+    result_2164260975.updated = HEX3Aanonymous_2164261021;
   framePtr = F.prev;
 
-  return result_2164260937;
+  return result_2164260975;
 
 }
 
-function route_956306908(path_956306909) {
+function route_1023415772(path_1023415773) {
   var F = {procname: "renderer.route", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/renderer.nim", line: 0};
   framePtr = F;
     F.line = 177;
-    window.history.pushState(null, null, '#' + path_956306909);
+    window.history.pushState(null, null, '#' + path_1023415773);
     F.line = 178;
-    var force_956306910 = !((currentRoute_956305828[0] == path_956306909));
+    var force_1023415774 = !((currentRoute_1023414692[0] == path_1023415773));
     F.line = 179;
-    currentRoute_956305828[0] = path_956306909;
+    currentRoute_1023414692[0] = path_1023415773;
     F.line = 180;
-    application_956301361[0].router(force_956306910);
+    application_1023410225[0].router(force_1023415774);
   framePtr = F.prev;
 
   
@@ -13583,20 +13590,20 @@ function addArgIter_1560281652(self_1560281653, arg_1560281654) {
       F.line = 259;
       var i_1560281665 = null;
       F.line = 235;
-      var i_452986295 = 0;
+      var i_452986304 = 0;
       F.line = 236;
-      var L_452986296 = (self_1560281653.children).length;
+      var L_452986305 = (self_1560281653.children).length;
       Label3: do {
         F.line = 237;
           Label4: while (true) {
-          if (!(i_452986295 < L_452986296)) break Label4;
+          if (!(i_452986304 < L_452986305)) break Label4;
             F.line = 259;
-            i_1560281665 = self_1560281653.children[chckIndx(i_452986295, 0, (self_1560281653.children).length - 1)];
+            i_1560281665 = self_1560281653.children[chckIndx(i_452986304, 0, (self_1560281653.children).length - 1)];
             F.line = 259;
             addArgIter_1560281652(i_1560281665, arg_1560281654);
             F.line = 239;
-            i_452986295 = addInt(i_452986295, 1);
-            if (!(((self_1560281653.children).length == L_452986296))) {
+            i_452986304 = addInt(i_452986304, 1);
+            if (!(((self_1560281653.children).length == L_452986305))) {
             F.line = 240;
             failedAssertImpl_218103864(makeNimstrLit("/home/runner/.choosenim/toolchains/nim-1.6.14/lib/system/iterators.nim(240, 11) `len(a) == L` the length of the seq changed while iterating over it"));
             }
@@ -13686,19 +13693,19 @@ function HEX3Aanonymous_2214592548(self_2214592541, ev_2214592542) {
   framePtr = F;
     F.line = 9;
     result_2214592525 = {uniqCompId: nimCopy(null, uniqCompId_2214592523, NTI33554439), drawer: remember_2214592526(drawer_2214592524), m_type: NTI2214592515, isCreated: false, slot: null, created: null, exited: null, rendered: null, pageHide: null, pageShow: null, beforeUpdated: null, updated: null};
-    F.line = 13;
+    F.line = 54;
     result_2214592525.beforeUpdated = HEX3Aanonymous_2214592540;
-    F.line = 13;
+    F.line = 54;
     result_2214592525.pageShow = HEX3Aanonymous_2214592543;
-    F.line = 13;
+    F.line = 54;
     result_2214592525.pageHide = HEX3Aanonymous_2214592544;
-    F.line = 13;
+    F.line = 54;
     result_2214592525.rendered = HEX3Aanonymous_2214592545;
-    F.line = 13;
+    F.line = 54;
     result_2214592525.exited = HEX3Aanonymous_2214592546;
-    F.line = 13;
+    F.line = 54;
     result_2214592525.created = HEX3Aanonymous_2214592547;
-    F.line = 13;
+    F.line = 54;
     result_2214592525.updated = HEX3Aanonymous_2214592548;
   framePtr = F.prev;
 
@@ -13770,19 +13777,19 @@ function HEX3Aanonymous_2248146960(self_2248146953, ev_2248146954) {
   framePtr = F;
     F.line = 6;
     result_2248146951 = {uniqCompId: nimCopy(null, uniqCompId_2248146950, NTI33554439), m_type: NTI2248146947, isCreated: false, slot: null, created: null, exited: null, rendered: null, pageHide: null, pageShow: null, beforeUpdated: null, updated: null};
-    F.line = 7;
+    F.line = 9;
     result_2248146951.beforeUpdated = HEX3Aanonymous_2248146952;
-    F.line = 7;
+    F.line = 9;
     result_2248146951.pageShow = HEX3Aanonymous_2248146955;
-    F.line = 7;
+    F.line = 9;
     result_2248146951.pageHide = HEX3Aanonymous_2248146956;
-    F.line = 7;
+    F.line = 9;
     result_2248146951.rendered = HEX3Aanonymous_2248146957;
-    F.line = 7;
+    F.line = 9;
     result_2248146951.exited = HEX3Aanonymous_2248146958;
-    F.line = 7;
+    F.line = 9;
     result_2248146951.created = HEX3Aanonymous_2248146959;
-    F.line = 7;
+    F.line = 9;
     result_2248146951.updated = HEX3Aanonymous_2248146960;
   framePtr = F.prev;
 
@@ -13854,19 +13861,19 @@ function HEX3Aanonymous_2264924176(self_2264924169, ev_2264924170) {
   framePtr = F;
     F.line = 6;
     result_2264924167 = {uniqCompId: nimCopy(null, uniqCompId_2264924166, NTI33554439), m_type: NTI2264924163, isCreated: false, slot: null, created: null, exited: null, rendered: null, pageHide: null, pageShow: null, beforeUpdated: null, updated: null};
-    F.line = 7;
+    F.line = 11;
     result_2264924167.beforeUpdated = HEX3Aanonymous_2264924168;
-    F.line = 7;
+    F.line = 11;
     result_2264924167.pageShow = HEX3Aanonymous_2264924171;
-    F.line = 7;
+    F.line = 11;
     result_2264924167.pageHide = HEX3Aanonymous_2264924172;
-    F.line = 7;
+    F.line = 11;
     result_2264924167.rendered = HEX3Aanonymous_2264924173;
-    F.line = 7;
+    F.line = 11;
     result_2264924167.exited = HEX3Aanonymous_2264924174;
-    F.line = 7;
+    F.line = 11;
     result_2264924167.created = HEX3Aanonymous_2264924175;
-    F.line = 7;
+    F.line = 11;
     result_2264924167.updated = HEX3Aanonymous_2264924176;
   framePtr = F.prev;
 
@@ -14055,19 +14062,19 @@ function HEX3Aanonymous_2181038113(self_2181038106, ev_2181038107) {
   framePtr = F;
     F.line = 6;
     result_2181038090 = {uniqCompId: nimCopy(null, uniqCompId_2181038088, NTI33554439), pathToImg: remember_2181038091(pathToImg_2181038089), m_type: NTI2181038083, isCreated: false, slot: null, created: null, exited: null, rendered: null, pageHide: null, pageShow: null, beforeUpdated: null, updated: null};
-    F.line = 9;
+    F.line = 14;
     result_2181038090.beforeUpdated = HEX3Aanonymous_2181038105;
-    F.line = 9;
+    F.line = 14;
     result_2181038090.pageShow = HEX3Aanonymous_2181038108;
-    F.line = 9;
+    F.line = 14;
     result_2181038090.pageHide = HEX3Aanonymous_2181038109;
-    F.line = 9;
+    F.line = 14;
     result_2181038090.rendered = HEX3Aanonymous_2181038110;
-    F.line = 9;
+    F.line = 14;
     result_2181038090.exited = HEX3Aanonymous_2181038111;
-    F.line = 9;
+    F.line = 14;
     result_2181038090.created = HEX3Aanonymous_2181038112;
-    F.line = 9;
+    F.line = 14;
     result_2181038090.updated = HEX3Aanonymous_2181038113;
   framePtr = F.prev;
 
@@ -14152,19 +14159,19 @@ function HEX3Aanonymous_2281701421(self_2281701414, ev_2281701415) {
   framePtr = F;
     F.line = 9;
     result_2281701395 = {uniqCompId: nimCopy(null, uniqCompId_2281701392, NTI33554439), name: remember_2181038091(name_2281701393), data: remember_2281701399(data_2281701394), m_type: NTI2281701383, isCreated: false, slot: null, created: null, exited: null, rendered: null, pageHide: null, pageShow: null, beforeUpdated: null, updated: null};
-    F.line = 13;
+    F.line = 22;
     result_2281701395.beforeUpdated = HEX3Aanonymous_2281701413;
-    F.line = 13;
+    F.line = 22;
     result_2281701395.pageShow = HEX3Aanonymous_2281701416;
-    F.line = 13;
+    F.line = 22;
     result_2281701395.pageHide = HEX3Aanonymous_2281701417;
-    F.line = 13;
+    F.line = 22;
     result_2281701395.rendered = HEX3Aanonymous_2281701418;
-    F.line = 13;
+    F.line = 22;
     result_2281701395.exited = HEX3Aanonymous_2281701419;
-    F.line = 13;
+    F.line = 22;
     result_2281701395.created = HEX3Aanonymous_2281701420;
-    F.line = 13;
+    F.line = 22;
     result_2281701395.updated = HEX3Aanonymous_2281701421;
   framePtr = F.prev;
 
@@ -14235,20 +14242,20 @@ function HEX3Aanonymous_2298478614(self_2298478607, ev_2298478608) {
   var F = {procname: "divider.initDivider", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/components.nim", line: 0};
   framePtr = F;
     F.line = 6;
-    result_2298478602 = {uniqCompId: nimCopy(null, uniqCompId_2298478600, NTI33554439), horizontal: remember_2164260938(horizontal_2298478601), m_type: NTI2298478595, isCreated: false, slot: null, created: null, exited: null, rendered: null, pageHide: null, pageShow: null, beforeUpdated: null, updated: null};
-    F.line = 8;
+    result_2298478602 = {uniqCompId: nimCopy(null, uniqCompId_2298478600, NTI33554439), horizontal: remember_2164260976(horizontal_2298478601), m_type: NTI2298478595, isCreated: false, slot: null, created: null, exited: null, rendered: null, pageHide: null, pageShow: null, beforeUpdated: null, updated: null};
+    F.line = 12;
     result_2298478602.beforeUpdated = HEX3Aanonymous_2298478606;
-    F.line = 8;
+    F.line = 12;
     result_2298478602.pageShow = HEX3Aanonymous_2298478609;
-    F.line = 8;
+    F.line = 12;
     result_2298478602.pageHide = HEX3Aanonymous_2298478610;
-    F.line = 8;
+    F.line = 12;
     result_2298478602.rendered = HEX3Aanonymous_2298478611;
-    F.line = 8;
+    F.line = 12;
     result_2298478602.exited = HEX3Aanonymous_2298478612;
-    F.line = 8;
+    F.line = 12;
     result_2298478602.created = HEX3Aanonymous_2298478613;
-    F.line = 8;
+    F.line = 12;
     result_2298478602.updated = HEX3Aanonymous_2298478614;
   framePtr = F.prev;
 
@@ -14346,19 +14353,19 @@ function HEX3Aanonymous_2315255875(self_2315255868, ev_2315255869) {
   framePtr = F;
     F.line = 7;
     result_2315255835 = {uniqCompId: nimCopy(null, uniqCompId_2315255823, NTI33554439), data: remember_2315255836(data_2315255832), sponsorStatus: remember_2315255850(sponsorStatus_2315255833), colorBorder: remember_2181038091(colorBorder_2315255834), m_type: NTI2315255811, isCreated: false, slot: null, created: null, exited: null, rendered: null, pageHide: null, pageShow: null, beforeUpdated: null, updated: null};
-    F.line = 12;
+    F.line = 23;
     result_2315255835.beforeUpdated = HEX3Aanonymous_2315255867;
-    F.line = 12;
+    F.line = 23;
     result_2315255835.pageShow = HEX3Aanonymous_2315255870;
-    F.line = 12;
+    F.line = 23;
     result_2315255835.pageHide = HEX3Aanonymous_2315255871;
-    F.line = 12;
+    F.line = 23;
     result_2315255835.rendered = HEX3Aanonymous_2315255872;
-    F.line = 12;
+    F.line = 23;
     result_2315255835.exited = HEX3Aanonymous_2315255873;
-    F.line = 12;
+    F.line = 23;
     result_2315255835.created = HEX3Aanonymous_2315255874;
-    F.line = 12;
+    F.line = 23;
     result_2315255835.updated = HEX3Aanonymous_2315255875;
   framePtr = F.prev;
 
@@ -14366,26 +14373,26 @@ function HEX3Aanonymous_2315255875(self_2315255868, ev_2315255869) {
 
 }
 
-function nstTake(t_1006633110, key_1006633111) {
-  var result_1006633112 = null;
-  var result_1006633112_Idx = 0;
+function nstTake(t_1073741974, key_1073741975) {
+  var result_1073741976 = null;
+  var result_1073741976_Idx = 0;
 
   var F = {procname: "strtabs.[]", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/strtabs.nim", line: 0};
   framePtr = F;
     F.line = 141;
-    var indexHEX60gensym3_1006633114 = rawGet_1006633091(t_1006633110, key_1006633111);
-    if ((0 <= indexHEX60gensym3_1006633114)) {
+    var indexHEX60gensym3_1073741978 = rawGet_1073741955(t_1073741974, key_1073741975);
+    if ((0 <= indexHEX60gensym3_1073741978)) {
     F.line = 142;
-    result_1006633112 = t_1006633110.data[chckIndx(indexHEX60gensym3_1006633114, 0, (t_1006633110.data).length - 1)]; result_1006633112_Idx = "Field1";
+    result_1073741976 = t_1073741974.data[chckIndx(indexHEX60gensym3_1073741978, 0, (t_1073741974.data).length - 1)]; result_1073741976_Idx = "Field1";
     }
     else {
       F.line = 144;
-      raiseException({message: (makeNimstrLit("key not found: ") || []).concat(key_1006633111 || []), parent: null, m_type: NTI33555126, name: null, trace: [], up: null}, "KeyError");
+      raiseException({message: (makeNimstrLit("key not found: ") || []).concat(key_1073741975 || []), parent: null, m_type: NTI33555126, name: null, trace: [], up: null}, "KeyError");
     }
     
   framePtr = F.prev;
 
-  return [result_1006633112, result_1006633112_Idx];
+  return [result_1073741976, result_1073741976_Idx];
 
 }
 
@@ -14399,11 +14406,11 @@ function toDom_1560281666(self_1560281667) {
   BeforeRet: do {
     if (self_1560281667.isText) {
     F.line = 268;
-    var colontmp__452986303 = document.createTextNode(toJSStr(self_1560281667.name));
+    var colontmp__452986312 = document.createTextNode(toJSStr(self_1560281667.name));
     F.line = 268;
-    var colontmp__452986304 = false;
+    var colontmp__452986313 = false;
     F.line = 268;
-    result_1560281670 = nimCopy(result_1560281670, {Field0: colontmp__452986303, Field1: colontmp__452986304}, NTI1560281632);
+    result_1560281670 = nimCopy(result_1560281670, {Field0: colontmp__452986312, Field1: colontmp__452986313}, NTI1560281632);
     break BeforeRet;
     }
     else {
@@ -14414,15 +14421,15 @@ function toDom_1560281666(self_1560281667) {
       F.line = 273;
       var child_1560281677 = null;
       F.line = 235;
-      var i_452986307 = 0;
+      var i_452986316 = 0;
       F.line = 236;
-      var L_452986308 = (self_1560281667.children).length;
+      var L_452986317 = (self_1560281667.children).length;
       Label2: do {
         F.line = 237;
           Label3: while (true) {
-          if (!(i_452986307 < L_452986308)) break Label3;
+          if (!(i_452986316 < L_452986317)) break Label3;
             F.line = 273;
-            child_1560281677 = self_1560281667.children[chckIndx(i_452986307, 0, (self_1560281667.children).length - 1)];
+            child_1560281677 = self_1560281667.children[chckIndx(i_452986316, 0, (self_1560281667.children).length - 1)];
             F.line = 274;
             var dom_1560281678 = toDom_1560281666(child_1560281677);
             if (dom_1560281678.Field1) {
@@ -14441,8 +14448,8 @@ function toDom_1560281666(self_1560281667) {
             }
             
             F.line = 239;
-            i_452986307 = addInt(i_452986307, 1);
-            if (!(((self_1560281667.children).length == L_452986308))) {
+            i_452986316 = addInt(i_452986316, 1);
+            if (!(((self_1560281667.children).length == L_452986317))) {
             F.line = 240;
             failedAssertImpl_218103864(makeNimstrLit("/home/runner/.choosenim/toolchains/nim-1.6.14/lib/system/iterators.nim(240, 11) `len(a) == L` the length of the seq changed while iterating over it"));
             }
@@ -14451,11 +14458,11 @@ function toDom_1560281666(self_1560281667) {
       } while (false);
     } while (false);
     F.line = 280;
-    var colontmp__452986310 = res_1560281673;
+    var colontmp__452986319 = res_1560281673;
     F.line = 280;
-    var colontmp__452986311 = true;
+    var colontmp__452986320 = true;
     F.line = 280;
-    result_1560281670 = nimCopy(result_1560281670, {Field0: colontmp__452986310, Field1: colontmp__452986311}, NTI1560281632);
+    result_1560281670 = nimCopy(result_1560281670, {Field0: colontmp__452986319, Field1: colontmp__452986320}, NTI1560281632);
     break BeforeRet;
     }
     }
@@ -14466,28 +14473,28 @@ function toDom_1560281666(self_1560281667) {
       var key_1560281682 = [];
       Label7: do {
         F.line = 102;
-        var h_452986318 = 0;
+        var h_452986327 = 0;
         F.line = 75;
-        var colontmp__452986319 = 0;
+        var colontmp__452986328 = 0;
         F.line = 102;
-        colontmp__452986319 = (self_1560281667.attrs.data).length - 1;
+        colontmp__452986328 = (self_1560281667.attrs.data).length - 1;
         F.line = 90;
-        var res_452986320 = 0;
+        var res_452986329 = 0;
         Label8: do {
           F.line = 91;
             Label9: while (true) {
-            if (!(res_452986320 <= colontmp__452986319)) break Label9;
+            if (!(res_452986329 <= colontmp__452986328)) break Label9;
               F.line = 102;
-              h_452986318 = res_452986320;
-              if (self_1560281667.attrs.data[chckIndx(h_452986318, 0, (self_1560281667.attrs.data).length - 1)].Field2) {
+              h_452986327 = res_452986329;
+              if (self_1560281667.attrs.data[chckIndx(h_452986327, 0, (self_1560281667.attrs.data).length - 1)].Field2) {
               F.line = 284;
-              key_1560281682 = self_1560281667.attrs.data[chckIndx(h_452986318, 0, (self_1560281667.attrs.data).length - 1)].Field0;
+              key_1560281682 = self_1560281667.attrs.data[chckIndx(h_452986327, 0, (self_1560281667.attrs.data).length - 1)].Field0;
               F.line = 284;
               res_1560281681.setAttribute(toJSStr(key_1560281682), toJSStr((Temporary10 = nstTake(self_1560281667.attrs, key_1560281682), Temporary10)[0][Temporary10[1]]));
               }
               
               F.line = 93;
-              res_452986320 = addInt(res_452986320, 1);
+              res_452986329 = addInt(res_452986329, 1);
             }
         } while (false);
       } while (false);
@@ -14496,20 +14503,20 @@ function toDom_1560281666(self_1560281667) {
       F.line = 287;
       var arg_1560281686 = [];
       F.line = 235;
-      var i_452986323 = 0;
+      var i_452986332 = 0;
       F.line = 236;
-      var L_452986324 = (self_1560281667.args).length;
+      var L_452986333 = (self_1560281667.args).length;
       Label12: do {
         F.line = 237;
           Label13: while (true) {
-          if (!(i_452986323 < L_452986324)) break Label13;
+          if (!(i_452986332 < L_452986333)) break Label13;
             F.line = 287;
-            arg_1560281686 = self_1560281667.args[chckIndx(i_452986323, 0, (self_1560281667.args).length - 1)];
+            arg_1560281686 = self_1560281667.args[chckIndx(i_452986332, 0, (self_1560281667.args).length - 1)];
             F.line = 287;
             res_1560281681.setAttribute(toJSStr(arg_1560281686), "");
             F.line = 239;
-            i_452986323 = addInt(i_452986323, 1);
-            if (!(((self_1560281667.args).length == L_452986324))) {
+            i_452986332 = addInt(i_452986332, 1);
+            if (!(((self_1560281667.args).length == L_452986333))) {
             F.line = 240;
             failedAssertImpl_218103864(makeNimstrLit("/home/runner/.choosenim/toolchains/nim-1.6.14/lib/system/iterators.nim(240, 11) `len(a) == L` the length of the seq changed while iterating over it"));
             }
@@ -14521,15 +14528,15 @@ function toDom_1560281666(self_1560281667) {
       F.line = 290;
       var child_1560281690 = null;
       F.line = 235;
-      var i_452986328 = 0;
+      var i_452986337 = 0;
       F.line = 236;
-      var L_452986329 = (self_1560281667.children).length;
+      var L_452986338 = (self_1560281667.children).length;
       Label15: do {
         F.line = 237;
           Label16: while (true) {
-          if (!(i_452986328 < L_452986329)) break Label16;
+          if (!(i_452986337 < L_452986338)) break Label16;
             F.line = 290;
-            child_1560281690 = self_1560281667.children[chckIndx(i_452986328, 0, (self_1560281667.children).length - 1)];
+            child_1560281690 = self_1560281667.children[chckIndx(i_452986337, 0, (self_1560281667.children).length - 1)];
             F.line = 291;
             var dom_1560281691 = toDom_1560281666(child_1560281690);
             if (dom_1560281691.Field1) {
@@ -14548,8 +14555,8 @@ function toDom_1560281666(self_1560281667) {
             }
             
             F.line = 239;
-            i_452986328 = addInt(i_452986328, 1);
-            if (!(((self_1560281667.children).length == L_452986329))) {
+            i_452986337 = addInt(i_452986337, 1);
+            if (!(((self_1560281667.children).length == L_452986338))) {
             F.line = 240;
             failedAssertImpl_218103864(makeNimstrLit("/home/runner/.choosenim/toolchains/nim-1.6.14/lib/system/iterators.nim(240, 11) `len(a) == L` the length of the seq changed while iterating over it"));
             }
@@ -14558,11 +14565,11 @@ function toDom_1560281666(self_1560281667) {
       } while (false);
     } while (false);
     F.line = 298;
-    var colontmp__452986331 = res_1560281681;
+    var colontmp__452986340 = res_1560281681;
     F.line = 298;
-    var colontmp__452986332 = false;
+    var colontmp__452986341 = false;
     F.line = 298;
-    result_1560281670 = nimCopy(result_1560281670, {Field0: colontmp__452986331, Field1: colontmp__452986332}, NTI1560281632);
+    result_1560281670 = nimCopy(result_1560281670, {Field0: colontmp__452986340, Field1: colontmp__452986341}, NTI1560281632);
     break BeforeRet;
   } while (false);
   framePtr = F.prev;
@@ -14571,35 +14578,35 @@ function toDom_1560281666(self_1560281667) {
 
 }
 
-function renderVdom_956307284(app_956307285, tag_956307286) {
+function renderVdom_1023416148(app_1023416149, tag_1023416150) {
   var F = {procname: "renderer.renderVdom", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/renderer.nim", line: 0};
   framePtr = F;
     F.line = 215;
-    var elem_956307287 = document.getElementById(app_956307285.appId);
+    var elem_1023416151 = document.getElementById(app_1023416149.appId);
     F.line = 217;
-    var realDom_956307288 = elem_956307287;
+    var realDom_1023416152 = elem_1023416151;
     F.line = 218;
-    var virtualDom_956307289 = toDom_1560281666(tag_956307286).Field0;
+    var virtualDom_1023416153 = toDom_1560281666(tag_1023416150).Field0;
     F.line = 221;
-    realDom_956307288.innerHTML = virtualDom_956307289.innerHTML;
+    realDom_1023416152.innerHTML = virtualDom_1023416153.innerHTML;
     Label1: do {
       F.line = 222;
-      var comp_956307311 = null;
+      var comp_1023416175 = null;
       F.line = 235;
-      var i_452986300 = 0;
+      var i_452986309 = 0;
       F.line = 236;
-      var L_452986301 = (currentComponentsList_956305833[0]).length;
+      var L_452986310 = (currentComponentsList_1023414697[0]).length;
       Label2: do {
         F.line = 237;
           Label3: while (true) {
-          if (!(i_452986300 < L_452986301)) break Label3;
+          if (!(i_452986309 < L_452986310)) break Label3;
             F.line = 222;
-            comp_956307311 = currentComponentsList_956305833[0][chckIndx(i_452986300, 0, (currentComponentsList_956305833[0]).length - 1)];
+            comp_1023416175 = currentComponentsList_1023414697[0][chckIndx(i_452986309, 0, (currentComponentsList_1023414697[0]).length - 1)];
             F.line = 222;
-            comp_956307311.updated(comp_956307311, null);
+            comp_1023416175.updated(comp_1023416175, null);
             F.line = 239;
-            i_452986300 = addInt(i_452986300, 1);
-            if (!(((currentComponentsList_956305833[0]).length == L_452986301))) {
+            i_452986309 = addInt(i_452986309, 1);
+            if (!(((currentComponentsList_1023414697[0]).length == L_452986310))) {
             F.line = 240;
             failedAssertImpl_218103864(makeNimstrLit("/home/runner/.choosenim/toolchains/nim-1.6.14/lib/system/iterators.nim(240, 11) `len(a) == L` the length of the seq changed while iterating over it"));
             }
@@ -14608,8 +14615,8 @@ function renderVdom_956307284(app_956307285, tag_956307286) {
       } while (false);
     } while (false);
     F.line = 224;
-    if (currentComponentsList_956305833[0].length < 0) { for (var i = currentComponentsList_956305833[0].length ; i < 0 ; ++i) currentComponentsList_956305833[0].push(null); }
-               else { currentComponentsList_956305833[0].length = 0; };
+    if (currentComponentsList_1023414697[0].length < 0) { for (var i = currentComponentsList_1023414697[0].length ; i < 0 ; ++i) currentComponentsList_1023414697[0].push(null); }
+               else { currentComponentsList_1023414697[0].length = 0; };
   framePtr = F.prev;
 
   
@@ -14623,7 +14630,7 @@ function HEX3Aanonymous_452985066() {
       var F = {procname: "callRouter.:anonymous", prev: framePtr, filename: "/home/runner/work/happyx/happyx/examples/website/src/main.nim", line: 0};
       framePtr = F;
         F.line = 49;
-        route_956306908("/");
+        route_1023415772("/");
       framePtr = F.prev;
 
       
@@ -14638,9 +14645,9 @@ function HEX3Aanonymous_452985066() {
     var path_452984919 = nsuStrip(cstrToNimstr(window.location.hash), true, false, ConstSet5);
     F.line = 574;
     var html_452984920 = null;
-      if (!!(force_452984917)) Temporary1 = false; else {        Temporary1 = (0 < (currentComponent_956305827[0]).length);      }    if (Temporary1) {
+      if (!!(force_452984917)) Temporary1 = false; else {        Temporary1 = (0 < (currentComponent_1023414691[0]).length);      }    if (Temporary1) {
     F.line = 574;
-    reRender_956307325((Temporary2 = HEX5BHEX5D_956306635(components_956305826[0], toJSStr(currentComponent_956305827[0])), Temporary2)[0][Temporary2[1]]);
+    reRender_1023416189((Temporary2 = HEX5BHEX5D_1023415499(components_1023414690[0], toJSStr(currentComponent_1023414691[0])), Temporary2)[0][Temporary2[1]]);
     F.line = 574;
     break BeforeRet;
     }
@@ -14687,9 +14694,9 @@ function HEX3Aanonymous_452985066() {
     F.line = 46;
     fmtRes_452985062.push.apply(fmtRes_452985062, makeNimstrLit("flex flex-col justify-end items-center absolute top-0 left-0 bottom-24 right-0 upper"));;
     F.line = 47;
-    var _comp15173022_452985067 = initButton_2164260933(makeNimstrLit("comp15173022"), false, HEX3Aanonymous_452985066);
+    var _comp15173022_452985067 = initButton_2164260971(makeNimstrLit("comp15173022"), false, HEX3Aanonymous_452985066);
     F.line = 47;
-    var comp15173022_452985068 = registerComponent_956306925("comp15173022", _comp15173022_452985067);
+    var comp15173022_452985068 = registerComponent_1023415789("comp15173022", _comp15173022_452985067);
     F.line = 105;
     F.line = 51;
     var fmtRes_452985073 = mnewString(0);
@@ -14697,7 +14704,7 @@ function HEX3Aanonymous_452985066() {
     fmtRes_452985073.push.apply(fmtRes_452985073, makeNimstrLit("go to home"));;
     comp15173022_452985068.slot = initTag_1560281217(makeNimstrLit("div"), [initTag_1560281275(fmtRes_452985073, true, [], false)], true);
     F.line = 707;
-    var data_comp15173022_452985082 = render_956307321(comp15173022_452985068);
+    var data_comp15173022_452985082 = render_1023416185(comp15173022_452985068);
     F.line = 707;
     addArgIter_1560281652(data_comp15173022_452985082, (makeNimstrLit("data-") || []).concat(comp15173022_452985068.uniqCompId || []));
     F.line = 707;
@@ -14770,7 +14777,7 @@ function HEX3Aanonymous_452985066() {
     F.line = 21;
     fmtRes_452985176.push.apply(fmtRes_452985176, makeNimstrLit("z-10 pointer-events-none"));;
     F.line = 23;
-    var data_drawer_comp_452985189 = render_956307321(drawer_comp_2348810253[0]);
+    var data_drawer_comp_452985189 = render_1023416185(drawer_comp_2348810253[0]);
     F.line = 23;
     addArgIter_1560281652(data_drawer_comp_452985189, (makeNimstrLit("data-") || []).concat(drawer_comp_2348810253[0].uniqCompId || []));
     F.line = 23;
@@ -14790,11 +14797,11 @@ function HEX3Aanonymous_452985066() {
     F.line = 27;
     var _comp17193424_452985206 = initHeader_2214592522(makeNimstrLit("comp17193424"), drawer_comp_2348810253[0]);
     F.line = 27;
-    var comp17193424_452985207 = registerComponent_956306925("comp17193424", _comp17193424_452985206);
+    var comp17193424_452985207 = registerComponent_1023415789("comp17193424", _comp17193424_452985206);
     F.line = 105;
     comp17193424_452985207.slot = initTag_1560281217(makeNimstrLit("div"), [], true);
     F.line = 105;
-    var data_comp17193424_452985208 = render_956307321(comp17193424_452985207);
+    var data_comp17193424_452985208 = render_1023416185(comp17193424_452985207);
     F.line = 105;
     addArgIter_1560281652(data_comp17193424_452985208, (makeNimstrLit("data-") || []).concat(comp17193424_452985207.uniqCompId || []));
     F.line = 105;
@@ -14810,7 +14817,7 @@ function HEX3Aanonymous_452985066() {
     F.line = 30;
     var _comp18203625_452985226 = initSection_2248146949(makeNimstrLit("comp18203625"));
     F.line = 30;
-    var comp18203625_452985227 = registerComponent_956306925("comp18203625", _comp18203625_452985226);
+    var comp18203625_452985227 = registerComponent_1023415789("comp18203625", _comp18203625_452985226);
     F.line = 105;
     F.line = 31;
     var fmtRes_452985232 = mnewString(0);
@@ -15018,7 +15025,7 @@ function HEX3Aanonymous_452985066() {
     fmtRes_452985601.push.apply(fmtRes_452985601, makeNimstrLit("your company may use HappyX"));;
     comp18203625_452985227.slot = initTag_1560281217(makeNimstrLit("div"), [initTag_1560281125(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_452985232, NTI33554439)}, NTI452985248)], 0), [initTag_1560281125(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_452985240, NTI33554439)}, NTI452985261)], 0), [initTag_1560281125(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_452985248[0], NTI33554439)}, NTI452985273)], 0), [initTag_1560281125(makeNimstrLit("p"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_452985256, NTI33554439)}, NTI452985290)], 0), [initTag_1560281275(fmtRes_452985264, true, [], false)], false), initTag_1560281125(makeNimstrLit("p"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_452985277, NTI33554439)}, NTI452985319)], 0), [initTag_1560281275(fmtRes_452985285, true, [], false)], false), initTag_1560281125(makeNimstrLit("p"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_452985298, NTI33554439)}, NTI452985347)], 0), [initTag_1560281275(fmtRes_452985306, true, [], false)], false)], false), initTag_1560281125(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_452985327[0], NTI33554439)}, NTI452985386)], 0), [initTag_1560281125(makeNimstrLit("p"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_452985335, NTI33554439)}, NTI452985403)], 0), [initTag_1560281275(fmtRes_452985343, true, [], false)], false), initTag_1560281125(makeNimstrLit("p"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_452985356, NTI33554439)}, NTI452985431)], 0), [initTag_1560281275(fmtRes_452985364, true, [], false)], false), initTag_1560281125(makeNimstrLit("p"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_452985377, NTI33554439)}, NTI452985459)], 0), [initTag_1560281275(fmtRes_452985385, true, [], false)], false), initTag_1560281125(makeNimstrLit("p"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_452985398, NTI33554439)}, NTI452985487)], 0), [initTag_1560281275(fmtRes_452985406, true, [], false)], false)], false)], false), initTag_1560281125(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_452985435, NTI33554439)}, NTI452985536)], 0), [initTag_1560281125(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_452985443[0], NTI33554439)}, NTI452985549)], 0), [initTag_1560281125(makeNimstrLit("p"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_452985451, NTI33554439)}, NTI452985566)], 0), [initTag_1560281275(fmtRes_452985459, true, [], false)], false), initTag_1560281125(makeNimstrLit("p"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_452985472, NTI33554439)}, NTI452985594)], 0), [initTag_1560281275(fmtRes_452985480, true, [], false)], false), initTag_1560281125(makeNimstrLit("p"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_452985493, NTI33554439)}, NTI452985622)], 0), [initTag_1560281275(fmtRes_452985501, true, [], false)], false), initTag_1560281125(makeNimstrLit("p"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_452985514, NTI33554439)}, NTI452985650)], 0), [initTag_1560281275(fmtRes_452985522, true, [], false)], false)], false), initTag_1560281125(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_452985543[0], NTI33554439)}, NTI452985688)], 0), [initTag_1560281125(makeNimstrLit("p"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_452985551, NTI33554439)}, NTI452985705)], 0), [initTag_1560281275(fmtRes_452985559, true, [], false)], false), initTag_1560281125(makeNimstrLit("p"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_452985572, NTI33554439)}, NTI452985734)], 0), [initTag_1560281275(fmtRes_452985580, true, [], false)], false), initTag_1560281125(makeNimstrLit("p"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_452985593, NTI33554439)}, NTI452985762)], 0), [initTag_1560281275(fmtRes_452985601, true, [], false)], false)], false)], false)], false)], true);
     F.line = 707;
-    var data_comp18203625_452985642 = render_956307321(comp18203625_452985227);
+    var data_comp18203625_452985642 = render_1023416185(comp18203625_452985227);
     F.line = 707;
     addArgIter_1560281652(data_comp18203625_452985642, (makeNimstrLit("data-") || []).concat(comp18203625_452985227.uniqCompId || []));
     F.line = 707;
@@ -15030,16 +15037,16 @@ function HEX3Aanonymous_452985066() {
     F.line = 68;
     var _comp19213826_452985644 = initSmartCard_2264924165(makeNimstrLit("comp19213826"));
     F.line = 68;
-    var comp19213826_452985645 = registerComponent_956306925("comp19213826", _comp19213826_452985644);
+    var comp19213826_452985645 = registerComponent_1023415789("comp19213826", _comp19213826_452985644);
     F.line = 105;
     F.line = 69;
     var _comp20224027_452985646 = initCodeBlock_2197815306(makeNimstrLit("comp20224027"), makeNimstrLit("nim"), makeNimstrLit("import happyx\x0A\x0Aserve(\"127.0.0.1\", 5000):\x0A  get \"/\":\x0A    return \"Hello, world!\" "), "ssrCode");
     F.line = 69;
-    var comp20224027_452985647 = registerComponent_956306925("comp20224027", _comp20224027_452985646);
+    var comp20224027_452985647 = registerComponent_1023415789("comp20224027", _comp20224027_452985646);
     F.line = 105;
     comp20224027_452985647.slot = initTag_1560281217(makeNimstrLit("div"), [], true);
     F.line = 105;
-    var data_comp20224027_452985648 = render_956307321(comp20224027_452985647);
+    var data_comp20224027_452985648 = render_1023416185(comp20224027_452985647);
     F.line = 105;
     addArgIter_1560281652(data_comp20224027_452985648, (makeNimstrLit("data-") || []).concat(comp20224027_452985647.uniqCompId || []));
     F.line = 105;
@@ -15058,7 +15065,7 @@ function HEX3Aanonymous_452985066() {
     fmtRes_452985661.push.apply(fmtRes_452985661, makeNimstrLit("Make server-side applications easily with powerful DSL \xF0\x9F\x94\xA5"));;
     comp19213826_452985645.slot = initTag_1560281217(makeNimstrLit("div"), [data_comp20224027_452985648, initTag_1560281125(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_452985653, NTI33554439)}, NTI452985832)], 0), [initTag_1560281275(fmtRes_452985661, true, [], false)], false)], true);
     F.line = 105;
-    var data_comp19213826_452985678 = render_956307321(comp19213826_452985645);
+    var data_comp19213826_452985678 = render_1023416185(comp19213826_452985645);
     F.line = 105;
     addArgIter_1560281652(data_comp19213826_452985678, (makeNimstrLit("data-") || []).concat(comp19213826_452985645.uniqCompId || []));
     F.line = 105;
@@ -15070,7 +15077,7 @@ function HEX3Aanonymous_452985066() {
     F.line = 78;
     var _comp21234228_452985680 = initSection_2248146949(makeNimstrLit("comp21234228"));
     F.line = 78;
-    var comp21234228_452985681 = registerComponent_956306925("comp21234228", _comp21234228_452985680);
+    var comp21234228_452985681 = registerComponent_1023415789("comp21234228", _comp21234228_452985680);
     F.line = 105;
     F.line = 79;
     var fmtRes_452985686 = mnewString(0);
@@ -15087,7 +15094,7 @@ function HEX3Aanonymous_452985066() {
     F.line = 82;
     var _comp22244429_452985716 = initCard_2181038087(makeNimstrLit("comp22244429"), makeNimstrLit("/happyx/public/html5.svg"));
     F.line = 82;
-    var comp22244429_452985717 = registerComponent_956306925("comp22244429", _comp22244429_452985716);
+    var comp22244429_452985717 = registerComponent_1023415789("comp22244429", _comp22244429_452985716);
     F.line = 105;
     F.line = 83;
     var fmtRes_452985722 = mnewString(0);
@@ -15095,7 +15102,7 @@ function HEX3Aanonymous_452985066() {
     fmtRes_452985722.push.apply(fmtRes_452985722, makeNimstrLit("Buil HTML/CSS/JS"));;
     comp22244429_452985717.slot = initTag_1560281217(makeNimstrLit("div"), [initTag_1560281275(fmtRes_452985722, true, [], false)], true);
     F.line = 707;
-    var data_comp22244429_452985731 = render_956307321(comp22244429_452985717);
+    var data_comp22244429_452985731 = render_1023416185(comp22244429_452985717);
     F.line = 707;
     addArgIter_1560281652(data_comp22244429_452985731, (makeNimstrLit("data-") || []).concat(comp22244429_452985717.uniqCompId || []));
     F.line = 707;
@@ -15107,7 +15114,7 @@ function HEX3Aanonymous_452985066() {
     F.line = 84;
     var _comp23254630_452985732 = initCard_2181038087(makeNimstrLit("comp23254630"), makeNimstrLit("/happyx/public/setting.svg"));
     F.line = 84;
-    var comp23254630_452985733 = registerComponent_956306925("comp23254630", _comp23254630_452985732);
+    var comp23254630_452985733 = registerComponent_1023415789("comp23254630", _comp23254630_452985732);
     F.line = 105;
     F.line = 85;
     var fmtRes_452985738 = mnewString(0);
@@ -15115,7 +15122,7 @@ function HEX3Aanonymous_452985066() {
     fmtRes_452985738.push.apply(fmtRes_452985738, makeNimstrLit("Path Params"));;
     comp23254630_452985733.slot = initTag_1560281217(makeNimstrLit("div"), [initTag_1560281275(fmtRes_452985738, true, [], false)], true);
     F.line = 707;
-    var data_comp23254630_452985747 = render_956307321(comp23254630_452985733);
+    var data_comp23254630_452985747 = render_1023416185(comp23254630_452985733);
     F.line = 707;
     addArgIter_1560281652(data_comp23254630_452985747, (makeNimstrLit("data-") || []).concat(comp23254630_452985733.uniqCompId || []));
     F.line = 707;
@@ -15127,7 +15134,7 @@ function HEX3Aanonymous_452985066() {
     F.line = 86;
     var _comp24264831_452985748 = initCard_2181038087(makeNimstrLit("comp24264831"), makeNimstrLit("/happyx/public/routing.svg"));
     F.line = 86;
-    var comp24264831_452985749 = registerComponent_956306925("comp24264831", _comp24264831_452985748);
+    var comp24264831_452985749 = registerComponent_1023415789("comp24264831", _comp24264831_452985748);
     F.line = 105;
     F.line = 87;
     var fmtRes_452985754 = mnewString(0);
@@ -15135,7 +15142,7 @@ function HEX3Aanonymous_452985066() {
     fmtRes_452985754.push.apply(fmtRes_452985754, makeNimstrLit("Routing/Mounting"));;
     comp24264831_452985749.slot = initTag_1560281217(makeNimstrLit("div"), [initTag_1560281275(fmtRes_452985754, true, [], false)], true);
     F.line = 707;
-    var data_comp24264831_452985763 = render_956307321(comp24264831_452985749);
+    var data_comp24264831_452985763 = render_1023416185(comp24264831_452985749);
     F.line = 707;
     addArgIter_1560281652(data_comp24264831_452985763, (makeNimstrLit("data-") || []).concat(comp24264831_452985749.uniqCompId || []));
     F.line = 707;
@@ -15146,7 +15153,7 @@ function HEX3Aanonymous_452985066() {
     window.addEventListener('pageshow', data_comp24264831_452985763.pageShow);
     comp21234228_452985681.slot = initTag_1560281217(makeNimstrLit("div"), [initTag_1560281217(makeNimstrLit("p"), [initTag_1560281275(fmtRes_452985686, true, [], false)], false), initTag_1560281217(makeNimstrLit("p"), [initTag_1560281275(fmtRes_452985699, true, [], false)], false), initTag_1560281125(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_452985712, NTI33554439)}, NTI452985909)], 0), [data_comp22244429_452985731, data_comp23254630_452985747, data_comp24264831_452985763], false)], true);
     F.line = 707;
-    var data_comp21234228_452985780 = render_956307321(comp21234228_452985681);
+    var data_comp21234228_452985780 = render_1023416185(comp21234228_452985681);
     F.line = 707;
     addArgIter_1560281652(data_comp21234228_452985780, (makeNimstrLit("data-") || []).concat(comp21234228_452985681.uniqCompId || []));
     F.line = 707;
@@ -15158,16 +15165,16 @@ function HEX3Aanonymous_452985066() {
     F.line = 90;
     var _comp25275032_452985782 = initSmartCard_2264924165(makeNimstrLit("comp25275032"));
     F.line = 90;
-    var comp25275032_452985783 = registerComponent_956306925("comp25275032", _comp25275032_452985782);
+    var comp25275032_452985783 = registerComponent_1023415789("comp25275032", _comp25275032_452985782);
     F.line = 105;
     F.line = 91;
     var _comp26285233_452985784 = initCodeBlock_2197815306(makeNimstrLit("comp26285233"), makeNimstrLit("nim"), makeNimstrLit("import happyx\x0A\x0AappRoutes(\"app\"):\x0A  \"/\":\x0A    \"Hello, world!\" "), "spaCode");
     F.line = 91;
-    var comp26285233_452985785 = registerComponent_956306925("comp26285233", _comp26285233_452985784);
+    var comp26285233_452985785 = registerComponent_1023415789("comp26285233", _comp26285233_452985784);
     F.line = 105;
     comp26285233_452985785.slot = initTag_1560281217(makeNimstrLit("div"), [], true);
     F.line = 105;
-    var data_comp26285233_452985786 = render_956307321(comp26285233_452985785);
+    var data_comp26285233_452985786 = render_1023416185(comp26285233_452985785);
     F.line = 105;
     addArgIter_1560281652(data_comp26285233_452985786, (makeNimstrLit("data-") || []).concat(comp26285233_452985785.uniqCompId || []));
     F.line = 105;
@@ -15186,7 +15193,7 @@ function HEX3Aanonymous_452985066() {
     fmtRes_452985799.push.apply(fmtRes_452985799, makeNimstrLit("Make powerful full-stack apps with really same syntax \xE2\x9A\xA1"));;
     comp25275032_452985783.slot = initTag_1560281217(makeNimstrLit("div"), [data_comp26285233_452985786, initTag_1560281125(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_452985791, NTI33554439)}, NTI452985996)], 0), [initTag_1560281275(fmtRes_452985799, true, [], false)], false)], true);
     F.line = 105;
-    var data_comp25275032_452985816 = render_956307321(comp25275032_452985783);
+    var data_comp25275032_452985816 = render_1023416185(comp25275032_452985783);
     F.line = 105;
     addArgIter_1560281652(data_comp25275032_452985816, (makeNimstrLit("data-") || []).concat(comp25275032_452985783.uniqCompId || []));
     F.line = 105;
@@ -15198,7 +15205,7 @@ function HEX3Aanonymous_452985066() {
     F.line = 100;
     var _comp27295434_452985818 = initSection_2248146949(makeNimstrLit("comp27295434"));
     F.line = 100;
-    var comp27295434_452985819 = registerComponent_956306925("comp27295434", _comp27295434_452985818);
+    var comp27295434_452985819 = registerComponent_1023415789("comp27295434", _comp27295434_452985818);
     F.line = 105;
     F.line = 101;
     var fmtRes_452985824 = mnewString(0);
@@ -15210,7 +15217,7 @@ function HEX3Aanonymous_452985066() {
     fmtRes_452985837.push.apply(fmtRes_452985837, makeNimstrLit("You\'ll never have to learn new web frameworks again \xE2\x9C\xA8"));;
     comp27295434_452985819.slot = initTag_1560281217(makeNimstrLit("div"), [initTag_1560281217(makeNimstrLit("p"), [initTag_1560281275(fmtRes_452985824, true, [], false)], false), initTag_1560281217(makeNimstrLit("p"), [initTag_1560281275(fmtRes_452985837, true, [], false)], false)], true);
     F.line = 707;
-    var data_comp27295434_452985854 = render_956307321(comp27295434_452985819);
+    var data_comp27295434_452985854 = render_1023416185(comp27295434_452985819);
     F.line = 707;
     addArgIter_1560281652(data_comp27295434_452985854, (makeNimstrLit("data-") || []).concat(comp27295434_452985819.uniqCompId || []));
     F.line = 707;
@@ -15226,11 +15233,11 @@ function HEX3Aanonymous_452985066() {
     F.line = 106;
     var _comp28305635_452985871 = initAboutSection_2281701391(makeNimstrLit("comp28305635"), makeNimstrLit("HappyX For ... Programmers"), [{Field0: makeNimstrLit("FastAPI programmers"), Field1: makeNimstrLit("https://github.com/HapticX/happyx/wiki/HappyX-for-FastAPI-Programmers")}, {Field0: makeNimstrLit("Prologue programmers"), Field1: makeNimstrLit("https://github.com/HapticX/happyx/wiki/HappyX-for-Prologue-Programmers")}]);
     F.line = 106;
-    var comp28305635_452985872 = registerComponent_956306925("comp28305635", _comp28305635_452985871);
+    var comp28305635_452985872 = registerComponent_1023415789("comp28305635", _comp28305635_452985871);
     F.line = 105;
     comp28305635_452985872.slot = initTag_1560281217(makeNimstrLit("div"), [], true);
     F.line = 105;
-    var data_comp28305635_452985873 = render_956307321(comp28305635_452985872);
+    var data_comp28305635_452985873 = render_1023416185(comp28305635_452985872);
     F.line = 105;
     addArgIter_1560281652(data_comp28305635_452985873, (makeNimstrLit("data-") || []).concat(comp28305635_452985872.uniqCompId || []));
     F.line = 105;
@@ -15265,7 +15272,7 @@ function HEX3Aanonymous_452985066() {
     F.line = 51;
     fmtRes_452985918[0].push.apply(fmtRes_452985918[0], makeNimstrLit("]"));;
     F.line = 53;
-    var data_drawer_comp_452985923 = render_956307321(drawer_comp_2348810253[0]);
+    var data_drawer_comp_452985923 = render_1023416185(drawer_comp_2348810253[0]);
     F.line = 53;
     addArgIter_1560281652(data_drawer_comp_452985923, (makeNimstrLit("data-") || []).concat(drawer_comp_2348810253[0].uniqCompId || []));
     F.line = 53;
@@ -15281,11 +15288,11 @@ function HEX3Aanonymous_452985066() {
     F.line = 56;
     var _comp30326037_452985932 = initHeader_2214592522(makeNimstrLit("comp30326037"), drawer_comp_2348810253[0]);
     F.line = 56;
-    var comp30326037_452985933 = registerComponent_956306925("comp30326037", _comp30326037_452985932);
+    var comp30326037_452985933 = registerComponent_1023415789("comp30326037", _comp30326037_452985932);
     F.line = 105;
     comp30326037_452985933.slot = initTag_1560281217(makeNimstrLit("div"), [], true);
     F.line = 105;
-    var data_comp30326037_452985934 = render_956307321(comp30326037_452985933);
+    var data_comp30326037_452985934 = render_1023416185(comp30326037_452985933);
     F.line = 105;
     addArgIter_1560281652(data_comp30326037_452985934, (makeNimstrLit("data-") || []).concat(comp30326037_452985933.uniqCompId || []));
     F.line = 105;
@@ -15309,11 +15316,11 @@ function HEX3Aanonymous_452985066() {
     F.line = 60;
     var _comp31336238_452985973 = initDivider_2298478599(makeNimstrLit("comp31336238"), true);
     F.line = 60;
-    var comp31336238_452985974 = registerComponent_956306925("comp31336238", _comp31336238_452985973);
+    var comp31336238_452985974 = registerComponent_1023415789("comp31336238", _comp31336238_452985973);
     F.line = 105;
     comp31336238_452985974.slot = initTag_1560281217(makeNimstrLit("div"), [], true);
     F.line = 105;
-    var data_comp31336238_452985975 = render_956307321(comp31336238_452985974);
+    var data_comp31336238_452985975 = render_1023416185(comp31336238_452985974);
     F.line = 105;
     addArgIter_1560281652(data_comp31336238_452985975, (makeNimstrLit("data-") || []).concat(comp31336238_452985974.uniqCompId || []));
     F.line = 105;
@@ -15345,11 +15352,11 @@ function HEX3Aanonymous_452985066() {
     F.line = 66;
     var _comp32346439_452986018 = initSponsorsList_2315255822(makeNimstrLit("comp32346439"), sponsor_list_2332033052[0], 3, makeNimstrLit("#e5e4e2"));
     F.line = 66;
-    var comp32346439_452986019 = registerComponent_956306925("comp32346439", _comp32346439_452986018);
+    var comp32346439_452986019 = registerComponent_1023415789("comp32346439", _comp32346439_452986018);
     F.line = 105;
     comp32346439_452986019.slot = initTag_1560281217(makeNimstrLit("div"), [], true);
     F.line = 105;
-    var data_comp32346439_452986020 = render_956307321(comp32346439_452986019);
+    var data_comp32346439_452986020 = render_1023416185(comp32346439_452986019);
     F.line = 105;
     addArgIter_1560281652(data_comp32346439_452986020, (makeNimstrLit("data-") || []).concat(comp32346439_452986019.uniqCompId || []));
     F.line = 105;
@@ -15361,11 +15368,11 @@ function HEX3Aanonymous_452985066() {
     F.line = 67;
     var _comp33356640_452986030 = initDivider_2298478599(makeNimstrLit("comp33356640"), true);
     F.line = 67;
-    var comp33356640_452986031 = registerComponent_956306925("comp33356640", _comp33356640_452986030);
+    var comp33356640_452986031 = registerComponent_1023415789("comp33356640", _comp33356640_452986030);
     F.line = 105;
     comp33356640_452986031.slot = initTag_1560281217(makeNimstrLit("div"), [], true);
     F.line = 105;
-    var data_comp33356640_452986032 = render_956307321(comp33356640_452986031);
+    var data_comp33356640_452986032 = render_1023416185(comp33356640_452986031);
     F.line = 105;
     addArgIter_1560281652(data_comp33356640_452986032, (makeNimstrLit("data-") || []).concat(comp33356640_452986031.uniqCompId || []));
     F.line = 105;
@@ -15397,11 +15404,11 @@ function HEX3Aanonymous_452985066() {
     F.line = 73;
     var _comp34366841_452986075 = initSponsorsList_2315255822(makeNimstrLit("comp34366841"), sponsor_list_2332033052[0], 2, makeNimstrLit("#ffd700"));
     F.line = 73;
-    var comp34366841_452986076 = registerComponent_956306925("comp34366841", _comp34366841_452986075);
+    var comp34366841_452986076 = registerComponent_1023415789("comp34366841", _comp34366841_452986075);
     F.line = 105;
     comp34366841_452986076.slot = initTag_1560281217(makeNimstrLit("div"), [], true);
     F.line = 105;
-    var data_comp34366841_452986077 = render_956307321(comp34366841_452986076);
+    var data_comp34366841_452986077 = render_1023416185(comp34366841_452986076);
     F.line = 105;
     addArgIter_1560281652(data_comp34366841_452986077, (makeNimstrLit("data-") || []).concat(comp34366841_452986076.uniqCompId || []));
     F.line = 105;
@@ -15413,11 +15420,11 @@ function HEX3Aanonymous_452985066() {
     F.line = 74;
     var _comp35377042_452986087 = initDivider_2298478599(makeNimstrLit("comp35377042"), true);
     F.line = 74;
-    var comp35377042_452986088 = registerComponent_956306925("comp35377042", _comp35377042_452986087);
+    var comp35377042_452986088 = registerComponent_1023415789("comp35377042", _comp35377042_452986087);
     F.line = 105;
     comp35377042_452986088.slot = initTag_1560281217(makeNimstrLit("div"), [], true);
     F.line = 105;
-    var data_comp35377042_452986089 = render_956307321(comp35377042_452986088);
+    var data_comp35377042_452986089 = render_1023416185(comp35377042_452986088);
     F.line = 105;
     addArgIter_1560281652(data_comp35377042_452986089, (makeNimstrLit("data-") || []).concat(comp35377042_452986088.uniqCompId || []));
     F.line = 105;
@@ -15449,11 +15456,11 @@ function HEX3Aanonymous_452985066() {
     F.line = 80;
     var _comp36387243_452986132 = initSponsorsList_2315255822(makeNimstrLit("comp36387243"), sponsor_list_2332033052[0], 1, makeNimstrLit("#c0c0c0"));
     F.line = 80;
-    var comp36387243_452986133 = registerComponent_956306925("comp36387243", _comp36387243_452986132);
+    var comp36387243_452986133 = registerComponent_1023415789("comp36387243", _comp36387243_452986132);
     F.line = 105;
     comp36387243_452986133.slot = initTag_1560281217(makeNimstrLit("div"), [], true);
     F.line = 105;
-    var data_comp36387243_452986134 = render_956307321(comp36387243_452986133);
+    var data_comp36387243_452986134 = render_1023416185(comp36387243_452986133);
     F.line = 105;
     addArgIter_1560281652(data_comp36387243_452986134, (makeNimstrLit("data-") || []).concat(comp36387243_452986133.uniqCompId || []));
     F.line = 105;
@@ -15465,11 +15472,11 @@ function HEX3Aanonymous_452985066() {
     F.line = 81;
     var _comp37397444_452986144 = initDivider_2298478599(makeNimstrLit("comp37397444"), true);
     F.line = 81;
-    var comp37397444_452986145 = registerComponent_956306925("comp37397444", _comp37397444_452986144);
+    var comp37397444_452986145 = registerComponent_1023415789("comp37397444", _comp37397444_452986144);
     F.line = 105;
     comp37397444_452986145.slot = initTag_1560281217(makeNimstrLit("div"), [], true);
     F.line = 105;
-    var data_comp37397444_452986146 = render_956307321(comp37397444_452986145);
+    var data_comp37397444_452986146 = render_1023416185(comp37397444_452986145);
     F.line = 105;
     addArgIter_1560281652(data_comp37397444_452986146, (makeNimstrLit("data-") || []).concat(comp37397444_452986145.uniqCompId || []));
     F.line = 105;
@@ -15493,11 +15500,11 @@ function HEX3Aanonymous_452985066() {
     F.line = 86;
     var _comp38407645_452986176 = initSponsorsList_2315255822(makeNimstrLit("comp38407645"), sponsor_list_2332033052[0], 0, makeNimstrLit("#cefefe"));
     F.line = 86;
-    var comp38407645_452986177 = registerComponent_956306925("comp38407645", _comp38407645_452986176);
+    var comp38407645_452986177 = registerComponent_1023415789("comp38407645", _comp38407645_452986176);
     F.line = 105;
     comp38407645_452986177.slot = initTag_1560281217(makeNimstrLit("div"), [], true);
     F.line = 105;
-    var data_comp38407645_452986178 = render_956307321(comp38407645_452986177);
+    var data_comp38407645_452986178 = render_1023416185(comp38407645_452986177);
     F.line = 105;
     addArgIter_1560281652(data_comp38407645_452986178, (makeNimstrLit("data-") || []).concat(comp38407645_452986177.uniqCompId || []));
     F.line = 105;
@@ -15515,7 +15522,7 @@ function HEX3Aanonymous_452985066() {
     }
     if (!((html_452984920 == null))) {
     F.line = 574;
-    renderVdom_956307284(application_956301361[0], html_452984920);
+    renderVdom_1023416148(application_1023410225[0], html_452984920);
     }
     
   } while (false);
@@ -15524,7 +15531,7 @@ function HEX3Aanonymous_452985066() {
   
 }
 
-function onDOMContentLoaded_452986241(ev_452986242) {
+function onDOMContentLoaded_452986250(ev_452986251) {
   var F = {procname: "main.onDOMContentLoaded", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/renderer.nim", line: 0};
   framePtr = F;
     F.line = 574;
@@ -15536,7 +15543,7 @@ function onDOMContentLoaded_452986241(ev_452986242) {
 var F = {procname: "module main", prev: framePtr, filename: "/home/runner/work/happyx/happyx/examples/website/src/main.nim", line: 0};
 framePtr = F;
 F.line = 35;
-var app_452984848 = [registerApp_956306913("app")];
+var app_452984848 = [registerApp_1023415777("app")];
 F.line = 410;
 app_452984848[0].router = callRouter_452984916;
 F.line = 410;
@@ -15544,16 +15551,16 @@ window.addEventListener('beforeunload', (e) => {
 F.line = 410;
 });
 F.line = 252;
-document.addEventListener("DOMContentLoaded", onDOMContentLoaded_452986241, false);
+document.addEventListener("DOMContentLoaded", onDOMContentLoaded_452986250, false);
 F.line = 253;
-window.addEventListener("popstate", onDOMContentLoaded_452986241, false);
+window.addEventListener("popstate", onDOMContentLoaded_452986250, false);
 if ((((window.location.hash) == null ? 0 : (window.location.hash).length) == 0)) {
 F.line = 255;
-route_956306908("/");
+route_1023415772("/");
 }
 else {
   F.line = 257;
-  if(window.location.hash[0]=='#'){route_956306908(window.location.hash.substr(1));}else{route_956306908(window.location.hash);}
+  if(window.location.hash[0]=='#'){route_1023415772(window.location.hash.substr(1));}else{route_1023415772(window.location.hash);}
 }
 
 framePtr = F.prev;
@@ -15614,21 +15621,21 @@ function nsuIntToStr(x_637534997, minchars_637534998) {
       F.line = 1059;
       var i_637535004 = 0;
       F.line = 75;
-      var colontmp__452986344 = 0;
+      var colontmp__452986353 = 0;
       F.line = 1059;
-      colontmp__452986344 = subInt(minchars_637534998, (result_637534999).length);
+      colontmp__452986353 = subInt(minchars_637534998, (result_637534999).length);
       F.line = 90;
-      var res_452986345 = 1;
+      var res_452986354 = 1;
       Label2: do {
         F.line = 91;
           Label3: while (true) {
-          if (!(res_452986345 <= colontmp__452986344)) break Label3;
+          if (!(res_452986354 <= colontmp__452986353)) break Label3;
             F.line = 1059;
-            i_637535004 = res_452986345;
+            i_637535004 = res_452986354;
             F.line = 1059;
             result_637534999 = nimCopy(null, [48].concat(result_637534999 || []), NTI33554439);
             F.line = 93;
-            res_452986345 = addInt(res_452986345, 1);
+            res_452986354 = addInt(res_452986354, 1);
           }
       } while (false);
     } while (false);
@@ -15643,363 +15650,363 @@ function nsuIntToStr(x_637534997, minchars_637534998) {
 
 }
 
-function monthday_1073742978(dt_1073742979) {
-  var result_1073742980 = 0;
+function monthday_1124074626(dt_1124074627) {
+  var result_1124074628 = 0;
 
   var F = {procname: "times.monthday", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/times.nim", line: 0};
   framePtr = F;
     F.line = 996;
-    if (!(!((dt_1073742979.monthdayZero == 0)))) {
+    if (!(!((dt_1124074627.monthdayZero == 0)))) {
     F.line = 997;
     failedAssertImpl_218103864(makeNimstrLit("/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/times.nim(997, 28) `dt.monthdayZero != 0` Uninitialized datetime"));
     }
     
-    result_1073742980 = dt_1073742979.monthdayZero;
+    result_1124074628 = dt_1124074627.monthdayZero;
   framePtr = F.prev;
 
-  return result_1073742980;
+  return result_1124074628;
 
 }
 
-function ntgetDateStr(dt_1073743329) {
-  var result_1073743330 = [];
+function ntgetDateStr(dt_1124074977) {
+  var result_1124074978 = [];
 
   var F = {procname: "times.getDateStr", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/times.nim", line: 0};
   framePtr = F;
-    if (!(!((dt_1073743329.monthdayZero == 0)))) {
+    if (!(!((dt_1124074977.monthdayZero == 0)))) {
     F.line = 1423;
     failedAssertImpl_218103864(makeNimstrLit("/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/times.nim(1423, 29) `dt.monthdayZero != 0` Uninitialized datetime"));
     }
     
     F.line = 1425;
-    result_1073743330 = nimCopy(null, (HEX24_335544323(dt_1073743329.year) || []).concat([45],nsuIntToStr(dt_1073743329.monthZero, 2) || [],[45],nsuIntToStr(monthday_1073742978(dt_1073743329), 2) || []), NTI33554439);
+    result_1124074978 = nimCopy(null, (HEX24_335544323(dt_1124074977.year) || []).concat([45],nsuIntToStr(dt_1124074977.monthZero, 2) || [],[45],nsuIntToStr(monthday_1124074626(dt_1124074977), 2) || []), NTI33554439);
   framePtr = F.prev;
 
-  return result_1073743330;
+  return result_1124074978;
 
 }
 
-function HEX2B_1073741842(a_1073741843, b_1073741844) {
-  var result_1073741845 = 0;
+function HEX2B_1124073490(a_1124073491, b_1124073492) {
+  var result_1124073493 = 0;
 
   var F = {procname: "times.+", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/times.nim", line: 0};
   framePtr = F;
     F.line = 215;
-    result_1073741845 = (a_1073741843 + b_1073741844);
+    result_1124073493 = (a_1124073491 + b_1124073492);
   framePtr = F.prev;
 
-  return result_1073741845;
+  return result_1124073493;
 
 }
 
-function HEX2A_1073741834(a_1073741835, b_1073741836) {
-  var result_1073741837 = 0;
+function HEX2A_1124073482(a_1124073483, b_1124073484) {
+  var result_1124073485 = 0;
 
   var F = {procname: "times.*", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/times.nim", line: 0};
   framePtr = F;
     F.line = 211;
-    result_1073741837 = (a_1073741835 * b_1073741836);
+    result_1124073485 = (a_1124073483 * b_1124073484);
   framePtr = F.prev;
 
-  return result_1073741837;
+  return result_1124073485;
 
 }
 
-function convert_1073742226(unitFrom_1073742228, unitTo_1073742229, quantity_1073742230) {
+function convert_1124073874(unitFrom_1124073876, unitTo_1124073877, quantity_1124073878) {
     var Temporary1;
 
-  var result_1073742231 = 0;
+  var result_1124073879 = 0;
 
   var F = {procname: "convert.convert", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/times.nim", line: 0};
   framePtr = F;
     F.line = 408;
-    if ((unitFrom_1073742228 < unitTo_1073742229)) {
-    Temporary1 = divInt(quantity_1073742230, divInt(unitWeights_1073741970[chckIndx(unitTo_1073742229, 0, (unitWeights_1073741970).length - 1)], unitWeights_1073741970[chckIndx(unitFrom_1073742228, 0, (unitWeights_1073741970).length - 1)]));
+    if ((unitFrom_1124073876 < unitTo_1124073877)) {
+    Temporary1 = divInt(quantity_1124073878, divInt(unitWeights_1124073618[chckIndx(unitTo_1124073877, 0, (unitWeights_1124073618).length - 1)], unitWeights_1124073618[chckIndx(unitFrom_1124073876, 0, (unitWeights_1124073618).length - 1)]));
     }
     else {
-    Temporary1 = HEX2A_1073741834(divInt(unitWeights_1073741970[chckIndx(unitFrom_1073742228, 0, (unitWeights_1073741970).length - 1)], unitWeights_1073741970[chckIndx(unitTo_1073742229, 0, (unitWeights_1073741970).length - 1)]), quantity_1073742230);
+    Temporary1 = HEX2A_1124073482(divInt(unitWeights_1124073618[chckIndx(unitFrom_1124073876, 0, (unitWeights_1124073618).length - 1)], unitWeights_1124073618[chckIndx(unitTo_1124073877, 0, (unitWeights_1124073618).length - 1)]), quantity_1124073878);
     }
     
-    result_1073742231 = Temporary1;
+    result_1124073879 = Temporary1;
   framePtr = F.prev;
 
-  return result_1073742231;
+  return result_1124073879;
 
 }
 
-function convert_1073742293(unitFrom_1073742295, unitTo_1073742296, quantity_1073742297) {
+function convert_1124073941(unitFrom_1124073943, unitTo_1124073944, quantity_1124073945) {
     var Temporary1;
 
-  var result_1073742298 = 0;
+  var result_1124073946 = 0;
 
   var F = {procname: "convert.convert", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/times.nim", line: 0};
   framePtr = F;
     F.line = 408;
-    if ((unitFrom_1073742295 < unitTo_1073742296)) {
-    Temporary1 = chckRange(divInt(quantity_1073742297, divInt(unitWeights_1073741970[chckIndx(unitTo_1073742296, 0, (unitWeights_1073741970).length - 1)], unitWeights_1073741970[chckIndx(unitFrom_1073742295, 0, (unitWeights_1073741970).length - 1)])), -2147483648, 2147483647);
+    if ((unitFrom_1124073943 < unitTo_1124073944)) {
+    Temporary1 = chckRange(divInt(quantity_1124073945, divInt(unitWeights_1124073618[chckIndx(unitTo_1124073944, 0, (unitWeights_1124073618).length - 1)], unitWeights_1124073618[chckIndx(unitFrom_1124073943, 0, (unitWeights_1124073618).length - 1)])), -2147483648, 2147483647);
     }
     else {
-    Temporary1 = chckRange(HEX2A_1073741834(divInt(unitWeights_1073741970[chckIndx(unitFrom_1073742295, 0, (unitWeights_1073741970).length - 1)], unitWeights_1073741970[chckIndx(unitTo_1073742296, 0, (unitWeights_1073741970).length - 1)]), quantity_1073742297), -2147483648, 2147483647);
+    Temporary1 = chckRange(HEX2A_1124073482(divInt(unitWeights_1124073618[chckIndx(unitFrom_1124073943, 0, (unitWeights_1124073618).length - 1)], unitWeights_1124073618[chckIndx(unitTo_1124073944, 0, (unitWeights_1124073618).length - 1)]), quantity_1124073945), -2147483648, 2147483647);
     }
     
-    result_1073742298 = Temporary1;
+    result_1124073946 = Temporary1;
   framePtr = F.prev;
 
-  return result_1073742298;
+  return result_1124073946;
 
 }
 
-function normalize_1073742854(seconds_1073742856, nanoseconds_1073742857) {
-  var result_1073742858 = ({seconds: 0, nanosecond: 0});
+function normalize_1124074502(seconds_1124074504, nanoseconds_1124074505) {
+  var result_1124074506 = ({seconds: 0, nanosecond: 0});
 
   var F = {procname: "normalize.normalize", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/times.nim", line: 0};
   framePtr = F;
     F.line = 423;
-    result_1073742858.seconds = HEX2B_1073741842(seconds_1073742856, convert_1073742226(0, 3, nanoseconds_1073742857));
+    result_1124074506.seconds = HEX2B_1124073490(seconds_1124074504, convert_1124073874(0, 3, nanoseconds_1124074505));
     F.line = 424;
-    var nanosecond_1073742869 = modInt(nanoseconds_1073742857, convert_1073742293(3, 0, 1));
-    if ((nanosecond_1073742869 < 0)) {
+    var nanosecond_1124074517 = modInt(nanoseconds_1124074505, convert_1124073941(3, 0, 1));
+    if ((nanosecond_1124074517 < 0)) {
     F.line = 426;
-    nanosecond_1073742869 = addInt(nanosecond_1073742869, convert_1073742293(3, 0, 1));
+    nanosecond_1124074517 = addInt(nanosecond_1124074517, convert_1124073941(3, 0, 1));
     F.line = 427;
-    result_1073742858.seconds = subInt(result_1073742858.seconds, 1);
+    result_1124074506.seconds = subInt(result_1124074506.seconds, 1);
     }
     
     F.line = 428;
-    result_1073742858.nanosecond = chckRange(chckRange(nanosecond_1073742869, -2147483648, 2147483647), 0, 999999999);
+    result_1124074506.nanosecond = chckRange(chckRange(nanosecond_1124074517, -2147483648, 2147483647), 0, 999999999);
   framePtr = F.prev;
 
-  return result_1073742858;
+  return result_1124074506;
 
 }
 
-function HEX2D_1073741850(a_1073741851, b_1073741852) {
-  var result_1073741853 = 0;
+function HEX2D_1124073498(a_1124073499, b_1124073500) {
+  var result_1124073501 = 0;
 
   var F = {procname: "times.-", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/times.nim", line: 0};
   framePtr = F;
     F.line = 219;
-    result_1073741853 = (a_1073741851 - b_1073741852);
+    result_1124073501 = (a_1124073499 - b_1124073500);
   framePtr = F.prev;
 
-  return result_1073741853;
+  return result_1124073501;
 
 }
 
-function HEX2D_1073741854(a_1073741855, b_1073741856) {
-  var result_1073741857 = 0;
+function HEX2D_1124073502(a_1124073503, b_1124073504) {
+  var result_1124073505 = 0;
 
   var F = {procname: "times.-", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/times.nim", line: 0};
   framePtr = F;
     F.line = 221;
-    result_1073741857 = (a_1073741855 - b_1073741856);
+    result_1124073505 = (a_1124073503 - b_1124073504);
   framePtr = F.prev;
 
-  return result_1073741857;
+  return result_1124073505;
 
 }
 
-function ntSubTime(a_1073742884, b_1073742885) {
-  var result_1073742886 = ({seconds: 0, nanosecond: 0});
+function ntSubTime(a_1124074532, b_1124074533) {
+  var result_1124074534 = ({seconds: 0, nanosecond: 0});
 
   var F = {procname: "times.-", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/times.nim", line: 0};
   framePtr = F;
     F.line = 933;
-    result_1073742886 = nimCopy(result_1073742886, normalize_1073742854(HEX2D_1073741850(a_1073742884.seconds, b_1073742885.seconds), HEX2D_1073741854(a_1073742884.nanosecond, b_1073742885.nanosecond)), NTI1073741854);
+    result_1124074534 = nimCopy(result_1124074534, normalize_1124074502(HEX2D_1124073498(a_1124074532.seconds, b_1124074533.seconds), HEX2D_1124073502(a_1124074532.nanosecond, b_1124074533.nanosecond)), NTI1124073502);
   framePtr = F.prev;
 
-  return result_1073742886;
+  return result_1124074534;
 
 }
 
-function normalize_1073742283(seconds_1073742285, nanoseconds_1073742286) {
-  var result_1073742287 = ({seconds: 0, nanosecond: 0});
+function normalize_1124073931(seconds_1124073933, nanoseconds_1124073934) {
+  var result_1124073935 = ({seconds: 0, nanosecond: 0});
 
   var F = {procname: "normalize.normalize", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/times.nim", line: 0};
   framePtr = F;
     F.line = 423;
-    result_1073742287.seconds = HEX2B_1073741842(seconds_1073742285, convert_1073742226(0, 3, nanoseconds_1073742286));
+    result_1124073935.seconds = HEX2B_1124073490(seconds_1124073933, convert_1124073874(0, 3, nanoseconds_1124073934));
     F.line = 424;
-    var nanosecond_1073742303 = modInt(nanoseconds_1073742286, convert_1073742293(3, 0, 1));
-    if ((nanosecond_1073742303 < 0)) {
+    var nanosecond_1124073951 = modInt(nanoseconds_1124073934, convert_1124073941(3, 0, 1));
+    if ((nanosecond_1124073951 < 0)) {
     F.line = 426;
-    nanosecond_1073742303 = addInt(nanosecond_1073742303, convert_1073742293(3, 0, 1));
+    nanosecond_1124073951 = addInt(nanosecond_1124073951, convert_1124073941(3, 0, 1));
     F.line = 427;
-    result_1073742287.seconds = subInt(result_1073742287.seconds, 1);
+    result_1124073935.seconds = subInt(result_1124073935.seconds, 1);
     }
     
     F.line = 428;
-    result_1073742287.nanosecond = chckRange(chckRange(nanosecond_1073742303, -2147483648, 2147483647), 0, 999999999);
+    result_1124073935.nanosecond = chckRange(chckRange(nanosecond_1124073951, -2147483648, 2147483647), 0, 999999999);
   framePtr = F.prev;
 
-  return result_1073742287;
+  return result_1124073935;
 
 }
 
-function initDuration_1073742216(nanoseconds_1073742217, microseconds_1073742218, milliseconds_1073742219, seconds_1073742220, minutes_1073742221, hours_1073742222, days_1073742223, weeks_1073742224) {
-  var result_1073742225 = ({seconds: 0, nanosecond: 0});
+function initDuration_1124073864(nanoseconds_1124073865, microseconds_1124073866, milliseconds_1124073867, seconds_1124073868, minutes_1124073869, hours_1124073870, days_1124073871, weeks_1124073872) {
+  var result_1124073873 = ({seconds: 0, nanosecond: 0});
 
   var F = {procname: "times.initDuration", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/times.nim", line: 0};
   framePtr = F;
     F.line = 594;
-    var seconds_1073742271 = HEX2B_1073741842(HEX2B_1073741842(HEX2B_1073741842(HEX2B_1073741842(HEX2B_1073741842(HEX2B_1073741842(HEX2B_1073741842(convert_1073742226(7, 3, weeks_1073742224), convert_1073742226(6, 3, days_1073742223)), convert_1073742226(4, 3, minutes_1073742221)), convert_1073742226(5, 3, hours_1073742222)), convert_1073742226(3, 3, seconds_1073742220)), convert_1073742226(2, 3, milliseconds_1073742219)), convert_1073742226(1, 3, microseconds_1073742218)), convert_1073742226(0, 3, nanoseconds_1073742217));
+    var seconds_1124073919 = HEX2B_1124073490(HEX2B_1124073490(HEX2B_1124073490(HEX2B_1124073490(HEX2B_1124073490(HEX2B_1124073490(HEX2B_1124073490(convert_1124073874(7, 3, weeks_1124073872), convert_1124073874(6, 3, days_1124073871)), convert_1124073874(4, 3, minutes_1124073869)), convert_1124073874(5, 3, hours_1124073870)), convert_1124073874(3, 3, seconds_1124073868)), convert_1124073874(2, 3, milliseconds_1124073867)), convert_1124073874(1, 3, microseconds_1124073866)), convert_1124073874(0, 3, nanoseconds_1124073865));
     F.line = 602;
-    var nanoseconds_1073742282 = chckRange(HEX2B_1073741842(HEX2B_1073741842(convert_1073742226(2, 0, modInt(milliseconds_1073742219, 1000)), convert_1073742226(1, 0, modInt(microseconds_1073742218, 1000000))), modInt(nanoseconds_1073742217, 1000000000)), -2147483648, 2147483647);
+    var nanoseconds_1124073930 = chckRange(HEX2B_1124073490(HEX2B_1124073490(convert_1124073874(2, 0, modInt(milliseconds_1124073867, 1000)), convert_1124073874(1, 0, modInt(microseconds_1124073866, 1000000))), modInt(nanoseconds_1124073865, 1000000000)), -2147483648, 2147483647);
     F.line = 606;
-    result_1073742225 = nimCopy(result_1073742225, normalize_1073742283(seconds_1073742271, nanoseconds_1073742282), NTI1073741856);
+    result_1124073873 = nimCopy(result_1124073873, normalize_1124073931(seconds_1124073919, nanoseconds_1124073930), NTI1124073504);
   framePtr = F.prev;
 
-  return result_1073742225;
+  return result_1124073873;
 
 }
 
-function floorDiv_1073742117(x_1073742119, y_1073742120) {
+function floorDiv_1124073765(x_1124073767, y_1124073768) {
       var Temporary1;
       var Temporary2;
         var Temporary3;
 
-  var result_1073742121 = 0;
+  var result_1124073769 = 0;
 
-    result_1073742121 = Math.trunc(x_1073742119 / y_1073742120);
-    var r_1073742122 = Math.trunc(x_1073742119 % y_1073742120);
-      if (!(0 < r_1073742122)) Temporary2 = false; else {        Temporary2 = (y_1073742120 < 0);      }      if (Temporary2) Temporary1 = true; else {        if (!(r_1073742122 < 0)) Temporary3 = false; else {          Temporary3 = (0 < y_1073742120);        }        Temporary1 = Temporary3;      }    if (Temporary1) {
-    result_1073742121 -= 1;
+    result_1124073769 = Math.trunc(x_1124073767 / y_1124073768);
+    var r_1124073770 = Math.trunc(x_1124073767 % y_1124073768);
+      if (!(0 < r_1124073770)) Temporary2 = false; else {        Temporary2 = (y_1124073768 < 0);      }      if (Temporary2) Temporary1 = true; else {        if (!(r_1124073770 < 0)) Temporary3 = false; else {          Temporary3 = (0 < y_1124073768);        }        Temporary1 = Temporary3;      }    if (Temporary1) {
+    result_1124073769 -= 1;
     }
     
 
-  return result_1073742121;
+  return result_1124073769;
 
 }
 
-function inc_1073741865(a_1073741866, a_1073741866_Idx, b_1073741867) {
+function inc_1124073513(a_1124073514, a_1124073514_Idx, b_1124073515) {
   var F = {procname: "times.inc", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/times.nim", line: 0};
   framePtr = F;
     F.line = 225;
-    a_1073741866[a_1073741866_Idx] += b_1073741867;
+    a_1124073514[a_1124073514_Idx] += b_1124073515;
   framePtr = F.prev;
 
   
 }
 
-function fromEpochDay_1073742050(epochday_1073742051) {
+function fromEpochDay_1124073698(epochday_1124073699) {
     var Temporary1;
     var Temporary2;
 
-  var result_1073742055 = {Field0: 0, Field1: 0, Field2: 0};
+  var result_1124073703 = {Field0: 0, Field1: 0, Field2: 0};
 
   var F = {procname: "times.fromEpochDay", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/times.nim", line: 0};
   framePtr = F;
   BeforeRet: do {
     F.line = 476;
-    var z_1073742056 = [epochday_1073742051];
+    var z_1124073704 = [epochday_1124073699];
     F.line = 477;
-    inc_1073741865(z_1073742056, 0, 719468);
+    inc_1124073513(z_1124073704, 0, 719468);
     F.line = 478;
-    if ((0 <= z_1073742056[0])) {
-    Temporary1 = z_1073742056[0];
+    if ((0 <= z_1124073704[0])) {
+    Temporary1 = z_1124073704[0];
     }
     else {
-    Temporary1 = HEX2D_1073741850(z_1073742056[0], 146096);
+    Temporary1 = HEX2D_1124073498(z_1124073704[0], 146096);
     }
     
-    var era_1073742057 = divInt(Temporary1, 146097);
+    var era_1124073705 = divInt(Temporary1, 146097);
     F.line = 479;
-    var doe_1073742058 = HEX2D_1073741850(z_1073742056[0], HEX2A_1073741834(era_1073742057, 146097));
+    var doe_1124073706 = HEX2D_1124073498(z_1124073704[0], HEX2A_1124073482(era_1124073705, 146097));
     F.line = 480;
-    var yoe_1073742059 = divInt(HEX2D_1073741850(HEX2B_1073741842(HEX2D_1073741850(doe_1073742058, divInt(doe_1073742058, 1460)), divInt(doe_1073742058, 36524)), divInt(doe_1073742058, 146096)), 365);
+    var yoe_1124073707 = divInt(HEX2D_1124073498(HEX2B_1124073490(HEX2D_1124073498(doe_1124073706, divInt(doe_1124073706, 1460)), divInt(doe_1124073706, 36524)), divInt(doe_1124073706, 146096)), 365);
     F.line = 481;
-    var y_1073742060 = HEX2B_1073741842(yoe_1073742059, HEX2A_1073741834(era_1073742057, 400));
+    var y_1124073708 = HEX2B_1124073490(yoe_1124073707, HEX2A_1124073482(era_1124073705, 400));
     F.line = 482;
-    var doy_1073742061 = HEX2D_1073741850(doe_1073742058, HEX2D_1073741850(HEX2B_1073741842(HEX2A_1073741834(365, yoe_1073742059), divInt(yoe_1073742059, 4)), divInt(yoe_1073742059, 100)));
+    var doy_1124073709 = HEX2D_1124073498(doe_1124073706, HEX2D_1124073498(HEX2B_1124073490(HEX2A_1124073482(365, yoe_1124073707), divInt(yoe_1124073707, 4)), divInt(yoe_1124073707, 100)));
     F.line = 483;
-    var mp_1073742062 = divInt(HEX2B_1073741842(HEX2A_1073741834(5, doy_1073742061), 2), 153);
+    var mp_1124073710 = divInt(HEX2B_1124073490(HEX2A_1124073482(5, doy_1124073709), 2), 153);
     F.line = 484;
-    var d_1073742063 = HEX2B_1073741842(HEX2D_1073741850(doy_1073742061, divInt(HEX2B_1073741842(HEX2A_1073741834(153, mp_1073742062), 2), 5)), 1);
+    var d_1124073711 = HEX2B_1124073490(HEX2D_1124073498(doy_1124073709, divInt(HEX2B_1124073490(HEX2A_1124073482(153, mp_1124073710), 2), 5)), 1);
     F.line = 485;
-    if ((mp_1073742062 < 10)) {
+    if ((mp_1124073710 < 10)) {
     Temporary2 = 3;
     }
     else {
     Temporary2 = -9;
     }
     
-    var m_1073742064 = HEX2B_1073741842(mp_1073742062, Temporary2);
+    var m_1124073712 = HEX2B_1124073490(mp_1124073710, Temporary2);
     F.line = 486;
-    var colontmp__452986348 = chckRange(d_1073742063, 1, 31);
+    var colontmp__452986357 = chckRange(d_1124073711, 1, 31);
     F.line = 486;
-    var colontmp__452986349 = chckRange(m_1073742064, 1, 12);
+    var colontmp__452986358 = chckRange(m_1124073712, 1, 12);
     F.line = 486;
-    var colontmp__452986350 = chckRange(HEX2B_1073741842(y_1073742060, ((m_1073742064 <= 2) ? 1 : 0)), -2147483648, 2147483647);
+    var colontmp__452986359 = chckRange(HEX2B_1124073490(y_1124073708, ((m_1124073712 <= 2) ? 1 : 0)), -2147483648, 2147483647);
     F.line = 486;
-    result_1073742055 = nimCopy(result_1073742055, {Field0: nimCopy(null, colontmp__452986348, NTI1073741848), Field1: colontmp__452986349, Field2: colontmp__452986350}, NTI1073742009);
+    result_1124073703 = nimCopy(result_1124073703, {Field0: nimCopy(null, colontmp__452986357, NTI1124073496), Field1: colontmp__452986358, Field2: colontmp__452986359}, NTI1124073657);
     break BeforeRet;
   } while (false);
   framePtr = F.prev;
 
-  return result_1073742055;
+  return result_1124073703;
 
 }
 
-function isLeapYear_1073741993(year_1073741994) {
+function isLeapYear_1124073641(year_1124073642) {
     var Temporary1;
       var Temporary2;
 
-  var result_1073741995 = false;
+  var result_1124073643 = false;
 
   var F = {procname: "times.isLeapYear", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/times.nim", line: 0};
   framePtr = F;
     F.line = 431;
-    if (!(modInt(year_1073741994, 4) == 0)) Temporary1 = false; else {      if (!((modInt(year_1073741994, 100) == 0))) Temporary2 = true; else {        Temporary2 = (modInt(year_1073741994, 400) == 0);      }      Temporary1 = Temporary2;    }    result_1073741995 = Temporary1;
+    if (!(modInt(year_1124073642, 4) == 0)) Temporary1 = false; else {      if (!((modInt(year_1124073642, 100) == 0))) Temporary2 = true; else {        Temporary2 = (modInt(year_1124073642, 400) == 0);      }      Temporary1 = Temporary2;    }    result_1124073643 = Temporary1;
   framePtr = F.prev;
 
-  return result_1073741995;
+  return result_1124073643;
 
 }
 
-function getDaysInMonth_1073741996(month_1073741997, year_1073741998) {
+function getDaysInMonth_1124073644(month_1124073645, year_1124073646) {
       var Temporary1;
 
-  var result_1073741999 = 0;
+  var result_1124073647 = 0;
 
   var F = {procname: "times.getDaysInMonth", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/times.nim", line: 0};
   framePtr = F;
     F.line = 443;
-    switch (month_1073741997) {
+    switch (month_1124073645) {
     case 2:
       F.line = 444;
-      if (isLeapYear_1073741993(year_1073741998)) {
+      if (isLeapYear_1124073641(year_1124073646)) {
       Temporary1 = 29;
       }
       else {
       Temporary1 = 28;
       }
       
-      result_1073741999 = Temporary1;
+      result_1124073647 = Temporary1;
       break;
     case 4:
     case 6:
     case 9:
     case 11:
       F.line = 445;
-      result_1073741999 = 30;
+      result_1124073647 = 30;
       break;
     default: 
       F.line = 446;
-      result_1073741999 = 31;
+      result_1124073647 = 31;
       break;
     }
   framePtr = F.prev;
 
-  return result_1073741999;
+  return result_1124073647;
 
 }
 
-function assertValidDate_1073742000(monthday_1073742001, month_1073742002, year_1073742003) {
+function assertValidDate_1124073648(monthday_1124073649, month_1124073650, year_1124073651) {
   var F = {procname: "times.assertValidDate", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/times.nim", line: 0};
   framePtr = F;
-    if (!((monthday_1073742001 <= getDaysInMonth_1073741996(month_1073742002, year_1073742003)))) {
+    if (!((monthday_1124073649 <= getDaysInMonth_1124073644(month_1124073650, year_1124073651)))) {
     F.line = 450;
-    failedAssertImpl_218103864((makeNimstrLit("/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/times.nim(450, 10) `monthday <= getDaysInMonth(month, year)` ") || []).concat(HEX24_335544323(year_1073742003) || [],makeNimstrLit("-") || [],nsuIntToStr(month_1073742002, 2) || [],makeNimstrLit("-") || [],HEX24_335544323(monthday_1073742001) || [],makeNimstrLit(" is not a valid date") || []));
+    failedAssertImpl_218103864((makeNimstrLit("/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/times.nim(450, 10) `monthday <= getDaysInMonth(month, year)` ") || []).concat(HEX24_335544323(year_1124073651) || [],makeNimstrLit("-") || [],nsuIntToStr(month_1124073650, 2) || [],makeNimstrLit("-") || [],HEX24_335544323(monthday_1124073649) || [],makeNimstrLit(" is not a valid date") || []));
     }
     
   framePtr = F.prev;
@@ -16007,249 +16014,249 @@ function assertValidDate_1073742000(monthday_1073742001, month_1073742002, year_
   
 }
 
-function HEX2A_1073741838(a_1073741839, b_1073741840) {
-  var result_1073741841 = 0;
+function HEX2A_1124073486(a_1124073487, b_1124073488) {
+  var result_1124073489 = 0;
 
   var F = {procname: "times.*", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/times.nim", line: 0};
   framePtr = F;
     F.line = 213;
-    result_1073741841 = (a_1073741839 * b_1073741840);
+    result_1124073489 = (a_1124073487 * b_1124073488);
   framePtr = F.prev;
 
-  return result_1073741841;
+  return result_1124073489;
 
 }
 
-function HEX2B_1073741846(a_1073741847, b_1073741848) {
-  var result_1073741849 = 0;
+function HEX2B_1124073494(a_1124073495, b_1124073496) {
+  var result_1124073497 = 0;
 
   var F = {procname: "times.+", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/times.nim", line: 0};
   framePtr = F;
     F.line = 217;
-    result_1073741849 = (a_1073741847 + b_1073741848);
+    result_1124073497 = (a_1124073495 + b_1124073496);
   framePtr = F.prev;
 
-  return result_1073741849;
+  return result_1124073497;
 
 }
 
-function toEpochDay_1073742022(monthday_1073742023, month_1073742024, year_1073742025) {
+function toEpochDay_1124073670(monthday_1124073671, month_1124073672, year_1124073673) {
     var Temporary1;
     var Temporary2;
 
-  var result_1073742026 = 0;
+  var result_1124073674 = 0;
 
   var F = {procname: "times.toEpochDay", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/times.nim", line: 0};
   framePtr = F;
   BeforeRet: do {
     F.line = 459;
-    assertValidDate_1073742000(monthday_1073742023, month_1073742024, year_1073742025);
+    assertValidDate_1124073648(monthday_1124073671, month_1124073672, year_1124073673);
     F.line = 460;
-    var colontmp__452986351 = {Field0: year_1073742025, Field1: month_1073742024, Field2: monthday_1073742023};
+    var colontmp__452986360 = {Field0: year_1124073673, Field1: month_1124073672, Field2: monthday_1124073671};
     F.line = 460;
-    var y_1073742030 = colontmp__452986351["Field0"];
+    var y_1124073678 = colontmp__452986360["Field0"];
     F.line = 460;
-    var m_1073742031 = colontmp__452986351["Field1"];
+    var m_1124073679 = colontmp__452986360["Field1"];
     F.line = 460;
-    var d_1073742032 = colontmp__452986351["Field2"];
-    if ((m_1073742031 <= 2)) {
+    var d_1124073680 = colontmp__452986360["Field2"];
+    if ((m_1124073679 <= 2)) {
     F.line = 462;
-    y_1073742030 = subInt(y_1073742030, 1);
+    y_1124073678 = subInt(y_1124073678, 1);
     }
     
     F.line = 464;
-    if ((0 <= y_1073742030)) {
-    Temporary1 = y_1073742030;
+    if ((0 <= y_1124073678)) {
+    Temporary1 = y_1124073678;
     }
     else {
-    Temporary1 = HEX2D_1073741854(y_1073742030, 399);
+    Temporary1 = HEX2D_1124073502(y_1124073678, 399);
     }
     
-    var era_1073742037 = divInt(Temporary1, 400);
+    var era_1124073685 = divInt(Temporary1, 400);
     F.line = 465;
-    var yoe_1073742038 = HEX2D_1073741854(y_1073742030, HEX2A_1073741838(era_1073742037, 400));
+    var yoe_1124073686 = HEX2D_1124073502(y_1124073678, HEX2A_1124073486(era_1124073685, 400));
     F.line = 466;
-    if ((2 < m_1073742031)) {
+    if ((2 < m_1124073679)) {
     Temporary2 = -3;
     }
     else {
     Temporary2 = 9;
     }
     
-    var doy_1073742039 = HEX2D_1073741854(HEX2B_1073741846(divInt(HEX2B_1073741846(HEX2A_1073741838(153, HEX2B_1073741846(m_1073742031, Temporary2)), 2), 5), d_1073742032), 1);
+    var doy_1124073687 = HEX2D_1124073502(HEX2B_1124073494(divInt(HEX2B_1124073494(HEX2A_1124073486(153, HEX2B_1124073494(m_1124073679, Temporary2)), 2), 5), d_1124073680), 1);
     F.line = 467;
-    var doe_1073742040 = HEX2B_1073741846(HEX2D_1073741854(HEX2B_1073741846(HEX2A_1073741838(yoe_1073742038, 365), divInt(yoe_1073742038, 4)), divInt(yoe_1073742038, 100)), doy_1073742039);
+    var doe_1124073688 = HEX2B_1124073494(HEX2D_1124073502(HEX2B_1124073494(HEX2A_1124073486(yoe_1124073686, 365), divInt(yoe_1124073686, 4)), divInt(yoe_1124073686, 100)), doy_1124073687);
     F.line = 468;
-    result_1073742026 = HEX2D_1073741854(HEX2B_1073741846(HEX2A_1073741838(era_1073742037, 146097), doe_1073742040), 719468);
+    result_1124073674 = HEX2D_1124073502(HEX2B_1124073494(HEX2A_1124073486(era_1124073685, 146097), doe_1124073688), 719468);
     break BeforeRet;
   } while (false);
   framePtr = F.prev;
 
-  return result_1073742026;
+  return result_1124073674;
 
 }
 
-function getDayOfWeek_1073742111(monthday_1073742112, month_1073742113, year_1073742114) {
+function getDayOfWeek_1124073759(monthday_1124073760, month_1124073761, year_1124073762) {
     var Temporary1;
 
-  var result_1073742115 = 0;
+  var result_1124073763 = 0;
 
   var F = {procname: "times.getDayOfWeek", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/times.nim", line: 0};
   framePtr = F;
     F.line = 516;
-    assertValidDate_1073742000(monthday_1073742112, month_1073742113, year_1073742114);
+    assertValidDate_1124073648(monthday_1124073760, month_1124073761, year_1124073762);
     F.line = 518;
-    var days_1073742116 = HEX2D_1073741850(toEpochDay_1073742022(monthday_1073742112, month_1073742113, year_1073742114), 3);
+    var days_1124073764 = HEX2D_1124073498(toEpochDay_1124073670(monthday_1124073760, month_1124073761, year_1124073762), 3);
     F.line = 519;
-    var weeks_1073742127 = floorDiv_1073742117(days_1073742116, 7);
+    var weeks_1124073775 = floorDiv_1124073765(days_1124073764, 7);
     F.line = 520;
-    var wd_1073742128 = HEX2D_1073741850(days_1073742116, HEX2A_1073741834(weeks_1073742127, 7));
+    var wd_1124073776 = HEX2D_1124073498(days_1124073764, HEX2A_1124073482(weeks_1124073775, 7));
     F.line = 523;
-    if ((wd_1073742128 == 0)) {
+    if ((wd_1124073776 == 0)) {
     Temporary1 = 6;
     }
     else {
-    Temporary1 = chckRange(HEX2D_1073741850(wd_1073742128, 1), 0, 6);
+    Temporary1 = chckRange(HEX2D_1124073498(wd_1124073776, 1), 0, 6);
     }
     
-    result_1073742115 = Temporary1;
+    result_1124073763 = Temporary1;
   framePtr = F.prev;
 
-  return result_1073742115;
+  return result_1124073763;
 
 }
 
-function getDayOfYear_1073742086(monthday_1073742087, month_1073742088, year_1073742089) {
-  var result_1073742090 = 0;
+function getDayOfYear_1124073734(monthday_1124073735, month_1124073736, year_1124073737) {
+  var result_1124073738 = 0;
 
   var F = {procname: "times.getDayOfYear", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/times.nim", line: 0};
   framePtr = F;
     F.line = 497;
-    assertValidDate_1073742000(monthday_1073742087, month_1073742088, year_1073742089);
-    if (isLeapYear_1073741993(year_1073742089)) {
+    assertValidDate_1124073648(monthday_1124073735, month_1124073736, year_1124073737);
+    if (isLeapYear_1124073641(year_1124073737)) {
     F.line = 504;
-    result_1073742090 = chckRange(HEX2D_1073741854(HEX2B_1073741846(daysUntilMonthLeap_1073742092[chckIndx(month_1073742088, 1, (daysUntilMonthLeap_1073742092).length + (1) - 1) - (1)], monthday_1073742087), 1), 0, 365);
+    result_1124073738 = chckRange(HEX2D_1124073502(HEX2B_1124073494(daysUntilMonthLeap_1124073740[chckIndx(month_1124073736, 1, (daysUntilMonthLeap_1124073740).length + (1) - 1) - (1)], monthday_1124073735), 1), 0, 365);
     }
     else {
       F.line = 506;
-      result_1073742090 = chckRange(HEX2D_1073741854(HEX2B_1073741846(daysUntilMonth_1073742091[chckIndx(month_1073742088, 1, (daysUntilMonth_1073742091).length + (1) - 1) - (1)], monthday_1073742087), 1), 0, 365);
+      result_1124073738 = chckRange(HEX2D_1124073502(HEX2B_1124073494(daysUntilMonth_1124073739[chckIndx(month_1124073736, 1, (daysUntilMonth_1124073739).length + (1) - 1) - (1)], monthday_1124073735), 1), 0, 365);
     }
     
   framePtr = F.prev;
 
-  return result_1073742090;
+  return result_1124073738;
 
 }
 
-function initDateTime_1073743085(zt_1073743086, zone_1073743087) {
-  var result_1073743088 = ({m_type: NTI1073741855, nanosecond: 0, second: 0, minute: 0, hour: 0, monthdayZero: 0, monthZero: 0, year: 0, weekday: 0, yearday: 0, isDst: false, timezone: null, utcOffset: 0});
+function initDateTime_1124074733(zt_1124074734, zone_1124074735) {
+  var result_1124074736 = ({m_type: NTI1124073503, nanosecond: 0, second: 0, minute: 0, hour: 0, monthdayZero: 0, monthZero: 0, year: 0, weekday: 0, yearday: 0, isDst: false, timezone: null, utcOffset: 0});
 
   var F = {procname: "times.initDateTime", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/times.nim", line: 0};
   framePtr = F;
     F.line = 1085;
     F.line = 1086;
-    var adjTime_1073743089 = ntSubTime(zt_1073743086.time, initDuration_1073742216(0, 0, 0, zt_1073743086.utcOffset, 0, 0, 0, 0));
+    var adjTime_1124074737 = ntSubTime(zt_1124074734.time, initDuration_1124073864(0, 0, 0, zt_1124074734.utcOffset, 0, 0, 0, 0));
     F.line = 1087;
-    var s_1073743090 = adjTime_1073743089.seconds;
+    var s_1124074738 = adjTime_1124074737.seconds;
     F.line = 1088;
-    var epochday_1073743095 = floorDiv_1073742117(s_1073743090, 86400);
+    var epochday_1124074743 = floorDiv_1124073765(s_1124074738, 86400);
     F.line = 1089;
-    var rem_1073743096 = HEX2D_1073741850(s_1073743090, HEX2A_1073741834(epochday_1073743095, 86400));
+    var rem_1124074744 = HEX2D_1124073498(s_1124074738, HEX2A_1124073482(epochday_1124074743, 86400));
     F.line = 1090;
-    var hour_1073743097 = divInt(rem_1073743096, 3600);
+    var hour_1124074745 = divInt(rem_1124074744, 3600);
     F.line = 1091;
-    rem_1073743096 = HEX2D_1073741850(rem_1073743096, HEX2A_1073741834(hour_1073743097, 3600));
+    rem_1124074744 = HEX2D_1124073498(rem_1124074744, HEX2A_1124073482(hour_1124074745, 3600));
     F.line = 1092;
-    var minute_1073743098 = divInt(rem_1073743096, 60);
+    var minute_1124074746 = divInt(rem_1124074744, 60);
     F.line = 1093;
-    rem_1073743096 = HEX2D_1073741850(rem_1073743096, HEX2A_1073741834(minute_1073743098, 60));
+    rem_1124074744 = HEX2D_1124073498(rem_1124074744, HEX2A_1124073482(minute_1124074746, 60));
     F.line = 1094;
-    var second_1073743099 = rem_1073743096;
+    var second_1124074747 = rem_1124074744;
     F.line = 1096;
-    var colontmp__452986347 = fromEpochDay_1073742050(epochday_1073743095);
+    var colontmp__452986356 = fromEpochDay_1124073698(epochday_1124074743);
     F.line = 1096;
-    var d_1073743100 = colontmp__452986347["Field0"];
+    var d_1124074748 = colontmp__452986356["Field0"];
     F.line = 1096;
-    var m_1073743101 = colontmp__452986347["Field1"];
+    var m_1124074749 = colontmp__452986356["Field1"];
     F.line = 1096;
-    var y_1073743102 = colontmp__452986347["Field2"];
-    result_1073743088 = nimCopy(result_1073743088, {year: y_1073743102, monthZero: ((m_1073743101) | 0), monthdayZero: d_1073743100, hour: nimCopy(null, chckRange(hour_1073743097, 0, 23), NTI1073741849), minute: nimCopy(null, chckRange(minute_1073743098, 0, 59), NTI1073741850), second: nimCopy(null, chckRange(second_1073743099, 0, 60), NTI1073741851), nanosecond: nimCopy(null, zt_1073743086.time.nanosecond, NTI1073741853), weekday: getDayOfWeek_1073742111(d_1073743100, m_1073743101, y_1073743102), yearday: getDayOfYear_1073742086(d_1073743100, m_1073743101, y_1073743102), isDst: zt_1073743086.isDst, timezone: zone_1073743087, utcOffset: zt_1073743086.utcOffset, m_type: NTI1073741855}, NTI1073741855);
+    var y_1124074750 = colontmp__452986356["Field2"];
+    result_1124074736 = nimCopy(result_1124074736, {year: y_1124074750, monthZero: ((m_1124074749) | 0), monthdayZero: d_1124074748, hour: nimCopy(null, chckRange(hour_1124074745, 0, 23), NTI1124073497), minute: nimCopy(null, chckRange(minute_1124074746, 0, 59), NTI1124073498), second: nimCopy(null, chckRange(second_1124074747, 0, 60), NTI1124073499), nanosecond: nimCopy(null, zt_1124074734.time.nanosecond, NTI1124073501), weekday: getDayOfWeek_1124073759(d_1124074748, m_1124074749, y_1124074750), yearday: getDayOfYear_1124073734(d_1124074748, m_1124074749, y_1124074750), isDst: zt_1124074734.isDst, timezone: zone_1124074735, utcOffset: zt_1124074734.utcOffset, m_type: NTI1124073503}, NTI1124073503);
   framePtr = F.prev;
 
-  return result_1073743088;
+  return result_1124074736;
 
 }
 
-function zonedTimeFromTime_1073743142(zone_1073743143, time_1073743144) {
-  var result_1073743145 = ({time: ({seconds: 0, nanosecond: 0}), utcOffset: 0, isDst: false});
+function zonedTimeFromTime_1124074790(zone_1124074791, time_1124074792) {
+  var result_1124074793 = ({time: ({seconds: 0, nanosecond: 0}), utcOffset: 0, isDst: false});
 
   var F = {procname: "times.zonedTimeFromTime", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/times.nim", line: 0};
   framePtr = F;
     F.line = 1154;
-    result_1073743145 = nimCopy(result_1073743145, zone_1073743143.zonedTimeFromTimeImpl(time_1073743144), NTI1073741861);
+    result_1124074793 = nimCopy(result_1124074793, zone_1124074791.zonedTimeFromTimeImpl(time_1124074792), NTI1124073509);
   framePtr = F.prev;
 
-  return result_1073743145;
+  return result_1124074793;
 
 }
 
-function inZone_1073743182(time_1073743183, zone_1073743184) {
-  var result_1073743185 = ({m_type: NTI1073741855, nanosecond: 0, second: 0, minute: 0, hour: 0, monthdayZero: 0, monthZero: 0, year: 0, weekday: 0, yearday: 0, isDst: false, timezone: null, utcOffset: 0});
+function inZone_1124074830(time_1124074831, zone_1124074832) {
+  var result_1124074833 = ({m_type: NTI1124073503, nanosecond: 0, second: 0, minute: 0, hour: 0, monthdayZero: 0, monthZero: 0, year: 0, weekday: 0, yearday: 0, isDst: false, timezone: null, utcOffset: 0});
 
   var F = {procname: "times.inZone", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/times.nim", line: 0};
   framePtr = F;
     F.line = 1183;
-    result_1073743185 = nimCopy(result_1073743185, initDateTime_1073743085(zonedTimeFromTime_1073743142(zone_1073743184, time_1073743183), zone_1073743184), NTI1073741855);
+    result_1124074833 = nimCopy(result_1124074833, initDateTime_1124074733(zonedTimeFromTime_1124074790(zone_1124074832, time_1124074831), zone_1124074832), NTI1124073503);
   framePtr = F.prev;
 
-  return result_1073743185;
+  return result_1124074833;
 
 }
 
-function newTimezone_1073743112(name_1073743113, zonedTimeFromTimeImpl_1073743116, zonedTimeFromAdjTimeImpl_1073743119) {
-  var result_1073743120 = null;
+function newTimezone_1124074760(name_1124074761, zonedTimeFromTimeImpl_1124074764, zonedTimeFromAdjTimeImpl_1124074767) {
+  var result_1124074768 = null;
 
   var F = {procname: "times.newTimezone", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/times.nim", line: 0};
   framePtr = F;
     F.line = 1120;
-    result_1073743120 = {name: nimCopy(null, name_1073743113, NTI33554439), zonedTimeFromTimeImpl: zonedTimeFromTimeImpl_1073743116, zonedTimeFromAdjTimeImpl: zonedTimeFromAdjTimeImpl_1073743119};
+    result_1124074768 = {name: nimCopy(null, name_1124074761, NTI33554439), zonedTimeFromTimeImpl: zonedTimeFromTimeImpl_1124074764, zonedTimeFromAdjTimeImpl: zonedTimeFromAdjTimeImpl_1124074767};
   framePtr = F.prev;
 
-  return result_1073743120;
+  return result_1124074768;
 
 }
 
-function localZonedTimeFromTime_1073743200(time_1073743201) {
-  var result_1073743202 = ({time: ({seconds: 0, nanosecond: 0}), utcOffset: 0, isDst: false});
+function localZonedTimeFromTime_1124074848(time_1124074849) {
+  var result_1124074850 = ({time: ({seconds: 0, nanosecond: 0}), utcOffset: 0, isDst: false});
 
   var F = {procname: "times.localZonedTimeFromTime", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/times.nim", line: 0};
   framePtr = F;
     F.line = 1202;
-    var jsDate_1073743206 = new Date(HEX2A_1073741834(time_1073743201.seconds, 1000));
+    var jsDate_1124074854 = new Date(HEX2A_1124073482(time_1124074849.seconds, 1000));
     F.line = 1203;
-    var offset_1073743207 = HEX2A_1073741838(jsDate_1073743206.getTimezoneOffset(), 60);
+    var offset_1124074855 = HEX2A_1124073486(jsDate_1124074854.getTimezoneOffset(), 60);
     F.line = 1204;
-    result_1073743202.time = nimCopy(result_1073743202.time, time_1073743201, NTI1073741854);
+    result_1124074850.time = nimCopy(result_1124074850.time, time_1124074849, NTI1124073502);
     F.line = 1205;
-    result_1073743202.utcOffset = offset_1073743207;
+    result_1124074850.utcOffset = offset_1124074855;
     F.line = 1206;
-    result_1073743202.isDst = false;
+    result_1124074850.isDst = false;
   framePtr = F.prev;
 
-  return result_1073743202;
+  return result_1124074850;
 
 }
 
-function contains_1073743223(s_1073743227, value_1073743228) {
-  var result_1073743229 = false;
+function contains_1124074871(s_1124074875, value_1124074876) {
+  var result_1124074877 = false;
 
   var F = {procname: "contains.contains", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/system.nim", line: 0};
   framePtr = F;
     F.line = 823;
-    result_1073743229 = ((s_1073743227.a <= value_1073743228) && (value_1073743228 <= s_1073743227.b));
+    result_1124074877 = ((s_1124074875.a <= value_1124074876) && (value_1124074876 <= s_1124074875.b));
   framePtr = F.prev;
 
-  return result_1073743229;
+  return result_1124074877;
 
 }
 
@@ -16266,216 +16273,216 @@ function HEX2EHEX2E_687866707(a_687866710, b_687866711) {
 
 }
 
-function ntAddTime(a_1073742848, b_1073742849) {
-  var result_1073742850 = ({seconds: 0, nanosecond: 0});
+function ntAddTime(a_1124074496, b_1124074497) {
+  var result_1124074498 = ({seconds: 0, nanosecond: 0});
 
   var F = {procname: "times.+", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/times.nim", line: 0};
   framePtr = F;
     F.line = 927;
-    result_1073742850 = nimCopy(result_1073742850, normalize_1073742854(HEX2B_1073741842(a_1073742848.seconds, b_1073742849.seconds), HEX2B_1073741846(a_1073742848.nanosecond, b_1073742849.nanosecond)), NTI1073741854);
+    result_1124074498 = nimCopy(result_1124074498, normalize_1124074502(HEX2B_1124073490(a_1124074496.seconds, b_1124074497.seconds), HEX2B_1124073494(a_1124074496.nanosecond, b_1124074497.nanosecond)), NTI1124073502);
   framePtr = F.prev;
 
-  return result_1073742850;
+  return result_1124074498;
 
 }
 
-function localZonedTimeFromAdjTime_1073743208(adjTime_1073743209) {
-  var result_1073743210 = ({time: ({seconds: 0, nanosecond: 0}), utcOffset: 0, isDst: false});
+function localZonedTimeFromAdjTime_1124074856(adjTime_1124074857) {
+  var result_1124074858 = ({time: ({seconds: 0, nanosecond: 0}), utcOffset: 0, isDst: false});
 
   var F = {procname: "times.localZonedTimeFromAdjTime", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/times.nim", line: 0};
   framePtr = F;
     F.line = 1209;
-    var utcDate_1073743214 = new Date(HEX2A_1073741834(adjTime_1073743209.seconds, 1000));
+    var utcDate_1124074862 = new Date(HEX2A_1124073482(adjTime_1124074857.seconds, 1000));
     F.line = 1210;
-    var localDate_1073743215 = new Date(utcDate_1073743214.getUTCFullYear(),utcDate_1073743214.getUTCMonth(),utcDate_1073743214.getUTCDate(),utcDate_1073743214.getUTCHours(),utcDate_1073743214.getUTCMinutes(),utcDate_1073743214.getUTCSeconds(),0);
-    if (contains_1073743223(HEX2EHEX2E_687866707(0, 99), utcDate_1073743214.getUTCFullYear())) {
+    var localDate_1124074863 = new Date(utcDate_1124074862.getUTCFullYear(),utcDate_1124074862.getUTCMonth(),utcDate_1124074862.getUTCDate(),utcDate_1124074862.getUTCHours(),utcDate_1124074862.getUTCMinutes(),utcDate_1124074862.getUTCSeconds(),0);
+    if (contains_1124074871(HEX2EHEX2E_687866707(0, 99), utcDate_1124074862.getUTCFullYear())) {
     F.line = 1219;
-    localDate_1073743215.setFullYear(utcDate_1073743214.getUTCFullYear());
+    localDate_1124074863.setFullYear(utcDate_1124074862.getUTCFullYear());
     }
     
     F.line = 1221;
-    result_1073743210.utcOffset = HEX2A_1073741838(localDate_1073743215.getTimezoneOffset(), 60);
+    result_1124074858.utcOffset = HEX2A_1124073486(localDate_1124074863.getTimezoneOffset(), 60);
     F.line = 1222;
-    result_1073743210.time = nimCopy(result_1073743210.time, ntAddTime(adjTime_1073743209, initDuration_1073742216(0, 0, 0, result_1073743210.utcOffset, 0, 0, 0, 0)), NTI1073741854);
+    result_1124074858.time = nimCopy(result_1124074858.time, ntAddTime(adjTime_1124074857, initDuration_1124073864(0, 0, 0, result_1124074858.utcOffset, 0, 0, 0, 0)), NTI1124073502);
     F.line = 1223;
-    result_1073743210.isDst = false;
+    result_1124074858.isDst = false;
   framePtr = F.prev;
 
-  return result_1073743210;
+  return result_1124074858;
 
 }
 
-function local_1073743249() {
-  var result_1073743250 = null;
+function local_1124074897() {
+  var result_1124074898 = null;
 
   var F = {procname: "times.local", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/times.nim", line: 0};
   framePtr = F;
-    if ((localInstance_1073743234[0] == null)) {
+    if ((localInstance_1124074882[0] == null)) {
     F.line = 1308;
-    localInstance_1073743234[0] = newTimezone_1073743112(makeNimstrLit("LOCAL"), localZonedTimeFromTime_1073743200, localZonedTimeFromAdjTime_1073743208);
+    localInstance_1124074882[0] = newTimezone_1124074760(makeNimstrLit("LOCAL"), localZonedTimeFromTime_1124074848, localZonedTimeFromAdjTime_1124074856);
     }
     
     F.line = 1310;
-    result_1073743250 = localInstance_1073743234[0];
+    result_1124074898 = localInstance_1124074882[0];
   framePtr = F.prev;
 
-  return result_1073743250;
+  return result_1124074898;
 
 }
 
-function local_1073743263(t_1073743264) {
-  var result_1073743265 = ({m_type: NTI1073741855, nanosecond: 0, second: 0, minute: 0, hour: 0, monthdayZero: 0, monthZero: 0, year: 0, weekday: 0, yearday: 0, isDst: false, timezone: null, utcOffset: 0});
+function local_1124074911(t_1124074912) {
+  var result_1124074913 = ({m_type: NTI1124073503, nanosecond: 0, second: 0, minute: 0, hour: 0, monthdayZero: 0, monthZero: 0, year: 0, weekday: 0, yearday: 0, isDst: false, timezone: null, utcOffset: 0});
 
   var F = {procname: "times.local", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/times.nim", line: 0};
   framePtr = F;
     F.line = 1325;
-    result_1073743265 = nimCopy(result_1073743265, inZone_1073743182(t_1073743264, local_1073743249()), NTI1073741855);
+    result_1124074913 = nimCopy(result_1124074913, inZone_1124074830(t_1124074912, local_1124074897()), NTI1124073503);
   framePtr = F.prev;
 
-  return result_1073743265;
+  return result_1124074913;
 
 }
 
-function initTime_1073742741(unix_1073742742, nanosecond_1073742743) {
-  var result_1073742744 = ({seconds: 0, nanosecond: 0});
+function initTime_1124074389(unix_1124074390, nanosecond_1124074391) {
+  var result_1124074392 = ({seconds: 0, nanosecond: 0});
 
   var F = {procname: "times.initTime", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/times.nim", line: 0};
   framePtr = F;
     F.line = 838;
-    result_1073742744.seconds = unix_1073742742;
+    result_1124074392.seconds = unix_1124074390;
     F.line = 839;
-    result_1073742744.nanosecond = nanosecond_1073742743;
+    result_1124074392.nanosecond = nanosecond_1124074391;
   framePtr = F.prev;
 
-  return result_1073742744;
+  return result_1124074392;
 
 }
 
-function getTime_1073742807() {
-  var result_1073742808 = ({seconds: 0, nanosecond: 0});
+function getTime_1124074455() {
+  var result_1124074456 = ({seconds: 0, nanosecond: 0});
 
   var F = {procname: "times.getTime", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/times.nim", line: 0};
   framePtr = F;
     F.line = 900;
-    var millis_1073742809 = new Date().getTime();
+    var millis_1124074457 = new Date().getTime();
     F.line = 901;
-    var seconds_1073742815 = convert_1073742293(2, 3, millis_1073742809);
+    var seconds_1124074463 = convert_1124073941(2, 3, millis_1124074457);
     F.line = 902;
-    var nanos_1073742826 = convert_1073742293(2, 0, modInt(millis_1073742809, convert_1073742293(3, 2, 1)));
+    var nanos_1124074474 = convert_1124073941(2, 0, modInt(millis_1124074457, convert_1124073941(3, 2, 1)));
     F.line = 904;
-    result_1073742808 = nimCopy(result_1073742808, initTime_1073742741(seconds_1073742815, chckRange(nanos_1073742826, 0, 999999999)), NTI1073741854);
+    result_1124074456 = nimCopy(result_1124074456, initTime_1124074389(seconds_1124074463, chckRange(nanos_1124074474, 0, 999999999)), NTI1124073502);
   framePtr = F.prev;
 
-  return result_1073742808;
+  return result_1124074456;
 
 }
 
-function now_1073743266() {
-  var result_1073743267 = ({m_type: NTI1073741855, nanosecond: 0, second: 0, minute: 0, hour: 0, monthdayZero: 0, monthZero: 0, year: 0, weekday: 0, yearday: 0, isDst: false, timezone: null, utcOffset: 0});
+function now_1124074914() {
+  var result_1124074915 = ({m_type: NTI1124073503, nanosecond: 0, second: 0, minute: 0, hour: 0, monthdayZero: 0, monthZero: 0, year: 0, weekday: 0, yearday: 0, isDst: false, timezone: null, utcOffset: 0});
 
   var F = {procname: "times.now", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/times.nim", line: 0};
   framePtr = F;
     F.line = 1329;
-    result_1073743267 = nimCopy(result_1073743267, local_1073743263(getTime_1073742807()), NTI1073741855);
+    result_1124074915 = nimCopy(result_1124074915, local_1124074911(getTime_1124074455()), NTI1124073503);
   framePtr = F.prev;
 
-  return result_1073743267;
+  return result_1124074915;
 
 }
 
-function ntgetClockStr(dt_1073743337) {
-  var result_1073743338 = [];
+function ntgetClockStr(dt_1124074985) {
+  var result_1124074986 = [];
 
   var F = {procname: "times.getClockStr", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/times.nim", line: 0};
   framePtr = F;
-    if (!(!((dt_1073743337.monthdayZero == 0)))) {
+    if (!(!((dt_1124074985.monthdayZero == 0)))) {
     F.line = 1431;
     failedAssertImpl_218103864(makeNimstrLit("/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/times.nim(1431, 29) `dt.monthdayZero != 0` Uninitialized datetime"));
     }
     
     F.line = 1433;
-    result_1073743338 = nimCopy(null, (nsuIntToStr(dt_1073743337.hour, 2) || []).concat([58],nsuIntToStr(dt_1073743337.minute, 2) || [],[58],nsuIntToStr(dt_1073743337.second, 2) || []), NTI33554439);
+    result_1124074986 = nimCopy(null, (nsuIntToStr(dt_1124074985.hour, 2) || []).concat([58],nsuIntToStr(dt_1124074985.minute, 2) || [],[58],nsuIntToStr(dt_1124074985.second, 2) || []), NTI33554439);
   framePtr = F.prev;
 
-  return result_1073743338;
+  return result_1124074986;
 
 }
 
-function substituteLog_973078582(frmt_973078583, level_973078584, args_973078585) {
+function substituteLog_1040187446(frmt_1040187447, level_1040187448, args_1040187449) {
                   var Temporary8;
 
-  var result_973078586 = [];
+  var result_1040187450 = [];
 
   var F = {procname: "logging.substituteLog", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/logging.nim", line: 0};
   framePtr = F;
     F.line = 291;
-    var msgLen_973078587 = 0;
+    var msgLen_1040187451 = 0;
     Label1: do {
       F.line = 292;
-      var arg_973078591 = [];
+      var arg_1040187455 = [];
       F.line = 8;
-      var i_452986336 = 0;
+      var i_452986345 = 0;
       Label2: do {
         F.line = 9;
           Label3: while (true) {
-          if (!(i_452986336 < (args_973078585).length)) break Label3;
+          if (!(i_452986345 < (args_1040187449).length)) break Label3;
             F.line = 292;
-            arg_973078591 = args_973078585[chckIndx(i_452986336, 0, (args_973078585).length - 1)];
+            arg_1040187455 = args_1040187449[chckIndx(i_452986345, 0, (args_1040187449).length - 1)];
             F.line = 292;
-            msgLen_973078587 = addInt(msgLen_973078587, (arg_973078591).length);
+            msgLen_1040187451 = addInt(msgLen_1040187451, (arg_1040187455).length);
             F.line = 11;
-            i_452986336 = addInt(i_452986336, 1);
+            i_452986345 = addInt(i_452986345, 1);
           }
       } while (false);
     } while (false);
     F.line = 294;
-    result_973078586 = nimCopy(null, mnewString(0), NTI33554439);
+    result_1040187450 = nimCopy(null, mnewString(0), NTI33554439);
     F.line = 295;
-    var i_973078596 = 0;
+    var i_1040187460 = 0;
     Label4: do {
       F.line = 296;
         Label5: while (true) {
-        if (!(i_973078596 < (frmt_973078583).length)) break Label5;
-          if (!((frmt_973078583[chckIndx(i_973078596, 0, (frmt_973078583).length - 1)] == 36))) {
+        if (!(i_1040187460 < (frmt_1040187447).length)) break Label5;
+          if (!((frmt_1040187447[chckIndx(i_1040187460, 0, (frmt_1040187447).length - 1)] == 36))) {
           F.line = 298;
-          addChar(result_973078586, frmt_973078583[chckIndx(i_973078596, 0, (frmt_973078583).length - 1)]);;
+          addChar(result_1040187450, frmt_1040187447[chckIndx(i_1040187460, 0, (frmt_1040187447).length - 1)]);;
           F.line = 299;
-          i_973078596 = addInt(i_973078596, 1);
+          i_1040187460 = addInt(i_1040187460, 1);
           }
           else {
             F.line = 301;
-            i_973078596 = addInt(i_973078596, 1);
+            i_1040187460 = addInt(i_1040187460, 1);
             F.line = 302;
-            var v_973078605 = [];
+            var v_1040187469 = [];
             F.line = 303;
-            var app_973078606 = [];
+            var app_1040187470 = [];
             Label6: do {
               F.line = 304;
                 Label7: while (true) {
-                  if (!(i_973078596 < (frmt_973078583).length)) Temporary8 = false; else {                    Temporary8 = (ConstSet13[frmt_973078583[chckIndx(i_973078596, 0, (frmt_973078583).length - 1)]] != undefined);                  }                if (!Temporary8) break Label7;
+                  if (!(i_1040187460 < (frmt_1040187447).length)) Temporary8 = false; else {                    Temporary8 = (ConstSet13[frmt_1040187447[chckIndx(i_1040187460, 0, (frmt_1040187447).length - 1)]] != undefined);                  }                if (!Temporary8) break Label7;
                   F.line = 305;
-                  addChar(v_973078605, nsuToLowerAsciiChar(frmt_973078583[chckIndx(i_973078596, 0, (frmt_973078583).length - 1)]));;
+                  addChar(v_1040187469, nsuToLowerAsciiChar(frmt_1040187447[chckIndx(i_1040187460, 0, (frmt_1040187447).length - 1)]));;
                   F.line = 306;
-                  i_973078596 = addInt(i_973078596, 1);
+                  i_1040187460 = addInt(i_1040187460, 1);
                 }
             } while (false);
             F.line = 307;
-            switch (toJSStr(v_973078605)) {
+            switch (toJSStr(v_1040187469)) {
             case "date":
               F.line = 308;
-              result_973078586.push.apply(result_973078586, ntgetDateStr(now_1073743266()));;
+              result_1040187450.push.apply(result_1040187450, ntgetDateStr(now_1124074914()));;
               break;
             case "time":
               F.line = 309;
-              result_973078586.push.apply(result_973078586, ntgetClockStr(now_1073743266()));;
+              result_1040187450.push.apply(result_1040187450, ntgetClockStr(now_1124074914()));;
               break;
             case "datetime":
               F.line = 310;
-              result_973078586.push.apply(result_973078586, (ntgetDateStr(now_1073743266()) || []).concat(makeNimstrLit("T") || [],ntgetClockStr(now_1073743266()) || []));;
+              result_1040187450.push.apply(result_1040187450, (ntgetDateStr(now_1124074914()) || []).concat(makeNimstrLit("T") || [],ntgetClockStr(now_1124074914()) || []));;
               break;
             case "app":
               F.line = 311;
-              result_973078586.push.apply(result_973078586, app_973078606);;
+              result_1040187450.push.apply(result_1040187450, app_1040187470);;
               break;
             case "appdir":
               break;
@@ -16483,11 +16490,11 @@ function substituteLog_973078582(frmt_973078583, level_973078584, args_973078585
               break;
             case "levelid":
               F.line = 316;
-              addChar(result_973078586, LevelNames_973078543[chckIndx(level_973078584, 0, (LevelNames_973078543).length - 1)][chckIndx(0, 0, (LevelNames_973078543[chckIndx(level_973078584, 0, (LevelNames_973078543).length - 1)]).length - 1)]);;
+              addChar(result_1040187450, LevelNames_1040187407[chckIndx(level_1040187448, 0, (LevelNames_1040187407).length - 1)][chckIndx(0, 0, (LevelNames_1040187407[chckIndx(level_1040187448, 0, (LevelNames_1040187407).length - 1)]).length - 1)]);;
               break;
             case "levelname":
               F.line = 317;
-              result_973078586.push.apply(result_973078586, LevelNames_973078543[chckIndx(level_973078584, 0, (LevelNames_973078543).length - 1)]);;
+              result_1040187450.push.apply(result_1040187450, LevelNames_1040187407[chckIndx(level_1040187448, 0, (LevelNames_1040187407).length - 1)]);;
               break;
             default: 
               break;
@@ -16498,59 +16505,59 @@ function substituteLog_973078582(frmt_973078583, level_973078584, args_973078585
     } while (false);
     Label9: do {
       F.line = 319;
-      var arg_973078618 = [];
+      var arg_1040187482 = [];
       F.line = 8;
-      var i_452986341 = 0;
+      var i_452986350 = 0;
       Label10: do {
         F.line = 9;
           Label11: while (true) {
-          if (!(i_452986341 < (args_973078585).length)) break Label11;
+          if (!(i_452986350 < (args_1040187449).length)) break Label11;
             F.line = 319;
-            arg_973078618 = args_973078585[chckIndx(i_452986341, 0, (args_973078585).length - 1)];
+            arg_1040187482 = args_1040187449[chckIndx(i_452986350, 0, (args_1040187449).length - 1)];
             F.line = 319;
-            result_973078586.push.apply(result_973078586, arg_973078618);;
+            result_1040187450.push.apply(result_1040187450, arg_1040187482);;
             F.line = 11;
-            i_452986341 = addInt(i_452986341, 1);
+            i_452986350 = addInt(i_452986350, 1);
           }
       } while (false);
     } while (false);
   framePtr = F.prev;
 
-  return result_973078586;
+  return result_1040187450;
 
 }
 
-function log_973078624(logger_973078625, level_973078626, args_973078627) {
+function log_1040187488(logger_1040187489, level_1040187490, args_1040187491) {
       var Temporary1;
 
   var F = {procname: "logging.log", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/logging.nim", line: 0};
   framePtr = F;
-      if (!(level_973078553[0] <= level_973078626)) Temporary1 = false; else {        Temporary1 = (logger_973078625.levelThreshold <= level_973078626);      }    if (Temporary1) {
+      if (!(level_1040187417[0] <= level_1040187490)) Temporary1 = false; else {        Temporary1 = (logger_1040187489.levelThreshold <= level_1040187490);      }    if (Temporary1) {
     F.line = 365;
-    var ln_973078636 = substituteLog_973078582(logger_973078625.fmtStr, level_973078626, args_973078627);
+    var ln_1040187500 = substituteLog_1040187446(logger_1040187489.fmtStr, level_1040187490, args_1040187491);
     F.line = 367;
-    var cln_973078637 = toJSStr(ln_973078636);
+    var cln_1040187501 = toJSStr(ln_1040187500);
     F.line = 368;
-    switch (level_973078626) {
+    switch (level_1040187490) {
     case 1:
       F.line = 369;
-      console.debug(cln_973078637);
+      console.debug(cln_1040187501);
       break;
     case 2:
       F.line = 370;
-      console.info(cln_973078637);
+      console.info(cln_1040187501);
       break;
     case 4:
       F.line = 371;
-      console.warn(cln_973078637);
+      console.warn(cln_1040187501);
       break;
     case 5:
       F.line = 372;
-      console.error(cln_973078637);
+      console.error(cln_1040187501);
       break;
     default: 
       F.line = 373;
-      console.log(cln_973078637);
+      console.log(cln_1040187501);
       break;
     }
     }
@@ -16560,7 +16567,7 @@ function log_973078624(logger_973078625, level_973078626, args_973078627) {
   
 }
 
-function log_973078619(logger_973078620, level_973078621, args_973078622) {
+function log_1040187483(logger_1040187484, level_1040187485, args_1040187486) {
   var F = {procname: "logging.log", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/logging.nim", line: 0};
   framePtr = F;
   framePtr = F.prev;
@@ -16568,19 +16575,19 @@ function log_973078619(logger_973078620, level_973078621, args_973078622) {
   
 }
 
-function log_973078623(logger_973078620, level_973078621, args_973078622) {
+function log_1040187487(logger_1040187484, level_1040187485, args_1040187486) {
   var F = {procname: "logging.log", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/logging.nim", line: 0};
   framePtr = F;
     F.line = 531;
-    chckNilDisp(logger_973078620);
-    if (isObj(logger_973078620.m_type, NTI973078541)) {
+    chckNilDisp(logger_1040187484);
+    if (isObj(logger_1040187484.m_type, NTI1040187405)) {
     F.line = 322;
-    log_973078624(logger_973078620, level_973078621, args_973078622);
+    log_1040187488(logger_1040187484, level_1040187485, args_1040187486);
     }
     else {
-    if (isObj(logger_973078620.m_type, NTI973078540)) {
+    if (isObj(logger_1040187484.m_type, NTI1040187404)) {
     F.line = 322;
-    log_973078619(logger_973078620, level_973078621, args_973078622);
+    log_1040187483(logger_1040187484, level_1040187485, args_1040187486);
     }
     }
   framePtr = F.prev;
@@ -16596,40 +16603,134 @@ function script_2181038168(self_2181038169) {
   
 }
 
-function len_2181038248(self_2181038250) {
-  var result_2181038251 = 0;
+function len_2181038244(self_2181038246) {
+  var result_2181038247 = 0;
 
   var F = {procname: "len.len", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/state.nim", line: 0};
   framePtr = F;
     F.line = 191;
-    result_2181038251 = (self_2181038250.value).length;
+    result_2181038247 = (self_2181038246.value).length;
   framePtr = F.prev;
 
-  return result_2181038251;
+  return result_2181038247;
 
 }
 
-function HEX24_2181038412(self_2181038414) {
-  var result_2181038415 = [];
+function HEX24_2181038408(self_2181038410) {
+  var result_2181038411 = [];
 
   var F = {procname: "$.$", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/state.nim", line: 0};
   framePtr = F;
     F.line = 53;
-    result_2181038415 = nimCopy(null, self_2181038414.value, NTI33554439);
+    result_2181038411 = nimCopy(null, self_2181038410.value, NTI33554439);
   framePtr = F.prev;
 
-  return result_2181038415;
+  return result_2181038411;
 
 }
 
-function formatValue_2181038322(result_2181038324, result_2181038324_Idx, value_2181038325, specifier_2181038326) {
+function formatValue_2181038318(result_2181038320, result_2181038320_Idx, value_2181038321, specifier_2181038322) {
   var F = {procname: "formatValue.formatValue", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/strformat.nim", line: 0};
   framePtr = F;
     F.line = 568;
-    formatValue_620757154(result_2181038324, result_2181038324_Idx, HEX24_2181038412(value_2181038325), specifier_2181038326);
+    formatValue_620757154(result_2181038320, result_2181038320_Idx, HEX24_2181038408(value_2181038321), specifier_2181038322);
   framePtr = F.prev;
 
   
+}
+
+function renderTag_2181038173(self_2181038174) {
+    var Temporary1;
+
+  var result_2181038175 = null;
+
+  var F = {procname: "card.renderTag", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/components.nim", line: 0};
+  framePtr = F;
+    F.line = 14;
+    F.line = 10;
+    var fmtRes_2181038180 = [mnewString(0)];
+    F.line = 10;
+    fmtRes_2181038180[0].push.apply(fmtRes_2181038180[0], makeNimstrLit("flex flex-col justify-center text-3xl lg:text-base items-center gap-4 select-none px-8 pt-2 pb-12 bg-["));;
+    F.line = 10;
+    formatValue_620757154(fmtRes_2181038180, 0, makeNimstrLit("#FEFEFE"), []);
+    F.line = 10;
+    fmtRes_2181038180[0].push.apply(fmtRes_2181038180[0], makeNimstrLit("] bg-gradient-to-r dark:from-["));;
+    F.line = 10;
+    formatValue_620757154(fmtRes_2181038180, 0, makeNimstrLit("#181326"), []);
+    F.line = 10;
+    fmtRes_2181038180[0].push.apply(fmtRes_2181038180[0], makeNimstrLit("] dark:to-["));;
+    F.line = 10;
+    formatValue_620757154(fmtRes_2181038180, 0, makeNimstrLit("#1c172a"), []);
+    F.line = 10;
+    fmtRes_2181038180[0].push.apply(fmtRes_2181038180[0], makeNimstrLit("] drop-shadow-2xl hover:scale-110 transition-all duration-300 rounded-md"));;
+    if ((0 < len_2181038244(self_2181038174.pathToImg))) {
+    F.line = 12;
+    var fmtRes_2181038315 = [mnewString(0)];
+    F.line = 12;
+    formatValue_2181038318(fmtRes_2181038315, 0, self_2181038174.pathToImg, []);
+    F.line = 12;
+    var fmtRes_2181038416 = mnewString(0);
+    F.line = 12;
+    fmtRes_2181038416.push.apply(fmtRes_2181038416, makeNimstrLit("-mt-8 h-16 w-16 pointer-events-none"));;
+    Temporary1 = initTag_1560281217(makeNimstrLit("div"), [initTag_1560281125(makeNimstrLit("img"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("src"), Field1: nimCopy(null, fmtRes_2181038315[0], NTI33554439)}, NTI2181038239), nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2181038416, NTI33554439)}, NTI2181038239)], 0), [], false)], true);
+    }
+    else {
+    Temporary1 = null;
+    }
+    
+    result_2181038175 = initTag_1560281217(makeNimstrLit("div"), [initTag_1560281125(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2181038180[0], NTI33554439)}, NTI2181038150)], 0), [Temporary1, initTag_1560281217(makeNimstrLit("div"), [self_2181038174.slot], false)], false)], true);
+  framePtr = F.prev;
+
+  return result_2181038175;
+
+}
+
+function add_1560281333(self_1560281334, tags_1560281335) {
+  var F = {procname: "tag.add", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/tag.nim", line: 0};
+  framePtr = F;
+    Label1: do {
+      F.line = 196;
+      var tag_1560281348 = null;
+      F.line = 8;
+      var i_452986364 = 0;
+      Label2: do {
+        F.line = 9;
+          Label3: while (true) {
+          if (!(i_452986364 < (tags_1560281335).length)) break Label3;
+            F.line = 196;
+            tag_1560281348 = tags_1560281335[chckIndx(i_452986364, 0, (tags_1560281335).length - 1)];
+            Label4: do {
+              if ((tag_1560281348 == null)) {
+              F.line = 198;
+              break Label4;
+              }
+              
+              F.line = 199;
+              self_1560281334.children.push(tag_1560281348);;
+              F.line = 200;
+              tag_1560281348.parent = self_1560281334;
+            } while (false);
+            F.line = 11;
+            i_452986364 = addInt(i_452986364, 1);
+          }
+      } while (false);
+    } while (false);
+  framePtr = F.prev;
+
+  
+}
+
+function textTag_1560281322(text_1560281323) {
+  var result_1560281324 = null;
+
+  var F = {procname: "tag.textTag", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/tag.nim", line: 0};
+  framePtr = F;
+    F.line = 178;
+    result_1560281324 = {name: nimCopy(null, text_1560281323, NTI33554439), isText: true, parent: null, attrs: nstnewStringTableWithTableConstr([], 0), children: [], args: [], onlyChildren: false};
+  framePtr = F.prev;
+
+  return result_1560281324;
+
 }
 
 function style_2181038170(self_2181038171) {
@@ -16637,82 +16738,435 @@ function style_2181038170(self_2181038171) {
 
   var F = {procname: "card.style", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/components.nim", line: 0};
   framePtr = F;
+    F.line = 6;
+    result_2181038172 = nimCopy(null, [], NTI33554439);
   framePtr = F.prev;
 
   return result_2181038172;
 
 }
 
-function render_2181038173(self_2181038174) {
-    var Temporary1;
+function nsuRepeatStr(s_637535236, n_637535237) {
+  var result_637535238 = [];
 
-  var result_2181038175 = null;
-
-  var F = {procname: "card.render", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/components.nim", line: 0};
+  var F = {procname: "strutils.repeat", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/strutils.nim", line: 0};
   framePtr = F;
-    F.line = 9;
-    currentComponentsList_956305833[0].push(self_2181038174);;
-    F.line = 9;
-    currentComponent_956305827[0] = nimCopy(null, self_2181038174.uniqCompId, NTI33554439);
-    F.line = 9;
-    script_2181038168(self_2181038174);
-    if ((self_2181038174.isCreated == false)) {
-    F.line = 6;
-    self_2181038174.created(self_2181038174, null);
-    F.line = 767;
-    self_2181038174.isCreated = true;
-    }
-    
-    F.line = 6;
-    self_2181038174.beforeUpdated(self_2181038174, null);
-    F.line = 9;
-    F.line = 10;
-    var fmtRes_2181038184 = [mnewString(0)];
-    F.line = 10;
-    fmtRes_2181038184[0].push.apply(fmtRes_2181038184[0], makeNimstrLit("flex flex-col justify-center text-3xl lg:text-base items-center gap-4 select-none px-8 pt-2 pb-12 bg-["));;
-    F.line = 10;
-    formatValue_620757154(fmtRes_2181038184, 0, makeNimstrLit("#FEFEFE"), []);
-    F.line = 10;
-    fmtRes_2181038184[0].push.apply(fmtRes_2181038184[0], makeNimstrLit("] bg-gradient-to-r dark:from-["));;
-    F.line = 10;
-    formatValue_620757154(fmtRes_2181038184, 0, makeNimstrLit("#181326"), []);
-    F.line = 10;
-    fmtRes_2181038184[0].push.apply(fmtRes_2181038184[0], makeNimstrLit("] dark:to-["));;
-    F.line = 10;
-    formatValue_620757154(fmtRes_2181038184, 0, makeNimstrLit("#1c172a"), []);
-    F.line = 10;
-    fmtRes_2181038184[0].push.apply(fmtRes_2181038184[0], makeNimstrLit("] drop-shadow-2xl hover:scale-110 transition-all duration-300 rounded-md"));;
-    if ((0 < len_2181038248(self_2181038174.pathToImg))) {
-    F.line = 12;
-    var fmtRes_2181038319 = [mnewString(0)];
-    F.line = 12;
-    formatValue_2181038322(fmtRes_2181038319, 0, self_2181038174.pathToImg, []);
-    F.line = 12;
-    var fmtRes_2181038420 = mnewString(0);
-    F.line = 12;
-    fmtRes_2181038420.push.apply(fmtRes_2181038420, makeNimstrLit("-mt-8 h-16 w-16 pointer-events-none"));;
-    Temporary1 = initTag_1560281217(makeNimstrLit("div"), [initTag_1560281125(makeNimstrLit("img"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("src"), Field1: nimCopy(null, fmtRes_2181038319[0], NTI33554439)}, NTI2181038247), nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2181038420, NTI33554439)}, NTI2181038247)], 0), [], false)], true);
-    }
-    else {
-    Temporary1 = null;
-    }
-    
-    F.line = 9;
-    var fmtRes_2181038452 = [mnewString(0)];
-    F.line = 9;
-    formatValue_620757154(fmtRes_2181038452, 0, style_2181038170(self_2181038174), []);
-    result_2181038175 = initTag_1560281217(makeNimstrLit("div"), [initTag_1560281125(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2181038184[0], NTI33554439)}, NTI2181038158)], 0), [Temporary1, initTag_1560281217(makeNimstrLit("div"), [self_2181038174.slot], false)], false), initTag_1560281217(makeNimstrLit("style"), [initTag_1560281275(fmtRes_2181038452[0], true, [], false)], false)], true);
-    F.line = 6;
-    self_2181038174.rendered(self_2181038174, null);
-    F.line = 9;
-    currentComponent_956305827[0] = nimCopy(null, [], NTI33554439);
+    F.line = 1272;
+    result_637535238 = nimCopy(null, mnewString(0), NTI33554439);
+    Label1: do {
+      F.line = 1273;
+      var i_637535243 = 0;
+      F.line = 75;
+      var colontmp__452986377 = 0;
+      F.line = 1273;
+      colontmp__452986377 = n_637535237;
+      F.line = 90;
+      var res_452986378 = 1;
+      Label2: do {
+        F.line = 91;
+          Label3: while (true) {
+          if (!(res_452986378 <= colontmp__452986377)) break Label3;
+            F.line = 1273;
+            i_637535243 = res_452986378;
+            F.line = 1273;
+            result_637535238.push.apply(result_637535238, s_637535236);;
+            F.line = 93;
+            res_452986378 = addInt(res_452986378, 1);
+          }
+      } while (false);
+    } while (false);
   framePtr = F.prev;
 
-  return result_2181038175;
+  return result_637535238;
 
 }
 
-function script_2164261062(self_2164261063) {
+function lvl_1560281721(self_1560281722) {
+  var result_1560281723 = 0;
+
+  var F = {procname: "tag.lvl", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/tag.nim", line: 0};
+  framePtr = F;
+    F.line = 313;
+    result_1560281723 = 0;
+    F.line = 314;
+    var tag_1560281724 = self_1560281722;
+    Label1: do {
+      F.line = 315;
+        Label2: while (true) {
+        if (!!((tag_1560281724.parent == null))) break Label2;
+          F.line = 316;
+          tag_1560281724 = tag_1560281724.parent;
+          if (!(tag_1560281724.onlyChildren)) {
+          F.line = 318;
+          result_1560281723 = addInt(result_1560281723, 1);
+          }
+          
+        }
+    } while (false);
+  framePtr = F.prev;
+
+  return result_1560281723;
+
+}
+
+function nsuJoinSep(a_637535633, sep_637535634) {
+  var result_637535635 = [];
+
+  var F = {procname: "strutils.join", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/strutils.nim", line: 0};
+  framePtr = F;
+    if ((0 < (a_637535633).length)) {
+    F.line = 1780;
+    var L_637535642 = mulInt((sep_637535634).length, subInt((a_637535633).length, 1));
+    Label1: do {
+      F.line = 1781;
+      var i_637535650 = 0;
+      F.line = 75;
+      var colontmp__1023414777 = 0;
+      F.line = 1781;
+      colontmp__1023414777 = (a_637535633).length - 1;
+      F.line = 90;
+      var res_1023414778 = 0;
+      Label2: do {
+        F.line = 91;
+          Label3: while (true) {
+          if (!(res_1023414778 <= colontmp__1023414777)) break Label3;
+            F.line = 1781;
+            i_637535650 = res_1023414778;
+            F.line = 1781;
+            L_637535642 = addInt(L_637535642, (a_637535633[chckIndx(i_637535650, 0, (a_637535633).length - 1)]).length);
+            F.line = 93;
+            res_1023414778 = addInt(res_1023414778, 1);
+          }
+      } while (false);
+    } while (false);
+    F.line = 1782;
+    result_637535635 = nimCopy(null, mnewString(0), NTI33554439);
+    F.line = 1783;
+    result_637535635.push.apply(result_637535635, a_637535633[chckIndx(0, 0, (a_637535633).length - 1)]);;
+    Label4: do {
+      F.line = 1784;
+      var i_637535662 = 0;
+      F.line = 75;
+      var colontmp__1023414781 = 0;
+      F.line = 1784;
+      colontmp__1023414781 = (a_637535633).length - 1;
+      F.line = 90;
+      var res_1023414782 = 1;
+      Label5: do {
+        F.line = 91;
+          Label6: while (true) {
+          if (!(res_1023414782 <= colontmp__1023414781)) break Label6;
+            F.line = 1784;
+            i_637535662 = res_1023414782;
+            F.line = 1784;
+            result_637535635.push.apply(result_637535635, sep_637535634);;
+            F.line = 1784;
+            result_637535635.push.apply(result_637535635, a_637535633[chckIndx(i_637535662, 0, (a_637535633).length - 1)]);;
+            F.line = 93;
+            res_1023414782 = addInt(res_1023414782, 1);
+          }
+      } while (false);
+    } while (false);
+    }
+    else {
+      F.line = 1788;
+      result_637535635 = nimCopy(null, [], NTI33554439);
+    }
+    
+  framePtr = F.prev;
+
+  return result_637535635;
+
+}
+
+function join_1560281841(a_1560281843, sep_1560281844) {
+  var result_1560281845 = [];
+
+  var F = {procname: "join.join", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/strutils.nim", line: 0};
+  framePtr = F;
+    F.line = 1796;
+    result_1560281845 = nimCopy(null, [], NTI33554439);
+    Label1: do {
+      F.line = 1797;
+      var i_1560281868 = 0;
+      F.line = 1797;
+      var x_1560281869 = null;
+      F.line = 134;
+      var i_452986383 = 0;
+      Label2: do {
+        F.line = 135;
+          Label3: while (true) {
+          if (!(i_452986383 < (a_1560281843).length)) break Label3;
+            F.line = 1797;
+            i_1560281868 = i_452986383;
+            F.line = 1797;
+            x_1560281869 = a_1560281843[chckIndx(i_452986383, 0, (a_1560281843).length - 1)];
+            if ((0 < i_1560281868)) {
+            F.line = 1799;
+            result_1560281845.push.apply(result_1560281845, sep_1560281844);;
+            }
+            
+            F.line = 1797;
+            result_1560281845.push.apply(result_1560281845, HEX24_1560281833(x_1560281869));;
+            F.line = 137;
+            i_452986383 = addInt(i_452986383, 1);
+          }
+      } while (false);
+    } while (false);
+  framePtr = F.prev;
+
+  return result_1560281845;
+
+}
+
+function find_855638065(a_855638068, item_855638069) {
+  var result_855638070 = 0;
+
+  var F = {procname: "find.find", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/system.nim", line: 0};
+  framePtr = F;
+  BeforeRet: do {
+    F.line = 1847;
+    result_855638070 = 0;
+    Label1: do {
+      F.line = 1848;
+      var i_855638074 = [];
+      F.line = 8;
+      var i_452986386 = 0;
+      Label2: do {
+        F.line = 9;
+          Label3: while (true) {
+          if (!(i_452986386 < (a_855638068).length)) break Label3;
+            F.line = 1848;
+            i_855638074 = a_855638068[chckIndx(i_452986386, 0, (a_855638068).length - 1)];
+            if (eqStrings(i_855638074, item_855638069)) {
+            F.line = 1849;
+            break BeforeRet;
+            }
+            
+            F.line = 1848;
+            result_855638070 = addInt(result_855638070, 1);
+            F.line = 11;
+            i_452986386 = addInt(i_452986386, 1);
+          }
+      } while (false);
+    } while (false);
+    F.line = 1851;
+    result_855638070 = -1;
+  } while (false);
+  framePtr = F.prev;
+
+  return result_855638070;
+
+}
+
+function contains_855638060(a_855638062, item_855638063) {
+  var result_855638064 = false;
+
+  var F = {procname: "contains.contains", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/system.nim", line: 0};
+  framePtr = F;
+  BeforeRet: do {
+    F.line = 1865;
+    result_855638064 = (0 <= find_855638065(a_855638062, item_855638063));
+    break BeforeRet;
+  } while (false);
+  framePtr = F.prev;
+
+  return result_855638064;
+
+}
+
+function HEX24_1560281833(self_1560281834) {
+    var Temporary5;
+
+  var result_1560281835 = [];
+
+  var F = {procname: "tag.$", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/tag.nim", line: 0};
+  framePtr = F;
+  BeforeRet: do {
+    F.line = 364;
+    F.line = 369;
+    var level_1560281836 = nsuRepeatStr(makeNimstrLit("  "), chckRange(lvl_1560281721(self_1560281834), 0, 2147483647));
+    F.line = 370;
+    var argsStr_1560281837 = nsuJoinSep(self_1560281834.args, makeNimstrLit(" "));
+    if (self_1560281834.isText) {
+    F.line = 373;
+    result_1560281835 = nimCopy(null, self_1560281834.name, NTI33554439);
+    break BeforeRet;
+    }
+    
+    F.line = 375;
+    var attrs_1560281838 = [];
+    Label1: do {
+      F.line = 376;
+      var key_1560281839 = [];
+      F.line = 376;
+      var value_1560281840 = [];
+      Label2: do {
+        F.line = 96;
+        var h_452986372 = 0;
+        F.line = 75;
+        var colontmp__452986373 = 0;
+        F.line = 96;
+        colontmp__452986373 = (self_1560281834.attrs.data).length - 1;
+        F.line = 90;
+        var res_452986374 = 0;
+        Label3: do {
+          F.line = 91;
+            Label4: while (true) {
+            if (!(res_452986374 <= colontmp__452986373)) break Label4;
+              F.line = 96;
+              h_452986372 = res_452986374;
+              if (self_1560281834.attrs.data[chckIndx(h_452986372, 0, (self_1560281834.attrs.data).length - 1)].Field2) {
+              F.line = 376;
+              key_1560281839 = self_1560281834.attrs.data[chckIndx(h_452986372, 0, (self_1560281834.attrs.data).length - 1)].Field0;
+              F.line = 376;
+              value_1560281840 = self_1560281834.attrs.data[chckIndx(h_452986372, 0, (self_1560281834.attrs.data).length - 1)].Field1;
+              F.line = 376;
+              attrs_1560281838.push.apply(attrs_1560281838, (makeNimstrLit(" ") || []).concat(key_1560281839 || [],makeNimstrLit("=\"") || [],value_1560281840 || [],makeNimstrLit("\"") || []));;
+              }
+              
+              F.line = 93;
+              res_452986374 = addInt(res_452986374, 1);
+            }
+        } while (false);
+      } while (false);
+    } while (false);
+    if (self_1560281834.onlyChildren) {
+    F.line = 380;
+    var children_1560281870 = join_1560281841(self_1560281834.children, makeNimstrLit("\x0A"));
+    F.line = 381;
+    F.line = 381;
+    var fmtRes_1560281875 = [mnewString(0)];
+    F.line = 381;
+    formatValue_620757154(fmtRes_1560281875, 0, level_1560281836, []);
+    F.line = 381;
+    formatValue_620757154(fmtRes_1560281875, 0, children_1560281870, []);
+    F.line = 381;
+    formatValue_620757154(fmtRes_1560281875, 0, level_1560281836, []);
+    result_1560281835 = nimCopy(null, fmtRes_1560281875[0], NTI33554439);
+    break BeforeRet;
+    }
+    
+    if ((0 < (self_1560281834.children).length)) {
+    F.line = 384;
+    var children_1560281883 = (makeNimstrLit("\x0A") || []).concat(join_1560281841(self_1560281834.children, makeNimstrLit("\x0A")) || [],makeNimstrLit("\x0A") || []);
+    F.line = 385;
+    var fmtRes_1560281888 = [mnewString(0)];
+    F.line = 385;
+    formatValue_620757154(fmtRes_1560281888, 0, level_1560281836, []);
+    F.line = 385;
+    fmtRes_1560281888[0].push.apply(fmtRes_1560281888[0], makeNimstrLit("<"));;
+    F.line = 385;
+    formatValue_620757154(fmtRes_1560281888, 0, self_1560281834.name, []);
+    F.line = 385;
+    formatValue_620757154(fmtRes_1560281888, 0, attrs_1560281838, []);
+    F.line = 385;
+    fmtRes_1560281888[0].push.apply(fmtRes_1560281888[0], makeNimstrLit(" "));;
+    F.line = 385;
+    formatValue_620757154(fmtRes_1560281888, 0, argsStr_1560281837, []);
+    F.line = 385;
+    fmtRes_1560281888[0].push.apply(fmtRes_1560281888[0], makeNimstrLit(">"));;
+    F.line = 385;
+    formatValue_620757154(fmtRes_1560281888, 0, children_1560281883, []);
+    F.line = 385;
+    formatValue_620757154(fmtRes_1560281888, 0, level_1560281836, []);
+    F.line = 385;
+    fmtRes_1560281888[0].push.apply(fmtRes_1560281888[0], makeNimstrLit("</"));;
+    F.line = 385;
+    formatValue_620757154(fmtRes_1560281888, 0, self_1560281834.name, []);
+    F.line = 385;
+    fmtRes_1560281888[0].push.apply(fmtRes_1560281888[0], makeNimstrLit(">"));;
+    Temporary5 = fmtRes_1560281888[0];
+    }
+    else {
+    if (contains_855638060(UnclosedTags_1560281105, self_1560281834.name)) {
+    F.line = 387;
+    var fmtRes_1560281899 = [mnewString(0)];
+    F.line = 387;
+    formatValue_620757154(fmtRes_1560281899, 0, level_1560281836, []);
+    F.line = 387;
+    fmtRes_1560281899[0].push.apply(fmtRes_1560281899[0], makeNimstrLit("<"));;
+    F.line = 387;
+    formatValue_620757154(fmtRes_1560281899, 0, self_1560281834.name, []);
+    F.line = 387;
+    formatValue_620757154(fmtRes_1560281899, 0, attrs_1560281838, []);
+    F.line = 387;
+    fmtRes_1560281899[0].push.apply(fmtRes_1560281899[0], makeNimstrLit(" "));;
+    F.line = 387;
+    formatValue_620757154(fmtRes_1560281899, 0, argsStr_1560281837, []);
+    F.line = 387;
+    fmtRes_1560281899[0].push.apply(fmtRes_1560281899[0], makeNimstrLit(">"));;
+    Temporary5 = fmtRes_1560281899[0];
+    }
+    else {
+      F.line = 389;
+      var fmtRes_1560281904 = [mnewString(0)];
+      F.line = 389;
+      formatValue_620757154(fmtRes_1560281904, 0, level_1560281836, []);
+      F.line = 389;
+      fmtRes_1560281904[0].push.apply(fmtRes_1560281904[0], makeNimstrLit("<"));;
+      F.line = 389;
+      formatValue_620757154(fmtRes_1560281904, 0, self_1560281834.name, []);
+      F.line = 389;
+      formatValue_620757154(fmtRes_1560281904, 0, attrs_1560281838, []);
+      F.line = 389;
+      fmtRes_1560281904[0].push.apply(fmtRes_1560281904[0], makeNimstrLit(" "));;
+      F.line = 389;
+      formatValue_620757154(fmtRes_1560281904, 0, argsStr_1560281837, []);
+      F.line = 389;
+      fmtRes_1560281904[0].push.apply(fmtRes_1560281904[0], makeNimstrLit("></"));;
+      F.line = 389;
+      formatValue_620757154(fmtRes_1560281904, 0, self_1560281834.name, []);
+      F.line = 389;
+      fmtRes_1560281904[0].push.apply(fmtRes_1560281904[0], makeNimstrLit(">"));;
+    Temporary5 = fmtRes_1560281904[0];
+    }
+    }
+    result_1560281835 = nimCopy(null, Temporary5, NTI33554439);
+  } while (false);
+  framePtr = F.prev;
+
+  return result_1560281835;
+
+}
+
+function render_2181038452(self_2181038453) {
+  var result_2181038454 = null;
+
+  var F = {procname: "card.render", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/components.nim", line: 0};
+  framePtr = F;
+    F.line = 6;
+    currentComponentsList_1023414697[0].push(self_2181038453);;
+    F.line = 6;
+    currentComponent_1023414691[0] = nimCopy(null, self_2181038453.uniqCompId, NTI33554439);
+    F.line = 6;
+    script_2181038168(self_2181038453);
+    if ((self_2181038453.isCreated == false)) {
+    F.line = 6;
+    self_2181038453.created(self_2181038453, null);
+    F.line = 767;
+    self_2181038453.isCreated = true;
+    }
+    
+    F.line = 6;
+    self_2181038453.beforeUpdated(self_2181038453, null);
+    F.line = 6;
+    result_2181038454 = renderTag_2181038173(self_2181038453);
+    F.line = 6;
+    add_1560281333(result_2181038454, [initTag_1560281217(makeNimstrLit("style"), [textTag_1560281322(style_2181038170(self_2181038453))], false)]);
+    F.line = 6;
+    rawEcho(HEX24_1560281833(result_2181038454));
+    F.line = 6;
+    self_2181038453.rendered(self_2181038453, null);
+    F.line = 6;
+    currentComponent_1023414691[0] = nimCopy(null, [], NTI33554439);
+  framePtr = F.prev;
+
+  return result_2181038454;
+
+}
+
+function script_2164261100(self_2164261101) {
   var F = {procname: "button.script", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/components.nim", line: 0};
   framePtr = F;
   framePtr = F.prev;
@@ -16733,79 +17187,79 @@ function toBool_1811939786(self_1811939789) {
 
 }
 
-function mustRehash_956303443(t_956303445) {
-  var result_956303446 = false;
+function mustRehash_1023412307(t_1023412309) {
+  var result_1023412310 = false;
 
   var F = {procname: "mustRehash.mustRehash", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/hashcommon.nim", line: 0};
   framePtr = F;
-    if (!((t_956303445.counter < (t_956303445.data).length))) {
+    if (!((t_1023412309.counter < (t_1023412309.data).length))) {
     F.line = 29;
     failedAssertImpl_218103864(makeNimstrLit("/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/hashcommon.nim(29, 9) `\x0At.counter < t.dataLen` "));
     }
     
     F.line = 30;
-    result_956303446 = ((mulInt((t_956303445.data).length, 2) < mulInt(t_956303445.counter, 3)) || (subInt((t_956303445.data).length, t_956303445.counter) < 4));
+    result_1023412310 = ((mulInt((t_1023412309.data).length, 2) < mulInt(t_1023412309.counter, 3)) || (subInt((t_1023412309.data).length, t_1023412309.counter) < 4));
   framePtr = F.prev;
 
-  return result_956303446;
+  return result_1023412310;
 
 }
 
-function rawInsert_956303892(t_956303896, data_956303897, data_956303897_Idx, key_956303898, val_956303899, hc_956303900, h_956303901) {
+function rawInsert_1023412756(t_1023412760, data_1023412761, data_1023412761_Idx, key_1023412762, val_1023412763, hc_1023412764, h_1023412765) {
   var F = {procname: "rawInsert.rawInsert", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tableimpl.nim", line: 0};
   framePtr = F;
     F.line = 22;
-    data_956303897[data_956303897_Idx][chckIndx(h_956303901, 0, (data_956303897[data_956303897_Idx]).length - 1)].Field1 = key_956303898;
+    data_1023412761[data_1023412761_Idx][chckIndx(h_1023412765, 0, (data_1023412761[data_1023412761_Idx]).length - 1)].Field1 = key_1023412762;
     F.line = 23;
-    data_956303897[data_956303897_Idx][chckIndx(h_956303901, 0, (data_956303897[data_956303897_Idx]).length - 1)].Field2 = val_956303899;
+    data_1023412761[data_1023412761_Idx][chckIndx(h_1023412765, 0, (data_1023412761[data_1023412761_Idx]).length - 1)].Field2 = val_1023412763;
     F.line = 24;
-    data_956303897[data_956303897_Idx][chckIndx(h_956303901, 0, (data_956303897[data_956303897_Idx]).length - 1)].Field0 = hc_956303900;
+    data_1023412761[data_1023412761_Idx][chckIndx(h_1023412765, 0, (data_1023412761[data_1023412761_Idx]).length - 1)].Field0 = hc_1023412764;
   framePtr = F.prev;
 
   
 }
 
-function enlarge_956303598(t_956303601) {
+function enlarge_1023412462(t_1023412465) {
   var F = {procname: "enlarge.enlarge", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
   framePtr = F;
     F.line = 249;
-    var n_956303604 = [];
+    var n_1023412468 = [];
     F.line = 250;
-    n_956303604 = new Array(chckRange(mulInt((t_956303601.data).length, 2), 0, 2147483647)); for (var i = 0 ; i < chckRange(mulInt((t_956303601.data).length, 2), 0, 2147483647) ; ++i) { n_956303604[i] = {Field0: 0, Field1: 0, Field2: null}; }    F.line = 251;
-    var Temporary1 = t_956303601.data; t_956303601.data = n_956303604; n_956303604 = Temporary1;    Label2: do {
+    n_1023412468 = new Array(chckRange(mulInt((t_1023412465.data).length, 2), 0, 2147483647)); for (var i = 0 ; i < chckRange(mulInt((t_1023412465.data).length, 2), 0, 2147483647) ; ++i) { n_1023412468[i] = {Field0: 0, Field1: 0, Field2: null}; }    F.line = 251;
+    var Temporary1 = t_1023412465.data; t_1023412465.data = n_1023412468; n_1023412468 = Temporary1;    Label2: do {
       F.line = 252;
-      var i_956303668 = 0;
+      var i_1023412532 = 0;
       F.line = 43;
-      var colontmp__452986354 = 0;
+      var colontmp__452986390 = 0;
       F.line = 252;
-      colontmp__452986354 = (n_956303604).length - 1;
+      colontmp__452986390 = (n_1023412468).length - 1;
       F.line = 65;
-      var res_452986355 = 0;
+      var res_452986391 = 0;
       Label3: do {
         F.line = 66;
           Label4: while (true) {
-          if (!(res_452986355 <= colontmp__452986354)) break Label4;
+          if (!(res_452986391 <= colontmp__452986390)) break Label4;
             F.line = 252;
-            i_956303668 = res_452986355;
+            i_1023412532 = res_452986391;
             F.line = 253;
-            var eh_956303722 = n_956303604[chckIndx(i_956303668, 0, (n_956303604).length - 1)].Field0;
-            if (isFilled_1040187423(eh_956303722)) {
+            var eh_1023412586 = n_1023412468[chckIndx(i_1023412532, 0, (n_1023412468).length - 1)].Field0;
+            if (isFilled_956301343(eh_1023412586)) {
             F.line = 255;
-            var j_956303726 = (eh_956303722 & (t_956303601.data).length - 1);
+            var j_1023412590 = (eh_1023412586 & (t_1023412465.data).length - 1);
             Label5: do {
               F.line = 256;
                 Label6: while (true) {
-                if (!isFilled_1040187423(t_956303601.data[chckIndx(j_956303726, 0, (t_956303601.data).length - 1)].Field0)) break Label6;
+                if (!isFilled_956301343(t_1023412465.data[chckIndx(j_1023412590, 0, (t_1023412465.data).length - 1)].Field0)) break Label6;
                   F.line = 257;
-                  j_956303726 = nextTry_1040187426(j_956303726, (t_956303601.data).length - 1);
+                  j_1023412590 = nextTry_956301346(j_1023412590, (t_1023412465.data).length - 1);
                 }
             } while (false);
             F.line = 259;
-            rawInsert_956303892(t_956303601, t_956303601, "data", n_956303604[chckIndx(i_956303668, 0, (n_956303604).length - 1)].Field1, n_956303604[chckIndx(i_956303668, 0, (n_956303604).length - 1)].Field2, eh_956303722, j_956303726);
+            rawInsert_1023412756(t_1023412465, t_1023412465, "data", n_1023412468[chckIndx(i_1023412532, 0, (n_1023412468).length - 1)].Field1, n_1023412468[chckIndx(i_1023412532, 0, (n_1023412468).length - 1)].Field2, eh_1023412586, j_1023412590);
             }
             
             F.line = 68;
-            res_452986355 = addInt(res_452986355, 1);
+            res_452986391 = addInt(res_452986391, 1);
           }
       } while (false);
     } while (false);
@@ -16814,84 +17268,84 @@ function enlarge_956303598(t_956303601) {
   
 }
 
-function rawGetKnownHC_956304071(t_956304074, key_956304075, hc_956304076) {
-  var result_956304077 = 0;
+function rawGetKnownHC_1023412935(t_1023412938, key_1023412939, hc_1023412940) {
+  var result_1023412941 = 0;
 
   var F = {procname: "rawGetKnownHC.rawGetKnownHC", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/hashcommon.nim", line: 0};
   framePtr = F;
   BeforeRet: do {
-    if (((t_956304074.data).length == 0)) {
+    if (((t_1023412938.data).length == 0)) {
     F.line = 48;
-    result_956304077 = -1;
+    result_1023412941 = -1;
     break BeforeRet;
     }
     
     F.line = 49;
-    var h_956304128 = (hc_956304076 & (t_956304074.data).length - 1);
+    var h_1023412992 = (hc_1023412940 & (t_1023412938.data).length - 1);
     Label1: do {
       F.line = 50;
         Label2: while (true) {
-        if (!isFilled_1040187423(t_956304074.data[chckIndx(h_956304128, 0, (t_956304074.data).length - 1)].Field0)) break Label2;
-          if (((t_956304074.data[chckIndx(h_956304128, 0, (t_956304074.data).length - 1)].Field0 == hc_956304076) && (t_956304074.data[chckIndx(h_956304128, 0, (t_956304074.data).length - 1)].Field1 == key_956304075))) {
+        if (!isFilled_956301343(t_1023412938.data[chckIndx(h_1023412992, 0, (t_1023412938.data).length - 1)].Field0)) break Label2;
+          if (((t_1023412938.data[chckIndx(h_1023412992, 0, (t_1023412938.data).length - 1)].Field0 == hc_1023412940) && (t_1023412938.data[chckIndx(h_1023412992, 0, (t_1023412938.data).length - 1)].Field1 == key_1023412939))) {
           F.line = 56;
-          result_956304077 = h_956304128;
+          result_1023412941 = h_1023412992;
           break BeforeRet;
           }
           
           F.line = 57;
-          h_956304128 = nextTry_1040187426(h_956304128, (t_956304074.data).length - 1);
+          h_1023412992 = nextTry_956301346(h_1023412992, (t_1023412938.data).length - 1);
         }
     } while (false);
     F.line = 58;
-    result_956304077 = subInt(-1, h_956304128);
+    result_1023412941 = subInt(-1, h_1023412992);
   } while (false);
   framePtr = F.prev;
 
-  return result_956304077;
+  return result_1023412941;
 
 }
 
-function HEX5BHEX5DHEX3D_956303043(t_956303046, key_956303047, val_956303048) {
+function HEX5BHEX5DHEX3D_1023411907(t_1023411910, key_1023411911, val_1023411912) {
   var F = {procname: "[]=.[]=", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
   framePtr = F;
-    if (((t_956303046.data).length == 0)) {
+    if (((t_1023411910.data).length == 0)) {
     F.line = 163;
-    var correctSizeHEX60gensym19_956303098 = slotsNeeded_1040187434(32);
+    var correctSizeHEX60gensym19_1023411962 = slotsNeeded_956301354(32);
     F.line = 167;
-    t_956303046.counter = 0;
+    t_1023411910.counter = 0;
     F.line = 168;
-    t_956303046.data = new Array(chckRange(correctSizeHEX60gensym19_956303098, 0, 2147483647)); for (var i = 0 ; i < chckRange(correctSizeHEX60gensym19_956303098, 0, 2147483647) ; ++i) { t_956303046.data[i] = {Field0: 0, Field1: 0, Field2: null}; }    }
+    t_1023411910.data = new Array(chckRange(correctSizeHEX60gensym19_1023411962, 0, 2147483647)); for (var i = 0 ; i < chckRange(correctSizeHEX60gensym19_1023411962, 0, 2147483647) ; ++i) { t_1023411910.data[i] = {Field0: 0, Field1: 0, Field2: null}; }    }
     
     F.line = 57;
-    var hc_956303103 = [0];
+    var hc_1023411967 = [0];
     F.line = 58;
-    var index_956303336 = rawGet_956303104(t_956303046, key_956303047, hc_956303103, 0);
-    if ((0 <= index_956303336)) {
+    var index_1023412200 = rawGet_1023411968(t_1023411910, key_1023411911, hc_1023411967, 0);
+    if ((0 <= index_1023412200)) {
     F.line = 59;
-    t_956303046.data[chckIndx(index_956303336, 0, (t_956303046.data).length - 1)].Field2 = val_956303048;
+    t_1023411910.data[chckIndx(index_1023412200, 0, (t_1023411910.data).length - 1)].Field2 = val_1023411912;
     }
     else {
-      if (((t_956303046.data).length == 0)) {
+      if (((t_1023411910.data).length == 0)) {
       F.line = 163;
-      var correctSizeHEX60gensym24_956303438 = slotsNeeded_1040187434(32);
+      var correctSizeHEX60gensym24_1023412302 = slotsNeeded_956301354(32);
       F.line = 167;
-      t_956303046.counter = 0;
+      t_1023411910.counter = 0;
       F.line = 168;
-      t_956303046.data = new Array(chckRange(correctSizeHEX60gensym24_956303438, 0, 2147483647)); for (var i = 0 ; i < chckRange(correctSizeHEX60gensym24_956303438, 0, 2147483647) ; ++i) { t_956303046.data[i] = {Field0: 0, Field1: 0, Field2: null}; }      }
+      t_1023411910.data = new Array(chckRange(correctSizeHEX60gensym24_1023412302, 0, 2147483647)); for (var i = 0 ; i < chckRange(correctSizeHEX60gensym24_1023412302, 0, 2147483647) ; ++i) { t_1023411910.data[i] = {Field0: 0, Field1: 0, Field2: null}; }      }
       
-      if (mustRehash_956303443(t_956303046)) {
+      if (mustRehash_1023412307(t_1023411910)) {
       F.line = 49;
-      enlarge_956303598(t_956303046);
+      enlarge_1023412462(t_1023411910);
       F.line = 50;
-      index_956303336 = rawGetKnownHC_956304071(t_956303046, key_956303047, hc_956303103[0]);
+      index_1023412200 = rawGetKnownHC_1023412935(t_1023411910, key_1023411911, hc_1023411967[0]);
       }
       
       F.line = 51;
-      index_956303336 = subInt(-1, index_956303336);
+      index_1023412200 = subInt(-1, index_1023412200);
       F.line = 52;
-      rawInsert_956303892(t_956303046, t_956303046, "data", key_956303047, val_956303048, hc_956303103[0], index_956303336);
+      rawInsert_1023412756(t_1023411910, t_1023411910, "data", key_1023411911, val_1023411912, hc_1023411967[0], index_1023412200);
       F.line = 60;
-      t_956303046.counter = addInt(t_956303046.counter, 1);
+      t_1023411910.counter = addInt(t_1023411910.counter, 1);
     }
     
   framePtr = F.prev;
@@ -16899,160 +17353,175 @@ function HEX5BHEX5DHEX3D_956303043(t_956303046, key_956303047, val_956303048) {
   
 }
 
-function HEX5BHEX5DHEX3D_2164261376(t_2164261379, key_2164261380, val_2164261381) {
+function HEX5BHEX5DHEX3D_2164261406(t_2164261409, key_2164261410, val_2164261411) {
   var F = {procname: "[]=.[]=", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/collections/tables.nim", line: 0};
   framePtr = F;
     F.line = 891;
-    HEX5BHEX5DHEX3D_956303043(t_2164261379, key_2164261380, val_2164261381);
+    HEX5BHEX5DHEX3D_1023411907(t_2164261409, key_2164261410, val_2164261411);
   framePtr = F.prev;
 
   
 }
 
-function val_2164261308(self_2164261310, self_2164261310_Idx) {
-  var result_2164261311 = null;
-  var result_2164261311_Idx = 0;
+function val_2164261338(self_2164261340, self_2164261340_Idx) {
+  var result_2164261341 = null;
+  var result_2164261341_Idx = 0;
 
   var F = {procname: "val.val", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/state.nim", line: 0};
   framePtr = F;
     F.line = 61;
-    result_2164261311_Idx = [, self_2164261310[self_2164261310_Idx].value];
-    result_2164261311 = self_2164261310[self_2164261310_Idx].value;
-    result_2164261311[result_2164261311_Idx] = self_2164261310[self_2164261310_Idx].value;
+    result_2164261341_Idx = [, self_2164261340[self_2164261340_Idx].value];
+    result_2164261341 = self_2164261340[self_2164261340_Idx].value;
+    result_2164261341[result_2164261341_Idx] = self_2164261340[self_2164261340_Idx].value;
   framePtr = F.prev;
 
-  return [result_2164261311, result_2164261311_Idx];
+  return [result_2164261341, result_2164261341_Idx];
 
 }
 
-function style_2164261064(self_2164261065) {
-  var result_2164261066 = [];
-
-  var F = {procname: "button.style", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/components.nim", line: 0};
-  framePtr = F;
-  framePtr = F.prev;
-
-  return result_2164261066;
-
-}
-
-function render_2164261067(self_2164261068) {
+function renderTag_2164261105(self_2164261106) {
     var Temporary1;
     
-function HEX3Aanonymous_2164261295(self_2164261296, ev_2164261297) {
+function HEX3Aanonymous_2164261325(self_2164261326, ev_2164261327) {
         var Temporary1;
 
-      var F = {procname: "render.:anonymous", prev: framePtr, filename: "/home/runner/work/happyx/happyx/examples/website/src/components/button.nim", line: 0};
+      var F = {procname: "renderTag.:anonymous", prev: framePtr, filename: "/home/runner/work/happyx/happyx/examples/website/src/components/button.nim", line: 0};
       framePtr = F;
         F.line = 707;
         F.line = 25;
-        var fmtRes_2164261302 = [mnewString(0)];
+        var fmtRes_2164261332 = [mnewString(0)];
         F.line = 25;
-        formatValue_620757154(fmtRes_2164261302, 0, self_2164261296.uniqCompId, []);
-        currentComponent_956305827[0] = nimCopy(null, fmtRes_2164261302[0], NTI33554439);
+        formatValue_620757154(fmtRes_2164261332, 0, self_2164261326.uniqCompId, []);
+        currentComponent_1023414691[0] = nimCopy(null, fmtRes_2164261332[0], NTI33554439);
         F.line = 26;
-        (Temporary1 = val_2164261308(self_2164261296, "action"), Temporary1)[0][Temporary1[1]]();
+        (Temporary1 = val_2164261338(self_2164261326, "action"), Temporary1)[0][Temporary1[1]]();
         F.line = 25;
-        currentComponent_956305827[0] = nimCopy(null, [], NTI33554439);
+        currentComponent_1023414691[0] = nimCopy(null, [], NTI33554439);
       framePtr = F.prev;
 
       
     }
 
-  var result_2164261069 = null;
+  var result_2164261107 = null;
 
-  var F = {procname: "button.render", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/components.nim", line: 0};
+  var F = {procname: "button.renderTag", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/components.nim", line: 0};
   framePtr = F;
-    F.line = 16;
-    currentComponentsList_956305833[0].push(self_2164261068);;
-    F.line = 16;
-    currentComponent_956305827[0] = nimCopy(null, self_2164261068.uniqCompId, NTI33554439);
-    F.line = 16;
-    script_2164261062(self_2164261068);
-    if ((self_2164261068.isCreated == false)) {
-    F.line = 12;
-    self_2164261068.created(self_2164261068, null);
-    F.line = 767;
-    self_2164261068.isCreated = true;
-    }
-    
-    F.line = 12;
-    self_2164261068.beforeUpdated(self_2164261068, null);
-    F.line = 16;
+    F.line = 26;
     F.line = 25;
-    var fmtRes_2164261199 = [mnewString(0)];
+    var fmtRes_2164261229 = [mnewString(0)];
     F.line = 25;
-    fmtRes_2164261199[0].push.apply(fmtRes_2164261199[0], makeNimstrLit("callComponentEventHandler(\'"));;
+    fmtRes_2164261229[0].push.apply(fmtRes_2164261229[0], makeNimstrLit("callComponentEventHandler(\'"));;
     F.line = 25;
-    formatValue_620757154(fmtRes_2164261199, 0, self_2164261068.uniqCompId, []);
+    formatValue_620757154(fmtRes_2164261229, 0, self_2164261106.uniqCompId, []);
     F.line = 25;
-    fmtRes_2164261199[0].push.apply(fmtRes_2164261199[0], makeNimstrLit("\', 0, event)"));;
+    fmtRes_2164261229[0].push.apply(fmtRes_2164261229[0], makeNimstrLit("\', 0, event)"));;
     F.line = 18;
-    var fmtRes_2164261204 = mnewString(0);
+    var fmtRes_2164261234 = mnewString(0);
     F.line = 18;
-    fmtRes_2164261204.push.apply(fmtRes_2164261204, makeNimstrLit("flex justify-center items-center lowercase font-bold text-lg cursor-pointer select-none"));;
-    if (toBool_1811939786(self_2164261068.flat)) {
+    fmtRes_2164261234.push.apply(fmtRes_2164261234, makeNimstrLit("flex justify-center items-center lowercase font-bold text-lg cursor-pointer select-none"));;
+    if (toBool_1811939786(self_2164261106.flat)) {
     F.line = 20;
-    var fmtRes_2164261212 = [mnewString(0)];
+    var fmtRes_2164261242 = [mnewString(0)];
     F.line = 20;
-    fmtRes_2164261212[0].push.apply(fmtRes_2164261212[0], makeNimstrLit("px-2 text-4xl lg:text-2xl xl:text-base md:px-4 xl:px-8 py-1 text-["));;
+    fmtRes_2164261242[0].push.apply(fmtRes_2164261242[0], makeNimstrLit("px-2 text-4xl lg:text-2xl xl:text-base md:px-4 xl:px-8 py-1 text-["));;
     F.line = 20;
-    formatValue_620757154(fmtRes_2164261212, 0, makeNimstrLit("#212121"), []);
+    formatValue_620757154(fmtRes_2164261242, 0, makeNimstrLit("#212121"), []);
     F.line = 20;
-    fmtRes_2164261212[0].push.apply(fmtRes_2164261212[0], makeNimstrLit("] dark:text-["));;
+    fmtRes_2164261242[0].push.apply(fmtRes_2164261242[0], makeNimstrLit("] dark:text-["));;
     F.line = 20;
-    formatValue_620757154(fmtRes_2164261212, 0, makeNimstrLit("#E0EFFE"), []);
+    formatValue_620757154(fmtRes_2164261242, 0, makeNimstrLit("#E0EFFE"), []);
     F.line = 20;
-    fmtRes_2164261212[0].push.apply(fmtRes_2164261212[0], makeNimstrLit("] hover:opacity-80 active:opacity-60 transition-all duration-300"));;
-    Temporary1 = initTag_1560281217(makeNimstrLit("div"), [initTag_1560281125(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2164261212[0], NTI33554439)}, NTI2164261139)], 0), [self_2164261068.slot], false)], true);
+    fmtRes_2164261242[0].push.apply(fmtRes_2164261242[0], makeNimstrLit("] hover:opacity-80 active:opacity-60 transition-all duration-300"));;
+    Temporary1 = initTag_1560281217(makeNimstrLit("div"), [initTag_1560281125(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2164261242[0], NTI33554439)}, NTI2164261142)], 0), [self_2164261106.slot], false)], true);
     }
     else {
       F.line = 23;
-      var fmtRes_2164261236 = [mnewString(0)];
+      var fmtRes_2164261266 = [mnewString(0)];
       F.line = 23;
-      fmtRes_2164261236[0].push.apply(fmtRes_2164261236[0], makeNimstrLit("px-2 text-4xl lg:text-2xl xl:text-base md:px-4 xl:px-8 py-1 text-["));;
+      fmtRes_2164261266[0].push.apply(fmtRes_2164261266[0], makeNimstrLit("px-2 text-4xl lg:text-2xl xl:text-base md:px-4 xl:px-8 py-1 text-["));;
       F.line = 23;
-      formatValue_620757154(fmtRes_2164261236, 0, makeNimstrLit("#FEFEFE"), []);
+      formatValue_620757154(fmtRes_2164261266, 0, makeNimstrLit("#FEFEFE"), []);
       F.line = 23;
-      fmtRes_2164261236[0].push.apply(fmtRes_2164261236[0], makeNimstrLit("] dark:text-["));;
+      fmtRes_2164261266[0].push.apply(fmtRes_2164261266[0], makeNimstrLit("] dark:text-["));;
       F.line = 23;
-      formatValue_620757154(fmtRes_2164261236, 0, makeNimstrLit("#181326"), []);
+      formatValue_620757154(fmtRes_2164261266, 0, makeNimstrLit("#181326"), []);
       F.line = 23;
-      fmtRes_2164261236[0].push.apply(fmtRes_2164261236[0], makeNimstrLit("] rounded-md bg-["));;
+      fmtRes_2164261266[0].push.apply(fmtRes_2164261266[0], makeNimstrLit("] rounded-md bg-["));;
       F.line = 23;
-      formatValue_620757154(fmtRes_2164261236, 0, makeNimstrLit("#EF7575"), []);
+      formatValue_620757154(fmtRes_2164261266, 0, makeNimstrLit("#EF7575"), []);
       F.line = 23;
-      fmtRes_2164261236[0].push.apply(fmtRes_2164261236[0], makeNimstrLit("] dark:bg-["));;
+      fmtRes_2164261266[0].push.apply(fmtRes_2164261266[0], makeNimstrLit("] dark:bg-["));;
       F.line = 23;
-      formatValue_620757154(fmtRes_2164261236, 0, makeNimstrLit("#FCFF82"), []);
+      formatValue_620757154(fmtRes_2164261266, 0, makeNimstrLit("#FCFF82"), []);
       F.line = 23;
-      fmtRes_2164261236[0].push.apply(fmtRes_2164261236[0], makeNimstrLit("] hover:opacity-90 active:opacity-75 transition-all duration-300"));;
-    Temporary1 = initTag_1560281217(makeNimstrLit("div"), [initTag_1560281125(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2164261236[0], NTI33554439)}, NTI2164261175)], 0), [self_2164261068.slot], false)], true);
+      fmtRes_2164261266[0].push.apply(fmtRes_2164261266[0], makeNimstrLit("] hover:opacity-90 active:opacity-75 transition-all duration-300"));;
+    Temporary1 = initTag_1560281217(makeNimstrLit("div"), [initTag_1560281125(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2164261266[0], NTI33554439)}, NTI2164261178)], 0), [self_2164261106.slot], false)], true);
     }
     
     F.line = 3043;
-    if (globalThis.alreadyExecutedHEX60gensym4_2164261257 === undefined) {
-      globalThis.alreadyExecutedHEX60gensym4_2164261257 = [false];
+    if (globalThis.alreadyExecutedHEX60gensym4_2164261287 === undefined) {
+      globalThis.alreadyExecutedHEX60gensym4_2164261287 = [false];
     }
-    if (!(alreadyExecutedHEX60gensym4_2164261257[0])) {
+    if (!(alreadyExecutedHEX60gensym4_2164261287[0])) {
     F.line = 3045;
-    alreadyExecutedHEX60gensym4_2164261257[0] = true;
+    alreadyExecutedHEX60gensym4_2164261287[0] = true;
     F.line = 25;
-    HEX5BHEX5DHEX3D_2164261376(componentEventHandlers_956304341[0], 0, HEX3Aanonymous_2164261295);
+    HEX5BHEX5DHEX3D_2164261406(componentEventHandlers_1023413205[0], 0, HEX3Aanonymous_2164261325);
     }
     
-    F.line = 16;
-    var fmtRes_2164261535 = [mnewString(0)];
-    F.line = 16;
-    formatValue_620757154(fmtRes_2164261535, 0, style_2164261064(self_2164261068), []);
-    result_2164261069 = initTag_1560281217(makeNimstrLit("div"), [initTag_1560281125(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("onclick"), Field1: nimCopy(null, fmtRes_2164261199[0], NTI33554439)}, NTI2164261117), nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2164261204, NTI33554439)}, NTI2164261117)], 0), [Temporary1, initTag_1560281217(makeNimstrLit("div"), [], true)], false), initTag_1560281217(makeNimstrLit("style"), [initTag_1560281275(fmtRes_2164261535[0], true, [], false)], false)], true);
-    F.line = 12;
-    self_2164261068.rendered(self_2164261068, null);
-    F.line = 16;
-    currentComponent_956305827[0] = nimCopy(null, [], NTI33554439);
+    result_2164261107 = initTag_1560281217(makeNimstrLit("div"), [initTag_1560281125(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("onclick"), Field1: nimCopy(null, fmtRes_2164261229[0], NTI33554439)}, NTI2164261120), nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2164261234, NTI33554439)}, NTI2164261120)], 0), [Temporary1, initTag_1560281217(makeNimstrLit("div"), [], true)], false)], true);
   framePtr = F.prev;
 
-  return result_2164261069;
+  return result_2164261107;
+
+}
+
+function style_2164261102(self_2164261103) {
+  var result_2164261104 = [];
+
+  var F = {procname: "button.style", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/components.nim", line: 0};
+  framePtr = F;
+    F.line = 12;
+    result_2164261104 = nimCopy(null, [], NTI33554439);
+  framePtr = F.prev;
+
+  return result_2164261104;
+
+}
+
+function render_2164261597(self_2164261598) {
+  var result_2164261599 = null;
+
+  var F = {procname: "button.render", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/components.nim", line: 0};
+  framePtr = F;
+    F.line = 12;
+    currentComponentsList_1023414697[0].push(self_2164261598);;
+    F.line = 12;
+    currentComponent_1023414691[0] = nimCopy(null, self_2164261598.uniqCompId, NTI33554439);
+    F.line = 12;
+    script_2164261100(self_2164261598);
+    if ((self_2164261598.isCreated == false)) {
+    F.line = 12;
+    self_2164261598.created(self_2164261598, null);
+    F.line = 767;
+    self_2164261598.isCreated = true;
+    }
+    
+    F.line = 12;
+    self_2164261598.beforeUpdated(self_2164261598, null);
+    F.line = 12;
+    result_2164261599 = renderTag_2164261105(self_2164261598);
+    F.line = 12;
+    add_1560281333(result_2164261599, [initTag_1560281217(makeNimstrLit("style"), [textTag_1560281322(style_2164261102(self_2164261598))], false)]);
+    F.line = 12;
+    rawEcho(HEX24_1560281833(result_2164261599));
+    F.line = 12;
+    self_2164261598.rendered(self_2164261598, null);
+    F.line = 12;
+    currentComponent_1023414691[0] = nimCopy(null, [], NTI33554439);
+  framePtr = F.prev;
+
+  return result_2164261599;
 
 }
 
@@ -17064,42 +17533,146 @@ function script_2197815396(self_2197815397) {
   
 }
 
-function HEX24_2197815514(self_2197815516) {
-  var result_2197815517 = [];
+function HEX24_2197815510(self_2197815512) {
+  var result_2197815513 = [];
 
   var F = {procname: "$.$", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/state.nim", line: 0};
   framePtr = F;
     F.line = 53;
-    result_2197815517 = nimCopy(null, cstrToNimstr(self_2197815516.value), NTI33554439);
+    result_2197815513 = nimCopy(null, cstrToNimstr(self_2197815512.value), NTI33554439);
   framePtr = F.prev;
 
-  return result_2197815517;
+  return result_2197815513;
 
 }
 
-function formatValue_2197815424(result_2197815426, result_2197815426_Idx, value_2197815427, specifier_2197815428) {
+function formatValue_2197815420(result_2197815422, result_2197815422_Idx, value_2197815423, specifier_2197815424) {
   var F = {procname: "formatValue.formatValue", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/strformat.nim", line: 0};
   framePtr = F;
     F.line = 568;
-    formatValue_620757154(result_2197815426, result_2197815426_Idx, HEX24_2197815514(value_2197815427), specifier_2197815428);
+    formatValue_620757154(result_2197815422, result_2197815422_Idx, HEX24_2197815510(value_2197815423), specifier_2197815424);
   framePtr = F.prev;
 
   
 }
 
-function val_2197815520(self_2197815522, self_2197815522_Idx) {
-  var result_2197815523 = null;
-  var result_2197815523_Idx = 0;
+function val_2197815516(self_2197815518, self_2197815518_Idx) {
+  var result_2197815519 = null;
+  var result_2197815519_Idx = 0;
 
   var F = {procname: "val.val", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/state.nim", line: 0};
   framePtr = F;
     F.line = 61;
-    result_2197815523_Idx = [, self_2197815522[self_2197815522_Idx].value];
-    result_2197815523 = self_2197815522[self_2197815522_Idx].value;
-    result_2197815523[result_2197815523_Idx] = self_2197815522[self_2197815522_Idx].value;
+    result_2197815519_Idx = [, self_2197815518[self_2197815518_Idx].value];
+    result_2197815519 = self_2197815518[self_2197815518_Idx].value;
+    result_2197815519[result_2197815519_Idx] = self_2197815518[self_2197815518_Idx].value;
   framePtr = F.prev;
 
-  return [result_2197815523, result_2197815523_Idx];
+  return [result_2197815519, result_2197815519_Idx];
+
+}
+
+function renderTag_2197815401(self_2197815402) {
+    var Temporary1;
+    
+function HEX3Aanonymous_2197815719(self_2197815720, ev_2197815721) {
+        var Temporary1;
+
+      var F = {procname: "renderTag.:anonymous", prev: framePtr, filename: "/home/runner/work/happyx/happyx/examples/website/src/components/code_block.nim", line: 0};
+      framePtr = F;
+        F.line = 707;
+        F.line = 20;
+        var fmtRes_2197815726 = [mnewString(0)];
+        F.line = 20;
+        formatValue_620757154(fmtRes_2197815726, 0, self_2197815720.uniqCompId, []);
+        currentComponent_1023414691[0] = nimCopy(null, fmtRes_2197815726[0], NTI33554439);
+        F.line = 21;
+        var data_2197815732 = nimCopy(null, (Temporary1 = val_2197815516(self_2197815720, "source"), Temporary1)[0][Temporary1[1]], NTI33554439);
+        F.line = 22;
+        navigator.clipboard.writeText(data_2197815732);
+        F.line = 20;
+        currentComponent_1023414691[0] = nimCopy(null, [], NTI33554439);
+      framePtr = F.prev;
+
+      
+    }
+
+  var result_2197815403 = null;
+
+  var F = {procname: "code_block.renderTag", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/components.nim", line: 0};
+  framePtr = F;
+    F.line = 22;
+    F.line = 10;
+    var fmtRes_2197815408 = mnewString(0);
+    F.line = 10;
+    fmtRes_2197815408.push.apply(fmtRes_2197815408, makeNimstrLit("relative"));;
+    F.line = 11;
+    var fmtRes_2197815416 = [mnewString(0)];
+    F.line = 11;
+    formatValue_2197815420(fmtRes_2197815416, 0, self_2197815402.id, []);
+    F.line = 11;
+    var fmtRes_2197815524 = mnewString(0);
+    F.line = 11;
+    fmtRes_2197815524.push.apply(fmtRes_2197815524, makeNimstrLit("rounded-md text-3xl lg:text-lg xl:text-base"));;
+    F.line = 13;
+    var fmtRes_2197815622 = mnewString(0);
+    F.line = 13;
+    fmtRes_2197815622.push.apply(fmtRes_2197815622, makeNimstrLit("absolute right-4 top-4"));;
+    F.line = 20;
+    var fmtRes_2197815630 = [mnewString(0)];
+    F.line = 20;
+    fmtRes_2197815630[0].push.apply(fmtRes_2197815630[0], makeNimstrLit("callComponentEventHandler(\'"));;
+    F.line = 20;
+    formatValue_620757154(fmtRes_2197815630, 0, self_2197815402.uniqCompId, []);
+    F.line = 20;
+    fmtRes_2197815630[0].push.apply(fmtRes_2197815630[0], makeNimstrLit("\', 1, event)"));;
+    F.line = 15;
+    var fmtRes_2197815635 = mnewString(0);
+    F.line = 15;
+    fmtRes_2197815635.push.apply(fmtRes_2197815635, makeNimstrLit("800px"));;
+    F.line = 15;
+    var fmtRes_2197815640 = mnewString(0);
+    F.line = 15;
+    fmtRes_2197815640.push.apply(fmtRes_2197815640, makeNimstrLit("800px"));;
+    F.line = 15;
+    var fmtRes_2197815645 = mnewString(0);
+    F.line = 15;
+    fmtRes_2197815645.push.apply(fmtRes_2197815645, makeNimstrLit("0 0 24 24"));;
+    F.line = 16;
+    var fmtRes_2197815650 = mnewString(0);
+    F.line = 16;
+    fmtRes_2197815650.push.apply(fmtRes_2197815650, makeNimstrLit("w-16 lg:w-8 h-16 lg:h-8 fill-white hover:fill-gray-200 active:fill-gray-400 transition-all cursor-pointer select-none"));;
+    F.line = 18;
+    var fmtRes_2197815658 = mnewString(0);
+    F.line = 18;
+    fmtRes_2197815658.push.apply(fmtRes_2197815658, makeNimstrLit("evenodd"));;
+    F.line = 18;
+    var fmtRes_2197815663 = mnewString(0);
+    F.line = 18;
+    fmtRes_2197815663.push.apply(fmtRes_2197815663, makeNimstrLit("evenodd"));;
+    F.line = 18;
+    var fmtRes_2197815668 = mnewString(0);
+    F.line = 18;
+    fmtRes_2197815668.push.apply(fmtRes_2197815668, makeNimstrLit("M21 8C21 6.34315 19.6569 5 18 5H10C8.34315 5 7 6.34315 7 8V20C7 21.6569 8.34315 23 10 23H18C19.6569 23 21 21.6569 21 20V8ZM19 8C19 7.44772 18.5523 7 18 7H10C9.44772 7 9 7.44772 9 8V20C9 20.5523 9.44772 21 10 21H18C18.5523 21 19 20.5523 19 20V8Z"));;
+    F.line = 19;
+    var fmtRes_2197815676 = mnewString(0);
+    F.line = 19;
+    fmtRes_2197815676.push.apply(fmtRes_2197815676, makeNimstrLit("M6 3H16C16.5523 3 17 2.55228 17 2C17 1.44772 16.5523 1 16 1H6C4.34315 1 3 2.34315 3 4V18C3 18.5523 3.44772 19 4 19C4.55228 19 5 18.5523 5 18V4C5 3.44772 5.44772 3 6 3Z"));;
+    F.line = 3043;
+    if (globalThis.alreadyExecutedHEX60gensym13_2197815681 === undefined) {
+      globalThis.alreadyExecutedHEX60gensym13_2197815681 = [false];
+    }
+    if (!(alreadyExecutedHEX60gensym13_2197815681[0])) {
+    F.line = 3045;
+    alreadyExecutedHEX60gensym13_2197815681[0] = true;
+    F.line = 20;
+    HEX5BHEX5DHEX3D_2164261406(componentEventHandlers_1023413205[0], 1, HEX3Aanonymous_2197815719);
+    }
+    
+    result_2197815403 = initTag_1560281217(makeNimstrLit("div"), [initTag_1560281125(makeNimstrLit("pre"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2197815408, NTI33554439)}, NTI2197815376)], 0), [initTag_1560281125(makeNimstrLit("code"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("id"), Field1: nimCopy(null, fmtRes_2197815416[0], NTI33554439)}, NTI2197815389), nimCopy(null, {Field0: makeNimstrLit("language"), Field1: nimCopy(null, (Temporary1 = val_2197815516(self_2197815402, "language"), Temporary1)[0][Temporary1[1]], NTI33554439)}, NTI2197815389), nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2197815524, NTI33554439)}, NTI2197815389)], 0), [initTag_1560281275(HEX24_2181038408(self_2197815402.source), true, [], false)], false), initTag_1560281125(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2197815622, NTI33554439)}, NTI2197815554)], 0), [initTag_1560281125(makeNimstrLit("svg"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("onclick"), Field1: nimCopy(null, fmtRes_2197815630[0], NTI33554439)}, NTI2197815567), nimCopy(null, {Field0: makeNimstrLit("width"), Field1: nimCopy(null, fmtRes_2197815635, NTI33554439)}, NTI2197815567), nimCopy(null, {Field0: makeNimstrLit("height"), Field1: nimCopy(null, fmtRes_2197815640, NTI33554439)}, NTI2197815567), nimCopy(null, {Field0: makeNimstrLit("viewBox"), Field1: nimCopy(null, fmtRes_2197815645, NTI33554439)}, NTI2197815567), nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2197815650, NTI33554439)}, NTI2197815567)], 0), [initTag_1560281125(makeNimstrLit("path"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("fill-rule"), Field1: nimCopy(null, fmtRes_2197815658, NTI33554439)}, NTI2197815608), nimCopy(null, {Field0: makeNimstrLit("clip-rule"), Field1: nimCopy(null, fmtRes_2197815663, NTI33554439)}, NTI2197815608), nimCopy(null, {Field0: makeNimstrLit("d"), Field1: nimCopy(null, fmtRes_2197815668, NTI33554439)}, NTI2197815608)], 0), [], false), initTag_1560281125(makeNimstrLit("path"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("d"), Field1: nimCopy(null, fmtRes_2197815676, NTI33554439)}, NTI2197815633)], 0), [], false), initTag_1560281217(makeNimstrLit("div"), [], true)], false)], false)], false)], true);
+  framePtr = F.prev;
+
+  return result_2197815403;
 
 }
 
@@ -17108,136 +17681,47 @@ function style_2197815398(self_2197815399) {
 
   var F = {procname: "code_block.style", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/components.nim", line: 0};
   framePtr = F;
+    F.line = 4;
+    result_2197815400 = nimCopy(null, [], NTI33554439);
   framePtr = F.prev;
 
   return result_2197815400;
 
 }
 
-function render_2197815401(self_2197815402) {
-    var Temporary1;
-    
-function HEX3Aanonymous_2197815723(self_2197815724, ev_2197815725) {
-        var Temporary1;
-
-      var F = {procname: "render.:anonymous", prev: framePtr, filename: "/home/runner/work/happyx/happyx/examples/website/src/components/code_block.nim", line: 0};
-      framePtr = F;
-        F.line = 707;
-        F.line = 20;
-        var fmtRes_2197815730 = [mnewString(0)];
-        F.line = 20;
-        formatValue_620757154(fmtRes_2197815730, 0, self_2197815724.uniqCompId, []);
-        currentComponent_956305827[0] = nimCopy(null, fmtRes_2197815730[0], NTI33554439);
-        F.line = 21;
-        var data_2197815736 = nimCopy(null, (Temporary1 = val_2197815520(self_2197815724, "source"), Temporary1)[0][Temporary1[1]], NTI33554439);
-        F.line = 22;
-        navigator.clipboard.writeText(data_2197815736);
-        F.line = 20;
-        currentComponent_956305827[0] = nimCopy(null, [], NTI33554439);
-      framePtr = F.prev;
-
-      
-    }
-
-  var result_2197815403 = null;
+function render_2197815860(self_2197815861) {
+  var result_2197815862 = null;
 
   var F = {procname: "code_block.render", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/components.nim", line: 0};
   framePtr = F;
-    F.line = 9;
-    currentComponentsList_956305833[0].push(self_2197815402);;
-    F.line = 9;
-    currentComponent_956305827[0] = nimCopy(null, self_2197815402.uniqCompId, NTI33554439);
-    F.line = 9;
-    script_2197815396(self_2197815402);
-    if ((self_2197815402.isCreated == false)) {
     F.line = 4;
-    self_2197815402.created(self_2197815402, null);
+    currentComponentsList_1023414697[0].push(self_2197815861);;
+    F.line = 4;
+    currentComponent_1023414691[0] = nimCopy(null, self_2197815861.uniqCompId, NTI33554439);
+    F.line = 4;
+    script_2197815396(self_2197815861);
+    if ((self_2197815861.isCreated == false)) {
+    F.line = 4;
+    self_2197815861.created(self_2197815861, null);
     F.line = 767;
-    self_2197815402.isCreated = true;
+    self_2197815861.isCreated = true;
     }
     
     F.line = 4;
-    self_2197815402.beforeUpdated(self_2197815402, null);
-    F.line = 9;
-    F.line = 10;
-    var fmtRes_2197815412 = mnewString(0);
-    F.line = 10;
-    fmtRes_2197815412.push.apply(fmtRes_2197815412, makeNimstrLit("relative"));;
-    F.line = 11;
-    var fmtRes_2197815420 = [mnewString(0)];
-    F.line = 11;
-    formatValue_2197815424(fmtRes_2197815420, 0, self_2197815402.id, []);
-    F.line = 11;
-    var fmtRes_2197815528 = mnewString(0);
-    F.line = 11;
-    fmtRes_2197815528.push.apply(fmtRes_2197815528, makeNimstrLit("rounded-md text-3xl lg:text-lg xl:text-base"));;
-    F.line = 13;
-    var fmtRes_2197815626 = mnewString(0);
-    F.line = 13;
-    fmtRes_2197815626.push.apply(fmtRes_2197815626, makeNimstrLit("absolute right-4 top-4"));;
-    F.line = 20;
-    var fmtRes_2197815634 = [mnewString(0)];
-    F.line = 20;
-    fmtRes_2197815634[0].push.apply(fmtRes_2197815634[0], makeNimstrLit("callComponentEventHandler(\'"));;
-    F.line = 20;
-    formatValue_620757154(fmtRes_2197815634, 0, self_2197815402.uniqCompId, []);
-    F.line = 20;
-    fmtRes_2197815634[0].push.apply(fmtRes_2197815634[0], makeNimstrLit("\', 1, event)"));;
-    F.line = 15;
-    var fmtRes_2197815639 = mnewString(0);
-    F.line = 15;
-    fmtRes_2197815639.push.apply(fmtRes_2197815639, makeNimstrLit("800px"));;
-    F.line = 15;
-    var fmtRes_2197815644 = mnewString(0);
-    F.line = 15;
-    fmtRes_2197815644.push.apply(fmtRes_2197815644, makeNimstrLit("800px"));;
-    F.line = 15;
-    var fmtRes_2197815649 = mnewString(0);
-    F.line = 15;
-    fmtRes_2197815649.push.apply(fmtRes_2197815649, makeNimstrLit("0 0 24 24"));;
-    F.line = 16;
-    var fmtRes_2197815654 = mnewString(0);
-    F.line = 16;
-    fmtRes_2197815654.push.apply(fmtRes_2197815654, makeNimstrLit("w-16 lg:w-8 h-16 lg:h-8 fill-white hover:fill-gray-200 active:fill-gray-400 transition-all cursor-pointer select-none"));;
-    F.line = 18;
-    var fmtRes_2197815662 = mnewString(0);
-    F.line = 18;
-    fmtRes_2197815662.push.apply(fmtRes_2197815662, makeNimstrLit("evenodd"));;
-    F.line = 18;
-    var fmtRes_2197815667 = mnewString(0);
-    F.line = 18;
-    fmtRes_2197815667.push.apply(fmtRes_2197815667, makeNimstrLit("evenodd"));;
-    F.line = 18;
-    var fmtRes_2197815672 = mnewString(0);
-    F.line = 18;
-    fmtRes_2197815672.push.apply(fmtRes_2197815672, makeNimstrLit("M21 8C21 6.34315 19.6569 5 18 5H10C8.34315 5 7 6.34315 7 8V20C7 21.6569 8.34315 23 10 23H18C19.6569 23 21 21.6569 21 20V8ZM19 8C19 7.44772 18.5523 7 18 7H10C9.44772 7 9 7.44772 9 8V20C9 20.5523 9.44772 21 10 21H18C18.5523 21 19 20.5523 19 20V8Z"));;
-    F.line = 19;
-    var fmtRes_2197815680 = mnewString(0);
-    F.line = 19;
-    fmtRes_2197815680.push.apply(fmtRes_2197815680, makeNimstrLit("M6 3H16C16.5523 3 17 2.55228 17 2C17 1.44772 16.5523 1 16 1H6C4.34315 1 3 2.34315 3 4V18C3 18.5523 3.44772 19 4 19C4.55228 19 5 18.5523 5 18V4C5 3.44772 5.44772 3 6 3Z"));;
-    F.line = 3043;
-    if (globalThis.alreadyExecutedHEX60gensym13_2197815685 === undefined) {
-      globalThis.alreadyExecutedHEX60gensym13_2197815685 = [false];
-    }
-    if (!(alreadyExecutedHEX60gensym13_2197815685[0])) {
-    F.line = 3045;
-    alreadyExecutedHEX60gensym13_2197815685[0] = true;
-    F.line = 20;
-    HEX5BHEX5DHEX3D_2164261376(componentEventHandlers_956304341[0], 1, HEX3Aanonymous_2197815723);
-    }
-    
-    F.line = 9;
-    var fmtRes_2197815832 = [mnewString(0)];
-    F.line = 9;
-    formatValue_620757154(fmtRes_2197815832, 0, style_2197815398(self_2197815402), []);
-    result_2197815403 = initTag_1560281217(makeNimstrLit("div"), [initTag_1560281125(makeNimstrLit("pre"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2197815412, NTI33554439)}, NTI2197815384)], 0), [initTag_1560281125(makeNimstrLit("code"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("id"), Field1: nimCopy(null, fmtRes_2197815420[0], NTI33554439)}, NTI2197815397), nimCopy(null, {Field0: makeNimstrLit("language"), Field1: nimCopy(null, (Temporary1 = val_2197815520(self_2197815402, "language"), Temporary1)[0][Temporary1[1]], NTI33554439)}, NTI2197815397), nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2197815528, NTI33554439)}, NTI2197815397)], 0), [initTag_1560281275(HEX24_2181038412(self_2197815402.source), true, [], false)], false), initTag_1560281125(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2197815626, NTI33554439)}, NTI2197815562)], 0), [initTag_1560281125(makeNimstrLit("svg"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("onclick"), Field1: nimCopy(null, fmtRes_2197815634[0], NTI33554439)}, NTI2197815575), nimCopy(null, {Field0: makeNimstrLit("width"), Field1: nimCopy(null, fmtRes_2197815639, NTI33554439)}, NTI2197815575), nimCopy(null, {Field0: makeNimstrLit("height"), Field1: nimCopy(null, fmtRes_2197815644, NTI33554439)}, NTI2197815575), nimCopy(null, {Field0: makeNimstrLit("viewBox"), Field1: nimCopy(null, fmtRes_2197815649, NTI33554439)}, NTI2197815575), nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2197815654, NTI33554439)}, NTI2197815575)], 0), [initTag_1560281125(makeNimstrLit("path"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("fill-rule"), Field1: nimCopy(null, fmtRes_2197815662, NTI33554439)}, NTI2197815616), nimCopy(null, {Field0: makeNimstrLit("clip-rule"), Field1: nimCopy(null, fmtRes_2197815667, NTI33554439)}, NTI2197815616), nimCopy(null, {Field0: makeNimstrLit("d"), Field1: nimCopy(null, fmtRes_2197815672, NTI33554439)}, NTI2197815616)], 0), [], false), initTag_1560281125(makeNimstrLit("path"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("d"), Field1: nimCopy(null, fmtRes_2197815680, NTI33554439)}, NTI2197815641)], 0), [], false), initTag_1560281217(makeNimstrLit("div"), [], true)], false)], false)], false), initTag_1560281217(makeNimstrLit("style"), [initTag_1560281275(fmtRes_2197815832[0], true, [], false)], false)], true);
+    self_2197815861.beforeUpdated(self_2197815861, null);
     F.line = 4;
-    self_2197815402.rendered(self_2197815402, null);
-    F.line = 9;
-    currentComponent_956305827[0] = nimCopy(null, [], NTI33554439);
+    result_2197815862 = renderTag_2197815401(self_2197815861);
+    F.line = 4;
+    add_1560281333(result_2197815862, [initTag_1560281217(makeNimstrLit("style"), [textTag_1560281322(style_2197815398(self_2197815861))], false)]);
+    F.line = 4;
+    rawEcho(HEX24_1560281833(result_2197815862));
+    F.line = 4;
+    self_2197815861.rendered(self_2197815861, null);
+    F.line = 4;
+    currentComponent_1023414691[0] = nimCopy(null, [], NTI33554439);
   framePtr = F.prev;
 
-  return result_2197815403;
+  return result_2197815862;
 
 }
 
@@ -17249,62 +17733,77 @@ function script_2248147015(self_2248147016) {
   
 }
 
+function renderTag_2248147020(self_2248147021) {
+  var result_2248147022 = null;
+
+  var F = {procname: "section.renderTag", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/components.nim", line: 0};
+  framePtr = F;
+    F.line = 9;
+    F.line = 8;
+    var fmtRes_2248147027 = [mnewString(0)];
+    F.line = 8;
+    fmtRes_2248147027[0].push.apply(fmtRes_2248147027[0], makeNimstrLit("flex flex-col items-center bg-["));;
+    F.line = 8;
+    formatValue_620757154(fmtRes_2248147027, 0, makeNimstrLit("#EFEFEF"), []);
+    F.line = 8;
+    fmtRes_2248147027[0].push.apply(fmtRes_2248147027[0], makeNimstrLit("] dark:bg-["));;
+    F.line = 8;
+    formatValue_620757154(fmtRes_2248147027, 0, makeNimstrLit("#1c172a"), []);
+    F.line = 8;
+    fmtRes_2248147027[0].push.apply(fmtRes_2248147027[0], makeNimstrLit("] w-full px-12 xl:px-96 py-24 text-3xl lg:text-lg xl:text-base"));;
+    result_2248147022 = initTag_1560281217(makeNimstrLit("div"), [initTag_1560281125(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2248147027[0], NTI33554439)}, NTI2248147000)], 0), [self_2248147021.slot], false)], true);
+  framePtr = F.prev;
+
+  return result_2248147022;
+
+}
+
 function style_2248147017(self_2248147018) {
   var result_2248147019 = [];
 
   var F = {procname: "section.style", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/components.nim", line: 0};
   framePtr = F;
+    F.line = 6;
+    result_2248147019 = nimCopy(null, [], NTI33554439);
   framePtr = F.prev;
 
   return result_2248147019;
 
 }
 
-function render_2248147020(self_2248147021) {
-  var result_2248147022 = null;
+function render_2248147047(self_2248147048) {
+  var result_2248147049 = null;
 
   var F = {procname: "section.render", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/components.nim", line: 0};
   framePtr = F;
-    F.line = 7;
-    currentComponentsList_956305833[0].push(self_2248147021);;
-    F.line = 7;
-    currentComponent_956305827[0] = nimCopy(null, self_2248147021.uniqCompId, NTI33554439);
-    F.line = 7;
-    script_2248147015(self_2248147021);
-    if ((self_2248147021.isCreated == false)) {
     F.line = 6;
-    self_2248147021.created(self_2248147021, null);
+    currentComponentsList_1023414697[0].push(self_2248147048);;
+    F.line = 6;
+    currentComponent_1023414691[0] = nimCopy(null, self_2248147048.uniqCompId, NTI33554439);
+    F.line = 6;
+    script_2248147015(self_2248147048);
+    if ((self_2248147048.isCreated == false)) {
+    F.line = 6;
+    self_2248147048.created(self_2248147048, null);
     F.line = 767;
-    self_2248147021.isCreated = true;
+    self_2248147048.isCreated = true;
     }
     
     F.line = 6;
-    self_2248147021.beforeUpdated(self_2248147021, null);
-    F.line = 7;
-    F.line = 8;
-    var fmtRes_2248147031 = [mnewString(0)];
-    F.line = 8;
-    fmtRes_2248147031[0].push.apply(fmtRes_2248147031[0], makeNimstrLit("flex flex-col items-center bg-["));;
-    F.line = 8;
-    formatValue_620757154(fmtRes_2248147031, 0, makeNimstrLit("#EFEFEF"), []);
-    F.line = 8;
-    fmtRes_2248147031[0].push.apply(fmtRes_2248147031[0], makeNimstrLit("] dark:bg-["));;
-    F.line = 8;
-    formatValue_620757154(fmtRes_2248147031, 0, makeNimstrLit("#1c172a"), []);
-    F.line = 8;
-    fmtRes_2248147031[0].push.apply(fmtRes_2248147031[0], makeNimstrLit("] w-full px-12 xl:px-96 py-24 text-3xl lg:text-lg xl:text-base"));;
-    F.line = 7;
-    var fmtRes_2248147047 = [mnewString(0)];
-    F.line = 7;
-    formatValue_620757154(fmtRes_2248147047, 0, style_2248147017(self_2248147021), []);
-    result_2248147022 = initTag_1560281217(makeNimstrLit("div"), [initTag_1560281125(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2248147031[0], NTI33554439)}, NTI2248147008)], 0), [self_2248147021.slot], false), initTag_1560281217(makeNimstrLit("style"), [initTag_1560281275(fmtRes_2248147047[0], true, [], false)], false)], true);
+    self_2248147048.beforeUpdated(self_2248147048, null);
     F.line = 6;
-    self_2248147021.rendered(self_2248147021, null);
-    F.line = 7;
-    currentComponent_956305827[0] = nimCopy(null, [], NTI33554439);
+    result_2248147049 = renderTag_2248147020(self_2248147048);
+    F.line = 6;
+    add_1560281333(result_2248147049, [initTag_1560281217(makeNimstrLit("style"), [textTag_1560281322(style_2248147017(self_2248147048))], false)]);
+    F.line = 6;
+    rawEcho(HEX24_1560281833(result_2248147049));
+    F.line = 6;
+    self_2248147048.rendered(self_2248147048, null);
+    F.line = 6;
+    currentComponent_1023414691[0] = nimCopy(null, [], NTI33554439);
   framePtr = F.prev;
 
-  return result_2248147022;
+  return result_2248147049;
 
 }
 
@@ -17316,33 +17815,33 @@ function script_2214592603(self_2214592604) {
   
 }
 
-function val_2214592838(self_2214592840, self_2214592840_Idx) {
-  var result_2214592841 = null;
-  var result_2214592841_Idx = 0;
+function val_2214592834(self_2214592836, self_2214592836_Idx) {
+  var result_2214592837 = null;
+  var result_2214592837_Idx = 0;
 
   var F = {procname: "val.val", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/state.nim", line: 0};
   framePtr = F;
     F.line = 61;
-    result_2214592841_Idx = [, self_2214592840[self_2214592840_Idx].value];
-    result_2214592841 = self_2214592840[self_2214592840_Idx].value;
-    result_2214592841[result_2214592841_Idx] = self_2214592840[self_2214592840_Idx].value;
+    result_2214592837_Idx = [, self_2214592836[self_2214592836_Idx].value];
+    result_2214592837 = self_2214592836[self_2214592836_Idx].value;
+    result_2214592837[result_2214592837_Idx] = self_2214592836[self_2214592836_Idx].value;
   framePtr = F.prev;
 
-  return [result_2214592841, result_2214592841_Idx];
+  return [result_2214592837, result_2214592837_Idx];
 
 }
 
-function valHEX3D_2231370216(self_2231370218, value_2231370219) {
+function valHEX3D_2231370205(self_2231370207, value_2231370208) {
       var Temporary1;
       var Temporary2;
 
   var F = {procname: "val=.val=", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/state.nim", line: 0};
   framePtr = F;
     F.line = 47;
-    self_2231370218.value = value_2231370219;
-      if (!!((application_956301361[0] == null))) Temporary2 = false; else {        Temporary2 = !((application_956301361[0].router == null));      }      if (!Temporary2) Temporary1 = false; else {        Temporary1 = enableRouting_1811939335[0];      }    if (Temporary1) {
+    self_2231370207.value = value_2231370208;
+      if (!!((application_1023410225[0] == null))) Temporary2 = false; else {        Temporary2 = !((application_1023410225[0].router == null));      }      if (!Temporary2) Temporary1 = false; else {        Temporary1 = enableRouting_1811939335[0];      }    if (Temporary1) {
     F.line = 49;
-    application_956301361[0].router(false);
+    application_1023410225[0].router(false);
     }
     
   framePtr = F.prev;
@@ -17350,17 +17849,17 @@ function valHEX3D_2231370216(self_2231370218, value_2231370219) {
   
 }
 
-function set_2231370211(self_2231370213, value_2231370214) {
+function set_2231370200(self_2231370202, value_2231370203) {
       var Temporary1;
       var Temporary2;
 
   var F = {procname: "set.set", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/state.nim", line: 0};
   framePtr = F;
     F.line = 197;
-    valHEX3D_2231370216(self_2231370213, value_2231370214);
-      if (!!((application_956301361[0] == null))) Temporary2 = false; else {        Temporary2 = !((application_956301361[0].router == null));      }      if (!Temporary2) Temporary1 = false; else {        Temporary1 = enableRouting_1811939335[0];      }    if (Temporary1) {
+    valHEX3D_2231370205(self_2231370202, value_2231370203);
+      if (!!((application_1023410225[0] == null))) Temporary2 = false; else {        Temporary2 = !((application_1023410225[0].router == null));      }      if (!Temporary2) Temporary1 = false; else {        Temporary1 = enableRouting_1811939335[0];      }    if (Temporary1) {
     F.line = 199;
-    application_956301361[0].router(false);
+    application_1023410225[0].router(false);
     }
     
   framePtr = F.prev;
@@ -17368,29 +17867,29 @@ function set_2231370211(self_2231370213, value_2231370214) {
   
 }
 
-function val_2231370207(self_2231370209) {
-  var result_2231370210 = false;
+function val_2231370196(self_2231370198) {
+  var result_2231370199 = false;
 
   var F = {procname: "val.val", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/state.nim", line: 0};
   framePtr = F;
     F.line = 64;
-    result_2231370210 = self_2231370209.value;
+    result_2231370199 = self_2231370198.value;
   framePtr = F.prev;
 
-  return result_2231370210;
+  return result_2231370199;
 
 }
 
-function not_2231370201(selfHEX60gensym4_2231370203) {
-  var result_2231370204 = false;
+function not_2231370190(selfHEX60gensym4_2231370192) {
+  var result_2231370193 = false;
 
   var F = {procname: "not.not", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/state.nim", line: 0};
   framePtr = F;
     F.line = 95;
-    result_2231370204 = !(val_2231370207(selfHEX60gensym4_2231370203));
+    result_2231370193 = !(val_2231370196(selfHEX60gensym4_2231370192));
   framePtr = F.prev;
 
-  return result_2231370204;
+  return result_2231370193;
 
 }
 
@@ -17401,41 +17900,41 @@ function toggle_2231369736(self_2231369737) {
     enableRouting_1811939335[0] = false;
     F.line = 51;
     F.line = 51;
-    var _res1_2231370184 = null;
+    var _res1_2231370173 = null;
     F.line = 51;
-    _res1_2231370184 = document.getElementById('drawerBack');
-    var drawerBack_2231370185 = _res1_2231370184;
+    _res1_2231370173 = document.getElementById('drawerBack');
+    var drawerBack_2231370174 = _res1_2231370173;
     F.line = 52;
     F.line = 52;
-    var _res2_2231370186 = null;
+    var _res2_2231370175 = null;
     F.line = 52;
-    _res2_2231370186 = document.getElementById('drawer');
-    var drawer_2231370187 = _res2_2231370186;
+    _res2_2231370175 = document.getElementById('drawer');
+    var drawer_2231370176 = _res2_2231370175;
     F.line = 53;
-    set_2231370211(self_2231369737.isOpen, not_2231370201(self_2231369737.isOpen));
+    set_2231370200(self_2231369737.isOpen, not_2231370190(self_2231369737.isOpen));
     if (toBool_1811939786(self_2231369737.isOpen)) {
     F.line = 55;
-    drawerBack_2231370185.classList.remove("opacity-0");
+    drawerBack_2231370174.classList.remove("opacity-0");
     F.line = 56;
-    drawerBack_2231370185.classList.add("opacity-100");
+    drawerBack_2231370174.classList.add("opacity-100");
     F.line = 57;
-    drawerBack_2231370185.classList.remove("pointer-events-none");
+    drawerBack_2231370174.classList.remove("pointer-events-none");
     F.line = 58;
-    drawer_2231370187.classList.remove("translate-x-full");
+    drawer_2231370176.classList.remove("translate-x-full");
     F.line = 59;
-    drawer_2231370187.classList.add("translate-x-0");
+    drawer_2231370176.classList.add("translate-x-0");
     }
     else {
       F.line = 61;
-      drawerBack_2231370185.classList.remove("opacity-100");
+      drawerBack_2231370174.classList.remove("opacity-100");
       F.line = 62;
-      drawerBack_2231370185.classList.add("opacity-0");
+      drawerBack_2231370174.classList.add("opacity-0");
       F.line = 63;
-      drawerBack_2231370185.classList.add("pointer-events-none");
+      drawerBack_2231370174.classList.add("pointer-events-none");
       F.line = 64;
-      drawer_2231370187.classList.remove("translate-x-0");
+      drawer_2231370176.classList.remove("translate-x-0");
       F.line = 65;
-      drawer_2231370187.classList.add("translate-x-full");
+      drawer_2231370176.classList.add("translate-x-full");
     }
     
     F.line = 66;
@@ -17447,74 +17946,63 @@ function toggle_2231369736(self_2231369737) {
   
 }
 
-function style_2214592605(self_2214592606) {
-  var result_2214592607 = [];
-
-  var F = {procname: "header.style", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/components.nim", line: 0};
-  framePtr = F;
-  framePtr = F.prev;
-
-  return result_2214592607;
-
-}
-
-function render_2214592608(self_2214592609) {
+function renderTag_2214592608(self_2214592609) {
     
-function HEX3Aanonymous_2214592683(self_2214592684, ev_2214592685) {
-      var F = {procname: "render.:anonymous", prev: framePtr, filename: "/home/runner/work/happyx/happyx/examples/website/src/components/header.nim", line: 0};
+function HEX3Aanonymous_2214592679(self_2214592680, ev_2214592681) {
+      var F = {procname: "renderTag.:anonymous", prev: framePtr, filename: "/home/runner/work/happyx/happyx/examples/website/src/components/header.nim", line: 0};
       framePtr = F;
         F.line = 707;
         F.line = 17;
-        var fmtRes_2214592690 = [mnewString(0)];
+        var fmtRes_2214592686 = [mnewString(0)];
         F.line = 17;
-        formatValue_620757154(fmtRes_2214592690, 0, self_2214592684.uniqCompId, []);
-        currentComponent_956305827[0] = nimCopy(null, fmtRes_2214592690[0], NTI33554439);
+        formatValue_620757154(fmtRes_2214592686, 0, self_2214592680.uniqCompId, []);
+        currentComponent_1023414691[0] = nimCopy(null, fmtRes_2214592686[0], NTI33554439);
         F.line = 18;
-        route_956306908("/");
+        route_1023415772("/");
         F.line = 17;
-        currentComponent_956305827[0] = nimCopy(null, [], NTI33554439);
+        currentComponent_1023414691[0] = nimCopy(null, [], NTI33554439);
       framePtr = F.prev;
 
       
     }
     
-function HEX3Aanonymous_2214592823(self_2214592824, ev_2214592825) {
+function HEX3Aanonymous_2214592819(self_2214592820, ev_2214592821) {
           var Temporary1;
         var Temporary2;
 
-      var F = {procname: "render.:anonymous", prev: framePtr, filename: "/home/runner/work/happyx/happyx/examples/website/src/components/header.nim", line: 0};
+      var F = {procname: "renderTag.:anonymous", prev: framePtr, filename: "/home/runner/work/happyx/happyx/examples/website/src/components/header.nim", line: 0};
       framePtr = F;
         F.line = 707;
         F.line = 22;
-        var fmtRes_2214592830 = [mnewString(0)];
+        var fmtRes_2214592826 = [mnewString(0)];
         F.line = 22;
-        formatValue_620757154(fmtRes_2214592830, 0, self_2214592824.uniqCompId, []);
-        currentComponent_956305827[0] = nimCopy(null, fmtRes_2214592830[0], NTI33554439);
+        formatValue_620757154(fmtRes_2214592826, 0, self_2214592820.uniqCompId, []);
+        currentComponent_1023414691[0] = nimCopy(null, fmtRes_2214592826[0], NTI33554439);
         F.line = 23;
         enableRouting_1811939335[0] = false;
           F.line = 24;
-          var _result_2214592857 = ((Temporary1 = val_2214592838(self_2214592824, "drawer"), Temporary1)[0][Temporary1[1]] == null);
-          if ((enableRouting_1811939335[0] && !((application_956301361[0] == null)))) {
+          var _result_2214592853 = ((Temporary1 = val_2214592834(self_2214592820, "drawer"), Temporary1)[0][Temporary1[1]] == null);
+          if ((enableRouting_1811939335[0] && !((application_1023410225[0] == null)))) {
           F.line = 24;
-          application_956301361[0].router(false);
+          application_1023410225[0].router(false);
           }
           
-        if (!(_result_2214592857)) {
+        if (!(_result_2214592853)) {
         F.line = 25;
-        toggle_2231369736((Temporary2 = val_2214592838(self_2214592824, "drawer"), Temporary2)[0][Temporary2[1]]);
+        toggle_2231369736((Temporary2 = val_2214592834(self_2214592820, "drawer"), Temporary2)[0][Temporary2[1]]);
         }
         
         F.line = 26;
         enableRouting_1811939335[0] = true;
         F.line = 22;
-        currentComponent_956305827[0] = nimCopy(null, [], NTI33554439);
+        currentComponent_1023414691[0] = nimCopy(null, [], NTI33554439);
       framePtr = F.prev;
 
       
     }
     
-function HEX3Aanonymous_2214592952() {
-      var F = {procname: "render.:anonymous", prev: framePtr, filename: "/home/runner/work/happyx/happyx/examples/website/src/components/header.nim", line: 0};
+function HEX3Aanonymous_2214592948() {
+      var F = {procname: "renderTag.:anonymous", prev: framePtr, filename: "/home/runner/work/happyx/happyx/examples/website/src/components/header.nim", line: 0};
       framePtr = F;
         F.line = 30;
         //js
@@ -17525,8 +18013,8 @@ function HEX3Aanonymous_2214592952() {
       
     }
     
-function HEX3Aanonymous_2214593037() {
-      var F = {procname: "render.:anonymous", prev: framePtr, filename: "/home/runner/work/happyx/happyx/examples/website/src/components/header.nim", line: 0};
+function HEX3Aanonymous_2214593033() {
+      var F = {procname: "renderTag.:anonymous", prev: framePtr, filename: "/home/runner/work/happyx/happyx/examples/website/src/components/header.nim", line: 0};
       framePtr = F;
         F.line = 45;
         //js
@@ -17537,11 +18025,11 @@ function HEX3Aanonymous_2214593037() {
       
     }
     
-function HEX3Aanonymous_2214593054() {
-      var F = {procname: "render.:anonymous", prev: framePtr, filename: "/home/runner/work/happyx/happyx/examples/website/src/components/header.nim", line: 0};
+function HEX3Aanonymous_2214593050() {
+      var F = {procname: "renderTag.:anonymous", prev: framePtr, filename: "/home/runner/work/happyx/happyx/examples/website/src/components/header.nim", line: 0};
       framePtr = F;
         F.line = 52;
-        route_956306908("/sponsors/");
+        route_1023415772("/sponsors/");
       framePtr = F.prev;
 
       
@@ -17549,194 +18037,220 @@ function HEX3Aanonymous_2214593054() {
 
   var result_2214592610 = null;
 
-  var F = {procname: "header.render", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/components.nim", line: 0};
+  var F = {procname: "header.renderTag", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/components.nim", line: 0};
   framePtr = F;
-    F.line = 13;
-    currentComponentsList_956305833[0].push(self_2214592609);;
-    F.line = 13;
-    currentComponent_956305827[0] = nimCopy(null, self_2214592609.uniqCompId, NTI33554439);
-    F.line = 13;
-    script_2214592603(self_2214592609);
-    if ((self_2214592609.isCreated == false)) {
-    F.line = 9;
-    self_2214592609.created(self_2214592609, null);
-    F.line = 767;
-    self_2214592609.isCreated = true;
-    }
-    
-    F.line = 9;
-    self_2214592609.beforeUpdated(self_2214592609, null);
-    F.line = 13;
+    F.line = 54;
     F.line = 14;
-    var fmtRes_2214592619 = mnewString(0);
+    var fmtRes_2214592615 = mnewString(0);
     F.line = 14;
-    fmtRes_2214592619.push.apply(fmtRes_2214592619, makeNimstrLit("flex justify-between items-center px-8 py-2 backdrop-blur-sm h-32 xl:h-fit"));;
+    fmtRes_2214592615.push.apply(fmtRes_2214592615, makeNimstrLit("flex justify-between items-center px-8 py-2 backdrop-blur-sm h-32 xl:h-fit"));;
     F.line = 17;
-    var fmtRes_2214592627 = [mnewString(0)];
+    var fmtRes_2214592623 = [mnewString(0)];
     F.line = 17;
-    fmtRes_2214592627[0].push.apply(fmtRes_2214592627[0], makeNimstrLit("callComponentEventHandler(\'"));;
+    fmtRes_2214592623[0].push.apply(fmtRes_2214592623[0], makeNimstrLit("callComponentEventHandler(\'"));;
     F.line = 17;
-    formatValue_620757154(fmtRes_2214592627, 0, self_2214592609.uniqCompId, []);
+    formatValue_620757154(fmtRes_2214592623, 0, self_2214592609.uniqCompId, []);
     F.line = 17;
-    fmtRes_2214592627[0].push.apply(fmtRes_2214592627[0], makeNimstrLit("\', 6, event)"));;
+    fmtRes_2214592623[0].push.apply(fmtRes_2214592623[0], makeNimstrLit("\', 6, event)"));;
     F.line = 16;
-    var fmtRes_2214592635 = mnewString(0);
+    var fmtRes_2214592631 = mnewString(0);
     F.line = 16;
-    fmtRes_2214592635.push.apply(fmtRes_2214592635, makeNimstrLit("/happyx/public/logo.svg"));;
+    fmtRes_2214592631.push.apply(fmtRes_2214592631, makeNimstrLit("/happyx/public/logo.svg"));;
     F.line = 16;
-    var fmtRes_2214592640 = mnewString(0);
+    var fmtRes_2214592636 = mnewString(0);
     F.line = 16;
-    fmtRes_2214592640.push.apply(fmtRes_2214592640, makeNimstrLit("h-24 md:h-16 xl:h-12 cursor-pointer select-none"));;
+    fmtRes_2214592636.push.apply(fmtRes_2214592636, makeNimstrLit("h-24 md:h-16 xl:h-12 cursor-pointer select-none"));;
     F.line = 3043;
-    if (globalThis.alreadyExecutedHEX60gensym4_2214592645 === undefined) {
-      globalThis.alreadyExecutedHEX60gensym4_2214592645 = [false];
+    if (globalThis.alreadyExecutedHEX60gensym4_2214592641 === undefined) {
+      globalThis.alreadyExecutedHEX60gensym4_2214592641 = [false];
     }
-    if (!(alreadyExecutedHEX60gensym4_2214592645[0])) {
+    if (!(alreadyExecutedHEX60gensym4_2214592641[0])) {
     F.line = 3045;
-    alreadyExecutedHEX60gensym4_2214592645[0] = true;
+    alreadyExecutedHEX60gensym4_2214592641[0] = true;
     F.line = 17;
-    HEX5BHEX5DHEX3D_2164261376(componentEventHandlers_956304341[0], 6, HEX3Aanonymous_2214592683);
+    HEX5BHEX5DHEX3D_2164261406(componentEventHandlers_1023413205[0], 6, HEX3Aanonymous_2214592679);
     }
     
     F.line = 22;
-    var fmtRes_2214592770 = [mnewString(0)];
+    var fmtRes_2214592766 = [mnewString(0)];
     F.line = 22;
-    fmtRes_2214592770[0].push.apply(fmtRes_2214592770[0], makeNimstrLit("callComponentEventHandler(\'"));;
+    fmtRes_2214592766[0].push.apply(fmtRes_2214592766[0], makeNimstrLit("callComponentEventHandler(\'"));;
     F.line = 22;
-    formatValue_620757154(fmtRes_2214592770, 0, self_2214592609.uniqCompId, []);
+    formatValue_620757154(fmtRes_2214592766, 0, self_2214592609.uniqCompId, []);
     F.line = 22;
-    fmtRes_2214592770[0].push.apply(fmtRes_2214592770[0], makeNimstrLit("\', 7, event)"));;
+    fmtRes_2214592766[0].push.apply(fmtRes_2214592766[0], makeNimstrLit("\', 7, event)"));;
     F.line = 20;
-    var fmtRes_2214592775 = mnewString(0);
+    var fmtRes_2214592771 = mnewString(0);
     F.line = 20;
-    fmtRes_2214592775.push.apply(fmtRes_2214592775, makeNimstrLit("flex xl:hidden text-8xl font-bold select-none cursor-pointer"));;
+    fmtRes_2214592771.push.apply(fmtRes_2214592771, makeNimstrLit("flex xl:hidden text-8xl font-bold select-none cursor-pointer"));;
     F.line = 21;
-    var fmtRes_2214592783 = mnewString(0);
+    var fmtRes_2214592779 = mnewString(0);
     F.line = 21;
-    fmtRes_2214592783.push.apply(fmtRes_2214592783, makeNimstrLit("\xE2\x89\xA1"));;
+    fmtRes_2214592779.push.apply(fmtRes_2214592779, makeNimstrLit("\xE2\x89\xA1"));;
     F.line = 3043;
-    if (globalThis.alreadyExecutedHEX60gensym9_2214592785 === undefined) {
-      globalThis.alreadyExecutedHEX60gensym9_2214592785 = [false];
+    if (globalThis.alreadyExecutedHEX60gensym9_2214592781 === undefined) {
+      globalThis.alreadyExecutedHEX60gensym9_2214592781 = [false];
     }
-    if (!(alreadyExecutedHEX60gensym9_2214592785[0])) {
+    if (!(alreadyExecutedHEX60gensym9_2214592781[0])) {
     F.line = 3045;
-    alreadyExecutedHEX60gensym9_2214592785[0] = true;
+    alreadyExecutedHEX60gensym9_2214592781[0] = true;
     F.line = 22;
-    HEX5BHEX5DHEX3D_2164261376(componentEventHandlers_956304341[0], 7, HEX3Aanonymous_2214592823);
+    HEX5BHEX5DHEX3D_2164261406(componentEventHandlers_1023413205[0], 7, HEX3Aanonymous_2214592819);
     }
     
     F.line = 27;
-    var fmtRes_2214592948 = mnewString(0);
+    var fmtRes_2214592944 = mnewString(0);
     F.line = 27;
-    fmtRes_2214592948.push.apply(fmtRes_2214592948, makeNimstrLit("hidden xl:flex gap-2 h-full"));;
+    fmtRes_2214592944.push.apply(fmtRes_2214592944, makeNimstrLit("hidden xl:flex gap-2 h-full"));;
     F.line = 28;
-    var _comp8101615_2214592953 = initButton_2164260933(makeNimstrLit("comp8101615"), false, HEX3Aanonymous_2214592952);
+    var _comp8101615_2214592949 = initButton_2164260971(makeNimstrLit("comp8101615"), false, HEX3Aanonymous_2214592948);
     F.line = 28;
-    var comp8101615_2214592954 = registerComponent_956306925("comp8101615", _comp8101615_2214592953);
+    var comp8101615_2214592950 = registerComponent_1023415789("comp8101615", _comp8101615_2214592949);
     F.line = 105;
     F.line = 34;
-    var fmtRes_2214592959 = mnewString(0);
+    var fmtRes_2214592955 = mnewString(0);
     F.line = 34;
-    fmtRes_2214592959.push.apply(fmtRes_2214592959, makeNimstrLit("flex items-center gap-4"));;
+    fmtRes_2214592955.push.apply(fmtRes_2214592955, makeNimstrLit("flex items-center gap-4"));;
     F.line = 36;
-    var fmtRes_2214592967 = mnewString(0);
+    var fmtRes_2214592963 = mnewString(0);
     F.line = 36;
-    fmtRes_2214592967.push.apply(fmtRes_2214592967, makeNimstrLit("98"));;
+    fmtRes_2214592963.push.apply(fmtRes_2214592963, makeNimstrLit("98"));;
     F.line = 36;
-    var fmtRes_2214592972 = mnewString(0);
+    var fmtRes_2214592968 = mnewString(0);
     F.line = 36;
-    fmtRes_2214592972.push.apply(fmtRes_2214592972, makeNimstrLit("96"));;
+    fmtRes_2214592968.push.apply(fmtRes_2214592968, makeNimstrLit("96"));;
     F.line = 36;
-    var fmtRes_2214592977 = mnewString(0);
+    var fmtRes_2214592973 = mnewString(0);
     F.line = 36;
-    fmtRes_2214592977.push.apply(fmtRes_2214592977, makeNimstrLit("0 0 98 96"));;
+    fmtRes_2214592973.push.apply(fmtRes_2214592973, makeNimstrLit("0 0 98 96"));;
     F.line = 36;
-    var fmtRes_2214592982 = mnewString(0);
+    var fmtRes_2214592978 = mnewString(0);
     F.line = 36;
-    fmtRes_2214592982.push.apply(fmtRes_2214592982, makeNimstrLit("http://www.w3.org/2000/svg"));;
+    fmtRes_2214592978.push.apply(fmtRes_2214592978, makeNimstrLit("http://www.w3.org/2000/svg"));;
     F.line = 37;
-    var fmtRes_2214592987 = [mnewString(0)];
+    var fmtRes_2214592983 = [mnewString(0)];
     F.line = 37;
-    fmtRes_2214592987[0].push.apply(fmtRes_2214592987[0], makeNimstrLit("h-6 w-6 fill-["));;
+    fmtRes_2214592983[0].push.apply(fmtRes_2214592983[0], makeNimstrLit("h-6 w-6 fill-["));;
     F.line = 37;
-    formatValue_620757154(fmtRes_2214592987, 0, makeNimstrLit("#FEFEFE"), []);
+    formatValue_620757154(fmtRes_2214592983, 0, makeNimstrLit("#FEFEFE"), []);
     F.line = 37;
-    fmtRes_2214592987[0].push.apply(fmtRes_2214592987[0], makeNimstrLit("] dark:fill-["));;
+    fmtRes_2214592983[0].push.apply(fmtRes_2214592983[0], makeNimstrLit("] dark:fill-["));;
     F.line = 37;
-    formatValue_620757154(fmtRes_2214592987, 0, makeNimstrLit("#181326"), []);
+    formatValue_620757154(fmtRes_2214592983, 0, makeNimstrLit("#181326"), []);
     F.line = 37;
-    fmtRes_2214592987[0].push.apply(fmtRes_2214592987[0], makeNimstrLit("]"));;
+    fmtRes_2214592983[0].push.apply(fmtRes_2214592983[0], makeNimstrLit("]"));;
     F.line = 40;
-    var fmtRes_2214592995 = mnewString(0);
+    var fmtRes_2214592991 = mnewString(0);
     F.line = 40;
-    fmtRes_2214592995.push.apply(fmtRes_2214592995, makeNimstrLit("M48.854 0C21.839 0 0 22 0 49.217c0 21.756 13.993 40.172 33.405 46.69 2.427.49 3.316-1.059 3.316-2.362 0-1.141-.08-5.052-.08-9.127-13.59 2.934-16.42-5.867-16.42-5.867-2.184-5.704-5.42-7.17-5.42-7.17-4.448-3.015.324-3.015.324-3.015 4.934.326 7.523 5.052 7.523 5.052 4.367 7.496 11.404 5.378 14.235 4.074.404-3.178 1.699-5.378 3.074-6.6-10.839-1.141-22.243-5.378-22.243-24.283 0-5.378 1.94-9.778 5.014-13.2-.485-1.222-2.184-6.275.486-13.038 0 0 4.125-1.304 13.426 5.052a46.97 46.97 0 0 1 12.214-1.63c4.125 0 8.33.571 12.213 1.63 9.302-6.356 13.427-5.052 13.427-5.052 2.67 6.763.97 11.816.485 13.038 3.155 3.422 5.015 7.822 5.015 13.2 0 18.905-11.404 23.06-22.324 24.283 1.78 1.548 3.316 4.481 3.316 9.126 0 6.6-.08 11.897-.08 13.526 0 1.304.89 2.853 3.316 2.364 19.412-6.52 33.405-24.935 33.405-46.691C97.707 22 75.788 0 48.854 0z"));;
+    fmtRes_2214592991.push.apply(fmtRes_2214592991, makeNimstrLit("M48.854 0C21.839 0 0 22 0 49.217c0 21.756 13.993 40.172 33.405 46.69 2.427.49 3.316-1.059 3.316-2.362 0-1.141-.08-5.052-.08-9.127-13.59 2.934-16.42-5.867-16.42-5.867-2.184-5.704-5.42-7.17-5.42-7.17-4.448-3.015.324-3.015.324-3.015 4.934.326 7.523 5.052 7.523 5.052 4.367 7.496 11.404 5.378 14.235 4.074.404-3.178 1.699-5.378 3.074-6.6-10.839-1.141-22.243-5.378-22.243-24.283 0-5.378 1.94-9.778 5.014-13.2-.485-1.222-2.184-6.275.486-13.038 0 0 4.125-1.304 13.426 5.052a46.97 46.97 0 0 1 12.214-1.63c4.125 0 8.33.571 12.213 1.63 9.302-6.356 13.427-5.052 13.427-5.052 2.67 6.763.97 11.816.485 13.038 3.155 3.422 5.015 7.822 5.015 13.2 0 18.905-11.404 23.06-22.324 24.283 1.78 1.548 3.316 4.481 3.316 9.126 0 6.6-.08 11.897-.08 13.526 0 1.304.89 2.853 3.316 2.364 19.412-6.52 33.405-24.935 33.405-46.691C97.707 22 75.788 0 48.854 0z"));;
     F.line = 42;
-    var fmtRes_2214593011 = mnewString(0);
+    var fmtRes_2214593007 = mnewString(0);
     F.line = 42;
-    fmtRes_2214593011.push.apply(fmtRes_2214593011, makeNimstrLit("Source code"));;
-    comp8101615_2214592954.slot = initTag_1560281217(makeNimstrLit("div"), [initTag_1560281125(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2214592959, NTI33554439)}, NTI2214592895)], 0), [initTag_1560281125(makeNimstrLit("svg"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("width"), Field1: nimCopy(null, fmtRes_2214592967, NTI33554439)}, NTI2214592907), nimCopy(null, {Field0: makeNimstrLit("height"), Field1: nimCopy(null, fmtRes_2214592972, NTI33554439)}, NTI2214592907), nimCopy(null, {Field0: makeNimstrLit("viewBox"), Field1: nimCopy(null, fmtRes_2214592977, NTI33554439)}, NTI2214592907), nimCopy(null, {Field0: makeNimstrLit("xmlns"), Field1: nimCopy(null, fmtRes_2214592982, NTI33554439)}, NTI2214592907), nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2214592987[0], NTI33554439)}, NTI2214592907)], 0), [initTag_1560281125(makeNimstrLit("path"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("d"), Field1: nimCopy(null, fmtRes_2214592995, NTI33554439)}, NTI2214592949)], 0), [], false)], false), initTag_1560281217(makeNimstrLit("p"), [initTag_1560281275(fmtRes_2214593011, true, [], false)], false)], false)], true);
+    fmtRes_2214593007.push.apply(fmtRes_2214593007, makeNimstrLit("Source code"));;
+    comp8101615_2214592950.slot = initTag_1560281217(makeNimstrLit("div"), [initTag_1560281125(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2214592955, NTI33554439)}, NTI2214592887)], 0), [initTag_1560281125(makeNimstrLit("svg"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("width"), Field1: nimCopy(null, fmtRes_2214592963, NTI33554439)}, NTI2214592899), nimCopy(null, {Field0: makeNimstrLit("height"), Field1: nimCopy(null, fmtRes_2214592968, NTI33554439)}, NTI2214592899), nimCopy(null, {Field0: makeNimstrLit("viewBox"), Field1: nimCopy(null, fmtRes_2214592973, NTI33554439)}, NTI2214592899), nimCopy(null, {Field0: makeNimstrLit("xmlns"), Field1: nimCopy(null, fmtRes_2214592978, NTI33554439)}, NTI2214592899), nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2214592983[0], NTI33554439)}, NTI2214592899)], 0), [initTag_1560281125(makeNimstrLit("path"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("d"), Field1: nimCopy(null, fmtRes_2214592991, NTI33554439)}, NTI2214592941)], 0), [], false)], false), initTag_1560281217(makeNimstrLit("p"), [initTag_1560281275(fmtRes_2214593007, true, [], false)], false)], false)], true);
     F.line = 707;
-    var data_comp8101615_2214593036 = render_956307321(comp8101615_2214592954);
+    var data_comp8101615_2214593032 = render_1023416185(comp8101615_2214592950);
     F.line = 707;
-    addArgIter_1560281652(data_comp8101615_2214593036, (makeNimstrLit("data-") || []).concat(comp8101615_2214592954.uniqCompId || []));
+    addArgIter_1560281652(data_comp8101615_2214593032, (makeNimstrLit("data-") || []).concat(comp8101615_2214592950.uniqCompId || []));
     F.line = 707;
-    window.addEventListener('beforeunload', data_comp8101615_2214593036.exited);
+    window.addEventListener('beforeunload', data_comp8101615_2214593032.exited);
     F.line = 707;
-    window.addEventListener('pagehide', data_comp8101615_2214593036.pageHide);
+    window.addEventListener('pagehide', data_comp8101615_2214593032.pageHide);
     F.line = 707;
-    window.addEventListener('pageshow', data_comp8101615_2214593036.pageShow);
+    window.addEventListener('pageshow', data_comp8101615_2214593032.pageShow);
     F.line = 43;
-    var _comp9111816_2214593038 = initButton_2164260933(makeNimstrLit("comp9111816"), false, HEX3Aanonymous_2214593037);
+    var _comp9111816_2214593034 = initButton_2164260971(makeNimstrLit("comp9111816"), false, HEX3Aanonymous_2214593033);
     F.line = 43;
-    var comp9111816_2214593039 = registerComponent_956306925("comp9111816", _comp9111816_2214593038);
+    var comp9111816_2214593035 = registerComponent_1023415789("comp9111816", _comp9111816_2214593034);
     F.line = 105;
     F.line = 49;
-    var fmtRes_2214593044 = mnewString(0);
+    var fmtRes_2214593040 = mnewString(0);
     F.line = 49;
-    fmtRes_2214593044.push.apply(fmtRes_2214593044, makeNimstrLit("\xF0\x9F\x93\x95 API Docs"));;
-    comp9111816_2214593039.slot = initTag_1560281217(makeNimstrLit("div"), [initTag_1560281275(fmtRes_2214593044, true, [], false)], true);
+    fmtRes_2214593040.push.apply(fmtRes_2214593040, makeNimstrLit("\xF0\x9F\x93\x95 API Docs"));;
+    comp9111816_2214593035.slot = initTag_1560281217(makeNimstrLit("div"), [initTag_1560281275(fmtRes_2214593040, true, [], false)], true);
     F.line = 707;
-    var data_comp9111816_2214593053 = render_956307321(comp9111816_2214593039);
+    var data_comp9111816_2214593049 = render_1023416185(comp9111816_2214593035);
     F.line = 707;
-    addArgIter_1560281652(data_comp9111816_2214593053, (makeNimstrLit("data-") || []).concat(comp9111816_2214593039.uniqCompId || []));
+    addArgIter_1560281652(data_comp9111816_2214593049, (makeNimstrLit("data-") || []).concat(comp9111816_2214593035.uniqCompId || []));
     F.line = 707;
-    window.addEventListener('beforeunload', data_comp9111816_2214593053.exited);
+    window.addEventListener('beforeunload', data_comp9111816_2214593049.exited);
     F.line = 707;
-    window.addEventListener('pagehide', data_comp9111816_2214593053.pageHide);
+    window.addEventListener('pagehide', data_comp9111816_2214593049.pageHide);
     F.line = 707;
-    window.addEventListener('pageshow', data_comp9111816_2214593053.pageShow);
+    window.addEventListener('pageshow', data_comp9111816_2214593049.pageShow);
     F.line = 50;
-    var _comp10122017_2214593055 = initButton_2164260933(makeNimstrLit("comp10122017"), false, HEX3Aanonymous_2214593054);
+    var _comp10122017_2214593051 = initButton_2164260971(makeNimstrLit("comp10122017"), false, HEX3Aanonymous_2214593050);
     F.line = 50;
-    var comp10122017_2214593056 = registerComponent_956306925("comp10122017", _comp10122017_2214593055);
+    var comp10122017_2214593052 = registerComponent_1023415789("comp10122017", _comp10122017_2214593051);
     F.line = 105;
     F.line = 54;
-    var fmtRes_2214593061 = mnewString(0);
+    var fmtRes_2214593057 = mnewString(0);
     F.line = 54;
-    fmtRes_2214593061.push.apply(fmtRes_2214593061, makeNimstrLit("\xF0\x9F\x94\xA5 Sponsors"));;
-    comp10122017_2214593056.slot = initTag_1560281217(makeNimstrLit("div"), [initTag_1560281275(fmtRes_2214593061, true, [], false)], true);
+    fmtRes_2214593057.push.apply(fmtRes_2214593057, makeNimstrLit("\xF0\x9F\x94\xA5 Sponsors"));;
+    comp10122017_2214593052.slot = initTag_1560281217(makeNimstrLit("div"), [initTag_1560281275(fmtRes_2214593057, true, [], false)], true);
     F.line = 707;
-    var data_comp10122017_2214593070 = render_956307321(comp10122017_2214593056);
+    var data_comp10122017_2214593066 = render_1023416185(comp10122017_2214593052);
     F.line = 707;
-    addArgIter_1560281652(data_comp10122017_2214593070, (makeNimstrLit("data-") || []).concat(comp10122017_2214593056.uniqCompId || []));
+    addArgIter_1560281652(data_comp10122017_2214593066, (makeNimstrLit("data-") || []).concat(comp10122017_2214593052.uniqCompId || []));
     F.line = 707;
-    window.addEventListener('beforeunload', data_comp10122017_2214593070.exited);
+    window.addEventListener('beforeunload', data_comp10122017_2214593066.exited);
     F.line = 707;
-    window.addEventListener('pagehide', data_comp10122017_2214593070.pageHide);
+    window.addEventListener('pagehide', data_comp10122017_2214593066.pageHide);
     F.line = 707;
-    window.addEventListener('pageshow', data_comp10122017_2214593070.pageShow);
-    F.line = 13;
-    var fmtRes_2214593091 = [mnewString(0)];
-    F.line = 13;
-    formatValue_620757154(fmtRes_2214593091, 0, style_2214592605(self_2214592609), []);
-    result_2214592610 = initTag_1560281217(makeNimstrLit("div"), [initTag_1560281125(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2214592619, NTI33554439)}, NTI2214592594)], 0), [initTag_1560281125(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("onclick"), Field1: nimCopy(null, fmtRes_2214592627[0], NTI33554439)}, NTI2214592607)], 0), [initTag_1560281125(makeNimstrLit("img"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("src"), Field1: nimCopy(null, fmtRes_2214592635, NTI33554439)}, NTI2214592621), nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2214592640, NTI33554439)}, NTI2214592621)], 0), [], false), initTag_1560281217(makeNimstrLit("div"), [], true)], false), initTag_1560281125(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("onclick"), Field1: nimCopy(null, fmtRes_2214592770[0], NTI33554439)}, NTI2214592734), nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2214592775, NTI33554439)}, NTI2214592734)], 0), [initTag_1560281275(fmtRes_2214592783, true, [], false), initTag_1560281217(makeNimstrLit("div"), [], true)], false), initTag_1560281125(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2214592948, NTI33554439)}, NTI2214592881)], 0), [data_comp8101615_2214593036, data_comp9111816_2214593053, data_comp10122017_2214593070], false)], false), initTag_1560281217(makeNimstrLit("style"), [initTag_1560281275(fmtRes_2214593091[0], true, [], false)], false)], true);
-    F.line = 9;
-    self_2214592609.rendered(self_2214592609, null);
-    F.line = 13;
-    currentComponent_956305827[0] = nimCopy(null, [], NTI33554439);
+    window.addEventListener('pageshow', data_comp10122017_2214593066.pageShow);
+    result_2214592610 = initTag_1560281217(makeNimstrLit("div"), [initTag_1560281125(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2214592615, NTI33554439)}, NTI2214592586)], 0), [initTag_1560281125(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("onclick"), Field1: nimCopy(null, fmtRes_2214592623[0], NTI33554439)}, NTI2214592599)], 0), [initTag_1560281125(makeNimstrLit("img"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("src"), Field1: nimCopy(null, fmtRes_2214592631, NTI33554439)}, NTI2214592613), nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2214592636, NTI33554439)}, NTI2214592613)], 0), [], false), initTag_1560281217(makeNimstrLit("div"), [], true)], false), initTag_1560281125(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("onclick"), Field1: nimCopy(null, fmtRes_2214592766[0], NTI33554439)}, NTI2214592726), nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2214592771, NTI33554439)}, NTI2214592726)], 0), [initTag_1560281275(fmtRes_2214592779, true, [], false), initTag_1560281217(makeNimstrLit("div"), [], true)], false), initTag_1560281125(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2214592944, NTI33554439)}, NTI2214592873)], 0), [data_comp8101615_2214593032, data_comp9111816_2214593049, data_comp10122017_2214593066], false)], false)], true);
   framePtr = F.prev;
 
   return result_2214592610;
+
+}
+
+function style_2214592605(self_2214592606) {
+  var result_2214592607 = [];
+
+  var F = {procname: "header.style", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/components.nim", line: 0};
+  framePtr = F;
+    F.line = 9;
+    result_2214592607 = nimCopy(null, [], NTI33554439);
+  framePtr = F.prev;
+
+  return result_2214592607;
+
+}
+
+function render_2214593094(self_2214593095) {
+  var result_2214593096 = null;
+
+  var F = {procname: "header.render", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/components.nim", line: 0};
+  framePtr = F;
+    F.line = 9;
+    currentComponentsList_1023414697[0].push(self_2214593095);;
+    F.line = 9;
+    currentComponent_1023414691[0] = nimCopy(null, self_2214593095.uniqCompId, NTI33554439);
+    F.line = 9;
+    script_2214592603(self_2214593095);
+    if ((self_2214593095.isCreated == false)) {
+    F.line = 9;
+    self_2214593095.created(self_2214593095, null);
+    F.line = 767;
+    self_2214593095.isCreated = true;
+    }
+    
+    F.line = 9;
+    self_2214593095.beforeUpdated(self_2214593095, null);
+    F.line = 9;
+    result_2214593096 = renderTag_2214592608(self_2214593095);
+    F.line = 9;
+    add_1560281333(result_2214593096, [initTag_1560281217(makeNimstrLit("style"), [textTag_1560281322(style_2214592605(self_2214593095))], false)]);
+    F.line = 9;
+    rawEcho(HEX24_1560281833(result_2214593096));
+    F.line = 9;
+    self_2214593095.rendered(self_2214593095, null);
+    F.line = 9;
+    currentComponent_1023414691[0] = nimCopy(null, [], NTI33554439);
+  framePtr = F.prev;
+
+  return result_2214593096;
 
 }
 
@@ -17748,39 +18262,28 @@ function script_2231369808(self_2231369809) {
   
 }
 
-function style_2231369810(self_2231369811) {
-  var result_2231369812 = [];
-
-  var F = {procname: "drawer.style", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/components.nim", line: 0};
-  framePtr = F;
-  framePtr = F.prev;
-
-  return result_2231369812;
-
-}
-
-function render_2231369813(self_2231369814) {
+function renderTag_2231369813(self_2231369814) {
     
-function HEX3Aanonymous_2231369893(self_2231369894, ev_2231369895) {
-      var F = {procname: "render.:anonymous", prev: framePtr, filename: "/home/runner/work/happyx/happyx/examples/website/src/components/drawer.nim", line: 0};
+function HEX3Aanonymous_2231369889(self_2231369890, ev_2231369891) {
+      var F = {procname: "renderTag.:anonymous", prev: framePtr, filename: "/home/runner/work/happyx/happyx/examples/website/src/components/drawer.nim", line: 0};
       framePtr = F;
         F.line = 707;
         F.line = 15;
-        var fmtRes_2231369900 = [mnewString(0)];
+        var fmtRes_2231369896 = [mnewString(0)];
         F.line = 15;
-        formatValue_620757154(fmtRes_2231369900, 0, self_2231369894.uniqCompId, []);
-        currentComponent_956305827[0] = nimCopy(null, fmtRes_2231369900[0], NTI33554439);
+        formatValue_620757154(fmtRes_2231369896, 0, self_2231369890.uniqCompId, []);
+        currentComponent_1023414691[0] = nimCopy(null, fmtRes_2231369896[0], NTI33554439);
         F.line = 16;
-        toggle_2231369736(self_2231369894);
+        toggle_2231369736(self_2231369890);
         F.line = 15;
-        currentComponent_956305827[0] = nimCopy(null, [], NTI33554439);
+        currentComponent_1023414691[0] = nimCopy(null, [], NTI33554439);
       framePtr = F.prev;
 
       
     }
     
-function HEX3Aanonymous_2231370000() {
-      var F = {procname: "render.:anonymous", prev: framePtr, filename: "/home/runner/work/happyx/happyx/examples/website/src/components/drawer.nim", line: 0};
+function HEX3Aanonymous_2231369996() {
+      var F = {procname: "renderTag.:anonymous", prev: framePtr, filename: "/home/runner/work/happyx/happyx/examples/website/src/components/drawer.nim", line: 0};
       framePtr = F;
         F.line = 21;
         //js
@@ -17791,8 +18294,8 @@ function HEX3Aanonymous_2231370000() {
       
     }
     
-function HEX3Aanonymous_2231370085() {
-      var F = {procname: "render.:anonymous", prev: framePtr, filename: "/home/runner/work/happyx/happyx/examples/website/src/components/drawer.nim", line: 0};
+function HEX3Aanonymous_2231370081() {
+      var F = {procname: "renderTag.:anonymous", prev: framePtr, filename: "/home/runner/work/happyx/happyx/examples/website/src/components/drawer.nim", line: 0};
       framePtr = F;
         F.line = 36;
         //js
@@ -17803,11 +18306,11 @@ function HEX3Aanonymous_2231370085() {
       
     }
     
-function HEX3Aanonymous_2231370102() {
-      var F = {procname: "render.:anonymous", prev: framePtr, filename: "/home/runner/work/happyx/happyx/examples/website/src/components/drawer.nim", line: 0};
+function HEX3Aanonymous_2231370098() {
+      var F = {procname: "renderTag.:anonymous", prev: framePtr, filename: "/home/runner/work/happyx/happyx/examples/website/src/components/drawer.nim", line: 0};
       framePtr = F;
         F.line = 43;
-        route_956306908("/sponsors/");
+        route_1023415772("/sponsors/");
       framePtr = F.prev;
 
       
@@ -17815,181 +18318,207 @@ function HEX3Aanonymous_2231370102() {
 
   var result_2231369815 = null;
 
-  var F = {procname: "drawer.render", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/components.nim", line: 0};
+  var F = {procname: "drawer.renderTag", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/components.nim", line: 0};
   framePtr = F;
-    F.line = 10;
-    currentComponentsList_956305833[0].push(self_2231369814);;
-    F.line = 10;
-    currentComponent_956305827[0] = nimCopy(null, self_2231369814.uniqCompId, NTI33554439);
-    F.line = 10;
-    script_2231369808(self_2231369814);
-    if ((self_2231369814.isCreated == false)) {
-    F.line = 7;
-    self_2231369814.created(self_2231369814, null);
-    F.line = 767;
-    self_2231369814.isCreated = true;
-    }
-    
-    F.line = 7;
-    self_2231369814.beforeUpdated(self_2231369814, null);
-    F.line = 10;
+    F.line = 45;
     F.line = 13;
     rawEcho(makeNimstrLit("2"));
     F.line = 15;
-    var fmtRes_2231369840 = [mnewString(0)];
+    var fmtRes_2231369836 = [mnewString(0)];
     F.line = 15;
-    fmtRes_2231369840[0].push.apply(fmtRes_2231369840[0], makeNimstrLit("callComponentEventHandler(\'"));;
+    fmtRes_2231369836[0].push.apply(fmtRes_2231369836[0], makeNimstrLit("callComponentEventHandler(\'"));;
     F.line = 15;
-    formatValue_620757154(fmtRes_2231369840, 0, self_2231369814.uniqCompId, []);
+    formatValue_620757154(fmtRes_2231369836, 0, self_2231369814.uniqCompId, []);
     F.line = 15;
-    fmtRes_2231369840[0].push.apply(fmtRes_2231369840[0], makeNimstrLit("\', 2, event)"));;
+    fmtRes_2231369836[0].push.apply(fmtRes_2231369836[0], makeNimstrLit("\', 2, event)"));;
     F.line = 14;
-    var fmtRes_2231369845 = mnewString(0);
+    var fmtRes_2231369841 = mnewString(0);
     F.line = 14;
-    fmtRes_2231369845.push.apply(fmtRes_2231369845, makeNimstrLit("drawerBack"));;
+    fmtRes_2231369841.push.apply(fmtRes_2231369841, makeNimstrLit("drawerBack"));;
     F.line = 14;
-    var fmtRes_2231369850 = mnewString(0);
+    var fmtRes_2231369846 = mnewString(0);
     F.line = 14;
-    fmtRes_2231369850.push.apply(fmtRes_2231369850, makeNimstrLit("fixed duration-500 opacity-0 pointer-events-none transition-all w-screen h-screen z-40 bg-[#00000060]"));;
+    fmtRes_2231369846.push.apply(fmtRes_2231369846, makeNimstrLit("fixed duration-500 opacity-0 pointer-events-none transition-all w-screen h-screen z-40 bg-[#00000060]"));;
     F.line = 3043;
-    if (globalThis.alreadyExecutedHEX60gensym3_2231369855 === undefined) {
-      globalThis.alreadyExecutedHEX60gensym3_2231369855 = [false];
+    if (globalThis.alreadyExecutedHEX60gensym3_2231369851 === undefined) {
+      globalThis.alreadyExecutedHEX60gensym3_2231369851 = [false];
     }
-    if (!(alreadyExecutedHEX60gensym3_2231369855[0])) {
+    if (!(alreadyExecutedHEX60gensym3_2231369851[0])) {
     F.line = 3045;
-    alreadyExecutedHEX60gensym3_2231369855[0] = true;
+    alreadyExecutedHEX60gensym3_2231369851[0] = true;
     F.line = 15;
-    HEX5BHEX5DHEX3D_2164261376(componentEventHandlers_956304341[0], 2, HEX3Aanonymous_2231369893);
+    HEX5BHEX5DHEX3D_2164261406(componentEventHandlers_1023413205[0], 2, HEX3Aanonymous_2231369889);
     }
     
     F.line = 17;
-    var fmtRes_2231369983 = mnewString(0);
+    var fmtRes_2231369979 = mnewString(0);
     F.line = 17;
-    fmtRes_2231369983.push.apply(fmtRes_2231369983, makeNimstrLit("drawer"));;
+    fmtRes_2231369979.push.apply(fmtRes_2231369979, makeNimstrLit("drawer"));;
     F.line = 17;
-    var fmtRes_2231369988 = [mnewString(0)];
+    var fmtRes_2231369984 = [mnewString(0)];
     F.line = 17;
-    fmtRes_2231369988[0].push.apply(fmtRes_2231369988[0], makeNimstrLit("fixed right-0 duration-500 transition-all w-2/3 translate-x-full h-screen z-50 bg-["));;
+    fmtRes_2231369984[0].push.apply(fmtRes_2231369984[0], makeNimstrLit("fixed right-0 duration-500 transition-all w-2/3 translate-x-full h-screen z-50 bg-["));;
     F.line = 17;
-    formatValue_620757154(fmtRes_2231369988, 0, makeNimstrLit("#EFEFEF"), []);
+    formatValue_620757154(fmtRes_2231369984, 0, makeNimstrLit("#EFEFEF"), []);
     F.line = 17;
-    fmtRes_2231369988[0].push.apply(fmtRes_2231369988[0], makeNimstrLit("] dark:bg-["));;
+    fmtRes_2231369984[0].push.apply(fmtRes_2231369984[0], makeNimstrLit("] dark:bg-["));;
     F.line = 17;
-    formatValue_620757154(fmtRes_2231369988, 0, makeNimstrLit("#1c172a"), []);
+    formatValue_620757154(fmtRes_2231369984, 0, makeNimstrLit("#1c172a"), []);
     F.line = 17;
-    fmtRes_2231369988[0].push.apply(fmtRes_2231369988[0], makeNimstrLit("]"));;
+    fmtRes_2231369984[0].push.apply(fmtRes_2231369984[0], makeNimstrLit("]"));;
     F.line = 18;
-    var fmtRes_2231369996 = mnewString(0);
+    var fmtRes_2231369992 = mnewString(0);
     F.line = 18;
-    fmtRes_2231369996.push.apply(fmtRes_2231369996, makeNimstrLit("w-full h-full flex flex-col gap-8 jusitfy-center items-center py-32 px-8"));;
+    fmtRes_2231369992.push.apply(fmtRes_2231369992, makeNimstrLit("w-full h-full flex flex-col gap-8 jusitfy-center items-center py-32 px-8"));;
     F.line = 19;
-    var _comp35610_2231370001 = initButton_2164260933(makeNimstrLit("comp35610"), false, HEX3Aanonymous_2231370000);
+    var _comp35610_2231369997 = initButton_2164260971(makeNimstrLit("comp35610"), false, HEX3Aanonymous_2231369996);
     F.line = 19;
-    var comp35610_2231370002 = registerComponent_956306925("comp35610", _comp35610_2231370001);
+    var comp35610_2231369998 = registerComponent_1023415789("comp35610", _comp35610_2231369997);
     F.line = 105;
     F.line = 25;
-    var fmtRes_2231370007 = mnewString(0);
+    var fmtRes_2231370003 = mnewString(0);
     F.line = 25;
-    fmtRes_2231370007.push.apply(fmtRes_2231370007, makeNimstrLit("flex items-center gap-4"));;
+    fmtRes_2231370003.push.apply(fmtRes_2231370003, makeNimstrLit("flex items-center gap-4"));;
     F.line = 27;
-    var fmtRes_2231370015 = mnewString(0);
+    var fmtRes_2231370011 = mnewString(0);
     F.line = 27;
-    fmtRes_2231370015.push.apply(fmtRes_2231370015, makeNimstrLit("98"));;
+    fmtRes_2231370011.push.apply(fmtRes_2231370011, makeNimstrLit("98"));;
     F.line = 27;
-    var fmtRes_2231370020 = mnewString(0);
+    var fmtRes_2231370016 = mnewString(0);
     F.line = 27;
-    fmtRes_2231370020.push.apply(fmtRes_2231370020, makeNimstrLit("96"));;
+    fmtRes_2231370016.push.apply(fmtRes_2231370016, makeNimstrLit("96"));;
     F.line = 27;
-    var fmtRes_2231370025 = mnewString(0);
+    var fmtRes_2231370021 = mnewString(0);
     F.line = 27;
-    fmtRes_2231370025.push.apply(fmtRes_2231370025, makeNimstrLit("0 0 98 96"));;
+    fmtRes_2231370021.push.apply(fmtRes_2231370021, makeNimstrLit("0 0 98 96"));;
     F.line = 27;
-    var fmtRes_2231370030 = mnewString(0);
+    var fmtRes_2231370026 = mnewString(0);
     F.line = 27;
-    fmtRes_2231370030.push.apply(fmtRes_2231370030, makeNimstrLit("http://www.w3.org/2000/svg"));;
+    fmtRes_2231370026.push.apply(fmtRes_2231370026, makeNimstrLit("http://www.w3.org/2000/svg"));;
     F.line = 28;
-    var fmtRes_2231370035 = [mnewString(0)];
+    var fmtRes_2231370031 = [mnewString(0)];
     F.line = 28;
-    fmtRes_2231370035[0].push.apply(fmtRes_2231370035[0], makeNimstrLit("h-6 w-6 fill-["));;
+    fmtRes_2231370031[0].push.apply(fmtRes_2231370031[0], makeNimstrLit("h-6 w-6 fill-["));;
     F.line = 28;
-    formatValue_620757154(fmtRes_2231370035, 0, makeNimstrLit("#FEFEFE"), []);
+    formatValue_620757154(fmtRes_2231370031, 0, makeNimstrLit("#FEFEFE"), []);
     F.line = 28;
-    fmtRes_2231370035[0].push.apply(fmtRes_2231370035[0], makeNimstrLit("] dark:fill-["));;
+    fmtRes_2231370031[0].push.apply(fmtRes_2231370031[0], makeNimstrLit("] dark:fill-["));;
     F.line = 28;
-    formatValue_620757154(fmtRes_2231370035, 0, makeNimstrLit("#181326"), []);
+    formatValue_620757154(fmtRes_2231370031, 0, makeNimstrLit("#181326"), []);
     F.line = 28;
-    fmtRes_2231370035[0].push.apply(fmtRes_2231370035[0], makeNimstrLit("]"));;
+    fmtRes_2231370031[0].push.apply(fmtRes_2231370031[0], makeNimstrLit("]"));;
     F.line = 31;
-    var fmtRes_2231370043 = mnewString(0);
+    var fmtRes_2231370039 = mnewString(0);
     F.line = 31;
-    fmtRes_2231370043.push.apply(fmtRes_2231370043, makeNimstrLit("M48.854 0C21.839 0 0 22 0 49.217c0 21.756 13.993 40.172 33.405 46.69 2.427.49 3.316-1.059 3.316-2.362 0-1.141-.08-5.052-.08-9.127-13.59 2.934-16.42-5.867-16.42-5.867-2.184-5.704-5.42-7.17-5.42-7.17-4.448-3.015.324-3.015.324-3.015 4.934.326 7.523 5.052 7.523 5.052 4.367 7.496 11.404 5.378 14.235 4.074.404-3.178 1.699-5.378 3.074-6.6-10.839-1.141-22.243-5.378-22.243-24.283 0-5.378 1.94-9.778 5.014-13.2-.485-1.222-2.184-6.275.486-13.038 0 0 4.125-1.304 13.426 5.052a46.97 46.97 0 0 1 12.214-1.63c4.125 0 8.33.571 12.213 1.63 9.302-6.356 13.427-5.052 13.427-5.052 2.67 6.763.97 11.816.485 13.038 3.155 3.422 5.015 7.822 5.015 13.2 0 18.905-11.404 23.06-22.324 24.283 1.78 1.548 3.316 4.481 3.316 9.126 0 6.6-.08 11.897-.08 13.526 0 1.304.89 2.853 3.316 2.364 19.412-6.52 33.405-24.935 33.405-46.691C97.707 22 75.788 0 48.854 0z"));;
+    fmtRes_2231370039.push.apply(fmtRes_2231370039, makeNimstrLit("M48.854 0C21.839 0 0 22 0 49.217c0 21.756 13.993 40.172 33.405 46.69 2.427.49 3.316-1.059 3.316-2.362 0-1.141-.08-5.052-.08-9.127-13.59 2.934-16.42-5.867-16.42-5.867-2.184-5.704-5.42-7.17-5.42-7.17-4.448-3.015.324-3.015.324-3.015 4.934.326 7.523 5.052 7.523 5.052 4.367 7.496 11.404 5.378 14.235 4.074.404-3.178 1.699-5.378 3.074-6.6-10.839-1.141-22.243-5.378-22.243-24.283 0-5.378 1.94-9.778 5.014-13.2-.485-1.222-2.184-6.275.486-13.038 0 0 4.125-1.304 13.426 5.052a46.97 46.97 0 0 1 12.214-1.63c4.125 0 8.33.571 12.213 1.63 9.302-6.356 13.427-5.052 13.427-5.052 2.67 6.763.97 11.816.485 13.038 3.155 3.422 5.015 7.822 5.015 13.2 0 18.905-11.404 23.06-22.324 24.283 1.78 1.548 3.316 4.481 3.316 9.126 0 6.6-.08 11.897-.08 13.526 0 1.304.89 2.853 3.316 2.364 19.412-6.52 33.405-24.935 33.405-46.691C97.707 22 75.788 0 48.854 0z"));;
     F.line = 33;
-    var fmtRes_2231370059 = mnewString(0);
+    var fmtRes_2231370055 = mnewString(0);
     F.line = 33;
-    fmtRes_2231370059.push.apply(fmtRes_2231370059, makeNimstrLit("Source code"));;
-    comp35610_2231370002.slot = initTag_1560281217(makeNimstrLit("div"), [initTag_1560281125(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2231370007, NTI33554439)}, NTI2231369984)], 0), [initTag_1560281125(makeNimstrLit("svg"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("width"), Field1: nimCopy(null, fmtRes_2231370015, NTI33554439)}, NTI2231369997), nimCopy(null, {Field0: makeNimstrLit("height"), Field1: nimCopy(null, fmtRes_2231370020, NTI33554439)}, NTI2231369997), nimCopy(null, {Field0: makeNimstrLit("viewBox"), Field1: nimCopy(null, fmtRes_2231370025, NTI33554439)}, NTI2231369997), nimCopy(null, {Field0: makeNimstrLit("xmlns"), Field1: nimCopy(null, fmtRes_2231370030, NTI33554439)}, NTI2231369997), nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2231370035[0], NTI33554439)}, NTI2231369997)], 0), [initTag_1560281125(makeNimstrLit("path"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("d"), Field1: nimCopy(null, fmtRes_2231370043, NTI33554439)}, NTI2231370038)], 0), [], false)], false), initTag_1560281217(makeNimstrLit("p"), [initTag_1560281275(fmtRes_2231370059, true, [], false)], false)], false)], true);
+    fmtRes_2231370055.push.apply(fmtRes_2231370055, makeNimstrLit("Source code"));;
+    comp35610_2231369998.slot = initTag_1560281217(makeNimstrLit("div"), [initTag_1560281125(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2231370003, NTI33554439)}, NTI2231369976)], 0), [initTag_1560281125(makeNimstrLit("svg"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("width"), Field1: nimCopy(null, fmtRes_2231370011, NTI33554439)}, NTI2231369989), nimCopy(null, {Field0: makeNimstrLit("height"), Field1: nimCopy(null, fmtRes_2231370016, NTI33554439)}, NTI2231369989), nimCopy(null, {Field0: makeNimstrLit("viewBox"), Field1: nimCopy(null, fmtRes_2231370021, NTI33554439)}, NTI2231369989), nimCopy(null, {Field0: makeNimstrLit("xmlns"), Field1: nimCopy(null, fmtRes_2231370026, NTI33554439)}, NTI2231369989), nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2231370031[0], NTI33554439)}, NTI2231369989)], 0), [initTag_1560281125(makeNimstrLit("path"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("d"), Field1: nimCopy(null, fmtRes_2231370039, NTI33554439)}, NTI2231370030)], 0), [], false)], false), initTag_1560281217(makeNimstrLit("p"), [initTag_1560281275(fmtRes_2231370055, true, [], false)], false)], false)], true);
     F.line = 707;
-    var data_comp35610_2231370084 = render_956307321(comp35610_2231370002);
+    var data_comp35610_2231370080 = render_1023416185(comp35610_2231369998);
     F.line = 707;
-    addArgIter_1560281652(data_comp35610_2231370084, (makeNimstrLit("data-") || []).concat(comp35610_2231370002.uniqCompId || []));
+    addArgIter_1560281652(data_comp35610_2231370080, (makeNimstrLit("data-") || []).concat(comp35610_2231369998.uniqCompId || []));
     F.line = 707;
-    window.addEventListener('beforeunload', data_comp35610_2231370084.exited);
+    window.addEventListener('beforeunload', data_comp35610_2231370080.exited);
     F.line = 707;
-    window.addEventListener('pagehide', data_comp35610_2231370084.pageHide);
+    window.addEventListener('pagehide', data_comp35610_2231370080.pageHide);
     F.line = 707;
-    window.addEventListener('pageshow', data_comp35610_2231370084.pageShow);
+    window.addEventListener('pageshow', data_comp35610_2231370080.pageShow);
     F.line = 34;
-    var _comp46811_2231370086 = initButton_2164260933(makeNimstrLit("comp46811"), false, HEX3Aanonymous_2231370085);
+    var _comp46811_2231370082 = initButton_2164260971(makeNimstrLit("comp46811"), false, HEX3Aanonymous_2231370081);
     F.line = 34;
-    var comp46811_2231370087 = registerComponent_956306925("comp46811", _comp46811_2231370086);
+    var comp46811_2231370083 = registerComponent_1023415789("comp46811", _comp46811_2231370082);
     F.line = 105;
     F.line = 40;
-    var fmtRes_2231370092 = mnewString(0);
+    var fmtRes_2231370088 = mnewString(0);
     F.line = 40;
-    fmtRes_2231370092.push.apply(fmtRes_2231370092, makeNimstrLit("\xF0\x9F\x93\x95 API Docs"));;
-    comp46811_2231370087.slot = initTag_1560281217(makeNimstrLit("div"), [initTag_1560281275(fmtRes_2231370092, true, [], false)], true);
+    fmtRes_2231370088.push.apply(fmtRes_2231370088, makeNimstrLit("\xF0\x9F\x93\x95 API Docs"));;
+    comp46811_2231370083.slot = initTag_1560281217(makeNimstrLit("div"), [initTag_1560281275(fmtRes_2231370088, true, [], false)], true);
     F.line = 707;
-    var data_comp46811_2231370101 = render_956307321(comp46811_2231370087);
+    var data_comp46811_2231370097 = render_1023416185(comp46811_2231370083);
     F.line = 707;
-    addArgIter_1560281652(data_comp46811_2231370101, (makeNimstrLit("data-") || []).concat(comp46811_2231370087.uniqCompId || []));
+    addArgIter_1560281652(data_comp46811_2231370097, (makeNimstrLit("data-") || []).concat(comp46811_2231370083.uniqCompId || []));
     F.line = 707;
-    window.addEventListener('beforeunload', data_comp46811_2231370101.exited);
+    window.addEventListener('beforeunload', data_comp46811_2231370097.exited);
     F.line = 707;
-    window.addEventListener('pagehide', data_comp46811_2231370101.pageHide);
+    window.addEventListener('pagehide', data_comp46811_2231370097.pageHide);
     F.line = 707;
-    window.addEventListener('pageshow', data_comp46811_2231370101.pageShow);
+    window.addEventListener('pageshow', data_comp46811_2231370097.pageShow);
     F.line = 41;
-    var _comp571012_2231370103 = initButton_2164260933(makeNimstrLit("comp571012"), false, HEX3Aanonymous_2231370102);
+    var _comp571012_2231370099 = initButton_2164260971(makeNimstrLit("comp571012"), false, HEX3Aanonymous_2231370098);
     F.line = 41;
-    var comp571012_2231370104 = registerComponent_956306925("comp571012", _comp571012_2231370103);
+    var comp571012_2231370100 = registerComponent_1023415789("comp571012", _comp571012_2231370099);
     F.line = 105;
     F.line = 45;
-    var fmtRes_2231370109 = mnewString(0);
+    var fmtRes_2231370105 = mnewString(0);
     F.line = 45;
-    fmtRes_2231370109.push.apply(fmtRes_2231370109, makeNimstrLit("\xF0\x9F\x94\xA5 Sponsors"));;
-    comp571012_2231370104.slot = initTag_1560281217(makeNimstrLit("div"), [initTag_1560281275(fmtRes_2231370109, true, [], false)], true);
+    fmtRes_2231370105.push.apply(fmtRes_2231370105, makeNimstrLit("\xF0\x9F\x94\xA5 Sponsors"));;
+    comp571012_2231370100.slot = initTag_1560281217(makeNimstrLit("div"), [initTag_1560281275(fmtRes_2231370105, true, [], false)], true);
     F.line = 707;
-    var data_comp571012_2231370118 = render_956307321(comp571012_2231370104);
+    var data_comp571012_2231370114 = render_1023416185(comp571012_2231370100);
     F.line = 707;
-    addArgIter_1560281652(data_comp571012_2231370118, (makeNimstrLit("data-") || []).concat(comp571012_2231370104.uniqCompId || []));
+    addArgIter_1560281652(data_comp571012_2231370114, (makeNimstrLit("data-") || []).concat(comp571012_2231370100.uniqCompId || []));
     F.line = 707;
-    window.addEventListener('beforeunload', data_comp571012_2231370118.exited);
+    window.addEventListener('beforeunload', data_comp571012_2231370114.exited);
     F.line = 707;
-    window.addEventListener('pagehide', data_comp571012_2231370118.pageHide);
+    window.addEventListener('pagehide', data_comp571012_2231370114.pageHide);
     F.line = 707;
-    window.addEventListener('pageshow', data_comp571012_2231370118.pageShow);
-    F.line = 10;
-    var fmtRes_2231370139 = [mnewString(0)];
-    F.line = 10;
-    formatValue_620757154(fmtRes_2231370139, 0, style_2231369810(self_2231369814), []);
-    result_2231369815 = initTag_1560281217(makeNimstrLit("div"), [initTag_1560281217(makeNimstrLit("div"), [], true), initTag_1560281125(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("onclick"), Field1: nimCopy(null, fmtRes_2231369840[0], NTI33554439)}, NTI2231369820), nimCopy(null, {Field0: makeNimstrLit("id"), Field1: nimCopy(null, fmtRes_2231369845, NTI33554439)}, NTI2231369820), nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2231369850, NTI33554439)}, NTI2231369820)], 0), [initTag_1560281217(makeNimstrLit("div"), [], true)], false), initTag_1560281125(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("id"), Field1: nimCopy(null, fmtRes_2231369983, NTI33554439)}, NTI2231369947), nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2231369988[0], NTI33554439)}, NTI2231369947)], 0), [initTag_1560281125(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2231369996, NTI33554439)}, NTI2231369969)], 0), [data_comp35610_2231370084, data_comp46811_2231370101, data_comp571012_2231370118], false)], false), initTag_1560281217(makeNimstrLit("style"), [initTag_1560281275(fmtRes_2231370139[0], true, [], false)], false)], true);
-    F.line = 7;
-    self_2231369814.rendered(self_2231369814, null);
-    F.line = 10;
-    currentComponent_956305827[0] = nimCopy(null, [], NTI33554439);
+    window.addEventListener('pageshow', data_comp571012_2231370114.pageShow);
+    result_2231369815 = initTag_1560281217(makeNimstrLit("div"), [initTag_1560281217(makeNimstrLit("div"), [], true), initTag_1560281125(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("onclick"), Field1: nimCopy(null, fmtRes_2231369836[0], NTI33554439)}, NTI2231369812), nimCopy(null, {Field0: makeNimstrLit("id"), Field1: nimCopy(null, fmtRes_2231369841, NTI33554439)}, NTI2231369812), nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2231369846, NTI33554439)}, NTI2231369812)], 0), [initTag_1560281217(makeNimstrLit("div"), [], true)], false), initTag_1560281125(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("id"), Field1: nimCopy(null, fmtRes_2231369979, NTI33554439)}, NTI2231369939), nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2231369984[0], NTI33554439)}, NTI2231369939)], 0), [initTag_1560281125(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2231369992, NTI33554439)}, NTI2231369961)], 0), [data_comp35610_2231370080, data_comp46811_2231370097, data_comp571012_2231370114], false)], false)], true);
   framePtr = F.prev;
 
   return result_2231369815;
+
+}
+
+function style_2231369810(self_2231369811) {
+  var result_2231369812 = [];
+
+  var F = {procname: "drawer.style", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/components.nim", line: 0};
+  framePtr = F;
+    F.line = 7;
+    result_2231369812 = nimCopy(null, [], NTI33554439);
+  framePtr = F.prev;
+
+  return result_2231369812;
+
+}
+
+function render_2231370150(self_2231370151) {
+  var result_2231370152 = null;
+
+  var F = {procname: "drawer.render", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/components.nim", line: 0};
+  framePtr = F;
+    F.line = 7;
+    currentComponentsList_1023414697[0].push(self_2231370151);;
+    F.line = 7;
+    currentComponent_1023414691[0] = nimCopy(null, self_2231370151.uniqCompId, NTI33554439);
+    F.line = 7;
+    script_2231369808(self_2231370151);
+    if ((self_2231370151.isCreated == false)) {
+    F.line = 7;
+    self_2231370151.created(self_2231370151, null);
+    F.line = 767;
+    self_2231370151.isCreated = true;
+    }
+    
+    F.line = 7;
+    self_2231370151.beforeUpdated(self_2231370151, null);
+    F.line = 7;
+    result_2231370152 = renderTag_2231369813(self_2231370151);
+    F.line = 7;
+    add_1560281333(result_2231370152, [initTag_1560281217(makeNimstrLit("style"), [textTag_1560281322(style_2231369810(self_2231370151))], false)]);
+    F.line = 7;
+    rawEcho(HEX24_1560281833(result_2231370152));
+    F.line = 7;
+    self_2231370151.rendered(self_2231370151, null);
+    F.line = 7;
+    currentComponent_1023414691[0] = nimCopy(null, [], NTI33554439);
+  framePtr = F.prev;
+
+  return result_2231370152;
 
 }
 
@@ -18001,66 +18530,81 @@ function script_2264924231(self_2264924232) {
   
 }
 
+function renderTag_2264924236(self_2264924237) {
+  var result_2264924238 = null;
+
+  var F = {procname: "smart_card.renderTag", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/components.nim", line: 0};
+  framePtr = F;
+    F.line = 11;
+    F.line = 9;
+    var fmtRes_2264924243 = [mnewString(0)];
+    F.line = 9;
+    fmtRes_2264924243[0].push.apply(fmtRes_2264924243[0], makeNimstrLit("flex justify-center items-center gap-12 w-fit drop-shadow-2xl rounded-md bg-gradient-to-r bg-["));;
+    F.line = 9;
+    formatValue_620757154(fmtRes_2264924243, 0, makeNimstrLit("#FEFEFE"), []);
+    F.line = 9;
+    fmtRes_2264924243[0].push.apply(fmtRes_2264924243[0], makeNimstrLit("] dark:from-["));;
+    F.line = 9;
+    formatValue_620757154(fmtRes_2264924243, 0, makeNimstrLit("#181326"), []);
+    F.line = 9;
+    fmtRes_2264924243[0].push.apply(fmtRes_2264924243[0], makeNimstrLit("] dark:to-["));;
+    F.line = 9;
+    formatValue_620757154(fmtRes_2264924243, 0, makeNimstrLit("#1c172a"), []);
+    F.line = 9;
+    fmtRes_2264924243[0].push.apply(fmtRes_2264924243[0], makeNimstrLit("] text-3xl md:text-2xl lg:text-xl xl:text-base px-8 py-4"));;
+    result_2264924238 = initTag_1560281217(makeNimstrLit("div"), [initTag_1560281125(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2264924243[0], NTI33554439)}, NTI2264924216)], 0), [self_2264924237.slot], false)], true);
+  framePtr = F.prev;
+
+  return result_2264924238;
+
+}
+
 function style_2264924233(self_2264924234) {
   var result_2264924235 = [];
 
   var F = {procname: "smart_card.style", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/components.nim", line: 0};
   framePtr = F;
+    F.line = 6;
+    result_2264924235 = nimCopy(null, [], NTI33554439);
   framePtr = F.prev;
 
   return result_2264924235;
 
 }
 
-function render_2264924236(self_2264924237) {
-  var result_2264924238 = null;
+function render_2264924263(self_2264924264) {
+  var result_2264924265 = null;
 
   var F = {procname: "smart_card.render", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/components.nim", line: 0};
   framePtr = F;
-    F.line = 7;
-    currentComponentsList_956305833[0].push(self_2264924237);;
-    F.line = 7;
-    currentComponent_956305827[0] = nimCopy(null, self_2264924237.uniqCompId, NTI33554439);
-    F.line = 7;
-    script_2264924231(self_2264924237);
-    if ((self_2264924237.isCreated == false)) {
     F.line = 6;
-    self_2264924237.created(self_2264924237, null);
+    currentComponentsList_1023414697[0].push(self_2264924264);;
+    F.line = 6;
+    currentComponent_1023414691[0] = nimCopy(null, self_2264924264.uniqCompId, NTI33554439);
+    F.line = 6;
+    script_2264924231(self_2264924264);
+    if ((self_2264924264.isCreated == false)) {
+    F.line = 6;
+    self_2264924264.created(self_2264924264, null);
     F.line = 767;
-    self_2264924237.isCreated = true;
+    self_2264924264.isCreated = true;
     }
     
     F.line = 6;
-    self_2264924237.beforeUpdated(self_2264924237, null);
-    F.line = 7;
-    F.line = 9;
-    var fmtRes_2264924247 = [mnewString(0)];
-    F.line = 9;
-    fmtRes_2264924247[0].push.apply(fmtRes_2264924247[0], makeNimstrLit("flex justify-center items-center gap-12 w-fit drop-shadow-2xl rounded-md bg-gradient-to-r bg-["));;
-    F.line = 9;
-    formatValue_620757154(fmtRes_2264924247, 0, makeNimstrLit("#FEFEFE"), []);
-    F.line = 9;
-    fmtRes_2264924247[0].push.apply(fmtRes_2264924247[0], makeNimstrLit("] dark:from-["));;
-    F.line = 9;
-    formatValue_620757154(fmtRes_2264924247, 0, makeNimstrLit("#181326"), []);
-    F.line = 9;
-    fmtRes_2264924247[0].push.apply(fmtRes_2264924247[0], makeNimstrLit("] dark:to-["));;
-    F.line = 9;
-    formatValue_620757154(fmtRes_2264924247, 0, makeNimstrLit("#1c172a"), []);
-    F.line = 9;
-    fmtRes_2264924247[0].push.apply(fmtRes_2264924247[0], makeNimstrLit("] text-3xl md:text-2xl lg:text-xl xl:text-base px-8 py-4"));;
-    F.line = 7;
-    var fmtRes_2264924263 = [mnewString(0)];
-    F.line = 7;
-    formatValue_620757154(fmtRes_2264924263, 0, style_2264924233(self_2264924237), []);
-    result_2264924238 = initTag_1560281217(makeNimstrLit("div"), [initTag_1560281125(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2264924247[0], NTI33554439)}, NTI2264924224)], 0), [self_2264924237.slot], false), initTag_1560281217(makeNimstrLit("style"), [initTag_1560281275(fmtRes_2264924263[0], true, [], false)], false)], true);
+    self_2264924264.beforeUpdated(self_2264924264, null);
     F.line = 6;
-    self_2264924237.rendered(self_2264924237, null);
-    F.line = 7;
-    currentComponent_956305827[0] = nimCopy(null, [], NTI33554439);
+    result_2264924265 = renderTag_2264924236(self_2264924264);
+    F.line = 6;
+    add_1560281333(result_2264924265, [initTag_1560281217(makeNimstrLit("style"), [textTag_1560281322(style_2264924233(self_2264924264))], false)]);
+    F.line = 6;
+    rawEcho(HEX24_1560281833(result_2264924265));
+    F.line = 6;
+    self_2264924264.rendered(self_2264924264, null);
+    F.line = 6;
+    currentComponent_1023414691[0] = nimCopy(null, [], NTI33554439);
   framePtr = F.prev;
 
-  return result_2264924238;
+  return result_2264924265;
 
 }
 
@@ -18072,54 +18616,54 @@ function script_2315255930(self_2315255931) {
   
 }
 
-function newSeq_2281701684(len_2281701686) {
-  var result_2281701687 = [];
+function newSeq_2281701680(len_2281701682) {
+  var result_2281701683 = [];
 
   var F = {procname: "newSeq.newSeq", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/system.nim", line: 0};
   framePtr = F;
     F.line = 680;
-    result_2281701687 = new Array(len_2281701686); for (var i = 0 ; i < len_2281701686 ; ++i) { result_2281701687[i] = null; }  framePtr = F.prev;
+    result_2281701683 = new Array(len_2281701682); for (var i = 0 ; i < len_2281701682 ; ++i) { result_2281701683[i] = null; }  framePtr = F.prev;
 
-  return result_2281701687;
+  return result_2281701683;
 
 }
 
-function val_2315255957(self_2315255959) {
-  var result_2315255960 = [];
+function val_2315255953(self_2315255955) {
+  var result_2315255956 = [];
 
   var F = {procname: "val.val", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/state.nim", line: 0};
   framePtr = F;
     F.line = 64;
-    result_2315255960 = nimCopy(null, self_2315255959.value, NTI2315255815);
+    result_2315255956 = nimCopy(null, self_2315255955.value, NTI2315255815);
   framePtr = F.prev;
 
-  return result_2315255960;
+  return result_2315255956;
 
 }
 
-function val_2315256089(self_2315256091) {
-  var result_2315256092 = 0;
+function val_2315256085(self_2315256087) {
+  var result_2315256088 = 0;
 
   var F = {procname: "val.val", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/state.nim", line: 0};
   framePtr = F;
     F.line = 64;
-    result_2315256092 = self_2315256091.value;
+    result_2315256088 = self_2315256087.value;
   framePtr = F.prev;
 
-  return result_2315256092;
+  return result_2315256088;
 
 }
 
-function HEX3DHEX3D_2315256082(selfHEX60gensym0_2315256084, otherHEX60gensym0_2315256085) {
-  var result_2315256086 = false;
+function HEX3DHEX3D_2315256078(selfHEX60gensym0_2315256080, otherHEX60gensym0_2315256081) {
+  var result_2315256082 = false;
 
   var F = {procname: "==.==", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/state.nim", line: 0};
   framePtr = F;
     F.line = 88;
-    result_2315256086 = (val_2315256089(selfHEX60gensym0_2315256084) == val_2315256089(otherHEX60gensym0_2315256085));
+    result_2315256082 = (val_2315256085(selfHEX60gensym0_2315256080) == val_2315256085(otherHEX60gensym0_2315256081));
   framePtr = F.prev;
 
-  return result_2315256086;
+  return result_2315256082;
 
 }
 
@@ -18227,20 +18771,20 @@ function formatInt_1560281798(n_1560281800, radix_1560281801, spec_1560281802) {
         F.line = 392;
         var idx_1560281815 = 0;
         F.line = 117;
-        var colontmp__452986373 = 0;
+        var colontmp__452986409 = 0;
         F.line = 392;
-        colontmp__452986373 = divInt((result_1560281803).length, 2);
+        colontmp__452986409 = divInt((result_1560281803).length, 2);
         F.line = 119;
-        var i_452986374 = 0;
+        var i_452986410 = 0;
         Label5: do {
           F.line = 120;
             Label6: while (true) {
-            if (!(i_452986374 < colontmp__452986373)) break Label6;
+            if (!(i_452986410 < colontmp__452986409)) break Label6;
               F.line = 392;
-              idx_1560281815 = i_452986374;
+              idx_1560281815 = i_452986410;
               F.line = 392;
               var Temporary7 = result_1560281803[chckIndx(idx_1560281815, 0, (result_1560281803).length - 1)]; result_1560281803[chckIndx(idx_1560281815, 0, (result_1560281803).length - 1)] = result_1560281803[chckIndx(subInt(subInt((result_1560281803).length, idx_1560281815), 1), 0, (result_1560281803).length - 1)]; result_1560281803[chckIndx(subInt(subInt((result_1560281803).length, idx_1560281815), 1), 0, (result_1560281803).length - 1)] = Temporary7;              F.line = 122;
-              i_452986374 = addInt(i_452986374, 1);
+              i_452986410 = addInt(i_452986410, 1);
             }
         } while (false);
       } while (false);
@@ -18277,21 +18821,21 @@ function formatInt_1560281798(n_1560281800, radix_1560281801, spec_1560281802) {
       F.line = 408;
       var i_1560281829 = 0;
       F.line = 117;
-      var colontmp__452986377 = 0;
+      var colontmp__452986413 = 0;
       F.line = 408;
-      colontmp__452986377 = (result_1560281803).length;
+      colontmp__452986413 = (result_1560281803).length;
       F.line = 119;
-      var i_452986378 = colontmp__452986377;
+      var i_452986414 = colontmp__452986413;
       Label10: do {
         F.line = 120;
           Label11: while (true) {
-          if (!(i_452986378 < spec_1560281802.minimumWidth)) break Label11;
+          if (!(i_452986414 < spec_1560281802.minimumWidth)) break Label11;
             F.line = 408;
-            i_1560281829 = i_452986378;
+            i_1560281829 = i_452986414;
             F.line = 408;
             addChar(result_1560281803, spec_1560281802.fill);;
             F.line = 122;
-            i_452986378 = addInt(i_452986378, 1);
+            i_452986414 = addInt(i_452986414, 1);
           }
       } while (false);
     } while (false);
@@ -18454,24 +18998,24 @@ function nsuformatBiggestFloat(f_637536121, format_637536122, precision_63753612
       F.line = 2362;
       var i_637536132 = 0;
       F.line = 117;
-      var colontmp__452986381 = 0;
+      var colontmp__452986417 = 0;
       F.line = 2362;
-      colontmp__452986381 = (result_637536125).length;
+      colontmp__452986417 = (result_637536125).length;
       F.line = 119;
-      var i_452986382 = 0;
+      var i_452986418 = 0;
       Label2: do {
         F.line = 120;
           Label3: while (true) {
-          if (!(i_452986382 < colontmp__452986381)) break Label3;
+          if (!(i_452986418 < colontmp__452986417)) break Label3;
             F.line = 2362;
-            i_637536132 = i_452986382;
+            i_637536132 = i_452986418;
             if ((ConstSet15[result_637536125[chckIndx(i_637536132, 0, (result_637536125).length - 1)]] != undefined)) {
             F.line = 2365;
             result_637536125[chckIndx(i_637536132, 0, (result_637536125).length - 1)] = decimalSep_637536124;
             }
             
             F.line = 122;
-            i_452986382 = addInt(i_452986382, 1);
+            i_452986418 = addInt(i_452986418, 1);
           }
       } while (false);
     } while (false);
@@ -18548,21 +19092,21 @@ function nsuToUpperAsciiStr(s_637534302) {
       F.line = 209;
       var iHEX60gensym11_637534309 = 0;
       F.line = 75;
-      var colontmp__452986387 = 0;
+      var colontmp__452986423 = 0;
       F.line = 209;
-      colontmp__452986387 = subInt((s_637534302).length, 1);
+      colontmp__452986423 = subInt((s_637534302).length, 1);
       F.line = 90;
-      var res_452986388 = 0;
+      var res_452986424 = 0;
       Label2: do {
         F.line = 91;
           Label3: while (true) {
-          if (!(res_452986388 <= colontmp__452986387)) break Label3;
+          if (!(res_452986424 <= colontmp__452986423)) break Label3;
             F.line = 255;
-            iHEX60gensym11_637534309 = res_452986388;
+            iHEX60gensym11_637534309 = res_452986424;
             F.line = 255;
             result_637534303[chckIndx(iHEX60gensym11_637534309, 0, (result_637534303).length - 1)] = nsuToUpperAsciiChar(s_637534302[chckIndx(iHEX60gensym11_637534309, 0, (s_637534302).length - 1)]);
             F.line = 93;
-            res_452986388 = addInt(res_452986388, 1);
+            res_452986424 = addInt(res_452986424, 1);
           }
       } while (false);
     } while (false);
@@ -18572,65 +19116,65 @@ function nsuToUpperAsciiStr(s_637534302) {
 
 }
 
-function formatValue_2315256118(result_2315256120, result_2315256120_Idx, value_2315256121, specifier_2315256122) {
+function formatValue_2315256114(result_2315256116, result_2315256116_Idx, value_2315256117, specifier_2315256118) {
     var Temporary1;
 
   var F = {procname: "formatValue.formatValue", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/strformat.nim", line: 0};
   framePtr = F;
   BeforeRet: do {
-    if (((specifier_2315256122).length == 0)) {
+    if (((specifier_2315256118).length == 0)) {
     F.line = 497;
-    result_2315256120[result_2315256120_Idx].push.apply(result_2315256120[result_2315256120_Idx], HEX24_33557368(value_2315256121));;
+    result_2315256116[result_2315256116_Idx].push.apply(result_2315256116[result_2315256116_Idx], HEX24_33557368(value_2315256117));;
     F.line = 498;
     break BeforeRet;
     }
     
     F.line = 499;
-    var spec_2315256126 = parseStandardFormatSpecifier_620757050(specifier_2315256122, 0, false);
+    var spec_2315256122 = parseStandardFormatSpecifier_620757050(specifier_2315256118, 0, false);
     F.line = 501;
-    var fmode_2315256127 = 0;
+    var fmode_2315256123 = 0;
     F.line = 502;
-    switch (spec_2315256126.typ) {
+    switch (spec_2315256122.typ) {
     case 101:
     case 69:
       F.line = 504;
-      fmode_2315256127 = 2;
+      fmode_2315256123 = 2;
       break;
     case 102:
     case 70:
       F.line = 506;
-      fmode_2315256127 = 1;
+      fmode_2315256123 = 1;
       break;
     case 103:
     case 71:
       F.line = 508;
-      fmode_2315256127 = 0;
+      fmode_2315256123 = 0;
       break;
     case 0:
       break;
     default: 
       F.line = 511;
-      raiseException({message: (makeNimstrLit("invalid type in format string for number, expected one  of \'e\', \'E\', \'f\', \'F\', \'g\', \'G\' but got: ") || []).concat([spec_2315256126.typ]), parent: null, m_type: NTI33555125, name: null, trace: [], up: null}, "ValueError");
+      raiseException({message: (makeNimstrLit("invalid type in format string for number, expected one  of \'e\', \'E\', \'f\', \'F\', \'g\', \'G\' but got: ") || []).concat([spec_2315256122.typ]), parent: null, m_type: NTI33555125, name: null, trace: [], up: null}, "ValueError");
       break;
     }
     F.line = 515;
-    var f_2315256129 = [nsuformatBiggestFloat(value_2315256121, fmode_2315256127, chckRange(spec_2315256126.precision, -1, 32), 46)];
+    var f_2315256125 = [nsuformatBiggestFloat(value_2315256117, fmode_2315256123, chckRange(spec_2315256122.precision, -1, 32), 46)];
     F.line = 516;
-    var sign_2315256130 = false;
-    if ((0.0 <= value_2315256121)) {
-    if (!((spec_2315256126.sign == 45))) {
+    var sign_2315256126 = false;
+    if ((0.0 <= value_2315256117)) {
+    if (!((spec_2315256122.sign == 45))) {
     F.line = 519;
-    sign_2315256130 = true;
-    if ((value_2315256121 == 0.0)) {
-    if (((1.0 / value_2315256121) == Infinity)) {
+    sign_2315256126 = true;
+    if ((value_2315256117 == 0.0)) {
+    if (((1.0 / value_2315256117) == Infinity)) {
     F.line = 523;
-    insert_33557846(f_2315256129, 0, nimCharToStr(spec_2315256126.sign), 0);
+    insert_33557846(f_2315256125, 0, nimCharToStr(spec_2315256122.sign), 0);
     }
     
     }
     else {
       F.line = 525;
-    insert_33557846(f_2315256129, 0, nimCharToStr(spec_2315256126.sign), 0);
+    insert_33557846(f_2315256125, 0, nimCharToStr(spec_2315256122.sign), 0);
     }
     
     }
@@ -18638,51 +19182,51 @@ function formatValue_2315256118(result_2315256120, result_2315256120_Idx, value_
     }
     else {
       F.line = 527;
-      sign_2315256130 = true;
+      sign_2315256126 = true;
     }
     
-    if (spec_2315256126.padWithZero) {
+    if (spec_2315256122.padWithZero) {
     F.line = 530;
-    var signStr_2315256131 = [];
-    if (sign_2315256130) {
+    var signStr_2315256127 = [];
+    if (sign_2315256126) {
     F.line = 532;
-    signStr_2315256131 = nimCopy(null, nimCharToStr(f_2315256129[0][chckIndx(0, 0, (f_2315256129[0]).length - 1)]), NTI33554439);
+    signStr_2315256127 = nimCopy(null, nimCharToStr(f_2315256125[0][chckIndx(0, 0, (f_2315256125[0]).length - 1)]), NTI33554439);
     F.line = 533;
-    f_2315256129[0] = nimCopy(null, HEX5BHEX5D_687869099(f_2315256129[0], HEX2EHEX2E_687869072(1, 1)), NTI33554439);
+    f_2315256125[0] = nimCopy(null, HEX5BHEX5D_687869099(f_2315256125[0], HEX2EHEX2E_687869072(1, 1)), NTI33554439);
     }
     
     F.line = 535;
-    var toFill_2315256157 = subInt(subInt(spec_2315256126.minimumWidth, (f_2315256129[0]).length), (sign_2315256130 ? 1 : 0));
-    if ((0 < toFill_2315256157)) {
+    var toFill_2315256153 = subInt(subInt(spec_2315256122.minimumWidth, (f_2315256125[0]).length), (sign_2315256126 ? 1 : 0));
+    if ((0 < toFill_2315256153)) {
     F.line = 537;
-    f_2315256129[0] = nimCopy(null, (nsuRepeatChar(48, chckRange(toFill_2315256157, 0, 2147483647)) || []).concat(f_2315256129[0] || []), NTI33554439);
+    f_2315256125[0] = nimCopy(null, (nsuRepeatChar(48, chckRange(toFill_2315256153, 0, 2147483647)) || []).concat(f_2315256125[0] || []), NTI33554439);
     }
     
-    if (sign_2315256130) {
+    if (sign_2315256126) {
     F.line = 539;
-    f_2315256129[0] = nimCopy(null, (signStr_2315256131 || []).concat(f_2315256129[0] || []), NTI33554439);
+    f_2315256125[0] = nimCopy(null, (signStr_2315256127 || []).concat(f_2315256125[0] || []), NTI33554439);
     }
     
     }
     
     F.line = 542;
-    if ((spec_2315256126.align == 0)) {
+    if ((spec_2315256122.align == 0)) {
     Temporary1 = 62;
     }
     else {
-    Temporary1 = spec_2315256126.align;
+    Temporary1 = spec_2315256122.align;
     }
     
-    var align_2315256158 = Temporary1;
+    var align_2315256154 = Temporary1;
     F.line = 543;
-    var res_2315256159 = alignString_620757012(f_2315256129[0], spec_2315256126.minimumWidth, align_2315256158, spec_2315256126.fill);
-    if ((ConstSet16[spec_2315256126.typ] != undefined)) {
+    var res_2315256155 = alignString_620757012(f_2315256125[0], spec_2315256122.minimumWidth, align_2315256154, spec_2315256122.fill);
+    if ((ConstSet16[spec_2315256122.typ] != undefined)) {
     F.line = 545;
-    result_2315256120[result_2315256120_Idx].push.apply(result_2315256120[result_2315256120_Idx], nsuToUpperAsciiStr(res_2315256159));;
+    result_2315256116[result_2315256116_Idx].push.apply(result_2315256116[result_2315256116_Idx], nsuToUpperAsciiStr(res_2315256155));;
     }
     else {
       F.line = 547;
-    result_2315256120[result_2315256120_Idx].push.apply(result_2315256120[result_2315256120_Idx], res_2315256159);;
+    result_2315256116[result_2315256116_Idx].push.apply(result_2315256116[result_2315256116_Idx], res_2315256155);;
     }
     
   } while (false);
@@ -18691,159 +19235,133 @@ function formatValue_2315256118(result_2315256120, result_2315256120_Idx, value_
   
 }
 
-function registerEventScoped1315_2315256503(sponsor_2315256505) {
-    sponsor_2315256505 = nimCopy(null, sponsor_2315256505, NTI2332033028);
+function registerEventScoped1315_2315256499(sponsor_2315256501) {
+    sponsor_2315256501 = nimCopy(null, sponsor_2315256501, NTI2332033028);
     
-function HEX3Aanonymous_2315256507(self_2315256508, ev_2315256509) {
+function HEX3Aanonymous_2315256503(self_2315256504, ev_2315256505) {
       var F = {procname: "registerEventScoped1315.:anonymous", prev: framePtr, filename: "/home/runner/work/happyx/happyx/examples/website/src/components/sponsors_arr.nim", line: 0};
       framePtr = F;
         F.line = 707;
         F.line = 22;
-        var fmtRes_2315256514 = [mnewString(0)];
+        var fmtRes_2315256510 = [mnewString(0)];
         F.line = 22;
-        formatValue_620757154(fmtRes_2315256514, 0, self_2315256508.uniqCompId, []);
-        currentComponent_956305827[0] = nimCopy(null, fmtRes_2315256514[0], NTI33554439);
+        formatValue_620757154(fmtRes_2315256510, 0, self_2315256504.uniqCompId, []);
+        currentComponent_1023414691[0] = nimCopy(null, fmtRes_2315256510[0], NTI33554439);
         F.line = 23;
         //js
-              window.open(sponsor_2315256505.url, '_blank').focus();
+              window.open(sponsor_2315256501.url, '_blank').focus();
               
         F.line = 22;
-        currentComponent_956305827[0] = nimCopy(null, [], NTI33554439);
+        currentComponent_1023414691[0] = nimCopy(null, [], NTI33554439);
       framePtr = F.prev;
 
       
     }
 
-  var result_2315256506 = null;
+  var result_2315256502 = null;
 
   var F = {procname: "registerEventScoped1315.registerEventScoped1315", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/private/macro_utils.nim", line: 0};
   framePtr = F;
     F.line = 22;
-    result_2315256506 = HEX3Aanonymous_2315256507;
+    result_2315256502 = HEX3Aanonymous_2315256503;
   framePtr = F.prev;
 
-  return result_2315256506;
+  return result_2315256502;
 
 }
 
-function style_2315255932(self_2315255933) {
-  var result_2315255934 = [];
-
-  var F = {procname: "sponsors_arr.style", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/components.nim", line: 0};
-  framePtr = F;
-  framePtr = F.prev;
-
-  return result_2315255934;
-
-}
-
-function render_2315255935(self_2315255936) {
+function renderTag_2315255935(self_2315255936) {
               var Temporary5;
 
   var result_2315255937 = null;
 
-  var F = {procname: "sponsors_arr.render", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/components.nim", line: 0};
+  var F = {procname: "sponsors_arr.renderTag", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/components.nim", line: 0};
   framePtr = F;
-    F.line = 12;
-    currentComponentsList_956305833[0].push(self_2315255936);;
-    F.line = 12;
-    currentComponent_956305827[0] = nimCopy(null, self_2315255936.uniqCompId, NTI33554439);
-    F.line = 12;
-    script_2315255930(self_2315255936);
-    if ((self_2315255936.isCreated == false)) {
-    F.line = 7;
-    self_2315255936.created(self_2315255936, null);
-    F.line = 767;
-    self_2315255936.isCreated = true;
-    }
-    
-    F.line = 7;
-    self_2315255936.beforeUpdated(self_2315255936, null);
-    F.line = 12;
+    F.line = 23;
     F.line = 13;
-    var fmtRes_2315255946 = mnewString(0);
+    var fmtRes_2315255942 = mnewString(0);
     F.line = 13;
-    fmtRes_2315255946.push.apply(fmtRes_2315255946, makeNimstrLit("w-full grid grid-cols-4 lg:grid-cols-6 xl:grid-cols-10 pt-4 gap-1"));;
+    fmtRes_2315255942.push.apply(fmtRes_2315255942, makeNimstrLit("w-full grid grid-cols-4 lg:grid-cols-6 xl:grid-cols-10 pt-4 gap-1"));;
     F.line = 15;
-    var tmpCycleIdx12_2315255950 = 0;
-    F.line = 696;
-    var collectResult_2315255951 = newSeq_2281701684(0);
+    var tmpCycleIdx12_2315255946 = 0;
+    F.line = 698;
+    var collectResult_2315255947 = newSeq_2281701680(0);
     Label1: do {
       F.line = 14;
-      var sponsor_2315256321 = ({name: [], amount: 0.0, url: [], avatarUrl: [], status: 0});
+      var sponsor_2315256317 = ({name: [], amount: 0.0, url: [], avatarUrl: [], status: 0});
       Label2: do {
         F.line = 209;
-        var item_452986366 = ({name: [], amount: 0.0, url: [], avatarUrl: [], status: 0});
+        var item_452986402 = ({name: [], amount: 0.0, url: [], avatarUrl: [], status: 0});
         F.line = 233;
-        var colontmp__452986367 = [];
+        var colontmp__452986403 = [];
         F.line = 209;
-        colontmp__452986367 = val_2315255957(self_2315255936.data);
+        colontmp__452986403 = val_2315255953(self_2315255936.data);
         F.line = 235;
-        var i_452986368 = 0;
+        var i_452986404 = 0;
         F.line = 236;
-        var L_452986369 = (colontmp__452986367).length;
+        var L_452986405 = (colontmp__452986403).length;
         Label3: do {
           F.line = 237;
             Label4: while (true) {
-            if (!(i_452986368 < L_452986369)) break Label4;
+            if (!(i_452986404 < L_452986405)) break Label4;
               F.line = 209;
-              item_452986366 = colontmp__452986367[chckIndx(i_452986368, 0, (colontmp__452986367).length - 1)];
+              item_452986402 = colontmp__452986403[chckIndx(i_452986404, 0, (colontmp__452986403).length - 1)];
               F.line = 14;
-              sponsor_2315256321 = nimCopy(sponsor_2315256321, item_452986366, NTI2332033028);
+              sponsor_2315256317 = nimCopy(sponsor_2315256317, item_452986402, NTI2332033028);
               F.line = 14;
-              tmpCycleIdx12_2315255950 = addInt(tmpCycleIdx12_2315255950, 1);
+              tmpCycleIdx12_2315255946 = addInt(tmpCycleIdx12_2315255946, 1);
               F.line = 14;
-              if (HEX3DHEX3D_2315256082(remember_2315255850(sponsor_2315256321.status), self_2315255936.sponsorStatus)) {
+              if (HEX3DHEX3D_2315256078(remember_2315255850(sponsor_2315256317.status), self_2315255936.sponsorStatus)) {
               F.line = 22;
-              var fmtRes_2315256419 = [mnewString(0)];
+              var fmtRes_2315256415 = [mnewString(0)];
               F.line = 22;
-              fmtRes_2315256419[0].push.apply(fmtRes_2315256419[0], makeNimstrLit("callComponentEventHandler(\'"));;
+              fmtRes_2315256415[0].push.apply(fmtRes_2315256415[0], makeNimstrLit("callComponentEventHandler(\'"));;
               F.line = 22;
-              formatValue_620757154(fmtRes_2315256419, 0, self_2315255936.uniqCompId, []);
+              formatValue_620757154(fmtRes_2315256415, 0, self_2315255936.uniqCompId, []);
               F.line = 22;
-              fmtRes_2315256419[0].push.apply(fmtRes_2315256419[0], makeNimstrLit("\', "));;
+              fmtRes_2315256415[0].push.apply(fmtRes_2315256415[0], makeNimstrLit("\', "));;
               F.line = 22;
-              formatValue_1560281790(fmtRes_2315256419, 0, addInt(13, tmpCycleIdx12_2315255950), []);
+              formatValue_1560281790(fmtRes_2315256415, 0, addInt(13, tmpCycleIdx12_2315255946), []);
               F.line = 22;
-              fmtRes_2315256419[0].push.apply(fmtRes_2315256419[0], makeNimstrLit(", event)"));;
+              fmtRes_2315256415[0].push.apply(fmtRes_2315256415[0], makeNimstrLit(", event)"));;
               F.line = 18;
-              var fmtRes_2315256429 = [mnewString(0)];
+              var fmtRes_2315256425 = [mnewString(0)];
               F.line = 18;
-              formatValue_620757154(fmtRes_2315256429, 0, sponsor_2315256321.name, []);
+              formatValue_620757154(fmtRes_2315256425, 0, sponsor_2315256317.name, []);
               F.line = 18;
-              fmtRes_2315256429[0].push.apply(fmtRes_2315256429[0], makeNimstrLit(", $"));;
+              fmtRes_2315256425[0].push.apply(fmtRes_2315256425[0], makeNimstrLit(", $"));;
               F.line = 18;
-              formatValue_2315256118(fmtRes_2315256429, 0, sponsor_2315256321.amount, []);
+              formatValue_2315256114(fmtRes_2315256425, 0, sponsor_2315256317.amount, []);
               F.line = 19;
-              var fmtRes_2315256439 = [mnewString(0)];
+              var fmtRes_2315256435 = [mnewString(0)];
               F.line = 19;
-              formatValue_620757154(fmtRes_2315256439, 0, sponsor_2315256321.name, []);
+              formatValue_620757154(fmtRes_2315256435, 0, sponsor_2315256317.name, []);
               F.line = 19;
-              fmtRes_2315256439[0].push.apply(fmtRes_2315256439[0], makeNimstrLit(", $"));;
+              fmtRes_2315256435[0].push.apply(fmtRes_2315256435[0], makeNimstrLit(", $"));;
               F.line = 19;
-              formatValue_2315256118(fmtRes_2315256439, 0, sponsor_2315256321.amount, []);
+              formatValue_2315256114(fmtRes_2315256435, 0, sponsor_2315256317.amount, []);
               F.line = 20;
-              var fmtRes_2315256449 = [mnewString(0)];
+              var fmtRes_2315256445 = [mnewString(0)];
               F.line = 20;
-              fmtRes_2315256449[0].push.apply(fmtRes_2315256449[0], makeNimstrLit("border-["));;
+              fmtRes_2315256445[0].push.apply(fmtRes_2315256445[0], makeNimstrLit("border-["));;
               F.line = 20;
-              formatValue_2181038322(fmtRes_2315256449, 0, self_2315255936.colorBorder, []);
+              formatValue_2181038318(fmtRes_2315256445, 0, self_2315255936.colorBorder, []);
               F.line = 20;
-              fmtRes_2315256449[0].push.apply(fmtRes_2315256449[0], makeNimstrLit("] border-4 w-24 h-24 rounded-full"));;
+              fmtRes_2315256445[0].push.apply(fmtRes_2315256445[0], makeNimstrLit("] border-4 w-24 h-24 rounded-full"));;
               F.line = 22;
-              HEX5BHEX5DHEX3D_2164261376(componentEventHandlers_956304341[0], addInt(13, tmpCycleIdx12_2315255950), registerEventScoped1315_2315256503(sponsor_2315256321));
+              HEX5BHEX5DHEX3D_2164261406(componentEventHandlers_1023413205[0], addInt(13, tmpCycleIdx12_2315255946), registerEventScoped1315_2315256499(sponsor_2315256317));
               F.line = 22;
-              tmpCycleIdx12_2315255950 = addInt(tmpCycleIdx12_2315255950, 1);
-              Temporary5 = initTag_1560281217(makeNimstrLit("div"), [initTag_1560281125(makeNimstrLit("img"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("onclick"), Field1: nimCopy(null, fmtRes_2315256419[0], NTI33554439)}, NTI2315256326), nimCopy(null, {Field0: makeNimstrLit("src"), Field1: nimCopy(null, sponsor_2315256321.avatarUrl, NTI33554439)}, NTI2315256326), nimCopy(null, {Field0: makeNimstrLit("alt"), Field1: nimCopy(null, fmtRes_2315256429[0], NTI33554439)}, NTI2315256326), nimCopy(null, {Field0: makeNimstrLit("title"), Field1: nimCopy(null, fmtRes_2315256439[0], NTI33554439)}, NTI2315256326), nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2315256449[0], NTI33554439)}, NTI2315256326)], 0), [initTag_1560281217(makeNimstrLit("div"), [], true)], false)], true);
+              tmpCycleIdx12_2315255946 = addInt(tmpCycleIdx12_2315255946, 1);
+              Temporary5 = initTag_1560281217(makeNimstrLit("div"), [initTag_1560281125(makeNimstrLit("img"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("onclick"), Field1: nimCopy(null, fmtRes_2315256415[0], NTI33554439)}, NTI2315256318), nimCopy(null, {Field0: makeNimstrLit("src"), Field1: nimCopy(null, sponsor_2315256317.avatarUrl, NTI33554439)}, NTI2315256318), nimCopy(null, {Field0: makeNimstrLit("alt"), Field1: nimCopy(null, fmtRes_2315256425[0], NTI33554439)}, NTI2315256318), nimCopy(null, {Field0: makeNimstrLit("title"), Field1: nimCopy(null, fmtRes_2315256435[0], NTI33554439)}, NTI2315256318), nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2315256445[0], NTI33554439)}, NTI2315256318)], 0), [initTag_1560281217(makeNimstrLit("div"), [], true)], false)], true);
               }
               else {
               Temporary5 = null;
               }
               
-              collectResult_2315255951.push(initTag_1560281217(makeNimstrLit("div"), [Temporary5], true));;
+              collectResult_2315255947.push(initTag_1560281217(makeNimstrLit("div"), [Temporary5], true));;
               F.line = 239;
-              i_452986368 = addInt(i_452986368, 1);
-              if (!(((colontmp__452986367).length == L_452986369))) {
+              i_452986404 = addInt(i_452986404, 1);
+              if (!(((colontmp__452986403).length == L_452986405))) {
               F.line = 240;
               failedAssertImpl_218103864(makeNimstrLit("/home/runner/.choosenim/toolchains/nim-1.6.14/lib/system/iterators.nim(240, 11) `len(a) == L` the length of the seq changed while iterating over it"));
               }
@@ -18852,18 +19370,59 @@ function render_2315255935(self_2315255936) {
         } while (false);
       } while (false);
     } while (false);
-    F.line = 12;
-    var fmtRes_2315256589 = [mnewString(0)];
-    F.line = 12;
-    formatValue_620757154(fmtRes_2315256589, 0, style_2315255932(self_2315255936), []);
-    result_2315255937 = initTag_1560281217(makeNimstrLit("div"), [initTag_1560281125(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2315255946, NTI33554439)}, NTI2315255931)], 0), [initTag_1560281217(makeNimstrLit("div"), collectResult_2315255951, true)], false), initTag_1560281217(makeNimstrLit("style"), [initTag_1560281275(fmtRes_2315256589[0], true, [], false)], false)], true);
-    F.line = 7;
-    self_2315255936.rendered(self_2315255936, null);
-    F.line = 12;
-    currentComponent_956305827[0] = nimCopy(null, [], NTI33554439);
+    result_2315255937 = initTag_1560281217(makeNimstrLit("div"), [initTag_1560281125(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2315255942, NTI33554439)}, NTI2315255923)], 0), [initTag_1560281217(makeNimstrLit("div"), collectResult_2315255947, true)], false)], true);
   framePtr = F.prev;
 
   return result_2315255937;
+
+}
+
+function style_2315255932(self_2315255933) {
+  var result_2315255934 = [];
+
+  var F = {procname: "sponsors_arr.style", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/components.nim", line: 0};
+  framePtr = F;
+    F.line = 7;
+    result_2315255934 = nimCopy(null, [], NTI33554439);
+  framePtr = F.prev;
+
+  return result_2315255934;
+
+}
+
+function render_2315256590(self_2315256591) {
+  var result_2315256592 = null;
+
+  var F = {procname: "sponsors_arr.render", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/components.nim", line: 0};
+  framePtr = F;
+    F.line = 7;
+    currentComponentsList_1023414697[0].push(self_2315256591);;
+    F.line = 7;
+    currentComponent_1023414691[0] = nimCopy(null, self_2315256591.uniqCompId, NTI33554439);
+    F.line = 7;
+    script_2315255930(self_2315256591);
+    if ((self_2315256591.isCreated == false)) {
+    F.line = 7;
+    self_2315256591.created(self_2315256591, null);
+    F.line = 767;
+    self_2315256591.isCreated = true;
+    }
+    
+    F.line = 7;
+    self_2315256591.beforeUpdated(self_2315256591, null);
+    F.line = 7;
+    result_2315256592 = renderTag_2315255935(self_2315256591);
+    F.line = 7;
+    add_1560281333(result_2315256592, [initTag_1560281217(makeNimstrLit("style"), [textTag_1560281322(style_2315255932(self_2315256591))], false)]);
+    F.line = 7;
+    rawEcho(HEX24_1560281833(result_2315256592));
+    F.line = 7;
+    self_2315256591.rendered(self_2315256591, null);
+    F.line = 7;
+    currentComponent_1023414691[0] = nimCopy(null, [], NTI33554439);
+  framePtr = F.prev;
+
+  return result_2315256592;
 
 }
 
@@ -18875,83 +19434,98 @@ function script_2298478669(self_2298478670) {
   
 }
 
+function renderTag_2298478674(self_2298478675) {
+    var Temporary1;
+
+  var result_2298478676 = null;
+
+  var F = {procname: "divider.renderTag", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/components.nim", line: 0};
+  framePtr = F;
+    F.line = 12;
+    if (toBool_1811939786(self_2298478675.horizontal)) {
+    F.line = 10;
+    var fmtRes_2298478681 = [mnewString(0)];
+    F.line = 10;
+    fmtRes_2298478681[0].push.apply(fmtRes_2298478681[0], makeNimstrLit("w-full h-[2px] rounded-full bg-["));;
+    F.line = 10;
+    formatValue_620757154(fmtRes_2298478681, 0, makeNimstrLit("#EFEFEF"), []);
+    F.line = 10;
+    fmtRes_2298478681[0].push.apply(fmtRes_2298478681[0], makeNimstrLit("] dark:bg-["));;
+    F.line = 10;
+    formatValue_620757154(fmtRes_2298478681, 0, makeNimstrLit("#1c172a"), []);
+    F.line = 10;
+    fmtRes_2298478681[0].push.apply(fmtRes_2298478681[0], makeNimstrLit("]"));;
+    Temporary1 = initTag_1560281217(makeNimstrLit("div"), [initTag_1560281125(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2298478681[0], NTI33554439)}, NTI2298478654)], 0), [], false)], true);
+    }
+    else {
+      F.line = 12;
+      var fmtRes_2298478697 = [mnewString(0)];
+      F.line = 12;
+      fmtRes_2298478697[0].push.apply(fmtRes_2298478697[0], makeNimstrLit("w-[2px] h-full rounded-full bg-["));;
+      F.line = 12;
+      formatValue_620757154(fmtRes_2298478697, 0, makeNimstrLit("#EFEFEF"), []);
+      F.line = 12;
+      fmtRes_2298478697[0].push.apply(fmtRes_2298478697[0], makeNimstrLit("] dark:bg-["));;
+      F.line = 12;
+      formatValue_620757154(fmtRes_2298478697, 0, makeNimstrLit("#1c172a"), []);
+      F.line = 12;
+      fmtRes_2298478697[0].push.apply(fmtRes_2298478697[0], makeNimstrLit("]"));;
+    Temporary1 = initTag_1560281217(makeNimstrLit("div"), [initTag_1560281125(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2298478697[0], NTI33554439)}, NTI2298478679)], 0), [], false)], true);
+    }
+    
+    result_2298478676 = initTag_1560281217(makeNimstrLit("div"), [Temporary1], true);
+  framePtr = F.prev;
+
+  return result_2298478676;
+
+}
+
 function style_2298478671(self_2298478672) {
   var result_2298478673 = [];
 
   var F = {procname: "divider.style", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/components.nim", line: 0};
   framePtr = F;
+    F.line = 6;
+    result_2298478673 = nimCopy(null, [], NTI33554439);
   framePtr = F.prev;
 
   return result_2298478673;
 
 }
 
-function render_2298478674(self_2298478675) {
-    var Temporary1;
-
-  var result_2298478676 = null;
+function render_2298478717(self_2298478718) {
+  var result_2298478719 = null;
 
   var F = {procname: "divider.render", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/components.nim", line: 0};
   framePtr = F;
-    F.line = 8;
-    currentComponentsList_956305833[0].push(self_2298478675);;
-    F.line = 8;
-    currentComponent_956305827[0] = nimCopy(null, self_2298478675.uniqCompId, NTI33554439);
-    F.line = 8;
-    script_2298478669(self_2298478675);
-    if ((self_2298478675.isCreated == false)) {
     F.line = 6;
-    self_2298478675.created(self_2298478675, null);
+    currentComponentsList_1023414697[0].push(self_2298478718);;
+    F.line = 6;
+    currentComponent_1023414691[0] = nimCopy(null, self_2298478718.uniqCompId, NTI33554439);
+    F.line = 6;
+    script_2298478669(self_2298478718);
+    if ((self_2298478718.isCreated == false)) {
+    F.line = 6;
+    self_2298478718.created(self_2298478718, null);
     F.line = 767;
-    self_2298478675.isCreated = true;
+    self_2298478718.isCreated = true;
     }
     
     F.line = 6;
-    self_2298478675.beforeUpdated(self_2298478675, null);
-    F.line = 8;
-    if (toBool_1811939786(self_2298478675.horizontal)) {
-    F.line = 10;
-    var fmtRes_2298478685 = [mnewString(0)];
-    F.line = 10;
-    fmtRes_2298478685[0].push.apply(fmtRes_2298478685[0], makeNimstrLit("w-full h-[2px] rounded-full bg-["));;
-    F.line = 10;
-    formatValue_620757154(fmtRes_2298478685, 0, makeNimstrLit("#EFEFEF"), []);
-    F.line = 10;
-    fmtRes_2298478685[0].push.apply(fmtRes_2298478685[0], makeNimstrLit("] dark:bg-["));;
-    F.line = 10;
-    formatValue_620757154(fmtRes_2298478685, 0, makeNimstrLit("#1c172a"), []);
-    F.line = 10;
-    fmtRes_2298478685[0].push.apply(fmtRes_2298478685[0], makeNimstrLit("]"));;
-    Temporary1 = initTag_1560281217(makeNimstrLit("div"), [initTag_1560281125(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2298478685[0], NTI33554439)}, NTI2298478662)], 0), [], false)], true);
-    }
-    else {
-      F.line = 12;
-      var fmtRes_2298478701 = [mnewString(0)];
-      F.line = 12;
-      fmtRes_2298478701[0].push.apply(fmtRes_2298478701[0], makeNimstrLit("w-[2px] h-full rounded-full bg-["));;
-      F.line = 12;
-      formatValue_620757154(fmtRes_2298478701, 0, makeNimstrLit("#EFEFEF"), []);
-      F.line = 12;
-      fmtRes_2298478701[0].push.apply(fmtRes_2298478701[0], makeNimstrLit("] dark:bg-["));;
-      F.line = 12;
-      formatValue_620757154(fmtRes_2298478701, 0, makeNimstrLit("#1c172a"), []);
-      F.line = 12;
-      fmtRes_2298478701[0].push.apply(fmtRes_2298478701[0], makeNimstrLit("]"));;
-    Temporary1 = initTag_1560281217(makeNimstrLit("div"), [initTag_1560281125(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2298478701[0], NTI33554439)}, NTI2298478687)], 0), [], false)], true);
-    }
-    
-    F.line = 8;
-    var fmtRes_2298478717 = [mnewString(0)];
-    F.line = 8;
-    formatValue_620757154(fmtRes_2298478717, 0, style_2298478671(self_2298478675), []);
-    result_2298478676 = initTag_1560281217(makeNimstrLit("div"), [Temporary1, initTag_1560281217(makeNimstrLit("style"), [initTag_1560281275(fmtRes_2298478717[0], true, [], false)], false)], true);
+    self_2298478718.beforeUpdated(self_2298478718, null);
     F.line = 6;
-    self_2298478675.rendered(self_2298478675, null);
-    F.line = 8;
-    currentComponent_956305827[0] = nimCopy(null, [], NTI33554439);
+    result_2298478719 = renderTag_2298478674(self_2298478718);
+    F.line = 6;
+    add_1560281333(result_2298478719, [initTag_1560281217(makeNimstrLit("style"), [textTag_1560281322(style_2298478671(self_2298478718))], false)]);
+    F.line = 6;
+    rawEcho(HEX24_1560281833(result_2298478719));
+    F.line = 6;
+    self_2298478718.rendered(self_2298478718, null);
+    F.line = 6;
+    currentComponent_1023414691[0] = nimCopy(null, [], NTI33554439);
   framePtr = F.prev;
 
-  return result_2298478676;
+  return result_2298478719;
 
 }
 
@@ -18963,112 +19537,86 @@ function script_2281701476(self_2281701477) {
   
 }
 
-function val_2281701625(self_2281701627) {
-  var result_2281701628 = [];
+function val_2281701621(self_2281701623) {
+  var result_2281701624 = [];
 
   var F = {procname: "val.val", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/state.nim", line: 0};
   framePtr = F;
     F.line = 64;
-    result_2281701628 = nimCopy(null, self_2281701627.value, NTI2281701379);
+    result_2281701624 = nimCopy(null, self_2281701623.value, NTI2281701379);
   framePtr = F.prev;
 
-  return result_2281701628;
+  return result_2281701624;
 
 }
 
-function style_2281701478(self_2281701479) {
-  var result_2281701480 = [];
-
-  var F = {procname: "about_section.style", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/components.nim", line: 0};
-  framePtr = F;
-  framePtr = F.prev;
-
-  return result_2281701480;
-
-}
-
-function render_2281701481(self_2281701482) {
+function renderTag_2281701481(self_2281701482) {
   var result_2281701483 = null;
 
-  var F = {procname: "about_section.render", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/components.nim", line: 0};
+  var F = {procname: "about_section.renderTag", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/components.nim", line: 0};
   framePtr = F;
-    F.line = 13;
-    currentComponentsList_956305833[0].push(self_2281701482);;
-    F.line = 13;
-    currentComponent_956305827[0] = nimCopy(null, self_2281701482.uniqCompId, NTI33554439);
-    F.line = 13;
-    script_2281701476(self_2281701482);
-    if ((self_2281701482.isCreated == false)) {
-    F.line = 9;
-    self_2281701482.created(self_2281701482, null);
-    F.line = 767;
-    self_2281701482.isCreated = true;
-    }
-    
-    F.line = 9;
-    self_2281701482.beforeUpdated(self_2281701482, null);
-    F.line = 13;
+    F.line = 22;
     F.line = 14;
-    var fmtRes_2281701492 = mnewString(0);
+    var fmtRes_2281701488 = mnewString(0);
     F.line = 14;
-    fmtRes_2281701492.push.apply(fmtRes_2281701492, makeNimstrLit("flex flex-col gap-8 lg:gap-4"));;
+    fmtRes_2281701488.push.apply(fmtRes_2281701488, makeNimstrLit("flex flex-col gap-8 lg:gap-4"));;
     F.line = 15;
-    var fmtRes_2281701500 = mnewString(0);
+    var fmtRes_2281701496 = mnewString(0);
     F.line = 15;
-    fmtRes_2281701500.push.apply(fmtRes_2281701500, makeNimstrLit("font-semibold text-2xl lg:text-base"));;
+    fmtRes_2281701496.push.apply(fmtRes_2281701496, makeNimstrLit("font-semibold text-2xl lg:text-base"));;
     F.line = 18;
-    var fmtRes_2281701598 = mnewString(0);
+    var fmtRes_2281701594 = mnewString(0);
     F.line = 18;
-    fmtRes_2281701598.push.apply(fmtRes_2281701598, makeNimstrLit("flex flex-col gap-4 lg:gap-2 text-xl lg:text-lg xl:text-base"));;
+    fmtRes_2281701594.push.apply(fmtRes_2281701594, makeNimstrLit("flex flex-col gap-4 lg:gap-2 text-xl lg:text-lg xl:text-base"));;
     F.line = 707;
-    var tmpCycleIdx11_2281701602 = 0;
-    F.line = 696;
-    var collectResult_2281701608 = newSeq_2281701684(0);
+    var tmpCycleIdx11_2281701598 = 0;
+    F.line = 698;
+    var collectResult_2281701604 = newSeq_2281701680(0);
     Label1: do {
       F.line = 19;
-      var item_2281701695 = {Field0: [], Field1: []};
+      var item_2281701691 = {Field0: [], Field1: []};
       Label2: do {
         F.line = 209;
-        var item_452986398 = {Field0: [], Field1: []};
+        var item_452986434 = {Field0: [], Field1: []};
         F.line = 233;
-        var colontmp__452986399 = [];
+        var colontmp__452986435 = [];
         F.line = 209;
-        colontmp__452986399 = val_2281701625(self_2281701482.data);
+        colontmp__452986435 = val_2281701621(self_2281701482.data);
         F.line = 235;
-        var i_452986400 = 0;
+        var i_452986436 = 0;
         F.line = 236;
-        var L_452986401 = (colontmp__452986399).length;
+        var L_452986437 = (colontmp__452986435).length;
         Label3: do {
           F.line = 237;
             Label4: while (true) {
-            if (!(i_452986400 < L_452986401)) break Label4;
+            if (!(i_452986436 < L_452986437)) break Label4;
               F.line = 209;
-              item_452986398 = colontmp__452986399[chckIndx(i_452986400, 0, (colontmp__452986399).length - 1)];
+              item_452986434 = colontmp__452986435[chckIndx(i_452986436, 0, (colontmp__452986435).length - 1)];
               F.line = 19;
-              item_2281701695 = nimCopy(item_2281701695, item_452986398, NTI2281701380);
+              item_2281701691 = nimCopy(item_2281701691, item_452986434, NTI2281701380);
               F.line = 19;
-              tmpCycleIdx11_2281701602 = addInt(tmpCycleIdx11_2281701602, 1);
+              tmpCycleIdx11_2281701598 = addInt(tmpCycleIdx11_2281701598, 1);
               F.line = 19;
               F.line = 21;
-              var fmtRes_2281701704 = [mnewString(0)];
+              var fmtRes_2281701700 = [mnewString(0)];
               F.line = 21;
-              fmtRes_2281701704[0].push.apply(fmtRes_2281701704[0], makeNimstrLit("text-["));;
+              fmtRes_2281701700[0].push.apply(fmtRes_2281701700[0], makeNimstrLit("text-["));;
               F.line = 21;
-              formatValue_620757154(fmtRes_2281701704, 0, makeNimstrLit("#aca7fa"), []);
+              formatValue_620757154(fmtRes_2281701700, 0, makeNimstrLit("#aca7fa"), []);
               F.line = 21;
-              fmtRes_2281701704[0].push.apply(fmtRes_2281701704[0], makeNimstrLit("] visited:text-["));;
+              fmtRes_2281701700[0].push.apply(fmtRes_2281701700[0], makeNimstrLit("] visited:text-["));;
               F.line = 21;
-              formatValue_620757154(fmtRes_2281701704, 0, makeNimstrLit("#8c87aa"), []);
+              formatValue_620757154(fmtRes_2281701700, 0, makeNimstrLit("#8c87aa"), []);
               F.line = 21;
-              fmtRes_2281701704[0].push.apply(fmtRes_2281701704[0], makeNimstrLit("] hover:text-["));;
+              fmtRes_2281701700[0].push.apply(fmtRes_2281701700[0], makeNimstrLit("] hover:text-["));;
               F.line = 21;
-              formatValue_620757154(fmtRes_2281701704, 0, makeNimstrLit("#ccccff"), []);
+              formatValue_620757154(fmtRes_2281701700, 0, makeNimstrLit("#ccccff"), []);
               F.line = 21;
-              fmtRes_2281701704[0].push.apply(fmtRes_2281701704[0], makeNimstrLit("] translation-all"));;
-              collectResult_2281701608.push(initTag_1560281217(makeNimstrLit("div"), [initTag_1560281125(makeNimstrLit("a"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("href"), Field1: nimCopy(null, item_2281701695.Field1, NTI33554439)}, NTI2281701678), nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2281701704[0], NTI33554439)}, NTI2281701678)], 0), [initTag_1560281275(item_2281701695.Field0, true, [], false)], false)], true));;
+              fmtRes_2281701700[0].push.apply(fmtRes_2281701700[0], makeNimstrLit("] translation-all"));;
+              collectResult_2281701604.push(initTag_1560281217(makeNimstrLit("div"), [initTag_1560281125(makeNimstrLit("a"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("href"), Field1: nimCopy(null, item_2281701691.Field1, NTI33554439)}, NTI2281701670), nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2281701700[0], NTI33554439)}, NTI2281701670)], 0), [initTag_1560281275(item_2281701691.Field0, true, [], false)], false)], true));;
               F.line = 239;
-              i_452986400 = addInt(i_452986400, 1);
-              if (!(((colontmp__452986399).length == L_452986401))) {
+              i_452986436 = addInt(i_452986436, 1);
+              if (!(((colontmp__452986435).length == L_452986437))) {
               F.line = 240;
               failedAssertImpl_218103864(makeNimstrLit("/home/runner/.choosenim/toolchains/nim-1.6.14/lib/system/iterators.nim(240, 11) `len(a) == L` the length of the seq changed while iterating over it"));
               }
@@ -19077,508 +19625,165 @@ function render_2281701481(self_2281701482) {
         } while (false);
       } while (false);
     } while (false);
-    F.line = 13;
-    var fmtRes_2281701748 = [mnewString(0)];
-    F.line = 13;
-    formatValue_620757154(fmtRes_2281701748, 0, style_2281701478(self_2281701482), []);
-    result_2281701483 = initTag_1560281217(makeNimstrLit("div"), [initTag_1560281125(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2281701492, NTI33554439)}, NTI2281701467)], 0), [initTag_1560281125(makeNimstrLit("p"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2281701500, NTI33554439)}, NTI2281701480)], 0), [initTag_1560281275(HEX24_2181038412(self_2281701482.name), true, [], false)], false), initTag_1560281125(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2281701598, NTI33554439)}, NTI2281701560)], 0), [initTag_1560281217(makeNimstrLit("div"), collectResult_2281701608, true)], false)], false), initTag_1560281217(makeNimstrLit("style"), [initTag_1560281275(fmtRes_2281701748[0], true, [], false)], false)], true);
-    F.line = 9;
-    self_2281701482.rendered(self_2281701482, null);
-    F.line = 13;
-    currentComponent_956305827[0] = nimCopy(null, [], NTI33554439);
+    result_2281701483 = initTag_1560281217(makeNimstrLit("div"), [initTag_1560281125(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2281701488, NTI33554439)}, NTI2281701459)], 0), [initTag_1560281125(makeNimstrLit("p"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2281701496, NTI33554439)}, NTI2281701472)], 0), [initTag_1560281275(HEX24_2181038408(self_2281701482.name), true, [], false)], false), initTag_1560281125(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2281701594, NTI33554439)}, NTI2281701552)], 0), [initTag_1560281217(makeNimstrLit("div"), collectResult_2281701604, true)], false)], false)], true);
   framePtr = F.prev;
 
   return result_2281701483;
 
 }
 
-function render_956307318(self_956307319) {
-  var result_956307320 = null;
+function style_2281701478(self_2281701479) {
+  var result_2281701480 = [];
+
+  var F = {procname: "about_section.style", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/components.nim", line: 0};
+  framePtr = F;
+    F.line = 9;
+    result_2281701480 = nimCopy(null, [], NTI33554439);
+  framePtr = F.prev;
+
+  return result_2281701480;
+
+}
+
+function render_2281701748(self_2281701749) {
+  var result_2281701750 = null;
+
+  var F = {procname: "about_section.render", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/components.nim", line: 0};
+  framePtr = F;
+    F.line = 9;
+    currentComponentsList_1023414697[0].push(self_2281701749);;
+    F.line = 9;
+    currentComponent_1023414691[0] = nimCopy(null, self_2281701749.uniqCompId, NTI33554439);
+    F.line = 9;
+    script_2281701476(self_2281701749);
+    if ((self_2281701749.isCreated == false)) {
+    F.line = 9;
+    self_2281701749.created(self_2281701749, null);
+    F.line = 767;
+    self_2281701749.isCreated = true;
+    }
+    
+    F.line = 9;
+    self_2281701749.beforeUpdated(self_2281701749, null);
+    F.line = 9;
+    result_2281701750 = renderTag_2281701481(self_2281701749);
+    F.line = 9;
+    add_1560281333(result_2281701750, [initTag_1560281217(makeNimstrLit("style"), [textTag_1560281322(style_2281701478(self_2281701749))], false)]);
+    F.line = 9;
+    rawEcho(HEX24_1560281833(result_2281701750));
+    F.line = 9;
+    self_2281701749.rendered(self_2281701749, null);
+    F.line = 9;
+    currentComponent_1023414691[0] = nimCopy(null, [], NTI33554439);
+  framePtr = F.prev;
+
+  return result_2281701750;
+
+}
+
+function render_1023416182(self_1023416183) {
+  var result_1023416184 = null;
 
   var F = {procname: "renderer.render", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/renderer.nim", line: 0};
   framePtr = F;
     F.line = 234;
-    result_956307320 = null;
+    result_1023416184 = null;
   framePtr = F.prev;
 
-  return result_956307320;
+  return result_1023416184;
 
 }
 
-function render_956307321(self_956307319) {
-  var result_956307322 = null;
+function render_1023416185(self_1023416183) {
+  var result_1023416186 = null;
 
   var F = {procname: "renderer.render", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/renderer.nim", line: 0};
   framePtr = F;
   BeforeRet: do {
     F.line = 531;
-    chckNilDisp(self_956307319);
-    if (isObj(self_956307319.m_type, NTI2181038083)) {
+    chckNilDisp(self_1023416183);
+    if (isObj(self_1023416183.m_type, NTI2181038083)) {
     F.line = 232;
-    result_956307322 = render_2181038173(self_956307319);
+    result_1023416186 = render_2181038452(self_1023416183);
     break BeforeRet;
     }
     else {
-    if (isObj(self_956307319.m_type, NTI2164260918)) {
+    if (isObj(self_1023416183.m_type, NTI2164260929)) {
     F.line = 232;
-    result_956307322 = render_2164261067(self_956307319);
+    result_1023416186 = render_2164261597(self_1023416183);
     break BeforeRet;
     }
     else {
-    if (isObj(self_956307319.m_type, NTI2197815299)) {
+    if (isObj(self_1023416183.m_type, NTI2197815299)) {
     F.line = 232;
-    result_956307322 = render_2197815401(self_956307319);
+    result_1023416186 = render_2197815860(self_1023416183);
     break BeforeRet;
     }
     else {
-    if (isObj(self_956307319.m_type, NTI2248146947)) {
+    if (isObj(self_1023416183.m_type, NTI2248146947)) {
     F.line = 232;
-    result_956307322 = render_2248147020(self_956307319);
+    result_1023416186 = render_2248147047(self_1023416183);
     break BeforeRet;
     }
     else {
-    if (isObj(self_956307319.m_type, NTI2214592515)) {
+    if (isObj(self_1023416183.m_type, NTI2214592515)) {
     F.line = 232;
-    result_956307322 = render_2214592608(self_956307319);
+    result_1023416186 = render_2214593094(self_1023416183);
     break BeforeRet;
     }
     else {
-    if (isObj(self_956307319.m_type, NTI2231369731)) {
+    if (isObj(self_1023416183.m_type, NTI2231369731)) {
     F.line = 232;
-    result_956307322 = render_2231369813(self_956307319);
+    result_1023416186 = render_2231370150(self_1023416183);
     break BeforeRet;
     }
     else {
-    if (isObj(self_956307319.m_type, NTI2264924163)) {
+    if (isObj(self_1023416183.m_type, NTI2264924163)) {
     F.line = 232;
-    result_956307322 = render_2264924236(self_956307319);
+    result_1023416186 = render_2264924263(self_1023416183);
     break BeforeRet;
     }
     else {
-    if (isObj(self_956307319.m_type, NTI2315255811)) {
+    if (isObj(self_1023416183.m_type, NTI2315255811)) {
     F.line = 232;
-    result_956307322 = render_2315255935(self_956307319);
+    result_1023416186 = render_2315256590(self_1023416183);
     break BeforeRet;
     }
     else {
-    if (isObj(self_956307319.m_type, NTI2298478595)) {
+    if (isObj(self_1023416183.m_type, NTI2298478595)) {
     F.line = 232;
-    result_956307322 = render_2298478674(self_956307319);
+    result_1023416186 = render_2298478717(self_1023416183);
     break BeforeRet;
     }
     else {
-    if (isObj(self_956307319.m_type, NTI2281701383)) {
+    if (isObj(self_1023416183.m_type, NTI2281701383)) {
     F.line = 232;
-    result_956307322 = render_2281701481(self_956307319);
+    result_1023416186 = render_2281701748(self_1023416183);
     break BeforeRet;
     }
     else {
-    if (isObj(self_956307319.m_type, NTI956301319)) {
+    if (isObj(self_1023416183.m_type, NTI1023410183)) {
     F.line = 232;
-    result_956307322 = render_956307318(self_956307319);
+    result_1023416186 = render_1023416182(self_1023416183);
     break BeforeRet;
     }
     }}}}}}}}}}
   } while (false);
   framePtr = F.prev;
 
-  return result_956307322;
+  return result_1023416186;
 
 }
 
-function newSeq_2164261020(len_2164261022) {
-  var result_2164261023 = [];
+function newSeq_2164261058(len_2164261060) {
+  var result_2164261061 = [];
 
   var F = {procname: "newSeq.newSeq", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/system.nim", line: 0};
   framePtr = F;
     F.line = 680;
-    result_2164261023 = new Array(len_2164261022); for (var i = 0 ; i < len_2164261022 ; ++i) { result_2164261023[i] = null; }  framePtr = F.prev;
+    result_2164261061 = new Array(len_2164261060); for (var i = 0 ; i < len_2164261060 ; ++i) { result_2164261061[i] = null; }  framePtr = F.prev;
 
-  return result_2164261023;
-
-}
-
-function nsuRepeatStr(s_637535236, n_637535237) {
-  var result_637535238 = [];
-
-  var F = {procname: "strutils.repeat", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/strutils.nim", line: 0};
-  framePtr = F;
-    F.line = 1272;
-    result_637535238 = nimCopy(null, mnewString(0), NTI33554439);
-    Label1: do {
-      F.line = 1273;
-      var i_637535243 = 0;
-      F.line = 75;
-      var colontmp__452986422 = 0;
-      F.line = 1273;
-      colontmp__452986422 = n_637535237;
-      F.line = 90;
-      var res_452986423 = 1;
-      Label2: do {
-        F.line = 91;
-          Label3: while (true) {
-          if (!(res_452986423 <= colontmp__452986422)) break Label3;
-            F.line = 1273;
-            i_637535243 = res_452986423;
-            F.line = 1273;
-            result_637535238.push.apply(result_637535238, s_637535236);;
-            F.line = 93;
-            res_452986423 = addInt(res_452986423, 1);
-          }
-      } while (false);
-    } while (false);
-  framePtr = F.prev;
-
-  return result_637535238;
-
-}
-
-function lvl_1560281721(self_1560281722) {
-  var result_1560281723 = 0;
-
-  var F = {procname: "tag.lvl", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/tag.nim", line: 0};
-  framePtr = F;
-    F.line = 313;
-    result_1560281723 = 0;
-    F.line = 314;
-    var tag_1560281724 = self_1560281722;
-    Label1: do {
-      F.line = 315;
-        Label2: while (true) {
-        if (!!((tag_1560281724.parent == null))) break Label2;
-          F.line = 316;
-          tag_1560281724 = tag_1560281724.parent;
-          if (!(tag_1560281724.onlyChildren)) {
-          F.line = 318;
-          result_1560281723 = addInt(result_1560281723, 1);
-          }
-          
-        }
-    } while (false);
-  framePtr = F.prev;
-
-  return result_1560281723;
-
-}
-
-function nsuJoinSep(a_637535633, sep_637535634) {
-  var result_637535635 = [];
-
-  var F = {procname: "strutils.join", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/strutils.nim", line: 0};
-  framePtr = F;
-    if ((0 < (a_637535633).length)) {
-    F.line = 1780;
-    var L_637535642 = mulInt((sep_637535634).length, subInt((a_637535633).length, 1));
-    Label1: do {
-      F.line = 1781;
-      var i_637535650 = 0;
-      F.line = 75;
-      var colontmp__956305913 = 0;
-      F.line = 1781;
-      colontmp__956305913 = (a_637535633).length - 1;
-      F.line = 90;
-      var res_956305914 = 0;
-      Label2: do {
-        F.line = 91;
-          Label3: while (true) {
-          if (!(res_956305914 <= colontmp__956305913)) break Label3;
-            F.line = 1781;
-            i_637535650 = res_956305914;
-            F.line = 1781;
-            L_637535642 = addInt(L_637535642, (a_637535633[chckIndx(i_637535650, 0, (a_637535633).length - 1)]).length);
-            F.line = 93;
-            res_956305914 = addInt(res_956305914, 1);
-          }
-      } while (false);
-    } while (false);
-    F.line = 1782;
-    result_637535635 = nimCopy(null, mnewString(0), NTI33554439);
-    F.line = 1783;
-    result_637535635.push.apply(result_637535635, a_637535633[chckIndx(0, 0, (a_637535633).length - 1)]);;
-    Label4: do {
-      F.line = 1784;
-      var i_637535662 = 0;
-      F.line = 75;
-      var colontmp__956305917 = 0;
-      F.line = 1784;
-      colontmp__956305917 = (a_637535633).length - 1;
-      F.line = 90;
-      var res_956305918 = 1;
-      Label5: do {
-        F.line = 91;
-          Label6: while (true) {
-          if (!(res_956305918 <= colontmp__956305917)) break Label6;
-            F.line = 1784;
-            i_637535662 = res_956305918;
-            F.line = 1784;
-            result_637535635.push.apply(result_637535635, sep_637535634);;
-            F.line = 1784;
-            result_637535635.push.apply(result_637535635, a_637535633[chckIndx(i_637535662, 0, (a_637535633).length - 1)]);;
-            F.line = 93;
-            res_956305918 = addInt(res_956305918, 1);
-          }
-      } while (false);
-    } while (false);
-    }
-    else {
-      F.line = 1788;
-      result_637535635 = nimCopy(null, [], NTI33554439);
-    }
-    
-  framePtr = F.prev;
-
-  return result_637535635;
-
-}
-
-function join_1560281841(a_1560281843, sep_1560281844) {
-  var result_1560281845 = [];
-
-  var F = {procname: "join.join", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/pure/strutils.nim", line: 0};
-  framePtr = F;
-    F.line = 1796;
-    result_1560281845 = nimCopy(null, [], NTI33554439);
-    Label1: do {
-      F.line = 1797;
-      var i_1560281868 = 0;
-      F.line = 1797;
-      var x_1560281869 = null;
-      F.line = 134;
-      var i_452986428 = 0;
-      Label2: do {
-        F.line = 135;
-          Label3: while (true) {
-          if (!(i_452986428 < (a_1560281843).length)) break Label3;
-            F.line = 1797;
-            i_1560281868 = i_452986428;
-            F.line = 1797;
-            x_1560281869 = a_1560281843[chckIndx(i_452986428, 0, (a_1560281843).length - 1)];
-            if ((0 < i_1560281868)) {
-            F.line = 1799;
-            result_1560281845.push.apply(result_1560281845, sep_1560281844);;
-            }
-            
-            F.line = 1797;
-            result_1560281845.push.apply(result_1560281845, HEX24_1560281833(x_1560281869));;
-            F.line = 137;
-            i_452986428 = addInt(i_452986428, 1);
-          }
-      } while (false);
-    } while (false);
-  framePtr = F.prev;
-
-  return result_1560281845;
-
-}
-
-function find_855638065(a_855638068, item_855638069) {
-  var result_855638070 = 0;
-
-  var F = {procname: "find.find", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/system.nim", line: 0};
-  framePtr = F;
-  BeforeRet: do {
-    F.line = 1847;
-    result_855638070 = 0;
-    Label1: do {
-      F.line = 1848;
-      var i_855638074 = [];
-      F.line = 8;
-      var i_452986431 = 0;
-      Label2: do {
-        F.line = 9;
-          Label3: while (true) {
-          if (!(i_452986431 < (a_855638068).length)) break Label3;
-            F.line = 1848;
-            i_855638074 = a_855638068[chckIndx(i_452986431, 0, (a_855638068).length - 1)];
-            if (eqStrings(i_855638074, item_855638069)) {
-            F.line = 1849;
-            break BeforeRet;
-            }
-            
-            F.line = 1848;
-            result_855638070 = addInt(result_855638070, 1);
-            F.line = 11;
-            i_452986431 = addInt(i_452986431, 1);
-          }
-      } while (false);
-    } while (false);
-    F.line = 1851;
-    result_855638070 = -1;
-  } while (false);
-  framePtr = F.prev;
-
-  return result_855638070;
-
-}
-
-function contains_855638060(a_855638062, item_855638063) {
-  var result_855638064 = false;
-
-  var F = {procname: "contains.contains", prev: framePtr, filename: "/home/runner/.choosenim/toolchains/nim-1.6.14/lib/system.nim", line: 0};
-  framePtr = F;
-  BeforeRet: do {
-    F.line = 1865;
-    result_855638064 = (0 <= find_855638065(a_855638062, item_855638063));
-    break BeforeRet;
-  } while (false);
-  framePtr = F.prev;
-
-  return result_855638064;
-
-}
-
-function HEX24_1560281833(self_1560281834) {
-    var Temporary5;
-
-  var result_1560281835 = [];
-
-  var F = {procname: "tag.$", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/tag.nim", line: 0};
-  framePtr = F;
-  BeforeRet: do {
-    F.line = 364;
-    F.line = 369;
-    var level_1560281836 = nsuRepeatStr(makeNimstrLit("  "), chckRange(lvl_1560281721(self_1560281834), 0, 2147483647));
-    F.line = 370;
-    var argsStr_1560281837 = nsuJoinSep(self_1560281834.args, makeNimstrLit(" "));
-    if (self_1560281834.isText) {
-    F.line = 373;
-    result_1560281835 = nimCopy(null, self_1560281834.name, NTI33554439);
-    break BeforeRet;
-    }
-    
-    F.line = 375;
-    var attrs_1560281838 = [];
-    Label1: do {
-      F.line = 376;
-      var key_1560281839 = [];
-      F.line = 376;
-      var value_1560281840 = [];
-      Label2: do {
-        F.line = 96;
-        var h_452986417 = 0;
-        F.line = 75;
-        var colontmp__452986418 = 0;
-        F.line = 96;
-        colontmp__452986418 = (self_1560281834.attrs.data).length - 1;
-        F.line = 90;
-        var res_452986419 = 0;
-        Label3: do {
-          F.line = 91;
-            Label4: while (true) {
-            if (!(res_452986419 <= colontmp__452986418)) break Label4;
-              F.line = 96;
-              h_452986417 = res_452986419;
-              if (self_1560281834.attrs.data[chckIndx(h_452986417, 0, (self_1560281834.attrs.data).length - 1)].Field2) {
-              F.line = 376;
-              key_1560281839 = self_1560281834.attrs.data[chckIndx(h_452986417, 0, (self_1560281834.attrs.data).length - 1)].Field0;
-              F.line = 376;
-              value_1560281840 = self_1560281834.attrs.data[chckIndx(h_452986417, 0, (self_1560281834.attrs.data).length - 1)].Field1;
-              F.line = 376;
-              attrs_1560281838.push.apply(attrs_1560281838, (makeNimstrLit(" ") || []).concat(key_1560281839 || [],makeNimstrLit("=\"") || [],value_1560281840 || [],makeNimstrLit("\"") || []));;
-              }
-              
-              F.line = 93;
-              res_452986419 = addInt(res_452986419, 1);
-            }
-        } while (false);
-      } while (false);
-    } while (false);
-    if (self_1560281834.onlyChildren) {
-    F.line = 380;
-    var children_1560281870 = join_1560281841(self_1560281834.children, makeNimstrLit("\x0A"));
-    F.line = 381;
-    F.line = 381;
-    var fmtRes_1560281875 = [mnewString(0)];
-    F.line = 381;
-    formatValue_620757154(fmtRes_1560281875, 0, level_1560281836, []);
-    F.line = 381;
-    formatValue_620757154(fmtRes_1560281875, 0, children_1560281870, []);
-    F.line = 381;
-    formatValue_620757154(fmtRes_1560281875, 0, level_1560281836, []);
-    result_1560281835 = nimCopy(null, fmtRes_1560281875[0], NTI33554439);
-    break BeforeRet;
-    }
-    
-    if ((0 < (self_1560281834.children).length)) {
-    F.line = 384;
-    var children_1560281883 = (makeNimstrLit("\x0A") || []).concat(join_1560281841(self_1560281834.children, makeNimstrLit("\x0A")) || [],makeNimstrLit("\x0A") || []);
-    F.line = 385;
-    var fmtRes_1560281888 = [mnewString(0)];
-    F.line = 385;
-    formatValue_620757154(fmtRes_1560281888, 0, level_1560281836, []);
-    F.line = 385;
-    fmtRes_1560281888[0].push.apply(fmtRes_1560281888[0], makeNimstrLit("<"));;
-    F.line = 385;
-    formatValue_620757154(fmtRes_1560281888, 0, self_1560281834.name, []);
-    F.line = 385;
-    formatValue_620757154(fmtRes_1560281888, 0, attrs_1560281838, []);
-    F.line = 385;
-    fmtRes_1560281888[0].push.apply(fmtRes_1560281888[0], makeNimstrLit(" "));;
-    F.line = 385;
-    formatValue_620757154(fmtRes_1560281888, 0, argsStr_1560281837, []);
-    F.line = 385;
-    fmtRes_1560281888[0].push.apply(fmtRes_1560281888[0], makeNimstrLit(">"));;
-    F.line = 385;
-    formatValue_620757154(fmtRes_1560281888, 0, children_1560281883, []);
-    F.line = 385;
-    formatValue_620757154(fmtRes_1560281888, 0, level_1560281836, []);
-    F.line = 385;
-    fmtRes_1560281888[0].push.apply(fmtRes_1560281888[0], makeNimstrLit("</"));;
-    F.line = 385;
-    formatValue_620757154(fmtRes_1560281888, 0, self_1560281834.name, []);
-    F.line = 385;
-    fmtRes_1560281888[0].push.apply(fmtRes_1560281888[0], makeNimstrLit(">"));;
-    Temporary5 = fmtRes_1560281888[0];
-    }
-    else {
-    if (contains_855638060(UnclosedTags_1560281105, self_1560281834.name)) {
-    F.line = 387;
-    var fmtRes_1560281899 = [mnewString(0)];
-    F.line = 387;
-    formatValue_620757154(fmtRes_1560281899, 0, level_1560281836, []);
-    F.line = 387;
-    fmtRes_1560281899[0].push.apply(fmtRes_1560281899[0], makeNimstrLit("<"));;
-    F.line = 387;
-    formatValue_620757154(fmtRes_1560281899, 0, self_1560281834.name, []);
-    F.line = 387;
-    formatValue_620757154(fmtRes_1560281899, 0, attrs_1560281838, []);
-    F.line = 387;
-    fmtRes_1560281899[0].push.apply(fmtRes_1560281899[0], makeNimstrLit(" "));;
-    F.line = 387;
-    formatValue_620757154(fmtRes_1560281899, 0, argsStr_1560281837, []);
-    F.line = 387;
-    fmtRes_1560281899[0].push.apply(fmtRes_1560281899[0], makeNimstrLit(">"));;
-    Temporary5 = fmtRes_1560281899[0];
-    }
-    else {
-      F.line = 389;
-      var fmtRes_1560281904 = [mnewString(0)];
-      F.line = 389;
-      formatValue_620757154(fmtRes_1560281904, 0, level_1560281836, []);
-      F.line = 389;
-      fmtRes_1560281904[0].push.apply(fmtRes_1560281904[0], makeNimstrLit("<"));;
-      F.line = 389;
-      formatValue_620757154(fmtRes_1560281904, 0, self_1560281834.name, []);
-      F.line = 389;
-      formatValue_620757154(fmtRes_1560281904, 0, attrs_1560281838, []);
-      F.line = 389;
-      fmtRes_1560281904[0].push.apply(fmtRes_1560281904[0], makeNimstrLit(" "));;
-      F.line = 389;
-      formatValue_620757154(fmtRes_1560281904, 0, argsStr_1560281837, []);
-      F.line = 389;
-      fmtRes_1560281904[0].push.apply(fmtRes_1560281904[0], makeNimstrLit("></"));;
-      F.line = 389;
-      formatValue_620757154(fmtRes_1560281904, 0, self_1560281834.name, []);
-      F.line = 389;
-      fmtRes_1560281904[0].push.apply(fmtRes_1560281904[0], makeNimstrLit(">"));;
-    Temporary5 = fmtRes_1560281904[0];
-    }
-    }
-    result_1560281835 = nimCopy(null, Temporary5, NTI33554439);
-  } while (false);
-  framePtr = F.prev;
-
-  return result_1560281835;
+  return result_2164261061;
 
 }
 
@@ -19588,26 +19793,26 @@ function reRender_2181038132(self_2181038133) {
     F.line = 6;
     var tmpData_2181038134 = (makeNimstrLit("[data-") || []).concat(self_2181038133.uniqCompId || [],makeNimstrLit("]") || []);
     F.line = 6;
-    var compTmpData_2181038135 = render_956307321(self_2181038133);
+    var compTmpData_2181038135 = render_1023416185(self_2181038133);
     F.line = 6;
     addArgIter_1560281652(compTmpData_2181038135, (makeNimstrLit("data-") || []).concat(self_2181038133.uniqCompId || []));
     F.line = 6;
     var _current_2181038136 = document.querySelector(toJSStr(tmpData_2181038134));
     F.line = 6;
-    var _elements_2181038144 = newSeq_2164261020(0);
+    var _elements_2181038144 = newSeq_2164261058(0);
     Label1: do {
-      F.line = 149;
+      F.line = 233;
       var tag_2181038148 = null;
       F.line = 235;
-      var i_452986404 = 0;
+      var i_452986440 = 0;
       F.line = 236;
-      var L_452986405 = (compTmpData_2181038135.children).length;
+      var L_452986441 = (compTmpData_2181038135.children).length;
       Label2: do {
         F.line = 237;
           Label3: while (true) {
-          if (!(i_452986404 < L_452986405)) break Label3;
+          if (!(i_452986440 < L_452986441)) break Label3;
             F.line = 6;
-            tag_2181038148 = compTmpData_2181038135.children[chckIndx(i_452986404, 0, (compTmpData_2181038135.children).length - 1)];
+            tag_2181038148 = compTmpData_2181038135.children[chckIndx(i_452986440, 0, (compTmpData_2181038135.children).length - 1)];
             if (!((_current_2181038136 == null))) {
             F.line = 6;
             _elements_2181038144.push(_current_2181038136);;
@@ -19616,8 +19821,8 @@ function reRender_2181038132(self_2181038133) {
             }
             
             F.line = 239;
-            i_452986404 = addInt(i_452986404, 1);
-            if (!(((compTmpData_2181038135.children).length == L_452986405))) {
+            i_452986440 = addInt(i_452986440, 1);
+            if (!(((compTmpData_2181038135.children).length == L_452986441))) {
             F.line = 240;
             failedAssertImpl_218103864(makeNimstrLit("/home/runner/.choosenim/toolchains/nim-1.6.14/lib/system/iterators.nim(240, 11) `len(a) == L` the length of the seq changed while iterating over it"));
             }
@@ -19626,20 +19831,20 @@ function reRender_2181038132(self_2181038133) {
       } while (false);
     } while (false);
     Label4: do {
-      F.line = 169;
+      F.line = 253;
       var __i_2181038163 = 0;
       F.line = 117;
-      var colontmp__452986408 = 0;
+      var colontmp__452986444 = 0;
       F.line = 6;
-      colontmp__452986408 = (_elements_2181038144).length;
+      colontmp__452986444 = (_elements_2181038144).length;
       F.line = 119;
-      var i_452986409 = 0;
+      var i_452986445 = 0;
       Label5: do {
         F.line = 120;
           Label6: while (true) {
-          if (!(i_452986409 < colontmp__452986408)) break Label6;
+          if (!(i_452986445 < colontmp__452986444)) break Label6;
             F.line = 6;
-            __i_2181038163 = i_452986409;
+            __i_2181038163 = i_452986445;
             F.line = 6;
             var elem_2181038164 = _elements_2181038144[chckIndx(__i_2181038163, 0, (_elements_2181038144).length - 1)];
             F.line = 6;
@@ -19647,7 +19852,7 @@ function reRender_2181038132(self_2181038133) {
             F.line = 6;
             elem_2181038164.outerHTML = toJSStr(HEX24_1560281833(tag_2181038165));
             F.line = 122;
-            i_452986409 = addInt(i_452986409, 1);
+            i_452986445 = addInt(i_452986445, 1);
           }
       } while (false);
     } while (false);
@@ -19658,42 +19863,42 @@ function reRender_2181038132(self_2181038133) {
   
 }
 
-function reRender_2164261011(self_2164261012) {
+function reRender_2164261049(self_2164261050) {
   var F = {procname: "button.reRender", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/components.nim", line: 0};
   framePtr = F;
     F.line = 12;
-    var tmpData_2164261013 = (makeNimstrLit("[data-") || []).concat(self_2164261012.uniqCompId || [],makeNimstrLit("]") || []);
+    var tmpData_2164261051 = (makeNimstrLit("[data-") || []).concat(self_2164261050.uniqCompId || [],makeNimstrLit("]") || []);
     F.line = 12;
-    var compTmpData_2164261014 = render_956307321(self_2164261012);
+    var compTmpData_2164261052 = render_1023416185(self_2164261050);
     F.line = 12;
-    addArgIter_1560281652(compTmpData_2164261014, (makeNimstrLit("data-") || []).concat(self_2164261012.uniqCompId || []));
+    addArgIter_1560281652(compTmpData_2164261052, (makeNimstrLit("data-") || []).concat(self_2164261050.uniqCompId || []));
     F.line = 12;
-    var _current_2164261015 = document.querySelector(toJSStr(tmpData_2164261013));
+    var _current_2164261053 = document.querySelector(toJSStr(tmpData_2164261051));
     F.line = 12;
-    var _elements_2164261037 = newSeq_2164261020(0);
+    var _elements_2164261075 = newSeq_2164261058(0);
     Label1: do {
-      F.line = 149;
-      var tag_2164261041 = null;
+      F.line = 233;
+      var tag_2164261079 = null;
       F.line = 235;
-      var i_452986434 = 0;
+      var i_452986448 = 0;
       F.line = 236;
-      var L_452986435 = (compTmpData_2164261014.children).length;
+      var L_452986449 = (compTmpData_2164261052.children).length;
       Label2: do {
         F.line = 237;
           Label3: while (true) {
-          if (!(i_452986434 < L_452986435)) break Label3;
+          if (!(i_452986448 < L_452986449)) break Label3;
             F.line = 12;
-            tag_2164261041 = compTmpData_2164261014.children[chckIndx(i_452986434, 0, (compTmpData_2164261014.children).length - 1)];
-            if (!((_current_2164261015 == null))) {
+            tag_2164261079 = compTmpData_2164261052.children[chckIndx(i_452986448, 0, (compTmpData_2164261052.children).length - 1)];
+            if (!((_current_2164261053 == null))) {
             F.line = 12;
-            _elements_2164261037.push(_current_2164261015);;
+            _elements_2164261075.push(_current_2164261053);;
             F.line = 12;
-            _current_2164261015 = _current_2164261015.nextSibling;
+            _current_2164261053 = _current_2164261053.nextSibling;
             }
             
             F.line = 239;
-            i_452986434 = addInt(i_452986434, 1);
-            if (!(((compTmpData_2164261014.children).length == L_452986435))) {
+            i_452986448 = addInt(i_452986448, 1);
+            if (!(((compTmpData_2164261052.children).length == L_452986449))) {
             F.line = 240;
             failedAssertImpl_218103864(makeNimstrLit("/home/runner/.choosenim/toolchains/nim-1.6.14/lib/system/iterators.nim(240, 11) `len(a) == L` the length of the seq changed while iterating over it"));
             }
@@ -19702,33 +19907,33 @@ function reRender_2164261011(self_2164261012) {
       } while (false);
     } while (false);
     Label4: do {
-      F.line = 169;
-      var __i_2164261057 = 0;
+      F.line = 253;
+      var __i_2164261095 = 0;
       F.line = 117;
-      var colontmp__452986438 = 0;
+      var colontmp__452986452 = 0;
       F.line = 12;
-      colontmp__452986438 = (_elements_2164261037).length;
+      colontmp__452986452 = (_elements_2164261075).length;
       F.line = 119;
-      var i_452986439 = 0;
+      var i_452986453 = 0;
       Label5: do {
         F.line = 120;
           Label6: while (true) {
-          if (!(i_452986439 < colontmp__452986438)) break Label6;
+          if (!(i_452986453 < colontmp__452986452)) break Label6;
             F.line = 12;
-            __i_2164261057 = i_452986439;
+            __i_2164261095 = i_452986453;
             F.line = 12;
-            var elem_2164261058 = _elements_2164261037[chckIndx(__i_2164261057, 0, (_elements_2164261037).length - 1)];
+            var elem_2164261096 = _elements_2164261075[chckIndx(__i_2164261095, 0, (_elements_2164261075).length - 1)];
             F.line = 12;
-            var tag_2164261059 = compTmpData_2164261014.children[chckIndx(__i_2164261057, 0, (compTmpData_2164261014.children).length - 1)];
+            var tag_2164261097 = compTmpData_2164261052.children[chckIndx(__i_2164261095, 0, (compTmpData_2164261052.children).length - 1)];
             F.line = 12;
-            elem_2164261058.outerHTML = toJSStr(HEX24_1560281833(tag_2164261059));
+            elem_2164261096.outerHTML = toJSStr(HEX24_1560281833(tag_2164261097));
             F.line = 122;
-            i_452986439 = addInt(i_452986439, 1);
+            i_452986453 = addInt(i_452986453, 1);
           }
       } while (false);
     } while (false);
     F.line = 12;
-    self_2164261012.rendered(self_2164261012, null);
+    self_2164261050.rendered(self_2164261050, null);
   framePtr = F.prev;
 
   
@@ -19740,26 +19945,26 @@ function reRender_2197815360(self_2197815361) {
     F.line = 4;
     var tmpData_2197815362 = (makeNimstrLit("[data-") || []).concat(self_2197815361.uniqCompId || [],makeNimstrLit("]") || []);
     F.line = 4;
-    var compTmpData_2197815363 = render_956307321(self_2197815361);
+    var compTmpData_2197815363 = render_1023416185(self_2197815361);
     F.line = 4;
     addArgIter_1560281652(compTmpData_2197815363, (makeNimstrLit("data-") || []).concat(self_2197815361.uniqCompId || []));
     F.line = 4;
     var _current_2197815364 = document.querySelector(toJSStr(tmpData_2197815362));
     F.line = 4;
-    var _elements_2197815372 = newSeq_2164261020(0);
+    var _elements_2197815372 = newSeq_2164261058(0);
     Label1: do {
-      F.line = 149;
+      F.line = 233;
       var tag_2197815376 = null;
       F.line = 235;
-      var i_452986442 = 0;
+      var i_452986456 = 0;
       F.line = 236;
-      var L_452986443 = (compTmpData_2197815363.children).length;
+      var L_452986457 = (compTmpData_2197815363.children).length;
       Label2: do {
         F.line = 237;
           Label3: while (true) {
-          if (!(i_452986442 < L_452986443)) break Label3;
+          if (!(i_452986456 < L_452986457)) break Label3;
             F.line = 4;
-            tag_2197815376 = compTmpData_2197815363.children[chckIndx(i_452986442, 0, (compTmpData_2197815363.children).length - 1)];
+            tag_2197815376 = compTmpData_2197815363.children[chckIndx(i_452986456, 0, (compTmpData_2197815363.children).length - 1)];
             if (!((_current_2197815364 == null))) {
             F.line = 4;
             _elements_2197815372.push(_current_2197815364);;
@@ -19768,8 +19973,8 @@ function reRender_2197815360(self_2197815361) {
             }
             
             F.line = 239;
-            i_452986442 = addInt(i_452986442, 1);
-            if (!(((compTmpData_2197815363.children).length == L_452986443))) {
+            i_452986456 = addInt(i_452986456, 1);
+            if (!(((compTmpData_2197815363.children).length == L_452986457))) {
             F.line = 240;
             failedAssertImpl_218103864(makeNimstrLit("/home/runner/.choosenim/toolchains/nim-1.6.14/lib/system/iterators.nim(240, 11) `len(a) == L` the length of the seq changed while iterating over it"));
             }
@@ -19778,20 +19983,20 @@ function reRender_2197815360(self_2197815361) {
       } while (false);
     } while (false);
     Label4: do {
-      F.line = 169;
+      F.line = 253;
       var __i_2197815391 = 0;
       F.line = 117;
-      var colontmp__452986446 = 0;
+      var colontmp__452986460 = 0;
       F.line = 4;
-      colontmp__452986446 = (_elements_2197815372).length;
+      colontmp__452986460 = (_elements_2197815372).length;
       F.line = 119;
-      var i_452986447 = 0;
+      var i_452986461 = 0;
       Label5: do {
         F.line = 120;
           Label6: while (true) {
-          if (!(i_452986447 < colontmp__452986446)) break Label6;
+          if (!(i_452986461 < colontmp__452986460)) break Label6;
             F.line = 4;
-            __i_2197815391 = i_452986447;
+            __i_2197815391 = i_452986461;
             F.line = 4;
             var elem_2197815392 = _elements_2197815372[chckIndx(__i_2197815391, 0, (_elements_2197815372).length - 1)];
             F.line = 4;
@@ -19799,7 +20004,7 @@ function reRender_2197815360(self_2197815361) {
             F.line = 4;
             elem_2197815392.outerHTML = toJSStr(HEX24_1560281833(tag_2197815393));
             F.line = 122;
-            i_452986447 = addInt(i_452986447, 1);
+            i_452986461 = addInt(i_452986461, 1);
           }
       } while (false);
     } while (false);
@@ -19816,26 +20021,26 @@ function reRender_2248146979(self_2248146980) {
     F.line = 6;
     var tmpData_2248146981 = (makeNimstrLit("[data-") || []).concat(self_2248146980.uniqCompId || [],makeNimstrLit("]") || []);
     F.line = 6;
-    var compTmpData_2248146982 = render_956307321(self_2248146980);
+    var compTmpData_2248146982 = render_1023416185(self_2248146980);
     F.line = 6;
     addArgIter_1560281652(compTmpData_2248146982, (makeNimstrLit("data-") || []).concat(self_2248146980.uniqCompId || []));
     F.line = 6;
     var _current_2248146983 = document.querySelector(toJSStr(tmpData_2248146981));
     F.line = 6;
-    var _elements_2248146991 = newSeq_2164261020(0);
+    var _elements_2248146991 = newSeq_2164261058(0);
     Label1: do {
-      F.line = 149;
+      F.line = 233;
       var tag_2248146995 = null;
       F.line = 235;
-      var i_452986450 = 0;
+      var i_452986464 = 0;
       F.line = 236;
-      var L_452986451 = (compTmpData_2248146982.children).length;
+      var L_452986465 = (compTmpData_2248146982.children).length;
       Label2: do {
         F.line = 237;
           Label3: while (true) {
-          if (!(i_452986450 < L_452986451)) break Label3;
+          if (!(i_452986464 < L_452986465)) break Label3;
             F.line = 6;
-            tag_2248146995 = compTmpData_2248146982.children[chckIndx(i_452986450, 0, (compTmpData_2248146982.children).length - 1)];
+            tag_2248146995 = compTmpData_2248146982.children[chckIndx(i_452986464, 0, (compTmpData_2248146982.children).length - 1)];
             if (!((_current_2248146983 == null))) {
             F.line = 6;
             _elements_2248146991.push(_current_2248146983);;
@@ -19844,8 +20049,8 @@ function reRender_2248146979(self_2248146980) {
             }
             
             F.line = 239;
-            i_452986450 = addInt(i_452986450, 1);
-            if (!(((compTmpData_2248146982.children).length == L_452986451))) {
+            i_452986464 = addInt(i_452986464, 1);
+            if (!(((compTmpData_2248146982.children).length == L_452986465))) {
             F.line = 240;
             failedAssertImpl_218103864(makeNimstrLit("/home/runner/.choosenim/toolchains/nim-1.6.14/lib/system/iterators.nim(240, 11) `len(a) == L` the length of the seq changed while iterating over it"));
             }
@@ -19854,20 +20059,20 @@ function reRender_2248146979(self_2248146980) {
       } while (false);
     } while (false);
     Label4: do {
-      F.line = 169;
+      F.line = 253;
       var __i_2248147010 = 0;
       F.line = 117;
-      var colontmp__452986454 = 0;
+      var colontmp__452986468 = 0;
       F.line = 6;
-      colontmp__452986454 = (_elements_2248146991).length;
+      colontmp__452986468 = (_elements_2248146991).length;
       F.line = 119;
-      var i_452986455 = 0;
+      var i_452986469 = 0;
       Label5: do {
         F.line = 120;
           Label6: while (true) {
-          if (!(i_452986455 < colontmp__452986454)) break Label6;
+          if (!(i_452986469 < colontmp__452986468)) break Label6;
             F.line = 6;
-            __i_2248147010 = i_452986455;
+            __i_2248147010 = i_452986469;
             F.line = 6;
             var elem_2248147011 = _elements_2248146991[chckIndx(__i_2248147010, 0, (_elements_2248146991).length - 1)];
             F.line = 6;
@@ -19875,7 +20080,7 @@ function reRender_2248146979(self_2248146980) {
             F.line = 6;
             elem_2248147011.outerHTML = toJSStr(HEX24_1560281833(tag_2248147012));
             F.line = 122;
-            i_452986455 = addInt(i_452986455, 1);
+            i_452986469 = addInt(i_452986469, 1);
           }
       } while (false);
     } while (false);
@@ -19892,26 +20097,26 @@ function reRender_2214592567(self_2214592568) {
     F.line = 9;
     var tmpData_2214592569 = (makeNimstrLit("[data-") || []).concat(self_2214592568.uniqCompId || [],makeNimstrLit("]") || []);
     F.line = 9;
-    var compTmpData_2214592570 = render_956307321(self_2214592568);
+    var compTmpData_2214592570 = render_1023416185(self_2214592568);
     F.line = 9;
     addArgIter_1560281652(compTmpData_2214592570, (makeNimstrLit("data-") || []).concat(self_2214592568.uniqCompId || []));
     F.line = 9;
     var _current_2214592571 = document.querySelector(toJSStr(tmpData_2214592569));
     F.line = 9;
-    var _elements_2214592579 = newSeq_2164261020(0);
+    var _elements_2214592579 = newSeq_2164261058(0);
     Label1: do {
-      F.line = 149;
+      F.line = 233;
       var tag_2214592583 = null;
       F.line = 235;
-      var i_452986458 = 0;
+      var i_452986472 = 0;
       F.line = 236;
-      var L_452986459 = (compTmpData_2214592570.children).length;
+      var L_452986473 = (compTmpData_2214592570.children).length;
       Label2: do {
         F.line = 237;
           Label3: while (true) {
-          if (!(i_452986458 < L_452986459)) break Label3;
+          if (!(i_452986472 < L_452986473)) break Label3;
             F.line = 9;
-            tag_2214592583 = compTmpData_2214592570.children[chckIndx(i_452986458, 0, (compTmpData_2214592570.children).length - 1)];
+            tag_2214592583 = compTmpData_2214592570.children[chckIndx(i_452986472, 0, (compTmpData_2214592570.children).length - 1)];
             if (!((_current_2214592571 == null))) {
             F.line = 9;
             _elements_2214592579.push(_current_2214592571);;
@@ -19920,8 +20125,8 @@ function reRender_2214592567(self_2214592568) {
             }
             
             F.line = 239;
-            i_452986458 = addInt(i_452986458, 1);
-            if (!(((compTmpData_2214592570.children).length == L_452986459))) {
+            i_452986472 = addInt(i_452986472, 1);
+            if (!(((compTmpData_2214592570.children).length == L_452986473))) {
             F.line = 240;
             failedAssertImpl_218103864(makeNimstrLit("/home/runner/.choosenim/toolchains/nim-1.6.14/lib/system/iterators.nim(240, 11) `len(a) == L` the length of the seq changed while iterating over it"));
             }
@@ -19930,20 +20135,20 @@ function reRender_2214592567(self_2214592568) {
       } while (false);
     } while (false);
     Label4: do {
-      F.line = 169;
+      F.line = 253;
       var __i_2214592598 = 0;
       F.line = 117;
-      var colontmp__452986462 = 0;
+      var colontmp__452986476 = 0;
       F.line = 9;
-      colontmp__452986462 = (_elements_2214592579).length;
+      colontmp__452986476 = (_elements_2214592579).length;
       F.line = 119;
-      var i_452986463 = 0;
+      var i_452986477 = 0;
       Label5: do {
         F.line = 120;
           Label6: while (true) {
-          if (!(i_452986463 < colontmp__452986462)) break Label6;
+          if (!(i_452986477 < colontmp__452986476)) break Label6;
             F.line = 9;
-            __i_2214592598 = i_452986463;
+            __i_2214592598 = i_452986477;
             F.line = 9;
             var elem_2214592599 = _elements_2214592579[chckIndx(__i_2214592598, 0, (_elements_2214592579).length - 1)];
             F.line = 9;
@@ -19951,7 +20156,7 @@ function reRender_2214592567(self_2214592568) {
             F.line = 9;
             elem_2214592599.outerHTML = toJSStr(HEX24_1560281833(tag_2214592600));
             F.line = 122;
-            i_452986463 = addInt(i_452986463, 1);
+            i_452986477 = addInt(i_452986477, 1);
           }
       } while (false);
     } while (false);
@@ -19968,26 +20173,26 @@ function reRender_2231369772(self_2231369773) {
     F.line = 7;
     var tmpData_2231369774 = (makeNimstrLit("[data-") || []).concat(self_2231369773.uniqCompId || [],makeNimstrLit("]") || []);
     F.line = 7;
-    var compTmpData_2231369775 = render_956307321(self_2231369773);
+    var compTmpData_2231369775 = render_1023416185(self_2231369773);
     F.line = 7;
     addArgIter_1560281652(compTmpData_2231369775, (makeNimstrLit("data-") || []).concat(self_2231369773.uniqCompId || []));
     F.line = 7;
     var _current_2231369776 = document.querySelector(toJSStr(tmpData_2231369774));
     F.line = 7;
-    var _elements_2231369784 = newSeq_2164261020(0);
+    var _elements_2231369784 = newSeq_2164261058(0);
     Label1: do {
-      F.line = 149;
+      F.line = 233;
       var tag_2231369788 = null;
       F.line = 235;
-      var i_452986466 = 0;
+      var i_452986480 = 0;
       F.line = 236;
-      var L_452986467 = (compTmpData_2231369775.children).length;
+      var L_452986481 = (compTmpData_2231369775.children).length;
       Label2: do {
         F.line = 237;
           Label3: while (true) {
-          if (!(i_452986466 < L_452986467)) break Label3;
+          if (!(i_452986480 < L_452986481)) break Label3;
             F.line = 7;
-            tag_2231369788 = compTmpData_2231369775.children[chckIndx(i_452986466, 0, (compTmpData_2231369775.children).length - 1)];
+            tag_2231369788 = compTmpData_2231369775.children[chckIndx(i_452986480, 0, (compTmpData_2231369775.children).length - 1)];
             if (!((_current_2231369776 == null))) {
             F.line = 7;
             _elements_2231369784.push(_current_2231369776);;
@@ -19996,8 +20201,8 @@ function reRender_2231369772(self_2231369773) {
             }
             
             F.line = 239;
-            i_452986466 = addInt(i_452986466, 1);
-            if (!(((compTmpData_2231369775.children).length == L_452986467))) {
+            i_452986480 = addInt(i_452986480, 1);
+            if (!(((compTmpData_2231369775.children).length == L_452986481))) {
             F.line = 240;
             failedAssertImpl_218103864(makeNimstrLit("/home/runner/.choosenim/toolchains/nim-1.6.14/lib/system/iterators.nim(240, 11) `len(a) == L` the length of the seq changed while iterating over it"));
             }
@@ -20006,20 +20211,20 @@ function reRender_2231369772(self_2231369773) {
       } while (false);
     } while (false);
     Label4: do {
-      F.line = 169;
+      F.line = 253;
       var __i_2231369803 = 0;
       F.line = 117;
-      var colontmp__452986470 = 0;
+      var colontmp__452986484 = 0;
       F.line = 7;
-      colontmp__452986470 = (_elements_2231369784).length;
+      colontmp__452986484 = (_elements_2231369784).length;
       F.line = 119;
-      var i_452986471 = 0;
+      var i_452986485 = 0;
       Label5: do {
         F.line = 120;
           Label6: while (true) {
-          if (!(i_452986471 < colontmp__452986470)) break Label6;
+          if (!(i_452986485 < colontmp__452986484)) break Label6;
             F.line = 7;
-            __i_2231369803 = i_452986471;
+            __i_2231369803 = i_452986485;
             F.line = 7;
             var elem_2231369804 = _elements_2231369784[chckIndx(__i_2231369803, 0, (_elements_2231369784).length - 1)];
             F.line = 7;
@@ -20027,7 +20232,7 @@ function reRender_2231369772(self_2231369773) {
             F.line = 7;
             elem_2231369804.outerHTML = toJSStr(HEX24_1560281833(tag_2231369805));
             F.line = 122;
-            i_452986471 = addInt(i_452986471, 1);
+            i_452986485 = addInt(i_452986485, 1);
           }
       } while (false);
     } while (false);
@@ -20044,26 +20249,26 @@ function reRender_2264924195(self_2264924196) {
     F.line = 6;
     var tmpData_2264924197 = (makeNimstrLit("[data-") || []).concat(self_2264924196.uniqCompId || [],makeNimstrLit("]") || []);
     F.line = 6;
-    var compTmpData_2264924198 = render_956307321(self_2264924196);
+    var compTmpData_2264924198 = render_1023416185(self_2264924196);
     F.line = 6;
     addArgIter_1560281652(compTmpData_2264924198, (makeNimstrLit("data-") || []).concat(self_2264924196.uniqCompId || []));
     F.line = 6;
     var _current_2264924199 = document.querySelector(toJSStr(tmpData_2264924197));
     F.line = 6;
-    var _elements_2264924207 = newSeq_2164261020(0);
+    var _elements_2264924207 = newSeq_2164261058(0);
     Label1: do {
-      F.line = 149;
+      F.line = 233;
       var tag_2264924211 = null;
       F.line = 235;
-      var i_452986474 = 0;
+      var i_452986488 = 0;
       F.line = 236;
-      var L_452986475 = (compTmpData_2264924198.children).length;
+      var L_452986489 = (compTmpData_2264924198.children).length;
       Label2: do {
         F.line = 237;
           Label3: while (true) {
-          if (!(i_452986474 < L_452986475)) break Label3;
+          if (!(i_452986488 < L_452986489)) break Label3;
             F.line = 6;
-            tag_2264924211 = compTmpData_2264924198.children[chckIndx(i_452986474, 0, (compTmpData_2264924198.children).length - 1)];
+            tag_2264924211 = compTmpData_2264924198.children[chckIndx(i_452986488, 0, (compTmpData_2264924198.children).length - 1)];
             if (!((_current_2264924199 == null))) {
             F.line = 6;
             _elements_2264924207.push(_current_2264924199);;
@@ -20072,8 +20277,8 @@ function reRender_2264924195(self_2264924196) {
             }
             
             F.line = 239;
-            i_452986474 = addInt(i_452986474, 1);
-            if (!(((compTmpData_2264924198.children).length == L_452986475))) {
+            i_452986488 = addInt(i_452986488, 1);
+            if (!(((compTmpData_2264924198.children).length == L_452986489))) {
             F.line = 240;
             failedAssertImpl_218103864(makeNimstrLit("/home/runner/.choosenim/toolchains/nim-1.6.14/lib/system/iterators.nim(240, 11) `len(a) == L` the length of the seq changed while iterating over it"));
             }
@@ -20082,20 +20287,20 @@ function reRender_2264924195(self_2264924196) {
       } while (false);
     } while (false);
     Label4: do {
-      F.line = 169;
+      F.line = 253;
       var __i_2264924226 = 0;
       F.line = 117;
-      var colontmp__452986478 = 0;
+      var colontmp__452986492 = 0;
       F.line = 6;
-      colontmp__452986478 = (_elements_2264924207).length;
+      colontmp__452986492 = (_elements_2264924207).length;
       F.line = 119;
-      var i_452986479 = 0;
+      var i_452986493 = 0;
       Label5: do {
         F.line = 120;
           Label6: while (true) {
-          if (!(i_452986479 < colontmp__452986478)) break Label6;
+          if (!(i_452986493 < colontmp__452986492)) break Label6;
             F.line = 6;
-            __i_2264924226 = i_452986479;
+            __i_2264924226 = i_452986493;
             F.line = 6;
             var elem_2264924227 = _elements_2264924207[chckIndx(__i_2264924226, 0, (_elements_2264924207).length - 1)];
             F.line = 6;
@@ -20103,7 +20308,7 @@ function reRender_2264924195(self_2264924196) {
             F.line = 6;
             elem_2264924227.outerHTML = toJSStr(HEX24_1560281833(tag_2264924228));
             F.line = 122;
-            i_452986479 = addInt(i_452986479, 1);
+            i_452986493 = addInt(i_452986493, 1);
           }
       } while (false);
     } while (false);
@@ -20120,26 +20325,26 @@ function reRender_2315255894(self_2315255895) {
     F.line = 7;
     var tmpData_2315255896 = (makeNimstrLit("[data-") || []).concat(self_2315255895.uniqCompId || [],makeNimstrLit("]") || []);
     F.line = 7;
-    var compTmpData_2315255897 = render_956307321(self_2315255895);
+    var compTmpData_2315255897 = render_1023416185(self_2315255895);
     F.line = 7;
     addArgIter_1560281652(compTmpData_2315255897, (makeNimstrLit("data-") || []).concat(self_2315255895.uniqCompId || []));
     F.line = 7;
     var _current_2315255898 = document.querySelector(toJSStr(tmpData_2315255896));
     F.line = 7;
-    var _elements_2315255906 = newSeq_2164261020(0);
+    var _elements_2315255906 = newSeq_2164261058(0);
     Label1: do {
-      F.line = 149;
+      F.line = 233;
       var tag_2315255910 = null;
       F.line = 235;
-      var i_452986482 = 0;
+      var i_452986496 = 0;
       F.line = 236;
-      var L_452986483 = (compTmpData_2315255897.children).length;
+      var L_452986497 = (compTmpData_2315255897.children).length;
       Label2: do {
         F.line = 237;
           Label3: while (true) {
-          if (!(i_452986482 < L_452986483)) break Label3;
+          if (!(i_452986496 < L_452986497)) break Label3;
             F.line = 7;
-            tag_2315255910 = compTmpData_2315255897.children[chckIndx(i_452986482, 0, (compTmpData_2315255897.children).length - 1)];
+            tag_2315255910 = compTmpData_2315255897.children[chckIndx(i_452986496, 0, (compTmpData_2315255897.children).length - 1)];
             if (!((_current_2315255898 == null))) {
             F.line = 7;
             _elements_2315255906.push(_current_2315255898);;
@@ -20148,8 +20353,8 @@ function reRender_2315255894(self_2315255895) {
             }
             
             F.line = 239;
-            i_452986482 = addInt(i_452986482, 1);
-            if (!(((compTmpData_2315255897.children).length == L_452986483))) {
+            i_452986496 = addInt(i_452986496, 1);
+            if (!(((compTmpData_2315255897.children).length == L_452986497))) {
             F.line = 240;
             failedAssertImpl_218103864(makeNimstrLit("/home/runner/.choosenim/toolchains/nim-1.6.14/lib/system/iterators.nim(240, 11) `len(a) == L` the length of the seq changed while iterating over it"));
             }
@@ -20158,20 +20363,20 @@ function reRender_2315255894(self_2315255895) {
       } while (false);
     } while (false);
     Label4: do {
-      F.line = 169;
+      F.line = 253;
       var __i_2315255925 = 0;
       F.line = 117;
-      var colontmp__452986486 = 0;
+      var colontmp__452986500 = 0;
       F.line = 7;
-      colontmp__452986486 = (_elements_2315255906).length;
+      colontmp__452986500 = (_elements_2315255906).length;
       F.line = 119;
-      var i_452986487 = 0;
+      var i_452986501 = 0;
       Label5: do {
         F.line = 120;
           Label6: while (true) {
-          if (!(i_452986487 < colontmp__452986486)) break Label6;
+          if (!(i_452986501 < colontmp__452986500)) break Label6;
             F.line = 7;
-            __i_2315255925 = i_452986487;
+            __i_2315255925 = i_452986501;
             F.line = 7;
             var elem_2315255926 = _elements_2315255906[chckIndx(__i_2315255925, 0, (_elements_2315255906).length - 1)];
             F.line = 7;
@@ -20179,7 +20384,7 @@ function reRender_2315255894(self_2315255895) {
             F.line = 7;
             elem_2315255926.outerHTML = toJSStr(HEX24_1560281833(tag_2315255927));
             F.line = 122;
-            i_452986487 = addInt(i_452986487, 1);
+            i_452986501 = addInt(i_452986501, 1);
           }
       } while (false);
     } while (false);
@@ -20196,26 +20401,26 @@ function reRender_2298478633(self_2298478634) {
     F.line = 6;
     var tmpData_2298478635 = (makeNimstrLit("[data-") || []).concat(self_2298478634.uniqCompId || [],makeNimstrLit("]") || []);
     F.line = 6;
-    var compTmpData_2298478636 = render_956307321(self_2298478634);
+    var compTmpData_2298478636 = render_1023416185(self_2298478634);
     F.line = 6;
     addArgIter_1560281652(compTmpData_2298478636, (makeNimstrLit("data-") || []).concat(self_2298478634.uniqCompId || []));
     F.line = 6;
     var _current_2298478637 = document.querySelector(toJSStr(tmpData_2298478635));
     F.line = 6;
-    var _elements_2298478645 = newSeq_2164261020(0);
+    var _elements_2298478645 = newSeq_2164261058(0);
     Label1: do {
-      F.line = 149;
+      F.line = 233;
       var tag_2298478649 = null;
       F.line = 235;
-      var i_452986490 = 0;
+      var i_452986504 = 0;
       F.line = 236;
-      var L_452986491 = (compTmpData_2298478636.children).length;
+      var L_452986505 = (compTmpData_2298478636.children).length;
       Label2: do {
         F.line = 237;
           Label3: while (true) {
-          if (!(i_452986490 < L_452986491)) break Label3;
+          if (!(i_452986504 < L_452986505)) break Label3;
             F.line = 6;
-            tag_2298478649 = compTmpData_2298478636.children[chckIndx(i_452986490, 0, (compTmpData_2298478636.children).length - 1)];
+            tag_2298478649 = compTmpData_2298478636.children[chckIndx(i_452986504, 0, (compTmpData_2298478636.children).length - 1)];
             if (!((_current_2298478637 == null))) {
             F.line = 6;
             _elements_2298478645.push(_current_2298478637);;
@@ -20224,8 +20429,8 @@ function reRender_2298478633(self_2298478634) {
             }
             
             F.line = 239;
-            i_452986490 = addInt(i_452986490, 1);
-            if (!(((compTmpData_2298478636.children).length == L_452986491))) {
+            i_452986504 = addInt(i_452986504, 1);
+            if (!(((compTmpData_2298478636.children).length == L_452986505))) {
             F.line = 240;
             failedAssertImpl_218103864(makeNimstrLit("/home/runner/.choosenim/toolchains/nim-1.6.14/lib/system/iterators.nim(240, 11) `len(a) == L` the length of the seq changed while iterating over it"));
             }
@@ -20234,20 +20439,20 @@ function reRender_2298478633(self_2298478634) {
       } while (false);
     } while (false);
     Label4: do {
-      F.line = 169;
+      F.line = 253;
       var __i_2298478664 = 0;
       F.line = 117;
-      var colontmp__452986494 = 0;
+      var colontmp__452986508 = 0;
       F.line = 6;
-      colontmp__452986494 = (_elements_2298478645).length;
+      colontmp__452986508 = (_elements_2298478645).length;
       F.line = 119;
-      var i_452986495 = 0;
+      var i_452986509 = 0;
       Label5: do {
         F.line = 120;
           Label6: while (true) {
-          if (!(i_452986495 < colontmp__452986494)) break Label6;
+          if (!(i_452986509 < colontmp__452986508)) break Label6;
             F.line = 6;
-            __i_2298478664 = i_452986495;
+            __i_2298478664 = i_452986509;
             F.line = 6;
             var elem_2298478665 = _elements_2298478645[chckIndx(__i_2298478664, 0, (_elements_2298478645).length - 1)];
             F.line = 6;
@@ -20255,7 +20460,7 @@ function reRender_2298478633(self_2298478634) {
             F.line = 6;
             elem_2298478665.outerHTML = toJSStr(HEX24_1560281833(tag_2298478666));
             F.line = 122;
-            i_452986495 = addInt(i_452986495, 1);
+            i_452986509 = addInt(i_452986509, 1);
           }
       } while (false);
     } while (false);
@@ -20272,26 +20477,26 @@ function reRender_2281701440(self_2281701441) {
     F.line = 9;
     var tmpData_2281701442 = (makeNimstrLit("[data-") || []).concat(self_2281701441.uniqCompId || [],makeNimstrLit("]") || []);
     F.line = 9;
-    var compTmpData_2281701443 = render_956307321(self_2281701441);
+    var compTmpData_2281701443 = render_1023416185(self_2281701441);
     F.line = 9;
     addArgIter_1560281652(compTmpData_2281701443, (makeNimstrLit("data-") || []).concat(self_2281701441.uniqCompId || []));
     F.line = 9;
     var _current_2281701444 = document.querySelector(toJSStr(tmpData_2281701442));
     F.line = 9;
-    var _elements_2281701452 = newSeq_2164261020(0);
+    var _elements_2281701452 = newSeq_2164261058(0);
     Label1: do {
-      F.line = 149;
+      F.line = 233;
       var tag_2281701456 = null;
       F.line = 235;
-      var i_452986498 = 0;
+      var i_452986512 = 0;
       F.line = 236;
-      var L_452986499 = (compTmpData_2281701443.children).length;
+      var L_452986513 = (compTmpData_2281701443.children).length;
       Label2: do {
         F.line = 237;
           Label3: while (true) {
-          if (!(i_452986498 < L_452986499)) break Label3;
+          if (!(i_452986512 < L_452986513)) break Label3;
             F.line = 9;
-            tag_2281701456 = compTmpData_2281701443.children[chckIndx(i_452986498, 0, (compTmpData_2281701443.children).length - 1)];
+            tag_2281701456 = compTmpData_2281701443.children[chckIndx(i_452986512, 0, (compTmpData_2281701443.children).length - 1)];
             if (!((_current_2281701444 == null))) {
             F.line = 9;
             _elements_2281701452.push(_current_2281701444);;
@@ -20300,8 +20505,8 @@ function reRender_2281701440(self_2281701441) {
             }
             
             F.line = 239;
-            i_452986498 = addInt(i_452986498, 1);
-            if (!(((compTmpData_2281701443.children).length == L_452986499))) {
+            i_452986512 = addInt(i_452986512, 1);
+            if (!(((compTmpData_2281701443.children).length == L_452986513))) {
             F.line = 240;
             failedAssertImpl_218103864(makeNimstrLit("/home/runner/.choosenim/toolchains/nim-1.6.14/lib/system/iterators.nim(240, 11) `len(a) == L` the length of the seq changed while iterating over it"));
             }
@@ -20310,20 +20515,20 @@ function reRender_2281701440(self_2281701441) {
       } while (false);
     } while (false);
     Label4: do {
-      F.line = 169;
+      F.line = 253;
       var __i_2281701471 = 0;
       F.line = 117;
-      var colontmp__452986502 = 0;
+      var colontmp__452986516 = 0;
       F.line = 9;
-      colontmp__452986502 = (_elements_2281701452).length;
+      colontmp__452986516 = (_elements_2281701452).length;
       F.line = 119;
-      var i_452986503 = 0;
+      var i_452986517 = 0;
       Label5: do {
         F.line = 120;
           Label6: while (true) {
-          if (!(i_452986503 < colontmp__452986502)) break Label6;
+          if (!(i_452986517 < colontmp__452986516)) break Label6;
             F.line = 9;
-            __i_2281701471 = i_452986503;
+            __i_2281701471 = i_452986517;
             F.line = 9;
             var elem_2281701472 = _elements_2281701452[chckIndx(__i_2281701471, 0, (_elements_2281701452).length - 1)];
             F.line = 9;
@@ -20331,7 +20536,7 @@ function reRender_2281701440(self_2281701441) {
             F.line = 9;
             elem_2281701472.outerHTML = toJSStr(HEX24_1560281833(tag_2281701473));
             F.line = 122;
-            i_452986503 = addInt(i_452986503, 1);
+            i_452986517 = addInt(i_452986517, 1);
           }
       } while (false);
     } while (false);
@@ -20342,7 +20547,7 @@ function reRender_2281701440(self_2281701441) {
   
 }
 
-function reRender_956307323(self_956307324) {
+function reRender_1023416187(self_1023416188) {
   var F = {procname: "renderer.reRender", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/renderer.nim", line: 0};
   framePtr = F;
   framePtr = F.prev;
@@ -20350,64 +20555,64 @@ function reRender_956307323(self_956307324) {
   
 }
 
-function reRender_956307325(self_956307324) {
+function reRender_1023416189(self_1023416188) {
   var F = {procname: "renderer.reRender", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/renderer.nim", line: 0};
   framePtr = F;
     F.line = 531;
-    chckNilDisp(self_956307324);
-    if (isObj(self_956307324.m_type, NTI2181038083)) {
+    chckNilDisp(self_1023416188);
+    if (isObj(self_1023416188.m_type, NTI2181038083)) {
     F.line = 237;
-    reRender_2181038132(self_956307324);
+    reRender_2181038132(self_1023416188);
     }
     else {
-    if (isObj(self_956307324.m_type, NTI2164260918)) {
+    if (isObj(self_1023416188.m_type, NTI2164260929)) {
     F.line = 237;
-    reRender_2164261011(self_956307324);
+    reRender_2164261049(self_1023416188);
     }
     else {
-    if (isObj(self_956307324.m_type, NTI2197815299)) {
+    if (isObj(self_1023416188.m_type, NTI2197815299)) {
     F.line = 237;
-    reRender_2197815360(self_956307324);
+    reRender_2197815360(self_1023416188);
     }
     else {
-    if (isObj(self_956307324.m_type, NTI2248146947)) {
+    if (isObj(self_1023416188.m_type, NTI2248146947)) {
     F.line = 237;
-    reRender_2248146979(self_956307324);
+    reRender_2248146979(self_1023416188);
     }
     else {
-    if (isObj(self_956307324.m_type, NTI2214592515)) {
+    if (isObj(self_1023416188.m_type, NTI2214592515)) {
     F.line = 237;
-    reRender_2214592567(self_956307324);
+    reRender_2214592567(self_1023416188);
     }
     else {
-    if (isObj(self_956307324.m_type, NTI2231369731)) {
+    if (isObj(self_1023416188.m_type, NTI2231369731)) {
     F.line = 237;
-    reRender_2231369772(self_956307324);
+    reRender_2231369772(self_1023416188);
     }
     else {
-    if (isObj(self_956307324.m_type, NTI2264924163)) {
+    if (isObj(self_1023416188.m_type, NTI2264924163)) {
     F.line = 237;
-    reRender_2264924195(self_956307324);
+    reRender_2264924195(self_1023416188);
     }
     else {
-    if (isObj(self_956307324.m_type, NTI2315255811)) {
+    if (isObj(self_1023416188.m_type, NTI2315255811)) {
     F.line = 237;
-    reRender_2315255894(self_956307324);
+    reRender_2315255894(self_1023416188);
     }
     else {
-    if (isObj(self_956307324.m_type, NTI2298478595)) {
+    if (isObj(self_1023416188.m_type, NTI2298478595)) {
     F.line = 237;
-    reRender_2298478633(self_956307324);
+    reRender_2298478633(self_1023416188);
     }
     else {
-    if (isObj(self_956307324.m_type, NTI2281701383)) {
+    if (isObj(self_1023416188.m_type, NTI2281701383)) {
     F.line = 237;
-    reRender_2281701440(self_956307324);
+    reRender_2281701440(self_1023416188);
     }
     else {
-    if (isObj(self_956307324.m_type, NTI956301319)) {
+    if (isObj(self_1023416188.m_type, NTI1023410183)) {
     F.line = 237;
-    reRender_956307323(self_956307324);
+    reRender_1023416187(self_1023416188);
     }
     }}}}}}}}}}
   framePtr = F.prev;
