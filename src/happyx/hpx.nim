@@ -767,8 +767,10 @@ when isMainModule:
       styledEcho fgMagenta, "hpx update VERSION\n"
     else:
       styledEcho fgRed, "Unknown subcommand: ", fgWhite, subcmdHelp
+    illwillDeinit()
   of "":
     quit(dispatchmainCommand(cmdline = pars[0..^1]))
   else:
     styledEcho fgRed, "Unknown subcommand: ", fgWhite, subcmd
+    illwillDeinit()
     quit(QuitFailure)
