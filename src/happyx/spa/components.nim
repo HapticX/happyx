@@ -38,7 +38,6 @@ proc replaceSelfStateVal(statement: NimNode) =
 
 proc replaceSuperCall(statement: NimNode, parentComponent, funcName: string, needDiscard: bool = false) =
   ## Replaces super() calls in `statement`
-  echo treeRepr statement
   var superCallsIdx: seq[int] = @[]
   for idx, child in statement.pairs:
     if child.kind == nnkCall and child[0] == ident"super" and child.len == 1:
@@ -446,7 +445,6 @@ macro component*(name, body: untyped): untyped =
         of "template":
           # Component template
           s[^1].replaceSuperCall(extendsOf, "renderTag")
-          echo treeRepr s[^1]
           templateStmtList = newStmtList(
             newAssignment(
               ident"result",
@@ -730,4 +728,3 @@ macro component*(name, body: untyped): untyped =
     ),
     methodsStmtList,
   )
-  echo result.toStrLit
