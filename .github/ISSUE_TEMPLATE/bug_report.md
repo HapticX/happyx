@@ -27,6 +27,8 @@ If applicable, add screenshots to help explain your problem.
  - OS: [e.g. Win10]
  - Browser [e.g. chrome]
  - Version [e.g. 22]
+ - HappyX version [e.g. 1.11.0] (to see it you can use `hpx -v`
+ - HappyX project type [ssr/spa]
 
 **Additional context** ✌
 Add any other context about the problem here.
