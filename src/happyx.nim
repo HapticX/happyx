@@ -286,7 +286,7 @@ when not defined(js):
     cors
 
 import
-  happyx/core/[exceptions, constants],
+  happyx/core/[exceptions, constants, secure],
   happyx/sugar/[use, sgr, js, style],
   happyx/spa/[renderer, state, components, translatable],
   happyx/tmpl_engine/[engine],
@@ -300,6 +300,7 @@ when enableUi or defined(docgen):
 
 export
   exceptions,
+  secure,
   use,
   renderer,
   state,

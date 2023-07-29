@@ -10,12 +10,13 @@ import
   locks,
   osproc,
   times,
+  math,
   os,
   # thirdparty
   regex,
   cligen,
   # main library
-  happyx
+  ../happyx
 
 import illwill except
   fgBlue, fgGreen, fgMagenta, fgRed, fgWhite, fgYellow, bgBlue,
@@ -38,12 +39,21 @@ type
   GodEyeData = object
     needReload: ptr bool
     project: ptr ProjectData
+  
+  Progress = ref object
+    state: string
 
 
 const
-  VERSION = "1.11.0"
+  VERSION = "1.12.0"
   SPA_MAIN_FILE = "main"
   CONFIG_FILE = "happyx.cfg"
+  PROGRESS_STATES = ["|", "/", "-", "\\"]
+  PROCESS_OPTIONS: set[ProcessOption] =
+    when defined(windows):
+      {poStdErrToStdOut}
+    else:
+      {poStdErrToStdOut, poUsePath}
 
 
 var
@@ -61,11 +71,20 @@ illwillInit(false)
 setControlCHook(ctrlC)
 
 
+proc initProgress: Progress = Progress(state: "|")
+
+proc nextState(self: Progress): string =
+  var idx = PROGRESS_STATES.find(self.state)
+  if idx < PROGRESS_STATES.len - 1:
+    inc idx
+  else:
+    idx = 0
+  self.state = PROGRESS_STATES[idx]
+  self.state
+
+
 proc compileProject(): ProjectData {. discardable .} =
   ## Compiling Project
-  var
-    idx = 0
-    arr = ["/", "|", "\\", "-"]
   result = ProjectData(
       projectType: ptSPA, srcDir: "src",
       mainFile: SPA_MAIN_FILE,
@@ -85,12 +104,6 @@ proc compileProject(): ProjectData {. discardable .} =
     result.assetsDir = cfg.getSectionValue("Main", "assetsDir", "public")
     result.buildDir = cfg.getSectionValue("Main", "buildDir", "build")
   # Only errors will shows
-  
-  let options: set[ProcessOption] =
-    when defined(windows):
-      {poStdErrToStdOut}
-    else:
-      {poStdErrToStdOut, poUsePath}
 
   case result.projectType:
   of ptSPA:
@@ -99,21 +112,18 @@ proc compileProject(): ProjectData {. discardable .} =
       [
         "js", "-c", "--hints:off", "--warnings:off",
         "--opt:size", "-d:danger", "-x:off", "-a:off", result.mainFile
-      ], nil, options
+      ], nil, PROCESS_OPTIONS
     )
   of ptSSR, ptSSG:
     return result
 
   styledEcho "Compiling ", fgMagenta, result.mainFile, fgWhite, " script ... /"
+  var progress = initProgress()
 
   while result.process.running:
-    if idx < arr.len-1:
-      inc idx
-    else:
-      idx = 0
     eraseLine()
     cursorUp()
-    styledEcho "Compiling ", fgMagenta, result.mainFile, fgWhite, " script ... ", arr[idx]
+    styledEcho "Compiling ", fgMagenta, result.mainFile, fgWhite, " script ... ", progress.nextState
     sleep(60)
   eraseLine()
   cursorUp()
@@ -208,10 +218,32 @@ proc xmlTree2Text(data: var string, tree: XmlNode, lvl: int = 2) =
       data.xmlTree2Text(child, lvl+2)
 
 
+proc updateHappyx(version: string) =
+  var
+    process = startProcess(
+      "nimble", getCurrentDir(), ["install", "happyx@" & version, "-y"], nil, PROCESS_OPTIONS
+    )
+    progress = initProgress()
+  styledEcho fgYellow, fmt"Updating HappyX ..."
+  sleep(100)
+  
+  for line in process.lines:
+    echo line
+
+  if not process.isNil():
+    process.close()
+  
+  sleep(1000)
+  styledEcho fgMagenta, "HappyX ", fgGreen, "successfully updated to ", fgMagenta, version
+
+
+# ---=== Commands ===--- #
+
+
 proc mainHelpMessage() =
   ## Shows the general help message that describes
   let subcommands = [
-    "build", "dev", "serve", "create", "html2tag", "help"
+    "build", "dev", "serve", "create", "html2tag", "update", "help"
   ]
   styledEcho fgBlue, center("# ---=== HappyX CLI ===--- #", 28)
   styledEcho fgGreen, align("v" & VERSION, 28)
@@ -221,7 +253,26 @@ proc mainHelpMessage() =
     fgWhite, " HappyX projects\n"
   )
   styledEcho "Usage:"
-  styledEcho fgMagenta, "hpx ", fgBlue, subcommands.join("|"), fgYellow, " [subcommand-args]"
+  styledEcho fgMagenta, "  hpx ", fgBlue, subcommands.join("|"), fgYellow, " [subcommand-args]"
+
+
+proc updateCommand(args: seq[string]): int =
+  var version = "head"
+  if args.len > 1:
+    styledEcho fgRed, "Only one argument possible for `update` command!"
+  else:
+    version = args[0]
+  
+  var v = version.toLower().strip(chars = {'v', '#'})
+  case v
+  of "head", "latest", "main", "master":
+    updateHappyx("#head")
+  else:
+    if re"\A(\d+\.\d+\.\d+)\z" in v:
+      updateHappyx(v)
+    else:
+      return QuitFailure
+  QuitSuccess
 
 
 proc buildCommand(optSize: bool = false): int =
@@ -572,8 +623,6 @@ proc devCommand(host: string = "127.0.0.1", port: int = 5000,
       project: addr project,
       needReload: addr needReload,
     )
-    idx = 0
-    arr = ["/", "|", "\\", "-"]
   
   if project.error.len > 0:
     return QuitFailure
@@ -648,6 +697,7 @@ when isMainModule:
     ],
     [createCommand, cmdName = "create"],
     [html2tagCommand, cmdName = "html2tag"],
+    [updateCommand, cmdName = "update"],
     [
       mainCommand,
       short = {"version": 'v'}
@@ -669,6 +719,8 @@ when isMainModule:
     quit(dispatchcreate(cmdline = pars[1..^1]))
   of "html2tag":
     quit(dispatchhtml2tag(cmdline = pars[1..^1]))
+  of "update":
+    quit(dispatchupdate(cmdline = pars[1..^1]))
   of "help":
     let
       subcmdHelp =
@@ -709,6 +761,10 @@ when isMainModule:
       styledEcho "\nUsage:"
       styledEcho fgMagenta, "hpx html2tag source.html\n"
       styledEcho align("output", 12), "|o - Output file (ex. --output:source)"
+    of "update":
+      styledEcho fgBlue, "HappyX", fgMagenta, " update ", fgWhite, "command updates happyx framework."
+      styledEcho "\nUsage:"
+      styledEcho fgMagenta, "hpx update VERSION\n"
     else:
       styledEcho fgRed, "Unknown subcommand: ", fgWhite, subcmdHelp
   of "":

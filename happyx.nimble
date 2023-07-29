@@ -2,11 +2,11 @@
 
 description = "Macro-oriented asynchronous web-framework written with ♥"
 author = "HapticX"
-version = "1.11.0"
+version = "1.12.0"
 license = "MIT"
 srcDir = "src"
 installExt = @["nim"]
-bin = @["hpx"]
+bin = @["happyx/hpx"]
 
 # Deps
 
@@ -25,3 +25,5 @@ requires "nimja"
 # Websockets
 requires "websocket"
 requires "websocketx"
+# Cryptographic
+requires "nimcrypto"

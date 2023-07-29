@@ -29,9 +29,18 @@ const
   enableDebug* = defined(debug) or defined(happyxDebug) or defined(hpxDebug)
   # Framework features
   enableUi* = defined(enableUi) or defined(happyxEnableUi) or defined(hpxEnableUi)
+  cryptoMethod* {.strdefine.} = "sha512"
   httpMethods* = [
     "get", "post", "put", "patch", "link", "options", "head", "delete", "unlink", "purge", "copy"
   ]
+  availableCryptoMethods = ["sha224", "sha256", "sha384", "sha512"]
+
+
+when cryptoMethod notin availableCryptoMethods:
+  raise newException(
+    ValueError,
+    fmt"cryptoMethod is wrong! it's can be {availableCryptoMethods}, but got {cryptoMethod}"
+  )
 
 
 when defined(js):
