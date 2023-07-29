@@ -557,7 +557,6 @@ macro routes*(app: App, body: untyped): untyped =
       )
     ))
   )
-  echo result.toStrLit
 
 
 macro appRoutes*(name: string, body: untyped): untyped =
