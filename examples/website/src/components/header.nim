@@ -52,3 +52,8 @@ component Header:
             route("/sponsors/")
         ):
           "🔥 Sponsors"
+        component Button(
+          action = proc() =
+            route("/roadmap/")
+        ):
+          "🌎 RoadMap"

@@ -8,7 +8,7 @@ import
     section, smart_card, about_section,
     drawer, divider, sponsors_arr
   ],
-  ./pages/[home, sponsors]
+  ./pages/[home, sponsors, roadmap]
 
 
 {.emit: """//js
@@ -35,6 +35,7 @@ window.addEventListener('scroll', (ev) => {
 appRoutes("app"):
   mount "/" -> Home
   mount "/sponsors" -> Sponsors
+  mount "/roadmap" -> RoadMap
 
   notfound:
     tDiv(class = "flex flex-col gap-2 justify-center items-center w-screen h-screen dark:text-[{ForegroundDark}] text-[{Foreground}] dark:bg-[{BackgroundDark}] bg-[{Background}]"):

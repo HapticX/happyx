@@ -16,6 +16,12 @@ component Drawer:
         self.toggle()
     tDiv(id = "drawer", class = "fixed right-0 duration-500 transition-all w-2/3 translate-x-full h-screen z-50 bg-[{BackgroundSecondary}] dark:bg-[{BackgroundSecondaryDark}]"):
       tDiv(class = "w-full h-full flex flex-col gap-8 jusitfy-center items-center py-32 px-8"):
+        tDiv(class = "w-full flex justify-end items-center"):
+          component Button(
+            action = proc() =
+              self.toggle()
+          ):
+            "x"
         component Button(
           action = proc() =
             {.emit:"""//js
@@ -43,6 +49,11 @@ component Drawer:
             route("/sponsors/")
         ):
           "🔥 Sponsors"
+        component Button(
+          action = proc() =
+            route("/roadmap/")
+        ):
+          "🌎 RoadMap"
   
   [methods]:
     proc toggle*() =
