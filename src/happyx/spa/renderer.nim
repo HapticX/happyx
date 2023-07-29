@@ -465,8 +465,15 @@ macro routes*(app: App, body: untyped): untyped =
     if sugarRoutes[key].httpMethod.toLower() in ["build", "page"]:
       body.add(newCall(newStrLitNode(key), sugarRoutes[key].body))
   
+  var
+    cookiesInVar = newDotExpr(ident"document", ident"cookie")
+  
   for statement in body:
     if statement.kind in [nnkCommand, nnkCall]:
+      if statement[^1].kind == nnkStmtList:
+        # Check variable usage
+        if statement[^1].isIdentUsed(ident"cookies"):
+          statement[^1].insert(0, newVarStmt(ident"cookies", cookiesInVar))
       if statement.len == 2 and statement[0].kind == nnkStrLit:
         let exported = exportRouteArgs(
           iPath,
@@ -550,6 +557,7 @@ macro routes*(app: App, body: untyped): untyped =
       )
     ))
   )
+  echo result.toStrLit
 
 
 macro appRoutes*(name: string, body: untyped): untyped =

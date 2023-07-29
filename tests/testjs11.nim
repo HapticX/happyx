@@ -62,3 +62,8 @@ appRoutes "app":
     component Constructor->construct(val = 100):
       "Hello, world!"
     component ConstructorChild->construct()
+  
+  "/cookiesTest":
+    tDiv:
+      "Hello, world!"
+      {cookies}

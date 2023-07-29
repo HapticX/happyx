@@ -6,6 +6,7 @@ import
   browsers,
   parsecfg,
   htmlparser,
+  exitprocs,
   xmltree,
   locks,
   osproc,
@@ -61,14 +62,18 @@ var
   L: Lock
 
 
-proc ctrlC {. noconv .} =
-  ## Hook for Ctrl+C
+proc shutdownCli =
   illwillDeinit()
   deinitLock(L)
+
+
+proc ctrlC {. noconv .} =
+  ## Hook for Ctrl+C
+  shutdownCli()
   quit(QuitSuccess)
 
 illwillInit(false)
-setControlCHook(ctrlC)
+addExitProc(ctrlC)
 
 
 proc initProgress: Progress = Progress(state: "|")
@@ -271,7 +276,9 @@ proc updateCommand(args: seq[string]): int =
     if re"\A(\d+\.\d+\.\d+)\z" in v:
       updateHappyx(v)
     else:
+      shutdownCli()
       return QuitFailure
+  shutdownCli()
   QuitSuccess
 
 
@@ -372,7 +379,7 @@ proc buildCommand(optSize: bool = false): int =
   f.write(data)
   f.close()
   styledEcho fgGreen, "Build completed"
-  illwillDeinit()
+  shutdownCli()
   QuitSuccess
 
 
@@ -414,6 +421,8 @@ proc html2tagCommand(output: string = "", args: seq[string]): int =
   file = open(o, fmWrite)
   file.write(outputData)
   file.close()
+  shutdownCli()
+  QuitSuccess
 
 
 proc createCommand(name: string = "", kind: string = "", templates: bool = false,
@@ -434,6 +443,7 @@ proc createCommand(name: string = "", kind: string = "", templates: bool = false
       styledEcho fgRed, "EOF error was occurred!"
       styledEcho fgYellow, "Please, try with flags:"
       styledEcho fgMagenta, "hpx create ", styleBright, "--name=app --kind=SPA"
+      shutdownCli()
       return QuitFailure
     while projectName.len < 1 or projectName.contains(re"[,!\\/':@~`]"):
       styledEcho fgRed, "Invalid name! It doesn't contains one of these symbols: , ! \\ / ' : @ ~ `"
@@ -442,6 +452,7 @@ proc createCommand(name: string = "", kind: string = "", templates: bool = false
   else:
     if projectName.contains(re"[,!\\/':@~`]"):
       styledEcho fgRed, "Invalid name! It doesn't contains one of these symbols: , ! \\ / ' : @ ~ `"
+      shutdownCli()
       return QuitFailure
     projectName = name
 
@@ -480,6 +491,7 @@ proc createCommand(name: string = "", kind: string = "", templates: bool = false
     selected = projectTypes.find(kind.toUpper())
     if selected < 0:
       styledEcho fgRed, "Invalid project type! it should be one of these [", projectTypes.join(", "), "]"
+      shutdownCli()
       return QuitFailure
   
   styledEcho "Initializing project ..."
@@ -609,7 +621,7 @@ proc createCommand(name: string = "", kind: string = "", templates: bool = false
   else:
     discard
   styledEcho fgGreen, "Successfully created ", fgMagenta, projectName, fgGreen, " project!"
-  illwillDeinit()
+  shutdownCli()
   QuitSuccess
 
 
@@ -625,6 +637,7 @@ proc devCommand(host: string = "127.0.0.1", port: int = 5000,
     )
   
   if project.error.len > 0:
+    shutdownCli()
     return QuitFailure
 
   if reload:
@@ -635,8 +648,7 @@ proc devCommand(host: string = "127.0.0.1", port: int = 5000,
   if project.projectType == ptSSR:
     styledEcho fgRed, "SSR projects not available in the dev mode."
     styledEcho fgMagenta, "Make SSR for dev mode and send Pull Request if you want!"
-    illwillDeinit()
-    deinitLock(L)
+    shutdownCli()
     return QuitSuccess
 
   # Start server for SPA
@@ -676,15 +688,15 @@ proc devCommand(host: string = "127.0.0.1", port: int = 5000,
       echo "Path: ", path
       if fileExists(path):
         await req.answerFile(path)
-  deinitLock(L)
-  illwillDeinit()
+  shutdownCli()
+  QuitSuccess
 
 proc mainCommand(version = false): int =
   if version:
     styledEcho "HappyX ", fgGreen, VERSION
   else:
     mainHelpMessage()
-  illwillDeinit()
+  shutdownCli()
   QuitSuccess
 
 
@@ -767,10 +779,11 @@ when isMainModule:
       styledEcho fgMagenta, "hpx update VERSION\n"
     else:
       styledEcho fgRed, "Unknown subcommand: ", fgWhite, subcmdHelp
-    illwillDeinit()
+    shutdownCli()
+    quit(QuitSuccess)
   of "":
     quit(dispatchmainCommand(cmdline = pars[0..^1]))
   else:
     styledEcho fgRed, "Unknown subcommand: ", fgWhite, subcmd
-    illwillDeinit()
+    shutdownCli()
     quit(QuitFailure)

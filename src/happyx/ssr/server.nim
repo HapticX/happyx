@@ -56,6 +56,7 @@ import
   terminal,
   strtabs,
   logging,
+  cookies,
   macros,
   tables,
   colors,
@@ -79,6 +80,7 @@ export
   asyncfile,
   logging,
   terminal,
+  cookies,
   colors,
   regex,
   json,
@@ -274,9 +276,22 @@ template answer*(
     var headersArr: seq[string] = @[]
     for key, value in h.pairs():
       headersArr.add(key & ':' & value)
-    req.send(code, message, headersArr.join("\r\n"))
+    when declaredInScope(cookies):
+      for cookie in cookies:
+        headersArr.add(cookie)
+    when declaredInScope(statusCode):
+      req.send(statusCode.HttpCode, message, headersArr.join("\r\n"))
+    else:
+      req.send(code, message, headersArr.join("\r\n"))
   else:
-    await req.respond(code, message, h)
+    when declaredInScope(cookies):
+      for cookie in cookies:
+        let data = cookie.split(":", 1)
+        h.add("Set-Cookie", data[1].strip())
+    when declaredInScope(statusCode):
+      await req.respond(statusCode.HttpCode, message, h)
+    else:
+      await req.respond(code, message, h)
 
 
 when enableHttpBeast:
@@ -332,7 +347,8 @@ template answerHtml*(req: Request, data: string | TagRef, code: HttpCode = Http2
   answer(req, d, code, newHttpHeaders([("Content-Type", "text/html; charset=utf-8")]))
 
 
-proc answerFile*(req: Request, filename: string, code: HttpCode = Http200, asAttachment = false) {.async.} =
+proc answerFile*(req: Request, filename: string,
+                 code: HttpCode = Http200, asAttachment = false) {.async.} =
   ## Respond file to request.
   ## 
   ## ⚠ `Low-level API` ⚠
@@ -569,6 +585,15 @@ macro routes*(server: Server, body: untyped): untyped =
       newStrLitNode("."),
       newCall("replace", pathIdent, newLit('/'), ident"DirSep")
     )
+    cookiesOutVar = newCall(newNimNode(nnkBracketExpr).add(ident"newSeq", ident"string"))
+    cookiesInVar = newNimNode(nnkIfStmt).add(
+      newNimNode(nnkElifBranch).add(
+        newCall("hasKey", headers, newStrLitNode("cookie")),
+        newCall("parseCookies", newCall("$", newNimNode(nnkBracketExpr).add(headers, newStrLitNode("cookie"))))
+      ), newNimNode(nnkElse).add(
+        newCall("parseCookies", newStrLitNode(""))
+      )
+    )
   
   when defined(debug):
     caseRequestMethodsStmt.add(ident"reqMethod")
@@ -592,6 +617,12 @@ macro routes*(server: Server, body: untyped): untyped =
   
   for statement in body:
     if statement.kind in [nnkCall, nnkCommand]:
+      if statement[^1].kind == nnkStmtList:
+        # Check variable usage
+        if statement[^1].isIdentUsed(ident"statusCode"):
+          statement[^1].insert(0, newVarStmt(ident"statusCode", newLit(200)))
+        if statement[^1].isIdentUsed(ident"cookies"):
+          statement[^1].insert(0, newVarStmt(ident"cookies", cookiesOutVar))
       # "/...": statement list
       if statement[1].kind == nnkStmtList and statement[0].kind == nnkStrLit:
         detectReturnStmt(statement[1])
@@ -860,12 +891,15 @@ macro routes*(server: Server, body: untyped): untyped =
     elif statement.kind in [nnkVarSection, nnkLetSection]:
       variables.add(statement)
   
-  let immutableVars = newNimNode(nnkLetSection).add(
-    newIdentDefs(ident"urlPath", newEmptyNode(), path),
-  )
+  let
+    immutableVars = newNimNode(nnkLetSection).add(
+      newIdentDefs(ident"urlPath", newEmptyNode(), path),
+    )
+    mutableVars = newNimNode(nnkVarSection)
 
   # immutable variables
   stmtList.insert(0, immutableVars)
+  stmtList.insert(0, mutableVars)
   
   when enableDebug:
     stmtList.add(newCall(
@@ -946,6 +980,8 @@ macro routes*(server: Server, body: untyped): untyped =
     immutableVars.add(newIdentDefs(ident"query", newEmptyNode(), newCall("parseQuery", url)))
   if stmtList.isIdentUsed(ident"translate"):
     immutableVars.add(newIdentDefs(ident"acceptLanguage", newEmptyNode(), acceptLanguage))
+  if stmtList.isIdentUsed(ident"inCookies"):
+    immutableVars.add(newIdentDefs(ident"inCookies", newEmptyNode(), cookiesInVar))
   when defined(debug):
     if stmtList.isIdentUsed(ident"reqMethod"):
       immutableVars.add(newIdentDefs(ident"reqMethod", newEmptyNode(), reqMethod))
