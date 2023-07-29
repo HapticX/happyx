@@ -277,16 +277,18 @@
 ## 
 when not defined(js):
   import
-    happyx/ssr/[server, cors, request_models, form_data]
+    happyx/ssr/[server, cors, request_models, form_data],
+    happyx/core/[secure]
 
   export
     server,
     request_models,
     form_data,
-    cors
+    cors,
+    secure
 
 import
-  happyx/core/[exceptions, constants, secure],
+  happyx/core/[exceptions, constants],
   happyx/sugar/[use, sgr, js, style],
   happyx/spa/[renderer, state, components, translatable],
   happyx/tmpl_engine/[engine],
@@ -300,7 +302,6 @@ when enableUi or defined(docgen):
 
 export
   exceptions,
-  secure,
   use,
   renderer,
   state,
