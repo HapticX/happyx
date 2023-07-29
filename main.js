@@ -14783,20 +14783,20 @@ function HEX3Aanonymous_452985073() {
   var F = {procname: "main.callRouter", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/renderer.nim", line: 0};
   framePtr = F;
   BeforeRet: do {
-    F.line = 582;
+    F.line = 581;
     var elem_452984925 = document.getElementById(app_452984849[0].appId);
-    F.line = 582;
+    F.line = 581;
     var path_452984926 = nsuStrip(cstrToNimstr(window.location.hash), true, false, ConstSet5);
-    F.line = 582;
+    F.line = 581;
     var html_452984927 = null;
       if (!!(force_452984924)) Temporary1 = false; else {        Temporary1 = (0 < (currentComponent_1023414691[0]).length);      }    if (Temporary1) {
-    F.line = 582;
+    F.line = 581;
     reRender_1023416189((Temporary2 = HEX5BHEX5D_1023415499(components_1023414690[0], toJSStr(currentComponent_1023414691[0])), Temporary2)[0][Temporary2[1]]);
-    F.line = 582;
+    F.line = 581;
     break BeforeRet;
     }
     
-    F.line = 582;
+    F.line = 581;
     F.line = 41;
     var fmtRes_452985011 = [mnewString(0)];
     F.line = 41;
@@ -16068,7 +16068,7 @@ function HEX3Aanonymous_452985073() {
     }
     }}
     if (!((html_452984927 == null))) {
-    F.line = 582;
+    F.line = 581;
     renderVdom_1023416148(application_1023410225[0], html_452984927);
     }
     
@@ -16081,7 +16081,7 @@ function HEX3Aanonymous_452985073() {
 function onDOMContentLoaded_452987140(ev_452987141) {
   var F = {procname: "main.onDOMContentLoaded", prev: framePtr, filename: "/home/runner/work/happyx/happyx/src/happyx/spa/renderer.nim", line: 0};
   framePtr = F;
-    F.line = 582;
+    F.line = 581;
     callRouter_452984923(false);
   framePtr = F.prev;
 
