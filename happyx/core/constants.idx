@@ -4,5 +4,6 @@ enableHttpBeast	happyx/core/constants.html#enableHttpBeast	constants: enableHttp
 enableAutoTranslate	happyx/core/constants.html#enableAutoTranslate	constants: enableAutoTranslate	
 enableDebug	happyx/core/constants.html#enableDebug	constants: enableDebug	
 enableUi	happyx/core/constants.html#enableUi	constants: enableUi	
+cryptoMethod	happyx/core/constants.html#cryptoMethod	constants: cryptoMethod	
 httpMethods	happyx/core/constants.html#httpMethods	constants: httpMethods	
 Constants ✨	happyx/core/constants.html#constants-✨	 Constants ✨	

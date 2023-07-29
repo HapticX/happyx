@@ -1,0 +1,3 @@
+generate_password	happyx/core/secure.html#generate_password	secure: generate_password(source): MDigest[512]	
+check_password	happyx/core/secure.html#check_password,,	secure: check_password(source, hash): bool	
+Secure 🔐	happyx/core/secure.html#secure-🔐	 Secure 🔐	
