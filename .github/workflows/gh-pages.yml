@@ -52,7 +52,7 @@ jobs:
       - name: Install Dependencies
         run: |
           nimble refresh
-          nimble install -y -d
+          nimble install -y
 
       - name: Generate API documents
         run: nim doc --index:on -d:docgen --project --out:docs --hints:off src/happyx.nim
