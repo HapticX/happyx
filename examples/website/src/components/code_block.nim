@@ -22,8 +22,13 @@ component CodeBlock:
             {.emit: "navigator.clipboard.writeText(`data`);".}
   
   @updated:
-    let id = self.id
-    {.emit: """//js
-    let codeBlock = document.getElementById(`id`.value);
-    hljs.highlightElement(codeBlock);
-    """.}
+    self.highlight()
+    echo "updated!"
+  
+  [methods]:
+    proc highlight() =
+      let id: cstring = self.id
+      {.emit: """//js
+      let codeBlock = document.getElementById(`id`);
+      hljs.highlightElement(codeBlock);
+      """.}

@@ -2,11 +2,12 @@
 import
   ../../../src/happyx,
   ./path_params,
-  ./ui/colors,
+  ./ui/[colors, code],
   ./components/[
     button, card, code_block, header,
     section, smart_card, about_section,
-    drawer, divider, sponsors_arr
+    drawer, divider, sponsors_arr,
+    code_block_slider
   ],
   ./pages/[home, sponsors, roadmap]
 

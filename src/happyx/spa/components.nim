@@ -715,7 +715,6 @@ macro component*(name, body: untyped): untyped =
             newCall("textTag", newCall("style", ident"self"))
           )))
         ),
-        newCall("echo", ident"result"),
         afterStmtList,
         newAssignment(ident"currentComponent", newStrLitNode(""))
       ),

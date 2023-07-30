@@ -3,7 +3,7 @@ import
   ../../../../src/happyx,
   ../path_params,
   ../components/[header, smart_card, card, section, code_block, about_section, drawer],
-  ../ui/colors
+  ../ui/[colors, code]
 
 
 var drawer_comp* = use:
@@ -63,16 +63,31 @@ mount Home:
                     "HappyX is ready-to-product web framework"
                   tP(class = "text-3xl lg:text-base"):
                     "your company may use HappyX"
-
-          # SSR Code example
-          component SmartCard:
-            component CodeBlock(id = "ssrCode", source = """import happyx
-
-serve("127.0.0.1", 5000):
-  get "/":
-    return "Hello, world!" """)
-            tDiv(class = "w-48 xl:w-96 text-3xl lg:text-lg xl:text-base text-center subpixel-antialiased"):
-              "Make server-side applications easily with powerful DSL 🔥"
+          
+          component CodeBlockSlider(
+            data = @[
+              Code(
+                name: "SSR Example ⚡", description: "Server-side rendering application",
+                text: ssrExample, language: "nim"
+              ),
+              Code(
+                name: "SPA Example 🎴", description: "Single-page application",
+                text: spaExample, language: "nim"
+              ),
+              Code(
+                name: "FileResponse Example 📁", description: "Respond file from server to client",
+                text: fileResponseExample, language: "nim"
+              ),
+              Code(
+                name: "Path Params In SSR ⚙", description: "PathParams in server-side rendering",
+                text: pathParamsSsrExample, language: "nim"
+              ),
+              Code(
+                name: "Path Params In SPA ⚙", description: "PathParams in single-page application",
+                text: pathParamsSpaExample, language: "nim"
+              ),
+            ]
+          )
           
           # Features
           component Section:
@@ -88,11 +103,7 @@ serve("127.0.0.1", 5000):
 
           # SPA
           component SmartCard:
-            component CodeBlock(id = "spaCode", source = """import happyx
-
-appRoutes("app"):
-  "/":
-    "Hello, world!" """)
+            component CodeBlock(id = "spaCode", source = spaExample)
             tDiv(class = "w-48 xl:w-96 text-3xl lg:text-lg xl:text-base text-center subpixel-antialiased"):
               "Make powerful full-stack apps with really same syntax ⚡"
           
