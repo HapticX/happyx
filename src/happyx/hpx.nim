@@ -60,9 +60,13 @@ const
 var
   godEyeThread: Thread[ptr GodEyeData]
   L: Lock
+  deinitialized = false
 
 
 proc shutdownCli =
+  if deinitialized:
+    return
+  deinitialized = true
   illwillDeinit()
   deinitLock(L)
 
@@ -72,7 +76,6 @@ proc ctrlC {. noconv .} =
   shutdownCli()
   quit(QuitSuccess)
 
-illwillInit(false)
 addExitProc(ctrlC)
 
 
@@ -701,6 +704,7 @@ proc mainCommand(version = false): int =
 
 
 when isMainModule:
+  illwillInit(false)
   dispatchMultiGen(
     [buildCommand, cmdName = "build"],
     [
