@@ -320,6 +320,9 @@ proc buildCommand(optSize: bool = false): int =
   # Delete comments
   data = data.replace(re"(?<!https?:)//[^\n]+\s+", "")
   data = data.replace(re"/\*[^\*]+?\*/\s+", "")
+  # Delete spaces around {}
+  # one statement into {one statement}
+  # if (asd) dsa
   # Small optimize
   data = data.replace(re"(\.?)parent(\s*:?)", "$1p$2")
   data = data.replace(re"\blastJSError\b", "le")
@@ -340,7 +343,7 @@ proc buildCommand(optSize: bool = false): int =
     data = data.replace(re"true", "1")
     data = data.replace(re"false", "0")
   # Compress expressions
-  data = data.replace(re"(if|while|for|else if|do|else|switch)\s+", "$1")
+  data = data.replace(re"(else +if|while|for|if|do|else|switch)\s+", "$1")
   # Find variables and functions
   var
     counter = 0
