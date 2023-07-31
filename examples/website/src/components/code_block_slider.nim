@@ -28,7 +28,7 @@ component CodeBlockSlider:
               tDiv(class = "flex flex-col"):
                 tP(class = "break-keep whitespace-pre text-5xl lg:text-2xl xl:text-lg font-bold pointer-events-none"):
                   {val.name}
-                tP(class = "text-3xl lg:texl-xl xl:text-base pointer-events-none"):
+                tP(class = "flex h-full justify-center items-center text-3xl lg:texl-xl xl:text-base pointer-events-none"):
                   {val.description}
               tDiv(class = "w-full"):
                 component CodeBlock(source = val.text, language = val.language, id = fmt"slider-{self.uniqCompId}_{idx}")
@@ -40,7 +40,7 @@ component CodeBlockSlider:
               tDiv(class = "flex flex-col"):
                 tP(class = "break-keep whitespace-pre text-5xl lg:text-2xl xl:text-lg font-bold pointer-events-none"):
                   {val.name}
-                tP(class = "text-3xl lg:texl-xl xl:text-base pointer-events-none"):
+                tP(class = "flex h-full justify-center items-center text-3xl lg:texl-xl xl:text-base pointer-events-none"):
                   {val.description}
               tDiv(class = "w-full"):
                 component CodeBlock(source = val.text, language = val.language, id = fmt"slider-{self.uniqCompId}_{idx}")
@@ -65,7 +65,27 @@ component CodeBlockSlider:
                 updateIndex(self.CodeBlockSlider, idx)
                 enableRouting = true
   
+  @created:
+    self.nextIndex()
+  
   [methods]:
+    proc nextIndex() =
+      proc upd() =
+        enableRouting = false
+        self.updateIndex(
+          if self.index < self.data.len - 1:
+            self.index + 1
+          else:
+            0
+        )
+        {.emit: """//js
+        setTimeout(() => { `upd`() }, 5000);
+        """.}
+        enableRouting = true
+      {.emit: """//js
+      setTimeout(() => { `upd`() }, 5000);
+      """.}
+
     proc updateIndex(idx: int) =
       if self.index == idx:
         return
@@ -75,12 +95,16 @@ component CodeBlockSlider:
         let id: cstring = fmt"slider-{self.uniqCompId}_{idx}"
         {.emit: """//js
         let codeBlock = document.getElementById(`id`);
-        hljs.highlightElement(codeBlock);
+        if (codeBlock) {
+          hljs.highlightElement(codeBlock);
+        }
         """.}
 
         let
           container = document.getElementById(fmt"sliderContainer-{self.uniqCompId}_{idx}")
           circle = document.getElementById(fmt"circle-{self.uniqCompId}_{idx}")
+        if container.isNil():
+          return
         if index == idx:
           container.classList.remove("absolute")
           container.classList.remove("top-0")
