@@ -61,7 +61,7 @@ jobs:
         timeout-minutes: 2
         run: |
           cd ./examples/website/src
-          nim js main
+          nim js -d:danger --opt:size --checks:off --assertions:off --hints:off --warnings:off --panics:off --lineDir:off main
           cd ../../..
           mkdir ./docs/public/
           mv ./examples/website/src/index.html ./docs/

@@ -119,7 +119,7 @@ proc compileProject(): ProjectData {. discardable .} =
       "nim", getCurrentDir() / result.srcDir,
       [
         "js", "-c", "--hints:off", "--warnings:off",
-        "--opt:size", "-d:danger", "-x:off", "-a:off", result.mainFile
+        "--opt:size", "-d:danger", "-x:off", "-a:off", "--panics:off", "--lineDir:off", result.mainFile
       ], nil, PROCESS_OPTIONS
     )
   of ptSSR, ptSSG:
