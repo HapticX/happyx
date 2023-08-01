@@ -46,11 +46,13 @@ component Drawer:
           "📕 API Docs"
         component Button(
           action = proc() =
+            self.toggle()
             route("/sponsors/")
         ):
           "🔥 Sponsors"
         component Button(
           action = proc() =
+            self.toggle()
             route("/roadmap/")
         ):
           "🌎 RoadMap"
