@@ -23,7 +23,7 @@ component CodeBlockSlider:
           if idx == 0:
             tDiv(
               id = fmt"sliderContainer-{self.uniqCompId}_{idx}",
-              class = "w-full flex flex-col lg:flex-row gap-4 lg:gap-0 justify-between transition-all duration-300 opacity-1"
+              class = "w-full flex flex-col lg:flex-row gap-4 lg:gap-2 justify-between transition-all duration-300 opacity-1"
             ):
               tDiv(class = "flex flex-col gap-2 lg:gap-0"):
                 tP(class = "break-keep whitespace-pre text-5xl lg:text-2xl xl:text-lg font-bold pointer-events-none"):
@@ -35,7 +35,7 @@ component CodeBlockSlider:
           else:
             tDiv(
               id = fmt"sliderContainer-{self.uniqCompId}_{idx}",
-              class = "w-full flex flex-col lg:flex-row gap-4 lg:gap-0 justify-between transition-all duration-300 absolute top-0 left-0 opacity-0"
+              class = "w-full flex flex-col lg:flex-row gap-4 lg:gap-2 justify-between transition-all duration-300 absolute top-0 left-0 opacity-0"
             ):
               tDiv(class = "flex flex-col gap-2 lg:gap-0"):
                 tP(class = "break-keep whitespace-pre text-5xl lg:text-2xl xl:text-lg font-bold pointer-events-none"):
