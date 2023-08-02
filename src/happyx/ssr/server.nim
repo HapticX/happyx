@@ -138,8 +138,14 @@ proc ctrlCHook() {.noconv.} =
 
 proc onQuit() {.noconv.} =
   when int(enableHttpBeast) + int(enableHttpx) + int(enableMicro) == 0:
-    if not pointerServer.isNil() and not pointerServer[].instance.isNil():
-      pointerServer[].instance.close()
+    when nim_2_0_0:
+      if not pointerServer.isNil() and not pointerServer[].instance.isNil():
+        pointerServer[].instance.close()
+    else:
+      try:
+        pointerServer[].instance.close()
+      except NilAccessDefect:
+        discard
 
 
 setControlCHook(ctrlCHook)
