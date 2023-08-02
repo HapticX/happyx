@@ -24,7 +24,7 @@ serve("127.0.0.1", 5000):
     await wsClient.send("You're welcome!")
 
   ws "/hcr":
-    if wsData == "reload" and wsClient.readyState == Open:
+    if wsData == "reload":
       await wsClient.send("true")
 
   "/{file:path}":
