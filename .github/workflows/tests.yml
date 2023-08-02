@@ -31,6 +31,7 @@ jobs:
           - ubuntu-latest
         nim_version:
           - '1.6.14'
+          - '2.0.0'
     env:
       TIMEOUT_EXIT_STATUS: 124
     steps:
@@ -54,8 +55,14 @@ jobs:
         run: |
           cd tests
           for file in $(ls -v testc*.nim); do
+            echo "###===--- Default for" $file "---===###"
             nim c -d:debug $file
+            echo "###===--- HttpX for" $file "---===###"
             nim c -d:httpx -d:debug $file
+            echo "###===--- MicroAsyncHttpServer for" $file "---===###"
+            nim c -d:micro -d:debug $file
+            echo "###===--- HttpBeast for" $file "---===###"
+            nim c -d:beast -d:debug $file
           done
         shell: bash
       
@@ -63,6 +70,9 @@ jobs:
         run: |
           cd tests
           for file in $(ls -v testjs*.nim); do
-            nim js -d:debug -d:enableUi $file
+            if [[ $file == "testjs10" ]]; then
+              nim js -d:debug -d:enableUi $file
+            else
+              nim js -d:debug $file
           done
         shell: bash

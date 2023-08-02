@@ -312,6 +312,8 @@ proc pathParamsBoilerplate(node: NimNode, kind, regexVal: var string) =
   elif node.kind == nnkCallStrLit and $node[0] == "re":
     kind = "regex"
     regexVal = $node[1]
+  elif node.kind == nnkExprEqExpr:
+    kind = $(node[0].toStrLit)
   else:
     let current = $node.toStrLit
     throwDefect(

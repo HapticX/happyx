@@ -133,14 +133,6 @@ when defined(js):
       nim:
         componentEventHandlers[callbackIdx](components[componentId], evComponent)
 
-    function onHashChangeCallback():
-      if window.location.hash[0] == "#":
-        ~currentRoute = window.location.hash.substr(1)
-      else:
-        ~currentRoute = window.location.hash
-    
-    window.addEventListener("hashchange", onHashChangeCallback)
-
 
 macro elem*(name: untyped): untyped =
   ## `elem` macro is just shortcut for
@@ -251,6 +243,13 @@ template start*(app: App) =
   ## 
   document.addEventListener("DOMContentLoaded", onDOMContentLoaded)
   window.addEventListener("popstate", onDOMContentLoaded)
+  buildJs:
+    function onHashChangeCallback():
+      if window.location.hash[0] == "#":
+        ~currentRoute = window.location.hash.substr(1)
+      else:
+        ~currentRoute = window.location.hash
+    window.addEventListener("hashchange", onHashChangeCallback)
   if window.location.hash.len == 0:
     route("/")
   else:

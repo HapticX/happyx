@@ -12,7 +12,7 @@ import
   # HappyX
   ./renderer,
   ../sugar/[js, style],
-  ../core/[exceptions],
+  ../core/[exceptions, constants],
   ../private/[macro_utils]
 
 
@@ -716,7 +716,7 @@ macro component*(name, body: untyped): untyped =
           )))
         ),
         afterStmtList,
-        newAssignment(ident"currentComponent", newStrLitNode(""))
+        newAssignment(ident"currentComponent", newStrLitNode("")),
       ),
       nnkMethodDef,
       pragmas =

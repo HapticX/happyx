@@ -34,6 +34,9 @@ const
     "get", "post", "put", "patch", "link", "options", "head", "delete", "unlink", "purge", "copy"
   ]
   availableCryptoMethods = ["sha224", "sha256", "sha384", "sha512"]
+  # Nim version
+  nim_1_6_14* = (NimMajor, NimMajor, NimPatch) == (1, 6, 14)
+  nim_2_0_0* = (NimMajor, NimMinor, NimPatch) >= (2, 0, 0)
 
 
 when cryptoMethod notin availableCryptoMethods:

@@ -56,38 +56,12 @@ mount RoadMap:
                   tLi: "Inheritance 👶"
                   tLi: "Methods 📦"
                   tLi: "Constructors ⚙"
-          # v1.15.0
-          component Card():
-            tDiv(class = "w-full flex flex-col items-center gap-2 p-4 lg:p-2 xl:p-0"):
-              tP(class = "text-4xl lg:text-2xl xl:text-lg font-semibold"):
-                "v1.15.0"
-              tP(class = "w-full text-2xl lg:text-lg xl:text-base"):
-                "Built-In UI Components 🎴"
-                tUl(class = "list-disc"):
-                  tLi: "Simple - Buttons, Inputs, etc ✨"
-                  tLi: "Complex - TabView, GridView, etc 🍍"
-          # v1.20.0
-          component Card():
-            tDiv(class = "w-full flex flex-col items-center gap-2 p-4 lg:p-2 xl:p-0"):
-              tP(class = "text-4xl lg:text-2xl xl:text-lg font-semibold"):
-                "v1.20.0"
-              tP(class = "w-full text-2xl lg:text-lg xl:text-base"):
-                "Documentation 📕"
-                tUl(class = "list-disc"):
-                  tLi: "Automatic RestAPI documentation 👨‍🔬"
-                  tLi: "HappyX For Jester Programmers 🃏"
-                  tLi: "HappyX For Karax Programmers 🐥"
           # v2.0.0
           component Card():
             tDiv(class = "w-full flex flex-col items-center gap-2 p-4 lg:p-2 xl:p-0"):
               tP(class = "text-4xl lg:text-2xl xl:text-lg font-semibold"):
                 "v2.0.0"
               tP(class = "w-full text-2xl lg:text-lg xl:text-base"):
-                "Language Bindings 🔌"
-                tUl(class = "list-disc"):
-                  tLi: "Python 🐍"
-                  tLi: "JavaScript 🌐"
+                "Nim v2.0 Support ⚡"
               tP(class = "w-full text-2xl lg:text-lg xl:text-base"):
-                "Own Template Engine"
-              tP(class = "w-full text-2xl lg:text-lg xl:text-base"):
-                "Nim v2.0 Support"
+                "Automatic Docs Generation 📕"

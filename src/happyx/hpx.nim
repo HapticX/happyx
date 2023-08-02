@@ -46,7 +46,7 @@ type
 
 
 const
-  VERSION = "1.12.0"
+  VERSION = "2.0.0"
   SPA_MAIN_FILE = "main"
   CONFIG_FILE = "happyx.cfg"
   PROGRESS_STATES = ["|", "/", "-", "\\"]
