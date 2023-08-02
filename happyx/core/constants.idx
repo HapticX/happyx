@@ -6,4 +6,6 @@ enableDebug	happyx/core/constants.html#enableDebug	constants: enableDebug
 enableUi	happyx/core/constants.html#enableUi	constants: enableUi	
 cryptoMethod	happyx/core/constants.html#cryptoMethod	constants: cryptoMethod	
 httpMethods	happyx/core/constants.html#httpMethods	constants: httpMethods	
+nim_1_6_14	happyx/core/constants.html#nim_1_6_14	constants: nim_1_6_14	
+nim_2_0_0	happyx/core/constants.html#nim_2_0_0	constants: nim_2_0_0	
 Constants ✨	happyx/core/constants.html#constants-✨	 Constants ✨	
