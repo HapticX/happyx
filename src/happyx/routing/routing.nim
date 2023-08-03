@@ -11,7 +11,7 @@ import
   # deps
   regex,
   # happyx
-  ../core/[exceptions],
+  ../core/[exceptions, constants],
   ../private/[macro_utils]
 
 
@@ -242,7 +242,7 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.
     inc idx
   
   let body =
-    when defined(httpx):
+    when enableHttpBeast or enableHttpx:
       newCall("get", newDotExpr(ident"req", ident"body"))
     else:
       newDotExpr(ident"req", ident"body")
