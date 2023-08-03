@@ -70,10 +70,6 @@ jobs:
         run: |
           cd tests
           for file in $(ls -v testjs*.nim); do
-            if [[ $file -eq testjs10 ]]; then
-              nim js -d:debug -d:enableUi $file
-            else
-              nim js -d:debug $file
-            fi
+            nim js -d:debug -d:enableUi $file
           done
         shell: bash
