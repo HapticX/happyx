@@ -74,5 +74,6 @@ jobs:
               nim js -d:debug -d:enableUi $file
             else
               nim js -d:debug $file
+            fi
           done
         shell: bash
