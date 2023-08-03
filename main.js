@@ -3162,14 +3162,14 @@ function nstnewStringTableWithTableConstr(keyValuePairs_1191182641, mode_1191182
     Label1: do {
       var key_1191182656 = [];
       var val_1191182657 = [];
-      var i_2013265932 = 0;
+      var i_2013265933 = 0;
       Label2: do {
           Label3: while (true) {
-          if (!(i_2013265932 < (keyValuePairs_1191182641).length)) break Label3;
-            key_1191182656 = keyValuePairs_1191182641[i_2013265932]["Field0"];
-            val_1191182657 = keyValuePairs_1191182641[i_2013265932]["Field1"];
+          if (!(i_2013265933 < (keyValuePairs_1191182641).length)) break Label3;
+            key_1191182656 = keyValuePairs_1191182641[i_2013265933]["Field0"];
+            val_1191182657 = keyValuePairs_1191182641[i_2013265933]["Field1"];
             nstPut(result_1191182643, key_1191182656, val_1191182657);
-            i_2013265932 += 1;
+            i_2013265933 += 1;
           }
       } while (false);
     } while (false);
