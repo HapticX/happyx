@@ -67,6 +67,9 @@ jobs:
           mv ./examples/website/src/index.html ./docs/
           mv ./examples/website/src/main.js ./docs/
           mv ./examples/website/src/happyx/public/* ./docs/public/
+      
+      - name: CNAME For Nim Town
+        run: echo "hapticx.nim.town" > CNAME
 
       - name: Deploy documents
         uses: peaceiris/actions-gh-pages@v3
