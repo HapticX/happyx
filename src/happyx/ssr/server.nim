@@ -247,9 +247,10 @@ proc parseQuery*(query: string): owned(StringTableRef) =
       result[splitted[0]] = splitted[1]
 
 
-proc parseQueryArrays*(query: string): owned(TableRef[string, seq[string]]) =
+proc parseQueryArrays*(query: string): TableRef[string, seq[string]] =
   ## Parses query and retrieves TableRef[string, seq[string]] object
   runnableExamples:
+    import tables
     let
       query = "a[]=10&a[]=100&a[]=foo&a[]=bar"
       parsedQuery = parseQueryArrays(query)
