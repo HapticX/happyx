@@ -4,6 +4,9 @@ import
 
 component Constructor:
   privateField: int = 0
+
+  issue99: seq[string]
+
   constructor(val: int):
     ## Some information about this constructor
     echo 1
@@ -50,13 +53,13 @@ var constructor = use:
   component Constructor->construct()
 
 var compWithoutArgs = use:
-  component Constructor
+  component Constructor(issue99 = @[])
 
 
 appRoutes "app":
   "/":
     component compWithoutArgs
-    component Constructor(privateField = 100)
+    component Constructor(privateField = 100, @[])
     component constructor
     component Constructor->construct()
     component Constructor->construct(val = 100):

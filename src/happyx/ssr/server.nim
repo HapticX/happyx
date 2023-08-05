@@ -16,6 +16,9 @@
 ## 
 ## Just use `query~name` to get any query param. By default returns `""`
 ## 
+## If you want to use [arrays in query](https://github.com/HapticX/happyx/issues/101) just use
+## `queryArr~name` to get any array query param.
+## 
 ## ## WebSockets 🍍
 ## In any request you can get connected websocket clients.
 ## Just use `wsConnections` that type is `seq[WebSocket]`
@@ -113,6 +116,12 @@ else:
   export websocketx
 
 
+when enableApiDoc:
+  import
+    nimja,
+    ../private/api_doc_template
+
+
 type
   Server* = object
     address*: string
@@ -128,6 +137,13 @@ type
       instance*: AsyncHttpServer
     components: TableRef[string, BaseComponent]
   ModelBase* = object of RootObj
+
+
+when enableApiDoc:
+  type ApiDocObject* = object
+    description*: string
+    httpMethod*: string
+    path*: string
 
 
 var pointerServer: ptr Server
@@ -193,7 +209,6 @@ proc newServer*(address: string = "127.0.0.1", port: int = 5000): Server =
   ## - `address` (optional): A string representing the IP address that the server should listen on.
   ##   Defaults to `"127.0.0.1"`.
   ## - `port` (optional): An integer representing the port number that the server should listen on.
-  ##   Defaults to `5000`.
   ## 
   ## Returns:
   ## - A new instance of the `Server` object.
@@ -206,10 +221,8 @@ proc newServer*(address: string = "127.0.0.1", port: int = 5000): Server =
     components: newTable[string, BaseComponent](),
     logger: newConsoleLogger(lvlInfo, fgColored("[$date at $time]:$levelname ", fgYellow)),
   )
-  when enableHttpx:
-    result.instance = initSettings(Port(port), bindAddr=address)
-  elif enableHttpBeast:
-    result.instance = initSettings(Port(port), bindAddr=address)
+  when enableHttpx or enableHttpBeast:
+    result.instance = initSettings(Port(port), bindAddr=address, numThreads = numThreads)
   elif enableMicro:
     result.instance = newMicroAsyncHttpServer()
   else:
@@ -228,8 +241,26 @@ proc parseQuery*(query: string): owned(StringTableRef) =
   result = newStringTable()
   for i in query.split('&'):
     let splitted = i.split('=')
-    if splitted.len >= 2:
+    if splitted.len >= 2 and not splitted[0].endsWith("[]"):
       result[splitted[0]] = splitted[1]
+
+
+proc parseQueryArrays*(query: string): owned(TableRef[string, seq[string]]) =
+  ## Parses query and retrieves TableRef[string, seq[string]] object
+  runnableExamples:
+    let
+      query = "a[]=10&a[]=100&a[]=foo&a[]=bar"
+      parsedQuery = parseQueryArrays(query)
+    assert parsedQuery["a"] == @["10", "100", "foo", "bar"]
+  result = newTable[string, seq[string]]()
+  for i in query.split('&'):
+    let splitted = i.split('=')
+    if splitted.len >= 2 and splitted[0].endsWith("[]"):
+      let key = splitted[0][0..^3]
+      if result.hasKey(key):
+        result[key].add(splitted[1])
+      else:
+        result[key] = @[splitted[1]]
 
 
 template start*(server: Server): untyped =
@@ -454,7 +485,7 @@ proc detectReturnStmt(node: NimNode, replaceReturn: bool = false) {. compileTime
       node[^1] = newCall("answer", ident"req", node[^1])
 
 
-macro `~`*(strTable: StringTableRef, key: untyped): untyped =
+macro `~`*(strTable: StringTableRef | TableRef[string, seq[string]], key: untyped): untyped =
   ## Shortcut to get query param.
   ## 
   ## `High-level API`
@@ -495,6 +526,7 @@ macro routes*(server: Server, body: untyped): untyped =
   ## - `req`: Current request
   ## - `urlPath`: Current url path
   ## - `query`: Current url path queries
+  ## - `queryArr`: Current url path queries (usable for seq[string])
   ## - `wsConnections`: All websocket connections
   ## 
   ## #### Available Websocket Routing
@@ -508,6 +540,7 @@ macro routes*(server: Server, body: untyped): untyped =
   ## - `req`: Current request
   ## - `urlPath`: Current url path
   ## - `query`: Current url path queries
+  ## - `queryArr`: Current url path queries (usable for seq[string])
   ## - `wsClient`: Current websocket client
   ## - `wsConnections`: All websocket connections
   ## 
@@ -598,6 +631,20 @@ macro routes*(server: Server, body: untyped): untyped =
         newCall("parseCookies", newStrLitNode(""))
       )
     )
+    isWebsocketConnection =
+      newCall(
+        "and",
+        newCall(
+          "and",
+          newCall("hasKey", headers, newStrLitNode("connection")),
+          newCall("hasKey", headers, newStrLitNode("upgrade")),
+        ),
+        newCall(
+          "and",
+          newCall("==", newCall("toLower", newCall("[]", headers, newStrLitNode("connection"), newLit(0))), newStrLitNode("upgrade")),
+          newCall("==", newCall("toLower", newCall("[]", headers, newStrLitNode("upgrade"), newLit(0))), newStrLitNode("websocket")),
+        )
+      )
   
   when defined(debug):
     caseRequestMethodsStmt.add(ident"reqMethod")
@@ -876,7 +923,7 @@ macro routes*(server: Server, body: untyped): untyped =
           else:
             insertWsList.add(statement[2])
             methodTable["GET"].add(newNimNode(nnkElifBranch).add(
-              newCall("==", pathIdent, statement[1]),
+              newCall("and", isWebsocketConnection, newCall("==", pathIdent, statement[1])),
               wsStmtList
             ))
           continue
@@ -982,6 +1029,7 @@ macro routes*(server: Server, body: untyped): untyped =
   
   if stmtList.isIdentUsed(ident"query"):
     immutableVars.add(newIdentDefs(ident"query", newEmptyNode(), newCall("parseQuery", url)))
+    immutableVars.add(newIdentDefs(ident"queryArr", newEmptyNode(), newCall("parseQueryArrays", url)))
   if stmtList.isIdentUsed(ident"translate"):
     immutableVars.add(newIdentDefs(ident"acceptLanguage", newEmptyNode(), acceptLanguage))
   if stmtList.isIdentUsed(ident"inCookies"):
@@ -989,8 +1037,6 @@ macro routes*(server: Server, body: untyped): untyped =
   when defined(debug):
     if stmtList.isIdentUsed(ident"reqMethod"):
       immutableVars.add(newIdentDefs(ident"reqMethod", newEmptyNode(), reqMethod))
-    
-    echo result.toStrLit
 
 
 macro initServer*(body: untyped): untyped =
@@ -1016,6 +1062,44 @@ macro initServer*(body: untyped): untyped =
     newCall("main")
   )
   result[0].addPragma(ident"gcsafe")
+    
+
+when enableApiDoc:
+  proc genApiDoc*(body: var NimNode, address: string, port: int): NimNode =
+    ## Returns API route
+    echo address
+    echo port
+    var docsData = newNimNode(nnkBracket)
+    for i in body:
+      echo treeRepr i
+      if i.kind in [nnkCall, nnkCommand]:
+        if i[0].kind == nnkIdent and i.len == 3 and i[2].kind == nnkStmtList and i[1].kind == nnkStrLit:
+          ## HTTP Method
+          var description = ""
+          for statement in i[2]:
+            if statement.kind == nnkCommentStmt:
+              description &= $statement & "\n"
+          docsData.add(newPar(
+            newStrLitNode(($i[0].toStrLit).toUpper()),  # HTTP Method
+            newStrLitNode(description),  # Description
+            newStrLitNode($i[1]),  # Path
+          ))
+        elif i[0].kind == nnkStrLit and i.len == 2 and i[1].kind == nnkStmtList:
+          ## HTTP Method
+          var description = ""
+          for statement in i[1]:
+            if statement.kind == nnkCommentStmt:
+              description &= $statement & "\n"
+          docsData.add(newPar(
+            newStrLitNode(""),  # HTTP Method
+            newStrLitNode(description),  # Description
+            newStrLitNode($i[0]),  # Path
+          ))
+    # Get all documentation
+    body.add(newNimNode(nnkCommand).add(ident"get", newStrLitNode("/docs"), newStmtList(
+      newCall("answerHtml", ident"req", newCall("renderDocsProcedure")),
+    )))
+    docsData
 
 
 macro serve*(address: string, port: int, body: untyped): untyped =
@@ -1045,12 +1129,27 @@ macro serve*(address: string, port: int, body: untyped): untyped =
   ##      "/some":
   ##        return some
   ## 
+  var bodyStatement = body
+  when enableApiDoc:
+    var docsData = bodyStatement.genApiDoc($address, parseInt($port.toStrLit))
+
   result = newStmtList(
     newProc(
       ident"main",
       [newEmptyNode()],
       newStmtList(
-        newVarStmt(ident"server", newCall("newServer", address, port)),
+        newVarStmt(
+          ident"server",
+          newCall("newServer", address, port)
+        ),
+        when enableApiDoc:
+          newProc(ident"renderDocsProcedure", [ident"string"], newStmtList(
+            newLetStmt(ident"title", newStrLitNode(appName)),
+            newLetStmt(ident"apiDocData", docsData),
+            newCall("compileTemplateStr", newStrLitNode(IndexApiDocPageTemplate)),
+          ))
+        else:
+          newEmptyNode(),
         translatesStatement,
         newCall("routes", ident"server", body),
         newCall("start", ident"server"),

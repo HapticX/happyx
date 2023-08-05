@@ -8,6 +8,9 @@ serve("127.0.0.1", 5123):
     for client in wsConnections:
       await client.send("hi")
   
+  "/":
+    return "Issue 96"
+  
   wsClosed:
     echo "closed"
   

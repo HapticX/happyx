@@ -324,7 +324,10 @@ macro component*(name, body: untyped): untyped =
     newIdentDefs(ident(UniqueComponentId), bindSym("string"))
   )
 
-  var fields: seq[string] = @[]
+  var
+    fields: seq[string] = @[]
+    fieldTypes: seq[NimNode] = @[]
+    initComponentProcedure: seq[NimNode] = @[]
   
   for s in body.children:
     if s.kind in [nnkCall, nnkCommand, nnkInfix, nnkPrefix]:
@@ -332,7 +335,7 @@ macro component*(name, body: untyped): untyped =
       if s[0] != ident"constructor" and s[0].kind == nnkIdent and s.len == 2 and s[^1].kind == nnkStmtList and s[^1].len == 1:
         # Extract default value and field type
         let (fieldType, defaultValue) =
-          if s[^1][0].kind == nnkIdent:
+          if s[^1][0].kind != nnkAsgn:
             (s[^1][0], newEmptyNode())
           else:  # assignment statement
             (s[^1][0][0], s[^1][0][1])
@@ -348,12 +351,13 @@ macro component*(name, body: untyped): untyped =
         ))
         initObjConstr.add(newColonExpr(s[0], newCall("remember", s[0])))
         fields.add($(s[0]))
+        fieldTypes.add(fieldType)
       
       # Public field
       elif s.kind == nnkPrefix and s[0] == ident"*" and s[1].kind == nnkIdent and s[2].len == 1:
         # Extract field type and default value
         let (fieldType, defaultValue) =
-          if s[^1][0].kind == nnkIdent:
+          if s[^1][0].kind != nnkAsgn:
             (s[^1][0], newEmptyNode())
           else:  # assignment statement
             (s[^1][0][0], s[^1][0][1])
@@ -369,6 +373,7 @@ macro component*(name, body: untyped): untyped =
         ))
         initObjConstr.add(newColonExpr(s[1], newCall("remember", s[1])))
         fields.add($(s[1]))
+        fieldTypes.add(fieldType)
       
       # Constructors
       elif s.kind == nnkCall and s[0] == ident"constructor" or (s[0].kind == nnkObjConstr and s[0][0] == ident"constructor"):
@@ -381,13 +386,15 @@ macro component*(name, body: untyped): untyped =
             inc i
             continue
           else:
+            var x = newCall(fmt"init{componentName}", ident(UniqueComponentId))
             constructorBody.insert(
               i,
               newVarStmt(
                 ident"self",
-                newCall(fmt"init{componentName}", ident(UniqueComponentId))
+                x
               )
             )
+            initComponentProcedure.add(x)
             constructorBody.add(newNimNode(nnkReturnStmt).add(ident"self"))
             break
         # Constructor without arguments
@@ -599,6 +606,14 @@ macro component*(name, body: untyped): untyped =
 
   if extendsOf != "":
     scriptStmtList.replaceSuperCall(extendsOf, "script")
+  
+  var idx = 0
+  for field in fields:
+    for i in initComponentProcedure:
+      i.add(newNimNode(nnkExprEqExpr).add(
+        ident(field), newCall("default", fieldTypes[idx])
+      ))
+    inc idx
 
   result = newStmtList(
     newNimNode(nnkTypeSection).add(
