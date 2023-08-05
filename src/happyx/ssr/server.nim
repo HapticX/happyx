@@ -146,7 +146,9 @@ when enableApiDoc:
     path*: string
 
 
-var pointerServer: ptr Server
+var
+  pointerServer: ptr Server
+  uniqueIndex {.compileTime.} = 0
 
 
 proc ctrlCHook() {.noconv.} =
@@ -593,12 +595,27 @@ macro routes*(server: Server, body: untyped): untyped =
         ), newLit(0)
       )
       reqMethodStr = "req.httpMethod.get()"
+      val = ident(fmt"_val{uniqueIndex}")
       url = newStmtList(
-        newLetStmt(ident"_val", newCall("split", newCall("get", newCall("path", ident"req")), newStrLitNode("?"))),
+        newLetStmt(val, newCall("split", newCall("get", newCall("path", ident"req")), newStrLitNode("?"))),
         newNimNode(nnkIfStmt).add(
           newNimNode(nnkElifBranch).add(
-            newCall(">=", newCall("len", ident"_val"), newIntLitNode(2)),
-            newNimNode(nnkBracketExpr).add(ident"_val", newIntLitNode(1))
+            newCall(">=", newCall("len", val), newIntLitNode(2)),
+            newNimNode(nnkBracketExpr).add(val, newIntLitNode(1))
+          ), newNimNode(nnkElse).add(
+            newStrLitNode("")
+          )
+        )
+      )
+    inc uniqueIndex
+    let
+      val1 = ident(fmt"_val{uniqueIndex}")
+      url1 = newStmtList(
+        newLetStmt(val1, newCall("split", newCall("get", newCall("path", ident"req")), newStrLitNode("?"))),
+        newNimNode(nnkIfStmt).add(
+          newNimNode(nnkElifBranch).add(
+            newCall(">=", newCall("len", val1), newIntLitNode(2)),
+            newNimNode(nnkBracketExpr).add(val1, newIntLitNode(1))
           ), newNimNode(nnkElse).add(
             newStrLitNode("")
           )
@@ -616,6 +633,7 @@ macro routes*(server: Server, body: untyped): untyped =
       )
       reqMethodStr = "req.reqMethod"
       url = newDotExpr(newDotExpr(ident"req", ident"url"), ident"query")
+      url1 = newDotExpr(newDotExpr(ident"req", ident"url"), ident"query")
   let
     directoryFromPath = newCall(
       "&",
@@ -1029,7 +1047,9 @@ macro routes*(server: Server, body: untyped): untyped =
   
   if stmtList.isIdentUsed(ident"query"):
     immutableVars.add(newIdentDefs(ident"query", newEmptyNode(), newCall("parseQuery", url)))
-    immutableVars.add(newIdentDefs(ident"queryArr", newEmptyNode(), newCall("parseQueryArrays", url)))
+    inc uniqueIndex
+    immutableVars.add(newIdentDefs(ident"queryArr", newEmptyNode(), newCall("parseQueryArrays", url1)))
+    inc uniqueIndex
   if stmtList.isIdentUsed(ident"translate"):
     immutableVars.add(newIdentDefs(ident"acceptLanguage", newEmptyNode(), acceptLanguage))
   if stmtList.isIdentUsed(ident"inCookies"):
@@ -1037,6 +1057,7 @@ macro routes*(server: Server, body: untyped): untyped =
   when defined(debug):
     if stmtList.isIdentUsed(ident"reqMethod"):
       immutableVars.add(newIdentDefs(ident"reqMethod", newEmptyNode(), reqMethod))
+  echo result.toStrLit
 
 
 macro initServer*(body: untyped): untyped =
@@ -1067,11 +1088,8 @@ macro initServer*(body: untyped): untyped =
 when enableApiDoc:
   proc genApiDoc*(body: var NimNode, address: string, port: int): NimNode =
     ## Returns API route
-    echo address
-    echo port
     var docsData = newNimNode(nnkBracket)
     for i in body:
-      echo treeRepr i
       if i.kind in [nnkCall, nnkCommand]:
         if i[0].kind == nnkIdent and i.len == 3 and i[2].kind == nnkStmtList and i[1].kind == nnkStrLit:
           ## HTTP Method
