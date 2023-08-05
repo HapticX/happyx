@@ -1057,7 +1057,6 @@ macro routes*(server: Server, body: untyped): untyped =
   when defined(debug):
     if stmtList.isIdentUsed(ident"reqMethod"):
       immutableVars.add(newIdentDefs(ident"reqMethod", newEmptyNode(), reqMethod))
-  echo result.toStrLit
 
 
 macro initServer*(body: untyped): untyped =
@@ -1086,7 +1085,7 @@ macro initServer*(body: untyped): untyped =
     
 
 when enableApiDoc:
-  proc genApiDoc*(body: var NimNode, address: string, port: int): NimNode =
+  proc genApiDoc*(body: var NimNode): NimNode =
     ## Returns API route
     var docsData = newNimNode(nnkBracket)
     for i in body:
@@ -1149,7 +1148,8 @@ macro serve*(address: string, port: int, body: untyped): untyped =
   ## 
   var bodyStatement = body
   when enableApiDoc:
-    var docsData = bodyStatement.genApiDoc($address, parseInt($port.toStrLit))
+    echo port.toStrLit
+    var docsData = bodyStatement.genApiDoc()
 
   result = newStmtList(
     newProc(
@@ -1163,7 +1163,20 @@ macro serve*(address: string, port: int, body: untyped): untyped =
         when enableApiDoc:
           newProc(ident"renderDocsProcedure", [ident"string"], newStmtList(
             newLetStmt(ident"title", newStrLitNode(appName)),
-            newLetStmt(ident"apiDocData", docsData),
+            newNimNode(nnkLetSection).add(
+              newIdentDefs(
+                ident"apiDocData",
+                newNimNode(nnkBracketExpr).add(
+                  ident"seq",
+                  newNimNode(nnkTupleTy).add(
+                    newNimNode(nnkIdentDefs).add(
+                      ident"a", ident"b", ident"c", ident"string", newEmptyNode()
+                    )
+                  )
+                ),
+                newCall("@", docsData)
+              )
+            ),
             newCall("compileTemplateStr", newStrLitNode(IndexApiDocPageTemplate)),
           ))
         else:
