@@ -70,7 +70,7 @@ window.addEventListener('DOMContentLoaded', main);
 <div class="document" id="documentId">
   <div class="container">
     <h1 class="title">Index</h1>
-    Modules: <a href="happyx.html">happyx</a>, <a href="happyx/core/constants.html">happyx/core/constants</a>, <a href="happyx/core/exceptions.html">happyx/core/exceptions</a>, <a href="happyx/core/secure.html">happyx/core/secure</a>, <a href="happyx/private/macro_utils.html">happyx/private/macro_utils</a>, <a href="happyx/routing/mounting.html">happyx/routing/mounting</a>, <a href="happyx/routing/routing.html">happyx/routing/routing</a>, <a href="happyx/spa/components.html">happyx/spa/components</a>, <a href="happyx/spa/renderer.html">happyx/spa/renderer</a>, <a href="happyx/spa/state.html">happyx/spa/state</a>, <a href="happyx/spa/tag.html">happyx/spa/tag</a>, <a href="happyx/spa/translatable.html">happyx/spa/translatable</a>, <a href="happyx/spa/ui/button.html">happyx/spa/ui/button</a>, <a href="happyx/spa/ui/card.html">happyx/spa/ui/card</a>, <a href="happyx/spa/ui/enums.html">happyx/spa/ui/enums</a>, <a href="happyx/spa/ui/input.html">happyx/spa/ui/input</a>, <a href="happyx/spa/ui/palette.html">happyx/spa/ui/palette</a>, <a href="happyx/ssr/cors.html">happyx/ssr/cors</a>, <a href="happyx/ssr/form_data.html">happyx/ssr/form_data</a>, <a href="happyx/ssr/request_models.html">happyx/ssr/request_models</a>, <a href="happyx/ssr/server.html">happyx/ssr/server</a>, <a href="happyx/sugar/js.html">happyx/sugar/js</a>, <a href="happyx/sugar/sgr.html">happyx/sugar/sgr</a>, <a href="happyx/sugar/style.html">happyx/sugar/style</a>, <a href="happyx/sugar/use.html">happyx/sugar/use</a>, <a href="happyx/tmpl_engine/engine.html">happyx/tmpl_engine/engine</a>.<br/><p /><h2>API symbols</h2>
+    Modules: <a href="happyx.html">happyx</a>, <a href="happyx/core/constants.html">happyx/core/constants</a>, <a href="happyx/core/exceptions.html">happyx/core/exceptions</a>, <a href="happyx/core/secure.html">happyx/core/secure</a>, <a href="happyx/private/api_doc_template.html">happyx/private/api_doc_template</a>, <a href="happyx/private/macro_utils.html">happyx/private/macro_utils</a>, <a href="happyx/routing/mounting.html">happyx/routing/mounting</a>, <a href="happyx/routing/routing.html">happyx/routing/routing</a>, <a href="happyx/spa/components.html">happyx/spa/components</a>, <a href="happyx/spa/renderer.html">happyx/spa/renderer</a>, <a href="happyx/spa/state.html">happyx/spa/state</a>, <a href="happyx/spa/tag.html">happyx/spa/tag</a>, <a href="happyx/spa/translatable.html">happyx/spa/translatable</a>, <a href="happyx/spa/ui/button.html">happyx/spa/ui/button</a>, <a href="happyx/spa/ui/card.html">happyx/spa/ui/card</a>, <a href="happyx/spa/ui/enums.html">happyx/spa/ui/enums</a>, <a href="happyx/spa/ui/input.html">happyx/spa/ui/input</a>, <a href="happyx/spa/ui/palette.html">happyx/spa/ui/palette</a>, <a href="happyx/ssr/cors.html">happyx/ssr/cors</a>, <a href="happyx/ssr/form_data.html">happyx/ssr/form_data</a>, <a href="happyx/ssr/request_models.html">happyx/ssr/request_models</a>, <a href="happyx/ssr/server.html">happyx/ssr/server</a>, <a href="happyx/sugar/js.html">happyx/sugar/js</a>, <a href="happyx/sugar/sgr.html">happyx/sugar/sgr</a>, <a href="happyx/sugar/style.html">happyx/sugar/style</a>, <a href="happyx/sugar/use.html">happyx/sugar/use</a>, <a href="happyx/tmpl_engine/engine.html">happyx/tmpl_engine/engine</a>.<br/><p /><h2>API symbols</h2>
 <dl><dt><a name="%60%21%3D%60" href="#%60%21%3D%60"><span>`!=`:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="state: `!=`[T](self`gensym1, other`gensym1: State[T]): bool" href="happyx/spa/state.html#%21%3D%2C%2C">state: `!=`[T](self`gensym1, other`gensym1: State[T]): bool</a></li>
@@ -261,7 +261,7 @@ window.addEventListener('DOMContentLoaded', main);
           </ul></dd>
 <dt><a name="%60~%60" href="#%60~%60"><span>`~`:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="server: `~`(strTable: StringTableRef; key: untyped): untyped" href="happyx/ssr/server.html#~.m%2CStringTableRef%2Cuntyped">server: `~`(strTable: StringTableRef; key: untyped): untyped</a></li>
+          data-doc-search-tag="server: `~`(strTable: StringTableRef | TableRef[string, seq[string]]; key: untyped): untyped" href="happyx/ssr/server.html#~.m%2C%2Cuntyped">server: `~`(strTable: StringTableRef | TableRef[string, seq[string]]; key: untyped): untyped</a></li>
           </ul></dd>
 <dt><a name="AccentActiveColor" href="#AccentActiveColor"><span>AccentActiveColor:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -319,6 +319,10 @@ window.addEventListener('DOMContentLoaded', main);
 <li><a class="reference external"
           data-doc-search-tag="server: answerJson(req: Request; data: untyped; code: HttpCode = Http200): untyped" href="happyx/ssr/server.html#answerJson.t%2CRequest%2Cuntyped%2CHttpCode">server: answerJson(req: Request; data: untyped; code: HttpCode = Http200): untyped</a></li>
           </ul></dd>
+<dt><a name="ApiDocObject" href="#ApiDocObject"><span>ApiDocObject:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="server: ApiDocObject" href="happyx/ssr/server.html#ApiDocObject">server: ApiDocObject</a></li>
+          </ul></dd>
 <dt><a name="App" href="#App"><span>App:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="renderer: App" href="happyx/spa/renderer.html#App">renderer: App</a></li>
@@ -330,6 +334,10 @@ window.addEventListener('DOMContentLoaded', main);
 <dt><a name="application" href="#application"><span>application:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="renderer: application" href="happyx/spa/renderer.html#application">renderer: application</a></li>
+          </ul></dd>
+<dt><a name="appName" href="#appName"><span>appName:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="constants: appName" href="happyx/core/constants.html#appName">constants: appName</a></li>
           </ul></dd>
 <dt><a name="appRoutes" href="#appRoutes"><span>appRoutes:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -463,6 +471,10 @@ window.addEventListener('DOMContentLoaded', main);
 <li><a class="reference external"
           data-doc-search-tag="renderer: elem(name: untyped): untyped" href="happyx/spa/renderer.html#elem.m%2Cuntyped">renderer: elem(name: untyped): untyped</a></li>
           </ul></dd>
+<dt><a name="enableApiDoc" href="#enableApiDoc"><span>enableApiDoc:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="constants: enableApiDoc" href="happyx/core/constants.html#enableApiDoc">constants: enableApiDoc</a></li>
+          </ul></dd>
 <dt><a name="enableAutoTranslate" href="#enableAutoTranslate"><span>enableAutoTranslate:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="constants: enableAutoTranslate" href="happyx/core/constants.html#enableAutoTranslate">constants: enableAutoTranslate</a></li>
@@ -530,6 +542,10 @@ window.addEventListener('DOMContentLoaded', main);
 <dt><a name="FormDataItem" href="#FormDataItem"><span>FormDataItem:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="form_data: FormDataItem" href="happyx/ssr/form_data.html#FormDataItem">form_data: FormDataItem</a></li>
+          </ul></dd>
+<dt><a name="genApiDoc" href="#genApiDoc"><span>genApiDoc:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="server: genApiDoc(body: var NimNode): NimNode" href="happyx/ssr/server.html#genApiDoc%2CNimNode">server: genApiDoc(body: var NimNode): NimNode</a></li>
           </ul></dd>
 <dt><a name="generate_password" href="#generate_password"><span>generate_password:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -604,6 +620,10 @@ window.addEventListener('DOMContentLoaded', main);
 <dt><a name="httpMethods" href="#httpMethods"><span>httpMethods:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="constants: httpMethods" href="happyx/core/constants.html#httpMethods">constants: httpMethods</a></li>
+          </ul></dd>
+<dt><a name="IndexApiDocPageTemplate" href="#IndexApiDocPageTemplate"><span>IndexApiDocPageTemplate:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="api_doc_template: IndexApiDocPageTemplate" href="happyx/private/api_doc_template.html#IndexApiDocPageTemplate">api_doc_template: IndexApiDocPageTemplate</a></li>
           </ul></dd>
 <dt><a name="initButton" href="#initButton"><span>initButton:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -723,6 +743,10 @@ window.addEventListener('DOMContentLoaded', main);
 <li><a class="reference external"
           data-doc-search-tag="style: nnkNumbers" href="happyx/sugar/style.html#nnkNumbers">style: nnkNumbers</a></li>
           </ul></dd>
+<dt><a name="numThreads" href="#numThreads"><span>numThreads:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="constants: numThreads" href="happyx/core/constants.html#numThreads">constants: numThreads</a></li>
+          </ul></dd>
 <dt><a name="parseFormData" href="#parseFormData"><span>parseFormData:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="form_data: parseFormData(formData: string): (StringTableRef, TableRef[string, FormDataItem])" href="happyx/ssr/form_data.html#parseFormData%2Cstring">form_data: parseFormData(formData: string): (StringTableRef, TableRef[string, FormDataItem])</a></li>
@@ -730,6 +754,10 @@ window.addEventListener('DOMContentLoaded', main);
 <dt><a name="parseQuery" href="#parseQuery"><span>parseQuery:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="server: parseQuery(query: string): owned(StringTableRef)" href="happyx/ssr/server.html#parseQuery%2Cstring">server: parseQuery(query: string): owned(StringTableRef)</a></li>
+          </ul></dd>
+<dt><a name="parseQueryArrays" href="#parseQueryArrays"><span>parseQueryArrays:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="server: parseQueryArrays(query: string): TableRef[string, seq[string]]" href="happyx/ssr/server.html#parseQueryArrays%2Cstring">server: parseQueryArrays(query: string): TableRef[string, seq[string]]</a></li>
           </ul></dd>
 <dt><a name="parseXmlBody" href="#parseXmlBody"><span>parseXmlBody:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -1010,7 +1038,7 @@ window.addEventListener('DOMContentLoaded', main);
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-08-03 07:11:49 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-08-05 15:52:42 UTC</small>
       </div>
     </div>
   </div>

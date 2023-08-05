@@ -4,6 +4,9 @@ enableHttpBeast	happyx/core/constants.html#enableHttpBeast	constants: enableHttp
 enableAutoTranslate	happyx/core/constants.html#enableAutoTranslate	constants: enableAutoTranslate	
 enableDebug	happyx/core/constants.html#enableDebug	constants: enableDebug	
 enableUi	happyx/core/constants.html#enableUi	constants: enableUi	
+enableApiDoc	happyx/core/constants.html#enableApiDoc	constants: enableApiDoc	
+numThreads	happyx/core/constants.html#numThreads	constants: numThreads	
+appName	happyx/core/constants.html#appName	constants: appName	
 cryptoMethod	happyx/core/constants.html#cryptoMethod	constants: cryptoMethod	
 httpMethods	happyx/core/constants.html#httpMethods	constants: httpMethods	
 nim_1_6_14	happyx/core/constants.html#nim_1_6_14	constants: nim_1_6_14	
