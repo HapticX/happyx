@@ -1,19 +1,20 @@
 ## # Constants ✨
 ## > Provides HappyX constants
 ## 
-## | Flag               | Description                                             |
-## | :---:              | :---:                                                   |
-## | `-d:httpx`         | enables Httpx as alternative HTTP Server                |
-## | `-d:beast`         | enables HttpBeast as alternative HTTP Server            |
-## | `-d:micro`         | enables MicroAsyncHttpServer as alternative HTTP Server |
-## | `-d:translate`     | enables automatic translate for returns                 |
-## | `-d:debug`         | enables debug logging                                   |
-## | `-d:oldRenderer`   | enables old renderer for SPA                            |
-## | `-d:enableUi`      | enables built-in UI components                          |
-## | `-d:disableApiDoc` | disables built-in API documentation                     |
-## | `-d:cryptoMethod`  | choose crypto method for `generate_password` methods    |
-## | `-d:numThreads`    | choose number of threads (httpx/httpbeast)              |
-## | `-d:appName`       | choose name of application (SSR/SSG)                    |
+## | Flag               | Description                                                |
+## | :---:              | :---:                                                      |
+## | `-d:httpx`         | enables Httpx as alternative HTTP Server ⚡                |
+## | `-d:beast`         | enables HttpBeast as alternative HTTP Server ⚡            |
+## | `-d:micro`         | enables MicroAsyncHttpServer as alternative HTTP Server ⚡ |
+## | `-d:translate`     | enables automatic translate for returns 🌐                  |
+## | `-d:debug`         | enables debug logging 💻                                   |
+## | `-d:oldRenderer`   | enables old renderer for SPA 🍍                            |
+## | `-d:enableUi`      | enables built-in UI components 🎴                          |
+## | `-d:cryptoMethod`  | choose crypto method for `generate_password` methods 🔐    |
+## | `-d:numThreads`    | choose number of threads (httpx/httpbeast) ⌛              |
+## | `-d:disableApiDoc` | disables built-in API documentation 📕                     |
+## | `-d:appName`       | choose name of application (SSR/SSG) 📕                    |
+## | `-d:apiDocsPath`   | choose path for API documentation 📕                       |
 ## 
 import strformat
 when not defined(js) and defined(debug):
@@ -35,6 +36,7 @@ const
   enableApiDoc* = not defined(disableApiDoc)
   numThreads* {. intdefine .} = 0
   appName* {.strdefine.} = "HappyX Application"
+  apiDocsPath* {.strdefine.} = "/docs"
   cryptoMethod* {.strdefine.} = "sha512"
   httpMethods* = [
     "get", "post", "put", "patch", "link", "options", "head", "delete", "unlink", "purge", "copy"
