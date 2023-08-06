@@ -7,8 +7,10 @@ enableUi	happyx/core/constants.html#enableUi	constants: enableUi
 enableApiDoc	happyx/core/constants.html#enableApiDoc	constants: enableApiDoc	
 numThreads	happyx/core/constants.html#numThreads	constants: numThreads	
 appName	happyx/core/constants.html#appName	constants: appName	
+apiDocsPath	happyx/core/constants.html#apiDocsPath	constants: apiDocsPath	
 cryptoMethod	happyx/core/constants.html#cryptoMethod	constants: cryptoMethod	
 httpMethods	happyx/core/constants.html#httpMethods	constants: httpMethods	
 nim_1_6_14	happyx/core/constants.html#nim_1_6_14	constants: nim_1_6_14	
 nim_2_0_0	happyx/core/constants.html#nim_2_0_0	constants: nim_2_0_0	
+hpxVersion	happyx/core/constants.html#hpxVersion	constants: hpxVersion	
 Constants ✨	happyx/core/constants.html#constants-✨	 Constants ✨	
