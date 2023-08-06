@@ -12,6 +12,8 @@ on:
       - '.gitignore'
       - 'LICENSE'
       - '**/FUNDING.yml'
+      - '**/gh-pages.yml'
+      - '**/tests.yml'
   pull_request:
     paths-ignore:
       - 'docs/**'
@@ -21,6 +23,8 @@ on:
       - '.gitignore'
       - 'LICENSE'
       - '**/FUNDING.yml'
+      - '**/gh-pages.yml'
+      - '**/tests.yml'
 
 jobs:
   build:

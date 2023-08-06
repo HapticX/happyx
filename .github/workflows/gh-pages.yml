@@ -11,6 +11,8 @@ on:
       - '.gitignore'
       - 'LICENSE'
       - '**/FUNDING.yml'
+      - '**/tests.yml'
+      - '**/examples.yml'
   pull_request:
     paths-ignore:
       - '.github/ISSUE_TEMPLATE/*'
@@ -19,6 +21,8 @@ on:
       - '.gitignore'
       - 'LICENSE'
       - '**/FUNDING.yml'
+      - '**/tests.yml'
+      - '**/examples.yml'
 
 permissions:
   contents: write
