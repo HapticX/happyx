@@ -63,13 +63,14 @@ jobs:
           cd ./examples/website/src
           nim js -d:danger --opt:size --checks:off --assertions:off --hints:off --warnings:off --panics:off --lineDir:off main
           cd ../../..
-          mkdir ./docs/public/
+          mkdir ./docs/happyx/
+          mkdir ./docs/happyx/public/
           mv ./examples/website/src/index.html ./docs/
           mv ./examples/website/src/main.js ./docs/
-          mv ./examples/website/src/happyx/public/* ./docs/public/
+          mv ./examples/website/src/happyx/public/* ./docs/happyx/public/
       
-      # - name: CNAME For Nim Town
-      #   run: echo "hapticx.nim.town" > ./docs/CNAME
+      - name: CNAME For Nim Town
+        run: echo "hapticx.nim.town" > ./docs/CNAME
 
       - name: Deploy documents
         uses: peaceiris/actions-gh-pages@v3
