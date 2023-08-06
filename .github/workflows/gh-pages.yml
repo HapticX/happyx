@@ -67,11 +67,12 @@ jobs:
           cd ./examples/website/src
           nim js -d:danger --opt:size --checks:off --assertions:off --hints:off --warnings:off --panics:off --lineDir:off main
           cd ../../..
-          mkdir ./docs/happyx/
           mkdir ./docs/happyx/public/
-          mv ./examples/website/src/index.html ./docs/
-          mv ./examples/website/src/main.js ./docs/
-          mv ./examples/website/src/happyx/public/* ./docs/happyx/public/
+          mkdir ./docs/public/
+          cp ./examples/website/src/index.html ./docs/
+          cp ./examples/website/src/main.js ./docs/
+          cp ./examples/website/src/happyx/public/* ./docs/happyx/public/
+          cp ./examples/website/src/happyx/public/* ./docs/public/
       
       - name: CNAME For Nim Town
         run: echo "hapticx.nim.town" > ./docs/CNAME
