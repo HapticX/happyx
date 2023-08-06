@@ -50,21 +50,22 @@
 
 import
   # Stdlib
-  asyncdispatch,
-  strformat,
-  asyncfile,
-  segfaults,
-  mimetypes,
-  strutils,
-  terminal,
-  strtabs,
-  logging,
-  cookies,
-  macros,
-  tables,
-  colors,
-  json,
-  os,
+  std/asyncdispatch,
+  std/strformat,
+  std/asyncfile,
+  std/segfaults,
+  std/mimetypes,
+  std/strutils,
+  std/terminal,
+  std/strtabs,
+  std/logging,
+  std/cookies,
+  std/macros,
+  std/tables,
+  std/colors,
+  std/json,
+  std/os,
+  std/exitprocs,
   # Deps
   regex,
   # HappyX
@@ -167,7 +168,7 @@ proc onQuit() {.noconv.} =
 
 
 setControlCHook(ctrlCHook)
-addQuitProc(onQuit)
+addExitProc(onQuit)
 
 
 func fgColored*(text: string, clr: ForegroundColor): string {.inline.} =
@@ -562,7 +563,6 @@ macro routes*(server: Server, body: untyped): untyped =
   ##        "Oops! Not found!"
   let
     pathIdent = ident"urlPath"
-    reqMethodIdent = ident"reqMethodStr"
   var
     # Handle requests
     stmtList = newStmtList()
@@ -595,7 +595,6 @@ macro routes*(server: Server, body: untyped): untyped =
           "split", newNimNode(nnkBracketExpr).add(headers, newStrLitNode("accept-language")), newLit(',')
         ), newLit(0)
       )
-      reqMethodStr = "req.httpMethod.get()"
       val = ident(fmt"_val{uniqueIndex}")
       url = newStmtList(
         newLetStmt(val, newCall("split", newCall("get", newCall("path", ident"req")), newStrLitNode("?"))),
@@ -632,7 +631,6 @@ macro routes*(server: Server, body: untyped): untyped =
           "split", newNimNode(nnkBracketExpr).add(headers, newStrLitNode("accept-language")), newLit(',')
         ), newLit(0)
       )
-      reqMethodStr = "req.reqMethod"
       url = newDotExpr(newDotExpr(ident"req", ident"url"), ident"query")
       url1 = newDotExpr(newDotExpr(ident"req", ident"url"), ident"query")
   let

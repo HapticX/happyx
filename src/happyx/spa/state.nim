@@ -148,9 +148,7 @@ macro `->`*(self: State, field: untyped): untyped =
   ##    echo num
   ## 
   if field.kind in nnkCallKinds:
-    let
-      funcName = $field[0].toStrLit
-      call = newCall(field[0], newDotExpr(self, ident("val")))
+    let call = newCall(field[0], newDotExpr(self, ident("val")))
     # Get func args
     if field.len > 1:
       for i in 1..<field.len:

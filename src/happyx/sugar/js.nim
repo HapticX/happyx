@@ -191,9 +191,7 @@ proc buildJsProc(body: NimNode, src: var string, lvl: int = 0,
         # iterate over "of a, b, c ..."
         if branch.kind == nnkOfBranch:
           for ofIdx in 0..<branch.len-1:
-            let
-              arg = branch[ofIdx]
-              val = $arg.toStrLit
+            let arg = branch[ofIdx]
             # Detect enum type
             if enumType == "" and arg.kind == nnkDotExpr:
               let k = arg[0]

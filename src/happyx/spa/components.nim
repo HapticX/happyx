@@ -12,7 +12,7 @@ import
   # HappyX
   ./renderer,
   ../sugar/[js, style],
-  ../core/[exceptions, constants],
+  ../core/[exceptions],
   ../private/[macro_utils]
 
 
@@ -422,8 +422,6 @@ macro component*(name, body: untyped): untyped =
       
       # funcs, procs, methods, iterators, converters
       elif s[0].kind == nnkBracket and s[0][0] == ident"methods" and s.len == 2 and s[1].kind == nnkStmtList:
-        let procType = $s[0][0]
-
         for statement in s[1]:
           if statement.kind in [nnkProcDef, nnkMethodDef, nnkIteratorDef, nnkConverterDef]:
             statement[3].insert(1, newIdentDefs(ident"self", ident(componentName)))

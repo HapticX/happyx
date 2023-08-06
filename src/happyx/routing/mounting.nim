@@ -21,8 +21,7 @@ import
   tables,
   strformat,
   # HappyX
-  ../core/[exceptions],
-  ../private/[macro_utils]
+  ../core/[exceptions]
 
 
 var registeredMounts* {. compileTime .} = newTable[string, NimNode]()

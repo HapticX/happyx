@@ -16,8 +16,7 @@
 ## | `-d:appName`       | choose name of application (SSR/SSG)                    |
 ## 
 import strformat
-
-when not defined(js):
+when not defined(js) and defined(debug):
   import terminal
 
 

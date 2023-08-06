@@ -24,10 +24,8 @@ import
   tables,
   strtabs,
   strutils,
-  mimetypes,
   uri,
   xmltree,
-  parsexml,
   xmlparser,
   json,
   # Thirdparty
@@ -45,7 +43,6 @@ proc parseFormData*(formData: string): (StringTableRef, TableRef[string, FormDat
     formDataSeparator = re"\-{6}\w+(\-{2})?\r\n"
     lineSeparator = re"\r\n"  
     data = formData.split(formDataSeparator)
-    m = newMimetypes()
   for item in data:
     let lines = item.split(lineSeparator)
     var

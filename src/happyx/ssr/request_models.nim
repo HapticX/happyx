@@ -83,12 +83,10 @@
 import
   # stdlib
   macros,
-  strtabs,
   strutils,
   strformat,
   # Happyx
-  ../core/[exceptions, constants],
-  ./form_data
+  ../core/[exceptions]
 
 
 macro model*(modelName, body: untyped): untyped =

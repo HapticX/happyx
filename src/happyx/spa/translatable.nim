@@ -21,7 +21,7 @@ import
   strtabs,
   tables,
   strformat,
-  ../core/[constants, exceptions]
+  ../core/[exceptions]
 
 
 var

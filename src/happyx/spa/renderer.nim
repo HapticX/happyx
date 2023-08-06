@@ -34,7 +34,7 @@ import
   ../core/[exceptions, constants],
   ../private/[macro_utils],
   ../routing/[routing, mounting],
-  ../sugar/[sgr, style, js]
+  ../sugar/[sgr, js]
 
 
 when defined(js):
@@ -107,10 +107,9 @@ var
   currentRoute*: cstring = "/"  ## Current route path
   currentComponentsList*: seq[BaseComponent] = @[]
 
-  uniqueMacroIndex {.compileTime.} = 0
-
 
 when defined(js):
+  var uniqueMacroIndex {.compileTime.} = 0
   buildJs:
     function callEventHandler(idx, event):
       nim:
@@ -145,8 +144,8 @@ macro elem*(name: untyped): untyped =
   ## 
   ## ⚠ Works only on JS backend ⚠
   ## 
-  let nameStr = $name
   when defined(js):
+    let nameStr = $name
     inc uniqueMacroIndex
     let uniqName = fmt"_res{uniqueMacroIndex}"
     newStmtList(

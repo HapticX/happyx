@@ -6,13 +6,11 @@ import
   strformat,
   strutils,
   strtabs,
-  tables,
   macros,
   # deps
   regex,
   # happyx
-  ../core/[exceptions, constants],
-  ../private/[macro_utils]
+  ../core/[exceptions, constants]
 
 
 var
@@ -438,7 +436,6 @@ macro pathParams*(body: untyped): untyped =
             elif childStr == "mutable":
               isMutable = true
             else:
-              let current = childStr
               throwDefect(
                 HpxPathParamDefect,
                 "Invalid flag for path param: " & childStr,

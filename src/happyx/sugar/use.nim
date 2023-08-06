@@ -22,8 +22,7 @@ import
   macros,
   strformat,
   # HappyX
-  ../core/[exceptions, constants],
-  ../spa/components,
+  ../core/[exceptions],
   ../private/macro_utils
 
 
