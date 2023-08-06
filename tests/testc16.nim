@@ -9,10 +9,6 @@ echo "secret1".check_password(x)
 
 
 serve "127.0.0.1", 5000:
-  middleware:
-    echo req.headers
-    echo req.headers["connection"]
-    echo req.headers["upgrade"]
   "/some":
     ## Hello, world
     return "Hi"
