@@ -8,7 +8,22 @@ echo "secret".check_password(x)
 echo "secret1".check_password(x)
 
 
+mount Profile:
+  get "/":
+    ## Profile main page
+    return "Hello, world!"
+  
+  get "/settings":
+    ## Profile settings
+    return "Hello, world"
+  
+  post "/settings":
+    ## Update profile settings
+    return "Hello, world!"
+
+
 serve "127.0.0.1", 5000:
+  mount "/profile" -> Profile
   "/some":
     ## Hello, world
     return "Hi"
@@ -30,4 +45,12 @@ serve "127.0.0.1", 5000:
   get "/setStatusCode":
     ## Responds "Hello, world!" with 404 HttpCode
     statusCode = 404
+    return "Hello, world!"
+
+  post "/post":
+    ## Creates a new post
+    return "Hello, world!"
+
+  put "/post$id:int":
+    ## Edits a post
     return "Hello, world!"

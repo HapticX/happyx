@@ -1086,8 +1086,11 @@ macro initServer*(body: untyped): untyped =
 when enableApiDoc:
   proc genApiDoc*(body: var NimNode): NimNode =
     ## Returns API route
-    var docsData = newNimNode(nnkBracket)
-    for i in body:
+    var
+      docsData = newNimNode(nnkBracket)
+      bodyCopy = body.copy()
+    bodyCopy.findAndReplaceMount()
+    for i in bodyCopy:
       if i.kind in [nnkCall, nnkCommand]:
         if i[0].kind == nnkIdent and i.len == 3 and i[2].kind == nnkStmtList and i[1].kind == nnkStrLit:
           ## HTTP Method
@@ -1111,6 +1114,7 @@ when enableApiDoc:
             newStrLitNode(description),  # Description
             newStrLitNode($i[0]),  # Path
           ))
+        
     # Get all documentation
     body.add(newNimNode(nnkCommand).add(ident"get", newStrLitNode("/docs"), newStmtList(
       newCall("answerHtml", ident"req", newCall("renderDocsProcedure")),

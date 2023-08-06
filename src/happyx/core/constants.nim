@@ -43,6 +43,7 @@ const
   # Nim version
   nim_1_6_14* = (NimMajor, NimMajor, NimPatch) == (1, 6, 14)
   nim_2_0_0* = (NimMajor, NimMinor, NimPatch) >= (2, 0, 0)
+  hpxVersion* = "2.0.0"
 
 
 when cryptoMethod notin availableCryptoMethods:
