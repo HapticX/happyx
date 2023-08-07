@@ -296,9 +296,9 @@ import
 
 when enableUi or defined(docgen):
   import
-    happyx/spa/ui/[enums, palette, button, input, card]
+    happyx/spa/ui/[enums, palette, button, input, card, progress]
   export
-    enums, palette, button, input, card
+    enums, palette, button, input, card, progress
 
 export
   exceptions,

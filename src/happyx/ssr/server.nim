@@ -1116,7 +1116,12 @@ when enableApiDoc:
           ))
         
     # Get all documentation
-    body.add(newNimNode(nnkCommand).add(ident"get", newStrLitNode("/docs"), newStmtList(
+    body.add(newNimNode(nnkCommand).add(ident"get", newStrLitNode(
+      if apiDocsPath.startsWith("/"):
+        apiDocsPath
+      else:
+        "/" & apiDocsPath
+    ), newStmtList(
       newCall("answerHtml", ident"req", newCall("renderDocsProcedure")),
     )))
     docsData

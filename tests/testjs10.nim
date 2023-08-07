@@ -1,3 +1,4 @@
+# This test compiles only with `-d:enableUi` flag!
 import
   ../src/happyx
 
@@ -35,6 +36,13 @@ appRoutes("app"):
       
       tBr
       component Input(placeholder = "Edit text ...", label = "Edit text ...")
+      
+      tBr
+      component ProgressBar(value = 50, showPercent = true)
+      tBr
+      component ProgressBar(value = 50, showPercent = true, progressType = ppVertical)
+      tBr
+      component ProgressBar(value = 50, showPercent = true, progressType = ppCircle, size = (100, 100))
 
       tBr
       component Card(hAlign = Alignment.aCenter):

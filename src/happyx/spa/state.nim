@@ -197,12 +197,12 @@ proc set*[T](self: State[T], value: T) =
     application.router()
 
 
-func `[]`*[T](self: State[T], idx: int): auto =
+func `[]`*[T](self: State[openarray[T]], idx: int): T =
   ## Returns State's item at `idx` index.
   self.val[idx]
 
 
-iterator items*[T](self: State[T]): auto =
+iterator items*[T](self: State[openarray[T]]): T =
   ## Iterate over state items
   for item in self.val:
     yield item

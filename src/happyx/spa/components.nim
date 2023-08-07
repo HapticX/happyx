@@ -483,7 +483,7 @@ macro component*(name, body: untyped): untyped =
           elif s[^1][0].kind in [nnkStrLit, nnkTripleStrLit]:
             # String CSS
             let str = ($s[1][0]).replace(
-              re"([\S ]+?) *\{(?![ \S]+?\}\s*[;])", "$1[data-{self.uniqCompId}] {{"
+              re"([\S ]+?) *\{(?![ \S]+?\}\s*[;%$#@!~`%^&:\-_=\+,.<>?/\\\{\d\w])", "$1[data-{self.uniqCompId}] {{"
             ).replace(re"(\n[ \t]+)\}", "$1}}")
             styleStmtList = newStmtList(
               newAssignment(

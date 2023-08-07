@@ -13,3 +13,7 @@ type
     ttError,
     ttWarning,
     ttInfo
+  ProgressBarType* {.size: sizeof(int8), final, pure.} = enum
+    ppHorizontal,
+    ppVertical,
+    ppCircle
