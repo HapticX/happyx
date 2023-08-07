@@ -70,7 +70,7 @@ window.addEventListener('DOMContentLoaded', main);
 <div class="document" id="documentId">
   <div class="container">
     <h1 class="title">Index</h1>
-    Modules: <a href="happyx.html">happyx</a>, <a href="happyx/core/constants.html">happyx/core/constants</a>, <a href="happyx/core/exceptions.html">happyx/core/exceptions</a>, <a href="happyx/core/secure.html">happyx/core/secure</a>, <a href="happyx/private/api_doc_template.html">happyx/private/api_doc_template</a>, <a href="happyx/private/macro_utils.html">happyx/private/macro_utils</a>, <a href="happyx/routing/mounting.html">happyx/routing/mounting</a>, <a href="happyx/routing/routing.html">happyx/routing/routing</a>, <a href="happyx/spa/components.html">happyx/spa/components</a>, <a href="happyx/spa/renderer.html">happyx/spa/renderer</a>, <a href="happyx/spa/state.html">happyx/spa/state</a>, <a href="happyx/spa/tag.html">happyx/spa/tag</a>, <a href="happyx/spa/translatable.html">happyx/spa/translatable</a>, <a href="happyx/spa/ui/button.html">happyx/spa/ui/button</a>, <a href="happyx/spa/ui/card.html">happyx/spa/ui/card</a>, <a href="happyx/spa/ui/enums.html">happyx/spa/ui/enums</a>, <a href="happyx/spa/ui/input.html">happyx/spa/ui/input</a>, <a href="happyx/spa/ui/palette.html">happyx/spa/ui/palette</a>, <a href="happyx/ssr/cors.html">happyx/ssr/cors</a>, <a href="happyx/ssr/form_data.html">happyx/ssr/form_data</a>, <a href="happyx/ssr/request_models.html">happyx/ssr/request_models</a>, <a href="happyx/ssr/server.html">happyx/ssr/server</a>, <a href="happyx/sugar/js.html">happyx/sugar/js</a>, <a href="happyx/sugar/sgr.html">happyx/sugar/sgr</a>, <a href="happyx/sugar/style.html">happyx/sugar/style</a>, <a href="happyx/sugar/use.html">happyx/sugar/use</a>, <a href="happyx/tmpl_engine/engine.html">happyx/tmpl_engine/engine</a>.<br/><p /><h2>API symbols</h2>
+    Modules: <a href="happyx.html">happyx</a>, <a href="happyx/core/constants.html">happyx/core/constants</a>, <a href="happyx/core/exceptions.html">happyx/core/exceptions</a>, <a href="happyx/core/secure.html">happyx/core/secure</a>, <a href="happyx/private/api_doc_template.html">happyx/private/api_doc_template</a>, <a href="happyx/private/macro_utils.html">happyx/private/macro_utils</a>, <a href="happyx/routing/mounting.html">happyx/routing/mounting</a>, <a href="happyx/routing/routing.html">happyx/routing/routing</a>, <a href="happyx/spa/components.html">happyx/spa/components</a>, <a href="happyx/spa/renderer.html">happyx/spa/renderer</a>, <a href="happyx/spa/state.html">happyx/spa/state</a>, <a href="happyx/spa/tag.html">happyx/spa/tag</a>, <a href="happyx/spa/translatable.html">happyx/spa/translatable</a>, <a href="happyx/spa/ui/button.html">happyx/spa/ui/button</a>, <a href="happyx/spa/ui/card.html">happyx/spa/ui/card</a>, <a href="happyx/spa/ui/enums.html">happyx/spa/ui/enums</a>, <a href="happyx/spa/ui/input.html">happyx/spa/ui/input</a>, <a href="happyx/spa/ui/palette.html">happyx/spa/ui/palette</a>, <a href="happyx/spa/ui/progress.html">happyx/spa/ui/progress</a>, <a href="happyx/ssr/cors.html">happyx/ssr/cors</a>, <a href="happyx/ssr/form_data.html">happyx/ssr/form_data</a>, <a href="happyx/ssr/request_models.html">happyx/ssr/request_models</a>, <a href="happyx/ssr/server.html">happyx/ssr/server</a>, <a href="happyx/sugar/js.html">happyx/sugar/js</a>, <a href="happyx/sugar/sgr.html">happyx/sugar/sgr</a>, <a href="happyx/sugar/style.html">happyx/sugar/style</a>, <a href="happyx/sugar/use.html">happyx/sugar/use</a>, <a href="happyx/tmpl_engine/engine.html">happyx/tmpl_engine/engine</a>.<br/><p /><h2>API symbols</h2>
 <dl><dt><a name="%60%21%3D%60" href="#%60%21%3D%60"><span>`!=`:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="state: `!=`[T](self`gensym1, other`gensym1: State[T]): bool" href="happyx/spa/state.html#%21%3D%2C%2C">state: `!=`[T](self`gensym1, other`gensym1: State[T]): bool</a></li>
@@ -227,7 +227,7 @@ window.addEventListener('DOMContentLoaded', main);
           </ul></dd>
 <dt><a name="%60%5B%5D%60" href="#%60%5B%5D%60"><span>`[]`:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="state: `[]`[T](self: State[T]; idx: int): auto" href="happyx/spa/state.html#%5B%5D%2CState%5BT%5D%2Cint">state: `[]`[T](self: State[T]; idx: int): auto</a></li>
+          data-doc-search-tag="state: `[]`[T](self: State[openArray[T]]; idx: int): T" href="happyx/spa/state.html#%5B%5D%2CState%5BopenArray%5BT%5D%5D%2Cint">state: `[]`[T](self: State[openArray[T]]; idx: int): T</a></li>
           <li><a class="reference external"
           data-doc-search-tag="tag: `[]`(self: TagRef; attrName: string): string" href="happyx/spa/tag.html#%5B%5D%2CTagRef%2Cstring">tag: `[]`(self: TagRef; attrName: string): string</a></li>
           </ul></dd>
@@ -467,6 +467,10 @@ window.addEventListener('DOMContentLoaded', main);
 <li><a class="reference external"
           data-doc-search-tag="input: DefaultInputAction" href="happyx/spa/ui/input.html#DefaultInputAction">input: DefaultInputAction</a></li>
           </ul></dd>
+<dt><a name="DefaultProgressAction" href="#DefaultProgressAction"><span>DefaultProgressAction:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="progress: DefaultProgressAction" href="happyx/spa/ui/progress.html#DefaultProgressAction">progress: DefaultProgressAction</a></li>
+          </ul></dd>
 <dt><a name="discardStmt" href="#discardStmt"><span>discardStmt:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="macro_utils: discardStmt" href="happyx/private/macro_utils.html#discardStmt">macro_utils: discardStmt</a></li>
@@ -655,6 +659,18 @@ window.addEventListener('DOMContentLoaded', main);
           placeholder: string = &quot;&quot;; label: string = &quot;&quot;; inputType: string = &quot;&quot;): Input" href="happyx/spa/ui/input.html#initInput%2Cstring%2CInputAction%2Cstring%2Cstring%2Cstring">input: initInput(uniqCompId: string; inputAction: InputAction = DefaultInputAction;
           placeholder: string = &quot;&quot;; label: string = &quot;&quot;; inputType: string = &quot;&quot;): Input</a></li>
           </ul></dd>
+<dt><a name="initProgressBar" href="#initProgressBar"><span>initProgressBar:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="progress: initProgressBar(uniqCompId: string;
+                action: ProgressAction = DefaultProgressAction;
+                progressType: ProgressBarType = ProgressBarType.ppHorizontal;
+                showPercent: bool = true; title: string = &quot;&quot;; value: int = 0;
+                maxValue: int = 100; size: tuple[a, b: int] = (96, 24)): ProgressBar" href="happyx/spa/ui/progress.html#initProgressBar%2Cstring%2CProgressAction%2CProgressBarType%2Cbool%2Cstring%2Cint%2Cint%2Ctuple%5Bint%2Cint%5D">progress: initProgressBar(uniqCompId: string;
+                action: ProgressAction = DefaultProgressAction;
+                progressType: ProgressBarType = ProgressBarType.ppHorizontal;
+                showPercent: bool = true; title: string = &quot;&quot;; value: int = 0;
+                maxValue: int = 100; size: tuple[a, b: int] = (96, 24)): ProgressBar</a></li>
+          </ul></dd>
 <dt><a name="initServer" href="#initServer"><span>initServer:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="server: initServer(body: untyped): untyped" href="happyx/ssr/server.html#initServer.m%2Cuntyped">server: initServer(body: untyped): untyped</a></li>
@@ -697,7 +713,7 @@ window.addEventListener('DOMContentLoaded', main);
           </ul></dd>
 <dt><a name="items" href="#items"><span>items:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="state: items[T](self: State[T]): auto" href="happyx/spa/state.html#items.i%2CState%5BT%5D">state: items[T](self: State[T]): auto</a></li>
+          data-doc-search-tag="state: items[T](self: State[openArray[T]]): T" href="happyx/spa/state.html#items.i%2CState%5BopenArray%5BT%5D%5D">state: items[T](self: State[openArray[T]]): T</a></li>
           </ul></dd>
 <dt><a name="len" href="#len"><span>len:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -779,6 +795,22 @@ window.addEventListener('DOMContentLoaded', main);
 <li><a class="reference external"
           data-doc-search-tag="routing: pathParams(body: untyped): untyped" href="happyx/routing/routing.html#pathParams.m%2Cuntyped">routing: pathParams(body: untyped): untyped</a></li>
           </ul></dd>
+<dt><a name="ProgressAction" href="#ProgressAction"><span>ProgressAction:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="progress: ProgressAction" href="happyx/spa/ui/progress.html#ProgressAction">progress: ProgressAction</a></li>
+          </ul></dd>
+<dt><a name="ProgressBar" href="#ProgressBar"><span>ProgressBar:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="progress: ProgressBar" href="happyx/spa/ui/progress.html#ProgressBar">progress: ProgressBar</a></li>
+          </ul></dd>
+<dt><a name="ProgressBarObj" href="#ProgressBarObj"><span>ProgressBarObj:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="progress: ProgressBarObj" href="happyx/spa/ui/progress.html#ProgressBarObj">progress: ProgressBarObj</a></li>
+          </ul></dd>
+<dt><a name="ProgressBarType" href="#ProgressBarType"><span>ProgressBarType:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="enums: ProgressBarType" href="happyx/spa/ui/enums.html#ProgressBarType">enums: ProgressBarType</a></li>
+          </ul></dd>
 <dt><a name="regCORS" href="#regCORS"><span>regCORS:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="cors: regCORS(body: untyped): untyped" href="happyx/ssr/cors.html#regCORS.m%2Cuntyped">cors: regCORS(body: untyped): untyped</a></li>
@@ -808,6 +840,8 @@ window.addEventListener('DOMContentLoaded', main);
           data-doc-search-tag="card: render(self: Card): TagRef" href="happyx/spa/ui/card.html#render.e%2CCard">card: render(self: Card): TagRef</a></li>
           <li><a class="reference external"
           data-doc-search-tag="input: render(self: Input): TagRef" href="happyx/spa/ui/input.html#render.e%2CInput">input: render(self: Input): TagRef</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="progress: render(self: ProgressBar): TagRef" href="happyx/spa/ui/progress.html#render.e%2CProgressBar">progress: render(self: ProgressBar): TagRef</a></li>
           </ul></dd>
 <dt><a name="renderTag" href="#renderTag"><span>renderTag:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -816,6 +850,8 @@ window.addEventListener('DOMContentLoaded', main);
           data-doc-search-tag="card: renderTag(self: Card): TagRef" href="happyx/spa/ui/card.html#renderTag%2CCard">card: renderTag(self: Card): TagRef</a></li>
           <li><a class="reference external"
           data-doc-search-tag="input: renderTag(self: Input): TagRef" href="happyx/spa/ui/input.html#renderTag%2CInput">input: renderTag(self: Input): TagRef</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="progress: renderTag(self: ProgressBar): TagRef" href="happyx/spa/ui/progress.html#renderTag%2CProgressBar">progress: renderTag(self: ProgressBar): TagRef</a></li>
           </ul></dd>
 <dt><a name="renderTemplate" href="#renderTemplate"><span>renderTemplate:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -848,6 +884,8 @@ window.addEventListener('DOMContentLoaded', main);
           data-doc-search-tag="card: reRender(self: Card)" href="happyx/spa/ui/card.html#reRender.e%2CCard">card: reRender(self: Card)</a></li>
           <li><a class="reference external"
           data-doc-search-tag="input: reRender(self: Input)" href="happyx/spa/ui/input.html#reRender.e%2CInput">input: reRender(self: Input)</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="progress: reRender(self: ProgressBar)" href="happyx/spa/ui/progress.html#reRender.e%2CProgressBar">progress: reRender(self: ProgressBar)</a></li>
           </ul></dd>
 <dt><a name="route" href="#route"><span>route:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -1046,7 +1084,7 @@ window.addEventListener('DOMContentLoaded', main);
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-08-06 07:16:23 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-08-07 10:32:53 UTC</small>
       </div>
     </div>
   </div>

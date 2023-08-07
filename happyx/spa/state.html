@@ -294,8 +294,8 @@ window.addEventListener('DOMContentLoaded', main);
 
   </ul>
   <ul class="simple nested-toc-section">[]
-      <li><a class="reference" href="#%5B%5D%2CState%5BT%5D%2Cint"
-    title="`[]`[T](self: State[T]; idx: int): auto">`[]`[T](self: State[T]; idx: int): auto</a></li>
+      <li><a class="reference" href="#%5B%5D%2CState%5BopenArray%5BT%5D%5D%2Cint"
+    title="`[]`[T](self: State[openArray[T]]; idx: int): T">`[]`[T](self: State[openArray[T]]; idx: int): T</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">^
@@ -370,8 +370,8 @@ window.addEventListener('DOMContentLoaded', main);
   <a class="reference reference-toplevel" href="#15" id="65">Iterators</a>
   <ul class="simple simple-toc-section">
       <ul class="simple nested-toc-section">items
-      <li><a class="reference" href="#items.i%2CState%5BT%5D"
-    title="items[T](self: State[T]): auto">items[T](self: State[T]): auto</a></li>
+      <li><a class="reference" href="#items.i%2CState%5BopenArray%5BT%5D%5D"
+    title="items[T](self: State[openArray[T]]): T">items[T](self: State[openArray[T]]): T</a></li>
 
   </ul>
 
@@ -900,8 +900,8 @@ Returns State's string representation
 
 </dd>
 </div>
-<div id="[],State[T],int">
-<dt><pre><span class="Keyword">func</span> <a href="#%5B%5D%2CState%5BT%5D%2Cint"><span class="Identifier">`[]`</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="state.html#State"><span class="Identifier">State</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">idx</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">auto</span></pre></dt>
+<div id="[],State[openArray[T]],int">
+<dt><pre><span class="Keyword">func</span> <a href="#%5B%5D%2CState%5BopenArray%5BT%5D%5D%2Cint"><span class="Identifier">`[]`</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="state.html#State"><span class="Identifier">State</span></a><span class="Other">[</span><span class="Identifier">openArray</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">idx</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">T</span></pre></dt>
 <dd>
 
 Returns State's item at <tt class="docutils literal"><span class="pre"><span class="Identifier">idx</span></span></tt> index.
@@ -1041,8 +1041,8 @@ Returns mutable state value
 <div class="section" id="15">
 <h1><a class="toc-backref" href="#15">Iterators</a></h1>
 <dl class="item">
-<div id="items.i,State[T]">
-<dt><pre><span class="Keyword">iterator</span> <a href="#items.i%2CState%5BT%5D"><span class="Identifier">items</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="state.html#State"><span class="Identifier">State</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">auto</span></pre></dt>
+<div id="items.i,State[openArray[T]]">
+<dt><pre><span class="Keyword">iterator</span> <a href="#items.i%2CState%5BopenArray%5BT%5D%5D"><span class="Identifier">items</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="state.html#State"><span class="Identifier">State</span></a><span class="Other">[</span><span class="Identifier">openArray</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">T</span></pre></dt>
 <dd>
 
 Iterate over state items
@@ -1188,7 +1188,7 @@ Call any function that available for state value
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-08-06 07:16:22 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-08-07 10:32:52 UTC</small>
       </div>
     </div>
   </div>
