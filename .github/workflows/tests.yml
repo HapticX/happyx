@@ -55,18 +55,39 @@ jobs:
           nimble refresh
           nimble install -y -d
       
-      - name: Build C tests
+      - name: Build C tests (Default HTTP Server)
         run: |
           cd tests
+          echo "###===--- Default for" $file "---===###"
           for file in $(ls -v testc*.nim); do
-            echo "###===--- Default for" $file "---===###"
             nim c -d:debug $file
-            echo "###===--- HttpX for" $file "---===###"
+          done
+        shell: bash
+      
+      - name: Build C tests (HttpX HTTP Server)
+        run: |
+          cd tests
+          echo "###===--- Default for" $file "---===###"
+          for file in $(ls -v testc*.nim); do
             nim c -d:httpx -d:debug $file
-            echo "###===--- MicroAsyncHttpServer for" $file "---===###"
-            nim c -d:micro -d:debug $file
-            echo "###===--- HttpBeast for" $file "---===###"
+          done
+        shell: bash
+      
+      - name: Build C tests (HttpBeast HTTP Server)
+        run: |
+          cd tests
+          echo "###===--- Default for" $file "---===###"
+          for file in $(ls -v testc*.nim); do
             nim c -d:beast -d:debug $file
+          done
+        shell: bash
+      
+      - name: Build C tests (MicroAsyncHttpServer)
+        run: |
+          cd tests
+          echo "###===--- Default for" $file "---===###"
+          for file in $(ls -v testc*.nim); do
+            nim c -d:micro -d:debug $file
           done
         shell: bash
       
