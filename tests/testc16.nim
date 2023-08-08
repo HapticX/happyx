@@ -8,6 +8,11 @@ echo "secret".check_password(x)
 echo "secret1".check_password(x)
 
 
+model TestModel:
+  username: string
+  password: string
+
+
 mount Profile:
   get "/":
     ## Profile main page
@@ -30,6 +35,9 @@ serve "127.0.0.1", 5000:
   get "/calculate/$left:float[m]/$operator:string[m]/$right?:float[m]":
     ## Some
     return fmt"{left + right}"
+  get "/auth[model:TestModel:json]":
+    ## User authorization
+    return "Hello, world!"
   get "/arrQuery":
     ## Parses array and simple queries
     return {

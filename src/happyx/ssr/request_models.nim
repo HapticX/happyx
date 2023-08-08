@@ -83,10 +83,15 @@
 import
   # stdlib
   macros,
+  tables,
+  strtabs,
   strutils,
   strformat,
   # Happyx
   ../core/[exceptions]
+
+
+var modelFields*: {.compileTime.} = newTable[string, StringTableRef]()
 
 
 macro model*(modelName, body: untyped): untyped =
@@ -98,12 +103,26 @@ macro model*(modelName, body: untyped): untyped =
   ## - [x] Form-Data
   ## - [x] x-www-form-urlencoded
   ## 
+  if modelName.kind != nnkIdent:
+    throwDefect(
+      HpxModelSyntaxDefect,
+      "Incorrect request model structure: model name should be identifier! ",
+      lineInfoObj(modelName)
+    )
   var
     params = newNimNode(nnkRecList)
     asgnStmt = newStmtList()
     asgnUrlencoded = newStmtList()
     asgnFormData = newStmtList()
     asgnXml = newStmtList()
+  
+  if modelFields.hasKey($modelName):
+    throwDefect(
+      HpxModelSyntaxDefect,
+      fmt"Request model '{modelName}' already exists. ",
+      lineInfoObj(modelName)
+    )
+  modelFields[$modelName] = newStringTable()
   
   for i in body:
     if i.kind == nnkCall and i.len == 2 :
@@ -114,6 +133,7 @@ macro model*(modelName, body: untyped): untyped =
         params.add(newIdentDefs(
           postfix(argName, "*"), argType
         ))
+        modelFields[$modelName][$argName.toStrLit] = $argType.toStrLit
         if ($argType).toLower() != "formdataitem":
           # JSON raw data
           asgnStmt.add(newNimNode(nnkIfStmt).add(
@@ -227,6 +247,7 @@ macro model*(modelName, body: untyped): untyped =
         params.add(newIdentDefs(
           postfix(argName, "*"), argType
         ))
+        modelFields[$modelName][$argName.toStrLit] = $argType.toStrLit
         if ($argType).toLower() != "formdataitem":
           # JSON raw data
           asgnStmt.add(newNimNode(nnkIfStmt).add(

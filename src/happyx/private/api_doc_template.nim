@@ -12,8 +12,10 @@ const
   BackCodeDark = "#323232"
   Fore = "#212121"
   ForeDark = "#ceeffe"
-  ForeLink = "#abcdff"
-  ForeLinkVisited = "#8badcf"
+  Link = "text-[#5e7fae] visited:text-[#3e5f8e] dark:text-[#ceeffe] dark:visited:text-[#8badcf]"
+
+  AccentColor = "text-purple-700 dark:text-yellow-500"
+  StringColor = "text-lime-700 dark:text-green-500"
 
 
 const IndexApiDocPageTemplate* = fmt"""
@@ -92,7 +94,7 @@ const IndexApiDocPageTemplate* = fmt"""
           <div class="text-3xl lg:text-lg xl:text-base flex flex-col w-full opacity-100 h-fit">
             <div class="text-4xl lg:text-xl xl:text-lg flex self-center w-full justify-between">
               <p>
-                HTTP Method - <span class="font-semibold font-mono text-purple-500 cursor-pointer select-none">
+                HTTP Method - <span class="font-semibold font-mono {AccentColor} cursor-pointer select-none">
                   {{% if httpMethod.len == 0 %}}
                     ANY
                   {{% else %}}
@@ -116,7 +118,7 @@ const IndexApiDocPageTemplate* = fmt"""
             {{% for req in data %}}
               <div class="flex flex-col w-fit border-[2px] border-[{Fore}]/25 dark:border-[{ForeDark}]/25 rounded-md">
                 <div class="flex p-1 bg-[{BackCode}] dark:bg-[{BackCodeDark}] font-mono px-4 py-1 rounded-md font-semibold">
-                  <p class="flex mr-4 text-purple-500 cursor-pointer select-none">
+                  <p class="flex mr-4 {AccentColor} cursor-pointer select-none">
                     {{% if req.httpMethod.len == 0 %}}
                       ANY  <!-- HTTP Method -->
                     {{% else %}}
@@ -125,7 +127,7 @@ const IndexApiDocPageTemplate* = fmt"""
                   </p>
                   <p class="flex">
                     <span class="pr-2">at</span>
-                    <span class="text-green-500">
+                    <span class="{StringColor}">
                     &quot;{{{{ req.path }}}}&quot;
                     </span>  <!-- PATH -->
                   </p>
@@ -136,7 +138,7 @@ const IndexApiDocPageTemplate* = fmt"""
                 {{% if req.pathParams.len > 0 %}}
                   <div class="font-semibold py-1 px-2">Path params</div>
                   <div class="p-2">
-                    <table class="rounded-md">
+                    <table class="rounded-md text-3xl lg:text-xl xl:text-base">
                       <thead>
                         <tr>
                           <td class="px-2">Name</td>
@@ -157,13 +159,47 @@ const IndexApiDocPageTemplate* = fmt"""
                           %}}
                           <tr class="{{{{color}}}} py-1">
                             <td class="px-2">{{{{param.name}}}}</td>
-                            <td class="px-2 text-purple-500 font-mono">{{{{param.paramType}}}}</td>
-                            <td class="px-2 text-purple-500 font-mono">{{{{param.defaultVal}}}}</td>
+                            <td class="px-2 {AccentColor} font-mono">{{{{param.paramType}}}}</td>
+                            <td class="px-2 {AccentColor} font-mono">{{{{param.defaultVal}}}}</td>
                             <td class="text-center align-middle px-2">
                               {{% if param.optional %}}✅{{% else %}}❌{{% endif %}}
                             </td> 
                             <td class="text-center align-middle px-2">
                               {{% if param.mutable %}}✅{{% else %}}❌{{% endif %}}
+                            </td>
+                          </tr>
+                        {{% endfor %}}
+                      </tbody>
+                    </table>
+                  </div>
+                {{% endif %}}
+                {{% if req.models.len > 0 %}}
+                  <div class="font-semibold py-1 px-2">Request models</div>
+                  <div class="p-2">
+                    <table class="rounded-md text-3xl lg:text-xl xl:text-base">
+                      <thead>
+                        <tr>
+                          <td class="px-2">Name</td>
+                          <td class="px-2">Type</td>
+                          <td class="px-2">Target</td>
+                          <td class="px-2">Mutable</td>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {{% for (idx, model) in req.models.pairs() %}}
+                          {{%
+                            let color =
+                              if idx mod 2 == 0:
+                                "bg-[{Fore}]/20 dark:bg-[{ForeDark}]/20"
+                              else:
+                                "bg-[{Fore}]/10 dark:bg-[{ForeDark}]/10"
+                          %}}
+                          <tr class="{{{{color}}}} py-1">
+                            <td class="px-2">{{{{model.name}}}}</td>
+                            <td class="px-2 {AccentColor} font-mono">{{{{model.typeName}}}}</td>
+                            <td class="px-2 {AccentColor} font-mono">{{{{model.target}}}}</td>
+                            <td class="text-center align-middle px-2">
+                              {{% if model.mutable %}}✅{{% else %}}❌{{% endif %}}
                             </td>
                           </tr>
                         {{% endfor %}}
@@ -206,7 +242,7 @@ const IndexApiDocPageTemplate* = fmt"""
       <div class="text-3xl lg:text-xl xl:text-base fixed bottom-0 flex flex-col justify-center items-center w-full bg-[{BackCode}] dark:bg-[{BackCodeDark}] py-8">
         <p>
           Made with 
-          <a href="https://github.com/HapticX/happyx" class="text-[{ForeLink}] visited:text-[{ForeLinkVisited}]">
+          <a href="https://github.com/HapticX/happyx" class="{Link}">
             HappyX
           </a> v{hpxVersion}
         </p>

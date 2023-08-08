@@ -150,18 +150,31 @@ when enableApiDoc:
       defaultVal*: string
       optional*: bool
       mutable*: bool
+    ApiDocRequestModelObject* = object
+      name*: string
+      typeName*: string
+      target*: string
+      mutable*: bool
     ApiDocObject* = object
       description*: string
       httpMethod*: string
       path*: string
       pathParams*: seq[ApiDocPathParamObject]
+      models*: seq[ApiDocRequestModelObject]
     
-  proc newApiDocObject*(httpMethod, description, path: string, pathParams: seq[ApiDocPathParamObject]): ApiDocObject =
-    ApiDocObject(httpMethod: httpMethod, description: description, path: path, pathParams: pathParams)
+  proc newApiDocObject*(httpMethod, description, path: string, pathParams: seq[ApiDocPathParamObject],
+                        models: seq[ApiDocRequestModelObject]): ApiDocObject =
+    ApiDocObject(httpMethod: httpMethod, description: description, path: path, pathParams: pathParams, models: models)
+  
   proc newApiDocPathParamObject*(name, paramType, defaultVal: string, optional, mutable: bool): ApiDocPathParamObject =
     ApiDocPathParamObject(
       name: name, paramType: paramType, defaultVal: defaultVal,
       optional: optional, mutable: mutable
+    )
+
+  proc newApiDocRequestModelObject*(name, typeName, target: string, mutable: bool): ApiDocRequestModelObject =
+    ApiDocRequestModelObject(
+      name: name, typeName: typeName, target: target, mutable: mutable
     )
 
 
@@ -1086,9 +1099,10 @@ macro initServer*(body: untyped): untyped =
     
 
 when enableApiDoc:
-  proc fetchPathParams*(route: var string): NimNode =
+  proc fetchPathParams*(route: var string): tuple[pathParams, models: NimNode] =
     var
       params = newNimNode(nnkBracket)
+      models = newNimNode(nnkBracket)
     let
       dollarToCurve = re"\$([^:\/\{\}]+)(:enum\(\w+\)|:\w+)?(\[m\])?(=[^\/\{\}]+)?(m)?"
       defaultWithoutQuestion = re"\{([^:\/\{\}\?]+)(:enum\(\w+\)|:\w+)?(\[m\])?(=[^\/\{\}]+)\}"
@@ -1127,7 +1141,6 @@ when enableApiDoc:
         isOptional = true
       elif defaultVal.len > 0:
         isOptional = true
-      
       params.add(newCall(
         "newApiDocPathParamObject",
         newStrLitNode(name),
@@ -1136,13 +1149,32 @@ when enableApiDoc:
         newLit(isOptional),
         newLit(isMutable),
       ))
+
+    for i in foundModels:
+      let
+        modelName = i.group(0, route)[0]
+        modelType = i.group(1, route)[0]
+        modelTarget =
+          if i.group(3, route).len != 0:
+            i.group(3, route)[0][1..^1]
+          else:
+            "JSON"
+        isMutable = i.group(2, route).len != 0
+      models.add(newCall(
+        "newApiDocRequestModelObject",
+        newStrLitNode(modelName),
+        newStrLitNode(modelType),
+        newStrLitNode(modelTarget),
+        newLit(isMutable),
+      ))
     
     route = route.replace(
       re"\{([a-zA-Z][a-zA-Z0-9_]*)\??(:(bool|int|float|string|path|word|/[\s\S]+?/|enum\(\w+\)))?(\[m\])?(=(\S+?))?\}",
       "{$1}"
     )
+    route = route.replace(re"\[([a-zA-Z][a-zA-Z0-9_]*):([a-zA-Z][a-zA-Z0-9_]*)(\[m\])?(:[a-zA-Z\\-]+)?\]", "")
 
-    newCall("@", params)
+    (newCall("@", params), newCall("@", models))
 
 
   proc genApiDoc*(body: var NimNode): NimNode =
@@ -1158,7 +1190,7 @@ when enableApiDoc:
           var
             description = ""
             pathParam = $i[1]
-            params = fetchPathParams(pathParam)
+            (params, models) = fetchPathParams(pathParam)
           for statement in i[2]:
             if statement.kind == nnkCommentStmt:
               description &= $statement & "\n"
@@ -1167,14 +1199,14 @@ when enableApiDoc:
             newStrLitNode(($i[0].toStrLit).toUpper()),  # HTTP Method
             newStrLitNode(description),  # Description
             newStrLitNode(pathParam),  # Path
-            params
+            params, models
           ))
         elif i[0].kind == nnkStrLit and i.len == 2 and i[1].kind == nnkStmtList:
           ## HTTP Method
           var
             description = ""
             pathParam = $i[0]
-            params = fetchPathParams(pathParam)
+            (params, models) = fetchPathParams(pathParam)
           for statement in i[1]:
             if statement.kind == nnkCommentStmt:
               description &= $statement & "\n"
@@ -1183,7 +1215,7 @@ when enableApiDoc:
             newStrLitNode(""),  # HTTP Method
             newStrLitNode(description),  # Description
             newStrLitNode(pathParam),  # Path
-            params
+            params, models
           ))
         
     # Get all documentation
