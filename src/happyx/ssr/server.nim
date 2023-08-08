@@ -143,10 +143,27 @@ type
 
 
 when enableApiDoc:
-  type ApiDocObject* = object
-    description*: string
-    httpMethod*: string
-    path*: string
+  type
+    ApiDocPathParamObject* = object
+      name*: string
+      paramType*: string
+      defaultVal*: string
+      optional*: bool
+      mutable*: bool
+    ApiDocObject* = object
+      description*: string
+      httpMethod*: string
+      path*: string
+      pathParams*: seq[ApiDocPathParamObject]
+    
+  proc newApiDocObject*(httpMethod, description, path: string, pathParams: seq[ApiDocPathParamObject]): ApiDocObject =
+    ApiDocObject(httpMethod: httpMethod, description: description, path: path, pathParams: pathParams)
+  proc newApiDocPathParamObject*(name, paramType, defaultVal: string, optional, mutable: bool): ApiDocPathParamObject =
+    ApiDocPathParamObject(
+      name: name, paramType: paramType, defaultVal: defaultVal,
+      optional: optional, mutable: mutable
+    )
+
 
 
 var
@@ -1069,6 +1086,65 @@ macro initServer*(body: untyped): untyped =
     
 
 when enableApiDoc:
+  proc fetchPathParams*(route: var string): NimNode =
+    var
+      params = newNimNode(nnkBracket)
+    let
+      dollarToCurve = re"\$([^:\/\{\}]+)(:enum\(\w+\)|:\w+)?(\[m\])?(=[^\/\{\}]+)?(m)?"
+      defaultWithoutQuestion = re"\{([^:\/\{\}\?]+)(:enum\(\w+\)|:\w+)?(\[m\])?(=[^\/\{\}]+)\}"
+    
+    route = route.replace(dollarToCurve, "{$1$2$3$4}")
+    route = route.replace(defaultWithoutQuestion, "{$1?$2$3$4}")
+
+    let
+      found = route.findAll(
+        re"\{([a-zA-Z][a-zA-Z0-9_]*\??)(:(bool|int|float|string|path|word|/[\s\S]+?/|enum\(\w+\)))?(\[m\])?(=(\S+?))?\}"
+      )
+      foundModels = route.findAll(
+        re"\[([a-zA-Z][a-zA-Z0-9_]*):([a-zA-Z][a-zA-Z0-9_]*)(\[m\])?(:[a-zA-Z\\-]+)?\]"
+      )
+    for i in found:
+      # Detect other data
+      let
+        argTypeStr =
+          if i.group(2, route).len == 0:
+            "string"
+          else:
+            i.group(2, route)[0]
+        defaultVal =
+          if i.group(5, route).len == 0:
+            ""
+          else:
+            i.group(5, route)[0]
+        isMutable = i.group(3, route).len != 0
+      # Detect main data
+      var
+        name = i.group(0, route)[0]
+        isOptional = false
+      # Detect optional value
+      if name.endsWith(re"\?"):
+        name = name[0..^2]
+        isOptional = true
+      elif defaultVal.len > 0:
+        isOptional = true
+      
+      params.add(newCall(
+        "newApiDocPathParamObject",
+        newStrLitNode(name),
+        newStrLitNode(argTypeStr),
+        newStrLitNode(defaultVal),
+        newLit(isOptional),
+        newLit(isMutable),
+      ))
+    
+    route = route.replace(
+      re"\{([a-zA-Z][a-zA-Z0-9_]*)\??(:(bool|int|float|string|path|word|/[\s\S]+?/|enum\(\w+\)))?(\[m\])?(=(\S+?))?\}",
+      "{$1}"
+    )
+
+    newCall("@", params)
+
+
   proc genApiDoc*(body: var NimNode): NimNode =
     ## Returns API route
     var
@@ -1079,25 +1155,35 @@ when enableApiDoc:
       if i.kind in [nnkCall, nnkCommand]:
         if i[0].kind == nnkIdent and i.len == 3 and i[2].kind == nnkStmtList and i[1].kind == nnkStrLit:
           ## HTTP Method
-          var description = ""
+          var
+            description = ""
+            pathParam = $i[1]
+            params = fetchPathParams(pathParam)
           for statement in i[2]:
             if statement.kind == nnkCommentStmt:
               description &= $statement & "\n"
-          docsData.add(newPar(
+          docsData.add(newCall(
+            "newApiDocObject",
             newStrLitNode(($i[0].toStrLit).toUpper()),  # HTTP Method
             newStrLitNode(description),  # Description
-            newStrLitNode($i[1]),  # Path
+            newStrLitNode(pathParam),  # Path
+            params
           ))
         elif i[0].kind == nnkStrLit and i.len == 2 and i[1].kind == nnkStmtList:
           ## HTTP Method
-          var description = ""
+          var
+            description = ""
+            pathParam = $i[0]
+            params = fetchPathParams(pathParam)
           for statement in i[1]:
             if statement.kind == nnkCommentStmt:
               description &= $statement & "\n"
-          docsData.add(newPar(
+          docsData.add(newCall(
+            "newApiDocObject",
             newStrLitNode(""),  # HTTP Method
             newStrLitNode(description),  # Description
-            newStrLitNode($i[0]),  # Path
+            newStrLitNode(pathParam),  # Path
+            params
           ))
         
     # Get all documentation
@@ -1109,7 +1195,7 @@ when enableApiDoc:
     ), newStmtList(
       newCall("answerHtml", ident"req", newCall("renderDocsProcedure")),
     )))
-    docsData
+    newCall("@", docsData)
 
 
 macro serve*(address: string, port: int, body: untyped): untyped =
@@ -1158,16 +1244,7 @@ macro serve*(address: string, port: int, body: untyped): untyped =
             newLetStmt(ident"title", newStrLitNode(appName)),
             newNimNode(nnkLetSection).add(
               newIdentDefs(
-                ident"apiDocData",
-                newNimNode(nnkBracketExpr).add(
-                  ident"seq",
-                  newNimNode(nnkTupleTy).add(
-                    newNimNode(nnkIdentDefs).add(
-                      ident"a", ident"b", ident"c", ident"string", newEmptyNode()
-                    )
-                  )
-                ),
-                newCall("@", docsData)
+                ident"apiDocData", newNimNode(nnkBracketExpr).add(ident"seq", ident"ApiDocObject"), docsData
               )
             ),
             newCall("compileTemplateStr", newStrLitNode(IndexApiDocPageTemplate)),

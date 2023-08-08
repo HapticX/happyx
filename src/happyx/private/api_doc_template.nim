@@ -28,7 +28,6 @@ const IndexApiDocPageTemplate* = fmt"""
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/nim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/json.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/http.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/md.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/tokyo-night-dark.min.css">
     <script>
       var converter = converter = new showdown.Converter();
@@ -78,7 +77,7 @@ const IndexApiDocPageTemplate* = fmt"""
   </head>
   <body class="bg-[{Back}] dark:bg-[{BackDark}] text-[{Fore}] dark:text-[{ForeDark}]">
     <div class="flex flex-col w-full min-h-screen h-full">
-      <div class="flex sticky justify-center items-center text-4xl lg:text3xl xl:text-2xl font-semibold py-4">
+      <div class="flex sticky top-0 justify-center items-center backdrop-blur-md text-5xl lg:text3xl xl:text-2xl font-semibold py-4">
         {{{{title}}}}
       </div>
       <!-- http method -->
@@ -86,12 +85,12 @@ const IndexApiDocPageTemplate* = fmt"""
         {{%
           let data = collect:
             for req in apiDocData:
-              if req[0] == httpMethod or (httpMethod.len == 0 and req[0].len == 0):
+              if req.httpMethod == httpMethod or (httpMethod.len == 0 and req.httpMethod.len == 0):
                 req
         %}}
         {{% if data.len > 0 %}}
-          <div class="flex flex-col w-full opacity-100 h-fit">
-            <div class="flex self-center w-full justify-between">
+          <div class="text-3xl lg:text-lg xl:text-base flex flex-col w-full opacity-100 h-fit">
+            <div class="text-4xl lg:text-xl xl:text-lg flex self-center w-full justify-between">
               <p>
                 HTTP Method - <span class="font-semibold font-mono text-purple-500 cursor-pointer select-none">
                   {{% if httpMethod.len == 0 %}}
@@ -105,7 +104,7 @@ const IndexApiDocPageTemplate* = fmt"""
                 id="httpMethod_{{{{httpMethod}}}}_arrow"
                 viewBox="0 0 24 24"
                 xmlns="http://www.w3.org/2000/svg"
-                class="cursor-pointer select-none w-8 h-8 fill-[{Fore}] dark:fill-[{ForeDark}] rotate-0 transition-all duration-300"
+                class="cursor-pointer select-none w-16 lg:w-12 xl:w-8 h-16 lg:h-12 xl:h-8 fill-[{Fore}] dark:fill-[{ForeDark}] rotate-0 transition-all duration-300"
                 onclick="toggle('httpMethod_{{{{httpMethod}}}}', 'httpMethod_{{{{httpMethod}}}}_arrow')"
               >
                 <path
@@ -113,34 +112,72 @@ const IndexApiDocPageTemplate* = fmt"""
                 />
               </svg>
             </div>
-            <div id="httpMethod_{{{{httpMethod}}}}" class="flex flex-col gap-2 h-fit transition-all duration-300">
+            <div id="httpMethod_{{{{httpMethod}}}}" class="flex flex-col gap-6 lg:gap-4 xl:gap-2 h-fit transition-all duration-300">
             {{% for req in data %}}
               <div class="flex flex-col w-fit border-[2px] border-[{Fore}]/25 dark:border-[{ForeDark}]/25 rounded-md">
                 <div class="flex p-1 bg-[{BackCode}] dark:bg-[{BackCodeDark}] font-mono px-4 py-1 rounded-md font-semibold">
                   <p class="flex mr-4 text-purple-500 cursor-pointer select-none">
-                    {{% if req[0].len == 0 %}}
+                    {{% if req.httpMethod.len == 0 %}}
                       ANY  <!-- HTTP Method -->
                     {{% else %}}
-                      {{{{ req[0] }}}}  <!-- HTTP Method -->
+                      {{{{ req.httpMethod }}}}  <!-- HTTP Method -->
                     {{% endif %}}
                   </p>
                   <p class="flex">
                     <span class="pr-2">at</span>
                     <span class="text-green-500">
-                    &quot;{{{{ req[2] }}}}&quot;
+                    &quot;{{{{ req.path }}}}&quot;
                     </span>  <!-- PATH -->
                   </p>
                 </div>
-                <div id="{{{{httpMethod}}}}_{{{{req[2]}}}}_desc" class="flex flex-col w-fit px-2 py-1">
-                  {{{{ req[1] }}}}  <!-- Description -->
+                <div id="{{{{httpMethod}}}}_{{{{req.path}}}}_desc" class="flex flex-col w-fit px-2 py-1">
+                  {{{{ req.description }}}}  <!-- Description -->
                 </div>
+                {{% if req.pathParams.len > 0 %}}
+                  <div class="font-semibold py-1 px-2">Path params</div>
+                  <div class="p-2">
+                    <table class="rounded-md">
+                      <thead>
+                        <tr>
+                          <td class="px-2">Name</td>
+                          <td class="px-2">Type</td>
+                          <td class="px-2">Default Value</td>
+                          <td class="px-2">Optional</td>
+                          <td class="px-2">Mutable</td>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {{% for (idx, param) in req.pathParams.pairs() %}}
+                          {{%
+                            let color =
+                              if idx mod 2 == 0:
+                                "bg-[{Fore}]/20 dark:bg-[{ForeDark}]/20"
+                              else:
+                                "bg-[{Fore}]/10 dark:bg-[{ForeDark}]/10"
+                          %}}
+                          <tr class="{{{{color}}}} py-1">
+                            <td class="px-2">{{{{param.name}}}}</td>
+                            <td class="px-2 text-purple-500 font-mono">{{{{param.paramType}}}}</td>
+                            <td class="px-2 text-purple-500 font-mono">{{{{param.defaultVal}}}}</td>
+                            <td class="text-center align-middle px-2">
+                              {{% if param.optional %}}✅{{% else %}}❌{{% endif %}}
+                            </td> 
+                            <td class="text-center align-middle px-2">
+                              {{% if param.mutable %}}✅{{% else %}}❌{{% endif %}}
+                            </td>
+                          </tr>
+                        {{% endfor %}}
+                      </tbody>
+                    </table>
+                  </div>
+                {{% endif %}}
               </div>
               <script>
                 {{%
-                  var descText = req[1].replace("`", "\\`")
+                  var descText = req.description.replace("`", "\\`")
                 %}}
                 descriptionText = converter.makeHtml(`{{{{descText}}}}`);
-                descriptionElement = document.getElementById("{{{{httpMethod}}}}_{{{{req[2]}}}}_desc");
+                descriptionElement = document.getElementById("{{{{httpMethod}}}}_{{{{req.path}}}}_desc");
                 descriptionElement.innerHTML = descriptionText;
               </script>
             {{% endfor %}}
@@ -150,7 +187,7 @@ const IndexApiDocPageTemplate* = fmt"""
         {{% endif %}}
       {{% endproc %}}
 
-      <div class="flex flex-col w-fit gap-6 items-center self-center h-full">
+      <div class="flex flex-col w-full lg:w-fit gap-16 lg:gap-12 xl:gap-6 items-center self-center h-full p-8 lg:p-0">
         {{{{ apiDoc("") }}}}
         {{{{ apiDoc("GET") }}}}
         {{{{ apiDoc("POST") }}}}
@@ -163,9 +200,10 @@ const IndexApiDocPageTemplate* = fmt"""
         {{{{ apiDoc("OPTIONS") }}}}
         {{{{ apiDoc("CONNECT") }}}}
         {{{{ apiDoc("TRACE") }}}}
+        <div class="w-48 h-48 py-12">&nbsp;</div>
       </div>
 
-      <div class="flex flex-col justify-center items-center w-full bg-[{BackCode}] dark:bg-[{BackCodeDark}] py-8 mt-16">
+      <div class="text-3xl lg:text-xl xl:text-base fixed bottom-0 flex flex-col justify-center items-center w-full bg-[{BackCode}] dark:bg-[{BackCodeDark}] py-8">
         <p>
           Made with 
           <a href="https://github.com/HapticX/happyx" class="text-[{ForeLink}] visited:text-[{ForeLinkVisited}]">
