@@ -43,9 +43,6 @@ serve "127.0.0.1", 5000:
     ## ```
     ## 
     ## Responds "Hello, world!"
-    apiUsageExamples:
-      req: ""
-      answer: "Hello, world!"
     echo inCookies
     cookies.add(setCookie("bestFramework", "HappyX!", secure = true, httpOnly = true))
     return "Hello, world!"

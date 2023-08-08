@@ -20,6 +20,7 @@ const IndexApiDocPageTemplate* = fmt"""
 <html>
   <head>
     <meta charset="utf-8">
+    <meta property="og:title" content="{{{{title}}}}">
     <title>{{{{title}}}}</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/2.1.0/showdown.min.js"></script>
@@ -164,7 +165,7 @@ const IndexApiDocPageTemplate* = fmt"""
         {{{{ apiDoc("TRACE") }}}}
       </div>
 
-      <div class="flex flex-col justify-center items-center w-full bg-[{BackCode}] dark:bg-[{BackCodeDark}] py-8 mt-8">
+      <div class="flex flex-col justify-center items-center w-full bg-[{BackCode}] dark:bg-[{BackCodeDark}] py-8 mt-16">
         <p>
           Made with 
           <a href="https://github.com/HapticX/happyx" class="text-[{ForeLink}] visited:text-[{ForeLinkVisited}]">
