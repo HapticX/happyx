@@ -91,7 +91,7 @@ import
   ../core/[exceptions]
 
 
-var modelFields*: {.compileTime.} = newTable[string, StringTableRef]()
+var modelFields* {.compileTime.} = newTable[string, StringTableRef]()
 
 
 macro model*(modelName, body: untyped): untyped =
