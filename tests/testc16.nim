@@ -36,9 +36,16 @@ serve "127.0.0.1", 5000:
   ws "/Hello":
     discard
   get "/":
-    ## Set bestFramework to "HappyX!" in cookies
+    ## Set bestFramework to **"HappyX!"** in cookies
+    ## 
+    ## ```nim
+    ## echo "Hello, world!"
+    ## ```
     ## 
     ## Responds "Hello, world!"
+    apiUsageExamples:
+      req: ""
+      answer: "Hello, world!"
     echo inCookies
     cookies.add(setCookie("bestFramework", "HappyX!", secure = true, httpOnly = true))
     return "Hello, world!"

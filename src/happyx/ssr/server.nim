@@ -66,6 +66,8 @@ import
   std/json,
   std/os,
   std/exitprocs,
+  packages/docutils/rst,
+  packages/docutils/rstgen,
   # Deps
   regex,
   # HappyX
@@ -149,7 +151,6 @@ when enableApiDoc:
 
 var
   pointerServer: ptr Server
-  uniqueIndex {.compileTime.} = 0
 
 
 proc ctrlCHook() {.noconv.} =
@@ -607,20 +608,6 @@ macro routes*(server: Server, body: untyped): untyped =
           )
         )
       )
-    inc uniqueIndex
-    let
-      val1 = ident(fmt"_val{uniqueIndex}")
-      url1 = newStmtList(
-        newLetStmt(val1, newCall("split", newCall("get", newCall("path", ident"req")), newStrLitNode("?"))),
-        newNimNode(nnkIfStmt).add(
-          newNimNode(nnkElifBranch).add(
-            newCall(">=", newCall("len", val1), newIntLitNode(2)),
-            newNimNode(nnkBracketExpr).add(val1, newIntLitNode(1))
-          ), newNimNode(nnkElse).add(
-            newStrLitNode("")
-          )
-        )
-      )
   else:
     var path = newDotExpr(newDotExpr(ident"req", ident"url"), ident"path")
     let
@@ -632,7 +619,6 @@ macro routes*(server: Server, body: untyped): untyped =
         ), newLit(0)
       )
       url = newDotExpr(newDotExpr(ident"req", ident"url"), ident"query")
-      url1 = newDotExpr(newDotExpr(ident"req", ident"url"), ident"query")
   let
     directoryFromPath = newCall(
       "&",
@@ -1045,10 +1031,9 @@ macro routes*(server: Server, body: untyped): untyped =
     result.insert(0, variables[v])
   
   if stmtList.isIdentUsed(ident"query"):
-    immutableVars.add(newIdentDefs(ident"query", newEmptyNode(), newCall("parseQuery", url)))
-    inc uniqueIndex
-    immutableVars.add(newIdentDefs(ident"queryArr", newEmptyNode(), newCall("parseQueryArrays", url1)))
-    inc uniqueIndex
+    immutableVars.add(newIdentDefs(ident"queryFromUrl", newEmptyNode(), url))
+    immutableVars.add(newIdentDefs(ident"query", newEmptyNode(), newCall("parseQuery", ident"queryFromUrl")))
+    immutableVars.add(newIdentDefs(ident"queryArr", newEmptyNode(), newCall("parseQueryArrays", ident"queryFromUrl")))
   if stmtList.isIdentUsed(ident"translate"):
     immutableVars.add(newIdentDefs(ident"acceptLanguage", newEmptyNode(), acceptLanguage))
   if stmtList.isIdentUsed(ident"inCookies"):

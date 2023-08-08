@@ -22,6 +22,26 @@ const IndexApiDocPageTemplate* = fmt"""
     <meta charset="utf-8">
     <title>{{{{title}}}}</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/2.1.0/showdown.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/nim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/json.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/http.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/md.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/tokyo-night-dark.min.css">
+    <script>
+      var converter = converter = new showdown.Converter();
+      var descriptionElement = null;
+      var descriptionText = null;
+
+      converter.setOption('strikethrough', true);
+      converter.setOption('tables', true);
+      converter.setOption('ghCodeBlocks', true);
+      converter.setOption('tasklists', true);
+      converter.setOption('openLinksInNewWindow', true);
+      converter.setOption('emoji', true);
+      converter.setOption('underline', true);
+    </script>
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
       :root {{  
@@ -110,10 +130,18 @@ const IndexApiDocPageTemplate* = fmt"""
                     </span>  <!-- PATH -->
                   </p>
                 </div>
-                <p class="flex w-fit px-2 py-1">
+                <div id="{{{{httpMethod}}}}_{{{{req[2]}}}}_desc" class="flex flex-col w-fit px-2 py-1">
                   {{{{ req[1] }}}}  <!-- Description -->
-                </p>
+                </div>
               </div>
+              <script>
+                {{%
+                  var descText = req[1].replace("`", "\\`")
+                %}}
+                descriptionText = converter.makeHtml(`{{{{descText}}}}`);
+                descriptionElement = document.getElementById("{{{{httpMethod}}}}_{{{{req[2]}}}}_desc");
+                descriptionElement.innerHTML = descriptionText;
+              </script>
             {{% endfor %}}
             </div>
           </div>
@@ -181,6 +209,7 @@ const IndexApiDocPageTemplate* = fmt"""
           section.classList.add("opacity-0");
         }}
       }}
+      hljs.highlightAll();
     </script>
   </body>
 </html>
