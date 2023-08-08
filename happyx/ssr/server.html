@@ -123,7 +123,15 @@ window.addEventListener('DOMContentLoaded', main);
     title="ApiDocObject = object
   description*: string
   httpMethod*: string
-  path*: string">ApiDocObject</a></li>
+  path*: string
+  pathParams*: seq[ApiDocPathParamObject]">ApiDocObject</a></li>
+  <li><a class="reference" href="#ApiDocPathParamObject"
+    title="ApiDocPathParamObject = object
+  name*: string
+  paramType*: string
+  defaultVal*: string
+  optional*: bool
+  mutable*: bool">ApiDocPathParamObject</a></li>
   <li><a class="reference" href="#ModelBase"
     title="ModelBase = object of RootObj">ModelBase</a></li>
   <li><a class="reference" href="#Server"
@@ -157,6 +165,11 @@ window.addEventListener('DOMContentLoaded', main);
            asAttachment = false): owned(Future[void])</a></li>
 
   </ul>
+  <ul class="simple nested-toc-section">fetchPathParams
+      <li><a class="reference" href="#fetchPathParams%2Cstring"
+    title="fetchPathParams(route: var string): NimNode">fetchPathParams(route: var string): NimNode</a></li>
+
+  </ul>
   <ul class="simple nested-toc-section">fgColored
       <li><a class="reference" href="#fgColored%2Cstring%2CForegroundColor"
     title="fgColored(text: string; clr: ForegroundColor): string">fgColored(text: string; clr: ForegroundColor): string</a></li>
@@ -170,6 +183,20 @@ window.addEventListener('DOMContentLoaded', main);
   <ul class="simple nested-toc-section">genApiDoc
       <li><a class="reference" href="#genApiDoc%2CNimNode"
     title="genApiDoc(body: var NimNode): NimNode">genApiDoc(body: var NimNode): NimNode</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">newApiDocObject
+      <li><a class="reference" href="#newApiDocObject%2Cstring%2Cstring%2Cstring%2Cseq%5BApiDocPathParamObject%5D"
+    title="newApiDocObject(httpMethod, description, path: string;
+                pathParams: seq[ApiDocPathParamObject]): ApiDocObject">newApiDocObject(httpMethod, description, path: string;
+                pathParams: seq[ApiDocPathParamObject]): ApiDocObject</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">newApiDocPathParamObject
+      <li><a class="reference" href="#newApiDocPathParamObject%2Cstring%2Cstring%2Cstring%2Cbool%2Cbool"
+    title="newApiDocPathParamObject(name, paramType, defaultVal: string;
+                         optional, mutable: bool): ApiDocPathParamObject">newApiDocPathParamObject(name, paramType, defaultVal: string;
+                         optional, mutable: bool): ApiDocPathParamObject</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">newServer
@@ -288,6 +315,21 @@ window.addEventListener('DOMContentLoaded', main);
   <span class="Identifier">description</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
   <span class="Identifier">httpMethod</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
   <span class="Identifier">path</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
+  <span class="Identifier">pathParams</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="server.html#ApiDocPathParamObject"><span class="Identifier">ApiDocPathParamObject</span></a><span class="Other">]</span>
+</pre></dt>
+<dd>
+
+
+
+</dd>
+</div>
+<div id="ApiDocPathParamObject">
+<dt><pre><a href="server.html#ApiDocPathParamObject"><span class="Identifier">ApiDocPathParamObject</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
+  <span class="Identifier">name</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
+  <span class="Identifier">paramType</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
+  <span class="Identifier">defaultVal</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
+  <span class="Identifier">optional</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>
+  <span class="Identifier">mutable</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>
 </pre></dt>
 <dd>
 
@@ -347,6 +389,15 @@ window.addEventListener('DOMContentLoaded', main);
 
 </dd>
 </div>
+<div id="fetchPathParams,string">
+<dt><pre><span class="Keyword">proc</span> <a href="#fetchPathParams%2Cstring"><span class="Identifier">fetchPathParams</span></a><span class="Other">(</span><span class="Identifier">route</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">NimNode</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span></span>.}</pre></dt>
+<dd>
+
+
+
+</dd>
+</div>
 <div id="fgColored,string,ForegroundColor">
 <dt><pre><span class="Keyword">func</span> <a href="#fgColored%2Cstring%2CForegroundColor"><span class="Identifier">fgColored</span></a><span class="Other">(</span><span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">clr</span><span class="Other">:</span> <span class="Identifier">ForegroundColor</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> {.<span class="Identifier">inline</span><span class="Other">,</span>
     <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
@@ -387,10 +438,30 @@ window.addEventListener('DOMContentLoaded', main);
 </div>
 <div id="genApiDoc,NimNode">
 <dt><pre><span class="Keyword">proc</span> <a href="#genApiDoc%2CNimNode"><span class="Identifier">genApiDoc</span></a><span class="Other">(</span><span class="Identifier">body</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">NimNode</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">NimNode</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ValueError</span><span class="Other">,</span> <span class="Identifier">KeyError</span><span class="Other">]</span><span class="Other">,</span>
-    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 Returns API route
+
+</dd>
+</div>
+<div id="newApiDocObject,string,string,string,seq[ApiDocPathParamObject]">
+<dt><pre><span class="Keyword">proc</span> <a href="#newApiDocObject%2Cstring%2Cstring%2Cstring%2Cseq%5BApiDocPathParamObject%5D"><span class="Identifier">newApiDocObject</span></a><span class="Other">(</span><span class="Identifier">httpMethod</span><span class="Other">,</span> <span class="Identifier">description</span><span class="Other">,</span> <span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span>
+                     <span class="Identifier">pathParams</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="server.html#ApiDocPathParamObject"><span class="Identifier">ApiDocPathParamObject</span></a><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <a href="server.html#ApiDocObject"><span class="Identifier">ApiDocObject</span></a> {.
+    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<dd>
+
+
+
+</dd>
+</div>
+<div id="newApiDocPathParamObject,string,string,string,bool,bool">
+<dt><pre><span class="Keyword">proc</span> <a href="#newApiDocPathParamObject%2Cstring%2Cstring%2Cstring%2Cbool%2Cbool"><span class="Identifier">newApiDocPathParamObject</span></a><span class="Other">(</span><span class="Identifier">name</span><span class="Other">,</span> <span class="Identifier">paramType</span><span class="Other">,</span> <span class="Identifier">defaultVal</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span>
+                              <span class="Identifier">optional</span><span class="Other">,</span> <span class="Identifier">mutable</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">)</span><span class="Other">:</span> <a href="server.html#ApiDocPathParamObject"><span class="Identifier">ApiDocPathParamObject</span></a> {.
+    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<dd>
+
+
 
 </dd>
 </div>
@@ -642,7 +713,7 @@ The <tt class="docutils literal"><span class="pre"><span class="Identifier">star
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-08-08 06:46:29 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-08-08 11:18:29 UTC</small>
       </div>
     </div>
   </div>
