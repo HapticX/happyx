@@ -596,7 +596,7 @@ macro routes*(server: Server, body: untyped): untyped =
           "split", newNimNode(nnkBracketExpr).add(headers, newStrLitNode("accept-language")), newLit(',')
         ), newLit(0)
       )
-      val = ident(fmt"_val{uniqueIndex}")
+      val = ident(fmt"_val")
       url = newStmtList(
         newLetStmt(val, newCall("split", newCall("get", newCall("path", ident"req")), newStrLitNode("?"))),
         newNimNode(nnkIfStmt).add(
