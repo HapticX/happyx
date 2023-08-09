@@ -1069,9 +1069,8 @@ macro routes*(server: Server, body: untyped): untyped =
     immutableVars.add(newIdentDefs(ident"acceptLanguage", newEmptyNode(), acceptLanguage))
   if stmtList.isIdentUsed(ident"inCookies"):
     immutableVars.add(newIdentDefs(ident"inCookies", newEmptyNode(), cookiesInVar))
-  when defined(debug):
-    if stmtList.isIdentUsed(ident"reqMethod"):
-      immutableVars.add(newIdentDefs(ident"reqMethod", newEmptyNode(), reqMethod))
+  if stmtList.isIdentUsed(ident"reqMethod"):
+    immutableVars.add(newIdentDefs(ident"reqMethod", newEmptyNode(), reqMethod))
 
 
 macro initServer*(body: untyped): untyped =
@@ -1185,9 +1184,15 @@ when enableApiDoc:
       var tableConstr = newNimNode(nnkTableConstr)
       for k, v in val.pairs():
         tableConstr.add(newNimNode(nnkExprColonExpr).add(newStrLitNode(k), newStrLitNode(v)))
-      res.add(newNimNode(nnkExprColonExpr).add(newStrLitNode(key), newCall("newStringTable", tableConstr)))
+      if tableConstr.len > 0:
+        res.add(newNimNode(nnkExprColonExpr).add(newStrLitNode(key), newCall("newStringTable", tableConstr)))
 
-    newCall("toTable", res)
+    if res.len > 0:
+      newCall("toTable", res)
+    else:
+      newCall(newNimNode(nnkBracketExpr).add(
+        ident"initTable", ident"string", ident"StringTableRef"
+      ))
 
   proc genApiDoc(body: var NimNode): NimNode =
     ## Returns API route

@@ -311,8 +311,7 @@ const IndexApiDocPageTemplate* = fmt"""
       </div>
     </div>
     <script>
-      window.addEventListener('hashchange', (e) => {{
-        // clean
+      function changeHash() {{// clean
         let elements = document.querySelectorAll("[id]");
         elements.forEach((e) => {{
           e.classList.remove("highlight-animation");
@@ -323,7 +322,9 @@ const IndexApiDocPageTemplate* = fmt"""
         if (elem) {{
           elem.classList.add("highlight-animation");
         }}
-      }});
+      }}
+
+      window.addEventListener('hashchange', changeHash);
 
       let toggled = {{}};
       function toggle(identifier, arrow) {{
