@@ -19,8 +19,6 @@ answerFile	happyx/ssr/server.html#answerFile,Request,string,HttpCode	server: ans
 `~`	happyx/ssr/server.html#~.m,,untyped	server: `~`(strTable: StringTableRef | TableRef[string, seq[string]]; key: untyped): untyped	
 routes	happyx/ssr/server.html#routes.m,Server,untyped	server: routes(server: Server; body: untyped): untyped	
 initServer	happyx/ssr/server.html#initServer.m,untyped	server: initServer(body: untyped): untyped	
-fetchPathParams	happyx/ssr/server.html#fetchPathParams,string	server: fetchPathParams(route: var string): tuple[pathParams, models: NimNode]	
-genApiDoc	happyx/ssr/server.html#genApiDoc,NimNode	server: genApiDoc(body: var NimNode): NimNode	
 serve	happyx/ssr/server.html#serve.m,string,int,untyped	server: serve(address: string; port: int; body: untyped): untyped	
 Example	happyx/ssr/server.html#example	  Example	
 Available Path Params	happyx/ssr/server.html#example-available-path-params	    Available Path Params	

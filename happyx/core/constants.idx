@@ -12,5 +12,8 @@ cryptoMethod	happyx/core/constants.html#cryptoMethod	constants: cryptoMethod
 httpMethods	happyx/core/constants.html#httpMethods	constants: httpMethods	
 nim_1_6_14	happyx/core/constants.html#nim_1_6_14	constants: nim_1_6_14	
 nim_2_0_0	happyx/core/constants.html#nim_2_0_0	constants: nim_2_0_0	
-hpxVersion	happyx/core/constants.html#hpxVersion	constants: hpxVersion	
+HpxMajor	happyx/core/constants.html#HpxMajor	constants: HpxMajor	
+HpxMinor	happyx/core/constants.html#HpxMinor	constants: HpxMinor	
+HpxPatch	happyx/core/constants.html#HpxPatch	constants: HpxPatch	
+HpxVersion	happyx/core/constants.html#HpxVersion	constants: HpxVersion	
 Constants ✨	happyx/core/constants.html#constants-✨	 Constants ✨	
