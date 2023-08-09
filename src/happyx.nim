@@ -170,7 +170,10 @@
 ## In path params you can describe every param if you need. Here is syntax overview.
 ## - Required param: `{arg:type}`, `$arg:type`, `{arg}`, `$arg`
 ## - Optional param: `{arg?:type}`, `$arg?:type`, `{arg?}`, `$arg?`
+## - Mutable param: `{arg:type[m]}`, `$arg:type[m]`, `{arg[m]}`, `$arg[m]`
+## - Mutable optional param: `{arg?:type[m]}`, `$arg?:type[m]`, `{arg?[m]}`, `$arg?[m]`
 ## - Optional param with default value: `{arg:type=val}`, `$arg:type=val`, `{arg=val}`, `$arg=val`
+## - Mutable optional param with default value: `{arg?:type[m]=val}`, `$arg?:type[m]=val`, `{arg?[m]=val}`, `$arg?[m]=val`
 ## 
 ## ### Aliases 🎈
 ## 
@@ -184,6 +187,7 @@
 ## List of types:
 ## - `bool`: can be `on`, `1`, `yes`, `true`, `y` for true and `off`, `0`, `n`, `no` and `false` for false
 ## - `string`: string that excludes `/` chars
+## - `enum(EnumTypeName)`: string enum value
 ## - `word`: like `string` but excludes any symbols
 ## - `int`: any integer
 ## - `float`: any float
@@ -234,6 +238,7 @@
 ## 
 ## - [constants](happyx/core/constants.html) - describes all HappyX flags and consts.
 ## - [exceptions](happyx/core/exceptions.html) - describes all HappyX exceptions.
+## - [secure](happyx/core/secure.html) - provides some secure features.
 ## 
 ## ### Single Page Application ✨
 ## 
@@ -258,6 +263,7 @@
 ## - [card](happyx/spa/ui/card.html) provides built-in `Card` component
 ## - [button](happyx/spa/ui/button.html) provides built-in `Button` component
 ## - [input](happyx/spa/ui/input.html) provides built-in `Input` component
+## - [progress](happyx/spa/ui/progress.html) provides built-in `ProgressBar` component
 ## 
 ## ### Template Engine 🎴
 ## 

@@ -122,6 +122,7 @@ else:
 when enableApiDoc:
   import
     nimja,
+    ./request_models,
     ../private/api_doc_template
 
 
@@ -1099,7 +1100,7 @@ macro initServer*(body: untyped): untyped =
     
 
 when enableApiDoc:
-  proc fetchPathParams*(route: var string): tuple[pathParams, models: NimNode] =
+  proc fetchPathParams(route: var string): tuple[pathParams, models: NimNode] =
     var
       params = newNimNode(nnkBracket)
       models = newNimNode(nnkBracket)
@@ -1175,9 +1176,20 @@ when enableApiDoc:
     route = route.replace(re"\[([a-zA-Z][a-zA-Z0-9_]*):([a-zA-Z][a-zA-Z0-9_]*)(\[m\])?(:[a-zA-Z\\-]+)?\]", "")
 
     (newCall("@", params), newCall("@", models))
+  
 
+  proc fetchModelFields(): NimNode =
+    var res = newNimNode(nnkTableConstr)
 
-  proc genApiDoc*(body: var NimNode): NimNode =
+    for key, val in modelFields.pairs():
+      var tableConstr = newNimNode(nnkTableConstr)
+      for k, v in val.pairs():
+        tableConstr.add(newNimNode(nnkExprColonExpr).add(newStrLitNode(k), newStrLitNode(v)))
+      res.add(newNimNode(nnkExprColonExpr).add(newStrLitNode(key), newCall("newStringTable", tableConstr)))
+
+    newCall("toTable", res)
+
+  proc genApiDoc(body: var NimNode): NimNode =
     ## Returns API route
     var
       docsData = newNimNode(nnkBracket)
@@ -1277,6 +1289,15 @@ macro serve*(address: string, port: int, body: untyped): untyped =
             newNimNode(nnkLetSection).add(
               newIdentDefs(
                 ident"apiDocData", newNimNode(nnkBracketExpr).add(ident"seq", ident"ApiDocObject"), docsData
+              )
+            ),
+            newNimNode(nnkLetSection).add(
+              newIdentDefs(
+                ident"modelsData",
+                newNimNode(nnkBracketExpr).add(
+                  ident"Table", ident"string", ident"StringTableRef"
+                ),
+                fetchModelFields()
               )
             ),
             newCall("compileTemplateStr", newStrLitNode(IndexApiDocPageTemplate)),

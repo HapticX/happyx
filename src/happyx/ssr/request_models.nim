@@ -163,8 +163,10 @@ macro model*(modelName, body: untyped): untyped =
                   newCall("parseFloat", newCall("[]", ident"dataTable", newStrLitNode($argName)))
                 of "bool":
                   newCall("parseBool", newCall("[]", ident"dataTable", newStrLitNode($argName)))
-                else:
+                of "string":
                   newCall("[]", ident"dataTable", newStrLitNode($argName))
+                else:
+                  newCall("default", argType)
               )
             ), newNimNode(nnkElse).add(
               newAssignment(
@@ -214,8 +216,10 @@ macro model*(modelName, body: untyped): untyped =
                   newCall("parseFloat", newCall("[]", ident"dataTable", newStrLitNode($argName)))
                 of "bool":
                   newCall("parseBool", newCall("[]", ident"dataTable", newStrLitNode($argName)))
-                else:
+                of "string":
                   newCall("[]", ident"dataTable", newStrLitNode($argName))
+                else:
+                  newCall("default", argType)
               )
             ), newNimNode(nnkElse).add(
               newAssignment(
@@ -277,8 +281,10 @@ macro model*(modelName, body: untyped): untyped =
                   newCall("parseFloat", newCall("[]", ident"dataTable", newStrLitNode($argName)))
                 of "bool":
                   newCall("parseBool", newCall("[]", ident"dataTable", newStrLitNode($argName)))
-                else:
+                of "string":
                   newCall("[]", ident"dataTable", newStrLitNode($argName))
+                else:
+                  newCall("default", argType)
               )
             ), newNimNode(nnkElse).add(
               newAssignment(
@@ -328,8 +334,10 @@ macro model*(modelName, body: untyped): untyped =
                   newCall("parseFloat", newCall("[]", ident"dataTable", newStrLitNode($argName)))
                 of "bool":
                   newCall("parseBool", newCall("[]", ident"dataTable", newStrLitNode($argName)))
-                else:
+                of "string":
                   newCall("[]", ident"dataTable", newStrLitNode($argName))
+                else:
+                  newCall("default", argType)
               )
             ))
           else:

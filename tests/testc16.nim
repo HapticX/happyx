@@ -13,6 +13,20 @@ model TestModel:
   password: string
 
 
+model TestModel1:
+  username: string
+  password: string
+
+
+model User:
+  id: int
+
+
+model Message:
+  text: string
+  user: User
+
+
 mount Profile:
   get "/":
     ## Profile main page

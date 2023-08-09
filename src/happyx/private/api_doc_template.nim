@@ -15,6 +15,7 @@ const
   Link = "text-[#5e7fae] visited:text-[#3e5f8e] dark:text-[#ceeffe] dark:visited:text-[#8badcf]"
 
   AccentColor = "text-purple-700 dark:text-yellow-500"
+  RequestModelColor = "text-red-700 dark:text-red-500"
   StringColor = "text-lime-700 dark:text-green-500"
 
 
@@ -49,7 +50,19 @@ const IndexApiDocPageTemplate* = fmt"""
       :root {{  
         font-family: Comfortaa;
       }}
+    
       @media (prefers-color-scheme: dark) {{
+        @keyframes highlight {{
+          0% {{
+            background: {ForeDark}00;
+          }}
+          65% {{
+            background: {ForeDark}90;
+          }}
+          100% {{
+            background: {ForeDark}00;
+          }}
+        }}
         ::-webkit-scrollbar {{
           width: 12px;
         }}
@@ -61,8 +74,22 @@ const IndexApiDocPageTemplate* = fmt"""
           border-radius: 20px;
           border: 3px solid {BackCode}25;
         }}
+        .highlight-animation {{
+          animation: highlight 1s cubic-bezier(0.49, 0.08, 0.16, 0.78);
+        }}
       }}
       @media (prefers-color-scheme: light) {{
+        @keyframes highlight {{
+          0% {{
+            background: {Fore}00;
+          }}
+          65% {{
+            background: {Fore}90;
+          }}
+          100% {{
+            background: {Fore}00;
+          }}
+        }}
         ::-webkit-scrollbar {{
           width: 12px;
         }}
@@ -73,6 +100,9 @@ const IndexApiDocPageTemplate* = fmt"""
           background-color: {BackCodeDark}25;
           border-radius: 20px;
           border: 3px solid {BackCodeDark}25;
+        }}
+        .highlight-animation {{
+          animation: highlight 1s cubic-bezier(0.49, 0.08, 0.16, 0.78);
         }}
       }}
     </style>
@@ -196,7 +226,11 @@ const IndexApiDocPageTemplate* = fmt"""
                           %}}
                           <tr class="{{{{color}}}} py-1">
                             <td class="px-2">{{{{model.name}}}}</td>
-                            <td class="px-2 {AccentColor} font-mono">{{{{model.typeName}}}}</td>
+                            <td class="px-2 {AccentColor} font-mono">
+                              <a href="#Model_{{{{model.typeName}}}}">
+                                {{{{model.typeName}}}}
+                              </a>
+                            </td>
                             <td class="px-2 {AccentColor} font-mono">{{{{model.target}}}}</td>
                             <td class="text-center align-middle px-2">
                               {{% if model.mutable %}}✅{{% else %}}❌{{% endif %}}
@@ -236,6 +270,34 @@ const IndexApiDocPageTemplate* = fmt"""
         {{{{ apiDoc("OPTIONS") }}}}
         {{{{ apiDoc("CONNECT") }}}}
         {{{{ apiDoc("TRACE") }}}}
+        <!-- Request Models -->
+        {{% if modelsData.len > 0 %}}
+          <div id="RequestModels" class="text-4xl lg:text-2xl xl:text-xl font-semibold">
+            Request Models
+          </div>
+          <div class="flex w-full flex-col lg:grid lg:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-4 xl:gap-2">
+            {{% for key in modelsData.keys() %}}
+              {{% let fields = modelsData[key] %}}
+              <div id="Model_{{{{ key }}}}" class="flex flex-col justify-between items-center px-4 py-2 rounded-md border-[2px] border-[{Fore}]/25 dark:border-[{ForeDark}]/25">
+                <p class="text-3xl lg:text-xl xl:text-lg font-semibold">{{{{ key }}}}</p>
+                {{% for field in fields.keys() %}}
+                  <div class="text-xl lg:text-lg xl:text-base flex gap-8 lg:gap-4 xl:gap-2 justify-between w-full">
+                    <p>{{{{ field }}}}</p>
+                    {{% if modelsData.hasKey(fields[field]) %}}
+                      <p class="font-mono font-black {RequestModelColor}">
+                        <a href="#Model_{{{{ fields[field] }}}}">
+                          {{{{ fields[field] }}}}
+                        </a>
+                      </p>
+                    {{% else %}}
+                      <p class="font-mono {AccentColor}">{{{{ fields[field] }}}}</p>
+                    {{% endif %}}
+                  </div>
+                {{% endfor %}}
+              </div>
+            {{% endfor %}}
+          </div>
+        {{% endif %}}
         <div class="w-48 h-48 py-12">&nbsp;</div>
       </div>
 
@@ -244,11 +306,25 @@ const IndexApiDocPageTemplate* = fmt"""
           Made with 
           <a href="https://github.com/HapticX/happyx" class="{Link}">
             HappyX
-          </a> v{hpxVersion}
+          </a> v{HpxVersion}
         </p>
       </div>
     </div>
     <script>
+      window.addEventListener('hashchange', (e) => {{
+        // clean
+        let elements = document.querySelectorAll("[id]");
+        elements.forEach((e) => {{
+          e.classList.remove("highlight-animation");
+        }});
+        // upd
+        let id = window.location.hash.slice(1);
+        let elem = document.getElementById(id);
+        if (elem) {{
+          elem.classList.add("highlight-animation");
+        }}
+      }});
+
       let toggled = {{}};
       function toggle(identifier, arrow) {{
         let section = document.getElementById(identifier);

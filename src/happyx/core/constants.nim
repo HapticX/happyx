@@ -1,20 +1,20 @@
 ## # Constants ✨
 ## > Provides HappyX constants
 ## 
-## | Flag               | Description                                                |
-## | :---:              | :---:                                                      |
-## | `-d:httpx`         | enables Httpx as alternative HTTP Server ⚡                |
-## | `-d:beast`         | enables HttpBeast as alternative HTTP Server ⚡            |
-## | `-d:micro`         | enables MicroAsyncHttpServer as alternative HTTP Server ⚡ |
-## | `-d:translate`     | enables automatic translate for returns 🌐                  |
-## | `-d:debug`         | enables debug logging 💻                                   |
-## | `-d:oldRenderer`   | enables old renderer for SPA 🍍                            |
-## | `-d:enableUi`      | enables built-in UI components 🎴                          |
-## | `-d:cryptoMethod`  | choose crypto method for `generate_password` methods 🔐    |
-## | `-d:numThreads`    | choose number of threads (httpx/httpbeast) ⌛              |
-## | `-d:disableApiDoc` | disables built-in API documentation 📕                     |
-## | `-d:appName`       | choose name of application (SSR/SSG) 📕                    |
-## | `-d:apiDocsPath`   | choose path for API documentation 📕                       |
+## | Flag               | Description                                                | Need Value |
+## | :---:              | :---:                                                      | :--:       |
+## | `-d:httpx`         | enables Httpx as alternative HTTP Server ⚡                | ❌         |
+## | `-d:beast`         | enables HttpBeast as alternative HTTP Server ⚡            | ❌         |
+## | `-d:micro`         | enables MicroAsyncHttpServer as alternative HTTP Server ⚡ | ❌         |
+## | `-d:translate`     | enables automatic translate for returns 🌐                  | ❌         |
+## | `-d:debug`         | enables debug logging 💻                                   | ❌         |
+## | `-d:oldRenderer`   | enables old renderer for SPA 🍍                            | ❌         |
+## | `-d:enableUi`      | enables built-in UI components 🎴                          |  ❌        |
+## | `-d:cryptoMethod`  | choose crypto method for `generate_password` methods 🔐    | ✅         |
+## | `-d:numThreads`    | choose number of threads (httpx/httpbeast) ⌛              |  ✅        |
+## | `-d:disableApiDoc` | disables built-in API documentation 📕                     | ❌         |
+## | `-d:appName`       | choose name of application (SSR/SSG) 📕                    | ✅         |
+## | `-d:apiDocsPath`   | choose path for API documentation 📕                       |  ✅        |
 ## 
 import strformat
 when not defined(js) and defined(debug):
@@ -45,7 +45,11 @@ const
   # Nim version
   nim_1_6_14* = (NimMajor, NimMajor, NimPatch) == (1, 6, 14)
   nim_2_0_0* = (NimMajor, NimMinor, NimPatch) >= (2, 0, 0)
-  hpxVersion* = "2.0.0"
+  # Framework version
+  HpxMajor* = 2
+  HpxMinor* = 0
+  HpxPatch* = 0
+  HpxVersion* = $HpxMajor & "." & $HpxMinor & "." & $HpxPatch
 
 
 when cryptoMethod notin availableCryptoMethods:

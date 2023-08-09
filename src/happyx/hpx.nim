@@ -254,7 +254,7 @@ proc mainHelpMessage() =
     "build", "dev", "serve", "create", "html2tag", "update", "help"
   ]
   styledEcho fgBlue, center("# ---=== HappyX CLI ===--- #", 28)
-  styledEcho fgGreen, align("v" & hpxVersion, 28)
+  styledEcho fgGreen, align("v" & HpxVersion, 28)
   styledEcho(
     "\nCLI for ", fgGreen, "creating", fgWhite, ", ",
     fgGreen, "serving", fgWhite, " and ", fgGreen, "building",
@@ -699,7 +699,7 @@ proc devCommand(host: string = "127.0.0.1", port: int = 5000,
 
 proc mainCommand(version = false): int =
   if version:
-    styledEcho "HappyX ", fgGreen, hpxVersion
+    styledEcho "HappyX ", fgGreen, HpxVersion
   else:
     mainHelpMessage()
   shutdownCli()
