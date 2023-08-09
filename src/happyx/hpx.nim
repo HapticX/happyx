@@ -242,7 +242,7 @@ proc updateHappyx(version: string) =
     process.close()
   
   sleep(1000)
-  styledEcho fgMagenta, "HappyX ", fgGreen, "successfully updated to ", fgMagenta, version
+  styledEcho fgMagenta, "✨ HappyX ", fgGreen, "successfully updated to ", fgMagenta, version
 
 
 # ---=== Commands ===--- #
@@ -253,7 +253,7 @@ proc mainHelpMessage() =
   let subcommands = [
     "build", "dev", "serve", "create", "html2tag", "update", "help"
   ]
-  styledEcho fgBlue, center("# ---=== HappyX CLI ===--- #", 28)
+  styledEcho fgBlue, center("# ---=== 🔥 HappyX CLI 🔥 ===--- #", 28)
   styledEcho fgGreen, align("v" & HpxVersion, 28)
   styledEcho(
     "\nCLI for ", fgGreen, "creating", fgWhite, ", ",
@@ -261,7 +261,7 @@ proc mainHelpMessage() =
     fgWhite, " HappyX projects\n"
   )
   styledEcho "Usage:"
-  styledEcho fgMagenta, "  hpx ", fgBlue, subcommands.join("|"), fgYellow, " [subcommand-args]"
+  styledEcho fgMagenta, " hpx ", fgBlue, subcommands.join("|"), fgYellow, " [subcommand-args]"
 
 
 proc updateCommand(args: seq[string]): int =
@@ -287,7 +287,7 @@ proc updateCommand(args: seq[string]): int =
 
 proc buildCommand(optSize: bool = false): int =
   ## Builds Single page application project into one HTML and JS files
-  styledEcho "Welcome to ", styleBright, fgMagenta, "HappyX ", resetStyle, fgWhite, "builder"
+  styledEcho "🔥 Welcome to ", styleBright, fgMagenta, "HappyX ", resetStyle, fgWhite, "builder"
   let
     project = compileProject()
     assetsDir = project.assetsDir.replace("\\", "/").replace('/', DirSep)
@@ -384,13 +384,14 @@ proc buildCommand(optSize: bool = false): int =
   f = open(project.buildDir / fmt"{SPA_MAIN_FILE}.js", fmWrite)
   f.write(data)
   f.close()
-  styledEcho fgGreen, "Build completed"
+  styledEcho fgGreen, "✅ Build completed"
   shutdownCli()
   QuitSuccess
 
 
 proc html2tagCommand(output: string = "", args: seq[string]): int =
   ## Converts HTML into `buildHtml` macro
+  styledEcho fgGreen, "🔨 Convert HTML into happyx file"
   var o = output
   # Check args
   if args.len != 1:
@@ -427,6 +428,7 @@ proc html2tagCommand(output: string = "", args: seq[string]): int =
   file = open(o, fmWrite)
   file.write(outputData)
   file.close()
+  styledEcho fgGreen, "✅ Successfully!"
   shutdownCli()
   QuitSuccess
 
@@ -439,11 +441,11 @@ proc createCommand(name: string = "", kind: string = "", templates: bool = false
     selected: int = 0
     imports = @["happyx"]
   let projectTypes = ["SSR", "SSG", "SPA"]
-  styledEcho "New ", fgBlue, styleBright, "HappyX", fgWhite, " project ..."
+  styledEcho "🔥 New ", fgBlue, styleBright, "HappyX", fgWhite, " project"
   if name == "":
     try:
       # Get project name
-      styledWrite stdout, fgYellow, align("Project name: ", 14)
+      styledWrite stdout, fgYellow, align("🔖 Project name: ", 14)
       projectName = readLine(stdin)
     except EOFError:
       styledEcho fgRed, "EOF error was occurred!"
@@ -463,7 +465,7 @@ proc createCommand(name: string = "", kind: string = "", templates: bool = false
     projectName = name
 
   if kind == "":
-    styledEcho "Choose project type ", fgYellow, "(via arrow keys)"
+    styledEcho "👨‍🔬 Choose project type ", fgYellow, "(via arrow keys)"
     var
       choosen = false
       needRefresh = true
@@ -500,7 +502,7 @@ proc createCommand(name: string = "", kind: string = "", templates: bool = false
       shutdownCli()
       return QuitFailure
   
-  styledEcho "Initializing project ..."
+  styledEcho "✨ Initializing project"
   createDir(projectName)
   createDir(projectName / "src")
   # Create .gitignore
@@ -626,7 +628,12 @@ proc createCommand(name: string = "", kind: string = "", templates: bool = false
     f.close()
   else:
     discard
-  styledEcho fgGreen, "Successfully created ", fgMagenta, projectName, fgGreen, " project!"
+  # Tell user about choosen
+  if useTailwind:
+    styledEcho fgYellow, "🐥 You choose tailwind css on project creation. Read docs: ", styleUnderscore, fgGreen, "https://tailwindcss.com/docs/"
+  if templates:
+    styledEcho fgYellow, "🐥 You enabled templates on project creation. Read more: ", styleUnderscore, fgGreen, "https://github.com/enthus1ast/nimja"
+  styledEcho fgGreen, "⚡ Successfully created ", fgMagenta, projectName, fgGreen, " project!"
   shutdownCli()
   QuitSuccess
 
@@ -651,14 +658,14 @@ proc devCommand(host: string = "127.0.0.1", port: int = 5000,
     createThread(godEyeThread, godEye, addr godEyeData)
 
   # Launch SSR app
-  if project.projectType == ptSSR:
-    styledEcho fgRed, "SSR projects not available in the dev mode."
-    styledEcho fgMagenta, "Make SSR for dev mode and send Pull Request if you want!"
+  if project.projectType in [ptSSG, ptSSR]:
+    styledEcho fgRed, "❌ SSR/SSG projects not available in the dev mode."
+    styledEcho fgMagenta, "💡 Make SSR/SSG dev mode and send Pull Request if you want!"
     shutdownCli()
     return QuitSuccess
 
   # Start server for SPA
-  styledEcho "Server launched at ", fgGreen, styleUnderscore, "http://", host, ":", $port, fgWhite
+  styledEcho "⚡ Server launched at ", fgGreen, styleUnderscore, "http://", host, ":", $port, fgWhite
   openDefaultBrowser("http://" & host & ":" & $port & "/#/")
 
   serve host, port:
@@ -697,6 +704,43 @@ proc devCommand(host: string = "127.0.0.1", port: int = 5000,
   shutdownCli()
   QuitSuccess
 
+
+proc serveCommand(host: string = "0.0.0.0", port: int = 80): int =
+  ## Serve SPA for production
+  var
+    project = compileProject()
+  
+  if project.error.len > 0:
+    return QuitFailure
+
+  # Explain SSG Error
+  if project.projectType in [ptSSG, ptSSR]:
+    styledEcho fgYellow, "❌ SSG projects not required to be supported in serve mode."
+    styledEcho fgMagenta, "💡 Compile and run your SSG server!"
+    shutdownCli()
+    return QuitSuccess
+
+  # Start SPA server
+  styledEcho "🔥 Server launched at ", fgGreen, styleUnderscore, "http://", host, ":", $port, fgWhite
+  
+  serve host, port:
+    get "/":
+      let f = open(getCurrentDir() / "build" / "index.html")
+      var data = f.readAll()
+      f.close()
+      req.answerHtml(data)
+ 
+    get "/{file:path}":
+      var result = ""
+      let path = getCurrentDir() / "build" / file.replace('\\', '/').replace('/', DirSep)
+      echo "File: ", file
+      echo "Path: ", path
+      if fileExists(path):
+        await req.answerFile(path)
+  shutdownCli()
+  QuitSuccess
+
+
 proc mainCommand(version = false): int =
   if version:
     styledEcho "HappyX ", fgGreen, HpxVersion
@@ -710,10 +754,8 @@ when isMainModule:
   illwillInit(false)
   dispatchMultiGen(
     [buildCommand, cmdName = "build"],
-    [
-      devCommand,
-      cmdName = "dev"
-    ],
+    [devCommand, cmdName = "dev"],
+    [serveCommand, cmdName = "serve"],
     [createCommand, cmdName = "create"],
     [html2tagCommand, cmdName = "html2tag"],
     [updateCommand, cmdName = "update"],
@@ -765,6 +807,13 @@ when isMainModule:
       styledEcho align("host", 8), "|h - change address (default is 127.0.0.1) (ex. --host:127.0.0.1)"
       styledEcho align("port", 8), "|p - change port (default is 5000) (ex. --port:5000)"
       styledEcho align("reload", 8), "|r - enable autoreloading (ex. --reload)"
+    of "serve":
+      styledEcho fgBlue, "HappyX", fgMagenta, " serve ", fgWhite, "command starting product server for SPA project."
+      styledEcho "\nUsage:"
+      styledEcho fgMagenta, "hpx dev\n"
+      styledEcho "Optional arguments:"
+      styledEcho align("host", 8), "|h - change address (default is 0.0.0.0) (ex. --host:0.0.0.0)"
+      styledEcho align("port", 8), "|p - change port (default is 80) (ex. --port:80)"
     of "create":
       styledEcho fgBlue, "HappyX", fgMagenta, " create ", fgWhite, "command creates a new HappyX project."
       styledEcho "\nUsage:"

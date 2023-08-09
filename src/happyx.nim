@@ -259,11 +259,12 @@
 ## 
 ##   **⚠ !Warning! It works only with `-d:enableUi` flag! ⚠**
 ## 
-## - [palette](happyx/spa/ui/palette.html) provides built-in color palette
-## - [card](happyx/spa/ui/card.html) provides built-in `Card` component
-## - [button](happyx/spa/ui/button.html) provides built-in `Button` component
-## - [input](happyx/spa/ui/input.html) provides built-in `Input` component
-## - [progress](happyx/spa/ui/progress.html) provides built-in `ProgressBar` component
+## - [enums](happyx/spa/ui/enums.html) provides built-in UI enums.
+## - [palette](happyx/spa/ui/palette.html) provides built-in color palette.
+## - [card](happyx/spa/ui/card.html) provides built-in `Card` component.
+## - [button](happyx/spa/ui/button.html) provides built-in `Button` component.
+## - [input](happyx/spa/ui/input.html) provides built-in `Input` component.
+## - [progress](happyx/spa/ui/progress.html) provides built-in `ProgressBar` component.
 ## 
 ## ### Template Engine 🎴
 ## 
