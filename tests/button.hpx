@@ -1,0 +1,23 @@
+<template>
+  <button click="">
+    <slot></slot>
+    <Example age:nim="5">  <!-- :nim means that value is nim expression -->
+      Hello, world!
+    </Example>
+    <Example age:int="5"></Example>  <!-- :int means that value is integer -->
+    <!-- Also available :float, :bool, :string, :int, :nim -->
+  </button>
+</template>
+
+
+<script js>
+console.log("Hello, world!");
+</script>
+
+
+<style>
+button {
+  background: #fecefe;
+  color: #181329;
+}
+</style>

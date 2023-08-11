@@ -1,0 +1,19 @@
+<template>
+  <div>
+    Example component {self.age}
+    {self.test()}
+    <slot></slot>
+  </div>
+</template>
+
+
+<script>
+# Declare properties
+props:
+  age: int
+
+# Declare methods
+proc test(): string =
+  echo "test method"
+  "..."
+</script>
