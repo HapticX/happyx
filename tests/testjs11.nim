@@ -49,7 +49,7 @@ component ConstructorChild of Constructor:
   """
 
 importComponent "example.hpx" as Example
-importComponent "button.hpx" as Button
+importComponent "button.hpx" as ButtonExample
 
 var constructor = use:
   component Constructor->construct()
@@ -67,7 +67,7 @@ appRoutes "app":
     component Constructor->construct(val = 100):
       "Hello, world!"
     component ConstructorChild->construct()
-    component Button:
+    component ButtonExample:
       "Hello, world!"
   
   "/cookiesTest":
