@@ -1,7 +1,9 @@
 component	happyx/spa/components.html#component.m,untyped,untyped	components: component(name, body: untyped): untyped	
+importComponent	happyx/spa/components.html#importComponent.m,untyped	components: importComponent(body: untyped): untyped	
 Basic Usage 🔨	happyx/spa/components.html#basic-usage-🔨	  Basic Usage 🔨	
 Pure Css 🎈	happyx/spa/components.html#pure-css-🎈	  Pure Css 🎈	
 Pure JavaScript ✌	happyx/spa/components.html#pure-javascript-✌	  Pure JavaScript ✌	
 Slots 👨‍🔬	happyx/spa/components.html#slots-👨‍🔬	  Slots 👨‍🔬	
 Inheritance 📦	happyx/spa/components.html#inheritance-📦	  Inheritance 📦	
+Example	happyx/spa/components.html#example	  Example	
 Components ✨	happyx/spa/components.html#components-✨	 Components ✨	
