@@ -46,7 +46,9 @@ jobs:
       - name: Install dependencies 🔃
         run: |
           python -m pip install --upgrade pip
+          nimble refresh
           pip install build
+          nimble install -y -d
       
       - name: Python Bindings 🐍
         run: |
