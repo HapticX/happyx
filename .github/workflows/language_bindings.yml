@@ -71,4 +71,4 @@ jobs:
         with:
           user: __token__
           password: ${{ secrets.PYPI_API_TOKEN }}
-          packages-dir: bindings/python/
+          packages_dir: bindings/python/
