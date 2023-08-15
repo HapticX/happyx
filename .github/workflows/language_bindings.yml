@@ -8,11 +8,11 @@ on:
     branches:
       - 'master'
     paths:
-      - 'bindings/python/**'
       - '**/language_bindings.yml'
+      - '**/bindings/'
   pull_request:
     paths:
-      - 'bindings/python/**'
+      - '**/bindings/'
       - '**/language_bindings.yml'
 
 jobs:

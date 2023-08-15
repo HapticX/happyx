@@ -11,8 +11,11 @@ import
   # deps
   regex,
   # happyx
-  ../core/[exceptions, constants],
-  ../bindings/python_types
+  ../core/[exceptions, constants]
+
+
+when exportPython:
+  import ../bindings/python_types
 
 
 var
