@@ -16,7 +16,7 @@ import
   strutils,
   strformat,
   # Happyx
-  ../core/[exceptions]
+  ../core/[exceptions, constants]
 
 
 
@@ -31,20 +31,47 @@ type
 var currentCORS {. compileTime .} = CORSObj()
 
 
+when exportPython:
+  var currentCORSRuntime* = CORSObj()
+
+  proc setCors*(allowOrigins: string = "*", allowMethods: string = "*",
+                allowHeaders: string = "*", credentials: bool = true) {.gcsafe.} =
+    {.cast(gcsafe).}:
+      currentCORSRuntime.allowCredentials = credentials
+      currentCORSRuntime.allowOrigins = allowOrigins
+      currentCORSRuntime.allowMethods = allowMethods
+      currentCORSRuntime.allowHeaders = allowHeaders
+
+  proc getCors*(): CORSObj {.gcsafe.} =
+    {.cast(gcsafe).}:
+      return currentCORSRuntime
+
+
 macro addCORSHeaders*(headers: HttpHeaders) =
-  let
-    allowCredentials = currentCORS.allowCredentials
-    allowHeaders= currentCORS.allowHeaders
-    allowOrigins= currentCORS.allowOrigins
-    allowMethods= currentCORS.allowMethods
-  result = quote do:
-    `headers`["Access-Control-Allow-Credentials"] = $`allowCredentials`
-    if `allowHeaders`.len > 0:
-      `headers`["Access-Control-Allow-Headers"] = `allowHeaders`
-    if `allowMethods`.len > 0:
-      `headers`["Access-Control-Allow-Methods"] = `allowMethods`
-    if `allowOrigins`.len > 0:
-      `headers`["Access-Control-Allow-Origin"] = `allowOrigins`
+  when exportPython:
+    result = quote do:
+      let cors = getCors()
+      `headers`["Access-Control-Allow-Credentials"] = $cors.allowCredentials
+      if cors.allowHeaders.len > 0:
+        `headers`["Access-Control-Allow-Headers"] = cors.allowHeaders
+      if cors.allowMethods.len > 0:
+        `headers`["Access-Control-Allow-Methods"] = cors.allowMethods
+      if cors.allowOrigins.len > 0:
+        `headers`["Access-Control-Allow-Origin"] = cors.allowOrigins
+  else:
+    let
+      allowCredentials = currentCORS.allowCredentials
+      allowHeaders= currentCORS.allowHeaders
+      allowOrigins= currentCORS.allowOrigins
+      allowMethods= currentCORS.allowMethods
+    result = quote do:
+      `headers`["Access-Control-Allow-Credentials"] = $`allowCredentials`
+      if `allowHeaders`.len > 0:
+        `headers`["Access-Control-Allow-Headers"] = `allowHeaders`
+      if `allowMethods`.len > 0:
+        `headers`["Access-Control-Allow-Methods"] = `allowMethods`
+      if `allowOrigins`.len > 0:
+        `headers`["Access-Control-Allow-Origin"] = `allowOrigins`
 
 
 macro regCORS*(body: untyped): untyped =

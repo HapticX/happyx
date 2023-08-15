@@ -28,6 +28,16 @@ test_ssr/
 tests/test*
 !tests/test*.nim
 
+# Compiled Python modules
+__pycache__/
+*.so
+*.pyd
+
+# PyPi Package
+*.egg-info/
+bindings/**/dist/
+**/upload.bash
+
 # Testing :)
 a.nim
 private_test*.nim

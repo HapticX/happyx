@@ -1,4 +1,4 @@
-name: Testing
+name: Testing 👨‍🔬
 
 on:
   push:
@@ -14,6 +14,7 @@ on:
       - '**/FUNDING.yml'
       - '**/gh-pages.yml'
       - '**/examples.yml'
+      - '**/language_bindings.yml'
   pull_request:
     paths-ignore:
       - 'docs/**'
@@ -25,6 +26,7 @@ on:
       - '**/FUNDING.yml'
       - '**/gh-pages.yml'
       - '**/examples.yml'
+      - '**/language_bindings.yml'
 
 jobs:
   build:
@@ -50,12 +52,12 @@ jobs:
         with:
           nim-version: ${{ matrix.nim_version }}
       
-      - name: Install Dependencies
+      - name: Install Dependencies 🔃
         run: |
           nimble refresh
           nimble install -y -d
       
-      - name: Build C tests (Default HTTP Server)
+      - name: Build C tests (Default HTTP Server) ⚡
         run: |
           cd tests
           echo "###===--- Default for" $file "---===###"
@@ -64,7 +66,7 @@ jobs:
           done
         shell: bash
       
-      - name: Build C tests (HttpX HTTP Server)
+      - name: Build C tests (HttpX HTTP Server) ⚡
         run: |
           cd tests
           echo "###===--- Default for" $file "---===###"
@@ -73,7 +75,7 @@ jobs:
           done
         shell: bash
       
-      - name: Build C tests (HttpBeast HTTP Server)
+      - name: Build C tests (HttpBeast HTTP Server) ⚡
         run: |
           cd tests
           echo "###===--- Default for" $file "---===###"
@@ -82,7 +84,7 @@ jobs:
           done
         shell: bash
       
-      - name: Build C tests (MicroAsyncHttpServer)
+      - name: Build C tests (MicroAsyncHttpServer) ⚡
         run: |
           cd tests
           echo "###===--- Default for" $file "---===###"
@@ -91,7 +93,7 @@ jobs:
           done
         shell: bash
       
-      - name: Build JS tests
+      - name: Build JS tests 🍍
         run: |
           cd tests
           for file in $(ls -v testjs*.nim); do

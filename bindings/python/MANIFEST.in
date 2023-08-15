@@ -1,0 +1,2 @@
+recursive-include happyx *.pyd
+recursive-include happyx *.so

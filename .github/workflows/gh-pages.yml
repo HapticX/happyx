@@ -1,4 +1,4 @@
-name: gh-pages
+name: Github Pages 🌐
 
 on:
   push:
@@ -13,6 +13,7 @@ on:
       - '**/FUNDING.yml'
       - '**/tests.yml'
       - '**/examples.yml'
+      - '**/language_bindings.yml'
   pull_request:
     paths-ignore:
       - '.github/ISSUE_TEMPLATE/*'
@@ -23,6 +24,7 @@ on:
       - '**/FUNDING.yml'
       - '**/tests.yml'
       - '**/examples.yml'
+      - '**/language_bindings.yml'
 
 permissions:
   contents: write
@@ -53,15 +55,15 @@ jobs:
         with:
           nim-version: ${{ env.nim_version }}
 
-      - name: Install Dependencies
+      - name: Install Dependencies 🔃
         run: |
           nimble refresh
           nimble install -y -d
 
-      - name: Generate API documents
+      - name: Generate API documents 📃
         run: nim doc --index:on -d:docgen --project --out:docs --hints:off src/happyx.nim
       
-      - name: Build HappyX website
+      - name: Build HappyX website 🌐
         timeout-minutes: 2
         run: |
           cd ./examples/website/src
@@ -74,10 +76,10 @@ jobs:
           cp ./examples/website/src/happyx/public/* ./docs/happyx/public/
           cp ./examples/website/src/happyx/public/* ./docs/public/
       
-      - name: CNAME For Nim Town
+      - name: CNAME For Nim Town 🌐
         run: echo "hapticx.nim.town" > ./docs/CNAME
 
-      - name: Deploy documents
+      - name: Deploy documents 💨
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}

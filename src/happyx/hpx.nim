@@ -30,6 +30,9 @@ type
     ptSPA = "SPA",
     ptSSG = "SSG",
     ptSSR = "SSR"
+  ProgrammingLanguage {.pure, size: sizeof(int8).} = enum
+    plNim = "nim",
+    plPython = "python"
   ProjectData = object
     process: Process
     mainFile: string  ## Main file without extension
@@ -38,6 +41,7 @@ type
     error: string
     assetsDir: string  ## Assets directory
     buildDir: string  ## Build directory
+    language: ProgrammingLanguage
   GodEyeData = object
     needReload: ptr bool
     project: ptr ProjectData
@@ -106,6 +110,9 @@ proc compileProject(): ProjectData {. discardable .} =
     let cfg = loadConfig(getCurrentDir() / CONFIG_FILE)
     result.projectType = parseEnum[ProjectType](
       cfg.getSectionValue("Main", "projectType", "SPA").toUpper()
+    )
+    result.language = parseEnum[ProgrammingLanguage](
+      cfg.getSectionValue("Main", "language", "python").toLower()
     )
     result.mainFile = cfg.getSectionValue("Main", "mainFile", SPA_MAIN_FILE)
     result.srcDir = cfg.getSectionValue("Main", "srcDir", "src")
@@ -434,13 +441,29 @@ proc html2tagCommand(output: string = "", args: seq[string]): int =
 
 
 proc createCommand(name: string = "", kind: string = "", templates: bool = false,
-                   pathParams: bool = false, useTailwind: bool = false): int =
+                   pathParams: bool = false, useTailwind: bool = false, language: string = ""): int =
   ## Create command that asks user for project name and project type
   var
     projectName: string
+    projectLanguage: string
     selected: int = 0
+    selectedLang: int = 0
     imports = @["happyx"]
-  let projectTypes = ["SSR", "SSG", "SPA"]
+  let
+    projectTypes = [
+      "SSR", "SSG", "SPA",
+    ]
+    projectTypesDesc = [
+      "Server-side rendering ⚡",
+      "Static site generation 📁",
+      "Single-page application 🎴",
+    ]
+    programmingLanguages = [
+      "python", "nim"
+    ]
+    programmingLanguagesDesc = [
+      "Python 🐍", "Nim 👑"
+    ]
   styledEcho "🔥 New ", fgBlue, styleBright, "HappyX", fgWhite, " project"
   if name == "":
     try:
@@ -472,7 +495,7 @@ proc createCommand(name: string = "", kind: string = "", templates: bool = false
     while not choosen:
       if needRefresh:
         needRefresh = false
-        for i, val in projectTypes:
+        for i, val in projectTypesDesc:
           if i == selected:
             styledEcho styleUnderscore, fgGreen, "> ", val
           else:
@@ -501,6 +524,46 @@ proc createCommand(name: string = "", kind: string = "", templates: bool = false
       styledEcho fgRed, "Invalid project type! it should be one of these [", projectTypes.join(", "), "]"
       shutdownCli()
       return QuitFailure
+
+  if language == "":
+    styledEcho "👨‍🔬 Choose project programming language ", fgYellow, "(via arrow keys)"
+    var
+      choosen = false
+      needRefresh = true
+    while not choosen:
+      if needRefresh:
+        needRefresh = false
+        for i, val in programmingLanguagesDesc:
+          if i == selectedLang:
+            styledEcho styleUnderscore, fgGreen, "> ", val
+          else:
+            styledEcho fgYellow, "  ", val
+      case getKey()
+      of Key.Up, Key.ShiftH:
+        if selectedLang > 0:
+          needRefresh = true
+          dec selectedLang
+      of Key.Down, Key.ShiftP:
+        if selectedLang < programmingLanguages.len-1:
+          needRefresh = true
+          inc selectedLang
+      of Key.Enter:
+        choosen = true
+        break
+      else:
+        discard
+      if needRefresh:
+        for i in programmingLanguages:
+          eraseLine(stdout)
+          cursorUp(stdout)
+  else:
+    selectedLang = programmingLanguages.find(language.toLower())
+    if selectedLang < 0:
+      styledEcho fgRed, "Invalid project type! it should be one of these [", programmingLanguages.join(", "), "]"
+      shutdownCli()
+      return QuitFailure
+  
+  let lang = programmingLanguages[selectedLang]
   
   styledEcho "✨ Initializing project"
   createDir(projectName)
@@ -511,7 +574,10 @@ proc createCommand(name: string = "", kind: string = "", templates: bool = false
   f.close()
   # Create README.md
   f = open(projectName / "README.md", fmWrite)
-  f.write("# " & projectName & "\n\n" & projectTypes[selected] & " project written in Nim with HappyX ❤")
+  f.write(
+    "# " & projectName & "\n\n" & projectTypes[selected] &
+    " project written in " & programmingLanguagesDesc[selectedLang] &
+    " with HappyX ❤")
   f.close()
 
   # Write config
@@ -524,15 +590,18 @@ proc createCommand(name: string = "", kind: string = "", templates: bool = false
     "mainFile = main  # main script filename (without extension) that should be launched with hpx dev command\n" &
     "srcDir = src  # source directory in project root\n",
     "buildDir = build  # build directory in project root\n",
-    "assetsDir = public  # assets directory in srcDir, will copied into build/public\n"
+    "assetsDir = public  # assets directory in srcDir, will copied into build/public\n" &
+    "language = " & programmingLanguages[selectedLang] & "  # programming language\n"
   )
   f.close()
 
   if pathParams:
     imports.add("path_params")
-    f = open(projectName / "src" / "path_params.nim", fmWrite)
-    f.write("import happyx\n\n\npathParams:\n  id int\n")
-    f.close()
+    case lang
+    of "nim":
+      f = open(projectName / "src" / "path_params.nim", fmWrite)
+      f.write("import happyx\n\n\npathParams:\n  id int\n")
+      f.close()
   
   case selected
   of 0, 1:
@@ -551,38 +620,53 @@ proc createCommand(name: string = "", kind: string = "", templates: bool = false
     else:
       styledEcho fgYellow, "Templates in SSR was disabled. To enable it add --templates flag."
     # Create main file
-    f = open(projectName / "src" / fmt"{SPA_MAIN_FILE}.nim", fmWrite)
-    if templates:
+    case lang
+    of "nim":
+      f = open(projectName / "src" / fmt"{SPA_MAIN_FILE}.nim", fmWrite)
+      if templates:
+        f.write(
+          "# Import HappyX\n" &
+          "import\n  " & imports.join(",\n  ") & "\n\n" &
+          "# Declare template folder\n" &
+          "templateFolder(\"templates\")\n\n" &
+          "proc render(title: string): string =\n" &
+          "  ## Renders template and returns HTML string\n" &
+          "  ## \n" &
+          "  ## `title` is template argument\n" &
+          "  renderTemplate(\"index.html\")\n\n" &
+          "# Serve at http://127.0.0.1:5000\n" &
+          "serve(\"127.0.0.1\", 5000):\n" &
+          "  # on GET HTTP method at http://127.0.0.1:5000/TEXT\n" &
+          "  get \"/{title:string}\":\n" &
+          "    req.answerHtml render(title)\n" &
+          "  # on any HTTP method at http://127.0.0.1:5000/public/path/to/file.ext\n" &
+          "  staticDir \"public\"\n\n"
+        )
+      else:
+        f.write(
+          "# Import HappyX\n" &
+          "import\n  " & imports.join(",\n  ") & "\n\n" &
+          "# Serve at http://127.0.0.1:5000\n" &
+          "serve(\"127.0.0.1\", 5000):\n" &
+          "  # on GET HTTP method at http://127.0.0.1:5000/\n" &
+          "  get \"/\":\n" &
+          "    # Return plain text\n" &
+          "    \"Hello, world!\"\n" &
+          "  # on any HTTP method at http://127.0.0.1:5000/public/path/to/file.ext\n" &
+          "  staticDir \"public\"\n\n"
+        )
+    of "python":
+      f = open(projectName / "src" / fmt"{SPA_MAIN_FILE}.py", fmWrite)
       f.write(
         "# Import HappyX\n" &
-        "import\n  " & imports.join(",\n  ") & "\n\n" &
-        "# Declare template folder\n" &
-        "templateFolder(\"templates\")\n\n" &
-        "proc render(title: string): string =\n" &
-        "  ## Renders template and returns HTML string\n" &
-        "  ## \n" &
-        "  ## `title` is template argument\n" &
-        "  renderTemplate(\"index.html\")\n\n" &
-        "# Serve at http://127.0.0.1:5000\n" &
-        "serve(\"127.0.0.1\", 5000):\n" &
-        "  # on GET HTTP method at http://127.0.0.1:5000/TEXT\n" &
-        "  get \"/{title:string}\":\n" &
-        "    req.answerHtml render(title)\n" &
-        "  # on any HTTP method at http://127.0.0.1:5000/public/path/to/file.ext\n" &
-        "  staticDir \"public\"\n\n"
-      )
-    else:
-      f.write(
-        "# Import HappyX\n" &
-        "import\n  " & imports.join(",\n  ") & "\n\n" &
-        "# Serve at http://127.0.0.1:5000\n" &
-        "serve(\"127.0.0.1\", 5000):\n" &
-        "  # on GET HTTP method at http://127.0.0.1:5000/\n" &
-        "  get \"/\":\n" &
-        "    # Return plain text\n" &
-        "    \"Hello, world!\"\n" &
-        "  # on any HTTP method at http://127.0.0.1:5000/public/path/to/file.ext\n" &
-        "  staticDir \"public\"\n\n"
+        "from happyx import new_server, HttpRequest\n\n\n" &
+        "# Just run python file to serve at http://localhost:5000\n" &
+        "app = new_server('127.0.0.1', 5000)\n\n" &
+        "# on GET method at http://localhost:5000/\n" &
+        "@app.get('/')\n" &
+        "def home():\n" &
+        "    # Just return any data ✌\n" &
+        "    return 'Hello, world!'\n"
       )
     f.close()
   of 2:
@@ -629,10 +713,15 @@ proc createCommand(name: string = "", kind: string = "", templates: bool = false
   else:
     discard
   # Tell user about choosen
+  case lang
+  of "nim":
+    styledEcho fgYellow, "🐥 You choose ", fgMagenta, "Nim 👑", fgYellow, " programming language for this project."
+  of "python":
+    styledEcho fgYellow, "🐥 You choose ", fgMagenta, "Python 🐍", fgYellow, " programming language for this project."
   if useTailwind:
-    styledEcho fgYellow, "🐥 You choose tailwind css on project creation. Read docs: ", styleUnderscore, fgGreen, "https://tailwindcss.com/docs/"
+    styledEcho fgYellow, "🐥 You choose ", fgMagenta, "tailwind css", fgYellow, " on project creation. Read docs: ", styleUnderscore, fgGreen, "https://tailwindcss.com/docs/"
   if templates:
-    styledEcho fgYellow, "🐥 You enabled templates on project creation. Read more: ", styleUnderscore, fgGreen, "https://github.com/enthus1ast/nimja"
+    styledEcho fgYellow, "🐥 You enabled ", fgMagenta, "templates", fgYellow, " on project creation. Read more: ", styleUnderscore, fgGreen, "https://github.com/enthus1ast/nimja"
   styledEcho fgGreen, "⚡ Successfully created ", fgMagenta, projectName, fgGreen, " project!"
   shutdownCli()
   QuitSuccess

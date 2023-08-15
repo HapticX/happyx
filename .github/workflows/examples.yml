@@ -1,4 +1,4 @@
-name: Examples
+name: Examples 📕
 
 on:
   push:
@@ -14,6 +14,7 @@ on:
       - '**/FUNDING.yml'
       - '**/gh-pages.yml'
       - '**/tests.yml'
+      - '**/language_bindings.yml'
   pull_request:
     paths-ignore:
       - 'docs/**'
@@ -25,6 +26,7 @@ on:
       - '**/FUNDING.yml'
       - '**/gh-pages.yml'
       - '**/tests.yml'
+      - '**/language_bindings.yml'
 
 jobs:
   build:
@@ -55,28 +57,28 @@ jobs:
           nimble refresh
           nimble install -y -d
       
-      - name: Hello World
+      - name: Hello World 👋
         run: |
           cd examples/hello_world/src
           nim c -d:httpx main
           cd ../../../
         shell: bash
       
-      - name: TODO App
+      - name: TODO App ✅
         run: |
           cd examples/todo/src
           nim js main
           cd ../../../
         shell: bash
       
-      - name: NimLang
+      - name: NimLang 👑
         run: |
           cd examples/nimlang/src
           nim js main
           cd ../../../
         shell: bash
       
-      - name: Website
+      - name: Website 🌐
         run: |
           cd examples/website/src
           nim js main

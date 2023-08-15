@@ -1,0 +1,67 @@
+name: Language Bindings 🐍
+
+permissions:
+  contents: read
+
+on:
+  push:
+    branches:
+      - 'master'
+    paths:
+      - 'bindings/python/**'
+      - '**/language_bindings.yml'
+  pull_request:
+    paths:
+      - 'bindings/python/**'
+      - '**/language_bindings.yml'
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+        nim_version:
+          - '2.0.0'
+    env:
+      TIMEOUT_EXIT_STATUS: 124
+    steps:
+      - uses: actions/checkout@v3
+      - name: Cache nimble
+        id: cache-nimble
+        uses: actions/cache@v3
+        with:
+          path: ~/.nimble
+          key: ${{ runner.os }}-nimble-${{ hashFiles('*.nimble') }}
+      - uses: jiro4989/setup-nim-action@v1
+        with:
+          nim-version: ${{ matrix.nim_version }}
+
+      - name: Set up Python 🔃
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.x'
+        
+      - name: Install dependencies 🔃
+        run: |
+          python -m pip install --upgrade pip
+          pip install build
+      
+      - name: Python Bindings 🐍
+        run: |
+          cd src
+          echo "Windows module"
+          nim c --app:lib --out:../bindings/python/happyx/happyx.pyd --threads:on --tlsEmulation:off --passL:-static -d:debug -d:httpx -d:export2py happyx
+          echo "Linux module"
+          nim c --app:lib --out:../bindings/python/happyx/happyx.so --threads:on -d:debug -d:httpx -d:export2py happyx
+        shell: bash
+
+      - name: Build package 🔨
+        run: python -m build
+
+      - name: Publish package
+        uses: pypa/gh-action-pypi-publish@27b31702a0e7fc50959f5ad993c78deac1bdfc29
+        with:
+          user: __token__
+          password: ${{ secrets.PYPI_API_TOKEN }}

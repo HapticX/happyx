@@ -190,7 +190,7 @@ const IndexApiDocPageTemplate* = fmt"""
                           <tr class="{{{{color}}}} py-1">
                             <td class="px-2">{{{{param.name}}}}</td>
                             <td class="px-2 {AccentColor} font-mono">{{{{param.paramType}}}}</td>
-                            <td class="px-2 {AccentColor} font-mono">{{{{param.defaultVal}}}}</td>
+                            <td class="px-2 {AccentColor} font-mono">{{{{param.defaultValue}}}}</td>
                             <td class="text-center align-middle px-2">
                               {{% if param.optional %}}✅{{% else %}}❌{{% endif %}}
                             </td> 

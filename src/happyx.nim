@@ -301,6 +301,7 @@ import
   happyx/tmpl_engine/[engine],
   happyx/routing/[mounting, routing]
 
+
 when enableUi or defined(docgen):
   import
     happyx/spa/ui/[enums, palette, button, input, card, progress]
@@ -320,3 +321,12 @@ export
   mounting,
   sgr,
   js
+
+
+# Language bindings
+when exportPython:
+  import
+    nimpy,
+    happyx/bindings/[python]
+
+  export python

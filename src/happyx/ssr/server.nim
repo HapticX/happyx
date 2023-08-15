@@ -126,62 +126,80 @@ when enableApiDoc:
     ../private/api_doc_template
 
 
-type
-  Server* = object
-    address*: string
-    port*: int
-    logger*: Logger
-    when enableHttpx:
-      instance*: Settings
-    elif enableHttpBeast:
-      instance*: Settings
-    elif enableMicro:
-      instance*: MicroAsyncHttpServer
-    else:
-      instance*: AsyncHttpServer
-    components: TableRef[string, BaseComponent]
-  ModelBase* = object of RootObj
+when exportPython:
+  import
+    nimpy,
+    ../bindings/python_types
+  
+  pyExportModule(name = "server", doc = """
+HappyX web framework [SSR/SSG Part]
+""")
+
+  type
+
+    Server* = ref object of PyNimObjectExperimental
+      address*: string
+      port*: int
+      routes*: seq[Route]
+      path*: string
+      mounts*: seq[Server]
+      notFoundCallback*: PyObject
+      middlewareCallback*: PyObject
+      logger*: Logger
+      when enableHttpx:
+        instance*: Settings
+      elif enableHttpBeast:
+        instance*: Settings
+      elif enableMicro:
+        instance*: MicroAsyncHttpServer
+      else:
+        instance*: AsyncHttpServer
+      components: TableRef[string, BaseComponent]
+    ModelBase* = ref object of PyNimObjectExperimental
+  
+  proc routes*(self: Server): seq[Route] =
+    result = self.routes
+    for s in self.mounts:
+      for i in routes(s):
+        var route = i
+        route.path = s.path & i.path
+        result.add(route)
+else:
+  type
+    Server* = object
+      address*: string
+      port*: int
+      logger*: Logger
+      when enableHttpx:
+        instance*: Settings
+      elif enableHttpBeast:
+        instance*: Settings
+      elif enableMicro:
+        instance*: MicroAsyncHttpServer
+      else:
+        instance*: AsyncHttpServer
+      components: TableRef[string, BaseComponent]
+    ModelBase* = object of RootObj
 
 
 when enableApiDoc:
   type
-    ApiDocPathParamObject* = object
-      name*: string
-      paramType*: string
-      defaultVal*: string
-      optional*: bool
-      mutable*: bool
-    ApiDocRequestModelObject* = object
-      name*: string
-      typeName*: string
-      target*: string
-      mutable*: bool
     ApiDocObject* = object
       description*: string
       httpMethod*: string
       path*: string
-      pathParams*: seq[ApiDocPathParamObject]
-      models*: seq[ApiDocRequestModelObject]
+      pathParams*: seq[PathParamObj]
+      models*: seq[RequestModelObj]
     
-  proc newApiDocObject*(httpMethod, description, path: string, pathParams: seq[ApiDocPathParamObject],
-                        models: seq[ApiDocRequestModelObject]): ApiDocObject =
-    ApiDocObject(httpMethod: httpMethod, description: description, path: path, pathParams: pathParams, models: models)
-  
-  proc newApiDocPathParamObject*(name, paramType, defaultVal: string, optional, mutable: bool): ApiDocPathParamObject =
-    ApiDocPathParamObject(
-      name: name, paramType: paramType, defaultVal: defaultVal,
-      optional: optional, mutable: mutable
-    )
-
-  proc newApiDocRequestModelObject*(name, typeName, target: string, mutable: bool): ApiDocRequestModelObject =
-    ApiDocRequestModelObject(
-      name: name, typeName: typeName, target: target, mutable: mutable
-    )
-
+  proc newApiDocObject*(httpMethod, description, path: string, pathParams: seq[PathParamObj],
+                        models: seq[RequestModelObj]): ApiDocObject =
+    ApiDocObject(httpMethod: httpMethod, description: description, path: path,
+                 pathParams: pathParams, models: models)
 
 
 var
   pointerServer: ptr Server
+  loggerCreated: bool = false
 
 
 proc ctrlCHook() {.noconv.} =
@@ -250,12 +268,18 @@ proc newServer*(address: string = "127.0.0.1", port: int = 5000): Server =
   runnableExamples:
     var s = newServer()
     assert s.address == "127.0.0.1"
-  result = Server(
-    address: address,
-    port: port,
-    components: newTable[string, BaseComponent](),
-    logger: newConsoleLogger(lvlInfo, fgColored("[$date at $time]:$levelname ", fgYellow)),
-  )
+  {.cast(gcsafe).}:
+    result = Server(
+      address: address,
+      port: port,
+      components: newTable[string, BaseComponent](),
+      logger:
+        if loggerCreated:
+          newConsoleLogger(lvlNone, fgColored("[$date at $time]:$levelname ", fgYellow))
+        else:
+          loggerCreated = true
+          newConsoleLogger(lvlInfo, fgColored("[$date at $time]:$levelname ", fgYellow))
+    )
   when enableHttpx or enableHttpBeast:
     result.instance = initSettings(Port(port), bindAddr=address, numThreads = numThreads)
   elif enableMicro:
@@ -307,7 +331,7 @@ template start*(server: Server): untyped =
   ## Returns:
   ## - `untyped`: This template does not return any value.
   when enableDebug:
-    info fmt"Server started at http://{server.address}:{server.port}"
+    info "Server started at http://" & `server`.address & ":" & $`server`.port
   when not declared(handleRequest):
     proc handleRequest(req: Request) {.async.} =
       discard
@@ -370,7 +394,8 @@ when enableHttpBeast:
     await ws.sendText(data)
 
 
-template answerJson*(req: Request, data: untyped, code: HttpCode = Http200,): untyped =
+template answerJson*(req: Request, data: untyped, code: HttpCode = Http200,
+                     headers: HttpHeaders = newHttpHeaders([("Content-Type", "application/json; charset=utf-8")])): untyped =
   ## Answers to request with json data
   ## 
   ## ⚠ `Low-level API` ⚠
@@ -387,10 +412,11 @@ template answerJson*(req: Request, data: untyped, code: HttpCode = Http200,): un
   ##      # respond JSON directly
   ##      return {"response": 1}
   ## 
-  answer(req, $(%*`data`), code, newHttpHeaders([("Content-Type", "application/json; charset=utf-8")]))
+  answer(req, $(%*`data`), code, headers)
 
 
-template answerHtml*(req: Request, data: string | TagRef, code: HttpCode = Http200): untyped =
+template answerHtml*(req: Request, data: string | TagRef, code: HttpCode = Http200,
+                     headers: HttpHeaders = newHttpHeaders([("Content-Type", "text/html; charset=utf-8")])): untyped =
   ## Answers to request with HTML data
   ## 
   ## ⚠ `Low-level API` ⚠
@@ -415,7 +441,7 @@ template answerHtml*(req: Request, data: string | TagRef, code: HttpCode = Http2
     let d = data
   else:
     let d = $data
-  answer(req, d, code, newHttpHeaders([("Content-Type", "text/html; charset=utf-8")]))
+  answer(req, d, code, headers)
 
 
 proc answerFile*(req: Request, filename: string,
@@ -620,6 +646,7 @@ macro routes*(server: Server, body: untyped): untyped =
       newIntLitNode(0)
     )
     let
+      requestBody = newCall("get", newDotExpr(ident"req", ident"body"))
       reqMethod = newCall("get", newDotExpr(ident"req", ident"httpMethod"))
       headers = newCall("get", newDotExpr(ident"req", ident"headers"))
       acceptLanguage = newNimNode(nnkBracketExpr).add(
@@ -644,6 +671,7 @@ macro routes*(server: Server, body: untyped): untyped =
     let
       reqMethod = newDotExpr(ident"req", ident"reqMethod")
       headers = newDotExpr(ident"req", ident"headers")
+      requestBody = newDotExpr(ident"req", ident"body")
       acceptLanguage = newNimNode(nnkBracketExpr).add(
         newCall(
           "split", newNimNode(nnkBracketExpr).add(headers, newStrLitNode("accept-language")), newLit(',')
@@ -701,6 +729,8 @@ macro routes*(server: Server, body: untyped): untyped =
       ))
   
   for statement in body:
+    if statement.kind == nnkDiscardStmt:
+      continue
     if statement.kind in [nnkCall, nnkCommand]:
       if statement[^1].kind == nnkStmtList:
         # Check variable usage
@@ -998,6 +1028,234 @@ macro routes*(server: Server, body: untyped): untyped =
       newLit(parseEnum[HttpMethod](key)),
       methodTable[key]
     ))
+  # Python Library
+  when exportPython:
+    stmtList.add(newVarStmt(ident"reqResponded", newLit(false)))
+    stmtList.add(newNimNode(nnkForStmt).add(
+      ident"route", newCall("routes", ident"self"),
+      newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
+        newCall(
+          "or",
+          newCall(
+            "and",
+            newCall(
+              "==",
+              newLit"NOTFOUND",
+              newDotExpr(ident"route", ident"httpMethod")
+            ),
+            newCall("not", ident"reqResponded")
+          ),
+          newCall(
+            "or",
+            newCall(
+              "==",
+              newLit"MIDDLEWARE",
+              newDotExpr(ident"route", ident"httpMethod")
+            ),
+            newCall(
+              "and",
+              newCall("==", newCall("$", reqMethod), newDotExpr(ident"route", ident"httpMethod")),
+              newCall("contains", pathIdent, newDotExpr(ident"route", ident"pattern"))
+            )
+          ),
+        ),
+        newNimNode(nnkPragmaBlock).add(
+          newNimNode(nnkPragma).add(newNimNode(nnkCast).add(
+            newEmptyNode(), ident"gcsafe"
+          )),
+          newStmtList(
+            newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
+              newCall(
+                "!=",
+                newLit"MIDDLEWARE",
+                newDotExpr(ident"route", ident"httpMethod")
+              ),
+              newAssignment(ident"reqResponded", newLit(true))
+            )),
+            # Declare HttpRequest
+            newVarStmt(
+              ident"request",
+              newCall(
+                "initHttpRequest", path, newCall("$", reqMethod), headers, requestBody
+              )
+            ),
+            # Detect queries
+            newLetStmt(ident"queryFromUrl", url),
+            newLetStmt(ident"query", newCall("parseQuery", ident"queryFromUrl")),
+            # Declare RouteData
+            newVarStmt(ident"routeData", newCall("handleRoute", newDotExpr(ident"route", ident"path"))),
+            # Declare route handler
+            newVarStmt(ident"handler", newDotExpr(ident"route", ident"handler")),
+            # Declare Python Locals (for eval func)
+            newVarStmt(ident"locals", newCall("pyDict")),
+            # Declare Python Object (for function params)
+            newNimNode(nnkVarSection).add(newIdentDefs(ident"pyFuncParams", ident"PyObject")),
+            # Declare JsonNode (for length of keyword arguments)
+            newNimNode(nnkVarSection).add(newIdentDefs(ident"keywordArgumentss", ident"JsonNode")),
+            # Include route handler into Python locals 
+            newCall("[]=", ident"locals", newLit"handler", ident"handler"),
+            # Unpack route path params
+            newLetStmt(ident"founded_regexp_matches", newCall("findAll", pathIdent, newDotExpr(ident"route", ident"pattern"))),
+            # handle callback data
+            newVarStmt(ident"variables", newCall(newNimNode(nnkBracketExpr).add(ident"newSeq", ident"string"))),
+            newLetStmt(ident"argcount", newCall("getAttr", newCall("getAttr", ident"handler", newLit"__code__"), newLit"co_argcount")),
+            newLetStmt(ident"varnames", newCall("getAttr", newCall("getAttr", ident"handler", newLit"__code__"), newLit"co_varnames")),
+            newLetStmt(ident"pDefaults", newCall("getAttr", ident"handler", newLit"__defaults__")),
+            # Create Python Object
+            newCall(ident"pyValueToNim", newCall("privateRawPyObj", ident"pDefaults"), ident"keywordArgumentss"),
+            newLetStmt(ident"annotations", newCall("newAnnotations", newCall("getAttr", ident"handler", newLit("__annotations__")))),
+            # Extract function arguments from Python
+            newNimNode(nnkForStmt).add(
+              ident"i",
+              newCall(
+                "..<",
+                newLit(0),
+                newCall("-", newCall("to", ident"argcount", ident"int"), newCall("len", ident"keywordArgumentss"))
+              ),
+              newCall("add", ident"variables", newCall("to", newCall("[]", ident"varnames", ident"i"), ident"string"))
+            ),
+            # Match function parameters with annotations (or without)
+            newLetStmt(ident"handlerParams", newCall("newHandlerParams", ident"variables", ident"annotations")),
+            # Load path params into function parameters
+            newLetStmt(ident"funcParams", newCall(
+              "getRouteParams", ident"routeData", ident"founded_regexp_matches", pathIdent, ident"handlerParams"
+            )),
+            # Add queries to function parameters
+            newNimNode(nnkForStmt).add(
+              ident"param", ident"handlerParams",
+              newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
+                newCall(
+                  "and",
+                  newCall(
+                    "not",
+                    newCall("contains", ident"funcParams", newDotExpr(ident"param", ident"name"))
+                  ),
+                  newCall("!=", newDotExpr(ident"param", ident"paramType"), newLit"HttpRequest")
+                ),
+                newCall(
+                  "[]=",
+                  ident"funcParams",
+                  newDotExpr(ident"param", ident"name"),
+                  newNimNode(nnkCaseStmt).add(
+                    newDotExpr(ident"param", ident"paramType"),
+                    newNimNode(nnkOfBranch).add(
+                      newLit"bool",
+                      newCall(
+                        "parseBoolOrJString",
+                        newCall("getOrDefault", ident"query", newDotExpr(ident"param", ident"name"))
+                      )
+                    ),
+                    newNimNode(nnkOfBranch).add(
+                      newLit"int",
+                      newCall(
+                        "parseIntOrJString",
+                        newCall("getOrDefault", ident"query", newDotExpr(ident"param", ident"name"))
+                      )
+                    ),
+                    newNimNode(nnkOfBranch).add(
+                      newLit"float",
+                      newCall(
+                        "parseFloatOrJString",
+                        newCall("getOrDefault", ident"query", newDotExpr(ident"param", ident"name"))
+                      )
+                    ),
+                    newNimNode(nnkElse).add(
+                      newCall("newJString", newCall("getOrDefault", ident"query", newDotExpr(ident"param", ident"name")))
+                    ),
+                  )
+                )
+              ))
+            ),
+            # Create Pointer to Python Object
+            newLetStmt(ident"pFuncParams", newCall("nimValueToPy", ident"funcParams")),
+            # Create Python Object
+            newCall(ident"pyValueToNim", ident"pFuncParams", ident"pyFuncParams"),
+            # Add HttpRequest to function parameters if required
+            newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
+              newCall("hasHttpRequest", ident"handlerParams"),
+              newCall(
+                "[]=",
+                ident"pyFuncParams",
+                newCall("getParamName", ident"handlerParams", newLit"HttpRequest"),
+                ident"request"
+              )
+            )),
+            # Add function parameters to locals
+            newCall("[]=", ident"locals", newLit"funcParams", ident"pFuncParams"),
+            # Execute callback
+            newLetStmt(
+              ident"response",
+              newCall(
+                newDotExpr(ident"py", ident"eval"),
+                newLit("handler(**funcParams)"),
+                ident"locals"
+              )
+            ),
+            # Handle response type
+            newLetStmt(
+              ident"responseType",
+              newCall("getAttr", newCall("getAttr", ident"response", newLit("__class__")), newLit("__name__"))
+            ),
+            # Respond
+            newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
+              newCall("!=", ident"response", newDotExpr(ident"py", ident"None")),
+              newNimNode(nnkCaseStmt).add(
+                newCall("$", ident"responseType"),
+                newNimNode(nnkOfBranch).add(
+                  newLit("dict"),
+                  newCall("answerJson", ident"req", newCall("to", ident"response", ident"JsonNode"))
+                ),
+                newNimNode(nnkOfBranch).add(
+                  newLit("JsonResponseObj"),
+                  newStmtList(
+                    newLetStmt(ident"resp", newCall("to", ident"response", ident"JsonResponseObj")),
+                    newCall(
+                      "answerJson",
+                      ident"req",
+                      newCall("data", ident"resp"),
+                      newCall("HttpCode", newCall("statusCode", ident"resp")),
+                      newCall("toHttpHeaders", newCall("headers", ident"resp"))
+                    )
+                  )
+                ),
+                newNimNode(nnkOfBranch).add(
+                  newLit("HtmlResponseObj"),
+                  newStmtList(
+                    newLetStmt(ident"resp", newCall("to", ident"response", ident"HtmlResponseObj")),
+                    newCall(
+                      "answerHtml",
+                      ident"req",
+                      newCall("data", ident"resp"),
+                      newCall("HttpCode", newCall("statusCode", ident"resp")),
+                      newCall("toHttpHeaders", newCall("headers", ident"resp"))
+                    )
+                  )
+                ),
+                newNimNode(nnkOfBranch).add(
+                  newLit("FileResponseObj"),
+                  newStmtList(
+                    newLetStmt(ident"resp", newCall("to", ident"response", ident"FileResponseObj")),
+                    newCall(
+                      "await",
+                      newCall(
+                        "answerFile",
+                        ident"req",
+                        newCall("filename", ident"resp"),
+                        newCall("HttpCode", newCall("statusCode", ident"resp")),
+                        newCall("asAttachment", ident"resp")
+                      )
+                    )
+                  )
+                ),
+                newNimNode(nnkElse).add(
+                  newCall("answer", ident"req", newCall("$", ident"response"))
+                )
+              )
+            )
+            )),
+        )
+      ))
+    ))
   caseRequestMethodsStmt.add(newNimNode(nnkElse).add(newStmtList()))
 
   if ifStmt.len > 0:
@@ -1024,14 +1282,14 @@ macro routes*(server: Server, body: untyped): untyped =
   else:
     # return 404
     if notFoundNode.kind == nnkEmpty:
-      when enableDebug:
-        stmtList.add(newCall(
-          "warn",
-          newCall(
-            "fgColored",
-            newCall("fmt", newStrLitNode("{urlPath} is not found.")), ident"fgYellow"
-          )
-        ))
+      # when enableDebug:
+      #   stmtList.add(newCall(
+      #     "warn",
+      #     newCall(
+      #       "fgColored",
+      #       newCall("fmt", newStrLitNode("{urlPath} is not found.")), ident"fgYellow"
+      #     )
+      #   ))
       stmtList.add(
         newCall(ident"answer", ident"req", newStrLitNode("Not found"), ident"Http404")
       )
@@ -1071,6 +1329,7 @@ macro routes*(server: Server, body: untyped): untyped =
     immutableVars.add(newIdentDefs(ident"inCookies", newEmptyNode(), cookiesInVar))
   if stmtList.isIdentUsed(ident"reqMethod"):
     immutableVars.add(newIdentDefs(ident"reqMethod", newEmptyNode(), reqMethod))
+  echo result.toStrLit
 
 
 macro initServer*(body: untyped): untyped =
@@ -1103,71 +1362,28 @@ when enableApiDoc:
     var
       params = newNimNode(nnkBracket)
       models = newNimNode(nnkBracket)
-    let
-      dollarToCurve = re"\$([^:\/\{\}]+)(:enum\(\w+\)|:\w+)?(\[m\])?(=[^\/\{\}]+)?(m)?"
-      defaultWithoutQuestion = re"\{([^:\/\{\}\?]+)(:enum\(\w+\)|:\w+)?(\[m\])?(=[^\/\{\}]+)\}"
-    
-    route = route.replace(dollarToCurve, "{$1$2$3$4}")
-    route = route.replace(defaultWithoutQuestion, "{$1?$2$3$4}")
-
-    let
-      found = route.findAll(
-        re"\{([a-zA-Z][a-zA-Z0-9_]*\??)(:(bool|int|float|string|path|word|/[\s\S]+?/|enum\(\w+\)))?(\[m\])?(=(\S+?))?\}"
-      )
-      foundModels = route.findAll(
-        re"\[([a-zA-Z][a-zA-Z0-9_]*):([a-zA-Z][a-zA-Z0-9_]*)(\[m\])?(:[a-zA-Z\\-]+)?\]"
-      )
-    for i in found:
-      # Detect other data
-      let
-        argTypeStr =
-          if i.group(2, route).len == 0:
-            "string"
-          else:
-            i.group(2, route)[0]
-        defaultVal =
-          if i.group(5, route).len == 0:
-            ""
-          else:
-            i.group(5, route)[0]
-        isMutable = i.group(3, route).len != 0
-      # Detect main data
-      var
-        name = i.group(0, route)[0]
-        isOptional = false
-      # Detect optional value
-      if name.endsWith(re"\?"):
-        name = name[0..^2]
-        isOptional = true
-      elif defaultVal.len > 0:
-        isOptional = true
+      routeData = handleRoute(route)
+    for i in routeData.pathParams:
       params.add(newCall(
-        "newApiDocPathParamObject",
-        newStrLitNode(name),
-        newStrLitNode(argTypeStr),
-        newStrLitNode(defaultVal),
-        newLit(isOptional),
-        newLit(isMutable),
+        "newPathParamObj",
+        newStrLitNode(i.name),
+        newStrLitNode(i.paramType),
+        newStrLitNode(i.defaultValue),
+        newLit(i.optional),
+        newLit(i.mutable),
       ))
 
-    for i in foundModels:
-      let
-        modelName = i.group(0, route)[0]
-        modelType = i.group(1, route)[0]
-        modelTarget =
-          if i.group(3, route).len != 0:
-            i.group(3, route)[0][1..^1]
-          else:
-            "JSON"
-        isMutable = i.group(2, route).len != 0
+    for i in routeData.requestModels:
       models.add(newCall(
-        "newApiDocRequestModelObject",
-        newStrLitNode(modelName),
-        newStrLitNode(modelType),
-        newStrLitNode(modelTarget),
-        newLit(isMutable),
+        "newRequestModelObj",
+        newStrLitNode(i.name),
+        newStrLitNode(i.typeName),
+        newStrLitNode(i.target),
+        newLit(i.mutable),
       ))
     
+    # Clear route
+    route = routeData.path
     route = route.replace(
       re"\{([a-zA-Z][a-zA-Z0-9_]*)\??(:(bool|int|float|string|path|word|/[\s\S]+?/|enum\(\w+\)))?(\[m\])?(=(\S+?))?\}",
       "{$1}"
@@ -1278,24 +1494,71 @@ macro serve*(address: string, port: int, body: untyped): untyped =
   when enableApiDoc:
     echo port.toStrLit
     var docsData = bodyStatement.genApiDoc()
+  
+  var s =
+    when exportPython:
+      ident"self"
+    else:
+      ident"server"
 
   result = newStmtList(
     newProc(
       ident"main",
       [newEmptyNode()],
       newStmtList(
-        newVarStmt(
-          ident"server",
-          newCall("newServer", address, port)
-        ),
+        when not exportPython:
+          newVarStmt(
+            ident"server",
+            newCall("newServer", address, port)
+          )
+        else:
+          newEmptyNode(),
         when enableApiDoc:
           newProc(ident"renderDocsProcedure", [ident"string"], newStmtList(
             newLetStmt(ident"title", newStrLitNode(appName)),
-            newNimNode(nnkLetSection).add(
+            newNimNode(when exportPython: nnkVarSection else: nnkLetSection).add(
               newIdentDefs(
                 ident"apiDocData", newNimNode(nnkBracketExpr).add(ident"seq", ident"ApiDocObject"), docsData
               )
             ),
+            when exportPython:
+              newNimNode(nnkForStmt).add(
+                ident"route", newCall("routes", ident"self"),
+                newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
+                  newCall(
+                    "not",
+                    newCall(
+                      "contains",
+                      newNimNode(nnkBracket).add(newLit"MIDDLEWARE", newLit"NOTFOUND"),
+                      newDotExpr(ident"route", ident"httpMethod")
+                    )
+                  ),
+                  newStmtList(
+                    # Declare RouteData
+                    newVarStmt(ident"routeData", newCall("handleRoute", newDotExpr(ident"route", ident"path"))),
+                    # Declare route handler
+                    newVarStmt(ident"handler", newDotExpr(ident"route", ident"handler")),
+                    newLetStmt(ident"pDoc", newCall("getAttr", ident"handler", newLit"__doc__")),
+                    # Declare string (for documentation)
+                    newVarStmt(ident"documentation", newLit""),
+                    # Convert __doc__ to string
+                    newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
+                      newCall("!=", ident"pDoc", newDotExpr(ident"py", ident"None")),
+                      newCall(ident"pyValueToNim", newCall("privateRawPyObj", ident"pDoc"), ident"documentation"),
+                    )),
+                    newCall("add", ident"apiDocData", newCall(
+                      "newApiDocObject",
+                      newDotExpr(ident"route", ident"httpMethod"),
+                      ident"documentation",
+                      newDotExpr(ident"routeData", ident"path"),
+                      newDotExpr(ident"routeData", ident"pathParams"),
+                      newDotExpr(ident"routeData", ident"requestModels"),
+                    ))
+                  )),
+                )
+              )
+            else:
+              newEmptyNode(),
             newNimNode(nnkLetSection).add(
               newIdentDefs(
                 ident"modelsData",
@@ -1310,8 +1573,8 @@ macro serve*(address: string, port: int, body: untyped): untyped =
         else:
           newEmptyNode(),
         translatesStatement,
-        newCall("routes", ident"server", body),
-        newCall("start", ident"server"),
+        newCall("routes", s, body),
+        newCall("start", s),
         newCall("addQuitProc", ident"finalizeProgram")
       ),
       nnkProcDef

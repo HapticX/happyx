@@ -7,41 +7,56 @@ import
   strutils,
   strtabs,
   macros,
+  json,
   # deps
   regex,
   # happyx
-  ../core/[exceptions, constants]
+  ../core/[exceptions, constants],
+  ../bindings/python_types
 
 
 var
   declaredPathParams {. compileTime .} = newStringTable()
 
 
-proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.} =
-  ## Finds and exports route arguments
-  ## 
-  ## [Read more about it](/happyx/happyx/routing.html)
+type
+  PathParamObj* = object
+    name*: string
+    paramType*: string
+    defaultValue*: string
+    optional*: bool
+    mutable*: bool
+  RequestModelObj* = object
+    name*: string
+    typeName*: string
+    target*: string  ## JSON/XML/FormData/X-www-formurlencoded
+    mutable*: bool
+  RouteDataObj* = object
+    pathParams*: seq[PathParamObj]
+    requestModels*: seq[RequestModelObj]
+    purePath*: string
+    path*: string
+
+
+proc newPathParamObj*(name, paramType, defaultValue: string, optional, mutable: bool): PathParamObj =
+  PathParamObj(name: name, paramType: paramType, defaultValue: defaultValue,
+               optional: optional, mutable: mutable)
+
+proc newRequestModelObj*(name, typeName, target: string, mutable: bool): RequestModelObj =
+  RequestModelObj(name: name, typeName: typeName, target: target, mutable: mutable)
+
+
+proc handleRoute*(route: string): RouteDataObj =
+  ## Handles route and receive route data object.
+  result = RouteDataObj(path: "", purePath: "", pathParams: @[], requestModels: @[])
   let
-    elifBranch = newNimNode(nnkElifBranch)
     dollarToCurve = re"\$([^:\/\{\}]+)(:enum\(\w+\)|:\w+)?(\[m\])?(=[^\/\{\}]+)?(m)?"
     defaultWithoutQuestion = re"\{([^:\/\{\}\?]+)(:enum\(\w+\)|:\w+)?(\[m\])?(=[^\/\{\}]+)\}"
-  var
-    path = $routePath
-    hasChildren = false
-  # Find all declared path params
-  for i in path.findAll(re"<([a-zA-Z][a-zA-Z0-9_]*)>"):
-    let name = i.group(0, path)[0]
-    if declaredPathParams.hasKey(name):
-      path = path.replace(fmt"<{name}>", declaredPathParams[name])
-    else:
-      throwDefect(
-        HpxPathParamDefect,
-        "Unknown path param name: " & name & "\n" & $routePath.toStrLit,
-        lineInfoObj(routePath)
-      )
-  # adaptive $params and repair default params
+  
+  var path = route
   path = path.replace(dollarToCurve, "{$1$2$3$4}")
   path = path.replace(defaultWithoutQuestion, "{$1?$2$3$4}")
+  result.path = path
   var routePathStr = path
   # boolean param
   routePathStr = routePathStr.replace(re"\{[a-zA-Z][a-zA-Z0-9_]*(\??):bool(\[m\])?(=\S+?)?\}", "(n|y|no|yes|true|false|1|0|on|off)$1")
@@ -63,50 +78,84 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.
   # Remove models
   routePathStr = routePathStr.replace(re"\[[a-zA-Z][a-zA-Z0-9_]*:[a-zA-Z][a-zA-Z0-9_]*(\[m\])?(:[a-zA-Z\\-]+)?\]", "")
   let
-    regExp = newCall("re", newStrLitNode("^" & routePathStr & "$"))
-    found = path.findAll(
+    foundPathParams = path.findAll(
       re"\{([a-zA-Z][a-zA-Z0-9_]*\??)(:(bool|int|float|string|path|word|/[\s\S]+?/|enum\(\w+\)))?(\[m\])?(=(\S+?))?\}"
     )
     foundModels = path.findAll(
       re"\[([a-zA-Z][a-zA-Z0-9_]*):([a-zA-Z][a-zA-Z0-9_]*)(\[m\])?(:[a-zA-Z\\-]+)?\]"
     )
-  elifBranch.add(newCall("contains", urlPath, regExp), body)
-  var
-    idx = 0
-    name = ""
-    isOptional = false
-    defaultVal = ""
-    isMutable = false
-  let paramsCount = found.len
-  for i in found:
-    # clean
-    name = i.group(0, path)[0]
-    isOptional = false
-    defaultVal =
-      if i.group(5, path).len == 0:
-        ""
-      else:
-        i.group(5, path)[0]
-    isMutable = i.group(3, path).len != 0
-    # detect optional
+  
+  result.purePath = routePathStr
+
+  for pathParam in foundPathParams:
+    let
+      argTypeStr =
+        if pathParam.group(2, path).len == 0:
+          "string"
+        else:
+          pathParam.group(2, path)[0]
+      defaultVal =
+        if pathParam.group(5, path).len == 0:
+          ""
+        else:
+          pathParam.group(5, path)[0]
+      isMutable = pathParam.group(3, path).len != 0
+    # Detect main data
+    var
+      name = pathParam.group(0, path)[0]
+      isOptional = false
+    # Detect optional value
     if name.endsWith(re"\?"):
       name = name[0..^2]
       isOptional = true
     elif defaultVal.len > 0:
       isOptional = true
+    result.pathParams.add(newPathParamObj(name, argTypeStr, defaultVal, isOptional, isMutable))
+    
+  for i in foundModels:
     let
-      argTypeStr =
-        if i.group(2, path).len == 0:
-          "string"
+      modelName = i.group(0, path)[0]
+      modelType = i.group(1, path)[0]
+      modelTarget =
+        if i.group(3, path).len != 0:
+          i.group(3, path)[0][1..^1]
         else:
-          i.group(2, path)[0]
-      letSection = newNimNode(if isMutable: nnkVarSection else: nnkLetSection).add(
-        newNimNode(nnkIdentDefs).add(ident(name), newEmptyNode())
+          "JSON"
+      isMutable = i.group(2, path).len != 0
+    result.requestModels.add(newRequestModelObj(modelName, modelType, modelTarget, isMutable))
+
+
+proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.} =
+  ## Finds and exports route arguments
+  var
+    routeData = handleRoute($routePath)
+    hasChildren = false
+  let
+    elifBranch = newNimNode(nnkElifBranch)
+    regExp = newCall("re", newStrLitNode("^" & routeData.purePath & "$"))
+  # Find all declared path params
+  for i in routeData.purePath.findAll(re"<([a-zA-Z][a-zA-Z0-9_]*)>"):
+    let name = i.group(0, routeData.purePath)[0]
+    if declaredPathParams.hasKey(name):
+      routeData.purePath = routeData.purePath.replace(fmt"<{name}>", declaredPathParams[name])
+    else:
+      throwDefect(
+        HpxPathParamDefect,
+        "Unknown path param name: " & name & "\n" & $routePath.toStrLit,
+        lineInfoObj(routePath)
+      )
+  elifBranch.add(newCall("contains", urlPath, regExp), body)
+  var idx = 0
+  let paramsCount = routeData.pathParams.len
+  for i in routeData.pathParams:
+    let
+      letSection = newNimNode(if i.mutable: nnkVarSection else: nnkLetSection).add(
+        newNimNode(nnkIdentDefs).add(ident(i.name), newEmptyNode())
       )
       group = newCall(
         "group",
         newNimNode(nnkBracketExpr).add(
-          if paramsCount > 1:
+          if routeData.pathParams.len > 1:
             ident"founded_regexp_matches"
           else:
             newCall("findAll", urlPath, regExp),
@@ -121,20 +170,20 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.
       # _foundGroupLen == 0
       conditionSecondOptional = newCall("==", newCall("len", foundGroup), newIntLitNode(0))
 
-    if isOptional:
-      case argTypeStr:
+    if i.optional:
+      case i.paramType:
       of "bool":
         letSection[0].add(newNimNode(nnkIfStmt).add(
             newNimNode(nnkElifBranch).add(
               conditionOptional,
               newLit(
-                if defaultVal == "": false else: parseBool(defaultVal)
+                if i.defaultValue == "": false else: parseBool(i.defaultValue)
               )
             ),
             newNimNode(nnkElifBranch).add(
               conditionSecondOptional,
               newLit(
-                if defaultVal == "": false else: parseBool(defaultVal)
+                if i.defaultValue == "": false else: parseBool(i.defaultValue)
               )
             ),
             newNimNode(nnkElse).add(newCall("parseBool", foundGroup))
@@ -145,13 +194,13 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.
             newNimNode(nnkElifBranch).add(
               conditionOptional,
               newLit(
-                if defaultVal == "": 0 else: parseInt(defaultVal)
+                if i.defaultValue == "": 0 else: parseInt(i.defaultValue)
               )
             ),
             newNimNode(nnkElifBranch).add(
               conditionSecondOptional,
               newLit(
-                if defaultVal == "": 0 else: parseInt(defaultVal)
+                if i.defaultValue == "": 0 else: parseInt(i.defaultValue)
               )
             ),
             newNimNode(nnkElse).add(newCall("parseInt", foundGroup))
@@ -162,13 +211,13 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.
             newNimNode(nnkElifBranch).add(
               conditionOptional,
               newLit(
-                if defaultVal == "": 0.0 else: parseFloat(defaultVal)
+                if i.defaultValue == "": 0.0 else: parseFloat(i.defaultValue)
               )
             ),
             newNimNode(nnkElifBranch).add(
               conditionSecondOptional,
               newLit(
-                if defaultVal == "": 0.0 else: parseFloat(defaultVal)
+                if i.defaultValue == "": 0.0 else: parseFloat(i.defaultValue)
               )
             ),
             newNimNode(nnkElse).add(newCall("parseFloat", foundGroup))
@@ -179,13 +228,13 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.
             newNimNode(nnkElifBranch).add(
               conditionOptional,
               newLit(
-                if defaultVal == "": "" else: defaultVal
+                if i.defaultValue == "": "" else: i.defaultValue
               )
             ),
             newNimNode(nnkElifBranch).add(
               conditionSecondOptional,
               newLit(
-                if defaultVal == "": "" else: defaultVal
+                if i.defaultValue == "": "" else: i.defaultValue
               )
             ),
             newNimNode(nnkElse).add(foundGroup)
@@ -193,22 +242,22 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.
         )
       else:
         # string Enum
-        if ($argTypeStr).startsWith("enum"):
-          let enumName = ($argTypeStr)[5..^2]
+        if ($i.paramType).startsWith("enum"):
+          let enumName = ($i.paramType)[5..^2]
           letSection[0].add(newNimNode(nnkIfStmt).add(
             newNimNode(nnkElifBranch).add(
               conditionOptional,
-              if defaultVal == "":
+              if i.defaultValue == "":
                 newCall("default", ident(enumName))
               else:
-                newCall(newNimNode(nnkBracketExpr).add(ident"parseEnum", ident(enumName)), newStrLitNode(defaultVal), newCall("default", ident(enumName)))
+                newCall(newNimNode(nnkBracketExpr).add(ident"parseEnum", ident(enumName)), newStrLitNode(i.defaultValue), newCall("default", ident(enumName)))
             ),
             newNimNode(nnkElifBranch).add(
               conditionSecondOptional,
-              if defaultVal == "":
+              if i.defaultValue == "":
                 newCall("default", ident(enumName))
               else:
-                newCall(newNimNode(nnkBracketExpr).add(ident"parseEnum", ident(enumName)), newStrLitNode(defaultVal), newCall("default", ident(enumName)))
+                newCall(newNimNode(nnkBracketExpr).add(ident"parseEnum", ident(enumName)), newStrLitNode(i.defaultValue), newCall("default", ident(enumName)))
             ),
             newNimNode(nnkElse).add(
               newCall(newNimNode(nnkBracketExpr).add(ident"parseEnum", ident(enumName)), foundGroup, newCall("default", ident(enumName)))
@@ -218,7 +267,7 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.
         else:
           letSection[0].add(foundGroup)
     else:
-      case argTypeStr:
+      case i.paramType:
       of "bool":
         letSection[0].add(newCall("parseBool", foundGroup))
       of "int":
@@ -229,8 +278,8 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.
         letSection[0].add(foundGroup)
       else:
         # string Enum
-        if ($argTypeStr).startsWith("enum"):
-          let enumName = ($argTypeStr)[5..^2]
+        if ($i.paramType).startsWith("enum"):
+          let enumName = ($i.paramType)[5..^2]
           letSection[0].add(newCall(newNimNode(nnkBracketExpr).add(ident"parseEnum", ident(enumName)), foundGroup, newCall("default", ident(enumName))))
         # regex
         else:
@@ -246,27 +295,17 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.
       newDotExpr(ident"req", ident"body")
 
   # Models
-  for i in foundModels:
-    let
-      modelType = i.group(1, path)[0]
-      modelKey = $modelType
-      modelName = i.group(0, path)[0]
-      modelTarget =
-        if i.group(3, path).len != 0:
-          i.group(3, path)[0][1..^1]
-        else:
-          "JSON"
-    isMutable = i.group(2, path).len != 0
+  for i in routeData.requestModels:
     elifBranch[1].insert(
       0,
-      newNimNode(if isMutable: nnkVarSection else: nnkLetSection).add(
+      newNimNode(if i.mutable: nnkVarSection else: nnkLetSection).add(
         newIdentDefs(
-          ident(modelName),
+          ident(i.name),
           newEmptyNode(),
-          case modelTarget.toLower():
+          case i.target.toLower():
           of "json":
             newNimNode(nnkTryStmt).add(
-              newCall("jsonTo" & modelKey, newCall("parseJson", body))
+              newCall("jsonTo" & i.typeName, newCall("parseJson", body))
             ).add(newNimNode(nnkExceptBranch).add(
               ident"JsonParsingError",
               newStmtList(
@@ -274,17 +313,17 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.
                   newCall("echo", newCall("fmt", newStrLitNode("json parse error: {getCurrentExceptionMsg()}")))
                 else:
                   newEmptyNode(),
-                newCall("jsonTo" & modelKey, newCall("newJObject"))
+                newCall("jsonTo" & i.typeName, newCall("newJObject"))
               )
             ))
           of "urlencoded", "x-www-form-urlencoded", "xwwwformurlencoded":
-            newCall("xWwwUrlencodedTo" & modelKey, body)
+            newCall("xWwwUrlencodedTo" & i.typeName, body)
           of "form-data", "formdata":
-            newCall("formDataTo" & modelKey, body)
+            newCall("formDataTo" & i.typeName, body)
           of "xml":
-            newCall("xmlBodyTo" & modelKey, body)
+            newCall("xmlBodyTo" & i.typeName, body)
           else:
-            newCall("jsonTo" & modelKey, newCall("newJObject"))
+            newCall("jsonTo" & i.typeName, newCall("newJObject"))
         )
       )
     )
@@ -301,6 +340,110 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.
       )
     return elifBranch
   return newEmptyNode()
+
+
+when exportPython:
+  proc parseBoolOrJString*(str: string): JsonNode =
+    try:
+      return newJBool(parseBool(str))
+    except Exception:
+      return newJString(str)
+  proc parseIntOrJString*(str: string): JsonNode =
+    try:
+      return newJInt(parseInt(str))
+    except Exception:
+      return newJString(str)
+  proc parseFloatOrJString*(str: string): JsonNode =
+    try:
+      return newJFloat(parseFloat(str))
+    except Exception:
+      return newJString(str)
+
+  template condition(condition1, condition2, foundGroup, defaultValue, jsonFunc, parseFunc, res, name, val: untyped): untyped =
+    when parseFunc is void:
+      if `condition1` or `condition2`:
+        if `defaultValue` == "":
+          `res`[`name`] = `jsonFunc`(`val`)
+        else:
+          `res`[`name`] = `jsonFunc`(`defaultValue`)
+      else:
+        `res`[`name`] = `jsonFunc`(`foundGroup`)
+    else:
+      if `condition1` or `condition2`:
+        if `defaultValue` == "":
+          `res`[`name`] = `jsonFunc`(`val`)
+        else:
+          `res`[`name`] = `parseFunc`(`defaultValue`)
+      else:
+        `res`[`name`] = `parseFunc`(`foundGroup`)
+
+  proc getRouteParams*(routeData: RouteDataObj, found_regexp_matches: seq[RegexMatch],
+                      urlPath: string, handlerParams: seq[HandlerParam]): JsonNode =
+    ## Finds and exports route arguments
+    result = newJObject()
+    var idx = 0
+    for i in routeData.pathParams:
+      if i.name notin handlerParams:
+        continue
+      let
+        group = found_regexp_matches[0].group(idx, urlPath)
+        foundGroup = group[0]
+        conditionOptional = group.len < 1
+        conditionSecondOptional = foundGroup.len == 0
+        paramType = handlerParams[i.name]
+        defaultValue = i.defaultValue
+        name = i.name
+
+      if i.optional:
+        if i.paramType == "string":
+          # Detect type from annotations
+          case paramType
+          of "bool":
+            result[i.name] = parseBoolOrJString(foundGroup)
+          of "int":
+            result[i.name] = parseIntOrJString(foundGroup)
+          of "float":
+            result[i.name] = parseFloatOrJString(foundGroup)
+          else:
+            result[i.name] = newJString(foundGroup)
+        else:
+          # Detect type from route
+          case i.paramType:
+          of "bool":
+            condition(conditionOptional, conditionSecondOptional, foundGroup, defaultValue, newJBool, parseBoolOrJString, result, name, false)
+          of "int":
+            condition(conditionOptional, conditionSecondOptional, foundGroup, defaultValue, newJInt, parseIntOrJString, result, name, 0)
+          of "float":
+            condition(conditionOptional, conditionSecondOptional, foundGroup, defaultValue, newJFloat, parseFloatOrJString, result, name, 0.0)
+          of "word":
+            condition(conditionOptional, conditionSecondOptional, foundGroup, defaultValue, newJString, void, result, name, "")
+          else:
+            result[i.name] = newJString(foundGroup)
+      elif i.paramType == "string":
+        # Detect type from annotations
+        case paramType
+        of "bool":
+          result[i.name] = parseBoolOrJString(foundGroup)
+        of "int":
+          result[i.name] = parseIntOrJString(foundGroup)
+        of "float":
+          result[i.name] = parseFloatOrJString(foundGroup)
+        else:
+          result[i.name] = newJString(foundGroup)
+      else:
+        # Detect from route
+        case i.paramType:
+        of "bool":
+          result[i.name] = parseBoolOrJString(foundGroup)
+        of "int":
+          result[i.name] = parseIntOrJString(foundGroup)
+        of "float":
+          result[i.name] = parseFloatOrJString(foundGroup)
+        of "path", "string", "word":
+          result[i.name] = newJString(foundGroup)
+        else:
+          result[i.name] = newJString(foundGroup)
+      inc idx
 
 
 proc pathParamsBoilerplate(node: NimNode, kind, regexVal: var string) =
