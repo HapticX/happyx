@@ -56,7 +56,7 @@ jobs:
         run: |
           cd src
           echo "Windows module"
-          nim c --app:lib --out:../bindings/python/happyx/happyx.pyd --passL:-static --threads:on -d:debug -d:httpx -d:export2py happyx
+          nim c --app:lib --out:../bindings/python/happyx/happyx.pyd --tlsEmulation:off --threads:on -d:debug -d:httpx -d:export2py happyx
           echo "Linux module"
           nim c --app:lib --out:../bindings/python/happyx/happyx.so --threads:on -d:debug -d:httpx -d:export2py happyx
         shell: bash
