@@ -127,23 +127,24 @@ proc handleRoute*(route: string): RouteDataObj =
 
 proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.} =
   ## Finds and exports route arguments
-  var
-    routeData = handleRoute($routePath)
-    hasChildren = false
-  let
-    elifBranch = newNimNode(nnkElifBranch)
-    regExp = newCall("re", newStrLitNode("^" & routeData.purePath & "$"))
+  var path = $routePath
   # Find all declared path params
-  for i in routeData.purePath.findAll(re"<([a-zA-Z][a-zA-Z0-9_]*)>"):
-    let name = i.group(0, routeData.purePath)[0]
+  for i in path.findAll(re"<([a-zA-Z][a-zA-Z0-9_]*)>"):
+    let name = i.group(0, path)[0]
     if declaredPathParams.hasKey(name):
-      routeData.purePath = routeData.purePath.replace(fmt"<{name}>", declaredPathParams[name])
+      path = path.replace(fmt"<{name}>", declaredPathParams[name])
     else:
       throwDefect(
         HpxPathParamDefect,
         "Unknown path param name: " & name & "\n" & $routePath.toStrLit,
         lineInfoObj(routePath)
       )
+  var
+    routeData = handleRoute(path)
+    hasChildren = false
+  let
+    elifBranch = newNimNode(nnkElifBranch)
+    regExp = newCall("re", newStrLitNode("^" & routeData.purePath & "$"))
   elifBranch.add(newCall("contains", urlPath, regExp), body)
   var idx = 0
   let paramsCount = routeData.pathParams.len

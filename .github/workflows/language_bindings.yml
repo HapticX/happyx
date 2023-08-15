@@ -20,10 +20,9 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os:
-          - ubuntu-latest
-        nim_version:
-          - '2.0.0'
+        os: windows-latest
+        nim_version: '2.0.0'
+        python_version: '3.x'
     env:
       TIMEOUT_EXIT_STATUS: 124
     steps:
@@ -41,7 +40,7 @@ jobs:
       - name: Set up Python 🔃
         uses: actions/setup-python@v3
         with:
-          python-version: '3.x'
+          python-version: ${{ matrix.python_version }}
         
       - name: Install dependencies 🔃
         run: |
