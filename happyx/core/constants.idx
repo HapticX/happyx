@@ -3,6 +3,7 @@ enableMicro	happyx/core/constants.html#enableMicro	constants: enableMicro
 enableHttpBeast	happyx/core/constants.html#enableHttpBeast	constants: enableHttpBeast	
 enableAutoTranslate	happyx/core/constants.html#enableAutoTranslate	constants: enableAutoTranslate	
 enableDebug	happyx/core/constants.html#enableDebug	constants: enableDebug	
+exportPython	happyx/core/constants.html#exportPython	constants: exportPython	
 enableUi	happyx/core/constants.html#enableUi	constants: enableUi	
 enableApiDoc	happyx/core/constants.html#enableApiDoc	constants: enableApiDoc	
 numThreads	happyx/core/constants.html#numThreads	constants: numThreads	

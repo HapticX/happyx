@@ -1,2 +1,8 @@
+PathParamObj	happyx/routing/routing.html#PathParamObj	routing: PathParamObj	
+RequestModelObj	happyx/routing/routing.html#RequestModelObj	routing: RequestModelObj	
+RouteDataObj	happyx/routing/routing.html#RouteDataObj	routing: RouteDataObj	
+newPathParamObj	happyx/routing/routing.html#newPathParamObj,string,string,string,bool,bool	routing: newPathParamObj(name, paramType, defaultValue: string; optional, mutable: bool): PathParamObj	
+newRequestModelObj	happyx/routing/routing.html#newRequestModelObj,string,string,string,bool	routing: newRequestModelObj(name, typeName, target: string; mutable: bool): RequestModelObj	
+handleRoute	happyx/routing/routing.html#handleRoute,string	routing: handleRoute(route: string): RouteDataObj	
 exportRouteArgs	happyx/routing/routing.html#exportRouteArgs,NimNode,NimNode,NimNode	routing: exportRouteArgs(urlPath, routePath, body: NimNode): NimNode	
 pathParams	happyx/routing/routing.html#pathParams.m,untyped	routing: pathParams(body: untyped): untyped	
