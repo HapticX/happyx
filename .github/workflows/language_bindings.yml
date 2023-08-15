@@ -17,12 +17,15 @@ on:
 
 jobs:
   build:
-    runs-on: ${{ matrix.os }}
+    runs-on: windows-latest
     strategy:
       matrix:
-        os: windows-latest
-        nim_version: '2.0.0'
-        python_version: '3.x'
+        os:
+          - windows-latest
+        nim_version:
+          - '2.0.0'
+        python_version:
+          - '3.x'
     env:
       TIMEOUT_EXIT_STATUS: 124
     steps:
