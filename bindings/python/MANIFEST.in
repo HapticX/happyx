@@ -1,2 +1,3 @@
-recursive-include happyx *.pyd
-recursive-include happyx *.so
+# MANIFEST.in
+include happyx/*.pyd
+include happyx/*.so
