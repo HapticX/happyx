@@ -129,6 +129,7 @@ when enableApiDoc:
 when exportPython:
   import
     nimpy,
+    sequtils,
     ../bindings/python_types
   
   pyExportModule(name = "server", doc = """
@@ -157,13 +158,38 @@ HappyX web framework [SSR/SSG Part]
       components: TableRef[string, BaseComponent]
     ModelBase* = ref object of PyNimObjectExperimental
   
-  proc routes*(self: Server): seq[Route] =
-    result = self.routes
-    for s in self.mounts:
-      for i in routes(s):
-        var route = i
-        route.path = s.path & i.path
-        result.add(route)
+  proc processMounts*(self: Server): tuple[x, y, z: seq[Route]] =
+    var
+      middlewares: seq[Route] = @[]
+      routes: seq[Route] = @[]
+      notfounds: seq[Route] = @[]
+    for i in self.routes:
+      if i.httpMethod == "MIDDLEWARE":
+        middlewares.add(i)
+      elif i.httpMethod == "NOTFOUND":
+        notfounds.add(i)
+      else:
+        routes.add(i)
+    for m in self.mounts:
+      var (x, y, z) = m.processMounts()
+      for route in x:
+        var r = initRoute(m.path & route.path, route.purePath, route.httpMethod, re("^" & m.path & route.purePath & "$"), route.handler)
+        middlewares.add(r)
+      for route in y:
+        var r = initRoute(m.path & route.path, route.purePath, route.httpMethod, re("^" & m.path & route.purePath & "$"), route.handler)
+        routes.add(r)
+      for route in z:
+        var r = initRoute(m.path & route.path, route.purePath, route.httpMethod, re("^" & m.path & route.purePath & "$"), route.handler)
+        notfounds.add(r)
+    (middlewares, routes, notfounds)
+  
+  proc fetchRoutes*(self: Server): seq[Route] =
+    var (middlewares, routes, notfounds) = self.processMounts()
+    result = middlewares
+    for i in routes:
+      result.add(i)
+    for i in notfounds:
+      result.add(i)
 else:
   type
     Server* = object
@@ -1032,7 +1058,7 @@ macro routes*(server: Server, body: untyped): untyped =
   when exportPython:
     stmtList.add(newVarStmt(ident"reqResponded", newLit(false)))
     stmtList.add(newNimNode(nnkForStmt).add(
-      ident"route", newCall("routes", ident"self"),
+      ident"route", newCall("fetchRoutes", ident"self"),
       newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
         newCall(
           "or",
@@ -1118,7 +1144,8 @@ macro routes*(server: Server, body: untyped): untyped =
             newLetStmt(ident"handlerParams", newCall("newHandlerParams", ident"variables", ident"annotations")),
             # Load path params into function parameters
             newLetStmt(ident"funcParams", newCall(
-              "getRouteParams", ident"routeData", ident"founded_regexp_matches", pathIdent, ident"handlerParams"
+              "getRouteParams", ident"routeData", ident"founded_regexp_matches",
+              pathIdent, ident"handlerParams", requestBody
             )),
             # Add queries to function parameters
             newNimNode(nnkForStmt).add(
@@ -1180,6 +1207,35 @@ macro routes*(server: Server, body: untyped): untyped =
                 ident"request"
               )
             )),
+            # Detect and create classes for request models
+            newNimNode(nnkForStmt).add(
+              ident"param", newCall("keys", ident"funcParams"),
+              newStmtList(
+                newLetStmt(ident"paramType", newCall("getParamType", ident"handlerParams", ident"param")),
+                # If param is request model
+                newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
+                  newCall("contains", ident"requestModelsHidden", ident"paramType"),
+                  newStmtList(
+                    # Get Python class
+                    newVarStmt(
+                      ident"requestModel",
+                      newDotExpr(newCall("[]", ident"requestModelsHidden", ident"paramType"), ident"pyClass")
+                    ),
+                    # Create Python class instance
+                    newLetStmt(
+                      ident"pyClassInstance",
+                      newCall(
+                        "callObject",
+                        newCall("getAttr", ident"requestModel", newLit"from_dict"),
+                        ident"requestModel",
+                        newCall("[]", ident"pyFuncParams", ident"param")
+                      )
+                    ),
+                    newCall("[]=", ident"pyFuncParams", ident"param", ident"pyClassInstance"),
+                  )
+                )),
+              )
+            ),
             # Add function parameters to locals
             newCall("[]=", ident"locals", newLit"funcParams", ident"pFuncParams"),
             # Execute callback
@@ -1251,8 +1307,8 @@ macro routes*(server: Server, body: untyped): untyped =
                   newCall("answer", ident"req", newCall("$", ident"response"))
                 )
               )
-            )
             )),
+            ),
         )
       ))
     ))
@@ -1523,7 +1579,7 @@ macro serve*(address: string, port: int, body: untyped): untyped =
             ),
             when exportPython:
               newNimNode(nnkForStmt).add(
-                ident"route", newCall("routes", ident"self"),
+                ident"route", newCall("fetchRoutes", ident"self"),
                 newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
                   newCall(
                     "not",

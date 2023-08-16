@@ -49,11 +49,9 @@ proc newHtmlResponse*(data: string, status_code: int = 200, headers: PyObject = 
   HtmlResponseObj(data: data, statusCode: status_code, headers: headers)
 
 
-var requestModelsHidden = RequestModels(requestModels: @[])
-
-
-proc newRequestModelData*(name: string, fields: seq[tuple[key, val: string]]): RequestModelData {.exportpy: "RequestModelData".} =
-  RequestModelData(name: name, fields: fields)
+proc newRequestModelData*(name: string, pyClass: PyObject, fields: seq[tuple[key, val: string]]): RequestModelData {.exportpy: "RequestModelData".} =
+  echo $pyClass
+  RequestModelData(name: name, fields: fields, pyClass: pyClass)
 
 
 proc addRequestModelData*(data: RequestModelData) {.exportpy: "register_request_model_data".} =
@@ -88,28 +86,6 @@ proc `$`*(self: Server): string {.exportpy: "__str__".} =
 
 proc startServerPy*(self: Server) {.exportpy: "start".} =
   let py = pyBuiltinsModule()
-  var
-    middlewares: seq[Route] = @[]
-    notFounds: seq[Route] = @[]
-    offset = 0
-  
-  for i in 0..<self.routes.len:
-    let route = self.routes[i-offset]
-    if route.httpMethod == "MIDDLEWARE":
-      middlewares.add(route)
-      self.routes.delete(i)
-      inc offset
-    elif route.httpMethod == "NOTFOUND":
-      notFounds.add(route)
-      self.routes.delete(i)
-      inc offset
-    
-  for i in countdown(middlewares.len-1, 0, 1 ):
-    self.routes.insert(middlewares[i], 0)
-  
-  for route in notfounds:
-    self.routes.add(route)
-  
   serve(self.address, self.port):
     discard
 
@@ -117,86 +93,85 @@ proc startServerPy*(self: Server) {.exportpy: "start".} =
 proc get*(self: Server, path: string): auto {.exportpy.} =
   proc wrapper(callback: PyObject) =
     let routeData = handleRoute(path)
-    self.routes.add(initRoute(routeData.path, "GET", re("^" & routeData.purePath & "$"), callback))
+    self.routes.add(initRoute(routeData.path, routeData.purePath, "GET", re("^" & routeData.purePath & "$"), callback))
   wrapper
 
 
 proc post*(self: Server, path: string): auto {.exportpy.} =
   proc wrapper(callback: PyObject) =
     let routeData = handleRoute(path)
-    self.routes.add(initRoute(routeData.path, "POST", re("^" & routeData.purePath & "$"), callback))
+    self.routes.add(initRoute(routeData.path, routeData.purePath, "POST", re("^" & routeData.purePath & "$"), callback))
   wrapper
 
 
 proc put*(self: Server, path: string): auto {.exportpy.} =
   proc wrapper(callback: PyObject) =
     let routeData = handleRoute(path)
-    self.routes.add(initRoute(routeData.path, "PUT", re("^" & routeData.purePath & "$"), callback))
+    self.routes.add(initRoute(routeData.path, routeData.purePath, "PUT", re("^" & routeData.purePath & "$"), callback))
   wrapper
 
 
 proc delete*(self: Server, path: string): auto {.exportpy.} =
   proc wrapper(callback: PyObject) =
     let routeData = handleRoute(path)
-    self.routes.add(initRoute(routeData.path, "DELETE", re("^" & routeData.purePath & "$"), callback))
+    self.routes.add(initRoute(routeData.path, routeData.purePath, "DELETE", re("^" & routeData.purePath & "$"), callback))
   wrapper
 
 
 proc link*(self: Server, path: string): auto {.exportpy.} =
   proc wrapper(callback: PyObject) =
     let routeData = handleRoute(path)
-    self.routes.add(initRoute(routeData.path, "LINK", re("^" & routeData.purePath & "$"), callback))
+    self.routes.add(initRoute(routeData.path, routeData.purePath, "LINK", re("^" & routeData.purePath & "$"), callback))
   wrapper
 
 
 proc unlink*(self: Server, path: string): auto {.exportpy.} =
   proc wrapper(callback: PyObject) =
     let routeData = handleRoute(path)
-    self.routes.add(initRoute(routeData.path, "UNLINK", re("^" & routeData.purePath & "$"), callback))
+    self.routes.add(initRoute(routeData.path, routeData.purePath, "UNLINK", re("^" & routeData.purePath & "$"), callback))
   wrapper
 
 
 proc purge*(self: Server, path: string): auto {.exportpy.} =
   proc wrapper(callback: PyObject) =
     let routeData = handleRoute(path)
-    self.routes.add(initRoute(routeData.path, "PURGE", re("^" & routeData.purePath & "$"), callback))
+    self.routes.add(initRoute(routeData.path, routeData.purePath, "PURGE", re("^" & routeData.purePath & "$"), callback))
   wrapper
 
 
 proc options*(self: Server, path: string): auto {.exportpy.} =
   proc wrapper(callback: PyObject) =
     let routeData = handleRoute(path)
-    self.routes.add(initRoute(routeData.path, "OPTIONS", re("^" & routeData.purePath & "$"), callback))
+    self.routes.add(initRoute(routeData.path, routeData.purePath, "OPTIONS", re("^" & routeData.purePath & "$"), callback))
   wrapper
 
 
 proc head*(self: Server, path: string): auto {.exportpy.} =
   proc wrapper(callback: PyObject) =
     let routeData = handleRoute(path)
-    self.routes.add(initRoute(routeData.path, "HEAD", re("^" & routeData.purePath & "$"), callback))
+    self.routes.add(initRoute(routeData.path, routeData.purePath, "HEAD", re("^" & routeData.purePath & "$"), callback))
   wrapper
 
 
 proc copy*(self: Server, path: string): auto {.exportpy.} =
   proc wrapper(callback: PyObject) =
     let routeData = handleRoute(path)
-    self.routes.add(initRoute(routeData.path, "COPY", re("^" & routeData.purePath & "$"), callback))
+    self.routes.add(initRoute(routeData.path, routeData.purePath, "COPY", re("^" & routeData.purePath & "$"), callback))
   wrapper
 
 
 proc middleware*(self: Server): auto {.exportpy.} =
   proc wrapper(callback: PyObject) =
-    self.routes.add(initRoute("", "MIDDLEWARE", re("^$"), callback))
+    self.routes.add(initRoute("", "", "MIDDLEWARE", re("^$"), callback))
   wrapper
 
 
 proc notfound*(self: Server): auto {.exportpy.} =
   proc wrapper(callback: PyObject) =
-    self.routes.add(initRoute("", "NOTFOUND", re("^$"), callback))
+    self.routes.add(initRoute("", "", "NOTFOUND", re("^$"), callback))
   wrapper
 
 
 proc mount*(self: Server, path: string, other: Server) {.exportpy.} =
-  var o = other
-  o.path = path
-  self.mounts.add(o)
+  other.path = path
+  self.mounts.add(other)

@@ -35,6 +35,7 @@ type
     headers*: PyObject
   Route* = ref object of PyNimObjectExperimental
     path*: string
+    purePath*: string
     httpMethod*: string
     pattern*: Regex
     handler*: PyObject
@@ -42,9 +43,13 @@ type
     name*, paramType*: string
   RequestModelData* = object
     name*: string
+    pyClass*: PyObject
     fields*: seq[tuple[key, val: string]]
   RequestModels* = ref object of PyNimObjectExperimental
     requestModels*: seq[RequestModelData]
+
+
+var requestModelsHidden* = RequestModels(requestModels: @[])
 
 
 proc toPPyObject*(headers: HttpHeaders): PPyObject =
@@ -56,15 +61,15 @@ proc toPPyObject*(headers: HttpHeaders): PPyObject =
 
 proc toHttpHeaders*(headers: PyObject): HttpHeaders =
   var
-    data = headers.to(JsonNode)
     headersObj = newHttpHeaders()
+    data = headers.to(JsonNode)
   for key, val in data.pairs():
     headersObj[key] = val.getStr
   headersObj
 
 
-proc initRoute*(path, httpMethod: string, pattern: Regex, handler: PyObject): Route =
-  Route(path: path, httpMethod: httpMethod, pattern: pattern, handler: handler)
+proc initRoute*(path, purePath, httpMethod: string, pattern: Regex, handler: PyObject): Route =
+  Route(path: path, purePath: purePath, httpMethod: httpMethod, pattern: pattern, handler: handler)
 
 
 proc initHttpRequest*(path, httpMethod: string, headers: HttpHeaders, body: string = ""): HttpRequest =
@@ -93,6 +98,13 @@ proc contains*(params: seq[HandlerParam], key: string): bool =
   false
 
 
+proc contains*(self: RequestModels, name: string): bool =
+  for m in self.requestModels:
+    if m.name == name:
+      return true
+  false
+
+
 proc getParamType*(params: seq[HandlerParam], key: string): string =
   for param in params:
     if param.name == key:
@@ -101,6 +113,12 @@ proc getParamType*(params: seq[HandlerParam], key: string): string =
 
 
 proc `[]`*(params: seq[HandlerParam], key: string): string = params.getParamType(key)
+
+
+proc `[]`*(self: RequestModels, name: string): RequestModelData =
+  for m in self.requestModels:
+    if m.name == name:
+      return m
 
 
 proc getParamName*(params: seq[HandlerParam], paramType: string): string =

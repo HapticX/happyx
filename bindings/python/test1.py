@@ -13,6 +13,16 @@ app.mount("/user", user)
 user.mount("/sub", sub_user)
 
 
+class User(RequestModelBase):
+    first_name: str
+    identifier: int
+
+
+class Message(RequestModelBase):
+    from_user: User
+    text: str
+
+
 class Auth(RequestModelBase):
     username: str
     password: str
@@ -21,6 +31,13 @@ class Auth(RequestModelBase):
 @user.get("/id{userId?}")
 def hello_from_user(userId: int):
     return f"Hello, {userId} user!"
+
+
+@user.post("/messages[u]")
+def get_messages(req: HttpRequest, u: User):
+    print(u)
+    print(u.first_name, u.identifier)
+    return u.to_dict()
 
 
 @sub_user.get("/")

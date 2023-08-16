@@ -15,7 +15,10 @@ import
 
 
 when exportPython:
-  import ../bindings/python_types
+  import
+    nimpy,
+    nimpy/py_types,
+    ../bindings/python_types
 
 
 var
@@ -79,14 +82,23 @@ proc handleRoute*(route: string): RouteDataObj =
   # regex param
   routePathStr = routePathStr.replace(re"\{[a-zA-Z][a-zA-Z0-9_]*:/([\s\S]+?)/(\[m\])?\}", "($1)")
   # Remove models
-  routePathStr = routePathStr.replace(re"\[[a-zA-Z][a-zA-Z0-9_]*:[a-zA-Z][a-zA-Z0-9_]*(\[m\])?(:[a-zA-Z\\-]+)?\]", "")
+  when exportPython:
+    routePathStr = routePathStr.replace(re"\[[a-zA-Z][a-zA-Z0-9_]*(:[a-zA-Z][a-zA-Z0-9_]*)?(\[m\])?(:[a-zA-Z\\-]+)?\]", "")
+  else:
+    routePathStr = routePathStr.replace(re"\[[a-zA-Z][a-zA-Z0-9_]*:[a-zA-Z][a-zA-Z0-9_]*(\[m\])?(:[a-zA-Z\\-]+)?\]", "")
   let
     foundPathParams = path.findAll(
       re"\{([a-zA-Z][a-zA-Z0-9_]*\??)(:(bool|int|float|string|path|word|/[\s\S]+?/|enum\(\w+\)))?(\[m\])?(=(\S+?))?\}"
     )
-    foundModels = path.findAll(
-      re"\[([a-zA-Z][a-zA-Z0-9_]*):([a-zA-Z][a-zA-Z0-9_]*)(\[m\])?(:[a-zA-Z\\-]+)?\]"
-    )
+    foundModels =
+      when exportPython:
+        path.findAll(
+          re"\[([a-zA-Z][a-zA-Z0-9_]*)(:[a-zA-Z][a-zA-Z0-9_]*)?(\[m\])?(:[a-zA-Z\\-]+)?\]"
+        )
+      else:
+        path.findAll(
+          re"\[([a-zA-Z][a-zA-Z0-9_]*):([a-zA-Z][a-zA-Z0-9_]*)(\[m\])?(:[a-zA-Z\\-]+)?\]"
+        )
   
   result.purePath = routePathStr
 
@@ -118,7 +130,14 @@ proc handleRoute*(route: string): RouteDataObj =
   for i in foundModels:
     let
       modelName = i.group(0, path)[0]
-      modelType = i.group(1, path)[0]
+      modelType =
+        when exportPython:
+          if i.group(1, path).len != 0:
+            i.group(1, path)[0][1..^1]
+          else:
+            ""
+        else:
+          i.group(1, path)[0]
       modelTarget =
         if i.group(3, path).len != 0:
           i.group(3, path)[0][1..^1]
@@ -362,6 +381,40 @@ when exportPython:
       return newJFloat(parseFloat(str))
     except Exception:
       return newJString(str)
+  
+
+  proc processJson(self: var JsonNode, fields: RequestModelData) =
+    for field in fields.fields:
+      if field.val in requestModelsHidden:
+        var obj = newJObject()
+        obj.processJson(requestModelsHidden[field.key])
+        self[field.key] = obj
+      else:
+        case field.val
+        of "str", "string", "unicode":
+          if self[field.key].kind != JString:
+            self[field.key] = newJString($self[field.key])
+        of "int":
+          if self[field.key].kind != JInt:
+            self[field.key] = parseIntOrJString($self[field.key])
+        of "float":
+          if self[field.key].kind != JFloat:
+            self[field.key] = parseFloatOrJString($self[field.key])
+        of "bool":
+          if self[field.key].kind != JBool:
+            self[field.key] = parseBoolOrJString($self[field.key])
+
+
+  proc convertJson*(self: RequestModelData, body: string): JsonNode =
+    ## Converts Request JSON to Python dict
+    var data: JsonNode
+    try:
+      data = parseJson(body)
+      data.processJson(self)
+      return data
+    except JsonParsingError:
+      data = newJObject()
+
 
   template condition(condition1, condition2, foundGroup, defaultValue, jsonFunc, parseFunc, res, name, val: untyped): untyped =
     when parseFunc is void:
@@ -382,7 +435,7 @@ when exportPython:
         `res`[`name`] = `parseFunc`(`foundGroup`)
 
   proc getRouteParams*(routeData: RouteDataObj, found_regexp_matches: seq[RegexMatch],
-                      urlPath: string, handlerParams: seq[HandlerParam]): JsonNode =
+                       urlPath: string, handlerParams: seq[HandlerParam], body: string): JsonNode =
     ## Finds and exports route arguments
     result = newJObject()
     var idx = 0
@@ -448,6 +501,24 @@ when exportPython:
         else:
           result[i.name] = newJString(foundGroup)
       inc idx
+
+    for i in routeData.requestModels:
+      let
+        paramType = handlerParams[i.name]
+      var
+        modelData: RequestModelData
+        hasModelData = false
+      if i.typeName != "":
+        if i.typeName in requestModelsHidden:
+          modelData = requestModelsHidden[i.typeName]
+          hasModelData = true
+      elif paramType in requestModelsHidden:
+          modelData = requestModelsHidden[paramType]
+          hasModelData = true
+      if hasModelData:
+        case i.target.toLower()
+        of "json":
+          result[i.name] = convertJson(modelData, body)
 
 
 proc pathParamsBoilerplate(node: NimNode, kind, regexVal: var string) =

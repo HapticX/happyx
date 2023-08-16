@@ -22,12 +22,36 @@ class RequestModelBaseMeta(type):
         if '__annotations__' in dct:
           for key in dct['__annotations__'].keys():
             fields.append((key, dct['__annotations__'][key].__name__))
-        happyx.register_request_model_data(happyx.RequestModelData(name, fields))
+        happyx.register_request_model_data(happyx.RequestModelData(name, current_class, fields))
         return current_class
 
 
 class RequestModelBase(object, metaclass=RequestModelBaseMeta):
     __metaclass__ = RequestModelBaseMeta
+
+    @staticmethod
+    def from_dict(cls, dct: dict) -> 'RequestModelBase':
+        """
+        Creates a new RequestModelBase from dictionary
+        """
+        current_class = cls()
+        for key in dct.keys():
+            setattr(current_class, key, dct[key])
+        return current_class
+
+    def to_dict(self) -> dict:
+        """
+        Converts RequestModel to Python dictionary
+        """
+        return self.__dict__
+    
+    def __str__(self) -> str:
+        """
+        Returns string representation
+        """
+        return "User(" + ", ".join([
+            f'{key}={repr(self.__dict__[key])}' for key in self.__dict__.keys()
+        ]) + ') at <0x{:0>15x}>'.format(self.__hash__())
 
 
 def reg_cors(
