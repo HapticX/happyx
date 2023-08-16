@@ -2,7 +2,7 @@ import happyx.happyx as happyx
 from collections import defaultdict
 
 
-__version__ = "2.2.3"
+__version__ = happyx.happyx_version()
 
 HttpRequest = happyx.HttpRequest
 Response = happyx.Response

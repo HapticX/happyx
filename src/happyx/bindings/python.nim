@@ -15,6 +15,7 @@ import
   nimja,
   # HappyX
   ../ssr/[server, request_models, cors],
+  ../core/constants,
   ../routing/[routing],
   ./python_types
 
@@ -27,6 +28,9 @@ HappyX web framework
 proc newServerPy*(address: string = "127.0.0.1", port: int = 5000): Server {.exportpy: "new_server".} =
   ## Creates a new Server object.
   newServer(address, port)
+
+
+proc happyxVersion*: string {.exportpy: "happyx_version".} = HpxVersion
 
 
 proc registerCORS*(allow_origins: string, allow_methods: string,

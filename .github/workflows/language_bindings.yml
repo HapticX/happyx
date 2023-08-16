@@ -10,10 +10,14 @@ on:
     paths:
       - '**/language_bindings.yml'
       - '**/bindings/'
+      - '**/bindings/python/'
+      - '**/constants.nim'
   pull_request:
     paths:
-      - '**/bindings/'
       - '**/language_bindings.yml'
+      - '**/bindings/'
+      - '**/bindings/python/'
+      - '**/constants.nim'
 
 jobs:
   build:
