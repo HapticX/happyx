@@ -4,6 +4,8 @@
 ### Macro-oriented asynchronous full-stack web-framework written in Nim with ♥
 
 ![Nim language](https://img.shields.io/badge/>=1.6.14-1b1e2b?style=for-the-badge&logo=nim&logoColor=f1fa8c&label=Nim&labelColor=2b2e3b)
+![Python language](https://img.shields.io/badge/>=3.10.x-1b1e2b?style=for-the-badge&logo=python&logoColor=f1fa8c&label=Python&labelColor=2b2e3b)
+
 [![wakatime](https://wakatime.com/badge/user/eaf11f95-5e2a-4b60-ae6a-38cd01ed317b/project/bbd13748-36e6-4383-ac40-9c4e72c060d1.svg?style=for-the-badge)](https://wakatime.com/badge/user/eaf11f95-5e2a-4b60-ae6a-38cd01ed317b/project/bbd13748-36e6-4383-ac40-9c4e72c060d1)
 [![Testing](https://img.shields.io/github/actions/workflow/status/HapticX/HappyX/tests.yml?label=Testing&logo=github&style=for-the-badge)](https://github.com/HapticX/happyx/actions/workflows/tests.yml)
 
@@ -12,6 +14,8 @@
 ![Open Source](https://img.shields.io/badge/Source-2b2e3b?style=for-the-badge&logo=data:image/svg%2bxml;base64,PHN2ZyB3aWR0aD0iODAwcHgiIGhlaWdodD0iODAwcHgiIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4NCjxwYXRoIGQ9Im0xMiA3LjY5NDNjLTItNC42OTQ0LTktNC4xOTQ0LTkgMS44MDU2IDAgNiA5IDExIDkgMTFzOS01LjAwMDIgOS0xMWMwLTYtNy02LjUtOS0xLjgwNTZ6IiBzdHJva2U9IiNmMWJlYmEiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIyIi8+DQo8L3N2Zz4=&label=Open&labelColor=3b3e4b)
 
 [![VS Code Plugin](https://img.shields.io/badge/Plugin-1b1e2b?style=for-the-badge&logo=visualstudiocode&logoColor=f1fa8c&label=VS%20Code&labelColor=2b2e3b)](https://github.com/HapticX/hpx-vs-code)
+
+[![Python Bindings](https://img.shields.io/badge/Bindings-1b1e2b?style=for-the-badge&logo=python&logoColor=f1fa8c&label=Python&labelColor=2b2e3b)]([https://github.com/HapticX/hpx-vs-code](https://pypi.org/project/happyx/))
 
 </div>
 
