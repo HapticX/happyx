@@ -4,17 +4,27 @@ from collections import defaultdict
 
 __version__ = happyx.happyx_version()
 
+
+# Http Request data
 HttpRequest = happyx.HttpRequest
+# Response types
 Response = happyx.Response
 FileResponse = happyx.FileResponse
 HtmlResponse = happyx.HtmlResponse
 JsonResponse = happyx.JsonResponse
+# Main functions
 new_server = happyx.new_server
 reg_CORS = happyx.reg_CORS
 
 
 class RequestModelBaseMeta(type):
+    """
+    RequestModel Base Meta class
+    """
     def __new__(meta, name, bases, dct):
+        """
+        Get all annotations from created class and tells HappyX about request model
+        """
         current_class = type.__new__(meta, name, bases, dct)
         if name == 'RequestModelBase':
           return current_class
@@ -27,6 +37,9 @@ class RequestModelBaseMeta(type):
 
 
 class RequestModelBase(object, metaclass=RequestModelBaseMeta):
+    """
+    Root class to working with request models in Python
+    """
     __metaclass__ = RequestModelBaseMeta
 
     @staticmethod
