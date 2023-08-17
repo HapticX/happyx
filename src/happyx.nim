@@ -324,7 +324,7 @@ export
 
 
 # Language bindings
-when exportPython:
+when exportPython or defined(docgen):
   import
     nimpy,
     happyx/bindings/[python]

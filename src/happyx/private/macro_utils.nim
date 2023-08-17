@@ -23,7 +23,7 @@ const
 
 proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
                          componentName: NimNode = newEmptyNode(), inCycle: bool = false,
-                         cycleTmpVar: string = "", cycleVars: seq[NimNode] = @[]): NimNode
+                         cycleTmpVar: string = ""): NimNode
 
 
 proc getTagName*(name: string): string =
@@ -102,7 +102,7 @@ proc useComponent*(statement: NimNode, inCycle, inComponent: bool,
     newAssignment(
       newDotExpr(ident(componentName), ident"slot"),
       buildHtmlProcedure(
-        ident"div", componentSlot, inComponent, ident(componentName), inCycle, cycleTmpVar, cycleVars
+        ident"div", componentSlot, inComponent, ident(componentName), inCycle, cycleTmpVar
       ).add(newNimNode(nnkExprEqExpr).add(ident"onlyChildren", newLit(true)))
     ),
     if returnTagRef:
@@ -345,9 +345,12 @@ proc replaceSelfComponent*(statement, componentName: NimNode, parent: NimNode = 
       )
 
 
+var cycleVars {.compileTime.}: seq[NimNode] = @[]
+
+
 proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
                          componentName: NimNode = newEmptyNode(), inCycle: bool = false,
-                         cycleTmpVar: string = "", cycleVars: seq[NimNode] = @[]): NimNode =
+                         cycleTmpVar: string = ""): NimNode =
   ## Builds HTML
   ## 
   ## Here you can use components and event handlers
@@ -386,7 +389,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
       # tag(attr="value"):
       #   ...
       if statement.len-2 > 0 and statementList.kind == nnkStmtList:
-        var builded = buildHtmlProcedure(tagName, statementList, inComponent, componentName, inCycle, cycleTmpVar, cycleVars)
+        var builded = buildHtmlProcedure(tagName, statementList, inComponent, componentName, inCycle, cycleTmpVar)
         for attr in statement[1 .. statement.len-2]:
           builded.addAttribute(
             newStrLitNode($attr[0]),
@@ -404,7 +407,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
       # tag:
       #   ...
       else:
-        result.add(buildHtmlProcedure(tagName, statementList, inComponent, componentName, inCycle, cycleTmpVar, cycleVars))
+        result.add(buildHtmlProcedure(tagName, statementList, inComponent, componentName, inCycle, cycleTmpVar))
     
     elif statement.kind == nnkCommand:
       # Component usage
@@ -642,7 +645,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
           0
       for i in start..<statement.len:
         statement[i][^1] = buildHtmlProcedure(
-          ident"div", statement[i][^1], inComponent, componentName, inCycle, cycleTmpVar, cycleVars
+          ident"div", statement[i][^1], inComponent, componentName, inCycle, cycleTmpVar
         ).add(newLit(true))
       if statement[^1].kind != nnkElse:
         statement.add(newNimNode(nnkElse).add(newNilLit()))
@@ -664,7 +667,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
             newCall(
               "add",
               ident"_while_result",
-              buildHtmlProcedure(ident"div", body, inComponent, componentName, inCycle, cycleTmpVar, cycleVars)
+              buildHtmlProcedure(ident"div", body, inComponent, componentName, inCycle, cycleTmpVar)
             )
           ),
           ident"_while_result"
@@ -680,11 +683,13 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
         idents: seq[NimNode] = @[]
       # extract cycle variables
       for i in 0..statement.len-3:
-        idents.add statement[i]
+        cycleVars.add statement[i]
       inc uniqueId
       statement[^1] = newStmtList(
-        buildHtmlProcedure(ident"div", statement[^1], inComponent, componentName, true, unqn, idents)
+        buildHtmlProcedure(ident"div", statement[^1], inComponent, componentName, true, unqn)
       )
+      for i in 0..statement.len-3:
+        discard cycleVars.pop()
       statement[^1].insert(0, newCall("inc", ident(unqn)))
       statement[^1][^1].add(newLit(true))
       result.add(

@@ -14,7 +14,7 @@ import
   ../core/[exceptions, constants]
 
 
-when exportPython:
+when exportPython or defined(docgen):
   import
     nimpy,
     nimpy/py_types,
@@ -365,7 +365,7 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.
   return newEmptyNode()
 
 
-when exportPython:
+when exportPython or defined(docgen):
   proc parseBoolOrJString*(str: string): JsonNode =
     try:
       return newJBool(parseBool(str))

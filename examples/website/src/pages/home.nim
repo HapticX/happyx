@@ -2,12 +2,12 @@
 import
   ../../../../src/happyx,
   ../path_params,
-  ../components/[header, smart_card, card, section, code_block, about_section, drawer],
+  ../components/[header, smart_card, card, section, code_block, about_section, drawer, guide_page],
   ../ui/[colors, code]
 
 
 var drawer_comp* = use:
-  component Drawer
+  component Drawer(callbackSideBar = callback)
 
 
 mount Home:

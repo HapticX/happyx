@@ -126,7 +126,7 @@ when enableApiDoc:
     ../private/api_doc_template
 
 
-when exportPython:
+when exportPython or defined(docgen):
   import
     nimpy,
     sequtils,
@@ -1055,7 +1055,7 @@ macro routes*(server: Server, body: untyped): untyped =
       methodTable[key]
     ))
   # Python Library
-  when exportPython:
+  when exportPython or defined(docgen):
     stmtList.add(newVarStmt(ident"reqResponded", newLit(false)))
     stmtList.add(newNimNode(nnkForStmt).add(
       ident"route", newCall("fetchRoutes", ident"self"),
@@ -1552,7 +1552,7 @@ macro serve*(address: string, port: int, body: untyped): untyped =
     var docsData = bodyStatement.genApiDoc()
   
   var s =
-    when exportPython:
+    when exportPython or defined(docgen):
       ident"self"
     else:
       ident"server"
@@ -1562,7 +1562,7 @@ macro serve*(address: string, port: int, body: untyped): untyped =
       ident"main",
       [newEmptyNode()],
       newStmtList(
-        when not exportPython:
+        when not (exportPython or defined(docgen)):
           newVarStmt(
             ident"server",
             newCall("newServer", address, port)
@@ -1572,12 +1572,12 @@ macro serve*(address: string, port: int, body: untyped): untyped =
         when enableApiDoc:
           newProc(ident"renderDocsProcedure", [ident"string"], newStmtList(
             newLetStmt(ident"title", newStrLitNode(appName)),
-            newNimNode(when exportPython: nnkVarSection else: nnkLetSection).add(
+            newNimNode(when exportPython or defined(docgen): nnkVarSection else: nnkLetSection).add(
               newIdentDefs(
                 ident"apiDocData", newNimNode(nnkBracketExpr).add(ident"seq", ident"ApiDocObject"), docsData
               )
             ),
-            when exportPython:
+            when exportPython or defined(docgen):
               newNimNode(nnkForStmt).add(
                 ident"route", newCall("fetchRoutes", ident"self"),
                 newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(

@@ -7,12 +7,19 @@ import
     button, card, code_block, header,
     section, smart_card, about_section,
     drawer, divider, sponsors_arr,
-    code_block_slider
+    code_block_slider, sidebar, guide_page
   ],
-  ./pages/[home, sponsors, roadmap]
+  ./pages/[home, sponsors, roadmap, lang_binds, guide],
+  json,
+  os
 
 
 {.emit: """//js
+var mdConv = new showdown.Converter();
+mdConv.setOption('splitAdjacentBlockquotes', true);
+mdConv.setOption('strikethrough', true);
+mdConv.setOption('tables', true);
+
 function clamp(min, max, value) {
   return Math.max(min, Math.min(max, value));
 }
@@ -37,6 +44,9 @@ appRoutes("app"):
   mount "/" -> Home
   mount "/sponsors" -> Sponsors
   mount "/roadmap" -> RoadMap
+  mount "/language-bindings" -> LanguageBinds
+  mount "/lang-binds" -> LanguageBinds
+  mount "/guide" -> UserGuide
 
   notfound:
     tDiv(class = "flex flex-col gap-2 justify-center items-center w-screen h-screen dark:text-[{ForegroundDark}] text-[{Foreground}] dark:bg-[{BackgroundDark}] bg-[{Background}]"):

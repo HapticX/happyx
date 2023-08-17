@@ -32,6 +32,9 @@ app = new_server('127.0.0.1', 5000)  # host and port are optional params
 @app.get('/')
 def home():
     return "Hello world!"
+
+
+app.start()
 ```
 
 
@@ -63,4 +66,7 @@ def html_resp():
 @app.get('/file')
 def file_resp():
     return FileResponse('my_cool_icon.png')
+
+
+app.start()
 ```

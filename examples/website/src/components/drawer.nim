@@ -1,16 +1,15 @@
 import
   ../../../../src/happyx,
   ../ui/colors,
-  ../components/[button]
+  ../components/[button, sidebar]
 
 
 component Drawer:
   isOpen: bool = false
+  callbackSideBar: (proc(a, b, c: string): void) = (proc(a, b, c: string) = discard)
 
   `template`:
     # Drawer background
-    nim:
-      echo 2
     tDiv(id = "drawerBack", class = "fixed duration-500 opacity-0 pointer-events-none transition-all w-screen h-screen z-40 bg-[#00000060]"):
       @click:
         self.toggle()
@@ -24,6 +23,7 @@ component Drawer:
             "x"
         component Button(
           action = proc() =
+            self.toggle()
             {.emit:"""//js
             window.open('https://github.com/HapticX/happyx', '_blank').focus();
             """.}
@@ -39,11 +39,10 @@ component Drawer:
             tP: "Source code"
         component Button(
           action = proc() =
-            {.emit: """//js
-            window.open('https://hapticx.github.io/happyx/happyx.html', '_blank').focus();
-            """.}
+            self.toggle()
+            route("/guide/")
         ):
-          "📕 API Docs"
+          "📕 Documentation"
         component Button(
           action = proc() =
             self.toggle()
@@ -56,6 +55,15 @@ component Drawer:
             route("/roadmap/")
         ):
           "🌎 RoadMap"
+        component Button(
+          action = proc() =
+            self.toggle()
+            route("/language-bindings/")
+        ):
+          "💻 Language Bindings"
+        tDiv:
+          if currentRoute == "/guide/":
+            component SideBar(callback = self.callbackSideBar.val(), isMobile = true)
   
   [methods]:
     proc toggle*() =
@@ -76,5 +84,4 @@ component Drawer:
         drawerBack.classList.add("pointer-events-none")
         drawer.classList.remove("translate-x-0")
         drawer.classList.add("translate-x-full")
-      echo "toggled!"
       enableRouting = true

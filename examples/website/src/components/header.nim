@@ -2,7 +2,7 @@
 import
   ../../../../src/happyx,
   ../ui/colors,
-  ./[button, drawer]
+  ./[button, drawer, sidebar]
 
 
 # Declare component
@@ -42,11 +42,9 @@ component Header:
             tP: "Source code"
         component Button(
           action = proc() =
-            {.emit: """//js
-            window.open('https://hapticx.github.io/happyx/happyx.html', '_blank').focus();
-            """.}
+            route("/guide/")
         ):
-          "📕 API Docs"
+          "📕 Documentation"
         component Button(
           action = proc() =
             route("/sponsors/")
@@ -57,3 +55,8 @@ component Header:
             route("/roadmap/")
         ):
           "🌎 RoadMap"
+        component Button(
+          action = proc() =
+            route("/language-bindings/")
+        ):
+          "💻 Language Bindings"

@@ -60,6 +60,9 @@ var compWithoutArgs = use:
 
 appRoutes "app":
   "/":
+    tScript(type="text/javascript", `defer`=""): """
+      console.log("Hello from script");
+      """
     component compWithoutArgs
     component Constructor(privateField = 100, @[])
     component constructor

@@ -33,7 +33,7 @@ const IndexApiDocPageTemplate* = fmt"""
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/http.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/tokyo-night-dark.min.css">
     <script>
-      var converter = converter = new showdown.Converter();
+      var converter = new showdown.Converter();
       var descriptionElement = null;
       var descriptionText = null;
 
