@@ -5,4 +5,9 @@ newPathParamObj	happyx/routing/routing.html#newPathParamObj,string,string,string
 newRequestModelObj	happyx/routing/routing.html#newRequestModelObj,string,string,string,bool	routing: newRequestModelObj(name, typeName, target: string; mutable: bool): RequestModelObj	
 handleRoute	happyx/routing/routing.html#handleRoute,string	routing: handleRoute(route: string): RouteDataObj	
 exportRouteArgs	happyx/routing/routing.html#exportRouteArgs,NimNode,NimNode,NimNode	routing: exportRouteArgs(urlPath, routePath, body: NimNode): NimNode	
+parseBoolOrJString	happyx/routing/routing.html#parseBoolOrJString,string	routing: parseBoolOrJString(str: string): JsonNode	
+parseIntOrJString	happyx/routing/routing.html#parseIntOrJString,string	routing: parseIntOrJString(str: string): JsonNode	
+parseFloatOrJString	happyx/routing/routing.html#parseFloatOrJString,string	routing: parseFloatOrJString(str: string): JsonNode	
+convertJson	happyx/routing/routing.html#convertJson,RequestModelData,string	routing: convertJson(self: RequestModelData; body: string): JsonNode	
+getRouteParams	happyx/routing/routing.html#getRouteParams,RouteDataObj,seq[RegexMatch],string,seq[HandlerParam],string	routing: getRouteParams(routeData: RouteDataObj; found_regexp_matches: seq[RegexMatch];\n               urlPath: string; handlerParams: seq[HandlerParam]; body: string): JsonNode	
 pathParams	happyx/routing/routing.html#pathParams.m,untyped	routing: pathParams(body: untyped): untyped	

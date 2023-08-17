@@ -1,4 +1,7 @@
 CORSObj	happyx/ssr/cors.html#CORSObj	cors: CORSObj	
+currentCORSRuntime	happyx/ssr/cors.html#currentCORSRuntime	cors: currentCORSRuntime	
+setCors	happyx/ssr/cors.html#setCors,string,string,string,bool	cors: setCors(allowOrigins: string = &quot;*&quot;; allowMethods: string = &quot;*&quot;;\n        allowHeaders: string = &quot;*&quot;; credentials: bool = true)	
+getCors	happyx/ssr/cors.html#getCors	cors: getCors(): CORSObj	
 addCORSHeaders	happyx/ssr/cors.html#addCORSHeaders.m,HttpHeaders	cors: addCORSHeaders(headers: HttpHeaders)	
 regCORS	happyx/ssr/cors.html#regCORS.m,untyped	cors: regCORS(body: untyped): untyped	
 Example	happyx/ssr/cors.html#example	  Example	

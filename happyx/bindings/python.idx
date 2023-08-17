@@ -1,0 +1,41 @@
+newServerPy	happyx/bindings/python.html#newServerPy,string,int	python: newServerPy(address: string = &quot;127.0.0.1&quot;; port: int = 5000): Server	
+happyxVersion	happyx/bindings/python.html#happyxVersion	python: happyxVersion(): string	
+registerCORS	happyx/bindings/python.html#registerCORS,string,string,string,bool	python: registerCORS(allow_origins: string; allow_methods: string;\n             allow_headers: string; credentials: bool)	
+newResponse	happyx/bindings/python.html#newResponse,string,int,PyObject	python: newResponse(data: string; status_code: int = 200; headers: PyObject = pyDict()): ResponseObj	
+newFileResponse	happyx/bindings/python.html#newFileResponse,string,int,bool	python: newFileResponse(filename: string; status_code: int = 200;\n                as_attachment: bool = false): FileResponseObj	
+newJsonResponse	happyx/bindings/python.html#newJsonResponse,JsonNode,int,PyObject	python: newJsonResponse(data: JsonNode; status_code: int = 200;\n                headers: PyObject = pyDict()): JsonResponseObj	
+newHtmlResponse	happyx/bindings/python.html#newHtmlResponse,string,int,PyObject	python: newHtmlResponse(data: string; status_code: int = 200;\n                headers: PyObject = pyDict()): HtmlResponseObj	
+newRequestModelData	happyx/bindings/python.html#newRequestModelData,string,PyObject,seq[tuple[string,string]]	python: newRequestModelData(name: string; pyClass: PyObject;\n                    fields: seq[tuple[key, val: string]]): RequestModelData	
+addRequestModelData	happyx/bindings/python.html#addRequestModelData,RequestModelData	python: addRequestModelData(data: RequestModelData)	
+path	happyx/bindings/python.html#path,HttpRequest	python: path(self: HttpRequest): string	
+body	happyx/bindings/python.html#body,HttpRequest	python: body(self: HttpRequest): string	
+httpMethod	happyx/bindings/python.html#httpMethod,HttpRequest	python: httpMethod(self: HttpRequest): string	
+headers	happyx/bindings/python.html#headers,HttpRequest	python: headers(self: HttpRequest): PPyObject	
+filename	happyx/bindings/python.html#filename,FileResponseObj	python: filename(self: FileResponseObj): string	
+asAttachment	happyx/bindings/python.html#asAttachment,FileResponseObj	python: asAttachment(self: FileResponseObj): bool	
+data	happyx/bindings/python.html#data,ResponseObj	python: data(self: ResponseObj): string	
+data	happyx/bindings/python.html#data,JsonResponseObj	python: data(self: JsonResponseObj): JsonNode	
+data	happyx/bindings/python.html#data,HtmlResponseObj	python: data(self: HtmlResponseObj): string	
+statusCode	happyx/bindings/python.html#statusCode,ResponseObj	python: statusCode(self: ResponseObj): int	
+statusCode	happyx/bindings/python.html#statusCode,FileResponseObj	python: statusCode(self: FileResponseObj): int	
+statusCode	happyx/bindings/python.html#statusCode,JsonResponseObj	python: statusCode(self: JsonResponseObj): int	
+statusCode	happyx/bindings/python.html#statusCode,HtmlResponseObj	python: statusCode(self: HtmlResponseObj): int	
+headers	happyx/bindings/python.html#headers,ResponseObj	python: headers(self: ResponseObj): PyObject	
+headers	happyx/bindings/python.html#headers,JsonResponseObj	python: headers(self: JsonResponseObj): PyObject	
+headers	happyx/bindings/python.html#headers,HtmlResponseObj	python: headers(self: HtmlResponseObj): PyObject	
+`$`	happyx/bindings/python.html#$,Server	python: `$`(self: Server): string	
+startServerPy	happyx/bindings/python.html#startServerPy,Server	python: startServerPy(self: Server)	
+get	happyx/bindings/python.html#get,Server,string	python: get(self: Server; path: string): auto	
+post	happyx/bindings/python.html#post,Server,string	python: post(self: Server; path: string): auto	
+put	happyx/bindings/python.html#put,Server,string	python: put(self: Server; path: string): auto	
+delete	happyx/bindings/python.html#delete,Server,string	python: delete(self: Server; path: string): auto	
+link	happyx/bindings/python.html#link,Server,string	python: link(self: Server; path: string): auto	
+unlink	happyx/bindings/python.html#unlink,Server,string	python: unlink(self: Server; path: string): auto	
+purge	happyx/bindings/python.html#purge,Server,string	python: purge(self: Server; path: string): auto	
+options	happyx/bindings/python.html#options,Server,string	python: options(self: Server; path: string): auto	
+head	happyx/bindings/python.html#head,Server,string	python: head(self: Server; path: string): auto	
+copy	happyx/bindings/python.html#copy,Server,string	python: copy(self: Server; path: string): auto	
+middleware	happyx/bindings/python.html#middleware,Server	python: middleware(self: Server): auto	
+notfound	happyx/bindings/python.html#notfound,Server	python: notfound(self: Server): auto	
+mount	happyx/bindings/python.html#mount,Server,string,Server	python: mount(self: Server; path: string; other: Server)	
+Python Bindings 🐍	happyx/bindings/python.html#python-bindings-🐍	 Python Bindings 🐍	
