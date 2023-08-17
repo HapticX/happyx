@@ -31,7 +31,7 @@ type
 var currentCORS {. compileTime .} = CORSObj()
 
 
-when exportPython:
+when exportPython or defined(docgen):
   var currentCORSRuntime* = CORSObj()
 
   proc setCors*(allowOrigins: string = "*", allowMethods: string = "*",
@@ -48,7 +48,7 @@ when exportPython:
 
 
 macro addCORSHeaders*(headers: HttpHeaders) =
-  when exportPython:
+  when exportPython or defined(docgen):
     result = quote do:
       let cors = getCors()
       `headers`["Access-Control-Allow-Credentials"] = $cors.allowCredentials
