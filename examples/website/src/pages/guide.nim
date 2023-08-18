@@ -8,8 +8,12 @@ import
 
 
 mount UserGuide:
-  "/":
+  "/{link?=introduction}":
     tDiv(class = "flex flex-col min-h-screen w-full bg-[{Background}] dark:bg-[{BackgroundDark}] text-[{Foreground}] dark:text-[{ForegroundDark}]"):
+      nim:
+        enableRouting = false
+        currentGuidePage.set(link)
+        enableRouting = true
       # Drawer
       component drawer_comp
       # Header
@@ -18,9 +22,9 @@ mount UserGuide:
       tDiv(class = "flex w-full h-full gap-8 px-4"):
         # SideBar
         tDiv(class = "fixed top-0 pt-16"):
-          component SideBar(callback = callback)
+          component SideBar
         tDiv(class = "pl-0 xl:pl-72 w-full"):
-          component GuidePage
+          component GuidePage(link)
       tStyle:
         {fmt"""
           p:has(img[alt="Happyx"]) {{
@@ -57,18 +61,24 @@ mount UserGuide:
           
           @media (prefers-color-scheme: light) {{
             tr:nth-child(even) {{
-              background: {Foreground}30;
+              background: {Foreground}20;
             }}
             tr:nth-child(odd) {{
               background: {Foreground}15;
             }}
+            tr {{
+              border: 1px solid {Foreground}45;
+            }}
           }}
           @media (prefers-color-scheme: dark) {{
             tr:nth-child(even) {{
-              background: {ForegroundDark}30;
+              background: {ForegroundDark}20;
             }}
             tr:nth-child(odd) {{
               background: {ForegroundDark}15;
+            }}
+            tr {{
+              border: 1px solid {ForegroundDark}45;
             }}
           }}
         """}

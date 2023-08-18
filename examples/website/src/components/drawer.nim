@@ -6,7 +6,6 @@ import
 
 component Drawer:
   isOpen: bool = false
-  callbackSideBar: (proc(a, b, c: string): void) = (proc(a, b, c: string) = discard)
 
   `template`:
     # Drawer background
@@ -62,8 +61,8 @@ component Drawer:
         ):
           "💻 Language Bindings"
         tDiv:
-          if currentRoute == "/guide/":
-            component SideBar(callback = self.callbackSideBar.val(), isMobile = true)
+          if ($currentRoute).startsWith("/guide/"):
+            component SideBar(isMobile = true)
   
   [methods]:
     proc toggle*() =

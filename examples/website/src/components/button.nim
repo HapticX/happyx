@@ -12,10 +12,17 @@ const DefaultButtonAction: ButtonAction = proc() =
 component Button:
   flat: bool = false
   action: ButtonAction = DefaultButtonAction
+  lowercase: bool = true
 
   `template`:
     # Here you can use HTML DSL
-    tDiv(class = "flex justify-center items-center lowercase font-bold text-lg cursor-pointer select-none"):
+    tDiv(
+      class =
+        if self.lowercase:
+          "flex justify-center items-center lowercase font-bold text-lg cursor-pointer select-none"
+        else:
+          "flex justify-center items-center font-bold text-lg cursor-pointer select-none"
+    ):
       if self.flat:
         tDiv(class = "px-2 text-4xl lg:text-2xl xl:text-base md:px-4 xl:px-8 py-1 text-[{Foreground}] dark:text-[{ForegroundDark}] hover:opacity-80 active:opacity-60 transition-all duration-300"):
           slot

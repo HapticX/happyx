@@ -7,7 +7,7 @@ import
 
 
 var drawer_comp* = use:
-  component Drawer(callbackSideBar = callback)
+  component Drawer
 
 
 mount Home:

@@ -29,3 +29,55 @@ appRoutes "app":
   "/user{id:int}":
     "Hello! user {id}"
 """
+
+  nimSsrHelloWorldExample* = """import happyx
+
+# Serve app at http://localhost:5000
+serve "127.0.0.1", 5000:
+  # GET Method
+  get "/":
+    # Respond plaintext
+    return "Hello, world"
+"""
+
+  nimSpaHelloWorldExample* = """import happyx
+
+# Serve app at http://localhost:5000
+appRoutes "app":
+  # at example.com/#/
+  "/":
+    # plaintext
+    "Hello, world"
+"""
+
+  pythonHelloWorldExample* = """from happyx import new_server
+
+# Create application
+app = new_server('127.0.0.1', 5000)
+
+
+# GET method
+@app.get('/')
+def hello_world():
+    # Respond plaintext
+    return 'Hello, world!'
+
+
+# start our app
+app.start()
+"""
+
+  htmlHelloWorldExample* = """<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hello World App</title>
+  </head>
+  <body>
+    <div id="app">
+      <!-- Here will be your application -->
+    </div>
+    <!-- Nim script after compilation -->
+    <script src="example.js"></script>
+  </body>
+</html>
+"""
