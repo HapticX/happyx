@@ -21,6 +21,11 @@ var
     "getting_started": {
       "title": "Getting Started 💫",
       "prev": "introduction",
+      "next": "happyx_app"
+    },
+    "happyx_app": {
+      "title": "HappyX Application 🍍",
+      "prev": "getting_started",
       "next": ""
     }
   }
@@ -34,7 +39,7 @@ component SideBarTitle:
 
 component SideBarFolder:
   `template`:
-    tP(class = "text-5xl lg:text-xl xl:text-lg font-bold cursor-pointer select-none"):
+    tP(class = "text-5xl lg:text-xl xl:text-lg font-bold cursor-pointer select-none pl-2"):
       slot
 
 
@@ -78,6 +83,10 @@ component SideBar:
                 "Introduction ✌"
               component SideBarItem("getting_started"):
                 "Getting Started 💫"
+            component SideBarFolder:
+              "Basics 📖"
+              component SideBarItem("happyx_app"):
+                "HappyX Application 🍍"
         tDiv(class = "flex"):
           component Button(
             action = proc() =

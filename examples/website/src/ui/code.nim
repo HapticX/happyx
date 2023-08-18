@@ -81,3 +81,36 @@ app.start()
   </body>
 </html>
 """
+
+  nimProjectSsr* = """project/
+├─ src/
+│  ├─ templates/
+│  │  ├─ index.html
+│  ├─ public/
+│  │  ├─ icon.svg
+│  ├─ main.nim
+├─ README.md
+├─ .gitignore
+├─ happyx.cfg
+├─ project.nimble
+"""
+
+  nimProjectSpa* = """project/
+├─ src/
+│  ├─ public/
+│  │  ├─ icon.svg
+│  ├─ components/
+│  │  ├─ hello_world.nim
+│  ├─ main.nim
+│  ├─ index.html
+├─ README.md
+├─ .gitignore
+├─ happyx.cfg
+├─ project.nimble
+"""
+
+  pythonProject* = """project/
+├─ main.py
+├─ README.md
+├─ .gitignore
+"""

@@ -169,6 +169,8 @@ proc route*(path: cstring) =
     let force = currentRoute != path
     currentRoute = path
     application.router(force)
+    if force:
+      window.scrollTo(0, 0)
 
 
 proc registerApp*(appId: cstring = "app"): App {. discardable .} =

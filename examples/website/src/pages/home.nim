@@ -95,7 +95,7 @@ mount Home:
             tP: "DSL supports:"
             tDiv(class = "flex flex-col md:flex-row gap-6 py-8"):
               component Card(pathToImg = "/happyx/public/html5.svg"):
-                "Buil HTML/CSS/JS"
+                "Build HTML/CSS/JS"
               component Card(pathToImg = "/happyx/public/setting.svg"):
                 "Path Params"
               component Card(pathToImg = "/happyx/public/routing.svg"):
@@ -113,11 +113,19 @@ mount Home:
             tP: "You'll never have to learn new web frameworks again ✨"
           
           # More info
-          tDiv(class = "flex items-center justify-center w-full pb-8"):
+          tDiv(class = "flex items-start justify-center w-full pb-8 gap-8"):
             component AboutSection(
               name = "HappyX For ... Programmers",
               data = @[
                 ("FastAPI programmers", "https://github.com/HapticX/happyx/wiki/HappyX-for-FastAPI-Programmers"),
                 ("Prologue programmers", "https://github.com/HapticX/happyx/wiki/HappyX-for-Prologue-Programmers"),
+              ]
+            )
+            component AboutSection(
+              name = "Contacts",
+              data = @[
+                ("Telegram Channel", "https://t.me/hapticx"),
+                ("GitHub Discussions", "https://github.com/HapticX/happyx/discussions"),
+                ("StackOverflow", "https://stackoverflow.com/search?q=%5Bnim-lang%5D+HappyX"),
               ]
             )
