@@ -57,7 +57,15 @@ component CodeBlockGuide:
           component LanguageChooser("Python")
       for source in self.sources:
         if currentLanguage == source.title:
-          tCode(id = "{source.id}{self.uniqCompId}", language = source.lang, class = "rounded-md text-3xl lg:text-lg xl:text-base language-{source.lang}"):
+          tCode(
+            id = "{source.id}{self.uniqCompId}",
+            language = source.lang,
+            class =
+              if source.playResult.states.len > 0:
+                "rounded-t-md text-3xl lg:text-lg xl:text-base language-{source.lang}"
+              else:
+                "rounded-md text-3xl lg:text-lg xl:text-base language-{source.lang}"
+          ):
             {source.src}
           tDiv(class = "absolute right-2 top-8"):
             tSvg(

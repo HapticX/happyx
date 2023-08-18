@@ -1,7 +1,27 @@
 # Import HappyX
 import
   ../../../../src/happyx,
-  ../ui/colors
+  ../ui/colors,
+  ../components/[code_block_guide]
+
+
+component IntroductionLanguageChooser:
+  lang: string
+  title: string
+  `template`:
+    tDiv(
+      class =
+        if self.lang == currentLanguage:
+          "bg-yellow-300/25 px-4 py-2 select-none cursor-pointer rounded-md"
+        else:
+          "bg-yellow-200/10 px-4 py-2 select-none cursor-pointer rounded-md"
+    ):
+      {self.title}
+      @click:
+        var lang: cstring = $(self.IntroductionLanguageChooser.lang.val)
+        buildJs:
+          localStorage["happyx_programming_language"] = ~lang
+        currentLanguage.set(self.lang)
 
 
 component Introduction:
@@ -57,21 +77,32 @@ component Introduction:
         This project has been under development since April 2023 and is continuously evolving.
         HappyX draws inspiration from notable web frameworks like Vue.js and FastAPI.  
         """
+      tDiv(
+        class = "flex flex-col w-fit gap-2 border-l-4 rounded-r-md border-green-700 bg-green-200/25 dark:border-green-300 px-4 py-2"
+      ):
+        tB: "TIP"
+        tP:
+          "HappyX works with Nim and Python so you can choose on of these languages to read this guide ✌"
+        tDiv(
+          class = "flex justify-around items-center w-full"
+        ):
+          component IntroductionLanguageChooser("Nim", "Nim 👑")
+          component IntroductionLanguageChooser("Python", "Python 🐍")
       tP:
-        tB: "If you"
+        tB: "If you:"
         tUl:
-          tLi: "are not keen on constantly \"switching\" your mindset from one language or web framework to another"
-          tLi: "desire a lightweight web framework"
-          tLi: "seek a web framework with everything \"out of the box\""
-        tB: "Then, HappyX is the perfect fit for you."
+          tLi: "are not keen on constantly \"switching\" your mindset from one language or web framework to another 🔥"
+          tLi: "desire a lightweight web framework ⚡"
+          tLi: "seek a web framework with everything \"out of the box\" 📦"
+        tB: "Then, HappyX is the perfect fit for you. 😉"
       tH2: "Features 🔥"
       tUl:
-        tLi: "Production ready"
-        tLi: "Multiple server options"
-        tLi: "Support Single-page applications, Static site generation and Server-side rendering"
-        tLi: "Own Domain-specific languages for HTML, CSS and JavaScript"
-        tLi: "Hot code reloading (only for Single-page applications for now)"
-        tLi: "Routing/mounting with path param validation"
-        tLi: "CLI for creating, serving and building your projects"
-        tLi: "Request models that supports JSON, FormData, x-www-form-urlencoded and XML"
-        tLi: "Translating, logging, built-in UI and more other features \"out of the box\""
+        tLi: "Production ready 🔌"
+        tLi: "Multiple server options 🌩"
+        tLi: "Support Single-page applications, Static site generation and Server-side rendering 💫"
+        tLi: "Own Domain-specific languages for HTML, CSS and JavaScript 🎴"
+        tLi: "Hot code reloading (only for Single-page applications for now) ⚡"
+        tLi: "Routing/mounting with path param validation 👮‍♀️"
+        tLi: "CLI for creating, serving and building your projects 💻"
+        tLi: "Request models that supports JSON, FormData, x-www-form-urlencoded and XML 👮‍♀️"
+        tLi: "Translating, logging, security, built-in UI and more other features \"out of the box\" 📦"

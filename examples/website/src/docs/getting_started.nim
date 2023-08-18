@@ -26,9 +26,9 @@ component GettingStarted:
       tP: "To install HappyX you can write this command"
 
       component CodeBlockGuide(@[
-        ("Nim", "bash", "nimble install happyx@#head", cstring"nimble_install", newPlayResult()),
-        ("Nim (SPA)", "bash", "nimble install happyx@#head", cstring"nimble_install", newPlayResult()),
-        ("Python", "bash", "pip install happyx", cstring"pypi_install", newPlayResult()),
+        ("Nim", "shell", "nimble install happyx@#head", cstring"nimble_install", newPlayResult()),
+        ("Nim (SPA)", "shell", "nimble install happyx@#head", cstring"nimble_install", newPlayResult()),
+        ("Python", "shell", "pip install happyx", cstring"pypi_install", newPlayResult()),
       ])
       
       tH2: "Hello, World! 👋"
@@ -56,8 +56,8 @@ component GettingStarted:
         component CodeBlock("html", htmlHelloWorldExample, "html_hello_world")
 
       component CodeBlockGuide(@[
-        ("Nim", "bash", "nim c -r example.nim", cstring"nim_ssr", playHelloWorld),
-        ("Nim (SPA)", "bash", "nim js example.nim\nopen example.html", cstring"nim_ssr", playHelloWorldSPA),
-        ("Python", "bash", "python example.py", cstring"py_hello_world", playHelloWorld),
+        ("Nim", "shell", "nim c -r example.nim", cstring"nim_ssr", playHelloWorld),
+        ("Nim (SPA)", "shell", "nim js example.nim\nopen example.html", cstring"nim_ssr", playHelloWorldSPA),
+        ("Python", "shell", "python example.py", cstring"py_hello_world", playHelloWorld),
       ])
 
