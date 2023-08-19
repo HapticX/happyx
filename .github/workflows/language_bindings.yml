@@ -51,7 +51,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           nimble refresh
-          pip install build
+          pip install build jinja2
           nimble install -y -d
       
       - name: Python Bindings 🐍
