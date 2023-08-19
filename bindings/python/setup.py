@@ -25,7 +25,7 @@ setup(
     version=__version__,
     packages=find_packages(),
     include_package_data=True,
-    requires=["jinja2"],
+    install_requires=["jinja2"],
     license='MIT',
     classifiers=[
         'Development Status :: 4 - Beta',
