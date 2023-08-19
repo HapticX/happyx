@@ -49,10 +49,10 @@ jobs:
         
       - name: Install dependencies 🔃
         run: |
-          python -m pip install --upgrade pip
           nimble refresh
-          pip install build
           nimble install -y -d
+          python -m pip install --upgrade pip
+          pip install -U twine build packaging jinja2
       
       - name: Python Bindings 🐍
         run: |
@@ -63,11 +63,8 @@ jobs:
           nim c --app:lib --out:../bindings/python/happyx/happyx.so --threads:on -d:debug -d:httpx -d:export2py happyx
         shell: bash
 
-      - name: Publish package 📢
+      - name: Publish Python package 📢
         run: |
-          pip install virtualenv
-          virtualenv -p /usr/bin/python .venv
-          source .venv/bin/activate
           cd bindings/python/dist/
           pip install -U twine build packaging jinja2
           python -m build
