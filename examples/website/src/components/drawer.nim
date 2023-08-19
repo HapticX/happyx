@@ -54,12 +54,6 @@ component Drawer:
             route("/roadmap/")
         ):
           "🌎 RoadMap"
-        component Button(
-          action = proc() =
-            self.toggle()
-            route("/language-bindings/")
-        ):
-          "💻 Language Bindings"
         tDiv:
           if ($currentRoute).startsWith("/guide/"):
             component SideBar(isMobile = true)

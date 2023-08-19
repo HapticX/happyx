@@ -55,8 +55,3 @@ component Header:
             route("/roadmap/")
         ):
           "🌎 RoadMap"
-        component Button(
-          action = proc() =
-            route("/language-bindings/")
-        ):
-          "💻 Language Bindings"

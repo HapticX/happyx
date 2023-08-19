@@ -11,7 +11,7 @@ import
     code_block_slider, sidebar, guide_page,
     code_block_guide
   ],
-  ./pages/[home, sponsors, roadmap, lang_binds, guide],
+  ./pages/[home, sponsors, roadmap, guide],
   json,
   os
 
@@ -46,8 +46,6 @@ appRoutes("app"):
   mount "/" -> Home
   mount "/sponsors" -> Sponsors
   mount "/roadmap" -> RoadMap
-  mount "/language-bindings" -> LanguageBinds
-  mount "/lang-binds" -> LanguageBinds
   mount "/guide" -> UserGuide
 
   notfound:

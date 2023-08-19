@@ -358,6 +358,8 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
   result = newCall("initTag", elementName)
 
   for statement in body:
+    if statement.kind == nnkDiscardStmt:
+      continue
     if statement.kind == nnkCall and statement[0] == ident"procCall" and inComponent:
       result.add(statement)
     elif statement.kind == nnkCall and statement[0] == ident"nim" and statement.len == 2 and statement[1].kind == nnkStmtList:

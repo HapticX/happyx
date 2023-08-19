@@ -67,7 +67,7 @@ component CodeBlockGuide:
                 "rounded-md text-3xl lg:text-lg xl:text-base language-{source.lang}"
           ):
             {source.src}
-          tDiv(class = "absolute right-2 top-8"):
+          tDiv(class = "absolute right-2 top-20 lg:top-12 xl:top-8"):
             tSvg(
               width = "800px", height="800px", viewBox = "0 0 24 24",
               class = "w-16 lg:w-8 h-16 lg:h-8 fill-white hover:fill-gray-200 active:fill-gray-400 transition-all cursor-pointer select-none"
@@ -107,8 +107,9 @@ component CodeBlockGuide:
                     elif html.len != 0:
                       playResult.innerHTML &= html
                     else:
-                      playResult.innerHTML &= fmt"""<pre><code id="{self.uniqCompId}{lang}{idx}" language="{lang}" class="language-{lang}">{text}</code></pre>"""
+                      playResult.innerHTML &= fmt"""<pre><code id="{self.uniqCompId}{lang}{idx}" language="{lang}" class="language-{lang}" style="padding-top: 0 !important; padding-bottom: 0 !important;">{text}</code></pre>"""
                       let id: cstring = fmt"{self.uniqCompId}{lang}{idx}"
+                      inc idx
                       {.emit: """//js
                       let codeBlock = document.getElementById(`id`);
                       hljs.highlightElement(codeBlock);
@@ -127,7 +128,7 @@ component CodeBlockGuide:
                     console.log(state.Field0, state.Field1, state.Field2, state.Field3);
                   });
                   """.}
-              tDiv(id = "{source.id}{self.uniqCompId}_play_result", class = "w-full")
+              tDiv(id = "{source.id}{self.uniqCompId}_play_result", class = "w-full pb-4")
   
   @updated:
     for source in self.sources:

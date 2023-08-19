@@ -24,6 +24,18 @@ component IntroductionLanguageChooser:
         currentLanguage.set(self.lang)
 
 
+component Contributor:
+  nickname: string
+  url: string
+  avatar: string
+
+  `template`:
+    tA(class = "flex flex-col justify-center items-center", href = "{self.url}"):
+      tImg(src = "{self.avatar}", class = "w-[96px] lg:w-[72px] xl:w-[64px] h-[96px] lg:h-[72px] xl:h-[64px] rounded-full", alt = "{self.nickname}")
+      tP(class = "font-mono text-center h-8"):
+        {self.nickname}
+
+
 component Introduction:
   `template`:
     tDiv(class = "flex flex-col px-8 py-2 backdrop-blur-sm xl:h-fit gap-4"):
@@ -106,3 +118,20 @@ component Introduction:
         tLi: "CLI for creating, serving and building your projects 💻"
         tLi: "Request models that supports JSON, FormData, x-www-form-urlencoded and XML 👮‍♀️"
         tLi: "Translating, logging, security, built-in UI and more other features \"out of the box\" 📦"
+      
+      tDiv(class = "flex flex-col gap-8 pt-4"):
+        tH2: "Community 🌎"
+        tDiv(class = "flex flex-col gap-4"):
+          tH3: "Maintainers"
+          tDiv(class = "grid grid-cols-5 lg:grid-cols-10 xl:grid-cols-15 gap-x-2 gap-y-8"):
+            component Contributor("Ethosa", "https://github.com/Ethosa", "https://avatars.githubusercontent.com/u/49402667?v=4")
+        tDiv(class = "flex flex-col gap-4"):
+          tH3: "Contributors"
+          tDiv(class = "grid grid-cols-5 lg:grid-cols-10 xl:grid-cols-15 gap-x-2 gap-y-8"):
+            component Contributor("quimt", "https://github.com/quimt", "https://avatars.githubusercontent.com/u/126020181?v=4")
+            component Contributor("its5Q", "https://github.com/its5Q", "https://avatars.githubusercontent.com/u/12975646?v=4")
+            component Contributor("Lum", "https://github.com/not-lum", "https://avatars.githubusercontent.com/u/62594565?v=4")
+            component Contributor("Array in a Matrix", "https://github.com/array-in-a-matrix", "https://avatars.githubusercontent.com/u/78233840?v=4")
+            component Contributor("MCRusher", "https://github.com/MCRusher", "https://avatars.githubusercontent.com/u/16050377?v=4")
+            component Contributor("Sultan Al Isaiee", "https://github.com/foxoman", "https://avatars.githubusercontent.com/u/5356677?v=4")
+            component Contributor("Arik Rahman", "https://github.com/ArikRahman", "https://avatars.githubusercontent.com/u/40479733?v=4")
