@@ -67,7 +67,7 @@ jobs:
         run: |
           cd bindings/python/
           pip install -U twine build packaging jinja2
-          python -m build
+          python setup.py sdist
           twine upload dist/*
         env:
           TWINE_USERNAME: __token__
