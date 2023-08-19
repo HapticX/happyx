@@ -158,7 +158,7 @@ HappyX web framework [SSR/SSG Part]
       components: TableRef[string, BaseComponent]
     ModelBase* = ref object of PyNimObjectExperimental
   
-  proc processMounts*(self: Server): tuple[x, y, z: seq[Route]] =
+  proc processMounts*(self: Server, path: string = ""): tuple[x, y, z: seq[Route]] =
     var
       middlewares: seq[Route] = @[]
       routes: seq[Route] = @[]
@@ -171,15 +171,16 @@ HappyX web framework [SSR/SSG Part]
       else:
         routes.add(i)
     for m in self.mounts:
-      var (x, y, z) = m.processMounts()
+      var (x, y, z) = m.processMounts(path & self.path)
+      let mountPath = path & m.path
       for route in x:
-        var r = initRoute(m.path & route.path, route.purePath, route.httpMethod, re("^" & m.path & route.purePath & "$"), route.handler)
+        var r = initRoute(mountPath & route.path, mountPath & route.purePath, route.httpMethod, re("^" & mountPath & route.purePath & "$"), route.handler)
         middlewares.add(r)
       for route in y:
-        var r = initRoute(m.path & route.path, route.purePath, route.httpMethod, re("^" & m.path & route.purePath & "$"), route.handler)
+        var r = initRoute(mountPath & route.path, mountPath & route.purePath, route.httpMethod, re("^" & mountPath & route.purePath & "$"), route.handler)
         routes.add(r)
       for route in z:
-        var r = initRoute(m.path & route.path, route.purePath, route.httpMethod, re("^" & m.path & route.purePath & "$"), route.handler)
+        var r = initRoute(mountPath & route.path, mountPath & route.purePath, route.httpMethod, re("^" & mountPath & route.purePath & "$"), route.handler)
         notfounds.add(r)
     (middlewares, routes, notfounds)
   
@@ -1079,9 +1080,17 @@ macro routes*(server: Server, body: untyped): untyped =
               newDotExpr(ident"route", ident"httpMethod")
             ),
             newCall(
-              "and",
-              newCall("==", newCall("$", reqMethod), newDotExpr(ident"route", ident"httpMethod")),
-              newCall("contains", pathIdent, newDotExpr(ident"route", ident"pattern"))
+              "or",
+              newCall(
+                "and",
+                newCall("==", newCall("$", reqMethod), newDotExpr(ident"route", ident"httpMethod")),
+                newCall("contains", pathIdent, newDotExpr(ident"route", ident"pattern"))
+              ),
+              newCall(
+                "and",
+                newCall("==", newLit"STATICFILE", newDotExpr(ident"route", ident"httpMethod")),
+                newCall("contains", pathIdent, newDotExpr(ident"route", ident"pattern"))
+              ),
             )
           ),
         ),
@@ -1105,210 +1114,248 @@ macro routes*(server: Server, body: untyped): untyped =
                 "initHttpRequest", path, newCall("$", reqMethod), headers, requestBody
               )
             ),
-            # Detect queries
-            newLetStmt(ident"queryFromUrl", url),
-            newLetStmt(ident"query", newCall("parseQuery", ident"queryFromUrl")),
-            # Declare RouteData
-            newVarStmt(ident"routeData", newCall("handleRoute", newDotExpr(ident"route", ident"path"))),
-            # Declare route handler
-            newVarStmt(ident"handler", newDotExpr(ident"route", ident"handler")),
-            # Declare Python Locals (for eval func)
-            newVarStmt(ident"locals", newCall("pyDict")),
-            # Declare Python Object (for function params)
-            newNimNode(nnkVarSection).add(newIdentDefs(ident"pyFuncParams", ident"PyObject")),
-            # Declare JsonNode (for length of keyword arguments)
-            newNimNode(nnkVarSection).add(newIdentDefs(ident"keywordArgumentss", ident"JsonNode")),
-            # Include route handler into Python locals 
-            newCall("[]=", ident"locals", newLit"handler", ident"handler"),
-            # Unpack route path params
-            newLetStmt(ident"founded_regexp_matches", newCall("findAll", pathIdent, newDotExpr(ident"route", ident"pattern"))),
-            # handle callback data
-            newVarStmt(ident"variables", newCall(newNimNode(nnkBracketExpr).add(ident"newSeq", ident"string"))),
-            newLetStmt(ident"argcount", newCall("getAttr", newCall("getAttr", ident"handler", newLit"__code__"), newLit"co_argcount")),
-            newLetStmt(ident"varnames", newCall("getAttr", newCall("getAttr", ident"handler", newLit"__code__"), newLit"co_varnames")),
-            newLetStmt(ident"pDefaults", newCall("getAttr", ident"handler", newLit"__defaults__")),
-            # Create Python Object
-            newCall(ident"pyValueToNim", newCall("privateRawPyObj", ident"pDefaults"), ident"keywordArgumentss"),
-            newLetStmt(ident"annotations", newCall("newAnnotations", newCall("getAttr", ident"handler", newLit("__annotations__")))),
-            # Extract function arguments from Python
-            newNimNode(nnkForStmt).add(
-              ident"i",
-              newCall(
-                "..<",
-                newLit(0),
-                newCall("-", newCall("to", ident"argcount", ident"int"), newCall("len", ident"keywordArgumentss"))
-              ),
-              newCall("add", ident"variables", newCall("to", newCall("[]", ident"varnames", ident"i"), ident"string"))
-            ),
-            # Match function parameters with annotations (or without)
-            newLetStmt(ident"handlerParams", newCall("newHandlerParams", ident"variables", ident"annotations")),
-            # Load path params into function parameters
-            newLetStmt(ident"funcParams", newCall(
-              "getRouteParams", ident"routeData", ident"founded_regexp_matches",
-              pathIdent, ident"handlerParams", requestBody
-            )),
-            # Add queries to function parameters
-            newNimNode(nnkForStmt).add(
-              ident"param", ident"handlerParams",
-              newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
-                newCall(
-                  "and",
-                  newCall(
-                    "not",
-                    newCall("contains", ident"funcParams", newDotExpr(ident"param", ident"name"))
-                  ),
-                  newCall("!=", newDotExpr(ident"param", ident"paramType"), newLit"HttpRequest")
-                ),
-                newCall(
-                  "[]=",
-                  ident"funcParams",
-                  newDotExpr(ident"param", ident"name"),
-                  newNimNode(nnkCaseStmt).add(
-                    newDotExpr(ident"param", ident"paramType"),
-                    newNimNode(nnkOfBranch).add(
-                      newLit"bool",
-                      newCall(
-                        "parseBoolOrJString",
-                        newCall("getOrDefault", ident"query", newDotExpr(ident"param", ident"name"))
-                      )
-                    ),
-                    newNimNode(nnkOfBranch).add(
-                      newLit"int",
-                      newCall(
-                        "parseIntOrJString",
-                        newCall("getOrDefault", ident"query", newDotExpr(ident"param", ident"name"))
-                      )
-                    ),
-                    newNimNode(nnkOfBranch).add(
-                      newLit"float",
-                      newCall(
-                        "parseFloatOrJString",
-                        newCall("getOrDefault", ident"query", newDotExpr(ident"param", ident"name"))
-                      )
-                    ),
-                    newNimNode(nnkElse).add(
-                      newCall("newJString", newCall("getOrDefault", ident"query", newDotExpr(ident"param", ident"name")))
-                    ),
-                  )
-                )
-              ))
-            ),
-            # Create Pointer to Python Object
-            newLetStmt(ident"pFuncParams", newCall("nimValueToPy", ident"funcParams")),
-            # Create Python Object
-            newCall(ident"pyValueToNim", ident"pFuncParams", ident"pyFuncParams"),
-            # Add HttpRequest to function parameters if required
             newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
-              newCall("hasHttpRequest", ident"handlerParams"),
               newCall(
-                "[]=",
-                ident"pyFuncParams",
-                newCall("getParamName", ident"handlerParams", newLit"HttpRequest"),
-                ident"request"
-              )
-            )),
-            # Detect and create classes for request models
-            newNimNode(nnkForStmt).add(
-              ident"param", newCall("keys", ident"funcParams"),
+                "==",
+                newLit"STATICFILE",
+                newDotExpr(ident"route", ident"httpMethod")
+              ),
               newStmtList(
-                newLetStmt(ident"paramType", newCall("getParamType", ident"handlerParams", ident"param")),
-                # If param is request model
-                newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
-                  newCall("contains", ident"requestModelsHidden", ident"paramType"),
-                  newStmtList(
-                    # Get Python class
-                    newVarStmt(
-                      ident"requestModel",
-                      newDotExpr(newCall("[]", ident"requestModelsHidden", ident"paramType"), ident"pyClass")
-                    ),
-                    # Create Python class instance
-                    newLetStmt(
-                      ident"pyClassInstance",
-                      newCall(
-                        "callObject",
-                        newCall("getAttr", ident"requestModel", newLit"from_dict"),
-                        ident"requestModel",
-                        newCall("[]", ident"pyFuncParams", ident"param")
-                      )
-                    ),
-                    newCall("[]=", ident"pyFuncParams", ident"param", ident"pyClassInstance"),
+                # Declare RouteData
+                newVarStmt(ident"routeData", newCall("handleRoute", newDotExpr(ident"route", ident"path"))),
+                # Unpack route path params
+                newLetStmt(
+                  ident"founded_regexp_matches",
+                  newCall("findAll", pathIdent, newDotExpr(ident"route", ident"pattern"))
+                ),
+                # Load path params into function parameters
+                newLetStmt(ident"funcParams", newCall(
+                  "getRouteParams", ident"routeData", ident"founded_regexp_matches",
+                  pathIdent, newNimNode(nnkExprEqExpr).add(
+                    ident"force", newLit(true)
                   )
                 )),
-              )
-            ),
-            # Add function parameters to locals
-            newCall("[]=", ident"locals", newLit"funcParams", ident"pFuncParams"),
-            # Execute callback
-            newLetStmt(
-              ident"response",
-              newCall(
-                newDotExpr(ident"py", ident"eval"),
-                newLit("handler(**funcParams)"),
-                ident"locals"
-              )
-            ),
-            # Handle response type
-            newLetStmt(
-              ident"responseType",
-              newCall("getAttr", newCall("getAttr", ident"response", newLit("__class__")), newLit("__name__"))
-            ),
-            # Respond
-            newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
-              newCall("!=", ident"response", newDotExpr(ident"py", ident"None")),
-              newNimNode(nnkCaseStmt).add(
-                newCall("$", ident"responseType"),
-                newNimNode(nnkOfBranch).add(
-                  newLit("dict"),
-                  newCall("answerJson", ident"req", newCall("to", ident"response", ident"JsonNode"))
-                ),
-                newNimNode(nnkOfBranch).add(
-                  newLit("JsonResponseObj"),
-                  newStmtList(
-                    newLetStmt(ident"resp", newCall("to", ident"response", ident"JsonResponseObj")),
+                newCall(
+                  "await",
+                  newCall(
+                    "answerFile",
+                    ident"req",
                     newCall(
-                      "answerJson",
-                      ident"req",
-                      newCall("data", ident"resp"),
-                      newCall("HttpCode", newCall("statusCode", ident"resp")),
-                      newCall("toHttpHeaders", newCall("headers", ident"resp"))
+                      "&",
+                      newDotExpr(ident"route", ident"purePath"),
+                      newCall("getStr", newCall("[]", ident"funcParams", newLit"file"))
                     )
                   )
                 ),
-                newNimNode(nnkOfBranch).add(
-                  newLit("HtmlResponseObj"),
-                  newStmtList(
-                    newLetStmt(ident"resp", newCall("to", ident"response", ident"HtmlResponseObj")),
+                newNimNode(nnkReturnStmt).add(newEmptyNode()),
+              )
+            ), newNimNode(nnkElse).add(newStmtList(
+              # Detect queries
+              newLetStmt(ident"queryFromUrl", url),
+              newLetStmt(ident"query", newCall("parseQuery", ident"queryFromUrl")),
+              # Declare RouteData
+              newVarStmt(ident"routeData", newCall("handleRoute", newDotExpr(ident"route", ident"path"))),
+              # Declare route handler
+              newVarStmt(ident"handler", newDotExpr(ident"route", ident"handler")),
+              # Declare Python Locals (for eval func)
+              newVarStmt(ident"locals", newCall("pyDict")),
+              # Declare Python Object (for function params)
+              newNimNode(nnkVarSection).add(newIdentDefs(ident"pyFuncParams", ident"PyObject")),
+              # Declare JsonNode (for length of keyword arguments)
+              newNimNode(nnkVarSection).add(newIdentDefs(ident"keywordArgumentss", ident"JsonNode")),
+              # Include route handler into Python locals 
+              newCall("[]=", ident"locals", newLit"handler", ident"handler"),
+              # Unpack route path params
+              newLetStmt(ident"founded_regexp_matches", newCall("findAll", pathIdent, newDotExpr(ident"route", ident"pattern"))),
+              # handle callback data
+              newVarStmt(ident"variables", newCall(newNimNode(nnkBracketExpr).add(ident"newSeq", ident"string"))),
+              newLetStmt(ident"argcount", newCall("getAttr", newCall("getAttr", ident"handler", newLit"__code__"), newLit"co_argcount")),
+              newLetStmt(ident"varnames", newCall("getAttr", newCall("getAttr", ident"handler", newLit"__code__"), newLit"co_varnames")),
+              newLetStmt(ident"pDefaults", newCall("getAttr", ident"handler", newLit"__defaults__")),
+              # Create Python Object
+              newCall(ident"pyValueToNim", newCall("privateRawPyObj", ident"pDefaults"), ident"keywordArgumentss"),
+              newLetStmt(ident"annotations", newCall("newAnnotations", newCall("getAttr", ident"handler", newLit("__annotations__")))),
+              # Extract function arguments from Python
+              newNimNode(nnkForStmt).add(
+                ident"i",
+                newCall(
+                  "..<",
+                  newLit(0),
+                  newCall("-", newCall("to", ident"argcount", ident"int"), newCall("len", ident"keywordArgumentss"))
+                ),
+                newCall("add", ident"variables", newCall("to", newCall("[]", ident"varnames", ident"i"), ident"string"))
+              ),
+              # Match function parameters with annotations (or without)
+              newLetStmt(ident"handlerParams", newCall("newHandlerParams", ident"variables", ident"annotations")),
+              # Load path params into function parameters
+              newLetStmt(ident"funcParams", newCall(
+                "getRouteParams", ident"routeData", ident"founded_regexp_matches",
+                pathIdent, ident"handlerParams", requestBody
+              )),
+              # Add queries to function parameters
+              newNimNode(nnkForStmt).add(
+                ident"param", ident"handlerParams",
+                newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
+                  newCall(
+                    "and",
                     newCall(
-                      "answerHtml",
-                      ident"req",
-                      newCall("data", ident"resp"),
-                      newCall("HttpCode", newCall("statusCode", ident"resp")),
-                      newCall("toHttpHeaders", newCall("headers", ident"resp"))
+                      "not",
+                      newCall("contains", ident"funcParams", newDotExpr(ident"param", ident"name"))
+                    ),
+                    newCall("!=", newDotExpr(ident"param", ident"paramType"), newLit"HttpRequest")
+                  ),
+                  newCall(
+                    "[]=",
+                    ident"funcParams",
+                    newDotExpr(ident"param", ident"name"),
+                    newNimNode(nnkCaseStmt).add(
+                      newDotExpr(ident"param", ident"paramType"),
+                      newNimNode(nnkOfBranch).add(
+                        newLit"bool",
+                        newCall(
+                          "parseBoolOrJString",
+                          newCall("getOrDefault", ident"query", newDotExpr(ident"param", ident"name"))
+                        )
+                      ),
+                      newNimNode(nnkOfBranch).add(
+                        newLit"int",
+                        newCall(
+                          "parseIntOrJString",
+                          newCall("getOrDefault", ident"query", newDotExpr(ident"param", ident"name"))
+                        )
+                      ),
+                      newNimNode(nnkOfBranch).add(
+                        newLit"float",
+                        newCall(
+                          "parseFloatOrJString",
+                          newCall("getOrDefault", ident"query", newDotExpr(ident"param", ident"name"))
+                        )
+                      ),
+                      newNimNode(nnkElse).add(
+                        newCall("newJString", newCall("getOrDefault", ident"query", newDotExpr(ident"param", ident"name")))
+                      ),
                     )
                   )
-                ),
-                newNimNode(nnkOfBranch).add(
-                  newLit("FileResponseObj"),
-                  newStmtList(
-                    newLetStmt(ident"resp", newCall("to", ident"response", ident"FileResponseObj")),
-                    newCall(
-                      "await",
+                ))
+              ),
+              # Create Pointer to Python Object
+              newLetStmt(ident"pFuncParams", newCall("nimValueToPy", ident"funcParams")),
+              # Create Python Object
+              newCall(ident"pyValueToNim", ident"pFuncParams", ident"pyFuncParams"),
+              # Add HttpRequest to function parameters if required
+              newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
+                newCall("hasHttpRequest", ident"handlerParams"),
+                newCall(
+                  "[]=",
+                  ident"pyFuncParams",
+                  newCall("getParamName", ident"handlerParams", newLit"HttpRequest"),
+                  ident"request"
+                )
+              )),
+              # Detect and create classes for request models
+              newNimNode(nnkForStmt).add(
+                ident"param", newCall("keys", ident"funcParams"),
+                newStmtList(
+                  newLetStmt(ident"paramType", newCall("getParamType", ident"handlerParams", ident"param")),
+                  # If param is request model
+                  newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
+                    newCall("contains", ident"requestModelsHidden", ident"paramType"),
+                    newStmtList(
+                      # Get Python class
+                      newVarStmt(
+                        ident"requestModel",
+                        newDotExpr(newCall("[]", ident"requestModelsHidden", ident"paramType"), ident"pyClass")
+                      ),
+                      # Create Python class instance
+                      newLetStmt(
+                        ident"pyClassInstance",
+                        newCall(
+                          "callObject",
+                          newCall("getAttr", ident"requestModel", newLit"from_dict"),
+                          ident"requestModel",
+                          newCall("[]", ident"pyFuncParams", ident"param")
+                        )
+                      ),
+                      newCall("[]=", ident"pyFuncParams", ident"param", ident"pyClassInstance"),
+                    )
+                  )),
+                )
+              ),
+              # Add function parameters to locals
+              newCall("[]=", ident"locals", newLit"funcParams", ident"pFuncParams"),
+              # Execute callback
+              newLetStmt(
+                ident"response",
+                newCall(
+                  newDotExpr(ident"py", ident"eval"),
+                  newLit("handler(**funcParams)"),
+                  ident"locals"
+                )
+              ),
+              # Handle response type
+              newLetStmt(
+                ident"responseType",
+                newCall("getAttr", newCall("getAttr", ident"response", newLit("__class__")), newLit("__name__"))
+              ),
+              # Respond
+              newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
+                newCall("!=", ident"response", newDotExpr(ident"py", ident"None")),
+                newNimNode(nnkCaseStmt).add(
+                  newCall("$", ident"responseType"),
+                  newNimNode(nnkOfBranch).add(
+                    newLit("dict"),
+                    newCall("answerJson", ident"req", newCall("to", ident"response", ident"JsonNode"))
+                  ),
+                  newNimNode(nnkOfBranch).add(
+                    newLit("JsonResponseObj"),
+                    newStmtList(
+                      newLetStmt(ident"resp", newCall("to", ident"response", ident"JsonResponseObj")),
                       newCall(
-                        "answerFile",
+                        "answerJson",
                         ident"req",
-                        newCall("filename", ident"resp"),
+                        newCall("data", ident"resp"),
                         newCall("HttpCode", newCall("statusCode", ident"resp")),
-                        newCall("asAttachment", ident"resp")
+                        newCall("toHttpHeaders", newCall("headers", ident"resp"))
                       )
                     )
+                  ),
+                  newNimNode(nnkOfBranch).add(
+                    newLit("HtmlResponseObj"),
+                    newStmtList(
+                      newLetStmt(ident"resp", newCall("to", ident"response", ident"HtmlResponseObj")),
+                      newCall(
+                        "answerHtml",
+                        ident"req",
+                        newCall("data", ident"resp"),
+                        newCall("HttpCode", newCall("statusCode", ident"resp")),
+                        newCall("toHttpHeaders", newCall("headers", ident"resp"))
+                      )
+                    )
+                  ),
+                  newNimNode(nnkOfBranch).add(
+                    newLit("FileResponseObj"),
+                    newStmtList(
+                      newLetStmt(ident"resp", newCall("to", ident"response", ident"FileResponseObj")),
+                      newCall(
+                        "await",
+                        newCall(
+                          "answerFile",
+                          ident"req",
+                          newCall("filename", ident"resp"),
+                          newCall("HttpCode", newCall("statusCode", ident"resp")),
+                          newCall("asAttachment", ident"resp")
+                        )
+                      )
+                    )
+                  ),
+                  newNimNode(nnkElse).add(
+                    newCall("answer", ident"req", newCall("$", ident"response"))
                   )
-                ),
-                newNimNode(nnkElse).add(
-                  newCall("answer", ident"req", newCall("$", ident"response"))
                 )
-              )
-            )),
+              )),
+              ))
             ),
+          ),
         )
       ))
     ))
@@ -1592,24 +1639,50 @@ macro serve*(address: string, port: int, body: untyped): untyped =
                   newStmtList(
                     # Declare RouteData
                     newVarStmt(ident"routeData", newCall("handleRoute", newDotExpr(ident"route", ident"path"))),
-                    # Declare route handler
-                    newVarStmt(ident"handler", newDotExpr(ident"route", ident"handler")),
-                    newLetStmt(ident"pDoc", newCall("getAttr", ident"handler", newLit"__doc__")),
-                    # Declare string (for documentation)
-                    newVarStmt(ident"documentation", newLit""),
-                    # Convert __doc__ to string
-                    newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
-                      newCall("!=", ident"pDoc", newDotExpr(ident"py", ident"None")),
-                      newCall(ident"pyValueToNim", newCall("privateRawPyObj", ident"pDoc"), ident"documentation"),
-                    )),
-                    newCall("add", ident"apiDocData", newCall(
-                      "newApiDocObject",
-                      newDotExpr(ident"route", ident"httpMethod"),
-                      ident"documentation",
-                      newDotExpr(ident"routeData", ident"path"),
-                      newDotExpr(ident"routeData", ident"pathParams"),
-                      newDotExpr(ident"routeData", ident"requestModels"),
-                    ))
+                    newNimNode(nnkIfStmt).add(
+                      newNimNode(nnkElifBranch).add(
+                        newCall("==", newDotExpr(ident"route", ident"httpMethod"), newLit"STATICFILE"),
+                        newStmtList(
+                          # Declare string (for documentation)
+                          newVarStmt(
+                            ident"documentation",
+                            newCall(
+                              "&",
+                              newLit"Fetch file from directory: ",
+                              newDotExpr(ident"route", ident"purePath")
+                            )
+                          ),
+                          newCall("add", ident"apiDocData", newCall(
+                            "newApiDocObject",
+                            newLit"GET",
+                            ident"documentation",
+                            newDotExpr(ident"routeData", ident"path"),
+                            newDotExpr(ident"routeData", ident"pathParams"),
+                            newDotExpr(ident"routeData", ident"requestModels"),
+                          ))
+                        )
+                      ),
+                      newNimNode(nnkElse).add(newStmtList(
+                        # Declare route handler
+                        newVarStmt(ident"handler", newDotExpr(ident"route", ident"handler")),
+                        newLetStmt(ident"pDoc", newCall("getAttr", ident"handler", newLit"__doc__")),
+                        # Declare string (for documentation)
+                        newVarStmt(ident"documentation", newLit""),
+                        # Convert __doc__ to string
+                        newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
+                          newCall("!=", ident"pDoc", newDotExpr(ident"py", ident"None")),
+                          newCall(ident"pyValueToNim", newCall("privateRawPyObj", ident"pDoc"), ident"documentation"),
+                        )),
+                        newCall("add", ident"apiDocData", newCall(
+                          "newApiDocObject",
+                          newDotExpr(ident"route", ident"httpMethod"),
+                          ident"documentation",
+                          newDotExpr(ident"routeData", ident"path"),
+                          newDotExpr(ident"routeData", ident"pathParams"),
+                          newDotExpr(ident"routeData", ident"requestModels"),
+                        ))
+                      ))
+                    )
                   )),
                 )
               )

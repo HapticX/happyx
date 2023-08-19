@@ -179,3 +179,13 @@ proc notfound*(self: Server): auto {.exportpy.} =
 proc mount*(self: Server, path: string, other: Server) {.exportpy.} =
   other.path = path
   self.mounts.add(other)
+
+
+proc `static`*(self: Server, path: string, directory: string) {.exportpy: "static".} =
+  var
+    p = path
+  if not p.endsWith("/"):
+    p &= "/"
+  p &= "{file:path}"
+  let routeData = handleRoute(p)
+  self.routes.add(initRoute(p, directory, "STATICFILE", re("^" & routeData.purePath & "$"), nil))

@@ -1,6 +1,6 @@
 from happyx import (
     FileResponse, HtmlResponse, JsonResponse, HttpRequest,
-    Response, new_server, reg_cors, RequestModelBase
+    Response, new_server, reg_cors, RequestModelBase, __version__
 )
 import happyx
 
@@ -9,8 +9,11 @@ app = new_server()
 user = new_server()
 sub_user = new_server()
 
+app.static("/static", './')
 app.mount("/user", user)
 user.mount("/sub", sub_user)
+
+print(__version__)
 
 
 class User(RequestModelBase):

@@ -435,19 +435,24 @@ when exportPython or defined(docgen):
         `res`[`name`] = `parseFunc`(`foundGroup`)
 
   proc getRouteParams*(routeData: RouteDataObj, found_regexp_matches: seq[RegexMatch],
-                       urlPath: string, handlerParams: seq[HandlerParam], body: string): JsonNode =
+                       urlPath: string = "", handlerParams: seq[HandlerParam] = @[], body: string = "",
+                       force: bool = false): JsonNode =
     ## Finds and exports route arguments
     result = newJObject()
     var idx = 0
     for i in routeData.pathParams:
-      if i.name notin handlerParams:
+      if i.name notin handlerParams and not force:
         continue
       let
         group = found_regexp_matches[0].group(idx, urlPath)
         foundGroup = group[0]
         conditionOptional = group.len < 1
         conditionSecondOptional = foundGroup.len == 0
-        paramType = handlerParams[i.name]
+        paramType =
+          if not force:
+            handlerParams[i.name]
+          else:
+            i.paramType
         defaultValue = i.defaultValue
         name = i.name
 

@@ -1,5 +1,7 @@
-import happyx.happyx as happyx
 from collections import defaultdict
+
+import happyx.happyx as happyx
+from jinja2 import Template
 
 
 __version__ = happyx.happyx_version()
@@ -15,6 +17,41 @@ JsonResponse = happyx.JsonResponse
 # Main functions
 new_server = happyx.new_server
 reg_CORS = happyx.reg_CORS
+
+
+__jinja2_templates_directory = './'
+
+
+def setup_jinja2(directory: str = './') -> None:
+    """
+    Specifies jinja2 template directory
+    """
+    __jinja2_templates_directory = directory
+
+
+def TemplateResponse(template_name: str, status_code: int = 200, headers: dict = None, **kwargs) -> happyx.HtmlResponseObj:
+    """
+    Creates a new HtmlResponse that renders from Jinja2 template
+    """
+    if headers is None:
+        headers = {}
+    data = ''
+    with open(f'{directory}{template_name}', 'r', encoding='utf-8') as f:
+        data = f.read()
+    return HtmlResponse(Template(data).render(**kwargs), status_code=status_code, headers=headers)
+
+
+async def TemplateResponseAsync(template_name: str, status_code: int = 200, headers: dict = None) -> happyx.HtmlResponseObj:
+    """
+    Creates a new HtmlResponse that renders from Jinja2 template
+    """
+    if headers is None:
+        headers = {}
+    data = ''
+    with open(f'{directory}{template_name}', 'r', encoding='utf-8') as f:
+        data = f.read()
+    rendered = await Template(**kwargs).render_async()
+    return HtmlResponse(data, status_code=status_code, headers=headers)
 
 
 class RequestModelBaseMeta(type):

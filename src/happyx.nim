@@ -192,7 +192,7 @@
 ## - `int`: any integer
 ## - `float`: any float
 ## - `path`: like `string` but includes `/` chars. Doesn't provides optional and default.
-## - regex pattern: any regex pattern translates in string. Usage: `/patternHere/`. Doesn't provides optional and default.
+## - regex pattern: any regex pattern translates in string. Usage: `/:patternHere:/`. Doesn't provides optional and default.
 ## 
 ## ### (Im)mutable ⚙
 ## 
