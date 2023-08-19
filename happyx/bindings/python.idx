@@ -38,4 +38,5 @@ copy	happyx/bindings/python.html#copy,Server,string	python: copy(self: Server; p
 middleware	happyx/bindings/python.html#middleware,Server	python: middleware(self: Server): auto	
 notfound	happyx/bindings/python.html#notfound,Server	python: notfound(self: Server): auto	
 mount	happyx/bindings/python.html#mount,Server,string,Server	python: mount(self: Server; path: string; other: Server)	
+`static`	happyx/bindings/python.html#static,Server,string,string	python: `static`(self: Server; path: string; directory: string)	
 Python Bindings 🐍	happyx/bindings/python.html#python-bindings-🐍	 Python Bindings 🐍	

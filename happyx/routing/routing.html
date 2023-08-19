@@ -143,10 +143,12 @@ window.addEventListener('DOMContentLoaded', main);
 
   </ul>
   <ul class="simple nested-toc-section">getRouteParams
-      <li><a class="reference" href="#getRouteParams%2CRouteDataObj%2Cseq%5BRegexMatch%5D%2Cstring%2Cseq%5BHandlerParam%5D%2Cstring"
+      <li><a class="reference" href="#getRouteParams%2CRouteDataObj%2Cseq%5BRegexMatch%5D%2Cstring%2Cseq%5BHandlerParam%5D%2Cstring%2Cbool"
     title="getRouteParams(routeData: RouteDataObj; found_regexp_matches: seq[RegexMatch];
-               urlPath: string; handlerParams: seq[HandlerParam]; body: string): JsonNode">getRouteParams(routeData: RouteDataObj; found_regexp_matches: seq[RegexMatch];
-               urlPath: string; handlerParams: seq[HandlerParam]; body: string): JsonNode</a></li>
+               urlPath: string = &quot;&quot;; handlerParams: seq[HandlerParam] = @[];
+               body: string = &quot;&quot;; force: bool = false): JsonNode">getRouteParams(routeData: RouteDataObj; found_regexp_matches: seq[RegexMatch];
+               urlPath: string = &quot;&quot;; handlerParams: seq[HandlerParam] = @[];
+               body: string = &quot;&quot;; force: bool = false): JsonNode</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">handleRoute
@@ -274,10 +276,11 @@ Finds and exports route arguments
 
 </dd>
 </div>
-<div id="getRouteParams,RouteDataObj,seq[RegexMatch],string,seq[HandlerParam],string">
-<dt><pre><span class="Keyword">proc</span> <a href="#getRouteParams%2CRouteDataObj%2Cseq%5BRegexMatch%5D%2Cstring%2Cseq%5BHandlerParam%5D%2Cstring"><span class="Identifier">getRouteParams</span></a><span class="Other">(</span><span class="Identifier">routeData</span><span class="Other">:</span> <a href="routing.html#RouteDataObj"><span class="Identifier">RouteDataObj</span></a><span class="Other">;</span>
-                    <span class="Identifier">found_regexp_matches</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">RegexMatch</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">urlPath</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span>
-                    <span class="Identifier">handlerParams</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="../bindings/python_types.html#HandlerParam"><span class="Identifier">HandlerParam</span></a><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">body</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">JsonNode</span> {.
+<div id="getRouteParams,RouteDataObj,seq[RegexMatch],string,seq[HandlerParam],string,bool">
+<dt><pre><span class="Keyword">proc</span> <a href="#getRouteParams%2CRouteDataObj%2Cseq%5BRegexMatch%5D%2Cstring%2Cseq%5BHandlerParam%5D%2Cstring%2Cbool"><span class="Identifier">getRouteParams</span></a><span class="Other">(</span><span class="Identifier">routeData</span><span class="Other">:</span> <a href="routing.html#RouteDataObj"><span class="Identifier">RouteDataObj</span></a><span class="Other">;</span>
+                    <span class="Identifier">found_regexp_matches</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">RegexMatch</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">urlPath</span><span class="Other">:</span> <span class="Identifier">string</span> <span class="Other">=</span> <span class="StringLit">&quot;&quot;</span><span class="Other">;</span>
+                    <span class="Identifier">handlerParams</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="../bindings/python_types.html#HandlerParam"><span class="Identifier">HandlerParam</span></a><span class="Other">]</span> <span class="Other">=</span> <span class="Operator">@</span><span class="Other">[</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">body</span><span class="Other">:</span> <span class="Identifier">string</span> <span class="Other">=</span> <span class="StringLit">&quot;&quot;</span><span class="Other">;</span>
+                    <span class="Identifier">force</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">JsonNode</span> {.
     <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">IOError</span><span class="Other">,</span> <span class="Identifier">OSError</span><span class="Other">,</span> <span class="Identifier">KeyError</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">,</span> <span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span>
     <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ReadIOEffect</span><span class="Other">,</span> <span class="Identifier">WriteIOEffect</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
@@ -377,7 +380,7 @@ Handles route and receive route data object.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-08-19 08:13:03 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-08-19 13:07:59 UTC</small>
       </div>
     </div>
   </div>

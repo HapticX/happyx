@@ -253,6 +253,10 @@ window.addEventListener('DOMContentLoaded', main);
 <li><a class="reference external"
           data-doc-search-tag="state: `not`[T](self`gensym4: State[T]): bool" href="happyx/spa/state.html#not">state: `not`[T](self`gensym4: State[T]): bool</a></li>
           </ul></dd>
+<dt><a name="%60static%60" href="#%60static%60"><span>`static`:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="python: `static`(self: Server; path: string; directory: string)" href="happyx/bindings/python.html#static%2CServer%2Cstring%2Cstring">python: `static`(self: Server; path: string; directory: string)</a></li>
+          </ul></dd>
 <dt><a name="%60%7C%3D%60" href="#%60%7C%3D%60"><span>`|=`:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="state: `|=`[T](self`gensym26: State[T]; other`gensym26: State[T])" href="happyx/spa/state.html#%7C%3D%2C%2C">state: `|=`[T](self`gensym26: State[T]; other`gensym26: State[T])</a></li>
@@ -650,8 +654,10 @@ window.addEventListener('DOMContentLoaded', main);
 <dt><a name="getRouteParams" href="#getRouteParams"><span>getRouteParams:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="routing: getRouteParams(routeData: RouteDataObj; found_regexp_matches: seq[RegexMatch];
-               urlPath: string; handlerParams: seq[HandlerParam]; body: string): JsonNode" href="happyx/routing/routing.html#getRouteParams%2CRouteDataObj%2Cseq%5BRegexMatch%5D%2Cstring%2Cseq%5BHandlerParam%5D%2Cstring">routing: getRouteParams(routeData: RouteDataObj; found_regexp_matches: seq[RegexMatch];
-               urlPath: string; handlerParams: seq[HandlerParam]; body: string): JsonNode</a></li>
+               urlPath: string = &quot;&quot;; handlerParams: seq[HandlerParam] = @[];
+               body: string = &quot;&quot;; force: bool = false): JsonNode" href="happyx/routing/routing.html#getRouteParams%2CRouteDataObj%2Cseq%5BRegexMatch%5D%2Cstring%2Cseq%5BHandlerParam%5D%2Cstring%2Cbool">routing: getRouteParams(routeData: RouteDataObj; found_regexp_matches: seq[RegexMatch];
+               urlPath: string = &quot;&quot;; handlerParams: seq[HandlerParam] = @[];
+               body: string = &quot;&quot;; force: bool = false): JsonNode</a></li>
           </ul></dd>
 <dt><a name="getTagName" href="#getTagName"><span>getTagName:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -1055,7 +1061,7 @@ window.addEventListener('DOMContentLoaded', main);
           </ul></dd>
 <dt><a name="processMounts" href="#processMounts"><span>processMounts:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="server: processMounts(self: Server): tuple[x, y, z: seq[Route]]" href="happyx/ssr/server.html#processMounts%2CServer">server: processMounts(self: Server): tuple[x, y, z: seq[Route]]</a></li>
+          data-doc-search-tag="server: processMounts(self: Server; path: string = &quot;&quot;): tuple[x, y, z: seq[Route]]" href="happyx/ssr/server.html#processMounts%2CServer%2Cstring">server: processMounts(self: Server; path: string = &quot;&quot;): tuple[x, y, z: seq[Route]]</a></li>
           </ul></dd>
 <dt><a name="ProgressAction" href="#ProgressAction"><span>ProgressAction:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -1420,7 +1426,7 @@ window.addEventListener('DOMContentLoaded', main);
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-08-19 08:13:17 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-08-19 13:08:11 UTC</small>
       </div>
     </div>
   </div>

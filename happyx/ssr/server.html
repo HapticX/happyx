@@ -202,8 +202,8 @@ window.addEventListener('DOMContentLoaded', main);
 
   </ul>
   <ul class="simple nested-toc-section">processMounts
-      <li><a class="reference" href="#processMounts%2CServer"
-    title="processMounts(self: Server): tuple[x, y, z: seq[Route]]">processMounts(self: Server): tuple[x, y, z: seq[Route]]</a></li>
+      <li><a class="reference" href="#processMounts%2CServer%2Cstring"
+    title="processMounts(self: Server; path: string = &quot;&quot;): tuple[x, y, z: seq[Route]]">processMounts(self: Server; path: string = &quot;&quot;): tuple[x, y, z: seq[Route]]</a></li>
 
   </ul>
 
@@ -483,8 +483,8 @@ Parses query and retrieves TableRef[string, seq[string]] object
 
 </dd>
 </div>
-<div id="processMounts,Server">
-<dt><pre><span class="Keyword">proc</span> <a href="#processMounts%2CServer"><span class="Identifier">processMounts</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="server.html#Server"><span class="Identifier">Server</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">tuple</span><span class="Other">[</span><span class="Identifier">x</span><span class="Other">,</span> <span class="Identifier">y</span><span class="Other">,</span> <span class="Identifier">z</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="../bindings/python_types.html#Route"><span class="Identifier">Route</span></a><span class="Other">]</span><span class="Other">]</span> {.
+<div id="processMounts,Server,string">
+<dt><pre><span class="Keyword">proc</span> <a href="#processMounts%2CServer%2Cstring"><span class="Identifier">processMounts</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="server.html#Server"><span class="Identifier">Server</span></a><span class="Other">;</span> <span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span> <span class="Other">=</span> <span class="StringLit">&quot;&quot;</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">tuple</span><span class="Other">[</span><span class="Identifier">x</span><span class="Other">,</span> <span class="Identifier">y</span><span class="Other">,</span> <span class="Identifier">z</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="../bindings/python_types.html#Route"><span class="Identifier">Route</span></a><span class="Other">]</span><span class="Other">]</span> {.
     <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RegexError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
@@ -695,7 +695,7 @@ The <tt class="docutils literal"><span class="pre"><span class="Identifier">star
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-08-19 08:13:12 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-08-19 13:08:07 UTC</small>
       </div>
     </div>
   </div>
