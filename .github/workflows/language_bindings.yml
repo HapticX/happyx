@@ -65,7 +65,7 @@ jobs:
 
       - name: Publish Python package 📢
         run: |
-          cd bindings/python/dist/
+          cd bindings/python/
           pip install -U twine build packaging jinja2
           python -m build
           twine upload dist/*
