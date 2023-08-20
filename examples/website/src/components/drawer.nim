@@ -19,14 +19,15 @@ component Drawer:
     tDiv(id = "drawerBack", class = "fixed duration-500 opacity-0 pointer-events-none transition-all w-screen h-screen z-40 bg-[#00000060]"):
       @click:
         self.toggle()
-    tDiv(id = "drawer", class = "fixed right-0 duration-500 transition-all w-2/3 translate-x-full h-screen z-50 bg-[{BackgroundSecondary}] dark:bg-[{BackgroundSecondaryDark}]"):
-      tDiv(class = "w-full h-full flex flex-col gap-8 jusitfy-center items-center py-32 px-8"):
+    tDiv(id = "drawer", class = "fixed right-0 duration-300 transition-all ease-out w-2/3 translate-x-full h-screen z-50 bg-[{BackgroundSecondary}] dark:bg-[{BackgroundSecondaryDark}]"):
+      tDiv(class = "w-full h-full flex flex-col gap-8 jusitfy-center items-center py-8 px-8"):
         tDiv(class = "w-full flex justify-end items-center"):
           component Button(
             action = proc() =
               self.toggle()
           ):
-            "x"
+            tP(class = "text-4xl"):
+              "x"
         component Button(
           action = proc() =
             {.emit:"""//js
