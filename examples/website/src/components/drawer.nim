@@ -4,6 +4,13 @@ import
   ../components/[button, sidebar]
 
 
+proc chooseLang*(lang: cstring) =
+  languageSettings.set($lang)
+  buildJs:
+    localStorage["happyx_spoken_language"] = ~lang
+  route(currentRoute)
+
+
 component Drawer:
   isOpen: bool = false
 
@@ -50,6 +57,20 @@ component Drawer:
             route("/roadmap/")
         ):
           {translate("🌎 RoadMap")}
+        tDiv(class = "flex self-center items-center flex-col gap-4"):
+          tP(class = "text-6xl lg:text-3xl"):
+            {translate("Language 🌐")}
+          tDiv(class = "flex justify-center items-center gap-4"):
+            component Button(action = proc() =
+              self.toggle()
+              chooseLang(cstring"en")
+            ):
+              "English"
+            component Button(action = proc() =
+              self.toggle()
+              chooseLang(cstring"ru")
+            ):
+              "Русский"
         tDiv:
           if ($currentRoute).startsWith("/guide/"):
             component SideBar(isMobile = true)
