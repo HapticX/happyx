@@ -333,7 +333,9 @@ window.addEventListener('DOMContentLoaded', main);
 
   </ul>
   <ul class="simple nested-toc-section">set
-      <li><a class="reference" href="#set%2CState%5BT%5D%2CT"
+      <li><a class="reference" href="#set%2CLanguageSettings%2Cstring"
+    title="set(settings: var LanguageSettings; lang: string)">set(settings: var LanguageSettings; lang: string)</a></li>
+  <li><a class="reference" href="#set%2CState%5BT%5D%2CT"
     title="set[T](self: State[T]; value: T)">set[T](self: State[T]; value: T)</a></li>
 
   </ul>
@@ -491,7 +493,7 @@ window.addEventListener('DOMContentLoaded', main);
   <div class="section" id="6">
 <h1><a class="toc-backref" href="#6">Imports</a></h1>
 <dl class="item">
-<a class="reference external" href="renderer.html">renderer</a>
+<a class="reference external" href="renderer.html">renderer</a>, <a class="reference external" href="translatable.html">translatable</a>
 </dl></div>
 <div class="section" id="7">
 <h1><a class="toc-backref" href="#7">Types</a></h1>
@@ -1004,6 +1006,14 @@ Creates a new state
 
 </dd>
 </div>
+<div id="set,LanguageSettings,string">
+<dt><pre><span class="Keyword">proc</span> <a href="#set%2CLanguageSettings%2Cstring"><span class="Identifier">set</span></a><span class="Other">(</span><span class="Identifier">settings</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="translatable.html#LanguageSettings"><span class="Identifier">LanguageSettings</span></a><span class="Other">;</span> <span class="Identifier">lang</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<dd>
+
+
+
+</dd>
+</div>
 <div id="set,State[T],T">
 <dt><pre><span class="Keyword">proc</span> <a href="#set%2CState%5BT%5D%2CT"><span class="Identifier">set</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="state.html#State"><span class="Identifier">State</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">T</span><span class="Other">)</span></pre></dt>
 <dd>
@@ -1188,7 +1198,7 @@ Call any function that available for state value
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-08-19 14:33:58 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-08-20 04:44:54 UTC</small>
       </div>
     </div>
   </div>
