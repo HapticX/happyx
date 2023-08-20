@@ -8,7 +8,7 @@ component CodeBlock:
 
   `template`:
     tPre(class = "relative"):
-      tCode(id = "{self.id}", language = self.language, class = "rounded-md text-3xl lg:text-lg xl:text-base"):
+      tCode(id = "{self.id}", language = self.language, class = "rounded-md text-3xl lg:text-lg xl:text-base language-{self.language}"):
         {self.source}
       tDiv(class = "absolute right-4 top-4"):
         tSvg(

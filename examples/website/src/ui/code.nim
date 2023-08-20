@@ -114,3 +114,41 @@ app.start()
 ├─ README.md
 ├─ .gitignore
 """
+  nimSsrCalc* = """serve "127.0.0.1", 5000:
+  get "/calc/{left:float}/{op}/{right:float}":
+    case op
+    of "+": return fmt"{left + right}"
+    of "-": return fmt"{left - right}"
+    of "/": return fmt"{left / right}"
+    of "*": return fmt"{left * right}"
+    else:
+      statusCode = 404
+      return "failure"
+"""
+  nimSpaCalc* = """appRoutes "app":
+  "/calc/{left:float}/{op}/{right:float}":
+    tDiv:
+      if op == "+":
+        {left + right}
+      elif op == "-":
+        {left - right}
+      elif op == "/":
+        {left / right}
+      elif op == "*":
+        {left * right}
+      else:
+        "failure"
+"""
+  pythonSsrCalc* = """@app.get('/calc/{left}/{op}/{right}')
+def calculate(left: float, right: float, op: str):
+    if op == "+":
+      return left + right
+    elif op == "-":
+      return left - right
+    elif op == "/":
+      return left / right
+    elif op == "*":
+      return left * right
+    else:
+      return Response("failure", status_code=404)
+"""

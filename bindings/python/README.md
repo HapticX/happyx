@@ -70,3 +70,5 @@ def file_resp():
 
 app.start()
 ```
+
+Read more in [User Guide](https://hapticx.github.io/happyx/#/guide/)

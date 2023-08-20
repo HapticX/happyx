@@ -56,7 +56,7 @@ mount Sponsors:
         component Header(drawer = drawer_comp)
       tDiv(class = "flex flex-col gap-8 items-center w-full h-full px-8"):
         tP(class = "text-7xl lg:text-5xl xl:text-3xl font-bold"):
-          "sponsors"
+          {translate("🔥 Sponsors")}
         component Divider
         # Platinum
         tDiv(class = "flex flex-col items-center justify-center"):

@@ -24,6 +24,11 @@ import
   ../core/[exceptions]
 
 
+type
+  LanguageSettings* = object
+    lang*: string
+
+
 var
   translatesStatement* {. compileTime .} = newStmtList()
   translatesCompileTime* {. compileTime .} =
@@ -47,10 +52,12 @@ macro translatable*(body: untyped): untyped =
   ##        "ru" -> "Моя собственная строка"
   ##        "fr" -> "..."
   ## 
+  let
+    translations = ident"translates"
   if translatesStatement.len == 0:
     when defined(js):
       translatesStatement.add(newVarStmt(
-        ident"translates", # newNimNode(nnkPragmaExpr).add(ident"translates", newNimNode(nnkPragma).add(ident"global")),
+        postfix(translations, "*"), # newNimNode(nnkPragmaExpr).add(ident"translates", newNimNode(nnkPragma).add(ident"global")),
         newCall(
         newNimNode(nnkBracketExpr).add(
             ident"newTable", ident"cstring",
@@ -61,13 +68,13 @@ macro translatable*(body: untyped): untyped =
         )
       ))
     else:
-      translatesStatement.add(newVarStmt(ident"translates", newCall(
+      translatesStatement.add(newVarStmt(translations, newCall(
         newNimNode(nnkBracketExpr).add(
           ident"newTable", ident"string", ident"StringTableRef"
         )
       )))
   for s in body:
-    if s.kind == nnkCall and s[0].kind == nnkStrLit and s[1].kind == nnkStmtList:
+    if s.kind == nnkCall and s[0].kind in [nnkStrLit, nnkTripleStrLit] and s[1].kind == nnkStmtList:
       let
         source = s[0]  # source string
         sourceStr = $s[0]  # source string
@@ -79,31 +86,31 @@ macro translatable*(body: untyped): untyped =
       translatesStatement.add(
         when defined(js):
           newAssignment(
-            newNimNode(nnkBracketExpr).add(ident"translates", source),
+            newNimNode(nnkBracketExpr).add(translations, source),
             newCall(newNimNode(nnkBracketExpr).add(
               ident"newTable", ident"cstring", ident"string"
             ))
           )
         else:
           newAssignment(
-            newNimNode(nnkBracketExpr).add(ident"translates", source),
+            newNimNode(nnkBracketExpr).add(translations, source),
             newCall("newStringTable")
           ),
         newAssignment(
           newNimNode(nnkBracketExpr).add(
-            newNimNode(nnkBracketExpr).add(ident"translates", source),
+            newNimNode(nnkBracketExpr).add(translations, source),
             newStrLitNode("default")
           ),
           source
         )
       )
       for t in s[1]:
-        if t.kind == nnkInfix and t[0] == ident"->" and t[1].kind == nnkStrLit and t[2].kind == nnkStrLit:
+        if t.kind == nnkInfix and t[0] == ident"->" and t[1].kind in [nnkStrLit, nnkTripleStrLit] and t[2].kind in [nnkStrLit, nnkTripleStrLit]:
           translatesCompileTime[sourceStr][$t[1]] = $t[2]
           translatesStatement.add(
             newAssignment(
               newNimNode(nnkBracketExpr).add(
-                newNimNode(nnkBracketExpr).add(ident"translates", source),
+                newNimNode(nnkBracketExpr).add(translations, source),
                 t[1]
               ),
               t[2]
@@ -121,21 +128,37 @@ macro translatable*(body: untyped): untyped =
         "Invalid translatable syntax: ",
         lineInfoObj(s)
       )
+  when defined(js):
+    return translatesStatement
 
 
 macro translate*(self: static[string] | string): string =
   ## Translates `self` string to current client language (SPA) or accept-language header (SSG/SSR)
   let
     language =
-      when defined(js):
-        newDotExpr(ident"navigator", ident"language")
-      else:
-        ident"acceptLanguage"
+      newNimNode(nnkIfExpr).add(
+        newNimNode(nnkElifBranch).add(
+          when defined(js):
+            newCall("==", newDotExpr(newDotExpr(ident"languageSettings", ident"val"), ident"lang"), newLit"auto")
+          else:
+            newCall("==", newDotExpr(ident"languageSettings", ident"lang"), newLit"auto"),
+          when defined(js):
+            newDotExpr(ident"navigator", ident"language")
+          else:
+            ident"acceptLanguage"
+        ), newNimNode(nnkElse).add(
+          when defined(js):
+            newDotExpr(newDotExpr(ident"languageSettings", ident"val"), ident"lang")
+          else:
+            newDotExpr(ident"languageSettings", ident"lang")
+        )
+      )
     source =
       when self is static[string]:
         newStrLitNode(self)
       else:
         self
+    translations = ident"translates"
   
   when self is static[string]:
     if not translatesCompileTime.hasKey(self):
@@ -147,21 +170,21 @@ macro translate*(self: static[string] | string): string =
         newCall(
           "hasKey",
           newNimNode(nnkBracketExpr).add(
-            ident"translates", source
+            translations, source
           ),
           language
         )
       ),
       newNimNode(nnkBracketExpr).add(
         newNimNode(nnkBracketExpr).add(
-          ident"translates", source
+          translations, source
         ),
         newStrLitNode("default")
       )
     ), newNimNode(nnkElse).add(
       newNimNode(nnkBracketExpr).add(
         newNimNode(nnkBracketExpr).add(
-          ident"translates", source
+          translations, source
         ),
         language
       )
@@ -172,7 +195,7 @@ macro translate*(self: static[string] | string): string =
       newCall("not",
         newCall(
           "hasKey",
-          ident"translates", source
+          translations, source
         )
       ),
       source

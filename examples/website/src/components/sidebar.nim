@@ -1,7 +1,7 @@
 # Import HappyX
 import
   ../../../../src/happyx,
-  ../ui/colors,
+  ../ui/[colors, translations],
   ./[button, drawer],
   regex,
   unicode,
@@ -72,21 +72,21 @@ component SideBar:
     ):
       if not self.isMobile:
         tP(class = "text-5xl lg:text-3xl xl:text-2xl font-bold text-center w-max"):
-          "Documentation 📕"
+          {translate("📕 Documentation")}
       tDiv(class = "flex flex-col justify-between gap-16 lg:gap-12 xl:gap-8"):
         tDiv(class = "flex flex-col pl-8 lg:pl-6 xl:pl-4 gap-8 lg:gap-4 xl:gap-2"):
           component SideBarTitle:
-            "User Guide 📖"
+            {translate("User Guide 📖")}
             component SideBarFolder:
-              "General 🍍"
+              {translate("General 🍍")}
               component SideBarItem("introduction"):
-                "Introduction ✌"
+                {translate("Introduction ✌")}
               component SideBarItem("getting_started"):
-                "Getting Started 💫"
+                {translate("Getting Started 💫")}
             component SideBarFolder:
-              "Basics 📖"
+              {translate("Basics 📖")}
               component SideBarItem("happyx_app"):
-                "HappyX Application 🍍"
+                {translate("HappyX Application 🍍")}
         tDiv(class = "flex"):
           component Button(
             action = proc() =
@@ -94,4 +94,4 @@ component SideBar:
               window.open('https://hapticx.github.io/happyx/happyx.html', '_blank').focus();
               """.}
           ):
-            "📕 API Docs"
+            {translate("📕 API Docs")}

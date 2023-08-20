@@ -62,9 +62,9 @@ component CodeBlockGuide:
             language = source.lang,
             class =
               if source.playResult.states.len > 0:
-                "rounded-t-md text-3xl lg:text-lg xl:text-base language-{source.lang}"
+                fmt"rounded-t-md text-3xl lg:text-lg xl:text-base language-{source.lang}"
               else:
-                "rounded-md text-3xl lg:text-lg xl:text-base language-{source.lang}"
+                fmt"rounded-md text-3xl lg:text-lg xl:text-base language-{source.lang}"
           ):
             {source.src}
           tDiv(class = "absolute right-2 top-20 lg:top-12 xl:top-8"):

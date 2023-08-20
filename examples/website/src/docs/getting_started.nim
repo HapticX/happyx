@@ -1,9 +1,7 @@
 # Import HappyX
 import
   ../../../../src/happyx,
-  ../ui/colors,
-  ../ui/code,
-  ../ui/play_states,
+  ../ui/[colors, code, play_states, translations],
   ../components/[
     code_block_guide, code_block
   ]
@@ -12,18 +10,18 @@ import
 component GettingStarted:
   `template`:
     tDiv(class = "flex flex-col px-8 py-2 backdrop-blur-sm xl:h-fit gap-4"):
-      tH1: "Getting Started 💫"
+      tH1: {translate("Getting Started 💫")}
       tP:
-        "Before you begin, please make sure you have"
+        {translate("Before you begin, please make sure you have")}
         tCode: tA(href = "https://nim-lang.org"):
-          "Nim programming language"
-        " version 1.6.14 or higher installed, or "
+          {translate("Nim programming language")}
+        {translate(" version 1.6.14 or higher installed, or ")}
         tCode: tA(href = "https://python.org"):
-          "Python programming language"
-        " version 3.10 and above."
+          {translate("Python programming language")}
+        {translate(" version 3.10 and above.")}
       
-      tH2: "Install 📥"
-      tP: "To install HappyX you can write this command"
+      tH2: {translate("Install 📥")}
+      tP: {translate("To install HappyX you can write this command")}
 
       component CodeBlockGuide(@[
         ("Nim", "shell", "nimble install happyx@#head", cstring"nimble_install", newPlayResult()),
@@ -34,10 +32,10 @@ component GettingStarted:
       tH2: "Hello, World! 👋"
 
       tP:
-        "There is our first application. I show you "
+        {translate("There is our first application. I show you ")}
         tSpan(class = "text-green-800 dark:text-green-400"):
           "\"Hello, world!\""
-        " example."
+        {translate(" example.")}
 
       component CodeBlockGuide(@[
         ("Nim", "nim", nimSsrHelloWorldExample, cstring"nim_ssr", newPlayResult()),
@@ -45,13 +43,13 @@ component GettingStarted:
         ("Python", "python", pythonHelloWorldExample, cstring"py_hello_world", newPlayResult()),
       ])
 
-      tH3: "Run App ▶"
+      tH3: {translate("Run App ▶")}
 
       if currentLanguage == "Nim (SPA)":
         tP:
-          "If you create Single-page application then you need "
+          {translate("If you create Single-page application then you need ")}
           tCode: "example.html"
-          "file:"
+          {translate("file:")}
         
         component CodeBlock("html", htmlHelloWorldExample, "html_hello_world")
 

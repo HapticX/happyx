@@ -26,7 +26,8 @@
 ##
 import
   macros,
-  ./renderer
+  ./renderer,
+  ./translatable
 
 
 type
@@ -248,3 +249,18 @@ converter toSeq*[T](self: State[seq[T]]): seq[T] =
   ## Converts `State` into `seq[T]` if possible
   self.value
 
+
+{.cast(gcsafe).}:
+  var languageSettings* =
+    when defined(js):
+      remember LanguageSettings(lang: "auto")
+    else:
+      LanguageSettings(lang: "auto")
+
+
+when defined(js):
+  proc set*(settings: State[LanguageSettings], lang: string) =
+    settings.set(LanguageSettings(lang: lang))
+else:
+  proc set*(settings: var LanguageSettings, lang: string) =
+    settings.lang = lang

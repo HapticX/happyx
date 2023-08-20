@@ -1,7 +1,7 @@
 # Import HappyX
 import
   ../../../../src/happyx,
-  ../ui/colors,
+  ../ui/[colors, translations],
   ../components/[code_block_guide]
 
 
@@ -12,9 +12,9 @@ component IntroductionLanguageChooser:
     tDiv(
       class =
         if self.lang == currentLanguage:
-          "bg-yellow-300/25 px-4 py-2 select-none cursor-pointer rounded-md"
+          "bg-yellow-300/25 px-4 py-2 select-none cursor-pointer rounded-md transition-all"
         else:
-          "bg-yellow-200/10 px-4 py-2 select-none cursor-pointer rounded-md"
+          "bg-yellow-200/10 px-4 py-2 select-none cursor-pointer rounded-md transition-all hover:bg-yellow-200/20 active:bg-yellow-300/10"
     ):
       {self.title}
       @click:
@@ -40,7 +40,7 @@ component Introduction:
   `template`:
     tDiv(class = "flex flex-col px-8 py-2 backdrop-blur-sm xl:h-fit gap-4"):
       tImg(src = "/happyx/public/logo.svg", class = "self-center")
-      tH1: "Introduction ✌"
+      tH1: {translate("Introduction ✌")}
       tTable:
         tTbody:
           tTr:
@@ -81,52 +81,52 @@ component Introduction:
             tTd:
               tA(href = "https://pypi.org/project/happyx/"):
                 tImg(alt = "PyPI Downloads", src = "https://img.shields.io/pypi/dm/happyx?style=for-the-badge")
-      tH2: "What Is HappyX? 💡"
+      tH2: {translate("What Is HappyX? 💡")}
       tP:
         tB: "HappyX"
-        """
-        is A macro-oriented full-stack web framework, lovingly crafted in Nim.
+        {translate("""
+        is a macro-oriented full-stack web framework, written in Nim.
         This project has been under development since April 2023 and is continuously evolving.
-        HappyX draws inspiration from notable web frameworks like Vue.js and FastAPI.  
-        """
+        HappyX draws inspiration from notable web frameworks like Vue.js and FastAPI.
+        """)}
       tDiv(
         class = "flex flex-col w-fit gap-2 border-l-4 rounded-r-md border-green-700 bg-green-200/25 dark:border-green-300 px-4 py-2"
       ):
-        tB: "TIP"
+        tB: {translate("TIP")}
         tP:
-          "HappyX works with Nim and Python so you can choose on of these languages to read this guide ✌"
+          {translate("HappyX works with Nim and Python so you can choose one of these languages to read this guide ✌")}
         tDiv(
           class = "flex justify-around items-center w-full"
         ):
           component IntroductionLanguageChooser("Nim", "Nim 👑")
           component IntroductionLanguageChooser("Python", "Python 🐍")
       tP:
-        tB: "If you:"
+        tB: {translate("If you:")}
         tUl:
-          tLi: "are not keen on constantly \"switching\" your mindset from one language or web framework to another 🔥"
-          tLi: "desire a lightweight web framework ⚡"
-          tLi: "seek a web framework with everything \"out of the box\" 📦"
-        tB: "Then, HappyX is the perfect fit for you. 😉"
-      tH2: "Features 🔥"
+          tLi: {translate("are not keen on constantly \"switching\" your mindset from one language or web framework to another 🔥")}
+          tLi: {translate("desire a lightweight web framework ⚡")}
+          tLi: {translate("seek a web framework with everything \"out of the box\" 📦")}
+        tB: {translate("Then, HappyX is the perfect fit for you. 😉")}
+      tH2: {translate("Features 🔥")}
       tUl:
-        tLi: "Production ready 🔌"
-        tLi: "Multiple server options 🌩"
-        tLi: "Support Single-page applications, Static site generation and Server-side rendering 💫"
-        tLi: "Own Domain-specific languages for HTML, CSS and JavaScript 🎴"
-        tLi: "Hot code reloading (only for Single-page applications for now) ⚡"
-        tLi: "Routing/mounting with path param validation 👮‍♀️"
-        tLi: "CLI for creating, serving and building your projects 💻"
-        tLi: "Request models that supports JSON, FormData, x-www-form-urlencoded and XML 👮‍♀️"
-        tLi: "Translating, logging, security, built-in UI and more other features \"out of the box\" 📦"
+        tLi: {translate("Production ready 🔌")}
+        tLi: {translate("Multiple server options 🌩")}
+        tLi: {translate("Support Single-page applications, Static site generation and Server-side rendering 💫")}
+        tLi: {translate("Own Domain-specific languages for HTML, CSS and JavaScript 🎴")}
+        tLi: {translate("Hot code reloading (only for Single-page applications for now) ⚡")}
+        tLi: {translate("Routing/mounting with path param validation 👮‍♀️")}
+        tLi: {translate("CLI for creating, serving and building your projects 💻")}
+        tLi: {translate("Request models that supports JSON, FormData, x-www-form-urlencoded and XML 👮‍♀️")}
+        tLi: {translate("Translating, logging, security, built-in UI and more other features \"out of the box\" 📦")}
       
       tDiv(class = "flex flex-col gap-8 pt-4"):
-        tH2: "Community 🌎"
+        tH2: {translate("Community 🌎")}
         tDiv(class = "flex flex-col gap-4"):
-          tH3: "Maintainers"
+          tH3: {translate("Maintainers")}
           tDiv(class = "grid grid-cols-5 lg:grid-cols-10 xl:grid-cols-15 gap-x-2 gap-y-8"):
             component Contributor("Ethosa", "https://github.com/Ethosa", "https://avatars.githubusercontent.com/u/49402667?v=4")
         tDiv(class = "flex flex-col gap-4"):
-          tH3: "Contributors"
+          tH3: {translate("Contributors")}
           tDiv(class = "grid grid-cols-5 lg:grid-cols-10 xl:grid-cols-15 gap-x-2 gap-y-8"):
             component Contributor("quimt", "https://github.com/quimt", "https://avatars.githubusercontent.com/u/126020181?v=4")
             component Contributor("its5Q", "https://github.com/its5Q", "https://avatars.githubusercontent.com/u/12975646?v=4")

@@ -1,6 +1,6 @@
 import
   ../../../../src/happyx,
-  ../ui/[colors, code],
+  ../ui/[colors, code, translations],
   ./[code_block]
 
 
@@ -27,9 +27,9 @@ component CodeBlockSlider:
             ):
               tDiv(class = "flex flex-col gap-2 lg:gap-0"):
                 tP(class = "break-keep whitespace-pre text-5xl lg:text-2xl xl:text-lg font-bold pointer-events-none"):
-                  {val.name}
+                  {translate(val.name)}
                 tP(class = "flex h-full justify-center items-center text-3xl lg:texl-xl xl:text-base pointer-events-none"):
-                  {val.description}
+                  {translate(val.description)}
               tDiv(class = "w-full"):
                 component CodeBlock(source = val.text, language = val.language, id = fmt"slider-{self.uniqCompId}_{idx}")
           else:
@@ -39,9 +39,9 @@ component CodeBlockSlider:
             ):
               tDiv(class = "flex flex-col gap-2 lg:gap-0"):
                 tP(class = "break-keep whitespace-pre text-5xl lg:text-2xl xl:text-lg font-bold pointer-events-none"):
-                  {val.name}
+                  {translate(val.name)}
                 tP(class = "flex h-full justify-center items-center text-3xl lg:texl-xl xl:text-base pointer-events-none"):
-                  {val.description}
+                  {translate(val.description)}
               tDiv(class = "w-full"):
                 component CodeBlock(source = val.text, language = val.language, id = fmt"slider-{self.uniqCompId}_{idx}")
       tDiv(class = "flex w-full justify-center items-center p-2 gap-2"):
