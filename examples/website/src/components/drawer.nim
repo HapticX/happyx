@@ -61,7 +61,7 @@ component Drawer:
         tDiv(class = "flex self-center items-center flex-col gap-4"):
           tP(class = "text-6xl lg:text-3xl"):
             {translate("Language 🌐")}
-          tDiv(class = "flex justify-center items-center gap-4"):
+          tDiv(class = "flex flex-col justify-center items-center gap-4"):
             component Button(action = proc() =
               self.toggle()
               chooseLang(cstring"en")
@@ -72,6 +72,26 @@ component Drawer:
               chooseLang(cstring"ru")
             ):
               "Русский"
+            component Button(action = proc() =
+              self.toggle()
+              chooseLang(cstring"ja")
+            ):
+              "日本語"
+            component Button(action = proc() =
+              self.toggle()
+              chooseLang(cstring"zh")
+            ):
+              "中文"
+            component Button(action = proc() =
+              self.toggle()
+              chooseLang(cstring"ko")
+            ):
+              "한국어"
+            component Button(action = proc() =
+              self.toggle()
+              chooseLang(cstring"fr")
+            ):
+              "Français"
         tDiv:
           if ($currentRoute).startsWith("/guide/"):
             component SideBar(isMobile = true)
