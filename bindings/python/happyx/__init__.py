@@ -1,7 +1,11 @@
 from collections import defaultdict
 
 import happyx.happyx as happyx
-from jinja2 import Template
+
+try:
+    from jinja2 import Template
+except ImportError:
+    pass
 
 
 __version__ = happyx.happyx_version()
