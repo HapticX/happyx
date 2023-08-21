@@ -31,7 +31,7 @@ tests/test*
 # Compiled Python modules
 __pycache__/
 *.so
-*.pyd
+# .pyd compiled on my Win machine
 
 # PyPi Package
 *.egg-info/

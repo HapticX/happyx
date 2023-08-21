@@ -58,17 +58,16 @@ jobs:
         run: |
           cd src
           echo "Windows module"
-          nim c --app:lib --out:../bindings/python/happyx/happyx.pyd --tlsEmulation:off --threads:on -d:debug -d:httpx -d:export2py happyx
+          echo "Win Module compiled with"
+          echo "nim c --app:lib --out:../bindings/python/happyx/happyx.so --tlsEmulation:off --passL:-static --passL:-flto --passC:-flto --opt:speed --threads:on -x:off -c:off -d:debug -d:httpx -d:export2py happyx"
           echo "Linux module"
-          nim c --app:lib --out:../bindings/python/happyx/happyx.so --threads:on -d:debug -d:httpx -d:export2py happyx
+          nim c --app:lib --out:../bindings/python/happyx/happyx.so --passL:-flto --passC:-flto --opt:speed --threads:on -d:debug -x:off -c:off -d:httpx -d:export2py happyx
         shell: bash
 
       - name: Publish Python package 📢
-        run: |
-          cd bindings/python/
-          pip install -U twine build packaging jinja2
-          python setup.py sdist
-          twine upload dist/*
-        env:
-          TWINE_USERNAME: __token__
-          TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
+        uses: pypa/gh-action-pypi-publish@8cdc2ab67c943c5edf5fd9ae1995546b4b550602
+        with:
+          user: __token__
+          password: ${{ secrets.PYPI_API_TOKEN }}
+          packages_dir: bindings/python/dist/
+          verbose: true

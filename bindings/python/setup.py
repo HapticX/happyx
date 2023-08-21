@@ -4,7 +4,7 @@ Provides setup script
 from os import path, makedirs
 from setuptools import setup, find_packages, version
 
-from happyx import __version__
+import happyx.happyx as happyx
 
 
 # Load readme
@@ -22,10 +22,11 @@ setup(
     maintainer='HapticX',
     maintainer_email='hapticx.company@gmail.com',
     url='https://github.com/HapticX/happyx',
-    version=__version__,
+    version=happyx.happyx_version(),
     packages=find_packages(),
     include_package_data=True,
-    install_requires=["jinja2"],
+    install_requires=['jinja2'],
+    py_modules=['happyx'],
     license='MIT',
     classifiers=[
         'Development Status :: 4 - Beta',
