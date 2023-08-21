@@ -25,13 +25,17 @@ If applicable, add screenshots to help explain your problem.
 
 **Please complete the following information** 📃
  - OS: [e.g. Win10]
- - Browser [e.g. chrome] (For SPA projects)
- - Version [e.g. 22]
- - Nim version [e.g. 2.0.0]
+ - OS Version [e.g. 22]
  - HappyX version [e.g. 2.4.1] (to see it you can use `hpx -v`)
  - HappyX project type [ssr/spa]
+ <!-- For SSR projects -->
  - HappyX project language [Nim/Python]
+ - Nim/Python version [e.g. 2.0.0]
  - HTTP Server (Default, Httpx, HttpBeast, MicroAsyncHttpServer) (For Python is HttpX)
+ <!-- For SPA Projects -->
+ - Nim version [e.g. 2.0.0]
+ - Browser [e.g. chrome] (For SPA projects)
+ - Browser Version [e.g. 22]
 
 **Additional context** ✌
 Add any other context about the problem here.
