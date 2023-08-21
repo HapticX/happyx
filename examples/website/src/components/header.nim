@@ -64,4 +64,4 @@ component Header:
               localStorage["happyx_spoken_language"] = ~lang
             route(currentRoute)
         ):
-          {translate("Language 🌐")}
+          {translate("🌐 Language")}

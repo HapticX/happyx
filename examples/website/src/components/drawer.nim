@@ -60,7 +60,7 @@ component Drawer:
           {translate("🌎 RoadMap")}
         tDiv(class = "flex self-center items-center flex-col gap-4"):
           tP(class = "text-6xl lg:text-3xl"):
-            {translate("Language 🌐")}
+            {translate("🌐 Language")}
           tDiv(class = "flex flex-col justify-center items-center gap-4"):
             component Button(action = proc() =
               self.toggle()
