@@ -52,7 +52,7 @@ jobs:
           nimble refresh
           nimble install -y -d
           python -m pip install --upgrade pip
-          pip install -U twine build packaging jinja2
+          pip install -U twine build packaging
       
       - name: Python Bindings 🐍
         run: |
@@ -63,6 +63,11 @@ jobs:
           echo "Linux module"
           nim c --app:lib --out:../bindings/python/happyx/happyx.so --passL:-flto --passC:-flto --opt:speed --threads:on -d:debug -x:off -c:off -d:httpx -d:export2py happyx
         shell: bash
+      
+      - name: Build Package 🏗
+        run: |
+          cd bindings/python
+          python -m build
 
       - name: Publish Python package 📢
         uses: pypa/gh-action-pypi-publish@8cdc2ab67c943c5edf5fd9ae1995546b4b550602
