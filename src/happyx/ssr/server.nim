@@ -137,7 +137,6 @@ HappyX web framework [SSR/SSG Part]
 """)
 
   type
-
     Server* = ref object of PyNimObjectExperimental
       address*: string
       port*: int
@@ -1088,7 +1087,11 @@ macro routes*(server: Server, body: untyped): untyped =
               ),
               newCall(
                 "and",
-                newCall("==", newLit"STATICFILE", newDotExpr(ident"route", ident"httpMethod")),
+                newCall(
+                  "contains",
+                  newNimNode(nnkBracket).add(newLit"STATICFILE", newLit"WEBSOCKET"),
+                  newDotExpr(ident"route", ident"httpMethod")
+                ),
                 newCall("contains", pathIdent, newDotExpr(ident"route", ident"pattern"))
               ),
             )
@@ -1202,7 +1205,14 @@ macro routes*(server: Server, body: untyped): untyped =
                       "not",
                       newCall("contains", ident"funcParams", newDotExpr(ident"param", ident"name"))
                     ),
-                    newCall("!=", newDotExpr(ident"param", ident"paramType"), newLit"HttpRequest")
+                    newCall(
+                      "not",
+                      newCall(
+                        "contains",
+                        newNimNode(nnkBracket).add(newLit"HttpRequest", newLit"WebSocket"),
+                        newDotExpr(ident"param", ident"paramType")
+                      )
+                    )
                   ),
                   newCall(
                     "[]=",
@@ -1281,6 +1291,89 @@ macro routes*(server: Server, body: untyped): untyped =
                   )),
                 )
               ),
+              newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
+                newCall(
+                  "==",
+                  newLit"WEBSOCKET",
+                  newDotExpr(ident"route", ident"httpMethod")
+                ),
+                newStmtList(
+                  newLetStmt(ident"wsClient", newCall("await", newCall("newWebSocket", ident"req"))),
+                  # Declare route handler
+                  newVarStmt(ident"handler", newDotExpr(ident"route", ident"handler")),
+                  newLetStmt(ident"wsConnection", newCall("newWebSocketObj", ident"wsClient", newLit"")),
+                  newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
+                    newCall("hasParamType", ident"handlerParams", newLit"WebSocket"),
+                    newCall(
+                      "[]=",
+                      ident"pyFuncParams",
+                      newCall("getParamName", ident"handlerParams", newLit"WebSocket"),
+                      ident"wsConnection"
+                    )
+                  )),
+                  # Add function parameters to locals
+                  newCall("[]=", ident"locals", newLit"funcParams", ident"pFuncParams"),
+                  newNimNode(nnkTryStmt).add(
+                    newStmtList(
+                      # call connect
+                      newAssignment(newDotExpr(ident"wsConnection", ident"state"), ident"wssConnect"),
+                      newCall("processWebSocket", ident"py", ident"locals"),
+                      newAssignment(newDotExpr(ident"wsConnection", ident"state"), ident"wssOpen"),
+                      newNimNode(nnkWhileStmt).add(
+                        newCall("==", newDotExpr(ident"wsClient", ident"readyState"), ident"Open"),
+                        newStmtList(
+                          newLetStmt(ident"wsData", newCall("await", newCall("receiveStrPacket", ident"wsClient"))),
+                          newAssignment(newDotExpr(ident"wsConnection", ident"data"), ident"wsData"),
+                          newCall("processWebSocket", ident"py", ident"locals"),
+                        )
+                      )
+                    ),
+                    newNimNode(nnkExceptBranch).add(
+                      ident"WebSocketClosedError",
+                      newStmtList(
+                        newAssignment(newDotExpr(ident"wsConnection", ident"state"), ident"wssClose"),
+                        newCall("processWebSocket", ident"py", ident"locals"),
+                      )
+                    ),
+                    newNimNode(nnkExceptBranch).add(
+                      ident"WebSocketHandshakeError",
+                      newStmtList(
+                        newCall(
+                          "error",
+                          newLit"Invalid WebSocket handshake. Headers haven't Sec-WebSocket-Version!"
+                        ),
+                        newAssignment(newDotExpr(ident"wsConnection", ident"state"), ident"wssHandshakeError"),
+                        newCall("processWebSocket", ident"py", ident"locals"),
+                      )
+                    ),
+                    newNimNode(nnkExceptBranch).add(
+                      ident"WebSocketProtocolMismatchError",
+                      newStmtList(
+                        newCall(
+                          "error",
+                          newCall("fmt", newLit"Socket tried to use an unknown protocol: {getCurrentExceptionMsg()}")
+                        ),
+                        newAssignment(newDotExpr(ident"wsConnection", ident"state"), ident"wssMismatchProtocol"),
+                        newCall("processWebSocket", ident"py", ident"locals"),
+                      )
+                    ),
+                    newNimNode(nnkExceptBranch).add(
+                      ident"WebSocketError",
+                      newStmtList(
+                        newCall(
+                          "error",
+                          newCall("fmt", newStrLitNode("Unexpected socket error: {getCurrentExceptionMsg()}"))
+                        ),
+                        newAssignment(newDotExpr(ident"wsConnection", ident"state"), ident"wssError"),
+                        newCall("processWebSocket", ident"py", ident"locals"),
+                      )
+                    )
+                  ),
+                  newCall("close", ident"wsClient"),
+                  # Break all code after this
+                  newNimNode(nnkReturnStmt).add(newEmptyNode())
+                )
+              )),
               # Add function parameters to locals
               newCall("[]=", ident"locals", newLit"funcParams", ident"pFuncParams"),
               # Execute callback

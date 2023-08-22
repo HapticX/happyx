@@ -282,6 +282,12 @@
 ## - [sgr](happyx/sugar/sgr.html) provides `->` macro.
 ## - [js](happyx/sugar/js.html) provides `buildJs` macro.
 ## 
+## ### Language Binds ✌
+## 
+## #### Python 🐍
+## - [python](happyx/bindings/python_types.html) main module for Python HappyX.
+## - [python_types](happyx/bindings/python.html) Python types.
+## 
 when not defined(js):
   import
     happyx/ssr/[server, cors, request_models, form_data],

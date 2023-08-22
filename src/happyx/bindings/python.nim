@@ -27,16 +27,73 @@ HappyX web framework
 
 proc newServerPy*(address: string = "127.0.0.1", port: int = 5000): Server {.exportpy: "new_server".} =
   ## Creates a new Server object.
+  ## 
+  ## Arguments:
+  ## - address: string = "127.0.0.1"
+  ## - port: int = 5000
   newServer(address, port)
 
 
-proc happyxVersion*: string {.exportpy: "happyx_version".} = HpxVersion
+proc happyxVersion*: string {.exportpy: "happyx_version".} =
+  ## Returns current HappyX version
+  HpxVersion
 
 
 proc registerCORS*(allow_origins: string, allow_methods: string,
                    allow_headers: string, credentials: bool) {.exportpy: "reg_CORS".} =
   ## Registers Cross-Origins Resource Sharing at Runtime
   setCors(allow_origins, allow_methods, allow_headers, credentials)
+
+
+proc close*(self: python_types.WebSocket) {.exportpy.} =
+  self.ws.close()
+
+
+proc receiveText*(self: python_types.WebSocket): string {.exportpy: "receive_text".} =
+  ## Receives raw text data from WebSocket
+  self.data
+
+
+proc receiveJson*(self: python_types.WebSocket): JsonNode {.exportpy: "receive_json".} =
+  ## Receives JSON data from WebSocket
+  parseJson(self.data)
+
+
+proc sendText*(self: python_types.WebSocket, value: string) {.exportpy: "send_text".} =
+  ## Sends raw text to WebSocket connection
+  waitFor self.ws.send(value)
+
+
+proc sendJson*(self: python_types.WebSocket, value: JsonNode) {.exportpy: "send_json".} =
+  ## Sends JSON to WebSocket connection
+  waitFor self.ws.send($value)
+
+
+proc id*(self: python_types.WebSocket): uint64 {.exportpy.} =
+  ## Returns current WebSocket unique ID.
+  self.id
+
+
+proc state*(self: python_types.WebSocket): string {.exportpy.} =
+  ## Returns current WebSocket state.
+  ## 
+  ## "connect" - WebSocket connection was created. Can send data. Can't receive data.
+  ## "open" - WebSocket connection is opened. Can send/receive data.
+  ## "close" - WebSocket connectin os closed. Can't send/receive data.
+  ## "mismatch_protocol" - WebSocket Mismatch Protocol Error. Can't send/receive data.
+  ## "handshake_error" - WebSocket Handshake Error (no Sec-WebSocket-Version in headers). Can't send/receive data.
+  ## "error" - any other WebSocket error. Can't send/receive data.
+  case self.state
+  of wssConnect: "connect"
+  of wssOpen: "open"
+  of wssClose: "close"
+  of wssHandshakeError: "handshake_error"
+  of wssMismatchProtocol: "mismatch_protocol"
+  of wssError: "error"
+
+
+proc `==`*(self, other: python_types.WebSocket): bool {.exportpy: "__eq__".} =
+  self.id == other.id
 
 
 proc newResponse*(data: string, status_code: int = 200, headers: PyObject = pyDict()): ResponseObj {.exportpy: "Response".} =
@@ -161,6 +218,13 @@ proc copy*(self: Server, path: string): auto {.exportpy.} =
   proc wrapper(callback: PyObject) =
     let routeData = handleRoute(path)
     self.routes.add(initRoute(routeData.path, routeData.purePath, "COPY", re("^" & routeData.purePath & "$"), callback))
+  wrapper
+
+
+proc websocket*(self: Server, path: string): auto {.exportpy.} =
+  proc wrapper(callback: PyObject) =
+    let routeData = handleRoute(path)
+    self.routes.add(initRoute(routeData.path, routeData.purePath, "WEBSOCKET", re("^" & routeData.purePath & "$"), callback))
   wrapper
 
 

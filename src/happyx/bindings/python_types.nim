@@ -8,7 +8,16 @@ import
   nimpy,
   nimpy/py_types,
   # Regex
-  regex
+  regex,
+  # HappyX
+  ../core/constants
+
+
+# WS
+when enableHttpBeast:
+  import websocket
+else:
+  import websocketx
 
 
 type
@@ -47,9 +56,32 @@ type
     fields*: seq[tuple[key, val: string]]
   RequestModels* = ref object of PyNimObjectExperimental
     requestModels*: seq[RequestModelData]
+  WebSocketState* {.pure, size: sizeof(int8).} = enum
+    wssConnect,
+    wssOpen,
+    wssClose,
+    wssHandshakeError,
+    wssMismatchProtocol,
+    wssError
+  WebSocket* = ref object of PyNimObjectExperimental
+    id*: uint64
+    ws*: websocketx.WebSocket
+    data*: string
+    state*: WebSocketState
 
 
-var requestModelsHidden* = RequestModels(requestModels: @[])
+var
+  requestModelsHidden* = RequestModels(requestModels: @[])
+  uniqueWebSocketId*: uint64 = -1
+
+
+proc newWebSocketObj*(ws: websocketx.WebSocket, data: string = ""): python_types.WebSocket =
+  inc uniqueWebSocketId
+  python_types.WebSocket(ws: ws, data: data, id: uniqueWebSocketId, state: wssOpen)
+
+
+proc processWebSocket*(py, locals: PyObject) =
+  discard py.eval("handler(**funcParams)", locals)
 
 
 proc toPPyObject*(headers: HttpHeaders): PPyObject =
@@ -94,6 +126,13 @@ proc newHandlerParams*(args: openarray[string], annotations: JsonNode): seq[Hand
 proc contains*(params: seq[HandlerParam], key: string): bool =
   for param in params:
     if param.name == key:
+      return true
+  false
+
+
+proc hasParamType*(params: seq[HandlerParam], key: string): bool =
+  for param in params:
+    if param.paramType == key:
       return true
   false
 

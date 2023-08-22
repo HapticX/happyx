@@ -1,4 +1,5 @@
 from collections import defaultdict
+from enum import IntEnum
 
 import happyx.happyx as happyx
 
@@ -18,9 +19,10 @@ Response = happyx.Response
 FileResponse = happyx.FileResponse
 HtmlResponse = happyx.HtmlResponse
 JsonResponse = happyx.JsonResponse
+# Web Sockets
+WebSocket = happyx.WebSocket
 # Main functions
 new_server = happyx.new_server
-reg_CORS = happyx.reg_CORS
 
 
 __jinja2_templates_directory = './'
@@ -33,7 +35,12 @@ def setup_jinja2(directory: str = './') -> None:
     __jinja2_templates_directory = directory
 
 
-def TemplateResponse(template_name: str, status_code: int = 200, headers: dict = None, **kwargs) -> happyx.HtmlResponseObj:
+def TemplateResponse(
+        template_name: str,
+        status_code: int = 200,
+        headers: dict = None,
+        **kwargs
+) -> happyx.HtmlResponseObj:
     """
     Creates a new HtmlResponse that renders from Jinja2 template
     """
@@ -45,7 +52,11 @@ def TemplateResponse(template_name: str, status_code: int = 200, headers: dict =
     return HtmlResponse(Template(data).render(**kwargs), status_code=status_code, headers=headers)
 
 
-async def TemplateResponseAsync(template_name: str, status_code: int = 200, headers: dict = None) -> happyx.HtmlResponseObj:
+async def TemplateResponseAsync(
+        template_name: str,
+        status_code: int = 200,
+        headers: dict = None
+) -> happyx.HtmlResponseObj:
     """
     Creates a new HtmlResponse that renders from Jinja2 template
     """

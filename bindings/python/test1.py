@@ -1,5 +1,5 @@
 from happyx import (
-    FileResponse, HtmlResponse, JsonResponse, HttpRequest,
+    FileResponse, HtmlResponse, JsonResponse, HttpRequest, WebSocket,
     Response, new_server, reg_cors, RequestModelBase, __version__
 )
 import happyx
@@ -29,6 +29,18 @@ class Message(RequestModelBase):
 class Auth(RequestModelBase):
     username: str
     password: str
+
+
+@app.websocket('/ws')
+def handle_websocket_connection(ws: WebSocket):
+    if ws.id() == 2:
+        ws.send_text("failure")
+        ws.close()
+    print(ws.state())
+    print(ws.id())
+    if ws.state() == 'open':  # connect/open/close/mismatch_protocol/handshake_error/error
+        print(ws.receive_text())
+        ws.send_json({"hello": "world"})
 
 
 @user.get("/id{userId?}")
