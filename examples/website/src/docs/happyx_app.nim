@@ -123,3 +123,19 @@ component HappyxApp:
         ("Nim (SPA)", "nim", nimSpaCalc, cstring"nim_server_ssr", newPlayResult()),
         ("Python", "python", pythonSsrCalc, cstring"py_server", newPlayResult()),
       ])
+
+      tH3: {translate("Run App ▶")}
+
+      if currentLanguage == "Nim (SPA)":
+        tP:
+          {translate("If you create Single-page application then you need ")}
+          tCode: "example.html"
+          {translate("file:")}
+        
+        component CodeBlock("html", htmlHelloWorldExample, "html_hello_world")
+
+      component CodeBlockGuide(@[
+        ("Nim", "shell", "nim c -r calculator.nim", cstring"nim_ssr", playCalculatorAppSsr),
+        ("Nim (SPA)", "shell", "nim js calculator.nim\nopen calculator.html#/calc/5/*/5", cstring"nim_ssr", playCalculatorAppSpa),
+        ("Python", "shell", "python calculator.py", cstring"py_hello_world", playCalculatorAppSsr),
+      ])

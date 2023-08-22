@@ -49,3 +49,21 @@ Read docs: https://tailwindcss.com/docs/""", cstring"", cstring"shell", 250),
     (cstring"Successfully created client project", cstring"", cstring"shell", 250),
     (cstring"", cstring"", cstring"", 10000)
   ])
+  playCalculatorAppSpa* = newPlayResult(@[
+    (cstring"", cstring"""
+<div id="calculator_app" class="w-full h-48 bg-white text-black", style="font-family: serif; font-size: 100%;">
+  25
+</div>
+""", cstring"", 100),
+    (cstring"", cstring"", cstring"", 10000)
+  ])
+  playCalculatorAppSsr* = newPlayResult(@[
+    (cstring"$ curl -D- http://127.0.0.1:5000/calc/5/*/5", cstring"", cstring"shell", 250),
+    (cstring"""
+HTTP/1.1 200 OK
+Content-Type: text/plaintext
+
+25
+""", cstring"", cstring"http", 500),
+    (cstring"", cstring"", cstring"", 10000)
+  ])
