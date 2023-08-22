@@ -113,6 +113,11 @@ window.addEventListener('DOMContentLoaded', main);
     title="`$`(self: Server): string">`$`(self: Server): string</a></li>
 
   </ul>
+  <ul class="simple nested-toc-section">==
+      <li><a class="reference" href="#%3D%3D%2C%2C"
+    title="`==`(self, other: python_types.WebSocket): bool">`==`(self, other: python_types.WebSocket): bool</a></li>
+
+  </ul>
   <ul class="simple nested-toc-section">addRequestModelData
       <li><a class="reference" href="#addRequestModelData%2CRequestModelData"
     title="addRequestModelData(data: RequestModelData)">addRequestModelData(data: RequestModelData)</a></li>
@@ -126,6 +131,11 @@ window.addEventListener('DOMContentLoaded', main);
   <ul class="simple nested-toc-section">body
       <li><a class="reference" href="#body%2CHttpRequest"
     title="body(self: HttpRequest): string">body(self: HttpRequest): string</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">close
+      <li><a class="reference" href="#close"
+    title="close(self: python_types.WebSocket)">close(self: python_types.WebSocket)</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">copy
@@ -181,6 +191,11 @@ window.addEventListener('DOMContentLoaded', main);
   <ul class="simple nested-toc-section">httpMethod
       <li><a class="reference" href="#httpMethod%2CHttpRequest"
     title="httpMethod(self: HttpRequest): string">httpMethod(self: HttpRequest): string</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">id
+      <li><a class="reference" href="#id"
+    title="id(self: python_types.WebSocket): uint64">id(self: python_types.WebSocket): uint64</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">link
@@ -266,6 +281,16 @@ window.addEventListener('DOMContentLoaded', main);
     title="put(self: Server; path: string): auto">put(self: Server; path: string): auto</a></li>
 
   </ul>
+  <ul class="simple nested-toc-section">receiveJson
+      <li><a class="reference" href="#receiveJson"
+    title="receiveJson(self: python_types.WebSocket): JsonNode">receiveJson(self: python_types.WebSocket): JsonNode</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">receiveText
+      <li><a class="reference" href="#receiveText"
+    title="receiveText(self: python_types.WebSocket): string">receiveText(self: python_types.WebSocket): string</a></li>
+
+  </ul>
   <ul class="simple nested-toc-section">registerCORS
       <li><a class="reference" href="#registerCORS%2Cstring%2Cstring%2Cstring%2Cbool"
     title="registerCORS(allow_origins: string; allow_methods: string;
@@ -273,9 +298,24 @@ window.addEventListener('DOMContentLoaded', main);
              allow_headers: string; credentials: bool)</a></li>
 
   </ul>
+  <ul class="simple nested-toc-section">sendJson
+      <li><a class="reference" href="#sendJson%2C%2CJsonNode"
+    title="sendJson(self: python_types.WebSocket; value: JsonNode)">sendJson(self: python_types.WebSocket; value: JsonNode)</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">sendText
+      <li><a class="reference" href="#sendText%2C%2Cstring"
+    title="sendText(self: python_types.WebSocket; value: string)">sendText(self: python_types.WebSocket; value: string)</a></li>
+
+  </ul>
   <ul class="simple nested-toc-section">startServerPy
       <li><a class="reference" href="#startServerPy%2CServer"
     title="startServerPy(self: Server)">startServerPy(self: Server)</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">state
+      <li><a class="reference" href="#state"
+    title="state(self: python_types.WebSocket): string">state(self: python_types.WebSocket): string</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">static
@@ -297,6 +337,11 @@ window.addEventListener('DOMContentLoaded', main);
   <ul class="simple nested-toc-section">unlink
       <li><a class="reference" href="#unlink%2CServer%2Cstring"
     title="unlink(self: Server; path: string): auto">unlink(self: Server; path: string): auto</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">websocket
+      <li><a class="reference" href="#websocket%2CServer%2Cstring"
+    title="websocket(self: Server; path: string): auto">websocket(self: Server; path: string): auto</a></li>
 
   </ul>
 
@@ -323,6 +368,14 @@ window.addEventListener('DOMContentLoaded', main);
 <dl class="item">
 <div id="$,Server">
 <dt><pre><span class="Keyword">proc</span> <a href="#%24%2CServer"><span class="Identifier">`$`</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="../ssr/server.html#Server"><span class="Identifier">Server</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<dd>
+
+
+
+</dd>
+</div>
+<div id="==,,">
+<dt><pre><span class="Keyword">proc</span> <a href="#%3D%3D%2C%2C"><span class="Identifier">`==`</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">,</span> <span class="Identifier">other</span><span class="Other">:</span> <span class="Identifier">python_types</span><span class="Other">.</span><span class="Identifier">WebSocket</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 
@@ -356,6 +409,15 @@ window.addEventListener('DOMContentLoaded', main);
 </div>
 <div id="body,HttpRequest">
 <dt><pre><span class="Keyword">proc</span> <a href="#body%2CHttpRequest"><span class="Identifier">body</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="python_types.html#HttpRequest"><span class="Identifier">HttpRequest</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<dd>
+
+
+
+</dd>
+</div>
+<div id="close">
+<dt><pre><span class="Keyword">proc</span> <a href="#close"><span class="Identifier">close</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <span class="Identifier">python_types</span><span class="Other">.</span><span class="Identifier">WebSocket</span><span class="Other">)</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">,</span> <span class="Identifier">WriteIOEffect</span><span class="Other">,</span> <span class="Identifier">ReadIOEffect</span><span class="Other">,</span> <span class="Identifier">TimeEffect</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 
@@ -422,7 +484,7 @@ window.addEventListener('DOMContentLoaded', main);
 <dt><pre><span class="Keyword">proc</span> <a href="#happyxVersion"><span class="Identifier">happyxVersion</span></a><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
-
+Returns current HappyX version
 
 </dd>
 </div>
@@ -471,6 +533,14 @@ window.addEventListener('DOMContentLoaded', main);
 <dd>
 
 
+
+</dd>
+</div>
+<div id="id">
+<dt><pre><span class="Keyword">proc</span> <a href="#id"><span class="Identifier">id</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <span class="Identifier">python_types</span><span class="Other">.</span><span class="Identifier">WebSocket</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint64</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<dd>
+
+Returns current WebSocket unique ID.
 
 </dd>
 </div>
@@ -553,7 +623,12 @@ Raw response object
     <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
-Creates a new Server object.
+<p>Creates a new Server object.</p>
+<p>Arguments:</p>
+<ul class="simple"><li>address: string = &quot;127.0.0.1&quot;</li>
+<li>port: int = 5000</li>
+</ul>
+
 
 </dd>
 </div>
@@ -605,6 +680,24 @@ Creates a new Server object.
 
 </dd>
 </div>
+<div id="receiveJson">
+<dt><pre><span class="Keyword">proc</span> <a href="#receiveJson"><span class="Identifier">receiveJson</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <span class="Identifier">python_types</span><span class="Other">.</span><span class="Identifier">WebSocket</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">JsonNode</span> {.
+    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">IOError</span><span class="Other">,</span> <span class="Identifier">OSError</span><span class="Other">,</span> <span class="Identifier">JsonParsingError</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">,</span> <span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ReadIOEffect</span><span class="Other">,</span> <span class="Identifier">WriteIOEffect</span><span class="Other">]</span></span>.}</pre></dt>
+<dd>
+
+Receives JSON data from WebSocket
+
+</dd>
+</div>
+<div id="receiveText">
+<dt><pre><span class="Keyword">proc</span> <a href="#receiveText"><span class="Identifier">receiveText</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <span class="Identifier">python_types</span><span class="Other">.</span><span class="Identifier">WebSocket</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<dd>
+
+Receives raw text data from WebSocket
+
+</dd>
+</div>
 <div id="registerCORS,string,string,string,bool">
 <dt><pre><span class="Keyword">proc</span> <a href="#registerCORS%2Cstring%2Cstring%2Cstring%2Cbool"><span class="Identifier">registerCORS</span></a><span class="Other">(</span><span class="Identifier">allow_origins</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">allow_methods</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span>
                   <span class="Identifier">allow_headers</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">credentials</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">)</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
@@ -615,12 +708,42 @@ Registers Cross-Origins Resource Sharing at Runtime
 
 </dd>
 </div>
+<div id="sendJson,,JsonNode">
+<dt><pre><span class="Keyword">proc</span> <a href="#sendJson%2C%2CJsonNode"><span class="Identifier">sendJson</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <span class="Identifier">python_types</span><span class="Other">.</span><span class="Identifier">WebSocket</span><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">JsonNode</span><span class="Other">)</span> {.
+    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">,</span> <span class="Identifier">OSError</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">,</span> <span class="Identifier">TimeEffect</span><span class="Other">,</span> <span class="Identifier">WriteIOEffect</span><span class="Other">,</span> <span class="Identifier">ReadIOEffect</span><span class="Other">]</span></span>.}</pre></dt>
+<dd>
+
+Sends JSON to WebSocket connection
+
+</dd>
+</div>
+<div id="sendText,,string">
+<dt><pre><span class="Keyword">proc</span> <a href="#sendText%2C%2Cstring"><span class="Identifier">sendText</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <span class="Identifier">python_types</span><span class="Other">.</span><span class="Identifier">WebSocket</span><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span> {.
+    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">,</span> <span class="Identifier">OSError</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">,</span> <span class="Identifier">TimeEffect</span><span class="Other">,</span> <span class="Identifier">WriteIOEffect</span><span class="Other">,</span> <span class="Identifier">ReadIOEffect</span><span class="Other">]</span></span>.}</pre></dt>
+<dd>
+
+Sends raw text to WebSocket connection
+
+</dd>
+</div>
 <div id="startServerPy,Server">
 <dt><pre><span class="Keyword">proc</span> <a href="#startServerPy%2CServer"><span class="Identifier">startServerPy</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="../ssr/server.html#Server"><span class="Identifier">Server</span></a><span class="Other">)</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ValueError</span><span class="Other">,</span> <span class="Identifier">Exception</span><span class="Other">,</span> <span class="Identifier">OSError</span><span class="Other">,</span>
     <span class="Identifier">IOError</span><span class="Other">,</span> <span class="Identifier">EOFError</span><span class="Other">,</span> <span class="Identifier">KeyError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">,</span> <span class="Identifier">TimeEffect</span><span class="Other">,</span> <span class="Identifier">WriteIOEffect</span><span class="Other">,</span>
     <span class="Identifier">ReadIOEffect</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
+
+
+</dd>
+</div>
+<div id="state">
+<dt><pre><span class="Keyword">proc</span> <a href="#state"><span class="Identifier">state</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <span class="Identifier">python_types</span><span class="Other">.</span><span class="Identifier">WebSocket</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<dd>
+
+<p>Returns current WebSocket state.</p>
+<p>&quot;connect&quot; - WebSocket connection was created. Can send data. Can't receive data. &quot;open&quot; - WebSocket connection is opened. Can send/receive data. &quot;close&quot; - WebSocket connectin os closed. Can't send/receive data. &quot;mismatch_protocol&quot; - WebSocket Mismatch Protocol Error. Can't send/receive data. &quot;handshake_error&quot; - WebSocket Handshake Error (no Sec-WebSocket-Version in headers). Can't send/receive data. &quot;error&quot; - any other WebSocket error. Can't send/receive data.</p>
 
 
 </dd>
@@ -665,6 +788,14 @@ Registers Cross-Origins Resource Sharing at Runtime
 
 </dd>
 </div>
+<div id="websocket,Server,string">
+<dt><pre><span class="Keyword">proc</span> <a href="#websocket%2CServer%2Cstring"><span class="Identifier">websocket</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="../ssr/server.html#Server"><span class="Identifier">Server</span></a><span class="Other">;</span> <span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">auto</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<dd>
+
+
+
+</dd>
+</div>
 
 </dl></div>
 
@@ -675,7 +806,7 @@ Registers Cross-Origins Resource Sharing at Runtime
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-08-21 04:42:38 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-08-22 06:02:21 UTC</small>
       </div>
     </div>
   </div>

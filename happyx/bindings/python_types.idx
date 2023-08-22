@@ -7,7 +7,12 @@ Route	happyx/bindings/python_types.html#Route	python_types: Route
 HandlerParam	happyx/bindings/python_types.html#HandlerParam	python_types: HandlerParam	
 RequestModelData	happyx/bindings/python_types.html#RequestModelData	python_types: RequestModelData	
 RequestModels	happyx/bindings/python_types.html#RequestModels	python_types: RequestModels	
+WebSocketState	happyx/bindings/python_types.html#WebSocketState	python_types: WebSocketState	
+WebSocket	happyx/bindings/python_types.html#WebSocket	python_types: WebSocket	
 requestModelsHidden	happyx/bindings/python_types.html#requestModelsHidden	python_types: requestModelsHidden	
+uniqueWebSocketId	happyx/bindings/python_types.html#uniqueWebSocketId	python_types: uniqueWebSocketId	
+newWebSocketObj	happyx/bindings/python_types.html#newWebSocketObj,,string	python_types: newWebSocketObj(ws: websocketx.WebSocket; data: string = &quot;&quot;): python_types.WebSocket	
+processWebSocket	happyx/bindings/python_types.html#processWebSocket,PyObject,PyObject	python_types: processWebSocket(py, locals: PyObject)	
 toPPyObject	happyx/bindings/python_types.html#toPPyObject,HttpHeaders	python_types: toPPyObject(headers: HttpHeaders): PPyObject	
 toHttpHeaders	happyx/bindings/python_types.html#toHttpHeaders,PyObject	python_types: toHttpHeaders(headers: PyObject): HttpHeaders	
 initRoute	happyx/bindings/python_types.html#initRoute,string,string,string,Regex,PyObject	python_types: initRoute(path, purePath, httpMethod: string; pattern: Regex; handler: PyObject): Route	
@@ -15,6 +20,7 @@ initHttpRequest	happyx/bindings/python_types.html#initHttpRequest,string,string,
 newAnnotations	happyx/bindings/python_types.html#newAnnotations,PyObject	python_types: newAnnotations(data: PyObject): JsonNode	
 newHandlerParams	happyx/bindings/python_types.html#newHandlerParams,openArray[string],JsonNode	python_types: newHandlerParams(args: openArray[string]; annotations: JsonNode): seq[\n    HandlerParam]	
 contains	happyx/bindings/python_types.html#contains,seq[HandlerParam],string	python_types: contains(params: seq[HandlerParam]; key: string): bool	
+hasParamType	happyx/bindings/python_types.html#hasParamType,seq[HandlerParam],string	python_types: hasParamType(params: seq[HandlerParam]; key: string): bool	
 contains	happyx/bindings/python_types.html#contains,RequestModels,string	python_types: contains(self: RequestModels; name: string): bool	
 getParamType	happyx/bindings/python_types.html#getParamType,seq[HandlerParam],string	python_types: getParamType(params: seq[HandlerParam]; key: string): string	
 `[]`	happyx/bindings/python_types.html#[],seq[HandlerParam],string	python_types: `[]`(params: seq[HandlerParam]; key: string): string	

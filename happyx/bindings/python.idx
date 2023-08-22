@@ -1,6 +1,14 @@
 newServerPy	happyx/bindings/python.html#newServerPy,string,int	python: newServerPy(address: string = &quot;127.0.0.1&quot;; port: int = 5000): Server	
 happyxVersion	happyx/bindings/python.html#happyxVersion	python: happyxVersion(): string	
 registerCORS	happyx/bindings/python.html#registerCORS,string,string,string,bool	python: registerCORS(allow_origins: string; allow_methods: string;\n             allow_headers: string; credentials: bool)	
+close	happyx/bindings/python.html#close	python: close(self: python_types.WebSocket)	
+receiveText	happyx/bindings/python.html#receiveText	python: receiveText(self: python_types.WebSocket): string	
+receiveJson	happyx/bindings/python.html#receiveJson	python: receiveJson(self: python_types.WebSocket): JsonNode	
+sendText	happyx/bindings/python.html#sendText,,string	python: sendText(self: python_types.WebSocket; value: string)	
+sendJson	happyx/bindings/python.html#sendJson,,JsonNode	python: sendJson(self: python_types.WebSocket; value: JsonNode)	
+id	happyx/bindings/python.html#id	python: id(self: python_types.WebSocket): uint64	
+state	happyx/bindings/python.html#state	python: state(self: python_types.WebSocket): string	
+`==`	happyx/bindings/python.html#==,,	python: `==`(self, other: python_types.WebSocket): bool	
 newResponse	happyx/bindings/python.html#newResponse,string,int,PyObject	python: newResponse(data: string; status_code: int = 200; headers: PyObject = pyDict()): ResponseObj	
 newFileResponse	happyx/bindings/python.html#newFileResponse,string,int,bool	python: newFileResponse(filename: string; status_code: int = 200;\n                as_attachment: bool = false): FileResponseObj	
 newJsonResponse	happyx/bindings/python.html#newJsonResponse,JsonNode,int,PyObject	python: newJsonResponse(data: JsonNode; status_code: int = 200;\n                headers: PyObject = pyDict()): JsonResponseObj	
@@ -35,6 +43,7 @@ purge	happyx/bindings/python.html#purge,Server,string	python: purge(self: Server
 options	happyx/bindings/python.html#options,Server,string	python: options(self: Server; path: string): auto	
 head	happyx/bindings/python.html#head,Server,string	python: head(self: Server; path: string): auto	
 copy	happyx/bindings/python.html#copy,Server,string	python: copy(self: Server; path: string): auto	
+websocket	happyx/bindings/python.html#websocket,Server,string	python: websocket(self: Server; path: string): auto	
 middleware	happyx/bindings/python.html#middleware,Server	python: middleware(self: Server): auto	
 notfound	happyx/bindings/python.html#notfound,Server	python: notfound(self: Server): auto	
 mount	happyx/bindings/python.html#mount,Server,string,Server	python: mount(self: Server; path: string; other: Server)	

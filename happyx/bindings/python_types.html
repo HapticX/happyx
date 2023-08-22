@@ -99,6 +99,12 @@ window.addEventListener('DOMContentLoaded', main);
   </div>
   <ul class="simple simple-toc" id="toc-list">
 <li>
+  <a class="reference reference-toplevel" href="#6" id="56">Imports</a>
+  <ul class="simple simple-toc-section">
+    
+  </ul>
+</li>
+<li>
   <a class="reference reference-toplevel" href="#7" id="57">Types</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#FileResponseObj"
@@ -145,6 +151,16 @@ window.addEventListener('DOMContentLoaded', main);
   httpMethod*: string
   pattern*: Regex
   handler*: PyObject">Route</a></li>
+  <li><a class="reference" href="#WebSocket"
+    title="WebSocket = ref object of PyNimObjectExperimental
+  id*: uint64
+  ws*: websocketx.WebSocket
+  data*: string
+  state*: WebSocketState">WebSocket</a></li>
+  <li><a class="reference" href="#WebSocketState"
+    title="WebSocketState {.pure, size: 1.} = enum
+  wssConnect, wssOpen, wssClose, wssHandshakeError, wssMismatchProtocol,
+  wssError">WebSocketState</a></li>
 
   </ul>
 </li>
@@ -153,6 +169,8 @@ window.addEventListener('DOMContentLoaded', main);
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#requestModelsHidden"
     title="requestModelsHidden = RequestModels(requestModels: @[])">requestModelsHidden</a></li>
+  <li><a class="reference" href="#uniqueWebSocketId"
+    title="uniqueWebSocketId: uint64 = -1">uniqueWebSocketId</a></li>
 
   </ul>
 </li>
@@ -188,6 +206,11 @@ window.addEventListener('DOMContentLoaded', main);
     title="hasHttpRequest(params: seq[HandlerParam]): bool">hasHttpRequest(params: seq[HandlerParam]): bool</a></li>
 
   </ul>
+  <ul class="simple nested-toc-section">hasParamType
+      <li><a class="reference" href="#hasParamType%2Cseq%5BHandlerParam%5D%2Cstring"
+    title="hasParamType(params: seq[HandlerParam]; key: string): bool">hasParamType(params: seq[HandlerParam]; key: string): bool</a></li>
+
+  </ul>
   <ul class="simple nested-toc-section">initHttpRequest
       <li><a class="reference" href="#initHttpRequest%2Cstring%2Cstring%2CHttpHeaders%2Cstring"
     title="initHttpRequest(path, httpMethod: string; headers: HttpHeaders;
@@ -212,6 +235,16 @@ window.addEventListener('DOMContentLoaded', main);
     HandlerParam]</a></li>
 
   </ul>
+  <ul class="simple nested-toc-section">newWebSocketObj
+      <li><a class="reference" href="#newWebSocketObj%2C%2Cstring"
+    title="newWebSocketObj(ws: websocketx.WebSocket; data: string = &quot;&quot;): python_types.WebSocket">newWebSocketObj(ws: websocketx.WebSocket; data: string = &quot;&quot;): python_types.WebSocket</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">processWebSocket
+      <li><a class="reference" href="#processWebSocket%2CPyObject%2CPyObject"
+    title="processWebSocket(py, locals: PyObject)">processWebSocket(py, locals: PyObject)</a></li>
+
+  </ul>
   <ul class="simple nested-toc-section">toHttpHeaders
       <li><a class="reference" href="#toHttpHeaders%2CPyObject"
     title="toHttpHeaders(headers: PyObject): HttpHeaders">toHttpHeaders(headers: PyObject): HttpHeaders</a></li>
@@ -234,7 +267,12 @@ window.addEventListener('DOMContentLoaded', main);
   <div id="tocRoot"></div>
   
   <p class="module-desc"></p>
-  <div class="section" id="7">
+  <div class="section" id="6">
+<h1><a class="toc-backref" href="#6">Imports</a></h1>
+<dl class="item">
+<a class="reference external" href="../core/constants.html">../core/constants</a>
+</dl></div>
+<div class="section" id="7">
 <h1><a class="toc-backref" href="#7">Types</a></h1>
 <dl class="item">
 <div id="FileResponseObj">
@@ -344,6 +382,29 @@ window.addEventListener('DOMContentLoaded', main);
 
 </dd>
 </div>
+<div id="WebSocket">
+<dt><pre><a href="python_types.html#WebSocket"><span class="Identifier">WebSocket</span></a> <span class="Other">=</span> <span class="Keyword">ref</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <span class="Identifier">PyNimObjectExperimental</span>
+  <span class="Identifier">id</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint64</span>
+  <span class="Identifier">ws</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">websocketx</span><span class="Other">.</span><span class="Identifier">WebSocket</span>
+  <span class="Identifier">data</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
+  <span class="Identifier">state</span><span class="Operator">*</span><span class="Other">:</span> <a href="python_types.html#WebSocketState"><span class="Identifier">WebSocketState</span></a>
+</pre></dt>
+<dd>
+
+
+
+</dd>
+</div>
+<div id="WebSocketState">
+<dt><pre><a href="python_types.html#WebSocketState"><span class="Identifier">WebSocketState</span></a> {.<span class="Identifier">pure</span><span class="Other">,</span> <span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">1</span>.} <span class="Other">=</span> <span class="Keyword">enum</span>
+  <span class="Identifier">wssConnect</span><span class="Other">,</span> <span class="Identifier">wssOpen</span><span class="Other">,</span> <span class="Identifier">wssClose</span><span class="Other">,</span> <span class="Identifier">wssHandshakeError</span><span class="Other">,</span> <span class="Identifier">wssMismatchProtocol</span><span class="Other">,</span>
+  <span class="Identifier">wssError</span></pre></dt>
+<dd>
+
+
+
+</dd>
+</div>
 
 </dl></div>
 <div class="section" id="8">
@@ -351,6 +412,14 @@ window.addEventListener('DOMContentLoaded', main);
 <dl class="item">
 <div id="requestModelsHidden">
 <dt><pre><a href="python_types.html#requestModelsHidden"><span class="Identifier">requestModelsHidden</span></a> <span class="Other">=</span> <a href="python_types.html#RequestModels"><span class="Identifier">RequestModels</span></a><span class="Other">(</span><span class="Identifier">requestModels</span><span class="Other">:</span> <span class="Operator">@</span><span class="Other">[</span><span class="Other">]</span><span class="Other">)</span></pre></dt>
+<dd>
+
+
+
+</dd>
+</div>
+<div id="uniqueWebSocketId">
+<dt><pre><a href="python_types.html#uniqueWebSocketId"><span class="Identifier">uniqueWebSocketId</span></a><span class="Other">:</span> <span class="Identifier">uint64</span> <span class="Other">=</span> <span class="DecNumber">-1</span></pre></dt>
 <dd>
 
 
@@ -422,6 +491,15 @@ window.addEventListener('DOMContentLoaded', main);
 
 </dd>
 </div>
+<div id="hasParamType,seq[HandlerParam],string">
+<dt><pre><span class="Keyword">proc</span> <a href="#hasParamType%2Cseq%5BHandlerParam%5D%2Cstring"><span class="Identifier">hasParamType</span></a><span class="Other">(</span><span class="Identifier">params</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="python_types.html#HandlerParam"><span class="Identifier">HandlerParam</span></a><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">key</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<dd>
+
+
+
+</dd>
+</div>
 <div id="initHttpRequest,string,string,HttpHeaders,string">
 <dt><pre><span class="Keyword">proc</span> <a href="#initHttpRequest%2Cstring%2Cstring%2CHttpHeaders%2Cstring"><span class="Identifier">initHttpRequest</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">,</span> <span class="Identifier">httpMethod</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">headers</span><span class="Other">:</span> <span class="Identifier">HttpHeaders</span><span class="Other">;</span>
                      <span class="Identifier">body</span><span class="Other">:</span> <span class="Identifier">string</span> <span class="Other">=</span> <span class="StringLit">&quot;&quot;</span><span class="Other">)</span><span class="Other">:</span> <a href="python_types.html#HttpRequest"><span class="Identifier">HttpRequest</span></a> {.
@@ -460,6 +538,25 @@ window.addEventListener('DOMContentLoaded', main);
 
 </dd>
 </div>
+<div id="newWebSocketObj,,string">
+<dt><pre><span class="Keyword">proc</span> <a href="#newWebSocketObj%2C%2Cstring"><span class="Identifier">newWebSocketObj</span></a><span class="Other">(</span><span class="Identifier">ws</span><span class="Other">:</span> <span class="Identifier">websocketx</span><span class="Other">.</span><span class="Identifier">WebSocket</span><span class="Other">;</span> <span class="Identifier">data</span><span class="Other">:</span> <span class="Identifier">string</span> <span class="Other">=</span> <span class="StringLit">&quot;&quot;</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">python_types</span><span class="Other">.</span><span class="Identifier">WebSocket</span> {.
+    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<dd>
+
+
+
+</dd>
+</div>
+<div id="processWebSocket,PyObject,PyObject">
+<dt><pre><span class="Keyword">proc</span> <a href="#processWebSocket%2CPyObject%2CPyObject"><span class="Identifier">processWebSocket</span></a><span class="Other">(</span><span class="Identifier">py</span><span class="Other">,</span> <span class="Identifier">locals</span><span class="Other">:</span> <span class="Identifier">PyObject</span><span class="Other">)</span> {.
+    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">,</span> <span class="Identifier">OSError</span><span class="Other">,</span> <span class="Identifier">IOError</span><span class="Other">,</span> <span class="Identifier">EOFError</span><span class="Other">,</span> <span class="Identifier">KeyError</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span></span>.}</pre></dt>
+<dd>
+
+
+
+</dd>
+</div>
 <div id="toHttpHeaders,PyObject">
 <dt><pre><span class="Keyword">proc</span> <a href="#toHttpHeaders%2CPyObject"><span class="Identifier">toHttpHeaders</span></a><span class="Other">(</span><span class="Identifier">headers</span><span class="Other">:</span> <span class="Identifier">PyObject</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">HttpHeaders</span> {.
     <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span></span>.}</pre></dt>
@@ -488,7 +585,7 @@ window.addEventListener('DOMContentLoaded', main);
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-08-21 04:42:23 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-08-22 06:02:06 UTC</small>
       </div>
     </div>
   </div>
