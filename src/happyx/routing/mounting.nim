@@ -35,8 +35,8 @@ proc findAndReplaceMount*(body: NimNode) {. compileTime .} =
   var offset =  0
   for i in 0..<body.len:
     let idx = i+offset
-    if body[idx].kind == nnkCommand and body[idx] == ident"mount":
-      if body[idx][1].kind == nnkInfix and body[idx][1] == ident"->":
+    if body[idx].kind == nnkCommand and body[idx][0] == ident"mount":
+      if body[idx][1].kind == nnkInfix and body[idx][1][0] == ident"->":
         # handle mount
         let
           name = body[idx][1][2]
