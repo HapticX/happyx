@@ -122,8 +122,8 @@ window.addEventListener('DOMContentLoaded', main);
       <li><a class="reference" href="#ApiDocObject"
     title="ApiDocObject = object
   description*: string
-  httpMethod*: string
   path*: string
+  httpMethods*: seq[string]
   pathParams*: seq[PathParamObj]
   models*: seq[RequestModelObj]">ApiDocObject</a></li>
   <li><a class="reference" href="#ModelBase"
@@ -180,9 +180,9 @@ window.addEventListener('DOMContentLoaded', main);
 
   </ul>
   <ul class="simple nested-toc-section">newApiDocObject
-      <li><a class="reference" href="#newApiDocObject%2Cstring%2Cstring%2Cstring%2Cseq%5BPathParamObj%5D%2Cseq%5BRequestModelObj%5D"
-    title="newApiDocObject(httpMethod, description, path: string;
-                pathParams: seq[PathParamObj]; models: seq[RequestModelObj]): ApiDocObject">newApiDocObject(httpMethod, description, path: string;
+      <li><a class="reference" href="#newApiDocObject%2Cseq%5Bstring%5D%2Cstring%2Cstring%2Cseq%5BPathParamObj%5D%2Cseq%5BRequestModelObj%5D"
+    title="newApiDocObject(httpMethods: seq[string]; description, path: string;
+                pathParams: seq[PathParamObj]; models: seq[RequestModelObj]): ApiDocObject">newApiDocObject(httpMethods: seq[string]; description, path: string;
                 pathParams: seq[PathParamObj]; models: seq[RequestModelObj]): ApiDocObject</a></li>
 
   </ul>
@@ -311,8 +311,8 @@ window.addEventListener('DOMContentLoaded', main);
 <div id="ApiDocObject">
 <dt><pre><a href="server.html#ApiDocObject"><span class="Identifier">ApiDocObject</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">description</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
-  <span class="Identifier">httpMethod</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
   <span class="Identifier">path</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
+  <span class="Identifier">httpMethods</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">]</span>
   <span class="Identifier">pathParams</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="../routing/routing.html#PathParamObj"><span class="Identifier">PathParamObj</span></a><span class="Other">]</span>
   <span class="Identifier">models</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="../routing/routing.html#RequestModelObj"><span class="Identifier">RequestModelObj</span></a><span class="Other">]</span>
 </pre></dt>
@@ -425,8 +425,8 @@ window.addEventListener('DOMContentLoaded', main);
 
 </dd>
 </div>
-<div id="newApiDocObject,string,string,string,seq[PathParamObj],seq[RequestModelObj]">
-<dt><pre><span class="Keyword">proc</span> <a href="#newApiDocObject%2Cstring%2Cstring%2Cstring%2Cseq%5BPathParamObj%5D%2Cseq%5BRequestModelObj%5D"><span class="Identifier">newApiDocObject</span></a><span class="Other">(</span><span class="Identifier">httpMethod</span><span class="Other">,</span> <span class="Identifier">description</span><span class="Other">,</span> <span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span>
+<div id="newApiDocObject,seq[string],string,string,seq[PathParamObj],seq[RequestModelObj]">
+<dt><pre><span class="Keyword">proc</span> <a href="#newApiDocObject%2Cseq%5Bstring%5D%2Cstring%2Cstring%2Cseq%5BPathParamObj%5D%2Cseq%5BRequestModelObj%5D"><span class="Identifier">newApiDocObject</span></a><span class="Other">(</span><span class="Identifier">httpMethods</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">description</span><span class="Other">,</span> <span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span>
                      <span class="Identifier">pathParams</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="../routing/routing.html#PathParamObj"><span class="Identifier">PathParamObj</span></a><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">models</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="../routing/routing.html#RequestModelObj"><span class="Identifier">RequestModelObj</span></a><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <a href="server.html#ApiDocObject"><span class="Identifier">ApiDocObject</span></a> {.
     <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
@@ -695,7 +695,7 @@ The <tt class="docutils literal"><span class="pre"><span class="Identifier">star
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-08-22 06:38:17 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-08-23 07:34:55 UTC</small>
       </div>
     </div>
   </div>

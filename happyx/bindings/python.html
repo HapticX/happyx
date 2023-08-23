@@ -298,6 +298,11 @@ window.addEventListener('DOMContentLoaded', main);
              allow_headers: string; credentials: bool)</a></li>
 
   </ul>
+  <ul class="simple nested-toc-section">route
+      <li><a class="reference" href="#route%2CServer%2Cstring%2Cseq%5Bstring%5D"
+    title="route(self: Server; path: string; methods: seq[string] = @[&quot;get&quot;]): auto">route(self: Server; path: string; methods: seq[string] = @[&quot;get&quot;]): auto</a></li>
+
+  </ul>
   <ul class="simple nested-toc-section">sendJson
       <li><a class="reference" href="#sendJson%2C%2CJsonNode"
     title="sendJson(self: python_types.WebSocket; value: JsonNode)">sendJson(self: python_types.WebSocket; value: JsonNode)</a></li>
@@ -387,7 +392,7 @@ window.addEventListener('DOMContentLoaded', main);
     <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ValueError</span><span class="Other">,</span> <span class="Identifier">RegexError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
-
+Registers public folder
 
 </dd>
 </div>
@@ -428,7 +433,7 @@ window.addEventListener('DOMContentLoaded', main);
 <dt><pre><span class="Keyword">proc</span> <a href="#copy%2CServer%2Cstring"><span class="Identifier">copy</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="../ssr/server.html#Server"><span class="Identifier">Server</span></a><span class="Other">;</span> <span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">auto</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
-
+Registers a new COPY route.
 
 </dd>
 </div>
@@ -460,7 +465,7 @@ window.addEventListener('DOMContentLoaded', main);
 <dt><pre><span class="Keyword">proc</span> <a href="#delete%2CServer%2Cstring"><span class="Identifier">delete</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="../ssr/server.html#Server"><span class="Identifier">Server</span></a><span class="Other">;</span> <span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">auto</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
-
+Registers a new DELETE route.
 
 </dd>
 </div>
@@ -476,7 +481,7 @@ window.addEventListener('DOMContentLoaded', main);
 <dt><pre><span class="Keyword">proc</span> <a href="#get%2CServer%2Cstring"><span class="Identifier">get</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="../ssr/server.html#Server"><span class="Identifier">Server</span></a><span class="Other">;</span> <span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">auto</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
-
+Registers a new GET route.
 
 </dd>
 </div>
@@ -492,7 +497,7 @@ Returns current HappyX version
 <dt><pre><span class="Keyword">proc</span> <a href="#head%2CServer%2Cstring"><span class="Identifier">head</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="../ssr/server.html#Server"><span class="Identifier">Server</span></a><span class="Other">;</span> <span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">auto</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
-
+Registers a new HEAD route.
 
 </dd>
 </div>
@@ -548,7 +553,7 @@ Returns current WebSocket unique ID.
 <dt><pre><span class="Keyword">proc</span> <a href="#link%2CServer%2Cstring"><span class="Identifier">link</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="../ssr/server.html#Server"><span class="Identifier">Server</span></a><span class="Other">;</span> <span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">auto</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
-
+Registers a new LINK route.
 
 </dd>
 </div>
@@ -556,7 +561,7 @@ Returns current WebSocket unique ID.
 <dt><pre><span class="Keyword">proc</span> <a href="#middleware%2CServer"><span class="Identifier">middleware</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="../ssr/server.html#Server"><span class="Identifier">Server</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">auto</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
-
+Registers a new MIDDLEWARE route.
 
 </dd>
 </div>
@@ -564,7 +569,7 @@ Returns current WebSocket unique ID.
 <dt><pre><span class="Keyword">proc</span> <a href="#mount%2CServer%2Cstring%2CServer"><span class="Identifier">mount</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="../ssr/server.html#Server"><span class="Identifier">Server</span></a><span class="Other">;</span> <span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">other</span><span class="Other">:</span> <a href="../ssr/server.html#Server"><span class="Identifier">Server</span></a><span class="Other">)</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
-
+Registers sub application at <tt class="docutils literal"><span class="pre"><span class="Identifier">path</span></span></tt>
 
 </dd>
 </div>
@@ -636,7 +641,7 @@ Raw response object
 <dt><pre><span class="Keyword">proc</span> <a href="#notfound%2CServer"><span class="Identifier">notfound</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="../ssr/server.html#Server"><span class="Identifier">Server</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">auto</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
-
+Registers a new NOT FOUND route.
 
 </dd>
 </div>
@@ -644,7 +649,7 @@ Raw response object
 <dt><pre><span class="Keyword">proc</span> <a href="#options%2CServer%2Cstring"><span class="Identifier">options</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="../ssr/server.html#Server"><span class="Identifier">Server</span></a><span class="Other">;</span> <span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">auto</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
-
+Registers a new OPTIONS route.
 
 </dd>
 </div>
@@ -660,7 +665,7 @@ Raw response object
 <dt><pre><span class="Keyword">proc</span> <a href="#post%2CServer%2Cstring"><span class="Identifier">post</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="../ssr/server.html#Server"><span class="Identifier">Server</span></a><span class="Other">;</span> <span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">auto</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
-
+Registers a new POST route.
 
 </dd>
 </div>
@@ -668,7 +673,7 @@ Raw response object
 <dt><pre><span class="Keyword">proc</span> <a href="#purge%2CServer%2Cstring"><span class="Identifier">purge</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="../ssr/server.html#Server"><span class="Identifier">Server</span></a><span class="Other">;</span> <span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">auto</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
-
+Registers a new PURGE route.
 
 </dd>
 </div>
@@ -676,7 +681,7 @@ Raw response object
 <dt><pre><span class="Keyword">proc</span> <a href="#put%2CServer%2Cstring"><span class="Identifier">put</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="../ssr/server.html#Server"><span class="Identifier">Server</span></a><span class="Other">;</span> <span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">auto</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
-
+Registers a new PUT route.
 
 </dd>
 </div>
@@ -705,6 +710,17 @@ Receives raw text data from WebSocket
 <dd>
 
 Registers Cross-Origins Resource Sharing at Runtime
+
+</dd>
+</div>
+<div id="route,Server,string,seq[string]">
+<dt><pre><span class="Keyword">proc</span> <a href="#route%2CServer%2Cstring%2Cseq%5Bstring%5D"><span class="Identifier">route</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="../ssr/server.html#Server"><span class="Identifier">Server</span></a><span class="Other">;</span> <span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">methods</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">]</span> <span class="Other">=</span> <span class="Operator">@</span><span class="Other">[</span><span class="StringLit">&quot;get&quot;</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">auto</span> {.
+    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<dd>
+
+<p>Registers a new route.</p>
+<p>You can choose HTTP methods via route(&quot;/&quot;, methods=[&quot;GET&quot;, &quot;POST&quot;])</p>
+
 
 </dd>
 </div>
@@ -784,7 +800,7 @@ Sends raw text to WebSocket connection
 <dt><pre><span class="Keyword">proc</span> <a href="#unlink%2CServer%2Cstring"><span class="Identifier">unlink</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="../ssr/server.html#Server"><span class="Identifier">Server</span></a><span class="Other">;</span> <span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">auto</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
-
+Registers a new UNLINK route.
 
 </dd>
 </div>
@@ -792,7 +808,7 @@ Sends raw text to WebSocket connection
 <dt><pre><span class="Keyword">proc</span> <a href="#websocket%2CServer%2Cstring"><span class="Identifier">websocket</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="../ssr/server.html#Server"><span class="Identifier">Server</span></a><span class="Other">;</span> <span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">auto</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
-
+Registers a new WEBSOCKET route.
 
 </dd>
 </div>
@@ -806,7 +822,7 @@ Sends raw text to WebSocket connection
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-08-22 06:38:23 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-08-23 07:35:00 UTC</small>
       </div>
     </div>
   </div>

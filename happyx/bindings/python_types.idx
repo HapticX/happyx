@@ -15,7 +15,8 @@ newWebSocketObj	happyx/bindings/python_types.html#newWebSocketObj,,string	python
 processWebSocket	happyx/bindings/python_types.html#processWebSocket,PyObject,PyObject	python_types: processWebSocket(py, locals: PyObject)	
 toPPyObject	happyx/bindings/python_types.html#toPPyObject,HttpHeaders	python_types: toPPyObject(headers: HttpHeaders): PPyObject	
 toHttpHeaders	happyx/bindings/python_types.html#toHttpHeaders,PyObject	python_types: toHttpHeaders(headers: PyObject): HttpHeaders	
-initRoute	happyx/bindings/python_types.html#initRoute,string,string,string,Regex,PyObject	python_types: initRoute(path, purePath, httpMethod: string; pattern: Regex; handler: PyObject): Route	
+initRoute	happyx/bindings/python_types.html#initRoute,string,string,seq[string],Regex,PyObject	python_types: initRoute(path, purePath: string; httpMethods: seq[string]; pattern: Regex;\n          handler: PyObject): Route	
+hasHttpMethod	happyx/bindings/python_types.html#hasHttpMethod,Route,	python_types: hasHttpMethod(self: Route; httpMethods: string | seq[string] | openArray[string]): bool	
 initHttpRequest	happyx/bindings/python_types.html#initHttpRequest,string,string,HttpHeaders,string	python_types: initHttpRequest(path, httpMethod: string; headers: HttpHeaders;\n                body: string = &quot;&quot;): HttpRequest	
 newAnnotations	happyx/bindings/python_types.html#newAnnotations,PyObject	python_types: newAnnotations(data: PyObject): JsonNode	
 newHandlerParams	happyx/bindings/python_types.html#newHandlerParams,openArray[string],JsonNode	python_types: newHandlerParams(args: openArray[string]; annotations: JsonNode): seq[\n    HandlerParam]	

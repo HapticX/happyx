@@ -20,6 +20,7 @@ var NTI2751463542 = {size: 0, kind: 18, base: null, node: null, finalizer: null}
 var NTI2751463526 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI2768240790 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI2768240701 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2768240643 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
 var NTI2701136087 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI2701135057 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI2701134715 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
@@ -73,6 +74,14 @@ var NTI2667577347 = {size: 0, kind: 17, base: null, node: null, finalizer: null}
 var NTI2919236097 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI2919235739 = {size: 0, kind: 24, base: null, node: null, finalizer: null};
 var NTI2919235699 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2919235604 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2919235603 = {size: 0, kind: 22, base: null, node: null, finalizer: null};
+var NTI2936012803 = {size: 0, kind: 14, base: null, node: null, finalizer: null};
+var NTI2936012804 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2919235591 = {size: 0, kind: 24, base: null, node: null, finalizer: null};
+var NTI2919235597 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2919235596 = {size: 0, kind: 22, base: null, node: null, finalizer: null};
+var NTI2919235587 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
 var NTI2684354816 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI2684356754 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI2684356577 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
@@ -99,6 +108,7 @@ var NTI2684355366 = {size: 0, kind: 22, base: null, node: null, finalizer: null}
 var NTI2684355356 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
 var NTI2818572607 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI2852126776 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2852126723 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
 var NTI2952794133 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI2952794034 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI2952793971 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
@@ -109,6 +119,9 @@ var NTI2952792866 = {size: 0, kind: 18, base: null, node: null, finalizer: null}
 var NTI2952792541 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI2952792529 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI2952792506 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2248147502 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2248147501 = {size: 0, kind: 22, base: null, node: null, finalizer: null};
+var NTI2717908995 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
 var NTI2952792451 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI2952792116 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI2952791791 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
@@ -117,6 +130,13 @@ var NTI2952791756 = {size: 0, kind: 18, base: null, node: null, finalizer: null}
 var NTI2952790204 = {size: 0, kind: 24, base: null, node: null, finalizer: null};
 var NTI2952790150 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI2952790137 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2248147510 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2248147509 = {size: 0, kind: 22, base: null, node: null, finalizer: null};
+var NTI2952790019 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2952790024 = {size: 0, kind: 24, base: null, node: null, finalizer: null};
+var NTI2952790030 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2952790029 = {size: 0, kind: 22, base: null, node: null, finalizer: null};
+var NTI2952790020 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
 var NTI2969568332 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI2969567935 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI2969567547 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
@@ -125,8 +145,10 @@ var NTI2701131779 = {size: 0, kind: 17, base: null, node: null, finalizer: null}
 var NTI2667577988 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
 var NTI2969567308 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI2969567293 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2969567235 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
 var NTI2902458455 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI2902458430 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2902458371 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
 var NTI2818575498 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI2818572556 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
 var NTI2818572446 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
@@ -135,11 +157,17 @@ var NTI2818573346 = {size: 0, kind: 18, base: null, node: null, finalizer: null}
 var NTI2818572973 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI2818572947 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI2868903992 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2868903939 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
 var NTI2885681443 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI2885681368 = {size: 0, kind: 24, base: null, node: null, finalizer: null};
 var NTI2885681328 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI2885681248 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI2885681235 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2885681156 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2885681155 = {size: 0, kind: 24, base: null, node: null, finalizer: null};
+var NTI2885681170 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2885681169 = {size: 0, kind: 22, base: null, node: null, finalizer: null};
+var NTI2885681159 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
 var NTI939524122 = {size: 0, kind: 24, base: null, node: null, finalizer: null};
 var NTI2835349539 = {size: 0, kind: 24, base: null, node: null, finalizer: null};
 var NTI2785018275 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
@@ -150,6 +178,11 @@ var NTI2785018065 = {size: 0, kind: 18, base: null, node: null, finalizer: null}
 var NTI2785017957 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI2785017943 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI2785017930 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2801795078 = {size: 0, kind: 22, base: null, node: null, finalizer: null};
+var NTI2785017867 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2785017866 = {size: 0, kind: 22, base: null, node: null, finalizer: null};
+var NTI2785017859 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
+var NTI2818572891 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
 var NTI2801797062 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI2801796736 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI2801796723 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
@@ -176,7 +209,10 @@ var NTI2835349520 = {size: 0, kind: 18, base: null, node: null, finalizer: null}
 var NTI2835349519 = {size: 0, kind: 22, base: null, node: null, finalizer: null};
 var NTI2835349510 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
 var NTI2818572720 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2248147494 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI2248147493 = {size: 0, kind: 22, base: null, node: null, finalizer: null};
 var NTI2818572664 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
+var NTI754976722 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI1929379877 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI1929379857 = {size: 0, kind: 14, base: null, node: null, finalizer: null};
 var NTI1929380025 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
@@ -272,195 +308,14 @@ var NTI2113929330 = {size: 0, kind: 24, base: null, node: null, finalizer: null}
 var NTI2113929329 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
 var NTI2113929232 = {size: 0, kind: 22, base: null, node: null, finalizer: null};
 var NTI2013266291 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI2969567235 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
-var NTI469778090 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI2818572891 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
-var NTI469778065 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469778052 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469778029 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469777993 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI1442840934 = {size: 0, kind: 24, base: null, node: null, finalizer: null};
-var NTI1442840933 = {size: 0, kind: 24, base: null, node: null, finalizer: null};
-var NTI1442841138 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI452985126 = {size: 0, kind: 24, base: null, node: null, finalizer: null};
-var NTI1459618290 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI1409286286 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI1409286283 = {size: 0, kind: 24, base: null, node: null, finalizer: null};
-var NTI1409286280 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI1207959570 = {size: 0, kind: 24, base: null, node: null, finalizer: null};
-var NTI1207959559 = {size: 0, kind: 24, base: null, node: null, finalizer: null};
-var NTI1207959569 = {size: 0, kind: 24, base: null, node: null, finalizer: null};
-var NTI1207959558 = {size: 0, kind: 24, base: null, node: null, finalizer: null};
-var NTI1207959560 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI1207959567 = {size: 0, kind: 24, base: null, node: null, finalizer: null};
-var NTI1207959556 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI1207959566 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI1207959598 = {size: 0, kind: 24, base: null, node: null, finalizer: null};
-var NTI1207959597 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI1207959589 = {size: 0, kind: 24, base: null, node: null, finalizer: null};
-var NTI1207959587 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI1207959584 = {size: 0, kind: 24, base: null, node: null, finalizer: null};
-var NTI1207959581 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI1207959562 = {size: 0, kind: 14, base: null, node: null, finalizer: null};
-var NTI1207959575 = {size: 0, kind: 24, base: null, node: null, finalizer: null};
-var NTI1207959564 = {size: 0,kind: 33,base: null,node: null,finalizer: null};
-var NTI1207959574 = {size: 0, kind: 24, base: null, node: null, finalizer: null};
-var NTI754974723 = {size: 0,kind: 34,base: null,node: null,finalizer: null};
-var NTI1207959563 = {size: 0, kind: 14, base: null, node: null, finalizer: null};
-var NTI1207959565 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI1207959571 = {size: 0, kind: 24, base: null, node: null, finalizer: null};
-var NTI1207959561 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI1442841134 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI1610612740 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI1610612929 = {size: 0, kind: 19, base: null, node: null, finalizer: null};
-var NTI1442841522 = {size: 0, kind: 24, base: null, node: null, finalizer: null};
-var NTI1442841521 = {size: 0, kind: 24, base: null, node: null, finalizer: null};
-var NTI1442841520 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI1442841517 = {size: 0, kind: 22, base: null, node: null, finalizer: null};
-var NTI1442841612 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI1442841614 = {size: 0, kind: 24, base: null, node: null, finalizer: null};
-var NTI1442841613 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI1627389974 = {size: 0,kind: 25,base: null,node: null,finalizer: null};
-var NTI1627389968 = {size: 0,kind: 25,base: null,node: null,finalizer: null};
-var NTI1627389957 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI1627391790 = {size: 0, kind: 19, base: null, node: null, finalizer: null};
-var NTI1627391239 = {size: 0, kind: 19, base: null, node: null, finalizer: null};
-var NTI1627390634 = {size: 0, kind: 19, base: null, node: null, finalizer: null};
-var NTI1442841136 = {size: 0, kind: 14, base: null, node: null, finalizer: null};
-var NTI1627390532 = {size: 0, kind: 19, base: null, node: null, finalizer: null};
-var NTI33554459 = {size: 0,kind: 34,base: null,node: null,finalizer: null};
-var NTI1258291251 = {size: 0, kind: 16, base: null, node: null, finalizer: null};
-var NTI33554458 = {size: 0,kind: 33,base: null,node: null,finalizer: null};
-var NTI1207959816 = {size: 0, kind: 24, base: null, node: null, finalizer: null};
-var NTI754976722 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI1442840626 = {size: 0,kind: 34,base: null,node: null,finalizer: null};
-var NTI1442841514 = {size: 0,kind: 33,base: null,node: null,finalizer: null};
-var NTI1442841516 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI1442841553 = {size: 0, kind: 24, base: null, node: null, finalizer: null};
-var NTI33555124 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
-var NTI469777892 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469777864 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469777851 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469777482 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469777454 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469777441 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469777072 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469777044 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469777031 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469776662 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469776314 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469776286 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469776273 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469775212 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469774874 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469774845 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469774832 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469773771 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469773433 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469773405 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469773392 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469771994 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469771656 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469771628 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469771615 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469771601 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469771253 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469770905 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469770892 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469770869 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469770851 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469770804 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469770765 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469770752 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469770706 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469770693 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469770680 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469770633 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469770620 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469770607 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI2919235604 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI2919235603 = {size: 0, kind: 22, base: null, node: null, finalizer: null};
-var NTI2919235591 = {size: 0, kind: 24, base: null, node: null, finalizer: null};
-var NTI2919235597 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI2919235596 = {size: 0, kind: 22, base: null, node: null, finalizer: null};
-var NTI2919235587 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
-var NTI2936012803 = {size: 0, kind: 14, base: null, node: null, finalizer: null};
-var NTI2936012804 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI2919235609 = {size: 0, kind: 24, base: null, node: null, finalizer: null};
-var NTI469770559 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469770546 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469770533 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI2902458371 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
-var NTI469770183 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469770170 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469770147 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469770129 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI2885681170 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI2885681169 = {size: 0, kind: 22, base: null, node: null, finalizer: null};
-var NTI2885681159 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
-var NTI2885681156 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI2885681155 = {size: 0, kind: 24, base: null, node: null, finalizer: null};
-var NTI469770031 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469768987 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI2248147502 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI2248147501 = {size: 0, kind: 22, base: null, node: null, finalizer: null};
-var NTI2717908995 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
-var NTI2868903939 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
-var NTI2248147494 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI2248147493 = {size: 0, kind: 22, base: null, node: null, finalizer: null};
-var NTI2768240643 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
-var NTI469767941 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI2248147510 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI2248147509 = {size: 0, kind: 22, base: null, node: null, finalizer: null};
-var NTI2952790024 = {size: 0, kind: 24, base: null, node: null, finalizer: null};
-var NTI2952790030 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI2952790029 = {size: 0, kind: 22, base: null, node: null, finalizer: null};
-var NTI2952790020 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
-var NTI2952790019 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI2952790037 = {size: 0, kind: 24, base: null, node: null, finalizer: null};
-var NTI469766868 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469766521 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469766173 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469766156 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469765799 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469765452 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469765105 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469764757 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469764740 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469764727 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469764359 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469764012 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469763665 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469763317 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469763300 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469762942 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469762595 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469762566 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469762549 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469762537 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469762524 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI2852126723 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
-var NTI469762508 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI2801795078 = {size: 0, kind: 22, base: null, node: null, finalizer: null};
-var NTI2785017867 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI2785017866 = {size: 0, kind: 22, base: null, node: null, finalizer: null};
-var NTI2785017859 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
-var NTI469762484 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469762471 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469762442 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469762424 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469762405 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469762386 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469762366 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469762349 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI2751463428 = {size: 0,kind: 25,base: null,node: null,finalizer: null};
 var NTI2751463441 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI2751463440 = {size: 0, kind: 22, base: null, node: null, finalizer: null};
 var NTI2751463430 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
-var NTI469762282 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469762243 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469762214 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI469762197 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI469762217 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI469762178 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI469762149 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI469762132 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI754980791 = {size: 0,kind: 31,base: null,node: null,finalizer: null};
 var NTI754981270 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI2248147486 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
@@ -690,18 +545,18 @@ NTI2801795077.base = NTI1845493767;
 var NNI754981270 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "a", len: 0, typ: NTI754980791, name: "a", sons: null}, 
 {kind: 1, offset: "b", len: 0, typ: NTI33554456, name: "b", sons: null}]};
 NTI754981270.node = NNI754981270;
-var NNI469762197 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+var NNI469762132 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469762197.node = NNI469762197;
-var NNI469762214 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+NTI469762132.node = NNI469762132;
+var NNI469762149 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469762214.node = NNI469762214;
-var NNI469762243 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+NTI469762149.node = NNI469762149;
+var NNI469762178 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469762243.node = NNI469762243;
-var NNI469762282 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+NTI469762178.node = NNI469762178;
+var NNI469762217 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469762282.node = NNI469762282;
+NTI469762217.node = NNI469762217;
 var NNI2751463441 = {kind: 1, offset: "value", len: 0, typ: NTI2751463428, name: "value", sons: null};
 NTI2751463441.node = NNI2751463441;
 NTI2751463440.base = NTI2751463441;
@@ -710,532 +565,6 @@ var NNI2751463430 = {kind: 2, len: 3, offset: 0, typ: null, name: null, sons: [{
 {kind: 1, offset: "lowercase", len: 0, typ: NTI2248147485, name: "lowercase", sons: null}]};
 NTI2751463430.node = NNI2751463430;
 NTI2751463430.base = NTI1845493767;
-var NNI469762349 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469762349.node = NNI469762349;
-var NNI469762366 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469762366.node = NNI469762366;
-var NNI469762386 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469762386.node = NNI469762386;
-var NNI469762405 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469762405.node = NNI469762405;
-var NNI469762424 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469762424.node = NNI469762424;
-var NNI469762442 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469762442.node = NNI469762442;
-var NNI469762471 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469762471.node = NNI469762471;
-var NNI469762484 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469762484.node = NNI469762484;
-NTI2801795078.base = NTI2801795077;
-var NNI2785017867 = {kind: 1, offset: "value", len: 0, typ: NTI2801795078, name: "value", sons: null};
-NTI2785017867.node = NNI2785017867;
-NTI2785017866.base = NTI2785017867;
-var NNI2785017859 = {kind: 1, offset: "drawer", len: 0, typ: NTI2785017866, name: "drawer", sons: null};
-NTI2785017859.node = NNI2785017859;
-NTI2785017859.base = NTI1845493767;
-var NNI469762508 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469762508.node = NNI469762508;
-var NNI2852126723 = {kind: 2, len: 0, offset: 0, typ: null, name: null, sons: []};
-NTI2852126723.node = NNI2852126723;
-NTI2852126723.base = NTI1845493767;
-var NNI469762524 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469762524.node = NNI469762524;
-var NNI469762537 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469762537.node = NNI469762537;
-var NNI469762549 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469762549.node = NNI469762549;
-var NNI469762566 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469762566.node = NNI469762566;
-var NNI469762595 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469762595.node = NNI469762595;
-var NNI469762942 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469762942.node = NNI469762942;
-var NNI469763300 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469763300.node = NNI469763300;
-var NNI469763317 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469763317.node = NNI469763317;
-var NNI469763665 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469763665.node = NNI469763665;
-var NNI469764012 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469764012.node = NNI469764012;
-var NNI469764359 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469764359.node = NNI469764359;
-var NNI469764727 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469764727.node = NNI469764727;
-var NNI469764740 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469764740.node = NNI469764740;
-var NNI469764757 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469764757.node = NNI469764757;
-var NNI469765105 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469765105.node = NNI469765105;
-var NNI469765452 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469765452.node = NNI469765452;
-var NNI469765799 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469765799.node = NNI469765799;
-var NNI469766156 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469766156.node = NNI469766156;
-var NNI469766173 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469766173.node = NNI469766173;
-var NNI469766521 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469766521.node = NNI469766521;
-var NNI469766868 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469766868.node = NNI469766868;
-var NNI2952790019 = {kind: 2, len: 4, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "text", len: 0, typ: NTI33554439, name: "text", sons: null}, 
-{kind: 1, offset: "language", len: 0, typ: NTI33554439, name: "language", sons: null}, 
-{kind: 1, offset: "name", len: 0, typ: NTI33554439, name: "name", sons: null}, 
-{kind: 1, offset: "description", len: 0, typ: NTI33554439, name: "description", sons: null}]};
-NTI2952790019.node = NNI2952790019;
-NTI2952790037.base = NTI2952790019;
-NTI2952790024.base = NTI2952790019;
-var NNI2952790030 = {kind: 1, offset: "value", len: 0, typ: NTI2952790024, name: "value", sons: null};
-NTI2952790030.node = NNI2952790030;
-NTI2952790029.base = NTI2952790030;
-var NNI2248147510 = {kind: 1, offset: "value", len: 0, typ: NTI33554456, name: "value", sons: null};
-NTI2248147510.node = NNI2248147510;
-NTI2248147509.base = NTI2248147510;
-var NNI2952790020 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "data", len: 0, typ: NTI2952790029, name: "data", sons: null}, 
-{kind: 1, offset: "index", len: 0, typ: NTI2248147509, name: "index", sons: null}]};
-NTI2952790020.node = NNI2952790020;
-NTI2952790020.base = NTI1845493767;
-var NNI469767941 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469767941.node = NNI469767941;
-var NNI2248147494 = {kind: 1, offset: "value", len: 0, typ: NTI33554439, name: "value", sons: null};
-NTI2248147494.node = NNI2248147494;
-NTI2248147493.base = NTI2248147494;
-var NNI2768240643 = {kind: 1, offset: "pathToImg", len: 0, typ: NTI2248147493, name: "pathToImg", sons: null};
-NTI2768240643.node = NNI2768240643;
-NTI2768240643.base = NTI1845493767;
-var NNI2868903939 = {kind: 2, len: 0, offset: 0, typ: null, name: null, sons: []};
-NTI2868903939.node = NNI2868903939;
-NTI2868903939.base = NTI1845493767;
-var NNI2248147502 = {kind: 1, offset: "value", len: 0, typ: NTI33554440, name: "value", sons: null};
-NTI2248147502.node = NNI2248147502;
-NTI2248147501.base = NTI2248147502;
-var NNI2717908995 = {kind: 2, len: 3, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "language", len: 0, typ: NTI2248147493, name: "language", sons: null}, 
-{kind: 1, offset: "source", len: 0, typ: NTI2248147493, name: "source", sons: null}, 
-{kind: 1, offset: "id", len: 0, typ: NTI2248147501, name: "id", sons: null}]};
-NTI2717908995.node = NNI2717908995;
-NTI2717908995.base = NTI1845493767;
-var NNI469768987 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469768987.node = NNI469768987;
-var NNI469770031 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469770031.node = NNI469770031;
-var NNI2885681156 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI2885681156.node = NNI2885681156;
-NTI2885681155.base = NTI2885681156;
-var NNI2885681170 = {kind: 1, offset: "value", len: 0, typ: NTI2885681155, name: "value", sons: null};
-NTI2885681170.node = NNI2885681170;
-NTI2885681169.base = NTI2885681170;
-var NNI2885681159 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "name", len: 0, typ: NTI2248147493, name: "name", sons: null}, 
-{kind: 1, offset: "data", len: 0, typ: NTI2885681169, name: "data", sons: null}]};
-NTI2885681159.node = NNI2885681159;
-NTI2885681159.base = NTI1845493767;
-var NNI469770129 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469770129.node = NNI469770129;
-var NNI469770147 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469770147.node = NNI469770147;
-var NNI469770170 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469770170.node = NNI469770170;
-var NNI469770183 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469770183.node = NNI469770183;
-var NNI2902458371 = {kind: 1, offset: "horizontal", len: 0, typ: NTI2248147485, name: "horizontal", sons: null};
-NTI2902458371.node = NNI2902458371;
-NTI2902458371.base = NTI1845493767;
-var NNI469770533 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469770533.node = NNI469770533;
-var NNI469770546 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469770546.node = NNI469770546;
-var NNI469770559 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469770559.node = NNI469770559;
-var NNI2936012803 = {kind: 2, offset: 0, typ: null, name: null, len: 4, sons: {"0": {kind: 1, offset: 0, typ: NTI2936012803, name: "ssDefault", len: 0, sons: null}, 
-"1": {kind: 1, offset: 1, typ: NTI2936012803, name: "ssSilver", len: 0, sons: null}, 
-"2": {kind: 1, offset: 2, typ: NTI2936012803, name: "ssGold", len: 0, sons: null}, 
-"3": {kind: 1, offset: 3, typ: NTI2936012803, name: "ssPlatinum", len: 0, sons: null}}};
-NTI2936012803.node = NNI2936012803;
-var NNI2936012804 = {kind: 2, len: 5, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "name", len: 0, typ: NTI33554439, name: "name", sons: null}, 
-{kind: 1, offset: "amount", len: 0, typ: NTI33554435, name: "amount", sons: null}, 
-{kind: 1, offset: "url", len: 0, typ: NTI33554439, name: "url", sons: null}, 
-{kind: 1, offset: "avatarUrl", len: 0, typ: NTI33554439, name: "avatarUrl", sons: null}, 
-{kind: 1, offset: "status", len: 0, typ: NTI2936012803, name: "status", sons: null}]};
-NTI2936012804.node = NNI2936012804;
-NTI2919235609.base = NTI2936012804;
-NTI2919235591.base = NTI2936012804;
-var NNI2919235597 = {kind: 1, offset: "value", len: 0, typ: NTI2919235591, name: "value", sons: null};
-NTI2919235597.node = NNI2919235597;
-NTI2919235596.base = NTI2919235597;
-var NNI2919235604 = {kind: 1, offset: "value", len: 0, typ: NTI2936012803, name: "value", sons: null};
-NTI2919235604.node = NNI2919235604;
-NTI2919235603.base = NTI2919235604;
-var NNI2919235587 = {kind: 2, len: 3, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "data", len: 0, typ: NTI2919235596, name: "data", sons: null}, 
-{kind: 1, offset: "sponsorStatus", len: 0, typ: NTI2919235603, name: "sponsorStatus", sons: null}, 
-{kind: 1, offset: "colorBorder", len: 0, typ: NTI2248147493, name: "colorBorder", sons: null}]};
-NTI2919235587.node = NNI2919235587;
-NTI2919235587.base = NTI1845493767;
-var NNI469770607 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469770607.node = NNI469770607;
-var NNI469770620 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469770620.node = NNI469770620;
-var NNI469770633 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469770633.node = NNI469770633;
-var NNI469770680 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469770680.node = NNI469770680;
-var NNI469770693 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469770693.node = NNI469770693;
-var NNI469770706 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469770706.node = NNI469770706;
-var NNI469770752 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469770752.node = NNI469770752;
-var NNI469770765 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469770765.node = NNI469770765;
-var NNI469770804 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469770804.node = NNI469770804;
-var NNI469770851 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469770851.node = NNI469770851;
-var NNI469770869 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469770869.node = NNI469770869;
-var NNI469770892 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469770892.node = NNI469770892;
-var NNI469770905 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469770905.node = NNI469770905;
-var NNI469771253 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469771253.node = NNI469771253;
-var NNI469771601 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469771601.node = NNI469771601;
-var NNI469771615 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469771615.node = NNI469771615;
-var NNI469771628 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469771628.node = NNI469771628;
-var NNI469771656 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469771656.node = NNI469771656;
-var NNI469771994 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469771994.node = NNI469771994;
-var NNI469773392 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469773392.node = NNI469773392;
-var NNI469773405 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469773405.node = NNI469773405;
-var NNI469773433 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469773433.node = NNI469773433;
-var NNI469773771 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469773771.node = NNI469773771;
-var NNI469774832 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469774832.node = NNI469774832;
-var NNI469774845 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469774845.node = NNI469774845;
-var NNI469774874 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469774874.node = NNI469774874;
-var NNI469775212 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469775212.node = NNI469775212;
-var NNI469776273 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469776273.node = NNI469776273;
-var NNI469776286 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469776286.node = NNI469776286;
-var NNI469776314 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469776314.node = NNI469776314;
-var NNI469776662 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469776662.node = NNI469776662;
-var NNI469777031 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469777031.node = NNI469777031;
-var NNI469777044 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469777044.node = NNI469777044;
-var NNI469777072 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469777072.node = NNI469777072;
-var NNI469777441 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469777441.node = NNI469777441;
-var NNI469777454 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469777454.node = NNI469777454;
-var NNI469777482 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469777482.node = NNI469777482;
-var NNI469777851 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469777851.node = NNI469777851;
-var NNI469777864 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469777864.node = NNI469777864;
-var NNI469777892 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469777892.node = NNI469777892;
-var NNI33555124 = {kind: 2, len: 0, offset: 0, typ: null, name: null, sons: []};
-NTI33555124.node = NNI33555124;
-NTI33555124.base = NTI33555113;
-var NNI754976722 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "a", len: 0, typ: NTI33554456, name: "a", sons: null}, 
-{kind: 1, offset: "b", len: 0, typ: NTI33554456, name: "b", sons: null}]};
-NTI754976722.node = NNI754976722;
-var NNI1442841516 = {kind: 2, len: 3, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI1442841514, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI1442840626, name: "Field1", sons: null}, 
-{kind: 1, offset: "Field2", len: 0, typ: NTI754976722, name: "Field2", sons: null}]};
-NTI1442841516.node = NNI1442841516;
-NTI1442841553.base = NTI1442841516;
-NTI1207959816.base = NTI33554458;
-NTI1258291251.base = NTI33554459;
-var NNI1442841136 = {kind: 2, offset: 0, typ: null, name: null, len: 7, sons: {"0": {kind: 1, offset: 0, typ: NTI1442841136, name: "mfShortestMatch", len: 0, sons: null}, 
-"1": {kind: 1, offset: 1, typ: NTI1442841136, name: "mfNoCaptures", len: 0, sons: null}, 
-"2": {kind: 1, offset: 2, typ: NTI1442841136, name: "mfFindMatch", len: 0, sons: null}, 
-"3": {kind: 1, offset: 3, typ: NTI1442841136, name: "mfFindMatchOpt", len: 0, sons: null}, 
-"4": {kind: 1, offset: 4, typ: NTI1442841136, name: "mfAnchored", len: 0, sons: null}, 
-"5": {kind: 1, offset: 5, typ: NTI1442841136, name: "mfBwMatch", len: 0, sons: null}, 
-"6": {kind: 1, offset: 6, typ: NTI1442841136, name: "mfReverseCapts", len: 0, sons: null}}};
-NTI1442841136.node = NNI1442841136;
-NTI1627390532.base = NTI1442841136;
-NTI1627390634.base = NTI1442841136;
-NTI1627391239.base = NTI1442841136;
-NTI1627391790.base = NTI1442841136;
-NTI1442841521.base = NTI1442841516;
-NTI1442841522.base = NTI33554458;
-var NNI1442841520 = {kind: 2, len: 3, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "sx", len: 0, typ: NTI1442841521, name: "sx", sons: null}, 
-{kind: 1, offset: "ss", len: 0, typ: NTI1442841522, name: "ss", sons: null}, 
-{kind: 1, offset: "si", len: 0, typ: NTI33554458, name: "si", sons: null}]};
-NTI1442841520.node = NNI1442841520;
-NTI1442841517.base = NTI1442841520;
-var NNI1442841612 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "a", len: 0, typ: NTI1442841517, name: "a", sons: null}, 
-{kind: 1, offset: "b", len: 0, typ: NTI1442841517, name: "b", sons: null}]};
-NTI1442841612.node = NNI1442841612;
-NTI1442841614.base = NTI1442841612;
-var NNI1442841613 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "s", len: 0, typ: NTI1442841614, name: "s", sons: null}, 
-{kind: 1, offset: "i", len: 0, typ: NTI33554456, name: "i", sons: null}]};
-NTI1442841613.node = NNI1442841613;
-var NNI1627389957 = {kind: 2, len: 3, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "ahead", len: 0, typ: NTI1627389968, name: "ahead", sons: null}, 
-{kind: 1, offset: "behind", len: 0, typ: NTI1627389974, name: "behind", sons: null}, 
-{kind: 1, offset: "smL", len: 0, typ: NTI1442841613, name: "smL", sons: null}]};
-NTI1627389957.node = NNI1627389957;
-NTI1610612929.base = NTI1442841136;
-var NNI1610612740 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI1442840626, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI754976722, name: "Field1", sons: null}]};
-NTI1610612740.node = NNI1610612740;
-var NNI1207959563 = {kind: 2, offset: 0, typ: null, name: null, len: 47, sons: {"0": {kind: 1, offset: 0, typ: NTI1207959563, name: "reChar", len: 0, sons: null}, 
-"1": {kind: 1, offset: 1, typ: NTI1207959563, name: "reCharCi", len: 0, sons: null}, 
-"2": {kind: 1, offset: 2, typ: NTI1207959563, name: "reJoiner", len: 0, sons: null}, 
-"3": {kind: 1, offset: 3, typ: NTI1207959563, name: "reGroupStart", len: 0, sons: null}, 
-"4": {kind: 1, offset: 4, typ: NTI1207959563, name: "reGroupEnd", len: 0, sons: null}, 
-"5": {kind: 1, offset: 5, typ: NTI1207959563, name: "reFlags", len: 0, sons: null}, 
-"6": {kind: 1, offset: 6, typ: NTI1207959563, name: "reOr", len: 0, sons: null}, 
-"7": {kind: 1, offset: 7, typ: NTI1207959563, name: "reZeroOrMore", len: 0, sons: null}, 
-"8": {kind: 1, offset: 8, typ: NTI1207959563, name: "reOneOrMore", len: 0, sons: null}, 
-"9": {kind: 1, offset: 9, typ: NTI1207959563, name: "reZeroOrOne", len: 0, sons: null}, 
-"10": {kind: 1, offset: 10, typ: NTI1207959563, name: "reRepRange", len: 0, sons: null}, 
-"11": {kind: 1, offset: 11, typ: NTI1207959563, name: "reStartSym", len: 0, sons: null}, 
-"12": {kind: 1, offset: 12, typ: NTI1207959563, name: "reEndSym", len: 0, sons: null}, 
-"13": {kind: 1, offset: 13, typ: NTI1207959563, name: "reStartSymML", len: 0, sons: null}, 
-"14": {kind: 1, offset: 14, typ: NTI1207959563, name: "reEndSymML", len: 0, sons: null}, 
-"15": {kind: 1, offset: 15, typ: NTI1207959563, name: "reStart", len: 0, sons: null}, 
-"16": {kind: 1, offset: 16, typ: NTI1207959563, name: "reEnd", len: 0, sons: null}, 
-"17": {kind: 1, offset: 17, typ: NTI1207959563, name: "reWordBoundary", len: 0, sons: null}, 
-"18": {kind: 1, offset: 18, typ: NTI1207959563, name: "reNotWordBoundary", len: 0, sons: null}, 
-"19": {kind: 1, offset: 19, typ: NTI1207959563, name: "reWord", len: 0, sons: null}, 
-"20": {kind: 1, offset: 20, typ: NTI1207959563, name: "reDigit", len: 0, sons: null}, 
-"21": {kind: 1, offset: 21, typ: NTI1207959563, name: "reWhiteSpace", len: 0, sons: null}, 
-"22": {kind: 1, offset: 22, typ: NTI1207959563, name: "reUCC", len: 0, sons: null}, 
-"23": {kind: 1, offset: 23, typ: NTI1207959563, name: "reNotAlphaNum", len: 0, sons: null}, 
-"24": {kind: 1, offset: 24, typ: NTI1207959563, name: "reNotDigit", len: 0, sons: null}, 
-"25": {kind: 1, offset: 25, typ: NTI1207959563, name: "reNotWhiteSpace", len: 0, sons: null}, 
-"26": {kind: 1, offset: 26, typ: NTI1207959563, name: "reNotUCC", len: 0, sons: null}, 
-"27": {kind: 1, offset: 27, typ: NTI1207959563, name: "reAny", len: 0, sons: null}, 
-"28": {kind: 1, offset: 28, typ: NTI1207959563, name: "reAnyNl", len: 0, sons: null}, 
-"29": {kind: 1, offset: 29, typ: NTI1207959563, name: "reWordBoundaryAscii", len: 0, sons: null}, 
-"30": {kind: 1, offset: 30, typ: NTI1207959563, name: "reNotWordBoundaryAscii", len: 0, sons: null}, 
-"31": {kind: 1, offset: 31, typ: NTI1207959563, name: "reWordAscii", len: 0, sons: null}, 
-"32": {kind: 1, offset: 32, typ: NTI1207959563, name: "reDigitAscii", len: 0, sons: null}, 
-"33": {kind: 1, offset: 33, typ: NTI1207959563, name: "reWhiteSpaceAscii", len: 0, sons: null}, 
-"34": {kind: 1, offset: 34, typ: NTI1207959563, name: "reNotAlphaNumAscii", len: 0, sons: null}, 
-"35": {kind: 1, offset: 35, typ: NTI1207959563, name: "reNotDigitAscii", len: 0, sons: null}, 
-"36": {kind: 1, offset: 36, typ: NTI1207959563, name: "reNotWhiteSpaceAscii", len: 0, sons: null}, 
-"37": {kind: 1, offset: 37, typ: NTI1207959563, name: "reAnyAscii", len: 0, sons: null}, 
-"38": {kind: 1, offset: 38, typ: NTI1207959563, name: "reAnyNlAscii", len: 0, sons: null}, 
-"39": {kind: 1, offset: 39, typ: NTI1207959563, name: "reInSet", len: 0, sons: null}, 
-"40": {kind: 1, offset: 40, typ: NTI1207959563, name: "reNotSet", len: 0, sons: null}, 
-"41": {kind: 1, offset: 41, typ: NTI1207959563, name: "reLookahead", len: 0, sons: null}, 
-"42": {kind: 1, offset: 42, typ: NTI1207959563, name: "reLookbehind", len: 0, sons: null}, 
-"43": {kind: 1, offset: 43, typ: NTI1207959563, name: "reNotLookahead", len: 0, sons: null}, 
-"44": {kind: 1, offset: 44, typ: NTI1207959563, name: "reNotLookbehind", len: 0, sons: null}, 
-"45": {kind: 1, offset: 45, typ: NTI1207959563, name: "reSkip", len: 0, sons: null}, 
-"46": {kind: 1, offset: 46, typ: NTI1207959563, name: "reEoe", len: 0, sons: null}}};
-NTI1207959563.node = NNI1207959563;
-NTI1207959574.base = NTI33554458;
-var NNI1207959562 = {kind: 2, offset: 0, typ: null, name: null, len: 12, sons: {"0": {kind: 1, offset: 0, typ: NTI1207959562, name: "flagCaseInsensitive", len: 0, sons: null}, 
-"1": {kind: 1, offset: 1, typ: NTI1207959562, name: "flagNotCaseInsensitive", len: 0, sons: null}, 
-"2": {kind: 1, offset: 2, typ: NTI1207959562, name: "flagMultiLine", len: 0, sons: null}, 
-"3": {kind: 1, offset: 3, typ: NTI1207959562, name: "flagNotMultiLine", len: 0, sons: null}, 
-"4": {kind: 1, offset: 4, typ: NTI1207959562, name: "flagAnyMatchNewLine", len: 0, sons: null}, 
-"5": {kind: 1, offset: 5, typ: NTI1207959562, name: "flagNotAnyMatchNewLine", len: 0, sons: null}, 
-"6": {kind: 1, offset: 6, typ: NTI1207959562, name: "flagUnGreedy", len: 0, sons: null}, 
-"7": {kind: 1, offset: 7, typ: NTI1207959562, name: "flagNotUnGreedy", len: 0, sons: null}, 
-"8": {kind: 1, offset: 8, typ: NTI1207959562, name: "flagUnicode", len: 0, sons: null}, 
-"9": {kind: 1, offset: 9, typ: NTI1207959562, name: "flagNotUnicode", len: 0, sons: null}, 
-"10": {kind: 1, offset: 10, typ: NTI1207959562, name: "flagVerbose", len: 0, sons: null}, 
-"11": {kind: 1, offset: 11, typ: NTI1207959562, name: "flagNotVerbose", len: 0, sons: null}}};
-NTI1207959562.node = NNI1207959562;
-NTI1207959575.base = NTI1207959562;
-var NNI1207959587 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI1124073475, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI754974723, name: "Field1", sons: null}]};
-NTI1207959587.node = NNI1207959587;
-NTI1207959584.base = NTI1207959587;
-var NNI1207959581 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "data", len: 0, typ: NTI1207959584, name: "data", sons: null}, 
-{kind: 1, offset: "counter", len: 0, typ: NTI33554456, name: "counter", sons: null}]};
-NTI1207959581.node = NNI1207959581;
-var NNI1207959597 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "a", len: 0, typ: NTI754974723, name: "a", sons: null}, 
-{kind: 1, offset: "b", len: 0, typ: NTI754974723, name: "b", sons: null}]};
-NTI1207959597.node = NNI1207959597;
-NTI1207959589.base = NTI1207959597;
-NTI1207959598.base = NTI1207959565;
-NTI1207959567.base = NTI1207959565;
-var NNI1207959556 = {kind: 1, offset: "s", len: 0, typ: NTI1207959567, name: "s", sons: null};
-NTI1207959556.node = NNI1207959556;
-var NNI1207959566 = {kind: 2, len: 3, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "nfa", len: 0, typ: NTI1207959561, name: "nfa", sons: null}, 
-{kind: 1, offset: "rpn", len: 0, typ: NTI1207959556, name: "rpn", sons: null}, 
-{kind: 1, offset: "reverseCapts", len: 0, typ: NTI33554466, name: "reverseCapts", sons: null}]};
-NTI1207959566.node = NNI1207959566;
-var NNI1207959565 = {kind: 2, len: 16, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "kind", len: 0, typ: NTI1207959563, name: "kind", sons: null}, 
-{kind: 1, offset: "cp", len: 0, typ: NTI754974723, name: "cp", sons: null}, 
-{kind: 1, offset: "next", len: 0, typ: NTI1207959574, name: "next", sons: null}, 
-{kind: 1, offset: "isGreedy", len: 0, typ: NTI33554466, name: "isGreedy", sons: null}, 
-{kind: 1, offset: "uid", len: 0, typ: NTI1207959564, name: "uid", sons: null}, 
-{kind: 1, offset: "idx", len: 0, typ: NTI33554458, name: "idx", sons: null}, 
-{kind: 1, offset: "isCapturing", len: 0, typ: NTI33554466, name: "isCapturing", sons: null}, 
-{kind: 1, offset: "name", len: 0, typ: NTI33554439, name: "name", sons: null}, 
-{kind: 1, offset: "flags", len: 0, typ: NTI1207959575, name: "flags", sons: null}, 
-{kind: 1, offset: "min", len: 0, typ: NTI33554458, name: "min", sons: null}, 
-{kind: 1, offset: "max", len: 0, typ: NTI33554458, name: "max", sons: null}, 
-{kind: 1, offset: "cps", len: 0, typ: NTI1207959581, name: "cps", sons: null}, 
-{kind: 1, offset: "ranges", len: 0, typ: NTI1207959589, name: "ranges", sons: null}, 
-{kind: 1, offset: "shorthands", len: 0, typ: NTI1207959598, name: "shorthands", sons: null}, 
-{kind: 1, offset: "cc", len: 0, typ: NTI33554459, name: "cc", sons: null}, 
-{kind: 1, offset: "subExp", len: 0, typ: NTI1207959566, name: "subExp", sons: null}]};
-NTI1207959565.node = NNI1207959565;
-NTI1207959571.base = NTI1207959565;
-NTI1207959569.base = NTI33554458;
-NTI1207959558.base = NTI1207959569;
-NTI1207959570.base = NTI1207959565;
-NTI1207959559.base = NTI1207959570;
-var NNI1207959560 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "allZ", len: 0, typ: NTI1207959558, name: "allZ", sons: null}, 
-{kind: 1, offset: "z", len: 0, typ: NTI1207959559, name: "z", sons: null}]};
-NTI1207959560.node = NNI1207959560;
-var NNI1207959561 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "s", len: 0, typ: NTI1207959571, name: "s", sons: null}, 
-{kind: 1, offset: "t", len: 0, typ: NTI1207959560, name: "t", sons: null}]};
-NTI1207959561.node = NNI1207959561;
-var NNI1409286286 = {kind: 2, len: 4, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI1124073475, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554456, name: "Field1", sons: null}, 
-{kind: 1, offset: "Field2", len: 0, typ: NTI33554439, name: "Field2", sons: null}, 
-{kind: 1, offset: "Field3", len: 0, typ: NTI33554458, name: "Field3", sons: null}]};
-NTI1409286286.node = NNI1409286286;
-NTI1409286283.base = NTI1409286286;
-var NNI1409286280 = {kind: 2, len: 4, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "data", len: 0, typ: NTI1409286283, name: "data", sons: null}, 
-{kind: 1, offset: "counter", len: 0, typ: NTI33554456, name: "counter", sons: null}, 
-{kind: 1, offset: "first", len: 0, typ: NTI33554456, name: "first", sons: null}, 
-{kind: 1, offset: "last", len: 0, typ: NTI33554456, name: "last", sons: null}]};
-NTI1409286280.node = NNI1409286280;
-var NNI1459618290 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "lit", len: 0, typ: NTI754974723, name: "lit", sons: null}, 
-{kind: 1, offset: "nfa", len: 0, typ: NTI1207959561, name: "nfa", sons: null}]};
-NTI1459618290.node = NNI1459618290;
-var NNI1442841134 = {kind: 2, len: 4, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "nfa", len: 0, typ: NTI1207959561, name: "nfa", sons: null}, 
-{kind: 1, offset: "groupsCount", len: 0, typ: NTI33554458, name: "groupsCount", sons: null}, 
-{kind: 1, offset: "namedGroups", len: 0, typ: NTI1409286280, name: "namedGroups", sons: null}, 
-{kind: 1, offset: "litOpt", len: 0, typ: NTI1459618290, name: "litOpt", sons: null}]};
-NTI1442841134.node = NNI1442841134;
-NTI452985126.base = NTI33554439;
-NTI1442840934.base = NTI754976722;
-NTI1442840933.base = NTI1442840934;
-var NNI1442841138 = {kind: 2, len: 3, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "captures", len: 0, typ: NTI1442840933, name: "captures", sons: null}, 
-{kind: 1, offset: "namedGroups", len: 0, typ: NTI1409286280, name: "namedGroups", sons: null}, 
-{kind: 1, offset: "boundaries", len: 0, typ: NTI754976722, name: "boundaries", sons: null}]};
-NTI1442841138.node = NNI1442841138;
-var NNI469777993 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469777993.node = NNI469777993;
-var NNI469778029 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469778029.node = NNI469778029;
-var NNI469778052 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469778052.node = NNI469778052;
-var NNI469778065 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469778065.node = NNI469778065;
-var NNI2818572891 = {kind: 1, offset: "isMobile", len: 0, typ: NTI2248147485, name: "isMobile", sons: null};
-NTI2818572891.node = NNI2818572891;
-NTI2818572891.base = NTI1845493767;
-var NNI469778090 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
-NTI469778090.node = NNI469778090;
-var NNI2969567235 = {kind: 1, offset: "current", len: 0, typ: NTI2248147493, name: "current", sons: null};
-NTI2969567235.node = NNI2969567235;
-NTI2969567235.base = NTI1845493767;
 NTI2113929330.base = NTI2113929232;
 NTI2113929331.base = NTI2113929232;
 NTI2113929332.base = NTI2113929232;
@@ -1879,6 +1208,12 @@ var NNI1929379877 = {kind: 2, len: 3, offset: 0, typ: null, name: null, sons: [{
 {kind: 1, offset: "utcOffset", len: 0, typ: NTI33554456, name: "utcOffset", sons: null}, 
 {kind: 1, offset: "isDst", len: 0, typ: NTI33554466, name: "isDst", sons: null}]};
 NTI1929379877.node = NNI1929379877;
+var NNI754976722 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "a", len: 0, typ: NTI33554456, name: "a", sons: null}, 
+{kind: 1, offset: "b", len: 0, typ: NTI33554456, name: "b", sons: null}]};
+NTI754976722.node = NNI754976722;
+var NNI2248147494 = {kind: 1, offset: "value", len: 0, typ: NTI33554439, name: "value", sons: null};
+NTI2248147494.node = NNI2248147494;
+NTI2248147493.base = NTI2248147494;
 var NNI2818572664 = {kind: 1, offset: "id", len: 0, typ: NTI2248147493, name: "id", sons: null};
 NTI2818572664.node = NNI2818572664;
 NTI2818572664.base = NTI1845493767;
@@ -1953,6 +1288,16 @@ NTI2801796736.node = NNI2801796736;
 var NNI2801797062 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
 NTI2801797062.node = NNI2801797062;
+var NNI2818572891 = {kind: 1, offset: "isMobile", len: 0, typ: NTI2248147485, name: "isMobile", sons: null};
+NTI2818572891.node = NNI2818572891;
+NTI2818572891.base = NTI1845493767;
+NTI2801795078.base = NTI2801795077;
+var NNI2785017867 = {kind: 1, offset: "value", len: 0, typ: NTI2801795078, name: "value", sons: null};
+NTI2785017867.node = NNI2785017867;
+NTI2785017866.base = NTI2785017867;
+var NNI2785017859 = {kind: 1, offset: "drawer", len: 0, typ: NTI2785017866, name: "drawer", sons: null};
+NTI2785017859.node = NNI2785017859;
+NTI2785017859.base = NTI1845493767;
 var NNI2785017930 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
 NTI2785017930.node = NNI2785017930;
@@ -1979,6 +1324,17 @@ var NNI2785018275 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{
 NTI2785018275.node = NNI2785018275;
 NTI2835349539.base = NTI33554439;
 NTI939524122.base = NTI33554439;
+var NNI2885681156 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
+{kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
+NTI2885681156.node = NNI2885681156;
+NTI2885681155.base = NTI2885681156;
+var NNI2885681170 = {kind: 1, offset: "value", len: 0, typ: NTI2885681155, name: "value", sons: null};
+NTI2885681170.node = NNI2885681170;
+NTI2885681169.base = NTI2885681170;
+var NNI2885681159 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "name", len: 0, typ: NTI2248147493, name: "name", sons: null}, 
+{kind: 1, offset: "data", len: 0, typ: NTI2885681169, name: "data", sons: null}]};
+NTI2885681159.node = NNI2885681159;
+NTI2885681159.base = NTI1845493767;
 var NNI2885681235 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
 NTI2885681235.node = NNI2885681235;
@@ -1992,6 +1348,9 @@ NTI2885681368.base = NTI2885681156;
 var NNI2885681443 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
 NTI2885681443.node = NNI2885681443;
+var NNI2868903939 = {kind: 2, len: 0, offset: 0, typ: null, name: null, sons: []};
+NTI2868903939.node = NNI2868903939;
+NTI2868903939.base = NTI1845493767;
 var NNI2868903992 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
 NTI2868903992.node = NNI2868903992;
@@ -2016,12 +1375,18 @@ NTI2818572556.base = NTI1845493767;
 var NNI2818575498 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
 NTI2818575498.node = NNI2818575498;
+var NNI2902458371 = {kind: 1, offset: "horizontal", len: 0, typ: NTI2248147485, name: "horizontal", sons: null};
+NTI2902458371.node = NNI2902458371;
+NTI2902458371.base = NTI1845493767;
 var NNI2902458430 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
 NTI2902458430.node = NNI2902458430;
 var NNI2902458455 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
 NTI2902458455.node = NNI2902458455;
+var NNI2969567235 = {kind: 1, offset: "current", len: 0, typ: NTI2248147493, name: "current", sons: null};
+NTI2969567235.node = NNI2969567235;
+NTI2969567235.base = NTI1845493767;
 var NNI2969567293 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
 NTI2969567293.node = NNI2969567293;
@@ -2046,6 +1411,22 @@ NTI2969567935.node = NNI2969567935;
 var NNI2969568332 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
 NTI2969568332.node = NNI2969568332;
+var NNI2952790019 = {kind: 2, len: 4, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "text", len: 0, typ: NTI33554439, name: "text", sons: null}, 
+{kind: 1, offset: "language", len: 0, typ: NTI33554439, name: "language", sons: null}, 
+{kind: 1, offset: "name", len: 0, typ: NTI33554439, name: "name", sons: null}, 
+{kind: 1, offset: "description", len: 0, typ: NTI33554439, name: "description", sons: null}]};
+NTI2952790019.node = NNI2952790019;
+NTI2952790024.base = NTI2952790019;
+var NNI2952790030 = {kind: 1, offset: "value", len: 0, typ: NTI2952790024, name: "value", sons: null};
+NTI2952790030.node = NNI2952790030;
+NTI2952790029.base = NTI2952790030;
+var NNI2248147510 = {kind: 1, offset: "value", len: 0, typ: NTI33554456, name: "value", sons: null};
+NTI2248147510.node = NNI2248147510;
+NTI2248147509.base = NTI2248147510;
+var NNI2952790020 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "data", len: 0, typ: NTI2952790029, name: "data", sons: null}, 
+{kind: 1, offset: "index", len: 0, typ: NTI2248147509, name: "index", sons: null}]};
+NTI2952790020.node = NNI2952790020;
+NTI2952790020.base = NTI1845493767;
 var NNI2952790137 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
 NTI2952790137.node = NNI2952790137;
@@ -2068,6 +1449,14 @@ NTI2952792116.node = NNI2952792116;
 var NNI2952792451 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
 NTI2952792451.node = NNI2952792451;
+var NNI2248147502 = {kind: 1, offset: "value", len: 0, typ: NTI33554440, name: "value", sons: null};
+NTI2248147502.node = NNI2248147502;
+NTI2248147501.base = NTI2248147502;
+var NNI2717908995 = {kind: 2, len: 3, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "language", len: 0, typ: NTI2248147493, name: "language", sons: null}, 
+{kind: 1, offset: "source", len: 0, typ: NTI2248147493, name: "source", sons: null}, 
+{kind: 1, offset: "id", len: 0, typ: NTI2248147501, name: "id", sons: null}]};
+NTI2717908995.node = NNI2717908995;
+NTI2717908995.base = NTI1845493767;
 var NNI2952792506 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
 NTI2952792506.node = NNI2952792506;
@@ -2098,6 +1487,9 @@ NTI2952794034.node = NNI2952794034;
 var NNI2952794133 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
 NTI2952794133.node = NNI2952794133;
+var NNI2852126723 = {kind: 2, len: 0, offset: 0, typ: null, name: null, sons: []};
+NTI2852126723.node = NNI2852126723;
+NTI2852126723.base = NTI1845493767;
 var NNI2852126776 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
 NTI2852126776.node = NNI2852126776;
@@ -2171,6 +1563,29 @@ NTI2684356754.node = NNI2684356754;
 var NNI2684354816 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
 NTI2684354816.node = NNI2684354816;
+var NNI2936012803 = {kind: 2, offset: 0, typ: null, name: null, len: 4, sons: {"0": {kind: 1, offset: 0, typ: NTI2936012803, name: "ssDefault", len: 0, sons: null}, 
+"1": {kind: 1, offset: 1, typ: NTI2936012803, name: "ssSilver", len: 0, sons: null}, 
+"2": {kind: 1, offset: 2, typ: NTI2936012803, name: "ssGold", len: 0, sons: null}, 
+"3": {kind: 1, offset: 3, typ: NTI2936012803, name: "ssPlatinum", len: 0, sons: null}}};
+NTI2936012803.node = NNI2936012803;
+var NNI2936012804 = {kind: 2, len: 5, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "name", len: 0, typ: NTI33554439, name: "name", sons: null}, 
+{kind: 1, offset: "amount", len: 0, typ: NTI33554435, name: "amount", sons: null}, 
+{kind: 1, offset: "url", len: 0, typ: NTI33554439, name: "url", sons: null}, 
+{kind: 1, offset: "avatarUrl", len: 0, typ: NTI33554439, name: "avatarUrl", sons: null}, 
+{kind: 1, offset: "status", len: 0, typ: NTI2936012803, name: "status", sons: null}]};
+NTI2936012804.node = NNI2936012804;
+NTI2919235591.base = NTI2936012804;
+var NNI2919235597 = {kind: 1, offset: "value", len: 0, typ: NTI2919235591, name: "value", sons: null};
+NTI2919235597.node = NNI2919235597;
+NTI2919235596.base = NTI2919235597;
+var NNI2919235604 = {kind: 1, offset: "value", len: 0, typ: NTI2936012803, name: "value", sons: null};
+NTI2919235604.node = NNI2919235604;
+NTI2919235603.base = NTI2919235604;
+var NNI2919235587 = {kind: 2, len: 3, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "data", len: 0, typ: NTI2919235596, name: "data", sons: null}, 
+{kind: 1, offset: "sponsorStatus", len: 0, typ: NTI2919235603, name: "sponsorStatus", sons: null}, 
+{kind: 1, offset: "colorBorder", len: 0, typ: NTI2248147493, name: "colorBorder", sons: null}]};
+NTI2919235587.node = NNI2919235587;
+NTI2919235587.base = NTI1845493767;
 var NNI2919235699 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
 NTI2919235699.node = NNI2919235699;
@@ -2341,6 +1756,9 @@ var NNI2701136087 = {kind: 2, len: 5, offset: 0, typ: null, name: null, sons: [{
 {kind: 1, offset: "Field3", len: 0, typ: NTI33554440, name: "Field3", sons: null}, 
 {kind: 1, offset: "Field4", len: 0, typ: NTI2617245699, name: "Field4", sons: null}]};
 NTI2701136087.node = NNI2701136087;
+var NNI2768240643 = {kind: 1, offset: "pathToImg", len: 0, typ: NTI2248147493, name: "pathToImg", sons: null};
+NTI2768240643.node = NNI2768240643;
+NTI2768240643.base = NTI1845493767;
 var NNI2768240701 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI33554439, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI33554439, name: "Field1", sons: null}]};
 NTI2768240701.node = NNI2768240701;
@@ -2805,57 +2223,6 @@ var ConstSet11 = setConstr([48, 57]);
 var ConstSet12 = setConstr([48, 57]);
 var ConstSet13 = setConstr([65, 90], [97, 122]);
 
-function nimCharToStr(x_33556517) {
-  var result_33556518 = [];
-
-    result_33556518 = nimCopy(null, mnewString(1), NTI33554439);
-    result_33556518[0] = x_33556517;
-
-  return result_33556518;
-
-}
-
-function addChar(x_33557255, c_33557256) {
-    x_33557255.push(c_33557256);
-
-  
-}
-
-function rawEcho() {
-          var buf = "";
-      for (var i = 0; i < arguments.length; ++i) {
-        buf += toJSStr(arguments[i]);
-      }
-      console.log(buf);
-    
-
-  
-}
-    var typesOffsets_1509949450 = new Int16Array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 12, 26, 27, 28, 29, 30, 31, 32, 33, 34, 12, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 12, 62, 63, 64, 12, 12, 12, 12, 12, 65, 66, 67, 68, 69, 70, 71, 72, 12, 12, 12, 12, 12, 12, 12, 12, 73, 74, 75, 76, 77, 12, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 12, 91, 92, 93, 94, 95, 96, 97, 98, 98, 98, 12, 99, 99, 100, 99, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 113, 114, 115, 112, 112, 112, 112, 112, 112, 112, 112, 112, 116, 117, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 16, 118, 99, 119, 120, 121, 122, 123, 124, 112, 112, 112, 112, 112, 112, 112, 125, 72, 126, 127, 128, 12, 129, 130, 131, 132, 133, 112, 112, 112, 112, 112, 134, 12, 135, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 136, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 137, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 112, 138, 139, 140, 141, 137, 142, 12, 12, 12, 12, 12, 12, 143, 144, 12, 12, 12, 12, 12, 12, 12, 145, 12, 146, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 147, 12, 12, 12, 12, 12, 12, 12, 148, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 149, 12, 150, 151, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 152, 12, 153, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 154, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 155, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 156, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 152, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 155, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 157, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 158, 12, 142, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 159, 160, 12, 161, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 162, 163, 12, 12, 12, 12, 164, 165, 166, 167, 168, 169, 170, 171, 172, 93, 12, 173, 174, 175, 12, 176, 177, 178, 12, 179, 180, 181, 98, 182, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 183, 184, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 12, 185, 186, 187, 12, 188, 12, 189, 190, 191, 29, 192, 12, 12, 12, 12, 193, 27, 194, 195, 196, 197, 12, 198, 199, 200, 201, 202, 203, 204, 12, 205, 206, 207, 208, 209, 112, 112, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 112, 12, 12, 12, 12, 177, 223, 224, 112, 225, 226, 227, 228, 229, 112, 230, 231, 232, 233, 234, 235, 82, 236, 237, 112, 12, 238, 239, 240, 241, 112, 112, 112, 112, 242, 243, 244, 245, 246, 247, 248, 12, 249, 205, 250, 251, 252, 12, 253, 254, 255, 256, 257, 258, 259, 112, 112, 12, 260, 12, 261, 112, 112, 262, 263, 12, 264, 80, 265, 266, 267, 112, 112, 205, 112, 268, 269, 270, 271, 272, 273, 201, 274, 275, 80, 112, 112, 112, 112, 276, 277, 278, 112, 279, 280, 281, 112, 112, 112, 112, 282, 283, 284, 285, 286, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 189, 112, 287, 288, 12, 12, 12, 289, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 27, 290, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 291, 292, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 12, 12, 12, 12, 12, 12, 12, 12, 12, 267, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 12, 12, 12, 12, 12, 12, 12, 12, 80, 293, 201, 294, 177, 295, 296, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 297, 298, 112, 12, 299, 300, 301, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 94, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 292, 238, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 302, 12, 12, 12, 12, 303, 304, 12, 12, 12, 12, 12, 305, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 12, 306, 307, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 188, 267, 112, 112, 112, 112, 112, 112, 112, 308, 309, 112, 112, 310, 112, 311, 112, 312, 112, 112, 313, 314, 315, 316, 317, 318, 319, 320, 321, 322, 323, 324, 325, 326, 327, 328, 112, 112, 112, 112, 112, 112, 112, 112, 329, 330, 331, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 332, 112, 112, 112, 333, 334, 335, 112, 336, 337, 112, 112, 112, 112, 338, 339, 112, 112, 112, 112, 112, 112, 112, 340, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 341, 12, 12, 12, 342, 343, 344, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 345, 346, 112, 347, 112, 112, 112, 348, 349, 350, 112, 112, 112, 112, 112, 112, 112, 112, 112, 351, 352, 353, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 354, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 355, 356, 12, 357, 159, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 136, 12, 358, 12, 12, 12, 12, 359, 360, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 361, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 362, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 147, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 363, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 364, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 365, 12, 12, 12, 214, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 366, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 367, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 12, 12, 361, 12, 12, 12, 12, 12, 368, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 369, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 291, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 12, 12, 12, 291, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112]);
-    var typesIndices_1509949451 = new Int8Array([0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 0, 0, 0, 0, 4, 0, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 6, 6, 0, 5, 0, 0, 0, 6, 5, 0, 7, 7, 7, 0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 0, 3, 3, 3, 3, 3, 3, 3, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 0, 5, 5, 5, 5, 5, 5, 5, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 3, 5, 3, 5, 3, 5, 5, 5, 3, 3, 5, 3, 5, 3, 3, 5, 3, 3, 3, 5, 5, 3, 3, 3, 3, 5, 3, 3, 5, 3, 3, 3, 5, 5, 5, 3, 3, 5, 3, 3, 5, 3, 5, 3, 5, 3, 3, 5, 3, 5, 5, 3, 5, 3, 3, 5, 3, 3, 3, 5, 3, 5, 3, 3, 5, 5, 4, 3, 5, 5, 5, 4, 4, 4, 4, 3, 8, 5, 3, 8, 5, 3, 8, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 5, 3, 8, 5, 3, 5, 3, 3, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 5, 5, 5, 5, 5, 5, 3, 3, 5, 3, 3, 5, 5, 3, 5, 3, 3, 3, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 4, 4, 4, 4, 4, 4, 4, 5, 5, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 5, 5, 5, 5, 0, 0, 0, 0, 0, 0, 0, 4, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 5, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 3, 5, 3, 5, 4, 0, 3, 5, 0, 0, 5, 5, 5, 5, 0, 3, 0, 0, 0, 0, 0, 0, 3, 0, 3, 3, 3, 0, 3, 0, 3, 3, 5, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 3, 5, 5, 3, 3, 3, 5, 5, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 5, 5, 5, 5, 3, 5, 0, 3, 5, 3, 3, 5, 5, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 0, 4, 4, 4, 4, 4, 4, 4, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 0, 0, 4, 0, 0, 0, 0, 0, 0, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4, 0, 4, 4, 0, 4, 4, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 4, 4, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 4, 0, 0, 4, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 4, 4, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 0, 4, 0, 0, 0, 4, 4, 4, 4, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 4, 4, 0, 0, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 4, 4, 0, 4, 4, 4, 4, 4, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 4, 0, 0, 7, 7, 7, 7, 7, 7, 0, 0, 4, 0, 4, 0, 0, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 4, 4, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 0, 4, 4, 0, 4, 4, 0, 0, 4, 0, 4, 4, 4, 4, 4, 0, 0, 0, 0, 4, 4, 0, 0, 4, 4, 4, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 0, 4, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 0, 4, 4, 4, 4, 4, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 0, 4, 4, 4, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 4, 4, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 0, 4, 4, 4, 4, 4, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 4, 4, 0, 0, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 0, 0, 0, 0, 4, 4, 0, 4, 4, 4, 4, 4, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 4, 7, 7, 7, 7, 7, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 0, 4, 4, 4, 4, 4, 4, 0, 0, 0, 4, 4, 4, 0, 4, 4, 4, 4, 0, 0, 0, 4, 4, 0, 4, 0, 4, 4, 0, 0, 0, 4, 4, 0, 0, 0, 4, 4, 4, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 4, 4, 4, 4, 4, 0, 0, 0, 4, 4, 4, 0, 4, 4, 4, 4, 0, 0, 4, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 7, 7, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 0, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 4, 4, 0, 4, 4, 4, 0, 0, 4, 0, 0, 4, 4, 4, 4, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 7, 7, 7, 7, 7, 7, 7, 0, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 0, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 4, 4, 0, 0, 0, 0, 0, 0, 4, 4, 0, 4, 4, 4, 4, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 0, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 4, 4, 4, 4, 7, 7, 7, 7, 7, 7, 7, 4, 4, 4, 4, 4, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 7, 7, 7, 7, 7, 7, 7, 7, 7, 0, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4, 0, 0, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 4, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 0, 4, 0, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 0, 4, 0, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 4, 4, 4, 4, 4, 0, 4, 0, 4, 4, 4, 4, 4, 4, 4, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 0, 4, 0, 4, 0, 4, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 4, 4, 4, 0, 0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 0, 3, 0, 0, 0, 0, 0, 3, 0, 0, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 0, 5, 5, 5, 5, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 0, 0, 4, 4, 4, 4, 4, 4, 4, 0, 4, 0, 4, 4, 4, 4, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 0, 0, 4, 4, 4, 4, 4, 4, 4, 0, 4, 0, 4, 4, 4, 4, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 6, 6, 6, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 0, 0, 5, 5, 5, 5, 5, 5, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 1, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 9, 9, 9, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 0, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 4, 0, 0, 0, 0, 4, 4, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 0, 4, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 4, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 4, 4, 4, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 5, 5, 5, 5, 5, 5, 5, 5, 5, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 0, 0, 3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 5, 5, 5, 5, 5, 5, 5, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 5, 5, 5, 5, 5, 5, 5, 5, 3, 3, 3, 3, 3, 3, 3, 3, 5, 5, 5, 5, 5, 5, 0, 0, 3, 3, 3, 3, 3, 3, 0, 0, 5, 5, 5, 5, 5, 5, 5, 5, 3, 3, 3, 3, 3, 3, 3, 3, 5, 5, 5, 5, 5, 5, 5, 5, 3, 3, 3, 3, 3, 3, 3, 3, 5, 5, 5, 5, 5, 5, 0, 0, 3, 3, 3, 3, 3, 3, 0, 0, 5, 5, 5, 5, 5, 5, 5, 5, 0, 3, 0, 3, 0, 3, 0, 3, 5, 5, 5, 5, 5, 5, 5, 5, 3, 3, 3, 3, 3, 3, 3, 3, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 0, 0, 5, 5, 5, 5, 5, 5, 5, 5, 8, 8, 8, 8, 8, 8, 8, 8, 5, 5, 5, 5, 5, 5, 5, 5, 8, 8, 8, 8, 8, 8, 8, 8, 5, 5, 5, 5, 5, 5, 5, 5, 8, 8, 8, 8, 8, 8, 8, 8, 5, 5, 5, 5, 5, 0, 5, 5, 3, 3, 3, 3, 8, 0, 5, 0, 0, 0, 5, 5, 5, 0, 5, 5, 3, 3, 3, 3, 8, 0, 0, 0, 5, 5, 5, 5, 0, 0, 5, 5, 3, 3, 3, 3, 0, 0, 0, 0, 5, 5, 5, 5, 5, 5, 5, 5, 3, 3, 3, 3, 3, 0, 0, 0, 0, 0, 5, 5, 5, 0, 5, 5, 3, 3, 3, 3, 8, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 5, 0, 0, 6, 6, 6, 6, 6, 6, 0, 0, 0, 0, 0, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 0, 0, 0, 0, 0, 0, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 3, 0, 0, 5, 3, 3, 3, 5, 5, 3, 3, 3, 5, 0, 3, 0, 0, 0, 3, 3, 3, 3, 3, 0, 0, 0, 0, 0, 0, 3, 0, 3, 0, 3, 0, 3, 3, 3, 3, 0, 5, 3, 3, 3, 3, 5, 4, 4, 4, 4, 5, 0, 0, 5, 5, 3, 3, 0, 0, 0, 0, 0, 3, 5, 5, 5, 5, 0, 0, 0, 0, 5, 0, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 9, 9, 9, 3, 5, 9, 9, 9, 9, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 6, 6, 6, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 6, 6, 6, 6, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 6, 6, 6, 6, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 6, 6, 6, 6, 6, 6, 6, 6, 6, 7, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 6, 6, 6, 6, 6, 6, 6, 6, 7, 6, 6, 6, 6, 6, 6, 6, 6, 6, 7, 6, 6, 6, 6, 6, 6, 6, 6, 6, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 3, 5, 3, 3, 3, 5, 5, 3, 5, 3, 5, 3, 5, 3, 3, 3, 3, 5, 3, 5, 5, 3, 5, 5, 5, 5, 5, 5, 5, 5, 3, 3, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 5, 0, 0, 0, 0, 0, 0, 3, 5, 3, 5, 4, 4, 4, 3, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 0, 5, 0, 0, 0, 0, 0, 5, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 4, 4, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 9, 9, 9, 9, 9, 9, 9, 9, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 0, 0, 9, 9, 9, 4, 4, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 4, 4, 0, 0, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 7, 7, 7, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 7, 7, 7, 7, 7, 7, 7, 0, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 4, 4, 4, 4, 4, 9, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 9, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 9, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 9, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 9, 4, 4, 9, 4, 4, 4, 9, 4, 9, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 9, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 9, 4, 4, 4, 4, 4, 4, 4, 9, 4, 9, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 9, 9, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 9, 4, 4, 4, 4, 4, 4, 4, 4, 9, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 9, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 9, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 9, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 9, 4, 9, 4, 9, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 9, 4, 9, 9, 9, 4, 4, 4, 4, 4, 4, 9, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 9, 9, 9, 9, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 9, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 9, 4, 4, 4, 4, 4, 4, 4, 9, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 9, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 9, 9, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 9, 9, 9, 4, 9, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 9, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 9, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 9, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 9, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 9, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 9, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 9, 4, 4, 4, 4, 9, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 9, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 9, 4, 4, 4, 4, 4, 9, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 9, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 9, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 5, 5, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 5, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 3, 5, 3, 5, 3, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 4, 0, 0, 3, 5, 3, 5, 4, 3, 5, 3, 5, 5, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 3, 3, 3, 3, 5, 3, 3, 3, 3, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 3, 3, 3, 5, 3, 5, 0, 0, 0, 0, 0, 3, 5, 0, 5, 0, 5, 3, 5, 3, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 5, 5, 3, 5, 4, 5, 5, 5, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 4, 0, 0, 0, 7, 7, 7, 7, 7, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 4, 0, 4, 4, 4, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 0, 0, 4, 4, 4, 4, 4, 4, 0, 0, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 0, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 0, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 0, 0, 0, 0, 0, 0, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 9, 4, 4, 4, 4, 4, 4, 4, 9, 4, 4, 4, 4, 9, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 9, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 9, 4, 9, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 9, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 5, 5, 5, 5, 5, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 5, 5, 5, 5, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 0, 4, 0, 4, 4, 0, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 0, 0, 0, 0, 4, 0, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 4, 4, 4, 4, 4, 4, 0, 0, 4, 4, 4, 4, 4, 4, 0, 0, 4, 4, 4, 4, 4, 4, 0, 0, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 7, 7, 7, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 7, 7, 7, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 9, 4, 4, 4, 4, 4, 4, 4, 4, 9, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 0, 9, 9, 9, 9, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 0, 0, 0, 0, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 0, 3, 3, 3, 3, 3, 3, 3, 0, 3, 3, 0, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 0, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 0, 5, 5, 5, 5, 5, 5, 5, 0, 5, 5, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 4, 4, 5, 5, 5, 0, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 0, 5, 5, 5, 5, 5, 5, 5, 5, 5, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 0, 0, 4, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 0, 0, 0, 4, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 7, 7, 7, 7, 7, 7, 7, 7, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 7, 7, 7, 7, 7, 7, 7, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 7, 7, 7, 7, 7, 7, 7, 7, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 0, 0, 0, 0, 0, 7, 7, 7, 7, 7, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 7, 7, 7, 7, 7, 7, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 7, 7, 4, 4, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 0, 0, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 4, 4, 4, 4, 0, 4, 4, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 4, 4, 4, 0, 0, 0, 0, 4, 6, 6, 6, 6, 7, 7, 7, 7, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 7, 7, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 7, 7, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 7, 7, 7, 7, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 7, 7, 7, 7, 7, 7, 7, 7, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 7, 7, 7, 7, 7, 7, 7, 7, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 7, 7, 7, 7, 7, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 0, 0, 0, 0, 0, 0, 0, 7, 7, 7, 7, 7, 7, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 6, 6, 6, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 0, 0, 0, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 4, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 7, 7, 7, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 7, 7, 7, 7, 7, 7, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 6, 6, 6, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 0, 0, 0, 0, 4, 4, 4, 4, 0, 4, 4, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 0, 4, 0, 0, 0, 0, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 0, 4, 0, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 4, 4, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 0, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 4, 4, 0, 0, 4, 4, 4, 0, 0, 4, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 0, 0, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 7, 7, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 7, 7, 7, 7, 7, 7, 7, 7, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 4, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 4, 0, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 0, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 0, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 7, 7, 7, 7, 7, 7, 7, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 0, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 0, 0, 0, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 5, 5, 5, 5, 5, 5, 5, 0, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 3, 0, 3, 3, 0, 0, 3, 0, 0, 3, 3, 0, 0, 3, 3, 3, 3, 0, 3, 3, 3, 3, 3, 3, 3, 3, 5, 5, 5, 5, 0, 5, 0, 5, 5, 5, 5, 5, 5, 5, 0, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 3, 3, 0, 3, 3, 3, 3, 0, 0, 3, 3, 3, 3, 3, 3, 3, 3, 0, 3, 3, 3, 3, 3, 3, 3, 0, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 3, 3, 0, 3, 3, 3, 3, 0, 3, 3, 3, 3, 3, 0, 3, 0, 0, 0, 3, 3, 3, 3, 3, 3, 3, 0, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 0, 0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 0, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 0, 5, 5, 5, 5, 5, 5, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 0, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 0, 5, 5, 5, 5, 5, 5, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 0, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 0, 5, 5, 5, 5, 5, 5, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 0, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 0, 5, 5, 5, 5, 5, 5, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 0, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 0, 5, 5, 5, 5, 5, 5, 3, 5, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 0, 0, 0, 0, 0, 0, 5, 5, 5, 5, 5, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 0, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 0, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 0, 0, 7, 7, 7, 7, 7, 7, 7, 7, 7, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 0, 7, 7, 7, 0, 7, 7, 7, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 0, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 0, 0, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 0, 4, 0, 0, 4, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 0, 4, 0, 4, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 4, 0, 4, 0, 4, 0, 4, 4, 4, 0, 4, 4, 0, 4, 0, 0, 4, 0, 4, 0, 4, 0, 4, 0, 4, 0, 4, 4, 0, 4, 0, 0, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 0, 4, 4, 4, 4, 0, 4, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 4, 4, 4, 0, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 7, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 4, 9, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 9, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 9, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 9, 4, 4, 4, 4, 4, 4, 4, 4, 9, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 9, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 9, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 9, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 9, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 9, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 9, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 9, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]);
-    var typesData_1509949452 = new Int16Array([0, 64, 129, 176, 128, 168, 2, 4, 160, 132, 180, 172]);
-    var toLowerRanges_754975643 = new Int32Array([65, 90, 532, 192, 214, 532, 216, 222, 532, 393, 394, 705, 433, 434, 717, 904, 906, 537, 910, 911, 563, 913, 929, 532, 931, 939, 532, 1021, 1023, 370, 1024, 1039, 580, 1040, 1071, 532, 1329, 1366, 548, 4256, 4293, 7764, 5024, 5103, 39364, 5104, 5109, 508, 7312, 7354, -2508, 7357, 7359, -2508, 7944, 7951, 492, 7960, 7965, 492, 7976, 7983, 492, 7992, 7999, 492, 8008, 8013, 492, 8040, 8047, 492, 8072, 8079, 492, 8088, 8095, 492, 8104, 8111, 492, 8120, 8121, 492, 8122, 8123, 426, 8136, 8139, 414, 8152, 8153, 492, 8154, 8155, 400, 8168, 8169, 492, 8170, 8171, 388, 8184, 8185, 372, 8186, 8187, 374, 11264, 11310, 548, 11390, 11391, -10315, 65313, 65338, 532, 66560, 66599, 540, 66736, 66771, 540, 68736, 68786, 564, 71840, 71871, 532, 93760, 93791, 532, 125184, 125217, 534]);
-    var toLowerSinglets_754975644 = new Int32Array([256, 501, 258, 501, 260, 501, 262, 501, 264, 501, 266, 501, 268, 501, 270, 501, 272, 501, 274, 501, 276, 501, 278, 501, 280, 501, 282, 501, 284, 501, 286, 501, 288, 501, 290, 501, 292, 501, 294, 501, 296, 501, 298, 501, 300, 501, 302, 501, 304, 301, 306, 501, 308, 501, 310, 501, 313, 501, 315, 501, 317, 501, 319, 501, 321, 501, 323, 501, 325, 501, 327, 501, 330, 501, 332, 501, 334, 501, 336, 501, 338, 501, 340, 501, 342, 501, 344, 501, 346, 501, 348, 501, 350, 501, 352, 501, 354, 501, 356, 501, 358, 501, 360, 501, 362, 501, 364, 501, 366, 501, 368, 501, 370, 501, 372, 501, 374, 501, 376, 379, 377, 501, 379, 501, 381, 501, 385, 710, 386, 501, 388, 501, 390, 706, 391, 501, 395, 501, 398, 579, 399, 702, 400, 703, 401, 501, 403, 705, 404, 707, 406, 711, 407, 709, 408, 501, 412, 711, 413, 713, 415, 714, 416, 501, 418, 501, 420, 501, 422, 718, 423, 501, 425, 718, 428, 501, 430, 718, 431, 501, 435, 501, 437, 501, 439, 719, 440, 501, 444, 501, 452, 502, 453, 501, 455, 502, 456, 501, 458, 502, 459, 501, 461, 501, 463, 501, 465, 501, 467, 501, 469, 501, 471, 501, 473, 501, 475, 501, 478, 501, 480, 501, 482, 501, 484, 501, 486, 501, 488, 501, 490, 501, 492, 501, 494, 501, 497, 502, 498, 501, 500, 501, 502, 403, 503, 444, 504, 501, 506, 501, 508, 501, 510, 501, 512, 501, 514, 501, 516, 501, 518, 501, 520, 501, 522, 501, 524, 501, 526, 501, 528, 501, 530, 501, 532, 501, 534, 501, 536, 501, 538, 501, 540, 501, 542, 501, 544, 370, 546, 501, 548, 501, 550, 501, 552, 501, 554, 501, 556, 501, 558, 501, 560, 501, 562, 501, 570, 11295, 571, 501, 573, 337, 574, 11292, 577, 501, 579, 305, 580, 569, 581, 571, 582, 501, 584, 501, 586, 501, 588, 501, 590, 501, 880, 501, 882, 501, 886, 501, 895, 616, 902, 538, 908, 564, 975, 508, 984, 501, 986, 501, 988, 501, 990, 501, 992, 501, 994, 501, 996, 501, 998, 501, 1000, 501, 1002, 501, 1004, 501, 1006, 501, 1012, 440, 1015, 501, 1017, 493, 1018, 501, 1120, 501, 1122, 501, 1124, 501, 1126, 501, 1128, 501, 1130, 501, 1132, 501, 1134, 501, 1136, 501, 1138, 501, 1140, 501, 1142, 501, 1144, 501, 1146, 501, 1148, 501, 1150, 501, 1152, 501, 1162, 501, 1164, 501, 1166, 501, 1168, 501, 1170, 501, 1172, 501, 1174, 501, 1176, 501, 1178, 501, 1180, 501, 1182, 501, 1184, 501, 1186, 501, 1188, 501, 1190, 501, 1192, 501, 1194, 501, 1196, 501, 1198, 501, 1200, 501, 1202, 501, 1204, 501, 1206, 501, 1208, 501, 1210, 501, 1212, 501, 1214, 501, 1216, 515, 1217, 501, 1219, 501, 1221, 501, 1223, 501, 1225, 501, 1227, 501, 1229, 501, 1232, 501, 1234, 501, 1236, 501, 1238, 501, 1240, 501, 1242, 501, 1244, 501, 1246, 501, 1248, 501, 1250, 501, 1252, 501, 1254, 501, 1256, 501, 1258, 501, 1260, 501, 1262, 501, 1264, 501, 1266, 501, 1268, 501, 1270, 501, 1272, 501, 1274, 501, 1276, 501, 1278, 501, 1280, 501, 1282, 501, 1284, 501, 1286, 501, 1288, 501, 1290, 501, 1292, 501, 1294, 501, 1296, 501, 1298, 501, 1300, 501, 1302, 501, 1304, 501, 1306, 501, 1308, 501, 1310, 501, 1312, 501, 1314, 501, 1316, 501, 1318, 501, 1320, 501, 1322, 501, 1324, 501, 1326, 501, 4295, 7764, 4301, 7764, 7680, 501, 7682, 501, 7684, 501, 7686, 501, 7688, 501, 7690, 501, 7692, 501, 7694, 501, 7696, 501, 7698, 501, 7700, 501, 7702, 501, 7704, 501, 7706, 501, 7708, 501, 7710, 501, 7712, 501, 7714, 501, 7716, 501, 7718, 501, 7720, 501, 7722, 501, 7724, 501, 7726, 501, 7728, 501, 7730, 501, 7732, 501, 7734, 501, 7736, 501, 7738, 501, 7740, 501, 7742, 501, 7744, 501, 7746, 501, 7748, 501, 7750, 501, 7752, 501, 7754, 501, 7756, 501, 7758, 501, 7760, 501, 7762, 501, 7764, 501, 7766, 501, 7768, 501, 7770, 501, 7772, 501, 7774, 501, 7776, 501, 7778, 501, 7780, 501, 7782, 501, 7784, 501, 7786, 501, 7788, 501, 7790, 501, 7792, 501, 7794, 501, 7796, 501, 7798, 501, 7800, 501, 7802, 501, 7804, 501, 7806, 501, 7808, 501, 7810, 501, 7812, 501, 7814, 501, 7816, 501, 7818, 501, 7820, 501, 7822, 501, 7824, 501, 7826, 501, 7828, 501, 7838, -7115, 7840, 501, 7842, 501, 7844, 501, 7846, 501, 7848, 501, 7850, 501, 7852, 501, 7854, 501, 7856, 501, 7858, 501, 7860, 501, 7862, 501, 7864, 501, 7866, 501, 7868, 501, 7870, 501, 7872, 501, 7874, 501, 7876, 501, 7878, 501, 7880, 501, 7882, 501, 7884, 501, 7886, 501, 7888, 501, 7890, 501, 7892, 501, 7894, 501, 7896, 501, 7898, 501, 7900, 501, 7902, 501, 7904, 501, 7906, 501, 7908, 501, 7910, 501, 7912, 501, 7914, 501, 7916, 501, 7918, 501, 7920, 501, 7922, 501, 7924, 501, 7926, 501, 7928, 501, 7930, 501, 7932, 501, 7934, 501, 8025, 492, 8027, 492, 8029, 492, 8031, 492, 8124, 491, 8140, 491, 8172, 493, 8188, 491, 8486, -7017, 8490, -7883, 8491, -7762, 8498, 528, 8579, 501, 11360, 501, 11362, -10243, 11363, -3314, 11364, -10227, 11367, 501, 11369, 501, 11371, 501, 11373, -10280, 11374, -10249, 11375, -10283, 11376, -10282, 11378, 501, 11381, 501, 11392, 501, 11394, 501, 11396, 501, 11398, 501, 11400, 501, 11402, 501, 11404, 501, 11406, 501, 11408, 501, 11410, 501, 11412, 501, 11414, 501, 11416, 501, 11418, 501, 11420, 501, 11422, 501, 11424, 501, 11426, 501, 11428, 501, 11430, 501, 11432, 501, 11434, 501, 11436, 501, 11438, 501, 11440, 501, 11442, 501, 11444, 501, 11446, 501, 11448, 501, 11450, 501, 11452, 501, 11454, 501, 11456, 501, 11458, 501, 11460, 501, 11462, 501, 11464, 501, 11466, 501, 11468, 501, 11470, 501, 11472, 501, 11474, 501, 11476, 501, 11478, 501, 11480, 501, 11482, 501, 11484, 501, 11486, 501, 11488, 501, 11490, 501, 11499, 501, 11501, 501, 11506, 501, 42560, 501, 42562, 501, 42564, 501, 42566, 501, 42568, 501, 42570, 501, 42572, 501, 42574, 501, 42576, 501, 42578, 501, 42580, 501, 42582, 501, 42584, 501, 42586, 501, 42588, 501, 42590, 501, 42592, 501, 42594, 501, 42596, 501, 42598, 501, 42600, 501, 42602, 501, 42604, 501, 42624, 501, 42626, 501, 42628, 501, 42630, 501, 42632, 501, 42634, 501, 42636, 501, 42638, 501, 42640, 501, 42642, 501, 42644, 501, 42646, 501, 42648, 501, 42650, 501, 42786, 501, 42788, 501, 42790, 501, 42792, 501, 42794, 501, 42796, 501, 42798, 501, 42802, 501, 42804, 501, 42806, 501, 42808, 501, 42810, 501, 42812, 501, 42814, 501, 42816, 501, 42818, 501, 42820, 501, 42822, 501, 42824, 501, 42826, 501, 42828, 501, 42830, 501, 42832, 501, 42834, 501, 42836, 501, 42838, 501, 42840, 501, 42842, 501, 42844, 501, 42846, 501, 42848, 501, 42850, 501, 42852, 501, 42854, 501, 42856, 501, 42858, 501, 42860, 501, 42862, 501, 42873, 501, 42875, 501, 42877, -34832, 42878, 501, 42880, 501, 42882, 501, 42884, 501, 42886, 501, 42891, 501, 42893, -41780, 42896, 501, 42898, 501, 42902, 501, 42904, 501, 42906, 501, 42908, 501, 42910, 501, 42912, 501, 42914, 501, 42916, 501, 42918, 501, 42920, 501, 42922, -41808, 42923, -41819, 42924, -41815, 42925, -41805, 42926, -41808, 42928, -41758, 42929, -41782, 42930, -41761, 42931, 1428, 42932, 501, 42934, 501, 42936, 501, 42938, 501, 42940, 501, 42942, 501, 42946, 501, 42948, 452, 42949, -41807, 42950, -34884]);
-    var toUpperRanges_754975645 = new Int32Array([97, 122, 468, 224, 246, 468, 248, 254, 468, 575, 576, 11315, 598, 599, 295, 650, 651, 283, 891, 893, 630, 941, 943, 463, 945, 961, 468, 963, 971, 468, 973, 974, 437, 1072, 1103, 468, 1104, 1119, 420, 1377, 1414, 452, 4304, 4346, 3508, 4349, 4351, 3508, 5112, 5117, 492, 7299, 7300, -5742, 7936, 7943, 508, 7952, 7957, 508, 7968, 7975, 508, 7984, 7991, 508, 8000, 8005, 508, 8032, 8039, 508, 8048, 8049, 574, 8050, 8053, 586, 8054, 8055, 600, 8056, 8057, 628, 8058, 8059, 612, 8060, 8061, 626, 8064, 8071, 508, 8080, 8087, 508, 8096, 8103, 508, 8112, 8113, 508, 8144, 8145, 508, 8160, 8161, 508, 11312, 11358, 452, 11520, 11557, -6764, 43888, 43967, -38364, 65345, 65370, 468, 66600, 66639, 460, 66776, 66811, 460, 68800, 68850, 436, 71872, 71903, 468, 93792, 93823, 468, 125218, 125251, 466]);
-    var toUpperSinglets_754975646 = new Int32Array([181, 1243, 255, 621, 257, 499, 259, 499, 261, 499, 263, 499, 265, 499, 267, 499, 269, 499, 271, 499, 273, 499, 275, 499, 277, 499, 279, 499, 281, 499, 283, 499, 285, 499, 287, 499, 289, 499, 291, 499, 293, 499, 295, 499, 297, 499, 299, 499, 301, 499, 303, 499, 305, 268, 307, 499, 309, 499, 311, 499, 314, 499, 316, 499, 318, 499, 320, 499, 322, 499, 324, 499, 326, 499, 328, 499, 331, 499, 333, 499, 335, 499, 337, 499, 339, 499, 341, 499, 343, 499, 345, 499, 347, 499, 349, 499, 351, 499, 353, 499, 355, 499, 357, 499, 359, 499, 361, 499, 363, 499, 365, 499, 367, 499, 369, 499, 371, 499, 373, 499, 375, 499, 378, 499, 380, 499, 382, 499, 383, 200, 384, 695, 387, 499, 389, 499, 392, 499, 396, 499, 402, 499, 405, 597, 409, 499, 410, 663, 414, 630, 417, 499, 419, 499, 421, 499, 424, 499, 429, 499, 432, 499, 436, 499, 438, 499, 441, 499, 445, 499, 447, 556, 453, 499, 454, 498, 456, 499, 457, 498, 459, 499, 460, 498, 462, 499, 464, 499, 466, 499, 468, 499, 470, 499, 472, 499, 474, 499, 476, 499, 477, 421, 479, 499, 481, 499, 483, 499, 485, 499, 487, 499, 489, 499, 491, 499, 493, 499, 495, 499, 498, 499, 499, 498, 501, 499, 505, 499, 507, 499, 509, 499, 511, 499, 513, 499, 515, 499, 517, 499, 519, 499, 521, 499, 523, 499, 525, 499, 527, 499, 529, 499, 531, 499, 533, 499, 535, 499, 537, 499, 539, 499, 541, 499, 543, 499, 547, 499, 549, 499, 551, 499, 553, 499, 555, 499, 557, 499, 559, 499, 561, 499, 563, 499, 572, 499, 578, 499, 583, 499, 585, 499, 587, 499, 589, 499, 591, 499, 592, 11283, 593, 11280, 594, 11282, 595, 290, 596, 294, 601, 298, 603, 297, 604, 42819, 608, 295, 609, 42815, 611, 293, 613, 42780, 614, 42808, 616, 291, 617, 289, 618, 42808, 619, 11243, 620, 42805, 623, 289, 625, 11249, 626, 287, 629, 286, 637, 11227, 640, 282, 642, 42807, 643, 282, 647, 42782, 648, 282, 649, 431, 652, 429, 658, 281, 669, 42761, 670, 42758, 881, 499, 883, 499, 887, 499, 940, 462, 962, 469, 972, 436, 976, 438, 977, 443, 981, 453, 982, 446, 983, 492, 985, 499, 987, 499, 989, 499, 991, 499, 993, 499, 995, 499, 997, 499, 999, 499, 1001, 499, 1003, 499, 1005, 499, 1007, 499, 1008, 414, 1009, 420, 1010, 507, 1011, 384, 1013, 404, 1016, 499, 1019, 499, 1121, 499, 1123, 499, 1125, 499, 1127, 499, 1129, 499, 1131, 499, 1133, 499, 1135, 499, 1137, 499, 1139, 499, 1141, 499, 1143, 499, 1145, 499, 1147, 499, 1149, 499, 1151, 499, 1153, 499, 1163, 499, 1165, 499, 1167, 499, 1169, 499, 1171, 499, 1173, 499, 1175, 499, 1177, 499, 1179, 499, 1181, 499, 1183, 499, 1185, 499, 1187, 499, 1189, 499, 1191, 499, 1193, 499, 1195, 499, 1197, 499, 1199, 499, 1201, 499, 1203, 499, 1205, 499, 1207, 499, 1209, 499, 1211, 499, 1213, 499, 1215, 499, 1218, 499, 1220, 499, 1222, 499, 1224, 499, 1226, 499, 1228, 499, 1230, 499, 1231, 485, 1233, 499, 1235, 499, 1237, 499, 1239, 499, 1241, 499, 1243, 499, 1245, 499, 1247, 499, 1249, 499, 1251, 499, 1253, 499, 1255, 499, 1257, 499, 1259, 499, 1261, 499, 1263, 499, 1265, 499, 1267, 499, 1269, 499, 1271, 499, 1273, 499, 1275, 499, 1277, 499, 1279, 499, 1281, 499, 1283, 499, 1285, 499, 1287, 499, 1289, 499, 1291, 499, 1293, 499, 1295, 499, 1297, 499, 1299, 499, 1301, 499, 1303, 499, 1305, 499, 1307, 499, 1309, 499, 1311, 499, 1313, 499, 1315, 499, 1317, 499, 1319, 499, 1321, 499, 1323, 499, 1325, 499, 1327, 499, 7296, -5754, 7297, -5753, 7298, -5744, 7301, -5743, 7302, -5736, 7303, -5681, 7304, 35766, 7545, 35832, 7549, 4314, 7566, 35884, 7681, 499, 7683, 499, 7685, 499, 7687, 499, 7689, 499, 7691, 499, 7693, 499, 7695, 499, 7697, 499, 7699, 499, 7701, 499, 7703, 499, 7705, 499, 7707, 499, 7709, 499, 7711, 499, 7713, 499, 7715, 499, 7717, 499, 7719, 499, 7721, 499, 7723, 499, 7725, 499, 7727, 499, 7729, 499, 7731, 499, 7733, 499, 7735, 499, 7737, 499, 7739, 499, 7741, 499, 7743, 499, 7745, 499, 7747, 499, 7749, 499, 7751, 499, 7753, 499, 7755, 499, 7757, 499, 7759, 499, 7761, 499, 7763, 499, 7765, 499, 7767, 499, 7769, 499, 7771, 499, 7773, 499, 7775, 499, 7777, 499, 7779, 499, 7781, 499, 7783, 499, 7785, 499, 7787, 499, 7789, 499, 7791, 499, 7793, 499, 7795, 499, 7797, 499, 7799, 499, 7801, 499, 7803, 499, 7805, 499, 7807, 499, 7809, 499, 7811, 499, 7813, 499, 7815, 499, 7817, 499, 7819, 499, 7821, 499, 7823, 499, 7825, 499, 7827, 499, 7829, 499, 7835, 441, 7841, 499, 7843, 499, 7845, 499, 7847, 499, 7849, 499, 7851, 499, 7853, 499, 7855, 499, 7857, 499, 7859, 499, 7861, 499, 7863, 499, 7865, 499, 7867, 499, 7869, 499, 7871, 499, 7873, 499, 7875, 499, 7877, 499, 7879, 499, 7881, 499, 7883, 499, 7885, 499, 7887, 499, 7889, 499, 7891, 499, 7893, 499, 7895, 499, 7897, 499, 7899, 499, 7901, 499, 7903, 499, 7905, 499, 7907, 499, 7909, 499, 7911, 499, 7913, 499, 7915, 499, 7917, 499, 7919, 499, 7921, 499, 7923, 499, 7925, 499, 7927, 499, 7929, 499, 7931, 499, 7933, 499, 7935, 499, 8017, 508, 8019, 508, 8021, 508, 8023, 508, 8115, 509, 8126, -6705, 8131, 509, 8165, 507, 8179, 509, 8526, 472, 8580, 499, 11361, 499, 11365, -10295, 11366, -10292, 11368, 499, 11370, 499, 11372, 499, 11379, 499, 11382, 499, 11393, 499, 11395, 499, 11397, 499, 11399, 499, 11401, 499, 11403, 499, 11405, 499, 11407, 499, 11409, 499, 11411, 499, 11413, 499, 11415, 499, 11417, 499, 11419, 499, 11421, 499, 11423, 499, 11425, 499, 11427, 499, 11429, 499, 11431, 499, 11433, 499, 11435, 499, 11437, 499, 11439, 499, 11441, 499, 11443, 499, 11445, 499, 11447, 499, 11449, 499, 11451, 499, 11453, 499, 11455, 499, 11457, 499, 11459, 499, 11461, 499, 11463, 499, 11465, 499, 11467, 499, 11469, 499, 11471, 499, 11473, 499, 11475, 499, 11477, 499, 11479, 499, 11481, 499, 11483, 499, 11485, 499, 11487, 499, 11489, 499, 11491, 499, 11500, 499, 11502, 499, 11507, 499, 11559, -6764, 11565, -6764, 42561, 499, 42563, 499, 42565, 499, 42567, 499, 42569, 499, 42571, 499, 42573, 499, 42575, 499, 42577, 499, 42579, 499, 42581, 499, 42583, 499, 42585, 499, 42587, 499, 42589, 499, 42591, 499, 42593, 499, 42595, 499, 42597, 499, 42599, 499, 42601, 499, 42603, 499, 42605, 499, 42625, 499, 42627, 499, 42629, 499, 42631, 499, 42633, 499, 42635, 499, 42637, 499, 42639, 499, 42641, 499, 42643, 499, 42645, 499, 42647, 499, 42649, 499, 42651, 499, 42787, 499, 42789, 499, 42791, 499, 42793, 499, 42795, 499, 42797, 499, 42799, 499, 42803, 499, 42805, 499, 42807, 499, 42809, 499, 42811, 499, 42813, 499, 42815, 499, 42817, 499, 42819, 499, 42821, 499, 42823, 499, 42825, 499, 42827, 499, 42829, 499, 42831, 499, 42833, 499, 42835, 499, 42837, 499, 42839, 499, 42841, 499, 42843, 499, 42845, 499, 42847, 499, 42849, 499, 42851, 499, 42853, 499, 42855, 499, 42857, 499, 42859, 499, 42861, 499, 42863, 499, 42874, 499, 42876, 499, 42879, 499, 42881, 499, 42883, 499, 42885, 499, 42887, 499, 42892, 499, 42897, 499, 42899, 499, 42900, 548, 42903, 499, 42905, 499, 42907, 499, 42909, 499, 42911, 499, 42913, 499, 42915, 499, 42917, 499, 42919, 499, 42921, 499, 42933, 499, 42935, 499, 42937, 499, 42939, 499, 42941, 499, 42943, 499, 42947, 499, 43859, -428]);
-    var propsOffsets_1275068459 = new Int16Array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 41, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 101, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 102, 41, 41, 41, 41, 41, 41, 41, 41, 103, 41, 41, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 117, 118, 118, 118, 118, 118, 118, 118, 118, 118, 118, 118, 118, 118, 118, 118, 118, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 120, 120, 121, 122, 123, 124, 125, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 41, 41, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 136, 169, 170, 136, 171, 172, 173, 174, 136, 175, 176, 177, 178, 179, 180, 181, 136, 182, 183, 184, 185, 136, 186, 187, 188, 41, 41, 41, 41, 41, 41, 41, 189, 190, 41, 191, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 192, 41, 41, 41, 41, 41, 41, 41, 41, 193, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 41, 41, 41, 41, 194, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 41, 41, 41, 41, 195, 196, 197, 198, 136, 136, 136, 136, 199, 200, 201, 202, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 203, 41, 41, 41, 41, 41, 41, 41, 41, 41, 204, 205, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 206, 41, 41, 207, 41, 41, 208, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 209, 210, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 211, 212, 78, 213, 214, 215, 216, 217, 218, 136, 219, 220, 221, 222, 223, 224, 225, 226, 78, 78, 78, 78, 227, 228, 136, 136, 136, 136, 136, 136, 136, 136, 229, 136, 230, 231, 232, 136, 136, 233, 136, 136, 136, 234, 136, 136, 136, 136, 136, 235, 236, 237, 238, 157, 157, 157, 157, 157, 239, 240, 241, 157, 242, 243, 157, 157, 244, 245, 246, 247, 248, 136, 72, 249, 72, 72, 72, 72, 72, 250, 251, 252, 253, 254, 72, 72, 255, 256, 72, 257, 136, 136, 136, 136, 136, 136, 136, 258, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 259, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 260, 41, 261, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 262, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 263, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 120, 120, 120, 120, 264, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 258, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 265, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 266, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 258, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 258, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 258, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 258, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 258, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 258, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 258, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 258, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 258, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 258, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 258, 267, 268, 269, 270, 268, 268, 268, 268, 268, 268, 268, 268, 268, 268, 268, 268, 268, 268, 268, 268, 268, 268, 268, 268, 268, 268, 268, 268, 268, 268, 268, 268, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 136, 258, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 271, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 119, 271]);
-    var propsIndices_1275068460 = new Uint8Array([0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 1, 3, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 1, 4, 5, 5, 6, 7, 6, 5, 5, 8, 9, 5, 10, 11, 12, 11, 11, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 11, 5, 14, 14, 14, 5, 5, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 8, 5, 9, 16, 17, 16, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 8, 14, 9, 14, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 19, 5, 7, 7, 7, 7, 20, 5, 21, 20, 22, 23, 14, 24, 20, 21, 25, 26, 27, 27, 21, 28, 5, 5, 21, 27, 22, 29, 30, 30, 30, 5, 31, 31, 31, 31, 31, 31, 15, 31, 31, 31, 31, 31, 31, 31, 31, 31, 15, 31, 31, 31, 31, 31, 31, 14, 15, 31, 31, 31, 31, 31, 15, 18, 32, 32, 32, 32, 32, 32, 18, 32, 32, 32, 32, 32, 32, 32, 32, 32, 18, 32, 32, 32, 32, 32, 32, 14, 18, 32, 32, 32, 32, 32, 18, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 15, 18, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 15, 18, 31, 32, 31, 32, 31, 32, 31, 32, 31, 18, 33, 28, 31, 32, 31, 32, 18, 31, 32, 31, 32, 31, 32, 33, 28, 15, 18, 31, 32, 31, 32, 31, 32, 28, 15, 18, 31, 32, 31, 32, 31, 32, 15, 18, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 15, 18, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 31, 32, 31, 32, 31, 32, 28, 18, 15, 15, 18, 15, 18, 15, 15, 18, 15, 15, 15, 18, 18, 15, 15, 15, 15, 18, 15, 15, 18, 15, 15, 15, 18, 18, 18, 15, 15, 18, 15, 31, 32, 15, 18, 15, 18, 15, 15, 18, 15, 18, 18, 15, 18, 15, 31, 32, 15, 15, 15, 18, 15, 18, 15, 15, 18, 18, 34, 15, 18, 18, 18, 34, 34, 34, 34, 33, 35, 28, 33, 35, 28, 33, 35, 28, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 18, 31, 32, 31, 32, 31, 32, 15, 18, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 32, 33, 35, 28, 31, 32, 15, 15, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 15, 18, 31, 32, 15, 18, 15, 18, 15, 18, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 18, 18, 18, 18, 18, 18, 15, 15, 18, 15, 15, 18, 18, 15, 18, 15, 15, 15, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 34, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 36, 36, 36, 36, 36, 36, 36, 36, 36, 37, 37, 38, 38, 38, 38, 38, 38, 38, 16, 16, 16, 16, 37, 37, 37, 37, 37, 37, 37, 37, 37, 37, 38, 38, 16, 16, 16, 16, 16, 16, 21, 21, 21, 21, 21, 21, 16, 16, 36, 36, 36, 36, 36, 16, 16, 16, 16, 16, 16, 16, 37, 16, 38, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 39, 39, 39, 39, 39, 40, 39, 39, 39, 39, 39, 39, 39, 40, 40, 39, 40, 39, 40, 39, 39, 41, 42, 42, 42, 42, 41, 43, 42, 42, 42, 42, 42, 44, 44, 45, 45, 45, 45, 46, 46, 42, 42, 42, 42, 45, 45, 42, 45, 45, 42, 42, 47, 47, 47, 47, 48, 42, 42, 42, 42, 40, 40, 40, 49, 49, 39, 49, 49, 50, 40, 42, 42, 42, 40, 40, 40, 42, 42, 51, 40, 40, 40, 42, 42, 42, 42, 40, 41, 42, 42, 40, 52, 53, 53, 52, 53, 53, 52, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 15, 18, 15, 18, 54, 16, 15, 18, 55, 55, 36, 18, 18, 18, 56, 15, 55, 55, 55, 55, 21, 57, 31, 56, 31, 31, 31, 55, 31, 55, 31, 31, 32, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 55, 15, 15, 15, 15, 15, 15, 15, 31, 31, 32, 32, 32, 32, 32, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 32, 32, 32, 32, 32, 15, 28, 28, 33, 58, 58, 28, 28, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 28, 28, 28, 18, 33, 28, 14, 15, 18, 33, 15, 18, 18, 15, 15, 15, 31, 31, 15, 31, 15, 15, 15, 31, 15, 15, 15, 15, 31, 31, 31, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 31, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 18, 18, 18, 18, 18, 18, 18, 18, 18, 32, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 32, 32, 18, 32, 18, 18, 18, 32, 18, 18, 18, 18, 32, 32, 32, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 31, 32, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 59, 40, 40, 40, 40, 40, 60, 60, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 31, 32, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 18, 31, 32, 31, 32, 15, 18, 31, 32, 15, 18, 31, 32, 31, 32, 31, 32, 15, 18, 31, 32, 31, 32, 31, 32, 15, 18, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 15, 18, 31, 32, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 55, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 55, 55, 38, 61, 61, 61, 61, 61, 61, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 28, 18, 61, 62, 55, 55, 20, 20, 7, 63, 42, 40, 40, 40, 40, 42, 40, 40, 40, 64, 42, 40, 40, 40, 40, 40, 40, 42, 42, 42, 42, 42, 42, 40, 40, 42, 40, 40, 64, 65, 40, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 75, 76, 77, 78, 79, 80, 81, 82, 83, 81, 40, 42, 81, 74, 63, 63, 63, 63, 63, 63, 63, 63, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 63, 63, 63, 63, 84, 84, 84, 84, 81, 81, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 85, 85, 85, 85, 85, 85, 14, 14, 86, 6, 6, 87, 11, 88, 20, 20, 40, 40, 40, 40, 40, 40, 40, 40, 89, 90, 91, 88, 92, 88, 88, 88, 93, 93, 94, 94, 94, 94, 94, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 95, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 96, 97, 98, 89, 90, 91, 99, 100, 39, 39, 45, 42, 40, 40, 40, 40, 40, 42, 40, 40, 42, 101, 101, 101, 101, 101, 101, 101, 101, 101, 101, 6, 102, 102, 88, 93, 93, 103, 93, 93, 93, 93, 104, 104, 104, 104, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 94, 93, 94, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 94, 88, 93, 40, 40, 40, 40, 40, 40, 40, 85, 20, 40, 40, 40, 40, 42, 40, 95, 95, 40, 40, 20, 42, 40, 40, 42, 93, 93, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 93, 93, 93, 105, 105, 93, 88, 88, 88, 88, 88, 88, 88, 88, 88, 88, 88, 88, 88, 88, 106, 92, 93, 107, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 40, 42, 40, 40, 42, 40, 40, 42, 42, 42, 40, 42, 42, 40, 42, 40, 40, 40, 42, 40, 42, 40, 42, 40, 42, 40, 40, 106, 106, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 93, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 108, 108, 108, 108, 108, 108, 108, 108, 108, 108, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 40, 40, 40, 40, 40, 40, 40, 42, 40, 109, 109, 20, 5, 5, 5, 109, 63, 63, 42, 110, 110, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 40, 40, 40, 40, 109, 40, 40, 40, 40, 40, 40, 40, 40, 40, 109, 40, 40, 40, 109, 40, 40, 40, 40, 40, 63, 63, 81, 81, 81, 81, 81, 81, 81, 81, 81, 81, 81, 81, 81, 81, 81, 63, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 42, 42, 42, 63, 63, 81, 63, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 106, 106, 106, 106, 106, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 111, 93, 93, 93, 93, 93, 93, 106, 85, 85, 106, 106, 106, 106, 106, 106, 40, 42, 42, 42, 40, 40, 40, 40, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 95, 40, 40, 40, 40, 40, 42, 42, 42, 42, 42, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 85, 42, 40, 40, 42, 40, 40, 42, 40, 40, 40, 42, 42, 42, 96, 97, 98, 40, 40, 40, 42, 40, 40, 42, 42, 40, 40, 40, 40, 40, 51, 51, 51, 112, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 113, 34, 34, 34, 34, 34, 34, 34, 113, 34, 34, 113, 34, 34, 34, 34, 34, 51, 112, 114, 34, 112, 112, 112, 51, 51, 51, 51, 51, 51, 51, 51, 112, 112, 112, 112, 115, 112, 112, 34, 40, 42, 40, 40, 51, 51, 51, 116, 116, 116, 116, 116, 116, 116, 116, 34, 34, 51, 51, 61, 61, 117, 117, 117, 117, 117, 117, 117, 117, 117, 117, 61, 38, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 51, 112, 112, 55, 34, 34, 34, 34, 34, 34, 34, 34, 55, 55, 34, 34, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 34, 34, 34, 34, 34, 34, 34, 55, 34, 55, 55, 55, 34, 34, 34, 34, 55, 55, 118, 34, 119, 112, 112, 51, 51, 51, 51, 55, 55, 112, 112, 55, 55, 120, 120, 115, 34, 55, 55, 55, 55, 55, 55, 55, 55, 119, 55, 55, 55, 55, 116, 116, 55, 116, 34, 34, 51, 51, 55, 55, 117, 117, 117, 117, 117, 117, 117, 117, 117, 117, 34, 34, 7, 7, 121, 121, 121, 121, 121, 121, 59, 7, 34, 61, 40, 55, 55, 51, 51, 112, 55, 34, 34, 34, 34, 34, 34, 55, 55, 55, 55, 34, 34, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 34, 34, 34, 34, 34, 34, 34, 55, 34, 116, 55, 34, 116, 55, 34, 34, 55, 55, 118, 55, 112, 112, 112, 51, 51, 55, 55, 55, 55, 51, 51, 55, 55, 51, 51, 115, 55, 55, 55, 51, 55, 55, 55, 55, 55, 55, 55, 116, 116, 116, 34, 55, 116, 55, 55, 55, 55, 55, 55, 55, 117, 117, 117, 117, 117, 117, 117, 117, 117, 117, 51, 51, 34, 34, 34, 51, 61, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 51, 51, 112, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 34, 34, 34, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 34, 34, 34, 34, 34, 34, 34, 55, 34, 34, 55, 34, 34, 34, 34, 34, 55, 55, 118, 34, 112, 112, 112, 51, 51, 51, 51, 51, 55, 51, 51, 112, 55, 112, 112, 115, 55, 55, 34, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 34, 34, 51, 51, 55, 55, 117, 117, 117, 117, 117, 117, 117, 117, 117, 117, 61, 7, 55, 55, 55, 55, 55, 55, 55, 34, 51, 51, 51, 51, 51, 51, 55, 51, 112, 112, 55, 34, 34, 34, 34, 34, 34, 34, 34, 55, 55, 34, 34, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 34, 34, 34, 34, 34, 34, 34, 55, 34, 34, 55, 34, 34, 34, 34, 34, 55, 55, 118, 34, 119, 51, 112, 51, 51, 51, 51, 55, 55, 112, 120, 55, 55, 120, 120, 115, 55, 55, 55, 55, 55, 55, 55, 51, 122, 119, 55, 55, 55, 55, 116, 116, 55, 34, 34, 34, 51, 51, 55, 55, 117, 117, 117, 117, 117, 117, 117, 117, 117, 117, 59, 34, 121, 121, 121, 121, 121, 121, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 51, 34, 55, 34, 34, 34, 34, 34, 34, 55, 55, 55, 34, 34, 34, 55, 34, 34, 113, 34, 55, 55, 55, 34, 34, 55, 34, 55, 34, 34, 55, 55, 55, 34, 34, 55, 55, 55, 34, 34, 34, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 55, 55, 55, 119, 112, 51, 112, 112, 55, 55, 55, 112, 112, 112, 55, 120, 120, 120, 115, 55, 55, 34, 55, 55, 55, 55, 55, 55, 119, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 117, 117, 117, 117, 117, 117, 117, 117, 117, 117, 121, 121, 121, 20, 20, 20, 20, 20, 20, 7, 20, 55, 55, 55, 55, 55, 51, 112, 112, 112, 51, 34, 34, 34, 34, 34, 34, 34, 34, 55, 34, 34, 34, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 55, 118, 34, 51, 51, 51, 112, 112, 112, 112, 55, 51, 51, 123, 55, 51, 51, 51, 115, 55, 55, 55, 55, 55, 55, 55, 124, 125, 55, 34, 34, 34, 55, 55, 34, 55, 55, 34, 34, 51, 51, 55, 55, 117, 117, 117, 117, 117, 117, 117, 117, 117, 117, 55, 55, 55, 55, 55, 55, 55, 61, 126, 126, 126, 126, 126, 126, 126, 59, 34, 51, 112, 112, 61, 34, 34, 34, 34, 34, 34, 34, 34, 55, 34, 34, 34, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 34, 34, 34, 34, 34, 55, 55, 118, 34, 112, 127, 120, 112, 119, 112, 112, 55, 127, 120, 120, 55, 120, 120, 51, 115, 55, 55, 55, 55, 55, 55, 55, 119, 119, 55, 55, 55, 55, 55, 55, 34, 34, 55, 34, 34, 51, 51, 55, 55, 117, 117, 117, 117, 117, 117, 117, 117, 117, 117, 55, 34, 34, 112, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 51, 51, 112, 112, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 34, 34, 34, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 115, 115, 34, 119, 112, 112, 51, 51, 51, 51, 55, 112, 112, 112, 55, 120, 120, 120, 115, 34, 59, 55, 55, 55, 55, 34, 34, 34, 119, 121, 121, 121, 121, 121, 121, 121, 34, 34, 34, 51, 51, 55, 55, 117, 117, 117, 117, 117, 117, 117, 117, 117, 117, 121, 121, 121, 121, 121, 121, 121, 121, 121, 59, 34, 34, 34, 34, 34, 34, 55, 51, 112, 112, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 34, 55, 55, 34, 34, 34, 34, 34, 34, 34, 55, 55, 55, 128, 55, 55, 55, 55, 119, 112, 112, 51, 51, 51, 55, 51, 55, 112, 112, 120, 112, 120, 120, 120, 119, 55, 55, 55, 55, 55, 55, 117, 117, 117, 117, 117, 117, 117, 117, 117, 117, 55, 55, 112, 112, 61, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 51, 34, 22, 51, 51, 51, 51, 129, 129, 115, 55, 55, 55, 55, 7, 34, 34, 34, 34, 34, 34, 38, 51, 130, 130, 130, 130, 51, 51, 51, 61, 117, 117, 117, 117, 117, 117, 117, 117, 117, 117, 61, 61, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 34, 34, 55, 34, 55, 34, 34, 34, 34, 34, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 34, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 51, 34, 22, 51, 51, 51, 51, 131, 131, 115, 51, 51, 34, 55, 55, 34, 34, 34, 34, 34, 55, 38, 55, 132, 132, 132, 132, 51, 51, 51, 55, 117, 117, 117, 117, 117, 117, 117, 117, 117, 117, 55, 55, 22, 22, 34, 34, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 34, 59, 59, 59, 61, 61, 61, 61, 61, 61, 61, 61, 133, 61, 61, 61, 61, 61, 61, 59, 61, 59, 59, 59, 42, 42, 59, 59, 59, 59, 59, 59, 117, 117, 117, 117, 117, 117, 117, 117, 117, 117, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 59, 42, 59, 42, 59, 134, 8, 9, 8, 9, 112, 112, 34, 34, 34, 116, 34, 34, 34, 34, 55, 34, 34, 34, 34, 116, 34, 34, 34, 34, 116, 34, 34, 34, 34, 116, 34, 34, 34, 34, 116, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 116, 34, 34, 34, 55, 55, 55, 55, 135, 136, 137, 138, 137, 137, 139, 137, 139, 136, 136, 136, 136, 51, 112, 136, 137, 40, 40, 115, 61, 40, 40, 34, 34, 34, 34, 34, 51, 51, 51, 51, 51, 51, 137, 51, 51, 51, 51, 55, 51, 51, 51, 51, 137, 51, 51, 51, 51, 137, 51, 51, 51, 51, 137, 51, 51, 51, 51, 137, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 137, 51, 51, 51, 55, 59, 59, 59, 59, 59, 59, 59, 59, 42, 59, 59, 59, 59, 59, 59, 55, 59, 59, 61, 61, 61, 61, 61, 59, 59, 59, 59, 61, 61, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 113, 34, 34, 34, 34, 112, 112, 51, 122, 51, 51, 112, 51, 51, 51, 51, 51, 118, 112, 115, 115, 112, 112, 51, 51, 34, 117, 117, 117, 117, 117, 117, 117, 117, 117, 117, 61, 61, 61, 61, 61, 61, 34, 34, 34, 34, 34, 34, 112, 112, 51, 51, 34, 34, 34, 34, 51, 51, 51, 34, 112, 112, 112, 34, 34, 112, 112, 112, 112, 112, 112, 112, 34, 34, 34, 51, 51, 51, 51, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 51, 112, 112, 51, 51, 112, 112, 112, 112, 112, 112, 42, 34, 112, 117, 117, 117, 117, 117, 117, 117, 117, 117, 117, 112, 112, 112, 51, 59, 59, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 55, 15, 55, 55, 55, 55, 55, 15, 55, 55, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 61, 36, 18, 18, 18, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 140, 140, 140, 140, 140, 140, 140, 140, 140, 140, 140, 140, 140, 140, 140, 140, 140, 140, 140, 140, 140, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 140, 140, 140, 140, 140, 140, 140, 140, 140, 140, 140, 140, 140, 140, 140, 140, 140, 140, 140, 140, 140, 140, 140, 140, 140, 140, 140, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 34, 34, 34, 34, 55, 55, 34, 34, 34, 34, 34, 34, 34, 55, 34, 55, 34, 34, 34, 34, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 34, 34, 34, 34, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 34, 34, 34, 34, 55, 55, 34, 34, 34, 34, 34, 34, 34, 55, 34, 55, 34, 34, 34, 34, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 34, 34, 34, 34, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 55, 40, 40, 40, 61, 61, 61, 61, 61, 61, 61, 61, 61, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 55, 55, 55, 55, 55, 55, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 55, 55, 18, 18, 18, 18, 18, 18, 55, 55, 62, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 59, 61, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 4, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 8, 9, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 61, 61, 61, 141, 141, 141, 34, 34, 34, 34, 34, 34, 34, 34, 55, 55, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 51, 51, 115, 142, 55, 55, 55, 55, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 51, 51, 142, 61, 61, 55, 55, 55, 55, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 51, 51, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 34, 34, 34, 55, 51, 51, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 51, 51, 112, 51, 51, 51, 51, 51, 51, 51, 112, 112, 112, 112, 112, 112, 112, 112, 51, 112, 112, 51, 51, 51, 51, 51, 51, 51, 51, 51, 115, 51, 61, 61, 61, 38, 61, 61, 61, 7, 34, 40, 55, 55, 117, 117, 117, 117, 117, 117, 117, 117, 117, 117, 55, 55, 55, 55, 55, 55, 126, 126, 126, 126, 126, 126, 126, 126, 126, 126, 55, 55, 55, 55, 55, 55, 5, 5, 5, 5, 5, 5, 62, 5, 5, 5, 5, 51, 51, 51, 24, 51, 117, 117, 117, 117, 117, 117, 117, 117, 117, 117, 55, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 38, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 55, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 51, 51, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 65, 34, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 51, 51, 51, 112, 112, 112, 112, 51, 51, 112, 112, 112, 55, 55, 55, 55, 112, 112, 51, 112, 112, 112, 112, 112, 112, 64, 40, 42, 55, 55, 55, 55, 20, 55, 55, 55, 5, 5, 117, 117, 117, 117, 117, 117, 117, 117, 117, 117, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 55, 34, 34, 34, 34, 34, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 55, 55, 55, 55, 55, 117, 117, 117, 117, 117, 117, 117, 117, 117, 117, 121, 55, 55, 55, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 40, 42, 112, 112, 51, 55, 55, 61, 61, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 112, 51, 112, 51, 51, 51, 51, 51, 51, 51, 55, 115, 112, 51, 112, 112, 51, 51, 51, 51, 51, 51, 51, 51, 112, 112, 112, 112, 112, 112, 51, 51, 40, 40, 40, 40, 40, 40, 40, 40, 55, 55, 42, 117, 117, 117, 117, 117, 117, 117, 117, 117, 117, 55, 55, 55, 55, 55, 55, 117, 117, 117, 117, 117, 117, 117, 117, 117, 117, 55, 55, 55, 55, 55, 55, 61, 61, 61, 61, 61, 61, 61, 38, 61, 61, 61, 61, 61, 61, 55, 55, 40, 40, 40, 40, 40, 42, 42, 42, 42, 42, 42, 40, 40, 42, 60, 42, 42, 40, 40, 42, 42, 40, 40, 40, 40, 40, 42, 40, 40, 40, 40, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 51, 51, 51, 51, 112, 34, 113, 34, 113, 34, 113, 34, 113, 34, 113, 34, 34, 34, 113, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 118, 119, 51, 51, 51, 51, 51, 120, 51, 120, 112, 112, 120, 120, 51, 120, 142, 34, 34, 34, 34, 34, 34, 34, 34, 55, 55, 55, 117, 117, 117, 117, 117, 117, 117, 117, 117, 117, 61, 61, 61, 61, 61, 61, 61, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 40, 42, 40, 40, 40, 40, 40, 40, 40, 59, 59, 59, 59, 59, 59, 59, 59, 59, 61, 61, 55, 51, 51, 112, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 112, 51, 51, 51, 51, 112, 112, 51, 51, 142, 115, 51, 51, 34, 34, 117, 117, 117, 117, 117, 117, 117, 117, 117, 117, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 118, 112, 51, 51, 112, 112, 112, 51, 112, 51, 51, 51, 142, 142, 55, 55, 55, 55, 55, 55, 55, 55, 61, 61, 61, 61, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 112, 112, 112, 112, 112, 112, 112, 112, 51, 51, 51, 51, 51, 51, 51, 51, 112, 112, 51, 118, 55, 55, 55, 61, 61, 61, 61, 61, 117, 117, 117, 117, 117, 117, 117, 117, 117, 117, 55, 55, 55, 34, 34, 34, 117, 117, 117, 117, 117, 117, 117, 117, 117, 117, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 38, 38, 38, 38, 38, 38, 61, 61, 18, 18, 18, 18, 18, 18, 18, 18, 18, 55, 55, 55, 55, 55, 55, 55, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 55, 55, 15, 15, 15, 61, 61, 61, 61, 61, 61, 61, 61, 55, 55, 55, 55, 55, 55, 55, 55, 40, 40, 40, 61, 47, 42, 42, 42, 42, 42, 40, 40, 42, 42, 42, 42, 40, 112, 47, 47, 47, 47, 47, 47, 47, 34, 34, 34, 34, 42, 34, 34, 34, 34, 34, 34, 40, 34, 34, 112, 40, 40, 34, 55, 55, 55, 55, 55, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 36, 36, 36, 38, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 38, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 38, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 36, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 40, 40, 42, 40, 40, 40, 40, 40, 40, 40, 42, 40, 40, 53, 143, 42, 44, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 41, 65, 65, 42, 144, 40, 52, 42, 40, 42, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 32, 32, 32, 32, 28, 145, 18, 18, 15, 18, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 31, 32, 15, 18, 15, 18, 15, 18, 32, 32, 32, 32, 32, 32, 32, 32, 31, 31, 31, 31, 31, 31, 31, 31, 32, 32, 32, 32, 32, 32, 55, 55, 31, 31, 31, 31, 31, 31, 55, 55, 32, 32, 32, 32, 32, 32, 32, 32, 31, 31, 31, 31, 31, 31, 31, 31, 32, 32, 32, 32, 32, 32, 32, 32, 31, 31, 31, 31, 31, 31, 31, 31, 32, 32, 32, 32, 32, 32, 55, 55, 31, 31, 31, 31, 31, 31, 55, 55, 32, 32, 32, 32, 32, 32, 32, 32, 55, 31, 55, 31, 55, 31, 55, 31, 32, 32, 32, 32, 32, 32, 32, 32, 31, 31, 31, 31, 31, 31, 31, 31, 32, 146, 32, 146, 32, 146, 32, 146, 32, 146, 32, 146, 32, 146, 55, 55, 32, 32, 32, 32, 32, 32, 32, 32, 147, 147, 147, 147, 147, 147, 147, 147, 32, 32, 32, 32, 32, 32, 32, 32, 147, 147, 147, 147, 147, 147, 147, 147, 32, 32, 32, 32, 32, 32, 32, 32, 147, 147, 147, 147, 147, 147, 147, 147, 32, 32, 32, 32, 32, 55, 32, 32, 31, 31, 31, 148, 147, 21, 146, 21, 21, 57, 32, 32, 32, 55, 32, 32, 31, 148, 31, 148, 147, 57, 57, 57, 32, 32, 32, 146, 55, 55, 32, 32, 31, 31, 31, 148, 55, 57, 57, 57, 32, 32, 32, 146, 32, 32, 32, 32, 31, 31, 31, 148, 31, 57, 149, 149, 55, 55, 32, 32, 32, 55, 32, 32, 31, 148, 31, 148, 147, 149, 21, 55, 150, 150, 151, 151, 151, 151, 151, 151, 151, 151, 151, 24, 24, 24, 152, 153, 62, 154, 62, 62, 62, 62, 5, 155, 23, 29, 8, 23, 23, 29, 8, 23, 5, 5, 5, 5, 155, 155, 155, 5, 156, 157, 158, 159, 160, 161, 162, 19, 6, 6, 6, 163, 163, 5, 155, 155, 5, 23, 29, 5, 155, 5, 155, 17, 17, 5, 5, 5, 164, 8, 9, 155, 155, 155, 5, 5, 5, 5, 5, 5, 5, 5, 14, 5, 17, 5, 5, 155, 5, 5, 5, 5, 5, 5, 5, 151, 24, 24, 24, 24, 24, 165, 166, 167, 168, 169, 24, 24, 24, 24, 24, 24, 27, 36, 55, 55, 27, 27, 27, 27, 27, 27, 170, 170, 171, 172, 173, 36, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 170, 170, 171, 172, 173, 55, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 55, 55, 55, 7, 7, 7, 7, 7, 7, 7, 7, 174, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 40, 40, 47, 47, 40, 40, 40, 40, 47, 47, 47, 40, 40, 60, 60, 60, 60, 40, 60, 60, 60, 47, 47, 40, 42, 40, 47, 47, 42, 42, 42, 42, 40, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 176, 176, 33, 176, 20, 176, 176, 33, 20, 176, 28, 33, 33, 33, 28, 28, 33, 33, 33, 28, 20, 33, 176, 20, 14, 33, 33, 33, 33, 33, 20, 20, 176, 176, 176, 20, 33, 20, 148, 20, 33, 20, 148, 148, 33, 33, 25, 28, 33, 33, 15, 33, 28, 22, 22, 22, 22, 28, 20, 176, 28, 28, 33, 33, 171, 14, 14, 14, 14, 33, 28, 28, 28, 28, 20, 14, 20, 20, 18, 59, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 177, 177, 177, 177, 177, 177, 177, 177, 177, 177, 177, 177, 177, 177, 177, 177, 177, 177, 177, 177, 177, 177, 177, 177, 177, 177, 177, 177, 177, 177, 177, 177, 141, 141, 141, 15, 18, 141, 141, 141, 141, 30, 20, 20, 55, 55, 55, 55, 14, 14, 14, 14, 14, 20, 20, 20, 20, 20, 178, 178, 20, 20, 20, 20, 14, 20, 20, 14, 20, 20, 14, 20, 20, 20, 20, 20, 20, 20, 178, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 179, 178, 178, 20, 20, 14, 20, 14, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 178, 14, 14, 14, 14, 178, 14, 14, 178, 14, 14, 14, 14, 14, 10, 26, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 178, 14, 178, 14, 14, 14, 14, 14, 171, 171, 14, 171, 171, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 178, 14, 14, 178, 14, 14, 178, 14, 178, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 178, 14, 178, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 178, 178, 178, 178, 178, 14, 14, 178, 178, 14, 14, 178, 178, 14, 14, 14, 14, 14, 14, 178, 178, 14, 14, 178, 178, 14, 14, 178, 178, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 178, 178, 178, 178, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 178, 178, 178, 178, 14, 14, 14, 14, 14, 14, 178, 178, 178, 178, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 20, 20, 20, 20, 20, 20, 20, 20, 8, 9, 8, 9, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 14, 14, 20, 20, 20, 20, 20, 20, 20, 180, 181, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 20, 14, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 59, 20, 20, 20, 20, 20, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 14, 14, 14, 14, 14, 14, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 30, 126, 126, 126, 126, 126, 126, 126, 126, 126, 126, 126, 126, 126, 126, 126, 126, 126, 126, 126, 126, 126, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 14, 20, 20, 20, 20, 20, 20, 20, 20, 20, 14, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 14, 14, 14, 14, 14, 14, 14, 14, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 14, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 59, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 8, 9, 8, 9, 8, 9, 8, 9, 8, 9, 8, 9, 8, 9, 126, 126, 126, 126, 126, 126, 126, 126, 126, 126, 126, 126, 126, 126, 126, 126, 126, 126, 126, 126, 126, 126, 126, 126, 126, 126, 126, 126, 126, 126, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 14, 14, 14, 14, 14, 8, 9, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 8, 9, 8, 9, 8, 9, 8, 9, 8, 9, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 8, 9, 8, 9, 8, 9, 8, 9, 8, 9, 8, 9, 8, 9, 8, 9, 8, 9, 8, 9, 8, 9, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 8, 9, 8, 9, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 8, 9, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 171, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 171, 171, 171, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 183, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 20, 20, 14, 14, 14, 14, 14, 14, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 55, 55, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 55, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 15, 18, 15, 15, 15, 18, 18, 15, 18, 15, 18, 15, 18, 15, 15, 15, 15, 18, 15, 18, 18, 15, 18, 18, 18, 18, 18, 18, 36, 36, 15, 15, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 18, 20, 20, 20, 20, 20, 20, 15, 18, 15, 18, 40, 40, 40, 15, 18, 55, 55, 55, 55, 55, 5, 5, 5, 5, 126, 5, 5, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 55, 18, 55, 55, 55, 55, 55, 18, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 55, 55, 55, 55, 55, 55, 36, 61, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 115, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 55, 55, 55, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 55, 34, 34, 34, 34, 34, 34, 34, 55, 34, 34, 34, 34, 34, 34, 34, 55, 34, 34, 34, 34, 34, 34, 34, 55, 34, 34, 34, 34, 34, 34, 34, 55, 34, 34, 34, 34, 34, 34, 34, 55, 34, 34, 34, 34, 34, 34, 34, 55, 34, 34, 34, 34, 34, 34, 34, 55, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 5, 5, 23, 29, 23, 29, 5, 5, 5, 23, 29, 5, 23, 29, 5, 5, 5, 5, 5, 5, 5, 5, 5, 62, 5, 5, 62, 5, 23, 29, 5, 5, 23, 29, 8, 9, 8, 9, 8, 9, 8, 9, 5, 5, 5, 5, 5, 37, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 62, 62, 5, 5, 5, 5, 62, 5, 8, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 20, 20, 5, 5, 5, 8, 9, 8, 9, 8, 9, 8, 9, 62, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 55, 20, 20, 20, 20, 176, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 176, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 55, 55, 55, 55, 151, 5, 5, 5, 20, 38, 34, 141, 8, 9, 8, 9, 8, 9, 8, 9, 8, 9, 20, 20, 8, 9, 8, 9, 8, 9, 8, 9, 62, 8, 9, 9, 20, 141, 141, 141, 141, 141, 141, 141, 141, 141, 144, 65, 41, 64, 184, 184, 62, 38, 38, 38, 38, 38, 176, 20, 177, 177, 177, 38, 34, 5, 20, 20, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 113, 34, 113, 34, 113, 34, 113, 34, 113, 34, 113, 34, 113, 34, 113, 34, 113, 34, 113, 34, 113, 34, 113, 34, 34, 113, 34, 113, 34, 113, 34, 34, 34, 34, 34, 34, 113, 113, 34, 113, 113, 34, 113, 113, 34, 113, 113, 34, 113, 113, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 113, 34, 34, 55, 55, 185, 185, 21, 21, 38, 186, 22, 62, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 113, 34, 113, 34, 113, 34, 113, 34, 113, 34, 113, 34, 113, 34, 113, 34, 113, 34, 113, 34, 113, 34, 113, 34, 34, 113, 34, 113, 34, 113, 34, 34, 34, 34, 34, 34, 113, 113, 34, 113, 113, 34, 113, 113, 34, 113, 113, 34, 113, 113, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 113, 34, 34, 113, 113, 113, 113, 5, 38, 38, 186, 22, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 55, 59, 59, 187, 187, 187, 187, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 176, 176, 55, 187, 187, 187, 187, 187, 187, 187, 187, 187, 187, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 121, 121, 121, 121, 121, 121, 121, 121, 176, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 176, 176, 176, 59, 187, 187, 187, 187, 187, 187, 187, 187, 187, 187, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 176, 176, 176, 176, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 176, 176, 176, 176, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 176, 176, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 176, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 38, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 55, 55, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 55, 55, 55, 55, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 38, 38, 38, 38, 38, 38, 61, 61, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 38, 5, 5, 5, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 117, 117, 117, 117, 117, 117, 117, 117, 117, 117, 34, 34, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 34, 40, 60, 60, 60, 5, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 5, 37, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 36, 36, 40, 40, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 40, 40, 61, 61, 61, 61, 61, 61, 55, 55, 55, 55, 55, 55, 55, 55, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 37, 37, 37, 37, 37, 37, 37, 37, 37, 16, 16, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 18, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 36, 18, 18, 18, 18, 18, 18, 18, 18, 15, 18, 15, 18, 15, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 37, 188, 188, 15, 18, 15, 18, 34, 15, 18, 15, 18, 18, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 15, 15, 15, 15, 18, 15, 15, 15, 15, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 18, 15, 15, 15, 15, 18, 15, 18, 55, 55, 55, 55, 55, 15, 18, 55, 18, 55, 18, 15, 18, 15, 18, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 36, 36, 36, 15, 18, 34, 36, 36, 18, 34, 34, 34, 34, 34, 34, 34, 51, 34, 34, 34, 115, 34, 34, 34, 34, 51, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 112, 112, 51, 51, 112, 20, 20, 20, 20, 115, 55, 55, 55, 121, 121, 121, 121, 121, 121, 59, 59, 7, 25, 55, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 5, 5, 5, 5, 55, 55, 55, 55, 55, 55, 55, 55, 112, 112, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 115, 51, 55, 55, 55, 55, 55, 55, 55, 55, 61, 61, 117, 117, 117, 117, 117, 117, 117, 117, 117, 117, 55, 55, 55, 55, 55, 55, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 34, 34, 34, 34, 34, 34, 61, 61, 61, 34, 61, 34, 34, 51, 117, 117, 117, 117, 117, 117, 117, 117, 117, 117, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 51, 51, 51, 51, 51, 42, 42, 42, 61, 61, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 112, 142, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 61, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 55, 55, 51, 51, 51, 112, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 118, 112, 112, 51, 51, 51, 51, 112, 112, 51, 51, 112, 112, 142, 61, 61, 61, 61, 61, 61, 61, 61, 61, 61, 61, 61, 61, 55, 38, 117, 117, 117, 117, 117, 117, 117, 117, 117, 117, 55, 55, 55, 55, 61, 61, 34, 34, 34, 34, 34, 51, 38, 34, 34, 34, 34, 34, 34, 34, 34, 34, 117, 117, 117, 117, 117, 117, 117, 117, 117, 117, 34, 34, 34, 34, 34, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 51, 51, 51, 51, 51, 51, 112, 112, 51, 51, 112, 112, 51, 51, 55, 55, 55, 55, 55, 55, 55, 55, 55, 34, 34, 34, 51, 34, 34, 34, 34, 34, 34, 34, 34, 51, 112, 55, 55, 117, 117, 117, 117, 117, 117, 117, 117, 117, 117, 55, 55, 61, 61, 61, 61, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 38, 34, 34, 34, 34, 34, 34, 59, 59, 59, 34, 112, 51, 112, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 40, 34, 40, 40, 42, 34, 34, 40, 40, 34, 34, 34, 34, 34, 40, 40, 34, 40, 34, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 34, 34, 38, 61, 61, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 112, 51, 51, 112, 112, 61, 61, 34, 38, 38, 112, 115, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 55, 55, 34, 34, 34, 34, 34, 34, 55, 55, 34, 34, 34, 34, 34, 34, 55, 55, 55, 55, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 55, 34, 34, 34, 34, 34, 34, 34, 55, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 188, 36, 36, 36, 36, 18, 18, 18, 18, 18, 18, 18, 18, 18, 36, 16, 16, 55, 55, 55, 55, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 112, 112, 51, 112, 112, 51, 112, 112, 61, 112, 115, 55, 55, 117, 117, 117, 117, 117, 117, 117, 117, 117, 117, 55, 55, 55, 55, 55, 55, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 113, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 55, 55, 55, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 189, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 34, 34, 116, 34, 116, 34, 34, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 34, 116, 34, 116, 34, 34, 116, 116, 34, 34, 34, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 55, 55, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 28, 28, 28, 28, 28, 28, 28, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 28, 28, 28, 28, 28, 55, 55, 55, 55, 55, 191, 192, 191, 193, 193, 193, 193, 193, 193, 193, 193, 193, 170, 191, 191, 191, 191, 191, 191, 191, 191, 191, 191, 191, 191, 191, 63, 191, 191, 191, 191, 191, 63, 191, 63, 191, 191, 63, 191, 191, 63, 191, 191, 191, 191, 191, 191, 191, 191, 191, 193, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 111, 111, 111, 111, 111, 111, 111, 111, 111, 111, 111, 111, 111, 111, 111, 111, 111, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 9, 8, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 106, 106, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 106, 106, 106, 106, 106, 106, 106, 20, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 194, 20, 20, 20, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 155, 155, 155, 155, 155, 155, 155, 172, 173, 155, 55, 55, 55, 55, 55, 55, 40, 40, 40, 40, 40, 40, 40, 42, 42, 42, 42, 42, 42, 42, 40, 40, 155, 154, 154, 195, 195, 172, 173, 172, 173, 172, 173, 172, 173, 172, 173, 172, 173, 172, 173, 172, 173, 5, 5, 172, 173, 155, 155, 155, 155, 195, 195, 195, 196, 155, 196, 55, 155, 196, 155, 155, 154, 172, 173, 172, 173, 172, 173, 163, 155, 155, 170, 197, 171, 171, 171, 55, 155, 174, 163, 155, 55, 55, 55, 55, 104, 104, 104, 93, 104, 106, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 106, 106, 24, 55, 155, 155, 163, 174, 163, 155, 155, 172, 173, 155, 170, 196, 197, 196, 196, 198, 198, 198, 198, 198, 198, 198, 198, 198, 198, 196, 155, 171, 171, 171, 155, 155, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 172, 155, 173, 21, 195, 21, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 172, 171, 173, 171, 172, 173, 155, 172, 173, 155, 155, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 36, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 36, 36, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 55, 55, 55, 22, 22, 22, 22, 22, 22, 55, 55, 22, 22, 22, 22, 22, 22, 55, 55, 22, 22, 22, 22, 22, 22, 55, 55, 22, 22, 22, 55, 55, 55, 174, 174, 171, 21, 176, 174, 174, 55, 176, 171, 171, 171, 171, 176, 176, 55, 165, 165, 165, 165, 165, 165, 165, 165, 165, 199, 199, 199, 20, 20, 165, 165, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 34, 34, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 55, 55, 55, 55, 61, 5, 61, 55, 55, 55, 55, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 55, 55, 55, 59, 59, 59, 59, 59, 59, 59, 59, 59, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 126, 126, 126, 126, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 126, 126, 20, 59, 59, 55, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 55, 55, 55, 20, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 42, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 42, 201, 201, 201, 201, 201, 201, 201, 201, 201, 201, 201, 201, 201, 201, 201, 201, 201, 201, 201, 201, 201, 201, 201, 201, 201, 201, 201, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 121, 121, 121, 121, 55, 55, 55, 55, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 141, 34, 34, 34, 34, 34, 34, 34, 34, 141, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 40, 40, 40, 40, 40, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 61, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 61, 141, 141, 141, 141, 141, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 55, 117, 117, 117, 117, 117, 117, 117, 117, 117, 117, 55, 55, 55, 55, 55, 55, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 55, 55, 55, 55, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 55, 55, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 61, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 55, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 55, 15, 15, 15, 15, 15, 15, 15, 55, 15, 15, 55, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 55, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 55, 18, 18, 18, 18, 18, 18, 18, 55, 18, 18, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 55, 55, 55, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 38, 36, 36, 36, 36, 36, 55, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 55, 36, 36, 36, 36, 36, 36, 36, 36, 36, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 84, 84, 84, 84, 84, 84, 63, 63, 84, 63, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 63, 84, 84, 63, 63, 63, 84, 63, 63, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 63, 81, 202, 202, 202, 202, 202, 202, 202, 202, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 203, 203, 202, 202, 202, 202, 202, 202, 202, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 63, 63, 63, 63, 63, 63, 63, 63, 202, 202, 202, 202, 202, 202, 202, 202, 202, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 63, 84, 84, 63, 63, 63, 63, 63, 202, 202, 202, 202, 202, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 202, 202, 202, 202, 202, 202, 63, 63, 63, 5, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 63, 63, 63, 63, 63, 81, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 63, 63, 63, 63, 202, 202, 84, 84, 202, 202, 202, 202, 202, 202, 202, 202, 202, 202, 202, 202, 202, 202, 202, 202, 63, 63, 202, 202, 202, 202, 202, 202, 202, 202, 202, 202, 202, 202, 202, 202, 202, 202, 202, 202, 202, 202, 202, 202, 202, 202, 202, 202, 202, 202, 202, 202, 202, 202, 202, 202, 202, 202, 202, 202, 202, 202, 202, 202, 202, 202, 202, 202, 84, 51, 51, 51, 63, 51, 51, 63, 63, 63, 63, 63, 51, 42, 51, 40, 84, 84, 84, 84, 63, 84, 84, 84, 63, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 63, 63, 40, 47, 42, 63, 63, 63, 63, 115, 202, 202, 202, 202, 202, 202, 202, 202, 202, 63, 63, 63, 63, 63, 63, 63, 81, 81, 81, 81, 81, 81, 81, 81, 81, 63, 63, 63, 63, 63, 63, 63, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 202, 202, 81, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 202, 202, 202, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 84, 84, 84, 84, 84, 84, 84, 84, 203, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 40, 42, 63, 63, 63, 63, 202, 202, 202, 202, 202, 81, 81, 81, 81, 81, 81, 81, 63, 63, 63, 63, 63, 63, 63, 63, 63, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 63, 63, 63, 5, 5, 5, 5, 5, 5, 5, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 63, 63, 202, 202, 202, 202, 202, 202, 202, 202, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 63, 63, 63, 63, 63, 202, 202, 202, 202, 202, 202, 202, 202, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 63, 63, 63, 63, 63, 63, 63, 81, 81, 81, 81, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 202, 202, 202, 202, 202, 202, 202, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 204, 204, 204, 204, 204, 204, 204, 204, 204, 204, 204, 204, 204, 204, 204, 204, 204, 204, 204, 204, 204, 204, 204, 204, 204, 204, 204, 204, 204, 204, 204, 204, 204, 204, 204, 204, 204, 204, 204, 204, 204, 204, 204, 204, 204, 204, 204, 204, 204, 204, 204, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 63, 63, 63, 63, 63, 63, 63, 202, 202, 202, 202, 202, 202, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 40, 40, 40, 40, 106, 106, 106, 106, 106, 106, 106, 106, 101, 101, 101, 101, 101, 101, 101, 101, 101, 101, 106, 106, 106, 106, 106, 106, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 206, 206, 206, 206, 206, 206, 206, 206, 206, 206, 206, 206, 206, 206, 206, 206, 206, 206, 206, 206, 206, 206, 206, 206, 206, 206, 206, 206, 206, 206, 206, 63, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 63, 40, 40, 79, 63, 63, 84, 84, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 42, 42, 42, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 202, 202, 202, 202, 202, 202, 202, 202, 202, 202, 84, 63, 63, 63, 63, 63, 63, 63, 63, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 42, 42, 40, 40, 40, 42, 40, 42, 42, 42, 42, 207, 207, 207, 207, 88, 88, 88, 88, 88, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 40, 42, 40, 42, 81, 81, 81, 81, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 202, 202, 202, 202, 202, 202, 202, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 63, 63, 63, 63, 63, 63, 63, 63, 63, 112, 51, 112, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 115, 61, 61, 61, 61, 61, 61, 61, 55, 55, 55, 55, 126, 126, 126, 126, 126, 126, 126, 126, 126, 126, 126, 126, 126, 126, 126, 126, 126, 126, 126, 126, 117, 117, 117, 117, 117, 117, 117, 117, 117, 117, 115, 34, 34, 51, 51, 34, 55, 55, 55, 55, 55, 55, 55, 55, 55, 115, 51, 51, 112, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 113, 34, 113, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 113, 34, 34, 34, 34, 112, 112, 112, 51, 51, 51, 51, 112, 112, 115, 114, 61, 61, 152, 61, 61, 61, 61, 51, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 152, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 55, 55, 55, 55, 55, 55, 117, 117, 117, 117, 117, 117, 117, 117, 117, 117, 55, 55, 55, 55, 55, 55, 40, 40, 40, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 122, 51, 51, 51, 51, 112, 51, 123, 123, 51, 51, 51, 115, 115, 55, 117, 117, 117, 117, 117, 117, 117, 117, 117, 117, 61, 61, 61, 61, 34, 112, 112, 34, 55, 55, 55, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 118, 61, 61, 34, 55, 55, 55, 55, 55, 55, 55, 55, 55, 51, 51, 112, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 112, 112, 112, 51, 51, 51, 51, 51, 51, 51, 51, 51, 112, 142, 34, 34, 34, 34, 61, 61, 61, 61, 51, 118, 51, 51, 61, 112, 51, 117, 117, 117, 117, 117, 117, 117, 117, 117, 117, 34, 61, 34, 61, 61, 61, 55, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 112, 112, 112, 51, 51, 51, 112, 112, 51, 142, 118, 51, 61, 61, 61, 61, 61, 61, 51, 34, 34, 51, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 55, 34, 55, 34, 34, 34, 34, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 61, 55, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 51, 112, 112, 112, 51, 51, 51, 51, 51, 51, 118, 115, 55, 55, 55, 55, 55, 117, 117, 117, 117, 117, 117, 117, 117, 117, 117, 55, 55, 55, 55, 55, 55, 51, 51, 112, 112, 55, 34, 34, 34, 34, 34, 34, 34, 34, 55, 55, 34, 34, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 34, 34, 34, 34, 34, 34, 34, 55, 34, 34, 55, 34, 34, 34, 34, 34, 55, 118, 118, 34, 119, 112, 51, 112, 112, 112, 112, 55, 55, 112, 112, 55, 55, 120, 120, 142, 55, 55, 34, 55, 55, 55, 55, 55, 55, 119, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 112, 112, 55, 55, 40, 40, 40, 40, 40, 40, 40, 55, 55, 55, 40, 40, 40, 40, 40, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 112, 112, 112, 51, 51, 51, 51, 51, 51, 51, 51, 112, 112, 115, 51, 51, 112, 118, 34, 34, 34, 34, 61, 61, 61, 61, 61, 117, 117, 117, 117, 117, 117, 117, 117, 117, 117, 61, 61, 55, 61, 40, 34, 34, 34, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 119, 112, 112, 51, 51, 51, 51, 51, 51, 112, 122, 120, 120, 119, 120, 51, 51, 112, 115, 118, 34, 34, 61, 34, 55, 55, 55, 55, 55, 55, 55, 55, 117, 117, 117, 117, 117, 117, 117, 117, 117, 117, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 119, 112, 112, 51, 51, 51, 51, 55, 55, 112, 112, 120, 120, 51, 51, 112, 115, 118, 61, 61, 61, 61, 61, 61, 61, 61, 61, 61, 61, 61, 61, 61, 61, 61, 61, 61, 61, 61, 61, 61, 61, 34, 34, 34, 34, 51, 51, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 112, 112, 112, 51, 51, 51, 51, 51, 51, 51, 51, 112, 112, 51, 112, 115, 51, 61, 61, 61, 34, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 117, 117, 117, 117, 117, 117, 117, 117, 117, 117, 55, 55, 55, 55, 55, 55, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 51, 112, 51, 112, 112, 51, 51, 51, 51, 51, 51, 142, 118, 34, 61, 55, 55, 55, 55, 55, 55, 117, 117, 117, 117, 117, 117, 117, 117, 117, 117, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 55, 51, 51, 51, 112, 112, 51, 51, 51, 51, 112, 51, 51, 51, 51, 115, 55, 55, 55, 55, 117, 117, 117, 117, 117, 117, 117, 117, 117, 117, 121, 121, 61, 61, 61, 59, 34, 34, 34, 34, 34, 34, 34, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 112, 112, 112, 51, 51, 51, 51, 51, 51, 51, 51, 51, 112, 115, 118, 61, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 117, 117, 117, 117, 117, 117, 117, 117, 117, 117, 121, 121, 121, 121, 121, 121, 121, 121, 121, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 55, 55, 34, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 55, 34, 34, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 119, 112, 112, 112, 112, 112, 55, 112, 120, 55, 55, 51, 51, 142, 115, 34, 112, 34, 112, 118, 61, 61, 61, 55, 55, 55, 55, 55, 55, 55, 55, 55, 117, 117, 117, 117, 117, 117, 117, 117, 117, 117, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 112, 112, 112, 51, 51, 51, 51, 55, 55, 51, 51, 112, 112, 112, 112, 115, 34, 61, 34, 112, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 34, 51, 51, 51, 51, 51, 51, 127, 127, 51, 51, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 51, 115, 51, 51, 51, 51, 112, 34, 51, 51, 51, 51, 61, 61, 61, 61, 61, 61, 61, 61, 115, 55, 55, 55, 55, 55, 55, 55, 55, 34, 51, 51, 51, 51, 51, 51, 112, 112, 51, 51, 51, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 112, 51, 115, 61, 61, 61, 34, 61, 61, 61, 61, 61, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 55, 55, 55, 55, 55, 55, 61, 61, 61, 61, 61, 61, 61, 61, 61, 61, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 112, 51, 51, 51, 51, 51, 51, 51, 55, 51, 51, 51, 51, 51, 51, 112, 208, 34, 61, 61, 61, 61, 61, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 117, 117, 117, 117, 117, 117, 117, 117, 117, 117, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 55, 55, 55, 61, 61, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 55, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 55, 112, 51, 51, 51, 51, 51, 51, 51, 112, 51, 51, 112, 51, 51, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 55, 34, 34, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 51, 51, 51, 51, 51, 51, 55, 55, 55, 51, 55, 51, 51, 55, 51, 51, 51, 118, 51, 115, 115, 34, 51, 55, 55, 55, 55, 55, 55, 55, 55, 117, 117, 117, 117, 117, 117, 117, 117, 117, 117, 55, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 55, 34, 34, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 112, 112, 112, 112, 112, 55, 51, 51, 55, 112, 112, 51, 112, 115, 34, 55, 55, 55, 55, 55, 55, 55, 117, 117, 117, 117, 117, 117, 117, 117, 117, 117, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 51, 51, 112, 112, 61, 61, 55, 55, 55, 55, 55, 55, 55, 51, 51, 34, 112, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 112, 112, 51, 51, 51, 51, 51, 55, 55, 55, 112, 112, 51, 142, 115, 61, 61, 61, 61, 61, 61, 61, 61, 61, 61, 61, 61, 61, 117, 117, 117, 117, 117, 117, 117, 117, 117, 117, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 34, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 20, 20, 20, 20, 20, 20, 20, 20, 7, 7, 7, 7, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 61, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 55, 61, 61, 61, 61, 61, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 61, 61, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 152, 152, 152, 152, 152, 152, 152, 152, 152, 152, 152, 152, 152, 152, 152, 152, 51, 34, 34, 34, 34, 34, 34, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 55, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 117, 117, 117, 117, 117, 117, 117, 117, 117, 117, 55, 55, 55, 55, 61, 61, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 117, 117, 117, 117, 117, 117, 117, 117, 117, 117, 55, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 55, 47, 47, 47, 47, 47, 61, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 40, 40, 40, 40, 40, 40, 40, 61, 61, 61, 61, 61, 59, 59, 59, 59, 38, 38, 38, 38, 61, 59, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 117, 117, 117, 117, 117, 117, 117, 117, 117, 117, 55, 121, 121, 121, 121, 121, 121, 121, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 61, 61, 61, 61, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 55, 55, 55, 51, 34, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 112, 55, 55, 55, 55, 55, 55, 55, 51, 51, 51, 51, 38, 38, 38, 38, 38, 38, 38, 38, 38, 38, 38, 38, 38, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 38, 38, 5, 38, 51, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 209, 209, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 55, 55, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 38, 38, 38, 38, 55, 38, 38, 38, 38, 38, 38, 38, 55, 38, 38, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 34, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 34, 34, 34, 55, 55, 34, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 34, 34, 34, 34, 55, 55, 55, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 55, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 55, 59, 51, 47, 61, 24, 24, 24, 24, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 55, 55, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 55, 55, 55, 55, 55, 55, 55, 55, 55, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 55, 55, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 210, 210, 210, 210, 210, 210, 210, 211, 211, 47, 47, 47, 59, 59, 59, 212, 211, 211, 211, 211, 211, 24, 24, 24, 24, 24, 24, 24, 24, 42, 42, 42, 42, 42, 42, 42, 42, 59, 59, 40, 40, 40, 40, 40, 42, 42, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 40, 40, 40, 40, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 210, 210, 210, 210, 210, 210, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 20, 20, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 40, 40, 40, 20, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 55, 55, 55, 55, 55, 55, 55, 55, 55, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 55, 55, 55, 55, 55, 55, 55, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 28, 28, 28, 28, 28, 28, 28, 55, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 33, 55, 33, 33, 55, 55, 33, 55, 55, 33, 33, 55, 55, 33, 33, 33, 33, 55, 33, 33, 33, 33, 33, 33, 33, 33, 28, 28, 28, 28, 55, 28, 55, 28, 28, 28, 28, 28, 28, 28, 55, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 33, 33, 55, 33, 33, 33, 33, 55, 55, 33, 33, 33, 33, 33, 33, 33, 33, 55, 33, 33, 33, 33, 33, 33, 33, 55, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 33, 33, 55, 33, 33, 33, 33, 55, 33, 33, 33, 33, 33, 55, 33, 55, 55, 55, 33, 33, 33, 33, 33, 33, 33, 55, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 55, 55, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 213, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 171, 28, 28, 28, 28, 28, 28, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 213, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 171, 28, 28, 28, 28, 28, 28, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 213, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 171, 28, 28, 28, 28, 28, 28, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 213, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 171, 28, 28, 28, 28, 28, 28, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 213, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 171, 28, 28, 28, 28, 28, 28, 33, 28, 55, 55, 198, 198, 198, 198, 198, 198, 198, 198, 198, 198, 198, 198, 198, 198, 198, 198, 198, 198, 198, 198, 198, 198, 198, 198, 198, 198, 198, 198, 198, 198, 198, 198, 198, 198, 198, 198, 198, 198, 198, 198, 198, 198, 198, 198, 198, 198, 198, 198, 198, 198, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 59, 59, 59, 59, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 59, 59, 59, 59, 59, 59, 59, 59, 51, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 51, 59, 59, 61, 61, 61, 61, 61, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 51, 51, 51, 51, 51, 55, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 34, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 55, 55, 55, 55, 55, 55, 18, 18, 18, 18, 18, 18, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 40, 40, 40, 40, 40, 40, 40, 55, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 55, 55, 40, 40, 40, 40, 40, 40, 40, 55, 40, 40, 55, 40, 40, 40, 40, 40, 55, 55, 55, 55, 55, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 40, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 55, 55, 40, 40, 40, 40, 40, 40, 40, 38, 38, 38, 38, 38, 38, 38, 55, 55, 117, 117, 117, 117, 117, 117, 117, 117, 117, 117, 55, 55, 55, 55, 34, 59, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 40, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 40, 40, 40, 40, 117, 117, 117, 117, 117, 117, 117, 117, 117, 117, 55, 55, 55, 55, 55, 7, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 38, 41, 41, 42, 40, 117, 117, 117, 117, 117, 117, 117, 117, 117, 117, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 55, 34, 34, 34, 34, 55, 34, 34, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 63, 63, 202, 202, 202, 202, 202, 202, 202, 202, 202, 42, 42, 42, 42, 42, 42, 42, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 204, 204, 204, 204, 204, 204, 204, 204, 204, 204, 204, 204, 204, 204, 204, 204, 204, 204, 204, 204, 204, 204, 204, 204, 204, 204, 204, 204, 204, 204, 204, 204, 204, 204, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 40, 40, 40, 40, 40, 40, 118, 109, 63, 63, 63, 63, 108, 108, 108, 108, 108, 108, 108, 108, 108, 108, 63, 63, 63, 63, 81, 81, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 106, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 105, 207, 207, 207, 87, 207, 207, 207, 207, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 106, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 105, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 207, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 104, 104, 104, 104, 106, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 106, 104, 104, 106, 104, 106, 106, 104, 106, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 106, 104, 104, 104, 104, 106, 104, 106, 104, 106, 106, 106, 106, 106, 106, 104, 106, 106, 106, 106, 104, 106, 104, 106, 104, 106, 104, 104, 104, 106, 104, 104, 106, 104, 106, 106, 104, 106, 104, 106, 104, 106, 104, 106, 104, 106, 104, 104, 106, 104, 106, 106, 104, 104, 104, 104, 106, 104, 104, 104, 104, 104, 104, 104, 106, 104, 104, 104, 104, 106, 104, 104, 104, 104, 106, 104, 106, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 106, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 106, 106, 106, 106, 106, 104, 104, 104, 106, 104, 104, 104, 104, 104, 106, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 14, 14, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 55, 55, 55, 55, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 55, 55, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 55, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 55, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 126, 126, 20, 20, 20, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 20, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 176, 176, 176, 20, 20, 20, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 182, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 20, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 182, 182, 182, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 182, 55, 55, 55, 55, 182, 182, 182, 182, 182, 182, 182, 182, 182, 55, 55, 55, 55, 55, 55, 55, 182, 182, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 20, 20, 20, 20, 20, 20, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 16, 16, 16, 16, 16, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 55, 55, 55, 55, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 55, 55, 55, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 55, 55, 55, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 55, 55, 55, 55, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 55, 55, 55, 55, 55, 55, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 55, 55, 55, 55, 20, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 55, 55, 55, 55, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 55, 55, 55, 55, 55, 55, 55, 55, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 55, 55, 55, 55, 55, 55, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 55, 55, 55, 55, 55, 55, 55, 55, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 55, 55, 20, 20, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 55, 55, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 55, 55, 55, 20, 20, 20, 20, 20, 20, 20, 20, 20, 55, 55, 55, 55, 55, 55, 55, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 55, 20, 20, 20, 20, 20, 20, 20, 55, 55, 55, 55, 55, 55, 55, 55, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 55, 55, 55, 55, 20, 20, 20, 20, 20, 20, 20, 20, 20, 55, 55, 55, 55, 55, 55, 55, 20, 20, 20, 20, 20, 20, 20, 20, 20, 55, 55, 55, 55, 55, 55, 55, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 55, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 198, 198, 198, 198, 198, 198, 198, 198, 198, 198, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 165, 165, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 55, 55, 55, 55, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 165, 24, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 165, 165]);
-    var propsData_1275068461 = [new Int32Array([16384, 0, 14, 0]), new Int32Array([16384, 0, 16, 0]), new Int32Array([16384, 0, 15, 0]), new Int32Array([16384, 0, 17, 0]), new Int32Array([2048, 0, 17, 0]), new Int32Array([33554432, 0, 18, 0]), new Int32Array([33554432, 0, 10, 0]), new Int32Array([134217728, 0, 10, 0]), new Int32Array([2097152, 0, 18, 0]), new Int32Array([4194304, 0, 18, 0]), new Int32Array([67108864, 0, 9, 0]), new Int32Array([33554432, 0, 12, 0]), new Int32Array([1048576, 0, 9, 0]), new Int32Array([256, 0, 8, 0]), new Int32Array([67108864, 0, 18, 0]), new Int32Array([4, 0, 0, 0]), new Int32Array([268435456, 0, 18, 0]), new Int32Array([524288, 0, 18, 0]), new Int32Array([8, 0, 0, 0]), new Int32Array([2048, 0, 12, 36]), new Int32Array([536870912, 0, 18, 0]), new Int32Array([268435456, 0, 18, 36]), new Int32Array([2, 0, 0, 36]), new Int32Array([8388608, 0, 18, 0]), new Int32Array([32768, 0, 14, 0]), new Int32Array([536870912, 0, 10, 0]), new Int32Array([67108864, 0, 10, 0]), new Int32Array([1024, 0, 8, 36]), new Int32Array([8, 0, 0, 36]), new Int32Array([16777216, 0, 18, 0]), new Int32Array([1024, 0, 18, 36]), new Int32Array([4, 0, 0, 48]), new Int32Array([8, 0, 0, 48]), new Int32Array([4, 0, 0, 36]), new Int32Array([2, 0, 0, 0]), new Int32Array([16, 0, 0, 36]), new Int32Array([1, 0, 0, 36]), new Int32Array([1, 0, 18, 0]), new Int32Array([1, 0, 0, 0]), new Int32Array([32, 230, 13, 10]), new Int32Array([32, 230, 13, 0]), new Int32Array([32, 232, 13, 0]), new Int32Array([32, 220, 13, 0]), new Int32Array([32, 216, 13, 10]), new Int32Array([32, 202, 13, 0]), new Int32Array([32, 220, 13, 10]), new Int32Array([32, 202, 13, 10]), new Int32Array([32, 1, 13, 0]), new Int32Array([32, 1, 13, 10]), new Int32Array([32, 230, 13, 53]), new Int32Array([32, 240, 13, 10]), new Int32Array([32, 0, 13, 0]), new Int32Array([32, 233, 13, 0]), new Int32Array([32, 234, 13, 0]), new Int32Array([1, 0, 18, 53]), new Int32Array([262144, 0, 0, 0]), new Int32Array([33554432, 0, 18, 53]), new Int32Array([268435456, 0, 18, 52]), new Int32Array([4, 0, 0, 52]), new Int32Array([536870912, 0, 0, 0]), new Int32Array([128, 0, 13, 0]), new Int32Array([33554432, 0, 0, 0]), new Int32Array([1048576, 0, 18, 0]), new Int32Array([262144, 0, 3, 0]), new Int32Array([32, 222, 13, 0]), new Int32Array([32, 228, 13, 0]), new Int32Array([32, 10, 13, 0]), new Int32Array([32, 11, 13, 0]), new Int32Array([32, 12, 13, 0]), new Int32Array([32, 13, 13, 0]), new Int32Array([32, 14, 13, 0]), new Int32Array([32, 15, 13, 0]), new Int32Array([32, 16, 13, 0]), new Int32Array([32, 17, 13, 0]), new Int32Array([32, 18, 13, 0]), new Int32Array([32, 19, 13, 0]), new Int32Array([32, 20, 13, 0]), new Int32Array([32, 21, 13, 0]), new Int32Array([32, 22, 13, 0]), new Int32Array([1048576, 0, 3, 0]), new Int32Array([32, 23, 13, 0]), new Int32Array([33554432, 0, 3, 0]), new Int32Array([32, 24, 13, 0]), new Int32Array([32, 25, 13, 0]), new Int32Array([2, 0, 3, 0]), new Int32Array([32768, 0, 11, 0]), new Int32Array([67108864, 0, 4, 0]), new Int32Array([134217728, 0, 4, 0]), new Int32Array([33554432, 0, 4, 0]), new Int32Array([32, 30, 13, 0]), new Int32Array([32, 31, 13, 0]), new Int32Array([32, 32, 13, 0]), new Int32Array([32768, 0, 4, 0]), new Int32Array([2, 0, 4, 0]), new Int32Array([2, 0, 4, 48]), new Int32Array([1, 0, 4, 0]), new Int32Array([32, 27, 13, 0]), new Int32Array([32, 28, 13, 0]), new Int32Array([32, 29, 13, 0]), new Int32Array([32, 33, 13, 0]), new Int32Array([32, 34, 13, 0]), new Int32Array([256, 0, 11, 0]), new Int32Array([33554432, 0, 11, 0]), new Int32Array([32, 35, 13, 0]), new Int32Array([2, 0, 4, 36]), new Int32Array([536870912, 0, 4, 0]), new Int32Array([262144, 0, 4, 0]), new Int32Array([32, 36, 13, 0]), new Int32Array([256, 0, 3, 0]), new Int32Array([1, 0, 3, 0]), new Int32Array([134217728, 0, 3, 0]), new Int32Array([268435456, 0, 4, 0]), new Int32Array([64, 0, 0, 0]), new Int32Array([2, 0, 0, 48]), new Int32Array([32, 7, 13, 10]), new Int32Array([32, 9, 13, 0]), new Int32Array([2, 0, 0, 53]), new Int32Array([256, 0, 0, 0]), new Int32Array([32, 7, 13, 0]), new Int32Array([64, 0, 0, 10]), new Int32Array([64, 0, 0, 48]), new Int32Array([1024, 0, 0, 0]), new Int32Array([32, 0, 13, 10]), new Int32Array([32, 0, 13, 48]), new Int32Array([32, 84, 13, 0]), new Int32Array([32, 91, 13, 10]), new Int32Array([1024, 0, 18, 0]), new Int32Array([32, 0, 0, 0]), new Int32Array([32, 9, 13, 10]), new Int32Array([32, 103, 13, 0]), new Int32Array([32, 107, 13, 0]), new Int32Array([32, 118, 13, 0]), new Int32Array([32, 122, 13, 0]), new Int32Array([33554432, 0, 0, 36]), new Int32Array([32, 216, 13, 0]), new Int32Array([32, 129, 13, 0]), new Int32Array([32, 130, 13, 0]), new Int32Array([32, 0, 13, 53]), new Int32Array([32, 132, 13, 0]), new Int32Array([32, 0, 13, 36]), new Int32Array([2, 0, 0, 10]), new Int32Array([512, 0, 0, 0]), new Int32Array([64, 9, 0, 0]), new Int32Array([32, 214, 13, 0]), new Int32Array([32, 218, 13, 0]), new Int32Array([8, 0, 0, 52]), new Int32Array([8, 0, 0, 53]), new Int32Array([16, 0, 0, 48]), new Int32Array([4, 0, 0, 53]), new Int32Array([268435456, 0, 18, 53]), new Int32Array([2048, 0, 17, 53]), new Int32Array([2048, 0, 17, 36]), new Int32Array([32768, 0, 0, 0]), new Int32Array([32768, 0, 3, 0]), new Int32Array([1048576, 0, 18, 36]), new Int32Array([33554432, 0, 18, 36]), new Int32Array([4096, 0, 17, 0]), new Int32Array([8192, 0, 15, 0]), new Int32Array([32768, 0, 1, 0]), new Int32Array([32768, 0, 5, 0]), new Int32Array([32768, 0, 7, 0]), new Int32Array([32768, 0, 2, 0]), new Int32Array([32768, 0, 6, 0]), new Int32Array([33554432, 0, 10, 36]), new Int32Array([67108864, 0, 12, 0]), new Int32Array([262144, 0, 14, 0]), new Int32Array([32768, 0, 19, 0]), new Int32Array([32768, 0, 20, 0]), new Int32Array([32768, 0, 21, 0]), new Int32Array([32768, 0, 22, 0]), new Int32Array([67108864, 0, 9, 36]), new Int32Array([67108864, 0, 18, 36]), new Int32Array([2097152, 0, 18, 36]), new Int32Array([4194304, 0, 18, 36]), new Int32Array([134217728, 0, 10, 36]), new Int32Array([262144, 0, 10, 0]), new Int32Array([536870912, 0, 18, 36]), new Int32Array([512, 0, 0, 36]), new Int32Array([67108864, 0, 18, 48]), new Int32Array([536870912, 0, 18, 48]), new Int32Array([2097152, 0, 18, 53]), new Int32Array([4194304, 0, 18, 53]), new Int32Array([536870912, 0, 0, 36]), new Int32Array([67108864, 0, 18, 53]), new Int32Array([64, 224, 0, 0]), new Int32Array([32, 8, 13, 10]), new Int32Array([1, 0, 0, 48]), new Int32Array([1024, 0, 0, 36]), new Int32Array([268435456, 0, 0, 0]), new Int32Array([65536, 0, 0, 0]), new Int32Array([131072, 0, 0, 0]), new Int32Array([2, 0, 3, 53]), new Int32Array([32, 26, 13, 0]), new Int32Array([2, 0, 3, 36]), new Int32Array([134217728, 0, 4, 36]), new Int32Array([524288, 0, 18, 36]), new Int32Array([33554432, 0, 12, 36]), new Int32Array([1048576, 0, 9, 36]), new Int32Array([256, 0, 8, 36]), new Int32Array([32768, 0, 18, 0]), new Int32Array([512, 0, 18, 0]), new Int32Array([1024, 0, 8, 0]), new Int32Array([1024, 0, 3, 0]), new Int32Array([536870912, 0, 3, 0]), new Int32Array([4, 0, 3, 0]), new Int32Array([8, 0, 3, 0]), new Int32Array([1024, 0, 11, 0]), new Int32Array([1024, 0, 4, 0]), new Int32Array([32, 9, 0, 0]), new Int32Array([64, 6, 0, 0]), new Int32Array([536870912, 0, 0, 53]), new Int32Array([64, 216, 0, 0]), new Int32Array([64, 226, 0, 0]), new Int32Array([67108864, 0, 0, 36])];
-var ConstSet14 = setConstr(4, 6);
-var ConstSet15 = setConstr(4);
-var ConstSet16 = setConstr(4, 6);
-var ConstSet17 = setConstr(4);
-var ConstSet18 = setConstr(4, 6);
-var ConstSet19 = setConstr(4);
-var ConstSet20 = setConstr(4, 6);
-var ConstSet21 = setConstr(4);
-var ConstSet22 = setConstr();
-var ConstSet23 = setConstr(4, 6);
-var ConstSet24 = setConstr(4);
-var ConstSet25 = setConstr(3);
-var ConstSet26 = setConstr();
-var ConstSet27 = setConstr();
-
 function isObj(obj_33557238, subclass_33557239) {
   var result_33557240 = false;
 
@@ -2884,17 +2251,44 @@ function isObj(obj_33557238, subclass_33557239) {
   return result_33557240;
 
 }
-var ConstSet28 = setConstr([97, 122], [65, 90], [48, 57], 95);
-var ConstSet29 = setConstr([65, 90]);
+
+function addChar(x_33557255, c_33557256) {
+    x_33557255.push(c_33557256);
+
+  
+}
+var ConstSet14 = setConstr([97, 122], [65, 90], [48, 57], 95);
+var ConstSet15 = setConstr([65, 90]);
     var unitWeights_1929379986 = [1, 1000, 1000000, 1000000000, 60000000000, 3600000000000, 86400000000000, 604800000000000];
     var daysUntilMonthLeap_1929380106 = new Int32Array([0, 31, 60, 91, 121, 152, 182, 213, 244, 274, 305, 335]);
       var daysUntilMonth_1929380105 = new Int32Array([0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334]);
               var LevelNames_1862270991 = [makeNimstrLit("DEBUG"), makeNimstrLit("DEBUG"), makeNimstrLit("INFO"), makeNimstrLit("NOTICE"), makeNimstrLit("WARN"), makeNimstrLit("ERROR"), makeNimstrLit("FATAL"), makeNimstrLit("NONE")];
-var ConstSet30 = setConstr(4);
-var ConstSet31 = setConstr(5);
-var ConstSet32 = setConstr(46, 44);
-var ConstSet33 = setConstr([65, 90]);
-var ConstSet34 = setConstr([97, 122]);
+
+function nimCharToStr(x_33556517) {
+  var result_33556518 = [];
+
+    result_33556518 = nimCopy(null, mnewString(1), NTI33554439);
+    result_33556518[0] = x_33556517;
+
+  return result_33556518;
+
+}
+var ConstSet16 = setConstr(4);
+var ConstSet17 = setConstr(5);
+
+function rawEcho() {
+          var buf = "";
+      for (var i = 0; i < arguments.length; ++i) {
+        buf += toJSStr(arguments[i]);
+      }
+      console.log(buf);
+    
+
+  
+}
+var ConstSet18 = setConstr(46, 44);
+var ConstSet19 = setConstr([65, 90]);
+var ConstSet20 = setConstr([97, 122]);
       var UnclosedTags_2013265937 = [makeNimstrLit("area"), makeNimstrLit("base"), makeNimstrLit("basefont"), makeNimstrLit("br"), makeNimstrLit("col"), makeNimstrLit("frame"), makeNimstrLit("hr"), makeNimstrLit("img"), makeNimstrLit("isindex"), makeNimstrLit("link"), makeNimstrLit("meta"), makeNimstrLit("param"), makeNimstrLit("wbr"), makeNimstrLit("source"), makeNimstrLit("input")];
 if (!Math.trunc) {
   Math.trunc = function(v) {
@@ -3817,13 +3211,13 @@ function enlarge_2130708756(t_2130708759) {
     var n_2130708762 = [];
     n_2130708762 = new Array(((t_2130708759.data).length * 2)); for (var i = 0 ; i < ((t_2130708759.data).length * 2) ; ++i) { n_2130708762[i] = {Field0: 0, Field1: null, Field2: []}; }    var Temporary1 = t_2130708759.data; t_2130708759.data = n_2130708762; n_2130708762 = Temporary1;    Label2: do {
       var i_2130708826 = 0;
-      var colontmp__2634132159 = 0;
-      colontmp__2634132159 = (n_2130708762).length - 1;
-      var res_2634132160 = 0;
+      var colontmp__2634133054 = 0;
+      colontmp__2634133054 = (n_2130708762).length - 1;
+      var res_2634133055 = 0;
       Label3: do {
           Label4: while (true) {
-          if (!(res_2634132160 <= colontmp__2634132159)) break Label4;
-            i_2130708826 = res_2634132160;
+          if (!(res_2634133055 <= colontmp__2634133054)) break Label4;
+            i_2130708826 = res_2634133055;
             var eh_2130708880 = n_2130708762[i_2130708826].Field0;
             if (isFilled_1107296287(eh_2130708880)) {
             var j_2130708884 = (eh_2130708880 & (t_2130708759.data).length - 1);
@@ -3836,7 +3230,7 @@ function enlarge_2130708756(t_2130708759) {
             rawInsert_2130709050(t_2130708759, t_2130708759, "data", n_2130708762[i_2130708826].Field1, n_2130708762[i_2130708826].Field2, eh_2130708880, j_2130708884);
             }
             
-            res_2634132160 += 1;
+            res_2634133055 += 1;
           }
       } while (false);
     } while (false);
@@ -4702,6 +4096,12 @@ var Temporary730;
 var Temporary731;
 var Temporary732;
 var Temporary733;
+var Temporary734;
+var Temporary735;
+var Temporary736;
+var Temporary737;
+var Temporary738;
+var Temporary739;
 var translates_2634022946 = [newTable_2130706448(32)];
 HEX5BHEX5DHEX3D_2130709493(translates_2634022946[0], "🌎 RoadMap", newTable_2130708029(32));
 HEX5BHEX5DHEX3D_2130709883((Temporary2 = HEX5BHEX5D_2130709651(translates_2634022946[0], "🌎 RoadMap"), Temporary2)[0][Temporary2[1]], "default", makeNimstrLit("\xF0\x9F\x8C\x8E RoadMap"));
@@ -5557,14 +4957,21 @@ HEX5BHEX5DHEX3D_2130709883((Temporary730 = HEX5BHEX5D_2130709651(translates_2634
 HEX5BHEX5DHEX3D_2130709883((Temporary731 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Calculation 🧮"), Temporary731)[0][Temporary731[1]], "zh", makeNimstrLit("\xE8\xAE\xA1\xE7\xAE\x97 \xF0\x9F\xA7\xAE"));
 HEX5BHEX5DHEX3D_2130709883((Temporary732 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Calculation 🧮"), Temporary732)[0][Temporary732[1]], "ko", makeNimstrLit("\xEA\xB3\x84\xEC\x82\xB0 \xF0\x9F\xA7\xAE"));
 HEX5BHEX5DHEX3D_2130709883((Temporary733 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Calculation 🧮"), Temporary733)[0][Temporary733[1]], "fr", makeNimstrLit("Calcul \xF0\x9F\xA7\xAE"));
-var spokenLang_2634132137 = [null];
-spokenLang_2634132137[0] = localStorage["happyx_spoken_language"];
+HEX5BHEX5DHEX3D_2130709493(translates_2634022946[0], "Path Params 🔌", newTable_2130708029(32));
+HEX5BHEX5DHEX3D_2130709883((Temporary734 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Path Params 🔌"), Temporary734)[0][Temporary734[1]], "default", makeNimstrLit("Path Params \xF0\x9F\x94\x8C"));
+HEX5BHEX5DHEX3D_2130709883((Temporary735 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Path Params 🔌"), Temporary735)[0][Temporary735[1]], "ru", makeNimstrLit("\xD0\x9F\xD0\xB0\xD1\x80\xD0\xB0\xD0\xBC\xD0\xB5\xD1\x82\xD1\x80\xD1\x8B \xD0\xBF\xD1\x83\xD1\x82\xD0\xB8 \xF0\x9F\x94\x8C"));
+HEX5BHEX5DHEX3D_2130709883((Temporary736 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Path Params 🔌"), Temporary736)[0][Temporary736[1]], "ja", makeNimstrLit("\xE3\x83\x91\xE3\x82\xB9\xE3\x83\x91\xE3\x83\xA9\xE3\x83\xA1\xE3\x83\xBC\xE3\x82\xBF \xF0\x9F\x94\x8C"));
+HEX5BHEX5DHEX3D_2130709883((Temporary737 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Path Params 🔌"), Temporary737)[0][Temporary737[1]], "zh", makeNimstrLit("\xE8\xB7\xAF\xE5\xBE\x84\xE5\x8F\x82\xE6\x95\xB0 \xF0\x9F\x94\x8C"));
+HEX5BHEX5DHEX3D_2130709883((Temporary738 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Path Params 🔌"), Temporary738)[0][Temporary738[1]], "ko", makeNimstrLit("\xEA\xB2\xBD\xEB\xA1\x9C \xEB\xA7\xA4\xEA\xB0\x9C \xEB\xB3\x80\xEC\x88\x98 \xF0\x9F\x94\x8C"));
+HEX5BHEX5DHEX3D_2130709883((Temporary739 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Path Params 🔌"), Temporary739)[0][Temporary739[1]], "fr", makeNimstrLit("Param\xC3\xA8tres du Chemin \xF0\x9F\x94\x8C"));
+var spokenLang_2634133032 = [null];
+spokenLang_2634133032[0] = localStorage["happyx_spoken_language"];
 
-if (!((((spokenLang_2634132137[0]) == null ? 0 : (spokenLang_2634132137[0]).length) == 0))) {
-set_2248147490(languageSettings_2248147489[0], cstrToNimstr(spokenLang_2634132137[0]));
+if (!((((spokenLang_2634133032[0]) == null ? 0 : (spokenLang_2634133032[0]).length) == 0))) {
+set_2248147490(languageSettings_2248147489[0], cstrToNimstr(spokenLang_2634133032[0]));
 }
 
-var languages_2634132147 = [[{Field0: makeNimstrLit("English"), Field1: makeNimstrLit("en")}, {Field0: makeNimstrLit("\xD0\xA0\xD1\x83\xD1\x81\xD1\x81\xD0\xBA\xD0\xB8\xD0\xB9"), Field1: makeNimstrLit("ru")}, {Field0: makeNimstrLit("Fran\xC3\xA7ais"), Field1: makeNimstrLit("fr")}, {Field0: makeNimstrLit("\xE6\x97\xA5\xE6\x9C\xAC\xE8\xAA\x9E"), Field1: makeNimstrLit("ja")}, {Field0: makeNimstrLit("\xE4\xB8\xAD\xE6\x96\x87"), Field1: makeNimstrLit("zh")}, {Field0: makeNimstrLit("\xED\x95\x9C\xEA\xB5\xAD\xEC\x96\xB4"), Field1: makeNimstrLit("ko")}]];
+var languages_2634133042 = [[{Field0: makeNimstrLit("English"), Field1: makeNimstrLit("en")}, {Field0: makeNimstrLit("\xD0\xA0\xD1\x83\xD1\x81\xD1\x81\xD0\xBA\xD0\xB8\xD0\xB9"), Field1: makeNimstrLit("ru")}, {Field0: makeNimstrLit("Fran\xC3\xA7ais"), Field1: makeNimstrLit("fr")}, {Field0: makeNimstrLit("\xE6\x97\xA5\xE6\x9C\xAC\xE8\xAA\x9E"), Field1: makeNimstrLit("ja")}, {Field0: makeNimstrLit("\xE4\xB8\xAD\xE6\x96\x87"), Field1: makeNimstrLit("zh")}, {Field0: makeNimstrLit("\xED\x95\x9C\xEA\xB5\xAD\xEC\x96\xB4"), Field1: makeNimstrLit("ko")}]];
 
 function remember_2684354564(val_2684354566) {
   var result_2684354567 = null;
@@ -6591,12 +5998,12 @@ function initTag_2013265957(name_2013265958, attrs_2013265959, children_20132659
     result_2013265966 = {name: nimCopy(null, name_2013265958, NTI33554439), isText: false, parent: null, attrs: attrs_2013265959, children: [], args: [], onlyChildren: onlyChildren_2013265965};
     Label1: do {
       var child_2013265994 = null;
-      var i_469786025 = 0;
-      var L_469786026 = (children_2013265964).length;
+      var i_469762356 = 0;
+      var L_469762357 = (children_2013265964).length;
       Label2: do {
           Label3: while (true) {
-          if (!(i_469786025 < L_469786026)) break Label3;
-            child_2013265994 = children_2013265964[i_469786025];
+          if (!(i_469762356 < L_469762357)) break Label3;
+            child_2013265994 = children_2013265964[i_469762356];
             Label4: do {
               if ((child_2013265994 == null)) {
               break Label4;
@@ -6605,7 +6012,7 @@ function initTag_2013265957(name_2013265958, attrs_2013265959, children_20132659
               child_2013265994.parent = result_2013265966;
               result_2013265966.children.push(child_2013265994);;
             } while (false);
-            i_469786025 += 1;
+            i_469762356 += 1;
           }
       } while (false);
     } while (false);
@@ -7019,12 +6426,12 @@ function initTag_2013266105(name_2013266106, isText_2013266107, children_2013266
     result_2013266114 = {name: nimCopy(null, name_2013266106, NTI33554439), isText: isText_2013266107, parent: null, attrs: nstnewStringTableWithTableConstr([], 0), children: [], args: [], onlyChildren: onlyChildren_2013266113};
     Label1: do {
       var child_2013266126 = null;
-      var i_469786033 = 0;
-      var L_469786034 = (children_2013266112).length;
+      var i_469762364 = 0;
+      var L_469762365 = (children_2013266112).length;
       Label2: do {
           Label3: while (true) {
-          if (!(i_469786033 < L_469786034)) break Label3;
-            child_2013266126 = children_2013266112[i_469786033];
+          if (!(i_469762364 < L_469762365)) break Label3;
+            child_2013266126 = children_2013266112[i_469762364];
             Label4: do {
               if ((child_2013266126 == null)) {
               break Label4;
@@ -7033,7 +6440,7 @@ function initTag_2013266105(name_2013266106, isText_2013266107, children_2013266
               child_2013266126.parent = result_2013266114;
               result_2013266114.children.push(child_2013266126);;
             } while (false);
-            i_469786033 += 1;
+            i_469762364 += 1;
           }
       } while (false);
     } while (false);
@@ -7117,3839 +6524,19 @@ function addArgIter_2013266249(self_2013266250, arg_2013266251) {
     
     Label2: do {
       var i_2013266262 = null;
-      var i_469786037 = 0;
-      var L_469786038 = (self_2013266250.children).length;
+      var i_469762368 = 0;
+      var L_469762369 = (self_2013266250.children).length;
       Label3: do {
           Label4: while (true) {
-          if (!(i_469786037 < L_469786038)) break Label4;
-            i_2013266262 = self_2013266250.children[i_469786037];
+          if (!(i_469762368 < L_469762369)) break Label4;
+            i_2013266262 = self_2013266250.children[i_469762368];
             addArgIter_2013266249(i_2013266262, arg_2013266251);
-            i_469786037 += 1;
+            i_469762368 += 1;
           }
       } while (false);
     } while (false);
 
   
-}
-
-function remember_2785017873(val_2785017875) {
-  var result_2785017876 = null;
-
-    result_2785017876 = {value: val_2785017875};
-
-  return result_2785017876;
-
-}
-
-function initHeader_2785017869(uniqCompId_2785017870, drawer_2785017871) {
-    
-function HEX3Aanonymous_2785017887(self_2785017888, ev_2785017889) {
-      
-    }
-    
-function HEX3Aanonymous_2785017890(self_2785017888, ev_2785017889) {
-      
-    }
-    
-function HEX3Aanonymous_2785017891(self_2785017888, ev_2785017889) {
-      
-    }
-    
-function HEX3Aanonymous_2785017892(self_2785017888, ev_2785017889) {
-      
-    }
-    
-function HEX3Aanonymous_2785017893(self_2785017888, ev_2785017889) {
-      
-    }
-    
-function HEX3Aanonymous_2785017894(self_2785017888, ev_2785017889) {
-      
-    }
-    
-function HEX3Aanonymous_2785017895(self_2785017888, ev_2785017889) {
-      
-    }
-
-  var result_2785017872 = null;
-
-    result_2785017872 = {uniqCompId: nimCopy(null, uniqCompId_2785017870, NTI33554439), drawer: remember_2785017873(drawer_2785017871), m_type: NTI2785017859, isCreated: false, slot: null, created: null, exited: null, rendered: null, pageHide: null, pageShow: null, beforeUpdated: null, updated: null};
-    result_2785017872.beforeUpdated = HEX3Aanonymous_2785017887;
-    result_2785017872.pageShow = HEX3Aanonymous_2785017890;
-    result_2785017872.pageHide = HEX3Aanonymous_2785017891;
-    result_2785017872.rendered = HEX3Aanonymous_2785017892;
-    result_2785017872.exited = HEX3Aanonymous_2785017893;
-    result_2785017872.created = HEX3Aanonymous_2785017894;
-    result_2785017872.updated = HEX3Aanonymous_2785017895;
-
-  return result_2785017872;
-
-}
-
-function initSection_2852126725(uniqCompId_2852126726) {
-    
-function HEX3Aanonymous_2852126728(self_2852126729, ev_2852126730) {
-      
-    }
-    
-function HEX3Aanonymous_2852126731(self_2852126729, ev_2852126730) {
-      
-    }
-    
-function HEX3Aanonymous_2852126732(self_2852126729, ev_2852126730) {
-      
-    }
-    
-function HEX3Aanonymous_2852126733(self_2852126729, ev_2852126730) {
-      
-    }
-    
-function HEX3Aanonymous_2852126734(self_2852126729, ev_2852126730) {
-      
-    }
-    
-function HEX3Aanonymous_2852126735(self_2852126729, ev_2852126730) {
-      
-    }
-    
-function HEX3Aanonymous_2852126736(self_2852126729, ev_2852126730) {
-      
-    }
-
-  var result_2852126727 = null;
-
-    result_2852126727 = {uniqCompId: nimCopy(null, uniqCompId_2852126726, NTI33554439), m_type: NTI2852126723, isCreated: false, slot: null, created: null, exited: null, rendered: null, pageHide: null, pageShow: null, beforeUpdated: null, updated: null};
-    result_2852126727.beforeUpdated = HEX3Aanonymous_2852126728;
-    result_2852126727.pageShow = HEX3Aanonymous_2852126731;
-    result_2852126727.pageHide = HEX3Aanonymous_2852126732;
-    result_2852126727.rendered = HEX3Aanonymous_2852126733;
-    result_2852126727.exited = HEX3Aanonymous_2852126734;
-    result_2852126727.created = HEX3Aanonymous_2852126735;
-    result_2852126727.updated = HEX3Aanonymous_2852126736;
-
-  return result_2852126727;
-
-}
-
-function hasKey_2667578405(t_2667578408, key_2667578409) {
-  var result_2667578410 = false;
-
-    var hc_2667578411 = [0];
-    result_2667578410 = (0 <= rawGet_2130706700(t_2667578408, key_2667578409, hc_2667578411, 0));
-
-  return result_2667578410;
-
-}
-
-function hasKey_2667578279(t_2667578282, key_2667578283) {
-  var result_2667578284 = false;
-
-    result_2667578284 = hasKey_2667578405(t_2667578282, key_2667578283);
-
-  return result_2667578284;
-
-}
-
-function hasKey_2667578689(t_2667578692, key_2667578693) {
-  var result_2667578694 = false;
-
-    var hc_2667578695 = [0];
-    result_2667578694 = (0 <= rawGet_2130708267(t_2667578692, key_2667578693, hc_2667578695, 0));
-
-  return result_2667578694;
-
-}
-
-function hasKey_2667578563(t_2667578566, key_2667578567) {
-  var result_2667578568 = false;
-
-    result_2667578568 = hasKey_2667578689(t_2667578566, key_2667578567);
-
-  return result_2667578568;
-
-}
-
-function val_2667578510(self_2667578512, self_2667578512_Idx) {
-  var result_2667578513 = null;
-
-    result_2667578513 = self_2667578512[self_2667578512_Idx].value;
-
-  return result_2667578513;
-
-}
-
-function HEX5BHEX5D_2667579008(t_2667579011, key_2667579012) {
-  var result_2667579013 = null;
-  var result_2667579013_Idx = 0;
-
-    var hcHEX60gensym22_2667579014 = [0];
-    var indexHEX60gensym22_2667579021 = rawGet_2130708267(t_2667579011, key_2667579012, hcHEX60gensym22_2667579014, 0);
-    if ((0 <= indexHEX60gensym22_2667579021)) {
-    result_2667579013 = t_2667579011.data[indexHEX60gensym22_2667579021]; result_2667579013_Idx = "Field2";
-    }
-    else {
-    raiseKeyError_2130709830(key_2667579012);
-    }
-    
-
-  return [result_2667579013, result_2667579013_Idx];
-
-}
-
-function HEX5BHEX5D_2667578855(t_2667578858, key_2667578859) {
-    var Temporary1;
-
-  var result_2667578860 = null;
-  var result_2667578860_Idx = 0;
-
-    result_2667578860 = (Temporary1 = HEX5BHEX5D_2667579008(t_2667578858, key_2667578859), Temporary1)[0]; result_2667578860_Idx = Temporary1[1];
-
-  return [result_2667578860, result_2667578860_Idx];
-
-}
-
-function remember_2952790052(val_2952790054) {
-  var result_2952790055 = null;
-
-    result_2952790055 = {value: nimCopy(null, val_2952790054, NTI2952790037)};
-
-  return result_2952790055;
-
-}
-
-function remember_2952790075(val_2952790077) {
-  var result_2952790078 = null;
-
-    result_2952790078 = {value: val_2952790077};
-
-  return result_2952790078;
-
-}
-
-function toInt_2248147417(self_2248147420) {
-  var result_2248147421 = 0;
-
-    result_2248147421 = self_2248147420.value;
-
-  return result_2248147421;
-
-}
-
-function valHEX3D_2952796037(self_2952796039, value_2952796040) {
-      var Temporary1;
-      var Temporary2;
-
-    self_2952796039.value = value_2952796040;
-      if (!!((application_1845493808[0] == null))) Temporary2 = false; else {        Temporary2 = !((application_1845493808[0].router == null));      }      if (!Temporary2) Temporary1 = false; else {        Temporary1 = enableRouting_2248146952[0];      }    if (Temporary1) {
-    application_1845493808[0].router(false);
-    }
-    
-
-  
-}
-
-function set_2952796032(self_2952796034, value_2952796035) {
-      var Temporary1;
-      var Temporary2;
-
-    valHEX3D_2952796037(self_2952796034, value_2952796035);
-      if (!!((application_1845493808[0] == null))) Temporary2 = false; else {        Temporary2 = !((application_1845493808[0].router == null));      }      if (!Temporary2) Temporary1 = false; else {        Temporary1 = enableRouting_2248146952[0];      }    if (Temporary1) {
-    application_1845493808[0].router(false);
-    }
-    
-
-  
-}
-
-function val_2952796061(self_2952796063, self_2952796063_Idx) {
-  var result_2952796064 = null;
-  var result_2952796064_Idx = 0;
-
-    result_2952796064_Idx = [, self_2952796063[self_2952796063_Idx].value];
-    result_2952796064 = self_2952796063[self_2952796063_Idx].value;
-    result_2952796064[result_2952796064_Idx] = self_2952796063[self_2952796063_Idx].value;
-
-  return [result_2952796064, result_2952796064_Idx];
-
-}
-
-function mkDigit_671088645(v_671088646, typ_671088647) {
-      var Temporary1;
-
-  var result_671088648 = [];
-
-    if ((v_671088646 < 10)) {
-    result_671088648 = nimCopy(null, nimCharToStr((48 + v_671088646)), NTI33554439);
-    }
-    else {
-      if ((typ_671088647 == 120)) {
-      Temporary1 = 97;
-      }
-      else {
-      Temporary1 = 65;
-      }
-      
-      result_671088648 = nimCopy(null, nimCharToStr(((Temporary1 + v_671088646) - 10)), NTI33554439);
-    }
-    
-
-  return result_671088648;
-
-}
-
-function formatInt_1073742207(n_1073742209, radix_1073742210, spec_1073742211) {
-    var Temporary1;
-    var Temporary8;
-
-  var result_1073742212 = [];
-
-    var n_1073742215 = n_1073742209;
-    var negative_1073742216 = (n_1073742215 < 0);
-    if (negative_1073742216) {
-    Temporary1 = ((~(n_1073742215) + 1) );
-    }
-    else {
-    Temporary1 = n_1073742215;
-    }
-    
-    var v_1073742217 = Temporary1;
-    var xx_1073742218 = [];
-    if (spec_1073742211.alternateForm) {
-    switch (spec_1073742211.typ) {
-    case 88:
-      xx_1073742218 = nimCopy(null, makeNimstrLit("0x"), NTI33554439);
-      break;
-    case 120:
-      xx_1073742218 = nimCopy(null, makeNimstrLit("0x"), NTI33554439);
-      break;
-    case 98:
-      xx_1073742218 = nimCopy(null, makeNimstrLit("0b"), NTI33554439);
-      break;
-    case 111:
-      xx_1073742218 = nimCopy(null, makeNimstrLit("0o"), NTI33554439);
-      break;
-    default: 
-      break;
-    }
-    }
-    
-    if ((v_1073742217 == 0)) {
-    result_1073742212 = nimCopy(null, makeNimstrLit("0"), NTI33554439);
-    }
-    else {
-      result_1073742212 = nimCopy(null, [], NTI33554439);
-      Label2: do {
-          Label3: while (true) {
-          if (!(0 < v_1073742217)) break Label3;
-            var d_1073742219 = (v_1073742217 % radix_1073742210);
-            v_1073742217 = Math.trunc(((v_1073742217 / radix_1073742210) ));
-            result_1073742212.push.apply(result_1073742212, mkDigit_671088645(d_1073742219, spec_1073742211.typ));;
-          }
-      } while (false);
-      Label4: do {
-        var idx_1073742224 = 0;
-        var colontmp__469786048 = 0;
-        colontmp__469786048 = Math.trunc((result_1073742212).length / 2);
-        var i_469786049 = 0;
-        Label5: do {
-            Label6: while (true) {
-            if (!(i_469786049 < colontmp__469786048)) break Label6;
-              idx_1073742224 = i_469786049;
-              var Temporary7 = result_1073742212[idx_1073742224]; result_1073742212[idx_1073742224] = result_1073742212[(((result_1073742212).length - idx_1073742224) - 1)]; result_1073742212[(((result_1073742212).length - idx_1073742224) - 1)] = Temporary7;              i_469786049 += 1;
-            }
-        } while (false);
-      } while (false);
-    }
-    
-    if (spec_1073742211.padWithZero) {
-    if (negative_1073742216) Temporary8 = true; else {      Temporary8 = !((spec_1073742211.sign == 45));    }    var sign_1073742229 = Temporary8;
-    var toFill_1073742233 = (((spec_1073742211.minimumWidth - (result_1073742212).length) - (xx_1073742218).length) - (sign_1073742229 ? 1 : 0));
-    if ((0 < toFill_1073742233)) {
-    result_1073742212 = nimCopy(null, (nsuRepeatChar(48, toFill_1073742233) || []).concat(result_1073742212 || []), NTI33554439);
-    }
-    
-    }
-    
-    if (negative_1073742216) {
-    result_1073742212 = nimCopy(null, (makeNimstrLit("-") || []).concat(xx_1073742218 || [],result_1073742212 || []), NTI33554439);
-    }
-    else {
-    if (!((spec_1073742211.sign == 45))) {
-    result_1073742212 = nimCopy(null, [spec_1073742211.sign].concat(xx_1073742218 || [],result_1073742212 || []), NTI33554439);
-    }
-    else {
-      result_1073742212 = nimCopy(null, (xx_1073742218 || []).concat(result_1073742212 || []), NTI33554439);
-    }
-    }
-    if ((spec_1073742211.align == 60)) {
-    Label9: do {
-      var i_1073742238 = 0;
-      var colontmp__469786052 = 0;
-      colontmp__469786052 = (result_1073742212).length;
-      var i_469786053 = colontmp__469786052;
-      Label10: do {
-          Label11: while (true) {
-          if (!(i_469786053 < spec_1073742211.minimumWidth)) break Label11;
-            i_1073742238 = i_469786053;
-            addChar(result_1073742212, spec_1073742211.fill);;
-            i_469786053 += 1;
-          }
-      } while (false);
-    } while (false);
-    }
-    else {
-      var toFill_1073742239 = (spec_1073742211.minimumWidth - (result_1073742212).length);
-      if ((spec_1073742211.align == 94)) {
-      var half_1073742240 = Math.trunc(toFill_1073742239 / 2);
-      result_1073742212 = nimCopy(null, (nsuRepeatChar(spec_1073742211.fill, half_1073742240) || []).concat(result_1073742212 || [],nsuRepeatChar(spec_1073742211.fill, (toFill_1073742239 - half_1073742240)) || []), NTI33554439);
-      }
-      else {
-        if ((0 < toFill_1073742239)) {
-        result_1073742212 = nimCopy(null, (nsuRepeatChar(spec_1073742211.fill, toFill_1073742239) || []).concat(result_1073742212 || []), NTI33554439);
-        }
-        
-      }
-      
-    }
-    
-
-  return result_1073742212;
-
-}
-
-function formatValue_1073742199(result_1073742201, result_1073742201_Idx, value_1073742202, specifier_1073742203) {
-  BeforeRet: do {
-    if (((specifier_1073742203).length == 0)) {
-    result_1073742201[result_1073742201_Idx].push.apply(result_1073742201[result_1073742201_Idx], HEX24_335544323(value_1073742202));;
-    break BeforeRet;
-    }
-    
-    var spec_1073742204 = parseStandardFormatSpecifier_671088696(specifier_1073742203, 0, false);
-    var radix_1073742205 = 10;
-    switch (spec_1073742204.typ) {
-    case 120:
-    case 88:
-      radix_1073742205 = 16;
-      break;
-    case 100:
-    case 0:
-      break;
-    case 98:
-      radix_1073742205 = 2;
-      break;
-    case 111:
-      radix_1073742205 = 8;
-      break;
-    default: 
-      raiseException({message: (makeNimstrLit("invalid type in format string for number, expected one  of \'x\', \'X\', \'b\', \'d\', \'o\' but got: ") || []).concat([spec_1073742204.typ]), parent: null, m_type: NTI33555125, name: null, trace: [], up: null}, "ValueError");
-      break;
-    }
-    result_1073742201[result_1073742201_Idx].push.apply(result_1073742201[result_1073742201_Idx], formatInt_1073742207(value_1073742202, radix_1073742205, spec_1073742204));;
-  } while (false);
-
-  
-}
-
-function updateIndex_2952790036(self_2952790037, idx_2952790038) {
-      var Temporary2;
-
-  BeforeRet: do {
-    if ((toInt_2248147417(self_2952790037.index) == idx_2952790038)) {
-    break BeforeRet;
-    }
-    
-    set_2952796032(self_2952790037.index, idx_2952790038);
-    var index_2952796057 = toInt_2248147417(self_2952790037.index);
-    Label1: do {
-      var idx_2952796079 = 0;
-      var val_2952796080 = ({text: [], language: [], name: [], description: []});
-      var colontmp__469786041 = [];
-      colontmp__469786041 = (Temporary2 = val_2952796061(self_2952790037, "data"), Temporary2)[0][Temporary2[1]];
-      var i_469786043 = 0;
-      var L_469786044 = (colontmp__469786041).length;
-      Label3: do {
-          Label4: while (true) {
-          if (!(i_469786043 < L_469786044)) break Label4;
-            idx_2952796079 = i_469786043;
-            val_2952796080 = nimCopy(val_2952796080, colontmp__469786041[i_469786043], NTI2952790019);
-            var fmtRes_2952796085 = [mnewString(0)];
-            fmtRes_2952796085[0].push.apply(fmtRes_2952796085[0], makeNimstrLit("slider-"));;
-            formatValue_671088800(fmtRes_2952796085, 0, self_2952790037.uniqCompId, []);
-            fmtRes_2952796085[0].push.apply(fmtRes_2952796085[0], makeNimstrLit("_"));;
-            formatValue_1073742199(fmtRes_2952796085, 0, idx_2952796079, []);
-            var id_2952796091 = toJSStr(fmtRes_2952796085[0]);
-            //js
-        let codeBlock = document.getElementById(id_2952796091);
-        if (codeBlock) {
-          hljs.highlightElement(codeBlock);
-        }
-        
-            var fmtRes_2952796096 = [mnewString(0)];
-            fmtRes_2952796096[0].push.apply(fmtRes_2952796096[0], makeNimstrLit("sliderContainer-"));;
-            formatValue_671088800(fmtRes_2952796096, 0, self_2952790037.uniqCompId, []);
-            fmtRes_2952796096[0].push.apply(fmtRes_2952796096[0], makeNimstrLit("_"));;
-            formatValue_1073742199(fmtRes_2952796096, 0, idx_2952796079, []);
-            var container_2952796102 = document.getElementById(toJSStr(fmtRes_2952796096[0]));
-            var fmtRes_2952796107 = [mnewString(0)];
-            fmtRes_2952796107[0].push.apply(fmtRes_2952796107[0], makeNimstrLit("circle-"));;
-            formatValue_671088800(fmtRes_2952796107, 0, self_2952790037.uniqCompId, []);
-            fmtRes_2952796107[0].push.apply(fmtRes_2952796107[0], makeNimstrLit("_"));;
-            formatValue_1073742199(fmtRes_2952796107, 0, idx_2952796079, []);
-            var circle_2952796113 = document.getElementById(toJSStr(fmtRes_2952796107[0]));
-            var fmtRes_2952796118 = [mnewString(0)];
-            fmtRes_2952796118[0].push.apply(fmtRes_2952796118[0], makeNimstrLit("circle-"));;
-            formatValue_671088800(fmtRes_2952796118, 0, self_2952790037.uniqCompId, []);
-            fmtRes_2952796118[0].push.apply(fmtRes_2952796118[0], makeNimstrLit("_"));;
-            formatValue_1073742199(fmtRes_2952796118, 0, idx_2952796079, []);
-            fmtRes_2952796118[0].push.apply(fmtRes_2952796118[0], makeNimstrLit("-fill"));;
-            var fill_2952796124 = document.getElementById(toJSStr(fmtRes_2952796118[0]));
-            if ((container_2952796102 == null)) {
-            break BeforeRet;
-            }
-            
-            if ((index_2952796057 == idx_2952796079)) {
-            container_2952796102.classList.remove("absolute");
-            container_2952796102.classList.remove("top-0");
-            container_2952796102.classList.remove("left-0");
-            container_2952796102.classList.remove("opacity-0");
-            container_2952796102.classList.add("opacity-1");
-            circle_2952796113.classList.remove("xl:w-4");
-            circle_2952796113.classList.remove("lg:w-6");
-            circle_2952796113.classList.remove("w-8");
-            circle_2952796113.classList.add("xl:w-12");
-            circle_2952796113.classList.add("lg:w-18");
-            circle_2952796113.classList.add("w-24");
-            fill_2952796124.classList.remove("w-0");
-            fill_2952796124.classList.add("w-full");
-            fill_2952796124.classList.add("transition-all");
-            fill_2952796124.classList.add("ease-linear");
-            fill_2952796124.classList.add("duration-[5000ms]");
-            }
-            else {
-              container_2952796102.classList.remove("opacity-1");
-              container_2952796102.classList.add("absolute");
-              container_2952796102.classList.add("top-0");
-              container_2952796102.classList.add("left-0");
-              container_2952796102.classList.add("opacity-0");
-              circle_2952796113.classList.remove("xl:w-12");
-              circle_2952796113.classList.remove("lg:w-18");
-              circle_2952796113.classList.remove("w-24");
-              circle_2952796113.classList.add("xl:w-4");
-              circle_2952796113.classList.add("lg:w-6");
-              circle_2952796113.classList.add("w-8");
-              fill_2952796124.classList.remove("transition-all");
-              fill_2952796124.classList.remove("ease-linear");
-              fill_2952796124.classList.remove("duration-[5000ms]");
-              fill_2952796124.classList.remove("w-full");
-              fill_2952796124.classList.add("w-0");
-            }
-            
-            i_469786043 += 1;
-          }
-      } while (false);
-    } while (false);
-  } while (false);
-
-  
-}
-
-function len_2952794860(self_2952794862) {
-  var result_2952794863 = 0;
-
-    result_2952794863 = (self_2952794862.value).length;
-
-  return result_2952794863;
-
-}
-
-function nextIndex_2952790034(self_2952790035) {
-    
-function upd_2952795841() {
-        var Temporary1;
-
-        enableRouting_2248146952[0] = false;
-        if ((toInt_2248147417(self_2952790035.index) < (len_2952794860(self_2952790035.data) - 1))) {
-        Temporary1 = (toInt_2248147417(self_2952790035.index) + 1);
-        }
-        else {
-        Temporary1 = 0;
-        }
-        
-        updateIndex_2952790036(self_2952790035, Temporary1);
-        //js
-        setTimeout(() => { upd_2952795841() }, 5000);
-        
-        enableRouting_2248146952[0] = true;
-
-      
-    }
-
-    //js
-      setTimeout(() => { upd_2952795841() }, 5000);
-      
-
-  
-}
-
-function initCodeBlockSlider_2952790039(uniqCompId_2952790040, data_2952790049, index_2952790050) {
-    
-function HEX3Aanonymous_2952790089(self_2952790090, ev_2952790091) {
-      
-    }
-    
-function HEX3Aanonymous_2952790092(self_2952790090, ev_2952790091) {
-      
-    }
-    
-function HEX3Aanonymous_2952790093(self_2952790090, ev_2952790091) {
-      
-    }
-    
-function HEX3Aanonymous_2952790094(self_2952790090, ev_2952790091) {
-      
-    }
-    
-function HEX3Aanonymous_2952790095(self_2952790090, ev_2952790091) {
-      
-    }
-    
-function HEX3Aanonymous_2952790096(self_2952790090, ev_2952790091) {
-      
-    }
-    
-function HEX3Aanonymous_2952790097(self_2952790090, ev_2952790091) {
-        nextIndex_2952790034(self_2952790090);
-
-      
-    }
-
-  var result_2952790051 = null;
-
-    result_2952790051 = {uniqCompId: nimCopy(null, uniqCompId_2952790040, NTI33554439), data: remember_2952790052(data_2952790049), index: remember_2952790075(index_2952790050), m_type: NTI2952790020, isCreated: false, slot: null, created: null, exited: null, rendered: null, pageHide: null, pageShow: null, beforeUpdated: null, updated: null};
-    result_2952790051.beforeUpdated = HEX3Aanonymous_2952790089;
-    result_2952790051.pageShow = HEX3Aanonymous_2952790092;
-    result_2952790051.pageHide = HEX3Aanonymous_2952790093;
-    result_2952790051.rendered = HEX3Aanonymous_2952790094;
-    result_2952790051.exited = HEX3Aanonymous_2952790095;
-    result_2952790051.updated = HEX3Aanonymous_2952790096;
-    result_2952790051.created = HEX3Aanonymous_2952790097;
-
-  return result_2952790051;
-
-}
-
-function initCard_2768240647(uniqCompId_2768240648, pathToImg_2768240649) {
-    
-function HEX3Aanonymous_2768240654(self_2768240655, ev_2768240656) {
-      
-    }
-    
-function HEX3Aanonymous_2768240657(self_2768240655, ev_2768240656) {
-      
-    }
-    
-function HEX3Aanonymous_2768240658(self_2768240655, ev_2768240656) {
-      
-    }
-    
-function HEX3Aanonymous_2768240659(self_2768240655, ev_2768240656) {
-      
-    }
-    
-function HEX3Aanonymous_2768240660(self_2768240655, ev_2768240656) {
-      
-    }
-    
-function HEX3Aanonymous_2768240661(self_2768240655, ev_2768240656) {
-      
-    }
-    
-function HEX3Aanonymous_2768240662(self_2768240655, ev_2768240656) {
-      
-    }
-
-  var result_2768240650 = null;
-
-    result_2768240650 = {uniqCompId: nimCopy(null, uniqCompId_2768240648, NTI33554439), pathToImg: remember_2684354564(pathToImg_2768240649), m_type: NTI2768240643, isCreated: false, slot: null, created: null, exited: null, rendered: null, pageHide: null, pageShow: null, beforeUpdated: null, updated: null};
-    result_2768240650.beforeUpdated = HEX3Aanonymous_2768240654;
-    result_2768240650.pageShow = HEX3Aanonymous_2768240657;
-    result_2768240650.pageHide = HEX3Aanonymous_2768240658;
-    result_2768240650.rendered = HEX3Aanonymous_2768240659;
-    result_2768240650.exited = HEX3Aanonymous_2768240660;
-    result_2768240650.created = HEX3Aanonymous_2768240661;
-    result_2768240650.updated = HEX3Aanonymous_2768240662;
-
-  return result_2768240650;
-
-}
-
-function initSmartCard_2868903941(uniqCompId_2868903942) {
-    
-function HEX3Aanonymous_2868903944(self_2868903945, ev_2868903946) {
-      
-    }
-    
-function HEX3Aanonymous_2868903947(self_2868903945, ev_2868903946) {
-      
-    }
-    
-function HEX3Aanonymous_2868903948(self_2868903945, ev_2868903946) {
-      
-    }
-    
-function HEX3Aanonymous_2868903949(self_2868903945, ev_2868903946) {
-      
-    }
-    
-function HEX3Aanonymous_2868903950(self_2868903945, ev_2868903946) {
-      
-    }
-    
-function HEX3Aanonymous_2868903951(self_2868903945, ev_2868903946) {
-      
-    }
-    
-function HEX3Aanonymous_2868903952(self_2868903945, ev_2868903946) {
-      
-    }
-
-  var result_2868903943 = null;
-
-    result_2868903943 = {uniqCompId: nimCopy(null, uniqCompId_2868903942, NTI33554439), m_type: NTI2868903939, isCreated: false, slot: null, created: null, exited: null, rendered: null, pageHide: null, pageShow: null, beforeUpdated: null, updated: null};
-    result_2868903943.beforeUpdated = HEX3Aanonymous_2868903944;
-    result_2868903943.pageShow = HEX3Aanonymous_2868903947;
-    result_2868903943.pageHide = HEX3Aanonymous_2868903948;
-    result_2868903943.rendered = HEX3Aanonymous_2868903949;
-    result_2868903943.exited = HEX3Aanonymous_2868903950;
-    result_2868903943.created = HEX3Aanonymous_2868903951;
-    result_2868903943.updated = HEX3Aanonymous_2868903952;
-
-  return result_2868903943;
-
-}
-
-function remember_2717909016(val_2717909018) {
-  var result_2717909019 = null;
-
-    result_2717909019 = {value: val_2717909018};
-
-  return result_2717909019;
-
-}
-
-function toCString_2248147412(self_2248147415) {
-  var result_2248147416 = null;
-
-    result_2248147416 = self_2248147415.value;
-
-  return result_2248147416;
-
-}
-
-function highlight_2717909002(self_2717909003) {
-    var id_2717909543 = toCString_2248147412(self_2717909003.id);
-    //js
-      let codeBlock = document.getElementById(id_2717909543);
-      hljs.highlightElement(codeBlock);
-      
-
-  
-}
-
-function initCodeBlock_2717909004(uniqCompId_2717909005, language_2717909006, source_2717909007, id_2717909008) {
-    
-function HEX3Aanonymous_2717909030(self_2717909031, ev_2717909032) {
-      
-    }
-    
-function HEX3Aanonymous_2717909033(self_2717909031, ev_2717909032) {
-      
-    }
-    
-function HEX3Aanonymous_2717909034(self_2717909031, ev_2717909032) {
-      
-    }
-    
-function HEX3Aanonymous_2717909035(self_2717909031, ev_2717909032) {
-      
-    }
-    
-function HEX3Aanonymous_2717909036(self_2717909031, ev_2717909032) {
-      
-    }
-    
-function HEX3Aanonymous_2717909037(self_2717909031, ev_2717909032) {
-      
-    }
-    
-function HEX3Aanonymous_2717909038(self_2717909031, ev_2717909032) {
-        highlight_2717909002(self_2717909031);
-        rawEcho(makeNimstrLit("updated!"));
-
-      
-    }
-
-  var result_2717909009 = null;
-
-    result_2717909009 = {uniqCompId: nimCopy(null, uniqCompId_2717909005, NTI33554439), language: remember_2684354564(language_2717909006), source: remember_2684354564(source_2717909007), id: remember_2717909016(id_2717909008), m_type: NTI2717908995, isCreated: false, slot: null, created: null, exited: null, rendered: null, pageHide: null, pageShow: null, beforeUpdated: null, updated: null};
-    result_2717909009.beforeUpdated = HEX3Aanonymous_2717909030;
-    result_2717909009.pageShow = HEX3Aanonymous_2717909033;
-    result_2717909009.pageHide = HEX3Aanonymous_2717909034;
-    result_2717909009.rendered = HEX3Aanonymous_2717909035;
-    result_2717909009.exited = HEX3Aanonymous_2717909036;
-    result_2717909009.created = HEX3Aanonymous_2717909037;
-    result_2717909009.updated = HEX3Aanonymous_2717909038;
-
-  return result_2717909009;
-
-}
-
-function remember_2885681175(val_2885681177) {
-  var result_2885681178 = null;
-
-    result_2885681178 = {value: nimCopy(null, val_2885681177, NTI2885681155)};
-
-  return result_2885681178;
-
-}
-
-function initAboutSection_2885681167(uniqCompId_2885681168, name_2885681169, data_2885681170) {
-    
-function HEX3Aanonymous_2885681189(self_2885681190, ev_2885681191) {
-      
-    }
-    
-function HEX3Aanonymous_2885681192(self_2885681190, ev_2885681191) {
-      
-    }
-    
-function HEX3Aanonymous_2885681193(self_2885681190, ev_2885681191) {
-      
-    }
-    
-function HEX3Aanonymous_2885681194(self_2885681190, ev_2885681191) {
-      
-    }
-    
-function HEX3Aanonymous_2885681195(self_2885681190, ev_2885681191) {
-      
-    }
-    
-function HEX3Aanonymous_2885681196(self_2885681190, ev_2885681191) {
-      
-    }
-    
-function HEX3Aanonymous_2885681197(self_2885681190, ev_2885681191) {
-      
-    }
-
-  var result_2885681171 = null;
-
-    result_2885681171 = {uniqCompId: nimCopy(null, uniqCompId_2885681168, NTI33554439), name: remember_2684354564(name_2885681169), data: remember_2885681175(data_2885681170), m_type: NTI2885681159, isCreated: false, slot: null, created: null, exited: null, rendered: null, pageHide: null, pageShow: null, beforeUpdated: null, updated: null};
-    result_2885681171.beforeUpdated = HEX3Aanonymous_2885681189;
-    result_2885681171.pageShow = HEX3Aanonymous_2885681192;
-    result_2885681171.pageHide = HEX3Aanonymous_2885681193;
-    result_2885681171.rendered = HEX3Aanonymous_2885681194;
-    result_2885681171.exited = HEX3Aanonymous_2885681195;
-    result_2885681171.created = HEX3Aanonymous_2885681196;
-    result_2885681171.updated = HEX3Aanonymous_2885681197;
-
-  return result_2885681171;
-
-}
-
-function initDivider_2902458375(uniqCompId_2902458376, horizontal_2902458377) {
-    
-function HEX3Aanonymous_2902458382(self_2902458383, ev_2902458384) {
-      
-    }
-    
-function HEX3Aanonymous_2902458385(self_2902458383, ev_2902458384) {
-      
-    }
-    
-function HEX3Aanonymous_2902458386(self_2902458383, ev_2902458384) {
-      
-    }
-    
-function HEX3Aanonymous_2902458387(self_2902458383, ev_2902458384) {
-      
-    }
-    
-function HEX3Aanonymous_2902458388(self_2902458383, ev_2902458384) {
-      
-    }
-    
-function HEX3Aanonymous_2902458389(self_2902458383, ev_2902458384) {
-      
-    }
-    
-function HEX3Aanonymous_2902458390(self_2902458383, ev_2902458384) {
-      
-    }
-
-  var result_2902458378 = null;
-
-    result_2902458378 = {uniqCompId: nimCopy(null, uniqCompId_2902458376, NTI33554439), horizontal: remember_2751463447(horizontal_2902458377), m_type: NTI2902458371, isCreated: false, slot: null, created: null, exited: null, rendered: null, pageHide: null, pageShow: null, beforeUpdated: null, updated: null};
-    result_2902458378.beforeUpdated = HEX3Aanonymous_2902458382;
-    result_2902458378.pageShow = HEX3Aanonymous_2902458385;
-    result_2902458378.pageHide = HEX3Aanonymous_2902458386;
-    result_2902458378.rendered = HEX3Aanonymous_2902458387;
-    result_2902458378.exited = HEX3Aanonymous_2902458388;
-    result_2902458378.created = HEX3Aanonymous_2902458389;
-    result_2902458378.updated = HEX3Aanonymous_2902458390;
-
-  return result_2902458378;
-
-}
-
-function remember_2919235612(val_2919235614) {
-  var result_2919235615 = null;
-
-    result_2919235615 = {value: nimCopy(null, val_2919235614, NTI2919235609)};
-
-  return result_2919235615;
-
-}
-
-function remember_2919235626(val_2919235628) {
-  var result_2919235629 = null;
-
-    result_2919235629 = {value: val_2919235628};
-
-  return result_2919235629;
-
-}
-
-function initSponsorsList_2919235598(uniqCompId_2919235599, data_2919235608, sponsorStatus_2919235609, colorBorder_2919235610) {
-    
-function HEX3Aanonymous_2919235643(self_2919235644, ev_2919235645) {
-      
-    }
-    
-function HEX3Aanonymous_2919235646(self_2919235644, ev_2919235645) {
-      
-    }
-    
-function HEX3Aanonymous_2919235647(self_2919235644, ev_2919235645) {
-      
-    }
-    
-function HEX3Aanonymous_2919235648(self_2919235644, ev_2919235645) {
-      
-    }
-    
-function HEX3Aanonymous_2919235649(self_2919235644, ev_2919235645) {
-      
-    }
-    
-function HEX3Aanonymous_2919235650(self_2919235644, ev_2919235645) {
-      
-    }
-    
-function HEX3Aanonymous_2919235651(self_2919235644, ev_2919235645) {
-      
-    }
-
-  var result_2919235611 = null;
-
-    result_2919235611 = {uniqCompId: nimCopy(null, uniqCompId_2919235599, NTI33554439), data: remember_2919235612(data_2919235608), sponsorStatus: remember_2919235626(sponsorStatus_2919235609), colorBorder: remember_2684354564(colorBorder_2919235610), m_type: NTI2919235587, isCreated: false, slot: null, created: null, exited: null, rendered: null, pageHide: null, pageShow: null, beforeUpdated: null, updated: null};
-    result_2919235611.beforeUpdated = HEX3Aanonymous_2919235643;
-    result_2919235611.pageShow = HEX3Aanonymous_2919235646;
-    result_2919235611.pageHide = HEX3Aanonymous_2919235647;
-    result_2919235611.rendered = HEX3Aanonymous_2919235648;
-    result_2919235611.exited = HEX3Aanonymous_2919235649;
-    result_2919235611.created = HEX3Aanonymous_2919235650;
-    result_2919235611.updated = HEX3Aanonymous_2919235651;
-
-  return result_2919235611;
-
-}
-
-function sysFatal_218103842(message_218103845) {
-    raiseException({message: nimCopy(null, message_218103845, NTI33554439), m_type: NTI33555124, parent: null, name: null, trace: [], up: null}, "AssertionDefect");
-
-  
-}
-
-function raiseAssert_218103840(msg_218103841) {
-    sysFatal_218103842(msg_218103841);
-
-  
-}
-
-function failedAssertImpl_218103864(msg_218103865) {
-    raiseAssert_218103840(msg_218103865);
-
-  
-}
-
-function canOpt_1459618384(litOpt_1459618385) {
-  var result_1459618386 = false;
-
-  BeforeRet: do {
-    result_1459618386 = (0 < (litOpt_1459618385.nfa.s).length);
-    break BeforeRet;
-  } while (false);
-
-  return result_1459618386;
-
-}
-
-function new_1442842074() {
-  var result_1442842077 = null;
-
-  BeforeRet: do {
-    var r_1442842079 = null;
-    r_1442842079 = ({sx: [], ss: [], si: 0});
-    result_1442842077 = r_1442842079;
-    break BeforeRet;
-  } while (false);
-
-  return result_1442842077;
-
-}
-
-function newSeq_1442842105(len_1442842107) {
-  var result_1442842108 = [];
-
-    result_1442842108 = new Array(len_1442842107); for (var i = 0 ; i < len_1442842107 ; ++i) { result_1442842108[i] = {Field0: 0, Field1: 0, Field2: ({a: 0, b: 0})}; }
-  return result_1442842108;
-
-}
-
-function newSeq_1207959936(len_1207959938) {
-  var result_1207959939 = [];
-
-    result_1207959939 = new Array(len_1207959938); for (var i = 0 ; i < len_1207959938 ; ++i) { result_1207959939[i] = 0; }
-  return result_1207959939;
-
-}
-
-function newSubmatches_1442842071(size_1442842072) {
-  var result_1442842073 = null;
-
-    result_1442842073 = new_1442842074();
-    result_1442842073.sx = nimCopy(null, newSeq_1442842105(8), NTI1442841553);
-    result_1442842073.ss = nimCopy(null, newSeq_1207959936(size_1442842072), NTI1207959816);
-    result_1442842073.si = 0;
-
-  return result_1442842073;
-
-}
-
-function contains_1342177410(s_1342177414, value_1342177415) {
-  var result_1342177416 = false;
-
-    result_1342177416 = ((s_1342177414.a <= value_1342177415) && (value_1342177415 <= s_1342177414.b));
-
-  return result_1342177416;
-
-}
-
-function HEX2EHEX2E_754975569(a_754975572, b_754975573) {
-  var result_754975576 = ({a: 0, b: 0});
-
-    result_754975576 = nimCopy(result_754975576, {a: a_754975572, b: b_754975573}, NTI754976722);
-
-  return result_754975576;
-
-}
-
-function bwRuneAt_1291845674(s_1291845675, n_1291845676) {
-          var Temporary3;
-
-  var result_1291845677 = 0;
-
-    if (!((0 <= n_1291845676))) {
-    failedAssertImpl_218103864(makeNimstrLit("common.nim(40, 12) `n >= 0` "));
-    }
-    
-    if (!((n_1291845676 <= ((s_1291845675).length - 1)))) {
-    failedAssertImpl_218103864(makeNimstrLit("common.nim(41, 12) `n <= s.len - 1` "));
-    }
-    
-    var n_1291845688 = n_1291845676;
-    Label1: do {
-        Label2: while (true) {
-          if (!(0 < n_1291845688)) Temporary3 = false; else {            Temporary3 = ((s_1291845675[n_1291845688] >> 6) == 2);          }        if (!Temporary3) break Label2;
-          n_1291845688 -= 1;
-        }
-    } while (false);
-    if ((s_1291845675[n_1291845688] <= 127)) {
-    result_1291845677 = s_1291845675[n_1291845688];
-    }
-    else {
-    if (((s_1291845675[n_1291845688] >>> 5) == 6)) {
-    if ((n_1291845688 <= ((s_1291845675).length - 2))) {
-    result_1291845677 = (((s_1291845675[n_1291845688] & 31) << 6) | (s_1291845675[(n_1291845688 + 1)] & 63));
-    }
-    else {
-      result_1291845677 = 65533;
-    }
-    
-    }
-    else {
-    if (((s_1291845675[n_1291845688] >>> 4) == 14)) {
-    if ((n_1291845688 <= ((s_1291845675).length - 3))) {
-    result_1291845677 = ((((s_1291845675[n_1291845688] & 15) << 12) | ((s_1291845675[(n_1291845688 + 1)] & 63) << 6)) | (s_1291845675[(n_1291845688 + 2)] & 63));
-    }
-    else {
-      result_1291845677 = 65533;
-    }
-    
-    }
-    else {
-    if (((s_1291845675[n_1291845688] >>> 3) == 30)) {
-    if ((n_1291845688 <= ((s_1291845675).length - 4))) {
-    result_1291845677 = (((((s_1291845675[n_1291845688] & 7) << 18) | ((s_1291845675[(n_1291845688 + 1)] & 63) << 12)) | ((s_1291845675[(n_1291845688 + 2)] & 63) << 6)) | (s_1291845675[(n_1291845688 + 3)] & 63));
-    }
-    else {
-      result_1291845677 = 65533;
-    }
-    
-    }
-    else {
-    if (((s_1291845675[n_1291845688] >>> 2) == 62)) {
-    if ((n_1291845688 <= ((s_1291845675).length - 5))) {
-    result_1291845677 = ((((((s_1291845675[n_1291845688] & 3) << 24) | ((s_1291845675[(n_1291845688 + 1)] & 63) << 18)) | ((s_1291845675[(n_1291845688 + 2)] & 63) << 12)) | ((s_1291845675[(n_1291845688 + 3)] & 63) << 6)) | (s_1291845675[(n_1291845688 + 4)] & 63));
-    }
-    else {
-      result_1291845677 = 65533;
-    }
-    
-    }
-    else {
-    if (((s_1291845675[n_1291845688] >>> 1) == 126)) {
-    if ((n_1291845688 <= ((s_1291845675).length - 6))) {
-    result_1291845677 = (((((((s_1291845675[n_1291845688] & 1) << 30) | ((s_1291845675[(n_1291845688 + 1)] & 63) << 24)) | ((s_1291845675[(n_1291845688 + 2)] & 63) << 18)) | ((s_1291845675[(n_1291845688 + 3)] & 63) << 12)) | ((s_1291845675[(n_1291845688 + 4)] & 63) << 6)) | (s_1291845675[(n_1291845688 + 5)] & 63));
-    }
-    else {
-      result_1291845677 = 65533;
-    }
-    
-    }
-    else {
-      result_1291845677 = s_1291845675[n_1291845688];
-    }
-    }}}}}
-
-  return result_1291845677;
-
-}
-
-function clear_1442842179(sm_1442842180, sm_1442842180_Idx) {
-    sm_1442842180[sm_1442842180_Idx].si = 0;
-
-  
-}
-
-function add_1442842149(sm_1442842150, sm_1442842150_Idx, item_1442842151) {
-    var Temporary1;
-
-    if ((((sm_1442842150[sm_1442842150_Idx].si) | 0) == (sm_1442842150[sm_1442842150_Idx].sx).length)) {
-    if (sm_1442842150[sm_1442842150_Idx].sx.length < (Temporary1 = ((sm_1442842150[sm_1442842150_Idx].sx).length * 2), Temporary1)) { for (var i = sm_1442842150[sm_1442842150_Idx].sx.length ; i < Temporary1 ; ++i) sm_1442842150[sm_1442842150_Idx].sx.push({Field0: 0, Field1: 0, Field2: ({a: 0, b: 0})}); }
-               else { sm_1442842150[sm_1442842150_Idx].sx.length = Temporary1; };
-    }
-    
-    sm_1442842150[sm_1442842150_Idx].sx[sm_1442842150[sm_1442842150_Idx].si] = nimCopy(sm_1442842150[sm_1442842150_Idx].sx[sm_1442842150[sm_1442842150_Idx].si], item_1442842151, NTI1442841516);
-    sm_1442842150[sm_1442842150_Idx].ss[item_1442842151.Field0] = sm_1442842150[sm_1442842150_Idx].si;
-    sm_1442842150[sm_1442842150_Idx].si += 1;
-
-  
-}
-
-function len_1442842176(sm_1442842177) {
-  var result_1442842178 = 0;
-
-    result_1442842178 = ((sm_1442842177.si) | 0);
-
-  return result_1442842178;
-
-}
-
-function hasState_1442842145(sm_1442842146, n_1442842147) {
-    var Temporary1;
-
-  var result_1442842148 = false;
-
-    if (!(sm_1442842146.ss[n_1442842147] < sm_1442842146.si)) Temporary1 = false; else {      Temporary1 = (sm_1442842146.sx[sm_1442842146.ss[n_1442842147]].Field0 == n_1442842147);    }    result_1442842148 = Temporary1;
-
-  return result_1442842148;
-
-}
-
-function HEX3DHEX3D_754975639(a_754975640, b_754975641) {
-  var result_754975642 = false;
-
-  BeforeRet: do {
-    result_754975642 = (((a_754975640) | 0) == ((b_754975641) | 0));
-    break BeforeRet;
-  } while (false);
-
-  return result_754975642;
-
-}
-
-function contains_1493172266(ut_1493172267, utm_1493172268) {
-  var result_1493172269 = false;
-
-    result_1493172269 = !(((ut_1493172267 & utm_1493172268) == 0));
-
-  return result_1493172269;
-
-}
-
-function unicodeTypes_1493172227(cp_1493172228) {
-  var result_1493172229 = 0;
-
-    var blockOffset_1493172237 = (((typesOffsets_1509949450[Math.trunc(((cp_1493172228) | 0) / 64)]) | 0) * 64);
-    var idx_1493172238 = typesIndices_1509949451[(blockOffset_1493172237 + Math.trunc(((cp_1493172228) | 0) % 64))];
-    result_1493172229 = ((typesData_1509949452[idx_1493172238]) | 0);
-
-  return result_1493172229;
-
-}
-
-function isWord_1476395015(r_1476395016) {
-  var result_1476395017 = false;
-
-    result_1476395017 = contains_1493172266(unicodeTypes_1493172227(r_1476395016), 128);
-
-  return result_1476395017;
-
-}
-
-function isDecimal_1476395018(r_1476395019) {
-  var result_1476395020 = false;
-
-    result_1476395020 = contains_1493172266(unicodeTypes_1493172227(r_1476395019), 1);
-
-  return result_1476395020;
-
-}
-
-function isWhiteSpace_1476395094(r_1476395095) {
-  var result_1476395096 = false;
-
-    result_1476395096 = contains_1493172266(unicodeTypes_1493172227(r_1476395095), 64);
-
-  return result_1476395096;
-
-}
-
-function hash_1342178049(x_1342178051) {
-  var result_1342178052 = 0;
-
-    result_1342178052 = hashWangYi1_1124073650(x_1342178051);
-
-  return result_1342178052;
-
-}
-
-function isFilled_1224736806(hcode_1224736807) {
-  var result_1224736808 = false;
-
-    result_1224736808 = !((hcode_1224736807 == 0));
-
-  return result_1224736808;
-
-}
-
-function nextTry_1224736809(h_1224736810, maxHash_1224736811) {
-  var result_1224736812 = 0;
-
-    result_1224736812 = ((h_1224736810 + 1) & maxHash_1224736811);
-
-  return result_1224736812;
-
-}
-
-function rawGet_1342178042(t_1342178045, key_1342178046, hc_1342178047, hc_1342178047_Idx) {
-            var Temporary3;
-
-  var result_1342178048 = 0;
-
-  BeforeRet: do {
-    hc_1342178047[hc_1342178047_Idx] = hash_1342178049(key_1342178046);
-    if ((hc_1342178047[hc_1342178047_Idx] == 0)) {
-    hc_1342178047[hc_1342178047_Idx] = 314159265;
-    }
-    
-    if (((t_1342178045.data).length == 0)) {
-    result_1342178048 = -1;
-    break BeforeRet;
-    }
-    
-    var h_1342178081 = (hc_1342178047[hc_1342178047_Idx] & (t_1342178045.data).length - 1);
-    Label1: do {
-        Label2: while (true) {
-        if (!isFilled_1224736806(t_1342178045.data[h_1342178081].Field0)) break Label2;
-            if (!(t_1342178045.data[h_1342178081].Field0 == hc_1342178047[hc_1342178047_Idx])) Temporary3 = false; else {              Temporary3 = HEX3DHEX3D_754975639(t_1342178045.data[h_1342178081].Field1, key_1342178046);            }          if (Temporary3) {
-          result_1342178048 = h_1342178081;
-          break BeforeRet;
-          }
-          
-          h_1342178081 = nextTry_1224736809(h_1342178081, (t_1342178045.data).length - 1);
-        }
-    } while (false);
-    result_1342178048 = (-1 - h_1342178081);
-  } while (false);
-
-  return result_1342178048;
-
-}
-
-function contains_1476395158(s_1476395160, key_1476395161) {
-  var result_1476395162 = false;
-
-    var hc_1476395163 = [0];
-    var index_1476395177 = rawGet_1342178042(s_1476395160, key_1476395161, hc_1476395163, 0);
-    result_1476395162 = (0 <= index_1476395177);
-
-  return result_1476395162;
-
-}
-
-function HEX3CHEX3D_1291845666(x_1291845667, y_1291845668) {
-  var result_1291845669 = false;
-
-    result_1291845669 = (((x_1291845667) | 0) <= ((y_1291845668) | 0));
-
-  return result_1291845669;
-
-}
-
-function contains_1476395087(s_1476395091, value_1476395092) {
-  var result_1476395093 = false;
-
-    result_1476395093 = (HEX3CHEX3D_1291845666(s_1476395091.a, value_1476395092) && HEX3CHEX3D_1291845666(value_1476395092, s_1476395091.b));
-
-  return result_1476395093;
-
-}
-
-function contains_1476395065(sr_1476395067, r_1476395068) {
-  var result_1476395069 = false;
-
-    result_1476395069 = false;
-    Label1: do {
-      var sl_1476395073 = ({a: 0, b: 0});
-      var i_2147483738 = 0;
-      var L_2147483739 = (sr_1476395067).length;
-      Label2: do {
-          Label3: while (true) {
-          if (!(i_2147483738 < L_2147483739)) break Label3;
-            sl_1476395073 = sr_1476395067[i_2147483738];
-            result_1476395069 = contains_1476395087(sl_1476395073, r_1476395068);
-            if (result_1476395069) {
-            break Label1;
-            }
-            
-            i_2147483738 += 1;
-          }
-      } while (false);
-    } while (false);
-
-  return result_1476395069;
-
-}
-
-function binarySearch_754975733(c_754975734, tab_754975735, len_754975736, stride_754975737) {
-      var Temporary3;
-
-  var result_754975738 = 0;
-
-  BeforeRet: do {
-    var n_754975739 = len_754975736;
-    var t_754975740 = 0;
-    Label1: do {
-        Label2: while (true) {
-        if (!(1 < n_754975739)) break Label2;
-          var m_754975741 = Math.trunc(n_754975739 / 2);
-          var p_754975742 = (t_754975740 + (m_754975741 * stride_754975737));
-          if ((tab_754975735[p_754975742] <= ((c_754975734) | 0))) {
-          t_754975740 = p_754975742;
-          n_754975739 = (n_754975739 - m_754975741);
-          }
-          else {
-            n_754975739 = m_754975741;
-          }
-          
-        }
-    } while (false);
-      if (!!((n_754975739 == 0))) Temporary3 = false; else {        Temporary3 = (tab_754975735[t_754975740] <= ((c_754975734) | 0));      }    if (Temporary3) {
-    result_754975738 = t_754975740;
-    break BeforeRet;
-    }
-    
-    result_754975738 = -1;
-    break BeforeRet;
-  } while (false);
-
-  return result_754975738;
-
-}
-
-function nuctoLower(c_754975744) {
-      var Temporary1;
-      var Temporary2;
-      var Temporary3;
-
-  var result_754975745 = 0;
-
-  BeforeRet: do {
-    var c_754975746 = c_754975744;
-    var p_754975755 = binarySearch_754975733(c_754975746, toLowerRanges_754975643, 45, 3);
-      if (!(0 <= p_754975755)) Temporary2 = false; else {        Temporary2 = (toLowerRanges_754975643[p_754975755] <= ((c_754975746) | 0));      }      if (!Temporary2) Temporary1 = false; else {        Temporary1 = (((c_754975746) | 0) <= toLowerRanges_754975643[(p_754975755 + 1)]);      }    if (Temporary1) {
-    result_754975745 = ((((((c_754975746) | 0) + toLowerRanges_754975643[(p_754975755 + 2)]) - 500)) | 0);
-    break BeforeRet;
-    }
-    
-    p_754975755 = binarySearch_754975733(c_754975746, toLowerSinglets_754975644, 610, 2);
-      if (!(0 <= p_754975755)) Temporary3 = false; else {        Temporary3 = (((c_754975746) | 0) == toLowerSinglets_754975644[p_754975755]);      }    if (Temporary3) {
-    result_754975745 = ((((((c_754975746) | 0) + toLowerSinglets_754975644[(p_754975755 + 1)]) - 500)) | 0);
-    break BeforeRet;
-    }
-    
-    result_754975745 = c_754975746;
-    break BeforeRet;
-  } while (false);
-
-  return result_754975745;
-
-}
-
-function nuctoUpper(c_754975792) {
-      var Temporary1;
-      var Temporary2;
-      var Temporary3;
-
-  var result_754975793 = 0;
-
-  BeforeRet: do {
-    var c_754975794 = c_754975792;
-    var p_754975803 = binarySearch_754975733(c_754975794, toUpperRanges_754975645, 46, 3);
-      if (!(0 <= p_754975803)) Temporary2 = false; else {        Temporary2 = (toUpperRanges_754975645[p_754975803] <= ((c_754975794) | 0));      }      if (!Temporary2) Temporary1 = false; else {        Temporary1 = (((c_754975794) | 0) <= toUpperRanges_754975645[(p_754975803 + 1)]);      }    if (Temporary1) {
-    result_754975793 = ((((((c_754975794) | 0) + toUpperRanges_754975645[(p_754975803 + 2)]) - 500)) | 0);
-    break BeforeRet;
-    }
-    
-    p_754975803 = binarySearch_754975733(c_754975794, toUpperSinglets_754975646, 624, 2);
-      if (!(0 <= p_754975803)) Temporary3 = false; else {        Temporary3 = (((c_754975794) | 0) == toUpperSinglets_754975646[p_754975803]);      }    if (Temporary3) {
-    result_754975793 = ((((((c_754975794) | 0) + toUpperSinglets_754975646[(p_754975803 + 1)]) - 500)) | 0);
-    break BeforeRet;
-    }
-    
-    result_754975793 = c_754975794;
-    break BeforeRet;
-  } while (false);
-
-  return result_754975793;
-
-}
-
-function swapCase_1476395134(r_1476395135) {
-  var result_1476395136 = 0;
-
-  BeforeRet: do {
-    result_1476395136 = nuctoLower(r_1476395135);
-    if (!(HEX3DHEX3D_754975639(result_1476395136, r_1476395135))) {
-    break BeforeRet;
-    }
-    
-    result_1476395136 = nuctoUpper(r_1476395135);
-  } while (false);
-
-  return result_1476395136;
-
-}
-
-function isWordAscii_1476395021(r_1476395022) {
-    var Temporary1;
-
-  var result_1476395023 = false;
-
-    switch (((r_1476395022) | 0)) {
-    case 65:
-    case 66:
-    case 67:
-    case 68:
-    case 69:
-    case 70:
-    case 71:
-    case 72:
-    case 73:
-    case 74:
-    case 75:
-    case 76:
-    case 77:
-    case 78:
-    case 79:
-    case 80:
-    case 81:
-    case 82:
-    case 83:
-    case 84:
-    case 85:
-    case 86:
-    case 87:
-    case 88:
-    case 89:
-    case 90:
-    case 97:
-    case 98:
-    case 99:
-    case 100:
-    case 101:
-    case 102:
-    case 103:
-    case 104:
-    case 105:
-    case 106:
-    case 107:
-    case 108:
-    case 109:
-    case 110:
-    case 111:
-    case 112:
-    case 113:
-    case 114:
-    case 115:
-    case 116:
-    case 117:
-    case 118:
-    case 119:
-    case 120:
-    case 121:
-    case 122:
-    case 48:
-    case 49:
-    case 50:
-    case 51:
-    case 52:
-    case 53:
-    case 54:
-    case 55:
-    case 56:
-    case 57:
-    case 95:
-      Temporary1 = true;
-      break;
-    default: 
-      Temporary1 = false;
-      break;
-    }
-    result_1476395023 = Temporary1;
-
-  return result_1476395023;
-
-}
-
-function isDigitAscii_1476395118(r_1476395119) {
-    var Temporary1;
-
-  var result_1476395120 = false;
-
-    switch (((r_1476395119) | 0)) {
-    case 48:
-    case 49:
-    case 50:
-    case 51:
-    case 52:
-    case 53:
-    case 54:
-    case 55:
-    case 56:
-    case 57:
-      Temporary1 = true;
-      break;
-    default: 
-      Temporary1 = false;
-      break;
-    }
-    result_1476395120 = Temporary1;
-
-  return result_1476395120;
-
-}
-
-function isWhiteSpaceAscii_1476395097(r_1476395098) {
-    var Temporary1;
-
-  var result_1476395099 = false;
-
-    switch (((r_1476395098) | 0)) {
-    case 32:
-    case 9:
-    case 10:
-    case 13:
-    case 12:
-    case 11:
-      Temporary1 = true;
-      break;
-    default: 
-      Temporary1 = false;
-      break;
-    }
-    result_1476395099 = Temporary1;
-
-  return result_1476395099;
-
-}
-
-function contains_1258291204(a_1258291205, b_1258291206) {
-  var result_1258291207 = false;
-
-    result_1258291207 = !(((((b_1258291206) | 0) & ((a_1258291205) | 0)) == 0));
-
-  return result_1258291207;
-
-}
-
-function unicodeCategory_1258291336(props_1258291337) {
-  var result_1258291338 = 0;
-
-    result_1258291338 = props_1258291337[0];
-
-  return result_1258291338;
-
-}
-
-function properties_1258291288(cp_1258291289) {
-  var result_1258291290 = new Int32Array(4);
-
-    var blockOffset_1258291298 = (((propsOffsets_1275068459[Math.trunc(((cp_1258291289) | 0) / 128)]) | 0) * 128);
-    var idx_1258291299 = propsIndices_1275068460[(blockOffset_1258291298 + Math.trunc(((cp_1258291289) | 0) % 128))];
-    result_1258291290 = nimCopy(result_1258291290, propsData_1275068461[idx_1258291299], NTI1258291251);
-
-  return result_1258291290;
-
-}
-
-function unicodeCategory_1258291339(cp_1258291340) {
-  var result_1258291341 = 0;
-
-    result_1258291341 = unicodeCategory_1258291336(properties_1258291288(cp_1258291340));
-
-  return result_1258291341;
-
-}
-
-function isAnyAscii_1476395127(r_1476395128) {
-    var Temporary1;
-
-  var result_1476395129 = false;
-
-    if (!(((r_1476395128) | 0) <= 127)) Temporary1 = false; else {      Temporary1 = !(HEX3DHEX3D_754975639(r_1476395128, 10));    }    result_1476395129 = Temporary1;
-
-  return result_1476395129;
-
-}
-
-function match_1476395137(n_1476395138, r_1476395139) {
-    var Temporary1;
-
-  var result_1476395140 = false;
-
-  BeforeRet: do {
-    if ((((r_1476395139) | 0) < 0)) {
-    result_1476395140 = (n_1476395138.kind == 46);
-    break BeforeRet;
-    }
-    
-    switch (n_1476395138.kind) {
-    case 46:
-      Temporary1 = HEX3DHEX3D_754975639(r_1476395139, -1);
-      break;
-    case 19:
-      Temporary1 = isWord_1476395015(r_1476395139);
-      break;
-    case 23:
-      Temporary1 = !(isWord_1476395015(r_1476395139));
-      break;
-    case 20:
-      Temporary1 = isDecimal_1476395018(r_1476395139);
-      break;
-    case 24:
-      Temporary1 = !(isDecimal_1476395018(r_1476395139));
-      break;
-    case 21:
-      Temporary1 = isWhiteSpace_1476395094(r_1476395139);
-      break;
-    case 25:
-      Temporary1 = !(isWhiteSpace_1476395094(r_1476395139));
-      break;
-    case 39:
-    case 40:
-      var matches_1476395178 = (contains_1476395158(n_1476395138.cps, r_1476395139) || contains_1476395065(n_1476395138.ranges, r_1476395139));
-      if (!(matches_1476395178)) {
-      Label2: do {
-        var nn_1476395182 = ({kind: 0, cp: 0, next: [], isGreedy: false, uid: 0, idx: 0, isCapturing: false, name: [], flags: [], min: 0, max: 0, cps: ({data: [], counter: 0}), ranges: [], shorthands: [], cc: 0, subExp: ({nfa: ({s: [], t: ({allZ: [], z: []})}), rpn: ({s: []}), reverseCapts: false})});
-        var i_1073742053 = 0;
-        var L_1073742054 = (n_1476395138.shorthands).length;
-        Label3: do {
-            Label4: while (true) {
-            if (!(i_1073742053 < L_1073742054)) break Label4;
-              nn_1476395182 = n_1476395138.shorthands[i_1073742053];
-              matches_1476395178 = match_1476395137(nn_1476395182, r_1476395139);
-              if (matches_1476395178) {
-              break Label2;
-              }
-              
-              i_1073742053 += 1;
-            }
-        } while (false);
-      } while (false);
-      }
-      
-      Temporary1 = ((matches_1476395178 && (n_1476395138.kind == 39)) || (!(matches_1476395178) && (n_1476395138.kind == 40)));
-      break;
-    case 27:
-      Temporary1 = !(HEX3DHEX3D_754975639(r_1476395139, 10));
-      break;
-    case 28:
-      Temporary1 = true;
-      break;
-    case 1:
-      Temporary1 = (HEX3DHEX3D_754975639(r_1476395139, n_1476395138.cp) || HEX3DHEX3D_754975639(r_1476395139, swapCase_1476395134(n_1476395138.cp)));
-      break;
-    case 31:
-      Temporary1 = isWordAscii_1476395021(r_1476395139);
-      break;
-    case 32:
-      Temporary1 = isDigitAscii_1476395118(r_1476395139);
-      break;
-    case 33:
-      Temporary1 = isWhiteSpaceAscii_1476395097(r_1476395139);
-      break;
-    case 22:
-      Temporary1 = contains_1258291204(n_1476395138.cc, unicodeCategory_1258291339(r_1476395139));
-      break;
-    case 34:
-      Temporary1 = !(isWordAscii_1476395021(r_1476395139));
-      break;
-    case 35:
-      Temporary1 = !(isDigitAscii_1476395118(r_1476395139));
-      break;
-    case 36:
-      Temporary1 = !(isWhiteSpaceAscii_1476395097(r_1476395139));
-      break;
-    case 26:
-      Temporary1 = !(contains_1258291204(n_1476395138.cc, unicodeCategory_1258291339(r_1476395139)));
-      break;
-    case 37:
-      Temporary1 = isAnyAscii_1476395127(r_1476395139);
-      break;
-    case 38:
-      Temporary1 = (isAnyAscii_1476395127(r_1476395139) || HEX3DHEX3D_754975639(r_1476395139, 10));
-      break;
-    default: 
-      Temporary1 = HEX3DHEX3D_754975639(n_1476395138.cp, r_1476395139);
-      break;
-    }
-    result_1476395140 = Temporary1;
-  } while (false);
-
-  return result_1476395140;
-
-}
-
-function isWordBoundary_1476395049(r_1476395050, nxt_1476395051) {
-    var Temporary1;
-    var Temporary2;
-
-  var result_1476395052 = false;
-
-    if (!(-1 < ((r_1476395050) | 0))) Temporary1 = false; else {      Temporary1 = isWord_1476395015(r_1476395050);    }    if (!(-1 < ((nxt_1476395051) | 0))) Temporary2 = false; else {      Temporary2 = isWord_1476395015(nxt_1476395051);    }    result_1476395052 = (Temporary1 != Temporary2);
-
-  return result_1476395052;
-
-}
-
-function isWordBoundaryAscii_1476395053(r_1476395054, nxt_1476395055) {
-    var Temporary1;
-    var Temporary2;
-
-  var result_1476395056 = false;
-
-    if (!(-1 < ((r_1476395054) | 0))) Temporary1 = false; else {      Temporary1 = isWordAscii_1476395021(r_1476395054);    }    if (!(-1 < ((nxt_1476395055) | 0))) Temporary2 = false; else {      Temporary2 = isWordAscii_1476395021(nxt_1476395055);    }    result_1476395056 = (Temporary1 != Temporary2);
-
-  return result_1476395056;
-
-}
-
-function match_1476395057(n_1476395058, r_1476395059, nxt_1476395060) {
-    var Temporary1;
-
-  var result_1476395061 = false;
-
-    switch (n_1476395058.kind) {
-    case 15:
-    case 11:
-      Temporary1 = HEX3DHEX3D_754975639(r_1476395059, -1);
-      break;
-    case 16:
-    case 12:
-      Temporary1 = HEX3DHEX3D_754975639(nxt_1476395060, -1);
-      break;
-    case 13:
-      Temporary1 = (HEX3DHEX3D_754975639(r_1476395059, -1) || HEX3DHEX3D_754975639(r_1476395059, 10));
-      break;
-    case 14:
-      Temporary1 = (HEX3DHEX3D_754975639(nxt_1476395060, -1) || HEX3DHEX3D_754975639(nxt_1476395060, 10));
-      break;
-    case 17:
-      Temporary1 = isWordBoundary_1476395049(r_1476395059, nxt_1476395060);
-      break;
-    case 18:
-      Temporary1 = !(isWordBoundary_1476395049(r_1476395059, nxt_1476395060));
-      break;
-    case 29:
-      Temporary1 = isWordBoundaryAscii_1476395053(r_1476395059, nxt_1476395060);
-      break;
-    case 30:
-      Temporary1 = !(isWordBoundaryAscii_1476395053(r_1476395059, nxt_1476395060));
-      break;
-    default: 
-      Temporary1 = false;
-      break;
-    }
-    result_1476395061 = Temporary1;
-
-  return result_1476395061;
-
-}
-
-function grow_1442842238(sm_1442842239) {
-    var Temporary1;
-
-    if (!((sm_1442842239.i <= (sm_1442842239.s).length))) {
-    failedAssertImpl_218103864(makeNimstrLit("nfatype.nim(357, 12) `sm.i <= sm.s.len` "));
-    }
-    
-    if ((sm_1442842239.i == (sm_1442842239.s).length)) {
-    if (sm_1442842239.s.length < (Temporary1 = (nimMax(1, (sm_1442842239.s).length) * 2), Temporary1)) { for (var i = sm_1442842239.s.length ; i < Temporary1 ; ++i) sm_1442842239.s.push(({a: null, b: null})); }
-               else { sm_1442842239.s.length = Temporary1; };
-    }
-    
-    sm_1442842239.i += 1;
-
-  
-}
-
-function setLen_1442842194(sm_1442842195, sm_1442842195_Idx, size_1442842196) {
-    if (sm_1442842195[sm_1442842195_Idx].ss.length < size_1442842196) { for (var i = sm_1442842195[sm_1442842195_Idx].ss.length ; i < size_1442842196 ; ++i) sm_1442842195[sm_1442842195_Idx].ss.push(0); }
-               else { sm_1442842195[sm_1442842195_Idx].ss.length = size_1442842196; };
-
-  
-}
-
-function setLen_1442842207(item_1442842208, size_1442842209) {
-    if ((item_1442842208.a == null)) {
-    if (!((item_1442842208.b == null))) {
-    failedAssertImpl_218103864(makeNimstrLit("nfatype.nim(339, 14) `item.b == nil` "));
-    }
-    
-    item_1442842208.a = newSubmatches_1442842071(size_1442842209);
-    item_1442842208.b = newSubmatches_1442842071(size_1442842209);
-    }
-    else {
-      if (!(!((item_1442842208.b == null)))) {
-      failedAssertImpl_218103864(makeNimstrLit("nfatype.nim(343, 14) `item.b != nil` "));
-      }
-      
-      setLen_1442842194(item_1442842208, "a", size_1442842209);
-      setLen_1442842194(item_1442842208, "b", size_1442842209);
-    }
-    
-
-  
-}
-
-function removeLast_1442842263(sm_1442842264) {
-    if (!((0 < sm_1442842264.i))) {
-    failedAssertImpl_218103864(makeNimstrLit("nfatype.nim(363, 12) `sm.i > 0` "));
-    }
-    
-    sm_1442842264.i -= 1;
-
-  
-}
-
-function HEX5BHEX5D_1442842138(sm_1442842139, i_1442842140) {
-  var result_1442842141 = {Field0: 0, Field1: 0, Field2: ({a: 0, b: 0})};
-
-    result_1442842141 = nimCopy(result_1442842141, sm_1442842139.sx[i_1442842140], NTI1442841516);
-
-  return result_1442842141;
-
-}
-
-function reverse_1442841335(capts_1442841336, capts_1442841336_Idx, a_1442841337, b_1442841338) {
-  var result_1442841339 = 0;
-
-  BeforeRet: do {
-    if (!((b_1442841338 <= a_1442841337))) {
-    failedAssertImpl_218103864(makeNimstrLit("nfatype.nim(209, 12) `a >= b` "));
-    }
-    
-    var capt_1442841345 = a_1442841337;
-    var parent_1442841346 = b_1442841338;
-    Label1: do {
-        Label2: while (true) {
-        if (!!((capt_1442841345 == b_1442841338))) break Label2;
-          var p_1442841347 = capts_1442841336[capts_1442841336_Idx][capt_1442841345].parent;
-          capts_1442841336[capts_1442841336_Idx][capt_1442841345].parent = parent_1442841346;
-          parent_1442841346 = capt_1442841345;
-          capt_1442841345 = p_1442841347;
-        }
-    } while (false);
-    result_1442841339 = parent_1442841346;
-    break BeforeRet;
-  } while (false);
-
-  return result_1442841339;
-
-}
-
-function matchImpl_1627389991(smA_1627389992, smA_1627389992_Idx, smB_1627389993, smB_1627389993_Idx, capts_1627389994, capts_1627389994_Idx, captIdx_1627389995, captIdx_1627389995_Idx, text_1627389996, nfa_1627389997, look_1627389998, start_1627389999, flags_1627390000) {
-                                        var Temporary14;
-                                        var Temporary15;
-            var Temporary17;
-                                  var Temporary29;
-                                  var Temporary30;
-
-  var result_1627390001 = false;
-
-  BeforeRet: do {
-    var c_1627390002 = -1;
-    var cPrev_1627390003 = -1;
-    var i_1627390004 = start_1627389999;
-    var iNext_1627390005 = start_1627389999;
-    var captx_1627390006 = [-1];
-    var matched_1627390007 = false;
-    var anchored_1627390013 = (flags_1627390000[4] != undefined);
-    if (contains_1342177410(HEX2EHEX2E_754975569(0, ((text_1627389996).length - 1)), (start_1627389999 - 1))) {
-    cPrev_1627390003 = bwRuneAt_1291845674(text_1627389996, (start_1627389999 - 1));
-    }
-    
-    clear_1442842179(smA_1627389992, smA_1627389992_Idx);
-    add_1442842149(smA_1627389992, smA_1627389992_Idx, {Field0: 0, Field1: captIdx_1627389995[captIdx_1627389995_Idx], Field2: HEX2EHEX2E_754975569(i_1627390004, (i_1627390004 - 1))});
-    Label1: do {
-        Label2: while (true) {
-        if (!(i_1627390004 < (text_1627389996).length)) break Label2;
-          if ((text_1627389996[iNext_1627390005] <= 127)) {
-          c_1627390002 = text_1627389996[iNext_1627390005];
-          iNext_1627390005 += 1;
-          }
-          else {
-          if (((text_1627389996[iNext_1627390005] >>> 5) == 6)) {
-          if ((iNext_1627390005 <= ((text_1627389996).length - 2))) {
-          c_1627390002 = (((text_1627389996[iNext_1627390005] & 31) << 6) | (text_1627389996[(iNext_1627390005 + 1)] & 63));
-          iNext_1627390005 += 2;
-          }
-          else {
-            c_1627390002 = 65533;
-            iNext_1627390005 += 1;
-          }
-          
-          }
-          else {
-          if (((text_1627389996[iNext_1627390005] >>> 4) == 14)) {
-          if ((iNext_1627390005 <= ((text_1627389996).length - 3))) {
-          c_1627390002 = ((((text_1627389996[iNext_1627390005] & 15) << 12) | ((text_1627389996[(iNext_1627390005 + 1)] & 63) << 6)) | (text_1627389996[(iNext_1627390005 + 2)] & 63));
-          iNext_1627390005 += 3;
-          }
-          else {
-            c_1627390002 = 65533;
-            iNext_1627390005 += 1;
-          }
-          
-          }
-          else {
-          if (((text_1627389996[iNext_1627390005] >>> 3) == 30)) {
-          if ((iNext_1627390005 <= ((text_1627389996).length - 4))) {
-          c_1627390002 = (((((text_1627389996[iNext_1627390005] & 7) << 18) | ((text_1627389996[(iNext_1627390005 + 1)] & 63) << 12)) | ((text_1627389996[(iNext_1627390005 + 2)] & 63) << 6)) | (text_1627389996[(iNext_1627390005 + 3)] & 63));
-          iNext_1627390005 += 4;
-          }
-          else {
-            c_1627390002 = 65533;
-            iNext_1627390005 += 1;
-          }
-          
-          }
-          else {
-          if (((text_1627389996[iNext_1627390005] >>> 2) == 62)) {
-          if ((iNext_1627390005 <= ((text_1627389996).length - 5))) {
-          c_1627390002 = ((((((text_1627389996[iNext_1627390005] & 3) << 24) | ((text_1627389996[(iNext_1627390005 + 1)] & 63) << 18)) | ((text_1627389996[(iNext_1627390005 + 2)] & 63) << 12)) | ((text_1627389996[(iNext_1627390005 + 3)] & 63) << 6)) | (text_1627389996[(iNext_1627390005 + 4)] & 63));
-          iNext_1627390005 += 5;
-          }
-          else {
-            c_1627390002 = 65533;
-            iNext_1627390005 += 1;
-          }
-          
-          }
-          else {
-          if (((text_1627389996[iNext_1627390005] >>> 1) == 126)) {
-          if ((iNext_1627390005 <= ((text_1627389996).length - 6))) {
-          c_1627390002 = (((((((text_1627389996[iNext_1627390005] & 1) << 30) | ((text_1627389996[(iNext_1627390005 + 1)] & 63) << 24)) | ((text_1627389996[(iNext_1627390005 + 2)] & 63) << 18)) | ((text_1627389996[(iNext_1627390005 + 3)] & 63) << 12)) | ((text_1627389996[(iNext_1627390005 + 4)] & 63) << 6)) | (text_1627389996[(iNext_1627390005 + 5)] & 63));
-          iNext_1627390005 += 6;
-          }
-          else {
-            c_1627390002 = 65533;
-            iNext_1627390005 += 1;
-          }
-          
-          }
-          else {
-            c_1627390002 = text_1627389996[iNext_1627390005];
-            iNext_1627390005 += 1;
-          }
-          }}}}}
-          clear_1442842179(smB_1627389993, smB_1627389993_Idx);
-          Label3: do {
-            var n_1627390281 = 0;
-            var capt_1627390282 = 0;
-            var bounds_1627390283 = ({a: 0, b: 0});
-            Label4: do {
-              var i_469762186 = 0;
-              var colontmp__469762187 = 0;
-              colontmp__469762187 = (len_1442842176(smA_1627389992[smA_1627389992_Idx]) - 1);
-              var res_469762188 = 0;
-              Label5: do {
-                  Label6: while (true) {
-                  if (!(res_469762188 <= colontmp__469762187)) break Label6;
-                    i_469762186 = res_469762188;
-                    var colontmp__469762191 = nimCopy(null, smA_1627389992[smA_1627389992_Idx].sx[i_469762186], NTI1442841516);
-                    n_1627390281 = colontmp__469762191["Field0"];
-                    capt_1627390282 = colontmp__469762191["Field1"];
-                    bounds_1627390283 = nimCopy(bounds_1627390283, colontmp__469762191["Field2"], NTI754976722);
-                    if ((anchored_1627390013 && (nfa_1627389997.s[n_1627390281].kind == 46))) {
-                    if (!(hasState_1442842145(smB_1627389993[smB_1627389993_Idx], n_1627390281))) {
-                    add_1442842149(smB_1627389993, smB_1627389993_Idx, {Field0: n_1627390281, Field1: capt_1627390282, Field2: nimCopy(null, bounds_1627390283, NTI754976722)});
-                    }
-                    
-                    break Label3;
-                    }
-                    
-                    Label7: do {
-                      var nti_1627390293 = 0;
-                      var nt_1627390294 = 0;
-                      var colontmp__469762181 = [];
-                      colontmp__469762181 = nfa_1627389997.s[n_1627390281].next;
-                      var i_469762182 = 0;
-                      var L_469762183 = (colontmp__469762181).length;
-                      Label8: do {
-                          Label9: while (true) {
-                          if (!(i_469762182 < L_469762183)) break Label9;
-                            nti_1627390293 = i_469762182;
-                            nt_1627390294 = colontmp__469762181[i_469762182];
-                            Label10: do {
-                              if (hasState_1442842145(smB_1627389993[smB_1627389993_Idx], nt_1627390294)) {
-                              break Label10;
-                              }
-                              
-                              if (!(match_1476395137(nfa_1627389997.s[nt_1627390294], c_1627390002))) {
-                              if (!((anchored_1627390013 && (nfa_1627389997.s[nt_1627390294].kind == 46)))) {
-                              break Label10;
-                              }
-                              
-                              }
-                              
-                              if ((nfa_1627389997.t.allZ[n_1627390281][nti_1627390293] == -1)) {
-                              add_1442842149(smB_1627389993, smB_1627389993_Idx, {Field0: nt_1627390294, Field1: capt_1627390282, Field2: HEX2EHEX2E_754975569(bounds_1627390283.a, (i_1627390004 - 1))});
-                              break Label10;
-                              }
-                              
-                              matched_1627390007 = true;
-                              captx_1627390006[0] = capt_1627390282;
-                              Label11: do {
-                                var z_1627390307 = ({kind: 0, cp: 0, next: [], isGreedy: false, uid: 0, idx: 0, isCapturing: false, name: [], flags: [], min: 0, max: 0, cps: ({data: [], counter: 0}), ranges: [], shorthands: [], cc: 0, subExp: ({nfa: ({s: [], t: ({allZ: [], z: []})}), rpn: ({s: []}), reverseCapts: false})});
-                                var colontmp__469762177 = [];
-                                colontmp__469762177 = nfa_1627389997.t.z[nfa_1627389997.t.allZ[n_1627390281][nti_1627390293]];
-                                var i_469762178 = 0;
-                                var L_469762179 = (colontmp__469762177).length;
-                                Label12: do {
-                                    Label13: while (true) {
-                                    if (!(i_469762178 < L_469762179)) break Label13;
-                                      z_1627390307 = colontmp__469762177[i_469762178];
-                                      if (!(matched_1627390007)) {
-                                      break Label11;
-                                      }
-                                      
-                                      switch (z_1627390307.kind) {
-                                      case 3:
-                                      case 4:
-                                        capts_1627389994[capts_1627389994_Idx].push({parent: captx_1627390006[0], bound: i_1627390004, idx: z_1627390307.idx});;
-                                        captx_1627390006[0] = ((((capts_1627389994[capts_1627389994_Idx]).length - 1)) | 0);
-                                        break;
-                                      case 11:
-                                      case 12:
-                                      case 13:
-                                      case 14:
-                                      case 15:
-                                      case 16:
-                                      case 17:
-                                      case 18:
-                                      case 29:
-                                      case 30:
-                                        matched_1627390007 = match_1476395057(z_1627390307, cPrev_1627390003, c_1627390002);
-                                        break;
-                                      case 41:
-                                      case 42:
-                                      case 43:
-                                      case 44:
-                                        if (z_1627390307.subExp.reverseCapts) {
-                                        Temporary14 = ConstSet14;
-                                        }
-                                        else {
-                                        Temporary14 = ConstSet15;
-                                        }
-                                        
-                                        var flags2_1627390323 = nimCopy(null, Temporary14, NTI1627390532);
-                                        grow_1442842238(look_1627389998.smL);
-                                        setLen_1442842207(look_1627389998.smL.s[(look_1627389998.smL.i - 1)], (z_1627390307.subExp.nfa.s).length);
-                                        switch (z_1627390307.kind) {
-                                        case 41:
-                                          Temporary15 = look_1627389998.ahead(look_1627389998.smL.s[(look_1627389998.smL.i - 1)], "a", look_1627389998.smL.s[(look_1627389998.smL.i - 1)], "b", capts_1627389994, capts_1627389994_Idx, captx_1627390006, 0, text_1627389996, z_1627390307.subExp.nfa, look_1627389998, i_1627390004, flags2_1627390323);
-                                          break;
-                                        case 43:
-                                          Temporary15 = !(look_1627389998.ahead(look_1627389998.smL.s[(look_1627389998.smL.i - 1)], "a", look_1627389998.smL.s[(look_1627389998.smL.i - 1)], "b", capts_1627389994, capts_1627389994_Idx, captx_1627390006, 0, text_1627389996, z_1627390307.subExp.nfa, look_1627389998, i_1627390004, flags2_1627390323));
-                                          break;
-                                        case 42:
-                                          Temporary15 = !((look_1627389998.behind(look_1627389998.smL.s[(look_1627389998.smL.i - 1)], "a", look_1627389998.smL.s[(look_1627389998.smL.i - 1)], "b", capts_1627389994, capts_1627389994_Idx, captx_1627390006, 0, text_1627389996, z_1627390307.subExp.nfa, look_1627389998, i_1627390004, 0, flags2_1627390323) == -1));
-                                          break;
-                                        case 44:
-                                          Temporary15 = (look_1627389998.behind(look_1627389998.smL.s[(look_1627389998.smL.i - 1)], "a", look_1627389998.smL.s[(look_1627389998.smL.i - 1)], "b", capts_1627389994, capts_1627389994_Idx, captx_1627390006, 0, text_1627389996, z_1627390307.subExp.nfa, look_1627389998, i_1627390004, 0, flags2_1627390323) == -1);
-                                          break;
-                                        default: 
-                                          if (true) {
-                                          failedAssertImpl_218103864(makeNimstrLit("nfamatch.nim(66, 14) `false` "));
-                                          }
-                                          
-                                          Temporary15 = false;
-                                          break;
-                                        }
-                                        matched_1627390007 = Temporary15;
-                                        removeLast_1442842263(look_1627389998.smL);
-                                        break;
-                                      default: 
-                                        if (true) {
-                                        failedAssertImpl_218103864(makeNimstrLit("nfamatch.nim(108, 20) `false` "));
-                                        }
-                                        
-                                        break;
-                                      }
-                                      i_469762178 += 1;
-                                    }
-                                } while (false);
-                              } while (false);
-                              if (matched_1627390007) {
-                              add_1442842149(smB_1627389993, smB_1627389993_Idx, {Field0: nt_1627390294, Field1: captx_1627390006[0], Field2: HEX2EHEX2E_754975569(bounds_1627390283.a, (i_1627390004 - 1))});
-                              }
-                              
-                            } while (false);
-                            i_469762182 += 1;
-                          }
-                      } while (false);
-                    } while (false);
-                    res_469762188 += 1;
-                  }
-              } while (false);
-            } while (false);
-          } while (false);
-          var Temporary16 = smA_1627389992[smA_1627389992_Idx]; smA_1627389992[smA_1627389992_Idx] = smB_1627389993[smB_1627389993_Idx]; smB_1627389993[smB_1627389993_Idx] = Temporary16;          if ((len_1442842176(smA_1627389992[smA_1627389992_Idx]) == 0)) {
-          result_1627390001 = false;
-          break BeforeRet;
-          }
-          
-            if (!anchored_1627390013) Temporary17 = false; else {              Temporary17 = (nfa_1627389997.s[HEX5BHEX5D_1442842138(smA_1627389992[smA_1627389992_Idx], 0).Field0].kind == 46);            }          if (Temporary17) {
-          break Label1;
-          }
-          
-          i_1627390004 = iNext_1627390005;
-          cPrev_1627390003 = c_1627390002;
-        }
-    } while (false);
-    c_1627390002 = -1;
-    clear_1442842179(smB_1627389993, smB_1627389993_Idx);
-    Label18: do {
-      var n_1627390351 = 0;
-      var capt_1627390352 = 0;
-      var bounds_1627390353 = ({a: 0, b: 0});
-      Label19: do {
-        var i_469762205 = 0;
-        var colontmp__469762206 = 0;
-        colontmp__469762206 = (len_1442842176(smA_1627389992[smA_1627389992_Idx]) - 1);
-        var res_469762207 = 0;
-        Label20: do {
-            Label21: while (true) {
-            if (!(res_469762207 <= colontmp__469762206)) break Label21;
-              i_469762205 = res_469762207;
-              var colontmp__469762210 = nimCopy(null, smA_1627389992[smA_1627389992_Idx].sx[i_469762205], NTI1442841516);
-              n_1627390351 = colontmp__469762210["Field0"];
-              capt_1627390352 = colontmp__469762210["Field1"];
-              bounds_1627390353 = nimCopy(bounds_1627390353, colontmp__469762210["Field2"], NTI754976722);
-              if ((anchored_1627390013 && (nfa_1627389997.s[n_1627390351].kind == 46))) {
-              if (!(hasState_1442842145(smB_1627389993[smB_1627389993_Idx], n_1627390351))) {
-              add_1442842149(smB_1627389993, smB_1627389993_Idx, {Field0: n_1627390351, Field1: capt_1627390352, Field2: nimCopy(null, bounds_1627390353, NTI754976722)});
-              }
-              
-              break Label18;
-              }
-              
-              Label22: do {
-                var nti_1627390363 = 0;
-                var nt_1627390364 = 0;
-                var colontmp__469762200 = [];
-                colontmp__469762200 = nfa_1627389997.s[n_1627390351].next;
-                var i_469762201 = 0;
-                var L_469762202 = (colontmp__469762200).length;
-                Label23: do {
-                    Label24: while (true) {
-                    if (!(i_469762201 < L_469762202)) break Label24;
-                      nti_1627390363 = i_469762201;
-                      nt_1627390364 = colontmp__469762200[i_469762201];
-                      Label25: do {
-                        if (hasState_1442842145(smB_1627389993[smB_1627389993_Idx], nt_1627390364)) {
-                        break Label25;
-                        }
-                        
-                        if (!(match_1476395137(nfa_1627389997.s[nt_1627390364], c_1627390002))) {
-                        if (!((anchored_1627390013 && (nfa_1627389997.s[nt_1627390364].kind == 46)))) {
-                        break Label25;
-                        }
-                        
-                        }
-                        
-                        if ((nfa_1627389997.t.allZ[n_1627390351][nti_1627390363] == -1)) {
-                        add_1442842149(smB_1627389993, smB_1627389993_Idx, {Field0: nt_1627390364, Field1: capt_1627390352, Field2: HEX2EHEX2E_754975569(bounds_1627390353.a, (i_1627390004 - 1))});
-                        break Label25;
-                        }
-                        
-                        matched_1627390007 = true;
-                        captx_1627390006[0] = capt_1627390352;
-                        Label26: do {
-                          var z_1627390377 = ({kind: 0, cp: 0, next: [], isGreedy: false, uid: 0, idx: 0, isCapturing: false, name: [], flags: [], min: 0, max: 0, cps: ({data: [], counter: 0}), ranges: [], shorthands: [], cc: 0, subExp: ({nfa: ({s: [], t: ({allZ: [], z: []})}), rpn: ({s: []}), reverseCapts: false})});
-                          var colontmp__469762196 = [];
-                          colontmp__469762196 = nfa_1627389997.t.z[nfa_1627389997.t.allZ[n_1627390351][nti_1627390363]];
-                          var i_469762197 = 0;
-                          var L_469762198 = (colontmp__469762196).length;
-                          Label27: do {
-                              Label28: while (true) {
-                              if (!(i_469762197 < L_469762198)) break Label28;
-                                z_1627390377 = colontmp__469762196[i_469762197];
-                                if (!(matched_1627390007)) {
-                                break Label26;
-                                }
-                                
-                                switch (z_1627390377.kind) {
-                                case 3:
-                                case 4:
-                                  capts_1627389994[capts_1627389994_Idx].push({parent: captx_1627390006[0], bound: i_1627390004, idx: z_1627390377.idx});;
-                                  captx_1627390006[0] = ((((capts_1627389994[capts_1627389994_Idx]).length - 1)) | 0);
-                                  break;
-                                case 11:
-                                case 12:
-                                case 13:
-                                case 14:
-                                case 15:
-                                case 16:
-                                case 17:
-                                case 18:
-                                case 29:
-                                case 30:
-                                  matched_1627390007 = match_1476395057(z_1627390377, cPrev_1627390003, c_1627390002);
-                                  break;
-                                case 41:
-                                case 42:
-                                case 43:
-                                case 44:
-                                  if (z_1627390377.subExp.reverseCapts) {
-                                  Temporary29 = ConstSet16;
-                                  }
-                                  else {
-                                  Temporary29 = ConstSet17;
-                                  }
-                                  
-                                  var flags2_1627390393 = nimCopy(null, Temporary29, NTI1627390634);
-                                  grow_1442842238(look_1627389998.smL);
-                                  setLen_1442842207(look_1627389998.smL.s[(look_1627389998.smL.i - 1)], (z_1627390377.subExp.nfa.s).length);
-                                  switch (z_1627390377.kind) {
-                                  case 41:
-                                    Temporary30 = look_1627389998.ahead(look_1627389998.smL.s[(look_1627389998.smL.i - 1)], "a", look_1627389998.smL.s[(look_1627389998.smL.i - 1)], "b", capts_1627389994, capts_1627389994_Idx, captx_1627390006, 0, text_1627389996, z_1627390377.subExp.nfa, look_1627389998, i_1627390004, flags2_1627390393);
-                                    break;
-                                  case 43:
-                                    Temporary30 = !(look_1627389998.ahead(look_1627389998.smL.s[(look_1627389998.smL.i - 1)], "a", look_1627389998.smL.s[(look_1627389998.smL.i - 1)], "b", capts_1627389994, capts_1627389994_Idx, captx_1627390006, 0, text_1627389996, z_1627390377.subExp.nfa, look_1627389998, i_1627390004, flags2_1627390393));
-                                    break;
-                                  case 42:
-                                    Temporary30 = !((look_1627389998.behind(look_1627389998.smL.s[(look_1627389998.smL.i - 1)], "a", look_1627389998.smL.s[(look_1627389998.smL.i - 1)], "b", capts_1627389994, capts_1627389994_Idx, captx_1627390006, 0, text_1627389996, z_1627390377.subExp.nfa, look_1627389998, i_1627390004, 0, flags2_1627390393) == -1));
-                                    break;
-                                  case 44:
-                                    Temporary30 = (look_1627389998.behind(look_1627389998.smL.s[(look_1627389998.smL.i - 1)], "a", look_1627389998.smL.s[(look_1627389998.smL.i - 1)], "b", capts_1627389994, capts_1627389994_Idx, captx_1627390006, 0, text_1627389996, z_1627390377.subExp.nfa, look_1627389998, i_1627390004, 0, flags2_1627390393) == -1);
-                                    break;
-                                  default: 
-                                    if (true) {
-                                    failedAssertImpl_218103864(makeNimstrLit("nfamatch.nim(66, 14) `false` "));
-                                    }
-                                    
-                                    Temporary30 = false;
-                                    break;
-                                  }
-                                  matched_1627390007 = Temporary30;
-                                  removeLast_1442842263(look_1627389998.smL);
-                                  break;
-                                default: 
-                                  if (true) {
-                                  failedAssertImpl_218103864(makeNimstrLit("nfamatch.nim(108, 20) `false` "));
-                                  }
-                                  
-                                  break;
-                                }
-                                i_469762197 += 1;
-                              }
-                          } while (false);
-                        } while (false);
-                        if (matched_1627390007) {
-                        add_1442842149(smB_1627389993, smB_1627389993_Idx, {Field0: nt_1627390364, Field1: captx_1627390006[0], Field2: HEX2EHEX2E_754975569(bounds_1627390353.a, (i_1627390004 - 1))});
-                        }
-                        
-                      } while (false);
-                      i_469762201 += 1;
-                    }
-                } while (false);
-              } while (false);
-              res_469762207 += 1;
-            }
-        } while (false);
-      } while (false);
-    } while (false);
-    var Temporary31 = smA_1627389992[smA_1627389992_Idx]; smA_1627389992[smA_1627389992_Idx] = smB_1627389993[smB_1627389993_Idx]; smB_1627389993[smB_1627389993_Idx] = Temporary31;    if ((0 < len_1442842176(smA_1627389992[smA_1627389992_Idx]))) {
-    if ((flags_1627390000[6] != undefined)) {
-    captIdx_1627389995[captIdx_1627389995_Idx] = reverse_1442841335(capts_1627389994, capts_1627389994_Idx, HEX5BHEX5D_1442842138(smA_1627389992[smA_1627389992_Idx], 0).Field1, captIdx_1627389995[captIdx_1627389995_Idx]);
-    }
-    else {
-      captIdx_1627389995[captIdx_1627389995_Idx] = HEX5BHEX5D_1442842138(smA_1627389992[smA_1627389992_Idx], 0).Field1;
-    }
-    
-    }
-    
-    result_1627390001 = (0 < len_1442842176(smA_1627389992[smA_1627389992_Idx]));
-    break BeforeRet;
-  } while (false);
-
-  return result_1627390001;
-
-}
-
-function runeAt_754974815(s_754974816, i_754974817) {
-  var result_754974818 = 0;
-
-    if ((s_754974816[i_754974817] <= 127)) {
-    result_754974818 = s_754974816[i_754974817];
-    }
-    else {
-    if (((s_754974816[i_754974817] >>> 5) == 6)) {
-    if ((i_754974817 <= ((s_754974816).length - 2))) {
-    result_754974818 = (((s_754974816[i_754974817] & 31) << 6) | (s_754974816[(i_754974817 + 1)] & 63));
-    }
-    else {
-      result_754974818 = 65533;
-    }
-    
-    }
-    else {
-    if (((s_754974816[i_754974817] >>> 4) == 14)) {
-    if ((i_754974817 <= ((s_754974816).length - 3))) {
-    result_754974818 = ((((s_754974816[i_754974817] & 15) << 12) | ((s_754974816[(i_754974817 + 1)] & 63) << 6)) | (s_754974816[(i_754974817 + 2)] & 63));
-    }
-    else {
-      result_754974818 = 65533;
-    }
-    
-    }
-    else {
-    if (((s_754974816[i_754974817] >>> 3) == 30)) {
-    if ((i_754974817 <= ((s_754974816).length - 4))) {
-    result_754974818 = (((((s_754974816[i_754974817] & 7) << 18) | ((s_754974816[(i_754974817 + 1)] & 63) << 12)) | ((s_754974816[(i_754974817 + 2)] & 63) << 6)) | (s_754974816[(i_754974817 + 3)] & 63));
-    }
-    else {
-      result_754974818 = 65533;
-    }
-    
-    }
-    else {
-    if (((s_754974816[i_754974817] >>> 2) == 62)) {
-    if ((i_754974817 <= ((s_754974816).length - 5))) {
-    result_754974818 = ((((((s_754974816[i_754974817] & 3) << 24) | ((s_754974816[(i_754974817 + 1)] & 63) << 18)) | ((s_754974816[(i_754974817 + 2)] & 63) << 12)) | ((s_754974816[(i_754974817 + 3)] & 63) << 6)) | (s_754974816[(i_754974817 + 4)] & 63));
-    }
-    else {
-      result_754974818 = 65533;
-    }
-    
-    }
-    else {
-    if (((s_754974816[i_754974817] >>> 1) == 126)) {
-    if ((i_754974817 <= ((s_754974816).length - 6))) {
-    result_754974818 = (((((((s_754974816[i_754974817] & 1) << 30) | ((s_754974816[(i_754974817 + 1)] & 63) << 24)) | ((s_754974816[(i_754974817 + 2)] & 63) << 18)) | ((s_754974816[(i_754974817 + 3)] & 63) << 12)) | ((s_754974816[(i_754974817 + 4)] & 63) << 6)) | (s_754974816[(i_754974817 + 5)] & 63));
-    }
-    else {
-      result_754974818 = 65533;
-    }
-    
-    }
-    else {
-      result_754974818 = s_754974816[i_754974817];
-    }
-    }}}}}
-
-  return result_754974818;
-
-}
-
-function reversedMatchImpl_1627390438(smA_1627390439, smA_1627390439_Idx, smB_1627390440, smB_1627390440_Idx, capts_1627390441, capts_1627390441_Idx, captIdx_1627390442, captIdx_1627390442_Idx, text_1627390443, nfa_1627390444, look_1627390445, start_1627390446, limit_1627390447, flags_1627390448) {
-                var Temporary5;
-                                        var Temporary17;
-                                        var Temporary18;
-          var Temporary22;
-                                  var Temporary34;
-                                  var Temporary35;
-
-  var result_1627390449 = 0;
-
-  BeforeRet: do {
-    if (!((limit_1627390447 <= start_1627390446))) {
-    failedAssertImpl_218103864(makeNimstrLit("nfamatch.nim(166, 12) `start >= limit` "));
-    }
-    
-    var c_1627390455 = -1;
-    var cPrev_1627390456 = -1;
-    var i_1627390457 = start_1627390446;
-    var iNext_1627390458 = start_1627390446;
-    var captx_1627390459 = [0];
-    var matched_1627390460 = false;
-    var anchored_1627390461 = true;
-    if (contains_1342177410(HEX2EHEX2E_754975569(0, ((text_1627390443).length - 1)), start_1627390446)) {
-    cPrev_1627390456 = runeAt_754974815(text_1627390443, start_1627390446);
-    }
-    
-    clear_1442842179(smA_1627390439, smA_1627390439_Idx);
-    add_1442842149(smA_1627390439, smA_1627390439_Idx, {Field0: 0, Field1: captIdx_1627390442[captIdx_1627390442_Idx], Field2: HEX2EHEX2E_754975569(i_1627390457, (i_1627390457 - 1))});
-    Label1: do {
-        Label2: while (true) {
-        if (!(limit_1627390447 < iNext_1627390458)) break Label2;
-          if (!((0 < iNext_1627390458))) {
-          failedAssertImpl_218103864(makeNimstrLit("common.nim(51, 12) `iNext > 0` "));
-          }
-          
-          if (!((iNext_1627390458 <= (text_1627390443).length))) {
-          failedAssertImpl_218103864(makeNimstrLit("common.nim(52, 12) `iNext <= text.len` "));
-          }
-          
-          iNext_1627390458 -= 1;
-          Label3: do {
-              Label4: while (true) {
-                if (!(0 < iNext_1627390458)) Temporary5 = false; else {                  Temporary5 = ((text_1627390443[iNext_1627390458] >> 6) == 2);                }              if (!Temporary5) break Label4;
-                iNext_1627390458 -= 1;
-              }
-          } while (false);
-          if ((text_1627390443[iNext_1627390458] <= 127)) {
-          c_1627390455 = text_1627390443[iNext_1627390458];
-          }
-          else {
-          if (((text_1627390443[iNext_1627390458] >>> 5) == 6)) {
-          if ((iNext_1627390458 <= ((text_1627390443).length - 2))) {
-          c_1627390455 = (((text_1627390443[iNext_1627390458] & 31) << 6) | (text_1627390443[(iNext_1627390458 + 1)] & 63));
-          }
-          else {
-            c_1627390455 = 65533;
-          }
-          
-          }
-          else {
-          if (((text_1627390443[iNext_1627390458] >>> 4) == 14)) {
-          if ((iNext_1627390458 <= ((text_1627390443).length - 3))) {
-          c_1627390455 = ((((text_1627390443[iNext_1627390458] & 15) << 12) | ((text_1627390443[(iNext_1627390458 + 1)] & 63) << 6)) | (text_1627390443[(iNext_1627390458 + 2)] & 63));
-          }
-          else {
-            c_1627390455 = 65533;
-          }
-          
-          }
-          else {
-          if (((text_1627390443[iNext_1627390458] >>> 3) == 30)) {
-          if ((iNext_1627390458 <= ((text_1627390443).length - 4))) {
-          c_1627390455 = (((((text_1627390443[iNext_1627390458] & 7) << 18) | ((text_1627390443[(iNext_1627390458 + 1)] & 63) << 12)) | ((text_1627390443[(iNext_1627390458 + 2)] & 63) << 6)) | (text_1627390443[(iNext_1627390458 + 3)] & 63));
-          }
-          else {
-            c_1627390455 = 65533;
-          }
-          
-          }
-          else {
-          if (((text_1627390443[iNext_1627390458] >>> 2) == 62)) {
-          if ((iNext_1627390458 <= ((text_1627390443).length - 5))) {
-          c_1627390455 = ((((((text_1627390443[iNext_1627390458] & 3) << 24) | ((text_1627390443[(iNext_1627390458 + 1)] & 63) << 18)) | ((text_1627390443[(iNext_1627390458 + 2)] & 63) << 12)) | ((text_1627390443[(iNext_1627390458 + 3)] & 63) << 6)) | (text_1627390443[(iNext_1627390458 + 4)] & 63));
-          }
-          else {
-            c_1627390455 = 65533;
-          }
-          
-          }
-          else {
-          if (((text_1627390443[iNext_1627390458] >>> 1) == 126)) {
-          if ((iNext_1627390458 <= ((text_1627390443).length - 6))) {
-          c_1627390455 = (((((((text_1627390443[iNext_1627390458] & 1) << 30) | ((text_1627390443[(iNext_1627390458 + 1)] & 63) << 24)) | ((text_1627390443[(iNext_1627390458 + 2)] & 63) << 18)) | ((text_1627390443[(iNext_1627390458 + 3)] & 63) << 12)) | ((text_1627390443[(iNext_1627390458 + 4)] & 63) << 6)) | (text_1627390443[(iNext_1627390458 + 5)] & 63));
-          }
-          else {
-            c_1627390455 = 65533;
-          }
-          
-          }
-          else {
-            c_1627390455 = text_1627390443[iNext_1627390458];
-          }
-          }}}}}
-          clear_1442842179(smB_1627390440, smB_1627390440_Idx);
-          Label6: do {
-            var n_1627390706 = 0;
-            var capt_1627390707 = 0;
-            var bounds_1627390708 = ({a: 0, b: 0});
-            Label7: do {
-              var i_1845498403 = 0;
-              var colontmp__1845498404 = 0;
-              colontmp__1845498404 = (len_1442842176(smA_1627390439[smA_1627390439_Idx]) - 1);
-              var res_1845498405 = 0;
-              Label8: do {
-                  Label9: while (true) {
-                  if (!(res_1845498405 <= colontmp__1845498404)) break Label9;
-                    i_1845498403 = res_1845498405;
-                    var colontmp__1845498408 = nimCopy(null, smA_1627390439[smA_1627390439_Idx].sx[i_1845498403], NTI1442841516);
-                    n_1627390706 = colontmp__1845498408["Field0"];
-                    capt_1627390707 = colontmp__1845498408["Field1"];
-                    bounds_1627390708 = nimCopy(bounds_1627390708, colontmp__1845498408["Field2"], NTI754976722);
-                    if ((anchored_1627390461 && (nfa_1627390444.s[n_1627390706].kind == 46))) {
-                    if (!(hasState_1442842145(smB_1627390440[smB_1627390440_Idx], n_1627390706))) {
-                    add_1442842149(smB_1627390440, smB_1627390440_Idx, {Field0: n_1627390706, Field1: capt_1627390707, Field2: nimCopy(null, bounds_1627390708, NTI754976722)});
-                    }
-                    
-                    break Label6;
-                    }
-                    
-                    Label10: do {
-                      var nti_1627390718 = 0;
-                      var nt_1627390719 = 0;
-                      var colontmp__1845498394 = [];
-                      colontmp__1845498394 = nfa_1627390444.s[n_1627390706].next;
-                      var i_1845498395 = 0;
-                      var L_1845498396 = (colontmp__1845498394).length;
-                      Label11: do {
-                          Label12: while (true) {
-                          if (!(i_1845498395 < L_1845498396)) break Label12;
-                            nti_1627390718 = i_1845498395;
-                            nt_1627390719 = colontmp__1845498394[i_1845498395];
-                            Label13: do {
-                              if (hasState_1442842145(smB_1627390440[smB_1627390440_Idx], nt_1627390719)) {
-                              break Label13;
-                              }
-                              
-                              if (!(match_1476395137(nfa_1627390444.s[nt_1627390719], c_1627390455))) {
-                              if (!((anchored_1627390461 && (nfa_1627390444.s[nt_1627390719].kind == 46)))) {
-                              break Label13;
-                              }
-                              
-                              }
-                              
-                              if ((nfa_1627390444.t.allZ[n_1627390706][nti_1627390718] == -1)) {
-                              add_1442842149(smB_1627390440, smB_1627390440_Idx, {Field0: nt_1627390719, Field1: capt_1627390707, Field2: HEX2EHEX2E_754975569(i_1627390457, bounds_1627390708.b)});
-                              break Label13;
-                              }
-                              
-                              matched_1627390460 = true;
-                              captx_1627390459[0] = capt_1627390707;
-                              Label14: do {
-                                var z_1627390732 = ({kind: 0, cp: 0, next: [], isGreedy: false, uid: 0, idx: 0, isCapturing: false, name: [], flags: [], min: 0, max: 0, cps: ({data: [], counter: 0}), ranges: [], shorthands: [], cc: 0, subExp: ({nfa: ({s: [], t: ({allZ: [], z: []})}), rpn: ({s: []}), reverseCapts: false})});
-                                var colontmp__1845498390 = [];
-                                colontmp__1845498390 = nfa_1627390444.t.z[nfa_1627390444.t.allZ[n_1627390706][nti_1627390718]];
-                                var i_1845498391 = 0;
-                                var L_1845498392 = (colontmp__1845498390).length;
-                                Label15: do {
-                                    Label16: while (true) {
-                                    if (!(i_1845498391 < L_1845498392)) break Label16;
-                                      z_1627390732 = colontmp__1845498390[i_1845498391];
-                                      if (!(matched_1627390460)) {
-                                      break Label14;
-                                      }
-                                      
-                                      switch (z_1627390732.kind) {
-                                      case 3:
-                                      case 4:
-                                        capts_1627390441[capts_1627390441_Idx].push({parent: captx_1627390459[0], bound: i_1627390457, idx: z_1627390732.idx});;
-                                        captx_1627390459[0] = ((((capts_1627390441[capts_1627390441_Idx]).length - 1)) | 0);
-                                        break;
-                                      case 11:
-                                      case 12:
-                                      case 13:
-                                      case 14:
-                                      case 15:
-                                      case 16:
-                                      case 17:
-                                      case 18:
-                                      case 29:
-                                      case 30:
-                                        matched_1627390460 = match_1476395057(z_1627390732, c_1627390455, cPrev_1627390456);
-                                        break;
-                                      case 41:
-                                      case 42:
-                                      case 43:
-                                      case 44:
-                                        if (z_1627390732.subExp.reverseCapts) {
-                                        Temporary17 = ConstSet18;
-                                        }
-                                        else {
-                                        Temporary17 = ConstSet19;
-                                        }
-                                        
-                                        var flags2_1627390748 = nimCopy(null, Temporary17, NTI1627391239);
-                                        grow_1442842238(look_1627390445.smL);
-                                        setLen_1442842207(look_1627390445.smL.s[(look_1627390445.smL.i - 1)], (z_1627390732.subExp.nfa.s).length);
-                                        switch (z_1627390732.kind) {
-                                        case 41:
-                                          Temporary18 = look_1627390445.ahead(look_1627390445.smL.s[(look_1627390445.smL.i - 1)], "a", look_1627390445.smL.s[(look_1627390445.smL.i - 1)], "b", capts_1627390441, capts_1627390441_Idx, captx_1627390459, 0, text_1627390443, z_1627390732.subExp.nfa, look_1627390445, i_1627390457, flags2_1627390748);
-                                          break;
-                                        case 43:
-                                          Temporary18 = !(look_1627390445.ahead(look_1627390445.smL.s[(look_1627390445.smL.i - 1)], "a", look_1627390445.smL.s[(look_1627390445.smL.i - 1)], "b", capts_1627390441, capts_1627390441_Idx, captx_1627390459, 0, text_1627390443, z_1627390732.subExp.nfa, look_1627390445, i_1627390457, flags2_1627390748));
-                                          break;
-                                        case 42:
-                                          Temporary18 = !((look_1627390445.behind(look_1627390445.smL.s[(look_1627390445.smL.i - 1)], "a", look_1627390445.smL.s[(look_1627390445.smL.i - 1)], "b", capts_1627390441, capts_1627390441_Idx, captx_1627390459, 0, text_1627390443, z_1627390732.subExp.nfa, look_1627390445, i_1627390457, 0, flags2_1627390748) == -1));
-                                          break;
-                                        case 44:
-                                          Temporary18 = (look_1627390445.behind(look_1627390445.smL.s[(look_1627390445.smL.i - 1)], "a", look_1627390445.smL.s[(look_1627390445.smL.i - 1)], "b", capts_1627390441, capts_1627390441_Idx, captx_1627390459, 0, text_1627390443, z_1627390732.subExp.nfa, look_1627390445, i_1627390457, 0, flags2_1627390748) == -1);
-                                          break;
-                                        default: 
-                                          if (true) {
-                                          failedAssertImpl_218103864(makeNimstrLit("nfamatch.nim(66, 14) `false` "));
-                                          }
-                                          
-                                          Temporary18 = false;
-                                          break;
-                                        }
-                                        matched_1627390460 = Temporary18;
-                                        removeLast_1442842263(look_1627390445.smL);
-                                        break;
-                                      default: 
-                                        if (true) {
-                                        failedAssertImpl_218103864(makeNimstrLit("nfamatch.nim(108, 20) `false` "));
-                                        }
-                                        
-                                        break;
-                                      }
-                                      i_1845498391 += 1;
-                                    }
-                                } while (false);
-                              } while (false);
-                              if (matched_1627390460) {
-                              add_1442842149(smB_1627390440, smB_1627390440_Idx, {Field0: nt_1627390719, Field1: captx_1627390459[0], Field2: HEX2EHEX2E_754975569(i_1627390457, bounds_1627390708.b)});
-                              }
-                              
-                            } while (false);
-                            i_1845498395 += 1;
-                          }
-                      } while (false);
-                    } while (false);
-                    res_1845498405 += 1;
-                  }
-              } while (false);
-            } while (false);
-          } while (false);
-          var Temporary19 = smA_1627390439[smA_1627390439_Idx]; smA_1627390439[smA_1627390439_Idx] = smB_1627390440[smB_1627390440_Idx]; smB_1627390440[smB_1627390440_Idx] = Temporary19;          if ((len_1442842176(smA_1627390439[smA_1627390439_Idx]) == 0)) {
-          result_1627390449 = -1;
-          break BeforeRet;
-          }
-          
-          if ((nfa_1627390444.s[HEX5BHEX5D_1442842138(smA_1627390439[smA_1627390439_Idx], 0).Field0].kind == 46)) {
-          break Label1;
-          }
-          
-          i_1627390457 = iNext_1627390458;
-          cPrev_1627390456 = c_1627390455;
-        }
-    } while (false);
-    c_1627390455 = -1;
-    if ((0 < iNext_1627390458)) {
-    if (!((0 < iNext_1627390458))) {
-    failedAssertImpl_218103864(makeNimstrLit("common.nim(51, 12) `iNext > 0` "));
-    }
-    
-    if (!((iNext_1627390458 <= (text_1627390443).length))) {
-    failedAssertImpl_218103864(makeNimstrLit("common.nim(52, 12) `iNext <= text.len` "));
-    }
-    
-    iNext_1627390458 -= 1;
-    Label20: do {
-        Label21: while (true) {
-          if (!(0 < iNext_1627390458)) Temporary22 = false; else {            Temporary22 = ((text_1627390443[iNext_1627390458] >> 6) == 2);          }        if (!Temporary22) break Label21;
-          iNext_1627390458 -= 1;
-        }
-    } while (false);
-    if ((text_1627390443[iNext_1627390458] <= 127)) {
-    c_1627390455 = text_1627390443[iNext_1627390458];
-    }
-    else {
-    if (((text_1627390443[iNext_1627390458] >>> 5) == 6)) {
-    if ((iNext_1627390458 <= ((text_1627390443).length - 2))) {
-    c_1627390455 = (((text_1627390443[iNext_1627390458] & 31) << 6) | (text_1627390443[(iNext_1627390458 + 1)] & 63));
-    }
-    else {
-      c_1627390455 = 65533;
-    }
-    
-    }
-    else {
-    if (((text_1627390443[iNext_1627390458] >>> 4) == 14)) {
-    if ((iNext_1627390458 <= ((text_1627390443).length - 3))) {
-    c_1627390455 = ((((text_1627390443[iNext_1627390458] & 15) << 12) | ((text_1627390443[(iNext_1627390458 + 1)] & 63) << 6)) | (text_1627390443[(iNext_1627390458 + 2)] & 63));
-    }
-    else {
-      c_1627390455 = 65533;
-    }
-    
-    }
-    else {
-    if (((text_1627390443[iNext_1627390458] >>> 3) == 30)) {
-    if ((iNext_1627390458 <= ((text_1627390443).length - 4))) {
-    c_1627390455 = (((((text_1627390443[iNext_1627390458] & 7) << 18) | ((text_1627390443[(iNext_1627390458 + 1)] & 63) << 12)) | ((text_1627390443[(iNext_1627390458 + 2)] & 63) << 6)) | (text_1627390443[(iNext_1627390458 + 3)] & 63));
-    }
-    else {
-      c_1627390455 = 65533;
-    }
-    
-    }
-    else {
-    if (((text_1627390443[iNext_1627390458] >>> 2) == 62)) {
-    if ((iNext_1627390458 <= ((text_1627390443).length - 5))) {
-    c_1627390455 = ((((((text_1627390443[iNext_1627390458] & 3) << 24) | ((text_1627390443[(iNext_1627390458 + 1)] & 63) << 18)) | ((text_1627390443[(iNext_1627390458 + 2)] & 63) << 12)) | ((text_1627390443[(iNext_1627390458 + 3)] & 63) << 6)) | (text_1627390443[(iNext_1627390458 + 4)] & 63));
-    }
-    else {
-      c_1627390455 = 65533;
-    }
-    
-    }
-    else {
-    if (((text_1627390443[iNext_1627390458] >>> 1) == 126)) {
-    if ((iNext_1627390458 <= ((text_1627390443).length - 6))) {
-    c_1627390455 = (((((((text_1627390443[iNext_1627390458] & 1) << 30) | ((text_1627390443[(iNext_1627390458 + 1)] & 63) << 24)) | ((text_1627390443[(iNext_1627390458 + 2)] & 63) << 18)) | ((text_1627390443[(iNext_1627390458 + 3)] & 63) << 12)) | ((text_1627390443[(iNext_1627390458 + 4)] & 63) << 6)) | (text_1627390443[(iNext_1627390458 + 5)] & 63));
-    }
-    else {
-      c_1627390455 = 65533;
-    }
-    
-    }
-    else {
-      c_1627390455 = text_1627390443[iNext_1627390458];
-    }
-    }}}}}
-    }
-    
-    clear_1442842179(smB_1627390440, smB_1627390440_Idx);
-    Label23: do {
-      var n_1627390961 = 0;
-      var capt_1627390962 = 0;
-      var bounds_1627390963 = ({a: 0, b: 0});
-      Label24: do {
-        var i_1845498423 = 0;
-        var colontmp__1845498424 = 0;
-        colontmp__1845498424 = (len_1442842176(smA_1627390439[smA_1627390439_Idx]) - 1);
-        var res_1845498425 = 0;
-        Label25: do {
-            Label26: while (true) {
-            if (!(res_1845498425 <= colontmp__1845498424)) break Label26;
-              i_1845498423 = res_1845498425;
-              var colontmp__1845498428 = nimCopy(null, smA_1627390439[smA_1627390439_Idx].sx[i_1845498423], NTI1442841516);
-              n_1627390961 = colontmp__1845498428["Field0"];
-              capt_1627390962 = colontmp__1845498428["Field1"];
-              bounds_1627390963 = nimCopy(bounds_1627390963, colontmp__1845498428["Field2"], NTI754976722);
-              if ((anchored_1627390461 && (nfa_1627390444.s[n_1627390961].kind == 46))) {
-              if (!(hasState_1442842145(smB_1627390440[smB_1627390440_Idx], n_1627390961))) {
-              add_1442842149(smB_1627390440, smB_1627390440_Idx, {Field0: n_1627390961, Field1: capt_1627390962, Field2: nimCopy(null, bounds_1627390963, NTI754976722)});
-              }
-              
-              break Label23;
-              }
-              
-              Label27: do {
-                var nti_1627390973 = 0;
-                var nt_1627390974 = 0;
-                var colontmp__1845498418 = [];
-                colontmp__1845498418 = nfa_1627390444.s[n_1627390961].next;
-                var i_1845498419 = 0;
-                var L_1845498420 = (colontmp__1845498418).length;
-                Label28: do {
-                    Label29: while (true) {
-                    if (!(i_1845498419 < L_1845498420)) break Label29;
-                      nti_1627390973 = i_1845498419;
-                      nt_1627390974 = colontmp__1845498418[i_1845498419];
-                      Label30: do {
-                        if (hasState_1442842145(smB_1627390440[smB_1627390440_Idx], nt_1627390974)) {
-                        break Label30;
-                        }
-                        
-                        if (!(match_1476395137(nfa_1627390444.s[nt_1627390974], c_1627390455))) {
-                        if (!((anchored_1627390461 && (nfa_1627390444.s[nt_1627390974].kind == 46)))) {
-                        break Label30;
-                        }
-                        
-                        }
-                        
-                        if ((nfa_1627390444.t.allZ[n_1627390961][nti_1627390973] == -1)) {
-                        add_1442842149(smB_1627390440, smB_1627390440_Idx, {Field0: nt_1627390974, Field1: capt_1627390962, Field2: HEX2EHEX2E_754975569(i_1627390457, bounds_1627390963.b)});
-                        break Label30;
-                        }
-                        
-                        matched_1627390460 = true;
-                        captx_1627390459[0] = capt_1627390962;
-                        Label31: do {
-                          var z_1627390987 = ({kind: 0, cp: 0, next: [], isGreedy: false, uid: 0, idx: 0, isCapturing: false, name: [], flags: [], min: 0, max: 0, cps: ({data: [], counter: 0}), ranges: [], shorthands: [], cc: 0, subExp: ({nfa: ({s: [], t: ({allZ: [], z: []})}), rpn: ({s: []}), reverseCapts: false})});
-                          var colontmp__1845498414 = [];
-                          colontmp__1845498414 = nfa_1627390444.t.z[nfa_1627390444.t.allZ[n_1627390961][nti_1627390973]];
-                          var i_1845498415 = 0;
-                          var L_1845498416 = (colontmp__1845498414).length;
-                          Label32: do {
-                              Label33: while (true) {
-                              if (!(i_1845498415 < L_1845498416)) break Label33;
-                                z_1627390987 = colontmp__1845498414[i_1845498415];
-                                if (!(matched_1627390460)) {
-                                break Label31;
-                                }
-                                
-                                switch (z_1627390987.kind) {
-                                case 3:
-                                case 4:
-                                  capts_1627390441[capts_1627390441_Idx].push({parent: captx_1627390459[0], bound: i_1627390457, idx: z_1627390987.idx});;
-                                  captx_1627390459[0] = ((((capts_1627390441[capts_1627390441_Idx]).length - 1)) | 0);
-                                  break;
-                                case 11:
-                                case 12:
-                                case 13:
-                                case 14:
-                                case 15:
-                                case 16:
-                                case 17:
-                                case 18:
-                                case 29:
-                                case 30:
-                                  matched_1627390460 = match_1476395057(z_1627390987, c_1627390455, cPrev_1627390456);
-                                  break;
-                                case 41:
-                                case 42:
-                                case 43:
-                                case 44:
-                                  if (z_1627390987.subExp.reverseCapts) {
-                                  Temporary34 = ConstSet20;
-                                  }
-                                  else {
-                                  Temporary34 = ConstSet21;
-                                  }
-                                  
-                                  var flags2_1627391003 = nimCopy(null, Temporary34, NTI1627391790);
-                                  grow_1442842238(look_1627390445.smL);
-                                  setLen_1442842207(look_1627390445.smL.s[(look_1627390445.smL.i - 1)], (z_1627390987.subExp.nfa.s).length);
-                                  switch (z_1627390987.kind) {
-                                  case 41:
-                                    Temporary35 = look_1627390445.ahead(look_1627390445.smL.s[(look_1627390445.smL.i - 1)], "a", look_1627390445.smL.s[(look_1627390445.smL.i - 1)], "b", capts_1627390441, capts_1627390441_Idx, captx_1627390459, 0, text_1627390443, z_1627390987.subExp.nfa, look_1627390445, i_1627390457, flags2_1627391003);
-                                    break;
-                                  case 43:
-                                    Temporary35 = !(look_1627390445.ahead(look_1627390445.smL.s[(look_1627390445.smL.i - 1)], "a", look_1627390445.smL.s[(look_1627390445.smL.i - 1)], "b", capts_1627390441, capts_1627390441_Idx, captx_1627390459, 0, text_1627390443, z_1627390987.subExp.nfa, look_1627390445, i_1627390457, flags2_1627391003));
-                                    break;
-                                  case 42:
-                                    Temporary35 = !((look_1627390445.behind(look_1627390445.smL.s[(look_1627390445.smL.i - 1)], "a", look_1627390445.smL.s[(look_1627390445.smL.i - 1)], "b", capts_1627390441, capts_1627390441_Idx, captx_1627390459, 0, text_1627390443, z_1627390987.subExp.nfa, look_1627390445, i_1627390457, 0, flags2_1627391003) == -1));
-                                    break;
-                                  case 44:
-                                    Temporary35 = (look_1627390445.behind(look_1627390445.smL.s[(look_1627390445.smL.i - 1)], "a", look_1627390445.smL.s[(look_1627390445.smL.i - 1)], "b", capts_1627390441, capts_1627390441_Idx, captx_1627390459, 0, text_1627390443, z_1627390987.subExp.nfa, look_1627390445, i_1627390457, 0, flags2_1627391003) == -1);
-                                    break;
-                                  default: 
-                                    if (true) {
-                                    failedAssertImpl_218103864(makeNimstrLit("nfamatch.nim(66, 14) `false` "));
-                                    }
-                                    
-                                    Temporary35 = false;
-                                    break;
-                                  }
-                                  matched_1627390460 = Temporary35;
-                                  removeLast_1442842263(look_1627390445.smL);
-                                  break;
-                                default: 
-                                  if (true) {
-                                  failedAssertImpl_218103864(makeNimstrLit("nfamatch.nim(108, 20) `false` "));
-                                  }
-                                  
-                                  break;
-                                }
-                                i_1845498415 += 1;
-                              }
-                          } while (false);
-                        } while (false);
-                        if (matched_1627390460) {
-                        add_1442842149(smB_1627390440, smB_1627390440_Idx, {Field0: nt_1627390974, Field1: captx_1627390459[0], Field2: HEX2EHEX2E_754975569(i_1627390457, bounds_1627390963.b)});
-                        }
-                        
-                      } while (false);
-                      i_1845498419 += 1;
-                    }
-                } while (false);
-              } while (false);
-              res_1845498425 += 1;
-            }
-        } while (false);
-      } while (false);
-    } while (false);
-    var Temporary36 = smA_1627390439[smA_1627390439_Idx]; smA_1627390439[smA_1627390439_Idx] = smB_1627390440[smB_1627390440_Idx]; smB_1627390440[smB_1627390440_Idx] = Temporary36;    Label37: do {
-      var n_1627391026 = 0;
-      var capt_1627391027 = 0;
-      var bounds_1627391028 = ({a: 0, b: 0});
-      Label38: do {
-        var i_1845498431 = 0;
-        var colontmp__1845498432 = 0;
-        colontmp__1845498432 = (len_1442842176(smA_1627390439[smA_1627390439_Idx]) - 1);
-        var res_1845498433 = 0;
-        Label39: do {
-            Label40: while (true) {
-            if (!(res_1845498433 <= colontmp__1845498432)) break Label40;
-              i_1845498431 = res_1845498433;
-              var colontmp__1845498436 = nimCopy(null, smA_1627390439[smA_1627390439_Idx].sx[i_1845498431], NTI1442841516);
-              n_1627391026 = colontmp__1845498436["Field0"];
-              capt_1627391027 = colontmp__1845498436["Field1"];
-              bounds_1627391028 = nimCopy(bounds_1627391028, colontmp__1845498436["Field2"], NTI754976722);
-              if ((nfa_1627390444.s[n_1627391026].kind == 46)) {
-              if ((flags_1627390448[6] != undefined)) {
-              captIdx_1627390442[captIdx_1627390442_Idx] = reverse_1442841335(capts_1627390441, capts_1627390441_Idx, capt_1627391027, captIdx_1627390442[captIdx_1627390442_Idx]);
-              }
-              else {
-                captIdx_1627390442[captIdx_1627390442_Idx] = capt_1627391027;
-              }
-              
-              result_1627390449 = bounds_1627391028.a;
-              break BeforeRet;
-              }
-              
-              res_1845498433 += 1;
-            }
-        } while (false);
-      } while (false);
-    } while (false);
-    result_1627390449 = -1;
-    break BeforeRet;
-  } while (false);
-
-  return result_1627390449;
-
-}
-
-function cap_1442842188(sm_1442842189) {
-  var result_1442842190 = 0;
-
-    result_1442842190 = (sm_1442842189.ss).length;
-
-  return result_1442842190;
-
-}
-
-function clear_1610612794(ms_1610612795) {
-    ms_1610612795.i = 0;
-
-  
-}
-
-function clear_1610612805(ms_1610612806) {
-    clear_1442842179(ms_1610612806, "a");
-    clear_1442842179(ms_1610612806, "b");
-    clear_1610612794(ms_1610612806.m);
-    if (ms_1610612806.c.length < 0) { for (var i = ms_1610612806.c.length ; i < 0 ; ++i) ms_1610612806.c.push(({parent: 0, bound: 0, idx: 0})); }
-               else { ms_1610612806.c.length = 0; };
-
-  
-}
-
-function nsuFindChar(s_687867323, sub_687867324, start_687867325, last_687867326) {
-    var Temporary1;
-
-  var result_687867327 = 0;
-
-  BeforeRet: do {
-    if ((last_687867326 == 0)) {
-    Temporary1 = (s_687867323).length - 1;
-    }
-    else {
-    Temporary1 = last_687867326;
-    }
-    
-    var last_687867328 = Temporary1;
-    Label2: do {
-      var i_687867338 = 0;
-      var colontmp__1845498381 = 0;
-      colontmp__1845498381 = start_687867325;
-      var res_1845498382 = colontmp__1845498381;
-      Label3: do {
-          Label4: while (true) {
-          if (!(res_1845498382 <= last_687867328)) break Label4;
-            i_687867338 = res_1845498382;
-            if ((sub_687867324 == s_687867323[i_687867338])) {
-            result_687867327 = i_687867338;
-            break BeforeRet;
-            }
-            
-            res_1845498382 += 1;
-          }
-      } while (false);
-    } while (false);
-    result_687867327 = -1;
-    break BeforeRet;
-  } while (false);
-
-  return result_687867327;
-
-}
-
-function reversedMatchImpl_1627391037(smA_1627391038, smA_1627391038_Idx, smB_1627391039, smB_1627391039_Idx, text_1627391040, nfa_1627391041, look_1627391042, start_1627391043, limit_1627391044) {
-  var result_1627391045 = 0;
-
-    var capts_1627391046 = [[]];
-    var captIdx_1627391047 = [-1];
-    result_1627391045 = reversedMatchImpl_1627390438(smA_1627391038, smA_1627391038_Idx, smB_1627391039, smB_1627391039_Idx, capts_1627391046, 0, captIdx_1627391047, 0, text_1627391040, nfa_1627391041, look_1627391042, start_1627391043, limit_1627391044, ConstSet22);
-
-  return result_1627391045;
-
-}
-
-function len_1610612760(ms_1610612761) {
-  var result_1610612762 = 0;
-
-    result_1610612762 = ms_1610612761.i;
-
-  return result_1610612762;
-
-}
-
-function add_1610612763(ms_1610612764, m_1610612765) {
-    var size_1610612766 = 0;
-    Label1: do {
-      var i_1610612772 = 0;
-      var colontmp__1845498455 = 0;
-      colontmp__1845498455 = (len_1610612760(ms_1610612764) - 1);
-      var res_1845498457 = colontmp__1845498455;
-      Label2: do {
-          Label3: while (true) {
-          if (!(0 <= res_1845498457)) break Label3;
-            i_1610612772 = res_1845498457;
-            if ((nimMax(ms_1610612764.s[i_1610612772].Field1.b, ms_1610612764.s[i_1610612772].Field1.a) < m_1610612765.Field1.a)) {
-            size_1610612766 = (i_1610612772 + 1);
-            break Label1;
-            }
-            
-            res_1845498457 -= 1;
-          }
-      } while (false);
-    } while (false);
-    ms_1610612764.i = size_1610612766;
-    if ((ms_1610612764.i <= ((ms_1610612764.s).length - 1))) {
-    ms_1610612764.s[ms_1610612764.i] = nimCopy(ms_1610612764.s[ms_1610612764.i], m_1610612765, NTI1610612740);
-    }
-    else {
-      var Temporary4 = nimCopy(null, m_1610612765, NTI1610612740);
-    ms_1610612764.s.push(Temporary4);;
-    }
-    
-    ms_1610612764.i += 1;
-
-  
-}
-
-function submatch_1610612976(ms_1610612977, text_1610612978, regex_1610612979, i_1610612980, cPrev_1610612981, c_1610612982) {
-                      var Temporary7;
-                      var Temporary8;
-                      var Temporary10;
-                              var Temporary13;
-                              var Temporary14;
-
-    clear_1442842179(ms_1610612977, "b");
-    var captx_1610612992 = [0];
-    var matched_1610612993 = true;
-    var eoeFound_1610612994 = false;
-    var smi_1610612995 = 0;
-    Label1: do {
-        Label2: while (true) {
-        if (!(smi_1610612995 < len_1442842176(ms_1610612977.a))) break Label2;
-          Label3: do {
-            var nti_1610613001 = 0;
-            var nt_1610613002 = 0;
-            var colontmp__1845498449 = [];
-            colontmp__1845498449 = regex_1610612979.nfa.s[HEX5BHEX5D_1442842138(ms_1610612977.a, smi_1610612995).Field0].next;
-            var i_1845498450 = 0;
-            var L_1845498451 = (colontmp__1845498449).length;
-            Label4: do {
-                Label5: while (true) {
-                if (!(i_1845498450 < L_1845498451)) break Label5;
-                  nti_1610613001 = i_1845498450;
-                  nt_1610613002 = colontmp__1845498449[i_1845498450];
-                  Label6: do {
-                    if (hasState_1442842145(ms_1610612977.b, nt_1610613002)) {
-                    break Label6;
-                    }
-                    
-                      if (!!((regex_1610612979.nfa.s[nt_1610613002].kind == 46))) Temporary7 = false; else {                        Temporary7 = !(match_1476395137(regex_1610612979.nfa.s[nt_1610613002], c_1610612982));                      }                    if (Temporary7) {
-                    break Label6;
-                    }
-                    
-                    matched_1610612993 = true;
-                    captx_1610612992[0] = HEX5BHEX5D_1442842138(ms_1610612977.a, smi_1610612995).Field1;
-                    if ((-1 < (Temporary8 = regex_1610612979.nfa.t.allZ[HEX5BHEX5D_1442842138(ms_1610612977.a, smi_1610612995).Field0], Temporary8)[nti_1610613001])) {
-                    Label9: do {
-                      var z_1610613010 = ({kind: 0, cp: 0, next: [], isGreedy: false, uid: 0, idx: 0, isCapturing: false, name: [], flags: [], min: 0, max: 0, cps: ({data: [], counter: 0}), ranges: [], shorthands: [], cc: 0, subExp: ({nfa: ({s: [], t: ({allZ: [], z: []})}), rpn: ({s: []}), reverseCapts: false})});
-                      var colontmp__1845498445 = [];
-                      colontmp__1845498445 = regex_1610612979.nfa.t.z[(Temporary10 = regex_1610612979.nfa.t.allZ[HEX5BHEX5D_1442842138(ms_1610612977.a, smi_1610612995).Field0], Temporary10)[nti_1610613001]];
-                      var i_1845498446 = 0;
-                      var L_1845498447 = (colontmp__1845498445).length;
-                      Label11: do {
-                          Label12: while (true) {
-                          if (!(i_1845498446 < L_1845498447)) break Label12;
-                            z_1610613010 = colontmp__1845498445[i_1845498446];
-                            if (!(matched_1610612993)) {
-                            break Label9;
-                            }
-                            
-                            switch (z_1610613010.kind) {
-                            case 3:
-                            case 4:
-                              ms_1610612977.c.push({parent: captx_1610612992[0], bound: i_1610612980, idx: z_1610613010.idx});;
-                              captx_1610612992[0] = ((((ms_1610612977.c).length - 1)) | 0);
-                              break;
-                            case 11:
-                            case 12:
-                            case 13:
-                            case 14:
-                            case 15:
-                            case 16:
-                            case 17:
-                            case 18:
-                            case 29:
-                            case 30:
-                              matched_1610612993 = match_1476395057(z_1610613010, cPrev_1610612981, c_1610612982);
-                              break;
-                            case 41:
-                            case 42:
-                            case 43:
-                            case 44:
-                              if (z_1610613010.subExp.reverseCapts) {
-                              Temporary13 = ConstSet23;
-                              }
-                              else {
-                              Temporary13 = ConstSet24;
-                              }
-                              
-                              var flags2_1610613026 = nimCopy(null, Temporary13, NTI1610612929);
-                              grow_1442842238(ms_1610612977.look.smL);
-                              setLen_1442842207(ms_1610612977.look.smL.s[(ms_1610612977.look.smL.i - 1)], (z_1610613010.subExp.nfa.s).length);
-                              switch (z_1610613010.kind) {
-                              case 41:
-                                Temporary14 = ms_1610612977.look.ahead(ms_1610612977.look.smL.s[(ms_1610612977.look.smL.i - 1)], "a", ms_1610612977.look.smL.s[(ms_1610612977.look.smL.i - 1)], "b", ms_1610612977, "c", captx_1610612992, 0, text_1610612978, z_1610613010.subExp.nfa, ms_1610612977.look, i_1610612980, flags2_1610613026);
-                                break;
-                              case 43:
-                                Temporary14 = !(ms_1610612977.look.ahead(ms_1610612977.look.smL.s[(ms_1610612977.look.smL.i - 1)], "a", ms_1610612977.look.smL.s[(ms_1610612977.look.smL.i - 1)], "b", ms_1610612977, "c", captx_1610612992, 0, text_1610612978, z_1610613010.subExp.nfa, ms_1610612977.look, i_1610612980, flags2_1610613026));
-                                break;
-                              case 42:
-                                Temporary14 = !((ms_1610612977.look.behind(ms_1610612977.look.smL.s[(ms_1610612977.look.smL.i - 1)], "a", ms_1610612977.look.smL.s[(ms_1610612977.look.smL.i - 1)], "b", ms_1610612977, "c", captx_1610612992, 0, text_1610612978, z_1610613010.subExp.nfa, ms_1610612977.look, i_1610612980, 0, flags2_1610613026) == -1));
-                                break;
-                              case 44:
-                                Temporary14 = (ms_1610612977.look.behind(ms_1610612977.look.smL.s[(ms_1610612977.look.smL.i - 1)], "a", ms_1610612977.look.smL.s[(ms_1610612977.look.smL.i - 1)], "b", ms_1610612977, "c", captx_1610612992, 0, text_1610612978, z_1610613010.subExp.nfa, ms_1610612977.look, i_1610612980, 0, flags2_1610613026) == -1);
-                                break;
-                              default: 
-                                if (true) {
-                                failedAssertImpl_218103864(makeNimstrLit("nfamatch.nim(66, 14) `false` "));
-                                }
-                                
-                                Temporary14 = false;
-                                break;
-                              }
-                              matched_1610612993 = Temporary14;
-                              removeLast_1442842263(ms_1610612977.look.smL);
-                              break;
-                            default: 
-                              break;
-                            }
-                            i_1845498446 += 1;
-                          }
-                      } while (false);
-                    } while (false);
-                    }
-                    
-                    if (matched_1610612993) {
-                    if ((regex_1610612979.nfa.s[nt_1610613002].kind == 46)) {
-                    add_1610612763(ms_1610612977.m, {Field0: captx_1610612992[0], Field1: HEX2EHEX2E_754975569(HEX5BHEX5D_1442842138(ms_1610612977.a, smi_1610612995).Field2.a, (i_1610612980 - 1))});
-                    clear_1442842179(ms_1610612977, "a");
-                    if (!(eoeFound_1610612994)) {
-                    eoeFound_1610612994 = true;
-                    add_1442842149(ms_1610612977, "a", {Field0: 0, Field1: -1, Field2: HEX2EHEX2E_754975569(i_1610612980, (i_1610612980 - 1))});
-                    }
-                    
-                    smi_1610612995 = -1;
-                    break Label3;
-                    }
-                    
-                    add_1442842149(ms_1610612977, "b", {Field0: nt_1610613002, Field1: captx_1610612992[0], Field2: HEX2EHEX2E_754975569(HEX5BHEX5D_1442842138(ms_1610612977.a, smi_1610612995).Field2.a, (i_1610612980 - 1))});
-                    }
-                    
-                  } while (false);
-                  i_1845498450 += 1;
-                }
-            } while (false);
-          } while (false);
-          smi_1610612995 += 1;
-        }
-    } while (false);
-    var Temporary15 = ms_1610612977.a; ms_1610612977.a = ms_1610612977.b; ms_1610612977.b = Temporary15;
-  
-}
-
-function hasMatches_1610612802(ms_1610612803) {
-  var result_1610612804 = false;
-
-  BeforeRet: do {
-    result_1610612804 = (0 < len_1610612760(ms_1610612803.m));
-    break BeforeRet;
-  } while (false);
-
-  return result_1610612804;
-
-}
-
-function findSomeImpl_1610613065(text_1610613066, regex_1610613067, ms_1610613068, start_1610613069, flags_1610613070) {
-      var Temporary1;
-
-  var result_1610613071 = 0;
-
-  BeforeRet: do {
-    if ((ms_1610613068.a == null)) {
-    ms_1610613068.a = newSubmatches_1442842071((regex_1610613067.nfa.s).length);
-    ms_1610613068.b = newSubmatches_1442842071((regex_1610613067.nfa.s).length);
-    ms_1610613068.look = nimCopy(ms_1610613068.look, {ahead: matchImpl_1627389991, behind: reversedMatchImpl_1627390438, smL: ({s: [], i: 0})}, NTI1627389957);
-    }
-    
-      if (!((regex_1610613067.nfa.s).length <= cap_1442842188(ms_1610613068.a))) Temporary1 = false; else {        Temporary1 = ((regex_1610613067.nfa.s).length <= cap_1442842188(ms_1610613068.b));      }    if (!(Temporary1)) {
-    failedAssertImpl_218103864(makeNimstrLit("nfafindall.nim(174, 16) `ms.a.cap >= len(regex.nfa.s) and ms.b.cap >= len(regex.nfa.s)` "));
-    }
-    
-    clear_1610612805(ms_1610613068);
-    var c_1610613092 = -1;
-    var cPrev_1610613093 = -1;
-    var i_1610613094 = start_1610613069;
-    var iPrev_1610613095 = start_1610613069;
-    var optFlag_1610613100 = (flags_1610613070[3] != undefined);
-    add_1442842149(ms_1610613068, "a", {Field0: 0, Field1: -1, Field2: HEX2EHEX2E_754975569(i_1610613094, (i_1610613094 - 1))});
-    if (contains_1342177410(HEX2EHEX2E_754975569(0, ((text_1610613066).length - 1)), (start_1610613069 - 1))) {
-    cPrev_1610613093 = bwRuneAt_1291845674(text_1610613066, (start_1610613069 - 1));
-    }
-    
-    Label2: do {
-        Label3: while (true) {
-        if (!(i_1610613094 < (text_1610613066).length)) break Label3;
-          if ((text_1610613066[i_1610613094] <= 127)) {
-          c_1610613092 = text_1610613066[i_1610613094];
-          i_1610613094 += 1;
-          }
-          else {
-          if (((text_1610613066[i_1610613094] >>> 5) == 6)) {
-          if ((i_1610613094 <= ((text_1610613066).length - 2))) {
-          c_1610613092 = (((text_1610613066[i_1610613094] & 31) << 6) | (text_1610613066[(i_1610613094 + 1)] & 63));
-          i_1610613094 += 2;
-          }
-          else {
-            c_1610613092 = 65533;
-            i_1610613094 += 1;
-          }
-          
-          }
-          else {
-          if (((text_1610613066[i_1610613094] >>> 4) == 14)) {
-          if ((i_1610613094 <= ((text_1610613066).length - 3))) {
-          c_1610613092 = ((((text_1610613066[i_1610613094] & 15) << 12) | ((text_1610613066[(i_1610613094 + 1)] & 63) << 6)) | (text_1610613066[(i_1610613094 + 2)] & 63));
-          i_1610613094 += 3;
-          }
-          else {
-            c_1610613092 = 65533;
-            i_1610613094 += 1;
-          }
-          
-          }
-          else {
-          if (((text_1610613066[i_1610613094] >>> 3) == 30)) {
-          if ((i_1610613094 <= ((text_1610613066).length - 4))) {
-          c_1610613092 = (((((text_1610613066[i_1610613094] & 7) << 18) | ((text_1610613066[(i_1610613094 + 1)] & 63) << 12)) | ((text_1610613066[(i_1610613094 + 2)] & 63) << 6)) | (text_1610613066[(i_1610613094 + 3)] & 63));
-          i_1610613094 += 4;
-          }
-          else {
-            c_1610613092 = 65533;
-            i_1610613094 += 1;
-          }
-          
-          }
-          else {
-          if (((text_1610613066[i_1610613094] >>> 2) == 62)) {
-          if ((i_1610613094 <= ((text_1610613066).length - 5))) {
-          c_1610613092 = ((((((text_1610613066[i_1610613094] & 3) << 24) | ((text_1610613066[(i_1610613094 + 1)] & 63) << 18)) | ((text_1610613066[(i_1610613094 + 2)] & 63) << 12)) | ((text_1610613066[(i_1610613094 + 3)] & 63) << 6)) | (text_1610613066[(i_1610613094 + 4)] & 63));
-          i_1610613094 += 5;
-          }
-          else {
-            c_1610613092 = 65533;
-            i_1610613094 += 1;
-          }
-          
-          }
-          else {
-          if (((text_1610613066[i_1610613094] >>> 1) == 126)) {
-          if ((i_1610613094 <= ((text_1610613066).length - 6))) {
-          c_1610613092 = (((((((text_1610613066[i_1610613094] & 1) << 30) | ((text_1610613066[(i_1610613094 + 1)] & 63) << 24)) | ((text_1610613066[(i_1610613094 + 2)] & 63) << 18)) | ((text_1610613066[(i_1610613094 + 3)] & 63) << 12)) | ((text_1610613066[(i_1610613094 + 4)] & 63) << 6)) | (text_1610613066[(i_1610613094 + 5)] & 63));
-          i_1610613094 += 6;
-          }
-          else {
-            c_1610613092 = 65533;
-            i_1610613094 += 1;
-          }
-          
-          }
-          else {
-            c_1610613092 = text_1610613066[i_1610613094];
-            i_1610613094 += 1;
-          }
-          }}}}}
-          submatch_1610612976(ms_1610613068, text_1610613066, regex_1610613067, iPrev_1610613095, cPrev_1610613093, c_1610613092);
-          if ((len_1442842176(ms_1610613068.a) == 0)) {
-          if ((i_1610613094 < (text_1610613066).length)) {
-          if (hasMatches_1610612802(ms_1610613068)) {
-          result_1610613071 = i_1610613094;
-          break BeforeRet;
-          }
-          
-          if (optFlag_1610613100) {
-          result_1610613071 = i_1610613094;
-          break BeforeRet;
-          }
-          
-          }
-          
-          }
-          
-          add_1442842149(ms_1610613068, "a", {Field0: 0, Field1: -1, Field2: HEX2EHEX2E_754975569(i_1610613094, (i_1610613094 - 1))});
-          iPrev_1610613095 = i_1610613094;
-          cPrev_1610613093 = c_1610613092;
-        }
-    } while (false);
-    submatch_1610612976(ms_1610613068, text_1610613066, regex_1610613067, iPrev_1610613095, cPrev_1610613093, -1);
-    if (!((len_1442842176(ms_1610613068.a) == 0))) {
-    failedAssertImpl_218103864(makeNimstrLit("nfafindall.nim(205, 12) `smA.len == 0` "));
-    }
-    
-    if (hasMatches_1610612802(ms_1610613068)) {
-    result_1610613071 = i_1610613094;
-    break BeforeRet;
-    }
-    
-    result_1610613071 = -1;
-    break BeforeRet;
-  } while (false);
-
-  return result_1610613071;
-
-}
-
-function findSomeOptImpl_1610613377(text_1610613378, regex_1610613379, ms_1610613380, start_1610613381) {
-      var Temporary1;
-
-  var result_1610613382 = 0;
-
-  BeforeRet: do {
-    if (!((0 < (regex_1610613379.litOpt.nfa.s).length))) {
-    failedAssertImpl_218103864(makeNimstrLit("nfafindall.nim(228, 12) `opt.nfa.s.len > 0` "));
-    }
-    
-    if ((ms_1610613380.a == null)) {
-    ms_1610613380.a = newSubmatches_1442842071(nimMax((regex_1610613379.litOpt.nfa.s).length, (regex_1610613379.nfa.s).length));
-    ms_1610613380.b = newSubmatches_1442842071(nimMax((regex_1610613379.litOpt.nfa.s).length, (regex_1610613379.nfa.s).length));
-    ms_1610613380.look = nimCopy(ms_1610613380.look, {ahead: matchImpl_1627389991, behind: reversedMatchImpl_1627390438, smL: ({s: [], i: 0})}, NTI1627389957);
-    }
-    
-      if (!(nimMax((regex_1610613379.litOpt.nfa.s).length, (regex_1610613379.nfa.s).length) <= cap_1442842188(ms_1610613380.a))) Temporary1 = false; else {        Temporary1 = (nimMax((regex_1610613379.litOpt.nfa.s).length, (regex_1610613379.nfa.s).length) <= cap_1442842188(ms_1610613380.b));      }    if (!(Temporary1)) {
-    failedAssertImpl_218103864(makeNimstrLit("nfafindall.nim(229, 16) `ms.a.cap >= max(len(regex.litOpt.nfa.s), len(regex.nfa.s)) and\x0A    ms.b.cap >= max(len(regex.litOpt.nfa.s), len(regex.nfa.s))` "));
-    }
-    
-    clear_1610612805(ms_1610613380);
-    var limit_1610613418 = start_1610613381;
-    var i_1610613419 = start_1610613381;
-    var i2_1610613420 = -1;
-    Label2: do {
-        Label3: while (true) {
-        if (!(i_1610613419 < (text_1610613378).length)) break Label3;
-          if (!((i2_1610613420 < i_1610613419))) {
-          failedAssertImpl_218103864(makeNimstrLit("nfafindall.nim(235, 14) `i > i2` "));
-          }
-          
-          i2_1610613420 = i_1610613419;
-          var litIdx_1610613426 = nsuFindChar(text_1610613378, regex_1610613379.litOpt.lit, i_1610613419, 0);
-          if ((litIdx_1610613426 == -1)) {
-          result_1610613382 = -1;
-          break BeforeRet;
-          }
-          
-          if (!((i_1610613419 <= litIdx_1610613426))) {
-          failedAssertImpl_218103864(makeNimstrLit("nfafindall.nim(242, 14) `litIdx >= i` "));
-          }
-          
-          i_1610613419 = litIdx_1610613426;
-          i_1610613419 = reversedMatchImpl_1627391037(ms_1610613380, "a", ms_1610613380, "b", text_1610613378, regex_1610613379.litOpt.nfa, ms_1610613380.look, i_1610613419, limit_1610613418);
-          if ((i_1610613419 == -1)) {
-          i_1610613419 = (litIdx_1610613426 + 1);
-          }
-          else {
-            if (!((i_1610613419 <= litIdx_1610613426))) {
-            failedAssertImpl_218103864(makeNimstrLit("nfafindall.nim(249, 16) `i <= litIdx` "));
-            }
-            
-            i_1610613419 = findSomeImpl_1610613065(text_1610613378, regex_1610613379, ms_1610613380, i_1610613419, ConstSet25);
-            if (hasMatches_1610612802(ms_1610613380)) {
-            result_1610613382 = i_1610613419;
-            break BeforeRet;
-            }
-            
-            if ((i_1610613419 == -1)) {
-            result_1610613382 = -1;
-            break BeforeRet;
-            }
-            
-          }
-          
-        }
-    } while (false);
-    result_1610613382 = -1;
-    break BeforeRet;
-  } while (false);
-
-  return result_1610613382;
-
-}
-
-function contains_1090520782(s_1090520783, pattern_1090520784) {
-            var Temporary4;
-
-  var result_1090520785 = false;
-
-  BeforeRet: do {
-    Label1: do {
-      var __1090520786 = ({a: 0, b: 0});
-      var i_2684354897 = 0;
-      var i2_2684354898 = -1;
-      var ms_2684354899 = [({a: null, b: null, m: ({s: [], i: 0}), c: [], look: ({ahead: null, behind: null, smL: ({s: [], i: 0})})})];
-      Label2: do {
-          Label3: while (true) {
-          if (!(i_2684354897 <= (s_1090520783).length)) break Label3;
-            if (!((i2_2684354898 < i_2684354897))) {
-            failedAssertImpl_218103864(makeNimstrLit("regex.nim(964, 13) `i > i2` "));
-            }
-            
-            i2_2684354898 = i_2684354897;
-            if (canOpt_1459618384(pattern_1090520784.litOpt)) {
-            Temporary4 = findSomeOptImpl_1610613377(s_1090520783, pattern_1090520784, ms_2684354899[0], i_2684354897);
-            }
-            else {
-            Temporary4 = findSomeImpl_1610613065(s_1090520783, pattern_1090520784, ms_2684354899[0], i_2684354897, ConstSet26);
-            }
-            
-            i_2684354897 = Temporary4;
-            if ((i_2684354897 < 0)) {
-            break Label2;
-            }
-            
-            Label5: do {
-              var ab_2684354902 = ({a: 0, b: 0});
-              Label6: do {
-                var i_2684354904 = 0;
-                var colontmp__2684354905 = 0;
-                colontmp__2684354905 = (len_1610612760(ms_2684354899[0].m) - 1);
-                var res_2684354906 = 0;
-                Label7: do {
-                    Label8: while (true) {
-                    if (!(res_2684354906 <= colontmp__2684354905)) break Label8;
-                      i_2684354904 = res_2684354906;
-                      ab_2684354902 = nimCopy(ab_2684354902, ms_2684354899[0].m.s[i_2684354904].Field1, NTI754976722);
-                      __1090520786 = nimCopy(__1090520786, ab_2684354902, NTI754976722);
-                      result_1090520785 = true;
-                      break BeforeRet;
-                      res_2684354906 += 1;
-                    }
-                } while (false);
-              } while (false);
-            } while (false);
-            if ((i_2684354897 == (s_1090520783).length)) {
-            break Label2;
-            }
-            
-          }
-      } while (false);
-    } while (false);
-    result_1090520785 = false;
-    break BeforeRet;
-  } while (false);
-
-  return result_1090520785;
-
-}
-
-function re_469785832() {
-  var result_469785835 = ({nfa: ({s: [], t: ({allZ: [], z: []})}), groupsCount: 0, namedGroups: ({data: [], counter: 0, first: 0, last: 0}), litOpt: ({lit: 0, nfa: ({s: [], t: ({allZ: [], z: []})})})});
-
-    result_469785835 = nimCopy(result_469785835, {nfa: {s: [{kind: 45, cp: 35, next: [1], isGreedy: false, uid: 0, idx: 0, isCapturing: false, name: [], flags: [], min: 0, max: 0, cps: {data: [], counter: 0}, ranges: [], shorthands: [], cc: 0, subExp: {nfa: {s: [], t: {allZ: [], z: []}}, rpn: {s: []}, reverseCapts: false}}, {kind: 0, cp: 47, next: [2], isGreedy: false, uid: 2, idx: 0, isCapturing: false, name: [], flags: [], min: 0, max: 0, cps: {data: [], counter: 0}, ranges: [], shorthands: [], cc: 0, subExp: {nfa: {s: [], t: {allZ: [], z: []}}, rpn: {s: []}, reverseCapts: false}}, {kind: 0, cp: 103, next: [3], isGreedy: false, uid: 3, idx: 0, isCapturing: false, name: [], flags: [], min: 0, max: 0, cps: {data: [], counter: 0}, ranges: [], shorthands: [], cc: 0, subExp: {nfa: {s: [], t: {allZ: [], z: []}}, rpn: {s: []}, reverseCapts: false}}, {kind: 0, cp: 117, next: [4], isGreedy: false, uid: 4, idx: 0, isCapturing: false, name: [], flags: [], min: 0, max: 0, cps: {data: [], counter: 0}, ranges: [], shorthands: [], cc: 0, subExp: {nfa: {s: [], t: {allZ: [], z: []}}, rpn: {s: []}, reverseCapts: false}}, {kind: 0, cp: 105, next: [5], isGreedy: false, uid: 5, idx: 0, isCapturing: false, name: [], flags: [], min: 0, max: 0, cps: {data: [], counter: 0}, ranges: [], shorthands: [], cc: 0, subExp: {nfa: {s: [], t: {allZ: [], z: []}}, rpn: {s: []}, reverseCapts: false}}, {kind: 0, cp: 100, next: [6], isGreedy: false, uid: 6, idx: 0, isCapturing: false, name: [], flags: [], min: 0, max: 0, cps: {data: [], counter: 0}, ranges: [], shorthands: [], cc: 0, subExp: {nfa: {s: [], t: {allZ: [], z: []}}, rpn: {s: []}, reverseCapts: false}}, {kind: 0, cp: 101, next: [7], isGreedy: false, uid: 7, idx: 0, isCapturing: false, name: [], flags: [], min: 0, max: 0, cps: {data: [], counter: 0}, ranges: [], shorthands: [], cc: 0, subExp: {nfa: {s: [], t: {allZ: [], z: []}}, rpn: {s: []}, reverseCapts: false}}, {kind: 0, cp: 47, next: [8, 9], isGreedy: false, uid: 8, idx: 0, isCapturing: false, name: [], flags: [], min: 0, max: 0, cps: {data: [], counter: 0}, ranges: [], shorthands: [], cc: 0, subExp: {nfa: {s: [], t: {allZ: [], z: []}}, rpn: {s: []}, reverseCapts: false}}, {kind: 40, cp: 35, next: [8, 9], isGreedy: false, uid: 10, idx: 0, isCapturing: false, name: [], flags: [], min: 0, max: 0, cps: {data: [{Field0: 0, Field1: 0}, {Field0: -702032087, Field1: 47}, {Field0: 0, Field1: 0}, {Field0: 0, Field1: 0}, {Field0: 0, Field1: 0}, {Field0: 0, Field1: 0}, {Field0: 0, Field1: 0}, {Field0: 0, Field1: 0}], counter: 1}, ranges: [], shorthands: [], cc: 0, subExp: {nfa: {s: [], t: {allZ: [], z: []}}, rpn: {s: []}, reverseCapts: false}}, {kind: 46, cp: 35, next: [], isGreedy: false, uid: 0, idx: 0, isCapturing: false, name: [], flags: [], min: 0, max: 0, cps: {data: [], counter: 0}, ranges: [], shorthands: [], cc: 0, subExp: {nfa: {s: [], t: {allZ: [], z: []}}, rpn: {s: []}, reverseCapts: false}}], t: {allZ: [[0], [-1], [-1], [-1], [-1], [-1], [-1], [1, 2], [-1, 3], []], z: [[{kind: 11, cp: 94, next: [2], isGreedy: false, uid: 1, idx: 0, isCapturing: false, name: [], flags: [], min: 0, max: 0, cps: {data: [], counter: 0}, ranges: [], shorthands: [], cc: 0, subExp: {nfa: {s: [], t: {allZ: [], z: []}}, rpn: {s: []}, reverseCapts: false}}], [{kind: 3, cp: 40, next: [9], isGreedy: false, uid: 9, idx: 0, isCapturing: true, name: [], flags: [], min: 0, max: 0, cps: {data: [], counter: 0}, ranges: [], shorthands: [], cc: 0, subExp: {nfa: {s: [], t: {allZ: [], z: []}}, rpn: {s: []}, reverseCapts: false}}], [{kind: 12, cp: 36, next: [0], isGreedy: false, uid: 14, idx: 0, isCapturing: false, name: [], flags: [], min: 0, max: 0, cps: {data: [], counter: 0}, ranges: [], shorthands: [], cc: 0, subExp: {nfa: {s: [], t: {allZ: [], z: []}}, rpn: {s: []}, reverseCapts: false}}], [{kind: 4, cp: 41, next: [14], isGreedy: false, uid: 12, idx: 0, isCapturing: true, name: [], flags: [], min: 0, max: 0, cps: {data: [], counter: 0}, ranges: [], shorthands: [], cc: 0, subExp: {nfa: {s: [], t: {allZ: [], z: []}}, rpn: {s: []}, reverseCapts: false}}, {kind: 12, cp: 36, next: [0], isGreedy: false, uid: 14, idx: 0, isCapturing: false, name: [], flags: [], min: 0, max: 0, cps: {data: [], counter: 0}, ranges: [], shorthands: [], cc: 0, subExp: {nfa: {s: [], t: {allZ: [], z: []}}, rpn: {s: []}, reverseCapts: false}}]]}}, groupsCount: 1, namedGroups: {data: [{Field0: 0, Field1: 0, Field2: [], Field3: 0}, {Field0: 0, Field1: 0, Field2: [], Field3: 0}, {Field0: 0, Field1: 0, Field2: [], Field3: 0}, {Field0: 0, Field1: 0, Field2: [], Field3: 0}, {Field0: 0, Field1: 0, Field2: [], Field3: 0}, {Field0: 0, Field1: 0, Field2: [], Field3: 0}, {Field0: 0, Field1: 0, Field2: [], Field3: 0}, {Field0: 0, Field1: 0, Field2: [], Field3: 0}], counter: 0, first: -1, last: -1}, litOpt: {lit: 101, nfa: {s: [{kind: 45, cp: 35, next: [1], isGreedy: true, uid: 0, idx: 0, isCapturing: false, name: [], flags: [], min: 0, max: 0, cps: {data: [], counter: 0}, ranges: [], shorthands: [], cc: 0, subExp: {nfa: {s: [], t: {allZ: [], z: []}}, rpn: {s: []}, reverseCapts: false}}, {kind: 0, cp: 100, next: [2], isGreedy: true, uid: 6, idx: 0, isCapturing: false, name: [], flags: [], min: 0, max: 0, cps: {data: [], counter: 0}, ranges: [], shorthands: [], cc: 0, subExp: {nfa: {s: [], t: {allZ: [], z: []}}, rpn: {s: []}, reverseCapts: false}}, {kind: 0, cp: 105, next: [3], isGreedy: true, uid: 5, idx: 0, isCapturing: false, name: [], flags: [], min: 0, max: 0, cps: {data: [], counter: 0}, ranges: [], shorthands: [], cc: 0, subExp: {nfa: {s: [], t: {allZ: [], z: []}}, rpn: {s: []}, reverseCapts: false}}, {kind: 0, cp: 117, next: [4], isGreedy: true, uid: 4, idx: 0, isCapturing: false, name: [], flags: [], min: 0, max: 0, cps: {data: [], counter: 0}, ranges: [], shorthands: [], cc: 0, subExp: {nfa: {s: [], t: {allZ: [], z: []}}, rpn: {s: []}, reverseCapts: false}}, {kind: 0, cp: 103, next: [5], isGreedy: true, uid: 3, idx: 0, isCapturing: false, name: [], flags: [], min: 0, max: 0, cps: {data: [], counter: 0}, ranges: [], shorthands: [], cc: 0, subExp: {nfa: {s: [], t: {allZ: [], z: []}}, rpn: {s: []}, reverseCapts: false}}, {kind: 0, cp: 47, next: [6], isGreedy: true, uid: 2, idx: 0, isCapturing: false, name: [], flags: [], min: 0, max: 0, cps: {data: [], counter: 0}, ranges: [], shorthands: [], cc: 0, subExp: {nfa: {s: [], t: {allZ: [], z: []}}, rpn: {s: []}, reverseCapts: false}}, {kind: 46, cp: 35, next: [], isGreedy: true, uid: 0, idx: 0, isCapturing: false, name: [], flags: [], min: 0, max: 0, cps: {data: [], counter: 0}, ranges: [], shorthands: [], cc: 0, subExp: {nfa: {s: [], t: {allZ: [], z: []}}, rpn: {s: []}, reverseCapts: false}}], t: {allZ: [[-1], [-1], [-1], [-1], [-1], [0], []], z: [[{kind: 11, cp: 94, next: [0], isGreedy: true, uid: 1, idx: 0, isCapturing: false, name: [], flags: [], min: 0, max: 0, cps: {data: [], counter: 0}, ranges: [], shorthands: [], cc: 0, subExp: {nfa: {s: [], t: {allZ: [], z: []}}, rpn: {s: []}, reverseCapts: false}}]]}}}}, NTI1442841134);
-
-  return result_469785835;
-
-}
-
-function newSeq_452985301(len_452985303) {
-  var result_452985304 = [];
-
-    result_452985304 = new Array(len_452985303); for (var i = 0 ; i < len_452985303 ; ++i) { result_452985304[i] = []; }
-  return result_452985304;
-
-}
-
-function HEX5BHEX5D_754975596(s_754975599, x_754975600) {
-  var result_754975601 = [];
-
-    var a_754975603 = x_754975600.a;
-    var L_754975605 = ((x_754975600.b - a_754975603) + 1);
-    result_754975601 = nimCopy(null, mnewString(L_754975605), NTI33554439);
-    Label1: do {
-      var i_754975610 = 0;
-      var i_469762169 = 0;
-      Label2: do {
-          Label3: while (true) {
-          if (!(i_469762169 < L_754975605)) break Label3;
-            i_754975610 = i_469762169;
-            result_754975601[i_754975610] = s_754975599[(i_754975610 + a_754975603)];
-            i_469762169 += 1;
-          }
-      } while (false);
-    } while (false);
-
-  return result_754975601;
-
-}
-
-function group_1090520399(m_1090520400, i_1090520401, text_1090520402) {
-  var result_1090520403 = [];
-
-    result_1090520403 = nimCopy(null, newSeq_452985301(0), NTI452985126);
-    Label1: do {
-      var bounds_1090520411 = ({a: 0, b: 0});
-      Label2: do {
-        var capt_469762163 = ({a: 0, b: 0});
-        var colontmp__469762164 = [];
-        colontmp__469762164 = m_1090520400.captures[i_1090520401];
-        var i_469762165 = 0;
-        var L_469762166 = (colontmp__469762164).length;
-        Label3: do {
-            Label4: while (true) {
-            if (!(i_469762165 < L_469762166)) break Label4;
-              capt_469762163 = colontmp__469762164[i_469762165];
-              bounds_1090520411 = nimCopy(bounds_1090520411, capt_469762163, NTI754976722);
-              result_1090520403.push(HEX5BHEX5D_754975596(text_1090520402, bounds_1090520411));;
-              i_469762165 += 1;
-            }
-        } while (false);
-      } while (false);
-    } while (false);
-
-  return result_1090520403;
-
-}
-
-function len_1442841448(t_1442841451) {
-  var result_1442841452 = 0;
-
-    result_1442841452 = t_1442841451.counter;
-
-  return result_1442841452;
-
-}
-
-function HEX5BHEX5D_1442841225(s_1442841227, i_1442841228) {
-  var result_1442841229 = null;
-
-    result_1442841229 = s_1442841227[((s_1442841227).length - i_1442841228)];
-
-  return result_1442841229;
-
-}
-
-function reverse_1442841280(a_1442841282, first_1442841283, last_1442841284) {
-    var x_1442841285 = first_1442841283;
-    var y_1442841286 = last_1442841284;
-    Label1: do {
-        Label2: while (true) {
-        if (!(x_1442841285 < y_1442841286)) break Label2;
-          var Temporary3 = a_1442841282[x_1442841285]; a_1442841282[x_1442841285] = a_1442841282[y_1442841286]; a_1442841282[y_1442841286] = Temporary3;          y_1442841286 -= 1;
-          x_1442841285 += 1;
-        }
-    } while (false);
-
-  
-}
-
-function reverse_1442841274(a_1442841276) {
-    reverse_1442841280(a_1442841276, 0, nimMax(0, (a_1442841276).length - 1));
-
-  
-}
-
-function constructSubmatches_1442841185(captures_1442841186, captures_1442841186_Idx, capts_1442841187, capt_1442841188, size_1442841189) {
-  BeforeRet: do {
-    if (captures_1442841186[captures_1442841186_Idx].length < size_1442841189) { for (var i = captures_1442841186[captures_1442841186_Idx].length ; i < size_1442841189 ; ++i) captures_1442841186[captures_1442841186_Idx].push([]); }
-               else { captures_1442841186[captures_1442841186_Idx].length = size_1442841189; };
-    Label1: do {
-      var i_1442841203 = 0;
-      var colontmp__1845498460 = 0;
-      colontmp__1845498460 = ((captures_1442841186[captures_1442841186_Idx]).length - 1);
-      var res_1845498461 = 0;
-      Label2: do {
-          Label3: while (true) {
-          if (!(res_1845498461 <= colontmp__1845498460)) break Label3;
-            i_1442841203 = res_1845498461;
-            if (captures_1442841186[captures_1442841186_Idx][i_1442841203].length < 0) { for (var i = captures_1442841186[captures_1442841186_Idx][i_1442841203].length ; i < 0 ; ++i) captures_1442841186[captures_1442841186_Idx][i_1442841203].push(({a: 0, b: 0})); }
-               else { captures_1442841186[captures_1442841186_Idx][i_1442841203].length = 0; };
-            res_1845498461 += 1;
-          }
-      } while (false);
-    } while (false);
-    if (((capts_1442841187).length == 0)) {
-    break BeforeRet;
-    }
-    
-    var capt_1442841212 = capt_1442841188;
-    Label4: do {
-        Label5: while (true) {
-        if (!!((capt_1442841212 == -1))) break Label5;
-          if (((captures_1442841186[captures_1442841186_Idx][capts_1442841187[capt_1442841212].idx]).length == 0)) {
-          captures_1442841186[captures_1442841186_Idx][capts_1442841187[capt_1442841212].idx].push(HEX2EHEX2E_754975569(-2, -2));;
-          }
-          
-          if (!((HEX5BHEX5D_1442841225(captures_1442841186[captures_1442841186_Idx][capts_1442841187[capt_1442841212].idx], 1).a == -2))) {
-          captures_1442841186[captures_1442841186_Idx][capts_1442841187[capt_1442841212].idx].push(HEX2EHEX2E_754975569(-2, -2));;
-          }
-          
-          if ((HEX5BHEX5D_1442841225(captures_1442841186[captures_1442841186_Idx][capts_1442841187[capt_1442841212].idx], 1).b == -2)) {
-          HEX5BHEX5D_1442841225(captures_1442841186[captures_1442841186_Idx][capts_1442841187[capt_1442841212].idx], 1).b = (capts_1442841187[capt_1442841212].bound - 1);
-          }
-          else {
-            HEX5BHEX5D_1442841225(captures_1442841186[captures_1442841186_Idx][capts_1442841187[capt_1442841212].idx], 1).a = capts_1442841187[capt_1442841212].bound;
-          }
-          
-          capt_1442841212 = ((capts_1442841187[capt_1442841212].parent) | 0);
-        }
-    } while (false);
-    Label6: do {
-      var c_1442841273 = null;
-      var c_1442841273_Idx = 0;
-      var i_1845498466 = 0;
-      var L_1845498467 = (captures_1442841186[captures_1442841186_Idx]).length;
-      Label7: do {
-          Label8: while (true) {
-          if (!(i_1845498466 < L_1845498467)) break Label8;
-            c_1442841273 = captures_1442841186[captures_1442841186_Idx]; c_1442841273_Idx = i_1845498466;
-            reverse_1442841274(c_1442841273[c_1442841273_Idx]);
-            i_1845498466 += 1;
-          }
-      } while (false);
-    } while (false);
-  } while (false);
-
-  
-}
-
-function fillMatchImpl_1610612826(m_1610612827, mi_1610612828, ms_1610612829, regex_1610612830) {
-    if (!((len_1442841448(m_1610612827.namedGroups) == len_1442841448(regex_1610612830.namedGroups)))) {
-    m_1610612827.namedGroups = nimCopy(m_1610612827.namedGroups, regex_1610612830.namedGroups, NTI1409286280);
-    }
-    
-    constructSubmatches_1442841185(m_1610612827, "captures", ms_1610612829.c, ((ms_1610612829.m.s[mi_1610612828].Field0) | 0), ((regex_1610612830.groupsCount) | 0));
-    m_1610612827.boundaries = nimCopy(m_1610612827.boundaries, ms_1610612829.m.s[mi_1610612828].Field1, NTI754976722);
-
-  
-}
-
-function findAll_1090520725(s_1090520726, pattern_1090520727, start_1090520728) {
-            var Temporary4;
-
-  var result_1090520729 = [];
-
-    Label1: do {
-      var m_1090520730 = ({captures: [], namedGroups: ({data: [], counter: 0, first: 0, last: 0}), boundaries: ({a: 0, b: 0})});
-      var i_469762149 = start_1090520728;
-      var i2_469762150 = (start_1090520728 - 1);
-      var m_469762151 = [({captures: [], namedGroups: ({data: [], counter: 0, first: 0, last: 0}), boundaries: ({a: 0, b: 0})})];
-      var ms_469762152 = [({a: null, b: null, m: ({s: [], i: 0}), c: [], look: ({ahead: null, behind: null, smL: ({s: [], i: 0})})})];
-      Label2: do {
-          Label3: while (true) {
-          if (!(i_469762149 <= (s_1090520726).length)) break Label3;
-            if (!((i2_469762150 < i_469762149))) {
-            failedAssertImpl_218103864(makeNimstrLit("regex.nim(937, 13) `i > i2` "));
-            }
-            
-            i2_469762150 = i_469762149;
-            if (canOpt_1459618384(pattern_1090520727.litOpt)) {
-            Temporary4 = findSomeOptImpl_1610613377(s_1090520726, pattern_1090520727, ms_469762152[0], i_469762149);
-            }
-            else {
-            Temporary4 = findSomeImpl_1610613065(s_1090520726, pattern_1090520727, ms_469762152[0], i_469762149, ConstSet27);
-            }
-            
-            i_469762149 = Temporary4;
-            if ((i_469762149 < 0)) {
-            break Label2;
-            }
-            
-            Label5: do {
-              var mi_469762155 = 0;
-              Label6: do {
-                var i_469762157 = 0;
-                var colontmp__469762158 = 0;
-                colontmp__469762158 = (len_1610612760(ms_469762152[0].m) - 1);
-                var res_469762159 = 0;
-                Label7: do {
-                    Label8: while (true) {
-                    if (!(res_469762159 <= colontmp__469762158)) break Label8;
-                      i_469762157 = res_469762159;
-                      mi_469762155 = i_469762157;
-                      fillMatchImpl_1610612826(m_469762151[0], mi_469762155, ms_469762152[0], pattern_1090520727);
-                      m_1090520730 = nimCopy(m_1090520730, m_469762151[0], NTI1442841138);
-                      var Temporary9 = nimCopy(null, m_1090520730, NTI1442841138);
-                      result_1090520729.push(Temporary9);;
-                      res_469762159 += 1;
-                    }
-                } while (false);
-              } while (false);
-            } while (false);
-            if ((i_469762149 == (s_1090520726).length)) {
-            break Label2;
-            }
-            
-          }
-      } while (false);
-    } while (false);
-
-  return result_1090520729;
-
-}
-
-function set_2684355345(self_2684355347, value_2684355348) {
-      var Temporary1;
-      var Temporary2;
-
-    valHEX3D_2684354589(self_2684355347, value_2684355348);
-      if (!!((application_1845493808[0] == null))) Temporary2 = false; else {        Temporary2 = !((application_1845493808[0].router == null));      }      if (!Temporary2) Temporary1 = false; else {        Temporary1 = enableRouting_2248146952[0];      }    if (Temporary1) {
-    application_1845493808[0].router(false);
-    }
-    
-
-  
-}
-
-function initSideBar_2818572963(uniqCompId_2818572964, isMobile_2818572965) {
-    
-function HEX3Aanonymous_2818572970(self_2818572971, ev_2818572972) {
-      
-    }
-    
-function HEX3Aanonymous_2818572973(self_2818572971, ev_2818572972) {
-      
-    }
-    
-function HEX3Aanonymous_2818572974(self_2818572971, ev_2818572972) {
-      
-    }
-    
-function HEX3Aanonymous_2818572975(self_2818572971, ev_2818572972) {
-      
-    }
-    
-function HEX3Aanonymous_2818572976(self_2818572971, ev_2818572972) {
-      
-    }
-    
-function HEX3Aanonymous_2818572977(self_2818572971, ev_2818572972) {
-      
-    }
-    
-function HEX3Aanonymous_2818572978(self_2818572971, ev_2818572972) {
-      
-    }
-
-  var result_2818572966 = null;
-
-    result_2818572966 = {uniqCompId: nimCopy(null, uniqCompId_2818572964, NTI33554439), isMobile: remember_2751463447(isMobile_2818572965), m_type: NTI2818572891, isCreated: false, slot: null, created: null, exited: null, rendered: null, pageHide: null, pageShow: null, beforeUpdated: null, updated: null};
-    result_2818572966.beforeUpdated = HEX3Aanonymous_2818572970;
-    result_2818572966.pageShow = HEX3Aanonymous_2818572973;
-    result_2818572966.pageHide = HEX3Aanonymous_2818572974;
-    result_2818572966.rendered = HEX3Aanonymous_2818572975;
-    result_2818572966.exited = HEX3Aanonymous_2818572976;
-    result_2818572966.created = HEX3Aanonymous_2818572977;
-    result_2818572966.updated = HEX3Aanonymous_2818572978;
-
-  return result_2818572966;
-
-}
-
-function initGuidePage_2969567247(uniqCompId_2969567248, current_2969567249) {
-    
-function HEX3Aanonymous_2969567254(self_2969567255, ev_2969567256) {
-      
-    }
-    
-function HEX3Aanonymous_2969567257(self_2969567255, ev_2969567256) {
-      
-    }
-    
-function HEX3Aanonymous_2969567258(self_2969567255, ev_2969567256) {
-      
-    }
-    
-function HEX3Aanonymous_2969567259(self_2969567255, ev_2969567256) {
-      
-    }
-    
-function HEX3Aanonymous_2969567260(self_2969567255, ev_2969567256) {
-      
-    }
-    
-function HEX3Aanonymous_2969567261(self_2969567255, ev_2969567256) {
-      
-    }
-    
-function HEX3Aanonymous_2969567262(self_2969567255, ev_2969567256) {
-      
-    }
-
-  var result_2969567250 = null;
-
-    result_2969567250 = {uniqCompId: nimCopy(null, uniqCompId_2969567248, NTI33554439), current: remember_2684354564(current_2969567249), m_type: NTI2969567235, isCreated: false, slot: null, created: null, exited: null, rendered: null, pageHide: null, pageShow: null, beforeUpdated: null, updated: null};
-    result_2969567250.beforeUpdated = HEX3Aanonymous_2969567254;
-    result_2969567250.pageShow = HEX3Aanonymous_2969567257;
-    result_2969567250.pageHide = HEX3Aanonymous_2969567258;
-    result_2969567250.rendered = HEX3Aanonymous_2969567259;
-    result_2969567250.exited = HEX3Aanonymous_2969567260;
-    result_2969567250.created = HEX3Aanonymous_2969567261;
-    result_2969567250.updated = HEX3Aanonymous_2969567262;
-
-  return result_2969567250;
-
 }
 
 function nstTake(t_1895825556, key_1895825557) {
@@ -10976,9 +6563,9 @@ function toDom_2013266263(self_2013266264) {
 
   BeforeRet: do {
     if (self_2013266264.isText) {
-    var colontmp__469786061 = document.createTextNode(toJSStr(self_2013266264.name));
-    var colontmp__469786062 = false;
-    result_2013266267 = nimCopy(result_2013266267, {Field0: colontmp__469786061, Field1: colontmp__469786062}, NTI2013266291);
+    var colontmp__469762376 = document.createTextNode(toJSStr(self_2013266264.name));
+    var colontmp__469762377 = false;
+    result_2013266267 = nimCopy(result_2013266267, {Field0: colontmp__469762376, Field1: colontmp__469762377}, NTI2013266291);
     break BeforeRet;
     }
     else {
@@ -10986,12 +6573,12 @@ function toDom_2013266263(self_2013266264) {
     var res_2013266270 = document.createElement("div");
     Label1: do {
       var child_2013266274 = null;
-      var i_469786065 = 0;
-      var L_469786066 = (self_2013266264.children).length;
+      var i_469762380 = 0;
+      var L_469762381 = (self_2013266264.children).length;
       Label2: do {
           Label3: while (true) {
-          if (!(i_469786065 < L_469786066)) break Label3;
-            child_2013266274 = self_2013266264.children[i_469786065];
+          if (!(i_469762380 < L_469762381)) break Label3;
+            child_2013266274 = self_2013266264.children[i_469762380];
             var dom_2013266275 = toDom_2013266263(child_2013266274);
             if (dom_2013266275.Field1) {
             Label4: do {
@@ -11005,13 +6592,13 @@ function toDom_2013266263(self_2013266264) {
             res_2013266270.appendChild(dom_2013266275.Field0);
             }
             
-            i_469786065 += 1;
+            i_469762380 += 1;
           }
       } while (false);
     } while (false);
-    var colontmp__469786068 = res_2013266270;
-    var colontmp__469786069 = true;
-    result_2013266267 = nimCopy(result_2013266267, {Field0: colontmp__469786068, Field1: colontmp__469786069}, NTI2013266291);
+    var colontmp__469762383 = res_2013266270;
+    var colontmp__469762384 = true;
+    result_2013266267 = nimCopy(result_2013266267, {Field0: colontmp__469762383, Field1: colontmp__469762384}, NTI2013266291);
     break BeforeRet;
     }
     }
@@ -11019,45 +6606,45 @@ function toDom_2013266263(self_2013266264) {
     Label6: do {
       var key_2013266279 = [];
       Label7: do {
-        var h_469786076 = 0;
-        var colontmp__469786077 = 0;
-        colontmp__469786077 = (self_2013266264.attrs.data).length - 1;
-        var res_469786078 = 0;
+        var h_469762391 = 0;
+        var colontmp__469762392 = 0;
+        colontmp__469762392 = (self_2013266264.attrs.data).length - 1;
+        var res_469762393 = 0;
         Label8: do {
             Label9: while (true) {
-            if (!(res_469786078 <= colontmp__469786077)) break Label9;
-              h_469786076 = res_469786078;
-              if (self_2013266264.attrs.data[h_469786076].Field2) {
-              key_2013266279 = self_2013266264.attrs.data[h_469786076].Field0;
+            if (!(res_469762393 <= colontmp__469762392)) break Label9;
+              h_469762391 = res_469762393;
+              if (self_2013266264.attrs.data[h_469762391].Field2) {
+              key_2013266279 = self_2013266264.attrs.data[h_469762391].Field0;
               res_2013266278.setAttribute(toJSStr(key_2013266279), toJSStr((Temporary10 = nstTake(self_2013266264.attrs, key_2013266279), Temporary10)[0][Temporary10[1]]));
               }
               
-              res_469786078 += 1;
+              res_469762393 += 1;
             }
         } while (false);
       } while (false);
     } while (false);
     Label11: do {
       var arg_2013266283 = [];
-      var i_469786081 = 0;
-      var L_469786082 = (self_2013266264.args).length;
+      var i_469762396 = 0;
+      var L_469762397 = (self_2013266264.args).length;
       Label12: do {
           Label13: while (true) {
-          if (!(i_469786081 < L_469786082)) break Label13;
-            arg_2013266283 = self_2013266264.args[i_469786081];
+          if (!(i_469762396 < L_469762397)) break Label13;
+            arg_2013266283 = self_2013266264.args[i_469762396];
             res_2013266278.setAttribute(toJSStr(arg_2013266283), "");
-            i_469786081 += 1;
+            i_469762396 += 1;
           }
       } while (false);
     } while (false);
     Label14: do {
       var child_2013266287 = null;
-      var i_469786086 = 0;
-      var L_469786087 = (self_2013266264.children).length;
+      var i_469762401 = 0;
+      var L_469762402 = (self_2013266264.children).length;
       Label15: do {
           Label16: while (true) {
-          if (!(i_469786086 < L_469786087)) break Label16;
-            child_2013266287 = self_2013266264.children[i_469786086];
+          if (!(i_469762401 < L_469762402)) break Label16;
+            child_2013266287 = self_2013266264.children[i_469762401];
             var dom_2013266288 = toDom_2013266263(child_2013266287);
             if (dom_2013266288.Field1) {
             Label17: do {
@@ -11071,13 +6658,13 @@ function toDom_2013266263(self_2013266264) {
             res_2013266278.appendChild(dom_2013266288.Field0);
             }
             
-            i_469786086 += 1;
+            i_469762401 += 1;
           }
       } while (false);
     } while (false);
-    var colontmp__469786089 = res_2013266278;
-    var colontmp__469786090 = false;
-    result_2013266267 = nimCopy(result_2013266267, {Field0: colontmp__469786089, Field1: colontmp__469786090}, NTI2013266291);
+    var colontmp__469762404 = res_2013266278;
+    var colontmp__469762405 = false;
+    result_2013266267 = nimCopy(result_2013266267, {Field0: colontmp__469762404, Field1: colontmp__469762405}, NTI2013266291);
     break BeforeRet;
   } while (false);
 
@@ -11092,14 +6679,14 @@ function renderVdom_1845499709(app_1845499710, tag_1845499711) {
     realDom_1845499713.innerHTML = virtualDom_1845499714.innerHTML;
     Label1: do {
       var comp_1845499734 = null;
-      var i_469786058 = 0;
-      var L_469786059 = (currentComponentsList_1845498274[0]).length;
+      var i_469762373 = 0;
+      var L_469762374 = (currentComponentsList_1845498274[0]).length;
       Label2: do {
           Label3: while (true) {
-          if (!(i_469786058 < L_469786059)) break Label3;
-            comp_1845499734 = currentComponentsList_1845498274[0][i_469786058];
+          if (!(i_469762373 < L_469762374)) break Label3;
+            comp_1845499734 = currentComponentsList_1845498274[0][i_469762373];
             comp_1845499734.updated(comp_1845499734, null);
-            i_469786058 += 1;
+            i_469762373 += 1;
           }
       } while (false);
     } while (false);
@@ -11109,2020 +6696,58 @@ function renderVdom_1845499709(app_1845499710, tag_1845499711) {
   
 }
 
-function callRouter_469762213(force_469762214) {
+function callRouter_469762115(force_469762116) {
       var Temporary1;
     var Temporary2;
     
-function HEX3Aanonymous_469762367() {
+function HEX3Aanonymous_469762269() {
         route_1845499333("/");
 
       
     }
-    var Temporary3;
-      var Temporary4;
-      var Temporary5;
-    var Temporary6;
-    var Temporary7;
-      var Temporary8;
-      var Temporary9;
-      var Temporary10;
-    var Temporary11;
-      var Temporary12;
-      var Temporary13;
-    var Temporary14;
-    var Temporary15;
-      var Temporary16;
-      var Temporary17;
-      var Temporary18;
-    var Temporary19;
-      var Temporary20;
-      var Temporary21;
-    var Temporary22;
-    var Temporary23;
-      var Temporary24;
-      var Temporary25;
-      var Temporary26;
-    var Temporary27;
-      var Temporary28;
-      var Temporary29;
-    var Temporary30;
-    var Temporary31;
-      var Temporary32;
-      var Temporary33;
-      var Temporary34;
-    var Temporary35;
-      var Temporary36;
-      var Temporary37;
-    var Temporary38;
-    var Temporary39;
-      var Temporary40;
-      var Temporary41;
-      var Temporary42;
-    var Temporary43;
-      var Temporary44;
-      var Temporary45;
-    var Temporary46;
-    var Temporary47;
-      var Temporary48;
-      var Temporary49;
-      var Temporary50;
-    var Temporary51;
-      var Temporary52;
-      var Temporary53;
-    var Temporary54;
-    var Temporary55;
-      var Temporary56;
-      var Temporary57;
-      var Temporary58;
-    var Temporary59;
-      var Temporary60;
-      var Temporary61;
-    var Temporary62;
-    var Temporary63;
-      var Temporary64;
-      var Temporary65;
-      var Temporary66;
-    var Temporary67;
-      var Temporary68;
-      var Temporary69;
-    var Temporary70;
-    var Temporary71;
-      var Temporary72;
-      var Temporary73;
-      var Temporary74;
-    var Temporary75;
-      var Temporary76;
-      var Temporary77;
-    var Temporary78;
-    var Temporary79;
-      var Temporary80;
-      var Temporary81;
-      var Temporary82;
-    var Temporary83;
-      var Temporary84;
-      var Temporary85;
-    var Temporary86;
-    var Temporary87;
-      var Temporary88;
-      var Temporary89;
-      var Temporary90;
-    var Temporary91;
-      var Temporary92;
-      var Temporary93;
-    var Temporary94;
-    var Temporary95;
-      var Temporary96;
-      var Temporary97;
-      var Temporary98;
-    var Temporary99;
-      var Temporary100;
-      var Temporary101;
-    var Temporary102;
-    var Temporary103;
-      var Temporary104;
-      var Temporary105;
-      var Temporary106;
-    var Temporary107;
-      var Temporary108;
-      var Temporary109;
-    var Temporary110;
-    var Temporary111;
-      var Temporary112;
-      var Temporary113;
-      var Temporary114;
-    var Temporary115;
-      var Temporary116;
-      var Temporary117;
-    var Temporary118;
-    var Temporary119;
-      var Temporary120;
-      var Temporary121;
-      var Temporary122;
-    var Temporary123;
-      var Temporary124;
-      var Temporary125;
-    var Temporary126;
-    var Temporary127;
-      var Temporary128;
-      var Temporary129;
-      var Temporary130;
-    var Temporary131;
-      var Temporary132;
-      var Temporary133;
-    var Temporary134;
-    var Temporary135;
-      var Temporary136;
-      var Temporary137;
-      var Temporary138;
-    var Temporary139;
-      var Temporary140;
-      var Temporary141;
-    var Temporary142;
-    var Temporary143;
-      var Temporary144;
-      var Temporary145;
-      var Temporary146;
-    var Temporary147;
-      var Temporary148;
-      var Temporary149;
-    var Temporary150;
-    var Temporary151;
-      var Temporary152;
-      var Temporary153;
-      var Temporary154;
-    var Temporary155;
-      var Temporary156;
-      var Temporary157;
-    var Temporary158;
-    var Temporary159;
-      var Temporary160;
-      var Temporary161;
-      var Temporary162;
-    var Temporary163;
-      var Temporary164;
-      var Temporary165;
-    var Temporary166;
-    var Temporary167;
-      var Temporary168;
-      var Temporary169;
-      var Temporary170;
-    var Temporary171;
-      var Temporary172;
-      var Temporary173;
-    var Temporary174;
-    var Temporary175;
-      var Temporary176;
-      var Temporary177;
-      var Temporary178;
-    var Temporary179;
-      var Temporary180;
-      var Temporary181;
-    var Temporary182;
-    var Temporary183;
-      var Temporary184;
-      var Temporary185;
-      var Temporary186;
-    var Temporary187;
-      var Temporary188;
-      var Temporary189;
-    var Temporary190;
-    var Temporary191;
-      var Temporary192;
-      var Temporary193;
-      var Temporary194;
-    var Temporary195;
-      var Temporary196;
-      var Temporary197;
-    var Temporary198;
-    var Temporary199;
-      var Temporary200;
-      var Temporary201;
-      var Temporary202;
-    var Temporary203;
-      var Temporary204;
-      var Temporary205;
-    var Temporary206;
-    var Temporary207;
-      var Temporary208;
-      var Temporary209;
-      var Temporary210;
-    var Temporary211;
-      var Temporary212;
-      var Temporary213;
-    var Temporary214;
-    var Temporary215;
-      var Temporary216;
-      var Temporary217;
-      var Temporary218;
-    var Temporary219;
-      var Temporary220;
-      var Temporary221;
-    var Temporary222;
-    var Temporary223;
-      var Temporary224;
-      var Temporary225;
-      var Temporary226;
-    var Temporary227;
-      var Temporary228;
-      var Temporary229;
-    var Temporary230;
-    var Temporary231;
-      var Temporary232;
-      var Temporary233;
-      var Temporary234;
-    var Temporary235;
-      var Temporary236;
-      var Temporary237;
-    var Temporary238;
-    var Temporary239;
-      var Temporary240;
-      var Temporary241;
-      var Temporary242;
-    var Temporary243;
-      var Temporary244;
-      var Temporary245;
-    var Temporary246;
-    var Temporary247;
-      var Temporary248;
-      var Temporary249;
-      var Temporary250;
-    var Temporary251;
-      var Temporary252;
-      var Temporary253;
-    var Temporary254;
-    var Temporary255;
-      var Temporary256;
-      var Temporary257;
-      var Temporary258;
-    var Temporary259;
-      var Temporary260;
-      var Temporary261;
-    var Temporary262;
-    var Temporary263;
-      var Temporary264;
-      var Temporary265;
-      var Temporary266;
-    var Temporary267;
-      var Temporary268;
-      var Temporary269;
-    var Temporary270;
-    var Temporary271;
-      var Temporary272;
-      var Temporary273;
-      var Temporary274;
-    var Temporary275;
-      var Temporary276;
-      var Temporary277;
-    var Temporary278;
-    var Temporary279;
-      var Temporary280;
-      var Temporary281;
-      var Temporary282;
-    var Temporary283;
-      var Temporary284;
-      var Temporary285;
-    var Temporary286;
-    var Temporary287;
-      var Temporary288;
-      var Temporary289;
-      var Temporary290;
-    var Temporary291;
-      var Temporary292;
-      var Temporary293;
-    var Temporary294;
-    var Temporary295;
-      var Temporary296;
-      var Temporary297;
-      var Temporary298;
-    var Temporary299;
-      var Temporary300;
-      var Temporary301;
-    var Temporary302;
-    var Temporary303;
-      var Temporary304;
-      var Temporary305;
-      var Temporary306;
-    var Temporary307;
-      var Temporary308;
-      var Temporary309;
-    var Temporary310;
-    var Temporary311;
-      var Temporary312;
-      var Temporary313;
-      var Temporary314;
-    var Temporary315;
-      var Temporary316;
-      var Temporary317;
-    var Temporary318;
-    var Temporary319;
-      var Temporary320;
-      var Temporary321;
-      var Temporary322;
-    var Temporary323;
-      var Temporary324;
-      var Temporary325;
-    var Temporary326;
-    var Temporary327;
-      var Temporary328;
-      var Temporary329;
-      var Temporary330;
-    var Temporary331;
-      var Temporary332;
-      var Temporary333;
-      var Temporary334;
-      var Temporary335;
-      var Temporary336;
 
   BeforeRet: do {
-    var elem_469762215 = document.getElementById(app_469762077[0].appId);
-    var path_469762216 = nsuStrip(cstrToNimstr(window.location.hash), true, false, ConstSet6);
-    var html_469762217 = null;
-      if (!!(force_469762214)) Temporary1 = false; else {        Temporary1 = (0 < (currentComponent_1845498268[0]).length);      }    if (Temporary1) {
+    var elem_469762117 = document.getElementById(app_469762077[0].appId);
+    var path_469762118 = nsuStrip(cstrToNimstr(window.location.hash), true, false, ConstSet6);
+    var html_469762119 = null;
+      if (!!(force_469762116)) Temporary1 = false; else {        Temporary1 = (0 < (currentComponent_1845498268[0]).length);      }    if (Temporary1) {
     reRender_1845499748((Temporary2 = HEX5BHEX5D_1845499066(components_1845498267[0], toJSStr(currentComponent_1845498268[0])), Temporary2)[0][Temporary2[1]]);
     break BeforeRet;
     }
     
-    var fmtRes_469762305 = [mnewString(0)];
-    fmtRes_469762305[0].push.apply(fmtRes_469762305[0], makeNimstrLit("flex flex-col gap-2 justify-center items-center w-screen h-screen dark:text-["));;
-    formatValue_671088800(fmtRes_469762305, 0, makeNimstrLit("#E0EFFE"), []);
-    fmtRes_469762305[0].push.apply(fmtRes_469762305[0], makeNimstrLit("] text-["));;
-    formatValue_671088800(fmtRes_469762305, 0, makeNimstrLit("#212121"), []);
-    fmtRes_469762305[0].push.apply(fmtRes_469762305[0], makeNimstrLit("] dark:bg-["));;
-    formatValue_671088800(fmtRes_469762305, 0, makeNimstrLit("#181326"), []);
-    fmtRes_469762305[0].push.apply(fmtRes_469762305[0], makeNimstrLit("] bg-["));;
-    formatValue_671088800(fmtRes_469762305, 0, makeNimstrLit("#FEFEFE"), []);
-    fmtRes_469762305[0].push.apply(fmtRes_469762305[0], makeNimstrLit("]"));;
-    var fmtRes_469762313 = mnewString(0);
-    fmtRes_469762313.push.apply(fmtRes_469762313, makeNimstrLit("text-9xl font-semibold"));;
-    var fmtRes_469762321 = mnewString(0);
-    fmtRes_469762321.push.apply(fmtRes_469762321, makeNimstrLit("404"));;
-    var fmtRes_469762334 = mnewString(0);
-    fmtRes_469762334.push.apply(fmtRes_469762334, makeNimstrLit("text-xl font-semibold"));;
-    var fmtRes_469762342 = mnewString(0);
-    fmtRes_469762342.push.apply(fmtRes_469762342, makeNimstrLit("Oops! Not found"));;
-    var fmtRes_469762363 = mnewString(0);
-    fmtRes_469762363.push.apply(fmtRes_469762363, makeNimstrLit("flex flex-col justify-end items-center absolute top-0 left-0 bottom-24 right-0 upper"));;
-    var _comp808216087_469762368 = initButton_2751463441(makeNimstrLit("comp808216087"), false, HEX3Aanonymous_469762367, true);
-    var comp808216087_469762369 = registerComponent_1845499350("comp808216087", _comp808216087_469762368);
-    var fmtRes_469762374 = mnewString(0);
-    fmtRes_469762374.push.apply(fmtRes_469762374, makeNimstrLit("go to home"));;
-    comp808216087_469762369.slot = initTag_2013266047(makeNimstrLit("div"), [initTag_2013266105(fmtRes_469762374, true, [], false)], true);
-    var data_comp808216087_469762383 = render_1845499744(comp808216087_469762369);
-    addArgIter_2013266249(data_comp808216087_469762383, (makeNimstrLit("data-") || []).concat(comp808216087_469762369.uniqCompId || []));
-    window.addEventListener('beforeunload', data_comp808216087_469762383.exited);
-    window.addEventListener('pagehide', data_comp808216087_469762383.pageHide);
-    window.addEventListener('pageshow', data_comp808216087_469762383.pageShow);
-    html_469762217 = initTag_2013266047(makeNimstrLit("div"), [initTag_2013265957(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469762305[0], NTI33554439)}, NTI469762197)], 0), [initTag_2013265957(makeNimstrLit("p"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469762313, NTI33554439)}, NTI469762214)], 0), [initTag_2013266105(fmtRes_469762321, true, [], false)], false), initTag_2013265957(makeNimstrLit("p"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469762334, NTI33554439)}, NTI469762243)], 0), [initTag_2013266105(fmtRes_469762342, true, [], false)], false)], false), initTag_2013265957(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469762363, NTI33554439)}, NTI469762282)], 0), [data_comp808216087_469762383], false), initTag_2013266047(makeNimstrLit("style"), [initTag_2013266105(makeNimstrLit("      @keyframes upper-anim {\x0A        0% {\x0A          opacity: 0;\x0A          transform: translateY(50px);\x0A        }\x0A        100% {\x0A          opacity: 1;\x0A          transform: translateY(0);\x0A        }\x0A      }\x0A\x0A      .upper {\x0A        animation: upper-anim .5s cubic-bezier(.57,-0.05,.85,.43)\x0A      }\x0A    "), true, [], false)], false)], true);
-    if (eqStrings(path_469762216, makeNimstrLit("/"))) {
-    var fmtRes_469762412 = [mnewString(0)];
-    fmtRes_469762412[0].push.apply(fmtRes_469762412[0], makeNimstrLit("flex flex-col gap-2 bg-["));;
-    formatValue_671088800(fmtRes_469762412, 0, makeNimstrLit("#FEFEFE"), []);
-    fmtRes_469762412[0].push.apply(fmtRes_469762412[0], makeNimstrLit("] dark:bg-["));;
-    formatValue_671088800(fmtRes_469762412, 0, makeNimstrLit("#181326"), []);
-    fmtRes_469762412[0].push.apply(fmtRes_469762412[0], makeNimstrLit("] text-["));;
-    formatValue_671088800(fmtRes_469762412, 0, makeNimstrLit("#212121"), []);
-    fmtRes_469762412[0].push.apply(fmtRes_469762412[0], makeNimstrLit("] dark:text-["));;
-    formatValue_671088800(fmtRes_469762412, 0, makeNimstrLit("#E0EFFE"), []);
-    fmtRes_469762412[0].push.apply(fmtRes_469762412[0], makeNimstrLit("]"));;
-    var fmtRes_469762420 = mnewString(0);
-    fmtRes_469762420.push.apply(fmtRes_469762420, makeNimstrLit("cover"));;
-    var fmtRes_469762425 = mnewString(0);
-    fmtRes_469762425.push.apply(fmtRes_469762425, makeNimstrLit("flex flex-col gap-2 relative justify-center items-center h-screen"));;
-    var fmtRes_469762433 = mnewString(0);
-    fmtRes_469762433.push.apply(fmtRes_469762433, makeNimstrLit("/happyx/public/cover_gradient.svg"));;
-    var fmtRes_469762438 = mnewString(0);
-    fmtRes_469762438.push.apply(fmtRes_469762438, makeNimstrLit("absolute h-screen w-screen object-cover pointer-events-none"));;
-    var fmtRes_469762446 = mnewString(0);
-    fmtRes_469762446.push.apply(fmtRes_469762446, makeNimstrLit("/happyx/public/nim_logo.svg"));;
-    var fmtRes_469762451 = mnewString(0);
-    fmtRes_469762451.push.apply(fmtRes_469762451, makeNimstrLit("z-10 pointer-events-none"));;
-    var fmtRes_469762459 = mnewString(0);
-    fmtRes_469762459.push.apply(fmtRes_469762459, makeNimstrLit("/happyx/public/HappyX.svg"));;
-    var fmtRes_469762464 = mnewString(0);
-    fmtRes_469762464.push.apply(fmtRes_469762464, makeNimstrLit("z-10 pointer-events-none"));;
-    var fmtRes_469762472 = mnewString(0);
-    fmtRes_469762472.push.apply(fmtRes_469762472, makeNimstrLit("/happyx/public/desc.svg"));;
-    var fmtRes_469762477 = mnewString(0);
-    fmtRes_469762477.push.apply(fmtRes_469762477, makeNimstrLit("z-10 pointer-events-none"));;
-    var data_drawer_comp_469762490 = render_1845499744(drawer_comp_2986344463[0]);
-    addArgIter_2013266249(data_drawer_comp_469762490, (makeNimstrLit("data-") || []).concat(drawer_comp_2986344463[0].uniqCompId || []));
-    window.addEventListener('beforeunload', data_drawer_comp_469762490.exited);
-    window.addEventListener('pagehide', data_drawer_comp_469762490.pageHide);
-    window.addEventListener('pageshow', data_drawer_comp_469762490.pageShow);
-    var fmtRes_469762495 = mnewString(0);
-    fmtRes_469762495.push.apply(fmtRes_469762495, makeNimstrLit("flex flex-col gap-4"));;
-    var fmtRes_469762503 = mnewString(0);
-    fmtRes_469762503.push.apply(fmtRes_469762503, makeNimstrLit("sticky top-0 z-20"));;
-    var _comp828416489_469762507 = initHeader_2785017869(makeNimstrLit("comp828416489"), drawer_comp_2986344463[0]);
-    var comp828416489_469762508 = registerComponent_1845499350("comp828416489", _comp828416489_469762507);
-    comp828416489_469762508.slot = initTag_2013266047(makeNimstrLit("div"), [], true);
-    var data_comp828416489_469762509 = render_1845499744(comp828416489_469762508);
-    addArgIter_2013266249(data_comp828416489_469762509, (makeNimstrLit("data-") || []).concat(comp828416489_469762508.uniqCompId || []));
-    window.addEventListener('beforeunload', data_comp828416489_469762509.exited);
-    window.addEventListener('pagehide', data_comp828416489_469762509.pageHide);
-    window.addEventListener('pageshow', data_comp828416489_469762509.pageShow);
-    var fmtRes_469762522 = mnewString(0);
-    fmtRes_469762522.push.apply(fmtRes_469762522, makeNimstrLit("flex flex-col gap-16 items-center justify-center items-center w-full"));;
-    var _comp838516690_469762527 = initSection_2852126725(makeNimstrLit("comp838516690"));
-    var comp838516690_469762528 = registerComponent_1845499350("comp838516690", _comp838516690_469762527);
-    var fmtRes_469762533 = mnewString(0);
-    fmtRes_469762533.push.apply(fmtRes_469762533, makeNimstrLit("flex flex-col xl:flex-row gap-8 lg:gap-4"));;
-    var fmtRes_469762541 = mnewString(0);
-    fmtRes_469762541.push.apply(fmtRes_469762541, makeNimstrLit("flex flex-col gap-4 lg:"));;
-    var fmtRes_469762549 = [mnewString(0)];
-    fmtRes_469762549[0].push.apply(fmtRes_469762549[0], makeNimstrLit("cursor-pointer hover:scale-110 hover:z-10 transition-all duration-500 flex flex-col rounded-xl px-6 py-4 drop-shadow-2xl bg-gradient-to-r from-["));;
-    formatValue_671088800(fmtRes_469762549, 0, makeNimstrLit("#FEFEFE"), []);
-    fmtRes_469762549[0].push.apply(fmtRes_469762549[0], makeNimstrLit("] to-["));;
-    formatValue_671088800(fmtRes_469762549, 0, makeNimstrLit("#EFEFEF"), []);
-    fmtRes_469762549[0].push.apply(fmtRes_469762549[0], makeNimstrLit("] dark:from-["));;
-    formatValue_671088800(fmtRes_469762549, 0, makeNimstrLit("#181326"), []);
-    fmtRes_469762549[0].push.apply(fmtRes_469762549[0], makeNimstrLit("] dark:to-["));;
-    formatValue_671088800(fmtRes_469762549, 0, makeNimstrLit("#1c172a"), []);
-    fmtRes_469762549[0].push.apply(fmtRes_469762549[0], makeNimstrLit("]"));;
-    var fmtRes_469762557 = mnewString(0);
-    fmtRes_469762557.push.apply(fmtRes_469762557, makeNimstrLit("text-7xl lg:text-3xl xl:text-5xl font-semibold"));;
-    var fmtRes_469762565 = mnewString(0);
-    fmtRes_469762565.push.apply(fmtRes_469762565, makeNimstrLit("HappyX"));;
-    var fmtRes_469762578 = mnewString(0);
-    fmtRes_469762578.push.apply(fmtRes_469762578, makeNimstrLit("text-3xl lg:text-base"));;
-    if (!(hasKey_2667578279(translates_2634022946[0], "Powerful macro-oriented full-stack web framework"))) {
-    Temporary3 = makeNimstrLit("Powerful macro-oriented full-stack web framework");
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary5 = navigator.language;
-      }
-      else {
-      Temporary5 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    if (!(hasKey_2667578563((Temporary4 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Powerful macro-oriented full-stack web framework"), Temporary4)[0][Temporary4[1]], Temporary5))) {
-    Temporary3 = (Temporary7 = HEX5BHEX5D_2667578855((Temporary6 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Powerful macro-oriented full-stack web framework"), Temporary6)[0][Temporary6[1]], "default"), Temporary7)[0][Temporary7[1]];
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary9 = navigator.language;
-      }
-      else {
-      Temporary9 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    Temporary3 = (Temporary10 = HEX5BHEX5D_2667578855((Temporary8 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Powerful macro-oriented full-stack web framework"), Temporary8)[0][Temporary8[1]], Temporary9), Temporary10)[0][Temporary10[1]];
-    }
-    }
-    var fmtRes_469763124 = mnewString(0);
-    fmtRes_469763124.push.apply(fmtRes_469763124, makeNimstrLit("text-lg lg:text-xs font-thin"));;
-    if (!(hasKey_2667578279(translates_2634022946[0], "modern and powerful ready-to-product web framework"))) {
-    Temporary11 = makeNimstrLit("modern and powerful ready-to-product web framework");
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary13 = navigator.language;
-      }
-      else {
-      Temporary13 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    if (!(hasKey_2667578563((Temporary12 = HEX5BHEX5D_2130709651(translates_2634022946[0], "modern and powerful ready-to-product web framework"), Temporary12)[0][Temporary12[1]], Temporary13))) {
-    Temporary11 = (Temporary15 = HEX5BHEX5D_2667578855((Temporary14 = HEX5BHEX5D_2130709651(translates_2634022946[0], "modern and powerful ready-to-product web framework"), Temporary14)[0][Temporary14[1]], "default"), Temporary15)[0][Temporary15[1]];
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary17 = navigator.language;
-      }
-      else {
-      Temporary17 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    Temporary11 = (Temporary18 = HEX5BHEX5D_2667578855((Temporary16 = HEX5BHEX5D_2130709651(translates_2634022946[0], "modern and powerful ready-to-product web framework"), Temporary16)[0][Temporary16[1]], Temporary17), Temporary18)[0][Temporary18[1]];
-    }
-    }
-    var fmtRes_469763678 = [mnewString(0)];
-    fmtRes_469763678[0].push.apply(fmtRes_469763678[0], makeNimstrLit("cursor-pointer hover:scale-110 hover:z-10 transition-all duration-500 flex flex-col rounded-xl px-6 py-4 drop-shadow-2xl bg-gradient-to-r from-["));;
-    formatValue_671088800(fmtRes_469763678, 0, makeNimstrLit("#FEFEFE"), []);
-    fmtRes_469763678[0].push.apply(fmtRes_469763678[0], makeNimstrLit("] to-["));;
-    formatValue_671088800(fmtRes_469763678, 0, makeNimstrLit("#EFEFEF"), []);
-    fmtRes_469763678[0].push.apply(fmtRes_469763678[0], makeNimstrLit("] dark:from-["));;
-    formatValue_671088800(fmtRes_469763678, 0, makeNimstrLit("#181326"), []);
-    fmtRes_469763678[0].push.apply(fmtRes_469763678[0], makeNimstrLit("] dark:to-["));;
-    formatValue_671088800(fmtRes_469763678, 0, makeNimstrLit("#1c172a"), []);
-    fmtRes_469763678[0].push.apply(fmtRes_469763678[0], makeNimstrLit("]"));;
-    var fmtRes_469763686 = mnewString(0);
-    fmtRes_469763686.push.apply(fmtRes_469763686, makeNimstrLit("text-5xl lg:text-xl xl:text-3xl font-semibold"));;
-    if (!(hasKey_2667578279(translates_2634022946[0], "metaprogramming"))) {
-    Temporary19 = makeNimstrLit("metaprogramming");
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary21 = navigator.language;
-      }
-      else {
-      Temporary21 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    if (!(hasKey_2667578563((Temporary20 = HEX5BHEX5D_2130709651(translates_2634022946[0], "metaprogramming"), Temporary20)[0][Temporary20[1]], Temporary21))) {
-    Temporary19 = (Temporary23 = HEX5BHEX5D_2667578855((Temporary22 = HEX5BHEX5D_2130709651(translates_2634022946[0], "metaprogramming"), Temporary22)[0][Temporary22[1]], "default"), Temporary23)[0][Temporary23[1]];
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary25 = navigator.language;
-      }
-      else {
-      Temporary25 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    Temporary19 = (Temporary26 = HEX5BHEX5D_2667578855((Temporary24 = HEX5BHEX5D_2130709651(translates_2634022946[0], "metaprogramming"), Temporary24)[0][Temporary24[1]], Temporary25), Temporary26)[0][Temporary26[1]];
-    }
-    }
-    var fmtRes_469764232 = mnewString(0);
-    fmtRes_469764232.push.apply(fmtRes_469764232, makeNimstrLit("text-3xl lg:text-base"));;
-    if (!(hasKey_2667578279(translates_2634022946[0], "HappyX based on metaprogramming"))) {
-    Temporary27 = makeNimstrLit("HappyX based on metaprogramming");
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary29 = navigator.language;
-      }
-      else {
-      Temporary29 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    if (!(hasKey_2667578563((Temporary28 = HEX5BHEX5D_2130709651(translates_2634022946[0], "HappyX based on metaprogramming"), Temporary28)[0][Temporary28[1]], Temporary29))) {
-    Temporary27 = (Temporary31 = HEX5BHEX5D_2667578855((Temporary30 = HEX5BHEX5D_2130709651(translates_2634022946[0], "HappyX based on metaprogramming"), Temporary30)[0][Temporary30[1]], "default"), Temporary31)[0][Temporary31[1]];
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary33 = navigator.language;
-      }
-      else {
-      Temporary33 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    Temporary27 = (Temporary34 = HEX5BHEX5D_2667578855((Temporary32 = HEX5BHEX5D_2130709651(translates_2634022946[0], "HappyX based on metaprogramming"), Temporary32)[0][Temporary32[1]], Temporary33), Temporary34)[0][Temporary34[1]];
-    }
-    }
-    var fmtRes_469764778 = mnewString(0);
-    fmtRes_469764778.push.apply(fmtRes_469764778, makeNimstrLit("text-3xl lg:text-base"));;
-    if (!(hasKey_2667578279(translates_2634022946[0], "so most part of code runs at compile-time."))) {
-    Temporary35 = makeNimstrLit("so most part of code runs at compile-time.");
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary37 = navigator.language;
-      }
-      else {
-      Temporary37 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    if (!(hasKey_2667578563((Temporary36 = HEX5BHEX5D_2130709651(translates_2634022946[0], "so most part of code runs at compile-time."), Temporary36)[0][Temporary36[1]], Temporary37))) {
-    Temporary35 = (Temporary39 = HEX5BHEX5D_2667578855((Temporary38 = HEX5BHEX5D_2130709651(translates_2634022946[0], "so most part of code runs at compile-time."), Temporary38)[0][Temporary38[1]], "default"), Temporary39)[0][Temporary39[1]];
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary41 = navigator.language;
-      }
-      else {
-      Temporary41 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    Temporary35 = (Temporary42 = HEX5BHEX5D_2667578855((Temporary40 = HEX5BHEX5D_2130709651(translates_2634022946[0], "so most part of code runs at compile-time."), Temporary40)[0][Temporary40[1]], Temporary41), Temporary42)[0][Temporary42[1]];
-    }
-    }
-    var fmtRes_469765324 = mnewString(0);
-    fmtRes_469765324.push.apply(fmtRes_469765324, makeNimstrLit("text-lg lg:text-xs"));;
-    if (!(hasKey_2667578279(translates_2634022946[0], "This means that HappyX is REALLY fastest web framework"))) {
-    Temporary43 = makeNimstrLit("This means that HappyX is REALLY fastest web framework");
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary45 = navigator.language;
-      }
-      else {
-      Temporary45 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    if (!(hasKey_2667578563((Temporary44 = HEX5BHEX5D_2130709651(translates_2634022946[0], "This means that HappyX is REALLY fastest web framework"), Temporary44)[0][Temporary44[1]], Temporary45))) {
-    Temporary43 = (Temporary47 = HEX5BHEX5D_2667578855((Temporary46 = HEX5BHEX5D_2130709651(translates_2634022946[0], "This means that HappyX is REALLY fastest web framework"), Temporary46)[0][Temporary46[1]], "default"), Temporary47)[0][Temporary47[1]];
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary49 = navigator.language;
-      }
-      else {
-      Temporary49 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    Temporary43 = (Temporary50 = HEX5BHEX5D_2667578855((Temporary48 = HEX5BHEX5D_2130709651(translates_2634022946[0], "This means that HappyX is REALLY fastest web framework"), Temporary48)[0][Temporary48[1]], Temporary49), Temporary50)[0][Temporary50[1]];
-    }
-    }
-    var fmtRes_469765886 = mnewString(0);
-    fmtRes_469765886.push.apply(fmtRes_469765886, makeNimstrLit("cursor-pointer flex flex-col gap-4 lg:gap-2"));;
-    var fmtRes_469765894 = [mnewString(0)];
-    fmtRes_469765894[0].push.apply(fmtRes_469765894[0], makeNimstrLit("hover:scale-110 hover:z-10 transition-all duration-500 flex flex-col rounded-xl px-6 py-4 drop-shadow-2xl bg-gradient-to-r from-["));;
-    formatValue_671088800(fmtRes_469765894, 0, makeNimstrLit("#FEFEFE"), []);
-    fmtRes_469765894[0].push.apply(fmtRes_469765894[0], makeNimstrLit("] to-["));;
-    formatValue_671088800(fmtRes_469765894, 0, makeNimstrLit("#EFEFEF"), []);
-    fmtRes_469765894[0].push.apply(fmtRes_469765894[0], makeNimstrLit("] dark:from-["));;
-    formatValue_671088800(fmtRes_469765894, 0, makeNimstrLit("#181326"), []);
-    fmtRes_469765894[0].push.apply(fmtRes_469765894[0], makeNimstrLit("] dark:to-["));;
-    formatValue_671088800(fmtRes_469765894, 0, makeNimstrLit("#1c172a"), []);
-    fmtRes_469765894[0].push.apply(fmtRes_469765894[0], makeNimstrLit("]"));;
-    var fmtRes_469765902 = mnewString(0);
-    fmtRes_469765902.push.apply(fmtRes_469765902, makeNimstrLit("text-5xl lg:text-xl xl:text-3xl font-semibold"));;
-    if (!(hasKey_2667578279(translates_2634022946[0], "full-stack"))) {
-    Temporary51 = makeNimstrLit("full-stack");
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary53 = navigator.language;
-      }
-      else {
-      Temporary53 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    if (!(hasKey_2667578563((Temporary52 = HEX5BHEX5D_2130709651(translates_2634022946[0], "full-stack"), Temporary52)[0][Temporary52[1]], Temporary53))) {
-    Temporary51 = (Temporary55 = HEX5BHEX5D_2667578855((Temporary54 = HEX5BHEX5D_2130709651(translates_2634022946[0], "full-stack"), Temporary54)[0][Temporary54[1]], "default"), Temporary55)[0][Temporary55[1]];
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary57 = navigator.language;
-      }
-      else {
-      Temporary57 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    Temporary51 = (Temporary58 = HEX5BHEX5D_2667578855((Temporary56 = HEX5BHEX5D_2130709651(translates_2634022946[0], "full-stack"), Temporary56)[0][Temporary56[1]], Temporary57), Temporary58)[0][Temporary58[1]];
-    }
-    }
-    var fmtRes_469766448 = mnewString(0);
-    fmtRes_469766448.push.apply(fmtRes_469766448, makeNimstrLit("text-3xl lg:text-base"));;
-    if (!(hasKey_2667578279(translates_2634022946[0], "HappyX is full-stack web framework"))) {
-    Temporary59 = makeNimstrLit("HappyX is full-stack web framework");
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary61 = navigator.language;
-      }
-      else {
-      Temporary61 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    if (!(hasKey_2667578563((Temporary60 = HEX5BHEX5D_2130709651(translates_2634022946[0], "HappyX is full-stack web framework"), Temporary60)[0][Temporary60[1]], Temporary61))) {
-    Temporary59 = (Temporary63 = HEX5BHEX5D_2667578855((Temporary62 = HEX5BHEX5D_2130709651(translates_2634022946[0], "HappyX is full-stack web framework"), Temporary62)[0][Temporary62[1]], "default"), Temporary63)[0][Temporary63[1]];
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary65 = navigator.language;
-      }
-      else {
-      Temporary65 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    Temporary59 = (Temporary66 = HEX5BHEX5D_2667578855((Temporary64 = HEX5BHEX5D_2130709651(translates_2634022946[0], "HappyX is full-stack web framework"), Temporary64)[0][Temporary64[1]], Temporary65), Temporary66)[0][Temporary66[1]];
-    }
-    }
-    var fmtRes_469766994 = mnewString(0);
-    fmtRes_469766994.push.apply(fmtRes_469766994, makeNimstrLit("text-3xl lg:text-base"));;
-    if (!(hasKey_2667578279(translates_2634022946[0], "so you shouldn't learn a new syntax/libraries/frameworks"))) {
-    Temporary67 = makeNimstrLit("so you shouldn\'t learn a new syntax/libraries/frameworks");
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary69 = navigator.language;
-      }
-      else {
-      Temporary69 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    if (!(hasKey_2667578563((Temporary68 = HEX5BHEX5D_2130709651(translates_2634022946[0], "so you shouldn't learn a new syntax/libraries/frameworks"), Temporary68)[0][Temporary68[1]], Temporary69))) {
-    Temporary67 = (Temporary71 = HEX5BHEX5D_2667578855((Temporary70 = HEX5BHEX5D_2130709651(translates_2634022946[0], "so you shouldn't learn a new syntax/libraries/frameworks"), Temporary70)[0][Temporary70[1]], "default"), Temporary71)[0][Temporary71[1]];
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary73 = navigator.language;
-      }
-      else {
-      Temporary73 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    Temporary67 = (Temporary74 = HEX5BHEX5D_2667578855((Temporary72 = HEX5BHEX5D_2130709651(translates_2634022946[0], "so you shouldn't learn a new syntax/libraries/frameworks"), Temporary72)[0][Temporary72[1]], Temporary73), Temporary74)[0][Temporary74[1]];
-    }
-    }
-    var fmtRes_469767540 = mnewString(0);
-    fmtRes_469767540.push.apply(fmtRes_469767540, makeNimstrLit("text-3xl lg:text-base"));;
-    if (!(hasKey_2667578279(translates_2634022946[0], "to create modern and powerful web applications"))) {
-    Temporary75 = makeNimstrLit("to create modern and powerful web applications");
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary77 = navigator.language;
-      }
-      else {
-      Temporary77 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    if (!(hasKey_2667578563((Temporary76 = HEX5BHEX5D_2130709651(translates_2634022946[0], "to create modern and powerful web applications"), Temporary76)[0][Temporary76[1]], Temporary77))) {
-    Temporary75 = (Temporary79 = HEX5BHEX5D_2667578855((Temporary78 = HEX5BHEX5D_2130709651(translates_2634022946[0], "to create modern and powerful web applications"), Temporary78)[0][Temporary78[1]], "default"), Temporary79)[0][Temporary79[1]];
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary81 = navigator.language;
-      }
-      else {
-      Temporary81 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    Temporary75 = (Temporary82 = HEX5BHEX5D_2667578855((Temporary80 = HEX5BHEX5D_2130709651(translates_2634022946[0], "to create modern and powerful web applications"), Temporary80)[0][Temporary80[1]], Temporary81), Temporary82)[0][Temporary82[1]];
-    }
-    }
-    var fmtRes_469768094 = [mnewString(0)];
-    fmtRes_469768094[0].push.apply(fmtRes_469768094[0], makeNimstrLit("cursor-pointer hover:scale-110 hover:z-10 transition-all duration-500 flex flex-col rounded-xl px-6 py-4 drop-shadow-2xl bg-gradient-to-r from-["));;
-    formatValue_671088800(fmtRes_469768094, 0, makeNimstrLit("#FEFEFE"), []);
-    fmtRes_469768094[0].push.apply(fmtRes_469768094[0], makeNimstrLit("] to-["));;
-    formatValue_671088800(fmtRes_469768094, 0, makeNimstrLit("#EFEFEF"), []);
-    fmtRes_469768094[0].push.apply(fmtRes_469768094[0], makeNimstrLit("] dark:from-["));;
-    formatValue_671088800(fmtRes_469768094, 0, makeNimstrLit("#181326"), []);
-    fmtRes_469768094[0].push.apply(fmtRes_469768094[0], makeNimstrLit("] dark:to-["));;
-    formatValue_671088800(fmtRes_469768094, 0, makeNimstrLit("#1c172a"), []);
-    fmtRes_469768094[0].push.apply(fmtRes_469768094[0], makeNimstrLit("]"));;
-    var fmtRes_469768102 = mnewString(0);
-    fmtRes_469768102.push.apply(fmtRes_469768102, makeNimstrLit("text-5xl lg:text-xl xl:text-3xl font-semibold"));;
-    if (!(hasKey_2667578279(translates_2634022946[0], "ready-to-product"))) {
-    Temporary83 = makeNimstrLit("ready-to-product");
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary85 = navigator.language;
-      }
-      else {
-      Temporary85 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    if (!(hasKey_2667578563((Temporary84 = HEX5BHEX5D_2130709651(translates_2634022946[0], "ready-to-product"), Temporary84)[0][Temporary84[1]], Temporary85))) {
-    Temporary83 = (Temporary87 = HEX5BHEX5D_2667578855((Temporary86 = HEX5BHEX5D_2130709651(translates_2634022946[0], "ready-to-product"), Temporary86)[0][Temporary86[1]], "default"), Temporary87)[0][Temporary87[1]];
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary89 = navigator.language;
-      }
-      else {
-      Temporary89 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    Temporary83 = (Temporary90 = HEX5BHEX5D_2667578855((Temporary88 = HEX5BHEX5D_2130709651(translates_2634022946[0], "ready-to-product"), Temporary88)[0][Temporary88[1]], Temporary89), Temporary90)[0][Temporary90[1]];
-    }
-    }
-    var fmtRes_469768648 = mnewString(0);
-    fmtRes_469768648.push.apply(fmtRes_469768648, makeNimstrLit("text-3xl lg:text-base"));;
-    if (!(hasKey_2667578279(translates_2634022946[0], "HappyX is ready-to-product web framework"))) {
-    Temporary91 = makeNimstrLit("HappyX is ready-to-product web framework");
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary93 = navigator.language;
-      }
-      else {
-      Temporary93 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    if (!(hasKey_2667578563((Temporary92 = HEX5BHEX5D_2130709651(translates_2634022946[0], "HappyX is ready-to-product web framework"), Temporary92)[0][Temporary92[1]], Temporary93))) {
-    Temporary91 = (Temporary95 = HEX5BHEX5D_2667578855((Temporary94 = HEX5BHEX5D_2130709651(translates_2634022946[0], "HappyX is ready-to-product web framework"), Temporary94)[0][Temporary94[1]], "default"), Temporary95)[0][Temporary95[1]];
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary97 = navigator.language;
-      }
-      else {
-      Temporary97 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    Temporary91 = (Temporary98 = HEX5BHEX5D_2667578855((Temporary96 = HEX5BHEX5D_2130709651(translates_2634022946[0], "HappyX is ready-to-product web framework"), Temporary96)[0][Temporary96[1]], Temporary97), Temporary98)[0][Temporary98[1]];
-    }
-    }
-    var fmtRes_469769194 = mnewString(0);
-    fmtRes_469769194.push.apply(fmtRes_469769194, makeNimstrLit("text-3xl lg:text-base"));;
-    if (!(hasKey_2667578279(translates_2634022946[0], "your company may use HappyX"))) {
-    Temporary99 = makeNimstrLit("your company may use HappyX");
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary101 = navigator.language;
-      }
-      else {
-      Temporary101 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    if (!(hasKey_2667578563((Temporary100 = HEX5BHEX5D_2130709651(translates_2634022946[0], "your company may use HappyX"), Temporary100)[0][Temporary100[1]], Temporary101))) {
-    Temporary99 = (Temporary103 = HEX5BHEX5D_2667578855((Temporary102 = HEX5BHEX5D_2130709651(translates_2634022946[0], "your company may use HappyX"), Temporary102)[0][Temporary102[1]], "default"), Temporary103)[0][Temporary103[1]];
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary105 = navigator.language;
-      }
-      else {
-      Temporary105 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    Temporary99 = (Temporary106 = HEX5BHEX5D_2667578855((Temporary104 = HEX5BHEX5D_2130709651(translates_2634022946[0], "your company may use HappyX"), Temporary104)[0][Temporary104[1]], Temporary105), Temporary106)[0][Temporary106[1]];
-    }
-    }
-    comp838516690_469762528.slot = initTag_2013266047(makeNimstrLit("div"), [initTag_2013265957(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469762533, NTI33554439)}, NTI469762524)], 0), [initTag_2013265957(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469762541, NTI33554439)}, NTI469762537)], 0), [initTag_2013265957(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469762549[0], NTI33554439)}, NTI469762549)], 0), [initTag_2013265957(makeNimstrLit("p"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469762557, NTI33554439)}, NTI469762566)], 0), [initTag_2013266105(fmtRes_469762565, true, [], false)], false), initTag_2013265957(makeNimstrLit("p"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469762578, NTI33554439)}, NTI469762595)], 0), [initTag_2013266105(Temporary3, true, [], false)], false), initTag_2013265957(makeNimstrLit("p"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469763124, NTI33554439)}, NTI469762942)], 0), [initTag_2013266105(Temporary11, true, [], false)], false)], false), initTag_2013265957(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469763678[0], NTI33554439)}, NTI469763300)], 0), [initTag_2013265957(makeNimstrLit("p"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469763686, NTI33554439)}, NTI469763317)], 0), [initTag_2013266105(Temporary19, true, [], false)], false), initTag_2013265957(makeNimstrLit("p"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469764232, NTI33554439)}, NTI469763665)], 0), [initTag_2013266105(Temporary27, true, [], false)], false), initTag_2013265957(makeNimstrLit("p"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469764778, NTI33554439)}, NTI469764012)], 0), [initTag_2013266105(Temporary35, true, [], false)], false), initTag_2013265957(makeNimstrLit("p"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469765324, NTI33554439)}, NTI469764359)], 0), [initTag_2013266105(Temporary43, true, [], false)], false)], false)], false), initTag_2013265957(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469765886, NTI33554439)}, NTI469764727)], 0), [initTag_2013265957(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469765894[0], NTI33554439)}, NTI469764740)], 0), [initTag_2013265957(makeNimstrLit("p"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469765902, NTI33554439)}, NTI469764757)], 0), [initTag_2013266105(Temporary51, true, [], false)], false), initTag_2013265957(makeNimstrLit("p"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469766448, NTI33554439)}, NTI469765105)], 0), [initTag_2013266105(Temporary59, true, [], false)], false), initTag_2013265957(makeNimstrLit("p"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469766994, NTI33554439)}, NTI469765452)], 0), [initTag_2013266105(Temporary67, true, [], false)], false), initTag_2013265957(makeNimstrLit("p"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469767540, NTI33554439)}, NTI469765799)], 0), [initTag_2013266105(Temporary75, true, [], false)], false)], false), initTag_2013265957(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469768094[0], NTI33554439)}, NTI469766156)], 0), [initTag_2013265957(makeNimstrLit("p"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469768102, NTI33554439)}, NTI469766173)], 0), [initTag_2013266105(Temporary83, true, [], false)], false), initTag_2013265957(makeNimstrLit("p"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469768648, NTI33554439)}, NTI469766521)], 0), [initTag_2013266105(Temporary91, true, [], false)], false), initTag_2013265957(makeNimstrLit("p"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469769194, NTI33554439)}, NTI469766868)], 0), [initTag_2013266105(Temporary99, true, [], false)], false)], false)], false)], false)], true);
-    var data_comp838516690_469769768 = render_1845499744(comp838516690_469762528);
-    addArgIter_2013266249(data_comp838516690_469769768, (makeNimstrLit("data-") || []).concat(comp838516690_469762528.uniqCompId || []));
-    window.addEventListener('beforeunload', data_comp838516690_469769768.exited);
-    window.addEventListener('pagehide', data_comp838516690_469769768.pageHide);
-    window.addEventListener('pageshow', data_comp838516690_469769768.pageShow);
-    var _comp848616891_469769777 = initCodeBlockSlider_2952790039(makeNimstrLit("comp848616891"), [{name: makeNimstrLit("SSR Example \xE2\x9A\xA1"), description: makeNimstrLit("Server-side rendering application"), text: nimCopy(null, ssrExample_2600468481[0], NTI33554439), language: makeNimstrLit("nim")}, {name: makeNimstrLit("SPA Example \xF0\x9F\x8E\xB4"), description: makeNimstrLit("Single-page application"), text: nimCopy(null, spaExample_2600468482[0], NTI33554439), language: makeNimstrLit("nim")}, {name: makeNimstrLit("FileResponse Example \xF0\x9F\x93\x81"), description: makeNimstrLit("Respond file from server to client"), text: nimCopy(null, fileResponseExample_2600468483[0], NTI33554439), language: makeNimstrLit("nim")}, {name: makeNimstrLit("Path Params In SSR \xE2\x9A\x99"), description: makeNimstrLit("PathParams in server-side rendering"), text: nimCopy(null, pathParamsSsrExample_2600468484[0], NTI33554439), language: makeNimstrLit("nim")}, {name: makeNimstrLit("Path Params In SPA \xE2\x9A\x99"), description: makeNimstrLit("PathParams in single-page application"), text: nimCopy(null, pathParamsSpaExample_2600468485[0], NTI33554439), language: makeNimstrLit("nim")}], 0);
-    var comp848616891_469769778 = registerComponent_1845499350("comp848616891", _comp848616891_469769777);
-    comp848616891_469769778.slot = initTag_2013266047(makeNimstrLit("div"), [], true);
-    var data_comp848616891_469769779 = render_1845499744(comp848616891_469769778);
-    addArgIter_2013266249(data_comp848616891_469769779, (makeNimstrLit("data-") || []).concat(comp848616891_469769778.uniqCompId || []));
-    window.addEventListener('beforeunload', data_comp848616891_469769779.exited);
-    window.addEventListener('pagehide', data_comp848616891_469769779.pageHide);
-    window.addEventListener('pageshow', data_comp848616891_469769779.pageShow);
-    var _comp858717092_469769781 = initSection_2852126725(makeNimstrLit("comp858717092"));
-    var comp858717092_469769782 = registerComponent_1845499350("comp858717092", _comp858717092_469769781);
-    if (!(hasKey_2667578279(translates_2634022946[0], "One of the main features of HappyX is DSL ✌."))) {
-    Temporary107 = makeNimstrLit("One of the main features of HappyX is DSL \xE2\x9C\x8C.");
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary109 = navigator.language;
-      }
-      else {
-      Temporary109 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    if (!(hasKey_2667578563((Temporary108 = HEX5BHEX5D_2130709651(translates_2634022946[0], "One of the main features of HappyX is DSL ✌."), Temporary108)[0][Temporary108[1]], Temporary109))) {
-    Temporary107 = (Temporary111 = HEX5BHEX5D_2667578855((Temporary110 = HEX5BHEX5D_2130709651(translates_2634022946[0], "One of the main features of HappyX is DSL ✌."), Temporary110)[0][Temporary110[1]], "default"), Temporary111)[0][Temporary111[1]];
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary113 = navigator.language;
-      }
-      else {
-      Temporary113 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    Temporary107 = (Temporary114 = HEX5BHEX5D_2667578855((Temporary112 = HEX5BHEX5D_2130709651(translates_2634022946[0], "One of the main features of HappyX is DSL ✌."), Temporary112)[0][Temporary112[1]], Temporary113), Temporary114)[0][Temporary114[1]];
-    }
-    }
-    if (!(hasKey_2667578279(translates_2634022946[0], "DSL supports:"))) {
-    Temporary115 = makeNimstrLit("DSL supports:");
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary117 = navigator.language;
-      }
-      else {
-      Temporary117 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    if (!(hasKey_2667578563((Temporary116 = HEX5BHEX5D_2130709651(translates_2634022946[0], "DSL supports:"), Temporary116)[0][Temporary116[1]], Temporary117))) {
-    Temporary115 = (Temporary119 = HEX5BHEX5D_2667578855((Temporary118 = HEX5BHEX5D_2130709651(translates_2634022946[0], "DSL supports:"), Temporary118)[0][Temporary118[1]], "default"), Temporary119)[0][Temporary119[1]];
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary121 = navigator.language;
-      }
-      else {
-      Temporary121 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    Temporary115 = (Temporary122 = HEX5BHEX5D_2667578855((Temporary120 = HEX5BHEX5D_2130709651(translates_2634022946[0], "DSL supports:"), Temporary120)[0][Temporary120[1]], Temporary121), Temporary122)[0][Temporary122[1]];
-    }
-    }
-    var fmtRes_469770863 = mnewString(0);
-    fmtRes_469770863.push.apply(fmtRes_469770863, makeNimstrLit("flex flex-col md:flex-row gap-6 py-8"));;
-    var _comp868817293_469770867 = initCard_2768240647(makeNimstrLit("comp868817293"), makeNimstrLit("/happyx/public/html5.svg"));
-    var comp868817293_469770868 = registerComponent_1845499350("comp868817293", _comp868817293_469770867);
-    if (!(hasKey_2667578279(translates_2634022946[0], "Build HTML/CSS/JS"))) {
-    Temporary123 = makeNimstrLit("Build HTML/CSS/JS");
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary125 = navigator.language;
-      }
-      else {
-      Temporary125 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    if (!(hasKey_2667578563((Temporary124 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Build HTML/CSS/JS"), Temporary124)[0][Temporary124[1]], Temporary125))) {
-    Temporary123 = (Temporary127 = HEX5BHEX5D_2667578855((Temporary126 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Build HTML/CSS/JS"), Temporary126)[0][Temporary126[1]], "default"), Temporary127)[0][Temporary127[1]];
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary129 = navigator.language;
-      }
-      else {
-      Temporary129 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    Temporary123 = (Temporary130 = HEX5BHEX5D_2667578855((Temporary128 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Build HTML/CSS/JS"), Temporary128)[0][Temporary128[1]], Temporary129), Temporary130)[0][Temporary130[1]];
-    }
-    }
-    comp868817293_469770868.slot = initTag_2013266047(makeNimstrLit("div"), [initTag_2013266105(Temporary123, true, [], false)], true);
-    var data_comp868817293_469771407 = render_1845499744(comp868817293_469770868);
-    addArgIter_2013266249(data_comp868817293_469771407, (makeNimstrLit("data-") || []).concat(comp868817293_469770868.uniqCompId || []));
-    window.addEventListener('beforeunload', data_comp868817293_469771407.exited);
-    window.addEventListener('pagehide', data_comp868817293_469771407.pageHide);
-    window.addEventListener('pageshow', data_comp868817293_469771407.pageShow);
-    var _comp878917494_469771408 = initCard_2768240647(makeNimstrLit("comp878917494"), makeNimstrLit("/happyx/public/setting.svg"));
-    var comp878917494_469771409 = registerComponent_1845499350("comp878917494", _comp878917494_469771408);
-    if (!(hasKey_2667578279(translates_2634022946[0], "Path Params"))) {
-    Temporary131 = makeNimstrLit("Path Params");
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary133 = navigator.language;
-      }
-      else {
-      Temporary133 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    if (!(hasKey_2667578563((Temporary132 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Path Params"), Temporary132)[0][Temporary132[1]], Temporary133))) {
-    Temporary131 = (Temporary135 = HEX5BHEX5D_2667578855((Temporary134 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Path Params"), Temporary134)[0][Temporary134[1]], "default"), Temporary135)[0][Temporary135[1]];
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary137 = navigator.language;
-      }
-      else {
-      Temporary137 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    Temporary131 = (Temporary138 = HEX5BHEX5D_2667578855((Temporary136 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Path Params"), Temporary136)[0][Temporary136[1]], Temporary137), Temporary138)[0][Temporary138[1]];
-    }
-    }
-    comp878917494_469771409.slot = initTag_2013266047(makeNimstrLit("div"), [initTag_2013266105(Temporary131, true, [], false)], true);
-    var data_comp878917494_469771948 = render_1845499744(comp878917494_469771409);
-    addArgIter_2013266249(data_comp878917494_469771948, (makeNimstrLit("data-") || []).concat(comp878917494_469771409.uniqCompId || []));
-    window.addEventListener('beforeunload', data_comp878917494_469771948.exited);
-    window.addEventListener('pagehide', data_comp878917494_469771948.pageHide);
-    window.addEventListener('pageshow', data_comp878917494_469771948.pageShow);
-    var _comp889017695_469771949 = initCard_2768240647(makeNimstrLit("comp889017695"), makeNimstrLit("/happyx/public/routing.svg"));
-    var comp889017695_469771950 = registerComponent_1845499350("comp889017695", _comp889017695_469771949);
-    if (!(hasKey_2667578279(translates_2634022946[0], "Routing/Mounting"))) {
-    Temporary139 = makeNimstrLit("Routing/Mounting");
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary141 = navigator.language;
-      }
-      else {
-      Temporary141 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    if (!(hasKey_2667578563((Temporary140 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Routing/Mounting"), Temporary140)[0][Temporary140[1]], Temporary141))) {
-    Temporary139 = (Temporary143 = HEX5BHEX5D_2667578855((Temporary142 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Routing/Mounting"), Temporary142)[0][Temporary142[1]], "default"), Temporary143)[0][Temporary143[1]];
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary145 = navigator.language;
-      }
-      else {
-      Temporary145 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    Temporary139 = (Temporary146 = HEX5BHEX5D_2667578855((Temporary144 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Routing/Mounting"), Temporary144)[0][Temporary144[1]], Temporary145), Temporary146)[0][Temporary146[1]];
-    }
-    }
-    comp889017695_469771950.slot = initTag_2013266047(makeNimstrLit("div"), [initTag_2013266105(Temporary139, true, [], false)], true);
-    var data_comp889017695_469772489 = render_1845499744(comp889017695_469771950);
-    addArgIter_2013266249(data_comp889017695_469772489, (makeNimstrLit("data-") || []).concat(comp889017695_469771950.uniqCompId || []));
-    window.addEventListener('beforeunload', data_comp889017695_469772489.exited);
-    window.addEventListener('pagehide', data_comp889017695_469772489.pageHide);
-    window.addEventListener('pageshow', data_comp889017695_469772489.pageShow);
-    comp858717092_469769782.slot = initTag_2013266047(makeNimstrLit("div"), [initTag_2013266047(makeNimstrLit("p"), [initTag_2013266105(Temporary107, true, [], false)], false), initTag_2013266047(makeNimstrLit("p"), [initTag_2013266105(Temporary115, true, [], false)], false), initTag_2013265957(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469770863, NTI33554439)}, NTI469767941)], 0), [data_comp868817293_469771407, data_comp878917494_469771948, data_comp889017695_469772489], false)], true);
-    var data_comp858717092_469772506 = render_1845499744(comp858717092_469769782);
-    addArgIter_2013266249(data_comp858717092_469772506, (makeNimstrLit("data-") || []).concat(comp858717092_469769782.uniqCompId || []));
-    window.addEventListener('beforeunload', data_comp858717092_469772506.exited);
-    window.addEventListener('pagehide', data_comp858717092_469772506.pageHide);
-    window.addEventListener('pageshow', data_comp858717092_469772506.pageShow);
-    var _comp899117896_469772508 = initSmartCard_2868903941(makeNimstrLit("comp899117896"));
-    var comp899117896_469772509 = registerComponent_1845499350("comp899117896", _comp899117896_469772508);
-    var _comp909218097_469772510 = initCodeBlock_2717909004(makeNimstrLit("comp909218097"), makeNimstrLit("nim"), spaExample_2600468482[0], "spaCode");
-    var comp909218097_469772511 = registerComponent_1845499350("comp909218097", _comp909218097_469772510);
-    comp909218097_469772511.slot = initTag_2013266047(makeNimstrLit("div"), [], true);
-    var data_comp909218097_469772512 = render_1845499744(comp909218097_469772511);
-    addArgIter_2013266249(data_comp909218097_469772512, (makeNimstrLit("data-") || []).concat(comp909218097_469772511.uniqCompId || []));
-    window.addEventListener('beforeunload', data_comp909218097_469772512.exited);
-    window.addEventListener('pagehide', data_comp909218097_469772512.pageHide);
-    window.addEventListener('pageshow', data_comp909218097_469772512.pageShow);
-    var fmtRes_469772517 = mnewString(0);
-    fmtRes_469772517.push.apply(fmtRes_469772517, makeNimstrLit("w-48 xl:w-96 text-3xl lg:text-lg xl:text-base text-center subpixel-antialiased"));;
-    if (!(hasKey_2667578279(translates_2634022946[0], "Make powerful full-stack apps with really same syntax ⚡"))) {
-    Temporary147 = makeNimstrLit("Make powerful full-stack apps with really same syntax \xE2\x9A\xA1");
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary149 = navigator.language;
-      }
-      else {
-      Temporary149 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    if (!(hasKey_2667578563((Temporary148 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Make powerful full-stack apps with really same syntax ⚡"), Temporary148)[0][Temporary148[1]], Temporary149))) {
-    Temporary147 = (Temporary151 = HEX5BHEX5D_2667578855((Temporary150 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Make powerful full-stack apps with really same syntax ⚡"), Temporary150)[0][Temporary150[1]], "default"), Temporary151)[0][Temporary151[1]];
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary153 = navigator.language;
-      }
-      else {
-      Temporary153 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    Temporary147 = (Temporary154 = HEX5BHEX5D_2667578855((Temporary152 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Make powerful full-stack apps with really same syntax ⚡"), Temporary152)[0][Temporary152[1]], Temporary153), Temporary154)[0][Temporary154[1]];
-    }
-    }
-    comp899117896_469772509.slot = initTag_2013266047(makeNimstrLit("div"), [data_comp909218097_469772512, initTag_2013265957(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469772517, NTI33554439)}, NTI469768987)], 0), [initTag_2013266105(Temporary147, true, [], false)], false)], true);
-    var data_comp899117896_469773067 = render_1845499744(comp899117896_469772509);
-    addArgIter_2013266249(data_comp899117896_469773067, (makeNimstrLit("data-") || []).concat(comp899117896_469772509.uniqCompId || []));
-    window.addEventListener('beforeunload', data_comp899117896_469773067.exited);
-    window.addEventListener('pagehide', data_comp899117896_469773067.pageHide);
-    window.addEventListener('pageshow', data_comp899117896_469773067.pageShow);
-    var _comp919318298_469773069 = initSection_2852126725(makeNimstrLit("comp919318298"));
-    var comp919318298_469773070 = registerComponent_1845499350("comp919318298", _comp919318298_469773069);
-    if (!(hasKey_2667578279(translates_2634022946[0], "You can easily and effectively create powerful modern web apps ✌"))) {
-    Temporary155 = makeNimstrLit("You can easily and effectively create powerful modern web apps \xE2\x9C\x8C");
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary157 = navigator.language;
-      }
-      else {
-      Temporary157 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    if (!(hasKey_2667578563((Temporary156 = HEX5BHEX5D_2130709651(translates_2634022946[0], "You can easily and effectively create powerful modern web apps ✌"), Temporary156)[0][Temporary156[1]], Temporary157))) {
-    Temporary155 = (Temporary159 = HEX5BHEX5D_2667578855((Temporary158 = HEX5BHEX5D_2130709651(translates_2634022946[0], "You can easily and effectively create powerful modern web apps ✌"), Temporary158)[0][Temporary158[1]], "default"), Temporary159)[0][Temporary159[1]];
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary161 = navigator.language;
-      }
-      else {
-      Temporary161 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    Temporary155 = (Temporary162 = HEX5BHEX5D_2667578855((Temporary160 = HEX5BHEX5D_2130709651(translates_2634022946[0], "You can easily and effectively create powerful modern web apps ✌"), Temporary160)[0][Temporary160[1]], Temporary161), Temporary162)[0][Temporary162[1]];
-    }
-    }
-    if (!(hasKey_2667578279(translates_2634022946[0], "You'll never have to learn new web frameworks again ✨"))) {
-    Temporary163 = makeNimstrLit("You\'ll never have to learn new web frameworks again \xE2\x9C\xA8");
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary165 = navigator.language;
-      }
-      else {
-      Temporary165 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    if (!(hasKey_2667578563((Temporary164 = HEX5BHEX5D_2130709651(translates_2634022946[0], "You'll never have to learn new web frameworks again ✨"), Temporary164)[0][Temporary164[1]], Temporary165))) {
-    Temporary163 = (Temporary167 = HEX5BHEX5D_2667578855((Temporary166 = HEX5BHEX5D_2130709651(translates_2634022946[0], "You'll never have to learn new web frameworks again ✨"), Temporary166)[0][Temporary166[1]], "default"), Temporary167)[0][Temporary167[1]];
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary169 = navigator.language;
-      }
-      else {
-      Temporary169 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    Temporary163 = (Temporary170 = HEX5BHEX5D_2667578855((Temporary168 = HEX5BHEX5D_2130709651(translates_2634022946[0], "You'll never have to learn new web frameworks again ✨"), Temporary168)[0][Temporary168[1]], Temporary169), Temporary170)[0][Temporary170[1]];
-    }
-    }
-    comp919318298_469773070.slot = initTag_2013266047(makeNimstrLit("div"), [initTag_2013266047(makeNimstrLit("p"), [initTag_2013266105(Temporary155, true, [], false)], false), initTag_2013266047(makeNimstrLit("p"), [initTag_2013266105(Temporary163, true, [], false)], false)], true);
-    var data_comp919318298_469774155 = render_1845499744(comp919318298_469773070);
-    addArgIter_2013266249(data_comp919318298_469774155, (makeNimstrLit("data-") || []).concat(comp919318298_469773070.uniqCompId || []));
-    window.addEventListener('beforeunload', data_comp919318298_469774155.exited);
-    window.addEventListener('pagehide', data_comp919318298_469774155.pageHide);
-    window.addEventListener('pageshow', data_comp919318298_469774155.pageShow);
-    var fmtRes_469774160 = mnewString(0);
-    fmtRes_469774160.push.apply(fmtRes_469774160, makeNimstrLit("flex items-start justify-center w-full pb-8 gap-8"));;
-    var _comp929418499_469774172 = initAboutSection_2885681167(makeNimstrLit("comp929418499"), makeNimstrLit("HappyX For ... Programmers"), [{Field0: makeNimstrLit("FastAPI programmers"), Field1: makeNimstrLit("https://github.com/HapticX/happyx/wiki/HappyX-for-FastAPI-Programmers")}, {Field0: makeNimstrLit("Prologue programmers"), Field1: makeNimstrLit("https://github.com/HapticX/happyx/wiki/HappyX-for-Prologue-Programmers")}]);
-    var comp929418499_469774173 = registerComponent_1845499350("comp929418499", _comp929418499_469774172);
-    comp929418499_469774173.slot = initTag_2013266047(makeNimstrLit("div"), [], true);
-    var data_comp929418499_469774174 = render_1845499744(comp929418499_469774173);
-    addArgIter_2013266249(data_comp929418499_469774174, (makeNimstrLit("data-") || []).concat(comp929418499_469774173.uniqCompId || []));
-    window.addEventListener('beforeunload', data_comp929418499_469774174.exited);
-    window.addEventListener('pagehide', data_comp929418499_469774174.pageHide);
-    window.addEventListener('pageshow', data_comp929418499_469774174.pageShow);
-    var _comp9395186100_469774183 = initAboutSection_2885681167(makeNimstrLit("comp9395186100"), makeNimstrLit("Contacts"), [{Field0: makeNimstrLit("Telegram Channel"), Field1: makeNimstrLit("https://t.me/hapticx")}, {Field0: makeNimstrLit("GitHub Discussions"), Field1: makeNimstrLit("https://github.com/HapticX/happyx/discussions")}, {Field0: makeNimstrLit("StackOverflow"), Field1: makeNimstrLit("https://stackoverflow.com/search?q=%5Bnim-lang%5D+HappyX")}]);
-    var comp9395186100_469774184 = registerComponent_1845499350("comp9395186100", _comp9395186100_469774183);
-    comp9395186100_469774184.slot = initTag_2013266047(makeNimstrLit("div"), [], true);
-    var data_comp9395186100_469774185 = render_1845499744(comp9395186100_469774184);
-    addArgIter_2013266249(data_comp9395186100_469774185, (makeNimstrLit("data-") || []).concat(comp9395186100_469774184.uniqCompId || []));
-    window.addEventListener('beforeunload', data_comp9395186100_469774185.exited);
-    window.addEventListener('pagehide', data_comp9395186100_469774185.pageHide);
-    window.addEventListener('pageshow', data_comp9395186100_469774185.pageShow);
-    html_469762217 = initTag_2013266047(makeNimstrLit("div"), [initTag_2013265957(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469762412[0], NTI33554439)}, NTI469762349)], 0), [initTag_2013265957(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("id"), Field1: nimCopy(null, fmtRes_469762420, NTI33554439)}, NTI469762366), nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469762425, NTI33554439)}, NTI469762366)], 0), [initTag_2013265957(makeNimstrLit("img"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("src"), Field1: nimCopy(null, fmtRes_469762433, NTI33554439)}, NTI469762386), nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469762438, NTI33554439)}, NTI469762386)], 0), [], false), initTag_2013265957(makeNimstrLit("img"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("src"), Field1: nimCopy(null, fmtRes_469762446, NTI33554439)}, NTI469762405), nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469762451, NTI33554439)}, NTI469762405)], 0), [], false), initTag_2013265957(makeNimstrLit("img"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("src"), Field1: nimCopy(null, fmtRes_469762459, NTI33554439)}, NTI469762424), nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469762464, NTI33554439)}, NTI469762424)], 0), [], false), initTag_2013265957(makeNimstrLit("img"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("src"), Field1: nimCopy(null, fmtRes_469762472, NTI33554439)}, NTI469762442), nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469762477, NTI33554439)}, NTI469762442)], 0), [], false)], false), data_drawer_comp_469762490, initTag_2013265957(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469762495, NTI33554439)}, NTI469762471)], 0), [initTag_2013265957(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469762503, NTI33554439)}, NTI469762484)], 0), [data_comp828416489_469762509], false), initTag_2013265957(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469762522, NTI33554439)}, NTI469762508)], 0), [data_comp838516690_469769768, data_comp848616891_469769779, data_comp858717092_469772506, data_comp899117896_469773067, data_comp919318298_469774155, initTag_2013265957(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469774160, NTI33554439)}, NTI469770031)], 0), [data_comp929418499_469774174, data_comp9395186100_469774185], false)], false)], false)], false)], true);
-    }
-    else {
-    if (eqStrings(path_469762216, makeNimstrLit("/sponsors/"))) {
-    var fmtRes_469774230 = [mnewString(0)];
-    fmtRes_469774230[0].push.apply(fmtRes_469774230[0], makeNimstrLit("flex flex-col min-h-screen w-full bg-["));;
-    formatValue_671088800(fmtRes_469774230, 0, makeNimstrLit("#FEFEFE"), []);
-    fmtRes_469774230[0].push.apply(fmtRes_469774230[0], makeNimstrLit("] dark:bg-["));;
-    formatValue_671088800(fmtRes_469774230, 0, makeNimstrLit("#181326"), []);
-    fmtRes_469774230[0].push.apply(fmtRes_469774230[0], makeNimstrLit("] text-["));;
-    formatValue_671088800(fmtRes_469774230, 0, makeNimstrLit("#212121"), []);
-    fmtRes_469774230[0].push.apply(fmtRes_469774230[0], makeNimstrLit("] dark:text-["));;
-    formatValue_671088800(fmtRes_469774230, 0, makeNimstrLit("#E0EFFE"), []);
-    fmtRes_469774230[0].push.apply(fmtRes_469774230[0], makeNimstrLit("]"));;
-    var data_drawer_comp_469774235 = render_1845499744(drawer_comp_2986344463[0]);
-    addArgIter_2013266249(data_drawer_comp_469774235, (makeNimstrLit("data-") || []).concat(drawer_comp_2986344463[0].uniqCompId || []));
-    window.addEventListener('beforeunload', data_drawer_comp_469774235.exited);
-    window.addEventListener('pagehide', data_drawer_comp_469774235.pageHide);
-    window.addEventListener('pageshow', data_drawer_comp_469774235.pageShow);
-    var fmtRes_469774240 = mnewString(0);
-    fmtRes_469774240.push.apply(fmtRes_469774240, makeNimstrLit("w-full sticky top-0 z-20"));;
-    var _comp9597190102_469774244 = initHeader_2785017869(makeNimstrLit("comp9597190102"), drawer_comp_2986344463[0]);
-    var comp9597190102_469774245 = registerComponent_1845499350("comp9597190102", _comp9597190102_469774244);
-    comp9597190102_469774245.slot = initTag_2013266047(makeNimstrLit("div"), [], true);
-    var data_comp9597190102_469774246 = render_1845499744(comp9597190102_469774245);
-    addArgIter_2013266249(data_comp9597190102_469774246, (makeNimstrLit("data-") || []).concat(comp9597190102_469774245.uniqCompId || []));
-    window.addEventListener('beforeunload', data_comp9597190102_469774246.exited);
-    window.addEventListener('pagehide', data_comp9597190102_469774246.pageHide);
-    window.addEventListener('pageshow', data_comp9597190102_469774246.pageShow);
-    var fmtRes_469774259 = mnewString(0);
-    fmtRes_469774259.push.apply(fmtRes_469774259, makeNimstrLit("flex flex-col gap-8 items-center w-full h-full px-8"));;
-    var fmtRes_469774267 = mnewString(0);
-    fmtRes_469774267.push.apply(fmtRes_469774267, makeNimstrLit("text-7xl lg:text-5xl xl:text-3xl font-bold"));;
-    if (!(hasKey_2667578279(translates_2634022946[0], "🔥 Sponsors"))) {
-    Temporary171 = makeNimstrLit("\xF0\x9F\x94\xA5 Sponsors");
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary173 = navigator.language;
-      }
-      else {
-      Temporary173 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    if (!(hasKey_2667578563((Temporary172 = HEX5BHEX5D_2130709651(translates_2634022946[0], "🔥 Sponsors"), Temporary172)[0][Temporary172[1]], Temporary173))) {
-    Temporary171 = (Temporary175 = HEX5BHEX5D_2667578855((Temporary174 = HEX5BHEX5D_2130709651(translates_2634022946[0], "🔥 Sponsors"), Temporary174)[0][Temporary174[1]], "default"), Temporary175)[0][Temporary175[1]];
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary177 = navigator.language;
-      }
-      else {
-      Temporary177 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    Temporary171 = (Temporary178 = HEX5BHEX5D_2667578855((Temporary176 = HEX5BHEX5D_2130709651(translates_2634022946[0], "🔥 Sponsors"), Temporary176)[0][Temporary176[1]], Temporary177), Temporary178)[0][Temporary178[1]];
-    }
-    }
-    var _comp9698192103_469774810 = initDivider_2902458375(makeNimstrLit("comp9698192103"), true);
-    var comp9698192103_469774811 = registerComponent_1845499350("comp9698192103", _comp9698192103_469774810);
-    comp9698192103_469774811.slot = initTag_2013266047(makeNimstrLit("div"), [], true);
-    var data_comp9698192103_469774812 = render_1845499744(comp9698192103_469774811);
-    addArgIter_2013266249(data_comp9698192103_469774812, (makeNimstrLit("data-") || []).concat(comp9698192103_469774811.uniqCompId || []));
-    window.addEventListener('beforeunload', data_comp9698192103_469774812.exited);
-    window.addEventListener('pagehide', data_comp9698192103_469774812.pageHide);
-    window.addEventListener('pageshow', data_comp9698192103_469774812.pageShow);
-    var fmtRes_469774817 = mnewString(0);
-    fmtRes_469774817.push.apply(fmtRes_469774817, makeNimstrLit("flex flex-col items-center justify-center"));;
-    var fmtRes_469774825 = mnewString(0);
-    fmtRes_469774825.push.apply(fmtRes_469774825, makeNimstrLit("flex items-center justify-center gap-4 text-5xl lg:text-3xl xl:text-xl font-semibold"));;
-    var fmtRes_469774833 = mnewString(0);
-    fmtRes_469774833.push.apply(fmtRes_469774833, makeNimstrLit("/happyx/public/medal_1.svg"));;
-    var fmtRes_469774838 = mnewString(0);
-    fmtRes_469774838.push.apply(fmtRes_469774838, makeNimstrLit("w-16 h-16 lg:w-12 lg:h-12 xl:w-8 xl:h-8"));;
-    var fmtRes_469774846 = mnewString(0);
-    fmtRes_469774846.push.apply(fmtRes_469774846, makeNimstrLit("platinum"));;
-    var _comp9799194104_469774855 = initSponsorsList_2919235598(makeNimstrLit("comp9799194104"), sponsor_list_2936012828[0], 3, makeNimstrLit("#e5e4e2"));
-    var comp9799194104_469774856 = registerComponent_1845499350("comp9799194104", _comp9799194104_469774855);
-    comp9799194104_469774856.slot = initTag_2013266047(makeNimstrLit("div"), [], true);
-    var data_comp9799194104_469774857 = render_1845499744(comp9799194104_469774856);
-    addArgIter_2013266249(data_comp9799194104_469774857, (makeNimstrLit("data-") || []).concat(comp9799194104_469774856.uniqCompId || []));
-    window.addEventListener('beforeunload', data_comp9799194104_469774857.exited);
-    window.addEventListener('pagehide', data_comp9799194104_469774857.pageHide);
-    window.addEventListener('pageshow', data_comp9799194104_469774857.pageShow);
-    var _comp98100196105_469774867 = initDivider_2902458375(makeNimstrLit("comp98100196105"), true);
-    var comp98100196105_469774868 = registerComponent_1845499350("comp98100196105", _comp98100196105_469774867);
-    comp98100196105_469774868.slot = initTag_2013266047(makeNimstrLit("div"), [], true);
-    var data_comp98100196105_469774869 = render_1845499744(comp98100196105_469774868);
-    addArgIter_2013266249(data_comp98100196105_469774869, (makeNimstrLit("data-") || []).concat(comp98100196105_469774868.uniqCompId || []));
-    window.addEventListener('beforeunload', data_comp98100196105_469774869.exited);
-    window.addEventListener('pagehide', data_comp98100196105_469774869.pageHide);
-    window.addEventListener('pageshow', data_comp98100196105_469774869.pageShow);
-    var fmtRes_469774874 = mnewString(0);
-    fmtRes_469774874.push.apply(fmtRes_469774874, makeNimstrLit("flex flex-col items-center justify-center"));;
-    var fmtRes_469774882 = mnewString(0);
-    fmtRes_469774882.push.apply(fmtRes_469774882, makeNimstrLit("flex items-center justify-center gap-4 text-5xl lg:text-3xl xl:text-xl font-semibold"));;
-    var fmtRes_469774890 = mnewString(0);
-    fmtRes_469774890.push.apply(fmtRes_469774890, makeNimstrLit("/happyx/public/medal_2.svg"));;
-    var fmtRes_469774895 = mnewString(0);
-    fmtRes_469774895.push.apply(fmtRes_469774895, makeNimstrLit("w-16 h-16 lg:w-12 lg:h-12 xl:w-8 xl:h-8"));;
-    var fmtRes_469774903 = mnewString(0);
-    fmtRes_469774903.push.apply(fmtRes_469774903, makeNimstrLit("gold"));;
-    var _comp99101198106_469774912 = initSponsorsList_2919235598(makeNimstrLit("comp99101198106"), sponsor_list_2936012828[0], 2, makeNimstrLit("#ffd700"));
-    var comp99101198106_469774913 = registerComponent_1845499350("comp99101198106", _comp99101198106_469774912);
-    comp99101198106_469774913.slot = initTag_2013266047(makeNimstrLit("div"), [], true);
-    var data_comp99101198106_469774914 = render_1845499744(comp99101198106_469774913);
-    addArgIter_2013266249(data_comp99101198106_469774914, (makeNimstrLit("data-") || []).concat(comp99101198106_469774913.uniqCompId || []));
-    window.addEventListener('beforeunload', data_comp99101198106_469774914.exited);
-    window.addEventListener('pagehide', data_comp99101198106_469774914.pageHide);
-    window.addEventListener('pageshow', data_comp99101198106_469774914.pageShow);
-    var _comp100102200107_469774924 = initDivider_2902458375(makeNimstrLit("comp100102200107"), true);
-    var comp100102200107_469774925 = registerComponent_1845499350("comp100102200107", _comp100102200107_469774924);
-    comp100102200107_469774925.slot = initTag_2013266047(makeNimstrLit("div"), [], true);
-    var data_comp100102200107_469774926 = render_1845499744(comp100102200107_469774925);
-    addArgIter_2013266249(data_comp100102200107_469774926, (makeNimstrLit("data-") || []).concat(comp100102200107_469774925.uniqCompId || []));
-    window.addEventListener('beforeunload', data_comp100102200107_469774926.exited);
-    window.addEventListener('pagehide', data_comp100102200107_469774926.pageHide);
-    window.addEventListener('pageshow', data_comp100102200107_469774926.pageShow);
-    var fmtRes_469774931 = mnewString(0);
-    fmtRes_469774931.push.apply(fmtRes_469774931, makeNimstrLit("flex flex-col items-center justify-center"));;
-    var fmtRes_469774939 = mnewString(0);
-    fmtRes_469774939.push.apply(fmtRes_469774939, makeNimstrLit("flex items-center justify-center gap-4 text-5xl lg:text-3xl xl:text-xl font-semibold"));;
-    var fmtRes_469774947 = mnewString(0);
-    fmtRes_469774947.push.apply(fmtRes_469774947, makeNimstrLit("/happyx/public/medal_3.svg"));;
-    var fmtRes_469774952 = mnewString(0);
-    fmtRes_469774952.push.apply(fmtRes_469774952, makeNimstrLit("w-16 h-16 lg:w-12 lg:h-12 xl:w-8 xl:h-8"));;
-    var fmtRes_469774960 = mnewString(0);
-    fmtRes_469774960.push.apply(fmtRes_469774960, makeNimstrLit("silver"));;
-    var _comp101103202108_469774969 = initSponsorsList_2919235598(makeNimstrLit("comp101103202108"), sponsor_list_2936012828[0], 1, makeNimstrLit("#c0c0c0"));
-    var comp101103202108_469774970 = registerComponent_1845499350("comp101103202108", _comp101103202108_469774969);
-    comp101103202108_469774970.slot = initTag_2013266047(makeNimstrLit("div"), [], true);
-    var data_comp101103202108_469774971 = render_1845499744(comp101103202108_469774970);
-    addArgIter_2013266249(data_comp101103202108_469774971, (makeNimstrLit("data-") || []).concat(comp101103202108_469774970.uniqCompId || []));
-    window.addEventListener('beforeunload', data_comp101103202108_469774971.exited);
-    window.addEventListener('pagehide', data_comp101103202108_469774971.pageHide);
-    window.addEventListener('pageshow', data_comp101103202108_469774971.pageShow);
-    var _comp102104204109_469774981 = initDivider_2902458375(makeNimstrLit("comp102104204109"), true);
-    var comp102104204109_469774982 = registerComponent_1845499350("comp102104204109", _comp102104204109_469774981);
-    comp102104204109_469774982.slot = initTag_2013266047(makeNimstrLit("div"), [], true);
-    var data_comp102104204109_469774983 = render_1845499744(comp102104204109_469774982);
-    addArgIter_2013266249(data_comp102104204109_469774983, (makeNimstrLit("data-") || []).concat(comp102104204109_469774982.uniqCompId || []));
-    window.addEventListener('beforeunload', data_comp102104204109_469774983.exited);
-    window.addEventListener('pagehide', data_comp102104204109_469774983.pageHide);
-    window.addEventListener('pageshow', data_comp102104204109_469774983.pageShow);
-    var fmtRes_469774988 = mnewString(0);
-    fmtRes_469774988.push.apply(fmtRes_469774988, makeNimstrLit("flex flex-col items-center justify-center"));;
-    var fmtRes_469774996 = mnewString(0);
-    fmtRes_469774996.push.apply(fmtRes_469774996, makeNimstrLit("flex items-center justify-center gap-4 text-5xl lg:text-3xl xl:text-xl font-semibold"));;
-    var fmtRes_469775004 = mnewString(0);
-    fmtRes_469775004.push.apply(fmtRes_469775004, makeNimstrLit("other"));;
-    var _comp103105206110_469775013 = initSponsorsList_2919235598(makeNimstrLit("comp103105206110"), sponsor_list_2936012828[0], 0, makeNimstrLit("#cefefe"));
-    var comp103105206110_469775014 = registerComponent_1845499350("comp103105206110", _comp103105206110_469775013);
-    comp103105206110_469775014.slot = initTag_2013266047(makeNimstrLit("div"), [], true);
-    var data_comp103105206110_469775015 = render_1845499744(comp103105206110_469775014);
-    addArgIter_2013266249(data_comp103105206110_469775015, (makeNimstrLit("data-") || []).concat(comp103105206110_469775014.uniqCompId || []));
-    window.addEventListener('beforeunload', data_comp103105206110_469775015.exited);
-    window.addEventListener('pagehide', data_comp103105206110_469775015.pageHide);
-    window.addEventListener('pageshow', data_comp103105206110_469775015.pageShow);
-    var fmtRes_469775028 = mnewString(0);
-    fmtRes_469775028.push.apply(fmtRes_469775028, makeNimstrLit("h-12"));;
-    html_469762217 = initTag_2013266047(makeNimstrLit("div"), [initTag_2013265957(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469774230[0], NTI33554439)}, NTI469770129)], 0), [data_drawer_comp_469774235, initTag_2013265957(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469774240, NTI33554439)}, NTI469770147)], 0), [data_comp9597190102_469774246], false), initTag_2013265957(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469774259, NTI33554439)}, NTI469770170)], 0), [initTag_2013265957(makeNimstrLit("p"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469774267, NTI33554439)}, NTI469770183)], 0), [initTag_2013266105(Temporary171, true, [], false)], false), data_comp9698192103_469774812, initTag_2013265957(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469774817, NTI33554439)}, NTI469770533)], 0), [initTag_2013265957(makeNimstrLit("p"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469774825, NTI33554439)}, NTI469770546)], 0), [initTag_2013265957(makeNimstrLit("img"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("src"), Field1: nimCopy(null, fmtRes_469774833, NTI33554439)}, NTI469770559), nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469774838, NTI33554439)}, NTI469770559)], 0), [], false), initTag_2013266105(fmtRes_469774846, true, [], false)], false), data_comp9799194104_469774857], false), data_comp98100196105_469774869, initTag_2013265957(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469774874, NTI33554439)}, NTI469770607)], 0), [initTag_2013265957(makeNimstrLit("p"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469774882, NTI33554439)}, NTI469770620)], 0), [initTag_2013265957(makeNimstrLit("img"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("src"), Field1: nimCopy(null, fmtRes_469774890, NTI33554439)}, NTI469770633), nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469774895, NTI33554439)}, NTI469770633)], 0), [], false), initTag_2013266105(fmtRes_469774903, true, [], false)], false), data_comp99101198106_469774914], false), data_comp100102200107_469774926, initTag_2013265957(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469774931, NTI33554439)}, NTI469770680)], 0), [initTag_2013265957(makeNimstrLit("p"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469774939, NTI33554439)}, NTI469770693)], 0), [initTag_2013265957(makeNimstrLit("img"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("src"), Field1: nimCopy(null, fmtRes_469774947, NTI33554439)}, NTI469770706), nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469774952, NTI33554439)}, NTI469770706)], 0), [], false), initTag_2013266105(fmtRes_469774960, true, [], false)], false), data_comp101103202108_469774971], false), data_comp102104204109_469774983, initTag_2013265957(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469774988, NTI33554439)}, NTI469770752)], 0), [initTag_2013265957(makeNimstrLit("p"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469774996, NTI33554439)}, NTI469770765)], 0), [initTag_2013266105(fmtRes_469775004, true, [], false)], false), data_comp103105206110_469775015], false), initTag_2013265957(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469775028, NTI33554439)}, NTI469770804)], 0), [], false)], false)], false)], true);
-    }
-    else {
-    if (eqStrings(path_469762216, makeNimstrLit("/roadmap/"))) {
-    var fmtRes_469775060 = [mnewString(0)];
-    fmtRes_469775060[0].push.apply(fmtRes_469775060[0], makeNimstrLit("flex flex-col min-h-screen w-full bg-["));;
-    formatValue_671088800(fmtRes_469775060, 0, makeNimstrLit("#FEFEFE"), []);
-    fmtRes_469775060[0].push.apply(fmtRes_469775060[0], makeNimstrLit("] dark:bg-["));;
-    formatValue_671088800(fmtRes_469775060, 0, makeNimstrLit("#181326"), []);
-    fmtRes_469775060[0].push.apply(fmtRes_469775060[0], makeNimstrLit("] text-["));;
-    formatValue_671088800(fmtRes_469775060, 0, makeNimstrLit("#212121"), []);
-    fmtRes_469775060[0].push.apply(fmtRes_469775060[0], makeNimstrLit("] dark:text-["));;
-    formatValue_671088800(fmtRes_469775060, 0, makeNimstrLit("#E0EFFE"), []);
-    fmtRes_469775060[0].push.apply(fmtRes_469775060[0], makeNimstrLit("]"));;
-    var data_drawer_comp_469775065 = render_1845499744(drawer_comp_2986344463[0]);
-    addArgIter_2013266249(data_drawer_comp_469775065, (makeNimstrLit("data-") || []).concat(drawer_comp_2986344463[0].uniqCompId || []));
-    window.addEventListener('beforeunload', data_drawer_comp_469775065.exited);
-    window.addEventListener('pagehide', data_drawer_comp_469775065.pageHide);
-    window.addEventListener('pageshow', data_drawer_comp_469775065.pageShow);
-    var fmtRes_469775070 = mnewString(0);
-    fmtRes_469775070.push.apply(fmtRes_469775070, makeNimstrLit("w-full sticky top-0 z-20"));;
-    var _comp105107210112_469775074 = initHeader_2785017869(makeNimstrLit("comp105107210112"), drawer_comp_2986344463[0]);
-    var comp105107210112_469775075 = registerComponent_1845499350("comp105107210112", _comp105107210112_469775074);
-    comp105107210112_469775075.slot = initTag_2013266047(makeNimstrLit("div"), [], true);
-    var data_comp105107210112_469775076 = render_1845499744(comp105107210112_469775075);
-    addArgIter_2013266249(data_comp105107210112_469775076, (makeNimstrLit("data-") || []).concat(comp105107210112_469775075.uniqCompId || []));
-    window.addEventListener('beforeunload', data_comp105107210112_469775076.exited);
-    window.addEventListener('pagehide', data_comp105107210112_469775076.pageHide);
-    window.addEventListener('pageshow', data_comp105107210112_469775076.pageShow);
-    var fmtRes_469775089 = mnewString(0);
-    fmtRes_469775089.push.apply(fmtRes_469775089, makeNimstrLit("flex flex-col w-full h-full items-center gap-8 px-4 py-8"));;
-    var fmtRes_469775097 = mnewString(0);
-    fmtRes_469775097.push.apply(fmtRes_469775097, makeNimstrLit("text-6xl lg:text-4xl xl:text-3xl font-bold"));;
-    if (!(hasKey_2667578279(translates_2634022946[0], "🌎 RoadMap"))) {
-    Temporary179 = makeNimstrLit("\xF0\x9F\x8C\x8E RoadMap");
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary181 = navigator.language;
-      }
-      else {
-      Temporary181 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    if (!(hasKey_2667578563((Temporary180 = HEX5BHEX5D_2130709651(translates_2634022946[0], "🌎 RoadMap"), Temporary180)[0][Temporary180[1]], Temporary181))) {
-    Temporary179 = (Temporary183 = HEX5BHEX5D_2667578855((Temporary182 = HEX5BHEX5D_2130709651(translates_2634022946[0], "🌎 RoadMap"), Temporary182)[0][Temporary182[1]], "default"), Temporary183)[0][Temporary183[1]];
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary185 = navigator.language;
-      }
-      else {
-      Temporary185 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    Temporary179 = (Temporary186 = HEX5BHEX5D_2667578855((Temporary184 = HEX5BHEX5D_2130709651(translates_2634022946[0], "🌎 RoadMap"), Temporary184)[0][Temporary184[1]], Temporary185), Temporary186)[0][Temporary186[1]];
-    }
-    }
-    var fmtRes_469775643 = mnewString(0);
-    fmtRes_469775643.push.apply(fmtRes_469775643, makeNimstrLit("text-3xl lg:text-2xl xl:text-xl font-semibold w-3/4 lg:w-2/3 xl:w-1/2"));;
-    if (!(hasKey_2667578279(translates_2634022946[0], "HappyX goals is development speed ⚡, efficiency 🎴 and speed 🔥"))) {
-    Temporary187 = makeNimstrLit("HappyX goals is development speed \xE2\x9A\xA1, efficiency \xF0\x9F\x8E\xB4 and speed \xF0\x9F\x94\xA5");
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary189 = navigator.language;
-      }
-      else {
-      Temporary189 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    if (!(hasKey_2667578563((Temporary188 = HEX5BHEX5D_2130709651(translates_2634022946[0], "HappyX goals is development speed ⚡, efficiency 🎴 and speed 🔥"), Temporary188)[0][Temporary188[1]], Temporary189))) {
-    Temporary187 = (Temporary191 = HEX5BHEX5D_2667578855((Temporary190 = HEX5BHEX5D_2130709651(translates_2634022946[0], "HappyX goals is development speed ⚡, efficiency 🎴 and speed 🔥"), Temporary190)[0][Temporary190[1]], "default"), Temporary191)[0][Temporary191[1]];
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary193 = navigator.language;
-      }
-      else {
-      Temporary193 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    Temporary187 = (Temporary194 = HEX5BHEX5D_2667578855((Temporary192 = HEX5BHEX5D_2130709651(translates_2634022946[0], "HappyX goals is development speed ⚡, efficiency 🎴 and speed 🔥"), Temporary192)[0][Temporary192[1]], Temporary193), Temporary194)[0][Temporary194[1]];
-    }
-    }
-    var fmtRes_469776189 = mnewString(0);
-    fmtRes_469776189.push.apply(fmtRes_469776189, makeNimstrLit("w-full grid grid-cols-2 lg:w-2/3 xl:w-1/2 xl:grid-cols-3 gap-4 lg:gap-8 xl:gap-12"));;
-    var _comp106108212113_469776193 = initCard_2768240647(makeNimstrLit("comp106108212113"), []);
-    var comp106108212113_469776194 = registerComponent_1845499350("comp106108212113", _comp106108212113_469776193);
-    var fmtRes_469776199 = mnewString(0);
-    fmtRes_469776199.push.apply(fmtRes_469776199, makeNimstrLit("w-full flex flex-col items-center gap-2 p-4 lg:p-2 xl:p-0"));;
-    var fmtRes_469776207 = mnewString(0);
-    fmtRes_469776207.push.apply(fmtRes_469776207, makeNimstrLit("text-4xl lg:text-2xl xl:text-lg font-semibold"));;
-    var fmtRes_469776215 = mnewString(0);
-    fmtRes_469776215.push.apply(fmtRes_469776215, makeNimstrLit("v1.0.0"));;
-    var fmtRes_469776228 = mnewString(0);
-    fmtRes_469776228.push.apply(fmtRes_469776228, makeNimstrLit("w-full text-2xl lg:text-lg xl:text-base"));;
-    if (!(hasKey_2667578279(translates_2634022946[0], "General features 🛠"))) {
-    Temporary195 = makeNimstrLit("General features \xF0\x9F\x9B\xA0");
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary197 = navigator.language;
-      }
-      else {
-      Temporary197 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    if (!(hasKey_2667578563((Temporary196 = HEX5BHEX5D_2130709651(translates_2634022946[0], "General features 🛠"), Temporary196)[0][Temporary196[1]], Temporary197))) {
-    Temporary195 = (Temporary199 = HEX5BHEX5D_2667578855((Temporary198 = HEX5BHEX5D_2130709651(translates_2634022946[0], "General features 🛠"), Temporary198)[0][Temporary198[1]], "default"), Temporary199)[0][Temporary199[1]];
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary201 = navigator.language;
-      }
-      else {
-      Temporary201 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    Temporary195 = (Temporary202 = HEX5BHEX5D_2667578855((Temporary200 = HEX5BHEX5D_2130709651(translates_2634022946[0], "General features 🛠"), Temporary200)[0][Temporary200[1]], Temporary201), Temporary202)[0][Temporary202[1]];
-    }
-    }
-    var fmtRes_469776766 = mnewString(0);
-    fmtRes_469776766.push.apply(fmtRes_469776766, makeNimstrLit("list-disc"));;
-    if (!(hasKey_2667578279(translates_2634022946[0], "SPA/SSR Support ⚡"))) {
-    Temporary203 = makeNimstrLit("SPA/SSR Support \xE2\x9A\xA1");
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary205 = navigator.language;
-      }
-      else {
-      Temporary205 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    if (!(hasKey_2667578563((Temporary204 = HEX5BHEX5D_2130709651(translates_2634022946[0], "SPA/SSR Support ⚡"), Temporary204)[0][Temporary204[1]], Temporary205))) {
-    Temporary203 = (Temporary207 = HEX5BHEX5D_2667578855((Temporary206 = HEX5BHEX5D_2130709651(translates_2634022946[0], "SPA/SSR Support ⚡"), Temporary206)[0][Temporary206[1]], "default"), Temporary207)[0][Temporary207[1]];
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary209 = navigator.language;
-      }
-      else {
-      Temporary209 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    Temporary203 = (Temporary210 = HEX5BHEX5D_2667578855((Temporary208 = HEX5BHEX5D_2130709651(translates_2634022946[0], "SPA/SSR Support ⚡"), Temporary208)[0][Temporary208[1]], Temporary209), Temporary210)[0][Temporary210[1]];
-    }
-    }
-    if (!(hasKey_2667578279(translates_2634022946[0], "Multiple HTTP Servers 👨‍🔬"))) {
-    Temporary211 = makeNimstrLit("Multiple HTTP Servers \xF0\x9F\x91\xA8\xE2\x80\x8D\xF0\x9F\x94\xAC");
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary213 = navigator.language;
-      }
-      else {
-      Temporary213 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    if (!(hasKey_2667578563((Temporary212 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Multiple HTTP Servers 👨‍🔬"), Temporary212)[0][Temporary212[1]], Temporary213))) {
-    Temporary211 = (Temporary215 = HEX5BHEX5D_2667578855((Temporary214 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Multiple HTTP Servers 👨‍🔬"), Temporary214)[0][Temporary214[1]], "default"), Temporary215)[0][Temporary215[1]];
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary217 = navigator.language;
-      }
-      else {
-      Temporary217 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    Temporary211 = (Temporary218 = HEX5BHEX5D_2667578855((Temporary216 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Multiple HTTP Servers 👨‍🔬"), Temporary216)[0][Temporary216[1]], Temporary217), Temporary218)[0][Temporary218[1]];
-    }
-    }
-    if (!(hasKey_2667578279(translates_2634022946[0], "Hot Code Reloading 🔥"))) {
-    Temporary219 = makeNimstrLit("Hot Code Reloading \xF0\x9F\x94\xA5");
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary221 = navigator.language;
-      }
-      else {
-      Temporary221 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    if (!(hasKey_2667578563((Temporary220 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Hot Code Reloading 🔥"), Temporary220)[0][Temporary220[1]], Temporary221))) {
-    Temporary219 = (Temporary223 = HEX5BHEX5D_2667578855((Temporary222 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Hot Code Reloading 🔥"), Temporary222)[0][Temporary222[1]], "default"), Temporary223)[0][Temporary223[1]];
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary225 = navigator.language;
-      }
-      else {
-      Temporary225 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    Temporary219 = (Temporary226 = HEX5BHEX5D_2667578855((Temporary224 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Hot Code Reloading 🔥"), Temporary224)[0][Temporary224[1]], Temporary225), Temporary226)[0][Temporary226[1]];
-    }
-    }
-    if (!(hasKey_2667578279(translates_2634022946[0], "CLI 📦"))) {
-    Temporary227 = makeNimstrLit("CLI \xF0\x9F\x93\xA6");
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary229 = navigator.language;
-      }
-      else {
-      Temporary229 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    if (!(hasKey_2667578563((Temporary228 = HEX5BHEX5D_2130709651(translates_2634022946[0], "CLI 📦"), Temporary228)[0][Temporary228[1]], Temporary229))) {
-    Temporary227 = (Temporary231 = HEX5BHEX5D_2667578855((Temporary230 = HEX5BHEX5D_2130709651(translates_2634022946[0], "CLI 📦"), Temporary230)[0][Temporary230[1]], "default"), Temporary231)[0][Temporary231[1]];
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary233 = navigator.language;
-      }
-      else {
-      Temporary233 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    Temporary227 = (Temporary234 = HEX5BHEX5D_2667578855((Temporary232 = HEX5BHEX5D_2130709651(translates_2634022946[0], "CLI 📦"), Temporary232)[0][Temporary232[1]], Temporary233), Temporary234)[0][Temporary234[1]];
-    }
-    }
-    comp106108212113_469776194.slot = initTag_2013266047(makeNimstrLit("div"), [initTag_2013265957(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469776199, NTI33554439)}, NTI469771615)], 0), [initTag_2013265957(makeNimstrLit("p"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469776207, NTI33554439)}, NTI469771628)], 0), [initTag_2013266105(fmtRes_469776215, true, [], false)], false), initTag_2013265957(makeNimstrLit("p"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469776228, NTI33554439)}, NTI469771656)], 0), [initTag_2013266105(Temporary195, true, [], false), initTag_2013265957(makeNimstrLit("ul"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469776766, NTI33554439)}, NTI469771994)], 0), [initTag_2013266047(makeNimstrLit("li"), [initTag_2013266105(Temporary203, true, [], false)], false), initTag_2013266047(makeNimstrLit("li"), [initTag_2013266105(Temporary211, true, [], false)], false), initTag_2013266047(makeNimstrLit("li"), [initTag_2013266105(Temporary219, true, [], false)], false), initTag_2013266047(makeNimstrLit("li"), [initTag_2013266105(Temporary227, true, [], false)], false)], false)], false)], false)], true);
-    var data_comp106108212113_469778954 = render_1845499744(comp106108212113_469776194);
-    addArgIter_2013266249(data_comp106108212113_469778954, (makeNimstrLit("data-") || []).concat(comp106108212113_469776194.uniqCompId || []));
-    window.addEventListener('beforeunload', data_comp106108212113_469778954.exited);
-    window.addEventListener('pagehide', data_comp106108212113_469778954.pageHide);
-    window.addEventListener('pageshow', data_comp106108212113_469778954.pageShow);
-    var _comp107109214114_469778955 = initCard_2768240647(makeNimstrLit("comp107109214114"), []);
-    var comp107109214114_469778956 = registerComponent_1845499350("comp107109214114", _comp107109214114_469778955);
-    var fmtRes_469778961 = mnewString(0);
-    fmtRes_469778961.push.apply(fmtRes_469778961, makeNimstrLit("w-full flex flex-col items-center gap-2 p-4 lg:p-2 xl:p-0"));;
-    var fmtRes_469778969 = mnewString(0);
-    fmtRes_469778969.push.apply(fmtRes_469778969, makeNimstrLit("text-4xl lg:text-2xl xl:text-lg font-semibold"));;
-    var fmtRes_469778977 = mnewString(0);
-    fmtRes_469778977.push.apply(fmtRes_469778977, makeNimstrLit("v1.5.0"));;
-    var fmtRes_469778990 = mnewString(0);
-    fmtRes_469778990.push.apply(fmtRes_469778990, makeNimstrLit("w-full text-2xl lg:text-lg xl:text-base"));;
-    if (!(hasKey_2667578279(translates_2634022946[0], "Framework improvement ⚡"))) {
-    Temporary235 = makeNimstrLit("Framework improvement \xE2\x9A\xA1");
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary237 = navigator.language;
-      }
-      else {
-      Temporary237 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    if (!(hasKey_2667578563((Temporary236 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Framework improvement ⚡"), Temporary236)[0][Temporary236[1]], Temporary237))) {
-    Temporary235 = (Temporary239 = HEX5BHEX5D_2667578855((Temporary238 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Framework improvement ⚡"), Temporary238)[0][Temporary238[1]], "default"), Temporary239)[0][Temporary239[1]];
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary241 = navigator.language;
-      }
-      else {
-      Temporary241 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    Temporary235 = (Temporary242 = HEX5BHEX5D_2667578855((Temporary240 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Framework improvement ⚡"), Temporary240)[0][Temporary240[1]], Temporary241), Temporary242)[0][Temporary242[1]];
-    }
-    }
-    var fmtRes_469779528 = mnewString(0);
-    fmtRes_469779528.push.apply(fmtRes_469779528, makeNimstrLit("list-disc"));;
-    if (!(hasKey_2667578279(translates_2634022946[0], "Additional HTTP Servers 👨‍🔬"))) {
-    Temporary243 = makeNimstrLit("Additional HTTP Servers \xF0\x9F\x91\xA8\xE2\x80\x8D\xF0\x9F\x94\xAC");
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary245 = navigator.language;
-      }
-      else {
-      Temporary245 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    if (!(hasKey_2667578563((Temporary244 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Additional HTTP Servers 👨‍🔬"), Temporary244)[0][Temporary244[1]], Temporary245))) {
-    Temporary243 = (Temporary247 = HEX5BHEX5D_2667578855((Temporary246 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Additional HTTP Servers 👨‍🔬"), Temporary246)[0][Temporary246[1]], "default"), Temporary247)[0][Temporary247[1]];
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary249 = navigator.language;
-      }
-      else {
-      Temporary249 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    Temporary243 = (Temporary250 = HEX5BHEX5D_2667578855((Temporary248 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Additional HTTP Servers 👨‍🔬"), Temporary248)[0][Temporary248[1]], Temporary249), Temporary250)[0][Temporary250[1]];
-    }
-    }
-    if (!(hasKey_2667578279(translates_2634022946[0], "Translatable Strings 🔥"))) {
-    Temporary251 = makeNimstrLit("Translatable Strings \xF0\x9F\x94\xA5");
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary253 = navigator.language;
-      }
-      else {
-      Temporary253 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    if (!(hasKey_2667578563((Temporary252 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Translatable Strings 🔥"), Temporary252)[0][Temporary252[1]], Temporary253))) {
-    Temporary251 = (Temporary255 = HEX5BHEX5D_2667578855((Temporary254 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Translatable Strings 🔥"), Temporary254)[0][Temporary254[1]], "default"), Temporary255)[0][Temporary255[1]];
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary257 = navigator.language;
-      }
-      else {
-      Temporary257 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    Temporary251 = (Temporary258 = HEX5BHEX5D_2667578855((Temporary256 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Translatable Strings 🔥"), Temporary256)[0][Temporary256[1]], Temporary257), Temporary258)[0][Temporary258[1]];
-    }
-    }
-    if (!(hasKey_2667578279(translates_2634022946[0], "Static Directories 📁"))) {
-    Temporary259 = makeNimstrLit("Static Directories \xF0\x9F\x93\x81");
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary261 = navigator.language;
-      }
-      else {
-      Temporary261 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    if (!(hasKey_2667578563((Temporary260 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Static Directories 📁"), Temporary260)[0][Temporary260[1]], Temporary261))) {
-    Temporary259 = (Temporary263 = HEX5BHEX5D_2667578855((Temporary262 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Static Directories 📁"), Temporary262)[0][Temporary262[1]], "default"), Temporary263)[0][Temporary263[1]];
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary265 = navigator.language;
-      }
-      else {
-      Temporary265 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    Temporary259 = (Temporary266 = HEX5BHEX5D_2667578855((Temporary264 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Static Directories 📁"), Temporary264)[0][Temporary264[1]], Temporary265), Temporary266)[0][Temporary266[1]];
-    }
-    }
-    comp107109214114_469778956.slot = initTag_2013266047(makeNimstrLit("div"), [initTag_2013265957(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469778961, NTI33554439)}, NTI469773392)], 0), [initTag_2013265957(makeNimstrLit("p"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469778969, NTI33554439)}, NTI469773405)], 0), [initTag_2013266105(fmtRes_469778977, true, [], false)], false), initTag_2013265957(makeNimstrLit("p"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469778990, NTI33554439)}, NTI469773433)], 0), [initTag_2013266105(Temporary235, true, [], false), initTag_2013265957(makeNimstrLit("ul"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469779528, NTI33554439)}, NTI469773771)], 0), [initTag_2013266047(makeNimstrLit("li"), [initTag_2013266105(Temporary243, true, [], false)], false), initTag_2013266047(makeNimstrLit("li"), [initTag_2013266105(Temporary251, true, [], false)], false), initTag_2013266047(makeNimstrLit("li"), [initTag_2013266105(Temporary259, true, [], false)], false)], false)], false)], false)], true);
-    var data_comp107109214114_469781178 = render_1845499744(comp107109214114_469778956);
-    addArgIter_2013266249(data_comp107109214114_469781178, (makeNimstrLit("data-") || []).concat(comp107109214114_469778956.uniqCompId || []));
-    window.addEventListener('beforeunload', data_comp107109214114_469781178.exited);
-    window.addEventListener('pagehide', data_comp107109214114_469781178.pageHide);
-    window.addEventListener('pageshow', data_comp107109214114_469781178.pageShow);
-    var _comp108110216115_469781179 = initCard_2768240647(makeNimstrLit("comp108110216115"), []);
-    var comp108110216115_469781180 = registerComponent_1845499350("comp108110216115", _comp108110216115_469781179);
-    var fmtRes_469781185 = mnewString(0);
-    fmtRes_469781185.push.apply(fmtRes_469781185, makeNimstrLit("w-full flex flex-col items-center gap-2 p-4 lg:p-2 xl:p-0"));;
-    var fmtRes_469781193 = mnewString(0);
-    fmtRes_469781193.push.apply(fmtRes_469781193, makeNimstrLit("text-4xl lg:text-2xl xl:text-lg font-semibold"));;
-    var fmtRes_469781201 = mnewString(0);
-    fmtRes_469781201.push.apply(fmtRes_469781201, makeNimstrLit("v1.10.0"));;
-    var fmtRes_469781214 = mnewString(0);
-    fmtRes_469781214.push.apply(fmtRes_469781214, makeNimstrLit("w-full text-2xl lg:text-lg xl:text-base"));;
-    if (!(hasKey_2667578279(translates_2634022946[0], "Components Update 🧩"))) {
-    Temporary267 = makeNimstrLit("Components Update \xF0\x9F\xA7\xA9");
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary269 = navigator.language;
-      }
-      else {
-      Temporary269 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    if (!(hasKey_2667578563((Temporary268 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Components Update 🧩"), Temporary268)[0][Temporary268[1]], Temporary269))) {
-    Temporary267 = (Temporary271 = HEX5BHEX5D_2667578855((Temporary270 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Components Update 🧩"), Temporary270)[0][Temporary270[1]], "default"), Temporary271)[0][Temporary271[1]];
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary273 = navigator.language;
-      }
-      else {
-      Temporary273 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    Temporary267 = (Temporary274 = HEX5BHEX5D_2667578855((Temporary272 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Components Update 🧩"), Temporary272)[0][Temporary272[1]], Temporary273), Temporary274)[0][Temporary274[1]];
-    }
-    }
-    var fmtRes_469781752 = mnewString(0);
-    fmtRes_469781752.push.apply(fmtRes_469781752, makeNimstrLit("list-disc"));;
-    if (!(hasKey_2667578279(translates_2634022946[0], "Inheritance 👶"))) {
-    Temporary275 = makeNimstrLit("Inheritance \xF0\x9F\x91\xB6");
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary277 = navigator.language;
-      }
-      else {
-      Temporary277 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    if (!(hasKey_2667578563((Temporary276 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Inheritance 👶"), Temporary276)[0][Temporary276[1]], Temporary277))) {
-    Temporary275 = (Temporary279 = HEX5BHEX5D_2667578855((Temporary278 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Inheritance 👶"), Temporary278)[0][Temporary278[1]], "default"), Temporary279)[0][Temporary279[1]];
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary281 = navigator.language;
-      }
-      else {
-      Temporary281 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    Temporary275 = (Temporary282 = HEX5BHEX5D_2667578855((Temporary280 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Inheritance 👶"), Temporary280)[0][Temporary280[1]], Temporary281), Temporary282)[0][Temporary282[1]];
-    }
-    }
-    if (!(hasKey_2667578279(translates_2634022946[0], "Methods 📦"))) {
-    Temporary283 = makeNimstrLit("Methods \xF0\x9F\x93\xA6");
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary285 = navigator.language;
-      }
-      else {
-      Temporary285 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    if (!(hasKey_2667578563((Temporary284 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Methods 📦"), Temporary284)[0][Temporary284[1]], Temporary285))) {
-    Temporary283 = (Temporary287 = HEX5BHEX5D_2667578855((Temporary286 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Methods 📦"), Temporary286)[0][Temporary286[1]], "default"), Temporary287)[0][Temporary287[1]];
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary289 = navigator.language;
-      }
-      else {
-      Temporary289 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    Temporary283 = (Temporary290 = HEX5BHEX5D_2667578855((Temporary288 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Methods 📦"), Temporary288)[0][Temporary288[1]], Temporary289), Temporary290)[0][Temporary290[1]];
-    }
-    }
-    if (!(hasKey_2667578279(translates_2634022946[0], "Constructors ⚙"))) {
-    Temporary291 = makeNimstrLit("Constructors \xE2\x9A\x99");
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary293 = navigator.language;
-      }
-      else {
-      Temporary293 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    if (!(hasKey_2667578563((Temporary292 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Constructors ⚙"), Temporary292)[0][Temporary292[1]], Temporary293))) {
-    Temporary291 = (Temporary295 = HEX5BHEX5D_2667578855((Temporary294 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Constructors ⚙"), Temporary294)[0][Temporary294[1]], "default"), Temporary295)[0][Temporary295[1]];
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary297 = navigator.language;
-      }
-      else {
-      Temporary297 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    Temporary291 = (Temporary298 = HEX5BHEX5D_2667578855((Temporary296 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Constructors ⚙"), Temporary296)[0][Temporary296[1]], Temporary297), Temporary298)[0][Temporary298[1]];
-    }
-    }
-    comp108110216115_469781180.slot = initTag_2013266047(makeNimstrLit("div"), [initTag_2013265957(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469781185, NTI33554439)}, NTI469774832)], 0), [initTag_2013265957(makeNimstrLit("p"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469781193, NTI33554439)}, NTI469774845)], 0), [initTag_2013266105(fmtRes_469781201, true, [], false)], false), initTag_2013265957(makeNimstrLit("p"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469781214, NTI33554439)}, NTI469774874)], 0), [initTag_2013266105(Temporary267, true, [], false), initTag_2013265957(makeNimstrLit("ul"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469781752, NTI33554439)}, NTI469775212)], 0), [initTag_2013266047(makeNimstrLit("li"), [initTag_2013266105(Temporary275, true, [], false)], false), initTag_2013266047(makeNimstrLit("li"), [initTag_2013266105(Temporary283, true, [], false)], false), initTag_2013266047(makeNimstrLit("li"), [initTag_2013266105(Temporary291, true, [], false)], false)], false)], false)], false)], true);
-    var data_comp108110216115_469783402 = render_1845499744(comp108110216115_469781180);
-    addArgIter_2013266249(data_comp108110216115_469783402, (makeNimstrLit("data-") || []).concat(comp108110216115_469781180.uniqCompId || []));
-    window.addEventListener('beforeunload', data_comp108110216115_469783402.exited);
-    window.addEventListener('pagehide', data_comp108110216115_469783402.pageHide);
-    window.addEventListener('pageshow', data_comp108110216115_469783402.pageShow);
-    var _comp109111218116_469783403 = initCard_2768240647(makeNimstrLit("comp109111218116"), []);
-    var comp109111218116_469783404 = registerComponent_1845499350("comp109111218116", _comp109111218116_469783403);
-    var fmtRes_469783409 = mnewString(0);
-    fmtRes_469783409.push.apply(fmtRes_469783409, makeNimstrLit("w-full flex flex-col items-center gap-2 p-4 lg:p-2 xl:p-0"));;
-    var fmtRes_469783417 = mnewString(0);
-    fmtRes_469783417.push.apply(fmtRes_469783417, makeNimstrLit("text-4xl lg:text-2xl xl:text-lg font-semibold"));;
-    var fmtRes_469783425 = mnewString(0);
-    fmtRes_469783425.push.apply(fmtRes_469783425, makeNimstrLit("v2.0.0"));;
-    var fmtRes_469783438 = mnewString(0);
-    fmtRes_469783438.push.apply(fmtRes_469783438, makeNimstrLit("w-full text-2xl lg:text-lg xl:text-base"));;
-    if (!(hasKey_2667578279(translates_2634022946[0], "Nim v2.0 Support ⚡"))) {
-    Temporary299 = makeNimstrLit("Nim v2.0 Support \xE2\x9A\xA1");
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary301 = navigator.language;
-      }
-      else {
-      Temporary301 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    if (!(hasKey_2667578563((Temporary300 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Nim v2.0 Support ⚡"), Temporary300)[0][Temporary300[1]], Temporary301))) {
-    Temporary299 = (Temporary303 = HEX5BHEX5D_2667578855((Temporary302 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Nim v2.0 Support ⚡"), Temporary302)[0][Temporary302[1]], "default"), Temporary303)[0][Temporary303[1]];
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary305 = navigator.language;
-      }
-      else {
-      Temporary305 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    Temporary299 = (Temporary306 = HEX5BHEX5D_2667578855((Temporary304 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Nim v2.0 Support ⚡"), Temporary304)[0][Temporary304[1]], Temporary305), Temporary306)[0][Temporary306[1]];
-    }
-    }
-    var fmtRes_469783984 = mnewString(0);
-    fmtRes_469783984.push.apply(fmtRes_469783984, makeNimstrLit("w-full text-2xl lg:text-lg xl:text-base"));;
-    if (!(hasKey_2667578279(translates_2634022946[0], "Automatic Docs Generation 📕"))) {
-    Temporary307 = makeNimstrLit("Automatic Docs Generation \xF0\x9F\x93\x95");
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary309 = navigator.language;
-      }
-      else {
-      Temporary309 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    if (!(hasKey_2667578563((Temporary308 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Automatic Docs Generation 📕"), Temporary308)[0][Temporary308[1]], Temporary309))) {
-    Temporary307 = (Temporary311 = HEX5BHEX5D_2667578855((Temporary310 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Automatic Docs Generation 📕"), Temporary310)[0][Temporary310[1]], "default"), Temporary311)[0][Temporary311[1]];
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary313 = navigator.language;
-      }
-      else {
-      Temporary313 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    Temporary307 = (Temporary314 = HEX5BHEX5D_2667578855((Temporary312 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Automatic Docs Generation 📕"), Temporary312)[0][Temporary312[1]], Temporary313), Temporary314)[0][Temporary314[1]];
-    }
-    }
-    comp109111218116_469783404.slot = initTag_2013266047(makeNimstrLit("div"), [initTag_2013265957(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469783409, NTI33554439)}, NTI469776273)], 0), [initTag_2013265957(makeNimstrLit("p"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469783417, NTI33554439)}, NTI469776286)], 0), [initTag_2013266105(fmtRes_469783425, true, [], false)], false), initTag_2013265957(makeNimstrLit("p"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469783438, NTI33554439)}, NTI469776314)], 0), [initTag_2013266105(Temporary299, true, [], false)], false), initTag_2013265957(makeNimstrLit("p"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469783984, NTI33554439)}, NTI469776662)], 0), [initTag_2013266105(Temporary307, true, [], false)], false)], false)], true);
-    var data_comp109111218116_469784542 = render_1845499744(comp109111218116_469783404);
-    addArgIter_2013266249(data_comp109111218116_469784542, (makeNimstrLit("data-") || []).concat(comp109111218116_469783404.uniqCompId || []));
-    window.addEventListener('beforeunload', data_comp109111218116_469784542.exited);
-    window.addEventListener('pagehide', data_comp109111218116_469784542.pageHide);
-    window.addEventListener('pageshow', data_comp109111218116_469784542.pageShow);
-    var _comp110112220117_469784543 = initCard_2768240647(makeNimstrLit("comp110112220117"), []);
-    var comp110112220117_469784544 = registerComponent_1845499350("comp110112220117", _comp110112220117_469784543);
-    var fmtRes_469784549 = mnewString(0);
-    fmtRes_469784549.push.apply(fmtRes_469784549, makeNimstrLit("w-full flex flex-col items-center gap-2 p-4 lg:p-2 xl:p-0"));;
-    var fmtRes_469784557 = mnewString(0);
-    fmtRes_469784557.push.apply(fmtRes_469784557, makeNimstrLit("text-4xl lg:text-2xl xl:text-lg font-semibold"));;
-    var fmtRes_469784565 = mnewString(0);
-    fmtRes_469784565.push.apply(fmtRes_469784565, makeNimstrLit("v2.1.0"));;
-    var fmtRes_469784578 = mnewString(0);
-    fmtRes_469784578.push.apply(fmtRes_469784578, makeNimstrLit("w-full text-2xl lg:text-lg xl:text-base"));;
-    if (!(hasKey_2667578279(translates_2634022946[0], ".hpx files support ✨"))) {
-    Temporary315 = makeNimstrLit(".hpx files support \xE2\x9C\xA8");
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary317 = navigator.language;
-      }
-      else {
-      Temporary317 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    if (!(hasKey_2667578563((Temporary316 = HEX5BHEX5D_2130709651(translates_2634022946[0], ".hpx files support ✨"), Temporary316)[0][Temporary316[1]], Temporary317))) {
-    Temporary315 = (Temporary319 = HEX5BHEX5D_2667578855((Temporary318 = HEX5BHEX5D_2130709651(translates_2634022946[0], ".hpx files support ✨"), Temporary318)[0][Temporary318[1]], "default"), Temporary319)[0][Temporary319[1]];
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary321 = navigator.language;
-      }
-      else {
-      Temporary321 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    Temporary315 = (Temporary322 = HEX5BHEX5D_2667578855((Temporary320 = HEX5BHEX5D_2130709651(translates_2634022946[0], ".hpx files support ✨"), Temporary320)[0][Temporary320[1]], Temporary321), Temporary322)[0][Temporary322[1]];
-    }
-    }
-    comp110112220117_469784544.slot = initTag_2013266047(makeNimstrLit("div"), [initTag_2013265957(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469784549, NTI33554439)}, NTI469777031)], 0), [initTag_2013265957(makeNimstrLit("p"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469784557, NTI33554439)}, NTI469777044)], 0), [initTag_2013266105(fmtRes_469784565, true, [], false)], false), initTag_2013265957(makeNimstrLit("p"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469784578, NTI33554439)}, NTI469777072)], 0), [initTag_2013266105(Temporary315, true, [], false)], false)], false)], true);
-    var data_comp110112220117_469785136 = render_1845499744(comp110112220117_469784544);
-    addArgIter_2013266249(data_comp110112220117_469785136, (makeNimstrLit("data-") || []).concat(comp110112220117_469784544.uniqCompId || []));
-    window.addEventListener('beforeunload', data_comp110112220117_469785136.exited);
-    window.addEventListener('pagehide', data_comp110112220117_469785136.pageHide);
-    window.addEventListener('pageshow', data_comp110112220117_469785136.pageShow);
-    var _comp111113222118_469785137 = initCard_2768240647(makeNimstrLit("comp111113222118"), []);
-    var comp111113222118_469785138 = registerComponent_1845499350("comp111113222118", _comp111113222118_469785137);
-    var fmtRes_469785143 = mnewString(0);
-    fmtRes_469785143.push.apply(fmtRes_469785143, makeNimstrLit("w-full flex flex-col items-center gap-2 p-4 lg:p-2 xl:p-0"));;
-    var fmtRes_469785151 = mnewString(0);
-    fmtRes_469785151.push.apply(fmtRes_469785151, makeNimstrLit("text-4xl lg:text-2xl xl:text-lg font-semibold"));;
-    var fmtRes_469785159 = mnewString(0);
-    fmtRes_469785159.push.apply(fmtRes_469785159, makeNimstrLit("v2.2.0"));;
-    var fmtRes_469785172 = mnewString(0);
-    fmtRes_469785172.push.apply(fmtRes_469785172, makeNimstrLit("w-full text-2xl lg:text-lg xl:text-base"));;
-    if (!(hasKey_2667578279(translates_2634022946[0], "Python Bindings"))) {
-    Temporary323 = makeNimstrLit("Python Bindings");
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary325 = navigator.language;
-      }
-      else {
-      Temporary325 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    if (!(hasKey_2667578563((Temporary324 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Python Bindings"), Temporary324)[0][Temporary324[1]], Temporary325))) {
-    Temporary323 = (Temporary327 = HEX5BHEX5D_2667578855((Temporary326 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Python Bindings"), Temporary326)[0][Temporary326[1]], "default"), Temporary327)[0][Temporary327[1]];
-    }
-    else {
-      if (eqStrings(val_2667578510(languageSettings_2248147489, 0).lang, makeNimstrLit("auto"))) {
-      Temporary329 = navigator.language;
-      }
-      else {
-      Temporary329 = toJSStr(val_2667578510(languageSettings_2248147489, 0).lang);
-      }
-      
-    Temporary323 = (Temporary330 = HEX5BHEX5D_2667578855((Temporary328 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Python Bindings"), Temporary328)[0][Temporary328[1]], Temporary329), Temporary330)[0][Temporary330[1]];
-    }
-    }
-    comp111113222118_469785138.slot = initTag_2013266047(makeNimstrLit("div"), [initTag_2013265957(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469785143, NTI33554439)}, NTI469777441)], 0), [initTag_2013265957(makeNimstrLit("p"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469785151, NTI33554439)}, NTI469777454)], 0), [initTag_2013266105(fmtRes_469785159, true, [], false)], false), initTag_2013265957(makeNimstrLit("p"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469785172, NTI33554439)}, NTI469777482)], 0), [initTag_2013266105(Temporary323, true, [], false)], false)], false)], true);
-    var data_comp111113222118_469785730 = render_1845499744(comp111113222118_469785138);
-    addArgIter_2013266249(data_comp111113222118_469785730, (makeNimstrLit("data-") || []).concat(comp111113222118_469785138.uniqCompId || []));
-    window.addEventListener('beforeunload', data_comp111113222118_469785730.exited);
-    window.addEventListener('pagehide', data_comp111113222118_469785730.pageHide);
-    window.addEventListener('pageshow', data_comp111113222118_469785730.pageShow);
-    var _comp112114224119_469785731 = initCard_2768240647(makeNimstrLit("comp112114224119"), []);
-    var comp112114224119_469785732 = registerComponent_1845499350("comp112114224119", _comp112114224119_469785731);
-    var fmtRes_469785737 = mnewString(0);
-    fmtRes_469785737.push.apply(fmtRes_469785737, makeNimstrLit("w-full flex flex-col items-center gap-2 p-4 lg:p-2 xl:p-0"));;
-    var fmtRes_469785745 = mnewString(0);
-    fmtRes_469785745.push.apply(fmtRes_469785745, makeNimstrLit("text-4xl lg:text-2xl xl:text-lg font-semibold"));;
-    var fmtRes_469785753 = mnewString(0);
-    fmtRes_469785753.push.apply(fmtRes_469785753, makeNimstrLit("Future releases"));;
-    var fmtRes_469785766 = mnewString(0);
-    fmtRes_469785766.push.apply(fmtRes_469785766, makeNimstrLit("w-full text-2xl lg:text-lg xl:text-base"));;
-    var fmtRes_469785774 = mnewString(0);
-    fmtRes_469785774.push.apply(fmtRes_469785774, makeNimstrLit("ORM \xF0\x9F\x94\xA8"));;
-    comp112114224119_469785732.slot = initTag_2013266047(makeNimstrLit("div"), [initTag_2013265957(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469785737, NTI33554439)}, NTI469777851)], 0), [initTag_2013265957(makeNimstrLit("p"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469785745, NTI33554439)}, NTI469777864)], 0), [initTag_2013266105(fmtRes_469785753, true, [], false)], false), initTag_2013265957(makeNimstrLit("p"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469785766, NTI33554439)}, NTI469777892)], 0), [initTag_2013266105(fmtRes_469785774, true, [], false)], false)], false)], true);
-    var data_comp112114224119_469785799 = render_1845499744(comp112114224119_469785732);
-    addArgIter_2013266249(data_comp112114224119_469785799, (makeNimstrLit("data-") || []).concat(comp112114224119_469785732.uniqCompId || []));
-    window.addEventListener('beforeunload', data_comp112114224119_469785799.exited);
-    window.addEventListener('pagehide', data_comp112114224119_469785799.pageHide);
-    window.addEventListener('pageshow', data_comp112114224119_469785799.pageShow);
-    html_469762217 = initTag_2013266047(makeNimstrLit("div"), [initTag_2013265957(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469775060[0], NTI33554439)}, NTI469770851)], 0), [data_drawer_comp_469775065, initTag_2013265957(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469775070, NTI33554439)}, NTI469770869)], 0), [data_comp105107210112_469775076], false), initTag_2013265957(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469775089, NTI33554439)}, NTI469770892)], 0), [initTag_2013265957(makeNimstrLit("p"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469775097, NTI33554439)}, NTI469770905)], 0), [initTag_2013266105(Temporary179, true, [], false)], false), initTag_2013265957(makeNimstrLit("p"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469775643, NTI33554439)}, NTI469771253)], 0), [initTag_2013266105(Temporary187, true, [], false)], false), initTag_2013265957(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469776189, NTI33554439)}, NTI469771601)], 0), [data_comp106108212113_469778954, data_comp107109214114_469781178, data_comp108110216115_469783402, data_comp109111218116_469784542, data_comp110112220117_469785136, data_comp111113222118_469785730, data_comp112114224119_469785799], false)], false)], false)], true);
-    }
-    else {
-    if (contains_1090520782(path_469762216, re_469785832())) {
-    if (((group_1090520399((Temporary332 = findAll_1090520725(path_469762216, re_469785832(), 0), Temporary332)[0], 0, path_469762216)).length < 1)) {
-    Temporary331 = makeNimstrLit("introduction");
-    }
-    else {
-    if ((((Temporary334 = group_1090520399((Temporary333 = findAll_1090520725(path_469762216, re_469785832(), 0), Temporary333)[0], 0, path_469762216), Temporary334)[0]).length == 0)) {
-    Temporary331 = makeNimstrLit("introduction");
-    }
-    else {
-    Temporary331 = (Temporary336 = group_1090520399((Temporary335 = findAll_1090520725(path_469762216, re_469785832(), 0), Temporary335)[0], 0, path_469762216), Temporary336)[0];
-    }
-    }
-    var link_469785842 = nimCopy(null, Temporary331, NTI33554439);
-    var fmtRes_469785847 = [mnewString(0)];
-    fmtRes_469785847[0].push.apply(fmtRes_469785847[0], makeNimstrLit("flex flex-col min-h-screen w-full bg-["));;
-    formatValue_671088800(fmtRes_469785847, 0, makeNimstrLit("#FEFEFE"), []);
-    fmtRes_469785847[0].push.apply(fmtRes_469785847[0], makeNimstrLit("] dark:bg-["));;
-    formatValue_671088800(fmtRes_469785847, 0, makeNimstrLit("#181326"), []);
-    fmtRes_469785847[0].push.apply(fmtRes_469785847[0], makeNimstrLit("] text-["));;
-    formatValue_671088800(fmtRes_469785847, 0, makeNimstrLit("#212121"), []);
-    fmtRes_469785847[0].push.apply(fmtRes_469785847[0], makeNimstrLit("] dark:text-["));;
-    formatValue_671088800(fmtRes_469785847, 0, makeNimstrLit("#E0EFFE"), []);
-    fmtRes_469785847[0].push.apply(fmtRes_469785847[0], makeNimstrLit("]"));;
-    enableRouting_2248146952[0] = false;
-    set_2684355345(currentGuidePage_2818572302[0], link_469785842);
-    enableRouting_2248146952[0] = true;
-    var data_drawer_comp_469785866 = render_1845499744(drawer_comp_2986344463[0]);
-    addArgIter_2013266249(data_drawer_comp_469785866, (makeNimstrLit("data-") || []).concat(drawer_comp_2986344463[0].uniqCompId || []));
-    window.addEventListener('beforeunload', data_drawer_comp_469785866.exited);
-    window.addEventListener('pagehide', data_drawer_comp_469785866.pageHide);
-    window.addEventListener('pageshow', data_drawer_comp_469785866.pageShow);
-    var fmtRes_469785871 = mnewString(0);
-    fmtRes_469785871.push.apply(fmtRes_469785871, makeNimstrLit("w-full sticky top-0 z-20"));;
-    var _comp114116228121_469785875 = initHeader_2785017869(makeNimstrLit("comp114116228121"), drawer_comp_2986344463[0]);
-    var comp114116228121_469785876 = registerComponent_1845499350("comp114116228121", _comp114116228121_469785875);
-    comp114116228121_469785876.slot = initTag_2013266047(makeNimstrLit("div"), [], true);
-    var data_comp114116228121_469785877 = render_1845499744(comp114116228121_469785876);
-    addArgIter_2013266249(data_comp114116228121_469785877, (makeNimstrLit("data-") || []).concat(comp114116228121_469785876.uniqCompId || []));
-    window.addEventListener('beforeunload', data_comp114116228121_469785877.exited);
-    window.addEventListener('pagehide', data_comp114116228121_469785877.pageHide);
-    window.addEventListener('pageshow', data_comp114116228121_469785877.pageShow);
-    var fmtRes_469785890 = mnewString(0);
-    fmtRes_469785890.push.apply(fmtRes_469785890, makeNimstrLit("flex w-full h-full gap-8 px-4"));;
-    var fmtRes_469785898 = mnewString(0);
-    fmtRes_469785898.push.apply(fmtRes_469785898, makeNimstrLit("fixed top-0 pt-16 w-72"));;
-    var _comp115117230122_469785903 = initSideBar_2818572963(makeNimstrLit("comp115117230122"), false);
-    var comp115117230122_469785904 = registerComponent_1845499350("comp115117230122", _comp115117230122_469785903);
-    comp115117230122_469785904.slot = initTag_2013266047(makeNimstrLit("div"), [], true);
-    var data_comp115117230122_469785905 = render_1845499744(comp115117230122_469785904);
-    addArgIter_2013266249(data_comp115117230122_469785905, (makeNimstrLit("data-") || []).concat(comp115117230122_469785904.uniqCompId || []));
-    window.addEventListener('beforeunload', data_comp115117230122_469785905.exited);
-    window.addEventListener('pagehide', data_comp115117230122_469785905.pageHide);
-    window.addEventListener('pageshow', data_comp115117230122_469785905.pageShow);
-    var fmtRes_469785918 = mnewString(0);
-    fmtRes_469785918.push.apply(fmtRes_469785918, makeNimstrLit("pl-0 xl:pl-72 w-full"));;
-    var _comp116118232123_469785922 = initGuidePage_2969567247(makeNimstrLit("comp116118232123"), link_469785842);
-    var comp116118232123_469785923 = registerComponent_1845499350("comp116118232123", _comp116118232123_469785922);
-    comp116118232123_469785923.slot = initTag_2013266047(makeNimstrLit("div"), [], true);
-    var data_comp116118232123_469785924 = render_1845499744(comp116118232123_469785923);
-    addArgIter_2013266249(data_comp116118232123_469785924, (makeNimstrLit("data-") || []).concat(comp116118232123_469785923.uniqCompId || []));
-    window.addEventListener('beforeunload', data_comp116118232123_469785924.exited);
-    window.addEventListener('pagehide', data_comp116118232123_469785924.pageHide);
-    window.addEventListener('pageshow', data_comp116118232123_469785924.pageShow);
-    var fmtRes_469785945 = [mnewString(0)];
-    fmtRes_469785945[0].push.apply(fmtRes_469785945[0], makeNimstrLit("          p:has(img[alt=\"Happyx\"]) {\x0A            display: flex;\x0A            justify-content: center;\x0A            items-align: center;\x0A          }\x0A          li {\x0A            list-style-type: disc;\x0A            list-style-position: inside;\x0A          }\x0A          ul {\x0A            display: flex;\x0A            flex-direction: column;\x0A            gap: .75rem;\x0A          }\x0A          a {\x0A            display: inline-block;\x0A            transition: colors;\x0A            color: "));;
-    formatValue_671088800(fmtRes_469785945, 0, makeNimstrLit("#aca7fa"), []);
-    fmtRes_469785945[0].push.apply(fmtRes_469785945[0], makeNimstrLit(";\x0A          }\x0A          a:active {\x0A            color: "));;
-    formatValue_671088800(fmtRes_469785945, 0, makeNimstrLit("#ccccff"), []);
-    fmtRes_469785945[0].push.apply(fmtRes_469785945[0], makeNimstrLit(";\x0A          }\x0A          a:visited {\x0A            color: "));;
-    formatValue_671088800(fmtRes_469785945, 0, makeNimstrLit("#8c87aa"), []);
-    fmtRes_469785945[0].push.apply(fmtRes_469785945[0], makeNimstrLit(";\x0A          }\x0A\x0A          td {\x0A            padding: .2rem .4rem;\x0A            display: table-cell;\x0A            vertical-align: middle;\x0A          }\x0A          \x0A          @media (prefers-color-scheme: light) {\x0A            tr:nth-child(even) {\x0A              background: "));;
-    formatValue_671088800(fmtRes_469785945, 0, makeNimstrLit("#212121"), []);
-    fmtRes_469785945[0].push.apply(fmtRes_469785945[0], makeNimstrLit("20;\x0A            }\x0A            tr:nth-child(odd) {\x0A              background: "));;
-    formatValue_671088800(fmtRes_469785945, 0, makeNimstrLit("#212121"), []);
-    fmtRes_469785945[0].push.apply(fmtRes_469785945[0], makeNimstrLit("15;\x0A            }\x0A            tr {\x0A              border: 1px solid "));;
-    formatValue_671088800(fmtRes_469785945, 0, makeNimstrLit("#212121"), []);
-    fmtRes_469785945[0].push.apply(fmtRes_469785945[0], makeNimstrLit("45;\x0A            }\x0A          }\x0A          @media (prefers-color-scheme: dark) {\x0A            tr:nth-child(even) {\x0A              background: "));;
-    formatValue_671088800(fmtRes_469785945, 0, makeNimstrLit("#E0EFFE"), []);
-    fmtRes_469785945[0].push.apply(fmtRes_469785945[0], makeNimstrLit("20;\x0A            }\x0A            tr:nth-child(odd) {\x0A              background: "));;
-    formatValue_671088800(fmtRes_469785945, 0, makeNimstrLit("#E0EFFE"), []);
-    fmtRes_469785945[0].push.apply(fmtRes_469785945[0], makeNimstrLit("15;\x0A            }\x0A            tr {\x0A              border: 1px solid "));;
-    formatValue_671088800(fmtRes_469785945, 0, makeNimstrLit("#E0EFFE"), []);
-    fmtRes_469785945[0].push.apply(fmtRes_469785945[0], makeNimstrLit("45;\x0A            }\x0A          }\x0A        "));;
-    html_469762217 = initTag_2013266047(makeNimstrLit("div"), [initTag_2013265957(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469785847[0], NTI33554439)}, NTI469777993)], 0), [initTag_2013266047(makeNimstrLit("div"), [], true), data_drawer_comp_469785866, initTag_2013265957(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469785871, NTI33554439)}, NTI469778029)], 0), [data_comp114116228121_469785877], false), initTag_2013265957(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469785890, NTI33554439)}, NTI469778052)], 0), [initTag_2013265957(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469785898, NTI33554439)}, NTI469778065)], 0), [data_comp115117230122_469785905], false), initTag_2013265957(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469785918, NTI33554439)}, NTI469778090)], 0), [data_comp116118232123_469785924], false)], false), initTag_2013266047(makeNimstrLit("style"), [initTag_2013266105(fmtRes_469785945[0], true, [], false)], false)], false)], true);
-    }
-    }}}
-    if (!((html_469762217 == null))) {
-    renderVdom_1845499709(application_1845493808[0], html_469762217);
+    var fmtRes_469762207 = [mnewString(0)];
+    fmtRes_469762207[0].push.apply(fmtRes_469762207[0], makeNimstrLit("flex flex-col gap-2 justify-center items-center w-screen h-screen dark:text-["));;
+    formatValue_671088800(fmtRes_469762207, 0, makeNimstrLit("#E0EFFE"), []);
+    fmtRes_469762207[0].push.apply(fmtRes_469762207[0], makeNimstrLit("] text-["));;
+    formatValue_671088800(fmtRes_469762207, 0, makeNimstrLit("#212121"), []);
+    fmtRes_469762207[0].push.apply(fmtRes_469762207[0], makeNimstrLit("] dark:bg-["));;
+    formatValue_671088800(fmtRes_469762207, 0, makeNimstrLit("#181326"), []);
+    fmtRes_469762207[0].push.apply(fmtRes_469762207[0], makeNimstrLit("] bg-["));;
+    formatValue_671088800(fmtRes_469762207, 0, makeNimstrLit("#FEFEFE"), []);
+    fmtRes_469762207[0].push.apply(fmtRes_469762207[0], makeNimstrLit("]"));;
+    var fmtRes_469762215 = mnewString(0);
+    fmtRes_469762215.push.apply(fmtRes_469762215, makeNimstrLit("text-9xl font-semibold"));;
+    var fmtRes_469762223 = mnewString(0);
+    fmtRes_469762223.push.apply(fmtRes_469762223, makeNimstrLit("404"));;
+    var fmtRes_469762236 = mnewString(0);
+    fmtRes_469762236.push.apply(fmtRes_469762236, makeNimstrLit("text-xl font-semibold"));;
+    var fmtRes_469762244 = mnewString(0);
+    fmtRes_469762244.push.apply(fmtRes_469762244, makeNimstrLit("Oops! Not found"));;
+    var fmtRes_469762265 = mnewString(0);
+    fmtRes_469762265.push.apply(fmtRes_469762265, makeNimstrLit("flex flex-col justify-end items-center absolute top-0 left-0 bottom-24 right-0 upper"));;
+    var _comp808216087_469762270 = initButton_2751463441(makeNimstrLit("comp808216087"), false, HEX3Aanonymous_469762269, true);
+    var comp808216087_469762271 = registerComponent_1845499350("comp808216087", _comp808216087_469762270);
+    var fmtRes_469762276 = mnewString(0);
+    fmtRes_469762276.push.apply(fmtRes_469762276, makeNimstrLit("go to home"));;
+    comp808216087_469762271.slot = initTag_2013266047(makeNimstrLit("div"), [initTag_2013266105(fmtRes_469762276, true, [], false)], true);
+    var data_comp808216087_469762285 = render_1845499744(comp808216087_469762271);
+    addArgIter_2013266249(data_comp808216087_469762285, (makeNimstrLit("data-") || []).concat(comp808216087_469762271.uniqCompId || []));
+    window.addEventListener('beforeunload', data_comp808216087_469762285.exited);
+    window.addEventListener('pagehide', data_comp808216087_469762285.pageHide);
+    window.addEventListener('pageshow', data_comp808216087_469762285.pageShow);
+    html_469762119 = initTag_2013266047(makeNimstrLit("div"), [initTag_2013265957(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469762207[0], NTI33554439)}, NTI469762132)], 0), [initTag_2013265957(makeNimstrLit("p"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469762215, NTI33554439)}, NTI469762149)], 0), [initTag_2013266105(fmtRes_469762223, true, [], false)], false), initTag_2013265957(makeNimstrLit("p"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469762236, NTI33554439)}, NTI469762178)], 0), [initTag_2013266105(fmtRes_469762244, true, [], false)], false)], false), initTag_2013265957(makeNimstrLit("div"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_469762265, NTI33554439)}, NTI469762217)], 0), [data_comp808216087_469762285], false), initTag_2013266047(makeNimstrLit("style"), [initTag_2013266105(makeNimstrLit("      @keyframes upper-anim {\x0A        0% {\x0A          opacity: 0;\x0A          transform: translateY(50px);\x0A        }\x0A        100% {\x0A          opacity: 1;\x0A          transform: translateY(0);\x0A        }\x0A      }\x0A\x0A      .upper {\x0A        animation: upper-anim .5s cubic-bezier(.57,-0.05,.85,.43)\x0A      }\x0A    "), true, [], false)], false)], true);
+    if (!((html_469762119 == null))) {
+    renderVdom_1845499709(application_1845493808[0], html_469762119);
     }
     
   } while (false);
@@ -13130,8 +6755,8 @@ function HEX3Aanonymous_469762367() {
   
 }
 
-function onDOMContentLoaded_469785983(ev_469785984) {
-    callRouter_469762213(false);
+function onDOMContentLoaded_469762314(ev_469762315) {
+    callRouter_469762115(false);
 
   
 }
@@ -13867,6 +7492,12 @@ var Temporary734;
 var Temporary735;
 var Temporary736;
 var Temporary737;
+var Temporary738;
+var Temporary739;
+var Temporary740;
+var Temporary741;
+var Temporary742;
+var Temporary743;
 var app_469762077 = [registerApp_1845499338("app")];
 var translates_2634022946 = [newTable_2130706448(32)];
 HEX5BHEX5DHEX3D_2130709493(translates_2634022946[0], "🌎 RoadMap", newTable_2130708029(32));
@@ -14723,11 +8354,18 @@ HEX5BHEX5DHEX3D_2130709883((Temporary734 = HEX5BHEX5D_2130709651(translates_2634
 HEX5BHEX5DHEX3D_2130709883((Temporary735 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Calculation 🧮"), Temporary735)[0][Temporary735[1]], "zh", makeNimstrLit("\xE8\xAE\xA1\xE7\xAE\x97 \xF0\x9F\xA7\xAE"));
 HEX5BHEX5DHEX3D_2130709883((Temporary736 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Calculation 🧮"), Temporary736)[0][Temporary736[1]], "ko", makeNimstrLit("\xEA\xB3\x84\xEC\x82\xB0 \xF0\x9F\xA7\xAE"));
 HEX5BHEX5DHEX3D_2130709883((Temporary737 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Calculation 🧮"), Temporary737)[0][Temporary737[1]], "fr", makeNimstrLit("Calcul \xF0\x9F\xA7\xAE"));
-app_469762077[0].router = callRouter_469762213;
+HEX5BHEX5DHEX3D_2130709493(translates_2634022946[0], "Path Params 🔌", newTable_2130708029(32));
+HEX5BHEX5DHEX3D_2130709883((Temporary738 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Path Params 🔌"), Temporary738)[0][Temporary738[1]], "default", makeNimstrLit("Path Params \xF0\x9F\x94\x8C"));
+HEX5BHEX5DHEX3D_2130709883((Temporary739 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Path Params 🔌"), Temporary739)[0][Temporary739[1]], "ru", makeNimstrLit("\xD0\x9F\xD0\xB0\xD1\x80\xD0\xB0\xD0\xBC\xD0\xB5\xD1\x82\xD1\x80\xD1\x8B \xD0\xBF\xD1\x83\xD1\x82\xD0\xB8 \xF0\x9F\x94\x8C"));
+HEX5BHEX5DHEX3D_2130709883((Temporary740 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Path Params 🔌"), Temporary740)[0][Temporary740[1]], "ja", makeNimstrLit("\xE3\x83\x91\xE3\x82\xB9\xE3\x83\x91\xE3\x83\xA9\xE3\x83\xA1\xE3\x83\xBC\xE3\x82\xBF \xF0\x9F\x94\x8C"));
+HEX5BHEX5DHEX3D_2130709883((Temporary741 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Path Params 🔌"), Temporary741)[0][Temporary741[1]], "zh", makeNimstrLit("\xE8\xB7\xAF\xE5\xBE\x84\xE5\x8F\x82\xE6\x95\xB0 \xF0\x9F\x94\x8C"));
+HEX5BHEX5DHEX3D_2130709883((Temporary742 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Path Params 🔌"), Temporary742)[0][Temporary742[1]], "ko", makeNimstrLit("\xEA\xB2\xBD\xEB\xA1\x9C \xEB\xA7\xA4\xEA\xB0\x9C \xEB\xB3\x80\xEC\x88\x98 \xF0\x9F\x94\x8C"));
+HEX5BHEX5DHEX3D_2130709883((Temporary743 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Path Params 🔌"), Temporary743)[0][Temporary743[1]], "fr", makeNimstrLit("Param\xC3\xA8tres du Chemin \xF0\x9F\x94\x8C"));
+app_469762077[0].router = callRouter_469762115;
 window.addEventListener('beforeunload', (e) => {
 });
-document.addEventListener("DOMContentLoaded", onDOMContentLoaded_469785983, false);
-window.addEventListener("popstate", onDOMContentLoaded_469785983, false);
+document.addEventListener("DOMContentLoaded", onDOMContentLoaded_469762314, false);
+window.addEventListener("popstate", onDOMContentLoaded_469762314, false);
 function onHashChangeCallback() {
   if (window.location.hash[0] == "#") {
     currentRoute_1845498269[0] = window.location.hash.substr(1);
@@ -14763,7 +8401,7 @@ function chckNilDisp(p_33557002, p_33557002_Idx) {
 function nsuToLowerAsciiChar(c_687865924) {
   var result_687865925 = 0;
 
-    if ((ConstSet29[c_687865924] != undefined)) {
+    if ((ConstSet15[c_687865924] != undefined)) {
     result_687865925 = (c_687865924 ^ 32);
     }
     else {
@@ -14781,15 +8419,15 @@ function nsuIntToStr(x_687866639, minchars_687866640) {
     result_687866641 = nimCopy(null, HEX24_335544323(Math.abs(x_687866639)), NTI33554439);
     Label1: do {
       var i_687866646 = 0;
-      var colontmp__469786101 = 0;
-      colontmp__469786101 = (minchars_687866640 - (result_687866641).length);
-      var res_469786102 = 1;
+      var colontmp__469762416 = 0;
+      colontmp__469762416 = (minchars_687866640 - (result_687866641).length);
+      var res_469762417 = 1;
       Label2: do {
           Label3: while (true) {
-          if (!(res_469786102 <= colontmp__469786101)) break Label3;
-            i_687866646 = res_469786102;
+          if (!(res_469762417 <= colontmp__469762416)) break Label3;
+            i_687866646 = res_469762417;
             result_687866641 = nimCopy(null, [48].concat(result_687866641 || []), NTI33554439);
-            res_469786102 += 1;
+            res_469762417 += 1;
           }
       } while (false);
     } while (false);
@@ -14999,10 +8637,10 @@ function fromEpochDay_1929380064(epochday_1929380065) {
     }
     
     var m_1929380078 = HEX2B_1929379858(mp_1929380076, Temporary2);
-    var colontmp__469786105 = d_1929380077;
-    var colontmp__469786106 = m_1929380078;
-    var colontmp__469786107 = HEX2B_1929379858(y_1929380074, ((m_1929380078 <= 2) ? 1 : 0));
-    result_1929380069 = nimCopy(result_1929380069, {Field0: nimCopy(null, colontmp__469786105, NTI1929379864), Field1: colontmp__469786106, Field2: colontmp__469786107}, NTI1929380025);
+    var colontmp__469762420 = d_1929380077;
+    var colontmp__469762421 = m_1929380078;
+    var colontmp__469762422 = HEX2B_1929379858(y_1929380074, ((m_1929380078 <= 2) ? 1 : 0));
+    result_1929380069 = nimCopy(result_1929380069, {Field0: nimCopy(null, colontmp__469762420, NTI1929379864), Field1: colontmp__469762421, Field2: colontmp__469762422}, NTI1929380025);
     break BeforeRet;
   } while (false);
 
@@ -15040,10 +8678,10 @@ function toEpochDay_1929380027(monthday_1929380028, month_1929380029, year_19293
 
   BeforeRet: do {
     assertValidDate_1929380016(monthday_1929380028, month_1929380029, year_1929380030);
-    var colontmp__469786108 = {Field0: year_1929380030, Field1: month_1929380029, Field2: monthday_1929380028};
-    var y_1929380035 = colontmp__469786108["Field0"];
-    var m_1929380036 = colontmp__469786108["Field1"];
-    var d_1929380037 = colontmp__469786108["Field2"];
+    var colontmp__469762423 = {Field0: year_1929380030, Field1: month_1929380029, Field2: monthday_1929380028};
+    var y_1929380035 = colontmp__469762423["Field0"];
+    var m_1929380036 = colontmp__469762423["Field1"];
+    var d_1929380037 = colontmp__469762423["Field2"];
     if ((m_1929380036 <= 2)) {
     y_1929380035 -= 1;
     }
@@ -15136,10 +8774,10 @@ function initDateTime_1929381071(zt_1929381072, zone_1929381073) {
     var minute_1929381084 = Math.trunc(rem_1929381082 / 60);
     rem_1929381082 = HEX2D_1929379866(rem_1929381082, HEX2A_1929379850(minute_1929381084, 60));
     var second_1929381085 = rem_1929381082;
-    var colontmp__469786104 = fromEpochDay_1929380064(epochday_1929381081);
-    var d_1929381086 = colontmp__469786104["Field0"];
-    var m_1929381087 = colontmp__469786104["Field1"];
-    var y_1929381088 = colontmp__469786104["Field2"];
+    var colontmp__469762419 = fromEpochDay_1929380064(epochday_1929381081);
+    var d_1929381086 = colontmp__469762419["Field0"];
+    var m_1929381087 = colontmp__469762419["Field1"];
+    var y_1929381088 = colontmp__469762419["Field2"];
     result_1929381074 = nimCopy(result_1929381074, {year: y_1929381088, monthZero: ((m_1929381087) | 0), monthdayZero: d_1929381086, hour: nimCopy(null, hour_1929381083, NTI1929379865), minute: nimCopy(null, minute_1929381084, NTI1929379866), second: nimCopy(null, second_1929381085, NTI1929379867), nanosecond: nimCopy(null, zt_1929381072.time.nanosecond, NTI1929379869), weekday: getDayOfWeek_1929380125(d_1929381086, m_1929381087, y_1929381088), yearday: getDayOfYear_1929380100(d_1929381086, m_1929381087, y_1929381088), isDst: zt_1929381072.isDst, timezone: zone_1929381073, utcOffset: zt_1929381072.utcOffset, m_type: NTI1929379871}, NTI1929379871);
 
   return result_1929381074;
@@ -15183,6 +8821,24 @@ function localZonedTimeFromTime_1929381184(time_1929381185) {
     result_1929381186.isDst = false;
 
   return result_1929381186;
+
+}
+
+function contains_1342177410(s_1342177414, value_1342177415) {
+  var result_1342177416 = false;
+
+    result_1342177416 = ((s_1342177414.a <= value_1342177415) && (value_1342177415 <= s_1342177414.b));
+
+  return result_1342177416;
+
+}
+
+function HEX2EHEX2E_754975569(a_754975572, b_754975573) {
+  var result_754975576 = ({a: 0, b: 0});
+
+    result_754975576 = nimCopy(result_754975576, {a: a_754975572, b: b_754975573}, NTI754976722);
+
+  return result_754975576;
 
 }
 
@@ -15282,13 +8938,13 @@ function substituteLog_1862271030(frmt_1862271031, level_1862271032, args_186227
     var msgLen_1862271035 = 0;
     Label1: do {
       var arg_1862271039 = [];
-      var i_469786093 = 0;
+      var i_469762408 = 0;
       Label2: do {
           Label3: while (true) {
-          if (!(i_469786093 < (args_1862271033).length)) break Label3;
-            arg_1862271039 = args_1862271033[i_469786093];
+          if (!(i_469762408 < (args_1862271033).length)) break Label3;
+            arg_1862271039 = args_1862271033[i_469762408];
             msgLen_1862271035 += (arg_1862271039).length;
-            i_469786093 += 1;
+            i_469762408 += 1;
           }
       } while (false);
     } while (false);
@@ -15307,7 +8963,7 @@ function substituteLog_1862271030(frmt_1862271031, level_1862271032, args_186227
             var app_1862271054 = [];
             Label6: do {
                 Label7: while (true) {
-                  if (!(i_1862271044 < (frmt_1862271031).length)) Temporary8 = false; else {                    Temporary8 = (ConstSet28[frmt_1862271031[i_1862271044]] != undefined);                  }                if (!Temporary8) break Label7;
+                  if (!(i_1862271044 < (frmt_1862271031).length)) Temporary8 = false; else {                    Temporary8 = (ConstSet14[frmt_1862271031[i_1862271044]] != undefined);                  }                if (!Temporary8) break Label7;
                   addChar(v_1862271053, nsuToLowerAsciiChar(frmt_1862271031[i_1862271044]));;
                   i_1862271044 += 1;
                 }
@@ -15344,13 +9000,13 @@ function substituteLog_1862271030(frmt_1862271031, level_1862271032, args_186227
     } while (false);
     Label9: do {
       var arg_1862271066 = [];
-      var i_469786098 = 0;
+      var i_469762413 = 0;
       Label10: do {
           Label11: while (true) {
-          if (!(i_469786098 < (args_1862271033).length)) break Label11;
-            arg_1862271066 = args_1862271033[i_469786098];
+          if (!(i_469762413 < (args_1862271033).length)) break Label11;
+            arg_1862271066 = args_1862271033[i_469762413];
             result_1862271034.push.apply(result_1862271034, arg_1862271066);;
-            i_469786098 += 1;
+            i_469762413 += 1;
           }
       } while (false);
     } while (false);
@@ -15452,13 +9108,13 @@ function enlarge_1845496041(t_1845496044) {
     var n_1845496047 = [];
     n_1845496047 = new Array(((t_1845496044.data).length * 2)); for (var i = 0 ; i < ((t_1845496044.data).length * 2) ; ++i) { n_1845496047[i] = {Field0: 0, Field1: 0, Field2: null}; }    var Temporary1 = t_1845496044.data; t_1845496044.data = n_1845496047; n_1845496047 = Temporary1;    Label2: do {
       var i_1845496111 = 0;
-      var colontmp__469786111 = 0;
-      colontmp__469786111 = (n_1845496047).length - 1;
-      var res_469786112 = 0;
+      var colontmp__469762426 = 0;
+      colontmp__469762426 = (n_1845496047).length - 1;
+      var res_469762427 = 0;
       Label3: do {
           Label4: while (true) {
-          if (!(res_469786112 <= colontmp__469786111)) break Label4;
-            i_1845496111 = res_469786112;
+          if (!(res_469762427 <= colontmp__469762426)) break Label4;
+            i_1845496111 = res_469762427;
             var eh_1845496165 = n_1845496047[i_1845496111].Field0;
             if (isFilled_1107296287(eh_1845496165)) {
             var j_1845496169 = (eh_1845496165 & (t_1845496044.data).length - 1);
@@ -15471,7 +9127,7 @@ function enlarge_1845496041(t_1845496044) {
             rawInsert_1845496335(t_1845496044, t_1845496044, "data", n_1845496047[i_1845496111].Field1, n_1845496047[i_1845496111].Field2, eh_1845496165, j_1845496169);
             }
             
-            res_469786112 += 1;
+            res_469762427 += 1;
           }
       } while (false);
     } while (false);
@@ -15612,11 +9268,11 @@ function HEX3Aanonymous_2818572831(self_2818572832, ev_2818572833) {
 function add_2013266163(self_2013266164, tags_2013266165) {
     Label1: do {
       var tag_2013266178 = null;
-      var i_469786118 = 0;
+      var i_469762433 = 0;
       Label2: do {
           Label3: while (true) {
-          if (!(i_469786118 < (tags_2013266165).length)) break Label3;
-            tag_2013266178 = tags_2013266165[i_469786118];
+          if (!(i_469762433 < (tags_2013266165).length)) break Label3;
+            tag_2013266178 = tags_2013266165[i_469762433];
             Label4: do {
               if ((tag_2013266178 == null)) {
               break Label4;
@@ -15625,7 +9281,7 @@ function add_2013266163(self_2013266164, tags_2013266165) {
               self_2013266164.children.push(tag_2013266178);;
               tag_2013266178.parent = self_2013266164;
             } while (false);
-            i_469786118 += 1;
+            i_469762433 += 1;
           }
       } while (false);
     } while (false);
@@ -15770,6 +9426,183 @@ function len_2835349927(self_2835349929) {
 
 }
 
+function mkDigit_671088645(v_671088646, typ_671088647) {
+      var Temporary1;
+
+  var result_671088648 = [];
+
+    if ((v_671088646 < 10)) {
+    result_671088648 = nimCopy(null, nimCharToStr((48 + v_671088646)), NTI33554439);
+    }
+    else {
+      if ((typ_671088647 == 120)) {
+      Temporary1 = 97;
+      }
+      else {
+      Temporary1 = 65;
+      }
+      
+      result_671088648 = nimCopy(null, nimCharToStr(((Temporary1 + v_671088646) - 10)), NTI33554439);
+    }
+    
+
+  return result_671088648;
+
+}
+
+function formatInt_1073742214(n_1073742216, radix_1073742217, spec_1073742218) {
+    var Temporary1;
+    var Temporary8;
+
+  var result_1073742219 = [];
+
+    var n_1073742222 = n_1073742216;
+    var negative_1073742223 = (n_1073742222 < 0);
+    if (negative_1073742223) {
+    Temporary1 = ((~(n_1073742222) + 1) );
+    }
+    else {
+    Temporary1 = n_1073742222;
+    }
+    
+    var v_1073742224 = Temporary1;
+    var xx_1073742225 = [];
+    if (spec_1073742218.alternateForm) {
+    switch (spec_1073742218.typ) {
+    case 88:
+      xx_1073742225 = nimCopy(null, makeNimstrLit("0x"), NTI33554439);
+      break;
+    case 120:
+      xx_1073742225 = nimCopy(null, makeNimstrLit("0x"), NTI33554439);
+      break;
+    case 98:
+      xx_1073742225 = nimCopy(null, makeNimstrLit("0b"), NTI33554439);
+      break;
+    case 111:
+      xx_1073742225 = nimCopy(null, makeNimstrLit("0o"), NTI33554439);
+      break;
+    default: 
+      break;
+    }
+    }
+    
+    if ((v_1073742224 == 0)) {
+    result_1073742219 = nimCopy(null, makeNimstrLit("0"), NTI33554439);
+    }
+    else {
+      result_1073742219 = nimCopy(null, [], NTI33554439);
+      Label2: do {
+          Label3: while (true) {
+          if (!(0 < v_1073742224)) break Label3;
+            var d_1073742226 = (v_1073742224 % radix_1073742217);
+            v_1073742224 = Math.trunc(((v_1073742224 / radix_1073742217) ));
+            result_1073742219.push.apply(result_1073742219, mkDigit_671088645(d_1073742226, spec_1073742218.typ));;
+          }
+      } while (false);
+      Label4: do {
+        var idx_1073742231 = 0;
+        var colontmp__469762441 = 0;
+        colontmp__469762441 = Math.trunc((result_1073742219).length / 2);
+        var i_469762442 = 0;
+        Label5: do {
+            Label6: while (true) {
+            if (!(i_469762442 < colontmp__469762441)) break Label6;
+              idx_1073742231 = i_469762442;
+              var Temporary7 = result_1073742219[idx_1073742231]; result_1073742219[idx_1073742231] = result_1073742219[(((result_1073742219).length - idx_1073742231) - 1)]; result_1073742219[(((result_1073742219).length - idx_1073742231) - 1)] = Temporary7;              i_469762442 += 1;
+            }
+        } while (false);
+      } while (false);
+    }
+    
+    if (spec_1073742218.padWithZero) {
+    if (negative_1073742223) Temporary8 = true; else {      Temporary8 = !((spec_1073742218.sign == 45));    }    var sign_1073742236 = Temporary8;
+    var toFill_1073742240 = (((spec_1073742218.minimumWidth - (result_1073742219).length) - (xx_1073742225).length) - (sign_1073742236 ? 1 : 0));
+    if ((0 < toFill_1073742240)) {
+    result_1073742219 = nimCopy(null, (nsuRepeatChar(48, toFill_1073742240) || []).concat(result_1073742219 || []), NTI33554439);
+    }
+    
+    }
+    
+    if (negative_1073742223) {
+    result_1073742219 = nimCopy(null, (makeNimstrLit("-") || []).concat(xx_1073742225 || [],result_1073742219 || []), NTI33554439);
+    }
+    else {
+    if (!((spec_1073742218.sign == 45))) {
+    result_1073742219 = nimCopy(null, [spec_1073742218.sign].concat(xx_1073742225 || [],result_1073742219 || []), NTI33554439);
+    }
+    else {
+      result_1073742219 = nimCopy(null, (xx_1073742225 || []).concat(result_1073742219 || []), NTI33554439);
+    }
+    }
+    if ((spec_1073742218.align == 60)) {
+    Label9: do {
+      var i_1073742245 = 0;
+      var colontmp__469762445 = 0;
+      colontmp__469762445 = (result_1073742219).length;
+      var i_469762446 = colontmp__469762445;
+      Label10: do {
+          Label11: while (true) {
+          if (!(i_469762446 < spec_1073742218.minimumWidth)) break Label11;
+            i_1073742245 = i_469762446;
+            addChar(result_1073742219, spec_1073742218.fill);;
+            i_469762446 += 1;
+          }
+      } while (false);
+    } while (false);
+    }
+    else {
+      var toFill_1073742246 = (spec_1073742218.minimumWidth - (result_1073742219).length);
+      if ((spec_1073742218.align == 94)) {
+      var half_1073742247 = Math.trunc(toFill_1073742246 / 2);
+      result_1073742219 = nimCopy(null, (nsuRepeatChar(spec_1073742218.fill, half_1073742247) || []).concat(result_1073742219 || [],nsuRepeatChar(spec_1073742218.fill, (toFill_1073742246 - half_1073742247)) || []), NTI33554439);
+      }
+      else {
+        if ((0 < toFill_1073742246)) {
+        result_1073742219 = nimCopy(null, (nsuRepeatChar(spec_1073742218.fill, toFill_1073742246) || []).concat(result_1073742219 || []), NTI33554439);
+        }
+        
+      }
+      
+    }
+    
+
+  return result_1073742219;
+
+}
+
+function formatValue_1073742206(result_1073742208, result_1073742208_Idx, value_1073742209, specifier_1073742210) {
+  BeforeRet: do {
+    if (((specifier_1073742210).length == 0)) {
+    result_1073742208[result_1073742208_Idx].push.apply(result_1073742208[result_1073742208_Idx], HEX24_335544323(value_1073742209));;
+    break BeforeRet;
+    }
+    
+    var spec_1073742211 = parseStandardFormatSpecifier_671088696(specifier_1073742210, 0, false);
+    var radix_1073742212 = 10;
+    switch (spec_1073742211.typ) {
+    case 120:
+    case 88:
+      radix_1073742212 = 16;
+      break;
+    case 100:
+    case 0:
+      break;
+    case 98:
+      radix_1073742212 = 2;
+      break;
+    case 111:
+      radix_1073742212 = 8;
+      break;
+    default: 
+      raiseException({message: (makeNimstrLit("invalid type in format string for number, expected one  of \'x\', \'X\', \'b\', \'d\', \'o\' but got: ") || []).concat([spec_1073742211.typ]), parent: null, m_type: NTI33555125, name: null, trace: [], up: null}, "ValueError");
+      break;
+    }
+    result_1073742208[result_1073742208_Idx].push.apply(result_1073742208[result_1073742208_Idx], formatInt_1073742214(value_1073742209, radix_1073742212, spec_1073742211));;
+  } while (false);
+
+  
+}
+
 function val_2835349963(self_2835349965, self_2835349965_Idx) {
   var result_2835349966 = null;
   var result_2835349966_Idx = 0;
@@ -15889,26 +9722,26 @@ function HEX3Aanonymous_2835349757(self_2835349758, ev_2835349759) {
     var collectResult_2835349865 = newSeq_2684356470(0);
     Label3: do {
       var i_2835350170 = 0;
-      var colontmp__469786121 = 0;
-      colontmp__469786121 = len_2835349927(self_2835349661.data);
-      var i_469786122 = 0;
+      var colontmp__469762436 = 0;
+      colontmp__469762436 = len_2835349927(self_2835349661.data);
+      var i_469762437 = 0;
       Label4: do {
           Label5: while (true) {
-          if (!(i_469786122 < colontmp__469786121)) break Label5;
-            i_2835350170 = i_469786122;
+          if (!(i_469762437 < colontmp__469762436)) break Label5;
+            i_2835350170 = i_469762437;
             tmpCycleIdx56_2835349864 += 1;
             var fmtRes_2835350179 = [mnewString(0)];
             fmtRes_2835350179[0].push.apply(fmtRes_2835350179[0], makeNimstrLit("callComponentEventHandler(\'"));;
             formatValue_671088800(fmtRes_2835350179, 0, self_2835349661.uniqCompId, []);
             fmtRes_2835350179[0].push.apply(fmtRes_2835350179[0], makeNimstrLit("\', "));;
-            formatValue_1073742199(fmtRes_2835350179, 0, (57 + tmpCycleIdx56_2835349864), []);
+            formatValue_1073742206(fmtRes_2835350179, 0, (57 + tmpCycleIdx56_2835349864), []);
             fmtRes_2835350179[0].push.apply(fmtRes_2835350179[0], makeNimstrLit(", event)"));;
             var fmtRes_2835350189 = mnewString(0);
             fmtRes_2835350189.push.apply(fmtRes_2835350189, makeNimstrLit("flex justify-center items-center px-2 select-none cursor-pointer"));;
             HEX5BHEX5DHEX3D_2684355433(componentEventHandlers_1845496784[0], (57 + tmpCycleIdx56_2835349864), registerEventScoped5759_2835350232(i_2835350170));
             tmpCycleIdx56_2835349864 += 1;
             collectResult_2835349865.push(initTag_2013266047(makeNimstrLit("div"), [initTag_2013265957(makeNimstrLit("p"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("onclick"), Field1: nimCopy(null, fmtRes_2835350179[0], NTI33554439)}, NTI2835350147), nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2835350189, NTI33554439)}, NTI2835350147)], 0), [initTag_2013266105((Temporary6 = val_2835349963(self_2835349661, "data"), Temporary6)[0][Temporary6[1]][i_2835350170], true, [], false), initTag_2013266047(makeNimstrLit("div"), [], true)], false)], true));;
-            i_469786122 += 1;
+            i_469762437 += 1;
           }
       } while (false);
     } while (false);
@@ -15981,6 +9814,83 @@ function toggle_2801795085(self_2801795086) {
   
 }
 
+function hasKey_2667578405(t_2667578408, key_2667578409) {
+  var result_2667578410 = false;
+
+    var hc_2667578411 = [0];
+    result_2667578410 = (0 <= rawGet_2130706700(t_2667578408, key_2667578409, hc_2667578411, 0));
+
+  return result_2667578410;
+
+}
+
+function hasKey_2667578279(t_2667578282, key_2667578283) {
+  var result_2667578284 = false;
+
+    result_2667578284 = hasKey_2667578405(t_2667578282, key_2667578283);
+
+  return result_2667578284;
+
+}
+
+function hasKey_2667578689(t_2667578692, key_2667578693) {
+  var result_2667578694 = false;
+
+    var hc_2667578695 = [0];
+    result_2667578694 = (0 <= rawGet_2130708267(t_2667578692, key_2667578693, hc_2667578695, 0));
+
+  return result_2667578694;
+
+}
+
+function hasKey_2667578563(t_2667578566, key_2667578567) {
+  var result_2667578568 = false;
+
+    result_2667578568 = hasKey_2667578689(t_2667578566, key_2667578567);
+
+  return result_2667578568;
+
+}
+
+function val_2667578510(self_2667578512, self_2667578512_Idx) {
+  var result_2667578513 = null;
+
+    result_2667578513 = self_2667578512[self_2667578512_Idx].value;
+
+  return result_2667578513;
+
+}
+
+function HEX5BHEX5D_2667579008(t_2667579011, key_2667579012) {
+  var result_2667579013 = null;
+  var result_2667579013_Idx = 0;
+
+    var hcHEX60gensym22_2667579014 = [0];
+    var indexHEX60gensym22_2667579021 = rawGet_2130708267(t_2667579011, key_2667579012, hcHEX60gensym22_2667579014, 0);
+    if ((0 <= indexHEX60gensym22_2667579021)) {
+    result_2667579013 = t_2667579011.data[indexHEX60gensym22_2667579021]; result_2667579013_Idx = "Field2";
+    }
+    else {
+    raiseKeyError_2130709830(key_2667579012);
+    }
+    
+
+  return [result_2667579013, result_2667579013_Idx];
+
+}
+
+function HEX5BHEX5D_2667578855(t_2667578858, key_2667578859) {
+    var Temporary1;
+
+  var result_2667578860 = null;
+  var result_2667578860_Idx = 0;
+
+    result_2667578860 = (Temporary1 = HEX5BHEX5D_2667579008(t_2667578858, key_2667578859), Temporary1)[0]; result_2667578860_Idx = Temporary1[1];
+
+  return [result_2667578860, result_2667578860_Idx];
+
+}
+
 function chooseLang_2801795078(lang_2801795079) {
     set_2248147490(languageSettings_2248147489[0], cstrToNimstr(lang_2801795079));
     localStorage["happyx_spoken_language"] = lang_2801795079;
@@ -16018,6 +9928,51 @@ function nsuStartsWith(s_687867108, prefix_687867109) {
   } while (false);
 
   return result_687867110;
+
+}
+
+function initSideBar_2818572963(uniqCompId_2818572964, isMobile_2818572965) {
+    
+function HEX3Aanonymous_2818572970(self_2818572971, ev_2818572972) {
+      
+    }
+    
+function HEX3Aanonymous_2818572973(self_2818572971, ev_2818572972) {
+      
+    }
+    
+function HEX3Aanonymous_2818572974(self_2818572971, ev_2818572972) {
+      
+    }
+    
+function HEX3Aanonymous_2818572975(self_2818572971, ev_2818572972) {
+      
+    }
+    
+function HEX3Aanonymous_2818572976(self_2818572971, ev_2818572972) {
+      
+    }
+    
+function HEX3Aanonymous_2818572977(self_2818572971, ev_2818572972) {
+      
+    }
+    
+function HEX3Aanonymous_2818572978(self_2818572971, ev_2818572972) {
+      
+    }
+
+  var result_2818572966 = null;
+
+    result_2818572966 = {uniqCompId: nimCopy(null, uniqCompId_2818572964, NTI33554439), isMobile: remember_2751463447(isMobile_2818572965), m_type: NTI2818572891, isCreated: false, slot: null, created: null, exited: null, rendered: null, pageHide: null, pageShow: null, beforeUpdated: null, updated: null};
+    result_2818572966.beforeUpdated = HEX3Aanonymous_2818572970;
+    result_2818572966.pageShow = HEX3Aanonymous_2818572973;
+    result_2818572966.pageHide = HEX3Aanonymous_2818572974;
+    result_2818572966.rendered = HEX3Aanonymous_2818572975;
+    result_2818572966.exited = HEX3Aanonymous_2818572976;
+    result_2818572966.created = HEX3Aanonymous_2818572977;
+    result_2818572966.updated = HEX3Aanonymous_2818572978;
+
+  return result_2818572966;
 
 }
 
@@ -16561,49 +10516,49 @@ function HEX3Aanonymous_2835349600(self_2835349593, ev_2835349594) {
 
 }
 
-function langTitles_2634132163() {
-  var result_2634132164 = [];
+function langTitles_2634133058() {
+  var result_2634133059 = [];
 
-    result_2634132164 = nimCopy(null, [], NTI939524122);
+    result_2634133059 = nimCopy(null, [], NTI939524122);
     Label1: do {
-      var i_2634132192 = {Field0: [], Field1: []};
-      var i_469786126 = 0;
-      var L_469786127 = (languages_2634132147[0]).length;
+      var i_2634133087 = {Field0: [], Field1: []};
+      var i_469762450 = 0;
+      var L_469762451 = (languages_2634133042[0]).length;
       Label2: do {
           Label3: while (true) {
-          if (!(i_469786126 < L_469786127)) break Label3;
-            i_2634132192 = languages_2634132147[0][i_469786126];
-            var Temporary4 = nimCopy(null, i_2634132192["Field0"], NTI33554439);
-            result_2634132164.push(Temporary4);;
-            i_469786126 += 1;
+          if (!(i_469762450 < L_469762451)) break Label3;
+            i_2634133087 = languages_2634133042[0][i_469762450];
+            var Temporary4 = nimCopy(null, i_2634133087["Field0"], NTI33554439);
+            result_2634133059.push(Temporary4);;
+            i_469762450 += 1;
           }
       } while (false);
     } while (false);
 
-  return result_2634132164;
+  return result_2634133059;
 
 }
 
-function langCodes_2634132197() {
-  var result_2634132198 = [];
+function langCodes_2634133092() {
+  var result_2634133093 = [];
 
-    result_2634132198 = nimCopy(null, [], NTI939524122);
+    result_2634133093 = nimCopy(null, [], NTI939524122);
     Label1: do {
-      var i_2634132210 = {Field0: [], Field1: []};
-      var i_469786130 = 0;
-      var L_469786131 = (languages_2634132147[0]).length;
+      var i_2634133105 = {Field0: [], Field1: []};
+      var i_469762454 = 0;
+      var L_469762455 = (languages_2634133042[0]).length;
       Label2: do {
           Label3: while (true) {
-          if (!(i_469786130 < L_469786131)) break Label3;
-            i_2634132210 = languages_2634132147[0][i_469786130];
-            var Temporary4 = nimCopy(null, i_2634132210["Field1"], NTI33554439);
-            result_2634132198.push(Temporary4);;
-            i_469786130 += 1;
+          if (!(i_469762454 < L_469762455)) break Label3;
+            i_2634133105 = languages_2634133042[0][i_469762454];
+            var Temporary4 = nimCopy(null, i_2634133105["Field1"], NTI33554439);
+            result_2634133093.push(Temporary4);;
+            i_469762454 += 1;
           }
       } while (false);
     } while (false);
 
-  return result_2634132198;
+  return result_2634133093;
 
 }
 
@@ -16703,7 +10658,7 @@ function HEX3Aanonymous_2785019905() {
 function HEX3Aanonymous_2785020425(choosen_2785020426) {
         var Temporary1;
 
-        var lang_2785020427 = toJSStr((Temporary1 = langCodes_2634132197(), Temporary1)[choosen_2785020426]);
+        var lang_2785020427 = toJSStr((Temporary1 = langCodes_2634133092(), Temporary1)[choosen_2785020426]);
         set_2248147490(languageSettings_2248147489[0], cstrToNimstr(lang_2785020427));
         localStorage["happyx_spoken_language"] = lang_2785020427;
 
@@ -16908,7 +10863,7 @@ function HEX3Aanonymous_2785020425(choosen_2785020426) {
     window.addEventListener('beforeunload', data_comp636512670_2785020424.exited);
     window.addEventListener('pagehide', data_comp636512670_2785020424.pageHide);
     window.addEventListener('pageshow', data_comp636512670_2785020424.pageShow);
-    var _comp646612871_2785020429 = initSpinner_2835349530(makeNimstrLit("comp646612871"), langTitles_2634132163(), HEX3Aanonymous_2785020425, false, true, false);
+    var _comp646612871_2785020429 = initSpinner_2835349530(makeNimstrLit("comp646612871"), langTitles_2634133058(), HEX3Aanonymous_2785020425, false, true, false);
     var comp646612871_2785020430 = registerComponent_1845499350("comp646612871", _comp646612871_2785020429);
     if (!(hasKey_2667578279(translates_2634022946[0], "🌐 Language"))) {
     Temporary33 = makeNimstrLit("\xF0\x9F\x8C\x90 Language");
@@ -17003,14 +10958,14 @@ function renderTag_2885681257(self_2885681258) {
     var collectResult_2885681375 = newSeq_2684356470(0);
     Label1: do {
       var item_2885681443 = {Field0: [], Field1: []};
-      var colontmp__469786134 = [];
-      colontmp__469786134 = toSeq_2885681395(self_2885681258.data);
-      var i_469786136 = 0;
-      var L_469786137 = (colontmp__469786134).length;
+      var colontmp__469762458 = [];
+      colontmp__469762458 = toSeq_2885681395(self_2885681258.data);
+      var i_469762460 = 0;
+      var L_469762461 = (colontmp__469762458).length;
       Label2: do {
           Label3: while (true) {
-          if (!(i_469786136 < L_469786137)) break Label3;
-            item_2885681443 = colontmp__469786134[i_469786136];
+          if (!(i_469762460 < L_469762461)) break Label3;
+            item_2885681443 = colontmp__469762458[i_469762460];
             tmpCycleIdx65_2885681374 += 1;
             var fmtRes_2885681452 = [mnewString(0)];
             fmtRes_2885681452[0].push.apply(fmtRes_2885681452[0], makeNimstrLit("text-["));;
@@ -17021,7 +10976,7 @@ function renderTag_2885681257(self_2885681258) {
             formatValue_671088800(fmtRes_2885681452, 0, makeNimstrLit("#ccccff"), []);
             fmtRes_2885681452[0].push.apply(fmtRes_2885681452[0], makeNimstrLit("] translation-all"));;
             collectResult_2885681375.push(initTag_2013266047(makeNimstrLit("div"), [initTag_2013265957(makeNimstrLit("a"), nstnewStringTableWithTableConstr([nimCopy(null, {Field0: makeNimstrLit("href"), Field1: nimCopy(null, item_2885681443.Field1, NTI33554439)}, NTI2885681443), nimCopy(null, {Field0: makeNimstrLit("class"), Field1: nimCopy(null, fmtRes_2885681452[0], NTI33554439)}, NTI2885681443)], 0), [initTag_2013266105(item_2885681443.Field0, true, [], false)], false)], true));;
-            i_469786136 += 1;
+            i_469762460 += 1;
           }
       } while (false);
     } while (false);
@@ -17859,7 +11814,7 @@ function getStr_603979933(n_603979934, default_603979935) {
     }
     else {
       var Temporary2 = n_603979934;
-      if (ConstSet30[Temporary2.kind]===undefined) { raiseFieldError2(makeNimstrLit("field \'str\' is not accessible for type \'JsonNodeObj\' using \'kind = "), reprDiscriminant(Temporary2.kind, NTI603979779)); }
+      if (ConstSet16[Temporary2.kind]===undefined) { raiseFieldError2(makeNimstrLit("field \'str\' is not accessible for type \'JsonNodeObj\' using \'kind = "), reprDiscriminant(Temporary2.kind, NTI603979779)); }
       result_603979936 = nimCopy(null, Temporary2.str, NTI33554439);
       break BeforeRet;
     }
@@ -17936,7 +11891,7 @@ function HEX5BHEX5D_603982828(node_603982829, name_603982830) {
   var result_603982831 = null;
 
     var Temporary1 = node_603982829;
-    if (ConstSet31[Temporary1.kind]===undefined) { raiseFieldError2(makeNimstrLit("field \'fields\' is not accessible for type \'JsonNodeObj\' using \'kind = "), reprDiscriminant(Temporary1.kind, NTI603979779)); }
+    if (ConstSet17[Temporary1.kind]===undefined) { raiseFieldError2(makeNimstrLit("field \'fields\' is not accessible for type \'JsonNodeObj\' using \'kind = "), reprDiscriminant(Temporary1.kind, NTI603979779)); }
     result_603982831 = (Temporary2 = HEX5BHEX5D_603982423(Temporary1.fields, name_603982830), Temporary2)[0][Temporary2[1]];
 
   return result_603982831;
@@ -18166,6 +12121,241 @@ function toSeq_2952790220(self_2952790223) {
 
 }
 
+function remember_2717909016(val_2717909018) {
+  var result_2717909019 = null;
+
+    result_2717909019 = {value: val_2717909018};
+
+  return result_2717909019;
+
+}
+
+function toCString_2248147412(self_2248147415) {
+  var result_2248147416 = null;
+
+    result_2248147416 = self_2248147415.value;
+
+  return result_2248147416;
+
+}
+
+function highlight_2717909002(self_2717909003) {
+    var id_2717909543 = toCString_2248147412(self_2717909003.id);
+    //js
+      let codeBlock = document.getElementById(id_2717909543);
+      hljs.highlightElement(codeBlock);
+      
+
+  
+}
+
+function initCodeBlock_2717909004(uniqCompId_2717909005, language_2717909006, source_2717909007, id_2717909008) {
+    
+function HEX3Aanonymous_2717909030(self_2717909031, ev_2717909032) {
+      
+    }
+    
+function HEX3Aanonymous_2717909033(self_2717909031, ev_2717909032) {
+      
+    }
+    
+function HEX3Aanonymous_2717909034(self_2717909031, ev_2717909032) {
+      
+    }
+    
+function HEX3Aanonymous_2717909035(self_2717909031, ev_2717909032) {
+      
+    }
+    
+function HEX3Aanonymous_2717909036(self_2717909031, ev_2717909032) {
+      
+    }
+    
+function HEX3Aanonymous_2717909037(self_2717909031, ev_2717909032) {
+      
+    }
+    
+function HEX3Aanonymous_2717909038(self_2717909031, ev_2717909032) {
+        highlight_2717909002(self_2717909031);
+        rawEcho(makeNimstrLit("updated!"));
+
+      
+    }
+
+  var result_2717909009 = null;
+
+    result_2717909009 = {uniqCompId: nimCopy(null, uniqCompId_2717909005, NTI33554439), language: remember_2684354564(language_2717909006), source: remember_2684354564(source_2717909007), id: remember_2717909016(id_2717909008), m_type: NTI2717908995, isCreated: false, slot: null, created: null, exited: null, rendered: null, pageHide: null, pageShow: null, beforeUpdated: null, updated: null};
+    result_2717909009.beforeUpdated = HEX3Aanonymous_2717909030;
+    result_2717909009.pageShow = HEX3Aanonymous_2717909033;
+    result_2717909009.pageHide = HEX3Aanonymous_2717909034;
+    result_2717909009.rendered = HEX3Aanonymous_2717909035;
+    result_2717909009.exited = HEX3Aanonymous_2717909036;
+    result_2717909009.created = HEX3Aanonymous_2717909037;
+    result_2717909009.updated = HEX3Aanonymous_2717909038;
+
+  return result_2717909009;
+
+}
+
+function len_2952794860(self_2952794862) {
+  var result_2952794863 = 0;
+
+    result_2952794863 = (self_2952794862.value).length;
+
+  return result_2952794863;
+
+}
+
+function toInt_2248147417(self_2248147420) {
+  var result_2248147421 = 0;
+
+    result_2248147421 = self_2248147420.value;
+
+  return result_2248147421;
+
+}
+
+function valHEX3D_2952796037(self_2952796039, value_2952796040) {
+      var Temporary1;
+      var Temporary2;
+
+    self_2952796039.value = value_2952796040;
+      if (!!((application_1845493808[0] == null))) Temporary2 = false; else {        Temporary2 = !((application_1845493808[0].router == null));      }      if (!Temporary2) Temporary1 = false; else {        Temporary1 = enableRouting_2248146952[0];      }    if (Temporary1) {
+    application_1845493808[0].router(false);
+    }
+    
+
+  
+}
+
+function set_2952796032(self_2952796034, value_2952796035) {
+      var Temporary1;
+      var Temporary2;
+
+    valHEX3D_2952796037(self_2952796034, value_2952796035);
+      if (!!((application_1845493808[0] == null))) Temporary2 = false; else {        Temporary2 = !((application_1845493808[0].router == null));      }      if (!Temporary2) Temporary1 = false; else {        Temporary1 = enableRouting_2248146952[0];      }    if (Temporary1) {
+    application_1845493808[0].router(false);
+    }
+    
+
+  
+}
+
+function val_2952796061(self_2952796063, self_2952796063_Idx) {
+  var result_2952796064 = null;
+  var result_2952796064_Idx = 0;
+
+    result_2952796064_Idx = [, self_2952796063[self_2952796063_Idx].value];
+    result_2952796064 = self_2952796063[self_2952796063_Idx].value;
+    result_2952796064[result_2952796064_Idx] = self_2952796063[self_2952796063_Idx].value;
+
+  return [result_2952796064, result_2952796064_Idx];
+
+}
+
+function updateIndex_2952790036(self_2952790037, idx_2952790038) {
+      var Temporary2;
+
+  BeforeRet: do {
+    if ((toInt_2248147417(self_2952790037.index) == idx_2952790038)) {
+    break BeforeRet;
+    }
+    
+    set_2952796032(self_2952790037.index, idx_2952790038);
+    var index_2952796057 = toInt_2248147417(self_2952790037.index);
+    Label1: do {
+      var idx_2952796079 = 0;
+      var val_2952796080 = ({text: [], language: [], name: [], description: []});
+      var colontmp__469762475 = [];
+      colontmp__469762475 = (Temporary2 = val_2952796061(self_2952790037, "data"), Temporary2)[0][Temporary2[1]];
+      var i_469762476 = 0;
+      var L_469762477 = (colontmp__469762475).length;
+      Label3: do {
+          Label4: while (true) {
+          if (!(i_469762476 < L_469762477)) break Label4;
+            idx_2952796079 = i_469762476;
+            val_2952796080 = nimCopy(val_2952796080, colontmp__469762475[i_469762476], NTI2952790019);
+            var fmtRes_2952796085 = [mnewString(0)];
+            fmtRes_2952796085[0].push.apply(fmtRes_2952796085[0], makeNimstrLit("slider-"));;
+            formatValue_671088800(fmtRes_2952796085, 0, self_2952790037.uniqCompId, []);
+            fmtRes_2952796085[0].push.apply(fmtRes_2952796085[0], makeNimstrLit("_"));;
+            formatValue_1073742206(fmtRes_2952796085, 0, idx_2952796079, []);
+            var id_2952796091 = toJSStr(fmtRes_2952796085[0]);
+            //js
+        let codeBlock = document.getElementById(id_2952796091);
+        if (codeBlock) {
+          hljs.highlightElement(codeBlock);
+        }
+        
+            var fmtRes_2952796096 = [mnewString(0)];
+            fmtRes_2952796096[0].push.apply(fmtRes_2952796096[0], makeNimstrLit("sliderContainer-"));;
+            formatValue_671088800(fmtRes_2952796096, 0, self_2952790037.uniqCompId, []);
+            fmtRes_2952796096[0].push.apply(fmtRes_2952796096[0], makeNimstrLit("_"));;
+            formatValue_1073742206(fmtRes_2952796096, 0, idx_2952796079, []);
+            var container_2952796102 = document.getElementById(toJSStr(fmtRes_2952796096[0]));
+            var fmtRes_2952796107 = [mnewString(0)];
+            fmtRes_2952796107[0].push.apply(fmtRes_2952796107[0], makeNimstrLit("circle-"));;
+            formatValue_671088800(fmtRes_2952796107, 0, self_2952790037.uniqCompId, []);
+            fmtRes_2952796107[0].push.apply(fmtRes_2952796107[0], makeNimstrLit("_"));;
+            formatValue_1073742206(fmtRes_2952796107, 0, idx_2952796079, []);
+            var circle_2952796113 = document.getElementById(toJSStr(fmtRes_2952796107[0]));
+            var fmtRes_2952796118 = [mnewString(0)];
+            fmtRes_2952796118[0].push.apply(fmtRes_2952796118[0], makeNimstrLit("circle-"));;
+            formatValue_671088800(fmtRes_2952796118, 0, self_2952790037.uniqCompId, []);
+            fmtRes_2952796118[0].push.apply(fmtRes_2952796118[0], makeNimstrLit("_"));;
+            formatValue_1073742206(fmtRes_2952796118, 0, idx_2952796079, []);
+            fmtRes_2952796118[0].push.apply(fmtRes_2952796118[0], makeNimstrLit("-fill"));;
+            var fill_2952796124 = document.getElementById(toJSStr(fmtRes_2952796118[0]));
+            if ((container_2952796102 == null)) {
+            break BeforeRet;
+            }
+            
+            if ((index_2952796057 == idx_2952796079)) {
+            container_2952796102.classList.remove("absolute");
+            container_2952796102.classList.remove("top-0");
+            container_2952796102.classList.remove("left-0");
+            container_2952796102.classList.remove("opacity-0");
+            container_2952796102.classList.add("opacity-1");
+            circle_2952796113.classList.remove("xl:w-4");
+            circle_2952796113.classList.remove("lg:w-6");
+            circle_2952796113.classList.remove("w-8");
+            circle_2952796113.classList.add("xl:w-12");
+            circle_2952796113.classList.add("lg:w-18");
+            circle_2952796113.classList.add("w-24");
+            fill_2952796124.classList.remove("w-0");
+            fill_2952796124.classList.add("w-full");
+            fill_2952796124.classList.add("transition-all");
+            fill_2952796124.classList.add("ease-linear");
+            fill_2952796124.classList.add("duration-[5000ms]");
+            }
+            else {
+              container_2952796102.classList.remove("opacity-1");
+              container_2952796102.classList.add("absolute");
+              container_2952796102.classList.add("top-0");
+              container_2952796102.classList.add("left-0");
+              container_2952796102.classList.add("opacity-0");
+              circle_2952796113.classList.remove("xl:w-12");
+              circle_2952796113.classList.remove("lg:w-18");
+              circle_2952796113.classList.remove("w-24");
+              circle_2952796113.classList.add("xl:w-4");
+              circle_2952796113.classList.add("lg:w-6");
+              circle_2952796113.classList.add("w-8");
+              fill_2952796124.classList.remove("transition-all");
+              fill_2952796124.classList.remove("ease-linear");
+              fill_2952796124.classList.remove("duration-[5000ms]");
+              fill_2952796124.classList.remove("w-full");
+              fill_2952796124.classList.add("w-0");
+            }
+            
+            i_469762476 += 1;
+          }
+      } while (false);
+    } while (false);
+  } while (false);
+
+  
+}
+
 function registerEventScoped7274_2952795514(idx_2952795516) {
     
 function HEX3Aanonymous_2952795518(self_2952795519, ev_2952795520) {
@@ -18257,22 +12447,22 @@ function renderTag_2952790160(self_2952790161) {
     Label1: do {
       var idx_2952792509 = 0;
       var val_2952792510 = ({text: [], language: [], name: [], description: []});
-      var colontmp__469786141 = [];
-      colontmp__469786141 = toSeq_2952790220(self_2952790161.data);
-      var i_469786142 = 0;
-      var L_469786143 = (colontmp__469786141).length;
+      var colontmp__469762465 = [];
+      colontmp__469762465 = toSeq_2952790220(self_2952790161.data);
+      var i_469762467 = 0;
+      var L_469762468 = (colontmp__469762465).length;
       Label2: do {
           Label3: while (true) {
-          if (!(i_469786142 < L_469786143)) break Label3;
-            idx_2952792509 = i_469786142;
-            val_2952792510 = nimCopy(val_2952792510, colontmp__469786141[i_469786142], NTI2952790019);
+          if (!(i_469762467 < L_469762468)) break Label3;
+            idx_2952792509 = i_469762467;
+            val_2952792510 = nimCopy(val_2952792510, colontmp__469762465[i_469762467], NTI2952790019);
             tmpCycleIdx68_2952790179 += 1;
             if ((idx_2952792509 == 0)) {
             var fmtRes_2952792519 = [mnewString(0)];
             fmtRes_2952792519[0].push.apply(fmtRes_2952792519[0], makeNimstrLit("sliderContainer-"));;
             formatValue_671088800(fmtRes_2952792519, 0, self_2952790161.uniqCompId, []);
             fmtRes_2952792519[0].push.apply(fmtRes_2952792519[0], makeNimstrLit("_"));;
-            formatValue_1073742199(fmtRes_2952792519, 0, idx_2952792509, []);
+            formatValue_1073742206(fmtRes_2952792519, 0, idx_2952792509, []);
             var fmtRes_2952792529 = mnewString(0);
             fmtRes_2952792529.push.apply(fmtRes_2952792529, makeNimstrLit("w-full flex flex-col lg:flex-row gap-4 lg:gap-2 justify-between transition-all duration-300 opacity-1"));;
             var fmtRes_2952792537 = mnewString(0);
@@ -18337,7 +12527,7 @@ function renderTag_2952790160(self_2952790161) {
             fmtRes_2952793609[0].push.apply(fmtRes_2952793609[0], makeNimstrLit("slider-"));;
             formatValue_671088800(fmtRes_2952793609, 0, self_2952790161.uniqCompId, []);
             fmtRes_2952793609[0].push.apply(fmtRes_2952793609[0], makeNimstrLit("_"));;
-            formatValue_1073742199(fmtRes_2952793609, 0, idx_2952792509, []);
+            formatValue_1073742206(fmtRes_2952793609, 0, idx_2952792509, []);
             var _comp697113876_2952793615 = initCodeBlock_2717909004((makeNimstrLit("comp697113876") || []).concat(HEX24_335544323(tmpCycleIdx68_2952790179) || []), val_2952792510.language, val_2952792510.text, toJSStr(fmtRes_2952793609[0]));
             var comp697113876_2952793616 = registerComponent_1845499350(toJSStr((makeNimstrLit("comp697113876") || []).concat(HEX24_335544323(tmpCycleIdx68_2952790179) || [])), _comp697113876_2952793615);
             comp697113876_2952793616.slot = initTag_2013266047(makeNimstrLit("div"), [], true);
@@ -18353,7 +12543,7 @@ function renderTag_2952790160(self_2952790161) {
               fmtRes_2952793646[0].push.apply(fmtRes_2952793646[0], makeNimstrLit("sliderContainer-"));;
               formatValue_671088800(fmtRes_2952793646, 0, self_2952790161.uniqCompId, []);
               fmtRes_2952793646[0].push.apply(fmtRes_2952793646[0], makeNimstrLit("_"));;
-              formatValue_1073742199(fmtRes_2952793646, 0, idx_2952792509, []);
+              formatValue_1073742206(fmtRes_2952793646, 0, idx_2952792509, []);
               var fmtRes_2952793656 = mnewString(0);
               fmtRes_2952793656.push.apply(fmtRes_2952793656, makeNimstrLit("w-full flex flex-col lg:flex-row gap-4 lg:gap-2 justify-between transition-all duration-300 absolute top-0 left-0 opacity-0"));;
               var fmtRes_2952793664 = mnewString(0);
@@ -18418,7 +12608,7 @@ function renderTag_2952790160(self_2952790161) {
               fmtRes_2952794736[0].push.apply(fmtRes_2952794736[0], makeNimstrLit("slider-"));;
               formatValue_671088800(fmtRes_2952794736, 0, self_2952790161.uniqCompId, []);
               fmtRes_2952794736[0].push.apply(fmtRes_2952794736[0], makeNimstrLit("_"));;
-              formatValue_1073742199(fmtRes_2952794736, 0, idx_2952792509, []);
+              formatValue_1073742206(fmtRes_2952794736, 0, idx_2952792509, []);
               var _comp707214077_2952794742 = initCodeBlock_2717909004((makeNimstrLit("comp707214077") || []).concat(HEX24_335544323(tmpCycleIdx68_2952790179) || []), val_2952792510.language, val_2952792510.text, toJSStr(fmtRes_2952794736[0]));
               var comp707214077_2952794743 = registerComponent_1845499350(toJSStr((makeNimstrLit("comp707214077") || []).concat(HEX24_335544323(tmpCycleIdx68_2952790179) || [])), _comp707214077_2952794742);
               comp707214077_2952794743.slot = initTag_2013266047(makeNimstrLit("div"), [], true);
@@ -18431,7 +12621,7 @@ function renderTag_2952790160(self_2952790161) {
             }
             
             collectResult_2952790180.push(initTag_2013266047(makeNimstrLit("div"), [Temporary4], true));;
-            i_469786142 += 1;
+            i_469762467 += 1;
           }
       } while (false);
     } while (false);
@@ -18441,26 +12631,26 @@ function renderTag_2952790160(self_2952790161) {
     var collectResult_2952794798 = newSeq_2684356470(0);
     Label37: do {
       var idx_2952795367 = 0;
-      var colontmp__469786146 = 0;
-      colontmp__469786146 = len_2952794860(self_2952790161.data);
-      var i_469786147 = 0;
+      var colontmp__469762471 = 0;
+      colontmp__469762471 = len_2952794860(self_2952790161.data);
+      var i_469762472 = 0;
       Label38: do {
           Label39: while (true) {
-          if (!(i_469786147 < colontmp__469786146)) break Label39;
-            idx_2952795367 = i_469786147;
+          if (!(i_469762472 < colontmp__469762471)) break Label39;
+            idx_2952795367 = i_469762472;
             tmpCycleIdx71_2952794797 += 1;
             if ((toInt_2248147417(self_2952790161.index) == idx_2952795367)) {
             var fmtRes_2952795456 = [mnewString(0)];
             fmtRes_2952795456[0].push.apply(fmtRes_2952795456[0], makeNimstrLit("callComponentEventHandler(\'"));;
             formatValue_671088800(fmtRes_2952795456, 0, self_2952790161.uniqCompId, []);
             fmtRes_2952795456[0].push.apply(fmtRes_2952795456[0], makeNimstrLit("\', "));;
-            formatValue_1073742199(fmtRes_2952795456, 0, (72 + tmpCycleIdx71_2952794797), []);
+            formatValue_1073742206(fmtRes_2952795456, 0, (72 + tmpCycleIdx71_2952794797), []);
             fmtRes_2952795456[0].push.apply(fmtRes_2952795456[0], makeNimstrLit(", event)"));;
             var fmtRes_2952795466 = [mnewString(0)];
             fmtRes_2952795466[0].push.apply(fmtRes_2952795466[0], makeNimstrLit("circle-"));;
             formatValue_671088800(fmtRes_2952795466, 0, self_2952790161.uniqCompId, []);
             fmtRes_2952795466[0].push.apply(fmtRes_2952795466[0], makeNimstrLit("_"));;
-            formatValue_1073742199(fmtRes_2952795466, 0, idx_2952795367, []);
+            formatValue_1073742206(fmtRes_2952795466, 0, idx_2952795367, []);
             var fmtRes_2952795476 = [mnewString(0)];
             fmtRes_2952795476[0].push.apply(fmtRes_2952795476[0], makeNimstrLit("transition-all duration-300 w-24 h-8 lg:w-18 lg:h-6 xl:w-12 xl:h-4 bg-["));;
             formatValue_671088800(fmtRes_2952795476, 0, makeNimstrLit("#212121"), []);
@@ -18473,7 +12663,7 @@ function renderTag_2952790160(self_2952790161) {
             fmtRes_2952795573[0].push.apply(fmtRes_2952795573[0], makeNimstrLit("circle-"));;
             formatValue_671088800(fmtRes_2952795573, 0, self_2952790161.uniqCompId, []);
             fmtRes_2952795573[0].push.apply(fmtRes_2952795573[0], makeNimstrLit("_"));;
-            formatValue_1073742199(fmtRes_2952795573, 0, idx_2952795367, []);
+            formatValue_1073742206(fmtRes_2952795573, 0, idx_2952795367, []);
             fmtRes_2952795573[0].push.apply(fmtRes_2952795573[0], makeNimstrLit("-fill"));;
             var fmtRes_2952795583 = [mnewString(0)];
             fmtRes_2952795583[0].push.apply(fmtRes_2952795583[0], makeNimstrLit("w-0 h-full bg-["));;
@@ -18489,13 +12679,13 @@ function renderTag_2952790160(self_2952790161) {
               fmtRes_2952795620[0].push.apply(fmtRes_2952795620[0], makeNimstrLit("callComponentEventHandler(\'"));;
               formatValue_671088800(fmtRes_2952795620, 0, self_2952790161.uniqCompId, []);
               fmtRes_2952795620[0].push.apply(fmtRes_2952795620[0], makeNimstrLit("\', "));;
-              formatValue_1073742199(fmtRes_2952795620, 0, (73 + tmpCycleIdx71_2952794797), []);
+              formatValue_1073742206(fmtRes_2952795620, 0, (73 + tmpCycleIdx71_2952794797), []);
               fmtRes_2952795620[0].push.apply(fmtRes_2952795620[0], makeNimstrLit(", event)"));;
               var fmtRes_2952795630 = [mnewString(0)];
               fmtRes_2952795630[0].push.apply(fmtRes_2952795630[0], makeNimstrLit("circle-"));;
               formatValue_671088800(fmtRes_2952795630, 0, self_2952790161.uniqCompId, []);
               fmtRes_2952795630[0].push.apply(fmtRes_2952795630[0], makeNimstrLit("_"));;
-              formatValue_1073742199(fmtRes_2952795630, 0, idx_2952795367, []);
+              formatValue_1073742206(fmtRes_2952795630, 0, idx_2952795367, []);
               var fmtRes_2952795640 = [mnewString(0)];
               fmtRes_2952795640[0].push.apply(fmtRes_2952795640[0], makeNimstrLit("transition-all duration-300 w-8 h-8 lg:w-6 lg:h-6 xl:w-4 xl:h-4 bg-["));;
               formatValue_671088800(fmtRes_2952795640, 0, makeNimstrLit("#212121"), []);
@@ -18508,7 +12698,7 @@ function renderTag_2952790160(self_2952790161) {
               fmtRes_2952795737[0].push.apply(fmtRes_2952795737[0], makeNimstrLit("circle-"));;
               formatValue_671088800(fmtRes_2952795737, 0, self_2952790161.uniqCompId, []);
               fmtRes_2952795737[0].push.apply(fmtRes_2952795737[0], makeNimstrLit("_"));;
-              formatValue_1073742199(fmtRes_2952795737, 0, idx_2952795367, []);
+              formatValue_1073742206(fmtRes_2952795737, 0, idx_2952795367, []);
               fmtRes_2952795737[0].push.apply(fmtRes_2952795737[0], makeNimstrLit("-fill"));;
               var fmtRes_2952795747 = [mnewString(0)];
               fmtRes_2952795747[0].push.apply(fmtRes_2952795747[0], makeNimstrLit("w-0 h-full bg-["));;
@@ -18521,7 +12711,7 @@ function renderTag_2952790160(self_2952790161) {
             }
             
             collectResult_2952794798.push(initTag_2013266047(makeNimstrLit("div"), [Temporary40], true));;
-            i_469786147 += 1;
+            i_469762472 += 1;
           }
       } while (false);
     } while (false);
@@ -18674,20 +12864,20 @@ function hasLanguage_2684355651(self_2684355652, lang_2684355653) {
   BeforeRet: do {
     Label1: do {
       var source_2684357140 = {Field0: [], Field1: [], Field2: [], Field3: null, Field4: null};
-      var colontmp__469786156 = [];
-      colontmp__469786156 = toSeq_2684355726(self_2684355652.sources);
-      var i_469786157 = 0;
-      var L_469786158 = (colontmp__469786156).length;
+      var colontmp__469762486 = [];
+      colontmp__469762486 = toSeq_2684355726(self_2684355652.sources);
+      var i_469762487 = 0;
+      var L_469762488 = (colontmp__469762486).length;
       Label2: do {
           Label3: while (true) {
-          if (!(i_469786157 < L_469786158)) break Label3;
-            source_2684357140 = colontmp__469786156[i_469786157];
+          if (!(i_469762487 < L_469762488)) break Label3;
+            source_2684357140 = colontmp__469762486[i_469762487];
             if (eqStrings(source_2684357140.Field0, lang_2684355653)) {
             result_2684357132 = true;
             break BeforeRet;
             }
             
-            i_469786157 += 1;
+            i_469762487 += 1;
           }
       } while (false);
     } while (false);
@@ -18786,7 +12976,7 @@ function hiddenProc_2684356920(text_2684356921, html_2684356922, lang_2684356923
               fmtRes_2684356929[0].push.apply(fmtRes_2684356929[0], makeNimstrLit("<pre><code id=\""));;
               formatValue_671088800(fmtRes_2684356929, 0, self_2684356895.uniqCompId, []);
               add_33556419(fmtRes_2684356929, 0, lang_2684356923);
-              formatValue_1073742199(fmtRes_2684356929, 0, idx_2684356919, []);
+              formatValue_1073742206(fmtRes_2684356929, 0, idx_2684356919, []);
               fmtRes_2684356929[0].push.apply(fmtRes_2684356929[0], makeNimstrLit("\" language=\""));;
               add_33556419(fmtRes_2684356929, 0, lang_2684356923);
               fmtRes_2684356929[0].push.apply(fmtRes_2684356929[0], makeNimstrLit("\" class=\"language-"));;
@@ -18798,7 +12988,7 @@ function hiddenProc_2684356920(text_2684356921, html_2684356922, lang_2684356923
               var fmtRes_2684356939 = [mnewString(0)];
               formatValue_671088800(fmtRes_2684356939, 0, self_2684356895.uniqCompId, []);
               add_33556419(fmtRes_2684356939, 0, lang_2684356923);
-              formatValue_1073742199(fmtRes_2684356939, 0, idx_2684356919, []);
+              formatValue_1073742206(fmtRes_2684356939, 0, idx_2684356919, []);
               var id_2684356945 = toJSStr(fmtRes_2684356939[0]);
               idx_2684356919 += 1;
               //js
@@ -18938,14 +13128,14 @@ function renderTag_2684355800(self_2684355801) {
     var collectResult_2684355885 = newSeq_2684356470(0);
     Label5: do {
       var source_2684356485 = {Field0: [], Field1: [], Field2: [], Field3: null, Field4: null};
-      var colontmp__469786150 = [];
-      colontmp__469786150 = toSeq_2684355726(self_2684355801.sources);
-      var i_469786152 = 0;
-      var L_469786153 = (colontmp__469786150).length;
+      var colontmp__469762480 = [];
+      colontmp__469762480 = toSeq_2684355726(self_2684355801.sources);
+      var i_469762482 = 0;
+      var L_469762483 = (colontmp__469762480).length;
       Label6: do {
           Label7: while (true) {
-          if (!(i_469786152 < L_469786153)) break Label7;
-            source_2684356485 = colontmp__469786150[i_469786152];
+          if (!(i_469762482 < L_469762483)) break Label7;
+            source_2684356485 = colontmp__469762480[i_469762482];
             tmpCycleIdx5_2684355879 += 1;
             if (eqStrings(toString_2248147407(currentLanguage_2684354578[0]), source_2684356485.Field0)) {
             var fmtRes_2684356573 = [mnewString(0)];
@@ -18970,7 +13160,7 @@ function renderTag_2684355800(self_2684355801) {
             fmtRes_2684356613[0].push.apply(fmtRes_2684356613[0], makeNimstrLit("callComponentEventHandler(\'"));;
             formatValue_671088800(fmtRes_2684356613, 0, self_2684355801.uniqCompId, []);
             fmtRes_2684356613[0].push.apply(fmtRes_2684356613[0], makeNimstrLit("\', "));;
-            formatValue_1073742199(fmtRes_2684356613, 0, (6 + tmpCycleIdx5_2684355879), []);
+            formatValue_1073742206(fmtRes_2684356613, 0, (6 + tmpCycleIdx5_2684355879), []);
             fmtRes_2684356613[0].push.apply(fmtRes_2684356613[0], makeNimstrLit(", event)"));;
             var fmtRes_2684356623 = mnewString(0);
             fmtRes_2684356623.push.apply(fmtRes_2684356623, makeNimstrLit("0 0 24 24"));;
@@ -18993,7 +13183,7 @@ function renderTag_2684355800(self_2684355801) {
             fmtRes_2684356783[0].push.apply(fmtRes_2684356783[0], makeNimstrLit("callComponentEventHandler(\'"));;
             formatValue_671088800(fmtRes_2684356783, 0, self_2684355801.uniqCompId, []);
             fmtRes_2684356783[0].push.apply(fmtRes_2684356783[0], makeNimstrLit("\', "));;
-            formatValue_1073742199(fmtRes_2684356783, 0, (7 + tmpCycleIdx5_2684355879), []);
+            formatValue_1073742206(fmtRes_2684356783, 0, (7 + tmpCycleIdx5_2684355879), []);
             fmtRes_2684356783[0].push.apply(fmtRes_2684356783[0], makeNimstrLit(", event)"));;
             var fmtRes_2684356793 = [mnewString(0)];
             add_33556419(fmtRes_2684356793, 0, source_2684356485.Field3);
@@ -19034,7 +13224,7 @@ function renderTag_2684355800(self_2684355801) {
             }
             
             collectResult_2684355885.push(initTag_2013266047(makeNimstrLit("div"), [Temporary8], true));;
-            i_469786152 += 1;
+            i_469762482 += 1;
           }
       } while (false);
     } while (false);
@@ -19103,6 +13293,19 @@ function HEX21HEX3D_2684355321(selfHEX60gensym1_2684355323, otherHEX60gensym1_26
 
   return result_2684355325;
 
+}
+
+function set_2684355345(self_2684355347, value_2684355348) {
+      var Temporary1;
+      var Temporary2;
+
+    valHEX3D_2684354589(self_2684355347, value_2684355348);
+      if (!!((application_1845493808[0] == null))) Temporary2 = false; else {        Temporary2 = !((application_1845493808[0].router == null));      }      if (!Temporary2) Temporary1 = false; else {        Temporary1 = enableRouting_2248146952[0];      }    if (Temporary1) {
+    application_1845493808[0].router(false);
+    }
+    
+
+  
 }
 
 function renderTag_2684354796(self_2684354797) {
@@ -19238,6 +13441,15 @@ function HEX3DHEX3D_2919235838(selfHEX60gensym0_2919235840, otherHEX60gensym0_29
 
 }
 
+function remember_2919235626(val_2919235628) {
+  var result_2919235629 = null;
+
+    result_2919235629 = {value: val_2919235628};
+
+  return result_2919235629;
+
+}
+
 function nimFloatToString_352321662(a_352321663) {
   var result_352321664 = null;
 
@@ -19300,18 +13512,18 @@ function nsuformatBiggestFloat(f_687867708, format_687867709, precision_68786771
     
     Label1: do {
       var i_687867719 = 0;
-      var colontmp__469786167 = 0;
-      colontmp__469786167 = (result_687867712).length;
-      var i_469786168 = 0;
+      var colontmp__469762497 = 0;
+      colontmp__469762497 = (result_687867712).length;
+      var i_469762498 = 0;
       Label2: do {
           Label3: while (true) {
-          if (!(i_469786168 < colontmp__469786167)) break Label3;
-            i_687867719 = i_469786168;
-            if ((ConstSet32[result_687867712[i_687867719]] != undefined)) {
+          if (!(i_469762498 < colontmp__469762497)) break Label3;
+            i_687867719 = i_469762498;
+            if ((ConstSet18[result_687867712[i_687867719]] != undefined)) {
             result_687867712[i_687867719] = decimalSep_687867711;
             }
             
-            i_469786168 += 1;
+            i_469762498 += 1;
           }
       } while (false);
     } while (false);
@@ -19346,7 +13558,7 @@ function insert_33557846(x_33557847, x_33557847_Idx, item_33557848, i_33557849) 
 function nsuToUpperAsciiChar(c_687865943) {
   var result_687865944 = 0;
 
-    if ((ConstSet34[c_687865943] != undefined)) {
+    if ((ConstSet20[c_687865943] != undefined)) {
     result_687865944 = (c_687865943 ^ 32);
     }
     else {
@@ -19364,15 +13576,15 @@ function nsuToUpperAsciiStr(s_687865950) {
     result_687865951 = nimCopy(null, mnewString((s_687865950).length), NTI33554439);
     Label1: do {
       var iHEX60gensym11_687865957 = 0;
-      var colontmp__469786173 = 0;
-      colontmp__469786173 = ((s_687865950).length - 1);
-      var res_469786174 = 0;
+      var colontmp__469762503 = 0;
+      colontmp__469762503 = ((s_687865950).length - 1);
+      var res_469762504 = 0;
       Label2: do {
           Label3: while (true) {
-          if (!(res_469786174 <= colontmp__469786173)) break Label3;
-            iHEX60gensym11_687865957 = res_469786174;
+          if (!(res_469762504 <= colontmp__469762503)) break Label3;
+            iHEX60gensym11_687865957 = res_469762504;
             result_687865951[iHEX60gensym11_687865957] = nsuToUpperAsciiChar(s_687865950[iHEX60gensym11_687865957]);
-            res_469786174 += 1;
+            res_469762504 += 1;
           }
       } while (false);
     } while (false);
@@ -19460,7 +13672,7 @@ function formatValue_2919235874(result_2919235876, result_2919235876_Idx, value_
     
     var align_2919235914 = Temporary1;
     var res_2919235915 = alignString_671088658(f_2919235885[0], spec_2919235882.minimumWidth, align_2919235914, spec_2919235882.fill);
-    if ((ConstSet33[spec_2919235882.typ] != undefined)) {
+    if ((ConstSet19[spec_2919235882.typ] != undefined)) {
     result_2919235876[result_2919235876_Idx].push.apply(result_2919235876[result_2919235876_Idx], nsuToUpperAsciiStr(res_2919235915));;
     }
     else {
@@ -19506,21 +13718,21 @@ function renderTag_2919235711(self_2919235712) {
     var collectResult_2919235723 = newSeq_2684356470(0);
     Label1: do {
       var sponsor_2919236081 = ({name: [], amount: 0.0, url: [], avatarUrl: [], status: 0});
-      var colontmp__469786161 = [];
-      colontmp__469786161 = toSeq_2919235743(self_2919235712.data);
-      var i_469786163 = 0;
-      var L_469786164 = (colontmp__469786161).length;
+      var colontmp__469762491 = [];
+      colontmp__469762491 = toSeq_2919235743(self_2919235712.data);
+      var i_469762493 = 0;
+      var L_469762494 = (colontmp__469762491).length;
       Label2: do {
           Label3: while (true) {
-          if (!(i_469786163 < L_469786164)) break Label3;
-            sponsor_2919236081 = colontmp__469786161[i_469786163];
+          if (!(i_469762493 < L_469762494)) break Label3;
+            sponsor_2919236081 = colontmp__469762491[i_469762493];
             tmpCycleIdx66_2919235722 += 1;
             if (HEX3DHEX3D_2919235838(remember_2919235626(sponsor_2919236081.status), self_2919235712.sponsorStatus)) {
             var fmtRes_2919236179 = [mnewString(0)];
             fmtRes_2919236179[0].push.apply(fmtRes_2919236179[0], makeNimstrLit("callComponentEventHandler(\'"));;
             formatValue_671088800(fmtRes_2919236179, 0, self_2919235712.uniqCompId, []);
             fmtRes_2919236179[0].push.apply(fmtRes_2919236179[0], makeNimstrLit("\', "));;
-            formatValue_1073742199(fmtRes_2919236179, 0, (67 + tmpCycleIdx66_2919235722), []);
+            formatValue_1073742206(fmtRes_2919236179, 0, (67 + tmpCycleIdx66_2919235722), []);
             fmtRes_2919236179[0].push.apply(fmtRes_2919236179[0], makeNimstrLit(", event)"));;
             var fmtRes_2919236189 = [mnewString(0)];
             formatValue_671088800(fmtRes_2919236189, 0, sponsor_2919236081.name, []);
@@ -19543,7 +13755,7 @@ function renderTag_2919235711(self_2919235712) {
             }
             
             collectResult_2919235723.push(initTag_2013266047(makeNimstrLit("div"), [Temporary4], true));;
-            i_469786163 += 1;
+            i_469762493 += 1;
           }
       } while (false);
     } while (false);
@@ -20952,16 +15164,16 @@ function HEX3Aanonymous_2684355705(self_2684355699, ev_2684355700) {
 function HEX3Aanonymous_2684355706(self_2684355699, ev_2684355700) {
         Label1: do {
           var source_2684355731 = {Field0: [], Field1: [], Field2: [], Field3: null, Field4: null};
-          var colontmp__469786177 = [];
-          colontmp__469786177 = toSeq_2684355726(self_2684355699.sources);
-          var i_469786178 = 0;
-          var L_469786179 = (colontmp__469786177).length;
+          var colontmp__469762507 = [];
+          colontmp__469762507 = toSeq_2684355726(self_2684355699.sources);
+          var i_469762508 = 0;
+          var L_469762509 = (colontmp__469762507).length;
           Label2: do {
               Label3: while (true) {
-              if (!(i_469786178 < L_469786179)) break Label3;
-                source_2684355731 = colontmp__469786177[i_469786178];
+              if (!(i_469762508 < L_469762509)) break Label3;
+                source_2684355731 = colontmp__469762507[i_469762508];
                 highlight_2684355648(self_2684355699, source_2684355731.Field3);
-                i_469786178 += 1;
+                i_469762508 += 1;
               }
           } while (false);
         } while (false);
@@ -23395,15 +17607,15 @@ function nsuRepeatStr(s_687866878, n_687866879) {
     result_687866880 = nimCopy(null, mnewString(0), NTI33554439);
     Label1: do {
       var i_687866885 = 0;
-      var colontmp__469786200 = 0;
-      colontmp__469786200 = n_687866879;
-      var res_469786201 = 1;
+      var colontmp__469762530 = 0;
+      colontmp__469762530 = n_687866879;
+      var res_469762531 = 1;
       Label2: do {
           Label3: while (true) {
-          if (!(res_469786201 <= colontmp__469786200)) break Label3;
-            i_687866885 = res_469786201;
+          if (!(res_469762531 <= colontmp__469762530)) break Label3;
+            i_687866885 = res_469762531;
             result_687866880.push.apply(result_687866880, s_687866878);;
-            res_469786201 += 1;
+            res_469762531 += 1;
           }
       } while (false);
     } while (false);
@@ -23485,18 +17697,18 @@ function join_2013266393(a_2013266395, sep_2013266396) {
     Label1: do {
       var i_2013266420 = 0;
       var x_2013266421 = null;
-      var i_469786206 = 0;
+      var i_469762536 = 0;
       Label2: do {
           Label3: while (true) {
-          if (!(i_469786206 < (a_2013266395).length)) break Label3;
-            i_2013266420 = i_469786206;
-            x_2013266421 = a_2013266395[i_469786206];
+          if (!(i_469762536 < (a_2013266395).length)) break Label3;
+            i_2013266420 = i_469762536;
+            x_2013266421 = a_2013266395[i_469762536];
             if ((0 < i_2013266420)) {
             result_2013266397.push.apply(result_2013266397, sep_2013266396);;
             }
             
             result_2013266397.push.apply(result_2013266397, HEX24_2013266385(x_2013266421));;
-            i_469786206 += 1;
+            i_469762536 += 1;
           }
       } while (false);
     } while (false);
@@ -23523,21 +17735,21 @@ function HEX24_2013266385(self_2013266386) {
       var key_2013266391 = [];
       var value_2013266392 = [];
       Label2: do {
-        var h_469786195 = 0;
-        var colontmp__469786196 = 0;
-        colontmp__469786196 = (self_2013266386.attrs.data).length - 1;
-        var res_469786197 = 0;
+        var h_469762525 = 0;
+        var colontmp__469762526 = 0;
+        colontmp__469762526 = (self_2013266386.attrs.data).length - 1;
+        var res_469762527 = 0;
         Label3: do {
             Label4: while (true) {
-            if (!(res_469786197 <= colontmp__469786196)) break Label4;
-              h_469786195 = res_469786197;
-              if (self_2013266386.attrs.data[h_469786195].Field2) {
-              key_2013266391 = self_2013266386.attrs.data[h_469786195].Field0;
-              value_2013266392 = self_2013266386.attrs.data[h_469786195].Field1;
+            if (!(res_469762527 <= colontmp__469762526)) break Label4;
+              h_469762525 = res_469762527;
+              if (self_2013266386.attrs.data[h_469762525].Field2) {
+              key_2013266391 = self_2013266386.attrs.data[h_469762525].Field0;
+              value_2013266392 = self_2013266386.attrs.data[h_469762525].Field1;
               attrs_2013266390.push.apply(attrs_2013266390, (makeNimstrLit(" ") || []).concat(key_2013266391 || [],makeNimstrLit("=\"") || [],value_2013266392 || [],makeNimstrLit("\"") || []));;
               }
               
-              res_469786197 += 1;
+              res_469762527 += 1;
             }
         } while (false);
       } while (false);
@@ -23610,34 +17822,34 @@ function reRender_2818572736(self_2818572737) {
     var _elements_2818572748 = newSeq_2684354749(0);
     Label1: do {
       var tag_2818572752 = null;
-      var i_469786182 = 0;
-      var L_469786183 = (compTmpData_2818572739.children).length;
+      var i_469762512 = 0;
+      var L_469762513 = (compTmpData_2818572739.children).length;
       Label2: do {
           Label3: while (true) {
-          if (!(i_469786182 < L_469786183)) break Label3;
-            tag_2818572752 = compTmpData_2818572739.children[i_469786182];
+          if (!(i_469762512 < L_469762513)) break Label3;
+            tag_2818572752 = compTmpData_2818572739.children[i_469762512];
             if (!((_current_2818572740 == null))) {
             _elements_2818572748.push(_current_2818572740);;
             _current_2818572740 = _current_2818572740.nextSibling;
             }
             
-            i_469786182 += 1;
+            i_469762512 += 1;
           }
       } while (false);
     } while (false);
     Label4: do {
       var __i_2818572767 = 0;
-      var colontmp__469786186 = 0;
-      colontmp__469786186 = (_elements_2818572748).length;
-      var i_469786187 = 0;
+      var colontmp__469762516 = 0;
+      colontmp__469762516 = (_elements_2818572748).length;
+      var i_469762517 = 0;
       Label5: do {
           Label6: while (true) {
-          if (!(i_469786187 < colontmp__469786186)) break Label6;
-            __i_2818572767 = i_469786187;
+          if (!(i_469762517 < colontmp__469762516)) break Label6;
+            __i_2818572767 = i_469762517;
             var elem_2818572768 = _elements_2818572748[__i_2818572767];
             var tag_2818572769 = compTmpData_2818572739.children[__i_2818572767];
             elem_2818572768.outerHTML = toJSStr(HEX24_2013266385(tag_2818572769));
-            i_469786187 += 1;
+            i_469762517 += 1;
           }
       } while (false);
     } while (false);
@@ -23654,34 +17866,34 @@ function reRender_2835349619(self_2835349620) {
     var _elements_2835349631 = newSeq_2684354749(0);
     Label1: do {
       var tag_2835349635 = null;
-      var i_469786209 = 0;
-      var L_469786210 = (compTmpData_2835349622.children).length;
+      var i_469762539 = 0;
+      var L_469762540 = (compTmpData_2835349622.children).length;
       Label2: do {
           Label3: while (true) {
-          if (!(i_469786209 < L_469786210)) break Label3;
-            tag_2835349635 = compTmpData_2835349622.children[i_469786209];
+          if (!(i_469762539 < L_469762540)) break Label3;
+            tag_2835349635 = compTmpData_2835349622.children[i_469762539];
             if (!((_current_2835349623 == null))) {
             _elements_2835349631.push(_current_2835349623);;
             _current_2835349623 = _current_2835349623.nextSibling;
             }
             
-            i_469786209 += 1;
+            i_469762539 += 1;
           }
       } while (false);
     } while (false);
     Label4: do {
       var __i_2835349650 = 0;
-      var colontmp__469786213 = 0;
-      colontmp__469786213 = (_elements_2835349631).length;
-      var i_469786214 = 0;
+      var colontmp__469762543 = 0;
+      colontmp__469762543 = (_elements_2835349631).length;
+      var i_469762544 = 0;
       Label5: do {
           Label6: while (true) {
-          if (!(i_469786214 < colontmp__469786213)) break Label6;
-            __i_2835349650 = i_469786214;
+          if (!(i_469762544 < colontmp__469762543)) break Label6;
+            __i_2835349650 = i_469762544;
             var elem_2835349651 = _elements_2835349631[__i_2835349650];
             var tag_2835349652 = compTmpData_2835349622.children[__i_2835349650];
             elem_2835349651.outerHTML = toJSStr(HEX24_2013266385(tag_2835349652));
-            i_469786214 += 1;
+            i_469762544 += 1;
           }
       } while (false);
     } while (false);
@@ -23698,34 +17910,34 @@ function reRender_2801795121(self_2801795122) {
     var _elements_2801795133 = newSeq_2684354749(0);
     Label1: do {
       var tag_2801795137 = null;
-      var i_469786217 = 0;
-      var L_469786218 = (compTmpData_2801795124.children).length;
+      var i_469762547 = 0;
+      var L_469762548 = (compTmpData_2801795124.children).length;
       Label2: do {
           Label3: while (true) {
-          if (!(i_469786217 < L_469786218)) break Label3;
-            tag_2801795137 = compTmpData_2801795124.children[i_469786217];
+          if (!(i_469762547 < L_469762548)) break Label3;
+            tag_2801795137 = compTmpData_2801795124.children[i_469762547];
             if (!((_current_2801795125 == null))) {
             _elements_2801795133.push(_current_2801795125);;
             _current_2801795125 = _current_2801795125.nextSibling;
             }
             
-            i_469786217 += 1;
+            i_469762547 += 1;
           }
       } while (false);
     } while (false);
     Label4: do {
       var __i_2801795152 = 0;
-      var colontmp__469786221 = 0;
-      colontmp__469786221 = (_elements_2801795133).length;
-      var i_469786222 = 0;
+      var colontmp__469762551 = 0;
+      colontmp__469762551 = (_elements_2801795133).length;
+      var i_469762552 = 0;
       Label5: do {
           Label6: while (true) {
-          if (!(i_469786222 < colontmp__469786221)) break Label6;
-            __i_2801795152 = i_469786222;
+          if (!(i_469762552 < colontmp__469762551)) break Label6;
+            __i_2801795152 = i_469762552;
             var elem_2801795153 = _elements_2801795133[__i_2801795152];
             var tag_2801795154 = compTmpData_2801795124.children[__i_2801795152];
             elem_2801795153.outerHTML = toJSStr(HEX24_2013266385(tag_2801795154));
-            i_469786222 += 1;
+            i_469762552 += 1;
           }
       } while (false);
     } while (false);
@@ -23742,34 +17954,34 @@ function reRender_2785017914(self_2785017915) {
     var _elements_2785017926 = newSeq_2684354749(0);
     Label1: do {
       var tag_2785017930 = null;
-      var i_469786225 = 0;
-      var L_469786226 = (compTmpData_2785017917.children).length;
+      var i_469762555 = 0;
+      var L_469762556 = (compTmpData_2785017917.children).length;
       Label2: do {
           Label3: while (true) {
-          if (!(i_469786225 < L_469786226)) break Label3;
-            tag_2785017930 = compTmpData_2785017917.children[i_469786225];
+          if (!(i_469762555 < L_469762556)) break Label3;
+            tag_2785017930 = compTmpData_2785017917.children[i_469762555];
             if (!((_current_2785017918 == null))) {
             _elements_2785017926.push(_current_2785017918);;
             _current_2785017918 = _current_2785017918.nextSibling;
             }
             
-            i_469786225 += 1;
+            i_469762555 += 1;
           }
       } while (false);
     } while (false);
     Label4: do {
       var __i_2785017945 = 0;
-      var colontmp__469786229 = 0;
-      colontmp__469786229 = (_elements_2785017926).length;
-      var i_469786230 = 0;
+      var colontmp__469762559 = 0;
+      colontmp__469762559 = (_elements_2785017926).length;
+      var i_469762560 = 0;
       Label5: do {
           Label6: while (true) {
-          if (!(i_469786230 < colontmp__469786229)) break Label6;
-            __i_2785017945 = i_469786230;
+          if (!(i_469762560 < colontmp__469762559)) break Label6;
+            __i_2785017945 = i_469762560;
             var elem_2785017946 = _elements_2785017926[__i_2785017945];
             var tag_2785017947 = compTmpData_2785017917.children[__i_2785017945];
             elem_2785017946.outerHTML = toJSStr(HEX24_2013266385(tag_2785017947));
-            i_469786230 += 1;
+            i_469762560 += 1;
           }
       } while (false);
     } while (false);
@@ -23786,34 +17998,34 @@ function reRender_2885681216(self_2885681217) {
     var _elements_2885681228 = newSeq_2684354749(0);
     Label1: do {
       var tag_2885681232 = null;
-      var i_469786233 = 0;
-      var L_469786234 = (compTmpData_2885681219.children).length;
+      var i_469762563 = 0;
+      var L_469762564 = (compTmpData_2885681219.children).length;
       Label2: do {
           Label3: while (true) {
-          if (!(i_469786233 < L_469786234)) break Label3;
-            tag_2885681232 = compTmpData_2885681219.children[i_469786233];
+          if (!(i_469762563 < L_469762564)) break Label3;
+            tag_2885681232 = compTmpData_2885681219.children[i_469762563];
             if (!((_current_2885681220 == null))) {
             _elements_2885681228.push(_current_2885681220);;
             _current_2885681220 = _current_2885681220.nextSibling;
             }
             
-            i_469786233 += 1;
+            i_469762563 += 1;
           }
       } while (false);
     } while (false);
     Label4: do {
       var __i_2885681247 = 0;
-      var colontmp__469786237 = 0;
-      colontmp__469786237 = (_elements_2885681228).length;
-      var i_469786238 = 0;
+      var colontmp__469762567 = 0;
+      colontmp__469762567 = (_elements_2885681228).length;
+      var i_469762568 = 0;
       Label5: do {
           Label6: while (true) {
-          if (!(i_469786238 < colontmp__469786237)) break Label6;
-            __i_2885681247 = i_469786238;
+          if (!(i_469762568 < colontmp__469762567)) break Label6;
+            __i_2885681247 = i_469762568;
             var elem_2885681248 = _elements_2885681228[__i_2885681247];
             var tag_2885681249 = compTmpData_2885681219.children[__i_2885681247];
             elem_2885681248.outerHTML = toJSStr(HEX24_2013266385(tag_2885681249));
-            i_469786238 += 1;
+            i_469762568 += 1;
           }
       } while (false);
     } while (false);
@@ -23830,34 +18042,34 @@ function reRender_2868903971(self_2868903972) {
     var _elements_2868903983 = newSeq_2684354749(0);
     Label1: do {
       var tag_2868903987 = null;
-      var i_469786241 = 0;
-      var L_469786242 = (compTmpData_2868903974.children).length;
+      var i_469762571 = 0;
+      var L_469762572 = (compTmpData_2868903974.children).length;
       Label2: do {
           Label3: while (true) {
-          if (!(i_469786241 < L_469786242)) break Label3;
-            tag_2868903987 = compTmpData_2868903974.children[i_469786241];
+          if (!(i_469762571 < L_469762572)) break Label3;
+            tag_2868903987 = compTmpData_2868903974.children[i_469762571];
             if (!((_current_2868903975 == null))) {
             _elements_2868903983.push(_current_2868903975);;
             _current_2868903975 = _current_2868903975.nextSibling;
             }
             
-            i_469786241 += 1;
+            i_469762571 += 1;
           }
       } while (false);
     } while (false);
     Label4: do {
       var __i_2868904002 = 0;
-      var colontmp__469786245 = 0;
-      colontmp__469786245 = (_elements_2868903983).length;
-      var i_469786246 = 0;
+      var colontmp__469762575 = 0;
+      colontmp__469762575 = (_elements_2868903983).length;
+      var i_469762576 = 0;
       Label5: do {
           Label6: while (true) {
-          if (!(i_469786246 < colontmp__469786245)) break Label6;
-            __i_2868904002 = i_469786246;
+          if (!(i_469762576 < colontmp__469762575)) break Label6;
+            __i_2868904002 = i_469762576;
             var elem_2868904003 = _elements_2868903983[__i_2868904002];
             var tag_2868904004 = compTmpData_2868903974.children[__i_2868904002];
             elem_2868904003.outerHTML = toJSStr(HEX24_2013266385(tag_2868904004));
-            i_469786246 += 1;
+            i_469762576 += 1;
           }
       } while (false);
     } while (false);
@@ -23874,34 +18086,34 @@ function reRender_2818572997(self_2818572998) {
     var _elements_2818573009 = newSeq_2684354749(0);
     Label1: do {
       var tag_2818573013 = null;
-      var i_469786249 = 0;
-      var L_469786250 = (compTmpData_2818573000.children).length;
+      var i_469762579 = 0;
+      var L_469762580 = (compTmpData_2818573000.children).length;
       Label2: do {
           Label3: while (true) {
-          if (!(i_469786249 < L_469786250)) break Label3;
-            tag_2818573013 = compTmpData_2818573000.children[i_469786249];
+          if (!(i_469762579 < L_469762580)) break Label3;
+            tag_2818573013 = compTmpData_2818573000.children[i_469762579];
             if (!((_current_2818573001 == null))) {
             _elements_2818573009.push(_current_2818573001);;
             _current_2818573001 = _current_2818573001.nextSibling;
             }
             
-            i_469786249 += 1;
+            i_469762579 += 1;
           }
       } while (false);
     } while (false);
     Label4: do {
       var __i_2818573028 = 0;
-      var colontmp__469786253 = 0;
-      colontmp__469786253 = (_elements_2818573009).length;
-      var i_469786254 = 0;
+      var colontmp__469762583 = 0;
+      colontmp__469762583 = (_elements_2818573009).length;
+      var i_469762584 = 0;
       Label5: do {
           Label6: while (true) {
-          if (!(i_469786254 < colontmp__469786253)) break Label6;
-            __i_2818573028 = i_469786254;
+          if (!(i_469762584 < colontmp__469762583)) break Label6;
+            __i_2818573028 = i_469762584;
             var elem_2818573029 = _elements_2818573009[__i_2818573028];
             var tag_2818573030 = compTmpData_2818573000.children[__i_2818573028];
             elem_2818573029.outerHTML = toJSStr(HEX24_2013266385(tag_2818573030));
-            i_469786254 += 1;
+            i_469762584 += 1;
           }
       } while (false);
     } while (false);
@@ -23918,34 +18130,34 @@ function reRender_2902458409(self_2902458410) {
     var _elements_2902458421 = newSeq_2684354749(0);
     Label1: do {
       var tag_2902458425 = null;
-      var i_469786257 = 0;
-      var L_469786258 = (compTmpData_2902458412.children).length;
+      var i_469762587 = 0;
+      var L_469762588 = (compTmpData_2902458412.children).length;
       Label2: do {
           Label3: while (true) {
-          if (!(i_469786257 < L_469786258)) break Label3;
-            tag_2902458425 = compTmpData_2902458412.children[i_469786257];
+          if (!(i_469762587 < L_469762588)) break Label3;
+            tag_2902458425 = compTmpData_2902458412.children[i_469762587];
             if (!((_current_2902458413 == null))) {
             _elements_2902458421.push(_current_2902458413);;
             _current_2902458413 = _current_2902458413.nextSibling;
             }
             
-            i_469786257 += 1;
+            i_469762587 += 1;
           }
       } while (false);
     } while (false);
     Label4: do {
       var __i_2902458440 = 0;
-      var colontmp__469786261 = 0;
-      colontmp__469786261 = (_elements_2902458421).length;
-      var i_469786262 = 0;
+      var colontmp__469762591 = 0;
+      colontmp__469762591 = (_elements_2902458421).length;
+      var i_469762592 = 0;
       Label5: do {
           Label6: while (true) {
-          if (!(i_469786262 < colontmp__469786261)) break Label6;
-            __i_2902458440 = i_469786262;
+          if (!(i_469762592 < colontmp__469762591)) break Label6;
+            __i_2902458440 = i_469762592;
             var elem_2902458441 = _elements_2902458421[__i_2902458440];
             var tag_2902458442 = compTmpData_2902458412.children[__i_2902458440];
             elem_2902458441.outerHTML = toJSStr(HEX24_2013266385(tag_2902458442));
-            i_469786262 += 1;
+            i_469762592 += 1;
           }
       } while (false);
     } while (false);
@@ -23962,34 +18174,34 @@ function reRender_2969567281(self_2969567282) {
     var _elements_2969567293 = newSeq_2684354749(0);
     Label1: do {
       var tag_2969567297 = null;
-      var i_469786265 = 0;
-      var L_469786266 = (compTmpData_2969567284.children).length;
+      var i_469762595 = 0;
+      var L_469762596 = (compTmpData_2969567284.children).length;
       Label2: do {
           Label3: while (true) {
-          if (!(i_469786265 < L_469786266)) break Label3;
-            tag_2969567297 = compTmpData_2969567284.children[i_469786265];
+          if (!(i_469762595 < L_469762596)) break Label3;
+            tag_2969567297 = compTmpData_2969567284.children[i_469762595];
             if (!((_current_2969567285 == null))) {
             _elements_2969567293.push(_current_2969567285);;
             _current_2969567285 = _current_2969567285.nextSibling;
             }
             
-            i_469786265 += 1;
+            i_469762595 += 1;
           }
       } while (false);
     } while (false);
     Label4: do {
       var __i_2969567312 = 0;
-      var colontmp__469786269 = 0;
-      colontmp__469786269 = (_elements_2969567293).length;
-      var i_469786270 = 0;
+      var colontmp__469762599 = 0;
+      colontmp__469762599 = (_elements_2969567293).length;
+      var i_469762600 = 0;
       Label5: do {
           Label6: while (true) {
-          if (!(i_469786270 < colontmp__469786269)) break Label6;
-            __i_2969567312 = i_469786270;
+          if (!(i_469762600 < colontmp__469762599)) break Label6;
+            __i_2969567312 = i_469762600;
             var elem_2969567313 = _elements_2969567293[__i_2969567312];
             var tag_2969567314 = compTmpData_2969567284.children[__i_2969567312];
             elem_2969567313.outerHTML = toJSStr(HEX24_2013266385(tag_2969567314));
-            i_469786270 += 1;
+            i_469762600 += 1;
           }
       } while (false);
     } while (false);
@@ -24006,34 +18218,34 @@ function reRender_2952790119(self_2952790120) {
     var _elements_2952790131 = newSeq_2684354749(0);
     Label1: do {
       var tag_2952790135 = null;
-      var i_469786273 = 0;
-      var L_469786274 = (compTmpData_2952790122.children).length;
+      var i_469762603 = 0;
+      var L_469762604 = (compTmpData_2952790122.children).length;
       Label2: do {
           Label3: while (true) {
-          if (!(i_469786273 < L_469786274)) break Label3;
-            tag_2952790135 = compTmpData_2952790122.children[i_469786273];
+          if (!(i_469762603 < L_469762604)) break Label3;
+            tag_2952790135 = compTmpData_2952790122.children[i_469762603];
             if (!((_current_2952790123 == null))) {
             _elements_2952790131.push(_current_2952790123);;
             _current_2952790123 = _current_2952790123.nextSibling;
             }
             
-            i_469786273 += 1;
+            i_469762603 += 1;
           }
       } while (false);
     } while (false);
     Label4: do {
       var __i_2952790150 = 0;
-      var colontmp__469786277 = 0;
-      colontmp__469786277 = (_elements_2952790131).length;
-      var i_469786278 = 0;
+      var colontmp__469762607 = 0;
+      colontmp__469762607 = (_elements_2952790131).length;
+      var i_469762608 = 0;
       Label5: do {
           Label6: while (true) {
-          if (!(i_469786278 < colontmp__469786277)) break Label6;
-            __i_2952790150 = i_469786278;
+          if (!(i_469762608 < colontmp__469762607)) break Label6;
+            __i_2952790150 = i_469762608;
             var elem_2952790151 = _elements_2952790131[__i_2952790150];
             var tag_2952790152 = compTmpData_2952790122.children[__i_2952790150];
             elem_2952790151.outerHTML = toJSStr(HEX24_2013266385(tag_2952790152));
-            i_469786278 += 1;
+            i_469762608 += 1;
           }
       } while (false);
     } while (false);
@@ -24050,34 +18262,34 @@ function reRender_2852126755(self_2852126756) {
     var _elements_2852126767 = newSeq_2684354749(0);
     Label1: do {
       var tag_2852126771 = null;
-      var i_469786281 = 0;
-      var L_469786282 = (compTmpData_2852126758.children).length;
+      var i_469762611 = 0;
+      var L_469762612 = (compTmpData_2852126758.children).length;
       Label2: do {
           Label3: while (true) {
-          if (!(i_469786281 < L_469786282)) break Label3;
-            tag_2852126771 = compTmpData_2852126758.children[i_469786281];
+          if (!(i_469762611 < L_469762612)) break Label3;
+            tag_2852126771 = compTmpData_2852126758.children[i_469762611];
             if (!((_current_2852126759 == null))) {
             _elements_2852126767.push(_current_2852126759);;
             _current_2852126759 = _current_2852126759.nextSibling;
             }
             
-            i_469786281 += 1;
+            i_469762611 += 1;
           }
       } while (false);
     } while (false);
     Label4: do {
       var __i_2852126786 = 0;
-      var colontmp__469786285 = 0;
-      colontmp__469786285 = (_elements_2852126767).length;
-      var i_469786286 = 0;
+      var colontmp__469762615 = 0;
+      colontmp__469762615 = (_elements_2852126767).length;
+      var i_469762616 = 0;
       Label5: do {
           Label6: while (true) {
-          if (!(i_469786286 < colontmp__469786285)) break Label6;
-            __i_2852126786 = i_469786286;
+          if (!(i_469762616 < colontmp__469762615)) break Label6;
+            __i_2852126786 = i_469762616;
             var elem_2852126787 = _elements_2852126767[__i_2852126786];
             var tag_2852126788 = compTmpData_2852126758.children[__i_2852126786];
             elem_2852126787.outerHTML = toJSStr(HEX24_2013266385(tag_2852126788));
-            i_469786286 += 1;
+            i_469762616 += 1;
           }
       } while (false);
     } while (false);
@@ -24094,34 +18306,34 @@ function reRender_2818572609(self_2818572610) {
     var _elements_2818572621 = newSeq_2684354749(0);
     Label1: do {
       var tag_2818572625 = null;
-      var i_469786289 = 0;
-      var L_469786290 = (compTmpData_2818572612.children).length;
+      var i_469762619 = 0;
+      var L_469762620 = (compTmpData_2818572612.children).length;
       Label2: do {
           Label3: while (true) {
-          if (!(i_469786289 < L_469786290)) break Label3;
-            tag_2818572625 = compTmpData_2818572612.children[i_469786289];
+          if (!(i_469762619 < L_469762620)) break Label3;
+            tag_2818572625 = compTmpData_2818572612.children[i_469762619];
             if (!((_current_2818572613 == null))) {
             _elements_2818572621.push(_current_2818572613);;
             _current_2818572613 = _current_2818572613.nextSibling;
             }
             
-            i_469786289 += 1;
+            i_469762619 += 1;
           }
       } while (false);
     } while (false);
     Label4: do {
       var __i_2818572640 = 0;
-      var colontmp__469786293 = 0;
-      colontmp__469786293 = (_elements_2818572621).length;
-      var i_469786294 = 0;
+      var colontmp__469762623 = 0;
+      colontmp__469762623 = (_elements_2818572621).length;
+      var i_469762624 = 0;
       Label5: do {
           Label6: while (true) {
-          if (!(i_469786294 < colontmp__469786293)) break Label6;
-            __i_2818572640 = i_469786294;
+          if (!(i_469762624 < colontmp__469762623)) break Label6;
+            __i_2818572640 = i_469762624;
             var elem_2818572641 = _elements_2818572621[__i_2818572640];
             var tag_2818572642 = compTmpData_2818572612.children[__i_2818572640];
             elem_2818572641.outerHTML = toJSStr(HEX24_2013266385(tag_2818572642));
-            i_469786294 += 1;
+            i_469762624 += 1;
           }
       } while (false);
     } while (false);
@@ -24138,34 +18350,34 @@ function reRender_2684355759(self_2684355760) {
     var _elements_2684355771 = newSeq_2684354749(0);
     Label1: do {
       var tag_2684355775 = null;
-      var i_469786297 = 0;
-      var L_469786298 = (compTmpData_2684355762.children).length;
+      var i_469762627 = 0;
+      var L_469762628 = (compTmpData_2684355762.children).length;
       Label2: do {
           Label3: while (true) {
-          if (!(i_469786297 < L_469786298)) break Label3;
-            tag_2684355775 = compTmpData_2684355762.children[i_469786297];
+          if (!(i_469762627 < L_469762628)) break Label3;
+            tag_2684355775 = compTmpData_2684355762.children[i_469762627];
             if (!((_current_2684355763 == null))) {
             _elements_2684355771.push(_current_2684355763);;
             _current_2684355763 = _current_2684355763.nextSibling;
             }
             
-            i_469786297 += 1;
+            i_469762627 += 1;
           }
       } while (false);
     } while (false);
     Label4: do {
       var __i_2684355790 = 0;
-      var colontmp__469786301 = 0;
-      colontmp__469786301 = (_elements_2684355771).length;
-      var i_469786302 = 0;
+      var colontmp__469762631 = 0;
+      colontmp__469762631 = (_elements_2684355771).length;
+      var i_469762632 = 0;
       Label5: do {
           Label6: while (true) {
-          if (!(i_469786302 < colontmp__469786301)) break Label6;
-            __i_2684355790 = i_469786302;
+          if (!(i_469762632 < colontmp__469762631)) break Label6;
+            __i_2684355790 = i_469762632;
             var elem_2684355791 = _elements_2684355771[__i_2684355790];
             var tag_2684355792 = compTmpData_2684355762.children[__i_2684355790];
             elem_2684355791.outerHTML = toJSStr(HEX24_2013266385(tag_2684355792));
-            i_469786302 += 1;
+            i_469762632 += 1;
           }
       } while (false);
     } while (false);
@@ -24182,34 +18394,34 @@ function reRender_2684354740(self_2684354741) {
     var _elements_2684354766 = newSeq_2684354749(0);
     Label1: do {
       var tag_2684354770 = null;
-      var i_469786305 = 0;
-      var L_469786306 = (compTmpData_2684354743.children).length;
+      var i_469762635 = 0;
+      var L_469762636 = (compTmpData_2684354743.children).length;
       Label2: do {
           Label3: while (true) {
-          if (!(i_469786305 < L_469786306)) break Label3;
-            tag_2684354770 = compTmpData_2684354743.children[i_469786305];
+          if (!(i_469762635 < L_469762636)) break Label3;
+            tag_2684354770 = compTmpData_2684354743.children[i_469762635];
             if (!((_current_2684354744 == null))) {
             _elements_2684354766.push(_current_2684354744);;
             _current_2684354744 = _current_2684354744.nextSibling;
             }
             
-            i_469786305 += 1;
+            i_469762635 += 1;
           }
       } while (false);
     } while (false);
     Label4: do {
       var __i_2684354786 = 0;
-      var colontmp__469786309 = 0;
-      colontmp__469786309 = (_elements_2684354766).length;
-      var i_469786310 = 0;
+      var colontmp__469762639 = 0;
+      colontmp__469762639 = (_elements_2684354766).length;
+      var i_469762640 = 0;
       Label5: do {
           Label6: while (true) {
-          if (!(i_469786310 < colontmp__469786309)) break Label6;
-            __i_2684354786 = i_469786310;
+          if (!(i_469762640 < colontmp__469762639)) break Label6;
+            __i_2684354786 = i_469762640;
             var elem_2684354787 = _elements_2684354766[__i_2684354786];
             var tag_2684354788 = compTmpData_2684354743.children[__i_2684354786];
             elem_2684354787.outerHTML = toJSStr(HEX24_2013266385(tag_2684354788));
-            i_469786310 += 1;
+            i_469762640 += 1;
           }
       } while (false);
     } while (false);
@@ -24226,34 +18438,34 @@ function reRender_2919235670(self_2919235671) {
     var _elements_2919235682 = newSeq_2684354749(0);
     Label1: do {
       var tag_2919235686 = null;
-      var i_469786313 = 0;
-      var L_469786314 = (compTmpData_2919235673.children).length;
+      var i_469762643 = 0;
+      var L_469762644 = (compTmpData_2919235673.children).length;
       Label2: do {
           Label3: while (true) {
-          if (!(i_469786313 < L_469786314)) break Label3;
-            tag_2919235686 = compTmpData_2919235673.children[i_469786313];
+          if (!(i_469762643 < L_469762644)) break Label3;
+            tag_2919235686 = compTmpData_2919235673.children[i_469762643];
             if (!((_current_2919235674 == null))) {
             _elements_2919235682.push(_current_2919235674);;
             _current_2919235674 = _current_2919235674.nextSibling;
             }
             
-            i_469786313 += 1;
+            i_469762643 += 1;
           }
       } while (false);
     } while (false);
     Label4: do {
       var __i_2919235701 = 0;
-      var colontmp__469786317 = 0;
-      colontmp__469786317 = (_elements_2919235682).length;
-      var i_469786318 = 0;
+      var colontmp__469762647 = 0;
+      colontmp__469762647 = (_elements_2919235682).length;
+      var i_469762648 = 0;
       Label5: do {
           Label6: while (true) {
-          if (!(i_469786318 < colontmp__469786317)) break Label6;
-            __i_2919235701 = i_469786318;
+          if (!(i_469762648 < colontmp__469762647)) break Label6;
+            __i_2919235701 = i_469762648;
             var elem_2919235702 = _elements_2919235682[__i_2919235701];
             var tag_2919235703 = compTmpData_2919235673.children[__i_2919235701];
             elem_2919235702.outerHTML = toJSStr(HEX24_2013266385(tag_2919235703));
-            i_469786318 += 1;
+            i_469762648 += 1;
           }
       } while (false);
     } while (false);
@@ -24270,34 +18482,34 @@ function reRender_2667577393(self_2667577394) {
     var _elements_2667577405 = newSeq_2684354749(0);
     Label1: do {
       var tag_2667577409 = null;
-      var i_469786321 = 0;
-      var L_469786322 = (compTmpData_2667577396.children).length;
+      var i_469762651 = 0;
+      var L_469762652 = (compTmpData_2667577396.children).length;
       Label2: do {
           Label3: while (true) {
-          if (!(i_469786321 < L_469786322)) break Label3;
-            tag_2667577409 = compTmpData_2667577396.children[i_469786321];
+          if (!(i_469762651 < L_469762652)) break Label3;
+            tag_2667577409 = compTmpData_2667577396.children[i_469762651];
             if (!((_current_2667577397 == null))) {
             _elements_2667577405.push(_current_2667577397);;
             _current_2667577397 = _current_2667577397.nextSibling;
             }
             
-            i_469786321 += 1;
+            i_469762651 += 1;
           }
       } while (false);
     } while (false);
     Label4: do {
       var __i_2667577424 = 0;
-      var colontmp__469786325 = 0;
-      colontmp__469786325 = (_elements_2667577405).length;
-      var i_469786326 = 0;
+      var colontmp__469762655 = 0;
+      colontmp__469762655 = (_elements_2667577405).length;
+      var i_469762656 = 0;
       Label5: do {
           Label6: while (true) {
-          if (!(i_469786326 < colontmp__469786325)) break Label6;
-            __i_2667577424 = i_469786326;
+          if (!(i_469762656 < colontmp__469762655)) break Label6;
+            __i_2667577424 = i_469762656;
             var elem_2667577425 = _elements_2667577405[__i_2667577424];
             var tag_2667577426 = compTmpData_2667577396.children[__i_2667577424];
             elem_2667577425.outerHTML = toJSStr(HEX24_2013266385(tag_2667577426));
-            i_469786326 += 1;
+            i_469762656 += 1;
           }
       } while (false);
     } while (false);
@@ -24314,34 +18526,34 @@ function reRender_2717909060(self_2717909061) {
     var _elements_2717909072 = newSeq_2684354749(0);
     Label1: do {
       var tag_2717909076 = null;
-      var i_469786329 = 0;
-      var L_469786330 = (compTmpData_2717909063.children).length;
+      var i_469762659 = 0;
+      var L_469762660 = (compTmpData_2717909063.children).length;
       Label2: do {
           Label3: while (true) {
-          if (!(i_469786329 < L_469786330)) break Label3;
-            tag_2717909076 = compTmpData_2717909063.children[i_469786329];
+          if (!(i_469762659 < L_469762660)) break Label3;
+            tag_2717909076 = compTmpData_2717909063.children[i_469762659];
             if (!((_current_2717909064 == null))) {
             _elements_2717909072.push(_current_2717909064);;
             _current_2717909064 = _current_2717909064.nextSibling;
             }
             
-            i_469786329 += 1;
+            i_469762659 += 1;
           }
       } while (false);
     } while (false);
     Label4: do {
       var __i_2717909091 = 0;
-      var colontmp__469786333 = 0;
-      colontmp__469786333 = (_elements_2717909072).length;
-      var i_469786334 = 0;
+      var colontmp__469762663 = 0;
+      colontmp__469762663 = (_elements_2717909072).length;
+      var i_469762664 = 0;
       Label5: do {
           Label6: while (true) {
-          if (!(i_469786334 < colontmp__469786333)) break Label6;
-            __i_2717909091 = i_469786334;
+          if (!(i_469762664 < colontmp__469762663)) break Label6;
+            __i_2717909091 = i_469762664;
             var elem_2717909092 = _elements_2717909072[__i_2717909091];
             var tag_2717909093 = compTmpData_2717909063.children[__i_2717909091];
             elem_2717909092.outerHTML = toJSStr(HEX24_2013266385(tag_2717909093));
-            i_469786334 += 1;
+            i_469762664 += 1;
           }
       } while (false);
     } while (false);
@@ -24358,34 +18570,34 @@ function reRender_2667578167(self_2667578168) {
     var _elements_2667578179 = newSeq_2684354749(0);
     Label1: do {
       var tag_2667578183 = null;
-      var i_469786337 = 0;
-      var L_469786338 = (compTmpData_2667578170.children).length;
+      var i_469762667 = 0;
+      var L_469762668 = (compTmpData_2667578170.children).length;
       Label2: do {
           Label3: while (true) {
-          if (!(i_469786337 < L_469786338)) break Label3;
-            tag_2667578183 = compTmpData_2667578170.children[i_469786337];
+          if (!(i_469762667 < L_469762668)) break Label3;
+            tag_2667578183 = compTmpData_2667578170.children[i_469762667];
             if (!((_current_2667578171 == null))) {
             _elements_2667578179.push(_current_2667578171);;
             _current_2667578171 = _current_2667578171.nextSibling;
             }
             
-            i_469786337 += 1;
+            i_469762667 += 1;
           }
       } while (false);
     } while (false);
     Label4: do {
       var __i_2667578198 = 0;
-      var colontmp__469786341 = 0;
-      colontmp__469786341 = (_elements_2667578179).length;
-      var i_469786342 = 0;
+      var colontmp__469762671 = 0;
+      colontmp__469762671 = (_elements_2667578179).length;
+      var i_469762672 = 0;
       Label5: do {
           Label6: while (true) {
-          if (!(i_469786342 < colontmp__469786341)) break Label6;
-            __i_2667578198 = i_469786342;
+          if (!(i_469762672 < colontmp__469762671)) break Label6;
+            __i_2667578198 = i_469762672;
             var elem_2667578199 = _elements_2667578179[__i_2667578198];
             var tag_2667578200 = compTmpData_2667578170.children[__i_2667578198];
             elem_2667578199.outerHTML = toJSStr(HEX24_2013266385(tag_2667578200));
-            i_469786342 += 1;
+            i_469762672 += 1;
           }
       } while (false);
     } while (false);
@@ -24402,34 +18614,34 @@ function reRender_2667577816(self_2667577817) {
     var _elements_2667577828 = newSeq_2684354749(0);
     Label1: do {
       var tag_2667577832 = null;
-      var i_469786345 = 0;
-      var L_469786346 = (compTmpData_2667577819.children).length;
+      var i_469762675 = 0;
+      var L_469762676 = (compTmpData_2667577819.children).length;
       Label2: do {
           Label3: while (true) {
-          if (!(i_469786345 < L_469786346)) break Label3;
-            tag_2667577832 = compTmpData_2667577819.children[i_469786345];
+          if (!(i_469762675 < L_469762676)) break Label3;
+            tag_2667577832 = compTmpData_2667577819.children[i_469762675];
             if (!((_current_2667577820 == null))) {
             _elements_2667577828.push(_current_2667577820);;
             _current_2667577820 = _current_2667577820.nextSibling;
             }
             
-            i_469786345 += 1;
+            i_469762675 += 1;
           }
       } while (false);
     } while (false);
     Label4: do {
       var __i_2667577847 = 0;
-      var colontmp__469786349 = 0;
-      colontmp__469786349 = (_elements_2667577828).length;
-      var i_469786350 = 0;
+      var colontmp__469762679 = 0;
+      colontmp__469762679 = (_elements_2667577828).length;
+      var i_469762680 = 0;
       Label5: do {
           Label6: while (true) {
-          if (!(i_469786350 < colontmp__469786349)) break Label6;
-            __i_2667577847 = i_469786350;
+          if (!(i_469762680 < colontmp__469762679)) break Label6;
+            __i_2667577847 = i_469762680;
             var elem_2667577848 = _elements_2667577828[__i_2667577847];
             var tag_2667577849 = compTmpData_2667577819.children[__i_2667577847];
             elem_2667577848.outerHTML = toJSStr(HEX24_2013266385(tag_2667577849));
-            i_469786350 += 1;
+            i_469762680 += 1;
           }
       } while (false);
     } while (false);
@@ -24446,34 +18658,34 @@ function reRender_2701131816(self_2701131817) {
     var _elements_2701131828 = newSeq_2684354749(0);
     Label1: do {
       var tag_2701131832 = null;
-      var i_469786353 = 0;
-      var L_469786354 = (compTmpData_2701131819.children).length;
+      var i_469762683 = 0;
+      var L_469762684 = (compTmpData_2701131819.children).length;
       Label2: do {
           Label3: while (true) {
-          if (!(i_469786353 < L_469786354)) break Label3;
-            tag_2701131832 = compTmpData_2701131819.children[i_469786353];
+          if (!(i_469762683 < L_469762684)) break Label3;
+            tag_2701131832 = compTmpData_2701131819.children[i_469762683];
             if (!((_current_2701131820 == null))) {
             _elements_2701131828.push(_current_2701131820);;
             _current_2701131820 = _current_2701131820.nextSibling;
             }
             
-            i_469786353 += 1;
+            i_469762683 += 1;
           }
       } while (false);
     } while (false);
     Label4: do {
       var __i_2701131847 = 0;
-      var colontmp__469786357 = 0;
-      colontmp__469786357 = (_elements_2701131828).length;
-      var i_469786358 = 0;
+      var colontmp__469762687 = 0;
+      colontmp__469762687 = (_elements_2701131828).length;
+      var i_469762688 = 0;
       Label5: do {
           Label6: while (true) {
-          if (!(i_469786358 < colontmp__469786357)) break Label6;
-            __i_2701131847 = i_469786358;
+          if (!(i_469762688 < colontmp__469762687)) break Label6;
+            __i_2701131847 = i_469762688;
             var elem_2701131848 = _elements_2701131828[__i_2701131847];
             var tag_2701131849 = compTmpData_2701131819.children[__i_2701131847];
             elem_2701131848.outerHTML = toJSStr(HEX24_2013266385(tag_2701131849));
-            i_469786358 += 1;
+            i_469762688 += 1;
           }
       } while (false);
     } while (false);
@@ -24490,34 +18702,34 @@ function reRender_2768240681(self_2768240682) {
     var _elements_2768240693 = newSeq_2684354749(0);
     Label1: do {
       var tag_2768240697 = null;
-      var i_469786361 = 0;
-      var L_469786362 = (compTmpData_2768240684.children).length;
+      var i_469762691 = 0;
+      var L_469762692 = (compTmpData_2768240684.children).length;
       Label2: do {
           Label3: while (true) {
-          if (!(i_469786361 < L_469786362)) break Label3;
-            tag_2768240697 = compTmpData_2768240684.children[i_469786361];
+          if (!(i_469762691 < L_469762692)) break Label3;
+            tag_2768240697 = compTmpData_2768240684.children[i_469762691];
             if (!((_current_2768240685 == null))) {
             _elements_2768240693.push(_current_2768240685);;
             _current_2768240685 = _current_2768240685.nextSibling;
             }
             
-            i_469786361 += 1;
+            i_469762691 += 1;
           }
       } while (false);
     } while (false);
     Label4: do {
       var __i_2768240712 = 0;
-      var colontmp__469786365 = 0;
-      colontmp__469786365 = (_elements_2768240693).length;
-      var i_469786366 = 0;
+      var colontmp__469762695 = 0;
+      colontmp__469762695 = (_elements_2768240693).length;
+      var i_469762696 = 0;
       Label5: do {
           Label6: while (true) {
-          if (!(i_469786366 < colontmp__469786365)) break Label6;
-            __i_2768240712 = i_469786366;
+          if (!(i_469762696 < colontmp__469762695)) break Label6;
+            __i_2768240712 = i_469762696;
             var elem_2768240713 = _elements_2768240693[__i_2768240712];
             var tag_2768240714 = compTmpData_2768240684.children[__i_2768240712];
             elem_2768240713.outerHTML = toJSStr(HEX24_2013266385(tag_2768240714));
-            i_469786366 += 1;
+            i_469762696 += 1;
           }
       } while (false);
     } while (false);
@@ -24534,34 +18746,34 @@ function reRender_2751463514(self_2751463515) {
     var _elements_2751463526 = newSeq_2684354749(0);
     Label1: do {
       var tag_2751463530 = null;
-      var i_469786369 = 0;
-      var L_469786370 = (compTmpData_2751463517.children).length;
+      var i_469762699 = 0;
+      var L_469762700 = (compTmpData_2751463517.children).length;
       Label2: do {
           Label3: while (true) {
-          if (!(i_469786369 < L_469786370)) break Label3;
-            tag_2751463530 = compTmpData_2751463517.children[i_469786369];
+          if (!(i_469762699 < L_469762700)) break Label3;
+            tag_2751463530 = compTmpData_2751463517.children[i_469762699];
             if (!((_current_2751463518 == null))) {
             _elements_2751463526.push(_current_2751463518);;
             _current_2751463518 = _current_2751463518.nextSibling;
             }
             
-            i_469786369 += 1;
+            i_469762699 += 1;
           }
       } while (false);
     } while (false);
     Label4: do {
       var __i_2751463545 = 0;
-      var colontmp__469786373 = 0;
-      colontmp__469786373 = (_elements_2751463526).length;
-      var i_469786374 = 0;
+      var colontmp__469762703 = 0;
+      colontmp__469762703 = (_elements_2751463526).length;
+      var i_469762704 = 0;
       Label5: do {
           Label6: while (true) {
-          if (!(i_469786374 < colontmp__469786373)) break Label6;
-            __i_2751463545 = i_469786374;
+          if (!(i_469762704 < colontmp__469762703)) break Label6;
+            __i_2751463545 = i_469762704;
             var elem_2751463546 = _elements_2751463526[__i_2751463545];
             var tag_2751463547 = compTmpData_2751463517.children[__i_2751463545];
             elem_2751463546.outerHTML = toJSStr(HEX24_2013266385(tag_2751463547));
-            i_469786374 += 1;
+            i_469762704 += 1;
           }
       } while (false);
     } while (false);
@@ -24578,34 +18790,34 @@ function reRender_2734686248(self_2734686249) {
     var _elements_2734686260 = newSeq_2684354749(0);
     Label1: do {
       var tag_2734686264 = null;
-      var i_469786377 = 0;
-      var L_469786378 = (compTmpData_2734686251.children).length;
+      var i_469762707 = 0;
+      var L_469762708 = (compTmpData_2734686251.children).length;
       Label2: do {
           Label3: while (true) {
-          if (!(i_469786377 < L_469786378)) break Label3;
-            tag_2734686264 = compTmpData_2734686251.children[i_469786377];
+          if (!(i_469762707 < L_469762708)) break Label3;
+            tag_2734686264 = compTmpData_2734686251.children[i_469762707];
             if (!((_current_2734686252 == null))) {
             _elements_2734686260.push(_current_2734686252);;
             _current_2734686252 = _current_2734686252.nextSibling;
             }
             
-            i_469786377 += 1;
+            i_469762707 += 1;
           }
       } while (false);
     } while (false);
     Label4: do {
       var __i_2734686279 = 0;
-      var colontmp__469786381 = 0;
-      colontmp__469786381 = (_elements_2734686260).length;
-      var i_469786382 = 0;
+      var colontmp__469762711 = 0;
+      colontmp__469762711 = (_elements_2734686260).length;
+      var i_469762712 = 0;
       Label5: do {
           Label6: while (true) {
-          if (!(i_469786382 < colontmp__469786381)) break Label6;
-            __i_2734686279 = i_469786382;
+          if (!(i_469762712 < colontmp__469762711)) break Label6;
+            __i_2734686279 = i_469762712;
             var elem_2734686280 = _elements_2734686260[__i_2734686279];
             var tag_2734686281 = compTmpData_2734686251.children[__i_2734686279];
             elem_2734686280.outerHTML = toJSStr(HEX24_2013266385(tag_2734686281));
-            i_469786382 += 1;
+            i_469762712 += 1;
           }
       } while (false);
     } while (false);
@@ -24622,34 +18834,34 @@ function reRender_2818572488(self_2818572489) {
     var _elements_2818572500 = newSeq_2684354749(0);
     Label1: do {
       var tag_2818572504 = null;
-      var i_469786385 = 0;
-      var L_469786386 = (compTmpData_2818572491.children).length;
+      var i_469762715 = 0;
+      var L_469762716 = (compTmpData_2818572491.children).length;
       Label2: do {
           Label3: while (true) {
-          if (!(i_469786385 < L_469786386)) break Label3;
-            tag_2818572504 = compTmpData_2818572491.children[i_469786385];
+          if (!(i_469762715 < L_469762716)) break Label3;
+            tag_2818572504 = compTmpData_2818572491.children[i_469762715];
             if (!((_current_2818572492 == null))) {
             _elements_2818572500.push(_current_2818572492);;
             _current_2818572492 = _current_2818572492.nextSibling;
             }
             
-            i_469786385 += 1;
+            i_469762715 += 1;
           }
       } while (false);
     } while (false);
     Label4: do {
       var __i_2818572519 = 0;
-      var colontmp__469786389 = 0;
-      colontmp__469786389 = (_elements_2818572500).length;
-      var i_469786390 = 0;
+      var colontmp__469762719 = 0;
+      colontmp__469762719 = (_elements_2818572500).length;
+      var i_469762720 = 0;
       Label5: do {
           Label6: while (true) {
-          if (!(i_469786390 < colontmp__469786389)) break Label6;
-            __i_2818572519 = i_469786390;
+          if (!(i_469762720 < colontmp__469762719)) break Label6;
+            __i_2818572519 = i_469762720;
             var elem_2818572520 = _elements_2818572500[__i_2818572519];
             var tag_2818572521 = compTmpData_2818572491.children[__i_2818572519];
             elem_2818572520.outerHTML = toJSStr(HEX24_2013266385(tag_2818572521));
-            i_469786390 += 1;
+            i_469762720 += 1;
           }
       } while (false);
     } while (false);

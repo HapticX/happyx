@@ -1,6 +1,7 @@
 uniqueId	happyx/private/macro_utils.html#uniqueId	macro_utils: uniqueId	
 discardStmt	happyx/private/macro_utils.html#discardStmt	macro_utils: discardStmt	
 UniqueComponentId	happyx/private/macro_utils.html#UniqueComponentId	macro_utils: UniqueComponentId	
+bracket	happyx/private/macro_utils.html#bracket,varargs[NimNode]	macro_utils: bracket(node: varargs[NimNode]): NimNode	
 getTagName	happyx/private/macro_utils.html#getTagName,string	macro_utils: getTagName(name: string): string	
 formatNode	happyx/private/macro_utils.html#formatNode,NimNode	macro_utils: formatNode(node: NimNode): NimNode	
 useComponent	happyx/private/macro_utils.html#useComponent,NimNode,bool,bool,string,seq[NimNode],bool,bool	macro_utils: useComponent(statement: NimNode; inCycle, inComponent: bool;\n             cycleTmpVar: string; cycleVars: seq[NimNode];\n             returnTagRef: bool = true; constructor: bool = false): NimNode	
