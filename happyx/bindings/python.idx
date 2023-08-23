@@ -33,7 +33,7 @@ headers	happyx/bindings/python.html#headers,JsonResponseObj	python: headers(self
 headers	happyx/bindings/python.html#headers,HtmlResponseObj	python: headers(self: HtmlResponseObj): PyObject	
 `$`	happyx/bindings/python.html#$,Server	python: `$`(self: Server): string	
 startServerPy	happyx/bindings/python.html#startServerPy,Server	python: startServerPy(self: Server)	
-route	happyx/bindings/python.html#route,Server,string,seq[string]	python: route(self: Server; path: string; methods: seq[string] = @[&quot;get&quot;]): auto	
+route	happyx/bindings/python.html#route,Server,string,seq[string]	python: route(self: Server; path: string; methods: seq[string]): auto	
 get	happyx/bindings/python.html#get,Server,string	python: get(self: Server; path: string): auto	
 post	happyx/bindings/python.html#post,Server,string	python: post(self: Server; path: string): auto	
 put	happyx/bindings/python.html#put,Server,string	python: put(self: Server; path: string): auto	

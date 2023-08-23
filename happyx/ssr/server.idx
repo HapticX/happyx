@@ -3,7 +3,7 @@ ModelBase	happyx/ssr/server.html#ModelBase	server: ModelBase
 processMounts	happyx/ssr/server.html#processMounts,Server,string	server: processMounts(self: Server; path: string = &quot;&quot;): tuple[x, y, z: seq[Route]]	
 fetchRoutes	happyx/ssr/server.html#fetchRoutes,Server	server: fetchRoutes(self: Server): seq[Route]	
 ApiDocObject	happyx/ssr/server.html#ApiDocObject	server: ApiDocObject	
-newApiDocObject	happyx/ssr/server.html#newApiDocObject,seq[string],string,string,seq[PathParamObj],seq[RequestModelObj]	server: newApiDocObject(httpMethods: seq[string]; description, path: string;\n                pathParams: seq[PathParamObj]; models: seq[RequestModelObj]): ApiDocObject	
+newApiDocObject	happyx/ssr/server.html#newApiDocObject,seq[string],string,string,seq[PathParamObj],seq[RequestModelObj]	server: newApiDocObject(httpMethod: seq[string]; description, path: string;\n                pathParams: seq[PathParamObj]; models: seq[RequestModelObj]): ApiDocObject	
 fgColored	happyx/ssr/server.html#fgColored,string,ForegroundColor	server: fgColored(text: string; clr: ForegroundColor): string	
 fgStyled	happyx/ssr/server.html#fgStyled,string,Style	server: fgStyled(text: string; style: Style): string	
 newServer	happyx/ssr/server.html#newServer,string,int	server: newServer(address: string = &quot;127.0.0.1&quot;; port: int = 5000): Server	

@@ -300,7 +300,7 @@ window.addEventListener('DOMContentLoaded', main);
   </ul>
   <ul class="simple nested-toc-section">route
       <li><a class="reference" href="#route%2CServer%2Cstring%2Cseq%5Bstring%5D"
-    title="route(self: Server; path: string; methods: seq[string] = @[&quot;get&quot;]): auto">route(self: Server; path: string; methods: seq[string] = @[&quot;get&quot;]): auto</a></li>
+    title="route(self: Server; path: string; methods: seq[string]): auto">route(self: Server; path: string; methods: seq[string]): auto</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">sendJson
@@ -714,12 +714,12 @@ Registers Cross-Origins Resource Sharing at Runtime
 </dd>
 </div>
 <div id="route,Server,string,seq[string]">
-<dt><pre><span class="Keyword">proc</span> <a href="#route%2CServer%2Cstring%2Cseq%5Bstring%5D"><span class="Identifier">route</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="../ssr/server.html#Server"><span class="Identifier">Server</span></a><span class="Other">;</span> <span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">methods</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">]</span> <span class="Other">=</span> <span class="Operator">@</span><span class="Other">[</span><span class="StringLit">&quot;get&quot;</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">auto</span> {.
-    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#route%2CServer%2Cstring%2Cseq%5Bstring%5D"><span class="Identifier">route</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="../ssr/server.html#Server"><span class="Identifier">Server</span></a><span class="Other">;</span> <span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">methods</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">auto</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 <p>Registers a new route.</p>
-<p>You can choose HTTP methods via route(&quot;/&quot;, methods=[&quot;GET&quot;, &quot;POST&quot;])</p>
+<p>You can choose HTTP methods via route(&quot;/&quot;, [&quot;GET&quot;, &quot;POST&quot;])</p>
 
 
 </dd>
@@ -822,7 +822,7 @@ Registers a new WEBSOCKET route.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-08-23 07:35:00 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-08-23 08:45:09 UTC</small>
       </div>
     </div>
   </div>
