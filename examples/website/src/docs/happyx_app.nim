@@ -27,9 +27,9 @@ component HappyxApp:
             {translate("When you use CLI, HappyX do everything for you.")}
           
           component CodeBlockGuide(@[
-            ("Nim", "shell", "hpx create --name:calculator --kind:SSR", cstring"nim_proj_ssr", playCreateSsrProject),
-            ("Nim (SPA)", "shell", "hpx create --name:calculator --use-tailwind --kind:SPA", cstring"nim_proj_ssr", playCreateSpaProject),
-            ("Python", "shell", "hpx create --name:calculator --language:Python", cstring"py_proj", playCreateSsrProjectPython),
+            ("Nim", "shell", "hpx create --name:calculator --kind:SSR", cstring"nim", playCreateSsrProject),
+            ("Nim (SPA)", "shell", "hpx create --name:calculator --use-tailwind --kind:SPA", cstring"nimspa", playCreateSpaProject),
+            ("Python", "shell", "hpx create --name:calculator --language:Python", cstring"py", playCreateSsrProjectPython),
           ])
 
         tDiv:
@@ -97,9 +97,9 @@ component HappyxApp:
           "."
         
       component CodeBlockGuide(@[
-        ("Nim", "nim", "serve \"127.0.0.1\", 5000:\n  discard", cstring"nim_server_ssr", newPlayResult()),
-        ("Nim (SPA)", "nim", "appRoutes \"app\":\n  discard", cstring"nim_server_ssr", newPlayResult()),
-        ("Python", "python", "app = new_server('127.0.0.1', 5000)", cstring"py_server", newPlayResult()),
+        ("Nim", "nim", "serve \"127.0.0.1\", 5000:\n  discard", cstring"nim", newPlayResult()),
+        ("Nim (SPA)", "nim", "appRoutes \"app\":\n  discard", cstring"nimspa", newPlayResult()),
+        ("Python", "python", "app = new_server('127.0.0.1', 5000)", cstring"py", newPlayResult()),
       ])
 
       tP:
@@ -119,9 +119,9 @@ component HappyxApp:
       tH3: {translate("Calculation 🧮")}
 
       component CodeBlockGuide(@[
-        ("Nim", "nim", nimSsrCalc, cstring"nim_server_ssr", newPlayResult()),
-        ("Nim (SPA)", "nim", nimSpaCalc, cstring"nim_server_ssr", newPlayResult()),
-        ("Python", "python", pythonSsrCalc, cstring"py_server", newPlayResult()),
+        ("Nim", "nim", nimSsrCalc, cstring"nim", newPlayResult()),
+        ("Nim (SPA)", "nim", nimSpaCalc, cstring"nimspa", newPlayResult()),
+        ("Python", "python", pythonSsrCalc, cstring"py", newPlayResult()),
       ])
 
       tH3: {translate("Run App ▶")}
@@ -135,7 +135,7 @@ component HappyxApp:
         component CodeBlock("html", htmlHelloWorldExample, "html_hello_world")
 
       component CodeBlockGuide(@[
-        ("Nim", "shell", "nim c -r calculator.nim", cstring"nim_ssr", playCalculatorAppSsr),
-        ("Nim (SPA)", "shell", "nim js calculator.nim\nopen calculator.html#/calc/5/*/5", cstring"nim_ssr", playCalculatorAppSpa),
-        ("Python", "shell", "python calculator.py", cstring"py_hello_world", playCalculatorAppSsr),
+        ("Nim", "shell", "nim c -r calculator.nim", cstring"nim", playCalculatorAppSsr),
+        ("Nim (SPA)", "shell", "nim js calculator.nim\nopen calculator.html#/calc/5/*/5", cstring"nimspa", playCalculatorAppSpa),
+        ("Python", "shell", "python calculator.py", cstring"py", playCalculatorAppSsr),
       ])

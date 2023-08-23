@@ -42,7 +42,6 @@ component LanguageChooser:
 
 component CodeBlockGuide:
   sources: seq[tuple[title, lang, src: string, id: cstring, playResult: PlayResult]] = @[]
-  currentLang: string = "nim"
 
   `template`:
     tPre(class = "relative"):
@@ -55,7 +54,9 @@ component CodeBlockGuide:
           component LanguageChooser("Nim (SPA)")
         if haslanguage(self.CodeBlockGuide, "Python"):
           component LanguageChooser("Python")
-      for source in self.sources:
+      for i in 0..<self.sources.len:
+        nim:
+          let source = self.sources.val[i]
         if currentLanguage == source.title:
           tCode(
             id = "{source.id}{self.uniqCompId}",
@@ -91,6 +92,7 @@ component CodeBlockGuide:
                   )
                 @click:
                   let
+                    source = self.CodeBlockGuide.sources.val[i]
                     playButton = document.getElementById(fmt"{source.id}{self.uniqCompId}_play_button")
                     playResult = document.getElementById(fmt"{source.id}{self.uniqCompId}_play_result")
                     playStates: seq[tuple[text, html, lang: cstring, waitMs: int]] = source.playResult.states
