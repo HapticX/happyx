@@ -73,6 +73,11 @@ appRoutes "app":
     component ButtonExample:
       "Hello, world!"
   
+  "/hpx-files":
+    component ButtonExample:
+      "Hello, world!"
+    component Example(age = 10)
+  
   "/cookiesTest":
     tDiv:
       "Hello, world!"

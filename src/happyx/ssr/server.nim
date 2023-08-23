@@ -163,9 +163,9 @@ HappyX web framework [SSR/SSG Part]
       routes: seq[Route] = @[]
       notfounds: seq[Route] = @[]
     for i in self.routes:
-      if i.httpMethod == "MIDDLEWARE":
+      if i.httpMethods == @["MIDDLEWARE"]:
         middlewares.add(i)
-      elif i.httpMethod == "NOTFOUND":
+      elif i.httpMethods == @["NOTFOUND"]:
         notfounds.add(i)
       else:
         routes.add(i)
@@ -173,13 +173,13 @@ HappyX web framework [SSR/SSG Part]
       var (x, y, z) = m.processMounts(path & self.path)
       let mountPath = path & m.path
       for route in x:
-        var r = initRoute(mountPath & route.path, mountPath & route.purePath, route.httpMethod, re("^" & mountPath & route.purePath & "$"), route.handler)
+        var r = initRoute(mountPath & route.path, mountPath & route.purePath, route.httpMethods, re("^" & mountPath & route.purePath & "$"), route.handler)
         middlewares.add(r)
       for route in y:
-        var r = initRoute(mountPath & route.path, mountPath & route.purePath, route.httpMethod, re("^" & mountPath & route.purePath & "$"), route.handler)
+        var r = initRoute(mountPath & route.path, mountPath & route.purePath, route.httpMethods, re("^" & mountPath & route.purePath & "$"), route.handler)
         routes.add(r)
       for route in z:
-        var r = initRoute(mountPath & route.path, mountPath & route.purePath, route.httpMethod, re("^" & mountPath & route.purePath & "$"), route.handler)
+        var r = initRoute(mountPath & route.path, mountPath & route.purePath, route.httpMethods, re("^" & mountPath & route.purePath & "$"), route.handler)
         notfounds.add(r)
     (middlewares, routes, notfounds)
   
@@ -212,14 +212,14 @@ when enableApiDoc:
   type
     ApiDocObject* = object
       description*: string
-      httpMethod*: string
       path*: string
+      httpMethods*: seq[string]
       pathParams*: seq[PathParamObj]
       models*: seq[RequestModelObj]
     
-  proc newApiDocObject*(httpMethod, description, path: string, pathParams: seq[PathParamObj],
+  proc newApiDocObject*(httpMethods: seq[string], description, path: string, pathParams: seq[PathParamObj],
                         models: seq[RequestModelObj]): ApiDocObject =
-    ApiDocObject(httpMethod: httpMethod, description: description, path: path,
+    ApiDocObject(httpMethods: httpMethods, description: description, path: path,
                  pathParams: pathParams, models: models)
 
 
@@ -774,6 +774,29 @@ macro routes*(server: Server, body: untyped): untyped =
           ifStmt.add(newNimNode(nnkElifBranch).add(
             newCall("==", pathIdent, statement[0]), statement[1]
           ))
+      # [get, post, ...] "/...": statement list
+      elif statement.len == 3 and statement[2].kind == nnkStmtList and statement[0].kind == nnkBracket and statement[1].kind == nnkStrLit and statement[0].len > 0:
+        detectReturnStmt(statement[2])
+        let exported = exportRouteArgs(pathIdent, statement[1], statement[2])
+        var methods = newNimNode(nnkBracket)
+        for i in statement[0]:
+          methods.add(newLit(($i).toLower()))
+        if exported.len > 0:  # /my/path/with{custom:int}/{param:path}
+          exported[0] = newCall(
+            "and",
+            newCall("contains", methods, newCall("toLower", newCall("$", reqMethod))),
+            exported[0].copy()
+          )
+          ifStmt.add(exported)
+        else:  # /just-my-path
+          ifStmt.add(newNimNode(nnkElifBranch).add(
+            newCall(
+              "and",
+              newCall("contains", methods, newCall("toLower", newCall("$", reqMethod))),
+              newCall("==", pathIdent, statement[1])
+            ), statement[2]
+          ))
+        echo treeRepr ifStmt
       # notfound: statement list
       elif statement[1].kind == nnkStmtList and statement[0].kind == nnkIdent:
         case ($statement[0]).toLower()
@@ -1066,8 +1089,8 @@ macro routes*(server: Server, body: untyped): untyped =
             "and",
             newCall(
               "==",
-              newLit"NOTFOUND",
-              newDotExpr(ident"route", ident"httpMethod")
+              newCall("@", bracket(newLit"NOTFOUND")),
+              newDotExpr(ident"route", ident"httpMethods")
             ),
             newCall("not", ident"reqResponded")
           ),
@@ -1075,22 +1098,22 @@ macro routes*(server: Server, body: untyped): untyped =
             "or",
             newCall(
               "==",
-              newLit"MIDDLEWARE",
-              newDotExpr(ident"route", ident"httpMethod")
+              newCall("@", bracket(newLit"MIDDLEWARE")),
+              newDotExpr(ident"route", ident"httpMethods")
             ),
             newCall(
               "or",
               newCall(
                 "and",
-                newCall("==", newCall("$", reqMethod), newDotExpr(ident"route", ident"httpMethod")),
+                newCall("contains", newDotExpr(ident"route", ident"httpMethods"), newCall("$", reqMethod)),
                 newCall("contains", pathIdent, newDotExpr(ident"route", ident"pattern"))
               ),
               newCall(
                 "and",
                 newCall(
-                  "contains",
-                  newNimNode(nnkBracket).add(newLit"STATICFILE", newLit"WEBSOCKET"),
-                  newDotExpr(ident"route", ident"httpMethod")
+                  "hasHttpMethod",
+                  ident"route",
+                  newCall("@", bracket(newLit"STATICFILE", newLit"WEBSOCKET"))
                 ),
                 newCall("contains", pathIdent, newDotExpr(ident"route", ident"pattern"))
               ),
@@ -1105,8 +1128,8 @@ macro routes*(server: Server, body: untyped): untyped =
             newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
               newCall(
                 "!=",
-                newLit"MIDDLEWARE",
-                newDotExpr(ident"route", ident"httpMethod")
+                newCall("@", bracket(newLit"MIDDLEWARE")),
+                newDotExpr(ident"route", ident"httpMethods")
               ),
               newAssignment(ident"reqResponded", newLit(true))
             )),
@@ -1120,8 +1143,8 @@ macro routes*(server: Server, body: untyped): untyped =
             newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
               newCall(
                 "==",
-                newLit"STATICFILE",
-                newDotExpr(ident"route", ident"httpMethod")
+                newCall("@", bracket(newLit"STATICFILE")),
+                newDotExpr(ident"route", ident"httpMethods")
               ),
               newStmtList(
                 # Declare RouteData
@@ -1294,8 +1317,8 @@ macro routes*(server: Server, body: untyped): untyped =
               newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
                 newCall(
                   "==",
-                  newLit"WEBSOCKET",
-                  newDotExpr(ident"route", ident"httpMethod")
+                  newCall("@", bracket(newLit"WEBSOCKET")),
+                  newDotExpr(ident"route", ident"httpMethods")
                 ),
                 newStmtList(
                   newLetStmt(ident"wsClient", newCall("await", newCall("newWebSocket", ident"req"))),
@@ -1625,9 +1648,9 @@ when enableApiDoc:
               description &= $statement & "\n"
           docsData.add(newCall(
             "newApiDocObject",
-            newStrLitNode(($i[0].toStrLit).toUpper()),  # HTTP Method
-            newStrLitNode(description),  # Description
-            newStrLitNode(pathParam),  # Path
+            newCall("@", bracket(newLit(($i[0].toStrLit).toUpper()))),  # HTTP Method
+            newLit(description),  # Description
+            newLit(pathParam),  # Path
             params, models
           ))
         elif i[0].kind == nnkStrLit and i.len == 2 and i[1].kind == nnkStmtList:
@@ -1641,9 +1664,9 @@ when enableApiDoc:
               description &= $statement & "\n"
           docsData.add(newCall(
             "newApiDocObject",
-            newStrLitNode(""),  # HTTP Method
-            newStrLitNode(description),  # Description
-            newStrLitNode(pathParam),  # Path
+            newCall("@", bracket(newLit"")),  # HTTP Method
+            newLit(description),  # Description
+            newLit(pathParam),  # Path
             params, models
           ))
         
@@ -1724,9 +1747,9 @@ macro serve*(address: string, port: int, body: untyped): untyped =
                   newCall(
                     "not",
                     newCall(
-                      "contains",
-                      newNimNode(nnkBracket).add(newLit"MIDDLEWARE", newLit"NOTFOUND"),
-                      newDotExpr(ident"route", ident"httpMethod")
+                      "hasHttpMethod",
+                      ident"route",
+                      newCall("@", bracket(newLit"MIDDLEWARE", newLit"NOTFOUND")),
                     )
                   ),
                   newStmtList(
@@ -1734,7 +1757,7 @@ macro serve*(address: string, port: int, body: untyped): untyped =
                     newVarStmt(ident"routeData", newCall("handleRoute", newDotExpr(ident"route", ident"path"))),
                     newNimNode(nnkIfStmt).add(
                       newNimNode(nnkElifBranch).add(
-                        newCall("==", newDotExpr(ident"route", ident"httpMethod"), newLit"STATICFILE"),
+                        newCall("==", newDotExpr(ident"route", ident"httpMethods"), newCall("@", bracket(newLit"STATICFILE"))),
                         newStmtList(
                           # Declare string (for documentation)
                           newVarStmt(
@@ -1747,7 +1770,7 @@ macro serve*(address: string, port: int, body: untyped): untyped =
                           ),
                           newCall("add", ident"apiDocData", newCall(
                             "newApiDocObject",
-                            newLit"GET",
+                            newCall("@", bracket(newLit"GET")),
                             ident"documentation",
                             newDotExpr(ident"routeData", ident"path"),
                             newDotExpr(ident"routeData", ident"pathParams"),
@@ -1768,7 +1791,7 @@ macro serve*(address: string, port: int, body: untyped): untyped =
                         )),
                         newCall("add", ident"apiDocData", newCall(
                           "newApiDocObject",
-                          newDotExpr(ident"route", ident"httpMethod"),
+                          newDotExpr(ident"route", ident"httpMethods"),
                           ident"documentation",
                           newDotExpr(ident"routeData", ident"path"),
                           newDotExpr(ident"routeData", ident"pathParams"),

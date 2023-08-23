@@ -764,6 +764,12 @@ translatable:
     "zh" -> "计算 🧮"
     "ko" -> "계산 🧮"
     "fr" -> "Calcul 🧮"
+  "Path Params 🔌":
+    "ru" -> "Параметры пути 🔌"
+    "ja" -> "パスパラメータ 🔌"
+    "zh" -> "路径参数 🔌"
+    "ko" -> "경로 매개 변수 🔌"
+    "fr" -> "Paramètres du Chemin 🔌"
 
 var spokenLang: cstring
 buildJs:

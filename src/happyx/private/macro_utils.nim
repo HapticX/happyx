@@ -26,6 +26,12 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
                          cycleTmpVar: string = ""): NimNode
 
 
+proc bracket*(node: varargs[NimNode]): NimNode =
+  result = newNimNode(nnkBracket)
+  for i in node:
+    result.add(i)
+
+
 proc getTagName*(name: string): string =
   ## Checks tag name at compile time
   ## 
@@ -669,7 +675,11 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
             newCall(
               "add",
               ident"_while_result",
-              buildHtmlProcedure(ident"div", body, inComponent, componentName, inCycle, cycleTmpVar)
+              newStmtList(
+                newVarStmt(ident"__while__res", buildHtmlProcedure(ident"div", body, inComponent, componentName, inCycle, cycleTmpVar)),
+                newAssignment(newDotExpr(ident"__while__res", ident"onlyChildren"), newLit(true)),
+                ident"__while__res"
+              )
             )
           ),
           ident"_while_result"

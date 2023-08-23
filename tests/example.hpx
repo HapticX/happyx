@@ -3,6 +3,31 @@
     Example component {self.age}
     {self.test()}
     <slot></slot>
+    <div h-if="self.age < 20">
+      You're young!
+    </div>
+    <div h-elif="self.age < 35">
+      You're already young!
+    </div>
+    <div h-else>
+      You're old!
+    </div>
+    <div h-for="i in [1, 2, 3, 4]">
+      {i}
+    </div>
+    <script lang="nim">
+      var x = 10
+    </script>
+    {x}
+    <div h-while="x > 0" style="display: flex; gap: .2rem;">
+      {x}
+      <script lang="nim">
+        dec x
+      </script>
+    </div>
+    <div>
+      123213213213
+    </div>
   </div>
 </template>
 

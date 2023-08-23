@@ -839,8 +839,8 @@ macro importComponent*(body: untyped): untyped =
       ""
     
     proc handle(tag: TagRef, parent: var NimNode) =
+      var ifStartIndex = -1
       for child in tag.children:
-        echo child.name
         if child.onlyChildren:
           child.handle(parent)
         elif child.isText:
@@ -848,7 +848,10 @@ macro importComponent*(body: untyped): untyped =
         else:
           var
             call: NimNode
+            ifStmt = newNimNode(nnkIfStmt)
             name = inCreatedComponents(child.name)
+            isIfStmt = false
+            scriptLanguage: string = "nim"
           if child.attrs.len > 0 or child.children.len > 0:
             if name.len > 0:
               # Component usage
@@ -880,18 +883,88 @@ macro importComponent*(body: untyped): untyped =
               call = newNimNode(nnkCommand).add(ident"component", callComp)
             else:
               # Tag usage
-              call = newCall(child.name)
+              if child.name == "script":
+                call = newCall("nim")
+              else:
+                call = newCall(child.name)
+              # parse args without values
+              for arg in child.args:
+                case arg
+                of "h-else":
+                  # If usage
+                  isIfStmt = true
+                  call = newNimNode(nnkElse).add(newStmtList(call.copy()))
+                else:
+                  discard
+              # parse args with values
               for key, val in child.attrs.pairs():
-                call.add(newNimNode(nnkExprEqExpr).add(newStrLitNode(key), newStrLitNode(val)))
+                case key.toLower()
+                of "h-if":
+                  # If usage
+                  isIfStmt = true
+                  call = newNimNode(nnkElifBranch).add(parseExpr(val), newStmtList(call.copy()))
+                of "h-elif":
+                  # If usage
+                  isIfStmt = true
+                  call = newNimNode(nnkElifBranch).add(parseExpr(val), newStmtList(call.copy()))
+                of "h-for":
+                  # For stmt
+                  let expr = parseExpr(val)
+                  if expr.kind == nnkInfix and expr[0] == ident"in":
+                    call = newNimNode(nnkForStmt).add(expr[1], expr[2], newStmtList(call.copy()))
+                of "h-while":
+                  # For stmt
+                  let expr = parseExpr(val)
+                  call = newNimNode(nnkWhileStmt).add(expr, newStmtList(call.copy()))
+                of "lang":
+                  if child.name.toLower() == "script":
+                    scriptLanguage = val
+                  elif call.kind in [nnkElifBranch, nnkOfBranch, nnkElse, nnkForStmt, nnkWhileStmt]:
+                    call[^1][^1].add(newNimNode(nnkExprEqExpr).add(newStrLitNode(key), newStrLitNode(val)))
+                  else:
+                    call.add(newNimNode(nnkExprEqExpr).add(newStrLitNode(key), newStrLitNode(val)))
+                else:
+                  if call.kind in [nnkElifBranch, nnkOfBranch, nnkElse, nnkForStmt, nnkWhileStmt]:
+                    call[^1][^1].add(newNimNode(nnkExprEqExpr).add(newStrLitNode(key), newStrLitNode(val)))
+                  else:
+                    call.add(newNimNode(nnkExprEqExpr).add(newStrLitNode(key), newStrLitNode(val)))
           elif name.len > 0:
             call = newNimNode(nnkCommand).add(ident"component", ident(name))
           else:
             call = ident(child.name)
+          # Add statement list
           if child.children.len != 0:
             var stmts = newStmtList()
             child.handle(stmts)
-            call.add(stmts)
-          parent.add(call)
+            # clear if nim stmt
+            if call.kind == nnkCall and call[0] == ident"nim":
+              stmts = newStmtList()
+            # add stmts to node
+            if call.kind in [nnkElifBranch, nnkOfBranch, nnkElse, nnkForStmt, nnkWhileStmt]:
+              call[^1][^1].add(stmts)
+            elif call[0] == ident"nim":
+              if not child.children[0].isText:
+                raise newException(ValueError, "script tag should have only text")
+              case scriptLanguage.toLower():
+              of "nim":
+                call.add(parseStmt(child.children[0].name))
+              of "js", "javascript":
+                call.add(newStmtList(newNimNode(nnkPragma).add(newNimNode(nnkExprColonExpr).add(
+                  ident"emit",
+                  newLit(child.children[0].name)
+                ))))
+              else:
+                raise newException(ValueError, "script language can be javascript or nim only")
+            else:
+              call.add(stmts)
+          if isIfStmt:
+            if ifStartIndex == -1:
+              parent.add(newNimNode(nnkIfStmt).add(call))
+              ifStartIndex = parent.len-1
+            else:
+              parent[ifStartIndex].add(call)
+          else:
+            parent.add(call)
     
     tagData.handle(statements)
 

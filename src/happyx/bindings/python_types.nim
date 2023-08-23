@@ -45,7 +45,7 @@ type
   Route* = ref object of PyNimObjectExperimental
     path*: string
     purePath*: string
-    httpMethod*: string
+    httpMethods*: seq[string]
     pattern*: Regex
     handler*: PyObject
   HandlerParam* = object
@@ -100,9 +100,17 @@ proc toHttpHeaders*(headers: PyObject): HttpHeaders =
   headersObj
 
 
-proc initRoute*(path, purePath, httpMethod: string, pattern: Regex, handler: PyObject): Route =
-  Route(path: path, purePath: purePath, httpMethod: httpMethod, pattern: pattern, handler: handler)
+proc initRoute*(path, purePath: string, httpMethods: seq[string], pattern: Regex, handler: PyObject): Route =
+  Route(path: path, purePath: purePath, httpMethods: httpMethods, pattern: pattern, handler: handler)
 
+proc hasHttpMethod*(self: Route, httpMethods: string | seq[string] | openarray[string]): bool =
+  when httpMethods is string:
+    return self.httpMethods.contains(httpMethods)
+  else:
+    for i in httpMethods:
+      if self.httpMethods.contains(i):
+        return true
+    return false
 
 proc initHttpRequest*(path, httpMethod: string, headers: HttpHeaders, body: string = ""): HttpRequest =
   HttpRequest(path: path, httpMethod: httpMethod, headers: headers.toPPyObject(), body: body)

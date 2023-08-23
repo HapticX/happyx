@@ -48,6 +48,11 @@ def hello_from_user(userId: int):
     return f"Hello, {userId} user!"
 
 
+@user.route('/', methods=['get', 'post'])
+def handle():
+    return "You'll see it only on GET or POST"
+
+
 @user.post("/messages[u]")
 def get_messages(req: HttpRequest, u: User):
     print(u)
