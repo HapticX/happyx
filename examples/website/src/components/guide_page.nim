@@ -23,6 +23,8 @@ component GuidePage:
           component GettingStarted
         elif currentGuidePage == "happyx_app":
           component HappyxApp
+        elif currentGuidePage == "path_params":
+          component PathParams
 
       tDiv(class = "flex justify-between items-center w-full pb-8"):
         if guidePages[currentGuidePage]["prev"].getStr != "":

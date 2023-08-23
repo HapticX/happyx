@@ -770,6 +770,42 @@ translatable:
     "zh" -> "路径参数 🔌"
     "ko" -> "경로 매개 변수 🔌"
     "fr" -> "Paramètres du Chemin 🔌"
+  "Routing 🛠":
+    "ru" -> "Маршрутизация 🛠"
+    "ja" -> "ルーティング 🛠"
+    "zh" -> "路由 🛠"
+    "ko" -> "라우팅 🛠"
+    "fr" -> "Routage 🛠"
+  "HappyX provides powerful routing system. Here contains these features:":
+    "ru" -> "HappyX обеспечивает мощную систему маршрутизацию. В нее входят:"
+    "ja" -> "HappyXは強力なルーティングシステムを提供します。 これらの機能が含まれている場所:"
+    "zh" -> "HappyX提供强大的路由系统。 其中包含这些功能:"
+    "ko" -> "해픽스는 강력한 라우팅 시스템을 제공합니다. 이 특징들이 포함된 곳:"
+    "fr" -> "HappyX fournit un système de routage puissant. Où contient ces fonctionnalités:"
+  "Path param validation (int/float/string/etc) 👮‍♀️":
+    "ru" -> "Проверка параметров пути (int/float/string/etc) 👮‍♀️"
+    "ja" -> "パスパラメータの検証(int/float/string/etc) 👮‍♀️"
+    "zh" -> "路径参数验证（int/float/string/etc）️️ 👮‍♀️"
+    "ko" -> "이 매개 변수 유효성 검사를 수행 할 수있는 방법은 다음과 같습니다. 👮‍♀️"
+    "fr" -> "Validation du paramètre de chemin (int/float/string/etc) 👮‍♀️"
+  "Automatic [im]mutable variable creation ✨":
+    "ru" -> "Автоматическое создание (не)изменяемой переменной ✨"
+    "ja" -> "(非)可変変数の自動作成 ✨"
+    "zh" -> "自动创建（非）可变变量 ✨"
+    "ko" -> "(비)가변 변수의 자동 생성 ✨"
+    "fr" -> "Création automatique d'une variable (non)modifiable ✨"
+  "Supports by SPA/SSR and Nim/Python":
+    "ru" -> "Поддерживается в SPA/SSR и в Nim/Python"
+    "ja" -> "SPA/SSRおよびNim/Pythonによるサポート"
+    "zh" -> "SPA/SSR和Nim/Python支持"
+    "ko" -> "지원 및 지원"
+    "fr" -> "Prise en charge par SPA / SSR et Nim / Python"
+  "Usage ⚡":
+    "ru" -> "Использование ⚡"
+    "ja" -> "使用法 ⚡"
+    "zh" -> "使用方法 ⚡"
+    "ko" -> "사용 ⚡"
+    "fr" -> "Utilisation ⚡"
 
 var spokenLang: cstring
 buildJs:

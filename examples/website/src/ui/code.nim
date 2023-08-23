@@ -127,7 +127,7 @@ app.start()
 """
   nimSpaCalc* = """appRoutes "app":
   "/calc/{left:float}/{op}/{right:float}":
-    tDiv:
+    tDiv(class = "flex text-4xl justify-center items-center w-screen h-screen text-orange-200 bg-neutral-900"):
       if op == "+":
         {left + right}
       elif op == "-":
@@ -151,4 +151,24 @@ def calculate(left: float, right: float, op: str):
       return left * right
     else:
       return Response("failure", status_code=404)
+"""
+  nimPathParamsSsr* = """serve "127.0.0.1", 5000:
+  get "/user/id{userId:int}":
+    ## here we can use userId as immutable variable
+    echo userId
+    return $userId
+"""
+  pythonPathParamsSsr* = """app = new_server()
+
+@app.get('/user/id{userId}')
+def handle(userId: int):
+    # Here we can use userId
+    print(userId)
+    return {'response': userId}
+"""
+  nimPathParamsSpa* = """appRoutes "app":
+  "/user/id{userId:int}":
+    ## here we can use userId as immutable variable
+    tDiv:
+      {userId}
 """

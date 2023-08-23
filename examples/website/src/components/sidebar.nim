@@ -26,6 +26,11 @@ var
     "happyx_app": {
       "title": "HappyX Application 🍍",
       "prev": "getting_started",
+      "next": "path_params"
+    },
+    "path_params": {
+      "title": "Path Params 🔌",
+      "prev": "happyx_app",
       "next": ""
     }
   }
@@ -87,6 +92,8 @@ component SideBar:
               {translate("Basics 📖")}
               component SideBarItem("happyx_app"):
                 {translate("HappyX Application 🍍")}
+              component SideBarItem("path_params"):
+                {translate("Path Params 🔌")}
         tDiv(class = "flex"):
           component Button(
             action = proc() =

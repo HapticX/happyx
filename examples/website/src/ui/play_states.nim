@@ -51,8 +51,8 @@ Read docs: https://tailwindcss.com/docs/""", cstring"", cstring"shell", 250),
   ])
   playCalculatorAppSpa* = newPlayResult(@[
     (cstring"", cstring"""
-<div id="calculator_app" class="w-full h-48 bg-white text-black", style="font-family: serif; font-size: 100%;">
-  25
+<div id="calculator_app" class="w-full h-72 flex text-4xl justify-center items-center text-orange-200 bg-neutral-900">
+  <div>25</div>
 </div>
 """, cstring"", 100),
     (cstring"", cstring"", cstring"", 10000)

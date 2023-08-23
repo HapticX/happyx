@@ -40,6 +40,9 @@ window.addEventListener('scroll', (ev) => {
 }, false);
 """.}
 
+var
+  left = remember BiggestInt(0)
+  right = remember BiggestInt(0)
 
 # Declare application with ID "app"
 appRoutes("app"):
