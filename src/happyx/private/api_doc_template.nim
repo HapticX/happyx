@@ -117,7 +117,7 @@ const IndexApiDocPageTemplate* = fmt"""
         {{%
           let data = collect:
             for req in apiDocData:
-              if httpMethod in req.httpMethods or (httpMethods.len == 0 and req.httpMethods.len == 0):
+              if httpMethod in req.httpMethod or (httpMethod.len == 0 and req.httpMethod.len == 0):
                 req
         %}}
         {{% if data.len > 0 %}}
@@ -149,10 +149,10 @@ const IndexApiDocPageTemplate* = fmt"""
               <div class="flex flex-col w-fit border-[2px] border-[{Fore}]/25 dark:border-[{ForeDark}]/25 rounded-md">
                 <div class="flex p-1 bg-[{BackCode}] dark:bg-[{BackCodeDark}] font-mono px-4 py-1 rounded-md font-semibold">
                   <p class="flex mr-4 {AccentColor} cursor-pointer select-none">
-                    {{% if req.httpMethods.len == 0 %}}
+                    {{% if req.httpMethod.len == 0 %}}
                       ANY  <!-- HTTP Method -->
                     {{% else %}}
-                      {{% for m in req.httpMethods %}}
+                      {{% for m in req.httpMethod %}}
                         {{{{ m }}}}  <!-- HTTP Method -->
                       {{% endfor %}}
                     {{% endif %}}

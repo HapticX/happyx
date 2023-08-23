@@ -151,15 +151,13 @@ proc startServerPy*(self: Server) {.exportpy: "start".} =
     discard
 
 
-proc route*(self: Server, path: string, methods: seq[string] = @["get"]): auto {.exportpy.} =
+proc route*(self: Server, path: string, methods: seq[string]): auto {.exportpy.} =
   ## Registers a new route.
   ## 
-  ## You can choose HTTP methods via route("/", methods=["GET", "POST"])
+  ## You can choose HTTP methods via route("/", ["GET", "POST"])
   proc wrapper(callback: PyObject) =
     let routeData = handleRoute(path)
     var httpMethods = methods
-    echo methods
-    echo httpMethods
     for i in 0..<httpMethods.len:
       httpMethods[i] = httpMethods[i].toUpper()
     self.routes.add(initRoute(routeData.path, routeData.purePath, httpMethods, re("^" & routeData.purePath & "$"), callback))

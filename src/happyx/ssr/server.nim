@@ -163,9 +163,9 @@ HappyX web framework [SSR/SSG Part]
       routes: seq[Route] = @[]
       notfounds: seq[Route] = @[]
     for i in self.routes:
-      if i.httpMethods == @["MIDDLEWARE"]:
+      if i.httpMethod == @["MIDDLEWARE"]:
         middlewares.add(i)
-      elif i.httpMethods == @["NOTFOUND"]:
+      elif i.httpMethod == @["NOTFOUND"]:
         notfounds.add(i)
       else:
         routes.add(i)
@@ -173,13 +173,13 @@ HappyX web framework [SSR/SSG Part]
       var (x, y, z) = m.processMounts(path & self.path)
       let mountPath = path & m.path
       for route in x:
-        var r = initRoute(mountPath & route.path, mountPath & route.purePath, route.httpMethods, re("^" & mountPath & route.purePath & "$"), route.handler)
+        var r = initRoute(mountPath & route.path, mountPath & route.purePath, route.httpMethod, re("^" & mountPath & route.purePath & "$"), route.handler)
         middlewares.add(r)
       for route in y:
-        var r = initRoute(mountPath & route.path, mountPath & route.purePath, route.httpMethods, re("^" & mountPath & route.purePath & "$"), route.handler)
+        var r = initRoute(mountPath & route.path, mountPath & route.purePath, route.httpMethod, re("^" & mountPath & route.purePath & "$"), route.handler)
         routes.add(r)
       for route in z:
-        var r = initRoute(mountPath & route.path, mountPath & route.purePath, route.httpMethods, re("^" & mountPath & route.purePath & "$"), route.handler)
+        var r = initRoute(mountPath & route.path, mountPath & route.purePath, route.httpMethod, re("^" & mountPath & route.purePath & "$"), route.handler)
         notfounds.add(r)
     (middlewares, routes, notfounds)
   
@@ -213,13 +213,13 @@ when enableApiDoc:
     ApiDocObject* = object
       description*: string
       path*: string
-      httpMethods*: seq[string]
+      httpMethod*: seq[string]
       pathParams*: seq[PathParamObj]
       models*: seq[RequestModelObj]
     
-  proc newApiDocObject*(httpMethods: seq[string], description, path: string, pathParams: seq[PathParamObj],
+  proc newApiDocObject*(httpMethod: seq[string], description, path: string, pathParams: seq[PathParamObj],
                         models: seq[RequestModelObj]): ApiDocObject =
-    ApiDocObject(httpMethods: httpMethods, description: description, path: path,
+    ApiDocObject(httpMethod: httpMethod, description: description, path: path,
                  pathParams: pathParams, models: models)
 
 
@@ -1090,7 +1090,7 @@ macro routes*(server: Server, body: untyped): untyped =
             newCall(
               "==",
               newCall("@", bracket(newLit"NOTFOUND")),
-              newDotExpr(ident"route", ident"httpMethods")
+              newDotExpr(ident"route", ident"httpMethod")
             ),
             newCall("not", ident"reqResponded")
           ),
@@ -1099,13 +1099,13 @@ macro routes*(server: Server, body: untyped): untyped =
             newCall(
               "==",
               newCall("@", bracket(newLit"MIDDLEWARE")),
-              newDotExpr(ident"route", ident"httpMethods")
+              newDotExpr(ident"route", ident"httpMethod")
             ),
             newCall(
               "or",
               newCall(
                 "and",
-                newCall("contains", newDotExpr(ident"route", ident"httpMethods"), newCall("$", reqMethod)),
+                newCall("contains", newDotExpr(ident"route", ident"httpMethod"), newCall("$", reqMethod)),
                 newCall("contains", pathIdent, newDotExpr(ident"route", ident"pattern"))
               ),
               newCall(
@@ -1129,7 +1129,7 @@ macro routes*(server: Server, body: untyped): untyped =
               newCall(
                 "!=",
                 newCall("@", bracket(newLit"MIDDLEWARE")),
-                newDotExpr(ident"route", ident"httpMethods")
+                newDotExpr(ident"route", ident"httpMethod")
               ),
               newAssignment(ident"reqResponded", newLit(true))
             )),
@@ -1144,7 +1144,7 @@ macro routes*(server: Server, body: untyped): untyped =
               newCall(
                 "==",
                 newCall("@", bracket(newLit"STATICFILE")),
-                newDotExpr(ident"route", ident"httpMethods")
+                newDotExpr(ident"route", ident"httpMethod")
               ),
               newStmtList(
                 # Declare RouteData
@@ -1318,7 +1318,7 @@ macro routes*(server: Server, body: untyped): untyped =
                 newCall(
                   "==",
                   newCall("@", bracket(newLit"WEBSOCKET")),
-                  newDotExpr(ident"route", ident"httpMethods")
+                  newDotExpr(ident"route", ident"httpMethod")
                 ),
                 newStmtList(
                   newLetStmt(ident"wsClient", newCall("await", newCall("newWebSocket", ident"req"))),
@@ -1757,7 +1757,7 @@ macro serve*(address: string, port: int, body: untyped): untyped =
                     newVarStmt(ident"routeData", newCall("handleRoute", newDotExpr(ident"route", ident"path"))),
                     newNimNode(nnkIfStmt).add(
                       newNimNode(nnkElifBranch).add(
-                        newCall("==", newDotExpr(ident"route", ident"httpMethods"), newCall("@", bracket(newLit"STATICFILE"))),
+                        newCall("==", newDotExpr(ident"route", ident"httpMethod"), newCall("@", bracket(newLit"STATICFILE"))),
                         newStmtList(
                           # Declare string (for documentation)
                           newVarStmt(
@@ -1791,7 +1791,7 @@ macro serve*(address: string, port: int, body: untyped): untyped =
                         )),
                         newCall("add", ident"apiDocData", newCall(
                           "newApiDocObject",
-                          newDotExpr(ident"route", ident"httpMethods"),
+                          newDotExpr(ident"route", ident"httpMethod"),
                           ident"documentation",
                           newDotExpr(ident"routeData", ident"path"),
                           newDotExpr(ident"routeData", ident"pathParams"),
