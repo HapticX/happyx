@@ -1,5 +1,6 @@
 import
   # Stdlib
+  asyncdispatch,
   httpcore,
   strtabs,
   strutils,
@@ -7,7 +8,9 @@ import
   # Python lib
   nimpy,
   nimpy/py_types,
-  # Regex
+  nimpy/py_lib,
+  dynlib,
+  # Regex2
   regex,
   # HappyX
   ../core/constants
@@ -46,7 +49,7 @@ type
     path*: string
     purePath*: string
     httpMethod*: seq[string]
-    pattern*: Regex
+    pattern*: Regex2
     handler*: PyObject
   HandlerParam* = object
     name*, paramType*: string
@@ -88,7 +91,7 @@ proc toPPyObject*(headers: HttpHeaders): PPyObject =
   var headersJson = newJObject()
   for key, val in headers.pairs():
     headersJson[key] = newJString(val)
-  nimValueToPy(headersJson)
+  result = nimValueToPy(headersJson)
 
 
 proc toHttpHeaders*(headers: PyObject): HttpHeaders =
@@ -100,7 +103,7 @@ proc toHttpHeaders*(headers: PyObject): HttpHeaders =
   headersObj
 
 
-proc initRoute*(path, purePath: string, httpMethod: seq[string], pattern: Regex, handler: PyObject): Route =
+proc initRoute*(path, purePath: string, httpMethod: seq[string], pattern: Regex2, handler: PyObject): Route =
   Route(path: path, purePath: purePath, httpMethod: httpMethod, pattern: pattern, handler: handler)
 
 proc hasHttpMethod*(self: Route, httpMethod: string | seq[string] | openarray[string]): bool =

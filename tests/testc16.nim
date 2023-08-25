@@ -48,6 +48,8 @@ serve "127.0.0.1", 5000:
     return "Hi"
   get "/calculate/$left:float[m]/$operator:string[m]/$right?:float[m]":
     ## Some
+    echo left
+    echo right
     return fmt"{left + right}"
   get "/auth[model:TestModel:json]":
     ## User authorization

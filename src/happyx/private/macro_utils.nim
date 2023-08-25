@@ -36,9 +36,9 @@ proc getTagName*(name: string): string =
   ## Checks tag name at compile time
   ## 
   ## tagDiv, tDiv, hDiv -> div
-  if re"^tag[A-Z]" in name:
+  if re2"^tag[A-Z]" in name:
     name[3..^1].toLower()
-  elif re"^[ht][A-Z]" in name:
+  elif re2"^[ht][A-Z]" in name:
     name[1..^1].toLower()
   else:
     name
@@ -171,7 +171,7 @@ proc isExpr*(node: NimNode): bool =
   if node.kind in nnkCallKinds:
     if node[0].kind == nnkIdent:
       let fnName = $node[0]
-      if re"^(answer|echo|styledEcho|styledWrite|write|await)" in fnName.toLower():
+      if re2"^(answer|echo|styledEcho|styledWrite|write|await)" in fnName.toLower():
         return false
       return true
   if node.kind in [nnkIfExpr, nnkIfStmt]:

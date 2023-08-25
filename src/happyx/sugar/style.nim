@@ -251,9 +251,9 @@ macro buildStyle*(body: untyped): untyped =
   var css = ""
   body.buildStyleProc(css)
   # formatting
-  css = css.replace(re"\{\{([^\}]+)\}\}", "<$1>")
+  css = css.replace(re2"\{\{([^\}]+)\}\}", "<$1>")
   # UOMs
-  css = css.replace(re"\.(px|rem|em)\b", "$1")
+  css = css.replace(re2"\.(px|rem|em)\b", "$1")
   # properties
-  css = css.replace(re"\s*\-\s*([a-zA-Z][a-zA-Z0-9_]*)", "-$1")
+  css = css.replace(re2"\s*\-\s*([a-zA-Z][a-zA-Z0-9_]*)", "-$1")
   newCall("fmt", newStrLitNode(css), newLit('<'), newLit('>'))

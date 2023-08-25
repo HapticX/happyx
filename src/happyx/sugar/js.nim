@@ -350,9 +350,9 @@ macro buildJs*(body: untyped): untyped =
   # Build JS
   body.buildJsProc(emitSrc)
   # nim variables
-  emitSrc = emitSrc.replace(re"~([a-zA-Z][a-zA-Z0-9_]*)", "`$1`")
+  emitSrc = emitSrc.replace(re2"~([a-zA-Z][a-zA-Z0-9_]*)", "`$1`")
   # self -> this
-  emitSrc = emitSrc.replace(re"self\.([a-zA-Z][a-zA-Z0-9_]*)", "this.$1")
+  emitSrc = emitSrc.replace(re2"self\.([a-zA-Z][a-zA-Z0-9_]*)", "this.$1")
   when not defined(js) and not defined(docgen):
     throwDefect(
       HpxBuildJsDefect,

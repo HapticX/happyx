@@ -332,7 +332,6 @@ export
 # Language bindings
 when exportPython or defined(docgen):
   import
-    nimpy,
     happyx/bindings/[python]
 
   export python

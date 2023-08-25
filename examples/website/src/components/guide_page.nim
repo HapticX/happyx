@@ -32,7 +32,7 @@ component GuidePage:
               action = proc() =
                 route(fmt"""/guide/{guidePages[currentGuidePage]["prev"].getStr}""")
           ):
-            {"🠐 " & translate(guidePages[guidePages[currentGuidePage]["prev"].getStr]["title"].getStr)}
+            {"👈 " & translate(guidePages[guidePages[currentGuidePage]["prev"].getStr]["title"].getStr)}
         else:
           tDiv(class = "w-1 h-1 p-1")
         if guidePages[currentGuidePage]["next"].getStr != "":
@@ -40,6 +40,6 @@ component GuidePage:
               action = proc() =
                 route(fmt"""/guide/{guidePages[currentGuidePage]["next"].getStr}""")
           ):
-            {translate(guidePages[guidePages[currentGuidePage]["next"].getStr]["title"].getStr) & " 🠒"}
+            {translate(guidePages[guidePages[currentGuidePage]["next"].getStr]["title"].getStr) & " 👉"}
         else:
           tDiv(class = "w-1 h-1 p-1")

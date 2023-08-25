@@ -112,10 +112,9 @@ component CodeBlockGuide:
                       playResult.innerHTML &= fmt"""<pre><code id="{self.uniqCompId}{lang}{idx}" language="{lang}" class="language-{lang}" style="padding-top: 0 !important; padding-bottom: 0 !important;">{text}</code></pre>"""
                       let id: cstring = fmt"{self.uniqCompId}{lang}{idx}"
                       inc idx
-                      {.emit: """//js
-                      let codeBlock = document.getElementById(`id`);
-                      hljs.highlightElement(codeBlock);
-                      """.}
+                      buildJs:
+                        let codeBlock = document.getElementById(~id)
+                        hljs.highlightElement(codeBlock)
                   
                   {.emit: """//js
                   const playStates = [...`playStates`];
@@ -139,12 +138,10 @@ component CodeBlockGuide:
   [methods]:
     proc highlight(id: cstring) =
       let id: cstring = $id & self.uniqCompId
-      {.emit: """//js
-      let codeBlock = document.getElementById(`id`);
-      if (codeBlock) {
-        hljs.highlightElement(codeBlock);
-      }
-      """.}
+      buildJs:
+        let codeBlock = document.getElementById(~id)
+        if codeBlock:
+          hljs.highlightElement(codeBlock)
     
     proc hasLanguage(lang: string): bool =
       for source in self.sources:

@@ -40,8 +40,8 @@ proc parseFormData*(formData: string): (StringTableRef, TableRef[string, FormDat
   ## Parses `form-data` into `StringTableRef`
   result = (newStringTable(), newTable[string, FormDataItem]())
   let
-    formDataSeparator = re"\-{6}\w+(\-{2})?\r\n"
-    lineSeparator = re"\r\n"  
+    formDataSeparator = re2"\-{6}\w+(\-{2})?\r\n"
+    lineSeparator = re2"\r\n"  
     data = formData.split(formDataSeparator)
   for item in data:
     let lines = item.split(lineSeparator)
@@ -54,14 +54,14 @@ proc parseFormData*(formData: string): (StringTableRef, TableRef[string, FormDat
     for line in lines:
       if line.startsWith("Content-Disposition"):
         # every param
-        for param in line.split(re"\s*;\s*"):
+        for param in line.split(re2"\s*;\s*"):
           let lparam = param.toLower()
           if lparam.startsWith("name"):
             key = param.split("\"")[1]
           elif lparam.startsWith("filename"):
             filename = param.split("\"")[1]
       elif line.startsWith("Content-Type"):
-        contentType = line.split(re":\s*")[1]
+        contentType = line.split(re2":\s*")[1]
       else:
         data &= line
         if i < lines.len:
@@ -70,7 +70,7 @@ proc parseFormData*(formData: string): (StringTableRef, TableRef[string, FormDat
     if key.len > 0 and data.len > 0:
       let d =
         if filename.len == 0:
-          data.replace(re"\A\s+", "").replace(re"\s+\z", "")
+          data.replace(re2"\A\s+", "").replace(re2"\s+\z", "")
         else:
           data
       result[0][key] = d
@@ -102,7 +102,7 @@ proc iterateOverXml(tree: XmlNode, jsonNode: var JsonNode, path: var seq[string]
                   tree.attrs["type"]
                 else:
                   "string"
-              text = child.text.replace(re"\A\s+", "").replace(re"\s+\z", "")
+              text = child.text.replace(re2"\A\s+", "").replace(re2"\s+\z", "")
             # Parse type
             current[p] =
               case nodeType.toLower()

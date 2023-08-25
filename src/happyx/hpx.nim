@@ -215,8 +215,8 @@ proc xml2Text(xml: XmlNode): string =
     if xml.len > 0:
       result &= ":"
   of xnText:
-    if re"\A\s+\z" notin xml.text:
-      result = "\"\"\"" & xml.text.replace(re" +\z", "") & "\"\"\""
+    if re2"\A\s+\z" notin xml.text:
+      result = "\"\"\"" & xml.text.replace(re2" +\z", "") & "\"\"\""
   of xnComment:
     result = "#[" & xml.text & "]#"
   else:
@@ -283,7 +283,7 @@ proc updateCommand(args: seq[string]): int =
   of "head", "latest", "main", "master":
     updateHappyx("#head")
   else:
-    if re"\A(\d+\.\d+\.\d+)\z" in v:
+    if re2"\A(\d+\.\d+\.\d+)\z" in v:
       updateHappyx(v)
     else:
       shutdownCli()
@@ -325,68 +325,71 @@ proc buildCommand(optSize: bool = false): int =
     data = f.readAll()
   f.close()
   # Delete comments
-  data = data.replace(re"(?<!https?:)//[^\n]+\s+", "")
-  data = data.replace(re"/\*[^\*]+?\*/\s+", "")
+  data = data.replace(re2"(?<!https?:)//[^\n]+\s+", "")
+  data = data.replace(re2"/\*[^\*]+?\*/\s+", "")
   # Delete spaces around {}
   # one statement into {one statement}
   # if (asd) dsa
   # Small optimize
-  data = data.replace(re"(\.?)parent(\s*:?)", "$1p$2")
-  data = data.replace(re"\blastJSError\b", "le")
-  data = data.replace(re"\bprevJSError\b", "pe")
+  data = data.replace(re2"(\.?)parent(\s*:?)", "$1p$2")
+  data = data.replace(re2"\blastJSError\b", "le")
+  data = data.replace(re2"\bprevJSError\b", "pe")
   if optSize:
-    data = data.replace(re"Uint32Array", "U32A")
-    data = data.replace(re"Int32Array", "I32A")
-    data = data.replace(re"Array", "A")
-    data = data.replace(re"Number", "N")
-    data = data.replace(re"String", "S")
-    data = data.replace(re"Math", "M")
-    data = data.replace(re"BigInt", "B")
+    data = data.replace(re2"Uint32Array", "U32A")
+    data = data.replace(re2"Int32Array", "I32A")
+    data = data.replace(re2"Array", "A")
+    data = data.replace(re2"Number", "N")
+    data = data.replace(re2"String", "S")
+    data = data.replace(re2"Math", "M")
+    data = data.replace(re2"BigInt", "B")
     data = data.replace(
-      re"\A",
+      re2"\A",
       "const M=Math;const S=String;const B=BigInt;const A=Array;" &
       "const U32A=Uint32Array;const I32A=Int32Array;const N=Number;"
     )
-    data = data.replace(re"true", "1")
-    data = data.replace(re"false", "0")
+    data = data.replace(re2"true", "1")
+    data = data.replace(re2"false", "0")
   # Compress expressions
-  data = data.replace(re"(else +if|while|for|if|do|else|switch)\s+", "$1")
+  data = data.replace(re2"(else +if|while|for|if|do|else|switch)\s+", "$1")
   # Find variables and functions
   var
     counter = 0
     found: seq[string] = @[]
-  for i in data.findAndCaptureAll(re"\b\w+_\d+\b"):
-    if i notin found:
-      found.add(i)
-      data = data.replace(i, fmt"a{counter}")
+  for i in data.findAll(re2"\b\w+_\d+\b"):
+    let j = data[i.group(0)]
+    if j notin found:
+      found.add(j)
+      data = data.replace(j, fmt"a{counter}")
       inc counter
   # Find ConstSet, Temporary, Field, NTI\d+ and NNI\d+
   found = @[]
   counter = 0
-  for i in data.findAndCaptureAll(re"(ConstSet|Temporary|Field|N[TN]I)\d+"):
-    if i notin found:
-      found.add(i)
-      data = data.replace(i, fmt"b{counter}")
+  for i in data.findAll(re2"(ConstSet|Temporary|Field|N[TN]I)\d+"):
+    let j = data[i.group(0)]
+    if j notin found:
+      found.add(j)
+      data = data.replace(j, fmt"b{counter}")
       inc counter
   # Find functions
   found = @[]
   counter = 0
-  for i in data.findAndCaptureAll(re"function [c-z][a-zA-Z0-9_]*"):
-    if i notin found:
-      found.add(i)
-      data = data.replace(i[9..^1], fmt" c{counter}")
+  for i in data.findAll(re2"function [c-z][a-zA-Z0-9_]*"):
+    let j = data[i.group(0)]
+    if j notin found:
+      found.add(j)
+      data = data.replace(j[9..^1], fmt" c{counter}")
       inc counter
-  data = data.replace(re"(size|base|node):\S+?,", "")
-  data = data.replace(re"filename:\S+?,", "")
-  data = data.replace(re"finalizer:\S+?}", "}")
-  data = data.replace(re"([;{}\]:,\(\)])\s+", "$1")
-  data = data.replace(re"  ", " ")
-  data = data.replace(re";;", ";")
+  data = data.replace(re2"(size|base|node):\S+?,", "")
+  data = data.replace(re2"filename:\S+?,", "")
+  data = data.replace(re2"finalizer:\S+?}", "}")
+  data = data.replace(re2"([;{}\]:,\(\)])\s+", "$1")
+  data = data.replace(re2"  ", " ")
+  data = data.replace(re2";;", ";")
   data = data.replace(
-    re"\s*([\-\+=<\|\*&>^/%!$\?]{1,3})\s*", "$1"
+    re2"\s*([\-\+=<\|\*&>^/%!$\?]{1,3})\s*", "$1"
   )
   data = data.replace(
-    re"\[\s*", "["
+    re2"\[\s*", "["
   )
   f = open(project.buildDir / fmt"{SPA_MAIN_FILE}.js", fmWrite)
   f.write(data)
@@ -430,7 +433,7 @@ proc html2tagCommand(output: string = "", args: seq[string]): int =
     outputData = "import happyx\n\n\nvar html = buildHtml:\n"
   xmlTree2Text(outputData, tree, 2)
 
-  outputData = outputData.replace(re"""( +)(tScript.*?:)\s+(\"{3})\s*([\s\S]+?)(\"{3})""", "$1$2 $3\n  $1$4$1$5")
+  outputData = outputData.replace(re2"""( +)(tScript.*?:)\s+(\"{3})\s*([\s\S]+?)(\"{3})""", "$1$2 $3\n  $1$4$1$5")
 
   file = open(o, fmWrite)
   file.write(outputData)
@@ -476,12 +479,12 @@ proc createCommand(name: string = "", kind: string = "", templates: bool = false
       styledEcho fgMagenta, "hpx create ", styleBright, "--name=app --kind=SPA"
       shutdownCli()
       return QuitFailure
-    while projectName.len < 1 or projectName.contains(re"[,!\\/':@~`]"):
+    while projectName.len < 1 or projectName.contains(re2"[,!\\/':@~`]"):
       styledEcho fgRed, "Invalid name! It doesn't contains one of these symbols: , ! \\ / ' : @ ~ `"
       styledWrite stdout, fgYellow, align("Project name: ", 14)
       projectName = readLine(stdin)
   else:
-    if projectName.contains(re"[,!\\/':@~`]"):
+    if projectName.contains(re2"[,!\\/':@~`]"):
       styledEcho fgRed, "Invalid name! It doesn't contains one of these symbols: , ! \\ / ' : @ ~ `"
       shutdownCli()
       return QuitFailure

@@ -2,7 +2,6 @@ from happyx import (
     FileResponse, HtmlResponse, JsonResponse, HttpRequest, WebSocket,
     Response, new_server, reg_cors, RequestModelBase, __version__
 )
-import happyx
 
 
 app = new_server()

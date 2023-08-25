@@ -12,12 +12,9 @@ htmldocs/
 # builded
 **/build/
 
-# Test SPA project
-test_app/
-
-# Test SSR project
-test_ssg/
-test_ssr/
+# Test HappyX projects
+test*/
+!tests/
 
 # Logs
 *.log

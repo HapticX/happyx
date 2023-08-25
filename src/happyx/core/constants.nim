@@ -13,6 +13,7 @@
 ## | `-d:cryptoMethod`  | choose crypto method for `generate_password` methods 🔐    | ✅         |
 ## | `-d:numThreads`    | choose number of threads (httpx/httpbeast) ⌛              |  ✅        |
 ## | `-d:disableApiDoc` | disables built-in API documentation 📕                     | ❌         |
+## | `-d:disableORM`    | disables built-in ORM 📑                                   | ❌         |
 ## | `-d:appName`       | choose name of application (SSR/SSG) 📕                    | ✅         |
 ## | `-d:apiDocsPath`   | choose path for API documentation 📕                       |  ✅        |
 ## 
@@ -36,6 +37,7 @@ const
   # Framework features
   enableUi* = defined(enableUi) or defined(happyxEnableUi) or defined(hpxEnableUi)
   enableApiDoc* = not defined(disableApiDoc)
+  enableOrm* = not defined(disableORM)
   numThreads* {. intdefine .} = 0
   appName* {.strdefine.} = "HappyX Application"
   apiDocsPath* {.strdefine.} = "/docs"
@@ -49,8 +51,8 @@ const
   nim_2_0_0* = (NimMajor, NimMinor, NimPatch) >= (2, 0, 0)
   # Framework version
   HpxMajor* = 2
-  HpxMinor* = 6
-  HpxPatch* = 1
+  HpxMinor* = 7
+  HpxPatch* = 0
   HpxVersion* = $HpxMajor & "." & $HpxMinor & "." & $HpxPatch
 
 

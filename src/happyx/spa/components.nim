@@ -475,8 +475,8 @@ macro component*(name, body: untyped): untyped =
               )
             let css = getAst(buildStyle(s[^1]))[1]
             let str = ($css).replace(
-              re"^([\S ]+?) *\{(?im)", "$1[data-<self.uniqCompId>]{"
-            ).replace(re"(^ *|\{ *|\n *)\}(?im)", "$1}")
+              re2"^([\S ]+?) *\{(?im)", "$1[data-<self.uniqCompId>]{"
+            ).replace(re2"(^ *|\{ *|\n *)\}(?im)", "$1}")
             styleStmtList = newStmtList(
               newAssignment(
                 ident"result",
@@ -486,8 +486,8 @@ macro component*(name, body: untyped): untyped =
           elif s[^1][0].kind in [nnkStrLit, nnkTripleStrLit]:
             # String CSS
             let str = ($s[1][0]).replace(
-              re"([\S ]+?) *\{(?![ \S]+?\}\s*[;%$#@!~`%^&:\-_=\+,.<>?/\\\{\d\w])", "$1[data-{self.uniqCompId}] {{"
-            ).replace(re"(\n[ \t]*)\}", "$1}}")
+              re2"([\S ]+?) *\{(?![ \S]+?\}\s*[;%$#@!~`%^&:\-_=\+,.<>?/\\\{\d\w])", "$1[data-{self.uniqCompId}] {{"
+            ).replace(re2"(\n[ \t]*)\}", "$1}}")
             styleStmtList = newStmtList(
               newAssignment(
                 ident"result",
@@ -498,8 +498,8 @@ macro component*(name, body: untyped): untyped =
             # Pure CSS
             let css = getAst(buildStyle(s[^1][0][1]))[1]
             let str = ($css).replace(
-              re"^([\S ]+?) *\{(?im)", "$1[data-<self.uniqCompId>]{"
-            ).replace(re"(^ *|\{ *|\n *)\}(?im)", "$1}")
+              re2"^([\S ]+?) *\{(?im)", "$1[data-<self.uniqCompId>]{"
+            ).replace(re2"(^ *|\{ *|\n *)\}(?im)", "$1}")
             styleStmtList = newStmtList(
               newAssignment(
                 ident"result",
@@ -800,10 +800,10 @@ macro importComponent*(body: untyped): untyped =
     componentName = body[2]
   var
     componentData = staticRead(filePath)
-    templateSource = componentData.findAndCaptureAll(re"(?<=<\s*template\s*>)([\s\S]+?)(?=</\s*template\s*>)")
-    scriptJSSource = componentData.findAndCaptureAll(re"(?<=<\s*script\s*js\s*>)([\s\S]+?)(?=</\s*script\s*>)")
-    scriptNimSource = componentData.findAndCaptureAll(re"(?<=<\s*script\s*>)([\s\S]+?)(?=</\s*script\s*>)")
-    styleSource = componentData.findAndCaptureAll(re"(?<=<\s*style\s*>)([\s\S]+?)(?=</\s*style\s*>)")
+    templateSource = componentData.findAll(re2"(?<=<\s*template\s*>)([\s\S]+?)(?=</\s*template\s*>)")
+    scriptJSSource = componentData.findAll(re2"(?<=<\s*script\s*js\s*>)([\s\S]+?)(?=</\s*script\s*>)")
+    scriptNimSource = componentData.findAll(re2"(?<=<\s*script\s*>)([\s\S]+?)(?=</\s*script\s*>)")
+    styleSource = componentData.findAll(re2"(?<=<\s*style\s*>)([\s\S]+?)(?=</\s*style\s*>)")
     stmtList = newStmtList()
 
   # Handle errors
@@ -829,7 +829,7 @@ macro importComponent*(body: untyped): untyped =
   # Template
   if templateSource.len > 0:
     var
-      tagData =  initTag("div", @[tagFromString(templateSource[0])], true)
+      tagData =  initTag("div", @[tagFromString(componentData[templateSource[0].group(0)])], true)
       statements = newStmtList()
     
     proc inCreatedComponents(tag: string): string =
@@ -848,7 +848,6 @@ macro importComponent*(body: untyped): untyped =
         else:
           var
             call: NimNode
-            ifStmt = newNimNode(nnkIfStmt)
             name = inCreatedComponents(child.name)
             isIfStmt = false
             scriptLanguage: string = "nim"
@@ -976,12 +975,12 @@ macro importComponent*(body: untyped): untyped =
       newNimNode(nnkAccQuoted).add(ident"script"),
       newStmtList(newNimNode(nnkPragma).add(newNimNode(nnkExprColonExpr).add(
         ident"emit",
-        newStrLitNode(scriptJSSource[0])
+        newStrLitNode(componentData[scriptJSSource[0].group(0)])
       )))
     ))
   elif scriptNimSource.len > 0:
     var
-      statement = parseStmt(scriptNimSource[0])
+      statement = parseStmt(componentData[scriptNimSource[0].group(0)])
       methods = newCall(newNimNode(nnkBracket).add(ident"methods"), newStmtList())
     for i in 0..<statement.len:
       let s = statement[i]
@@ -1003,7 +1002,7 @@ macro importComponent*(body: untyped): untyped =
   # Style tag
   if styleSource.len > 0:
     var statement = newNimNode(nnkTripleStrLit)
-    statement.strVal = styleSource[0]
+    statement.strVal = componentData[styleSource[0].group(0)]
     stmtList.add(newCall(newNimNode(nnkAccQuoted).add(ident"style"), newStmtList(statement)))
 
   result = newCall("component", componentName, stmtList)

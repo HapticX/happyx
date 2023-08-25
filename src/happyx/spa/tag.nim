@@ -213,8 +213,8 @@ proc xml2Tag(xml: XmlNode): TagRef =
     else:
       result = initTag(xml.tag)
   of xnText:
-    if re"\A\s+\z" notin xml.text:
-      result = initTag(xml.text.replace(re" +\z", ""), true)
+    if re2"\A\s+\z" notin xml.text:
+      result = initTag(xml.text.replace(re2" +\z", ""), true)
   else:
     discard
 

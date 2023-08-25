@@ -17,7 +17,6 @@ import
 when exportPython or defined(docgen):
   import
     nimpy,
-    nimpy/py_types,
     ../bindings/python_types
 
 
@@ -56,8 +55,8 @@ proc handleRoute*(route: string): RouteDataObj =
   ## Handles route and receive route data object.
   result = RouteDataObj(path: "", purePath: "", pathParams: @[], requestModels: @[])
   let
-    dollarToCurve = re"\$([^:\/\{\}]+)(:enum\(\w+\)|:\w+)?(\[m\])?(=[^\/\{\}]+)?(m)?"
-    defaultWithoutQuestion = re"\{([^:\/\{\}\?]+)(:enum\(\w+\)|:\w+)?(\[m\])?(=[^\/\{\}]+)\}"
+    dollarToCurve = re2"\$([^:\/\{\}]+)(:enum\(\w+\)|:\w+)?(\[m\])?(=[^\/\{\}]+)?(m)?"
+    defaultWithoutQuestion = re2"\{([^:\/\{\}\?]+)(:enum\(\w+\)|:\w+)?(\[m\])?(=[^\/\{\}]+)\}"
   
   var path = route
   path = path.replace(dollarToCurve, "{$1$2$3$4}")
@@ -65,39 +64,39 @@ proc handleRoute*(route: string): RouteDataObj =
   result.path = path
   var routePathStr = path
   # boolean param
-  routePathStr = routePathStr.replace(re"\{[a-zA-Z][a-zA-Z0-9_]*(\??):bool(\[m\])?(=\S+?)?\}", "(n|y|no|yes|true|false|1|0|on|off)$1")
+  routePathStr = routePathStr.replace(re2"\{[a-zA-Z][a-zA-Z0-9_]*(\??):bool(\[m\])?(=\S+?)?\}", "(n|y|no|yes|true|false|1|0|on|off)$1")
   # integer param
-  routePathStr = routePathStr.replace(re"\{[a-zA-Z][a-zA-Z0-9_]*(\??):int(\[m\])?(=\S+?)?\}", "(\\d+)$1")
+  routePathStr = routePathStr.replace(re2"\{[a-zA-Z][a-zA-Z0-9_]*(\??):int(\[m\])?(=\S+?)?\}", "(\\d+)$1")
   # float param
-  routePathStr = routePathStr.replace(re"\{[a-zA-Z][a-zA-Z0-9_]*(\??):float(\[m\])?(=\S+?)?\}", "(\\d+\\.\\d+|\\d+)$1")
+  routePathStr = routePathStr.replace(re2"\{[a-zA-Z][a-zA-Z0-9_]*(\??):float(\[m\])?(=\S+?)?\}", "(\\d+\\.\\d+|\\d+)$1")
   # word param
-  routePathStr = routePathStr.replace(re"\{[a-zA-Z][a-zA-Z0-9_]*(\??):word(\[m\])?(=\S+?)?\}", "(\\w+)$1")
+  routePathStr = routePathStr.replace(re2"\{[a-zA-Z][a-zA-Z0-9_]*(\??):word(\[m\])?(=\S+?)?\}", "(\\w+)$1")
   # string enum
-  routePathStr = routePathStr.replace(re"\{[a-zA-Z][a-zA-Z0-9_]*(\??):enum\((\w+)\)(\[m\])?(=\S+?)?\}", "(\\w+)$1")
+  routePathStr = routePathStr.replace(re2"\{[a-zA-Z][a-zA-Z0-9_]*(\??):enum\((\w+)\)(\[m\])?(=\S+?)?\}", "(\\w+)$1")
   # string param
-  routePathStr = routePathStr.replace(re"\{[a-zA-Z][a-zA-Z0-9_]*(\??):string(\[m\])?(=\S+?)?\}", "([^/]+)$1")
-  routePathStr = routePathStr.replace(re"\{[a-zA-Z][a-zA-Z0-9_]*(\??)(\[m\])?(=\S+?)?\}", "([^/]+)$1")
+  routePathStr = routePathStr.replace(re2"\{[a-zA-Z][a-zA-Z0-9_]*(\??):string(\[m\])?(=\S+?)?\}", "([^/]+)$1")
+  routePathStr = routePathStr.replace(re2"\{[a-zA-Z][a-zA-Z0-9_]*(\??)(\[m\])?(=\S+?)?\}", "([^/]+)$1")
   # path param
-  routePathStr = routePathStr.replace(re"\{[a-zA-Z][a-zA-Z0-9_]*:path(\[m\])?\}", "([\\S]+)")
+  routePathStr = routePathStr.replace(re2"\{[a-zA-Z][a-zA-Z0-9_]*:path(\[m\])?\}", "([\\S]+)")
   # regex param
-  routePathStr = routePathStr.replace(re"\{[a-zA-Z][a-zA-Z0-9_]*:/([\s\S]+?)/(\[m\])?\}", "($1)")
+  routePathStr = routePathStr.replace(re2"\{[a-zA-Z][a-zA-Z0-9_]*:/([\s\S]+?)/(\[m\])?\}", "($1)")
   # Remove models
   when exportPython:
-    routePathStr = routePathStr.replace(re"\[[a-zA-Z][a-zA-Z0-9_]*(:[a-zA-Z][a-zA-Z0-9_]*)?(\[m\])?(:[a-zA-Z\\-]+)?\]", "")
+    routePathStr = routePathStr.replace(re2"\[[a-zA-Z][a-zA-Z0-9_]*(:[a-zA-Z][a-zA-Z0-9_]*)?(\[m\])?(:[a-zA-Z\\-]+)?\]", "")
   else:
-    routePathStr = routePathStr.replace(re"\[[a-zA-Z][a-zA-Z0-9_]*:[a-zA-Z][a-zA-Z0-9_]*(\[m\])?(:[a-zA-Z\\-]+)?\]", "")
+    routePathStr = routePathStr.replace(re2"\[[a-zA-Z][a-zA-Z0-9_]*:[a-zA-Z][a-zA-Z0-9_]*(\[m\])?(:[a-zA-Z\\-]+)?\]", "")
   let
     foundPathParams = path.findAll(
-      re"\{([a-zA-Z][a-zA-Z0-9_]*\??)(:(bool|int|float|string|path|word|/[\s\S]+?/|enum\(\w+\)))?(\[m\])?(=(\S+?))?\}"
+      re2"\{([a-zA-Z][a-zA-Z0-9_]*\??)(:(bool|int|float|string|path|word|/[\s\S]+?/|enum\(\w+\)))?(\[m\])?(=(\S+?))?\}"
     )
     foundModels =
       when exportPython:
         path.findAll(
-          re"\[([a-zA-Z][a-zA-Z0-9_]*)(:[a-zA-Z][a-zA-Z0-9_]*)?(\[m\])?(:[a-zA-Z\\-]+)?\]"
+          re2"\[([a-zA-Z][a-zA-Z0-9_]*)(:[a-zA-Z][a-zA-Z0-9_]*)?(\[m\])?(:[a-zA-Z\\-]+)?\]"
         )
       else:
         path.findAll(
-          re"\[([a-zA-Z][a-zA-Z0-9_]*):([a-zA-Z][a-zA-Z0-9_]*)(\[m\])?(:[a-zA-Z\\-]+)?\]"
+          re2"\[([a-zA-Z][a-zA-Z0-9_]*):([a-zA-Z][a-zA-Z0-9_]*)(\[m\])?(:[a-zA-Z\\-]+)?\]"
         )
   
   result.purePath = routePathStr
@@ -105,22 +104,22 @@ proc handleRoute*(route: string): RouteDataObj =
   for pathParam in foundPathParams:
     let
       argTypeStr =
-        if pathParam.group(2, path).len == 0:
+        if pathParam.group(2).len == 0:
           "string"
         else:
-          pathParam.group(2, path)[0]
+          path[pathParam.group(2)]
       defaultVal =
-        if pathParam.group(5, path).len == 0:
+        if pathParam.group(5).len == 0:
           ""
         else:
-          pathParam.group(5, path)[0]
-      isMutable = pathParam.group(3, path).len != 0
+          path[pathParam.group(5)]
+      isMutable = pathParam.group(3).len != 0
     # Detect main data
     var
-      name = pathParam.group(0, path)[0]
+      name = path[pathParam.group(0)]
       isOptional = false
     # Detect optional value
-    if name.endsWith(re"\?"):
+    if name.endsWith(re2"\?"):
       name = name[0..^2]
       isOptional = true
     elif defaultVal.len > 0:
@@ -129,21 +128,21 @@ proc handleRoute*(route: string): RouteDataObj =
     
   for i in foundModels:
     let
-      modelName = i.group(0, path)[0]
+      modelName = path[i.group(0)]
       modelType =
         when exportPython:
-          if i.group(1, path).len != 0:
-            i.group(1, path)[0][1..^1]
+          if i.group(1).len != 0:
+            path[i.group(1)][1..^1]
           else:
             ""
         else:
-          i.group(1, path)[0]
+          path[i.group(1)]
       modelTarget =
-        if i.group(3, path).len != 0:
-          i.group(3, path)[0][1..^1]
+        if i.group(3).len != 0:
+          path[i.group(3)][1..^1]
         else:
           "JSON"
-      isMutable = i.group(2, path).len != 0
+      isMutable = i.group(2).len != 0
     result.requestModels.add(newRequestModelObj(modelName, modelType, modelTarget, isMutable))
 
 
@@ -151,8 +150,8 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.
   ## Finds and exports route arguments
   var path = $routePath
   # Find all declared path params
-  for i in path.findAll(re"<([a-zA-Z][a-zA-Z0-9_]*)>"):
-    let name = i.group(0, path)[0]
+  for i in path.findAll(re2"<([a-zA-Z][a-zA-Z0-9_]*)>"):
+    let name = path[i.group(0)]
     if declaredPathParams.hasKey(name):
       path = path.replace(fmt"<{name}>", declaredPathParams[name])
     else:
@@ -166,7 +165,7 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.
     hasChildren = false
   let
     elifBranch = newNimNode(nnkElifBranch)
-    regExp = newCall("re", newStrLitNode("^" & routeData.purePath & "$"))
+    regExp = newCall("re2", newStrLitNode("^" & routeData.purePath & "$"))
   elifBranch.add(newCall("contains", urlPath, regExp), body)
   var idx = 0
   let paramsCount = routeData.pathParams.len
@@ -182,12 +181,11 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.
             ident"founded_regexp_matches"
           else:
             newCall("findAll", urlPath, regExp),
-          newIntLitNode(0)
+          newLit(0)
         ),
-        newIntLitNode(idx),  # group index,
-        urlPath
+        newLit(idx)
       )
-      foundGroup = newNimNode(nnkBracketExpr).add(group, newIntLitNode(0))
+      foundGroup = newNimNode(nnkBracketExpr).add(urlPath, group)
       # _groupLen < 1
       conditionOptional = newCall("<", newCall("len", group), newIntLitNode(1))
       # _foundGroupLen == 0
@@ -434,7 +432,7 @@ when exportPython or defined(docgen):
       else:
         `res`[`name`] = `parseFunc`(`foundGroup`)
 
-  proc getRouteParams*(routeData: RouteDataObj, found_regexp_matches: seq[RegexMatch],
+  proc getRouteParams*(routeData: RouteDataObj, found_regexp_matches: seq[RegexMatch2],
                        urlPath: string = "", handlerParams: seq[HandlerParam] = @[], body: string = "",
                        force: bool = false): JsonNode =
     ## Finds and exports route arguments
@@ -444,8 +442,8 @@ when exportPython or defined(docgen):
       if i.name notin handlerParams and not force:
         continue
       let
-        group = found_regexp_matches[0].group(idx, urlPath)
-        foundGroup = group[0]
+        group = found_regexp_matches[0].group(idx)
+        foundGroup = urlPath[group]
         conditionOptional = group.len < 1
         conditionSecondOptional = foundGroup.len == 0
         paramType =
@@ -530,7 +528,7 @@ proc pathParamsBoilerplate(node: NimNode, kind, regexVal: var string) =
   if node.kind == nnkIdent:
     kind = $node
   # regex type
-  elif node.kind == nnkCallStrLit and $node[0] == "re":
+  elif node.kind == nnkCallStrLit and $node[0] == "re2":
     kind = "regex"
     regexVal = $node[1]
   elif node.kind == nnkExprEqExpr:
@@ -556,7 +554,7 @@ macro pathParams*(body: untyped): untyped =
   ##      # means that `arg1` of type `string` is optional mutable param with default value `"Hello"`
   ##      arg1[m] = "Hello"
   ##      # means that `arg2` of type `string` is immutable regex param
-  ##      arg2 re"\d+u"
+  ##      arg2 re2"\d+u"
   ##      # means that `arg3` of type `float` is mutable param
   ##      arg3 float[m]
   ##      # means that `arg4` of type `int` is optional mutable param with default value `10`

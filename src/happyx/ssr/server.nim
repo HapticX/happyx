@@ -66,8 +66,6 @@ import
   std/json,
   std/os,
   std/exitprocs,
-  packages/docutils/rst,
-  packages/docutils/rstgen,
   # Deps
   regex,
   # HappyX
@@ -129,7 +127,6 @@ when enableApiDoc:
 when exportPython or defined(docgen):
   import
     nimpy,
-    sequtils,
     ../bindings/python_types
   
   pyExportModule(name = "server", doc = """
@@ -173,13 +170,13 @@ HappyX web framework [SSR/SSG Part]
       var (x, y, z) = m.processMounts(path & self.path)
       let mountPath = path & m.path
       for route in x:
-        var r = initRoute(mountPath & route.path, mountPath & route.purePath, route.httpMethod, re("^" & mountPath & route.purePath & "$"), route.handler)
+        var r = initRoute(mountPath & route.path, mountPath & route.purePath, route.httpMethod, re2("^" & mountPath & route.purePath & "$"), route.handler)
         middlewares.add(r)
       for route in y:
-        var r = initRoute(mountPath & route.path, mountPath & route.purePath, route.httpMethod, re("^" & mountPath & route.purePath & "$"), route.handler)
+        var r = initRoute(mountPath & route.path, mountPath & route.purePath, route.httpMethod, re2("^" & mountPath & route.purePath & "$"), route.handler)
         routes.add(r)
       for route in z:
-        var r = initRoute(mountPath & route.path, mountPath & route.purePath, route.httpMethod, re("^" & mountPath & route.purePath & "$"), route.handler)
+        var r = initRoute(mountPath & route.path, mountPath & route.purePath, route.httpMethod, re2("^" & mountPath & route.purePath & "$"), route.handler)
         notfounds.add(r)
     (middlewares, routes, notfounds)
   
@@ -551,7 +548,7 @@ proc detectReturnStmt(node: NimNode, replaceReturn: bool = false) {. compileTime
   if replaceReturn or node.kind in AtomicNodes:
     return
   if node[^1].kind in [nnkCall, nnkCommand]:
-    if node[^1][0].kind == nnkIdent and re"^(answer|echo|translate)" in $node[^1][0]:
+    if node[^1][0].kind == nnkIdent and re2"^(answer|echo|translate)" in $node[^1][0]:
       return
     elif node[^1][0].kind == nnkDotExpr and ($node[^1][0][1]).toLower().startsWith("answer"):
       return
@@ -597,7 +594,7 @@ macro routes*(server: Server, body: untyped): untyped =
   ## - `bool`: any boolean (`y`, `yes`, `on`, `1` and `true` for true; `n`, `no`, `off`, `0` and `false` for false).
   ## - `int`: any integer.
   ## - `float`: any float number.
-  ## - `word`: any word includes `re"\w+"`.
+  ## - `word`: any word includes `re2"\w+"`.
   ## - `string`: any string excludes `"/"`.
   ## - `enum(EnumName)`: any string excludes `"/"`. Converts into `EnumName`.
   ## - `path`: any float number includes `"/"`.
@@ -796,7 +793,6 @@ macro routes*(server: Server, body: untyped): untyped =
               newCall("==", pathIdent, statement[1])
             ), statement[2]
           ))
-        echo treeRepr ifStmt
       # notfound: statement list
       elif statement[1].kind == nnkStmtList and statement[0].kind == nnkIdent:
         case ($statement[0]).toLower()
@@ -850,7 +846,6 @@ macro routes*(server: Server, body: untyped): untyped =
             let
               route = if $statement[1][1] == "/": newStrLitNode("") else: statement[1][1]
               path = if $statement[1][1] == "/": newStrLitNode($statement[1][2] & "/") else: statement[1][2]
-              replace = if $statement[1][1] == "/": newStrLitNode(".") else: newCall("&", newStrLitNode("."), newLit("/"))
             let dirFromPath = newCall(
               "&",
               newCall("&", newStrLitNode("."), newLit("/")),
@@ -1541,14 +1536,14 @@ macro routes*(server: Server, body: untyped): untyped =
   if stmtList.isIdentUsed(ident"query"):
     immutableVars.add(newIdentDefs(ident"queryFromUrl", newEmptyNode(), url))
     immutableVars.add(newIdentDefs(ident"query", newEmptyNode(), newCall("parseQuery", ident"queryFromUrl")))
-    immutableVars.add(newIdentDefs(ident"queryArr", newEmptyNode(), newCall("parseQueryArrays", ident"queryFromUrl")))
+    when not exportPython:
+      immutableVars.add(newIdentDefs(ident"queryArr", newEmptyNode(), newCall("parseQueryArrays", ident"queryFromUrl")))
   if stmtList.isIdentUsed(ident"translate"):
     immutableVars.add(newIdentDefs(ident"acceptLanguage", newEmptyNode(), acceptLanguage))
   if stmtList.isIdentUsed(ident"inCookies"):
     immutableVars.add(newIdentDefs(ident"inCookies", newEmptyNode(), cookiesInVar))
   if stmtList.isIdentUsed(ident"reqMethod"):
     immutableVars.add(newIdentDefs(ident"reqMethod", newEmptyNode(), reqMethod))
-  echo result.toStrLit
 
 
 macro initServer*(body: untyped): untyped =
@@ -1604,10 +1599,10 @@ when enableApiDoc:
     # Clear route
     route = routeData.path
     route = route.replace(
-      re"\{([a-zA-Z][a-zA-Z0-9_]*)\??(:(bool|int|float|string|path|word|/[\s\S]+?/|enum\(\w+\)))?(\[m\])?(=(\S+?))?\}",
+      re2"\{([a-zA-Z][a-zA-Z0-9_]*)\??(:(bool|int|float|string|path|word|/[\s\S]+?/|enum\(\w+\)))?(\[m\])?(=(\S+?))?\}",
       "{$1}"
     )
-    route = route.replace(re"\[([a-zA-Z][a-zA-Z0-9_]*):([a-zA-Z][a-zA-Z0-9_]*)(\[m\])?(:[a-zA-Z\\-]+)?\]", "")
+    route = route.replace(re2"\[([a-zA-Z][a-zA-Z0-9_]*):([a-zA-Z][a-zA-Z0-9_]*)(\[m\])?(:[a-zA-Z\\-]+)?\]", "")
 
     (newCall("@", params), newCall("@", models))
   

@@ -38,23 +38,6 @@ def setup_jinja2(directory: str = './') -> None:
 def TemplateResponse(
         template_name: str,
         status_code: int = 200,
-        headers: dict = None,
-        **kwargs
-) -> happyx.HtmlResponseObj:
-    """
-    Creates a new HtmlResponse that renders from Jinja2 template
-    """
-    if headers is None:
-        headers = {}
-    data = ''
-    with open(f'{directory}{template_name}', 'r', encoding='utf-8') as f:
-        data = f.read()
-    return HtmlResponse(Template(data).render(**kwargs), status_code=status_code, headers=headers)
-
-
-async def TemplateResponseAsync(
-        template_name: str,
-        status_code: int = 200,
         headers: dict = None
 ) -> happyx.HtmlResponseObj:
     """
@@ -65,7 +48,7 @@ async def TemplateResponseAsync(
     data = ''
     with open(f'{directory}{template_name}', 'r', encoding='utf-8') as f:
         data = f.read()
-    rendered = await Template(**kwargs).render_async()
+    rendered = Template(**kwargs).render()
     return HtmlResponse(data, status_code=status_code, headers=headers)
 
 
