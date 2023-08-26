@@ -358,8 +358,11 @@ template start*(server: Server): untyped =
   when not declared(handleRequest):
     proc handleRequest(req: Request) {.async.} =
       discard
-  when enableHttpx or enableHttpBeast:
+  when enableHttpx:
     run(handleRequest, `server`.instance)
+  elif enableHttpBeast:
+    {.cast(gcsafe).}:
+      run(handleRequest, `server`.instance)
   else:
     waitFor `server`.instance.serve(Port(`server`.port), handleRequest, `server`.address)
 
