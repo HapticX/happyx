@@ -46,7 +46,7 @@ func remember*[T](val: T): State[T] =
 proc `val=`*[T](self: State[T], value: T) =
   ## Changes state value
   self.value = value
-  if not application.isNil() and not application.router.isNil() and enableRouting:
+  if enableRouting and not application.isNil() and not application.router.isNil():
     application.router()
 
 
@@ -62,10 +62,17 @@ func val*[T](self: State[T]): T =
   ## Returns immutable state value
   self.value
 
+when not defined(js):
+  func val*[T](self: var State[T]): var T =
+    ## Returns immutable state value
+    self.value
+
 
 template operator(funcname, op: untyped): untyped =
   func `funcname`*[T](self, other: State[T]): T =
     `op`(self.value, other.value)
+  func `funcname`*[T](other: T, self: State[T]): T =
+    `op`(self.value, other)
   func `funcname`*[T](self: State[T], other: T): T =
     `op`(self.value, other)
 
@@ -73,11 +80,15 @@ template operator(funcname, op: untyped): untyped =
 template reRenderOperator(funcname, op: untyped): untyped =
   proc `funcname`*[T](self: State[T], other: State[T]) =
     `op`(self.val, other.val)
-    if not application.isNil() and not application.router.isNil() and enableRouting:
+    if enableRouting and not application.isNil() and not application.router.isNil():
+      application.router()
+  proc `funcname`*[T](other: T, self: State[T]) =
+    `op`(self.value, other)
+    if enableRouting and not application.isNil() and not application.router.isNil():
       application.router()
   proc `funcname`*[T](self: State[T], other: T) =
     `op`(self.value, other)
-    if not application.isNil() and not application.router.isNil() and enableRouting:
+    if enableRouting and not application.isNil() and not application.router.isNil():
       application.router()
 
 
@@ -180,6 +191,7 @@ macro `->`*(self: State, field: untyped): untyped =
 
 func get*[T](self: State[T]): T =
   ## Returns state value
+  ## Alias for `val procedure #val,State[T]`_
   self.val
 
 
@@ -191,7 +203,7 @@ func len*[T](self: State[T]): int =
 proc set*[T](self: State[T], value: T) =
   ## Changes state value and rerenders SPA
   self.val = value
-  if not application.isNil() and not application.router.isNil() and enableRouting:
+  if enableRouting and not application.isNil() and not application.router.isNil():
     application.router()
 
 

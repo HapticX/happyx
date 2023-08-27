@@ -576,7 +576,6 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
               newCall("[]=", ident"componentEventHandlers", newIntLitNode(uniqueId), procedure)
             ), newCall("initTag", newStrLitNode("div"), newCall("@", newNimNode(nnkBracket)), newLit(true))
           ))
-          echo result.toStrLit
         procedure.body.insert(0, newAssignment(ident"currentComponent", newCall("fmt", newStrLitNode("{self.uniqCompId}"))))
         procedure.body.add(newAssignment(ident"currentComponent", newStrLitNode("")))
       else:
