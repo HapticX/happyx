@@ -564,7 +564,8 @@ macro component*(name, body: untyped): untyped =
           let key = $s[1]
           if usedLifeCycles.hasKey(key) and not usedLifeCycles[key]:
             var lambdaBody = s[2]
-            lambdaBody.replaceSelfComponent(ident(componentName), convert = false, is_constructor = true)
+            # lambdaBody.replaceSelfComponent(ident(componentName), convert = false, is_constructor = true)
+            lambdaBody.insert(0, newVarStmt(ident"self", newCall(componentName, ident"self")))
             lifeCyclesDeclare.insert(0, newAssignment(
               newDotExpr(ident"result", ident(key)),
               newLambda(lambdaBody, arguments)
