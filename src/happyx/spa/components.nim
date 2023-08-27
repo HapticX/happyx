@@ -330,7 +330,19 @@ macro component*(name, body: untyped): untyped =
   var
     fields: seq[string] = @[]
     fieldTypes: seq[NimNode] = @[]
+    fieldDefaults: seq[NimNode] = @[]
     initComponentProcedure: seq[NimNode] = @[]
+  
+  proc hasField(fieldType: NimNode): bool =
+    if fieldType.kind == nnkIdent and $fieldType in fields:
+      return true
+    elif fieldType.kind == nnkCall and fieldType[0] == ident"fmt":
+      for field in fields:
+        if field in $fieldType[1]:
+          return true
+    for child in fieldType:
+      if child.hasField():
+        return true
   
   for s in body.children:
     if s.kind in [nnkCall, nnkCommand, nnkInfix, nnkPrefix]:
@@ -355,6 +367,7 @@ macro component*(name, body: untyped): untyped =
         initObjConstr.add(newColonExpr(s[0], newCall("remember", s[0])))
         fields.add($(s[0]))
         fieldTypes.add(fieldType)
+        fieldDefaults.add(defaultValue)
       
       # Public field
       elif s.kind == nnkPrefix and s[0] == ident"*" and s[1].kind == nnkIdent and s[2].len == 1:
@@ -377,6 +390,7 @@ macro component*(name, body: untyped): untyped =
         initObjConstr.add(newColonExpr(s[1], newCall("remember", s[1])))
         fields.add($(s[1]))
         fieldTypes.add(fieldType)
+        fieldDefaults.add(defaultValue)
       
       # Constructors
       elif s.kind == nnkCall and s[0] == ident"constructor" or (s[0].kind == nnkObjConstr and s[0][0] == ident"constructor"):
@@ -577,7 +591,18 @@ macro component*(name, body: untyped): untyped =
       ))
   
   initProc.params = initParams
+  var defaultValues = newStmtList()
+  echo treeRepr initParams
+  for i in 0..<initProc.params.len:
+    if initProc[3][i].kind == nnkIdentDefs and initProc[3][i][2].hasField():
+      defaultValues.add(
+        newNimNode(nnkLetSection).add(
+          newIdentDefs(initProc[3][i][0].copy(), initProc[3][i][1].copy(), initProc[3][i][2])
+        )
+      )
+      initProc[3][i][2] = newCall("default", initProc[3][i][1])
   initProc.body = newStmtList(
+    defaultValues,
     newAssignment(ident"result", initObjConstr),
     lifeCyclesDeclare
   )

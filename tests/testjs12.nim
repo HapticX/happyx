@@ -12,11 +12,10 @@ var ctest1 = use component CTestChild(id=1, color = "green")
 
 component CTest:
   id: int
-  newId: int = id + 1
+  # newId: int = id + 1
   # testChild: CTestCHild = CTestChild(id = 44, color = "purple")
   ### won't compile
-  # newId: cstring = "newId: " & $id
-  ### compiles but fails to render app
+  newId: cstring = "newId: " & $id
   message: cstring = ""
   `template`:
     tDiv: "template: {self.id} {self.newId}"
@@ -34,7 +33,7 @@ component CTest:
         echo fmt"{self.id}"
         self.message = fmt"{self.id}"
     component CTestChild(id = 3, color = "red")
-    component CTestChild(id = self.newId.val, color = "blue") # undefined
+    component CTestChild(id = self.id, color = "blue") # undefined
     #component CTestChild(id = self.id, color = "blue") # same as above
     component ctest1
   [methods]:
