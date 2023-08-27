@@ -114,7 +114,7 @@ proc useComponent*(statement: NimNode, inCycle, inComponent: bool,
     if returnTagRef:
       newLetStmt(
         ident(componentData),
-        newCall("render", ident(componentName))
+        newCall("renderTag", ident(componentName))
       )
     else:
       newEmptyNode(),
@@ -525,6 +525,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
       
       if inComponent:
         procedure.body = statement[^1]
+        procedure.body.insert(0, newVarStmt(ident"self", newCall(componentName, ident"self")))
         args.insert(1, newIdentDefs(ident"self", ident"BaseComponent"))
         # Detect in component and in cycle
         if inCycle:
@@ -575,6 +576,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
               newCall("[]=", ident"componentEventHandlers", newIntLitNode(uniqueId), procedure)
             ), newCall("initTag", newStrLitNode("div"), newCall("@", newNimNode(nnkBracket)), newLit(true))
           ))
+          echo result.toStrLit
         procedure.body.insert(0, newAssignment(ident"currentComponent", newCall("fmt", newStrLitNode("{self.uniqCompId}"))))
         procedure.body.add(newAssignment(ident"currentComponent", newStrLitNode("")))
       else:

@@ -743,6 +743,8 @@ macro component*(name, body: untyped): untyped =
     ),
     methodsStmtList,
   )
+  when enableDebugComponentMacro:
+    echo result.toStrLit
 
 
 macro importComponent*(body: untyped): untyped =

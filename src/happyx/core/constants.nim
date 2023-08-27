@@ -32,6 +32,9 @@ const
   enableAutoTranslate* = defined(translate) or defined(happyxTranslate) or defined(hpxTranslate)
   # Debug mode
   enableDebug* = defined(debug) or defined(happyxDebug) or defined(hpxDebug)
+  enableDebugComponentMacro* = defined(compDebug) or defined(happyxCompDebug) or defined(hpxCompDebug)
+  enableDebugSsrMacro* = defined(ssrDebug) or defined(happyxSsrDebug) or defined(hpxSsrDebug)
+  enableDebugSpaMacro* = defined(spaDebug) or defined(happyxSpaDebug) or defined(hpxSpaDebug)
   # Language bindings
   exportPython* = defined(export2py) or defined(happyxExport2py) or defined(hpxExport2py)
   # Framework features
