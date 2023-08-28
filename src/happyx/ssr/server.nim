@@ -229,7 +229,7 @@ proc ctrlCHook() {.noconv.} =
   quit(QuitSuccess)
 
 proc onQuit() {.noconv.} =
-  when int(enableHttpBeast) + int(enableHttpx) + int(enableMicro) == 0:
+  when int(enableHttpBeast) + int(enableHttpx) + int(enableMicro) == 0 and not defined(docgen):
     try:
       pointerServer[].instance.close()
     except:
