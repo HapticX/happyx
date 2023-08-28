@@ -333,14 +333,14 @@ macro component*(name, body: untyped): untyped =
     fieldDefaults: seq[NimNode] = @[]
     initComponentProcedure: seq[NimNode] = @[]
   
-  proc hasField(fieldType: NimNode): bool =
-    if fieldType.kind == nnkIdent and $fieldType in fields:
+  proc hasField(node: NimNode): bool =
+    if node.kind == nnkIdent and $node in fields:
       return true
-    elif fieldType.kind == nnkCall and fieldType[0] == ident"fmt":
+    elif node.kind in CallNodes and node[0] == ident"fmt":
       for field in fields:
-        if field in $fieldType[1]:
+        if field in $node[1]:
           return true
-    for child in fieldType:
+    for child in node:
       if child.hasField():
         return true
   
@@ -587,25 +587,26 @@ macro component*(name, body: untyped): untyped =
   for key in usedLifeCycles.keys:
     if not usedLifeCycles[key]:
       lifeCyclesDeclare.insert(0, newAssignment(
-        newDotExpr(ident"result", ident(key)),
+        newDotExpr(ident"self", ident(key)),
         newLambda(newStmtList(discardStmt), arguments)
       ))
   
   initProc.params = initParams
   var defaultValues = newStmtList()
-  echo treeRepr initParams
   for i in 0..<initProc.params.len:
     if initProc[3][i].kind == nnkIdentDefs and initProc[3][i][2].hasField():
       defaultValues.add(
-        newNimNode(nnkLetSection).add(
-          newIdentDefs(initProc[3][i][0].copy(), initProc[3][i][1].copy(), initProc[3][i][2])
+        newAssignment(
+          newDotExpr(ident"self", initProc[3][i][0].copy()),
+          newCall("remember", newCall(initProc[3][i][1], initProc[3][i][2]))
         )
       )
       initProc[3][i][2] = newCall("default", initProc[3][i][1])
   initProc.body = newStmtList(
+    newVarStmt(ident"self", initObjConstr),
     defaultValues,
-    newAssignment(ident"result", initObjConstr),
-    lifeCyclesDeclare
+    lifeCyclesDeclare,
+    ident"self"
   )
 
   # Life cycles

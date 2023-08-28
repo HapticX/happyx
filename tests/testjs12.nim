@@ -15,7 +15,7 @@ component CTest:
   # newId: int = id + 1
   # testChild: CTestCHild = CTestChild(id = 44, color = "purple")
   ### won't compile
-  newId: cstring = "newId: " & $id
+  newId: cstring = fmt"newId: {self.id}"
   message: cstring = ""
   `template`:
     tDiv: "template: {self.id} {self.newId}"
