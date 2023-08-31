@@ -139,7 +139,7 @@ HappyX web framework [SSR/SSG Part]
       port*: int
       routes*: seq[Route]
       path*: string
-      mounts*: seq[Server]
+      parent*: Server
       notFoundCallback*: PyObject
       middlewareCallback*: PyObject
       logger*: Logger
@@ -153,40 +153,6 @@ HappyX web framework [SSR/SSG Part]
         instance*: AsyncHttpServer
       components: TableRef[string, BaseComponent]
     ModelBase* = ref object of PyNimObjectExperimental
-  
-  proc processMounts*(self: Server, path: string = ""): tuple[x, y, z: seq[Route]] =
-    var
-      middlewares: seq[Route] = @[]
-      routes: seq[Route] = @[]
-      notfounds: seq[Route] = @[]
-    for i in self.routes:
-      if i.httpMethod == @["MIDDLEWARE"]:
-        middlewares.add(i)
-      elif i.httpMethod == @["NOTFOUND"]:
-        notfounds.add(i)
-      else:
-        routes.add(i)
-    for m in self.mounts:
-      var (x, y, z) = m.processMounts(path & self.path)
-      let mountPath = path & m.path
-      for route in x:
-        var r = initRoute(mountPath & route.path, mountPath & route.purePath, route.httpMethod, re2("^" & mountPath & route.purePath & "$"), route.handler)
-        middlewares.add(r)
-      for route in y:
-        var r = initRoute(mountPath & route.path, mountPath & route.purePath, route.httpMethod, re2("^" & mountPath & route.purePath & "$"), route.handler)
-        routes.add(r)
-      for route in z:
-        var r = initRoute(mountPath & route.path, mountPath & route.purePath, route.httpMethod, re2("^" & mountPath & route.purePath & "$"), route.handler)
-        notfounds.add(r)
-    (middlewares, routes, notfounds)
-  
-  proc fetchRoutes*(self: Server): seq[Route] =
-    var (middlewares, routes, notfounds) = self.processMounts()
-    result = middlewares
-    for i in routes:
-      result.add(i)
-    for i in notfounds:
-      result.add(i)
 else:
   type
     Server* = object
@@ -1076,7 +1042,7 @@ macro routes*(server: Server, body: untyped): untyped =
   when exportPython or defined(docgen):
     stmtList.add(newVarStmt(ident"reqResponded", newLit(false)))
     stmtList.add(newNimNode(nnkForStmt).add(
-      ident"route", newCall("fetchRoutes", ident"self"),
+      ident"route", newDotExpr(ident"self", ident"routes"),
       newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
         newCall(
           "or",
@@ -1737,7 +1703,7 @@ macro serve*(address: string, port: int, body: untyped): untyped =
             ),
             when exportPython or defined(docgen):
               newNimNode(nnkForStmt).add(
-                ident"route", newCall("fetchRoutes", ident"self"),
+                ident"route", newDotExpr(ident"self", ident"routes"),
                 newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
                   newCall(
                     "not",

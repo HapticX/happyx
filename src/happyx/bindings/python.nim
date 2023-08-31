@@ -140,11 +140,12 @@ proc headers*(self: JsonResponseObj): PyObject {.exportpy.} = self.headers
 proc headers*(self: HtmlResponseObj): PyObject {.exportpy.} = self.headers
 
 
-proc `$`*(self: Server): string {.exportpy: "__str__".} =
+proc `$`*(self: Server): string {.exportpy: "to_string".} =
   fmt"Server at http://{self.address}:{self.port}/"
 
 
 proc startServerPy*(self: Server) {.exportpy: "start".} =
+  ## Starts a new HappyX server
   let
     py = pyBuiltinsModule()
   serve(self.address, self.port):
@@ -165,17 +166,48 @@ proc inspectCallback(callback: PyObject) {.inline.} =
 Async function <{functionName} at 0x{toHex(hash, 15)}> at {filename}:{firstLine}"""
     )
 
+
+proc sortRoutes(self: Server) {.inline.} =
+  var
+    middlewares: seq[Route] = @[]
+    routes: seq[Route] = @[]
+    notfounds: seq[Route] = @[]
+  for i in self.routes:
+    if i.httpMethod == @["MIDDLEWARE"]:
+      middlewares.add(i)
+    elif i.httpMethod == @["NOTFOUND"]:
+      notfounds.add(i)
+    else:
+      routes.add(i)
+  self.routes = middlewares
+  for i in routes:
+    self.routes.add(i)
+  for i in notfounds:
+    self.routes.add(i)
+
+
+proc addRoute(self: Server, path: string, httpMethods: seq[string], callback: PyObject) {.inline.} =
+  var
+    p = path
+    s = self
+  while not s.parent.isNil():
+    p = s.path & p
+    s = s.parent
+  let routeData = handleRoute(p)
+  s.routes.add(initRoute(routeData.path, routeData.purePath, httpMethods, re2("^" & routeData.purePath & "$"), callback))
+  s.sortRoutes()
+
+
 proc route*(self: Server, path: string, methods: seq[string]): auto {.exportpy.} =
   ## Registers a new route.
   ## 
   ## You can choose HTTP methods via route("/", ["GET", "POST"])
   proc wrapper(callback: PyObject) =
     inspectCallback(callback)
-    let routeData = handleRoute(path)
     var httpMethods = methods
     for i in 0..<httpMethods.len:
       httpMethods[i] = httpMethods[i].toUpper()
-    self.routes.add(initRoute(routeData.path, routeData.purePath, httpMethods, re2("^" & routeData.purePath & "$"), callback))
+    self.addRoute(path, httpMethods, callback)
   wrapper
 
 
@@ -183,8 +215,7 @@ proc get*(self: Server, path: string): auto {.exportpy.} =
   ## Registers a new GET route.
   proc wrapper(callback: PyObject) =
     inspectCallback(callback)
-    let routeData = handleRoute(path)
-    self.routes.add(initRoute(routeData.path, routeData.purePath, @["GET"], re2("^" & routeData.purePath & "$"), callback))
+    self.addRoute(path, @["GET"], callback)
   wrapper
 
 
@@ -192,8 +223,7 @@ proc post*(self: Server, path: string): auto {.exportpy.} =
   ## Registers a new POST route.
   proc wrapper(callback: PyObject) =
     inspectCallback(callback)
-    let routeData = handleRoute(path)
-    self.routes.add(initRoute(routeData.path, routeData.purePath, @["POST"], re2("^" & routeData.purePath & "$"), callback))
+    self.addRoute(path, @["POST"], callback)
   wrapper
 
 
@@ -201,8 +231,7 @@ proc put*(self: Server, path: string): auto {.exportpy.} =
   ## Registers a new PUT route.
   proc wrapper(callback: PyObject) =
     inspectCallback(callback)
-    let routeData = handleRoute(path)
-    self.routes.add(initRoute(routeData.path, routeData.purePath, @["PUT"], re2("^" & routeData.purePath & "$"), callback))
+    self.addRoute(path, @["PUT"], callback)
   wrapper
 
 
@@ -210,8 +239,7 @@ proc delete*(self: Server, path: string): auto {.exportpy.} =
   ## Registers a new DELETE route.
   proc wrapper(callback: PyObject) =
     inspectCallback(callback)
-    let routeData = handleRoute(path)
-    self.routes.add(initRoute(routeData.path, routeData.purePath, @["DELETE"], re2("^" & routeData.purePath & "$"), callback))
+    self.addRoute(path, @["DELETE"], callback)
   wrapper
 
 
@@ -219,8 +247,7 @@ proc link*(self: Server, path: string): auto {.exportpy.} =
   ## Registers a new LINK route.
   proc wrapper(callback: PyObject) =
     inspectCallback(callback)
-    let routeData = handleRoute(path)
-    self.routes.add(initRoute(routeData.path, routeData.purePath, @["LINK"], re2("^" & routeData.purePath & "$"), callback))
+    self.addRoute(path, @["LINK"], callback)
   wrapper
 
 
@@ -228,8 +255,7 @@ proc unlink*(self: Server, path: string): auto {.exportpy.} =
   ## Registers a new UNLINK route.
   proc wrapper(callback: PyObject) =
     inspectCallback(callback)
-    let routeData = handleRoute(path)
-    self.routes.add(initRoute(routeData.path, routeData.purePath, @["UNLINK"], re2("^" & routeData.purePath & "$"), callback))
+    self.addRoute(path, @["UNLINK"], callback)
   wrapper
 
 
@@ -237,8 +263,7 @@ proc purge*(self: Server, path: string): auto {.exportpy.} =
   ## Registers a new PURGE route.
   proc wrapper(callback: PyObject) =
     inspectCallback(callback)
-    let routeData = handleRoute(path)
-    self.routes.add(initRoute(routeData.path, routeData.purePath, @["PURGE"], re2("^" & routeData.purePath & "$"), callback))
+    self.addRoute(path, @["PURGE"], callback)
   wrapper
 
 
@@ -246,8 +271,7 @@ proc options*(self: Server, path: string): auto {.exportpy.} =
   ## Registers a new OPTIONS route.
   proc wrapper(callback: PyObject) =
     inspectCallback(callback)
-    let routeData = handleRoute(path)
-    self.routes.add(initRoute(routeData.path, routeData.purePath, @["OPTIONS"], re2("^" & routeData.purePath & "$"), callback))
+    self.addRoute(path, @["OPTIONS"], callback)
   wrapper
 
 
@@ -255,8 +279,7 @@ proc head*(self: Server, path: string): auto {.exportpy.} =
   ## Registers a new HEAD route.
   proc wrapper(callback: PyObject) =
     inspectCallback(callback)
-    let routeData = handleRoute(path)
-    self.routes.add(initRoute(routeData.path, routeData.purePath, @["HEAD"], re2("^" & routeData.purePath & "$"), callback))
+    self.addRoute(path, @["HEAD"], callback)
   wrapper
 
 
@@ -264,8 +287,7 @@ proc copy*(self: Server, path: string): auto {.exportpy.} =
   ## Registers a new COPY route.
   proc wrapper(callback: PyObject) =
     inspectCallback(callback)
-    let routeData = handleRoute(path)
-    self.routes.add(initRoute(routeData.path, routeData.purePath, @["COPY"], re2("^" & routeData.purePath & "$"), callback))
+    self.addRoute(path, @["COPY"], callback)
   wrapper
 
 
@@ -273,8 +295,7 @@ proc websocket*(self: Server, path: string): auto {.exportpy.} =
   ## Registers a new WEBSOCKET route.
   proc wrapper(callback: PyObject) =
     inspectCallback(callback)
-    let routeData = handleRoute(path)
-    self.routes.add(initRoute(routeData.path, routeData.purePath, @["WEBSOCKET"], re2("^" & routeData.purePath & "$"), callback))
+    self.addRoute(path, @["WEBSOCKET"], callback)
   wrapper
 
 
@@ -282,7 +303,7 @@ proc middleware*(self: Server): auto {.exportpy.} =
   ## Registers a new MIDDLEWARE route.
   proc wrapper(callback: PyObject) =
     inspectCallback(callback)
-    self.routes.add(initRoute("", "", @["MIDDLEWARE"], re2("^$"), callback))
+    self.addRoute("", @["MIDDLEWARE"], callback)
   wrapper
 
 
@@ -290,22 +311,26 @@ proc notfound*(self: Server): auto {.exportpy.} =
   ## Registers a new NOT FOUND route.
   proc wrapper(callback: PyObject) =
     inspectCallback(callback)
-    self.routes.add(initRoute("", "", @["NOTFOUND"], re2("^$"), callback))
+    self.addRoute("", @["NOTFOUND"], callback)
   wrapper
 
 
 proc mount*(self: Server, path: string, other: Server) {.exportpy.} =
   ## Registers sub application at `path`
   other.path = path
-  self.mounts.add(other)
+  other.parent = self
 
 
 proc `static`*(self: Server, path: string, directory: string) {.exportpy: "static".} =
   ## Registers public folder
   var
     p = path
+    s = self
+  while not s.parent.isNil():
+    p = s.path & p
+    s = s.parent
   if not p.endsWith("/"):
     p &= "/"
   p &= "{file:path}"
   let routeData = handleRoute(p)
-  self.routes.add(initRoute(p, directory, @["STATICFILE"], re2("^" & routeData.purePath & "$"), nil))
+  s.routes.add(initRoute(p, directory, @["STATICFILE"], re2("^" & routeData.purePath & "$"), nil))

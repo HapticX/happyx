@@ -8,6 +8,8 @@ app = new_server()
 user = new_server()
 sub_user = new_server()
 
+print(app.to_string())
+
 app.static("/static", './')
 app.mount("/user", user)
 user.mount("/sub", sub_user)
