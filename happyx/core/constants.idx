@@ -6,6 +6,8 @@ enableDebug	happyx/core/constants.html#enableDebug	constants: enableDebug
 enableDebugComponentMacro	happyx/core/constants.html#enableDebugComponentMacro	constants: enableDebugComponentMacro	
 enableDebugSsrMacro	happyx/core/constants.html#enableDebugSsrMacro	constants: enableDebugSsrMacro	
 enableDebugSpaMacro	happyx/core/constants.html#enableDebugSpaMacro	constants: enableDebugSpaMacro	
+enableUseCompDebugMacro	happyx/core/constants.html#enableUseCompDebugMacro	constants: enableUseCompDebugMacro	
+componentDebugTarget	happyx/core/constants.html#componentDebugTarget	constants: componentDebugTarget	
 exportPython	happyx/core/constants.html#exportPython	constants: exportPython	
 enableUi	happyx/core/constants.html#enableUi	constants: enableUi	
 enableApiDoc	happyx/core/constants.html#enableApiDoc	constants: enableApiDoc	
@@ -22,3 +24,4 @@ HpxMinor	happyx/core/constants.html#HpxMinor	constants: HpxMinor
 HpxPatch	happyx/core/constants.html#HpxPatch	constants: HpxPatch	
 HpxVersion	happyx/core/constants.html#HpxVersion	constants: HpxVersion	
 Constants ✨	happyx/core/constants.html#constants-✨	 Constants ✨	
+Dev Consts 👨‍💻	happyx/core/constants.html#constants-✨-dev-consts-👨‍💻	  Dev Consts 👨‍💻	
