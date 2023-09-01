@@ -134,7 +134,7 @@ window.addEventListener('DOMContentLoaded', main);
   port*: int
   routes*: seq[Route]
   path*: string
-  mounts*: seq[Server]
+  parent*: Server
   notFoundCallback*: PyObject
   middlewareCallback*: PyObject
   logger*: Logger
@@ -162,11 +162,6 @@ window.addEventListener('DOMContentLoaded', main);
     title="answerFile(req: Request; filename: string; code: HttpCode = Http200;
            asAttachment = false): owned(Future[void])">answerFile(req: Request; filename: string; code: HttpCode = Http200;
            asAttachment = false): owned(Future[void])</a></li>
-
-  </ul>
-  <ul class="simple nested-toc-section">fetchRoutes
-      <li><a class="reference" href="#fetchRoutes%2CServer"
-    title="fetchRoutes(self: Server): seq[Route]">fetchRoutes(self: Server): seq[Route]</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">fgColored
@@ -199,11 +194,6 @@ window.addEventListener('DOMContentLoaded', main);
   <ul class="simple nested-toc-section">parseQueryArrays
       <li><a class="reference" href="#parseQueryArrays%2Cstring"
     title="parseQueryArrays(query: string): TableRef[string, seq[string]]">parseQueryArrays(query: string): TableRef[string, seq[string]]</a></li>
-
-  </ul>
-  <ul class="simple nested-toc-section">processMounts
-      <li><a class="reference" href="#processMounts%2CServer%2Cstring"
-    title="processMounts(self: Server; path: string = &quot;&quot;): tuple[x, y, z: seq[Route]]">processMounts(self: Server; path: string = &quot;&quot;): tuple[x, y, z: seq[Route]]</a></li>
 
   </ul>
 
@@ -336,7 +326,7 @@ window.addEventListener('DOMContentLoaded', main);
   <span class="Identifier">port</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int</span>
   <span class="Identifier">routes</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="../bindings/python_types.html#Route"><span class="Identifier">Route</span></a><span class="Other">]</span>
   <span class="Identifier">path</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
-  <span class="Identifier">mounts</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="server.html#Server"><span class="Identifier">Server</span></a><span class="Other">]</span>
+  <span class="Identifier">parent</span><span class="Operator">*</span><span class="Other">:</span> <a href="server.html#Server"><span class="Identifier">Server</span></a>
   <span class="Identifier">notFoundCallback</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">PyObject</span>
   <span class="Identifier">middlewareCallback</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">PyObject</span>
   <span class="Identifier">logger</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">Logger</span>
@@ -376,14 +366,6 @@ window.addEventListener('DOMContentLoaded', main);
 <p>Use this example instead of this procedure</p>
 <pre class="listing"><span class="Identifier">get</span> <span class="StringLit">&quot;/$filename&quot;</span><span class="Punctuation">:</span>
   <span class="Keyword">return</span> <span class="Identifier">FileResponse</span><span class="Punctuation">(</span><span class="StringLit">&quot;/publicFolder&quot;</span> <span class="Operator">/</span> <span class="Identifier">filename</span><span class="Punctuation">)</span></pre>
-
-</dd>
-</div>
-<div id="fetchRoutes,Server">
-<dt><pre><span class="Keyword">proc</span> <a href="#fetchRoutes%2CServer"><span class="Identifier">fetchRoutes</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="server.html#Server"><span class="Identifier">Server</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="../bindings/python_types.html#Route"><span class="Identifier">Route</span></a><span class="Other">]</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RegexError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
-<dd>
-
-
 
 </dd>
 </div>
@@ -483,15 +465,6 @@ Parses query and retrieves TableRef[string, seq[string]] object
 
 </dd>
 </div>
-<div id="processMounts,Server,string">
-<dt><pre><span class="Keyword">proc</span> <a href="#processMounts%2CServer%2Cstring"><span class="Identifier">processMounts</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="server.html#Server"><span class="Identifier">Server</span></a><span class="Other">;</span> <span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span> <span class="Other">=</span> <span class="StringLit">&quot;&quot;</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">tuple</span><span class="Other">[</span><span class="Identifier">x</span><span class="Other">,</span> <span class="Identifier">y</span><span class="Other">,</span> <span class="Identifier">z</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="../bindings/python_types.html#Route"><span class="Identifier">Route</span></a><span class="Other">]</span><span class="Other">]</span> {.
-    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RegexError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
-<dd>
-
-
-
-</dd>
-</div>
 
 </dl></div>
 <div class="section" id="17">
@@ -530,7 +503,7 @@ You can create routes with this marco
 <h4><a class="toc-backref" id="example-available-path-params" href="#example-available-path-params">Available Path Params</a></h4><ul class="simple"><li><tt class="docutils literal"><span class="pre"><span class="Identifier">bool</span></span></tt>: any boolean (<tt class="docutils literal"><span class="pre"><span class="Identifier">y</span></span></tt>, <tt class="docutils literal"><span class="pre"><span class="Identifier">yes</span></span></tt>, <tt class="docutils literal"><span class="pre"><span class="Identifier">on</span></span></tt>, <tt class="docutils literal"><span class="pre"><span class="DecNumber">1</span></span></tt> and <tt class="docutils literal"><span class="pre"><span class="Identifier">true</span></span></tt> for true; <tt class="docutils literal"><span class="pre"><span class="Identifier">n</span></span></tt>, <tt class="docutils literal"><span class="pre"><span class="Identifier">no</span></span></tt>, <tt class="docutils literal"><span class="pre"><span class="Identifier">off</span></span></tt>, <tt class="docutils literal"><span class="pre"><span class="DecNumber">0</span></span></tt> and <tt class="docutils literal"><span class="pre"><span class="Identifier">false</span></span></tt> for false).</li>
 <li><tt class="docutils literal"><span class="pre"><span class="Identifier">int</span></span></tt>: any integer.</li>
 <li><tt class="docutils literal"><span class="pre"><span class="Identifier">float</span></span></tt>: any float number.</li>
-<li><tt class="docutils literal"><span class="pre"><span class="Identifier">word</span></span></tt>: any word includes <tt class="docutils literal"><span class="pre"><span class="RawData">re&quot;\w+&quot;</span></span></tt>.</li>
+<li><tt class="docutils literal"><span class="pre"><span class="Identifier">word</span></span></tt>: any word includes <tt class="docutils literal"><span class="pre"><span class="RawData">re2&quot;\w+&quot;</span></span></tt>.</li>
 <li><tt class="docutils literal"><span class="pre"><span class="Identifier">string</span></span></tt>: any string excludes <tt class="docutils literal"><span class="pre"><span class="StringLit">&quot;/&quot;</span></span></tt>.</li>
 <li><tt class="docutils literal"><span class="pre"><span class="Keyword">enum</span><span class="Punctuation">(</span><span class="Identifier">EnumName</span><span class="Punctuation">)</span></span></tt>: any string excludes <tt class="docutils literal"><span class="pre"><span class="StringLit">&quot;/&quot;</span></span></tt>. Converts into <tt class="docutils literal"><span class="pre"><span class="Identifier">EnumName</span></span></tt>.</li>
 <li><tt class="docutils literal"><span class="pre"><span class="Identifier">path</span></span></tt>: any float number includes <tt class="docutils literal"><span class="pre"><span class="StringLit">&quot;/&quot;</span></span></tt>.</li>
@@ -695,7 +668,7 @@ The <tt class="docutils literal"><span class="pre"><span class="Identifier">star
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-08-23 15:24:41 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-09-01 09:09:22 UTC</small>
       </div>
     </div>
   </div>

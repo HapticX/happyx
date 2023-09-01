@@ -3,9 +3,13 @@ enableMicro	happyx/core/constants.html#enableMicro	constants: enableMicro
 enableHttpBeast	happyx/core/constants.html#enableHttpBeast	constants: enableHttpBeast	
 enableAutoTranslate	happyx/core/constants.html#enableAutoTranslate	constants: enableAutoTranslate	
 enableDebug	happyx/core/constants.html#enableDebug	constants: enableDebug	
+enableDebugComponentMacro	happyx/core/constants.html#enableDebugComponentMacro	constants: enableDebugComponentMacro	
+enableDebugSsrMacro	happyx/core/constants.html#enableDebugSsrMacro	constants: enableDebugSsrMacro	
+enableDebugSpaMacro	happyx/core/constants.html#enableDebugSpaMacro	constants: enableDebugSpaMacro	
 exportPython	happyx/core/constants.html#exportPython	constants: exportPython	
 enableUi	happyx/core/constants.html#enableUi	constants: enableUi	
 enableApiDoc	happyx/core/constants.html#enableApiDoc	constants: enableApiDoc	
+enableOrm	happyx/core/constants.html#enableOrm	constants: enableOrm	
 numThreads	happyx/core/constants.html#numThreads	constants: numThreads	
 appName	happyx/core/constants.html#appName	constants: appName	
 apiDocsPath	happyx/core/constants.html#apiDocsPath	constants: apiDocsPath	

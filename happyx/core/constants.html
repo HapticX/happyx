@@ -114,12 +114,20 @@ window.addEventListener('DOMContentLoaded', main);
     title="enableAutoTranslate = false">enableAutoTranslate</a></li>
   <li><a class="reference" href="#enableDebug"
     title="enableDebug = false">enableDebug</a></li>
+  <li><a class="reference" href="#enableDebugComponentMacro"
+    title="enableDebugComponentMacro = false">enableDebugComponentMacro</a></li>
+  <li><a class="reference" href="#enableDebugSpaMacro"
+    title="enableDebugSpaMacro = false">enableDebugSpaMacro</a></li>
+  <li><a class="reference" href="#enableDebugSsrMacro"
+    title="enableDebugSsrMacro = false">enableDebugSsrMacro</a></li>
   <li><a class="reference" href="#enableHttpBeast"
     title="enableHttpBeast = false">enableHttpBeast</a></li>
   <li><a class="reference" href="#enableHttpx"
     title="enableHttpx = false">enableHttpx</a></li>
   <li><a class="reference" href="#enableMicro"
     title="enableMicro = false">enableMicro</a></li>
+  <li><a class="reference" href="#enableOrm"
+    title="enableOrm = true">enableOrm</a></li>
   <li><a class="reference" href="#enableUi"
     title="enableUi = false">enableUi</a></li>
   <li><a class="reference" href="#exportPython"
@@ -127,11 +135,11 @@ window.addEventListener('DOMContentLoaded', main);
   <li><a class="reference" href="#HpxMajor"
     title="HpxMajor = 2">HpxMajor</a></li>
   <li><a class="reference" href="#HpxMinor"
-    title="HpxMinor = 6">HpxMinor</a></li>
+    title="HpxMinor = 8">HpxMinor</a></li>
   <li><a class="reference" href="#HpxPatch"
     title="HpxPatch = 1">HpxPatch</a></li>
   <li><a class="reference" href="#HpxVersion"
-    title="HpxVersion = &quot;2.6.1&quot;">HpxVersion</a></li>
+    title="HpxVersion = &quot;2.8.1&quot;">HpxVersion</a></li>
   <li><a class="reference" href="#httpMethods"
     title="httpMethods = [&quot;get&quot;, &quot;post&quot;, &quot;put&quot;, &quot;patch&quot;, &quot;link&quot;, &quot;options&quot;, &quot;head&quot;,
                &quot;delete&quot;, &quot;unlink&quot;, &quot;purge&quot;, &quot;copy&quot;]">httpMethods</a></li>
@@ -165,6 +173,7 @@ window.addEventListener('DOMContentLoaded', main);
 <tr><td><tt class="docutils literal"><span class="pre"><span class="Operator">-</span><span class="Identifier">d</span><span class="Punctuation">:</span><span class="Identifier">cryptoMethod</span></span></tt></td><td>choose crypto method for <tt class="docutils literal"><span class="pre"><span class="Identifier">generate_password</span></span></tt> methods 🔐</td><td>✅</td></tr>
 <tr><td><tt class="docutils literal"><span class="pre"><span class="Operator">-</span><span class="Identifier">d</span><span class="Punctuation">:</span><span class="Identifier">numThreads</span></span></tt></td><td>choose number of threads (httpx/httpbeast) ⌛</td><td>✅</td></tr>
 <tr><td><tt class="docutils literal"><span class="pre"><span class="Operator">-</span><span class="Identifier">d</span><span class="Punctuation">:</span><span class="Identifier">disableApiDoc</span></span></tt></td><td>disables built-in API documentation 📕</td><td>❌</td></tr>
+<tr><td><tt class="docutils literal"><span class="pre"><span class="Operator">-</span><span class="Identifier">d</span><span class="Punctuation">:</span><span class="Identifier">disableORM</span></span></tt></td><td>disables built-in ORM 📑</td><td>❌</td></tr>
 <tr><td><tt class="docutils literal"><span class="pre"><span class="Operator">-</span><span class="Identifier">d</span><span class="Punctuation">:</span><span class="Identifier">appName</span></span></tt></td><td>choose name of application (SSR/SSG) 📕</td><td>✅</td></tr>
 <tr><td><tt class="docutils literal"><span class="pre"><span class="Operator">-</span><span class="Identifier">d</span><span class="Punctuation">:</span><span class="Identifier">apiDocsPath</span></span></tt></td><td>choose path for API documentation 📕</td><td>✅</td></tr>
 </table></p>
@@ -219,6 +228,30 @@ window.addEventListener('DOMContentLoaded', main);
 
 </dd>
 </div>
+<div id="enableDebugComponentMacro">
+<dt><pre><a href="constants.html#enableDebugComponentMacro"><span class="Identifier">enableDebugComponentMacro</span></a> <span class="Other">=</span> <span class="DecNumber">false</span></pre></dt>
+<dd>
+
+
+
+</dd>
+</div>
+<div id="enableDebugSpaMacro">
+<dt><pre><a href="constants.html#enableDebugSpaMacro"><span class="Identifier">enableDebugSpaMacro</span></a> <span class="Other">=</span> <span class="DecNumber">false</span></pre></dt>
+<dd>
+
+
+
+</dd>
+</div>
+<div id="enableDebugSsrMacro">
+<dt><pre><a href="constants.html#enableDebugSsrMacro"><span class="Identifier">enableDebugSsrMacro</span></a> <span class="Other">=</span> <span class="DecNumber">false</span></pre></dt>
+<dd>
+
+
+
+</dd>
+</div>
 <div id="enableHttpBeast">
 <dt><pre><a href="constants.html#enableHttpBeast"><span class="Identifier">enableHttpBeast</span></a> <span class="Other">=</span> <span class="DecNumber">false</span></pre></dt>
 <dd>
@@ -237,6 +270,14 @@ window.addEventListener('DOMContentLoaded', main);
 </div>
 <div id="enableMicro">
 <dt><pre><a href="constants.html#enableMicro"><span class="Identifier">enableMicro</span></a> <span class="Other">=</span> <span class="DecNumber">false</span></pre></dt>
+<dd>
+
+
+
+</dd>
+</div>
+<div id="enableOrm">
+<dt><pre><a href="constants.html#enableOrm"><span class="Identifier">enableOrm</span></a> <span class="Other">=</span> <span class="DecNumber">true</span></pre></dt>
 <dd>
 
 
@@ -268,7 +309,7 @@ window.addEventListener('DOMContentLoaded', main);
 </dd>
 </div>
 <div id="HpxMinor">
-<dt><pre><a href="constants.html#HpxMinor"><span class="Identifier">HpxMinor</span></a> <span class="Other">=</span> <span class="DecNumber">6</span></pre></dt>
+<dt><pre><a href="constants.html#HpxMinor"><span class="Identifier">HpxMinor</span></a> <span class="Other">=</span> <span class="DecNumber">8</span></pre></dt>
 <dd>
 
 
@@ -284,7 +325,7 @@ window.addEventListener('DOMContentLoaded', main);
 </dd>
 </div>
 <div id="HpxVersion">
-<dt><pre><a href="constants.html#HpxVersion"><span class="Identifier">HpxVersion</span></a> <span class="Other">=</span> <span class="StringLit">&quot;2.6.1&quot;</span></pre></dt>
+<dt><pre><a href="constants.html#HpxVersion"><span class="Identifier">HpxVersion</span></a> <span class="Other">=</span> <span class="StringLit">&quot;2.8.1&quot;</span></pre></dt>
 <dd>
 
 
@@ -334,7 +375,7 @@ window.addEventListener('DOMContentLoaded', main);
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-08-23 15:24:32 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-09-01 09:08:56 UTC</small>
       </div>
     </div>
   </div>

@@ -9,5 +9,5 @@ parseBoolOrJString	happyx/routing/routing.html#parseBoolOrJString,string	routing
 parseIntOrJString	happyx/routing/routing.html#parseIntOrJString,string	routing: parseIntOrJString(str: string): JsonNode	
 parseFloatOrJString	happyx/routing/routing.html#parseFloatOrJString,string	routing: parseFloatOrJString(str: string): JsonNode	
 convertJson	happyx/routing/routing.html#convertJson,RequestModelData,string	routing: convertJson(self: RequestModelData; body: string): JsonNode	
-getRouteParams	happyx/routing/routing.html#getRouteParams,RouteDataObj,seq[RegexMatch],string,seq[HandlerParam],string,bool	routing: getRouteParams(routeData: RouteDataObj; found_regexp_matches: seq[RegexMatch];\n               urlPath: string = &quot;&quot;; handlerParams: seq[HandlerParam] = @[];\n               body: string = &quot;&quot;; force: bool = false): JsonNode	
+getRouteParams	happyx/routing/routing.html#getRouteParams,RouteDataObj,seq[RegexMatch2],string,seq[HandlerParam],string,bool	routing: getRouteParams(routeData: RouteDataObj; found_regexp_matches: seq[RegexMatch2];\n               urlPath: string = &quot;&quot;; handlerParams: seq[HandlerParam] = @[];\n               body: string = &quot;&quot;; force: bool = false): JsonNode	
 pathParams	happyx/routing/routing.html#pathParams.m,untyped	routing: pathParams(body: untyped): untyped	
