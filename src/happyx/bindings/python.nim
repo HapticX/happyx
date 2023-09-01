@@ -141,6 +141,7 @@ proc headers*(self: HtmlResponseObj): PyObject {.exportpy.} = self.headers
 
 
 proc `$`*(self: Server): string {.exportpy: "to_string".} =
+  ## Return server string representation
   fmt"Server at http://{self.address}:{self.port}/"
 
 
