@@ -17,6 +17,15 @@
 ## | `-d:appName`       | choose name of application (SSR/SSG) 📕                    | ✅         |
 ## | `-d:apiDocsPath`   | choose path for API documentation 📕                       |  ✅        |
 ## 
+## ## Dev Consts 👨‍💻
+## 
+## | Flag                      | Description                                                | Need Value |
+## | :---:                     | :---:                                                      | :--:       |
+## | `-d:compDebug`            | enables debug logging for components                       | ❌         |
+## | `-d:ssrDebug`             | enables debug logging for SSR                              | ❌         |
+## | `-d:spaDebug`             | enables debug logging for SPA                              | ❌         |
+## | `-d:componentDebugTarget` | after this component program will terminated               | ✅         |
+## 
 import strformat
 when not defined(js) and defined(debug):
   import terminal
@@ -35,6 +44,8 @@ const
   enableDebugComponentMacro* = defined(compDebug) or defined(happyxCompDebug) or defined(hpxCompDebug)
   enableDebugSsrMacro* = defined(ssrDebug) or defined(happyxSsrDebug) or defined(hpxSsrDebug)
   enableDebugSpaMacro* = defined(spaDebug) or defined(happyxSpaDebug) or defined(hpxSpaDebug)
+  enableUseCompDebugMacro* = defined(useCompDebug) or defined(happyxUseCompDebug) or defined(hpxUseCompDebug)
+  componentDebugTarget* {.strdefine.} = ""
   # Language bindings
   exportPython* = defined(export2py) or defined(happyxExport2py) or defined(hpxExport2py)
   # Framework features

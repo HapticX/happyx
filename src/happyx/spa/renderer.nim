@@ -211,11 +211,12 @@ when defined(js):
         virtualDom = tag.toDom().n
       # echo virtualDom.innerHTML
       # echo realDom.innerHTML
-      realDom.innerHTML = virtualDom.innerHTML
-      for comp in currentComponentsList:
-        comp.updated(comp, nil)
-      currentComponentsList.setLen(0)
       # compareEdit(realDom, virtualDom)
+    realDom.innerHTML = virtualDom.innerHTML
+    for comp in currentComponentsList:
+      echo comp.uniqCompId
+      comp.updated(comp, nil)
+    currentComponentsList.setLen(0)
 else:
   proc renderVdom*(app: App, tag: TagRef) =
     ## Rerender DOM with VDOM
@@ -543,20 +544,27 @@ macro routes*(app: App, body: untyped): untyped =
     router,
     newAssignment(newDotExpr(ident"app", ident"router"), router.name),
     onDOMContentLoaded,
-    newNimNode(nnkPragma).add(newNimNode(nnkExprColonExpr).add(
-      ident"emit",
-      newStrLitNode(
-        "window.addEventListener('beforeunload', (e) => {"
-      )
-    )),
-    finalize,
-    newNimNode(nnkPragma).add(newNimNode(nnkExprColonExpr).add(
-      ident"emit",
-      newStrLitNode(
-        "});"
-      )
-    ))
+    if finalize.len > 0:
+      newStmtList(
+        newNimNode(nnkPragma).add(newNimNode(nnkExprColonExpr).add(
+          ident"emit",
+          newStrLitNode(
+            "window.addEventListener('beforeunload', (e) => {"
+          )
+        )),
+        finalize,
+        newNimNode(nnkPragma).add(newNimNode(nnkExprColonExpr).add(
+          ident"emit",
+          newStrLitNode(
+            "});"
+          )
+        )
+      ))
+    else:
+      newStmtList()
   )
+  when enableDebugSpaMacro:
+    echo result.toStrLit
 
 
 macro appRoutes*(name: string, body: untyped): untyped =

@@ -567,7 +567,7 @@ macro component*(name, body: untyped): untyped =
             # lambdaBody.replaceSelfComponent(ident(componentName), convert = false, is_constructor = true)
             lambdaBody.insert(0, newVarStmt(ident"self", newCall(componentName, ident"self")))
             lifeCyclesDeclare.insert(0, newAssignment(
-              newDotExpr(ident"result", ident(key)),
+              newDotExpr(ident"self", ident(key)),
               newLambda(lambdaBody, arguments)
             ))
             usedLifeCycles[key] = true
@@ -604,9 +604,9 @@ macro component*(name, body: untyped): untyped =
       initProc[3][i][2] = newCall("default", initProc[3][i][1])
   initProc.body = newStmtList(
     newVarStmt(ident"self", initObjConstr),
-    defaultValues,
     lifeCyclesDeclare,
-    ident"self"
+    defaultValues,
+    newNimNode(nnkReturnStmt).add(ident"self")
   )
 
   # Life cycles
@@ -772,6 +772,11 @@ macro component*(name, body: untyped): untyped =
   )
   when enableDebugComponentMacro:
     echo result.toStrLit
+    if componentDebugTarget == componentName:
+      echo "["
+      echo fmt"  Program was terminated. componentDebugTarget is {componentName}"
+      echo "]"
+      quit(QuitSuccess)
 
 
 macro importComponent*(body: untyped): untyped =

@@ -132,6 +132,7 @@ component CodeBlockGuide:
               tDiv(id = "{source.id}{self.uniqCompId}_play_result", class = "w-full pb-4")
   
   @updated:
+    echo "updated code block guide"
     for source in self.sources:
       highlight(self.CodeBlockGuide, source.id)
   

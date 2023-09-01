@@ -5,10 +5,10 @@ component CTestChild:
   id: int
   color: cstring
   `template`:
-    tDiv(style=fmt"color:{self.color}"):
-      "subcomponent ID: {self.id}"
+    tDiv(style = fmt"color:{self.color}"):
+      "subcomponent ID: {self.id} {self.uniqCompId}"
 
-var ctest1 = use component CTestChild(id=1, color = "green")
+var ctest1 = use component CTestChild(id = 1, color = "green")
 
 component CTest:
   id: int
@@ -18,12 +18,6 @@ component CTest:
   newId: cstring = fmt"newId: {self.id}"
   message: cstring = ""
   `template`:
-    tDiv: "template: {self.id} {self.newId}"
-    tDiv: "message: {self.message}"
-    tButton:
-      "log id"
-      @click:
-        console.log(self.id)
     tButton:
       "get Id"
       @click:
@@ -32,14 +26,13 @@ component CTest:
         echo fmt"{self.getId()}"
         echo fmt"{self.id}"
         self.message = fmt"{self.id}"
-    component CTestChild(id = 3, color = "red")
-    component CTestChild(id = self.id, color = "blue") # undefined
-    #component CTestChild(id = self.id, color = "blue") # same as above
-    component ctest1
+    component CTestChild(id = 5, color = "gray")
+    component CTestChild(id = 6, color = "gray")
+    component CTestChild(id = 7, color = "gray")
   [methods]:
     proc getId(): int = self.id
 
-var test1 = use component CTest(id= 1)
+var test1 = use component CTest(id = 1)
 
 appRoutes("app"):
   "/":

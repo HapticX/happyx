@@ -49,7 +49,7 @@ component CodeBlockSlider:
           if self.index == idx:
             tDiv(
               id = fmt"circle-{self.uniqCompId}_{idx}",
-              class = "transition-all duration-300 w-24 h-8 lg:w-18 lg:h-6 xl:w-12 xl:h-4 bg-[{Foreground}] dark:bg-[{ForegroundDark}] rounded-full cursor-pointer"
+              class = "transition-all duration-300 overflow-hidden w-24 h-8 lg:w-18 lg:h-6 xl:w-12 xl:h-4 bg-[{Foreground}] dark:bg-[{ForegroundDark}] rounded-full cursor-pointer"
             ):
               @click:
                 enableRouting = false
@@ -62,11 +62,11 @@ component CodeBlockSlider:
           else:
             tDiv(
               id = fmt"circle-{self.uniqCompId}_{idx}",
-              class = "transition-all duration-300 w-8 h-8 lg:w-6 lg:h-6 xl:w-4 xl:h-4 bg-[{Foreground}] dark:bg-[{ForegroundDark}] rounded-full cursor-pointer"
+              class = "transition-all duration-300 overflow-hidden w-8 h-8 lg:w-6 lg:h-6 xl:w-4 xl:h-4 bg-[{Foreground}] dark:bg-[{ForegroundDark}] rounded-full cursor-pointer"
             ):
               @click:
                 enableRouting = false
-                updateIndex(self.CodeBlockSlider, idx)
+                updateIndex(self, idx)
                 enableRouting = true
               tDiv(
                 id = fmt"circle-{self.uniqCompId}_{idx}-fill",

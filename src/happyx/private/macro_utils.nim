@@ -91,7 +91,7 @@ proc useComponent*(statement: NimNode, inCycle, inComponent: bool,
     for i in 1..<statement[1][2].len:
       # infix -> call -> arg
       objConstr.add(statement[1][2][i])
-  newStmtList(
+  result = newStmtList(
     newVarStmt(ident(componentNameTmp), objConstr),
     when defined(js):
       newVarStmt(
@@ -114,7 +114,7 @@ proc useComponent*(statement: NimNode, inCycle, inComponent: bool,
     if returnTagRef:
       newLetStmt(
         ident(componentData),
-        newCall("renderTag", ident(componentName))
+        newCall("render", ident(componentName))
       )
     else:
       newEmptyNode(),
@@ -151,6 +151,8 @@ proc useComponent*(statement: NimNode, inCycle, inComponent: bool,
     else:
       ident(componentName)
   )
+  when enableUseCompDebugMacro:
+    echo result.toStrLit
 
 
 proc newMultiVarStmt*(extractNames: openArray[NimNode], val: NimNode, isLet: bool = false): NimNode =
@@ -422,9 +424,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
       if statement[0] == ident"component":
         # Component without arguments
         if statement[1].kind == nnkIdent:
-          let
-            componentName = statement[1]
-            componentData = "data_" & $componentName
+          let componentData = "data_" & $statement[1]
           result.add(
             newNimNode(nnkWhenStmt).add(
               newNimNode(nnkElifBranch).add(
@@ -432,12 +432,12 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
                 newStmtList(
                   newLetStmt(
                     ident(componentData),
-                    newCall("render", componentName)
+                    newCall("render", statement[1])
                   ),
                   newCall(
                     "addArgIter",
                     ident(componentData),
-                    newCall("&", newStrLitNode("data-"), newDotExpr(componentName, ident(UniqueComponentId)))
+                    newCall("&", newStrLitNode("data-"), newDotExpr(statement[1], ident(UniqueComponentId)))
                   ),
                   when defined(js):
                     newStmtList(
