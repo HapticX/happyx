@@ -140,6 +140,10 @@ proc headers*(self: JsonResponseObj): PyObject {.exportpy.} = self.headers
 proc headers*(self: HtmlResponseObj): PyObject {.exportpy.} = self.headers
 
 
+proc registerRouteParamType*(name, pattern: string, callback: PyObject) {.exportpy: "register_route_param_type".} =
+  registerRouteParamTypeAux(name, pattern, callback)
+
+
 proc `$`*(self: Server): string {.exportpy: "to_string".} =
   ## Return server string representation
   fmt"Server at http://{self.address}:{self.port}/"
@@ -147,6 +151,13 @@ proc `$`*(self: Server): string {.exportpy: "to_string".} =
 
 proc startServerPy*(self: Server) {.exportpy: "start".} =
   ## Starts a new HappyX server
+  ## 
+  ## Server shouldn't be mounted
+  {.cast(gcsafe).}:
+    if not self.parent.isNil():
+      raise newException(
+        HpxAppRouteDefect, fmt"Server that you start shouldn't be mounted!"
+      )
   let
     py = pyBuiltinsModule()
   serve(self.address, self.port):
@@ -154,8 +165,10 @@ proc startServerPy*(self: Server) {.exportpy: "start".} =
 
 
 proc inspectCallback(callback: PyObject) {.inline.} =
+  ## Raises exception if callback is coroutine
   let inspect = pyImport("inspect")
   if inspect.iscoroutinefunction(callback).to(bool):
+    # Get function info
     let
       functionName = callback.getAttr("__code__").getAttr("co_name")
       filename = callback.getAttr("__code__").getAttr("co_filename")
@@ -169,6 +182,8 @@ Async function <{functionName} at 0x{toHex(hash, 15)}> at {filename}:{firstLine}
 
 
 proc sortRoutes(self: Server) {.inline.} =
+  ## Sorts routes:
+  ## Firstly middlewares, secondary is routes and after notfounds 
   var
     middlewares: seq[Route] = @[]
     routes: seq[Route] = @[]
@@ -191,6 +206,7 @@ proc addRoute(self: Server, path: string, httpMethods: seq[string], callback: Py
   var
     p = path
     s = self
+  # Get root server
   while not s.parent.isNil():
     p = s.path & p
     s = s.parent

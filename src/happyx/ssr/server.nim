@@ -1130,7 +1130,7 @@ macro routes*(server: Server, body: untyped): untyped =
                     newCall(
                       "&",
                       newDotExpr(ident"route", ident"purePath"),
-                      newCall("getStr", newCall("[]", ident"funcParams", newLit"file"))
+                      newCall("$", newCall("[]", ident"funcParams", newLit"file"))
                     )
                   )
                 ),
@@ -1148,6 +1148,7 @@ macro routes*(server: Server, body: untyped): untyped =
               newVarStmt(ident"locals", newCall("pyDict")),
               # Declare Python Object (for function params)
               newNimNode(nnkVarSection).add(newIdentDefs(ident"pyFuncParams", ident"PyObject")),
+              newNimNode(nnkVarSection).add(newIdentDefs(ident"pyNone", ident"PyObject")),
               # Declare JsonNode (for length of keyword arguments)
               newNimNode(nnkVarSection).add(newIdentDefs(ident"keywordArgumentss", ident"JsonNode")),
               # Include route handler into Python locals 
@@ -1179,6 +1180,8 @@ macro routes*(server: Server, body: untyped): untyped =
                 "getRouteParams", ident"routeData", ident"founded_regexp_matches",
                 pathIdent, ident"handlerParams", requestBody
               )),
+              newLetStmt(ident"none", newCall("newPyNone")),
+              newCall(ident"pyValueToNim", ident"none", ident"pyNone"),
               # Add queries to function parameters
               newNimNode(nnkForStmt).add(
                 ident"param", ident"handlerParams",
@@ -1187,7 +1190,11 @@ macro routes*(server: Server, body: untyped): untyped =
                     "and",
                     newCall(
                       "not",
-                      newCall("contains", ident"funcParams", newDotExpr(ident"param", ident"name"))
+                      newCall(
+                        "!=",
+                        newCall("callMethod", ident"funcParams", newLit"get", newDotExpr(ident"param", ident"name")),
+                        ident"pyNone"
+                      )
                     ),
                     newCall(
                       "not",
@@ -1246,11 +1253,19 @@ macro routes*(server: Server, body: untyped): untyped =
                   ident"request"
                 )
               )),
+              newLetStmt(
+                ident"arr",
+                newCall(
+                  "to",
+                  newCall("callMethod", ident"py", newLit"list", newCall("callMethod", ident"funcParams", newLit"keys")),
+                  ident"JsonNode"
+                )
+              ),
               # Detect and create classes for request models
               newNimNode(nnkForStmt).add(
-                ident"param", newCall("keys", ident"funcParams"),
+                ident"param", ident"arr",
                 newStmtList(
-                  newLetStmt(ident"paramType", newCall("getParamType", ident"handlerParams", ident"param")),
+                  newLetStmt(ident"paramType", newCall("getParamType", ident"handlerParams", newCall("getStr", ident"param"))),
                   # If param is request model
                   newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
                     newCall("contains", ident"requestModelsHidden", ident"paramType"),

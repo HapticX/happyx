@@ -7,6 +7,7 @@ import
   strutils,
   strtabs,
   macros,
+  tables,
   json,
   # deps
   regex,
@@ -17,6 +18,7 @@ import
 when exportPython or defined(docgen):
   import
     nimpy,
+    nimpy/py_types,
     ../bindings/python_types
 
 
@@ -42,6 +44,58 @@ type
     purePath*: string
     path*: string
 
+when not exportPython:
+  type RouteParamType = object
+    name: string
+    pattern: string
+    creator: NimNode
+
+
+  var registeredRouteParamTypes {.compileTime.} = newTable[string, RouteParamType]()
+
+
+  macro registerRouteParamType*(name, pattern: string, creator: untyped) =
+    if re2"^[a-zA-Z][a-zA-Z0-9_]*$" notin $name:
+      raise newException(
+        ValueError,
+        fmt"route param type name should be identifier (a-zA-Z0-0_), but got '{name}'"
+      )
+    registeredRouteParamTypes[$name] = RouteParamType(
+      pattern: $pattern, name: $name, creator: creator
+    )
+
+elif exportPython:
+  type RouteParamType = object
+    name: string
+    pattern: string
+    creator: PyObject
+
+
+  var registeredRouteParamTypes = newTable[string, RouteParamType]()
+
+  proc registerRouteParamTypeAux*(name, pattern: string, creator: PyObject) =
+    if re2"^[a-zA-Z][a-zA-Z0-9_]*$" notin name:
+      raise newException(
+        ValueError,
+        fmt"route param type name should be identifier (a-zA-Z0-0_), but got '{name}'"
+      )
+    registeredRouteParamTypes[name] = RouteParamType(
+      pattern: pattern, name: name, creator: creator
+    )
+  
+  proc hasObjectWithName*(self: TableRef[string, RouteParamType], name: string): bool =
+    {.gcsafe.}:
+      for v in registeredRouteParamTypes.values():
+        if $(v.creator.getAttr("__class__").getAttr("__name__")) == name or $(v.creator.getAttr("__name__")) == name:
+          return true
+      return false
+  
+  proc getObjectWithName*(self: TableRef[string, RouteParamType], name: string): RouteParamType =
+    {.gcsafe.}:
+      for v in registeredRouteParamTypes.values():
+        if $(v.creator.getAttr("__class__").getAttr("__name__")) == name or $(v.creator.getAttr("__name__")) == name:
+          return v
+
 
 proc newPathParamObj*(name, paramType, defaultValue: string, optional, mutable: bool): PathParamObj =
   PathParamObj(name: name, paramType: paramType, defaultValue: defaultValue,
@@ -57,7 +111,7 @@ proc handleRoute*(route: string): RouteDataObj =
   let
     dollarToCurve = re2"\$([^:\/\{\}]+)(:enum\(\w+\)|:\w+)?(\[m\])?(=[^\/\{\}]+)?(m)?"
     defaultWithoutQuestion = re2"\{([^:\/\{\}\?]+)(:enum\(\w+\)|:\w+)?(\[m\])?(=[^\/\{\}]+)\}"
-  
+
   var path = route
   path = path.replace(dollarToCurve, "{$1$2$3$4}")
   path = path.replace(defaultWithoutQuestion, "{$1?$2$3$4}")
@@ -80,6 +134,15 @@ proc handleRoute*(route: string): RouteDataObj =
   routePathStr = routePathStr.replace(re2"\{[a-zA-Z][a-zA-Z0-9_]*:path(\[m\])?\}", "([\\S]+)")
   # regex param
   routePathStr = routePathStr.replace(re2"\{[a-zA-Z][a-zA-Z0-9_]*:/([\s\S]+?)/(\[m\])?\}", "($1)")
+  # custom patterns
+  var types = ""
+  {.cast(gcsafe).}:
+    for routeParamType in registeredRouteParamTypes.values():
+      routePathStr = routePathStr.replace(
+        re2(r"\{[a-zA-Z][a-zA-Z0-9_]*(\??):" & routeParamType.name & r"(\[m\])?(=\S+?)?\}"),
+        "(" & routeParamType.pattern & ")$1"
+      )
+      types &= "|" & routeParamType.name
   # Remove models
   when exportPython:
     routePathStr = routePathStr.replace(re2"\[[a-zA-Z][a-zA-Z0-9_]*(:[a-zA-Z][a-zA-Z0-9_]*)?(\[m\])?(:[a-zA-Z\\-]+)?\]", "")
@@ -87,7 +150,11 @@ proc handleRoute*(route: string): RouteDataObj =
     routePathStr = routePathStr.replace(re2"\[[a-zA-Z][a-zA-Z0-9_]*:[a-zA-Z][a-zA-Z0-9_]*(\[m\])?(:[a-zA-Z\\-]+)?\]", "")
   let
     foundPathParams = path.findAll(
-      re2"\{([a-zA-Z][a-zA-Z0-9_]*\??)(:(bool|int|float|string|path|word|/[\s\S]+?/|enum\(\w+\)))?(\[m\])?(=(\S+?))?\}"
+      re2(
+        r"\{([a-zA-Z][a-zA-Z0-9_]*\??)(:(bool|int|float|string|path|word|/[\s\S]+?/|enum\(\w+\)" &
+        types &
+        r"))?(\[m\])?(=(\S+?))?\}"
+      )
     )
     foundModels =
       when exportPython:
@@ -146,7 +213,7 @@ proc handleRoute*(route: string): RouteDataObj =
     result.requestModels.add(newRequestModelObj(modelName, modelType, modelTarget, isMutable))
 
 
-proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.} =
+proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode =
   ## Finds and exports route arguments
   var path = $routePath
   # Find all declared path params
@@ -161,7 +228,11 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.
         lineInfoObj(routePath)
       )
   var
-    routeData = handleRoute(path)
+    routeData =
+      when not exportPython:
+        handleRoute(path)
+      else:
+        RouteDataObj.default
     hasChildren = false
   let
     elifBranch = newNimNode(nnkElifBranch)
@@ -284,9 +355,17 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.
               newCall(newNimNode(nnkBracketExpr).add(ident"parseEnum", ident(enumName)), foundGroup, newCall("default", ident(enumName)))
             )
           ))
-        # regex
         else:
-          letSection[0].add(foundGroup)
+          # custom type
+          when not exportPython:
+            if $i.paramType in registeredRouteParamTypes:
+              var data = registeredRouteParamTypes[$i.paramType]
+              letSection[0].add(newCall(data.creator, foundGroup))
+            # regex
+            else:
+              letSection[0].add(foundGroup)
+          else:
+              letSection[0].add(foundGroup)
     else:
       case i.paramType:
       of "bool":
@@ -302,9 +381,17 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode {.compileTime.
         if ($i.paramType).startsWith("enum"):
           let enumName = ($i.paramType)[5..^2]
           letSection[0].add(newCall(newNimNode(nnkBracketExpr).add(ident"parseEnum", ident(enumName)), foundGroup, newCall("default", ident(enumName))))
-        # regex
         else:
-          letSection[0].add(foundGroup)
+          # custom type
+          when not exportPython:
+            if $i.paramType in registeredRouteParamTypes:
+              var data = registeredRouteParamTypes[$i.paramType]
+              letSection[0].add(newCall(data.creator, foundGroup))
+            # regex
+            else:
+              letSection[0].add(foundGroup)
+          else:
+              letSection[0].add(foundGroup)
     elifBranch[1].insert(0, letSection)
     hasChildren = true
     inc idx
@@ -434,9 +521,9 @@ when exportPython or defined(docgen):
 
   proc getRouteParams*(routeData: RouteDataObj, found_regexp_matches: seq[RegexMatch2],
                        urlPath: string = "", handlerParams: seq[HandlerParam] = @[], body: string = "",
-                       force: bool = false): JsonNode =
+                       force: bool = false): PyObject =
     ## Finds and exports route arguments
-    result = newJObject()
+    var res = pyDict()
     var idx = 0
     for i in routeData.pathParams:
       if i.name notin handlerParams and not force:
@@ -459,50 +546,87 @@ when exportPython or defined(docgen):
           # Detect type from annotations
           case paramType
           of "bool":
-            result[i.name] = parseBoolOrJString(foundGroup)
+            res[i.name] = parseBoolOrJString(foundGroup)
           of "int":
-            result[i.name] = parseIntOrJString(foundGroup)
+            res[i.name] = parseIntOrJString(foundGroup)
           of "float":
-            result[i.name] = parseFloatOrJString(foundGroup)
+            res[i.name] = parseFloatOrJString(foundGroup)
           else:
-            result[i.name] = newJString(foundGroup)
+            {.cast(gcsafe).}:
+              # custom type
+              if $i.paramType in registeredRouteParamTypes:
+                var data = registeredRouteParamTypes[$i.paramType]
+                res[i.name] = callObject(data.creator, foundGroup)
+              elif registeredRouteParamTypes.hasObjectWithName($i.paramType):
+                var data = registeredRouteParamTypes.getObjectWithName($i.paramType)
+                res[i.name] = callObject(data.creator, foundGroup)
+              # regex
+              else:
+                res[i.name] = newJString(foundGroup)
         else:
           # Detect type from route
           case i.paramType:
           of "bool":
-            condition(conditionOptional, conditionSecondOptional, foundGroup, defaultValue, newJBool, parseBoolOrJString, result, name, false)
+            condition(conditionOptional, conditionSecondOptional, foundGroup, defaultValue, newJBool, parseBoolOrJString, res, name, false)
           of "int":
-            condition(conditionOptional, conditionSecondOptional, foundGroup, defaultValue, newJInt, parseIntOrJString, result, name, 0)
+            condition(conditionOptional, conditionSecondOptional, foundGroup, defaultValue, newJInt, parseIntOrJString, res, name, 0)
           of "float":
-            condition(conditionOptional, conditionSecondOptional, foundGroup, defaultValue, newJFloat, parseFloatOrJString, result, name, 0.0)
+            condition(conditionOptional, conditionSecondOptional, foundGroup, defaultValue, newJFloat, parseFloatOrJString, res, name, 0.0)
           of "word":
-            condition(conditionOptional, conditionSecondOptional, foundGroup, defaultValue, newJString, void, result, name, "")
+            condition(conditionOptional, conditionSecondOptional, foundGroup, defaultValue, newJString, void, res, name, "")
           else:
-            result[i.name] = newJString(foundGroup)
+            {.cast(gcsafe).}:
+              # custom type
+              if i.paramType in registeredRouteParamTypes:
+                var data = registeredRouteParamTypes[i.paramType]
+                res[i.name] = callObject(data.creator, foundGroup)
+              # regex
+              else:
+                res[i.name] = newJString(foundGroup)
       elif i.paramType == "string":
         # Detect type from annotations
         case paramType
         of "bool":
-          result[i.name] = parseBoolOrJString(foundGroup)
+          res[i.name] = parseBoolOrJString(foundGroup)
         of "int":
-          result[i.name] = parseIntOrJString(foundGroup)
+          res[i.name] = parseIntOrJString(foundGroup)
         of "float":
-          result[i.name] = parseFloatOrJString(foundGroup)
+          res[i.name] = parseFloatOrJString(foundGroup)
         else:
-          result[i.name] = newJString(foundGroup)
+          {.cast(gcsafe).}:
+            # custom type
+            echo $i.paramType
+            echo $i.paramType in registeredRouteParamTypes
+            echo registeredRouteParamTypes.hasObjectWithName($i.paramType)
+            if $i.paramType in registeredRouteParamTypes:
+              var data = registeredRouteParamTypes[$i.paramType]
+              res[i.name] = callObject(data.creator, foundGroup)
+            elif registeredRouteParamTypes.hasObjectWithName($i.paramType):
+              var data = registeredRouteParamTypes.getObjectWithName($i.paramType)
+              res[i.name] = callObject(data.creator, foundGroup)
+            # regex
+            else:
+              res[i.name] = newJString(foundGroup)
       else:
         # Detect from route
         case i.paramType:
         of "bool":
-          result[i.name] = parseBoolOrJString(foundGroup)
+          res[i.name] = parseBoolOrJString(foundGroup)
         of "int":
-          result[i.name] = parseIntOrJString(foundGroup)
+          res[i.name] = parseIntOrJString(foundGroup)
         of "float":
-          result[i.name] = parseFloatOrJString(foundGroup)
+          res[i.name] = parseFloatOrJString(foundGroup)
         of "path", "string", "word":
-          result[i.name] = newJString(foundGroup)
+          res[i.name] = newJString(foundGroup)
         else:
-          result[i.name] = newJString(foundGroup)
+          {.cast(gcsafe).}:
+            # custom type
+            if $i.paramType in registeredRouteParamTypes:
+              var data = registeredRouteParamTypes[$i.paramType]
+              res[i.name] = callObject(data.creator, foundGroup)
+            # regex
+            else:
+              res[i.name] = newJString(foundGroup)
       inc idx
 
     for i in routeData.requestModels:
@@ -521,7 +645,8 @@ when exportPython or defined(docgen):
       if hasModelData:
         case i.target.toLower()
         of "json":
-          result[i.name] = convertJson(modelData, body)
+          res[i.name] = convertJson(modelData, body)
+    return res
 
 
 proc pathParamsBoilerplate(node: NimNode, kind, regexVal: var string) =

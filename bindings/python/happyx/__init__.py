@@ -23,6 +23,7 @@ JsonResponse = happyx.JsonResponse
 WebSocket = happyx.WebSocket
 # Main functions
 new_server = happyx.new_server
+register_route_param_type = happyx.register_route_param_type
 
 
 __jinja2_templates_directory = './'
