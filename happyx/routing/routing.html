@@ -146,9 +146,9 @@ window.addEventListener('DOMContentLoaded', main);
       <li><a class="reference" href="#getRouteParams%2CRouteDataObj%2Cseq%5BRegexMatch2%5D%2Cstring%2Cseq%5BHandlerParam%5D%2Cstring%2Cbool"
     title="getRouteParams(routeData: RouteDataObj; found_regexp_matches: seq[RegexMatch2];
                urlPath: string = &quot;&quot;; handlerParams: seq[HandlerParam] = @[];
-               body: string = &quot;&quot;; force: bool = false): JsonNode">getRouteParams(routeData: RouteDataObj; found_regexp_matches: seq[RegexMatch2];
+               body: string = &quot;&quot;; force: bool = false): PyObject">getRouteParams(routeData: RouteDataObj; found_regexp_matches: seq[RegexMatch2];
                urlPath: string = &quot;&quot;; handlerParams: seq[HandlerParam] = @[];
-               body: string = &quot;&quot;; force: bool = false): JsonNode</a></li>
+               body: string = &quot;&quot;; force: bool = false): PyObject</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">handleRoute
@@ -190,6 +190,11 @@ window.addEventListener('DOMContentLoaded', main);
       <ul class="simple nested-toc-section">pathParams
       <li><a class="reference" href="#pathParams.m%2Cuntyped"
     title="pathParams(body: untyped): untyped">pathParams(body: untyped): untyped</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">registerRouteParamType
+      <li><a class="reference" href="#registerRouteParamType.m%2Cstring%2Cstring%2Cuntyped"
+    title="registerRouteParamType(name, pattern: string; creator: untyped)">registerRouteParamType(name, pattern: string; creator: untyped)</a></li>
 
   </ul>
 
@@ -268,8 +273,8 @@ Converts Request JSON to Python dict
 </dd>
 </div>
 <div id="exportRouteArgs,NimNode,NimNode,NimNode">
-<dt><pre><span class="Keyword">proc</span> <a href="#exportRouteArgs%2CNimNode%2CNimNode%2CNimNode"><span class="Identifier">exportRouteArgs</span></a><span class="Other">(</span><span class="Identifier">urlPath</span><span class="Other">,</span> <span class="Identifier">routePath</span><span class="Other">,</span> <span class="Identifier">body</span><span class="Other">:</span> <span class="Identifier">NimNode</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">NimNode</span> {.<span class="Identifier">compileTime</span><span class="Other">,</span>
-    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ValueError</span><span class="Other">,</span> <span class="Identifier">KeyError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span></span>.}</pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#exportRouteArgs%2CNimNode%2CNimNode%2CNimNode"><span class="Identifier">exportRouteArgs</span></a><span class="Other">(</span><span class="Identifier">urlPath</span><span class="Other">,</span> <span class="Identifier">routePath</span><span class="Other">,</span> <span class="Identifier">body</span><span class="Other">:</span> <span class="Identifier">NimNode</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">NimNode</span> {.
+    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ValueError</span><span class="Other">,</span> <span class="Identifier">KeyError</span><span class="Other">,</span> <span class="Identifier">RegexError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 Finds and exports route arguments
@@ -281,9 +286,9 @@ Finds and exports route arguments
                     <span class="Identifier">found_regexp_matches</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">RegexMatch2</span><span class="Other">]</span><span class="Other">;</span>
                     <span class="Identifier">urlPath</span><span class="Other">:</span> <span class="Identifier">string</span> <span class="Other">=</span> <span class="StringLit">&quot;&quot;</span><span class="Other">;</span>
                     <span class="Identifier">handlerParams</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="../bindings/python_types.html#HandlerParam"><span class="Identifier">HandlerParam</span></a><span class="Other">]</span> <span class="Other">=</span> <span class="Operator">@</span><span class="Other">[</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">body</span><span class="Other">:</span> <span class="Identifier">string</span> <span class="Other">=</span> <span class="StringLit">&quot;&quot;</span><span class="Other">;</span>
-                    <span class="Identifier">force</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">JsonNode</span> {.
-    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">IOError</span><span class="Other">,</span> <span class="Identifier">OSError</span><span class="Other">,</span> <span class="Identifier">KeyError</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">,</span> <span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span>
-    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ReadIOEffect</span><span class="Other">,</span> <span class="Identifier">WriteIOEffect</span><span class="Other">]</span></span>.}</pre></dt>
+                    <span class="Identifier">force</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">PyObject</span> {.
+    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">,</span> <span class="Identifier">OSError</span><span class="Other">,</span> <span class="Identifier">IOError</span><span class="Other">,</span> <span class="Identifier">EOFError</span><span class="Other">,</span> <span class="Identifier">KeyError</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">,</span> <span class="Identifier">ReadIOEffect</span><span class="Other">,</span> <span class="Identifier">WriteIOEffect</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 Finds and exports route arguments
@@ -291,8 +296,8 @@ Finds and exports route arguments
 </dd>
 </div>
 <div id="handleRoute,string">
-<dt><pre><span class="Keyword">proc</span> <a href="#handleRoute%2Cstring"><span class="Identifier">handleRoute</span></a><span class="Other">(</span><span class="Identifier">route</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <a href="routing.html#RouteDataObj"><span class="Identifier">RouteDataObj</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span>
-    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span></span>.}</pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#handleRoute%2Cstring"><span class="Identifier">handleRoute</span></a><span class="Other">(</span><span class="Identifier">route</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <a href="routing.html#RouteDataObj"><span class="Identifier">RouteDataObj</span></a> {.
+    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ValueError</span><span class="Other">,</span> <span class="Identifier">RegexError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 Handles route and receive route data object.
@@ -371,6 +376,14 @@ Handles route and receive route data object.
 
 </dd>
 </div>
+<div id="registerRouteParamType.m,string,string,untyped">
+<dt><pre><span class="Keyword">macro</span> <a href="#registerRouteParamType.m%2Cstring%2Cstring%2Cuntyped"><span class="Identifier">registerRouteParamType</span></a><span class="Other">(</span><span class="Identifier">name</span><span class="Other">,</span> <span class="Identifier">pattern</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">creator</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span></pre></dt>
+<dd>
+
+
+
+</dd>
+</div>
 
 </dl></div>
 
@@ -381,7 +394,7 @@ Handles route and receive route data object.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-09-01 15:17:30 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-09-02 15:36:51 UTC</small>
       </div>
     </div>
   </div>

@@ -298,6 +298,11 @@ window.addEventListener('DOMContentLoaded', main);
              allow_headers: string; credentials: bool)</a></li>
 
   </ul>
+  <ul class="simple nested-toc-section">registerRouteParamType
+      <li><a class="reference" href="#registerRouteParamType%2Cstring%2Cstring%2CPyObject"
+    title="registerRouteParamType(name, pattern: string; callback: PyObject)">registerRouteParamType(name, pattern: string; callback: PyObject)</a></li>
+
+  </ul>
   <ul class="simple nested-toc-section">route
       <li><a class="reference" href="#route%2CServer%2Cstring%2Cseq%5Bstring%5D"
     title="route(self: Server; path: string; methods: seq[string]): auto">route(self: Server; path: string; methods: seq[string]): auto</a></li>
@@ -713,6 +718,15 @@ Registers Cross-Origins Resource Sharing at Runtime
 
 </dd>
 </div>
+<div id="registerRouteParamType,string,string,PyObject">
+<dt><pre><span class="Keyword">proc</span> <a href="#registerRouteParamType%2Cstring%2Cstring%2CPyObject"><span class="Identifier">registerRouteParamType</span></a><span class="Other">(</span><span class="Identifier">name</span><span class="Other">,</span> <span class="Identifier">pattern</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">callback</span><span class="Other">:</span> <span class="Identifier">PyObject</span><span class="Other">)</span> {.
+    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<dd>
+
+
+
+</dd>
+</div>
 <div id="route,Server,string,seq[string]">
 <dt><pre><span class="Keyword">proc</span> <a href="#route%2CServer%2Cstring%2Cseq%5Bstring%5D"><span class="Identifier">route</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="../ssr/server.html#Server"><span class="Identifier">Server</span></a><span class="Other">;</span> <span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">methods</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">auto</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
     <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
@@ -750,7 +764,9 @@ Sends raw text to WebSocket connection
     <span class="Identifier">ReadEnvEffect</span><span class="Other">,</span> <span class="Identifier">ReadIOEffect</span><span class="Other">,</span> <span class="Identifier">TimeEffect</span><span class="Other">,</span> <span class="Identifier">WriteIOEffect</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
-Starts a new HappyX server
+<p>Starts a new HappyX server</p>
+<p>Server shouldn't be mounted</p>
+
 
 </dd>
 </div>
@@ -822,7 +838,7 @@ Registers a new WEBSOCKET route.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-09-01 15:17:51 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-09-02 15:37:10 UTC</small>
       </div>
     </div>
   </div>
