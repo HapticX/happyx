@@ -552,17 +552,21 @@ when exportPython or defined(docgen):
           of "float":
             res[i.name] = parseFloatOrJString(foundGroup)
           else:
-            {.cast(gcsafe).}:
-              # custom type
-              if $i.paramType in registeredRouteParamTypes:
-                var data = registeredRouteParamTypes[$i.paramType]
-                res[i.name] = callObject(data.creator, foundGroup)
-              elif registeredRouteParamTypes.hasObjectWithName($i.paramType):
-                var data = registeredRouteParamTypes.getObjectWithName($i.paramType)
-                res[i.name] = callObject(data.creator, foundGroup)
-              # regex
-              else:
-                res[i.name] = newJString(foundGroup)
+            when exportPython:
+              {.cast(gcsafe).}:
+                # custom type
+                if $i.paramType in registeredRouteParamTypes:
+                  var data = registeredRouteParamTypes[$i.paramType]
+                  res[i.name] = callObject(data.creator, foundGroup)
+                elif registeredRouteParamTypes.hasObjectWithName($i.paramType):
+                  var data = registeredRouteParamTypes.getObjectWithName($i.paramType)
+                  res[i.name] = callObject(data.creator, foundGroup)
+                # regex
+                else:
+                  res[i.name] = newJString(foundGroup)
+            # regex
+            else:
+              res[i.name] = newJString(foundGroup)
         else:
           # Detect type from route
           case i.paramType:
@@ -575,14 +579,18 @@ when exportPython or defined(docgen):
           of "word":
             condition(conditionOptional, conditionSecondOptional, foundGroup, defaultValue, newJString, void, res, name, "")
           else:
-            {.cast(gcsafe).}:
-              # custom type
-              if i.paramType in registeredRouteParamTypes:
-                var data = registeredRouteParamTypes[i.paramType]
-                res[i.name] = callObject(data.creator, foundGroup)
-              # regex
-              else:
-                res[i.name] = newJString(foundGroup)
+            when exportPython:
+              {.cast(gcsafe).}:
+                # custom type
+                if $i.paramType in registeredRouteParamTypes:
+                  var data = registeredRouteParamTypes[$i.paramType]
+                  res[i.name] = callObject(data.creator, foundGroup)
+                # regex
+                else:
+                  res[i.name] = newJString(foundGroup)
+            # regex
+            else:
+              res[i.name] = newJString(foundGroup)
       elif i.paramType == "string":
         # Detect type from annotations
         case paramType
@@ -593,20 +601,21 @@ when exportPython or defined(docgen):
         of "float":
           res[i.name] = parseFloatOrJString(foundGroup)
         else:
-          {.cast(gcsafe).}:
-            # custom type
-            echo $i.paramType
-            echo $i.paramType in registeredRouteParamTypes
-            echo registeredRouteParamTypes.hasObjectWithName($i.paramType)
-            if $i.paramType in registeredRouteParamTypes:
-              var data = registeredRouteParamTypes[$i.paramType]
-              res[i.name] = callObject(data.creator, foundGroup)
-            elif registeredRouteParamTypes.hasObjectWithName($i.paramType):
-              var data = registeredRouteParamTypes.getObjectWithName($i.paramType)
-              res[i.name] = callObject(data.creator, foundGroup)
-            # regex
-            else:
-              res[i.name] = newJString(foundGroup)
+          when exportPython:
+            {.cast(gcsafe).}:
+              # custom type
+              if $i.paramType in registeredRouteParamTypes:
+                var data = registeredRouteParamTypes[$i.paramType]
+                res[i.name] = callObject(data.creator, foundGroup)
+              elif registeredRouteParamTypes.hasObjectWithName($i.paramType):
+                var data = registeredRouteParamTypes.getObjectWithName($i.paramType)
+                res[i.name] = callObject(data.creator, foundGroup)
+              # regex
+              else:
+                res[i.name] = newJString(foundGroup)
+          # regex
+          else:
+            res[i.name] = newJString(foundGroup)
       else:
         # Detect from route
         case i.paramType:
@@ -619,14 +628,18 @@ when exportPython or defined(docgen):
         of "path", "string", "word":
           res[i.name] = newJString(foundGroup)
         else:
-          {.cast(gcsafe).}:
-            # custom type
-            if $i.paramType in registeredRouteParamTypes:
-              var data = registeredRouteParamTypes[$i.paramType]
-              res[i.name] = callObject(data.creator, foundGroup)
-            # regex
-            else:
-              res[i.name] = newJString(foundGroup)
+          when exportPython:
+            {.cast(gcsafe).}:
+              # custom type
+              if $i.paramType in registeredRouteParamTypes:
+                var data = registeredRouteParamTypes[$i.paramType]
+                res[i.name] = callObject(data.creator, foundGroup)
+              # regex
+              else:
+                res[i.name] = newJString(foundGroup)
+          # regex
+          else:
+            res[i.name] = newJString(foundGroup)
       inc idx
 
     for i in routeData.requestModels:

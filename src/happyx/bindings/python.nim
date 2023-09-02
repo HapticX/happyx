@@ -141,7 +141,8 @@ proc headers*(self: HtmlResponseObj): PyObject {.exportpy.} = self.headers
 
 
 proc registerRouteParamType*(name, pattern: string, callback: PyObject) {.exportpy: "register_route_param_type".} =
-  registerRouteParamTypeAux(name, pattern, callback)
+  when exportPython:
+    registerRouteParamTypeAux(name, pattern, callback)
 
 
 proc `$`*(self: Server): string {.exportpy: "to_string".} =
