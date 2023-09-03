@@ -5573,13 +5573,13 @@ HEX5BHEX5DHEX3D_2130709883((Temporary382 = HEX5BHEX5D_2130709651(translates_2634
 HEX5BHEX5DHEX3D_2130709883((Temporary383 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Features 🔥"), Temporary383)[0][Temporary383[1]], "zh", makeNimstrLit("\xE7\x89\xB9 \xF0\x9F\x94\xA5"));
 HEX5BHEX5DHEX3D_2130709883((Temporary384 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Features 🔥"), Temporary384)[0][Temporary384[1]], "ko", makeNimstrLit("\xEA\xB8\xB0\xEB\x8A\xA5 \xF0\x9F\x94\xA5"));
 HEX5BHEX5DHEX3D_2130709883((Temporary385 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Features 🔥"), Temporary385)[0][Temporary385[1]], "fr", makeNimstrLit("Caract\xC3\xA9ristiques \xF0\x9F\x94\xA5"));
-HEX5BHEX5DHEX3D_2130709493(translates_2634022946[0], "Production ready 🔌", newTable_2130708029(32));
-HEX5BHEX5DHEX3D_2130709883((Temporary386 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Production ready 🔌"), Temporary386)[0][Temporary386[1]], "default", makeNimstrLit("Production ready \xF0\x9F\x94\x8C"));
-HEX5BHEX5DHEX3D_2130709883((Temporary387 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Production ready 🔌"), Temporary387)[0][Temporary387[1]], "ru", makeNimstrLit("\xD0\x9F\xD1\x80\xD0\xBE\xD0\xB8\xD0\xB7\xD0\xB2\xD0\xBE\xD0\xB4\xD1\x81\xD1\x82\xD0\xB2\xD0\xBE \xD0\xB3\xD0\xBE\xD1\x82\xD0\xBE\xD0\xB2\xD0\xBE \xF0\x9F\x94\x8C"));
-HEX5BHEX5DHEX3D_2130709883((Temporary388 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Production ready 🔌"), Temporary388)[0][Temporary388[1]], "ja", makeNimstrLit("\xE7\x94\x9F\xE7\x94\xA3\xE6\xBA\x96\xE5\x82\x99\xE3\x81\x8C\xE3\x81\xA7\xE3\x81\x8D\xE3\x81\xA6\xE3\x81\x84\xE3\x82\x8B \xF0\x9F\x94\x8C"));
-HEX5BHEX5DHEX3D_2130709883((Temporary389 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Production ready 🔌"), Temporary389)[0][Temporary389[1]], "zh", makeNimstrLit("\xE5\x87\x86\xE5\xA4\x87\xE5\xA5\xBD\xE7\x94\x9F\xE4\xBA\xA7\xEF\xBC\x81\xF0\x9F\x94\x8C"));
-HEX5BHEX5DHEX3D_2130709883((Temporary390 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Production ready 🔌"), Temporary390)[0][Temporary390[1]], "ko", makeNimstrLit("\xEC\x83\x9D\xEC\x82\xB0 \xEC\xA4\x80\xEB\xB9\x84\xEA\xB0\x80 \xEC\x99\x84\xEB\xA3\x8C\xEB\x90\x98\xEC\x97\x88\xEC\x8A\xB5\xEB\x8B\x88\xEB\x8B\xA4. \xF0\x9F\x94\x8C"));
-HEX5BHEX5DHEX3D_2130709883((Temporary391 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Production ready 🔌"), Temporary391)[0][Temporary391[1]], "fr", makeNimstrLit("Pr\xC3\xAAt pour la production \xF0\x9F\x94\x8C"));
+HEX5BHEX5DHEX3D_2130709493(translates_2634022946[0], "Production-ready 🔌", newTable_2130708029(32));
+HEX5BHEX5DHEX3D_2130709883((Temporary386 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Production-ready 🔌"), Temporary386)[0][Temporary386[1]], "default", makeNimstrLit("Production-ready \xF0\x9F\x94\x8C"));
+HEX5BHEX5DHEX3D_2130709883((Temporary387 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Production-ready 🔌"), Temporary387)[0][Temporary387[1]], "ru", makeNimstrLit("\xD0\x93\xD0\xBE\xD1\x82\xD0\xBE\xD0\xB2\xD0\xBE \xD0\xBA \xD0\xBF\xD1\x80\xD0\xBE\xD0\xB8\xD0\xB7\xD0\xB2\xD0\xBE\xD0\xB4\xD1\x81\xD1\x82\xD0\xB2\xD1\x83 \xF0\x9F\x94\x8C"));
+HEX5BHEX5DHEX3D_2130709883((Temporary388 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Production-ready 🔌"), Temporary388)[0][Temporary388[1]], "ja", makeNimstrLit("\xE6\x9C\xAC\xE7\x95\xAA\xE9\x81\x8B\xE7\x94\xA8\xE5\xAF\xBE\xE5\xBF\x9C \xF0\x9F\x94\x8C"));
+HEX5BHEX5DHEX3D_2130709883((Temporary389 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Production-ready 🔌"), Temporary389)[0][Temporary389[1]], "zh", makeNimstrLit("\xE7\x94\x9F\xE4\xBA\xA7\xE5\xB0\xB1\xE7\xBB\xAA \xF0\x9F\x94\x8C"));
+HEX5BHEX5DHEX3D_2130709883((Temporary390 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Production-ready 🔌"), Temporary390)[0][Temporary390[1]], "fr", makeNimstrLit("Pr\xC3\xAAt pour la production \xF0\x9F\x94\x8C"));
+HEX5BHEX5DHEX3D_2130709883((Temporary391 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Production-ready 🔌"), Temporary391)[0][Temporary391[1]], "ko", makeNimstrLit("\xED\x94\x84\xEB\xA1\x9C\xEB\x8D\x95\xEC\x85\x98 \xEB\xA0\x88\xEB\x94\x94 \xF0\x9F\x94\x8C"));
 HEX5BHEX5DHEX3D_2130709493(translates_2634022946[0], "Multiple server options 🌩", newTable_2130708029(32));
 HEX5BHEX5DHEX3D_2130709883((Temporary392 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Multiple server options 🌩"), Temporary392)[0][Temporary392[1]], "default", makeNimstrLit("Multiple server options \xF0\x9F\x8C\xA9"));
 HEX5BHEX5DHEX3D_2130709883((Temporary393 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Multiple server options 🌩"), Temporary393)[0][Temporary393[1]], "ru", makeNimstrLit("\xD0\x9D\xD0\xB5\xD1\x81\xD0\xBA\xD0\xBE\xD0\xBB\xD1\x8C\xD0\xBA\xD0\xBE \xD0\xB2\xD0\xB0\xD1\x80\xD0\xB8\xD0\xB0\xD0\xBD\xD1\x82\xD0\xBE\xD0\xB2 \xD1\x81\xD0\xB5\xD1\x80\xD0\xB2\xD0\xB5\xD1\x80\xD0\xB0 \xF0\x9F\x8C\xA9"));
@@ -15399,13 +15399,13 @@ HEX5BHEX5DHEX3D_2130709883((Temporary386 = HEX5BHEX5D_2130709651(translates_2634
 HEX5BHEX5DHEX3D_2130709883((Temporary387 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Features 🔥"), Temporary387)[0][Temporary387[1]], "zh", makeNimstrLit("\xE7\x89\xB9 \xF0\x9F\x94\xA5"));
 HEX5BHEX5DHEX3D_2130709883((Temporary388 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Features 🔥"), Temporary388)[0][Temporary388[1]], "ko", makeNimstrLit("\xEA\xB8\xB0\xEB\x8A\xA5 \xF0\x9F\x94\xA5"));
 HEX5BHEX5DHEX3D_2130709883((Temporary389 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Features 🔥"), Temporary389)[0][Temporary389[1]], "fr", makeNimstrLit("Caract\xC3\xA9ristiques \xF0\x9F\x94\xA5"));
-HEX5BHEX5DHEX3D_2130709493(translates_2634022946[0], "Production ready 🔌", newTable_2130708029(32));
-HEX5BHEX5DHEX3D_2130709883((Temporary390 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Production ready 🔌"), Temporary390)[0][Temporary390[1]], "default", makeNimstrLit("Production ready \xF0\x9F\x94\x8C"));
-HEX5BHEX5DHEX3D_2130709883((Temporary391 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Production ready 🔌"), Temporary391)[0][Temporary391[1]], "ru", makeNimstrLit("\xD0\x9F\xD1\x80\xD0\xBE\xD0\xB8\xD0\xB7\xD0\xB2\xD0\xBE\xD0\xB4\xD1\x81\xD1\x82\xD0\xB2\xD0\xBE \xD0\xB3\xD0\xBE\xD1\x82\xD0\xBE\xD0\xB2\xD0\xBE \xF0\x9F\x94\x8C"));
-HEX5BHEX5DHEX3D_2130709883((Temporary392 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Production ready 🔌"), Temporary392)[0][Temporary392[1]], "ja", makeNimstrLit("\xE7\x94\x9F\xE7\x94\xA3\xE6\xBA\x96\xE5\x82\x99\xE3\x81\x8C\xE3\x81\xA7\xE3\x81\x8D\xE3\x81\xA6\xE3\x81\x84\xE3\x82\x8B \xF0\x9F\x94\x8C"));
-HEX5BHEX5DHEX3D_2130709883((Temporary393 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Production ready 🔌"), Temporary393)[0][Temporary393[1]], "zh", makeNimstrLit("\xE5\x87\x86\xE5\xA4\x87\xE5\xA5\xBD\xE7\x94\x9F\xE4\xBA\xA7\xEF\xBC\x81\xF0\x9F\x94\x8C"));
-HEX5BHEX5DHEX3D_2130709883((Temporary394 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Production ready 🔌"), Temporary394)[0][Temporary394[1]], "ko", makeNimstrLit("\xEC\x83\x9D\xEC\x82\xB0 \xEC\xA4\x80\xEB\xB9\x84\xEA\xB0\x80 \xEC\x99\x84\xEB\xA3\x8C\xEB\x90\x98\xEC\x97\x88\xEC\x8A\xB5\xEB\x8B\x88\xEB\x8B\xA4. \xF0\x9F\x94\x8C"));
-HEX5BHEX5DHEX3D_2130709883((Temporary395 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Production ready 🔌"), Temporary395)[0][Temporary395[1]], "fr", makeNimstrLit("Pr\xC3\xAAt pour la production \xF0\x9F\x94\x8C"));
+HEX5BHEX5DHEX3D_2130709493(translates_2634022946[0], "Production-ready 🔌", newTable_2130708029(32));
+HEX5BHEX5DHEX3D_2130709883((Temporary390 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Production-ready 🔌"), Temporary390)[0][Temporary390[1]], "default", makeNimstrLit("Production-ready \xF0\x9F\x94\x8C"));
+HEX5BHEX5DHEX3D_2130709883((Temporary391 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Production-ready 🔌"), Temporary391)[0][Temporary391[1]], "ru", makeNimstrLit("\xD0\x93\xD0\xBE\xD1\x82\xD0\xBE\xD0\xB2\xD0\xBE \xD0\xBA \xD0\xBF\xD1\x80\xD0\xBE\xD0\xB8\xD0\xB7\xD0\xB2\xD0\xBE\xD0\xB4\xD1\x81\xD1\x82\xD0\xB2\xD1\x83 \xF0\x9F\x94\x8C"));
+HEX5BHEX5DHEX3D_2130709883((Temporary392 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Production-ready 🔌"), Temporary392)[0][Temporary392[1]], "ja", makeNimstrLit("\xE6\x9C\xAC\xE7\x95\xAA\xE9\x81\x8B\xE7\x94\xA8\xE5\xAF\xBE\xE5\xBF\x9C \xF0\x9F\x94\x8C"));
+HEX5BHEX5DHEX3D_2130709883((Temporary393 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Production-ready 🔌"), Temporary393)[0][Temporary393[1]], "zh", makeNimstrLit("\xE7\x94\x9F\xE4\xBA\xA7\xE5\xB0\xB1\xE7\xBB\xAA \xF0\x9F\x94\x8C"));
+HEX5BHEX5DHEX3D_2130709883((Temporary394 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Production-ready 🔌"), Temporary394)[0][Temporary394[1]], "fr", makeNimstrLit("Pr\xC3\xAAt pour la production \xF0\x9F\x94\x8C"));
+HEX5BHEX5DHEX3D_2130709883((Temporary395 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Production-ready 🔌"), Temporary395)[0][Temporary395[1]], "ko", makeNimstrLit("\xED\x94\x84\xEB\xA1\x9C\xEB\x8D\x95\xEC\x85\x98 \xEB\xA0\x88\xEB\x94\x94 \xF0\x9F\x94\x8C"));
 HEX5BHEX5DHEX3D_2130709493(translates_2634022946[0], "Multiple server options 🌩", newTable_2130708029(32));
 HEX5BHEX5DHEX3D_2130709883((Temporary396 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Multiple server options 🌩"), Temporary396)[0][Temporary396[1]], "default", makeNimstrLit("Multiple server options \xF0\x9F\x8C\xA9"));
 HEX5BHEX5DHEX3D_2130709883((Temporary397 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Multiple server options 🌩"), Temporary397)[0][Temporary397[1]], "ru", makeNimstrLit("\xD0\x9D\xD0\xB5\xD1\x81\xD0\xBA\xD0\xBE\xD0\xBB\xD1\x8C\xD0\xBA\xD0\xBE \xD0\xB2\xD0\xB0\xD1\x80\xD0\xB8\xD0\xB0\xD0\xBD\xD1\x82\xD0\xBE\xD0\xB2 \xD1\x81\xD0\xB5\xD1\x80\xD0\xB2\xD0\xB5\xD1\x80\xD0\xB0 \xF0\x9F\x8C\xA9"));
@@ -21844,8 +21844,8 @@ function renderTag_2667578211(self_2667578212) {
     Temporary81 = (Temporary88 = HEX5BHEX5D_2667578847((Temporary86 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Features 🔥"), Temporary86)[0][Temporary86[1]], Temporary87), Temporary88)[0][Temporary88[1]];
     }
     }
-    if (!(hasKey_2667578282(translates_2634022946[0], "Production ready 🔌"))) {
-    Temporary89 = makeNimstrLit("Production ready \xF0\x9F\x94\x8C");
+    if (!(hasKey_2667578282(translates_2634022946[0], "Production-ready 🔌"))) {
+    Temporary89 = makeNimstrLit("Production-ready \xF0\x9F\x94\x8C");
     }
     else {
       if (eqStrings(val_2667578512(languageSettings_2248147638[0]).lang, makeNimstrLit("auto"))) {
@@ -21855,8 +21855,8 @@ function renderTag_2667578211(self_2667578212) {
       Temporary91 = toJSStr(val_2667578512(languageSettings_2248147638[0]).lang);
       }
       
-    if (!(hasKey_2667578555((Temporary90 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Production ready 🔌"), Temporary90)[0][Temporary90[1]], Temporary91))) {
-    Temporary89 = (Temporary93 = HEX5BHEX5D_2667578847((Temporary92 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Production ready 🔌"), Temporary92)[0][Temporary92[1]], "default"), Temporary93)[0][Temporary93[1]];
+    if (!(hasKey_2667578555((Temporary90 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Production-ready 🔌"), Temporary90)[0][Temporary90[1]], Temporary91))) {
+    Temporary89 = (Temporary93 = HEX5BHEX5D_2667578847((Temporary92 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Production-ready 🔌"), Temporary92)[0][Temporary92[1]], "default"), Temporary93)[0][Temporary93[1]];
     }
     else {
       if (eqStrings(val_2667578512(languageSettings_2248147638[0]).lang, makeNimstrLit("auto"))) {
@@ -21866,7 +21866,7 @@ function renderTag_2667578211(self_2667578212) {
       Temporary95 = toJSStr(val_2667578512(languageSettings_2248147638[0]).lang);
       }
       
-    Temporary89 = (Temporary96 = HEX5BHEX5D_2667578847((Temporary94 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Production ready 🔌"), Temporary94)[0][Temporary94[1]], Temporary95), Temporary96)[0][Temporary96[1]];
+    Temporary89 = (Temporary96 = HEX5BHEX5D_2667578847((Temporary94 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Production-ready 🔌"), Temporary94)[0][Temporary94[1]], Temporary95), Temporary96)[0][Temporary96[1]];
     }
     }
     if (!(hasKey_2667578282(translates_2634022946[0], "Multiple server options 🌩"))) {
