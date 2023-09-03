@@ -1,3 +1,6 @@
+CustomHeaders	happyx/ssr/server.html#CustomHeaders	server: CustomHeaders	
+newCustomHeaders	happyx/ssr/server.html#newCustomHeaders	server: newCustomHeaders(): CustomHeaders	
+`[]=`	happyx/ssr/server.html#[]=,CustomHeaders,string,T	server: `[]=`[T](self: CustomHeaders; key: string; value: T)	
 Server	happyx/ssr/server.html#Server	server: Server	
 ModelBase	happyx/ssr/server.html#ModelBase	server: ModelBase	
 ApiDocObject	happyx/ssr/server.html#ApiDocObject	server: ApiDocObject	
