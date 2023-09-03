@@ -77,6 +77,11 @@ serve "127.0.0.1", 5000:
     ## Responds "Hello, world!" with 404 HttpCode
     statusCode = 404
     return "Hello, world!"
+  
+  get "/headers":
+    outHeaders["Test"] = 10
+    outHeaders["HappyXHeader"] = "Hello"
+    return "Hello, world!"
 
   post "/post":
     ## Creates a new post

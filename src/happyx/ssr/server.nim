@@ -124,6 +124,17 @@ when enableApiDoc:
     ../private/api_doc_template
 
 
+type CustomHeaders* = StringTableRef
+
+proc newCustomHeaders*: CustomHeaders = newStringTable().CustomHeaders
+
+proc `[]=`*[T](self: CustomHeaders, key: string, value: T) =
+  when not (T is string):
+    self[key] = $value
+  else:
+    self[key] = value
+
+
 when exportPython or defined(docgen):
   import
     nimpy,
@@ -356,6 +367,9 @@ template answer*(
   ## 
   var h = headers
   h.addCORSHeaders()
+  when declaredInScope(outHeaders):
+    for key, val in outHeaders.pairs():
+      h[key] = val
   when enableHttpx or enableHttpBeast:
     var headersArr: seq[string] = @[]
     for key, value in h.pairs():
@@ -725,6 +739,8 @@ macro routes*(server: Server, body: untyped): untyped =
         # Check variable usage
         if statement[^1].isIdentUsed(ident"statusCode"):
           statement[^1].insert(0, newVarStmt(ident"statusCode", newLit(200)))
+        if statement[^1].isIdentUsed(ident"outHeaders"):
+          statement[^1].insert(0, newVarStmt(ident"outHeaders", newCall("newCustomHeaders")))
         if statement[^1].isIdentUsed(ident"cookies"):
           statement[^1].insert(0, newVarStmt(ident"cookies", cookiesOutVar))
       # "/...": statement list
