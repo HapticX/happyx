@@ -101,4 +101,4 @@ component SideBar:
               window.open('https://hapticx.github.io/happyx/happyx.html', '_blank').focus();
               """.}
           ):
-            {translate("📕 API Docs")}
+            {translate("📕 API Reference")}

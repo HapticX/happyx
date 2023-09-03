@@ -20,7 +20,7 @@ component GettingStarted:
           {translate("Python programming language")}
         {translate(" version 3.10 and above.")}
       
-      tH2: {translate("Install 📥")}
+      tH2: {translate("Installing 📥")}
       tP: {translate("To install HappyX you can write this command")}
 
       component CodeBlockGuide(@[

@@ -160,15 +160,76 @@ def calculate(left: float, right: float, op: str):
 """
   pythonPathParamsSsr* = """app = new_server()
 
-@app.get('/user/id{userId}')
-def handle(userId: int):
-    # Here we can use userId
-    print(userId)
-    return {'response': userId}
+@app.get('/user/id{user_id}')
+def handle(user_id: int):
+    # Here we can use user_id
+    print(user_id)
+    return {'response': user_id}
 """
   nimPathParamsSpa* = """appRoutes "app":
   "/user/id{userId:int}":
     ## here we can use userId as immutable variable
     tDiv:
       {userId}
+"""
+  nimCustomPathParamTypeSsr* = """type MyType* = object
+  first, second, third: string
+
+proc parseMyType*(data: string): MyType =
+  MyType(
+    first: data[0], second: data[1], third: data[2]
+  )
+
+registerRouteParamType(
+  "my_type",  # unique type identifier
+  "\d\w\d",  # type pattern
+  parseMyType  # proc/func that takes one string argument and returns any data
+)
+
+serve "127.0.0.1", 5000:
+  get "/{i:my_type}":
+    echo i.first
+    echo i.second
+    echo i.third
+"""
+  nimCustomPathParamTypeSpa* = """type MyType* = object
+  first, second, third: string
+
+proc parseMyType*(data: string): MyType =
+  MyType(
+    first: data[0], second: data[1], third: data[2]
+  )
+
+registerRouteParamType(
+  "my_type",  # unique type identifier
+  "\d\w\d",  # type pattern
+  parseMyType  # proc/func that takes one string argument and returns any data
+)
+
+appRoutes "app":
+  "/{i:my_type}":
+    echo i.first
+    echo i.second
+    echo i.third
+"""
+  pythonCustomRouteParamType* = """from happyx import new_server, register_route_param_type
+
+
+app = new_server()
+
+
+# Here is unique identifier, regex pattern and function/class object
+@register_route_param_type("my_unique_id", r"\d+")
+class MyUniqueIdentifier:
+    def __init__(self, data: str):
+        self.identifier = int(data)
+
+
+@app.get("/registered/{data}")
+def handle(data: MyUniqueIdentifier):
+    print(data.identifier)
+    return {'response': data.identifier}
+
+
+app.start()
 """
