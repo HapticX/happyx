@@ -109,7 +109,7 @@ component Introduction:
         tB: {translate("Then, HappyX is the perfect fit for you. 😉")}
       tH2: {translate("Features 🔥")}
       tUl:
-        tLi: {translate("Production ready 🔌")}
+        tLi: {translate("Production-ready 🔌")}
         tLi: {translate("Multiple server options 🌩")}
         tLi: {translate("Support Single-page applications, Static site generation and Server-side rendering 💫")}
         tLi: {translate("Own Domain-specific languages for HTML, CSS and JavaScript 🎴")}
