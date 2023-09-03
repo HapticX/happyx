@@ -416,12 +416,12 @@ translatable:
     "zh" -> "特 🔥"
     "ko" -> "기능 🔥"
     "fr" -> "Caractéristiques 🔥"
-  "Production ready 🔌":
-    "ru" -> "Производство готово 🔌"
-    "ja" -> "生産準備ができている 🔌"
-    "zh" -> "准备好生产！🔌"
-    "ko" -> "생산 준비가 완료되었습니다. 🔌"
+  "Production-ready 🔌":
+    "ru" -> "Готово к производству 🔌"
+    "ja" -> "本番運用対応 🔌"
+    "zh" -> "生产就绪 🔌"
     "fr" -> "Prêt pour la production 🔌"
+    "ko" -> "프로덕션 레디 🔌"
   "Multiple server options 🌩":
     "ru" -> "Несколько вариантов сервера 🌩"
     "ja" -> "複数のサーバーオプション¶ 🌩"
