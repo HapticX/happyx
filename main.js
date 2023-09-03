@@ -21844,8 +21844,8 @@ function renderTag_2667578211(self_2667578212) {
     Temporary81 = (Temporary88 = HEX5BHEX5D_2667578847((Temporary86 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Features 🔥"), Temporary86)[0][Temporary86[1]], Temporary87), Temporary88)[0][Temporary88[1]];
     }
     }
-    if (!(hasKey_2667578282(translates_2634022946[0], "Production-ready 🔌"))) {
-    Temporary89 = makeNimstrLit("Production-ready \xF0\x9F\x94\x8C");
+    if (!(hasKey_2667578282(translates_2634022946[0], "Production ready 🔌"))) {
+    Temporary89 = makeNimstrLit("Production ready \xF0\x9F\x94\x8C");
     }
     else {
       if (eqStrings(val_2667578512(languageSettings_2248147638[0]).lang, makeNimstrLit("auto"))) {
@@ -21855,8 +21855,8 @@ function renderTag_2667578211(self_2667578212) {
       Temporary91 = toJSStr(val_2667578512(languageSettings_2248147638[0]).lang);
       }
       
-    if (!(hasKey_2667578555((Temporary90 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Production-ready 🔌"), Temporary90)[0][Temporary90[1]], Temporary91))) {
-    Temporary89 = (Temporary93 = HEX5BHEX5D_2667578847((Temporary92 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Production-ready 🔌"), Temporary92)[0][Temporary92[1]], "default"), Temporary93)[0][Temporary93[1]];
+    if (!(hasKey_2667578555((Temporary90 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Production ready 🔌"), Temporary90)[0][Temporary90[1]], Temporary91))) {
+    Temporary89 = (Temporary93 = HEX5BHEX5D_2667578847((Temporary92 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Production ready 🔌"), Temporary92)[0][Temporary92[1]], "default"), Temporary93)[0][Temporary93[1]];
     }
     else {
       if (eqStrings(val_2667578512(languageSettings_2248147638[0]).lang, makeNimstrLit("auto"))) {
@@ -21866,7 +21866,7 @@ function renderTag_2667578211(self_2667578212) {
       Temporary95 = toJSStr(val_2667578512(languageSettings_2248147638[0]).lang);
       }
       
-    Temporary89 = (Temporary96 = HEX5BHEX5D_2667578847((Temporary94 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Production-ready 🔌"), Temporary94)[0][Temporary94[1]], Temporary95), Temporary96)[0][Temporary96[1]];
+    Temporary89 = (Temporary96 = HEX5BHEX5D_2667578847((Temporary94 = HEX5BHEX5D_2130709651(translates_2634022946[0], "Production ready 🔌"), Temporary94)[0][Temporary94[1]], Temporary95), Temporary96)[0][Temporary96[1]];
     }
     }
     if (!(hasKey_2667578282(translates_2634022946[0], "Multiple server options 🌩"))) {
