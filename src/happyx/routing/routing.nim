@@ -558,8 +558,8 @@ when exportPython or defined(docgen):
                 if $i.paramType in registeredRouteParamTypes:
                   var data = registeredRouteParamTypes[$i.paramType]
                   res[i.name] = callObject(data.creator, foundGroup)
-                elif registeredRouteParamTypes.hasObjectWithName($i.paramType):
-                  var data = registeredRouteParamTypes.getObjectWithName($i.paramType)
+                elif registeredRouteParamTypes.hasObjectWithName($paramType):
+                  var data = registeredRouteParamTypes.getObjectWithName($paramType)
                   res[i.name] = callObject(data.creator, foundGroup)
                 # regex
                 else:
@@ -607,8 +607,8 @@ when exportPython or defined(docgen):
               if $i.paramType in registeredRouteParamTypes:
                 var data = registeredRouteParamTypes[$i.paramType]
                 res[i.name] = callObject(data.creator, foundGroup)
-              elif registeredRouteParamTypes.hasObjectWithName($i.paramType):
-                var data = registeredRouteParamTypes.getObjectWithName($i.paramType)
+              elif registeredRouteParamTypes.hasObjectWithName($paramType):
+                var data = registeredRouteParamTypes.getObjectWithName($paramType)
                 res[i.name] = callObject(data.creator, foundGroup)
               # regex
               else:
