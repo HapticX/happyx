@@ -31,7 +31,7 @@ statusCode	happyx/bindings/python.html#statusCode,HtmlResponseObj	python: status
 headers	happyx/bindings/python.html#headers,ResponseObj	python: headers(self: ResponseObj): PyObject	
 headers	happyx/bindings/python.html#headers,JsonResponseObj	python: headers(self: JsonResponseObj): PyObject	
 headers	happyx/bindings/python.html#headers,HtmlResponseObj	python: headers(self: HtmlResponseObj): PyObject	
-registerRouteParamType	happyx/bindings/python.html#registerRouteParamType,string,string,PyObject	python: registerRouteParamType(name, pattern: string; callback: PyObject)	
+registerRouteParamType	happyx/bindings/python.html#registerRouteParamType,string,string	python: registerRouteParamType(name, pattern: string): auto	
 `$`	happyx/bindings/python.html#$,Server	python: `$`(self: Server): string	
 startServerPy	happyx/bindings/python.html#startServerPy,Server	python: startServerPy(self: Server)	
 route	happyx/bindings/python.html#route,Server,string,seq[string]	python: route(self: Server; path: string; methods: seq[string]): auto	
