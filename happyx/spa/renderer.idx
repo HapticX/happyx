@@ -10,11 +10,12 @@ components	happyx/spa/renderer.html#components	renderer: components
 currentComponent	happyx/spa/renderer.html#currentComponent	renderer: currentComponent	
 currentRoute	happyx/spa/renderer.html#currentRoute	renderer: currentRoute	
 currentComponentsList	happyx/spa/renderer.html#currentComponentsList	renderer: currentComponentsList	
+createdComponentsList	happyx/spa/renderer.html#createdComponentsList	renderer: createdComponentsList	
 elem	happyx/spa/renderer.html#elem.m,untyped	renderer: elem(name: untyped): untyped	
 route	happyx/spa/renderer.html#route,cstring	renderer: route(path: cstring)	
 registerApp	happyx/spa/renderer.html#registerApp,cstring	renderer: registerApp(appId: cstring = &quot;app&quot;): App	
 registerComponent	happyx/spa/renderer.html#registerComponent,cstring,BaseComponent	renderer: registerComponent(name: cstring; component: BaseComponent): BaseComponent	
-renderVdom	happyx/spa/renderer.html#renderVdom,App,TagRef	renderer: renderVdom(app: App; tag: TagRef)	
+renderVdom	happyx/spa/renderer.html#renderVdom,App,TagRef,bool	renderer: renderVdom(app: App; tag: TagRef; force: bool = false)	
 render	happyx/spa/renderer.html#render.e,BaseComponent	renderer: render(self: BaseComponent): TagRef	
 reRender	happyx/spa/renderer.html#reRender.e,BaseComponent	renderer: reRender(self: BaseComponent)	
 start	happyx/spa/renderer.html#start.t,App	renderer: start(app: App)	

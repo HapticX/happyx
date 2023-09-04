@@ -146,6 +146,8 @@ window.addEventListener('DOMContentLoaded', main);
     title="componentEventHandlers = newTable(32)">componentEventHandlers</a></li>
   <li><a class="reference" href="#components"
     title="components = newTable(32)">components</a></li>
+  <li><a class="reference" href="#createdComponentsList"
+    title="createdComponentsList: seq[BaseComponent] = @[]">createdComponentsList</a></li>
   <li><a class="reference" href="#currentComponent"
     title="currentComponent = &quot;&quot;">currentComponent</a></li>
   <li><a class="reference" href="#currentComponentsList"
@@ -171,8 +173,8 @@ window.addEventListener('DOMContentLoaded', main);
 
   </ul>
   <ul class="simple nested-toc-section">renderVdom
-      <li><a class="reference" href="#renderVdom%2CApp%2CTagRef"
-    title="renderVdom(app: App; tag: TagRef)">renderVdom(app: App; tag: TagRef)</a></li>
+      <li><a class="reference" href="#renderVdom%2CApp%2CTagRef%2Cbool"
+    title="renderVdom(app: App; tag: TagRef; force: bool = false)">renderVdom(app: App; tag: TagRef; force: bool = false)</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">route
@@ -359,6 +361,14 @@ global application variable
 
 </dd>
 </div>
+<div id="createdComponentsList">
+<dt><pre><a href="renderer.html#createdComponentsList"><span class="Identifier">createdComponentsList</span></a><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="renderer.html#BaseComponent"><span class="Identifier">BaseComponent</span></a><span class="Other">]</span> <span class="Other">=</span> <span class="Operator">@</span><span class="Other">[</span><span class="Other">]</span></pre></dt>
+<dd>
+
+
+
+</dd>
+</div>
 <div id="currentComponent">
 <dt><pre><a href="renderer.html#currentComponent"><span class="Identifier">currentComponent</span></a> <span class="Other">=</span> <span class="StringLit">&quot;&quot;</span></pre></dt>
 <dd>
@@ -410,7 +420,7 @@ Current route path
 </div>
 <div id="registerComponent,cstring,BaseComponent">
 <dt><pre><span class="Keyword">proc</span> <a href="#registerComponent%2Ccstring%2CBaseComponent"><span class="Identifier">registerComponent</span></a><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">component</span><span class="Other">:</span> <a href="renderer.html#BaseComponent"><span class="Identifier">BaseComponent</span></a><span class="Other">)</span><span class="Other">:</span> <a href="renderer.html#BaseComponent"><span class="Identifier">BaseComponent</span></a> {.
-    <span class="Identifier">inline</span><span class="Other">,</span> <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+    <span class="Identifier">inline</span><span class="Other">,</span> <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ValueError</span><span class="Other">,</span> <span class="Identifier">KeyError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 <p>Register a new component.</p>
@@ -420,8 +430,9 @@ Current route path
 
 </dd>
 </div>
-<div id="renderVdom,App,TagRef">
-<dt><pre><span class="Keyword">proc</span> <a href="#renderVdom%2CApp%2CTagRef"><span class="Identifier">renderVdom</span></a><span class="Other">(</span><span class="Identifier">app</span><span class="Other">:</span> <a href="renderer.html#App"><span class="Identifier">App</span></a><span class="Other">;</span> <span class="Identifier">tag</span><span class="Other">:</span> <a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a><span class="Other">)</span> {.<span class="Identifier">inline</span><span class="Other">,</span> <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<div id="renderVdom,App,TagRef,bool">
+<dt><pre><span class="Keyword">proc</span> <a href="#renderVdom%2CApp%2CTagRef%2Cbool"><span class="Identifier">renderVdom</span></a><span class="Other">(</span><span class="Identifier">app</span><span class="Other">:</span> <a href="renderer.html#App"><span class="Identifier">App</span></a><span class="Other">;</span> <span class="Identifier">tag</span><span class="Other">:</span> <a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a><span class="Other">;</span> <span class="Identifier">force</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">)</span> {.<span class="Identifier">inline</span><span class="Other">,</span>
+    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 Rerender DOM with VDOM
@@ -636,7 +647,7 @@ Provides JS router for Single page application
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-09-03 11:45:32 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-09-04 04:32:54 UTC</small>
       </div>
     </div>
   </div>
