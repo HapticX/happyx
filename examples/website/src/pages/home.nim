@@ -66,23 +66,19 @@ mount Home:
           
           component CodeBlockSlider(
             data = @[
-              Code(
+              (
                 name: "SSR Example ⚡", description: "Server-side rendering application",
                 text: ssrExample, language: "nim"
-              ),
-              Code(
+              ), (
                 name: "SPA Example 🎴", description: "Single-page application",
                 text: spaExample, language: "nim"
-              ),
-              Code(
+              ), (
                 name: "FileResponse Example 📁", description: "Respond file from server to client",
                 text: fileResponseExample, language: "nim"
-              ),
-              Code(
+              ), (
                 name: "Path Params In SSR ⚙", description: "PathParams in server-side rendering",
                 text: pathParamsSsrExample, language: "nim"
-              ),
-              Code(
+              ), (
                 name: "Path Params In SPA ⚙", description: "PathParams in single-page application",
                 text: pathParamsSpaExample, language: "nim"
               ),

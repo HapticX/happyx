@@ -127,7 +127,7 @@ component Introduction:
             component Contributor("Ethosa", "https://github.com/Ethosa", "https://avatars.githubusercontent.com/u/49402667?v=4")
         tDiv(class = "flex flex-col gap-4"):
           tH3: {translate("Contributors")}
-          tDiv(class = "grid grid-cols-5 lg:grid-cols-10 xl:grid-cols-15 gap-x-2 gap-y-8"):
+          tDiv(class = "grid grid-cols-5 lg:grid-cols-10 xl:grid-cols-15 gap-x-2 gap-y-12"):
             component Contributor("quimt", "https://github.com/quimt", "https://avatars.githubusercontent.com/u/126020181?v=4")
             component Contributor("its5Q", "https://github.com/its5Q", "https://avatars.githubusercontent.com/u/12975646?v=4")
             component Contributor("Lum", "https://github.com/not-lum", "https://avatars.githubusercontent.com/u/62594565?v=4")
@@ -137,3 +137,4 @@ component Introduction:
             component Contributor("Arik Rahman", "https://github.com/ArikRahman", "https://avatars.githubusercontent.com/u/40479733?v=4")
             component Contributor("horanchikk", "https://github.com/horanchikk", "https://avatars.githubusercontent.com/u/46918417?v=4")
             component Contributor("Stephan Zhdanov", "https://github.com/ret7020", "https://avatars.githubusercontent.com/u/55328925?v=4")
+            component Contributor("lost22git", "https://github.com/lost22git", "https://avatars.githubusercontent.com/u/65008815?v=4")

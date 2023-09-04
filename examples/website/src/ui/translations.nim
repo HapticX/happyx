@@ -483,13 +483,13 @@ translatable:
     "ko" -> "관리자"
     "fr" -> "Mainteneurs"
   "Contributors":
-    "ru" -> "Составители"
+    "ru" -> "Участники"
     "ja" -> "コントリビューター"
     "zh" -> "贡献者"
     "ko" -> "기여자"
     "fr" -> "Contributeurs"
   "Getting Started 💫":
-    "ru" -> "Приступаем к работе 💫"
+    "ru" -> "Приступая к работе 💫"
     "ja" -> "はじめに¶ 💫"
     "zh" -> "开始吧！💫"
     "ko" -> "시작하기 💫"
@@ -548,12 +548,12 @@ translatable:
     "zh" -> "Python编程语言"
     "ko" -> "파이썬 프로그래밍 언어"
     "fr" -> "Langage de programmation Python"
-  " version 3.10 and above.":
-    "ru" -> " версия 3.10 и выше."
-    "ja" -> " バージョン3.10以上。"
-    "zh" -> " 版本3.10及以上。"
-    "ko" -> " 버전 3.10 이상."
-    "fr" -> " version 3.10 et supérieure."
+  " version 3.9 and above.":
+    "ru" -> " версия 3.9 и выше."
+    "ja" -> " バージョン3.9以上。"
+    "zh" -> " 版本3.9及以上。"
+    "ko" -> " 버전 3.9 이상."
+    "fr" -> " version 3.9 et supérieure."
   "Installing 📥":
     "ru" -> "Установка 📥"
     "ja" -> "インストール中 📥"
@@ -890,6 +890,18 @@ translatable:
     "zh" -> "此外，您可以定义自己的参数类型 ✌"
     "fr" -> "De plus, vous pouvez définir vos propres types de paramètres ✌"
     "ko" -> "또한, 자체 매개변수 유형을 정의할 수 있습니다 ✌"
+  "Assigning Route Params 🛠":
+    "ru" -> "Назначение параметров маршрута 🛠"
+    "ja" -> "ルートパラメーターの割り当て 🛠"
+    "zh" -> "分配路由参数 🛠"
+    "fr" -> "Attribution des paramètres de route 🛠"
+    "ko" -> "경로 매개변수 할당 🛠"
+  "At Nim side you can assign route params and use it anywhere":
+    "ru" -> "В Nim вы можете назначить параметры маршрута и использовать их в любом месте"
+    "ja" -> "Nim側では、ルートパラメーターを割り当て、どこでも使用できます"
+    "zh" -> "在Nim一侧，您可以分配路由参数并在任何地方使用它"
+    "fr" -> "Du côté Nim, vous pouvez attribuer des paramètres de route et les utiliser n'importe où"
+    "ko" -> "Nim 측에서 경로 매개변수를 할당하고 어디에서나 사용할 수 있습니다"
 
 var spokenLang: cstring
 buildJs:

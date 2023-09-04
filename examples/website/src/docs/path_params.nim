@@ -3,7 +3,7 @@ import
   ../../../../src/happyx,
   ../ui/[colors, code, play_states, translations],
   ../components/[
-    code_block_guide, code_block
+    code_block_guide, code_block, code_block_slider
   ]
 
 
@@ -221,3 +221,19 @@ component PathParams:
         ("Nim (SPA)", "nim", nimCustomPathParamTypeSpa, cstring"nim_import_ssr", newPlayResult()),
         ("Python", "python", pythonCustomRouteParamType, cstring"py_import", newPlayResult()),
       ])
+
+      if currentLanguage != "Python":
+        tH2: {translate"Assigning Route Params 🛠"}
+
+        tP:
+          {translate"At Nim side you can assign route params and use it anywhere"}
+
+        tDiv(class = "flex gap-16 items-center justify-center items-center w-full"):
+          tDiv(class = "flex flex-col gap-4"):
+            tH3: {translate"SSR Example ⚡"}
+            tP: {translate"Server-side rendering application"}
+            component CodeBlock(language = "nim", source = nimAssignRouteParamsSsr, id = "assignRouteParamsSsr")
+          tDiv(class = "flex flex-col gap-4"):
+            tH3: {translate"SPA Example 🎴"}
+            tP: {translate"Single-page application"}
+            component CodeBlock(language = "nim", source = nimAssignRouteParamsSpa, id = "assignRouteParamsSpa")
