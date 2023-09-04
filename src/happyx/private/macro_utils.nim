@@ -368,6 +368,19 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
   for statement in body:
     if statement.kind == nnkDiscardStmt:
       continue
+    elif statement.kind == nnkPrefix and statement[0] == ident"!" and statement[1] == ident"debugRoot":
+      echo root.toStrLit
+      continue
+    elif statement.kind == nnkPrefix and statement[0] == ident"!" and statement[1] == ident"debugRootAndExit":
+      echo root.toStrLit
+      quit(QuitSuccess)
+    elif statement.kind == nnkPrefix and statement[0] == ident"!" and statement[1] == ident"debugCurrent":
+      echo result.toStrLit
+      continue
+    elif statement.kind == nnkPrefix and statement[0] == ident"!" and statement[1] == ident"debugCurrentAndExit":
+      echo result.toStrLit
+      quit(QuitSuccess)
+    
     if statement.kind == nnkCall and statement[0] == ident"procCall" and inComponent:
       result.add(statement)
     elif statement.kind == nnkCall and statement[0] == ident"nim" and statement.len == 2 and statement[1].kind == nnkStmtList:

@@ -172,7 +172,9 @@ def handle(user_id: int):
     tDiv:
       {userId}
 """
-  nimCustomPathParamTypeSsr* = """type MyType* = object
+  nimCustomPathParamTypeSsr* = """import happyx
+
+type MyType* = object
   first, second, third: string
 
 proc parseMyType*(data: string): MyType =
@@ -192,7 +194,9 @@ serve "127.0.0.1", 5000:
     echo i.second
     echo i.third
 """
-  nimCustomPathParamTypeSpa* = """type MyType* = object
+  nimCustomPathParamTypeSpa* = """import happyx
+
+type MyType* = object
   first, second, third: string
 
 proc parseMyType*(data: string): MyType =
@@ -232,4 +236,36 @@ def handle(data: MyUniqueIdentifier):
 
 
 app.start()
+"""
+  nimAssignRouteParamsSsr* = """import happyx
+
+# declare path params
+pathParams:
+  paramName:  # assign param name
+    type int  # param type
+    optional  # param is optional
+    mutable  # param is mutable variable
+    default = 100  # default param value is 100
+
+
+serve "127.0.0.1", 5000:
+  # Use paramName
+  get "/<paramName>":
+    echo paramName
+"""
+  nimAssignRouteParamsSpa* = """import happyx
+
+# declare path params
+pathParams:
+  paramName:  # assign param name
+    type int  # param type
+    optional  # param is optional
+    mutable  # param is mutable variable
+    default = 100  # default param value is 100
+
+
+appRoutes "app":
+  # Use paramName
+  "/<paramName>":
+    echo paramName
 """

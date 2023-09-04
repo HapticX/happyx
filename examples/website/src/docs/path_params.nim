@@ -173,13 +173,13 @@ component PathParams:
           tTr:
             tTd:
               tSpan(class = "text-orange-800 dark:text-orange-400"):
-                "enum(ENUM_NAME)"
+                "enum(NAME)"
             tTd:
               tCode:
                 tSpan(class = "text-green-800 dark:text-green-400"):
                   "\"/"
                 tSpan(class = "text-purple-800 dark:text-purple-400"):
-                  """{i:enum(Language)}"""
+                  """{i:enum(Option)}"""
                 tSpan(class = "text-green-800 dark:text-green-400"):
                   "\""
             tTd:
@@ -187,7 +187,7 @@ component PathParams:
                 tSpan(class = "text-green-800 dark:text-green-400"):
                   "\"/"
                 tSpan(class = "text-purple-800 dark:text-purple-400"):
-                  """$i:enum(Language)"""
+                  """$i:enum(Option)"""
                 tSpan(class = "text-green-800 dark:text-green-400"):
                   "\""
             tTd: {translate"Parses param as Nim enum type (allow only for string enums)"}
@@ -221,3 +221,19 @@ component PathParams:
         ("Nim (SPA)", "nim", nimCustomPathParamTypeSpa, cstring"nim_import_ssr", newPlayResult()),
         ("Python", "python", pythonCustomRouteParamType, cstring"py_import", newPlayResult()),
       ])
+
+      if currentLanguage != "Python":
+        tH2: {translate"Assigning Route Params 🛠"}
+
+        tP:
+          {translate"At Nim side you can assign route params and use it anywhere"}
+
+        tDiv(class = "flex flex-col lg:flex-row gap-16 items-center justify-between items-center w-full"):
+          tDiv(class = "flex flex-col gap-4"):
+            tH3: {translate"SSR Example ⚡"}
+            tP: {translate"Server-side rendering application"}
+            component CodeBlock(language = "nim", source = nimAssignRouteParamsSsr, id = "assignRouteParamsSsr")
+          tDiv(class = "flex flex-col gap-4"):
+            tH3: {translate"SPA Example 🎴"}
+            tP: {translate"Single-page application"}
+            component CodeBlock(language = "nim", source = nimAssignRouteParamsSpa, id = "assignRouteParamsSpa")

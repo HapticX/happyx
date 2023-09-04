@@ -18,7 +18,7 @@ component GettingStarted:
         {translate(" version 1.6.14 or higher installed, or ")}
         tCode: tA(href = "https://python.org"):
           {translate("Python programming language")}
-        {translate(" version 3.10 and above.")}
+        {translate(" version 3.9 and above.")}
       
       tH2: {translate("Installing 📥")}
       tP: {translate("To install HappyX you can write this command")}

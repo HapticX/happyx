@@ -5,6 +5,14 @@ import
   ./[button, drawer, sidebar, spinner]
 
 
+proc setCurrentLanguage*(lang: string) =
+  var language: cstring = lang
+  languageSettings.set(lang)
+  buildJs:
+    localStorage["happyx_spoken_language"] = ~language
+  route(currentRoute)
+
+
 # Declare component
 component Header:
   drawer: Drawer = nil
@@ -55,13 +63,15 @@ component Header:
             route("/roadmap/")
         ):
           {translate("🌎 RoadMap")}
-        component Spinner(
-          data = langTitles(),
-          action = proc(choosen: int) =
-            var lang: cstring = langCodes()[choosen]
-            languageSettings.set($lang)
-            buildJs:
-              localStorage["happyx_spoken_language"] = ~lang
-            route(currentRoute)
-        ):
-          {translate("🌐 Language")}
+        component Button(action = proc() = setCurrentLanguage("en")):
+          "🇺🇸"
+        component Button(action = proc() = setCurrentLanguage("fr")):
+          "🇫🇷"
+        component Button(action = proc() = setCurrentLanguage("ja")):
+          "🇯🇵"
+        component Button(action = proc() = setCurrentLanguage("zh")):
+          "🇨🇳"
+        component Button(action = proc() = setCurrentLanguage("ko")):
+          "🇰🇷"
+        component Button(action = proc() = setCurrentLanguage("ru")):
+          "🇷🇺"
