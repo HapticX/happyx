@@ -3,7 +3,7 @@ import
   ../../../../src/happyx,
   ../ui/[colors, code, play_states, translations],
   ../components/[
-    code_block_guide, code_block
+    code_block_guide, code_block, code_block_slider
   ]
 
 

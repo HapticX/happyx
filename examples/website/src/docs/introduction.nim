@@ -137,3 +137,4 @@ component Introduction:
             component Contributor("Arik Rahman", "https://github.com/ArikRahman", "https://avatars.githubusercontent.com/u/40479733?v=4")
             component Contributor("horanchikk", "https://github.com/horanchikk", "https://avatars.githubusercontent.com/u/46918417?v=4")
             component Contributor("Stephan Zhdanov", "https://github.com/ret7020", "https://avatars.githubusercontent.com/u/55328925?v=4")
+            component Contributor("lost22git", "https://github.com/lost22git", "https://avatars.githubusercontent.com/u/65008815?v=4")

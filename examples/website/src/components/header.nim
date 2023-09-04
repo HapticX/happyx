@@ -20,7 +20,7 @@ component Header:
   # Declare HTML template
   `template`:
     tDiv(class = "flex justify-between items-center px-8 py-2 backdrop-blur-sm bg-black bg-opacity-20 h-32 xl:h-fit"):
-      tDiv:  # logo
+      tDiv(class = "flex"):
         tImg(src = "/happyx/public/logo.svg", class = "h-24 md:h-16 xl:h-12 cursor-pointer select-none")
         @click:
           route("/")

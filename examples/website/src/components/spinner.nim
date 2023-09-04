@@ -40,6 +40,8 @@ component Spinner:
             tP(class = "flex justify-center items-center px-2 select-none cursor-pointer"):
               {self.data.val[i]}
               @click:
+                if self.shown.isNil():
+                  return
                 self.toggle()
                 self.action(i)
   
@@ -47,7 +49,7 @@ component Spinner:
     proc toggle() =
       enableRouting = false
       let spinnerBg = document.getElementById(fmt"spinner_bg_{self.uniqCompId}")
-      if not self.shown:
+      if not self.shown.val:
         spinnerBg.classList.remove("opacity-0")
         spinnerBg.classList.add("opacity-100")
         spinnerBg.classList.remove("pointer-events-none")

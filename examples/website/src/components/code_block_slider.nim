@@ -4,22 +4,24 @@ import
   ./[code_block]
 
 
-type Code* = object
-  text*: string
-  language*: string
-  name*: string
-  description*: string
-
-
 component CodeBlockSlider:
-  data: seq[Code] = @[]
+  data: seq[tuple[name, description, text, language: string]]
 
   index: int = 0
+  column: bool = false
+  fullSize: bool = false
 
   `template`:
-    tDiv(class = "flex flex-col w-full lg:w-3/4 xl:w-1/2 gap-6 rounded-md px-8 py-4"):
+    tDiv(class =
+      if self.fullSize:
+        "flex flex-col w-full gap-6 rounded-md px-8 py-4"
+      else:
+        "flex flex-col w-full lg:w-3/4 xl:w-1/2 gap-6 rounded-md px-8 py-4"
+    ):
       tDiv(class = "relative"):
-        for idx, val in (self.data).pairs:
+        for idx in 0..<self.data.len:
+          nim:
+            let source = self.data.val[idx]
           if idx == 0:
             tDiv(
               id = fmt"sliderContainer-{self.uniqCompId}_{idx}",
@@ -27,11 +29,11 @@ component CodeBlockSlider:
             ):
               tDiv(class = "flex flex-col gap-2 lg:gap-0"):
                 tP(class = "break-keep whitespace-pre text-5xl lg:text-xl xl:text-3xl font-bold pointer-events-none"):
-                  {translate(val.name)}
+                  {translate(source.name)}
                 tP(class = "flex h-full justify-center items-center text-3xl lg:text-base pointer-events-none"):
-                  {translate(val.description)}
+                  {translate(source.description)}
               tDiv(class = "w-full"):
-                component CodeBlock(source = val.text, language = val.language, id = fmt"slider-{self.uniqCompId}_{idx}")
+                component CodeBlock(source = source.text, language = source.language, id = fmt"slider-{self.uniqCompId}_{idx}")
           else:
             tDiv(
               id = fmt"sliderContainer-{self.uniqCompId}_{idx}",
@@ -39,13 +41,13 @@ component CodeBlockSlider:
             ):
               tDiv(class = "flex flex-col gap-2 lg:gap-0"):
                 tP(class = "break-keep whitespace-pre text-5xl lg:text-xl xl:text-3xl font-bold pointer-events-none"):
-                  {translate(val.name)}
+                  {translate(source.name)}
                 tP(class = "flex h-full justify-center items-center text-3xl lg:text-base pointer-events-none"):
-                  {translate(val.description)}
+                  {translate(source.description)}
               tDiv(class = "w-full"):
-                component CodeBlock(source = val.text, language = val.language, id = fmt"slider-{self.uniqCompId}_{idx}")
+                component CodeBlock(source = source.text, language = source.language, id = fmt"slider-{self.uniqCompId}_{idx}")
       tDiv(class = "flex w-full justify-center items-center p-2 gap-2"):
-        for idx in 0..<(self.data).len:
+        for idx in 0..<self.data.len:
           if self.index == idx:
             tDiv(
               id = fmt"circle-{self.uniqCompId}_{idx}",
@@ -95,6 +97,8 @@ component CodeBlockSlider:
       """.}
 
     proc updateIndex(idx: int) =
+      if self.index.isNil():
+        return
       if self.index == idx:
         return
       self.index.set(idx)

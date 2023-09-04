@@ -106,6 +106,7 @@ var
   currentComponent* = ""  ## Current component unique ID
   currentRoute*: cstring = "/"  ## Current route path
   currentComponentsList*: seq[BaseComponent] = @[]
+  createdComponentsList*: seq[BaseComponent] = @[]
 
 
 when defined(js):
@@ -192,14 +193,17 @@ proc registerComponent*(name: cstring, component: BaseComponent): BaseComponent 
   ## 
   ## Don't use it because it used in `component` macro.
   ## 
+  echo fmt"register component {name}"
   if components.hasKey(name):
+    echo fmt"found component {components[name].uniqCompId}"
     return components[name]
   components[name] = component
+  echo fmt"registered component {component.uniqCompId}"
   component
 
 
 when defined(js):
-  proc renderVdom*(app: App, tag: TagRef) =
+  proc renderVdom*(app: App, tag: TagRef, force: bool = false) =
     ## Rerender DOM with VDOM
     # compile with `-d:oldRenderer` to work with old renderer
     when enableOldRenderer:
@@ -213,12 +217,18 @@ when defined(js):
       # echo realDom.innerHTML
       # compareEdit(realDom, virtualDom)
     realDom.innerHTML = virtualDom.innerHTML
-    for comp in currentComponentsList:
-      echo comp.uniqCompId
-      comp.updated(comp, nil)
+    if force:
+      for comp in createdComponentsList:
+        comp.exited(comp, nil)
+      for comp in currentComponentsList:
+        comp.updated(comp, nil)
+      createdComponentsList.setLen(0)
+    else:
+      for comp in currentComponentsList:
+        comp.updated(comp, nil)
     currentComponentsList.setLen(0)
 else:
-  proc renderVdom*(app: App, tag: TagRef) =
+  proc renderVdom*(app: App, tag: TagRef, force: bool = false) =
     ## Rerender DOM with VDOM
     discard
 
@@ -535,7 +545,7 @@ macro routes*(app: App, body: untyped): untyped =
     newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
       newCall("not", newCall("isNil", iHtml)),
       newStmtList(
-        newCall("renderVdom", ident"application", iHtml)
+        newCall("renderVdom", ident"application", iHtml, ident"force")
       )
     ))
   )

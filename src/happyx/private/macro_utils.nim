@@ -105,6 +105,7 @@ proc useComponent*(statement: NimNode, inCycle, inComponent: bool,
       newVarStmt(
         ident(componentName), ident(componentNameTmp)
       ),
+    newCall("echo", newCall("typeOf", ident(componentName)), newLit", ", newLit($componentNameTmp)),
     newAssignment(
       newDotExpr(ident(componentName), ident"slot"),
       buildHtmlProcedure(

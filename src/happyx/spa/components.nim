@@ -606,6 +606,7 @@ macro component*(name, body: untyped): untyped =
     newVarStmt(ident"self", initObjConstr),
     lifeCyclesDeclare,
     defaultValues,
+    newCall("add", ident"createdComponentsList", ident"self"),
     newNimNode(nnkReturnStmt).add(ident"self")
   )
 
