@@ -256,7 +256,7 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode =
         ),
         newLit(idx)
       )
-      foundGroup = newNimNode(nnkBracketExpr).add(urlPath, group)
+      foundGroup = newCall("decodeUrl", newNimNode(nnkBracketExpr).add(urlPath, group))
       # _groupLen < 1
       conditionOptional = newCall("<", newCall("len", group), newIntLitNode(1))
       # _foundGroupLen == 0

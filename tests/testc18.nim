@@ -28,3 +28,5 @@ serve "127.0.0.1", 5000:
       "test": o.test,
       "createdAt": $o.createdAt
     }}
+  get "/fighter/{name:string}":
+    echo name
