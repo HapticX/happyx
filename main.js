@@ -21345,7 +21345,7 @@ function renderTag_2667578223(self_2667578224) {
     var fmtRes_2667579495 = mnewString(0);
     fmtRes_2667579495.push.apply(fmtRes_2667579495, makeNimstrLit("Python \xF0\x9F\x90\x8D"));;
     var fmtRes_2667579500 = mnewString(0);
-    fmtRes_2667579500.push.apply(fmtRes_2667579500, makeNimstrLit("https://img.shields.io/badge/>=3.9.x-1b1e2b?style=for-the-badge&logo=python&logoColor=f1fa8c&label=Python&labelColor=2b2e3b"));;
+    fmtRes_2667579500.push.apply(fmtRes_2667579500, makeNimstrLit("https://img.shields.io/badge/>=3.7.x-1b1e2b?style=for-the-badge&logo=python&logoColor=f1fa8c&label=Python&labelColor=2b2e3b"));;
     var fmtRes_2667579532 = mnewString(0);
     fmtRes_2667579532.push.apply(fmtRes_2667579532, makeNimstrLit("Wakatime Stats"));;
     var fmtRes_2667579545 = mnewString(0);
@@ -22194,17 +22194,17 @@ function find_939524145(a_939524148, item_939524149) {
     result_939524150 = 0;
     Label1: do {
       var i_939524154 = [];
-      var i_1040187442 = 0;
+      var i_1040187445 = 0;
       Label2: do {
           Label3: while (true) {
-          if (!(i_1040187442 < (a_939524148).length)) break Label3;
-            i_939524154 = a_939524148[i_1040187442];
+          if (!(i_1040187445 < (a_939524148).length)) break Label3;
+            i_939524154 = a_939524148[i_1040187445];
             if (eqStrings(i_939524154, item_939524149)) {
             break BeforeRet;
             }
             
             result_939524150 += 1;
-            i_1040187442 += 1;
+            i_1040187445 += 1;
           }
       } while (false);
     } while (false);

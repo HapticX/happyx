@@ -131,6 +131,10 @@ window.addEventListener('DOMContentLoaded', main);
     title="enableMicro = false">enableMicro</a></li>
   <li><a class="reference" href="#enableOrm"
     title="enableOrm = true">enableOrm</a></li>
+  <li><a class="reference" href="#enableRequestModelDebugMacro"
+    title="enableRequestModelDebugMacro = false">enableRequestModelDebugMacro</a></li>
+  <li><a class="reference" href="#enableRoutingDebugMacro"
+    title="enableRoutingDebugMacro = false">enableRoutingDebugMacro</a></li>
   <li><a class="reference" href="#enableUi"
     title="enableUi = false">enableUi</a></li>
   <li><a class="reference" href="#enableUseCompDebugMacro"
@@ -142,9 +146,9 @@ window.addEventListener('DOMContentLoaded', main);
   <li><a class="reference" href="#HpxMinor"
     title="HpxMinor = 9">HpxMinor</a></li>
   <li><a class="reference" href="#HpxPatch"
-    title="HpxPatch = 5">HpxPatch</a></li>
+    title="HpxPatch = 7">HpxPatch</a></li>
   <li><a class="reference" href="#HpxVersion"
-    title="HpxVersion = &quot;2.9.5&quot;">HpxVersion</a></li>
+    title="HpxVersion = &quot;2.9.7&quot;">HpxVersion</a></li>
   <li><a class="reference" href="#httpMethods"
     title="httpMethods = [&quot;get&quot;, &quot;post&quot;, &quot;put&quot;, &quot;patch&quot;, &quot;link&quot;, &quot;options&quot;, &quot;head&quot;,
                &quot;delete&quot;, &quot;unlink&quot;, &quot;purge&quot;, &quot;copy&quot;]">httpMethods</a></li>
@@ -154,6 +158,8 @@ window.addEventListener('DOMContentLoaded', main);
     title="nim_2_0_0 = false">nim_2_0_0</a></li>
   <li><a class="reference" href="#numThreads"
     title="numThreads = 0">numThreads</a></li>
+  <li><a class="reference" href="#reqModelDebugTarget"
+    title="reqModelDebugTarget = &quot;&quot;">reqModelDebugTarget</a></li>
 
   </ul>
 </li>
@@ -186,7 +192,10 @@ window.addEventListener('DOMContentLoaded', main);
 <tr><td><tt class="docutils literal"><span class="pre"><span class="Operator">-</span><span class="Identifier">d</span><span class="Punctuation">:</span><span class="Identifier">compDebug</span></span></tt></td><td>enables debug logging for components</td><td>❌</td></tr>
 <tr><td><tt class="docutils literal"><span class="pre"><span class="Operator">-</span><span class="Identifier">d</span><span class="Punctuation">:</span><span class="Identifier">ssrDebug</span></span></tt></td><td>enables debug logging for SSR</td><td>❌</td></tr>
 <tr><td><tt class="docutils literal"><span class="pre"><span class="Operator">-</span><span class="Identifier">d</span><span class="Punctuation">:</span><span class="Identifier">spaDebug</span></span></tt></td><td>enables debug logging for SPA</td><td>❌</td></tr>
+<tr><td><tt class="docutils literal"><span class="pre"><span class="Operator">-</span><span class="Identifier">d</span><span class="Punctuation">:</span><span class="Identifier">reqModelDebug</span></span></tt></td><td>enables debug logging for request models</td><td>❌</td></tr>
+<tr><td><tt class="docutils literal"><span class="pre"><span class="Operator">-</span><span class="Identifier">d</span><span class="Punctuation">:</span><span class="Identifier">routingDebug</span></span></tt></td><td>enables debug logging for routing</td><td>❌</td></tr>
 <tr><td><tt class="docutils literal"><span class="pre"><span class="Operator">-</span><span class="Identifier">d</span><span class="Punctuation">:</span><span class="Identifier">componentDebugTarget</span></span></tt></td><td>after this component program will terminated</td><td>✅</td></tr>
+<tr><td><tt class="docutils literal"><span class="pre"><span class="Operator">-</span><span class="Identifier">d</span><span class="Punctuation">:</span><span class="Identifier">reqModelDebugTarget</span></span></tt></td><td>after this request model program will terminated</td><td>✅</td></tr>
 </table></p>
   <div class="section" id="10">
 <h1><a class="toc-backref" href="#10">Consts</a></h1>
@@ -303,6 +312,22 @@ window.addEventListener('DOMContentLoaded', main);
 
 </dd>
 </div>
+<div id="enableRequestModelDebugMacro">
+<dt><pre><a href="constants.html#enableRequestModelDebugMacro"><span class="Identifier">enableRequestModelDebugMacro</span></a> <span class="Other">=</span> <span class="DecNumber">false</span></pre></dt>
+<dd>
+
+
+
+</dd>
+</div>
+<div id="enableRoutingDebugMacro">
+<dt><pre><a href="constants.html#enableRoutingDebugMacro"><span class="Identifier">enableRoutingDebugMacro</span></a> <span class="Other">=</span> <span class="DecNumber">false</span></pre></dt>
+<dd>
+
+
+
+</dd>
+</div>
 <div id="enableUi">
 <dt><pre><a href="constants.html#enableUi"><span class="Identifier">enableUi</span></a> <span class="Other">=</span> <span class="DecNumber">false</span></pre></dt>
 <dd>
@@ -344,7 +369,7 @@ window.addEventListener('DOMContentLoaded', main);
 </dd>
 </div>
 <div id="HpxPatch">
-<dt><pre><a href="constants.html#HpxPatch"><span class="Identifier">HpxPatch</span></a> <span class="Other">=</span> <span class="DecNumber">5</span></pre></dt>
+<dt><pre><a href="constants.html#HpxPatch"><span class="Identifier">HpxPatch</span></a> <span class="Other">=</span> <span class="DecNumber">7</span></pre></dt>
 <dd>
 
 
@@ -352,7 +377,7 @@ window.addEventListener('DOMContentLoaded', main);
 </dd>
 </div>
 <div id="HpxVersion">
-<dt><pre><a href="constants.html#HpxVersion"><span class="Identifier">HpxVersion</span></a> <span class="Other">=</span> <span class="StringLit">&quot;2.9.5&quot;</span></pre></dt>
+<dt><pre><a href="constants.html#HpxVersion"><span class="Identifier">HpxVersion</span></a> <span class="Other">=</span> <span class="StringLit">&quot;2.9.7&quot;</span></pre></dt>
 <dd>
 
 
@@ -392,6 +417,14 @@ window.addEventListener('DOMContentLoaded', main);
 
 </dd>
 </div>
+<div id="reqModelDebugTarget">
+<dt><pre><a href="constants.html#reqModelDebugTarget"><span class="Identifier">reqModelDebugTarget</span></a> <span class="Other">=</span> <span class="StringLit">&quot;&quot;</span></pre></dt>
+<dd>
+
+
+
+</dd>
+</div>
 
 </dl></div>
 
@@ -402,7 +435,7 @@ window.addEventListener('DOMContentLoaded', main);
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-09-07 17:06:13 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-09-08 03:05:44 UTC</small>
       </div>
     </div>
   </div>
