@@ -1541,6 +1541,8 @@ macro routes*(server: Server, body: untyped): untyped =
     immutableVars.add(newIdentDefs(ident"inCookies", newEmptyNode(), cookiesInVar))
   if stmtList.isIdentUsed(ident"reqMethod"):
     immutableVars.add(newIdentDefs(ident"reqMethod", newEmptyNode(), reqMethod))
+  when enableDebugSsrMacro:
+    echo result.toStrLit
 
 
 macro initServer*(body: untyped): untyped =

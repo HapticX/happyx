@@ -24,7 +24,10 @@
 ## | `-d:compDebug`            | enables debug logging for components                       | ❌         |
 ## | `-d:ssrDebug`             | enables debug logging for SSR                              | ❌         |
 ## | `-d:spaDebug`             | enables debug logging for SPA                              | ❌         |
+## | `-d:reqModelDebug`        | enables debug logging for request models                   | ❌         |
+## | `-d:routingDebug`         | enables debug logging for routing                          | ❌         |
 ## | `-d:componentDebugTarget` | after this component program will terminated               | ✅         |
+## | `-d:reqModelDebugTarget`  | after this request model program will terminated           | ✅         |
 ## 
 import strformat
 when not defined(js) and defined(debug):
@@ -45,7 +48,10 @@ const
   enableDebugSsrMacro* = defined(ssrDebug) or defined(happyxSsrDebug) or defined(hpxSsrDebug)
   enableDebugSpaMacro* = defined(spaDebug) or defined(happyxSpaDebug) or defined(hpxSpaDebug)
   enableUseCompDebugMacro* = defined(useCompDebug) or defined(happyxUseCompDebug) or defined(hpxUseCompDebug)
+  enableRequestModelDebugMacro* = defined(reqModelDebug) or defined(happyxReqModelDebug) or defined(hpxReqModelDebug)
+  enableRoutingDebugMacro* = defined(routingDebug) or defined(happyxRoutingDebug) or defined(hpxRoutingDebug)
   componentDebugTarget* {.strdefine.} = ""
+  reqModelDebugTarget* {.strdefine.} = ""
   # Language bindings
   exportPython* = defined(export2py) or defined(happyxExport2py) or defined(hpxExport2py)
   # Framework features
@@ -66,7 +72,7 @@ const
   # Framework version
   HpxMajor* = 2
   HpxMinor* = 9
-  HpxPatch* = 5
+  HpxPatch* = 7
   HpxVersion* = $HpxMajor & "." & $HpxMinor & "." & $HpxPatch
 
 

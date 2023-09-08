@@ -88,7 +88,7 @@ import
   strutils,
   strformat,
   # Happyx
-  ../core/[exceptions]
+  ../core/[exceptions, constants]
 
 
 var modelFields* {.compileTime.} = newTable[string, StringTableRef]()
@@ -103,6 +103,15 @@ macro model*(modelName, body: untyped): untyped =
   ## - [x] Form-Data
   ## - [x] x-www-form-urlencoded
   ## 
+  var
+    options: seq[string] = @[]
+    enableOptions = false
+    modelName = modelName
+  if modelName.kind == nnkBracketExpr:
+    enableOptions = true
+    for i in 1..<modelName.len:
+      options.add ($modelName[i].toStrLit).toLower()
+    modelName = modelName[0]
   if modelName.kind != nnkIdent:
     throwDefect(
       HpxModelSyntaxDefect,
@@ -125,16 +134,16 @@ macro model*(modelName, body: untyped): untyped =
   modelFields[$modelName] = newStringTable()
   
   for i in body:
-    if i.kind == nnkCall and i.len == 2 :
+    if i.kind == nnkCall and i.len == 2 and i[1].kind == nnkStmtList and i[1].len == 1:
       let argName = i[0]
       # arg: type
-      if i[1][0].kind in [nnkIdent, nnkBracketExpr]:
+      if i[1][0].kind != nnkAsgn:
         let argType = i[1][0]
         params.add(newIdentDefs(
           postfix(argName, "*"), argType
         ))
         modelFields[$modelName][$argName.toStrLit] = $argType.toStrLit
-        if ($argType).toLower() != "formdataitem":
+        if ($argType.toStrLit).toLower() != "formdataitem":
           # JSON raw data
           asgnStmt.add(newNimNode(nnkIfStmt).add(
             newNimNode(nnkElifBranch).add(
@@ -156,7 +165,7 @@ macro model*(modelName, body: untyped): untyped =
               newCall("hasKey", ident"dataTable", newStrLitNode($argName)),
               newAssignment(
                 newDotExpr(ident"result", argName),
-                case ($argType).toLower()
+                case ($argType.toStrLit).toLower()
                 of "int":
                   newCall("parseInt", newCall("[]", ident"dataTable", newStrLitNode($argName)))
                 of "float":
@@ -203,13 +212,13 @@ macro model*(modelName, body: untyped): untyped =
           )
         # form-data
         asgnFormData.add(
-          if ($argType).toLower() != "formdataitem":
+          if ($argType.toStrLit).toLower() != "formdataitem":
             newNimNode(nnkIfStmt).add(
               newNimNode(nnkElifBranch).add(
               newCall("hasKey", ident"dataTable", newStrLitNode($argName)),
               newAssignment(
                 newDotExpr(ident"result", argName),
-                case ($argType).toLower()
+                case ($argType.toStrLit).toLower()
                 of "int":
                   newCall("parseInt", newCall("[]", ident"dataTable", newStrLitNode($argName)))
                 of "float":
@@ -244,7 +253,7 @@ macro model*(modelName, body: untyped): untyped =
         )
         continue
       # arg: type = default
-      elif i[1][0].kind == nnkAsgn and i[1][0][0].kind == nnkIdent:
+      else:
         let
           argType = i[1][0][0]
           argDefault = i[1][0][1]
@@ -252,7 +261,7 @@ macro model*(modelName, body: untyped): untyped =
           postfix(argName, "*"), argType
         ))
         modelFields[$modelName][$argName.toStrLit] = $argType.toStrLit
-        if ($argType).toLower() != "formdataitem":
+        if ($argType.toStrLit).toLower() != "formdataitem":
           # JSON raw data
           asgnStmt.add(newNimNode(nnkIfStmt).add(
             newNimNode(nnkElifBranch).add(
@@ -274,7 +283,7 @@ macro model*(modelName, body: untyped): untyped =
               newCall("hasKey", ident"dataTable", newStrLitNode($argName)),
               newAssignment(
                 newDotExpr(ident"result", argName),
-                case ($argType).toLower()
+                case ($argType.toStrLit).toLower()
                 of "int":
                   newCall("parseInt", newCall("[]", ident"dataTable", newStrLitNode($argName)))
                 of "float":
@@ -321,7 +330,7 @@ macro model*(modelName, body: untyped): untyped =
           )
         # form-data
         asgnFormData.add(
-          if ($argType).toLower() != "formdataitem":
+          if ($argType.toStrLit).toLower() != "formdataitem":
             newNimNode(nnkIfStmt).add(
               newNimNode(nnkElifBranch).add(
               newCall("hasKey", ident"dataTable", newStrLitNode($argName)),
@@ -369,42 +378,58 @@ macro model*(modelName, body: untyped): untyped =
         )
       )
     ),
-    newProc(
-      postfix(ident("jsonTo" & $modelName), "*"),
-      [modelName, newIdentDefs(ident"node", ident"JsonNode")],
-      newStmtList(
-        newAssignment(ident"result", newNimNode(nnkObjConstr).add(ident($modelName))),
-        if asgnStmt.len > 0: asgnStmt else: newStmtList()
+    if not enableOptions or (enableOptions and "json" in options):
+      newProc(
+        postfix(ident("jsonTo" & $modelName), "*"),
+        [modelName, newIdentDefs(ident"node", ident"JsonNode")],
+        newStmtList(
+          newAssignment(ident"result", newNimNode(nnkObjConstr).add(ident($modelName))),
+          if asgnStmt.len > 0: asgnStmt else: newStmtList()
+        )
       )
-    ),
-    newProc(
-      postfix(ident("xWwwUrlencodedTo" & $modelName), "*"),
-      [modelName, newIdentDefs(ident"formData", ident"string")],
-      newStmtList(
-        newAssignment(ident"result", newNimNode(nnkObjConstr).add(ident($modelName))),
-        newLetStmt(ident"dataTable", newCall("parseXWwwFormUrlencoded", ident"formData")),
-        if asgnStmt.len > 0: asgnUrlencoded else: newStmtList()
+    else:
+      newEmptyNode(),
+    if not enableOptions or (enableOptions and "xwwwformurlencoded" in options):
+      newProc(
+        postfix(ident("xWwwUrlencodedTo" & $modelName), "*"),
+        [modelName, newIdentDefs(ident"formData", ident"string")],
+        newStmtList(
+          newAssignment(ident"result", newNimNode(nnkObjConstr).add(ident($modelName))),
+          newLetStmt(ident"dataTable", newCall("parseXWwwFormUrlencoded", ident"formData")),
+          if asgnStmt.len > 0: asgnUrlencoded else: newStmtList()
+        )
       )
-    ),
-    newProc(
-      postfix(ident("xmlBodyTo" & $modelName), "*"),
-      [modelName, newIdentDefs(ident"data", ident"string")],
-      newStmtList(
-        newAssignment(ident"result", newNimNode(nnkObjConstr).add(ident($modelName))),
-        newLetStmt(ident"xmlBody", newCall("parseXmlBody", ident"data")),
-        if asgnStmt.len > 0: asgnXml else: newStmtList()
+    else:
+      newEmptyNode(),
+    if not enableOptions or (enableOptions and "xml" in options):
+      newProc(
+        postfix(ident("xmlBodyTo" & $modelName), "*"),
+        [modelName, newIdentDefs(ident"data", ident"string")],
+        newStmtList(
+          newAssignment(ident"result", newNimNode(nnkObjConstr).add(ident($modelName))),
+          newLetStmt(ident"xmlBody", newCall("parseXmlBody", ident"data")),
+          if asgnStmt.len > 0: asgnXml else: newStmtList()
+        )
       )
-    ),
-    newProc(
-      postfix(ident("formDataTo" & $modelName), "*"),
-      [modelName, newIdentDefs(ident"data", ident"string")],
-      newStmtList(
-        newAssignment(ident"result", newNimNode(nnkObjConstr).add(ident($modelName))),
-        newNimNode(nnkLetSection).add(newNimNode(nnkVarTuple).add(
-          ident"dataTable", ident"formDataItemsTable", newEmptyNode(),
-          newCall("parseFormData", ident"data")
-        )),
-        if asgnStmt.len > 0: asgnFormData else: newStmtList()
+    else:
+      newEmptyNode(),
+    if not enableOptions or (enableOptions and "formdata" in options):
+      newProc(
+        postfix(ident("formDataTo" & $modelName), "*"),
+        [modelName, newIdentDefs(ident"data", ident"string")],
+        newStmtList(
+          newAssignment(ident"result", newNimNode(nnkObjConstr).add(ident($modelName))),
+          newNimNode(nnkLetSection).add(newNimNode(nnkVarTuple).add(
+            ident"dataTable", ident"formDataItemsTable", newEmptyNode(),
+            newCall("parseFormData", ident"data")
+          )),
+          if asgnStmt.len > 0: asgnFormData else: newStmtList()
+        )
       )
-    ),
+    else:
+      newEmptyNode(),
   )
+  when enableRequestModelDebugMacro:
+    echo result.toStrLit
+    if reqModelDebugTarget == $modelName:
+      quit(QuitSuccess)

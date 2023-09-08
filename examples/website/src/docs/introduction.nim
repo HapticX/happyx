@@ -63,7 +63,7 @@ component Introduction:
               tA(href = "https://nim-lang.org"):
                 tImg(alt = "Nim 👑", src = "https://img.shields.io/badge/>=1.6.14-1b1e2b?style=for-the-badge&logo=nim&logoColor=f1fa8c&label=Nim&labelColor=2b2e3b")
               tA(href = "https://python.org"):
-                tImg(alt = "Python 🐍", src = "https://img.shields.io/badge/>=3.9.x-1b1e2b?style=for-the-badge&logo=python&logoColor=f1fa8c&label=Python&labelColor=2b2e3b")
+                tImg(alt = "Python 🐍", src = "https://img.shields.io/badge/>=3.7.x-1b1e2b?style=for-the-badge&logo=python&logoColor=f1fa8c&label=Python&labelColor=2b2e3b")
           tTr:
             tTd: "Wakatime Stats"
             tTd:

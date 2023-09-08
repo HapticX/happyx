@@ -421,6 +421,12 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode =
                   newCall("echo", newCall("fmt", newStrLitNode("json parse error: {getCurrentExceptionMsg()}")))
                 else:
                   newEmptyNode(),
+                newCall(
+                  "answerJson",
+                  ident"req",
+                  parseExpr"""{"response": "Incorrect JSON structure"}""",
+                  ident"Http400"
+                ),
                 newCall("jsonTo" & i.typeName, newCall("newJObject"))
               )
             ))
@@ -446,6 +452,8 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode =
           )
         )
       )
+    when enableRoutingDebugMacro:
+      echo elifBranch.toStrLit
     return elifBranch
   return newEmptyNode()
 

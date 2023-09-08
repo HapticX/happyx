@@ -59,9 +59,9 @@ jobs:
           cd src
           echo "Windows module"
           echo "Win Module compiled with"
-          echo "nim c --app:lib --out:../bindings/python/happyx/happyx.pyd --tlsEmulation:off --passL:-static --t:-flto --l:-flto --opt:speed --threads:on -x:off -c:off -d:debug -d:httpx -d:export2py happyx"
+          echo "nim c --app:lib --out:../bindings/python/happyx/happyx.pyd --tlsEmulation:off --passL:-static --t:-flto --l:-flto --opt:speed --threads:on -d:ssl -d:debug -d:httpx -d:export2py happyx"
           echo "Linux module"
-          nim c --app:lib --out:../bindings/python/happyx/happyx.so --t:-flto --l:-flto --opt:speed --threads:on -d:debug -x:off -c:off -w:off -d:httpx -d:export2py happyx
+          nim c --app:lib --out:../bindings/python/happyx/happyx.so -t:-flto -l:-flto --opt:speed --threads:on -d:ssl -d:debug -d:httpx -d:export2py happyx
         shell: bash
       
       - name: Build Package 🏗

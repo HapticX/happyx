@@ -4,23 +4,23 @@
 
 ### Python Bindings For HappyX Web Framework 🔥
 
-![Python language](https://img.shields.io/badge/>=3.10.x-1b1e2b?style=for-the-badge&logo=python&logoColor=f1fa8c&label=Python&labelColor=2b2e3b)
+![Python language](https://img.shields.io/badge/>=3.7.x-1b1e2b?style=for-the-badge&logo=python&logoColor=f1fa8c&label=Python&labelColor=2b2e3b)
 
 </div>
 
 
-## Get Started
+## Getting Started ✌
 
-### Install
+### Installing 📥
 
 You can install HappyX via `pypi`:
 ```bash
 pip install happyx
 ```
 
-## Usage
+## Usage 🔌
 
-### Hello World
+### Hello World 👋
 
 ```py
 from happyx import new_server
@@ -38,7 +38,7 @@ app.start()
 ```
 
 
-### JSON/HTML/File Responses
+### JSON/HTML/File Responses 🛠
 
 ```py
 from happyx import new_server, JsonResponse, HtmlResponse, FileResponse
