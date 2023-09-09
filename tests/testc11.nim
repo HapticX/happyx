@@ -1,4 +1,5 @@
 import ../src/happyx
+import json
 
 
 type MyType = object

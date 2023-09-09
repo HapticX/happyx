@@ -32,7 +32,7 @@ import
 
 type
   State*[T] = ref object
-    value: T
+    val*: T
 
 
 var enableRouting* = true  ## `Low-level API` to disable/enable routing
@@ -40,12 +40,12 @@ var enableRouting* = true  ## `Low-level API` to disable/enable routing
 
 func remember*[T](val: T): State[T] =
   ## Creates a new state
-  State[T](value: val)
+  State[T](val: val)
 
 
 proc `val=`*[T](self: State[T], value: T) =
   ## Changes state value
-  self.value = value
+  self.val = value
   if enableRouting and not application.isNil() and not application.router.isNil():
     application.router()
 
@@ -53,19 +53,19 @@ proc `val=`*[T](self: State[T], value: T) =
 func `$`*[T](self: State[T]): string =
   ## Returns State's string representation
   when T is string:
-    self.value
+    self.val
   else:
-    $self.value
+    $self.val
 
 
-func val*[T](self: State[T]): T =
-  ## Returns immutable state value
-  self.value
+# func val*[T](self: State[T]): T =
+#   ## Returns immutable state value
+#   self.value
 
-when not defined(js):
-  func val*[T](self: var State[T]): var T =
-    ## Returns immutable state value
-    self.value
+# when not defined(js):
+#   func val*[T](self: var State[T]): var T =
+#     ## Returns mutable state value
+#     self.value
 
 
 template operator(funcname, op: untyped): untyped =
@@ -83,11 +83,11 @@ template reRenderOperator(funcname, op: untyped): untyped =
     if enableRouting and not application.isNil() and not application.router.isNil():
       application.router()
   proc `funcname`*[T](other: T, self: State[T]) =
-    `op`(self.value, other)
+    `op`(self.val, other)
     if enableRouting and not application.isNil() and not application.router.isNil():
       application.router()
   proc `funcname`*[T](self: State[T], other: T) =
-    `op`(self.value, other)
+    `op`(self.val, other)
     if enableRouting and not application.isNil() and not application.router.isNil():
       application.router()
 
@@ -197,7 +197,7 @@ func get*[T](self: State[T]): T =
 
 func len*[T](self: State[T]): int =
   ## Returns state value length
-  self.value.len
+  self.val.len
 
 
 proc set*[T](self: State[T], value: T) =
@@ -220,43 +220,43 @@ iterator items*[T](self: State[openarray[T]]): T =
 
 converter toBool*(self: State[bool]): bool =
   ## Converts `State` into `boolean` if possible
-  self.value
+  self.val
 converter toString*(self: State[string]): string =
   ## Converts `State` into `string` if possible
-  self.value
+  self.val
 converter toCString*(self: State[cstring]): cstring =
   ## Converts `State` into `cstring` if possible
-  self.value
+  self.val
 converter toInt*(self: State[int]): int =
   ## Converts `State` into `int` if possible
-  self.value
+  self.val
 converter toFloat*(self: State[float]): float =
   ## Converts `State` into `float` if possible
-  self.value
+  self.val
 converter toChar*(self: State[char]): char =
   ## Converts `State` into `char` if possible
-  self.value
+  self.val
 converter toInt8*(self: State[int8]): int8 =
   ## Converts `State` into `int8` if possible
-  self.value
+  self.val
 converter toInt16*(self: State[int16]): int16 =
   ## Converts `State` into `int16` if possible
-  self.value
+  self.val
 converter toInt32*(self: State[int32]): int32 =
   ## Converts `State` into `int32` if possible
-  self.value
+  self.val
 converter toInt64*(self: State[int64]): int64 =
   ## Converts `State` into `int64` if possible
-  self.value
+  self.val
 converter toFloat32*(self: State[float32]): float32 =
   ## Converts `State` into `float32` if possible
-  self.value
+  self.val
 converter toFloat64*(self: State[float64]): float64 =
   ## Converts `State` into `float64` if possible
-  self.value
+  self.val
 converter toSeq*[T](self: State[seq[T]]): seq[T] =
   ## Converts `State` into `seq[T]` if possible
-  self.value
+  self.val
 
 
 {.cast(gcsafe).}:
