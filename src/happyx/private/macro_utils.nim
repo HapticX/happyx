@@ -63,6 +63,11 @@ proc useComponent*(statement: NimNode, inCycle, inComponent: bool,
       else:
         statement[1]
     componentName = fmt"comp{uniqueId}{uniqueId + 2}{uniqueId * 2}{uniqueId + 7}"
+    componentNameIdent =
+      if cycleTmpVar == "":
+        newLit(componentName)
+      else:
+        newCall("&", newLit(componentName), newCall("$", ident(cycleTmpVar)))
     objConstr =
       if constructor:
         newCall(fmt"constructor_{name}")
@@ -72,9 +77,9 @@ proc useComponent*(statement: NimNode, inCycle, inComponent: bool,
     componentData = "data_" & componentName
     stringId =
       if inCycle:
-        newCall("&", newStrLitNode(componentName), newCall("$", ident(cycleTmpVar)))
+        componentNameIdent
       else:
-        newStrLitNode(componentName)
+        newLit(componentName)
     componentSlot =
       if statement.len > 1 and statement[^1].kind == nnkStmtList:
         statement[^1]
@@ -105,7 +110,6 @@ proc useComponent*(statement: NimNode, inCycle, inComponent: bool,
       newVarStmt(
         ident(componentName), ident(componentNameTmp)
       ),
-    newCall("echo", newCall("typeOf", ident(componentName)), newLit", ", newLit($componentNameTmp)),
     newAssignment(
       newDotExpr(ident(componentName), ident"slot"),
       buildHtmlProcedure(
@@ -706,25 +710,36 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
     #   ...
     elif statement.kind == nnkForStmt:
       var
-        unqn = fmt"tmpCycleIdx{uniqueId}"
+        unqn = fmt"c{uniqueId}"
         idents: seq[NimNode] = @[]
       # extract cycle variables
       for i in 0..statement.len-3:
         cycleVars.add statement[i]
       inc uniqueId
-      statement[^1] = newStmtList(
-        buildHtmlProcedure(ident"div", statement[^1], inComponent, componentName, true, unqn)
-      )
+      if cycleTmpVar == "":
+        statement[^1] = newStmtList(
+          buildHtmlProcedure(ident"div", statement[^1], inComponent, componentName, true, unqn)
+        )
+      else:
+        statement[^1] = newStmtList(
+          buildHtmlProcedure(ident"div", statement[^1], inComponent, componentName, true, cycleTmpVar)
+        )
       for i in 0..statement.len-3:
         discard cycleVars.pop()
-      statement[^1].insert(0, newCall("inc", ident(unqn)))
+      if cycleTmpVar == "":
+        statement[^1].insert(0, newCall("inc", ident(unqn)))
+      else:
+        statement[^1].insert(0, newCall("inc", ident(cycleTmpVar)))
       statement[^1][^1].add(newLit(true))
       result.add(
         newCall(
           "initTag",
           newStrLitNode("div"),
           newStmtList(
-            newVarStmt(ident(unqn), newLit(0)),
+            if cycleTmpVar == "":
+              newVarStmt(ident(unqn), newLit(0))
+            else:
+              newEmptyNode(),
             newCall(
               "collect",
               ident"newSeq",
