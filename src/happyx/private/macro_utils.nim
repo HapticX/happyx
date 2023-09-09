@@ -338,7 +338,7 @@ proc replaceSelfComponent*(statement, componentName: NimNode, parent: NimNode = 
     for (i, idx) in idxes:
       var
         methodCall = newCall(newDotExpr(self, i[0][1]))
-        fieldCall = newCall(newCall(newDotExpr(newDotExpr(self, i[0][1]), ident"val")))
+        fieldCall = newCall(newDotExpr(newDotExpr(self, i[0][1]), ident"val"))
       for arg_idx, arg in i.pairs:
         if arg_idx == 0:
           continue
