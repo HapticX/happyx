@@ -3,7 +3,7 @@ import
   components/[hello_world, nested_component, component_for, component_with_slot]
 
 
-var app = registerApp("myApp")
+var app = registerApp()
 
 app.routes:
   "/":
@@ -38,9 +38,9 @@ app.routes:
     button:
       "Go to /calc"
       @click:
-        route("/calc5+5")
+        route("/calc5%2b5")  # /calc5+5
 
-  "/calc{left:int}{op:/[\\+\\-]/}{right:int}":
+  "/calc{left:int}{op:string}{right:int}":
     h1:
       "Result of {left} {op} {right}"
     h2:
@@ -49,6 +49,7 @@ app.routes:
       else:
         {left - right}
       nim:
+        echo op
         echo fmt"Hello from {path}!"
     button:
       "Go to /visit"
@@ -81,6 +82,8 @@ app.routes:
         echo 3
 
   notfound:
+    nim:
+      echo currentRoute
     class = "myClass"
     "Oops! Not found!"
 

@@ -193,12 +193,9 @@ proc registerComponent*(name: cstring, component: BaseComponent): BaseComponent 
   ## 
   ## Don't use it because it used in `component` macro.
   ## 
-  echo fmt"register component {name}"
   if components.hasKey(name):
-    echo fmt"found component {components[name].uniqCompId}"
     return components[name]
   components[name] = component
-  echo fmt"registered component {component.uniqCompId}"
   component
 
 

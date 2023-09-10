@@ -9,7 +9,7 @@ import
     section, smart_card, about_section,
     drawer, divider, sponsors_arr,
     code_block_slider, sidebar, guide_page,
-    code_block_guide, spinner
+    code_block_guide
   ],
   ./pages/[home, sponsors, roadmap, guide],
   json,

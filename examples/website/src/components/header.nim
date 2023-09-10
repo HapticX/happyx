@@ -2,7 +2,7 @@
 import
   ../../../../src/happyx,
   ../ui/[colors, translations],
-  ./[button, drawer, sidebar, spinner]
+  ./[button, drawer, sidebar]
 
 
 proc setCurrentLanguage*(lang: string) =

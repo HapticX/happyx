@@ -53,10 +53,6 @@ component CodeBlockSlider:
               id = fmt"circle-{self.uniqCompId}_{idx}",
               class = "transition-all duration-300 overflow-hidden w-24 h-8 lg:w-18 lg:h-6 xl:w-12 xl:h-4 bg-[{Foreground}] dark:bg-[{ForegroundDark}] rounded-full cursor-pointer"
             ):
-              @click:
-                enableRouting = false
-                updateIndex(self.CodeBlockSlider, idx)
-                enableRouting = true
               tDiv(
                 id = fmt"circle-{self.uniqCompId}_{idx}-fill",
                 class = "w-0 h-full bg-[{Yellow}] dark:bg-[{Orange}] transition-all duration-[5000ms] rounded-full ease-linear z-40"
@@ -67,9 +63,7 @@ component CodeBlockSlider:
               class = "transition-all duration-300 overflow-hidden w-8 h-8 lg:w-6 lg:h-6 xl:w-4 xl:h-4 bg-[{Foreground}] dark:bg-[{ForegroundDark}] rounded-full cursor-pointer"
             ):
               @click:
-                enableRouting = false
                 updateIndex(self, idx)
-                enableRouting = true
               tDiv(
                 id = fmt"circle-{self.uniqCompId}_{idx}-fill",
                 class = "w-0 h-full bg-[{Yellow}] dark:bg-[{Orange}] transition-all duration-[5000ms] rounded-full ease-linear z-40"
@@ -81,7 +75,6 @@ component CodeBlockSlider:
   [methods]:
     proc nextIndex() =
       proc upd() =
-        enableRouting = false
         self.updateIndex(
           if self.index < self.data.len - 1:
             self.index + 1
@@ -91,16 +84,17 @@ component CodeBlockSlider:
         {.emit: """//js
         setTimeout(() => { `upd`() }, 5000);
         """.}
-        enableRouting = true
       {.emit: """//js
       setTimeout(() => { `upd`() }, 5000);
       """.}
 
     proc updateIndex(idx: int) =
+      discard
       if self.index.isNil():
         return
       if self.index == idx:
         return
+      enableRouting = false
       self.index.set(idx)
       let index: int = self.index
       for idx, val in (self.data)->pairs:
@@ -152,3 +146,4 @@ component CodeBlockSlider:
           fill.classList.remove("duration-[5000ms]")
           fill.classList.remove("w-full")
           fill.classList.add("w-0")
+      enableRouting = true
