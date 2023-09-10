@@ -45,10 +45,10 @@ macro use*(expr: untyped): untyped =
   if statement.kind in nnkCallKinds:
     # Default constructor
     if statement[1].kind in {nnkIdent, nnkCall}:
-      return useComponent(statement, false, false, "", @[], false)
+      return useComponent(statement, false, false, "", newEmptyNode(), @[], false)
     # Component constructor
     elif statement[1].kind == nnkInfix:
-      return useComponent(statement, false, false, "", @[], false, constructor = true)
+      return useComponent(statement, false, false, "", newEmptyNode(), @[], false, constructor = true)
   else:
     throwDefect(
       HpxUseDefect,

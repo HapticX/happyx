@@ -3,7 +3,7 @@ import
   components/[hello_world, nested_component, component_for, component_with_slot]
 
 
-var app = registerApp()
+var app = registerApp("myApp")
 
 app.routes:
   "/":

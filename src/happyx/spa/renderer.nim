@@ -391,7 +391,7 @@ macro buildComponentHtml*(componentName, html: untyped): untyped =
   ## 
   var h = html
   h.replaceSelfComponent(componentName, convert = false)
-  result = buildHtmlProcedure(ident"tDiv", h, true, componentName)
+  result = buildHtmlProcedure(ident"tDiv", h, true, componentName, compTmpVar = newDotExpr(ident"self", ident(UniqueComponentId)))
   if result[^1].kind == nnkCall and $result[^1][0] == "@":
     result.add(newLit(true))
 

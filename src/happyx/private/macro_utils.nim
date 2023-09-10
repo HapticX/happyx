@@ -23,7 +23,7 @@ const
 
 proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
                          componentName: NimNode = newEmptyNode(), inCycle: bool = false,
-                         cycleTmpVar: string = ""): NimNode
+                         cycleTmpVar: string = "", compTmpVar: NimNode = newEmptyNode()): NimNode
 
 
 proc bracket*(node: varargs[NimNode]): NimNode =
@@ -52,7 +52,7 @@ proc formatNode*(node: NimNode): NimNode =
 
 
 proc useComponent*(statement: NimNode, inCycle, inComponent: bool,
-                   cycleTmpVar: string, cycleVars: seq[NimNode],
+                   cycleTmpVar: string, compTmpVar: NimNode, cycleVars: seq[NimNode],
                    returnTagRef: bool = true, constructor: bool = false): NimNode =
   let
     name =
@@ -64,10 +64,14 @@ proc useComponent*(statement: NimNode, inCycle, inComponent: bool,
         statement[1]
     componentName = fmt"comp{uniqueId}{uniqueId + 2}{uniqueId * 2}{uniqueId + 7}"
     componentNameIdent =
-      if cycleTmpVar == "":
+      if cycleTmpVar == "" and compTmpVar.kind == nnkEmpty:
         newLit(componentName)
-      else:
+      elif compTmpVar.kind == nnkEmpty and cycleTmpVar != "":
         newCall("&", newLit(componentName), newCall("$", ident(cycleTmpVar)))
+      elif cycleTmpVar == "" and compTmpVar.kind != nnkEmpty:
+        newCall("&", newLit(componentName), newCall("$", compTmpVar))
+      else:
+        newCall("&", newLit(componentName), newCall("&", newCall("$", compTmpVar), newCall("$", ident(cycleTmpVar))))
     objConstr =
       if constructor:
         newCall(fmt"constructor_{name}")
@@ -76,7 +80,7 @@ proc useComponent*(statement: NimNode, inCycle, inComponent: bool,
     componentNameTmp = "_" & componentName
     componentData = "data_" & componentName
     stringId =
-      if inCycle:
+      if inCycle or inComponent:
         componentNameIdent
       else:
         newLit(componentName)
@@ -113,7 +117,7 @@ proc useComponent*(statement: NimNode, inCycle, inComponent: bool,
     newAssignment(
       newDotExpr(ident(componentName), ident"slot"),
       buildHtmlProcedure(
-        ident"div", componentSlot, inComponent, ident(componentName), inCycle, cycleTmpVar
+        ident"div", componentSlot, inComponent, ident(componentName), inCycle, cycleTmpVar, ident(componentName)
       ).add(newNimNode(nnkExprEqExpr).add(ident"onlyChildren", newLit(true)))
     ),
     if returnTagRef:
@@ -363,7 +367,7 @@ var cycleVars {.compileTime.}: seq[NimNode] = @[]
 
 proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
                          componentName: NimNode = newEmptyNode(), inCycle: bool = false,
-                         cycleTmpVar: string = ""): NimNode =
+                         cycleTmpVar: string = "", compTmpVar: NimNode = newEmptyNode()): NimNode =
   ## Builds HTML
   ## 
   ## Here you can use components and event handlers
@@ -417,7 +421,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
       # tag(attr="value"):
       #   ...
       if statement.len-2 > 0 and statementList.kind == nnkStmtList:
-        var builded = buildHtmlProcedure(tagName, statementList, inComponent, componentName, inCycle, cycleTmpVar)
+        var builded = buildHtmlProcedure(tagName, statementList, inComponent, componentName, inCycle, cycleTmpVar, compTmpVar)
         for attr in statement[1 .. statement.len-2]:
           builded.addAttribute(
             newStrLitNode($attr[0]),
@@ -435,7 +439,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
       # tag:
       #   ...
       else:
-        result.add(buildHtmlProcedure(tagName, statementList, inComponent, componentName, inCycle, cycleTmpVar))
+        result.add(buildHtmlProcedure(tagName, statementList, inComponent, componentName, inCycle, cycleTmpVar, compTmpVar))
     
     elif statement.kind == nnkCommand:
       # Component usage
@@ -477,15 +481,15 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
                   ident(componentData)
                 )),
               newNimNode(nnkElse).add(
-                useComponent(statement, inCycle, inComponent, cycleTmpVar, cycleVars)
+                useComponent(statement, inCycle, inComponent, cycleTmpVar, compTmpVar, cycleVars)
               )
             ))
         # Component constructor
         elif statement[1].kind == nnkInfix and statement[1][0] == ident"->":
-          result.add(useComponent(statement, inCycle, inComponent, cycleTmpVar, cycleVars, constructor = true))
+          result.add(useComponent(statement, inCycle, inComponent, cycleTmpVar, compTmpVar, cycleVars, constructor = true))
         # Component default constructor
         else:
-          result.add(useComponent(statement, inCycle, inComponent, cycleTmpVar, cycleVars))
+          result.add(useComponent(statement, inCycle, inComponent, cycleTmpVar, compTmpVar, cycleVars))
     
     elif statement.kind in [nnkStrLit, nnkTripleStrLit]:
       # "Raw text"
@@ -672,7 +676,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
           0
       for i in start..<statement.len:
         statement[i][^1] = buildHtmlProcedure(
-          ident"div", statement[i][^1], inComponent, componentName, inCycle, cycleTmpVar
+          ident"div", statement[i][^1], inComponent, componentName, inCycle, cycleTmpVar, compTmpVar
         ).add(newLit(true))
       if statement[^1].kind != nnkElse:
         statement.add(newNimNode(nnkElse).add(newNilLit()))
@@ -695,7 +699,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
               "add",
               ident"_while_result",
               newStmtList(
-                newVarStmt(ident"__while__res", buildHtmlProcedure(ident"div", body, inComponent, componentName, inCycle, cycleTmpVar)),
+                newVarStmt(ident"__while__res", buildHtmlProcedure(ident"div", body, inComponent, componentName, inCycle, cycleTmpVar, compTmpVar)),
                 newAssignment(newDotExpr(ident"__while__res", ident"onlyChildren"), newLit(true)),
                 ident"__while__res"
               )
@@ -718,11 +722,11 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
       inc uniqueId
       if cycleTmpVar == "":
         statement[^1] = newStmtList(
-          buildHtmlProcedure(ident"div", statement[^1], inComponent, componentName, true, unqn)
+          buildHtmlProcedure(ident"div", statement[^1], inComponent, componentName, true, unqn, compTmpVar)
         )
       else:
         statement[^1] = newStmtList(
-          buildHtmlProcedure(ident"div", statement[^1], inComponent, componentName, true, cycleTmpVar)
+          buildHtmlProcedure(ident"div", statement[^1], inComponent, componentName, true, cycleTmpVar, compTmpVar)
         )
       for i in 0..statement.len-3:
         discard cycleVars.pop()

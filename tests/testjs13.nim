@@ -7,6 +7,12 @@ component Num:
   `template`:
     tSpan(style="margin-left:1em;"): {self.n}
 
+component NumSq:
+  m: int
+  `template`:
+    tDiv: "{self.m} squared is: "
+    component Num(self.m.val * self.m.val)
+
 randomize()
 
 appRoutes("app"):
@@ -18,3 +24,6 @@ appRoutes("app"):
           # {i+j+k}
           # tSpan(style="margin-left: 1em"):  {rand(99)}
           component Num(rand(99))
+    tDiv:
+      component NumSq(5)
+      component NumSq(3)
