@@ -28,7 +28,7 @@ component CodeBlockSlider:
               class = "w-full flex flex-col gap-4 lg:gap-2 justify-between transition-all duration-300 opacity-1"
             ):
               tDiv(class = "flex flex-col gap-2 lg:gap-0"):
-                tP(class = "break-keep whitespace-pre text-5xl lg:text-xl xl:text-3xl font-bold pointer-events-none"):
+                tP(class = "text-4xl lg:text-xl xl:text-3xl font-bold pointer-events-none"):
                   {translate(source.name)}
                 tP(class = "flex h-full justify-center items-center text-3xl lg:text-base pointer-events-none"):
                   {translate(source.description)}
@@ -40,7 +40,7 @@ component CodeBlockSlider:
               class = "w-full flex flex-col gap-4 lg:gap-2 justify-between transition-all duration-300 absolute top-0 left-0 opacity-0"
             ):
               tDiv(class = "flex flex-col gap-2 lg:gap-0"):
-                tP(class = "break-keep whitespace-pre text-5xl lg:text-xl xl:text-3xl font-bold pointer-events-none"):
+                tP(class = "text-4xl lg:text-xl xl:text-3xl font-bold pointer-events-none"):
                   {translate(source.name)}
                 tP(class = "flex h-full justify-center items-center text-3xl lg:text-base pointer-events-none"):
                   {translate(source.description)}

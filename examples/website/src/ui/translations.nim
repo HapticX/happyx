@@ -170,36 +170,24 @@ translatable:
     "zh" -> "单页应用程序中的PathParams"
     "ko" -> "단일 페이지 응용 프로그램의 경로 매개 변수"
     "fr" -> "Paramètres de chemin dans une application d'une seule page"
-  "One of the main features of HappyX is DSL ✌.":
-    "ru" -> "Одной из главных особенностей HappyX является DSL ✌."
-    "ja" -> "HappyXの主な機能の1つはDSL XTです。"
-    "zh" -> "HappyX的主要功能之一是DSL✌。"
-    "ko" -> "해픽스의 주요 특징 중 하나는 다음과 같습니다✌."
-    "fr" -> "L'une des principales fonctionnalités d'HappyX est DSL xt✌."
-  "DSL supports:":
-    "ru" -> "Поддержка DSL:"
-    "ja" -> "DSLサポート:"
-    "zh" -> "DSL支持:"
-    "ko" -> "지원:"
-    "fr" -> "Supports DSL:"
-  "Build HTML/CSS/JS":
-    "ru" -> "Создание HTML/CSS/JS"
-    "ja" -> "HTML/CSS/JSをビルドする"
-    "zh" -> "构建HTML/CSS/JS"
-    "ko" -> "쨩챌쨔챈쨀"
-    "fr" -> "Construire HTML / CSS / JS"
-  "Path Params":
-    "ru" -> "Параметры пути"
-    "ja" -> "パスパラメータ"
-    "zh" -> "路径参数"
-    "ko" -> "경로 매개 변수"
-    "fr" -> "Paramètres du Chemin"
-  "Routing/Mounting":
-    "ru" -> "Прокладка/монтаж"
-    "ja" -> "配線/取り付け"
-    "zh" -> "布线/安装"
-    "ko" -> "라우팅/마운팅"
-    "fr" -> "Routage / Montage"
+  "Here is core features ✌.":
+    "ru" -> "Вот основные возможности ✌."
+    "ja" -> "以下は主要な機能です ✌."
+    "zh" -> "以下是核心功能 ✌."
+    "fr" -> "Voici les fonctionnalités principales ✌."
+    "ko" -> "다음은 핵심 기능입니다 ✌."
+  "Powerful DSLs":
+    "ru" -> "Мощные DSL"
+    "ja" -> "強力なDSL"
+    "zh" -> "强大的DSL"
+    "fr" -> "DSL puissants"
+    "ko" -> "강력한 DSL"
+  "Powerful routing":
+    "ru" -> "Мощное маршрутизирование"
+    "ja" -> "強力なルーティング"
+    "zh" -> "强大的路由"
+    "fr" -> "Routing puissant"
+    "ko" -> "강력한 라우팅"
   "Make powerful full-stack apps with really same syntax ⚡":
     "ru" -> "Создавайте мощные полнофункциональные приложения с действительно одинаковым синтаксисом ⚡"
     "ja" -> "本当に同じ構文で強力なフルスタックアプリを作る ⚡"
@@ -902,6 +890,12 @@ translatable:
     "zh" -> "在Nim一侧，您可以分配路由参数并在任何地方使用它"
     "fr" -> "Du côté Nim, vous pouvez attribuer des paramètres de route et les utiliser n'importe où"
     "ko" -> "Nim 측에서 경로 매개변수를 할당하고 어디에서나 사용할 수 있습니다"
+  "Language binds":
+    "ru" -> "Языковые привязки"
+    "ja" -> "言語バインディング"
+    "zh" -> "语言绑定"
+    "fr" -> "Liens de langage"
+    "ko" -> "언어 바인딩"
 
 var spokenLang: cstring
 buildJs:

@@ -87,15 +87,14 @@ mount Home:
           
           # Features
           component Section:
-            tP: {translate("One of the main features of HappyX is DSL ✌.")}
-            tP: {translate("DSL supports:")}
-            tDiv(class = "flex flex-col md:flex-row gap-6 py-8"):
-              component Card(pathToImg = "/happyx/public/html5.svg"):
-                {translate("Build HTML/CSS/JS")}
+            tP(class = "text-4xl lg:text-2xl xl:text-lg"): {translate("Here is core features ✌.")}
+            tDiv(class = "flex flex-col lg:flex-row gap-6 py-8"):
               component Card(pathToImg = "/happyx/public/setting.svg"):
-                {translate("Path Params")}
+                {translate("Powerful DSLs")}
               component Card(pathToImg = "/happyx/public/routing.svg"):
-                {translate("Routing/Mounting")}
+                {translate("Powerful routing")}
+              component Card(pathToImg = "/happyx/public/python.svg"):
+                {translate("Language binds")}
 
           # SPA
           component SmartCard:
