@@ -4,7 +4,7 @@ UniqueComponentId	happyx/private/macro_utils.html#UniqueComponentId	macro_utils:
 bracket	happyx/private/macro_utils.html#bracket,varargs[NimNode]	macro_utils: bracket(node: varargs[NimNode]): NimNode	
 getTagName	happyx/private/macro_utils.html#getTagName,string	macro_utils: getTagName(name: string): string	
 formatNode	happyx/private/macro_utils.html#formatNode,NimNode	macro_utils: formatNode(node: NimNode): NimNode	
-useComponent	happyx/private/macro_utils.html#useComponent,NimNode,bool,bool,string,seq[NimNode],bool,bool	macro_utils: useComponent(statement: NimNode; inCycle, inComponent: bool;\n             cycleTmpVar: string; cycleVars: seq[NimNode];\n             returnTagRef: bool = true; constructor: bool = false): NimNode	
+useComponent	happyx/private/macro_utils.html#useComponent,NimNode,bool,bool,string,NimNode,seq[NimNode],bool,bool	macro_utils: useComponent(statement: NimNode; inCycle, inComponent: bool;\n             cycleTmpVar: string; compTmpVar: NimNode; cycleVars: seq[NimNode];\n             returnTagRef: bool = true; constructor: bool = false): NimNode	
 newMultiVarStmt	happyx/private/macro_utils.html#newMultiVarStmt,openArray[NimNode],NimNode,bool	macro_utils: newMultiVarStmt(extractNames: openArray[NimNode]; val: NimNode;\n                isLet: bool = false): NimNode	
 isExpr	happyx/private/macro_utils.html#isExpr,NimNode	macro_utils: isExpr(node: NimNode): bool	
 isIdentUsed	happyx/private/macro_utils.html#isIdentUsed,NimNode,NimNode	macro_utils: isIdentUsed(body, name: NimNode): bool	
@@ -14,6 +14,6 @@ attribute	happyx/private/macro_utils.html#attribute,NimNode	macro_utils: attribu
 addAttribute	happyx/private/macro_utils.html#addAttribute,NimNode,NimNode,NimNode	macro_utils: addAttribute(node, key, value: NimNode)	
 endsWithBuildHtml	happyx/private/macro_utils.html#endsWithBuildHtml,NimNode	macro_utils: endsWithBuildHtml(statement: NimNode): bool	
 replaceSelfComponent	happyx/private/macro_utils.html#replaceSelfComponent,NimNode,NimNode,NimNode,bool,bool,bool	macro_utils: replaceSelfComponent(statement, componentName: NimNode; parent: NimNode = nil;\n                     convert: bool = false; is_constructor: bool = false;\n                     is_field: bool = true)	
-buildHtmlProcedure	happyx/private/macro_utils.html#buildHtmlProcedure,NimNode,NimNode,bool,NimNode,bool,string	macro_utils: buildHtmlProcedure(root, body: NimNode; inComponent: bool = false;\n                   componentName: NimNode = newEmptyNode();\n                   inCycle: bool = false; cycleTmpVar: string = &quot;&quot;): NimNode	
+buildHtmlProcedure	happyx/private/macro_utils.html#buildHtmlProcedure,NimNode,NimNode,bool,NimNode,bool,string,NimNode	macro_utils: buildHtmlProcedure(root, body: NimNode; inComponent: bool = false;\n                   componentName: NimNode = newEmptyNode();\n                   inCycle: bool = false; cycleTmpVar: string = &quot;&quot;;\n                   compTmpVar: NimNode = newEmptyNode()): NimNode	
 Macro Utils	happyx/private/macro_utils.html#macro-utils	 Macro Utils	
 ⚠ Warning: This Module Is LOW-LEVEL API ⚠	happyx/private/macro_utils.html#macro-utils-⚠-warningcolon-this-module-is-lowminuslevel-api-⚠	  ⚠ Warning: This Module Is LOW-LEVEL API ⚠	
