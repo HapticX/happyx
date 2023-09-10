@@ -117,7 +117,7 @@ proc useComponent*(statement: NimNode, inCycle, inComponent: bool,
     newAssignment(
       newDotExpr(ident(componentName), ident"slot"),
       buildHtmlProcedure(
-        ident"div", componentSlot, inComponent, ident(componentName), inCycle, cycleTmpVar, ident(componentName)
+        ident"div", componentSlot, inComponent, ident(componentName), inCycle, cycleTmpVar, newLit(componentName)
       ).add(newNimNode(nnkExprEqExpr).add(ident"onlyChildren", newLit(true)))
     ),
     if returnTagRef:
