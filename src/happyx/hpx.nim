@@ -7,11 +7,13 @@ import
   std/parsecfg,
   std/htmlparser,
   std/exitprocs,
+  std/sequtils,
   std/xmltree,
   std/locks,
   std/osproc,
   std/times,
   std/math,
+  std/algorithm,
   std/os,
   # thirdparty
   regex,
@@ -29,7 +31,8 @@ type
   ProjectType {.pure, size: sizeof(int8).} = enum
     ptSPA = "SPA",
     ptSSG = "SSG",
-    ptSSR = "SSR"
+    ptSSR = "SSR",
+    ptSPAHpx = "HPX"
   ProgrammingLanguage {.pure, size: sizeof(int8).} = enum
     plNim = "nim",
     plPython = "python"
@@ -129,6 +132,59 @@ proc compileProject(): ProjectData {. discardable .} =
         "--opt:size", "-d:danger", "-x:off", "-a:off", "--panics:off", "--lineDir:off", result.mainFile
       ], nil, PROCESS_OPTIONS
     )
+  of ptSPAHpx:
+    let mainFile = getCurrentDir() / result.srcDir / result.mainFile & ".hpx"
+    var componentNames: seq[string] = collect:
+      for file in walkDirRec(getCurrentDir() / result.srcDir):
+        if file.endsWith(".hpx"):
+          file.replace(getCurrentDir() / result.srcDir / "", "")
+    # Sort component dependencies
+    var usages: seq[(string, string, int)] = @[]
+    for currentComponent in componentNames:  # take one component
+      var
+        usage = 0
+        currentComponentName = currentComponent.rsplit('.', 1)[0].rsplit({DirSep, AltSep}, 1)[1]
+      for otherComponent in componentNames:  # find it in other components
+        if otherComponent != currentComponent:
+          var
+            x = open(getCurrentDir() / result.srcDir / otherComponent)
+            data = x.readAll()
+          x.close()
+          if re2(r"^\s*<\s*template\s*>[\s\S]+?<\s*" & currentComponentName) in data:
+            inc usage
+      usages.add((currentComponent, currentComponentName, usage))
+    proc sortComp(x, y: (string, string, int)): int {.closure.} =
+      cmp(x[2], y[2])
+    usages.sort(sortComp, SortOrder.Descending)
+
+    # Load router.json
+    var
+      routerFile = open(result.srcDir / "router.json")
+      routerData = parseJson(routerFile.readAll())
+    routerFile.close()
+
+    # Write temporary nim file and compile it into JS
+    var f = open(result.srcDir / result.mainFile & ".nim", fmWrite)
+    f.write("import happyx\n\n")
+    for (path, name, lvl) in usages:
+      f.write(fmt"""importComponent "{path.replace("\\", "\\\\")}" as {name}""" & "\n")
+    f.write("\nappRoutes \"app\":\n")
+    for key, val in routerData.pairs():
+      f.write(fmt"""  "{key}":""")
+      var compName = val.getStr
+      if compName.endsWith(".hpx"):
+        compName = compName[0..^4]
+      f.write("\n")
+      f.write(fmt"    component {compName}")
+      f.write("\n\n")
+    f.close()
+    result.process = startProcess(
+      "nim", getCurrentDir() / result.srcDir,
+      [
+        "js", "-c", "--hints:off", "--warnings:off",
+        "--opt:size", "-d:danger", "-x:off", "-a:off", "--panics:off", "--lineDir:off", result.mainFile
+      ], nil, PROCESS_OPTIONS
+    )
   of ptSSR, ptSSG:
     return result
 
@@ -152,6 +208,8 @@ proc compileProject(): ProjectData {. discardable .} =
       result.error &= line
   if not result.process.isNil():
     result.process.close()
+  if result.projectType == ptSPAHpx:
+    removeFile(result.srcDir / result.mainFile & ".nim")
 
 
 proc godEye(arg: ptr GodEyeData) {. thread, nimcall .} =
@@ -454,18 +512,19 @@ proc createCommand(name: string = "", kind: string = "", templates: bool = false
     imports = @["happyx"]
   let
     projectTypes = [
-      "SSR", "SSG", "SPA",
+      "SSR", "SSG", "SPA", "HPX"
     ]
     projectTypesDesc = [
       "Server-side rendering ⚡",
       "Static site generation 📁",
       "Single-page application 🎴",
+      "Single-page application with .hpx only ✨"
     ]
     programmingLanguages = [
-      "python", "nim"
+      "nim", "python"
     ]
     programmingLanguagesDesc = [
-      "Python 🐍", "Nim 👑"
+      "Nim 👑", "Python 🐍"
     ]
   styledEcho "🔥 New ", fgBlue, styleBright, "HappyX", fgWhite, " project"
   if name == "":
@@ -711,6 +770,53 @@ proc createCommand(name: string = "", kind: string = "", templates: bool = false
       "      \"Hello, world!\"\n\n" &
       "  `script`:\n" &
       "    echo \"Start coding!\"\n"
+    )
+    f.close()
+  of 3:
+    createDir(projectName / "src" / "public")
+    createDir(projectName / "src" / "components")
+    f = open(projectName / "src" / "index.html", fmWrite)
+    var additionalHead = ""
+    if useTailwind:
+      additionalHead &= "<script src=\"https://cdn.tailwindcss.com\"></script>\n  "
+    f.write(
+      "<!DOCTYPE html>\n<html>\n  <head>\n    <meta charset=\"utf-8\">\n    <title>" & projectName &
+      "</title>\n  " & additionalHead & "</head>\n  <body>\n    " &
+      "<div id=\"app\"></div>\n    <script src=\"" & SPA_MAIN_FILE & ".js\"></script>" &
+      "\n  </body>\n</html>"
+    )
+    f.close()
+    f = open(projectName / "src" / (SPA_MAIN_FILE & ".hpx"), fmWrite)
+    f.write(
+      "<template>\n" &
+      "  <HelloWorld></HelloWorld>\n" &
+      "</template>\n\n"
+    )
+    f.close()
+    f = open(projectName / "src" / "router.json", fmWrite)
+    f.write(
+      "{\n" &
+      "  \"/\": \"main.hpx\"\n" &
+      "}"
+    )
+    f.close()
+    f = open(projectName / "src" / "components" / "HelloWorld.hpx", fmWrite)
+    f.write(
+      "<template>\n" &
+      "  <div>\n" &
+      "    Hello, world!\n" &
+      "  </div>\n" &
+      "</template>\n\n" &
+      "<script>\n" &
+      "  echo \"Hello, world!\"\n" &
+      "</script>\n\n" &
+      "<style>\n" &
+      "  div {\n" &
+      "    background-color: #242118;\n" &
+      "    color: #fece8e;\n" &
+      "    padding: .2rem;\n" &
+      "  }\n" &
+      "</style>\n"
     )
     f.close()
   else:
