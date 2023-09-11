@@ -20247,6 +20247,7 @@ function HEX3Aanonymous_2684355241(self_2684355242, ev_2684355243) {
         localStorage["happyx_programming_language"] = lang_2684355336;
 
         set_2684355339(currentLanguage_2684354578[0], toString_2248147552(self_2684355249.lang));
+        route_1845499327(currentRoute_1845498269[0]);
         }
         
         }
@@ -20256,6 +20257,7 @@ function HEX3Aanonymous_2684355241(self_2684355242, ev_2684355243) {
         localStorage["happyx_programming_language"] = lang_2684355357;
 
         set_2684355339(currentLanguage_2684354578[0], toString_2248147552(self_2684355249.alias));
+        route_1845499327(currentRoute_1845498269[0]);
         }
         }
         currentComponent_1845498268[0] = nimCopy(null, [], NTI33554439);
