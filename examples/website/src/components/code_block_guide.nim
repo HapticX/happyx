@@ -33,11 +33,13 @@ component LanguageChooser:
             buildJs:
               localStorage["happyx_programming_language"] = ~lang
             currentLanguage.set(self.lang)
+            route(currentRoute)
         elif self.alias != currentLanguage:
           var lang: cstring = $(self.LanguageChooser.alias.val)
           buildJs:
             localStorage["happyx_programming_language"] = ~lang
           currentLanguage.set(self.alias)
+          route(currentRoute)
 
 
 component CodeBlockGuide:
