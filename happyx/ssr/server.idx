@@ -6,25 +6,22 @@ ModelBase	happyx/ssr/server.html#ModelBase	server: ModelBase
 ApiDocObject	happyx/ssr/server.html#ApiDocObject	server: ApiDocObject	
 newApiDocObject	happyx/ssr/server.html#newApiDocObject,seq[string],string,string,seq[PathParamObj],seq[RequestModelObj]	server: newApiDocObject(httpMethod: seq[string]; description, path: string;\n                pathParams: seq[PathParamObj]; models: seq[RequestModelObj]): ApiDocObject	
 fgColored	happyx/ssr/server.html#fgColored,string,ForegroundColor	server: fgColored(text: string; clr: ForegroundColor): string	
-fgStyled	happyx/ssr/server.html#fgStyled,string,Style	server: fgStyled(text: string; style: Style): string	
 newServer	happyx/ssr/server.html#newServer,string,int	server: newServer(address: string = &quot;127.0.0.1&quot;; port: int = 5000): Server	
-parseQuery	happyx/ssr/server.html#parseQuery,string	server: parseQuery(query: string): owned(StringTableRef)	
-parseQueryArrays	happyx/ssr/server.html#parseQueryArrays,string	server: parseQueryArrays(query: string): TableRef[string, seq[string]]	
 start	happyx/ssr/server.html#start.t,Server	server: start(server: Server): untyped	
+`.`	happyx/ssr/server.html#..m,JsonNode,untyped	server: `.`(obj: JsonNode; field: untyped): JsonNode	
 answer	happyx/ssr/server.html#answer.t,Request,string,HttpCode,HttpHeaders	server: answer(req: Request; message: string; code: HttpCode = Http200; headers: HttpHeaders = newHttpHeaders(\n    [(&quot;Content-Type&quot;, &quot;text/plain; charset=utf-8&quot;)]))	
 answerJson	happyx/ssr/server.html#answerJson.t,Request,untyped,HttpCode,HttpHeaders	server: answerJson(req: Request; data: untyped; code: HttpCode = Http200; headers: HttpHeaders = newHttpHeaders(\n    [(&quot;Content-Type&quot;, &quot;application/json; charset=utf-8&quot;)])): untyped	
 answerHtml	happyx/ssr/server.html#answerHtml.t,Request,,HttpCode,HttpHeaders	server: answerHtml(req: Request; data: string | TagRef; code: HttpCode = Http200;\n    headers: HttpHeaders = newHttpHeaders(\n    [(&quot;Content-Type&quot;, &quot;text/html; charset=utf-8&quot;)])): untyped	
 answerFile	happyx/ssr/server.html#answerFile,Request,string,HttpCode	server: answerFile(req: Request; filename: string; code: HttpCode = Http200;\n           asAttachment = false): owned(Future[void])	
-`~`	happyx/ssr/server.html#~.m,,untyped	server: `~`(strTable: StringTableRef | TableRef[string, seq[string]]; key: untyped): untyped	
 routes	happyx/ssr/server.html#routes.m,Server,untyped	server: routes(server: Server; body: untyped): untyped	
 initServer	happyx/ssr/server.html#initServer.m,untyped	server: initServer(body: untyped): untyped	
 serve	happyx/ssr/server.html#serve.m,string,int,untyped	server: serve(address: string; port: int; body: untyped): untyped	
-Example	happyx/ssr/server.html#example	  Example	
-Available Path Params	happyx/ssr/server.html#example-available-path-params	    Available Path Params	
-Available Route Types	happyx/ssr/server.html#example-available-route-types	    Available Route Types	
-Route Scope:	happyx/ssr/server.html#example-route-scopecolon	    Route Scope:	
-Available Websocket Routing	happyx/ssr/server.html#example-available-websocket-routing	    Available Websocket Routing	
-Websocket Scope:	happyx/ssr/server.html#example-websocket-scopecolon	    Websocket Scope:	
+liveview	happyx/ssr/server.html#liveview.m,untyped	server: liveview(body: untyped): untyped	
+Available Path Params	happyx/ssr/server.html#available-path-params	    Available Path Params	
+Available Route Types	happyx/ssr/server.html#available-route-types	    Available Route Types	
+Route Scope:	happyx/ssr/server.html#route-scopecolon	    Route Scope:	
+Available Websocket Routing	happyx/ssr/server.html#available-websocket-routing	    Available Websocket Routing	
+Websocket Scope:	happyx/ssr/server.html#websocket-scopecolon	    Websocket Scope:	
 Example	happyx/ssr/server.html#example	 Example	
 Server 🔨	happyx/ssr/server.html#server-🔨	 Server 🔨	
 Queries ❔	happyx/ssr/server.html#server-🔨-queries-❔	  Queries ❔	

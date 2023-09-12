@@ -98,13 +98,12 @@ window.addEventListener('DOMContentLoaded', main);
     </select>
   </div>
   <ul class="simple simple-toc" id="toc-list">
-<ul class="simple"><li><a class="reference" id="example_toc" href="#example">Example</a></li>
-<ul class="simple"><li><a class="reference" id="example-available-path-params_toc" href="#example-available-path-params">Available Path Params</a></li>
-<li><a class="reference" id="example-available-route-types_toc" href="#example-available-route-types">Available Route Types</a></li>
-<li><a class="reference" id="example-route-scopecolon_toc" href="#example-route-scopecolon">Route Scope:</a></li>
-<li><a class="reference" id="example-available-websocket-routing_toc" href="#example-available-websocket-routing">Available Websocket Routing</a></li>
-<li><a class="reference" id="example-websocket-scopecolon_toc" href="#example-websocket-scopecolon">Websocket Scope:</a></li>
-</ul></ul><li><a class="reference" id="example_toc" href="#example">Example</a></li>
+<ul class="simple"><li><a class="reference" id="available-path-params_toc" href="#available-path-params">Available Path Params</a></li>
+<li><a class="reference" id="available-route-types_toc" href="#available-route-types">Available Route Types</a></li>
+<li><a class="reference" id="route-scopecolon_toc" href="#route-scopecolon">Route Scope:</a></li>
+<li><a class="reference" id="available-websocket-routing_toc" href="#available-websocket-routing">Available Websocket Routing</a></li>
+<li><a class="reference" id="websocket-scopecolon_toc" href="#websocket-scopecolon">Websocket Scope:</a></li>
+</ul><li><a class="reference" id="example_toc" href="#example">Example</a></li>
 <li><a class="reference" id="server-🔨_toc" href="#server-🔨">Server 🔨</a></li>
 <ul class="simple"><li><a class="reference" id="server-🔨-queries-❔_toc" href="#server-🔨-queries-❔">Queries ❔</a></li>
 <li><a class="reference" id="server-🔨-websockets-🍍_toc" href="#server-🔨-websockets-🍍">WebSockets 🍍</a></li>
@@ -176,11 +175,6 @@ window.addEventListener('DOMContentLoaded', main);
     title="fgColored(text: string; clr: ForegroundColor): string">fgColored(text: string; clr: ForegroundColor): string</a></li>
 
   </ul>
-  <ul class="simple nested-toc-section">fgStyled
-      <li><a class="reference" href="#fgStyled%2Cstring%2CStyle"
-    title="fgStyled(text: string; style: Style): string">fgStyled(text: string; style: Style): string</a></li>
-
-  </ul>
   <ul class="simple nested-toc-section">newApiDocObject
       <li><a class="reference" href="#newApiDocObject%2Cseq%5Bstring%5D%2Cstring%2Cstring%2Cseq%5BPathParamObj%5D%2Cseq%5BRequestModelObj%5D"
     title="newApiDocObject(httpMethod: seq[string]; description, path: string;
@@ -198,25 +192,25 @@ window.addEventListener('DOMContentLoaded', main);
     title="newServer(address: string = &quot;127.0.0.1&quot;; port: int = 5000): Server">newServer(address: string = &quot;127.0.0.1&quot;; port: int = 5000): Server</a></li>
 
   </ul>
-  <ul class="simple nested-toc-section">parseQuery
-      <li><a class="reference" href="#parseQuery%2Cstring"
-    title="parseQuery(query: string): owned(StringTableRef)">parseQuery(query: string): owned(StringTableRef)</a></li>
-
-  </ul>
-  <ul class="simple nested-toc-section">parseQueryArrays
-      <li><a class="reference" href="#parseQueryArrays%2Cstring"
-    title="parseQueryArrays(query: string): TableRef[string, seq[string]]">parseQueryArrays(query: string): TableRef[string, seq[string]]</a></li>
-
-  </ul>
 
   </ul>
 </li>
 <li>
   <a class="reference reference-toplevel" href="#17" id="67">Macros</a>
   <ul class="simple simple-toc-section">
-      <ul class="simple nested-toc-section">initServer
+      <ul class="simple nested-toc-section">.
+      <li><a class="reference" href="#..m%2CJsonNode%2Cuntyped"
+    title="`.`(obj: JsonNode; field: untyped): JsonNode">`.`(obj: JsonNode; field: untyped): JsonNode</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">initServer
       <li><a class="reference" href="#initServer.m%2Cuntyped"
     title="initServer(body: untyped): untyped">initServer(body: untyped): untyped</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">liveview
+      <li><a class="reference" href="#liveview.m%2Cuntyped"
+    title="liveview(body: untyped): untyped">liveview(body: untyped): untyped</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">routes
@@ -227,11 +221,6 @@ window.addEventListener('DOMContentLoaded', main);
   <ul class="simple nested-toc-section">serve
       <li><a class="reference" href="#serve.m%2Cstring%2Cint%2Cuntyped"
     title="serve(address: string; port: int; body: untyped): untyped">serve(address: string; port: int; body: untyped): untyped</a></li>
-
-  </ul>
-  <ul class="simple nested-toc-section">~
-      <li><a class="reference" href="#~.m%2C%2Cuntyped"
-    title="`~`(strTable: StringTableRef | TableRef[string, seq[string]]; key: untyped): untyped">`~`(strTable: StringTableRef | TableRef[string, seq[string]]; key: untyped): untyped</a></li>
 
   </ul>
 
@@ -305,7 +294,7 @@ window.addEventListener('DOMContentLoaded', main);
   <div class="section" id="6">
 <h1><a class="toc-backref" href="#6">Imports</a></h1>
 <dl class="item">
-<a class="reference external" href="cors.html">cors</a>, <a class="reference external" href="../spa/tag.html">../spa/tag</a>, <a class="reference external" href="../spa/renderer.html">../spa/renderer</a>, <a class="reference external" href="../spa/translatable.html">../spa/translatable</a>, <a class="reference external" href="../core/exceptions.html">../core/exceptions</a>, <a class="reference external" href="../core/constants.html">../core/constants</a>, <a class="reference external" href="../private/macro_utils.html">../private/macro_utils</a>, <a class="reference external" href="../routing/routing.html">../routing/routing</a>, <a class="reference external" href="../routing/mounting.html">../routing/mounting</a>, <a class="reference external" href="../sugar/sgr.html">../sugar/sgr</a>, <a class="reference external" href="request_models.html">request_models</a>, <a class="reference external" href="../private/api_doc_template.html">../private/api_doc_template</a>, <a class="reference external" href="../bindings/python_types.html">../bindings/python_types</a>
+<a class="reference external" href="cors.html">cors</a>, <a class="reference external" href="../spa/tag.html">../spa/tag</a>, <a class="reference external" href="../spa/renderer.html">../spa/renderer</a>, <a class="reference external" href="../spa/translatable.html">../spa/translatable</a>, <a class="reference external" href="../core/exceptions.html">../core/exceptions</a>, <a class="reference external" href="../core/constants.html">../core/constants</a>, <a class="reference external" href="../core/queries.html">../core/queries</a>, <a class="reference external" href="../private/macro_utils.html">../private/macro_utils</a>, <a class="reference external" href="../routing/routing.html">../routing/routing</a>, <a class="reference external" href="../routing/mounting.html">../routing/mounting</a>, <a class="reference external" href="../sugar/sgr.html">../sugar/sgr</a>, <a class="reference external" href="request_models.html">request_models</a>, <a class="reference external" href="../private/api_doc_template.html">../private/api_doc_template</a>, <a class="reference external" href="../bindings/python_types.html">../bindings/python_types</a>
 </dl></div>
 <div class="section" id="7">
 <h1><a class="toc-backref" href="#7">Types</a></h1>
@@ -416,25 +405,6 @@ window.addEventListener('DOMContentLoaded', main);
 
 </dd>
 </div>
-<div id="fgStyled,string,Style">
-<dt><pre><span class="Keyword">func</span> <a href="#fgStyled%2Cstring%2CStyle"><span class="Identifier">fgStyled</span></a><span class="Other">(</span><span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">style</span><span class="Other">:</span> <span class="Identifier">Style</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> {.<span class="Identifier">inline</span><span class="Other">,</span>
-    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
-<dd>
-
-<p>This function takes in a string of text and a Style enum value and returns the same text with the specified style applied.</p>
-<p>Arguments:</p>
-<ul class="simple"><li><tt class="docutils literal"><span class="pre"><span class="Identifier">text</span></span></tt>: A string value representing the text to apply style to.</li>
-<li><tt class="docutils literal"><span class="pre"><span class="Identifier">clr</span></span></tt>: A Style enum value representing the style to apply to the text.</li>
-</ul>
-<p>Return value:</p>
-<ul class="simple"><li>The function returns a string value with the specified style applied to the input text.</li>
-</ul>
-
-<p><strong class="examples_text">Example:</strong></p>
-<pre class="listing"><span class="Identifier">echo</span> <span class="Identifier">fgStyled</span><span class="Punctuation">(</span><span class="StringLit">&quot;Hello, world!&quot;</span><span class="Punctuation">,</span> <span class="Identifier">styleBlink</span><span class="Punctuation">)</span></pre>
-
-</dd>
-</div>
 <div id="newApiDocObject,seq[string],string,string,seq[PathParamObj],seq[RequestModelObj]">
 <dt><pre><span class="Keyword">proc</span> <a href="#newApiDocObject%2Cseq%5Bstring%5D%2Cstring%2Cstring%2Cseq%5BPathParamObj%5D%2Cseq%5BRequestModelObj%5D"><span class="Identifier">newApiDocObject</span></a><span class="Other">(</span><span class="Identifier">httpMethod</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">description</span><span class="Other">,</span> <span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span>
                      <span class="Identifier">pathParams</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="../routing/routing.html#PathParamObj"><span class="Identifier">PathParamObj</span></a><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">models</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="../routing/routing.html#RequestModelObj"><span class="Identifier">RequestModelObj</span></a><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <a href="server.html#ApiDocObject"><span class="Identifier">ApiDocObject</span></a> {.
@@ -473,49 +443,16 @@ window.addEventListener('DOMContentLoaded', main);
 
 </dd>
 </div>
-<div id="parseQuery,string">
-<dt><pre><span class="Keyword">proc</span> <a href="#parseQuery%2Cstring"><span class="Identifier">parseQuery</span></a><span class="Other">(</span><span class="Identifier">query</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">owned</span><span class="Other">(</span><span class="Identifier">StringTableRef</span><span class="Other">)</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
-<dd>
-
-Parses query and retrieves StringTableRef object
-<p><strong class="examples_text">Example:</strong></p>
-<pre class="listing"><span class="Keyword">let</span>
-  <span class="Identifier">query</span> <span class="Operator">=</span> <span class="StringLit">&quot;a=1000&amp;b=8000&amp;password=mystrongpass&quot;</span>
-  <span class="Identifier">parsedQuery</span> <span class="Operator">=</span> <span class="Identifier">parseQuery</span><span class="Punctuation">(</span><span class="Identifier">query</span><span class="Punctuation">)</span>
-<span class="Identifier">assert</span> <span class="Identifier">parsedQuery</span><span class="Punctuation">[</span><span class="StringLit">&quot;a&quot;</span><span class="Punctuation">]</span> <span class="Operator">==</span> <span class="StringLit">&quot;1000&quot;</span></pre>
-
-</dd>
-</div>
-<div id="parseQueryArrays,string">
-<dt><pre><span class="Keyword">proc</span> <a href="#parseQueryArrays%2Cstring"><span class="Identifier">parseQueryArrays</span></a><span class="Other">(</span><span class="Identifier">query</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">TableRef</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">,</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">]</span><span class="Other">]</span> {.
-    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
-<dd>
-
-Parses query and retrieves TableRef[string, seq[string]] object
-<p><strong class="examples_text">Example:</strong></p>
-<pre class="listing"><span class="Keyword">import</span> <span class="Identifier">tables</span>
-<span class="Keyword">let</span>
-  <span class="Identifier">query</span> <span class="Operator">=</span> <span class="StringLit">&quot;a[]=10&amp;a[]=100&amp;a[]=foo&amp;a[]=bar&quot;</span>
-  <span class="Identifier">parsedQuery</span> <span class="Operator">=</span> <span class="Identifier">parseQueryArrays</span><span class="Punctuation">(</span><span class="Identifier">query</span><span class="Punctuation">)</span>
-<span class="Identifier">assert</span> <span class="Identifier">parsedQuery</span><span class="Punctuation">[</span><span class="StringLit">&quot;a&quot;</span><span class="Punctuation">]</span> <span class="Operator">==</span> <span class="Operator">@</span><span class="Punctuation">[</span><span class="StringLit">&quot;10&quot;</span><span class="Punctuation">,</span> <span class="StringLit">&quot;100&quot;</span><span class="Punctuation">,</span> <span class="StringLit">&quot;foo&quot;</span><span class="Punctuation">,</span> <span class="StringLit">&quot;bar&quot;</span><span class="Punctuation">]</span></pre>
-
-</dd>
-</div>
 
 </dl></div>
 <div class="section" id="17">
 <h1><a class="toc-backref" href="#17">Macros</a></h1>
 <dl class="item">
-<div id="~.m,,untyped">
-<dt><pre><span class="Keyword">macro</span> <a href="#~.m%2C%2Cuntyped"><span class="Identifier">`~`</span></a><span class="Other">(</span><span class="Identifier">strTable</span><span class="Other">:</span> <span class="Identifier">StringTableRef</span> <span class="Operator">|</span> <span class="Identifier">TableRef</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">,</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">]</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">key</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
+<div id="..m,JsonNode,untyped">
+<dt><pre><span class="Keyword">macro</span> <a href="#..m%2CJsonNode%2Cuntyped"><span class="Identifier">`.`</span></a><span class="Other">(</span><span class="Identifier">obj</span><span class="Other">:</span> <span class="Identifier">JsonNode</span><span class="Other">;</span> <span class="Identifier">field</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">JsonNode</span></pre></dt>
 <dd>
 
-<p>Shortcut to get query param.</p>
-<p><tt class="docutils literal"><span class="pre"><span class="Identifier">High</span><span class="Operator">-</span><span class="Identifier">level</span> <span class="Identifier">API</span></span></tt></p>
 
-<h2><a class="toc-backref" id="example" href="#example">Example</a></h2><pre class="listing"><span class="Identifier">get</span> <span class="StringLit">&quot;/&quot;</span><span class="Punctuation">:</span>
-  <span class="Comment"># exmple.com/?myParam=100</span>
-  <span class="Identifier">echo</span> <span class="Identifier">query</span><span class="Operator">~</span><span class="Identifier">myParam</span></pre>
 
 </dd>
 </div>
@@ -531,12 +468,20 @@ Parses query and retrieves TableRef[string, seq[string]] object
 
 </dd>
 </div>
+<div id="liveview.m,untyped">
+<dt><pre><span class="Keyword">macro</span> <a href="#liveview.m%2Cuntyped"><span class="Identifier">liveview</span></a><span class="Other">(</span><span class="Identifier">body</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
+<dd>
+
+
+
+</dd>
+</div>
 <div id="routes.m,Server,untyped">
 <dt><pre><span class="Keyword">macro</span> <a href="#routes.m%2CServer%2Cuntyped"><span class="Identifier">routes</span></a><span class="Other">(</span><span class="Identifier">server</span><span class="Other">:</span> <a href="server.html#Server"><span class="Identifier">Server</span></a><span class="Other">;</span> <span class="Identifier">body</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
 
 You can create routes with this marco
-<h4><a class="toc-backref" id="example-available-path-params" href="#example-available-path-params">Available Path Params</a></h4><ul class="simple"><li><tt class="docutils literal"><span class="pre"><span class="Identifier">bool</span></span></tt>: any boolean (<tt class="docutils literal"><span class="pre"><span class="Identifier">y</span></span></tt>, <tt class="docutils literal"><span class="pre"><span class="Identifier">yes</span></span></tt>, <tt class="docutils literal"><span class="pre"><span class="Identifier">on</span></span></tt>, <tt class="docutils literal"><span class="pre"><span class="DecNumber">1</span></span></tt> and <tt class="docutils literal"><span class="pre"><span class="Identifier">true</span></span></tt> for true; <tt class="docutils literal"><span class="pre"><span class="Identifier">n</span></span></tt>, <tt class="docutils literal"><span class="pre"><span class="Identifier">no</span></span></tt>, <tt class="docutils literal"><span class="pre"><span class="Identifier">off</span></span></tt>, <tt class="docutils literal"><span class="pre"><span class="DecNumber">0</span></span></tt> and <tt class="docutils literal"><span class="pre"><span class="Identifier">false</span></span></tt> for false).</li>
+<h4><a class="toc-backref" id="available-path-params" href="#available-path-params">Available Path Params</a></h4><ul class="simple"><li><tt class="docutils literal"><span class="pre"><span class="Identifier">bool</span></span></tt>: any boolean (<tt class="docutils literal"><span class="pre"><span class="Identifier">y</span></span></tt>, <tt class="docutils literal"><span class="pre"><span class="Identifier">yes</span></span></tt>, <tt class="docutils literal"><span class="pre"><span class="Identifier">on</span></span></tt>, <tt class="docutils literal"><span class="pre"><span class="DecNumber">1</span></span></tt> and <tt class="docutils literal"><span class="pre"><span class="Identifier">true</span></span></tt> for true; <tt class="docutils literal"><span class="pre"><span class="Identifier">n</span></span></tt>, <tt class="docutils literal"><span class="pre"><span class="Identifier">no</span></span></tt>, <tt class="docutils literal"><span class="pre"><span class="Identifier">off</span></span></tt>, <tt class="docutils literal"><span class="pre"><span class="DecNumber">0</span></span></tt> and <tt class="docutils literal"><span class="pre"><span class="Identifier">false</span></span></tt> for false).</li>
 <li><tt class="docutils literal"><span class="pre"><span class="Identifier">int</span></span></tt>: any integer.</li>
 <li><tt class="docutils literal"><span class="pre"><span class="Identifier">float</span></span></tt>: any float number.</li>
 <li><tt class="docutils literal"><span class="pre"><span class="Identifier">word</span></span></tt>: any word includes <tt class="docutils literal"><span class="pre"><span class="RawData">re2&quot;\w+&quot;</span></span></tt>.</li>
@@ -546,28 +491,28 @@ You can create routes with this marco
 <li><tt class="docutils literal"><span class="pre"><span class="Identifier">regex</span></span></tt>: any regex pattern excludes groups. Usage - <tt class="docutils literal"><span class="pre"><span class="StringLit">&quot;/path{pattern:/yourRegex/}&quot;</span></span></tt></li>
 </ul>
 
-<h4><a class="toc-backref" id="example-available-route-types" href="#example-available-route-types">Available Route Types</a></h4><ul class="simple"><li><tt class="docutils literal"><span class="pre"><span class="StringLit">&quot;/path/with/{args:path}&quot;</span></span></tt>: Just string with route path. Matches any request method</li>
+<h4><a class="toc-backref" id="available-route-types" href="#available-route-types">Available Route Types</a></h4><ul class="simple"><li><tt class="docutils literal"><span class="pre"><span class="StringLit">&quot;/path/with/{args:path}&quot;</span></span></tt>: Just string with route path. Matches any request method</li>
 <li><tt class="docutils literal"><span class="pre"><span class="Identifier">get</span> <span class="StringLit">&quot;/path/{args:word}&quot;</span></span></tt>: Route with request method. Method can be<tt class="docutils literal"><span class="pre"><span class="Identifier">get</span></span></tt>, <tt class="docutils literal"><span class="pre"><span class="Identifier">post</span></span></tt>, <tt class="docutils literal"><span class="pre"><span class="Identifier">patch</span></span></tt>, etc.</li>
 <li><tt class="docutils literal"><span class="pre"><span class="Identifier">notfound</span></span></tt>: Route that matches when no other matched.</li>
 <li><tt class="docutils literal"><span class="pre"><span class="Identifier">middleware</span></span></tt>: Always executes first.</li>
 <li><tt class="docutils literal"><span class="pre"><span class="Identifier">finalize</span></span></tt>: Executes when server is closing</li>
 </ul>
 
-<h4><a class="toc-backref" id="example-route-scopecolon" href="#example-route-scopecolon">Route Scope:</a></h4><ul class="simple"><li><tt class="docutils literal"><span class="pre"><span class="Identifier">req</span></span></tt>: Current request</li>
+<h4><a class="toc-backref" id="route-scopecolon" href="#route-scopecolon">Route Scope:</a></h4><ul class="simple"><li><tt class="docutils literal"><span class="pre"><span class="Identifier">req</span></span></tt>: Current request</li>
 <li><tt class="docutils literal"><span class="pre"><span class="Identifier">urlPath</span></span></tt>: Current url path</li>
 <li><tt class="docutils literal"><span class="pre"><span class="Identifier">query</span></span></tt>: Current url path queries</li>
 <li><tt class="docutils literal"><span class="pre"><span class="Identifier">queryArr</span></span></tt>: Current url path queries (usable for seq[string])</li>
 <li><tt class="docutils literal"><span class="pre"><span class="Identifier">wsConnections</span></span></tt>: All websocket connections</li>
 </ul>
 
-<h4><a class="toc-backref" id="example-available-websocket-routing" href="#example-available-websocket-routing">Available Websocket Routing</a></h4><ul class="simple"><li><tt class="docutils literal"><span class="pre"><span class="Identifier">ws</span> <span class="StringLit">&quot;/path/to/websockets/{args:word}</span></span></tt>: Route with websockets</li>
+<h4><a class="toc-backref" id="available-websocket-routing" href="#available-websocket-routing">Available Websocket Routing</a></h4><ul class="simple"><li><tt class="docutils literal"><span class="pre"><span class="Identifier">ws</span> <span class="StringLit">&quot;/path/to/websockets/{args:word}</span></span></tt>: Route with websockets</li>
 <li><tt class="docutils literal"><span class="pre"><span class="Identifier">wsConnect</span></span></tt>: Calls on any websocket client was connected</li>
 <li><tt class="docutils literal"><span class="pre"><span class="Identifier">wsClosed</span></span></tt>: Calls on any websocket client was disconnected</li>
 <li><tt class="docutils literal"><span class="pre"><span class="Identifier">wsMismatchProtocol</span></span></tt>: Calls on mismatch protocol</li>
 <li><tt class="docutils literal"><span class="pre"><span class="Identifier">wsError</span></span></tt>: Calls on any other ws error</li>
 </ul>
 
-<h4><a class="toc-backref" id="example-websocket-scopecolon" href="#example-websocket-scopecolon">Websocket Scope:</a></h4><ul class="simple"><li><tt class="docutils literal"><span class="pre"><span class="Identifier">req</span></span></tt>: Current request</li>
+<h4><a class="toc-backref" id="websocket-scopecolon" href="#websocket-scopecolon">Websocket Scope:</a></h4><ul class="simple"><li><tt class="docutils literal"><span class="pre"><span class="Identifier">req</span></span></tt>: Current request</li>
 <li><tt class="docutils literal"><span class="pre"><span class="Identifier">urlPath</span></span></tt>: Current url path</li>
 <li><tt class="docutils literal"><span class="pre"><span class="Identifier">query</span></span></tt>: Current url path queries</li>
 <li><tt class="docutils literal"><span class="pre"><span class="Identifier">queryArr</span></span></tt>: Current url path queries (usable for seq[string])</li>
@@ -704,7 +649,7 @@ The <tt class="docutils literal"><span class="pre"><span class="Identifier">star
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-09-11 11:20:13 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-09-12 12:43:30 UTC</small>
       </div>
     </div>
   </div>

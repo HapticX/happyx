@@ -1,0 +1,5 @@
+parseQuery	happyx/core/queries.html#parseQuery,string	queries: parseQuery(q: string): owned(StringTableRef)	
+parseQueryArrays	happyx/core/queries.html#parseQueryArrays,string	queries: parseQueryArrays(query: string): TableRef[string, seq[string]]	
+`~`	happyx/core/queries.html#~.m,,untyped	queries: `~`(strTable: StringTableRef | TableRef[string, seq[string]]; key: untyped): untyped	
+Example	happyx/core/queries.html#example	  Example	
+Queries ❔	happyx/core/queries.html#queries-❔	 Queries ❔	

@@ -198,6 +198,11 @@ window.addEventListener('DOMContentLoaded', main);
                 isLet: bool = false): NimNode</a></li>
 
   </ul>
+  <ul class="simple nested-toc-section">pragmaBlock
+      <li><a class="reference" href="#pragmaBlock%2CopenArray%5BNimNode%5D%2CNimNode"
+    title="pragmaBlock(pragmas: openArray[NimNode]; statementList: NimNode): NimNode">pragmaBlock(pragmas: openArray[NimNode]; statementList: NimNode): NimNode</a></li>
+
+  </ul>
   <ul class="simple nested-toc-section">replaceIter
       <li><a class="reference" href="#replaceIter%2CNimNode%2Cproc%28NimNode%29%2Cproc%28NimNode%29"
     title="replaceIter(root: NimNode; search: proc (x: NimNode): bool;
@@ -388,6 +393,15 @@ Creates a new lambda
 
 </dd>
 </div>
+<div id="pragmaBlock,openArray[NimNode],NimNode">
+<dt><pre><span class="Keyword">proc</span> <a href="#pragmaBlock%2CopenArray%5BNimNode%5D%2CNimNode"><span class="Identifier">pragmaBlock</span></a><span class="Other">(</span><span class="Identifier">pragmas</span><span class="Other">:</span> <span class="Identifier">openArray</span><span class="Other">[</span><span class="Identifier">NimNode</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">statementList</span><span class="Other">:</span> <span class="Identifier">NimNode</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">NimNode</span> {.
+    <span class="Identifier">compileTime</span><span class="Other">,</span> <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<dd>
+
+
+
+</dd>
+</div>
 <div id="replaceIter,NimNode,proc(NimNode),proc(NimNode)">
 <dt><pre><span class="Keyword">proc</span> <a href="#replaceIter%2CNimNode%2Cproc%28NimNode%29%2Cproc%28NimNode%29"><span class="Identifier">replaceIter</span></a><span class="Other">(</span><span class="Identifier">root</span><span class="Other">:</span> <span class="Identifier">NimNode</span><span class="Other">;</span> <span class="Identifier">search</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">x</span><span class="Other">:</span> <span class="Identifier">NimNode</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">;</span>
                  <span class="Identifier">replace</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">x</span><span class="Other">:</span> <span class="Identifier">NimNode</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">NimNode</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> {.<span class="Identifier">compileTime</span><span class="Other">,</span>
@@ -431,7 +445,7 @@ Creates a new lambda
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-09-11 11:19:57 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-09-12 12:43:14 UTC</small>
       </div>
     </div>
   </div>
