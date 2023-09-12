@@ -243,8 +243,8 @@ proc compileProject(): ProjectData {. discardable .} =
       result.error &= line
   if not result.process.isNil():
     result.process.close()
-  # if result.projectType == ptSPAHpx:
-  #   removeFile(result.srcDir / result.mainFile & ".nim")
+  if result.projectType == ptSPAHpx:
+    removeFile(result.srcDir / result.mainFile & ".nim")
 
 
 proc godEye(arg: ptr GodEyeData) {. thread, nimcall .} =
