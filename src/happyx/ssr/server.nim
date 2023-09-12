@@ -214,7 +214,7 @@ proc onQuit() {.noconv.} =
       discard
 
 
-when not defined(docgen):
+when not defined(docgen) and not nim_2_0_0:
   setControlCHook(ctrlCHook)
   addExitProc(onQuit)
 

@@ -8,18 +8,19 @@ import
   strutils
 
 
-proc parseQuery*(query: string): owned(StringTableRef) =
+proc parseQuery*(q: string): owned(StringTableRef) =
   ## Parses query and retrieves StringTableRef object
   runnableExamples:
+    import strtabs
     let
       query = "a=1000&b=8000&password=mystrongpass"
       parsedQuery = parseQuery(query)
     assert parsedQuery["a"] == "1000"
   let query =
-    if query.startsWith("?"):
-      query[1..^1]
+    if q.startsWith("?"):
+      q[1..^1]
     else:
-      query
+      q
   result = newStringTable()
   for i in query.split('&'):
     let splitted = i.split('=')

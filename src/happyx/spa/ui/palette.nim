@@ -4,6 +4,8 @@
 when not defined(docgen):
   import dom
 
+import json
+
 
 const
   BackgroundColor* = "#0e090b"

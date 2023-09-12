@@ -30,7 +30,8 @@ import
   ../renderer,
   ../state,
   ../components,
-  ./palette
+  ./palette,
+  json
 
 
 type ButtonAction* = proc(): void

@@ -33,7 +33,8 @@ import
   ../state,
   ../components,
   ./palette,
-  ./enums
+  ./enums,
+  json
 
 
 component Card:

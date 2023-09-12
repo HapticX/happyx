@@ -36,7 +36,8 @@ import
   ../state,
   ../components,
   ./palette,
-  ./enums
+  ./enums,
+  json
 
 
 type ProgressAction* = proc(val: int): void

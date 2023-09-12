@@ -29,7 +29,8 @@ import
   ../renderer,
   ../state,
   ../components,
-  ./palette
+  ./palette,
+  json
 
 
 type InputAction* = proc(str: cstring): void
