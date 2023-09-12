@@ -744,24 +744,28 @@ macro component*(name, body: untyped): untyped =
         ident"TagRef",
         newIdentDefs(ident"self", ident(componentName))
       ],
-      newStmtList(
-        newCall("add", ident"currentComponentsList", ident"self"),
-        newAssignment(ident"currentComponent", newDotExpr(ident"self", ident(UniqueComponentId))),
-        newCall("script", ident"self"),
-        beforeStmtList,
-        newAssignment(
-          ident"result", newCall("renderTag", ident"self")
-        ),
-        newCall(
-          "add",
-          ident"result",
-          newCall("initTag", newStrLitNode("style"), newCall("@", newNimNode(nnkBracket).add(
-            newCall("textTag", newCall("style", ident"self"))
-          )))
-        ),
-        afterStmtList,
-        newAssignment(ident"currentComponent", newStrLitNode("")),
-      ),
+      block:
+        var b = newStmtList(
+          newCall("add", ident"currentComponentsList", ident"self"),
+          newAssignment(ident"currentComponent", newDotExpr(ident"self", ident(UniqueComponentId))),
+          newCall("script", ident"self"),
+          beforeStmtList,
+          newAssignment(
+            ident"result", newCall("renderTag", ident"self")
+          ),
+          newCall(
+            "add",
+            ident"result",
+            newCall("initTag", newStrLitNode("style"), newCall("@", newNimNode(nnkBracket).add(
+              newCall("textTag", newCall("style", ident"self"))
+            )))
+          ),
+          afterStmtList,
+          newAssignment(ident"currentComponent", newStrLitNode("")),
+        )
+        when not defined(js):
+          b = pragmaBlock([ident"gcsafe"], b)
+        b,
       nnkMethodDef,
       pragmas =
         when defined(js):

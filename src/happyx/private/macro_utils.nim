@@ -32,6 +32,15 @@ proc bracket*(node: varargs[NimNode]): NimNode =
     result.add(i)
 
 
+proc pragmaBlock*(pragmas: openArray[NimNode], statementList: NimNode): NimNode =
+  result = newNimNode(nnkPragmaBlock).add(
+    newNimNode(nnkPragma),
+    statementList
+  )
+  for i in pragmas:
+    result[0].add(i)
+
+
 proc getTagName*(name: string): string =
   ## Checks tag name at compile time
   ## 
