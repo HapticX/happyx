@@ -171,12 +171,47 @@ proc compileProject(): ProjectData {. discardable .} =
     f.write("\nappRoutes \"app\":\n")
     for key, val in routerData.pairs():
       f.write(fmt"""  "{key}":""")
-      var compName = val.getStr
+      var
+        compName: string = ""
+        args = newJObject()
+      if val.kind == JString:
+        compName = val.getStr
+      elif val.kind == JObject:
+        if not val.hasKey("component"):
+          raise newException(ValueError, fmt"route `{key}` routes should have `component`")
+        compName = val["component"].getStr
+        args = val["args"]
       if compName.endsWith(".hpx"):
         compName = compName[0..^4]
       f.write("\n")
-      f.write(fmt"    component {compName}")
-      f.write("\n\n")
+      f.write(fmt"    component {compName}(")
+      for key, arg in args.pairs():
+        case arg.kind
+        of JString:
+          f.write(fmt"{key}={arg.getStr},")
+        of JFloat, JBool, JInt:
+          f.write(fmt"{key}={arg},")
+        of JObject:
+          # detect keys is exists
+          if not arg.hasKey("name"):
+            raise newException(ValueError, fmt"route `{key}` component `{compName}` argument should have `name`")
+          if not arg.hasKey("type"):
+            raise newException(ValueError, fmt"route `{key}` component `{compName}` argument should have `type`")
+          # type validation
+          if arg["name"].kind != JString:
+            raise newException(ValueError, fmt"route `{key}` component `{compName}` argument `name` should be string")
+          if arg["type"].kind != JString:
+            raise newException(ValueError, fmt"route `{key}` component `{compName}` argument `type` should be string")
+          case arg["type"].getStr.toLower()
+          of "pathparam":
+            f.write(fmt"""{key}={arg["name"].getStr},""")
+          of "query":
+            f.write(fmt"""{key}=query~{arg["name"].getStr},""")
+          of "queryarr", "queryarray":
+            f.write(fmt"""{key}=queryArr~{arg["name"].getStr},""")
+        else:
+          raise newException(ValueError, fmt"Incorrect router.json structure at `{key}`")
+      f.write(")\n\n")
     f.close()
     result.process = startProcess(
       "nim", getCurrentDir() / result.srcDir,
@@ -208,8 +243,8 @@ proc compileProject(): ProjectData {. discardable .} =
       result.error &= line
   if not result.process.isNil():
     result.process.close()
-  if result.projectType == ptSPAHpx:
-    removeFile(result.srcDir / result.mainFile & ".nim")
+  # if result.projectType == ptSPAHpx:
+  #   removeFile(result.srcDir / result.mainFile & ".nim")
 
 
 proc godEye(arg: ptr GodEyeData) {. thread, nimcall .} =

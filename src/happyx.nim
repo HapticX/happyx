@@ -237,6 +237,7 @@
 ## ### Core 🔋
 ## 
 ## - [constants](happyx/core/constants.html) - describes all HappyX flags and consts.
+## - [queries](happyx/core/queries.html) - provides some utils to work with query parameters.
 ## - [exceptions](happyx/core/exceptions.html) - describes all HappyX exceptions.
 ## - [secure](happyx/core/secure.html) - provides some secure features.
 ## 
@@ -301,7 +302,7 @@ when not defined(js):
     secure
 
 import
-  happyx/core/[exceptions, constants],
+  happyx/core/[exceptions, constants, queries],
   happyx/sugar/[use, sgr, js, style],
   happyx/spa/[renderer, state, components, translatable],
   happyx/tmpl_engine/[engine],
@@ -317,6 +318,7 @@ when enableUi or defined(docgen):
 export
   exceptions,
   use,
+  queries,
   renderer,
   state,
   components,

@@ -1020,9 +1020,10 @@ macro importComponent*(body: untyped): untyped =
     for i in 0..<statement.len:
       let s = statement[i]
       # Detect properties
-      if s.kind == nnkCall and s[0] == ident"props":
-        for j in 1..<s.len:
-          stmtList.add(if s[j].kind == nnkStmtList: s[j][0] else: s[j])
+      if s.kind == nnkCall and s[0] == ident"props" and s[1].kind == nnkStmtList:
+        let propsBody = s[1]
+        for property in propsBody:
+          stmtList.add(property)
         statement[i] = newEmptyNode()
       # Detect methods
       elif s.kind in {nnkProcDef, nnkMethodDef, nnkIteratorDef}:

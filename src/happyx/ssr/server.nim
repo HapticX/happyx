@@ -71,7 +71,7 @@ import
   # HappyX
   ./cors,
   ../spa/[tag, renderer, translatable],
-  ../core/[exceptions, constants],
+  ../core/[exceptions, constants, queries],
   ../private/[macro_utils],
   ../routing/[routing, mounting],
   ../sugar/sgr
@@ -271,39 +271,6 @@ proc newServer*(address: string = "127.0.0.1", port: int = 5000): Server =
     result.instance = newAsyncHttpServer()
   pointerServer = addr result
   addHandler(result.logger)
-
-
-proc parseQuery*(query: string): owned(StringTableRef) =
-  ## Parses query and retrieves StringTableRef object
-  runnableExamples:
-    let
-      query = "a=1000&b=8000&password=mystrongpass"
-      parsedQuery = parseQuery(query)
-    assert parsedQuery["a"] == "1000"
-  result = newStringTable()
-  for i in query.split('&'):
-    let splitted = i.split('=')
-    if splitted.len >= 2 and not splitted[0].endsWith("[]"):
-      result[splitted[0]] = splitted[1]
-
-
-proc parseQueryArrays*(query: string): TableRef[string, seq[string]] =
-  ## Parses query and retrieves TableRef[string, seq[string]] object
-  runnableExamples:
-    import tables
-    let
-      query = "a[]=10&a[]=100&a[]=foo&a[]=bar"
-      parsedQuery = parseQueryArrays(query)
-    assert parsedQuery["a"] == @["10", "100", "foo", "bar"]
-  result = newTable[string, seq[string]]()
-  for i in query.split('&'):
-    let splitted = i.split('=')
-    if splitted.len >= 2 and splitted[0].endsWith("[]"):
-      let key = splitted[0][0..^3]
-      if result.hasKey(key):
-        result[key].add(splitted[1])
-      else:
-        result[key] = @[splitted[1]]
 
 
 template start*(server: Server): untyped =
@@ -541,23 +508,6 @@ proc detectReturnStmt(node: NimNode, replaceReturn: bool = false) {. compileTime
       node[^1] = newCall("answer", ident"req", node[^1])
 
 
-macro `~`*(strTable: StringTableRef | TableRef[string, seq[string]], key: untyped): untyped =
-  ## Shortcut to get query param.
-  ## 
-  ## `High-level API`
-  ## 
-  ## ## Example
-  ## 
-  ## .. code-block::nim
-  ##    get "/":
-  ##      # exmple.com/?myParam=100
-  ##      echo query~myParam
-  ## 
-  let
-    keyStr = newStrLitNode($key)
-  newCall("getOrDefault", strTable, keyStr)
-
-
 macro routes*(server: Server, body: untyped): untyped =
   ## You can create routes with this marco
   ## 
@@ -724,7 +674,7 @@ socketToSsr.onmessage=function(m){
             of "callEventHandler":
               eventHandlers[parsed["idx"].getInt](parsed["event"])
               when enableHttpBeast or enableHttpx:
-                let hostname = req.hostname.get()
+                let hostname = req.ip
                 if requestResult.hasKey(hostname):
                   await wsClient.send($requestResult[hostname])
                   requestResult.del(hostname)
@@ -743,7 +693,7 @@ socketToSsr.onmessage=function(m){
     let
       requestBody = newCall("get", newDotExpr(ident"req", ident"body"))
       reqMethod = newCall("get", newDotExpr(ident"req", ident"httpMethod"))
-      hostname = newCall("get", newDotExpr(ident"req", ident"hostname"))
+      hostname = newDotExpr(ident"req", ident"ip")
       headers = newCall("get", newDotExpr(ident"req", ident"headers"))
       acceptLanguage = newNimNode(nnkBracketExpr).add(
         newCall(

@@ -474,6 +474,14 @@ macro routes*(app: App, body: untyped): untyped =
       newCall("getElementById", ident"document", newDotExpr(ident"app", ident"appId"))
     ),
     newLetStmt(
+      ident"query",
+      newCall("parseQuery", newCall("$", newDotExpr(newDotExpr(ident"window", ident"location"), ident"search")))
+    ),
+    newLetStmt(
+      ident"queryArr",
+      newCall("parseQueryArrays", newCall("$", newDotExpr(newDotExpr(ident"window", ident"location"), ident"search")))
+    ),
+    newLetStmt(
       ident"path",
       newCall(
         "strip",
@@ -518,6 +526,7 @@ macro routes*(app: App, body: untyped): untyped =
         # Check variable usage
         if statement[^1].isIdentUsed(ident"cookies"):
           statement[^1].insert(0, newVarStmt(ident"cookies", cookiesInVar))
+        
       if statement.len == 2 and statement[0].kind == nnkStrLit:
         let exported = exportRouteArgs(
           iPath,
