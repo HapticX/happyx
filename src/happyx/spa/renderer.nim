@@ -77,9 +77,11 @@ when defined(js):
       beforeUpdated*: ComponentEventHandler  ## Calls before every rendering
       updated*: ComponentEventHandler  ## Calls after every DOM rendering
 else:
+  import json
+
   type
-    AppEventHandler* = proc(ev: int = 0): void
-    ComponentEventHandler* = proc(self: BaseComponent, ev: int = 0): void
+    AppEventHandler* = proc(ev: JsonNode = newJObject()): void
+    ComponentEventHandler* = proc(self: BaseComponent, ev: JsonNode = newJObject()): void
     App* = ref object
       appId*: cstring
       router*: proc(force: bool = false)
@@ -102,11 +104,18 @@ var
   application*: App = nil  ## global application variable
   eventHandlers* = newTable[int, AppEventHandler]()
   componentEventHandlers* = newTable[int, ComponentEventHandler]()
-  components* = newTable[cstring, BaseComponent]()
   currentComponent* = ""  ## Current component unique ID
   currentRoute*: cstring = "/"  ## Current route path
   currentComponentsList*: seq[BaseComponent] = @[]
   createdComponentsList*: seq[BaseComponent] = @[]
+
+when defined(js):
+  var components* = newTable[cstring, BaseComponent]()
+else:
+  var
+    components* = newTable[string, BaseComponent]()
+    requestResult* = newTable[string, JsonNode]()
+    componentsResult* = newTable[string, JsonNode]()
 
 
 when defined(js):
@@ -163,15 +172,29 @@ macro elem*(name: untyped): untyped =
 
 {.push inline.}
 
-proc route*(path: cstring) =
-  ## Change current page to `path` and rerender
-  when defined(js):
+when defined(js):
+  proc route*(path: cstring) =
+    ## Change current page to `path` and rerender
     {.emit: "window.history.pushState(null, null, '#' + `path`);" .}
     let force = currentRoute != path
     currentRoute = path
     application.router(force)
     if force:
       window.scrollTo(0, 0)
+else:
+  proc route*(host, path: string) =
+    requestResult[host] = %*{"action": "route", "data": path}
+  proc injectJs*(host, script: string) =
+    requestResult[host] = %*{"action": "script", "data": fmt"<script>{script}</script>"}
+  proc html*(host, data: string) =
+    requestResult[host] = %*{"action": "html", "data": data}
+  
+  proc route*(comp: BaseComponent, path: string) =
+    componentsResult[comp.uniqCompId] = %*{"action": "route", "data": path}
+  proc js*(comp: BaseComponent, script: string) =
+    componentsResult[comp.uniqCompId] = %*{"action": "script", "data": fmt"<script>{script}</script>"}
+  proc html*(comp: BaseComponent, data: string) =
+    componentsResult[comp.uniqCompId] = %*{"action": "html", "data": data}
 
 
 proc registerApp*(appId: cstring = "app"): App {. discardable .} =
@@ -186,17 +209,30 @@ proc registerApp*(appId: cstring = "app"): App {. discardable .} =
   application
 
 
-proc registerComponent*(name: cstring, component: BaseComponent): BaseComponent =
-  ## Register a new component.
-  ## 
-  ## ⚠ This is `Low-level API` ⚠
-  ## 
-  ## Don't use it because it used in `component` macro.
-  ## 
-  if components.hasKey(name):
-    return components[name]
-  components[name] = component
-  component
+when defined(js):
+  proc registerComponent*(name: cstring, component: BaseComponent): BaseComponent =
+    ## Register a new component.
+    ## 
+    ## ⚠ This is `Low-level API` ⚠
+    ## 
+    ## Don't use it because it used in `component` macro.
+    ## 
+    if components.hasKey(name):
+      return components[name]
+    components[name] = component
+    component
+else:
+  proc registerComponent*(name: string, component: BaseComponent): BaseComponent =
+    ## Register a new component.
+    ## 
+    ## ⚠ This is `Low-level API` ⚠
+    ## 
+    ## Don't use it because it used in `component` macro.
+    ## 
+    if components.hasKey(name):
+      return components[name]
+    components[name] = component
+    component
 
 
 when defined(js):

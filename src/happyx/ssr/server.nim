@@ -200,6 +200,7 @@ when enableApiDoc:
 var
   pointerServer: ptr Server
   loggerCreated: bool = false
+  liveViews {.compileTime.}: seq[(string, NimNode)] = @[]
 
 
 proc ctrlCHook() {.noconv.} =
@@ -231,21 +232,6 @@ func fgColored*(text: string, clr: ForegroundColor): string {.inline.} =
   runnableExamples:
     echo fgColored("Hello, world!", fgRed)
   ansiForegroundColorCode(clr) & text & ansiResetCode
-
-
-func fgStyled*(text: string, style: Style): string {.inline.} =
-  ## This function takes in a string of text and a Style enum
-  ## value and returns the same text with the specified style applied.
-  ## 
-  ## Arguments:
-  ## - `text`: A string value representing the text to apply style to.
-  ## - `clr`: A Style enum value representing the style to apply to the text.
-  ## 
-  ## Return value:
-  ## - The function returns a string value with the specified style applied to the input text.
-  runnableExamples:
-    echo fgStyled("Hello, world!", styleBlink)
-  ansiStyleCode(style) & text & ansiResetCode
 
 
 proc newServer*(address: string = "127.0.0.1", port: int = 5000): Server =
@@ -339,6 +325,11 @@ template start*(server: Server): untyped =
       run(handleRequest, `server`.instance)
   else:
     waitFor `server`.instance.serve(Port(`server`.port), handleRequest, `server`.address)
+
+
+{.experimental: "dotOperators".}
+macro `.`*(obj: JsonNode, field: untyped): JsonNode =
+  newCall("[]", obj, newLit($field.toStrLit))
 
 
 template answer*(
@@ -626,6 +617,7 @@ macro routes*(server: Server, body: untyped): untyped =
     pathIdent = ident"urlPath"
   var
     # Handle requests
+    body = body
     stmtList = newStmtList()
     ifStmt = newNimNode(nnkIfStmt)
     notFoundNode = newEmptyNode()
@@ -642,6 +634,106 @@ macro routes*(server: Server, body: untyped): untyped =
     caseRequestMethodsStmt = newNimNode(nnkCaseStmt)
     methodTable = newTable[string, NimNode]()
     finalize = newStmtList()
+  
+  for liveView in liveViews:
+    let
+      path = liveView[0]
+      statement = liveView[1]
+      connection = newLit(fmt"""
+var socketToSsr = new WebSocket("ws://localhost:5000{path}");
+""")
+      getMethod = quote do:
+        {.gcsafe.}:
+          var html = buildHtml:
+            tHead:
+              tTitle: "SSR Components are here!"
+              tScript(src = "https://cdn.tailwindcss.com")
+            tBody:
+              tDiv(id = "app"): `statement`
+              tDiv(id = "scripts")
+            tScript: `connection`
+            tScript: """
+const x=document.getElementById("scripts");
+const a=document.getElementById("app");
+socketToSsr.onmessage=function(m){
+  const res=JSON.parse(m.data);switch(res.action){
+    case"script":x.innerHTML="";const e1=document.createRange().createContextualFragment(res.data);x.append(e1);break;case"html":const e2=document.createRange().createContextualFragment(res.data);a.append(e2);break;case"route":window.location.replace(res.data);break;default:break}};
+  function isObjLiteral(_o) {
+    var _t = _o;
+    return typeof _o !== "object" || _o === null ? false : function () {
+      while (!false) {
+        if (Object.getPrototypeOf(_t = Object.getPrototypeOf(_t)) === null) {
+          break
+        }
+      }
+      return Object.getPrototypeOf(_o) === _t
+    }()
+  }
+
+  function complex(e) {
+    const i = typeof e === "function";
+    const j = typeof e === "object" && !isObjLiteral(e);
+    return i || j
+  }
+
+  function se(e, x) {
+    const r = {};
+    for (const k in e) {
+      if (!e[k]) {continue;}
+      if (typeof e[k] !== "function" && typeof e[k] !== "object") {
+        r[k] = e[k];
+      } else if (!(r[k] in x) && x.length < 2 && e[k] !== "function") {
+        r[k] = se(e[k], x.concat([e[k]]));
+      }
+    }
+    return r;
+  }
+  
+  function callEventHandler(i, e) {
+    let ev = se(e, [e]);
+    ev['eventName'] = ev.constructor.name;
+    socketToSsr.send(JSON.stringify({
+      "action": "callEventHandler",
+      "idx": i,
+      "event": ev
+    }));
+  }
+  function callComponentEventHandler(c, i, e) {
+    let ev = se(e, [e]);
+    ev['eventName'] = ev.constructor.name;
+    socketToSsr.send(JSON.stringify({
+      "action": "callComponentEventHandler",
+      "idx": i,
+      "event": ev,
+      "componentId": c
+    }));
+  }
+"""
+        return html
+      wsMethod = quote do:
+        ws `path`:
+          var parsed = parseJson(wsData)
+          {.gcsafe.}:
+            case parsed["action"].getStr
+            of "callComponentEventHandler":
+              let comp = components[parsed["componentId"].getStr]
+              componentEventHandlers[parsed["idx"].getInt](comp, parsed["event"])
+              if componentsResult.hasKey(comp.uniqCompId):
+                await wsClient.send($componentsResult[comp.uniqCompId])
+                componentsResult.del(comp.uniqCompId)
+            of "callEventHandler":
+              eventHandlers[parsed["idx"].getInt](parsed["event"])
+              when enableHttpBeast or enableHttpx:
+                let hostname = req.hostname.get()
+                if requestResult.hasKey(hostname):
+                  await wsClient.send($requestResult[hostname])
+                  requestResult.del(hostname)
+              else:
+                if requestResult.hasKey(req.hostname):
+                  await wsClient.send($requestResult[req.hostname])
+                  requestResult.del(req.hostname)
+    body.add(wsMethod)
+    body.add(newCall("get", newLit(path), getMethod))
 
   when enableHttpx or enableHttpBeast:
     var path = newNimNode(nnkBracketExpr).add(
@@ -651,6 +743,7 @@ macro routes*(server: Server, body: untyped): untyped =
     let
       requestBody = newCall("get", newDotExpr(ident"req", ident"body"))
       reqMethod = newCall("get", newDotExpr(ident"req", ident"httpMethod"))
+      hostname = newCall("get", newDotExpr(ident"req", ident"hostname"))
       headers = newCall("get", newDotExpr(ident"req", ident"headers"))
       acceptLanguage = newNimNode(nnkBracketExpr).add(
         newCall(
@@ -673,6 +766,7 @@ macro routes*(server: Server, body: untyped): untyped =
     var path = newDotExpr(newDotExpr(ident"req", ident"url"), ident"path")
     let
       reqMethod = newDotExpr(ident"req", ident"reqMethod")
+      hostname = newDotExpr(ident"req", ident"hostname")
       headers = newDotExpr(ident"req", ident"headers")
       requestBody = newDotExpr(ident"req", ident"body")
       acceptLanguage = newNimNode(nnkBracketExpr).add(
@@ -894,7 +988,6 @@ macro routes*(server: Server, body: untyped): untyped =
                     newCall("await", newCall("readData", ident"wsClient")),
                     true
                   ),
-                  newCall("echo", ident"wsData"),
                   newNimNode(nnkTryStmt).add(
                     # TRY
                     newStmtList(
@@ -1541,6 +1634,7 @@ macro routes*(server: Server, body: untyped): untyped =
     immutableVars.add(newIdentDefs(ident"inCookies", newEmptyNode(), cookiesInVar))
   if stmtList.isIdentUsed(ident"reqMethod"):
     immutableVars.add(newIdentDefs(ident"reqMethod", newEmptyNode(), reqMethod))
+  immutableVars.add(newIdentDefs(ident"hostname", newEmptyNode(), hostname))
   when enableDebugSsrMacro:
     echo result.toStrLit
 
@@ -1705,7 +1799,6 @@ macro serve*(address: string, port: int, body: untyped): untyped =
   ## 
   var bodyStatement = body
   when enableApiDoc:
-    echo port.toStrLit
     var docsData = bodyStatement.genApiDoc()
   
   var s =
@@ -1821,3 +1914,9 @@ macro serve*(address: string, port: int, body: untyped): untyped =
     newCall("main")
   )
   result[0].addPragma(ident"gcsafe")
+
+
+macro liveview*(body: untyped): untyped =
+  for statement in body:
+    if statement.kind in nnkCallKinds and statement[0].kind in {nnkStrLit, nnkTripleStrLit} and statement[1].kind == nnkStmtList:
+      liveViews.add(($statement[0], statement[1]))

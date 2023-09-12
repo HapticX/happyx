@@ -80,10 +80,16 @@ proc useComponent*(statement: NimNode, inCycle, inComponent: bool,
     componentNameTmp = "_" & componentName
     componentData = "data_" & componentName
     stringId =
-      if inCycle or inComponent:
-        componentNameIdent
+      when defined(js):
+        if inCycle or inComponent:
+          componentNameIdent
+        else:
+          newLit(componentName)
       else:
-        newLit(componentName)
+        if inCycle or inComponent:
+          newCall("&", ident"hostname", componentNameIdent)
+        else:
+          newCall("&", ident"hostname", newLit(componentName))
     componentSlot =
       if statement.len > 1 and statement[^1].kind == nnkStmtList:
         statement[^1]
@@ -102,18 +108,13 @@ proc useComponent*(statement: NimNode, inCycle, inComponent: bool,
       objConstr.add(statement[1][2][i])
   result = newStmtList(
     newVarStmt(ident(componentNameTmp), objConstr),
-    when defined(js):
-      newVarStmt(
-        ident(componentName),
-        newCall(
-          name,
-          newCall("registerComponent", stringId, ident(componentNameTmp))
-        )
+    newVarStmt(
+      ident(componentName),
+      newCall(
+        name,
+        newCall("registerComponent", stringId, ident(componentNameTmp))
       )
-    else:
-      newVarStmt(
-        ident(componentName), ident(componentNameTmp)
-      ),
+    ),
     newAssignment(
       newDotExpr(ident(componentName), ident"slot"),
       buildHtmlProcedure(
@@ -539,11 +540,11 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
           args.add(newIdentDefs(ident"ev", ident"Event", newNilLit()))
       else:
         if statement.len == 4 and statement.kind == nnkPrefix:
-          args.add(newIdentDefs(statement[2], ident"int"))
+          args.add(newIdentDefs(statement[2], ident"JsonNode"))
         elif statement.len == 3 and statement.kind == nnkCall:
-          args.add(newIdentDefs(statement[1], ident"int"))
+          args.add(newIdentDefs(statement[1], ident"JsonNode"))
         else:
-          args.add(newIdentDefs(ident"ev", ident"int", newNilLit()))
+          args.add(newIdentDefs(ident"ev", ident"JsonNode", newCall("newJObject")))
       
       if inComponent:
         procedure.body = statement[^1]
@@ -755,6 +756,9 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
           newLit(true)
         )
       )
+    elif statement.kind == nnkStmtList:
+      var builded = buildHtmlProcedure(ident"div", statement, inComponent, componentName, inCycle, cycleTmpVar, compTmpVar)
+      result.add(builded)
     else:
       throwDefect(
         HpxBuildHtmlDefect,

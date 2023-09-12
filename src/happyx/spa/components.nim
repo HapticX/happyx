@@ -310,7 +310,7 @@ macro component*(name, body: untyped): untyped =
       when defined(js):
         newIdentDefs(ident"ev", ident"Event", newNilLit())
       else:
-        newIdentDefs(ident"ev", ident"int", newLit(0))
+        newIdentDefs(ident"ev", ident"JsonNode", newCall("newJObject"))
     ]
     usedLifeCycles = {
       "created": false,  # at created
