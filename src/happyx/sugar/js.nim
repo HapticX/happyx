@@ -35,14 +35,10 @@ import
   ../core/[exceptions]
 
 
-var
-  enums {. compileTime .} = newTable[string, seq[string]]()
-  declaredVariables {. compileTime .} = newSeq[string]()
-  nimNodes {. compileTime .} = newSeq[NimNode]()
-
-
 proc buildJsProc(body: NimNode, src: var string, lvl: int = 0,
-                 pretty: bool = true, inClass: bool = false) {. compileTime .} =
+                 pretty: bool = true, inClass: bool = false,
+                 nimNodes: var seq[NimNode], enums: var TableRef[string, seq[string]],
+                 declaredVariables: var seq[string]) =
   let
     newLine = if pretty: "\n" else: ""
     level = repeat(' ', lvl)
@@ -64,7 +60,7 @@ proc buildJsProc(body: NimNode, src: var string, lvl: int = 0,
           lineInfoObj(statement[^1])
         )
       src &= level & "function " & $statement[1].toStrLit & " {" & newLine
-      statement[^1].buildJsProc(src, lvl + 2, pretty)
+      statement[^1].buildJsProc(src, lvl + 2, pretty, inClass, nimNodes, enums, declaredVariables)
       src &= level & "}" & newLine
     
     # variable declaration
@@ -110,15 +106,15 @@ proc buildJsProc(body: NimNode, src: var string, lvl: int = 0,
       if arr.kind == nnkInfix:
         if $arr[0] == "..":
           src &= fmt"{level}for (var {arg} = {arr[1].toStrLit}; {arg} <= {arr[2].toStrLit}; ++{arg})" & "{" & newLine
-          forStmt.buildJsProc(src, lvl + 2, pretty)
+          forStmt.buildJsProc(src, lvl + 2, pretty, inClass, nimNodes, enums, declaredVariables)
           src &= level & "}" & newLine
         elif $arr[0] == "..<":
           src &= fmt"{level}for (var {arg} = {arr[1].toStrLit}; {arg} < {arr[2].toStrLit}; ++{arg})" & "{" & newLine
-          forStmt.buildJsProc(src, lvl + 2, pretty)
+          forStmt.buildJsProc(src, lvl + 2, pretty, inClass, nimNodes, enums, declaredVariables)
           src &= level & "}" & newLine
       else:
         src &= fmt"{level}{arr.toStrLit}.forEach({arg.toStrLit} => " & "{" & newLine
-        forStmt.buildJsProc(src, lvl + 2, pretty)
+        forStmt.buildJsProc(src, lvl + 2, pretty, inClass, nimNodes, enums, declaredVariables)
         src &= level & "});" & newLine
     
     # class statement
@@ -130,7 +126,7 @@ proc buildJsProc(body: NimNode, src: var string, lvl: int = 0,
           lineInfoObj(statement)
         )
       src &= fmt"{level}class {statement[1].toStrLit}" & " {" & newLine
-      statement[^1].buildJsProc(src, lvl + 2, pretty, true)
+      statement[^1].buildJsProc(src, lvl + 2, pretty, true, nimNodes, enums, declaredVariables)
       src &= level & "}" & newLine
     
     # class fields with default values
@@ -151,7 +147,7 @@ proc buildJsProc(body: NimNode, src: var string, lvl: int = 0,
       var node = copy(statement)
       node.del(node.len-1)
       src &= fmt"{level}{node.toStrLit}" & " {" & newLine
-      statement[^1].buildJsProc(src, lvl + 2, pretty)
+      statement[^1].buildJsProc(src, lvl + 2, pretty, inClass, nimNodes, enums, declaredVariables)
       src &= level & "}" & newLine
     
     # if statements
@@ -163,7 +159,7 @@ proc buildJsProc(body: NimNode, src: var string, lvl: int = 0,
             src &= fmt"{level}if ({branch[0].toStrLit})" & " {" & newLine
           else:
             src &= fmt"else if ({branch[0].toStrLit})" & " {" & newLine
-          branch[1].buildJsProc(src, lvl + 2, pretty)
+          branch[1].buildJsProc(src, lvl + 2, pretty, inClass, nimNodes, enums, declaredVariables)
           if idx < statement.len-1:
             src &= "} "
           else:
@@ -173,7 +169,7 @@ proc buildJsProc(body: NimNode, src: var string, lvl: int = 0,
             src &= fmt"{level}else" & " {" & newLine
           else:
             src &= "else {" & newLine
-          branch[0].buildJsProc(src, lvl + 2, pretty)
+          branch[0].buildJsProc(src, lvl + 2, pretty, inClass, nimNodes, enums, declaredVariables)
           if idx < statement.len-1:
             src &= "} "
           else:
@@ -202,7 +198,7 @@ proc buildJsProc(body: NimNode, src: var string, lvl: int = 0,
               enumCases.add($arg[1].toStrLit)
             # Build case statement
             src &= level & "  case " & $arg.toStrLit & ":" & newLine
-          branch[1].buildJsProc(src, lvl + 4, pretty)
+          branch[1].buildJsProc(src, lvl + 4, pretty, inClass, nimNodes, enums, declaredVariables)
           src &= level & "    break;" & newLine
         # default
         elif branch.kind == nnkElse:
@@ -210,7 +206,7 @@ proc buildJsProc(body: NimNode, src: var string, lvl: int = 0,
           if enumType != "":
             enumCases = enums[enumType]
           src &= level & "  default:" & newLine
-          branch[0].buildJsProc(src, lvl + 4, pretty)
+          branch[0].buildJsProc(src, lvl + 4, pretty, inClass, nimNodes, enums, declaredVariables)
           src &= level & "    break;" & newLine
       # Throw error if not all enum
       if enumType != "" and enums[enumType] != enumCases:
@@ -224,7 +220,7 @@ proc buildJsProc(body: NimNode, src: var string, lvl: int = 0,
     # while statement
     elif statement.kind == nnkWhileStmt:
       src &= level & "while (" & $statement[0].toStrLit & ") {" & newLine
-      statement[1].buildJsProc(src, lvl + 2, pretty)
+      statement[1].buildJsProc(src, lvl + 2, pretty, inClass, nimNodes, enums, declaredVariables)
       src &= level & "}" & newLine
     
     # discard statement
@@ -237,7 +233,7 @@ proc buildJsProc(body: NimNode, src: var string, lvl: int = 0,
     # block statement
     elif statement.kind == nnkBlockStmt and statement[0].kind == nnkIdent:
       src &= level & $statement[0] & ":" & newLine
-      statement[^1].buildJsProc(src, lvl, pretty)
+      statement[^1].buildJsProc(src, lvl, pretty, inClass, nimNodes, enums, declaredVariables)
     
     # Type section
     elif statement.kind == nnkTypeSection:
@@ -344,11 +340,12 @@ macro buildJs*(body: untyped): untyped =
   ## 
   var emitSrc = ""
   # Clear compile time variables
-  declaredVariables = @[]
-  nimNodes = @[]
-  enums = newTable[string, seq[string]]()
+  var
+    declaredVariables = newSeq[string]()
+    nimNodes = newSeq[NimNode]()
+    enums = newTable[string, seq[string]]()
   # Build JS
-  body.buildJsProc(emitSrc)
+  body.buildJsProc(emitSrc, 0, true, false, nimNodes, enums, declaredVariables)
   # nim variables
   emitSrc = emitSrc.replace(re2"~([a-zA-Z][a-zA-Z0-9_]*)", "`$1`")
   # self -> this

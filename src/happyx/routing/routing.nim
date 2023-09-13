@@ -7,12 +7,14 @@ import
   strutils,
   strtabs,
   macros,
+  macrocache,
   tables,
   json,
   # deps
   regex,
   # happyx
-  ../core/[exceptions, constants]
+  ../core/[exceptions, constants],
+  ../private/macro_utils
 
 
 when exportPython or defined(docgen):
@@ -22,8 +24,7 @@ when exportPython or defined(docgen):
     ../bindings/python_types
 
 
-var
-  declaredPathParams {. compileTime .} = newStringTable()
+const declaredPathParams = CacheTable"HappyXDeclaredPathParams"
 
 
 type
@@ -51,7 +52,7 @@ when not exportPython:
     creator: NimNode
 
 
-  var registeredRouteParamTypes {.compileTime.} = newTable[string, RouteParamType]()
+  const registeredRouteParamTypes = CacheTable"HappyXRegisteredRouteParamTypes"
 
 
   macro registerRouteParamType*(name, pattern: string, creator: untyped) =
@@ -60,9 +61,7 @@ when not exportPython:
         ValueError,
         fmt"route param type name should be identifier (a-zA-Z0-0_), but got '{name}'"
       )
-    registeredRouteParamTypes[$name] = RouteParamType(
-      pattern: $pattern, name: $name, creator: creator
-    )
+    registeredRouteParamTypes[$name] = newStmtList(name, pattern, creator)
 
 elif exportPython:
   type RouteParamType = object
@@ -136,13 +135,21 @@ proc handleRoute*(route: string): RouteDataObj =
   routePathStr = routePathStr.replace(re2"\{[a-zA-Z][a-zA-Z0-9_]*:/([\s\S]+?)/(\[m\])?\}", "($1)")
   # custom patterns
   var types = ""
-  {.cast(gcsafe).}:
-    for routeParamType in registeredRouteParamTypes.values():
-      routePathStr = routePathStr.replace(
-        re2(r"\{[a-zA-Z][a-zA-Z0-9_]*(\??):" & routeParamType.name & r"(\[m\])?(=\S+?)?\}"),
-        "(" & routeParamType.pattern & ")$1"
-      )
-      types &= "|" & routeParamType.name
+  {.gcsafe.}:
+    when not exportPython:
+      for key, routeParamType in registeredRouteParamTypes.pairs():
+        routePathStr = routePathStr.replace(
+          re2(r"\{[a-zA-Z][a-zA-Z0-9_]*(\??):" & $routeParamType[0] & r"(\[m\])?(=\S+?)?\}"),
+          "(" & $routeParamType[1] & ")$1"
+        )
+        types &= "|" & $routeParamType[0]
+    else:
+      for routeParamType in registeredRouteParamTypes.values():
+        routePathStr = routePathStr.replace(
+          re2(r"\{[a-zA-Z][a-zA-Z0-9_]*(\??):" & routeParamType.name & r"(\[m\])?(=\S+?)?\}"),
+          "(" & routeParamType.pattern & ")$1"
+        )
+        types &= "|" & routeParamType.name
   # Remove models
   when exportPython:
     routePathStr = routePathStr.replace(re2"\[[a-zA-Z][a-zA-Z0-9_]*(:[a-zA-Z][a-zA-Z0-9_]*)?(\[m\])?(:[a-zA-Z\\-]+)?\]", "")
@@ -220,7 +227,7 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode =
   for i in path.findAll(re2"<([a-zA-Z][a-zA-Z0-9_]*)>"):
     let name = path[i.group(0)]
     if declaredPathParams.hasKey(name):
-      path = path.replace(fmt"<{name}>", declaredPathParams[name])
+      path = path.replace(fmt"<{name}>", $declaredPathParams[name])
     else:
       throwDefect(
         HpxPathParamDefect,
@@ -360,7 +367,7 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode =
           when not exportPython:
             if $i.paramType in registeredRouteParamTypes:
               var data = registeredRouteParamTypes[$i.paramType]
-              letSection[0].add(newCall(data.creator, foundGroup))
+              letSection[0].add(newCall(data[2], foundGroup))
             # regex
             else:
               letSection[0].add(foundGroup)
@@ -386,7 +393,7 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode =
           when not exportPython:
             if $i.paramType in registeredRouteParamTypes:
               var data = registeredRouteParamTypes[$i.paramType]
-              letSection[0].add(newCall(data.creator, foundGroup))
+              letSection[0].add(newCall(data[2], foundGroup))
             # regex
             else:
               letSection[0].add(foundGroup)
@@ -847,4 +854,4 @@ macro pathParams*(body: untyped): untyped =
           fmt"param {name} is declared! ",
           lineInfoObj(statement)
         )
-      declaredPathParams[name] = res & "}"
+      declaredPathParams[name] = newLit(res & "}")

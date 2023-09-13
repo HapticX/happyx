@@ -81,7 +81,7 @@ import
 const nnkNumbers* = nnkIntLit..nnkFloat128Lit
 
 
-proc buildStyleProc(body: NimNode, css: var string, level: int = 0, pretty: bool = true) {. compileTime .} =
+proc buildStyleProc(body: NimNode, css: var string, level: int = 0, pretty: bool = true) =
   let
     newLine = if pretty: "\n" else: ""
     levelStr = repeat(' ', level)

@@ -50,8 +50,6 @@ component CodeBlockGuide:
       tDiv(class = "flex rounded-t-md divide-x divide-x-2 divide-[{Foreground}75] dark:divide-[{ForegroundDark}75]"):
         if haslanguage(self.CodeBlockGuide, "Nim"):
           component LanguageChooser("Nim")
-        if haslanguage(self.CodeBlockGuide, "Nim (SSR)"):
-          component LanguageChooser("Nim (SSR)")
         if haslanguage(self.CodeBlockGuide, "Nim (SPA)"):
           component LanguageChooser("Nim (SPA)")
         if haslanguage(self.CodeBlockGuide, "Python"):

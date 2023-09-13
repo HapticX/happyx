@@ -8,6 +8,7 @@ import
   # Stdlib
   std/strformat,
   std/macros,
+  std/macrocache,
   std/os,
   # Thirdparty
   regex,
@@ -25,7 +26,7 @@ type
     fields: seq[string]
 
 
-var createdComponents {.compileTime.} = newTable[string, ComponentInfo]()
+const createdComponents = CacheTable"HappyXCreatedComponents"
 
 
 proc replaceSelfStateVal(statement: NimNode) =
@@ -588,7 +589,7 @@ macro component*(name, body: untyped): untyped =
     if not usedLifeCycles[key]:
       lifeCyclesDeclare.insert(0, newAssignment(
         newDotExpr(ident"self", ident(key)),
-        newLambda(newStmtList(discardStmt), arguments)
+        newLambda(newStmtList(discardStmt()), arguments)
       ))
   
   initProc.params = initParams
@@ -631,7 +632,9 @@ macro component*(name, body: untyped): untyped =
     newCall(newDotExpr(ident"self", ident"rendered"), ident"self")
   )
 
-  createdComponents[componentName] = ComponentInfo(extendsOf: extendsOf, fields: fields)
+  createdComponents[componentName] = newStmtList(newLit(extendsOf), newStmtList())
+  for field in fields:
+    createdComponents[componentName][1].add(newLit(field))
 
   if extendsOf != "":
     scriptStmtList.replaceSuperCall(extendsOf, "script")
@@ -677,7 +680,7 @@ macro component*(name, body: untyped): untyped =
       if scriptStmtList.len != 0:
         scriptStmtList
       elif extendsOf == "":
-        discardStmt
+        discardStmt()
       else:
         newCall("procCall", newDotExpr(newDotExpr(ident"self", ident(extendsOf)), ident"script")),
       pragmas =
@@ -872,7 +875,7 @@ macro importComponent*(body: untyped): untyped =
       statements = newStmtList()
     
     proc inCreatedComponents(tag: string): string =
-      for key in createdComponents.keys():
+      for key, val in createdComponents.pairs():
         if key.toLower().capitalizeAscii() == tag.toLower().capitalizeAscii():
           return key
       ""

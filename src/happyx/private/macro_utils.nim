@@ -7,23 +7,34 @@ import
   strutils,
   strformat,
   macros,
+  macrocache,
   ../core/[exceptions, constants]
 
 
 # Compile time variables
-var
-  uniqueId* {.compileTime.} = 0
-let
-  discardStmt* {. compileTime .} = newNimNode(nnkDiscardStmt).add(newEmptyNode())
 const
+  uniqueId* = CacheCounter"uniqueId"
   UniqueComponentId* = "uniqCompId"
 
 
-{.push compileTime.}
+proc discardStmt*: NimNode = newNimNode(nnkDiscardStmt).add(newEmptyNode())
+
+
+when not declared(macrocache.hasKey):
+  proc hasKey*(self: CacheTable, key: string): bool =
+    for k, v in self.pairs():
+      if k == key:
+        return true
+    return false
+  
+when not declared(macrocache.contains):
+  proc contains*(self: CacheTable, key: string): bool = hasKey(self, key)
+
 
 proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
                          componentName: NimNode = newEmptyNode(), inCycle: bool = false,
-                         cycleTmpVar: string = "", compTmpVar: NimNode = newEmptyNode()): NimNode
+                         cycleTmpVar: string = "", compTmpVar: NimNode = newEmptyNode(),
+                         cycleVars: var seq[NimNode]): NimNode
 
 
 proc bracket*(node: varargs[NimNode]): NimNode =
@@ -61,7 +72,7 @@ proc formatNode*(node: NimNode): NimNode =
 
 
 proc useComponent*(statement: NimNode, inCycle, inComponent: bool,
-                   cycleTmpVar: string, compTmpVar: NimNode, cycleVars: seq[NimNode],
+                   cycleTmpVar: string, compTmpVar: NimNode, cycleVars: var seq[NimNode],
                    returnTagRef: bool = true, constructor: bool = false): NimNode =
   let
     name =
@@ -71,7 +82,7 @@ proc useComponent*(statement: NimNode, inCycle, inComponent: bool,
         statement[1][1]
       else:
         statement[1]
-    componentName = fmt"comp{uniqueId}{uniqueId + 2}{uniqueId * 2}{uniqueId + 7}"
+    componentName = fmt"comp{uniqueId.value}{uniqueId.value + 2}{uniqueId.value * 2}{uniqueId.value + 7}"
     componentNameIdent =
       if cycleTmpVar == "" and compTmpVar.kind == nnkEmpty:
         newLit(componentName)
@@ -127,7 +138,7 @@ proc useComponent*(statement: NimNode, inCycle, inComponent: bool,
     newAssignment(
       newDotExpr(ident(componentName), ident"slot"),
       buildHtmlProcedure(
-        ident"div", componentSlot, inComponent, ident(componentName), inCycle, cycleTmpVar, newLit(componentName)
+        ident"div", componentSlot, inComponent, ident(componentName), inCycle, cycleTmpVar, newLit(componentName), cycleVars
       ).add(newNimNode(nnkExprEqExpr).add(ident"onlyChildren", newLit(true)))
     ),
     if returnTagRef:
@@ -372,12 +383,10 @@ proc replaceSelfComponent*(statement, componentName: NimNode, parent: NimNode = 
       )
 
 
-var cycleVars {.compileTime.}: seq[NimNode] = @[]
-
-
 proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
                          componentName: NimNode = newEmptyNode(), inCycle: bool = false,
-                         cycleTmpVar: string = "", compTmpVar: NimNode = newEmptyNode()): NimNode =
+                         cycleTmpVar: string = "", compTmpVar: NimNode = newEmptyNode(),
+                         cycleVars: var seq[NimNode]): NimNode =
   ## Builds HTML
   ## 
   ## Here you can use components and event handlers
@@ -431,7 +440,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
       # tag(attr="value"):
       #   ...
       if statement.len-2 > 0 and statementList.kind == nnkStmtList:
-        var builded = buildHtmlProcedure(tagName, statementList, inComponent, componentName, inCycle, cycleTmpVar, compTmpVar)
+        var builded = buildHtmlProcedure(tagName, statementList, inComponent, componentName, inCycle, cycleTmpVar, compTmpVar, cycleVars)
         for attr in statement[1 .. statement.len-2]:
           builded.addAttribute(
             newStrLitNode($attr[0]),
@@ -449,7 +458,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
       # tag:
       #   ...
       else:
-        result.add(buildHtmlProcedure(tagName, statementList, inComponent, componentName, inCycle, cycleTmpVar, compTmpVar))
+        result.add(buildHtmlProcedure(tagName, statementList, inComponent, componentName, inCycle, cycleTmpVar, compTmpVar, cycleVars))
     
     elif statement.kind == nnkCommand:
       # Component usage
@@ -563,7 +572,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
         if inCycle:
           let
             cycleVar = " + " & cycleTmpVar  & "}"
-            registerEvent = fmt"registerEventScoped{uniqueId}{uniqueId+2}"
+            registerEvent = fmt"registerEventScoped{uniqueId.value}{uniqueId.value+2}"
             callRegister = newCall(registerEvent)
           var procParams = @[ident"ComponentEventHandler"]
           for i in cycleVars:
@@ -575,7 +584,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
               "fmt",
               newStrLitNode(
                 "callComponentEventHandler('{self." & UniqueComponentId & "}', {" &
-                fmt"{uniqueId}" & cycleVar & ", event)"
+                fmt"{uniqueId.value}" & cycleVar & ", event)"
               )
             )
           )
@@ -585,7 +594,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
               newCall(
                 "[]=",
                 ident"componentEventHandlers",
-                newCall("+", newIntLitNode(uniqueId), ident(cycleTmpVar)),
+                newCall("+", newIntLitNode(uniqueId.value), ident(cycleTmpVar)),
                 callRegister
               ),
               newCall("inc", ident(cycleTmpVar)),
@@ -599,13 +608,13 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
             newCall(
               "fmt",
               newStrLitNode(
-                "callComponentEventHandler('{self." & UniqueComponentId & "}', " & fmt"{uniqueId}, event)"
+                "callComponentEventHandler('{self." & UniqueComponentId & "}', " & fmt"{uniqueId.value}, event)"
               )
             )
           )
           result.add(newStmtList(
             newCall("once",
-              newCall("[]=", ident"componentEventHandlers", newIntLitNode(uniqueId), procedure)
+              newCall("[]=", ident"componentEventHandlers", newIntLitNode(uniqueId.value), procedure)
             ), newCall("initTag", newStrLitNode("div"), newCall("@", newNimNode(nnkBracket)), newLit(true))
           ))
         procedure.body.insert(0, newAssignment(ident"currentComponent", newCall("fmt", newStrLitNode("{self.uniqCompId}"))))
@@ -616,7 +625,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
         if inCycle:
           let
             cycleVar = " + " & cycleTmpVar  & "}"
-            registerEvent = fmt"registerEventScoped{uniqueId}{uniqueId+2}"
+            registerEvent = fmt"registerEventScoped{uniqueId.value}{uniqueId.value+2}"
             callRegister = newCall(registerEvent)
           var procParams = @[ident"AppEventHandler"]
           for i in cycleVars:
@@ -626,7 +635,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
             newStrLitNode(evname),
             newCall(
               "fmt",
-              newStrLitNode("callEventHandler({" & fmt"{uniqueId}" & cycleVar & ", event)")
+              newStrLitNode("callEventHandler({" & fmt"{uniqueId.value}" & cycleVar & ", event)")
             )
           )
           result.add(
@@ -635,7 +644,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
               newCall(
                 "[]=",
                 ident"eventHandlers",
-                newCall("+", newIntLitNode(uniqueId), ident(cycleTmpVar)),
+                newCall("+", newIntLitNode(uniqueId.value), ident(cycleTmpVar)),
                 callRegister
               ),
               newCall("inc", ident(cycleTmpVar)),
@@ -646,11 +655,11 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
         else:
           result.addAttribute(
             newStrLitNode(evname),
-            newStrLitNode(fmt"callEventHandler({uniqueId}, event)")
+            newStrLitNode(fmt"callEventHandler({uniqueId.value}, event)")
           )
           result.add(newStmtList(
             newCall("once",
-              newCall("[]=", ident"eventHandlers", newIntLitNode(uniqueId), procedure)
+              newCall("[]=", ident"eventHandlers", newIntLitNode(uniqueId.value), procedure)
             ), newCall("initTag", newStrLitNode("div"), newCall("@", newNimNode(nnkBracket)), newLit(true))
           ))
       inc uniqueId
@@ -686,7 +695,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
           0
       for i in start..<statement.len:
         statement[i][^1] = buildHtmlProcedure(
-          ident"div", statement[i][^1], inComponent, componentName, inCycle, cycleTmpVar, compTmpVar
+          ident"div", statement[i][^1], inComponent, componentName, inCycle, cycleTmpVar, compTmpVar, cycleVars
         ).add(newLit(true))
       if statement[^1].kind != nnkElse:
         statement.add(newNimNode(nnkElse).add(newNilLit()))
@@ -709,7 +718,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
               "add",
               ident"_while_result",
               newStmtList(
-                newVarStmt(ident"__while__res", buildHtmlProcedure(ident"div", body, inComponent, componentName, inCycle, cycleTmpVar, compTmpVar)),
+                newVarStmt(ident"__while__res", buildHtmlProcedure(ident"div", body, inComponent, componentName, inCycle, cycleTmpVar, compTmpVar, cycleVars)),
                 newAssignment(newDotExpr(ident"__while__res", ident"onlyChildren"), newLit(true)),
                 ident"__while__res"
               )
@@ -724,7 +733,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
     #   ...
     elif statement.kind == nnkForStmt:
       var
-        unqn = fmt"c{uniqueId}"
+        unqn = fmt"c{uniqueId.value}"
         idents: seq[NimNode] = @[]
       # extract cycle variables
       for i in 0..statement.len-3:
@@ -732,11 +741,11 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
       inc uniqueId
       if cycleTmpVar == "":
         statement[^1] = newStmtList(
-          buildHtmlProcedure(ident"div", statement[^1], inComponent, componentName, true, unqn, compTmpVar)
+          buildHtmlProcedure(ident"div", statement[^1], inComponent, componentName, true, unqn, compTmpVar, cycleVars)
         )
       else:
         statement[^1] = newStmtList(
-          buildHtmlProcedure(ident"div", statement[^1], inComponent, componentName, true, cycleTmpVar, compTmpVar)
+          buildHtmlProcedure(ident"div", statement[^1], inComponent, componentName, true, cycleTmpVar, compTmpVar, cycleVars)
         )
       for i in 0..statement.len-3:
         discard cycleVars.pop()
@@ -766,7 +775,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
         )
       )
     elif statement.kind == nnkStmtList:
-      var builded = buildHtmlProcedure(ident"div", statement, inComponent, componentName, inCycle, cycleTmpVar, compTmpVar)
+      var builded = buildHtmlProcedure(ident"div", statement, inComponent, componentName, inCycle, cycleTmpVar, compTmpVar, cycleVars)
       result.add(builded)
     else:
       throwDefect(

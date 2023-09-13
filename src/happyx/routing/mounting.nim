@@ -18,16 +18,18 @@
 import
   # stdlib
   macros,
+  macrocache,
   tables,
   strformat,
   # HappyX
-  ../core/[exceptions]
+  ../core/[exceptions],
+  ../private/[macro_utils]
 
 
-var registeredMounts* {. compileTime .} = newTable[string, NimNode]()
+const registeredMounts* = CacheTable"HappyXRegisteredMounts"
 
 
-proc findAndReplaceMount*(body: NimNode) {. compileTime .} =
+proc findAndReplaceMount*(body: NimNode) =
   ## ⚠ `Low-level API` ⚠
   ## 
   ## Don't use it in product

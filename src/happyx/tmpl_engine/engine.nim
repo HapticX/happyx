@@ -17,21 +17,25 @@
 
 import
   nimja,
-  os
+  macros,
+  macrocache,
+  os,
+  ../private/macro_utils
 
 export
   nimja
 
 
-var templatesFolder* {.compileTime.} = getScriptDir()
+const templatesFolder = CacheTable"HappyXTemplateFolder"
 
 
-proc templateFolder*(f: static[string]) =
+macro templateFolder*(f: string) =
   ## Specifies templates folder
-  static:
-    templatesFolder = templatesFolder / f
+  templatesFolder["f"] = f
 
 
-template renderTemplate*(name: static[string]) =
+macro renderTemplate*(name: static[string]): untyped =
   ## Renders template from file
-  compileTemplateFile(templatesFolder / name)
+  let folder = $templatesFolder["f"] / name
+  result = quote do:
+    compileTemplateFile(`folder`)

@@ -30,18 +30,18 @@ component PathParams:
 
       tH2: {translate"Route Param Types 📕"}
 
-      tTable:
+      tDiv(class = "overflow-x-auto w-full"): tTable:
         tTr:
-          tTd(class = "font-bold"): {translate"Type"}
-          tTd(class = "font-bold"): {translate"Usage"}
-          tTd(class = "font-bold"): {translate"Usage alias"}
-          tTd(class = "font-bold"): {translate"Description"}
+          tTd(class = "font-bold text-center"): {translate"Type"}
+          tTd(class = "font-bold text-center"): {translate"Usage"}
+          tTd(class = "font-bold text-center"): {translate"Usage alias"}
+          tTd(class = "font-bold text-center"): {translate"Description"}
         # Integer
         tTr:
-          tTd:
+          tTd(class = "text-center"):
             tSpan(class = "text-orange-800 dark:text-orange-400"):
               "int"
-          tTd:
+          tTd(class = "text-center"):
             tCode:
               tSpan(class = "text-green-800 dark:text-green-400"):
                 "\"/"
@@ -49,7 +49,7 @@ component PathParams:
                 """{i:int}"""
               tSpan(class = "text-green-800 dark:text-green-400"):
                 "\""
-          tTd:
+          tTd(class = "text-center"):
             tCode:
               tSpan(class = "text-green-800 dark:text-green-400"):
                 "\"/"
@@ -57,13 +57,13 @@ component PathParams:
                 """$i:int"""
               tSpan(class = "text-green-800 dark:text-green-400"):
                 "\""
-          tTd: {translate"Parses param as integer value"}
+          tTd(class = "text-center"): {translate"Parses param as integer value"}
         # Float
         tTr:
-          tTd:
+          tTd(class = "text-center"):
             tSpan(class = "text-orange-800 dark:text-orange-400"):
               "float"
-          tTd:
+          tTd(class = "text-center"):
             tCode:
               tSpan(class = "text-green-800 dark:text-green-400"):
                 "\"/"
@@ -71,7 +71,7 @@ component PathParams:
                 """{i:float}"""
               tSpan(class = "text-green-800 dark:text-green-400"):
                 "\""
-          tTd:
+          tTd(class = "text-center"):
             tCode:
               tSpan(class = "text-green-800 dark:text-green-400"):
                 "\"/"
@@ -79,13 +79,13 @@ component PathParams:
                 """$i:float"""
               tSpan(class = "text-green-800 dark:text-green-400"):
                 "\""
-          tTd: {translate"Parses param as float value"}
+          tTd(class = "text-center"): {translate"Parses param as float value"}
         # Boolean
         tTr:
-          tTd:
+          tTd(class = "text-center"):
             tSpan(class = "text-orange-800 dark:text-orange-400"):
               "bool"
-          tTd:
+          tTd(class = "text-center"):
             tCode:
               tSpan(class = "text-green-800 dark:text-green-400"):
                 "\"/"
@@ -93,7 +93,7 @@ component PathParams:
                 """{i:bool}"""
               tSpan(class = "text-green-800 dark:text-green-400"):
                 "\""
-          tTd:
+          tTd(class = "text-center"):
             tCode:
               tSpan(class = "text-green-800 dark:text-green-400"):
                 "\"/"
@@ -101,13 +101,13 @@ component PathParams:
                 """$i:bool"""
               tSpan(class = "text-green-800 dark:text-green-400"):
                 "\""
-          tTd: {translate"Parses param as boolean value"}
+          tTd(class = "text-center"): {translate"Parses param as boolean value"}
         # Word
         tTr:
-          tTd:
+          tTd(class = "text-center"):
             tSpan(class = "text-orange-800 dark:text-orange-400"):
               "word"
-          tTd:
+          tTd(class = "text-center"):
             tCode:
               tSpan(class = "text-green-800 dark:text-green-400"):
                 "\"/"
@@ -115,7 +115,7 @@ component PathParams:
                 """{i:word}"""
               tSpan(class = "text-green-800 dark:text-green-400"):
                 "\""
-          tTd:
+          tTd(class = "text-center"):
             tCode:
               tSpan(class = "text-green-800 dark:text-green-400"):
                 "\"/"
@@ -123,13 +123,13 @@ component PathParams:
                 """$i:word"""
               tSpan(class = "text-green-800 dark:text-green-400"):
                 "\""
-          tTd: {translate"Parses param as word (only \w)"}
+          tTd(class = "text-center"): {translate"Parses param as word (only \w)"}
         # String
         tTr:
-          tTd:
+          tTd(class = "text-center"):
             tSpan(class = "text-orange-800 dark:text-orange-400"):
               "string"
-          tTd:
+          tTd(class = "text-center"):
             tCode:
               tSpan(class = "text-green-800 dark:text-green-400"):
                 "\"/"
@@ -137,7 +137,7 @@ component PathParams:
                 """{i:string}"""
               tSpan(class = "text-green-800 dark:text-green-400"):
                 "\""
-          tTd:
+          tTd(class = "text-center"):
             tCode:
               tSpan(class = "text-green-800 dark:text-green-400"):
                 "\"/"
@@ -145,13 +145,13 @@ component PathParams:
                 """$i:string"""
               tSpan(class = "text-green-800 dark:text-green-400"):
                 "\""
-          tTd: {translate"Parses param as string (any character exclude '/')"}
+          tTd(class = "text-center"): {translate"Parses param as string (any character exclude '/')"}
         # String
         tTr:
-          tTd:
+          tTd(class = "text-center"):
             tSpan(class = "text-orange-800 dark:text-orange-400"):
               "path"
-          tTd:
+          tTd(class = "text-center"):
             tCode:
               tSpan(class = "text-green-800 dark:text-green-400"):
                 "\"/"
@@ -159,7 +159,7 @@ component PathParams:
                 """{i:path}"""
               tSpan(class = "text-green-800 dark:text-green-400"):
                 "\""
-          tTd:
+          tTd(class = "text-center"):
             tCode:
               tSpan(class = "text-green-800 dark:text-green-400"):
                 "\"/"
@@ -167,14 +167,14 @@ component PathParams:
                 """$i:path"""
               tSpan(class = "text-green-800 dark:text-green-400"):
                 "\""
-          tTd: {translate"Parses param as string (any character include '/')"}
+          tTd(class = "text-center"): {translate"Parses param as string (any character include '/')"}
         # Enums
         if currentLanguage != "Python":
           tTr:
-            tTd:
+            tTd(class = "text-center"):
               tSpan(class = "text-orange-800 dark:text-orange-400"):
                 "enum(NAME)"
-            tTd:
+            tTd(class = "text-center"):
               tCode:
                 tSpan(class = "text-green-800 dark:text-green-400"):
                   "\"/"
@@ -182,7 +182,7 @@ component PathParams:
                   """{i:enum(Option)}"""
                 tSpan(class = "text-green-800 dark:text-green-400"):
                   "\""
-            tTd:
+            tTd(class = "text-center"):
               tCode:
                 tSpan(class = "text-green-800 dark:text-green-400"):
                   "\"/"
@@ -190,13 +190,13 @@ component PathParams:
                   """$i:enum(Option)"""
                 tSpan(class = "text-green-800 dark:text-green-400"):
                   "\""
-            tTd: {translate"Parses param as Nim enum type (allow only for string enums)"}
+            tTd(class = "text-center"): {translate"Parses param as Nim enum type (allow only for string enums)"}
         # Regex
         tTr:
-          tTd:
+          tTd(class = "text-center"):
             tSpan(class = "text-orange-800 dark:text-orange-400"):
               "regex"
-          tTd:
+          tTd(class = "text-center"):
             tCode:
               tSpan(class = "text-green-800 dark:text-green-400"):
                 "\"/"
@@ -204,7 +204,7 @@ component PathParams:
                 """{i:/REGEX/}"""
               tSpan(class = "text-green-800 dark:text-green-400"):
                 "\""
-          tTd:
+          tTd(class = "text-center"):
             tCode:
               tSpan(class = "text-green-800 dark:text-green-400"):
                 "\"/"
@@ -212,7 +212,7 @@ component PathParams:
                 """$i:/REGEX/"""
               tSpan(class = "text-green-800 dark:text-green-400"):
                 "\""
-          tTd: {translate"Parses param as string with regex pattern"}
+          tTd(class = "text-center"): {translate"Parses param as string with regex pattern"}
       
       {translate"In addition, you can define your own parameter types ✌"}
 

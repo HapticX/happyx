@@ -29,15 +29,6 @@ type
     lang*: string
 
 
-var
-  translatesStatement* {. compileTime .} = newStmtList()
-  translatesCompileTime* {. compileTime .} =
-    when defined(js):
-      newTable[cstring, TableRef[cstring, string]]()
-    else:
-      newTable[string, StringTableRef]()
-
-
 macro translatable*(body: untyped): untyped =
   ## Make translations for strings
   ## 
@@ -54,35 +45,30 @@ macro translatable*(body: untyped): untyped =
   ## 
   let
     translations = ident"translates"
-  if translatesStatement.len == 0:
-    when defined(js):
-      translatesStatement.add(newVarStmt(
-        postfix(translations, "*"), # newNimNode(nnkPragmaExpr).add(ident"translates", newNimNode(nnkPragma).add(ident"global")),
-        newCall(
-        newNimNode(nnkBracketExpr).add(
-            ident"newTable", ident"cstring",
-            newNimNode(nnkBracketExpr).add(
-              ident"TableRef", ident"cstring", ident"string"
-            )
+  var translatesStatement = newStmtList()
+  when defined(js):
+    translatesStatement.add(newVarStmt(
+      postfix(translations, "*"), # newNimNode(nnkPragmaExpr).add(ident"translates", newNimNode(nnkPragma).add(ident"global")),
+      newCall(
+      newNimNode(nnkBracketExpr).add(
+          ident"newTable", ident"cstring",
+          newNimNode(nnkBracketExpr).add(
+            ident"TableRef", ident"cstring", ident"string"
           )
         )
-      ))
-    else:
-      translatesStatement.add(newVarStmt(translations, newCall(
-        newNimNode(nnkBracketExpr).add(
-          ident"newTable", ident"string", ident"StringTableRef"
-        )
-      )))
+      )
+    ))
+  else:
+    translatesStatement.add(newVarStmt(translations, newCall(
+      newNimNode(nnkBracketExpr).add(
+        ident"newTable", ident"string", ident"StringTableRef"
+      )
+    )))
   for s in body:
     if s.kind == nnkCall and s[0].kind in [nnkStrLit, nnkTripleStrLit] and s[1].kind == nnkStmtList:
       let
         source = s[0]  # source string
         sourceStr = $s[0]  # source string
-      when defined(js):
-        translatesCompileTime[sourceStr] = newTable[cstring, string]()
-      else:
-        translatesCompileTime[sourceStr] = newStringTable()
-      translatesCompileTime[sourceStr]["default"] = sourceStr
       translatesStatement.add(
         when defined(js):
           newAssignment(
@@ -106,7 +92,6 @@ macro translatable*(body: untyped): untyped =
       )
       for t in s[1]:
         if t.kind == nnkInfix and t[0] == ident"->" and t[1].kind in [nnkStrLit, nnkTripleStrLit] and t[2].kind in [nnkStrLit, nnkTripleStrLit]:
-          translatesCompileTime[sourceStr][$t[1]] = $t[2]
           translatesStatement.add(
             newAssignment(
               newNimNode(nnkBracketExpr).add(
@@ -128,11 +113,10 @@ macro translatable*(body: untyped): untyped =
         "Invalid translatable syntax: ",
         lineInfoObj(s)
       )
-  when defined(js):
-    return translatesStatement
+  return translatesStatement
 
 
-macro translate*(self: static[string] | string): string =
+macro translate*(self: string): string =
   ## Translates `self` string to current client language (SPA) or accept-language header (SSG/SSR)
   let
     language =
@@ -159,10 +143,6 @@ macro translate*(self: static[string] | string): string =
       else:
         self
     translations = ident"translates"
-  
-  when self is static[string]:
-    if not translatesCompileTime.hasKey(self):
-      return newStrLitNode($self)
   
   result = newNimNode(nnkIfStmt).add(
     newNimNode(nnkElifBranch).add(

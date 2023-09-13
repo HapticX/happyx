@@ -20,7 +20,7 @@ component Drawer:
       @click:
         self.toggle()
     tDiv(id = "drawer", class = "fixed right-0 duration-300 transition-all ease-out w-2/3 translate-x-full h-screen z-50 bg-[{BackgroundSecondary}] dark:bg-[{BackgroundSecondaryDark}]"):
-      tDiv(class = "w-full h-full flex flex-col gap-8 jusitfy-center items-center py-8 px-8"):
+      tDiv(class = "w-full h-full flex flex-col gap-8 jusitfy-center items-center py-8 px-8 overflow-y-scroll"):
         tDiv(class = "w-full flex justify-end items-center"):
           component Button(
             action = proc() =

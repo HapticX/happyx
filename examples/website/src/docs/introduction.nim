@@ -12,9 +12,9 @@ component IntroductionLanguageChooser:
     tDiv(
       class =
         if self.lang == currentLanguage:
-          "bg-yellow-300/25 px-4 py-2 select-none cursor-pointer rounded-md transition-all"
+          "bg-yellow-400/20 dark:bg-yellow-300/25 px-4 py-2 select-none cursor-pointer rounded-md transition-all"
         else:
-          "bg-yellow-200/10 px-4 py-2 select-none cursor-pointer rounded-md transition-all hover:bg-yellow-200/20 active:bg-yellow-300/10"
+          "bg-yellow-400/20 hover:bg-yellow-400/30 active:bg-yellow-400/40 dark:bg-yellow-200/10 px-4 py-2 select-none cursor-pointer rounded-md transition-all dark:hover:bg-yellow-200/20 dark:active:bg-yellow-300/10"
     ):
       {self.title}
       @click:

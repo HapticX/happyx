@@ -61,6 +61,7 @@ import
   std/logging,
   std/cookies,
   std/macros,
+  std/macrocache,
   std/tables,
   std/colors,
   std/json,
@@ -200,7 +201,7 @@ when enableApiDoc:
 var
   pointerServer: ptr Server
   loggerCreated: bool = false
-  liveViews {.compileTime.}: seq[(string, NimNode)] = @[]
+const liveViews = CacheSeq"HappyXLiveViews"
 
 
 proc ctrlCHook() {.noconv.} =
@@ -430,7 +431,7 @@ proc answerFile*(req: Request, filename: string,
   req.answer(content, headers = newHttpHeaders(headers))
 
 
-proc detectReturnStmt(node: NimNode, replaceReturn: bool = false) {. compileTime .} =
+proc detectReturnStmt(node: NimNode, replaceReturn: bool = false) =
   # Replaces all `return` statements with req answer*
   for i in 0..<node.len:
     var child = node[i]
@@ -765,14 +766,14 @@ socketToSsr.onmessage=function(m){
   # Find mounts
   body.findAndReplaceMount()
 
-  for key in sugarRoutes.keys():
-    if sugarRoutes[key].httpMethod.toLower() == "any":
-      body.add(newCall(newStrLitNode(key), sugarRoutes[key].body))
-    elif sugarRoutes[key].httpMethod.toLower() in httpMethods:
+  for key, val in sugarRoutes.pairs():
+    if ($val[0]).toLower() == "any":
+      body.add(newCall(newStrLitNode(key), val[1]))
+    elif ($val[0]).toLower() in httpMethods:
       body.add(newNimNode(nnkCommand).add(
-        ident(sugarRoutes[key].httpMethod),
+        val[0],
         newStrLitNode(key),
-        sugarRoutes[key].body
+        val[1]
       ))
   
   for statement in body:
@@ -1599,7 +1600,6 @@ macro initServer*(body: untyped): untyped =
   ##      `body`
   ##    main()
   ## 
-  body.insert(0, translatesStatement)
   result = newStmtList(
     newProc(
       ident"main",
@@ -1655,8 +1655,8 @@ when enableApiDoc:
 
     for key, val in modelFields.pairs():
       var tableConstr = newNimNode(nnkTableConstr)
-      for k, v in val.pairs():
-        tableConstr.add(newNimNode(nnkExprColonExpr).add(newStrLitNode(k), newStrLitNode(v)))
+      for field in val:
+        tableConstr.add(newNimNode(nnkExprColonExpr).add(field[0], field[1]))
       if tableConstr.len > 0:
         res.add(newNimNode(nnkExprColonExpr).add(newStrLitNode(key), newCall("newStringTable", tableConstr)))
 
@@ -1854,7 +1854,6 @@ macro serve*(address: string, port: int, body: untyped): untyped =
           ))
         else:
           newEmptyNode(),
-        translatesStatement,
         newCall("routes", s, body),
         newCall("start", s),
         newCall("addQuitProc", ident"finalizeProgram")
@@ -1869,4 +1868,4 @@ macro serve*(address: string, port: int, body: untyped): untyped =
 macro liveview*(body: untyped): untyped =
   for statement in body:
     if statement.kind in nnkCallKinds and statement[0].kind in {nnkStrLit, nnkTripleStrLit} and statement[1].kind == nnkStmtList:
-      liveViews.add(($statement[0], statement[1]))
+      liveViews.add(newStmtList(statement[0], statement[1]))

@@ -29,6 +29,7 @@ import
   strformat,
   tables,
   regex,
+  macrocache,
   ./tag,
   ./translatable,
   ../core/[exceptions, constants],
@@ -119,7 +120,7 @@ else:
 
 
 when defined(js):
-  var uniqueMacroIndex {.compileTime.} = 0
+  const uniqueMacroIndex = CacheCounter"uniqueMacroIndex"
   buildJs:
     function callEventHandler(idx, event):
       nim:
@@ -157,7 +158,7 @@ macro elem*(name: untyped): untyped =
   when defined(js):
     let nameStr = $name
     inc uniqueMacroIndex
-    let uniqName = fmt"_res{uniqueMacroIndex}"
+    let uniqName = fmt"_res{uniqueMacroIndex.value}"
     newStmtList(
       newNimNode(nnkVarSection).add(newIdentDefs(
         ident(uniqName), ident"Element"
@@ -400,7 +401,8 @@ macro buildHtml*(root, html: untyped): untyped =
   ##        component MyComponent:
   ##          slotHtml
   ## 
-  buildHtmlProcedure(root, html)
+  var cycleVars = newSeq[NimNode]()
+  buildHtmlProcedure(root, html, cycleVars = cycleVars)
 
 
 macro buildHtml*(html: untyped): untyped =
@@ -410,7 +412,8 @@ macro buildHtml*(html: untyped): untyped =
   ## Args:
   ## - `html`: YAML-like structure.
   ## 
-  result = buildHtmlProcedure(ident"tDiv", html)
+  var cycleVars = newSeq[NimNode]()
+  result = buildHtmlProcedure(ident"tDiv", html, cycleVars = cycleVars)
   if result[^1].kind == nnkCall and $result[^1][0] == "@":
     result.add(newLit(true))
 
@@ -423,8 +426,9 @@ macro buildComponentHtml*(componentName, html: untyped): untyped =
   ## - `html`: YAML-like structure.
   ## 
   var h = html
+  var cycleVars = newSeq[NimNode]()
   h.replaceSelfComponent(componentName, convert = false)
-  result = buildHtmlProcedure(ident"tDiv", h, true, componentName, compTmpVar = newDotExpr(ident"self", ident(UniqueComponentId)))
+  result = buildHtmlProcedure(ident"tDiv", h, true, componentName, compTmpVar = newDotExpr(ident"self", ident(UniqueComponentId)), cycleVars = cycleVars)
   if result[^1].kind == nnkCall and $result[^1][0] == "@":
     result.add(newLit(true))
 
@@ -513,9 +517,9 @@ macro routes*(app: App, body: untyped): untyped =
   # Find mounts
   body.findAndReplaceMount()
 
-  for key in sugarRoutes.keys():
-    if sugarRoutes[key].httpMethod.toLower() in ["build", "page"]:
-      body.add(newCall(newStrLitNode(key), sugarRoutes[key].body))
+  for key, val in sugarRoutes.pairs():
+    if ($val[0]).toLower() in ["build", "page", "any"]:
+      body.add(newCall(newStrLitNode(key), val[1]))
   
   var
     cookiesInVar = newDotExpr(ident"document", ident"cookie")
@@ -637,7 +641,6 @@ macro appRoutes*(name: string, body: untyped): untyped =
   ## 
   newStmtList(
     newVarStmt(ident"app", newCall("registerApp", name)),
-    translatesStatement,
     newCall("routes", ident"app", body),
     newCall("start", ident"app")
   )

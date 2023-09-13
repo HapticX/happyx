@@ -13,13 +13,13 @@ import
   # stdlib
   strformat,
   macros,
+  macrocache,
   tables,
   # HappyX
   ../core/[exceptions]
 
 
-var
-  sugarRoutes* {. compileTime .} = newTable[string, tuple[httpMethod: string, body: NimNode]]()
+const sugarRoutes* = CacheTable"HappyXSugarRoutes"
 
 
 macro `->`*(route, at, body: untyped): untyped =
@@ -42,7 +42,7 @@ macro `->`*(route, at, body: untyped): untyped =
     "/syntaxSugar" -> get:
       return "Hello, world"
   if route.kind in [nnkStrLit, nnkTripleStrLit]:
-    sugarRoutes[$route] = (httpMethod: $at, body: body)
+    sugarRoutes[$route] = newCall(at, body)
   else:
     throwDefect(
       HpxSyntaxSugarDefect,

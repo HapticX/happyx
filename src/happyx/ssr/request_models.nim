@@ -83,15 +83,17 @@
 import
   # stdlib
   macros,
+  macrocache,
   tables,
   strtabs,
   strutils,
   strformat,
   # Happyx
-  ../core/[exceptions, constants]
+  ../core/[exceptions, constants],
+  ../private/macro_utils
 
 
-var modelFields* {.compileTime.} = newTable[string, StringTableRef]()
+const modelFields* = CacheTable"HappyXModelFields"
 
 
 macro model*(modelName, body: untyped): untyped =
@@ -131,7 +133,7 @@ macro model*(modelName, body: untyped): untyped =
       fmt"Request model '{modelName}' already exists. ",
       lineInfoObj(modelName)
     )
-  modelFields[$modelName] = newStringTable()
+  modelFields[$modelName] = newStmtList()
   
   for i in body:
     if i.kind == nnkCall and i.len == 2 and i[1].kind == nnkStmtList and i[1].len == 1:
@@ -142,7 +144,7 @@ macro model*(modelName, body: untyped): untyped =
         params.add(newIdentDefs(
           postfix(argName, "*"), argType
         ))
-        modelFields[$modelName][$argName.toStrLit] = $argType.toStrLit
+        modelFields[$modelName].add(newStmtList(argName.toStrLit, argType.toStrLit))
         if ($argType.toStrLit).toLower() != "formdataitem":
           # JSON raw data
           asgnStmt.add(newNimNode(nnkIfStmt).add(
@@ -260,7 +262,7 @@ macro model*(modelName, body: untyped): untyped =
         params.add(newIdentDefs(
           postfix(argName, "*"), argType
         ))
-        modelFields[$modelName][$argName.toStrLit] = $argType.toStrLit
+        modelFields[$modelName].add(newStmtList(argName.toStrLit, argType.toStrLit))
         if ($argType.toStrLit).toLower() != "formdataitem":
           # JSON raw data
           asgnStmt.add(newNimNode(nnkIfStmt).add(

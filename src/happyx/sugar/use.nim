@@ -41,14 +41,15 @@ macro use*(expr: untyped): untyped =
         lineInfoObj(expr)
       )
     statement = expr[0]
+  var cycleVars = newSeq[NimNode]()
   
   if statement.kind in nnkCallKinds:
     # Default constructor
     if statement[1].kind in {nnkIdent, nnkCall}:
-      return useComponent(statement, false, false, "", newEmptyNode(), @[], false)
+      return useComponent(statement, false, false, "", newEmptyNode(), cycleVars, false)
     # Component constructor
     elif statement[1].kind == nnkInfix:
-      return useComponent(statement, false, false, "", newEmptyNode(), @[], false, constructor = true)
+      return useComponent(statement, false, false, "", newEmptyNode(), cycleVars, false, constructor = true)
   else:
     throwDefect(
       HpxUseDefect,

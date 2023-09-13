@@ -31,6 +31,16 @@ var
     "path_params": {
       "title": "Path Params 🔌",
       "prev": "happyx_app",
+      "next": "spa_basics"
+    },
+    "spa_basics": {
+      "title": "Single-page Applications Basics 🎴",
+      "prev": "path_params",
+      "next": ""
+    },
+    "ssr_basics": {
+      "title": "Server-side Applications Basics 🖥",
+      "prev": "",
       "next": ""
     }
   }
@@ -54,13 +64,13 @@ component SideBarItem:
     tP(
       class =
         if currentGuidePage.val == self.id:
-          fmt"pl-12 lg:pl-8 xl:pl-4 text-4xl lg:text-lg xl:text-base cursor-pointer select-none bg-[{Foreground}]/25 dark:bg-[{ForegroundDark}]/25"
+          fmt"pl-12 lg:pl-8 xl:pl-4 text-4xl lg:text-lg xl:text-base cursor-pointer select-none bg-[{Foreground}]/25 dark:bg-[{ForegroundDark}]/25 duration-300"
         else:
-          "pl-12 lg:pl-8 xl:pl-4 text-4xl lg:text-lg xl:text-base cursor-pointer select-none"
+          fmt"pl-12 lg:pl-8 xl:pl-4 text-4xl lg:text-lg xl:text-base cursor-pointer select-none bg-[{Foreground}]/0 dark:bg-[{ForegroundDark}]/0 hover:bg-[{Foreground}]/[.10] dark:hover:bg-[{ForegroundDark}]/[.10] active:bg-[{Foreground}]/[.20] dark:active:bg-[{ForegroundDark}]/[.20] duration-300"
     ):
       slot
       @click:
-        route(fmt"/guide/{self.SideBarItem.id}")
+        route(fmt"/guide/{self.id}")
 
 
 # Declare component
@@ -94,6 +104,14 @@ component SideBar:
                 {translate("HappyX Application 🍍")}
               component SideBarItem("path_params"):
                 {translate("Path Params 🔌")}
+            component SideBarFolder:
+              {translate("Single-page Applications 🎴")}
+              component SideBarItem("spa_basics"):
+                {translate("Single-page Applications Basics 🎴")}
+            component SideBarFolder:
+              {translate("Server-side Applications 🖥")}
+              component SideBarItem("ssr_basics"):
+                {translate("Server-side Applications Basics 🖥")}
         tDiv(class = "flex"):
           component Button(
             action = proc() =

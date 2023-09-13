@@ -291,8 +291,11 @@
 ## 
 when not defined(js):
   import
-    happyx/ssr/[server, cors, request_models, form_data],
-    happyx/core/[secure]
+    happyx/ssr/server,
+    happyx/ssr/request_models,
+    happyx/ssr/form_data,
+    happyx/ssr/cors,
+    happyx/core/secure
 
   export
     server,

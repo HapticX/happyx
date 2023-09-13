@@ -157,7 +157,7 @@ proc startServerPy*(self: Server) {.exportpy: "start".} =
   ## Starts a new HappyX server
   ## 
   ## Server shouldn't be mounted
-  {.cast(gcsafe).}:
+  {.gcsafe.}:
     if not self.parent.isNil():
       raise newException(
         HpxAppRouteDefect, fmt"Server that you start shouldn't be mounted!"

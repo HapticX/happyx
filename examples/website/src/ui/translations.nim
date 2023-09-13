@@ -896,6 +896,72 @@ translatable:
     "zh" -> "语言绑定"
     "fr" -> "Liens de langage"
     "ko" -> "언어 바인딩"
+  "Single-page Applications 🎴":
+    "ru" -> "Одностраничные приложения 🎴"
+    "ja" -> "シングルページアプリケーション 🎴"
+    "zh" -> "单页面应用 🎴"
+    "fr" -> "Applications monopage 🎴"
+    "ko" -> "싱글페이지 애플리케이션 🎴"
+  "Server-side Applications 🖥":
+    "ru" -> "Серверные приложения 🖥"
+    "ja" -> "サーバーサイドアプリケーション 🖥"
+    "zh" -> "服务器端应用程序 🖥"
+    "fr" -> "Applications côté serveur 🖥"
+    "ko" -> "서버 측 애플리케이션 🖥"
+  "Single-page Applications Basics 🎴":
+    "ru" -> "Основы одностраничных приложений 🎴"
+    "ja" -> "シングルページアプリケーションの基礎 🎴"
+    "zh" -> "单页面应用基础 🎴"
+    "fr" -> "Fondamentaux des applications monopage 🎴"
+    "ko" -> "싱글페이지 애플리케이션 기본 🎴"
+  "Server-side Applications Basics 🖥":
+    "ru" -> "Основы серверных приложений 🖥"
+    "ja" -> "サーバーサイドアプリケーションの基礎 🖥"
+    "zh" -> "服务器端应用程序基础 🖥"
+    "fr" -> "Fondamentaux des applications côté serveur 🖥"
+    "ko" -> "서버 측 애플리케이션 기본 🖥"
+  "With HappyX you can easily create modern single-page applications.":
+    "ru" -> "С HappyX вы легко можете создавать современные одностраничные приложения."
+    "ja" -> "HappyXを使用すれば、簡単にモダンなシングルページアプリケーションを作成できます。"
+    "zh" -> "使用 HappyX，您可以轻松创建现代单页面应用程序。"
+    "fr" -> "Avec HappyX, vous pouvez facilement créer des applications monopage modernes."
+    "ko" -> "HappyX를 사용하면 현대적인 싱글페이지 애플리케이션을 쉽게 만들 수 있습니다."
+  "Features 📦":
+    "ru" -> "Функции 📦"
+    "ja" -> "機能 📦"
+    "zh" -> "特点 📦"
+    "fr" -> "Fonctionnalités 📦"
+    "ko" -> "기능 📦"
+  "Here is core single-page application features 👋":
+    "ru" -> "Вот основные функции одностраничных приложений 👋"
+    "ja" -> "以下はコアのシングルページアプリケーションの機能です 👋"
+    "zh" -> "以下是核心单页面应用程序的特点 👋"
+    "fr" -> "Voici les fonctionnalités essentielles des applications monopage 👋"
+    "ko" -> "여기는 핵심 싱글페이지 애플리케이션 기능입니다 👋"
+  "Components":
+    "ru" -> "Компоненты"
+    "ja" -> "コンポーネント"
+    "zh" -> "组件"
+    "fr" -> "Composants"
+    "ko" -> "구성 요소"
+  "Components allow you to write HTML with some OOP features and use it anywhere":
+    "ru" -> "Компоненты позволяют вам писать HTML с некоторыми объектно-ориентированными возможностями и использовать его где угодно"
+    "ja" -> "コンポーネントを使用すると、いくつかのOOP機能を備えたHTMLを書いてどこでも使用できます"
+    "zh" -> "组件允许您在HTML中添加一些面向对象编程的特性，并在任何地方使用它"
+    "fr" -> "Les composants vous permettent d'écrire du HTML avec certaines fonctionnalités de programmation orientée objet et de l'utiliser n'importe où"
+    "ko" -> "컴포넌트를 사용하면 일부 OOP 기능을 갖춘 HTML을 작성하고 어디에서나 사용할 수 있습니다"
+  "Event handlers":
+    "ru" -> "Обработчики событий"
+    "ja" -> "イベントハンドラ"
+    "zh" -> "事件处理程序"
+    "fr" -> "Gestionnaires d'événements"
+    "ko" -> "이벤트 핸들러"
+  "Event handlers allow you to handle button clicks, input text, and more.":
+    "ru" -> "Обработчики событий позволяют обрабатывать нажатия кнопок, ввод текста и многое другое."
+    "ja" -> "イベントハンドラを使用すると、ボタンクリック、テキスト入力などを処理できます。"
+    "zh" -> "事件处理程序允许您处理按钮点击、文本输入等等。"
+    "fr" -> "Les gestionnaires d'événements vous permettent de gérer les clics de bouton, la saisie de texte, et plus encore."
+    "ko" -> "이벤트 핸들러를 사용하면 버튼 클릭, 텍스트 입력 등을 처리할 수 있습니다."
 
 var spokenLang: cstring
 buildJs:
