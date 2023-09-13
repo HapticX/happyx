@@ -1,8 +1,6 @@
 LanguageSettings	happyx/spa/translatable.html#LanguageSettings	translatable: LanguageSettings	
-translatesStatement	happyx/spa/translatable.html#translatesStatement	translatable: translatesStatement	
-translatesCompileTime	happyx/spa/translatable.html#translatesCompileTime	translatable: translatesCompileTime	
 translatable	happyx/spa/translatable.html#translatable.m,untyped	translatable: translatable(body: untyped): untyped	
-translate	happyx/spa/translatable.html#translate.m	translatable: translate(self: static[string] | string): string	
+translate	happyx/spa/translatable.html#translate.m,string	translatable: translate(self: string): string	
 Example	happyx/spa/translatable.html#example	 Example	
 Translatable strings ✨	happyx/spa/translatable.html#translatable-strings-✨	 Translatable strings ✨	
 Minimal Example 👨‍🔬	happyx/spa/translatable.html#translatable-strings-✨-minimal-example-👨‍🔬	  Minimal Example 👨‍🔬	

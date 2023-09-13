@@ -1,5 +1,4 @@
-templatesFolder	happyx/tmpl_engine/engine.html#templatesFolder	engine: templatesFolder	
-templateFolder	happyx/tmpl_engine/engine.html#templateFolder,static[string]	engine: templateFolder(f: static[string])	
-renderTemplate	happyx/tmpl_engine/engine.html#renderTemplate.t,static[string]	engine: renderTemplate(name: static[string])	
+templateFolder	happyx/tmpl_engine/engine.html#templateFolder.m,string	engine: templateFolder(f: string)	
+renderTemplate	happyx/tmpl_engine/engine.html#renderTemplate.m,static[string]	engine: renderTemplate(name: static[string]): untyped	
 Template Engine 🎴	happyx/tmpl_engine/engine.html#template-engine-🎴	 Template Engine 🎴	
 Usage ❔	happyx/tmpl_engine/engine.html#template-engine-🎴-usage-❔	  Usage ❔	

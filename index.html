@@ -126,6 +126,30 @@
         width: fit-content;
         padding: .1rem;
       }
+      @media (prefers-color-scheme: dark) {
+        ::-webkit-scrollbar {
+          width: .8rem;
+        }
+        ::-webkit-scrollbar-track {
+          background: #181326cc;
+        }
+        ::-webkit-scrollbar-thumb {
+          background-color: #1c172ace;
+          border-radius: 2rem;
+        }
+      }
+      @media (prefers-color-scheme: light) {
+        ::-webkit-scrollbar {
+          width: .8rem;
+        }
+        ::-webkit-scrollbar-track {
+          background: #1c172a30;
+        }
+        ::-webkit-scrollbar-thumb {
+          background-color: #1c172a40;
+          border-radius: 2rem;
+        }
+      }
     </style>
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript" >

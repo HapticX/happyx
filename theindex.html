@@ -472,10 +472,12 @@ window.addEventListener('DOMContentLoaded', main);
           data-doc-search-tag="macro_utils: buildHtmlProcedure(root, body: NimNode; inComponent: bool = false;
                    componentName: NimNode = newEmptyNode();
                    inCycle: bool = false; cycleTmpVar: string = &quot;&quot;;
-                   compTmpVar: NimNode = newEmptyNode()): NimNode" href="happyx/private/macro_utils.html#buildHtmlProcedure%2CNimNode%2CNimNode%2Cbool%2CNimNode%2Cbool%2Cstring%2CNimNode">macro_utils: buildHtmlProcedure(root, body: NimNode; inComponent: bool = false;
+                   compTmpVar: NimNode = newEmptyNode();
+                   cycleVars: var seq[NimNode]): NimNode" href="happyx/private/macro_utils.html#buildHtmlProcedure%2CNimNode%2CNimNode%2Cbool%2CNimNode%2Cbool%2Cstring%2CNimNode%2Cseq%5BNimNode%5D">macro_utils: buildHtmlProcedure(root, body: NimNode; inComponent: bool = false;
                    componentName: NimNode = newEmptyNode();
                    inCycle: bool = false; cycleTmpVar: string = &quot;&quot;;
-                   compTmpVar: NimNode = newEmptyNode()): NimNode</a></li>
+                   compTmpVar: NimNode = newEmptyNode();
+                   cycleVars: var seq[NimNode]): NimNode</a></li>
           </ul></dd>
 <dt><a name="buildJs" href="#buildJs"><span>buildJs:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -542,6 +544,8 @@ window.addEventListener('DOMContentLoaded', main);
           data-doc-search-tag="python_types: contains(self: RequestModels; name: string): bool" href="happyx/bindings/python_types.html#contains%2CRequestModels%2Cstring">python_types: contains(self: RequestModels; name: string): bool</a></li>
           <li><a class="reference external"
           data-doc-search-tag="python_types: contains(params: seq[HandlerParam]; key: string): bool" href="happyx/bindings/python_types.html#contains%2Cseq%5BHandlerParam%5D%2Cstring">python_types: contains(params: seq[HandlerParam]; key: string): bool</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="macro_utils: contains(self: CacheTable; key: string): bool" href="happyx/private/macro_utils.html#contains%2CCacheTable%2Cstring">macro_utils: contains(self: CacheTable; key: string): bool</a></li>
           </ul></dd>
 <dt><a name="convertJson" href="#convertJson"><span>convertJson:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -609,7 +613,7 @@ window.addEventListener('DOMContentLoaded', main);
           </ul></dd>
 <dt><a name="discardStmt" href="#discardStmt"><span>discardStmt:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="macro_utils: discardStmt" href="happyx/private/macro_utils.html#discardStmt">macro_utils: discardStmt</a></li>
+          data-doc-search-tag="macro_utils: discardStmt(): NimNode" href="happyx/private/macro_utils.html#discardStmt">macro_utils: discardStmt(): NimNode</a></li>
           </ul></dd>
 <dt><a name="elem" href="#elem"><span>elem:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -782,6 +786,10 @@ window.addEventListener('DOMContentLoaded', main);
 <dt><a name="hasHttpRequest" href="#hasHttpRequest"><span>hasHttpRequest:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="python_types: hasHttpRequest(params: seq[HandlerParam]): bool" href="happyx/bindings/python_types.html#hasHttpRequest%2Cseq%5BHandlerParam%5D">python_types: hasHttpRequest(params: seq[HandlerParam]): bool</a></li>
+          </ul></dd>
+<dt><a name="hasKey" href="#hasKey"><span>hasKey:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="macro_utils: hasKey(self: CacheTable; key: string): bool" href="happyx/private/macro_utils.html#hasKey%2CCacheTable%2Cstring">macro_utils: hasKey(self: CacheTable; key: string): bool</a></li>
           </ul></dd>
 <dt><a name="hasParamType" href="#hasParamType"><span>hasParamType:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -1299,7 +1307,7 @@ window.addEventListener('DOMContentLoaded', main);
           </ul></dd>
 <dt><a name="renderTemplate" href="#renderTemplate"><span>renderTemplate:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="engine: renderTemplate(name: static[string])" href="happyx/tmpl_engine/engine.html#renderTemplate.t%2Cstatic%5Bstring%5D">engine: renderTemplate(name: static[string])</a></li>
+          data-doc-search-tag="engine: renderTemplate(name: static[string]): untyped" href="happyx/tmpl_engine/engine.html#renderTemplate.m%2Cstatic%5Bstring%5D">engine: renderTemplate(name: static[string]): untyped</a></li>
           </ul></dd>
 <dt><a name="renderVdom" href="#renderVdom"><span>renderVdom:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -1479,11 +1487,7 @@ window.addEventListener('DOMContentLoaded', main);
           </ul></dd>
 <dt><a name="templateFolder" href="#templateFolder"><span>templateFolder:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="engine: templateFolder(f: static[string])" href="happyx/tmpl_engine/engine.html#templateFolder%2Cstatic%5Bstring%5D">engine: templateFolder(f: static[string])</a></li>
-          </ul></dd>
-<dt><a name="templatesFolder" href="#templatesFolder"><span>templatesFolder:</span></a></dt><dd><ul class="simple">
-<li><a class="reference external"
-          data-doc-search-tag="engine: templatesFolder" href="happyx/tmpl_engine/engine.html#templatesFolder">engine: templatesFolder</a></li>
+          data-doc-search-tag="engine: templateFolder(f: string)" href="happyx/tmpl_engine/engine.html#templateFolder.m%2Cstring">engine: templateFolder(f: string)</a></li>
           </ul></dd>
 <dt><a name="textTag" href="#textTag"><span>textTag:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -1563,15 +1567,7 @@ window.addEventListener('DOMContentLoaded', main);
           </ul></dd>
 <dt><a name="translate" href="#translate"><span>translate:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="translatable: translate(self: static[string] | string): string" href="happyx/spa/translatable.html#translate.m">translatable: translate(self: static[string] | string): string</a></li>
-          </ul></dd>
-<dt><a name="translatesCompileTime" href="#translatesCompileTime"><span>translatesCompileTime:</span></a></dt><dd><ul class="simple">
-<li><a class="reference external"
-          data-doc-search-tag="translatable: translatesCompileTime" href="happyx/spa/translatable.html#translatesCompileTime">translatable: translatesCompileTime</a></li>
-          </ul></dd>
-<dt><a name="translatesStatement" href="#translatesStatement"><span>translatesStatement:</span></a></dt><dd><ul class="simple">
-<li><a class="reference external"
-          data-doc-search-tag="translatable: translatesStatement" href="happyx/spa/translatable.html#translatesStatement">translatable: translatesStatement</a></li>
+          data-doc-search-tag="translatable: translate(self: string): string" href="happyx/spa/translatable.html#translate.m%2Cstring">translatable: translate(self: string): string</a></li>
           </ul></dd>
 <dt><a name="UnclosedTags" href="#UnclosedTags"><span>UnclosedTags:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -1600,10 +1596,12 @@ window.addEventListener('DOMContentLoaded', main);
 <dt><a name="useComponent" href="#useComponent"><span>useComponent:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="macro_utils: useComponent(statement: NimNode; inCycle, inComponent: bool;
-             cycleTmpVar: string; compTmpVar: NimNode; cycleVars: seq[NimNode];
-             returnTagRef: bool = true; constructor: bool = false): NimNode" href="happyx/private/macro_utils.html#useComponent%2CNimNode%2Cbool%2Cbool%2Cstring%2CNimNode%2Cseq%5BNimNode%5D%2Cbool%2Cbool">macro_utils: useComponent(statement: NimNode; inCycle, inComponent: bool;
-             cycleTmpVar: string; compTmpVar: NimNode; cycleVars: seq[NimNode];
-             returnTagRef: bool = true; constructor: bool = false): NimNode</a></li>
+             cycleTmpVar: string; compTmpVar: NimNode;
+             cycleVars: var seq[NimNode]; returnTagRef: bool = true;
+             constructor: bool = false): NimNode" href="happyx/private/macro_utils.html#useComponent%2CNimNode%2Cbool%2Cbool%2Cstring%2CNimNode%2Cseq%5BNimNode%5D%2Cbool%2Cbool">macro_utils: useComponent(statement: NimNode; inCycle, inComponent: bool;
+             cycleTmpVar: string; compTmpVar: NimNode;
+             cycleVars: var seq[NimNode]; returnTagRef: bool = true;
+             constructor: bool = false): NimNode</a></li>
           </ul></dd>
 <dt><a name="val%3D" href="#val%3D"><span>val=:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -1626,7 +1624,7 @@ window.addEventListener('DOMContentLoaded', main);
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-09-12 12:56:39 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-09-13 13:34:39 UTC</small>
       </div>
     </div>
   </div>
