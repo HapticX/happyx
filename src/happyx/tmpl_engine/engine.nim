@@ -36,6 +36,5 @@ macro templateFolder*(f: string) =
 
 macro renderTemplate*(name: static[string]): untyped =
   ## Renders template from file
-  let folder = $templatesFolder["f"] / name
-  result = quote do:
-    compileTemplateFile(`folder`)
+  let folder = getScriptDir() / $templatesFolder["f"] / name
+  newCall("compileTemplateFile", newLit(folder))
