@@ -218,9 +218,14 @@ macro component*(name, body: untyped): untyped =
           )
         ),
         newLetStmt(
+          ident"activeElement",
+          newDotExpr(ident"document", ident"activeElement")
+        ),
+        newLetStmt(
           ident"compTmpData",
           newCall(newDotExpr(ident"self", ident"render"))
         ),
+        newCall("del", ident"currentComponentsList", newCall("find", ident"currentComponentsList", newCall(ident"BaseComponent", ident"self"))),
         newCall(
           "addArgIter",
           ident"compTmpData",
@@ -288,6 +293,41 @@ macro component*(name, body: untyped): untyped =
               )))
             )
           ),
+        newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
+          newCall("hasAttribute", ident"activeElement", newLit"id"),
+          newStmtList(
+            newCall("echo", newLit(100)),
+            newLetStmt(
+              ident"_activeElement_",
+              newCall("getElementById", ident"document", newCall("id", ident"activeElement"))
+            ),
+            newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
+              newCall("not", newCall("isNil", ident"_activeElement_")),
+              newStmtList(
+                newCall("focus", ident"_activeElement_"),
+                newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
+                  newCall(
+                    "contains",
+                    bracket(newCall("cstring", newLit"INPUT"), newCall("cstring", newLit"TEXTAREA")),
+                    newDotExpr(ident"_activeElement_", ident"nodeName")
+                  ),
+                  newStmtList(
+                    newLetStmt(ident"oldActiveElement", newCall("InputElement", ident"activeElement")),
+                    newLetStmt(ident"currentActiveElement", newCall("InputElement", ident"_activeElement_")),
+                    newCall(
+                      "setSelectionRange",
+                      ident"currentActiveElement",
+                      newDotExpr(ident"oldActiveElement", ident"selectionStart"),
+                      newDotExpr(ident"oldActiveElement", ident"selectionEnd"),
+                      newDotExpr(ident"oldActiveElement", ident"selectionDirection"),
+                    )
+                  )
+                )),
+              )
+            )),
+          )
+        )),
+        newCall(newDotExpr(ident"self", ident"updated"), ident"self"),
         newCall(newDotExpr(ident"self", ident"rendered"), ident"self")
       ),
       nnkMethodDef

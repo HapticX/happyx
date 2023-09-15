@@ -15,6 +15,25 @@ component NumSq:
 
 randomize()
 
+component Test: 
+  someValue : string = "test"
+  `template`:
+    tDiv:
+      tInput(id = "test", "type" = "text", value=self.someValue):
+        @keyup(event):
+          self.someValue = $event.target.value
+      tButton():
+        "Click me"
+      tDiv():
+        {self.someValue}
+
+
+# Declare component
+component HelloWorld:
+  `template`:
+    component Test()
+
+
 appRoutes("app"):
   "/":
     for i in 1..3: tDiv:
@@ -27,3 +46,5 @@ appRoutes("app"):
     tDiv:
       component NumSq(5)
       component NumSq(3)
+  "/issue146":
+    component HelloWorld

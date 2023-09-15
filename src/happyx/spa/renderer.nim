@@ -156,9 +156,10 @@ macro elem*(name: untyped): untyped =
   ## ⚠ Works only on JS backend ⚠
   ## 
   when defined(js):
-    let nameStr = $name
     inc uniqueMacroIndex
-    let uniqName = fmt"_res{uniqueMacroIndex.value}"
+    let
+      nameStr = $name
+      uniqName = fmt"_res{uniqueMacroIndex.value}"
     newStmtList(
       newNimNode(nnkVarSection).add(newIdentDefs(
         ident(uniqName), ident"Element"
@@ -425,9 +426,12 @@ macro buildComponentHtml*(componentName, html: untyped): untyped =
   ## Args:
   ## - `html`: YAML-like structure.
   ## 
-  var h = html
-  var cycleVars = newSeq[NimNode]()
-  h.replaceSelfComponent(componentName, convert = false)
+  var
+    h = html
+    cycleVars = newSeq[NimNode]()
+    node = h.replaceSelfComponent(componentName, convert = false)
+  if node.kind != nnkEmpty:
+    node.add(newCall("reRender", ident"self"))
   result = buildHtmlProcedure(ident"tDiv", h, true, componentName, compTmpVar = newDotExpr(ident"self", ident(UniqueComponentId)), cycleVars = cycleVars)
   if result[^1].kind == nnkCall and $result[^1][0] == "@":
     result.add(newLit(true))
@@ -476,6 +480,10 @@ macro routes*(app: App, body: untyped): untyped =
     newLetStmt(
       ident"elem",
       newCall("getElementById", ident"document", newDotExpr(ident"app", ident"appId"))
+    ),
+    newLetStmt(
+      ident"activeElement",
+      newDotExpr(ident"document", ident"activeElement")
     ),
     newLetStmt(
       ident"query",
@@ -591,7 +599,41 @@ macro routes*(app: App, body: untyped): untyped =
     newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
       newCall("not", newCall("isNil", iHtml)),
       newStmtList(
-        newCall("renderVdom", ident"application", iHtml, ident"force")
+        newCall("renderVdom", ident"application", iHtml, ident"force"),
+        newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
+          newCall("hasAttribute", ident"activeElement", newLit"id"),
+          newStmtList(
+            newCall("echo", newLit(100)),
+            newLetStmt(
+              ident"_activeElement_",
+              newCall("getElementById", ident"document", newCall("id", ident"activeElement"))
+            ),
+            newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
+              newCall("not", newCall("isNil", ident"_activeElement_")),
+              newStmtList(
+                newCall("focus", ident"_activeElement_"),
+                newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
+                  newCall(
+                    "contains",
+                    bracket(newCall("cstring", newLit"INPUT"), newCall("cstring", newLit"TEXTAREA")),
+                    newDotExpr(ident"_activeElement_", ident"nodeName")
+                  ),
+                  newStmtList(
+                    newLetStmt(ident"oldActiveElement", newCall("InputElement", ident"activeElement")),
+                    newLetStmt(ident"currentActiveElement", newCall("InputElement", ident"_activeElement_")),
+                    newCall(
+                      "setSelectionRange",
+                      ident"currentActiveElement",
+                      newDotExpr(ident"oldActiveElement", ident"selectionStart"),
+                      newDotExpr(ident"oldActiveElement", ident"selectionEnd"),
+                      newDotExpr(ident"oldActiveElement", ident"selectionDirection"),
+                    )
+                  )
+                )),
+              )
+            )),
+          )
+        )),
       )
     ))
   )

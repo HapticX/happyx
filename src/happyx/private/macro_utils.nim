@@ -292,16 +292,25 @@ proc attribute*(attr: NimNode): NimNode =
   )
 
 
-proc addAttribute*(node, key, value: NimNode) =
+proc addAttribute*(node, key, value: NimNode, inComponent: bool = false) =
+  var
+    k = $key
+    v =
+      if k.toLower() == "id" and value.kind in {nnkStrLit, nnkTripleStrLit} and inComponent:
+        newLit($value & "{self.uniqCompId}")
+      elif k.toLower() == "id" and value.kind == nnkCall and value[0] == ident"fmt" and inComponent:
+        newCall("fmt", newLit($value[1] & "{self.uniqCompId}"))
+      else:
+        value
   if node.len == 2:
     node.add(newCall("newStringTable", newNimNode(nnkTableConstr).add(
-      newColonExpr(newStrLitNode($key), value)
+      newColonExpr(newStrLitNode($key), v)
     )))
   elif node[2].kind == nnkCall and $node[2][0] == "newStringTable":
-    node[2][1].add(newColonExpr(newStrLitNode($key), value))
+    node[2][1].add(newColonExpr(newStrLitNode($key), v))
   else:
     node.insert(2, newCall("newStringTable", newNimNode(nnkTableConstr).add(
-      newColonExpr(newStrLitNode($key), value)
+      newColonExpr(newStrLitNode($key), v)
     )))
 
 
@@ -310,8 +319,10 @@ proc endsWithBuildHtml*(statement: NimNode): bool =
 
 
 proc replaceSelfComponent*(statement, componentName: NimNode, parent: NimNode = nil,
-                           convert: bool = false, is_constructor: bool = false, is_field: bool = true) =
+                           convert: bool = false, is_constructor: bool = false,
+                           is_field: bool = true): NimNode {.discardable.} =
   let self = if convert: ident"self" else: newDotExpr(ident"self", componentName)
+  result = newEmptyNode()
   if statement.kind == nnkDotExpr:
     if statement[0] == ident"self":
       if not parent.isNil() and parent.kind == nnkCall and parent[0] == statement:
@@ -335,7 +346,9 @@ proc replaceSelfComponent*(statement, componentName: NimNode, parent: NimNode = 
       if i.kind == nnkCall and i[0].kind == nnkDotExpr and i[0][0] == ident"self":
         idxes.add((i, idx))
       else:
-        i.replaceSelfComponent(componentName, statement, convert, is_constructor)
+        let r = i.replaceSelfComponent(componentName, statement, convert, is_constructor)
+        if result.kind == nnkEmpty:
+          result = r
     for (i, idx) in idxes:
       var
         methodCall = newCall(newDotExpr(self, i[0][1]))
@@ -357,13 +370,15 @@ proc replaceSelfComponent*(statement, componentName: NimNode, parent: NimNode = 
     for idx, i in statement.pairs:
       if i.kind == nnkAsgn and i[0].kind == nnkDotExpr and i[0][0] == ident"self":
         if not is_constructor:
-          statement.insert(idx+1, newCall("reRender", ident"self"))
+          result = statement
     var idxes: seq[tuple[node: NimNode, idx: int]] = @[]
     for idx, i in statement.pairs:
       if i.kind == nnkCall and i[0].kind == nnkDotExpr and i[0][0] == ident"self":
         idxes.add((i, idx))
       else:
-        i.replaceSelfComponent(componentName, statement, convert, is_constructor)
+        let r = i.replaceSelfComponent(componentName, statement, convert, is_constructor)
+        if result.kind == nnkEmpty:
+          result = r
     for (i, idx) in idxes:
       var
         methodCall = newCall(newDotExpr(self, i[0][1]))
@@ -444,7 +459,8 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
         for attr in statement[1 .. statement.len-2]:
           builded.addAttribute(
             newStrLitNode($attr[0]),
-            formatNode(attr[1])
+            formatNode(attr[1]),
+            inComponent
           )
         result.add(builded)
       # tag(attr="value")
@@ -533,7 +549,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
     
     elif statement.kind == nnkAsgn:
       # Attributes
-      result.addAttribute(statement[0], statement[1])
+      result.addAttribute(statement[0], statement[1], inComponent)
     
     # Events handling
     elif (statement.kind == nnkPrefix and statement[0] == ident"@") or (statement.kind == nnkCall and statement[0].kind == nnkPrefix and statement[0][0] == ident"@"):
