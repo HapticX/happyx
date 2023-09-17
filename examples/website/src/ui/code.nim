@@ -269,3 +269,17 @@ appRoutes "app":
   "/<paramName>":
     echo paramName
 """
+  nimSpaRouting* = """import happyx
+
+
+appRoutes "app":
+  "/":
+    "Welcome to home!"
+    tButton:
+      "go to '/bye'"
+      @click:
+        # When button clicked you'll redirect to /bye route
+        route("/bye")
+  "/bye":
+    "Goodbye!"
+"""
