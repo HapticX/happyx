@@ -24,7 +24,7 @@ component CodeBlockSlider:
             let source = self.data.val[idx]
           if idx == 0:
             tDiv(
-              id = fmt"sliderContainer-{self.uniqCompId}_{idx}",
+              id = fmt"sliderContainer-{idx}",
               class = "w-full flex flex-col gap-4 lg:gap-2 justify-between transition-all duration-300 opacity-1"
             ):
               tDiv(class = "flex flex-col gap-2 lg:gap-0"):
@@ -36,7 +36,7 @@ component CodeBlockSlider:
                 component CodeBlock(source = source.text, language = source.language, id = fmt"slider-{self.uniqCompId}_{idx}")
           else:
             tDiv(
-              id = fmt"sliderContainer-{self.uniqCompId}_{idx}",
+              id = fmt"sliderContainer-{idx}",
               class = "w-full flex flex-col gap-4 lg:gap-2 justify-between transition-all duration-300 absolute top-0 left-0 opacity-0"
             ):
               tDiv(class = "flex flex-col gap-2 lg:gap-0"):
@@ -50,22 +50,24 @@ component CodeBlockSlider:
         for idx in 0..<self.data.len:
           if self.index == idx:
             tDiv(
-              id = fmt"circle-{self.uniqCompId}_{idx}",
+              id = fmt"circle-{idx}",
               class = "transition-all duration-300 overflow-hidden w-24 h-8 lg:w-18 lg:h-6 xl:w-12 xl:h-4 bg-[{Foreground}] dark:bg-[{ForegroundDark}] rounded-full cursor-pointer"
             ):
+              @click:
+                updateIndex(self, idx)
               tDiv(
-                id = fmt"circle-{self.uniqCompId}_{idx}-fill",
+                id = fmt"circle-{idx}-fill",
                 class = "w-0 h-full bg-[{Yellow}] dark:bg-[{Orange}] transition-all duration-[5000ms] rounded-full ease-linear z-40"
               ):""
           else:
             tDiv(
-              id = fmt"circle-{self.uniqCompId}_{idx}",
+              id = fmt"circle-{idx}",
               class = "transition-all duration-300 overflow-hidden w-8 h-8 lg:w-6 lg:h-6 xl:w-4 xl:h-4 bg-[{Foreground}] dark:bg-[{ForegroundDark}] rounded-full cursor-pointer"
             ):
               @click:
                 updateIndex(self, idx)
               tDiv(
-                id = fmt"circle-{self.uniqCompId}_{idx}-fill",
+                id = fmt"circle-{idx}-fill",
                 class = "w-0 h-full bg-[{Yellow}] dark:bg-[{Orange}] transition-all duration-[5000ms] rounded-full ease-linear z-40"
               ):""
   
@@ -98,7 +100,7 @@ component CodeBlockSlider:
       self.index.set(idx)
       let index: int = self.index
       for idx, val in (self.data)->pairs:
-        let id: cstring = fmt"slider-{self.uniqCompId}_{idx}"
+        let id: cstring = fmt"slider-{idx}"
         {.emit: """//js
         let codeBlock = document.getElementById(`id`);
         if (codeBlock) {
@@ -107,9 +109,9 @@ component CodeBlockSlider:
         """.}
 
         let
-          container = document.getElementById(fmt"sliderContainer-{self.uniqCompId}_{idx}")
-          circle = document.getElementById(fmt"circle-{self.uniqCompId}_{idx}")
-          fill = document.getElementById(fmt"circle-{self.uniqCompId}_{idx}-fill")
+          container = document.getElementById(fmt"sliderContainer-{idx}")
+          circle = document.getElementById(fmt"circle-{idx}")
+          fill = document.getElementById(fmt"circle-{idx}-fill")
         if container.isNil():
           return
         if index == idx:

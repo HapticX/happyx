@@ -587,7 +587,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
         # Detect in component and in cycle
         if inCycle:
           let
-            cycleVar = " + " & cycleTmpVar  & "}"
+            cycleVar = " + " & cycleTmpVar  & ")}"
             registerEvent = fmt"registerEventScoped{uniqueId.value}{uniqueId.value+2}"
             callRegister = newCall(registerEvent)
           var procParams = @[ident"ComponentEventHandler"]
@@ -599,7 +599,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
             newCall(
               "fmt",
               newStrLitNode(
-                "callComponentEventHandler('{self." & UniqueComponentId & "}', {" &
+                "callComponentEventHandler('{self." & UniqueComponentId & "}', {-(" &
                 fmt"{uniqueId.value}" & cycleVar & ", event)"
               )
             )
@@ -610,7 +610,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
               newCall(
                 "[]=",
                 ident"componentEventHandlers",
-                newCall("+", newIntLitNode(uniqueId.value), ident(cycleTmpVar)),
+                newCall("-", newCall("+", newIntLitNode(uniqueId.value), ident(cycleTmpVar))),
                 callRegister
               ),
               newCall("inc", ident(cycleTmpVar)),
@@ -640,7 +640,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
         # not in component but in cycle
         if inCycle:
           let
-            cycleVar = " + " & cycleTmpVar  & "}"
+            cycleVar = " + " & cycleTmpVar  & ")}"
             registerEvent = fmt"registerEventScoped{uniqueId.value}{uniqueId.value+2}"
             callRegister = newCall(registerEvent)
           var procParams = @[ident"AppEventHandler"]
@@ -651,7 +651,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
             newStrLitNode(evname),
             newCall(
               "fmt",
-              newStrLitNode("callEventHandler({" & fmt"{uniqueId.value}" & cycleVar & ", event)")
+              newStrLitNode("callEventHandler({-(" & fmt"{uniqueId.value}" & cycleVar & ", event)")
             )
           )
           result.add(
@@ -660,7 +660,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
               newCall(
                 "[]=",
                 ident"eventHandlers",
-                newCall("+", newIntLitNode(uniqueId.value), ident(cycleTmpVar)),
+                newCall("-", newCall("+", newIntLitNode(uniqueId.value), ident(cycleTmpVar))),
                 callRegister
               ),
               newCall("inc", ident(cycleTmpVar)),

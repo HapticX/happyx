@@ -179,6 +179,7 @@ when defined(js):
     ## Change current page to `path` and rerender
     {.emit: "window.history.pushState(null, null, '#' + `path`);" .}
     let force = currentRoute != path
+    echo force, ", ", currentRoute, ", ", path
     currentRoute = path
     application.router(force)
     if force:

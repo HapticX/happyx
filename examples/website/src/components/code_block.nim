@@ -27,8 +27,8 @@ component CodeBlock:
   
   [methods]:
     proc highlight() =
-      let id: cstring = self.id
+      let id: cstring = $self.id & self.uniqCompId
       {.emit: """//js
       let codeBlock = document.getElementById(`id`);
-      if (codeBlock) {hljs.highlightElement(codeBlock);}
+      hljs.highlightElement(codeBlock);
       """.}
