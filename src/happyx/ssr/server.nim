@@ -684,7 +684,7 @@ socketToSsr.onmessage=function(m){
                   await wsClient.send($requestResult[req.hostname])
                   requestResult.del(req.hostname)
     body.add(wsMethod)
-    body.add(newCall("get", newLit(path), getMethod))
+    body.add(newCall(ident"get", path, getMethod))
 
   when enableHttpx or enableHttpBeast:
     var path = newNimNode(nnkBracketExpr).add(
@@ -780,6 +780,7 @@ socketToSsr.onmessage=function(m){
     if statement.kind == nnkDiscardStmt:
       continue
     if statement.kind in [nnkCall, nnkCommand]:
+      echo statement[0].toStrLit, ", ", statement[1].toStrLit
       if statement[^1].kind == nnkStmtList:
         # Check variable usage
         if statement[^1].isIdentUsed(ident"statusCode"):
@@ -820,35 +821,11 @@ socketToSsr.onmessage=function(m){
               newCall("==", pathIdent, statement[1])
             ), statement[2]
           ))
-      # notfound: statement list
-      elif statement[1].kind == nnkStmtList and statement[0].kind == nnkIdent:
-        case ($statement[0]).toLower()
-        of "wsconnect":
-          wsNewConnection = statement[1]
-        of "wsclosed":
-          wsClosedConnection = statement[1]
-        of "wsmismatchprotocol":
-          wsMismatchProtocol = statement[1]
-        of "wserror":
-          wsError = statement[1]
-        of "finalize":
-          finalize = statement[1]
-        of "notfound":
-          detectReturnStmt(statement[1])
-          notFoundNode = statement[1]
-        of "middleware":
-          detectReturnStmt(statement[1])
-          stmtList.insert(0, statement[1])
-        else:
-          throwDefect(
-            HpxServeRouteDefect,
-            "Wrong serve route detected ",
-            lineInfoObj(statement[0])
-          )
       # reqMethod "/...":
       #   ...
-      elif statement[0].kind == nnkIdent and statement[0] != ident"mount" and statement[1].kind in [nnkStrLit, nnkTripleStrLit, nnkInfix]:
+      elif statement[0].kind == nnkIdent and statement[0] != ident"mount" and statement[1].kind in {nnkStrLit, nnkTripleStrLit, nnkInfix}:
         let name = ($statement[0]).toUpper()
+        echo name, ", ", statement[1].toStrLit
         if name == "STATICDIR":
           if statement[1].kind in [nnkStrLit, nnkTripleStrLit]:
             ifStmt.insert(
@@ -1073,6 +1050,31 @@ socketToSsr.onmessage=function(m){
             newCall("==", pathIdent, statement[1]),
             statement[2]
           ))
+      # notfound: statement list
+      elif statement[1].kind == nnkStmtList and statement[0].kind == nnkIdent:
+        case ($statement[0]).toLower()
+        of "wsconnect":
+          wsNewConnection = statement[1]
+        of "wsclosed":
+          wsClosedConnection = statement[1]
+        of "wsmismatchprotocol":
+          wsMismatchProtocol = statement[1]
+        of "wserror":
+          wsError = statement[1]
+        of "finalize":
+          finalize = statement[1]
+        of "notfound":
+          detectReturnStmt(statement[1])
+          notFoundNode = statement[1]
+        of "middleware":
+          detectReturnStmt(statement[1])
+          stmtList.insert(0, statement[1])
+        else:
+          throwDefect(
+            HpxServeRouteDefect,
+            "Wrong serve route detected ",
+            lineInfoObj(statement[0])
+          )
     elif statement.kind in [nnkVarSection, nnkLetSection]:
       variables.add(statement)
   
