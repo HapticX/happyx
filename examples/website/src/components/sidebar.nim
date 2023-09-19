@@ -48,14 +48,17 @@ var
 
 component SideBarTitle:
   `template`:
-    tP(class = "text-7xl lg:text-2xl xl:text-xl font-bold cursor-pointer select-none"):
+    tP(class = "text-7xl lg:text-2xl xl:text-xl font-bold select-none"):
       slot
 
 
 component SideBarFolder:
+  id: string
   `template`:
     tP(class = "text-5xl lg:text-xl xl:text-lg font-bold cursor-pointer select-none pl-2"):
       slot
+      @click:
+        route(fmt"/guide/{self.id}")
 
 
 component SideBarItem:
@@ -92,23 +95,27 @@ component SideBar:
         tDiv(class = "flex flex-col pl-8 lg:pl-6 xl:pl-4 gap-8 lg:gap-4 xl:gap-2"):
           component SideBarTitle:
             {translate("User Guide 📖")}
-            component SideBarFolder:
+
+            component SideBarFolder("introduction"):
               {translate("General 🍍")}
               component SideBarItem("introduction"):
                 {translate("Introduction ✌")}
               component SideBarItem("getting_started"):
                 {translate("Getting Started 💫")}
-            component SideBarFolder:
+
+            component SideBarFolder("happyx_app"):
               {translate("Basics 📖")}
               component SideBarItem("happyx_app"):
                 {translate("HappyX Application 🍍")}
               component SideBarItem("path_params"):
                 {translate("Path Params 🔌")}
-            component SideBarFolder:
+
+            component SideBarFolder("spa_basics"):
               {translate("Single-page Applications 🎴")}
               component SideBarItem("spa_basics"):
                 {translate("Single-page Applications Basics 🎴")}
-            component SideBarFolder:
+
+            component SideBarFolder("ssr_basics"):
               {translate("Server-side Applications 🖥")}
               component SideBarItem("ssr_basics"):
                 {translate("Server-side Applications Basics 🖥")}

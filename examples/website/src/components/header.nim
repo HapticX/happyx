@@ -10,6 +10,7 @@ proc setCurrentLanguage*(lang: string) =
   languageSettings.set(lang)
   buildJs:
     localStorage["happyx_spoken_language"] = ~language
+  enableRouting = true
   route(currentRoute)
 
 
