@@ -101,7 +101,7 @@ macro regCORS*(body: untyped): untyped =
                 fmt"invalid regCORS headers syntax: ",
                 lineInfoObj(val)
               )
-          result.add(newNimNode(nnkExprEqExpr).add(ident"allowMethods", newLit(headers.join(","))))
+          result.add(newNimNode(nnkExprEqExpr).add(ident"allowHeaders", newLit(headers.join(","))))
           continue
       of "origins":
         if val.kind in [nnkStrLit, nnkTripleStrLit]:
