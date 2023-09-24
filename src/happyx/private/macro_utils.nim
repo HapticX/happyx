@@ -73,7 +73,8 @@ proc formatNode*(node: NimNode): NimNode =
 
 proc useComponent*(statement: NimNode, inCycle, inComponent: bool,
                    cycleTmpVar: string, compTmpVar: NimNode, cycleVars: var seq[NimNode],
-                   returnTagRef: bool = true, constructor: bool = false): NimNode =
+                   returnTagRef: bool = true, constructor: bool = false,
+                   nameIsIdent: bool = false): NimNode =
   let
     name =
       if statement[1].kind == nnkCall:
@@ -96,7 +97,7 @@ proc useComponent*(statement: NimNode, inCycle, inComponent: bool,
       if constructor:
         newCall(fmt"constructor_{name}")
       else:
-        newCall(fmt"init{name}")
+        newCall(fmt"init{name.toStrLit}")
     componentNameTmp = "_" & componentName
     componentData = "data_" & componentName
     stringId =
@@ -232,6 +233,15 @@ proc isIdentUsed*(body, name: NimNode): bool =
     elif statement.kind notin AtomicNodes and statement.isIdentUsed(name):
       return true
   false
+
+
+proc replaceUseInComponent*(body: NimNode) =
+  for statement in body:
+    if statement.kind in nnkCallKinds and statement[0] == ident"use" and statement.len == 2:
+      statement.add(newLit(true))
+      statement.add(ident"uniqCompId")
+    elif statement.kind notin AtomicNodes:
+      statement.replaceUseInComponent()
 
 
 proc newLambda*(body: NimNode, params: seq[NimNode] | NimNode = @[newEmptyNode()],
@@ -480,12 +490,12 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
       # Component usage
       if statement[0] == ident"component":
         # Component without arguments
-        if statement[1].kind == nnkIdent:
-          let componentData = "data_" & $statement[1]
+        if statement[1].kind in {nnkIdent, nnkDotExpr, nnkBracketExpr}:
+          let componentData = "data_" & $statement[1].toStrLit
           result.add(
             newNimNode(nnkWhenStmt).add(
               newNimNode(nnkElifBranch).add(
-                newCall("and", newCall("declared", statement[1]), newCall("not", newCall("is", statement[1], ident"typedesc"))),
+                newCall("not", newCall("is", statement[1], ident"typedesc")),
                 newStmtList(
                   newLetStmt(
                     ident(componentData),
@@ -516,9 +526,10 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
                   ident(componentData)
                 )),
               newNimNode(nnkElse).add(
-                useComponent(statement, inCycle, inComponent, cycleTmpVar, compTmpVar, cycleVars)
+                useComponent(statement, inCycle, inComponent, cycleTmpVar, compTmpVar, cycleVars, true)
               )
             ))
+          echo result.toStrLit
         # Component constructor
         elif statement[1].kind == nnkInfix and statement[1][0] == ident"->":
           result.add(useComponent(statement, inCycle, inComponent, cycleTmpVar, compTmpVar, cycleVars, constructor = true))

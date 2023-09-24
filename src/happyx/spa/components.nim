@@ -653,6 +653,7 @@ macro component*(name, body: untyped): untyped =
     newCall("add", ident"createdComponentsList", ident"self"),
     newNimNode(nnkReturnStmt).add(ident"self")
   )
+  initProc.body.replaceUseInComponent()
 
   # Life cycles
   beforeStmtList.add(
