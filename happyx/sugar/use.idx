@@ -1,3 +1,3 @@
-use	happyx/sugar/use.html#use.m,untyped	use: use(expr: untyped): untyped	
+use	happyx/sugar/use.html#use.m,untyped,static[bool],string	use: use(expr: untyped; inComp: static[bool] = false; compTmpVar: string = &quot;&quot;): untyped	
 Use Macro ✨	happyx/sugar/use.html#use-macro-✨	 Use Macro ✨	
 Components 🍍	happyx/sugar/use.html#use-macro-✨-components-🍍	  Components 🍍	

@@ -1327,6 +1327,10 @@ window.addEventListener('DOMContentLoaded', main);
                      convert: bool = false; is_constructor: bool = false;
                      is_field: bool = true): NimNode</a></li>
           </ul></dd>
+<dt><a name="replaceUseInComponent" href="#replaceUseInComponent"><span>replaceUseInComponent:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="macro_utils: replaceUseInComponent(body: NimNode)" href="happyx/private/macro_utils.html#replaceUseInComponent%2CNimNode">macro_utils: replaceUseInComponent(body: NimNode)</a></li>
+          </ul></dd>
 <dt><a name="reqModelDebugTarget" href="#reqModelDebugTarget"><span>reqModelDebugTarget:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="constants: reqModelDebugTarget" href="happyx/core/constants.html#reqModelDebugTarget">constants: reqModelDebugTarget</a></li>
@@ -1591,17 +1595,17 @@ window.addEventListener('DOMContentLoaded', main);
           </ul></dd>
 <dt><a name="use" href="#use"><span>use:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="use: use(expr: untyped): untyped" href="happyx/sugar/use.html#use.m%2Cuntyped">use: use(expr: untyped): untyped</a></li>
+          data-doc-search-tag="use: use(expr: untyped; inComp: static[bool] = false; compTmpVar: string = &quot;&quot;): untyped" href="happyx/sugar/use.html#use.m%2Cuntyped%2Cstatic%5Bbool%5D%2Cstring">use: use(expr: untyped; inComp: static[bool] = false; compTmpVar: string = &quot;&quot;): untyped</a></li>
           </ul></dd>
 <dt><a name="useComponent" href="#useComponent"><span>useComponent:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="macro_utils: useComponent(statement: NimNode; inCycle, inComponent: bool;
              cycleTmpVar: string; compTmpVar: NimNode;
              cycleVars: var seq[NimNode]; returnTagRef: bool = true;
-             constructor: bool = false): NimNode" href="happyx/private/macro_utils.html#useComponent%2CNimNode%2Cbool%2Cbool%2Cstring%2CNimNode%2Cseq%5BNimNode%5D%2Cbool%2Cbool">macro_utils: useComponent(statement: NimNode; inCycle, inComponent: bool;
+             constructor: bool = false; nameIsIdent: bool = false): NimNode" href="happyx/private/macro_utils.html#useComponent%2CNimNode%2Cbool%2Cbool%2Cstring%2CNimNode%2Cseq%5BNimNode%5D%2Cbool%2Cbool%2Cbool">macro_utils: useComponent(statement: NimNode; inCycle, inComponent: bool;
              cycleTmpVar: string; compTmpVar: NimNode;
              cycleVars: var seq[NimNode]; returnTagRef: bool = true;
-             constructor: bool = false): NimNode</a></li>
+             constructor: bool = false; nameIsIdent: bool = false): NimNode</a></li>
           </ul></dd>
 <dt><a name="val%3D" href="#val%3D"><span>val=:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -1624,7 +1628,7 @@ window.addEventListener('DOMContentLoaded', main);
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-09-23 09:57:09 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-09-24 02:12:15 UTC</small>
       </div>
     </div>
   </div>
