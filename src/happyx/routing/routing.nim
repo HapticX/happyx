@@ -436,6 +436,21 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode =
                 ),
                 newCall("jsonTo" & i.typeName, newCall("newJObject"))
               )
+            )).add(newNimNode(nnkExceptBranch).add(
+              ident"JsonKindError",
+              newStmtList(
+                when defined(debug):
+                  newCall("echo", newCall("fmt", newStrLitNode("json kind error: {getCurrentExceptionMsg()}")))
+                else:
+                  newEmptyNode(),
+                newCall(
+                  "answerJson",
+                  ident"req",
+                  parseExpr"""{"response": "Incorrect JSON structure (wrong kind)"}""",
+                  ident"Http400"
+                ),
+                newCall("jsonTo" & i.typeName, newCall("newJObject"))
+              )
             ))
           of "urlencoded", "x-www-form-urlencoded", "xwwwformurlencoded":
             newCall("xWwwUrlencodedTo" & i.typeName, body)
