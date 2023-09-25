@@ -471,7 +471,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
             newCall(
               "and",
               newCall("declared", compName),
-              newCall("not", newCall("contains", ident"htmlTagsList", newLit($compName.toStrLit)))
+              newCall("not", newCall("contains", ident"htmlTagsList", newLit(getTagName($compName.toStrLit))))
             )
           ),
           newNimNode(nnkElse)
@@ -765,11 +765,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
         compStatement = newNimNode(nnkCommand).add(ident"component", statement)
         whenStmt = newNimNode(nnkWhenStmt).add(
           newNimNode(nnkElifBranch).add(
-            newCall(
-              "and",
-              newCall("not", newCall("is", compName, ident"typedesc")),
-              newCall("not", newCall("contains", ident"htmlTagsList", newLit($compName.toStrLit)))
-            )
+            newCall("not", newCall("contains", ident"htmlTagsList", newLit(getTagName($compName.toStrLit))))
           ),
           newNimNode(nnkElse)
         )
