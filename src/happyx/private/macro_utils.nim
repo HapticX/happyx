@@ -462,7 +462,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
         tagName = newStrLitNode(getTagName($statement[0]))
         statementList = statement[^1]
         compName =
-          if statement[0].kind in {nnkIdent}:
+          if statement[0].kind in AtomicNodes:
             statement[0]
           else:
             statement[0][0]
