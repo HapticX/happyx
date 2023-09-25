@@ -32,7 +32,6 @@ macro use*(expr: untyped, inComp: static[bool] = false, compTmpVar: string = "")
   ## At this moment expressions are only component
   ## 
   var statement = expr
-  echo "in Component: ", inComp
 
   if expr.kind == nnkStmtList:
     if expr.len > 1:
@@ -48,12 +47,10 @@ macro use*(expr: untyped, inComp: static[bool] = false, compTmpVar: string = "")
     # Default constructor
     if statement[1].kind in {nnkIdent, nnkCall}:
       result = useComponent(statement, false, inComp, "", compTmpVar, cycleVars, false)
-      echo result.toStrLit
       return result
     # Component constructor
     elif statement[1].kind == nnkInfix:
       result = useComponent(statement, false, inComp, "", compTmpVar, cycleVars, false, constructor = true)
-      echo result.toStrLit
       return result
   else:
     throwDefect(

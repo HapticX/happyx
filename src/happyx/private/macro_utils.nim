@@ -461,6 +461,16 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
       let
         tagName = newStrLitNode(getTagName($statement[0]))
         statementList = statement[^1]
+        compName =
+          if statement[0].kind in {nnkIdent}:
+            statement[0]
+          else:
+            statement[0][0]
+        whenStmt = newNimNode(nnkWhenStmt).add(
+          newNimNode(nnkElifBranch).add(newCall("declared", compName)),
+          newNimNode(nnkElse)
+        )
+        compStatement = newNimNode(nnkCommand).add(ident"component", statement)
       var attrs = newNimNode(nnkTableConstr)
       # tag(attr="value"):
       #   ...
@@ -472,70 +482,122 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
             formatNode(attr[1]),
             inComponent
           )
-        result.add(builded)
+        whenStmt[1].add(builded)
       # tag(attr="value")
       elif statementList.kind != nnkStmtList:
         for attr in statement[1 .. statement.len-1]:
           attrs.add(attribute(attr))
         if attrs.len > 0:
-          result.add(newCall("initTag", tagName, newCall("newStringTable", attrs)))
+          whenStmt[1].add(newCall("initTag", tagName, newCall("newStringTable", attrs)))
         else:
-          result.add(newCall("initTag", tagName))
+          whenStmt[1].add(newCall("initTag", tagName))
       # tag:
       #   ...
       else:
-        result.add(buildHtmlProcedure(tagName, statementList, inComponent, componentName, inCycle, cycleTmpVar, compTmpVar, cycleVars))
+        whenStmt[1].add(buildHtmlProcedure(tagName, statementList, inComponent, componentName, inCycle, cycleTmpVar, compTmpVar, cycleVars))
+      
+      # Component detect
+      if statement[0].kind in {nnkIdent, nnkDotExpr, nnkBracketExpr}:
+        let componentData = "data_" & $compName.toStrLit
+        whenStmt[0].add(
+          newNimNode(nnkWhenStmt).add(
+            newNimNode(nnkElifBranch).add(
+              newCall(
+                "and",
+                newCall("declared", compName),
+                newCall("not", newCall("is", compName, ident"typedesc")),
+              ),
+              newStmtList(
+                newLetStmt(
+                  ident(componentData),
+                  newCall("render", compName)
+                ),
+                newCall(
+                  "addArgIter",
+                  ident(componentData),
+                  newCall("&", newStrLitNode("data-"), newDotExpr(compName, ident(UniqueComponentId)))
+                ),
+                when defined(js):
+                  newStmtList(
+                    newNimNode(nnkPragma).add(newNimNode(nnkExprColonExpr).add(
+                      ident"emit",
+                      newStrLitNode(fmt"window.addEventListener('beforeunload', `{componentData}`.`exited`);")
+                    )),
+                    newNimNode(nnkPragma).add(newNimNode(nnkExprColonExpr).add(
+                      ident"emit",
+                      newStrLitNode(fmt"window.addEventListener('pagehide', `{componentData}`.`pageHide`);")
+                    )),
+                    newNimNode(nnkPragma).add(newNimNode(nnkExprColonExpr).add(
+                      ident"emit",
+                      newStrLitNode(fmt"window.addEventListener('pageshow', `{componentData}`.`pageShow`);")
+                    )),
+                  )
+                else:
+                  newEmptyNode(),
+                ident(componentData)
+              )),
+            newNimNode(nnkElse).add(
+              useComponent(compStatement, inCycle, inComponent, cycleTmpVar, compTmpVar, cycleVars, true)
+            )
+          ))
+      # Component constructor
+      elif compName.kind == nnkInfix and compName[0] == ident"->":
+        whenStmt[0].add(useComponent(compStatement, inCycle, inComponent, cycleTmpVar, compTmpVar, cycleVars, constructor = true))
+      # Component default constructor
+      else:
+        whenStmt[0].add(useComponent(compStatement, inCycle, inComponent, cycleTmpVar, compTmpVar, cycleVars))
+      
+      result.add(whenStmt)
     
-    elif statement.kind == nnkCommand:
-      # Component usage
-      if statement[0] == ident"component":
-        # Component without arguments
-        if statement[1].kind in {nnkIdent, nnkDotExpr, nnkBracketExpr}:
-          let componentData = "data_" & $statement[1].toStrLit
-          result.add(
-            newNimNode(nnkWhenStmt).add(
-              newNimNode(nnkElifBranch).add(
-                newCall("not", newCall("is", statement[1], ident"typedesc")),
-                newStmtList(
-                  newLetStmt(
-                    ident(componentData),
-                    newCall("render", statement[1])
-                  ),
-                  newCall(
-                    "addArgIter",
-                    ident(componentData),
-                    newCall("&", newStrLitNode("data-"), newDotExpr(statement[1], ident(UniqueComponentId)))
-                  ),
-                  when defined(js):
-                    newStmtList(
-                      newNimNode(nnkPragma).add(newNimNode(nnkExprColonExpr).add(
-                        ident"emit",
-                        newStrLitNode(fmt"window.addEventListener('beforeunload', `{componentData}`.`exited`);")
-                      )),
-                      newNimNode(nnkPragma).add(newNimNode(nnkExprColonExpr).add(
-                        ident"emit",
-                        newStrLitNode(fmt"window.addEventListener('pagehide', `{componentData}`.`pageHide`);")
-                      )),
-                      newNimNode(nnkPragma).add(newNimNode(nnkExprColonExpr).add(
-                        ident"emit",
-                        newStrLitNode(fmt"window.addEventListener('pageshow', `{componentData}`.`pageShow`);")
-                      )),
-                    )
-                  else:
-                    newEmptyNode(),
-                  ident(componentData)
-                )),
-              newNimNode(nnkElse).add(
-                useComponent(statement, inCycle, inComponent, cycleTmpVar, compTmpVar, cycleVars, true)
-              )
-            ))
-          echo result.toStrLit
-        # Component constructor
-        elif statement[1].kind == nnkInfix and statement[1][0] == ident"->":
-          result.add(useComponent(statement, inCycle, inComponent, cycleTmpVar, compTmpVar, cycleVars, constructor = true))
-        # Component default constructor
-        else:
-          result.add(useComponent(statement, inCycle, inComponent, cycleTmpVar, compTmpVar, cycleVars))
+    # Component usage
+    # deprecated keyword `component` support:
+    elif statement.kind == nnkCommand and statement[0] == ident"component":
+      # Component without arguments
+      if statement[1].kind in {nnkIdent, nnkDotExpr, nnkBracketExpr}:
+        let componentData = "data_" & $statement[1].toStrLit
+        result.add(
+          newNimNode(nnkWhenStmt).add(
+            newNimNode(nnkElifBranch).add(
+              newCall("not", newCall("is", statement[1], ident"typedesc")),
+              newStmtList(
+                newLetStmt(
+                  ident(componentData),
+                  newCall("render", statement[1])
+                ),
+                newCall(
+                  "addArgIter",
+                  ident(componentData),
+                  newCall("&", newStrLitNode("data-"), newDotExpr(statement[1], ident(UniqueComponentId)))
+                ),
+                when defined(js):
+                  newStmtList(
+                    newNimNode(nnkPragma).add(newNimNode(nnkExprColonExpr).add(
+                      ident"emit",
+                      newStrLitNode(fmt"window.addEventListener('beforeunload', `{componentData}`.`exited`);")
+                    )),
+                    newNimNode(nnkPragma).add(newNimNode(nnkExprColonExpr).add(
+                      ident"emit",
+                      newStrLitNode(fmt"window.addEventListener('pagehide', `{componentData}`.`pageHide`);")
+                    )),
+                    newNimNode(nnkPragma).add(newNimNode(nnkExprColonExpr).add(
+                      ident"emit",
+                      newStrLitNode(fmt"window.addEventListener('pageshow', `{componentData}`.`pageShow`);")
+                    )),
+                  )
+                else:
+                  newEmptyNode(),
+                ident(componentData)
+              )),
+            newNimNode(nnkElse).add(
+              useComponent(statement, inCycle, inComponent, cycleTmpVar, compTmpVar, cycleVars, true)
+            )
+          ))
+      # Component constructor
+      elif statement[1].kind == nnkInfix and statement[1][0] == ident"->":
+        result.add(useComponent(statement, inCycle, inComponent, cycleTmpVar, compTmpVar, cycleVars, constructor = true))
+      # Component default constructor
+      else:
+        result.add(useComponent(statement, inCycle, inComponent, cycleTmpVar, compTmpVar, cycleVars))
     
     elif statement.kind in [nnkStrLit, nnkTripleStrLit]:
       # "Raw text"
@@ -691,7 +753,14 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
           ))
       inc uniqueId
     
-    elif statement.kind == nnkIdent:
+    elif statement.kind in {nnkIdent, nnkBracketExpr, nnkDotExpr}:
+      let
+        compName = statement
+        compStatement = newNimNode(nnkCommand).add(ident"component", statement)
+        whenStmt = newNimNode(nnkWhenStmt).add(
+          newNimNode(nnkElifBranch).add(newCall("not", newCall("is", compName, ident"typedesc"))),
+          newNimNode(nnkElse)
+        )
       if statement == ident"slot":
         # slot
         if not inComponent:
@@ -700,10 +769,53 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
             fmt"Slots can be used only in components!",
             lineInfoObj(statement)
           )
-        result.add(newDotExpr(ident"self", ident"slot"))
+        whenStmt[1].add(newDotExpr(ident"self", ident"slot"))
       else:
         # tag
-        result.add(newCall("tag", newStrLitNode(getTagName($statement))))
+        whenStmt[1].add(newCall("tag", newStrLitNode(getTagName($statement.toStrLit))))
+      
+      
+      # Component detect
+      let componentData = "data_" & $compName.toStrLit
+      whenStmt[0].add(
+        newNimNode(nnkWhenStmt).add(
+          newNimNode(nnkElifBranch).add(
+            newCall("not", newCall("is", compName, ident"typedesc")),
+            newStmtList(
+              newLetStmt(
+                ident(componentData),
+                newCall("render", compName)
+              ),
+              newCall(
+                "addArgIter",
+                ident(componentData),
+                newCall("&", newStrLitNode("data-"), newDotExpr(compName, ident(UniqueComponentId)))
+              ),
+              when defined(js):
+                newStmtList(
+                  newNimNode(nnkPragma).add(newNimNode(nnkExprColonExpr).add(
+                    ident"emit",
+                    newStrLitNode(fmt"window.addEventListener('beforeunload', `{componentData}`.`exited`);")
+                  )),
+                  newNimNode(nnkPragma).add(newNimNode(nnkExprColonExpr).add(
+                    ident"emit",
+                    newStrLitNode(fmt"window.addEventListener('pagehide', `{componentData}`.`pageHide`);")
+                  )),
+                  newNimNode(nnkPragma).add(newNimNode(nnkExprColonExpr).add(
+                    ident"emit",
+                    newStrLitNode(fmt"window.addEventListener('pageshow', `{componentData}`.`pageShow`);")
+                  )),
+                )
+              else:
+                newEmptyNode(),
+              ident(componentData)
+            )),
+          newNimNode(nnkElse).add(
+            useComponent(compStatement, inCycle, inComponent, cycleTmpVar, compTmpVar, cycleVars, true)
+          )
+        ))
+      
+      result.add(whenStmt)
     
     elif statement.kind == nnkAccQuoted:
       # `tag`

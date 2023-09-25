@@ -16,7 +16,7 @@ component CTest:
   message: cstring = ""
   child: CTestChild = use component CTestChild(id = self.id.val, color ="red")
   `template`:
-    component self.child.val
+    self.child.val
    #component self.child
     tDiv: "template: {self.id} {self.newId}"
 
@@ -24,5 +24,5 @@ var test1 = use component CTest(id= 1)
 
 appRoutes("app"):
   "/":
-    tDiv: component test1
-    tDiv: component CTest(id = 7)
+    tDiv: test1
+    tDiv: CTest(id = 7)

@@ -280,7 +280,6 @@ macro component*(name, body: untyped): untyped =
             newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
               newCall("hasAttribute", ident"activeElement", newLit"id"),
               newStmtList(
-                newCall("echo", newLit(100)),
                 newLetStmt(
                   ident"_activeElement_",
                   newCall("getElementById", ident"document", newCall("id", ident"activeElement"))
