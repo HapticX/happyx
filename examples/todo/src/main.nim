@@ -17,14 +17,14 @@ appRoutes("app"):
       tDiv(class = "flex flex-col gap-4 px-8 py-4 bg-white rounded-2xl drop-shadow-xl"):
         # Create a new task
         tDiv(class = "flex justify-between gap-2 items-center"):
-          input:
+          tInput:
             id = "input"
             class = "rounded-full bg-gray-100 px-4 py-2 outline-0 border-0"
             placeholder = "Enter task ..."
             @input:
               let inp = document.getElementById("input")
               inputText = $inp.value
-          button:
+          tButton:
             class = "flex text-xl font-semibold w-10 h-10 justify-center items-center rounded-full cursor-pointer bg-green-300"
             "+"
             @click:

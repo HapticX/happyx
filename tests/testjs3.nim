@@ -8,9 +8,9 @@ component HelloWorld:
   `template`:
     h1:
       "Hello, world!"
-    button:
+    tButton:
       "Increase"
-      @button:
+      @click:
         self.counter += 1
   
   `script`:

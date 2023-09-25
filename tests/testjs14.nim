@@ -17,6 +17,9 @@ component CTest:
   child: CTestChild = use component CTestChild(id = self.id.val, color ="red")
   `template`:
     self.child.val
+    script: """
+    var x = 0
+    """
    #component self.child
     tDiv: "template: {self.id} {self.newId}"
 

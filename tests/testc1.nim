@@ -30,7 +30,7 @@ serve("127.0.0.1", 5000):
   get "/html":
     req.answerHtml:
       buildHtml(`div`):
-        script(src="https://cdn.tailwindcss.com")  # Tailwind CSS :D
+        tScript(src="https://cdn.tailwindcss.com")  # Tailwind CSS :D
         `div`(class="bg-gray-700 text-pink-400 px-8 py-24"):
           "Hello, world!"
 

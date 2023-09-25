@@ -320,6 +320,7 @@ when enableUi or defined(docgen):
 
 export
   exceptions,
+  constants,
   use,
   queries,
   renderer,

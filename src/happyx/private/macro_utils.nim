@@ -467,7 +467,13 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
           else:
             statement[0][0]
         whenStmt = newNimNode(nnkWhenStmt).add(
-          newNimNode(nnkElifBranch).add(newCall("declared", compName)),
+          newNimNode(nnkElifBranch).add(
+            newCall(
+              "and",
+              newCall("declared", compName),
+              newCall("not", newCall("contains", ident"htmlTagsList", newLit($compName.toStrLit)))
+            )
+          ),
           newNimNode(nnkElse)
         )
         compStatement = newNimNode(nnkCommand).add(ident"component", statement)
@@ -758,7 +764,13 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
         compName = statement
         compStatement = newNimNode(nnkCommand).add(ident"component", statement)
         whenStmt = newNimNode(nnkWhenStmt).add(
-          newNimNode(nnkElifBranch).add(newCall("not", newCall("is", compName, ident"typedesc"))),
+          newNimNode(nnkElifBranch).add(
+            newCall(
+              "and",
+              newCall("not", newCall("is", compName, ident"typedesc")),
+              newCall("not", newCall("contains", ident"htmlTagsList", newLit($compName.toStrLit)))
+            )
+          ),
           newNimNode(nnkElse)
         )
       if statement == ident"slot":

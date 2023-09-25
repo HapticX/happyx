@@ -13,7 +13,7 @@ app.routes:
     else:
       tDiv(class="bg-gray-200 text-black px-8 py-24"):
         "This page was visited"
-    button:
+    tButton:
       "Toggle dark mode"
       @click:
         darkMode.val = not darkMode

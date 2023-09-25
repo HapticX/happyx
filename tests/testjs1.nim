@@ -18,28 +18,27 @@ var
 
 var html =
   buildHtml(`div`):
-    h1(class="myClass", style="color: red"):
+    tH1(class="myClass", style="color: red"):
       "Hello, world!"
     # Different styles of tag naming
     # <h1></h1>
     hH1
     tagH1
     `h1`
-    h1
     if state:  # IF-ELIF-ELSE
       `div`:
         "True!"
-        button:
+        tButton:
           "click"
     elif state1 == 2:
       "State is 2"
     else:
       "False :("
     if state1 == 1:  # Just IF
-      h1:
+      tH1:
         "Hello!"
-    input(`type`="password")
-    button:
+    tInput(`type`="password")
+    tButton:
       "click!"
     for i in state2:  # FOR STMT
       i
@@ -54,13 +53,13 @@ var html =
     # CASE-OF STMT
     case state3:
     of teOne:
-      h1:
+      tH1:
         "Hello"
     of teTwo:
-      h2:
+      tH2:
         "Hi"
     of teThree:
-      h3:
+      tH3:
         "Oops"
     rawHtml: """
       <div>
