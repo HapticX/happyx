@@ -78,6 +78,7 @@ const
     "ol", "optgroup", "option", "output", "p", "picture", "portal", "pre", "progress",
     "q", "rp", "rt", "ruby", "s", "samp", "script", "search", "section", "select",
     "slot", "small", "source", "span", "strong", "style", "sub", "summary", "sup",
+    "svg", "cicle", "path", "g",
     "table", "tbody", "td", "template", "textarea", "tfoot", "th", "thead", "time",
     "title", "tr", "track", "u", "ul", "var", "video", "wbr",
   ]
@@ -88,7 +89,7 @@ const
   # Framework version
   HpxMajor* = 2
   HpxMinor* = 11
-  HpxPatch* = 5
+  HpxPatch* = 6
   HpxVersion* = $HpxMajor & "." & $HpxMinor & "." & $HpxPatch
 
 
