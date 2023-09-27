@@ -613,18 +613,16 @@ socketToSsr.onmessage=function(m){
     var _t = _o;
     return typeof _o !== "object" || _o === null ? false : function () {
       while (!false) {
-        if (Object.getPrototypeOf(_t = Object.getPrototypeOf(_t)) === null) {
-          break
-        }
+        if (Object.getPrototypeOf(_t = Object.getPrototypeOf(_t)) === null) {break;}
       }
-      return Object.getPrototypeOf(_o) === _t
+      return Object.getPrototypeOf(_o) === _t;
     }()
   }
 
   function complex(e) {
-    const i = typeof e === "function";
-    const j = typeof e === "object" && !isObjLiteral(e);
-    return i || j
+    const i=typeof e === "function";
+    const j=typeof e === "object" && !isObjLiteral(e);
+    return i||j;
   }
 
   function se(e, x) {
@@ -641,7 +639,7 @@ socketToSsr.onmessage=function(m){
   }
   
   function callEventHandler(i, e) {
-    let ev = se(e, [e]);
+    let ev = se(e,[e]);
     ev['eventName'] = ev.constructor.name;
     socketToSsr.send(JSON.stringify({
       "action": "callEventHandler",
