@@ -69,7 +69,7 @@ jobs:
           cd ./examples/website/src
           nim js -d:danger --opt:size --checks:off --assertions:off --hints:off --warnings:off --panics:off --lineDir:off main
           echo "minify js"
-          $input_data=$(cat input.js)
+          $input_data=$(cat main.js)
           curl -X POST -H "Content-Type: application/x-www-form-urlencoded" --data-urlencode "input=$input_data" https://www.toptal.com/developers/javascript-minifier/api/raw -o main.js
           cd ../../..
           mkdir ./docs/happyx/public/
