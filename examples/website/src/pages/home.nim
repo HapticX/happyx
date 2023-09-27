@@ -15,10 +15,10 @@ mount Home:
     # Component usage
     tDiv(class = "flex flex-col gap-2 bg-[{Background}] dark:bg-[{BackgroundDark}] text-[{Foreground}] dark:text-[{ForegroundDark}]"):
       tDiv(id = "cover", class = "flex flex-col gap-2 relative justify-center items-center h-screen"):
-        tImg(src = "/happyx/public/cover_gradient.svg", class = "absolute h-screen w-screen object-cover pointer-events-none")
-        tImg(src = "/happyx/public/nim_logo.svg", class = "z-10 pointer-events-none")
-        tImg(src = "/happyx/public/HappyX.svg", class = "z-10 pointer-events-none")
-        tImg(src = "/happyx/public/desc.svg", class = "z-10 pointer-events-none")
+        tImg(src = "/happyx/public/cover_gradient.svg", alt = "", class = "absolute h-screen w-screen object-cover pointer-events-none")
+        tImg(src = "/happyx/public/nim_logo.svg", alt = "Nim logo", class = "z-10 pointer-events-none")
+        tImg(src = "/happyx/public/HappyX.svg", alt = "HappyX logo", class = "z-10 pointer-events-none")
+        tImg(src = "/happyx/public/desc.svg", alt = "HappyX description", class = "z-10 pointer-events-none")
       # Drawer
       component drawer_comp
       # Main content
