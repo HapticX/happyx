@@ -296,10 +296,13 @@ proc replaceIter*(
 
 proc attribute*(attr: NimNode): NimNode =
   ## Converts `nnkExprEqExpr` to `nnkColonExpr`
-  newColonExpr(
-    newStrLitNode($attr[0]),
-    formatNode(attr[1])
-  )
+  if attr.kind in AtomicNodes:
+    newColonExpr(newLit("_"), formatNode(attr))
+  else:
+    newColonExpr(
+      newLit($attr[0]),
+      formatNode(attr[1])
+    )
 
 
 proc addAttribute*(node, key, value: NimNode, inComponent: bool = false) =
