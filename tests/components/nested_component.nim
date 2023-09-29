@@ -6,7 +6,7 @@ component NestedComponent1:
 
   `template`:
     tDiv:
-      class = "p-28 bg-red-200"
+      class := "p-28 bg-red-200"
       {self.counter}
       @click:
         echo self.counter
@@ -18,7 +18,7 @@ component NestedComponent2:
 
   `template`:
     tDiv:
-      class = "p-28 bg-blue-200"
+      class := "p-28 bg-blue-200"
       {self.counter}
       component NestedComponent1
       tButton:
