@@ -84,7 +84,7 @@ app.routes:
   notfound:
     nim:
       echo currentRoute
-    class = "myClass"
+    class := "myClass"
     "Oops! Not found!"
 
 app.start()
