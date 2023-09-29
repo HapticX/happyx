@@ -317,13 +317,13 @@ proc addAttribute*(node, key, value: NimNode, inComponent: bool = false) =
         value
   if node.len == 2:
     node.add(newCall("newStringTable", newNimNode(nnkTableConstr).add(
-      newColonExpr(newStrLitNode($key), v)
+      newColonExpr(newLit($key), v)
     )))
-  elif node[2].kind == nnkCall and $node[2][0] == "newStringTable":
-    node[2][1].add(newColonExpr(newStrLitNode($key), v))
+  elif node[2].kind == nnkCall and node[2][0] == ident"newStringTable":
+    node[2][1].add(newColonExpr(newLit($key), v))
   else:
     node.insert(2, newCall("newStringTable", newNimNode(nnkTableConstr).add(
-      newColonExpr(newStrLitNode($key), v)
+      newColonExpr(newLit($key), v)
     )))
 
 
@@ -629,9 +629,20 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
         newCall("initTag", newStrLitNode("div"), newCall("@", newNimNode(nnkBracket)), newLit(true))
       ))
     
-    elif statement.kind == nnkAsgn:
+    elif statement.kind == nnkInfix and statement[0] == ident":=":
       # Attributes
-      result.addAttribute(statement[0], statement[1], inComponent)
+      result.addAttribute(
+        statement[1],
+        if statement[2].kind in {nnkStrLit, nnkTripleStrLit}: statement[2] else: statement[2].toStrLit,
+        inComponent
+      )
+    
+    elif statement.kind == nnkAsgn:
+      # Var reassign
+      result.add(newStmtList(
+        statement,
+        newCall("initTag", newStrLitNode("div"), newCall("@", newNimNode(nnkBracket)), newLit(true))
+      ))
     
     # Events handling
     elif (statement.kind == nnkPrefix and statement[0] == ident"@") or (statement.kind == nnkCall and statement[0].kind == nnkPrefix and statement[0][0] == ident"@"):
