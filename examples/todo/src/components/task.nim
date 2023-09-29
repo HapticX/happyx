@@ -6,7 +6,7 @@ component Task:
   text: string = "Default text"
 
   `template`:
-    class =
+    class :=
       if self.isChecked:
         "flex gap-2 bg-green-400 rounded-xl px-4 py-2 w-full cursor-pointer select-none transition-all"
       else:
