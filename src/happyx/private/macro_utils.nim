@@ -633,7 +633,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
       # Attributes
       result.addAttribute(
         statement[1],
-        if statement[2].kind in {nnkStrLit, nnkTripleStrLit}: statement[2] else: statement[2].toStrLit,
+        if statement[2].kind in {nnkIntLit..nnkFloat128Lit}: statement[2].toStrLit else: statement[2],
         inComponent
       )
     
