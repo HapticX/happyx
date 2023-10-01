@@ -778,15 +778,13 @@ socketToSsr.onmessage=function(m){
     if statement.kind == nnkDiscardStmt:
       continue
     if statement.kind in [nnkCall, nnkCommand]:
-      echo statement[0].toStrLit, ", ", statement[1].toStrLit
       if statement[^1].kind == nnkStmtList:
         # Check variable usage
         if statement[^1].isIdentUsed(ident"statusCode"):
           statement[^1].insert(0, newVarStmt(ident"statusCode", newLit(200)))
         if statement[^1].isIdentUsed(ident"outHeaders"):
           statement[^1].insert(0, newVarStmt(ident"outHeaders", newCall("newCustomHeaders")))
-        if statement[^1].isIdentUsed(ident"cookies") or
-            statement[^1].isIdentUsed(ident"startSession"):
+        if statement[^1].isIdentUsed(ident"cookies") or statement[^1].isIdentUsed(ident"startSession"):
           statement[^1].insert(0, newVarStmt(ident"cookies", cookiesOutVar))
       # "/...": statement list
       if statement[1].kind == nnkStmtList and statement[0].kind == nnkStrLit:
@@ -824,7 +822,6 @@ socketToSsr.onmessage=function(m){
       #   ...
       elif statement[0].kind == nnkIdent and statement[0] != ident"mount" and statement[1].kind in {nnkStrLit, nnkTripleStrLit, nnkInfix}:
         let name = ($statement[0]).toUpper()
-        echo name, ", ", statement[1].toStrLit
         if name == "STATICDIR":
           if statement[1].kind in [nnkStrLit, nnkTripleStrLit]:
             ifStmt.insert(
