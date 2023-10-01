@@ -18,7 +18,9 @@ when enableHttpBeast:
 elif enableHttpx:
   import httpx
 elif enableMicro:
-  import microasynchttpserver
+  import
+    asynchttpserver,
+    microasynchttpserver
 else:
   import asynchttpserver
 
