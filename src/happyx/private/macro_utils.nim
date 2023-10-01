@@ -294,24 +294,33 @@ proc replaceIter*(
       result = true
 
 
-proc attribute*(attr: NimNode): NimNode =
+proc attribute*(attr: NimNode, inComponent: bool = false): NimNode =
   ## Converts `nnkExprEqExpr` to `nnkColonExpr`
   if attr.kind in AtomicNodes:
     newColonExpr(newLit("_"), formatNode(attr))
   else:
+    var
+      k = ($attr[0]).toLower()
+      v =
+        if k == "id" and attr[1].kind in {nnkStrLit, nnkTripleStrLit} and inComponent:
+          newLit($attr[1] & "{self.uniqCompId}")
+        elif k == "id" and attr[1].kind in CallNodes and attr[1][0] == ident"fmt" and inComponent:
+          newCall("fmt", newLit($attr[1][1] & "{self.uniqCompId}"))
+        else:
+          attr[1]
     newColonExpr(
       newLit($attr[0]),
-      formatNode(attr[1])
+      formatNode(v)
     )
 
 
 proc addAttribute*(node, key, value: NimNode, inComponent: bool = false) =
   var
-    k = $key
+    k = ($key).toLower()
     v =
-      if k.toLower() == "id" and value.kind in {nnkStrLit, nnkTripleStrLit} and inComponent:
+      if k == "id" and value.kind in {nnkStrLit, nnkTripleStrLit} and inComponent:
         newLit($value & "{self.uniqCompId}")
-      elif k.toLower() == "id" and value.kind == nnkCall and value[0] == ident"fmt" and inComponent:
+      elif k == "id" and value.kind in CallNodes and value[0] == ident"fmt" and inComponent:
         newCall("fmt", newLit($value[1] & "{self.uniqCompId}"))
       else:
         value
@@ -495,7 +504,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
       # tag(attr="value")
       elif statementList.kind != nnkStmtList:
         for attr in statement[1 .. statement.len-1]:
-          attrs.add(attribute(attr))
+          attrs.add(attribute(attr, inComponent))
         if attrs.len > 0:
           whenStmt[1].add(newCall("initTag", tagName, newCall("newStringTable", attrs)))
         else:

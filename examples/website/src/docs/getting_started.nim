@@ -15,10 +15,10 @@ component GettingStarted:
         {translate("Before you begin, please make sure you have")}
         tCode: tA(href = "https://nim-lang.org"):
           {translate("Nim programming language")}
-        {translate(" version 1.6.14 or higher installed, or ")}
+        {translate(" version 1.6.14 or higher, or ")}
         tCode: tA(href = "https://python.org"):
           {translate("Python programming language")}
-        {translate(" version 3.9 and above.")}
+        {translate(" version 3.7 and above.")}
       
       tH2: {translate("Installing 📥")}
       tP: {translate("To install HappyX you can write this command")}

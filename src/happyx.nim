@@ -255,6 +255,7 @@
 ## - [server](happyx/ssr/server.html) provides routing and working with server.
 ## - [form data](happyx/ssr/form_data.html) provides routing and working with server.
 ## - [request models](happyx/ssr/request_models.html) provides routing and working with server.
+## - [session](happyx/ssr/session.html) provides working with sessions.
 ## 
 ## ### Built-In UI 🎴
 ## 
@@ -295,6 +296,7 @@ when not defined(js):
     happyx/ssr/request_models,
     happyx/ssr/form_data,
     happyx/ssr/cors,
+    happyx/ssr/session,
     happyx/core/secure
 
   export
@@ -302,6 +304,7 @@ when not defined(js):
     request_models,
     form_data,
     cors,
+    session,
     secure
 
 import

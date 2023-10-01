@@ -59,7 +59,7 @@ component CodeBlockGuide:
           let source = self.sources.val[i]
         if currentLanguage == source.title:
           tCode(
-            id = "{source.id}{self.uniqCompId}",
+            id = "{source.id}",
             language = source.lang,
             class =
               if source.playResult.states.len > 0:
@@ -81,7 +81,7 @@ component CodeBlockGuide:
           if source.playResult.states.len > 0:
             tDiv(class = "flex bg-[#1a1b26] rounded-b-md"):
               tDiv(
-                id = "{source.id}{self.uniqCompId}_play_button",
+                id = "{source.id}play_button",
                 class = "flex gap-2 justify-center items-center select-none cursor-pointer px-4 pb-2"
               ):
                 tSvg(class = "w-16 lg:w-8 h-16 lg:h-8 fill-white", viewBox = "0 0 24 24", fill = "none"):
@@ -93,8 +93,8 @@ component CodeBlockGuide:
                 @click:
                   let
                     source = self.CodeBlockGuide.sources.val[i]
-                    playButton = document.getElementById(fmt"{source.id}{self.uniqCompId}_play_button")
-                    playResult = document.getElementById(fmt"{source.id}{self.uniqCompId}_play_result")
+                    playButton = document.getElementById(fmt"{source.id}play_button{self.uniqCompId}")
+                    playResult = document.getElementById(fmt"{source.id}play_result{self.uniqCompId}")
                     playStates: seq[tuple[text, html, lang: cstring, waitMs: int]] = source.playResult.states
                   var idx = 0
 
@@ -129,7 +129,7 @@ component CodeBlockGuide:
                     console.log(state.Field0, state.Field1, state.Field2, state.Field3);
                   });
                   """.}
-              tDiv(id = "{source.id}{self.uniqCompId}_play_result", class = "w-full pb-4")
+              tDiv(id = "{source.id}play_result", class = "w-full pb-4")
   
   @updated:
     echo "updated code block guide"

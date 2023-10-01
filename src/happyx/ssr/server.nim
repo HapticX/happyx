@@ -785,7 +785,8 @@ socketToSsr.onmessage=function(m){
           statement[^1].insert(0, newVarStmt(ident"statusCode", newLit(200)))
         if statement[^1].isIdentUsed(ident"outHeaders"):
           statement[^1].insert(0, newVarStmt(ident"outHeaders", newCall("newCustomHeaders")))
-        if statement[^1].isIdentUsed(ident"cookies"):
+        if statement[^1].isIdentUsed(ident"cookies") or
+            statement[^1].isIdentUsed(ident"startSession"):
           statement[^1].insert(0, newVarStmt(ident"cookies", cookiesOutVar))
       # "/...": statement list
       if statement[1].kind == nnkStmtList and statement[0].kind == nnkStrLit:

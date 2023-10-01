@@ -20,8 +20,10 @@ component IntroductionLanguageChooser:
       @click:
         var lang: cstring = $(self.IntroductionLanguageChooser.lang.val)
         buildJs:
+          console.log(~lang)
           localStorage["happyx_programming_language"] = ~lang
         currentLanguage.set(self.lang)
+        application.router()
 
 
 component Contributor:
@@ -139,3 +141,7 @@ component Introduction:
             component Contributor("Stephan Zhdanov", "https://github.com/ret7020", "https://avatars.githubusercontent.com/u/55328925?v=4")
             component Contributor("lost22git", "https://github.com/lost22git", "https://avatars.githubusercontent.com/u/65008815?v=4")
             component Contributor("Optimax125", "https://github.com/Optimax125", "https://avatars.githubusercontent.com/u/53735809?v=4")
+            component Contributor("jbjuin", "https://github.com/jbjuin", "https://avatars.githubusercontent.com/u/2361571?v=4")
+            component Contributor("Matthew Stopa", "https://github.com/MattStopa", "https://avatars.githubusercontent.com/u/191057?v=4")
+            component Contributor("Carlo Capocasa", "https://github.com/capocasa", "https://avatars.githubusercontent.com/u/1167940?v=4")
+            component Contributor("Alikusnadi", "https://github.com/dodolboks", "https://avatars.githubusercontent.com/u/91905?v=4")
