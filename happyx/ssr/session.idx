@@ -1,0 +1,8 @@
+Session	happyx/ssr/session.html#Session	session: Session	
+genSessionId	happyx/ssr/session.html#genSessionId	session: genSessionId(): string	
+getSession	happyx/ssr/session.html#getSession,Request,string,seq[string],int64	session: getSession(req: Request; host: string; cookies: var seq[string];\n           timeout: int64 = 0): Session	
+startSession	happyx/ssr/session.html#startSession.t	session: startSession(): Session	
+startSession	happyx/ssr/session.html#startSession.t,int64	session: startSession(timeout: int64): Session	
+closeSession	happyx/ssr/session.html#closeSession.t,string	session: closeSession(sessionId: string)	
+closeSession	happyx/ssr/session.html#closeSession.t,Session	session: closeSession(session: Session)	
+Session 🔌	happyx/ssr/session.html#session-🔌	 Session 🔌	

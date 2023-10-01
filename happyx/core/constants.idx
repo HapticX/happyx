@@ -16,6 +16,7 @@ enableUi	happyx/core/constants.html#enableUi	constants: enableUi
 enableApiDoc	happyx/core/constants.html#enableApiDoc	constants: enableApiDoc	
 enableOrm	happyx/core/constants.html#enableOrm	constants: enableOrm	
 numThreads	happyx/core/constants.html#numThreads	constants: numThreads	
+sessionIdLength	happyx/core/constants.html#sessionIdLength	constants: sessionIdLength	
 appName	happyx/core/constants.html#appName	constants: appName	
 apiDocsPath	happyx/core/constants.html#apiDocsPath	constants: apiDocsPath	
 cryptoMethod	happyx/core/constants.html#cryptoMethod	constants: cryptoMethod	

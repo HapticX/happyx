@@ -125,8 +125,8 @@ window.addEventListener('DOMContentLoaded', main);
 
   </ul>
   <ul class="simple nested-toc-section">attribute
-      <li><a class="reference" href="#attribute%2CNimNode"
-    title="attribute(attr: NimNode): NimNode">attribute(attr: NimNode): NimNode</a></li>
+      <li><a class="reference" href="#attribute%2CNimNode%2Cbool"
+    title="attribute(attr: NimNode; inComponent: bool = false): NimNode">attribute(attr: NimNode; inComponent: bool = false): NimNode</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">bracket
@@ -290,8 +290,9 @@ window.addEventListener('DOMContentLoaded', main);
 
 </dd>
 </div>
-<div id="attribute,NimNode">
-<dt><pre><span class="Keyword">proc</span> <a href="#attribute%2CNimNode"><span class="Identifier">attribute</span></a><span class="Other">(</span><span class="Identifier">attr</span><span class="Other">:</span> <span class="Identifier">NimNode</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">NimNode</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<div id="attribute,NimNode,bool">
+<dt><pre><span class="Keyword">proc</span> <a href="#attribute%2CNimNode%2Cbool"><span class="Identifier">attribute</span></a><span class="Other">(</span><span class="Identifier">attr</span><span class="Other">:</span> <span class="Identifier">NimNode</span><span class="Other">;</span> <span class="Identifier">inComponent</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">NimNode</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 Converts <tt class="docutils literal"><span class="pre"><span class="Identifier">nnkExprEqExpr</span></span></tt> to <tt class="docutils literal"><span class="pre"><span class="Identifier">nnkColonExpr</span></span></tt>
@@ -466,7 +467,7 @@ Creates a new lambda
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-09-29 08:59:35 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-10-01 05:55:03 UTC</small>
       </div>
     </div>
   </div>
