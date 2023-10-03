@@ -653,6 +653,13 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
         newCall("initTag", newStrLitNode("div"), newCall("@", newNimNode(nnkBracket)), newLit(true))
       ))
     
+    elif statement.kind in {nnkBind, nnkBindStmt, nnkMixinStmt}:
+      # binds/mixins
+      result.add(newStmtList(
+        statement,
+        newCall("initTag", newStrLitNode("div"), newCall("@", newNimNode(nnkBracket)), newLit(true))
+      ))
+    
     # Events handling
     elif (statement.kind == nnkPrefix and statement[0] == ident"@") or (statement.kind == nnkCall and statement[0].kind == nnkPrefix and statement[0][0] == ident"@"):
       let
@@ -857,7 +864,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
       result.add(newCall("initTag", newCall("$", statement[0]), newLit(true)))
     
     # if-elif or case-of
-    elif statement.kind in [nnkCaseStmt, nnkIfStmt, nnkIfExpr]:
+    elif statement.kind in [nnkCaseStmt, nnkIfStmt, nnkIfExpr, nnkWhenStmt]:
       let start =
         if statement.kind == nnkCaseStmt:
           1

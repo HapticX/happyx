@@ -66,7 +66,7 @@ when defined(js):
       appId*: cstring
       router*: proc(force: bool = false)
     BaseComponent* = ref BaseComponentObj
-    BaseComponentObj* = object of RootObj
+    BaseComponentObj* {.inheritable.} = object
       uniqCompId*: string
       isCreated*: bool
       slot*: TagRef
@@ -87,7 +87,7 @@ else:
       appId*: cstring
       router*: proc(force: bool = false)
     BaseComponent* = ref BaseComponentObj
-    BaseComponentObj* = object of RootObj
+    BaseComponentObj* {.inheritable.} = object
       uniqCompId*: string
       isCreated*: bool
       slot*: TagRef
