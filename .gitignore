@@ -38,3 +38,9 @@ bindings/**/dist/
 # Testing :)
 a.nim
 private_test*.nim
+
+
+# NodeJS builds
+src/happyx/bindings/bin/
+src/happyx/bindings/denim_build/
+src/happyx/bindings/build_denim.sh
