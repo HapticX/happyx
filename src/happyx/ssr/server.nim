@@ -1151,7 +1151,7 @@ socketToSsr.onmessage=function(m){
   elif exportPython or defined(docgen):
     stmtList.add(newVarStmt(ident"reqResponded", newLit(false)))
     stmtList.add(newNimNode(nnkForStmt).add(
-      ident"route", newDotExpr(ident"self", ident"routes", ident"urlPath"),
+      ident"route", newDotExpr(ident"self", ident"routes"),
       newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
         newCall(
           "or",
