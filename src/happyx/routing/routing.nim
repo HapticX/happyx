@@ -576,7 +576,7 @@ when exportPython or defined(docgen) or defined(napibuild):
     
   when exportPython:
     type RouteObject* = PyObject
-  else:
+  elif defined(napibuild):
     type RouteObject* = napi_value
 
   proc getRouteParams*(routeData: RouteDataObj, found_regexp_matches: seq[RegexMatch2],
