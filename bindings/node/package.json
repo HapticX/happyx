@@ -1,21 +1,22 @@
 {
-  "name": "happyx",
-  "version": "1.0.0",
+  "name": "happyxjs",
+  "version": "1.0.7",
   "description": "Happyx bindings for NodeJS",
   "scripts": {
-    "dev": "tsc && mkdir -p build/src/bin && cp src/bin/node.node build/src/bin/node.node && node build/tests/test1.js",
-    "test:first": "tsc && mkdir -p build/src/bin && cp src/bin/node.node build/src/bin/node.node && node build/tests/test1.js",
-    "test:second": "tsc && mkdir -p build/src/bin && cp src/bin/node.node build/src/bin/node.node && node build/tests/test2.js",
-    "build": "tsc && mkdir -p build/src && cp src/bin/node.node build/src/bin/node.node"
+    "dev": "tsc && mkdir -p dist/src/bin && cp src/bin/node.node dist/src/bin/node.node && node dist/tests/test1.js",
+    "test:first": "tsc && mkdir -p dist/src/bin && cp src/bin/node.node dist/src/bin/node.node && node dist/tests/test1.js",
+    "build": "tsc && mkdir -p dist/src/bin && cp src/bin/node.node dist/src/bin/node.node"
   },
-  "files": ["build", "README.md", "tests"],
-  "main": "build/index.js",
-  "types": "build/index.d.ts",
+  "files": ["dist", "README.md"],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "keywords": [
     "web",
     "framework",
     "typescript",
     "happyx",
+    "napi",
+    "c++",
     "hapticx",
     "bindings",
     "server",
@@ -24,10 +25,10 @@
   "author": "HapticX",
   "license": "MIT",
   "dependencies": {
-    "prettier": "^3.0.3",
     "typescript": "^5.2.2"
   },
   "devDependencies": {
+    "prettier": "^3.0.3",
     "@types/node": "^20.8.2"
   },
   "homepage": "https://hapticx.github.io/happyx/#/",

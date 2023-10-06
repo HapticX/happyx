@@ -1,5 +1,5 @@
 {
-  "files": ["src/index.ts", "tests/test1.ts", "tests/test2.ts"],
+  "files": ["index.ts", "src/index.ts", "tests/test1.ts"],
   "compilerOptions": {
     "moduleDetection": "auto",
     "allowJs": true,
@@ -8,7 +8,7 @@
     "module": "CommonJS",
     "declaration": true,
     "declarationMap": true,
-    "outDir": "./build",
+    "outDir": "./dist",
     "rootDir": "./",
     "noEmit": false,
     "strict": true,
