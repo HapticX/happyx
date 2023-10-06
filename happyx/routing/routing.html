@@ -126,6 +126,8 @@ window.addEventListener('DOMContentLoaded', main);
   requestModels*: seq[RequestModelObj]
   purePath*: string
   path*: string">RouteDataObj</a></li>
+  <li><a class="reference" href="#RouteObject"
+    title="RouteObject = PyObject">RouteObject</a></li>
 
   </ul>
 </li>
@@ -146,9 +148,9 @@ window.addEventListener('DOMContentLoaded', main);
       <li><a class="reference" href="#getRouteParams%2CRouteDataObj%2Cseq%5BRegexMatch2%5D%2Cstring%2Cseq%5BHandlerParam%5D%2Cstring%2Cbool"
     title="getRouteParams(routeData: RouteDataObj; found_regexp_matches: seq[RegexMatch2];
                urlPath: string = &quot;&quot;; handlerParams: seq[HandlerParam] = @[];
-               body: string = &quot;&quot;; force: bool = false): PyObject">getRouteParams(routeData: RouteDataObj; found_regexp_matches: seq[RegexMatch2];
+               body: string = &quot;&quot;; force: bool = false): RouteObject">getRouteParams(routeData: RouteDataObj; found_regexp_matches: seq[RegexMatch2];
                urlPath: string = &quot;&quot;; handlerParams: seq[HandlerParam] = @[];
-               body: string = &quot;&quot;; force: bool = false): PyObject</a></li>
+               body: string = &quot;&quot;; force: bool = false): RouteObject</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">handleRoute
@@ -257,6 +259,14 @@ window.addEventListener('DOMContentLoaded', main);
 
 </dd>
 </div>
+<div id="RouteObject">
+<dt><pre><a href="routing.html#RouteObject"><span class="Identifier">RouteObject</span></a> <span class="Other">=</span> <span class="Identifier">PyObject</span></pre></dt>
+<dd>
+
+
+
+</dd>
+</div>
 
 </dl></div>
 <div class="section" id="12">
@@ -286,7 +296,7 @@ Finds and exports route arguments
                     <span class="Identifier">found_regexp_matches</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">RegexMatch2</span><span class="Other">]</span><span class="Other">;</span>
                     <span class="Identifier">urlPath</span><span class="Other">:</span> <span class="Identifier">string</span> <span class="Other">=</span> <span class="StringLit">&quot;&quot;</span><span class="Other">;</span>
                     <span class="Identifier">handlerParams</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="../bindings/python_types.html#HandlerParam"><span class="Identifier">HandlerParam</span></a><span class="Other">]</span> <span class="Other">=</span> <span class="Operator">@</span><span class="Other">[</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">body</span><span class="Other">:</span> <span class="Identifier">string</span> <span class="Other">=</span> <span class="StringLit">&quot;&quot;</span><span class="Other">;</span>
-                    <span class="Identifier">force</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">PyObject</span> {.
+                    <span class="Identifier">force</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">)</span><span class="Other">:</span> <a href="routing.html#RouteObject"><span class="Identifier">RouteObject</span></a> {.
     <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">,</span> <span class="Identifier">OSError</span><span class="Other">,</span> <span class="Identifier">IOError</span><span class="Other">,</span> <span class="Identifier">EOFError</span><span class="Other">,</span> <span class="Identifier">KeyError</span><span class="Other">]</span><span class="Other">,</span>
     <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">,</span> <span class="Identifier">ReadIOEffect</span><span class="Other">,</span> <span class="Identifier">WriteIOEffect</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
@@ -394,7 +404,7 @@ Handles route and receive route data object.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-10-03 02:00:21 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-10-06 08:10:30 UTC</small>
       </div>
     </div>
   </div>
