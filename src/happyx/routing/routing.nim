@@ -574,9 +574,9 @@ when exportPython or defined(docgen) or defined(napibuild):
       else:
         `res`[`name`] = `parseFunc`(`foundGroup`)
     
-  when exportPython:
+  when not defined(napibuild):
     type RouteObject* = PyObject
-  elif defined(napibuild):
+  else:
     type RouteObject* = napi_value
 
   proc getRouteParams*(routeData: RouteDataObj, found_regexp_matches: seq[RegexMatch2],
