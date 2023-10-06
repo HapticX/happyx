@@ -22,6 +22,10 @@ when exportPython or defined(docgen):
     nimpy,
     nimpy/py_types,
     ../bindings/python_types
+elif defined(napibuild):
+  import
+    denim,
+    ../bindings/node_types
 
 
 const declaredPathParams = CacheTable"HappyXDeclaredPathParams"
@@ -45,25 +49,8 @@ type
     purePath*: string
     path*: string
 
-when not exportPython:
-  type RouteParamType = object
-    name: string
-    pattern: string
-    creator: NimNode
 
-
-  const registeredRouteParamTypes = CacheTable"HappyXRegisteredRouteParamTypes"
-
-
-  macro registerRouteParamType*(name, pattern: string, creator: untyped) =
-    if re2"^[a-zA-Z][a-zA-Z0-9_]*$" notin $name:
-      raise newException(
-        ValueError,
-        fmt"route param type name should be identifier (a-zA-Z0-0_), but got '{name}'"
-      )
-    registeredRouteParamTypes[$name] = newStmtList(name, pattern, creator)
-
-elif exportPython:
+when exportPython:
   type RouteParamType = object
     name: string
     pattern: string
@@ -94,6 +81,44 @@ elif exportPython:
       for v in registeredRouteParamTypes.values():
         if $(v.creator.getAttr("__class__").getAttr("__name__")) == name or $(v.creator.getAttr("__name__")) == name:
           return v
+
+elif defined(napibuild):
+  import denim
+
+  type RouteParamType = object
+    name: string
+    pattern: string
+    creator: napi_value
+
+
+  var registeredRouteParamTypes = newTable[string, RouteParamType]()
+
+  proc registerRouteParamTypeAux*(name, pattern: string, creator: napi_value) =
+    if re2"^[a-zA-Z][a-zA-Z0-9_]*$" notin name:
+      raise newException(
+        ValueError,
+        fmt"route param type name should be identifier (a-zA-Z0-0_), but got '{name}'"
+      )
+    registeredRouteParamTypes[name] = RouteParamType(
+      pattern: pattern, name: name, creator: creator
+    )
+else:
+  type RouteParamType = object
+    name: string
+    pattern: string
+    creator: NimNode
+
+
+  const registeredRouteParamTypes = CacheTable"HappyXRegisteredRouteParamTypes"
+
+
+  macro registerRouteParamType*(name, pattern: string, creator: untyped) =
+    if re2"^[a-zA-Z][a-zA-Z0-9_]*$" notin $name:
+      raise newException(
+        ValueError,
+        fmt"route param type name should be identifier (a-zA-Z0-0_), but got '{name}'"
+      )
+    registeredRouteParamTypes[$name] = newStmtList(name, pattern, creator)
 
 
 proc newPathParamObj*(name, paramType, defaultValue: string, optional, mutable: bool): PathParamObj =
@@ -136,20 +161,20 @@ proc handleRoute*(route: string): RouteDataObj =
   # custom patterns
   var types = ""
   {.gcsafe.}:
-    when not exportPython:
-      for key, routeParamType in registeredRouteParamTypes.pairs():
-        routePathStr = routePathStr.replace(
-          re2(r"\{[a-zA-Z][a-zA-Z0-9_]*(\??):" & $routeParamType[0] & r"(\[m\])?(=\S+?)?\}"),
-          "(" & $routeParamType[1] & ")$1"
-        )
-        types &= "|" & $routeParamType[0]
-    else:
+    when defined(napibuild) or exportPython:
       for routeParamType in registeredRouteParamTypes.values():
         routePathStr = routePathStr.replace(
           re2(r"\{[a-zA-Z][a-zA-Z0-9_]*(\??):" & routeParamType.name & r"(\[m\])?(=\S+?)?\}"),
           "(" & routeParamType.pattern & ")$1"
         )
         types &= "|" & routeParamType.name
+    else:
+      for key, routeParamType in registeredRouteParamTypes.pairs():
+        routePathStr = routePathStr.replace(
+          re2(r"\{[a-zA-Z][a-zA-Z0-9_]*(\??):" & $routeParamType[0] & r"(\[m\])?(=\S+?)?\}"),
+          "(" & $routeParamType[1] & ")$1"
+        )
+        types &= "|" & $routeParamType[0]
   # Remove models
   when exportPython:
     routePathStr = routePathStr.replace(re2"\[[a-zA-Z][a-zA-Z0-9_]*(:[a-zA-Z][a-zA-Z0-9_]*)?(\[m\])?(:[a-zA-Z\\-]+)?\]", "")
@@ -364,14 +389,14 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode =
           ))
         else:
           # custom type
-          when not exportPython:
+          when defined(napibuild) or exportPython:
+              letSection[0].add(foundGroup)
+          else:
             if $i.paramType in registeredRouteParamTypes:
               var data = registeredRouteParamTypes[$i.paramType]
               letSection[0].add(newCall(data[2], foundGroup))
             # regex
             else:
-              letSection[0].add(foundGroup)
-          else:
               letSection[0].add(foundGroup)
     else:
       case i.paramType:
@@ -390,14 +415,14 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode =
           letSection[0].add(newCall(newNimNode(nnkBracketExpr).add(ident"parseEnum", ident(enumName)), foundGroup, newCall("default", ident(enumName))))
         else:
           # custom type
-          when not exportPython:
+          when exportPython or defined(napibuild):
+              letSection[0].add(foundGroup)
+          else:
             if $i.paramType in registeredRouteParamTypes:
               var data = registeredRouteParamTypes[$i.paramType]
               letSection[0].add(newCall(data[2], foundGroup))
             # regex
             else:
-              letSection[0].add(foundGroup)
-          else:
               letSection[0].add(foundGroup)
     elifBranch[1].insert(0, letSection)
     hasChildren = true
@@ -480,7 +505,7 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode =
   return newEmptyNode()
 
 
-when exportPython or defined(docgen):
+when exportPython or defined(docgen) or defined(napibuild):
   proc parseBoolOrJString*(str: string): JsonNode =
     try:
       return newJBool(parseBool(str))
@@ -548,12 +573,20 @@ when exportPython or defined(docgen):
           `res`[`name`] = `parseFunc`(`defaultValue`)
       else:
         `res`[`name`] = `parseFunc`(`foundGroup`)
+    
+  when exportPython:
+    type RouteObject* = PyObject
+  else:
+    type RouteObject* = napi_value
 
   proc getRouteParams*(routeData: RouteDataObj, found_regexp_matches: seq[RegexMatch2],
                        urlPath: string = "", handlerParams: seq[HandlerParam] = @[], body: string = "",
-                       force: bool = false): PyObject =
+                       force: bool = false): RouteObject =
     ## Finds and exports route arguments
-    var res = pyDict()
+    when defined(napibuild):
+      var res = newJObject()
+    else:
+      var res = pyDict()
     var idx = 0
     for i in routeData.pathParams:
       if i.name notin handlerParams and not force:
@@ -689,7 +722,10 @@ when exportPython or defined(docgen):
         case i.target.toLower()
         of "json":
           res[i.name] = convertJson(modelData, body)
-    return res
+    when defined(napibuild):
+      return res.toJsObj()
+    else:
+      return res
 
 
 proc pathParamsBoilerplate(node: NimNode, kind, regexVal: var string) =

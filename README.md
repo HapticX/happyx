@@ -6,6 +6,9 @@
 ![Nim language](https://img.shields.io/badge/>=1.6.14-1b1e2b?style=for-the-badge&logo=nim&logoColor=f1fa8c&label=Nim&labelColor=2b2e3b)
 ![Python language](https://img.shields.io/badge/>=3.7.x-1b1e2b?style=for-the-badge&logo=python&logoColor=f1fa8c&label=Python&labelColor=2b2e3b)
 
+![JavaScript language](https://img.shields.io/badge/ES6-1b1e2b?style=for-the-badge&logo=javascript&logoColor=f1fa8c&label=JavaScript&labelColor=2b2e3b)
+![TypeScript language](https://img.shields.io/badge/>=5.2.2-1b1e2b?style=for-the-badge&logo=typescript&logoColor=f1fa8c&label=TypeScript&labelColor=2b2e3b)
+
 [![wakatime](https://wakatime.com/badge/user/eaf11f95-5e2a-4b60-ae6a-38cd01ed317b/project/bbd13748-36e6-4383-ac40-9c4e72c060d1.svg?style=for-the-badge)](https://wakatime.com/badge/user/eaf11f95-5e2a-4b60-ae6a-38cd01ed317b/project/bbd13748-36e6-4383-ac40-9c4e72c060d1)
 [![Testing](https://img.shields.io/github/actions/workflow/status/HapticX/HappyX/tests.yml?label=Testing&logo=github&style=for-the-badge)](https://github.com/HapticX/happyx/actions/workflows/tests.yml)
 
@@ -15,7 +18,8 @@
 
 [![VS Code Plugin](https://img.shields.io/badge/Plugin-1b1e2b?style=for-the-badge&logo=visualstudiocode&logoColor=f1fa8c&label=VS%20Code&labelColor=2b2e3b)](https://github.com/HapticX/hpx-vs-code)
 
-[![Python Bindings](https://img.shields.io/badge/Bindings-1b1e2b?style=for-the-badge&logo=python&logoColor=f1fa8c&label=Python&labelColor=2b2e3b)]([https://github.com/HapticX/hpx-vs-code](https://pypi.org/project/happyx/))
+[![Python Bindings](https://img.shields.io/badge/Bindings-1b1e2b?style=for-the-badge&logo=python&logoColor=f1fa8c&label=Python&labelColor=2b2e3b)](https://pypi.org/project/happyx/)
+![NodeJS Bindings](https://img.shields.io/badge/Bindings-1b1e2b?style=for-the-badge&logo=npm&logoColor=f1fa8c&label=NodeJS&labelColor=2b2e3b)
 
 </div>
 
@@ -50,6 +54,7 @@ HappyX is macro-oriented web framework so you mustn't write a lot of code ✨
 - Hot code reloading (only for `SPA` projects as of now).
 - Built-in UI library (to enable compile with `-d:enableUi` flag).
 - [Python bindings](https://pypi.org/project/happyx/)
+- NodeJS bindings
 
 ## Minimal Example 👩‍💻
 
@@ -87,10 +92,20 @@ import happyx
 # Get Started 👨‍🔬
 
 ## Installing 📥
+### Nimble
+```shell
+nimble install happyx@#head
+```
 
-|        Nimble   |  GitHub    |
-|        :---     |  :---      |
-| <pre lang="bash">nimble install happyx</pre> | <pre lang="bash">nimble install https://github.com/HapticX/happyx</pre> |
+### Nimble via Git
+```shell
+nimble install https://github.com/HapticX/happyx
+```
+
+### PyPI
+```shell
+pip install happyx
+```
 
 ## Usage ▶
 ### SSR

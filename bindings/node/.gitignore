@@ -1,0 +1,11 @@
+# NodeJS
+node_modules/
+package-lock.json
+
+# Build
+build/
+
+# Yarn
+yarn.lock
+
+tests/

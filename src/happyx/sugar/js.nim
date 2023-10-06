@@ -223,6 +223,20 @@ proc buildJsProc(body: NimNode, src: var string, lvl: int = 0,
       statement[1].buildJsProc(src, lvl + 2, pretty, inClass, nimNodes, enums, declaredVariables)
       src &= level & "}" & newLine
     
+    # try-catch statement
+    elif statement.kind == nnkTryStmt:
+      src &= level & "try {" & newLine
+      statement[0].buildJsProc(src, lvl + 2, pretty, inClass, nimNodes, enums, declaredVariables)
+      src &= level & "}"
+      if statement[1].kind == nnkExceptBranch:
+        src &= " catch(e) {" & newLine
+        statement[1][^1].buildJsProc(src, lvl + 2, pretty, inClass, nimNodes, enums, declaredVariables)
+        src &= level & "}"
+      if statement.len > 2 and statement[^1].kind == nnkFinally:
+        src &= " finally {" & newLine
+        statement[^1].buildJsProc(src, lvl + 2, pretty, inClass, nimNodes, enums, declaredVariables)
+        src &= level & "}"
+    
     # discard statement
     elif statement.kind == nnkDiscardStmt:
       if statement[0].kind == nnkEmpty:

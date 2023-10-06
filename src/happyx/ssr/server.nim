@@ -84,11 +84,11 @@ export
   asyncdispatch,
   asyncfile,
   logging,
-  terminal,
   cookies,
   colors,
   regex,
   json,
+  terminal,
   os
 
 
@@ -165,6 +165,29 @@ HappyX web framework [SSR/SSG Part]
         instance*: AsyncHttpServer
       components: TableRef[string, BaseComponent]
     ModelBase* = ref object of PyNimObjectExperimental
+elif defined(napibuild):
+  import denim except `%*`
+  import../bindings/node_types
+
+  type
+    Server* = ref object
+      address*: string
+      port*: int
+      logger*: Logger
+      path*: string
+      parent*: Server
+      routes*: seq[Route]
+      environment*: napi_env
+      when enableHttpx:
+        instance*: Settings
+      elif enableHttpBeast:
+        instance*: Settings
+      elif enableMicro:
+        instance*: MicroAsyncHttpServer
+      else:
+        instance*: AsyncHttpServer
+      components: TableRef[string, BaseComponent]
+    ModelBase* = object of RootObj
 else:
   type
     Server* = object
@@ -204,20 +227,45 @@ var
 const liveViews = CacheSeq"HappyXLiveViews"
 
 
-proc ctrlCHook() {.noconv.} =
-  quit(QuitSuccess)
+when defined(napibuild):
+  import ./session
 
-proc onQuit() {.noconv.} =
-  when int(enableHttpBeast) + int(enableHttpx) + int(enableMicro) == 0:
-    try:
-      pointerServer[].instance.close()
-    except:
-      discard
+  var
+    servers*: seq[Server] = @[]
+    requests* = newTable[string, Request]()
+    wsClients* = newTable[string, node_types.WebSocket]()
+  
+  proc registerWsClient*(wsClient: node_types.WebSocket): string {.gcsafe.} =
+    {.gcsafe.}:
+      result = genSessionId()
+      wsClients[result] = wsClient
+  
+  proc unregisterWsClient*(wsClientId: string) {.gcsafe.} =
+    {.gcsafe.}:
+      wsClients.del(wsClientId)
+  
+  proc registerRequest*(req: Request): string {.gcsafe.} =
+    {.gcsafe.}:
+      result = genSessionId()
+      requests[result] = req
+  
+  proc unregisterRequest*(reqId: string) {.gcsafe.} =
+    {.gcsafe.}:
+      requests.del(reqId)
+else:
+  proc ctrlCHook() {.noconv.} =
+    quit(QuitSuccess)
 
+  proc onQuit() {.noconv.} =
+    when int(enableHttpBeast) + int(enableHttpx) + int(enableMicro) == 0:
+      try:
+        pointerServer[].instance.close()
+      except:
+        discard
 
-when not defined(docgen) and not nim_2_0_0:
-  setControlCHook(ctrlCHook)
-  addExitProc(onQuit)
+  when not defined(docgen) and not nim_2_0_0:
+    setControlCHook(ctrlCHook)
+    addExitProc(onQuit)
 
 
 func fgColored*(text: string, clr: ForegroundColor): string {.inline.} =
@@ -325,7 +373,7 @@ template answer*(
   ##      return "Hello, world!"
   ## 
   var h = headers
-  h.addCORSHeaders()
+  addCORSHeaders(h)
   when declaredInScope(outHeaders):
     for key, val in outHeaders.pairs():
       h[key] = val
@@ -509,7 +557,7 @@ proc detectReturnStmt(node: NimNode, replaceReturn: bool = false) =
       node[^1] = newCall("answer", ident"req", node[^1])
 
 
-macro routes*(server: Server, body: untyped): untyped =
+macro routes*(server: Server, body: untyped = newStmtList()): untyped =
   ## You can create routes with this marco
   ## 
   ## #### Available Path Params
@@ -1096,11 +1144,14 @@ socketToSsr.onmessage=function(m){
       newLit(parseEnum[HttpMethod](key)),
       methodTable[key]
     ))
+  # NodeJS Library
+  when defined(napibuild):
+    stmtList.add(newCall("handleNodeRequest", ident"self", ident"req", ident"urlPath"))
   # Python Library
-  when exportPython or defined(docgen):
+  elif exportPython or defined(docgen):
     stmtList.add(newVarStmt(ident"reqResponded", newLit(false)))
     stmtList.add(newNimNode(nnkForStmt).add(
-      ident"route", newDotExpr(ident"self", ident"routes"),
+      ident"route", newDotExpr(ident"self", ident"routes", ident"urlPath"),
       newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
         newCall(
           "or",
@@ -1575,12 +1626,15 @@ socketToSsr.onmessage=function(m){
   if stmtList.isIdentUsed(ident"query"):
     immutableVars.add(newIdentDefs(ident"queryFromUrl", newEmptyNode(), url))
     immutableVars.add(newIdentDefs(ident"query", newEmptyNode(), newCall("parseQuery", ident"queryFromUrl")))
-    when not exportPython:
+    when not exportPython and not defined(napibuild):
       immutableVars.add(newIdentDefs(ident"queryArr", newEmptyNode(), newCall("parseQueryArrays", ident"queryFromUrl")))
   if stmtList.isIdentUsed(ident"translate"):
     immutableVars.add(newIdentDefs(ident"acceptLanguage", newEmptyNode(), acceptLanguage))
-  if stmtList.isIdentUsed(ident"inCookies"):
+  when defined(napibuild):
     immutableVars.add(newIdentDefs(ident"inCookies", newEmptyNode(), cookiesInVar))
+  else:
+    if stmtList.isIdentUsed(ident"inCookies"):
+      immutableVars.add(newIdentDefs(ident"inCookies", newEmptyNode(), cookiesInVar))
   if stmtList.isIdentUsed(ident"reqMethod"):
     immutableVars.add(newIdentDefs(ident"reqMethod", newEmptyNode(), reqMethod))
   immutableVars.add(newIdentDefs(ident"hostname", newEmptyNode(), hostname))
@@ -1867,3 +1921,168 @@ macro liveview*(body: untyped): untyped =
   for statement in body:
     if statement.kind in nnkCallKinds and statement[0].kind in {nnkStrLit, nnkTripleStrLit} and statement[1].kind == nnkStmtList:
       liveViews.add(newStmtList(statement[0], statement[1]))
+
+
+when defined(napibuild):
+  template handleNodeRequest*(self: Server, req: Request, urlPath: string) =
+    var reqResponded = false
+    for route in self.routes:
+      if (
+          (@["NOTFOUND"] == route.httpMethod and not(reqResponded)) or
+          (
+            @["MIDDLEWARE"] == route.httpMethod or
+            (
+              (contains(route.httpMethod, $get(req.httpMethod)) and route.pattern in urlPath) or
+              (hasHttpMethod(route, @["STATICFILE", "WEBSOCKET"]) and route.pattern in urlPath)
+            )
+          )
+        ):
+        {.cast(gcsafe).}:
+          if @["MIDDLEWARE"] != route.httpMethod:
+            reqResponded = true
+          if @["STATICFILE"] == route.httpMethod:
+            var routeData = handleRoute(route.path)
+            let
+              founded_regexp_matches = findAll(urlPath, route.pattern)
+              funcParams = getRouteParams(routeData, founded_regexp_matches, urlPath, force = true)
+              fileName = $getStr(funcParams["file"])
+              file =
+                if not route.purePath.endsWith("/") and not fileName.startsWith("/"):
+                  route.purePath & "/" & fileName
+                else:
+                  route.purePath & fileName
+            if fileExists(file):
+              await req.answerFile(file)
+          elif @["WEBSOCKET"] == route.httpMethod:
+            var
+              wsClient = await req.newWebSocket()
+              handler = getProperty(getGlobal(), route.handler)
+              wsConnection = wsClient.newWebSocketObj("")
+              wsId = registerWsClient(wsConnection)
+            var httpRequest = toObject({
+              "path": urlPath,
+              "websocketId": wsId,
+              "data": wsConnection.data,
+              "state": $(wsConnection.state)
+            })
+            echo httpRequest
+            try:
+              wsConnection.state = wssConnect
+              httpRequest["state"] = jsObj($wsConnection.state)
+              discard callFunction(handler, [httpRequest], getGlobal())
+              wsConnection.state = wssOpen
+              httpRequest["state"] = jsObj($wsConnection.state)
+              discard callFunction(handler, [httpRequest], getGlobal())
+              while wsClient.readyState == Open:
+                let wsData = await wsClient.receiveStrPacket()
+                wsConnection.data = wsData
+                httpRequest["state"] = jsObj($wsConnection.state)
+                httpRequest["data"] = jsObj(wsConnection.data)
+                discard callFunction(handler, [httpRequest], getGlobal())
+            except WebSocketClosedError:
+              wsConnection.state = wssClose
+            except WebSocketHandshakeError:
+              logging.error("Invalid WebSocket handshake. Headers haven't Sec-WebSocket-Version!")
+              wsConnection.state = wssHandshakeError
+            except WebSocketProtocolMismatchError:
+              logging.error(fmt"Socket tried to use an unknown protocol: {getCurrentExceptionMsg()}")
+              wsConnection.state = wssMismatchProtocol
+            except WebSocketError:
+              logging.error(fmt"Unexpected socket error: {getCurrentExceptionMsg()}")
+              wsConnection.state = wssError
+            except Exception:
+              logging.error(fmt"Unexpected error: {getCurrentExceptionMsg()}")
+              wsConnection.state = wssError
+            httpRequest["data"] = jsObj("")
+            httpRequest["state"] = jsObj($wsConnection.state)
+            discard callFunction(handler, [httpRequest], getGlobal())
+            unregisterWsClient(wsId)
+            wsClient.close()
+          else:
+            let queryFromUrl = block:
+              let val = split(req.path.get(), "?")
+              if len(val) >= 2:
+                val[1]
+              else:
+                ""
+            let query = parseQuery(queryFromUrl)
+            var routeData = handleRoute(route.path)
+            var handler = getProperty(getGlobal(), route.handler)
+            let founded_regexp_matches = findAll(urlPath, route.pattern)
+            # Setup HttpRequest
+            var httpRequest = toObject({
+              "path": urlPath,
+              "queries": query.toJsObj(),
+              "headers": req.headers.get().toJsObj(),
+              "cookies": inCookies.toJsObj(),
+              "hostname": req.ip,
+              "method": $req.httpMethod.get(),
+              "reqId": req.registerRequest()
+            })
+            var params: RouteObject
+            if req.body.isSome():
+              httpRequest["body"] = jsObj(req.body.get())
+              params = getRouteParams(routeData, founded_regexp_matches, urlPath, @[], req.body.get(), force = true)
+            else:
+              params = getRouteParams(routeData, founded_regexp_matches, urlPath, @[], force = true)
+            httpRequest["params"] = params
+            # Get function params
+            var response = callFunction(handler, [httpRequest], getGlobal())
+            if @["MIDDLEWARE"] != route.httpMethod:
+              case response.kind
+              of napi_undefined:
+                discard
+              of napi_null:
+                req.answer("null")
+              of napi_string:
+                req.answer(response.getStr)
+              of napi_number:
+                req.answer($response.getInt)
+              of napi_boolean:
+                req.answer($response.getBool)
+              of napi_object:
+                # When object is response
+                if response.hasOwnProperty("$data"):
+                  let
+                    resp = response["$data"]
+                    httpCode = HttpCode(if response.hasOwnProperty("$code"): response["$code"].getInt else: 200)
+                    headers =
+                      if response.hasOwnProperty("$headers"):
+                        let json = tryGetJson(response["$headers"])
+                        json.toHttpHeaders
+                      else:
+                        newHttpHeaders([
+                          ("Content-Type", "text/plain; charset=utf-8")
+                        ])
+                  case resp.kind
+                  of napi_undefined:
+                    req.answer("", httpCode, headers);
+                  of napi_null:
+                    req.answer("null", httpCode, headers)
+                  of napi_string:
+                    req.answer(resp.getStr, httpCode, headers)
+                  of napi_number:
+                    req.answer($resp.getInt, httpCode, headers)
+                  of napi_boolean:
+                    req.answer($resp.getBool, httpCode, headers)
+                  of napi_object:
+                    let stringRepr = $napiCall("JSON.stringify", [resp]).getStr
+                    try:
+                      let json = parseJson(stringRepr)
+                      req.answerJson(json, httpCode, headers)
+                    except JsonParsingError:
+                      req.answer(stringRepr, httpCode, headers)
+                  else:
+                    discard
+                else:
+                  # Object is just JSON
+                  let stringRepr = $napiCall("JSON.stringify", [response]).getStr
+                  try:
+                    let json = parseJson(stringRepr)
+                    req.answerJson(json)
+                  except JsonParsingError:
+                    req.answer(stringRepr)
+              else:
+                discard
+      if reqResponded:
+        break      

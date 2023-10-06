@@ -8,8 +8,11 @@ import
 proc setCurrentLanguage*(lang: string) =
   var language: cstring = lang
   languageSettings.set(lang)
-  buildJs:
-    localStorage["happyx_spoken_language"] = ~language
+  try:
+    buildJs:
+      localStorage["happyx_spoken_language"] = ~language
+  except:
+    discard
   enableRouting = true
   route(currentRoute)
 

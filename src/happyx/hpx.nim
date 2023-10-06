@@ -35,7 +35,9 @@ type
     ptSPAHpx = "HPX"
   ProgrammingLanguage {.pure, size: sizeof(int8).} = enum
     plNim = "nim",
-    plPython = "python"
+    plPython = "python",
+    plJavaScript = "javascript",
+    plTypeScript = "typescript"
   ProjectData = object
     process: Process
     mainFile: string  ## Main file without extension
@@ -547,19 +549,28 @@ proc createCommand(name: string = "", kind: string = "", templates: bool = false
     imports = @["happyx"]
   let
     projectTypes = [
-      "SSR", "SSG", "SPA", "HPX"
+      "SSR",
+      "SSG",
+      "SPA",
+      "HPX"
     ]
     projectTypesDesc = [
-      "Server-side rendering ⚡",
-      "Static site generation 📁",
-      "Single-page application 🎴",
-      "Single-page application with .hpx only ✨"
+      ansiStyleCode(styleBright) & ansiForegroundColorCode(fgGreen) & "Server-side rendering ⚡" & ansiResetCode,
+      ansiStyleCode(styleBright) & ansiForegroundColorCode(fgBlue) & "Static site generation 📁" & ansiResetCode,
+      ansiStyleCode(styleBright) & ansiForegroundColorCode(fgYellow) & "Single-page application 🎴" & ansiResetCode,
+      ansiStyleCode(styleBright) & ansiForegroundColorCode(fgRed) & "Single-page application with .hpx only ✨" & ansiResetCode,
     ]
     programmingLanguages = [
-      "nim", "python"
+      "nim",
+      "python",
+      "javascript",
+      "typescript"
     ]
     programmingLanguagesDesc = [
-      "Nim 👑", "Python 🐍"
+      ansiStyleCode(styleBright) & ansiForegroundColorCode(fgRed) & "Nim 👑" & ansiResetCode,
+      ansiStyleCode(styleBright) & ansiForegroundColorCode(fgMagenta) & "Python 🐍" & ansiResetCode,
+      ansiStyleCode(styleBright) & ansiForegroundColorCode(fgYellow) & "JavaScript ✌" & ansiResetCode,
+      ansiStyleCode(styleBright) & ansiForegroundColorCode(fgBlue) & "TypeScript 🔥" & ansiResetCode,
     ]
   styledEcho "🔥 New ", fgBlue, styleBright, "HappyX", fgWhite, " project"
   if name == "":
@@ -764,6 +775,32 @@ proc createCommand(name: string = "", kind: string = "", templates: bool = false
         "def home():\n" &
         "    # Just return any data ✌\n" &
         "    return 'Hello, world!'\n"
+      )
+    of "javascript":
+      f = open(projectName / "src" / fmt"{SPA_MAIN_FILE}.js", fmWrite)
+      f.write(
+        "// Import HappyX\n" &
+        "import { Server } from 'happyx';\n\n" &
+        "let app = new Server('127.0.0.1', 5000);\n\n" &
+        "// Register GET route at http://127.0.0.1:5000/\n" &
+        "app.get('/', (req) => {\n" &
+        "  return 'Hello, world!';\n" &
+        "});\n\n" &
+        "// start app\n" &
+        "app.start();\n"
+      )
+    of "typescript":
+      f = open(projectName / "src" / fmt"{SPA_MAIN_FILE}.ts", fmWrite)
+      f.write(
+        "// Import HappyX\n" &
+        "import { Server, IRequest } from 'happyx';\n\n" &
+        "let app = new Server('127.0.0.1', 5000);\n\n" &
+        "// Register GET route at http://127.0.0.1:5000/\n" &
+        "app.get('/', (req: IRequest) => {\n" &
+        "  return 'Hello, world!';\n" &
+        "});\n\n" &
+        "// start app\n" &
+        "app.start();\n"
       )
     f.close()
   of 2:

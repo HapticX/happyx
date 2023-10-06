@@ -1,0 +1,42 @@
+{
+  "name": "happyx",
+  "version": "1.0.0",
+  "description": "Happyx bindings for NodeJS",
+  "scripts": {
+    "dev": "tsc && mkdir -p build/src/bin && cp src/bin/node.node build/src/bin/node.node && node build/tests/test1.js",
+    "test:first": "tsc && mkdir -p build/src/bin && cp src/bin/node.node build/src/bin/node.node && node build/tests/test1.js",
+    "test:second": "tsc && mkdir -p build/src/bin && cp src/bin/node.node build/src/bin/node.node && node build/tests/test2.js",
+    "build": "tsc && mkdir -p build/src && cp src/bin/node.node build/src/bin/node.node"
+  },
+  "files": ["build", "README.md", "tests"],
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "keywords": [
+    "web",
+    "framework",
+    "typescript",
+    "happyx",
+    "hapticx",
+    "bindings",
+    "server",
+    "nim"
+  ],
+  "author": "HapticX",
+  "license": "MIT",
+  "dependencies": {
+    "prettier": "^3.0.3",
+    "typescript": "^5.2.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.8.2"
+  },
+  "homepage": "https://hapticx.github.io/happyx/#/",
+  "repository": {
+    "directory": "github",
+    "url": "https://github.com/HapticX/happyx"
+  },
+  "bugs": {
+    "email": "hapticx.company@gmail.com",
+    "url": "https://github.com/HapticX/happyx/issues"
+  }
+}

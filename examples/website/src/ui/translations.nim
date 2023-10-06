@@ -994,8 +994,11 @@ translatable:
     "ko" -> "여기는 라우팅 기본 사항입니다."
 
 var spokenLang: cstring
-buildJs:
-  ~spokenLang = localStorage["happyx_spoken_language"]
+try:
+  buildJs:
+    ~spokenLang = localStorage["happyx_spoken_language"]
+except:
+  spokenLang = ""
 if spokenLang.len != 0:
   languageSettings.set($spokenLang)
 
