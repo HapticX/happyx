@@ -9,12 +9,16 @@ on:
       - 'master'
     paths:
       - '**/language_bindings.yml'
-      - '**/bindings/**'
+      - '**/bindings/python/**'
+      - '**/bindings/python.nim'
+      - '**/bindings/python_types.nim'
       - '**/constants.nim'
   pull_request:
     paths:
       - '**/language_bindings.yml'
-      - '**/bindings/**'
+      - '**/bindings/python/**'
+      - '**/bindings/python.nim'
+      - '**/bindings/python_types.nim'
       - '**/constants.nim'
 
 jobs:
