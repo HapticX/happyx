@@ -6,6 +6,9 @@
 </div>
 
 
+*Currently bindings works only on Linux. To use it on Windows - use [WSL](https://learn.microsoft.com/windows/wsl/install)*
+
+
 ## Getting Started
 
 ### Install

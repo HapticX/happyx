@@ -1,6 +1,6 @@
 {
-  "name": "happyxjs",
-  "version": "1.0.7",
+  "name": "happyx",
+  "version": "1.0.8",
   "description": "Happyx bindings for NodeJS",
   "scripts": {
     "dev": "tsc && mkdir -p dist/src/bin && cp src/bin/node.node dist/src/bin/node.node && node dist/tests/test1.js",
@@ -19,6 +19,7 @@
     "c++",
     "hapticx",
     "bindings",
+    "server-side",
     "server",
     "nim"
   ],
