@@ -362,12 +362,12 @@ translatable:
     "zh" -> "小费"
     "ko" -> "팁"
     "fr" -> "ASTUCE"
-  "HappyX works with Nim and Python so you can choose one of these languages to read this guide ✌":
-    "ru" -> "HappyX работает с Nim и Python, поэтому вы можете выбрать один из этих языков для чтения этого руководства ✌"
-    "ja" -> "HappyXはNimとPythonで動作するため、このガイドを読むためにこれらの言語のいずれかを選択できます！ ✌"
-    "zh" -> "HappyX与Nim和Python一起工作，因此您可以选择其中一种语言来阅读本指南！ ✌"
-    "ko" -> "해픽스는 님과 파이썬과 함께 작동하므로 이 가이드를 읽기 위해 이러한 언어 중 하나를 선택할 수 있습니다. ✌"
-    "fr" -> "HappyX fonctionne avec Nim et Python, vous pouvez donc choisir l'un de ces langages pour lire ce guide ✌"
+  "HappyX works with Nim, Python, JavaScript and TypeScript so you can choose one of these languages to read this guide ✌":
+    "ru" -> "HappyX работает с Nim, Python, JavaScript и TypeScript, так что вы можете выбрать один из этих языков для прочтения данного руководства ✌"
+    "ja" -> "HappyXはNim、Python、JavaScript、TypeScriptと連携しており、このガイドを読むためにこれらの言語の1つを選ぶことができます ✌"
+    "zh" -> "HappyX与Nim、Python、JavaScript和TypeScript一起工作，因此您可以选择其中一种语言阅读本指南 ✌"
+    "fr" -> "HappyX fonctionne avec Nim, Python, JavaScript et TypeScript, vous pouvez donc choisir l'une de ces langues pour lire ce guide ✌"
+    "ko" -> "HappyX는 Nim, Python, JavaScript 및 TypeScript와 함께 작동하므로 이 안내서를 읽을 때 이 중 하나의 언어를 선택할 수 있습니다 ✌"
   "If you:":
     "ru" -> "Если ты:"
     "ja" -> "もしあなたが:"

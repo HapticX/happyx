@@ -27,6 +27,8 @@ component GettingStarted:
         ("Nim", "shell", "nimble install happyx@#head", cstring"nimble_install", newPlayResult()),
         ("Nim (SPA)", "shell", "nimble install happyx@#head", cstring"nimble_install", newPlayResult()),
         ("Python", "shell", "pip install happyx", cstring"pypi_install", newPlayResult()),
+        ("JavaScript", "shell", "npm install happyx", cstring"npm_js_install", newPlayResult()),
+        ("TypeScript", "shell", "npm install happyx", cstring"npm_ts_install", newPlayResult()),
       ])
       
       tH2: "Hello, World! 👋"
@@ -41,6 +43,8 @@ component GettingStarted:
         ("Nim", "nim", nimSsrHelloWorldExample, cstring"nim_ssr", newPlayResult()),
         ("Nim (SPA)", "nim", nimSpaHelloWorldExample, cstring"nim_ssr", newPlayResult()),
         ("Python", "python", pythonHelloWorldExample, cstring"py_hello_world", newPlayResult()),
+        ("JavaScript", "javascript", jsHelloWorldExample, cstring"js_hello_world", newPlayResult()),
+        ("TypeScript", "typescript", tsHelloWorldExample, cstring"ts_hello_world", newPlayResult()),
       ])
 
       tH3: {translate("Run App ▶")}
@@ -57,5 +61,7 @@ component GettingStarted:
         ("Nim", "shell", "nim c -r example.nim", cstring"nim_ssr", playHelloWorld),
         ("Nim (SPA)", "shell", "nim js example.nim\nopen example.html", cstring"nim_ssr", playHelloWorldSPA),
         ("Python", "shell", "python example.py", cstring"py_hello_world", playHelloWorld),
+        ("JavaScript", "shell", "node example.js", cstring"js_hello_world", playHelloWorld),
+        ("TypeScript", "shell", "tsc && node example.js", cstring"ts_hello_world", playHelloWorld),
       ])
 

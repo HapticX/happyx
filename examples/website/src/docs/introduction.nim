@@ -96,12 +96,14 @@ component Introduction:
       ):
         tB: {translate("TIP")}
         tP:
-          {translate("HappyX works with Nim and Python so you can choose one of these languages to read this guide ✌")}
+          {translate("HappyX works with Nim, Python, JavaScript and TypeScript so you can choose one of these languages to read this guide ✌")}
         tDiv(
           class = "flex justify-around items-center w-full"
         ):
           component IntroductionLanguageChooser("Nim", "Nim 👑")
           component IntroductionLanguageChooser("Python", "Python 🐍")
+          component IntroductionLanguageChooser("JavaScript", "JavaScript ✌")
+          component IntroductionLanguageChooser("TypeScript", "TypeScript ⚡")
       tP:
         tB: {translate("If you:")}
         tUl:

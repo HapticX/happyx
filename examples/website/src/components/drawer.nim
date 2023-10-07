@@ -100,8 +100,8 @@ component Drawer:
     proc toggle*() =
       enableRouting = false
       let
-        drawerBack = elem(drawerBack)
-        drawer = elem(drawer)
+        drawerBack = document.getElementById("drawerBack" & self.uniqCompId)
+        drawer = document.getElementById("drawer" & self.uniqCompId)
       self.isOpen.set(not self.isOpen)
       if self.isOpen:
         drawerBack.classList.remove("opacity-0")

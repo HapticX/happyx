@@ -41,6 +41,22 @@ Hello, world!
     (cstring"Successfully created server project", cstring"", cstring"shell", 250),
     (cstring"", cstring"", cstring"", 10000)
   ])
+  playCreateSsrProjectJavaScript* = newPlayResult(@[
+    (cstring"New HappyX project", cstring"", cstring"shell", 250),
+    (cstring"Initializing project", cstring"", cstring"shell", 250),
+    (cstring"""Templates in SSR was disabled. To enable add --template flag.""", cstring"", cstring"shell", 250),
+    (cstring"""You choose JavaScript programming language for this project.""", cstring"", cstring"shell", 250),
+    (cstring"Successfully created server project", cstring"", cstring"shell", 250),
+    (cstring"", cstring"", cstring"", 10000)
+  ])
+  playCreateSsrProjectTypeScript* = newPlayResult(@[
+    (cstring"New HappyX project", cstring"", cstring"shell", 250),
+    (cstring"Initializing project", cstring"", cstring"shell", 250),
+    (cstring"""Templates in SSR was disabled. To enable add --template flag.""", cstring"", cstring"shell", 250),
+    (cstring"""You choose TypeScript programming language for this project.""", cstring"", cstring"shell", 250),
+    (cstring"Successfully created server project", cstring"", cstring"shell", 250),
+    (cstring"", cstring"", cstring"", 10000)
+  ])
   playCreateSpaProject* = newPlayResult(@[
     (cstring"New HappyX project", cstring"", cstring"shell", 250),
     (cstring"Initializing project", cstring"", cstring"shell", 250),

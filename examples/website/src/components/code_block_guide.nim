@@ -21,9 +21,9 @@ component LanguageChooser:
     tDiv(
         class =
           if self.lang == currentLanguage or self.alias == currentLanguage:
-            fmt"px-8 lg:px-4 xl:px-2 py-2 lg:py-1 xl:py-0 bg-[{Foreground}40] dark:bg-[{ForegroundDark}40] select-none"
+            fmt"px-4 lg:px-2 py-2 lg:py-1 xl:py-0 bg-[{Foreground}40] dark:bg-[{ForegroundDark}40] select-none"
           else:
-            fmt"px-8 lg:px-4 xl:px-2 py-2 lg:py-1 xl:py-0 bg-[{Foreground}20] dark:bg-[{ForegroundDark}20] select-none cursor-pointer"
+            fmt"px-4 lg:px-2 py-2 lg:py-1 xl:py-0 bg-[{Foreground}20] dark:bg-[{ForegroundDark}20] select-none cursor-pointer"
     ):
       {self.lang}
       @click:
@@ -54,6 +54,10 @@ component CodeBlockGuide:
           component LanguageChooser("Nim (SPA)")
         if haslanguage(self.CodeBlockGuide, "Python"):
           component LanguageChooser("Python")
+        if haslanguage(self.CodeBlockGuide, "JavaScript"):
+          component LanguageChooser("JavaScript")
+        if haslanguage(self.CodeBlockGuide, "TypeScript"):
+          component LanguageChooser("TypeScript")
       for i in 0..<self.sources.len:
         nim:
           let source = self.sources.val[i]

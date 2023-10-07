@@ -67,6 +67,40 @@ def hello_world():
 app.start()
 """
 
+  jsHelloWorldExample* = """import { Server } from "happyx";
+
+// Create application
+const app = new Server('127.0.0.1', 5000);
+
+
+// GET method
+app.get("/", (req) => {
+  // Respond plaintext
+  return "Hello, world!";
+});
+
+
+// start our app
+app.start();
+"""
+
+  tsHelloWorldExample* = """import { Server, Request } from "happyx";
+
+// Create application
+const app = new Server('127.0.0.1', 5000);
+
+
+// GET method
+app.get("/", (req: Request) => {
+  // Respond plaintext
+  return "Hello, world!";
+});
+
+
+// start our app
+app.start();
+"""
+
   htmlHelloWorldExample* = """<!DOCTYPE html>
 <html>
   <head>
@@ -114,6 +148,23 @@ app.start()
 ├─ README.md
 ├─ .gitignore
 """
+  javaScriptProject* = """project/
+├─ node_modules/
+├─ src/
+│  ├─ index.js
+├─ .gitignore
+├─ package.json
+├─ README.md
+"""
+  typeScriptProject* = """project/
+├─ node_modules/
+├─ src/
+│  ├─ index.ts
+├─ .gitignore
+├─ package.json
+├─ tsconfig.json
+├─ README.md
+"""
   nimSsrCalc* = """serve "127.0.0.1", 5000:
   get "/calc/{left:float}/{op}/{right:float}":
     case op
@@ -142,15 +193,39 @@ app.start()
   pythonSsrCalc* = """@app.get('/calc/{left}/{op}/{right}')
 def calculate(left: float, right: float, op: str):
     if op == "+":
-      return left + right
+        return left + right
     elif op == "-":
-      return left - right
+        return left - right
     elif op == "/":
-      return left / right
+        return left / right
     elif op == "*":
-      return left * right
+        return left * right
     else:
-      return Response("failure", status_code=404)
+        return Response("failure", status_code=404)
+"""
+  javaScriptSsrCalc* = """app.get("/calc/{left}/{op}/{right}", (req) => {
+  if req.params.op == "+":
+    return req.params.left + req.params.right;
+  elif req.params.op == "-":
+    return req.params.left - req.params.right;
+  elif req.params.op == "/":
+    return req.params.left / req.params.right;
+  elif req.params.op == "*":
+    return req.params.left * req.params.right;
+  req.answer("failure", code=404);
+});
+"""
+  typeScriptSsrCalc* = """app.get("/calc/{left}/{op}/{right}", (req: Request) => {
+  if req.params.op == "+":
+    return req.params.left + req.params.right;
+  elif req.params.op == "-":
+    return req.params.left - req.params.right;
+  elif req.params.op == "/":
+    return req.params.left / req.params.right;
+  elif req.params.op == "*":
+    return req.params.left * req.params.right;
+  req.answer("failure", code=404);
+});
 """
   nimPathParamsSsr* = """serve "127.0.0.1", 5000:
   get "/user/id{userId:int}":
@@ -165,6 +240,20 @@ def handle(user_id: int):
     # Here we can use user_id
     print(user_id)
     return {'response': user_id}
+"""
+  jsPathParamsSsr* = """const app = new Server();
+
+app.get("/user/id{userId}", (req) => {
+  console.log(req.params.userId);
+  return {'response': userId};
+});
+"""
+  tsPathParamsSsr* = """const app = new Server();
+
+app.get("/user/id{userId}", (req: Request) => {
+  console.log(req.params.userId);
+  return {'response': userId};
+});
 """
   nimPathParamsSpa* = """appRoutes "app":
   "/user/id{userId:int}":

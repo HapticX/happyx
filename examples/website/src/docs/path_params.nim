@@ -26,6 +26,8 @@ component PathParams:
         ("Nim", "nim", nimPathParamsSsr, cstring"nim_import_ssr", newPlayResult()),
         ("Nim (SPA)", "nim", nimPathParamsSpa, cstring"nim_import_ssr", newPlayResult()),
         ("Python", "python", pythonPathParamsSsr, cstring"py_import", newPlayResult()),
+        ("JavaScript", "javascript", jsPathParamsSsr, cstring"js_import", newPlayResult()),
+        ("TypeScript", "typescript", tsPathParamsSsr, cstring"ts_import", newPlayResult()),
       ])
 
       tH2: {translate"Route Param Types 📕"}
@@ -169,7 +171,7 @@ component PathParams:
                 "\""
           tTd(class = "text-center"): {translate"Parses param as string (any character include '/')"}
         # Enums
-        if currentLanguage != "Python":
+        if currentLanguage.val in ["Nim", "Nim (SPA)"]:
           tTr:
             tTd(class = "text-center"):
               tSpan(class = "text-orange-800 dark:text-orange-400"):
@@ -222,7 +224,7 @@ component PathParams:
         ("Python", "python", pythonCustomRouteParamType, cstring"py_import", newPlayResult()),
       ])
 
-      if currentLanguage != "Python":
+      if currentLanguage.val in ["Nim", "Nim (SPA)"]:
         tH2: {translate"Assigning Route Params 🛠"}
 
         tP:
