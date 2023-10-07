@@ -19,7 +19,7 @@
 [![VS Code Plugin](https://img.shields.io/badge/Plugin-1b1e2b?style=for-the-badge&logo=visualstudiocode&logoColor=f1fa8c&label=VS%20Code&labelColor=2b2e3b)](https://github.com/HapticX/hpx-vs-code)
 
 [![Python Bindings](https://img.shields.io/badge/Bindings-1b1e2b?style=for-the-badge&logo=python&logoColor=f1fa8c&label=Python&labelColor=2b2e3b)](https://pypi.org/project/happyx/)
-![NodeJS Bindings](https://img.shields.io/badge/Bindings-1b1e2b?style=for-the-badge&logo=npm&logoColor=f1fa8c&label=NodeJS&labelColor=2b2e3b)
+[![NodeJS Bindings](https://img.shields.io/badge/Bindings-1b1e2b?style=for-the-badge&logo=npm&logoColor=f1fa8c&label=NodeJS&labelColor=2b2e3b)](https://www.npmjs.com/package/happyx)
 
 </div>
 
@@ -54,7 +54,7 @@ HappyX is macro-oriented web framework so you mustn't write a lot of code ✨
 - Hot code reloading (only for `SPA` projects as of now).
 - Built-in UI library (to enable compile with `-d:enableUi` flag).
 - [Python bindings](https://pypi.org/project/happyx/)
-- NodeJS bindings
+- [NodeJS bindings](https://www.npmjs.com/package/happyx)
 
 ## Minimal Example 👩‍💻
 
