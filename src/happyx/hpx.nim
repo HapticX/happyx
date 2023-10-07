@@ -538,6 +538,79 @@ proc html2tagCommand(output: string = "", args: seq[string]): int =
   QuitSuccess
 
 
+proc makeJsPackageJson(projectName: string) =
+  var f = open(projectName / "package.json", fmWrite)
+  let username = getHomeDir().lastPathPart()
+  f.write(
+    "{\n" &
+    "  \"name\": \"happyx-project\",\n" &
+    "  \"description\": \"Yet another NodeJS HappyX project\",\n" &
+    "  \"version\": \"1.0.0\",\n" &
+    "  \"author\": \"" & username & "\",\n" &
+    "  \"type\": \"module\",\n" &
+    "  \"main\": \"src/index.ts\",\n" &
+    "  \"keywords\": [],\n" &
+    "  \"license\": \"MIT\",\n" &
+    "  \"dependencies\": {\n" &
+    "    \"happyx\": \"^1.0.8\"\n" &
+    "  }\n" &
+    "}"
+  )
+  f.close()
+
+
+proc makeTsPackageJson(projectName: string) =
+  var f = open(projectName / "package.json", fmWrite)
+  let username = getHomeDir().lastPathPart()
+  f.write(
+    "{\n" &
+    "  \"name\": \"happyx-project\",\n" &
+    "  \"description\": \"Yet another NodeJS HappyX project\",\n" &
+    "  \"version\": \"1.0.0\",\n" &
+    "  \"author\": \"" & username & "\",\n" &
+    "  \"type\": \"module\",\n" &
+    "  \"main\": \"src/index.js\",\n" &
+    "  \"keywords\": [],\n" &
+    "  \"license\": \"MIT\",\n" &
+    "  \"dependencies\": {\n" &
+    "    \"happyx\": \"^1.0.8\",\n" &
+    "    \"typescript\": \"^5.2.2\"\n" &
+    "  }\n" &
+    "}"
+  )
+  f = open(projectName / "tsconfig.json", fmWrite)
+  f.write(
+    "{\n" &
+    "  \"compilerOptions\": {\n" &
+    "    \"moduleDetection\": \"auto\",\n" &
+    "    \"target\": \"ES6\",\n" &
+    "    \"module\": \"CommonJS\",\n" &
+    "    \"outDir\": \"./build\",\n" &
+    "    \"rootDir\": \"./src\",\n" &
+    "    \"checkJs\": true,\n" &
+    "    \"strictNullChecks\": true,\n" &
+    "    \"strictFunctionTypes\": true,\n" &
+    "    \"strictBindCallApply\": true,\n" &
+    "    \"strictPropertyInitialization\": true,\n" &
+    "    \"noImplicitThis\": true,\n" &
+    "    \"alwaysStrict\": true,\n" &
+    "    \"noPropertyAccessFromIndexSignature\": true,\n" &
+    "    \"esModuleInterop\": true,\n" &
+    "    \"forceConsistentCasingInFileNames\": true,\n" &
+    "    \"skipLibCheck\": true,\n" &
+    "    \"noImplicitOverride\": true,\n" &
+    "    \"noFallthroughCasesInSwitch\": true,\n" &
+    "    \"noImplicitReturns\": true,\n" &
+    "    \"noImplicitAny\": false,\n" &
+    "    \"strict\": true,\n" &
+    "    \"noEmit\": false,\n" &
+    "    \"allowJs\": true\n" &
+    "  }\n" &
+    "}"
+  )
+  f.close()
+
+
 proc createCommand(name: string = "", kind: string = "", templates: bool = false,
                    pathParams: bool = false, useTailwind: bool = false, language: string = ""): int =
   ## Create command that asks user for project name and project type
@@ -576,7 +649,7 @@ proc createCommand(name: string = "", kind: string = "", templates: bool = false
   if name == "":
     try:
       # Get project name
-      styledWrite stdout, fgYellow, align("🔖 Project name: ", 14)
+      styledWrite stdout, fgYellow, align("\n🔖 Project name: ", 14)
       projectName = readLine(stdin)
     except EOFError:
       styledEcho fgRed, "EOF error was occurred!"
@@ -596,7 +669,7 @@ proc createCommand(name: string = "", kind: string = "", templates: bool = false
     projectName = name
 
   if kind == "":
-    styledEcho "👨‍🔬 Choose project type ", fgYellow, "(via arrow keys)"
+    styledEcho "\n👨‍🔬 Choose project type ", fgYellow, "(via arrow keys)"
     var
       choosen = false
       needRefresh = true
@@ -634,7 +707,7 @@ proc createCommand(name: string = "", kind: string = "", templates: bool = false
       return QuitFailure
 
   if language == "":
-    styledEcho "👨‍🔬 Choose project programming language ", fgYellow, "(via arrow keys)"
+    styledEcho "\n👨‍🔬 Choose project programming language ", fgYellow, "(via arrow keys)"
     var
       choosen = false
       needRefresh = true
@@ -678,13 +751,25 @@ proc createCommand(name: string = "", kind: string = "", templates: bool = false
   createDir(projectName / "src")
   # Create .gitignore
   var f = open(projectName / ".gitignore", fmWrite)
-  f.write("# Nimcache\nnimcache/\ncache/\nbuild/\n\n# Garbage\n*.exe\n*.js\n*.log\n*.lg")
+  case lang
+  of "nim":
+    f.write(
+      "# Nimcache\nnimcache/\ncache/\nbuild/\n\n# Garbage\n*.exe\n*.js\n*.log\n*.lg"
+    )
+  of "python":
+    f.write(
+      "# Python cache\n__pycache__/\nbuild/\n\n# Logs\n*.log\n*.lg"
+    )
+  of "javascript", "typescript":
+    f.write(
+      "# Node cache\nnode_modules/\npackage-lock.json\nyarn.lock"
+    )
   f.close()
   # Create README.md
   f = open(projectName / "README.md", fmWrite)
   f.write(
     "# " & projectName & "\n\n" & projectTypes[selected] &
-    " project written in " & programmingLanguagesDesc[selectedLang] &
+    " project written in " & lang &
     " with HappyX ❤")
   f.close()
 
@@ -699,7 +784,7 @@ proc createCommand(name: string = "", kind: string = "", templates: bool = false
     "srcDir = src  # source directory in project root\n",
     "buildDir = build  # build directory in project root\n",
     "assetsDir = public  # assets directory in srcDir, will copied into build/public\n" &
-    "language = " & programmingLanguages[selectedLang] & "  # programming language\n"
+    "language = " & lang & "  # programming language\n"
   )
   f.close()
 
@@ -780,28 +865,30 @@ proc createCommand(name: string = "", kind: string = "", templates: bool = false
       f = open(projectName / "src" / fmt"{SPA_MAIN_FILE}.js", fmWrite)
       f.write(
         "// Import HappyX\n" &
-        "import { Server } from 'happyx';\n\n" &
-        "let app = new Server('127.0.0.1', 5000);\n\n" &
+        "import { Server } from \"happyx\";\n\n" &
+        "const app = new Server(\"127.0.0.1\", 5000);\n\n" &
         "// Register GET route at http://127.0.0.1:5000/\n" &
-        "app.get('/', (req) => {\n" &
-        "  return 'Hello, world!';\n" &
+        "app.get(\"/\", (req) => {\n" &
+        "  return \"Hello, world!\";\n" &
         "});\n\n" &
         "// start app\n" &
         "app.start();\n"
       )
+      makeJsPackageJson(projectName)
     of "typescript":
       f = open(projectName / "src" / fmt"{SPA_MAIN_FILE}.ts", fmWrite)
       f.write(
         "// Import HappyX\n" &
-        "import { Server, IRequest } from 'happyx';\n\n" &
-        "let app = new Server('127.0.0.1', 5000);\n\n" &
+        "import { Server, Request } from \"happyx\";\n\n" &
+        "const app = new Server(\"127.0.0.1\", 5000);\n\n" &
         "// Register GET route at http://127.0.0.1:5000/\n" &
-        "app.get('/', (req: IRequest) => {\n" &
-        "  return 'Hello, world!';\n" &
+        "app.get(\"/\", (req: Request) => {\n" &
+        "  return \"Hello, world!\";\n" &
         "});\n\n" &
         "// start app\n" &
         "app.start();\n"
       )
+      makeTsPackageJson(projectName)
     f.close()
   of 2:
     # SPA
@@ -894,11 +981,7 @@ proc createCommand(name: string = "", kind: string = "", templates: bool = false
   else:
     discard
   # Tell user about choosen
-  case lang
-  of "nim":
-    styledEcho fgYellow, "🐥 You choose ", fgMagenta, "Nim 👑", fgYellow, " programming language for this project."
-  of "python":
-    styledEcho fgYellow, "🐥 You choose ", fgMagenta, "Python 🐍", fgYellow, " programming language for this project."
+  styledEcho fgYellow, "🐥 You choose ", fgMagenta, programmingLanguagesDesc[selectedLang], fgYellow, " programming language for this project."
   if useTailwind:
     styledEcho fgYellow, "🐥 You choose ", fgMagenta, "tailwind css", fgYellow, " on project creation. Read docs: ", styleUnderscore, fgGreen, "https://tailwindcss.com/docs/"
   if templates:
