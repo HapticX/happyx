@@ -2,9 +2,8 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="HappyX the macro-oriented full-stack web framework">
-    <meta name="keywords" content="web framework, web, programming, restapi, rest, nim, happyx, api, frontend, backend, fullstack, macro-oriented">
+    <meta name="keywords" content="web framework, web, programming, restapi, rest, nim, happyx, api, frontend, backend, fullstack, macro-oriented, nodejs, python, server-side, client-side">
     <meta property="og:title" content="HappyX Web Framework">
     <meta
       property="og:description"
@@ -12,9 +11,9 @@
     >
     <meta property="og:image" content="https://hapticx.github.io/happyx/public/icon.png">
     <meta property="og:url" content="https://hapticx.github.io/happyx/">
+    <script src="https://cdn.tailwindcss.com" async></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/2.1.0/showdown.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
-    <script src="https://cdn.tailwindcss.com" async></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/nim.min.js" async></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/python.min.js" async></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/http.min.js" async></script>
@@ -152,8 +151,8 @@
     </style>
   </head>
   <body>
-    <div id="app"></div>
-    <script src="main.js"></script>
+    <div id="app" class="w-screen"></div>
+    <script src="main.js" async></script>
     <script>
       hljs.highlightAll();
     </script>
