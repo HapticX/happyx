@@ -1,6 +1,6 @@
 {
   "name": "happyx",
-  "version": "1.0.8",
+  "version": "1.1.0",
   "description": "Happyx bindings for NodeJS",
   "scripts": {
     "dev": "tsc && mkdir -p dist/src/bin && cp src/bin/node.node dist/src/bin/node.node && node dist/tests/test1.js",

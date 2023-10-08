@@ -1,5 +1,7 @@
 import
   denim,
+  nimja,
+  sugar,
   tables,
   ../core/[constants, queries],
   ../routing/[routing, mounting],
@@ -28,7 +30,7 @@ proc sortRoutes(self: Server) {.inline.} =
     self.routes.add(i)
 
 
-proc addRoute(self: Server, path: string, httpMethods: seq[string], callback: string) {.inline.} =
+proc addRoute(self: Server, path: string, httpMethods: seq[string], callback: string, docs: string) {.inline.} =
   var
     p = path
     s = self
@@ -37,7 +39,7 @@ proc addRoute(self: Server, path: string, httpMethods: seq[string], callback: st
     p = s.path & p
     s = s.parent
   let routeData = handleRoute(p)
-  var route = initRoute(routeData.path, routeData.purePath, httpMethods, re2("^" & routeData.purePath & "$"), callback)
+  var route = initRoute(routeData.path, routeData.purePath, httpMethods, re2("^" & routeData.purePath & "$"), callback, docs)
   s.routes.add(route)
   s.sortRoutes()
 
@@ -50,7 +52,7 @@ template generateAndSaveCallback(httpMethod: string): untyped =
   ## Some boilerplate for create callbacks
   var self = servers[args.get("serverId").getInt]
   let funcUniqName = "jsCallbackFunc" & `httpMethod` & "_" & genSessionId()
-  self.addRoute(args.get("path").getStr, @[`httpMethod`], funcUniqName)
+  self.addRoute(args.get("path").getStr, @[`httpMethod`], funcUniqName, args.get("docs").getStr)
   setProperty(getGlobal(), funcUniqName, args.get("callback"))
 
 
@@ -60,15 +62,16 @@ init proc(module: Module) =
 
 
   # Server functions
-  proc hpxServer(address: string, port: int): int {.export_napi.} =
+  proc hpxServer(address: string, port: int, title: string): int {.export_napi.} =
     ## Creates a new Server object and returns its ID in servers array to work with it
     var self = newServer(args.get("address").getStr, args.get("port").getInt)
     servers.add(self)
+    self.title = args.get("title").getStr
     # Return Server index
     return jsObj(servers.len - 1)
   
   
-  proc hpxServerRoute(serverId: int, methods: napi_object, path: string, callback: napi_function): void {.export_napi.} =
+  proc hpxServerRoute(serverId: int, methods: napi_object, path: string, callback: napi_function, docs: string): void {.export_napi.} =
     ## Creates a new route
     var self = servers[args.get("serverId").getInt]
     # Generate unique ID for JavaScript callback function
@@ -78,65 +81,68 @@ init proc(module: Module) =
         if m.kind == napi_string:
           methodsSeq.add(m.getStr.toUpper())
       let funcUniqName = "jsCallbackFuncROUTE_" & genSessionId()
-      self.addRoute(args.get("path").getStr, methodsSeq, funcUniqName)
+      self.addRoute(args.get("path").getStr, methodsSeq, funcUniqName, args.get("docs").getStr)
       # Save JavaScript callback function into global scope
       setProperty(getGlobal(), funcUniqName, args.get("callback"))
   
 
-  proc hpxServerGet(serverId: int, path: string, callback: napi_function): void {.export_napi.} =
+  proc hpxServerGet(serverId: int, path: string, callback: napi_function, docs: string): void {.export_napi.} =
     ## Creates a new GET route
     generateAndSaveCallback("GET")
   
-  proc hpxServerPost(serverId: int, path: string, callback: napi_function): void {.export_napi.} =
+  proc hpxServerPost(serverId: int, path: string, callback: napi_function, docs: string): void {.export_napi.} =
     ## Creates a new POST route
     generateAndSaveCallback("POST")
   
-  proc hpxServerLink(serverId: int, path: string, callback: napi_function): void {.export_napi.} =
+  proc hpxServerLink(serverId: int, path: string, callback: napi_function, docs: string): void {.export_napi.} =
     ## Creates a new LINK route
     generateAndSaveCallback("LINK")
   
-  proc hpxServerPurge(serverId: int, path: string, callback: napi_function): void {.export_napi.} =
+  proc hpxServerPurge(serverId: int, path: string, callback: napi_function, docs: string): void {.export_napi.} =
     ## Creates a new PURGE route
     generateAndSaveCallback("PURGE")
   
-  proc hpxServerTrace(serverId: int, path: string, callback: napi_function): void {.export_napi.} =
+  proc hpxServerTrace(serverId: int, path: string, callback: napi_function, docs: string): void {.export_napi.} =
     ## Creates a new TRACE route
     generateAndSaveCallback("TRACE")
   
-  proc hpxServerOptions(serverId: int, path: string, callback: napi_function): void {.export_napi.} =
+  proc hpxServerOptions(serverId: int, path: string, callback: napi_function, docs: string): void {.export_napi.} =
     ## Creates a new OPTIONS route
     generateAndSaveCallback("OPTIONS")
   
-  proc hpxServerPatch(serverId: int, path: string, callback: napi_function): void {.export_napi.} =
+  proc hpxServerPatch(serverId: int, path: string, callback: napi_function, docs: string): void {.export_napi.} =
     ## Creates a new PATCH route
     generateAndSaveCallback("PATCH")
   
-  proc hpxServerPut(serverId: int, path: string, callback: napi_function): void {.export_napi.} =
+  proc hpxServerPut(serverId: int, path: string, callback: napi_function, docs: string): void {.export_napi.} =
     ## Creates a new PUT route
     generateAndSaveCallback("PUT")
 
-  proc hpxServerDelete(serverId: int, path: string, callback: napi_function): void {.export_napi.} =
+  proc hpxServerDelete(serverId: int, path: string, callback: napi_function, docs: string): void {.export_napi.} =
     ## Creates a new DELETE route
     generateAndSaveCallback("DELETE")
   
-  proc hpxServerHead(serverId: int, path: string, callback: napi_function): void {.export_napi.} =
+  proc hpxServerHead(serverId: int, path: string, callback: napi_function, docs: string): void {.export_napi.} =
     ## Creates a new HEAD route
     generateAndSaveCallback("HEAD")
   
-  proc hpxServerCopy(serverId: int, path: string, callback: napi_function): void {.export_napi.} =
+  proc hpxServerCopy(serverId: int, path: string, callback: napi_function, docs: string): void {.export_napi.} =
     ## Creates a new COPY route
     generateAndSaveCallback("COPY")
   
 
   proc hpxServerWebSocket(serverId: int, path: string, callback: napi_function): void {.export_napi.} =
     ## Creates a new WEBSOCKET route
-    generateAndSaveCallback("WEBSOCKET")
+    var self = servers[args.get("serverId").getInt]
+    let funcUniqName = "jsCallbackFuncWEBSOCKET_" & genSessionId()
+    self.addRoute("", @["WEBSOCKET"], funcUniqName, "")
+    setProperty(getGlobal(), funcUniqName, args.get("callback"))
 
   proc hpxServerMiddleware(serverId: int, callback: napi_function): void {.export_napi.} =
     ## Creates a new middleware route
     var self = servers[args.get("serverId").getInt]
     let funcUniqName = "jsCallbackFuncMiddleware_" & genSessionId()
-    self.addRoute("", @["MIDDLEWARE"], funcUniqName)
+    self.addRoute("", @["MIDDLEWARE"], funcUniqName, "")
     setProperty(getGlobal(), funcUniqName, args.get("callback"))
   
 
@@ -144,7 +150,7 @@ init proc(module: Module) =
     ## Creates a new not found route
     var self = servers[args.get("serverId").getInt]
     let funcUniqName = "jsCallbackFuncNotFound_" & genSessionId()
-    self.addRoute("", @["NOTFOUND"], funcUniqName)
+    self.addRoute("", @["NOTFOUND"], funcUniqName, "")
     setProperty(getGlobal(), funcUniqName, args.get("callback"))
 
 
@@ -169,7 +175,7 @@ init proc(module: Module) =
       p &= "/"
     p &= "{file:path}"
     let routeData = handleRoute(p)
-    s.routes.add(initRoute(p, args.get("directory").getStr, @["STATICFILE"], re2("^" & routeData.purePath & "$"), ""))
+    s.routes.add(initRoute(p, args.get("directory").getStr, @["STATICFILE"], re2("^" & routeData.purePath & "$"), "", ""))
   
 
   proc hpxStartServer(serverId: int): void {. export_napi .} =
@@ -177,9 +183,8 @@ init proc(module: Module) =
     # Load server from servers list
     var self: Server = servers[args.get("serverId").getInt]
     # Register routes
-    routes(self)
-    # Start server
-    self.start()
+    serve self.address, self.port:
+      discard
   
 
   # Work with WebSockets
@@ -238,3 +243,13 @@ init proc(module: Module) =
       name: args.get("name").getStr,
       fields: fields
     ))
+  
+
+  proc hpxRegisterPathParamType(name: string, pattern: string, callback: napi_function) {. export_napi .} =
+    let funcUniqName = "jsCallbackFuncCustomPathParam_" & genSessionId()
+    registerRouteParamTypeAux(
+      args.get("name").getStr,
+      args.get("pattern").getStr,
+      funcUniqName
+    )
+    setProperty(getGlobal(), funcUniqName, args.get("callback"))

@@ -33,6 +33,7 @@ type
     httpMethod*: seq[string]
     pattern*: Regex2
     handler*: string
+    docs*: string
   HandlerParam* = object
     name*, paramType*: string
   RequestModelData* = object
@@ -107,6 +108,27 @@ proc toJsObj*(obj: JsonNode): napi_value =
         discard
 
 
+proc toJsonNode*(obj: napi_value): JsonNode =
+  case obj.kind
+  of napi_boolean:
+    result = newJBool(obj.getBool)
+  of napi_number:
+    result = newJInt(obj.getInt)
+  of napi_string:
+    result = newJString(obj.getStr)
+  of napi_object:
+    if obj.isArray():
+      result = newJArray()
+      for i in obj:
+        result.add(i.toJsonNode())
+    else:
+      result = newJObject()
+      for key, val in obj.pairs():
+        result[key] = val.toJsonNode()
+  else:
+    discard
+
+
 proc toHttpHeaders*(json: JsonNode): HttpHeaders =
   result = newHttpHeaders()
   for k, v in json.pairs():
@@ -120,8 +142,8 @@ proc toHttpHeaders*(obj: napi_value): HttpHeaders =
       result[k] = $v
 
 
-proc initRoute*(path, purePath: string, httpMethod: seq[string], pattern: Regex2, handler: string): Route =
-  Route(path: path, purePath: purePath, httpMethod: httpMethod, pattern: pattern, handler: handler)
+proc initRoute*(path, purePath: string, httpMethod: seq[string], pattern: Regex2, handler, docs: string): Route =
+  Route(path: path, purePath: purePath, httpMethod: httpMethod, pattern: pattern, handler: handler, docs: docs)
 
 proc hasHttpMethod*(self: Route, httpMethod: string | seq[string] | openarray[string]): bool =
   when httpMethod is string:

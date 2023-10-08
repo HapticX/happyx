@@ -177,6 +177,7 @@ elif defined(napibuild):
       path*: string
       parent*: Server
       routes*: seq[Route]
+      title*: string
       environment*: napi_env
       when enableHttpx:
         instance*: Settings
@@ -1823,8 +1824,11 @@ macro serve*(address: string, port: int, body: untyped): untyped =
           newEmptyNode(),
         when enableApiDoc:
           newProc(ident"renderDocsProcedure", [ident"string"], newStmtList(
-            newLetStmt(ident"title", newStrLitNode(appName)),
-            newNimNode(when exportPython or defined(docgen): nnkVarSection else: nnkLetSection).add(
+            when defined(napibuild):
+              newLetStmt(ident"title", newDotExpr(ident"self", ident"title"))
+            else:
+              newLetStmt(ident"title", newLit(appName)),
+            newNimNode(when exportPython or defined(docgen) or defined(napibuild): nnkVarSection else: nnkLetSection).add(
               newIdentDefs(
                 ident"apiDocData", newNimNode(nnkBracketExpr).add(ident"seq", ident"ApiDocObject"), docsData
               )
@@ -1891,6 +1895,8 @@ macro serve*(address: string, port: int, body: untyped): untyped =
                   )),
                 )
               )
+            elif defined(napibuild):
+              newCall("handleApiDoc", ident"self")
             else:
               newEmptyNode(),
             newNimNode(nnkLetSection).add(
@@ -1924,6 +1930,27 @@ macro liveview*(body: untyped): untyped =
 
 
 when defined(napibuild):
+  template handleApiDoc*(self: Server) =
+    for route in self.routes:
+      if not route.hasHttpMethod(@["MIDDLEWARE", "NOTFOUND"]):
+        let routeData = handleRoute(route.path)
+        if route.httpMethod == @["STATICFILE"]:
+          apiDocData.add(newApiDocObject(
+            @["GET"],
+            "Fetch file from directory: " & route.purePath,
+            routeData.path,
+            routeData.pathParams,
+            routeData.requestModels,
+          ))
+        else:
+          apiDocData.add(newApiDocObject(
+            route.httpMethod,
+            route.docs,
+            routeData.path,
+            routeData.pathParams,
+            routeData.requestModels,
+          ))
+
   template handleNodeRequest*(self: Server, req: Request, urlPath: string) =
     var reqResponded = false
     for route in self.routes:

@@ -196,10 +196,14 @@ export class Server {
     private port: number;
     private serverId: number;
 
-    constructor(address: string = "127.0.0.1", port: number = 5000) {
+    constructor(
+            address: string = "127.0.0.1",
+            port: number = 5000,
+            title: string = "HappyX NodeJS project"
+    ) {
         this.address = address;
         this.port = port;
-        this.serverId = hpx.hpxServer(this.address, this.port);
+        this.serverId = hpx.hpxServer(this.address, this.port, title);
     }
 
     /**
@@ -214,10 +218,10 @@ export class Server {
      * @param {string} path - The route path.
      * @param {(request: Request) => any} callback - The callback function to handle the GET request.
      */
-    public get(path: string, callback: (request: Request) => any) {
+    public get(path: string, callback: (request: Request) => any, docs: string = "") {
         hpx.hpxServerGet(this.serverId, path, (req: IRequest) => {
             return callback(new Request(req));
-        });
+        }, docs);
     }
 
     /**
@@ -225,10 +229,10 @@ export class Server {
      * @param {string} path - The route path.
      * @param {(request: Request) => any} callback - The callback function to handle the POST request.
      */
-    public post(path: string, callback: (request: Request) => any) {
+    public post(path: string, callback: (request: Request) => any, docs: string = "") {
         hpx.hpxServerPost(this.serverId, path, (req: IRequest) => {
             return callback(new Request(req));
-        });
+        }, docs);
     }
 
     /**
@@ -236,10 +240,10 @@ export class Server {
      * @param {string} path - The route path.
      * @param {(request: Request) => any} callback - The callback function to handle the PUT request.
      */
-    public put(path: string, callback: (request: Request) => any) {
+    public put(path: string, callback: (request: Request) => any, docs: string = "") {
         hpx.hpxServerPut(this.serverId, path, (req: IRequest) => {
             return callback(new Request(req));
-        });
+        }, docs);
     }
 
     /**
@@ -247,10 +251,10 @@ export class Server {
      * @param {string} path - The route path.
      * @param {(request: Request) => any} callback - The callback function to handle the DELETE request.
      */
-    public delete(path: string, callback: (request: Request) => any) {
+    public delete(path: string, callback: (request: Request) => any, docs: string = "") {
         hpx.hpxServerDelete(this.serverId, path, (req: IRequest) => {
             return callback(new Request(req));
-        });
+        }, docs);
     }
 
     /**
@@ -258,10 +262,10 @@ export class Server {
      * @param {string} path - The route path.
      * @param {(request: Request) => any} callback - The callback function to handle the PATCH request.
      */
-    public patch(path: string, callback: (request: Request) => any) {
+    public patch(path: string, callback: (request: Request) => any, docs: string = "") {
         hpx.hpxServerPatch(this.serverId, path, (req: IRequest) => {
             return callback(new Request(req));
-        });
+        }, docs);
     }
     
     /**
@@ -269,10 +273,10 @@ export class Server {
      * @param {string} path - The route path.
      * @param {(request: Request) => any} callback - The callback function to handle the OPTIONS request.
      */
-    public options(path: string, callback: (request: Request) => any) {
+    public options(path: string, callback: (request: Request) => any, docs: string = "") {
         hpx.hpxServerOptions(this.serverId, path, (req: IRequest) => {
             return callback(new Request(req));
-        });
+        }, docs);
     }
 
     /**
@@ -280,10 +284,10 @@ export class Server {
      * @param {string} path - The route path.
      * @param {(request: Request) => any} callback - The callback function to handle the HEAD request.
      */
-    public head(path: string, callback: (request: Request) => any) {
+    public head(path: string, callback: (request: Request) => any, docs: string = "") {
         hpx.hpxServerHead(this.serverId, path, (req: IRequest) => {
             return callback(new Request(req));
-        });
+        }, docs);
     }
 
     /**
@@ -291,10 +295,10 @@ export class Server {
      * @param {string} path - The route path.
      * @param {(request: Request) => any} callback - The callback function to handle the TRACE request.
      */
-    public trace(path: string, callback: (request: Request) => any) {
+    public trace(path: string, callback: (request: Request) => any, docs: string = "") {
         hpx.hpxServerTrace(this.serverId, path, (req: IRequest) => {
             return callback(new Request(req));
-        });
+        }, docs);
     }
 
     /**
@@ -302,10 +306,10 @@ export class Server {
      * @param {string} path - The route path.
      * @param {(request: Request) => any} callback - The callback function to handle the TRACE request.
      */
-    public copy(path: string, callback: (request: Request) => any): void {
+    public copy(path: string, callback: (request: Request) => any, docs: string = ""): void {
         hpx.hpxServerCopy(this.serverId, path, (req: IRequest) => {
             return callback(new Request(req));
-        });
+        }, docs);
     }
 
     /**
@@ -313,10 +317,10 @@ export class Server {
      * @param {string} path - The route path.
      * @param {(request: Request) => any} callback - The callback function to handle the TRACE request.
      */
-    public purge(path: string, callback: (request: Request) => any): void {
+    public purge(path: string, callback: (request: Request) => any, docs: string = ""): void {
         hpx.hpxServerPurge(this.serverId, path, (req: IRequest) => {
             return callback(new Request(req));
-        });
+        }, docs);
     }
 
     /**
@@ -376,5 +380,14 @@ export class Server {
      */
     public static(path: string, directory: string) {
         hpx.hpxServerStatic(this.serverId, path, directory);
+    }
+}
+
+
+export function newPathParamType(name: string, pattern: string | RegExp, cb: (data: string) => any) {
+    if (typeof pattern === "string" ) {
+        hpx.hpxRegisterPathParamType(name, pattern, cb);
+    } else {
+        hpx.hpxRegisterPathParamType(name, pattern.source, cb);
     }
 }

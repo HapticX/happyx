@@ -83,17 +83,19 @@ when exportPython:
           return v
 
 elif defined(napibuild):
-  import denim
+  import
+    denim,
+    ../bindings/node_types
 
   type RouteParamType = object
     name: string
     pattern: string
-    creator: napi_value
+    creator: string
 
 
   var registeredRouteParamTypes = newTable[string, RouteParamType]()
 
-  proc registerRouteParamTypeAux*(name, pattern: string, creator: napi_value) =
+  proc registerRouteParamTypeAux*(name, pattern, creator: string) =
     if re2"^[a-zA-Z][a-zA-Z0-9_]*$" notin name:
       raise newException(
         ValueError,
@@ -261,7 +263,7 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode =
       )
   var
     routeData =
-      when not exportPython:
+      when not exportPython and not defined(napibuild):
         handleRoute(path)
       else:
         RouteDataObj.default
@@ -627,6 +629,16 @@ when exportPython or defined(docgen) or defined(napibuild):
                 # regex
                 else:
                   res[i.name] = newJString(foundGroup)
+            elif defined(napibuild):
+              {.cast(gcsafe).}:
+                # custom type
+                if $i.paramType in registeredRouteParamTypes:
+                  var data = registeredRouteParamTypes[$i.paramType]
+                  let fn = getProperty(getGlobal(), data.creator)
+                  res[i.name] = callFunction(fn, [jsObj(foundGroup)]).toJsonNode()
+                # regex
+                else:
+                  res[i.name] = newJString(foundGroup)
             # regex
             else:
               res[i.name] = newJString(foundGroup)
@@ -648,6 +660,16 @@ when exportPython or defined(docgen) or defined(napibuild):
                 if $i.paramType in registeredRouteParamTypes:
                   var data = registeredRouteParamTypes[$i.paramType]
                   res[i.name] = callObject(data.creator, foundGroup)
+                # regex
+                else:
+                  res[i.name] = newJString(foundGroup)
+            elif defined(napibuild):
+              {.cast(gcsafe).}:
+                # custom type
+                if $i.paramType in registeredRouteParamTypes:
+                  var data = registeredRouteParamTypes[$i.paramType]
+                  let fn = getProperty(getGlobal(), data.creator)
+                  res[i.name] = callFunction(fn, [jsObj(foundGroup)]).toJsonNode()
                 # regex
                 else:
                   res[i.name] = newJString(foundGroup)
@@ -676,6 +698,16 @@ when exportPython or defined(docgen) or defined(napibuild):
               # regex
               else:
                 res[i.name] = newJString(foundGroup)
+          elif defined(napibuild):
+            {.cast(gcsafe).}:
+              # custom type
+              if $i.paramType in registeredRouteParamTypes:
+                var data = registeredRouteParamTypes[$i.paramType]
+                let fn = getProperty(getGlobal(), data.creator)
+                res[i.name] = callFunction(fn, [jsObj(foundGroup)]).toJsonNode()
+              # regex
+              else:
+                res[i.name] = newJString(foundGroup)
           # regex
           else:
             res[i.name] = newJString(foundGroup)
@@ -697,6 +729,16 @@ when exportPython or defined(docgen) or defined(napibuild):
               if $i.paramType in registeredRouteParamTypes:
                 var data = registeredRouteParamTypes[$i.paramType]
                 res[i.name] = callObject(data.creator, foundGroup)
+              # regex
+              else:
+                res[i.name] = newJString(foundGroup)
+          elif defined(napibuild):
+            {.cast(gcsafe).}:
+              # custom type
+              if $i.paramType in registeredRouteParamTypes:
+                var data = registeredRouteParamTypes[$i.paramType]
+                let fn = getProperty(getGlobal(), data.creator)
+                res[i.name] = callFunction(fn, [jsObj(foundGroup)]).toJsonNode()
               # regex
               else:
                 res[i.name] = newJString(foundGroup)
