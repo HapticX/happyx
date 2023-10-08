@@ -326,6 +326,36 @@ def handle(data: MyUniqueIdentifier):
 
 app.start()
 """
+  jsCustomRouteParamType* = """import { newPathParamType, Server } from "happyx";
+
+const app = new Server();
+
+// Here is unique identifier, RegExp pattern and function object
+newPathParamType("my_unique_id", /\d+/, (data) => {
+  return Number(data);
+});
+
+app.get("/registered/{data:my_unique_id}", (req) => {
+  return req.params.data;
+});
+
+app.start()
+"""
+  tsCustomRouteParamType* = """import { newPathParamType, Server, Request } from "happyx";
+
+const app = new Server();
+
+// Here is unique identifier, RegExp pattern and function object
+newPathParamType("my_unique_id", /\d+/, (data: string) => {
+  return Number(data);
+});
+
+app.get("/registered/{data:my_unique_id}", (req: Request) => {
+  return req.params.data;
+});
+
+app.start()
+"""
   nimAssignRouteParamsSsr* = """import happyx
 
 # declare path params

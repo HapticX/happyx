@@ -222,6 +222,8 @@ component PathParams:
         ("Nim", "nim", nimCustomPathParamTypeSsr, cstring"nim_import_ssr", newPlayResult()),
         ("Nim (SPA)", "nim", nimCustomPathParamTypeSpa, cstring"nim_import_ssr", newPlayResult()),
         ("Python", "python", pythonCustomRouteParamType, cstring"py_import", newPlayResult()),
+        ("JavaScript", "javascript", jsCustomRouteParamType, cstring"js_import", newPlayResult()),
+        ("TypeScript", "typescript", tsCustomRouteParamType, cstring"ts_import", newPlayResult()),
       ])
 
       if currentLanguage.val in ["Nim", "Nim (SPA)"]:

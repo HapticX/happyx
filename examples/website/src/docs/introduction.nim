@@ -49,40 +49,49 @@ component Introduction:
             tTd: "GitHub"
             tTd:
               tA(href = "https://github.com/HapticX/happyx"):
-                tImg(alt = "Github Issues", src = "https://img.shields.io/github/issues/HapticX/happyx?style=for-the-badge")
+                tImg(class = "h-12 lg:h-10 xl:h-8", alt = "Github Issues", src = "https://img.shields.io/github/issues/HapticX/happyx?style=for-the-badge")
               tA(href = "https://github.com/HapticX/happyx"):
-                tImg(alt = "Github Closed Issues", src = "https://img.shields.io/github/issues-closed/HapticX/happyx?style=for-the-badge")
+                tImg(class = "h-12 lg:h-10 xl:h-8", alt = "Github Closed Issues", src = "https://img.shields.io/github/issues-closed/HapticX/happyx?style=for-the-badge")
               tA(href = "https://github.com/HapticX/happyx"):
-                tImg(alt = "Github Stars", src = "https://img.shields.io/github/stars/HapticX/happyx?style=for-the-badge")
+                tImg(class = "h-12 lg:h-10 xl:h-8", alt = "Github Stars", src = "https://img.shields.io/github/stars/HapticX/happyx?style=for-the-badge")
           tTr:
             tTd: "Tests"
             tTd:
               tA(href = "https://github.com/HapticX/happyx/actions/workflows/tests.yml"):
-                tImg(alt = "Github Issues", src = "https://img.shields.io/github/actions/workflow/status/HapticX/HappyX/tests.yml?label=Testing&logo=github&style=for-the-badge")
+                tImg(class = "h-12 lg:h-10 xl:h-8", alt = "Github Issues", src = "https://img.shields.io/github/actions/workflow/status/HapticX/HappyX/tests.yml?label=Testing&logo=github&style=for-the-badge")
           tTr:
             tTd: "Languages"
             tTd:
               tA(href = "https://nim-lang.org"):
-                tImg(alt = "Nim 👑", src = "https://img.shields.io/badge/>=1.6.14-1b1e2b?style=for-the-badge&logo=nim&logoColor=f1fa8c&label=Nim&labelColor=2b2e3b")
+                tImg(class = "h-12 lg:h-10 xl:h-8", alt = "Nim 👑", src = "https://img.shields.io/badge/>=1.6.14-1b1e2b?style=for-the-badge&logo=nim&logoColor=f1fa8c&label=Nim&labelColor=2b2e3b")
               tA(href = "https://python.org"):
-                tImg(alt = "Python 🐍", src = "https://img.shields.io/badge/>=3.7.x-1b1e2b?style=for-the-badge&logo=python&logoColor=f1fa8c&label=Python&labelColor=2b2e3b")
+                tImg(class = "h-12 lg:h-10 xl:h-8", alt = "Python 🐍", src = "https://img.shields.io/badge/>=3.7.x-1b1e2b?style=for-the-badge&logo=python&logoColor=f1fa8c&label=Python&labelColor=2b2e3b")
+              tA(href = "https://developer.mozilla.org/en-US/docs/Web/JavaScript"):
+                tImg(class = "h-12 lg:h-10 xl:h-8", alt = "JavaScript ✌", src = "https://img.shields.io/badge/ES6-1b1e2b?style=for-the-badge&logo=javascript&logoColor=f1fa8c&label=JavaScript&labelColor=2b2e3b")
+              tA(href = "https://www.typescriptlang.org/"):
+                tImg(class = "h-12 lg:h-10 xl:h-8", alt = "TypeScript 🔥", src = "https://img.shields.io/badge/>=5.2.2-1b1e2b?style=for-the-badge&logo=typescript&logoColor=f1fa8c&label=TypeScript&labelColor=2b2e3b")
           tTr:
             tTd: "Wakatime Stats"
             tTd:
               tA(href = "https://wakatime.com/badge/user/eaf11f95-5e2a-4b60-ae6a-38cd01ed317b/project/bbd13748-36e6-4383-ac40-9c4e72c060d1"):
-                tImg(alt = "Wakatime", src = "https://wakatime.com/badge/user/eaf11f95-5e2a-4b60-ae6a-38cd01ed317b/project/bbd13748-36e6-4383-ac40-9c4e72c060d1.svg?style=for-the-badge")
+                tImg(class = "h-12 lg:h-10 xl:h-8", alt = "Wakatime", src = "https://wakatime.com/badge/user/eaf11f95-5e2a-4b60-ae6a-38cd01ed317b/project/bbd13748-36e6-4383-ac40-9c4e72c060d1.svg?style=for-the-badge")
           tTr:
             tTd: "VS Code Plugin"
             tTd:
               tA(href = "https://github.com/HapticX/hpx-vs-code"):
-                tImg(alt = "VS Code Plugin Repository", src = "https://img.shields.io/badge/Plugin-1b1e2b?style=for-the-badge&logo=visualstudiocode&logoColor=f1fa8c&label=VS%20Code&labelColor=2b2e3b")
+                tImg(class = "h-12 lg:h-10 xl:h-8", alt = "VS Code Plugin Repository", src = "https://img.shields.io/badge/Plugin-1b1e2b?style=for-the-badge&logo=visualstudiocode&logoColor=f1fa8c&label=VS%20Code&labelColor=2b2e3b")
               tA(href = "https://marketplace.visualstudio.com/items?itemName=HapticX.happyx"):
-                tImg(alt = "Visual Studio Marketplace Installs - Azure DevOps Extension", src = "https://img.shields.io/visual-studio-marketplace/azure-devops/installs/total/HapticX.happyx?style=for-the-badge")
+                tImg(class = "h-12 lg:h-10 xl:h-8", alt = "Visual Studio Marketplace Installs - Azure DevOps Extension", src = "https://img.shields.io/visual-studio-marketplace/azure-devops/installs/total/HapticX.happyx?style=for-the-badge")
           tTr:
             tTd: "PyPI"
             tTd:
               tA(href = "https://pypi.org/project/happyx/"):
-                tImg(alt = "PyPI Downloads", src = "https://img.shields.io/pypi/dm/happyx?style=for-the-badge")
+                tImg(class = "h-12 lg:h-10 xl:h-8", alt = "PyPI Downloads", src = "https://img.shields.io/pypi/dm/happyx?style=for-the-badge")
+          tTr:
+            tTd: "npm"
+            tTd:
+              tA(href = "https://www.npmjs.com/package/happyx"):
+                tImg(class = "h-12 lg:h-10 xl:h-8", alt = "Npm Downloads", src = "https://img.shields.io/npm/dm/happyx?style=for-the-badge")
       tH2: {translate("What Is HappyX? 💡")}
       tP:
         tB: "HappyX"
@@ -103,7 +112,7 @@ component Introduction:
           component IntroductionLanguageChooser("Nim", "Nim 👑")
           component IntroductionLanguageChooser("Python", "Python 🐍")
           component IntroductionLanguageChooser("JavaScript", "JavaScript ✌")
-          component IntroductionLanguageChooser("TypeScript", "TypeScript ⚡")
+          component IntroductionLanguageChooser("TypeScript", "TypeScript 🔥")
       tP:
         tB: {translate("If you:")}
         tUl:
@@ -147,3 +156,4 @@ component Introduction:
             component Contributor("Matthew Stopa", "https://github.com/MattStopa", "https://avatars.githubusercontent.com/u/191057?v=4")
             component Contributor("Carlo Capocasa", "https://github.com/capocasa", "https://avatars.githubusercontent.com/u/1167940?v=4")
             component Contributor("Alikusnadi", "https://github.com/dodolboks", "https://avatars.githubusercontent.com/u/91905?v=4")
+            component Contributor("XADE", "https://github.com/imxade", "https://avatars.githubusercontent.com/u/56511165?v=4")

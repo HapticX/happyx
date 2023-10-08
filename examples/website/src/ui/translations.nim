@@ -992,6 +992,25 @@ translatable:
     "zh" -> "以下是路由基础知识。"
     "fr" -> "Voici les bases du routage."
     "ko" -> "여기는 라우팅 기본 사항입니다."
+  "This section will provide you with an overview of the core features and capabilities of SSR within HappyX web framework. SSR is a powerful technique that allows you to render web pages on the server-side before sending them to the client, resulting in improved performance and SEO optimization.":
+    "ru" -> "Этот раздел предоставит вам обзор основных функций и возможностей SSR в рамках веб-фреймворка HappyX. SSR - это мощная техника, которая позволяет рендерить веб-страницы на сервере перед отправкой их клиенту, что приводит к улучшению производительности и оптимизации для SEO."
+    "ja" -> "このセクションでは、HappyXウェブフレームワーク内のSSRのコア機能と機能について概説します。 SSRは、ウェブページをサーバーサイドでレンダリングしてからクライアントに送信する強力なテクニックで、パフォーマンス向上とSEO最適化が実現されます。"
+    "zh" -> "本节将为您提供HappyX Web框架内SSR的核心功能和能力概述。 SSR是一种强大的技术，允许您在将网页发送到客户端之前在服务器端呈现它们，从而提高性能并进行SEO优化。"
+    "fr" -> "Cette section vous fournira un aperçu des fonctionnalités principales et des capacités du SSR au sein du framework web HappyX. Le SSR est une technique puissante qui vous permet de rendre les pages web côté serveur avant de les envoyer au client, ce qui améliore les performances et l'optimisation pour le référencement (SEO)."
+    "ko" -> "이 섹션은 HappyX 웹 프레임워크 내의 SSR의 핵심 기능 및 능력을 개요로 제공합니다. SSR은 서버 측에서 웹 페이지를 렌더링한 후 클라이언트에게 보내는 강력한 기술로, 성능 향상 및 SEO 최적화를 통해 결과를 도출합니다."
+  "HappyX server-side allows to use it from Nim, Python and NodeJS!":
+    "ru" -> "Серверная часть HappyX позволяет использовать ее из Nim, Python и NodeJS!"
+    "ja" -> "HappyXのサーバーサイドはNim、Python、およびNodeJSから使用できます！"
+    "zh" -> "HappyX服务器端允许从Nim、Python和NodeJS使用！"
+    "fr" -> "Le côté serveur de HappyX permet de l'utiliser avec Nim, Python et NodeJS !"
+    "ko" -> "HappyX 서버 측에서는 Nim, Python 및 NodeJS에서 사용할 수 있습니다!"
+  "Minimal example in any supported language seems like that:":
+    "ru" -> "Минимальный пример на любом поддерживаемом языке выглядит так:"
+    "ja" -> "サポートされている言語の最小の例は次のようになります："
+    "zh" -> "任何支持的语言中的最小示例看起来像这样："
+    "fr" -> "Un exemple minimal dans n'importe quel langage pris en charge ressemble à ceci :"
+    "ko" -> "지원되는 어떤 언어에서든 최소한의 예제는 다음과 같습니다:"
+
 
 var spokenLang: cstring
 try:
