@@ -126,39 +126,6 @@ proc createCommand*(name: string = "", kind: string = "", templates: bool = fals
     imports = @["happyx"]
     useTailwind = useTailwind
     templates = templates
-  let
-    projectTypes = [
-      "SSR",
-      "SSG",
-      "SPA",
-      "HPX"
-    ]
-    tailwindList = [
-      ansiStyleCode(styleBright) & ansiForegroundColorCode(fgGreen) & "use tailwindcss 3" & ansiResetCode,
-      ansiStyleCode(styleBright) & ansiForegroundColorCode(fgRed) & "don't use tailwindcss 3" & ansiResetCode,
-    ]
-    templatesList = [
-      ansiStyleCode(styleBright) & ansiForegroundColorCode(fgGreen) & "use templates" & ansiResetCode,
-      ansiStyleCode(styleBright) & ansiForegroundColorCode(fgRed) & "don't use templates" & ansiResetCode,
-    ]
-    projectTypesDesc = [
-      ansiStyleCode(styleBright) & ansiForegroundColorCode(fgGreen) & "Server-side rendering ⚡" & ansiResetCode,
-      ansiStyleCode(styleBright) & ansiForegroundColorCode(fgBlue) & "Static site generation 📁" & ansiResetCode,
-      ansiStyleCode(styleBright) & ansiForegroundColorCode(fgYellow) & "Single-page application 🎴" & ansiResetCode,
-      ansiStyleCode(styleBright) & ansiForegroundColorCode(fgRed) & "Single-page application with .hpx only ✨" & ansiResetCode,
-    ]
-    programmingLanguages = [
-      "nim",
-      "python",
-      "javascript",
-      "typescript"
-    ]
-    programmingLanguagesDesc = [
-      ansiStyleCode(styleBright) & ansiForegroundColorCode(fgRed) & "Nim 👑" & ansiResetCode,
-      ansiStyleCode(styleBright) & ansiForegroundColorCode(fgMagenta) & "Python 🐍" & ansiResetCode,
-      ansiStyleCode(styleBright) & ansiForegroundColorCode(fgYellow) & "JavaScript ✌" & ansiResetCode,
-      ansiStyleCode(styleBright) & ansiForegroundColorCode(fgBlue) & "TypeScript 🔥" & ansiResetCode,
-    ]
   styledEcho "🔥 New ", fgBlue, styleBright, "HappyX", fgWhite, " project"
   if name == "":
     try:

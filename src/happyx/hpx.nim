@@ -10,7 +10,7 @@ import
     create_command, build_command,
     dev_command, serve_command,
     html2tag_command, help_command,
-    update_command
+    update_command, project_info_command
   ]
 
 import illwill except
@@ -24,6 +24,7 @@ proc mainHelpMessageAux() = mainHelpMessage()
 proc html2tagCommandAux(output: string = "", args: seq[string]): int = html2tagCommand(output, args)
 proc updateCommandAux(args: seq[string]): int = updateCommand(args)
 proc serveCommandAux(host: string = "0.0.0.0", port: int = 80): int = serveCommand(host, port)
+proc projectInfoCommandAux(): int = projectInfoCommand()
 proc devCommandAux(host: string = "127.0.0.1", port: int = 5000,
                    reload: bool = false): int =
   devCommand(host, port, reload)
@@ -47,6 +48,7 @@ when isMainModule:
     [buildCommandAux, cmdName = "build"],
     [devCommandAux, cmdName = "dev"],
     [serveCommandAux, cmdName = "serve"],
+    [projectInfoCommandAux, cmdName = "info"],
     [createCommandAux, cmdName = "create"],
     [html2tagCommandAux, cmdName = "html2tag"],
     [updateCommandAux, cmdName = "update"],
@@ -67,6 +69,10 @@ when isMainModule:
     quit(dispatchbuild(cmdline = pars[1..^1]))
   of "dev":
     quit(dispatchdev(cmdline = pars[1..^1]))
+  of "serve":
+    quit(dispatchserve(cmdline = pars[1..^1]))
+  of "info":
+    quit(dispatchinfo(cmdline = pars[1..^1]))
   of "create":
     quit(dispatchcreate(cmdline = pars[1..^1]))
   of "html2tag":
@@ -125,6 +131,10 @@ when isMainModule:
       styledEcho fgBlue, "HappyX", fgMagenta, " update ", fgWhite, "command updates happyx framework."
       styledEcho "\nUsage:"
       styledEcho fgMagenta, "  hpx update ", fgBlue, "VERSION"
+    of "info":
+      styledEcho fgBlue, "HappyX", fgMagenta, " info ", fgWhite, "command displays project information."
+      styledEcho "\nUsage:"
+      styledEcho fgMagenta, "  hpx info"
     else:
       styledEcho fgRed, "Unknown subcommand: ", fgWhite, subcmdHelp
     shutdownCli()
@@ -132,6 +142,7 @@ when isMainModule:
   of "":
     quit(dispatchmainCommand(cmdline = pars[0..^1]))
   else:
-    styledEcho fgRed, "Unknown subcommand: ", fgWhite, subcmd
+    styledEcho fgRed, styleBright, "Unknown subcommand: ", fgWhite, subcmd
+    styledEcho fgYellow, "Use ", fgMagenta, "hpx help ", fgYellow, "to get all commands"
     shutdownCli()
     quit(QuitFailure)

@@ -56,6 +56,7 @@ type
     assetsDir*: string  ## Assets directory
     buildDir*: string  ## Build directory
     language*: ProgrammingLanguage
+    name*: string
   GodEyeData* = object
     needReload*: ptr bool
     project*: ptr ProjectData
@@ -72,6 +73,41 @@ const
       {poStdErrToStdOut}
     else:
       {poStdErrToStdOut, poUsePath}
+
+
+let
+  projectTypes* = [
+    "SSR",
+    "SSG",
+    "SPA",
+    "HPX"
+  ]
+  tailwindList* = [
+    ansiStyleCode(styleBright) & ansiForegroundColorCode(fgGreen) & "use tailwindcss 3" & ansiResetCode,
+    ansiStyleCode(styleBright) & ansiForegroundColorCode(fgRed) & "don't use tailwindcss 3" & ansiResetCode,
+  ]
+  templatesList* = [
+    ansiStyleCode(styleBright) & ansiForegroundColorCode(fgGreen) & "use templates" & ansiResetCode,
+    ansiStyleCode(styleBright) & ansiForegroundColorCode(fgRed) & "don't use templates" & ansiResetCode,
+  ]
+  projectTypesDesc* = [
+    ansiStyleCode(styleBright) & ansiForegroundColorCode(fgGreen) & "Server-side rendering ⚡" & ansiResetCode,
+    ansiStyleCode(styleBright) & ansiForegroundColorCode(fgBlue) & "Static site generation 📁" & ansiResetCode,
+    ansiStyleCode(styleBright) & ansiForegroundColorCode(fgYellow) & "Single-page application 🎴" & ansiResetCode,
+    ansiStyleCode(styleBright) & ansiForegroundColorCode(fgRed) & "Single-page application with .hpx only ✨" & ansiResetCode,
+  ]
+  programmingLanguages* = [
+    "nim",
+    "python",
+    "javascript",
+    "typescript"
+  ]
+  programmingLanguagesDesc* = [
+    ansiStyleCode(styleBright) & ansiForegroundColorCode(fgRed) & "Nim 👑" & ansiResetCode,
+    ansiStyleCode(styleBright) & ansiForegroundColorCode(fgMagenta) & "Python 🐍" & ansiResetCode,
+    ansiStyleCode(styleBright) & ansiForegroundColorCode(fgYellow) & "JavaScript ✌" & ansiResetCode,
+    ansiStyleCode(styleBright) & ansiForegroundColorCode(fgBlue) & "TypeScript 🔥" & ansiResetCode,
+  ]
 
 
 var
@@ -108,30 +144,36 @@ proc nextState*(self: Progress): string =
   self.state
 
 
-proc compileProject*(): ProjectData {. discardable .} =
-  ## Compiling Project
+proc isProject*(): bool =
+  fileExists(getCurrentDir() / CONFIG_FILE)
+
+
+proc readConfig*(): ProjectData =
   result = ProjectData(
       projectType: ptSPA, srcDir: "src",
       mainFile: SPA_MAIN_FILE,
       process: nil, error: "",
       assetsDir: "public",
-      buildDir: "build"
+      buildDir: "build", name: ""
     )
-
-  # Trying to get project config
   if fileExists(getCurrentDir() / CONFIG_FILE):
     let cfg = loadConfig(getCurrentDir() / CONFIG_FILE)
     result.projectType = parseEnum[ProjectType](
       cfg.getSectionValue("Main", "projectType", "SPA").toUpper()
     )
     result.language = parseEnum[ProgrammingLanguage](
-      cfg.getSectionValue("Main", "language", "python").toLower()
+      cfg.getSectionValue("Main", "language", "nim").toLower()
     )
     result.mainFile = cfg.getSectionValue("Main", "mainFile", SPA_MAIN_FILE)
     result.srcDir = cfg.getSectionValue("Main", "srcDir", "src")
     result.assetsDir = cfg.getSectionValue("Main", "assetsDir", "public")
     result.buildDir = cfg.getSectionValue("Main", "buildDir", "build")
-  # Only errors will shows
+    result.name = cfg.getSectionValue("Main", "projectName", "")
+
+
+proc compileProject*(): ProjectData {. discardable .} =
+  ## Compiling Project
+  result = readConfig()
 
   case result.projectType:
   of ptSPA:
