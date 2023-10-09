@@ -500,6 +500,8 @@ proc detectReturnStmt(node: NimNode, replaceReturn: bool = false) =
           node[i] = newCall("answer", ident"req", formatNode(newCall("translate", child[0])))
         else:
           node[i] = newCall("answer", ident"req", formatNode(child[0]))
+      elif child[0].kind in {nnkCharLit..nnkFloat128Lit}:
+        node[i] = newCall("answer", ident"req", newLit($child[0].toStrLit))
       # Variable
       else:
         when enableAutoTranslate:
