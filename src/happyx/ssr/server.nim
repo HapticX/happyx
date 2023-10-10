@@ -641,23 +641,27 @@ macro routes*(server: Server, body: untyped = newStmtList()): untyped =
     let
       path = liveView[0]
       statement = liveView[1]
-      connection = newCall(
+      connection = newNimNode(nnkCurly).add(newCall(
         "&",
         newCall(
-          "&"
+          "&",
           newCall(
             "&",
             newCall(
               "&",
-              newLit"var socketToSsr = new WebSocket(\"wss://",
-              newDotExpr(ident"self", ident"address"),
+              newCall(
+                "&",
+                newLit("var socketToSsr = new WebSocket(\"ws://"),
+                newDotExpr(ident"server", ident"address"),
+              ),
+              newLit":",
             ),
-            newLit":",
+            newCall("$", newDotExpr(ident"server", ident"port"))
           ),
-          newCall("$", newDotExpr(ident"self", ident"port"))
+          path
         ),
-        path
-      )
+        newLit("\")")
+      ))
       getMethod = quote do:
         {.gcsafe.}:
           var html = buildHtml:
