@@ -641,9 +641,23 @@ macro routes*(server: Server, body: untyped = newStmtList()): untyped =
     let
       path = liveView[0]
       statement = liveView[1]
-      connection = newLit(fmt"""
-var socketToSsr = new WebSocket("ws://localhost:5000{path}");
-""")
+      connection = newCall(
+        "&",
+        newCall(
+          "&"
+          newCall(
+            "&",
+            newCall(
+              "&",
+              newLit"var socketToSsr = new WebSocket(\"wss://",
+              newDotExpr(ident"self", ident"address"),
+            ),
+            newLit":",
+          ),
+          newCall("$", newDotExpr(ident"self", ident"port"))
+        ),
+        path
+      )
       getMethod = quote do:
         {.gcsafe.}:
           var html = buildHtml:
