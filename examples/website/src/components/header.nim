@@ -2,19 +2,7 @@
 import
   ../../../../src/happyx,
   ../ui/[colors, translations],
-  ./[button, drawer, sidebar]
-
-
-proc setCurrentLanguage*(lang: string) =
-  var language: cstring = lang
-  languageSettings.set(lang)
-  try:
-    buildJs:
-      localStorage["happyx_spoken_language"] = ~language
-  except:
-    discard
-  enableRouting = true
-  route(currentRoute)
+  ./[button, drawer, sidebar, language_spinner]
 
 
 # Declare component
@@ -67,15 +55,4 @@ component Header:
             route("/roadmap/")
         ):
           {translate("🌎 RoadMap")}
-        component Button(action = proc() = setCurrentLanguage("en")):
-          "🇺🇸"
-        component Button(action = proc() = setCurrentLanguage("fr")):
-          "🇫🇷"
-        component Button(action = proc() = setCurrentLanguage("ja")):
-          "🇯🇵"
-        component Button(action = proc() = setCurrentLanguage("zh")):
-          "🇨🇳"
-        component Button(action = proc() = setCurrentLanguage("ko")):
-          "🇰🇷"
-        component Button(action = proc() = setCurrentLanguage("ru")):
-          "🇷🇺"
+        LanguageSpinner()

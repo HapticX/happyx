@@ -40,6 +40,9 @@ appRoutes("app"):
     tDiv: test1
     tDiv: CTest(id = 7)
     tDiv: CTest(9)
+    tDiv:
+      CTest(id = 0):
+        "hello"
   
   "/issue154":
     tDiv: {catStatus}

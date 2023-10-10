@@ -495,11 +495,19 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
       if statement.len-2 > 0 and statementList.kind == nnkStmtList:
         var builded = buildHtmlProcedure(tagName, statementList, inComponent, componentName, inCycle, cycleTmpVar, compTmpVar, cycleVars)
         for attr in statement[1 .. statement.len-2]:
-          builded.addAttribute(
-            newStrLitNode($attr[0]),
-            formatNode(attr[1]),
-            inComponent
-          )
+          if attr.kind in AtomicNodes:
+            # component params
+            builded.addAttribute(
+              newStrLitNode($attr.toStrLit),
+              formatNode(attr),
+              inComponent
+            )
+          else:
+            builded.addAttribute(
+              newStrLitNode($attr[0]),
+              formatNode(attr[1]),
+              inComponent
+            )
         whenStmt[1].add(builded)
       # tag(attr="value")
       elif statementList.kind != nnkStmtList:

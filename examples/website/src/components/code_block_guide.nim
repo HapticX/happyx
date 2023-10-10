@@ -29,17 +29,19 @@ component LanguageChooser:
       @click:
         if self.alias == "":
           if self.lang != currentLanguage:
-            var lang: cstring = $(self.LanguageChooser.lang.val)
+            var lang: cstring = $(self.lang.val)
             buildJs:
               localStorage["happyx_programming_language"] = ~lang
             currentLanguage.set(self.lang)
             route(currentRoute)
+            application.router()
         elif self.alias != currentLanguage:
-          var lang: cstring = $(self.LanguageChooser.alias.val)
+          var lang: cstring = $(self.alias.val)
           buildJs:
             localStorage["happyx_programming_language"] = ~lang
           currentLanguage.set(self.alias)
           route(currentRoute)
+          application.router()
 
 
 component CodeBlockGuide:
