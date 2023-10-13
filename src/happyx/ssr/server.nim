@@ -818,7 +818,7 @@ socketToSsr.onmessage=function(m){
         ),
         newCall(
           "and",
-          newCall("==", newCall("toLower", newCall("[]", headers, newStrLitNode("connection"), newLit(0))), newStrLitNode("upgrade")),
+          newCall("contains", newCall("[]", headers, newStrLitNode("connection")), newStrLitNode("upgrade")),
           newCall("==", newCall("toLower", newCall("[]", headers, newStrLitNode("upgrade"), newLit(0))), newStrLitNode("websocket")),
         )
       )
