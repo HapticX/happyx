@@ -38,3 +38,6 @@ macro renderTemplate*(name: static[string]): untyped =
   ## Renders template from file
   let folder = getScriptDir() / $templatesFolder["f"] / name
   newCall("compileTemplateFile", newLit(folder))
+
+proc render*(model: auto, htmlTemplate: static[string]): string =
+  renderTemplate(htmlTemplate)
