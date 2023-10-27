@@ -75,45 +75,77 @@ const
       {poStdErrToStdOut, poUsePath}
 
 
-let
-  projectTypes* = [
-    "SSR",
-    "SSG",
-    "SPA",
-    "HPX"
-  ]
-  tailwindList* = [
-    ansiStyleCode(styleBright) & ansiForegroundColorCode(fgGreen) & "use tailwindcss 3" & ansiResetCode,
-    ansiStyleCode(styleBright) & ansiForegroundColorCode(fgRed) & "don't use tailwindcss 3" & ansiResetCode,
-  ]
-  templatesList* = [
-    ansiStyleCode(styleBright) & ansiForegroundColorCode(fgGreen) & "use templates" & ansiResetCode,
-    ansiStyleCode(styleBright) & ansiForegroundColorCode(fgRed) & "don't use templates" & ansiResetCode,
-  ]
-  projectTypesDesc* = [
-    ansiStyleCode(styleBright) & ansiForegroundColorCode(fgGreen) & "Server-side rendering ⚡" & ansiResetCode,
-    ansiStyleCode(styleBright) & ansiForegroundColorCode(fgBlue) & "Static site generation 📁" & ansiResetCode,
-    ansiStyleCode(styleBright) & ansiForegroundColorCode(fgYellow) & "Single-page application 🎴" & ansiResetCode,
-    ansiStyleCode(styleBright) & ansiForegroundColorCode(fgRed) & "Single-page application with .hpx only ✨" & ansiResetCode,
-  ]
-  programmingLanguages* = [
-    "nim",
-    "python",
-    "javascript",
-    "typescript"
-  ]
-  programmingLanguagesDesc* = [
-    ansiStyleCode(styleBright) & ansiForegroundColorCode(fgRed) & "Nim 👑" & ansiResetCode,
-    ansiStyleCode(styleBright) & ansiForegroundColorCode(fgMagenta) & "Python 🐍" & ansiResetCode,
-    ansiStyleCode(styleBright) & ansiForegroundColorCode(fgYellow) & "JavaScript ✌" & ansiResetCode,
-    ansiStyleCode(styleBright) & ansiForegroundColorCode(fgBlue) & "TypeScript 🔥" & ansiResetCode,
-  ]
+var
+  projectTypes*: array[4, string]
+  tailwindList*: array[2, string]
+  templatesList*: array[2, string]
+  projectTypesDesc*: array[4, string]
+  programmingLanguages*: array[4, string]
+  programmingLanguagesDesc*: array[4, string]
 
 
 var
   godEyeThread*: Thread[ptr GodEyeData]
   L*: Lock
   deinitialized* = false
+  useEmoji* = true
+  emoji* = {
+    "🔥": proc(): string = (if useEmoji: "🔥" else: ""),
+    "🐥": proc(): string = (if useEmoji: "🐥" else: ""),
+    "✨": proc(): string = (if useEmoji: "✨" else: ""),
+    "👨‍🔬": proc(): string = (if useEmoji: "👨‍🔬" else: ""),
+    "🧪": proc(): string = (if useEmoji: "🧪" else: ""),
+    "🎨": proc(): string = (if useEmoji: "🎨" else: ""),
+    "✌": proc(): string = (if useEmoji: "✌" else: ""),
+    "⚡": proc(): string = (if useEmoji: "⚡" else: ""),
+    "📁": proc(): string = (if useEmoji: "📁" else: ""),
+    "🔨": proc(): string = (if useEmoji: "🔨" else: ""),
+    "📦": proc(): string = (if useEmoji: "📦" else: ""),
+    "🔌": proc(): string = (if useEmoji: "🔌" else: ""),
+    "🐲": proc(): string = (if useEmoji: "🐲" else: ""),
+    "❎": proc(): string = (if useEmoji: "❎" else: ""),
+    "✅": proc(): string = (if useEmoji: "✅" else: ""),
+    "👑": proc(): string = (if useEmoji: "👑" else: ""),
+    "🐍": proc(): string = (if useEmoji: "🐍" else: ""),
+    "💡": proc(): string = (if useEmoji: "💡" else: ""),
+    "😸": proc(): string = (if useEmoji: "😸" else: ""),
+    "❌": proc(): string = (if useEmoji: "❌" else: ""),
+  }.toTable()
+
+
+proc init() =
+  projectTypes = [
+    "SSR",
+    "SSG",
+    "SPA",
+    "HPX"
+  ]
+  tailwindList = [
+    ansiStyleCode(styleBright) & ansiForegroundColorCode(fgGreen) & "use tailwindcss 3" & ansiResetCode,
+    ansiStyleCode(styleBright) & ansiForegroundColorCode(fgRed) & "don't use tailwindcss 3" & ansiResetCode,
+  ]
+  templatesList = [
+    ansiStyleCode(styleBright) & ansiForegroundColorCode(fgGreen) & "use templates" & ansiResetCode,
+    ansiStyleCode(styleBright) & ansiForegroundColorCode(fgRed) & "don't use templates" & ansiResetCode,
+  ]
+  projectTypesDesc = [
+    ansiStyleCode(styleBright) & ansiForegroundColorCode(fgGreen) & "Server-side rendering " & emoji["⚡"]() & ansiResetCode,
+    ansiStyleCode(styleBright) & ansiForegroundColorCode(fgBlue) & "Static site generation " & emoji["📦"]() & ansiResetCode,
+    ansiStyleCode(styleBright) & ansiForegroundColorCode(fgYellow) & "Single-page application " & emoji["✨"]() & ansiResetCode,
+    ansiStyleCode(styleBright) & ansiForegroundColorCode(fgRed) & "Single-page application with .hpx only " & emoji["🧪"]() & ansiResetCode,
+  ]
+  programmingLanguages = [
+    "nim",
+    "python",
+    "javascript",
+    "typescript"
+  ]
+  programmingLanguagesDesc = [
+    ansiStyleCode(styleBright) & ansiForegroundColorCode(fgRed) & "Nim " & emoji["👑"]() & ansiResetCode,
+    ansiStyleCode(styleBright) & ansiForegroundColorCode(fgMagenta) & "Python " & emoji["🐍"]() & ansiResetCode,
+    ansiStyleCode(styleBright) & ansiForegroundColorCode(fgYellow) & "JavaScript " & emoji["✌"]() & ansiResetCode,
+    ansiStyleCode(styleBright) & ansiForegroundColorCode(fgBlue) & "TypeScript " & emoji["🔥"]() & ansiResetCode,
+  ]
 
 
 proc shutdownCli* =
@@ -394,4 +426,4 @@ proc updateHappyx*(version: string) =
     process.close()
   
   sleep(1000)
-  styledEcho fgMagenta, "✨ HappyX ", fgGreen, "successfully updated to ", fgMagenta, version
+  styledEcho fgMagenta, emoji["✨"](), " HappyX ", fgGreen, "successfully updated to ", fgMagenta, version

@@ -34,3 +34,4 @@ proc mainHelpMessage*() =
   styledEcho "Usage:"
   styledEcho fgMagenta, " hpx ", fgYellow, "help", fgBlue, "subcommand "
   styledEcho fgMagenta, " hpx ", fgBlue, subcommands.join(delimeter), fgYellow, " [subcommand-args]"
+  styledEcho fgYellow, "Use ", fgMagenta, "--no-emoji", fgYellow, " flag to disable emoji"

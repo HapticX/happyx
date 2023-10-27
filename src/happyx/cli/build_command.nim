@@ -4,7 +4,7 @@ import
 
 proc buildCommand*(optSize: bool = false): int =
   ## Builds Single page application project into one HTML and JS files
-  styledEcho "🔥 Welcome to ", styleBright, fgMagenta, "HappyX ", resetStyle, fgWhite, "builder"
+  styledEcho emoji["🔥"](), " Welcome to ", styleBright, fgMagenta, "HappyX ", resetStyle, fgWhite, "builder"
   let
     project = compileProject()
     assetsDir = project.assetsDir.replace("\\", "/").replace('/', DirSep)

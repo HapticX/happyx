@@ -4,20 +4,20 @@ import
 
 proc projectInfoCommand*(): int =
   if not isProject():
-    styledEcho fgRed, "Current folder is not HappyX project. ❌"
+    styledEcho fgRed, "Current folder is not HappyX project. ", emoji["❌"]()
     return QuitFailure
   var projectData = readConfig()
-  styledEcho fgMagenta, styleBright, "🔥 Project name: ", fgGreen, projectData.name
-  styledEcho fgMagenta, styleBright, "⚡ Project type: ", projectTypesDesc[
+  styledEcho fgMagenta, styleBright, emoji["🔥"](), " Project name: ", fgGreen, projectData.name
+  styledEcho fgMagenta, styleBright, emoji["✌"](), " Project type: ", projectTypesDesc[
     projectTypes.find($projectData.projectType)
   ]
-  styledEcho fgMagenta, styleBright, "🐥 Project language: ", programmingLanguagesDesc[
+  styledEcho fgMagenta, styleBright, emoji["🐥"](), " Project language: ", programmingLanguagesDesc[
     programmingLanguages.find($projectData.language)
   ]
-  styledEcho fgMagenta, styleBright, "🔌 Main file: ", fgWhite, projectData.mainFile
-  styledEcho fgMagenta, styleBright, "📁 Source directory: ", fgWhite, projectData.srcDir
-  styledEcho fgMagenta, styleBright, "📁 Assets directory: ", fgWhite, projectData.assetsDir
-  styledEcho fgMagenta, styleBright, "📁 Build directory: ", fgWhite, projectData.buildDir
+  styledEcho fgMagenta, styleBright, emoji["🔌"](), " Main file: ", fgWhite, projectData.mainFile
+  styledEcho fgMagenta, styleBright, emoji["📁"](), " Source directory: ", fgWhite, projectData.srcDir
+  styledEcho fgMagenta, styleBright, emoji["📁"](), " Assets directory: ", fgWhite, projectData.assetsDir
+  styledEcho fgMagenta, styleBright, emoji["📁"](), " Build directory: ", fgWhite, projectData.buildDir
 
   # Writen code lines count? (only .py/.nim/.js/.ts)
   var bytes = 0
@@ -37,7 +37,7 @@ proc projectInfoCommand*(): int =
       discard
   
   echo ""
-  styledEcho fgMagenta, styleBright, "📦 Project size: ", fgWhite, bytes.formatSize()
+  styledEcho fgMagenta, styleBright, emoji["📦"](), " Project size: ", fgWhite, bytes.formatSize()
 
   var output = execProcess(
     "git rev-list --count master", getCurrentDir()
@@ -45,7 +45,7 @@ proc projectInfoCommand*(): int =
 
   if output.match(re2"^\d+$"):
     echo ""
-    styledEcho fgBlue, styleBright, "😸 Git Story 😸"
+    styledEcho fgBlue, styleBright, emoji["😸"](), " Git Story ", emoji["😸"]()
     styledEcho fgMagenta, styleBright, "🛠 Commit count: ", fgWhite, output
   
   output = execProcess(
@@ -53,6 +53,6 @@ proc projectInfoCommand*(): int =
   ).replace(re2"^\s*", "").replace(re2"\s*$", "")
 
   if output.len == 40 and output.match(re2"^[\S]+$"):
-    styledEcho fgMagenta, styleBright, "✨ Latest commit: ", fgWhite, output
+    styledEcho fgMagenta, styleBright, emoji["✨"](), " Latest commit: ", fgWhite, output
 
   QuitSuccess

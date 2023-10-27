@@ -4,7 +4,7 @@ import
 
 proc html2tagCommand*(output: string = "", args: seq[string]): int =
   ## Converts HTML into `buildHtml` macro
-  styledEcho fgGreen, "🔨 Convert HTML into happyx file"
+  styledEcho fgGreen, emoji["🔨"](), " Convert HTML into happyx file"
   var o = output
   # Check args
   if args.len != 1:
@@ -41,6 +41,6 @@ proc html2tagCommand*(output: string = "", args: seq[string]): int =
   file = open(o, fmWrite)
   file.write(outputData)
   file.close()
-  styledEcho fgGreen, "✅ Successfully!"
+  styledEcho fgGreen, emoji["✅"](), " Successfully!"
   shutdownCli()
   QuitSuccess

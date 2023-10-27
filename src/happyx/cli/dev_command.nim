@@ -28,8 +28,8 @@ proc devCommand*(host: string = "127.0.0.1", port: int = 5000,
 
   # Launch SSR app
   if project.projectType in [ptSSG, ptSSR]:
-    styledEcho fgRed, "❌ SSR/SSG projects not available in the dev mode."
-    styledEcho fgMagenta, "💡 Make SSR/SSG dev mode and send Pull Request if you want!"
+    styledEcho fgRed, emoji["❌"](), " SSR/SSG projects not available in the dev mode."
+    styledEcho fgMagenta, emoji["💡"](), " Make SSR/SSG dev mode and send Pull Request if you want!"
     shutdownCli()
     return QuitSuccess
 

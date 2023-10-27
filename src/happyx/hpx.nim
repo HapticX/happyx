@@ -57,13 +57,22 @@ when isMainModule:
       short = {"version": 'v'}
     ]
   )
+  var pars = commandLineParams()
   let
-    pars = commandLineParams()
     subcmd =
       if pars.len > 0 and not pars[0].startsWith("-"):
         pars[0]
       else:
         ""
+  if pars.find("no-emoji") != -1:
+    pars.delete(pars.find("no-emoji"))
+    useEmoji = false
+  elif pars.find("-no-emoji") != -1:
+    pars.delete(pars.find("-no-emoji"))
+    useEmoji = false
+  elif pars.find("--no-emoji") != -1:
+    pars.delete(pars.find("--no-emoji"))
+    useEmoji = false
   case subcmd
   of "build":
     quit(dispatchbuild(cmdline = pars[1..^1]))
@@ -96,6 +105,7 @@ when isMainModule:
       styledEcho fgMagenta, "  hpx build\n"
       styledEcho "Optional arguments:"
       styledEcho fgBlue, align("opt-size", 10), "|o", fgWhite, " - Optimize JS file size"
+      styledEcho fgYellow, "Use ", fgMagenta, "--no-emoji", fgYellow, " flag to disable emoji"
     of "dev":
       styledEcho fgBlue, "HappyX", fgMagenta, " dev ", fgWhite, "command starting dev server for SPA project."
       styledEcho "\nUsage:"
@@ -104,6 +114,7 @@ when isMainModule:
       styledEcho fgBlue, align("host", 8), "|h", fgWhite, " - change address (default is 127.0.0.1) (ex. --host:127.0.0.1)"
       styledEcho fgBlue, align("port", 8), "|p", fgWhite, " - change port (default is 5000) (ex. --port:5000)"
       styledEcho fgBlue, align("reload", 8), "|r", fgWhite, " - enable autoreloading (ex. --reload)"
+      styledEcho fgYellow, "Use ", fgMagenta, "--no-emoji", fgYellow, " flag to disable emoji"
     of "serve":
       styledEcho fgBlue, "HappyX", fgMagenta, " serve ", fgWhite, "command starting product server for SPA project."
       styledEcho "\nUsage:"
@@ -111,6 +122,7 @@ when isMainModule:
       styledEcho "Optional arguments:"
       styledEcho fgBlue, align("host", 6), "|h", fgWhite, " - change address (default is 0.0.0.0) (ex. --host:0.0.0.0)"
       styledEcho fgBlue, align("port", 6), "|p", fgWhite, " - change port (default is 80) (ex. --port:80)"
+      styledEcho fgYellow, "Use ", fgMagenta, "--no-emoji", fgYellow, " flag to disable emoji"
     of "create":
       styledEcho fgBlue, "HappyX", fgMagenta, " create ", fgWhite, "command creates a new HappyX project."
       styledEcho "\nUsage:"
@@ -121,20 +133,24 @@ when isMainModule:
       styledEcho fgBlue, align("templates", 14), "|t", fgWhite, " - Enable templates (only for SSR) (ex. --templates)"
       styledEcho fgBlue, align("path-params", 14), "|p", fgWhite, " - Use path params assignment (ex. --path-params)"
       styledEcho fgBlue, align("use-tailwind", 14), "|u", fgWhite, " - Use Tailwind CSS 3 (only for SPA) (ex. --use-tailwind)"
+      styledEcho fgYellow, "Use ", fgMagenta, "--no-emoji", fgYellow, " flag to disable emoji"
     of "html2tag":
       styledEcho fgBlue, "HappyX", fgMagenta, " html2tag ", fgWhite, "command converts html code into buildHtml macro"
       styledEcho "\nUsage:"
       styledEcho fgMagenta, "  hpx html2tag source.html\n"
       styledEcho "Optional arguments:"
       styledEcho fgBlue, align("output", 8), "|o", fgWhite, " - Output file (ex. --output:source)"
+      styledEcho fgYellow, "Use ", fgMagenta, "--no-emoji", fgYellow, " flag to disable emoji"
     of "update":
       styledEcho fgBlue, "HappyX", fgMagenta, " update ", fgWhite, "command updates happyx framework."
       styledEcho "\nUsage:"
       styledEcho fgMagenta, "  hpx update ", fgBlue, "VERSION"
+      styledEcho fgYellow, "Use ", fgMagenta, "--no-emoji", fgYellow, " flag to disable emoji"
     of "info":
       styledEcho fgBlue, "HappyX", fgMagenta, " info ", fgWhite, "command displays project information."
       styledEcho "\nUsage:"
       styledEcho fgMagenta, "  hpx info"
+      styledEcho fgYellow, "Use ", fgMagenta, "--no-emoji", fgYellow, " flag to disable emoji"
     else:
       styledEcho fgRed, "Unknown subcommand: ", fgWhite, subcmdHelp
     shutdownCli()
