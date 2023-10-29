@@ -9,6 +9,7 @@ enableDebugSpaMacro	happyx/core/constants.html#enableDebugSpaMacro	constants: en
 enableUseCompDebugMacro	happyx/core/constants.html#enableUseCompDebugMacro	constants: enableUseCompDebugMacro	
 enableRequestModelDebugMacro	happyx/core/constants.html#enableRequestModelDebugMacro	constants: enableRequestModelDebugMacro	
 enableRoutingDebugMacro	happyx/core/constants.html#enableRoutingDebugMacro	constants: enableRoutingDebugMacro	
+enableLiveViews	happyx/core/constants.html#enableLiveViews	constants: enableLiveViews	
 componentDebugTarget	happyx/core/constants.html#componentDebugTarget	constants: componentDebugTarget	
 reqModelDebugTarget	happyx/core/constants.html#reqModelDebugTarget	constants: reqModelDebugTarget	
 exportPython	happyx/core/constants.html#exportPython	constants: exportPython	
