@@ -101,7 +101,7 @@ proc useComponent*(statement: NimNode, inCycle, inComponent: bool,
     componentNameTmp = "_" & componentName
     componentData = "data_" & componentName
     stringId =
-      when defined(js):
+      when defined(js) or not enableLiveviews:
         if inCycle or inComponent:
           componentNameIdent
         else:

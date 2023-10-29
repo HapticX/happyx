@@ -51,6 +51,7 @@ const
   enableUseCompDebugMacro* = defined(useCompDebug) or defined(happyxUseCompDebug) or defined(hpxUseCompDebug)
   enableRequestModelDebugMacro* = defined(reqModelDebug) or defined(happyxReqModelDebug) or defined(hpxReqModelDebug)
   enableRoutingDebugMacro* = defined(routingDebug) or defined(happyxRoutingDebug) or defined(hpxRoutingDebug)
+  enableLiveViews* = not (defined(noLiveviews) or defined(hpxNoLiveviews) or defined(happyxNoLiveviews))
   componentDebugTarget* {.strdefine.} = ""
   reqModelDebugTarget* {.strdefine.} = ""
   # Language bindings
