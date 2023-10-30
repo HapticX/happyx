@@ -20,29 +20,33 @@ type
 
 var sponsor_list*: seq[Sponsor] = @[
   Sponsor(
-    name: "Example sponsor", amount: 100.0, url: "https://thispersondoesnotexist.com/",
-    avatarUrl: "https://thispersondoesnotexist.com/", status: ssSilver
+    name: "HapticX", amount: 100.0, url: "https://github.com/HapticX",
+    avatarUrl: "https://avatars.githubusercontent.com/u/124334403?s=200&v=4", status: ssGold
   ),
-  Sponsor(
-    name: "Example sponsor", amount: 100.0, url: "https://montreally.com/wp-content/uploads/cache/images/man-2/man-2-3683696497.jpg",
-    avatarUrl: "https://montreally.com/wp-content/uploads/cache/images/man-2/man-2-3683696497.jpg", status: ssGold
-  ),
-  Sponsor(
-    name: "Example sponsor", amount: 100.0, url: "https://beatmaker.tv/Default/General/Image/136200?type=BeatImageOriginal&ver=1",
-    avatarUrl: "https://beatmaker.tv/Default/General/Image/136200?type=BeatImageOriginal&ver=1", status: ssGold
-  ),
-  Sponsor(
-    name: "Example sponsor", amount: 100.0, url: "https://dspncdn.com/a1/avatars/400x/4b/75/4b756433f80f0f1a4e0b335a56a74e79.jpg",
-    avatarUrl: "https://dspncdn.com/a1/avatars/400x/4b/75/4b756433f80f0f1a4e0b335a56a74e79.jpg", status: ssPlatinum
-  ),
-  Sponsor(
-    name: "Example sponsor", amount: 100.0, url: "https://i.ytimg.com/vi/YONXRJ3OOFw/maxresdefault.jpg",
-    avatarUrl: "https://i.ytimg.com/vi/YONXRJ3OOFw/maxresdefault.jpg", status: ssDefault
-  ),
-  Sponsor(
-    name: "Example sponsor", amount: 100.0, url: "https://i.imgflip.com/1ndfj0.jpg",
-    avatarUrl: "https://i.imgflip.com/1ndfj0.jpg", status: ssSilver
-  ),
+  # Sponsor(
+  #   name: "Example sponsor", amount: 100.0, url: "https://thispersondoesnotexist.com/",
+  #   avatarUrl: "https://thispersondoesnotexist.com/", status: ssSilver
+  # ),
+  # Sponsor(
+  #   name: "Example sponsor", amount: 100.0, url: "https://montreally.com/wp-content/uploads/cache/images/man-2/man-2-3683696497.jpg",
+  #   avatarUrl: "https://montreally.com/wp-content/uploads/cache/images/man-2/man-2-3683696497.jpg", status: ssGold
+  # ),
+  # Sponsor(
+  #   name: "Example sponsor", amount: 100.0, url: "https://beatmaker.tv/Default/General/Image/136200?type=BeatImageOriginal&ver=1",
+  #   avatarUrl: "https://beatmaker.tv/Default/General/Image/136200?type=BeatImageOriginal&ver=1", status: ssGold
+  # ),
+  # Sponsor(
+  #   name: "Example sponsor", amount: 100.0, url: "https://dspncdn.com/a1/avatars/400x/4b/75/4b756433f80f0f1a4e0b335a56a74e79.jpg",
+  #   avatarUrl: "https://dspncdn.com/a1/avatars/400x/4b/75/4b756433f80f0f1a4e0b335a56a74e79.jpg", status: ssPlatinum
+  # ),
+  # Sponsor(
+  #   name: "Example sponsor", amount: 100.0, url: "https://i.ytimg.com/vi/YONXRJ3OOFw/maxresdefault.jpg",
+  #   avatarUrl: "https://i.ytimg.com/vi/YONXRJ3OOFw/maxresdefault.jpg", status: ssDefault
+  # ),
+  # Sponsor(
+  #   name: "Example sponsor", amount: 100.0, url: "https://i.imgflip.com/1ndfj0.jpg",
+  #   avatarUrl: "https://i.imgflip.com/1ndfj0.jpg", status: ssSilver
+  # ),
 ]
 
 
