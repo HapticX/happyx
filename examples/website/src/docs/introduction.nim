@@ -157,3 +157,6 @@ component Introduction:
             component Contributor("Carlo Capocasa", "https://github.com/capocasa", "https://avatars.githubusercontent.com/u/1167940?v=4")
             component Contributor("Alikusnadi", "https://github.com/dodolboks", "https://avatars.githubusercontent.com/u/91905?v=4")
             component Contributor("XADE", "https://github.com/imxade", "https://avatars.githubusercontent.com/u/56511165?v=4")
+            component Contributor("Thiago", "https://github.com/thisago", "https://avatars.githubusercontent.com/u/74574275?v=4")
+            component Contributor("svenrdz", "https://github.com/svenrdz", "https://avatars.githubusercontent.com/u/23420779?v=4")
+            component Contributor("monocoder", "https://github.com/monocoder", "https://avatars.githubusercontent.com/u/7921660?v=4")
