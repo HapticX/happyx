@@ -160,3 +160,4 @@ component Introduction:
             component Contributor("Thiago", "https://github.com/thisago", "https://avatars.githubusercontent.com/u/74574275?v=4")
             component Contributor("svenrdz", "https://github.com/svenrdz", "https://avatars.githubusercontent.com/u/23420779?v=4")
             component Contributor("monocoder", "https://github.com/monocoder", "https://avatars.githubusercontent.com/u/7921660?v=4")
+            component Contributor("JK", "https://github.com/jerrygzy", "https://avatars.githubusercontent.com/u/181757?v=4")
