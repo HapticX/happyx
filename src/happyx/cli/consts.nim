@@ -192,7 +192,7 @@ appRoutes("app"):
     {additionalHead}
   </head>
   <body>
-    <div id=\"app\"></div>
+    <div id="app"></div>
     <script src="{SPA_MAIN_FILE}.js"></script>
   </body>
 </html>"""
@@ -211,19 +211,31 @@ component HelloWorld:
 """
   hpxTemplate* = """<template>
   <div>
-    <HelloWorld></HelloWorld>
+    <HelloWorld userId:int="10" query="meow" pathParam="Path Param Example"></HelloWorld>
   </div>
 </template>
 """
   hpxComponentTemplate* = """<template>
   <div>
-    Hello, world!
+    Hello, world! {self.userId}
+    <p>
+      Query is
+      {self.query}
+    </p>
+    <p>
+      pathParam is
+      {self.pathParam}
+    </p>
   </div>
 </template>
 
 
 <script>
-  echo "Hello, world!"
+echo "Hello, world!"
+props:
+  userId: int = 0
+  query: string = ""
+  pathParam: string = ""
 </script>
 
 <style>
@@ -235,6 +247,20 @@ component HelloWorld:
 </style>
 """
   hpxRouterTemplate* = """{
-  "/": "main.hpx"
+  "/": "main.hpx",
+  "/user{ARG1:int}/{ARG2?:string}": {
+    "component": "HelloWorld",
+    "args": {
+      "userId": "ARG1",
+      "query": {
+        "name": "q",
+        "type": "query"
+      },
+      "pathParam": {
+        "name": "ARG2",
+        "type": "pathParam"
+      }
+    }
+  }
 }
 """

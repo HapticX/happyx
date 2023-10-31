@@ -73,6 +73,7 @@ when isMainModule:
   elif pars.find("--no-emoji") != -1:
     pars.delete(pars.find("--no-emoji"))
     useEmoji = false
+  utils.init()
   case subcmd
   of "build":
     quit(dispatchbuild(cmdline = pars[1..^1]))

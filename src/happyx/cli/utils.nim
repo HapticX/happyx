@@ -113,7 +113,7 @@ var
   }.toTable()
 
 
-proc init() =
+proc init*() =
   projectTypes = [
     "SSR",
     "SSG",
@@ -266,7 +266,7 @@ proc compileProject*(): ProjectData {. discardable .} =
         compName = val["component"].getStr
         args = val["args"]
       if compName.endsWith(".hpx"):
-        compName = compName[0..^4]
+        compName = compName[0..^5]
       f.write("\n")
       f.write(fmt"    component {compName}(")
       for key, arg in args.pairs():
@@ -296,6 +296,9 @@ proc compileProject*(): ProjectData {. discardable .} =
         else:
           raise newException(ValueError, fmt"Incorrect router.json structure at `{key}`")
       f.write(")\n\n")
+    f.close()
+    f = open(result.srcDir / result.mainFile & ".nim", fmRead)
+    echo f.readAll()
     f.close()
     result.process = startProcess(
       "nim", getCurrentDir() / result.srcDir,

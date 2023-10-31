@@ -74,7 +74,7 @@ proc createCommand*(name: string = "", kind: string = "", templates: bool = fals
   if name == "":
     try:
       # Get project name
-      styledWrite stdout, fgYellow, align(emoji["🧪"]() & "\n Project name: ", 14)
+      styledWrite stdout, fgYellow, align("\n" & emoji["🧪"]() & " Project name: ", 14)
       projectName = readLine(stdin)
     except EOFError:
       styledEcho fgRed, "EOF error was occurred!"
@@ -125,7 +125,8 @@ proc createCommand*(name: string = "", kind: string = "", templates: bool = fals
     selectedTemplates = chooseFrom(templatesList, templatesList)
     templates = selectedTemplates == 0
   elif lang == "nim" and projectType in ["SPA", "HPX"]:
-    styledEcho "\n🐲 Are you want to use Tailwind CSS in your project? "
+    echo ""
+    styledEcho emoji["🐲"](), " Are you want to use Tailwind CSS in your project? "
     selectedTailwind = chooseFrom(tailwindList, tailwindList)
     useTailwind = selectedTailwind == 0
   
