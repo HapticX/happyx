@@ -300,39 +300,47 @@ proc attribute*(attr: NimNode, inComponent: bool = false): NimNode =
     newColonExpr(newLit("_"), formatNode(attr))
   else:
     var
-      k = ($attr[0]).toLower()
+      k =
+        if attr[0].kind in [nnkStrLit, nnkTripleStrLit]:
+          $attr[0]
+        else:
+          $attr[0].toStrLit
       v =
-        if k == "id" and attr[1].kind in {nnkStrLit, nnkTripleStrLit} and inComponent:
-          newLit($attr[1] & "{self.uniqCompId}")
-        elif k == "id" and attr[1].kind in CallNodes and attr[1][0] == ident"fmt" and inComponent:
+        if k.toLower() == "id" and attr[1].kind in {nnkStrLit, nnkTripleStrLit} and inComponent:
+          newLit($attr[1].toStrLit & "{self.uniqCompId}")
+        elif k.toLower() == "id" and attr[1].kind in CallNodes and attr[1][0] == ident"fmt" and inComponent:
           newCall("fmt", newLit($attr[1][1] & "{self.uniqCompId}"))
         else:
           attr[1]
     newColonExpr(
-      newLit($attr[0]),
+      newLit(k),
       formatNode(v)
     )
 
 
 proc addAttribute*(node, key, value: NimNode, inComponent: bool = false) =
   var
-    k = ($key).toLower()
+    k = 
+      if key.kind in [nnkStrLit, nnkTripleStrLit]:
+        $key
+      else:
+        $key.toStrLit
     v =
-      if k == "id" and value.kind in {nnkStrLit, nnkTripleStrLit} and inComponent:
-        newLit($value & "{self.uniqCompId}")
-      elif k == "id" and value.kind in CallNodes and value[0] == ident"fmt" and inComponent:
-        newCall("fmt", newLit($value[1] & "{self.uniqCompId}"))
+      if k.toLower() == "id" and value.kind in {nnkStrLit, nnkTripleStrLit} and inComponent:
+        newLit($value.toStrLit & "{self.uniqCompId}")
+      elif k.toLower() == "id" and value.kind in CallNodes and value[0] == ident"fmt" and inComponent:
+        newCall("fmt", newLit($value[1].toStrLit & "{self.uniqCompId}"))
       else:
         value
   if node.len == 2:
     node.add(newCall("newStringTable", newNimNode(nnkTableConstr).add(
-      newColonExpr(newLit($key), v)
+      newColonExpr(newLit(k), v)
     )))
   elif node[2].kind == nnkCall and node[2][0] == ident"newStringTable":
-    node[2][1].add(newColonExpr(newLit($key), v))
+    node[2][1].add(newColonExpr(newLit(k), v))
   else:
     node.insert(2, newCall("newStringTable", newNimNode(nnkTableConstr).add(
-      newColonExpr(newLit($key), v)
+      newColonExpr(newLit(k), v)
     )))
 
 
@@ -504,7 +512,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
             )
           else:
             builded.addAttribute(
-              newStrLitNode($attr[0]),
+              newStrLitNode($attr[0].toStrLit),
               formatNode(attr[1]),
               inComponent
             )
