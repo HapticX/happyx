@@ -307,7 +307,7 @@ proc attribute*(attr: NimNode, inComponent: bool = false): NimNode =
           $attr[0].toStrLit
       v =
         if k.toLower() == "id" and attr[1].kind in {nnkStrLit, nnkTripleStrLit} and inComponent:
-          newLit($attr[1].toStrLit & "{self.uniqCompId}")
+          newLit($attr[1] & "{self.uniqCompId}")
         elif k.toLower() == "id" and attr[1].kind in CallNodes and attr[1][0] == ident"fmt" and inComponent:
           newCall("fmt", newLit($attr[1][1] & "{self.uniqCompId}"))
         else:
@@ -327,9 +327,9 @@ proc addAttribute*(node, key, value: NimNode, inComponent: bool = false) =
         $key.toStrLit
     v =
       if k.toLower() == "id" and value.kind in {nnkStrLit, nnkTripleStrLit} and inComponent:
-        newLit($value.toStrLit & "{self.uniqCompId}")
+        newLit($value & "{self.uniqCompId}")
       elif k.toLower() == "id" and value.kind in CallNodes and value[0] == ident"fmt" and inComponent:
-        newCall("fmt", newLit($value[1].toStrLit & "{self.uniqCompId}"))
+        newCall("fmt", newLit($value[1] & "{self.uniqCompId}"))
       else:
         value
   if node.len == 2:
