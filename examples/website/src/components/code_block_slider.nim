@@ -91,7 +91,6 @@ component CodeBlockSlider:
       """.}
 
     proc updateIndex(idx: int) =
-      discard
       if self.index.isNil():
         return
       if self.index == idx:

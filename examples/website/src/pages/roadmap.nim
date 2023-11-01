@@ -79,6 +79,22 @@ mount RoadMap:
                 "v2.2.0"
               tP(class = "w-full text-2xl lg:text-lg xl:text-base"):
                 {translate("Python Bindings")}
+          # v2.10.0
+          component Card():
+            tDiv(class = "w-full flex flex-col items-center gap-2 p-4 lg:p-2 xl:p-0"):
+              tP(class = "text-4xl lg:text-2xl xl:text-lg font-semibold"):
+                "v2.10.1"
+              tP(class = "w-full text-2xl lg:text-lg xl:text-base"):
+                {translate("LiveViews")}
+              tP(class = "w-full text-2xl lg:text-lg xl:text-base"):
+                {translate(".hpx files support")}
+          # v3.0.0
+          component Card():
+            tDiv(class = "w-full flex flex-col items-center gap-2 p-4 lg:p-2 xl:p-0"):
+              tP(class = "text-4xl lg:text-2xl xl:text-lg font-semibold"):
+                "v3.0.0"
+              tP(class = "w-full text-2xl lg:text-lg xl:text-base"):
+                {translate("NodeJS Bindings")}
           # Future
           component Card():
             tDiv(class = "w-full flex flex-col items-center gap-2 p-4 lg:p-2 xl:p-0"):

@@ -1010,6 +1010,24 @@ translatable:
     "zh" -> "任何支持的语言中的最小示例看起来像这样："
     "fr" -> "Un exemple minimal dans n'importe quel langage pris en charge ressemble à ceci :"
     "ko" -> "지원되는 어떤 언어에서든 최소한의 예제는 다음과 같습니다:"
+  "LiveViews":
+    "ru" -> "LiveViews"
+    "ja" -> "LiveViews"
+    "zh" -> "LiveViews"
+    "fr" -> "LiveViews"
+    "ko" -> "LiveViews"
+  ".hpx files support":
+    "ru" -> "поддержка файлов .hpx"
+    "ja" -> ".hpx ファイルのサポート"
+    "zh" -> ".hpx 文件支持"
+    "fr" -> "support des fichiers .hpx"
+    "ko" -> ".hpx 파일 지원"
+  "NodeJS Bindings":
+    "ru" -> "Привязки NodeJS"
+    "ja" -> "NodeJS バインディング"
+    "zh" -> "NodeJS 绑定"
+    "fr" -> "Liens NodeJS"
+    "ko" -> "NodeJS 바인딩"
 
 
 var spokenLang: cstring
