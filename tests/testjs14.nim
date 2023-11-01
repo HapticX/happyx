@@ -35,6 +35,32 @@ else:
   catStatus = "dead"
 
 
+
+component Container:
+  `template`:
+    tSpan:
+      slot
+
+var grandCount: int = 0
+
+proc nextCount(): int =
+  grandCount += 1
+  result = grandCount
+
+component Counter:
+  n: int = nextCount()
+  `template`:
+    "{self.n} )"
+
+component withCounter:
+  n: int = 9
+  `template`:
+    component Container:
+    # tSpan:
+      for i in 1..self.n.val:
+        component Counter
+
+
 appRoutes("app"):
   "/":
     tDiv: test1
@@ -58,3 +84,7 @@ appRoutes("app"):
       # Attrs declaration for tDiv with `style`
       myAttr := "asd"
       myAttr1 := 1123
+  
+  "/issue171":
+    for i in 1..10:
+      component withCounter
