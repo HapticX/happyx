@@ -109,9 +109,9 @@ component CodeBlockSlider:
         """.}
 
         let
-          container = document.getElementById(fmt"sliderContainer-{idx}")
-          circle = document.getElementById(fmt"circle-{idx}")
-          fill = document.getElementById(fmt"circle-{idx}-fill")
+          container = document.getElementById(fmt"sliderContainer-{idx}{self.uniqCompId}")
+          circle = document.getElementById(fmt"circle-{idx}{self.uniqCompId}")
+          fill = document.getElementById(fmt"circle-{idx}-fill{self.uniqCompId}")
         if container.isNil():
           return
         if index == idx:

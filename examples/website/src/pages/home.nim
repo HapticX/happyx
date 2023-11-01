@@ -98,9 +98,22 @@ mount Home:
 
           # SPA
           component SmartCard:
-            component CodeBlock(id = "spaCode", source = spaExample)
-            tDiv(class = "w-48 xl:w-96 text-3xl lg:text-lg xl:text-base text-center subpixel-antialiased"):
-              {translate("Make powerful full-stack apps with really same syntax ⚡")}
+            tDiv(class = "hidden xl:flex lg:hidden"):
+              component CodeBlock(id = "spaCode", source = spaExample)
+              tDiv(class = "w-48 xl:w-96 text-3xl lg:text-lg xl:text-base text-center subpixel-antialiased"):
+                {translate("Make powerful full-stack apps with really same syntax ⚡")}
+              component CodeBlock(id = "ssrCode", source = ssrExample)
+            tDiv(class = "xl:hidden flex lg:hidden flex-col"):
+              tDiv(class = "text-center subpixel-antialiased"):
+                {translate("Make powerful full-stack apps with really same syntax ⚡")}
+              component CodeBlock(id = "spaCode", source = spaExample)
+              component CodeBlock(id = "ssrCode", source = ssrExample)
+            tDiv(class = "hidden lg:flex xl:hidden flex flex-col"):
+              tDiv(class = "text-center subpixel-antialiased"):
+                {translate("Make powerful full-stack apps with really same syntax ⚡")}
+              tDiv(class = "w-full justify-center flex gap-2"):
+                component CodeBlock(id = "spaCode", source = spaExample)
+                component CodeBlock(id = "ssrCode", source = ssrExample)
           
           # Macros
           component Section:
