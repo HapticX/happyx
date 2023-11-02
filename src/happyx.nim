@@ -316,7 +316,7 @@ import
   happyx/routing/[mounting, routing]
 
 
-when enableApiDoc:
+when enableApiDoc and not defined(js):
   import happyx/ssr/open_api
   export open_api
 
