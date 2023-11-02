@@ -1932,7 +1932,7 @@ macro serve*(address: string, port: int, body: untyped): untyped =
       ident"main",
       [newEmptyNode()],
       newStmtList(
-        when not (exportPython or defined(docgen)):
+        when not exportPython:
           newVarStmt(
             ident"server",
             newCall("newServer", address, port)
