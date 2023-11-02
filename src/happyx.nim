@@ -256,6 +256,7 @@
 ## - [form data](happyx/ssr/form_data.html) provides routing and working with server.
 ## - [request models](happyx/ssr/request_models.html) provides routing and working with server.
 ## - [session](happyx/ssr/session.html) provides working with sessions.
+## - [open api](happyx/ssr/open_api.html) provides OpenAPI for HappyX.
 ## 
 ## ### Built-In UI 🎴
 ## 
@@ -313,6 +314,11 @@ import
   happyx/spa/[renderer, state, components, translatable],
   happyx/tmpl_engine/[engine],
   happyx/routing/[mounting, routing]
+
+
+when enableApiDoc:
+  import happyx/ssr/open_api
+  export open_api
 
 
 when enableUi or defined(docgen):

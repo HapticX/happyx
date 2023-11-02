@@ -1790,7 +1790,104 @@ when enableApiDoc:
     ), newStmtList(
       newCall("answerHtml", ident"req", newCall("renderDocsProcedure")),
     )))
+    body.add(newNimNode(nnkCommand).add(ident"get", newStrLitNode(
+      if apiDocsPath.startsWith("/"):
+        apiDocsPath & "/openapi.json"
+      else:
+        "/" & apiDocsPath & "/openapi.json"
+    ), newStmtList(
+      newCall("answerJson", ident"req", newCall("openApiJson")),
+    )))
     newCall("@", docsData)
+  
+
+  proc procApiDocs(docsData: NimNode): NimNode =
+    newStmtList(
+      when defined(napibuild):
+        newLetStmt(ident"title", newDotExpr(ident"self", ident"title"))
+      else:
+        newLetStmt(ident"title", newLit(appName)),
+      newNimNode(when exportPython or defined(docgen) or defined(napibuild): nnkVarSection else: nnkLetSection).add(
+        newIdentDefs(
+          ident"apiDocData", newNimNode(nnkBracketExpr).add(ident"seq", ident"ApiDocObject"), docsData
+        )
+      ),
+      when exportPython or defined(docgen):
+        newNimNode(nnkForStmt).add(
+          ident"route", newDotExpr(ident"self", ident"routes"),
+          newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
+            newCall(
+              "not",
+              newCall(
+                "hasHttpMethod",
+                ident"route",
+                newCall("@", bracket(newLit"MIDDLEWARE", newLit"NOTFOUND")),
+              )
+            ),
+            newStmtList(
+              # Declare RouteData
+              newVarStmt(ident"routeData", newCall("handleRoute", newDotExpr(ident"route", ident"path"))),
+              newNimNode(nnkIfStmt).add(
+                newNimNode(nnkElifBranch).add(
+                  newCall("==", newDotExpr(ident"route", ident"httpMethod"), newCall("@", bracket(newLit"STATICFILE"))),
+                  newStmtList(
+                    # Declare string (for documentation)
+                    newVarStmt(
+                      ident"documentation",
+                      newCall(
+                        "&",
+                        newLit"Fetch file from directory: ",
+                        newDotExpr(ident"route", ident"purePath")
+                      )
+                    ),
+                    newCall("add", ident"apiDocData", newCall(
+                      "newApiDocObject",
+                      newCall("@", bracket(newLit"GET")),
+                      ident"documentation",
+                      newDotExpr(ident"routeData", ident"path"),
+                      newDotExpr(ident"routeData", ident"pathParams"),
+                      newDotExpr(ident"routeData", ident"requestModels"),
+                    ))
+                  )
+                ),
+                newNimNode(nnkElse).add(newStmtList(
+                  # Declare route handler
+                  newVarStmt(ident"handler", newDotExpr(ident"route", ident"handler")),
+                  newLetStmt(ident"pDoc", newCall("getAttr", ident"handler", newLit"__doc__")),
+                  # Declare string (for documentation)
+                  newVarStmt(ident"documentation", newLit""),
+                  # Convert __doc__ to string
+                  newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
+                    newCall("!=", ident"pDoc", newDotExpr(ident"py", ident"None")),
+                    newCall(ident"pyValueToNim", newCall("privateRawPyObj", ident"pDoc"), ident"documentation"),
+                  )),
+                  newCall("add", ident"apiDocData", newCall(
+                    "newApiDocObject",
+                    newDotExpr(ident"route", ident"httpMethod"),
+                    ident"documentation",
+                    newDotExpr(ident"routeData", ident"path"),
+                    newDotExpr(ident"routeData", ident"pathParams"),
+                    newDotExpr(ident"routeData", ident"requestModels"),
+                  ))
+                ))
+              )
+            )),
+          )
+        )
+      elif defined(napibuild):
+        newCall("handleApiDoc", ident"self")
+      else:
+        newEmptyNode(),
+      newNimNode(nnkLetSection).add(
+        newIdentDefs(
+          ident"modelsData",
+          newNimNode(nnkBracketExpr).add(
+            ident"Table", ident"string", ident"StringTableRef"
+          ),
+          fetchModelFields()
+        )
+      ),
+    )
 
 
 macro serve*(address: string, port: int, body: untyped): untyped =
@@ -1843,92 +1940,79 @@ macro serve*(address: string, port: int, body: untyped): untyped =
         else:
           newEmptyNode(),
         when enableApiDoc:
-          newProc(ident"renderDocsProcedure", [ident"string"], newStmtList(
-            when defined(napibuild):
-              newLetStmt(ident"title", newDotExpr(ident"self", ident"title"))
-            else:
-              newLetStmt(ident"title", newLit(appName)),
-            newNimNode(when exportPython or defined(docgen) or defined(napibuild): nnkVarSection else: nnkLetSection).add(
-              newIdentDefs(
-                ident"apiDocData", newNimNode(nnkBracketExpr).add(ident"seq", ident"ApiDocObject"), docsData
-              )
-            ),
-            when exportPython or defined(docgen):
-              newNimNode(nnkForStmt).add(
-                ident"route", newDotExpr(ident"self", ident"routes"),
-                newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
-                  newCall(
-                    "not",
-                    newCall(
-                      "hasHttpMethod",
-                      ident"route",
-                      newCall("@", bracket(newLit"MIDDLEWARE", newLit"NOTFOUND")),
-                    )
-                  ),
-                  newStmtList(
-                    # Declare RouteData
-                    newVarStmt(ident"routeData", newCall("handleRoute", newDotExpr(ident"route", ident"path"))),
-                    newNimNode(nnkIfStmt).add(
-                      newNimNode(nnkElifBranch).add(
-                        newCall("==", newDotExpr(ident"route", ident"httpMethod"), newCall("@", bracket(newLit"STATICFILE"))),
-                        newStmtList(
-                          # Declare string (for documentation)
-                          newVarStmt(
-                            ident"documentation",
-                            newCall(
-                              "&",
-                              newLit"Fetch file from directory: ",
-                              newDotExpr(ident"route", ident"purePath")
-                            )
-                          ),
-                          newCall("add", ident"apiDocData", newCall(
-                            "newApiDocObject",
-                            newCall("@", bracket(newLit"GET")),
-                            ident"documentation",
-                            newDotExpr(ident"routeData", ident"path"),
-                            newDotExpr(ident"routeData", ident"pathParams"),
-                            newDotExpr(ident"routeData", ident"requestModels"),
-                          ))
-                        )
-                      ),
-                      newNimNode(nnkElse).add(newStmtList(
-                        # Declare route handler
-                        newVarStmt(ident"handler", newDotExpr(ident"route", ident"handler")),
-                        newLetStmt(ident"pDoc", newCall("getAttr", ident"handler", newLit"__doc__")),
-                        # Declare string (for documentation)
-                        newVarStmt(ident"documentation", newLit""),
-                        # Convert __doc__ to string
-                        newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
-                          newCall("!=", ident"pDoc", newDotExpr(ident"py", ident"None")),
-                          newCall(ident"pyValueToNim", newCall("privateRawPyObj", ident"pDoc"), ident"documentation"),
-                        )),
-                        newCall("add", ident"apiDocData", newCall(
-                          "newApiDocObject",
-                          newDotExpr(ident"route", ident"httpMethod"),
-                          ident"documentation",
-                          newDotExpr(ident"routeData", ident"path"),
-                          newDotExpr(ident"routeData", ident"pathParams"),
-                          newDotExpr(ident"routeData", ident"requestModels"),
-                        ))
-                      ))
-                    )
-                  )),
-                )
-              )
-            elif defined(napibuild):
-              newCall("handleApiDoc", ident"self")
-            else:
-              newEmptyNode(),
-            newNimNode(nnkLetSection).add(
-              newIdentDefs(
-                ident"modelsData",
-                newNimNode(nnkBracketExpr).add(
-                  ident"Table", ident"string", ident"StringTableRef"
-                ),
-                fetchModelFields()
-              )
-            ),
+          newProc(ident"renderDocsProcedure", [ident"string"], procApiDocs(docsData).add(
             newCall("compileTemplateStr", newStrLitNode(IndexApiDocPageTemplate)),
+          ))
+        else:
+          newEmptyNode(),
+        when enableApiDoc:
+          newProc(ident"openApiJson", [ident"JsonNode"], procApiDocs(docsData).add(
+            quote do:
+              if fileExists("openapi.json"):
+                return parseFile("openapi.json")
+              else:
+                result = %*{
+                  "openapi": "3.1.0",
+                  "swagger": "2.0",
+                  "info": {"title": "HappyX OpenAPI Docs", "version": "1.0.0"},
+                  "paths": {}
+                }
+                for route in apiDocData:
+                  if route.httpMethod[0] in ["MIDDLEWARE", "STATICFILE", "STATIC", "NOTFOUND"]:
+                    continue
+                  result["paths"][route.path] = %*{}
+                  let decscription = route.description.replace(
+                    re"@openapi\s*\{(\s*\w+\s*[^\n]+|\s*@(params|responses)\s*\{[^\}]+?}\s*)+\s*\}", ""
+                  )
+                  var pathData = %*{"description": decscription, "parameters": []}
+                  
+                  var matches: RegexMatch2
+                  if route.description.find(
+                    re"@openapi\s*\{((\s*\w+\s*[^\n]+|\s*@(params|responses)\s*\{[^\}]+?}\s*)+)\s*\}",
+                    matches
+                  ):
+                    let text = route.description[matches.group(0)]
+                    # Additional data
+                    for m in text.findAll(re2"(?m)^\s*(\w[\w\d_]*)\s*=\s*([^\n]+)$"):
+                      pathData[text[m.group(0)]] = %text[m.group(1)]
+                    # Params
+                    var paramMatches: RegexMatch2
+                    if text.find(re2"@params\s*{((\s*\w[\w\d]*\!?\s*(:\s*\w+)?[^\n]+)+)\s*}", paramMatches):
+                      let paramText = text[paramMatches.group(1)]
+                      for m in paramText.findAll(
+                        re2"(?m)^\s*(\w[\w\d_]*)(!)?\s*(:\s*\w[\w\d]*)?(\s*\-\s*[^\n]+)?"
+                      ):
+                        pathData["parameters"].add(%*{
+                          "name": paramText[m.group(0)],
+                          "required": m.group(1).len != 0,
+                          "description":
+                            if m.group(3).len != 0:
+                              paramText[m.group(3)].replace(re"\s*\-\s*", "")
+                            else:
+                              "",
+                          "in": "query",
+                          "schema": {
+                            "type":
+                              if m.group(2).len != 0:
+                                paramText[m.group(2)].replace(re":\s*", "")
+                              else:
+                                "string"
+                          }
+                        })
+                  
+                  for p in route.pathParams:
+                    let param = %*{
+                      "name": p.name,
+                      "required": not p.optional,
+                      "in": "path",
+                      "schema": {
+                        "type": p.paramType
+                      }
+                    }
+                    pathData["parameters"].add(param)
+                    
+                  for m in route.httpMethod:
+                    result["paths"][route.path][m.toLower()] = pathData
           ))
         else:
           newEmptyNode(),
