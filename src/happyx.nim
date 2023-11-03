@@ -257,6 +257,7 @@
 ## - [request models](happyx/ssr/request_models.html) provides routing and working with server.
 ## - [session](happyx/ssr/session.html) provides working with sessions.
 ## - [open api](happyx/ssr/open_api.html) provides OpenAPI for HappyX.
+## - [utils](happyx/ssr/utils.html) provides some utils to work with HTTPHeaders, JSON and etc.
 ## 
 ## ### Built-In UI 🎴
 ## 
@@ -313,7 +314,8 @@ import
   happyx/sugar/[use, sgr, js, style],
   happyx/spa/[renderer, state, components, translatable, tag],
   happyx/tmpl_engine/[engine],
-  happyx/routing/[mounting, routing]
+  happyx/routing/[mounting, routing],
+  happyx/ssr/utils
 
 
 when enableApiDoc and not defined(js):
@@ -342,7 +344,8 @@ export
   routing,
   mounting,
   sgr,
-  js
+  js,
+  utils
 
 
 # Language bindings

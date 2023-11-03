@@ -7,7 +7,8 @@ import
   websocketx,
   json,
   strtabs,
-  strutils
+  strutils,
+  ../ssr/utils
 
 
 type
@@ -127,12 +128,6 @@ proc toJsonNode*(obj: napi_value): JsonNode =
         result[key] = val.toJsonNode()
   else:
     discard
-
-
-proc toHttpHeaders*(json: JsonNode): HttpHeaders =
-  result = newHttpHeaders()
-  for k, v in json.pairs():
-    result[k] = v.getStr
 
 
 proc toHttpHeaders*(obj: napi_value): HttpHeaders =
