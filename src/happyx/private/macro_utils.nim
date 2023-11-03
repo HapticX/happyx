@@ -313,7 +313,7 @@ proc attribute*(attr: NimNode, inComponent: bool = false): NimNode =
         else:
           attr[1]
     newColonExpr(
-      newLit(k),
+      newStrLitNode(k),
       formatNode(v)
     )
 
@@ -334,13 +334,13 @@ proc addAttribute*(node, key, value: NimNode, inComponent: bool = false) =
         value
   if node.len == 2:
     node.add(newCall("newStringTable", newNimNode(nnkTableConstr).add(
-      newColonExpr(newLit(k), v)
+      newColonExpr(newStrLitNode(k), v)
     )))
   elif node[2].kind == nnkCall and node[2][0] == ident"newStringTable":
-    node[2][1].add(newColonExpr(newLit(k), v))
+    node[2][1].add(newColonExpr(newStrLitNode(k), v))
   else:
     node.insert(2, newCall("newStringTable", newNimNode(nnkTableConstr).add(
-      newColonExpr(newLit(k), v)
+      newColonExpr(newStrLitNode(k), v)
     )))
 
 
@@ -506,13 +506,13 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
           if attr.kind in AtomicNodes:
             # component params
             builded.addAttribute(
-              newStrLitNode($attr.toStrLit),
+              attr,
               formatNode(attr),
               inComponent
             )
           else:
             builded.addAttribute(
-              newStrLitNode($attr[0].toStrLit),
+              attr[0],
               formatNode(attr[1]),
               inComponent
             )
