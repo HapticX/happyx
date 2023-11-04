@@ -82,7 +82,7 @@ proc getSession*(req: Request, host: string, cookies: var seq[string], timeout: 
 
 template startSession*(): Session =
   when declared(req) and declared(hostname):
-    getSession(req, hostname, cookies, 0)
+    getSession(req, hostname, outCookies, 0)
   else:
     raise newException(ValueError, "createSession should be called in server routes scope!")
     0
@@ -90,7 +90,7 @@ template startSession*(): Session =
 
 template startSession*(timeout: int64): Session =
   when declared(req) and declared(hostname):
-    getSession(req, hostname, cookies, timeout)
+    getSession(req, hostname, outCookies, timeout)
   else:
     raise newException(ValueError, "createSession should be called in server routes scope!")
     0

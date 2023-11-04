@@ -71,11 +71,18 @@ serve "127.0.0.1", 5000:
     ## 
     ## Responds "Hello, world!"
     echo inCookies
-    cookies.add(setCookie("bestFramework", "HappyX!", secure = true, httpOnly = true))
+    outCookies.add(setCookie("bestFramework", "HappyX!", secure = true, httpOnly = true))
     return "Hello, world!"
   get "/setStatusCode":
     ## Responds "Hello, world!" with 404 HttpCode
     statusCode = 404
+    if true:
+      if true:
+        for i in 0..1:
+          if true:
+            when true:
+              statusCode = 400
+              return 1
     return "Hello, world!"
   
   get "/headers":

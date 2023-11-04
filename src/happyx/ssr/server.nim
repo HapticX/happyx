@@ -375,26 +375,26 @@ template answer*(
   ## 
   var h = headers
   addCORSHeaders(h)
-  when declaredInScope(outHeaders):
+  when declared(outHeaders):
     for key, val in outHeaders.pairs():
       h[key] = val
   when enableHttpx or enableHttpBeast:
     var headersArr: seq[string] = @[]
     for key, value in h.pairs():
       headersArr.add(key & ':' & value)
-    when declaredInScope(cookies):
-      for cookie in cookies:
+    when declared(outCookies):
+      for cookie in outCookies:
         headersArr.add(cookie)
-    when declaredInScope(statusCode):
+    when declared(statusCode):
       req.send(statusCode.HttpCode, message, headersArr.join("\r\n"))
     else:
       req.send(code, message, headersArr.join("\r\n"))
   else:
-    when declaredInScope(cookies):
-      for cookie in cookies:
+    when declared(outCookies):
+      for cookie in outCookies:
         let data = cookie.split(":", 1)
         h.add("Set-Cookie", data[1].strip())
-    when declaredInScope(statusCode):
+    when declared(statusCode):
       await req.respond(statusCode.HttpCode, message, h)
     else:
       await req.respond(code, message, h)
@@ -853,8 +853,8 @@ socketToSsr.onmessage=function(m){
           statement[^1].insert(0, newVarStmt(ident"statusCode", newLit(200)))
         if statement[^1].isIdentUsed(ident"outHeaders"):
           statement[^1].insert(0, newVarStmt(ident"outHeaders", newCall("newCustomHeaders")))
-        if statement[^1].isIdentUsed(ident"cookies") or statement[^1].isIdentUsed(ident"startSession"):
-          statement[^1].insert(0, newVarStmt(ident"cookies", cookiesOutVar))
+        if statement[^1].isIdentUsed(ident"outCookies") or statement[^1].isIdentUsed(ident"startSession"):
+          statement[^1].insert(0, newVarStmt(ident"outCookies", cookiesOutVar))
       # "/...": statement list
       if statement[1].kind == nnkStmtList and statement[0].kind == nnkStrLit:
         detectReturnStmt(statement[1])
@@ -1962,13 +1962,13 @@ macro serve*(address: string, port: int, body: untyped): untyped =
                     continue
                   result["paths"][route.path] = %*{}
                   let decscription = route.description.replace(
-                    re"@openapi\s*\{(\s*\w+\s*[^\n]+|\s*@(params|responses)\s*\{[^\}]+?}\s*)+\s*\}", ""
+                    re2"@openapi\s*\{(\s*\w+\s*[^\n]+|\s*@(params|responses)\s*\{[^\}]+?}\s*)+\s*\}", ""
                   )
                   var pathData = %*{"description": decscription, "parameters": []}
                   
                   var matches: RegexMatch2
                   if route.description.find(
-                    re"@openapi\s*\{((\s*\w+\s*[^\n]+|\s*@(params|responses)\s*\{[^\}]+?}\s*)+)\s*\}",
+                    re2"@openapi\s*\{((\s*\w+\s*[^\n]+|\s*@(params|responses)\s*\{[^\}]+?}\s*)+)\s*\}",
                     matches
                   ):
                     let text = route.description[matches.group(0)]
@@ -1987,14 +1987,14 @@ macro serve*(address: string, port: int, body: untyped): untyped =
                           "required": m.group(1).len != 0,
                           "description":
                             if m.group(3).len != 0:
-                              paramText[m.group(3)].replace(re"\s*\-\s*", "")
+                              paramText[m.group(3)].replace(re2"\s*\-\s*", "")
                             else:
                               "",
                           "in": "query",
                           "schema": {
                             "type":
                               if m.group(2).len != 0:
-                                paramText[m.group(2)].replace(re":\s*", "")
+                                paramText[m.group(2)].replace(re2":\s*", "")
                               else:
                                 "string"
                           }
