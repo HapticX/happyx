@@ -386,7 +386,10 @@ template answer*(
       for cookie in outCookies:
         headersArr.add(cookie)
     when declared(statusCode):
-      req.send(statusCode.HttpCode, message, headersArr.join("\r\n"))
+      when statusCode is int:
+        req.send(statusCode.HttpCode, message, headersArr.join("\r\n"))
+      else:
+        req.send(code, message, headersArr.join("\r\n"))
     else:
       req.send(code, message, headersArr.join("\r\n"))
   else:
@@ -395,7 +398,10 @@ template answer*(
         let data = cookie.split(":", 1)
         h.add("Set-Cookie", data[1].strip())
     when declared(statusCode):
-      await req.respond(statusCode.HttpCode, message, h)
+      when statusCode is int:
+        await req.respond(statusCode.HttpCode, message, h)
+      else:
+        await req.respond(code, message, h)
     else:
       await req.respond(code, message, h)
 
