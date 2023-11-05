@@ -39,6 +39,7 @@ export
 type
   ProjectType* {.pure, size: sizeof(int8).} = enum
     ptSPA = "SPA",
+    ptSPA_PWA = "SPA+PWA",
     ptSSG = "SSG",
     ptSSR = "SSR",
     ptSPAHpx = "HPX"
@@ -76,10 +77,10 @@ const
 
 
 var
-  projectTypes*: array[4, string]
+  projectTypes*: array[5, string]
   tailwindList*: array[2, string]
   templatesList*: array[2, string]
-  projectTypesDesc*: array[4, string]
+  projectTypesDesc*: array[5, string]
   programmingLanguages*: array[4, string]
   programmingLanguagesDesc*: array[4, string]
 
@@ -118,6 +119,7 @@ proc init*() =
     "SSR",
     "SSG",
     "SPA",
+    "SPA+PWA",
     "HPX"
   ]
   tailwindList = [
@@ -132,6 +134,7 @@ proc init*() =
     ansiStyleCode(styleBright) & ansiForegroundColorCode(fgGreen) & "Server-side rendering " & emoji["⚡"]() & ansiResetCode,
     ansiStyleCode(styleBright) & ansiForegroundColorCode(fgBlue) & "Static site generation " & emoji["📦"]() & ansiResetCode,
     ansiStyleCode(styleBright) & ansiForegroundColorCode(fgYellow) & "Single-page application " & emoji["✨"]() & ansiResetCode,
+    ansiStyleCode(styleBright) & ansiForegroundColorCode(fgYellow) & "Single-page application with PWA " & emoji["✨"]() & ansiResetCode,
     ansiStyleCode(styleBright) & ansiForegroundColorCode(fgRed) & "Single-page application with .hpx only " & emoji["🧪"]() & ansiResetCode,
   ]
   programmingLanguages = [
@@ -209,6 +212,14 @@ proc compileProject*(): ProjectData {. discardable .} =
 
   case result.projectType:
   of ptSPA:
+    result.process = startProcess(
+      "nim", getCurrentDir() / result.srcDir,
+      [
+        "js", "-c", "--hints:off", "--warnings:off",
+        "--opt:size", "-d:danger", "-x:off", "-a:off", "--panics:off", "--lineDir:off", result.mainFile
+      ], nil, PROCESS_OPTIONS
+    )
+  of ptSPA_PWA:
     result.process = startProcess(
       "nim", getCurrentDir() / result.srcDir,
       [

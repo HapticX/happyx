@@ -105,9 +105,16 @@ proc createCommand*(name: string = "", kind: string = "", templates: bool = fals
       return QuitFailure
 
   if language == "":
-    echo ""
-    styledEcho emoji["🐲"](), " Choose project programming language ", fgYellow, "(via arrow keys)"
-    selectedLang = chooseFrom(programmingLanguages, programmingLanguagesDesc)
+    if selected > 1:
+      # Only for Nim
+      echo ""
+      styledEcho emoji["🐲"](), " You choose project type that allowed only for Nim."
+      styledEcho emoji["🐥"](), " Nim language was choosed."
+      selectedLang = 0
+    else:
+      echo ""
+      styledEcho emoji["🐲"](), " Choose project programming language ", fgYellow, "(via arrow keys)"
+      selectedLang = chooseFrom(programmingLanguages, programmingLanguagesDesc)
   else:
     selectedLang = programmingLanguages.find(language.toLower())
     if selectedLang < 0:
@@ -124,7 +131,7 @@ proc createCommand*(name: string = "", kind: string = "", templates: bool = fals
     styledEcho emoji["🔥"](), " Are you want to use templates in your project? "
     selectedTemplates = chooseFrom(templatesList, templatesList)
     templates = selectedTemplates == 0
-  elif lang == "nim" and projectType in ["SPA", "HPX"]:
+  elif lang == "nim" and projectType in ["SPA", "HPX", "SPA+PWA"]:
     echo ""
     styledEcho emoji["🐲"](), " Are you want to use Tailwind CSS in your project? "
     selectedTailwind = chooseFrom(tailwindList, tailwindList)
@@ -202,8 +209,8 @@ proc createCommand*(name: string = "", kind: string = "", templates: bool = fals
       f.write(tsTemplate)
       makeTsPackageJson(projectName)
     f.close()
-  of 2:
-    # SPA
+  of 2, 3:
+    # SPA + PWA
     imports.add("components/[hello_world]")
     createDir(projectName / "src" / "public")
     createDir(projectName / "src" / "components")
@@ -214,12 +221,23 @@ proc createCommand*(name: string = "", kind: string = "", templates: bool = fals
     var additionalHead = ""
     if useTailwind:
       additionalHead &= "<script src=\"https://cdn.tailwindcss.com\"></script>\n    "
-    f.write(fmt(spaIndexTemplate))
+    if selected == 2:
+      f.write(fmt(spaIndexTemplate))
+    elif selected == 3:
+      f.write(fmt(spaPwaIndexTemplate))
     f.close()
+    if selected == 3:
+      f = open(projectName / "src" / "service_worker.js", fmWrite)
+      f.write(spaServiceWorkerTemplate)
+      f.close()
+      f = open(projectName / "src" / "manifest.json", fmWrite)
+      f.write(fmt(spaPwaManifest))
+      f.close()
     f = open(projectName / "src" / "components" / "hello_world.nim", fmWrite)
     f.write(componentTemplate)
     f.close()
-  of 3:
+  of 4:
+    # HPX
     createDir(projectName / "src" / "public")
     createDir(projectName / "src" / "components")
     f = open(projectName / "src" / "index.html", fmWrite)

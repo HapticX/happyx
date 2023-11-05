@@ -257,9 +257,6 @@ proc openApiDocs*(docsData: NimNode): NimNode =
       newCall("%*", examplesTable)
     )
   
-  echo modelFieldsStatement.toStrLit
-  echo examplesStatement.toStrLit
-  
   # Result
   procApiDocs(docsData).add(
     quote do:

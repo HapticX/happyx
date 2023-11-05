@@ -179,11 +179,29 @@ app.start();
   spaTemplate* = """# Import HappyX
 import
   {imports.join(",\n  ")}
+
 # Declare application with ID "app"
 appRoutes("app"):
   "/":
     # Component usage
     component HelloWorld
+"""
+  spaServiceWorkerTemplate* = """
+const web_cache = "web-app-cache-v1.0";
+const filesToCache = [
+  "/",
+  "/main.js"
+];
+
+self.addEventListener('install', (event)=> {
+  event.waitUntil(
+    caches.open(web_cache)
+      .then((cache)=> {
+        //Cache has been opened successfully
+        return cache.addAll(filesToCache);
+      })
+  );
+});
 """
   spaIndexTemplate* = """<!DOCTYPE html><html>
   <head>
@@ -194,6 +212,39 @@ appRoutes("app"):
   <body>
     <div id="app"></div>
     <script src="{SPA_MAIN_FILE}.js"></script>
+  </body>
+</html>"""
+  spaPwaManifest* = """{{
+  "name": "{projectName}",
+  "short_name": "{projectName}",
+  "display": "fullscreen",
+  "orientation": "portrait",
+  "start_url": "https://hapticx.github.io/happyx/#/",
+  "icons": [
+    {{
+      "src": "https://hapticx.github.io/happyx/public/icon.png",
+      "sizes": "200x200",
+      "type": "image/png"
+    }}
+  ]
+}}"""
+  spaPwaIndexTemplate* = """<!DOCTYPE html><html>
+  <head>
+    <meta charset="utf-8">
+    <title>{projectName}</title>
+    <link rel="manifest" href="manifest.json" />
+    {additionalHead}
+  </head>
+  <body>
+    <div id="app"></div>
+    <script src="{SPA_MAIN_FILE}.js"></script>
+    <script>
+      if ('serviceWorker' in navigator) {{
+        window.addEventListener('load',()=> {{
+          navigator.serviceWorker.register('/service_worker.js');
+        }});
+      }}
+    </script>
   </body>
 </html>"""
   componentTemplate* = """# Import HappyX
