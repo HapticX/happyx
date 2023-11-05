@@ -1,0 +1,7 @@
+fetchPathParams	happyx/ssr/docs/autodocs.html#fetchPathParams,string	autodocs: fetchPathParams(route: var string): tuple[pathParams, models: NimNode]	
+fetchModelFields	happyx/ssr/docs/autodocs.html#fetchModelFields	autodocs: fetchModelFields(): NimNode	
+genApiDoc	happyx/ssr/docs/autodocs.html#genApiDoc,NimNode	autodocs: genApiDoc(body: var NimNode): NimNode	
+procApiDocs	happyx/ssr/docs/autodocs.html#procApiDocs,NimNode	autodocs: procApiDocs(docsData: NimNode): NimNode	
+happyxDocs	happyx/ssr/docs/autodocs.html#happyxDocs,NimNode	autodocs: happyxDocs(docsData: NimNode): NimNode	
+openApiDocs	happyx/ssr/docs/autodocs.html#openApiDocs,NimNode	autodocs: openApiDocs(docsData: NimNode): NimNode	
+AutoDocs Module 🐥	happyx/ssr/docs/autodocs.html#autodocs-module-🐥	 AutoDocs Module 🐥	
