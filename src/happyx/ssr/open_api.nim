@@ -1,9 +1,11 @@
 ## # OpenAPI
 ## 
-import
-  ../core/constants,
-  ../sugar/sgr,
-  ./server
+## Provides automatic generated Swagger and Redoc routes
+## 
+## Swagger: `/docs/swagger`
+## Redoc: `/docs/redoc`
+## 
+import ../sugar/sgr
 
 
 

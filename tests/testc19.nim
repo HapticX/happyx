@@ -9,6 +9,12 @@ model User:
   id: int
 
 
+model News:
+  id: int
+  title: string
+  description: string = ""
+
+
 serve "127.0.0.1", 5000:
   var sessionId: string = ""
 
@@ -38,6 +44,9 @@ serve "127.0.0.1", 5000:
     return fmt"Hello, {userId}"
 
   post "/user[u:User]":
+    return 0
+  
+  post "/news[n:News]":
     return 0
 
   get "/close":
