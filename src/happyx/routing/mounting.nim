@@ -19,11 +19,9 @@ import
   # stdlib
   macros,
   macrocache,
-  tables,
   strformat,
   # HappyX
-  ../core/[exceptions],
-  ../private/[macro_utils]
+  ../core/[exceptions]
 
 
 const registeredMounts* = CacheTable"HappyXRegisteredMounts"

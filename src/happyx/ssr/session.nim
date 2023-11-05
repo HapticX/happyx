@@ -3,7 +3,6 @@
 ## Provides working with sessions
 ##
 import
-  strutils,
   random,
   tables,
   times,

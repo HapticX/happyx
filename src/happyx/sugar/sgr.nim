@@ -14,7 +14,6 @@ import
   strformat,
   macros,
   macrocache,
-  tables,
   # HappyX
   ../core/[exceptions]
 

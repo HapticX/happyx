@@ -89,8 +89,7 @@ import
   strutils,
   strformat,
   # Happyx
-  ../core/[exceptions, constants],
-  ../private/macro_utils
+  ../core/[exceptions, constants]
 
 
 const modelFields* = CacheTable"HappyXModelFields"

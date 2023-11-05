@@ -119,10 +119,7 @@ else:
 
 
 when enableApiDoc:
-  import
-    nimja,
-    ./request_models,
-    ../private/api_doc_template
+  import nimja
 
 
 type CustomHeaders* = StringTableRef

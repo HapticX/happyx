@@ -47,6 +47,7 @@ proc chooseFrom*(target, views: openArray[string]): int =
         inc result
     of Key.Enter:
       choosen = true
+      needRefresh = false
       break
     else:
       discard

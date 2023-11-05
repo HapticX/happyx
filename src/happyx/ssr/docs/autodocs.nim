@@ -12,9 +12,10 @@ import
   regex,
   # happyx
   ../../routing/[routing, mounting],
-  ../../private/[macro_utils, api_doc_template],
+  ../../private/macro_utils,
   ../../core/constants,
-  ../request_models
+  ../request_models,
+  ./api_doc_template
 
 
 

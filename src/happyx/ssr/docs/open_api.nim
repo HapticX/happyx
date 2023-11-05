@@ -5,7 +5,7 @@
 ## Swagger: `/docs/swagger`
 ## Redoc: `/docs/redoc`
 ## 
-import ../sugar/sgr
+import ../../sugar/sgr
 
 
 

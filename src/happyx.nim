@@ -319,7 +319,7 @@ import
 
 
 when enableApiDoc and not defined(js):
-  import happyx/ssr/open_api
+  import happyx/ssr/docs/open_api
   export open_api
 
 

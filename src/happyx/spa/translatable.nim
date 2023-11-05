@@ -18,8 +18,6 @@
 
 import
   macros,
-  strtabs,
-  tables,
   strformat,
   ../core/[exceptions]
 
@@ -66,9 +64,7 @@ macro translatable*(body: untyped): untyped =
     )))
   for s in body:
     if s.kind == nnkCall and s[0].kind in [nnkStrLit, nnkTripleStrLit] and s[1].kind == nnkStmtList:
-      let
-        source = s[0]  # source string
-        sourceStr = $s[0]  # source string
+      let source = s[0]  # source string
       translatesStatement.add(
         when defined(js):
           newAssignment(

@@ -2,7 +2,7 @@
 ## 
 import
   strformat,
-  ../core/constants
+  ../../core/constants
 
 
 const

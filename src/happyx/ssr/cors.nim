@@ -17,7 +17,7 @@ import
   strutils,
   strformat,
   # Happyx
-  ../core/[exceptions, constants]
+  ../core/[exceptions]
 
 
 
