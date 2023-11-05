@@ -7,6 +7,10 @@ import std/jsonutils
 proc toJsonHook(dt: DateTime, opt = initToJsonOptions()): JsonNode =
   newJString($dt)
 
+
+proc `%`(dt: DateTime): JsonNode =
+  toJsonHook(dt)
+
 # json deserialize DateTime
 proc initFromJson(dt: var DateTime, jsonNode: JsonNode, jsonPath: var string) =
   dt = parse(jsonNode.getStr, initTimeFormat("yyyy-MM-dd HH:mm:ss"))
