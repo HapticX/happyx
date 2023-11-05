@@ -91,6 +91,9 @@ import
   # Happyx
   ../core/[exceptions, constants]
 
+when not declared(CacheTable.hasKey):
+  import ../private/macro_utils
+
 
 const modelFields* = CacheTable"HappyXModelFields"
 

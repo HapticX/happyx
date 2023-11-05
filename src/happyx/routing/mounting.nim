@@ -23,6 +23,9 @@ import
   # HappyX
   ../core/[exceptions]
 
+when not declared(CacheTable.hasKey):
+  import ../private/macro_utils
+
 
 const registeredMounts* = CacheTable"HappyXRegisteredMounts"
 
