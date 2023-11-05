@@ -402,3 +402,289 @@ appRoutes "app":
   "/bye":
     "Goodbye!"
 """
+  nimSsrTailwind* = """import happyx
+
+
+serve "127.0.0.1", 5000:
+  get "/":
+    return buildHtml: tHtml:
+      tHead:
+        tTitle: "my joke page"
+        # https://tailwindcss.com/docs/installation/play-cdn
+        tScript(src = "https://cdn.tailwindcss.com")
+      tBody:
+        tH1(class = "text-3xl font-bold underline"):
+          "Hello, world!"
+"""
+  nimSpaHtmlTailwind* = """<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- You just should to include Tailwind via CDN! -->
+  <!-- https://tailwindcss.com/docs/installation/play-cdn -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+  <div id="app"></div>
+  <script src="main.js"></script>
+</body>
+</html>
+"""
+  nimSpaTailwind* = """import happyx
+
+
+appRoutes "app":
+  "/":
+    tH1(class = "text-3xl font-bold underline"):
+      "Hello, world!"
+"""
+  tailwindCli* = """hpx create --name:htmx_example --kind:SSR --templates --language:Nim
+cd htmx_example
+npm init
+npm install -D tailwindcss
+npx tailwindcss init
+"""
+  tailwindConfig* = """/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ["./src/**/*.{html,htmx,nim,js}"],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}"""
+  tailwindCssInput* = """@tailwind base;
+@tailwind components;
+@tailwind utilities;"""
+  tailwindWatch* = "npx tailwindcss -i ./src/public/input.css -o ./src/public/output.css --watch"
+  nimSsrTailwindWithoutCdn* = """import happyx
+
+
+serve "127.0.0.1", 5000:
+  get "/":
+    return buildHtml: tHtml:
+      tHead:
+        tTitle: "my joke page"
+      tBody:
+        tH1(class = "text-3xl font-bold underline"):
+          "Hello, world!"
+"""
+  nimSsrAdvancedHelloWorld* = """import happyx
+
+
+serve "127.0.0.1", 5000:
+  get "/statusCode":
+    statusCode = 404
+    return "This page not working because I want it :p"
+  
+  get "/customHeaders":
+    outHeaders["Backend-Server"] = "HappyX"
+    return 0
+
+  get "/customCookies":
+    outCookies.add(setCookie("bestFramework", "HappyX!", secure = true, httpOnly = true))
+    return 0
+  
+  get "/":
+    statusCode = 401
+    outHeaders["Reason"] = "Auth failed"
+    outCookies.add(setCookie("happyx-auth-reason", "HappyX", secure = true, httpOnly = true))
+    return 1
+"""
+  pySsrAdvancedHelloWorld* = """from happyx import new_server, JsonResponse, Response
+
+
+app = new_server('127.0.0.1', 5000)
+
+
+@app.get('/statusCode')
+def test_only_status_code():
+    return JsonResponse(
+        {"response": "This page not working because I want it :p"},
+        status_code = 404
+    )
+
+
+@app.get('/customHeaders')
+def test_only_headers():
+    return Response(
+        0,
+        headers = {
+          "Backend-Server": "HappyX"
+        }
+    )
+
+
+@app.get('/customCookies')
+def test_only_cookies():
+    return Response(
+        0,
+        headers = {
+          "Set-Cookie": "bestFramework=HappyX!"
+        }
+    )
+
+
+@app.get('/')
+def test_all():
+    return Response(
+        1,
+        headers = {
+          "Reason": "Auth Failed",
+          "Set-Cookie": "happyx-auth-reason=HappyX"
+        },
+        status_code = 401
+    )
+
+
+app.start()
+"""
+  jsSsrAdvancedHelloWorld* = """import {Server} from "happyx";
+
+
+let server = new Server("127.0.0.1", 5000);
+
+
+server.get("/statusCode"), (req) => {
+  req.answer("This page not working because I want it :p", 404);
+});
+
+
+server.get("/customHeaders"), (req) => {
+  req.answer(
+    0, headers = {
+      "Backend-Server": "HappyX"
+    }
+  );
+});
+
+
+server.get("/customCookies"), (req) => {
+  req.answer(
+    0, headers = {
+      "Set-Cookie": "bestFramework=HappyX!"
+    }
+  );
+});
+
+
+server.get("/"), (req) => {
+  req.answer(
+    1, 401, headers = {
+      "Reason": "Auth Failed",
+      "Set-Cookie": "happyx-auth-reason=HappyX"
+    }
+  );
+});
+
+
+server.start()
+"""
+
+  tsSsrAdvancedHelloWorld* = """import {Server, Request} from "happyx";
+
+
+let server = new Server("127.0.0.1", 5000);
+
+
+server.get("/statusCode"), (req: Request) => {
+  req.answer("This page not working because I want it :p", 404);
+});
+
+
+server.get("/customHeaders"), (req: Request) => {
+  req.answer(
+    0, headers = {
+      "Backend-Server": "HappyX"
+    }
+  );
+});
+
+
+server.get("/customCookies"), (req: Request) => {
+  req.answer(
+    0, headers = {
+      "Set-Cookie": "bestFramework=HappyX!"
+    }
+  );
+});
+
+
+server.get("/"), (req: Request) => {
+  req.answer(
+    1, 401, headers = {
+      "Reason": "Auth Failed",
+      "Set-Cookie": "happyx-auth-reason=HappyX"
+    }
+  );
+});
+
+
+server.start()
+"""
+  nimSsrAdditionalRoutes* = """import happyx
+
+
+serve "127.0.0.1", 5000:
+  middleware:
+    echo req
+  
+  notfound:
+    return "Oops, seems like this route is not available"
+
+  staticDir "/path/to/directory" -> "directory"
+"""
+  pySsrAdditionalRoutes* = """from happyx import new_server, HttpRequest
+
+
+app = new_server("127.0.0.1", 5000)
+
+app.static("/path/to/directory", './directory')
+
+
+@app.notfound()
+def on_not_found():
+    return "Oops, seems like this route is not available"
+
+
+@app.middleware()
+def on_not_found(req: HttpRequest):
+    print(req.path())
+
+
+app.start()
+"""
+  jsSsrAdditionalRoutes* = """import {Server} from "happyx";
+
+
+const app = new Server("127.0.0.1", 5000)
+app.static("/path/to/directory", './directory')
+
+
+app.notfound(() => {
+  return "Oops, seems like this route is not available";
+});
+
+app.middleware((req) => {
+  console.log(req);
+});
+
+app.start()
+"""
+  tsSsrAdditionalRoutes* = """import {Server, Request} from "happyx";
+
+
+const app = new Server("127.0.0.1", 5000)
+app.static("/path/to/directory", './directory')
+
+
+app.notfound(() => {
+  return "Oops, seems like this route is not available";
+});
+
+app.middleware((req: Request) => {
+  console.log(req);
+});
+
+app.start()
+"""

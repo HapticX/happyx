@@ -85,7 +85,7 @@ component CodeBlockGuide:
                 var data: cstring = source.src
                 {.emit: "navigator.clipboard.writeText(`data`);".}
           if source.playResult.states.len > 0:
-            tDiv(class = "flex bg-[#1a1b26] rounded-b-md"):
+            tDiv(class = "flex bg-[#0d1117] rounded-b-md"):
               tDiv(
                 id = "{source.id}play_button",
                 class = "flex gap-2 justify-center items-center select-none cursor-pointer px-4 pb-2"

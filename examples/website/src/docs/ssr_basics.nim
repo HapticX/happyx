@@ -26,3 +26,24 @@ component SsrBasics:
           ("TypeScript", "typescript", tsHelloWorldExample, cstring"ts_import", newPlayResult()),
         ])
       
+      tH2: {translate"Headers, Status Code And Cookies 📦"}
+      tP:
+        {translate"In any web framework you can work with status code, headers, cookies, etc. So HappyX give you it!"}
+      
+      component CodeBlockGuide(@[
+        ("Nim", "nim", nimSsrAdvancedHelloWorld, cstring"nim_advanced", newPlayResult()),
+        ("Python", "python", pySsrAdvancedHelloWorld, cstring"py_advanced", newPlayResult()),
+        ("JavaScript", "javascript", jsSsrAdvancedHelloWorld, cstring"js_advanced", newPlayResult()),
+        ("TypeScript", "typescript", tsSsrAdvancedHelloWorld, cstring"ts_advanced", newPlayResult()),
+      ])
+
+      tH2: {translate"Helpful Routes 🔌"}
+      tP:
+        {translate"HappyX has additional helpful routes - middleware, notfound, and staticDir"}
+      
+      component CodeBlockGuide(@[
+        ("Nim", "nim", nimSsrAdditionalRoutes, cstring"nim_additional_routes", newPlayResult()),
+        ("Python", "python", pySsrAdditionalRoutes, cstring"py_additional_routes", newPlayResult()),
+        ("JavaScript", "javascript", jsSsrAdditionalRoutes, cstring"js_additional_routes", newPlayResult()),
+        ("TypeScript", "typescript", tsSsrAdditionalRoutes, cstring"ts_additional_routes", newPlayResult()),
+      ])

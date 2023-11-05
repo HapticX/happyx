@@ -29,6 +29,8 @@ component GuidePage:
           component SpaBasics
         elif currentGuidePage == "ssr_basics":
           component SsrBasics
+        elif currentGuidePage == "tailwind_and_other":
+          component TailwindAndOther
 
       tDiv(class = "flex justify-between items-center w-full pb-8"):
         if guidePages[currentGuidePage]["prev"].getStr != "":

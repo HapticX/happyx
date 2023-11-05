@@ -35,12 +35,17 @@ var
     },
     "spa_basics": {
       "title": "Single-page Applications Basics 🎴",
-      "prev": "path_params",
+      "prev": "",
       "next": ""
     },
     "ssr_basics": {
       "title": "Server-side Applications Basics 🖥",
       "prev": "",
+      "next": ""
+    },
+    "tailwind_and_other": {
+      "title": "Tailwind And Other 🎴",
+      "prev": "path_params",
       "next": ""
     }
   }
@@ -109,6 +114,11 @@ component SideBar:
                 {translate("HappyX Application 🍍")}
               component SideBarItem("path_params"):
                 {translate("Path Params 🔌")}
+
+            component SideBarFolder("tailwind_and_other"):
+              {translate("Advanced 🧪")}
+              component SideBarItem("tailwind_and_other"):
+                {translate("Tailwind And Other 🎴")}
 
             component SideBarFolder("spa_basics"):
               {translate("Single-page Applications 🎴")}
