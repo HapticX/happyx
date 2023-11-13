@@ -1176,7 +1176,7 @@ socketToSsr.onmessage=function(m){
   when defined(napibuild):
     stmtList.add(newCall("handleNodeRequest", ident"self", ident"req", ident"urlPath"))
   # Python Library
-  elif exportPython or defined(docgen):
+  elif exportPython:
     stmtList.add(newCall(
       "handlePythonRequest", ident"self", ident"req", ident"urlPath"
     ))
