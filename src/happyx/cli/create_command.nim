@@ -129,12 +129,12 @@ proc createCommand*(name: string = "", kind: string = "", templates: bool = fals
   
   if lang == "nim" and projectType in ["SSR", "SSG"]:
     echo ""
-    styledEcho emoji["🔥"](), " Are you want to use templates in your project? "
+    styledEcho emoji["🔥"](), " Do you want to use templates in your project? "
     selectedTemplates = chooseFrom(templatesList, templatesList)
     templates = selectedTemplates == 0
   elif lang == "nim" and projectType in ["SPA", "HPX", "SPA+PWA"]:
     echo ""
-    styledEcho emoji["🐲"](), " Are you want to use Tailwind CSS in your project? "
+    styledEcho emoji["🐲"](), " Do you want to use Tailwind CSS in your project? "
     selectedTailwind = chooseFrom(tailwindList, tailwindList)
     useTailwind = selectedTailwind == 0
   
