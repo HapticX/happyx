@@ -2,7 +2,7 @@
 import
   ../../../../src/happyx,
   ../ui/[colors, translations],
-  ../components/[code_block_guide]
+  ../components/[code_block_guide, tip]
 
 
 component IntroductionLanguageChooser:
@@ -100,10 +100,7 @@ component Introduction:
         This project has been under development since April 2023 and is continuously evolving.
         HappyX draws inspiration from notable web frameworks like Vue.js and FastAPI.
         """)}
-      tDiv(
-        class = "flex flex-col w-fit gap-2 border-l-4 rounded-r-md border-green-700 bg-green-200/25 dark:border-green-300 px-4 py-2"
-      ):
-        tB: {translate("TIP")}
+      component Tip:
         tP:
           {translate("HappyX works with Nim, Python, JavaScript and TypeScript so you can choose one of these languages to read this guide ✌")}
         tDiv(
@@ -161,3 +158,5 @@ component Introduction:
             component Contributor("svenrdz", "https://github.com/svenrdz", "https://avatars.githubusercontent.com/u/23420779?v=4")
             component Contributor("monocoder", "https://github.com/monocoder", "https://avatars.githubusercontent.com/u/7921660?v=4")
             component Contributor("JK", "https://github.com/jerrygzy", "https://avatars.githubusercontent.com/u/181757?v=4")
+            component Contributor("sjhaleprogrammer", "https://github.com/sjhaleprogrammer", "https://avatars.githubusercontent.com/u/60676867?v=4")
+            component Contributor("Constantine Molchanov", "https://github.com/moigagoo", "https://avatars.githubusercontent.com/u/1045340?v=4")

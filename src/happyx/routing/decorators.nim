@@ -12,13 +12,13 @@ export base64
 
 
 type
-  decoratorImpl* = proc(httpMethods: seq[string], routePath: string, statementList: NimNode)
+  DecoratorImpl* = proc(httpMethods: seq[string], routePath: string, statementList: NimNode)
 
 
-var decorators* {.compileTime.} = newTable[string, decoratorImpl]()
+var decorators* {.compileTime.} = newTable[string, DecoratorImpl]()
 
 
-proc regDecorator*(decoratorName: string, decorator: decoratorImpl) {.compileTime.} =
+proc regDecorator*(decoratorName: string, decorator: DecoratorImpl) {.compileTime.} =
    decorators[decoratorName] = decorator
 
 

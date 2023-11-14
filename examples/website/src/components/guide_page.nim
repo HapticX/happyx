@@ -31,8 +31,10 @@ component GuidePage:
           component SsrBasics
         elif currentGuidePage == "tailwind_and_other":
           component TailwindAndOther
+        elif currentGuidePage == "route_decorators":
+          component Decorators
 
-      tDiv(class = "flex justify-between items-center w-full pb-8"):
+      tDiv(class = "hidden xl:flex justify-between items-center w-full pb-8"):
         if guidePages[currentGuidePage]["prev"].getStr != "":
           component Button(
               action = proc() =
@@ -45,6 +47,25 @@ component GuidePage:
           component Button(
               action = proc() =
                 route(fmt"""/guide/{guidePages[currentGuidePage]["next"].getStr}""")
+          ):
+            {translate(guidePages[guidePages[currentGuidePage]["next"].getStr]["title"].getStr) & " 👉"}
+        else:
+          tDiv(class = "w-1 h-1 p-1")
+      tDiv(class = "flex xl:hidden justify-between items-center w-full pb-8"):
+        if guidePages[currentGuidePage]["prev"].getStr != "":
+          component Button(
+              action = proc() =
+                route(fmt"""/guide/{guidePages[currentGuidePage]["prev"].getStr}"""),
+              flat = true
+          ):
+            {"👈 " & translate(guidePages[guidePages[currentGuidePage]["prev"].getStr]["title"].getStr)}
+        else:
+          tDiv(class = "w-1 h-1 p-1")
+        if guidePages[currentGuidePage]["next"].getStr != "":
+          component Button(
+              action = proc() =
+                route(fmt"""/guide/{guidePages[currentGuidePage]["next"].getStr}"""),
+              flat = true
           ):
             {translate(guidePages[guidePages[currentGuidePage]["next"].getStr]["title"].getStr) & " 👉"}
         else:

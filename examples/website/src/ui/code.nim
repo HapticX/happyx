@@ -688,3 +688,34 @@ app.middleware((req: Request) => {
 
 app.start()
 """
+  nimSsrRouteDecorator* = """import happyx
+
+server "127.0.0.1", 5000:
+  # This will add username and password
+  @AuthBasic
+  get "/user{id}":
+    # Will return 401 if headers haven't "Authorization"
+    return id
+"""
+  nimAssignRouteDecorator* = """import happyx
+import macros
+
+
+proc myCustomDecorator*(httpMethods: seq[string], path: string, statementList: NimNode) = 
+  # This decorator will add
+  #   echo "Hello from {path}"
+  # as leading statement in route at compile-time
+  statementList.insert(0, newCall("echo", newLit("Hello from " & path)))
+
+
+# Register our decorator
+static:
+  regDecorator("OurDecorator", myCustomDecorator)
+
+
+# Use it!
+serve "127.0.0.1", 5000:
+  @OurDecorator
+  get "/":
+    return 0
+"""

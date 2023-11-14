@@ -423,7 +423,7 @@ translatable:
     "ko" -> "단일 페이지 응용 프로그램,정적 사이트 생성 및 서버 측 렌더링을 지원합니다. 💫"
     "fr" -> "Prise en charge des applications monopages, de la génération de sites statiques et du rendu côté serveur 💫"
   "Own Domain-specific languages for HTML, CSS and JavaScript 🎴":
-    "ru" -> "Собственные доменные языки для HTML, CSS и JavaScript 🎴"
+    "ru" -> "Собственные предметно-ориентированные языки для HTML, CSS и JavaScript 🎴"
     "ja" -> "HTML、CSS、JavaScript用の独自のドメイン固有言語¶ 🎴"
     "zh" -> "拥有Html、CSS和JavaScript的特定领域语言 🎴"
     "ko" -> "자신의 도메인에 대해서는 특정 언어 HTML,CSS and JavaScript 🎴"
@@ -1148,6 +1148,54 @@ translatable:
     "zh" -> "HappyX还有其他有用的路由 - middleware、notfound和staticDir"
     "fr" -> "HappyX dispose de routes supplémentaires utiles - middleware, notfound et staticDir"
     "ko" -> "HappyX에는 미들웨어, notfound 및 staticDir과 같은 추가 도움말 라우트가 있습니다"
+  "Route Decorators 🔌":
+    "ru" -> "Декораторы маршрутов 🔌"
+    "ja" -> "ルートデコレーター 🔌"
+    "zh" -> "路由装饰器 🔌"
+    "fr" -> "Décorateurs de routes 🔌"
+    "ko" -> "라우트 데코레이터 🔌"
+  "HappyX (at Nim side) provides efficient compile-time route decorators.":
+    "ru" -> "HappyX (на стороне Nim) предоставляет эффективные декораторы маршрутов на этапе компиляции."
+    "ja" -> "HappyX（Nim側）は効率的なコンパイル時のルートデコレーターを提供します。"
+    "zh" -> "HappyX（在Nim端）提供了高效的编译时路由装饰器。"
+    "fr" -> "HappyX (côté Nim) fournit des décorateurs de routes efficaces au moment de la compilation."
+    "ko" -> "HappyX (Nim 측)은 효율적인 컴파일 타임 라우트 데코레이터를 제공합니다."
+  "Route decorators is little 'middleware', that edits route code at compile-time":
+    "ru" -> "Декораторы маршрутов - это небольшие 'посредники', которые редактируют код маршрута на этапе компиляции."
+    "ja" -> "ルートデコレーターは、コンパイル時にルートコードを編集する小さな 'ミドルウェア' です。"
+    "zh" -> "路由装饰器是一种小型的 '中间件'，它在编译时编辑路由代码"
+    "fr" -> "Les décorateurs de routes sont de petits 'middlewares' qui modifient le code de la route au moment de la compilation."
+    "ko" -> "라우트 데코레이터는 컴파일 타임에 라우트 코드를 편집하는 작은 '미들웨어'입니다."
+  "Usage 🤔":
+    "ru" -> "Использование 🤔"
+    "ja" -> "使用法 🤔"
+    "zh" -> "用法 🤔"
+    "fr" -> "Utilisation 🤔"
+    "ko" -> "사용법 🤔"
+  "Here you can see simple decorator usage":
+    "ru" -> "Здесь вы можете увидеть простое использование декоратора"
+    "ja" -> "ここではシンプルなデコレータの使用例が見られます"
+    "zh" -> "在这里，您可以看到简单的装饰器使用示例"
+    "fr" -> "Ici, vous pouvez voir un exemple simple d'utilisation de décorateur"
+    "ko" -> "여기에서 간단한 데코레이터 사용 예제를 볼 수 있습니다"
+  "Custom Decorators 💡":
+    "ru" -> "Собственные декораторы 💡"
+    "ja" -> "カスタムデコレータ 💡"
+    "zh" -> "自定义装饰器 💡"
+    "fr" -> "Décorateurs personnalisés 💡"
+    "ko" -> "사용자 정의 데코레이터 💡"
+  "You can create your own decorators also:":
+    "ru" -> "Вы также можете создавать свои собственные декораторы:"
+    "ja" -> "独自のデコレータを作成することもできます："
+    "zh" -> "您也可以创建自己的装饰器："
+    "fr" -> "Vous pouvez également créer vos propres décorateurs :"
+    "ko" -> "자신만의 데코레이터를 만들 수도 있습니다:"
+  "You can use route decorators in SSR, SSG, and SPA project types with Nim.":
+    "ru" -> "Вы можете использовать декораторы маршрутов в проектах типов SSR, SSG и SPA с использованием Nim."
+    "ja" -> "SSR、SSG、およびNimを使用したSPAプロジェクトタイプでルートデコレータを使用できます。"
+    "zh" -> "您可以在使用Nim的SSR、SSG和SPA项目类型中使用路由装饰器。"
+    "fr" -> "Vous pouvez utiliser des décorateurs de routes dans les types de projets SSR, SSG et SPA avec Nim."
+    "ko" -> "SSR, SSG 및 SPA 프로젝트 유형에서 Nim과 함께 라우트 데코레이터를 사용할 수 있습니다."
 
 
 var spokenLang: cstring

@@ -31,21 +31,26 @@ var
     "path_params": {
       "title": "Path Params 🔌",
       "prev": "happyx_app",
-      "next": "spa_basics"
-    },
-    "spa_basics": {
-      "title": "Single-page Applications Basics 🎴",
-      "prev": "",
-      "next": ""
-    },
-    "ssr_basics": {
-      "title": "Server-side Applications Basics 🖥",
-      "prev": "",
-      "next": ""
+      "next": "tailwind_and_other"
     },
     "tailwind_and_other": {
       "title": "Tailwind And Other 🎴",
       "prev": "path_params",
+      "next": "route_decorators"
+    },
+    "route_decorators": {
+      "title": "Route Decorators 🔌",
+      "prev": "tailwind_and_other",
+      "next": "spa_basics"
+    },
+    "spa_basics": {
+      "title": "Single-page Applications Basics 🎴",
+      "prev": "route_decorators",
+      "next": "ssr_basics"
+    },
+    "ssr_basics": {
+      "title": "Server-side Applications Basics 🖥",
+      "prev": "spa_basics",
       "next": ""
     }
   }
@@ -119,6 +124,8 @@ component SideBar:
               {translate("Advanced 🧪")}
               component SideBarItem("tailwind_and_other"):
                 {translate("Tailwind And Other 🎴")}
+              component SideBarItem("route_decorators"):
+                {translate("Route Decorators 🔌")}
 
             component SideBarFolder("spa_basics"):
               {translate("Single-page Applications 🎴")}
@@ -134,6 +141,7 @@ component SideBar:
             action = proc() =
               {.emit: """//js
               window.open('https://hapticx.github.io/happyx/happyx.html', '_blank').focus();
-              """.}
+              """.},
+            flat = true
           ):
             {translate("📕 API Reference")}
