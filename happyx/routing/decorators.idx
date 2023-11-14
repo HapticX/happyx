@@ -1,0 +1,4 @@
+decoratorImpl	happyx/routing/decorators.html#decoratorImpl	decorators: decoratorImpl	
+decorators	happyx/routing/decorators.html#decorators	decorators: decorators	
+regDecorator	happyx/routing/decorators.html#regDecorator,string,decoratorImpl	decorators: regDecorator(decoratorName: string; decorator: decoratorImpl)	
+Decorators 🔌	happyx/routing/decorators.html#decorators-🔌	 Decorators 🔌	
