@@ -695,7 +695,11 @@ server "127.0.0.1", 5000:
   @AuthBasic
   get "/user{id}":
     # Will return 401 if headers haven't "Authorization"
-    return id
+    return {"response": {
+      "id": id,
+      "username": username,  # from @AuthBasic
+      "password": password  # from @AuthBasic
+    }}
 """
   nimAssignRouteDecorator* = """import happyx
 import macros
