@@ -35,3 +35,14 @@ component SpaBasics:
       tP: {translate"Here is routing basics."}
 
       component CodeBlock("nim", nimSpaRouting, "nim_spa_routing")
+
+      tH2: {translate"Reactivity ⚡"}
+
+      tP:
+        {translate"Reactivity in HappyX is a mechanism that allows your web application to instantly respond to data changes without explicit developer intervention. When the data used in the application changes, the interface is automatically updated to display these changes. This makes the app more responsive and user-friendly."}
+      
+      tP: {translate"Here is 'naked' reactivity without components:"}
+      component CodeBlock("nim", nimSpaReactivity, "nim_spa_reactivity")
+
+      tP: {translate"And here is reactivity with components usage:"}
+      component CodeBlock("nim", nimSpaComponentReactivity, "nim_spa_component_reactivity")

@@ -723,3 +723,40 @@ serve "127.0.0.1", 5000:
   get "/":
     return 0
 """
+  nimSpaReactivity* = """import happyx
+
+# Create a new state
+var x = remember 0
+
+
+appRoutes "app":
+  "/":
+    "x value is {x}"
+    tButton:
+      "click me to increase"
+      @click:
+        # change state and rerender this
+        x += 1
+"""
+  nimSpaComponentReactivity* = """import happyx
+
+
+# create component
+component Test:
+  x: int = 0  # component state with default value
+  `template`:
+    "x value is {self.x}"
+    tButton:
+      "click me to increase"
+      @click:
+        # change state and rerender this
+        self.x += 1
+
+
+appRoutes "app":
+  "/":
+    # use components
+    Test(x = 10)
+    Test(x = 15)
+    Test(x = 20)
+"""

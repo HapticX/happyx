@@ -1196,6 +1196,30 @@ translatable:
     "zh" -> "您可以在使用Nim的SSR、SSG和SPA项目类型中使用路由装饰器。"
     "fr" -> "Vous pouvez utiliser des décorateurs de routes dans les types de projets SSR, SSG et SPA avec Nim."
     "ko" -> "SSR, SSG 및 SPA 프로젝트 유형에서 Nim과 함께 라우트 데코레이터를 사용할 수 있습니다."
+  "Reactivity ⚡":
+    "ru" -> "Реактивность ⚡"
+    "ja" -> "リアクティビティ ⚡"
+    "zh" -> "响应性 ⚡"
+    "fr" -> "Réactivité ⚡"
+    "ko" -> "반응성 ⚡"
+  "Reactivity in HappyX is a mechanism that allows your web application to instantly respond to data changes without explicit developer intervention. When the data used in the application changes, the interface is automatically updated to display these changes. This makes the app more responsive and user-friendly.":
+    "ru" -> "Реактивность в HappyX - это механизм, который позволяет вашему веб-приложению мгновенно реагировать на изменения данных без явного вмешательства разработчика. Когда данные, используемые в приложении, меняются, интерфейс автоматически обновляется для отображения этих изменений. Это делает приложение более отзывчивым и удобным для пользователя."
+    "ja" -> "HappyXのリアクティビティは、明示的な開発者の介入なしにデータの変更に即座に応答できる仕組みです。アプリケーションで使用されるデータが変更されると、インターフェースが自動的に更新されてこれらの変更が表示されます。これにより、アプリはより反応が良く、ユーザーフレンドリーになります。"
+    "zh" -> "在HappyX中，响应性是一种机制，使您的Web应用程序能够在没有显式开发者干预的情况下即时响应数据变化。当应用程序中使用的数据发生变化时，界面会自动更新以显示这些变化。这使应用程序更具响应性和用户友好性。"
+    "fr" -> "La réactivité dans HappyX est un mécanisme qui permet à votre application web de réagir instantanément aux changements de données sans intervention explicite du développeur. Lorsque les données utilisées dans l'application changent, l'interface est automatiquement mise à jour pour afficher ces changements. Cela rend l'application plus réactive et conviviale."
+    "ko" -> "HappyX의 반응성은 데이터 변경에 명시적인 개발자 개입없이 웹 애플리케이션이 즉시 응답할 수 있는 메커니즘입니다. 애플리케이션에서 사용하는 데이터가 변경되면 인터페이스가 자동으로 업데이트되어 이러한 변경 사항을 표시합니다. 이로써 앱은 더 반응성이 있고 사용자 친화적으로 동작합니다."
+  "Here is 'naked' reactivity without components:":
+    "ru" -> "Вот 'голая' реактивность без компонентов:"
+    "ja" -> "ここではコンポーネントのない'素の'リアクティビティがあります："
+    "zh" -> "这里是没有组件的'原始'响应性："
+    "fr" -> "Voici la réactivité 'à nu' sans composants :"
+    "ko" -> "여기에는 컴포넌트가없는 '맨체스터' 반응성이 있습니다:"
+  "And here is reactivity with components usage:":
+    "ru" -> "А вот реактивность с использованием компонентов:"
+    "ja" -> "ここではコンポーネントの使用によるリアクティビティがあります："
+    "zh" -> "这里是使用组件的响应性："
+    "fr" -> "Et voici la réactivité avec l'utilisation de composants :"
+    "ko" -> "여기에는 구성 요소 사용을 통한 반응성이 있습니다:"
 
 
 var spokenLang: cstring

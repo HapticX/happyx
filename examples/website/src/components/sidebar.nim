@@ -77,9 +77,9 @@ component SideBarItem:
     tP(
       class =
         if currentGuidePage.val == self.id:
-          fmt"pl-12 lg:pl-8 xl:pl-4 text-4xl lg:text-lg xl:text-base cursor-pointer select-none bg-[{Foreground}]/25 dark:bg-[{ForegroundDark}]/25 duration-300"
+          fmt"pl-12 lg:pl-8 xl:pl-4 text-4xl opacity-90 lg:text-lg xl:text-base cursor-pointer select-none bg-[{Foreground}]/25 dark:bg-[{ForegroundDark}]/25 duration-300"
         else:
-          fmt"pl-12 lg:pl-8 xl:pl-4 text-4xl lg:text-lg xl:text-base cursor-pointer select-none bg-[{Foreground}]/0 dark:bg-[{ForegroundDark}]/0 hover:bg-[{Foreground}]/[.10] dark:hover:bg-[{ForegroundDark}]/[.10] active:bg-[{Foreground}]/[.20] dark:active:bg-[{ForegroundDark}]/[.20] duration-300"
+          fmt"pl-12 lg:pl-8 xl:pl-4 text-4xl opacity-60 hover:opacity-70 active:opacity-80 lg:text-lg xl:text-base cursor-pointer select-none bg-[{Foreground}]/0 dark:bg-[{ForegroundDark}]/0 hover:bg-[{Foreground}]/[.10] dark:hover:bg-[{ForegroundDark}]/[.10] active:bg-[{Foreground}]/[.20] dark:active:bg-[{ForegroundDark}]/[.20] duration-300"
     ):
       slot
       @click:
