@@ -70,7 +70,11 @@ appRoutes("app"):
       CTest(id = 0):
         "hello"
   
+  @GetUserAgent
   "/issue154":
+    tDiv:
+      "Your user agent is"
+      {userAgent}
     tDiv: {catStatus}
     var
       dogStatus = "superposition"

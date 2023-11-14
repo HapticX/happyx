@@ -314,7 +314,7 @@ import
   happyx/sugar/[use, sgr, js, style],
   happyx/spa/[renderer, state, components, translatable, tag],
   happyx/tmpl_engine/[engine],
-  happyx/routing/[mounting, routing],
+  happyx/routing/[mounting, routing, decorators],
   happyx/ssr/utils
 
 
@@ -336,6 +336,7 @@ export
   queries,
   renderer,
   state,
+  decorators,
   components,
   translatable,
   style,

@@ -74,7 +74,7 @@ import
   ../spa/[tag, renderer, translatable],
   ../core/[exceptions, constants, queries],
   ../private/[macro_utils],
-  ../routing/[routing, mounting],
+  ../routing/[routing, mounting, decorators],
   ../sugar/sgr
 
 export
@@ -850,10 +850,13 @@ socketToSsr.onmessage=function(m){
         val[1]
       ))
   
+  var
+    nextRouteDecorators: seq[string] = @[]
+
   for statement in body:
     if statement.kind == nnkDiscardStmt:
       continue
-    if statement.kind in [nnkCall, nnkCommand]:
+    if statement.kind in [nnkCall, nnkCommand, nnkPrefix]:
       if statement[^1].kind == nnkStmtList:
         # Check variable usage
         if statement[^1].isIdentUsed(ident"statusCode"):
@@ -862,9 +865,14 @@ socketToSsr.onmessage=function(m){
           statement[^1].insert(0, newVarStmt(ident"outHeaders", newCall("newCustomHeaders")))
         if statement[^1].isIdentUsed(ident"outCookies") or statement[^1].isIdentUsed(ident"startSession"):
           statement[^1].insert(0, newVarStmt(ident"outCookies", cookiesOutVar))
+      # @DecoratorName
+      if statement.kind == nnkPrefix and $statement[0] == "@" and statement[1].kind == nnkIdent:
+        nextRouteDecorators.add($statement[1])
       # "/...": statement list
-      if statement[1].kind == nnkStmtList and statement[0].kind == nnkStrLit:
+      elif statement[1].kind == nnkStmtList and statement[0].kind == nnkStrLit:
         detectReturnStmt(statement[1])
+        for route in nextRouteDecorators:
+          decorators[route](@["GET"], $statement[0], statement[1])
         let exported = exportRouteArgs(pathIdent, statement[0], statement[1])
         if exported.len > 0:  # /my/path/with{custom:int}/{param:path}
           ifStmt.add(exported)
@@ -872,9 +880,15 @@ socketToSsr.onmessage=function(m){
           ifStmt.add(newNimNode(nnkElifBranch).add(
             newCall("==", pathIdent, statement[0]), statement[1]
           ))
+        nextRouteDecorators = @[]
       # [get, post, ...] "/...": statement list
       elif statement.len == 3 and statement[2].kind == nnkStmtList and statement[0].kind == nnkBracket and statement[1].kind == nnkStrLit and statement[0].len > 0:
         detectReturnStmt(statement[2])
+        var httpMethods: seq[string] = @[]
+        for i in statement[0]:
+          httpMethods.add($i)
+        for route in nextRouteDecorators:
+          decorators[route](httpMethods, $statement[1], statement[2])
         let exported = exportRouteArgs(pathIdent, statement[1], statement[2])
         var methods = newNimNode(nnkBracket)
         for i in statement[0]:
@@ -894,10 +908,13 @@ socketToSsr.onmessage=function(m){
               newCall("==", pathIdent, statement[1])
             ), statement[2]
           ))
+        nextRouteDecorators = @[]
       # reqMethod "/...":
       #   ...
       elif statement[0].kind == nnkIdent and statement[0] != ident"mount" and statement[1].kind in {nnkStrLit, nnkTripleStrLit, nnkInfix}:
         let name = ($statement[0]).toUpper()
+        for route in nextRouteDecorators:
+          decorators[route](@[$statement[0]], $statement[1], statement[2])
         if name == "STATICDIR":
           if statement[1].kind in [nnkStrLit, nnkTripleStrLit]:
             ifStmt.insert(
@@ -1122,6 +1139,7 @@ socketToSsr.onmessage=function(m){
             newCall("==", pathIdent, statement[1]),
             statement[2]
           ))
+        nextRouteDecorators = @[]
       # notfound: statement list
       elif statement[1].kind == nnkStmtList and statement[0].kind == nnkIdent:
         case ($statement[0]).toLower()
@@ -1257,6 +1275,8 @@ socketToSsr.onmessage=function(m){
       immutableVars.add(newIdentDefs(ident"inCookies", newEmptyNode(), cookiesInVar))
   if stmtList.isIdentUsed(ident"reqMethod"):
     immutableVars.add(newIdentDefs(ident"reqMethod", newEmptyNode(), reqMethod))
+  if stmtList.isIdentUsed(ident"headers"):
+    immutableVars.add(newIdentDefs(ident"headers", newEmptyNode(), headers))
   immutableVars.add(newIdentDefs(ident"hostname", newEmptyNode(), hostname))
   when enableDebugSsrMacro:
     echo result.toStrLit

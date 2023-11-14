@@ -34,7 +34,7 @@ import
   ./translatable,
   ../core/[exceptions, constants],
   ../private/[macro_utils],
-  ../routing/[routing, mounting],
+  ../routing/[routing, mounting, decorators],
   ../sugar/[sgr, js]
 
 
@@ -532,15 +532,21 @@ macro routes*(app: App, body: untyped): untyped =
   
   var
     cookiesInVar = newDotExpr(ident"document", ident"cookie")
+    nextRouteDecorators: seq[string] = @[]
   
   for statement in body:
-    if statement.kind in [nnkCommand, nnkCall]:
+    if statement.kind in [nnkCommand, nnkCall, nnkPrefix]:
       if statement[^1].kind == nnkStmtList:
         # Check variable usage
         if statement[^1].isIdentUsed(ident"cookies"):
           statement[^1].insert(0, newVarStmt(ident"cookies", cookiesInVar))
+      # @DecoratorName
+      if statement.kind == nnkPrefix and $statement[0] == "@" and statement[1].kind == nnkIdent:
+        nextRouteDecorators.add($statement[1])
         
-      if statement.len == 2 and statement[0].kind == nnkStrLit:
+      elif statement.len == 2 and statement[0].kind == nnkStrLit:
+        for route in nextRouteDecorators:
+          decorators[route](@[], $statement[0], statement[1])
         let exported = exportRouteArgs(
           iPath,
           statement[0],
