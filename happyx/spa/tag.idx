@@ -2,6 +2,7 @@ TagRef	happyx/spa/tag.html#TagRef	tag: TagRef
 Tag	happyx/spa/tag.html#Tag	tag: Tag	
 UnclosedTags	happyx/spa/tag.html#UnclosedTags	tag: UnclosedTags	
 NimKeywords	happyx/spa/tag.html#NimKeywords	tag: NimKeywords	
+add	happyx/spa/tag.html#add,TagRef,varargs[TagRef]	tag: add(self: TagRef; tags: varargs[TagRef])	
 initTag	happyx/spa/tag.html#initTag,string,StringTableRef,seq[TagRef],bool	tag: initTag(name: string; attrs: StringTableRef; children: seq[TagRef] = @[];\n        onlyChildren: bool = false): TagRef	
 initTag	happyx/spa/tag.html#initTag,string,seq[TagRef],bool	tag: initTag(name: string; children: seq[TagRef] = @[]; onlyChildren: bool = false): TagRef	
 initTag	happyx/spa/tag.html#initTag,string,bool,StringTableRef,seq[TagRef],bool	tag: initTag(name: string; isText: bool; attrs: StringTableRef;\n        children: seq[TagRef] = @[]; onlyChildren: bool = false): TagRef	
@@ -9,10 +10,10 @@ initTag	happyx/spa/tag.html#initTag,string,bool,seq[TagRef],bool	tag: initTag(na
 tag	happyx/spa/tag.html#tag,string	tag: tag(name: string): TagRef	
 tag	happyx/spa/tag.html#tag,TagRef	tag: tag(tag: TagRef): TagRef	
 textTag	happyx/spa/tag.html#textTag,string	tag: textTag(text: string): TagRef	
-add	happyx/spa/tag.html#add,TagRef,varargs[TagRef]	tag: add(self: TagRef; tags: varargs[TagRef])	
 tagFromString	happyx/spa/tag.html#tagFromString,string	tag: tagFromString(source: string): TagRef	
 addArg	happyx/spa/tag.html#addArg,TagRef,string	tag: addArg(self: TagRef; arg: string)	
 addArgIter	happyx/spa/tag.html#addArgIter,TagRef,string	tag: addArgIter(self: TagRef; arg: string)	
+toSeqIter	happyx/spa/tag.html#toSeqIter,TagRef	tag: toSeqIter(self: TagRef): seq[TagRef]	
 lvl	happyx/spa/tag.html#lvl,TagRef	tag: lvl(self: TagRef): int	
 `[]`	happyx/spa/tag.html#[],TagRef,string	tag: `[]`(self: TagRef; attrName: string): string	
 `[]=`	happyx/spa/tag.html#[]=,TagRef,string,string	tag: `[]=`(self: TagRef; attrName: string; attrValue: string)	

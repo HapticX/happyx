@@ -1,3 +1,4 @@
+reRenderTmpl	happyx/spa/components.html#reRenderTmpl.t	components: reRenderTmpl()	
 component	happyx/spa/components.html#component.m,untyped,untyped	components: component(name, body: untyped): untyped	
 importComponent	happyx/spa/components.html#importComponent.m,untyped	components: importComponent(body: untyped): untyped	
 Basic Usage 🔨	happyx/spa/components.html#basic-usage-🔨	  Basic Usage 🔨	
