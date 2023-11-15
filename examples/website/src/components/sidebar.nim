@@ -58,23 +58,26 @@ var
 
 component SideBarTitle:
   `template`:
-    tP(class = "text-7xl lg:text-2xl xl:text-xl font-bold select-none"):
+    tDiv(class = "text-7xl lg:text-2xl xl:text-xl font-bold select-none"):
       slot
 
 
 component SideBarFolder:
   id: string
+  text: string
   `template`:
-    tP(class = "text-5xl lg:text-xl xl:text-lg font-bold cursor-pointer select-none pl-2"):
+    tDiv(class = "text-5xl lg:text-xl xl:text-lg font-bold cursor-pointer select-none pl-2"):
+      tDiv:
+        {translate(self.text)}
+        @click:
+          route(fmt"/guide/{self.id}")
       slot
-      @click:
-        route(fmt"/guide/{self.id}")
 
 
 component SideBarItem:
   id: string
   `template`:
-    tP(
+    tDiv(
       class =
         if currentGuidePage.val == self.id:
           fmt"pl-12 lg:pl-8 xl:pl-4 text-4xl opacity-90 lg:text-lg xl:text-base cursor-pointer select-none bg-[{Foreground}]/25 dark:bg-[{ForegroundDark}]/25 duration-300"
@@ -106,34 +109,29 @@ component SideBar:
           component SideBarTitle:
             {translate("User Guide 📖")}
 
-            component SideBarFolder("introduction"):
-              {translate("General 🍍")}
+            component SideBarFolder("introduction", "General 🍍"):
               component SideBarItem("introduction"):
                 {translate("Introduction ✌")}
               component SideBarItem("getting_started"):
                 {translate("Getting Started 💫")}
 
-            component SideBarFolder("happyx_app"):
-              {translate("Basics 📖")}
+            component SideBarFolder("happyx_app", "Basics 📖"):
               component SideBarItem("happyx_app"):
                 {translate("HappyX Application 🍍")}
               component SideBarItem("path_params"):
                 {translate("Path Params 🔌")}
 
-            component SideBarFolder("tailwind_and_other"):
-              {translate("Advanced 🧪")}
+            component SideBarFolder("tailwind_and_other", "Advanced 🧪"):
               component SideBarItem("tailwind_and_other"):
                 {translate("Tailwind And Other 🎴")}
               component SideBarItem("route_decorators"):
                 {translate("Route Decorators 🔌")}
 
-            component SideBarFolder("spa_basics"):
-              {translate("Single-page Applications 🎴")}
+            component SideBarFolder("spa_basics", "Single-page Applications 🎴"):
               component SideBarItem("spa_basics"):
                 {translate("Single-page Applications Basics 🎴")}
 
-            component SideBarFolder("ssr_basics"):
-              {translate("Server-side Applications 🖥")}
+            component SideBarFolder("ssr_basics", "Server-side Applications 🖥"):
               component SideBarItem("ssr_basics"):
                 {translate("Server-side Applications Basics 🖥")}
         tDiv(class = "flex"):

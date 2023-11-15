@@ -30,6 +30,7 @@ import
   strutils,
   strformat,
   strtabs,
+  sequtils,
   htmlparser,
   xmltree,
   regex
@@ -68,6 +69,20 @@ const
   ]
 
 
+func add*(self: TagRef, tags: varargs[TagRef]) =
+  ## Adds `other` tag into `self` tag
+  runnableExamples:
+    var
+      rootTag = tag"div"
+      child1 = tag"p"
+      child2 = tag"p"
+    rootTag.add(child1, child2)
+  for tag in tags:
+    if tag.isNil():
+      continue
+    self.children.add(tag)
+    tag.parent = self
+
 
 func initTag*(name: string, attrs: StringTableRef,
               children: seq[TagRef] = @[],
@@ -87,10 +102,7 @@ func initTag*(name: string, attrs: StringTableRef,
     onlyChildren: onlyChildren
   )
   for child in children:
-    if child.isNil():
-      continue
-    child.parent = result
-    result.children.add(child)
+    result.add(child)
 
 
 func initTag*(name: string, children: seq[TagRef] = @[],
@@ -109,10 +121,7 @@ func initTag*(name: string, children: seq[TagRef] = @[],
     onlyChildren: onlyChildren
   )
   for child in children:
-    if child.isNil():
-      continue
-    child.parent = result
-    result.children.add(child)
+    result.add(child)
 
 
 func initTag*(name: string, isText: bool, attrs: StringTableRef,
@@ -134,10 +143,7 @@ func initTag*(name: string, isText: bool, attrs: StringTableRef,
     onlyChildren: onlyChildren
   )
   for child in children:
-    if child.isNil():
-      continue
-    child.parent = result
-    result.children.add(child)
+    result.add(child)
 
 
 func initTag*(name: string, isText: bool, children: seq[TagRef] = @[],
@@ -149,10 +155,7 @@ func initTag*(name: string, isText: bool, children: seq[TagRef] = @[],
     onlyChildren: onlyChildren
   )
   for child in children:
-    if child.isNil():
-      continue
-    child.parent = result
-    result.children.add(child)
+    result.add(child)
 
 
 func tag*(name: string): TagRef {.inline.} =
@@ -183,21 +186,6 @@ func textTag*(text: string): TagRef {.inline.} =
     attrs: newStringTable(), children: @[], args: @[],
     onlyChildren: false
   )
-
-
-func add*(self: TagRef, tags: varargs[TagRef]) =
-  ## Adds `other` tag into `self` tag
-  runnableExamples:
-    var
-      rootTag = tag"div"
-      child1 = tag"p"
-      child2 = tag"p"
-    rootTag.add(child1, child2)
-  for tag in tags:
-    if tag.isNil():
-      continue
-    self.children.add(tag)
-    tag.parent = self
 
 
 proc xml2Tag(xml: XmlNode): TagRef =
@@ -258,6 +246,16 @@ proc addArgIter*(self: TagRef, arg: string) =
     self.args.add(arg)
   for i in self.children:
     i.addArgIter(arg)
+
+
+proc toSeqIter*(self: TagRef): seq[TagRef] =
+  if self.onlyChildren:
+    result = @[]
+  else:
+    result = @[self]
+  for child in self.children:
+    result = result.concat(child.toSeqIter)
+  return result
 
 
 when defined(js):

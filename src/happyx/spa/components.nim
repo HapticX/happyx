@@ -63,6 +63,47 @@ proc replaceSuperCall(statement: NimNode, parentComponent, funcName: string, nee
       replaceSuperCall(child, parentComponent, funcName, needDiscard)
 
 
+template reRenderTmpl*() =
+  let tmpData = "[data-" & self.uniqCompId & "]"
+  when defined(js):
+    let activeElement = document.activeElement
+  let compTmpData = self.render
+  currentComponentsList.del(currentComponentsList.find(self.BaseComponent))
+  compTmpData.addArgIter("data-" & self.uniqCompId)
+  when defined(js):
+    var
+      current = document.querySelector(tmpData)
+      elements = newSeq[Element]()
+    for tag in compTmpData.children:
+      if not current.isNil:
+        elements.add(current)
+        current = current.nextSibling.Element
+    for i in 0..<elements.len:
+      let
+        elem = elements[i]
+        tag = compTmpData.children[i]
+      elem.outerHTML = cstring($tag)
+    if activeElement.hasAttribute("id"):
+      let actElem = document.getElementById(activeElement.id)
+      if not actElem.isNil:
+        actElem.focus()
+        if actElem.nodeName in ["INPUT".cstring, "TEXTAREA".cstring]:
+          let
+            oldActiveElem = activeElement.InputElement
+            currentActiveElem = actElem.InputElement
+          currentActiveElem.setSelectionRange(oldActiveElem.selectionStart, oldActiveElem.selectionEnd, oldActiveElem.selectionDirection)
+  else:
+    compTmpData.add(initTag("script", @[
+      textTag(
+        fmt"document.querySelector('{tmpData}').outerHTML = `" &
+        $compTmpData &
+        "`;"
+      )
+    ]))
+  self.updated(self)
+  self.rendered(self)
+
+
 macro component*(name, body: untyped): untyped =
   ## Register a new component.
   ## 
@@ -209,128 +250,7 @@ macro component*(name, body: untyped): untyped =
       postfix(ident"reRender", "*"),
       [newEmptyNode(), newIdentDefs(ident"self", ident(componentName))],
       newStmtList(
-        newLetStmt(
-          ident"tmpData",
-          newCall(
-            "&",
-            newCall("&", newStrLitNode("[data-"), (newDotExpr(ident"self", ident(UniqueComponentId)))),
-            newStrLitNode("]")
-          )
-        ),
-        when defined(js):
-          newLetStmt(
-            ident"activeElement",
-            newDotExpr(ident"document", ident"activeElement")
-          )
-        else:
-          newEmptyNode(),
-        newLetStmt(
-          ident"compTmpData",
-          newCall(newDotExpr(ident"self", ident"render"))
-        ),
-        newCall("del", ident"currentComponentsList", newCall("find", ident"currentComponentsList", newCall(ident"BaseComponent", ident"self"))),
-        newCall(
-          "addArgIter",
-          ident"compTmpData",
-          newCall("&", newStrLitNode("data-"), newDotExpr(ident"self", ident(UniqueComponentId)))
-        ),
-        when defined(js):
-          newStmtList(
-            newVarStmt(ident"_current", newCall("querySelector", ident"document", ident"tmpData")),
-            newVarStmt(
-              ident"_elements", newCall(newNimNode(nnkBracketExpr).add(ident"newSeq", ident"Element"))
-            ),
-            newNimNode(nnkForStmt).add(
-              ident"tag",
-              newDotExpr(
-                ident"compTmpData", ident"children"
-              ),
-              newStmtList(
-                newNimNode(nnkIfStmt).add(
-                  newNimNode(nnkElifBranch).add(
-                    newCall("not", newCall("isNil", ident"_current")),
-                    newStmtList(
-                      newCall("add", ident"_elements", ident"_current"),
-                      newAssignment(
-                        ident"_current",
-                        newDotExpr(newDotExpr(ident"_current", ident"nextSibling"), ident"Element")
-                      )
-                    )
-                  )
-                ),
-              )
-            ),
-            newNimNode(nnkForStmt).add(
-              ident"__i",
-              newCall("..<", newLit(0), newCall("len", ident"_elements")),
-              newStmtList(
-                newLetStmt(ident"elem", newNimNode(nnkBracketExpr).add(ident"_elements", ident"__i")),
-                newLetStmt(
-                  ident"tag",
-                  newNimNode(nnkBracketExpr).add(
-                    newDotExpr(ident"compTmpData", ident"children"), ident"__i"
-                  )
-                ),
-                newAssignment(
-                  newDotExpr(ident"elem", ident"outerHTML"),
-                  newCall("cstring", newCall("$", ident"tag"))
-                )
-              )
-            ),
-            newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
-              newCall("hasAttribute", ident"activeElement", newLit"id"),
-              newStmtList(
-                newLetStmt(
-                  ident"_activeElement_",
-                  newCall("getElementById", ident"document", newCall("id", ident"activeElement"))
-                ),
-                newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
-                  newCall("not", newCall("isNil", ident"_activeElement_")),
-                  newStmtList(
-                    newCall("focus", ident"_activeElement_"),
-                    newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
-                      newCall(
-                        "contains",
-                        bracket(newCall("cstring", newLit"INPUT"), newCall("cstring", newLit"TEXTAREA")),
-                        newDotExpr(ident"_activeElement_", ident"nodeName")
-                      ),
-                      newStmtList(
-                        newLetStmt(ident"oldActiveElement", newCall("InputElement", ident"activeElement")),
-                        newLetStmt(ident"currentActiveElement", newCall("InputElement", ident"_activeElement_")),
-                        newCall(
-                          "setSelectionRange",
-                          ident"currentActiveElement",
-                          newDotExpr(ident"oldActiveElement", ident"selectionStart"),
-                          newDotExpr(ident"oldActiveElement", ident"selectionEnd"),
-                          newDotExpr(ident"oldActiveElement", ident"selectionDirection"),
-                        )
-                      )
-                    )),
-                  )
-                )),
-              )
-            )),
-          )
-        else:
-          newCall(
-            "add",
-            ident"compTmpData",
-            newCall(
-              "initTag",
-              newStrLitNode("script"),
-              newCall("@", newNimNode(nnkBracket).add(newCall("textTag",
-                newCall("&", newCall(
-                    "&", newCall(
-                      "fmt", newStrLitNode("document.querySelector('{tmpData}').outerHTML = `")
-                    ),
-                    newCall("$", ident"compTmpData")
-                  ), newStrLitNode("`;")
-                )
-              )))
-            )
-          ),
-        newCall(newDotExpr(ident"self", ident"updated"), ident"self"),
-        newCall(newDotExpr(ident"self", ident"rendered"), ident"self")
+        newCall("reRenderTmpl")
       ),
       nnkMethodDef
     )
