@@ -95,7 +95,7 @@ template reRenderTmpl*() =
   else:
     compTmpData.add(initTag("script", @[
       textTag(
-        fmt"document.querySelector('{tmpData}').outerHTML = `" &
+        fmt"document.querySelector('[data-{self.uniqCompId}]').outerHTML = `" &
         $compTmpData &
         "`;"
       )
