@@ -760,3 +760,49 @@ appRoutes "app":
     Test(x = 15)
     Test(x = 20)
 """
+  nimSpaReacitivity1* = """import happyx
+
+var x = remember 0
+
+appRoutes "app":
+  "/":
+    "x counter: {x}"
+    @click:
+      x->inc()
+"""
+  nimSpaReacitivity2* = """import happyx
+
+var x = remember newSeq[int]()
+
+appRoutes "app":
+  "/":
+    "x sequence is {x}"
+    @click:
+      x->add(x.len())
+"""
+  nimSpaReacitivity3* = """import happyx
+
+var
+  x = remember newSeq[int]()
+  y: State[seq[int]] = remember @[]
+  z: State[int]
+  w: State[string] = remember "Hello"
+
+"""
+  nimSpaReacitivity4* = """import happyx
+
+var
+  x = remember 0
+  y = 10
+  str = remember "Hello"
+
+x += y
+echo x  # 10, but x is still State[int]
+
+x *= y
+echo x  # x is 100 and again, x is State[int]
+
+str &= ", world!"
+echo str  # Hello, world!, but str is State[string]
+
+"""

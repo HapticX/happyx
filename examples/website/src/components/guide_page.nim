@@ -27,6 +27,8 @@ component GuidePage:
           component PathParams
         elif currentGuidePage == "spa_basics":
           component SpaBasics
+        elif currentGuidePage == "reactivity":
+          component Reactivity
         elif currentGuidePage == "ssr_basics":
           component SsrBasics
         elif currentGuidePage == "tailwind_and_other":

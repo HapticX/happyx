@@ -10,9 +10,12 @@ proc `$`*(self: MyType): string =
 
 var
   data = remember @[1, 2, 3]
+  dataArr = remember [1, 2, 3]
   setData = remember {2, 4, 8, 16, 128}
   myType = remember MyType(field: 100)
   jsonVar = remember %*{"a": 1, "b": 2, "c": 3}
+  table = remember newTable[string, string]()
+  tableStr = remember newStringTable()
 
 echo myType->field
 echo typeof(jsonVar.val)
@@ -27,6 +30,16 @@ setData->excl(4)
 echo data
 echo setData
 echo jsonVar
+
+data[0] = 0
+dataArr[0] = 0
+table["Hello"] = "World"
+tableStr["Hello"] = "World"
+
+echo data
+echo dataArr
+echo table
+echo tableStr
 
 # for i in data->items():
 #   echo i

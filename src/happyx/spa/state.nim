@@ -26,6 +26,8 @@
 ##
 import
   macros,
+  tables,
+  strtabs,
   ./renderer,
   ./translatable
 
@@ -212,10 +214,54 @@ func `[]`*[T](self: State[openarray[T]], idx: int): T =
   self.val[idx]
 
 
+func `[]`*[T, U](self: State[TableRef[T, U]], idx: T): U =
+  ## Returns State's item at `idx` index.
+  self.val[idx]
+
+
+func `[]`*(self: State[StringTableRef], idx: string): string =
+  ## Returns State's item at `idx` index.
+  self.val[idx]
+
+
+proc `[]=`*[T](self: State[seq[T]], idx: int, value: T) =
+  ## Changes State's item at `idx` index.
+  self.val[idx] = value
+  if enableRouting and not application.isNil() and not application.router.isNil():
+    application.router()
+
+
+proc `[]=`*[T, U](self: State[array[T, U]], idx: int, value: T) =
+  ## Changes State's item at `idx` index.
+  self.val[idx] = value
+  if enableRouting and not application.isNil() and not application.router.isNil():
+    application.router()
+
+
+proc `[]=`*[T, U](self: State[TableRef[T, U]], idx: T, value: U) =
+  ## Changes State's item at `idx` index.
+  self.val[idx] = value
+  if enableRouting and not application.isNil() and not application.router.isNil():
+    application.router()
+
+
+proc `[]=`*(self: State[StringTableRef], idx: string, value: string) =
+  ## Changes State's item at `idx` index.
+  self.val[idx] = value
+  if enableRouting and not application.isNil() and not application.router.isNil():
+    application.router()
+
+
 iterator items*[T](self: State[openarray[T]]): T =
   ## Iterate over state items
   for item in self.val:
     yield item
+
+
+iterator pairs*[T, U](self: State[TableRef[T, U]]): (T, U) =
+  ## Iterate over state items
+  for k, v in self.val.pairs:
+    yield (k, v)
 
 
 converter toBool*(self: State[bool]): bool =

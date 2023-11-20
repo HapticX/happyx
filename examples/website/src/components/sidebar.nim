@@ -46,11 +46,16 @@ var
     "spa_basics": {
       "title": "Single-page Applications Basics 🎴",
       "prev": "route_decorators",
+      "next": "reactivity"
+    },
+    "reactivity": {
+      "title": "Reactivity ⚡",
+      "prev": "spa_basics",
       "next": "ssr_basics"
     },
     "ssr_basics": {
       "title": "Server-side Applications Basics 🖥",
-      "prev": "spa_basics",
+      "prev": "reactivity",
       "next": ""
     }
   }
@@ -130,6 +135,8 @@ component SideBar:
             component SideBarFolder("spa_basics", "Single-page Applications 🎴"):
               component SideBarItem("spa_basics"):
                 {translate("Single-page Applications Basics 🎴")}
+              component SideBarItem("reactivity"):
+                {translate("Reactivity ⚡")}
 
             component SideBarFolder("ssr_basics", "Server-side Applications 🖥"):
               component SideBarItem("ssr_basics"):

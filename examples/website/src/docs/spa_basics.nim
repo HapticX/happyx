@@ -46,3 +46,5 @@ component SpaBasics:
 
       tP: {translate"And here is reactivity with components usage:"}
       component CodeBlock("nim", nimSpaComponentReactivity, "nim_spa_component_reactivity")
+
+      tP: {translate"Reactivity is described in more detail in the following article."}

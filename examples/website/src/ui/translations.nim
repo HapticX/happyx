@@ -405,7 +405,7 @@ translatable:
     "ko" -> "기능 🔥"
     "fr" -> "Caractéristiques 🔥"
   "Production-ready 🔌":
-    "ru" -> "Готово к производству 🔌"
+    "ru" -> "Готово к использованию 🔌"
     "ja" -> "本番運用対応 🔌"
     "zh" -> "生产就绪 🔌"
     "fr" -> "Prêt pour la production 🔌"
@@ -453,7 +453,7 @@ translatable:
     "ko" -> "이 응용 프로그램은 사용자 정의 모델,사용자 정의 모델,사용자 정의 모델,사용자 정의 모델 및 사용자 정의 모델을 지원합니다.👮‍♀️"
     "fr" -> "Modèles de requête prenant en charge JSON, FormData, x-www-form-urlencoded et XML ️ ️👮‍♀️ "
   "Translating, logging, security, built-in UI and more other features \"out of the box\" 📦":
-    "ru" -> "Перевод, ведение журнала, безопасность, встроенный пользовательский интерфейс и множество других функций \"из коробки\" 📦"
+    "ru" -> "Перевод, журналирование, безопасность, встроенный пользовательский интерфейс и множество других функций \"из коробки\" 📦"
     "ja" -> "翻訳、ロギング、セキュリティ、組み込みのUIとより多くの他の機能\"箱から出して\"📦"
     "zh" -> "翻译，日志记录，安全，内置UI和更多其他功能\"开箱即用\"📦"
     "ko" -> "번역,로깅,보안,내장 된 사용자 인터페이스 및 기타 기타 기능\"상자 밖으로\"."
@@ -1220,6 +1220,84 @@ translatable:
     "zh" -> "这里是使用组件的响应性："
     "fr" -> "Et voici la réactivité avec l'utilisation de composants :"
     "ko" -> "여기에는 구성 요소 사용을 통한 반응성이 있습니다:"
+  "Reactivity ⚡":
+    "ru" -> "Реактивность ⚡"
+    "ja" -> "リアクティビティ ⚡"
+    "zh" -> "响应性 ⚡"
+    "fr" -> "Réactivité ⚡"
+    "ko" -> "반응성 ⚡"
+  "Let's open the topic of HappyX reactivity in more detail":
+    "ru" -> "Давайте более подробно рассмотрим тему реактивности в HappyX"
+    "ja" -> "HappyXのリアクティビティのトピックを詳しく見てみましょう"
+    "zh" -> "让我们更详细地了解HappyX响应性的主题"
+    "fr" -> "Ouvrons le sujet de la réactivité dans HappyX de manière plus détaillée"
+    "ko" -> "HappyX의 반응성 주제를 좀 더 자세히 살펴보겠습니다"
+  "Reactivity is described in more detail in the following article.":
+    "ru" -> "Реактивность подробно описана в следующей статье."
+    "ja" -> "リアクティビティについては、以下の記事で詳しく説明されています。"
+    "zh" -> "有关详细信息，请参阅以下文章中的响应性描述。"
+    "fr" -> "La réactivité est décrite plus en détail dans l'article suivant."
+    "ko" -> "반응성에 대한 자세한 내용은 다음 기사에서 설명되어 있습니다."
+  "To begin with, reactivity can be used both in components and outside of components.":
+    "ru" -> "Прежде всего, реактивность можно использовать как в компонентах, так и вне компонентов."
+    "ja" -> "まず第一に、リアクティビティはコンポーネント内およびコンポーネント外の両方で使用できます。"
+    "zh" -> "首先，响应性既可以在组件中使用，也可以在组件外使用。"
+    "fr" -> "Pour commencer, la réactivité peut être utilisée à la fois dans les composants et à l'extérieur des composants."
+    "ko" -> "우선, 반응성은 컴포넌트 내 및 컴포넌트 외에서 모두 사용할 수 있습니다."
+  "This example shows how to interact with reactive variables in the routes of the SPA application.":
+    "ru" -> "В этом примере показано, как взаимодействовать с реактивными переменными в маршрутах SPA-приложения."
+    "ja" -> "この例では、SPAアプリケーションのルートでリアクティブ変数とやり取りする方法が示されています。"
+    "zh" -> "此示例演示了如何在SPA应用程序的路由中与响应式变量进行交互。"
+    "fr" -> "Cet exemple montre comment interagir avec des variables réactives dans les routes de l'application SPA."
+    "ko" -> "이 예제에서는 SPA 애플리케이션의 라우트에서 반응형 변수와 상호 작용하는 방법을 보여줍니다."
+  "As you can see in the above code example, a special syntax is used to call the ":
+    "ru" -> "Как вы можете видеть в приведенном выше примере кода, используется специальный синтаксис для вызова "
+    "ja" -> "上記のコード例でわかるように、特殊な構文が使用されています。"
+    "zh" -> "正如您在上面的代码示例中所看到的，调用函数时使用了特殊的语法。"
+    "fr" -> "Comme vous pouvez le voir dans l'exemple de code ci-dessus, une syntaxe spéciale est utilisée pour appeler la fonction "
+    "ko" -> "위의 코드 예제에서 볼 수 있듯이 특수한 구문이 사용되어 함수를 호출합니다. "
+  " function. This is necessary to simplify access to the value of the reactive variable.":
+    "ru" -> " функции. Это необходимо для упрощения доступа к значению реактивной переменной."
+    "ja" -> "関数の値へのアクセスを簡略化するためにこれが必要です。"
+    "zh" -> "。这是为了简化对响应式变量值的访问。"
+    "fr" -> " fonction. Cela est nécessaire pour simplifier l'accès à la valeur de la variable réactive."
+    "ko" -> " 함수의 값을 간단하게 접근하기 위해서는 이것이 필요합니다."
+  "In the example above, the ":
+    "ru" -> "В приведенном выше примере функция "
+    "ja" -> "上記の例では、"
+    "zh" -> "在上面的例子中，调用了函数 "
+    "fr" -> "Dans l'exemple ci-dessus, la fonction "
+    "ko" -> "위의 예에서는 함수 "
+  " function is called without special syntax, since frequently used functions are implemented in reactive variables, such as ":
+    "ru" -> " вызывается без специального синтаксиса, поскольку часто используемые функции реализованы в реактивных переменных, такие как "
+    "ja" -> "特殊な構文なしに呼び出されます。"
+    "zh" -> "函数没有使用特殊的语法，因为经常使用的函数已经在响应式变量中实现，比如 "
+    "fr" -> " est appelée sans syntaxe spéciale, car les fonctions fréquemment utilisées sont implémentées dans des variables réactives, telles que "
+    "ko" -> " 특수한 구문 없이 호출됩니다. 자주 사용되는 함수는 이미 반응형 변수에 구현되어 있습니다. 예를 들어 "
+  "Let's look at an example of working with sequences.":
+    "ru" -> "Давайте рассмотрим пример работы с последовательностями."
+    "ja" -> "シーケンスを使用した作業の例を見てみましょう。"
+    "zh" -> "让我们看一个使用序列的例子。"
+    "fr" -> "Jetons un coup d'œil à un exemple de travail avec des séquences."
+    "ko" -> "시퀀스를 사용한 작업의 예제를 살펴보겠습니다."
+  "It is also worth noting that reactive variables are created using the remember function.":
+    "ru" -> "Также стоит отметить, что реактивные переменные создаются с использованием функции remember."
+    "ja" -> "また、リアクティブ変数はremember関数を使用して作成されることに注意してください。"
+    "zh" -> "值得注意的是，可以使用remember函数创建响应式变量。"
+    "fr" -> "Il est également important de noter que les variables réactives sont créées à l'aide de la fonction remember."
+    "ko" -> "또한 반응형 변수는 remember 함수를 사용하여 생성됩니다."
+  "The example below shows all the other examples of creating reactive variables.":
+    "ru" -> "В приведенном ниже примере показаны все другие примеры создания реактивных переменных."
+    "ja" -> "以下の例では、他のすべてのリアクティブ変数の作成例が示されています。"
+    "zh" -> "下面的示例显示了创建响应式变量的所有其他示例。"
+    "fr" -> "L'exemple ci-dessous montre tous les autres exemples de création de variables réactives."
+    "ko" -> "아래 예제에서는 반응형 변수를 만드는 다른 모든 예제가 나와 있습니다."
+  "Speaking of built-in frequently used functions, it is worth noting that they can be used together with ordinary values. Let's look at the following example.":
+    "ru" -> "Говоря о встроенных часто используемых функциях, стоит отметить, что их можно использовать вместе с обычными значениями. Давайте рассмотрим следующий пример."
+    "ja" -> "組み込みのよく使われる関数について言及すると、普通の値と一緒に使用することができることに注意する価値があります。以下の例を見てみましょう。"
+    "zh" -> "说到内置的常用函数，值得注意的是它们可以与普通值一起使用。让我们看看下面的例子。"
+    "fr" -> "En parlant des fonctions intégrées fréquemment utilisées, il est important de noter qu'elles peuvent être utilisées avec des valeurs ordinaires. Jetons un coup d'œil à l'exemple suivant."
+    "ko" -> "내장된 자주 사용되는 함수에 대해 언급할 때 주목할 점은 이러한 함수들이 일반 값과 함께 사용될 수 있다는 것입니다. 다음 예제를 살펴보겠습니다."
 
 
 var spokenLang: cstring
