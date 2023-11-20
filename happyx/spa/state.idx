@@ -86,7 +86,14 @@ get	happyx/spa/state.html#get,State[T]	state: get[T](self: State[T]): T
 len	happyx/spa/state.html#len,State[T]	state: len[T](self: State[T]): int	
 set	happyx/spa/state.html#set,State[T],T	state: set[T](self: State[T]; value: T)	
 `[]`	happyx/spa/state.html#[],State[openArray[T]],int	state: `[]`[T](self: State[openArray[T]]; idx: int): T	
+`[]`	happyx/spa/state.html#[],State[TableRef[T,U]],T	state: `[]`[T, U](self: State[TableRef[T, U]]; idx: T): U	
+`[]`	happyx/spa/state.html#[],State[StringTableRef],string	state: `[]`(self: State[StringTableRef]; idx: string): string	
+`[]=`	happyx/spa/state.html#[]=,State[seq[T]],int,T	state: `[]=`[T](self: State[seq[T]]; idx: int; value: T)	
+`[]=`	happyx/spa/state.html#[]=,State[array[T,U]],int,T	state: `[]=`[T, U](self: State[array[T, U]]; idx: int; value: T)	
+`[]=`	happyx/spa/state.html#[]=,State[TableRef[T,U]],T,U	state: `[]=`[T, U](self: State[TableRef[T, U]]; idx: T; value: U)	
+`[]=`	happyx/spa/state.html#[]=,State[StringTableRef],string,string	state: `[]=`(self: State[StringTableRef]; idx: string; value: string)	
 items	happyx/spa/state.html#items.i,State[openArray[T]]	state: items[T](self: State[openArray[T]]): T	
+pairs	happyx/spa/state.html#pairs.i,State[TableRef[T,U]]	state: pairs[T, U](self: State[TableRef[T, U]]): (T, U)	
 toBool	happyx/spa/state.html#toBool.c,State[bool]	state: toBool(self: State[bool]): bool	
 toString	happyx/spa/state.html#toString.c,State[string]	state: toString(self: State[string]): string	
 toCString	happyx/spa/state.html#toCString.c,State[cstring]	state: toCString(self: State[cstring]): cstring	
