@@ -43,6 +43,17 @@ proc bracket*(node: varargs[NimNode]): NimNode =
     result.add(i)
 
 
+proc bracket*(node: seq[NimNode] | seq[string]): NimNode =
+  when node is seq[NimNode]:
+    result = newNimNode(nnkBracket)
+    for i in node:
+      result.add(i)
+  else:
+    result = newNimNode(nnkBracket)
+    for i in node:
+      result.add(newLit(i))
+
+
 proc pragmaBlock*(pragmas: openArray[NimNode], statementList: NimNode): NimNode =
   result = newNimNode(nnkPragmaBlock).add(
     newNimNode(nnkPragma),

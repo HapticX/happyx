@@ -1,22 +1,24 @@
 ## # Constants ✨
 ## > Provides HappyX constants
 ## 
-## | Flag                 | Description                                                | Need Value |
-## | :---:                | :---:                                                      | :--:       |
-## | `-d:httpx`           | enables Httpx as alternative HTTP Server ⚡                | ❌         |
-## | `-d:beast`           | enables HttpBeast as alternative HTTP Server ⚡            | ❌         |
-## | `-d:micro`           | enables MicroAsyncHttpServer as alternative HTTP Server ⚡ | ❌         |
-## | `-d:translate`       | enables automatic translate for returns 🌐                  | ❌         |
-## | `-d:debug`           | enables debug logging 💻                                   | ❌         |
-## | `-d:oldRenderer`     | enables old renderer for SPA 🍍                            | ❌         |
-## | `-d:enableUi`        | enables built-in UI components 🎴                          |  ❌        |
-## | `-d:cryptoMethod`    | choose crypto method for `generate_password` methods 🔐    | ✅         |
-## | `-d:numThreads`      | choose number of threads (httpx/httpbeast) ⌛              |  ✅        |
-## | `-d:sessionIdLength` | choose length of session ID ✍                             |  ✅        |
-## | `-d:disableApiDoc`   | disables built-in API documentation 📕                     | ❌         |
-## | `-d:disableORM`      | disables built-in ORM 📑                                   | ❌         |
-## | `-d:appName`         | choose name of application (SSR/SSG) 📕                    | ✅         |
-## | `-d:apiDocsPath`     | choose path for API documentation 📕                       |  ✅        |
+## | Flag                 | Description                                                   | Need Value |
+## | :---:                | :---:                                                         | :--:       |
+## | `-d:httpx`           | enables Httpx as alternative HTTP Server ⚡                   | ❌         |
+## | `-d:beast`           | enables HttpBeast as alternative HTTP Server ⚡               | ❌         |
+## | `-d:micro`           | enables MicroAsyncHttpServer as alternative HTTP Server ⚡    | ❌         |
+## | `-d:translate`       | enables automatic translate for returns 🌐                     | ❌         |
+## | `-d:debug`           | enables debug logging 💻                                      | ❌         |
+## | `-d:oldRenderer`     | enables old renderer for SPA 🍍                               | ❌         |
+## | `-d:enableUi`        | enables built-in UI components 🎴                             |  ❌        |
+## | `-d:cryptoMethod`    | choose crypto method for `generate_password` methods 🔐       | ✅         |
+## | `-d:numThreads`      | choose number of threads (httpx/httpbeast) ⌛                 |  ✅        |
+## | `-d:sessionIdLength` | choose length of session ID ✍                                |  ✅        |
+## | `-d:disableApiDoc`   | disables built-in API documentation 📕                        | ❌         |
+## | `-d:disableORM`      | disables built-in ORM 📑                                      | ❌         |
+## | `-d:appName`         | choose name of application (SSR/SSG) 📕                       | ✅         |
+## | `-d:apiDocsPath`     | choose path for API documentation 📕                          |  ✅        |
+## | `-d:noliveviews`     | Disables LiveViews at SSR/SSG (It helpful for components) 📕  |  ❌        |
+## | `-d:safeRequests`    | Enables requests safety (On error returns 500 with err msg) 📕|  ❌        |
 ## 
 ## ## Dev Consts 👨‍💻
 ## 
@@ -41,6 +43,10 @@ const
   enableHttpx* = defined(httpx) or defined(happyxHttpx) or defined(hpxHttpx)
   enableMicro* = defined(micro) or defined(happyxMicro) or defined(hpxMicro)
   enableHttpBeast* = defined(beast) or defined(happyxBeast) or defined(hpxBeast)
+  # LiveViews
+  enableLiveViews* = not (defined(noLiveviews) or defined(hpxNoLiveviews) or defined(happyxNoLiveviews))
+  # Safe Requests
+  enableSafeRequests* = defined(safeRequests) or defined(hpxSafeRequests) or defined(happyxSafeRequests)
   # Auto translation in routing
   enableAutoTranslate* = defined(translate) or defined(happyxTranslate) or defined(hpxTranslate)
   # Debug mode
@@ -51,7 +57,6 @@ const
   enableUseCompDebugMacro* = defined(useCompDebug) or defined(happyxUseCompDebug) or defined(hpxUseCompDebug)
   enableRequestModelDebugMacro* = defined(reqModelDebug) or defined(happyxReqModelDebug) or defined(hpxReqModelDebug)
   enableRoutingDebugMacro* = defined(routingDebug) or defined(happyxRoutingDebug) or defined(hpxRoutingDebug)
-  enableLiveViews* = not (defined(noLiveviews) or defined(hpxNoLiveviews) or defined(happyxNoLiveviews))
   componentDebugTarget* {.strdefine.} = ""
   reqModelDebugTarget* {.strdefine.} = ""
   # Language bindings
@@ -91,7 +96,7 @@ const
   nim_2_0_0* = (NimMajor, NimMinor, NimPatch) >= (2, 0, 0)
   # Framework version
   HpxMajor* = 3
-  HpxMinor* = 3
+  HpxMinor* = 4
   HpxPatch* = 0
   HpxVersion* = $HpxMajor & "." & $HpxMinor & "." & $HpxPatch
 

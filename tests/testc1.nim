@@ -37,6 +37,9 @@ serve("127.0.0.1", 5000):
   post "/user":
     inc userId
     return {"response": {"id": %userId}}
+  
+  get "/issue180":
+    raise newException(ValueError, "Oops!")
 
   notfound:
     "Oops! Not found!"
@@ -47,4 +50,10 @@ serve("127.0.0.1", 5000):
   
   staticDir "testdir"
   staticDir "components"
+  # Path -> directory
   staticDir "/public" -> "testdir"
+  # path -> directory ~ extensions
+  # On this path user can see only HTML, JS and CSS files
+  staticDir "/pubdir" -> "testdir" ~ "html,js,css"
+  # Path ~ extensions
+  staticDir "/templates" ~ "html,js,css"

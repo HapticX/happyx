@@ -278,6 +278,7 @@
 ## 
 ## - [routing](happyx/routing/routing.html) provides powerful routing and `pathParams` macro.
 ## - [mounting](happyx/routing/mounting.html) provides powerful mounting.
+## - [decorators](happyx/routing/decorators.html) provides powerful decorators.
 ## 
 ## ### Syntax Sugar ✨
 ## 

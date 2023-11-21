@@ -352,7 +352,7 @@ macro `.`*(obj: JsonNode, field: untyped): JsonNode =
 
 template answer*(
     req: Request,
-    message: string,
+    message: string | int | float | bool | char,
     code: HttpCode = Http200,
     headers: HttpHeaders = newHttpHeaders([
       ("Content-Type", "text/plain; charset=utf-8")
@@ -388,11 +388,11 @@ template answer*(
         headersArr.add(cookie)
     when declared(statusCode):
       when statusCode is int:
-        req.send(statusCode.HttpCode, message, headersArr.join("\r\n"))
+        req.send(statusCode.HttpCode, $message, headersArr.join("\r\n"))
       else:
-        req.send(code, message, headersArr.join("\r\n"))
+        req.send(code, $message, headersArr.join("\r\n"))
     else:
-      req.send(code, message, headersArr.join("\r\n"))
+      req.send(code, $message, headersArr.join("\r\n"))
   else:
     when declared(outCookies):
       for cookie in outCookies:
@@ -400,11 +400,11 @@ template answer*(
         h.add("Set-Cookie", data[1].strip())
     when declared(statusCode):
       when statusCode is int:
-        await req.respond(statusCode.HttpCode, message, h)
+        await req.respond(statusCode.HttpCode, $message, h)
       else:
-        await req.respond(code, message, h)
+        await req.respond(code, $message, h)
     else:
-      await req.respond(code, message, h)
+      await req.respond(code, $message, h)
 
 
 when enableHttpBeast:
@@ -638,7 +638,19 @@ macro routes*(server: Server, body: untyped = newStmtList()): untyped =
     procStmt = newProc(
       ident"handleRequest",
       [newEmptyNode(), newIdentDefs(ident"req", ident"Request")],
-      stmtList
+      when enableSafeRequests:
+        newNimNode(nnkTryStmt).add(
+          stmtList,
+          newNimNode(nnkExceptBranch).add(
+            newCall(
+              ident"answer", ident"req",
+              newCall("fmt", newLit"Internal Server Error: {getCurrentExceptionMsg()}"),
+              ident"Http500"
+            )
+          )
+        )
+      else:
+        stmtList,
     )
     caseRequestMethodsStmt = newNimNode(nnkCaseStmt)
     methodTable = newTable[string, NimNode]()
@@ -916,6 +928,121 @@ socketToSsr.onmessage=function(m){
         for route in nextRouteDecorators:
           decorators[route](@[$statement[0]], $statement[1], statement[2])
         if name == "STATICDIR":
+          # Just path
+          var
+            staticPath = ""
+            directory = ""
+            extensions: seq[string] = @[]
+          
+          # staticDir "/directory"
+          if statement[1].kind in [nnkStrLit, nnkTripleStrLit]:
+            staticPath = $statement[1]
+            directory = $statement[1]
+            ifStmt.insert(
+              0, newNimNode(nnkElifBranch).add(
+                newCall(
+                  "and",
+                  newCall(
+                    "or",
+                    newCall("startsWith", pathIdent, statement[1]),
+                    newCall("startsWith", pathIdent, newStrLitNode("/" & $statement[1])),
+                  ), newCall(
+                    "fileExists",
+                    directoryFromPath
+                  )
+                ),
+                newStmtList(
+                  newCall("await", newCall("answerFile", ident"req", directoryFromPath))
+                )
+              )
+            )
+          # staticDir "/path" -> "directory" ~ "js,html"
+          elif statement[1].kind == nnkInfix and statement[1][0] == ident"->" and statement[1][2].kind == nnkInfix and statement[1][2][0] == ident"~":
+            staticPath = $statement[1][1]
+            directory = $statement[1][2][1]
+            extensions = ($statement[1][2][2]).split(",")
+          # staticDir "/directory" ~ "js,html"
+          elif statement[1].kind == nnkInfix and statement[1][0] == ident"~":
+            staticPath = $statement[1][1]
+            directory = $statement[1][1]
+            extensions = ($statement[1][2]).split(",")
+          # staticDir "/directory" -> "js,html"
+          elif statement[1].kind == nnkInfix and statement[1][0] == ident"->":
+            staticPath = $statement[1][1]
+            directory = $statement[1][2]
+
+          if directory == staticPath:
+            let answerStatic =
+              if extensions.len > 0:
+                newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
+                  newCall(
+                    "contains",
+                    bracket(extensions),
+                    newCall("[]", newCall("split", directoryFromPath, newLit"."), newCall("^", newLit(1)))
+                  ), newStmtList(
+                    newCall("await", newCall("answerFile", ident"req", directoryFromPath))
+                  )
+                ), newNimNode(nnkElse).add(
+                  newCall(ident"answer", ident"req", newLit"Not found", ident"Http404")
+                ))
+              else:
+                newCall("await", newCall("answerFile", ident"req", directoryFromPath))
+            ifStmt.insert(
+              0, newNimNode(nnkElifBranch).add(
+                newCall(
+                  "and",
+                  newCall(
+                    "or",
+                    newCall("startsWith", pathIdent, newLit(staticPath)),
+                    newCall("startsWith", pathIdent, newStrLitNode("/" & $staticPath)),
+                  ), newCall(
+                    "fileExists",
+                    directoryFromPath
+                  )
+                ),
+                answerStatic
+              )
+            )
+          else:
+            let
+              route = if staticPath == "/": newStrLitNode("") else: newLit(staticPath)
+              path = if $staticPath == "/": newStrLitNode(directory & "/") else: newLit(directory)
+            let dirFromPath = newCall(
+              "&",
+              newCall("&", newStrLitNode("."), newLit("/")),
+              newCall(
+                "replace",
+                newCall("replace", pathIdent, newLit(staticPath), path),
+                newLit('/'), ident"DirSep"
+              )
+            )
+            let answerStatic =
+              if extensions.len > 0:
+                newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
+                  newCall(
+                    "contains",
+                    bracket(extensions),
+                    newCall("[]", newCall("split", dirFromPath, newLit"."), newCall("^", newLit(1)))
+                  ), newStmtList(
+                    newCall("await", newCall("answerFile", ident"req", dirFromPath))
+                  )
+                ), newNimNode(nnkElse).add(
+                  newCall(ident"answer", ident"req", newLit"Not found", ident"Http404")
+                ))
+              else:
+                newCall("await", newCall("answerFile", ident"req", dirFromPath))
+            ifStmt.insert(
+              0, newNimNode(nnkElifBranch).add(
+                newCall(
+                  "and",
+                  newCall("startsWith", pathIdent, route),
+                  newCall("fileExists", dirFromPath)
+                ),
+                answerStatic
+              )
+            )
+          continue
+          
           if statement[1].kind in [nnkStrLit, nnkTripleStrLit]:
             ifStmt.insert(
               0, newNimNode(nnkElifBranch).add(
@@ -935,7 +1062,34 @@ socketToSsr.onmessage=function(m){
                 )
               )
             )
+          elif statement[1].kind == nnkInfix and statement[1][^1].kind == nnkInfix and statement[1][0] == ident"->" and statement[1][^1][0] == ident"~":
+            # Path -> directory ~ extensions
+            let
+              route = if $statement[1][1] == "/": newStrLitNode("") else: statement[1][1]
+              path = if $statement[1][1] == "/": newStrLitNode($statement[1][2] & "/") else: statement[1][2]
+            let dirFromPath = newCall(
+              "&",
+              newCall("&", newStrLitNode("."), newLit("/")),
+              newCall(
+                "replace",
+                newCall("replace", pathIdent, statement[1][1], path),
+                newLit('/'), ident"DirSep"
+              )
+            )
+            ifStmt.insert(
+              0, newNimNode(nnkElifBranch).add(
+                newCall(
+                  "and",
+                  newCall("startsWith", pathIdent, route),
+                  newCall("fileExists", dirFromPath)
+                ),
+                newStmtList(
+                  newCall("await", newCall("answerFile", ident"req", dirFromPath))
+                )
+              )
+            )
           else:
+            # Path -> directory
             let
               route = if $statement[1][1] == "/": newStrLitNode("") else: statement[1][1]
               path = if $statement[1][1] == "/": newStrLitNode($statement[1][2] & "/") else: statement[1][2]
@@ -1212,12 +1366,12 @@ socketToSsr.onmessage=function(m){
             "warn",
             newCall(
               "fgColored", 
-              newCall("fmt", newStrLitNode("{urlPath} is not found.")), ident"fgYellow"
+              newCall("fmt", newLit("{urlPath} is not found.")), ident"fgYellow"
             )
           )
         )
       elseStmtList.add(
-        newCall(ident"answer", ident"req", newStrLitNode("Not found"), ident"Http404")
+        newCall(ident"answer", ident"req", newLit"Not found", ident"Http404")
       )
     else:
       ifStmt.add(newNimNode(nnkElse).add(notFoundNode))
@@ -1233,7 +1387,7 @@ socketToSsr.onmessage=function(m){
       #     )
       #   ))
       stmtList.add(
-        newCall(ident"answer", ident"req", newStrLitNode("Not found"), ident"Http404")
+        newCall(ident"answer", ident"req", newLit"Not found", ident"Http404")
       )
     else:
       stmtList.add(notFoundNode)
