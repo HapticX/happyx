@@ -381,8 +381,10 @@ window.addEventListener('DOMContentLoaded', main);
           </ul></dd>
 <dt><a name="answer" href="#answer"><span>answer:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="server: answer(req: Request; message: string; code: HttpCode = Http200; headers: HttpHeaders = newHttpHeaders(
-    [(&quot;Content-Type&quot;, &quot;text/plain; charset=utf-8&quot;)]))" href="happyx/ssr/server.html#answer.t%2CRequest%2Cstring%2CHttpCode%2CHttpHeaders">server: answer(req: Request; message: string; code: HttpCode = Http200; headers: HttpHeaders = newHttpHeaders(
+          data-doc-search-tag="server: answer(req: Request; message: string | int | float | bool | char;
+       code: HttpCode = Http200; headers: HttpHeaders = newHttpHeaders(
+    [(&quot;Content-Type&quot;, &quot;text/plain; charset=utf-8&quot;)]))" href="happyx/ssr/server.html#answer.t%2CRequest%2C%2CHttpCode%2CHttpHeaders">server: answer(req: Request; message: string | int | float | bool | char;
+       code: HttpCode = Http200; headers: HttpHeaders = newHttpHeaders(
     [(&quot;Content-Type&quot;, &quot;text/plain; charset=utf-8&quot;)]))</a></li>
           </ul></dd>
 <dt><a name="answerFile" href="#answerFile"><span>answerFile:</span></a></dt><dd><ul class="simple">
@@ -467,6 +469,8 @@ window.addEventListener('DOMContentLoaded', main);
           </ul></dd>
 <dt><a name="bracket" href="#bracket"><span>bracket:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
+          data-doc-search-tag="macro_utils: bracket(node: seq[NimNode] | seq[string]): NimNode" href="happyx/private/macro_utils.html#bracket">macro_utils: bracket(node: seq[NimNode] | seq[string]): NimNode</a></li>
+          <li><a class="reference external"
           data-doc-search-tag="macro_utils: bracket(node: varargs[NimNode]): NimNode" href="happyx/private/macro_utils.html#bracket%2Cvarargs%5BNimNode%5D">macro_utils: bracket(node: varargs[NimNode]): NimNode</a></li>
           </ul></dd>
 <dt><a name="buildComponentHtml" href="#buildComponentHtml"><span>buildComponentHtml:</span></a></dt><dd><ul class="simple">
@@ -700,6 +704,10 @@ window.addEventListener('DOMContentLoaded', main);
 <dt><a name="enableRoutingDebugMacro" href="#enableRoutingDebugMacro"><span>enableRoutingDebugMacro:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="constants: enableRoutingDebugMacro" href="happyx/core/constants.html#enableRoutingDebugMacro">constants: enableRoutingDebugMacro</a></li>
+          </ul></dd>
+<dt><a name="enableSafeRequests" href="#enableSafeRequests"><span>enableSafeRequests:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="constants: enableSafeRequests" href="happyx/core/constants.html#enableSafeRequests">constants: enableSafeRequests</a></li>
           </ul></dd>
 <dt><a name="enableUi" href="#enableUi"><span>enableUi:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -1738,7 +1746,7 @@ window.addEventListener('DOMContentLoaded', main);
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-11-20 16:49:22 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-11-21 10:06:35 UTC</small>
       </div>
     </div>
   </div>

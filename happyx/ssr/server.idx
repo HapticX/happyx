@@ -9,7 +9,7 @@ fgColored	happyx/ssr/server.html#fgColored,string,ForegroundColor	server: fgColo
 newServer	happyx/ssr/server.html#newServer,string,int	server: newServer(address: string = &quot;127.0.0.1&quot;; port: int = 5000): Server	
 start	happyx/ssr/server.html#start.t,Server	server: start(server: Server): untyped	
 `.`	happyx/ssr/server.html#..m,JsonNode,untyped	server: `.`(obj: JsonNode; field: untyped): JsonNode	
-answer	happyx/ssr/server.html#answer.t,Request,string,HttpCode,HttpHeaders	server: answer(req: Request; message: string; code: HttpCode = Http200; headers: HttpHeaders = newHttpHeaders(\n    [(&quot;Content-Type&quot;, &quot;text/plain; charset=utf-8&quot;)]))	
+answer	happyx/ssr/server.html#answer.t,Request,,HttpCode,HttpHeaders	server: answer(req: Request; message: string | int | float | bool | char;\n       code: HttpCode = Http200; headers: HttpHeaders = newHttpHeaders(\n    [(&quot;Content-Type&quot;, &quot;text/plain; charset=utf-8&quot;)]))	
 answerJson	happyx/ssr/server.html#answerJson.t,Request,untyped,HttpCode,HttpHeaders	server: answerJson(req: Request; data: untyped; code: HttpCode = Http200; headers: HttpHeaders = newHttpHeaders(\n    [(&quot;Content-Type&quot;, &quot;application/json; charset=utf-8&quot;)])): untyped	
 answerHtml	happyx/ssr/server.html#answerHtml.t,Request,,HttpCode,HttpHeaders	server: answerHtml(req: Request; data: string | TagRef; code: HttpCode = Http200;\n    headers: HttpHeaders = newHttpHeaders(\n    [(&quot;Content-Type&quot;, &quot;text/html; charset=utf-8&quot;)])): untyped	
 answerFile	happyx/ssr/server.html#answerFile,Request,string,HttpCode	server: answerFile(req: Request; filename: string; code: HttpCode = Http200;\n           asAttachment = false): owned(Future[void])	

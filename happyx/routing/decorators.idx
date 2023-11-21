@@ -2,3 +2,5 @@ DecoratorImpl	happyx/routing/decorators.html#DecoratorImpl	decorators: Decorator
 decorators	happyx/routing/decorators.html#decorators	decorators: decorators	
 regDecorator	happyx/routing/decorators.html#regDecorator,string,DecoratorImpl	decorators: regDecorator(decoratorName: string; decorator: DecoratorImpl)	
 Decorators 🔌	happyx/routing/decorators.html#decorators-🔌	 Decorators 🔌	
+Decorator Usage Example ✨	happyx/routing/decorators.html#decorators-🔌-decorator-usage-example-✨	  Decorator Usage Example ✨	
+Own decorators	happyx/routing/decorators.html#decorators-🔌-own-decorators	  Own decorators	

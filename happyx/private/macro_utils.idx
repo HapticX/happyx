@@ -4,6 +4,7 @@ discardStmt	happyx/private/macro_utils.html#discardStmt	macro_utils: discardStmt
 hasKey	happyx/private/macro_utils.html#hasKey,CacheTable,string	macro_utils: hasKey(self: CacheTable; key: string): bool	
 contains	happyx/private/macro_utils.html#contains,CacheTable,string	macro_utils: contains(self: CacheTable; key: string): bool	
 bracket	happyx/private/macro_utils.html#bracket,varargs[NimNode]	macro_utils: bracket(node: varargs[NimNode]): NimNode	
+bracket	happyx/private/macro_utils.html#bracket	macro_utils: bracket(node: seq[NimNode] | seq[string]): NimNode	
 pragmaBlock	happyx/private/macro_utils.html#pragmaBlock,openArray[NimNode],NimNode	macro_utils: pragmaBlock(pragmas: openArray[NimNode]; statementList: NimNode): NimNode	
 getTagName	happyx/private/macro_utils.html#getTagName,string	macro_utils: getTagName(name: string): string	
 formatNode	happyx/private/macro_utils.html#formatNode,NimNode	macro_utils: formatNode(node: NimNode): NimNode	
