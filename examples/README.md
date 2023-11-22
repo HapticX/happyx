@@ -24,6 +24,8 @@
 
 [`source code`](https://github.com/HapticX/happyx/tree/master/examples/chat_app)
 
+![Chat app](https://github.com/HapticX/happyx/blob/master/examples/chat_app/chat_app.gif)
+
 ## Official HappyX website
 
 > This website is SPA and made with HappyX
