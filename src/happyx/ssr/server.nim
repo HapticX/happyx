@@ -1420,7 +1420,7 @@ socketToSsr.onmessage=function(m){
     immutableVars.add(newIdentDefs(ident"query", newEmptyNode(), newCall("parseQuery", ident"queryFromUrl")))
     when not exportPython and not defined(napibuild):
       immutableVars.add(newIdentDefs(ident"queryArr", newEmptyNode(), newCall("parseQueryArrays", ident"queryFromUrl")))
-  if stmtList.isIdentUsed(ident"translate"):
+  if stmtList.isIdentUsed(ident"translate") or stmtList.isIdentUsed(ident"acceptLanguage"):
     immutableVars.add(newIdentDefs(ident"acceptLanguage", newEmptyNode(), acceptLanguage))
   when defined(napibuild):
     immutableVars.add(newIdentDefs(ident"inCookies", newEmptyNode(), cookiesInVar))
