@@ -310,6 +310,7 @@ proc replaceIter*(
 
 proc attribute*(attr: NimNode, inComponent: bool = false): NimNode =
   ## Converts `nnkExprEqExpr` to `nnkColonExpr`
+  echo treeRepr attr
   if attr.kind in AtomicNodes:
     newColonExpr(newLit("_"), formatNode(attr))
   else:
@@ -532,7 +533,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
             )
         whenStmt[1].add(builded)
       # tag(attr="value")
-      elif statementList.kind != nnkStmtList:
+      elif statementList.kind != nnkStmtList and statement[0] != ident"@":
         for attr in statement[1 .. statement.len-1]:
           attrs.add(attribute(attr, inComponent))
         if attrs.len > 0:
@@ -545,7 +546,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
         whenStmt[1].add(buildHtmlProcedure(tagName, statementList, inComponent, componentName, inCycle, cycleTmpVar, compTmpVar, cycleVars))
       
       # Component detect
-      if statement[0].kind in {nnkIdent, nnkDotExpr, nnkBracketExpr}:
+      if statement[0].kind in {nnkIdent, nnkDotExpr, nnkBracketExpr} and statement[0] notin [ident"@", ident":="] and statement[^1].kind == nnkStmtList:
         let componentData = "data_" & $compName.toStrLit
         whenStmt[0].add(
           newNimNode(nnkWhenStmt).add(
@@ -556,10 +557,15 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
                 newCall("is", statement[0], ident"TagRef")
               ), newStmtList(
                 newVarStmt(ident"_anonymousTag", newCall("tag", statement[0])),
-                newCall(
-                  "add", ident"_anonymousTag",
-                  buildHtmlProcedure(tagName, statement[^1], inComponent, componentName, inCycle, cycleTmpVar, compTmpVar, cycleVars)
-                ),
+                # TODO: Fix
+                # newLetStmt(
+                #   ident"tags", 
+                #   buildHtmlProcedure(tagName, statement[^1], inComponent, componentName, inCycle, cycleTmpVar, compTmpVar, cycleVars)
+                # ),
+                # newNimNode(nnkForStmt).add(
+                #   ident"i", ident"tags",
+                #   newCall("add", ident"_anonymousTag", ident"i")
+                # ),
                 ident"_anonymousTag"
               )
             ),
@@ -833,7 +839,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
           ))
       inc uniqueId
     
-    elif statement.kind in {nnkIdent, nnkBracketExpr, nnkDotExpr}:
+    elif statement.kind in {nnkIdent, nnkBracketExpr, nnkDotExpr} and statement notin [ident"@", ident":="]:
       let
         compName = statement
         compStatement = newNimNode(nnkCommand).add(ident"component", statement)
