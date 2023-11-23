@@ -129,7 +129,6 @@ proc useComponent*(statement: NimNode, inCycle, inComponent: bool,
       #   statement[1][^1]
       else:
         newStmtList()
-  # echo treeRepr componentSlot
   inc uniqueId
   objConstr.add(stringId)
   if statement[1].kind == nnkCall:
@@ -554,6 +553,25 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
             newNimNode(nnkElifBranch).add(
               newCall(
                 "and",
+                newCall("declared", statement[0]),
+                newCall("is", statement[0], ident"TagRef")
+              ), newStmtList(
+                newVarStmt(ident"_anonymousTag", newCall("tag", statement[0])),
+                # TODO: Fix
+                # newLetStmt(
+                #   ident"tags", 
+                #   buildHtmlProcedure(tagName, statement[^1], inComponent, componentName, inCycle, cycleTmpVar, compTmpVar, cycleVars)
+                # ),
+                # newNimNode(nnkForStmt).add(
+                #   ident"i", ident"tags",
+                #   newCall("add", ident"_anonymousTag", ident"i")
+                # ),
+                ident"_anonymousTag"
+              )
+            ),
+            newNimNode(nnkElifBranch).add(
+              newCall(
+                "and",
                 newCall("declared", compName),
                 newCall("not", newCall("is", compName, ident"typedesc")),
               ),
@@ -586,25 +604,6 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
                   newEmptyNode(),
                 ident(componentData)
               )),
-            newNimNode(nnkElifBranch).add(
-              newCall(
-                "and",
-                newCall("declared", statement[0]),
-                newCall("is", statement[0], ident"TagRef")
-              ), newStmtList(
-                newVarStmt(ident"_anonymousTag", newCall("tag", statement[0])),
-                # TODO: Fix
-                # newLetStmt(
-                #   ident"tags",
-                #   buildHtmlProcedure(tagName, statement[^1], inComponent, componentName, inCycle, cycleTmpVar, compTmpVar, cycleVars)
-                # ),
-                # newNimNode(nnkForStmt).add(
-                #   ident"i", ident"tags",
-                #   newCall("add", ident"_anonymousTag", ident"i")
-                # ),
-                ident"_anonymousTag"
-              )
-            ),
             newNimNode(nnkElse).add(
               useComponent(compStatement, inCycle, inComponent, cycleTmpVar, compTmpVar, cycleVars, true)
             )
@@ -869,6 +868,13 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
       whenStmt[0].add(
         newNimNode(nnkWhenStmt).add(
           newNimNode(nnkElifBranch).add(
+            newCall(
+              "and",
+              newCall("declared", statement),
+              newCall("is", statement, ident"TagRef")
+            ), newCall("tag", statement)
+          ),
+          newNimNode(nnkElifBranch).add(
             newCall("not", newCall("is", compName, ident"typedesc")),
             newStmtList(
               newLetStmt(
@@ -899,13 +905,6 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
                 newEmptyNode(),
               ident(componentData)
             )),
-          newNimNode(nnkElifBranch).add(
-            newCall(
-              "and",
-              newCall("declared", statement),
-              newCall("is", statement, ident"TagRef")
-            ), newCall("tag", statement)
-          ),
           newNimNode(nnkElse).add(
             useComponent(compStatement, inCycle, inComponent, cycleTmpVar, compTmpVar, cycleVars, true)
           )
