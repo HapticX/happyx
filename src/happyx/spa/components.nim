@@ -558,12 +558,13 @@ macro component*(name, body: untyped): untyped =
   var defaultValues = newStmtList()
   for i in 0..<initProc.params.len:
     if initProc[3][i].kind == nnkIdentDefs and initProc[3][i][2].hasField():
-      defaultValues.add(
+      defaultValues.add(newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
+        newCall("==", initProc[3][i][0], newCall("default", initProc[3][i][1])),
         newAssignment(
           newDotExpr(ident"self", initProc[3][i][0].copy()),
           newCall("remember", newCall(initProc[3][i][1], initProc[3][i][2]))
         )
-      )
+      )))
       initProc[3][i][2] = newCall("default", initProc[3][i][1])
   initProc.body = newStmtList(
     newVarStmt(ident"self", initObjConstr),

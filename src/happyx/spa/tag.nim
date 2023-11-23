@@ -170,11 +170,15 @@ func tag*(name: string): TagRef {.inline.} =
 
 
 func tag*(tag: TagRef): TagRef {.inline.} =
-  TagRef(
+  result = TagRef(
     name: tag.name, isText: tag.isText, parent: tag.parent,
-    attrs: tag.attrs, children: tag.children,
+    attrs: newStringTable(), children: @[],
     onlyChildren: tag.onlyChildren, args: @[],
   )
+  for child in tag.children:
+    result.add(child)
+  for k, v in tag.attrs.pairs:
+    result.attrs[k] = v
 
 
 func textTag*(text: string): TagRef {.inline.} =

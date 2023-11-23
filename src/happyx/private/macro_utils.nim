@@ -125,6 +125,8 @@ proc useComponent*(statement: NimNode, inCycle, inComponent: bool,
     componentSlot =
       if statement.len > 1 and statement[^1].kind == nnkStmtList:
         statement[^1]
+      elif statement.kind in nnkCallKinds and statement[0] == ident"component" and statement[1].kind in nnkCallKinds and statement[1][^1].kind == nnkStmtList:
+        statement[1][^1]
       else:
         newStmtList()
   inc uniqueId
@@ -132,7 +134,8 @@ proc useComponent*(statement: NimNode, inCycle, inComponent: bool,
   if statement[1].kind == nnkCall:
     for i in 1..<statement[1].len:
       # call -> arg
-      objConstr.add(statement[1][i])
+      if statement[1][i].kind != nnkStmtList:
+        objConstr.add(statement[1][i])
   # Constructor
   elif statement[1].kind == nnkInfix and statement[1][0] == ident"->":
     for i in 1..<statement[1][2].len:
@@ -549,6 +552,20 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
             newNimNode(nnkElifBranch).add(
               newCall(
                 "and",
+                newCall("declared", statement[0]),
+                newCall("is", statement[0], ident"TagRef")
+              ), newStmtList(
+                newVarStmt(ident"_anonymousTag", newCall("tag", statement[0])),
+                newCall(
+                  "add", ident"_anonymousTag",
+                  buildHtmlProcedure(tagName, statement[^1], inComponent, componentName, inCycle, cycleTmpVar, compTmpVar, cycleVars)
+                ),
+                ident"_anonymousTag"
+              )
+            ),
+            newNimNode(nnkElifBranch).add(
+              newCall(
+                "and",
                 newCall("declared", compName),
                 newCall("not", newCall("is", compName, ident"typedesc")),
               ),
@@ -844,6 +861,13 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
       let componentData = "data_" & $compName.toStrLit
       whenStmt[0].add(
         newNimNode(nnkWhenStmt).add(
+          newNimNode(nnkElifBranch).add(
+            newCall(
+              "and",
+              newCall("declared", statement),
+              newCall("is", statement, ident"TagRef")
+            ), newCall("tag", statement)
+          ),
           newNimNode(nnkElifBranch).add(
             newCall("not", newCall("is", compName, ident"typedesc")),
             newStmtList(
