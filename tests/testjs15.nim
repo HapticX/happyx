@@ -15,9 +15,42 @@ component withSlot:
     slot
 
 
+component Exam:
+  `template`:
+    tDiv:
+      "Example component {self.age}\n    {self.test()}\n"
+      slot
+      if self.age < 20:
+        tDiv:
+          "You\'re young!\n"
+      elif self.age < 35:
+        tDiv:
+          "You\'re already young!\n"
+      else:
+        tDiv:
+          "You\'re old!\n"
+      for i in [1, 2, 3, 4]:
+        tDiv:
+          "{i}\n"
+      nim:
+        var x = 10
+      "{x}\n"
+      while x > 0:
+        tDiv("style" = "display: flex; gap: .2rem;"):
+          "{x}\n"
+          nim:
+            dec x
+      tDiv:
+        "123213213213\n"
+  age: int
+  [methods]:
+    proc test(): string =
+      echo "test method"
+      "..."
+
 
 importComponent "example.hpx" as Example
-importComponent "button.hpx" as ButtonExample
+# importComponent "button.hpx" as ButtonExample
 
 
 appRoutes("app"):

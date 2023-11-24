@@ -714,7 +714,7 @@ macro component*(name, body: untyped): untyped =
           newCall(
             "add",
             ident"result",
-            newCall("initTag", newStrLitNode("style"), newCall("@", newNimNode(nnkBracket).add(
+            newCall("initTag", newLit"style", newCall("@", newNimNode(nnkBracket).add(
               newCall("textTag", newCall("style", ident"self"))
             )))
           ),
@@ -841,7 +841,7 @@ macro importComponent*(body: untyped): untyped =
         if child.onlyChildren:
           child.handle(parent)
         elif child.isText:
-          parent.add(newStrLitNode(child.name))
+          parent.add(newLit(child.name))
         else:
           var
             call: NimNode
@@ -872,17 +872,17 @@ macro importComponent*(body: untyped): untyped =
                     of "nim":
                       parseExpr(val)
                     else:
-                      newStrLitNode(val)
+                      newLit(val)
                   ))
                 else:
-                  callComp.add(newNimNode(nnkExprEqExpr).add(ident(property[0]), newStrLitNode(val)))
+                  callComp.add(newNimNode(nnkExprEqExpr).add(ident(property[0]), newLit(val)))
               call = newNimNode(nnkCommand).add(ident"component", callComp)
             else:
               # Tag usage
               if child.name == "script":
                 call = newCall("nim")
               else:
-                call = newCall(child.name)
+                call = newCall("t" & child.name)
               # parse args without values
               for arg in child.args:
                 case arg
@@ -1003,5 +1003,4 @@ macro importComponent*(body: untyped): untyped =
     statement.strVal = componentData[styleSource[0].group(0)]
     stmtList.add(newCall(newNimNode(nnkAccQuoted).add(ident"style"), newStmtList(statement)))
 
-  result = newCall("component", componentName, stmtList)
-  echo result.toStrLit
+  result = newNimNode(nnkCommand).add(ident"component", componentName, stmtList)

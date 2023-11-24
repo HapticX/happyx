@@ -56,7 +56,7 @@ const
   UnclosedTags* = [
     "area", "base", "basefont", "br", "col", "frame", "hr",
     "img", "isindex", "link", "meta", "param", "wbr", "source",
-    "input"
+    "input", "!DOCTYPE"
   ]
   NimKeywords* = [
     "if", "elif", "else", "using", "type", "of", "in", "notin", "and",
@@ -376,7 +376,10 @@ func `$`*(self: TagRef): string =
   
   var attrs = ""
   for key, value in self.attrs.pairs():
-    attrs &= " " & key & "=" & "\"" & value & "\""
+    if value.len > 0:
+      attrs &= " " & key & "=" & "\"" & value & "\""
+    else:
+      attrs &= " " & key
 
   if self.onlyChildren:
     let children = self.children.join("\n")

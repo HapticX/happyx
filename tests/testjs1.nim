@@ -18,6 +18,7 @@ var
 
 var html =
   buildHtml(`div`):
+    !DOCTYPE html
     tH1(class="myClass", style="color: red"):
       "Hello, world!"
     # Different styles of tag naming

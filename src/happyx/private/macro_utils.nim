@@ -14,6 +14,7 @@ import
 # Compile time variables
 const
   uniqueId* = CacheCounter"uniqueId"
+  createdComponents = CacheTable"HappyXCreatedComponents"
   UniqueComponentId* = "uniqCompId"
 
 
@@ -125,7 +126,7 @@ proc useComponent*(statement: NimNode, inCycle, inComponent: bool,
     componentSlot =
       if statement.len > 1 and statement[^1].kind == nnkStmtList:
         statement[^1]
-      elif statement.kind in nnkCallKinds and statement[0] == ident"component" and statement[1].kind in nnkCallKinds and statement[1][^1].kind == nnkStmtList:
+      elif statement.kind == nnkCommand and statement[0] == ident"component" and statement[1].kind == nnkCall and statement[1][^1].kind == nnkStmtList and createdComponents.hasKey($name):
         statement[1][^1]
       else:
         newStmtList()
@@ -141,60 +142,61 @@ proc useComponent*(statement: NimNode, inCycle, inComponent: bool,
     for i in 1..<statement[1][2].len:
       # infix -> call -> arg
       objConstr.add(statement[1][2][i])
-  result = newStmtList(
-    newVarStmt(ident(componentNameTmp), objConstr),
-    newVarStmt(
-      ident(componentName),
-      newCall(
-        name,
-        newCall("registerComponent", stringId, ident(componentNameTmp))
-      )
-    ),
-    newAssignment(
-      newDotExpr(ident(componentName), ident"slot"),
-      buildHtmlProcedure(
-        ident"div", componentSlot, inComponent, ident(componentName), inCycle, cycleTmpVar, compTmpVar, cycleVars
-      ).add(newNimNode(nnkExprEqExpr).add(ident"onlyChildren", newLit(true)))
-    ),
-    if returnTagRef:
-      newLetStmt(
-        ident(componentData),
-        newCall("render", ident(componentName))
-      )
-    else:
-      newEmptyNode(),
-    if returnTagRef:
-      newCall(
-        "addArgIter",
-        ident(componentData),
-        newCall("&", newStrLitNode("data-"), newDotExpr(ident(componentName), ident(UniqueComponentId)))
-      )
-    else:
-      newEmptyNode(),
-    when defined(js):
+  result =
+    newStmtList(
+      newVarStmt(ident(componentNameTmp), objConstr),
+      newVarStmt(
+        ident(componentName),
+        newCall(
+          name,
+          newCall("registerComponent", stringId, ident(componentNameTmp))
+        )
+      ),
+      newAssignment(
+        newDotExpr(ident(componentName), ident"slot"),
+        buildHtmlProcedure(
+          ident"div", componentSlot, inComponent, ident(componentName), inCycle, cycleTmpVar, compTmpVar, cycleVars
+        ).add(newNimNode(nnkExprEqExpr).add(ident"onlyChildren", newLit(true)))
+      ),
       if returnTagRef:
-        newStmtList(
-          newNimNode(nnkPragma).add(newNimNode(nnkExprColonExpr).add(
-            ident"emit",
-            newStrLitNode(fmt"window.addEventListener('beforeunload', `{componentData}`.`exited`);")
-          )),
-          newNimNode(nnkPragma).add(newNimNode(nnkExprColonExpr).add(
-            ident"emit",
-            newStrLitNode(fmt"window.addEventListener('pagehide', `{componentData}`.`pageHide`);")
-          )),
-          newNimNode(nnkPragma).add(newNimNode(nnkExprColonExpr).add(
-            ident"emit",
-            newStrLitNode(fmt"window.addEventListener('pageshow', `{componentData}`.`pageShow`);")
-          )),
+        newLetStmt(
+          ident(componentData),
+          newCall("render", ident(componentName))
         )
       else:
-        newEmptyNode()
-    else:
-      newEmptyNode(),
-    if returnTagRef:
-      ident(componentData)
-    else:
-      ident(componentName)
+        newEmptyNode(),
+      if returnTagRef:
+        newCall(
+          "addArgIter",
+          ident(componentData),
+          newCall("&", newStrLitNode("data-"), newDotExpr(ident(componentName), ident(UniqueComponentId)))
+        )
+      else:
+        newEmptyNode(),
+      when defined(js):
+        if returnTagRef:
+          newStmtList(
+            newNimNode(nnkPragma).add(newNimNode(nnkExprColonExpr).add(
+              ident"emit",
+              newStrLitNode(fmt"window.addEventListener('beforeunload', `{componentData}`.`exited`);")
+            )),
+            newNimNode(nnkPragma).add(newNimNode(nnkExprColonExpr).add(
+              ident"emit",
+              newStrLitNode(fmt"window.addEventListener('pagehide', `{componentData}`.`pageHide`);")
+            )),
+            newNimNode(nnkPragma).add(newNimNode(nnkExprColonExpr).add(
+              ident"emit",
+              newStrLitNode(fmt"window.addEventListener('pageshow', `{componentData}`.`pageShow`);")
+            )),
+          )
+        else:
+          newEmptyNode()
+      else:
+        newEmptyNode(),
+      if returnTagRef:
+        ident(componentData)
+      else:
+        ident(componentName)
   )
   when enableUseCompDebugMacro:
     echo result.toStrLit
@@ -449,7 +451,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
   ## Builds HTML
   ## 
   ## Here you can use components and event handlers
-  let elementName = newStrLitNode(getTagName($root))
+  let elementName = newLit(getTagName($root))
   result = newCall("initTag", elementName)
 
   for statement in body:
@@ -493,7 +495,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
 
     elif statement.kind == nnkCall and statement[0].kind != nnkPrefix:
       let
-        tagName = newStrLitNode(getTagName($statement[0]))
+        tagName = newLit(getTagName($statement[0]))
         statementList = statement[^1]
         compName =
           if statement[0].kind in AtomicNodes:
@@ -554,20 +556,18 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
                 "and",
                 newCall("declared", statement[0]),
                 newCall("is", statement[0], ident"TagRef")
-              ), 
+              ),
               if statement[^1].kind == nnkStmtList:
                 newStmtList(
                   newVarStmt(ident"_anonymousTag", newCall("tag", statement[0])),
-                  # newLetStmt(
-                  #   ident"_tag",
-                  #   buildHtmlProcedure(
-                  #     ident"div", statement[^1], inComponent, componentName, inCycle, cycleTmpVar, compTmpVar, cycleVars
-                  #   ).add(newNimNode(nnkExprEqExpr).add(ident"onlyChildren", newLit(true)))
-                  # ),
-                  # newNimNode(nnkForStmt).add(
-                  #   ident"i", newDotExpr(ident"_tag", ident"children"),
-                  #   newCall("add", ident"_anonymousTag", ident"i")
-                  # ),
+                  newCall(
+                    "add",
+                    ident"_anonymousTag",
+                    newCall("buildHtml", statementList)
+                    # buildHtmlProcedure(
+                    #   ident"div", statementList, inComponent, componentName, inCycle, cycleTmpVar, compTmpVar, cycleVars
+                    # ).add(newNimNode(nnkExprEqExpr).add(ident"onlyChildren", newLit(true)))
+                  ),
                   ident"_anonymousTag"
                 )
               else:
@@ -689,7 +689,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
       # Nim variable declaration
       result.add(newStmtList(
         statement,
-        newCall("initTag", newStrLitNode("div"), newCall("@", newNimNode(nnkBracket)), newLit(true))
+        newCall("initTag", newLit"div", newCall("@", newNimNode(nnkBracket)), newLit(true))
       ))
     
     elif statement.kind == nnkInfix and statement[0] == ident":=":
@@ -704,14 +704,25 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
       # Var reassign
       result.add(newStmtList(
         statement,
-        newCall("initTag", newStrLitNode("div"), newCall("@", newNimNode(nnkBracket)), newLit(true))
+        newCall("initTag", newLit"div", newCall("@", newNimNode(nnkBracket)), newLit(true))
       ))
     
     elif statement.kind in {nnkBind, nnkBindStmt, nnkMixinStmt}:
       # binds/mixins
       result.add(newStmtList(
         statement,
-        newCall("initTag", newStrLitNode("div"), newCall("@", newNimNode(nnkBracket)), newLit(true))
+        newCall("initTag", newLit"div", newCall("@", newNimNode(nnkBracket)), newLit(true))
+      ))
+    
+    # !DOCTYPE html
+    elif statement.kind == nnkPrefix and statement[0] == ident"!" and statement[1].kind == nnkCommand and ($statement[1][0]).toLower() == "doctype":
+      result.add(newStmtList(
+        newLetStmt(
+          ident"_doctype",
+          newCall("initTag", newLit"!DOCTYPE", newCall("@", bracket()))
+        ),
+        newCall("[]=", ident"_doctype", newLit"html", newLit""),
+        ident"_doctype"
       ))
     
     # Events handling
@@ -940,7 +951,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
           statement[i][^1] = buildHtmlProcedure(
             ident"div", newStmtList(statement[i][^1]), inComponent, componentName, inCycle, cycleTmpVar, compTmpVar, cycleVars
           ).add(newLit(true))
-        elif statement[i][^1].kind in {nnkWhenStmt}:
+        elif statement[i][^1].kind in {nnkWhenStmt, nnkIfStmt, nnkIfExpr}:
           for branch in 0..<statement[i][^1].len:
             statement[i][^1][branch][^1] = buildHtmlProcedure(
               ident"div", statement[i][^1][branch][^1], inComponent, componentName, inCycle, cycleTmpVar, compTmpVar, cycleVars
