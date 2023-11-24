@@ -87,9 +87,9 @@ component ProgressBar:
       border-radius: .4rem;
       position: relative;
       transition: all .3s;
-      width: {self.size.val[0]}px;
-      height: {self.size.val[1]}px;
-      background: {ForegroundColor};
+      width: <self.size.val[0]>px;
+      height: <self.size.val[1]>px;
+      background: <ForegroundColor>;
     }
     .placeholder {
       position: absolute;
@@ -103,45 +103,45 @@ component ProgressBar:
     }
     .placeholder-circle {
       position: static;
-      color: {ForegroundColor};
+      color: <ForegroundColor>;
     }
 
     .value-horizontal {
       border-radius: .4rem;
       transition: all .3s;
       height: 100%;
-      background: {SecondaryColor};
-      width: {((self.value.toFloat / self.maxValue.toFloat) * 100.0).int}%;
+      background: <SecondaryColor>;
+      width: <((self.value.toFloat / self.maxValue.toFloat) * 100.0).int>%;
     }
 
     .value-vertical {
       border-radius: .4rem;
       transition: all .3s;
       width: 100%;
-      background: {SecondaryColor};
-      height: {((self.value.toFloat / self.maxValue.toFloat) * 100.0).int}%;
+      background: <SecondaryColor>;
+      height: <((self.value.toFloat / self.maxValue.toFloat) * 100.0).int>%;
     }
 
     .value-circle {
       transition: all .3s;
       border-radius: 50%;
       background:
-        radial-gradient(closest-side, {BackgroundColor} 79%, transparent 80% 100%),
-        conic-gradient({SecondaryColor} {((self.value.toFloat / self.maxValue.toFloat) * 100.0).int}%, {ForegroundColor} 0);
-      width: {self.size.val[0]}px;
-      height: {self.size.val[1]}px;
+        radial-gradient(closest-side, <BackgroundColor> 79%, transparent 80% 100%),
+        conic-gradient(<SecondaryColor> <((self.value.toFloat / self.maxValue.toFloat) * 100.0).int>%, <ForegroundColor> 0);
+      width: <self.size.val[0]>px;
+      height: <self.size.val[1]>px;
     }
 
     .value-horizontal:hover {
-      background: {SecondaryHoverColor};
+      background: <SecondaryHoverColor>;
     }
     .value-horizontal:active {
-      background: {SecondaryActiveColor};
+      background: <SecondaryActiveColor>;
     }
     .value-vertical:hover {
-      background: {SecondaryHoverColor};
+      background: <SecondaryHoverColor>;
     }
     .value-vertical:active {
-      background: {SecondaryActiveColor};
+      background: <SecondaryActiveColor>;
     }
   """

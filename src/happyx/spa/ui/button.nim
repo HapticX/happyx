@@ -64,29 +64,29 @@ component Button:
       font-weight: 600;
       cursor: pointer;
       user-select: none;
-      background: {AccentColor};
+      background: <AccentColor>;
     }
 
     button:hover {
-      background: {AccentHoverColor};
+      background: <AccentHoverColor>;
     }
 
     button:active {
-      background: {AccentActiveColor};
+      background: <AccentActiveColor>;
     }
     
     .flat {
       background: none;
-      color: {AccentColor};
+      color: <AccentColor>;
     }
 
     .flat:hover {
       background: none;
-      color: {AccentHoverColor};
+      color: <AccentHoverColor>;
     }
 
     .flat:active {
       background: none;
-      color: {AccentActiveColor};
+      color: <AccentActiveColor>;
     }
   """

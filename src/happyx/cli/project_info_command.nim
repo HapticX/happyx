@@ -20,7 +20,7 @@ proc projectInfoCommand*(): int =
   styledEcho fgMagenta, styleBright, emoji["📁"](), " Build directory: ", fgWhite, projectData.buildDir
 
   # Writen code lines count? (only .py/.nim/.js/.ts)
-  var bytes = 0
+  var bytes: BiggestInt = 0
   for file in walkDirRec("./"):
     case projectData.language
     of plNim:

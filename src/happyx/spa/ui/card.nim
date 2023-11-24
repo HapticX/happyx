@@ -71,9 +71,9 @@ component Card:
       width: fit-content;
       display: flex;
       flex-direction: column;
-      align-items: {self.hAlignHidden};
-      justify-content: {self.vAlignHidden};
-      color: {ForegroundColor};
-      background: {BackgroundSecondaryColor};
+      align-items: <self.hAlignHidden>;
+      justify-content: <self.vAlignHidden>;
+      color: <ForegroundColor>;
+      background: <BackgroundSecondaryColor>;
     }
   """

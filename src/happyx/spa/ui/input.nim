@@ -78,8 +78,8 @@ component Input:
       user-select: none;
       background: none;
       outline: none;
-      border: 2px solid {SecondaryColor};
-      color: {ForegroundColor};
+      border: 2px solid <SecondaryColor>;
+      color: <ForegroundColor>;
     }
 
     label {
@@ -91,7 +91,7 @@ component Input:
       transition: all;
       transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
       transition-duration: .15s;
-      color: {ForegroundColor};
+      color: <ForegroundColor>;
     }
 
     input:focus + label, :not(:placeholder-shown) + label {
@@ -99,7 +99,7 @@ component Input:
       font-size: .75rem;
       margin-left: 1rem;
       padding: 0 .5rem;
-      background-color: {BackgroundColor};
+      background-color: <BackgroundColor>;
     }
 
     input:not(:focus)::placeholder {
@@ -107,14 +107,14 @@ component Input:
     }
 
     input:hover {
-      border: 2px solid {SecondaryHoverColor};
+      border: 2px solid <SecondaryHoverColor>;
     }
 
     input:active {
-      border: 2px solid {SecondaryActiveColor};
+      border: 2px solid <SecondaryActiveColor>;
     }
 
     input:focus {
-      border: 2px solid {SecondaryActiveColor};
+      border: 2px solid <SecondaryActiveColor>;
     }
   """

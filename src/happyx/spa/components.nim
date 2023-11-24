@@ -451,36 +451,27 @@ macro component*(name, body: untyped): untyped =
                 lineInfoObj(s)
               )
             let css = getAst(buildStyle(s[^1]))[1]
-            let str = ($css).replace(
-              re2"^([\S ]+?) *\{(?im)", "$1[data-<self.uniqCompId>]{"
-            ).replace(re2"(^ *|\{ *|\n *)\}(?im)", "$1}")
             styleStmtList = newStmtList(
               newAssignment(
                 ident"result",
-                newCall("fmt", newStrLitNode(str), newLit('<'), newLit('>'))
+                newCall("fmt", newLit($css), newLit('<'), newLit('>'))
               )
             )
           elif s[^1][0].kind in [nnkStrLit, nnkTripleStrLit]:
             # String CSS
-            let str = ($s[1][0]).replace(
-              re2"([\S ]+?) *\{(?![ \S]+?\}\s*[;%$#@!~`%^&:\-_=\+,.<>?/\\\{\d\w])", "$1[data-{self.uniqCompId}] {{"
-            ).replace(re2"(\n[ \t]*)\}", "$1}}")
             styleStmtList = newStmtList(
               newAssignment(
                 ident"result",
-                newCall("fmt", newStrLitNode(str))
+                newCall("fmt", newLit($s[1][0]), newLit('<'), newLit('>'))
               )
             )
           elif s[^1][0].kind == nnkCall and s[^1][0][0].kind == nnkIdent and $s[^1][0][0] == "buildStyle":
             # Pure CSS
             let css = getAst(buildStyle(s[^1][0][1]))[1]
-            let str = ($css).replace(
-              re2"^([\S ]+?) *\{(?im)", "$1[data-<self.uniqCompId>]{"
-            ).replace(re2"(^ *|\{ *|\n *)\}(?im)", "$1}")
             styleStmtList = newStmtList(
               newAssignment(
                 ident"result",
-                newCall("fmt", newStrLitNode(str), newLit('<'), newLit('>'))
+                newCall("fmt", newLit($css), newLit('<'), newLit('>'))
               )
             )
           else:
@@ -1013,3 +1004,4 @@ macro importComponent*(body: untyped): untyped =
     stmtList.add(newCall(newNimNode(nnkAccQuoted).add(ident"style"), newStmtList(statement)))
 
   result = newCall("component", componentName, stmtList)
+  echo result.toStrLit
