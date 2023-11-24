@@ -848,6 +848,7 @@ socketToSsr.onmessage=function(m){
     caseRequestMethodsStmt.add(reqMethod)
   
   procStmt.addPragma(ident"async")
+  procStmt.addPragma(ident"gcsafe")
 
   # Find mounts
   body.findAndReplaceMount()
