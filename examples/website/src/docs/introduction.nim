@@ -160,3 +160,6 @@ component Introduction:
             component Contributor("JK", "https://github.com/jerrygzy", "https://avatars.githubusercontent.com/u/181757?v=4")
             component Contributor("sjhaleprogrammer", "https://github.com/sjhaleprogrammer", "https://avatars.githubusercontent.com/u/60676867?v=4")
             component Contributor("Constantine Molchanov", "https://github.com/moigagoo", "https://avatars.githubusercontent.com/u/1045340?v=4")
+            component Contributor("Derek", "https://github.com/derekdai", "https://avatars.githubusercontent.com/u/116649?v=4")
+            component Contributor("Александр Старочкин", "https://github.com/levovix0", "https://avatars.githubusercontent.com/u/53170138?v=4")
+            component Contributor("MouriKogorou", "https://github.com/MouriKogorou", "https://avatars.githubusercontent.com/u/43428806?v=4")
