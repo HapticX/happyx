@@ -106,7 +106,7 @@ proc createCommand*(name: string = "", kind: string = "", templates: bool = fals
       return QuitFailure
 
   if language == "":
-    if selected > 1:
+    if selected > 2:
       # Only for Nim
       echo ""
       styledEcho emoji["🐲"](), " You choose project type that allowed only for Nim."
@@ -132,6 +132,10 @@ proc createCommand*(name: string = "", kind: string = "", templates: bool = fals
     styledEcho emoji["🔥"](), " Do you want to use templates in your project? "
     selectedTemplates = chooseFrom(templatesList, templatesList)
     templates = selectedTemplates == 0
+  elif projectType == "SSR+PWA":
+    echo ""
+    styledEcho emoji["💡"](), " you choose ", fgRed, "SSR + PWA ", fgWhite, "project type so templates was been enabled"
+    templates = true
   elif lang == "nim" and projectType in ["SPA", "HPX", "SPA+PWA"]:
     echo ""
     styledEcho emoji["🐲"](), " Do you want to use Tailwind CSS in your project? "
@@ -178,15 +182,27 @@ proc createCommand*(name: string = "", kind: string = "", templates: bool = fals
       f.write("import happyx\n\n\npathParams:\n  id int\n")
       f.close()
   
+  let isPwa = selected in {1, 4}
   case selected
-  of 0, 1:
-    # SSR/SSG
+  of 0, 1, 2:
+    # SSR/SSR+PWA/SSG
     createDir(projectName / "src" / "public")
+    if isPwa:
+      createDir(projectName / "src" / "pwa")
+      f = open(projectName / "src" / "pwa" / "manifest.json", fmWrite)
+      f.write(spaPwaManifest)
+      f.close()
+      f = open(projectName / "src" / "pwa" / "service_worker.js", fmWrite)
+      f.write(spaServiceWorkerTemplate)
+      f.close()
     if templates:
       styledEcho fgYellow, "Templates in SSR was enabled. To disable it remove --templates flag."
       createDir(projectName / "src" / "templates")
       f = open(projectName / "src" / "templates" / "index.html", fmWrite)
-      f.write(nimjaTemplate)
+      if isPwa:
+        f.write(nimjaPwaTemplate)
+      else:
+        f.write(nimjaTemplate)
       f.close()
     else:
       styledEcho fgYellow, "Templates in SSR was disabled. To enable it add --templates flag."
@@ -194,7 +210,9 @@ proc createCommand*(name: string = "", kind: string = "", templates: bool = fals
     case lang
     of "nim":
       f = open(projectName / "src" / fmt"{SPA_MAIN_FILE}.nim", fmWrite)
-      if templates:
+      if templates and isPwa:
+        f.write(fmt(ssrTemplatePwaNinja))
+      elif templates:
         f.write(fmt(ssrTemplateNinja))
       else:
         f.write(fmt(ssrTemplate))
@@ -210,7 +228,7 @@ proc createCommand*(name: string = "", kind: string = "", templates: bool = fals
       f.write(tsTemplate)
       makeTsPackageJson(projectName)
     f.close()
-  of 2, 3:
+  of 3, 4:
     # SPA + PWA
     imports.add("components/[hello_world]")
     createDir(projectName / "src" / "public")
@@ -222,12 +240,12 @@ proc createCommand*(name: string = "", kind: string = "", templates: bool = fals
     var additionalHead = ""
     if useTailwind:
       additionalHead &= "<script src=\"https://cdn.tailwindcss.com\"></script>\n    "
-    if selected == 2:
-      f.write(fmt(spaIndexTemplate))
-    elif selected == 3:
+    if isPwa:
       f.write(fmt(spaPwaIndexTemplate))
+    else:
+      f.write(fmt(spaIndexTemplate))
     f.close()
-    if selected == 3:
+    if isPwa:
       f = open(projectName / "src" / "service_worker.js", fmWrite)
       f.write(spaServiceWorkerTemplate)
       f.close()
@@ -237,7 +255,7 @@ proc createCommand*(name: string = "", kind: string = "", templates: bool = fals
     f = open(projectName / "src" / "components" / "hello_world.nim", fmWrite)
     f.write(componentTemplate)
     f.close()
-  of 4:
+  of 5:
     # HPX
     createDir(projectName / "src" / "public")
     createDir(projectName / "src" / "components")
@@ -260,7 +278,7 @@ proc createCommand*(name: string = "", kind: string = "", templates: bool = fals
     discard
   eraseLine(stdout)
   cursorUp(stdout)
-  styledEcho "✨ Project initialized       "
+  styledEcho "✨ Project initialized ", " ".repeat(24)
 
   # Tell user about choosen
   styledEcho fgYellow, emoji["🐥"](), " You choose ", fgMagenta, programmingLanguagesDesc[selectedLang], fgYellow, " programming language for this project."

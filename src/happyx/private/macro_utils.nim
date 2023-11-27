@@ -455,6 +455,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
   result = newCall("initTag", elementName)
 
   for statement in body:
+    echo treeRepr statement
     if statement.kind == nnkDiscardStmt:
       continue
     elif statement.kind == nnkPrefix and statement[0] == ident"!" and statement[1] == ident"debugRoot":
@@ -932,8 +933,15 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
       result.add(newCall("tag", newLit(getTagName($statement[0]))))
     
     elif statement.kind == nnkCurly and statement.len == 1:
-      # variables
-      result.add(newCall("initTag", newCall("$", statement[0]), newLit(true)))
+      # variables and procedures
+      result.add(newNimNode(nnkWhenStmt).add(newNimNode(nnkElifBranch).add(
+        newCall(
+          "is", statement[0], ident"TagRef"
+        ),
+        statement[0]
+      ), newNimNode(nnkElse).add(
+        newCall("initTag", newCall("$", statement[0]), newLit(true))
+      )))
     
     # if-elif or case-of
     elif statement.kind in [nnkCaseStmt, nnkIfStmt, nnkIfExpr, nnkWhenStmt]:

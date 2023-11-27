@@ -15,6 +15,11 @@ component withSlot:
     slot
 
 
+proc titleTag(title: string): TagRef =
+  buildHtml:
+    tTitle: {title}
+
+
 component Exam:
   `template`:
     tDiv:
@@ -111,3 +116,13 @@ appRoutes("app"):
       withSlot(): "one"
     #tDiv:
       #withSlot($7): "seven"
+  
+  "/issue194":
+    var fruits = buildHtml:
+      "banana"
+      "apple"
+      "mango"
+    buildHtml:
+      {titleTag("Hello")}
+      for i in 0..<10:
+        {fruits.children[0]}

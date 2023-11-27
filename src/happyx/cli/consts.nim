@@ -95,6 +95,25 @@ yarn.lock
     You at {{ title }} page ✨
   </body>
 </html>"""
+  nimjaPwaTemplate* = """<!DOCTYPE html><html>
+  <head>
+    <meta charset="utf-8">
+    <title>{{ title }}</title>
+    <link rel="manifest" href="/pwa/manifest.json" />
+  </head>
+  <body>
+    <div>
+      You at {{ title }} page ✨
+    </div>
+    <script>
+      if ('serviceWorker' in navigator) {{
+        window.addEventListener('load',()=> {{
+          navigator.serviceWorker.register('/pwa/service_worker.js');
+        }});
+      }}
+    </script>
+  </body>
+</html>"""
   ssrTemplateNinja* = """# Import HappyX
 import
   {imports.join(",\n  ")}
@@ -109,19 +128,41 @@ proc render(title: string): string =
   renderTemplate("index.html")
 
 # Serve at http://127.0.0.1:5000
-serve("127.0.0.1", 5000):
+serve "127.0.0.1", 5000:
   # on GET HTTP method at http://127.0.0.1:5000/TEXT
   get "/{{title:string}}":
     req.answerHtml render(title)
   # on any HTTP method at http://127.0.0.1:5000/public/path/to/file.ext
   staticDir "public"
 """
+  ssrTemplatePwaNinja* = """# Import HappyX
+import
+  {imports.join(",\n  ")}
+
+# Declare template folder
+templateFolder("templates")
+
+proc render(title: string): string =
+  ## Renders template and returns HTML string
+  ## 
+  ## `title` is template argument
+  renderTemplate("index.html")
+
+# Serve at http://127.0.0.1:5000
+serve "127.0.0.1", 5000:
+  # on GET HTTP method at http://127.0.0.1:5000/TEXT
+  get "/{{title:string}}":
+    req.answerHtml render(title)
+  # on any HTTP method at http://127.0.0.1:5000/public/path/to/file.ext
+  staticDir "public"
+  staticDir "pwa" ~ "js,json"
+"""
   ssrTemplate* = """# Import HappyX
 import
   {imports.join(",\n  ")}
 
 # Serve at http://127.0.0.1:5000
-serve("127.0.0.1", 5000):
+serve "127.0.0.1", 5000:
   # on GET HTTP method at http://127.0.0.1:5000/
   get "/":
     # Return plain text
@@ -219,7 +260,7 @@ self.addEventListener('install', (event)=> {
   "short_name": "{projectName}",
   "display": "fullscreen",
   "orientation": "portrait",
-  "start_url": "https://hapticx.github.io/happyx/#/",
+  "start_url": "https://hapticx.github.io/happyx/",
   "icons": [
     {{
       "src": "https://hapticx.github.io/happyx/public/icon.png",

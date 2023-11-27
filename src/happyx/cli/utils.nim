@@ -41,6 +41,7 @@ type
     ptSPA = "SPA",
     ptSPA_PWA = "SPA+PWA",
     ptSSG = "SSG",
+    ptSSR_PWA = "SSR+PWA",
     ptSSR = "SSR",
     ptSPAHpx = "HPX"
   ProgrammingLanguage* {.pure, size: sizeof(int8).} = enum
@@ -77,10 +78,10 @@ const
 
 
 var
-  projectTypes*: array[5, string]
+  projectTypes*: array[6, string]
   tailwindList*: array[2, string]
   templatesList*: array[2, string]
-  projectTypesDesc*: array[5, string]
+  projectTypesDesc*: array[6, string]
   programmingLanguages*: array[4, string]
   programmingLanguagesDesc*: array[4, string]
 
@@ -117,6 +118,7 @@ var
 proc init*() =
   projectTypes = [
     "SSR",
+    "SSR+PWA",
     "SSG",
     "SPA",
     "SPA+PWA",
@@ -132,6 +134,7 @@ proc init*() =
   ]
   projectTypesDesc = [
     ansiStyleCode(styleBright) & ansiForegroundColorCode(fgGreen) & "Server-side rendering " & emoji["⚡"]() & ansiResetCode,
+    ansiStyleCode(styleBright) & ansiForegroundColorCode(fgGreen) & "Server-side rendering with PWA " & emoji["⚡"]() & ansiResetCode,
     ansiStyleCode(styleBright) & ansiForegroundColorCode(fgBlue) & "Static site generation " & emoji["📦"]() & ansiResetCode,
     ansiStyleCode(styleBright) & ansiForegroundColorCode(fgYellow) & "Single-page application " & emoji["✨"]() & ansiResetCode,
     ansiStyleCode(styleBright) & ansiForegroundColorCode(fgYellow) & "Single-page application with PWA " & emoji["✨"]() & ansiResetCode,
@@ -211,15 +214,7 @@ proc compileProject*(): ProjectData {. discardable .} =
   result = readConfig()
 
   case result.projectType:
-  of ptSPA:
-    result.process = startProcess(
-      "nim", getCurrentDir() / result.srcDir,
-      [
-        "js", "-c", "--hints:off", "--warnings:off",
-        "--opt:size", "-d:danger", "-x:off", "-a:off", "--panics:off", "--lineDir:off", result.mainFile
-      ], nil, PROCESS_OPTIONS
-    )
-  of ptSPA_PWA:
+  of ptSPA, ptSPA_PWA:
     result.process = startProcess(
       "nim", getCurrentDir() / result.srcDir,
       [
@@ -318,7 +313,7 @@ proc compileProject*(): ProjectData {. discardable .} =
         "--opt:size", "-d:danger", "-x:off", "-a:off", "--panics:off", "--lineDir:off", result.mainFile
       ], nil, PROCESS_OPTIONS
     )
-  of ptSSR, ptSSG:
+  of ptSSR, ptSSG, ptSSR_PWA:
     return result
 
   styledEcho "Compiling ", fgMagenta, result.mainFile, fgWhite, " script ... /"
