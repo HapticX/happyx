@@ -65,7 +65,7 @@ proc buildCommand*(optSize: bool = false): int =
   var
     counter = 0
     found: seq[string] = @[]
-  for i in data.findAll(re2"\b\w+_\d+\b"):
+  for i in data.findAll(re2"\b(\w+_\d+)\b"):
     let j = data[i.group(0)]
     if j notin found:
       found.add(j)
@@ -83,7 +83,7 @@ proc buildCommand*(optSize: bool = false): int =
   # Find functions
   found = @[]
   counter = 0
-  for i in data.findAll(re2"function [c-z][a-zA-Z0-9_]*"):
+  for i in data.findAll(re2"function ([c-z][a-zA-Z0-9_])*"):
     let j = data[i.group(0)]
     if j notin found:
       found.add(j)
