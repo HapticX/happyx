@@ -42,6 +42,8 @@ def handle_websocket_connection(ws: WebSocket):
     if ws.state() == 'open':  # connect/open/close/mismatch_protocol/handshake_error/error
         print(ws.receive_text())
         ws.send_json({"hello": "world"})
+    else:
+        print(ws.state())
 
 
 @user.get("/id{userId?}")

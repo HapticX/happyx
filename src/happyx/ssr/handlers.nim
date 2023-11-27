@@ -204,7 +204,7 @@ elif exportPython:
         (
           @["MIDDLEWARE"] == route.httpMethod or
           (
-            (contains(route.httpMethod, $get(req.httpMethod)) and route.pattern in urlPath) or
+            (contains(route.httpMethod, $req.httpMethod.get()) and route.pattern in urlPath) or
             (hasHttpMethod(route, @["STATICFILE", "WEBSOCKET"]) and route.pattern in urlPath)
           )
         )
