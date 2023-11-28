@@ -143,7 +143,7 @@ HappyX web framework [SSR/SSG Part]
 """)
 
   type
-    Server* = ref object of PyNimObjectExperimental
+    Server* = ref object
       address*: string
       port*: int
       routes*: seq[Route]
@@ -331,7 +331,7 @@ template start*(server: Server): untyped =
   ## 
   ## Returns:
   ## - `untyped`: This template does not return any value.
-  when enableDebug:
+  when enableDebug or exportPython or defined(napibuild):
     info "Server started at http://" & `server`.address & ":" & $`server`.port
   when not declared(handleRequest):
     proc handleRequest(req: Request) {.async.} =
@@ -842,7 +842,7 @@ socketToSsr.onmessage=function(m){
         )
       )
   
-  when defined(debug):
+  when defined(debug) or exportPython or defined(napibuild):
     caseRequestMethodsStmt.add(ident"reqMethod")
   else:
     caseRequestMethodsStmt.add(reqMethod)
@@ -1166,7 +1166,7 @@ socketToSsr.onmessage=function(m){
                       newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
                         newCall("==", ident"opcode", newDotExpr(ident"Opcode", ident"Close")),
                         newStmtList(
-                          when enableDebug:
+                          when enableDebug or exportPython or defined(napibuild):
                             newStmtList(
                               newCall("error", newStrLitNode("Socket closed")),
                               wsDelStmt,
@@ -1183,7 +1183,7 @@ socketToSsr.onmessage=function(m){
                       insertWsList
                     # OTHER WS ERROR
                     ), newNimNode(nnkExceptBranch).add(
-                      when enableDebug:
+                      when enableDebug or exportPython or defined(napibuild):
                         newStmtList(
                           newCall(
                             "error",
@@ -1219,7 +1219,7 @@ socketToSsr.onmessage=function(m){
                 ),
                 newNimNode(nnkExceptBranch).add(
                   ident"WebSocketClosedError",
-                  when enableDebug:
+                  when enableDebug or exportPython or defined(napibuild):
                     newStmtList(
                       newCall(
                         "error", newCall("fmt", newStrLitNode("Socket closed: {getCurrentExceptionMsg()}"))
@@ -1235,7 +1235,7 @@ socketToSsr.onmessage=function(m){
                 ),
                 newNimNode(nnkExceptBranch).add(
                   ident"WebSocketProtocolMismatchError",
-                  when enableDebug:
+                  when enableDebug or exportPython or defined(napibuild):
                     newStmtList(
                       newCall(
                         "error",
@@ -1252,7 +1252,7 @@ socketToSsr.onmessage=function(m){
                 ),
                 newNimNode(nnkExceptBranch).add(
                   ident"WebSocketError",
-                  when enableDebug:
+                  when enableDebug or exportPython or defined(napibuild):
                     newStmtList(
                       newCall(
                         "error",
@@ -1333,7 +1333,7 @@ socketToSsr.onmessage=function(m){
   stmtList.insert(0, immutableVars)
   stmtList.insert(0, mutableVars)
   
-  when enableDebug:
+  when enableDebug or exportPython or defined(napibuild):
     stmtList.add(newCall(
       "info",
       newCall("fmt", newStrLitNode("{reqMethod}::{urlPath}"))
@@ -1361,7 +1361,7 @@ socketToSsr.onmessage=function(m){
     if notFoundNode.kind == nnkEmpty:
       let elseStmtList = newStmtList()
       ifStmt.add(newNimNode(nnkElse).add(elseStmtList))
-      when enableDebug:
+      when enableDebug or exportPython or defined(napibuild):
         elseStmtList.add(
           newCall(
             "warn",

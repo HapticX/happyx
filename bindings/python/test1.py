@@ -1,14 +1,14 @@
 from happyx import (
     FileResponse, HtmlResponse, JsonResponse, HttpRequest, WebSocket,
-    Response, new_server, reg_cors, RequestModelBase, __version__
+    Response, Server, reg_cors, RequestModelBase, __version__
 )
 
 
-app = new_server()
-user = new_server()
-sub_user = new_server()
+app = Server()
+user = Server()
+sub_user = Server()
 
-print(app.to_string())
+print(app)
 
 app.static("/static", './')
 app.mount("/user", user)
@@ -105,7 +105,7 @@ def read_root(req: HttpRequest, required: bool, optional = 5):
     )
 
 
-@app.notfound()
+@app.notfound
 def on_not_found():
     return HtmlResponse(
         "<h1>Oops! Not found!</h1>",
@@ -115,7 +115,7 @@ def on_not_found():
     )
 
 
-@app.middleware()
+@app.middleware
 def on_not_found(req: HttpRequest):
     print(f"Middleware handled path at [{req.http_method()}]:", req.path())
     print(f"Middleware detect these headers: {req.headers()}")

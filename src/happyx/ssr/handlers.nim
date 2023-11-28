@@ -213,19 +213,27 @@ elif exportPython:
           if @["MIDDLEWARE"] != route.httpMethod:
             reqResponded = true
           var request = initHttpRequest(req.path.get(), $req.httpMethod.get(), req.headers.get(), req.body.get())
-          if route.httpMethod == @["STATICFILE"]:
+          if route.httpMethod.len > 0 and route.httpMethod[0] == "STATICFILE":
             let
               routeData = handleRoute(route.path)
               founded_regexp_matches = findAll(urlPath, route.pattern)
               funcParams = getRouteParams(routeData, founded_regexp_matches, urlPath, force = true)
               fileName = $funcParams["file"]
+              extensions =
+                if route.httpMethod.len > 1:
+                  route.httpMethod[1..^1]  # file extensions
+                else:
+                  @[]
               file =
                 if not route.purePath.endsWith("/") and not fileName.startsWith("/"):
                   route.purePath & "/" & fileName
                 else:
                   route.purePath & fileName
+              splitted = file.split(".")
+              ext = splitted[^1]
             if fileExists(file):
-              await req.answerFile(file)
+              if extensions.len != 0 or ext in extensions or splitted.len == 1:
+                await req.answerFile(file)
           else:
             let
               queryFromUrl = block:
@@ -238,28 +246,22 @@ elif exportPython:
             var
               # Declare RouteData
               routeData = handleRoute(route.path)
-              # Declare route handler
-              handler = route.handler
-              # Declare Python Locals (for eval func)
-              locals = pyDict()
               # Declare Python Object (for function params)
               pyFuncParams: PyObject
               pyNone: PyObject
               # Declare JsonNode (for length of keyword arguments)
               keywordArguments: JsonNode
-              # Include route handler into Python locals 
-            locals["handler"] = handler
             # Unpack route path params
             let founded_regexp_matches = urlPath.findAll(route.pattern)
             var
               # handle callback data
               variables = newSeq[string]()
-              argcount = handler.getAttr("__code__").getAttr("co_argcount")
-              varnames = handler.getAttr("__code__").getAttr("co_varnames")
-              pDefaults = handler.getAttr("__defaults__")
+              argcount = route.handler.getAttr("__code__").getAttr("co_argcount")
+              varnames = route.handler.getAttr("__code__").getAttr("co_varnames")
+              pDefaults = route.handler.getAttr("__defaults__")
             # Create Python Object
             pyValueToNim(privateRawPyObj(pDefaults), keywordArguments)
-            let annotations = newAnnotations(handler.getAttr("__annotations__"))
+            let annotations = newAnnotations(route.handler.getAttr("__annotations__"))
             # Extract function arguments from Python
             for i in 0..<(argcount.to(int) - keywordArguments.len):
               variables.add(varnames[i].to(string))
@@ -306,37 +308,37 @@ elif exportPython:
               if handlerParams.hasParamType("WebSocket"):
                 pyFuncParams[handlerParams.getParamName("WebSocket")] = wsConnection
               # Add function parameters to locals
-              locals["funcParams"] = pFuncParams
+              route.locals["funcParams"] = pFuncParams
               try:
                 wsConnection.state = wssConnect
-                processWebSocket(py, locals)
+                processWebSocket(py, route.locals)
                 wsConnection.state = wssOpen
                 while wsClient.readyState == Open:
                   wsConnection.data = await wsClient.receiveStrPacket()
-                  processWebSocket(py, locals)
+                  processWebSocket(py, route.locals)
               except WebSocketClosedError:
                 wsConnection.state = wssClose
-                processWebSocket(py, locals)
+                processWebSocket(py, route.locals)
               except WebSocketHandshakeError:
                 error("Invalid WebSocket handshake. Headers haven't Sec-WebSocket-Version!")
                 wsConnection.state = wssHandshakeError
-                processWebSocket(py, locals)
+                processWebSocket(py, route.locals)
               except WebSocketProtocolMismatchError:
                 error(fmt"Socket tried to use an unknown protocol: {getCurrentExceptionMsg()}")
                 wsConnection.state = wssMismatchProtocol
-                processWebSocket(py, locals)
+                processWebSocket(py, route.locals)
               except WebSocketError:
                 error(fmt"Unexpected socket error: {getCurrentExceptionMsg()}")
                 wsConnection.state = wssError
-                processWebSocket(py, locals)
+                processWebSocket(py, route.locals)
               wsClient.close()
               return
             
             # Add function parameters to locals
-            locals["funcParams"] = pFuncParams
+            route.locals["funcParams"] = pFuncParams
             let
               # Execute callback
-              response = py.eval("handler(**funcParams)", locals)
+              response = py.eval("func(**funcParams)", route.locals)
               # Handle response type
               responseType = response.getAttr("__class__").getAttr("__name__")
             # Respond

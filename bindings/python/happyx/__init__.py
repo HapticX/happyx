@@ -3,6 +3,8 @@ from enum import IntEnum
 
 import happyx.happyx as happyx
 
+from .server import Server
+
 try:
     from jinja2 import Template
 except ImportError:
@@ -10,6 +12,18 @@ except ImportError:
 
 
 __version__ = happyx.happyx_version()
+
+__all__ = [
+    'Server',
+    'RequestModelBase',
+    'reg_cors',
+    'HttpRequest',
+    'FileResponse',
+    'HtmlResponse',
+    'JsonResponse',
+    'TemplateResponse',
+    'setup_jinja2'
+]
 
 
 # Http Request data
@@ -22,7 +36,6 @@ JsonResponse = happyx.JsonResponse
 # Web Sockets
 WebSocket = happyx.WebSocket
 # Main functions
-new_server = happyx.new_server
 register_route_param_type = happyx.register_route_param_type
 
 

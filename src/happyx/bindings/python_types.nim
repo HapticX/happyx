@@ -51,6 +51,7 @@ type
     httpMethod*: seq[string]
     pattern*: Regex2
     handler*: PyObject
+    locals*: PyObject
   HandlerParam* = object
     name*, paramType*: string
   RequestModelData* = object
@@ -104,7 +105,9 @@ proc toHttpHeaders*(headers: PyObject): HttpHeaders =
 
 
 proc initRoute*(path, purePath: string, httpMethod: seq[string], pattern: Regex2, handler: PyObject): Route =
-  Route(path: path, purePath: purePath, httpMethod: httpMethod, pattern: pattern, handler: handler)
+  result = Route(path: path, purePath: purePath, httpMethod: httpMethod, pattern: pattern, handler: handler)
+  result.locals = pyDict()
+  result.locals["func"] = handler
 
 proc hasHttpMethod*(self: Route, httpMethod: string | seq[string] | openarray[string]): bool =
   when httpMethod is string:

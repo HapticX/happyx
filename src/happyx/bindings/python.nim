@@ -7,6 +7,7 @@ import
   sugar,
   tables,
   strtabs,
+  sequtils,
   strformat,
   # NimPy lib
   nimpy,
@@ -25,13 +26,25 @@ HappyX web framework
 """)
 
 
-proc newServerPy*(address: string = "127.0.0.1", port: int = 5000): Server {.exportpy: "new_server".} =
+var
+  servers* = newTable[int, Server]()
+  serverUniqueId* = 0
+
+
+proc newServerPy*(address: string = "127.0.0.1", port: int = 5000): int {.exportpy: "new_server".} =
   ## Creates a new Server object.
   ## 
   ## Arguments:
   ## - address: string = "127.0.0.1"
   ## - port: int = 5000
-  newServer(address, port)
+  inc serverUniqueId
+  servers[serverUniqueId] = newServer(address, port)
+  serverUniqueId
+
+
+proc deleteServerPy*(serverId: int) {.exportpy: "delete_server".} =
+  ## Deletes server instance
+  servers.del(serverId)
 
 
 proc happyxVersion*: string {.exportpy: "happyx_version".} =
@@ -148,16 +161,12 @@ proc registerRouteParamType*(name, pattern: string): auto {.exportpy: "register_
     hiddenHandler
 
 
-proc `$`*(self: Server): string {.exportpy: "to_string".} =
-  ## Return server string representation
-  fmt"Server at http://{self.address}:{self.port}/"
-
-
-proc startServerPy*(self: Server) {.exportpy: "start".} =
+proc startServerPy*(serverId: int) {.exportpy: "start_server_by_id".} =
   ## Starts a new HappyX server
   ## 
   ## Server shouldn't be mounted
   {.gcsafe.}:
+    var self = servers[serverId]
     if not self.parent.isNil():
       raise newException(
         HpxAppRouteDefect, fmt"Server that you start shouldn't be mounted!"
@@ -219,134 +228,120 @@ proc addRoute(self: Server, path: string, httpMethods: seq[string], callback: Py
   s.sortRoutes()
 
 
-proc route*(self: Server, path: string, methods: seq[string]): auto {.exportpy.} =
+proc route*(serverId: int, path: string, methods: seq[string], callback: PyObject): auto {.exportpy: "route_server".} =
   ## Registers a new route.
   ## 
   ## You can choose HTTP methods via route("/", ["GET", "POST"])
-  proc wrapper(callback: PyObject) =
-    inspectCallback(callback)
-    var httpMethods = methods
-    for i in 0..<httpMethods.len:
-      httpMethods[i] = httpMethods[i].toUpper()
-    self.addRoute(path, httpMethods, callback)
-  wrapper
+  var self = servers[serverId]
+  inspectCallback(callback)
+  var httpMethods = methods
+  for i in 0..<httpMethods.len:
+    httpMethods[i] = httpMethods[i].toUpper()
+  self.addRoute(path, httpMethods, callback)
 
 
-proc get*(self: Server, path: string): auto {.exportpy.} =
+proc get*(serverId: int, path: string, callback: PyObject): auto {.exportpy: "get_server".} =
   ## Registers a new GET route.
-  proc wrapper(callback: PyObject) =
-    inspectCallback(callback)
-    self.addRoute(path, @["GET"], callback)
-  wrapper
+  var self = servers[serverId]
+  inspectCallback(callback)
+  self.addRoute(path, @["GET"], callback)
 
 
-proc post*(self: Server, path: string): auto {.exportpy.} =
+proc post*(serverId: int, path: string, callback: PyObject): auto {.exportpy: "post_server".} =
   ## Registers a new POST route.
-  proc wrapper(callback: PyObject) =
-    inspectCallback(callback)
-    self.addRoute(path, @["POST"], callback)
-  wrapper
+  var self = servers[serverId]
+  inspectCallback(callback)
+  self.addRoute(path, @["POST"], callback)
 
 
-proc put*(self: Server, path: string): auto {.exportpy.} =
+proc put*(serverId: int, path: string, callback: PyObject): auto {.exportpy: "put_server".} =
   ## Registers a new PUT route.
-  proc wrapper(callback: PyObject) =
-    inspectCallback(callback)
-    self.addRoute(path, @["PUT"], callback)
-  wrapper
+  var self = servers[serverId]
+  inspectCallback(callback)
+  self.addRoute(path, @["PUT"], callback)
 
 
-proc delete*(self: Server, path: string): auto {.exportpy.} =
+proc delete*(serverId: int, path: string, callback: PyObject): auto {.exportpy: "delete_server".} =
   ## Registers a new DELETE route.
-  proc wrapper(callback: PyObject) =
-    inspectCallback(callback)
-    self.addRoute(path, @["DELETE"], callback)
-  wrapper
+  var self = servers[serverId]
+  inspectCallback(callback)
+  self.addRoute(path, @["DELETE"], callback)
 
 
-proc link*(self: Server, path: string): auto {.exportpy.} =
+proc link*(serverId: int, path: string, callback: PyObject): auto {.exportpy: "link_server".} =
   ## Registers a new LINK route.
-  proc wrapper(callback: PyObject) =
-    inspectCallback(callback)
-    self.addRoute(path, @["LINK"], callback)
-  wrapper
+  var self = servers[serverId]
+  inspectCallback(callback)
+  self.addRoute(path, @["LINK"], callback)
 
 
-proc unlink*(self: Server, path: string): auto {.exportpy.} =
+proc unlink*(serverId: int, path: string, callback: PyObject): auto {.exportpy: "unlink_server".} =
   ## Registers a new UNLINK route.
-  proc wrapper(callback: PyObject) =
-    inspectCallback(callback)
-    self.addRoute(path, @["UNLINK"], callback)
-  wrapper
+  var self = servers[serverId]
+  inspectCallback(callback)
+  self.addRoute(path, @["UNLINK"], callback)
 
 
-proc purge*(self: Server, path: string): auto {.exportpy.} =
+proc purge*(serverId: int, path: string, callback: PyObject): auto {.exportpy: "purge_server".} =
   ## Registers a new PURGE route.
-  proc wrapper(callback: PyObject) =
-    inspectCallback(callback)
-    self.addRoute(path, @["PURGE"], callback)
-  wrapper
+  var self = servers[serverId]
+  inspectCallback(callback)
+  self.addRoute(path, @["PURGE"], callback)
 
 
-proc options*(self: Server, path: string): auto {.exportpy.} =
+proc options*(serverId: int, path: string, callback: PyObject): auto {.exportpy: "options_server".} =
   ## Registers a new OPTIONS route.
-  proc wrapper(callback: PyObject) =
-    inspectCallback(callback)
-    self.addRoute(path, @["OPTIONS"], callback)
-  wrapper
+  var self = servers[serverId]
+  inspectCallback(callback)
+  self.addRoute(path, @["OPTIONS"], callback)
 
 
-proc head*(self: Server, path: string): auto {.exportpy.} =
+proc head*(serverId: int, path: string, callback: PyObject): auto {.exportpy: "head_server".} =
   ## Registers a new HEAD route.
-  proc wrapper(callback: PyObject) =
-    inspectCallback(callback)
-    self.addRoute(path, @["HEAD"], callback)
-  wrapper
+  var self = servers[serverId]
+  inspectCallback(callback)
+  self.addRoute(path, @["HEAD"], callback)
 
 
-proc copy*(self: Server, path: string): auto {.exportpy.} =
+proc copy*(serverId: int, path: string, callback: PyObject): auto {.exportpy: "copy_server".} =
   ## Registers a new COPY route.
-  proc wrapper(callback: PyObject) =
-    inspectCallback(callback)
-    self.addRoute(path, @["COPY"], callback)
-  wrapper
+  var self = servers[serverId]
+  inspectCallback(callback)
+  self.addRoute(path, @["COPY"], callback)
 
 
-proc websocket*(self: Server, path: string): auto {.exportpy.} =
+proc websocket*(serverId: int, path: string, callback: PyObject): auto {.exportpy: "websocket_server".} =
   ## Registers a new WEBSOCKET route.
-  proc wrapper(callback: PyObject) =
-    inspectCallback(callback)
-    self.addRoute(path, @["WEBSOCKET"], callback)
-  wrapper
+  var self = servers[serverId]
+  inspectCallback(callback)
+  self.addRoute(path, @["WEBSOCKET"], callback)
 
 
-proc middleware*(self: Server): auto {.exportpy.} =
+proc middleware*(serverId: int, callback: PyObject): auto {.exportpy: "middleware_server".} =
   ## Registers a new MIDDLEWARE route.
-  proc wrapper(callback: PyObject) =
-    inspectCallback(callback)
-    self.addRoute("", @["MIDDLEWARE"], callback)
-  wrapper
+  var self = servers[serverId]
+  inspectCallback(callback)
+  self.addRoute("", @["MIDDLEWARE"], callback)
 
 
-proc notfound*(self: Server): auto {.exportpy.} =
+proc notfound*(serverId: int, callback: PyObject): auto {.exportpy: "notfound_server".} =
   ## Registers a new NOT FOUND route.
-  proc wrapper(callback: PyObject) =
-    inspectCallback(callback)
-    self.addRoute("", @["NOTFOUND"], callback)
-  wrapper
+  var self = servers[serverId]
+  inspectCallback(callback)
+  self.addRoute("", @["NOTFOUND"], callback)
 
 
-proc mount*(self: Server, path: string, other: Server) {.exportpy.} =
+proc mount*(serverId: int, path: string, otherId: int) {.exportpy: "mount_server".} =
   ## Registers sub application at `path`
-  other.path = path
-  other.parent = self
+  servers[otherId].path = path
+  servers[otherId].parent = servers[serverId]
 
 
-proc `static`*(self: Server, path: string, directory: string) {.exportpy: "static".} =
+proc `static`*(serverId: int, path: string, directory: string, extensions: seq[string]) {.exportpy: "static_server".} =
   ## Registers public folder
   var
     p = path
-    s = self
+    s = servers[serverId]
   while not s.parent.isNil():
     p = s.path & p
     s = s.parent
@@ -354,4 +349,6 @@ proc `static`*(self: Server, path: string, directory: string) {.exportpy: "stati
     p &= "/"
   p &= "{file:path}"
   let routeData = handleRoute(p)
-  s.routes.add(initRoute(p, directory, @["STATICFILE"], re2("^" & routeData.purePath & "$"), nil))
+  s.routes.add(
+    initRoute(p, directory, @["STATICFILE"].concat(extensions), re2("^" & routeData.purePath & "$"), nil)
+  )

@@ -29,7 +29,7 @@ setup(
     py_modules=['happyx'],
     license='MIT',
     classifiers=[
-        'Development Status :: 4 - Beta',
+        'Development Status :: 5 - Production/Stable',
         'Topic :: Software Development :: Libraries :: Application Frameworks',
         'License :: OSI Approved :: MIT License',
         'Operating System :: OS Independent',
