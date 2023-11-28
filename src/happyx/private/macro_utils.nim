@@ -455,7 +455,6 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
   result = newCall("initTag", elementName)
 
   for statement in body:
-    echo treeRepr statement
     if statement.kind == nnkDiscardStmt:
       continue
     elif statement.kind == nnkPrefix and statement[0] == ident"!" and statement[1] == ident"debugRoot":
