@@ -1,4 +1,7 @@
-newServerPy	happyx/bindings/python.html#newServerPy,string,int	python: newServerPy(address: string = &quot;127.0.0.1&quot;; port: int = 5000): Server	
+servers	happyx/bindings/python.html#servers	python: servers	
+serverUniqueId	happyx/bindings/python.html#serverUniqueId	python: serverUniqueId	
+newServerPy	happyx/bindings/python.html#newServerPy,string,int	python: newServerPy(address: string = &quot;127.0.0.1&quot;; port: int = 5000): int	
+deleteServerPy	happyx/bindings/python.html#deleteServerPy,int	python: deleteServerPy(serverId: int)	
 happyxVersion	happyx/bindings/python.html#happyxVersion	python: happyxVersion(): string	
 registerCORS	happyx/bindings/python.html#registerCORS,string,string,string,bool	python: registerCORS(allow_origins: string; allow_methods: string;\n             allow_headers: string; credentials: bool)	
 close	happyx/bindings/python.html#close	python: close(self: python_types.WebSocket)	
@@ -32,22 +35,21 @@ headers	happyx/bindings/python.html#headers,ResponseObj	python: headers(self: Re
 headers	happyx/bindings/python.html#headers,JsonResponseObj	python: headers(self: JsonResponseObj): PyObject	
 headers	happyx/bindings/python.html#headers,HtmlResponseObj	python: headers(self: HtmlResponseObj): PyObject	
 registerRouteParamType	happyx/bindings/python.html#registerRouteParamType,string,string	python: registerRouteParamType(name, pattern: string): auto	
-`$`	happyx/bindings/python.html#$,Server	python: `$`(self: Server): string	
-startServerPy	happyx/bindings/python.html#startServerPy,Server	python: startServerPy(self: Server)	
-route	happyx/bindings/python.html#route,Server,string,seq[string]	python: route(self: Server; path: string; methods: seq[string]): auto	
-get	happyx/bindings/python.html#get,Server,string	python: get(self: Server; path: string): auto	
-post	happyx/bindings/python.html#post,Server,string	python: post(self: Server; path: string): auto	
-put	happyx/bindings/python.html#put,Server,string	python: put(self: Server; path: string): auto	
-delete	happyx/bindings/python.html#delete,Server,string	python: delete(self: Server; path: string): auto	
-link	happyx/bindings/python.html#link,Server,string	python: link(self: Server; path: string): auto	
-unlink	happyx/bindings/python.html#unlink,Server,string	python: unlink(self: Server; path: string): auto	
-purge	happyx/bindings/python.html#purge,Server,string	python: purge(self: Server; path: string): auto	
-options	happyx/bindings/python.html#options,Server,string	python: options(self: Server; path: string): auto	
-head	happyx/bindings/python.html#head,Server,string	python: head(self: Server; path: string): auto	
-copy	happyx/bindings/python.html#copy,Server,string	python: copy(self: Server; path: string): auto	
-websocket	happyx/bindings/python.html#websocket,Server,string	python: websocket(self: Server; path: string): auto	
-middleware	happyx/bindings/python.html#middleware,Server	python: middleware(self: Server): auto	
-notfound	happyx/bindings/python.html#notfound,Server	python: notfound(self: Server): auto	
-mount	happyx/bindings/python.html#mount,Server,string,Server	python: mount(self: Server; path: string; other: Server)	
-`static`	happyx/bindings/python.html#static,Server,string,string	python: `static`(self: Server; path: string; directory: string)	
+startServerPy	happyx/bindings/python.html#startServerPy,int	python: startServerPy(serverId: int)	
+route	happyx/bindings/python.html#route,int,string,seq[string],PyObject	python: route(serverId: int; path: string; methods: seq[string]; callback: PyObject): auto	
+get	happyx/bindings/python.html#get,int,string,PyObject	python: get(serverId: int; path: string; callback: PyObject): auto	
+post	happyx/bindings/python.html#post,int,string,PyObject	python: post(serverId: int; path: string; callback: PyObject): auto	
+put	happyx/bindings/python.html#put,int,string,PyObject	python: put(serverId: int; path: string; callback: PyObject): auto	
+delete	happyx/bindings/python.html#delete,int,string,PyObject	python: delete(serverId: int; path: string; callback: PyObject): auto	
+link	happyx/bindings/python.html#link,int,string,PyObject	python: link(serverId: int; path: string; callback: PyObject): auto	
+unlink	happyx/bindings/python.html#unlink,int,string,PyObject	python: unlink(serverId: int; path: string; callback: PyObject): auto	
+purge	happyx/bindings/python.html#purge,int,string,PyObject	python: purge(serverId: int; path: string; callback: PyObject): auto	
+options	happyx/bindings/python.html#options,int,string,PyObject	python: options(serverId: int; path: string; callback: PyObject): auto	
+head	happyx/bindings/python.html#head,int,string,PyObject	python: head(serverId: int; path: string; callback: PyObject): auto	
+copy	happyx/bindings/python.html#copy,int,string,PyObject	python: copy(serverId: int; path: string; callback: PyObject): auto	
+websocket	happyx/bindings/python.html#websocket,int,string,PyObject	python: websocket(serverId: int; path: string; callback: PyObject): auto	
+middleware	happyx/bindings/python.html#middleware,int,PyObject	python: middleware(serverId: int; callback: PyObject): auto	
+notfound	happyx/bindings/python.html#notfound,int,PyObject	python: notfound(serverId: int; callback: PyObject): auto	
+mount	happyx/bindings/python.html#mount,int,string,int	python: mount(serverId: int; path: string; otherId: int)	
+`static`	happyx/bindings/python.html#static,int,string,string,seq[string]	python: `static`(serverId: int; path: string; directory: string; extensions: seq[string])	
 Python Bindings 🐍	happyx/bindings/python.html#python-bindings-🐍	 Python Bindings 🐍	

@@ -95,8 +95,6 @@ window.addEventListener('DOMContentLoaded', main);
           </ul></dd>
 <dt><a name="%60%24%60" href="#%60%24%60"><span>`$`:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="python: `$`(self: Server): string" href="happyx/bindings/python.html#%24%2CServer">python: `$`(self: Server): string</a></li>
-          <li><a class="reference external"
           data-doc-search-tag="state: `$`[T](self: State[T]): string" href="happyx/spa/state.html#%24%2CState%5BT%5D">state: `$`[T](self: State[T]): string</a></li>
           <li><a class="reference external"
           data-doc-search-tag="tag: `$`(self: TagRef): string" href="happyx/spa/tag.html#%24%2CTagRef">tag: `$`(self: TagRef): string</a></li>
@@ -317,7 +315,7 @@ window.addEventListener('DOMContentLoaded', main);
           </ul></dd>
 <dt><a name="%60static%60" href="#%60static%60"><span>`static`:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="python: `static`(self: Server; path: string; directory: string)" href="happyx/bindings/python.html#static%2CServer%2Cstring%2Cstring">python: `static`(self: Server; path: string; directory: string)</a></li>
+          data-doc-search-tag="python: `static`(serverId: int; path: string; directory: string; extensions: seq[string])" href="happyx/bindings/python.html#static%2Cint%2Cstring%2Cstring%2Cseq%5Bstring%5D">python: `static`(serverId: int; path: string; directory: string; extensions: seq[string])</a></li>
           </ul></dd>
 <dt><a name="%60%7C%3D%60" href="#%60%7C%3D%60"><span>`|=`:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -575,7 +573,7 @@ window.addEventListener('DOMContentLoaded', main);
           </ul></dd>
 <dt><a name="copy" href="#copy"><span>copy:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="python: copy(self: Server; path: string): auto" href="happyx/bindings/python.html#copy%2CServer%2Cstring">python: copy(self: Server; path: string): auto</a></li>
+          data-doc-search-tag="python: copy(serverId: int; path: string; callback: PyObject): auto" href="happyx/bindings/python.html#copy%2Cint%2Cstring%2CPyObject">python: copy(serverId: int; path: string; callback: PyObject): auto</a></li>
           </ul></dd>
 <dt><a name="CORSObj" href="#CORSObj"><span>CORSObj:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -639,7 +637,11 @@ window.addEventListener('DOMContentLoaded', main);
           </ul></dd>
 <dt><a name="delete" href="#delete"><span>delete:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="python: delete(self: Server; path: string): auto" href="happyx/bindings/python.html#delete%2CServer%2Cstring">python: delete(self: Server; path: string): auto</a></li>
+          data-doc-search-tag="python: delete(serverId: int; path: string; callback: PyObject): auto" href="happyx/bindings/python.html#delete%2Cint%2Cstring%2CPyObject">python: delete(serverId: int; path: string; callback: PyObject): auto</a></li>
+          </ul></dd>
+<dt><a name="deleteServerPy" href="#deleteServerPy"><span>deleteServerPy:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="python: deleteServerPy(serverId: int)" href="happyx/bindings/python.html#deleteServerPy%2Cint">python: deleteServerPy(serverId: int)</a></li>
           </ul></dd>
 <dt><a name="discardStmt" href="#discardStmt"><span>discardStmt:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -787,7 +789,7 @@ window.addEventListener('DOMContentLoaded', main);
           </ul></dd>
 <dt><a name="get" href="#get"><span>get:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="python: get(self: Server; path: string): auto" href="happyx/bindings/python.html#get%2CServer%2Cstring">python: get(self: Server; path: string): auto</a></li>
+          data-doc-search-tag="python: get(serverId: int; path: string; callback: PyObject): auto" href="happyx/bindings/python.html#get%2Cint%2Cstring%2CPyObject">python: get(serverId: int; path: string; callback: PyObject): auto</a></li>
           <li><a class="reference external"
           data-doc-search-tag="state: get[T](self: State[T]): T" href="happyx/spa/state.html#get%2CState%5BT%5D">state: get[T](self: State[T]): T</a></li>
           <li><a class="reference external"
@@ -861,7 +863,7 @@ window.addEventListener('DOMContentLoaded', main);
           </ul></dd>
 <dt><a name="head" href="#head"><span>head:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="python: head(self: Server; path: string): auto" href="happyx/bindings/python.html#head%2CServer%2Cstring">python: head(self: Server; path: string): auto</a></li>
+          data-doc-search-tag="python: head(serverId: int; path: string; callback: PyObject): auto" href="happyx/bindings/python.html#head%2Cint%2Cstring%2CPyObject">python: head(serverId: int; path: string; callback: PyObject): auto</a></li>
           </ul></dd>
 <dt><a name="headers" href="#headers"><span>headers:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -1091,7 +1093,7 @@ window.addEventListener('DOMContentLoaded', main);
           </ul></dd>
 <dt><a name="link" href="#link"><span>link:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="python: link(self: Server; path: string): auto" href="happyx/bindings/python.html#link%2CServer%2Cstring">python: link(self: Server; path: string): auto</a></li>
+          data-doc-search-tag="python: link(serverId: int; path: string; callback: PyObject): auto" href="happyx/bindings/python.html#link%2Cint%2Cstring%2CPyObject">python: link(serverId: int; path: string; callback: PyObject): auto</a></li>
           </ul></dd>
 <dt><a name="liveview" href="#liveview"><span>liveview:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -1103,7 +1105,7 @@ window.addEventListener('DOMContentLoaded', main);
           </ul></dd>
 <dt><a name="middleware" href="#middleware"><span>middleware:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="python: middleware(self: Server): auto" href="happyx/bindings/python.html#middleware%2CServer">python: middleware(self: Server): auto</a></li>
+          data-doc-search-tag="python: middleware(serverId: int; callback: PyObject): auto" href="happyx/bindings/python.html#middleware%2Cint%2CPyObject">python: middleware(serverId: int; callback: PyObject): auto</a></li>
           </ul></dd>
 <dt><a name="model" href="#model"><span>model:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -1119,7 +1121,7 @@ window.addEventListener('DOMContentLoaded', main);
           </ul></dd>
 <dt><a name="mount" href="#mount"><span>mount:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="python: mount(self: Server; path: string; other: Server)" href="happyx/bindings/python.html#mount%2CServer%2Cstring%2CServer">python: mount(self: Server; path: string; other: Server)</a></li>
+          data-doc-search-tag="python: mount(serverId: int; path: string; otherId: int)" href="happyx/bindings/python.html#mount%2Cint%2Cstring%2Cint">python: mount(serverId: int; path: string; otherId: int)</a></li>
           <li><a class="reference external"
           data-doc-search-tag="mounting: mount(mountName, body: untyped): untyped" href="happyx/routing/mounting.html#mount.m%2Cuntyped%2Cuntyped">mounting: mount(mountName, body: untyped): untyped</a></li>
           </ul></dd>
@@ -1197,7 +1199,7 @@ window.addEventListener('DOMContentLoaded', main);
           </ul></dd>
 <dt><a name="newServerPy" href="#newServerPy"><span>newServerPy:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="python: newServerPy(address: string = &quot;127.0.0.1&quot;; port: int = 5000): Server" href="happyx/bindings/python.html#newServerPy%2Cstring%2Cint">python: newServerPy(address: string = &quot;127.0.0.1&quot;; port: int = 5000): Server</a></li>
+          data-doc-search-tag="python: newServerPy(address: string = &quot;127.0.0.1&quot;; port: int = 5000): int" href="happyx/bindings/python.html#newServerPy%2Cstring%2Cint">python: newServerPy(address: string = &quot;127.0.0.1&quot;; port: int = 5000): int</a></li>
           </ul></dd>
 <dt><a name="newWebSocketObj" href="#newWebSocketObj"><span>newWebSocketObj:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -1221,7 +1223,7 @@ window.addEventListener('DOMContentLoaded', main);
           </ul></dd>
 <dt><a name="notfound" href="#notfound"><span>notfound:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="python: notfound(self: Server): auto" href="happyx/bindings/python.html#notfound%2CServer">python: notfound(self: Server): auto</a></li>
+          data-doc-search-tag="python: notfound(serverId: int; callback: PyObject): auto" href="happyx/bindings/python.html#notfound%2Cint%2CPyObject">python: notfound(serverId: int; callback: PyObject): auto</a></li>
           </ul></dd>
 <dt><a name="numThreads" href="#numThreads"><span>numThreads:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -1233,7 +1235,7 @@ window.addEventListener('DOMContentLoaded', main);
           </ul></dd>
 <dt><a name="options" href="#options"><span>options:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="python: options(self: Server; path: string): auto" href="happyx/bindings/python.html#options%2CServer%2Cstring">python: options(self: Server; path: string): auto</a></li>
+          data-doc-search-tag="python: options(serverId: int; path: string; callback: PyObject): auto" href="happyx/bindings/python.html#options%2Cint%2Cstring%2CPyObject">python: options(serverId: int; path: string; callback: PyObject): auto</a></li>
           </ul></dd>
 <dt><a name="pairs" href="#pairs"><span>pairs:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -1285,7 +1287,7 @@ window.addEventListener('DOMContentLoaded', main);
           </ul></dd>
 <dt><a name="post" href="#post"><span>post:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="python: post(self: Server; path: string): auto" href="happyx/bindings/python.html#post%2CServer%2Cstring">python: post(self: Server; path: string): auto</a></li>
+          data-doc-search-tag="python: post(serverId: int; path: string; callback: PyObject): auto" href="happyx/bindings/python.html#post%2Cint%2Cstring%2CPyObject">python: post(serverId: int; path: string; callback: PyObject): auto</a></li>
           </ul></dd>
 <dt><a name="pragmaBlock" href="#pragmaBlock"><span>pragmaBlock:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -1317,11 +1319,11 @@ window.addEventListener('DOMContentLoaded', main);
           </ul></dd>
 <dt><a name="purge" href="#purge"><span>purge:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="python: purge(self: Server; path: string): auto" href="happyx/bindings/python.html#purge%2CServer%2Cstring">python: purge(self: Server; path: string): auto</a></li>
+          data-doc-search-tag="python: purge(serverId: int; path: string; callback: PyObject): auto" href="happyx/bindings/python.html#purge%2Cint%2Cstring%2CPyObject">python: purge(serverId: int; path: string; callback: PyObject): auto</a></li>
           </ul></dd>
 <dt><a name="put" href="#put"><span>put:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="python: put(self: Server; path: string): auto" href="happyx/bindings/python.html#put%2CServer%2Cstring">python: put(self: Server; path: string): auto</a></li>
+          data-doc-search-tag="python: put(serverId: int; path: string; callback: PyObject): auto" href="happyx/bindings/python.html#put%2Cint%2Cstring%2CPyObject">python: put(serverId: int; path: string; callback: PyObject): auto</a></li>
           </ul></dd>
 <dt><a name="receiveJson" href="#receiveJson"><span>receiveJson:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -1463,7 +1465,7 @@ window.addEventListener('DOMContentLoaded', main);
           </ul></dd>
 <dt><a name="route" href="#route"><span>route:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="python: route(self: Server; path: string; methods: seq[string]): auto" href="happyx/bindings/python.html#route%2CServer%2Cstring%2Cseq%5Bstring%5D">python: route(self: Server; path: string; methods: seq[string]): auto</a></li>
+          data-doc-search-tag="python: route(serverId: int; path: string; methods: seq[string]; callback: PyObject): auto" href="happyx/bindings/python.html#route%2Cint%2Cstring%2Cseq%5Bstring%5D%2CPyObject">python: route(serverId: int; path: string; methods: seq[string]; callback: PyObject): auto</a></li>
           </ul></dd>
 <dt><a name="Route" href="#Route"><span>Route:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -1517,6 +1519,14 @@ window.addEventListener('DOMContentLoaded', main);
 <li><a class="reference external"
           data-doc-search-tag="server: Server" href="happyx/ssr/server.html#Server">server: Server</a></li>
           </ul></dd>
+<dt><a name="servers" href="#servers"><span>servers:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="python: servers" href="happyx/bindings/python.html#servers">python: servers</a></li>
+          </ul></dd>
+<dt><a name="serverUniqueId" href="#serverUniqueId"><span>serverUniqueId:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="python: serverUniqueId" href="happyx/bindings/python.html#serverUniqueId">python: serverUniqueId</a></li>
+          </ul></dd>
 <dt><a name="Session" href="#Session"><span>Session:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="session: Session" href="happyx/ssr/session.html#Session">session: Session</a></li>
@@ -1549,7 +1559,7 @@ window.addEventListener('DOMContentLoaded', main);
           </ul></dd>
 <dt><a name="startServerPy" href="#startServerPy"><span>startServerPy:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="python: startServerPy(self: Server)" href="happyx/bindings/python.html#startServerPy%2CServer">python: startServerPy(self: Server)</a></li>
+          data-doc-search-tag="python: startServerPy(serverId: int)" href="happyx/bindings/python.html#startServerPy%2Cint">python: startServerPy(serverId: int)</a></li>
           </ul></dd>
 <dt><a name="startSession" href="#startSession"><span>startSession:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -1709,7 +1719,7 @@ window.addEventListener('DOMContentLoaded', main);
           </ul></dd>
 <dt><a name="unlink" href="#unlink"><span>unlink:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="python: unlink(self: Server; path: string): auto" href="happyx/bindings/python.html#unlink%2CServer%2Cstring">python: unlink(self: Server; path: string): auto</a></li>
+          data-doc-search-tag="python: unlink(serverId: int; path: string; callback: PyObject): auto" href="happyx/bindings/python.html#unlink%2Cint%2Cstring%2CPyObject">python: unlink(serverId: int; path: string; callback: PyObject): auto</a></li>
           </ul></dd>
 <dt><a name="use" href="#use"><span>use:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -1731,7 +1741,7 @@ window.addEventListener('DOMContentLoaded', main);
           </ul></dd>
 <dt><a name="websocket" href="#websocket"><span>websocket:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="python: websocket(self: Server; path: string): auto" href="happyx/bindings/python.html#websocket%2CServer%2Cstring">python: websocket(self: Server; path: string): auto</a></li>
+          data-doc-search-tag="python: websocket(serverId: int; path: string; callback: PyObject): auto" href="happyx/bindings/python.html#websocket%2Cint%2Cstring%2CPyObject">python: websocket(serverId: int; path: string; callback: PyObject): auto</a></li>
           </ul></dd>
 <dt><a name="WebSocket" href="#WebSocket"><span>WebSocket:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -1746,7 +1756,7 @@ window.addEventListener('DOMContentLoaded', main);
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-11-28 03:56:55 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-11-28 14:01:28 UTC</small>
       </div>
     </div>
   </div>
