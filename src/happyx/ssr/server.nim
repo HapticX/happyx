@@ -931,14 +931,14 @@ socketToSsr.onmessage=function(m){
         if name == "STATICDIR":
           # Just path
           var
-            staticPath = ""
-            directory = ""
+            staticPath = newLit""
+            directory = newLit""
             extensions: seq[string] = @[]
           
           # staticDir "/directory"
-          if statement[1].kind in [nnkStrLit, nnkTripleStrLit]:
-            staticPath = $statement[1]
-            directory = $statement[1]
+          if statement[1].kind in [nnkStrLit, nnkTripleStrLit, nnkIdent, nnkDotExpr]:
+            staticPath = statement[1]
+            directory = statement[1]
             ifStmt.insert(
               0, newNimNode(nnkElifBranch).add(
                 newCall(
@@ -946,7 +946,7 @@ socketToSsr.onmessage=function(m){
                   newCall(
                     "or",
                     newCall("startsWith", pathIdent, statement[1]),
-                    newCall("startsWith", pathIdent, newStrLitNode("/" & $statement[1])),
+                    newCall("startsWith", pathIdent, newCall("&", newLit"/", statement[1])),
                   ), newCall(
                     "fileExists",
                     directoryFromPath
@@ -959,18 +959,18 @@ socketToSsr.onmessage=function(m){
             )
           # staticDir "/path" -> "directory" ~ "js,html"
           elif statement[1].kind == nnkInfix and statement[1][0] == ident"->" and statement[1][2].kind == nnkInfix and statement[1][2][0] == ident"~":
-            staticPath = $statement[1][1]
-            directory = $statement[1][2][1]
+            staticPath = statement[1][1]
+            directory = statement[1][2][1]
             extensions = ($statement[1][2][2]).split(",")
           # staticDir "/directory" ~ "js,html"
           elif statement[1].kind == nnkInfix and statement[1][0] == ident"~":
-            staticPath = $statement[1][1]
-            directory = $statement[1][1]
+            staticPath = statement[1][1]
+            directory = statement[1][1]
             extensions = ($statement[1][2]).split(",")
           # staticDir "/directory" -> "js,html"
           elif statement[1].kind == nnkInfix and statement[1][0] == ident"->":
-            staticPath = $statement[1][1]
-            directory = $statement[1][2]
+            staticPath = statement[1][1]
+            directory = statement[1][2]
 
           if directory == staticPath:
             let answerStatic =
@@ -994,8 +994,8 @@ socketToSsr.onmessage=function(m){
                   "and",
                   newCall(
                     "or",
-                    newCall("startsWith", pathIdent, newLit(staticPath)),
-                    newCall("startsWith", pathIdent, newStrLitNode("/" & $staticPath)),
+                    newCall("startsWith", pathIdent, staticPath),
+                    newCall("startsWith", pathIdent, newCall("&", newLit"/", statement[1])),
                   ), newCall(
                     "fileExists",
                     directoryFromPath
@@ -1006,14 +1006,14 @@ socketToSsr.onmessage=function(m){
             )
           else:
             let
-              route = if staticPath == "/": newStrLitNode("") else: newLit(staticPath)
-              path = if $staticPath == "/": newStrLitNode(directory & "/") else: newLit(directory)
+              route = if staticPath == newLit"/": newLit"" else: staticPath
+              path = if staticPath == newLit"/": newCall("&", directory, newLit"/") else: directory
             let dirFromPath = newCall(
               "&",
-              newCall("&", newStrLitNode("."), newLit("/")),
+              newCall("&", newLit".", newLit"/"),
               newCall(
                 "replace",
-                newCall("replace", pathIdent, newLit(staticPath), path),
+                newCall("replace", pathIdent, staticPath, path),
                 newLit('/'), ident"DirSep"
               )
             )
@@ -1044,7 +1044,7 @@ socketToSsr.onmessage=function(m){
             )
           continue
           
-          if statement[1].kind in [nnkStrLit, nnkTripleStrLit]:
+          if statement[1].kind in {nnkStrLit, nnkTripleStrLit, nnkIdent, nnkDotExpr}:
             ifStmt.insert(
               0, newNimNode(nnkElifBranch).add(
                 newCall(
@@ -1052,7 +1052,7 @@ socketToSsr.onmessage=function(m){
                   newCall(
                     "or",
                     newCall("startsWith", pathIdent, statement[1]),
-                    newCall("startsWith", pathIdent, newStrLitNode("/" & $statement[1])),
+                    newCall("startsWith", pathIdent, newCall("&", newLit"/", statement[1])),
                   ), newCall(
                     "fileExists",
                     directoryFromPath
@@ -1066,11 +1066,11 @@ socketToSsr.onmessage=function(m){
           elif statement[1].kind == nnkInfix and statement[1][^1].kind == nnkInfix and statement[1][0] == ident"->" and statement[1][^1][0] == ident"~":
             # Path -> directory ~ extensions
             let
-              route = if $statement[1][1] == "/": newStrLitNode("") else: statement[1][1]
-              path = if $statement[1][1] == "/": newStrLitNode($statement[1][2] & "/") else: statement[1][2]
+              route = if statement[1][1] == newLit"/": newLit"" else: statement[1][1]
+              path = if statement[1][1] == newLit"/": newCall("&", statement[1][2], newLit"/") else: statement[1][2]
             let dirFromPath = newCall(
               "&",
-              newCall("&", newStrLitNode("."), newLit("/")),
+              newCall("&", newLit".", newLit"/"),
               newCall(
                 "replace",
                 newCall("replace", pathIdent, statement[1][1], path),
@@ -1092,11 +1092,11 @@ socketToSsr.onmessage=function(m){
           else:
             # Path -> directory
             let
-              route = if $statement[1][1] == "/": newStrLitNode("") else: statement[1][1]
-              path = if $statement[1][1] == "/": newStrLitNode($statement[1][2] & "/") else: statement[1][2]
+              route = if statement[1][1] == newLit"/": newLit"" else: statement[1][1]
+              path = if statement[1][1] == newLit"/": newCall("&", statement[1][2], newLit"/") else: statement[1][2]
             let dirFromPath = newCall(
               "&",
-              newCall("&", newStrLitNode("."), newLit("/")),
+              newCall("&", newLit".", newLit"/"),
               newCall(
                 "replace",
                 newCall("replace", pathIdent, statement[1][1], path),

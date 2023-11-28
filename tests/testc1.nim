@@ -48,6 +48,10 @@ serve("127.0.0.1", 5000):
     echo reqMethod
     echo urlPath
   
+  let customRoute = "/tmpl"
+  let customDir = "/templates"
+  let customRoute1 = "/tmpl1"
+  
   staticDir "testdir"
   staticDir "components"
   # Path -> directory
@@ -57,3 +61,7 @@ serve("127.0.0.1", 5000):
   staticDir "/pubdir" -> "testdir" ~ "html,js,css"
   # Path ~ extensions
   staticDir "/templates" ~ "html,js,css"
+
+  staticDir customRoute -> customDir ~ "html,js,css"
+  staticDir customRoute1 ~ "html,js,css"
+  staticDir customRoute1 -> customDir
