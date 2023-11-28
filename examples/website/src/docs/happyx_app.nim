@@ -61,7 +61,7 @@ component HappyxApp:
       component CodeBlockGuide(@[
         ("Nim", "nim", "import happyx", cstring"nim_import_ssr", newPlayResult()),
         ("Nim (SPA)", "nim", "import happyx", cstring"nim_import_ssr", newPlayResult()),
-        ("Python", "python", "from happyx import new_server", cstring"py_import", newPlayResult()),
+        ("Python", "python", "from happyx import Server", cstring"py_import", newPlayResult()),
         ("JavaScript", "javascript", "import { Server } from \"happyx\";", cstring"js_import", newPlayResult()),
         ("TypeScript", "typescript", "import { Server, Request } from \"happyx\";", cstring"ts_import", newPlayResult()),
       ])
@@ -105,7 +105,7 @@ component HappyxApp:
       component CodeBlockGuide(@[
         ("Nim", "nim", "serve \"127.0.0.1\", 5000:\n  discard", cstring"nim", newPlayResult()),
         ("Nim (SPA)", "nim", "appRoutes \"app\":\n  discard", cstring"nimspa", newPlayResult()),
-        ("Python", "python", "app = new_server('127.0.0.1', 5000)", cstring"py", newPlayResult()),
+        ("Python", "python", "app = Server('127.0.0.1', 5000)", cstring"py", newPlayResult()),
         ("JavaScript", "javascript", "const app = new_server(\"127.0.0.1\", 5000)", cstring"js", newPlayResult()),
         ("TypeScript", "typescript", "const app = new_server(\"127.0.0.1\", 5000)", cstring"ts", newPlayResult()),
       ])

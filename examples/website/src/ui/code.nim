@@ -50,10 +50,10 @@ appRoutes "app":
     "Hello, world"
 """
 
-  pythonHelloWorldExample* = """from happyx import new_server
+  pythonHelloWorldExample* = """from happyx import Server
 
 # Create application
-app = new_server('127.0.0.1', 5000)
+app = Server('127.0.0.1', 5000)
 
 
 # GET method
@@ -233,7 +233,7 @@ def calculate(left: float, right: float, op: str):
     echo userId
     return $userId
 """
-  pythonPathParamsSsr* = """app = new_server()
+  pythonPathParamsSsr* = """app = Server()
 
 @app.get('/user/id{user_id}')
 def handle(user_id: int):
@@ -305,10 +305,10 @@ appRoutes "app":
     echo i.second
     echo i.third
 """
-  pythonCustomRouteParamType* = """from happyx import new_server, register_route_param_type
+  pythonCustomRouteParamType* = """from happyx import Server, register_route_param_type
 
 
-app = new_server()
+app = Server()
 
 
 # Here is unique identifier, regex pattern and function/class object
@@ -491,10 +491,10 @@ serve "127.0.0.1", 5000:
     outCookies.add(setCookie("happyx-auth-reason", "HappyX", secure = true, httpOnly = true))
     return 1
 """
-  pySsrAdvancedHelloWorld* = """from happyx import new_server, JsonResponse, Response
+  pySsrAdvancedHelloWorld* = """from happyx import Server, JsonResponse, Response
 
 
-app = new_server('127.0.0.1', 5000)
+app = Server('127.0.0.1', 5000)
 
 
 @app.get('/statusCode')
@@ -634,10 +634,10 @@ serve "127.0.0.1", 5000:
 
   staticDir "/path/to/directory" -> "directory"
 """
-  pySsrAdditionalRoutes* = """from happyx import new_server, HttpRequest
+  pySsrAdditionalRoutes* = """from happyx import Server, HttpRequest
 
 
-app = new_server("127.0.0.1", 5000)
+app = Server("127.0.0.1", 5000)
 
 app.static("/path/to/directory", './directory')
 

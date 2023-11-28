@@ -23,10 +23,10 @@ pip install happyx
 ### Hello World 👋
 
 ```py
-from happyx import new_server
+from happyx import Server
 
 
-app = new_server('127.0.0.1', 5000)  # host and port are optional params
+app = Server('127.0.0.1', 5000)  # host and port are optional params
 
 
 @app.get('/')
@@ -41,10 +41,10 @@ app.start()
 ### JSON/HTML/File Responses 🛠
 
 ```py
-from happyx import new_server, JsonResponse, HtmlResponse, FileResponse
+from happyx import Server, JsonResponse, HtmlResponse, FileResponse
 
 
-app = new_server()
+app = Server()
 
 
 @app.get('/json')
