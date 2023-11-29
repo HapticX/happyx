@@ -6,6 +6,8 @@ import
 
 
 when defined(napibuild):
+  import ./server
+
   # NodeJS Request Handlers
   template handleApiDoc*(self: Server) =
     for route in self.routes:
@@ -49,7 +51,7 @@ when defined(napibuild):
             let
               founded_regexp_matches = findAll(urlPath, route.pattern)
               funcParams = getRouteParams(routeData, founded_regexp_matches, urlPath, force = true)
-              fileName = $getStr(funcParams["file"])
+              fileName = $funcParams["file"]
               file =
                 if not route.purePath.endsWith("/") and not fileName.startsWith("/"):
                   route.purePath & "/" & fileName
