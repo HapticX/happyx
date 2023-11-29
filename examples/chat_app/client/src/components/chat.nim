@@ -32,9 +32,9 @@ component Chat:
       tDiv(class = "flex gap-4"):
         # Message text field
         tInput(id = "messageInput", class = "px-4 rounded-full bg-gray-200 w-96"):
-          @input:
+          @input(event):
             # Update myMessage
-            myMessage = $document.getElementById("messageInput").value
+            myMessage = $event.target.InputElement.value
         # Send button
         tButton(class = "px-4 bg-green-400 hover:bg-green-500 active:bg-green-600 transition-colors"):
           "send"
