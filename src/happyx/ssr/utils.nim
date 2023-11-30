@@ -1,5 +1,7 @@
 ## # SSR Utils
 ## 
+## provides some utils to working at server-side
+## 
 import
   json,
   httpcore,
@@ -8,6 +10,8 @@ import
 
 
 proc toJsonNode*(headers: HttpHeaders | Option[HttpHeaders]): JsonNode =
+  ## Converts [HttpHeaders](https://nim-lang.org/docs/httpcore.html#HttpHeaders)
+  ## to [JsonNode](https://nim-lang.org/docs/json.html#JsonNode)
   result = newJObject()
   when headers is HttpHeaders:
     for k, v in headers.pairs():
@@ -18,6 +22,8 @@ proc toJsonNode*(headers: HttpHeaders | Option[HttpHeaders]): JsonNode =
 
 
 proc toHttpHeaders*(json: JsonNode): HttpHeaders =
+  ## Converts [JsonNode](https://nim-lang.org/docs/json.html#JsonNode)
+  ## to [HttpHeaders](https://nim-lang.org/docs/httpcore.html#HttpHeaders)
   result = newHttpHeaders()
   for k, v in json.pairs():
     result[k] = v.getStr

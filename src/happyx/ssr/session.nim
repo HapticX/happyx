@@ -2,6 +2,9 @@
 ## 
 ## Provides working with sessions
 ##
+## .. Note::
+##    Uses a cookies for working with sessions
+## 
 import
   random,
   tables,
@@ -42,12 +45,20 @@ var registeredSessions = newTable[string, Session]()
 
 
 proc genSessionId*: string =
+  ## Generates unique session ID like `hpxs_sndjKgij1n2niug9uDbdfVkn9er8Gh3n`
+  runnableExamples:
+    echo genSessionId()
   result = "hpxs_"
   for i in 0..sessionIdLength:
     result &= sessionIdChars[rand(sessionIdChars.len-1)]
 
 
 proc getSession*(req: Request, host: string, cookies: var seq[string], timeout: int64 = 0): Session {.gcsafe, inline.} =
+  ## Gets or creates a new session.
+  ## 
+  ## If session is exists and timeout is not expired then returns this session.
+  ## 
+  ## Creates a new session with `timeout` in other case.
   {.gcsafe.}:
     var currentTime = now().toTime().toUnix()
     if host in registeredSessions:
@@ -80,6 +91,9 @@ proc getSession*(req: Request, host: string, cookies: var seq[string], timeout: 
 
 
 template startSession*(): Session =
+  ## Starts a new session or returns created if exists
+  ## 
+  ## See also [startSession template](#startSession.t,int64)
   when declared(req) and declared(hostname):
     getSession(req, hostname, outCookies, 0)
   else:
@@ -88,6 +102,9 @@ template startSession*(): Session =
 
 
 template startSession*(timeout: int64): Session =
+  ## Starts a new session with timeout or returns created if exists or timeout is not expired
+  ## 
+  ## See also [startSession template](#startSession.t)
   when declared(req) and declared(hostname):
     getSession(req, hostname, outCookies, timeout)
   else:
@@ -96,11 +113,17 @@ template startSession*(timeout: int64): Session =
 
 
 template closeSession*(sessionId: string) =
+  ## Closes active session
+  ## 
+  ## See also [closeSession template](#closeSession.t,Session)
   {.gcsafe.}:
     registeredSessions.del(hostname)
 
 
 template closeSession*(session: Session) =
+  ## Closes actove session
+  ## 
+  ## See also [closeSession template](#closeSession.t,string)
   {.gcsafe.}:
     var key = ""
     for k in registeredSessions.keys():

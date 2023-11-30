@@ -96,7 +96,7 @@
 ##   .. code-block::nim
 ##      import happyx
 ##      
-##      serve("127.0.0.1", 5000):
+##      serve "127.0.0.1", 5000:
 ##        # In this scope you can declare gc-safe vars/lets
 ##        var myVar = 0
 ##        
@@ -256,12 +256,13 @@
 ## - [form data](happyx/ssr/form_data.html) provides routing and working with server.
 ## - [request models](happyx/ssr/request_models.html) provides routing and working with server.
 ## - [session](happyx/ssr/session.html) provides working with sessions.
-## - [open api](happyx/ssr/open_api.html) provides OpenAPI for HappyX.
+## - [open api](happyx/ssr/docs/open_api.html) provides OpenAPI for HappyX.
 ## - [utils](happyx/ssr/utils.html) provides some utils to work with HTTPHeaders, JSON and etc.
 ## 
 ## ### Built-In UI 🎴
 ## 
-##   **⚠ !Warning! It works only with `-d:enableUi` flag! ⚠**
+## .. Warning::
+##    **⚠ It works only with `-d:enableUi` flag! ⚠**
 ## 
 ## - [enums](happyx/spa/ui/enums.html) provides built-in UI enums.
 ## - [palette](happyx/spa/ui/palette.html) provides built-in color palette.
