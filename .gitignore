@@ -44,3 +44,7 @@ private_test*.nim
 src/happyx/bindings/bin/
 src/happyx/bindings/denim_build/
 src/happyx/bindings/build_denim.sh
+
+
+# Garbage
+*.bin

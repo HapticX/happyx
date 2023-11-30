@@ -103,9 +103,11 @@ elif enableHttpBeast:
   import httpbeast, asyncnet
   export httpbeast, asyncnet
 elif enableMicro:
+  import asyncnet
   import microasynchttpserver, asynchttpserver
   export microasynchttpserver, asynchttpserver
 else:
+  import asyncnet
   import asynchttpserver
   export asynchttpserver
 
@@ -463,8 +465,11 @@ template answerHtml*(req: Request, data: string | TagRef, code: HttpCode = Http2
 
 
 proc answerFile*(req: Request, filename: string,
-                 code: HttpCode = Http200, asAttachment = false) {.async.} =
+                 code: HttpCode = Http200, asAttachment = false,
+                 bufSize: int = 40960) {.async.} =
   ## Respond file to request.
+  ## 
+  ## Automatically enables streaming response when file size is too big (> 1 000 000 bytes)
   ## 
   ## ⚠ `Low-level API` ⚠
   ## 
@@ -478,13 +483,28 @@ proc answerFile*(req: Request, filename: string,
     splitted = filename.split('.')
     extension = if splitted.len > 1: splitted[^1] else: ""
     contentType = newMimetypes().getMimetype(extension)
-  var f = openAsync(filename, fmRead)
-  let content = await f.readAll()
-  f.close()
-  var headers = @[("Content-Type", fmt"{contentType}; charset=utf-8")]
+    fileSize = getFileSize(filename)
+  var
+    f = openAsync(filename, fmRead)
+    headers = @[("Content-Type", fmt"{contentType}; charset=utf-8")]
+  
   if asAttachment:
     headers.add(("Content-Disposition", "attachment"))
-  req.answer(content, headers = newHttpHeaders(headers))
+  
+  if fileSize > 1_000_000:
+    headers.add(("Content-Length", $fileSize))
+    req.answer("", headers = newHttpHeaders(headers))
+    while true:
+      let val = await f.read(bufSize)
+      if val.len > 0:
+        await req.client.send(val)
+      else:
+        break
+    f.close()
+  else:
+    let content = await f.readAll()
+    f.close()
+    req.answer(content, headers = newHttpHeaders(headers))
 
 
 proc detectReturnStmt(node: NimNode, replaceReturn: bool = false) =
