@@ -493,11 +493,14 @@ proc answerFile*(req: Request, filename: string,
   
   if fileSize > 1_000_000:
     headers.add(("Content-Length", $fileSize))
-    req.answer("", headers = newHttpHeaders(headers))
+    req.answer("", Http200, newHttpHeaders(headers))
     while true:
       let val = await f.read(bufSize)
       if val.len > 0:
-        await req.client.send(val)
+        when enableHttpx or enableHttpBeast:
+          req.unsafeSend(val)
+        else:
+          await req.client.send(val)
       else:
         break
     f.close()
