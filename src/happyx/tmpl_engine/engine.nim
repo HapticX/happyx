@@ -39,5 +39,33 @@ macro renderTemplate*(name: static[string]): untyped =
   let folder = getScriptDir() / $templatesFolder["f"] / name
   newCall("compileTemplateFile", newLit(folder))
 
+
 proc render*(model: auto, htmlTemplate: static[string]): string =
+  ## This proc renders `htmlTemplate` file in `templates` folder.
+  ## 
+  ## .. Note::
+  ##    See also `templateFolder procedure <#templateFolder.m,string>`_.
+  ##    This macro setup template folder
+  ##
+  ## ## Example
+  ## 
+  ## `main.nim`:
+  ## 
+  ## .. code-block:: nim
+  ##    type
+  ##      Cat = object
+  ##        name: string
+  ##    
+  ##    var cat = Cat(name: "Baron")
+  ##    cat.render("profile.html")
+  ## 
+  ## `templates/profile.html`:
+  ## 
+  ## .. code-block:: html
+  ##    <!DOCTYPE html><html>
+  ##    <head>
+  ##      <title>{{ model.name }}</title>
+  ##    </head>
+  ##    <body></body>
+  ##    </html>
   renderTemplate(htmlTemplate)
