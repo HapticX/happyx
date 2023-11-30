@@ -164,10 +164,10 @@ window.addEventListener('DOMContentLoaded', main);
 
   </ul>
   <ul class="simple nested-toc-section">answerFile
-      <li><a class="reference" href="#answerFile%2CRequest%2Cstring%2CHttpCode"
+      <li><a class="reference" href="#answerFile%2CRequest%2Cstring%2CHttpCode%2Cint"
     title="answerFile(req: Request; filename: string; code: HttpCode = Http200;
-           asAttachment = false): owned(Future[void])">answerFile(req: Request; filename: string; code: HttpCode = Http200;
-           asAttachment = false): owned(Future[void])</a></li>
+           asAttachment = false; bufSize: int = 40960): owned(Future[void])">answerFile(req: Request; filename: string; code: HttpCode = Http200;
+           asAttachment = false; bufSize: int = 40960): owned(Future[void])</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">fgColored
@@ -374,13 +374,14 @@ window.addEventListener('DOMContentLoaded', main);
 
 </dd>
 </div>
-<div id="answerFile,Request,string,HttpCode">
-<dt><pre><span class="Keyword">proc</span> <a href="#answerFile%2CRequest%2Cstring%2CHttpCode"><span class="Identifier">answerFile</span></a><span class="Other">(</span><span class="Identifier">req</span><span class="Other">:</span> <span class="Identifier">Request</span><span class="Other">;</span> <span class="Identifier">filename</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">code</span><span class="Other">:</span> <span class="Identifier">HttpCode</span> <span class="Other">=</span> <span class="Identifier">Http200</span><span class="Other">;</span>
-                <span class="Identifier">asAttachment</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">owned</span><span class="Other">(</span><span class="Identifier">Future</span><span class="Other">[</span><span class="Identifier">void</span><span class="Other">]</span><span class="Other">)</span> {.
-    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span></span>.}</pre></dt>
+<div id="answerFile,Request,string,HttpCode,int">
+<dt><pre><span class="Keyword">proc</span> <a href="#answerFile%2CRequest%2Cstring%2CHttpCode%2Cint"><span class="Identifier">answerFile</span></a><span class="Other">(</span><span class="Identifier">req</span><span class="Other">:</span> <span class="Identifier">Request</span><span class="Other">;</span> <span class="Identifier">filename</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">code</span><span class="Other">:</span> <span class="Identifier">HttpCode</span> <span class="Other">=</span> <span class="Identifier">Http200</span><span class="Other">;</span>
+                <span class="Identifier">asAttachment</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">;</span> <span class="Identifier">bufSize</span><span class="Other">:</span> <span class="Identifier">int</span> <span class="Other">=</span> <span class="DecNumber">40960</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">owned</span><span class="Other">(</span>
+    <span class="Identifier">Future</span><span class="Other">[</span><span class="Identifier">void</span><span class="Other">]</span><span class="Other">)</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ReadIOEffect</span><span class="Other">,</span> <span class="Identifier">RootEffect</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 <p>Respond file to request.</p>
+<p>Automatically enables streaming response when file size is too big (&gt; 1 000 000 bytes)</p>
 <p>⚠ <tt class="docutils literal"><span class="pre"><span class="Identifier">Low</span><span class="Operator">-</span><span class="Identifier">level</span> <span class="Identifier">API</span></span></tt> ⚠</p>
 <p>Use this example instead of this procedure</p>
 <pre class="listing"><span class="Identifier">get</span> <span class="StringLit">&quot;/$filename&quot;</span><span class="Punctuation">:</span>
@@ -652,7 +653,7 @@ The <tt class="docutils literal"><span class="pre"><span class="Identifier">star
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-11-29 11:23:15 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-11-30 11:09:35 UTC</small>
       </div>
     </div>
   </div>
