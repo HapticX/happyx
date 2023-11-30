@@ -98,7 +98,8 @@ window.addEventListener('DOMContentLoaded', main);
     </select>
   </div>
   <ul class="simple simple-toc" id="toc-list">
-<li><a class="reference" id="template-engine-🎴_toc" href="#template-engine-🎴">Template Engine 🎴</a></li>
+<ul class="simple"><li><a class="reference" id="example_toc" href="#example">Example</a></li>
+</ul><li><a class="reference" id="template-engine-🎴_toc" href="#template-engine-🎴">Template Engine 🎴</a></li>
 <ul class="simple"><li><a class="reference" id="template-engine-🎴-usage-❔_toc" href="#template-engine-🎴-usage-❔">Usage ❔</a></li>
 </ul><li>
   <a class="reference reference-toplevel" href="#6" id="56">Imports</a>
@@ -164,7 +165,22 @@ window.addEventListener('DOMContentLoaded', main);
 <dt><pre><span class="Keyword">proc</span> <a href="#render%2Cauto%2Cstatic%5Bstring%5D"><span class="Identifier">render</span></a><span class="Other">(</span><span class="Identifier">model</span><span class="Other">:</span> <span class="Identifier">auto</span><span class="Other">;</span> <span class="Identifier">htmlTemplate</span><span class="Other">:</span> <span class="Identifier">static</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span></pre></dt>
 <dd>
 
+This proc renders <tt class="docutils literal"><span class="pre"><span class="Identifier">htmlTemplate</span></span></tt> file in <tt class="docutils literal"><span class="pre"><span class="Identifier">templates</span></span></tt> folder.<div class="admonition admonition-info"><span class="admonition-info-text"><b>Note:</b></span>
+See also <a class="reference external" href="#templateFolder.m,string">templateFolder procedure</a>. This macro setup template folder</div>
 
+<h2><a class="toc-backref" id="example" href="#example">Example</a></h2><p><tt class="docutils literal"><span class="pre"><span class="Identifier">main</span><span class="Operator">.</span><span class="Identifier">nim</span></span></tt>:</p>
+<pre class="listing"><span class="Keyword">type</span>
+  <span class="Identifier">Cat</span> <span class="Operator">=</span> <span class="Keyword">object</span>
+    <span class="Identifier">name</span><span class="Punctuation">:</span> <span class="Identifier">string</span>
+
+<span class="Keyword">var</span> <span class="Identifier">cat</span> <span class="Operator">=</span> <span class="Identifier">Cat</span><span class="Punctuation">(</span><span class="Identifier">name</span><span class="Punctuation">:</span> <span class="StringLit">&quot;Baron&quot;</span><span class="Punctuation">)</span>
+<span class="Identifier">cat</span><span class="Operator">.</span><span class="Identifier">render</span><span class="Punctuation">(</span><span class="StringLit">&quot;profile.html&quot;</span><span class="Punctuation">)</span></pre><p><tt class="docutils literal"><span class="pre"><span class="Identifier">templates</span><span class="Operator">/</span><span class="Identifier">profile</span><span class="Operator">.</span><span class="Identifier">html</span></span></tt>:</p>
+<pre class="listing">&lt;!DOCTYPE html&gt;&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;{{ model.name }}&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;&lt;/body&gt;
+&lt;/html&gt;</pre>
 
 </dd>
 </div>
@@ -199,7 +215,7 @@ Specifies templates folder
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-11-30 11:31:25 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-11-30 14:38:36 UTC</small>
       </div>
     </div>
   </div>
