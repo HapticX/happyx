@@ -37,6 +37,7 @@ bindings/**/dist/
 
 # Testing :)
 a.nim
+a.py
 private_test*.nim
 
 
