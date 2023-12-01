@@ -61,11 +61,16 @@ var
     "db_access": {
       "title": "Database access 📦",
       "prev": "ssr_basics",
+      "next": "sqlite"
+    },
+    "sqlite": {
+      "title": "SQLite 📦",
+      "prev": "db_access",
       "next": "mongo_db"
     },
     "mongo_db": {
       "title": "MongoDB 🍃",
-      "prev": "db_access",
+      "prev": "sqlite",
       "next": ""
     }
   }
@@ -153,6 +158,8 @@ component SideBar:
                 {translate("Server-side Applications Basics 🖥")}
               component SideBarItem("db_access"):
                 {translate("Database access 📦")}
+              component SideBarItem("sqlite"):
+                {translate("SQLite 📦")}
               component SideBarItem("mongo_db"):
                 {translate("MongoDB 🍃")}
         tDiv(class = "flex"):

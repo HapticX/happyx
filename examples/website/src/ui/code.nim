@@ -1015,3 +1015,212 @@ serve "127.0.0.1", 5000:
         }
       return response
 """
+  nimSsrNormSqlite* = """import
+  happyx,  # import HappyX web framework
+  norm/[model, sqlite],  # import NORM lib
+  times
+
+
+type User = ref object of Model
+  lastLogin*: DateTime
+
+proc newUser*(): User = User(lastLogin: now())
+
+
+serve "127.0.0.1", 5000:
+  setup:
+    # Create database connection
+    let dbConn = open("users.db", "", "", "")
+    # Create table
+    dbConn.createTables(newUser())
+  
+  post "/user/new":
+    var user = newUser()
+    dbConn.insert(user)
+    return {"response": "success"}
+  
+  get "/user/id{userId:int}":
+    var user = newUser()
+    dbConn.select(user, "id = $1", userId.int64)
+    if user == nil:
+      return {"response": "failure"}
+    else:
+      return {
+        "id": user.id,
+        "lastLogin": $user.lastLogin
+      }
+  
+  get "/users":
+    var outUsers = @[newUser()]
+    dbConn.selectAll(outUsers)
+
+    var response = %*[]
+    for i in outUsers:
+      response.add %*{
+        "id": i.id,
+        "lastLogin": $i.lastLogin
+      }
+    return response
+"""
+  nimSsrNormSqlite1* = """import
+  happyx,  # import HappyX web framework
+  norm/[model, sqlite],  # import NORM lib
+  times
+
+
+type User = ref object of Model
+  lastLogin*: DateTime
+
+proc newUser*(): User = User(lastLogin: now())
+"""
+  nimSsrNormSqlite2* = """
+serve "127.0.0.1", 5000:
+  setup:
+    # Create database connection
+    let dbConn = open("users.db", "", "", "")
+    # Create table
+    dbConn.createTables(newUser())
+"""
+  nimSsrNormSqlite3* = """
+  post "/user/new":
+    var user = newUser()
+    dbConn.insert(user)
+    return {"response": "success"}
+"""
+  nimSsrNormSqlite4* = """
+  get "/user/id{userId:int}":
+    var user = newUser()
+    dbConn.select(user, "id = $1", userId.int64)
+    if user == nil:
+      return {"response": "failure"}
+    else:
+      return {
+        "id": user.id,
+        "lastLogin": $user.lastLogin
+      }
+"""
+  nimSsrNormSqlite5* = """
+  get "/users":
+    var outUsers = @[newUser()]
+    dbConn.selectAll(outUsers)
+
+    var response = %*[]
+    for i in outUsers:
+      response.add %*{
+        "id": i.id,
+        "lastLogin": $i.lastLogin
+      }
+    return response
+"""
+  pySqlalchemy* = """from happyx import Server
+from sqlalchemy import create_engine, Column, Integer, DateTime
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
+from datetime import datetime
+
+
+Base = declarative_base()
+engine = create_engine("sqlite:///users.db")
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+Base.metadata.create_all(bind=engine)
+
+
+class User(Base):
+    __tablename__ = "users"
+    id = Column(Integer, primary_key=True, index=True)
+    lastLogin = Column(DateTime)
+
+
+app = Server('127.0.0.1', 5000)
+
+
+@app.post("/user/new")
+def create_user():
+    user = User(lastLogin=datetime.now())
+    db = SessionLocal()
+    db.add(user)
+    db.commit()
+    db.refresh(user)
+    db.close()
+    return {"response": "success"}
+
+
+@app.get("/user/id{user_id:int}")
+def read_user(user_id: int):
+    db = SessionLocal()
+    user = db.query(User).filter(User.id == user_id).first()
+    db.close()
+    if user is None:
+        return {"response": "failure"}
+    return {"id": user.id, "lastLogin": user.lastLogin}
+
+
+@app.get("/users")
+def read_users():
+    db = SessionLocal()
+    users = db.query(User).all()
+    db.close()
+    response = []
+    for user in users:
+        response.append({"id": user.id, "lastLogin": user.lastLogin})
+    return response
+
+
+app.start()
+"""
+  pySqlalchemy1* = """from happyx import Server
+from sqlalchemy import create_engine, Column, Integer, DateTime
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
+from datetime import datetime
+
+
+Base = declarative_base()
+engine = create_engine("sqlite:///users.db")
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+Base.metadata.create_all(bind=engine)
+
+
+class User(Base):
+    __tablename__ = "users"
+    id = Column(Integer, primary_key=True, index=True)
+    lastLogin = Column(DateTime)
+"""
+  pySqlalchemy2* = """
+app = Server('127.0.0.1', 5000)
+
+
+@app.post("/user/new")
+def create_user():
+    user = User(lastLogin=datetime.now())
+    db = SessionLocal()
+    db.add(user)
+    db.commit()
+    db.refresh(user)
+    db.close()
+    return {"response": "success"}
+"""
+  pySqlalchemy3* = """
+@app.get("/user/id{user_id:int}")
+def read_user(user_id: int):
+    db = SessionLocal()
+    user = db.query(User).filter(User.id == user_id).first()
+    db.close()
+    if user is None:
+        return {"response": "failure"}
+    return {"id": user.id, "lastLogin": user.lastLogin}
+"""
+  pySqlalchemy4* = """
+@app.get("/users")
+def read_users():
+    db = SessionLocal()
+    users = db.query(User).all()
+    db.close()
+    response = []
+    for user in users:
+        response.append({"id": user.id, "lastLogin": user.lastLogin})
+    return response
+
+
+app.start()
+"""

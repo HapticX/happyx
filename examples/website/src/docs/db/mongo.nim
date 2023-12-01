@@ -17,8 +17,8 @@ component MongoDB:
       tP: {translate"First, you need to install MongoDB and the library to work with it"}
 
       component CodeBlockGuide(@[
-        ("Nim", "nim", "nimble install anonimongo@#head", cstring"nim_mongo_db_install", newPlayResult()),
-        ("Python", "python", "pip install pymongo", cstring"py_mongo_db_install", newPlayResult()),
+        ("Nim", "shell", "nimble install anonimongo@#head", cstring"nim_mongo_db_install", newPlayResult()),
+        ("Python", "shell", "pip install pymongo", cstring"py_mongo_db_install", newPlayResult()),
         # ("JavaScript", "javascript", jsHelloWorldExample, cstring"js_import", newPlayResult()),
         # ("TypeScript", "typescript", tsHelloWorldExample, cstring"ts_import", newPlayResult()),
       ])

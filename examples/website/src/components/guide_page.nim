@@ -39,6 +39,8 @@ component GuidePage:
           component DbIntro
         of "mongo_db":
           component MongoDB
+        of "sqlite":
+          component SQLite
 
       tDiv(class = "hidden xl:flex justify-between items-center w-full pb-8"):
         if guidePages[currentGuidePage]["prev"].getStr != "":
