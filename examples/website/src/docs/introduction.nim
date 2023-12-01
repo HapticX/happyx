@@ -163,3 +163,4 @@ component Introduction:
             component Contributor("Derek", "https://github.com/derekdai", "https://avatars.githubusercontent.com/u/116649?v=4")
             component Contributor("Александр Старочкин", "https://github.com/levovix0", "https://avatars.githubusercontent.com/u/53170138?v=4")
             component Contributor("MouriKogorou", "https://github.com/MouriKogorou", "https://avatars.githubusercontent.com/u/43428806?v=4")
+            component Contributor("Devon", "https://github.com/winrid", "https://avatars.githubusercontent.com/u/1733933?v=4")
