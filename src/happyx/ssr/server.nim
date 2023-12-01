@@ -678,6 +678,7 @@ macro routes*(server: Server, body: untyped = newStmtList()): untyped =
     caseRequestMethodsStmt = newNimNode(nnkCaseStmt)
     methodTable = newTable[string, NimNode]()
     finalize = newStmtList()
+    setup = newStmtList()
   
   for liveView in liveViews:
     let
@@ -1331,6 +1332,8 @@ socketToSsr.onmessage=function(m){
           wsError = statement[1]
         of "finalize":
           finalize = statement[1]
+        of "setup":
+          setup = statement[1]
         of "notfound":
           detectReturnStmt(statement[1])
           notFoundNode = statement[1]
@@ -1427,6 +1430,7 @@ socketToSsr.onmessage=function(m){
       ))
     else:
       newEmptyNode(),
+    setup,
     procStmt,
     newProc(
       ident"finalizeProgram",
