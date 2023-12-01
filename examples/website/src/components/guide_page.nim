@@ -16,25 +16,29 @@ component GuidePage:
       class = "flex flex-col text-3xl lg:text-xl xl:text-base w-full h-full px-4 lg:px-12 xl:px-24 py-2 bg-[{BackgroundSecondary}] dark:bg-[{BackgroundSecondaryDark}] gap-8"
     ):
       tDiv(class = "flex flex-col gap-4"):
-
-        if currentGuidePage == "introduction":
+        case currentGuidePage.val
+        of "introduction":
           component Introduction
-        elif currentGuidePage == "getting_started":
+        of "getting_started":
           component GettingStarted
-        elif currentGuidePage == "happyx_app":
+        of "happyx_app":
           component HappyxApp
-        elif currentGuidePage == "path_params":
+        of "path_params":
           component PathParams
-        elif currentGuidePage == "spa_basics":
+        of "spa_basics":
           component SpaBasics
-        elif currentGuidePage == "reactivity":
+        of "reactivity":
           component Reactivity
-        elif currentGuidePage == "ssr_basics":
+        of "ssr_basics":
           component SsrBasics
-        elif currentGuidePage == "tailwind_and_other":
+        of "tailwind_and_other":
           component TailwindAndOther
-        elif currentGuidePage == "route_decorators":
+        of "route_decorators":
           component Decorators
+        of "db_access":
+          component DbIntro
+        of "mongo_db":
+          component MongoDB
 
       tDiv(class = "hidden xl:flex justify-between items-center w-full pb-8"):
         if guidePages[currentGuidePage]["prev"].getStr != "":

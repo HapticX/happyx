@@ -56,6 +56,16 @@ var
     "ssr_basics": {
       "title": "Server-side Applications Basics 🖥",
       "prev": "reactivity",
+      "next": "db_access"
+    },
+    "db_access": {
+      "title": "Database access 📦",
+      "prev": "ssr_basics",
+      "next": "mongo_db"
+    },
+    "mongo_db": {
+      "title": "MongoDB 🍃",
+      "prev": "db_access",
       "next": ""
     }
   }
@@ -141,6 +151,10 @@ component SideBar:
             component SideBarFolder("ssr_basics", "Server-side Applications 🖥"):
               component SideBarItem("ssr_basics"):
                 {translate("Server-side Applications Basics 🖥")}
+              component SideBarItem("db_access"):
+                {translate("Database access 📦")}
+              component SideBarItem("mongo_db"):
+                {translate("MongoDB 🍃")}
         tDiv(class = "flex"):
           component Button(
             action = proc() =

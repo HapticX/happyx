@@ -806,3 +806,212 @@ str &= ", world!"
 echo str  # Hello, world!, but str is State[string]
 
 """
+  nimSsrMongoDb1* = """import
+  happyx,  # import happyx web framework
+  anonimongo,  # import anonimongo mongo db driver
+  times
+
+
+serve "127.0.0.1", 5000:
+  setup:
+    # Setup is main sync scope.
+    # Here you can initialize all of you need.
+    {.gcsafe.}:
+      # Connect to mongodb
+      var mongo = newMongo[AsyncSocket]()
+      # check connection
+      if not waitFor mongo.connect:
+        quit "Cannot connect to localhost:27017"
+      # declare users collection
+      var usersColl = mongo["happyx_test"]["users"]
+"""
+  nimSsrMongoDb2* = """
+  post "/user/new":
+    ## Creates a new user
+    {.gcsafe.}:
+      let usersCount = await usersColl.count()
+      let r = await usersColl.insert(@[
+        bson({
+          countId: usersCount,
+          addedTime: now().toTime()
+        })
+      ])
+      return %*{"response": if r.success: "success" else: "failure"}
+"""
+  nimSsrMongoDb3* = """
+  get "/user/id{userId:int}":
+    ## Get user by ID if exists
+    {.gcsafe.}:
+      let user = await usersColl.findOne(bson({
+        countId: userId
+      }))
+      if user == nil:
+        return %*{"response": "failure"}
+      else:
+        return %*{
+          "countId": user["countId"].ofInt32,
+          "addedTime": user["addedTime"].ofTime
+        }
+"""
+  nimSsrMongoDb4* = """
+  get "/users":
+    ## Get all users
+    {.gcsafe.}:
+      var response = %*[]
+      for i in await usersColl.findIter():
+        response.add %*{
+          "countId": i["countId"].ofInt32,
+          "addedTime": i["addedTime"].ofTime
+        }
+      return response
+"""
+  pyMongoDb1* = """from happyx import Server
+from pymongo import MongoClient
+from datetime import datetime
+
+
+app = Server('127.0.0.1', 5000)
+mongo_client = MongoClient()
+db = mongo_client["happyx_test"]
+users_coll = db["users"]
+"""
+  pyMongoDb2* = """
+@app.post("/user/new")
+def create_user():
+    users_count = users_coll.count_documents({})
+    result = users_coll.insert_one({
+        "countId": users_count,
+        "addedTime": datetime.utcnow()
+    })
+    return {"response": "success" if result.acknowledged else "failure"}
+"""
+  pyMongoDb3* = """
+@app.get("/user/id{user_id:int}")
+def read_user(user_id: int):
+    user = users_coll.find_one({"countId": user_id})
+    if user is None:
+        return {"response": "failure"}
+    else:
+        return {
+            "countId": user["countId"],
+            "addedTime": user["addedTime"]
+        }
+"""
+  pyMongoDb4* = """
+@app.get("/users")
+def read_users():
+    users = users_coll.find()
+    response = []
+    for user in users:
+        response.append({
+            "countId": user["countId"],
+            "addedTime": user["addedTime"]
+        })
+    return response
+
+
+app.start()
+"""
+  pyMongoDb* = """from happyx import Server
+from pymongo import MongoClient
+from datetime import datetime
+
+
+app = Server('127.0.0.1', 5000)
+mongo_client = MongoClient()
+db = mongo_client["happyx_test"]
+users_coll = db["users"]
+
+
+@app.post("/user/new")
+def create_user():
+    users_count = users_coll.count_documents({})
+    result = users_coll.insert_one({
+        "countId": users_count,
+        "addedTime": datetime.utcnow()
+    })
+    return {"response": "success" if result.acknowledged else "failure"}
+
+
+@app.get("/user/id{user_id:int}")
+def read_user(user_id: int):
+    user = users_coll.find_one({"countId": user_id})
+    if user is None:
+        return {"response": "failure"}
+    else:
+        return {
+            "countId": user["countId"],
+            "addedTime": user["addedTime"]
+        }
+
+
+@app.get("/users")
+def read_users():
+    users = users_coll.find()
+    response = []
+    for user in users:
+        response.append({
+            "countId": user["countId"],
+            "addedTime": user["addedTime"]
+        })
+    return response
+
+
+app.start()
+"""
+  nimSsrMongoDb* = """import
+  happyx,  # import happyx web framework
+  anonimongo,  # import anonimongo mongo db driver
+  times
+
+
+serve "127.0.0.1", 5000:
+  setup:
+    # Setup is main sync scope.
+    # Here you can initialize all of you need.
+    {.gcsafe.}:
+      # Connect to mongodb
+      var mongo = newMongo[AsyncSocket]()
+      # check connection
+      if not waitFor mongo.connect:
+        quit "Cannot connect to localhost:27017"
+      # declare users collection
+      var usersColl = mongo["happyx_test"]["users"]
+  
+  post "/user/new":
+    ## Creates a new user
+    {.gcsafe.}:
+      let usersCount = await usersColl.count()
+      let r = await usersColl.insert(@[
+        bson({
+          countId: usersCount,
+          addedTime: now().toTime()
+        })
+      ])
+      return %*{"response": if r.success: "success" else: "failure"}
+  
+  get "/user/id{userId:int}":
+    ## Get user by ID if exists
+    {.gcsafe.}:
+      let user = await usersColl.findOne(bson({
+        countId: userId
+      }))
+      if user == nil:
+        return %*{"response": "failure"}
+      else:
+        return %*{
+          "countId": user["countId"].ofInt32,
+          "addedTime": user["addedTime"].ofTime
+        }
+  
+  get "/users":
+    ## Get all users
+    {.gcsafe.}:
+      var response = %*[]
+      for i in await usersColl.findIter():
+        response.add %*{
+          "countId": i["countId"].ofInt32,
+          "addedTime": i["addedTime"].ofTime
+        }
+      return response
+"""

@@ -1298,6 +1298,84 @@ translatable:
     "zh" -> "说到内置的常用函数，值得注意的是它们可以与普通值一起使用。让我们看看下面的例子。"
     "fr" -> "En parlant des fonctions intégrées fréquemment utilisées, il est important de noter qu'elles peuvent être utilisées avec des valeurs ordinaires. Jetons un coup d'œil à l'exemple suivant."
     "ko" -> "내장된 자주 사용되는 함수에 대해 언급할 때 주목할 점은 이러한 함수들이 일반 값과 함께 사용될 수 있다는 것입니다. 다음 예제를 살펴보겠습니다."
+  "Database access 📦":
+    "ru" -> "Доступ к базе данных 📦"
+    "ja" -> "データベースアクセス 📦"
+    "zh" -> "数据库访问 📦"
+    "fr" -> "Accès à la base de données 📦"
+    "ko" -> "데이터베이스 액세스 📦"
+  "In the following articles, we will look at the interaction with databases on the server side.":
+    "ru" -> "В следующих статьях мы рассмотрим взаимодействие с базами данных на стороне сервера."
+    "ja" -> "次の記事では、サーバーサイドでのデータベースとの連携について見ていきます。"
+    "zh" -> "在接下来的文章中，我们将探讨与服务器端数据库的交互。"
+    "fr" -> "Dans les articles suivants, nous examinerons l'interaction avec les bases de données côté serveur."
+    "ko" -> "다음 글에서는 서버 측에서 데이터베이스와의 상호 작용을 살펴볼 것입니다."
+  "You can use any available database driver implemented in Nim, Python or NodeJS":
+    "ru" -> "Вы можете использовать любой доступный драйвер базы данных, реализованный на Nim, Python или NodeJS."
+    "ja" -> "Nim、Python、またはNodeJSで実装された利用可能なデータベースドライバを使用できます。"
+    "zh" -> "您可以使用在Nim、Python或NodeJS中实现的任何可用的数据库驱动程序。"
+    "fr" -> "Vous pouvez utiliser n'importe quel pilote de base de données disponible implémenté en Nim, Python ou NodeJS."
+    "ko" -> "Nim, Python 또는 NodeJS에서 구현된 사용 가능한 어떤 데이터베이스 드라이버든 사용할 수 있습니다."
+  "In this article, we will look at the interaction with MongoDB on the server side.":
+    "ru" -> "В этой статье мы рассмотрим взаимодействие с MongoDB на стороне сервера."
+    "ja" -> "この記事では、サーバーサイドでのMongoDBとの連携を見ていきます。"
+    "zh" -> "在本文中，我们将探讨与服务器端MongoDB的交互。"
+    "fr" -> "Dans cet article, nous examinerons l'interaction avec MongoDB côté serveur."
+    "ko" -> "이 글에서는 서버 측에서 MongoDB와의 상호 작용을 살펴보겠습니다."
+  "The code below shows the connection to MongoDB":
+    "ru" -> "Ниже приведен код, показывающий подключение к MongoDB."
+    "ja" -> "以下のコードは、MongoDBへの接続を示しています。"
+    "zh" -> "下面的代码显示了连接到MongoDB的过程。"
+    "fr" -> "Le code ci-dessous montre la connexion à MongoDB."
+    "ko" -> "아래 코드는 MongoDB에 연결하는 것을 보여줍니다."
+  "First, you need to install MongoDB and the library to work with it":
+    "ru" -> "Сначала вам нужно установить MongoDB и библиотеку для работы с ней."
+    "ja" -> "まず、MongoDBとそれを操作するためのライブラリをインストールする必要があります。"
+    "zh" -> "首先，您需要安装MongoDB以及用于与其交互的库。"
+    "fr" -> "Tout d'abord, vous devez installer MongoDB et la bibliothèque nécessaire pour y travailler."
+    "ko" -> "먼저 MongoDB 및 그와 함께 작업하는 라이브러리를 설치해야 합니다."
+  "Now let's write methods for working with the pseudo-API. Let's start by creating a user:":
+    "ru" -> "Теперь давайте напишем методы для работы с псевдо-API. Начнем с создания пользователя:"
+    "ja" -> "では、疑似APIとの連携のためのメソッドを記述しましょう。まず、ユーザーの作成から始めましょう。"
+    "zh" -> "现在让我们编写用于与伪API交互的方法。让我们从创建用户开始："
+    "fr" -> "Écrivons maintenant des méthodes pour travailler avec la pseudo-API. Commençons par créer un utilisateur :"
+    "ko" -> "이제 의사-API와 상호 작용하기 위한 메서드를 작성해 봅시다. 사용자 생성부터 시작해 보겠습니다:"
+  "Now let's write a method to get a user by his ID:":
+    "ru" -> "Теперь давайте напишем метод для получения пользователя по его идентификатору:"
+    "ja" -> "では、IDによってユーザーを取得するためのメソッドを記述しましょう。"
+    "zh" -> "现在让我们编写一个按用户ID获取用户的方法："
+    "fr" -> "Écrivons maintenant une méthode pour obtenir un utilisateur par son ID :"
+    "ko" -> "이제 사용자 ID로 사용자를 가져오는 메서드를 작성해 봅시다:"
+  "Finally, let's add a method to get all users":
+    "ru" -> "Наконец, давайте добавим метод для получения всех пользователей."
+    "ja" -> "最後に、すべてのユーザーを取得するためのメソッドを追加しましょう。"
+    "zh" -> "最后，让我们添加一个获取所有用户的方法。"
+    "fr" -> "Enfin, ajoutons une méthode pour obtenir tous les utilisateurs."
+    "ko" -> "마지막으로 모든 사용자를 가져오는 메서드를 추가해 봅시다."
+  "Let's take a look at the full code:":
+    "ru" -> "Давайте взглянем на полный код:"
+    "ja" -> "完全なコードを見てみましょう："
+    "zh" -> "让我们看一下完整的代码："
+    "fr" -> "Jettons un coup d'œil au code complet :"
+    "ko" -> "전체 코드를 살펴보겠습니다:"
+  "Now you know the basics of working with MongoDB in HappyX.":
+    "ru" -> "Теперь вы знаете основы работы с MongoDB в HappyX."
+    "ja" -> "これで、HappyXでMongoDBを使用する基本を知っています。"
+    "zh" -> "现在您已经了解了在HappyX中使用MongoDB的基础知识。"
+    "fr" -> "Maintenant, vous connaissez les bases de travail avec MongoDB dans HappyX."
+    "ko" -> "이제 HappyX에서 MongoDB를 사용하는 기본 사항을 알게 되었습니다."
+  "anonimongo documentation":
+    "ru" -> "документация по anonimongo"
+    "ja" -> "anonimongoのドキュメント"
+    "zh" -> "anonimongo文档"
+    "fr" -> "documentation sur anonimongo"
+    "ko" -> "anonimongo 문서"
+  "pymongo documentation":
+    "ru" -> "документация по pymongo"
+    "ja" -> "pymongoのドキュメント"
+    "zh" -> "pymongo文档"
+    "fr" -> "documentation sur pymongo"
+    "ko" -> "pymongo 문서"
 
 
 var spokenLang: cstring
