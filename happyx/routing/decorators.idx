@@ -1,6 +1,7 @@
 DecoratorImpl	happyx/routing/decorators.html#DecoratorImpl	decorators: DecoratorImpl	
 decorators	happyx/routing/decorators.html#decorators	decorators: decorators	
 regDecorator	happyx/routing/decorators.html#regDecorator,string,DecoratorImpl	decorators: regDecorator(decoratorName: string; decorator: DecoratorImpl)	
+decorator	happyx/routing/decorators.html#decorator.m,untyped,untyped	decorators: decorator(name, body: untyped): untyped	
 Decorators 🔌	happyx/routing/decorators.html#decorators-🔌	 Decorators 🔌	
 Decorator Usage Example ✨	happyx/routing/decorators.html#decorators-🔌-decorator-usage-example-✨	  Decorator Usage Example ✨	
 Own decorators	happyx/routing/decorators.html#decorators-🔌-own-decorators	  Own decorators	
