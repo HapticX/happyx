@@ -30,7 +30,7 @@ serve("127.0.0.1", 5000):
   "/":
     return "Hello, world!"
   
-  @HelloWorld(1, 2, 3, req.url)
+  @HelloWorld(1, 2, 3, req)
   "/test-deco":
     return "Hello, world!"
 
