@@ -35,6 +35,7 @@ headers	happyx/bindings/python.html#headers,ResponseObj	python: headers(self: Re
 headers	happyx/bindings/python.html#headers,JsonResponseObj	python: headers(self: JsonResponseObj): PyObject	
 headers	happyx/bindings/python.html#headers,HtmlResponseObj	python: headers(self: HtmlResponseObj): PyObject	
 registerRouteParamType	happyx/bindings/python.html#registerRouteParamType,string,string	python: registerRouteParamType(name, pattern: string): auto	
+path	happyx/bindings/python.html#path,int	python: path(serverId: int): string	
 startServerPy	happyx/bindings/python.html#startServerPy,int	python: startServerPy(serverId: int)	
 route	happyx/bindings/python.html#route,int,string,seq[string],PyObject	python: route(serverId: int; path: string; methods: seq[string]; callback: PyObject): auto	
 get	happyx/bindings/python.html#get,int,string,PyObject	python: get(serverId: int; path: string; callback: PyObject): auto	

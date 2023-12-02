@@ -274,6 +274,8 @@ window.addEventListener('DOMContentLoaded', main);
   <ul class="simple nested-toc-section">path
       <li><a class="reference" href="#path%2CHttpRequest"
     title="path(self: HttpRequest): string">path(self: HttpRequest): string</a></li>
+  <li><a class="reference" href="#path%2Cint"
+    title="path(serverId: int): string">path(serverId: int): string</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">post
@@ -615,8 +617,9 @@ Registers a new MIDDLEWARE route.
 </dd>
 </div>
 <div id="mount,int,string,int">
-<dt><pre><span class="Keyword">proc</span> <a href="#mount%2Cint%2Cstring%2Cint"><span class="Identifier">mount</span></a><span class="Other">(</span><span class="Identifier">serverId</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">;</span> <span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">otherId</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">)</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">]</span><span class="Other">,</span>
-    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#mount%2Cint%2Cstring%2Cint"><span class="Identifier">mount</span></a><span class="Other">(</span><span class="Identifier">serverId</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">;</span> <span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">otherId</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">)</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">,</span>
+    <span class="Identifier">ValueError</span><span class="Other">,</span> <span class="Identifier">RegexError</span><span class="Other">,</span> <span class="Identifier">Exception</span><span class="Other">,</span> <span class="Identifier">OSError</span><span class="Other">,</span> <span class="Identifier">IOError</span><span class="Other">,</span> <span class="Identifier">EOFError</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 Registers sub application at <tt class="docutils literal"><span class="pre"><span class="Identifier">path</span></span></tt>
@@ -709,6 +712,14 @@ Registers a new OPTIONS route.
 </div>
 <div id="path,HttpRequest">
 <dt><pre><span class="Keyword">proc</span> <a href="#path%2CHttpRequest"><span class="Identifier">path</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="python_types.html#HttpRequest"><span class="Identifier">HttpRequest</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<dd>
+
+
+
+</dd>
+</div>
+<div id="path,int">
+<dt><pre><span class="Keyword">proc</span> <a href="#path%2Cint"><span class="Identifier">path</span></a><span class="Other">(</span><span class="Identifier">serverId</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 
@@ -898,7 +909,7 @@ Registers a new WEBSOCKET route.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-12-01 17:22:21 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-12-02 05:35:25 UTC</small>
       </div>
     </div>
   </div>
