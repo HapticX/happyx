@@ -69,17 +69,14 @@ HappyX is macro-oriented web framework so you mustn't write a lot of code ✨
   <tbody>
     <tr>
       <td>
-        <pre lang="nim"><code>
-import happyx
+        <pre lang="nim"><code>import happyx
 
     appRoutes "app":
       "/":
         "Hello, world!"
 </code></pre>
       </td><td>
-      <pre lang="nim"><code>
-      import happyx
-    
+      <pre lang="nim"><code>import happyx
       
     serve "127.0.0.1", 5000:
       "/":
