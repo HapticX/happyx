@@ -161,6 +161,17 @@ proc registerRouteParamType*(name, pattern: string): auto {.exportpy: "register_
     hiddenHandler
 
 
+proc path*(serverId: int): string {.exportpy: "server_path".} =
+  var
+    p = ""
+    s = servers[serverId]
+  # Get root server
+  while not s.parent.isNil():
+    p = s.path & p
+    s = s.parent
+  return p
+
+
 proc startServerPy*(serverId: int) {.exportpy: "start_server_by_id".} =
   ## Starts a new HappyX server
   ## 
@@ -335,6 +346,12 @@ proc mount*(serverId: int, path: string, otherId: int) {.exportpy: "mount_server
   ## Registers sub application at `path`
   servers[otherId].path = path
   servers[otherId].parent = servers[serverId]
+  # Get root server
+  var
+    self = servers[serverId]
+    other = servers[otherId]
+  for route in other.routes:
+    self.addRoute(path & route.purePath, route.httpMethod, route.handler)
 
 
 proc `static`*(serverId: int, path: string, directory: string, extensions: seq[string]) {.exportpy: "static_server".} =

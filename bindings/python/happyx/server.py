@@ -1,4 +1,7 @@
 from typing import Callable, Any, List
+from re import match
+
+from .constants import SWAGGER_HTML_SOURCE, REDOC_HTML_SOURCE
 
 import happyx.happyx as happyx
 
@@ -19,10 +22,19 @@ class Server:
       'head', 'options', 'websocket',
       'notfound', 'middleware',
       'mount', 'static',
-      'start'
+      'start',
+      'host', 'port', 'path'
     ]
 
-    def __init__(self, host: str = '127.0.0.1', port: int = 5000, path: str = None):
+    def __init__(
+            self,
+            host: str = '127.0.0.1',
+            port: int = 5000,
+            path: str = None,
+            openapi: bool = True,
+            redoc_url: str = "/redoc",
+            swagger_url: str = "/swagger"
+    ):
         """
         Creates a new server
 
@@ -30,11 +42,37 @@ class Server:
         host {str} -- server address (default '127.0.0.1')
         port {int} -- server port (default 5000)
         path {str} -- server path. Uses for `mount` and `__div__` methods (default None)
+        openapi {bool} -- enable/disable openapi endpoints (OpenAPI, ReDoc and Swagger)
+        redoc_url {str} -- ReDoc endpoint (default "/redoc")
+        swagger_url {str} -- Swagger endpoint (default "/swagger")
         """
         self.host = host
         self.port = port
         self._server = happyx.new_server(host, port)
         self.path = path
+        # OpenAPI docs
+        self._swagger_url = swagger_url
+        self._redoc_url = redoc_url
+        self._openapi_data = {
+          "openapi": "3.1.0",
+          "swagger": "2.0",
+          "info": {"title": "HappyX OpenAPI Docs", "version": "1.0.0"},
+          "paths": {},
+          "components": {
+            "schemas": {},
+            "parameters": {},
+            "responses": {},
+            "securitySchemas": {},
+            "headers": {},
+            "links": {},
+            "callbacks": {},
+            "pathItems": {},
+            "examples": {},
+            "requestBodies": {}
+          }
+        }
+        if openapi:
+            self._openapi_endpoints()
     
     def __str__(self) -> str:
         """
@@ -61,6 +99,97 @@ class Server:
         Mounts other server into current server
         """
         self.mount(other)
+
+    def _add_route_data(self, route: str, cb: Callback, methods: List[str] = None) -> None:
+        """
+        Registers route data into openapi docs
+        """
+        if methods is None:
+            return
+        pathData = {
+            "description": cb.__doc__,
+            "parameters": [],
+            "requestBody": {},
+            "responses": {}
+        }
+        # fetch parameters
+        arg_count = cb.__code__.co_argcount
+        annotations = cb.__annotations__
+        defaults = cb.__defaults__ if cb.__defaults__ is not None else tuple()
+        for i in range(arg_count):
+            arg_name = cb.__code__.co_varnames[i]
+            arg_val = None
+            arg_type = None
+            required = True
+            in_query = not match(r"(\$" + str(arg_name) + r"|\{" + str(arg_name) + r"\})", route)
+            # keyword argument
+            if arg_count - i <= len(defaults):
+                arg_val = defaults[arg_count - i - 1]
+                required = False
+            # annotations
+            if arg_name in annotations:
+                arg_type = annotations[arg_name]
+            # not annotated but keyword argument
+            if arg_type is None and arg_val is not None:
+                arg_type = type(arg_val)
+            # check if arg_type is request or anything else
+            if arg_type.__name__ == "HttpRequest":
+                continue
+            # add param to pathData
+            paramData = {
+                "name": arg_name,
+                "required": required,
+                "in": "query" if in_query else "path",
+                "schema": {}
+            }
+            if arg_type is not None:
+                if arg_type is str:
+                    paramData["schema"]["type"] = "string"
+                elif arg_type is float:
+                    paramData["schema"]["type"] = "number"
+                    paramData["schema"]["format"] = "double"
+                elif arg_type is int:
+                    paramData["schema"]["type"] = "number"
+                    paramData["schema"]["format"] = "int64"
+                elif arg_type is bool:
+                    paramData["schema"]["type"] = "boolean"
+                elif arg_type is list:
+                    paramData["schema"]["type"] = "array"
+                    paramData["schema"]["items"] = {}
+            pathData["parameters"].append(paramData)
+        # Write to openapi data
+        if route in self._openapi_data["paths"]:
+            # if exists
+            for m in methods:
+                self._openapi_data["paths"][route][m] = pathData
+            return
+        # create a new route and write to it
+        self._openapi_data["paths"][route] = {}
+        for m in methods:
+            self._openapi_data["paths"][route][m] = pathData
+
+    def _openapi_endpoints(self):
+        # Create /docs/openapi.json endpoint
+        def _openapi_endpoint():
+            return self._openapi_data
+
+        def _redoc_endpoint():
+            return happyx.HtmlResponse(
+                REDOC_HTML_SOURCE % f"{happyx.server_path(self._server)}/docs/openapi.json"
+            )
+        
+        def _swagger_endpoint():
+            return happyx.HtmlResponse(
+                SWAGGER_HTML_SOURCE % f"{happyx.server_path(self._server)}/docs/openapi.json"
+            )
+        
+        # Bind swagger URL if available
+        if isinstance(self._swagger_url, str):
+            happyx.get_server(self._server, self._swagger_url, _swagger_endpoint)
+        # Bind openapi URL if available
+        if isinstance(self._redoc_url, str):
+            happyx.get_server(self._server, self._redoc_url, _redoc_endpoint)
+        happyx.get_server(self._server, "/docs/openapi.json", _openapi_endpoint)
     
     def start(self) -> None:
         """
@@ -75,6 +204,7 @@ class Server:
         if methods is None:
             methods = []
         def _wrapper(cb: Callback):
+            self._add_route_data(route, cb, methods)
             happyx.route_server(self._server, route, methods, cb)
         return _wrapper
     
@@ -83,6 +213,7 @@ class Server:
         Creates a new GET route
         """
         def _wrapper(cb: Callback):
+            self._add_route_data(route, cb, ["get"])
             happyx.get_server(self._server, route, cb)
         return _wrapper
     
@@ -91,6 +222,7 @@ class Server:
         Creates a new POST route
         """
         def _wrapper(cb: Callback):
+            self._add_route_data(route, cb, ["post"])
             happyx.post_server(self._server, route, cb)
         return _wrapper
 
@@ -99,6 +231,7 @@ class Server:
         Creates a new PUT route
         """
         def _wrapper(cb: Callback):
+            self._add_route_data(route, cb, ["put"])
             happyx.put_server(self._server, route, cb)
         return _wrapper
 
@@ -107,6 +240,7 @@ class Server:
         Creates a new PURGE route
         """
         def _wrapper(cb: Callback):
+            self._add_route_data(route, cb, ["purge"])
             happyx.purge_server(self._server, route, cb)
         return _wrapper
 
@@ -115,6 +249,7 @@ class Server:
         Creates a new COPY route
         """
         def _wrapper(cb: Callback):
+            self._add_route_data(route, cb, ["copy"])
             happyx.copy_server(self._server, route, cb)
         return _wrapper
 
@@ -123,6 +258,7 @@ class Server:
         Creates a new HEAD route
         """
         def _wrapper(cb: Callback):
+            self._add_route_data(route, cb, ["head"])
             happyx.head_server(self._server, route, cb)
         return _wrapper
 
@@ -131,6 +267,7 @@ class Server:
         Creates a new DELETE route
         """
         def _wrapper(cb: Callback):
+            self._add_route_data(route, cb, ["delete"])
             happyx.delete_server(self._server, route, cb)
         return _wrapper
 
@@ -139,6 +276,7 @@ class Server:
         Creates a new OPTIONS route
         """
         def _wrapper(cb: Callback):
+            self._add_route_data(route, cb, ["options"])
             happyx.options_server(self._server, route, cb)
         return _wrapper
 
@@ -147,6 +285,7 @@ class Server:
         Creates a new LINK route
         """
         def _wrapper(cb: Callback):
+            self._add_route_data(route, cb, ["link"])
             happyx.link_server(self._server, route, cb)
         return _wrapper
 
@@ -155,6 +294,7 @@ class Server:
         Creates a new UNLINK route
         """
         def _wrapper(cb: Callback):
+            self._add_route_data(route, cb, ["unlink"])
             happyx.unlink_server(self._server, route, cb)
         return _wrapper
 

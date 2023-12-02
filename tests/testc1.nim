@@ -62,6 +62,7 @@ serve("127.0.0.1", 5000):
   # Path ~ extensions
   staticDir "/templates" ~ "html,js,css"
 
-  staticDir customRoute -> customDir ~ "html,js,css"
+  staticDir customRoute -> customDir ~ "html,js,css,json"
   staticDir customRoute1 ~ "html,js,css"
   staticDir customRoute1 -> customDir
+  staticDir customRoute1

@@ -320,7 +320,7 @@ import
   happyx/ssr/utils
 
 
-when enableApiDoc and not defined(js):
+when enableApiDoc and not defined(js) and not exportPython:
   import happyx/ssr/docs/open_api
   export open_api
 

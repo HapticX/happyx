@@ -121,14 +121,15 @@ proc genApiDoc*(body: var NimNode): NimNode =
   ), newStmtList(
     newCall("answerHtml", ident"req", newCall("renderDocsProcedure")),
   )))
-  body.add(newNimNode(nnkCommand).add(ident"get", newStrLitNode(
-    if apiDocsPath.startsWith("/"):
-      apiDocsPath & "/openapi.json"
-    else:
-      "/" & apiDocsPath & "/openapi.json"
-  ), newStmtList(
-    newCall("answerJson", ident"req", newCall("openApiJson")),
-  )))
+  when not exportPython:
+    body.add(newNimNode(nnkCommand).add(ident"get", newStrLitNode(
+      if apiDocsPath.startsWith("/"):
+        apiDocsPath & "/openapi.json"
+      else:
+        "/" & apiDocsPath & "/openapi.json"
+    ), newStmtList(
+      newCall("answerJson", ident"req", newCall("openApiJson")),
+    )))
   newCall("@", docsData)
 
 
@@ -303,6 +304,8 @@ proc openApiDocs*(docsData: NimNode): NimNode =
               schema["properties"][name] = %*{"type": "number", "format": "double"}
             of "float32":
               schema["properties"][name] = %*{"type": "number", "format": "float"}
+            of "bool":
+              schema["properties"][name] = %*{"type": "boolean"}
             of "string":
               schema["properties"][name] = %*{"type": "string"}
 
