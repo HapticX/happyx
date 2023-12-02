@@ -705,7 +705,7 @@ server "127.0.0.1", 5000:
 import macros
 
 
-proc myCustomDecorator*(httpMethods: seq[string], path: string, statementList: NimNode) = 
+proc myCustomDecorator*(httpMethods: seq[string], path: string, statementList: NimNode, arguments: seq[NimNode]) = 
   # This decorator will add
   #   echo "Hello from {path}"
   # as leading statement in route at compile-time
@@ -717,10 +717,31 @@ static:
   regDecorator("OurDecorator", myCustomDecorator)
 
 
+# Another way to declare decorator
+decorator HelloWorld:
+  # In this scope:
+  # httpMethods: seq[string]
+  # routePath: string
+  # statementList: NimNode
+  # arguments: seq[NimNode]
+
+  # Here we just add `echo` of all arguments
+  statementList.insert(0, newCall("echo"))
+  for i in arguments:
+    statementList[0].add(i)
+    statementList[0].add(newLit", ")
+  if statementList[0].len > 1:
+    statementList[0].del(statementList[0].len-1)
+
+
 # Use it!
 serve "127.0.0.1", 5000:
   @OurDecorator
   get "/":
+    return 0
+
+  @HelloWorld(1, 2, 3, req)
+  get "/with-args":
     return 0
 """
   nimSpaReactivity* = """import happyx

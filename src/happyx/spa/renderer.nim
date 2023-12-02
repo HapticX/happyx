@@ -532,7 +532,7 @@ macro routes*(app: App, body: untyped): untyped =
   
   var
     cookiesInVar = newDotExpr(ident"document", ident"cookie")
-    nextRouteDecorators: seq[string] = @[]
+    nextRouteDecorators: seq[tuple[name: string, args: seq[NimNode]]] = @[]
   
   for statement in body:
     if statement.kind in [nnkCommand, nnkCall, nnkPrefix]:
@@ -540,13 +540,20 @@ macro routes*(app: App, body: untyped): untyped =
         # Check variable usage
         if statement[^1].isIdentUsed(ident"cookies"):
           statement[^1].insert(0, newVarStmt(ident"cookies", cookiesInVar))
-      # @DecoratorName
+      # Decorators
       if statement.kind == nnkPrefix and $statement[0] == "@" and statement[1].kind == nnkIdent:
-        nextRouteDecorators.add($statement[1])
+        # @Decorator
+        nextRouteDecorators.add(($statement[1], @[]))
+      # @Decorator()
+      elif statement.kind == nnkCall and statement[0].kind == nnkPrefix and $statement[0][0] == "@" and statement.len == 1:
+        nextRouteDecorators.add(($statement[0][1], @[]))
+      # @Decorator(arg1, arg2, ...)
+      elif statement.kind == nnkCall and statement[0].kind == nnkPrefix and $statement[0][0] == "@" and statement.len > 1:
+        nextRouteDecorators.add(($statement[0][1], statement[1..^1]))
         
       elif statement.len == 2 and statement[0].kind == nnkStrLit:
         for route in nextRouteDecorators:
-          decorators[route](@[], $statement[0], statement[1])
+          decorators[route.name](@[], $statement[0], statement[1], route.args)
         let exported = exportRouteArgs(
           iPath,
           statement[0],

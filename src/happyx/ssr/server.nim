@@ -888,7 +888,7 @@ socketToSsr.onmessage=function(m){
       ))
   
   var
-    nextRouteDecorators: seq[string] = @[]
+    nextRouteDecorators: seq[tuple[name: string, args: seq[NimNode]]] = @[]
 
   for statement in body:
     if statement.kind == nnkDiscardStmt:
@@ -902,14 +902,21 @@ socketToSsr.onmessage=function(m){
           statement[^1].insert(0, newVarStmt(ident"outHeaders", newCall("newCustomHeaders")))
         if statement[^1].isIdentUsed(ident"outCookies") or statement[^1].isIdentUsed(ident"startSession"):
           statement[^1].insert(0, newVarStmt(ident"outCookies", cookiesOutVar))
-      # @DecoratorName
+      # Decorators
       if statement.kind == nnkPrefix and $statement[0] == "@" and statement[1].kind == nnkIdent:
-        nextRouteDecorators.add($statement[1])
+        # @Decorator
+        nextRouteDecorators.add(($statement[1], @[]))
+      # @Decorator()
+      elif statement.kind == nnkCall and statement[0].kind == nnkPrefix and $statement[0][0] == "@" and statement.len == 1:
+        nextRouteDecorators.add(($statement[0][1], @[]))
+      # @Decorator(arg1, arg2, ...)
+      elif statement.kind == nnkCall and statement[0].kind == nnkPrefix and $statement[0][0] == "@" and statement.len > 1:
+        nextRouteDecorators.add(($statement[0][1], statement[1..^1]))
       # "/...": statement list
       elif statement[1].kind == nnkStmtList and statement[0].kind == nnkStrLit:
         detectReturnStmt(statement[1])
         for route in nextRouteDecorators:
-          decorators[route](@["GET"], $statement[0], statement[1])
+          decorators[route.name](@["GET"], $statement[0], statement[1], route.args)
         let exported = exportRouteArgs(pathIdent, statement[0], statement[1])
         if exported.len > 0:  # /my/path/with{custom:int}/{param:path}
           ifStmt.add(exported)
@@ -925,7 +932,7 @@ socketToSsr.onmessage=function(m){
         for i in statement[0]:
           httpMethods.add($i)
         for route in nextRouteDecorators:
-          decorators[route](httpMethods, $statement[1], statement[2])
+          decorators[route.name](httpMethods, $statement[0], statement[1], route.args)
         let exported = exportRouteArgs(pathIdent, statement[1], statement[2])
         var methods = newNimNode(nnkBracket)
         for i in statement[0]:
@@ -951,7 +958,7 @@ socketToSsr.onmessage=function(m){
       elif statement[0].kind == nnkIdent and statement[0] != ident"mount" and statement[1].kind in {nnkStrLit, nnkTripleStrLit, nnkInfix}:
         let name = ($statement[0]).toUpper()
         for route in nextRouteDecorators:
-          decorators[route](@[$statement[0]], $statement[1], statement[2])
+          decorators[route.name](@[$statement[0]], $statement[1], statement[2], route.args)
         if name == "STATICDIR":
           # Just path
           var

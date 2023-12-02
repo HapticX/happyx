@@ -41,7 +41,7 @@ export base64
 
 
 type
-  DecoratorImpl* = proc(httpMethods: seq[string], routePath: string, statementList: NimNode)
+  DecoratorImpl* = proc(httpMethods: seq[string], routePath: string, statementList: NimNode, arguments: seq[NimNode])
 
 
 var decorators* {.compileTime.} = newTable[string, DecoratorImpl]()
@@ -51,7 +51,27 @@ proc regDecorator*(decoratorName: string, decorator: DecoratorImpl) {.compileTim
    decorators[decoratorName] = decorator
 
 
-proc authBasicDecoratorImpl(httpMethods: seq[string], routePath: string, statementList: NimNode) =
+macro decorator*(name, body: untyped): untyped =
+  let decoratorImpl = $name & "Impl"
+  newStmtList(
+    newProc(
+      postfix(ident(decoratorImpl), "*"),
+      [
+        newEmptyNode(),
+        newIdentDefs(ident"httpMethods", newNimNode(nnkBracketExpr).add(ident"seq", ident"string")),
+        newIdentDefs(ident"routePath", ident"string"),
+        newIdentDefs(ident"statementList", ident"NimNode"),
+        newIdentDefs(ident"arguments", newNimNode(nnkBracketExpr).add(ident"seq", ident"NimNode")),
+      ],
+      body
+    ),
+    newNimNode(nnkStaticStmt).add(
+      newCall("regDecorator", newLit($name), ident(decoratorImpl))
+    )
+  )
+
+
+proc authBasicDecoratorImpl(httpMethods: seq[string], routePath: string, statementList: NimNode, arguments: seq[NimNode]) =
   statementList.insert(0, parseStmt"""
 var (username, password) = ("", "")
 if not headers.hasKey("Authorization"):
@@ -65,7 +85,7 @@ else:
   )
 
 
-proc getUserAgentDecoratorImpl(httpMethods: seq[string], routePath: string, statementList: NimNode) =
+proc getUserAgentDecoratorImpl(httpMethods: seq[string], routePath: string, statementList: NimNode, arguments: seq[NimNode]) =
   statementList.insert(0, parseStmt"""
 var userAgent = navigator.userAgent
 """
