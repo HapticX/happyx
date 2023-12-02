@@ -72,7 +72,7 @@ HappyX is macro-oriented web framework so you mustn't write a lot of code ✨
         <pre lang="nim"><code>
 import happyx
 
-    appRoutes("app"):
+    appRoutes "app":
       "/":
         "Hello, world!"
 </code></pre>
@@ -81,7 +81,7 @@ import happyx
       import happyx
     
       
-    serve("127.0.0.1", 5000):
+    serve "127.0.0.1", 5000:
       "/":
         "Hello, world!"
 </code></pre>
