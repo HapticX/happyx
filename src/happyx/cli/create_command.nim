@@ -127,7 +127,7 @@ proc createCommand*(name: string = "", kind: string = "", templates: bool = fals
     lang = programmingLanguages[selectedLang]
     projectType = projectTypes[selected]
   
-  if lang == "nim" and projectType in ["SSR", "SSG"]:
+  if lang == "nim" and projectType in ["SSR", "SSG"] and not templates:
     echo ""
     styledEcho emoji["🔥"](), " Do you want to use templates in your project? "
     selectedTemplates = chooseFrom(templatesList, templatesList)
@@ -136,7 +136,7 @@ proc createCommand*(name: string = "", kind: string = "", templates: bool = fals
     echo ""
     styledEcho emoji["💡"](), " you choose ", fgRed, "SSR + PWA ", fgWhite, "project type so templates was been enabled"
     templates = true
-  elif lang == "nim" and projectType in ["SPA", "HPX", "SPA+PWA"]:
+  elif lang == "nim" and projectType in ["SPA", "HPX", "SPA+PWA"] and not useTailwind:
     echo ""
     styledEcho emoji["🐲"](), " Do you want to use Tailwind CSS in your project? "
     selectedTailwind = chooseFrom(tailwindList, tailwindList)

@@ -38,6 +38,7 @@ bindings/**/dist/
 # Testing :)
 a.nim
 a.py
+a.html
 *.db
 private_test*.nim
 
