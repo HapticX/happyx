@@ -883,7 +883,7 @@ macro importComponent*(body: untyped): untyped =
               if child.name == "script":
                 call = newCall("nim")
               else:
-                call = newCall("t" & child.name)
+                call = newCall(child.name)
               # parse args without values
               for arg in child.args:
                 case arg
