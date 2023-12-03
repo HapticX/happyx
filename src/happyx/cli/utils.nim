@@ -303,9 +303,10 @@ proc compileProject*(): ProjectData {. discardable .} =
           raise newException(ValueError, fmt"Incorrect router.json structure at `{key}`")
       f.write(")\n\n")
     f.close()
-    f = open(result.srcDir / result.mainFile & ".nim", fmRead)
-    echo f.readAll()
-    f.close()
+    # just for debug
+    # f = open(result.srcDir / result.mainFile & ".nim", fmRead)
+    # echo f.readAll()
+    # f.close()
     result.process = startProcess(
       "nim", getCurrentDir() / result.srcDir,
       [

@@ -802,6 +802,7 @@ macro importComponent*(body: untyped): untyped =
     scriptNimSource = componentData.findAll(re2"(?<=<\s*script\s*>)([\s\S]+?)(?=</\s*script\s*>)")
     styleSource = componentData.findAll(re2"(?<=<\s*style\s*>)([\s\S]+?)(?=</\s*style\s*>)")
     stmtList = newStmtList()
+    importStmts = newStmtList()
 
   # Handle errors
   if (scriptNimSource.len > 0 and scriptJSSource.len > 0) or scriptNimSource.len > 1 or scriptJSSource.len > 1:
@@ -991,6 +992,10 @@ macro importComponent*(body: untyped): untyped =
       elif s.kind in {nnkProcDef, nnkMethodDef, nnkIteratorDef}:
         methods[1].add(s.copy())
         statement[i] = newEmptyNode()
+      # imports
+      elif s.kind in {nnkImportAs, nnkImportExceptStmt, nnkFromStmt, nnkImportStmt}:
+        importStmts.add(s.copy())
+        statement[i] = newEmptyNode()
     
     if methods[1].len > 0:
       stmtList.add(methods)
@@ -1003,4 +1008,7 @@ macro importComponent*(body: untyped): untyped =
     statement.strVal = componentData[styleSource[0].group(0)]
     stmtList.add(newCall(newNimNode(nnkAccQuoted).add(ident"style"), newStmtList(statement)))
 
-  result = newNimNode(nnkCommand).add(ident"component", componentName, stmtList)
+  result = newStmtList(
+    importStmts,
+    newNimNode(nnkCommand).add(ident"component", componentName, stmtList)
+  )
