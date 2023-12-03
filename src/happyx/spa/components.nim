@@ -839,6 +839,8 @@ macro importComponent*(body: untyped): untyped =
     proc handle(tag: TagRef, parent: var NimNode) =
       var ifStartIndex = -1
       for child in tag.children:
+        # @click, @event, etc
+        var eventHandlers = newStmtList()
         if child.onlyChildren:
           child.handle(parent)
         elif child.isText:
@@ -922,7 +924,20 @@ macro importComponent*(body: untyped): untyped =
                     call.add(newNimNode(nnkExprEqExpr).add(newStrLitNode(key), newStrLitNode(val)))
                 else:
                   if call.kind in [nnkElifBranch, nnkOfBranch, nnkElse, nnkForStmt, nnkWhileStmt]:
-                    call[^1][^1].add(newNimNode(nnkExprEqExpr).add(newStrLitNode(key), newStrLitNode(val)))
+                    if key.startsWith("h-on"):
+                      eventHandlers.add(newCall(
+                        newNimNode(nnkPrefix).add(ident"@", ident(key[4..^1])), ident"event", newStmtList(
+                          parseExpr(val)
+                        )
+                      ))
+                    else:
+                      call[^1][^1].add(newNimNode(nnkExprEqExpr).add(newStrLitNode(key), newStrLitNode(val)))
+                  elif key.startsWith("h-on"):
+                    eventHandlers.add(newCall(
+                      newNimNode(nnkPrefix).add(ident"@", ident(key[4..^1])), ident"event", newStmtList(
+                        parseExpr(val)
+                      )
+                    ))
                   else:
                     call.add(newNimNode(nnkExprEqExpr).add(newStrLitNode(key), newStrLitNode(val)))
           elif name.len > 0:
@@ -954,6 +969,12 @@ macro importComponent*(body: untyped): untyped =
                 raise newException(ValueError, "script language can be javascript or nim only")
             else:
               call.add(stmts)
+          if eventHandlers.len > 0:
+            var stmts = newStmtList()
+            if call[^1].kind != nnkStmtList:
+              call.add(newStmtList())
+            for handler in eventHandlers:
+              call[^1].add(handler)
           if isIfStmt:
             if ifStartIndex == -1:
               parent.add(newNimNode(nnkIfStmt).add(call))
