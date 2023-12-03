@@ -350,7 +350,7 @@ props:
       },
       "pathParam": {
         "name": "ARG2",
-        "type": "pathParam"
+        "type": "path"
       }
     }
   }
