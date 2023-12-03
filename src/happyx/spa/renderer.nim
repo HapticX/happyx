@@ -256,8 +256,9 @@ when defined(js):
     if force:
       for comp in createdComponentsList:
         comp.exited(comp, nil)
-      components.clear()
-      for comp in currentComponentsList:
+        components.del(comp.uniqCompId)
+      for comp in currentComponentsList.mitems:
+        comp = registerComponent(comp.uniqCompId, comp)
         comp.updated(comp, nil)
       createdComponentsList.setLen(0)
     else:
