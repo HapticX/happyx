@@ -293,7 +293,7 @@ proc compileProject*(): ProjectData {. discardable .} =
           if arg["type"].kind != JString:
             raise newException(ValueError, fmt"route `{key}` component `{compName}` argument `type` should be string")
           case arg["type"].getStr.toLower()
-          of "pathparam":
+          of "pathparam", "path":
             f.write(fmt"""{key}={arg["name"].getStr},""")
           of "query":
             f.write(fmt"""{key}=query~{arg["name"].getStr},""")
