@@ -256,6 +256,7 @@ when defined(js):
     if force:
       for comp in createdComponentsList:
         comp.exited(comp, nil)
+      components.clear()
       for comp in currentComponentsList:
         comp.updated(comp, nil)
       createdComponentsList.setLen(0)
@@ -293,10 +294,15 @@ template start*(app: App) =
   window.addEventListener("popstate", onDOMContentLoaded)
   buildJs:
     function onHashChangeCallback():
-      if window.location.hash[0] == "#":
-        ~currentRoute = window.location.hash.substr(1)
-      else:
-        ~currentRoute = window.location.hash
+      nim:
+        let r: cstring =
+          if ($window.location.hash)[0] == '#':
+            cstring(($window.location.hash)[1..^1])
+          else:
+            window.location.hash
+        if $r != $currentRoute:
+          echo "route from ", currentRoute, " to ", r
+          route(r)
     window.addEventListener("hashchange", onHashChangeCallback)
   if window.location.hash.len == 0:
     route("/")
