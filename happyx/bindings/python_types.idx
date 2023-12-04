@@ -3,8 +3,8 @@ ResponseObj	happyx/bindings/python_types.html#ResponseObj	python_types: Response
 FileResponseObj	happyx/bindings/python_types.html#FileResponseObj	python_types: FileResponseObj	
 JsonResponseObj	happyx/bindings/python_types.html#JsonResponseObj	python_types: JsonResponseObj	
 HtmlResponseObj	happyx/bindings/python_types.html#HtmlResponseObj	python_types: HtmlResponseObj	
-Route	happyx/bindings/python_types.html#Route	python_types: Route	
 HandlerParam	happyx/bindings/python_types.html#HandlerParam	python_types: HandlerParam	
+Route	happyx/bindings/python_types.html#Route	python_types: Route	
 RequestModelData	happyx/bindings/python_types.html#RequestModelData	python_types: RequestModelData	
 RequestModels	happyx/bindings/python_types.html#RequestModels	python_types: RequestModels	
 WebSocketState	happyx/bindings/python_types.html#WebSocketState	python_types: WebSocketState	
@@ -15,11 +15,11 @@ newWebSocketObj	happyx/bindings/python_types.html#newWebSocketObj,,string	python
 processWebSocket	happyx/bindings/python_types.html#processWebSocket,PyObject,PyObject	python_types: processWebSocket(py, locals: PyObject)	
 toPPyObject	happyx/bindings/python_types.html#toPPyObject,HttpHeaders	python_types: toPPyObject(headers: HttpHeaders): PPyObject	
 toHttpHeaders	happyx/bindings/python_types.html#toHttpHeaders,PyObject	python_types: toHttpHeaders(headers: PyObject): HttpHeaders	
+newHandlerParams	happyx/bindings/python_types.html#newHandlerParams,openArray[string],JsonNode	python_types: newHandlerParams(args: openArray[string]; annotations: JsonNode): seq[\n    HandlerParam]	
+newAnnotations	happyx/bindings/python_types.html#newAnnotations,PyObject	python_types: newAnnotations(data: PyObject): JsonNode	
 initRoute	happyx/bindings/python_types.html#initRoute,string,string,seq[string],Regex2,PyObject	python_types: initRoute(path, purePath: string; httpMethod: seq[string]; pattern: Regex2;\n          handler: PyObject): Route	
 hasHttpMethod	happyx/bindings/python_types.html#hasHttpMethod,Route,	python_types: hasHttpMethod(self: Route; httpMethod: string | seq[string] | openArray[string]): bool	
 initHttpRequest	happyx/bindings/python_types.html#initHttpRequest,string,string,HttpHeaders,string	python_types: initHttpRequest(path, httpMethod: string; headers: HttpHeaders;\n                body: string = &quot;&quot;): HttpRequest	
-newAnnotations	happyx/bindings/python_types.html#newAnnotations,PyObject	python_types: newAnnotations(data: PyObject): JsonNode	
-newHandlerParams	happyx/bindings/python_types.html#newHandlerParams,openArray[string],JsonNode	python_types: newHandlerParams(args: openArray[string]; annotations: JsonNode): seq[\n    HandlerParam]	
 contains	happyx/bindings/python_types.html#contains,seq[HandlerParam],string	python_types: contains(params: seq[HandlerParam]; key: string): bool	
 hasParamType	happyx/bindings/python_types.html#hasParamType,seq[HandlerParam],string	python_types: hasParamType(params: seq[HandlerParam]; key: string): bool	
 contains	happyx/bindings/python_types.html#contains,RequestModels,string	python_types: contains(self: RequestModels; name: string): bool	

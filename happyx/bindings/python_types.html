@@ -151,7 +151,10 @@ window.addEventListener('DOMContentLoaded', main);
   httpMethod*: seq[string]
   pattern*: Regex2
   handler*: PyObject
-  locals*: PyObject">Route</a></li>
+  locals*: PyObject
+  posArgs*: seq[string]
+  params*: JsonNode
+  handlerParams*: seq[HandlerParam]">Route</a></li>
   <li><a class="reference" href="#WebSocket"
     title="WebSocket = ref object of PyNimObjectExperimental
   id*: uint64
@@ -384,6 +387,9 @@ window.addEventListener('DOMContentLoaded', main);
   <span class="Identifier">pattern</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">Regex2</span>
   <span class="Identifier">handler</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">PyObject</span>
   <span class="Identifier">locals</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">PyObject</span>
+  <span class="Identifier">posArgs</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">]</span>
+  <span class="Identifier">params</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">JsonNode</span>
+  <span class="Identifier">handlerParams</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="python_types.html#HandlerParam"><span class="Identifier">HandlerParam</span></a><span class="Other">]</span>
 </pre></dt>
 <dd>
 
@@ -605,7 +611,7 @@ window.addEventListener('DOMContentLoaded', main);
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-12-03 15:00:05 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-12-04 10:41:03 UTC</small>
       </div>
     </div>
   </div>
