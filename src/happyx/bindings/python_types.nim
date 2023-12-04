@@ -45,6 +45,8 @@ type
     data*: string
     statusCode*: int
     headers*: PyObject
+  HandlerParam* = object
+    name*, paramType*: string
   Route* = ref object of PyNimObjectExperimental
     path*: string
     purePath*: string
@@ -52,8 +54,9 @@ type
     pattern*: Regex2
     handler*: PyObject
     locals*: PyObject
-  HandlerParam* = object
-    name*, paramType*: string
+    posArgs*: seq[string]
+    params*: JsonNode
+    handlerParams*: seq[HandlerParam]
   RequestModelData* = object
     name*: string
     pyClass*: PyObject
@@ -104,10 +107,46 @@ proc toHttpHeaders*(headers: PyObject): HttpHeaders =
   headersObj
 
 
+proc newHandlerParams*(args: openarray[string], annotations: JsonNode): seq[HandlerParam] =
+  result = @[]
+  for arg in args:
+    if annotations.hasKey(arg):
+      result.add(HandlerParam(name: arg, paramType: annotations[arg].str))
+    else:
+      result.add(HandlerParam(name: arg, paramType: "any"))
+
+
+proc newAnnotations*(data: PyObject): JsonNode =
+  result = newJObject()
+  for key in data.keys():
+    result[$key] = newJString($data[$key].getAttr("__name__"))
+
+
 proc initRoute*(path, purePath: string, httpMethod: seq[string], pattern: Regex2, handler: PyObject): Route =
-  result = Route(path: path, purePath: purePath, httpMethod: httpMethod, pattern: pattern, handler: handler)
+  result = Route(
+    path: path,
+    purePath: purePath,
+    httpMethod: httpMethod,
+    pattern: pattern,
+    handler: handler,
+    posArgs: @[]
+  )
   result.locals = pyDict()
   result.locals["func"] = handler
+  # fetch __defaults__
+  if not handler.isNil:
+    var defaults: JsonNode
+    var argcount = handler.getAttr("__code__").getAttr("co_argcount").to(int)
+    var varnames = handler.getAttr("__code__").getAttr("co_varnames").to(seq[string])
+    pyValueToNim(privateRawPyObj(handler.getAttr("__defaults__")), defaults)
+    # fetch pos only arguments
+    for i in 0..<(argcount - defaults.len):
+      result.posArgs.add(varnames[i])
+    # fetch handler params with __defaults__ and __annotations__
+    result.handlerParams = newHandlerParams(
+      result.posArgs,
+      newAnnotations(result.handler.getAttr("__annotations__"))
+    )
 
 proc hasHttpMethod*(self: Route, httpMethod: string | seq[string] | openarray[string]): bool =
   when httpMethod is string:
@@ -120,21 +159,6 @@ proc hasHttpMethod*(self: Route, httpMethod: string | seq[string] | openarray[st
 
 proc initHttpRequest*(path, httpMethod: string, headers: HttpHeaders, body: string = ""): HttpRequest =
   HttpRequest(path: path, httpMethod: httpMethod, headers: headers.toPPyObject(), body: body)
-
-
-proc newAnnotations*(data: PyObject): JsonNode =
-  result = newJObject()
-  for key in data.keys():
-    result[$key] = newJString($data[$key].getAttr("__name__"))
-
-
-proc newHandlerParams*(args: openarray[string], annotations: JsonNode): seq[HandlerParam] =
-  result = @[]
-  for arg in args:
-    if annotations.hasKey(arg):
-      result.add(HandlerParam(name: arg, paramType: annotations[arg].str))
-    else:
-      result.add(HandlerParam(name: arg, paramType: "any"))
 
 
 proc contains*(params: seq[HandlerParam], key: string): bool =

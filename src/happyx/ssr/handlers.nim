@@ -199,7 +199,10 @@ elif exportPython:
   import nimpy
 
   template handlePythonRequest*(self: server.Server, req: Request, urlPath: string) =
-    var reqResponded = false
+    var
+      reqResponded = false
+      pyNone: PyObject
+    newPyNone().pyValueToNim(pyNone)
     for route in self.routes:
       if (
         (@["NOTFOUND"] == route.httpMethod and not(reqResponded)) or
@@ -250,30 +253,20 @@ elif exportPython:
               routeData = handleRoute(route.path)
               # Declare Python Object (for function params)
               pyFuncParams: PyObject
-              pyNone: PyObject
-              # Declare JsonNode (for length of keyword arguments)
-              keywordArguments: JsonNode
-            # Unpack route path params
-            let founded_regexp_matches = urlPath.findAll(route.pattern)
-            var
               # handle callback data
-              variables = newSeq[string]()
-              argcount = route.handler.getAttr("__code__").getAttr("co_argcount")
-              varnames = route.handler.getAttr("__code__").getAttr("co_varnames")
-              pDefaults = route.handler.getAttr("__defaults__")
-            # Create Python Object
-            pyValueToNim(privateRawPyObj(pDefaults), keywordArguments)
-            let annotations = newAnnotations(route.handler.getAttr("__annotations__"))
-            # Extract function arguments from Python
-            for i in 0..<(argcount.to(int) - keywordArguments.len):
-              variables.add(varnames[i].to(string))
+              variables = route.posArgs
+            # Unpack route path params
             let
-              # Match function parameters with annotations (or without)
-              handlerParams = newHandlerParams(variables, annotations)
+              founded_regexp_matches = urlPath.findAll(route.pattern)
               # Load path params into function parameters
-              funcParams = getRouteParams(routeData, founded_regexp_matches, urlPath, handlerParams, req.body.get())
-              none = newPyNone()
-            none.pyValueToNim(pyNone)
+              handlerParams = route.handlerParams
+              funcParams = getRouteParams(
+                routeData,
+                founded_regexp_matches,
+                urlPath,
+                handlerParams,
+                req.body.get()
+              )
             # Add queries to function parameters
             for param in handlerParams:
               if not (pyNone != callMethod(funcParams, "get", param.name)) and not (param.paramType in @["HttpRequest", "WebSocket"]):
