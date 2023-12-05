@@ -4,7 +4,6 @@ enableHttpBeast	happyx/core/constants.html#enableHttpBeast	constants: enableHttp
 enableLiveViews	happyx/core/constants.html#enableLiveViews	constants: enableLiveViews	
 enableSafeRequests	happyx/core/constants.html#enableSafeRequests	constants: enableSafeRequests	
 enableAutoTranslate	happyx/core/constants.html#enableAutoTranslate	constants: enableAutoTranslate	
-enableDebug	happyx/core/constants.html#enableDebug	constants: enableDebug	
 enableDebugComponentMacro	happyx/core/constants.html#enableDebugComponentMacro	constants: enableDebugComponentMacro	
 enableDebugSsrMacro	happyx/core/constants.html#enableDebugSsrMacro	constants: enableDebugSsrMacro	
 enableDebugSpaMacro	happyx/core/constants.html#enableDebugSpaMacro	constants: enableDebugSpaMacro	
@@ -14,6 +13,8 @@ enableRoutingDebugMacro	happyx/core/constants.html#enableRoutingDebugMacro	const
 componentDebugTarget	happyx/core/constants.html#componentDebugTarget	constants: componentDebugTarget	
 reqModelDebugTarget	happyx/core/constants.html#reqModelDebugTarget	constants: reqModelDebugTarget	
 exportPython	happyx/core/constants.html#exportPython	constants: exportPython	
+exportJvm	happyx/core/constants.html#exportJvm	constants: exportJvm	
+enableDebug	happyx/core/constants.html#enableDebug	constants: enableDebug	
 enableUi	happyx/core/constants.html#enableUi	constants: enableUi	
 enableApiDoc	happyx/core/constants.html#enableApiDoc	constants: enableApiDoc	
 enableOrm	happyx/core/constants.html#enableOrm	constants: enableOrm	

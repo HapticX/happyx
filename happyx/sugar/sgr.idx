@@ -1,4 +1,7 @@
 sugarRoutes	happyx/sugar/sgr.html#sugarRoutes	sgr: sugarRoutes	
+`:=`	happyx/sugar/sgr.html#:=.t,untyped,untyped	sgr: `:=`(name, value: untyped): untyped	
+has	happyx/sugar/sgr.html#has,typedesc[T],U	sgr: has[T: HoleyEnum; U](e: typedesc[T]; val: U): bool	
+has	happyx/sugar/sgr.html#has,typedesc[T],U_2	sgr: has[T: OrdinalEnum; U](e: typedesc[T]; val: U): bool	
 `-&gt;`	happyx/sugar/sgr.html#->.m,untyped,untyped,untyped	sgr: `-&gt;`(route, at, body: untyped): untyped	
 Sugar 🍎	happyx/sugar/sgr.html#sugar-🍎	 Sugar 🍎	
 -&gt; Macro	happyx/sugar/sgr.html#nimminusgt-macro	 <tt class="docutils literal"><span class="pre"><span class="Operator">-&gt;</span></span></tt> Macro	
