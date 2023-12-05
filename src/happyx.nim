@@ -320,7 +320,7 @@ import
   happyx/ssr/utils
 
 
-when enableApiDoc and not defined(js) and not exportPython:
+when enableApiDoc and not defined(js) and not exportPython and not exportJvm:
   import happyx/ssr/docs/open_api
   export open_api
 
@@ -353,7 +353,10 @@ export
 
 # Language bindings
 when exportPython or defined(docgen):
-  import
-    happyx/bindings/[python]
-
+  import happyx/bindings/[python]
   export python
+
+
+when exportJvm:
+  import happyx/bindings/[java]
+  export java

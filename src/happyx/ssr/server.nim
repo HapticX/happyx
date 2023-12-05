@@ -164,6 +164,25 @@ HappyX web framework [SSR/SSG Part]
         instance*: AsyncHttpServer
       components: TableRef[string, BaseComponent]
     ModelBase* = ref object of PyNimObjectExperimental
+elif exportJvm:
+  type
+    Server* = ref object
+      address*: string
+      port*: int
+      logger*: Logger
+      path*: string
+      parent*: Server
+      title*: string
+      when enableHttpx:
+        instance*: Settings
+      elif enableHttpBeast:
+        instance*: Settings
+      elif enableMicro:
+        instance*: MicroAsyncHttpServer
+      else:
+        instance*: AsyncHttpServer
+      components: TableRef[string, BaseComponent]
+    ModelBase* = object of RootObj
 elif defined(napibuild):
   import denim except `%*`
   import../bindings/node_types
@@ -866,7 +885,7 @@ socketToSsr.onmessage=function(m){
         )
       )
   
-  when defined(debug) or exportPython or defined(napibuild):
+  when enableDebug or exportPython or defined(napibuild) or exportJvm:
     caseRequestMethodsStmt.add(ident"reqMethod")
   else:
     caseRequestMethodsStmt.add(reqMethod)
@@ -1385,6 +1404,11 @@ socketToSsr.onmessage=function(m){
   elif exportPython:
     stmtList.add(newCall(
       "handlePythonRequest", ident"self", ident"req", ident"urlPath"
+    ))
+  # JVM JNI Library
+  elif exportPython:
+    stmtList.add(newCall(
+      "handleJvmRequest", ident"self", ident"req", ident"urlPath"
     ))
   caseRequestMethodsStmt.add(newNimNode(nnkElse).add(newStmtList()))
 

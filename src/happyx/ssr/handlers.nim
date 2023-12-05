@@ -194,6 +194,29 @@ when defined(napibuild):
         break
 
 
+elif exportJvm:
+  import
+    jnim,
+    jnim/private/[jni_wrapper],
+    ./server
+
+  template handleJvmRequest*(self: server.Server, req: Request, urlPath: string) =
+    var
+      reqResponded = false
+    for route in self.routes:
+      if (
+        (@["NOTFOUND"] == route.httpMethod and not(reqResponded)) or
+        (
+          @["MIDDLEWARE"] == route.httpMethod or
+          (
+            (contains(route.httpMethod, $req.httpMethod.get()) and route.pattern in urlPath) or
+            (hasHttpMethod(route, @["STATICFILE", "WEBSOCKET"]) and route.pattern in urlPath)
+          )
+        )
+      ):
+        discard
+
+
 elif exportPython:
   import ./server
   import nimpy

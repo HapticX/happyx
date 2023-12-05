@@ -26,6 +26,8 @@ elif defined(napibuild):
   import
     denim,
     ../bindings/node_types
+elif exportJvm:
+  discard
 
 
 const declaredPathParams = CacheTable"HappyXDeclaredPathParams"
@@ -272,6 +274,11 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode =
     elifBranch = newNimNode(nnkElifBranch)
     regExp = newCall("re2", newStrLitNode("^" & routeData.purePath & "$"))
   elifBranch.add(newCall("contains", urlPath, regExp), body)
+  # re2"\{[a-zA-Z][a-zA-Z0-9_]*(\??):enum\((\w+)\)(\[m\])?(=\S+?)?\}"
+  # Find all enums in route:
+  # for found in routeData.purePath.findAll(re2"_ENUM_\[([a-zA-Z][a-zA-Z0-9_]*)\]"):
+  #   echo routeData.purePath[found.group(0)]
+
   var idx = 0
   let paramsCount = routeData.pathParams.len
   for i in routeData.pathParams:
@@ -371,24 +378,30 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode =
         if ($i.paramType).startsWith("enum"):
           let enumName = ($i.paramType)[5..^2]
           letSection[0].add(newNimNode(nnkIfStmt).add(
-            newNimNode(nnkElifBranch).add(
-              conditionOptional,
-              if i.defaultValue == "":
-                newCall("default", ident(enumName))
-              else:
-                newCall(newNimNode(nnkBracketExpr).add(ident"parseEnum", ident(enumName)), newStrLitNode(i.defaultValue), newCall("default", ident(enumName)))
-            ),
-            newNimNode(nnkElifBranch).add(
-              conditionSecondOptional,
-              if i.defaultValue == "":
-                newCall("default", ident(enumName))
-              else:
-                newCall(newNimNode(nnkBracketExpr).add(ident"parseEnum", ident(enumName)), newStrLitNode(i.defaultValue), newCall("default", ident(enumName)))
-            ),
-            newNimNode(nnkElse).add(
-              newCall(newNimNode(nnkBracketExpr).add(ident"parseEnum", ident(enumName)), foundGroup, newCall("default", ident(enumName)))
+              newNimNode(nnkElifBranch).add(
+                conditionOptional,
+                if i.defaultValue == "":
+                  newCall("default", ident(enumName))
+                else:
+                  newCall(newNimNode(nnkBracketExpr).add(ident"parseEnum", ident(enumName)), newLit(i.defaultValue))
+              ),
+              newNimNode(nnkElifBranch).add(
+                conditionSecondOptional,
+                if i.defaultValue == "":
+                  newCall("default", ident(enumName))
+                else:
+                  newCall(newNimNode(nnkBracketExpr).add(ident"parseEnum", ident(enumName)), newLit(i.defaultValue))
+              ),
+              newNimNode(nnkElse).add(
+                newCall(newNimNode(nnkBracketExpr).add(ident"parseEnum", ident(enumName)), foundGroup)
+              )
             )
-          ))
+          )
+          elifBranch[0] = newCall(
+            "and",
+            elifBranch[0].copy(),
+            newCall(newDotExpr(ident(enumName), ident"has"), foundGroup)
+          )
         else:
           # custom type
           when defined(napibuild) or exportPython:
@@ -414,7 +427,13 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode =
         # string Enum
         if ($i.paramType).startsWith("enum"):
           let enumName = ($i.paramType)[5..^2]
-          letSection[0].add(newCall(newNimNode(nnkBracketExpr).add(ident"parseEnum", ident(enumName)), foundGroup, newCall("default", ident(enumName))))
+          # elifBranch.add(newCall("contains", urlPath, regExp), body)
+          letSection[0].add(newCall(newNimNode(nnkBracketExpr).add(ident"parseEnum", ident(enumName)), foundGroup))
+          elifBranch[0] = newCall(
+            "and",
+            elifBranch[0].copy(),
+            newCall(newDotExpr(ident(enumName), ident"has"), foundGroup)
+          )
         else:
           # custom type
           when exportPython or defined(napibuild):

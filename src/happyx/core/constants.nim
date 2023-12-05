@@ -50,7 +50,6 @@ const
   # Auto translation in routing
   enableAutoTranslate* = defined(translate) or defined(happyxTranslate) or defined(hpxTranslate)
   # Debug mode
-  enableDebug* = defined(debug) or defined(happyxDebug) or defined(hpxDebug)
   enableDebugComponentMacro* = defined(compDebug) or defined(happyxCompDebug) or defined(hpxCompDebug)
   enableDebugSsrMacro* = defined(ssrDebug) or defined(happyxSsrDebug) or defined(hpxSsrDebug)
   enableDebugSpaMacro* = defined(spaDebug) or defined(happyxSpaDebug) or defined(hpxSpaDebug)
@@ -61,7 +60,9 @@ const
   reqModelDebugTarget* {.strdefine.} = ""
   # Language bindings
   exportPython* = defined(export2py) or defined(happyxExport2py) or defined(hpxExport2py)
+  exportJvm* = defined(export2jvm) or defined(happyxExport2jvm) or defined(hpxExport2jvm)
   # Framework features
+  enableDebug* = defined(debug) or defined(happyxDebug) or defined(hpxDebug) or exportJvm or exportPython
   enableUi* = defined(enableUi) or defined(happyxEnableUi) or defined(hpxEnableUi)
   enableApiDoc* = not defined(disableApiDoc)
   enableOrm* = not defined(disableORM)
@@ -96,8 +97,8 @@ const
   nim_2_0_0* = (NimMajor, NimMinor, NimPatch) >= (2, 0, 0)
   # Framework version
   HpxMajor* = 3
-  HpxMinor* = 6
-  HpxPatch* = 3
+  HpxMinor* = 7
+  HpxPatch* = 0
   HpxVersion* = $HpxMajor & "." & $HpxMinor & "." & $HpxPatch
 
 
