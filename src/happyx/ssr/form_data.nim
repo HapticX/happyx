@@ -41,7 +41,7 @@ proc parseFormData*(formData: string): (StringTableRef, TableRef[string, FormDat
   result = (newStringTable(), newTable[string, FormDataItem]())
   let
     formDataSeparator = re2"\-{6}\w+(\-{2})?\r\n"
-    lineSeparator = re2"\r\n"  
+    lineSeparator = "\r\n"
     data = formData.split(formDataSeparator)
   for item in data:
     let lines = item.split(lineSeparator)
