@@ -781,7 +781,7 @@ appRoutes "app":
     Test(x = 15)
     Test(x = 20)
 """
-  nimSpaReacitivity1* = """import happyx
+  nimSpaReactivity1* = """import happyx
 
 var x = remember 0
 
@@ -791,7 +791,7 @@ appRoutes "app":
     @click:
       x->inc()
 """
-  nimSpaReacitivity2* = """import happyx
+  nimSpaReactivity2* = """import happyx
 
 var x = remember newSeq[int]()
 
@@ -801,7 +801,7 @@ appRoutes "app":
     @click:
       x->add(x.len())
 """
-  nimSpaReacitivity3* = """import happyx
+  nimSpaReactivity3* = """import happyx
 
 var
   x = remember newSeq[int]()
@@ -810,7 +810,7 @@ var
   w: State[string] = remember "Hello"
 
 """
-  nimSpaReacitivity4* = """import happyx
+  nimSpaReactivity4* = """import happyx
 
 var
   x = remember 0
@@ -825,6 +825,14 @@ echo x  # x is 100 and again, x is State[int]
 
 str &= ", world!"
 echo str  # Hello, world!, but str is State[string]
+
+"""
+  nimSpaReactivity5* = """import happyx
+
+var
+  x = remember seq[int].default
+
+x.set @[1, 2, 3]
 
 """
   nimSsrMongoDb1* = """import
