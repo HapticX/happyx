@@ -127,7 +127,7 @@ window.addEventListener('DOMContentLoaded', main);
   purePath*: string
   path*: string">RouteDataObj</a></li>
   <li><a class="reference" href="#RouteObject"
-    title="RouteObject = PyObject">RouteObject</a></li>
+    title="RouteObject = JsonNode">RouteObject</a></li>
 
   </ul>
 </li>
@@ -260,7 +260,7 @@ window.addEventListener('DOMContentLoaded', main);
 </dd>
 </div>
 <div id="RouteObject">
-<dt><pre><a href="routing.html#RouteObject"><span class="Identifier">RouteObject</span></a> <span class="Other">=</span> <span class="Identifier">PyObject</span></pre></dt>
+<dt><pre><a href="routing.html#RouteObject"><span class="Identifier">RouteObject</span></a> <span class="Other">=</span> <span class="Identifier">JsonNode</span></pre></dt>
 <dd>
 
 
@@ -297,8 +297,8 @@ Finds and exports route arguments
                     <span class="Identifier">urlPath</span><span class="Other">:</span> <span class="Identifier">string</span> <span class="Other">=</span> <span class="StringLit">&quot;&quot;</span><span class="Other">;</span>
                     <span class="Identifier">handlerParams</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="../bindings/python_types.html#HandlerParam"><span class="Identifier">HandlerParam</span></a><span class="Other">]</span> <span class="Other">=</span> <span class="Operator">@</span><span class="Other">[</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">body</span><span class="Other">:</span> <span class="Identifier">string</span> <span class="Other">=</span> <span class="StringLit">&quot;&quot;</span><span class="Other">;</span>
                     <span class="Identifier">force</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">)</span><span class="Other">:</span> <a href="routing.html#RouteObject"><span class="Identifier">RouteObject</span></a> {.
-    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">,</span> <span class="Identifier">OSError</span><span class="Other">,</span> <span class="Identifier">IOError</span><span class="Other">,</span> <span class="Identifier">EOFError</span><span class="Other">,</span> <span class="Identifier">KeyError</span><span class="Other">]</span><span class="Other">,</span>
-    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">,</span> <span class="Identifier">ReadIOEffect</span><span class="Other">,</span> <span class="Identifier">WriteIOEffect</span><span class="Other">]</span></span>.}</pre></dt>
+    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">IOError</span><span class="Other">,</span> <span class="Identifier">OSError</span><span class="Other">,</span> <span class="Identifier">KeyError</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">,</span> <span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ReadIOEffect</span><span class="Other">,</span> <span class="Identifier">WriteIOEffect</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 Finds and exports route arguments
@@ -404,7 +404,7 @@ Handles route and receive route data object.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-12-05 14:22:44 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-12-06 17:27:36 UTC</small>
       </div>
     </div>
   </div>
