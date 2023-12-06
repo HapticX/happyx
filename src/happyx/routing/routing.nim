@@ -619,15 +619,17 @@ when exportPython or defined(docgen) or defined(napibuild) or exportJvm:
     type RouteObject* = JsonNode
   elif defined(napibuild):
     type RouteObject* = napi_value
+  else:
+    type RouteObject* = JsonNode
 
   proc getRouteParams*(routeData: RouteDataObj, found_regexp_matches: seq[RegexMatch2],
                        urlPath: string = "", handlerParams: seq[HandlerParam] = @[], body: string = "",
                        force: bool = false): RouteObject =
     ## Finds and exports route arguments
-    when defined(napibuild) or exportJvm:
-      var res = newJObject()
-    else:
+    when exportPython:
       var res = pyDict()
+    else:
+      var res = newJObject()
     var idx = 0
     for i in routeData.pathParams:
       if i.name notin handlerParams and not force:
