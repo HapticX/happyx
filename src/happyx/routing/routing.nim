@@ -27,7 +27,10 @@ elif defined(napibuild):
     denim,
     ../bindings/node_types
 elif exportJvm:
-  discard
+  import
+    jnim,
+    jnim/private/[jni_wrapper],
+    ../bindings/java_types
 
 
 const declaredPathParams = CacheTable"HappyXDeclaredPathParams"
@@ -85,10 +88,6 @@ when exportPython:
           return v
 
 elif defined(napibuild):
-  import
-    denim,
-    ../bindings/node_types
-
   type RouteParamType = object
     name: string
     pattern: string
@@ -98,6 +97,25 @@ elif defined(napibuild):
   var registeredRouteParamTypes = newTable[string, RouteParamType]()
 
   proc registerRouteParamTypeAux*(name, pattern, creator: string) =
+    if re2"^[a-zA-Z][a-zA-Z0-9_]*$" notin name:
+      raise newException(
+        ValueError,
+        fmt"route param type name should be identifier (a-zA-Z0-0_), but got '{name}'"
+      )
+    registeredRouteParamTypes[name] = RouteParamType(
+      pattern: pattern, name: name, creator: creator
+    )
+
+elif exportJvm:
+  type RouteParamType = object
+    name: string
+    pattern: string
+    creator: JavaMethod
+
+
+  var registeredRouteParamTypes {.compileTime.} = newTable[string, RouteParamType]()
+
+  proc registerRouteParamTypeAux*(name, pattern: string, creator: JavaMethod) =
     if re2"^[a-zA-Z][a-zA-Z0-9_]*$" notin name:
       raise newException(
         ValueError,
@@ -165,7 +183,7 @@ proc handleRoute*(route: string): RouteDataObj =
   # custom patterns
   var types = ""
   {.gcsafe.}:
-    when defined(napibuild) or exportPython:
+    when defined(napibuild) or exportPython or exportJvm:
       for routeParamType in registeredRouteParamTypes.values():
         routePathStr = routePathStr.replace(
           re2(r"\{[a-zA-Z][a-zA-Z0-9_]*(\??):" & routeParamType.name & r"(\[m\])?(=\S+?)?\}"),
@@ -404,7 +422,7 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode =
           )
         else:
           # custom type
-          when defined(napibuild) or exportPython:
+          when defined(napibuild) or exportPython or exportJvm:
               letSection[0].add(foundGroup)
           else:
             if $i.paramType in registeredRouteParamTypes:
@@ -436,7 +454,7 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode =
           )
         else:
           # custom type
-          when exportPython or defined(napibuild):
+          when exportPython or defined(napibuild) or exportJvm:
               letSection[0].add(foundGroup)
           else:
             if $i.paramType in registeredRouteParamTypes:
@@ -470,7 +488,7 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode =
             ).add(newNimNode(nnkExceptBranch).add(
               ident"JsonParsingError",
               newStmtList(
-                when defined(debug):
+                when enableDebug:
                   newCall("echo", newCall("fmt", newStrLitNode("json parse error: {getCurrentExceptionMsg()}")))
                 else:
                   newEmptyNode(),
@@ -485,7 +503,7 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode =
             )).add(newNimNode(nnkExceptBranch).add(
               ident"JsonKindError",
               newStmtList(
-                when defined(debug):
+                when enableDebug:
                   newCall("echo", newCall("fmt", newStrLitNode("json kind error: {getCurrentExceptionMsg()}")))
                 else:
                   newEmptyNode(),
@@ -526,7 +544,7 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode =
   return newEmptyNode()
 
 
-when exportPython or defined(docgen) or defined(napibuild):
+when exportPython or defined(docgen) or defined(napibuild) or exportJvm:
   proc parseBoolOrJString*(str: string): JsonNode =
     try:
       return newJBool(parseBool(str))
@@ -595,16 +613,18 @@ when exportPython or defined(docgen) or defined(napibuild):
       else:
         `res`[`name`] = `parseFunc`(`foundGroup`)
     
-  when not defined(napibuild):
+  when exportPython:
     type RouteObject* = PyObject
-  else:
+  elif exportJvm:
+    type RouteObject* = JsonNode
+  elif defined(napibuild):
     type RouteObject* = napi_value
 
   proc getRouteParams*(routeData: RouteDataObj, found_regexp_matches: seq[RegexMatch2],
                        urlPath: string = "", handlerParams: seq[HandlerParam] = @[], body: string = "",
                        force: bool = false): RouteObject =
     ## Finds and exports route arguments
-    when defined(napibuild):
+    when defined(napibuild) or exportJvm:
       var res = newJObject()
     else:
       var res = pyDict()
@@ -637,7 +657,7 @@ when exportPython or defined(docgen) or defined(napibuild):
             res[i.name] = parseFloatOrJString(foundGroup)
           else:
             when exportPython:
-              {.cast(gcsafe).}:
+              {.gcsafe.}:
                 # custom type
                 if $i.paramType in registeredRouteParamTypes:
                   var data = registeredRouteParamTypes[$i.paramType]
@@ -649,7 +669,7 @@ when exportPython or defined(docgen) or defined(napibuild):
                 else:
                   res[i.name] = newJString(foundGroup)
             elif defined(napibuild):
-              {.cast(gcsafe).}:
+              {.gcsafe.}:
                 # custom type
                 if $i.paramType in registeredRouteParamTypes:
                   var data = registeredRouteParamTypes[$i.paramType]
@@ -674,7 +694,7 @@ when exportPython or defined(docgen) or defined(napibuild):
             condition(conditionOptional, conditionSecondOptional, foundGroup, defaultValue, newJString, void, res, name, "")
           else:
             when exportPython:
-              {.cast(gcsafe).}:
+              {.gcsafe.}:
                 # custom type
                 if $i.paramType in registeredRouteParamTypes:
                   var data = registeredRouteParamTypes[$i.paramType]
@@ -683,7 +703,7 @@ when exportPython or defined(docgen) or defined(napibuild):
                 else:
                   res[i.name] = newJString(foundGroup)
             elif defined(napibuild):
-              {.cast(gcsafe).}:
+              {.gcsafe.}:
                 # custom type
                 if $i.paramType in registeredRouteParamTypes:
                   var data = registeredRouteParamTypes[$i.paramType]
@@ -706,7 +726,7 @@ when exportPython or defined(docgen) or defined(napibuild):
           res[i.name] = parseFloatOrJString(foundGroup)
         else:
           when exportPython:
-            {.cast(gcsafe).}:
+            {.gcsafe.}:
               # custom type
               if $i.paramType in registeredRouteParamTypes:
                 var data = registeredRouteParamTypes[$i.paramType]
@@ -718,7 +738,7 @@ when exportPython or defined(docgen) or defined(napibuild):
               else:
                 res[i.name] = newJString(foundGroup)
           elif defined(napibuild):
-            {.cast(gcsafe).}:
+            {.gcsafe.}:
               # custom type
               if $i.paramType in registeredRouteParamTypes:
                 var data = registeredRouteParamTypes[$i.paramType]
@@ -743,7 +763,7 @@ when exportPython or defined(docgen) or defined(napibuild):
           res[i.name] = newJString(foundGroup)
         else:
           when exportPython:
-            {.cast(gcsafe).}:
+            {.gcsafe.}:
               # custom type
               if $i.paramType in registeredRouteParamTypes:
                 var data = registeredRouteParamTypes[$i.paramType]
@@ -752,7 +772,7 @@ when exportPython or defined(docgen) or defined(napibuild):
               else:
                 res[i.name] = newJString(foundGroup)
           elif defined(napibuild):
-            {.cast(gcsafe).}:
+            {.gcsafe.}:
               # custom type
               if $i.paramType in registeredRouteParamTypes:
                 var data = registeredRouteParamTypes[$i.paramType]

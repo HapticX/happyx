@@ -1,0 +1,24 @@
+plugins {
+    id "org.jetbrains.kotlin.jvm" version "1.6.0"
+    id 'java'
+}
+
+group 'com.hapticx'
+version '1.0.0'
+
+apply {
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'junit:junit:4.13.2'
+    testImplementation 'junit:junit:4.13.2'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+}
+
+test {
+    useJUnit()
+}

@@ -1,0 +1,8 @@
+# Folders
+build/
+.idea/
+.gradle/
+gradle/
+
+# Tests folder
+!test/

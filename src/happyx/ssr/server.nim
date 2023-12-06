@@ -165,12 +165,15 @@ HappyX web framework [SSR/SSG Part]
       components: TableRef[string, BaseComponent]
     ModelBase* = ref object of PyNimObjectExperimental
 elif exportJvm:
+  import ../bindings/java_types
+
   type
     Server* = ref object
       address*: string
       port*: int
       logger*: Logger
       path*: string
+      routes*: seq[Route]
       parent*: Server
       title*: string
       when enableHttpx:
@@ -1399,14 +1402,16 @@ socketToSsr.onmessage=function(m){
     ))
   # NodeJS Library
   when defined(napibuild):
-    stmtList.add(newCall("handleNodeRequest", ident"self", ident"req", ident"urlPath"))
+    stmtList.add(newCall(
+      "handleNodeRequest", ident"self", ident"req", ident"urlPath"
+    ))
   # Python Library
   elif exportPython:
     stmtList.add(newCall(
       "handlePythonRequest", ident"self", ident"req", ident"urlPath"
     ))
   # JVM JNI Library
-  elif exportPython:
+  elif exportJvm:
     stmtList.add(newCall(
       "handleJvmRequest", ident"self", ident"req", ident"urlPath"
     ))

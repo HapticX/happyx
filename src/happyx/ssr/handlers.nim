@@ -214,7 +214,105 @@ elif exportJvm:
           )
         )
       ):
-        discard
+        {.gcsafe.}:
+          if @["MIDDLEWARE"] != route.httpMethod:
+            reqResponded = true
+          let request = initHttpRequest(
+            $req.httpMethod.get(),
+            req.body.get(),
+            req.path.get(),
+            serverId,
+          )
+          if route.httpMethod.len > 0 and route.httpMethod[0] == "STATICFILE":
+            discard
+            # let
+            #   routeData = handleRoute(route.path)
+            #   founded_regexp_matches = findAll(urlPath, route.pattern)
+            #   funcParams = getRouteParams(routeData, founded_regexp_matches, urlPath, force = true)
+            #   fileName = $funcParams["file"]
+            #   extensions =
+            #     if route.httpMethod.len > 1:
+            #       route.httpMethod[1..^1]  # file extensions
+            #     else:
+            #       @[]
+            #   file =
+            #     if not route.purePath.endsWith("/") and not fileName.startsWith("/"):
+            #       route.purePath & "/" & fileName
+            #     else:
+            #       route.purePath & fileName
+            #   splitted = file.split(".")
+            #   ext = splitted[^1]
+            # if fileExists(file):
+            #   if extensions.len != 0 or ext in extensions or splitted.len == 1:
+            #     await req.answerFile(file)
+          else:
+            let
+              queryFromUrl = block:
+                let val = split(req.path.get(), "?")
+                if len(val) >= 2:
+                  val[1]
+                else:
+                  ""
+              # fetch queries
+              query = parseQuery(queryFromUrl)
+              # Declare RouteData
+              routeData = handleRoute(route.path)
+              # Unpack route path params
+              founded_regexp_matches = urlPath.findAll(route.pattern)
+              # get handler
+              handler = route.handler
+            # Get path params
+            var params: RouteObject
+            if req.body.isSome():
+              params = getRouteParams(routeData, founded_regexp_matches, urlPath, @[], req.body.get(), force = true)
+            else:
+              params = getRouteParams(routeData, founded_regexp_matches, urlPath, @[], force = true)
+            for k, v in params.pairs():
+              case v.kind
+              of JString:
+                request.pathParams.add(
+                  PathParam(name: k, kind: ppkString, strVal: env.NewStringUTF(env, v.getStr()))
+                )
+              of JInt:
+                request.pathParams.add(
+                  PathParam(name: k, kind: ppkInt, intVal: v.getInt().jint)
+                )
+              of JFloat:
+                request.pathParams.add(
+                  PathParam(name: k, kind: ppkFloat, floatVal: v.getFloat().jfloat)
+                )
+              of JBool:
+                request.pathParams.add(
+                  PathParam(name: k, kind: ppkBool, boolVal: if v.getBool(): JVM_TRUE else: JVM_FALSE)
+                )
+              else:
+                discard
+            # Add queries into request.queries
+            for k, v in query.pairs():
+              request.queries.add(Query(key: k, value: v))
+            # Add headers into request.headers
+            for k, v in req.headers.get().pairs():
+              request.headers.add(JavaHttpHeader(key: k, value: v))
+            # Call callback
+            var val = newJVMObject(
+              env.CallObjectMethod(env, handler.class, handler.methodId, env.toJava(request))
+            )
+            # Return raw data
+            # TODO: match other reponse types
+            # Get object type
+            case env.getObjectType(val)
+            of "java.lang.Integer",
+               "java.lang.Double",
+               "java.lang.String",
+               "java.lang.Boolean",
+               "java.lang.Byte",
+               "java.lang.Short",
+               "java.lang.Long",
+               "java.lang.Float",
+               "java.lang.Char":
+              req.answer(val.toStringRaw)
+            else:
+              req.answer(val.toStringRaw)
 
 
 elif exportPython:
