@@ -104,4 +104,19 @@ class ServerTestKt {
 
         s.start()
     }
+
+    @Test
+    fun withDsl() {
+        server("127.0.0.0", 5000) {
+            get("/") {
+                return@get "Hello, world!"
+            }
+
+            route("/some", listOf("GET", "POST")) {
+                return@route "Hello, world!"
+            }
+
+            start()
+        }
+    }
 }

@@ -99,6 +99,14 @@ public class ServerTest {
     }
 
     @Test
+    public void builderTest() {
+        new ServerBuilder()
+                .get("/", req -> "Hello, world!")
+                .get("/html", req -> new HtmlResponse("<h1>Header</h1>"))
+                .start();
+    }
+
+    @Test
     public void queriesTest() {
         Query q = new Query("a", "b");
         Queries qs = new Queries();

@@ -5,7 +5,6 @@ import com.hapticx.data.HttpRequest;
 import com.hapticx.data.WSConnection;
 import com.hapticx.util.LibLoader;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -125,7 +124,7 @@ public class Server {
         staticDirectory(this.serverId, path, directory, extensions);
     }
 
-    public void staticDirectory(String path, String directory,String[] extensions) {
+    public void staticDirectory(String path, String directory, String[] extensions) {
         staticDirectory(this.serverId, path, directory, Arrays.asList(extensions));
     }
 
