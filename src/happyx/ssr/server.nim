@@ -51,6 +51,7 @@
 import
   # Stdlib
   std/asyncdispatch,
+  std/macrocache,
   std/strformat,
   std/asyncfile,
   std/segfaults,
@@ -60,11 +61,12 @@ import
   std/strtabs,
   std/logging,
   std/cookies,
+  std/options,
   std/macros,
-  std/macrocache,
   std/tables,
   std/colors,
   std/json,
+  std/md5,
   std/os,
   std/exitprocs,
   # Deps
@@ -380,7 +382,8 @@ template answer*(
     code: HttpCode = Http200,
     headers: HttpHeaders = newHttpHeaders([
       ("Content-Type", "text/plain; charset=utf-8")
-    ])
+    ]),
+    contentLength: Option[int] = int.none
 ) =
   ## Answers to the request
   ## 
@@ -403,7 +406,33 @@ template answer*(
   when declared(outHeaders):
     for key, val in outHeaders.pairs():
       h[key] = val
-  when enableHttpx or enableHttpBeast:
+  # HTTPX
+  when enableHttpx:
+    var headersArr: seq[string] = @[]
+    for key, value in h.pairs():
+      headersArr.add(key & ':' & value)
+    when declared(outCookies):
+      for cookie in outCookies:
+        headersArr.add(cookie)
+    if contentLength.isSome:
+      # useful for file answers
+      when declared(statusCode):
+        when statusCode is int:
+          req.send(statusCode.HttpCode, $message, contentLength, headersArr.join("\r\n"))
+        else:
+          req.send(code, $message, contentLength, headersArr.join("\r\n"))
+      else:
+        req.send(code, $message, contentLength, headersArr.join("\r\n"))
+    else:
+      when declared(statusCode):
+        when statusCode is int:
+          req.send(statusCode.HttpCode, $message, headersArr.join("\r\n"))
+        else:
+          req.send(code, $message, headersArr.join("\r\n"))
+      else:
+        req.send(code, $message, headersArr.join("\r\n"))
+  # HTTP BEAST
+  elif enableHttpBeast:
     var headersArr: seq[string] = @[]
     for key, value in h.pairs():
       headersArr.add(key & ':' & value)
@@ -417,6 +446,7 @@ template answer*(
         req.send(code, $message, headersArr.join("\r\n"))
     else:
       req.send(code, $message, headersArr.join("\r\n"))
+  # ASYNC HTTP SERVER / MICRO ASYNC HTTP SERVER
   else:
     when declared(outCookies):
       for cookie in outCookies:
@@ -486,6 +516,14 @@ template answerHtml*(req: Request, data: string | TagRef, code: HttpCode = Http2
   answer(req, d, code, headers)
 
 
+when enableHttpx or enableHttpBeast:
+  proc send*(request: Request, content: string): Future[void] {.inline.} =
+    ## Sends `content` to the client.
+    request.unsafeSend(content)
+    result = newFuture[void]()
+    complete(result)
+
+
 proc answerFile*(req: Request, filename: string,
                  code: HttpCode = Http200, asAttachment = false,
                  bufSize: int = 40960) {.async.} =
@@ -505,22 +543,28 @@ proc answerFile*(req: Request, filename: string,
     splitted = filename.split('.')
     extension = if splitted.len > 1: splitted[^1] else: ""
     contentType = newMimetypes().getMimetype(extension)
-    fileSize = getFileSize(filename)
+    info = getFileInfo(filename)
+    fileSize = info.size.int
+    lastModified = info.lastWriteTime
+    etag = getMD5(fmt"{filename}-{lastModified}-{fileSize}")
   var
     f = openAsync(filename, fmRead)
-    headers = @[("Content-Type", fmt"{contentType}; charset=utf-8")]
+    headers = @[
+      ("Content-Type", fmt"{contentType}; charset=utf-8"),
+      ("Last-Modified", $lastModified),
+      ("Etag", etag),
+    ]
   
   if asAttachment:
     headers.add(("Content-Disposition", "attachment"))
   
   if fileSize > 1_000_000:
-    headers.add(("Content-Length", $fileSize))
-    req.answer("", Http200, newHttpHeaders(headers))
+    req.answer("", Http200, newHttpHeaders(headers), contentLength = some(fileSize))
     while true:
       let val = await f.read(bufSize)
       if val.len > 0:
         when enableHttpx or enableHttpBeast:
-          req.unsafeSend(val)
+          await req.send(val)
         else:
           await req.client.send(val)
       else:

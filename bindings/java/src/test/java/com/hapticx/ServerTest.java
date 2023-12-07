@@ -1,9 +1,15 @@
 package com.hapticx;
 
 import com.hapticx.data.HttpHeader;
+import com.hapticx.data.HttpHeaders;
 import com.hapticx.data.Queries;
 import com.hapticx.data.Query;
+import com.hapticx.response.BaseResponse;
+import com.hapticx.response.FileResponse;
+import com.hapticx.response.HtmlResponse;
 import org.junit.Test;
+
+import java.util.Objects;
 
 public class ServerTest {
 
@@ -39,6 +45,36 @@ public class ServerTest {
             // answer to request
             // now it sends just like string
             return "Hello, world!";
+        });
+
+        s.get("/base", req -> {
+            System.out.println(req.getPath());
+            HttpHeaders headers = new HttpHeaders();
+            headers.add(new HttpHeader("Programming-Language", "Kotlin"));
+            return new BaseResponse(
+                    "Oops, bad request",
+                    401,
+                    headers
+            );
+        });
+
+        s.get("/html", req -> {
+            System.out.println(req.getPath());
+            HttpHeaders headers = new HttpHeaders();
+            headers.add(new HttpHeader("Programming-Language", "Kotlin"));
+            return new HtmlResponse(
+                    "<h1>Oops! Seems like page that you search is not found</h1>",
+                    404,
+                    headers
+            );
+        });
+
+        s.get("/file", req -> {
+            System.out.println(req.getPath());
+            return new FileResponse(
+                    Objects.requireNonNull(Server.class.getResource("/happyx.dll"))
+                            .getFile()
+            );
         });
 
         s.start();

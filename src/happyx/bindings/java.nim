@@ -9,6 +9,7 @@ import
   ../routing/[routing],
   nimja,
   sugar,
+  unicode,
   tables,
   strutils,
   macros
@@ -91,17 +92,6 @@ proc addRoute(env: JNIEnvPtr, self: Server, path: string, httpMethods: seq[strin
     routeData.path, routeData.purePath, @["GET"], re2("^" & routeData.purePath & "$"), jMethod
   ))
   s.sortRoutes()
-
-
-proc getObjectType*(env: JNIEnvPtr, obj: JVMObject): string =
-  let
-    jClass = env.GetObjectClass(env, obj.get())
-    getClassMethod = env.GetMethodId(env, jClass, "getClass", "()Ljava/lang/Class;")
-    classObj = env.CallObjectMethod(env, obj.get(), getClassMethod)
-    classClass = env.GetObjectClass(env, classObj)
-    getNameMethod = env.GetMethodId(env, classClass, "getName", "()Ljava/lang/String;")
-    objName = env.CallObjectMethod(env, classObj, getNameMethod)
-  return newJVMObject(objName).toStringRaw
 
 
 nativeMethods com.hapticx~Server:

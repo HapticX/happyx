@@ -1,5 +1,11 @@
 package com.hapticx
 
+import com.google.gson.Gson
+import com.hapticx.data.HttpHeader
+import com.hapticx.response.BaseResponse
+import com.hapticx.response.FileResponse
+import com.hapticx.response.HtmlResponse
+import com.hapticx.response.JsonResponse
 import org.junit.Test
 
 class ServerTestKt {
@@ -36,6 +42,38 @@ class ServerTestKt {
             // answer to request
             // now it sends just like string
             return@get "Hello, world!"
+        }
+
+        s.get("/base") {
+            println(it.path)
+            return@get BaseResponse(
+                "Oops, bad request",
+                401,
+                listOf(HttpHeader("Programming-Language", "Kotlin"))
+            )
+        }
+
+        s.get("/html") {
+            println(it.path)
+            return@get HtmlResponse(
+                "<h1>Oops! Seems like page that you search is not found</h1>",
+                404,
+                listOf(HttpHeader("Programming-Language", "Kotlin"))
+            )
+        }
+
+        s.get("/json") {
+            println(it.path)
+            return@get JsonResponse(
+                Gson().toJson(listOf(1, 2, 3)),
+                404,
+                listOf(HttpHeader("Programming-Language", "Kotlin"))
+            )
+        }
+
+        s.get("/file") {
+            println(it.path)
+            return@get FileResponse(Server::class.java.getResource("/happyx.dll")!!.file)
         }
 
         s.start()

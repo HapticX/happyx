@@ -294,25 +294,54 @@ elif exportJvm:
             for k, v in req.headers.get().pairs():
               request.headers.add(JavaHttpHeader(key: k, value: v))
             # Call callback
-            var val = newJVMObject(
-              env.CallObjectMethod(env, handler.class, handler.methodId, env.toJava(request))
-            )
-            # Return raw data
-            # TODO: match other reponse types
-            # Get object type
-            case env.getObjectType(val)
-            of "java.lang.Integer",
-               "java.lang.Double",
-               "java.lang.String",
-               "java.lang.Boolean",
-               "java.lang.Byte",
-               "java.lang.Short",
-               "java.lang.Long",
-               "java.lang.Float",
-               "java.lang.Char":
-              req.answer(val.toStringRaw)
+            let
+              obj = env.CallObjectMethod(env, handler.class, handler.methodId, env.toJava(request))
+              val = newJVMObject(obj)
+            if obj.isNil or val.isNil:
+              req.answer("null", Http500)
             else:
-              req.answer(val.toStringRaw)
+              # Return raw data
+              # Get object type
+              case env.getObjectType(val)
+              of "java.lang.Integer",
+                 "java.lang.Double",
+                 "java.lang.String",
+                 "java.lang.Boolean",
+                 "java.lang.Byte",
+                 "java.lang.Short",
+                 "java.lang.Long",
+                 "java.lang.Float",
+                 "java.lang.Char":
+                req.answer(val.toStringRaw)
+              of "com.hapticx.response.BaseResponse":
+                let o = cast[BaseResponse](val)
+                req.answer(
+                  $o.getData(),
+                  HttpCode(o.getHttpCode().int),
+                  env.toHttpHeaders(o.getHeaders())
+                )
+              of "com.hapticx.response.HtmlResponse":
+                let o = cast[HtmlResponse](val)
+                req.answerHtml(
+                  $o.getData(),
+                  HttpCode(o.getHttpCode().int),
+                  env.toHttpHeaders(o.getHeaders())
+                )
+              of "com.hapticx.response.JsonResponse":
+                let o = cast[JsonResponse](val)
+                req.answerHtml(
+                  $o.getData(),
+                  HttpCode(o.getHttpCode().int),
+                  env.toHttpHeaders(o.getHeaders())
+                )
+              of "com.hapticx.response.FileResponse":
+                let o = cast[FileResponse](val)
+                await req.answerFile(
+                  ($o.getData())[1..^1],
+                  HttpCode(o.getHttpCode().int)
+                )
+              else:
+                req.answer(val.toStringRaw)
 
 
 elif exportPython:

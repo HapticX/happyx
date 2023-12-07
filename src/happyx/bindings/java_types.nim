@@ -9,22 +9,6 @@ import
 
 
 type
-  ResponseObj* = object
-    data*: string
-    statusCode*: int
-    headers*: HashMap[string, string]
-  FileResponseObj* = object
-    filename*: string
-    statusCode*: int
-    asAttachment*: bool
-  JsonResponseObj* = object
-    data*: JsonNode
-    statusCode*: int
-    headers*: HashMap[string, string]
-  HtmlResponseObj* = object
-    data*: string
-    statusCode*: int
-    headers*: HashMap[string, string]
   JavaMethod* = ref object
     env*: JNIEnvPtr
     class*: JClass
@@ -81,6 +65,57 @@ type
 var requestModelsHidden* = RequestModels(requestModels: @[])
 
 
+const
+  HttpRequestClass* = "com/hapticx/data/HttpRequest"
+  PathParamClass* = "com/hapticx/data/PathParam"
+  PathParamsClass* = "com/hapticx/data/PathParams"
+  QueryClass* = "com/hapticx/data/Query"
+  QueriesClass* = "com/hapticx/data/Queries"
+  HttpHeaderClass* = "com/hapticx/data/HttpHeader"
+  HttpHeadersClass* = "com/hapticx/data/HttpHeaders"
+  BaseResponseClass* = "com/hapticx/response/BaseResponse"
+
+
+jclass com.hapticx.data.HttpHeader as HttpHeaderJVM of Object:
+  proc new*(key: string, value: string)
+  proc getKey*: string
+  proc getValue*: string
+  proc toString*: string
+
+
+jclass com.hapticx.data.HttpHeaders as HttpHeadersJVM of ArrayList[HttpHeaderJVM]:
+  proc new*
+  proc get*(key: string)
+
+
+jclass com.hapticx.response.BaseResponse* of Object:
+  proc new*(data: string, httpCode: jint, httpHeaders: HttpHeadersJVM)
+  proc new*(data: string, httpCode: jint)
+  proc new*(data: string)
+  proc getHeaders*: HttpHeadersJVM
+  proc getHttpCode*: jint
+  proc getData*: string
+  proc toString*: string
+
+
+jclass com.hapticx.response.HtmlResponse* of BaseResponse:
+  proc new*(data: string, httpCode: jint, httpHeaders: HttpHeadersJVM)
+  proc new*(data: string, httpCode: jint)
+  proc new*(data: string)
+
+
+jclass com.hapticx.response.FileResponse* of BaseResponse:
+  proc new*(data: string, httpCode: jint, httpHeaders: HttpHeadersJVM)
+  proc new*(data: string, httpCode: jint)
+  proc new*(data: string)
+
+
+jclass com.hapticx.response.JsonResponse* of BaseResponse:
+  proc new*(data: string, httpCode: jint, httpHeaders: HttpHeadersJVM)
+  proc new*(data: string, httpCode: jint)
+  proc new*(data: string)
+
+
 proc initJavaMethod*(env: JNIEnvPtr, class: JClass, methodId: jmethodID): JavaMethod =
   JavaMethod(env: env, class: class, methodId: methodId)
 
@@ -100,9 +135,19 @@ proc initHttpRequest*(httpMethod, body, path: string,
   )
 
 
+proc getObjectType*(env: JNIEnvPtr, obj: JVMObject): string =
+  let jClass = env.GetObjectClass(env, obj.get())
+  let getClassMethod = env.GetMethodId(env, jClass, "getClass", "()Ljava/lang/Class;")
+  let classObj = env.CallObjectMethod(env, obj.get(), getClassMethod)
+  let classClass = env.GetObjectClass(env, classObj)
+  let getNameMethod = env.GetMethodId(env, classClass, "getName", "()Ljava/lang/String;")
+  let objName = env.CallObjectMethod(env, classObj, getNameMethod)
+  return newJVMObject(objName).toStringRaw
+
+
 proc toJava*(env: JNIEnvPtr, self: Query): jobject =
   let
-    class = env.FindClass(env, "com/hapticx/data/Query")
+    class = env.FindClass(env, QueryClass)
     constructor = env.GetMethodId(
       env, class, "<init>", "(Ljava/lang/String;Ljava/lang/String;)V"
     )
@@ -116,7 +161,7 @@ proc toJava*(env: JNIEnvPtr, self: Query): jobject =
 
 proc toJava*(env: JNIEnvPtr, self: Queries): jobject =
   let
-    class = env.FindClass(env, "com/hapticx/data/Queries")
+    class = env.FindClass(env, QueriesClass)
     constructor = env.GetMethodId(env, class, "<init>", "()V")
     addMethod = env.GetMethodID(env, class, "add", "(Lcom/hapticx/data/Query;)Z")
     res = env.NewObject(env, class, constructor)
@@ -128,7 +173,7 @@ proc toJava*(env: JNIEnvPtr, self: Queries): jobject =
 
 proc toJava*(env: JNIEnvPtr, self: JavaHttpHeader): jobject =
   let
-    class = env.FindClass(env, "com/hapticx/data/HttpHeader")
+    class = env.FindClass(env, HttpHeaderClass)
     constructor = env.GetMethodId(
       env, class, "<init>", "(Ljava/lang/String;Ljava/lang/String;)V"
     )
@@ -142,7 +187,7 @@ proc toJava*(env: JNIEnvPtr, self: JavaHttpHeader): jobject =
 
 proc toJava*(env: JNIEnvPtr, self: JavaHttpHeaders): jobject =
   let
-    class = env.FindClass(env, "com/hapticx/data/HttpHeaders")
+    class = env.FindClass(env, HttpHeadersClass)
     constructor = env.GetMethodId(env, class, "<init>", "()V")
     addMethod = env.GetMethodID(env, class, "add", "(Lcom/hapticx/data/HttpHeader;)Z")
     res = env.NewObject(env, class, constructor)
@@ -154,7 +199,7 @@ proc toJava*(env: JNIEnvPtr, self: JavaHttpHeaders): jobject =
 
 proc toJava*(env: JNIEnvPtr, self: PathParam): jobject =
   let
-    class = env.FindClass(env, "com/hapticx/data/PathParam")
+    class = env.FindClass(env, PathParamClass)
     constructor = env.GetMethodId(
       env, class, "<init>",
       case self.kind
@@ -196,7 +241,7 @@ proc toJava*(env: JNIEnvPtr, self: PathParam): jobject =
 
 proc toJava*(env: JNIEnvPtr, self: PathParams): jobject =
   let
-    class = env.FindClass(env, "com/hapticx/data/PathParams")
+    class = env.FindClass(env, PathParamsClass)
     constructor = env.GetMethodId(env, class, "<init>", "()V")
     addMethod = env.GetMethodID(env, class, "add", "(Lcom/hapticx/data/PathParam;)Z")
     res = env.NewObject(env, class, constructor)
@@ -209,7 +254,7 @@ proc toJava*(env: JNIEnvPtr, self: PathParams): jobject =
 proc toJava*(env: JNIEnvPtr, self: HttpRequest): jobject =
   ## Converts HttpRequest to HttpRequest JavaObject
   let
-    class = env.FindClass(env, "com/hapticx/data/HttpRequest")
+    class = env.FindClass(env, HttpRequestClass)
     constructor = env.GetMethodId(
       env, class, "<init>",
       "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/hapticx/data/Queries;Lcom/hapticx/data/HttpHeaders;Lcom/hapticx/data/PathParams;)V"
@@ -228,9 +273,12 @@ proc toJava*(env: JNIEnvPtr, self: HttpRequest): jobject =
   return res
 
 
-proc toHttpHeaders*(obj: HashMap[string, string]): HttpHeaders =
+proc toHttpHeaders*(env: JNIEnvPtr, obj: HttpHeadersJVM): HttpHeaders =
   result = newHttpHeaders()
-  for e in obj.entrySet().toSeq():
+  if env.getObjectType(obj) != "com.hapticx.data.HttpHeaders":
+    return result
+  
+  for e in obj.toSeq:
     result[$e.getKey()] = $e.getValue()
 
 

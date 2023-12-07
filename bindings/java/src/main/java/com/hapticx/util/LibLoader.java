@@ -2,44 +2,36 @@ package com.hapticx.util;
 
 import com.hapticx.Server;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.InputStream;
+import java.net.URL;
 
+/**
+ * A utility class for loading native libraries based on the operating system.
+ */
 public class LibLoader {
+    /**
+     * Loads the specified native library based on the operating system.
+     *
+     * @param library The name of the native library (excluding the file extension).
+     */
     public static void load(String library) {
         try {
-            String extension;
-            // load from resources
-            OS.Type osType = OS.getOperatingSystemType();
-            switch (osType) {
-                case Windows -> extension = ".dll";
-                case MacOS, Linux -> extension = ".so";
-                default -> {
-                    extension = "";
-                    throw new IllegalStateException("Unexpected value: " + System.getProperty("os.name").toLowerCase());
-                }
-            }
-            InputStream is = Server.class.getResourceAsStream("/" + library + extension);
+            // Determine the file extension based on the operating system
+            String extension = switch (OS.getOperatingSystemType()) {
+                case Windows -> ".dll";
+                case MacOS, Linux -> ".so";
+                default -> throw new IllegalStateException(
+                        "Unexpected value: " + System.getProperty("os.name").toLowerCase()
+                );
+            };
 
-            // create temporary file
-            File file = File.createTempFile(library, extension);
-            file.deleteOnExit();
+            // Construct the URL for the native library
+            URL url = Server.class.getResource("/" + library + extension);
+            assert url != null;
 
-            // write lib
-            try (FileOutputStream fos = new FileOutputStream(file)) {
-                byte[] buffer = new byte[1024];
-                int readBytes;
-                if (is != null) {
-                    while ((readBytes = is.read(buffer)) != -1) {
-                        fos.write(buffer, 0, readBytes);
-                    }
-                }
-            }
-
-            // load lib
-            System.load(file.getAbsolutePath());
+            // Load the native library
+            System.load(url.getFile());
         } catch (Exception e) {
+            // Print the stack trace if an exception occurs during the library loading process
             e.printStackTrace();
         }
     }

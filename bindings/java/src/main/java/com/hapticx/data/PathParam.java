@@ -10,18 +10,6 @@ public class PathParam {
 
     private final Type type;
 
-    public PathParam(String name, Object value, String type) {
-        this.name = name;
-        this.value = value;
-
-        switch (type) {
-            case "int" -> this.type = Type.INTEGER;
-            case "float" -> this.type = Type.FLOAT;
-            case "bool" -> this.type = Type.BOOLEAN;
-            default -> this.type = Type.STRING;
-        }
-    }
-
     public PathParam(String name, int value) {
         this.type = Type.INTEGER;
         this.name = name;
