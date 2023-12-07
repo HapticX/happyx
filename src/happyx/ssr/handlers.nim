@@ -244,6 +244,38 @@ elif exportJvm:
             if fileExists(file):
               if extensions.len == 0 or ext in extensions or splitted.len == 1:
                 await req.answerFile(file)
+          elif @["WEBSOCKET"] == route.httpMethod:
+            var
+              wsClient = await req.newWebSocket()
+              handler = route.handler
+              wsConnection = wsClient.newWebSocketObj("")
+              wsId = wsConnection.id
+            try:
+              wsConnection.state = wssConnect
+              env.CallVoidMethod(env, handler.class, handler.methodId, env.toJava(wsConnection))
+              wsConnection.state = wssOpen
+              env.CallVoidMethod(env, handler.class, handler.methodId, env.toJava(wsConnection))
+              while wsClient.readyState == Open:
+                let wsData = await wsClient.receiveStrPacket()
+                wsConnection.data = wsData
+                env.CallVoidMethod(env, handler.class, handler.methodId, env.toJava(wsConnection))
+            except WebSocketClosedError:
+              wsConnection.state = wssClose
+            except WebSocketHandshakeError:
+              logging.error("Invalid WebSocket handshake. Headers haven't Sec-WebSocket-Version!")
+              wsConnection.state = wssHandshakeError
+            except WebSocketProtocolMismatchError:
+              logging.error(fmt"Socket tried to use an unknown protocol: {getCurrentExceptionMsg()}")
+              wsConnection.state = wssMismatchProtocol
+            except WebSocketError:
+              logging.error(fmt"Unexpected socket error: {getCurrentExceptionMsg()}")
+              wsConnection.state = wssError
+            except Exception:
+              logging.error(fmt"Unexpected error: {getCurrentExceptionMsg()}")
+              wsConnection.state = wssError
+            wsConnection.data = ""
+            env.CallVoidMethod(env, handler.class, handler.methodId, env.toJava(wsConnection))
+            wsClients.del(wsId)
           elif not route.handler.isNil:
             let
               queryFromUrl = block:
@@ -341,6 +373,8 @@ elif exportJvm:
                 )
               else:
                 req.answer(val.toStringRaw)
+      if reqResponded:
+        break
 
 
 elif exportPython:

@@ -2,6 +2,7 @@ package com.hapticx;
 
 
 import com.hapticx.data.HttpRequest;
+import com.hapticx.data.WSConnection;
 import com.hapticx.util.LibLoader;
 
 import java.util.ArrayList;
@@ -17,6 +18,10 @@ public class Server {
         Object onRequest(HttpRequest req);
     }
 
+    public interface WebSocketCallback {
+        void onReceive(WSConnection sock);
+    }
+
     private native int createServer(String hostname, int port);
     private native void startServer(int serverId);
     private native void get(int serverId, String path, RequestCallback cb);
@@ -29,12 +34,14 @@ public class Server {
     private native void link(int serverId, String path, RequestCallback cb);
     private native void unlink(int serverId, String path, RequestCallback cb);
     private native void options(int serverId, String path, RequestCallback cb);
+    private native void websocket(int serverId, String path, WebSocketCallback cb);
     private native void route(int serverId, String path, List<String> methods, RequestCallback cb);
     private native void notFound(int serverId, RequestCallback cb);
     private native void middleware(int serverId, RequestCallback cb);
     private native void staticDirectory(
             int serverId, String path, String directory, List<String> extensions
     );
+    private native void mount(int serverId, int otherServerId, String path);
 
     private final int serverId;
 
@@ -94,6 +101,10 @@ public class Server {
         options(this.serverId, path, cb);
     }
 
+    public void websocket(String path, WebSocketCallback cb) {
+        websocket(this.serverId, path, cb);
+    }
+
     public void route(String path, List<String> methods, RequestCallback cb) {
         route(this.serverId, path, methods, cb);
     }
@@ -132,6 +143,10 @@ public class Server {
 
     public void staticDirectory(String path, String directory) {
         staticDirectory(this.serverId, path, directory, null);
+    }
+
+    public void mount(String path, Server other) {
+        mount(this.serverId, other.serverId, path);
     }
 
     public void start() {

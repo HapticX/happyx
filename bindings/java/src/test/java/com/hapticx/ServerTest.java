@@ -1,9 +1,6 @@
 package com.hapticx;
 
-import com.hapticx.data.HttpHeader;
-import com.hapticx.data.HttpHeaders;
-import com.hapticx.data.Queries;
-import com.hapticx.data.Query;
+import com.hapticx.data.*;
 import com.hapticx.response.BaseResponse;
 import com.hapticx.response.FileResponse;
 import com.hapticx.response.HtmlResponse;
@@ -81,6 +78,22 @@ public class ServerTest {
 
         System.out.println(System.getProperty("user.dir"));
         s.staticDirectory("/staticDirectory", System.getProperty("user.dir"));
+
+        Server settings = new Server();
+        s.mount("/settings", settings);
+
+        settings.get("/", req -> "Hello from settings mount");
+
+        s.websocket("/ws", ws -> {
+            if (ws.getState() == WSConnection.State.OPEN) {
+                if (ws.getData().equals("close")) {
+                    ws.send("bye");
+                    ws.close();
+                } else {
+                    ws.send("Hello!");
+                }
+            }
+        });
 
         s.start();
     }

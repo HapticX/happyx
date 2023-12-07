@@ -2,6 +2,7 @@ package com.hapticx
 
 import com.google.gson.Gson
 import com.hapticx.data.HttpHeader
+import com.hapticx.data.WSConnection
 import com.hapticx.response.BaseResponse
 import com.hapticx.response.FileResponse
 import com.hapticx.response.HtmlResponse
@@ -82,6 +83,24 @@ class ServerTestKt {
 
         println(System.getProperty("user.dir"))
         s.staticDirectory("/staticDirectory", System.getProperty("user.dir"))
+
+        val settings = Server()
+        s.mount("/settings", settings)
+
+        settings.get("/") {
+            return@get "Hello from settings mount"
+        }
+
+        s.websocket("/ws") {
+            if (it.state == WSConnection.State.OPEN) {
+                if (it.data == "close") {
+                    it.send("bye")
+                    it.close()
+                } else {
+                    it.send("Hello!")
+                }
+            }
+        }
 
         s.start()
     }

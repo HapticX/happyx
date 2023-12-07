@@ -2,8 +2,11 @@ import
   jnim,
   jnim/private/[jni_wrapper],
   jnim/java/[lang, util],
+  ../ssr/session,
   regex,
   json,
+  websocketx,
+  tables,
   httpcore,
   strutils
 
@@ -60,13 +63,34 @@ type
     queries*: Queries
     headers*: JavaHttpHeaders
     pathParams*: PathParams
+  WebSocketState* {.pure, size: sizeof(int8).} = enum
+    wssConnect,
+    wssOpen,
+    wssClose,
+    wssHandshakeError,
+    wssMismatchProtocol,
+    wssError
+  WebSocket* = object
+    id*: string
+    data*: string
+    ws*: websocketx.WebSocket
+    state*: WebSocketState
 
 
-var requestModelsHidden* = RequestModels(requestModels: @[])
+var
+  requestModelsHidden* = RequestModels(requestModels: @[])
+  wsClients* = newTable[string, java_types.WebSocket]()
+
+
+proc newWebSocketObj*(ws: websocketx.WebSocket, data: string = ""): java_types.WebSocket =
+  let id = genSessionId()
+  wsClients[id] = java_types.WebSocket(id: id, ws: ws, data: data, state: wssOpen)
+  wsClients[id]
 
 
 const
   HttpRequestClass* = "com/hapticx/data/HttpRequest"
+  WSConnectionClass* = "com/hapticx/data/WSConnection"
   PathParamClass* = "com/hapticx/data/PathParam"
   PathParamsClass* = "com/hapticx/data/PathParams"
   QueryClass* = "com/hapticx/data/Query"
@@ -271,6 +295,41 @@ proc toJava*(env: JNIEnvPtr, self: HttpRequest): jobject =
       env.toJava(self.pathParams),
     )
   return res
+
+
+proc toJava*(env: JNIEnvPtr, self: java_types.WebSocket): jobject =
+  ## Converts HttpRequest to HttpRequest JavaObject
+  let
+    class = env.FindClass(env, WSConnectionClass)
+    constructor = env.GetMethodId(
+      env, class, "<init>",
+      "(Ljava/lang/String;Ljava/lang/String;Lcom/hapticx/data/WSConnection$State;)V"
+    )
+    stateClass = env.FindClass(env, "com/hapticx/data/WSConnection$State")
+    fieldId = env.GetStaticFieldId(
+      env, stateClass,
+      case self.state
+      of wssConnect:
+        cstring"CONNECT"
+      of wssOpen:
+        cstring"OPEN"
+      of wssClose:
+        cstring"CLOSE"
+      of wssHandshakeError:
+        cstring"HANDSHAKE_ERROR"
+      of wssMismatchProtocol:
+        cstring"MISMATCH_PROTOCOL"
+      of wssError:
+        cstring"ERROR",
+      cstring"Lcom/hapticx/data/WSConnection$State;"
+    )
+    state = env.GetStaticObjectField(env, stateClass, fieldId)
+  return env.NewObject(
+    env, class, constructor,
+    env.NewStringUTF(env, cstring(self.id)),
+    env.NewStringUTF(env, cstring(self.data)),
+    state
+  )
 
 
 proc toHttpHeaders*(env: JNIEnvPtr, obj: HttpHeadersJVM): HttpHeaders =

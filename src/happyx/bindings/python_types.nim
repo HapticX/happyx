@@ -79,7 +79,7 @@ type
 
 var
   requestModelsHidden* = RequestModels(requestModels: @[])
-  uniqueWebSocketId*: uint64 = -1
+  uniqueWebSocketId*: uint64 = 0
 
 
 proc newWebSocketObj*(ws: websocketx.WebSocket, data: string = ""): python_types.WebSocket =

@@ -75,18 +75,28 @@ proc sortRoutes(self: Server) {.inline.} =
     self.routes.add(i)
 
 
-proc addRoute(env: JNIEnvPtr, self: Server, path: string, httpMethods: seq[string], requestCallback: jobject) {.inline.} =
+proc addRoute(env: JNIEnvPtr, self: Server, path: string, httpMethods: seq[string],
+              requestCallback: jobject | JavaMethod,
+              isHttpRequest: bool = true) {.inline.} =
   var
     p = path
     s = self
-  let jMethod =
-    if requestCallback.isNil:
-      nil
-    else:
-      let
-        jClass = env.GetObjectClass(env, requestCallback)
-        methodId = env.GetMethodId(env, jClass, "onRequest", "(Lcom/hapticx/data/HttpRequest;)Ljava/lang/Object;")
-      env.initJavaMethod(jClass, methodId)
+  when requestCallback is jobject:
+    let jMethod =
+      if requestCallback.isNil:
+        nil
+      elif not isHttpRequest:
+        let
+          jClass = env.GetObjectClass(env, requestCallback)
+          methodId = env.GetMethodId(env, jClass, "onReceive", "(Lcom/hapticx/data/WSConnection;)V")
+        env.initJavaMethod(jClass, methodId)
+      else:
+        let
+          jClass = env.GetObjectClass(env, requestCallback)
+          methodId = env.GetMethodId(env, jClass, "onRequest", "(Lcom/hapticx/data/HttpRequest;)Ljava/lang/Object;")
+        env.initJavaMethod(jClass, methodId)
+  else:
+    let jMethod = requestCallback
   # Get root server
   while not s.parent.isNil():
     p = s.path & p
@@ -151,6 +161,11 @@ nativeMethods com.hapticx~Server:
     initJNI(env)
     env.addRoute(servers[serverId], $path, @["HEAD"], requestCallback)
   
+  proc websocket(serverId: jint, path: jstring, requestCallback: jobject) =
+    ## Creates a new WS route at `path` with `callback`
+    initJNI(env)
+    env.addRoute(servers[serverId], $path, @["WEBSOCKET"], requestCallback, false)
+  
   proc route(serverId: jint, path: jstring, methods: jobject, requestCallback: jobject) =
     ## Creates a new route at `path` with `callback`
     initJNI(env)
@@ -190,6 +205,18 @@ nativeMethods com.hapticx~Server:
       servers[serverId].routes.add(initRoute(
         p, $directory, extensionsList, re2("^" & routeData.purePath & "$"), nil
       ))
+
+  proc mount(serverId: jint, otherServerId: jint, path: jstring) =
+    ## Registers sub application at `path`
+    initJNI(env)
+    servers[otherServerId].path = $path
+    servers[otherServerId].parent = servers[serverId]
+    # Get root server
+    var
+      self = servers[serverId]
+      other = servers[otherServerId]
+    for route in other.routes:
+      env.addRoute(self, $path & route.purePath, route.httpMethod, route.handler)
   
   proc startServer(serverId: jint) =
     ## Starts a server at host and port
@@ -201,3 +228,16 @@ nativeMethods com.hapticx~Server:
         )
     serve self.address, self.port:
       discard
+
+
+# Work with WebSockets
+nativeMethods com.hapticx.data~WSConnection:
+  proc close(websocketId: jstring) =
+    ## Close websocket connection
+    initJNI(env)
+    wsClients[$websocketId].ws.close()
+  
+  proc send(websocketId: jstring, data: jstring) =
+    ## Sends data to websocket if available.
+    initJNI(env)
+    asyncCheck wsClients[$websocketId].ws.send($data)
