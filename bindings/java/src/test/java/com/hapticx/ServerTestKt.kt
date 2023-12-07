@@ -76,6 +76,13 @@ class ServerTestKt {
             return@get FileResponse(Server::class.java.getResource("/happyx.dll")!!.file)
         }
 
+        s.route("/any", listOf("GET", "POST")) {
+            return@route "You can see it only on GET or POST"
+        }
+
+        println(System.getProperty("user.dir"))
+        s.staticDirectory("/staticDirectory", System.getProperty("user.dir"))
+
         s.start()
     }
 }

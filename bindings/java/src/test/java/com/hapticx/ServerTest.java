@@ -77,6 +77,11 @@ public class ServerTest {
             );
         });
 
+        s.route("/any", new String[]{"GET", "POST"}, req -> "You can see it only on GET or POST");
+
+        System.out.println(System.getProperty("user.dir"));
+        s.staticDirectory("/staticDirectory", System.getProperty("user.dir"));
+
         s.start();
     }
 

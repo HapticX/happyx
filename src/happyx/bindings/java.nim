@@ -7,12 +7,12 @@ import
   ../routing/[routing, mounting],
   ./java_types,
   ../routing/[routing],
-  nimja,
-  sugar,
+  strutils,
   unicode,
   tables,
-  strutils,
-  macros
+  macros,
+  nimja,
+  sugar
 
 
 macro nativeMethods(class: untyped, body: untyped) =
@@ -79,17 +79,21 @@ proc addRoute(env: JNIEnvPtr, self: Server, path: string, httpMethods: seq[strin
   var
     p = path
     s = self
-  let
-    jClass = env.GetObjectClass(env, requestCallback)
-    methodId = env.GetMethodId(env, jClass, "onRequest", "(Lcom/hapticx/data/HttpRequest;)Ljava/lang/Object;")
-    jMethod = env.initJavaMethod(jClass, methodId)
+  let jMethod =
+    if requestCallback.isNil:
+      nil
+    else:
+      let
+        jClass = env.GetObjectClass(env, requestCallback)
+        methodId = env.GetMethodId(env, jClass, "onRequest", "(Lcom/hapticx/data/HttpRequest;)Ljava/lang/Object;")
+      env.initJavaMethod(jClass, methodId)
   # Get root server
   while not s.parent.isNil():
     p = s.path & p
     s = s.parent
   let routeData = handleRoute(p)
   s.routes.add(initRoute(
-    routeData.path, routeData.purePath, @["GET"], re2("^" & routeData.purePath & "$"), jMethod
+    routeData.path, routeData.purePath, httpMethods, re2("^" & routeData.purePath & "$"), jMethod
   ))
   s.sortRoutes()
 
@@ -106,6 +110,86 @@ nativeMethods com.hapticx~Server:
     ## Creates a new GET route at `path` with `callback`
     initJNI(env)
     env.addRoute(servers[serverId], $path, @["GET"], requestCallback)
+  
+  proc post(serverId: jint, path: jstring, requestCallback: jobject) =
+    ## Creates a new POST route at `path` with `callback`
+    initJNI(env)
+    env.addRoute(servers[serverId], $path, @["POST"], requestCallback)
+  
+  proc put(serverId: jint, path: jstring, requestCallback: jobject) =
+    ## Creates a new POST route at `path` with `callback`
+    initJNI(env)
+    env.addRoute(servers[serverId], $path, @["PUT"], requestCallback)
+  
+  proc delete(serverId: jint, path: jstring, requestCallback: jobject) =
+    ## Creates a new DELETE route at `path` with `callback`
+    initJNI(env)
+    env.addRoute(servers[serverId], $path, @["DELETE"], requestCallback)
+  
+  proc purge(serverId: jint, path: jstring, requestCallback: jobject) =
+    ## Creates a new PURGE route at `path` with `callback`
+    initJNI(env)
+    env.addRoute(servers[serverId], $path, @["PURGE"], requestCallback)
+  
+  proc link(serverId: jint, path: jstring, requestCallback: jobject) =
+    ## Creates a new LINK route at `path` with `callback`
+    initJNI(env)
+    env.addRoute(servers[serverId], $path, @["LINK"], requestCallback)
+  
+  proc unlink(serverId: jint, path: jstring, requestCallback: jobject) =
+    ## Creates a new UNLINK route at `path` with `callback`
+    initJNI(env)
+    env.addRoute(servers[serverId], $path, @["UNLINK"], requestCallback)
+  
+  proc copy(serverId: jint, path: jstring, requestCallback: jobject) =
+    ## Creates a new COPY route at `path` with `callback`
+    initJNI(env)
+    env.addRoute(servers[serverId], $path, @["COPY"], requestCallback)
+  
+  proc head(serverId: jint, path: jstring, requestCallback: jobject) =
+    ## Creates a new HEAD route at `path` with `callback`
+    initJNI(env)
+    env.addRoute(servers[serverId], $path, @["HEAD"], requestCallback)
+  
+  proc route(serverId: jint, path: jstring, methods: jobject, requestCallback: jobject) =
+    ## Creates a new route at `path` with `callback`
+    initJNI(env)
+    var methodsList = (cast[List[string]](newJVMObject(methods))).toSeq()
+    env.addRoute(servers[serverId], $path, methodsList, requestCallback)
+  
+  proc middleware(serverId: jint, requestCallback: jobject) =
+    ## Creates a new middleware for server with `callback`
+    initJNI(env)
+    env.addRoute(servers[serverId], "", @["MIDDLEWARE"], requestCallback)
+  
+  proc notFound(serverId: jint, requestCallback: jobject) =
+    ## Creates a new middleware for server with `callback`
+    initJNI(env)
+    env.addRoute(servers[serverId], "", @["NOTFOUND"], requestCallback)
+
+  proc staticDirectory(serverId: jint, path: jstring, directory: jstring, extensions: jobject) =
+    ## Registers public folder
+    initJNI(env)
+    var
+      p = $path
+      s = servers[serverId]
+    while not s.parent.isNil():
+      p = s.path & p
+      s = s.parent
+    if not p.endsWith("/"):
+      p &= "/"
+    p &= "{file:path}"
+    let routeData = handleRoute(p)
+    if extensions.isNil:
+      servers[serverId].routes.add(initRoute(
+        p, $directory, @["STATICFILE"], re2("^" & routeData.purePath & "$"), nil
+      ))
+    else:
+      var extensionsList = (cast[List[string]](newJVMObject(extensions))).toSeq()
+      extensionsList.insert("STATICFILE", 0)
+      servers[serverId].routes.add(initRoute(
+        p, $directory, extensionsList, re2("^" & routeData.purePath & "$"), nil
+      ))
   
   proc startServer(serverId: jint) =
     ## Starts a server at host and port

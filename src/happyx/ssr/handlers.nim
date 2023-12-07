@@ -54,7 +54,7 @@ when defined(napibuild):
               fileName = $funcParams["file"]
               file =
                 if not route.purePath.endsWith("/") and not fileName.startsWith("/"):
-                  route.purePath & "/" & fileName
+                  route.purePath / fileName
                 else:
                   route.purePath & fileName
             if fileExists(file):
@@ -224,28 +224,27 @@ elif exportJvm:
             serverId,
           )
           if route.httpMethod.len > 0 and route.httpMethod[0] == "STATICFILE":
-            discard
-            # let
-            #   routeData = handleRoute(route.path)
-            #   founded_regexp_matches = findAll(urlPath, route.pattern)
-            #   funcParams = getRouteParams(routeData, founded_regexp_matches, urlPath, force = true)
-            #   fileName = $funcParams["file"]
-            #   extensions =
-            #     if route.httpMethod.len > 1:
-            #       route.httpMethod[1..^1]  # file extensions
-            #     else:
-            #       @[]
-            #   file =
-            #     if not route.purePath.endsWith("/") and not fileName.startsWith("/"):
-            #       route.purePath & "/" & fileName
-            #     else:
-            #       route.purePath & fileName
-            #   splitted = file.split(".")
-            #   ext = splitted[^1]
-            # if fileExists(file):
-            #   if extensions.len != 0 or ext in extensions or splitted.len == 1:
-            #     await req.answerFile(file)
-          else:
+            let
+              routeData = handleRoute(route.path)
+              founded_regexp_matches = findAll(urlPath, route.pattern)
+              funcParams = getRouteParams(routeData, founded_regexp_matches, urlPath, force = true)
+              fileName = funcParams["file"].getStr
+              extensions =
+                if route.httpMethod.len > 1:
+                  route.httpMethod[1..^1]  # file extensions
+                else:
+                  @[]
+              file =
+                if not route.purePath.endsWith($DirSep) and not fileName.startsWith($DirSep):
+                  route.purePath / fileName
+                else:
+                  route.purePath & fileName
+              splitted = file.split(".")
+              ext = splitted[^1]
+            if fileExists(file):
+              if extensions.len == 0 or ext in extensions or splitted.len == 1:
+                await req.answerFile(file)
+          elif not route.handler.isNil:
             let
               queryFromUrl = block:
                 let val = split(req.path.get(), "?")
@@ -380,14 +379,14 @@ elif exportPython:
                 else:
                   @[]
               file =
-                if not route.purePath.endsWith("/") and not fileName.startsWith("/"):
-                  route.purePath & "/" & fileName
+                if not route.purePath.endsWith($DirSep) and not fileName.startsWith($DirSep):
+                  route.purePath / fileName
                 else:
                   route.purePath & fileName
               splitted = file.split(".")
               ext = splitted[^1]
             if fileExists(file):
-              if extensions.len != 0 or ext in extensions or splitted.len == 1:
+              if extensions.len == 0 or ext in extensions or splitted.len == 1:
                 await req.answerFile(file)
           else:
             let
