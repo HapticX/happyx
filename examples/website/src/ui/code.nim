@@ -1046,7 +1046,7 @@ serve "127.0.0.1", 5000:
 """
   nimSsrNormSqlite* = """import
   happyx,  # import HappyX web framework
-  norm/[model, sqlite],  # import NORM lib
+  norm/[model, sqlite],  # import Norm lib
   times
 
 
@@ -1065,35 +1065,32 @@ serve "127.0.0.1", 5000:
   
   post "/user/new":
     var user = newUser()
-    dbConn.insert(user)
-    return {"response": "success"}
+    try:
+      dbConn.insert(user)
+      return {"response": "success"}
+    except DbError:
+      return {"response": "failure"}
   
   get "/user/id{userId:int}":
     var user = newUser()
-    dbConn.select(user, "id = $1", userId.int64)
-    if user == nil:
-      return {"response": "failure"}
-    else:
+    try:
+      dbConn.select(user, "id = ?", userId.int64)
       return {
         "id": user.id,
         "lastLogin": $user.lastLogin
       }
-  
+    except DbError:
+      return {"response": "failure"}
+        
   get "/users":
     var outUsers = @[newUser()]
     dbConn.selectAll(outUsers)
 
-    var response = %*[]
-    for i in outUsers:
-      response.add %*{
-        "id": i.id,
-        "lastLogin": $i.lastLogin
-      }
-    return response
+    return %*outUsers
 """
   nimSsrNormSqlite1* = """import
   happyx,  # import HappyX web framework
-  norm/[model, sqlite],  # import NORM lib
+  norm/[model, sqlite],  # import Norm lib
   times
 
 
@@ -1119,27 +1116,21 @@ serve "127.0.0.1", 5000:
   nimSsrNormSqlite4* = """
   get "/user/id{userId:int}":
     var user = newUser()
-    dbConn.select(user, "id = $1", userId.int64)
-    if user == nil:
-      return {"response": "failure"}
-    else:
+    try:
+      dbConn.select(user, "id = ?", userId.int64)
       return {
         "id": user.id,
         "lastLogin": $user.lastLogin
       }
+    except DbError:
+      return {"response": "failure"}
+     
 """
   nimSsrNormSqlite5* = """
   get "/users":
     var outUsers = @[newUser()]
-    dbConn.selectAll(outUsers)
 
-    var response = %*[]
-    for i in outUsers:
-      response.add %*{
-        "id": i.id,
-        "lastLogin": $i.lastLogin
-      }
-    return response
+    return %*outUsers
 """
   pySqlalchemy* = """from happyx import Server
 from sqlalchemy import create_engine, Column, Integer, DateTime
