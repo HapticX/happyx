@@ -40,7 +40,7 @@ component LanguageSpinner:
           @click:
             setCurrentLanguage("ja")
         tButton(class = "w-full px-2 text-4xl lg:text-2xl xl:text-base md:px-4 xl:px-8 py-1 text-[{Background}] dark:text-[{BackgroundDark}] bg-[{Orange}] dark:bg-[{Yellow}] opacity-90 hover:opacity-80 active:opacity-70 duration-300"):
-          "🇨🇳 中国语文科 🇨🇳"
+          "🇨🇳 中文 🇨🇳"
           @click:
             setCurrentLanguage("zh")
         tButton(class = "w-full px-2 text-4xl lg:text-2xl xl:text-base md:px-4 xl:px-8 py-1 text-[{Background}] dark:text-[{BackgroundDark}] bg-[{Orange}] dark:bg-[{Yellow}] opacity-90 hover:opacity-80 active:opacity-70 duration-300"):
