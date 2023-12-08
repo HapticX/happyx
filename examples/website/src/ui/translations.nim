@@ -1400,7 +1400,7 @@ translatable:
     "zh" -> "pymongo文档"
     "fr" -> "documentation sur pymongo"
     "ko" -> "pymongo 문서"
-  "This article discusses the interaction of Happy and SQLite using the Norm library.":
+  "This article discusses the interaction of Happy and SQLite using Norm library.":
     "ru" -> "Эта статья рассматривает взаимодействие Happy и SQLite с использованием библиотеки Norm."
     "ja" -> "この記事では、Normライブラリを使用してHappyとSQLiteとの連携について説明します。"
     "zh" -> "本文讨论了使用Norm库在Happy和SQLite之间进行交互的问题。"
