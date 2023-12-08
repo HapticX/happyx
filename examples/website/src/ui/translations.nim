@@ -1400,12 +1400,12 @@ translatable:
     "zh" -> "pymongo文档"
     "fr" -> "documentation sur pymongo"
     "ko" -> "pymongo 문서"
-  "This article discusses the interaction of Happy and SQLite using the NORM library.":
-    "ru" -> "Эта статья рассматривает взаимодействие Happy и SQLite с использованием библиотеки NORM."
-    "ja" -> "この記事では、NORMライブラリを使用してHappyとSQLiteとの連携について説明します。"
-    "zh" -> "本文讨论了使用NORM库在Happy和SQLite之间进行交互的问题。"
-    "fr" -> "Cet article traite de l'interaction entre Happy et SQLite en utilisant la bibliothèque NORM."
-    "ko" -> "이 글은 NORM 라이브러리를 사용하여 Happy와 SQLite 간의 상호 작용에 대해 논의합니다."
+  "This article discusses the interaction of Happy and SQLite using the Norm library.":
+    "ru" -> "Эта статья рассматривает взаимодействие Happy и SQLite с использованием библиотеки Norm."
+    "ja" -> "この記事では、Normライブラリを使用してHappyとSQLiteとの連携について説明します。"
+    "zh" -> "本文讨论了使用Norm库在Happy和SQLite之间进行交互的问题。"
+    "fr" -> "Cet article traite de l'interaction entre Happy et SQLite en utilisant la bibliothèque Norm."
+    "ko" -> "이 글은 Norm 라이브러리를 사용하여 Happy와 SQLite 간의 상호 작용에 대해 논의합니다."
   "This article discusses the interaction of Happy and SQLite using the sqlalchemy library.":
     "ru" -> "Эта статья рассматривает взаимодействие Happy и SQLite с использованием библиотеки sqlalchemy."
     "ja" -> "この記事では、sqlalchemyライブラリを使用してHappyとSQLiteとの連携について説明します。"
@@ -1424,12 +1424,12 @@ translatable:
     "zh" -> "在这个例子中，您应该使用以下命令编译项目："
     "fr" -> "Dans cet exemple, vous devez utiliser la commande suivante pour compiler le projet :"
     "ko" -> "이 예에서는 프로젝트를 컴파일하기 위해 다음 명령을 사용해야 합니다:"
-  "First, let's look at an example in which NORM is imported and a model is created for a table in a database.":
-    "ru" -> "Сначала давайте рассмотрим пример, в котором импортируется NORM и создается модель для таблицы в базе данных."
-    "ja" -> "まず、NORMがインポートされ、データベースのテーブル用のモデルが作成される例を見てみましょう。"
-    "zh" -> "首先，让我们看一个例子，其中导入了NORM，并为数据库中的表创建了模型。"
-    "fr" -> "Tout d'abord, examinons un exemple dans lequel NORM est importé et un modèle est créé pour une table dans une base de données."
-    "ko" -> "먼저 NORM이 가져와지고 데이터베이스의 테이블에 대한 모델이 생성되는 예제를 살펴보겠습니다."
+  "First, let's look at an example in which Norm is imported and a model is created for a table in a database.":
+    "ru" -> "Сначала давайте рассмотрим пример, в котором импортируется Norm, и создается модель для таблицы в базе данных."
+    "ja" -> "まず、Normがインポートされ、データベースのテーブル用のモデルが作成される例を見てみましょう。"
+    "zh" -> "首先，让我们看一个例子，其中导入了Norm，并为数据库中的表创建了模型。"
+    "fr" -> "Tout d'abord, examinons un exemple dans lequel Norm est importé et un modèle est créé pour une table dans une base de données."
+    "ko" -> "먼저 Norm이 가져와지고 데이터베이스의 테이블에 대한 모델이 생성되는 예제를 살펴보겠습니다."
   "The code below shows the connection to SQLite":
     "ru" -> "Ниже приведен код, показывающий подключение к SQLite."
     "ja" -> "以下のコードは、SQLiteへの接続を示しています。"
@@ -1448,12 +1448,12 @@ translatable:
     "zh" -> "现在您已经了解了在HappyX中使用SQLite的基础知识。"
     "fr" -> "Maintenant, vous connaissez les bases de travail avec SQLite dans HappyX."
     "ko" -> "이제 HappyX에서 SQLite를 사용하는 기본 사항을 알게 되었습니다."
-  "NORM documentation":
-    "ru" -> "Документация по NORM"
-    "ja" -> "NORMのドキュメント"
-    "zh" -> "NORM文档"
-    "fr" -> "Documentation sur NORM"
-    "ko" -> "NORM 문서"
+  "Norm documentation":
+    "ru" -> "Документация по Norm"
+    "ja" -> "Normのドキュメント"
+    "zh" -> "Norm文档"
+    "fr" -> "Documentation sur Norm"
+    "ko" -> "Norm 문서"
   "sqlalchemy documentation":
     "ru" -> "Документация по sqlalchemy"
     "ja" -> "sqlalchemyのドキュメント"
