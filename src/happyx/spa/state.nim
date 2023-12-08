@@ -169,7 +169,19 @@ macro `->`*(self: State, field: untyped): untyped =
       newNimNode(nnkElifBranch).add(
         # type(call()) is void
         newCall("is", newCall("type", call), ident("void")),
-        call
+        newStmtList(
+          call,
+          # When defined JS
+          newNimNode(nnkWhenStmt).add(newNimNode(nnkElifBranch).add(
+            newCall("defined", ident("js")),
+            # If enableRouting and not application.isNil()
+            newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
+              newCall("and", ident"enableRouting", newCall("not", newCall("isNil", ident("application")))),
+              # application.router()
+              newCall(newDotExpr(ident("application"), ident("router")))
+            )),
+          )),
+        )
       ), newNimNode(nnkElse).add(newStmtList(
         newVarStmt(ident("_result"), call),
         # When defined JS
