@@ -14,14 +14,14 @@ component SQLite:
 
       case currentLanguage.val
       of "Nim":
-        tP: {translate"This article discusses the interaction of Happy and SQLite using the NORM library."}
+        tP: {translate"This article discusses the interaction of Happy and SQLite using Norm library."}
       of "Python":
-        tP: {translate"This article discusses the interaction of Happy and SQLite using the sqlalchemy library."}
+        tP: {translate"This article discusses the interaction of Happy and SQLite using sqlalchemy library."}
 
       tP: {translate"First, you need to install the library to work with it"}
 
       component CodeBlockGuide(@[
-        ("Nim", "shell", "nimble install norm@#head", cstring"nim_sqlite_install", newPlayResult()),
+        ("Nim", "shell", "nimble install -y norm", cstring"nim_sqlite_install", newPlayResult()),
         ("Python", "shell", "pip install sqlalchemy", cstring"py_sqlite_install", newPlayResult()),
         # ("JavaScript", "javascript", jsHelloWorldExample, cstring"js_import", newPlayResult()),
         # ("TypeScript", "typescript", tsHelloWorldExample, cstring"ts_import", newPlayResult()),
@@ -30,10 +30,10 @@ component SQLite:
       if currentLanguage == "Nim":
         
         component Tip:
-          tP: {translate"In this example, you should use the following command to compile the project:"}
+          tP: {translate"Norm requires ``--deepcopy:on``, so you'll have to compile your project with this flag:"}
           component CodeBlock("shell", "nim c -r --deepcopy:on file.nim", "nim_sqlite_1")
 
-        tP: {translate"First, let's look at an example in which NORM is imported and a model is created for a table in a database."}
+        tP: {translate"First, let's look at an example in which Norm is imported and a model is created for a table in a database."}
 
         component CodeBlock("nim", nimSsrNormSqlite1, "nim_sqlite_1")
         
@@ -90,8 +90,8 @@ component SQLite:
       tP:
         case currentLanguage.val
         of "Nim":
-          tA(href = "https://github.com/moigagoo/norm"):
-            {translate"NORM documentation"}
+          tA(href = "https://norm.nim.town"):
+            {translate"Norm documentation"}
         of "Python":
           tA(href = "https://www.sqlalchemy.org/"):
             {translate"sqlalchemy documentation"}
