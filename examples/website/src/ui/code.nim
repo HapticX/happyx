@@ -787,9 +787,10 @@ var x = remember 0
 
 appRoutes "app":
   "/":
-    "x counter: {x}"
-    @click:
-      x->inc()
+    tDiv:
+      "x counter: {x}"
+      @click:
+        x->inc()
 """
   nimSpaReactivity2* = """import happyx
 
@@ -797,9 +798,10 @@ var x = remember newSeq[int]()
 
 appRoutes "app":
   "/":
-    "x sequence is {x}"
-    @click:
-      x->add(x.len())
+    tDiv:
+      "x sequence is {x}"
+      @click:
+        x->add(x.len())
 """
   nimSpaReactivity3* = """import happyx
 
