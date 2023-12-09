@@ -315,7 +315,15 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode =
         ),
         newLit(idx)
       )
+      groupForce = newCall(
+        "group",
+        newNimNode(nnkBracketExpr).add(
+          newCall("findAll", urlPath, regExp), newLit(0)
+        ),
+        newLit(idx)
+      )
       foundGroup = newCall("decodeUrl", newNimNode(nnkBracketExpr).add(urlPath, group))
+      foundGroupForce = newCall("decodeUrl", newNimNode(nnkBracketExpr).add(urlPath, groupForce))
       # _groupLen < 1
       conditionOptional = newCall("<", newCall("len", group), newIntLitNode(1))
       # _foundGroupLen == 0
@@ -411,7 +419,7 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode =
                   newCall(newNimNode(nnkBracketExpr).add(ident"parseEnum", ident(enumName)), newLit(i.defaultValue))
               ),
               newNimNode(nnkElse).add(
-                newCall(newNimNode(nnkBracketExpr).add(ident"parseEnum", ident(enumName)), foundGroup)
+                newCall(newNimNode(nnkBracketExpr).add(ident"parseEnum", ident(enumName)), foundGroupForce)
               )
             )
           )
@@ -446,11 +454,11 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode =
         if ($i.paramType).startsWith("enum"):
           let enumName = ($i.paramType)[5..^2]
           # elifBranch.add(newCall("contains", urlPath, regExp), body)
-          letSection[0].add(newCall(newNimNode(nnkBracketExpr).add(ident"parseEnum", ident(enumName)), foundGroup))
+          letSection[0].add(newCall(newNimNode(nnkBracketExpr).add(ident"parseEnum", ident(enumName)), foundGroupForce))
           elifBranch[0] = newCall(
             "and",
             elifBranch[0].copy(),
-            newCall(newDotExpr(ident(enumName), ident"has"), foundGroup)
+            newCall(newDotExpr(ident(enumName), ident"has"), foundGroupForce)
           )
         else:
           # custom type
