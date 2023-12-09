@@ -88,6 +88,9 @@ serve("127.0.0.1", 5000):
         "arg3 is {arg3}"
       tDiv:
         "arg4 is \"{arg4}\""
+  
+  get "/issue217/{p:path=filename}":
+    return p
 
   wsConnect:
     echo "New connection!"

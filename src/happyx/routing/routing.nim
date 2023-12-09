@@ -177,7 +177,7 @@ proc handleRoute*(route: string): RouteDataObj =
   routePathStr = routePathStr.replace(re2"\{[a-zA-Z][a-zA-Z0-9_]*(\??):string(\[m\])?(=\S+?)?\}", "([^/]+)$1")
   routePathStr = routePathStr.replace(re2"\{[a-zA-Z][a-zA-Z0-9_]*(\??)(\[m\])?(=\S+?)?\}", "([^/]+)$1")
   # path param
-  routePathStr = routePathStr.replace(re2"\{[a-zA-Z][a-zA-Z0-9_]*:path(\[m\])?\}", "([\\S]+)")
+  routePathStr = routePathStr.replace(re2"\{[a-zA-Z][a-zA-Z0-9_]*(\??):path(\[m\])?(=\S+?)?\}", "([\\S]+)$1")
   # regex param
   routePathStr = routePathStr.replace(re2"\{[a-zA-Z][a-zA-Z0-9_]*:/([\s\S]+?)/(\[m\])?\}", "($1)")
   # custom patterns
@@ -374,7 +374,7 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode =
             newNimNode(nnkElse).add(newCall("parseFloat", foundGroup))
           )
         )
-      of "string", "word":
+      of "string", "word", "path":
         letSection[0].add(newNimNode(nnkIfStmt).add(
             newNimNode(nnkElifBranch).add(
               conditionOptional,
