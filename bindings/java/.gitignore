@@ -3,6 +3,7 @@ build/
 .idea/
 .gradle/
 gradle/
+bin/
 
 # Tests folder
 !test/

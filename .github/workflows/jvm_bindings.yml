@@ -1,0 +1,64 @@
+name: JVM Bindings ☕
+
+permissions:
+  contents: read
+
+on:
+  push:
+    branches:
+      - 'master'
+    paths:
+      - '**/jvm_bindings.yml'
+      - '**/bindings/java/**'
+      - '**/bindings/java.nim'
+      - '**/bindings/java_types.nim'
+  pull_request:
+    paths:
+      - '**/jvm_bindings.yml'
+      - '**/bindings/java/**'
+      - '**/bindings/java.nim'
+      - '**/bindings/java_types.nim'
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+        nim_version:
+          - '2.0.0'
+        python_version:
+          - '3.x'
+    env:
+      TIMEOUT_EXIT_STATUS: 124
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          java-version: '16'
+          distribution: 'temurin'
+          architecture: x64
+          cache: 'gradle'
+      - name: Setup Java ☕
+        run: |
+          cd bindings/java
+          ./gradlew build --no-daemon
+
+      - uses: actions/checkout@v3
+      - name: Cache nimble
+        id: cache-nimble
+        uses: actions/cache@v3
+        with:
+          path: ~/.nimble
+          key: ${{ runner.os }}-nimble-${{ hashFiles('*.nimble') }}
+      - uses: jiro4989/setup-nim-action@v1
+        with:
+          nim-version: ${{ matrix.nim_version }}
+
+      - name: JVM Bindings ☕
+        run: |
+          cd src
+          echo "Unix module"
+          nim c -d:noSignalHandler -d:export2jvm -d:release -d:httpx --app:lib --threads:on --opt:speed --mm:arc --out:../bindings/java/src/main/resources/happyx.so happyx.nim
+          cd ..
