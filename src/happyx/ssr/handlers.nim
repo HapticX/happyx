@@ -298,26 +298,7 @@ elif exportJvm:
               params = getRouteParams(routeData, founded_regexp_matches, urlPath, @[], req.body.get(), force = true)
             else:
               params = getRouteParams(routeData, founded_regexp_matches, urlPath, @[], force = true)
-            for k, v in params.pairs():
-              case v.kind
-              of JString:
-                request.pathParams.add(
-                  PathParam(name: k, kind: ppkString, strVal: env.NewStringUTF(env, v.getStr()))
-                )
-              of JInt:
-                request.pathParams.add(
-                  PathParam(name: k, kind: ppkInt, intVal: v.getInt().jint)
-                )
-              of JFloat:
-                request.pathParams.add(
-                  PathParam(name: k, kind: ppkFloat, floatVal: v.getFloat().jfloat)
-                )
-              of JBool:
-                request.pathParams.add(
-                  PathParam(name: k, kind: ppkBool, boolVal: if v.getBool(): JVM_TRUE else: JVM_FALSE)
-                )
-              else:
-                discard
+            request.pathParam = env.toPathParam(params)
             # Add queries into request.queries
             for k, v in query.pairs():
               request.queries.add(Query(key: k, value: v))

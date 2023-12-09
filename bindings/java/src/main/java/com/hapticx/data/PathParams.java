@@ -3,16 +3,18 @@ package com.hapticx.data;
 import java.util.ArrayList;
 
 public class PathParams extends ArrayList<PathParam> {
-    public boolean add(PathParam param) {
-        return super.add(param);
-    }
-
-    public PathParam get(String pathParamName) {
-        for (PathParam p : this) {
-            if (p.getName().equals(pathParamName)) {
-                return p;
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder("[");
+        for (int i = 0; i < size(); i++) {
+            if (i < size()-1) {
+                result.append(get(i).toString()).append(", ");
+            }
+            else {
+                result.append(get(i).toString());
             }
         }
-        return null;
+        result.append("]");
+        return result.toString();
     }
 }

@@ -1,9 +1,11 @@
 package com.hapticx;
 
 
+import com.hapticx.data.BaseRequestModel;
 import com.hapticx.data.HttpRequest;
 import com.hapticx.data.WSConnection;
 import com.hapticx.util.LibLoader;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
 import java.util.List;
@@ -144,7 +146,7 @@ public class Server {
         staticDirectory(this.serverId, path, directory, null);
     }
 
-    public void mount(String path, Server other) {
+    public void mount(String path, @NotNull Server other) {
         mount(this.serverId, other.serverId, path);
     }
 

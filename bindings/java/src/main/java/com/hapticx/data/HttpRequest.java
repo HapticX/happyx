@@ -9,11 +9,11 @@ public class HttpRequest {
 
     private final Queries queries;
     private final HttpHeaders headers;
-    private final PathParams pathParams;
+    private final PathParam pathParam;
 
     public HttpRequest(int serverId, String method, String body,
                        String path, Queries queries, HttpHeaders headers,
-                       PathParams pathParams
+                       PathParam pathParam
     ) {
         this.serverId = serverId;
         this.method = method;
@@ -21,7 +21,7 @@ public class HttpRequest {
         this.path = path;
         this.queries = queries;
         this.headers = headers;
-        this.pathParams = pathParams;
+        this.pathParam = pathParam;
     }
 
     public String getMethod() {
@@ -44,7 +44,7 @@ public class HttpRequest {
         return headers;
     }
 
-    public PathParams getPathParams() {
-        return pathParams;
+    public PathParam getPathParam() {
+        return pathParam;
     }
 }

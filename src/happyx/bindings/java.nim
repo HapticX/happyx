@@ -241,3 +241,37 @@ nativeMethods com.hapticx.data~WSConnection:
     ## Sends data to websocket if available.
     initJNI(env)
     asyncCheck wsClients[$websocketId].ws.send($data)
+
+
+# Work with BaseRequestClass
+nativeMethods com.hapticx.data~BaseRequestModel:
+  proc registerRequestModel(modelName: jstring, fields: jobject) =
+    ## Registers a new request model
+    initJNI(env)
+    let fieldList = cast[List[Field]](newJVMObject(fields))
+    var fields: seq[tuple[key, val: string]] = @[]
+
+    for field in fieldList.toSeq():
+      var fieldType = field.getType().getName()
+      fieldType = case fieldType
+        of "java.lang.String":
+          "string"
+        of "java.lang.Integer":
+          "int"
+        of "java.lang.Float":
+          "float"
+        of "java.lang.Boolean":
+          "bool"
+        else:
+          fieldType.split(".")[^1].split("$")[^1]
+      fields.add((
+        field.getName(),
+        fieldType
+      ))
+
+    requestModelsHidden.requestModels.add(
+      RequestModelData(
+        name: ($modelName).split(".")[^1].split("$")[^1],
+        fields: fields
+      )
+    )

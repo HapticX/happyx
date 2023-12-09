@@ -42,7 +42,9 @@ type
     ppkInt,
     ppkFloat,
     ppkBool,
-    ppkString
+    ppkString,
+    ppkArr,
+    ppkObj
   PathParam* = ref object
     name*: string
     case kind*: PathParamKind
@@ -54,7 +56,10 @@ type
       boolVal*: jboolean
     of ppkString:
       strVal*: jstring
-  PathParams* = seq[PathParam]
+    of ppkArr:
+      arrVal*: seq[PathParam]
+    of ppkObj:
+      objVal*: TableRef[string, PathParam]
   HttpRequest* = ref object
     httpMethod*: string
     body*: string
@@ -62,7 +67,7 @@ type
     serverId*: jint
     queries*: Queries
     headers*: JavaHttpHeaders
-    pathParams*: PathParams
+    pathParam*: PathParam
   WebSocketState* {.pure, size: sizeof(int8).} = enum
     wssConnect,
     wssOpen,
@@ -107,6 +112,16 @@ jclass com.hapticx.data.HttpHeader as HttpHeaderJVM of Object:
   proc toString*: string
 
 
+jclass com.hapticx.data.PathParam as PathParamJVM of Object:
+  proc new*(name: string, val: string)
+
+jclass com.hapticx.data.PathParams as PathParamsJVM of List[PathParamJVM]:
+  proc new*
+
+jclass com.hapticx.data.PathParamMap as PathParamMapJVM of HashMap[string, PathParamJVM]:
+  proc new*
+
+
 jclass com.hapticx.data.HttpHeaders as HttpHeadersJVM of ArrayList[HttpHeaderJVM]:
   proc new*
   proc get*(key: string)
@@ -139,6 +154,21 @@ jclass com.hapticx.response.JsonResponse* of BaseResponse:
   proc new*(data: string, httpCode: jint)
   proc new*(data: string)
 
+jclass java.lang.reflect.AccessibleObject* of Object:
+  proc new*
+
+
+jclass java.lang.Class of Object:
+  proc getName*(): string
+
+jclass java.lang.reflect.Field* of AccessibleObject:
+  proc getName*(): string
+  proc getType*(): Class
+
+jclass com.hapticx.data.BaseRequestModel* of Object:
+  proc getFieldList*(): List[Field]
+
+
 
 proc initJavaMethod*(env: JNIEnvPtr, class: JClass, methodId: jmethodID): JavaMethod =
   JavaMethod(env: env, class: class, methodId: methodId)
@@ -151,12 +181,36 @@ proc initRoute*(path, purePath: string, httpMethod: seq[string], pattern: Regex2
 proc initHttpRequest*(httpMethod, body, path: string,
                       serverId: jint, queries: Queries = @[],
                       headers: JavaHttpHeaders = @[],
-                      pathParams: PathParams = @[]): HttpRequest =
+                      pathParam: PathParam = PathParam.default): HttpRequest =
   HttpRequest(
     httpMethod: httpMethod, body: body, path: path,
     serverId: serverId, queries: queries,
-    headers: headers, pathParams: pathParams
+    headers: headers, pathParam: pathParam
   )
+
+
+proc toPathParam*(env: JNIEnvPtr, obj: JsonNode, name: string = ""): PathParam =
+  case obj.kind
+  of JString:
+    return PathParam(name: name, kind: ppkString, strVal: env.NewStringUTF(env, obj.getStr()))
+  of JInt:
+    return PathParam(name: name, kind: ppkInt, intVal: obj.getInt().jint)
+  of JFloat:
+    return PathParam(name: name, kind: ppkFloat, floatVal: obj.getFloat().jfloat)
+  of JBool:
+    return PathParam(name: name, kind: ppkBool, boolVal: if obj.getBool(): JVM_TRUE else: JVM_FALSE)
+  of JArray:
+    result = PathParam(name: name, kind: ppkArr, arrVal: @[])
+    for i in obj:
+      result.arrVal.add(env.toPathParam(i, name))
+    return result
+  of JObject:
+    result = PathParam(name: name, kind: ppkObj, objVal: newTable[string, PathParam]())
+    for vkey, vval in obj.pairs:
+      result.objVal[vkey] = env.toPathParam(vval, vkey)
+    return result
+  else:
+    discard
 
 
 proc getObjectType*(env: JNIEnvPtr, obj: JVMObject): string =
@@ -235,6 +289,10 @@ proc toJava*(env: JNIEnvPtr, self: PathParam): jobject =
         cstring"(Ljava/lang/String;Z)V"
       of ppkString:
         cstring"(Ljava/lang/String;Ljava/lang/String;)V"
+      of ppkArr:
+        cstring"(Ljava/lang/String;Lcom/hapticx/data/PathParams;)V"
+      of ppkObj:
+        cstring"(Ljava/lang/String;Lcom/hapticx/data/PathParamMap;)V"
     )
   return case self.kind
     of ppkInt:
@@ -261,18 +319,24 @@ proc toJava*(env: JNIEnvPtr, self: PathParam): jobject =
         env.NewStringUTF(env, cstring(self.name)),
         self.strVal,
       )
-
-
-proc toJava*(env: JNIEnvPtr, self: PathParams): jobject =
-  let
-    class = env.FindClass(env, PathParamsClass)
-    constructor = env.GetMethodId(env, class, "<init>", "()V")
-    addMethod = env.GetMethodID(env, class, "add", "(Lcom/hapticx/data/PathParam;)Z")
-    res = env.NewObject(env, class, constructor)
-  for pathParam in self:
-    let jObj = env.toJava(pathParam)
-    discard env.CallBooleanMethod(env, res, addMethod, jObj)
-  return res
+    of ppkArr:
+      var list = PathParamsJVM.new
+      for i in self.arrVal:
+        discard list.add(cast[PathParamJVM](newJVMObject(env.toJava(i))))
+      env.NewObject(
+        env, class, constructor,
+        env.NewStringUTF(env, cstring(self.name)),
+        list.get
+      )
+    of ppkObj:
+      var map = PathParamMapJVM.new
+      for vkey, vval in self.objVal:
+        discard map.put(vkey, cast[PathParamJVM](newJVMObject(env.toJava(vval))))
+      env.NewObject(
+        env, class, constructor,
+        env.NewStringUTF(env, cstring(self.name)),
+        map.get
+      )
 
 
 proc toJava*(env: JNIEnvPtr, self: HttpRequest): jobject =
@@ -281,7 +345,7 @@ proc toJava*(env: JNIEnvPtr, self: HttpRequest): jobject =
     class = env.FindClass(env, HttpRequestClass)
     constructor = env.GetMethodId(
       env, class, "<init>",
-      "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/hapticx/data/Queries;Lcom/hapticx/data/HttpHeaders;Lcom/hapticx/data/PathParams;)V"
+      "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/hapticx/data/Queries;Lcom/hapticx/data/HttpHeaders;Lcom/hapticx/data/PathParam;)V"
     )
   let
     res = env.NewObject(
@@ -292,7 +356,7 @@ proc toJava*(env: JNIEnvPtr, self: HttpRequest): jobject =
       env.NewStringUTF(env, cstring(self.path)),
       env.toJava(self.queries),
       env.toJava(self.headers),
-      env.toJava(self.pathParams),
+      env.toJava(self.pathParam),
     )
   return res
 

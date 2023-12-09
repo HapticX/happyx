@@ -25,7 +25,7 @@ public class ServerTest {
             System.out.println(req.getPath());
 
             // Get any path param that you registered
-            System.out.println(req.getPathParams().get("userId").getInt() + 10);
+            System.out.println(req.getPathParam().get("userId").getInt() + 10);
 
             // Iterate over all queries
             System.out.println("Queries:");
@@ -95,6 +95,16 @@ public class ServerTest {
             }
         });
 
+        BaseRequestModel.register(new Message());
+        BaseRequestModel.register(new Chat());
+        s.post("/user[u:Message]", req -> {
+            System.out.println(req.getPathParam());
+            System.out.println(req.getPathParam().getMap().get("u"));
+            System.out.println(req.getPathParam().getMap().get("u").getMap().get("text"));
+            System.out.println(req.getPathParam().getMap().get("u").getMap().get("text").getString());
+            return null;
+        });
+
         s.start();
     }
 
@@ -114,5 +124,13 @@ public class ServerTest {
         for (Query query : qs) {
             System.out.println(query.getKey());
         }
+    }
+
+    static class Message extends BaseRequestModel {
+        public String text;
+    }
+
+    static class Chat extends Message {
+        public String author;
     }
 }

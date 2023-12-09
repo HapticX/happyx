@@ -1,7 +1,9 @@
 package com.hapticx
 
 import com.google.gson.Gson
+import com.hapticx.data.BaseRequestModel
 import com.hapticx.data.HttpHeader
+import com.hapticx.data.HttpRequest
 import com.hapticx.data.WSConnection
 import com.hapticx.response.BaseResponse
 import com.hapticx.response.FileResponse
@@ -26,7 +28,7 @@ class ServerTestKt {
             println(it.path)
 
             // Get any path param that you registered
-            println(it.pathParams["userId"].int + 10)
+            println(it.pathParam["userId"].int + 10)
 
             // Iterate over all queries
             println("Queries:")
@@ -102,6 +104,16 @@ class ServerTestKt {
             }
         }
 
+        BaseRequestModel.register(ServerTest.Message())
+        BaseRequestModel.register(ServerTest.Chat())
+        s.post("/user[u:Message]") { req: HttpRequest ->
+            println(req.pathParam)
+            println(req.pathParam.map["u"])
+            println(req.pathParam.map["u"]!!.map["text"])
+            println(req.pathParam.map["u"]!!.map["text"]!!.string)
+            null
+        }
+
         s.start()
     }
 
@@ -118,5 +130,13 @@ class ServerTestKt {
 
             start()
         }
+    }
+
+    internal open class Message : BaseRequestModel() {
+        var text: String? = null
+    }
+
+    internal class Chat : Message() {
+        var author: String? = null
     }
 }
