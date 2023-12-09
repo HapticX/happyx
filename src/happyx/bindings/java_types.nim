@@ -6,6 +6,7 @@ import
   regex,
   json,
   websocketx,
+  httpx,
   tables,
   httpcore,
   strutils
@@ -61,13 +62,16 @@ type
     of ppkObj:
       objVal*: TableRef[string, PathParam]
   HttpRequest* = ref object
+    answered*: bool
+    id*: string
     httpMethod*: string
     body*: string
     path*: string
-    serverId*: jint
+    hostname*: string
     queries*: Queries
     headers*: JavaHttpHeaders
     pathParam*: PathParam
+    req*: Request
   WebSocketState* {.pure, size: sizeof(int8).} = enum
     wssConnect,
     wssOpen,
@@ -85,6 +89,7 @@ type
 var
   requestModelsHidden* = RequestModels(requestModels: @[])
   wsClients* = newTable[string, java_types.WebSocket]()
+  httpRequests* = newTable[string, HttpRequest]()
 
 
 proc newWebSocketObj*(ws: websocketx.WebSocket, data: string = ""): java_types.WebSocket =
@@ -178,15 +183,17 @@ proc initRoute*(path, purePath: string, httpMethod: seq[string], pattern: Regex2
   Route(path: path, purePath: purePath, httpMethod: httpMethod, pattern: pattern, handler: handler)
 
 
-proc initHttpRequest*(httpMethod, body, path: string,
-                      serverId: jint, queries: Queries = @[],
+proc initHttpRequest*(httpMethod, body, path, hostname: string,
+                      req: Request, queries: Queries = @[],
                       headers: JavaHttpHeaders = @[],
                       pathParam: PathParam = PathParam.default): HttpRequest =
-  HttpRequest(
+  let id = genSessionId()
+  result = HttpRequest(
     httpMethod: httpMethod, body: body, path: path,
-    serverId: serverId, queries: queries,
+    hostname: hostname, id: id, req: req, queries: queries,
     headers: headers, pathParam: pathParam
   )
+  httpRequests[id] = result
 
 
 proc toPathParam*(env: JNIEnvPtr, obj: JsonNode, name: string = ""): PathParam =
@@ -345,15 +352,25 @@ proc toJava*(env: JNIEnvPtr, self: HttpRequest): jobject =
     class = env.FindClass(env, HttpRequestClass)
     constructor = env.GetMethodId(
       env, class, "<init>",
-      "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/hapticx/data/Queries;Lcom/hapticx/data/HttpHeaders;Lcom/hapticx/data/PathParam;)V"
+      "(" &
+      "Ljava/lang/String;" &  # HttpRequest id
+      "Ljava/lang/String;" &  # HTTP method
+      "Ljava/lang/String;" &  # body
+      "Ljava/lang/String;" &  # path
+      "Ljava/lang/String;" &  # hostname
+      "Lcom/hapticx/data/Queries;" &
+      "Lcom/hapticx/data/HttpHeaders;" &
+      "Lcom/hapticx/data/PathParam;" &
+      ")V"
     )
   let
     res = env.NewObject(
       env, class, constructor,
-      self.serverId,
+      env.NewStringUTF(env, cstring(self.id)),
       env.NewStringUTF(env, cstring(self.httpMethod)),
       env.NewStringUTF(env, cstring(self.body)),
       env.NewStringUTF(env, cstring(self.path)),
+      env.NewStringUTF(env, cstring(self.hostname)),
       env.toJava(self.queries),
       env.toJava(self.headers),
       env.toJava(self.pathParam),

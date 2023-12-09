@@ -221,7 +221,8 @@ elif exportJvm:
             $req.httpMethod.get(),
             req.body.get(),
             req.path.get(),
-            serverId,
+            req.ip(),
+            req
           )
           if route.httpMethod.len > 0 and route.httpMethod[0] == "STATICFILE":
             let
@@ -309,6 +310,8 @@ elif exportJvm:
             let
               obj = env.CallObjectMethod(env, handler.class, handler.methodId, env.toJava(request))
               val = newJVMObject(obj)
+            if request.answered:
+              break
             if obj.isNil or val.isNil:
               req.answer("null", Http500)
             else:

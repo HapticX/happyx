@@ -1,27 +1,37 @@
 package com.hapticx.data;
 
 
+import com.hapticx.util.LibLoader;
+
 public class HttpRequest {
-    private final int serverId;
+    static {
+        LibLoader.load("happyx");
+    }
+
+    private final String id;
     private final String method;
     private final String body;
     private final String path;
+    private final String hostname;
 
     private final Queries queries;
     private final HttpHeaders headers;
-    private final PathParam pathParam;
+    private final PathParam params;
 
-    public HttpRequest(int serverId, String method, String body,
-                       String path, Queries queries, HttpHeaders headers,
-                       PathParam pathParam
+    private native void answer(String id, Object data);
+
+    public HttpRequest(String id, String method, String body,
+                       String path, String hostname, Queries queries,
+                       HttpHeaders headers, PathParam params
     ) {
-        this.serverId = serverId;
+        this.id = id;
         this.method = method;
         this.body = body;
         this.path = path;
+        this.hostname = hostname;
         this.queries = queries;
         this.headers = headers;
-        this.pathParam = pathParam;
+        this.params = params;
     }
 
     public String getMethod() {
@@ -36,6 +46,10 @@ public class HttpRequest {
         return this.body;
     }
 
+    public String getHostname() {
+        return hostname;
+    }
+
     public Queries getQueries() {
         return queries;
     }
@@ -44,7 +58,11 @@ public class HttpRequest {
         return headers;
     }
 
-    public PathParam getPathParam() {
-        return pathParam;
+    public PathParam getParams() {
+        return params;
+    }
+
+    public void answer(Object data) {
+        answer(id, data);
     }
 }

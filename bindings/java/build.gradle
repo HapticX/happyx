@@ -1,6 +1,8 @@
 plugins {
     id "org.jetbrains.kotlin.jvm" version "1.6.0"
     id 'java'
+    id 'java-library'
+    id 'maven-publish'
 }
 
 group 'com.hapticx'

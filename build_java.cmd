@@ -6,6 +6,7 @@ nim c ^
   -d:release ^
   -d:httpx ^
   --tlsEmulation:off ^
+  --passL:"-static" ^
   --app:lib ^
   --threads:on ^
   --panics:off ^

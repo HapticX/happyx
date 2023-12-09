@@ -28,7 +28,7 @@ class ServerTestKt {
             println(it.path)
 
             // Get any path param that you registered
-            println(it.pathParam["userId"].int + 10)
+            println(it.params["userId"].int + 10)
 
             // Iterate over all queries
             println("Queries:")
@@ -107,14 +107,15 @@ class ServerTestKt {
         BaseRequestModel.register(ServerTest.Message())
         BaseRequestModel.register(ServerTest.Chat())
         s.post("/user[u:Message]") { req: HttpRequest ->
-            println(req.pathParam)
-            println(req.pathParam.map["u"])
-            println(req.pathParam.map["u"]!!.map["text"])
-            println(req.pathParam.map["u"]!!.map["text"]!!.string)
+            println(req.params)
+            println(req.params.map["u"])
+            println(req.params.map["u"]!!.map["text"])
+            println(req.params.map["u"]!!.map["text"]!!.string)
             null
         }
 
-        s.start()
+        // uncomment it to run server
+        // s.start()
     }
 
     @Test
@@ -128,7 +129,8 @@ class ServerTestKt {
                 return@route "Hello, world!"
             }
 
-            start()
+            // uncomment it to run server
+            // start()
         }
     }
 

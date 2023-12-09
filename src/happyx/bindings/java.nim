@@ -44,6 +44,8 @@ macro nativeMethods(class: untyped, body: untyped) =
     p.addPragma(ident"cdecl")
     p.addPragma(ident"exportc")
     p.addPragma(ident"dynlib")
+    for pragma in s[4]:
+      p.addPragma(pragma)
     result.add(p)
   echo result.toStrLit
 
@@ -106,6 +108,52 @@ proc addRoute(env: JNIEnvPtr, self: Server, path: string, httpMethods: seq[strin
     routeData.path, routeData.purePath, httpMethods, re2("^" & routeData.purePath & "$"), jMethod
   ))
   s.sortRoutes()
+
+
+proc answerToReq(env: JNIEnvPtr, request: HttpRequest, val: JVMObject) {.async.}=
+  let req = request.req
+  request.answered = true
+
+  case env.getObjectType(val)
+  of "java.lang.Integer",
+      "java.lang.Double",
+      "java.lang.String",
+      "java.lang.Boolean",
+      "java.lang.Byte",
+      "java.lang.Short",
+      "java.lang.Long",
+      "java.lang.Float",
+      "java.lang.Char":
+    req.answer(val.toStringRaw)
+  of "com.hapticx.response.BaseResponse":
+    let o = cast[BaseResponse](val)
+    req.answer(
+      $o.getData(),
+      HttpCode(o.getHttpCode().int),
+      env.toHttpHeaders(o.getHeaders())
+    )
+  of "com.hapticx.response.HtmlResponse":
+    let o = cast[HtmlResponse](val)
+    req.answerHtml(
+      $o.getData(),
+      HttpCode(o.getHttpCode().int),
+      env.toHttpHeaders(o.getHeaders())
+    )
+  of "com.hapticx.response.JsonResponse":
+    let o = cast[JsonResponse](val)
+    req.answerHtml(
+      $o.getData(),
+      HttpCode(o.getHttpCode().int),
+      env.toHttpHeaders(o.getHeaders())
+    )
+  of "com.hapticx.response.FileResponse":
+    let o = cast[FileResponse](val)
+    await req.answerFile(
+      ($o.getData())[1..^1],
+      HttpCode(o.getHttpCode().int)
+    )
+  else:
+    req.answer(val.toStringRaw)
 
 
 nativeMethods com.hapticx~Server:
@@ -275,3 +323,15 @@ nativeMethods com.hapticx.data~BaseRequestModel:
         fields: fields
       )
     )
+
+
+
+# Work with HttpRequest
+nativeMethods com.hapticx.data~HttpRequest:
+  proc answer(reqId: jstring, data: jobject) {.async.} =
+    ## Registers a new request model
+    initJNI(env)
+    var
+      val = newJVMObject(data)
+      request = httpRequests[$reqId]
+    await env.answerToReq(request, val)

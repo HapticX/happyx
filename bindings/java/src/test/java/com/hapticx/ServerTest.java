@@ -25,7 +25,7 @@ public class ServerTest {
             System.out.println(req.getPath());
 
             // Get any path param that you registered
-            System.out.println(req.getPathParam().get("userId").getInt() + 10);
+            System.out.println(req.getParams().get("userId").getInt() + 10);
 
             // Iterate over all queries
             System.out.println("Queries:");
@@ -98,14 +98,16 @@ public class ServerTest {
         BaseRequestModel.register(new Message());
         BaseRequestModel.register(new Chat());
         s.post("/user[u:Message]", req -> {
-            System.out.println(req.getPathParam());
-            System.out.println(req.getPathParam().getMap().get("u"));
-            System.out.println(req.getPathParam().getMap().get("u").getMap().get("text"));
-            System.out.println(req.getPathParam().getMap().get("u").getMap().get("text").getString());
+            System.out.println(req.getParams());
+            System.out.println(req.getParams().getMap().get("u"));
+            System.out.println(req.getParams().getMap().get("u").getMap().get("text"));
+            System.out.println(req.getParams().getMap().get("u").getMap().get("text").getString());
+            req.answer("Hello, world!");
             return null;
         });
 
-        s.start();
+
+//         s.start(); // uncomment it to run server
     }
 
     @Test
