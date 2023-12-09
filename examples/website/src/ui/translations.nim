@@ -1460,6 +1460,18 @@ translatable:
     "zh" -> "sqlalchemy文档"
     "fr" -> "Documentation sur sqlalchemy"
     "ko" -> "sqlalchemy 문서"
+  "Route decorators 🔌":
+    "ru" -> "Декораторы маршрута 🔌"
+    "ja" -> "ルートデコレータ 🔌"
+    "zh" -> "路由装饰器 🔌"
+    "fr" -> "Décorateurs de route 🔌"
+    "ko" -> "루트 데코레이터 🔌"
+  "JVM Bindings ☕":
+    "ru" -> "Привязки JVM ☕"
+    "ja" -> "JVMバインディング ☕"
+    "zh" -> "JVM绑定 ☕"
+    "fr" -> "Liens JVM ☕"
+    "ko" -> "JVM 바인딩 ☕"
 
 
 var spokenLang: cstring
