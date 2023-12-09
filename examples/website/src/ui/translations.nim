@@ -1418,12 +1418,12 @@ translatable:
     "zh" -> "首先，您需要安装库以便使用它。"
     "fr" -> "Tout d'abord, vous devez installer la bibliothèque pour pouvoir y travailler."
     "ko" -> "먼저 해당 라이브러리를 설치해야 합니다."
-  "In this example, you should use the following command to compile the project:":
-    "ru" -> "В этом примере вы должны использовать следующую команду для компиляции проекта:"
-    "ja" -> "この例では、プロジェクトをコンパイルするために次のコマンドを使用する必要があります。"
-    "zh" -> "在这个例子中，您应该使用以下命令编译项目："
-    "fr" -> "Dans cet exemple, vous devez utiliser la commande suivante pour compiler le projet :"
-    "ko" -> "이 예에서는 프로젝트를 컴파일하기 위해 다음 명령을 사용해야 합니다:"
+  "Norm requires ``--deepcopy:on``, so you'll have to compile your project with this flag:":
+    "ru" -> "Norm требует ``--deepcopy:on``, поэтому вам придется скомпилировать свой проект с этим флагом:"
+    "ja" -> "Normには ``--deepcopy:on`` が必要ですので、このフラグを使用してプロジェクトをコンパイルする必要があります:"
+    "zh" -> "Norm需要 ``--deepcopy:on``，因此您必须使用此标志编译您的项目："
+    "fr" -> "Norm nécessite ``--deepcopy:on``, donc vous devrez compiler votre projet avec ce drapeau :"
+    "ko" -> "Norm은 ``--deepcopy:on``이 필요하므로이 플래그로 프로젝트를 컴파일해야합니다:"
   "First, let's look at an example in which Norm is imported and a model is created for a table in a database.":
     "ru" -> "Сначала давайте рассмотрим пример, в котором импортируется Norm, и создается модель для таблицы в базе данных."
     "ja" -> "まず、Normがインポートされ、データベースのテーブル用のモデルが作成される例を見てみましょう。"
