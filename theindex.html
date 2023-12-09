@@ -392,8 +392,10 @@ window.addEventListener('DOMContentLoaded', main);
 <dt><a name="answerFile" href="#answerFile"><span>answerFile:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="server: answerFile(req: Request; filename: string; code: HttpCode = Http200;
-           asAttachment = false; bufSize: int = 40960): owned(Future[void])" href="happyx/ssr/server.html#answerFile%2CRequest%2Cstring%2CHttpCode%2Cint">server: answerFile(req: Request; filename: string; code: HttpCode = Http200;
-           asAttachment = false; bufSize: int = 40960): owned(Future[void])</a></li>
+           asAttachment = false; bufSize: int = 40960;
+           forceResponse: bool = false): owned(Future[void])" href="happyx/ssr/server.html#answerFile%2CRequest%2Cstring%2CHttpCode%2Cint%2Cbool">server: answerFile(req: Request; filename: string; code: HttpCode = Http200;
+           asAttachment = false; bufSize: int = 40960;
+           forceResponse: bool = false): owned(Future[void])</a></li>
           </ul></dd>
 <dt><a name="answerHtml" href="#answerHtml"><span>answerHtml:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -1776,7 +1778,7 @@ window.addEventListener('DOMContentLoaded', main);
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-12-09 14:40:50 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-12-09 15:21:50 UTC</small>
       </div>
     </div>
   </div>
