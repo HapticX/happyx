@@ -328,8 +328,10 @@ proc compileProject*(): ProjectData {. discardable .} =
   eraseLine()
   cursorUp()
   let (lines, i) = result.process.readLines()
-  if lines.len == 0:
+  if result.process.peekExitCode < 1:
     styledEcho fgGreen, "Successfully compiled ", fgMagenta, result.mainFile, "                     "
+    for line in lines:
+      echo line
   else:
     styledEcho fgRed, "An error was occurred when compiling ", fgMagenta, result.mainFile, "        "
     for line in lines:
