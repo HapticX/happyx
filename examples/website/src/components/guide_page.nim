@@ -41,6 +41,8 @@ component GuidePage:
           component MongoDB
         of "sqlite":
           component SQLite
+        of "postgres":
+          component Postgres
 
       tDiv(class = "hidden xl:flex justify-between items-center w-full pb-8"):
         if guidePages[currentGuidePage]["prev"].getStr != "":

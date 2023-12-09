@@ -33,6 +33,6 @@ proc serveCommand*(host: string = "0.0.0.0", port: int = 80): int =
       echo "File: ", file
       echo "Path: ", path
       if fileExists(path):
-        await req.answerFile(path)
+        await req.answerFile(path, forceResponse = true)
   shutdownCli()
   QuitSuccess

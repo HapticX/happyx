@@ -526,7 +526,7 @@ when enableHttpx or enableHttpBeast:
 
 proc answerFile*(req: Request, filename: string,
                  code: HttpCode = Http200, asAttachment = false,
-                 bufSize: int = 40960) {.async.} =
+                 bufSize: int = 40960, forceResponse: bool = false) {.async.} =
   ## Respond file to request.
   ## 
   ## Automatically enables streaming response when file size is too big (> 1 000 000 bytes)
@@ -558,7 +558,7 @@ proc answerFile*(req: Request, filename: string,
   if asAttachment:
     headers.add(("Content-Disposition", "attachment"))
   
-  if fileSize > 1_000_000:
+  if fileSize > 1_000_000 and not forceResponse:
     req.answer("", Http200, newHttpHeaders(headers), contentLength = some(fileSize))
     while true:
       let val = await f.read(bufSize)

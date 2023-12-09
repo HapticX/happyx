@@ -1142,12 +1142,18 @@ translatable:
     "zh" -> "有用的路由 🔌"
     "fr" -> "Itinéraires utiles 🔌"
     "ko" -> "도움말 라우트 🔌"
-  "HappyX has additional helpful routes - middleware, notfound, and staticDir":
-    "ru" -> "У HappyX есть дополнительные полезные маршруты - middleware, notfound и staticDir"
-    "ja" -> "HappyXにはmiddleware、notfound、staticDirなどの追加の便利なルートがあります"
-    "zh" -> "HappyX还有其他有用的路由 - middleware、notfound和staticDir"
-    "fr" -> "HappyX dispose de routes supplémentaires utiles - middleware, notfound et staticDir"
-    "ko" -> "HappyX에는 미들웨어, notfound 및 staticDir과 같은 추가 도움말 라우트가 있습니다"
+  "HappyX has additional helpful routes - setup, middleware, notfound, and staticDir":
+    "ru" -> "HappyX имеет дополнительные полезные маршруты - setup, middleware, notfound и staticDir."
+    "ja" -> "HappyXには、setup、middleware、notfound、staticDirなどの追加の便利なルートがあります。"
+    "zh" -> "HappyX有额外的有用路由 - setup、middleware、notfound和staticDir。"
+    "fr" -> "HappyX dispose de routes supplémentaires utiles - setup, middleware, notfound et staticDir."
+    "ko" -> "HappyX에는 setup, middleware, notfound 및 staticDir과 같은 추가 도움이 되는 라우트가 있습니다."
+  "HappyX has additional helpful routes -  middleware, notfound and static directories":
+    "ru" -> "HappyX имеет дополнительные полезные маршруты - middleware, notfound и static directories."
+    "ja" -> "HappyXには、middleware、notfound、staticディレクトリなどの追加の便利なルートがあります。"
+    "zh" -> "HappyX有额外的有用路由 - middleware、notfound和static directories。"
+    "fr" -> "HappyX dispose de routes supplémentaires utiles - middleware, notfound et répertoires statiques."
+    "ko" -> "HappyX에는 middleware, notfound 및 static 디렉터리와 같은 추가 도움이 되는 라우트가 있습니다."
   "Route Decorators 🔌":
     "ru" -> "Декораторы маршрутов 🔌"
     "ja" -> "ルートデコレーター 🔌"
@@ -1400,18 +1406,18 @@ translatable:
     "zh" -> "pymongo文档"
     "fr" -> "documentation sur pymongo"
     "ko" -> "pymongo 문서"
-  "This article discusses the interaction of Happy and SQLite using Norm library.":
-    "ru" -> "Эта статья рассматривает взаимодействие Happy и SQLite с использованием библиотеки Norm."
-    "ja" -> "この記事では、Normライブラリを使用してHappyとSQLiteとの連携について説明します。"
-    "zh" -> "本文讨论了使用Norm库在Happy和SQLite之间进行交互的问题。"
-    "fr" -> "Cet article traite de l'interaction entre Happy et SQLite en utilisant la bibliothèque Norm."
-    "ko" -> "이 글은 Norm 라이브러리를 사용하여 Happy와 SQLite 간의 상호 작용에 대해 논의합니다."
-  "This article discusses the interaction of Happy and SQLite using the sqlalchemy library.":
-    "ru" -> "Эта статья рассматривает взаимодействие Happy и SQLite с использованием библиотеки sqlalchemy."
-    "ja" -> "この記事では、sqlalchemyライブラリを使用してHappyとSQLiteとの連携について説明します。"
-    "zh" -> "本文讨论了使用sqlalchemy库在Happy和SQLite之间进行交互的问题。"
-    "fr" -> "Cet article traite de l'interaction entre Happy et SQLite en utilisant la bibliothèque sqlalchemy."
-    "ko" -> "이 글은 sqlalchemy 라이브러리를 사용하여 Happy와 SQLite 간의 상호 작용에 대해 논의합니다."
+  "This article discusses the interaction of HappyX and SQLite using Norm library.":
+    "ru" -> "Эта статья рассматривает взаимодействие HappyX и SQLite с использованием библиотеки Norm."
+    "ja" -> "この記事では、Normライブラリを使用してHappyXとSQLiteとの連携について説明します。"
+    "zh" -> "本文讨论了使用Norm库在HappyX和SQLite之间进行交互的问题。"
+    "fr" -> "Cet article traite de l'interaction entre HappyX et SQLite en utilisant la bibliothèque Norm."
+    "ko" -> "이 글은 Norm 라이브러리를 사용하여 HappyX와 SQLite 간의 상호 작용에 대해 논의합니다."
+  "This article discusses the interaction of HappyX and SQLite using the sqlalchemy library.":
+    "ru" -> "Эта статья рассматривает взаимодействие HappyX и SQLite с использованием библиотеки sqlalchemy."
+    "ja" -> "この記事では、sqlalchemyライブラリを使用してHappyXとSQLiteとの連携について説明します。"
+    "zh" -> "本文讨论了使用sqlalchemy库在HappyX和SQLite之间进行交互的问题。"
+    "fr" -> "Cet article traite de l'interaction entre HappyX et SQLite en utilisant la bibliothèque sqlalchemy."
+    "ko" -> "이 글은 sqlalchemy 라이브러리를 사용하여 HappyX와 SQLite 간의 상호 작용에 대해 논의합니다."
   "First, you need to install the library to work with it":
     "ru" -> "Сначала вам нужно установить библиотеку для работы с ней."
     "ja" -> "まず、ライブラリをインストールする必要があります。"
@@ -1472,6 +1478,42 @@ translatable:
     "zh" -> "JVM绑定 ☕"
     "fr" -> "Liens JVM ☕"
     "ko" -> "JVM 바인딩 ☕"
+  "This article discusses the interaction of HappyX and PostgreSQL using Norm library.":
+    "ru" -> "Эта статья рассматривает взаимодействие HappyX и PostgreSQL с использованием библиотеки Norm."
+    "ja" -> "この記事では、Normライブラリを使用してHappyXとPostgreSQLの連携について説明します。"
+    "zh" -> "本文讨论了使用Norm库在HappyX和PostgreSQL之间进行交互。"
+    "fr" -> "Cet article traite de l'interaction entre HappyX et PostgreSQL en utilisant la bibliothèque Norm."
+    "ko" -> "이 글은 Norm 라이브러리를 사용하여 HappyX와 PostgreSQL 간의 상호 작용에 대해 다룹니다."
+  "This article discusses the interaction of HappyX and PostgreSQL using psycopg2 library.":
+    "ru" -> "Эта статья рассматривает взаимодействие HappyX и PostgreSQL с использованием библиотеки psycopg2."
+    "ja" -> "この記事では、psycopg2ライブラリを使用してHappyXとPostgreSQLの連携について説明します。"
+    "zh" -> "本文讨论了使用psycopg2库在HappyX和PostgreSQL之间进行交互。"
+    "fr" -> "Cet article traite de l'interaction entre HappyX et PostgreSQL en utilisant la bibliothèque psycopg2."
+    "ko" -> "이 글은 psycopg2 라이브러리를 사용하여 HappyX와 PostgreSQL 간의 상호 작용에 대해 다룹니다."
+  "The code below shows the connection to PostgreSQL":
+    "ru" -> "Ниже приведен код, показывающий подключение к PostgreSQL."
+    "ja" -> "以下のコードは、PostgreSQLへの接続を示しています。"
+    "zh" -> "下面的代码显示了连接到PostgreSQL的过程。"
+    "fr" -> "Le code ci-dessous montre la connexion à PostgreSQL."
+    "ko" -> "아래 코드는 PostgreSQL에 연결하는 것을 보여줍니다."
+  "The code below shows connecting to PostgreSQL and creating a model for a table in the database.":
+    "ru" -> "Ниже приведен код, показывающий подключение к PostgreSQL и создание модели для таблицы в базе данных."
+    "ja" -> "以下のコードは、PostgreSQLへの接続とデータベースのテーブル用のモデルの作成を示しています。"
+    "zh" -> "下面的代码显示了连接到PostgreSQL并为数据库中的表创建模型。"
+    "fr" -> "Le code ci-dessous montre la connexion à PostgreSQL et la création d'un modèle pour une table dans la base de données."
+    "ko" -> "아래 코드는 PostgreSQL에 연결하고 데이터베이스의 테이블에 대한 모델을 생성하는 것을 보여줍니다."
+  "Now you know the basics of working with PostgreSQL in HappyX.":
+    "ru" -> "Теперь вы знаете основы работы с PostgreSQL в HappyX."
+    "ja" -> "これで、HappyXでPostgreSQLを使用する基本を知っています。"
+    "zh" -> "现在您已经了解了在HappyX中使用PostgreSQL的基础知识。"
+    "fr" -> "Maintenant, vous connaissez les bases de travail avec PostgreSQL dans HappyX."
+    "ko" -> "이제 HappyX에서 PostgreSQL을 사용하는 기본 사항을 알게 되었습니다."
+  "psycopg2 documentation":
+    "ru" -> "документация по psycopg2"
+    "ja" -> "psycopg2のドキュメント"
+    "zh" -> "psycopg2文档"
+    "fr" -> "documentation sur psycopg2"
+    "ko" -> "psycopg2 문서"
 
 
 var spokenLang: cstring

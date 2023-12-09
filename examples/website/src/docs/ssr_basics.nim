@@ -38,8 +38,12 @@ component SsrBasics:
       ])
 
       tH2: {translate"Helpful Routes 🔌"}
-      tP:
-        {translate"HappyX has additional helpful routes - middleware, notfound, and staticDir"}
+      if currentLanguage == "Nim":
+        tP:
+          {translate"HappyX has additional helpful routes - setup, middleware, notfound, and staticDir"}
+      else:
+        tP:
+          {translate"HappyX has additional helpful routes -  middleware, notfound and static directories"}
       
       component CodeBlockGuide(@[
         ("Nim", "nim", nimSsrAdditionalRoutes, cstring"nim_additional_routes", newPlayResult()),

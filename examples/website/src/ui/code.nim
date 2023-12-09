@@ -626,8 +626,14 @@ server.start()
 
 
 serve "127.0.0.1", 5000:
+  setup:
+    echo "this called once before server start."
+    var x = 0
+
   middleware:
     echo req
+    # you can use any variable from setup
+    echo x
   
   notfound:
     return "Oops, seems like this route is not available"
@@ -1088,7 +1094,13 @@ serve "127.0.0.1", 5000:
     var outUsers = @[newUser()]
     dbConn.selectAll(outUsers)
 
-    return %*outUsers
+    var response = %*[]
+    for i in outUsers:
+      response.add %*{
+        "id": i.id,
+        "lastLogin": $i.lastLogin
+      }
+    return response
 """
   nimSsrNormSqlite1* = """import
   happyx,  # import HappyX web framework
@@ -1246,3 +1258,236 @@ def read_users():
 
 app.start()
 """
+  pyPostgreSql* = """import psycopg2
+from happyx import Server
+from datetime import datetime
+
+# Connect to postgresql
+connection = psycopg2.connect(
+    user="postgres",
+    password="123456",
+    host="127.0.0.1",
+    port="5432",
+    database="test"
+)
+
+with connection.cursor() as cursor:
+    cursor.execute(
+        '''
+        CREATE TABLE IF NOT EXISTS users (
+            id SERIAL PRIMARY KEY,
+            lastLogin TIMESTAMP
+        )
+        '''
+    )
+connection.commit()
+
+app = Server('127.0.0.1', 5000)
+
+@app.post("/user/new")
+def create_user():
+    with connection.cursor() as cursor:
+        cursor.execute(
+            '''
+            INSERT INTO users (lastLogin)
+            VALUES (%s)
+            RETURNING id, lastLogin
+            ''',
+            (datetime.now(),)
+        )
+        user = cursor.fetchone()
+    connection.commit()
+    return {"response": "success", "id": user[0], "lastLogin": user[1]}
+
+@app.get("/user/id{user_id:int}")
+def read_user(user_id: int):
+    with connection.cursor() as cursor:
+        cursor.execute(
+            '''
+            SELECT id, lastLogin FROM users
+            WHERE id = %s
+            ''',
+            (user_id,)
+        )
+        user = cursor.fetchone()
+    if user is None:
+        return {"response": "failure"}
+    return {"id": user[0], "lastLogin": user[1]}
+
+@app.get("/users")
+def read_users():
+    with connection.cursor() as cursor:
+        cursor.execute(
+            '''
+            SELECT id, lastLogin FROM users
+            '''
+        )
+        users = cursor.fetchall()
+    response = [{"id": user[0], "lastLogin": user[1]} for user in users]
+    return response
+
+app.start()
+"""
+  pyPostgreSql1* = """import psycopg2
+from happyx import Server
+from datetime import datetime
+
+# Connect to postgresql
+connection = psycopg2.connect(
+    user="postgres",
+    password="123456",
+    host="127.0.0.1",
+    port="5432",
+    database="test"
+)
+
+with connection.cursor() as cursor:
+    cursor.execute(
+        '''
+        CREATE TABLE IF NOT EXISTS users (
+            id SERIAL PRIMARY KEY,
+            lastLogin TIMESTAMP
+        )
+        '''
+    )
+connection.commit()
+"""
+  pyPostgreSql2* = """app = Server('127.0.0.1', 5000)
+
+@app.post("/user/new")
+def create_user():
+    with connection.cursor() as cursor:
+        cursor.execute(
+            '''
+            INSERT INTO users (lastLogin)
+            VALUES (%s)
+            RETURNING id, lastLogin
+            ''',
+            (datetime.now(),)
+        )
+        user = cursor.fetchone()
+    connection.commit()
+    return {"response": "success", "id": user[0], "lastLogin": user[1]}"""
+  pyPostgreSql3* = """@app.get("/user/id{user_id:int}")
+def read_user(user_id: int):
+    with connection.cursor() as cursor:
+        cursor.execute(
+            '''
+            SELECT id, lastLogin FROM users
+            WHERE id = %s
+            ''',
+            (user_id,)
+        )
+        user = cursor.fetchone()
+    if user is None:
+        return {"response": "failure"}
+    return {"id": user[0], "lastLogin": user[1]}"""
+  pyPostgreSql4* = """@app.get("/users")
+def read_users():
+    with connection.cursor() as cursor:
+        cursor.execute(
+            '''
+            SELECT id, lastLogin FROM users
+            '''
+        )
+        users = cursor.fetchall()
+    response = [{"id": user[0], "lastLogin": user[1]} for user in users]
+    return response
+
+app.start()"""
+  nimPostgreSql* = """import
+  happyx,  # import HappyX web framework
+  norm/[model, postgres],  # import Norm lib
+  times
+
+
+type User = ref object of Model
+  lastLogin*: DateTime
+
+proc newUser*(): User = User(lastLogin: now())
+
+
+serve "127.0.0.1", 5000:
+  setup:
+    # Create database connection
+    let dbConn = open("127.0.0.1", "postgres", "123456", "test")
+    # Create table
+    dbConn.createTables(newUser())
+  
+  post "/user/new":
+    var user = newUser()
+    try:
+      dbConn.insert(user)
+      return {"response": "success"}
+    except DbError:
+      return {"response": "failure"}
+  
+  get "/user/id{userId:int}":
+    var user = newUser()
+    try:
+      dbConn.select(user, "id = ?", userId.int64)
+      return {
+        "id": user.id,
+        "lastLogin": $user.lastLogin
+      }
+    except DbError:
+      return {"response": "failure"}
+        
+  get "/users":
+    var outUsers = @[newUser()]
+    dbConn.selectAll(outUsers)
+
+    var response = %*[]
+    for i in outUsers:
+      response.add %*{
+        "id": i.id,
+        "lastLogin": $i.lastLogin
+      }
+    return response
+"""
+  nimPostgreSql1* = """import
+  happyx,  # import HappyX web framework
+  norm/[model, postgres],  # import Norm lib
+  times
+
+
+type User = ref object of Model
+  lastLogin*: DateTime
+
+proc newUser*(): User = User(lastLogin: now())"""
+
+  nimPostgreSql2* = """
+serve "127.0.0.1", 5000:
+  setup:
+    # Create database connection
+    let dbConn = open("127.0.0.1", "postgres", "123456", "test")
+    # Create table
+    dbConn.createTables(newUser())"""
+  nimPostgreSql3* = """  post "/user/new":
+    var user = newUser()
+    try:
+      dbConn.insert(user)
+      return {"response": "success"}
+    except DbError:
+      return {"response": "failure"}"""
+  nimPostgreSql4* = """  get "/user/id{userId:int}":
+    var user = newUser()
+    try:
+      dbConn.select(user, "id = ?", userId.int64)
+      return {
+        "id": user.id,
+        "lastLogin": $user.lastLogin
+      }
+    except DbError:
+      return {"response": "failure"}"""
+  nimPostgreSql5* = """  get "/users":
+    var outUsers = @[newUser()]
+    dbConn.selectAll(outUsers)
+
+    var response = %*[]
+    for i in outUsers:
+      response.add %*{
+        "id": i.id,
+        "lastLogin": $i.lastLogin
+      }
+    return response"""

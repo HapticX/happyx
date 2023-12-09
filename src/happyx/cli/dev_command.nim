@@ -69,6 +69,6 @@ proc devCommand*(host: string = "127.0.0.1", port: int = 5000,
       echo "File: ", file
       echo "Path: ", path
       if fileExists(path):
-        await req.answerFile(path)
+        await req.answerFile(path, forceResponse = true)
   shutdownCli()
   QuitSuccess

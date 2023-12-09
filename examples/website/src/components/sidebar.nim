@@ -66,11 +66,16 @@ var
     "sqlite": {
       "title": "SQLite 📦",
       "prev": "db_access",
+      "next": "postgres"
+    },
+    "postgres": {
+      "title": "PostgreSQL 📦",
+      "prev": "sqlite",
       "next": "mongo_db"
     },
     "mongo_db": {
       "title": "MongoDB 🍃",
-      "prev": "sqlite",
+      "prev": "postgres",
       "next": ""
     }
   }
@@ -160,6 +165,8 @@ component SideBar:
                 {translate("Database access 📦")}
               component SideBarItem("sqlite"):
                 {translate("SQLite 📦")}
+              component SideBarItem("postgres"):
+                {translate("PostgreSQL 📦")}
               component SideBarItem("mongo_db"):
                 {translate("MongoDB 🍃")}
         tDiv(class = "flex"):
