@@ -14,6 +14,7 @@ on:
       - '**/tests.yml'
       - '**/examples.yml'
       - '**/language_bindings.yml'
+      - '**/jvm_bindings.yml'
   pull_request:
     paths-ignore:
       - '.github/ISSUE_TEMPLATE/*'
@@ -25,6 +26,7 @@ on:
       - '**/tests.yml'
       - '**/examples.yml'
       - '**/language_bindings.yml'
+      - '**/jvm_bindings.yml'
 
 permissions:
   contents: write

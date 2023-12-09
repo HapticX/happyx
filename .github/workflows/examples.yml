@@ -15,6 +15,7 @@ on:
       - '**/gh-pages.yml'
       - '**/tests.yml'
       - '**/language_bindings.yml'
+      - '**/jvm_bindings.yml'
   pull_request:
     paths-ignore:
       - 'docs/**'
@@ -27,6 +28,7 @@ on:
       - '**/gh-pages.yml'
       - '**/tests.yml'
       - '**/language_bindings.yml'
+      - '**/jvm_bindings.yml'
 
 jobs:
   build:
