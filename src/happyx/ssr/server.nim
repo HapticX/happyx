@@ -717,7 +717,7 @@ macro routes*(server: Server, body: untyped = newStmtList()): untyped =
     # Handle requests
     body = body
     stmtList = newStmtList()
-    ifStmt = newNimNode(nnkIfStmt)
+    staticDirs: seq[NimNode]
     notFoundNode = newEmptyNode()
     wsNewConnection = newStmtList()
     wsClosedConnection = newStmtList()
@@ -985,9 +985,9 @@ socketToSsr.onmessage=function(m){
           decorators[route.name](@["GET"], $statement[0], statement[1], route.args)
         let exported = exportRouteArgs(pathIdent, statement[0], statement[1])
         if exported.len > 0:  # /my/path/with{custom:int}/{param:path}
-          ifStmt.add(exported)
+          methodTable.mgetOrPut("GET", newNimNode(nnkIfStmt)).add(exported)
         else:  # /just-my-path
-          ifStmt.add(newNimNode(nnkElifBranch).add(
+          methodTable.mgetOrPut("GET", newNimNode(nnkIfStmt)).add(newNimNode(nnkElifBranch).add(
             newCall("==", pathIdent, statement[0]), statement[1]
           ))
         nextRouteDecorators = @[]
@@ -1009,9 +1009,9 @@ socketToSsr.onmessage=function(m){
             newCall("contains", methods, newCall("toLower", newCall("$", reqMethod))),
             exported[0].copy()
           )
-          ifStmt.add(exported)
+          methodTable.mgetOrPut("GET", newNimNode(nnkIfStmt)).add(exported)
         else:  # /just-my-path
-          ifStmt.add(newNimNode(nnkElifBranch).add(
+          methodTable.mgetOrPut("GET", newNimNode(nnkIfStmt)).add(newNimNode(nnkElifBranch).add(
             newCall(
               "and",
               newCall("contains", methods, newCall("toLower", newCall("$", reqMethod))),
@@ -1036,8 +1036,8 @@ socketToSsr.onmessage=function(m){
           if statement[1].kind in [nnkStrLit, nnkTripleStrLit, nnkIdent, nnkDotExpr]:
             staticPath = statement[1]
             directory = statement[1]
-            ifStmt.insert(
-              0, newNimNode(nnkElifBranch).add(
+            staticDirs.add(
+              newNimNode(nnkElifBranch).add(
                 newCall(
                   "and",
                   newCall(
@@ -1085,8 +1085,8 @@ socketToSsr.onmessage=function(m){
                 ))
               else:
                 newCall("await", newCall("answerFile", ident"req", directoryFromPath))
-            ifStmt.insert(
-              0, newNimNode(nnkElifBranch).add(
+            staticDirs.add(
+              newNimNode(nnkElifBranch).add(
                 newCall(
                   "and",
                   newCall(
@@ -1129,8 +1129,8 @@ socketToSsr.onmessage=function(m){
                 ))
               else:
                 newCall("await", newCall("answerFile", ident"req", dirFromPath))
-            ifStmt.insert(
-              0, newNimNode(nnkElifBranch).add(
+            staticDirs.add(
+              newNimNode(nnkElifBranch).add(
                 newCall(
                   "and",
                   newCall("startsWith", pathIdent, route),
@@ -1142,7 +1142,7 @@ socketToSsr.onmessage=function(m){
           continue
           
           if statement[1].kind in {nnkStrLit, nnkTripleStrLit, nnkIdent, nnkDotExpr}:
-            ifStmt.insert(
+            methodTable.mgetOrPut("GET", newNimNode(nnkIfStmt)).insert(
               0, newNimNode(nnkElifBranch).add(
                 newCall(
                   "and",
@@ -1174,7 +1174,7 @@ socketToSsr.onmessage=function(m){
                 newLit('/'), ident"DirSep"
               )
             )
-            ifStmt.insert(
+            methodTable.mgetOrPut("GET", newNimNode(nnkIfStmt)).insert(
               0, newNimNode(nnkElifBranch).add(
                 newCall(
                   "and",
@@ -1200,7 +1200,7 @@ socketToSsr.onmessage=function(m){
                 newLit('/'), ident"DirSep"
               )
             )
-            ifStmt.insert(
+            methodTable.mgetOrPut("GET", newNimNode(nnkIfStmt)).insert(
               0, newNimNode(nnkElifBranch).add(
                 newCall(
                   "and",
@@ -1459,45 +1459,34 @@ socketToSsr.onmessage=function(m){
     stmtList.add(newCall(
       "handleJvmRequest", ident"self", ident"req", ident"urlPath"
     ))
-  caseRequestMethodsStmt.add(newNimNode(nnkElse).add(newStmtList()))
+  
+  for ifBranch in staticDirs:
+    methodTable.mgetOrPut("GET", newNimNode(nnkIfStmt)).add(ifBranch)
 
-  if ifStmt.len > 0:
-    stmtList.add(ifStmt)
-    # return 404
-    if notFoundNode.kind == nnkEmpty:
-      let elseStmtList = newStmtList()
-      ifStmt.add(newNimNode(nnkElse).add(elseStmtList))
-      when enableDebug or exportPython or defined(napibuild):
-        elseStmtList.add(
+  if notFoundNode.kind == nnkEmpty:
+    # return 404 by default
+    let elseStmtList = newStmtList()
+    when enableDebug or exportPython or defined(napibuild):
+      elseStmtList.add(
+        newCall(
+          "warn",
           newCall(
-            "warn",
-            newCall(
-              "fgColored", 
-              newCall("fmt", newLit("{urlPath} is not found.")), ident"fgYellow"
-            )
+            "fgColored", 
+            newCall("fmt", newLit("{urlPath} is not found.")), ident"fgYellow"
           )
         )
-      elseStmtList.add(
-        newCall(ident"answer", ident"req", newLit"Not found", ident"Http404")
       )
-    else:
-      ifStmt.add(newNimNode(nnkElse).add(notFoundNode))
-  else:
-    # return 404
-    if notFoundNode.kind == nnkEmpty:
-      # when enableDebug:
-      #   stmtList.add(newCall(
-      #     "warn",
-      #     newCall(
-      #       "fgColored",
-      #       newCall("fmt", newStrLitNode("{urlPath} is not found.")), ident"fgYellow"
-      #     )
-      #   ))
-      stmtList.add(
-        newCall(ident"answer", ident"req", newLit"Not found", ident"Http404")
-      )
-    else:
-      stmtList.add(notFoundNode)
+    elseStmtList.add(
+      newCall(ident"answer", ident"req", newLit"Not found", ident"Http404")
+    )
+    notFoundNode = elseStmtList
+
+  for ifStmt in methodTable.mvalues:
+    # notfound if no route matched
+    ifStmt.add(newNimNode(nnkElse).add(notFoundNode))
+
+  caseRequestMethodsStmt.add(newNimNode(nnkElse).add(notFoundNode))
+
   result = newStmtList(
     if stmtList.isIdentUsed(ident"wsConnections"):
       newNimNode(nnkVarSection).add(newIdentDefs(
