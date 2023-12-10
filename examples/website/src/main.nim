@@ -42,7 +42,7 @@ window.addEventListener('scroll', (ev) => {
 
 
 # Declare application with ID "app"
-appRoutes("app"):
+appRoutes "app":
   mount "/" -> Home
   mount "/sponsors" -> Sponsors
   mount "/roadmap" -> RoadMap

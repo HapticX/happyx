@@ -3,7 +3,7 @@ import
   ./components/[chat, message]
 
 
-appRoutes("app"):
+appRoutes "app":
   "/":
     tDiv(class = "p-4"):
       component Chat

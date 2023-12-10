@@ -11,7 +11,7 @@ var
   ]
 
 
-appRoutes("app"):
+appRoutes "app":
   "/":
     tDiv(class = "flex justify-center items-center w-screen h-screen bg-gray-100"):
       tDiv(class = "flex flex-col gap-4 px-8 py-4 bg-white rounded-2xl drop-shadow-xl"):

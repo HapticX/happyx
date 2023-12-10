@@ -187,11 +187,11 @@
 ## List of types:
 ## - `bool`: can be `on`, `1`, `yes`, `true`, `y` for true and `off`, `0`, `n`, `no` and `false` for false
 ## - `string`: string that excludes `/` chars
-## - `enum(EnumTypeName)`: string enum value
+## - `enum(EnumTypeName)`: matches enum value
 ## - `word`: like `string` but excludes any symbols
 ## - `int`: any integer
 ## - `float`: any float
-## - `path`: like `string` but includes `/` chars. Doesn't provides optional and default.
+## - `path`: like `string` but includes `/` chars.
 ## - regex pattern: any regex pattern translates in string. Usage: `/:patternHere:/`. Doesn't provides optional and default.
 ## 
 ## ### (Im)mutable ⚙

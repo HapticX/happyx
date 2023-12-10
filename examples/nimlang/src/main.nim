@@ -5,7 +5,7 @@ import
   app_config
 
 
-appRoutes("app"):
+appRoutes "app":
   "/":
     tDiv(class = "flex flex-col"):
       component Header

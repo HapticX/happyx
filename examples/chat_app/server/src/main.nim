@@ -8,7 +8,7 @@ type
     fromId: int
 
 
-serve("127.0.0.1", 5123):
+serve "127.0.0.1", 5123:
   wsConnect:
     echo "Connected"
   
