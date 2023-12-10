@@ -50,21 +50,15 @@ jobs:
         with:
           gradle-version: ${{ matrix.gradle_version }}
 
-      - name: Build Java Project ☕
-        run: |
-          cd bindings/java
-          gradle build --scan
-          chmod +x ./gradlew
-          ./gradlew build --no-daemon
-
-      - uses: actions/checkout@v3
       - name: Cache nimble
         id: cache-nimble
         uses: actions/cache@v3
         with:
           path: ~/.nimble
           key: ${{ runner.os }}-nimble-${{ hashFiles('*.nimble') }}
-      - uses: jiro4989/setup-nim-action@v1
+
+      - name: Setup Nim 👑
+        uses: jiro4989/setup-nim-action@v1
         with:
           nim-version: ${{ matrix.nim_version }}
 
@@ -74,3 +68,10 @@ jobs:
           echo "Unix module"
           nim c -d:noSignalHandler -d:export2jvm -d:release -d:httpx --app:lib --threads:on --opt:speed --mm:arc --out:../bindings/java/src/main/resources/happyx.so happyx.nim
           cd ..
+
+      - name: Build Java Project ☕
+        run: |
+          cd bindings/java
+          gradle build --scan
+          chmod +x ./gradlew
+          ./gradlew build --no-daemon
