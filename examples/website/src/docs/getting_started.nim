@@ -10,18 +10,24 @@ import
 component GettingStarted:
   `template`:
     tDiv(class = "flex flex-col px-8 py-2 backdrop-blur-sm xl:h-fit gap-4"):
-      tH1: {translate("Getting Started 💫")}
+      tH1: {translate"Getting Started 💫"}
       tP:
-        {translate("Before you begin, please make sure you have")}
-        tCode: tA(href = "https://nim-lang.org"):
-          {translate("Nim programming language")}
-        {translate(" version 1.6.14 or higher, or ")}
-        tCode: tA(href = "https://python.org"):
-          {translate("Python programming language")}
-        {translate(" version 3.7 and above.")}
+        {translate"Before you begin, please make sure you have"}
+        if currentLanguage in ["Nim", "Nim (SPA)"]:
+          tCode: tA(href = "https://nim-lang.org"):
+            {translate"Nim programming language"}
+          {translate" version 1.6.14 or higher, or "}
+        elif currentLanguage == "Python":
+          tCode: tA(href = "https://python.org"):
+            {translate"Python programming language"}
+          {translate" version 3.7 and above."}
+        elif currentLanguage in ["JavaScript", "TypeScript"]:
+          tCode: tA(href = "https://nodejs.org/en"):
+            "NodeJS"
+          {translate" version 16.13.0 and above."}
       
-      tH2: {translate("Installing 📥")}
-      tP: {translate("To install HappyX you can write this command")}
+      tH2: {translate"Installing 📥"}
+      tP: {translate"To install HappyX you can write this command"}
 
       component CodeBlockGuide(@[
         ("Nim", "shell", "nimble install happyx@#head", cstring"nimble_install", newPlayResult()),
@@ -34,10 +40,10 @@ component GettingStarted:
       tH2: "Hello, World! 👋"
 
       tP:
-        {translate("There is our first application. I show you ")}
+        {translate"There is our first application. I show you "}
         tSpan(class = "text-green-800 dark:text-green-400"):
           "\"Hello, world!\""
-        {translate(" example.")}
+        {translate" example."}
 
       component CodeBlockGuide(@[
         ("Nim", "nim", nimSsrHelloWorldExample, cstring"nim_ssr", newPlayResult()),
@@ -47,13 +53,13 @@ component GettingStarted:
         ("TypeScript", "typescript", tsHelloWorldExample, cstring"ts_hello_world", newPlayResult()),
       ])
 
-      tH3: {translate("Run App ▶")}
+      tH3: {translate"Run App ▶"}
 
       if currentLanguage == "Nim (SPA)":
         tP:
-          {translate("If you create Single-page application then you need ")}
+          {translate"If you create Single-page application then you need "}
           tCode: "example.html"
-          {translate("file:")}
+          {translate"file:"}
         
         component CodeBlock("html", htmlHelloWorldExample, "html_hello_world")
 

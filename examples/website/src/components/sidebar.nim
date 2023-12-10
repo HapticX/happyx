@@ -83,7 +83,7 @@ var
 
 component SideBarTitle:
   `template`:
-    tDiv(class = "text-7xl lg:text-2xl xl:text-xl font-bold select-none"):
+    tDiv(class = "flex flex-col gap-8 lg:gap-4 xl:gap-2 text-7xl lg:text-2xl xl:text-xl font-bold select-none"):
       slot
 
 
@@ -91,7 +91,7 @@ component SideBarFolder:
   id: string
   text: string
   `template`:
-    tDiv(class = "text-5xl lg:text-xl xl:text-lg font-bold cursor-pointer select-none pl-2"):
+    tDiv(class = "flex flex-col gap-4 lg:gap-2 xl:gap-0 text-5xl lg:text-xl xl:text-lg font-bold cursor-pointer select-none pl-2"):
       tDiv:
         {translate(self.text)}
         @click:

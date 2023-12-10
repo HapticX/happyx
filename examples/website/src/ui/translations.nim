@@ -542,6 +542,12 @@ translatable:
     "zh" -> " 版本3.7及以上。"
     "ko" -> " 버전 3.7 이상."
     "fr" -> " version 3.7 et supérieure."
+  " version 16.13.0 and above.":
+    "ru" -> " версии 16.13.0 и выше."
+    "ja" -> " バージョン16.13.0以上。"
+    "zh" -> " 版本16.13.0及以上。"
+    "fr" -> " version 16.13.0 et supérieure."
+    "ko" -> " 버전 16.13.0 이상."
   "Installing 📥":
     "ru" -> "Установка 📥"
     "ja" -> "インストール中 📥"
@@ -1514,6 +1520,12 @@ translatable:
     "zh" -> "psycopg2文档"
     "fr" -> "documentation sur psycopg2"
     "ko" -> "psycopg2 문서"
+  "This includes all members of the HappyX community who have contributed to its development (issues and pull requests)":
+    "ru" -> "Сюда входят все участники сообщества HappyX, которые внесли свой вклад в его развитие (issues и pull requests)."
+    "ja" -> "これには、開発に貢献したHappyXコミュニティのすべてのメンバーが含まれています（問題やプルリクエスト）。"
+    "zh" -> "这包括HappyX社区的所有成员，他们对其发展做出了贡献（问题和拉取请求）。"
+    "fr" -> "Cela inclut tous les membres de la communauté HappyX qui ont contribué à son développement (problèmes et demandes de tirage)."
+    "ko" -> "이에는 HappyX 커뮤니티의 모든 회원이 개발에 기여한 사람들이 포함됩니다 (이슈 및 풀 리퀘스트)."
 
 
 var spokenLang: cstring

@@ -1,15 +1,17 @@
 import
   ../../../../src/happyx,
-  ../ui/[colors, play_states]
+  ../ui/[colors, play_states],
+  jsffi
+
+
+var localStorage {.importc, nodecl.}: JsObject
 
 
 var currentLanguage* = remember "Nim"
 
 # Load saved current language
-var savedLang: cstring
-buildJs:
-  ~savedLang = localStorage["happyx_programming_language"]
-  echo ~savedLang
+var savedLang: cstring = localStorage["happyx_programming_language"].to(cstring)
+echo savedLang
 if savedLang.len != 0:
   currentLanguage.val = $savedLang
 
@@ -21,27 +23,23 @@ component LanguageChooser:
     tDiv(
         class =
           if self.lang == currentLanguage or self.alias == currentLanguage:
-            fmt"px-4 lg:px-2 py-2 lg:py-1 xl:py-0 bg-[{Foreground}40] dark:bg-[{ForegroundDark}40] select-none"
+            fmt"text-black px-4 lg:px-2 py-2 lg:py-1 bg-[#ffffff30] dark:bg-[#00000030] xl:py-0 select-none"
           else:
-            fmt"px-4 lg:px-2 py-2 lg:py-1 xl:py-0 bg-[{Foreground}20] dark:bg-[{ForegroundDark}20] select-none cursor-pointer"
+            fmt"text-black px-4 lg:px-2 py-2 lg:py-1 bg-[#ffffff10] dark:bg-[#00000010] hover:bg-[#ffffff20] dark:hover:bg-[#00000020] xl:py-0 select-none cursor-pointer duration-150"
     ):
       {self.lang}
       @click:
         if self.alias == "":
           if self.lang != currentLanguage:
             var lang: cstring = $(self.lang.val)
-            buildJs:
-              localStorage["happyx_programming_language"] = ~lang
+            localStorage["happyx_programming_language"] = lang
             currentLanguage.set(self.lang)
             route(currentRoute)
-            application.router()
         elif self.alias != currentLanguage:
           var lang: cstring = $(self.alias.val)
-          buildJs:
-            localStorage["happyx_programming_language"] = ~lang
+          localStorage["happyx_programming_language"] = lang
           currentLanguage.set(self.alias)
           route(currentRoute)
-          application.router()
 
 
 component CodeBlockGuide:
@@ -49,17 +47,27 @@ component CodeBlockGuide:
 
   `template`:
     tPre(class = "relative"):
-      tDiv(class = "flex rounded-t-md divide-x divide-x-2 divide-[{Foreground}75] dark:divide-[{ForegroundDark}75]"):
-        if haslanguage(self.CodeBlockGuide, "Nim"):
-          component LanguageChooser("Nim")
-        if haslanguage(self.CodeBlockGuide, "Nim (SPA)"):
-          component LanguageChooser("Nim (SPA)")
-        if haslanguage(self.CodeBlockGuide, "Python"):
-          component LanguageChooser("Python")
-        if haslanguage(self.CodeBlockGuide, "JavaScript"):
-          component LanguageChooser("JavaScript")
-        if haslanguage(self.CodeBlockGuide, "TypeScript"):
-          component LanguageChooser("TypeScript")
+      tDiv(class = "flex relative ml-4 justify-center w-fit group rounded-t-md bg-[{BackgroundSecondary}] dark:bg-[{BackgroundSecondaryDark}]"):
+        tDiv(class = "px-4 rounded-t-md bg-[#0d1117] cursor-pointer select-none text-2xl lg:text-xl xl:text-base"):
+          {currentLanguage}
+        tDiv(class = "absolute scale-0 drop-shadow-xl pb-12 lg:pb-2 -z-10 pt-1 rounded-md pointer-events-none -translate-y-full lg:-translate-y-1/3 opacity-0 group-hover:opacity-100 group-hover:scale-100 group-hover:-translate-y-full group-hover:pointer-events-auto group-hover:z-10 duration-300"):
+          tDiv(class = "bg-[{Orange}] dark:bg-[{Yellow}] overflow-hidden py-6 lg:py-4 xl:py-2"):
+            if haslanguage(self.CodeBlockGuide, "Nim"):
+              LanguageChooser("Nim")
+            if haslanguage(self.CodeBlockGuide, "Nim (SPA)"):
+              LanguageChooser("Nim (SPA)")
+            if haslanguage(self.CodeBlockGuide, "Python"):
+              LanguageChooser("Python")
+            if haslanguage(self.CodeBlockGuide, "JavaScript"):
+              LanguageChooser("JavaScript")
+            if haslanguage(self.CodeBlockGuide, "TypeScript"):
+              LanguageChooser("TypeScript")
+            if haslanguage(self.CodeBlockGuide, "Java"):
+              LanguageChooser("Java")
+            if haslanguage(self.CodeBlockGuide, "Kotlin"):
+              LanguageChooser("Kotlin")
+            tDiv(class = "flex justify-center text-[{Orange}] dark:text-[{Yellow}] absolute bottom-0 inset-x-0 -translate-y-2/3 lg:translate-y-1/3"):
+              "▼"
       for i in 0..<self.sources.len:
         nim:
           let source = self.sources.val[i]

@@ -10,21 +10,21 @@ import
 component HappyxApp:
   `template`:
     tDiv(class = "flex flex-col px-8 py-2 backdrop-blur-sm xl:h-fit gap-4"):
-      tH1: {translate("HappyX Application 🍍")}
+      tH1: {translate"HappyX Application 🍍"}
 
       tP:
-        {translate("In this guide we create calculator app 🧮")}
+        {translate"In this guide we create calculator app 🧮"}
 
-      tH2: {translate("Create Application 📦")}
+      tH2: {translate"Create Application 📦"}
 
       tDiv(class = "grid grid-cols-1 xl:grid-cols-3 gap-4"):
         tDiv(class = "flex flex-col gap-4 xl:col-span-2"):
           tP:
-            {translate("To create a new HappyX app you should use ")}
+            {translate"To create a new HappyX app you should use "}
             tCode: "CLI"
-            {translate(" or follow project structure.")}
+            {translate" or follow project structure."}
           tP:
-            {translate("When you use CLI, HappyX do everything for you.")}
+            {translate"When you use CLI, HappyX do everything for you."}
           
           component CodeBlockGuide(@[
             ("Nim", "shell", "hpx create --name:calculator --kind:SSR", cstring"nim", playCreateSsrProject),
@@ -35,7 +35,7 @@ component HappyxApp:
           ])
 
         tDiv:
-          tP: {translate("Project Structure")}
+          tP: {translate"Project Structure"}
           component CodeBlockGuide(@[
             ("Nim", "plaintext", nimProjectSsr, cstring"nim_proj_ssr", newPlayResult()),
             ("Nim (SPA)", "plaintext", nimProjectSpa, cstring"nim_proj_ssr", newPlayResult()),
@@ -44,19 +44,19 @@ component HappyxApp:
             ("TypeScript", "plaintext", typeScriptProject, cstring"ts_proj", newPlayResult()),
           ])
         
-      tH2: {translate("Calculator Project 🧮")}
+      tH2: {translate"Calculator Project 🧮"}
 
-      tH3: {translate("Import Library")}
+      tH3: {translate"Import Library"}
       if currentLanguage in ["Nim", "Nim (SPA)"]:
         tP:
-          {translate("To use ")}
+          {translate"To use "}
           tCode: "HappyX"
-          {translate(" on Nim we need to import it.")}
+          {translate" on Nim we need to import it."}
       elif currentLanguage.val in ["Python", "JavaScript", "TypeScript"]:
         tP:
-          {translate("In this guide we need only ")}
+          {translate"In this guide we need only "}
           tCode: "new_server"
-          {translate(" function. So import it.")}
+          {translate" function. So import it."}
         
       component CodeBlockGuide(@[
         ("Nim", "nim", "import happyx", cstring"nim_import_ssr", newPlayResult()),
@@ -67,39 +67,39 @@ component HappyxApp:
       ])
 
       if currentLanguage == "Nim":
-        tH3: {translate("Server ✨")}
+        tH3: {translate"Server ✨"}
         tP:
-          {translate("Next step is server declaration.")}
+          {translate"Next step is server declaration."}
         
         tP:
-          {translate("Here we declare ")}
+          {translate"Here we declare "}
           tB(class = "text-purple-700 dark:text-purple-400"): "serve"
-          {translate(" with ")}
-          tB: {translate("IP-address")}
-          {translate(" and ")}
-          tB: {translate("port")}
+          {translate" with "}
+          tB: {translate"IP-address"}
+          {translate" and "}
+          tB: {translate"port"}
           "."
       elif currentLanguage == "Nim (SPA)":
-        tH3: {translate("Web App ✨")}
+        tH3: {translate"Web App ✨"}
         tP:
-          {translate("Next step is main app declaration.")}
+          {translate"Next step is main app declaration."}
         
         tP:
-          {translate("Here we declare ")}
+          {translate"Here we declare "}
           tB(class = "text-purple-700 dark:text-purple-400"): "appRoutes"
-          {translate(" with ")}
-          tB: {translate("element ID")}
-          {translate(" that will contain our app.")}
+          {translate" with "}
+          tB: {translate"element ID"}
+          {translate" that will contain our app."}
       elif currentLanguage.val in ["Python", "TypeScript", "JavaScript"]:
-        tH3: {translate("Server ✨")}
+        tH3: {translate"Server ✨"}
         tP:
-          {translate("Next step is main app declaration.")}
+          {translate"Next step is main app declaration."}
         
         tP:
-          {translate("Here we declare server with ")}
-          tB: {translate("IP-address")}
-          {translate(" and ")}
-          tB: {translate("port")}
+          {translate"Here we declare server with "}
+          tB: {translate"IP-address"}
+          {translate" and "}
+          tB: {translate"port"}
           "."
         
       component CodeBlockGuide(@[
@@ -111,9 +111,9 @@ component HappyxApp:
       ])
 
       tP:
-        {translate("Next we create ")}
+        {translate"Next we create "}
         tB: "calculator"
-        {translate(" route.")}
+        {translate" route."}
 
       component CodeBlockGuide(@[
         ("Nim", "nim", "serve \"127.0.0.1\", 5000:\n  get \"/calc/{left:float}/{op}/{right:float}\":\n    discard", cstring"nim_server_ssr", newPlayResult()),
@@ -124,9 +124,9 @@ component HappyxApp:
       ])
 
       tP:
-        {translate("Here we declare route that contains three path params.")}
+        {translate"Here we declare route that contains three path params."}
       
-      tH3: {translate("Calculation 🧮")}
+      tH3: {translate"Calculation 🧮"}
 
       component CodeBlockGuide(@[
         ("Nim", "nim", nimSsrCalc, cstring"nim", newPlayResult()),
@@ -136,13 +136,13 @@ component HappyxApp:
         ("TypeScript", "typescript", typeScriptSsrCalc, cstring"ts", newPlayResult()),
       ])
 
-      tH3: {translate("Run App ▶")}
+      tH3: {translate"Run App ▶"}
 
       if currentLanguage == "Nim (SPA)":
         tP:
-          {translate("If you create Single-page application then you need ")}
+          {translate"If you create Single-page application then you need "}
           tCode: "example.html"
-          {translate("file:")}
+          {translate"file:"}
         
         component CodeBlock("html", htmlHelloWorldExample, "html_hello_world")
 

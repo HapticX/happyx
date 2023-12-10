@@ -177,13 +177,19 @@ macro elem*(name: untyped): untyped =
 when defined(js):
   proc route*(path: cstring) =
     ## Change current page to `path` and rerender
-    {.emit: "window.history.pushState(null, null, '#' + `path`);" .}
+    {.emit: "window.history.pushState({previous: window.location.href}, null, '#' + `path`);" .}
     let force = currentRoute != path
     echo force, ", ", currentRoute, ", ", path
     currentRoute = path
     application.router(force)
     if force:
       window.scrollTo(0, 0)
+  proc back*() =
+    ## Just calls [window.history.back procedure](https://nim-lang.org/docs/dom.html#back%2CHistory)
+    window.history.back()
+  proc forward*() =
+    ## Just calls [window.history.forward procedure](https://nim-lang.org/docs/dom.html#back%2CHistory)
+    window.history.forward()
 else:
   proc route*(host, path: string) =
     requestResult[host] = %*{"action": "route", "data": path}
