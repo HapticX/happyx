@@ -62,6 +62,10 @@ jobs:
         with:
           nim-version: ${{ matrix.nim_version }}
 
+      - name: Install Nim Deps 👑
+        run: |
+          nimble install -y -d jnim happyx
+
       - name: JVM Bindings ☕
         run: |
           cd src
