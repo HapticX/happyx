@@ -80,5 +80,3 @@ jobs:
         run: |
           cd bindings/java
           gradle build --scan
-          chmod +x ./gradlew
-          ./gradlew build --no-daemon
