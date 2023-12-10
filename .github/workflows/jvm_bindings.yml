@@ -66,6 +66,8 @@ jobs:
         run: |
           nimble install -y jnim
           nimble install -d happyx
+          nimble list --installed
+          nim -v
 
       - name: JVM Bindings ☕
         run: |
