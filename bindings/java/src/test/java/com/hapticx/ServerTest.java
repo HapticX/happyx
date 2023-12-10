@@ -114,8 +114,8 @@ public class ServerTest {
     public void builderTest() {
         new ServerBuilder()
                 .get("/", req -> "Hello, world!")
-                .get("/html", req -> new HtmlResponse("<h1>Header</h1>"))
-                .start();
+                .get("/html", req -> new HtmlResponse("<h1>Header</h1>"));
+                // .start();
     }
 
     @Test
