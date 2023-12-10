@@ -48,7 +48,7 @@ jobs:
       - name: Build Java Project ☕
         run: |
           cd bindings/java
-          gradle build
+          gradle build --scan
           chmod +x ./gradlew
           ./gradlew build --no-daemon
 
