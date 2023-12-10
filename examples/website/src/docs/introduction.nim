@@ -25,7 +25,7 @@ component IntroductionLanguageChooser:
         var lang: cstring = $(self.IntroductionLanguageChooser.lang.val)
         localStorage["happyx_programming_language"] = lang
         currentLanguage.set(self.lang)
-        route"/guide/introduction"
+        route(currentRoute)
 
 
 component Contributor:
