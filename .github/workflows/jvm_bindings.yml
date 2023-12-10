@@ -62,11 +62,15 @@ jobs:
         with:
           nim-version: ${{ matrix.nim_version }}
 
+      - name: Install Nim Deps 👑
+        run: |
+          nimble install -y jnim
+          nimble install -d happyx
+
       - name: JVM Bindings ☕
         run: |
           cd src
           echo "Unix module"
-          nimble install -y -d jnim happyx
           nim c -d:noSignalHandler -d:export2jvm -d:release -d:httpx --app:lib --threads:on --opt:speed --mm:arc --out:../bindings/java/src/main/resources/happyx.so happyx.nim
           cd ..
 
