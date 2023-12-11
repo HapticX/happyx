@@ -156,14 +156,16 @@ proc handleRoute*(route: string): RouteDataObj =
   ## Handles route and receive route data object.
   result = RouteDataObj(path: "", purePath: "", pathParams: @[], requestModels: @[])
   let
-    dollarToCurve = re2"\$([^:\/\{\}]+)(:enum\(\w+\)|:\w+)?(\[m\])?(=[^\/\{\}]+)?(m)?"
-    defaultWithoutQuestion = re2"\{([^:\/\{\}\?]+)(:enum\(\w+\)|:\w+)?(\[m\])?(=[^\}]+)\}"
+    dollarToCurve = re2"\$([^:\/\{\}]+)(:enum\(\w+\)|:\w+|:\/[^\/]+\/)?(\[m\])?(=[^\/\{\}]+)?(m)?"
+    defaultWithoutQuestion = re2"\{([^:\/\{\}\?]+)(:enum\(\w+\)|:\w+|:\/[^\/]+\/)?(\[m\])?(=[^\}]+)\}"
 
   var path = route
   var m: RegexMatch2
   if path.find(dollarToCurve, m):
     if path[m.group(1)] == ":path":
       raise newException(ValueError, "path params doesn't support aliases")
+    elif path[m.group(1)].startsWith(":/"):
+      raise newException(ValueError, "regex params doesn't support aliases")
   path = path.replace(dollarToCurve, "{$1$2$3$4}")
   path = path.replace(defaultWithoutQuestion, "{$1?$2$3$4}")
   result.path = path
