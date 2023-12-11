@@ -1,48 +1,43 @@
 package com.hapticx.data;
 
 
+import java.util.List;
+
 public class PathParam {
     private final String name;
     private final Object value;
 
-    enum Type {
-        INTEGER, FLOAT, BOOLEAN, STRING, LIST, OBJECT
+    public PathParam(String name, Object value) {
+        this.name = name;
+        this.value = value;
     }
 
-    private final Type type;
-
     public PathParam(String name, int value) {
-        this.type = Type.INTEGER;
         this.name = name;
         this.value = value;
     }
 
     public PathParam(String name, float value) {
-        this.type = Type.FLOAT;
         this.name = name;
         this.value = value;
     }
 
     public PathParam(String name, boolean value) {
-        this.type = Type.BOOLEAN;
         this.name = name;
         this.value = value;
     }
 
     public PathParam(String name, String value) {
-        this.type = Type.STRING;
         this.name = name;
         this.value = value;
     }
 
     public PathParam(String name, PathParams value) {
-        this.type = Type.LIST;
         this.name = name;
         this.value = value;
     }
 
     public PathParam(String name, PathParamMap value) {
-        this.type = Type.OBJECT;
         this.name = name;
         this.value = value;
     }
@@ -51,58 +46,73 @@ public class PathParam {
         return value;
     }
 
+    public String getTypeName() {
+        return value.getClass().getName();
+    }
+
+    public Class<?> getType() {
+        return value.getClass();
+    }
+
     public int getInt() {
-        if (this.type == Type.INTEGER) {
-            return (int) this.value;
+        if (value instanceof Integer) {
+            return (int) value;
         }
-        throw new IllegalStateException("Cannot get integer from " + this.type);
+        throw new IllegalStateException("Cannot get integer from " + getType());
     }
 
     public float getFloat() {
-        if (this.type == Type.FLOAT) {
-            return (float) this.value;
+        if (value instanceof Float) {
+            return (float) value;
         }
-        throw new IllegalStateException("Cannot get float from " + this.type);
+        throw new IllegalStateException("Cannot get float from " + getType());
     }
 
     public boolean getBoolean() {
-        if (this.type == Type.FLOAT) {
-            return (boolean) this.value;
+        if (value instanceof Boolean) {
+            return (boolean) value;
         }
-        throw new IllegalStateException("Cannot get boolean from " + this.type);
+        throw new IllegalStateException("Cannot get boolean from " + getType());
     }
 
     public String getString() {
-        if (this.type == Type.STRING) {
-            return (String) this.value;
+        if (value instanceof String) {
+            return (String) value;
         }
-        throw new IllegalStateException("Cannot get String from " + this.type);
+        throw new IllegalStateException("Cannot get String from " + getType());
     }
 
     public PathParams getList() {
-        if (this.type == Type.LIST) {
-            return (PathParams) this.value;
+        if (value instanceof PathParams) {
+            return (PathParams) value;
         }
-        throw new IllegalStateException("Cannot get List from " + this.type);
+        throw new IllegalStateException("Cannot get List from " + getType());
+    }
+
+    public <T> T getAs(Class<T> cls) {
+        if (value != null && value.getClass() == cls) {
+            return (T)value;
+        }
+        throw new IllegalStateException("Cannot get " + cls.getName() + " from " + getType());
     }
 
     public PathParamMap getMap() {
-        if (this.type == Type.OBJECT) {
-            return (PathParamMap) this.value;
+        if (value instanceof PathParamMap) {
+            return (PathParamMap) value;
         }
-        throw new IllegalStateException("Cannot get List from " + this.type);
+        throw new IllegalStateException("Cannot get List from " + getType());
     }
 
     public PathParam get(String name) {
-        if (this.type == Type.OBJECT) {
-            return ((PathParamMap) this.value).get(name);
+        if (value instanceof PathParamMap) {
+            return ((PathParamMap) value).get(name);
         }
         return null;
     }
 
     public PathParam get(int index) {
-        if (this.type == Type.LIST) {
-            return ((PathParams) this.value).get(index);
+        if (value instanceof PathParams) {
+            return ((PathParams) value).get(index);
         }
         return null;
     }
@@ -111,18 +121,14 @@ public class PathParam {
         return name;
     }
 
-    public Type getType() {
-        return type;
-    }
-
     @Override
     public String toString() {
-        return switch (type) {
-            case INTEGER -> Integer.toString((int) value);
-            case FLOAT -> Float.toString((float) value);
-            case BOOLEAN -> Boolean.toString((boolean) value);
-            case STRING -> "\"" + value + "\"";
-            case LIST, OBJECT -> value.toString();
+        return switch (getTypeName()) {
+            case "java.lang.Integer" -> Integer.toString((int) value);
+            case "java.lang.Float" -> Float.toString((float) value);
+            case "java.lang.Boolean" -> Boolean.toString((boolean) value);
+            case "java.lang.String" -> "\"" + value + "\"";
+            default -> value.toString();
         };
     }
 }

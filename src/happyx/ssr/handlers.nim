@@ -31,7 +31,7 @@ when defined(napibuild):
           ))
   
   template handleNodeRequest*(self: Server, req: Request, urlPath: string) =
-    var reqResponded = false
+    var reqResponded {.inject.} = false
     for route in self.routes:
       if (
           (@["NOTFOUND"] == route.httpMethod and not(reqResponded)) or
@@ -43,9 +43,7 @@ when defined(napibuild):
             )
           )
         ):
-        {.cast(gcsafe).}:
-          if @["MIDDLEWARE"] != route.httpMethod:
-            reqResponded = true
+        {.gcsafe.}:
           if @["STATICFILE"] == route.httpMethod:
             var routeData = handleRoute(route.path)
             let
@@ -59,6 +57,7 @@ when defined(napibuild):
                   route.purePath & fileName
             if fileExists(file):
               await req.answerFile(file)
+              reqResponded = true
           elif @["WEBSOCKET"] == route.httpMethod:
             var
               wsClient = await req.newWebSocket()
@@ -104,6 +103,7 @@ when defined(napibuild):
             discard callFunction(handler, [httpRequest], getGlobal())
             unregisterWsClient(wsId)
             wsClient.close()
+            reqResponded = true
           else:
             let queryFromUrl = block:
               let val = split(req.path.get(), "?")
@@ -140,12 +140,16 @@ when defined(napibuild):
                 discard
               of napi_null:
                 req.answer("null")
+                reqResponded = true
               of napi_string:
                 req.answer(response.getStr)
+                reqResponded = true
               of napi_number:
                 req.answer($response.getInt)
+                reqResponded = true
               of napi_boolean:
                 req.answer($response.getBool)
+                reqResponded = true
               of napi_object:
                 # When object is response
                 if response.hasOwnProperty("$data"):
@@ -162,22 +166,29 @@ when defined(napibuild):
                         ])
                   case resp.kind
                   of napi_undefined:
-                    req.answer("", httpCode, headers);
+                    req.answer("", httpCode, headers)
+                    reqResponded = true
                   of napi_null:
                     req.answer("null", httpCode, headers)
+                    reqResponded = true
                   of napi_string:
                     req.answer(resp.getStr, httpCode, headers)
+                    reqResponded = true
                   of napi_number:
                     req.answer($resp.getInt, httpCode, headers)
+                    reqResponded = true
                   of napi_boolean:
                     req.answer($resp.getBool, httpCode, headers)
+                    reqResponded = true
                   of napi_object:
                     let stringRepr = $napiCall("JSON.stringify", [resp]).getStr
                     try:
                       let json = parseJson(stringRepr)
                       req.answerJson(json, httpCode, headers)
+                      reqResponded = true
                     except JsonParsingError:
                       req.answer(stringRepr, httpCode, headers)
+                      reqResponded = true
                   else:
                     discard
                 else:
@@ -186,12 +197,16 @@ when defined(napibuild):
                   try:
                     let json = parseJson(stringRepr)
                     req.answerJson(json)
+                    reqResponded = true
                   except JsonParsingError:
                     req.answer(stringRepr)
+                    reqResponded = true
               else:
                 discard
       if reqResponded:
         break
+    if reqResponded:
+      req.answer("Not found", Http404)
 
 
 elif exportJvm:
@@ -201,8 +216,7 @@ elif exportJvm:
     ./server
 
   template handleJvmRequest*(self: server.Server, req: Request, urlPath: string) =
-    var
-      reqResponded = false
+    var reqResponded {.inject.} = false
     for route in self.routes:
       if (
         (@["NOTFOUND"] == route.httpMethod and not(reqResponded)) or
@@ -215,8 +229,6 @@ elif exportJvm:
         )
       ):
         {.gcsafe.}:
-          if @["MIDDLEWARE"] != route.httpMethod:
-            reqResponded = true
           let request = initHttpRequest(
             $req.httpMethod.get(),
             req.body.get(),
@@ -229,7 +241,7 @@ elif exportJvm:
               routeData = handleRoute(route.path)
               founded_regexp_matches = findAll(urlPath, route.pattern)
               funcParams = getRouteParams(routeData, founded_regexp_matches, urlPath, force = true)
-              fileName = funcParams["file"].getStr
+              fileName = $funcParams.objVal["file"].strVal
               extensions =
                 if route.httpMethod.len > 1:
                   route.httpMethod[1..^1]  # file extensions
@@ -245,6 +257,7 @@ elif exportJvm:
             if fileExists(file):
               if extensions.len == 0 or ext in extensions or splitted.len == 1:
                 await req.answerFile(file)
+                reqResponded = true
           elif @["WEBSOCKET"] == route.httpMethod:
             var
               wsClient = await req.newWebSocket()
@@ -277,6 +290,7 @@ elif exportJvm:
             wsConnection.data = ""
             env.CallVoidMethod(env, handler.class, handler.methodId, env.toJava(wsConnection))
             wsClients.del(wsId)
+            reqResponded = true
           elif not route.handler.isNil:
             let
               queryFromUrl = block:
@@ -299,7 +313,7 @@ elif exportJvm:
               params = getRouteParams(routeData, founded_regexp_matches, urlPath, @[], req.body.get(), force = true)
             else:
               params = getRouteParams(routeData, founded_regexp_matches, urlPath, @[], force = true)
-            request.pathParam = env.toPathParam(params)
+            request.pathParam = params
             # Add queries into request.queries
             for k, v in query.pairs():
               request.queries.add(Query(key: k, value: v))
@@ -311,9 +325,11 @@ elif exportJvm:
               obj = env.CallObjectMethod(env, handler.class, handler.methodId, env.toJava(request))
               val = newJVMObject(obj)
             if request.answered:
+              reqResponded = true
               break
             if obj.isNil or val.isNil:
               req.answer("null", Http500)
+              reqResponded = true
             else:
               # Return raw data
               # Get object type
@@ -328,6 +344,7 @@ elif exportJvm:
                  "java.lang.Float",
                  "java.lang.Char":
                 req.answer(val.toStringRaw)
+                reqResponded = true
               of "com.hapticx.response.BaseResponse":
                 let o = cast[BaseResponse](val)
                 req.answer(
@@ -335,6 +352,7 @@ elif exportJvm:
                   HttpCode(o.getHttpCode().int),
                   env.toHttpHeaders(o.getHeaders())
                 )
+                reqResponded = true
               of "com.hapticx.response.HtmlResponse":
                 let o = cast[HtmlResponse](val)
                 req.answerHtml(
@@ -342,6 +360,7 @@ elif exportJvm:
                   HttpCode(o.getHttpCode().int),
                   env.toHttpHeaders(o.getHeaders())
                 )
+                reqResponded = true
               of "com.hapticx.response.JsonResponse":
                 let o = cast[JsonResponse](val)
                 req.answerHtml(
@@ -349,16 +368,21 @@ elif exportJvm:
                   HttpCode(o.getHttpCode().int),
                   env.toHttpHeaders(o.getHeaders())
                 )
+                reqResponded = true
               of "com.hapticx.response.FileResponse":
                 let o = cast[FileResponse](val)
                 await req.answerFile(
                   ($o.getData())[1..^1],
                   HttpCode(o.getHttpCode().int)
                 )
+                reqResponded = true
               else:
                 req.answer(val.toStringRaw)
+                reqResponded = true
       if reqResponded:
         break
+    if reqResponded:
+      req.answer("Not found", Http404)
 
 
 elif exportPython:
@@ -367,7 +391,7 @@ elif exportPython:
 
   template handlePythonRequest*(self: server.Server, req: Request, urlPath: string) =
     var
-      reqResponded = false
+      reqResponded {.inject.} = false
       pyNone: PyObject
     newPyNone().pyValueToNim(pyNone)
     for route in self.routes:
@@ -382,8 +406,6 @@ elif exportPython:
         )
       ):
         {.gcsafe.}:
-          if @["MIDDLEWARE"] != route.httpMethod:
-            reqResponded = true
           var request = initHttpRequest(req.path.get(), $req.httpMethod.get(), req.headers.get(), req.body.get())
           if route.httpMethod.len > 0 and route.httpMethod[0] == "STATICFILE":
             let
@@ -406,6 +428,7 @@ elif exportPython:
             if fileExists(file):
               if extensions.len == 0 or ext in extensions or splitted.len == 1:
                 await req.answerFile(file)
+                reqResponded = true
           else:
             let
               queryFromUrl = block:
@@ -494,6 +517,7 @@ elif exportPython:
                 wsConnection.state = wssError
                 processWebSocket(py, route.locals)
               wsClient.close()
+              reqResponded = true
               return
             
             # Add function parameters to locals
@@ -508,14 +532,23 @@ elif exportPython:
               case $responseType
               of "dict":
                 req.answerJson(response.to(JsonNode))
+                reqResponded = true
               of "JsonResponseObj":
                 let resp = response.to(JsonResponseObj)
                 req.answerJson(resp.data, HttpCode(resp.statusCode), resp.headers.toHttpHeaders)
+                reqResponded = true
               of "HtmlResponseObj":
                 let resp = response.to(HtmlResponseObj)
                 req.answerHtml(resp.data, HttpCode(resp.statusCode), resp.headers.toHttpHeaders)
+                reqResponded = true
               of "FileResponseObj":
                 let resp = response.to(FileResponseObj)
                 await req.answerFile(resp.filename, HttpCode(resp.statusCode), resp.asAttachment)
+                reqResponded = true
               else:
                 req.answer($response)
+                reqResponded = true
+      if reqResponded:
+        break
+    if reqResponded:
+      req.answer("Not found", Http404)

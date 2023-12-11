@@ -91,6 +91,9 @@ serve("127.0.0.1", 5000):
   
   get "/issue217/{p:path=filename}":
     return p
+  
+  get "/issue219/{p:path=/}":
+    return p
 
   wsConnect:
     echo "New connection!"

@@ -99,15 +99,25 @@ public class ServerTest {
         BaseRequestModel.register(new Chat());
         s.post("/user[u:Message]", req -> {
             System.out.println(req.getParams());
-            System.out.println(req.getParams().getMap().get("u"));
-            System.out.println(req.getParams().getMap().get("u").getMap().get("text"));
-            System.out.println(req.getParams().getMap().get("u").getMap().get("text").getString());
+            System.out.println(req.getParams().get("u"));
+            System.out.println(req.getParams().get("u").get("text"));
+            System.out.println(req.getParams().get("u").get("text").getString());
             req.answer("Hello, world!");
             return null;
         });
 
+        s.addPathParamType("query", "[^:]+:\\S+", data -> {
+            var strings = data.split(":");
+            return new Query(strings[0], strings[1]);
+        });
+        s.get("/message/{q:query}", req -> {
+            System.out.println(req.getParams().get("q"));
+            System.out.println(req.getParams().get("q").getAs(Query.class).getKey());
+            System.out.println(req.getParams().get("q").getAs(Query.class).getValue());
+            return "Hello with message";
+        });
 
-//         s.start(); // uncomment it to run server
+//        s.start(); // uncomment it to run server
     }
 
     @Test

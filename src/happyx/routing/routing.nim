@@ -30,6 +30,7 @@ elif exportJvm:
   import
     jnim,
     jnim/private/[jni_wrapper],
+    jnim/java/[lang, util],
     ../bindings/java_types
 
 
@@ -113,7 +114,7 @@ elif exportJvm:
     creator: JavaMethod
 
 
-  var registeredRouteParamTypes {.compileTime.} = newTable[string, RouteParamType]()
+  var registeredRouteParamTypes* = newTable[string, RouteParamType]()
 
   proc registerRouteParamTypeAux*(name, pattern: string, creator: JavaMethod) =
     if re2"^[a-zA-Z][a-zA-Z0-9_]*$" notin name:
@@ -156,9 +157,13 @@ proc handleRoute*(route: string): RouteDataObj =
   result = RouteDataObj(path: "", purePath: "", pathParams: @[], requestModels: @[])
   let
     dollarToCurve = re2"\$([^:\/\{\}]+)(:enum\(\w+\)|:\w+)?(\[m\])?(=[^\/\{\}]+)?(m)?"
-    defaultWithoutQuestion = re2"\{([^:\/\{\}\?]+)(:enum\(\w+\)|:\w+)?(\[m\])?(=[^\/\{\}]+)\}"
+    defaultWithoutQuestion = re2"\{([^:\/\{\}\?]+)(:enum\(\w+\)|:\w+)?(\[m\])?(=[^\}]+)\}"
 
   var path = route
+  var m: RegexMatch2
+  if path.find(dollarToCurve, m):
+    if path[m.group(1)] == ":path":
+      raise newException(ValueError, "path params doesn't support aliases")
   path = path.replace(dollarToCurve, "{$1$2$3$4}")
   path = path.replace(defaultWithoutQuestion, "{$1?$2$3$4}")
   result.path = path
@@ -231,7 +236,10 @@ proc handleRoute*(route: string): RouteDataObj =
           path[pathParam.group(2)]
       defaultVal =
         if pathParam.group(5).len == 0:
-          ""
+          if argTypeStr == "path":
+            "/"
+          else:
+            ""
         else:
           path[pathParam.group(5)]
       isMutable = pathParam.group(3).len != 0
@@ -283,7 +291,7 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode =
       )
   var
     routeData =
-      when not exportPython and not defined(napibuild):
+      when not exportPython and not defined(napibuild) and not exportJvm:
         handleRoute(path)
       else:
         RouteDataObj.default
@@ -556,17 +564,17 @@ when exportPython or defined(docgen) or defined(napibuild) or exportJvm:
   proc parseBoolOrJString*(str: string): JsonNode =
     try:
       return newJBool(parseBool(str))
-    except Exception:
+    except system.Exception:
       return newJString(str)
   proc parseIntOrJString*(str: string): JsonNode =
     try:
       return newJInt(parseInt(str))
-    except Exception:
+    except system.Exception:
       return newJString(str)
   proc parseFloatOrJString*(str: string): JsonNode =
     try:
       return newJFloat(parseFloat(str))
-    except Exception:
+    except system.Exception:
       return newJString(str)
   
 
@@ -624,7 +632,7 @@ when exportPython or defined(docgen) or defined(napibuild) or exportJvm:
   when exportPython:
     type RouteObject* = PyObject
   elif exportJvm:
-    type RouteObject* = JsonNode
+    type RouteObject* = PathParam
   elif defined(napibuild):
     type RouteObject* = napi_value
   else:
@@ -636,6 +644,8 @@ when exportPython or defined(docgen) or defined(napibuild) or exportJvm:
     ## Finds and exports route arguments
     when exportPython:
       var res = pyDict()
+    elif exportJvm:
+      var res = PathParam(name: "", kind: ppkObj, objVal: newTable[string, PathParam]())
     else:
       var res = newJObject()
     var idx = 0
@@ -678,6 +688,19 @@ when exportPython or defined(docgen) or defined(napibuild) or exportJvm:
                 # regex
                 else:
                   res[i.name] = newJString(foundGroup)
+            elif exportJvm:
+              {.gcsafe.}:
+                # custom type
+                if $i.paramType in registeredRouteParamTypes:
+                  var data = registeredRouteParamTypes[$i.paramType]
+                  let creator = data.creator
+                  res[i.name] = theEnv.CallObjectMethod(
+                    theEnv, creator.class, creator.methodId,
+                    theEnv.NewStringUTF(theEnv, cstring(foundGroup))
+                  )
+                # regex
+                else:
+                  res[i.name] = newJString(foundGroup)
             elif defined(napibuild):
               {.gcsafe.}:
                 # custom type
@@ -709,6 +732,19 @@ when exportPython or defined(docgen) or defined(napibuild) or exportJvm:
                 if $i.paramType in registeredRouteParamTypes:
                   var data = registeredRouteParamTypes[$i.paramType]
                   res[i.name] = callObject(data.creator, foundGroup)
+                # regex
+                else:
+                  res[i.name] = newJString(foundGroup)
+            elif exportJvm:
+              {.gcsafe.}:
+                # custom type
+                if $i.paramType in registeredRouteParamTypes:
+                  var data = registeredRouteParamTypes[$i.paramType]
+                  let creator = data.creator
+                  res[i.name] = theEnv.CallObjectMethod(
+                    theEnv, creator.class, creator.methodId,
+                    theEnv.NewStringUTF(theEnv, cstring(foundGroup))
+                  )
                 # regex
                 else:
                   res[i.name] = newJString(foundGroup)
@@ -747,6 +783,19 @@ when exportPython or defined(docgen) or defined(napibuild) or exportJvm:
               # regex
               else:
                 res[i.name] = newJString(foundGroup)
+          elif exportJvm:
+            {.gcsafe.}:
+              # custom type
+              if $i.paramType in registeredRouteParamTypes:
+                var data = registeredRouteParamTypes[$i.paramType]
+                let creator = data.creator
+                res[i.name] = theEnv.CallObjectMethod(
+                  theEnv, creator.class, creator.methodId,
+                  theEnv.NewStringUTF(theEnv, cstring(foundGroup))
+                )
+              # regex
+              else:
+                res[i.name] = newJString(foundGroup)
           elif defined(napibuild):
             {.gcsafe.}:
               # custom type
@@ -778,6 +827,19 @@ when exportPython or defined(docgen) or defined(napibuild) or exportJvm:
               if $i.paramType in registeredRouteParamTypes:
                 var data = registeredRouteParamTypes[$i.paramType]
                 res[i.name] = callObject(data.creator, foundGroup)
+              # regex
+              else:
+                res[i.name] = newJString(foundGroup)
+          elif exportJvm:
+            {.gcsafe.}:
+              # custom type
+              if $i.paramType in registeredRouteParamTypes:
+                var data = registeredRouteParamTypes[$i.paramType]
+                let creator = data.creator
+                res[i.name] = theEnv.CallObjectMethod(
+                  theEnv, creator.class, creator.methodId,
+                  theEnv.NewStringUTF(theEnv, cstring(foundGroup))
+                )
               # regex
               else:
                 res[i.name] = newJString(foundGroup)

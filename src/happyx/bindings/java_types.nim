@@ -45,7 +45,8 @@ type
     ppkBool,
     ppkString,
     ppkArr,
-    ppkObj
+    ppkObj,
+    ppkJvm
   PathParam* = ref object
     name*: string
     case kind*: PathParamKind
@@ -61,6 +62,8 @@ type
       arrVal*: seq[PathParam]
     of ppkObj:
       objVal*: TableRef[string, PathParam]
+    of ppkJvm:
+      jvmVal*: jobject
   HttpRequest* = ref object
     answered*: bool
     id*: string
@@ -300,6 +303,8 @@ proc toJava*(env: JNIEnvPtr, self: PathParam): jobject =
         cstring"(Ljava/lang/String;Lcom/hapticx/data/PathParams;)V"
       of ppkObj:
         cstring"(Ljava/lang/String;Lcom/hapticx/data/PathParamMap;)V"
+      of ppkJvm:
+        cstring"(Ljava/lang/String;Ljava/lang/Object;)V"
     )
   return case self.kind
     of ppkInt:
@@ -343,6 +348,12 @@ proc toJava*(env: JNIEnvPtr, self: PathParam): jobject =
         env, class, constructor,
         env.NewStringUTF(env, cstring(self.name)),
         map.get
+      )
+    of ppkJvm:
+      env.NewObject(
+        env, class, constructor,
+        env.NewStringUTF(env, cstring(self.name)),
+        self.jvmVal
       )
 
 
@@ -420,6 +431,18 @@ proc toHttpHeaders*(env: JNIEnvPtr, obj: HttpHeadersJVM): HttpHeaders =
   
   for e in obj.toSeq:
     result[$e.getKey()] = $e.getValue()
+
+
+template `[]=`*(param: PathParam, idx: string, val: JsonNode) =
+  param.objVal[idx] = theEnv.toPathParam(val, idx)
+
+
+template `[]=`*(param: PathParam, idx: string, val: JVMObject) =
+  param.objVal[idx] = PathParam(kind: ppkJvm, name: idx, jvmVal: val.get)
+
+
+template `[]=`*(param: PathParam, idx: string, val: jobject) =
+  param.objVal[idx] = PathParam(kind: ppkJvm, name: idx, jvmVal: val)
 
 
 proc hasHttpMethod*(self: Route, httpMethod: string | seq[string] | openarray[string]): bool =

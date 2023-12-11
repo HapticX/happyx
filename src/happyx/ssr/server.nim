@@ -932,7 +932,7 @@ socketToSsr.onmessage=function(m){
         )
       )
   
-  when enableDebug or exportPython or defined(napibuild) or exportJvm:
+  when enableDebug:
     caseRequestMethodsStmt.add(ident"reqMethod")
   else:
     caseRequestMethodsStmt.add(reqMethod)
@@ -1432,18 +1432,12 @@ socketToSsr.onmessage=function(m){
   stmtList.insert(0, immutableVars)
   stmtList.insert(0, mutableVars)
   
-  when enableDebug or exportPython or defined(napibuild):
+  when enableDebug:
     stmtList.add(newCall(
       "info",
       newCall("fmt", newStrLitNode("{reqMethod}::{urlPath}"))
     ))
-  
-  stmtList.add(caseRequestMethodsStmt)
-  for key in methodTable.keys():
-    caseRequestMethodsStmt.add(newNimNode(nnkOfBranch).add(
-      newLit(parseEnum[HttpMethod](key)),
-      methodTable[key]
-    ))
+
   # NodeJS Library
   when defined(napibuild):
     stmtList.add(newCall(
@@ -1459,6 +1453,12 @@ socketToSsr.onmessage=function(m){
     stmtList.add(newCall(
       "handleJvmRequest", ident"self", ident"req", ident"urlPath"
     ))
+  stmtList.add(caseRequestMethodsStmt)
+  for key in methodTable.keys():
+    caseRequestMethodsStmt.add(newNimNode(nnkOfBranch).add(
+      newLit(parseEnum[HttpMethod](key)),
+      methodTable[key]
+    ))
   
   for ifBranch in staticDirs:
     methodTable.mgetOrPut("GET", newNimNode(nnkIfStmt)).add(ifBranch)
@@ -1466,7 +1466,7 @@ socketToSsr.onmessage=function(m){
   if notFoundNode.kind == nnkEmpty:
     # return 404 by default
     let elseStmtList = newStmtList()
-    when enableDebug or exportPython or defined(napibuild):
+    when enableDebug:
       elseStmtList.add(
         newCall(
           "warn",
@@ -1486,6 +1486,11 @@ socketToSsr.onmessage=function(m){
     ifStmt.add(newNimNode(nnkElse).add(notFoundNode))
 
   caseRequestMethodsStmt.add(newNimNode(nnkElse).add(notFoundNode))
+  when exportJvm or exportPython or defined(napibuild):
+    stmtList[^1] = newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
+      newCall("not", ident"reqResponded"),
+      caseRequestMethodsStmt.copy()
+    ))
 
   result = newStmtList(
     if stmtList.isIdentUsed(ident"wsConnections"):
@@ -1515,7 +1520,7 @@ socketToSsr.onmessage=function(m){
   if stmtList.isIdentUsed(ident"query"):
     immutableVars.add(newIdentDefs(ident"queryFromUrl", newEmptyNode(), url))
     immutableVars.add(newIdentDefs(ident"query", newEmptyNode(), newCall("parseQuery", ident"queryFromUrl")))
-    when not exportPython and not defined(napibuild):
+    when not exportPython and not defined(napibuild) and not exportJvm:
       immutableVars.add(newIdentDefs(ident"queryArr", newEmptyNode(), newCall("parseQueryArrays", ident"queryFromUrl")))
   if stmtList.isIdentUsed(ident"translate") or stmtList.isIdentUsed(ident"acceptLanguage"):
     immutableVars.add(newIdentDefs(ident"acceptLanguage", newEmptyNode(), acceptLanguage))
@@ -1524,8 +1529,11 @@ socketToSsr.onmessage=function(m){
   else:
     if stmtList.isIdentUsed(ident"inCookies"):
       immutableVars.add(newIdentDefs(ident"inCookies", newEmptyNode(), cookiesInVar))
-  if stmtList.isIdentUsed(ident"reqMethod"):
+  when exportJvm or defined(napibuild) or exportPython:
     immutableVars.add(newIdentDefs(ident"reqMethod", newEmptyNode(), reqMethod))
+  else:
+    if stmtList.isIdentUsed(ident"reqMethod"):
+      immutableVars.add(newIdentDefs(ident"reqMethod", newEmptyNode(), reqMethod))
   if stmtList.isIdentUsed(ident"headers"):
     immutableVars.add(newIdentDefs(ident"headers", newEmptyNode(), headers))
   immutableVars.add(newIdentDefs(ident"hostname", newEmptyNode(), hostname))

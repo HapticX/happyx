@@ -1,10 +1,7 @@
 package com.hapticx
 
 import com.google.gson.Gson
-import com.hapticx.data.BaseRequestModel
-import com.hapticx.data.HttpHeader
-import com.hapticx.data.HttpRequest
-import com.hapticx.data.WSConnection
+import com.hapticx.data.*
 import com.hapticx.response.BaseResponse
 import com.hapticx.response.FileResponse
 import com.hapticx.response.HtmlResponse
@@ -106,16 +103,40 @@ class ServerTestKt {
 
         BaseRequestModel.register(ServerTest.Message())
         BaseRequestModel.register(ServerTest.Chat())
-        s.post("/user[u:Message]") { req: HttpRequest ->
-            println(req.params)
-            println(req.params.map["u"])
-            println(req.params.map["u"]!!.map["text"])
-            println(req.params.map["u"]!!.map["text"]!!.string)
-            null
+        s.post("/user[u:Message]") {
+            println(it.params)
+            println(it.params["u"])
+            println(it.params["u"]["text"])
+            println(it.params["u"]["text"]!!.string)
+            return@post null
         }
 
-        // uncomment it to run server
-        // s.start()
+        s.addPathParamType("query", "[^:]+:\\S+") {
+            val strings = it.split(":")
+            return@addPathParamType Query(strings[0], strings[1])
+        }
+        s.get("/message/{q:query}") {
+            println(it.params["q"])
+            println(it.params["q"].get<Query>().key)
+            println(it.params["q"].get<Query>().value)
+            return@get "Hello with message"
+        }
+
+        s.addPathParamType("wordarr", "[,\\w+]+") {
+            val result = arrayListOf<String>()
+            for (str in it.split(",")) {
+                result.add(str)
+            }
+            return@addPathParamType result;
+        }
+        s.get("/arrays/{arr:wordarr}") {
+            println(it.params["arr"])
+            println(it.params["arr"].get<List<String>>()[0])
+            return@get null
+        }
+
+
+//        s.start()  // uncomment it to run server
     }
 
     @Test
@@ -129,8 +150,7 @@ class ServerTestKt {
                 return@route "Hello, world!"
             }
 
-            // uncomment it to run server
-            // start()
+            // start()  // uncomment it to run server
         }
     }
 

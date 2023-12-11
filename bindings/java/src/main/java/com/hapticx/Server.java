@@ -1,7 +1,6 @@
 package com.hapticx;
 
 
-import com.hapticx.data.BaseRequestModel;
 import com.hapticx.data.HttpRequest;
 import com.hapticx.data.WSConnection;
 import com.hapticx.util.LibLoader;
@@ -21,6 +20,10 @@ public class Server {
 
     public interface WebSocketCallback {
         void onReceive(WSConnection sock);
+    }
+
+    public interface RegisterPathParamTypeCallback{
+        Object handle(String data);
     }
 
     private native int createServer(String hostname, int port);
@@ -43,6 +46,8 @@ public class Server {
             int serverId, String path, String directory, List<String> extensions
     );
     private native void mount(int serverId, int otherServerId, String path);
+
+    private native void registerPathParamType(String name, String pattern, RegisterPathParamTypeCallback cb);
 
     private final int serverId;
 
@@ -148,6 +153,10 @@ public class Server {
 
     public void mount(String path, @NotNull Server other) {
         mount(this.serverId, other.serverId, path);
+    }
+
+    public void addPathParamType(String path, String pattern, RegisterPathParamTypeCallback cb) {
+        registerPathParamType(path, pattern, cb);
     }
 
     public void start() {

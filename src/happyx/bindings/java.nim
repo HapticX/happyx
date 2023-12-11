@@ -266,6 +266,15 @@ nativeMethods com.hapticx~Server:
     for route in other.routes:
       env.addRoute(self, $path & route.purePath, route.httpMethod, route.handler)
   
+  proc registerPathParamType(name: jstring, pattern: jstring, cb: jobject) =
+    ## Register a new path param type
+    initJNI(env)
+    let
+      jClass = env.GetObjectClass(env, cb)
+      methodId = env.GetMethodId(env, jClass, "handle", "(Ljava/lang/String;)Ljava/lang/Object;")
+      callback = env.initJavaMethod(jClass, methodId)
+    registerRouteParamTypeAux($name, $pattern, callback)
+  
   proc startServer(serverId: jint) =
     ## Starts a server at host and port
     {.gcsafe.}:
