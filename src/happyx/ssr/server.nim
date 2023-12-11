@@ -1009,15 +1009,17 @@ socketToSsr.onmessage=function(m){
             newCall("contains", methods, newCall("toLower", newCall("$", reqMethod))),
             exported[0].copy()
           )
-          methodTable.mgetOrPut("GET", newNimNode(nnkIfStmt)).add(exported)
+          for i in httpMethods:
+            methodTable.mgetOrPut(i.toUpper, newNimNode(nnkIfStmt)).add(exported)
         else:  # /just-my-path
-          methodTable.mgetOrPut("GET", newNimNode(nnkIfStmt)).add(newNimNode(nnkElifBranch).add(
-            newCall(
-              "and",
-              newCall("contains", methods, newCall("toLower", newCall("$", reqMethod))),
-              newCall("==", pathIdent, statement[1])
-            ), statement[2]
-          ))
+          for i in httpMethods:
+            methodTable.mgetOrPut(i.toUpper, newNimNode(nnkIfStmt)).add(newNimNode(nnkElifBranch).add(
+              newCall(
+                "and",
+                newCall("contains", methods, newCall("toLower", newCall("$", reqMethod))),
+                newCall("==", pathIdent, statement[1])
+              ), statement[2]
+            ))
         nextRouteDecorators = @[]
       # reqMethod "/...":
       #   ...
@@ -1453,7 +1455,6 @@ socketToSsr.onmessage=function(m){
     stmtList.add(newCall(
       "handleJvmRequest", ident"self", ident"req", ident"urlPath"
     ))
-  stmtList.add(caseRequestMethodsStmt)
   for key in methodTable.keys():
     caseRequestMethodsStmt.add(newNimNode(nnkOfBranch).add(
       newLit(parseEnum[HttpMethod](key)),
@@ -1491,6 +1492,7 @@ socketToSsr.onmessage=function(m){
       newCall("not", ident"reqResponded"),
       caseRequestMethodsStmt.copy()
     ))
+  stmtList.add(caseRequestMethodsStmt)
 
   result = newStmtList(
     if stmtList.isIdentUsed(ident"wsConnections"):

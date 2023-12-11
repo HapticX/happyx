@@ -27,7 +27,7 @@ pathParams:
     default = 100
 
 
-serve("127.0.0.1", 5000):
+serve "127.0.0.1", 5000:
   let some = 100
   var counter = 0
 

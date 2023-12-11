@@ -301,7 +301,10 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode =
   let
     elifBranch = newNimNode(nnkElifBranch)
     regExp = newCall("re2", newStrLitNode("^" & routeData.purePath & "$"))
-  elifBranch.add(newCall("contains", urlPath, regExp), body)
+  elifBranch.add(newCall("contains", urlPath, newStmtList(
+    newLetStmt(ident"__regExp", regExp),
+    ident"__regExp"
+  )), body)
   # re2"\{[a-zA-Z][a-zA-Z0-9_]*(\??):enum\((\w+)\)(\[m\])?(=\S+?)?\}"
   # Find all enums in route:
   # for found in routeData.purePath.findAll(re2"_ENUM_\[([a-zA-Z][a-zA-Z0-9_]*)\]"):
@@ -320,7 +323,7 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode =
           if routeData.pathParams.len > 1:
             ident"founded_regexp_matches"
           else:
-            newCall("findAll", urlPath, regExp),
+            newCall("findAll", urlPath, ident"__regExp"),
           newLit(0)
         ),
         newLit(idx)
@@ -328,7 +331,7 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode =
       groupForce = newCall(
         "group",
         newNimNode(nnkBracketExpr).add(
-          newCall("findAll", urlPath, regExp), newLit(0)
+          newCall("findAll", urlPath, ident"__regExp"), newLit(0)
         ),
         newLit(idx)
       )
@@ -552,7 +555,7 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode =
       elifBranch[1].insert(
         0, newNimNode(nnkLetSection).add(
           newIdentDefs(
-            ident"founded_regexp_matches", newEmptyNode(), newCall("findAll", urlPath, regExp)
+            ident"founded_regexp_matches", newEmptyNode(), newCall("findAll", urlPath, ident"__regExp")
           )
         )
       )
