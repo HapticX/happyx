@@ -29,13 +29,13 @@ component SQLite:
 
       if currentLanguage == "Nim":
         
-        component Tip:
+        Tip(ttInfo):
           tP: {translate"Norm requires ``--deepcopy:on``, so you'll have to compile your project with this flag:"}
-          component CodeBlock("shell", "nim c -r --deepcopy:on file.nim", "nim_sqlite_1")
+          CodeBlock("shell", "nim c -r --deepcopy:on file.nim", "nim_sqlite_1")
 
         tP: {translate"First, let's look at an example in which Norm is imported and a model is created for a table in a database."}
 
-        component CodeBlock("nim", nimSsrNormSqlite1, "nim_sqlite_1")
+        CodeBlock("nim", nimSsrNormSqlite1, "nim_sqlite_1")
         
         tP: {translate"The code below shows the connection to SQLite"}
       elif currentLanguage == "Python":

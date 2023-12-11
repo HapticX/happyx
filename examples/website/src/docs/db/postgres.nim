@@ -29,7 +29,7 @@ component Postgres:
 
       if currentLanguage == "Nim":
         
-        component Tip:
+        Tip(ttInfo):
           tP: {translate"Norm requires ``--deepcopy:on``, so you'll have to compile your project with this flag:"}
           component CodeBlock("shell", "nim c -r --deepcopy:on file.nim", "nim_postgre_1")
 

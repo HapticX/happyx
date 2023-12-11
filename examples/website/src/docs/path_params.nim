@@ -16,10 +16,11 @@ component PathParams:
         {translate"HappyX provides powerful routing system. Here contains these features:"}
         tUl(class = "list-desc"):
           tLi: {translate"Path param validation (int/float/string/etc) 👮‍♀️"}
-          if currentLanguage != "Python":
+          if currentLanguage in ["Nim", "Nim (SPA)"]:
             tLi: {translate"Automatic [im]mutable variable creation ✨"}
-          tLi: {translate"Supports by SPA/SSR and Nim/Python 👑"}
+          tLi: {translate"Supports with any project type"}
           tLi: {translate"Request models support 🛠"}
+          tLi: {translate"Custom types support 🔥"}
       tH2: {translate"Usage" & " ⚡"}
 
       component CodeBlockGuide(@[
@@ -125,7 +126,7 @@ component PathParams:
                 """$i:word"""
               tSpan(class = "text-green-800 dark:text-green-400"):
                 "\""
-          tTd(class = "text-center"): {translate"Parses param as word (only \w)"}
+          tTd(class = "text-center"): {translate"Parses param as word (only \w+)"}
         # String
         tTr:
           tTd(class = "text-center"):
@@ -163,7 +164,7 @@ component PathParams:
                 "\""
           tTd(class = "text-center"):
             tCode:
-              "not available"
+              {translate"not available"}
           tTd(class = "text-center"): {translate"Parses param as string (any character include '/')"}
         # Enums
         if currentLanguage.val in ["Nim", "Nim (SPA)"]:
@@ -203,10 +204,76 @@ component PathParams:
                 "\""
           tTd(class = "text-center"):
             tCode:
-              "not available"
+              {translate"not available"}
           tTd(class = "text-center"): {translate"Parses param as string with regex pattern"}
       
-      {translate"In addition, you can define your own parameter types ✌"}
+      tP:
+        {translate"In addition to using typed path parameters, you can explicitly specify that they are mutable and/or optional, and you can also specify a default value"}
+      
+      tP:
+        {translate"Here is few examples:"}
+      
+      tDiv(class = "overflow-x-auto w-full"): tTable:
+        tTr:
+          tTd(class = "font-bold text-center"): {translate"Example"}
+          tTd(class = "font-bold text-center"): {translate"Type"}
+          tTd(class = "font-bold text-center"): {translate"Usage"}
+          tTd(class = "font-bold text-center"): {translate"Description"}
+        # optional integer
+        tTr:
+          tTd(class = "text-center"):
+            {translate"Optional integer"}
+          tTd(class = "text-center"):
+            tSpan(class = "text-orange-800 dark:text-orange-400"): "int"
+          tTd(class = "text-center"):
+            tCode:
+              tSpan(class = "text-green-800 dark:text-green-400"): "\"/"
+              tSpan(class = "text-purple-800 dark:text-purple-400"): """{i?:int}"""
+              tSpan(class = "text-green-800 dark:text-green-400"): "\""
+          tTd(class = "text-center"):
+            {translate"Optional path param typed as int with default value 0"}
+        # optional bool with default value
+        tTr:
+          tTd(class = "text-center"):
+            {translate"default bool"}
+          tTd(class = "text-center"):
+            tSpan(class = "text-orange-800 dark:text-orange-400"): "bool"
+          tTd(class = "text-center"):
+            tCode:
+              tSpan(class = "text-green-800 dark:text-green-400"): "\"/"
+              tSpan(class = "text-purple-800 dark:text-purple-400"): """{b?:bool=false}"""
+              tSpan(class = "text-green-800 dark:text-green-400"): "\""
+          tTd(class = "text-center"):
+            {translate"Optional path param typed as bool with default value false"}
+        # mutable default float
+        tTr:
+          tTd(class = "text-center"):
+            {translate"mutable default float"}
+          tTd(class = "text-center"):
+            tSpan(class = "text-orange-800 dark:text-orange-400"): "float"
+          tTd(class = "text-center"):
+            tCode:
+              tSpan(class = "text-green-800 dark:text-green-400"): "\"/"
+              tSpan(class = "text-purple-800 dark:text-purple-400"): """{f:float[m]=3.14}"""
+              tSpan(class = "text-green-800 dark:text-green-400"): "\""
+          tTd(class = "text-center"):
+            {translate"Optional mutable path param typed as float with default value 3.14"}
+        # mutable string
+        tTr:
+          tTd(class = "text-center"):
+            {translate"mutable string"}
+          tTd(class = "text-center"):
+            tSpan(class = "text-orange-800 dark:text-orange-400"): "string"
+          tTd(class = "text-center"):
+            tCode:
+              tSpan(class = "text-green-800 dark:text-green-400"): "\"/"
+              tSpan(class = "text-purple-800 dark:text-purple-400"): """{s:string[m]}"""
+              tSpan(class = "text-green-800 dark:text-green-400"): "\""
+          tTd(class = "text-center"):
+            {translate"Mutable path param typed as string"}
+      
+      tP:
+        {translate"In addition, you can define your own parameter types ✌"}
 
       component CodeBlockGuide(@[
         ("Nim", "nim", nimCustomPathParamTypeSsr, cstring"nim_import_ssr", newPlayResult()),
