@@ -352,7 +352,7 @@ export
 
 
 # Language bindings
-when exportPython or defined(docgen):
+when exportPython:
   import happyx/bindings/[python]
   export python
 
