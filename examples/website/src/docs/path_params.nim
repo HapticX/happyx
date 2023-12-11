@@ -203,12 +203,7 @@ component PathParams:
                 "\""
           tTd(class = "text-center"):
             tCode:
-              tSpan(class = "text-green-800 dark:text-green-400"):
-                "\"/"
-              tSpan(class = "text-purple-800 dark:text-purple-400"):
-                """$i:/REGEX/"""
-              tSpan(class = "text-green-800 dark:text-green-400"):
-                "\""
+              "not available"
           tTd(class = "text-center"): {translate"Parses param as string with regex pattern"}
       
       {translate"In addition, you can define your own parameter types ✌"}
