@@ -18,35 +18,35 @@ component GuidePage:
       tDiv(class = "flex flex-col gap-4"):
         case currentGuidePage.val
         of "introduction":
-          component Introduction
+          Introduction
         of "getting_started":
-          component GettingStarted
+          GettingStarted
         of "happyx_app":
-          component HappyxApp
+          HappyxApp
         of "path_params":
-          component PathParams
+          PathParams
         of "spa_basics":
-          component SpaBasics
+          SpaBasics
         of "reactivity":
-          component Reactivity
+          Reactivity
         of "ssr_basics":
-          component SsrBasics
+          SsrBasics
         of "tailwind_and_other":
-          component TailwindAndOther
+          TailwindAndOther
         of "route_decorators":
-          component Decorators
+          Decorators
         of "db_access":
-          component DbIntro
+          DbIntro
         of "mongo_db":
-          component MongoDB
+          MongoDB
         of "sqlite":
-          component SQLite
+          SQLite
         of "postgres":
-          component Postgres
+          Postgres
 
       tDiv(class = "hidden xl:flex justify-between items-center w-full pb-8"):
         if guidePages[currentGuidePage]["prev"].getStr != "":
-          component Button(
+          Button(
               action = proc() =
                 route(fmt"""/guide/{guidePages[currentGuidePage]["prev"].getStr}""")
           ):
@@ -54,7 +54,7 @@ component GuidePage:
         else:
           tDiv(class = "w-1 h-1 p-1")
         if guidePages[currentGuidePage]["next"].getStr != "":
-          component Button(
+          Button(
               action = proc() =
                 route(fmt"""/guide/{guidePages[currentGuidePage]["next"].getStr}""")
           ):
@@ -63,7 +63,7 @@ component GuidePage:
           tDiv(class = "w-1 h-1 p-1")
       tDiv(class = "flex xl:hidden justify-between items-center w-full pb-8"):
         if guidePages[currentGuidePage]["prev"].getStr != "":
-          component Button(
+          Button(
               action = proc() =
                 route(fmt"""/guide/{guidePages[currentGuidePage]["prev"].getStr}"""),
               flat = true
@@ -72,7 +72,7 @@ component GuidePage:
         else:
           tDiv(class = "w-1 h-1 p-1")
         if guidePages[currentGuidePage]["next"].getStr != "":
-          component Button(
+          Button(
               action = proc() =
                 route(fmt"""/guide/{guidePages[currentGuidePage]["next"].getStr}"""),
               flat = true

@@ -16,7 +16,7 @@ component MongoDB:
 
       tP: {translate"First, you need to install MongoDB and the library to work with it"}
 
-      component CodeBlockGuide(@[
+      CodeBlockGuide(@[
         ("Nim", "shell", "nimble install anonimongo@#head", cstring"nim_mongo_db_install", newPlayResult()),
         ("Python", "shell", "pip install pymongo", cstring"py_mongo_db_install", newPlayResult()),
         # ("JavaScript", "javascript", jsHelloWorldExample, cstring"js_import", newPlayResult()),
@@ -25,7 +25,7 @@ component MongoDB:
 
       tP: {translate"The code below shows the connection to MongoDB"}
 
-      component CodeBlockGuide(@[
+      CodeBlockGuide(@[
         ("Nim", "nim", nimSsrMongoDb1, cstring"nim_mongo_db_1", newPlayResult()),
         ("Python", "python", pyMongoDb1, cstring"py_mongo_db_1", newPlayResult()),
         # ("JavaScript", "javascript", jsHelloWorldExample, cstring"js_import", newPlayResult()),
@@ -34,7 +34,7 @@ component MongoDB:
 
       tP: {translate"Now let's write methods for working with the pseudo-API. Let's start by creating a user:"}
 
-      component CodeBlockGuide(@[
+      CodeBlockGuide(@[
         ("Nim", "nim", nimSsrMongoDb2, cstring"nim_mongo_db_2", newPlayResult()),
         ("Python", "python", pyMongoDb2, cstring"py_mongo_db_2", newPlayResult()),
         # ("JavaScript", "javascript", jsHelloWorldExample, cstring"js_import", newPlayResult()),
@@ -43,7 +43,7 @@ component MongoDB:
 
       tP: {translate"Now let's write a method to get a user by his ID:"}
 
-      component CodeBlockGuide(@[
+      CodeBlockGuide(@[
         ("Nim", "nim", nimSsrMongoDb3, cstring"nim_mongo_db_3", newPlayResult()),
         ("Python", "python", pyMongoDb3, cstring"py_mongo_db_3", newPlayResult()),
         # ("JavaScript", "javascript", jsHelloWorldExample, cstring"js_import", newPlayResult()),
@@ -52,7 +52,7 @@ component MongoDB:
 
       tP: {translate"Finally, let's add a method to get all users"}
 
-      component CodeBlockGuide(@[
+      CodeBlockGuide(@[
         ("Nim", "nim", nimSsrMongoDb4, cstring"nim_mongo_db_4", newPlayResult()),
         ("Python", "python", pyMongoDb4, cstring"py_mongo_db_4", newPlayResult()),
         # ("JavaScript", "javascript", jsHelloWorldExample, cstring"js_import", newPlayResult()),
@@ -61,7 +61,7 @@ component MongoDB:
 
       tP: {translate"Let's take a look at the full code:"}
 
-      component CodeBlockGuide(@[
+      CodeBlockGuide(@[
         ("Nim", "nim", nimSsrMongoDb, cstring"nim_mongo_db", newPlayResult()),
         ("Python", "python", pyMongoDb, cstring"py_mongo_db", newPlayResult()),
         # ("JavaScript", "javascript", jsHelloWorldExample, cstring"js_import", newPlayResult()),

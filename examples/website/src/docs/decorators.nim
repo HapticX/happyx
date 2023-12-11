@@ -18,12 +18,12 @@ component Decorators:
       tH2: {translate"Usage 🤔"}
       tP: {translate"Here you can see simple decorator usage"}
 
-      component CodeBlock("nim", nimSsrRouteDecorator, "route_decorator")
+      CodeBlock("nim", nimSsrRouteDecorator, "route_decorator")
 
       tH2: {translate"Custom Decorators 💡"}
       tP: {translate"You can create your own decorators also:"}
 
-      component CodeBlock("nim", nimAssignRouteDecorator, "route_decorator")
+      CodeBlock("nim", nimAssignRouteDecorator, "route_decorator")
 
-      component Tip:
+      Tip:
         tP: {translate"You can use route decorators in SSR, SSG, and SPA project types with Nim."}

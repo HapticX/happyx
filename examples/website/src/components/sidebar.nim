@@ -128,53 +128,53 @@ component SideBar:
     ):
       if not self.isMobile:
         tP(class = "text-5xl lg:text-3xl xl:text-2xl font-bold text-center w-max"):
-          {translate("📕 Documentation")}
+          {translate"📕 Documentation"}
       tDiv(class = "flex flex-col justify-between gap-16 lg:gap-12 xl:gap-8"):
         tDiv(class = "flex flex-col pl-8 lg:pl-6 xl:pl-4 gap-8 lg:gap-4 xl:gap-2"):
-          component SideBarTitle:
-            {translate("User Guide 📖")}
+          SideBarTitle:
+            {translate"User Guide 📖"}
 
-            component SideBarFolder("introduction", "General 🍍"):
-              component SideBarItem("introduction"):
-                {translate("Introduction ✌")}
-              component SideBarItem("getting_started"):
-                {translate("Getting Started 💫")}
+            SideBarFolder("introduction", "General 🍍"):
+              SideBarItem("introduction"):
+                {translate"Introduction ✌"}
+              SideBarItem("getting_started"):
+                {translate"Getting Started 💫"}
 
-            component SideBarFolder("happyx_app", "Basics 📖"):
-              component SideBarItem("happyx_app"):
-                {translate("HappyX Application 🍍")}
-              component SideBarItem("path_params"):
-                {translate("Path Params 🔌")}
+            SideBarFolder("happyx_app", "Basics 📖"):
+              SideBarItem("happyx_app"):
+                {translate"HappyX Application 🍍"}
+              SideBarItem("path_params"):
+                {translate"Path Params 🔌"}
 
-            component SideBarFolder("tailwind_and_other", "Advanced 🧪"):
-              component SideBarItem("tailwind_and_other"):
-                {translate("Tailwind And Other 🎴")}
-              component SideBarItem("route_decorators"):
-                {translate("Route Decorators 🔌")}
+            SideBarFolder("tailwind_and_other", "Advanced 🧪"):
+              SideBarItem("tailwind_and_other"):
+                {translate"Tailwind And Other 🎴"}
+              SideBarItem("route_decorators"):
+                {translate"Route Decorators 🔌"}
 
-            component SideBarFolder("spa_basics", "Single-page Applications 🎴"):
-              component SideBarItem("spa_basics"):
-                {translate("Single-page Applications Basics 🎴")}
-              component SideBarItem("reactivity"):
-                {translate("Reactivity ⚡")}
+            SideBarFolder("spa_basics", "Single-page Applications 🎴"):
+              SideBarItem("spa_basics"):
+                {translate"Single-page Applications Basics 🎴"}
+              SideBarItem("reactivity"):
+                {translate"Reactivity ⚡"}
 
-            component SideBarFolder("ssr_basics", "Server-side Applications 🖥"):
-              component SideBarItem("ssr_basics"):
-                {translate("Server-side Applications Basics 🖥")}
-              component SideBarItem("db_access"):
-                {translate("Database access 📦")}
-              component SideBarItem("sqlite"):
-                {translate("SQLite 📦")}
-              component SideBarItem("postgres"):
-                {translate("PostgreSQL 📦")}
-              component SideBarItem("mongo_db"):
-                {translate("MongoDB 🍃")}
+            SideBarFolder("ssr_basics", "Server-side Applications 🖥"):
+              SideBarItem("ssr_basics"):
+                {translate"Server-side Applications Basics 🖥"}
+              SideBarItem("db_access"):
+                {translate"Database access 📦"}
+              SideBarItem("sqlite"):
+                {translate"SQLite 📦"}
+              SideBarItem("postgres"):
+                {translate"PostgreSQL 📦"}
+              SideBarItem("mongo_db"):
+                {translate"MongoDB 🍃"}
         tDiv(class = "flex"):
-          component Button(
+          Button(
             action = proc() =
               {.emit: """//js
               window.open('https://hapticx.github.io/happyx/happyx.html', '_blank').focus();
               """.},
             flat = true
           ):
-            {translate("📕 API Reference")}
+            {translate"📕 API Reference"}

@@ -56,9 +56,9 @@ appRoutes "app":
         "Oops! Not found"
       
     tDiv(class = "flex flex-col justify-end items-center absolute top-0 left-0 bottom-24 right-0 upper"):
-      component Button(
+      Button(
         action = proc() =
-          route("/")
+          route"/"
       ):
         "go to home"
     

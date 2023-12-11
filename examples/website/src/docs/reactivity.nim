@@ -18,7 +18,7 @@ component Reactivity:
 
       tP: {translate"This example shows how to interact with reactive variables in the routes of the SPA application."}
 
-      component CodeBlock("nim", nimSpaReactivity1, "nim_spa_reactivity_1")
+      CodeBlock("nim", nimSpaReactivity1, "nim_spa_reactivity_1")
 
       tP:
         {translate"As you can see in the above code example, a special syntax is used to call the "}
@@ -29,11 +29,11 @@ component Reactivity:
 
       tP: {translate"The example below shows all the other examples of creating reactive variables."}
 
-      component CodeBlock("nim", nimSpaReactivity3, "nim_spa_reactivity_3")
+      CodeBlock("nim", nimSpaReactivity3, "nim_spa_reactivity_3")
       
       tP: {translate"Let's look at an example of working with sequences."}
 
-      component CodeBlock("nim", nimSpaReactivity2, "nim_spa_reactivity_2")
+      CodeBlock("nim", nimSpaReactivity2, "nim_spa_reactivity_2")
 
       tP:
         {translate"In the example above, the "}
@@ -43,7 +43,9 @@ component Reactivity:
         tUl:
           tLi: tCode: "len"
           tLi: tCode: "$"
-          tLi: tCode: "[]"
+          tLi:
+            tCode: "[]"
+            tCode: "[]="
           tLi:
             tCode: "+="
             tSpan: ", "
@@ -95,7 +97,7 @@ component Reactivity:
       
       tP: {translate"Speaking of built-in frequently used functions, it is worth noting that they can be used together with ordinary values. Let's look at the following example."}
 
-      component CodeBlock("nim", nimSpaReactivity4, "nim_spa_reactivity_4")
+      CodeBlock("nim", nimSpaReactivity4, "nim_spa_reactivity_4")
 
       tP:
         {translate"To specify a new value for reactivity variables, you can use "}
@@ -106,4 +108,4 @@ component Reactivity:
         tCode: "seq[T]"
         {translate" in one go."}
 
-      component CodeBlock("nim", nimSpaReactivity5, "nim_spa_reactivity_5")
+      CodeBlock("nim", nimSpaReactivity5, "nim_spa_reactivity_5")

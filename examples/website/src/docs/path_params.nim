@@ -23,7 +23,7 @@ component PathParams:
           tLi: {translate"Custom types support 🔥"}
       tH2: {translate"Usage" & " ⚡"}
 
-      component CodeBlockGuide(@[
+      CodeBlockGuide(@[
         ("Nim", "nim", nimPathParamsSsr, cstring"nim_import_ssr", newPlayResult()),
         ("Nim (SPA)", "nim", nimPathParamsSpa, cstring"nim_import_ssr", newPlayResult()),
         ("Python", "python", pythonPathParamsSsr, cstring"py_import", newPlayResult()),
@@ -275,7 +275,7 @@ component PathParams:
       tP:
         {translate"In addition, you can define your own parameter types ✌"}
 
-      component CodeBlockGuide(@[
+      CodeBlockGuide(@[
         ("Nim", "nim", nimCustomPathParamTypeSsr, cstring"nim_import_ssr", newPlayResult()),
         ("Nim (SPA)", "nim", nimCustomPathParamTypeSpa, cstring"nim_import_ssr", newPlayResult()),
         ("Python", "python", pythonCustomRouteParamType, cstring"py_import", newPlayResult()),
@@ -293,8 +293,8 @@ component PathParams:
           tDiv(class = "flex flex-col gap-4"):
             tH3: {translate"SSR Example ⚡"}
             tP: {translate"Server-side rendering application"}
-            component CodeBlock(language = "nim", source = nimAssignRouteParamsSsr, id = "assignRouteParamsSsr")
+            CodeBlock(language = "nim", source = nimAssignRouteParamsSsr, id = "assignRouteParamsSsr")
           tDiv(class = "flex flex-col gap-4"):
             tH3: {translate"SPA Example 🎴"}
             tP: {translate"Single-page application"}
-            component CodeBlock(language = "nim", source = nimAssignRouteParamsSpa, id = "assignRouteParamsSpa")
+            CodeBlock(language = "nim", source = nimAssignRouteParamsSpa, id = "assignRouteParamsSpa")

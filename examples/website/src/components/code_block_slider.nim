@@ -33,7 +33,7 @@ component CodeBlockSlider:
                 tP(class = "flex h-full justify-center items-center text-3xl lg:text-base pointer-events-none"):
                   {translate(source.description)}
               tDiv(class = "w-full"):
-                component CodeBlock(source = source.text, language = source.language, id = fmt"slider-{self.uniqCompId}_{idx}")
+                CodeBlock(source = source.text, language = source.language, id = fmt"slider-{self.uniqCompId}_{idx}")
           else:
             tDiv(
               id = fmt"sliderContainer-{idx}",
@@ -45,7 +45,7 @@ component CodeBlockSlider:
                 tP(class = "flex h-full justify-center items-center text-3xl lg:text-base pointer-events-none"):
                   {translate(source.description)}
               tDiv(class = "w-full"):
-                component CodeBlock(source = source.text, language = source.language, id = fmt"slider-{self.uniqCompId}_{idx}")
+                CodeBlock(source = source.text, language = source.language, id = fmt"slider-{self.uniqCompId}_{idx}")
       tDiv(class = "flex w-full justify-center items-center p-2 gap-2"):
         for idx in 0..<self.data.len:
           if self.index == idx:

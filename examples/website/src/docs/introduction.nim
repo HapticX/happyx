@@ -26,6 +26,7 @@ component IntroductionLanguageChooser:
         localStorage["happyx_programming_language"] = lang
         currentLanguage.set(self.lang)
         route(currentRoute)
+        application.router()
 
 
 component Contributor:
@@ -102,7 +103,7 @@ component Introduction:
         This project has been under development since April 2023 and is continuously evolving.
         HappyX draws inspiration from notable web frameworks like Vue.js and FastAPI.
         """}
-      component Tip:
+      Tip:
         tP:
           {translate"HappyX works with Nim, Python, JavaScript and TypeScript so you can choose one of these languages to read this guide ✌"}
         tDiv(

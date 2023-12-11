@@ -19,10 +19,10 @@ component TailwindAndOther:
       tP: {translate"To use JS libraries you can use cdn."}
 
       tP: {translate"SSR Nim Version can be:"}
-      component CodeBlock("nim", nimSsrTailwind, "tailwind_ssr")
+      CodeBlock("nim", nimSsrTailwind, "tailwind_ssr")
       tP: {translate"SPA Nim Version can be:"}
-      component CodeBlock("html", nimSpaHtmlTailwind, "tailwind_spa_html")
-      component CodeBlock("nim", nimSpaTailwind, "tailwind_spa_nim")
+      CodeBlock("html", nimSpaHtmlTailwind, "tailwind_spa_html")
+      CodeBlock("nim", nimSpaTailwind, "tailwind_spa_nim")
 
       tH2: {translate"Advanced Usage with NodeJS 🧪"}
 
@@ -34,26 +34,26 @@ component TailwindAndOther:
           "Tailwind Docs"
       
       tP: {translate"To use it let's repeat these steps:"}
-      component CodeBlock("shell", tailwindCli, "tailwind_init_project")
+      CodeBlock("shell", tailwindCli, "tailwind_init_project")
       tP:
         {translate"Then, go to "}
         tCode: "tailwind.config.js"
         {translate" and change it"}
-      component CodeBlock("javascript", tailwindConfig, "tailwind_config")
+      CodeBlock("javascript", tailwindConfig, "tailwind_config")
       tP:
         {translate"After, create "}
         tCode: "src/public/input.css"
-      component CodeBlock("css", tailwindCssInput, "tailwind_css_input")
+      CodeBlock("css", tailwindCssInput, "tailwind_css_input")
       tP: {translate"And run watching command"}
-      component CodeBlock("shell", tailwindWatch, "tailwind_watch")
+      CodeBlock("shell", tailwindWatch, "tailwind_watch")
 
       tP:
         {translate"After all steps you can write any html/nim files with tailwind support"}
       tP:
         {translate"SSR Nim Version can be:"}
         tCode: "src/main.nim"
-      component CodeBlock("nim", nimSsrTailwindWithoutCdn, "tailwind_spa_nim")
+      CodeBlock("nim", nimSsrTailwindWithoutCdn, "tailwind_spa_nim")
       tP:
         {translate"SPA Nim Version can be:"}
         tCode: "src/main.nim"
-      component CodeBlock("nim", nimSpaTailwind, "tailwind_spa_nim")
+      CodeBlock("nim", nimSpaTailwind, "tailwind_spa_nim")

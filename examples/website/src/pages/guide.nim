@@ -15,16 +15,16 @@ mount UserGuide:
         currentGuidePage.set(link)
         enableRouting = true
       # Drawer
-      component drawer_comp
+      drawer_comp
       # Header
       tDiv(class = "w-full sticky top-0 z-20"):
-        component Header(drawer = drawer_comp)
+        Header(drawer = drawer_comp)
       tDiv(class = "flex w-full h-full gap-8 px-4"):
         # SideBar
         tDiv(class = "fixed top-0 pt-16 w-80"):
-          component SideBar
+          SideBar
         tDiv(class = "pl-0 xl:pl-80 w-full"):
-          component GuidePage(link)
+          GuidePage(link)
       tStyle:
         {fmt"""
           p:has(img[alt="Happyx"]) {{

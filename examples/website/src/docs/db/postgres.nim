@@ -20,7 +20,7 @@ component Postgres:
 
       tP: {translate"First, you need to install the library to work with it"}
 
-      component CodeBlockGuide(@[
+      CodeBlockGuide(@[
         ("Nim", "shell", "nimble install -y norm", cstring"nim_postgres_install", newPlayResult()),
         ("Python", "shell", "pip install psycopg2", cstring"py_postgres_install", newPlayResult()),
         # ("JavaScript", "javascript", jsHelloWorldExample, cstring"js_import", newPlayResult()),
@@ -31,18 +31,18 @@ component Postgres:
         
         Tip(ttInfo):
           tP: {translate"Norm requires ``--deepcopy:on``, so you'll have to compile your project with this flag:"}
-          component CodeBlock("shell", "nim c -r --deepcopy:on file.nim", "nim_postgre_1")
+          CodeBlock("shell", "nim c -r --deepcopy:on file.nim", "nim_postgre_1")
 
         tP: {translate"First, let's look at an example in which Norm is imported and a model is created for a table in a database."}
 
-        component CodeBlock("nim", nimPostgreSql1, "nim_postgre_1")
+        CodeBlock("nim", nimPostgreSql1, "nim_postgre_1")
         
         tP: {translate"The code below shows the connection to PostgreSQL"}
       elif currentLanguage == "Python":
 
         tP: {translate"The code below shows connecting to PostgreSQL and creating a model for a table in the database."}
 
-      component CodeBlockGuide(@[
+      CodeBlockGuide(@[
         ("Nim", "nim", nimPostgreSql2, cstring"nim_postgre_2", newPlayResult()),
         ("Python", "python", pyPostgreSql1, cstring"py_postgre_1", newPlayResult()),
         # ("JavaScript", "javascript", jsHelloWorldExample, cstring"js_import", newPlayResult()),
@@ -51,7 +51,7 @@ component Postgres:
 
       tP: {translate"Now let's write methods for working with the pseudo-API. Let's start by creating a user:"}
 
-      component CodeBlockGuide(@[
+      CodeBlockGuide(@[
         ("Nim", "nim", nimPostgreSql3, cstring"nim_postgre_3", newPlayResult()),
         ("Python", "python", pyPostgreSql2, cstring"py_postgre_2", newPlayResult()),
         # ("JavaScript", "javascript", jsHelloWorldExample, cstring"js_import", newPlayResult()),
@@ -60,7 +60,7 @@ component Postgres:
 
       tP: {translate"Now let's write a method to get a user by his ID:"}
 
-      component CodeBlockGuide(@[
+      CodeBlockGuide(@[
         ("Nim", "nim", nimPostgreSql4, cstring"nim_postgre_4", newPlayResult()),
         ("Python", "python", pyPostgreSql3, cstring"py_postgre_3", newPlayResult()),
         # ("JavaScript", "javascript", jsHelloWorldExample, cstring"js_import", newPlayResult()),
@@ -69,7 +69,7 @@ component Postgres:
 
       tP: {translate"Finally, let's add a method to get all users"}
 
-      component CodeBlockGuide(@[
+      CodeBlockGuide(@[
         ("Nim", "nim", nimPostgreSql5, cstring"nim_postgre_5", newPlayResult()),
         ("Python", "python", pyPostgreSql4, cstring"py_postgre_4", newPlayResult()),
         # ("JavaScript", "javascript", jsHelloWorldExample, cstring"js_import", newPlayResult()),
@@ -78,7 +78,7 @@ component Postgres:
 
       tP: {translate"Let's take a look at the full code:"}
 
-      component CodeBlockGuide(@[
+      CodeBlockGuide(@[
         ("Nim", "nim", nimPostgreSql, cstring"nim_postgre_full", newPlayResult()),
         ("Python", "python", pyPostgreSql, cstring"py_postgre_full", newPlayResult()),
         # ("JavaScript", "javascript", jsHelloWorldExample, cstring"js_import", newPlayResult()),

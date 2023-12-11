@@ -20,7 +20,7 @@ component SQLite:
 
       tP: {translate"First, you need to install the library to work with it"}
 
-      component CodeBlockGuide(@[
+      CodeBlockGuide(@[
         ("Nim", "shell", "nimble install -y norm", cstring"nim_sqlite_install", newPlayResult()),
         ("Python", "shell", "pip install sqlalchemy", cstring"py_sqlite_install", newPlayResult()),
         # ("JavaScript", "javascript", jsHelloWorldExample, cstring"js_import", newPlayResult()),
@@ -42,7 +42,7 @@ component SQLite:
 
         tP: {translate"The code below shows connecting to SQLite and creating a model for a table in the database."}
 
-      component CodeBlockGuide(@[
+      CodeBlockGuide(@[
         ("Nim", "nim", nimSsrNormSqlite2, cstring"nim_sqlite_2", newPlayResult()),
         ("Python", "python", pySqlalchemy1, cstring"py_sqlite_1", newPlayResult()),
         # ("JavaScript", "javascript", jsHelloWorldExample, cstring"js_import", newPlayResult()),
@@ -51,7 +51,7 @@ component SQLite:
 
       tP: {translate"Now let's write methods for working with the pseudo-API. Let's start by creating a user:"}
 
-      component CodeBlockGuide(@[
+      CodeBlockGuide(@[
         ("Nim", "nim", nimSsrNormSqlite3, cstring"nim_sqlite_3", newPlayResult()),
         ("Python", "python", pySqlalchemy2, cstring"py_sqlite_2", newPlayResult()),
         # ("JavaScript", "javascript", jsHelloWorldExample, cstring"js_import", newPlayResult()),
@@ -60,7 +60,7 @@ component SQLite:
 
       tP: {translate"Now let's write a method to get a user by his ID:"}
 
-      component CodeBlockGuide(@[
+      CodeBlockGuide(@[
         ("Nim", "nim", nimSsrNormSqlite4, cstring"nim_sqlite_4", newPlayResult()),
         ("Python", "python", pySqlalchemy3, cstring"py_sqlite_3", newPlayResult()),
         # ("JavaScript", "javascript", jsHelloWorldExample, cstring"js_import", newPlayResult()),
@@ -69,7 +69,7 @@ component SQLite:
 
       tP: {translate"Finally, let's add a method to get all users"}
 
-      component CodeBlockGuide(@[
+      CodeBlockGuide(@[
         ("Nim", "nim", nimSsrNormSqlite5, cstring"nim_sqlite_5", newPlayResult()),
         ("Python", "python", pySqlalchemy4, cstring"py_sqlite_4", newPlayResult()),
         # ("JavaScript", "javascript", jsHelloWorldExample, cstring"js_import", newPlayResult()),
@@ -78,7 +78,7 @@ component SQLite:
 
       tP: {translate"Let's take a look at the full code:"}
 
-      component CodeBlockGuide(@[
+      CodeBlockGuide(@[
         ("Nim", "nim", nimSsrNormSqlite, cstring"nim_sqlite_full", newPlayResult()),
         ("Python", "python", pySqlalchemy, cstring"py_sqlite_full", newPlayResult()),
         # ("JavaScript", "javascript", jsHelloWorldExample, cstring"js_import", newPlayResult()),
