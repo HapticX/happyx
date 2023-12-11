@@ -11,7 +11,6 @@ var currentLanguage* = remember "Nim"
 
 # Load saved current language
 var savedLang: cstring = localStorage["happyx_programming_language"].to(cstring)
-echo savedLang
 if savedLang.len != 0:
   currentLanguage.val = $savedLang
 
@@ -46,6 +45,10 @@ component CodeBlockGuide:
   sources: seq[tuple[title, lang, src: string, id: cstring, playResult: PlayResult]] = @[]
 
   `template`:
+    nim:
+      var languages: seq[string] = @[]
+      for i in 0..<self.sources.len:
+        languages.add(self.sources.val[i].title)
     tPre(class = "relative"):
       tDiv(class = "flex relative ml-4 justify-center w-fit group rounded-t-md bg-[{BackgroundSecondary}] dark:bg-[{BackgroundSecondaryDark}]"):
         tDiv(class = "px-4 rounded-t-md bg-[#0d1117] cursor-pointer select-none text-2xl lg:text-xl xl:text-base"):
@@ -66,7 +69,7 @@ component CodeBlockGuide:
               LanguageChooser("Java")
             if haslanguage(self.CodeBlockGuide, "Kotlin"):
               LanguageChooser("Kotlin")
-            tDiv(class = "flex justify-center text-[{Orange}] dark:text-[{Yellow}] absolute bottom-0 inset-x-0 -translate-y-2/3 lg:translate-y-1/3"):
+            tDiv(class = "flex justify-center text-[{Orange}] dark:text-[{Yellow}] absolute bottom-0 inset-x-0 -translate-y-2/3 lg:translate-y-1/3 cursor-pointer"):
               "▼"
       for i in 0..<self.sources.len:
         nim:
@@ -144,11 +147,22 @@ component CodeBlockGuide:
                   });
                   """.}
               tDiv(id = "{source.id}play_result", class = "w-full pb-4")
+      if not haslanguage(self.CodeBlockGuide, currentLanguage.val):
+        tCode(
+          id = "unknown_lang",
+          language = "shell",
+          class = "rounded-md text-3xl lg:text-lg xl:text-base language-shell"
+        ):
+          "Unknown language - {currentLanguage}\n"
+          "Choose one of these languages: \n"
+          {languages.join(", ")}
+      else:
+        tDiv(id = "unknown_lang")
   
   @updated:
-    echo "updated code block guide"
     for source in self.sources:
       highlight(self.CodeBlockGuide, source.id)
+    highlight(self.CodeBlockGuide, cstring"unknown_lang")
   
   [methods]:
     proc highlight(id: cstring) =
