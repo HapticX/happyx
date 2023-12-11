@@ -1,8 +1,9 @@
 package com.hapticx;
 
 
-import com.hapticx.data.HttpRequest;
-import com.hapticx.data.WSConnection;
+import com.hapticx.callback.RegisterPathParamTypeCallback;
+import com.hapticx.callback.RequestCallback;
+import com.hapticx.callback.WebSocketCallback;
 import com.hapticx.util.LibLoader;
 import org.jetbrains.annotations.NotNull;
 
@@ -12,18 +13,6 @@ import java.util.List;
 public class Server {
     static {
         LibLoader.load("happyx");
-    }
-
-    public interface RequestCallback {
-        Object onRequest(HttpRequest req);
-    }
-
-    public interface WebSocketCallback {
-        void onReceive(WSConnection sock);
-    }
-
-    public interface RegisterPathParamTypeCallback{
-        Object handle(String data);
     }
 
     private native int createServer(String hostname, int port);

@@ -1,6 +1,9 @@
 package com.hapticx;
 
 
+import com.hapticx.callback.RequestCallback;
+import com.hapticx.callback.WebSocketCallback;
+
 import java.util.List;
 
 public class ServerBuilder {
@@ -22,77 +25,77 @@ public class ServerBuilder {
         this.server = new Server("127.0.0.1", 5000);
     }
 
-    public ServerBuilder get(String path, Server.RequestCallback cb) {
+    public ServerBuilder get(String path, RequestCallback cb) {
         this.server.get(path, cb);
         return this;
     }
 
-    public ServerBuilder post(String path, Server.RequestCallback cb) {
+    public ServerBuilder post(String path, RequestCallback cb) {
         this.server.post(path, cb);
         return this;
     }
 
-    public ServerBuilder delete(String path, Server.RequestCallback cb) {
+    public ServerBuilder delete(String path, RequestCallback cb) {
         this.server.delete(path, cb);
         return this;
     }
 
-    public ServerBuilder put(String path, Server.RequestCallback cb) {
+    public ServerBuilder put(String path, RequestCallback cb) {
         this.server.put(path, cb);
         return this;
     }
 
-    public ServerBuilder purge(String path, Server.RequestCallback cb) {
+    public ServerBuilder purge(String path, RequestCallback cb) {
         this.server.purge(path, cb);
         return this;
     }
 
-    public ServerBuilder link(String path, Server.RequestCallback cb) {
+    public ServerBuilder link(String path, RequestCallback cb) {
         this.server.link(path, cb);
         return this;
     }
 
-    public ServerBuilder unlink(String path, Server.RequestCallback cb) {
+    public ServerBuilder unlink(String path, RequestCallback cb) {
         this.server.unlink(path, cb);
         return this;
     }
 
-    public ServerBuilder copy(String path, Server.RequestCallback cb) {
+    public ServerBuilder copy(String path, RequestCallback cb) {
         this.server.copy(path, cb);
         return this;
     }
 
-    public ServerBuilder head(String path, Server.RequestCallback cb) {
+    public ServerBuilder head(String path, RequestCallback cb) {
         this.server.head(path, cb);
         return this;
     }
 
-    public ServerBuilder options(String path, Server.RequestCallback cb) {
+    public ServerBuilder options(String path, RequestCallback cb) {
         this.server.options(path, cb);
         return this;
     }
 
-    public ServerBuilder websocket(String path, Server.WebSocketCallback cb) {
+    public ServerBuilder websocket(String path, WebSocketCallback cb) {
         this.server.websocket(path, cb);
         return this;
     }
 
-    public ServerBuilder middleware(Server.RequestCallback cb) {
+    public ServerBuilder middleware(RequestCallback cb) {
         this.server.middleware(cb);
         return this;
     }
 
-    public ServerBuilder notFound(Server.RequestCallback cb) {
+    public ServerBuilder notFound(RequestCallback cb) {
         this.server.notFound(cb);
         return this;
     }
 
-    public ServerBuilder route(String path, List<String> methods, Server.RequestCallback cb) {
+    public ServerBuilder route(String path, List<String> methods, RequestCallback cb) {
         this.server.route(path, methods, cb);
         return this;
     }
 
-    public ServerBuilder route(String path, String[] methods, Server.RequestCallback cb) {
+    public ServerBuilder route(String path, String[] methods, RequestCallback cb) {
         this.server.route(path, methods, cb);
         return this;
     }
