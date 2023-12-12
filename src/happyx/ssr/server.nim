@@ -713,17 +713,17 @@ macro routes*(server: Server, body: untyped = newStmtList()): untyped =
   ##        "Oops! Not found!"
   let
     pathIdent = ident"urlPath"
+    wsNewConnection = newStmtList()
+    wsClosedConnection = newStmtList()
+    wsMismatchProtocol = newStmtList()
+    variables = newStmtList()
+    wsError = newStmtList()
   var
     # Handle requests
     body = body
     stmtList = newStmtList()
     staticDirs: seq[NimNode]
     notFoundNode = newEmptyNode()
-    wsNewConnection = newStmtList()
-    wsClosedConnection = newStmtList()
-    wsMismatchProtocol = newStmtList()
-    variables = newStmtList()
-    wsError = newStmtList()
     procStmt = newProc(
       ident"handleRequest",
       [newEmptyNode(), newIdentDefs(ident"req", ident"Request")],
@@ -1398,13 +1398,17 @@ socketToSsr.onmessage=function(m){
       elif statement[1].kind == nnkStmtList and statement[0].kind == nnkIdent:
         case ($statement[0]).toLower()
         of "wsconnect":
-          wsNewConnection = statement[1]
+          for i in statement[1]:
+            wsNewConnection.add(i)
         of "wsclosed":
-          wsClosedConnection = statement[1]
+          for i in statement[1]:
+            wsClosedConnection.add(i)
         of "wsmismatchprotocol":
-          wsMismatchProtocol = statement[1]
+          for i in statement[1]:
+            wsMismatchProtocol.add(i)
         of "wserror":
-          wsError = statement[1]
+          for i in statement[1]:
+            wsError.add(i)
         of "finalize":
           finalize = statement[1]
         of "setup":

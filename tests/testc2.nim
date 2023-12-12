@@ -99,9 +99,6 @@ serve "127.0.0.1", 5000:
     echo "New connection!"
     await wsClient.send("You're welcome!")
   
-  ws "/ws":
-    await wsClient.send("hello")
-  
   wsMismatchProtocol:
     echo "mismatch protocol"
   
@@ -110,3 +107,6 @@ serve "127.0.0.1", 5000:
   
   wsError:
     echo "unknown WS error"
+  
+  ws "/ws":
+    await wsClient.send("hello")
