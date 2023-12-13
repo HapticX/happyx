@@ -1267,7 +1267,7 @@ socketToSsr.onmessage=function(m){
                         newStmtList(
                           when enableDebug or exportPython or defined(napibuild):
                             newStmtList(
-                              newCall("error", newStrLitNode("Socket closed")),
+                              newCall("echo", newStrLitNode("Socket closed")),
                               wsDelStmt,
                               wsClosedConnection
                             )
@@ -1285,7 +1285,7 @@ socketToSsr.onmessage=function(m){
                       when enableDebug or exportPython or defined(napibuild):
                         newStmtList(
                           newCall(
-                            "error",
+                            "echo",
                             newCall("fmt", newStrLitNode("Unexpected socket error: {getCurrentExceptionMsg()}"))
                           ),
                           wsDelStmt,
@@ -1321,7 +1321,7 @@ socketToSsr.onmessage=function(m){
                   when enableDebug or exportPython or defined(napibuild):
                     newStmtList(
                       newCall(
-                        "error", newCall("fmt", newStrLitNode("Socket closed: {getCurrentExceptionMsg()}"))
+                        "echo", newCall("fmt", newStrLitNode("Socket closed: {getCurrentExceptionMsg()}"))
                       ),
                       wsDelStmt,
                       wsClosedConnection
@@ -1337,7 +1337,7 @@ socketToSsr.onmessage=function(m){
                   when enableDebug or exportPython or defined(napibuild):
                     newStmtList(
                       newCall(
-                        "error",
+                        "echo",
                         newCall("fmt", newStrLitNode("Socket tried to use an unknown protocol: {getCurrentExceptionMsg()}"))
                       ),
                       wsDelStmt,
@@ -1354,7 +1354,7 @@ socketToSsr.onmessage=function(m){
                   when enableDebug or exportPython or defined(napibuild):
                     newStmtList(
                       newCall(
-                        "error",
+                        "echo",
                         newCall("fmt", newStrLitNode("Unexpected socket error: {getCurrentExceptionMsg()}"))
                       ),
                       wsDelStmt,
