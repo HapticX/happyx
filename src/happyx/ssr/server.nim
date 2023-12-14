@@ -1252,7 +1252,7 @@ socketToSsr.onmessage=function(m){
                 )
               ), newNimNode(nnkElse).add(newStmtList(
                 newCall("add", ident"wsConnections", ident"wsClient"),
-                wsNewConnection,
+                newCall("__wsConnect", ident"wsClient"),
                 newNimNode(nnkWhileStmt).add(newLit(true), newStmtList(
                   newMultiVarStmt(
                     [ident"opcode", ident"wsData"],
@@ -1265,37 +1265,40 @@ socketToSsr.onmessage=function(m){
                       newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
                         newCall("==", ident"opcode", newDotExpr(ident"Opcode", ident"Close")),
                         newStmtList(
-                          when enableDebug or exportPython or defined(napibuild):
+                          when enableDebug:
                             newStmtList(
                               newCall("echo", newStrLitNode("Socket closed")),
                               wsDelStmt,
-                              wsClosedConnection
+                              newCall("__wsClosed", ident"wsClient")
                             )
                           else:
                             if wsClosedConnection.len == 0:
                               wsDelStmt
                             else:
-                              wsClosedConnection.add(wsDelStmt),
+                              newStmtList(
+                                wsDelStmt,
+                                newCall("__wsClosed", ident"wsClient")
+                              ),
                           newNimNode(nnkBreakStmt).add(newEmptyNode())
                         )
                       )),
                       insertWsList
                     # OTHER WS ERROR
                     ), newNimNode(nnkExceptBranch).add(
-                      when enableDebug or exportPython or defined(napibuild):
+                      when enableDebug:
                         newStmtList(
                           newCall(
                             "echo",
                             newCall("fmt", newStrLitNode("Unexpected socket error: {getCurrentExceptionMsg()}"))
                           ),
                           wsDelStmt,
-                          wsError
+                          newCall("__wsError", ident"wsClient")
                         )
                       else:
-                        if wsError.len == 0:
-                          wsDelStmt
-                        else:
-                          wsError.add(wsDelStmt)
+                        newStmtList(
+                          wsDelStmt,
+                          newCall("__wsError", ident"wsClient")
+                        )
                     )
                   )
                 ))
@@ -1307,7 +1310,7 @@ socketToSsr.onmessage=function(m){
               newCall("add", ident"wsConnections", ident"wsClient"),
               newNimNode(nnkTryStmt).add(
                 newStmtList(
-                  wsNewConnection,
+                  newCall("__wsConnect", ident"wsClient"),
                   newNimNode(nnkWhileStmt).add(
                     newCall("==", newDotExpr(ident"wsClient", ident"readyState"), ident"Open"),
                     newStmtList(
@@ -1318,53 +1321,53 @@ socketToSsr.onmessage=function(m){
                 ),
                 newNimNode(nnkExceptBranch).add(
                   ident"WebSocketClosedError",
-                  when enableDebug or exportPython or defined(napibuild):
+                  when enableDebug:
                     newStmtList(
                       newCall(
                         "echo", newCall("fmt", newStrLitNode("Socket closed: {getCurrentExceptionMsg()}"))
                       ),
                       wsDelStmt,
-                      wsClosedConnection
+                      newCall("__wsClosed", ident"wsClient")
                     )
                   else:
-                    if wsClosedConnection.len == 0:
-                      wsDelStmt
-                    else:
-                      wsClosedConnection.add(wsDelStmt)
+                    newStmtList(
+                      wsDelStmt,
+                      newCall("__wsClosed", ident"wsClient")
+                    )
                 ),
                 newNimNode(nnkExceptBranch).add(
                   ident"WebSocketProtocolMismatchError",
-                  when enableDebug or exportPython or defined(napibuild):
+                  when enableDebug:
                     newStmtList(
                       newCall(
                         "echo",
                         newCall("fmt", newStrLitNode("Socket tried to use an unknown protocol: {getCurrentExceptionMsg()}"))
                       ),
                       wsDelStmt,
-                      wsMismatchProtocol
+                      newCall("_wsMismatchProtocol", ident"wsClient")
                     )
                   else:
-                    if wsMismatchProtocol.len == 0:
-                      wsDelStmt
-                    else:
-                      wsMismatchProtocol.add(wsDelStmt)
+                    newStmtList(
+                      wsDelStmt,
+                      newCall("__wsMismatchProtocol", ident"wsClient")
+                    )
                 ),
                 newNimNode(nnkExceptBranch).add(
                   ident"WebSocketError",
-                  when enableDebug or exportPython or defined(napibuild):
+                  when enableDebug:
                     newStmtList(
                       newCall(
                         "echo",
                         newCall("fmt", newStrLitNode("Unexpected socket error: {getCurrentExceptionMsg()}"))
                       ),
                       wsDelStmt,
-                      wsError
+                      newCall("__wsError", ident"wsClient")
                     )
                   else:
-                    if wsError.len == 0:
-                      wsDelStmt
-                    else:
-                      wsError.add(wsDelStmt)
+                    newStmtList(
+                      wsDelStmt,
+                      newCall("__wsError", ident"wsClient")
+                    )
                 )
               )
             )
@@ -1498,19 +1501,42 @@ socketToSsr.onmessage=function(m){
     ))
   stmtList.add(caseRequestMethodsStmt)
 
+  let wsType = when enableHttpBeast: ident"AsyncWebSocket" else: ident"WebSocket"
+
   result = newStmtList(
     if stmtList.isIdentUsed(ident"wsConnections"):
       newNimNode(nnkVarSection).add(newIdentDefs(
         ident"wsConnections",
-        when enableHttpBeast:
-          newNimNode(nnkBracketExpr).add(ident"seq", ident"AsyncWebSocket")
-        else:
-          newNimNode(nnkBracketExpr).add(ident"seq", ident"WebSocket"),
+        newNimNode(nnkBracketExpr).add(ident"seq", wsType),
         newCall("@", newNimNode(nnkBracket)),
       ))
     else:
       newEmptyNode(),
     setup,
+    newProc(
+      ident"__wsError",
+      [newEmptyNode(), newIdentDefs(ident"wsClient", wsType)],
+      wsError,
+      nnkTemplateDef
+    ),
+    newProc(
+      ident"__wsClosed",
+      [newEmptyNode(), newIdentDefs(ident"wsClient", wsType)],
+      wsClosedConnection,
+      nnkTemplateDef
+    ),
+    newProc(
+      ident"__wsConnect",
+      [newEmptyNode(), newIdentDefs(ident"wsClient", wsType)],
+      wsNewConnection,
+      nnkTemplateDef
+    ),
+    newProc(
+      ident"__wsMismatchProtocol",
+      [newEmptyNode(), newIdentDefs(ident"wsClient", wsType)],
+      wsMismatchProtocol,
+      nnkTemplateDef
+    ),
     procStmt,
     newProc(
       ident"finalizeProgram",

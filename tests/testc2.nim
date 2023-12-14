@@ -94,6 +94,9 @@ serve "127.0.0.1", 5000:
   
   get "/issue219/{p:path=/}":
     return p
+  
+  ws "/ws":
+    await wsClient.send("hello")
 
   wsConnect:
     echo "New connection!"
@@ -107,6 +110,3 @@ serve "127.0.0.1", 5000:
   
   wsError:
     echo "unknown WS error"
-  
-  ws "/ws":
-    await wsClient.send("hello")
