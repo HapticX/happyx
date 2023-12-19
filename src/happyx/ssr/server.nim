@@ -1089,7 +1089,12 @@ socketToSsr.onmessage=function(m){
                     bracket(extensions),
                     newCall("[]", newCall("split", directoryFromPath, newLit"."), newCall("^", newLit(1)))
                   ), newStmtList(
-                    newCall("await", newCall("answerFile", ident"req", directoryFromPath))
+                    newNimNode(nnkWhenStmt).add(newNimNode(nnkElifBranch).add(
+                      newCall("declared", ident"outHeaders"),
+                      newCall("await", newCall("answerFile", ident"req", directoryFromPath, newNimNode(nnkExprEqExpr).add(ident"headers", ident"outHeaders")))
+                    ), newNimNode(nnkElse).add(
+                      newCall("await", newCall("answerFile", ident"req", directoryFromPath))
+                    ))
                   )
                 ), newNimNode(nnkElse).add(
                   newCall(ident"answer", ident"req", newLit"Not found", ident"Http404")
@@ -1138,7 +1143,12 @@ socketToSsr.onmessage=function(m){
                     bracket(extensions),
                     newCall("[]", newCall("split", dirFromPath, newLit"."), newCall("^", newLit(1)))
                   ), newStmtList(
-                    newCall("await", newCall("answerFile", ident"req", dirFromPath))
+                    newNimNode(nnkWhenStmt).add(newNimNode(nnkElifBranch).add(
+                      newCall("declared", ident"outHeaders"),
+                      newCall("await", newCall("answerFile", ident"req", dirFromPath, newNimNode(nnkExprEqExpr).add(ident"headers", ident"outHeaders")))
+                    ), newNimNode(nnkElse).add(
+                      newCall("await", newCall("answerFile", ident"req", dirFromPath))
+                    ))
                   )
                 ), newNimNode(nnkElse).add(
                   newCall(ident"answer", ident"req", newLit"Not found", ident"Http404")
