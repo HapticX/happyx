@@ -1,4 +1,9 @@
-import ../src/happyx
+import
+  ../src/happyx,
+  random
+
+
+randomize()
 
 
 component withPresets:
@@ -13,6 +18,13 @@ component withSlot:
   `template`:
     "The number is {self.s}, and the slot is "
     slot
+
+component Dup:
+  n: int
+  `template`:
+    for i in 1..self.n.val:
+      tDiv(style="color:red"):
+        slot
 
 
 proc titleTag(title: string): TagRef =
@@ -126,3 +138,9 @@ appRoutes("app"):
       {titleTag("Hello")}
       for i in 0..<10:
         {fruits.children[0]}
+  
+  "/issue221":
+    Dup(4):
+      "slot is {rand(99)} "
+    for i in 1..4:
+      tDiv(style="color:blue"): "slot is {rand(99)}"

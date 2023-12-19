@@ -14,6 +14,7 @@ import
 # Compile time variables
 const
   uniqueId* = CacheCounter"uniqueId"
+  slots* = CacheSeq"hpxSlots"
   createdComponents = CacheTable"HappyXCreatedComponents"
   UniqueComponentId* = "uniqCompId"
 
@@ -42,6 +43,43 @@ proc bracket*(node: varargs[NimNode]): NimNode =
   result = newNimNode(nnkBracket)
   for i in node:
     result.add(i)
+
+
+proc newLambda*(body: NimNode, params: seq[NimNode] | NimNode = @[newEmptyNode()],
+                pragmas: seq[NimNode] | seq[string] = @[newEmptyNode()]): NimNode =
+  ## Creates a new lambda
+  # Params
+  when params is seq[NimNode]:
+    let formalParams = newNimNode(nnkFormalParams)
+
+    for param in params:
+      formalParams.add(param)
+  else:
+    let formalParams = params
+  
+  # Pragmas
+  when pragmas is seq[NimNode]:
+    let pragma = newNimNode(nnkPragma)
+
+    for i in pragmas:
+      if i.kind != nnkEmpty:
+        pragma.add(i)
+  elif pragmas is seq[string]:
+    let pragma = newNimNode(nnkPragma)
+
+    for i in pragmas:
+      if i.len != 0:
+        pragma.add(ident(i))
+
+  newNimNode(nnkLambda).add(
+    newEmptyNode(),  # name
+    newEmptyNode(),  # for templates and macros
+    newEmptyNode(),  # generics
+    formalParams,
+    if pragma.len == 0: newEmptyNode() else: pragma,
+    newEmptyNode(),  # reserved slot for future use
+    body
+  )
 
 
 proc bracket*(node: seq[NimNode] | seq[string]): NimNode =
@@ -154,9 +192,12 @@ proc useComponent*(statement: NimNode, inCycle, inComponent: bool,
       ),
       newAssignment(
         newDotExpr(ident(componentName), ident"slot"),
-        buildHtmlProcedure(
-          ident"div", componentSlot, inComponent, ident(componentName), inCycle, cycleTmpVar, compTmpVar, cycleVars
-        ).add(newNimNode(nnkExprEqExpr).add(ident"onlyChildren", newLit(true)))
+        newLambda(
+          buildHtmlProcedure(
+            ident"div", componentSlot, inComponent, ident(componentName), inCycle, cycleTmpVar, compTmpVar, cycleVars
+          ).add(newNimNode(nnkExprEqExpr).add(ident"onlyChildren", newLit(true))),
+          @[ident"TagRef"]
+        )
       ),
       if returnTagRef:
         newLetStmt(
@@ -258,43 +299,6 @@ proc replaceUseInComponent*(body: NimNode) =
       statement.add(ident"uniqCompId")
     elif statement.kind notin AtomicNodes:
       statement.replaceUseInComponent()
-
-
-proc newLambda*(body: NimNode, params: seq[NimNode] | NimNode = @[newEmptyNode()],
-                pragmas: seq[NimNode] | seq[string] = @[newEmptyNode()]): NimNode =
-  ## Creates a new lambda
-  # Params
-  when params is seq[NimNode]:
-    let formalParams = newNimNode(nnkFormalParams)
-
-    for param in params:
-      formalParams.add(param)
-  else:
-    let formalParams = params
-  
-  # Pragmas
-  when pragmas is seq[NimNode]:
-    let pragma = newNimNode(nnkPragma)
-
-    for i in pragmas:
-      if i.kind != nnkEmpty:
-        pragma.add(i)
-  elif pragmas is seq[string]:
-    let pragma = newNimNode(nnkPragma)
-
-    for i in pragmas:
-      if i.len != 0:
-        pragma.add(ident(i))
-
-  newNimNode(nnkLambda).add(
-    newEmptyNode(),  # name
-    newEmptyNode(),  # for templates and macros
-    newEmptyNode(),  # generics
-    formalParams,
-    if pragma.len == 0: newEmptyNode() else: pragma,
-    newEmptyNode(),  # reserved slot for future use
-    body
-  )
 
 
 proc replaceIter*(
@@ -872,7 +876,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
             fmt"Slots can be used only in components!",
             lineInfoObj(statement)
           )
-        whenStmt[1].add(newDotExpr(ident"self", ident"slot"))
+        whenStmt[1].add(newCall(newDotExpr(ident"self", ident"slot")))
       else:
         # tag
         whenStmt[1].add(newCall("tag", newLit(getTagName($statement.toStrLit))))

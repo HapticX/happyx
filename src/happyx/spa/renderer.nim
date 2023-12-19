@@ -57,6 +57,7 @@ export
   sugar,
   tag
 
+{.experimental: "codeReordering".}
 
 when defined(js):
   type
@@ -69,7 +70,7 @@ when defined(js):
     BaseComponentObj* {.inheritable.} = object
       uniqCompId*: string
       isCreated*: bool
-      slot*: TagRef
+      slot: proc(): TagRef
       created*: ComponentEventHandler  ## Calls before first rendering
       exited*: ComponentEventHandler  ## Calls after last rendering
       rendered*: ComponentEventHandler  ## Calls after every rendering
@@ -90,7 +91,7 @@ else:
     BaseComponentObj* {.inheritable.} = object
       uniqCompId*: string
       isCreated*: bool
-      slot*: TagRef
+      slot: proc(): TagRef
       created*: ComponentEventHandler  ## Calls before first rendering
       exited*: ComponentEventHandler  ## Calls after last rendering
       rendered*: ComponentEventHandler  ## Calls after every rendering
