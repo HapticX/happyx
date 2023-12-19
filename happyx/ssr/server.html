@@ -164,12 +164,14 @@ window.addEventListener('DOMContentLoaded', main);
 
   </ul>
   <ul class="simple nested-toc-section">answerFile
-      <li><a class="reference" href="#answerFile%2CRequest%2Cstring%2CHttpCode%2Cint%2Cbool"
+      <li><a class="reference" href="#answerFile%2CRequest%2Cstring%2CHttpCode%2Cint%2Cbool%2CCustomHeaders"
     title="answerFile(req: Request; filename: string; code: HttpCode = Http200;
            asAttachment = false; bufSize: int = 40960;
-           forceResponse: bool = false): owned(Future[void])">answerFile(req: Request; filename: string; code: HttpCode = Http200;
+           forceResponse: bool = false;
+           headers: CustomHeaders = newCustomHeaders()): owned(Future[void])">answerFile(req: Request; filename: string; code: HttpCode = Http200;
            asAttachment = false; bufSize: int = 40960;
-           forceResponse: bool = false): owned(Future[void])</a></li>
+           forceResponse: bool = false;
+           headers: CustomHeaders = newCustomHeaders()): owned(Future[void])</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">fgColored
@@ -378,11 +380,12 @@ window.addEventListener('DOMContentLoaded', main);
 
 </dd>
 </div>
-<div id="answerFile,Request,string,HttpCode,int,bool">
-<dt><pre><span class="Keyword">proc</span> <a href="#answerFile%2CRequest%2Cstring%2CHttpCode%2Cint%2Cbool"><span class="Identifier">answerFile</span></a><span class="Other">(</span><span class="Identifier">req</span><span class="Other">:</span> <span class="Identifier">Request</span><span class="Other">;</span> <span class="Identifier">filename</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">code</span><span class="Other">:</span> <span class="Identifier">HttpCode</span> <span class="Other">=</span> <span class="Identifier">Http200</span><span class="Other">;</span>
+<div id="answerFile,Request,string,HttpCode,int,bool,CustomHeaders">
+<dt><pre><span class="Keyword">proc</span> <a href="#answerFile%2CRequest%2Cstring%2CHttpCode%2Cint%2Cbool%2CCustomHeaders"><span class="Identifier">answerFile</span></a><span class="Other">(</span><span class="Identifier">req</span><span class="Other">:</span> <span class="Identifier">Request</span><span class="Other">;</span> <span class="Identifier">filename</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">code</span><span class="Other">:</span> <span class="Identifier">HttpCode</span> <span class="Other">=</span> <span class="Identifier">Http200</span><span class="Other">;</span>
                 <span class="Identifier">asAttachment</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">;</span> <span class="Identifier">bufSize</span><span class="Other">:</span> <span class="Identifier">int</span> <span class="Other">=</span> <span class="DecNumber">40960</span><span class="Other">;</span>
-                <span class="Identifier">forceResponse</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">owned</span><span class="Other">(</span><span class="Identifier">Future</span><span class="Other">[</span><span class="Identifier">void</span><span class="Other">]</span><span class="Other">)</span> {.
-    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span></span>.}</pre></dt>
+                <span class="Identifier">forceResponse</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">;</span>
+                <span class="Identifier">headers</span><span class="Other">:</span> <a href="server.html#CustomHeaders"><span class="Identifier">CustomHeaders</span></a> <span class="Other">=</span> <span class="Identifier">newCustomHeaders</span><span class="Other">(</span><span class="Other">)</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">owned</span><span class="Other">(</span>
+    <span class="Identifier">Future</span><span class="Other">[</span><span class="Identifier">void</span><span class="Other">]</span><span class="Other">)</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 <p>Respond file to request.</p>
@@ -659,7 +662,7 @@ The <tt class="docutils literal"><span class="pre"><span class="Identifier">star
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-12-19 04:26:26 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-12-19 11:43:49 UTC</small>
       </div>
     </div>
   </div>
