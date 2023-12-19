@@ -15,5 +15,7 @@ serve "127.0.0.1", 5000:
   
   staticDir "/testdir"
 
+  staticDir "/testdir" -> "testdir" ~ "html,js,css"
+
   middleware:
     outHeaders["x"] = "y"
