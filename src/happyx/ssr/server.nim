@@ -526,7 +526,8 @@ when enableHttpx or enableHttpBeast:
 
 proc answerFile*(req: Request, filename: string,
                  code: HttpCode = Http200, asAttachment = false,
-                 bufSize: int = 40960, forceResponse: bool = false) {.async.} =
+                 bufSize: int = 40960, forceResponse: bool = false,
+                 headers: CustomHeaders = newCustomHeaders()) {.async.} =
   ## Respond file to request.
   ## 
   ## Automatically enables streaming response when file size is too big (> 1 000 000 bytes)
@@ -549,17 +550,20 @@ proc answerFile*(req: Request, filename: string,
     etag = getMD5(fmt"{filename}-{lastModified}-{fileSize}")
   var
     f = openAsync(filename, fmRead)
-    headers = @[
+    h = @[
       ("Content-Type", fmt"{contentType}; charset=utf-8"),
       ("Last-Modified", $lastModified),
       ("Etag", etag),
     ]
   
   if asAttachment:
-    headers.add(("Content-Disposition", "attachment"))
+    h.add(("Content-Disposition", "attachment"))
+
+  for header, value in headers.pairs:
+    h.add((header, value))
   
   if fileSize > 1_000_000 and not forceResponse:
-    req.answer("", Http200, newHttpHeaders(headers), contentLength = some(fileSize))
+    req.answer("", Http200, newHttpHeaders(h), contentLength = some(fileSize))
     while true:
       let val = await f.read(bufSize)
       if val.len > 0:
@@ -573,7 +577,7 @@ proc answerFile*(req: Request, filename: string,
   else:
     let content = await f.readAll()
     f.close()
-    req.answer(content, headers = newHttpHeaders(headers))
+    req.answer(content, headers = newHttpHeaders(h))
 
 
 proc detectReturnStmt(node: NimNode, replaceReturn: bool = false) =
@@ -1052,7 +1056,12 @@ socketToSsr.onmessage=function(m){
                   )
                 ),
                 newStmtList(
-                  newCall("await", newCall("answerFile", ident"req", directoryFromPath))
+                  newNimNode(nnkWhenStmt).add(newNimNode(nnkElifBranch).add(
+                    newCall("declared", ident"outHeaders"),
+                    newCall("await", newCall("answerFile", ident"req", directoryFromPath, newNimNode(nnkExprEqExpr).add(ident"headers", ident"outHeaders")))
+                  ), newNimNode(nnkElse).add(
+                    newCall("await", newCall("answerFile", ident"req", directoryFromPath))
+                  ))
                 )
               )
             )
@@ -1086,7 +1095,12 @@ socketToSsr.onmessage=function(m){
                   newCall(ident"answer", ident"req", newLit"Not found", ident"Http404")
                 ))
               else:
-                newCall("await", newCall("answerFile", ident"req", directoryFromPath))
+                newNimNode(nnkWhenStmt).add(newNimNode(nnkElifBranch).add(
+                  newCall("declared", ident"outHeaders"),
+                  newCall("await", newCall("answerFile", ident"req", directoryFromPath, newNimNode(nnkExprEqExpr).add(ident"headers", ident"outHeaders")))
+                ), newNimNode(nnkElse).add(
+                  newCall("await", newCall("answerFile", ident"req", directoryFromPath))
+                ))
             staticDirs.add(
               newNimNode(nnkElifBranch).add(
                 newCall(
@@ -1130,7 +1144,12 @@ socketToSsr.onmessage=function(m){
                   newCall(ident"answer", ident"req", newLit"Not found", ident"Http404")
                 ))
               else:
-                newCall("await", newCall("answerFile", ident"req", dirFromPath))
+                newNimNode(nnkWhenStmt).add(newNimNode(nnkElifBranch).add(
+                  newCall("declared", ident"outHeaders"),
+                  newCall("await", newCall("answerFile", ident"req", dirFromPath, newNimNode(nnkExprEqExpr).add(ident"headers", ident"outHeaders")))
+                ), newNimNode(nnkElse).add(
+                  newCall("await", newCall("answerFile", ident"req", dirFromPath))
+                ))
             staticDirs.add(
               newNimNode(nnkElifBranch).add(
                 newCall(
@@ -1158,7 +1177,12 @@ socketToSsr.onmessage=function(m){
                   )
                 ),
                 newStmtList(
-                  newCall("await", newCall("answerFile", ident"req", directoryFromPath))
+                  newNimNode(nnkWhenStmt).add(newNimNode(nnkElifBranch).add(
+                    newCall("declared", ident"outHeaders"),
+                    newCall("await", newCall("answerFile", ident"req", directoryFromPath, newNimNode(nnkExprEqExpr).add(ident"headers", ident"outHeaders")))
+                  ), newNimNode(nnkElse).add(
+                    newCall("await", newCall("answerFile", ident"req", directoryFromPath))
+                  ))
                 )
               )
             )
@@ -1184,7 +1208,12 @@ socketToSsr.onmessage=function(m){
                   newCall("fileExists", dirFromPath)
                 ),
                 newStmtList(
-                  newCall("await", newCall("answerFile", ident"req", dirFromPath))
+                  newNimNode(nnkWhenStmt).add(newNimNode(nnkElifBranch).add(
+                    newCall("declared", ident"outHeaders"),
+                    newCall("await", newCall("answerFile", ident"req", dirFromPath, newNimNode(nnkExprEqExpr).add(ident"headers", ident"outHeaders")))
+                  ), newNimNode(nnkElse).add(
+                    newCall("await", newCall("answerFile", ident"req", dirFromPath))
+                  ))
                 )
               )
             )
@@ -1210,7 +1239,12 @@ socketToSsr.onmessage=function(m){
                   newCall("fileExists", dirFromPath)
                 ),
                 newStmtList(
-                  newCall("await", newCall("answerFile", ident"req", dirFromPath))
+                  newNimNode(nnkWhenStmt).add(newNimNode(nnkElifBranch).add(
+                    newCall("declared", ident"outHeaders"),
+                    newCall("await", newCall("answerFile", ident"req", dirFromPath, newNimNode(nnkExprEqExpr).add(ident"headers", ident"outHeaders")))
+                  ), newNimNode(nnkElse).add(
+                    newCall("await", newCall("answerFile", ident"req", dirFromPath))
+                  ))
                 )
               )
             )
