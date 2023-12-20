@@ -590,7 +590,12 @@ proc detectReturnStmt(node: NimNode, replaceReturn: bool = false) =
         node[i] = newCall("answerHtml", ident"req", child[0])
       # File
       elif child[0].kind in nnkCallKinds and child[0][0].kind == nnkIdent and $child[0][0] == "FileResponse":
-        node[i] = newCall("await", newCall("answerFile", ident"req", child[0][1]))
+        node[i] = newNimNode(nnkWhenStmt).add(newNimNode(nnkElifBranch).add(
+          newCall("declared", ident"outHeaders"),
+          newCall("await", newCall("answerFile", ident"req", child[0][1], newNimNode(nnkExprEqExpr).add(ident"headers", ident"outHeaders")))
+        ), newNimNode(nnkElse).add(
+          newCall("await", newCall("answerFile", ident"req", child[0][1]))
+        ))
       # JSON
       elif child[0].kind in [nnkTableConstr, nnkBracket]:
         node[i] = newCall("answerJson", ident"req", child[0])
