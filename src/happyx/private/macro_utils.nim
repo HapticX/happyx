@@ -194,12 +194,12 @@ proc useComponent*(statement: NimNode, inCycle, inComponent: bool,
         newDotExpr(ident(componentName), ident"slot"),
         newLambda(
           newStmtList(
-            newVarStmt(ident"self", newDotExpr(ident"self", name)),
+            newVarStmt(ident"scopeSelf", newDotExpr(ident"scopeSelf", name)),
             buildHtmlProcedure(
               ident"div", componentSlot, inComponent, ident(componentName), inCycle, cycleTmpVar, compTmpVar, cycleVars
             ).add(newNimNode(nnkExprEqExpr).add(ident"onlyChildren", newLit(true))),
           ),
-          @[ident"TagRef", newIdentDefs(ident"self", ident"BaseComponent")]
+          @[ident"TagRef", newIdentDefs(ident"scopeSelf", ident"BaseComponent")]
         )
       ),
       if returnTagRef:
