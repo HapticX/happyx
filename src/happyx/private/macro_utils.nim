@@ -193,10 +193,13 @@ proc useComponent*(statement: NimNode, inCycle, inComponent: bool,
       newAssignment(
         newDotExpr(ident(componentName), ident"slot"),
         newLambda(
-          buildHtmlProcedure(
-            ident"div", componentSlot, inComponent, ident(componentName), inCycle, cycleTmpVar, compTmpVar, cycleVars
-          ).add(newNimNode(nnkExprEqExpr).add(ident"onlyChildren", newLit(true))),
-          @[ident"TagRef"]
+          newStmtList(
+            newVarStmt(ident"self", newDotExpr(ident"self", name)),
+            buildHtmlProcedure(
+              ident"div", componentSlot, inComponent, ident(componentName), inCycle, cycleTmpVar, compTmpVar, cycleVars
+            ).add(newNimNode(nnkExprEqExpr).add(ident"onlyChildren", newLit(true))),
+          ),
+          @[ident"TagRef", newIdentDefs(ident"self", ident"BaseComponent")]
         )
       ),
       if returnTagRef:
@@ -876,7 +879,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
             fmt"Slots can be used only in components!",
             lineInfoObj(statement)
           )
-        whenStmt[1].add(newCall(newDotExpr(ident"self", ident"slot")))
+        whenStmt[1].add(newCall(newDotExpr(ident"self", ident"slot"), ident"self"))
       else:
         # tag
         whenStmt[1].add(newCall("tag", newLit(getTagName($statement.toStrLit))))
