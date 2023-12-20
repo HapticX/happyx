@@ -124,7 +124,7 @@ window.addEventListener('DOMContentLoaded', main);
     title="BaseComponentObj {.inheritable.} = object
   uniqCompId*: string
   isCreated*: bool
-  slot*: proc (): TagRef
+  slot*: proc (self: BaseComponent): TagRef
   created*: ComponentEventHandler ## Calls before first rendering
   exited*: ComponentEventHandler ## Calls after last rendering
   rendered*: ComponentEventHandler ## Calls after every rendering
@@ -332,7 +332,7 @@ window.addEventListener('DOMContentLoaded', main);
 <dt><pre><a href="renderer.html#BaseComponentObj"><span class="Identifier">BaseComponentObj</span></a> {.<span class="Identifier">inheritable</span>.} <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">uniqCompId</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
   <span class="Identifier">isCreated</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>
-  <span class="Identifier">slot</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a>
+  <span class="Identifier">slot</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="renderer.html#BaseComponent"><span class="Identifier">BaseComponent</span></a><span class="Other">)</span><span class="Other">:</span> <a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a>
   <span class="Identifier">created</span><span class="Operator">*</span><span class="Other">:</span> <a href="renderer.html#ComponentEventHandler"><span class="Identifier">ComponentEventHandler</span></a> <span class="Comment">## Calls before first rendering</span>
   <span class="Identifier">exited</span><span class="Operator">*</span><span class="Other">:</span> <a href="renderer.html#ComponentEventHandler"><span class="Identifier">ComponentEventHandler</span></a> <span class="Comment">## Calls after last rendering</span>
   <span class="Identifier">rendered</span><span class="Operator">*</span><span class="Other">:</span> <a href="renderer.html#ComponentEventHandler"><span class="Identifier">ComponentEventHandler</span></a> <span class="Comment">## Calls after every rendering</span>
@@ -727,7 +727,7 @@ Provides JS router for Single page application
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-12-20 12:09:18 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-12-20 14:38:49 UTC</small>
       </div>
     </div>
   </div>
