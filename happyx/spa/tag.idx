@@ -16,6 +16,7 @@ addArgIter	happyx/spa/tag.html#addArgIter,TagRef,string	tag: addArgIter(self: Ta
 toSeqIter	happyx/spa/tag.html#toSeqIter,TagRef	tag: toSeqIter(self: TagRef): seq[TagRef]	
 lvl	happyx/spa/tag.html#lvl,TagRef	tag: lvl(self: TagRef): int	
 `[]`	happyx/spa/tag.html#[],TagRef,string	tag: `[]`(self: TagRef; attrName: string): string	
+`[]`	happyx/spa/tag.html#[],TagRef,int	tag: `[]`(self: TagRef; index: int): TagRef	
 `[]=`	happyx/spa/tag.html#[]=,TagRef,string,string	tag: `[]=`(self: TagRef; attrName: string; attrValue: string)	
 getAttribute	happyx/spa/tag.html#getAttribute,TagRef,string,string	tag: getAttribute(self: TagRef; attrName: string; default: string = &quot;&quot;): string	
 findByTag	happyx/spa/tag.html#findByTag,TagRef,string	tag: findByTag(self: TagRef; tag: string): seq[TagRef]	
