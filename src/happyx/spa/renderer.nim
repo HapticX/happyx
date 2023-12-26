@@ -71,6 +71,7 @@ when defined(js):
       uniqCompId*: string
       isCreated*: bool
       slot*: proc(scopeSelf: BaseComponent): TagRef
+      slotData*: TagRef
       created*: ComponentEventHandler  ## Calls before first rendering
       exited*: ComponentEventHandler  ## Calls after last rendering
       rendered*: ComponentEventHandler  ## Calls after every rendering
@@ -92,6 +93,7 @@ else:
       uniqCompId*: string
       isCreated*: bool
       slot*: proc(scopeSelf: BaseComponent): TagRef
+      slotData*: TagRef
       created*: ComponentEventHandler  ## Calls before first rendering
       exited*: ComponentEventHandler  ## Calls after last rendering
       rendered*: ComponentEventHandler  ## Calls after every rendering

@@ -326,6 +326,10 @@ func `[]`*(self: TagRef, attrName: string): string =
   ## Returns attribute by name
   self.attrs[attrName]
 
+func `[]`*(self: TagRef, index: int): TagRef =
+  ## Returns tag by index
+  self.children[index]
+
 
 func `[]=`*(self: TagRef, attrName: string, attrValue: string) =
   ## Sets a new value for attribute or create new attribute

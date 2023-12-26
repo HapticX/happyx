@@ -195,9 +195,17 @@ proc useComponent*(statement: NimNode, inCycle, inComponent: bool,
         newLambda(
           newStmtList(
             newVarStmt(ident"scopeSelf", newDotExpr(ident"scopeSelf", name)),
-            buildHtmlProcedure(
-              ident"div", componentSlot, inComponent, ident(componentName), inCycle, cycleTmpVar, compTmpVar, cycleVars
-            ).add(newNimNode(nnkExprEqExpr).add(ident"onlyChildren", newLit(true))),
+            newLetStmt(
+              ident"_res",
+              buildHtmlProcedure(
+                ident"div", componentSlot, inComponent, ident(componentName), inCycle, cycleTmpVar, compTmpVar, cycleVars
+              ).add(newNimNode(nnkExprEqExpr).add(ident"onlyChildren", newLit(true))),
+            ),
+            newAssignment(
+              newDotExpr(ident(componentName), ident"slotData"),
+              ident"_res"
+            ),
+            ident"_res"
           ),
           @[ident"TagRef", newIdentDefs(ident"scopeSelf", ident"BaseComponent")]
         )

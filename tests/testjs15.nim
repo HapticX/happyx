@@ -23,8 +23,17 @@ component Dup:
   n: int
   `template`:
     for i in 1..self.n.val:
-      tDiv(style="color:red"):
+      tDiv(style = "color:red"):
         slot
+        {self.slotData[0]}
+
+
+component XYZ:
+  checked: bool = false
+
+  `template`:
+    tDiv:
+      {self.checked}
 
 
 proc titleTag(title: string): TagRef =
@@ -71,6 +80,12 @@ importComponent "example.hpx" as Example
 
 
 appRoutes("app"):
+  "/":
+    XYZ
+    XYZ
+    XYZ(true)
+    XYZ(false)
+
   "/issue183":
     tDiv: component withPresets
     tDiv: component withPresets(s= "I better not be 5")
