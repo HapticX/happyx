@@ -125,7 +125,7 @@ window.addEventListener('DOMContentLoaded', main);
   uniqCompId*: string
   isCreated*: bool
   slot*: proc (scopeSelf: BaseComponent; inComponent: bool; compName: string;
-               inCycle: bool; cycleCounter: int; compCounter: string): TagRef
+               inCycle: bool; cycleCounter: var int; compCounter: string): TagRef
   slotData*: TagRef
   created*: ComponentEventHandler ## Calls before first rendering
   exited*: ComponentEventHandler ## Calls after last rendering
@@ -340,7 +340,7 @@ window.addEventListener('DOMContentLoaded', main);
   <span class="Identifier">uniqCompId</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
   <span class="Identifier">isCreated</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>
   <span class="Identifier">slot</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">scopeSelf</span><span class="Other">:</span> <a href="renderer.html#BaseComponent"><span class="Identifier">BaseComponent</span></a><span class="Other">;</span> <span class="Identifier">inComponent</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">;</span> <span class="Identifier">compName</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span>
-               <span class="Identifier">inCycle</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">;</span> <span class="Identifier">cycleCounter</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">;</span> <span class="Identifier">compCounter</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a>
+               <span class="Identifier">inCycle</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">;</span> <span class="Identifier">cycleCounter</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">int</span><span class="Other">;</span> <span class="Identifier">compCounter</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a>
   <span class="Identifier">slotData</span><span class="Operator">*</span><span class="Other">:</span> <a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a>
   <span class="Identifier">created</span><span class="Operator">*</span><span class="Other">:</span> <a href="renderer.html#ComponentEventHandler"><span class="Identifier">ComponentEventHandler</span></a> <span class="Comment">## Calls before first rendering</span>
   <span class="Identifier">exited</span><span class="Operator">*</span><span class="Other">:</span> <a href="renderer.html#ComponentEventHandler"><span class="Identifier">ComponentEventHandler</span></a> <span class="Comment">## Calls after last rendering</span>
@@ -748,7 +748,7 @@ Provides JS router for Single page application
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2024-01-04 14:52:06 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2024-01-04 15:52:28 UTC</small>
       </div>
     </div>
   </div>
