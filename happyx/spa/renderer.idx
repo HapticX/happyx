@@ -28,6 +28,7 @@ reRender	happyx/spa/renderer.html#reRender.e,BaseComponent	renderer: reRender(se
 start	happyx/spa/renderer.html#start.t,App	renderer: start(app: App)	
 buildHtml	happyx/spa/renderer.html#buildHtml.m,untyped,untyped	renderer: buildHtml(root, html: untyped): untyped	
 buildHtml	happyx/spa/renderer.html#buildHtml.m,untyped	renderer: buildHtml(html: untyped): untyped	
+buildHtmlSlot	happyx/spa/renderer.html#buildHtmlSlot.m,untyped,static[bool],static[bool]	renderer: buildHtmlSlot(html: untyped; inCycle, inComponent: static[bool]): untyped	
 buildComponentHtml	happyx/spa/renderer.html#buildComponentHtml.m,untyped,untyped	renderer: buildComponentHtml(componentName, html: untyped): untyped	
 routes	happyx/spa/renderer.html#routes.m,App,untyped	renderer: routes(app: App; body: untyped): untyped	
 appRoutes	happyx/spa/renderer.html#appRoutes.m,string,untyped	renderer: appRoutes(name: string; body: untyped): untyped	

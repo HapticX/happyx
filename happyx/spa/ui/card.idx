@@ -1,7 +1,7 @@
 CardObj	happyx/spa/ui/card.html#CardObj	card: CardObj	
 Card	happyx/spa/ui/card.html#Card	card: Card	
 setAlign	happyx/spa/ui/card.html#setAlign,Card,Alignment,Alignment	card: setAlign(self: Card; vertical, horizontal: Alignment)	
-initCard	happyx/spa/ui/card.html#initCard,string,string,Alignment,Alignment,string,string	card: initCard(uniqCompId: string; class: string = &quot;&quot;;\n         hAlign: Alignment = Alignment.aStart;\n         vAlign: Alignment = Alignment.aStart; vAlignHidden: string = &quot;&quot;;\n         hAlignHidden: string = &quot;&quot;): Card	
+initCard	happyx/spa/ui/card.html#initCard,string,string,Alignment,Alignment,string,string	card: initCard(uniqCompId: string; class: string = default(string);\n         hAlign: Alignment = default(Alignment);\n         vAlign: Alignment = default(Alignment);\n         vAlignHidden: string = default(string);\n         hAlignHidden: string = default(string)): Card	
 reRender	happyx/spa/ui/card.html#reRender.e,Card	card: reRender(self: Card)	
 renderTag	happyx/spa/ui/card.html#renderTag,Card	card: renderTag(self: Card): TagRef	
 render	happyx/spa/ui/card.html#render.e,Card	card: render(self: Card): TagRef	

@@ -485,6 +485,10 @@ window.addEventListener('DOMContentLoaded', main);
                    compTmpVar: NimNode = newEmptyNode();
                    cycleVars: var seq[NimNode]): NimNode</a></li>
           </ul></dd>
+<dt><a name="buildHtmlSlot" href="#buildHtmlSlot"><span>buildHtmlSlot:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="renderer: buildHtmlSlot(html: untyped; inCycle, inComponent: static[bool]): untyped" href="happyx/spa/renderer.html#buildHtmlSlot.m%2Cuntyped%2Cstatic%5Bbool%5D%2Cstatic%5Bbool%5D">renderer: buildHtmlSlot(html: untyped; inCycle, inComponent: static[bool]): untyped</a></li>
+          </ul></dd>
 <dt><a name="buildJs" href="#buildJs"><span>buildJs:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="js: buildJs(body: untyped): untyped" href="happyx/sugar/js.html#buildJs.m%2Cuntyped">js: buildJs(body: untyped): untyped</a></li>
@@ -646,6 +650,10 @@ window.addEventListener('DOMContentLoaded', main);
 <dt><a name="enableDebugSsrMacro" href="#enableDebugSsrMacro"><span>enableDebugSsrMacro:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="constants: enableDebugSsrMacro" href="happyx/core/constants.html#enableDebugSsrMacro">constants: enableDebugSsrMacro</a></li>
+          </ul></dd>
+<dt><a name="enableDebugTreeComponentMacro" href="#enableDebugTreeComponentMacro"><span>enableDebugTreeComponentMacro:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="constants: enableDebugTreeComponentMacro" href="happyx/core/constants.html#enableDebugTreeComponentMacro">constants: enableDebugTreeComponentMacro</a></li>
           </ul></dd>
 <dt><a name="enableHttpBeast" href="#enableHttpBeast"><span>enableHttpBeast:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -933,19 +941,21 @@ window.addEventListener('DOMContentLoaded', main);
           </ul></dd>
 <dt><a name="initButton" href="#initButton"><span>initButton:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="button: initButton(uniqCompId: string; action: ButtonAction = DefaultButtonAction;
-           flat: bool = false): Button" href="happyx/spa/ui/button.html#initButton%2Cstring%2CButtonAction%2Cbool">button: initButton(uniqCompId: string; action: ButtonAction = DefaultButtonAction;
-           flat: bool = false): Button</a></li>
+          data-doc-search-tag="button: initButton(uniqCompId: string; action: ButtonAction = default(ButtonAction);
+           flat: bool = default(bool)): Button" href="happyx/spa/ui/button.html#initButton%2Cstring%2CButtonAction%2Cbool">button: initButton(uniqCompId: string; action: ButtonAction = default(ButtonAction);
+           flat: bool = default(bool)): Button</a></li>
           </ul></dd>
 <dt><a name="initCard" href="#initCard"><span>initCard:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="card: initCard(uniqCompId: string; class: string = &quot;&quot;;
-         hAlign: Alignment = Alignment.aStart;
-         vAlign: Alignment = Alignment.aStart; vAlignHidden: string = &quot;&quot;;
-         hAlignHidden: string = &quot;&quot;): Card" href="happyx/spa/ui/card.html#initCard%2Cstring%2Cstring%2CAlignment%2CAlignment%2Cstring%2Cstring">card: initCard(uniqCompId: string; class: string = &quot;&quot;;
-         hAlign: Alignment = Alignment.aStart;
-         vAlign: Alignment = Alignment.aStart; vAlignHidden: string = &quot;&quot;;
-         hAlignHidden: string = &quot;&quot;): Card</a></li>
+          data-doc-search-tag="card: initCard(uniqCompId: string; class: string = default(string);
+         hAlign: Alignment = default(Alignment);
+         vAlign: Alignment = default(Alignment);
+         vAlignHidden: string = default(string);
+         hAlignHidden: string = default(string)): Card" href="happyx/spa/ui/card.html#initCard%2Cstring%2Cstring%2CAlignment%2CAlignment%2Cstring%2Cstring">card: initCard(uniqCompId: string; class: string = default(string);
+         hAlign: Alignment = default(Alignment);
+         vAlign: Alignment = default(Alignment);
+         vAlignHidden: string = default(string);
+         hAlignHidden: string = default(string)): Card</a></li>
           </ul></dd>
 <dt><a name="initHttpRequest" href="#initHttpRequest"><span>initHttpRequest:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -955,21 +965,27 @@ window.addEventListener('DOMContentLoaded', main);
           </ul></dd>
 <dt><a name="initInput" href="#initInput"><span>initInput:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="input: initInput(uniqCompId: string; inputAction: InputAction = DefaultInputAction;
-          placeholder: string = &quot;&quot;; label: string = &quot;&quot;; inputType: string = &quot;&quot;): Input" href="happyx/spa/ui/input.html#initInput%2Cstring%2CInputAction%2Cstring%2Cstring%2Cstring">input: initInput(uniqCompId: string; inputAction: InputAction = DefaultInputAction;
-          placeholder: string = &quot;&quot;; label: string = &quot;&quot;; inputType: string = &quot;&quot;): Input</a></li>
+          data-doc-search-tag="input: initInput(uniqCompId: string; inputAction: InputAction = default(InputAction);
+          placeholder: string = default(string);
+          label: string = default(string); inputType: string = default(string)): Input" href="happyx/spa/ui/input.html#initInput%2Cstring%2CInputAction%2Cstring%2Cstring%2Cstring">input: initInput(uniqCompId: string; inputAction: InputAction = default(InputAction);
+          placeholder: string = default(string);
+          label: string = default(string); inputType: string = default(string)): Input</a></li>
           </ul></dd>
 <dt><a name="initProgressBar" href="#initProgressBar"><span>initProgressBar:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="progress: initProgressBar(uniqCompId: string;
-                action: ProgressAction = DefaultProgressAction;
-                progressType: ProgressBarType = ProgressBarType.ppHorizontal;
-                showPercent: bool = true; title: string = &quot;&quot;; value: int = 0;
-                maxValue: int = 100; size: tuple[a, b: int] = (96, 24)): ProgressBar" href="happyx/spa/ui/progress.html#initProgressBar%2Cstring%2CProgressAction%2CProgressBarType%2Cbool%2Cstring%2Cint%2Cint%2Ctuple%5Bint%2Cint%5D">progress: initProgressBar(uniqCompId: string;
-                action: ProgressAction = DefaultProgressAction;
-                progressType: ProgressBarType = ProgressBarType.ppHorizontal;
-                showPercent: bool = true; title: string = &quot;&quot;; value: int = 0;
-                maxValue: int = 100; size: tuple[a, b: int] = (96, 24)): ProgressBar</a></li>
+                action: ProgressAction = default(ProgressAction);
+                progressType: ProgressBarType = default(ProgressBarType);
+                showPercent: bool = default(bool);
+                title: string = default(string); value: int = default(int);
+                maxValue: int = default(int);
+                size: tuple[a, b: int] = default(tuple[a, b: int])): ProgressBar" href="happyx/spa/ui/progress.html#initProgressBar%2Cstring%2CProgressAction%2CProgressBarType%2Cbool%2Cstring%2Cint%2Cint%2Ctuple%5Bint%2Cint%5D">progress: initProgressBar(uniqCompId: string;
+                action: ProgressAction = default(ProgressAction);
+                progressType: ProgressBarType = default(ProgressBarType);
+                showPercent: bool = default(bool);
+                title: string = default(string); value: int = default(int);
+                maxValue: int = default(int);
+                size: tuple[a, b: int] = default(tuple[a, b: int])): ProgressBar</a></li>
           </ul></dd>
 <dt><a name="initRoute" href="#initRoute"><span>initRoute:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -1582,7 +1598,7 @@ window.addEventListener('DOMContentLoaded', main);
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-12-26 08:26:15 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2024-01-04 12:35:56 UTC</small>
       </div>
     </div>
   </div>

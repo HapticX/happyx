@@ -2,7 +2,7 @@ ProgressAction	happyx/spa/ui/progress.html#ProgressAction	progress: ProgressActi
 DefaultProgressAction	happyx/spa/ui/progress.html#DefaultProgressAction	progress: DefaultProgressAction	
 ProgressBarObj	happyx/spa/ui/progress.html#ProgressBarObj	progress: ProgressBarObj	
 ProgressBar	happyx/spa/ui/progress.html#ProgressBar	progress: ProgressBar	
-initProgressBar	happyx/spa/ui/progress.html#initProgressBar,string,ProgressAction,ProgressBarType,bool,string,int,int,tuple[int,int]	progress: initProgressBar(uniqCompId: string;\n                action: ProgressAction = DefaultProgressAction;\n                progressType: ProgressBarType = ProgressBarType.ppHorizontal;\n                showPercent: bool = true; title: string = &quot;&quot;; value: int = 0;\n                maxValue: int = 100; size: tuple[a, b: int] = (96, 24)): ProgressBar	
+initProgressBar	happyx/spa/ui/progress.html#initProgressBar,string,ProgressAction,ProgressBarType,bool,string,int,int,tuple[int,int]	progress: initProgressBar(uniqCompId: string;\n                action: ProgressAction = default(ProgressAction);\n                progressType: ProgressBarType = default(ProgressBarType);\n                showPercent: bool = default(bool);\n                title: string = default(string); value: int = default(int);\n                maxValue: int = default(int);\n                size: tuple[a, b: int] = default(tuple[a, b: int])): ProgressBar	
 reRender	happyx/spa/ui/progress.html#reRender.e,ProgressBar	progress: reRender(self: ProgressBar)	
 renderTag	happyx/spa/ui/progress.html#renderTag,ProgressBar	progress: renderTag(self: ProgressBar): TagRef	
 render	happyx/spa/ui/progress.html#render.e,ProgressBar	progress: render(self: ProgressBar): TagRef	

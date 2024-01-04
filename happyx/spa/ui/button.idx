@@ -2,7 +2,7 @@ ButtonAction	happyx/spa/ui/button.html#ButtonAction	button: ButtonAction
 DefaultButtonAction	happyx/spa/ui/button.html#DefaultButtonAction	button: DefaultButtonAction	
 ButtonObj	happyx/spa/ui/button.html#ButtonObj	button: ButtonObj	
 Button	happyx/spa/ui/button.html#Button	button: Button	
-initButton	happyx/spa/ui/button.html#initButton,string,ButtonAction,bool	button: initButton(uniqCompId: string; action: ButtonAction = DefaultButtonAction;\n           flat: bool = false): Button	
+initButton	happyx/spa/ui/button.html#initButton,string,ButtonAction,bool	button: initButton(uniqCompId: string; action: ButtonAction = default(ButtonAction);\n           flat: bool = default(bool)): Button	
 reRender	happyx/spa/ui/button.html#reRender.e,Button	button: reRender(self: Button)	
 renderTag	happyx/spa/ui/button.html#renderTag,Button	button: renderTag(self: Button): TagRef	
 render	happyx/spa/ui/button.html#render.e,Button	button: render(self: Button): TagRef	
