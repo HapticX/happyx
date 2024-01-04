@@ -557,6 +557,15 @@ macro component*(name, body: untyped): untyped =
         )
       )))
       initProc[3][i][2] = newCall("default", initProc[3][i][1])
+    elif initProc[3][i].kind == nnkIdentDefs and initProc[3][i][0] != ident"uniqCompId":
+      defaultValues.add(newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
+        newCall("==", initProc[3][i][0], newCall("default", initProc[3][i][1])),
+        newAssignment(
+          newDotExpr(ident"self", initProc[3][i][0].copy()),
+          newCall("remember", newCall(initProc[3][i][1], initProc[3][i][2]))
+        )
+      )))
+      initProc[3][i][2] = newCall("default", initProc[3][i][1])
   initProc.body = newStmtList(
     newVarStmt(ident"self", initObjConstr),
     lifeCyclesDeclare,

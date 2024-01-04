@@ -70,7 +70,10 @@ when defined(js):
     BaseComponentObj* {.inheritable.} = object
       uniqCompId*: string
       isCreated*: bool
-      slot*: proc(scopeSelf: BaseComponent): TagRef
+      slot*: proc(
+        scopeSelf: BaseComponent, inComponent: bool, compName: string,
+        inCycle: bool, cycleCounter: int, compCounter: string
+      ): TagRef
       slotData*: TagRef
       created*: ComponentEventHandler  ## Calls before first rendering
       exited*: ComponentEventHandler  ## Calls after last rendering
@@ -92,7 +95,10 @@ else:
     BaseComponentObj* {.inheritable.} = object
       uniqCompId*: string
       isCreated*: bool
-      slot*: proc(scopeSelf: BaseComponent): TagRef
+      slot*: proc(
+        scopeSelf: BaseComponent, inComponent: bool, compName: string,
+        inCycle: bool, cycleCounter: int, compCounter: string
+      ): TagRef
       slotData*: TagRef
       created*: ComponentEventHandler  ## Calls before first rendering
       exited*: ComponentEventHandler  ## Calls after last rendering
@@ -434,6 +440,20 @@ macro buildHtml*(html: untyped): untyped =
   result = buildHtmlProcedure(ident"tDiv", html, cycleVars = cycleVars)
   if result[^1].kind == nnkCall and $result[^1][0] == "@":
     result.add(newLit(true))
+
+
+macro buildHtmlSlot*(html: untyped, inCycle, inComponent: static[bool]): untyped =
+  ## `buildHtml` macro provides building HTML tags with YAML-like syntax.
+  ## This macro doesn't generate Root tag
+  ## 
+  ## Args:
+  ## - `html`: YAML-like structure.
+  ## 
+  var cycleVars = newSeq[NimNode]()
+  result = buildHtmlProcedure(
+    ident"tDiv", html, cycleVars = cycleVars, inCycle = inCycle, inComponent = inComponent,
+    cycleTmpVar = "cycleCounter", compTmpVar = ident"compCounter"
+  ).add(newNimNode(nnkExprEqExpr).add(ident"onlyChildren", newLit(true)))
 
 
 macro buildComponentHtml*(componentName, html: untyped): untyped =

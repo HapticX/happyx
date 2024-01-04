@@ -197,17 +197,42 @@ proc useComponent*(statement: NimNode, inCycle, inComponent: bool,
             newVarStmt(ident"scopeSelf", newDotExpr(ident"scopeSelf", name)),
             newLetStmt(
               ident"_res",
-              buildHtmlProcedure(
-                ident"div", componentSlot, inComponent, ident(componentName), inCycle, cycleTmpVar, compTmpVar, cycleVars
-              ).add(newNimNode(nnkExprEqExpr).add(ident"onlyChildren", newLit(true))),
+              newNimNode(nnkIfExpr).add(
+                newNimNode(nnkElifBranch).add(
+                  newCall("and", ident"inCycle", ident"inComponent"),
+                  newCall("buildHtmlSlot", componentSlot, newLit(true), newLit(true))
+                ),
+                newNimNode(nnkElifBranch).add(
+                  ident"inCycle",
+                  newCall("buildHtmlSlot", componentSlot, newLit(true), newLit(false))
+                ),
+                newNimNode(nnkElifBranch).add(
+                  ident"inComponent",
+                  newCall("buildHtmlSlot", componentSlot, newLit(false), newLit(true))
+                ),
+                newNimNode(nnkElse).add(
+                  newCall("buildHtmlSlot", componentSlot, newLit(false), newLit(false))
+                )
+              ),
+              # buildHtmlProcedure(
+              #   ident"div", componentSlot, inComponent, ident(componentName),
+              #   inCycle, "cycleCounter", ident"compCounter", cycleVars
+              # ).add(newNimNode(nnkExprEqExpr).add(ident"onlyChildren", newLit(true))),
             ),
             newAssignment(
               newDotExpr(ident(componentName), ident"slotData"),
               ident"_res"
             ),
             ident"_res"
-          ),
-          @[ident"TagRef", newIdentDefs(ident"scopeSelf", ident"BaseComponent")]
+          ), @[
+            ident"TagRef",
+            newIdentDefs(ident"scopeSelf", ident"BaseComponent"),
+            newIdentDefs(ident"inComponent", ident"bool"),
+            newIdentDefs(ident"compName", ident"string"),
+            newIdentDefs(ident"inCycle", ident"bool"),
+            newIdentDefs(ident"cycleCounter", ident"int"),
+            newIdentDefs(ident"compCounter", ident"string"),
+          ]
         )
       ),
       if returnTagRef:
@@ -887,7 +912,31 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
             fmt"Slots can be used only in components!",
             lineInfoObj(statement)
           )
-        whenStmt[1].add(newCall(newDotExpr(ident"self", ident"slot"), ident"self"))
+        let
+          cycleCounter =
+            if cycleTmpVar == "":
+              newLit(0)
+            else:
+              ident(cycleTmpVar)
+          compCounter =
+            if compTmpVar == newEmptyNode():
+              newLit(0)
+            else:
+              compTmpVar
+          cmpName =
+            if componentName == newEmptyNode():
+              newLit""
+            else:
+              newLit($componentName)
+        whenStmt[1].add(newCall(
+          newDotExpr(ident"self", ident"slot"),
+          ident"self",
+          newLit(inComponent),
+          cmpName,
+          newLit(inCycle),
+          cycleCounter,
+          compCounter
+        ))
       else:
         # tag
         whenStmt[1].add(newCall("tag", newLit(getTagName($statement.toStrLit))))
