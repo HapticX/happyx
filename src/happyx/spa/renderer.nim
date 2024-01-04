@@ -72,7 +72,7 @@ when defined(js):
       isCreated*: bool
       slot*: proc(
         scopeSelf: BaseComponent, inComponent: bool, compName: string,
-        inCycle: bool, cycleCounter: int, compCounter: string
+        inCycle: bool, cycleCounter: var int, compCounter: string
       ): TagRef
       slotData*: TagRef
       created*: ComponentEventHandler  ## Calls before first rendering
@@ -97,7 +97,7 @@ else:
       isCreated*: bool
       slot*: proc(
         scopeSelf: BaseComponent, inComponent: bool, compName: string,
-        inCycle: bool, cycleCounter: int, compCounter: string
+        inCycle: bool, cycleCounter: var int, compCounter: string
       ): TagRef
       slotData*: TagRef
       created*: ComponentEventHandler  ## Calls before first rendering

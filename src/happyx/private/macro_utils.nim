@@ -230,7 +230,7 @@ proc useComponent*(statement: NimNode, inCycle, inComponent: bool,
             newIdentDefs(ident"inComponent", ident"bool"),
             newIdentDefs(ident"compName", ident"string"),
             newIdentDefs(ident"inCycle", ident"bool"),
-            newIdentDefs(ident"cycleCounter", ident"int"),
+            newIdentDefs(ident"cycleCounter", newNimNode(nnkVarTy).add(ident"int")),
             newIdentDefs(ident"compCounter", ident"string"),
           ]
         )
@@ -920,7 +920,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
               ident(cycleTmpVar)
           compCounter =
             if compTmpVar == newEmptyNode():
-              newLit(0)
+              newLit""
             else:
               compTmpVar
           cmpName =
@@ -928,14 +928,17 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
               newLit""
             else:
               newLit($componentName)
-        whenStmt[1].add(newCall(
-          newDotExpr(ident"self", ident"slot"),
-          ident"self",
-          newLit(inComponent),
-          cmpName,
-          newLit(inCycle),
-          cycleCounter,
-          compCounter
+        whenStmt[1].add(newStmtList(
+          newVarStmt(ident"cclCounter", cycleCounter),
+          newCall(
+            newDotExpr(ident"self", ident"slot"),
+            ident"self",
+            newLit(inComponent),
+            cmpName,
+            newLit(inCycle),
+            ident"cclCounter",
+            compCounter
+          )
         ))
       else:
         # tag
