@@ -167,7 +167,7 @@ proc useComponent*(statement: NimNode, inCycle, inComponent: bool,
       elif statement.kind == nnkCommand and statement[0] == ident"component" and statement[1].kind == nnkCall and statement[1][^1].kind == nnkStmtList and createdComponents.hasKey($name):
         statement[1][^1]
       else:
-        newStmtList()
+        newStmtList(newNimNode(nnkDiscardStmt).add(newEmptyNode()))
   inc uniqueId
   objConstr.add(stringId)
   if statement[1].kind == nnkCall:

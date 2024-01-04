@@ -557,7 +557,7 @@ macro component*(name, body: untyped): untyped =
         )
       )))
       initProc[3][i][2] = newCall("default", initProc[3][i][1])
-    elif initProc[3][i].kind == nnkIdentDefs and initProc[3][i][0] != ident"uniqCompId":
+    elif initProc[3][i].kind == nnkIdentDefs and initProc[3][i][0] != ident"uniqCompId" and initProc[3][i][2] != newEmptyNode():
       defaultValues.add(newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
         newCall("==", initProc[3][i][0], newCall("default", initProc[3][i][1])),
         newAssignment(
@@ -744,6 +744,13 @@ macro component*(name, body: untyped): untyped =
   )
   when enableDebugComponentMacro:
     echo result.toStrLit
+    if componentDebugTarget == componentName:
+      echo "["
+      echo fmt"  Program was terminated. componentDebugTarget is {componentName}"
+      echo "]"
+      quit(QuitSuccess)
+  when enableDebugTreeComponentMacro:
+    echo treeRepr result
     if componentDebugTarget == componentName:
       echo "["
       echo fmt"  Program was terminated. componentDebugTarget is {componentName}"

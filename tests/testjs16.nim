@@ -24,16 +24,16 @@ component withCounter:
     tDiv: "count in template: {nextCounter(counter2)}"
 
 component withReps:
-  n: int = 5
+  n: int
   `template`:
-    for i in 1..self.n.val:
+    for i in 1..self.n:
       tDiv(style="border: 0.2em dotted gray;"):
         slot
 
 
 appRoutes "app":
   "/":
-    component withReps():
+    component withReps(5):
       withCounter()
       withRandom()
       "non-component rand {rand(99)}"

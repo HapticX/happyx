@@ -25,6 +25,7 @@
 ## | Flag                      | Description                                                | Need Value |
 ## | :---:                     | :---:                                                      | :--:       |
 ## | `-d:compDebug`            | enables debug logging for components                       | ❌         |
+## | `-d:compTreeDebug`        | enables debug logging for components (tree mode)           | ❌         |
 ## | `-d:ssrDebug`             | enables debug logging for SSR                              | ❌         |
 ## | `-d:spaDebug`             | enables debug logging for SPA                              | ❌         |
 ## | `-d:reqModelDebug`        | enables debug logging for request models                   | ❌         |
@@ -51,6 +52,7 @@ const
   enableAutoTranslate* = defined(translate) or defined(happyxTranslate) or defined(hpxTranslate)
   # Debug mode
   enableDebugComponentMacro* = defined(compDebug) or defined(happyxCompDebug) or defined(hpxCompDebug)
+  enableDebugTreeComponentMacro* = defined(comp3Debug) or defined(happyxComp3Debug) or defined(hpxComp3Debug)
   enableDebugSsrMacro* = defined(ssrDebug) or defined(happyxSsrDebug) or defined(hpxSsrDebug)
   enableDebugSpaMacro* = defined(spaDebug) or defined(happyxSpaDebug) or defined(hpxSpaDebug)
   enableUseCompDebugMacro* = defined(useCompDebug) or defined(happyxUseCompDebug) or defined(hpxUseCompDebug)
