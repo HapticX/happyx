@@ -847,6 +847,8 @@ macro importComponent*(body: untyped): untyped =
       statements = newStmtList()
     
     proc inCreatedComponents(tag: string): string =
+      if tag in htmlTagsList:
+        return ""
       for key, val in createdComponents.pairs():
         if key.toLower().capitalizeAscii() == tag.toLower().capitalizeAscii():
           return key
@@ -1049,3 +1051,4 @@ macro importComponent*(body: untyped): untyped =
     importStmts,
     newNimNode(nnkCommand).add(ident"component", componentName, stmtList)
   )
+  echo result.toStrLit

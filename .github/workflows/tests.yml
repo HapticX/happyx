@@ -63,34 +63,35 @@ jobs:
           cd tests
           echo "###===--- Default for" $file "---===###"
           for file in $(ls -v testc*.nim); do
-            nim c -d:debug $file
+            echo "###===--- C Test for " $file " via stdlib ---===###"
+            nim c -d:debug --hints:off --warnings:off $file
           done
         shell: bash
       
       - name: Build C tests (HttpX HTTP Server) ⚡
         run: |
           cd tests
-          echo "###===--- Default for" $file "---===###"
           for file in $(ls -v testc*.nim); do
-            nim c -d:httpx -d:debug $file
+            echo "###===--- C Test for " $file " via Httpx ---===###"
+            nim c -d:httpx -d:debug --hints:off --warnings:off $file
           done
         shell: bash
       
       - name: Build C tests (HttpBeast HTTP Server) ⚡
         run: |
           cd tests
-          echo "###===--- Default for" $file "---===###"
           for file in $(ls -v testc*.nim); do
-            nim c -d:beast -d:debug $file
+            echo "###===--- C Test for " $file " via HttpBeast ---===###"
+            nim c -d:beast -d:debug --hints:off --warnings:off $file
           done
         shell: bash
       
       - name: Build C tests (MicroAsyncHttpServer) ⚡
         run: |
           cd tests
-          echo "###===--- Default for" $file "---===###"
           for file in $(ls -v testc*.nim); do
-            nim c -d:micro -d:debug $file
+            echo "###===--- C Test for " $file " via MicroAsyncHttpServer ---===###"
+            nim c -d:micro -d:debug --hints:off --warnings:off $file
           done
         shell: bash
       
@@ -98,6 +99,7 @@ jobs:
         run: |
           cd tests
           for file in $(ls -v testjs*.nim); do
-            nim js -d:debug -d:enableUi $file
+            echo "###===--- JS Test for " $file " ---===###"
+            nim js -d:debug -d:enableUi --hints:off --warnings:off $file
           done
         shell: bash

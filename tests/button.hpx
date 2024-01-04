@@ -1,11 +1,11 @@
 <template>
-  <button click="">
+  <button h-onclick="echo 1">
     <slot></slot>
     <Example age:nim="5">  <!-- :nim means that value is nim expression -->
       Hello, world!
     </Example>
     <Example age:int="5"></Example>  <!-- :int means that value is integer -->
-    <!-- Also available :float, :bool, :string, :int, :nim -->
+    <!-- Possible values :float, :bool, :string, :int, :nim -->
   </button>
 </template>
 
