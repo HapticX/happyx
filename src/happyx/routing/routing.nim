@@ -519,6 +519,7 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode =
                   parseExpr"""{"response": "Incorrect JSON structure"}""",
                   ident"Http400"
                 ),
+                newNimNode(nnkReturnStmt).add(newEmptyNode()),
                 newCall("jsonTo" & i.typeName, newCall("newJObject"))
               )
             )).add(newNimNode(nnkExceptBranch).add(
@@ -534,6 +535,7 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode =
                   parseExpr"""{"response": "Incorrect JSON structure (wrong kind)"}""",
                   ident"Http400"
                 ),
+                newNimNode(nnkReturnStmt).add(newEmptyNode()),
                 newCall("jsonTo" & i.typeName, newCall("newJObject"))
               )
             ))
