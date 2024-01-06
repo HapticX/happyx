@@ -30,6 +30,16 @@ component withReps:
       tDiv(style="border: 0.2em dotted gray;"):
         slot
 
+# declare path params
+pathParams:
+  paramName int:  # assign param name
+    optional  # param is optional
+    mutable  # param is mutable variable
+    default = 100  # default param value is 100
+  arg13 int:
+    optional
+    mutable
+    default = 100
 
 appRoutes "app":
   "/":
@@ -37,3 +47,5 @@ appRoutes "app":
       withCounter()
       withRandom()
       "non-component rand {rand(99)}"
+  "/<paramName>":
+    {paramName}

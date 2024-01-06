@@ -81,8 +81,7 @@ serve "127.0.0.1", 5000:
 
 # declare path params
 pathParams:
-  paramName:  # assign param name
-    type int  # param type
+  paramName int:  # assign param name
     optional  # param is optional
     mutable  # param is mutable variable
     default = 100  # default param value is 100
