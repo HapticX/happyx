@@ -1,27 +1,28 @@
-HappyX	happyx.html#happyx	 HappyX	
-Web framework written in Nim with ❤	happyx.html#happyx-web-framework-written-in-nim-with-❤	   Web framework written in Nim with ❤	
-Why HappyX? 🤔	happyx.html#happyx-why-happyxqmark-🤔	  Why HappyX? 🤔	
-Examples	happyx.html#happyx-examples	  Examples	
-SPA 🎴	happyx.html#examples-spa-🎴	   SPA 🎴	
-SSR 💻	happyx.html#examples-ssr-💻	   SSR 💻	
-CLI Usage 🎈	happyx.html#examples-cli-usage-🎈	   CLI Usage 🎈	
-SSR	happyx.html#cli-usage-🎈-ssr	    SSR	
-SPA	happyx.html#cli-usage-🎈-spa	    SPA	
-Path Params 🛠	happyx.html#happyx-path-params-🛠	  Path Params 🛠	
-Example	happyx.html#path-params-🛠-example	   Example	
-Validation ⚙	happyx.html#path-params-🛠-validation-⚙	   Validation ⚙	
-Aliases 🎈	happyx.html#path-params-🛠-aliases-🎈	   Aliases 🎈	
-Typing 👮‍♀️	happyx.html#path-params-🛠-typing-👮‍♀️	   Typing 👮‍♀️	
-(Im)mutable ⚙	happyx.html#path-params-🛠-im-mutable-⚙	   (Im)mutable ⚙	
-Mounting 🔌	happyx.html#happyx-mounting-🔌	  Mounting 🔌	
-API Reference 📄	happyx.html#api-reference-📄	 API Reference 📄	
-Automatic Import 🎈	happyx.html#api-reference-📄-automatic-import-🎈	  Automatic Import 🎈	
-Core 🔋	happyx.html#automatic-import-🎈-core-🔋	   Core 🔋	
-Single Page Application ✨	happyx.html#automatic-import-🎈-single-page-application-✨	   Single Page Application ✨	
-Server Side Rendering 🍍	happyx.html#automatic-import-🎈-server-side-rendering-🍍	   Server Side Rendering 🍍	
-Built-In UI 🎴	happyx.html#automatic-import-🎈-builtminusin-ui-🎴	   Built-In UI 🎴	
-Template Engine 🎴	happyx.html#automatic-import-🎈-template-engine-🎴	   Template Engine 🎴	
-Routing 🔌	happyx.html#automatic-import-🎈-routing-🔌	   Routing 🔌	
-Syntax Sugar ✨	happyx.html#automatic-import-🎈-syntax-sugar-✨	   Syntax Sugar ✨	
-Language Binds ✌	happyx.html#automatic-import-🎈-language-binds-✌	   Language Binds ✌	
-Python 🐍	happyx.html#language-binds-✌-python-🐍	    Python 🐍	
+nimTitle	happyx	happyx.html	module src/happyx		0
+heading	HappyX	happyx.html#happyx	 HappyX		0
+heading	Web framework written in Nim with ❤	happyx.html#happyx-web-framework-written-in-nim-with-❤	   Web framework written in Nim with ❤		0
+heading	Why HappyX? 🤔	happyx.html#happyx-why-happyxqmark-🤔	  Why HappyX? 🤔		0
+heading	Examples	happyx.html#happyx-examples	  Examples		0
+heading	SPA 🎴	happyx.html#examples-spa-🎴	   SPA 🎴		0
+heading	SSR 💻	happyx.html#examples-ssr-💻	   SSR 💻		0
+heading	CLI Usage 🎈	happyx.html#examples-cli-usage-🎈	   CLI Usage 🎈		0
+heading	SSR	happyx.html#cli-usage-🎈-ssr	    SSR		0
+heading	SPA	happyx.html#cli-usage-🎈-spa	    SPA		0
+heading	Path Params 🛠	happyx.html#happyx-path-params-🛠	  Path Params 🛠		0
+heading	Example	happyx.html#path-params-🛠-example	   Example		0
+heading	Validation ⚙	happyx.html#path-params-🛠-validation-⚙	   Validation ⚙		0
+heading	Aliases 🎈	happyx.html#path-params-🛠-aliases-🎈	   Aliases 🎈		0
+heading	Typing 👮‍♀️	happyx.html#path-params-🛠-typing-👮‍♀️	   Typing 👮‍♀️		0
+heading	(Im)mutable ⚙	happyx.html#path-params-🛠-im-mutable-⚙	   (Im)mutable ⚙		0
+heading	Mounting 🔌	happyx.html#happyx-mounting-🔌	  Mounting 🔌		0
+heading	API Reference 📄	happyx.html#api-reference-📄	 API Reference 📄		0
+heading	Automatic Import 🎈	happyx.html#api-reference-📄-automatic-import-🎈	  Automatic Import 🎈		0
+heading	Core 🔋	happyx.html#automatic-import-🎈-core-🔋	   Core 🔋		0
+heading	Single Page Application ✨	happyx.html#automatic-import-🎈-single-page-application-✨	   Single Page Application ✨		0
+heading	Server Side Rendering 🍍	happyx.html#automatic-import-🎈-server-side-rendering-🍍	   Server Side Rendering 🍍		0
+heading	Built-In UI 🎴	happyx.html#automatic-import-🎈-builtminusin-ui-🎴	   Built-In UI 🎴		0
+heading	Template Engine 🎴	happyx.html#automatic-import-🎈-template-engine-🎴	   Template Engine 🎴		0
+heading	Routing 🔌	happyx.html#automatic-import-🎈-routing-🔌	   Routing 🔌		0
+heading	Syntax Sugar ✨	happyx.html#automatic-import-🎈-syntax-sugar-✨	   Syntax Sugar ✨		0
+heading	Language Binds ✌	happyx.html#automatic-import-🎈-language-binds-✌	   Language Binds ✌		0
+heading	Python 🐍	happyx.html#language-binds-✌-python-🐍	    Python 🐍		0

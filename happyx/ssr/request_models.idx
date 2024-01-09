@@ -1,9 +1,10 @@
-modelFields	happyx/ssr/request_models.html#modelFields	request_models: modelFields	
-model	happyx/ssr/request_models.html#model.m,untyped,untyped	request_models: model(modelName, body: untyped): untyped	
-Request Models 🔥	happyx/ssr/request_models.html#request-models-🔥	 Request Models 🔥	
-Example	happyx/ssr/request_models.html#request-models-🔥-example	  Example	
-Modes 🛠	happyx/ssr/request_models.html#request-models-🔥-modes-🛠	  Modes 🛠	
-JSON ✨	happyx/ssr/request_models.html#modes-🛠-json-✨	   JSON ✨	
-XML ✨	happyx/ssr/request_models.html#modes-🛠-xml-✨	   XML ✨	
-Form-Data ✨	happyx/ssr/request_models.html#modes-🛠-formminusdata-✨	   Form-Data ✨	
-X-WWW-Form-Urlencoded ✨	happyx/ssr/request_models.html#modes-🛠-xminuswwwminusformminusurlencoded-✨	   X-WWW-Form-Urlencoded ✨	
+nimTitle	request_models	happyx/ssr/request_models.html	module src/happyx/ssr/request_models		0
+nim	modelFields	happyx/ssr/request_models.html#modelFields	const modelFields		98
+nim	model	happyx/ssr/request_models.html#model.m,untyped,untyped	macro model(modelName, body: untyped): untyped		101
+heading	Request Models 🔥	happyx/ssr/request_models.html#request-models-🔥	 Request Models 🔥		0
+heading	Example	happyx/ssr/request_models.html#request-models-🔥-example	  Example		0
+heading	Modes 🛠	happyx/ssr/request_models.html#request-models-🔥-modes-🛠	  Modes 🛠		0
+heading	JSON ✨	happyx/ssr/request_models.html#modes-🛠-json-✨	   JSON ✨		0
+heading	XML ✨	happyx/ssr/request_models.html#modes-🛠-xml-✨	   XML ✨		0
+heading	Form-Data ✨	happyx/ssr/request_models.html#modes-🛠-formminusdata-✨	   Form-Data ✨		0
+heading	X-WWW-Form-Urlencoded ✨	happyx/ssr/request_models.html#modes-🛠-xminuswwwminusformminusurlencoded-✨	   X-WWW-Form-Urlencoded ✨		0

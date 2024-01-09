@@ -1,5 +1,6 @@
-FormDataItem	happyx/ssr/form_data.html#FormDataItem	form_data: FormDataItem	
-parseFormData	happyx/ssr/form_data.html#parseFormData,string	form_data: parseFormData(formData: string): (StringTableRef, TableRef[string, FormDataItem])	
-parseXmlBody	happyx/ssr/form_data.html#parseXmlBody,string	form_data: parseXmlBody(data: string): JsonNode	
-parseXWwwFormUrlencoded	happyx/ssr/form_data.html#parseXWwwFormUrlencoded,string	form_data: parseXWwwFormUrlencoded(data: string): StringTableRef	
-Form Data 👨‍🔬	happyx/ssr/form_data.html#form-data-👨‍🔬	 Form Data 👨‍🔬	
+nimTitle	form_data	happyx/ssr/form_data.html	module src/happyx/ssr/form_data		0
+nim	FormDataItem	happyx/ssr/form_data.html#FormDataItem	object FormDataItem		35
+nim	parseFormData	happyx/ssr/form_data.html#parseFormData,string	proc parseFormData(formData: string): (StringTableRef, TableRef[string, FormDataItem])		39
+nim	parseXmlBody	happyx/ssr/form_data.html#parseXmlBody,string	proc parseXmlBody(data: string): JsonNode		121
+nim	parseXWwwFormUrlencoded	happyx/ssr/form_data.html#parseXWwwFormUrlencoded,string	proc parseXWwwFormUrlencoded(data: string): StringTableRef		130
+heading	Form Data 👨‍🔬	happyx/ssr/form_data.html#form-data-👨‍🔬	 Form Data 👨‍🔬		0

@@ -1,36 +1,38 @@
-enableHttpx	happyx/core/constants.html#enableHttpx	constants: enableHttpx	
-enableMicro	happyx/core/constants.html#enableMicro	constants: enableMicro	
-enableHttpBeast	happyx/core/constants.html#enableHttpBeast	constants: enableHttpBeast	
-enableLiveViews	happyx/core/constants.html#enableLiveViews	constants: enableLiveViews	
-enableSafeRequests	happyx/core/constants.html#enableSafeRequests	constants: enableSafeRequests	
-enableAutoTranslate	happyx/core/constants.html#enableAutoTranslate	constants: enableAutoTranslate	
-enableDebugComponentMacro	happyx/core/constants.html#enableDebugComponentMacro	constants: enableDebugComponentMacro	
-enableDebugTreeComponentMacro	happyx/core/constants.html#enableDebugTreeComponentMacro	constants: enableDebugTreeComponentMacro	
-enableDebugSsrMacro	happyx/core/constants.html#enableDebugSsrMacro	constants: enableDebugSsrMacro	
-enableDebugSpaMacro	happyx/core/constants.html#enableDebugSpaMacro	constants: enableDebugSpaMacro	
-enableUseCompDebugMacro	happyx/core/constants.html#enableUseCompDebugMacro	constants: enableUseCompDebugMacro	
-enableRequestModelDebugMacro	happyx/core/constants.html#enableRequestModelDebugMacro	constants: enableRequestModelDebugMacro	
-enableRoutingDebugMacro	happyx/core/constants.html#enableRoutingDebugMacro	constants: enableRoutingDebugMacro	
-componentDebugTarget	happyx/core/constants.html#componentDebugTarget	constants: componentDebugTarget	
-reqModelDebugTarget	happyx/core/constants.html#reqModelDebugTarget	constants: reqModelDebugTarget	
-exportPython	happyx/core/constants.html#exportPython	constants: exportPython	
-exportJvm	happyx/core/constants.html#exportJvm	constants: exportJvm	
-enableDebug	happyx/core/constants.html#enableDebug	constants: enableDebug	
-enableUi	happyx/core/constants.html#enableUi	constants: enableUi	
-enableApiDoc	happyx/core/constants.html#enableApiDoc	constants: enableApiDoc	
-enableOrm	happyx/core/constants.html#enableOrm	constants: enableOrm	
-numThreads	happyx/core/constants.html#numThreads	constants: numThreads	
-sessionIdLength	happyx/core/constants.html#sessionIdLength	constants: sessionIdLength	
-appName	happyx/core/constants.html#appName	constants: appName	
-apiDocsPath	happyx/core/constants.html#apiDocsPath	constants: apiDocsPath	
-cryptoMethod	happyx/core/constants.html#cryptoMethod	constants: cryptoMethod	
-httpMethods	happyx/core/constants.html#httpMethods	constants: httpMethods	
-htmlTagsList	happyx/core/constants.html#htmlTagsList	constants: htmlTagsList	
-nim_1_6_14	happyx/core/constants.html#nim_1_6_14	constants: nim_1_6_14	
-nim_2_0_0	happyx/core/constants.html#nim_2_0_0	constants: nim_2_0_0	
-HpxMajor	happyx/core/constants.html#HpxMajor	constants: HpxMajor	
-HpxMinor	happyx/core/constants.html#HpxMinor	constants: HpxMinor	
-HpxPatch	happyx/core/constants.html#HpxPatch	constants: HpxPatch	
-HpxVersion	happyx/core/constants.html#HpxVersion	constants: HpxVersion	
-Constants ✨	happyx/core/constants.html#constants-✨	 Constants ✨	
-Dev Consts 👨‍💻	happyx/core/constants.html#constants-✨-dev-consts-👨‍💻	  Dev Consts 👨‍💻	
+nimTitle	constants	happyx/core/constants.html	module src/happyx/core/constants		0
+nim	enableHttpx	happyx/core/constants.html#enableHttpx	const enableHttpx		44
+nim	enableMicro	happyx/core/constants.html#enableMicro	const enableMicro		45
+nim	enableHttpBeast	happyx/core/constants.html#enableHttpBeast	const enableHttpBeast		46
+nim	enableLiveViews	happyx/core/constants.html#enableLiveViews	const enableLiveViews		48
+nim	enableSafeRequests	happyx/core/constants.html#enableSafeRequests	const enableSafeRequests		50
+nim	enableAutoTranslate	happyx/core/constants.html#enableAutoTranslate	const enableAutoTranslate		52
+nim	enableDebugComponentMacro	happyx/core/constants.html#enableDebugComponentMacro	const enableDebugComponentMacro		54
+nim	enableDebugTreeComponentMacro	happyx/core/constants.html#enableDebugTreeComponentMacro	const enableDebugTreeComponentMacro		55
+nim	enableDebugSsrMacro	happyx/core/constants.html#enableDebugSsrMacro	const enableDebugSsrMacro		56
+nim	enableDebugSpaMacro	happyx/core/constants.html#enableDebugSpaMacro	const enableDebugSpaMacro		57
+nim	enableUseCompDebugMacro	happyx/core/constants.html#enableUseCompDebugMacro	const enableUseCompDebugMacro		58
+nim	enableRequestModelDebugMacro	happyx/core/constants.html#enableRequestModelDebugMacro	const enableRequestModelDebugMacro		59
+nim	enableRoutingDebugMacro	happyx/core/constants.html#enableRoutingDebugMacro	const enableRoutingDebugMacro		60
+nim	componentDebugTarget	happyx/core/constants.html#componentDebugTarget	const componentDebugTarget		61
+nim	reqModelDebugTarget	happyx/core/constants.html#reqModelDebugTarget	const reqModelDebugTarget		62
+nim	exportPython	happyx/core/constants.html#exportPython	const exportPython		64
+nim	exportJvm	happyx/core/constants.html#exportJvm	const exportJvm		65
+nim	enableHistoryApi	happyx/core/constants.html#enableHistoryApi	const enableHistoryApi		67
+nim	enableDebug	happyx/core/constants.html#enableDebug	const enableDebug		68
+nim	enableUi	happyx/core/constants.html#enableUi	const enableUi		69
+nim	enableApiDoc	happyx/core/constants.html#enableApiDoc	const enableApiDoc		70
+nim	enableOrm	happyx/core/constants.html#enableOrm	const enableOrm		71
+nim	numThreads	happyx/core/constants.html#numThreads	const numThreads		72
+nim	sessionIdLength	happyx/core/constants.html#sessionIdLength	const sessionIdLength		73
+nim	appName	happyx/core/constants.html#appName	const appName		74
+nim	apiDocsPath	happyx/core/constants.html#apiDocsPath	const apiDocsPath		75
+nim	cryptoMethod	happyx/core/constants.html#cryptoMethod	const cryptoMethod		76
+nim	httpMethods	happyx/core/constants.html#httpMethods	const httpMethods		77
+nim	htmlTagsList	happyx/core/constants.html#htmlTagsList	const htmlTagsList		80
+nim	nim_1_6_14	happyx/core/constants.html#nim_1_6_14	const nim_1_6_14		99
+nim	nim_2_0_0	happyx/core/constants.html#nim_2_0_0	const nim_2_0_0		100
+nim	HpxMajor	happyx/core/constants.html#HpxMajor	const HpxMajor		102
+nim	HpxMinor	happyx/core/constants.html#HpxMinor	const HpxMinor		103
+nim	HpxPatch	happyx/core/constants.html#HpxPatch	const HpxPatch		104
+nim	HpxVersion	happyx/core/constants.html#HpxVersion	const HpxVersion		105
+heading	Constants ✨	happyx/core/constants.html#constants-✨	 Constants ✨		0
+heading	Dev Consts 👨‍💻	happyx/core/constants.html#constants-✨-dev-consts-👨‍💻	  Dev Consts 👨‍💻		0

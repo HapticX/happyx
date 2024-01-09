@@ -1,2 +1,3 @@
-IndexApiDocPageTemplate	happyx/ssr/docs/api_doc_template.html#IndexApiDocPageTemplate	api_doc_template: IndexApiDocPageTemplate	
-API Doc Template 📕	happyx/ssr/docs/api_doc_template.html#api-doc-template-📕	 API Doc Template 📕	
+nimTitle	api_doc_template	happyx/ssr/docs/api_doc_template.html	module src/happyx/ssr/docs/api_doc_template		0
+nim	IndexApiDocPageTemplate	happyx/ssr/docs/api_doc_template.html#IndexApiDocPageTemplate	const IndexApiDocPageTemplate		22
+heading	API Doc Template 📕	happyx/ssr/docs/api_doc_template.html#api-doc-template-📕	 API Doc Template 📕		0

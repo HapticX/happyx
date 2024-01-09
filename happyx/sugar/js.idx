@@ -1,3 +1,4 @@
-buildJs	happyx/sugar/js.html#buildJs.m,untyped	js: buildJs(body: untyped): untyped	
-JS ✨	happyx/sugar/js.html#js-✨	 JS ✨	
-Example	happyx/sugar/js.html#js-✨-example	  Example	
+nimTitle	js	happyx/sugar/js.html	module src/happyx/sugar/js		0
+nim	buildJs	happyx/sugar/js.html#buildJs.m,untyped	macro buildJs(body: untyped): untyped		301
+heading	JS ✨	happyx/sugar/js.html#js-✨	 JS ✨		0
+heading	Example	happyx/sugar/js.html#js-✨-example	  Example		0

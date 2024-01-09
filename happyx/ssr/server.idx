@@ -1,30 +1,31 @@
-CustomHeaders	happyx/ssr/server.html#CustomHeaders	server: CustomHeaders	
-newCustomHeaders	happyx/ssr/server.html#newCustomHeaders	server: newCustomHeaders(): CustomHeaders	
-`[]=`	happyx/ssr/server.html#[]=,CustomHeaders,string,T	server: `[]=`[T](self: CustomHeaders; key: string; value: T)	
-Server	happyx/ssr/server.html#Server	server: Server	
-ModelBase	happyx/ssr/server.html#ModelBase	server: ModelBase	
-ApiDocObject	happyx/ssr/server.html#ApiDocObject	server: ApiDocObject	
-newApiDocObject	happyx/ssr/server.html#newApiDocObject,seq[string],string,string,seq[PathParamObj],seq[RequestModelObj]	server: newApiDocObject(httpMethod: seq[string]; description, path: string;\n                pathParams: seq[PathParamObj]; models: seq[RequestModelObj]): ApiDocObject	
-fgColored	happyx/ssr/server.html#fgColored,string,ForegroundColor	server: fgColored(text: string; clr: ForegroundColor): string	
-newServer	happyx/ssr/server.html#newServer,string,int	server: newServer(address: string = &quot;127.0.0.1&quot;; port: int = 5000): Server	
-start	happyx/ssr/server.html#start.t,Server	server: start(server: Server): untyped	
-`.`	happyx/ssr/server.html#..m,JsonNode,untyped	server: `.`(obj: JsonNode; field: untyped): JsonNode	
-answer	happyx/ssr/server.html#answer.t,Request,,HttpCode,HttpHeaders,Option[int]	server: answer(req: Request; message: string | int | float | bool | char;\n       code: HttpCode = Http200; headers: HttpHeaders = newHttpHeaders(\n    [(&quot;Content-Type&quot;, &quot;text/plain; charset=utf-8&quot;)]);\n       contentLength: Option[int] = int.none)	
-answerJson	happyx/ssr/server.html#answerJson.t,Request,untyped,HttpCode,HttpHeaders	server: answerJson(req: Request; data: untyped; code: HttpCode = Http200; headers: HttpHeaders = newHttpHeaders(\n    [(&quot;Content-Type&quot;, &quot;application/json; charset=utf-8&quot;)])): untyped	
-answerHtml	happyx/ssr/server.html#answerHtml.t,Request,,HttpCode,HttpHeaders	server: answerHtml(req: Request; data: string | TagRef; code: HttpCode = Http200;\n    headers: HttpHeaders = newHttpHeaders(\n    [(&quot;Content-Type&quot;, &quot;text/html; charset=utf-8&quot;)])): untyped	
-answerFile	happyx/ssr/server.html#answerFile,Request,string,HttpCode,int,bool,CustomHeaders	server: answerFile(req: Request; filename: string; code: HttpCode = Http200;\n           asAttachment = false; bufSize: int = 40960;\n           forceResponse: bool = false;\n           headers: CustomHeaders = newCustomHeaders()): owned(Future[void])	
-routes	happyx/ssr/server.html#routes.m,Server,untyped	server: routes(server: Server; body: untyped = newStmtList()): untyped	
-initServer	happyx/ssr/server.html#initServer.m,untyped	server: initServer(body: untyped): untyped	
-serve	happyx/ssr/server.html#serve.m,string,int,untyped	server: serve(address: string; port: int; body: untyped): untyped	
-liveview	happyx/ssr/server.html#liveview.m,untyped	server: liveview(body: untyped): untyped	
-Available Path Params	happyx/ssr/server.html#available-path-params	    Available Path Params	
-Available Route Types	happyx/ssr/server.html#available-route-types	    Available Route Types	
-Route Scope:	happyx/ssr/server.html#route-scopecolon	    Route Scope:	
-Available Websocket Routing	happyx/ssr/server.html#available-websocket-routing	    Available Websocket Routing	
-Websocket Scope:	happyx/ssr/server.html#websocket-scopecolon	    Websocket Scope:	
-Example	happyx/ssr/server.html#example	 Example	
-Server 🔨	happyx/ssr/server.html#server-🔨	 Server 🔨	
-Queries ❔	happyx/ssr/server.html#server-🔨-queries-❔	  Queries ❔	
-WebSockets 🍍	happyx/ssr/server.html#server-🔨-websockets-🍍	  WebSockets 🍍	
-Static directories 🍍	happyx/ssr/server.html#server-🔨-static-directories-🍍	  Static directories 🍍	
-Custom static directory ⚙	happyx/ssr/server.html#static-directories-🍍-custom-static-directory-⚙	   Custom static directory ⚙	
+nimTitle	server	happyx/ssr/server.html	module src/happyx/ssr/server		0
+nim	CustomHeaders	happyx/ssr/server.html#CustomHeaders	type CustomHeaders		129
+nim	newCustomHeaders	happyx/ssr/server.html#newCustomHeaders	proc newCustomHeaders(): CustomHeaders		131
+nim	`[]=`	happyx/ssr/server.html#[]=,CustomHeaders,string,T	proc `[]=`[T](self: CustomHeaders; key: string; value: T)		133
+nim	Server	happyx/ssr/server.html#Server	type Server		150
+nim	ModelBase	happyx/ssr/server.html#ModelBase	type ModelBase		168
+nim	ApiDocObject	happyx/ssr/server.html#ApiDocObject	object ApiDocObject		235
+nim	newApiDocObject	happyx/ssr/server.html#newApiDocObject,seq[string],string,string,seq[PathParamObj],seq[RequestModelObj]	proc newApiDocObject(httpMethod: seq[string]; description, path: string;\n                pathParams: seq[PathParamObj]; models: seq[RequestModelObj]): ApiDocObject		242
+nim	fgColored	happyx/ssr/server.html#fgColored,string,ForegroundColor	proc fgColored(text: string; clr: ForegroundColor): string		299
+nim	newServer	happyx/ssr/server.html#newServer,string,int	proc newServer(address: string = "127.0.0.1"; port: int = 5000): Server		314
+nim	start	happyx/ssr/server.html#start.t,Server	template start(server: Server): untyped		353
+nim	`.`	happyx/ssr/server.html#..m,JsonNode,untyped	macro `.`(obj: JsonNode; field: untyped): JsonNode		375
+nim	answer	happyx/ssr/server.html#answer.t,Request,,HttpCode,HttpHeaders,Option[int]	template answer(req: Request; message: string | int | float | bool | char;\n       code: HttpCode = Http200; headers: HttpHeaders = newHttpHeaders(\n    [("Content-Type", "text/plain; charset=utf-8")]);\n       contentLength: Option[int] = int.none)		379
+nim	answerJson	happyx/ssr/server.html#answerJson.t,Request,untyped,HttpCode,HttpHeaders	template answerJson(req: Request; data: untyped; code: HttpCode = Http200; headers: HttpHeaders = newHttpHeaders(\n    [("Content-Type", "application/json; charset=utf-8")])): untyped		469
+nim	answerHtml	happyx/ssr/server.html#answerHtml.t,Request,,HttpCode,HttpHeaders	template answerHtml(req: Request; data: string | TagRef; code: HttpCode = Http200;\n    headers: HttpHeaders = newHttpHeaders(\n    [("Content-Type", "text/html; charset=utf-8")])): untyped		490
+nim	answerFile	happyx/ssr/server.html#answerFile,Request,string,HttpCode,int,bool,CustomHeaders	proc answerFile(req: Request; filename: string; code: HttpCode = Http200;\n           asAttachment = false; bufSize: int = 40960;\n           forceResponse: bool = false;\n           headers: CustomHeaders = newCustomHeaders()): owned(Future[void])		530
+nim	routes	happyx/ssr/server.html#routes.m,Server,untyped	macro routes(server: Server; body: untyped = newStmtList()): untyped		670
+nim	initServer	happyx/ssr/server.html#initServer.m,untyped	macro initServer(body: untyped): untyped		1633
+nim	serve	happyx/ssr/server.html#serve.m,string,int,untyped	macro serve(address: string; port: int; body: untyped): untyped		1661
+nim	liveview	happyx/ssr/server.html#liveview.m,untyped	macro liveview(body: untyped): untyped		1729
+heading	Available Path Params	happyx/ssr/server.html#custom-static-directory-⚙-available-path-params	    Available Path Params		0
+heading	Available Route Types	happyx/ssr/server.html#custom-static-directory-⚙-available-route-types	    Available Route Types		0
+heading	Route Scope:	happyx/ssr/server.html#custom-static-directory-⚙-route-scopecolon	    Route Scope:		0
+heading	Available Websocket Routing	happyx/ssr/server.html#custom-static-directory-⚙-available-websocket-routing	    Available Websocket Routing		0
+heading	Websocket Scope:	happyx/ssr/server.html#custom-static-directory-⚙-websocket-scopecolon	    Websocket Scope:		0
+heading	Example	happyx/ssr/server.html#example	 Example		0
+heading	Server 🔨	happyx/ssr/server.html#server-🔨	 Server 🔨		0
+heading	Queries ❔	happyx/ssr/server.html#server-🔨-queries-❔	  Queries ❔		0
+heading	WebSockets 🍍	happyx/ssr/server.html#server-🔨-websockets-🍍	  WebSockets 🍍		0
+heading	Static directories 🍍	happyx/ssr/server.html#server-🔨-static-directories-🍍	  Static directories 🍍		0
+heading	Custom static directory ⚙	happyx/ssr/server.html#static-directories-🍍-custom-static-directory-⚙	   Custom static directory ⚙		0

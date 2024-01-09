@@ -1,8 +1,9 @@
-nnkNumbers	happyx/sugar/style.html#nnkNumbers	style: nnkNumbers	
-buildStyle	happyx/sugar/style.html#buildStyle.m,untyped	style: buildStyle(body: untyped): untyped	
-Style 🎴	happyx/sugar/style.html#style-🎴	 Style 🎴	
-Usage	happyx/sugar/style.html#style-🎴-usage	  Usage	
-Tags	happyx/sugar/style.html#usage-tags	   Tags	
-Classes	happyx/sugar/style.html#usage-classes	   Classes	
-IDs	happyx/sugar/style.html#usage-ids	   IDs	
-Media, Supports, Etc.	happyx/sugar/style.html#usage-media-supports-etcdot	   Media, Supports, Etc.	
+nimTitle	style	happyx/sugar/style.html	module src/happyx/sugar/style		0
+nim	nnkNumbers	happyx/sugar/style.html#nnkNumbers	const nnkNumbers		81
+nim	buildStyle	happyx/sugar/style.html#buildStyle.m,untyped	macro buildStyle(body: untyped): untyped		205
+heading	Style 🎴	happyx/sugar/style.html#style-🎴	 Style 🎴		0
+heading	Usage	happyx/sugar/style.html#style-🎴-usage	  Usage		0
+heading	Tags	happyx/sugar/style.html#usage-tags	   Tags		0
+heading	Classes	happyx/sugar/style.html#usage-classes	   Classes		0
+heading	IDs	happyx/sugar/style.html#usage-ids	   IDs		0
+heading	Media, Supports, Etc.	happyx/sugar/style.html#usage-media-supports-etcdot	   Media, Supports, Etc.		0

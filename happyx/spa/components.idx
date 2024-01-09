@@ -1,10 +1,11 @@
-reRenderTmpl	happyx/spa/components.html#reRenderTmpl.t	components: reRenderTmpl()	
-component	happyx/spa/components.html#component.m,untyped,untyped	components: component(name, body: untyped): untyped	
-importComponent	happyx/spa/components.html#importComponent.m,untyped	components: importComponent(body: untyped): untyped	
-Basic Usage 🔨	happyx/spa/components.html#basic-usage-🔨	  Basic Usage 🔨	
-Pure Css 🎈	happyx/spa/components.html#pure-css-🎈	  Pure Css 🎈	
-Pure JavaScript ✌	happyx/spa/components.html#pure-javascript-✌	  Pure JavaScript ✌	
-Slots 👨‍🔬	happyx/spa/components.html#slots-👨‍🔬	  Slots 👨‍🔬	
-Inheritance 📦	happyx/spa/components.html#inheritance-📦	  Inheritance 📦	
-Example	happyx/spa/components.html#example	  Example	
-Components ✨	happyx/spa/components.html#components-✨	 Components ✨	
+nimTitle	components	happyx/spa/components.html	module src/happyx/spa/components		0
+nim	reRenderTmpl	happyx/spa/components.html#reRenderTmpl.t	template reRenderTmpl()		72
+nim	component	happyx/spa/components.html#component.m,untyped,untyped	macro component(name, body: untyped): untyped		113
+nim	importComponent	happyx/spa/components.html#importComponent.m,untyped	macro importComponent(body: untyped): untyped		896
+heading	Basic Usage 🔨	happyx/spa/components.html#components-✨-basic-usage-🔨	  Basic Usage 🔨		0
+heading	Pure Css 🎈	happyx/spa/components.html#components-✨-pure-css-🎈	  Pure Css 🎈		0
+heading	Pure JavaScript ✌	happyx/spa/components.html#components-✨-pure-javascript-✌	  Pure JavaScript ✌		0
+heading	Slots 👨‍🔬	happyx/spa/components.html#components-✨-slots-👨‍🔬	  Slots 👨‍🔬		0
+heading	Inheritance 📦	happyx/spa/components.html#components-✨-inheritance-📦	  Inheritance 📦		0
+heading	Example	happyx/spa/components.html#components-✨-example	  Example		0
+heading	Components ✨	happyx/spa/components.html#components-✨	 Components ✨		0

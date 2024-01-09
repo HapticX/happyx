@@ -1,25 +1,26 @@
-uniqueId	happyx/private/macro_utils.html#uniqueId	macro_utils: uniqueId	
-slots	happyx/private/macro_utils.html#slots	macro_utils: slots	
-UniqueComponentId	happyx/private/macro_utils.html#UniqueComponentId	macro_utils: UniqueComponentId	
-discardStmt	happyx/private/macro_utils.html#discardStmt	macro_utils: discardStmt(): NimNode	
-hasKey	happyx/private/macro_utils.html#hasKey,CacheTable,string	macro_utils: hasKey(self: CacheTable; key: string): bool	
-contains	happyx/private/macro_utils.html#contains,CacheTable,string	macro_utils: contains(self: CacheTable; key: string): bool	
-bracket	happyx/private/macro_utils.html#bracket,varargs[NimNode]	macro_utils: bracket(node: varargs[NimNode]): NimNode	
-newLambda	happyx/private/macro_utils.html#newLambda,NimNode	macro_utils: newLambda(body: NimNode; params: seq[NimNode] | NimNode = @[newEmptyNode()];\n          pragmas: seq[NimNode] | seq[string] = @[newEmptyNode()]): NimNode	
-bracket	happyx/private/macro_utils.html#bracket	macro_utils: bracket(node: seq[NimNode] | seq[string]): NimNode	
-pragmaBlock	happyx/private/macro_utils.html#pragmaBlock,openArray[NimNode],NimNode	macro_utils: pragmaBlock(pragmas: openArray[NimNode]; statementList: NimNode): NimNode	
-getTagName	happyx/private/macro_utils.html#getTagName,string	macro_utils: getTagName(name: string): string	
-formatNode	happyx/private/macro_utils.html#formatNode,NimNode	macro_utils: formatNode(node: NimNode): NimNode	
-useComponent	happyx/private/macro_utils.html#useComponent,NimNode,bool,bool,string,NimNode,seq[NimNode],bool,bool,bool	macro_utils: useComponent(statement: NimNode; inCycle, inComponent: bool;\n             cycleTmpVar: string; compTmpVar: NimNode;\n             cycleVars: var seq[NimNode]; returnTagRef: bool = true;\n             constructor: bool = false; nameIsIdent: bool = false): NimNode	
-newMultiVarStmt	happyx/private/macro_utils.html#newMultiVarStmt,openArray[NimNode],NimNode,bool	macro_utils: newMultiVarStmt(extractNames: openArray[NimNode]; val: NimNode;\n                isLet: bool = false): NimNode	
-isExpr	happyx/private/macro_utils.html#isExpr,NimNode	macro_utils: isExpr(node: NimNode): bool	
-isIdentUsed	happyx/private/macro_utils.html#isIdentUsed,NimNode,NimNode	macro_utils: isIdentUsed(body, name: NimNode): bool	
-replaceUseInComponent	happyx/private/macro_utils.html#replaceUseInComponent,NimNode	macro_utils: replaceUseInComponent(body: NimNode)	
-replaceIter	happyx/private/macro_utils.html#replaceIter,NimNode,proc(NimNode),proc(NimNode)	macro_utils: replaceIter(root: NimNode; search: proc (x: NimNode): bool;\n            replace: proc (x: NimNode): NimNode): bool	
-attribute	happyx/private/macro_utils.html#attribute,NimNode,bool	macro_utils: attribute(attr: NimNode; inComponent: bool = false): NimNode	
-addAttribute	happyx/private/macro_utils.html#addAttribute,NimNode,NimNode,NimNode,bool	macro_utils: addAttribute(node, key, value: NimNode; inComponent: bool = false)	
-endsWithBuildHtml	happyx/private/macro_utils.html#endsWithBuildHtml,NimNode	macro_utils: endsWithBuildHtml(statement: NimNode): bool	
-replaceSelfComponent	happyx/private/macro_utils.html#replaceSelfComponent,NimNode,NimNode,NimNode,bool,bool,bool	macro_utils: replaceSelfComponent(statement, componentName: NimNode; parent: NimNode = nil;\n                     convert: bool = false; is_constructor: bool = false;\n                     is_field: bool = true): NimNode	
-buildHtmlProcedure	happyx/private/macro_utils.html#buildHtmlProcedure,NimNode,NimNode,bool,NimNode,bool,string,NimNode,seq[NimNode]	macro_utils: buildHtmlProcedure(root, body: NimNode; inComponent: bool = false;\n                   componentName: NimNode = newEmptyNode();\n                   inCycle: bool = false; cycleTmpVar: string = &quot;&quot;;\n                   compTmpVar: NimNode = newEmptyNode();\n                   cycleVars: var seq[NimNode]): NimNode	
-Macro Utils	happyx/private/macro_utils.html#macro-utils	 Macro Utils	
-⚠ Warning: This Module Is LOW-LEVEL API ⚠	happyx/private/macro_utils.html#macro-utils-⚠-warningcolon-this-module-is-lowminuslevel-api-⚠	  ⚠ Warning: This Module Is LOW-LEVEL API ⚠	
+nimTitle	macro_utils	happyx/private/macro_utils.html	module src/happyx/private/macro_utils		0
+nim	uniqueId	happyx/private/macro_utils.html#uniqueId	const uniqueId		16
+nim	slots	happyx/private/macro_utils.html#slots	const slots		17
+nim	UniqueComponentId	happyx/private/macro_utils.html#UniqueComponentId	const UniqueComponentId		19
+nim	discardStmt	happyx/private/macro_utils.html#discardStmt	proc discardStmt(): NimNode		22
+nim	buildHtmlProcedure	happyx/private/macro_utils.html#buildHtmlProcedure,NimNode,NimNode,bool,NimNode,bool,string,NimNode,seq[NimNode]	proc buildHtmlProcedure(root, body: NimNode; inComponent: bool = false;\n                   componentName: NimNode = newEmptyNode();\n                   inCycle: bool = false; cycleTmpVar: string = "";\n                   compTmpVar: NimNode = newEmptyNode();\n                   cycleVars: var seq[NimNode]): NimNode		36
+nim	bracket	happyx/private/macro_utils.html#bracket,varargs[NimNode]	proc bracket(node: varargs[NimNode]): NimNode		42
+nim	newCast	happyx/private/macro_utils.html#newCast,NimNode,NimNode	proc newCast(fromType, toType: NimNode): NimNode		48
+nim	newLambda	happyx/private/macro_utils.html#newLambda,NimNode	proc newLambda(body: NimNode; params: seq[NimNode] | NimNode = @[newEmptyNode()];\n          pragmas: seq[NimNode] | seq[string] = @[newEmptyNode()]): NimNode		52
+nim	bracket	happyx/private/macro_utils.html#bracket	proc bracket(node: seq[NimNode] | seq[string]): NimNode		89
+nim	pragmaBlock	happyx/private/macro_utils.html#pragmaBlock,openArray[NimNode],NimNode	proc pragmaBlock(pragmas: openArray[NimNode]; statementList: NimNode): NimNode		100
+nim	getTagName	happyx/private/macro_utils.html#getTagName,string	proc getTagName(name: string): string		109
+nim	formatNode	happyx/private/macro_utils.html#formatNode,NimNode	proc formatNode(node: NimNode): NimNode		121
+nim	useComponent	happyx/private/macro_utils.html#useComponent,NimNode,bool,bool,string,NimNode,seq[NimNode],bool,bool,bool	proc useComponent(statement: NimNode; inCycle, inComponent: bool;\n             cycleTmpVar: string; compTmpVar: NimNode;\n             cycleVars: var seq[NimNode]; returnTagRef: bool = true;\n             constructor: bool = false; nameIsIdent: bool = false): NimNode		128
+nim	newMultiVarStmt	happyx/private/macro_utils.html#newMultiVarStmt,openArray[NimNode],NimNode,bool	proc newMultiVarStmt(extractNames: openArray[NimNode]; val: NimNode;\n                isLet: bool = false): NimNode		315
+nim	isExpr	happyx/private/macro_utils.html#isExpr,NimNode	proc isExpr(node: NimNode): bool		325
+nim	isIdentUsed	happyx/private/macro_utils.html#isIdentUsed,NimNode,NimNode	proc isIdentUsed(body, name: NimNode): bool		354
+nim	replaceUseInComponent	happyx/private/macro_utils.html#replaceUseInComponent,NimNode	proc replaceUseInComponent(body: NimNode)		364
+nim	replaceIter	happyx/private/macro_utils.html#replaceIter,NimNode,proc(NimNode),proc(NimNode)	proc replaceIter(root: NimNode; search: proc (x: NimNode): bool;\n            replace: proc (x: NimNode): NimNode): bool		373
+nim	attribute	happyx/private/macro_utils.html#attribute,NimNode,bool	proc attribute(attr: NimNode; inComponent: bool = false): NimNode		386
+nim	addAttribute	happyx/private/macro_utils.html#addAttribute,NimNode,NimNode,NimNode,bool	proc addAttribute(node, key, value: NimNode; inComponent: bool = false)		410
+nim	endsWithBuildHtml	happyx/private/macro_utils.html#endsWithBuildHtml,NimNode	proc endsWithBuildHtml(statement: NimNode): bool		436
+nim	replaceSelfComponent	happyx/private/macro_utils.html#replaceSelfComponent,NimNode,NimNode,NimNode,bool,bool,bool	proc replaceSelfComponent(statement, componentName: NimNode; parent: NimNode = nil;\n                     convert: bool = false; is_constructor: bool = false;\n                     is_field: bool = true): NimNode		440
+nimgrp	bracket	happyx/private/macro_utils.html#bracket-procs-all	proc		42
+heading	Macro Utils	happyx/private/macro_utils.html#macro-utils	 Macro Utils		0
+heading	⚠ Warning: This Module Is LOW-LEVEL API ⚠	happyx/private/macro_utils.html#macro-utils-⚠-warningcolon-this-module-is-lowminuslevel-api-⚠	  ⚠ Warning: This Module Is LOW-LEVEL API ⚠		0

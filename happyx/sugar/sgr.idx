@@ -1,7 +1,9 @@
-sugarRoutes	happyx/sugar/sgr.html#sugarRoutes	sgr: sugarRoutes	
-`:=`	happyx/sugar/sgr.html#:=.t,untyped,untyped	sgr: `:=`(name, value: untyped): untyped	
-has	happyx/sugar/sgr.html#has,typedesc[T],U	sgr: has[T: HoleyEnum; U](e: typedesc[T]; val: U): bool	
-has	happyx/sugar/sgr.html#has,typedesc[T],U_2	sgr: has[T: OrdinalEnum; U](e: typedesc[T]; val: U): bool	
-`-&gt;`	happyx/sugar/sgr.html#->.m,untyped,untyped,untyped	sgr: `-&gt;`(route, at, body: untyped): untyped	
-Sugar 🍎	happyx/sugar/sgr.html#sugar-🍎	 Sugar 🍎	
--&gt; Macro	happyx/sugar/sgr.html#nimminusgt-macro	 <tt class="docutils literal"><span class="pre"><span class="Operator">-&gt;</span></span></tt> Macro	
+nimTitle	sgr	happyx/sugar/sgr.html	module src/happyx/sugar/sgr		0
+nim	sugarRoutes	happyx/sugar/sgr.html#sugarRoutes	const sugarRoutes		25
+nim	`:=`	happyx/sugar/sgr.html#:=.t,untyped,untyped	template `:=`(name, value: untyped): untyped		28
+nim	has	happyx/sugar/sgr.html#has,typedesc[T],U	proc has[T: HoleyEnum; U](e: typedesc[T]; val: U): bool		32
+nim	has	happyx/sugar/sgr.html#has,typedesc[T],U_2	proc has[T: OrdinalEnum; U](e: typedesc[T]; val: U): bool		45
+nim	`->`	happyx/sugar/sgr.html#->.m,untyped,untyped,untyped	macro `->`(route, at, body: untyped): untyped		58
+nimgrp	has	happyx/sugar/sgr.html#has-procs-all	proc		32
+heading	Sugar 🍎	happyx/sugar/sgr.html#sugar-🍎	 Sugar 🍎		0
+heading	nim-> Macro	happyx/sugar/sgr.html#nimminusgt-macro	 <tt class="docutils literal"><span class="pre"><span class="Operator">-&gt;</span></span></tt> Macro		0

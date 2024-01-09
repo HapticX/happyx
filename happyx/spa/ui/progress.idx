@@ -1,10 +1,11 @@
-ProgressAction	happyx/spa/ui/progress.html#ProgressAction	progress: ProgressAction	
-DefaultProgressAction	happyx/spa/ui/progress.html#DefaultProgressAction	progress: DefaultProgressAction	
-ProgressBarObj	happyx/spa/ui/progress.html#ProgressBarObj	progress: ProgressBarObj	
-ProgressBar	happyx/spa/ui/progress.html#ProgressBar	progress: ProgressBar	
-initProgressBar	happyx/spa/ui/progress.html#initProgressBar,string,ProgressAction,ProgressBarType,bool,string,int,int,tuple[int,int]	progress: initProgressBar(uniqCompId: string;\n                action: ProgressAction = default(ProgressAction);\n                progressType: ProgressBarType = default(ProgressBarType);\n                showPercent: bool = default(bool);\n                title: string = default(string); value: int = default(int);\n                maxValue: int = default(int);\n                size: tuple[a, b: int] = default(tuple[a, b: int])): ProgressBar	
-reRender	happyx/spa/ui/progress.html#reRender.e,ProgressBar	progress: reRender(self: ProgressBar)	
-renderTag	happyx/spa/ui/progress.html#renderTag,ProgressBar	progress: renderTag(self: ProgressBar): TagRef	
-render	happyx/spa/ui/progress.html#render.e,ProgressBar	progress: render(self: ProgressBar): TagRef	
-ProgressBar Component ✨	happyx/spa/ui/progress.html#progressbar-component-✨	 ProgressBar Component ✨	
-Params ⚙	happyx/spa/ui/progress.html#progressbar-component-✨-params-⚙	   Params ⚙	
+nimTitle	progress	happyx/spa/ui/progress.html	module src/happyx/spa/ui/progress		0
+nim	ProgressAction	happyx/spa/ui/progress.html#ProgressAction	type ProgressAction		43
+nim	DefaultProgressAction	happyx/spa/ui/progress.html#DefaultProgressAction	const DefaultProgressAction		45
+nim	ProgressBarObj	happyx/spa/ui/progress.html#ProgressBarObj	object ProgressBarObj		702
+nim	ProgressBar	happyx/spa/ui/progress.html#ProgressBar	type ProgressBar		702
+nim	initProgressBar	happyx/spa/ui/progress.html#initProgressBar,string,ProgressAction,ProgressBarType,bool,string,int,int,tuple[int,int]	proc initProgressBar(uniqCompId: string;\n                action: ProgressAction = default(ProgressAction);\n                progressType: ProgressBarType = default(ProgressBarType);\n                showPercent: bool = default(bool);\n                title: string = default(string); value: int = default(int);\n                maxValue: int = default(int);\n                size: tuple[a, b: int] = default(tuple[a, b: int])): ProgressBar		48
+nim	reRender	happyx/spa/ui/progress.html#reRender.e,ProgressBar	method reRender(self: ProgressBar)		48
+nim	renderTag	happyx/spa/ui/progress.html#renderTag,ProgressBar	proc renderTag(self: ProgressBar): TagRef		48
+nim	render	happyx/spa/ui/progress.html#render.e,ProgressBar	method render(self: ProgressBar): TagRef		48
+heading	ProgressBar Component ✨	happyx/spa/ui/progress.html#progressbar-component-✨	 ProgressBar Component ✨		0
+heading	Params ⚙	happyx/spa/ui/progress.html#progressbar-component-✨-params-⚙	   Params ⚙		0

@@ -1,3 +1,4 @@
-use	happyx/sugar/use.html#use.m,untyped,static[bool],string	use: use(expr: untyped; inComp: static[bool] = false; compTmpVar: string = &quot;&quot;): untyped	
-Use Macro ✨	happyx/sugar/use.html#use-macro-✨	 Use Macro ✨	
-Components 🍍	happyx/sugar/use.html#use-macro-✨-components-🍍	  Components 🍍	
+nimTitle	use	happyx/sugar/use.html	module src/happyx/sugar/use		0
+nim	use	happyx/sugar/use.html#use.m,untyped,static[bool],string	macro use(expr: untyped; inComp: static[bool] = false; compTmpVar: string = ""): untyped		29
+heading	Use Macro ✨	happyx/sugar/use.html#use-macro-✨	 Use Macro ✨		0
+heading	Components 🍍	happyx/sugar/use.html#use-macro-✨-components-🍍	  Components 🍍		0

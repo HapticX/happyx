@@ -1,9 +1,10 @@
-CardObj	happyx/spa/ui/card.html#CardObj	card: CardObj	
-Card	happyx/spa/ui/card.html#Card	card: Card	
-setAlign	happyx/spa/ui/card.html#setAlign,Card,Alignment,Alignment	card: setAlign(self: Card; vertical, horizontal: Alignment)	
-initCard	happyx/spa/ui/card.html#initCard,string,string,Alignment,Alignment,string,string	card: initCard(uniqCompId: string; class: string = default(string);\n         hAlign: Alignment = default(Alignment);\n         vAlign: Alignment = default(Alignment);\n         vAlignHidden: string = default(string);\n         hAlignHidden: string = default(string)): Card	
-reRender	happyx/spa/ui/card.html#reRender.e,Card	card: reRender(self: Card)	
-renderTag	happyx/spa/ui/card.html#renderTag,Card	card: renderTag(self: Card): TagRef	
-render	happyx/spa/ui/card.html#render.e,Card	card: render(self: Card): TagRef	
-Card 🎴	happyx/spa/ui/card.html#card-🎴	 Card 🎴	
-Params ⚙	happyx/spa/ui/card.html#card-🎴-params-⚙	   Params ⚙	
+nimTitle	card	happyx/spa/ui/card.html	module src/happyx/spa/ui/card		0
+nim	CardObj	happyx/spa/ui/card.html#CardObj	object CardObj		702
+nim	Card	happyx/spa/ui/card.html#Card	type Card		702
+nim	setAlign	happyx/spa/ui/card.html#setAlign,Card,Alignment,Alignment	proc setAlign(self: Card; vertical, horizontal: Alignment)		54
+nim	initCard	happyx/spa/ui/card.html#initCard,string,string,Alignment,Alignment,string,string	proc initCard(uniqCompId: string; class: string = default(string);\n         hAlign: Alignment = default(Alignment);\n         vAlign: Alignment = default(Alignment);\n         vAlignHidden: string = default(string);\n         hAlignHidden: string = default(string)): Card		40
+nim	reRender	happyx/spa/ui/card.html#reRender.e,Card	method reRender(self: Card)		40
+nim	renderTag	happyx/spa/ui/card.html#renderTag,Card	proc renderTag(self: Card): TagRef		40
+nim	render	happyx/spa/ui/card.html#render.e,Card	method render(self: Card): TagRef		40
+heading	Card 🎴	happyx/spa/ui/card.html#card-🎴	 Card 🎴		0
+heading	Params ⚙	happyx/spa/ui/card.html#card-🎴-params-⚙	   Params ⚙		0

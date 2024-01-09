@@ -1,3 +1,4 @@
-generate_password	happyx/core/secure.html#generate_password	secure: generate_password(source): MDigest[512]	
-check_password	happyx/core/secure.html#check_password,,	secure: check_password(source, hash): bool	
-Secure 🔐	happyx/core/secure.html#secure-🔐	 Secure 🔐	
+nimTitle	secure	happyx/core/secure.html	module src/happyx/core/secure		0
+nim	generate_password	happyx/core/secure.html#generate_password	proc generate_password(source: string): MDigest[512]		27
+nim	check_password	happyx/core/secure.html#check_password,,	proc check_password(source, hash): bool		47
+heading	Secure 🔐	happyx/core/secure.html#secure-🔐	 Secure 🔐		0

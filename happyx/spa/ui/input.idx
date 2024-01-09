@@ -1,10 +1,11 @@
-InputAction	happyx/spa/ui/input.html#InputAction	input: InputAction	
-DefaultInputAction	happyx/spa/ui/input.html#DefaultInputAction	input: DefaultInputAction	
-InputObj	happyx/spa/ui/input.html#InputObj	input: InputObj	
-Input	happyx/spa/ui/input.html#Input	input: Input	
-initInput	happyx/spa/ui/input.html#initInput,string,InputAction,string,string,string	input: initInput(uniqCompId: string; inputAction: InputAction = default(InputAction);\n          placeholder: string = default(string);\n          label: string = default(string); inputType: string = default(string)): Input	
-reRender	happyx/spa/ui/input.html#reRender.e,Input	input: reRender(self: Input)	
-renderTag	happyx/spa/ui/input.html#renderTag,Input	input: renderTag(self: Input): TagRef	
-render	happyx/spa/ui/input.html#render.e,Input	input: render(self: Input): TagRef	
-Input Component ✨	happyx/spa/ui/input.html#input-component-✨	 Input Component ✨	
-Params ⚙	happyx/spa/ui/input.html#input-component-✨-params-⚙	   Params ⚙	
+nimTitle	input	happyx/spa/ui/input.html	module src/happyx/spa/ui/input		0
+nim	InputAction	happyx/spa/ui/input.html#InputAction	type InputAction		36
+nim	DefaultInputAction	happyx/spa/ui/input.html#DefaultInputAction	const DefaultInputAction		38
+nim	InputObj	happyx/spa/ui/input.html#InputObj	object InputObj		702
+nim	Input	happyx/spa/ui/input.html#Input	type Input		702
+nim	initInput	happyx/spa/ui/input.html#initInput,string,InputAction,string,string,string	proc initInput(uniqCompId: string; inputAction: InputAction = default(InputAction);\n          placeholder: string = default(string);\n          label: string = default(string); inputType: string = default(string)): Input		41
+nim	reRender	happyx/spa/ui/input.html#reRender.e,Input	method reRender(self: Input)		41
+nim	renderTag	happyx/spa/ui/input.html#renderTag,Input	proc renderTag(self: Input): TagRef		41
+nim	render	happyx/spa/ui/input.html#render.e,Input	method render(self: Input): TagRef		41
+heading	Input Component ✨	happyx/spa/ui/input.html#input-component-✨	 Input Component ✨		0
+heading	Params ⚙	happyx/spa/ui/input.html#input-component-✨-params-⚙	   Params ⚙		0

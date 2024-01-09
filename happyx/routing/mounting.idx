@@ -1,6 +1,7 @@
-registeredMounts	happyx/routing/mounting.html#registeredMounts	mounting: registeredMounts	
-findAndReplaceMount	happyx/routing/mounting.html#findAndReplaceMount,NimNode	mounting: findAndReplaceMount(body: NimNode)	
-mount	happyx/routing/mounting.html#mount.m,untyped,untyped	mounting: mount(mountName, body: untyped): untyped	
-Usage	happyx/routing/mounting.html#usage	  Usage	
-Mounting 🔌	happyx/routing/mounting.html#mounting-🔌	 Mounting 🔌	
-Usage Example 🔨	happyx/routing/mounting.html#mounting-🔌-usage-example-🔨	  Usage Example 🔨	
+nimTitle	mounting	happyx/routing/mounting.html	module src/happyx/routing/mounting		0
+nim	registeredMounts	happyx/routing/mounting.html#registeredMounts	const registeredMounts		30
+nim	findAndReplaceMount	happyx/routing/mounting.html#findAndReplaceMount,NimNode	proc findAndReplaceMount(body: NimNode)		33
+nim	mount	happyx/routing/mounting.html#mount.m,untyped,untyped	macro mount(mountName, body: untyped): untyped		72
+heading	Usage	happyx/routing/mounting.html#mounting-🔌-usage	  Usage		0
+heading	Mounting 🔌	happyx/routing/mounting.html#mounting-🔌	 Mounting 🔌		0
+heading	Usage Example 🔨	happyx/routing/mounting.html#mounting-🔌-usage-example-🔨	  Usage Example 🔨		0

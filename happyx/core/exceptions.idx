@@ -1,15 +1,16 @@
-HpxPathParamDefect	happyx/core/exceptions.html#HpxPathParamDefect	exceptions: HpxPathParamDefect	
-HpxServeRouteDefect	happyx/core/exceptions.html#HpxServeRouteDefect	exceptions: HpxServeRouteDefect	
-HpxAppRouteDefect	happyx/core/exceptions.html#HpxAppRouteDefect	exceptions: HpxAppRouteDefect	
-HpxCorsDefect	happyx/core/exceptions.html#HpxCorsDefect	exceptions: HpxCorsDefect	
-HpxComponentDefect	happyx/core/exceptions.html#HpxComponentDefect	exceptions: HpxComponentDefect	
-HpxModelSyntaxDefect	happyx/core/exceptions.html#HpxModelSyntaxDefect	exceptions: HpxModelSyntaxDefect	
-HpxMountDefect	happyx/core/exceptions.html#HpxMountDefect	exceptions: HpxMountDefect	
-HpxSyntaxSugarDefect	happyx/core/exceptions.html#HpxSyntaxSugarDefect	exceptions: HpxSyntaxSugarDefect	
-HpxBuildHtmlDefect	happyx/core/exceptions.html#HpxBuildHtmlDefect	exceptions: HpxBuildHtmlDefect	
-HpxBuildStyleDefect	happyx/core/exceptions.html#HpxBuildStyleDefect	exceptions: HpxBuildStyleDefect	
-HpxBuildJsDefect	happyx/core/exceptions.html#HpxBuildJsDefect	exceptions: HpxBuildJsDefect	
-HpxTranslatableDefect	happyx/core/exceptions.html#HpxTranslatableDefect	exceptions: HpxTranslatableDefect	
-HpxUseDefect	happyx/core/exceptions.html#HpxUseDefect	exceptions: HpxUseDefect	
-throwDefect	happyx/core/exceptions.html#throwDefect,typedesc,string,LineInfo	exceptions: throwDefect(defect: typedesc; msg: string; lineInfo: LineInfo)	
-HappyX Exceptions 🧨	happyx/core/exceptions.html#happyx-exceptions-🧨	 HappyX Exceptions 🧨	
+nimTitle	exceptions	happyx/core/exceptions.html	module src/happyx/core/exceptions		0
+nim	HpxPathParamDefect	happyx/core/exceptions.html#HpxPathParamDefect	object HpxPathParamDefect		12
+nim	HpxServeRouteDefect	happyx/core/exceptions.html#HpxServeRouteDefect	object HpxServeRouteDefect		13
+nim	HpxAppRouteDefect	happyx/core/exceptions.html#HpxAppRouteDefect	object HpxAppRouteDefect		14
+nim	HpxCorsDefect	happyx/core/exceptions.html#HpxCorsDefect	object HpxCorsDefect		15
+nim	HpxComponentDefect	happyx/core/exceptions.html#HpxComponentDefect	object HpxComponentDefect		16
+nim	HpxModelSyntaxDefect	happyx/core/exceptions.html#HpxModelSyntaxDefect	object HpxModelSyntaxDefect		17
+nim	HpxMountDefect	happyx/core/exceptions.html#HpxMountDefect	object HpxMountDefect		18
+nim	HpxSyntaxSugarDefect	happyx/core/exceptions.html#HpxSyntaxSugarDefect	object HpxSyntaxSugarDefect		19
+nim	HpxBuildHtmlDefect	happyx/core/exceptions.html#HpxBuildHtmlDefect	object HpxBuildHtmlDefect		20
+nim	HpxBuildStyleDefect	happyx/core/exceptions.html#HpxBuildStyleDefect	object HpxBuildStyleDefect		21
+nim	HpxBuildJsDefect	happyx/core/exceptions.html#HpxBuildJsDefect	object HpxBuildJsDefect		22
+nim	HpxTranslatableDefect	happyx/core/exceptions.html#HpxTranslatableDefect	object HpxTranslatableDefect		23
+nim	HpxUseDefect	happyx/core/exceptions.html#HpxUseDefect	object HpxUseDefect		24
+nim	throwDefect	happyx/core/exceptions.html#throwDefect,typedesc,string,LineInfo	proc throwDefect(defect: typedesc; msg: string; lineInfo: LineInfo)		27
+heading	HappyX Exceptions 🧨	happyx/core/exceptions.html#happyx-exceptions-🧨	 HappyX Exceptions 🧨		0

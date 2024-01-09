@@ -1,3 +1,4 @@
-toJsonNode	happyx/ssr/utils.html#toJsonNode	utils: toJsonNode(headers: HttpHeaders | Option[HttpHeaders]): JsonNode	
-toHttpHeaders	happyx/ssr/utils.html#toHttpHeaders,JsonNode	utils: toHttpHeaders(json: JsonNode): HttpHeaders	
-SSR Utils	happyx/ssr/utils.html#ssr-utils	 SSR Utils	
+nimTitle	utils	happyx/ssr/utils.html	module src/happyx/ssr/utils		0
+nim	toJsonNode	happyx/ssr/utils.html#toJsonNode	proc toJsonNode(headers: HttpHeaders | Option[HttpHeaders]): JsonNode		12
+nim	toHttpHeaders	happyx/ssr/utils.html#toHttpHeaders,JsonNode	proc toHttpHeaders(json: JsonNode): HttpHeaders		24
+heading	SSR Utils	happyx/ssr/utils.html#ssr-utils	 SSR Utils		0
