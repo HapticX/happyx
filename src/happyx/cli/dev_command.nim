@@ -35,7 +35,7 @@ proc devCommand*(host: string = "127.0.0.1", port: int = 5000,
 
   # Start server for SPA
   styledEcho "⚡ Server launched at ", fgGreen, styleUnderscore, "http://", host, ":", $port, fgWhite
-  openDefaultBrowser("http://" & host & ":" & $port & "/#/")
+  openDefaultBrowser("http://" & host & ":" & $port & "/")
 
   serve host, port:
     get "/":

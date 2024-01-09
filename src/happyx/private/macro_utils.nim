@@ -45,6 +45,10 @@ proc bracket*(node: varargs[NimNode]): NimNode =
     result.add(i)
 
 
+proc newCast*(fromType, toType: NimNode): NimNode =
+  newNimNode(nnkCast).add(toType, fromType)
+
+
 proc newLambda*(body: NimNode, params: seq[NimNode] | NimNode = @[newEmptyNode()],
                 pragmas: seq[NimNode] | seq[string] = @[newEmptyNode()]): NimNode =
   ## Creates a new lambda
@@ -125,14 +129,25 @@ proc useComponent*(statement: NimNode, inCycle, inComponent: bool,
                    cycleTmpVar: string, compTmpVar: NimNode, cycleVars: var seq[NimNode],
                    returnTagRef: bool = true, constructor: bool = false,
                    nameIsIdent: bool = false): NimNode =
-  let
+  var
     name =
       if statement[1].kind == nnkCall:
-        statement[1][0]
+        if statement[1][0].kind in AtomicNodes:
+          statement[1][0]
+        elif statement[1][0].kind == nnkBracketExpr:
+          statement[1][0][0]
+        else:
+          statement[1][0][0]
       elif statement[1].kind == nnkInfix:
         statement[1][1]
       else:
         statement[1]
+    generics =
+      if statement[1].kind == nnkCall and statement[1][0].kind == nnkBracketExpr:
+        statement[1][0]
+      else:
+        newEmptyNode()
+    hasGenerics = generics.kind != nnkEmpty
     componentName = fmt"comp{uniqueId.value}{uniqueId.value + 2}{uniqueId.value * 2}{uniqueId.value + 7}"
     componentNameIdent =
       if cycleTmpVar == "" and compTmpVar.kind == nnkEmpty:
@@ -144,10 +159,19 @@ proc useComponent*(statement: NimNode, inCycle, inComponent: bool,
       else:
         newCall("&", newLit(componentName), newCall("&", newCall("$", compTmpVar), newCall("$", ident(cycleTmpVar))))
     objConstr =
-      if constructor:
-        newCall(fmt"constructor_{name}")
+      if hasGenerics:
+        var x = generics.copy()
+        x[0] = 
+          if constructor:
+            ident(fmt"constructor_{name}")
+          else:
+            ident(fmt"init{name.toStrLit}")
+        newCall(x)
       else:
-        newCall(fmt"init{name.toStrLit}")
+        if constructor:
+          newCall(fmt"constructor_{name}")
+        else:
+          newCall(fmt"init{name.toStrLit}")
     componentNameTmp = "_" & componentName
     componentData = "data_" & componentName
     stringId =
@@ -185,16 +209,25 @@ proc useComponent*(statement: NimNode, inCycle, inComponent: bool,
       newVarStmt(ident(componentNameTmp), objConstr),
       newVarStmt(
         ident(componentName),
-        newCall(
-          name,
-          newCall("registerComponent", stringId, ident(componentNameTmp))
-        )
+        if hasGenerics:
+          newCast(
+            newCall("registerComponent", stringId, ident(componentNameTmp)),
+            generics
+          )
+        else:
+          newCall(
+            name,
+            newCall("registerComponent", stringId, ident(componentNameTmp))
+          )
       ),
       newAssignment(
         newDotExpr(ident(componentName), ident"slot"),
         newLambda(
           newStmtList(
-            newVarStmt(ident"scopeSelf", newDotExpr(ident"scopeSelf", name)),
+            if hasGenerics:
+              newVarStmt(ident"scopeSelf", newCast(ident"scopeSelf", generics))
+            else:
+              newVarStmt(ident"scopeSelf", newDotExpr(ident"scopeSelf", name)),
             newLetStmt(
               ident"_res",
               newNimNode(nnkIfExpr).add(
@@ -401,7 +434,7 @@ proc addAttribute*(node, key, value: NimNode, inComponent: bool = false) =
 
 
 proc endsWithBuildHtml*(statement: NimNode): bool =
-  statement[^1].kind == nnkCall and $statement[^1][0] == "buildHtml"
+  statement[^1].kind == nnkCall and statement[^1][0] == ident"buildHtml"
 
 
 proc replaceSelfComponent*(statement, componentName: NimNode, parent: NimNode = nil,
@@ -535,7 +568,13 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
 
     elif statement.kind == nnkCall and statement[0].kind != nnkPrefix:
       let
-        tagName = newLit(getTagName($statement[0]))
+        tagName =
+          if statement[0].kind in AtomicNodes:
+            newLit(getTagName($statement[0]))
+          elif statement[0].kind in [nnkBracketExpr, nnkDotExpr]:
+            newLit(getTagName($statement[0][0]))
+          else:
+            newLit""
         statementList = statement[^1]
         compName =
           if statement[0].kind in AtomicNodes:
@@ -547,7 +586,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
             newCall(
               "and",
               newCall("declared", compName),
-              newCall("not", newCall("contains", ident"htmlTagsList", newLit(getTagName($compName.toStrLit))))
+              newCall("not", newCall("contains", ident"htmlTagsList", tagName))
             )
           ),
           newNimNode(nnkElse)
@@ -594,8 +633,8 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
             newNimNode(nnkElifBranch).add(
               newCall(
                 "and",
-                newCall("declared", statement[0]),
-                newCall("is", statement[0], ident"TagRef")
+                newCall("declared", compName),
+                newCall("is", compName, ident"TagRef")
               ),
               if statement[^1].kind == nnkStmtList:
                 newStmtList(
@@ -906,12 +945,6 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
         )
       if statement == ident"slot":
         # slot
-        if not inComponent:
-          throwDefect(
-            HpxComponentDefect,
-            fmt"Slots can be used only in components!",
-            lineInfoObj(statement)
-          )
         let
           cycleCounter =
             if cycleTmpVar == "":

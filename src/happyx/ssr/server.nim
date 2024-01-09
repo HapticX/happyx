@@ -637,6 +637,8 @@ proc detectReturnStmt(node: NimNode, replaceReturn: bool = false) =
               newCall("answer", ident"req", child[0])
             )
           )
+      # Really complete route after any return statement
+      node.insert(i+1, newNimNode(nnkReturnStmt).add(newEmptyNode()))
     else:
       node[i].detectReturnStmt(true)
   # Replace last node

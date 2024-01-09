@@ -14,6 +14,16 @@ serve "127.0.0.1", 5000:
   post "/[task:Task]":
     echo task.id
     return task.id
+  
+  get "/x/$x":
+    if x == "1":
+      return x
+    echo 1
+    if x == "2":
+      return x
+    echo 2
+    return x
+    echo x
 
   get "/{k:enum(Kind)}/{x}":
     "1" & x

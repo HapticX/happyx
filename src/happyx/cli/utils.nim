@@ -439,3 +439,68 @@ proc updateHappyx*(version: string) =
   
   sleep(1000)
   styledEcho fgMagenta, emoji["✨"](), " HappyX ", fgGreen, "successfully updated to ", fgMagenta, version
+
+
+proc minifyJs*(jsCode: string): string =
+  result = jsCode
+  let
+    keywords = @[
+      "import", "export", "default", "from",
+      "if", "else", "return",
+      "var", "const", "let",
+      "for", "switch", "case", "break", "continue", "do", "while",
+      "typeof", "instanceof",
+      "new",
+      "try", "catch", "finally", "throw",
+      "class", "extends", "super",
+      "this",
+      "true", "false", "null", "undefined", "NaN",
+      "async", "await"
+    ]
+  echo result.len.int64.formatSize(prefix = bpColloquial, includeSpace = true)
+  result = result.replace(re2"(else +if|while|for|if|do|else|switch)\s+", "$1")
+  result = result.replace(re2"\blastJSError\b", "le")
+  result = result.replace(re2"\bprevJSError\b", "pe")
+  result = result.replace("  ", " ")
+  # Find and replace all variables, functions, etc
+  eraseLine()
+  cursorUp()
+  echo alignLeft($result.len.int64.formatSize(prefix = bpColloquial, includeSpace = true), 24)
+  var
+    counter = 0
+    found: seq[string] = @[]
+    minSize = int.high
+  for i in result.findAll(re2("\\b(\\w+_[\\w\\d]+)\\b(?!\\.)")):
+    let j = result[i.group(0)]
+    if j notin found:
+      found.add(j)
+      found.add(fmt"a{counter}")
+      result = result.replace(j, fmt"a{counter}")
+      inc counter
+      eraseLine()
+      cursorUp()
+      echo alignLeft($result.len.int64.formatSize(prefix = bpColloquial, includeSpace = true), 24)
+  # Find ConstSet, Temporary, Field, NTI\d+ and NNI\d+
+  found = @[]
+  counter = 0
+  for i in result.findAll(re2"(ConstSet|Temporary|Field|N[TN]I)\d+"):
+    let j = result[i.group(0)]
+    if j notin found:
+      found.add(j)
+      result = result.replace(j, fmt"b{counter}")
+      inc counter
+      eraseLine()
+      cursorUp()
+      echo alignLeft($result.len.int64.formatSize(prefix = bpColloquial, includeSpace = true), 24)
+  # Find functions
+  found = @[]
+  counter = 0
+  for i in result.findAll(re2"function ([c-z][a-zA-Z0-9_])*"):
+    let j = result[i.group(0)]
+    if j notin found:
+      found.add(j)
+      result = result.replace(j[9..^1], fmt" c{counter}")
+      inc counter
+      eraseLine()
+      cursorUp()
+      echo alignLeft($result.len.int64.formatSize(prefix = bpColloquial, includeSpace = true), 24)

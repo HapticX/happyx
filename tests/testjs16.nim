@@ -30,16 +30,50 @@ component withReps:
       tDiv(style="border: 0.2em dotted gray;"):
         slot
 
+component withRepsSquared:
+  n: int = 2
+  `template`:
+    withReps(2):
+      slot
+
+
+component A[T]:
+  value: T
+  html:
+    tDiv:
+      "value is {self.value}"
+      when self.value is State[string]:
+        tP:
+          "Hello, value is string"
+      tDiv:
+        slot
+
+
+component Some[T: int | float, A, B: string]:
+  value: T
+  x: A
+  y: B
+  `template`:
+    tDiv:
+      tP: "Some value is {self.value}"
+      tP: "Some x,y is {self.x},{self.y}"
+
+
+component B of A[int]:
+  html:
+    tDiv:
+      "["
+      super()
+      "]"
+
+
 # declare path params
 pathParams:
   paramName int:  # assign param name
     optional  # param is optional
     mutable  # param is mutable variable
     default = 100  # default param value is 100
-  arg13 int:
-    optional
-    mutable
-    default = 100
+
 
 appRoutes "app":
   "/":
@@ -47,5 +81,15 @@ appRoutes "app":
       withCounter()
       withRandom()
       "non-component rand {rand(99)}"
+    component withRepsSquared(2):
+      "non-component rand {rand(99)}"
   "/<paramName>":
     {paramName}
+  "/compsT":
+    tDiv:
+      A[int](5)
+      A[seq[int]](@[1, 2, 3, 4])
+      A[string]("hello"):
+        "im a slot"
+      Some[int, string, string](5, "0", "1")
+      B(5)

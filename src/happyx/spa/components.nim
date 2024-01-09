@@ -40,7 +40,7 @@ proc replaceSelfStateVal(statement: NimNode) =
     i.replaceSelfStateVal()
 
 
-proc replaceSuperCall(statement: NimNode, parentComponent, funcName: string, needDiscard: bool = false) =
+proc replaceSuperCall(statement, parentComponent: NimNode, funcName: string, needDiscard: bool = false, parentHasGenerics: bool = false) =
   ## Replaces super() calls in `statement`
   var superCallsIdx: seq[int] = @[]
   for idx, child in statement.pairs:
@@ -50,17 +50,23 @@ proc replaceSuperCall(statement: NimNode, parentComponent, funcName: string, nee
   for i in superCallsIdx:
     if needDiscard:
       statement[i] = newNimNode(nnkDiscardStmt).add(
-        newCall("procCall", newDotExpr(newDotExpr(ident"self", ident(parentComponent)), ident(funcName)))
+        if parentHasGenerics:
+          newCall("procCall", newDotExpr(newCast(ident"self", parentComponent), ident(funcName)))
+        else:
+          newCall("procCall", newDotExpr(newDotExpr(ident"self", parentComponent), ident(funcName)))
       )
     else:
       statement[i] = newCall(
         "procCall",
-        newDotExpr(newDotExpr(ident"self", ident(parentComponent)), ident(funcName))
+        if parentHasGenerics:
+          newDotExpr(newCast(ident"self", parentComponent), ident(funcName))
+        else:
+          newDotExpr(newDotExpr(ident"self", parentComponent), ident(funcName))
       )
   
   for child in statement.children:
     if child.kind notin AtomicNodes:
-      replaceSuperCall(child, parentComponent, funcName, needDiscard)
+      replaceSuperCall(child, parentComponent, funcName, needDiscard, parentHasGenerics)
 
 
 template reRenderTmpl*() =
@@ -207,16 +213,89 @@ macro component*(name, body: untyped): untyped =
     componentName =
       if name.kind == nnkIdent:
         $name
+      elif name.kind == nnkBracketExpr:
+        $name[0]
       elif name.kind == nnkInfix:
         $name[1]
       else:
         ""
-    extendsOf =
+    inherited =
       if name.kind == nnkInfix:
+        name[1]
+      else:
+        name
+    inheritedObj = block:
+      if inherited.kind == nnkBracketExpr:
+        var x = newNimNode(nnkBracketExpr).add(ident($inherited[0] & "Obj"))
+        for i in inherited[1..^1]:
+          x.add(i)
+        x
+      else:
+        ident($inherited & "Obj")
+    extendsOf =
+      if name.kind == nnkInfix and name[2].kind == nnkIdent:
         $name[2]
+      elif name.kind == nnkInfix and name[2].kind == nnkBracketExpr:
+        $name[2][0]
       else:
         ""
-  
+    extendsOfNode =
+      if name.kind == nnkInfix:
+        name[2]
+      else:
+        newEmptyNode()
+    hasGenerics = name.kind == nnkBracketExpr or (name.kind == nnkInfix and name[0].kind == nnkBracketExpr)
+    extendsHasGenerics = extendsOfNode.kind == nnkBracketExpr
+    generics = block:
+      let nm =
+        if name.kind == nnkBracketExpr:
+          name
+        elif name.kind == nnkInfix and name[1].kind == nnkBracketExpr:
+          name[1]
+        else:
+          newEmptyNode()
+      if nm.kind != nnkEmpty:
+        var x = newNimNode(nnkGenericParams)
+        for i in nm[1..^1]:
+          if i.kind == nnkIdent:
+            x.add(newIdentDefs(i, newEmptyNode()))
+          elif i.kind == nnkExprColonExpr:
+            x.add(newIdentDefs(i[0], i[1]))
+        x
+      else:
+        nm
+    genericsIdent =
+      if generics.kind != nnkEmpty:
+        var x = newNimNode(nnkBracketExpr).add(inherited[0])
+        for i in generics:
+          x.add(i[0])
+        x
+      else:
+        newEmptyNode()
+    genericsOfIdent =
+      if generics.kind != nnkEmpty:
+        var x = newNimNode(nnkBracketExpr).add(inheritedObj[0])
+        for i in generics:
+          x.add(i[0])
+        x
+      else:
+        newEmptyNode()
+    parentGenerics = block:
+      let nm =
+        if name.kind == nnkInfix and name[2].kind == nnkBracketExpr:
+          name[2]
+        else:
+          newEmptyNode()
+      if nm.kind != nnkEmpty:
+        var x = newNimNode(nnkGenericParams)
+        for i in nm[1..^1]:
+          if i.kind == nnkIdent:
+            x.add(newIdentDefs(i, newEmptyNode()))
+          elif i.kind == nnkExprColonExpr:
+            x.add(newIdentDefs(i[0], i[1]))
+        x
+      else:
+        nm
   if componentName == "":
     throwDefect(
       HpxComponentDefect,
@@ -242,7 +321,8 @@ macro component*(name, body: untyped): untyped =
     initParams = newNimNode(nnkFormalParams)
     initProc = newProc(postfix(ident(fmt"init{componentName}"), "*"))
     initObjConstr = newNimNode(nnkObjConstr).add(
-      ident(componentName), newColonExpr(ident(UniqueComponentId), ident(UniqueComponentId))
+      if genericsIdent.kind != nnkEmpty: genericsIdent else: inherited,
+      newColonExpr(ident(UniqueComponentId), ident(UniqueComponentId))
     )
     beforeStmtList = newStmtList()
     afterStmtList = newStmtList()
@@ -254,6 +334,7 @@ macro component*(name, body: untyped): untyped =
       ),
       nnkMethodDef
     )
+  initProc[2] = generics.copy()
   
   var
     # Components general
@@ -285,10 +366,10 @@ macro component*(name, body: untyped): untyped =
       "pageHide": false,
     }.newTable()
   
-  initParams.add(
-    ident(componentName),
-    newIdentDefs(ident(UniqueComponentId), bindSym("string"))
-  )
+  if genericsIdent.kind != nnkEmpty:
+    initParams.add(genericsIdent, newIdentDefs(ident(UniqueComponentId), bindSym("string")))
+  else:
+    initParams.add(inherited, newIdentDefs(ident(UniqueComponentId), bindSym("string")))
 
   var
     fields: seq[string] = @[]
@@ -310,7 +391,7 @@ macro component*(name, body: untyped): untyped =
   for s in body.children:
     if s.kind in [nnkCall, nnkCommand, nnkInfix, nnkPrefix]:
       # Private field
-      if s[0] != ident"constructor" and s[0].kind == nnkIdent and s.len == 2 and s[^1].kind == nnkStmtList and s[^1].len == 1:
+      if s[0] notin [ident"constructor", ident"html", ident"script", ident"style"] and s[0].kind == nnkIdent and s.len == 2 and s[^1].kind == nnkStmtList and s[^1].len == 1:
         # Extract default value and field type
         let (fieldType, defaultValue) =
           if s[^1][0].kind != nnkAsgn:
@@ -417,19 +498,22 @@ macro component*(name, body: untyped): untyped =
             )
     
       # template, style or script
-      elif s[0].kind == nnkAccQuoted or s.kind == nnkInfix and s[1].kind == nnkAccQuoted:
+      elif (s[0].kind == nnkAccQuoted or s.kind == nnkInfix and s[1].kind == nnkAccQuoted) or
+           (s[0] in [ident"html", ident"script", ident"style"]):
         var
           asType = ""
-          acc: NimNode = nil
+          acq: NimNode
         if s[0].kind == nnkAccQuoted:
-          acc = s[0]
+          acq = s[0]
+        elif s[0].kind == nnkIdent:
+          acq = newNimNode(nnkAccQuoted).add(s[0])
         else:
-          acc = s[1]
+          acq = s[1]
           asType = $s[2]
-        case $acc
-        of "template":
+        case $acq
+        of "template", "html":
           # Component template
-          s[^1].replaceSuperCall(extendsOf, "renderTag")
+          s[^1].replaceSuperCall(extendsOfNode, "renderTag", parentHasGenerics = extendsHasGenerics)
           templateStmtList = newStmtList(
             newAssignment(
               ident"result",
@@ -566,8 +650,52 @@ macro component*(name, body: untyped): untyped =
         )
       )))
       initProc[3][i][2] = newCall("default", initProc[3][i][1])
+  
+  proc allFields(fields: var seq[NimNode], extendsOf: string, generics: NimNode) =
+    if createdComponents.hasKey(extendsOf):
+      let extends = createdComponents[extendsOf][0]
+      var i = 0
+      var extendsGenerics: seq[NimNode] = @[]
+      for i in createdComponents[extendsOf][2]:
+        extendsGenerics.add(i[0])
+      for field in createdComponents[extendsOf][1]:
+        fields.add(newIdentDefs(
+          ident($field[0]),
+          if field[1] in extendsGenerics:
+            generics[extendsGenerics.find(field[1])][0]
+          else:
+            field[1],
+          field[2]
+        ))
+        inc i
+      allFields(fields, $createdComponents[extendsOf][0], createdComponents[extendsOf][3])
+
+  createdComponents[componentName] = newStmtList(
+    newLit(extendsOf),
+    newStmtList(),
+    generics,
+    parentGenerics
+  )
+  for i in 0..<fields.len:
+    createdComponents[componentName][1].add(
+      newNimNode(nnkIdentDefs).add(newLit(fields[i]), fieldTypes[i], fieldDefaults[i])
+    )
+  
+  if extendsOf != "":
+    var requiredFields: seq[NimNode] = @[]
+    allFields(requiredFields, extendsOf, parentGenerics)
+    for required in requiredFields:
+      initParams.add(newIdentDefs(required[0], required[1], required[2]))
+      initObjConstr.add(
+        newColonExpr(required[0], newCall("remember", required[0]))
+      )
+
   initProc.body = newStmtList(
-    newVarStmt(ident"self", initObjConstr),
+    if extendsOf != "":
+      var x = initObjConstr.copy()
+      newVarStmt(ident"self", x)
+    else:
+      newVarStmt(ident"self", initObjConstr),
     lifeCyclesDeclare,
     defaultValues,
     newCall("add", ident"createdComponentsList", ident"self"),
@@ -596,12 +724,8 @@ macro component*(name, body: untyped): untyped =
     newCall(newDotExpr(ident"self", ident"rendered"), ident"self")
   )
 
-  createdComponents[componentName] = newStmtList(newLit(extendsOf), newStmtList())
-  for field in fields:
-    createdComponents[componentName][1].add(newLit(field))
-
   if extendsOf != "":
-    scriptStmtList.replaceSuperCall(extendsOf, "script")
+    scriptStmtList.replaceSuperCall(extendsOfNode, "script", parentHasGenerics = extendsHasGenerics)
   
   var idx = 0
   for field in fields:
@@ -615,20 +739,20 @@ macro component*(name, body: untyped): untyped =
     newNimNode(nnkTypeSection).add(
       newNimNode(nnkTypeDef).add(
         postfix(ident(componentNameObj), "*"),  # componentName
-        newEmptyNode(),
+        generics,
         newNimNode(nnkObjectTy).add(
           newEmptyNode(),  # no pragma
           if extendsOf == "":
             newNimNode(nnkOfInherit).add(ident"BaseComponentObj")
           else:
-            newNimNode(nnkOfInherit).add(ident(extendsOf)),
+            newNimNode(nnkOfInherit).add(extendsOfNode),
           params
         )
       ),
       newNimNode(nnkTypeDef).add(
         postfix(ident(componentName), "*"),  # componentName
-        newEmptyNode(),
-        newNimNode(nnkRefTy).add(ident(componentNameObj))
+        generics,
+        newNimNode(nnkRefTy).add(if genericsOfIdent.kind != nnkEmpty: genericsOfIdent else: inheritedObj)
       )
     ),
     declareMethodsStmtList,
@@ -645,8 +769,10 @@ macro component*(name, body: untyped): untyped =
         scriptStmtList
       elif extendsOf == "":
         discardStmt()
+      elif extendsHasGenerics:
+        newCall("procCall", newDotExpr(newCast(ident"self", extendsOfNode), ident"script"))
       else:
-        newCall("procCall", newDotExpr(newDotExpr(ident"self", ident(extendsOf)), ident"script")),
+        newCall("procCall", newDotExpr(newDotExpr(ident"self", extendsOfNode), ident"script")),
       pragmas =
         when defined(js):
           newEmptyNode()
@@ -668,15 +794,20 @@ macro component*(name, body: untyped): untyped =
             ident"result",
             newCall(
               "&",
-              newCall("procCall", newDotExpr(newDotExpr(ident"self", ident(extendsOf)), ident"style")),
+              if extendsHasGenerics:
+                newCall("procCall", newDotExpr(newCast(ident"self", extendsOfNode), ident"style"))
+              else:
+                newCall("procCall", newDotExpr(newDotExpr(ident"self", extendsOfNode), ident"style")),
               ident"result"
             )
           )
         )
       elif extendsOf == "":
         newStrLitNode("")
+      elif extendsHasGenerics:
+        newCall("procCall", newDotExpr(newCast(ident"self", extendsOfNode), ident"style"))
       else:
-        newCall("procCall", newDotExpr(newDotExpr(ident"self", ident(extendsOf)), ident"style")),
+        newCall("procCall", newDotExpr(newDotExpr(ident"self", extendsOfNode), ident"style")),
       pragmas =
         when defined(js):
           newEmptyNode()
@@ -692,7 +823,10 @@ macro component*(name, body: untyped): untyped =
         elif extendsOf != "":
           newAssignment(
             ident"result",
-            newCall("procCall", newDotExpr(newDotExpr(ident"self", ident(extendsOf)), ident"renderTag"))
+            if extendsHasGenerics:
+              newCall("procCall", newDotExpr(newCast(ident"self", extendsOfNode), ident"renderTag"))
+            else:
+              newCall("procCall", newDotExpr(newDotExpr(ident"self", extendsOfNode), ident"renderTag"))
           )
         else:
           newAssignment(
@@ -742,6 +876,7 @@ macro component*(name, body: untyped): untyped =
     ),
     methodsStmtList,
   )
+  result = result.copy
   when enableDebugComponentMacro:
     echo result.toStrLit
     if componentDebugTarget == componentName:

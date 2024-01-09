@@ -186,7 +186,14 @@ macro elem*(name: untyped): untyped =
 when defined(js):
   proc route*(path: cstring) =
     ## Change current page to `path` and rerender
-    {.emit: "window.history.pushState({previous: window.location.href}, null, '#' + `path`);" .}
+    when enableHistoryApi:
+      {.emit: """
+      window.history.pushState({previous: window.location.pathname}, '', `path`);
+      """ .}
+    else:
+      {.emit: """
+      window.history.pushState({previous: window.location.href}, '', '#' + `path`);
+      """ .}
     let force = currentRoute != path
     echo force, ", ", currentRoute, ", ", path
     currentRoute = path
@@ -306,24 +313,38 @@ template start*(app: App) =
   ## use `appRoutes proc<#appRoutes.m,string>`_ instead of this
   ## because this procedure calls automatically.
   ## 
-  document.addEventListener("DOMContentLoaded", onDOMContentLoaded)
-  window.addEventListener("popstate", onDOMContentLoaded)
-  buildJs:
-    function onHashChangeCallback():
-      nim:
-        let r: cstring =
-          if ($window.location.hash)[0] == '#':
-            cstring(($window.location.hash)[1..^1])
-          else:
-            window.location.hash
-        if $r != $currentRoute:
-          echo "route from ", currentRoute, " to ", r
-          route(r)
-    window.addEventListener("hashchange", onHashChangeCallback)
-  if window.location.hash.len == 0:
-    route("/")
+  when enableHistoryApi:
+    once:
+      document.addEventListener("popstate", onDOMContentLoaded)
+    buildJs:
+      function onPathChangeCallback():
+        nim:
+          let r: cstring = window.location.pathname
+          if $r != $currentRoute:
+            echo "route from ", currentRoute, " to ", r
+            route(r)
+      window.addEventListener("popstate", onPathChangeCallback)
+    if window.location.hash.len == 0:
+      route("/")
   else:
-    {.emit : "if(window.location.hash[0]=='#'){`route`(window.location.hash.substr(1));}else{`route`(window.location.hash);}".}
+    once:
+      document.addEventListener("hashchange", onDOMContentLoaded)
+    buildJs:
+      function onHashChangeCallback():
+        nim:
+          let r: cstring =
+            if ($window.location.hash)[0] == '#':
+              cstring(($window.location.hash)[1..^1])
+            else:
+              window.location.hash
+          if $r != $currentRoute:
+            echo "route from ", currentRoute, " to ", r
+            route(r)
+      window.addEventListener("hashchange", onHashChangeCallback)
+    if window.location.hash.len == 0:
+      route("/")
+    else:
+      {.emit : "if(window.location.hash[0]=='#'){`route`(window.location.hash.substr(1));}else{`route`(window.location.hash);}".}
 
 
 macro buildHtml*(root, html: untyped): untyped =
@@ -534,7 +555,10 @@ macro routes*(app: App, body: untyped): untyped =
       ident"path",
       newCall(
         "strip",
-        newCall("$", newDotExpr(newDotExpr(ident"window", ident"location"), ident"hash")),
+        when enableHistoryApi:
+          newCall("$", newDotExpr(newDotExpr(ident"window", ident"location"), ident"pathname"))
+        else:
+          newCall("$", newDotExpr(newDotExpr(ident"window", ident"location"), ident"hash")),
         newLit(true),
         newLit(false),
         newNimNode(nnkCurly).add(newLit('#'))
