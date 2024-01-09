@@ -68,18 +68,15 @@ jobs:
       - name: Build HappyX website 🌐
         timeout-minutes: 2
         run: |
-          cd ./examples/website
-          cd ./src/
+          cd ./examples/website/src/
           nim js -d:danger --opt:size --hints:off --warnings:off main
-          cd ../
-          hpx build --no-compile
-          cd ../..
+          cd ../../..
           mkdir ./docs/happyx/public/
           mkdir ./docs/public/
-          cp ./examples/website/happyx/build/index.html ./docs/
-          cp ./examples/website/happyx/build/main.js ./docs/
-          cp ./examples/website/happyx/build/happyx/public/* ./docs/happyx/public/
-          cp ./examples/website/happyx/build/happyx/public/* ./docs/public/
+          cp ./examples/website/src/index.html ./docs/
+          cp ./examples/website/src/main.js ./docs/
+          cp ./examples/website/src/happyx/public/* ./docs/happyx/public/
+          cp ./examples/website/src/happyx/public/* ./docs/public/
 
       - name: Deploy documents 💨
         uses: peaceiris/actions-gh-pages@v3
