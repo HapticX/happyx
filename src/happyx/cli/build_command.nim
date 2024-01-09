@@ -6,7 +6,7 @@ proc buildCommand*(optSize: bool = false, no_compile: bool = false): int =
   ## Builds Single page application project into one HTML and JS files
   styledEcho emoji["🔥"](), " Welcome to ", styleBright, fgMagenta, "HappyX ", resetStyle, fgWhite, "builder"
   let project = if not no_compile: compileProject() else: readConfig()
-  assetsDir = project.assetsDir.replace("\\", "/").replace('/', DirSep)
+  let assetsDir = project.assetsDir.replace("\\", "/").replace('/', DirSep)
   if project.projectType != ptSPA:
     styledEcho fgRed, "Failure! Project isn't SPA or error wass occurred."
     return QuitFailure
