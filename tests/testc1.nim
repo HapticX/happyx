@@ -31,7 +31,7 @@ serve("127.0.0.1", 5000):
     req.answerHtml:
       buildHtml(`div`):
         tScript(src="https://cdn.tailwindcss.com")  # Tailwind CSS :D
-        `div`(class="bg-gray-700 text-pink-400 px-8 py-24"):
+        tDiv(class="bg-gray-700 text-pink-400 px-8 py-24"):
           "Hello, world!"
 
   post "/user":

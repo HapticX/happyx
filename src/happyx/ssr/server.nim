@@ -1552,7 +1552,13 @@ socketToSsr.onmessage=function(m){
     ))
   stmtList.add(caseRequestMethodsStmt)
 
-  let wsType = when enableHttpBeast: ident"AsyncWebSocket" else: ident"WebSocket"
+  let wsType =
+    when enableHttpBeast:
+      ident"AsyncWebSocket"
+    elif exportPython:
+      newDotExpr(ident"ws", ident"WebSocket")
+    else:
+      ident"WebSocket"
 
   result = newStmtList(
     if stmtList.isIdentUsed(ident"wsConnections"):
