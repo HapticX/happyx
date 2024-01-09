@@ -79,7 +79,7 @@ jobs:
         timeout-minutes: 2
         run: |
           cd ./examples/website/src/
-          nim js -d:danger --opt:size --hints:off --warnings:off --out:main_full.js main
+          nim js -d:release --opt:size --hints:off --warnings:off --out:main_full.js main
           uglifyjs main_full.js -c -m --mangle-props -o main.js
           cd ../../..
           mkdir ./docs/happyx/public/
