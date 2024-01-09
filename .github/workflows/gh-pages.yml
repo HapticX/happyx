@@ -43,8 +43,18 @@ jobs:
     needs: before
     env:
       nim_version: '2.0.0'
+      node-version: [20.x]
     steps:
       - uses: actions/checkout@v3
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      
+      - name: Install uglify-js 👀
+        run: |
+          npm install uglify-js -g
 
       - name: Cache nimble
         id: cache-nimble
@@ -69,7 +79,8 @@ jobs:
         timeout-minutes: 2
         run: |
           cd ./examples/website/src/
-          nim js -d:danger --opt:size --hints:off --warnings:off main
+          nim js -d:danger --opt:size --hints:off --warnings:off --out:main_full.js main
+          uglifyjs main_full.js -c -m --mangle-props -o main.js
           cd ../../..
           mkdir ./docs/happyx/public/
           mkdir ./docs/public/
