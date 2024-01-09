@@ -19,7 +19,7 @@ import illwill except
 
 
 
-proc buildCommandAux(optSize: bool = false): int = buildCommand(optSize)
+proc buildCommandAux(optSize: bool = false, no_compile: bool = true): int = buildCommand(optSize, no_compile)
 proc mainHelpMessageAux() = mainHelpMessage()
 proc html2tagCommandAux(output: string = "", args: seq[string]): int = html2tagCommand(output, args)
 proc updateCommandAux(args: seq[string]): int = updateCommand(args)

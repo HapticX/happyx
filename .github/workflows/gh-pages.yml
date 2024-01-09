@@ -69,7 +69,10 @@ jobs:
         timeout-minutes: 2
         run: |
           cd ./examples/website
-          hpx build
+          cd ./src/
+          nim js -d:danger --opt:size main
+          cd ../
+          hpx build --no-compile
           cd ../..
           mkdir ./docs/happyx/public/
           mkdir ./docs/public/
