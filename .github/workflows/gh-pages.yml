@@ -70,7 +70,7 @@ jobs:
         run: |
           cd ./examples/website
           cd ./src/
-          nim js -d:danger --opt:size main
+          nim js -d:danger --opt:size --hints:off --warnings:off main
           cd ../
           hpx build --no-compile
           cd ../..
