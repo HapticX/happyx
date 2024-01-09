@@ -43,7 +43,7 @@ jobs:
     needs: before
     env:
       nim_version: '2.0.0'
-      node_version: [20.x]
+      node_version: '20'
     steps:
       - uses: actions/checkout@v3
 
