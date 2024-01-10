@@ -1625,7 +1625,7 @@ socketToSsr.onmessage=function(m){
       immutableVars.add(newIdentDefs(ident"reqMethod", newEmptyNode(), reqMethod))
   if stmtList.isIdentUsed(ident"headers"):
     immutableVars.add(newIdentDefs(ident"headers", newEmptyNode(), headers))
-  if stmtList.isIdentUsed(ident"startSession"):
+  if stmtList.isIdentUsed(ident"startSession") or stmtList.isIdentUsed(ident"hostname"):
     immutableVars.add(newIdentDefs(ident"hostname", newEmptyNode(), hostname))
   when enableDebugSsrMacro:
     echo result.toStrLit
