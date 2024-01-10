@@ -480,6 +480,10 @@
           <li><a class="reference external"
           data-doc-search-tag="session: template closeSession(sessionId: string)" href="happyx/ssr/session.html#closeSession.t%2Cstring">session: template closeSession(sessionId: string)</a></li>
           </ul></dd>
+<dt><a name="compDefArg" href="#compDefArg"><span>compDefArg:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="components: proc compDefArg[T](value: typedesc[T]): T" href="happyx/spa/components.html#compDefArg%2Ctypedesc%5BT%5D">components: proc compDefArg[T](value: typedesc[T]): T</a></li>
+          </ul></dd>
 <dt><a name="component" href="#component"><span>component:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="components: macro component(name, body: untyped): untyped" href="happyx/spa/components.html#component.m%2Cuntyped%2Cuntyped">components: macro component(name, body: untyped): untyped</a></li>
@@ -892,21 +896,21 @@
           </ul></dd>
 <dt><a name="initButton" href="#initButton"><span>initButton:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="button: proc initButton(uniqCompId: string; action: ButtonAction = default(ButtonAction);
-           flat: bool = default(bool)): Button" href="happyx/spa/ui/button.html#initButton%2Cstring%2CButtonAction%2Cbool">button: proc initButton(uniqCompId: string; action: ButtonAction = default(ButtonAction);
-           flat: bool = default(bool)): Button</a></li>
+          data-doc-search-tag="button: proc initButton(uniqCompId: string; action: ButtonAction = compDefArg(ButtonAction);
+           flat: bool = compDefArg(bool)): Button" href="happyx/spa/ui/button.html#initButton%2Cstring%2CButtonAction%2Cbool">button: proc initButton(uniqCompId: string; action: ButtonAction = compDefArg(ButtonAction);
+           flat: bool = compDefArg(bool)): Button</a></li>
           </ul></dd>
 <dt><a name="initCard" href="#initCard"><span>initCard:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="card: proc initCard(uniqCompId: string; class: string = default(string);
-         hAlign: Alignment = default(Alignment);
-         vAlign: Alignment = default(Alignment);
-         vAlignHidden: string = default(string);
-         hAlignHidden: string = default(string)): Card" href="happyx/spa/ui/card.html#initCard%2Cstring%2Cstring%2CAlignment%2CAlignment%2Cstring%2Cstring">card: proc initCard(uniqCompId: string; class: string = default(string);
-         hAlign: Alignment = default(Alignment);
-         vAlign: Alignment = default(Alignment);
-         vAlignHidden: string = default(string);
-         hAlignHidden: string = default(string)): Card</a></li>
+          data-doc-search-tag="card: proc initCard(uniqCompId: string; class: string = compDefArg(string);
+         hAlign: Alignment = compDefArg(Alignment);
+         vAlign: Alignment = compDefArg(Alignment);
+         vAlignHidden: string = compDefArg(string);
+         hAlignHidden: string = compDefArg(string)): Card" href="happyx/spa/ui/card.html#initCard%2Cstring%2Cstring%2CAlignment%2CAlignment%2Cstring%2Cstring">card: proc initCard(uniqCompId: string; class: string = compDefArg(string);
+         hAlign: Alignment = compDefArg(Alignment);
+         vAlign: Alignment = compDefArg(Alignment);
+         vAlignHidden: string = compDefArg(string);
+         hAlignHidden: string = compDefArg(string)): Card</a></li>
           </ul></dd>
 <dt><a name="initHttpRequest" href="#initHttpRequest"><span>initHttpRequest:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -916,27 +920,31 @@
           </ul></dd>
 <dt><a name="initInput" href="#initInput"><span>initInput:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="input: proc initInput(uniqCompId: string; inputAction: InputAction = default(InputAction);
-          placeholder: string = default(string);
-          label: string = default(string); inputType: string = default(string)): Input" href="happyx/spa/ui/input.html#initInput%2Cstring%2CInputAction%2Cstring%2Cstring%2Cstring">input: proc initInput(uniqCompId: string; inputAction: InputAction = default(InputAction);
-          placeholder: string = default(string);
-          label: string = default(string); inputType: string = default(string)): Input</a></li>
+          data-doc-search-tag="input: proc initInput(uniqCompId: string;
+          inputAction: InputAction = compDefArg(InputAction);
+          placeholder: string = compDefArg(string);
+          label: string = compDefArg(string);
+          inputType: string = compDefArg(string)): Input" href="happyx/spa/ui/input.html#initInput%2Cstring%2CInputAction%2Cstring%2Cstring%2Cstring">input: proc initInput(uniqCompId: string;
+          inputAction: InputAction = compDefArg(InputAction);
+          placeholder: string = compDefArg(string);
+          label: string = compDefArg(string);
+          inputType: string = compDefArg(string)): Input</a></li>
           </ul></dd>
 <dt><a name="initProgressBar" href="#initProgressBar"><span>initProgressBar:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="progress: proc initProgressBar(uniqCompId: string;
-                action: ProgressAction = default(ProgressAction);
-                progressType: ProgressBarType = default(ProgressBarType);
-                showPercent: bool = default(bool);
-                title: string = default(string); value: int = default(int);
-                maxValue: int = default(int);
-                size: tuple[a, b: int] = default(tuple[a, b: int])): ProgressBar" href="happyx/spa/ui/progress.html#initProgressBar%2Cstring%2CProgressAction%2CProgressBarType%2Cbool%2Cstring%2Cint%2Cint%2Ctuple%5Bint%2Cint%5D">progress: proc initProgressBar(uniqCompId: string;
-                action: ProgressAction = default(ProgressAction);
-                progressType: ProgressBarType = default(ProgressBarType);
-                showPercent: bool = default(bool);
-                title: string = default(string); value: int = default(int);
-                maxValue: int = default(int);
-                size: tuple[a, b: int] = default(tuple[a, b: int])): ProgressBar</a></li>
+                action: ProgressAction = compDefArg(ProgressAction);
+                progressType: ProgressBarType = compDefArg(ProgressBarType);
+                showPercent: bool = compDefArg(bool);
+                title: string = compDefArg(string);
+                value: int = compDefArg(int); maxValue: int = compDefArg(int);
+                size: tuple[a, b: int] = compDefArg(tuple[a, b: int])): ProgressBar" href="happyx/spa/ui/progress.html#initProgressBar%2Cstring%2CProgressAction%2CProgressBarType%2Cbool%2Cstring%2Cint%2Cint%2Ctuple%5Bint%2Cint%5D">progress: proc initProgressBar(uniqCompId: string;
+                action: ProgressAction = compDefArg(ProgressAction);
+                progressType: ProgressBarType = compDefArg(ProgressBarType);
+                showPercent: bool = compDefArg(bool);
+                title: string = compDefArg(string);
+                value: int = compDefArg(int); maxValue: int = compDefArg(int);
+                size: tuple[a, b: int] = compDefArg(tuple[a, b: int])): ProgressBar</a></li>
           </ul></dd>
 <dt><a name="initRoute" href="#initRoute"><span>initRoute:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -1552,7 +1560,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2024-01-10 04:34:26 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2024-01-10 04:54:08 UTC</small>
       </div>
     </div>
   </div>

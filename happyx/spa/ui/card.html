@@ -70,15 +70,15 @@
     <summary><a class="reference reference-toplevel" href="#12" id="62">Procs</a></summary>
     <ul class="simple simple-toc-section">
       <ul class="simple nested-toc-section">initCard
-  <li><a class="reference" href="#initCard%2Cstring%2Cstring%2CAlignment%2CAlignment%2Cstring%2Cstring" title="initCard(uniqCompId: string; class: string = default(string);
-         hAlign: Alignment = default(Alignment);
-         vAlign: Alignment = default(Alignment);
-         vAlignHidden: string = default(string);
-         hAlignHidden: string = default(string)): Card">initCard(uniqCompId: string; class: string = default(string);
-         hAlign: Alignment = default(Alignment);
-         vAlign: Alignment = default(Alignment);
-         vAlignHidden: string = default(string);
-         hAlignHidden: string = default(string)): Card</a></li>
+  <li><a class="reference" href="#initCard%2Cstring%2Cstring%2CAlignment%2CAlignment%2Cstring%2Cstring" title="initCard(uniqCompId: string; class: string = compDefArg(string);
+         hAlign: Alignment = compDefArg(Alignment);
+         vAlign: Alignment = compDefArg(Alignment);
+         vAlignHidden: string = compDefArg(string);
+         hAlignHidden: string = compDefArg(string)): Card">initCard(uniqCompId: string; class: string = compDefArg(string);
+         hAlign: Alignment = compDefArg(Alignment);
+         vAlign: Alignment = compDefArg(Alignment);
+         vAlignHidden: string = compDefArg(string);
+         hAlignHidden: string = compDefArg(string)): Card</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">renderTag
@@ -170,11 +170,11 @@
   <dl class="item">
     <div id="initCard-procs-all">
   <div id="initCard,string,string,Alignment,Alignment,string,string">
-  <dt><pre><span class="Keyword">proc</span> <a href="#initCard%2Cstring%2Cstring%2CAlignment%2CAlignment%2Cstring%2Cstring"><span class="Identifier">initCard</span></a><span class="Other">(</span><span class="Identifier">uniqCompId</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">class</span><span class="Other">:</span> <span class="Identifier">string</span> <span class="Other">=</span> <span class="Identifier">default</span><span class="Other">(</span><span class="Identifier">string</span><span class="Other">)</span><span class="Other">;</span>
-              <span class="Identifier">hAlign</span><span class="Other">:</span> <a href="enums.html#Alignment"><span class="Identifier">Alignment</span></a> <span class="Other">=</span> <span class="Identifier">default</span><span class="Other">(</span><a href="enums.html#Alignment"><span class="Identifier">Alignment</span></a><span class="Other">)</span><span class="Other">;</span>
-              <span class="Identifier">vAlign</span><span class="Other">:</span> <a href="enums.html#Alignment"><span class="Identifier">Alignment</span></a> <span class="Other">=</span> <span class="Identifier">default</span><span class="Other">(</span><a href="enums.html#Alignment"><span class="Identifier">Alignment</span></a><span class="Other">)</span><span class="Other">;</span>
-              <span class="Identifier">vAlignHidden</span><span class="Other">:</span> <span class="Identifier">string</span> <span class="Other">=</span> <span class="Identifier">default</span><span class="Other">(</span><span class="Identifier">string</span><span class="Other">)</span><span class="Other">;</span>
-              <span class="Identifier">hAlignHidden</span><span class="Other">:</span> <span class="Identifier">string</span> <span class="Other">=</span> <span class="Identifier">default</span><span class="Other">(</span><span class="Identifier">string</span><span class="Other">)</span><span class="Other">)</span><span class="Other">:</span> <a href="card.html#Card"><span class="Identifier">Card</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+  <dt><pre><span class="Keyword">proc</span> <a href="#initCard%2Cstring%2Cstring%2CAlignment%2CAlignment%2Cstring%2Cstring"><span class="Identifier">initCard</span></a><span class="Other">(</span><span class="Identifier">uniqCompId</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">class</span><span class="Other">:</span> <span class="Identifier">string</span> <span class="Other">=</span> <span class="Identifier">compDefArg</span><span class="Other">(</span><span class="Identifier">string</span><span class="Other">)</span><span class="Other">;</span>
+              <span class="Identifier">hAlign</span><span class="Other">:</span> <a href="enums.html#Alignment"><span class="Identifier">Alignment</span></a> <span class="Other">=</span> <span class="Identifier">compDefArg</span><span class="Other">(</span><a href="enums.html#Alignment"><span class="Identifier">Alignment</span></a><span class="Other">)</span><span class="Other">;</span>
+              <span class="Identifier">vAlign</span><span class="Other">:</span> <a href="enums.html#Alignment"><span class="Identifier">Alignment</span></a> <span class="Other">=</span> <span class="Identifier">compDefArg</span><span class="Other">(</span><a href="enums.html#Alignment"><span class="Identifier">Alignment</span></a><span class="Other">)</span><span class="Other">;</span>
+              <span class="Identifier">vAlignHidden</span><span class="Other">:</span> <span class="Identifier">string</span> <span class="Other">=</span> <span class="Identifier">compDefArg</span><span class="Other">(</span><span class="Identifier">string</span><span class="Other">)</span><span class="Other">;</span>
+              <span class="Identifier">hAlignHidden</span><span class="Other">:</span> <span class="Identifier">string</span> <span class="Other">=</span> <span class="Identifier">compDefArg</span><span class="Other">(</span><span class="Identifier">string</span><span class="Other">)</span><span class="Other">)</span><span class="Other">:</span> <a href="card.html#Card"><span class="Identifier">Card</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
     <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
@@ -248,7 +248,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2024-01-10 04:34:26 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2024-01-10 04:54:07 UTC</small>
       </div>
     </div>
   </div>

@@ -79,9 +79,9 @@
     <summary><a class="reference reference-toplevel" href="#12" id="62">Procs</a></summary>
     <ul class="simple simple-toc-section">
       <ul class="simple nested-toc-section">initButton
-  <li><a class="reference" href="#initButton%2Cstring%2CButtonAction%2Cbool" title="initButton(uniqCompId: string; action: ButtonAction = default(ButtonAction);
-           flat: bool = default(bool)): Button">initButton(uniqCompId: string; action: ButtonAction = default(ButtonAction);
-           flat: bool = default(bool)): Button</a></li>
+  <li><a class="reference" href="#initButton%2Cstring%2CButtonAction%2Cbool" title="initButton(uniqCompId: string; action: ButtonAction = compDefArg(ButtonAction);
+           flat: bool = compDefArg(bool)): Button">initButton(uniqCompId: string; action: ButtonAction = compDefArg(ButtonAction);
+           flat: bool = compDefArg(bool)): Button</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">renderTag
@@ -190,8 +190,8 @@
     <div id="initButton-procs-all">
   <div id="initButton,string,ButtonAction,bool">
   <dt><pre><span class="Keyword">proc</span> <a href="#initButton%2Cstring%2CButtonAction%2Cbool"><span class="Identifier">initButton</span></a><span class="Other">(</span><span class="Identifier">uniqCompId</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span>
-                <span class="Identifier">action</span><span class="Other">:</span> <a href="button.html#ButtonAction"><span class="Identifier">ButtonAction</span></a> <span class="Other">=</span> <span class="Identifier">default</span><span class="Other">(</span><a href="button.html#ButtonAction"><span class="Identifier">ButtonAction</span></a><span class="Other">)</span><span class="Other">;</span>
-                <span class="Identifier">flat</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">default</span><span class="Other">(</span><span class="Identifier">bool</span><span class="Other">)</span><span class="Other">)</span><span class="Other">:</span> <a href="button.html#Button"><span class="Identifier">Button</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+                <span class="Identifier">action</span><span class="Other">:</span> <a href="button.html#ButtonAction"><span class="Identifier">ButtonAction</span></a> <span class="Other">=</span> <span class="Identifier">compDefArg</span><span class="Other">(</span><a href="button.html#ButtonAction"><span class="Identifier">ButtonAction</span></a><span class="Other">)</span><span class="Other">;</span>
+                <span class="Identifier">flat</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">compDefArg</span><span class="Other">(</span><span class="Identifier">bool</span><span class="Other">)</span><span class="Other">)</span><span class="Other">:</span> <a href="button.html#Button"><span class="Identifier">Button</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
     <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
@@ -253,7 +253,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2024-01-10 04:34:26 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2024-01-10 04:54:07 UTC</small>
       </div>
     </div>
   </div>

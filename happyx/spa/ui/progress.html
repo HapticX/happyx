@@ -85,18 +85,18 @@
     <ul class="simple simple-toc-section">
       <ul class="simple nested-toc-section">initProgressBar
   <li><a class="reference" href="#initProgressBar%2Cstring%2CProgressAction%2CProgressBarType%2Cbool%2Cstring%2Cint%2Cint%2Ctuple%5Bint%2Cint%5D" title="initProgressBar(uniqCompId: string;
-                action: ProgressAction = default(ProgressAction);
-                progressType: ProgressBarType = default(ProgressBarType);
-                showPercent: bool = default(bool);
-                title: string = default(string); value: int = default(int);
-                maxValue: int = default(int);
-                size: tuple[a, b: int] = default(tuple[a, b: int])): ProgressBar">initProgressBar(uniqCompId: string;
-                action: ProgressAction = default(ProgressAction);
-                progressType: ProgressBarType = default(ProgressBarType);
-                showPercent: bool = default(bool);
-                title: string = default(string); value: int = default(int);
-                maxValue: int = default(int);
-                size: tuple[a, b: int] = default(tuple[a, b: int])): ProgressBar</a></li>
+                action: ProgressAction = compDefArg(ProgressAction);
+                progressType: ProgressBarType = compDefArg(ProgressBarType);
+                showPercent: bool = compDefArg(bool);
+                title: string = compDefArg(string);
+                value: int = compDefArg(int); maxValue: int = compDefArg(int);
+                size: tuple[a, b: int] = compDefArg(tuple[a, b: int])): ProgressBar">initProgressBar(uniqCompId: string;
+                action: ProgressAction = compDefArg(ProgressAction);
+                progressType: ProgressBarType = compDefArg(ProgressBarType);
+                showPercent: bool = compDefArg(bool);
+                title: string = compDefArg(string);
+                value: int = compDefArg(int); maxValue: int = compDefArg(int);
+                size: tuple[a, b: int] = compDefArg(tuple[a, b: int])): ProgressBar</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">renderTag
@@ -215,12 +215,13 @@
     <div id="initProgressBar-procs-all">
   <div id="initProgressBar,string,ProgressAction,ProgressBarType,bool,string,int,int,tuple[int,int]">
   <dt><pre><span class="Keyword">proc</span> <a href="#initProgressBar%2Cstring%2CProgressAction%2CProgressBarType%2Cbool%2Cstring%2Cint%2Cint%2Ctuple%5Bint%2Cint%5D"><span class="Identifier">initProgressBar</span></a><span class="Other">(</span><span class="Identifier">uniqCompId</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span>
-                     <span class="Identifier">action</span><span class="Other">:</span> <a href="progress.html#ProgressAction"><span class="Identifier">ProgressAction</span></a> <span class="Other">=</span> <span class="Identifier">default</span><span class="Other">(</span><a href="progress.html#ProgressAction"><span class="Identifier">ProgressAction</span></a><span class="Other">)</span><span class="Other">;</span>
-                     <span class="Identifier">progressType</span><span class="Other">:</span> <a href="enums.html#ProgressBarType"><span class="Identifier">ProgressBarType</span></a> <span class="Other">=</span> <span class="Identifier">default</span><span class="Other">(</span><a href="enums.html#ProgressBarType"><span class="Identifier">ProgressBarType</span></a><span class="Other">)</span><span class="Other">;</span>
-                     <span class="Identifier">showPercent</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">default</span><span class="Other">(</span><span class="Identifier">bool</span><span class="Other">)</span><span class="Other">;</span>
-                     <span class="Identifier">title</span><span class="Other">:</span> <span class="Identifier">string</span> <span class="Other">=</span> <span class="Identifier">default</span><span class="Other">(</span><span class="Identifier">string</span><span class="Other">)</span><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">int</span> <span class="Other">=</span> <span class="Identifier">default</span><span class="Other">(</span><span class="Identifier">int</span><span class="Other">)</span><span class="Other">;</span>
-                     <span class="Identifier">maxValue</span><span class="Other">:</span> <span class="Identifier">int</span> <span class="Other">=</span> <span class="Identifier">default</span><span class="Other">(</span><span class="Identifier">int</span><span class="Other">)</span><span class="Other">;</span>
-                     <span class="Identifier">size</span><span class="Other">:</span> <span class="Keyword">tuple</span><span class="Other">[</span><span class="Identifier">a</span><span class="Other">,</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">]</span> <span class="Other">=</span> <span class="Identifier">default</span><span class="Other">(</span><span class="Keyword">tuple</span><span class="Other">[</span><span class="Identifier">a</span><span class="Other">,</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">]</span><span class="Other">)</span><span class="Other">)</span><span class="Other">:</span> <a href="progress.html#ProgressBar"><span class="Identifier">ProgressBar</span></a> {.
+                     <span class="Identifier">action</span><span class="Other">:</span> <a href="progress.html#ProgressAction"><span class="Identifier">ProgressAction</span></a> <span class="Other">=</span> <span class="Identifier">compDefArg</span><span class="Other">(</span><a href="progress.html#ProgressAction"><span class="Identifier">ProgressAction</span></a><span class="Other">)</span><span class="Other">;</span>
+    <span class="Identifier">progressType</span><span class="Other">:</span> <a href="enums.html#ProgressBarType"><span class="Identifier">ProgressBarType</span></a> <span class="Other">=</span> <span class="Identifier">compDefArg</span><span class="Other">(</span><a href="enums.html#ProgressBarType"><span class="Identifier">ProgressBarType</span></a><span class="Other">)</span><span class="Other">;</span>
+                     <span class="Identifier">showPercent</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">compDefArg</span><span class="Other">(</span><span class="Identifier">bool</span><span class="Other">)</span><span class="Other">;</span>
+                     <span class="Identifier">title</span><span class="Other">:</span> <span class="Identifier">string</span> <span class="Other">=</span> <span class="Identifier">compDefArg</span><span class="Other">(</span><span class="Identifier">string</span><span class="Other">)</span><span class="Other">;</span>
+                     <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">int</span> <span class="Other">=</span> <span class="Identifier">compDefArg</span><span class="Other">(</span><span class="Identifier">int</span><span class="Other">)</span><span class="Other">;</span>
+                     <span class="Identifier">maxValue</span><span class="Other">:</span> <span class="Identifier">int</span> <span class="Other">=</span> <span class="Identifier">compDefArg</span><span class="Other">(</span><span class="Identifier">int</span><span class="Other">)</span><span class="Other">;</span>
+                     <span class="Identifier">size</span><span class="Other">:</span> <span class="Keyword">tuple</span><span class="Other">[</span><span class="Identifier">a</span><span class="Other">,</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">]</span> <span class="Other">=</span> <span class="Identifier">compDefArg</span><span class="Other">(</span><span class="Keyword">tuple</span><span class="Other">[</span><span class="Identifier">a</span><span class="Other">,</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">]</span><span class="Other">)</span><span class="Other">)</span><span class="Other">:</span> <a href="progress.html#ProgressBar"><span class="Identifier">ProgressBar</span></a> {.
     <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
@@ -282,7 +283,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2024-01-10 04:34:26 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2024-01-10 04:54:08 UTC</small>
       </div>
     </div>
   </div>

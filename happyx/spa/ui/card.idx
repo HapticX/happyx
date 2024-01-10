@@ -1,8 +1,8 @@
 nimTitle	card	happyx/spa/ui/card.html	module src/happyx/spa/ui/card		0
-nim	CardObj	happyx/spa/ui/card.html#CardObj	object CardObj		702
-nim	Card	happyx/spa/ui/card.html#Card	type Card		702
+nim	CardObj	happyx/spa/ui/card.html#CardObj	object CardObj		711
+nim	Card	happyx/spa/ui/card.html#Card	type Card		711
 nim	setAlign	happyx/spa/ui/card.html#setAlign,Card,Alignment,Alignment	proc setAlign(self: Card; vertical, horizontal: Alignment)		54
-nim	initCard	happyx/spa/ui/card.html#initCard,string,string,Alignment,Alignment,string,string	proc initCard(uniqCompId: string; class: string = default(string);\n         hAlign: Alignment = default(Alignment);\n         vAlign: Alignment = default(Alignment);\n         vAlignHidden: string = default(string);\n         hAlignHidden: string = default(string)): Card		40
+nim	initCard	happyx/spa/ui/card.html#initCard,string,string,Alignment,Alignment,string,string	proc initCard(uniqCompId: string; class: string = compDefArg(string);\n         hAlign: Alignment = compDefArg(Alignment);\n         vAlign: Alignment = compDefArg(Alignment);\n         vAlignHidden: string = compDefArg(string);\n         hAlignHidden: string = compDefArg(string)): Card		40
 nim	reRender	happyx/spa/ui/card.html#reRender.e,Card	method reRender(self: Card)		40
 nim	renderTag	happyx/spa/ui/card.html#renderTag,Card	proc renderTag(self: Card): TagRef		40
 nim	render	happyx/spa/ui/card.html#render.e,Card	method render(self: Card): TagRef		40

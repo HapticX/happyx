@@ -1,9 +1,9 @@
 nimTitle	button	happyx/spa/ui/button.html	module src/happyx/spa/ui/button		0
 nim	ButtonAction	happyx/spa/ui/button.html#ButtonAction	type ButtonAction		37
 nim	DefaultButtonAction	happyx/spa/ui/button.html#DefaultButtonAction	const DefaultButtonAction		39
-nim	ButtonObj	happyx/spa/ui/button.html#ButtonObj	object ButtonObj		702
-nim	Button	happyx/spa/ui/button.html#Button	type Button		702
-nim	initButton	happyx/spa/ui/button.html#initButton,string,ButtonAction,bool	proc initButton(uniqCompId: string; action: ButtonAction = default(ButtonAction);\n           flat: bool = default(bool)): Button		42
+nim	ButtonObj	happyx/spa/ui/button.html#ButtonObj	object ButtonObj		711
+nim	Button	happyx/spa/ui/button.html#Button	type Button		711
+nim	initButton	happyx/spa/ui/button.html#initButton,string,ButtonAction,bool	proc initButton(uniqCompId: string; action: ButtonAction = compDefArg(ButtonAction);\n           flat: bool = compDefArg(bool)): Button		42
 nim	reRender	happyx/spa/ui/button.html#reRender.e,Button	method reRender(self: Button)		42
 nim	renderTag	happyx/spa/ui/button.html#renderTag,Button	proc renderTag(self: Button): TagRef		42
 nim	render	happyx/spa/ui/button.html#render.e,Button	method render(self: Button): TagRef		42
