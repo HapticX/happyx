@@ -392,7 +392,6 @@ elif exportPython:
   template handlePythonRequest*(self: server.Server, req: Request, urlPath: string) =
     var pyNone: PyObject
     newPyNone().pyValueToNim(pyNone)
-    echo urlPath
     for route in self.routes:
       if (
         (@["NOTFOUND"] == route.httpMethod and not(reqResponded)) or

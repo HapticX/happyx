@@ -386,7 +386,7 @@ macro component*(name, body: untyped): untyped =
     fieldDefaults: seq[NimNode] = @[]
     initComponentProcedure: seq[NimNode] = @[]
   
-  proc hasField(node: NimNode): bool =
+  proc hasArgumentInAssignment(node: NimNode): bool =
     if node.kind == nnkIdent and $node in fields:
       return true
     elif node.kind in CallNodes and node[0] == ident"fmt":
@@ -394,7 +394,7 @@ macro component*(name, body: untyped): untyped =
         if field in $node[1]:
           return true
     for child in node:
-      if child.hasField():
+      if child.hasArgumentInAssignment():
         return true
   
   for s in body.children:
@@ -641,24 +641,25 @@ macro component*(name, body: untyped): untyped =
   initProc.params = initParams
   var defaultValues = newStmtList()
   for i in 0..<initProc.params.len:
-    if initProc[3][i].kind == nnkIdentDefs and initProc[3][i][2].hasField():
+    if initProc[3][i].kind != nnkIdentDefs:
+      continue
+    if initProc[3][i][2].hasArgumentInAssignment():
       defaultValues.add(newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
         newCall("==", initProc[3][i][0], newCall("compDefArg", initProc[3][i][1])),
         newAssignment(
           newDotExpr(ident"self", initProc[3][i][0].copy()),
-          newCall("remember", newCall(initProc[3][i][1], initProc[3][i][2]))
+          newCall("remember", initProc[3][i][2])
         )
       )))
       initProc[3][i][2] = newCall("compDefArg", initProc[3][i][1])
-    elif initProc[3][i].kind == nnkIdentDefs and initProc[3][i][0] != ident"uniqCompId" and initProc[3][i][2] != newEmptyNode():
+    elif initProc[3][i][0] != ident"uniqCompId" and initProc[3][i][2] != newEmptyNode():
       defaultValues.add(newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
-        newCall("==", initProc[3][i][0], newCall("compDefArg", initProc[3][i][1])),
+        newCall("==", initProc[3][i][0], initProc[3][i][2]),
         newAssignment(
           newDotExpr(ident"self", initProc[3][i][0].copy()),
-          newCall("remember", newCall(initProc[3][i][1], initProc[3][i][2]))
+          newCall("remember", initProc[3][i][2])
         )
       )))
-      initProc[3][i][2] = newCall("compDefArg", initProc[3][i][1])
   
   proc allFields(fields: var seq[NimNode], extendsOf: string, generics: NimNode) =
     if createdComponents.hasKey(extendsOf):

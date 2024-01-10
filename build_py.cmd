@@ -14,6 +14,7 @@ nim c ^
   -a:off ^
   -d:useRealtimeGC ^
   -d:release ^
+  -d:happyxDebug ^
   -d:httpx ^
   -d:export2py ^
   happyx

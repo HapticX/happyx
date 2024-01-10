@@ -75,8 +75,28 @@ pathParams:
     default = 100  # default param value is 100
 
 
+type counterObject* = ref object
+  count*: int
+  settings*: string
+
+var counterObj1* = counterObject.new()
+var counterObj2* = counterObject.new()
+proc nextCounter*(c: counterObject): int =
+  c.count += 1
+  result = c.count
+
+component withCounterObject:
+  counter: counterObject = counterObj1
+  count: int = nextCounter(counter)
+  `template`:
+    tDiv: "self count: {self.count}"
+    tDiv: "count in template: {nextCounter(counterObj2)}"
+
+
 appRoutes "app":
   "/":
+    for i in 1..5:
+      withCounterObject
     component withReps(5):
       withCounter()
       withRandom()
