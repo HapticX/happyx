@@ -68,20 +68,20 @@ jobs:
       - name: TODO App ✅
         run: |
           cd examples/todo/src
-          nim js main
+          nim js --hints:off --warnings:off main
           cd ../../../
         shell: bash
       
       - name: NimLang 👑
         run: |
           cd examples/nimlang/src
-          nim js main
+          nim js --hints:off --warnings:off main
           cd ../../../
         shell: bash
       
       - name: Website 🌐
         run: |
           cd examples/website/src
-          nim js main
+          nim js --hints:off --warnings:off main
           cd ../../../
         shell: bash

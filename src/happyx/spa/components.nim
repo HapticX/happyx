@@ -657,7 +657,7 @@ macro component*(name, body: untyped): untyped =
         newCall("==", initProc[3][i][0], initProc[3][i][2]),
         newAssignment(
           newDotExpr(ident"self", initProc[3][i][0].copy()),
-          newCall("remember", initProc[3][i][2])
+          newCall("remember", initProc[3][i][0])
         )
       )))
   
