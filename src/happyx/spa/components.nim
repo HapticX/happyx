@@ -698,6 +698,18 @@ macro component*(name, body: untyped): untyped =
       initObjConstr.add(
         newColonExpr(required[0], newCall("remember", required[0]))
       )
+    for constructor in componentConstructors:
+      for required in requiredFields:
+        constructor.body[0][0][^1].add(
+          newNimNode(nnkWhenStmt).add(
+            newNimNode(nnkElifBranch).add(
+              newCall("declaredInScope", required[0]),
+              required[0]
+            ), newNimNode(nnkElse).add(
+              newCall("compDefArg", required[1])
+            )
+          )
+        )
 
   initProc.body = newStmtList(
     if extendsOf != "":
