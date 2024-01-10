@@ -604,24 +604,26 @@ proc findVariables(statement: NimNode, name: string, counter: var int) =
 
 
 proc optimizeVariables(statement: NimNode) =
-  var variables = initTable[string, tuple[count: int, val: NimNode, pos: int]]()
+  var variables = newSeq[tuple[name: string, count: int, val: NimNode, pos: int]]()
   for i in 0..<statement.len:
     if statement[i].kind in [nnkVarSection, nnkConstSection, nnkLetSection]:
       for def in statement[i]:
-        if variables.hasKey($def[0]):
-          inc variables[$def[0]].count
-        else:
-          variables[$def[0]] = (count: 0, val: def[2], pos: i)
-  for key in variables.keys:
-    var i = variables[key].count
-    statement.findVariables(key, i)
-    variables[key].count = i
+        block haskey:
+          for i in 0..<variables.len:
+            if variables[i].name == $def[0]:
+              inc variables[i].count
+              break haskey
+          variables.add((name: $def[0], count: 0, val: def[2], pos: i))
+  for i in 0..<variables.len:
+    var v = variables[i].count
+    statement.findVariables(variables[i].name, v)
+    variables[i].count = v
   var offset = 0
-  for key, val in variables.pairs:
-    if val.count == 1 and val.val.kind != nnkEmpty:
-      statement.optimizeVariablesAux(key, val.val)
-      echo val.pos - offset, ", ", key
-      statement.del(val.pos - offset)
+  for i in 0..<variables.len:
+    if variables[i].count == 1 and variables[i].val.kind != nnkEmpty:
+      statement.optimizeVariablesAux(variables[i].name, variables[i].val)
+      echo variables[i].pos - offset, ", ", variables[i].name
+      statement.del(variables[i].pos - offset)
       inc offset
 
 
