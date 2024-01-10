@@ -1,8 +1,8 @@
 nimTitle	input	happyx/spa/ui/input.html	module src/happyx/spa/ui/input		0
 nim	InputAction	happyx/spa/ui/input.html#InputAction	type InputAction		36
 nim	DefaultInputAction	happyx/spa/ui/input.html#DefaultInputAction	const DefaultInputAction		38
-nim	InputObj	happyx/spa/ui/input.html#InputObj	object InputObj		711
-nim	Input	happyx/spa/ui/input.html#Input	type Input		711
+nim	InputObj	happyx/spa/ui/input.html#InputObj	object InputObj		723
+nim	Input	happyx/spa/ui/input.html#Input	type Input		723
 nim	initInput	happyx/spa/ui/input.html#initInput,string,InputAction,string,string,string	proc initInput(uniqCompId: string;\n          inputAction: InputAction = compDefArg(InputAction);\n          placeholder: string = compDefArg(string);\n          label: string = compDefArg(string);\n          inputType: string = compDefArg(string)): Input		41
 nim	reRender	happyx/spa/ui/input.html#reRender.e,Input	method reRender(self: Input)		41
 nim	renderTag	happyx/spa/ui/input.html#renderTag,Input	proc renderTag(self: Input): TagRef		41
