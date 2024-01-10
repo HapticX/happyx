@@ -1508,7 +1508,9 @@ socketToSsr.onmessage=function(m){
   # Python Library
   elif exportPython:
     stmtList.add(
-      newVarStmt(ident"reqResponded", newLit(false)),
+      newVarStmt(ident"reqResponded", newLit(false))
+    )
+    stmtList.add(
       newCall(
         "handlePythonRequest", ident"self", ident"req", ident"urlPath"
       )
@@ -1551,10 +1553,10 @@ socketToSsr.onmessage=function(m){
 
   caseRequestMethodsStmt.add(newNimNode(nnkElse).add(notFoundNode))
   when exportJvm or exportPython or defined(napibuild):
-    stmtList[^1] = newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
+    stmtList.add(newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
       newCall("not", ident"reqResponded"),
       caseRequestMethodsStmt.copy()
-    ))
+    )))
   stmtList.add(caseRequestMethodsStmt)
 
   let wsType =
