@@ -119,7 +119,7 @@ proc getTagName*(name: string): string =
 
 
 proc formatNode*(node: NimNode): NimNode =
-  if node.kind == nnkStrLit:
+  if node.kind == nnkStrLit and ($node).match(re2"\{[^\}\{]+\}"):
     newCall("fmt", node)
   else:
     node
