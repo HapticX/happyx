@@ -507,14 +507,14 @@ macro component*(name, body: untyped): untyped =
             )
     
       # template, style or script
-      elif (s[0].kind == nnkAccQuoted or s.kind == nnkInfix and s[1].kind == nnkAccQuoted) or
+      elif (s[0].kind == nnkAccQuoted or (s.kind == nnkInfix and s[1].kind == nnkAccQuoted)) or
            (s[0] in [ident"html", ident"script", ident"style"]):
         var
           asType = ""
           acq: NimNode
         if s[0].kind == nnkAccQuoted:
           acq = s[0]
-        elif s[0].kind == nnkIdent:
+        elif s.kind == nnkCall and s[0].kind == nnkIdent:
           acq = newNimNode(nnkAccQuoted).add(s[0])
         else:
           acq = s[1]
