@@ -1159,7 +1159,6 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
           newLit(true)
         )
       )
-      echo result.toStrLit
     elif statement.kind == nnkStmtList:
       var builded = buildHtmlProcedure(ident"div", statement, inComponent, componentName, inCycle, cycleTmpVar, compTmpVar, cycleVars)
       result.add(builded)

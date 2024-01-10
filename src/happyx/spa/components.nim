@@ -110,6 +110,15 @@ template reRenderTmpl*() =
   self.rendered(self)
 
 
+proc compDefArg*[T](value: typedesc[T]): T =
+  when T is ref object:
+    result = T.new()
+    for k, v in result[].fieldPairs:
+      v = typeof(v).compDefArg()
+  else:
+    result = T.default()
+
+
 macro component*(name, body: untyped): untyped =
   ## Register a new component.
   ## 
@@ -634,22 +643,22 @@ macro component*(name, body: untyped): untyped =
   for i in 0..<initProc.params.len:
     if initProc[3][i].kind == nnkIdentDefs and initProc[3][i][2].hasField():
       defaultValues.add(newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
-        newCall("==", initProc[3][i][0], newCall("default", initProc[3][i][1])),
+        newCall("==", initProc[3][i][0], newCall("compDefArg", initProc[3][i][1])),
         newAssignment(
           newDotExpr(ident"self", initProc[3][i][0].copy()),
           newCall("remember", newCall(initProc[3][i][1], initProc[3][i][2]))
         )
       )))
-      initProc[3][i][2] = newCall("default", initProc[3][i][1])
+      initProc[3][i][2] = newCall("compDefArg", initProc[3][i][1])
     elif initProc[3][i].kind == nnkIdentDefs and initProc[3][i][0] != ident"uniqCompId" and initProc[3][i][2] != newEmptyNode():
       defaultValues.add(newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
-        newCall("==", initProc[3][i][0], newCall("default", initProc[3][i][1])),
+        newCall("==", initProc[3][i][0], newCall("compDefArg", initProc[3][i][1])),
         newAssignment(
           newDotExpr(ident"self", initProc[3][i][0].copy()),
           newCall("remember", newCall(initProc[3][i][1], initProc[3][i][2]))
         )
       )))
-      initProc[3][i][2] = newCall("default", initProc[3][i][1])
+      initProc[3][i][2] = newCall("compDefArg", initProc[3][i][1])
   
   proc allFields(fields: var seq[NimNode], extendsOf: string, generics: NimNode) =
     if createdComponents.hasKey(extendsOf):
@@ -731,7 +740,7 @@ macro component*(name, body: untyped): untyped =
   for field in fields:
     for i in initComponentProcedure:
       i.add(newNimNode(nnkExprEqExpr).add(
-        ident(field), newCall("default", fieldTypes[idx])
+        ident(field), newCall("compDefArg", fieldTypes[idx])
       ))
     inc idx
 
