@@ -218,6 +218,7 @@
   <li><a class="reference" href="#%5B%5D%2CState%5BStringTableRef%5D%2Cstring" title="`[]`(self: State[StringTableRef]; idx: string): string">`[]`(self: State[StringTableRef]; idx: string): string</a></li>
 <li><a class="reference" href="#%5B%5D%2CState%5BTableRef%5BT%2CU%5D%5D%2CT" title="`[]`[T, U](self: State[TableRef[T, U]]; idx: T): U">`[]`[T, U](self: State[TableRef[T, U]]; idx: T): U</a></li>
 <li><a class="reference" href="#%5B%5D%2CState%5BopenArray%5BT%5D%5D%2Cint" title="`[]`[T](self: State[openArray[T]]; idx: int): T">`[]`[T](self: State[openArray[T]]; idx: int): T</a></li>
+<li><a class="reference" href="#%5B%5D%2CState%5BopenArray%5BT%5D%5D%2CState%5Bint%5D" title="`[]`[T](self: State[openArray[T]]; idx: State[int]): T">`[]`[T](self: State[openArray[T]]; idx: State[int]): T</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">[]=
@@ -1062,6 +1063,14 @@
     
   </dd>
 </div>
+<div id="[],State[openArray[T]],State[int]">
+  <dt><pre><span class="Keyword">func</span> <a href="#%5B%5D%2CState%5BopenArray%5BT%5D%5D%2CState%5Bint%5D"><span class="Identifier">`[]`</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="state.html#State"><span class="Identifier">State</span></a><span class="Other">[</span><span class="Identifier">openArray</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">idx</span><span class="Other">:</span> <a href="state.html#State"><span class="Identifier">State</span></a><span class="Other">[</span><span class="Identifier">int</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">T</span></pre></dt>
+  <dd>
+    
+    Returns State's item at <tt class="docutils literal"><span class="pre"><span class="Identifier">idx</span></span></tt> index.
+    
+  </dd>
+</div>
 
 </div>
 <div id="[]=-procs-all">
@@ -1498,7 +1507,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2024-01-09 06:20:40 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2024-01-10 04:34:26 UTC</small>
       </div>
     </div>
   </div>

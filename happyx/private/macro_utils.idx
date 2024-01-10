@@ -18,9 +18,9 @@ nim	isIdentUsed	happyx/private/macro_utils.html#isIdentUsed,NimNode,NimNode	proc
 nim	replaceUseInComponent	happyx/private/macro_utils.html#replaceUseInComponent,NimNode	proc replaceUseInComponent(body: NimNode)		364
 nim	replaceIter	happyx/private/macro_utils.html#replaceIter,NimNode,proc(NimNode),proc(NimNode)	proc replaceIter(root: NimNode; search: proc (x: NimNode): bool;\n            replace: proc (x: NimNode): NimNode): bool		373
 nim	attribute	happyx/private/macro_utils.html#attribute,NimNode,bool	proc attribute(attr: NimNode; inComponent: bool = false): NimNode		386
-nim	addAttribute	happyx/private/macro_utils.html#addAttribute,NimNode,NimNode,NimNode,bool	proc addAttribute(node, key, value: NimNode; inComponent: bool = false)		410
-nim	endsWithBuildHtml	happyx/private/macro_utils.html#endsWithBuildHtml,NimNode	proc endsWithBuildHtml(statement: NimNode): bool		436
-nim	replaceSelfComponent	happyx/private/macro_utils.html#replaceSelfComponent,NimNode,NimNode,NimNode,bool,bool,bool	proc replaceSelfComponent(statement, componentName: NimNode; parent: NimNode = nil;\n                     convert: bool = false; is_constructor: bool = false;\n                     is_field: bool = true): NimNode		440
+nim	addAttribute	happyx/private/macro_utils.html#addAttribute,NimNode,NimNode,NimNode,bool	proc addAttribute(node, key, value: NimNode; inComponent: bool = false)		414
+nim	endsWithBuildHtml	happyx/private/macro_utils.html#endsWithBuildHtml,NimNode	proc endsWithBuildHtml(statement: NimNode): bool		444
+nim	replaceSelfComponent	happyx/private/macro_utils.html#replaceSelfComponent,NimNode,NimNode,NimNode,bool,bool,bool	proc replaceSelfComponent(statement, componentName: NimNode; parent: NimNode = nil;\n                     convert: bool = false; is_constructor: bool = false;\n                     is_field: bool = true): NimNode		448
 nimgrp	bracket	happyx/private/macro_utils.html#bracket-procs-all	proc		42
 heading	Macro Utils	happyx/private/macro_utils.html#macro-utils	 Macro Utils		0
 heading	⚠ Warning: This Module Is LOW-LEVEL API ⚠	happyx/private/macro_utils.html#macro-utils-⚠-warningcolon-this-module-is-lowminuslevel-api-⚠	  ⚠ Warning: This Module Is LOW-LEVEL API ⚠		0
