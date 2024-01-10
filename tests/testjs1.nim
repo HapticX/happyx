@@ -17,7 +17,7 @@ var
   state3 = teTwo
 
 var html =
-  buildHtml(`div`):
+  buildHtml(tDiv):
     !DOCTYPE html
     tH1(class="myClass", style="color: red"):
       "Hello, world!"
@@ -25,9 +25,9 @@ var html =
     # <h1></h1>
     hH1
     tagH1
-    `h1`
+    tH1
     if state:  # IF-ELIF-ELSE
-      `div`:
+      tDiv:
         "True!"
         tButton:
           "click"
@@ -43,7 +43,7 @@ var html =
       "click!"
     for i in state2:  # FOR STMT
       i
-    `div`(style="background: red"):
+    tDiv(style="background: red"):
       for i in state2:  # FOR STMT
         "current tag is {i}"
         {i}
