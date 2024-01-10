@@ -1507,9 +1507,12 @@ socketToSsr.onmessage=function(m){
     ))
   # Python Library
   elif exportPython:
-    stmtList.add(newCall(
-      "handlePythonRequest", ident"self", ident"req", ident"urlPath"
-    ))
+    stmtList.add(
+      newVarStmt(ident"reqResponded", newLit(false)),
+      newCall(
+        "handlePythonRequest", ident"self", ident"req", ident"urlPath"
+      )
+    )
   # JVM JNI Library
   elif exportJvm:
     stmtList.add(newCall(

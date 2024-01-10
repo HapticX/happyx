@@ -390,9 +390,7 @@ elif exportPython:
   import nimpy
 
   template handlePythonRequest*(self: server.Server, req: Request, urlPath: string) =
-    var
-      reqResponded {.inject.} = false
-      pyNone: PyObject
+    var pyNone: PyObject
     newPyNone().pyValueToNim(pyNone)
     for route in self.routes:
       if (
