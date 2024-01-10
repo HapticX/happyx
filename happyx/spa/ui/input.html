@@ -81,15 +81,9 @@
     <summary><a class="reference reference-toplevel" href="#12" id="62">Procs</a></summary>
     <ul class="simple simple-toc-section">
       <ul class="simple nested-toc-section">initInput
-  <li><a class="reference" href="#initInput%2Cstring%2CInputAction%2Cstring%2Cstring%2Cstring" title="initInput(uniqCompId: string;
-          inputAction: InputAction = compDefArg(InputAction);
-          placeholder: string = compDefArg(string);
-          label: string = compDefArg(string);
-          inputType: string = compDefArg(string)): Input">initInput(uniqCompId: string;
-          inputAction: InputAction = compDefArg(InputAction);
-          placeholder: string = compDefArg(string);
-          label: string = compDefArg(string);
-          inputType: string = compDefArg(string)): Input</a></li>
+  <li><a class="reference" href="#initInput%2Cstring%2CInputAction%2Cstring%2Cstring%2Cstring" title="initInput(uniqCompId: string; inputAction: InputAction = DefaultInputAction;
+          placeholder: string = &quot;&quot;; label: string = &quot;&quot;; inputType: string = &quot;&quot;): Input">initInput(uniqCompId: string; inputAction: InputAction = DefaultInputAction;
+          placeholder: string = &quot;&quot;; label: string = &quot;&quot;; inputType: string = &quot;&quot;): Input</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">renderTag
@@ -198,11 +192,10 @@
     <div id="initInput-procs-all">
   <div id="initInput,string,InputAction,string,string,string">
   <dt><pre><span class="Keyword">proc</span> <a href="#initInput%2Cstring%2CInputAction%2Cstring%2Cstring%2Cstring"><span class="Identifier">initInput</span></a><span class="Other">(</span><span class="Identifier">uniqCompId</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span>
-               <span class="Identifier">inputAction</span><span class="Other">:</span> <a href="input.html#InputAction"><span class="Identifier">InputAction</span></a> <span class="Other">=</span> <span class="Identifier">compDefArg</span><span class="Other">(</span><a href="input.html#InputAction"><span class="Identifier">InputAction</span></a><span class="Other">)</span><span class="Other">;</span>
-               <span class="Identifier">placeholder</span><span class="Other">:</span> <span class="Identifier">string</span> <span class="Other">=</span> <span class="Identifier">compDefArg</span><span class="Other">(</span><span class="Identifier">string</span><span class="Other">)</span><span class="Other">;</span>
-               <span class="Identifier">label</span><span class="Other">:</span> <span class="Identifier">string</span> <span class="Other">=</span> <span class="Identifier">compDefArg</span><span class="Other">(</span><span class="Identifier">string</span><span class="Other">)</span><span class="Other">;</span>
-               <span class="Identifier">inputType</span><span class="Other">:</span> <span class="Identifier">string</span> <span class="Other">=</span> <span class="Identifier">compDefArg</span><span class="Other">(</span><span class="Identifier">string</span><span class="Other">)</span><span class="Other">)</span><span class="Other">:</span> <a href="input.html#Input"><span class="Identifier">Input</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
-    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+               <span class="Identifier">inputAction</span><span class="Other">:</span> <a href="input.html#InputAction"><span class="Identifier">InputAction</span></a> <span class="Other">=</span> <span class="Identifier">DefaultInputAction</span><span class="Other">;</span>
+               <span class="Identifier">placeholder</span><span class="Other">:</span> <span class="Identifier">string</span> <span class="Other">=</span> <span class="StringLit">&quot;&quot;</span><span class="Other">;</span> <span class="Identifier">label</span><span class="Other">:</span> <span class="Identifier">string</span> <span class="Other">=</span> <span class="StringLit">&quot;&quot;</span><span class="Other">;</span>
+               <span class="Identifier">inputType</span><span class="Other">:</span> <span class="Identifier">string</span> <span class="Other">=</span> <span class="StringLit">&quot;&quot;</span><span class="Other">)</span><span class="Other">:</span> <a href="input.html#Input"><span class="Identifier">Input</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
     
@@ -263,7 +256,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2024-01-10 13:54:30 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2024-01-10 15:06:51 UTC</small>
       </div>
     </div>
   </div>

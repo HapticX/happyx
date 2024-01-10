@@ -896,21 +896,19 @@
           </ul></dd>
 <dt><a name="initButton" href="#initButton"><span>initButton:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="button: proc initButton(uniqCompId: string; action: ButtonAction = compDefArg(ButtonAction);
-           flat: bool = compDefArg(bool)): Button" href="happyx/spa/ui/button.html#initButton%2Cstring%2CButtonAction%2Cbool">button: proc initButton(uniqCompId: string; action: ButtonAction = compDefArg(ButtonAction);
-           flat: bool = compDefArg(bool)): Button</a></li>
+          data-doc-search-tag="button: proc initButton(uniqCompId: string; action: ButtonAction = DefaultButtonAction;
+           flat: bool = false): Button" href="happyx/spa/ui/button.html#initButton%2Cstring%2CButtonAction%2Cbool">button: proc initButton(uniqCompId: string; action: ButtonAction = DefaultButtonAction;
+           flat: bool = false): Button</a></li>
           </ul></dd>
 <dt><a name="initCard" href="#initCard"><span>initCard:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="card: proc initCard(uniqCompId: string; class: string = compDefArg(string);
-         hAlign: Alignment = compDefArg(Alignment);
-         vAlign: Alignment = compDefArg(Alignment);
-         vAlignHidden: string = compDefArg(string);
-         hAlignHidden: string = compDefArg(string)): Card" href="happyx/spa/ui/card.html#initCard%2Cstring%2Cstring%2CAlignment%2CAlignment%2Cstring%2Cstring">card: proc initCard(uniqCompId: string; class: string = compDefArg(string);
-         hAlign: Alignment = compDefArg(Alignment);
-         vAlign: Alignment = compDefArg(Alignment);
-         vAlignHidden: string = compDefArg(string);
-         hAlignHidden: string = compDefArg(string)): Card</a></li>
+          data-doc-search-tag="card: proc initCard(uniqCompId: string; class: string = &quot;&quot;;
+         hAlign: Alignment = Alignment.aStart;
+         vAlign: Alignment = Alignment.aStart; vAlignHidden: string = &quot;&quot;;
+         hAlignHidden: string = &quot;&quot;): Card" href="happyx/spa/ui/card.html#initCard%2Cstring%2Cstring%2CAlignment%2CAlignment%2Cstring%2Cstring">card: proc initCard(uniqCompId: string; class: string = &quot;&quot;;
+         hAlign: Alignment = Alignment.aStart;
+         vAlign: Alignment = Alignment.aStart; vAlignHidden: string = &quot;&quot;;
+         hAlignHidden: string = &quot;&quot;): Card</a></li>
           </ul></dd>
 <dt><a name="initHttpRequest" href="#initHttpRequest"><span>initHttpRequest:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -920,31 +918,21 @@
           </ul></dd>
 <dt><a name="initInput" href="#initInput"><span>initInput:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="input: proc initInput(uniqCompId: string;
-          inputAction: InputAction = compDefArg(InputAction);
-          placeholder: string = compDefArg(string);
-          label: string = compDefArg(string);
-          inputType: string = compDefArg(string)): Input" href="happyx/spa/ui/input.html#initInput%2Cstring%2CInputAction%2Cstring%2Cstring%2Cstring">input: proc initInput(uniqCompId: string;
-          inputAction: InputAction = compDefArg(InputAction);
-          placeholder: string = compDefArg(string);
-          label: string = compDefArg(string);
-          inputType: string = compDefArg(string)): Input</a></li>
+          data-doc-search-tag="input: proc initInput(uniqCompId: string; inputAction: InputAction = DefaultInputAction;
+          placeholder: string = &quot;&quot;; label: string = &quot;&quot;; inputType: string = &quot;&quot;): Input" href="happyx/spa/ui/input.html#initInput%2Cstring%2CInputAction%2Cstring%2Cstring%2Cstring">input: proc initInput(uniqCompId: string; inputAction: InputAction = DefaultInputAction;
+          placeholder: string = &quot;&quot;; label: string = &quot;&quot;; inputType: string = &quot;&quot;): Input</a></li>
           </ul></dd>
 <dt><a name="initProgressBar" href="#initProgressBar"><span>initProgressBar:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="progress: proc initProgressBar(uniqCompId: string;
-                action: ProgressAction = compDefArg(ProgressAction);
-                progressType: ProgressBarType = compDefArg(ProgressBarType);
-                showPercent: bool = compDefArg(bool);
-                title: string = compDefArg(string);
-                value: int = compDefArg(int); maxValue: int = compDefArg(int);
-                size: tuple[a, b: int] = compDefArg(tuple[a, b: int])): ProgressBar" href="happyx/spa/ui/progress.html#initProgressBar%2Cstring%2CProgressAction%2CProgressBarType%2Cbool%2Cstring%2Cint%2Cint%2Ctuple%5Bint%2Cint%5D">progress: proc initProgressBar(uniqCompId: string;
-                action: ProgressAction = compDefArg(ProgressAction);
-                progressType: ProgressBarType = compDefArg(ProgressBarType);
-                showPercent: bool = compDefArg(bool);
-                title: string = compDefArg(string);
-                value: int = compDefArg(int); maxValue: int = compDefArg(int);
-                size: tuple[a, b: int] = compDefArg(tuple[a, b: int])): ProgressBar</a></li>
+                action: ProgressAction = DefaultProgressAction;
+                progressType: ProgressBarType = ProgressBarType.ppHorizontal;
+                showPercent: bool = true; title: string = &quot;&quot;; value: int = 0;
+                maxValue: int = 100; size: tuple[a, b: int] = (96, 24)): ProgressBar" href="happyx/spa/ui/progress.html#initProgressBar%2Cstring%2CProgressAction%2CProgressBarType%2Cbool%2Cstring%2Cint%2Cint%2Ctuple%5Bint%2Cint%5D">progress: proc initProgressBar(uniqCompId: string;
+                action: ProgressAction = DefaultProgressAction;
+                progressType: ProgressBarType = ProgressBarType.ppHorizontal;
+                showPercent: bool = true; title: string = &quot;&quot;; value: int = 0;
+                maxValue: int = 100; size: tuple[a, b: int] = (96, 24)): ProgressBar</a></li>
           </ul></dd>
 <dt><a name="initRoute" href="#initRoute"><span>initRoute:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -1560,7 +1548,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2024-01-10 13:54:30 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2024-01-10 15:06:52 UTC</small>
       </div>
     </div>
   </div>
