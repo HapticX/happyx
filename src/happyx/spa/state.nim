@@ -226,6 +226,11 @@ func `[]`*[T](self: State[openarray[T]], idx: int): T =
   self.val[idx]
 
 
+func `[]`*[T](self: State[openarray[T]], idx: State[int]): T =
+  ## Returns State's item at `idx` index.
+  self.val[idx.val]
+
+
 func `[]`*[T, U](self: State[TableRef[T, U]], idx: T): U =
   ## Returns State's item at `idx` index.
   self.val[idx]

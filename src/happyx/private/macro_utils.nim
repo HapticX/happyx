@@ -397,6 +397,10 @@ proc attribute*(attr: NimNode, inComponent: bool = false): NimNode =
       v =
         if k.toLower() == "id" and attr[1].kind in {nnkStrLit, nnkTripleStrLit} and inComponent:
           newLit($attr[1] & "{self.uniqCompId}")
+        elif k.toLower() == "id" and attr[1].kind in CallNodes and attr[1][0] == ident"nu" and inComponent:
+          newLit($attr[1][1])
+        elif k.toLower() == "id" and attr[1].kind in CallNodes and attr[1][0] == ident"fmtnu" and inComponent:
+          newCall("fmt", newLit($attr[1][1]))
         elif k.toLower() == "id" and attr[1].kind in CallNodes and attr[1][0] == ident"fmt" and inComponent:
           newCall("fmt", newLit($attr[1][1] & "{self.uniqCompId}"))
         else:
@@ -417,6 +421,10 @@ proc addAttribute*(node, key, value: NimNode, inComponent: bool = false) =
     v =
       if k.toLower() == "id" and value.kind in {nnkStrLit, nnkTripleStrLit} and inComponent:
         newLit($value & "{self.uniqCompId}")
+      elif k.toLower() == "id" and value.kind in CallNodes and value[0] == ident"nu" and inComponent:
+        newLit($value[1])
+      elif k.toLower() == "id" and value.kind in CallNodes and value[0] == ident"fmtnu" and inComponent:
+        newCall("fmt", newLit($value[1]))
       elif k.toLower() == "id" and value.kind in CallNodes and value[0] == ident"fmt" and inComponent:
         newCall("fmt", newLit($value[1] & "{self.uniqCompId}"))
       else:
@@ -1107,11 +1115,23 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
       inc uniqueId
       if cycleTmpVar == "":
         statement[^1] = newStmtList(
-          buildHtmlProcedure(ident"div", statement[^1], inComponent, componentName, true, unqn, compTmpVar, cycleVars)
+          newCall(
+            "add",
+            ident(fmt"__r{uniqueId.value}"),
+            buildHtmlProcedure(ident"div", statement[^1], inComponent, componentName, true, unqn, compTmpVar, cycleVars).add(
+              newLit(true)
+            )
+          )
         )
       else:
         statement[^1] = newStmtList(
-          buildHtmlProcedure(ident"div", statement[^1], inComponent, componentName, true, cycleTmpVar, compTmpVar, cycleVars)
+          newCall(
+            "add",
+            ident(fmt"__r{uniqueId.value}"),
+            buildHtmlProcedure(ident"div", statement[^1], inComponent, componentName, true, cycleTmpVar, compTmpVar, cycleVars).add(
+              newLit(true)
+            )
+          )
         )
       for i in 0..statement.len-3:
         discard cycleVars.pop()
@@ -1119,7 +1139,6 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
         statement[^1].insert(0, newCall("inc", ident(unqn)))
       else:
         statement[^1].insert(0, newCall("inc", ident(cycleTmpVar)))
-      statement[^1][^1].add(newLit(true))
       result.add(
         newCall(
           "initTag",
@@ -1129,17 +1148,17 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
               newVarStmt(ident(unqn), newLit(0))
             else:
               newEmptyNode(),
-            newCall(
-              "collect",
-              ident"newSeq",
-              newStmtList(
-                statement
-              )
+            newVarStmt(
+              ident(fmt"__r{uniqueId.value}"),
+              newCall(newNimNode(nnkBracketExpr).add(ident"newSeq", ident"TagRef"))
             ),
+            statement,
+            ident(fmt"__r{uniqueId.value}")
           ),
           newLit(true)
         )
       )
+      echo result.toStrLit
     elif statement.kind == nnkStmtList:
       var builded = buildHtmlProcedure(ident"div", statement, inComponent, componentName, inCycle, cycleTmpVar, compTmpVar, cycleVars)
       result.add(builded)
