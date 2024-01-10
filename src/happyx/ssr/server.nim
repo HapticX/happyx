@@ -665,6 +665,8 @@ proc detectReturnStmt(node: NimNode, replaceReturn: bool = false) =
       node[^1] = newCall("answer", ident"req", newCall("translate", node[^1]))
     else:
       node[^1] = newCall("answer", ident"req", node[^1])
+  # Really complete route after any return statement
+  node.add(newNimNode(nnkReturnStmt).add(newEmptyNode()))
 
 
 macro routes*(server: Server, body: untyped = newStmtList()): untyped =
