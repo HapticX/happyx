@@ -580,8 +580,54 @@ proc answerFile*(req: Request, filename: string,
     req.answer(content, headers = newHttpHeaders(h))
 
 
+proc optimizeVariablesAux(statement: NimNode, name: string, node: NimNode, parent: NimNode = newEmptyNode()) =
+  for i in 0..<statement.len:
+    if statement.kind == nnkIdentDefs and statement[0] == statement[i]:
+      continue
+    if statement[i].kind == nnkIdent and name == $statement[i]:
+      statement[i] = node
+      continue
+    statement[i].optimizeVariablesAux(name, node, statement)
+
+
+proc findVariables(statement: NimNode, name: string, counter: var int) =
+  for i in 0..<statement.len:
+    if statement.kind == nnkIdentDefs and statement[0] == statement[i]:
+      continue
+    if statement[i].kind == nnkIdent and name == $statement[i]:
+      inc counter
+      if statement.kind == nnkInfix:
+        inc counter
+      continue
+    statement[i].findVariables(name, counter)
+
+
+
+proc optimizeVariables(statement: NimNode) =
+  var variables = initTable[string, tuple[count: int, val: NimNode, pos: int]]()
+  for i in 0..<statement.len:
+    if statement[i].kind in [nnkVarSection, nnkConstSection, nnkLetSection]:
+      for def in statement[i]:
+        if variables.hasKey($def[0]):
+          inc variables[$def[0]].count
+        else:
+          variables[$def[0]] = (count: 0, val: def[2], pos: i)
+  for key in variables.keys:
+    var i = variables[key].count
+    statement.findVariables(key, i)
+    variables[key].count = i
+  var offset = 0
+  for key, val in variables.pairs:
+    if val.count == 1 and val.val.kind != nnkEmpty:
+      statement.optimizeVariablesAux(key, val.val)
+      echo val.pos - offset, ", ", key
+      statement.del(val.pos - offset)
+      inc offset
+
+
 proc detectReturnStmt(node: NimNode, replaceReturn: bool = false) =
   # Replaces all `return` statements with req answer*
+  node.optimizeVariables()
   for i in 0..<node.len:
     var child = node[i]
     if child.kind == nnkReturnStmt and child[0].kind != nnkEmpty:
