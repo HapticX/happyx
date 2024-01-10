@@ -1109,6 +1109,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
       var
         unqn = fmt"c{uniqueId.value}"
         idents: seq[NimNode] = @[]
+        cycleName = ident(fmt"__r{uniqueId.value}")
       # extract cycle variables
       for i in 0..statement.len-3:
         cycleVars.add statement[i]
@@ -1117,7 +1118,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
         statement[^1] = newStmtList(
           newCall(
             "add",
-            ident(fmt"__r{uniqueId.value}"),
+            cycleName,
             buildHtmlProcedure(ident"div", statement[^1], inComponent, componentName, true, unqn, compTmpVar, cycleVars).add(
               newLit(true)
             )
@@ -1127,7 +1128,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
         statement[^1] = newStmtList(
           newCall(
             "add",
-            ident(fmt"__r{uniqueId.value}"),
+            cycleName,
             buildHtmlProcedure(ident"div", statement[^1], inComponent, componentName, true, cycleTmpVar, compTmpVar, cycleVars).add(
               newLit(true)
             )
@@ -1149,11 +1150,11 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
             else:
               newEmptyNode(),
             newVarStmt(
-              ident(fmt"__r{uniqueId.value}"),
+              cycleName,
               newCall(newNimNode(nnkBracketExpr).add(ident"newSeq", ident"TagRef"))
             ),
             statement,
-            ident(fmt"__r{uniqueId.value}")
+            cycleName,
           ),
           newLit(true)
         )
