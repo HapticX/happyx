@@ -580,56 +580,8 @@ proc answerFile*(req: Request, filename: string,
     req.answer(content, headers = newHttpHeaders(h))
 
 
-proc optimizeVariablesAux(statement: NimNode, name: string, node: NimNode, parent: NimNode = newEmptyNode()) =
-  for i in 0..<statement.len:
-    if statement.kind == nnkIdentDefs and statement[0] == statement[i]:
-      continue
-    if statement[i].kind == nnkIdent and name == $statement[i]:
-      statement[i] = node
-      continue
-    statement[i].optimizeVariablesAux(name, node, statement)
-
-
-proc findVariables(statement: NimNode, name: string, counter: var int) =
-  for i in 0..<statement.len:
-    if statement.kind == nnkIdentDefs and statement[0] == statement[i]:
-      continue
-    if statement[i].kind == nnkIdent and name == $statement[i]:
-      inc counter
-      if statement.kind == nnkInfix:
-        inc counter
-      continue
-    statement[i].findVariables(name, counter)
-
-
-
-proc optimizeVariables(statement: NimNode) =
-  var variables = newSeq[tuple[name: string, count: int, val: NimNode, pos: int]]()
-  for i in 0..<statement.len:
-    if statement[i].kind in [nnkVarSection, nnkConstSection, nnkLetSection]:
-      for def in statement[i]:
-        block haskey:
-          for i in 0..<variables.len:
-            if variables[i].name == $def[0]:
-              inc variables[i].count
-              break haskey
-          variables.add((name: $def[0], count: 0, val: def[2], pos: i))
-  for i in 0..<variables.len:
-    var v = variables[i].count
-    statement.findVariables(variables[i].name, v)
-    variables[i].count = v
-  var offset = 0
-  for i in 0..<variables.len:
-    if variables[i].count == 1 and variables[i].val.kind != nnkEmpty:
-      statement.optimizeVariablesAux(variables[i].name, variables[i].val)
-      echo variables[i].pos - offset, ", ", variables[i].name
-      statement.del(variables[i].pos - offset)
-      inc offset
-
-
 proc detectReturnStmt(node: NimNode, replaceReturn: bool = false) =
   # Replaces all `return` statements with req answer*
-  node.optimizeVariables()
   for i in 0..<node.len:
     var child = node[i]
     if child.kind == nnkReturnStmt and child[0].kind != nnkEmpty:
