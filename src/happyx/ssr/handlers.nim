@@ -204,9 +204,7 @@ when defined(napibuild):
               else:
                 discard
       if reqResponded:
-        break
-    if reqResponded:
-      req.answer("Not found", Http404)
+        return
 
 
 elif exportJvm:
@@ -381,8 +379,6 @@ elif exportJvm:
                 reqResponded = true
       if reqResponded:
         break
-    if reqResponded:
-      req.answer("Not found", Http404)
 
 
 elif exportPython:
@@ -548,5 +544,3 @@ elif exportPython:
                 reqResponded = true
       if reqResponded:
         break
-    if reqResponded:
-      req.answer("Not found", Http404)

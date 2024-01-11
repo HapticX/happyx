@@ -1557,7 +1557,8 @@ socketToSsr.onmessage=function(m){
       newCall("not", ident"reqResponded"),
       caseRequestMethodsStmt.copy()
     )))
-  stmtList.add(caseRequestMethodsStmt)
+  else:
+    stmtList.add(caseRequestMethodsStmt)
 
   let wsType =
     when enableHttpBeast:
