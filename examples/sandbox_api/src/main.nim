@@ -46,14 +46,8 @@ const host =
   else:
     "127.0.0.1"
 
-const port =
-  when defined(production):
-    443
-  else:
-    8000
 
-
-serve host, port:
+serve host, 5123:
   post "/[task:Task[m]]":
     {.gcsafe.}:
       if task.code.len > 2048:
@@ -131,6 +125,12 @@ serve host, port:
           "js": data
         }}
       return %*{"response": false}
+  
+  get "/tasklist":
+    {.gcsafe.}:
+      var response = %*{"response": []}
+      for t in tasks:
+        response.add newJString(t.task.id)
   
   middleware:
     {.gcsafe.}:
