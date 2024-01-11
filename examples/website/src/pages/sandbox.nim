@@ -31,9 +31,9 @@ var
 var monacoEditor = null;
 """.}
 when defined(production):
-  {.emit:"const sandboxApiBase = 'http://46.8.141.125:5123/';".}
+  {.emit:"const sandboxApiBase = 'https://46.8.141.125/';".}
 else:
-  {.emit:"const sandboxApiBase = 'http://127.0.0.1:5123/';".}
+  {.emit:"const sandboxApiBase = 'http://127.0.0.1:8000/';".}
 
 const websiteBase* =
   when defined(production):

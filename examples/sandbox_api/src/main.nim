@@ -46,8 +46,14 @@ const host =
   else:
     "127.0.0.1"
 
+const port =
+  when defined(production):
+    443
+  else:
+    8000
 
-serve host, 5123:
+
+serve host, 8000:
   post "/[task:Task[m]]":
     {.gcsafe.}:
       if task.code.len > 2048:
