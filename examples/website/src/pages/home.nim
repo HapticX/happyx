@@ -6,10 +6,6 @@ import
   ../ui/[colors, code]
 
 
-var drawer_comp* = use:
-  component Drawer
-
-
 mount Home:
   "":
     # Component usage

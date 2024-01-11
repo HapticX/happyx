@@ -2,7 +2,7 @@
 import
   ../../../src/happyx,
   ./path_params,
-  ./ui/[colors, code, play_states, translations],
+  ./ui/[colors, code, play_states, translations, monaco],
   ./docs/docs,
   ./components/[
     button, card, code_block, header,
@@ -11,7 +11,7 @@ import
     code_block_slider, sidebar, guide_page,
     code_block_guide, language_spinner, tip
   ],
-  ./pages/[home, sponsors, roadmap, guide],
+  ./pages/[home, sponsors, roadmap, guide, sandbox],
   json,
   os
 
@@ -47,6 +47,11 @@ appRoutes "app":
   mount "/sponsors" -> Sponsors
   mount "/roadmap" -> RoadMap
   mount "/guide" -> UserGuide
+  mount "/sandbox" -> SandBox
+
+  "/start":
+    tDiv(class = "w-full min-h-screen flex justify-center items-center"):
+      tImg(src = "/happyx/public/dots_loader.gif")
 
   notfound:
     tDiv(class = "flex flex-col gap-2 justify-center items-center w-screen h-screen dark:text-[{ForegroundDark}] text-[{Foreground}] dark:bg-[{BackgroundDark}] bg-[{Background}]"):

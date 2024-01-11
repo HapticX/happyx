@@ -1622,6 +1622,90 @@ translatable:
     "zh" -> "不可用"
     "fr" -> "non disponible"
     "ko" -> "사용 불가"
+  "▶ Sandbox":
+    "ru" -> "▶ Песочница"
+    "ja" -> "▶ サンドボックス"
+    "zh" -> "▶ 沙盒"
+    "fr" -> "▶ Bac à sable"
+    "ko" -> "▶ 샌드박스"
+  "🌏 Language":
+    "ru" -> "🌏 Язык"
+    "ja" -> "🌏 言語"
+    "zh" -> "🌏 语言"
+    "fr" -> "🌏 Langue"
+    "ko" -> "🌏 언어"
+  "Components 🔥":
+    "ru" -> "Компоненты 🔥"
+    "ja" -> "コンポーネント 🔥"
+    "zh" -> "组件 🔥"
+    "fr" -> "Composants 🔥"
+    "ko" -> "컴포넌트 🔥"
+  "This article describes components and their behavior":
+    "ru" -> "Эта статья описывает компоненты и их поведение"
+    "ja" -> "この記事では、コンポーネントとその動作について説明します"
+    "zh" -> "本文描述了组件及其行为"
+    "fr" -> "Cet article décrit les composants et leur comportement"
+    "ko" -> "이 글은 컴포넌트와 그들의 동작에 대해 설명합니다"
+  "Button Example":
+    "ru" -> "Пример кнопки"
+    "ja" -> "ボタンの例"
+    "zh" -> "按钮示例"
+    "fr" -> "Exemple de bouton"
+    "ko" -> "버튼 예제"
+  "Let's look at Button component example":
+    "ru" -> "Давайте рассмотрим пример компонента кнопки"
+    "ja" -> "ボタンコンポーネントの例を見てみましょう"
+    "zh" -> "让我们看看按钮组件的例子"
+    "fr" -> "Voyons un exemple de composant bouton"
+    "ko" -> "버튼 컴포넌트 예제를 살펴보겠습니다"
+  "Click":
+    "ru" -> "Нажатие"
+    "ja" -> "クリック"
+    "zh" -> "点击"
+    "fr" -> "Cliquez"
+    "ko" -> "클릭"
+  "Firstly, user clicks on the button":
+    "ru" -> "Сначала пользователь нажимает на кнопку"
+    "ja" -> "最初にユーザーがボタンをクリックします"
+    "zh" -> "首先，用户点击按钮"
+    "fr" -> "Tout d'abord, l'utilisateur clique sur le bouton"
+    "ko" -> "먼저 사용자가 버튼을 클릭합니다"
+  "Clicked":
+    "ru" -> "Нажатие"
+    "ja" -> "クリック"
+    "zh" -> "点击"
+    "fr" -> "Cliqué"
+    "ko" -> "클릭됨"
+  "@click event was detected":
+    "ru" -> "Обнаружено событие @click"
+    "ja" -> "@click イベントが検出されました"
+    "zh" -> "检测到 @click 事件"
+    "fr" -> "L'événement @click a été détecté"
+    "ko" -> "@click 이벤트가 감지되었습니다"
+  "Counter up":
+    "ru" -> "Увеличение счетчика"
+    "ja" -> "カウンターが1増えます"
+    "zh" -> "计数器增加1"
+    "fr" -> "Augmentation du compteur"
+    "ko" -> "버튼 값 (self.counter)이 1만큼 증가"
+  "buttons'value (self.counter) increases by 1":
+    "ru" -> "Значение кнопки (self.counter) увеличивается на 1"
+    "ja" -> "ボタンの値 (self.counter) が1増加"
+    "zh" -> "按钮值 (self.counter) 增加1"
+    "fr" -> "La valeur du bouton (self.counter) augmente de 1"
+    "ko" -> "버튼 값 (self.counter)이 1만큼 증가"
+  "Re-rendering":
+    "ru" -> "Повторный рендеринг"
+    "ja" -> "再レンダリング"
+    "zh" -> "重新渲染"
+    "fr" -> "Rendu à nouveau"
+    "ko" -> "재렌더링"
+  "Current component detects that state was changed and re-renders only current component":
+    "ru" -> "Текущий компонент обнаруживает, что состояние изменилось, и перерисовывает только текущий компонент"
+    "ja" -> "現在のコンポーネントは、状態が変更されたことを検出し、現在のコンポーネントのみを再レンダリングします"
+    "zh" -> "当前组件检测到状态已更改，并仅重新渲染当前组件"
+    "fr" -> "Le composant actuel détecte que l'état a changé et le rendu se refait uniquement sur le composant actuel"
+    "ko" -> "현재 컴포넌트는 상태가 변경되었음을 감지하고 현재 컴포넌트만 다시 렌더링합니다"
 
 
 var spokenLang: cstring

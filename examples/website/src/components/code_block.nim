@@ -1,15 +1,23 @@
-import ../../../../src/happyx
+import
+  ../../../../src/happyx,
+  regex
 
 
 component CodeBlock:
   language: string = "nim"
   source: string = ""
   id: cstring = ""
+  selections: seq[tuple[start: int, finish: int]] = @[]
+  uniqueId: int = 1
 
   `template`:
     tPre(class = "relative"):
-      tCode(id = "{self.id}", language = self.language, class = "rounded-md text-3xl lg:text-lg xl:text-base language-{self.language}"):
-        {self.source}
+      if self.uniqueId == 1:
+        tCode(id = "{self.id}", language = self.language, class = "rounded-md text-3xl lg:text-lg xl:text-base language-{self.language}"):
+          {self.source}
+      else:
+        tCode(id = fmtnu"{self.id}", language = self.language, class = "rounded-md text-3xl lg:text-lg xl:text-base language-{self.language}"):
+          {self.source}
       tDiv(class = "absolute right-4 top-4"):
         tSvg(
           viewBox = "0 0 24 24",
@@ -27,8 +35,40 @@ component CodeBlock:
   
   [methods]:
     proc highlight() =
-      let id: cstring = $self.id & self.uniqCompId
+      let id: cstring =
+        if self.uniqueId == 1:
+          $self.id & self.uniqCompId
+        else:
+          $self.id
+      var innerHTML: cstring
       {.emit: """//js
       let codeBlock = document.getElementById(`id`);
       hljs.highlightElement(codeBlock);
+      `innerHTML` = codeBlock.innerHTML;
+      """.}
+      var html = $innerHTML
+      for selection in self.selections:
+        var
+          s = 0
+          e = 0
+          opened = 0
+          idx = 0
+          offset = 0
+        for i in html:
+          if idx == selection.start:
+            s = offset
+          if idx == selection.finish:
+            e = offset
+          if i == '<':
+            inc opened
+          elif i == '>':
+            dec opened
+          if opened == 0:
+            inc idx
+          inc offset
+        html.insert("<span class='border-[1px] border-red-400 rounded-md'>", s)
+        html.insert("</span>", e + 53)
+      innerHTML = cstring html
+      {.emit: """//js
+      codeBlock.innerHTML = `innerHTML`;
       """.}

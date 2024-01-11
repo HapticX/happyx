@@ -9,7 +9,7 @@ import
 
 component GettingStarted:
   `template`:
-    tDiv(class = "flex flex-col px-8 py-2 backdrop-blur-sm xl:h-fit gap-4"):
+    tDiv(class = "flex flex-col px-8 py-2 xl:h-fit gap-4"):
       tH1: {translate"Getting Started 💫"}
       tP:
         {translate"Before you begin, please make sure you have"}

@@ -9,7 +9,7 @@ import
 
 component SpaBasics:
   `template`:
-    tDiv(class = "flex flex-col px-8 py-2 backdrop-blur-sm xl:h-fit gap-4"):
+    tDiv(class = "flex flex-col px-8 py-2 xl:h-fit gap-4"):
       tH1: {translate"Single-page Applications Basics 🎴"}
       tP: {translate"With HappyX you can easily create modern single-page applications."}
       tP: {translate"SPA means that all web-app logic runs at the client-side (e.g., browser)."}

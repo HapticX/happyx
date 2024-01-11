@@ -29,6 +29,8 @@ component GuidePage:
           SpaBasics
         of "reactivity":
           Reactivity
+        of "components":
+          Components
         of "ssr_basics":
           SsrBasics
         of "tailwind_and_other":

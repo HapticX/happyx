@@ -249,3 +249,13 @@ var
 
 x.set @[1, 2, 3]
 """
+  nimSpaComponentButton* = """import happyx
+
+component Button:
+  value: int = 0
+  html:
+    tButton:
+      "counter {self.value}"
+      @click:
+        self.value += 1
+"""

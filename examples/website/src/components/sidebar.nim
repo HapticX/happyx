@@ -51,6 +51,11 @@ var
     "reactivity": {
       "title": "Reactivity ⚡",
       "prev": "spa_basics",
+      "next": "components"
+    },
+    "components": {
+      "title": "Components 🔥",
+      "prev": "reactivity",
       "next": "ssr_basics"
     },
     "ssr_basics": {
@@ -157,6 +162,8 @@ component SideBar:
                 {translate"Single-page Applications Basics 🎴"}
               SideBarItem("reactivity"):
                 {translate"Reactivity ⚡"}
+              SideBarItem("components"):
+                {translate"Components 🔥"}
 
             SideBarFolder("ssr_basics", "Server-side Applications 🖥"):
               SideBarItem("ssr_basics"):

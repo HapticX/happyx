@@ -9,7 +9,7 @@ import
 
 component SsrBasics:
   `template`:
-    tDiv(class = "flex flex-col px-8 py-2 backdrop-blur-sm xl:h-fit gap-4"):
+    tDiv(class = "flex flex-col px-8 py-2 xl:h-fit gap-4"):
       tH1: {translate"Server-side Applications Basics 🖥"}
 
       tP: {translate"This section will provide you with an overview of the core features and capabilities of SSR within HappyX web framework. SSR is a powerful technique that allows you to render web pages on the server-side before sending them to the client, resulting in improved performance and SEO optimization."}

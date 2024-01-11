@@ -47,6 +47,11 @@ component Header:
           {translate"📕 Documentation"}
         Button(
           action = proc() =
+            route"/sandbox/"
+        ):
+          {translate"▶ Sandbox"}
+        Button(
+          action = proc() =
             route"/sponsors/"
         ):
           {translate"🔥 Sponsors"}

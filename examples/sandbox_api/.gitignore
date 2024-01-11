@@ -1,0 +1,12 @@
+# Nimcache
+nimcache/
+cache/
+build/
+
+src/tasks/
+
+# Garbage
+*.exe
+*.js
+*.log
+*.lg

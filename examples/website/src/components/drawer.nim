@@ -53,6 +53,12 @@ component Drawer:
           {translate"📕 Documentation"}
         Button(
           action = proc() =
+            route"/sandbox/",
+          flat = true
+        ):
+          {translate"▶ Sandbox"}
+        Button(
+          action = proc() =
             route"/sponsors/",
           flat = true
         ):

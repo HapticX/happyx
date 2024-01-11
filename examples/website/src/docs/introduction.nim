@@ -43,7 +43,7 @@ component Contributor:
 
 component Introduction:
   `template`:
-    tDiv(class = "flex flex-col px-8 py-2 backdrop-blur-sm xl:h-fit gap-4"):
+    tDiv(class = "flex flex-col px-8 py-2 xl:h-fit gap-4"):
       tImg(src = "/happyx/public/icon.png", class = "self-center w-72 h-72")
       tH1: {translate"Introduction ✌"}
       tTable:

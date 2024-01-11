@@ -9,7 +9,7 @@ import
 
 component TailwindAndOther:
   `template`:
-    tDiv(class = "flex flex-col px-8 py-2 backdrop-blur-sm xl:h-fit gap-4"):
+    tDiv(class = "flex flex-col px-8 py-2 xl:h-fit gap-4"):
       tH1: {translate"Tailwind And Other 🎴"}
 
       tP: {translate"You can actually use most of the JS libraries with HappyX"}
