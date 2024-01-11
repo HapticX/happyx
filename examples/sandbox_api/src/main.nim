@@ -53,6 +53,13 @@ serve host, 5123:
           "error_code": 1,
           "error": "code length too long (> 2048)"
         }
+      if task.code.contains(re2"((macro) +\w+|static *: *\n +)"):
+        statusCode = 400
+        return %*{
+          "response": "error",
+          "error_code": 10,
+          "error": "Sorry, but code shouldn't contains any macros or static statements"
+        }
       var f = openAsync("tasks" / (task.id & ".nim"), fmWrite)
       await f.write(task.code)
       f.close()

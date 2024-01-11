@@ -127,7 +127,12 @@ proc compile*() {.exportc.} =
     }
   ).then(response => {
     response.json().then(json => {
-      waitUntilInterval = setInterval(waitUntil, 250);
+      if (json['response'] !== 'error') {
+        waitUntilInterval = setInterval(waitUntil, 250);
+      } else {
+        writeLine('<span class="text-red-400">Exception[' + json['response']['error_code'] + ']:</span>');
+        writeLine('<span class="text-red-400">  ' + json['response']['error'] + '</span>');
+      }
     })
   });
   """.}
