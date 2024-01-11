@@ -40,11 +40,7 @@ else:
     credentials: true
 
 
-const host =
-  when defined(production):
-    "0.0.0.0"
-  else:
-    "127.0.0.1"
+const host = "127.0.0.1"
 
 
 serve host, 5123:
