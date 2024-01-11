@@ -3,7 +3,7 @@ nimcache/
 cache/
 build/
 
-src/tasks/
+src/tasks/*.nim
 
 # Garbage
 *.exe
