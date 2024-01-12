@@ -41,10 +41,10 @@ else:
 
 
 const host {.strdefine.} = "127.0.0.1"
-const port {.intdefine.} = 5123
+const port {.strdefine.} = "5123"
 
 
-serve host, 5123:
+serve host, parseInt(port):
   post "/[task:Task[m]]":
     {.gcsafe.}:
       if task.code.len > 2048:
