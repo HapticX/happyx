@@ -85,8 +85,7 @@ of 'b', 'c':
 of 'd'..'h':
   echo "letter is between 'd' and 'h'"
 else:
-  echo "letter is another character"
-"""
+  echo "letter is another character" """
   basicMath* = """import std/math
 
 # Basic math.
@@ -116,8 +115,7 @@ assert radToDeg(TAU) == 360.0 # Radians to Degrees
 assert clamp(1.4, 0.0 .. 1.0) == 1.0 # Clamp
 assert almostEqual(PI, 3.14159265358979)
 assert euclDiv(-13, -3) == 5  # Euclidean Division
-assert euclMod(-13, 3) == 2   # Euclidean Modulo
-"""
+assert euclMod(-13, 3) == 2   # Euclidean Modulo"""
   stringOperators* = """import std/[strutils, strscans]
 
 assert "con" & "cat" == "concat"
@@ -146,8 +144,7 @@ let (ok, year, month, day) = scanTuple("1000-01-01", "$i-$i-$i")
 if ok:
   assert year == 1000
   assert month == 1
-  assert day == 1
-"""
+  assert day == 1"""
   comprehensions* = """import std/[sugar, tables, sets, sequtils, strutils]
 
 let variable0 = collect(newSeq):
@@ -173,5 +170,4 @@ assert toSeq(1..15).mapIt(
     elif it mod 5 == 0: "Buzz"
     elif it mod 3 == 0: "Fizz"
     else: $it
-  ).join(" ").strip == "1 2 Fizz 4 Buzz Fizz 7 8 Fizz Buzz 11 Fizz 13 14 FizzBuzz"
-"""
+  ).join(" ").strip == "1 2 Fizz 4 Buzz Fizz 7 8 Fizz Buzz 11 Fizz 13 14 FizzBuzz""""

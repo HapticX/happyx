@@ -75,6 +75,7 @@ jobs:
       - name: NimLang 👑
         run: |
           cd examples/nimlang/src
+          nimble install highlightjs
           nim js --hints:off --warnings:off main
           cd ../../../
         shell: bash
