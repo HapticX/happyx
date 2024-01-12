@@ -197,7 +197,7 @@ proc handleCommand*(command: cstring) {.exportc.} =
   of "link", "get-link":
     codeLink()
   of "help":
-    writeLine("<span class='text-yellow-400'>HappyX sandbox terminal v1.0.0")
+    writeLine("<span class='text-yellow-400'>HappyX sandbox terminal v1.1.0")
     writeLine("  You can use it to manage sandbox")
     writeLine("")
     writeLine("  Commands:")
@@ -251,9 +251,9 @@ proc moveCursorTo*(line, symbol: int) {.exportc.} =
 
 component SandBoxEditor:
   `template`:
-    tDiv(class = "flex w-full xl:w-1/2 flex-col"):
+    tDiv(id = nu"editor_container", class = "flex w-full xl:w-1/2 flex-col"):
       tDiv(
-        class = "monaco w-full h-[24rem] xl:h-[36rem] bg-[{Background}] dark:bg-[{BackgroundDark}] text-[{Foreground}] dark:text-[{ForegroundDark}]"
+        class = "monaco w-full h-[64rem] xl:h-[36rem] bg-[{Background}] dark:bg-[{BackgroundDark}] text-[{Foreground}] dark:text-[{ForegroundDark}]"
       )
   
   @updated:
@@ -281,6 +281,8 @@ component SandBoxEditor:
           language: "nim",
           minimap: { enabled: true },
           automaticLayout: true,
+          smoothScrolling: true,
+          fontSize: isPhone() ? 28 : 14,
         }
       );
       if (`sharedCode`) {
@@ -344,9 +346,51 @@ mount SandBox:
       # Header
       tDiv(class = "w-full sticky top-0 z-20"):
         Header(drawer = drawer_comp)
-      tDiv(class = "flex flex-col xl:flex-row w-full h-full"):
+      tDiv(class = "flex xl:hidden justify-evenly text-2xl lg:text-lg xl:text-base py-4"):
+        tButton(
+          id = "editor_button",
+          class = "py-2 px-2 border-b-[1px] border-transparent opacity-[.6] hover:opacity-[.8] active:opacity-100 duration-150"
+        ):
+          "EDITOR"
+          @click:
+            let
+              editorButton = document.getElementById("editor_button")
+              viewButton = document.getElementById("view_button")
+              editorContainer = document.getElementById("editor_container")
+              viewContainer = document.getElementById("view_container")
+            editorButton.classList.add(fmt"border-[{Foreground}]")
+            editorButton.classList.add(fmt"dark:border-[{ForegroundDark}]")
+            editorButton.classList.remove("border-transparent")
+            viewButton.classList.remove(fmt"border-[{Foreground}]")
+            viewButton.classList.remove(fmt"dark:border-[{ForegroundDark}]")
+            viewButton.classList.add("border-transparent")
+            viewContainer.classList.add("scale-0")
+            viewContainer.classList.remove("scale-100")
+        tButton(
+          id = "view_button",
+          class = "py-2 px-2 border-b-[1px] border-transparent hover:border-[{Foreground}] dark:hover:border-[{ForegroundDark}] opacity-[.6] hover:opacity-[.8] active:opacity-100 duration-150"
+        ):
+          "VIEW"
+          @click:
+            let
+              editorButton = document.getElementById("editor_button")
+              viewButton = document.getElementById("view_button")
+              editorContainer = document.getElementById("editor_container")
+              viewContainer = document.getElementById("view_container")
+            editorButton.classList.add(fmt"border-[{Foreground}]")
+            editorButton.classList.add(fmt"dark:border-[{ForegroundDark}]")
+            editorButton.classList.remove("border-transparent")
+            viewButton.classList.remove(fmt"border-[{Foreground}]")
+            viewButton.classList.remove(fmt"dark:border-[{ForegroundDark}]")
+            viewButton.classList.add("border-transparent")
+            viewContainer.classList.add("scale-100")
+            viewContainer.classList.remove("scale-0")
+      tDiv(class = "flex w-full h-full overflow-hidden justify-center items-center"):
         SandBoxEditor
-        tDiv(class = "w-full h-[24rem] xl:h-[36rem] xl:w-full bg-white"):
+        tDiv(
+          id = "view_container",
+          class = "duration-150 absolute z-50 scale-0 xl:scale-100 xl:z-0 xl:static w-full h-[64rem] xl:h-[36rem] bg-white"
+        ):
           tIframe(
             id = "sandbox_frame",
             src = fmt"{websiteBase}#/start",
@@ -357,9 +401,9 @@ mount SandBox:
           )
       tDiv(
         id = "sandbox_terminal",
-        class = "w-full h-full p-2 min-h-[16rem] max-h-[16rem] bg-[{BackgroundDark}] "
+        class = "w-full h-full p-2 max-h-[48rem] min-h-[48rem] xl:min-h-[16rem] xl:max-h-[16rem] bg-[{BackgroundDark}] "
       ):
-        tDiv(class = "flex gap-4"):
+        tDiv(class = "flex gap-4 py-4 xl:py-0 text-2xl lg:text-lg xl:text-base"):
           tButton(class = "py-2 px-2 border-b-[1px] border-transparent hover:border-[{Foreground}] dark:hover:border-[{ForegroundDark}] opacity-[.6] hover:opacity-[.8] active:opacity-100 duration-150"):
             "COMPILE"
             @click:
@@ -378,18 +422,18 @@ mount SandBox:
               codeLink()
         tDiv(
           id = "sandbox_terminal_snippet",
-          class = "absolute z-50 empty:opacity-0 empty:scale-0 empty:-translate-y-1/2 duration-150 transition-all backdrop-shadow-2xl rounded-md overflow-hidden -translate-y-full w-fit h-fit bg-[{BackgroundSecondary}] dark:bg-[{BackgroundSecondaryDark}]"
+          class = "text-3xl lg:text-xl xl:text-base absolute z-50 empty:opacity-0 empty:scale-0 empty:-translate-y-1/2 duration-150 transition-all backdrop-shadow-2xl rounded-md overflow-hidden -translate-y-full w-fit h-fit bg-[{BackgroundSecondary}] dark:bg-[{BackgroundSecondaryDark}]"
         )
         tDiv(
           id = "sandbox_terminal_container",
-          class = "overflow-auto w-full max-h-[17rem] flex flex-col"
+          class = "overflow-auto w-full max-h-[47rem] xl:max-h-[17rem] flex flex-col"
         ):
-          tPre(id = "sandbox_terminal_output", class = "px-2 pt-1"):
-            "HappyX Sandbox v1.0.0"
+          tPre(id = "sandbox_terminal_output", class = "text-3xl lg:text-xl xl:text-base px-2 pt-1"):
+            "HappyX Sandbox v1.1.0"
           tInput(
             placeholder = "|",
             id = "sandbox_terminal_input",
-            class = "peer w-full bg-transparent outline-none px-2 text-[{Foreground}] dark:text-[{ForegroundDark}]",
+            class = "text-3xl lg:text-xl xl:text-base peer w-full bg-transparent outline-none px-2 text-[{Foreground}] dark:text-[{ForegroundDark}]",
           ):
             @focusin(event):
               {.emit: """//js
@@ -406,7 +450,7 @@ mount SandBox:
               let sandbox_terminal_input = document.getElementById("sandbox_terminal_input");
               let command = `cmd`;
               let elem = document.createElement('div');
-              elem.setAttribute('class', 'group flex px-6 py-1 cursor-pointer bg-white/[.05] opacity-[.6] hover:opacity-[.8] active:opacity-100 duration-150');
+              elem.setAttribute('class', 'group flex px-6 py-3 xl:py-1 cursor-pointer bg-white/[.05] opacity-[.6] hover:opacity-[.8] active:opacity-100 duration-150');
               sandbox_terminal_snippet.innerHTML = "";
 
               let x = window.scrollX + sandbox_terminal_input.getBoundingClientRect().left;
