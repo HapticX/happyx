@@ -118,6 +118,7 @@ mount RoadMap:
           Card:
             tDiv(class = "w-full flex flex-col items-center gap-2 p-4 lg:p-2 xl:p-0"):
               tP(class = "text-4xl lg:text-2xl xl:text-lg font-semibold"):
-                "Future releases"
+                {translate"Future"}
               tP(class = "w-full text-2xl lg:text-lg xl:text-base"):
-                "ORM 🔨"
+                tUl(class = "list-disc"):
+                  tLi: {translate"Metaprogramming 🔨"}
