@@ -1706,6 +1706,24 @@ translatable:
     "zh" -> "当前组件检测到状态已更改，并仅重新渲染当前组件"
     "fr" -> "Le composant actuel détecte que l'état a changé et le rendu se refait uniquement sur le composant actuel"
     "ko" -> "현재 컴포넌트는 상태가 변경되었음을 감지하고 현재 컴포넌트만 다시 렌더링합니다"
+  "HappyX Sandbox ▶":
+    "ru" -> "Песочница HappyX ▶"
+    "ja" -> "HappyX サンドボックス ▶"
+    "zh" -> "HappyX 沙盒 ▶"
+    "fr" -> "HappyX Bac à sable ▶"
+    "ko" -> "HappyX 샌드박스 ▶"
+  "Generics 👶":
+    "ru" -> "Дженерики 👶"
+    "ja" -> "ジェネリクス 👶"
+    "zh" -> "泛型 👶"
+    "fr" -> "Génériques 👶"
+    "ko" -> "일반화 👶"
+  "More flexibility 🔥":
+    "ru" -> "Больше гибкости 🔥"
+    "ja" -> "より柔軟性を持たせる 🔥"
+    "zh" -> "更多灵活性 🔥"
+    "fr" -> "Plus de flexibilité 🔥"
+    "ko" -> "더 많은 유연성 🔥"
 
 
 var spokenLang: cstring
