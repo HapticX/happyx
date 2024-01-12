@@ -40,7 +40,8 @@ else:
     credentials: true
 
 
-const host = "127.0.0.1"
+const host {.strdefine.} = "127.0.0.1"
+const port {.intdefine.} = 5123
 
 
 serve host, 5123:
