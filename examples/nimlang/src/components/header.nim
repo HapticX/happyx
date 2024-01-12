@@ -15,7 +15,7 @@ component Header:
         tDiv(class = "flex items-center h-full min-w-fit px-2 cursor-pointer hover:bg-white/10 active:bg-white/20 transition-colors duration-500"):
           img(src = "public/logo.svg", class="min-w-16 h-7")
           @click:
-            route("/")
+            route"/"
         # Header desktop buttons
         tDiv(class = "hidden lg:flex h-full"):
           tDiv(class = "flex h-full"):

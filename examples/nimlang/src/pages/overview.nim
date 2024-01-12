@@ -16,9 +16,10 @@ component Overview:
   ]
   html:
     tDiv(class = "flex flex-col bg-[{background}] pt-8 text-white justify-center items-center"):
-      tDiv(class = "flex flex-col gap-4 pb-6 px-4 w-full overflow-hidden lg:flex-row lg:w-3/5"):
+      tDiv(class = "flex gap-4 flex-col gap-4 pb-6 px-4 w-full overflow-hidden lg:flex-row lg:w-3/5"):
         # General
         tDiv(class = "flex flex-col gap-6 w-full lg:w-1/2"):
+          img(src = "public/nim-website.svg", class = "w-1/4 -mb-6")
           tH1(class = "pb-4 text-[{yellow}] transition-all"):
             Heading(2):
               "Efficient, expressive, elegant"
