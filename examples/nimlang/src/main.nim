@@ -1,40 +1,41 @@
 import
   ../../../src/happyx,
   path_params,
-  components/[overview, header],
+  components/components,
+  pages/pages,
   app_config
 
 
 appRoutes "app":
   "/":
     tDiv(class = "flex flex-col"):
-      component Header
-      component Overview
+      Header
+      Overview
       
   "/blog":
     tDiv(class = "flex flex-col"):
-      component Header
+      Header
 
   "/features":
     tDiv(class = "flex flex-col"):
-      component Header
+      Header
 
   "/download":
     tDiv(class = "flex flex-col"):
-      component Header
+      Header
 
   "/docs":
     tDiv(class = "flex flex-col"):
-      component Header
+      Header
 
   "/forum":
     tDiv(class = "flex flex-col"):
-      component Header
+      Header
 
   "/donate":
     tDiv(class = "flex flex-col"):
-      component Header
+      Header
 
   "/source":
     tDiv(class = "flex flex-col"):
-      component Header
+      Header

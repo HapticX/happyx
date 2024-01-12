@@ -9,23 +9,23 @@ component Header:
 
   `template`:
     # Main header
-    tDiv(class = "fixed flex w-full items-center px-4 h-12 justify-center bg-[{backHeader}] transition-all"):
-      tDiv(class = "flex w-full h-full lg:w-3/4 justify-between"):
+    tDiv(class = "fixed z-10 flex w-full items-center px-4 h-14 justify-center bg-[{backHeader}] transition-all"):
+      tDiv(class = "flex w-full h-full lg:w-3/5 justify-between"):
         # Logo container
         tDiv(class = "flex items-center h-full min-w-fit px-2 cursor-pointer hover:bg-white/10 active:bg-white/20 transition-colors duration-500"):
-          img(src = "public/logo.svg", class="min-w-16 h-6")
+          img(src = "public/logo.svg", class="min-w-16 h-7")
           @click:
             route("/")
         # Header desktop buttons
         tDiv(class = "hidden lg:flex h-full"):
           tDiv(class = "flex h-full"):
-            component HeaderButton(text = "Blog", path = "/blog")
-            component HeaderButton(text = "Features", path = "/features")
-            component HeaderButton(text = "Download", path = "/download")
-            component HeaderButton(text = "Documentation", path = "/docs")
-            component HeaderButton(text = "Forum", path = "/forum")
-            component HeaderButton(text = "Donate", path = "/donate")
-            component HeaderButton(text = "Source", path = "/source")
+            HeaderButton("/blog"): "Blog"
+            HeaderButton("/features"): "Features"
+            HeaderButton("/download"): "Download"
+            HeaderButton("/docs"): "Documentation"
+            HeaderButton("/forum"): "Forum"
+            HeaderButton("/donate"): "Donate"
+            HeaderButton("/source"): "Source"
         # Header mobile buttons
         tDiv(class = "flex lg:hidden text-white h-full"):
           tButton:
@@ -38,11 +38,11 @@ component Header:
                 "x"
                 @click:
                   self.mobileSidebar = not self.mobileSidebar
-              component HeaderButton(text = "Blog", path = "/blog")
-              component HeaderButton(text = "Features", path = "/features")
-              component HeaderButton(text = "Download", path = "/download")
-              component HeaderButton(text = "Documentation", path = "/docs")
-              component HeaderButton(text = "Forum", path = "/forum")
-              component HeaderButton(text = "Donate", path = "/donate")
-              component HeaderButton(text = "Source", path = "/source")
+            HeaderButton("/blog"): "Blog"
+            HeaderButton("/features"): "Features"
+            HeaderButton("/download"): "Download"
+            HeaderButton("/docs"): "Documentation"
+            HeaderButton("/forum"): "Forum"
+            HeaderButton("/donate"): "Donate"
+            HeaderButton("/source"): "Source"
     tDiv(class = "h-12 w-full")
