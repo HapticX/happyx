@@ -146,20 +146,6 @@ serve host, port:
       for t in tasks:
         response.add newJString(t.task.id)
   
-  get "/{file:path}":
-    {.gcsafe.}:
-      if not dirExists("website"):
-        return %*{"response": "website not compiled"}
-      if fileExists("website" / "public" / file):
-        return FileResponse("website" / "public" / file)
-      elif fileExists("website" / file):
-        return FileResponse("website" / file)
-      elif fileExists("website" / "happyx" / file):
-        return FileResponse("website" / "happyx" / file)
-      elif fileExists("website" / "happyx" / "public" / file):
-        return FileResponse("website" / "happyx" / "public" / file)
-      return %*{"response": "not found"}
-  
   middleware:
     {.gcsafe.}:
       if req.body.len > 4096:
@@ -169,3 +155,5 @@ serve host, port:
           "error_code": 3,
           "error": "request length too long (> 4096)"
         }
+  
+  staticDir "/" -> "website"
