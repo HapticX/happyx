@@ -61,7 +61,6 @@ jobs:
       - name: Python Bindings 🐍
         run: |
           cd src
-          echo "Windows module"
           echo "Win Module compiled with"
           echo "nim c --app:lib --out:../bindings/python/happyx/happyx.pyd -d:useRealtimeGC --mm:arc --tlsEmulation:off --passL:-static --t:-flto --l:-flto --opt:speed --threads:off -d:release -d:httpx -d:export2py happyx"
           echo "Linux module"
