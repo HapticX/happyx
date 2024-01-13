@@ -11,6 +11,7 @@ htmldocs/
 
 # builded
 **/build/
+happyx_linkerArgs.txt
 
 # Test HappyX projects
 test*/

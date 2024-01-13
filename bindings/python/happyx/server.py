@@ -53,11 +53,11 @@ class Server:
         if Server._was_imported:
             Server._was_imported = True
             if disable_realtime and enable_threads:
-                happyx = __import__('happyx_threaded_no_realtime')
+                Server.hpx_lib = __import__('happyx_threaded_no_realtime')
             elif disable_realtime:
-                happyx = __import__('happyx_no_realtime')
+                Server.hpx_lib = __import__('happyx_no_realtime')
             elif enable_threads:
-                happyx = __import__('happyx_threaded')
+                Server.hpx_lib = __import__('happyx_threaded')
         self.host = host
         self.port = port
         self._server = Server.hpx_lib.new_server(host, port)
