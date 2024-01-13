@@ -480,9 +480,11 @@ elif exportPython:
                   req.forget()
                   req.client.AsyncFD.register()
                   let socket = newAsyncSocket()
-                  let (client, error) = await verifyWebsocketRequest(socket, req.headers.get(), "")
+                  let (client, err) = await verifyWebsocketRequest(socket, req.headers.get(), "")
                   if client.isNil:
                     socket.close()
+                    error(fmt"Unexpected socket error: {getCurrentExceptionMsg()}")
+                    wsConnection.state = wssError
                     return
                   client
                 else:
