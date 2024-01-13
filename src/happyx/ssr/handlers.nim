@@ -477,7 +477,6 @@ elif exportPython:
             if route.httpMethod == @["WEBSOCKET"]:
               let wsClient = await newWebSocket(req)
               # Declare route handler
-              var handler = route.handler
               let wsConnection = newWebSocketObj(wsClient, "")
               if handlerParams.hasParamType("WebSocket"):
                 pyFuncParams[handlerParams.getParamName("WebSocket")] = wsConnection

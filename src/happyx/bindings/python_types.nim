@@ -137,7 +137,7 @@ proc initRoute*(path, purePath: string, httpMethod: seq[string], pattern: Regex2
     posArgs: @[]
   )
   result.locals = pyDict()
-  result.locals["func"] = handler
+  result.locals["handler"] = handler
   # fetch __defaults__
   if not handler.isNil:
     var defaults: JsonNode
