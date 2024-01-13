@@ -73,7 +73,11 @@ type
     wssError
   WebSocket* = ref object of PyNimObjectExperimental
     id*: uint64
-    ws*: websocketx.WebSocket
+    ws*:
+      when enableHttpBeast:
+        websocketx.WebSocket
+      else:
+        websocket.AsyncWebSocket
     data*: string
     state*: WebSocketState
 
