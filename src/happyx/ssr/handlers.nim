@@ -484,7 +484,6 @@ elif exportPython:
                   if client.isNil:
                     socket.close()
                     error(fmt"Unexpected socket error: {getCurrentExceptionMsg()}")
-                    wsConnection.state = wssError
                     return
                   client
                 else:
