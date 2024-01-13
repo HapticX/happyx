@@ -21,6 +21,7 @@ on:
       - '**/bindings/python_types.nim'
       - '**/constants.nim'
 
+
 jobs:
   build:
     runs-on: ${{ matrix.os }}

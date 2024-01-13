@@ -477,11 +477,10 @@ elif exportPython:
             if route.httpMethod == @["WEBSOCKET"]:
               let wsClient =
                 when enableHttpBeast:
-                  headers = req.headers.get()
                   req.forget()
                   req.client.AsyncFD.register()
                   let socket = newAsyncSocket()
-                  let (wsClient, error) = await verifyWebsocketRequest(socket, headers, "")
+                  let (wsClient, error) = await verifyWebsocketRequest(socket, req.headers.get(), "")
                   if wsClient.isNil:
                     socket.close()
                     return
