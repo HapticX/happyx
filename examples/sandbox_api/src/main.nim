@@ -151,15 +151,13 @@ serve host, port:
       if not dirExists("website"):
         return %*{"response": "website not compiled"}
       if fileExists("website" / "public" / file):
-        var f = openAsync("website" / "public" / file)
-        let data = await f.readAll()
-        f.close()
-        return data
+        return FileResponse("website" / "public" / file)
       elif fileExists("website" / file):
-        var f = openAsync("website" / file)
-        let data = await f.readAll()
-        f.close()
-        return data
+        return FileResponse("website" / file)
+      elif fileExists("website" / "happyx" / file):
+        return FileResponse("website" / "happyx" / file)
+      elif fileExists("website" / "happyx" / "public" / file):
+        return FileResponse("website" / "happyx" / "public" / file)
       return %*{"response": "not found"}
   
   middleware:
