@@ -386,21 +386,18 @@ elif exportPython:
   import nimpy
 
   template handlePythonRequest*(self: server.Server, req: Request, urlPath: string) =
-    var pyNone: PyObject
-    newPyNone().pyValueToNim(pyNone)
-    for route in self.routes:
-      if (
-        (@["NOTFOUND"] == route.httpMethod and not(reqResponded)) or
-        (
-          @["MIDDLEWARE"] == route.httpMethod or
+    {.gcsafe.}:
+      for route in self.routes:
+        if (
+          (@["NOTFOUND"] == route.httpMethod and not(reqResponded)) or
           (
-            (contains(route.httpMethod, $req.httpMethod.get()) and route.pattern in urlPath) or
-            (hasHttpMethod(route, @["STATICFILE", "WEBSOCKET"]) and route.pattern in urlPath)
+            @["MIDDLEWARE"] == route.httpMethod or
+            (
+              (contains(route.httpMethod, $req.httpMethod.get()) and route.pattern in urlPath) or
+              (hasHttpMethod(route, @["STATICFILE", "WEBSOCKET"]) and route.pattern in urlPath)
+            )
           )
-        )
-      ):
-        {.gcsafe.}:
-          var request = initHttpRequest(req.path.get(), $req.httpMethod.get(), req.headers.get(), req.body.get())
+        ):
           if route.httpMethod.len > 0 and route.httpMethod[0] == "STATICFILE":
             let
               routeData = handleRoute(route.path)
@@ -451,7 +448,7 @@ elif exportPython:
               )
             # Add queries to function parameters
             for param in handlerParams:
-              if not (pyNone != callMethod(funcParams, "get", param.name)) and not (param.paramType in @["HttpRequest", "WebSocket"]):
+              if not (py.None != callMethod(funcParams, "get", param.name)) and not param.reserved:
                 funcParams[param.name] = case param.paramType
                   of "bool":
                     parseBoolOrJString(query.getOrDefault(param.name))
@@ -467,7 +464,9 @@ elif exportPython:
             pFuncParams.pyValueToNim(pyFuncParams)
             # Add HttpRequest to function parameters if required
             if handlerParams.hasHttpRequest:
-              pyFuncParams[handlerParams.getParamName("HttpRequest")] = request
+              pyFuncParams[handlerParams.getParamName("HttpRequest")] = initHttpRequest(
+                req.path.get(), $req.httpMethod.get(), req.headers.get(), req.body.get()
+              )
             # Detect and create classes for request models
             for param in py.list(callMethod(funcParams, "keys")).to(JsonNode):
               let paramType = handlerParams.getParamType(param.getStr)

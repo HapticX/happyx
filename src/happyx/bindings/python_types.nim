@@ -47,6 +47,7 @@ type
     headers*: PyObject
   HandlerParam* = object
     name*, paramType*: string
+    reserved*: bool
   Route* = ref object of PyNimObjectExperimental
     path*: string
     purePath*: string
@@ -111,9 +112,13 @@ proc newHandlerParams*(args: openarray[string], annotations: JsonNode): seq[Hand
   result = @[]
   for arg in args:
     if annotations.hasKey(arg):
-      result.add(HandlerParam(name: arg, paramType: annotations[arg].str))
+      result.add(HandlerParam(
+        name: arg, paramType: annotations[arg].str, reserved: arg in @["HttpRequest", "WebSocket"]
+      ))
     else:
-      result.add(HandlerParam(name: arg, paramType: "any"))
+      result.add(HandlerParam(
+        name: arg, paramType: "any", reserved: arg in @["HttpRequest", "WebSocket"]
+      ))
 
 
 proc newAnnotations*(data: PyObject): JsonNode =

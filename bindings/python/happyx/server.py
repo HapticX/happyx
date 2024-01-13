@@ -13,8 +13,6 @@ class Server:
     """
     Provides HTTP Server made with HappyX
     """
-    _was_imported: bool = False
-    hpx_lib = happyx
 
     __all__ = [
       '__init__',
@@ -35,9 +33,7 @@ class Server:
             path: str = None,
             openapi: bool = True,
             redoc_url: str = "/redoc",
-            swagger_url: str = "/swagger",
-            disable_realtime: bool = False,
-            enable_threads: bool = False
+            swagger_url: str = "/swagger"
     ):
         """
         Creates a new server
@@ -50,17 +46,9 @@ class Server:
         redoc_url {str} -- ReDoc endpoint (default "/redoc")
         swagger_url {str} -- Swagger endpoint (default "/swagger")
         """
-        if Server._was_imported:
-            Server._was_imported = True
-            if disable_realtime and enable_threads:
-                Server.hpx_lib = __import__('happyx_threaded_no_realtime')
-            elif disable_realtime:
-                Server.hpx_lib = __import__('happyx_no_realtime')
-            elif enable_threads:
-                Server.hpx_lib = __import__('happyx_threaded')
         self.host = host
         self.port = port
-        self._server = Server.hpx_lib.new_server(host, port)
+        self._server = happyx.new_server(host, port)
         self.path = path
         # OpenAPI docs
         self._swagger_url = swagger_url
@@ -96,8 +84,7 @@ class Server:
         """
         Deletes current server
         """
-        if hasattr(self, '_server'):
-            Server.hpx_lib.delete_server(self._server)
+        happyx.delete_server(self._server)
     
     def __eq__(self, other) -> bool:
         """
@@ -198,17 +185,17 @@ class Server:
         
         # Bind swagger URL if available
         if isinstance(self._swagger_url, str):
-            Server.hpx_lib.get_server(self._server, self._swagger_url, _swagger_endpoint)
+            happyx.get_server(self._server, self._swagger_url, _swagger_endpoint)
         # Bind openapi URL if available
         if isinstance(self._redoc_url, str):
-            Server.hpx_lib.get_server(self._server, self._redoc_url, _redoc_endpoint)
-        Server.hpx_lib.get_server(self._server, "/docs/openapi.json", _openapi_endpoint)
+            happyx.get_server(self._server, self._redoc_url, _redoc_endpoint)
+        happyx.get_server(self._server, "/docs/openapi.json", _openapi_endpoint)
     
     def start(self) -> None:
         """
         Starts server listening
         """
-        Server.hpx_lib.start_server_by_id(self._server)
+        happyx.start_server_by_id(self._server)
     
     def route(self, route: str, methods: List[str] = None) -> Callable[[Callback], Any]:
         """
@@ -218,7 +205,7 @@ class Server:
             methods = []
         def _wrapper(cb: Callback):
             self._add_route_data(route, cb, methods)
-            Server.hpx_lib.route_server(self._server, route, methods, cb)
+            happyx.route_server(self._server, route, methods, cb)
         return _wrapper
     
     def get(self, route: str) -> Callable[[Callback], Any]:
@@ -227,7 +214,7 @@ class Server:
         """
         def _wrapper(cb: Callback):
             self._add_route_data(route, cb, ["get"])
-            Server.hpx_lib.get_server(self._server, route, cb)
+            happyx.get_server(self._server, route, cb)
         return _wrapper
     
     def post(self, route: str) -> Callable[[Callback], Any]:
@@ -236,7 +223,7 @@ class Server:
         """
         def _wrapper(cb: Callback):
             self._add_route_data(route, cb, ["post"])
-            Server.hpx_lib.post_server(self._server, route, cb)
+            happyx.post_server(self._server, route, cb)
         return _wrapper
 
     def put(self, route: str) -> Callable[[Callback], Any]:
@@ -245,7 +232,7 @@ class Server:
         """
         def _wrapper(cb: Callback):
             self._add_route_data(route, cb, ["put"])
-            Server.hpx_lib.put_server(self._server, route, cb)
+            happyx.put_server(self._server, route, cb)
         return _wrapper
 
     def purge(self, route: str) -> Callable[[Callback], Any]:
@@ -254,7 +241,7 @@ class Server:
         """
         def _wrapper(cb: Callback):
             self._add_route_data(route, cb, ["purge"])
-            Server.hpx_lib.purge_server(self._server, route, cb)
+            happyx.purge_server(self._server, route, cb)
         return _wrapper
 
     def copy(self, route: str) -> Callable[[Callback], Any]:
@@ -263,7 +250,7 @@ class Server:
         """
         def _wrapper(cb: Callback):
             self._add_route_data(route, cb, ["copy"])
-            Server.hpx_lib.copy_server(self._server, route, cb)
+            happyx.copy_server(self._server, route, cb)
         return _wrapper
 
     def head(self, route: str) -> Callable[[Callback], Any]:
@@ -272,7 +259,7 @@ class Server:
         """
         def _wrapper(cb: Callback):
             self._add_route_data(route, cb, ["head"])
-            Server.hpx_lib.head_server(self._server, route, cb)
+            happyx.head_server(self._server, route, cb)
         return _wrapper
 
     def delete(self, route: str) -> Callable[[Callback], Any]:
@@ -281,7 +268,7 @@ class Server:
         """
         def _wrapper(cb: Callback):
             self._add_route_data(route, cb, ["delete"])
-            Server.hpx_lib.delete_server(self._server, route, cb)
+            happyx.delete_server(self._server, route, cb)
         return _wrapper
 
     def options(self, route: str) -> Callable[[Callback], Any]:
@@ -290,7 +277,7 @@ class Server:
         """
         def _wrapper(cb: Callback):
             self._add_route_data(route, cb, ["options"])
-            Server.hpx_lib.options_server(self._server, route, cb)
+            happyx.options_server(self._server, route, cb)
         return _wrapper
 
     def link(self, route: str) -> Callable[[Callback], Any]:
@@ -299,7 +286,7 @@ class Server:
         """
         def _wrapper(cb: Callback):
             self._add_route_data(route, cb, ["link"])
-            Server.hpx_lib.link_server(self._server, route, cb)
+            happyx.link_server(self._server, route, cb)
         return _wrapper
 
     def unlink(self, route: str) -> Callable[[Callback], Any]:
@@ -308,7 +295,7 @@ class Server:
         """
         def _wrapper(cb: Callback):
             self._add_route_data(route, cb, ["unlink"])
-            Server.hpx_lib.unlink_server(self._server, route, cb)
+            happyx.unlink_server(self._server, route, cb)
         return _wrapper
 
     def websocket(self, route: str) -> Callable[[Callback], Any]:
@@ -316,20 +303,20 @@ class Server:
         Creates a new WEBSOCKET route
         """
         def _wrapper(cb: Callback):
-            Server.hpx_lib.websocket_server(self._server, route, cb)
+            happyx.websocket_server(self._server, route, cb)
         return _wrapper
 
     def middleware(self, cb: Callback) -> None:
         """
         Creates a new MIDDLEWARE route for all routes
         """
-        Server.hpx_lib.middleware_server(self._server, cb)
+        happyx.middleware_server(self._server, cb)
 
     def notfound(self, cb: Callback) -> None:
         """
         Creates a new NOTFOUND route for this server object
         """
-        Server.hpx_lib.notfound_server(self._server, cb)
+        happyx.notfound_server(self._server, cb)
 
     def mount(self, route: str = None, other = None) -> None:
         """
@@ -345,7 +332,7 @@ class Server:
             if other.path is None:
                 raise ValueError('mounting canceled! route is None')
             route = other.path
-        Server.hpx_lib.mount_server(self._server, route, other._server)
+        happyx.mount_server(self._server, route, other._server)
     
     def static(self, route: str, directory: str, extensions: List[str] = None) -> None:
         """
@@ -353,4 +340,4 @@ class Server:
         """
         if extensions is None:
             extensions = []
-        Server.hpx_lib.static_server(self._server, route, directory, extensions)
+        happyx.static_server(self._server, route, directory, extensions)
