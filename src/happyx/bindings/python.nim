@@ -59,7 +59,10 @@ proc registerCORS*(allow_origins: string, allow_methods: string,
 
 
 proc close*(self: python_types.WebSocket) {.exportpy.} =
-  self.ws.close()
+  when enableHttpBeast:
+    waitFor self.ws.close()
+  else:
+    self.ws.close()
 
 
 proc receiveText*(self: python_types.WebSocket): string {.exportpy: "receive_text".} =
