@@ -1,5 +1,6 @@
 echo "Build Python Win Bindings"
 cd src
+
 nim c ^
   --app:lib ^
   --out:../bindings/python/happyx/happyx.pyd ^
