@@ -425,20 +425,18 @@ elif exportPython:
                 reqResponded = true
           else:
             let
-              queryFromUrl = block:
+              query = parseQuery(block:
                 let val = split(req.path.get(), "?")
                 if len(val) >= 2:
                   val[1]
                 else:
                   ""
-              query = parseQuery(queryFromUrl)
+              )
             var
               # Declare RouteData
               routeData = handleRoute(route.path)
               # Declare Python Object (for function params)
               pyFuncParams: PyObject
-              # handle callback data
-              variables = route.posArgs
             # Unpack route path params
             let
               founded_regexp_matches = urlPath.findAll(route.pattern)
@@ -470,15 +468,13 @@ elif exportPython:
             # Add HttpRequest to function parameters if required
             if handlerParams.hasHttpRequest:
               pyFuncParams[handlerParams.getParamName("HttpRequest")] = request
-            let arr = py.list(callMethod(funcParams, "keys")).to(JsonNode)
             # Detect and create classes for request models
-            for param in arr:
+            for param in py.list(callMethod(funcParams, "keys")).to(JsonNode):
               let paramType = handlerParams.getParamType(param.getStr)
               if paramType in requestModelsHidden:
                 var requestModel = requestModelsHidden[paramType].pyClass
                 # Create Python class instance
-                let pyClassInstance = requestModel.from_dict(requestModel, pyFuncParams[param])
-                pyFuncParams[param] = pyClassInstance
+                pyFuncParams[param] = requestModel.from_dict(requestModel, pyFuncParams[param])
             if route.httpMethod == @["WEBSOCKET"]:
               let wsClient = await newWebSocket(req)
               # Declare route handler
