@@ -71,15 +71,20 @@ type
     wssHandshakeError,
     wssMismatchProtocol,
     wssError
-  WebSocket* = ref object of PyNimObjectExperimental
-    id*: uint64
-    ws*:
-      when enableHttpBeast:
-        websocketx.WebSocket
-      else:
-        websocket.AsyncWebSocket
-    data*: string
-    state*: WebSocketState
+when enableHttpBeast:
+  type
+    WebSocket* = ref object of PyNimObjectExperimental
+      id*: uint64
+      ws*: websocket.AsyncWebSocket
+      data*: string
+      state*: WebSocketState
+else:
+  type
+    WebSocket* = ref object of PyNimObjectExperimental
+      id*: uint64
+      ws*: websocketx.WebSocket
+      data*: string
+      state*: WebSocketState
 
 
 var
