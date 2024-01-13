@@ -53,7 +53,7 @@ serve host, port:
       var f = openAsync("website" / "index.html")
       let data = await f.readAll()
       f.close()
-      return data
+      req.answerHtml(data)
 
   post "/[task:Task[m]]":
     {.gcsafe.}:
@@ -150,7 +150,7 @@ serve host, port:
     {.gcsafe.}:
       if not dirExists("website"):
         return %*{"response": "website not compiled"}
-      var f = openAsync("website" / file)
+      var f = openAsync("website" / "public" / file)
       let data = await f.readAll()
       f.close()
       return data
