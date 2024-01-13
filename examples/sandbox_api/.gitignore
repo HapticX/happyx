@@ -4,6 +4,7 @@ cache/
 build/
 
 src/tasks/*.nim
+website/
 
 # Garbage
 *.exe

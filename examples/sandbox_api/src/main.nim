@@ -34,7 +34,7 @@ when defined(production):
     credentials: true
 else:
   regCORS:
-    origins: "http://127.0.0.1:5000"
+    origins: "*"
     headers: "*"
     methods: "*"
     credentials: true
@@ -46,6 +46,15 @@ const
 
 
 serve host, port:
+  get "/":
+    {.gcsafe.}:
+      if not dirExists("website"):
+        return %*{"response": "website not compiled"}
+      var f = openAsync("website" / "index.html")
+      let data = await f.readAll()
+      f.close()
+      return data
+
   post "/[task:Task[m]]":
     {.gcsafe.}:
       if task.code.len > 2048:
@@ -136,6 +145,15 @@ serve host, port:
       var response = %*{"response": []}
       for t in tasks:
         response.add newJString(t.task.id)
+  
+  get "/{file:path}":
+    {.gcsafe.}:
+      if not dirExists("website"):
+        return %*{"response": "website not compiled"}
+      var f = openAsync("website" / file)
+      let data = await f.readAll()
+      f.close()
+      return data
   
   middleware:
     {.gcsafe.}:
