@@ -122,3 +122,4 @@ mount RoadMap:
               tP(class = "w-full text-2xl lg:text-lg xl:text-base"):
                 tUl(class = "list-disc"):
                   tLi: {translate"Metaprogramming 🔨"}
+                  tLi: {translate"Improve Python bindings 🔥"}

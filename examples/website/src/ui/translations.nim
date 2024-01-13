@@ -1736,6 +1736,12 @@ translatable:
     "zh" -> "元编程 🔨"
     "fr" -> "Méta-programmation 🔨"
     "ko" -> "메타프로그래밍 🔨"
+  "Improve Python bindings 🔥":
+    "ru" -> "Улучшить привязки Python 🔥"
+    "ja" -> "Pythonのバインディングを改善する 🔥"
+    "zh" -> "改进Python绑定 🔥"
+    "fr" -> "Améliorer les liaisons Python 🔥"
+    "ko" -> "Python 바인딩 개선하기 🔥"
 
 
 var spokenLang: cstring
