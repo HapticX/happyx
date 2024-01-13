@@ -156,4 +156,31 @@ serve host, port:
           "error": "request length too long (> 4096)"
         }
   
-  staticDir "/" -> "website"
+  get "/{file:path}":
+    echo file
+    echo "website" / file
+    var p = "website" / file
+    if fileExists(p)
+      var f = openAsync(p, fmRead)
+      let data = await f.readAll()
+      f.close()
+      return data
+    p = "website" / "happyx" / file
+    if fileExists(p)
+      var f = openAsync(p, fmRead)
+      let data = await f.readAll()
+      f.close()
+      return data
+    p = "website" / "public" / file
+    if fileExists(p)
+      var f = openAsync(p, fmRead)
+      let data = await f.readAll()
+      f.close()
+      return data
+    p = "website" / "happyx" / "public" / file
+    if fileExists(p)
+      var f = openAsync(p, fmRead)
+      let data = await f.readAll()
+      f.close()
+      return data
+    return ""
