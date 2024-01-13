@@ -9,25 +9,25 @@ nim	Route	happyx/bindings/python_types.html#Route	type Route		51
 nim	RequestModelData	happyx/bindings/python_types.html#RequestModelData	object RequestModelData		61
 nim	RequestModels	happyx/bindings/python_types.html#RequestModels	type RequestModels		65
 nim	WebSocketState	happyx/bindings/python_types.html#WebSocketState	enum WebSocketState		67
-nim	WebSocket	happyx/bindings/python_types.html#WebSocket	type WebSocket		74
-nim	requestModelsHidden	happyx/bindings/python_types.html#requestModelsHidden	var requestModelsHidden		82
-nim	uniqueWebSocketId	happyx/bindings/python_types.html#uniqueWebSocketId	var uniqueWebSocketId		83
-nim	newWebSocketObj	happyx/bindings/python_types.html#newWebSocketObj,,string	proc newWebSocketObj(ws: websocketx.WebSocket; data: string = ""): python_types.WebSocket		86
-nim	processWebSocket	happyx/bindings/python_types.html#processWebSocket,PyObject,PyObject	proc processWebSocket(py, locals: PyObject)		91
-nim	toPPyObject	happyx/bindings/python_types.html#toPPyObject,HttpHeaders	proc toPPyObject(headers: HttpHeaders): PPyObject		95
-nim	toHttpHeaders	happyx/bindings/python_types.html#toHttpHeaders,PyObject	proc toHttpHeaders(headers: PyObject): HttpHeaders		102
-nim	newHandlerParams	happyx/bindings/python_types.html#newHandlerParams,openArray[string],JsonNode	proc newHandlerParams(args: openArray[string]; annotations: JsonNode): seq[\n    HandlerParam]		111
-nim	newAnnotations	happyx/bindings/python_types.html#newAnnotations,PyObject	proc newAnnotations(data: PyObject): JsonNode		124
-nim	initRoute	happyx/bindings/python_types.html#initRoute,string,string,seq[string],Regex2,PyObject	proc initRoute(path, purePath: string; httpMethod: seq[string]; pattern: Regex2;\n          handler: PyObject): Route		130
-nim	hasHttpMethod	happyx/bindings/python_types.html#hasHttpMethod,Route,	proc hasHttpMethod(self: Route; httpMethod: string | seq[string] | openArray[string]): bool		156
-nim	initHttpRequest	happyx/bindings/python_types.html#initHttpRequest,string,string,HttpHeaders,string	proc initHttpRequest(path, httpMethod: string; headers: HttpHeaders;\n                body: string = ""): HttpRequest		165
-nim	contains	happyx/bindings/python_types.html#contains,seq[HandlerParam],string	proc contains(params: seq[HandlerParam]; key: string): bool		169
-nim	hasParamType	happyx/bindings/python_types.html#hasParamType,seq[HandlerParam],string	proc hasParamType(params: seq[HandlerParam]; key: string): bool		176
-nim	contains	happyx/bindings/python_types.html#contains,RequestModels,string	proc contains(self: RequestModels; name: string): bool		183
-nim	getParamType	happyx/bindings/python_types.html#getParamType,seq[HandlerParam],string	proc getParamType(params: seq[HandlerParam]; key: string): string		190
-nim	`[]`	happyx/bindings/python_types.html#[],seq[HandlerParam],string	proc `[]`(params: seq[HandlerParam]; key: string): string		197
-nim	`[]`	happyx/bindings/python_types.html#[],RequestModels,string	proc `[]`(self: RequestModels; name: string): RequestModelData		200
-nim	getParamName	happyx/bindings/python_types.html#getParamName,seq[HandlerParam],string	proc getParamName(params: seq[HandlerParam]; paramType: string): string		206
-nim	hasHttpRequest	happyx/bindings/python_types.html#hasHttpRequest,seq[HandlerParam]	proc hasHttpRequest(params: seq[HandlerParam]): bool		213
-nimgrp	contains	happyx/bindings/python_types.html#contains-procs-all	proc		169
-nimgrp	[]	happyx/bindings/python_types.html#[]-procs-all	proc		197
+nim	WebSocket	happyx/bindings/python_types.html#WebSocket	type WebSocket		83
+nim	requestModelsHidden	happyx/bindings/python_types.html#requestModelsHidden	var requestModelsHidden		91
+nim	uniqueWebSocketId	happyx/bindings/python_types.html#uniqueWebSocketId	var uniqueWebSocketId		92
+nim	newWebSocketObj	happyx/bindings/python_types.html#newWebSocketObj,,string	proc newWebSocketObj(ws: websocketx.WebSocket; data: string = ""): python_types.WebSocket		95
+nim	processWebSocket	happyx/bindings/python_types.html#processWebSocket,PyObject,PyObject	proc processWebSocket(py, locals: PyObject)		100
+nim	toPPyObject	happyx/bindings/python_types.html#toPPyObject,HttpHeaders	proc toPPyObject(headers: HttpHeaders): PPyObject		104
+nim	toHttpHeaders	happyx/bindings/python_types.html#toHttpHeaders,PyObject	proc toHttpHeaders(headers: PyObject): HttpHeaders		111
+nim	newHandlerParams	happyx/bindings/python_types.html#newHandlerParams,openArray[string],JsonNode	proc newHandlerParams(args: openArray[string]; annotations: JsonNode): seq[\n    HandlerParam]		120
+nim	newAnnotations	happyx/bindings/python_types.html#newAnnotations,PyObject	proc newAnnotations(data: PyObject): JsonNode		133
+nim	initRoute	happyx/bindings/python_types.html#initRoute,string,string,seq[string],Regex2,PyObject	proc initRoute(path, purePath: string; httpMethod: seq[string]; pattern: Regex2;\n          handler: PyObject): Route		139
+nim	hasHttpMethod	happyx/bindings/python_types.html#hasHttpMethod,Route,	proc hasHttpMethod(self: Route; httpMethod: string | seq[string] | openArray[string]): bool		165
+nim	initHttpRequest	happyx/bindings/python_types.html#initHttpRequest,string,string,HttpHeaders,string	proc initHttpRequest(path, httpMethod: string; headers: HttpHeaders;\n                body: string = ""): HttpRequest		174
+nim	contains	happyx/bindings/python_types.html#contains,seq[HandlerParam],string	proc contains(params: seq[HandlerParam]; key: string): bool		178
+nim	hasParamType	happyx/bindings/python_types.html#hasParamType,seq[HandlerParam],string	proc hasParamType(params: seq[HandlerParam]; key: string): bool		185
+nim	contains	happyx/bindings/python_types.html#contains,RequestModels,string	proc contains(self: RequestModels; name: string): bool		192
+nim	getParamType	happyx/bindings/python_types.html#getParamType,seq[HandlerParam],string	proc getParamType(params: seq[HandlerParam]; key: string): string		199
+nim	`[]`	happyx/bindings/python_types.html#[],seq[HandlerParam],string	proc `[]`(params: seq[HandlerParam]; key: string): string		206
+nim	`[]`	happyx/bindings/python_types.html#[],RequestModels,string	proc `[]`(self: RequestModels; name: string): RequestModelData		209
+nim	getParamName	happyx/bindings/python_types.html#getParamName,seq[HandlerParam],string	proc getParamName(params: seq[HandlerParam]; paramType: string): string		215
+nim	hasHttpRequest	happyx/bindings/python_types.html#hasHttpRequest,seq[HandlerParam]	proc hasHttpRequest(params: seq[HandlerParam]): bool		222
+nimgrp	contains	happyx/bindings/python_types.html#contains-procs-all	proc		178
+nimgrp	[]	happyx/bindings/python_types.html#[]-procs-all	proc		206
