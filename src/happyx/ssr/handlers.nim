@@ -475,7 +475,19 @@ elif exportPython:
                 # Create Python class instance
                 pyFuncParams[param] = requestModel.from_dict(requestModel, pyFuncParams[param])
             if route.httpMethod == @["WEBSOCKET"]:
-              let wsClient = await newWebSocket(req)
+              let wsClient =
+                when enableHttpBeast:
+                  headers = req.headers.get()
+                  req.forget()
+                  req.client.AsyncFD.register()
+                  let socket = newAsyncSocket()
+                  let (wsClient, error) = await verifyWebsocketRequest(socket, headers, "")
+                  if wsClient.isNil:
+                    socket.close()
+                    return
+                  wsClient
+                else:
+                  await newWebSocket(req)
               # Declare route handler
               let wsConnection = newWebSocketObj(wsClient, "")
               if handlerParams.hasParamType("WebSocket"):
