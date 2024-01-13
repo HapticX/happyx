@@ -26,18 +26,11 @@ if not dirExists("tasks"):
   createDir("tasks")
 
 
-when defined(production):
-  regCORS:
-    origins: "https://hapticx.github.io"
-    headers: "*"
-    methods: "*"
-    credentials: true
-else:
-  regCORS:
-    origins: "*"
-    headers: "*"
-    methods: "*"
-    credentials: true
+regCORS:
+  origins: "*"
+  headers: "*"
+  methods: "*"
+  credentials: true
 
 
 const
