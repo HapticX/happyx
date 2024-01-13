@@ -480,11 +480,11 @@ elif exportPython:
                   req.forget()
                   req.client.AsyncFD.register()
                   let socket = newAsyncSocket()
-                  let (wsClient, error) = await verifyWebsocketRequest(socket, req.headers.get(), "")
-                  if wsClient.isNil:
+                  let (client, error) = await verifyWebsocketRequest(socket, req.headers.get(), "")
+                  if client.isNil:
                     socket.close()
                     return
-                  wsClient
+                  client
                 else:
                   await newWebSocket(req)
               # Declare route handler
