@@ -493,29 +493,44 @@ elif exportPython:
                 pyFuncParams[handlerParams.getParamName("WebSocket")] = wsConnection
               # Add function parameters to locals
               route.locals["funcParams"] = pFuncParams
-              try:
-                wsConnection.state = wssConnect
-                processWebSocket(py, route.locals)
-                wsConnection.state = wssOpen
-                while wsClient.readyState == Open:
-                  wsConnection.data = await wsClient.receiveStrPacket()
+              when enableHttpBeast:
+                try:
+                  wsConnection.state = wssConnect
                   processWebSocket(py, route.locals)
-              except WebSocketClosedError:
-                wsConnection.state = wssClose
-                processWebSocket(py, route.locals)
-              except WebSocketHandshakeError:
-                error("Invalid WebSocket handshake. Headers haven't Sec-WebSocket-Version!")
-                wsConnection.state = wssHandshakeError
-                processWebSocket(py, route.locals)
-              except WebSocketProtocolMismatchError:
-                error(fmt"Socket tried to use an unknown protocol: {getCurrentExceptionMsg()}")
-                wsConnection.state = wssMismatchProtocol
-                processWebSocket(py, route.locals)
-              except WebSocketError:
-                error(fmt"Unexpected socket error: {getCurrentExceptionMsg()}")
-                wsConnection.state = wssError
-                processWebSocket(py, route.locals)
-              wsClient.close()
+                  wsConnection.state = wssOpen
+                  while true:
+                    let (opcode, data) = await wsClient.readData()
+                    if opcode == Opcode.Close:
+                      wsConnection.state = wssClose
+                      processWebSocket(py, route.locals)
+                      break
+                    wsConnection.data = data
+                    processWebSocket(py, route.locals)
+                except:
+                  error(fmt"Unexpected socket error: {getCurrentExceptionMsg()}")
+                  wsConnection.state = wssError
+                  processWebSocket(py, route.locals)
+              else:
+                try:
+                  while wsClient.readyState == Open:
+                    wsConnection.data = await wsClient.receiveStrPacket()
+                    processWebSocket(py, route.locals)
+                except WebSocketClosedError:
+                  wsConnection.state = wssClose
+                  processWebSocket(py, route.locals)
+                except WebSocketHandshakeError:
+                  error("Invalid WebSocket handshake. Headers haven't Sec-WebSocket-Version!")
+                  wsConnection.state = wssHandshakeError
+                  processWebSocket(py, route.locals)
+                except WebSocketProtocolMismatchError:
+                  error(fmt"Socket tried to use an unknown protocol: {getCurrentExceptionMsg()}")
+                  wsConnection.state = wssMismatchProtocol
+                  processWebSocket(py, route.locals)
+                except WebSocketError:
+                  error(fmt"Unexpected socket error: {getCurrentExceptionMsg()}")
+                  wsConnection.state = wssError
+                  processWebSocket(py, route.locals)
+              wsConnection.close()
               reqResponded = true
               return
             
