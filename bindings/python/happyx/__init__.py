@@ -1,9 +1,7 @@
 from collections import defaultdict
 from enum import IntEnum
 
-import happyx.happyx as happyx
-
-from .server import Server
+from .server import Server, happyx
 
 try:
     from jinja2 import Template
