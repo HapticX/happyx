@@ -102,7 +102,7 @@ var
 
 
 proc processWebSocket*(py, locals: PyObject) =
-  discard py.eval("handler(**funcParams)", locals)
+  discard py.eval("func(**funcParams)", locals)
 
 
 proc toPPyObject*(headers: HttpHeaders): PPyObject =
@@ -150,7 +150,7 @@ proc initRoute*(path, purePath: string, httpMethod: seq[string], pattern: Regex2
     posArgs: @[]
   )
   result.locals = pyDict()
-  result.locals["handler"] = handler
+  result.locals["func"] = handler
   # fetch __defaults__
   if not handler.isNil:
     var defaults: JsonNode
