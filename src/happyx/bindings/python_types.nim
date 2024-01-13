@@ -78,6 +78,9 @@ when enableHttpBeast:
       ws*: websocket.AsyncWebSocket
       data*: string
       state*: WebSocketState
+  proc newWebSocketObj*(ws: websocket.AsyncWebSocket, data: string = ""): python_types.WebSocket =
+    inc uniqueWebSocketId
+    python_types.WebSocket(ws: ws, data: data, id: uniqueWebSocketId, state: wssOpen)
 else:
   type
     WebSocket* = ref object of PyNimObjectExperimental
@@ -85,16 +88,14 @@ else:
       ws*: websocketx.WebSocket
       data*: string
       state*: WebSocketState
+  proc newWebSocketObj*(ws: websocketx.WebSocket, data: string = ""): python_types.WebSocket =
+    inc uniqueWebSocketId
+    python_types.WebSocket(ws: ws, data: data, id: uniqueWebSocketId, state: wssOpen)
 
 
 var
   requestModelsHidden* = RequestModels(requestModels: @[])
   uniqueWebSocketId*: uint64 = 0
-
-
-proc newWebSocketObj*(ws: websocketx.WebSocket, data: string = ""): python_types.WebSocket =
-  inc uniqueWebSocketId
-  python_types.WebSocket(ws: ws, data: data, id: uniqueWebSocketId, state: wssOpen)
 
 
 proc processWebSocket*(py, locals: PyObject) =
