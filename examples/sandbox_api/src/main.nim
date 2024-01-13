@@ -150,10 +150,17 @@ serve host, port:
     {.gcsafe.}:
       if not dirExists("website"):
         return %*{"response": "website not compiled"}
-      var f = openAsync("website" / "public" / file)
-      let data = await f.readAll()
-      f.close()
-      return data
+      if fileExists("website" / "public" / file):
+        var f = openAsync("website" / "public" / file)
+        let data = await f.readAll()
+        f.close()
+        return data
+      elif fileExists("website" / file):
+        var f = openAsync("website" / file)
+        let data = await f.readAll()
+        f.close()
+        return data
+      return %*{"response": "not found"}
   
   middleware:
     {.gcsafe.}:
