@@ -23,6 +23,10 @@ else:
   import websocketx
 
 
+var
+  uniqueWebSocketId*: uint64 = 0
+
+
 type
   HttpRequest* = ref object of PyNimObjectExperimental
     path*: string
@@ -95,7 +99,6 @@ else:
 
 var
   requestModelsHidden* = RequestModels(requestModels: @[])
-  uniqueWebSocketId*: uint64 = 0
 
 
 proc processWebSocket*(py, locals: PyObject) =
