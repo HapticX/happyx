@@ -420,6 +420,7 @@ elif exportPython:
               if extensions.len == 0 or ext in extensions or splitted.len == 1:
                 await req.answerFile(file)
                 reqResponded = true
+                break
           else:
             let
               query = parseQuery(block:
@@ -484,7 +485,7 @@ elif exportPython:
                   if client.isNil:
                     socket.close()
                     error(fmt"Unexpected socket error: {getCurrentExceptionMsg()}")
-                    return
+                    break
                   client
                 else:
                   await newWebSocket(req)
@@ -533,15 +534,15 @@ elif exportPython:
                   processWebSocket(py, route.locals)
               wsConnection.close()
               reqResponded = true
-              return
+              break
             
             # Add function parameters to locals
             route.locals["funcParams"] = pFuncParams
-            let
+            var
               # Execute callback
               response = py.eval("func(**funcParams)", route.locals)
               # Handle response type
-              responseType = response.getAttr("__class__").getAttr("__name__")
+              responseType = $response.getAttr("__class__").getAttr("__name__")
             # Respond
             if response != py.None:
               case $responseType

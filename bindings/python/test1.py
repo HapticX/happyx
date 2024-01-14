@@ -4,7 +4,7 @@ from happyx import (
 )
 
 
-app = Server(enable_threads = True, disable_realtime = True)
+app = Server()
 user = Server()
 sub_user = Server()
 

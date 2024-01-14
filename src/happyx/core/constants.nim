@@ -101,7 +101,7 @@ const
   # Framework version
   HpxMajor* = 3
   HpxMinor* = 8
-  HpxPatch* = 11
+  HpxPatch* = 12
   HpxVersion* = $HpxMajor & "." & $HpxMinor & "." & $HpxPatch
 
 

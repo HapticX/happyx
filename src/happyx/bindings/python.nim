@@ -31,12 +31,12 @@ var
   serverUniqueId* = 0
 
 
-proc newServerPy*(address: string = "127.0.0.1", port: int = 5000): int {.exportpy: "new_server".} =
+proc newServerPy*(address: string, port: int): int {.exportpy: "new_server".} =
   ## Creates a new Server object.
   ## 
   ## Arguments:
-  ## - address: string = "127.0.0.1"
-  ## - port: int = 5000
+  ## - address: string
+  ## - port: int
   inc serverUniqueId
   servers[serverUniqueId] = newServer(address, port)
   serverUniqueId
@@ -190,23 +190,6 @@ proc startServerPy*(serverId: int) {.exportpy: "start_server_by_id".} =
     discard
 
 
-proc inspectCallback(callback: PyObject) {.inline.} =
-  ## Raises exception if callback is coroutine
-  let inspect = pyImport("inspect")
-  if inspect.iscoroutinefunction(callback).to(bool):
-    # Get function info
-    let
-      functionName = callback.getAttr("__code__").getAttr("co_name")
-      filename = callback.getAttr("__code__").getAttr("co_filename")
-      firstLine = callback.getAttr("__code__").getAttr("co_firstlineno")
-      hash = callObject(callback.getAttr("__hash__")).to(int64)
-    raise newException(
-      HpxAppRouteDefect,
-      fmt"""Callback function should be sync!
-Async function <{functionName} at 0x{toHex(hash, 15)}> at {filename}:{firstLine}"""
-    )
-
-
 proc sortRoutes(self: Server) {.inline.} =
   ## Sorts routes:
   ## Firstly middlewares, secondary is routes and after notfounds 
@@ -246,7 +229,6 @@ proc route*(serverId: int, path: string, methods: seq[string], callback: PyObjec
   ## 
   ## You can choose HTTP methods via route("/", ["GET", "POST"])
   var self = servers[serverId]
-  inspectCallback(callback)
   var httpMethods = methods
   for i in 0..<httpMethods.len:
     httpMethods[i] = httpMethods[i].toUpper()
@@ -256,91 +238,78 @@ proc route*(serverId: int, path: string, methods: seq[string], callback: PyObjec
 proc get*(serverId: int, path: string, callback: PyObject): auto {.exportpy: "get_server".} =
   ## Registers a new GET route.
   var self = servers[serverId]
-  inspectCallback(callback)
   self.addRoute(path, @["GET"], callback)
 
 
 proc post*(serverId: int, path: string, callback: PyObject): auto {.exportpy: "post_server".} =
   ## Registers a new POST route.
   var self = servers[serverId]
-  inspectCallback(callback)
   self.addRoute(path, @["POST"], callback)
 
 
 proc put*(serverId: int, path: string, callback: PyObject): auto {.exportpy: "put_server".} =
   ## Registers a new PUT route.
   var self = servers[serverId]
-  inspectCallback(callback)
   self.addRoute(path, @["PUT"], callback)
 
 
 proc delete*(serverId: int, path: string, callback: PyObject): auto {.exportpy: "delete_server".} =
   ## Registers a new DELETE route.
   var self = servers[serverId]
-  inspectCallback(callback)
   self.addRoute(path, @["DELETE"], callback)
 
 
 proc link*(serverId: int, path: string, callback: PyObject): auto {.exportpy: "link_server".} =
   ## Registers a new LINK route.
   var self = servers[serverId]
-  inspectCallback(callback)
   self.addRoute(path, @["LINK"], callback)
 
 
 proc unlink*(serverId: int, path: string, callback: PyObject): auto {.exportpy: "unlink_server".} =
   ## Registers a new UNLINK route.
   var self = servers[serverId]
-  inspectCallback(callback)
   self.addRoute(path, @["UNLINK"], callback)
 
 
 proc purge*(serverId: int, path: string, callback: PyObject): auto {.exportpy: "purge_server".} =
   ## Registers a new PURGE route.
   var self = servers[serverId]
-  inspectCallback(callback)
   self.addRoute(path, @["PURGE"], callback)
 
 
 proc options*(serverId: int, path: string, callback: PyObject): auto {.exportpy: "options_server".} =
   ## Registers a new OPTIONS route.
   var self = servers[serverId]
-  inspectCallback(callback)
   self.addRoute(path, @["OPTIONS"], callback)
 
 
 proc head*(serverId: int, path: string, callback: PyObject): auto {.exportpy: "head_server".} =
   ## Registers a new HEAD route.
   var self = servers[serverId]
-  inspectCallback(callback)
   self.addRoute(path, @["HEAD"], callback)
 
 
 proc copy*(serverId: int, path: string, callback: PyObject): auto {.exportpy: "copy_server".} =
   ## Registers a new COPY route.
   var self = servers[serverId]
-  inspectCallback(callback)
   self.addRoute(path, @["COPY"], callback)
 
 
 proc websocket*(serverId: int, path: string, callback: PyObject): auto {.exportpy: "websocket_server".} =
   ## Registers a new WEBSOCKET route.
   var self = servers[serverId]
-  inspectCallback(callback)
   self.addRoute(path, @["WEBSOCKET"], callback)
 
 
 proc middleware*(serverId: int, callback: PyObject): auto {.exportpy: "middleware_server".} =
   ## Registers a new MIDDLEWARE route.
   var self = servers[serverId]
-  inspectCallback(callback)
   self.addRoute("", @["MIDDLEWARE"], callback)
 
 
 proc notfound*(serverId: int, callback: PyObject): auto {.exportpy: "notfound_server".} =
   ## Registers a new NOT FOUND route.
   var self = servers[serverId]
-  inspectCallback(callback)
   self.addRoute("", @["NOTFOUND"], callback)
 
 

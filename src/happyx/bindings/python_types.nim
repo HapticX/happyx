@@ -62,6 +62,7 @@ type
     posArgs*: seq[string]
     params*: JsonNode
     handlerParams*: seq[HandlerParam]
+    isAsync*: bool
   RequestModelData* = object
     name*: string
     pyClass*: PyObject
@@ -140,6 +141,12 @@ proc newAnnotations*(data: PyObject): JsonNode =
     result[$key] = newJString($data[$key].getAttr("__name__"))
 
 
+proc inspectCallback(route: Route) {.inline.} =
+  ## Raises exception if callback is coroutine
+  let inspect = pyImport("inspect")
+  route.isAsync = inspect.iscoroutinefunction(route.handler).to(bool)
+
+
 proc initRoute*(path, purePath: string, httpMethod: seq[string], pattern: Regex2, handler: PyObject): Route =
   result = Route(
     path: path,
@@ -151,6 +158,7 @@ proc initRoute*(path, purePath: string, httpMethod: seq[string], pattern: Regex2
   )
   result.locals = pyDict()
   result.locals["func"] = handler
+  result.inspectCallback()
   # fetch __defaults__
   if not handler.isNil:
     var defaults: JsonNode

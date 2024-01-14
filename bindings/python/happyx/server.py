@@ -1,3 +1,4 @@
+import asyncio
 from typing import Callable, Any, List
 from re import match
 
@@ -84,7 +85,8 @@ class Server:
         """
         Deletes current server
         """
-        happyx.delete_server(self._server)
+        if hasattr(self, '_server'):
+            happyx.delete_server(self._server)
     
     def __eq__(self, other) -> bool:
         """
@@ -190,6 +192,9 @@ class Server:
         if isinstance(self._redoc_url, str):
             happyx.get_server(self._server, self._redoc_url, _redoc_endpoint)
         happyx.get_server(self._server, "/docs/openapi.json", _openapi_endpoint)
+
+    def _add_task(self, task) -> None:
+        self.tasks.append(task)
     
     def start(self) -> None:
         """
