@@ -45,7 +45,7 @@ proc devCommand*(host: string = "127.0.0.1", port: int = 5000,
       data = data.replace(
         "</body>",
         "<script>" &
-        fmt"let socket = new WebSocket('ws://{host}:{port}/hcr');" &
+        fmt"let socket = new WebSocket('ws://' + window.location.host + '/hcr');" &
         "\nsocket.onmessage = (event) => {\n" &
         "  if(event.data === 'true'){\n    window.location.reload();\n  }\n" &
         "};\n\n" &
