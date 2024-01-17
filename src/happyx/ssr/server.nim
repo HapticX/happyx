@@ -357,18 +357,24 @@ template start*(server: Server): untyped =
   ## 
   ## Returns:
   ## - `untyped`: This template does not return any value.
-  when enableDebug or exportPython or defined(napibuild):
-    info "Server started at http://" & `server`.address & ":" & $`server`.port
-  when not declared(handleRequest):
-    proc handleRequest(req: Request) {.async.} =
-      discard
-  when enableHttpx:
-    run(handleRequest, `server`.instance)
-  elif enableHttpBeast:
-    {.cast(gcsafe).}:
+  try:
+    when enableDebug or exportPython or defined(napibuild):
+      info "Server started at http://" & `server`.address & ":" & $`server`.port
+    when not declared(handleRequest):
+      proc handleRequest(req: Request) {.async.} =
+        discard
+    when enableHttpx:
       run(handleRequest, `server`.instance)
-  else:
-    waitFor `server`.instance.serve(Port(`server`.port), handleRequest, `server`.address)
+    elif enableHttpBeast:
+      {.cast(gcsafe).}:
+        run(handleRequest, `server`.instance)
+    else:
+      waitFor `server`.instance.serve(Port(`server`.port), handleRequest, `server`.address)
+  except OSError:
+    styledEcho fgYellow, "Try to use another port instead of ", `server`.port
+    echo getCurrentExceptionMsg()
+  except:
+    echo getCurrentExceptionMsg()
 
 
 {.experimental: "dotOperators".}
