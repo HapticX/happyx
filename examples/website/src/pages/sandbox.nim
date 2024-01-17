@@ -37,7 +37,7 @@ elif defined(docker):
 else:
   {.emit:"const sandboxApiBase = 'http://127.0.0.1:5123/';".}
 
-const websiteBase* =
+var websiteBase* =
   when defined(production):
     "https://hapticx.github.io/happyx/"
   elif defined(docker):
@@ -154,9 +154,9 @@ proc codeLink*() {.exportc.} =
     {.emit: """//js
     writeLine(
       "This code available at <a href='" +
-      "`websiteBase`" + "#/sandbox/" + `sandboxSessionId` +
+      `websiteBase` + "#/sandbox/" + `sandboxSessionId` +
       "' class='underline duration-150 text-purple-200 hover:text-purple-300 active:text-purple-400'>" +
-      "`websiteBase`" + "#/sandbox/" + `sandboxSessionId` + "</a>"
+      `websiteBase` + "#/sandbox/" + `sandboxSessionId` + "</a>"
     );
     """.}
   else:
