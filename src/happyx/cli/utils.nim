@@ -212,6 +212,12 @@ proc readConfig*(): ProjectData =
 proc compileProject*(): ProjectData {. discardable .} =
   ## Compiling Project
   result = readConfig()
+  let
+    file1 = getCurrentDir() / result.srcDir / (result.mainFile & ".nim")
+    file2 = getCurrentDir() / result.srcDir / (result.mainFile)
+  if not (fileExists(file1) or fileExists(file2)):
+    styledEcho fgRed, "current directory is not HappyX project."
+    quit QuitFailure
 
   case result.projectType:
   of ptSPA, ptSPA_PWA:
