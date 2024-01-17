@@ -33,7 +33,7 @@ var monacoEditor = null;
 when defined(production):
   {.emit:"const sandboxApiBase = 'https://hapticx.ru/';".}
 elif defined(docker):
-  {.emit:"const sandboxApiBase = 'http://' + window.localtion.host + '/';".}
+  {.emit:"const sandboxApiBase = 'http://' + window.location.host + '/';".}
 else:
   {.emit:"const sandboxApiBase = 'http://127.0.0.1:5123/';".}
 
@@ -41,7 +41,7 @@ const websiteBase* =
   when defined(production):
     "https://hapticx.github.io/happyx/"
   elif defined(docker):
-    "http://" & $window.localtion.host & "/"
+    "http://" & $window.location.host & "/"
   else:
     "http://127.0.0.1:5000/"
 
