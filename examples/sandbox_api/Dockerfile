@@ -15,7 +15,7 @@ ARG PORT=5123
 
 # Compile frontend
 WORKDIR /happyx/examples/website/src
-RUN nim js -d:danger --opt:size --hints:off --warnings:off main.nim
+RUN nim js -d:danger --opt:size --hints:off --warnings:off -d:docker main.nim
 
 # Compile backend
 WORKDIR /happyx/examples/sandbox_api/src
