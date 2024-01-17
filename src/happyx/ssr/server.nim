@@ -371,7 +371,7 @@ template start*(server: Server): untyped =
     else:
       waitFor `server`.instance.serve(Port(`server`.port), handleRequest, `server`.address)
   except OSError:
-    styledEcho fgYellow, "Try to use another port instead of ", `server`.port
+    styledEcho fgYellow, "Try to use another port instead of ", $`server`.port
     echo getCurrentExceptionMsg()
   except:
     echo getCurrentExceptionMsg()
