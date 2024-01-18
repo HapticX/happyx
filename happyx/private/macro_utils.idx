@@ -5,22 +5,22 @@ nim	UniqueComponentId	happyx/private/macro_utils.html#UniqueComponentId	const Un
 nim	discardStmt	happyx/private/macro_utils.html#discardStmt	proc discardStmt(): NimNode		22
 nim	buildHtmlProcedure	happyx/private/macro_utils.html#buildHtmlProcedure,NimNode,NimNode,bool,NimNode,bool,string,NimNode,seq[NimNode]	proc buildHtmlProcedure(root, body: NimNode; inComponent: bool = false;\n                   componentName: NimNode = newEmptyNode();\n                   inCycle: bool = false; cycleTmpVar: string = "";\n                   compTmpVar: NimNode = newEmptyNode();\n                   cycleVars: var seq[NimNode]): NimNode		36
 nim	bracket	happyx/private/macro_utils.html#bracket,varargs[NimNode]	proc bracket(node: varargs[NimNode]): NimNode		42
-nim	newCast	happyx/private/macro_utils.html#newCast,NimNode,NimNode	proc newCast(fromType, toType: NimNode): NimNode		48
-nim	newLambda	happyx/private/macro_utils.html#newLambda,NimNode	proc newLambda(body: NimNode; params: seq[NimNode] | NimNode = @[newEmptyNode()];\n          pragmas: seq[NimNode] | seq[string] = @[newEmptyNode()]): NimNode		52
-nim	bracket	happyx/private/macro_utils.html#bracket	proc bracket(node: seq[NimNode] | seq[string]): NimNode		89
-nim	pragmaBlock	happyx/private/macro_utils.html#pragmaBlock,openArray[NimNode],NimNode	proc pragmaBlock(pragmas: openArray[NimNode]; statementList: NimNode): NimNode		100
-nim	getTagName	happyx/private/macro_utils.html#getTagName,string	proc getTagName(name: string): string		109
-nim	formatNode	happyx/private/macro_utils.html#formatNode,NimNode	proc formatNode(node: NimNode): NimNode		121
-nim	useComponent	happyx/private/macro_utils.html#useComponent,NimNode,bool,bool,string,NimNode,seq[NimNode],bool,bool,bool	proc useComponent(statement: NimNode; inCycle, inComponent: bool;\n             cycleTmpVar: string; compTmpVar: NimNode;\n             cycleVars: var seq[NimNode]; returnTagRef: bool = true;\n             constructor: bool = false; nameIsIdent: bool = false): NimNode		128
-nim	newMultiVarStmt	happyx/private/macro_utils.html#newMultiVarStmt,openArray[NimNode],NimNode,bool	proc newMultiVarStmt(extractNames: openArray[NimNode]; val: NimNode;\n                isLet: bool = false): NimNode		315
-nim	isExpr	happyx/private/macro_utils.html#isExpr,NimNode	proc isExpr(node: NimNode): bool		325
-nim	isIdentUsed	happyx/private/macro_utils.html#isIdentUsed,NimNode,NimNode	proc isIdentUsed(body, name: NimNode): bool		354
-nim	replaceUseInComponent	happyx/private/macro_utils.html#replaceUseInComponent,NimNode	proc replaceUseInComponent(body: NimNode)		364
-nim	replaceIter	happyx/private/macro_utils.html#replaceIter,NimNode,proc(NimNode),proc(NimNode)	proc replaceIter(root: NimNode; search: proc (x: NimNode): bool;\n            replace: proc (x: NimNode): NimNode): bool		373
-nim	attribute	happyx/private/macro_utils.html#attribute,NimNode,bool	proc attribute(attr: NimNode; inComponent: bool = false): NimNode		386
-nim	addAttribute	happyx/private/macro_utils.html#addAttribute,NimNode,NimNode,NimNode,bool	proc addAttribute(node, key, value: NimNode; inComponent: bool = false)		414
-nim	endsWithBuildHtml	happyx/private/macro_utils.html#endsWithBuildHtml,NimNode	proc endsWithBuildHtml(statement: NimNode): bool		444
-nim	replaceSelfComponent	happyx/private/macro_utils.html#replaceSelfComponent,NimNode,NimNode,NimNode,bool,bool,bool	proc replaceSelfComponent(statement, componentName: NimNode; parent: NimNode = nil;\n                     convert: bool = false; is_constructor: bool = false;\n                     is_field: bool = true): NimNode		448
+nim	isIdentUsed	happyx/private/macro_utils.html#isIdentUsed,NimNode,NimNode	proc isIdentUsed(body, name: NimNode): bool		48
+nim	newCast	happyx/private/macro_utils.html#newCast,NimNode,NimNode	proc newCast(fromType, toType: NimNode): NimNode		58
+nim	newLambda	happyx/private/macro_utils.html#newLambda,NimNode	proc newLambda(body: NimNode; params: seq[NimNode] | NimNode = @[newEmptyNode()];\n          pragmas: seq[NimNode] | seq[string] = @[newEmptyNode()]): NimNode		62
+nim	bracket	happyx/private/macro_utils.html#bracket	proc bracket(node: seq[NimNode] | seq[string]): NimNode		99
+nim	pragmaBlock	happyx/private/macro_utils.html#pragmaBlock,openArray[NimNode],NimNode	proc pragmaBlock(pragmas: openArray[NimNode]; statementList: NimNode): NimNode		110
+nim	getTagName	happyx/private/macro_utils.html#getTagName,string	proc getTagName(name: string): string		119
+nim	formatNode	happyx/private/macro_utils.html#formatNode,NimNode	proc formatNode(node: NimNode): NimNode		131
+nim	useComponent	happyx/private/macro_utils.html#useComponent,NimNode,bool,bool,string,NimNode,seq[NimNode],bool,bool,bool	proc useComponent(statement: NimNode; inCycle, inComponent: bool;\n             cycleTmpVar: string; compTmpVar: NimNode;\n             cycleVars: var seq[NimNode]; returnTagRef: bool = true;\n             constructor: bool = false; nameIsIdent: bool = false): NimNode		138
+nim	newMultiVarStmt	happyx/private/macro_utils.html#newMultiVarStmt,openArray[NimNode],NimNode,bool	proc newMultiVarStmt(extractNames: openArray[NimNode]; val: NimNode;\n                isLet: bool = false): NimNode		328
+nim	isExpr	happyx/private/macro_utils.html#isExpr,NimNode	proc isExpr(node: NimNode): bool		338
+nim	replaceUseInComponent	happyx/private/macro_utils.html#replaceUseInComponent,NimNode	proc replaceUseInComponent(body: NimNode)		367
+nim	replaceIter	happyx/private/macro_utils.html#replaceIter,NimNode,proc(NimNode),proc(NimNode)	proc replaceIter(root: NimNode; search: proc (x: NimNode): bool;\n            replace: proc (x: NimNode): NimNode): bool		376
+nim	attribute	happyx/private/macro_utils.html#attribute,NimNode,bool	proc attribute(attr: NimNode; inComponent: bool = false): NimNode		389
+nim	addAttribute	happyx/private/macro_utils.html#addAttribute,NimNode,NimNode,NimNode,bool	proc addAttribute(node, key, value: NimNode; inComponent: bool = false)		417
+nim	endsWithBuildHtml	happyx/private/macro_utils.html#endsWithBuildHtml,NimNode	proc endsWithBuildHtml(statement: NimNode): bool		447
+nim	replaceSelfComponent	happyx/private/macro_utils.html#replaceSelfComponent,NimNode,NimNode,NimNode,bool,bool,bool	proc replaceSelfComponent(statement, componentName: NimNode; parent: NimNode = nil;\n                     convert: bool = false; is_constructor: bool = false;\n                     is_field: bool = true): NimNode		451
 nimgrp	bracket	happyx/private/macro_utils.html#bracket-procs-all	proc		42
 heading	Macro Utils	happyx/private/macro_utils.html#macro-utils	 Macro Utils		0
 heading	⚠ Warning: This Module Is LOW-LEVEL API ⚠	happyx/private/macro_utils.html#macro-utils-⚠-warningcolon-this-module-is-lowminuslevel-api-⚠	  ⚠ Warning: This Module Is LOW-LEVEL API ⚠		0

@@ -1,7 +1,7 @@
 nimTitle	engine	happyx/tmpl_engine/engine.html	module src/happyx/tmpl_engine/engine		0
-nim	templateFolder	happyx/tmpl_engine/engine.html#templateFolder.m,string	macro templateFolder(f: string)		32
-nim	renderTemplate	happyx/tmpl_engine/engine.html#renderTemplate.m,static[string]	macro renderTemplate(name: static[string]): untyped		37
-nim	render	happyx/tmpl_engine/engine.html#render,auto,static[string]	proc render(model: auto; htmlTemplate: static[string]): string		43
+nim	templateFolder	happyx/tmpl_engine/engine.html#templateFolder.m,string	macro templateFolder(f: string)		31
+nim	renderTemplate	happyx/tmpl_engine/engine.html#renderTemplate.m,static[string]	macro renderTemplate(name: static[string]): untyped		36
+nim	render	happyx/tmpl_engine/engine.html#render,auto,static[string]	proc render(model: auto; htmlTemplate: static[string]): string		42
 heading	Example	happyx/tmpl_engine/engine.html#template-engine-🎴-example	  Example		0
 heading	Template Engine 🎴	happyx/tmpl_engine/engine.html#template-engine-🎴	 Template Engine 🎴		0
 heading	Usage ❔	happyx/tmpl_engine/engine.html#template-engine-🎴-usage-❔	  Usage ❔		0
