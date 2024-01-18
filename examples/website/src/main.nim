@@ -3,13 +3,11 @@ import
   ../../../src/happyx,
   ./path_params,
   ./ui/[colors, code, play_states, translations, monaco],
-  ./docs/docs,
   ./components/[
     button, card, code_block, header,
     section, smart_card, about_section,
     drawer, divider, sponsors_arr,
-    code_block_slider, sidebar, guide_page,
-    code_block_guide, language_spinner, tip
+    code_block_slider, sidebar, guide_page, language_spinner, tip
   ],
   ./pages/[home, sponsors, roadmap, guide, sandbox],
   json,

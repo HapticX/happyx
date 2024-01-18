@@ -127,9 +127,3 @@ when defined(debug):
     styledEcho fgYellow, fmt"Enable httpbeast:            {enableHttpBeast}"
     styledEcho fgYellow, fmt"Enable httpx:                {enableHttpx}"
     styledEcho fgYellow, fmt"Enable MicroAsyncHttpServer: {enableMicro}"
-  else:
-    static:
-      echo fmt"Enable auto translate:       {enableAutoTranslate}"
-      echo fmt"Enable httpbeast:            {enableHttpBeast}"
-      echo fmt"Enable httpx:                {enableHttpx}"
-      echo fmt"Enable MicroAsyncHttpServer: {enableMicro}"

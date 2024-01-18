@@ -43,7 +43,7 @@ component SsrBasics:
           {translate"HappyX has additional helpful routes - setup, middleware, notfound, and staticDir"}
       else:
         tP:
-          {translate"HappyX has additional helpful routes -  middleware, notfound and static directories"}
+          {translate"HappyX has additional helpful routes - middleware, notfound and static directories"}
       
       CodeBlockGuide(@[
         ("Nim", "nim", nimSsrAdditionalRoutes, cstring"nim_additional_routes", newPlayResult()),

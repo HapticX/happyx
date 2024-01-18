@@ -19,8 +19,7 @@ import
   nimja,
   macros,
   macrocache,
-  os,
-  ../private/macro_utils
+  os
 
 export
   nimja

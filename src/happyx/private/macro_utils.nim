@@ -45,6 +45,16 @@ proc bracket*(node: varargs[NimNode]): NimNode =
     result.add(i)
 
 
+proc isIdentUsed*(body, name: NimNode): bool =
+  ## Finds usage ident `name` in `body`
+  for statement in body:
+    if statement.kind == nnkIdent and $statement == $name:
+      return true
+    elif statement.kind notin AtomicNodes and statement.isIdentUsed(name):
+      return true
+  false
+
+
 proc newCast*(fromType, toType: NimNode): NimNode =
   newNimNode(nnkCast).add(toType, fromType)
 
@@ -224,10 +234,13 @@ proc useComponent*(statement: NimNode, inCycle, inComponent: bool,
         newDotExpr(ident(componentName), ident"slot"),
         newLambda(
           newStmtList(
-            if hasGenerics:
-              newVarStmt(ident"scopeSelf", newCast(ident"scopeSelf", generics))
+            if componentSlot.isIdentUsed(ident"scopeSelf"):
+              if hasGenerics:
+                newVarStmt(ident"scopeSelf", newCast(ident"scopeSelf", generics))
+              else:
+                newVarStmt(ident"scopeSelf", newDotExpr(ident"scopeSelf", name))
             else:
-              newVarStmt(ident"scopeSelf", newDotExpr(ident"scopeSelf", name)),
+              newEmptyNode(),
             newLetStmt(
               ident"_res",
               newNimNode(nnkIfExpr).add(
@@ -348,16 +361,6 @@ proc isExpr*(node: NimNode): bool =
         return false
       inc i
     return true
-  false
-
-
-proc isIdentUsed*(body, name: NimNode): bool =
-  ## Finds usage ident `name` in `body`
-  for statement in body:
-    if statement.kind == nnkIdent and $statement == $name:
-      return true
-    elif statement.kind notin AtomicNodes and statement.isIdentUsed(name):
-      return true
   false
 
 
@@ -853,7 +856,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
             callRegister = newCall(registerEvent)
           var procParams = @[ident"ComponentEventHandler"]
           for i in cycleVars:
-            procParams.add(newIdentDefs(i, ident"any"))
+            procParams.add(newIdentDefs(i, ident"auto"))
             callRegister.add(i)
           result.addAttribute(
             newLit(evname),

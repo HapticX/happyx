@@ -14,7 +14,7 @@ component MongoDB:
 
       tP: {translate"In this article, we will look at the interaction with MongoDB on the server side."}
 
-      tP: {translate"First, you need to install MongoDB and the library to work with it"}
+      tP: {translate"First, you need to install MongoDB and the library for working with it."}
 
       CodeBlockGuide(@[
         ("Nim", "shell", "nimble install anonimongo@#head", cstring"nim_mongo_db_install", newPlayResult()),
@@ -23,7 +23,7 @@ component MongoDB:
         # ("TypeScript", "typescript", tsHelloWorldExample, cstring"ts_import", newPlayResult()),
       ])
 
-      tP: {translate"The code below shows the connection to MongoDB"}
+      tP: {translate"The code below demonstrates the connection to MongoDB."}
 
       CodeBlockGuide(@[
         ("Nim", "nim", nimSsrMongoDb1, cstring"nim_mongo_db_1", newPlayResult()),

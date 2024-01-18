@@ -1,6 +1,5 @@
 import
-  ../../../../src/happyx,
-  regex
+  ../../../../src/happyx
 
 
 component CodeBlock:

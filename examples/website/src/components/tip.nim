@@ -1,6 +1,6 @@
 import
   ../../../../src/happyx,
-  ../ui/[colors, translations]
+  ../ui/[translations]
 
 
 type

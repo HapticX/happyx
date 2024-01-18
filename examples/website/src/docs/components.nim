@@ -1,10 +1,9 @@
 # Import HappyX
 import
   ../../../../src/happyx,
-  ../ui/[colors, code, play_states, translations, steps],
+  ../ui/[code, translations, steps],
   ../components/[
-    code_block_guide, code_block, code_block_slider, button,
-    guide_interactive
+    button, guide_interactive
   ]
 
 
