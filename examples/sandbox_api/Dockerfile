@@ -1,9 +1,17 @@
-FROM nimlang/nim:2.0.2
+FROM nimlang/nim:2.0.0-alpine as builder
 
-RUN export PATH=$PATH:/root/.nimble/bin
+USER root
 
-# clone repo
-RUN git clone https://github.com/HapticX/happyx
+RUN --mount=target=/var/lib/apk/lists,type=cache,sharing=locked \
+    --mount=target=/var/cache/apk,type=cache,sharing=locked \
+    rm -f /etc/apk/apk.conf.d/docker-clean && \
+    apk update && apk upgrade && \
+    apk add ca-certificates git curl xz openssh-client
+
+RUN git clone --depth 1 --branch master https://github.com/HapticX/happyx.git && \
+    rm -rf ./happyx/bindings && \
+    rm -rf ./happyx/tests && \
+    rm -rf ./happyx/.github
 
 WORKDIR /happyx/
 
@@ -19,17 +27,27 @@ RUN nim js -d:danger --opt:size --hints:off --warnings:off -d:docker main.nim
 
 # Compile backend
 WORKDIR /happyx/examples/sandbox_api/src
-RUN mkdir ./website
-RUN mkdir ./website/public
-RUN mkdir ./website/happyx
-RUN mkdir ./website/happyx/public
-RUN cp /happyx/examples/website/src/main.js ./website/
-RUN cp /happyx/examples/website/src/index.html ./website/
-RUN cp /happyx/examples/website/src/happyx/public/* ./website/public/
-RUN cp /happyx/examples/website/src/happyx/public/* ./website/happyx/public/
+RUN mkdir ./website && \
+    mkdir ./website/public && \
+    mkdir ./website/happyx && \
+    mkdir ./website/happyx/public && \
+    cp /happyx/examples/website/src/main.js ./website/ && \
+    cp /happyx/examples/website/src/index.html ./website/ && \
+    cp /happyx/examples/website/src/happyx/public/* ./website/public/ && \
+    cp /happyx/examples/website/src/happyx/public/* ./website/happyx/public/
 
 WORKDIR /happyx/examples/sandbox_api/src
-RUN nim c -d:release -d:happyxDebug --warnings:off --opt:speed --threads:on -d:port="$PORT" -d:host=$HOST main.nim
+RUN nim c -d:danger -l:"-flto" -t:"-flto" -d:happyxDebug --warnings:off --opt:size --threads:on -d:port="$PORT" -d:host=$HOST main.nim
+
+
+# Runner
+FROM nimlang/nim:2.0.0-alpine as release
+
+RUN mkdir /happyx
+WORKDIR /happyx/
+COPY --from=builder /happyx/ ./
+WORKDIR /happyx/examples/sandbox_api/src
+
 
 # Start server
 EXPOSE $PORT
