@@ -1,5 +1,6 @@
 import
-  ./utils
+  ./utils,
+  regex
 
 
 import illwill except
@@ -28,8 +29,30 @@ proc devCommand*(host: string = "127.0.0.1", port: int = 5000,
 
   # Launch SSR app
   if project.projectType in [ptSSG, ptSSR]:
-    styledEcho fgRed, emoji["❌"](), " SSR/SSG projects not available in the dev mode."
-    styledEcho fgMagenta, emoji["💡"](), " Make SSR/SSG dev mode and send Pull Request if you want!"
+    var f = open(getCurrentDir() / project.srcDir / (project.mainFile & ".nim"))
+    var data = f.readAll()
+    f.close()
+    var m: RegexMatch2
+    discard data.find(re2("serve\\s*\\(?\\s*\\\"([^\\\"]+)\\\"\\s*,?\\s*(\\d+)"), m)
+    let
+      host = data[m.group(0)]
+      port = data[m.group(1)]
+    styledEcho "⚡ Server launched at ", fgGreen, styleUnderscore, "http://" & host & ":" & port, fgWhite
+    openDefaultBrowser("http://" & host & ":" & port & "/")
+    while true:
+      styledEcho fgYellow, "if you want to quit from program, please input [q] char"
+      if stdin.readChar() == 'q':
+        break
+    if not project.process.isNil:
+      styledEcho fgYellow, "Quit from programm: terminate process"
+      let id = project.process.processID()
+      when defined(windows):
+        discard execCmd(fmt"taskkill /F /PID {id}")
+      elif defined(linux):
+        discard execCmd(fmt"kill {id}")
+      elif defined(macos) or defined(macosx):
+        discard execCmd(fmt"kill -9 {id}")
+    styledEcho fgYellow, "Quit from programm ..."
     shutdownCli()
     return QuitSuccess
 

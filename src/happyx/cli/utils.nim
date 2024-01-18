@@ -321,7 +321,13 @@ proc compileProject*(): ProjectData {. discardable .} =
       ], nil, PROCESS_OPTIONS
     )
   of ptSSR, ptSSG, ptSSR_PWA:
-    return result
+    result.process = startProcess(
+      "nim", getCurrentDir() / result.srcDir,
+      [
+        "c", "--hints:off", "--warnings:off",
+        "--opt:size", "-d:danger", "-x:off", "-a:off", "--panics:off", "--lineDir:off", result.mainFile
+      ], nil, PROCESS_OPTIONS
+    )
 
   styledEcho "Compiling ", fgMagenta, result.mainFile, fgWhite, " script ... /"
   var progress = initProgress()
@@ -347,6 +353,17 @@ proc compileProject*(): ProjectData {. discardable .} =
     result.process.close()
   if result.projectType == ptSPAHpx:
     removeFile(result.srcDir / result.mainFile & ".nim")
+  if result.projectType in [ptSSR, ptSSG, ptSSR_PWA]:
+    when defined(windows):
+      result.process = startProcess(
+        getCurrentDir() / result.srcDir / (result.mainFile & ".exe"),
+        options = {poEchoCmd, poEvalCommand, poStdErrToStdOut, poUsePath}
+      )
+    else:
+      result.process = startProcess(
+        result.mainFile, getCurrentDir() / result.srcDir,
+        options = {poEvalCommand, poStdErrToStdOut}
+      )
 
 
 proc godEye*(arg: ptr GodEyeData) {. thread, nimcall .} =
@@ -359,18 +376,30 @@ proc godEye*(arg: ptr GodEyeData) {. thread, nimcall .} =
   for file in directory.walkDirRec():
     lastCheck.add((path: file, time: file.getFileInfo().lastWriteTime))
   
-  let mainFile = arg[].project[].mainFile
+  let
+    mainFile = arg[].project[].mainFile
+    projectType = arg[].project[].projectType
   
   while true:
     # Get file write times
     for file in directory.walkDirRec():
+      if file.endsWith("linkerArgs.txt"):
+        continue
       currentCheck.add((path: file, time: file.getFileInfo().lastWriteTime))
     # Check
     if currentCheck.len != lastCheck.len:
       acquire(L)
       styledEcho fgGreen, "Changing found ", fgWhite, " reloading ..."
       release(L)
-      compileProject()
+      if projectType in [ptSSR, ptSSG, ptSSR_PWA] and not arg[].project[].process.isNil:
+        let id = arg[].project[].process.processID()
+        when defined(windows):
+          discard execCmd(fmt"taskkill /F /PID {id}")
+        elif defined(linux):
+          discard execCmd(fmt"kill {id}")
+        elif defined(macos) or defined(macosx):
+          discard execCmd(fmt"kill -9 {id}")
+      arg[].project[] = compileProject()
       lastCheck = @[]
       for i in currentCheck:
         lastCheck.add(i)
@@ -384,7 +413,15 @@ proc godEye*(arg: ptr GodEyeData) {. thread, nimcall .} =
           acquire(L)
           styledEcho fgGreen, "Changing found in ", fgMagenta, val.path, fgWhite, " reloading ..."
           release(L)
-          compileProject()
+          if projectType in [ptSSR, ptSSG, ptSSR_PWA] and not arg[].project[].process.isNil:
+            let id = arg[].project[].process.processID()
+            when defined(windows):
+              discard execCmd(fmt"taskkill /F /PID {id}")
+            elif defined(linux):
+              discard execCmd(fmt"kill {id}")
+            elif defined(macos) or defined(macosx):
+              discard execCmd(fmt"kill -9 {id}")
+          arg[].project[] = compileProject()
           arg[].needReload[] = true
       lastCheck = @[]
       for i in currentCheck:
