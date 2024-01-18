@@ -150,6 +150,9 @@ hpx dev --reload
 # Contributing 🌀
 See [Contributing.md](https://github.com/HapticX/happyx/blob/master/.github/CONTRIBUTING.md) for more information
 
+# Donate 💰
+[![Tinkoff](https://img.shields.io/badge/Tinkoff-ffdd2d?style=for-the-badge&logo=tinkoff&logoColor=f1fa8c&label=Сбор%20Средств&labelColor=2b2e3b)](https://www.tinkoff.ru/cf/9HWYxcPF4pS)
+
 
 ## Star History ✨
 
