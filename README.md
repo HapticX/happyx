@@ -138,19 +138,19 @@ Just run this command and see magic ✨
 hpx dev --reload
 ```
 
-# Have A Question? 👀
+## Have A Question? 👀
 
 [![StackOverflow](https://img.shields.io/badge/Overflow-1b1e2b?style=for-the-badge&logo=stackoverflow&logoColor=f1fa8c&label=Stack&labelColor=2b2e3b)](https://stackoverflow.com/search?q=%5Bnim-lang%5D+HappyX)
 
-# Have A Nice Idea? 🍍
+## Have A Nice Idea? 🍍
 
 [Open issue](https://github.com/HapticX/happyx/issues/new/choose) or contact us hapticx.company@gmail.com
 
 
-# Contributing 🌀
+## Contributing 🌀
 See [Contributing.md](https://github.com/HapticX/happyx/blob/master/.github/CONTRIBUTING.md) for more information
 
-# Donate 💰
+## Donate 💰
 [![Tinkoff](https://img.shields.io/badge/Tinkoff-ffdd2d?style=for-the-badge&logo=tinkoff&logoColor=f1fa8c&label=Сбор%20Средств&labelColor=2b2e3b)](https://www.tinkoff.ru/cf/9HWYxcPF4pS)
 
 
