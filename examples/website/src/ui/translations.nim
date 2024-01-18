@@ -1742,6 +1742,12 @@ translatable:
     "zh" -> "改进Python绑定 🔥"
     "fr" -> "Améliorer les liaisons Python 🔥"
     "ko" -> "Python 바인딩 개선하기 🔥"
+  "The example above illustrates how HappyX handles clicks, and also demonstrates interaction with reactive data of the component.":
+    "ru" -> "Приведенный выше пример иллюстрирует, как HappyX обрабатывает клики, а также демонстрирует взаимодействие с реактивными данными компонента."
+    "ja" -> "上記の例は、HappyXがクリックを処理する方法を示しており、コンポーネントの反応データとの相互作用も示しています。"
+    "zh" -> "上面的例子说明了HappyX如何处理点击，并展示了与组件的响应数据的交互。"
+    "fr" -> "L'exemple ci-dessus illustre comment HappyX gère les clics et démontre également l'interaction avec les données réactives du composant."
+    "ko" -> "위의 예시는 HappyX가 클릭을 처리하는 방법을 보여주며, 또한 구성 요소의 반응 데이터와 상호 작용을 나타냅니다."
 
 
 var spokenLang: cstring

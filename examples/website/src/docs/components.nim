@@ -14,7 +14,7 @@ component Components:
       tH1: {translate"Components 🔥"}
       tP: {translate"This article describes components and their behavior"}
 
-      tH2: {translate"Button Example"}
+      tH3: {translate"Button Example"}
       tP: {translate"Let's look at Button component example"}
       
       GuideInteractive(
@@ -32,3 +32,4 @@ component Components:
               application.router()
         ):
           "counter {self.counter}"
+      tP: {translate"The example above illustrates how HappyX handles clicks, and also demonstrates interaction with reactive data of the component."}
