@@ -25,7 +25,7 @@ type
   CORSObj* = object
     allowCredentials*: bool
     allowHeaders*: string
-    allowOrigins*: string
+    allowOrigins*: seq[string]
     allowMethods*: string
 
 
@@ -35,7 +35,7 @@ proc setCors*(allowOrigins: string = "*", allowMethods: string = "*",
               allowHeaders: string = "*", credentials: bool = true) {.gcsafe.} =
   {.cast(gcsafe).}:
     currentCORSRuntime.allowCredentials = credentials
-    currentCORSRuntime.allowOrigins = allowOrigins
+    currentCORSRuntime.allowOrigins = @[allowOrigins]
     currentCORSRuntime.allowMethods = allowMethods
     currentCORSRuntime.allowHeaders = allowHeaders
 
@@ -44,7 +44,7 @@ proc getCors*(): CORSObj {.gcsafe.} =
     return currentCORSRuntime
 
 
-macro addCORSHeaders*(headers: HttpHeaders) =
+macro addCORSHeaders*(host: string, headers: HttpHeaders) =
   result = quote do:
     let cors = getCors()
     `headers`["Access-Control-Allow-Credentials"] = $cors.allowCredentials
@@ -53,7 +53,15 @@ macro addCORSHeaders*(headers: HttpHeaders) =
     if cors.allowMethods.len > 0:
       `headers`["Access-Control-Allow-Methods"] = cors.allowMethods
     if cors.allowOrigins.len > 0:
-      `headers`["Access-Control-Allow-Origin"] = cors.allowOrigins
+      for origin in cors.allowOrigins:
+        if origin == "*":
+          `headers`["Access-Control-Allow-Origin"] = "*"
+          break
+        elif origin == `host`:
+          `headers`["Access-Control-Allow-Origin"] = origin
+          break
+      if not `headers`.hasKey("Access-Control-Allow-Origin"):
+        `headers`["Access-Control-Allow-Origin"] = cors.allowOrigins[0]
 
 
 macro regCORS*(body: untyped): untyped =

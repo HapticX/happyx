@@ -68,13 +68,12 @@ import
   std/json,
   std/md5,
   std/os,
-  std/exitprocs,
   # Deps
   regex,
   # HappyX
   ./cors,
-  ../spa/[tag, renderer, translatable],
-  ../core/[exceptions, constants, queries],
+  ../spa/[tag, renderer],
+  ../core/[exceptions, constants],
   ../private/[macro_utils],
   ../routing/[routing, mounting, decorators],
   ../sugar/sgr
@@ -276,20 +275,21 @@ when defined(napibuild):
   proc unregisterRequest*(reqId: string) {.gcsafe.} =
     {.gcsafe.}:
       requests.del(reqId)
-else:
+elif not defined(docgen) and not nim_2_0_0:
+  import std/exitprocs
+
   proc ctrlCHook() {.noconv.} =
     quit(QuitSuccess)
-
+  
   proc onQuit() {.noconv.} =
     when int(enableHttpBeast) + int(enableHttpx) + int(enableMicro) == 0:
       try:
         pointerServer[].instance.close()
       except:
         discard
-
-  when not defined(docgen) and not nim_2_0_0:
-    setControlCHook(ctrlCHook)
-    addExitProc(onQuit)
+  
+  setControlCHook(ctrlCHook)
+  addExitProc(onQuit)
 
 
 import ./handlers
@@ -408,7 +408,10 @@ template answer*(
   ##      return "Hello, world!"
   ## 
   var h = headers
-  addCORSHeaders(h)
+  when enableHttpBeast or enableHttpx:
+    addCORSHeaders(req.ip, h)
+  else:
+    addCORSHeaders(req.hostname, h)
   when declared(outHeaders):
     for key, val in outHeaders.pairs():
       h[key] = val
@@ -887,7 +890,6 @@ socketToSsr.onmessage=function(m){
       newIntLitNode(0)
     )
     let
-      requestBody = newCall("get", newDotExpr(ident"req", ident"body"))
       reqMethod = newCall("get", newDotExpr(ident"req", ident"httpMethod"))
       hostname = newDotExpr(ident"req", ident"ip")
       headers = newCall("get", newDotExpr(ident"req", ident"headers"))
@@ -914,7 +916,6 @@ socketToSsr.onmessage=function(m){
       reqMethod = newDotExpr(ident"req", ident"reqMethod")
       hostname = newDotExpr(ident"req", ident"hostname")
       headers = newDotExpr(ident"req", ident"headers")
-      requestBody = newDotExpr(ident"req", ident"body")
       acceptLanguage = newNimNode(nnkBracketExpr).add(
         newCall(
           "split", newNimNode(nnkBracketExpr).add(headers, newStrLitNode("accept-language")), newLit(',')
@@ -1700,9 +1701,8 @@ macro serve*(address: string, port: int, body: untyped): untyped =
   ##      "/some":
   ##        return some
   ## 
-  var bodyStatement = body
   when enableApiDoc:
-    var docsData = bodyStatement.genApiDoc()
+    var docsData = body.genApiDoc()
   
   var s =
     when exportPython or defined(docgen):

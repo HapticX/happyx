@@ -84,7 +84,6 @@ import
   # stdlib
   macros,
   macrocache,
-  tables,
   strtabs,
   strutils,
   strformat,
@@ -151,10 +150,10 @@ macro model*(modelName, body: untyped): untyped =
           # JSON raw data
           asgnStmt.add(newNimNode(nnkIfStmt).add(
             newNimNode(nnkElifBranch).add(
-              newCall("hasKey", ident"node", newStrLitNode($argName)),
+              newCall("hasKey", ident"node", newLit($argName)),
               newAssignment(
                 newDotExpr(ident"result", argName),
-                newCall("to", newCall("[]", ident"node", newStrLitNode($argName)), argType)
+                newCall("to", newCall("[]", ident"node", newLit($argName)), argType)
               )
             ), newNimNode(nnkElse).add(
               newAssignment(
@@ -166,18 +165,18 @@ macro model*(modelName, body: untyped): untyped =
           # x-www-form-urlencode
           asgnUrlencoded.add(newNimNode(nnkIfStmt).add(
             newNimNode(nnkElifBranch).add(
-              newCall("hasKey", ident"dataTable", newStrLitNode($argName)),
+              newCall("hasKey", ident"dataTable", newLit($argName)),
               newAssignment(
                 newDotExpr(ident"result", argName),
                 case ($argType.toStrLit).toLower()
                 of "int":
-                  newCall("parseInt", newCall("[]", ident"dataTable", newStrLitNode($argName)))
+                  newCall("parseInt", newCall("[]", ident"dataTable", newLit($argName)))
                 of "float":
-                  newCall("parseFloat", newCall("[]", ident"dataTable", newStrLitNode($argName)))
+                  newCall("parseFloat", newCall("[]", ident"dataTable", newLit($argName)))
                 of "bool":
-                  newCall("parseBool", newCall("[]", ident"dataTable", newStrLitNode($argName)))
+                  newCall("parseBool", newCall("[]", ident"dataTable", newLit($argName)))
                 of "string":
-                  newCall("[]", ident"dataTable", newStrLitNode($argName))
+                  newCall("[]", ident"dataTable", newLit($argName))
                 else:
                   newCall("default", argType)
               )
@@ -191,17 +190,17 @@ macro model*(modelName, body: untyped): untyped =
           # XML
           asgnXml.add(newNimNode(nnkIfStmt).add(
             newNimNode(nnkElifBranch).add(
-              newCall("hasKey", ident"xmlBody", newStrLitNode($argName)),
+              newCall("hasKey", ident"xmlBody", newLit($argName)),
               newNimNode(nnkTryStmt).add(
                 newAssignment(
                   newDotExpr(ident"result", argName),
-                  newCall("to", newCall("[]", ident"xmlBody", newStrLitNode($argName)), argType)
+                  newCall("to", newCall("[]", ident"xmlBody", newLit($argName)), argType)
                 ), newNimNode(nnkExceptBranch).add(
                   ident"JsonKindError",
                   newStmtList(
                       newCall(
                         "error", newCall(
-                          "fmt", newStrLitNode(
+                          "fmt", newLit(
                             fmt"Couldn't parse XML model ({modelName}.{argName}: {argType.toStrLit}) - " & "{getCurrentExceptionMsg()}"))
                       ),
                   )
@@ -219,18 +218,18 @@ macro model*(modelName, body: untyped): untyped =
           if ($argType.toStrLit).toLower() != "formdataitem":
             newNimNode(nnkIfStmt).add(
               newNimNode(nnkElifBranch).add(
-              newCall("hasKey", ident"dataTable", newStrLitNode($argName)),
+              newCall("hasKey", ident"dataTable", newLit($argName)),
               newAssignment(
                 newDotExpr(ident"result", argName),
                 case ($argType.toStrLit).toLower()
                 of "int":
-                  newCall("parseInt", newCall("[]", ident"dataTable", newStrLitNode($argName)))
+                  newCall("parseInt", newCall("[]", ident"dataTable", newLit($argName)))
                 of "float":
-                  newCall("parseFloat", newCall("[]", ident"dataTable", newStrLitNode($argName)))
+                  newCall("parseFloat", newCall("[]", ident"dataTable", newLit($argName)))
                 of "bool":
-                  newCall("parseBool", newCall("[]", ident"dataTable", newStrLitNode($argName)))
+                  newCall("parseBool", newCall("[]", ident"dataTable", newLit($argName)))
                 of "string":
-                  newCall("[]", ident"dataTable", newStrLitNode($argName))
+                  newCall("[]", ident"dataTable", newLit($argName))
                 else:
                   newCall("default", argType)
               )
@@ -243,10 +242,10 @@ macro model*(modelName, body: untyped): untyped =
           else:
             newNimNode(nnkIfStmt).add(
               newNimNode(nnkElifBranch).add(
-              newCall("hasKey", ident"dataTable", newStrLitNode($argName)),
+              newCall("hasKey", ident"dataTable", newLit($argName)),
               newAssignment(
                 newDotExpr(ident"result", argName),
-                newCall("[]", ident"formDataItemsTable", newStrLitNode($argName))
+                newCall("[]", ident"formDataItemsTable", newLit($argName))
               )
             ), newNimNode(nnkElse).add(
               newAssignment(
@@ -269,10 +268,10 @@ macro model*(modelName, body: untyped): untyped =
           # JSON raw data
           asgnStmt.add(newNimNode(nnkIfStmt).add(
             newNimNode(nnkElifBranch).add(
-              newCall("hasKey", ident"node", newStrLitNode($argName)),
+              newCall("hasKey", ident"node", newLit($argName)),
               newAssignment(
                 newDotExpr(ident"result", argName),
-                newCall("to", newCall("[]", ident"node", newStrLitNode($argName)), argType)
+                newCall("to", newCall("[]", ident"node", newLit($argName)), argType)
               )
             ), newNimNode(nnkElse).add(
               newAssignment(
@@ -284,18 +283,18 @@ macro model*(modelName, body: untyped): untyped =
           # x-www-form-urlencode
           asgnUrlencoded.add(newNimNode(nnkIfStmt).add(
             newNimNode(nnkElifBranch).add(
-              newCall("hasKey", ident"dataTable", newStrLitNode($argName)),
+              newCall("hasKey", ident"dataTable", newLit($argName)),
               newAssignment(
                 newDotExpr(ident"result", argName),
                 case ($argType.toStrLit).toLower()
                 of "int":
-                  newCall("parseInt", newCall("[]", ident"dataTable", newStrLitNode($argName)))
+                  newCall("parseInt", newCall("[]", ident"dataTable", newLit($argName)))
                 of "float":
-                  newCall("parseFloat", newCall("[]", ident"dataTable", newStrLitNode($argName)))
+                  newCall("parseFloat", newCall("[]", ident"dataTable", newLit($argName)))
                 of "bool":
-                  newCall("parseBool", newCall("[]", ident"dataTable", newStrLitNode($argName)))
+                  newCall("parseBool", newCall("[]", ident"dataTable", newLit($argName)))
                 of "string":
-                  newCall("[]", ident"dataTable", newStrLitNode($argName))
+                  newCall("[]", ident"dataTable", newLit($argName))
                 else:
                   newCall("default", argType)
               )
@@ -309,17 +308,17 @@ macro model*(modelName, body: untyped): untyped =
           # XML
           asgnXml.add(newNimNode(nnkIfStmt).add(
             newNimNode(nnkElifBranch).add(
-              newCall("hasKey", ident"xmlBody", newStrLitNode($argName)),
+              newCall("hasKey", ident"xmlBody", newLit($argName)),
               newNimNode(nnkTryStmt).add(
                 newAssignment(
                   newDotExpr(ident"result", argName),
-                  newCall("to", newCall("[]", ident"xmlBody", newStrLitNode($argName)), argType)
+                  newCall("to", newCall("[]", ident"xmlBody", newLit($argName)), argType)
                 ), newNimNode(nnkExceptBranch).add(
                   ident"JsonKindError",
                   newStmtList(
                       newCall(
                         "error", newCall(
-                          "fmt", newStrLitNode(
+                          "fmt", newLit(
                             fmt"Couldn't parse XML model ({modelName}.{argName}: {argType.toStrLit}) - " & "{getCurrentExceptionMsg()}"))
                       ),
                   )
@@ -337,18 +336,18 @@ macro model*(modelName, body: untyped): untyped =
           if ($argType.toStrLit).toLower() != "formdataitem":
             newNimNode(nnkIfStmt).add(
               newNimNode(nnkElifBranch).add(
-              newCall("hasKey", ident"dataTable", newStrLitNode($argName)),
+              newCall("hasKey", ident"dataTable", newLit($argName)),
               newAssignment(
                 newDotExpr(ident"result", argName),
                 case ($argType).toLower()
                 of "int":
-                  newCall("parseInt", newCall("[]", ident"dataTable", newStrLitNode($argName)))
+                  newCall("parseInt", newCall("[]", ident"dataTable", newLit($argName)))
                 of "float":
-                  newCall("parseFloat", newCall("[]", ident"dataTable", newStrLitNode($argName)))
+                  newCall("parseFloat", newCall("[]", ident"dataTable", newLit($argName)))
                 of "bool":
-                  newCall("parseBool", newCall("[]", ident"dataTable", newStrLitNode($argName)))
+                  newCall("parseBool", newCall("[]", ident"dataTable", newLit($argName)))
                 of "string":
-                  newCall("[]", ident"dataTable", newStrLitNode($argName))
+                  newCall("[]", ident"dataTable", newLit($argName))
                 else:
                   newCall("default", argType)
               )
@@ -356,10 +355,10 @@ macro model*(modelName, body: untyped): untyped =
           else:
             newNimNode(nnkIfStmt).add(
               newNimNode(nnkElifBranch).add(
-              newCall("hasKey", ident"dataTable", newStrLitNode($argName)),
+              newCall("hasKey", ident"dataTable", newLit($argName)),
               newAssignment(
                 newDotExpr(ident"result", argName),
-                newCall("[]", ident"formDataItemsTable", newStrLitNode($argName))
+                newCall("[]", ident"formDataItemsTable", newLit($argName))
               )
             ))
         )

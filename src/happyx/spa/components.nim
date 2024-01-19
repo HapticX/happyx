@@ -20,12 +20,6 @@ import
   ../private/[macro_utils]
 
 
-type
-  ComponentInfo = object
-    extendsOf: string
-    fields: seq[string]
-
-
 const createdComponents = CacheTable"HappyXCreatedComponents"
 
 
@@ -253,7 +247,6 @@ macro component*(name, body: untyped): untyped =
         name[2]
       else:
         newEmptyNode()
-    hasGenerics = name.kind == nnkBracketExpr or (name.kind == nnkInfix and name[0].kind == nnkBracketExpr)
     extendsHasGenerics = extendsOfNode.kind == nnkBracketExpr
     generics = block:
       let nm =
@@ -663,7 +656,6 @@ macro component*(name, body: untyped): untyped =
   
   proc allFields(fields: var seq[NimNode], extendsOf: string, generics: NimNode) =
     if createdComponents.hasKey(extendsOf):
-      let extends = createdComponents[extendsOf][0]
       var i = 0
       var extendsGenerics: seq[NimNode] = @[]
       for i in createdComponents[extendsOf][2]:
@@ -1145,7 +1137,6 @@ macro importComponent*(body: untyped): untyped =
             else:
               call.add(stmts)
           if eventHandlers.len > 0:
-            var stmts = newStmtList()
             if call[^1].kind != nnkStmtList:
               call.add(newStmtList())
             for handler in eventHandlers:

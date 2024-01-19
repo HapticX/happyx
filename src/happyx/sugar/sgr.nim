@@ -14,7 +14,6 @@ import
   std/strformat,
   std/macros,
   std/macrocache,
-  std/enumutils,
   std/typetraits,
   std/sequtils,
   std/strutils,

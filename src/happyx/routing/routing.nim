@@ -8,7 +8,6 @@ import
   strtabs,
   macros,
   macrocache,
-  tables,
   json,
   # deps
   regex,
@@ -57,6 +56,8 @@ type
 
 
 when exportPython:
+  import tables
+
   type RouteParamType = object
     name: string
     pattern: string
@@ -89,6 +90,8 @@ when exportPython:
           return v
 
 elif defined(napibuild):
+  import tables
+
   type RouteParamType = object
     name: string
     pattern: string
@@ -108,6 +111,8 @@ elif defined(napibuild):
     )
 
 elif exportJvm:
+  import tables
+
   type RouteParamType = object
     name: string
     pattern: string
@@ -126,14 +131,7 @@ elif exportJvm:
       pattern: pattern, name: name, creator: creator
     )
 else:
-  type RouteParamType = object
-    name: string
-    pattern: string
-    creator: NimNode
-
-
   const registeredRouteParamTypes = CacheTable"HappyXRegisteredRouteParamTypes"
-
 
   macro registerRouteParamType*(name, pattern: string, creator: untyped) =
     if re2"^[a-zA-Z][a-zA-Z0-9_]*$" notin $name:
@@ -313,6 +311,8 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode =
   var idx = 0
   let paramsCount = routeData.pathParams.len
   for i in routeData.pathParams:
+    if not body.isIdentUsed(ident(i.name)):
+      continue
     let
       letSection = newNimNode(if i.mutable: nnkVarSection else: nnkLetSection).add(
         newNimNode(nnkIdentDefs).add(ident(i.name), newEmptyNode())

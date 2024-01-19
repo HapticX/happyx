@@ -31,7 +31,6 @@ import
   regex,
   macrocache,
   ./tag,
-  ./translatable,
   ../core/[exceptions, constants],
   ../private/[macro_utils],
   ../routing/[routing, mounting, decorators],

@@ -1,8 +1,6 @@
 ## # Request Handlers
 ## 
-import
-  ../core/constants,
-  httpcore
+import ../core/constants
 
 
 when defined(napibuild):

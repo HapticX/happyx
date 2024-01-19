@@ -48,7 +48,11 @@ proc bracket*(node: varargs[NimNode]): NimNode =
 proc isIdentUsed*(body, name: NimNode): bool =
   ## Finds usage ident `name` in `body`
   for statement in body:
-    if statement.kind == nnkIdent and $statement == $name:
+    if body.kind in {nnkIdentDefs, nnkExprEqExpr, nnkExprColonExpr} and statement == body[0]:
+      continue
+    if body.kind == nnkDotExpr and statement == body[1]:
+      continue
+    if statement == name:
       return true
     elif statement.kind notin AtomicNodes and statement.isIdentUsed(name):
       return true
@@ -1111,7 +1115,6 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
     elif statement.kind == nnkForStmt:
       var
         unqn = fmt"c{uniqueId.value}"
-        idents: seq[NimNode] = @[]
         cycleName = ident(fmt"__r{uniqueId.value}")
       # extract cycle variables
       for i in 0..statement.len-3:
