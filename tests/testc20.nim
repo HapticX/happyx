@@ -25,6 +25,9 @@ serve "127.0.0.1", 5000:
     return x
     echo x
 
+  get "/thisShouldWorkWhithoutRegex":
+    discard
+
   get "/{k:enum(Kind)}/{x}":
     "1" & x
   get "/bool":
