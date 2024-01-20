@@ -50,7 +50,7 @@ proc isIdentUsed*(body, name: NimNode): bool =
   for statement in body:
     if body.kind in {nnkIdentDefs, nnkExprEqExpr, nnkExprColonExpr} and statement == body[0]:
       continue
-    if body.kind == nnkDotExpr and statement == body[1]:
+    if body.kind == nnkDotExpr and statement == body[1] and statement != body[0]:
       continue
     if statement == name:
       return true
