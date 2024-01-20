@@ -19,7 +19,7 @@ serve("127.0.0.1", 5000):
     elif operator == "-":
       fmt"Result of {left} - {right} is {left - right}"
     else:
-      fmt"Oops! Unknown operator"
+      "Oops! Unknown operator"
   
   get "/pattern{patternId:/[a-zA-Z0-9_]+/}":
     "pattern ID is {patternId}"

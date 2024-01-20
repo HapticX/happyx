@@ -56,6 +56,8 @@ proc isIdentUsed*(body, name: NimNode): bool =
       return true
     elif statement.kind notin AtomicNodes and statement.isIdentUsed(name):
       return true
+    elif statement.kind in {nnkStrLit, nnkTripleStrLit, nnkRStrLit} and $name in $statement:
+      return true
   false
 
 
