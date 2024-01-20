@@ -58,7 +58,7 @@
       <li><a class="reference" href="#CORSObj" title="CORSObj = object
   allowCredentials*: bool
   allowHeaders*: string
-  allowOrigins*: string
+  allowOrigins*: seq[string]
   allowMethods*: string">CORSObj</a></li>
 
     </ul>
@@ -96,7 +96,7 @@
     <summary><a class="reference reference-toplevel" href="#17" id="67">Macros</a></summary>
     <ul class="simple simple-toc-section">
       <ul class="simple nested-toc-section">addCORSHeaders
-  <li><a class="reference" href="#addCORSHeaders.m%2CHttpHeaders" title="addCORSHeaders(headers: HttpHeaders)">addCORSHeaders(headers: HttpHeaders)</a></li>
+  <li><a class="reference" href="#addCORSHeaders.m%2Cstring%2CHttpHeaders" title="addCORSHeaders(host: string; headers: HttpHeaders)">addCORSHeaders(host: string; headers: HttpHeaders)</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">regCORS
@@ -134,7 +134,7 @@
   <dt><pre><a href="cors.html#CORSObj"><span class="Identifier">CORSObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">allowCredentials</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>
   <span class="Identifier">allowHeaders</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
-  <span class="Identifier">allowOrigins</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
+  <span class="Identifier">allowOrigins</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">]</span>
   <span class="Identifier">allowMethods</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
 </pre></dt>
   <dd>
@@ -194,8 +194,8 @@
   <h1><a class="toc-backref" href="#17">Macros</a></h1>
   <dl class="item">
     <div id="addCORSHeaders-macros-all">
-  <div id="addCORSHeaders.m,HttpHeaders">
-  <dt><pre><span class="Keyword">macro</span> <a href="#addCORSHeaders.m%2CHttpHeaders"><span class="Identifier">addCORSHeaders</span></a><span class="Other">(</span><span class="Identifier">headers</span><span class="Other">:</span> <span class="Identifier">HttpHeaders</span><span class="Other">)</span></pre></dt>
+  <div id="addCORSHeaders.m,string,HttpHeaders">
+  <dt><pre><span class="Keyword">macro</span> <a href="#addCORSHeaders.m%2Cstring%2CHttpHeaders"><span class="Identifier">addCORSHeaders</span></a><span class="Other">(</span><span class="Identifier">host</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">headers</span><span class="Other">:</span> <span class="Identifier">HttpHeaders</span><span class="Other">)</span></pre></dt>
   <dd>
     
     
@@ -225,7 +225,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2024-01-19 16:34:38 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2024-01-20 03:20:25 UTC</small>
       </div>
     </div>
   </div>

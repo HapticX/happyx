@@ -1,12 +1,12 @@
 nimTitle	routing	happyx/routing/routing.html	module src/happyx/routing/routing		0
-nim	PathParamObj	happyx/routing/routing.html#PathParamObj	object PathParamObj		41
-nim	RequestModelObj	happyx/routing/routing.html#RequestModelObj	object RequestModelObj		47
-nim	RouteDataObj	happyx/routing/routing.html#RouteDataObj	object RouteDataObj		52
-nim	registerRouteParamType	happyx/routing/routing.html#registerRouteParamType.m,string,string,untyped	macro registerRouteParamType(name, pattern: string; creator: untyped)		138
-nim	newPathParamObj	happyx/routing/routing.html#newPathParamObj,string,string,string,bool,bool	proc newPathParamObj(name, paramType, defaultValue: string; optional, mutable: bool): PathParamObj		147
-nim	newRequestModelObj	happyx/routing/routing.html#newRequestModelObj,string,string,string,bool	proc newRequestModelObj(name, typeName, target: string; mutable: bool): RequestModelObj		151
-nim	handleRoute	happyx/routing/routing.html#handleRoute,string	proc handleRoute(route: string): RouteDataObj		155
-nim	exportRouteArgs	happyx/routing/routing.html#exportRouteArgs,NimNode,NimNode,NimNode	proc exportRouteArgs(urlPath, routePath, body: NimNode): NimNode		280
+nim	PathParamObj	happyx/routing/routing.html#PathParamObj	object PathParamObj		40
+nim	RequestModelObj	happyx/routing/routing.html#RequestModelObj	object RequestModelObj		46
+nim	RouteDataObj	happyx/routing/routing.html#RouteDataObj	object RouteDataObj		51
+nim	registerRouteParamType	happyx/routing/routing.html#registerRouteParamType.m,string,string,untyped	macro registerRouteParamType(name, pattern: string; creator: untyped)		136
+nim	newPathParamObj	happyx/routing/routing.html#newPathParamObj,string,string,string,bool,bool	proc newPathParamObj(name, paramType, defaultValue: string; optional, mutable: bool): PathParamObj		145
+nim	newRequestModelObj	happyx/routing/routing.html#newRequestModelObj,string,string,string,bool	proc newRequestModelObj(name, typeName, target: string; mutable: bool): RequestModelObj		149
+nim	handleRoute	happyx/routing/routing.html#handleRoute,string	proc handleRoute(route: string): RouteDataObj		153
+nim	exportRouteArgs	happyx/routing/routing.html#exportRouteArgs,NimNode,NimNode,NimNode	proc exportRouteArgs(urlPath, routePath, body: NimNode): NimNode		278
 nim	parseBoolOrJString	happyx/routing/routing.html#parseBoolOrJString,string	proc parseBoolOrJString(str: string): JsonNode		571
 nim	parseIntOrJString	happyx/routing/routing.html#parseIntOrJString,string	proc parseIntOrJString(str: string): JsonNode		576
 nim	parseFloatOrJString	happyx/routing/routing.html#parseFloatOrJString,string	proc parseFloatOrJString(str: string): JsonNode		581
