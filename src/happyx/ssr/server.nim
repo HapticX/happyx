@@ -1702,7 +1702,8 @@ macro serve*(address: string, port: int, body: untyped): untyped =
   ##        return some
   ## 
   when enableApiDoc:
-    var docsData = body.genApiDoc()
+    var b = body
+    var docsData = b.genApiDoc()
   
   var s =
     when exportPython or defined(docgen):
