@@ -641,13 +641,16 @@ macro component*(name, body: untyped): untyped =
         newCall("==", initProc[3][i][0], newCall("compDefArg", initProc[3][i][1])),
         newAssignment(
           newDotExpr(ident"self", initProc[3][i][0].copy()),
-          newCall("remember", newCall(initProc[3][i][1], initProc[3][i][2]))
+          newCall("remember", newCall(initProc[3][i][1], initProc[3][i][2].copy()))
         )
       )))
       initProc[3][i][2] = newCall("compDefArg", initProc[3][i][1])
     elif initProc[3][i][0] != ident"uniqCompId" and initProc[3][i][2] != newEmptyNode():
+      var data = initProc[3][i][2].copy()
+      if data.kind in nnkCallKinds:
+        data = newCall("default", newCall("typeof", data))
       defaultValues.add(newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
-        newCall("==", initProc[3][i][0], initProc[3][i][2]),
+        newCall("==", initProc[3][i][0], data),
         newAssignment(
           newDotExpr(ident"self", initProc[3][i][0].copy()),
           newCall("remember", initProc[3][i][0])

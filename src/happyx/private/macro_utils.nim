@@ -169,11 +169,17 @@ proc useComponent*(statement: NimNode, inCycle, inComponent: bool,
       if cycleTmpVar == "" and compTmpVar.kind == nnkEmpty:
         newLit(componentName)
       elif compTmpVar.kind == nnkEmpty and cycleTmpVar != "":
-        newCall("&", newLit(componentName), newCall("$", ident(cycleTmpVar)))
+        newCall("&", newLit(componentName), newCall("&", newLit"__", newCall("$", ident(cycleTmpVar))))
       elif cycleTmpVar == "" and compTmpVar.kind != nnkEmpty:
         newCall("&", newLit(componentName), newCall("$", compTmpVar))
       else:
-        newCall("&", newLit(componentName), newCall("&", newCall("$", compTmpVar), newCall("$", ident(cycleTmpVar))))
+        newCall("&", newLit(componentName), newCall("&", newCall("$", compTmpVar), newCall("&", newLit"__", newCall("$", ident(cycleTmpVar)))))
+    componentSlotIdent = newNimNode(nnkWhenStmt).add(newNimNode(nnkElifBranch).add(
+      newCall("declared", ident"cycleCounter"),
+      newCall("&", componentNameIdent, newCall("&", newLit"____", newCall("$", ident"cycleCounter")))
+    ), newNimNode(nnkElse).add(
+      componentNameIdent
+    ))
     objConstr =
       if hasGenerics:
         var x = generics.copy()
@@ -193,12 +199,12 @@ proc useComponent*(statement: NimNode, inCycle, inComponent: bool,
     stringId =
       when defined(js) or not enableLiveviews:
         if inCycle or inComponent:
-          componentNameIdent
+          componentSlotIdent
         else:
           newLit(componentName)
       else:
         if inCycle or inComponent:
-          newCall("&", ident"hostname", componentNameIdent)
+          newCall("&", ident"hostname", componentSlotIdent)
         else:
           newCall("&", ident"hostname", newLit(componentName))
     componentSlot =
@@ -910,7 +916,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
         # not in component but in cycle
         if inCycle:
           let
-            cycleVar = " + " & cycleTmpVar  & ")}"
+            cycleVar = " & \"___\" $" & cycleTmpVar  & ")}"
             registerEvent = fmt"registerEventScoped{uniqueId.value}{uniqueId.value+2}"
             callRegister = newCall(registerEvent)
           var procParams = @[ident"AppEventHandler"]
@@ -1122,7 +1128,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
       for i in 0..statement.len-3:
         cycleVars.add statement[i]
       inc uniqueId
-      if cycleTmpVar == "":
+      if cycleTmpVar == "" or cycleTmpVar == "cycleCounter":
         statement[^1] = newStmtList(
           newCall(
             "add",
@@ -1130,7 +1136,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
             buildHtmlProcedure(ident"div", statement[^1], inComponent, componentName, true, unqn, compTmpVar, cycleVars).add(
               newLit(true)
             )
-          )
+          ),
         )
       else:
         statement[^1] = newStmtList(
@@ -1140,11 +1146,11 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
             buildHtmlProcedure(ident"div", statement[^1], inComponent, componentName, true, cycleTmpVar, compTmpVar, cycleVars).add(
               newLit(true)
             )
-          )
+          ),
         )
       for i in 0..statement.len-3:
         discard cycleVars.pop()
-      if cycleTmpVar == "":
+      if cycleTmpVar == "" or cycleTmpVar == "cycleCounter":
         statement[^1].insert(0, newCall("inc", ident(unqn)))
       else:
         statement[^1].insert(0, newCall("inc", ident(cycleTmpVar)))
@@ -1153,7 +1159,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
           "initTag",
           newLit"div",
           newStmtList(
-            if cycleTmpVar == "":
+            if cycleTmpVar == "" or cycleTmpVar == "cycleCounter":
               newVarStmt(ident(unqn), newLit(0))
             else:
               newEmptyNode(),

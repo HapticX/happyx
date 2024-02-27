@@ -92,6 +92,56 @@ component withCounterObject:
     tDiv: "self count: {self.count}"
     tDiv: "count in template: {nextCounter(counterObj2)}"
 
+var index = 0
+
+proc newIndex(): int =
+  result = index
+  index += 1
+
+type refIndex = ref object
+  value*: int
+
+var rindex = refIndex(value:0)
+var sindex = refIndex(value:0)
+var tindex = refIndex(value:0)
+var uindex = refIndex(value:0)
+
+proc nextIndex(r: refIndex): int =
+  result = r.value
+  r.value += 1
+
+proc newIndexByRef(): int =
+  result = rindex.value
+  rindex.value += 1
+
+component Index:
+  index: int = newIndex()
+  Rindex: int = newIndexByRef()
+  myRefIndex: refIndex = sindex
+  Sindex: int = myRefIndex.nextIndex()
+  html:
+    tDiv: "my index is {self.index}"
+    tDiv(style="color:purple"): "my refIndex is {self.Rindex}"
+    tDiv(style="color:orange"): "my internal refIndex is {self.Sindex}"
+    tDiv(style="color:green"): "my refIndex from the main body is {uindex.nextIndex()}"
+
+
+component Copypasta:
+  n: int
+  html:
+    for i in 1..self.n.val:
+      slot
+
+component ShowNum:
+  n: int
+  html:
+    tSpan(style="color:green"): "{self.n.val:04}"
+  
+  script:
+    echo self.uniqCompId
+
+randomize()
+
 
 appRoutes "app":
   "/":
@@ -113,3 +163,21 @@ appRoutes "app":
         "im a slot"
       Some[int, string, string](5, "0", "1")
       B(5)
+  "/issue244":
+    Index
+    Index
+    Index
+    for i in 1..3:
+      tDiv(style="color:green"):
+        "call from route: {tindex.nextIndex()}"
+  "/issue245":
+    Copypasta(4):
+      for i in 1..3:
+        let n = rand(9999)
+        tDiv:
+          tSpan:
+            "{n:04} = "
+            ShowNum(n)
+      nim:
+        echo inCycle, ", ", inComponent
+        echo cycleCounter, ", ", compName, ", ", compCounter
