@@ -916,7 +916,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
         # not in component but in cycle
         if inCycle:
           let
-            cycleVar = " & \"___\" $" & cycleTmpVar  & ")}"
+            cycleVar = " + " & cycleTmpVar  & ")}"
             registerEvent = fmt"registerEventScoped{uniqueId.value}{uniqueId.value+2}"
             callRegister = newCall(registerEvent)
           var procParams = @[ident"AppEventHandler"]
