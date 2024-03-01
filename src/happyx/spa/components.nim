@@ -648,7 +648,7 @@ macro component*(name, body: untyped): untyped =
     elif initProc[3][i][0] != ident"uniqCompId" and initProc[3][i][2] != newEmptyNode():
       var data = initProc[3][i][2].copy()
       if data.kind in nnkCallKinds:
-        data = newCall("default", newCall("typeof", data))
+        data = newCall("default", newCall("typeof", initProc[3][i][1]))
       defaultValues.add(newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
         newCall("==", initProc[3][i][0], data),
         newAssignment(
