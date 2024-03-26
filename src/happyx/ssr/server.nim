@@ -361,7 +361,7 @@ template start*(server: Server): untyped =
     when enableDebug or exportPython or defined(napibuild):
       info "Server started at http://" & `server`.address & ":" & $`server`.port
     when not declared(handleRequest):
-      proc handleRequest(req: Request) {.async.} =
+      proc handleRequest(req: Request): Future[void] {.async.} =
         discard
     when enableHttpx:
       run(handleRequest, `server`.instance)
@@ -408,10 +408,13 @@ template answer*(
   ##      return "Hello, world!"
   ## 
   var h = headers
-  when enableHttpBeast or enableHttpx:
-    addCORSHeaders(req.ip, h)
+  when exportJvm or exportPython or defined(napibuild):
+    when enableHttpBeast or enableHttpx:
+      addCORSHeaders(req.ip, h)
+    else:
+      addCORSHeaders(req.hostname, h)
   else:
-    addCORSHeaders(req.hostname, h)
+    h.addCORSHeaders()
   when declared(outHeaders):
     for key, val in outHeaders.pairs():
       h[key] = val
@@ -519,10 +522,9 @@ template answerHtml*(req: Request, data: string | TagRef, code: HttpCode = Http2
   ##          "Hello, world!"
   ## 
   when data is string:
-    let d = data
+    answer(req, data, code, headers)
   else:
-    let d = $data
-  answer(req, d, code, headers)
+    answer(req, $data, code, headers)
 
 
 when enableHttpx or enableHttpBeast:
@@ -748,7 +750,10 @@ macro routes*(server: Server, body: untyped = newStmtList()): untyped =
     notFoundNode = newEmptyNode()
     procStmt = newProc(
       ident"handleRequest",
-      [newEmptyNode(), newIdentDefs(ident"req", ident"Request")],
+      [
+        newNimNode(nnkBracketExpr).add(ident"Future", ident"void"),
+        newIdentDefs(ident"req", ident"Request")
+      ],
       when enableSafeRequests:
         newNimNode(nnkTryStmt).add(
           stmtList,
