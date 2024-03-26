@@ -66,37 +66,10 @@
 </li>
 <li>
   <details open>
-    <summary><a class="reference reference-toplevel" href="#8" id="58">Vars</a></summary>
-    <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#currentCORSRuntime" title="currentCORSRuntime = CORSObj()">currentCORSRuntime</a></li>
-
-    </ul>
-  </details>
-</li>
-<li>
-  <details open>
-    <summary><a class="reference reference-toplevel" href="#12" id="62">Procs</a></summary>
-    <ul class="simple simple-toc-section">
-      <ul class="simple nested-toc-section">getCors
-  <li><a class="reference" href="#getCors" title="getCors(): CORSObj">getCors(): CORSObj</a></li>
-
-</ul>
-<ul class="simple nested-toc-section">setCors
-  <li><a class="reference" href="#setCors%2Cstring%2Cstring%2Cstring%2Cbool" title="setCors(allowOrigins: string = &quot;*&quot;; allowMethods: string = &quot;*&quot;;
-        allowHeaders: string = &quot;*&quot;; credentials: bool = true)">setCors(allowOrigins: string = &quot;*&quot;; allowMethods: string = &quot;*&quot;;
-        allowHeaders: string = &quot;*&quot;; credentials: bool = true)</a></li>
-
-</ul>
-
-    </ul>
-  </details>
-</li>
-<li>
-  <details open>
     <summary><a class="reference reference-toplevel" href="#17" id="67">Macros</a></summary>
     <ul class="simple simple-toc-section">
       <ul class="simple nested-toc-section">addCORSHeaders
-  <li><a class="reference" href="#addCORSHeaders.m%2Cstring%2CHttpHeaders" title="addCORSHeaders(host: string; headers: HttpHeaders)">addCORSHeaders(host: string; headers: HttpHeaders)</a></li>
+  <li><a class="reference" href="#addCORSHeaders.m%2CHttpHeaders" title="addCORSHeaders(headers: HttpHeaders)">addCORSHeaders(headers: HttpHeaders)</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">regCORS
@@ -124,7 +97,7 @@
     <div class="section" id="6">
   <h1><a class="toc-backref" href="#6">Imports</a></h1>
   <dl class="item">
-    <a class="reference external" href="../core/exceptions.html">../core/exceptions</a>
+    <a class="reference external" href="../core/exceptions.html">../core/exceptions</a>, <a class="reference external" href="../core/constants.html">../core/constants</a>
   </dl>
 </div>
 <div class="section" id="7">
@@ -146,56 +119,12 @@
 
   </dl>
 </div>
-<div class="section" id="8">
-  <h1><a class="toc-backref" href="#8">Vars</a></h1>
-  <dl class="item">
-    <div id="currentCORSRuntime">
-  <dt><pre><a href="cors.html#currentCORSRuntime"><span class="Identifier">currentCORSRuntime</span></a> <span class="Other">=</span> <a href="cors.html#CORSObj"><span class="Identifier">CORSObj</span></a><span class="Other">(</span><span class="Other">)</span></pre></dt>
-  <dd>
-    
-    
-    
-  </dd>
-</div>
-
-  </dl>
-</div>
-<div class="section" id="12">
-  <h1><a class="toc-backref" href="#12">Procs</a></h1>
-  <dl class="item">
-    <div id="getCors-procs-all">
-  <div id="getCors">
-  <dt><pre><span class="Keyword">proc</span> <a href="#getCors"><span class="Identifier">getCors</span></a><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <a href="cors.html#CORSObj"><span class="Identifier">CORSObj</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">gcsafe</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
-  <dd>
-    
-    
-    
-  </dd>
-</div>
-
-</div>
-<div id="setCors-procs-all">
-  <div id="setCors,string,string,string,bool">
-  <dt><pre><span class="Keyword">proc</span> <a href="#setCors%2Cstring%2Cstring%2Cstring%2Cbool"><span class="Identifier">setCors</span></a><span class="Other">(</span><span class="Identifier">allowOrigins</span><span class="Other">:</span> <span class="Identifier">string</span> <span class="Other">=</span> <span class="StringLit">&quot;*&quot;</span><span class="Other">;</span> <span class="Identifier">allowMethods</span><span class="Other">:</span> <span class="Identifier">string</span> <span class="Other">=</span> <span class="StringLit">&quot;*&quot;</span><span class="Other">;</span>
-             <span class="Identifier">allowHeaders</span><span class="Other">:</span> <span class="Identifier">string</span> <span class="Other">=</span> <span class="StringLit">&quot;*&quot;</span><span class="Other">;</span> <span class="Identifier">credentials</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">true</span><span class="Other">)</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">gcsafe</span><span class="Other">,</span>
-    <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
-  <dd>
-    
-    
-    
-  </dd>
-</div>
-
-</div>
-
-  </dl>
-</div>
 <div class="section" id="17">
   <h1><a class="toc-backref" href="#17">Macros</a></h1>
   <dl class="item">
     <div id="addCORSHeaders-macros-all">
-  <div id="addCORSHeaders.m,string,HttpHeaders">
-  <dt><pre><span class="Keyword">macro</span> <a href="#addCORSHeaders.m%2Cstring%2CHttpHeaders"><span class="Identifier">addCORSHeaders</span></a><span class="Other">(</span><span class="Identifier">host</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">headers</span><span class="Other">:</span> <span class="Identifier">HttpHeaders</span><span class="Other">)</span></pre></dt>
+  <div id="addCORSHeaders.m,HttpHeaders">
+  <dt><pre><span class="Keyword">macro</span> <a href="#addCORSHeaders.m%2CHttpHeaders"><span class="Identifier">addCORSHeaders</span></a><span class="Other">(</span><span class="Identifier">headers</span><span class="Other">:</span> <span class="Identifier">HttpHeaders</span><span class="Other">)</span></pre></dt>
   <dd>
     
     
@@ -225,7 +154,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2024-03-01 05:05:25 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2024-03-26 02:35:25 UTC</small>
       </div>
     </div>
   </div>

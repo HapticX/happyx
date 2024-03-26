@@ -1,8 +1,5 @@
 nimTitle	cors	happyx/ssr/cors.html	module src/happyx/ssr/cors		0
 nim	CORSObj	happyx/ssr/cors.html#CORSObj	object CORSObj		25
-nim	currentCORSRuntime	happyx/ssr/cors.html#currentCORSRuntime	var currentCORSRuntime		32
-nim	setCors	happyx/ssr/cors.html#setCors,string,string,string,bool	proc setCors(allowOrigins: string = "*"; allowMethods: string = "*";\n        allowHeaders: string = "*"; credentials: bool = true)		34
-nim	getCors	happyx/ssr/cors.html#getCors	proc getCors(): CORSObj		42
-nim	addCORSHeaders	happyx/ssr/cors.html#addCORSHeaders.m,string,HttpHeaders	macro addCORSHeaders(host: string; headers: HttpHeaders)		47
-nim	regCORS	happyx/ssr/cors.html#regCORS.m,untyped	macro regCORS(body: untyped): untyped		67
+nim	addCORSHeaders	happyx/ssr/cors.html#addCORSHeaders.m,HttpHeaders	macro addCORSHeaders(headers: HttpHeaders)		35
+nim	regCORS	happyx/ssr/cors.html#regCORS.m,untyped	macro regCORS(body: untyped): untyped		50
 heading	Example	happyx/ssr/cors.html#example	  Example		0
