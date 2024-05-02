@@ -1156,7 +1156,7 @@ socketToSsr.onmessage=function(m){
               newCall(
                 "replace",
                 newCall("replace", pathIdent, staticPath, path),
-                slash, ident"DirSep"
+                newLit('/'), ident"DirSep"
               )
             )
             let answerStatic =
