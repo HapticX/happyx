@@ -42,7 +42,7 @@ liveview:
         route(hostname, "/")
   "/search":
     nim:
-      let q = decodeUrl(query~q)
+      let q = decodeUrl(query?q)
     tP: "You search: {q}"
 
 

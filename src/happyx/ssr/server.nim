@@ -14,10 +14,10 @@
 ## ## Queries ❔
 ## In any request you can get queries.
 ## 
-## Just use `query~name` to get any query param. By default returns `""`
+## Just use `query?name` to get any query param. By default returns `""`
 ## 
 ## If you want to use [arrays in query](https://github.com/HapticX/happyx/issues/101) just use
-## `queryArr~name` to get any array query param.
+## `queryArr?name` to get any array query param.
 ## 
 ## ## WebSockets 🍍
 ## In any request you can get connected websocket clients.

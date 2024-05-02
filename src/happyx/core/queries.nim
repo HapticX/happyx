@@ -52,7 +52,7 @@ proc parseQueryArrays*(query: string): TableRef[string, seq[string]] =
         result[key] = @[splitted[1]]
 
 
-macro `~`*(strTable: StringTableRef | TableRef[string, seq[string]], key: untyped): untyped =
+macro `?`*(strTable: StringTableRef | TableRef[string, seq[string]], key: untyped): untyped =
   ## Shortcut to get query param.
   ## 
   ## `High-level API`
@@ -62,7 +62,7 @@ macro `~`*(strTable: StringTableRef | TableRef[string, seq[string]], key: untype
   ## .. code-block::nim
   ##    get "/":
   ##      # exmple.com/?myParam=100
-  ##      echo query~myParam
+  ##      echo query?myParam
   ## 
   let
     keyStr = newStrLitNode($key)

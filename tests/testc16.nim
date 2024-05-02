@@ -57,8 +57,8 @@ serve "127.0.0.1", 5000:
   get "/arrQuery":
     ## Parses array and simple queries
     return {
-      "arr": queryArr~a,
-      "val": query~b
+      "arr": queryArr?a,
+      "val": query?b
     }
   ws "/Hello":
     discard
