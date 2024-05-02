@@ -19,6 +19,7 @@
 ## | `-d:apiDocsPath`     | choose path for API documentation 📕                          |  ✅        |
 ## | `-d:noliveviews`     | Disables LiveViews at SSR/SSG (It helpful for components) 📕  |  ❌        |
 ## | `-d:safeRequests`    | Enables requests safety (On error returns 500 with err msg) 📕|  ❌        |
+## | `-d:defDecorators`   | Disables default decorators (`AuthBasic`, `GetUserAgent`) 👀  |  ❌        |
 ## 
 ## ## Dev Consts 👨‍💻
 ## 
@@ -57,6 +58,7 @@ const
   enableUseCompDebugMacro* = defined(useCompDebug) or defined(happyxUseCompDebug) or defined(hpxUseCompDebug)
   enableRequestModelDebugMacro* = defined(reqModelDebug) or defined(happyxReqModelDebug) or defined(hpxReqModelDebug)
   enableRoutingDebugMacro* = defined(routingDebug) or defined(happyxRoutingDebug) or defined(hpxRoutingDebug)
+  enableDefaultDecorators* = not (defined(defDecorators) or defined(happyxDefDecorators) or defined(hpxDefDecorators))
   componentDebugTarget* {.strdefine.} = ""
   reqModelDebugTarget* {.strdefine.} = ""
   # Language bindings

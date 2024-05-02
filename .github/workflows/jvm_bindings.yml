@@ -66,6 +66,7 @@ jobs:
       - name: Install Nim Deps 👑
         run: |
           nimble install -y jnim
+          nimble install -y checksums
           nimble install -d happyx
           nimble list --installed
           nim -v
