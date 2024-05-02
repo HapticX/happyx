@@ -5,8 +5,8 @@ import
   ../ssr/session,
   regex,
   websocketx,
+  httpx,
   std/json,
-  std/httpx,
   std/tables,
   std/httpcore,
   std/strutils

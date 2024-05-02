@@ -34,8 +34,6 @@
 ## | `-d:componentDebugTarget` | after this component program will terminated               | ✅         |
 ## | `-d:reqModelDebugTarget`  | after this request model program will terminated           | ✅         |
 ## 
-when not defined(js) and defined(debug):
-  import terminal
 
 
 # Configuration via `-d`/`--define`
@@ -102,12 +100,14 @@ const
   # Framework version
   HpxMajor* = 3
   HpxMinor* = 8
-  HpxPatch* = 14
+  HpxPatch* = 15
   HpxVersion* = $HpxMajor & "." & $HpxMinor & "." & $HpxPatch
 
 
 when cryptoMethod notin availableCryptoMethods or (enableDebug and not defined(js)):
   import strformat
+when not defined(js) and enableDebug:
+  import terminal
 
 
 when cryptoMethod notin availableCryptoMethods:
