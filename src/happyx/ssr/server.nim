@@ -956,6 +956,7 @@ socketToSsr.onmessage=function(m){
           newCall("==", newCall("toLower", newCall("[]", headers, newStrLitNode("upgrade"), newLit(0))), newStrLitNode("websocket")),
         )
       )
+    wsClientI = ident"wsClient"
   
   when enableDebug:
     caseRequestMethodsStmt.add(ident"reqMethod")
@@ -1049,7 +1050,9 @@ socketToSsr.onmessage=function(m){
       # reqMethod "/...":
       #   ...
       elif statement[0].kind == nnkIdent and statement[0] != ident"mount" and statement[1].kind in {nnkStrLit, nnkTripleStrLit, nnkInfix}:
-        let name = ($statement[0]).toUpper()
+        let
+          name = ($statement[0]).toUpper()
+          slash = newLit"/"
         for route in nextRouteDecorators:
           decorators[route.name](@[$statement[0]], $statement[1], statement[2], route.args)
         if name == "STATICDIR":
@@ -1070,7 +1073,7 @@ socketToSsr.onmessage=function(m){
                   newCall(
                     "or",
                     newCall("startsWith", pathIdent, statement[1]),
-                    newCall("startsWith", pathIdent, newCall("&", newLit"/", statement[1])),
+                    newCall("startsWith", pathIdent, newCall("&", slash, statement[1])),
                   ), newCall(
                     "fileExists",
                     directoryFromPath
@@ -1134,7 +1137,7 @@ socketToSsr.onmessage=function(m){
                   newCall(
                     "or",
                     newCall("startsWith", pathIdent, staticPath),
-                    newCall("startsWith", pathIdent, newCall("&", newLit"/", statement[1])),
+                    newCall("startsWith", pathIdent, newCall("&", slash, statement[1])),
                   ), newCall(
                     "fileExists",
                     directoryFromPath
@@ -1145,15 +1148,15 @@ socketToSsr.onmessage=function(m){
             )
           else:
             let
-              route = if staticPath == newLit"/": newLit"" else: staticPath
-              path = if staticPath == newLit"/": newCall("&", directory, newLit"/") else: directory
+              route = if staticPath == slash: newLit"" else: staticPath
+              path = if staticPath == slash: newCall("&", directory, slash) else: directory
             let dirFromPath = newCall(
               "&",
-              newCall("&", newLit".", newLit"/"),
+              newCall("&", newLit".", slash),
               newCall(
                 "replace",
                 newCall("replace", pathIdent, staticPath, path),
-                newLit('/'), ident"DirSep"
+                slash, ident"DirSep"
               )
             )
             let answerStatic =
@@ -1201,7 +1204,7 @@ socketToSsr.onmessage=function(m){
                   newCall(
                     "or",
                     newCall("startsWith", pathIdent, statement[1]),
-                    newCall("startsWith", pathIdent, newCall("&", newLit"/", statement[1])),
+                    newCall("startsWith", pathIdent, newCall("&", slash, statement[1])),
                   ), newCall(
                     "fileExists",
                     directoryFromPath
@@ -1220,11 +1223,11 @@ socketToSsr.onmessage=function(m){
           elif statement[1].kind == nnkInfix and statement[1][^1].kind == nnkInfix and statement[1][0] == ident"->" and statement[1][^1][0] == ident"~":
             # Path -> directory ~ extensions
             let
-              route = if statement[1][1] == newLit"/": newLit"" else: statement[1][1]
-              path = if statement[1][1] == newLit"/": newCall("&", statement[1][2], newLit"/") else: statement[1][2]
+              route = if statement[1][1] == slash: newLit"" else: statement[1][1]
+              path = if statement[1][1] == slash: newCall("&", statement[1][2], slash) else: statement[1][2]
             let dirFromPath = newCall(
               "&",
-              newCall("&", newLit".", newLit"/"),
+              newCall("&", newLit".", slash),
               newCall(
                 "replace",
                 newCall("replace", pathIdent, statement[1][1], path),
@@ -1251,11 +1254,11 @@ socketToSsr.onmessage=function(m){
           else:
             # Path -> directory
             let
-              route = if statement[1][1] == newLit"/": newLit"" else: statement[1][1]
-              path = if statement[1][1] == newLit"/": newCall("&", statement[1][2], newLit"/") else: statement[1][2]
+              route = if statement[1][1] == slash: newLit"" else: statement[1][1]
+              path = if statement[1][1] == slash: newCall("&", statement[1][2], slash) else: statement[1][2]
             let dirFromPath = newCall(
               "&",
-              newCall("&", newLit".", newLit"/"),
+              newCall("&", newLit".", slash),
               newCall(
                 "replace",
                 newCall("replace", pathIdent, statement[1][1], path),
@@ -1289,11 +1292,11 @@ socketToSsr.onmessage=function(m){
               newCall(
                 "del",
                 ident"wsConnections",
-                newCall("find", ident"wsConnections", ident"wsClient"))
+                newCall("find", ident"wsConnections", wsClientI))
             )
           when enableHttpx:
             wsDelStmt.add(
-              newCall("close", ident"wsClient")
+              newCall("close", wsClientI)
             )
           when enableHttpBeast:
             let asyncFd = newDotExpr(newDotExpr(ident"req", ident"client"), ident"AsyncFD")
@@ -1306,22 +1309,22 @@ socketToSsr.onmessage=function(m){
               newCall("register", asyncFd),
               newLetStmt(ident"socket", newCall("newAsyncSocket", asyncFd)),
               newMultiVarStmt(
-                [ident"wsClient", ident"error"],
+                [wsClientI, ident"error"],
                 newCall("await", newCall("verifyWebsocketRequest", ident"socket", ident"headers", newLit(""))),
                 true
               ),
               newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
-                newCall("isNil", ident"wsClient"),
+                newCall("isNil", wsClientI),
                 newStmtList(
                   newCall("close", ident"socket")
                 )
               ), newNimNode(nnkElse).add(newStmtList(
-                newCall("add", ident"wsConnections", ident"wsClient"),
-                newCall("__wsConnect", ident"wsClient"),
+                newCall("add", ident"wsConnections", wsClientI),
+                newCall("__wsConnect", wsClientI),
                 newNimNode(nnkWhileStmt).add(newLit(true), newStmtList(
                   newMultiVarStmt(
                     [ident"opcode", ident"wsData"],
-                    newCall("await", newCall("readData", ident"wsClient")),
+                    newCall("await", newCall("readData", wsClientI)),
                     true
                   ),
                   newNimNode(nnkTryStmt).add(
@@ -1334,7 +1337,7 @@ socketToSsr.onmessage=function(m){
                             newStmtList(
                               newCall("echo", newStrLitNode("Socket closed")),
                               wsDelStmt,
-                              newCall("__wsClosed", ident"wsClient")
+                              newCall("__wsClosed", wsClientI)
                             )
                           else:
                             if wsClosedConnection.len == 0:
@@ -1342,7 +1345,7 @@ socketToSsr.onmessage=function(m){
                             else:
                               newStmtList(
                                 wsDelStmt,
-                                newCall("__wsClosed", ident"wsClient")
+                                newCall("__wsClosed", wsClientI)
                               ),
                           newNimNode(nnkBreakStmt).add(newEmptyNode())
                         )
@@ -1357,12 +1360,12 @@ socketToSsr.onmessage=function(m){
                             newCall("fmt", newStrLitNode("Unexpected socket error: {getCurrentExceptionMsg()}"))
                           ),
                           wsDelStmt,
-                          newCall("__wsError", ident"wsClient")
+                          newCall("__wsError", wsClientI)
                         )
                       else:
                         newStmtList(
                           wsDelStmt,
-                          newCall("__wsError", ident"wsClient")
+                          newCall("__wsError", wsClientI)
                         )
                     )
                   )
@@ -1371,15 +1374,15 @@ socketToSsr.onmessage=function(m){
             )
           else:
             let wsStmtList = newStmtList(
-              newLetStmt(ident"wsClient", newCall("await", newCall("newWebSocket", ident"req"))),
-              newCall("add", ident"wsConnections", ident"wsClient"),
+              newLetStmt(wsClientI, newCall("await", newCall("newWebSocket", ident"req"))),
+              newCall("add", ident"wsConnections", wsClientI),
               newNimNode(nnkTryStmt).add(
                 newStmtList(
-                  newCall("__wsConnect", ident"wsClient"),
+                  newCall("__wsConnect", wsClientI),
                   newNimNode(nnkWhileStmt).add(
-                    newCall("==", newDotExpr(ident"wsClient", ident"readyState"), ident"Open"),
+                    newCall("==", newDotExpr(wsClientI, ident"readyState"), ident"Open"),
                     newStmtList(
-                      newLetStmt(ident"wsData", newCall("await", newCall("receiveStrPacket", ident"wsClient"))),
+                      newLetStmt(ident"wsData", newCall("await", newCall("receiveStrPacket", wsClientI))),
                       insertWsList
                     )
                   )
@@ -1392,12 +1395,12 @@ socketToSsr.onmessage=function(m){
                         "echo", newCall("fmt", newStrLitNode("Socket closed: {getCurrentExceptionMsg()}"))
                       ),
                       wsDelStmt,
-                      newCall("__wsClosed", ident"wsClient")
+                      newCall("__wsClosed", wsClientI)
                     )
                   else:
                     newStmtList(
                       wsDelStmt,
-                      newCall("__wsClosed", ident"wsClient")
+                      newCall("__wsClosed", wsClientI)
                     )
                 ),
                 newNimNode(nnkExceptBranch).add(
@@ -1409,12 +1412,12 @@ socketToSsr.onmessage=function(m){
                         newCall("fmt", newStrLitNode("Socket tried to use an unknown protocol: {getCurrentExceptionMsg()}"))
                       ),
                       wsDelStmt,
-                      newCall("_wsMismatchProtocol", ident"wsClient")
+                      newCall("_wsMismatchProtocol", wsClientI)
                     )
                   else:
                     newStmtList(
                       wsDelStmt,
-                      newCall("__wsMismatchProtocol", ident"wsClient")
+                      newCall("__wsMismatchProtocol", wsClientI)
                     )
                 ),
                 newNimNode(nnkExceptBranch).add(
@@ -1426,12 +1429,12 @@ socketToSsr.onmessage=function(m){
                         newCall("fmt", newStrLitNode("Unexpected socket error: {getCurrentExceptionMsg()}"))
                       ),
                       wsDelStmt,
-                      newCall("__wsError", ident"wsClient")
+                      newCall("__wsError", wsClientI)
                     )
                   else:
                     newStmtList(
                       wsDelStmt,
-                      newCall("__wsError", ident"wsClient")
+                      newCall("__wsError", wsClientI)
                     )
                 )
               )
@@ -1572,6 +1575,7 @@ socketToSsr.onmessage=function(m){
   else:
     stmtList.add(caseRequestMethodsStmt)
 
+  # Websocket type for different compile cases
   let wsType =
     when enableHttpBeast:
       ident"AsyncWebSocket"
@@ -1592,25 +1596,25 @@ socketToSsr.onmessage=function(m){
     setup,
     newProc(
       ident"__wsError",
-      [newEmptyNode(), newIdentDefs(ident"wsClient", wsType)],
+      [newEmptyNode(), newIdentDefs(wsClientI, wsType)],
       wsError,
       nnkTemplateDef
     ),
     newProc(
       ident"__wsClosed",
-      [newEmptyNode(), newIdentDefs(ident"wsClient", wsType)],
+      [newEmptyNode(), newIdentDefs(wsClientI, wsType)],
       wsClosedConnection,
       nnkTemplateDef
     ),
     newProc(
       ident"__wsConnect",
-      [newEmptyNode(), newIdentDefs(ident"wsClient", wsType)],
+      [newEmptyNode(), newIdentDefs(wsClientI, wsType)],
       wsNewConnection,
       nnkTemplateDef
     ),
     newProc(
       ident"__wsMismatchProtocol",
-      [newEmptyNode(), newIdentDefs(ident"wsClient", wsType)],
+      [newEmptyNode(), newIdentDefs(wsClientI, wsType)],
       wsMismatchProtocol,
       nnkTemplateDef
     ),
