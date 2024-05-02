@@ -159,7 +159,7 @@ macro `->`*(self: State, field: untyped): untyped =
   ##    echo num
   ## 
   if field.kind in nnkCallKinds:
-    let call = newCall(field[0], newDotExpr(self, ident("val")))
+    let call = newCall(field[0], newDotExpr(self, ident"val"))
     # Get func args
     if field.len > 1:
       for i in 1..<field.len:
@@ -168,37 +168,37 @@ macro `->`*(self: State, field: untyped): untyped =
     result = newNimNode(nnkWhenStmt).add(
       newNimNode(nnkElifBranch).add(
         # type(call()) is void
-        newCall("is", newCall("type", call), ident("void")),
+        newCall("is", newCall("type", call), ident"void"),
         newStmtList(
           call,
           # When defined JS
           newNimNode(nnkWhenStmt).add(newNimNode(nnkElifBranch).add(
-            newCall("defined", ident("js")),
+            newCall("defined", ident"js"),
             # If enableRouting and not application.isNil()
             newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
-              newCall("and", ident"enableRouting", newCall("not", newCall("isNil", ident("application")))),
+              newCall("and", ident"enableRouting", newCall("not", newCall("isNil", ident"application"))),
               # application.router()
-              newCall(newDotExpr(ident("application"), ident("router")))
+              newCall(newDotExpr(ident"application", ident"router"))
             )),
           )),
         )
       ), newNimNode(nnkElse).add(newStmtList(
-        newVarStmt(ident("_result"), call),
+        newVarStmt(ident"_result", call),
         # When defined JS
         newNimNode(nnkWhenStmt).add(newNimNode(nnkElifBranch).add(
-          newCall("defined", ident("js")),
+          newCall("defined", ident"js"),
           # If enableRouting and not application.isNil()
           newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
-            newCall("and", ident"enableRouting", newCall("not", newCall("isNil", ident("application")))),
+            newCall("and", ident"enableRouting", newCall("not", newCall("isNil", ident"application"))),
             # application.router()
-            newCall(newDotExpr(ident("application"), ident("router")))
+            newCall(newDotExpr(ident"application", ident"router"))
           )),
         )),
-        ident("_result")
+        ident"_result"
       ))
     )
   elif field.kind == nnkIdent:
-    result = newDotExpr(newDotExpr(self, ident("val")), field)
+    result = newDotExpr(newDotExpr(self, ident"val"), field)
   else:
     result = newEmptyNode()
 

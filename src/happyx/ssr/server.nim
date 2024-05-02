@@ -787,7 +787,7 @@ macro routes*(server: Server, body: untyped = newStmtList()): untyped =
               "&",
               newCall(
                 "&",
-                newLit("var socketToSsr = new WebSocket(\"ws://"),
+                newLit("var socketToSsr=new WebSocket(\"ws://"),
                 newDotExpr(ident"server", ident"address"),
               ),
               newLit":",
@@ -815,12 +815,12 @@ socketToSsr.onmessage=function(m){
   const res=JSON.parse(m.data);switch(res.action){
     case"script":x.innerHTML="";const e1=document.createRange().createContextualFragment(res.data);x.append(e1);break;case"html":const e2=document.createRange().createContextualFragment(res.data);a.append(e2);break;case"route":window.location.replace(res.data);break;default:break}};
   function isObjLiteral(_o) {
-    var _t = _o;
-    return typeof _o !== "object" || _o === null ? false : function () {
-      while (!false) {
-        if (Object.getPrototypeOf(_t = Object.getPrototypeOf(_t)) === null) {break;}
+    var _t=_o;
+    return typeof _o !=="object"||_o===null?false : function (){
+      while(!false) {
+        if(Object.getPrototypeOf(_t=Object.getPrototypeOf(_t))===null){break;}
       }
-      return Object.getPrototypeOf(_o) === _t;
+      return Object.getPrototypeOf(_o)===_t;
     }()
   }
 
@@ -831,35 +831,35 @@ socketToSsr.onmessage=function(m){
   }
 
   function se(e, x) {
-    const r = {};
-    for (const k in e) {
-      if (!e[k]) {continue;}
-      if (typeof e[k] !== "function" && typeof e[k] !== "object") {
-        r[k] = e[k];
-      } else if (!(r[k] in x) && x.length < 2 && e[k] !== "function") {
-        r[k] = se(e[k], x.concat([e[k]]));
+    const r={};
+    for(const k in e){
+      if(!e[k]){continue;}
+      if(typeof e[k] !== "function" && typeof e[k]!=="object"){
+        r[k]=e[k];
+      }else if(!(r[k] in x)&&x.length<2&&e[k]!=="function"){
+        r[k]=se(e[k],x.concat([e[k]]));
       }
     }
     return r;
   }
   
-  function callEventHandler(i, e) {
-    let ev = se(e,[e]);
-    ev['eventName'] = ev.constructor.name;
+  function callEventHandler(i,e) {
+    let ev=se(e,[e]);
+    ev['eventName']=ev.constructor.name;
     socketToSsr.send(JSON.stringify({
-      "action": "callEventHandler",
-      "idx": i,
-      "event": ev
+      "action":"callEventHandler",
+      "idx":i,
+      "event":ev
     }));
   }
-  function callComponentEventHandler(c, i, e) {
-    let ev = se(e, [e]);
-    ev['eventName'] = ev.constructor.name;
+  function callComponentEventHandler(c,i,e) {
+    let ev=se(e,[e]);
+    ev['eventName']=ev.constructor.name;
     socketToSsr.send(JSON.stringify({
-      "action": "callComponentEventHandler",
-      "idx": i,
-      "event": ev,
-      "componentId": c
+      "action":"callComponentEventHandler",
+      "idx":i,
+      "event":ev,
+      "componentId":c
     }));
   }
 """
@@ -891,7 +891,7 @@ socketToSsr.onmessage=function(m){
 
   when enableHttpx or enableHttpBeast:
     var path = newNimNode(nnkBracketExpr).add(
-      newCall("split", newCall("get", newCall("path", ident"req")), newStrLitNode("?")),
+      newCall("split", newCall("get", newCall("path", ident"req")), newStrLitNode"?"),
       newIntLitNode(0)
     )
     let
@@ -900,12 +900,12 @@ socketToSsr.onmessage=function(m){
       headers = newCall("get", newDotExpr(ident"req", ident"headers"))
       acceptLanguage = newNimNode(nnkBracketExpr).add(
         newCall(
-          "split", newNimNode(nnkBracketExpr).add(headers, newStrLitNode("accept-language")), newLit(',')
+          "split", newNimNode(nnkBracketExpr).add(headers, newStrLitNode"accept-language"), newLit(',')
         ), newLit(0)
       )
       val = ident(fmt"_val")
       url = newStmtList(
-        newLetStmt(val, newCall("split", newCall("get", newCall("path", ident"req")), newStrLitNode("?"))),
+        newLetStmt(val, newCall("split", newCall("get", newCall("path", ident"req")), newStrLitNode"?")),
         newNimNode(nnkIfStmt).add(
           newNimNode(nnkElifBranch).add(
             newCall(">=", newCall("len", val), newIntLitNode(2)),
@@ -923,21 +923,21 @@ socketToSsr.onmessage=function(m){
       headers = newDotExpr(ident"req", ident"headers")
       acceptLanguage = newNimNode(nnkBracketExpr).add(
         newCall(
-          "split", newNimNode(nnkBracketExpr).add(headers, newStrLitNode("accept-language")), newLit(',')
+          "split", newNimNode(nnkBracketExpr).add(headers, newStrLitNode"accept-language"), newLit(',')
         ), newLit(0)
       )
       url = newDotExpr(newDotExpr(ident"req", ident"url"), ident"query")
   let
     directoryFromPath = newCall(
       "&",
-      newStrLitNode("."),
+      newStrLitNode".",
       newCall("replace", pathIdent, newLit('/'), ident"DirSep")
     )
     cookiesOutVar = newCall(newNimNode(nnkBracketExpr).add(ident"newSeq", ident"string"))
     cookiesInVar = newNimNode(nnkIfStmt).add(
       newNimNode(nnkElifBranch).add(
-        newCall("hasKey", headers, newStrLitNode("cookie")),
-        newCall("parseCookies", newCall("$", newNimNode(nnkBracketExpr).add(headers, newStrLitNode("cookie"))))
+        newCall("hasKey", headers, newStrLitNode"cookie"),
+        newCall("parseCookies", newCall("$", newNimNode(nnkBracketExpr).add(headers, newStrLitNode"cookie")))
       ), newNimNode(nnkElse).add(
         newCall("parseCookies", newStrLitNode(""))
       )
@@ -947,13 +947,13 @@ socketToSsr.onmessage=function(m){
         "and",
         newCall(
           "and",
-          newCall("hasKey", headers, newStrLitNode("connection")),
-          newCall("hasKey", headers, newStrLitNode("upgrade")),
+          newCall("hasKey", headers, newStrLitNode"connection"),
+          newCall("hasKey", headers, newStrLitNode"upgrade"),
         ),
         newCall(
           "and",
-          newCall("contains", newCall("[]", headers, newStrLitNode("connection")), newStrLitNode("upgrade")),
-          newCall("==", newCall("toLower", newCall("[]", headers, newStrLitNode("upgrade"), newLit(0))), newStrLitNode("websocket")),
+          newCall("contains", newCall("[]", headers, newStrLitNode"connection"), newStrLitNode"upgrade"),
+          newCall("==", newCall("toLower", newCall("[]", headers, newStrLitNode"upgrade", newLit(0))), newStrLitNode"websocket"),
         )
       )
     wsClientI = ident"wsClient"
@@ -1335,7 +1335,7 @@ socketToSsr.onmessage=function(m){
                         newStmtList(
                           when enableDebug:
                             newStmtList(
-                              newCall("echo", newStrLitNode("Socket closed")),
+                              newCall("echo", newStrLitNode"Socket closed"),
                               wsDelStmt,
                               newCall("__wsClosed", wsClientI)
                             )
@@ -1357,7 +1357,7 @@ socketToSsr.onmessage=function(m){
                         newStmtList(
                           newCall(
                             "echo",
-                            newCall("fmt", newStrLitNode("Unexpected socket error: {getCurrentExceptionMsg()}"))
+                            newCall("fmt", newStrLitNode"Unexpected socket error: {getCurrentExceptionMsg()}")
                           ),
                           wsDelStmt,
                           newCall("__wsError", wsClientI)
@@ -1392,7 +1392,7 @@ socketToSsr.onmessage=function(m){
                   when enableDebug:
                     newStmtList(
                       newCall(
-                        "echo", newCall("fmt", newStrLitNode("Socket closed: {getCurrentExceptionMsg()}"))
+                        "echo", newCall("fmt", newStrLitNode"Socket closed: {getCurrentExceptionMsg()}")
                       ),
                       wsDelStmt,
                       newCall("__wsClosed", wsClientI)
@@ -1409,7 +1409,7 @@ socketToSsr.onmessage=function(m){
                     newStmtList(
                       newCall(
                         "echo",
-                        newCall("fmt", newStrLitNode("Socket tried to use an unknown protocol: {getCurrentExceptionMsg()}"))
+                        newCall("fmt", newStrLitNode"Socket tried to use an unknown protocol: {getCurrentExceptionMsg()}")
                       ),
                       wsDelStmt,
                       newCall("_wsMismatchProtocol", wsClientI)
@@ -1426,7 +1426,7 @@ socketToSsr.onmessage=function(m){
                     newStmtList(
                       newCall(
                         "echo",
-                        newCall("fmt", newStrLitNode("Unexpected socket error: {getCurrentExceptionMsg()}"))
+                        newCall("fmt", newStrLitNode"Unexpected socket error: {getCurrentExceptionMsg()}")
                       ),
                       wsDelStmt,
                       newCall("__wsError", wsClientI)
@@ -1512,7 +1512,7 @@ socketToSsr.onmessage=function(m){
   when enableDebug:
     stmtList.add(newCall(
       "info",
-      newCall("fmt", newStrLitNode("{reqMethod}::{urlPath}"))
+      newCall("fmt", newStrLitNode"{reqMethod}::{urlPath}")
     ))
 
   # NodeJS Library
@@ -1553,7 +1553,7 @@ socketToSsr.onmessage=function(m){
           "warn",
           newCall(
             "fgColored", 
-            newCall("fmt", newLit("{urlPath} is not found.")), ident"fgYellow"
+            newCall("fmt", newLit"{urlPath} is not found."), ident"fgYellow"
           )
         )
       )

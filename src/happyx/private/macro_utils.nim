@@ -304,7 +304,7 @@ proc useComponent*(statement: NimNode, inCycle, inComponent: bool,
         newCall(
           "addArgIter",
           ident(componentData),
-          newCall("&", newStrLitNode("data-"), newDotExpr(ident(componentName), ident(UniqueComponentId)))
+          newCall("&", newStrLitNode"data-", newDotExpr(ident(componentName), ident(UniqueComponentId)))
         )
       else:
         newEmptyNode(),
@@ -401,7 +401,7 @@ proc replaceIter*(
 proc attribute*(attr: NimNode, inComponent: bool = false): NimNode =
   ## Converts `nnkExprEqExpr` to `nnkColonExpr`
   if attr.kind in AtomicNodes:
-    newColonExpr(newLit("_"), formatNode(attr))
+    newColonExpr(newLit"_", formatNode(attr))
   else:
     var
       k =
@@ -572,7 +572,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
       # Real Nim code
       result.add(newStmtList(
         statement[1],
-        newCall("initTag", newStrLitNode("div"), newCall("@", newNimNode(nnkBracket)), newLit(true))
+        newCall("initTag", newStrLitNode"div", newCall("@", newNimNode(nnkBracket)), newLit(true))
       ))
     
     elif statement.kind == nnkCall and statement[0] == ident"rawHtml":
@@ -689,7 +689,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
                 newCall(
                   "addArgIter",
                   ident(componentData),
-                  newCall("&", newStrLitNode("data-"), newDotExpr(compName, ident(UniqueComponentId)))
+                  newCall("&", newStrLitNode"data-", newDotExpr(compName, ident(UniqueComponentId)))
                 ),
                 when defined(js):
                   newStmtList(
@@ -741,7 +741,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
                 newCall(
                   "addArgIter",
                   ident(componentData),
-                  newCall("&", newStrLitNode("data-"), newDotExpr(statement[1], ident(UniqueComponentId)))
+                  newCall("&", newStrLitNode"data-", newDotExpr(statement[1], ident(UniqueComponentId)))
                 ),
                 when defined(js):
                   newStmtList(
@@ -909,7 +909,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
               newCall("[]=", ident"componentEventHandlers", newIntLitNode(uniqueId.value), procedure)
             ), newCall("initTag", newLit"div", newCall("@", newNimNode(nnkBracket)), newLit(true))
           ))
-        procedure.body.insert(0, newAssignment(ident"currentComponent", newCall("fmt", newStrLitNode("{self.uniqCompId}"))))
+        procedure.body.insert(0, newAssignment(ident"currentComponent", newCall("fmt", newStrLitNode"{self.uniqCompId}")))
         procedure.body.add(newAssignment(ident"currentComponent", newLit""))
       else:
         procedure.body = statement[^1]
