@@ -1575,7 +1575,7 @@ socketToSsr.onmessage=function(m){
   let wsType =
     when enableHttpBeast:
       ident"AsyncWebSocket"
-    elif exportPython:
+    elif exportPython or exportJvm:
       newDotExpr(ident"ws", ident"WebSocket")
     else:
       ident"WebSocket"
