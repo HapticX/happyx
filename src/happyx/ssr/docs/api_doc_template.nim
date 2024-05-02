@@ -1,7 +1,7 @@
 ## # API Doc Template 📕
 ## 
 import
-  strformat,
+  std/strformat,
   ../../core/constants
 
 

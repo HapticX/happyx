@@ -17,8 +17,8 @@
 ## 
 
 import
-  macros,
-  strformat,
+  std/macros,
+  std/strformat,
   ../core/[exceptions]
 
 

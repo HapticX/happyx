@@ -1,5 +1,5 @@
 import
-  random,
+  std/random,
   ./utils
 
 

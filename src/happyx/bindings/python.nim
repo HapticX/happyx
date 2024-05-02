@@ -4,11 +4,11 @@
 ## 
 import
   # Stdlib
-  sugar,
-  tables,
-  strtabs,
-  sequtils,
-  strformat,
+  std/sugar,
+  std/tables,
+  std/strtabs,
+  std/sequtils,
+  std/strformat,
   # NimPy lib
   nimpy,
   nimpy/[py_types],

@@ -7,12 +7,12 @@ import
   ../routing/[routing, mounting],
   ./java_types,
   ../routing/[routing],
-  strutils,
-  unicode,
-  tables,
-  macros,
-  nimja,
-  sugar
+  std/strutils,
+  std/unicode,
+  std/tables,
+  std/macros,
+  std/sugar,
+  nimja
 
 
 macro nativeMethods(class: untyped, body: untyped) =

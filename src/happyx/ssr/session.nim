@@ -6,12 +6,12 @@
 ##    Uses a cookies for working with sessions
 ## 
 import
-  random,
-  tables,
-  times,
-  sequtils,
-  cookies,
-  options,
+  std/random,
+  std/tables,
+  std/times,
+  std/sequtils,
+  std/cookies,
+  std/options,
   ../core/[constants]
 
 

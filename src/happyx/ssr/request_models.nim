@@ -82,15 +82,15 @@
 
 import
   # stdlib
-  macros,
-  macrocache,
-  strtabs,
-  strutils,
-  strformat,
+  std/macros,
+  std/macrocache,
+  std/strtabs,
+  std/strutils,
+  std/strformat,
   # Happyx
   ../core/[exceptions, constants]
 
-when not declared(CacheTable.hasKey):
+when not declared(macrocache.hasKey):
   import ../private/macro_utils
 
 

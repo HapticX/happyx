@@ -25,9 +25,9 @@
 ##              maxExp += 5
 ##
 import
-  macros,
-  tables,
-  strtabs,
+  std/macros,
+  std/tables,
+  std/strtabs,
   ./renderer,
   ./translatable
 

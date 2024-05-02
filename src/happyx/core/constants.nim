@@ -33,7 +33,6 @@
 ## | `-d:componentDebugTarget` | after this component program will terminated               | ✅         |
 ## | `-d:reqModelDebugTarget`  | after this request model program will terminated           | ✅         |
 ## 
-import strformat
 when not defined(js) and defined(debug):
   import terminal
 
@@ -105,6 +104,10 @@ const
   HpxVersion* = $HpxMajor & "." & $HpxMinor & "." & $HpxPatch
 
 
+when cryptoMethod notin availableCryptoMethods or (enableDebug and not defined(js)):
+  import strformat
+
+
 when cryptoMethod notin availableCryptoMethods:
   raise newException(
     ValueError,
@@ -121,7 +124,7 @@ when int(enableHttpx) + int(enableMicro) + int(enableHttpBeast) > 1:
   {. error: "You can't use two alternative servers at one time!" .}
 
 
-when defined(debug):
+when enableDebug:
   when not defined(js):
     styledEcho fgYellow, fmt"Enable auto translate:       {enableAutoTranslate}"
     styledEcho fgYellow, fmt"Enable httpbeast:            {enableHttpBeast}"

@@ -11,11 +11,11 @@
 ## 
 import
   # stdlib
-  macros,
-  macrocache,
-  httpcore,
-  strutils,
-  strformat,
+  std/macros,
+  std/macrocache,
+  std/httpcore,
+  std/strutils,
+  std/strformat,
   # Happyx
   ../core/[exceptions, constants]
 

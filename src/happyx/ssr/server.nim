@@ -66,10 +66,10 @@ import
   std/tables,
   std/colors,
   std/json,
-  std/md5,
   std/os,
   # Deps
   regex,
+  checksums/md5,
   # HappyX
   ./cors,
   ../spa/[tag, renderer],
@@ -1633,6 +1633,7 @@ socketToSsr.onmessage=function(m){
   if stmtList.isIdentUsed(ident"query"):
     immutableVars.add(newIdentDefs(ident"queryFromUrl", newEmptyNode(), url))
     immutableVars.add(newIdentDefs(ident"query", newEmptyNode(), newCall("parseQuery", ident"queryFromUrl")))
+  if stmtList.isIdentUsed(ident"queryArr"):
     when not exportPython and not defined(napibuild) and not exportJvm:
       immutableVars.add(newIdentDefs(ident"queryArr", newEmptyNode(), newCall("parseQueryArrays", ident"queryFromUrl")))
   if stmtList.isIdentUsed(ident"translate") or stmtList.isIdentUsed(ident"acceptLanguage"):

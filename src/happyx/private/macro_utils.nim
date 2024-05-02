@@ -4,10 +4,10 @@
 ## 
 import
   regex,
-  strutils,
-  strformat,
-  macros,
-  macrocache,
+  std/strutils,
+  std/strformat,
+  std/macros,
+  std/macrocache,
   ../core/[exceptions, constants]
 
 

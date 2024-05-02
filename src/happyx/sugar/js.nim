@@ -25,10 +25,10 @@
 ## 
 import
   # Stdlib
-  strformat,
-  strutils,
-  macros,
-  tables,
+  std/strformat,
+  std/strutils,
+  std/macros,
+  std/tables,
   # Deps
   regex,
   # HappyX

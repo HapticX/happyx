@@ -3,12 +3,12 @@
 
 import
   # stdlib
-  strformat,
-  strutils,
-  strtabs,
-  macros,
-  macrocache,
-  json,
+  std/strformat,
+  std/strutils,
+  std/strtabs,
+  std/macros,
+  std/macrocache,
+  std/json,
   # deps
   regex,
   # happyx

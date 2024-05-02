@@ -4,10 +4,10 @@
 ## 
 import
   # stdlib
-  macros,
-  macrocache,
-  strutils,
-  json,
+  std/macros,
+  std/macrocache,
+  std/strutils,
+  std/json,
   # thirdparty
   regex,
   # happyx

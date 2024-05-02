@@ -11,6 +11,9 @@ bin = @["happyx/hpx"]
 # Deps
 
 requires "nim >= 1.6.14"
+
+# Std lib
+requires "checksums"
 # CLI
 requires "cligen >= 1.6.14"
 requires "illwill#2fe96f5c5a6e216e84554d92090ce3d47460667a"

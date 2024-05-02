@@ -2,10 +2,10 @@
 ## 
 ## Provides working with query params
 import
-  macros,
-  strtabs,
-  tables,
-  strutils
+  std/macros,
+  std/strtabs,
+  std/tables,
+  std/strutils
 
 
 proc parseQuery*(q: string): owned(StringTableRef) =

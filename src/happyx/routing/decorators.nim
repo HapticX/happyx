@@ -32,9 +32,9 @@
 ##      get "/":
 ## 
 import
-  macros,
-  tables,
-  base64
+  std/macros,
+  std/tables,
+  std/base64
 
 
 export base64

@@ -21,13 +21,13 @@
 
 import
   # Stdlib
-  tables,
-  strtabs,
-  strutils,
-  uri,
-  xmltree,
-  xmlparser,
-  json,
+  std/tables,
+  std/strtabs,
+  std/strutils,
+  std/uri,
+  std/xmltree,
+  std/xmlparser,
+  std/json,
   # Thirdparty
   regex
 

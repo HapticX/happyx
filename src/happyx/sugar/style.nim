@@ -68,9 +68,9 @@
 ## 
 import
   # stdlib
-  strutils,
-  strformat,
-  macros,
+  std/strutils,
+  std/strformat,
+  std/macros,
   # deps
   regex,
   # HappyX
