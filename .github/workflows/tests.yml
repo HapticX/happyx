@@ -56,8 +56,12 @@ jobs:
           key: ${{ runner.os }}-nimble-${{ hashFiles('*.nimble') }}
       - name: Install Dependencies 🔃
         run: |
-          nimble refresh
-          nimble install -y -d
+          if ls "$directory" | grep -q "happyx"; then
+            echo "happyx already installed"
+          else
+            nimble refresh
+            nimble install -y -d
+          fi
   async_http_server:
     name: Test C via AsyncHttpServer 🧪
     needs: dependencies
@@ -85,6 +89,8 @@ jobs:
           ls /home/runner/.nimble/bin
           echo ">>> /home/runner/.nimble/"
           ls /home/runner/.nimble/
+          /home/runner/.nimble/bin/nim -v
+          nim -v
       - name: Build C tests (Default HTTP Server) ⚡
         run: |
           cd tests
