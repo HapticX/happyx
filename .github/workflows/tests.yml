@@ -48,24 +48,16 @@ jobs:
       - uses: jiro4989/setup-nim-action@v1
         with:
           nim-version: ${{ matrix.nim_version }}
-      - name: Cache nimble
-        id: cache-nimble
-        uses: actions/cache@v3
+      - uses: actions/cache@v3
         with:
-          path: ~/.nimble
+          path: |
+            ~/.nimble
+            ~/.choosenim
           key: ${{ runner.os }}-nimble-${{ hashFiles('*.nimble') }}
       - name: Install Dependencies 🔃
         run: |
-          echo ">>> /home/runner/.nimble/bin"
-          ls /home/runner/.nimble/bin
-          echo ">>> /home/runner/.nimble/"
-          ls /home/runner/.nimble/
-          if ls "/home/runner/.nimble/bin" | grep -q "happyx"; then
-            echo "happyx already installed"
-          else
-            nimble refresh
-            nimble install -y -d
-          fi
+          nimble refresh
+          nimble install -y -d
   async_http_server:
     name: Test C via AsyncHttpServer 🧪
     needs: dependencies
@@ -80,11 +72,11 @@ jobs:
       TIMEOUT_EXIT_STATUS: 124
     steps:
       - uses: actions/checkout@v3
-      - name: Restore nimble
-        id: cache-nimble
-        uses: actions/cache@v3
+      - uses: actions/cache@v3
         with:
-          path: ~/.nimble
+          path: |
+            ~/.nimble
+            ~/.choosenim
           key: ${{ runner.os }}-nimble-${{ hashFiles('*.nimble') }}
       - name: Restore Nim
         run: |
@@ -118,11 +110,11 @@ jobs:
       TIMEOUT_EXIT_STATUS: 124
     steps:
       - uses: actions/checkout@v3
-      - name: Restore nimble
-        id: cache-nimble
-        uses: actions/cache@v3
+      - uses: actions/cache@v3
         with:
-          path: ~/.nimble
+          path: |
+            ~/.nimble
+            ~/.choosenim
           key: ${{ runner.os }}-nimble-${{ hashFiles('*.nimble') }}
       - name: Restore Nim
         run: export PATH=/home/runner/.nimble/bin:$PATH
@@ -148,11 +140,11 @@ jobs:
       TIMEOUT_EXIT_STATUS: 124
     steps:
       - uses: actions/checkout@v3
-      - name: Restore nimble
-        id: cache-nimble
-        uses: actions/cache@v3
+      - uses: actions/cache@v3
         with:
-          path: ~/.nimble
+          path: |
+            ~/.nimble
+            ~/.choosenim
           key: ${{ runner.os }}-nimble-${{ hashFiles('*.nimble') }}
       - name: Restore Nim
         run: export PATH=/home/runner/.nimble/bin:$PATH
@@ -178,11 +170,11 @@ jobs:
       TIMEOUT_EXIT_STATUS: 124
     steps:
       - uses: actions/checkout@v3
-      - name: Restore nimble
-        id: cache-nimble
-        uses: actions/cache@v3
+      - uses: actions/cache@v3
         with:
-          path: ~/.nimble
+          path: |
+            ~/.nimble
+            ~/.choosenim
           key: ${{ runner.os }}-nimble-${{ hashFiles('*.nimble') }}
       - name: Restore Nim
         run: export PATH=/home/runner/.nimble/bin:$PATH
@@ -208,11 +200,11 @@ jobs:
       TIMEOUT_EXIT_STATUS: 124
     steps:
       - uses: actions/checkout@v3
-      - name: Restore nimble
-        id: cache-nimble
-        uses: actions/cache@v3
+      - uses: actions/cache@v3
         with:
-          path: ~/.nimble
+          path: |
+            ~/.nimble
+            ~/.choosenim
           key: ${{ runner.os }}-nimble-${{ hashFiles('*.nimble') }}
       - name: Restore Nim
         run: export PATH=/home/runner/.nimble/bin:$PATH
