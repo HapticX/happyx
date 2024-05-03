@@ -78,22 +78,14 @@ jobs:
             ~/.nimble
             ~/.choosenim
           key: ${{ runner.os }}-nimble-${{ hashFiles('*.nimble') }}
-      - name: Restore Nim
-        run: |
-          export PATH=/home/runner/.nimble/bin:$PATH
-          echo ">>> /home/runner/.nimble/bin"
-          ls /home/runner/.nimble/bin
-          echo ">>> /home/runner/.nimble/"
-          ls /home/runner/.nimble/
-          /home/runner/.nimble/bin/nim -v
-          nim -v
       - name: Build C tests (Default HTTP Server) ⚡
         run: |
+          export PATH=/home/runner/.nimble/bin:$PATH
           cd tests
           echo "###===--- Default for" $file "---===###"
           for file in $(ls -v testc*.nim); do
             echo "###===--- C Test for " $file " via stdlib ---===###"
-            nim c -d:debug --hints:off --warnings:off $file
+            /home/runner/.nimble/bin/nim c -d:debug --hints:off --warnings:off $file
           done
         shell: bash
   micro_async_http_server:
@@ -116,14 +108,12 @@ jobs:
             ~/.nimble
             ~/.choosenim
           key: ${{ runner.os }}-nimble-${{ hashFiles('*.nimble') }}
-      - name: Restore Nim
-        run: export PATH=/home/runner/.nimble/bin:$PATH
       - name: Build C tests (MicroAsyncHttpServer) ⚡
         run: |
           cd tests
           for file in $(ls -v testc*.nim); do
             echo "###===--- C Test for " $file " via MicroAsyncHttpServer ---===###"
-            nim c -d:micro -d:debug --hints:off --warnings:off $file
+            /home/runner/.nimble/bin/nim c -d:micro -d:debug --hints:off --warnings:off $file
           done
         shell: bash
   httpx:
@@ -146,14 +136,12 @@ jobs:
             ~/.nimble
             ~/.choosenim
           key: ${{ runner.os }}-nimble-${{ hashFiles('*.nimble') }}
-      - name: Restore Nim
-        run: export PATH=/home/runner/.nimble/bin:$PATH
       - name: Build C tests (HttpX HTTP Server) ⚡
         run: |
           cd tests
           for file in $(ls -v testc*.nim); do
             echo "###===--- C Test for " $file " via Httpx ---===###"
-            nim c -d:httpx -d:debug --hints:off --warnings:off $file
+            /home/runner/.nimble/bin/nim c -d:httpx -d:debug --hints:off --warnings:off $file
           done
         shell: bash
   httpbeast:
@@ -176,14 +164,12 @@ jobs:
             ~/.nimble
             ~/.choosenim
           key: ${{ runner.os }}-nimble-${{ hashFiles('*.nimble') }}
-      - name: Restore Nim
-        run: export PATH=/home/runner/.nimble/bin:$PATH
       - name: Build C tests (HttpBeast HTTP Server) ⚡
         run: |
           cd tests
           for file in $(ls -v testc*.nim); do
             echo "###===--- C Test for " $file " via HttpBeast ---===###"
-            nim c -d:beast -d:debug --hints:off --warnings:off $file
+            /home/runner/.nimble/bin/nim c -d:beast -d:debug --hints:off --warnings:off $file
           done
         shell: bash
   js:
@@ -206,13 +192,11 @@ jobs:
             ~/.nimble
             ~/.choosenim
           key: ${{ runner.os }}-nimble-${{ hashFiles('*.nimble') }}
-      - name: Restore Nim
-        run: export PATH=/home/runner/.nimble/bin:$PATH
       - name: Build JS tests 🍍
         run: |
           cd tests
           for file in $(ls -v testjs*.nim); do
             echo "###===--- JS Test for " $file " ---===###"
-            nim js -d:debug --hints:off --warnings:off $file
+            /home/runner/.nimble/bin/nim js -d:debug --hints:off --warnings:off $file
           done
         shell: bash
