@@ -56,7 +56,11 @@ jobs:
           key: ${{ runner.os }}-nimble-${{ hashFiles('*.nimble') }}
       - name: Install Dependencies 🔃
         run: |
-          if ls "$directory" | grep -q "happyx"; then
+          echo ">>> /home/runner/.nimble/bin"
+          ls /home/runner/.nimble/bin
+          echo ">>> /home/runner/.nimble/"
+          ls /home/runner/.nimble/
+          if ls "/home/runner/.nimble/bin" | grep -q "happyx"; then
             echo "happyx already installed"
           else
             nimble refresh
