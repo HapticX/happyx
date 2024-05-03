@@ -79,7 +79,12 @@ jobs:
           path: ~/.nimble
           key: ${{ runner.os }}-nimble-${{ hashFiles('*.nimble') }}
       - name: Restore Nim
-        run: export PATH=/home/runner/.nimble/bin:$PATH
+        run: |
+          export PATH=/home/runner/.nimble/bin:$PATH
+          echo ">>> /home/runner/.nimble/bin"
+          ls /home/runner/.nimble/bin
+          echo ">>> /home/runner/.nimble/"
+          ls /home/runner/.nimble/
       - name: Build C tests (Default HTTP Server) ⚡
         run: |
           cd tests
