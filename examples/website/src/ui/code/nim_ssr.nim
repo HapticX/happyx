@@ -519,3 +519,21 @@ serve "127.0.0.1", 5000:
         "lastLogin": $i.lastLogin
       }
     return response"""
+  nimSsrDocs1* = """import happyx
+
+serve "127.0.0.1", 5000:
+  get "/":
+    ## Here we can describe this route
+    ## It will be shown in swagger and redoc
+    return "Hello, world!"
+"""
+  nimSsrDocs2* = """import happyx
+
+serve "127.0.0.1", 5000:
+  get "/":
+    ## Here we can describe this route
+    ## It will be shown in swagger and redoc
+    ## 
+    ## Responds **"Hello, world!"**
+    return "Hello, world!"
+"""

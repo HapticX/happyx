@@ -27,4 +27,3 @@ proc toHttpHeaders*(json: JsonNode): HttpHeaders =
   result = newHttpHeaders()
   for k, v in json.pairs():
     result[k] = v.getStr
-
