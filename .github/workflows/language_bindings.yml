@@ -35,10 +35,10 @@ jobs:
     env:
       TIMEOUT_EXIT_STATUS: 124
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Cache nimble
         id: cache-nimble
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ~/.nimble
           key: ${{ runner.os }}-nimble-${{ hashFiles('*.nimble') }}
@@ -47,7 +47,7 @@ jobs:
           nim-version: ${{ matrix.nim_version }}
 
       - name: Set up Python 🔃
-        uses: actions/setup-python@v3
+        uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python_version }}
         
