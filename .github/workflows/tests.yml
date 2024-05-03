@@ -32,7 +32,8 @@ on:
       - '**/examples/website/**'
 
 jobs:
-  build:
+  dependencies:
+    name: Install dependencies 🧩
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -53,12 +54,24 @@ jobs:
       - uses: jiro4989/setup-nim-action@v1
         with:
           nim-version: ${{ matrix.nim_version }}
-      
       - name: Install Dependencies 🔃
         run: |
           nimble refresh
           nimble install -y -d
-      
+  async_http_server:
+    name: Test C via AsyncHttpServer 🧪
+    needs: dependencies
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+        nim_version:
+          - '2.0.0'
+    env:
+      TIMEOUT_EXIT_STATUS: 124
+    steps:
+      - uses: actions/checkout@v3
       - name: Build C tests (Default HTTP Server) ⚡
         run: |
           cd tests
@@ -68,25 +81,20 @@ jobs:
             nim c -d:debug --hints:off --warnings:off $file
           done
         shell: bash
-      
-      - name: Build C tests (HttpX HTTP Server) ⚡
-        run: |
-          cd tests
-          for file in $(ls -v testc*.nim); do
-            echo "###===--- C Test for " $file " via Httpx ---===###"
-            nim c -d:httpx -d:debug --hints:off --warnings:off $file
-          done
-        shell: bash
-      
-      - name: Build C tests (HttpBeast HTTP Server) ⚡
-        run: |
-          cd tests
-          for file in $(ls -v testc*.nim); do
-            echo "###===--- C Test for " $file " via HttpBeast ---===###"
-            nim c -d:beast -d:debug --hints:off --warnings:off $file
-          done
-        shell: bash
-      
+  micro_async_http_server:
+    name: Test C via MicroAsyncHttpServer 🧪
+    needs: dependencies
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+        nim_version:
+          - '2.0.0'
+    env:
+      TIMEOUT_EXIT_STATUS: 124
+    steps:
+      - uses: actions/checkout@v3
       - name: Build C tests (MicroAsyncHttpServer) ⚡
         run: |
           cd tests
@@ -95,12 +103,69 @@ jobs:
             nim c -d:micro -d:debug --hints:off --warnings:off $file
           done
         shell: bash
-      
+  httpx:
+    name: Test C via HttpX 🧪
+    needs: dependencies
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+        nim_version:
+          - '2.0.0'
+    env:
+      TIMEOUT_EXIT_STATUS: 124
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build C tests (HttpX HTTP Server) ⚡
+        run: |
+          cd tests
+          for file in $(ls -v testc*.nim); do
+            echo "###===--- C Test for " $file " via Httpx ---===###"
+            nim c -d:httpx -d:debug --hints:off --warnings:off $file
+          done
+        shell: bash
+  httpbeast:
+    name: Test C via HttpBeast 🧪
+    needs: dependencies
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+        nim_version:
+          - '2.0.0'
+    env:
+      TIMEOUT_EXIT_STATUS: 124
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build C tests (HttpBeast HTTP Server) ⚡
+        run: |
+          cd tests
+          for file in $(ls -v testc*.nim); do
+            echo "###===--- C Test for " $file " via HttpBeast ---===###"
+            nim c -d:beast -d:debug --hints:off --warnings:off $file
+          done
+        shell: bash
+  js:
+    name: Test with JavaScript 🧪
+    needs: dependencies
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+        nim_version:
+          - '2.0.0'
+    env:
+      TIMEOUT_EXIT_STATUS: 124
+    steps:
+      - uses: actions/checkout@v3
       - name: Build JS tests 🍍
         run: |
           cd tests
           for file in $(ls -v testjs*.nim); do
             echo "###===--- JS Test for " $file " ---===###"
-            nim js -d:debug -d:enableUi --hints:off --warnings:off $file
+            nim js -d:debug --hints:off --warnings:off $file
           done
         shell: bash

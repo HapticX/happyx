@@ -9,7 +9,6 @@
 ## | `-d:translate`       | enables automatic translate for returns 🌐                     | ❌         |
 ## | `-d:debug`           | enables debug logging 💻                                      | ❌         |
 ## | `-d:oldRenderer`     | enables old renderer for SPA 🍍                               | ❌         |
-## | `-d:enableUi`        | enables built-in UI components 🎴                             |  ❌        |
 ## | `-d:cryptoMethod`    | choose crypto method for `generate_password` methods 🔐       | ✅         |
 ## | `-d:numThreads`      | choose number of threads (httpx/httpbeast) ⌛                 |  ✅        |
 ## | `-d:sessionIdLength` | choose length of session ID ✍                                |  ✅        |
@@ -65,9 +64,7 @@ const
   # Framework features
   enableHistoryApi* = defined(historyApi) or defined(hpxHistoryApi) or defined(happyxHistoryApi)
   enableDebug* = defined(debug) or defined(happyxDebug) or defined(hpxDebug) or exportJvm or exportPython or defined(napibuild)
-  enableUi* = defined(enableUi) or defined(happyxEnableUi) or defined(hpxEnableUi)
   enableApiDoc* = not defined(disableApiDoc)
-  enableOrm* = not defined(disableORM)
   numThreads* {. intdefine .} = 0
   sessionIdLength* {.intdefine.} = 32
   appName* {.strdefine.} = "HappyX Application"
@@ -99,8 +96,8 @@ const
   nim_2_0_0* = (NimMajor, NimMinor, NimPatch) >= (2, 0, 0)
   # Framework version
   HpxMajor* = 3
-  HpxMinor* = 8
-  HpxPatch* = 15
+  HpxMinor* = 9
+  HpxPatch* = 0
   HpxVersion* = $HpxMajor & "." & $HpxMinor & "." & $HpxPatch
 
 

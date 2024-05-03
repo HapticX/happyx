@@ -259,18 +259,6 @@
 ## - [open api](happyx/ssr/docs/open_api.html) provides OpenAPI for HappyX.
 ## - [utils](happyx/ssr/utils.html) provides some utils to work with HTTPHeaders, JSON and etc.
 ## 
-## ### Built-In UI 🎴
-## 
-## .. Warning::
-##    **⚠ It works only with `-d:enableUi` flag! ⚠**
-## 
-## - [enums](happyx/spa/ui/enums.html) provides built-in UI enums.
-## - [palette](happyx/spa/ui/palette.html) provides built-in color palette.
-## - [card](happyx/spa/ui/card.html) provides built-in `Card` component.
-## - [button](happyx/spa/ui/button.html) provides built-in `Button` component.
-## - [input](happyx/spa/ui/input.html) provides built-in `Input` component.
-## - [progress](happyx/spa/ui/progress.html) provides built-in `ProgressBar` component.
-## 
 ## ### Template Engine 🎴
 ## 
 ## - [engine](happyx/tmpl_engine/engine.html) provides templates for SSR.
@@ -323,13 +311,6 @@ import
 when enableApiDoc and not defined(js) and not exportPython and not exportJvm:
   import happyx/ssr/docs/open_api
   export open_api
-
-
-when enableUi or defined(docgen):
-  import
-    happyx/spa/ui/[enums, palette, button, input, card, progress]
-  export
-    enums, palette, button, input, card, progress
 
 export
   exceptions,
