@@ -27,6 +27,21 @@ model Message:
   user: User
 
 
+model Generics{JSON}[T]:
+  field1: T
+
+
+# type
+#   Generics*[T] = object of ModelBase
+#     field1*: T
+
+# proc jsonToGenerics*[T](node: JsonNode): Generics[T] =
+#   result = Generics[T]()
+#   if hasKey(node, "field1"):
+#     result.field1 = to(`[]`(node, "field1"), T)
+#   else:
+#     result.field1 = default(T)
+
 mount Profile:
   get "/":
     ## Profile main page

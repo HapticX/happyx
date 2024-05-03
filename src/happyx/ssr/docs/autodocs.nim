@@ -246,7 +246,10 @@ proc openApiDocs*(docsData: NimNode): NimNode =
     examplesTable.add(
       newNimNode(nnkExprColonExpr).add(
         newLit(k),
-        newCall("%*", newNimNode(nnkObjConstr).add(ident(k)))
+        if modelFieldsGenerics[k].boolVal:
+          newCall("%*", newLit"")
+        else:
+          newCall("%*", newNimNode(nnkObjConstr).add(ident(k)))
       )
     )
   let
