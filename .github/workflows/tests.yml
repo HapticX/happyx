@@ -72,12 +72,14 @@ jobs:
       TIMEOUT_EXIT_STATUS: 124
     steps:
       - uses: actions/checkout@v3
-      - name: Cache nimble
+      - name: Restore nimble
         id: cache-nimble
         uses: actions/cache@v3
         with:
           path: ~/.nimble
           key: ${{ runner.os }}-nimble-${{ hashFiles('*.nimble') }}
+      - name: Restore Nim
+        run: export PATH=/home/runner/.nimble/bin:$PATH
       - name: Build C tests (Default HTTP Server) ⚡
         run: |
           cd tests
@@ -101,12 +103,14 @@ jobs:
       TIMEOUT_EXIT_STATUS: 124
     steps:
       - uses: actions/checkout@v3
-      - name: Cache nimble
+      - name: Restore nimble
         id: cache-nimble
         uses: actions/cache@v3
         with:
           path: ~/.nimble
           key: ${{ runner.os }}-nimble-${{ hashFiles('*.nimble') }}
+      - name: Restore Nim
+        run: export PATH=/home/runner/.nimble/bin:$PATH
       - name: Build C tests (MicroAsyncHttpServer) ⚡
         run: |
           cd tests
@@ -129,12 +133,14 @@ jobs:
       TIMEOUT_EXIT_STATUS: 124
     steps:
       - uses: actions/checkout@v3
-      - name: Cache nimble
+      - name: Restore nimble
         id: cache-nimble
         uses: actions/cache@v3
         with:
           path: ~/.nimble
           key: ${{ runner.os }}-nimble-${{ hashFiles('*.nimble') }}
+      - name: Restore Nim
+        run: export PATH=/home/runner/.nimble/bin:$PATH
       - name: Build C tests (HttpX HTTP Server) ⚡
         run: |
           cd tests
@@ -157,12 +163,14 @@ jobs:
       TIMEOUT_EXIT_STATUS: 124
     steps:
       - uses: actions/checkout@v3
-      - name: Cache nimble
+      - name: Restore nimble
         id: cache-nimble
         uses: actions/cache@v3
         with:
           path: ~/.nimble
           key: ${{ runner.os }}-nimble-${{ hashFiles('*.nimble') }}
+      - name: Restore Nim
+        run: export PATH=/home/runner/.nimble/bin:$PATH
       - name: Build C tests (HttpBeast HTTP Server) ⚡
         run: |
           cd tests
@@ -185,12 +193,14 @@ jobs:
       TIMEOUT_EXIT_STATUS: 124
     steps:
       - uses: actions/checkout@v3
-      - name: Cache nimble
+      - name: Restore nimble
         id: cache-nimble
         uses: actions/cache@v3
         with:
           path: ~/.nimble
           key: ${{ runner.os }}-nimble-${{ hashFiles('*.nimble') }}
+      - name: Restore Nim
+        run: export PATH=/home/runner/.nimble/bin:$PATH
       - name: Build JS tests 🍍
         run: |
           cd tests
