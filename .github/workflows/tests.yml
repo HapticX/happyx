@@ -45,15 +45,15 @@ jobs:
       TIMEOUT_EXIT_STATUS: 124
     steps:
       - uses: actions/checkout@v3
+      - uses: jiro4989/setup-nim-action@v1
+        with:
+          nim-version: ${{ matrix.nim_version }}
       - name: Cache nimble
         id: cache-nimble
         uses: actions/cache@v3
         with:
           path: ~/.nimble
           key: ${{ runner.os }}-nimble-${{ hashFiles('*.nimble') }}
-      - uses: jiro4989/setup-nim-action@v1
-        with:
-          nim-version: ${{ matrix.nim_version }}
       - name: Install Dependencies 🔃
         run: |
           nimble refresh
@@ -72,6 +72,12 @@ jobs:
       TIMEOUT_EXIT_STATUS: 124
     steps:
       - uses: actions/checkout@v3
+      - name: Cache nimble
+        id: cache-nimble
+        uses: actions/cache@v3
+        with:
+          path: ~/.nimble
+          key: ${{ runner.os }}-nimble-${{ hashFiles('*.nimble') }}
       - name: Build C tests (Default HTTP Server) ⚡
         run: |
           cd tests
@@ -95,6 +101,12 @@ jobs:
       TIMEOUT_EXIT_STATUS: 124
     steps:
       - uses: actions/checkout@v3
+      - name: Cache nimble
+        id: cache-nimble
+        uses: actions/cache@v3
+        with:
+          path: ~/.nimble
+          key: ${{ runner.os }}-nimble-${{ hashFiles('*.nimble') }}
       - name: Build C tests (MicroAsyncHttpServer) ⚡
         run: |
           cd tests
@@ -117,6 +129,12 @@ jobs:
       TIMEOUT_EXIT_STATUS: 124
     steps:
       - uses: actions/checkout@v3
+      - name: Cache nimble
+        id: cache-nimble
+        uses: actions/cache@v3
+        with:
+          path: ~/.nimble
+          key: ${{ runner.os }}-nimble-${{ hashFiles('*.nimble') }}
       - name: Build C tests (HttpX HTTP Server) ⚡
         run: |
           cd tests
@@ -139,6 +157,12 @@ jobs:
       TIMEOUT_EXIT_STATUS: 124
     steps:
       - uses: actions/checkout@v3
+      - name: Cache nimble
+        id: cache-nimble
+        uses: actions/cache@v3
+        with:
+          path: ~/.nimble
+          key: ${{ runner.os }}-nimble-${{ hashFiles('*.nimble') }}
       - name: Build C tests (HttpBeast HTTP Server) ⚡
         run: |
           cd tests
@@ -161,6 +185,12 @@ jobs:
       TIMEOUT_EXIT_STATUS: 124
     steps:
       - uses: actions/checkout@v3
+      - name: Cache nimble
+        id: cache-nimble
+        uses: actions/cache@v3
+        with:
+          path: ~/.nimble
+          key: ${{ runner.os }}-nimble-${{ hashFiles('*.nimble') }}
       - name: Build JS tests 🍍
         run: |
           cd tests
