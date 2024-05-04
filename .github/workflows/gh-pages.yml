@@ -15,18 +15,6 @@ on:
       - '**/examples.yml'
       - '**/language_bindings.yml'
       - '**/jvm_bindings.yml'
-  pull_request:
-    paths-ignore:
-      - '.github/ISSUE_TEMPLATE/*'
-      - '*.md'
-      - '*.nimble'
-      - '.gitignore'
-      - 'LICENSE'
-      - '**/FUNDING.yml'
-      - '**/tests.yml'
-      - '**/examples.yml'
-      - '**/language_bindings.yml'
-      - '**/jvm_bindings.yml'
 
 permissions:
   contents: write
