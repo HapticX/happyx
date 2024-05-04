@@ -52,6 +52,7 @@ jobs:
   
   python:
     name: Python bindings 🐍
+    needs: dependencies
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -101,6 +102,7 @@ jobs:
   
   jvm:
     name: JVM Bindings ☕
+    needs: dependencies
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
