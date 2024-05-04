@@ -24,8 +24,10 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: ubuntu-latest
-        nim_version: '2.0.0'
+        os:
+          - ubuntu-latest
+        nim_version:
+          - '2.0.0'
     env:
       TIMEOUT_EXIT_STATUS: 124
     steps:
@@ -52,8 +54,10 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: ubuntu-latest
-        python_version: '3.x'
+        os:
+          - ubuntu-latest
+        python_version:
+          - '3.x'
     env:
       TIMEOUT_EXIT_STATUS: 124
     steps:
@@ -95,10 +99,14 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: ubuntu-latest
-        python_version: '3.x'
-        java_version: '16'
-        gradle_version: '7.4.2'
+        os:
+          - ubuntu-latest
+        python_version:
+          - '3.x'
+        java_version:
+          - '16'
+        gradle_version:
+          - '7.4.2'
     env:
       TIMEOUT_EXIT_STATUS: 124
     steps:
