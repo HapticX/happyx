@@ -57,7 +57,9 @@ serve host, port:
           "error_code": 1,
           "error": "code length too long (> 2048)"
         }
-      if task.code.contains(re2"((macro) +\w+|static *: *\n +)"):
+      if task.code.contains(
+          re2"(macro +\w+|static *: *\n +|\bstaticExec\b|\bgorge\b|\bgorgeEx\b|\bstaticEx\b)"
+      ):
         statusCode = 400
         return %*{
           "response": "error",
@@ -71,7 +73,7 @@ serve host, port:
         task: task,
         process: startProcess(
           "nim", getCurrentDir(), @[
-            "js", "-d:danger", "--opt:size", "--out:" & ("tasks" / (task.id & ".js")),
+            "js", "-d:release", "--opt:size", "--out:" & ("tasks" / (task.id & ".js")),
             "tasks" / (task.id & ".nim")
           ], options = {poStdErrToStdOut, poUsePath}
         )
