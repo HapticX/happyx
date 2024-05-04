@@ -1,4 +1,4 @@
-name: Language Bindings 🐍
+name: Language Bindings ✨
 
 permissions:
   contents: read
@@ -7,57 +7,66 @@ on:
   push:
     branches:
       - 'master'
+      - 'dev'
     paths:
       - '**/language_bindings.yml'
-      - '**/bindings/python/**'
-      - '**/bindings/python.nim'
-      - '**/bindings/python_types.nim'
+      - '**/bindings/**'
       - '**/constants.nim'
   pull_request:
     paths:
       - '**/language_bindings.yml'
-      - '**/bindings/python/**'
-      - '**/bindings/python.nim'
-      - '**/bindings/python_types.nim'
+      - '**/bindings/**'
       - '**/constants.nim'
 
 jobs:
-  build:
+  dependencies:
+    name: Install Dependencies 🔨
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os:
-          - ubuntu-latest
-        nim_version:
-          - '2.0.0'
-        python_version:
-          - '3.x'
+        os: ubuntu-latest
+        nim_version: '2.0.0'
     env:
       TIMEOUT_EXIT_STATUS: 124
     steps:
       - uses: actions/checkout@v4
-      - name: Cache nimble
-        id: cache-nimble
-        uses: actions/cache@v4
-        with:
-          path: ~/.nimble
-          key: ${{ runner.os }}-nimble-${{ hashFiles('*.nimble') }}
       - uses: jiro4989/setup-nim-action@v1
         with:
           nim-version: ${{ matrix.nim_version }}
-
-      - name: Set up Python 🔃
-        uses: actions/setup-python@v4
+      - uses: actions/cache@v4
         with:
-          python-version: ${{ matrix.python_version }}
-        
+          path: |
+            ~/.nimble
+            ~/.choosenim
+          key: ${{ runner.os }}-nimble-${{ hashFiles('*.nimble') }}
       - name: Install dependencies 🔃
         run: |
           nimble refresh
           nimble install -y -d
+          nimble install -y jnim checksums
           python -m pip install --upgrade pip
           pip install -U twine build packaging
-      
+  
+  python:
+    name: Python bindings 🐍
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: ubuntu-latest
+        python_version: '3.x'
+    env:
+      TIMEOUT_EXIT_STATUS: 124
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.nimble
+            ~/.choosenim
+          key: ${{ runner.os }}-nimble-${{ hashFiles('*.nimble') }}
+      - uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python_version }}
       - name: Python Bindings 🐍
         run: |
           cd src
@@ -67,16 +76,54 @@ jobs:
           echo "Linux module"
           nim c --app:lib --out:../bindings/python/happyx/happyx.so -d:useRealtimeGC --mm:arc -t:-flto -l:-flto --opt:speed --threads:off -d:release -d:happyxDebug -x:off -a:off -d:beast -d:export2py happyx
         shell: bash
-      
-      - name: Build Package 🏗
+      - name: Build Python Package 🏗
         run: |
           cd bindings/python
           python -m build
-
-      - name: Publish Python package 📢
-        uses: pypa/gh-action-pypi-publish@8cdc2ab67c943c5edf5fd9ae1995546b4b550602
+      # - name: Publish Python package 📢
+      #   uses: pypa/gh-action-pypi-publish@8cdc2ab67c943c5edf5fd9ae1995546b4b550602
+      #   with:
+      #     user: __token__
+      #     password: ${{ secrets.PYPI_API_TOKEN }}
+      #     packages_dir: bindings/python/dist/
+      #     verbose: true
+  
+  jvm:
+    name: JVM Bindings ☕
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: ubuntu-latest
+        python_version: '3.x'
+        java_version: '16'
+        gradle_version: '7.4.2'
+    env:
+      TIMEOUT_EXIT_STATUS: 124
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/cache@v4
         with:
-          user: __token__
-          password: ${{ secrets.PYPI_API_TOKEN }}
-          packages_dir: bindings/python/dist/
-          verbose: true
+          path: |
+            ~/.nimble
+            ~/.choosenim
+          key: ${{ runner.os }}-nimble-${{ hashFiles('*.nimble') }}
+      - uses: gradle/gradle-build-action@v2.4.2
+        id: setup-gradle
+        with:
+          gradle-version: ${{ matrix.gradle_version }}
+      - uses: actions/setup-java@v4
+        with:
+          java-version: ${{ matrix.java_version }}
+          distribution: 'temurin'
+          architecture: x64
+          cache: 'gradle'
+      - name: JVM Bindings ☕
+        run: |
+          cd src
+          echo "Unix module"
+          nim c -d:noSignalHandler -d:export2jvm -d:release -d:httpx --app:lib --threads:on --opt:speed --mm:arc --out:../bindings/java/src/main/resources/happyx.so happyx.nim
+          cd ..
+      - name: Build Java Project ☕
+        run: |
+          cd bindings/java
+          gradle build --scan
