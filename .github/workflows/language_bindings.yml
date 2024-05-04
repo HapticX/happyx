@@ -46,8 +46,6 @@ jobs:
           nimble refresh
           nimble install -y -d
           nimble install -y jnim checksums
-          python -m pip install --upgrade pip
-          pip install -U twine build packaging
   
   python:
     name: Python bindings 🐍
@@ -71,6 +69,10 @@ jobs:
       - uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python_version }}
+      - name: Python Dependencies 🐍
+        run: |
+          python -m pip install --upgrade pip
+          pip install -U twine build packaging
       - name: Python Bindings 🐍
         run: |
           cd src
