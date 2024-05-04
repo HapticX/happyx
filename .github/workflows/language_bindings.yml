@@ -108,8 +108,6 @@ jobs:
       matrix:
         os:
           - ubuntu-latest
-        python_version:
-          - '3.x'
         java_version:
           - '16'
         gradle_version:
@@ -136,6 +134,7 @@ jobs:
           cache: 'gradle'
       - name: JVM Bindings ☕
         run: |
+          export PATH=/home/runner/.nimble/bin:$PATH
           cd src
           echo "Unix module"
           /home/runner/.nimble/bin/nim c -d:noSignalHandler -d:export2jvm -d:release -d:httpx --app:lib --threads:on --opt:speed --mm:arc --out:../bindings/java/src/main/resources/happyx.so happyx.nim
