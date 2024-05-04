@@ -80,6 +80,8 @@ jobs:
         run: |
           cd bindings/python
           python -m build
+      # TODO:
+      #   account recovery
       # - name: Publish Python package 📢
       #   uses: pypa/gh-action-pypi-publish@8cdc2ab67c943c5edf5fd9ae1995546b4b550602
       #   with:
