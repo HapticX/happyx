@@ -78,7 +78,7 @@ jobs:
           echo "Win Module compiled with"
           echo "nim c --app:lib --out:../bindings/python/happyx/happyx.pyd -d:useRealtimeGC --mm:arc --tlsEmulation:off --passL:-static --t:-flto --l:-flto --opt:speed --threads:off -d:release -d:httpx -d:export2py happyx"
           echo "Linux module"
-          nim c --app:lib --out:../bindings/python/happyx/happyx.so -d:useRealtimeGC --mm:arc -t:-flto -l:-flto --opt:speed --threads:off -d:release -d:happyxDebug -x:off -a:off -d:beast -d:export2py happyx
+          /home/runner/.nimble/bin/nim c --app:lib --out:../bindings/python/happyx/happyx.so -d:useRealtimeGC --mm:arc -t:-flto -l:-flto --opt:speed --threads:off -d:release -d:happyxDebug -x:off -a:off -d:beast -d:export2py happyx
         shell: bash
       - name: Build Python Package 🏗
         run: |
@@ -131,7 +131,7 @@ jobs:
         run: |
           cd src
           echo "Unix module"
-          nim c -d:noSignalHandler -d:export2jvm -d:release -d:httpx --app:lib --threads:on --opt:speed --mm:arc --out:../bindings/java/src/main/resources/happyx.so happyx.nim
+          /home/runner/.nimble/bin/nim c -d:noSignalHandler -d:export2jvm -d:release -d:httpx --app:lib --threads:on --opt:speed --mm:arc --out:../bindings/java/src/main/resources/happyx.so happyx.nim
           cd ..
       - name: Build Java Project ☕
         run: |
