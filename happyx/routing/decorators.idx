@@ -1,8 +1,8 @@
 nimTitle	decorators	happyx/routing/decorators.html	module src/happyx/routing/decorators		0
-nim	DecoratorImpl	happyx/routing/decorators.html#DecoratorImpl	type DecoratorImpl		44
-nim	decorators	happyx/routing/decorators.html#decorators	var decorators		47
-nim	regDecorator	happyx/routing/decorators.html#regDecorator,string,DecoratorImpl	proc regDecorator(decoratorName: string; decorator: DecoratorImpl)		50
-nim	decorator	happyx/routing/decorators.html#decorator.m,untyped,untyped	macro decorator(name, body: untyped): untyped		54
+nim	DecoratorImpl	happyx/routing/decorators.html#DecoratorImpl	type DecoratorImpl		45
+nim	decorators	happyx/routing/decorators.html#decorators	var decorators		48
+nim	regDecorator	happyx/routing/decorators.html#regDecorator,string,DecoratorImpl	proc regDecorator(decoratorName: string; decorator: DecoratorImpl)		51
+nim	decorator	happyx/routing/decorators.html#decorator.m,untyped,untyped	macro decorator(name, body: untyped): untyped		55
 heading	Decorators 🔌	happyx/routing/decorators.html#decorators-🔌	 Decorators 🔌		0
 heading	Decorator Usage Example ✨	happyx/routing/decorators.html#decorators-🔌-decorator-usage-example-✨	  Decorator Usage Example ✨		0
 heading	Own decorators	happyx/routing/decorators.html#decorators-🔌-own-decorators	  Own decorators		0

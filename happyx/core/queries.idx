@@ -1,6 +1,6 @@
 nimTitle	queries	happyx/core/queries.html	module src/happyx/core/queries		0
 nim	parseQuery	happyx/core/queries.html#parseQuery,string	proc parseQuery(q: string): owned(StringTableRef)		11
 nim	parseQueryArrays	happyx/core/queries.html#parseQueryArrays,string	proc parseQueryArrays(query: string): TableRef[string, seq[string]]		31
-nim	`~`	happyx/core/queries.html#~.m,,untyped	macro `~`(strTable: StringTableRef | TableRef[string, seq[string]]; key: untyped): untyped		55
+nim	`?`	happyx/core/queries.html#?.m,,untyped	macro `?`(strTable: StringTableRef | TableRef[string, seq[string]]; key: untyped): untyped		55
 heading	Example	happyx/core/queries.html#queries-❔-example	  Example		0
 heading	Queries ❔	happyx/core/queries.html#queries-❔	 Queries ❔		0
