@@ -13,7 +13,7 @@ serve("127.0.0.1", 5000):
   post "/":
     "Hello world with POST method!"
 
-  "/calc/{left:int}{operator:string}{right:int}":
+  get "/calc/{left:int}{operator:string}{right:int}":
     if operator == "+":
       fmt"Result of {left} + {right} is {left + right}"
     elif operator == "-":

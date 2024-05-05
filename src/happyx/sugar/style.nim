@@ -256,4 +256,4 @@ macro buildStyle*(body: untyped): untyped =
   css = css.replace(re2"\.(px|rem|em)\b", "$1")
   # properties
   css = css.replace(re2"\s*\-\s*([a-zA-Z][a-zA-Z0-9_]*)", "-$1")
-  newCall("fmt", newStrLitNode(css), newLit('<'), newLit('>'))
+  newCall("fmt", newLit(css), newLit('<'), newLit('>'))

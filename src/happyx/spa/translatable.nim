@@ -81,7 +81,7 @@ macro translatable*(body: untyped): untyped =
         newAssignment(
           newNimNode(nnkBracketExpr).add(
             newNimNode(nnkBracketExpr).add(translations, source),
-            newStrLitNode"default"
+            newLit"default"
           ),
           source
         )
@@ -135,7 +135,7 @@ macro translate*(self: string): string =
       )
     source =
       when self is static[string]:
-        newStrLitNode(self)
+        newLit(self)
       else:
         self
     translations = ident"translates"
@@ -155,7 +155,7 @@ macro translate*(self: string): string =
         newNimNode(nnkBracketExpr).add(
           translations, source
         ),
-        newStrLitNode"default"
+        newLit"default"
       )
     ), newNimNode(nnkElse).add(
       newNimNode(nnkBracketExpr).add(

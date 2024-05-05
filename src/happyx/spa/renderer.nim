@@ -174,7 +174,7 @@ macro elem*(name: untyped): untyped =
       )),
       newNimNode(nnkPragma).add(newNimNode(nnkExprColonExpr).add(
         ident"emit",
-        newStrLitNode(fmt"`{uniqName}` = document.getElementById('{nameStr}');")
+        newLit(fmt"`{uniqName}` = document.getElementById('{nameStr}');")
       )),
       ident(uniqName)
     )
@@ -587,7 +587,7 @@ macro routes*(app: App, body: untyped): untyped =
 
   for key, val in sugarRoutes.pairs():
     if ($val[0]).toLower() in ["build", "page", "any"]:
-      body.add(newCall(newStrLitNode(key), val[1]))
+      body.add(newCall(newLit(key), val[1]))
   
   var
     cookiesInVar = newDotExpr(ident"document", ident"cookie")
@@ -719,14 +719,14 @@ macro routes*(app: App, body: untyped): untyped =
       newStmtList(
         newNimNode(nnkPragma).add(newNimNode(nnkExprColonExpr).add(
           ident"emit",
-          newStrLitNode(
+          newLit(
             "window.addEventListener('beforeunload', (e) => {"
           )
         )),
         finalize,
         newNimNode(nnkPragma).add(newNimNode(nnkExprColonExpr).add(
           ident"emit",
-          newStrLitNode(
+          newLit(
             "});"
           )
         )

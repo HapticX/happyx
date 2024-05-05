@@ -41,6 +41,7 @@ jobs:
           - ubuntu-latest
         nim_version:
           - '2.0.0'
+          - '2.0.4'
     env:
       TIMEOUT_EXIT_STATUS: 124
     steps:
@@ -94,8 +95,6 @@ jobs:
       matrix:
         os:
           - ubuntu-latest
-        nim_version:
-          - '2.0.0'
     env:
       TIMEOUT_EXIT_STATUS: 124
     steps:
@@ -122,8 +121,6 @@ jobs:
       matrix:
         os:
           - ubuntu-latest
-        nim_version:
-          - '2.0.0'
     env:
       TIMEOUT_EXIT_STATUS: 124
     steps:
@@ -150,8 +147,6 @@ jobs:
       matrix:
         os:
           - ubuntu-latest
-        nim_version:
-          - '2.0.0'
     env:
       TIMEOUT_EXIT_STATUS: 124
     steps:
@@ -178,8 +173,6 @@ jobs:
       matrix:
         os:
           - ubuntu-latest
-        nim_version:
-          - '2.0.0'
     env:
       TIMEOUT_EXIT_STATUS: 124
     steps:

@@ -380,7 +380,7 @@ macro buildJs*(body: untyped): untyped =
     if text.len != 0:
       result.add(newNimNode(nnkPragma).add(newColonExpr(
         ident"emit",
-        newStrLitNode(text)
+        newLit(text)
       )))
     if (i != splitted.len-1 or splitted.len == 1) and nimNodes.len != 0:
       result.add(nimNodes[i])

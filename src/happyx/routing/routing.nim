@@ -70,7 +70,7 @@ when exportPython:
     if re2"^[a-zA-Z][a-zA-Z0-9_]*$" notin name:
       raise newException(
         ValueError,
-        fmt"route param type name should be identifier (a-zA-Z0-0_), but got '{name}'"
+        fmt"route param type name should be identifier (a-zA-Z0-9_), but got '{name}'"
       )
     registeredRouteParamTypes[name] = RouteParamType(
       pattern: pattern, name: name, creator: creator
@@ -104,7 +104,7 @@ elif defined(napibuild):
     if re2"^[a-zA-Z][a-zA-Z0-9_]*$" notin name:
       raise newException(
         ValueError,
-        fmt"route param type name should be identifier (a-zA-Z0-0_), but got '{name}'"
+        fmt"route param type name should be identifier (a-zA-Z0-9_), but got '{name}'"
       )
     registeredRouteParamTypes[name] = RouteParamType(
       pattern: pattern, name: name, creator: creator
@@ -125,7 +125,7 @@ elif exportJvm:
     if re2"^[a-zA-Z][a-zA-Z0-9_]*$" notin name:
       raise newException(
         ValueError,
-        fmt"route param type name should be identifier (a-zA-Z0-0_), but got '{name}'"
+        fmt"route param type name should be identifier (a-zA-Z0-9_), but got '{name}'"
       )
     registeredRouteParamTypes[name] = RouteParamType(
       pattern: pattern, name: name, creator: creator
@@ -137,7 +137,7 @@ else:
     if re2"^[a-zA-Z][a-zA-Z0-9_]*$" notin $name:
       raise newException(
         ValueError,
-        fmt"route param type name should be identifier (a-zA-Z0-0_), but got '{name}'"
+        fmt"route param type name should be identifier (a-zA-Z0-9_), but got '{name}'"
       )
     registeredRouteParamTypes[$name] = newStmtList(name, pattern, creator)
 
@@ -152,22 +152,29 @@ proc newRequestModelObj*(name, typeName, target: string, mutable: bool): Request
 
 proc handleRoute*(route: string): RouteDataObj =
   ## Handles route and receive route data object.
+  ## 
+  ## ## Examples
+  ## 
+  ## dollar full: `$argument?:word[m]=hello`
+  ## curvy full: `{argument?:word[m]=hello}`
+  ## model full: `[argument:ModelName:json]`
+  ## 
   result = RouteDataObj(path: "", purePath: "", pathParams: @[], requestModels: @[])
   let
-    dollarToCurve = re2"\$([^:\/\{\}]+)(:enum\(\w+\)|:\w+|:\/[^\/]+\/)?(\[m\])?(=[^\/\{\}]+)?(m)?"
+    dollarToCurvy = re2"\$([^:\/\{\}]+)(:enum\(\w+\)|:\w+|:\/[^\/]+\/)?(\[m\])?(=[^\/\{\}]+)?(m)?"
     defaultWithoutQuestion = re2"\{([^:\/\{\}\?]+)(:enum\(\w+\)|:\w+|:\/[^\/]+\/)?(\[m\])?(=[^\}]+)\}"
-
   var path = route
   var m: RegexMatch2
-  if path.find(dollarToCurve, m):
+  if path.find(dollarToCurvy, m):
     if path[m.group(1)] == ":path":
       raise newException(ValueError, "path params doesn't support aliases")
     elif path[m.group(1)].startsWith(":/"):
       raise newException(ValueError, "regex params doesn't support aliases")
-  path = path.replace(dollarToCurve, "{$1$2$3$4}")
+  path = path.replace(dollarToCurvy, "{$1$2$3$4}")
   path = path.replace(defaultWithoutQuestion, "{$1?$2$3$4}")
   result.path = path
   var routePathStr = path
+  # Here we replace TYPENAME to regex pattern
   # boolean param
   routePathStr = routePathStr.replace(re2"\{[a-zA-Z][a-zA-Z0-9_]*(\??):bool(\[m\])?(=\S+?)?\}", "(n|y|no|yes|true|false|1|0|on|off)$1")
   # integer param
@@ -224,7 +231,7 @@ proc handleRoute*(route: string): RouteDataObj =
         path.findAll(
           re2"\[([a-zA-Z][a-zA-Z0-9_]*):([a-zA-Z][a-zA-Z0-9_]*)(\[m\])?(:[a-zA-Z\\-]+)?\]"
         )
-  
+
   result.purePath = routePathStr
 
   for pathParam in foundPathParams:
@@ -298,7 +305,7 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode =
     hasChildren = false
   let
     elifBranch = newNimNode(nnkElifBranch)
-    regExp = newCall("re2", newStrLitNode("^" & routeData.purePath & "$"))
+    regExp = newCall("re2", newLit("^" & routeData.purePath & "$"))
   elifBranch.add(newCall("contains", urlPath, newStmtList(
     newLetStmt(ident"__regExp", regExp),
     ident"__regExp"
@@ -338,9 +345,9 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode =
       foundGroup = newCall("decodeUrl", newNimNode(nnkBracketExpr).add(urlPath, group))
       foundGroupForce = newCall("decodeUrl", newNimNode(nnkBracketExpr).add(urlPath, groupForce))
       # _groupLen < 1
-      conditionOptional = newCall("<", newCall("len", group), newIntLitNode(1))
+      conditionOptional = newCall("<", newCall("len", group), newLit(1))
       # _foundGroupLen == 0
-      conditionSecondOptional = newCall("==", newCall("len", foundGroup), newIntLitNode(0))
+      conditionSecondOptional = newCall("==", newCall("len", foundGroup), newLit(0))
 
     if i.optional:
       case i.paramType:
@@ -510,7 +517,7 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode =
               ident"JsonParsingError",
               newStmtList(
                 when enableDebug:
-                  newCall("echo", newCall("fmt", newStrLitNode"json parse error: {getCurrentExceptionMsg()}"))
+                  newCall("echo", newCall("fmt", newLit"json parse error: {getCurrentExceptionMsg()}"))
                 else:
                   newEmptyNode(),
                 newCall(
@@ -526,7 +533,7 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode =
               ident"JsonKindError",
               newStmtList(
                 when enableDebug:
-                  newCall("echo", newCall("fmt", newStrLitNode"json kind error: {getCurrentExceptionMsg()}"))
+                  newCall("echo", newCall("fmt", newLit"json kind error: {getCurrentExceptionMsg()}"))
                 else:
                   newEmptyNode(),
                 newCall(

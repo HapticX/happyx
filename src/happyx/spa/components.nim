@@ -820,7 +820,7 @@ macro component*(name, body: untyped): untyped =
           )
         )
       elif extendsOf == "":
-        newStrLitNode("")
+        newLit("")
       elif extendsHasGenerics:
         newCall("procCall", newDotExpr(newCast(ident"self", extendsOfNode), ident"style"))
       else:
@@ -879,7 +879,7 @@ macro component*(name, body: untyped): untyped =
             )))
           ),
           afterStmtList,
-          newAssignment(ident"currentComponent", newStrLitNode("")),
+          newAssignment(ident"currentComponent", newLit("")),
         )
         when not defined(js):
           b = pragmaBlock([ident"gcsafe"], b)
@@ -1089,9 +1089,9 @@ macro importComponent*(body: untyped): untyped =
                   if child.name.toLower() == "script":
                     scriptLanguage = val
                   elif call.kind in [nnkElifBranch, nnkOfBranch, nnkElse, nnkForStmt, nnkWhileStmt]:
-                    call[^1][^1].add(newNimNode(nnkExprEqExpr).add(newStrLitNode(key), newStrLitNode(val)))
+                    call[^1][^1].add(newNimNode(nnkExprEqExpr).add(newLit(key), newLit(val)))
                   else:
-                    call.add(newNimNode(nnkExprEqExpr).add(newStrLitNode(key), newStrLitNode(val)))
+                    call.add(newNimNode(nnkExprEqExpr).add(newLit(key), newLit(val)))
                 else:
                   if call.kind in [nnkElifBranch, nnkOfBranch, nnkElse, nnkForStmt, nnkWhileStmt]:
                     if key.startsWith("h-on"):
@@ -1101,7 +1101,7 @@ macro importComponent*(body: untyped): untyped =
                         )
                       ))
                     else:
-                      call[^1][^1].add(newNimNode(nnkExprEqExpr).add(newStrLitNode(key), newStrLitNode(val)))
+                      call[^1][^1].add(newNimNode(nnkExprEqExpr).add(newLit(key), newLit(val)))
                   elif key.startsWith("h-on"):
                     eventHandlers.add(newCall(
                       newNimNode(nnkPrefix).add(ident"@", ident(key[4..^1])), ident"event", newStmtList(
@@ -1109,7 +1109,7 @@ macro importComponent*(body: untyped): untyped =
                       )
                     ))
                   else:
-                    call.add(newNimNode(nnkExprEqExpr).add(newStrLitNode(key), newStrLitNode(val)))
+                    call.add(newNimNode(nnkExprEqExpr).add(newLit(key), newLit(val)))
           elif name.len > 0:
             call = newNimNode(nnkCommand).add(ident"component", ident(name))
           else:
@@ -1163,7 +1163,7 @@ macro importComponent*(body: untyped): untyped =
       newNimNode(nnkAccQuoted).add(ident"script"),
       newStmtList(newNimNode(nnkPragma).add(newNimNode(nnkExprColonExpr).add(
         ident"emit",
-        newStrLitNode(componentData[scriptJSSource[0].group(0)])
+        newLit(componentData[scriptJSSource[0].group(0)])
       )))
     ))
   elif scriptNimSource.len > 0:

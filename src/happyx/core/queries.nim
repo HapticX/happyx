@@ -65,5 +65,5 @@ macro `?`*(strTable: StringTableRef | TableRef[string, seq[string]], key: untype
   ##      echo query?myParam
   ## 
   let
-    keyStr = newStrLitNode($key)
+    keyStr = newLit($key)
   newCall("getOrDefault", strTable, keyStr)
