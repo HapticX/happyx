@@ -17,9 +17,9 @@
 ## 
 import
   # stdlib
-  macros,
-  macrocache,
-  strformat,
+  std/macros,
+  std/macrocache,
+  std/strformat,
   # HappyX
   ../core/[exceptions]
 

@@ -81,8 +81,13 @@ var
     "mongo_db": {
       "title": "MongoDB 🍃",
       "prev": "postgres",
+      "next": "ssr_docs"
+    },
+    "ssr_docs": {
+      "title": "Swagger and Redoc in HappyX 📕",
+      "prev": "mongo_db",
       "next": ""
-    }
+    },
   }
 
 
@@ -176,6 +181,8 @@ component SideBar:
                 {translate"PostgreSQL 📦"}
               SideBarItem("mongo_db"):
                 {translate"MongoDB 🍃"}
+              SideBarItem("ssr_docs"):
+                {translate"Swagger and Redoc in HappyX 📕"}
         tDiv(class = "flex"):
           Button(
             action = proc() =

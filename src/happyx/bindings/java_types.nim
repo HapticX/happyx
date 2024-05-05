@@ -4,12 +4,12 @@ import
   jnim/java/[lang, util],
   ../ssr/session,
   regex,
-  json,
   websocketx,
   httpx,
-  tables,
-  httpcore,
-  strutils
+  std/json,
+  std/tables,
+  std/httpcore,
+  std/strutils
 
 
 type

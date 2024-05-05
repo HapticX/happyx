@@ -82,19 +82,21 @@
 
 import
   # stdlib
-  macros,
-  macrocache,
-  strtabs,
-  strutils,
-  strformat,
+  std/macros,
+  std/macrocache,
+  std/strtabs,
+  std/strutils,
+  std/strformat,
   # Happyx
   ../core/[exceptions, constants]
 
-when not declared(CacheTable.hasKey):
+when not declared(macrocache.hasKey):
   import ../private/macro_utils
 
 
-const modelFields* = CacheTable"HappyXModelFields"
+const
+  modelFields* = CacheTable"HappyXModelFields"
+  modelFieldsGenerics* = CacheTable"HappyXModelFieldsGenerics"
 
 
 macro model*(modelName, body: untyped): untyped =
@@ -106,15 +108,81 @@ macro model*(modelName, body: untyped): untyped =
   ## - [x] Form-Data
   ## - [x] x-www-form-urlencoded
   ## 
+  ## ## Example:
+  ## 
+  ## Simple user model.
+  ## Supports all models (JSON, XML, Form-Data and x-www-form-urlencoded).
+  ## ```nim
+  ## model User:
+  ##   id: int
+  ##   username: string
+  ## ```
+  ## 
+  ## Simple user model.
+  ## Supports `JSON` and `XML`.
+  ## ```nim
+  ## model User{JSON, XML}:
+  ##   id: int
+  ##   username: string
+  ## ```
+  ## 
+  ## Simple user model with **generics**.
+  ## Supports all models (JSON, XML, Form-Data and x-www-form-urlencoded).
+  ## ```nim
+  ## model User[T]:
+  ##   id: T
+  ##   username: string
+  ## ```
+  ## 
+  ## Simple user model with **generics**.
+  ## Supports JSON and XML.
+  ## ```nim
+  ## model User{JSON, XML}[T]:
+  ##   id: T
+  ##   username: string
+  ## ```
+  ## 
   var
     options: seq[string] = @[]
     enableOptions = false
     modelName = modelName
+    generics = newNimNode(nnkGenericParams)
+    genericsBracket = modelName.copy()
+  # detect generics
   if modelName.kind == nnkBracketExpr:
+    # get generics
+    var nextGenericParam = newNimNode(nnkIdentDefs)
+    genericsBracket = modelName.copy()
+    for i in 1..<modelName.len:
+      let node = modelName[i]
+      if node.kind == nnkIdent:
+        nextGenericParam.add(node)
+        if i < modelName.len-1:
+          continue
+        else:
+          nextGenericParam.add(newEmptyNode())
+      if node.kind == nnkExprColonExpr:
+        nextGenericParam.add(node[0], node[1])
+      nextGenericParam.add(newEmptyNode())
+      generics.add(nextGenericParam.copy())
+      nextGenericParam = newNimNode(nnkIdentDefs)
+    # detect options
+    if modelName[0].kind == nnkCurlyExpr:
+      genericsBracket[0] = genericsBracket[0][0]
+      enableOptions = true
+      for i in 1..<modelName[0].len:
+        options.add ($modelName[0][i].toStrLit).toLower()
+      modelName = modelName[0][0]
+    elif modelname[0].kind == nnkIdent:
+      modelName = modelName[0]
+  # detect options
+  elif modelName.kind == nnkCurlyExpr:
     enableOptions = true
     for i in 1..<modelName.len:
       options.add ($modelName[i].toStrLit).toLower()
     modelName = modelName[0]
+  if generics.len == 0:
+    generics = newEmptyNode()
   if modelName.kind != nnkIdent:
     throwDefect(
       HpxModelSyntaxDefect,
@@ -135,6 +203,7 @@ macro model*(modelName, body: untyped): untyped =
       lineInfoObj(modelName)
     )
   modelFields[$modelName] = newStmtList()
+  modelFieldsGenerics[$modelName] = newLit(generics.kind != nnkEmpty)
   
   for i in body:
     if i.kind == nnkCall and i.len == 2 and i[1].kind == nnkStmtList and i[1].len == 1:
@@ -373,7 +442,7 @@ macro model*(modelName, body: untyped): untyped =
     newNimNode(nnkTypeSection).add(
       newNimNode(nnkTypeDef).add(
         postfix(ident($modelName), "*"),  # name
-        newEmptyNode(),
+        generics,
         newNimNode(nnkObjectTy).add(
           newEmptyNode(),  # no pragma
           newNimNode(nnkOfInherit).add(ident"ModelBase"),
@@ -382,46 +451,52 @@ macro model*(modelName, body: untyped): untyped =
       )
     ),
     if not enableOptions or (enableOptions and "json" in options):
-      newProc(
+      let x = newProc(
         postfix(ident("jsonTo" & $modelName), "*"),
-        [modelName, newIdentDefs(ident"node", ident"JsonNode")],
+        [genericsBracket, newIdentDefs(ident"node", ident"JsonNode")],
         newStmtList(
-          newAssignment(ident"result", newNimNode(nnkObjConstr).add(ident($modelName))),
+          newAssignment(ident"result", newNimNode(nnkObjConstr).add(genericsBracket)),
           if asgnStmt.len > 0: asgnStmt else: newStmtList()
         )
       )
+      x[2] = generics
+      x
     else:
       newEmptyNode(),
     if not enableOptions or (enableOptions and "xwwwformurlencoded" in options):
-      newProc(
+      let x = newProc(
         postfix(ident("xWwwUrlencodedTo" & $modelName), "*"),
-        [modelName, newIdentDefs(ident"formData", ident"string")],
+        [genericsBracket, newIdentDefs(ident"formData", ident"string")],
         newStmtList(
-          newAssignment(ident"result", newNimNode(nnkObjConstr).add(ident($modelName))),
+          newAssignment(ident"result", newNimNode(nnkObjConstr).add(genericsBracket)),
           newLetStmt(ident"dataTable", newCall("parseXWwwFormUrlencoded", ident"formData")),
           if asgnStmt.len > 0: asgnUrlencoded else: newStmtList()
         )
       )
+      x[2] = generics
+      x
     else:
       newEmptyNode(),
     if not enableOptions or (enableOptions and "xml" in options):
-      newProc(
+      let x = newProc(
         postfix(ident("xmlBodyTo" & $modelName), "*"),
-        [modelName, newIdentDefs(ident"data", ident"string")],
+        [genericsBracket, newIdentDefs(ident"data", ident"string")],
         newStmtList(
-          newAssignment(ident"result", newNimNode(nnkObjConstr).add(ident($modelName))),
+          newAssignment(ident"result", newNimNode(nnkObjConstr).add(genericsBracket)),
           newLetStmt(ident"xmlBody", newCall("parseXmlBody", ident"data")),
           if asgnStmt.len > 0: asgnXml else: newStmtList()
         )
       )
+      x[2] = generics
+      x
     else:
       newEmptyNode(),
     if not enableOptions or (enableOptions and "formdata" in options):
-      newProc(
+      let x = newProc(
         postfix(ident("formDataTo" & $modelName), "*"),
-        [modelName, newIdentDefs(ident"data", ident"string")],
+        [genericsBracket, newIdentDefs(ident"data", ident"string")],
         newStmtList(
-          newAssignment(ident"result", newNimNode(nnkObjConstr).add(ident($modelName))),
+          newAssignment(ident"result", newNimNode(nnkObjConstr).add(genericsBracket)),
           newNimNode(nnkLetSection).add(newNimNode(nnkVarTuple).add(
             ident"dataTable", ident"formDataItemsTable", newEmptyNode(),
             newCall("parseFormData", ident"data")
@@ -429,9 +504,12 @@ macro model*(modelName, body: untyped): untyped =
           if asgnStmt.len > 0: asgnFormData else: newStmtList()
         )
       )
+      x[2] = generics
+      x
     else:
       newEmptyNode(),
   )
+  # echo treeRepr result
   when enableRequestModelDebugMacro:
     echo result.toStrLit
     if reqModelDebugTarget == $modelName:

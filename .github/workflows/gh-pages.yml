@@ -15,18 +15,6 @@ on:
       - '**/examples.yml'
       - '**/language_bindings.yml'
       - '**/jvm_bindings.yml'
-  pull_request:
-    paths-ignore:
-      - '.github/ISSUE_TEMPLATE/*'
-      - '*.md'
-      - '*.nimble'
-      - '.gitignore'
-      - 'LICENSE'
-      - '**/FUNDING.yml'
-      - '**/tests.yml'
-      - '**/examples.yml'
-      - '**/language_bindings.yml'
-      - '**/jvm_bindings.yml'
 
 permissions:
   contents: write
@@ -45,7 +33,7 @@ jobs:
       nim_version: '2.0.0'
       node_version: '20'
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Use Node.js ${{ env.node_version }}
         uses: actions/setup-node@v1
@@ -90,7 +78,7 @@ jobs:
           cp ./examples/website/src/happyx/public/* ./docs/public/
 
       - name: Deploy documents 💨
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./docs

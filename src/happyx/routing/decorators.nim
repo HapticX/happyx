@@ -32,9 +32,10 @@
 ##      get "/":
 ## 
 import
-  macros,
-  tables,
-  base64
+  std/macros,
+  std/tables,
+  std/base64,
+  ../core/constants
 
 
 export base64
@@ -71,8 +72,9 @@ macro decorator*(name, body: untyped): untyped =
   )
 
 
-proc authBasicDecoratorImpl(httpMethods: seq[string], routePath: string, statementList: NimNode, arguments: seq[NimNode]) =
-  statementList.insert(0, parseStmt"""
+when enableDefaultDecorators:
+  proc authBasicDecoratorImpl(httpMethods: seq[string], routePath: string, statementList: NimNode, arguments: seq[NimNode]) =
+    statementList.insert(0, parseStmt"""
 var (username, password) = ("", "")
 if not headers.hasKey("Authorization"):
   var statusCode = 401
@@ -82,16 +84,16 @@ else:
     let code = headers["Authorization"].split(" ")[1]
     let decoded = base64.decode(code).split(":", 1)
     (decoded[0], decoded[1])"""
-  )
+    )
 
 
-proc getUserAgentDecoratorImpl(httpMethods: seq[string], routePath: string, statementList: NimNode, arguments: seq[NimNode]) =
-  statementList.insert(0, parseStmt"""
+  proc getUserAgentDecoratorImpl(httpMethods: seq[string], routePath: string, statementList: NimNode, arguments: seq[NimNode]) =
+    statementList.insert(0, parseStmt"""
 var userAgent = navigator.userAgent
 """
-  )
+    )
 
 
-static:
-  regDecorator("AuthBasic", authBasicDecoratorImpl)
-  regDecorator("GetUserAgent", getUserAgentDecoratorImpl)
+  static:
+    regDecorator("AuthBasic", authBasicDecoratorImpl)
+    regDecorator("GetUserAgent", getUserAgentDecoratorImpl)

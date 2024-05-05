@@ -50,7 +50,7 @@ serve "127.0.0.1", 5000:
       "false!"
   
   get "/pathParams/$arg/$arg1:bool/$arg2=2":
-    let name = query~name
+    let name = query?name
     req.answerHtml:
       buildHtml:
         tDiv:

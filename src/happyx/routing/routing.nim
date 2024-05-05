@@ -3,12 +3,12 @@
 
 import
   # stdlib
-  strformat,
-  strutils,
-  strtabs,
-  macros,
-  macrocache,
-  json,
+  std/strformat,
+  std/strutils,
+  std/strtabs,
+  std/macros,
+  std/macrocache,
+  std/json,
   # deps
   regex,
   # happyx
@@ -510,7 +510,7 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode =
               ident"JsonParsingError",
               newStmtList(
                 when enableDebug:
-                  newCall("echo", newCall("fmt", newStrLitNode("json parse error: {getCurrentExceptionMsg()}")))
+                  newCall("echo", newCall("fmt", newStrLitNode"json parse error: {getCurrentExceptionMsg()}"))
                 else:
                   newEmptyNode(),
                 newCall(
@@ -526,7 +526,7 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode =
               ident"JsonKindError",
               newStmtList(
                 when enableDebug:
-                  newCall("echo", newCall("fmt", newStrLitNode("json kind error: {getCurrentExceptionMsg()}")))
+                  newCall("echo", newCall("fmt", newStrLitNode"json kind error: {getCurrentExceptionMsg()}"))
                 else:
                   newEmptyNode(),
                 newCall(

@@ -1,8 +1,8 @@
 import denim except `%*`
 import
   nimja,
-  sugar,
-  tables,
+  std/sugar,
+  std/tables,
   ../core/[constants, queries],
   ../routing/[routing, mounting],
   ../ssr/[server, request_models, session, utils],

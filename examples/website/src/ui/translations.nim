@@ -1748,6 +1748,42 @@ translatable:
     "zh" -> "上面的例子说明了HappyX如何处理点击，并展示了与组件的响应数据的交互。"
     "fr" -> "L'exemple ci-dessus illustre comment HappyX gère les clics et démontre également l'interaction avec les données réactives du composant."
     "ko" -> "위의 예시는 HappyX가 클릭을 처리하는 방법을 보여주며, 또한 구성 요소의 반응 데이터와 상호 작용을 나타냅니다."
+  "In this section, we will talk about using Swagger and Redoc in HappyX.":
+    "ru" -> "В этой секции мы поговорим об использовании Swagger и Redoc в HappyX."
+    "ja" -> "このセクションでは、HappyXでSwaggerとRedocを使用する方法について説明します。"
+    "zh" -> "在本节中，我们将讨论在HappyX中使用Swagger和Redoc的方法。"
+    "fr" -> "Dans cette section, nous parlerons de l'utilisation de Swagger et Redoc dans HappyX."
+    "ko" -> "이 섹션에서는 HappyX에서 Swagger 및 Redoc 사용에 대해 이야기하겠습니다."
+  "Swagger and Redoc in HappyX 📕":
+    "ru" -> "Swagger и Redoc в HappyX 📕"
+    "ja" -> "SwaggerとRedocはHappyXで 📕"
+    "zh" -> "Swagger和Redoc在HappyX中 📕"
+    "fr" -> "Swagger et Redoc dans HappyX 📕"
+    "ko" -> "HappyX에서의 Swagger 및 Redoc 📕"
+  "Let's start by creating a basic route that will return Hello, world! We'll document it right away.":
+    "ru" -> "Давайте начнем с создания базового маршрута, который будет возвращать Привет, мир! Мы сразу его задокументируем."
+    "ja" -> "まず、Hello、world!を返す基本的なルートを作成しましょう。すぐにドキュメント化します。"
+    "zh" -> "让我们首先创建一个基本路由，它将返回Hello, world! 我们将立即对其进行文档化。"
+    "fr" -> "Commençons par créer une route de base qui renverra Bonjour, le monde! Nous le documenterons tout de suite."
+    "ko" -> "우리는 바로 Hello, world!를 반환할 기본 경로를 만들어 보겠습니다. 바로 문서화하겠습니다."
+  "Now that we've documented it, let's go ahead and run it and check the following address:":
+    "ru" -> "Теперь, когда мы его задокументировали, давайте запустим и проверим следующий адрес:"
+    "ja" -> "これを文書化したので、さあ実行して、次のアドレスを確認しましょう："
+    "zh" -> "既然我们已经对其进行了文档化，那么让我们运行它并检查以下地址："
+    "fr" -> "Maintenant que nous l'avons documenté, allons-y et exécutons-le et vérifions l'adresse suivante :"
+    "ko" -> "이제 문서화했으니 실행하고 다음 주소를 확인해 봅시다:"
+  "Here we can see our route and the description we provided for it. You can also view the Swagger documentation at the following address:":
+    "ru" -> "Здесь мы видим наш маршрут и описание, которое мы ему предоставили. Вы также можете просмотреть документацию Swagger по следующему адресу:"
+    "ja" -> "ここでは、ルートとその説明を見ることができます。また、次のアドレスでSwaggerドキュメントを表示することもできます："
+    "zh" -> "在这里，我们可以看到我们的路由和我们为其提供的描述。您还可以查看以下地址的Swagger文档："
+    "fr" -> "Ici, nous pouvons voir notre route et la description que nous avons fournie pour celle-ci. Vous pouvez également consulter la documentation Swagger à l'adresse suivante :"
+    "ko" -> "여기서 우리의 경로와 우리가 제공 한 설명을 볼 수 있습니다. 또한 다음 주소에서 Swagger 문서를 볼 수도 있습니다:"
+  "In addition, for Swagger, you can write in Markdown:":
+    "ru" -> "Кроме того, для Swagger вы можете писать на Markdown:"
+    "ja" -> "さらに、SwaggerではMarkdownで書くことができます："
+    "zh" -> "此外，对于Swagger，您可以使用Markdown编写："
+    "fr" -> "De plus, pour Swagger, vous pouvez écrire en Markdown :"
+    "ko" -> "또한 Swagger에서는 Markdown으로 작성할 수 있습니다:"
 
 
 var spokenLang: cstring

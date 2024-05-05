@@ -3,9 +3,9 @@
 ## provides some utils to working at server-side
 ## 
 import
-  json,
-  httpcore,
-  options
+  std/json,
+  std/httpcore,
+  std/options
 
 
 
@@ -27,4 +27,3 @@ proc toHttpHeaders*(json: JsonNode): HttpHeaders =
   result = newHttpHeaders()
   for k, v in json.pairs():
     result[k] = v.getStr
-

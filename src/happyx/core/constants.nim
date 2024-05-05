@@ -9,7 +9,6 @@
 ## | `-d:translate`       | enables automatic translate for returns 🌐                     | ❌         |
 ## | `-d:debug`           | enables debug logging 💻                                      | ❌         |
 ## | `-d:oldRenderer`     | enables old renderer for SPA 🍍                               | ❌         |
-## | `-d:enableUi`        | enables built-in UI components 🎴                             |  ❌        |
 ## | `-d:cryptoMethod`    | choose crypto method for `generate_password` methods 🔐       | ✅         |
 ## | `-d:numThreads`      | choose number of threads (httpx/httpbeast) ⌛                 |  ✅        |
 ## | `-d:sessionIdLength` | choose length of session ID ✍                                |  ✅        |
@@ -19,6 +18,7 @@
 ## | `-d:apiDocsPath`     | choose path for API documentation 📕                          |  ✅        |
 ## | `-d:noliveviews`     | Disables LiveViews at SSR/SSG (It helpful for components) 📕  |  ❌        |
 ## | `-d:safeRequests`    | Enables requests safety (On error returns 500 with err msg) 📕|  ❌        |
+## | `-d:disableDefDeco`  | Disables default decorators (`AuthBasic`, `GetUserAgent`) 👀  |  ❌        |
 ## 
 ## ## Dev Consts 👨‍💻
 ## 
@@ -33,9 +33,6 @@
 ## | `-d:componentDebugTarget` | after this component program will terminated               | ✅         |
 ## | `-d:reqModelDebugTarget`  | after this request model program will terminated           | ✅         |
 ## 
-import strformat
-when not defined(js) and defined(debug):
-  import terminal
 
 
 # Configuration via `-d`/`--define`
@@ -58,6 +55,7 @@ const
   enableUseCompDebugMacro* = defined(useCompDebug) or defined(happyxUseCompDebug) or defined(hpxUseCompDebug)
   enableRequestModelDebugMacro* = defined(reqModelDebug) or defined(happyxReqModelDebug) or defined(hpxReqModelDebug)
   enableRoutingDebugMacro* = defined(routingDebug) or defined(happyxRoutingDebug) or defined(hpxRoutingDebug)
+  enableDefaultDecorators* = not (defined(disableDefDeco) or defined(happyxDsableDefDeco) or defined(hpxDisableDefDeco))
   componentDebugTarget* {.strdefine.} = ""
   reqModelDebugTarget* {.strdefine.} = ""
   # Language bindings
@@ -66,9 +64,7 @@ const
   # Framework features
   enableHistoryApi* = defined(historyApi) or defined(hpxHistoryApi) or defined(happyxHistoryApi)
   enableDebug* = defined(debug) or defined(happyxDebug) or defined(hpxDebug) or exportJvm or exportPython or defined(napibuild)
-  enableUi* = defined(enableUi) or defined(happyxEnableUi) or defined(hpxEnableUi)
   enableApiDoc* = not defined(disableApiDoc)
-  enableOrm* = not defined(disableORM)
   numThreads* {. intdefine .} = 0
   sessionIdLength* {.intdefine.} = 32
   appName* {.strdefine.} = "HappyX Application"
@@ -100,9 +96,15 @@ const
   nim_2_0_0* = (NimMajor, NimMinor, NimPatch) >= (2, 0, 0)
   # Framework version
   HpxMajor* = 3
-  HpxMinor* = 8
-  HpxPatch* = 14
+  HpxMinor* = 9
+  HpxPatch* = 0
   HpxVersion* = $HpxMajor & "." & $HpxMinor & "." & $HpxPatch
+
+
+when cryptoMethod notin availableCryptoMethods or (enableDebug and not defined(js)):
+  import strformat
+when not defined(js) and enableDebug:
+  import terminal
 
 
 when cryptoMethod notin availableCryptoMethods:
@@ -121,7 +123,7 @@ when int(enableHttpx) + int(enableMicro) + int(enableHttpBeast) > 1:
   {. error: "You can't use two alternative servers at one time!" .}
 
 
-when defined(debug):
+when enableDebug:
   when not defined(js):
     styledEcho fgYellow, fmt"Enable auto translate:       {enableAutoTranslate}"
     styledEcho fgYellow, fmt"Enable httpbeast:            {enableHttpBeast}"

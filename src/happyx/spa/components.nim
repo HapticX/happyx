@@ -332,7 +332,7 @@ macro component*(name, body: untyped): untyped =
       postfix(ident"reRender", "*"),
       [newEmptyNode(), newIdentDefs(ident"self", ident(componentName))],
       newStmtList(
-        newCall("reRenderTmpl")
+        newCall"reRenderTmpl"
       ),
       nnkMethodDef
     )
@@ -356,7 +356,7 @@ macro component*(name, body: untyped): untyped =
       when defined(js):
         newIdentDefs(ident"ev", ident"Event", newNilLit())
       else:
-        newIdentDefs(ident"ev", ident"JsonNode", newCall("newJObject"))
+        newIdentDefs(ident"ev", ident"JsonNode", newCall"newJObject")
     ]
     usedLifeCycles = {
       "created": false,  # at created
@@ -369,9 +369,9 @@ macro component*(name, body: untyped): untyped =
     }.newTable()
   
   if genericsIdent.kind != nnkEmpty:
-    initParams.add(genericsIdent, newIdentDefs(ident(UniqueComponentId), bindSym("string")))
+    initParams.add(genericsIdent, newIdentDefs(ident(UniqueComponentId), bindSym"string"))
   else:
-    initParams.add(inherited, newIdentDefs(ident(UniqueComponentId), bindSym("string")))
+    initParams.add(inherited, newIdentDefs(ident(UniqueComponentId), bindSym"string"))
 
   var
     fields: seq[string] = @[]
@@ -465,13 +465,13 @@ macro component*(name, body: untyped): untyped =
           componentConstructors.add(
             newProc(
               postfix(ident(fmt"constructor_{componentName}"), "*"),
-              [ident(componentName), newIdentDefs(ident(UniqueComponentId), bindSym("string"))],
+              [ident(componentName), newIdentDefs(ident(UniqueComponentId), bindSym"string")],
               constructorBody
             )
           )
         # Constructor with arguments
         else:
-          var args = @[ident(componentName), newIdentDefs(ident(UniqueComponentId), bindSym("string"))]
+          var args = @[ident(componentName), newIdentDefs(ident(UniqueComponentId), bindSym"string")]
           for arg in s[0].children:
             if arg.kind == nnkExprColonExpr:
               args.add(newIdentDefs(arg[0], arg[1]))

@@ -17,9 +17,9 @@
 
 import
   nimja,
-  macros,
-  macrocache,
-  os
+  std/macros,
+  std/macrocache,
+  std/os
 
 export
   nimja

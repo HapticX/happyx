@@ -1,10 +1,10 @@
 import
   # Stdlib
-  asyncdispatch,
-  httpcore,
-  strtabs,
-  strutils,
-  json,
+  std/asyncdispatch,
+  std/httpcore,
+  std/strtabs,
+  std/strutils,
+  std/json,
   # Python lib
   nimpy,
   nimpy/py_types,

@@ -302,9 +302,9 @@ proc compileProject*(): ProjectData {. discardable .} =
           of "pathparam", "path":
             f.write(fmt"""{key}={arg["name"].getStr},""")
           of "query":
-            f.write(fmt"""{key}=query~{arg["name"].getStr},""")
+            f.write(fmt"""{key}=query?{arg["name"].getStr},""")
           of "queryarr", "queryarray":
-            f.write(fmt"""{key}=queryArr~{arg["name"].getStr},""")
+            f.write(fmt"""{key}=queryArr?{arg["name"].getStr},""")
         else:
           raise newException(ValueError, fmt"Incorrect router.json structure at `{key}`")
       f.write(")\n\n")

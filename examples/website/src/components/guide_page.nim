@@ -45,6 +45,8 @@ component GuidePage:
           SQLite
         of "postgres":
           Postgres
+        of "ssr_docs":
+          SsrDocs
 
       tDiv(class = "hidden xl:flex justify-between items-center w-full pb-8"):
         if guidePages[currentGuidePage]["prev"].getStr != "":

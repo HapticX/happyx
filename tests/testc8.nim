@@ -7,7 +7,7 @@ import
 
 
 "/sugar/get" -> get:
-  echo query~hello
+  echo query?hello
   "You see this only at GET HTTP method at /sugar/get"
 
 

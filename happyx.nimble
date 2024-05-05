@@ -2,7 +2,7 @@
 
 description = "Macro-oriented asynchronous web-framework written with ♥"
 author = "HapticX"
-version = "3.8.14"
+version = "3.9.0"
 license = "MIT"
 srcDir = "src"
 installExt = @["nim"]
@@ -11,6 +11,9 @@ bin = @["happyx/hpx"]
 # Deps
 
 requires "nim >= 1.6.14"
+
+# Std lib
+requires "checksums >= 0.1.0"
 # CLI
 requires "cligen >= 1.6.14"
 requires "illwill#2fe96f5c5a6e216e84554d92090ce3d47460667a"

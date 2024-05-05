@@ -27,12 +27,12 @@
 ##        "This is text tag"
 ## 
 import
-  strutils,
-  strformat,
-  strtabs,
-  sequtils,
-  htmlparser,
-  xmltree,
+  std/strutils,
+  std/strformat,
+  std/strtabs,
+  std/sequtils,
+  std/htmlparser,
+  std/xmltree,
   regex
 
 
