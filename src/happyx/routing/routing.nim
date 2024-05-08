@@ -520,6 +520,7 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode =
                   newCall("echo", newCall("fmt", newLit"json parse error: {getCurrentExceptionMsg()}"))
                 else:
                   newEmptyNode(),
+                newCall("__onException", urlPath, body, newCall"getCurrentException"),
                 newCall(
                   "answerJson",
                   ident"req",
@@ -536,10 +537,28 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode =
                   newCall("echo", newCall("fmt", newLit"json kind error: {getCurrentExceptionMsg()}"))
                 else:
                   newEmptyNode(),
+                newCall("__onException", urlPath, body, newCall"getCurrentException"),
                 newCall(
                   "answerJson",
                   ident"req",
                   parseExpr"""{"response": "Incorrect JSON structure (wrong kind)"}""",
+                  ident"Http400"
+                ),
+                newNimNode(nnkReturnStmt).add(newEmptyNode()),
+                newCall("jsonTo" & i.typeName, newCall("newJObject"))
+              )
+            ), newNimNode(nnkExceptBranch).add(
+              ident"Exception",
+              newStmtList(
+                when enableDebug:
+                  newCall("echo", newCall("fmt", newLit"json unknown error: {getCurrentExceptionMsg()}"))
+                else:
+                  newEmptyNode(),
+                newCall("__onException", urlPath, body, newCall"getCurrentException"),
+                newCall(
+                  "answerJson",
+                  ident"req",
+                  parseExpr"""{"response": "Unknown JSON structure"}""",
                   ident"Http400"
                 ),
                 newNimNode(nnkReturnStmt).add(newEmptyNode()),

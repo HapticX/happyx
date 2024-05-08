@@ -749,6 +749,7 @@ macro routes*(server: Server, body: untyped = newStmtList()): untyped =
     stmtList = newStmtList()
     staticDirs: seq[NimNode]
     notFoundNode = newEmptyNode()
+    onException = newEmptyNode()
     procStmt = newProc(
       ident"handleRequest",
       [
@@ -1494,6 +1495,9 @@ socketToSsr.onmessage=function(m){
         of "notfound":
           detectReturnStmt(statement[1])
           notFoundNode = statement[1]
+        of "onexception":
+          detectReturnStmt(statement[1])
+          onException = statement[1]
         of "middleware":
           detectReturnStmt(statement[1])
           stmtList.insert(0, statement[1])
@@ -1601,6 +1605,17 @@ socketToSsr.onmessage=function(m){
     else:
       newEmptyNode(),
     setup,
+    newProc(
+      ident"__onException",
+      [
+        newEmptyNode(),
+        newIdentDefs(ident"url", ident"string"),
+        newIdentDefs(ident"body", ident"string"),
+        newIdentDefs(ident"e", newNimNode(nnkRefTy).add(ident"Exception")),
+      ],
+      onException,
+      nnkTemplateDef
+    ),
     newProc(
       ident"__wsError",
       [newEmptyNode(), newIdentDefs(wsClientI, wsType)],

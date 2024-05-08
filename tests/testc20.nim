@@ -41,3 +41,11 @@ serve "127.0.0.1", 5000:
 
   middleware:
     outHeaders["x"] = "y"
+  
+  onException:
+    # here built-in variables:
+    # `url`, `body` is string
+    # `e` is `ref Exception`
+    echo "URL: ", url
+    echo "BODY: ", body
+    echo "EXCEPTION: [", e.name, "] - ", e.msg
