@@ -749,7 +749,7 @@ macro routes*(server: Server, body: untyped = newStmtList()): untyped =
     stmtList = newStmtList()
     staticDirs: seq[NimNode]
     notFoundNode = newEmptyNode()
-    onException = newEmptyNode()
+    onException = newStmtList()
     procStmt = newProc(
       ident"handleRequest",
       [
