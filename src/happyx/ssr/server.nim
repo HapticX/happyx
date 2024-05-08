@@ -51,6 +51,7 @@
 import
   # Stdlib
   std/asyncdispatch,
+  std/asyncmacro,
   std/macrocache,
   std/strformat,
   std/asyncfile,
@@ -649,7 +650,7 @@ proc detectReturnStmt(node: NimNode, replaceReturn: bool = false) =
             )
           )
       # Really complete route after any return statement
-      node.insert(i+1, newNimNode(nnkReturnStmt).add(newEmptyNode()))
+      node.insert(i+1, newNimNode(nnkBreakStmt).add(ident"__handleRequestBlock"))
     else:
       node[i].detectReturnStmt(true)
   # Replace last node
@@ -677,7 +678,7 @@ proc detectReturnStmt(node: NimNode, replaceReturn: bool = false) =
     else:
       node[^1] = newCall("answer", ident"req", node[^1])
   # Really complete route after any return statement
-  node.add(newNimNode(nnkReturnStmt).add(newEmptyNode()))
+  node.add(newNimNode(nnkBreakStmt).add(ident"__handleRequestBlock"))
 
 
 macro routes*(server: Server, body: untyped = newStmtList()): untyped =
@@ -756,7 +757,10 @@ macro routes*(server: Server, body: untyped = newStmtList()): untyped =
       ],
       when enableSafeRequests:
         newNimNode(nnkTryStmt).add(
-          stmtList,
+          newNimNode(nnkBlockStmt).add(
+            ident"__handleRequestBlock",
+            stmtList,
+          ),
           newNimNode(nnkExceptBranch).add(
             newCall(
               ident"answer", ident"req",
@@ -766,7 +770,10 @@ macro routes*(server: Server, body: untyped = newStmtList()): untyped =
           )
         )
       else:
-        stmtList,
+        newNimNode(nnkBlockStmt).add(
+          ident"__handleRequestBlock",
+          stmtList,
+        ),
     )
     caseRequestMethodsStmt = newNimNode(nnkCaseStmt)
     methodTable = newTable[string, NimNode]()
