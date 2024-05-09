@@ -1036,7 +1036,11 @@ macro importComponent*(body: untyped): untyped =
   # Template
   if templateSource.len > 0:
     var
-      tagData =  initTagVm("div", @[tagFromStringVm(componentData[templateSource[0].group(0)])], true)
+      tagData = 
+        when defined(js):
+          initTagVm("div", @[tagFromStringVm(componentData[templateSource[0].group(0)])], true)
+        else:
+          initTag("div", @[tagFromString(componentData[templateSource[0].group(0)])], true)
       statements = newStmtList()
     
     proc inCreatedComponents(tag: string): string =
@@ -1046,6 +1050,11 @@ macro importComponent*(body: untyped): untyped =
         if key.toLower().capitalizeAscii() == tag.toLower().capitalizeAscii():
           return key
       ""
+    
+    when defined(js):
+      discard
+    else:
+      type VmTagRef = TagRef
     
     proc handle(tag: VmTagRef, parent: var NimNode) =
       var ifStartIndex = -1

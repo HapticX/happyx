@@ -539,6 +539,9 @@ func `$`*(self: TagRef): string =
 
 
 when defined(js):
+  proc `$`*(self: Node): string =
+    $self.outerHTML
+
   func add*(self: VmTagRef, tags: varargs[VmTagRef]) =
     ## Adds `other` tag into `self` tag
     runnableExamples:
