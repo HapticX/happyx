@@ -9,6 +9,7 @@ import
   std/strformat,
   std/macros,
   std/macrocache,
+  std/htmlparser,
   std/os,
   # Thirdparty
   regex,
@@ -63,6 +64,15 @@ proc replaceSuperCall(statement, parentComponent: NimNode, funcName: string, nee
       replaceSuperCall(child, parentComponent, funcName, needDiscard, parentHasGenerics)
 
 
+when defined(js):
+  proc index(el: Element): int =
+    let children = el.parentNode.childNodes
+    for i in 0..children.len-1:
+      if children[i] == el:
+        return i
+    return -1
+
+
 template reRenderTmpl*() =
   let tmpData = "[data-" & self.uniqCompId & "]"
   when defined(js):
@@ -70,19 +80,45 @@ template reRenderTmpl*() =
   let compTmpData = self.render
   currentComponentsList.del(currentComponentsList.find(self.BaseComponent))
   compTmpData.addArgIter("data-" & self.uniqCompId)
+  echo tmpData
   when defined(js):
     var
       current = document.querySelector(tmpData)
-      elements = newSeq[Element]()
-    for tag in compTmpData.children:
-      if not current.isNil:
-        elements.add(current)
-        current = current.nextSibling.Element
-    for i in 0..<elements.len:
-      let
-        elem = elements[i]
-        tag = compTmpData.children[i]
-      elem.outerHTML = cstring($tag)
+      styleE = compTmpData.lastChild.cloneNode(true)
+      newE = current.cloneNode(true)
+      parent = current.parentElement
+      idx = index(current)
+      length = parent.children.len
+    echo idx, ", ", length
+    current.remove()
+    compTmpData.lastChild.remove()
+    if length-1 == idx:
+      parent.appendChild(compTmpData)
+    else:
+      parent.insertBefore(compTmpData, parent.children[idx])
+    compTmpData.appendChild(styleE)
+    # current.appendChild()
+    # current.innerHTML = ""
+    # current.appendChild()
+      # elements = newSeq[Element]()
+    # for tag in compTmpData.children:
+    #   if not current.isNil:
+    #     elements.add(current)
+    #     current = current.nextSibling.Element
+    # for i in 0..<elements.len:
+    #   let
+    #     elem = elements[i]
+    #     tag = compTmpData.children[i]
+    #     parent = elem.parentElement
+    #     idx = index(elem)
+    #     length = parent.children.len
+    #   echo idx, ", ", length
+    #   elem.remove()
+    #   if length-1 == idx:
+    #     parent.appendChild(tag)
+    #   else:
+    #     parent.insertBefore(tag, parent.children[idx])
+      # elem.outerHTML = cstring($tag)
     if activeElement.hasAttribute("id"):
       let actElem = document.getElementById(activeElement.id)
       if not actElem.isNil:
@@ -553,11 +589,16 @@ macro component*(name, body: untyped): untyped =
             )
           elif s[^1][0].kind == nnkCall and s[^1][0][0].kind == nnkIdent and $s[^1][0][0] == "buildStyle":
             # Pure CSS
-            let css = getAst(buildStyle(s[^1][0][1]))[1]
+            let
+              css = getAst(buildStyle(s[^1][0][1]))[1]
             styleStmtList = newStmtList(
               newAssignment(
                 ident"result",
-                newCall("fmt", newLit($css), newLit('<'), newLit('>'))
+                newCall("replace",
+                  newCall("fmt", newLit($css), newLit('<'), newLit('>')),
+                  newCall("re2", newLit("([\\S ]+?) *\\{")),
+                  newCall("fmt", newLit("$1[data-{self.uniqCompId}] {{"))
+                )
               )
             )
           else:
@@ -995,7 +1036,7 @@ macro importComponent*(body: untyped): untyped =
   # Template
   if templateSource.len > 0:
     var
-      tagData =  initTag("div", @[tagFromString(componentData[templateSource[0].group(0)])], true)
+      tagData =  initTagVm("div", @[tagFromStringVm(componentData[templateSource[0].group(0)])], true)
       statements = newStmtList()
     
     proc inCreatedComponents(tag: string): string =
@@ -1006,7 +1047,7 @@ macro importComponent*(body: untyped): untyped =
           return key
       ""
     
-    proc handle(tag: TagRef, parent: var NimNode) =
+    proc handle(tag: VmTagRef, parent: var NimNode) =
       var ifStartIndex = -1
       for child in tag.children:
         # @click, @event, etc

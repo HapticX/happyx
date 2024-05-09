@@ -266,14 +266,9 @@ when defined(js):
     when enableOldRenderer:
       document.getElementById(app.appId).innerHTML = $tag
     else:
-      let elem = document.getElementById(app.appId)
-      var
-        realDom = elem.Node
-        virtualDom = tag.toDom().n
-      # echo virtualDom.innerHTML
-      # echo realDom.innerHTML
-      # compareEdit(realDom, virtualDom)
-    realDom.innerHTML = virtualDom.innerHTML
+      var realDom = document.getElementById(app.appId).Node
+    realDom.innerHTML = ""
+    realDom.appendChild(tag)
     if force:
       for comp in createdComponentsList:
         comp.exited(comp, nil)
