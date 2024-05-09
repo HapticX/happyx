@@ -344,8 +344,7 @@ proc addArgIter*(self: TagRef, arg: string) =
   ## 
   ## See also `addArg function #addArg,TagRef,string`_
   when defined(js):
-    if self.attributes.len == 0:
-      self.setAttribute(cstring(arg), "")
+    self.setAttribute(cstring(arg), "")
   else:
     if self.args.len == 0:
       self.args.add(arg)
