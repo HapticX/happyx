@@ -10,7 +10,7 @@ proc mainHelpMessage*() =
   ## Shows the general help message that describes
   let
     subcommands = [
-      "build", "dev", "serve", "create", "html2tag", "update", "info", "help"
+      "build", "dev", "serve", "create", "html2tag", "update", "info", "flags", "help"
     ]
     logoColors = [
       fgBlue, fgGreen, fgYellow, fgWhite, fgCyan

@@ -262,11 +262,7 @@ else:
 when defined(js):
   proc renderVdom*(app: App, tag: TagRef, force: bool = false) =
     ## Rerender DOM with VDOM
-    # compile with `-d:oldRenderer` to work with old renderer
-    when enableOldRenderer:
-      document.getElementById(app.appId).innerHTML = $tag
-    else:
-      var realDom = document.getElementById(app.appId).Node
+    var realDom = document.getElementById(app.appId).Node
     realDom.innerHTML = ""
     realDom.appendChild(tag)
     if force:
