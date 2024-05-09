@@ -1,8 +1,8 @@
 nimTitle	components	happyx/spa/components.html	module src/happyx/spa/components		0
 nim	reRenderTmpl	happyx/spa/components.html#reRenderTmpl.t	template reRenderTmpl()		76
-nim	compDefArg	happyx/spa/components.html#compDefArg,typedesc[T]	proc compDefArg[T](value: typedesc[T]): T		143
-nim	component	happyx/spa/components.html#component.m,untyped,untyped	macro component(name, body: untyped): untyped		152
-nim	importComponent	happyx/spa/components.html#importComponent.m,untyped	macro importComponent(body: untyped): untyped		954
+nim	compDefArg	happyx/spa/components.html#compDefArg,typedesc[T]	proc compDefArg[T](value: typedesc[T]): T		142
+nim	component	happyx/spa/components.html#component.m,untyped,untyped	macro component(name, body: untyped): untyped		151
+nim	importComponent	happyx/spa/components.html#importComponent.m,untyped	macro importComponent(body: untyped): untyped		953
 heading	Basic Usage 🔨	happyx/spa/components.html#components-✨-basic-usage-🔨	  Basic Usage 🔨		0
 heading	Pure Css 🎈	happyx/spa/components.html#components-✨-pure-css-🎈	  Pure Css 🎈		0
 heading	Pure JavaScript ✌	happyx/spa/components.html#components-✨-pure-javascript-✌	  Pure JavaScript ✌		0
