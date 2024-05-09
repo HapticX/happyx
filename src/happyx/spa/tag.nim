@@ -92,7 +92,7 @@ proc add*(self: TagRef, tags: varargs[TagRef]) =
       if tag.isNil():
         continue
       if tag.onlyChildren:
-        for i in tag.children[0..^1]:
+        for i in tag.childNodes[0..^1]:
           self.appendChild(i)
       else:
         self.appendChild(tag)
@@ -357,8 +357,12 @@ proc toSeqIter*(self: TagRef): seq[TagRef] =
     result = @[]
   else:
     result = @[self]
-  for child in self.children:
-    result = result.concat(child.TagRef.toSeqIter)
+  when defined(js):
+    for child in self.childNodes:
+      result = result.concat(child.TagRef.toSeqIter)
+  else:
+    for child in self.children:
+      result = result.concat(child.TagRef.toSeqIter)
   return result
 
 
@@ -470,7 +474,7 @@ func getAttribute*(self: TagRef, attrName: string, default: string = ""): string
 func findByTag*(self: TagRef, tag: string): seq[TagRef] =
   ## Finds all tags by name
   result = @[]
-  for child in self.children:
+  for child in (when defined(js): self.childNodes else: self.children):
     when defined(js):
       if child.nodeType == NodeType.TextNode:
         continue
@@ -490,7 +494,7 @@ func findByTag*(self: TagRef, tag: string): seq[TagRef] =
 func get*(self: TagRef, tag: string): TagRef =
   ## Returns tag by name
   when defined(js):
-    for child in self.children:
+    for child in self.childNodes:
       if tag.toUpper() == $child.nodeName:
         return child.TagRef
     raise newException(ValueError, fmt"<{self.nodeName}> at level [{self.lvl}] doesn't have tag <{tag}>")

@@ -12,6 +12,7 @@ component ComponentFor:
           @click:
             self.counter += 1
             echo i
+      !debugCurrent
   
   @created:
     echo "created!"
