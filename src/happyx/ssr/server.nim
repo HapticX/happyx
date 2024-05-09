@@ -1611,7 +1611,7 @@ socketToSsr.onmessage=function(m){
         newEmptyNode(),
         newIdentDefs(ident"url", ident"string"),
         newIdentDefs(ident"body", ident"string"),
-        newIdentDefs(ident"e", newNimNode(nnkRefTy).add(ident"Exception")),
+        newIdentDefs(ident"e", newNimNode(nnkRefTy).add(newDotExpr(ident"system", ident"Exception"))),
       ],
       onException,
       nnkTemplateDef
