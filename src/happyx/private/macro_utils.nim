@@ -874,7 +874,8 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
       if inComponent:
         procedure.body = statement[^1]
         procedure.body.insert(0, newVarStmt(ident"self", newCall(componentName, ident"self")))
-        # args.insert(1, newIdentDefs(ident"self", ident"BaseComponent"))
+        when not defined(js):
+          args.insert(1, newIdentDefs(ident"self", ident"BaseComponent"))
         # Detect in component and in cycle
         if inCycle:
           let
