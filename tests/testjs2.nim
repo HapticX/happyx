@@ -5,6 +5,12 @@ import
 
 var app = registerApp()
 
+var t = initTag("div", @[], true)
+echo t.onlyChildren
+var d = t.Node
+echo d.TagRef.onlyChildren
+echo cast[TagRef](d).onlyChildren
+
 app.routes:
   "/":
     component HelloWorld(counter = 1.0)

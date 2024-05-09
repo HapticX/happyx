@@ -79,7 +79,7 @@ const
   ]
 
 
-func add*(self: TagRef, tags: varargs[TagRef]) =
+proc add*(self: TagRef, tags: varargs[TagRef]) =
   ## Adds `other` tag into `self` tag
   runnableExamples:
     var
@@ -92,7 +92,7 @@ func add*(self: TagRef, tags: varargs[TagRef]) =
       if tag.isNil():
         continue
       if tag.onlyChildren:
-        for i in tag.children:
+        for i in tag.children[0..^1]:
           self.appendChild(i)
       else:
         self.appendChild(tag)
@@ -124,7 +124,7 @@ proc initTag*(name: string, attrs: StringTableRef,
     for child in children:
       if child.isNil:
         continue
-      result.appendChild(child)
+      result.add(child)
   else:
     result = TagRef(
       name: name, isText: false, parent: nil,
@@ -149,9 +149,8 @@ proc initTag*(name: string, children: seq[TagRef] = @[],
     result = document.createElement(cstring(name)).TagRef
     result.onlyChildren = onlyChildren
     for child in children:
-      if child.isNil:
-        continue
-      result.appendChild(child)
+      if not child.isNil:
+        result.add(child)
   else:
     result = TagRef(
       name: name, isText: false, parent: nil,
@@ -186,7 +185,7 @@ proc initTag*(name: string, isText: bool, attrs: StringTableRef,
       for child in children:
         if child.isNil:
           continue
-        result.appendChild(child)
+        result.add(child)
   else:
     result = TagRef(
       name: name, isText: isText, parent: nil,
@@ -209,7 +208,7 @@ proc initTag*(name: string, isText: bool, children: seq[TagRef] = @[],
       for child in children:
         if child.isNil:
           continue
-        result.appendChild(child)
+        result.add(child)
   else:
     result = TagRef(
       name: name, isText: isText, parent: nil,
@@ -364,9 +363,9 @@ proc toSeqIter*(self: TagRef): seq[TagRef] =
   return result
 
 
-when defined(js):
-  proc toDom*(self: TagRef): tuple[n: Node, b: bool] =
-    return (n: self.Node, b: false)
+# when defined(js):
+#   proc toDom*(self: TagRef): tuple[n: Node, b: bool] =
+#     return (n: self.Node, b: false)
 # elif defined(js):
 #   proc toDom*(self: TagRef): tuple[n: Node, b: bool] =
 #     ## converts tag into DOM Element
