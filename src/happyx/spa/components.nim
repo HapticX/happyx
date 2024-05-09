@@ -74,51 +74,50 @@ when defined(js):
 
 
 template reRenderTmpl*() =
-  let tmpData = "[data-" & self.uniqCompId & "]"
   when defined(js):
     let activeElement = document.activeElement
   let compTmpData = self.render
   currentComponentsList.del(currentComponentsList.find(self.BaseComponent))
   compTmpData.addArgIter("data-" & self.uniqCompId)
-  echo tmpData
+  # echo tmpData
   when defined(js):
-    var
-      current = document.querySelector(tmpData)
-      styleE = compTmpData.lastChild.cloneNode(true)
-      newE = current.cloneNode(true)
-      parent = current.parentElement
-      idx = index(current)
-      length = parent.children.len
-    echo idx, ", ", length
-    current.remove()
-    compTmpData.lastChild.remove()
-    if length-1 == idx:
-      parent.appendChild(compTmpData)
-    else:
-      parent.insertBefore(compTmpData, parent.children[idx])
-    compTmpData.appendChild(styleE)
+    #   styleE = compTmpData.lastChild.cloneNode(true)
+    #   newE = current.cloneNode(true)
+    #   parent = current.parentElement
+    #   idx = index(current)
+    #   length = parent.children.len
+    # echo idx, ", ", length
+    # current.remove()
+    # compTmpData.lastChild.remove()
+    # if length-1 == idx:
+    #   parent.appendChild(compTmpData)
+    # else:
+    #   parent.insertBefore(compTmpData, parent.children[idx])
+    # compTmpData.appendChild(styleE)
     # current.appendChild()
     # current.innerHTML = ""
     # current.appendChild()
-      # elements = newSeq[Element]()
-    # for tag in compTmpData.children:
-    #   if not current.isNil:
-    #     elements.add(current)
-    #     current = current.nextSibling.Element
-    # for i in 0..<elements.len:
-    #   let
-    #     elem = elements[i]
-    #     tag = compTmpData.children[i]
-    #     parent = elem.parentElement
-    #     idx = index(elem)
-    #     length = parent.children.len
-    #   echo idx, ", ", length
-    #   elem.remove()
-    #   if length-1 == idx:
-    #     parent.appendChild(tag)
-    #   else:
-    #     parent.insertBefore(tag, parent.children[idx])
-      # elem.outerHTML = cstring($tag)
+    var
+      current = document.querySelector("[data-" & self.uniqCompId & "]")
+      elements = newSeq[Element]()
+    for tag in compTmpData.children:
+      if not current.isNil:
+        elements.add(current)
+        current = current.nextSibling.Element
+    # echo elements.len
+    for i in countdown(elements.len-1, 0, 1):
+      let
+        elem = elements[i]
+        tag = compTmpData.children[i]
+        parent = elem.parentElement
+        idx = index(elem)
+        length = parent.children.len
+      # echo idx, ", ", length
+      elem.remove()
+      if length-1 == idx:
+        parent.appendChild(tag)
+      else:
+        parent.insertBefore(tag, parent.children[idx])
     if activeElement.hasAttribute("id"):
       let actElem = document.getElementById(activeElement.id)
       if not actElem.isNil:
