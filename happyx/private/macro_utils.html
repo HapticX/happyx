@@ -12,10 +12,10 @@
 <link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAA3XAAAN1wFCKJt4AAAAB3RJTUUH4QQQEwksSS9ZWwAAAk1JREFUWMPtll2ITVEUx39nn/O7Y5qR8f05wtCUUr6ZIS++8pEnkZInPImneaCQ5METNdOkeFBKUhMPRIkHKfEuUZSUlGlKPN2TrgfncpvmnntnmlEyq1Z7t89/rf9a6+y99oZxGZf/XeIq61EdtgKXgdXA0xrYAvBjOIF1AI9zvjcC74BSpndrJPkBWDScTF8Aa4E3wDlgHbASaANmVqlcCnwHvgDvgVfAJ+AikAAvgfVZwLnSVZHZaOuKoQi3ZOMi4NkYkpe1p4J7A8BpYAD49hfIy/oqG0+hLomiKP2L5L+1ubn5115S+3OAn4EnwBlgMzCjyt6ZAnQCJ4A7wOs88iRJHvw50HoujuPBoCKwHWiosy8MdfZnAdcHk8dxXFJ3VQbQlCTJvRBCGdRbD4M6uc5glpY3eAihpN5S5w12diSEcCCEcKUO4ljdr15T76ur1FDDLIQQ3qv71EdDOe3Kxj3leRXyk+pxdWnFWod6Wt2bY3de3aSuUHcPBVimHs7mK9WrmeOF6lR1o9qnzskh2ar2qm1qizpfXaPeVGdlmGN5pb09qMxz1Xb1kLqgzn1RyH7JUXW52lr5e/Kqi9qpto7V1atuUzfnARrV7jEib1T76gG2qxdGmXyiekkt1GswPTtek0aBfJp6YySGBfWg2tPQ0FAYgf1stUfdmdcjarbYJEniKIq6gY/Aw+zWHAC+p2labGpqiorFYgGYCEzN7oQdQClN07O1/EfDyGgC0ALMBdYAi4FyK+4H3gLPsxfR1zRNi+NP7nH5J+QntnXe5B5mpfQAAAAASUVORK5CYII=">
 
 <!-- CSS -->
-<link rel="stylesheet" type="text/css" href="../../nimdoc.out.css">
+<link rel="stylesheet" type="text/css" href="../../nimdoc.out.css?v=2.0.4">
 
 <!-- JS -->
-<script type="text/javascript" src="../../dochack.js"></script>
+<script type="text/javascript" src="../../dochack.js?v=2.0.4"></script>
 </head>
 <body>
   <div class="document" id="documentId">
@@ -81,15 +81,15 @@
 
 </ul>
 <ul class="simple nested-toc-section">buildHtmlProcedure
-  <li><a class="reference" href="#buildHtmlProcedure%2CNimNode%2CNimNode%2Cbool%2CNimNode%2Cbool%2Cstring%2CNimNode%2Cseq%5BNimNode%5D" title="buildHtmlProcedure(root, body: NimNode; inComponent: bool = false;
+  <li><a class="reference" href="#buildHtmlProcedure%2CNimNode%2CNimNode%2Cbool%2CNimNode%2Cbool%2Cstring%2CNimNode%2Cseq%5BNimNode%5D%2CNimNode" title="buildHtmlProcedure(root, body: NimNode; inComponent: bool = false;
                    componentName: NimNode = newEmptyNode();
                    inCycle: bool = false; cycleTmpVar: string = &quot;&quot;;
                    compTmpVar: NimNode = newEmptyNode();
-                   cycleVars: var seq[NimNode]): NimNode">buildHtmlProcedure(root, body: NimNode; inComponent: bool = false;
+                   cycleVars: var seq[NimNode]; parent: NimNode = newEmptyNode()): NimNode">buildHtmlProcedure(root, body: NimNode; inComponent: bool = false;
                    componentName: NimNode = newEmptyNode();
                    inCycle: bool = false; cycleTmpVar: string = &quot;&quot;;
                    compTmpVar: NimNode = newEmptyNode();
-                   cycleVars: var seq[NimNode]): NimNode</a></li>
+                   cycleVars: var seq[NimNode]; parent: NimNode = newEmptyNode()): NimNode</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">discardStmt
@@ -263,12 +263,13 @@
 
 </div>
 <div id="buildHtmlProcedure-procs-all">
-  <div id="buildHtmlProcedure,NimNode,NimNode,bool,NimNode,bool,string,NimNode,seq[NimNode]">
-  <dt><pre><span class="Keyword">proc</span> <a href="#buildHtmlProcedure%2CNimNode%2CNimNode%2Cbool%2CNimNode%2Cbool%2Cstring%2CNimNode%2Cseq%5BNimNode%5D"><span class="Identifier">buildHtmlProcedure</span></a><span class="Other">(</span><span class="Identifier">root</span><span class="Other">,</span> <span class="Identifier">body</span><span class="Other">:</span> <span class="Identifier">NimNode</span><span class="Other">;</span> <span class="Identifier">inComponent</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">;</span>
+  <div id="buildHtmlProcedure,NimNode,NimNode,bool,NimNode,bool,string,NimNode,seq[NimNode],NimNode">
+  <dt><pre><span class="Keyword">proc</span> <a href="#buildHtmlProcedure%2CNimNode%2CNimNode%2Cbool%2CNimNode%2Cbool%2Cstring%2CNimNode%2Cseq%5BNimNode%5D%2CNimNode"><span class="Identifier">buildHtmlProcedure</span></a><span class="Other">(</span><span class="Identifier">root</span><span class="Other">,</span> <span class="Identifier">body</span><span class="Other">:</span> <span class="Identifier">NimNode</span><span class="Other">;</span> <span class="Identifier">inComponent</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">;</span>
                         <span class="Identifier">componentName</span><span class="Other">:</span> <span class="Identifier">NimNode</span> <span class="Other">=</span> <span class="Identifier">newEmptyNode</span><span class="Other">(</span><span class="Other">)</span><span class="Other">;</span>
                         <span class="Identifier">inCycle</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">;</span> <span class="Identifier">cycleTmpVar</span><span class="Other">:</span> <span class="Identifier">string</span> <span class="Other">=</span> <span class="StringLit">&quot;&quot;</span><span class="Other">;</span>
                         <span class="Identifier">compTmpVar</span><span class="Other">:</span> <span class="Identifier">NimNode</span> <span class="Other">=</span> <span class="Identifier">newEmptyNode</span><span class="Other">(</span><span class="Other">)</span><span class="Other">;</span>
-                        <span class="Identifier">cycleVars</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">NimNode</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">NimNode</span> {.
+                        <span class="Identifier">cycleVars</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">NimNode</span><span class="Other">]</span><span class="Other">;</span>
+                        <span class="Identifier">parent</span><span class="Other">:</span> <span class="Identifier">NimNode</span> <span class="Other">=</span> <span class="Identifier">newEmptyNode</span><span class="Other">(</span><span class="Other">)</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">NimNode</span> {.
     <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
@@ -462,7 +463,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2024-05-05 02:54:22 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2024-05-09 14:37:42 UTC</small>
       </div>
     </div>
   </div>

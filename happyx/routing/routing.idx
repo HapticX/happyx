@@ -6,11 +6,12 @@ nim	registerRouteParamType	happyx/routing/routing.html#registerRouteParamType.m,
 nim	newPathParamObj	happyx/routing/routing.html#newPathParamObj,string,string,string,bool,bool	proc newPathParamObj(name, paramType, defaultValue: string; optional, mutable: bool): PathParamObj		145
 nim	newRequestModelObj	happyx/routing/routing.html#newRequestModelObj,string,string,string,bool	proc newRequestModelObj(name, typeName, target: string; mutable: bool): RequestModelObj		149
 nim	handleRoute	happyx/routing/routing.html#handleRoute,string	proc handleRoute(route: string): RouteDataObj		153
-nim	exportRouteArgs	happyx/routing/routing.html#exportRouteArgs,NimNode,NimNode,NimNode	proc exportRouteArgs(urlPath, routePath, body: NimNode): NimNode		278
-nim	parseBoolOrJString	happyx/routing/routing.html#parseBoolOrJString,string	proc parseBoolOrJString(str: string): JsonNode		571
-nim	parseIntOrJString	happyx/routing/routing.html#parseIntOrJString,string	proc parseIntOrJString(str: string): JsonNode		576
-nim	parseFloatOrJString	happyx/routing/routing.html#parseFloatOrJString,string	proc parseFloatOrJString(str: string): JsonNode		581
-nim	convertJson	happyx/routing/routing.html#convertJson,RequestModelData,string	proc convertJson(self: RequestModelData; body: string): JsonNode		610
-nim	RouteObject	happyx/routing/routing.html#RouteObject	type RouteObject		646
-nim	getRouteParams	happyx/routing/routing.html#getRouteParams,RouteDataObj,seq[RegexMatch2],string,seq[HandlerParam],string,bool	proc getRouteParams(routeData: RouteDataObj; found_regexp_matches: seq[RegexMatch2];\n               urlPath: string = ""; handlerParams: seq[HandlerParam] = @[];\n               body: string = ""; force: bool = false): RouteObject		648
-nim	pathParams	happyx/routing/routing.html#pathParams.m,untyped	macro pathParams(body: untyped): untyped		909
+nim	exportRouteArgs	happyx/routing/routing.html#exportRouteArgs,NimNode,NimNode,NimNode	proc exportRouteArgs(urlPath, routePath, body: NimNode): NimNode		285
+nim	parseBoolOrJString	happyx/routing/routing.html#parseBoolOrJString,string	proc parseBoolOrJString(str: string): JsonNode		597
+nim	parseIntOrJString	happyx/routing/routing.html#parseIntOrJString,string	proc parseIntOrJString(str: string): JsonNode		602
+nim	parseFloatOrJString	happyx/routing/routing.html#parseFloatOrJString,string	proc parseFloatOrJString(str: string): JsonNode		607
+nim	convertJson	happyx/routing/routing.html#convertJson,RequestModelData,string	proc convertJson(self: RequestModelData; body: string): JsonNode		636
+nim	RouteObject	happyx/routing/routing.html#RouteObject	type RouteObject		672
+nim	getRouteParams	happyx/routing/routing.html#getRouteParams,RouteDataObj,seq[RegexMatch2],string,seq[HandlerParam],string,bool	proc getRouteParams(routeData: RouteDataObj; found_regexp_matches: seq[RegexMatch2];\n               urlPath: string = ""; handlerParams: seq[HandlerParam] = @[];\n               body: string = ""; force: bool = false): RouteObject		674
+nim	pathParams	happyx/routing/routing.html#pathParams.m,untyped	macro pathParams(body: untyped): untyped		935
+heading	Examples	happyx/routing/routing.html#examples	  Examples		0
