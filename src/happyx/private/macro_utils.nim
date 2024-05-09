@@ -36,7 +36,7 @@ when not declared(macrocache.contains):
 proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
                          componentName: NimNode = newEmptyNode(), inCycle: bool = false,
                          cycleTmpVar: string = "", compTmpVar: NimNode = newEmptyNode(),
-                         cycleVars: var seq[NimNode]): NimNode
+                         cycleVars: var seq[NimNode], parent: NimNode = newEmptyNode()): NimNode
 
 
 proc bracket*(node: varargs[NimNode]): NimNode =
@@ -304,7 +304,7 @@ proc useComponent*(statement: NimNode, inCycle, inComponent: bool,
         newCall(
           "addArgIter",
           ident(componentData),
-          newCall("&", newStrLitNode"data-", newDotExpr(ident(componentName), ident(UniqueComponentId)))
+          newCall("&", newLit"data-", newDotExpr(ident(componentName), ident(UniqueComponentId)))
         )
       else:
         newEmptyNode(),
@@ -313,15 +313,15 @@ proc useComponent*(statement: NimNode, inCycle, inComponent: bool,
           newStmtList(
             newNimNode(nnkPragma).add(newNimNode(nnkExprColonExpr).add(
               ident"emit",
-              newStrLitNode(fmt"window.addEventListener('beforeunload', `{componentData}`.`exited`);")
+              newLit(fmt"window.addEventListener('beforeunload', `{componentData}`.`exited`);")
             )),
             newNimNode(nnkPragma).add(newNimNode(nnkExprColonExpr).add(
               ident"emit",
-              newStrLitNode(fmt"window.addEventListener('pagehide', `{componentData}`.`pageHide`);")
+              newLit(fmt"window.addEventListener('pagehide', `{componentData}`.`pageHide`);")
             )),
             newNimNode(nnkPragma).add(newNimNode(nnkExprColonExpr).add(
               ident"emit",
-              newStrLitNode(fmt"window.addEventListener('pageshow', `{componentData}`.`pageShow`);")
+              newLit(fmt"window.addEventListener('pageshow', `{componentData}`.`pageShow`);")
             )),
           )
         else:
@@ -421,7 +421,7 @@ proc attribute*(attr: NimNode, inComponent: bool = false): NimNode =
         else:
           attr[1]
     newColonExpr(
-      newStrLitNode(k),
+      newLit(k),
       formatNode(v)
     )
 
@@ -444,16 +444,29 @@ proc addAttribute*(node, key, value: NimNode, inComponent: bool = false) =
         formatNode(newLit($value[1] & "{self.uniqCompId}"))
       else:
         value
-  if node.len == 2:
-    node.add(newCall("newStringTable", newNimNode(nnkTableConstr).add(
-      newColonExpr(newStrLitNode(k), v)
-    )))
-  elif node[2].kind == nnkCall and node[2][0] == ident"newStringTable":
-    node[2][1].add(newColonExpr(newStrLitNode(k), v))
-  else:
-    node.insert(2, newCall("newStringTable", newNimNode(nnkTableConstr).add(
-      newColonExpr(newStrLitNode(k), v)
-    )))
+  if node.kind == nnkCall:
+    if node.len == 2:
+      node.add(newCall("newStringTable", newNimNode(nnkTableConstr).add(
+        newColonExpr(newLit(k), v)
+      )))
+    elif node[2].kind == nnkCall and node[2][0] == ident"newStringTable":
+      node[2][1].add(newColonExpr(newLit(k), v))
+    else:
+      node.insert(2, newCall("newStringTable", newNimNode(nnkTableConstr).add(
+        newColonExpr(newLit(k), v)
+      )))
+  elif node.kind == nnkStmtList and node[0].kind == nnkVarSection:
+    let n = node[0][0][2]
+    if n.len == 2:
+      n.add(newCall("newStringTable", newNimNode(nnkTableConstr).add(
+        newColonExpr(newLit(k), v)
+      )))
+    elif n[2].kind == nnkCall and n[2][0] == ident"newStringTable":
+      n[2][1].add(newColonExpr(newLit(k), v))
+    else:
+      n.insert(2, newCall("newStringTable", newNimNode(nnkTableConstr).add(
+        newColonExpr(newLit(k), v)
+      )))
 
 
 proc endsWithBuildHtml*(statement: NimNode): bool =
@@ -543,11 +556,13 @@ proc replaceSelfComponent*(statement, componentName: NimNode, parent: NimNode = 
 proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
                          componentName: NimNode = newEmptyNode(), inCycle: bool = false,
                          cycleTmpVar: string = "", compTmpVar: NimNode = newEmptyNode(),
-                         cycleVars: var seq[NimNode]): NimNode =
+                         cycleVars: var seq[NimNode], parent: NimNode = newEmptyNode()): NimNode =
   ## Builds HTML
   ## 
   ## Here you can use components and event handlers
   let elementName = newLit(getTagName($root))
+  var events = newStmtList()
+  var elemEventId = uniqueId.value
   result = newCall("initTag", elementName)
 
   for statement in body:
@@ -572,7 +587,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
       # Real Nim code
       result.add(newStmtList(
         statement[1],
-        newCall("initTag", newStrLitNode"div", newCall("@", newNimNode(nnkBracket)), newLit(true))
+        newCall("initTag", newLit"div", newCall("@", newNimNode(nnkBracket)), newLit(true))
       ))
     
     elif statement.kind == nnkCall and statement[0] == ident"rawHtml":
@@ -689,21 +704,21 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
                 newCall(
                   "addArgIter",
                   ident(componentData),
-                  newCall("&", newStrLitNode"data-", newDotExpr(compName, ident(UniqueComponentId)))
+                  newCall("&", newLit"data-", newDotExpr(compName, ident(UniqueComponentId)))
                 ),
                 when defined(js):
                   newStmtList(
                     newNimNode(nnkPragma).add(newNimNode(nnkExprColonExpr).add(
                       ident"emit",
-                      newStrLitNode(fmt"window.addEventListener('beforeunload', `{componentData}`.`exited`);")
+                      newLit(fmt"window.addEventListener('beforeunload', `{componentData}`.`exited`);")
                     )),
                     newNimNode(nnkPragma).add(newNimNode(nnkExprColonExpr).add(
                       ident"emit",
-                      newStrLitNode(fmt"window.addEventListener('pagehide', `{componentData}`.`pageHide`);")
+                      newLit(fmt"window.addEventListener('pagehide', `{componentData}`.`pageHide`);")
                     )),
                     newNimNode(nnkPragma).add(newNimNode(nnkExprColonExpr).add(
                       ident"emit",
-                      newStrLitNode(fmt"window.addEventListener('pageshow', `{componentData}`.`pageShow`);")
+                      newLit(fmt"window.addEventListener('pageshow', `{componentData}`.`pageShow`);")
                     )),
                   )
                 else:
@@ -741,21 +756,21 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
                 newCall(
                   "addArgIter",
                   ident(componentData),
-                  newCall("&", newStrLitNode"data-", newDotExpr(statement[1], ident(UniqueComponentId)))
+                  newCall("&", newLit"data-", newDotExpr(statement[1], ident(UniqueComponentId)))
                 ),
                 when defined(js):
                   newStmtList(
                     newNimNode(nnkPragma).add(newNimNode(nnkExprColonExpr).add(
                       ident"emit",
-                      newStrLitNode(fmt"window.addEventListener('beforeunload', `{componentData}`.`exited`);")
+                      newLit(fmt"window.addEventListener('beforeunload', `{componentData}`.`exited`);")
                     )),
                     newNimNode(nnkPragma).add(newNimNode(nnkExprColonExpr).add(
                       ident"emit",
-                      newStrLitNode(fmt"window.addEventListener('pagehide', `{componentData}`.`pageHide`);")
+                      newLit(fmt"window.addEventListener('pagehide', `{componentData}`.`pageHide`);")
                     )),
                     newNimNode(nnkPragma).add(newNimNode(nnkExprColonExpr).add(
                       ident"emit",
-                      newStrLitNode(fmt"window.addEventListener('pageshow', `{componentData}`.`pageShow`);")
+                      newLit(fmt"window.addEventListener('pageshow', `{componentData}`.`pageShow`);")
                     )),
                   )
                 else:
@@ -859,7 +874,8 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
       if inComponent:
         procedure.body = statement[^1]
         procedure.body.insert(0, newVarStmt(ident"self", newCall(componentName, ident"self")))
-        args.insert(1, newIdentDefs(ident"self", ident"BaseComponent"))
+        when not defined(js):
+          args.insert(1, newIdentDefs(ident"self", ident"BaseComponent"))
         # Detect in component and in cycle
         if inCycle:
           let
@@ -870,46 +886,64 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
           for i in cycleVars:
             procParams.add(newIdentDefs(i, ident"auto"))
             callRegister.add(i)
-          result.addAttribute(
-            newLit(evname),
-            newCall(
-              "fmt",
-              newStrLitNode(
-                "callComponentEventHandler('{self." & UniqueComponentId & "}', {-(" &
-                fmt"{uniqueId.value}" & cycleVar & ", event)"
+          when defined(js):
+            events.add(
+              newCall(
+                "addEventListener",
+                newDotExpr(ident("__el" & $elemEventId), ident"Element"),
+                newLit(event), procedure
               )
             )
-          )
-          result.add(
-            newStmtList(
-              newProc(ident(registerEvent), procParams, procedure),
+          else:
+            result.addAttribute(
+              newLit(evname),
               newCall(
-                "[]=",
-                ident"componentEventHandlers",
-                newCall("-", newCall("+", newIntLitNode(uniqueId.value), ident(cycleTmpVar))),
-                callRegister
-              ),
-              newCall("inc", ident(cycleTmpVar)),
-              newCall("initTag", newLit"div", newCall("@", newNimNode(nnkBracket)), newLit(true))
+                "fmt",
+                newLit(
+                  "callComponentEventHandler('{self." & UniqueComponentId & "}', {-(" &
+                  fmt"{uniqueId.value}" & cycleVar & ", event)"
+                )
+              )
             )
-          )
+            result.add(
+              newStmtList(
+                newProc(ident(registerEvent), procParams, procedure),
+                newCall(
+                  "[]=",
+                  ident"componentEventHandlers",
+                  newCall("-", newCall("+", newLit(uniqueId.value), ident(cycleTmpVar))),
+                  callRegister
+                ),
+                newCall("inc", ident(cycleTmpVar)),
+                newCall("initTag", newLit"div", newCall("@", newNimNode(nnkBracket)), newLit(true)),
+              )
+            )
         # In component and not in cycle
         else:
-          result.addAttribute(
-            newLit(evname),
-            newCall(
-              "fmt",
-              newLit(
-                "callComponentEventHandler('{self." & UniqueComponentId & "}', " & fmt"{uniqueId.value}, event)"
+          when defined(js):
+            events.add(
+              newCall(
+                "addEventListener",
+                newDotExpr(ident("__el" & $elemEventId), ident"Element"),
+                newLit(event), procedure
               )
             )
-          )
-          result.add(newStmtList(
-            newCall("once",
-              newCall("[]=", ident"componentEventHandlers", newIntLitNode(uniqueId.value), procedure)
-            ), newCall("initTag", newLit"div", newCall("@", newNimNode(nnkBracket)), newLit(true))
-          ))
-        procedure.body.insert(0, newAssignment(ident"currentComponent", newCall("fmt", newStrLitNode"{self.uniqCompId}")))
+          else:
+            result.addAttribute(
+              newLit(evname),
+              newCall(
+                "fmt",
+                newLit(
+                  "callComponentEventHandler('{self." & UniqueComponentId & "}', " & fmt"{uniqueId.value}, event)"
+                )
+              )
+            )
+            result.add(newStmtList(
+              newCall("once",
+                newCall("[]=", ident"componentEventHandlers", newLit(uniqueId.value), procedure)
+              ), newCall("initTag", newLit"div", newCall("@", newNimNode(nnkBracket)), newLit(true))
+            ))
+        procedure.body.insert(0, newAssignment(ident"currentComponent", newCall("fmt", newLit"{self.uniqCompId}")))
         procedure.body.add(newAssignment(ident"currentComponent", newLit""))
       else:
         procedure.body = statement[^1]
@@ -923,37 +957,60 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
           for i in cycleVars:
             procParams.add(newIdentDefs(i, ident"any"))
             callRegister.add(i)
-          result.addAttribute(
-            newStrLitNode(evname),
-            newCall(
-              "fmt",
-              newLit("callEventHandler({-(" & fmt"{uniqueId.value}" & cycleVar & ", event)")
-            )
-          )
-          result.add(
-            newStmtList(
-              newProc(ident(registerEvent), procParams, procedure),
+          when defined(js):
+            events.add(
               newCall(
-                "[]=",
-                ident"eventHandlers",
-                newCall("-", newCall("+", newLit(uniqueId.value), ident(cycleTmpVar))),
-                callRegister
-              ),
-              newCall("inc", ident(cycleTmpVar)),
-              newCall("initTag", newLit"div", newCall("@", newNimNode(nnkBracket)), newLit(true))
+                "addEventListener",
+                newDotExpr(ident("__el" & $elemEventId), ident"Element"),
+                newLit(event), procedure
+              )
             )
-          )
+          else:
+            result.addAttribute(
+              newLit(evname),
+              newCall(
+                "fmt",
+                newLit("callEventHandler({-(" & fmt"{uniqueId.value}" & cycleVar & ", event)")
+              )
+            )
+            result.add(
+              newStmtList(
+                newProc(ident(registerEvent), procParams, procedure),
+                newCall(
+                  "[]=",
+                  ident"eventHandlers",
+                  newCall("-", newCall("+", newLit(uniqueId.value), ident(cycleTmpVar))),
+                  callRegister
+                ),
+                newCall("inc", ident(cycleTmpVar)),
+                newCall("initTag", newLit"div", newCall("@", newNimNode(nnkBracket)), newLit(true))
+              )
+            )
         # not in component and not in cycle
         else:
-          result.addAttribute(
-            newLit(evname),
-            newLit(fmt"callEventHandler({uniqueId.value}, event)")
-          )
-          result.add(newStmtList(
-            newCall("once",
-              newCall("[]=", ident"eventHandlers", newIntLitNode(uniqueId.value), procedure)
-            ), newCall("initTag", newLit"div", newCall("@", newNimNode(nnkBracket)), newLit(true))
-          ))
+          when defined(js):
+            events.add(
+              newCall(
+                "addEventListener",
+                newDotExpr(ident("__el" & $elemEventId), ident"Element"),
+                newLit(event), procedure
+              )
+            )
+          else:
+            result.addAttribute(
+              newLit(evname),
+              newLit(fmt"callEventHandler({uniqueId.value}, event)")
+            )
+            result.add(newStmtList(
+              newCall("once",
+                newCall("[]=", ident"eventHandlers", newLit(uniqueId.value), procedure)
+              ),
+              newCall("initTag", newLit"div", newCall("@", newNimNode(nnkBracket)), newLit(true))
+            ))
+      # echo result.toStrLit
+      # if events.len > 0:
+      # echo events.len
+      # echo "NEW EVENT: ", events[^1].toStrLit
       inc uniqueId
     
     elif statement.kind in {nnkIdent, nnkBracketExpr, nnkDotExpr} and statement notin [ident"@", ident":="]:
@@ -1201,3 +1258,12 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
       for tag in tagRefs:
         arr.add(tag)
       result.add(newCall("@", arr))
+  if events.len > 0:
+    inc uniqueId, -1
+    result = newStmtList(
+      newVarStmt(ident("__el" & $elemEventId), result.copy())
+    )
+    for i in events:
+      result.add(i)
+    result.add(ident("__el" & $elemEventId))
+    inc uniqueId

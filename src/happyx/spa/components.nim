@@ -9,6 +9,7 @@ import
   std/strformat,
   std/macros,
   std/macrocache,
+  std/htmlparser,
   std/os,
   # Thirdparty
   regex,
@@ -63,6 +64,15 @@ proc replaceSuperCall(statement, parentComponent: NimNode, funcName: string, nee
       replaceSuperCall(child, parentComponent, funcName, needDiscard, parentHasGenerics)
 
 
+when defined(js):
+  proc index(el: Element): int =
+    let children = el.parentNode.childNodes
+    for i in 0..children.len-1:
+      if children[i] == el:
+        return i
+    return -1
+
+
 template reRenderTmpl*() =
   let tmpData = "[data-" & self.uniqCompId & "]"
   when defined(js):
@@ -70,19 +80,45 @@ template reRenderTmpl*() =
   let compTmpData = self.render
   currentComponentsList.del(currentComponentsList.find(self.BaseComponent))
   compTmpData.addArgIter("data-" & self.uniqCompId)
+  echo tmpData
   when defined(js):
     var
       current = document.querySelector(tmpData)
-      elements = newSeq[Element]()
-    for tag in compTmpData.children:
-      if not current.isNil:
-        elements.add(current)
-        current = current.nextSibling.Element
-    for i in 0..<elements.len:
-      let
-        elem = elements[i]
-        tag = compTmpData.children[i]
-      elem.outerHTML = cstring($tag)
+      styleE = compTmpData.lastChild.cloneNode(true)
+      newE = current.cloneNode(true)
+      parent = current.parentElement
+      idx = index(current)
+      length = parent.children.len
+    echo idx, ", ", length
+    current.remove()
+    compTmpData.lastChild.remove()
+    if length-1 == idx:
+      parent.appendChild(compTmpData)
+    else:
+      parent.insertBefore(compTmpData, parent.children[idx])
+    compTmpData.appendChild(styleE)
+    # current.appendChild()
+    # current.innerHTML = ""
+    # current.appendChild()
+      # elements = newSeq[Element]()
+    # for tag in compTmpData.children:
+    #   if not current.isNil:
+    #     elements.add(current)
+    #     current = current.nextSibling.Element
+    # for i in 0..<elements.len:
+    #   let
+    #     elem = elements[i]
+    #     tag = compTmpData.children[i]
+    #     parent = elem.parentElement
+    #     idx = index(elem)
+    #     length = parent.children.len
+    #   echo idx, ", ", length
+    #   elem.remove()
+    #   if length-1 == idx:
+    #     parent.appendChild(tag)
+    #   else:
+    #     parent.insertBefore(tag, parent.children[idx])
+      # elem.outerHTML = cstring($tag)
     if activeElement.hasAttribute("id"):
       let actElem = document.getElementById(activeElement.id)
       if not actElem.isNil:
@@ -553,11 +589,16 @@ macro component*(name, body: untyped): untyped =
             )
           elif s[^1][0].kind == nnkCall and s[^1][0][0].kind == nnkIdent and $s[^1][0][0] == "buildStyle":
             # Pure CSS
-            let css = getAst(buildStyle(s[^1][0][1]))[1]
+            let
+              css = getAst(buildStyle(s[^1][0][1]))[1]
             styleStmtList = newStmtList(
               newAssignment(
                 ident"result",
-                newCall("fmt", newLit($css), newLit('<'), newLit('>'))
+                newCall("replace",
+                  newCall("fmt", newLit($css), newLit('<'), newLit('>')),
+                  newCall("re2", newLit("([\\S ]+?) *\\{")),
+                  newCall("fmt", newLit("$1[data-{self.uniqCompId}] {{"))
+                )
               )
             )
           else:
@@ -820,7 +861,7 @@ macro component*(name, body: untyped): untyped =
           )
         )
       elif extendsOf == "":
-        newStrLitNode("")
+        newLit("")
       elif extendsHasGenerics:
         newCall("procCall", newDotExpr(newCast(ident"self", extendsOfNode), ident"style"))
       else:
@@ -879,7 +920,7 @@ macro component*(name, body: untyped): untyped =
             )))
           ),
           afterStmtList,
-          newAssignment(ident"currentComponent", newStrLitNode("")),
+          newAssignment(ident"currentComponent", newLit("")),
         )
         when not defined(js):
           b = pragmaBlock([ident"gcsafe"], b)
@@ -995,7 +1036,11 @@ macro importComponent*(body: untyped): untyped =
   # Template
   if templateSource.len > 0:
     var
-      tagData =  initTag("div", @[tagFromString(componentData[templateSource[0].group(0)])], true)
+      tagData = 
+        when defined(js):
+          initTagVm("div", @[tagFromStringVm(componentData[templateSource[0].group(0)])], true)
+        else:
+          initTag("div", @[tagFromString(componentData[templateSource[0].group(0)])], true)
       statements = newStmtList()
     
     proc inCreatedComponents(tag: string): string =
@@ -1006,7 +1051,12 @@ macro importComponent*(body: untyped): untyped =
           return key
       ""
     
-    proc handle(tag: TagRef, parent: var NimNode) =
+    when defined(js):
+      discard
+    else:
+      type VmTagRef = TagRef
+    
+    proc handle(tag: VmTagRef, parent: var NimNode) =
       var ifStartIndex = -1
       for child in tag.children:
         # @click, @event, etc
@@ -1089,9 +1139,9 @@ macro importComponent*(body: untyped): untyped =
                   if child.name.toLower() == "script":
                     scriptLanguage = val
                   elif call.kind in [nnkElifBranch, nnkOfBranch, nnkElse, nnkForStmt, nnkWhileStmt]:
-                    call[^1][^1].add(newNimNode(nnkExprEqExpr).add(newStrLitNode(key), newStrLitNode(val)))
+                    call[^1][^1].add(newNimNode(nnkExprEqExpr).add(newLit(key), newLit(val)))
                   else:
-                    call.add(newNimNode(nnkExprEqExpr).add(newStrLitNode(key), newStrLitNode(val)))
+                    call.add(newNimNode(nnkExprEqExpr).add(newLit(key), newLit(val)))
                 else:
                   if call.kind in [nnkElifBranch, nnkOfBranch, nnkElse, nnkForStmt, nnkWhileStmt]:
                     if key.startsWith("h-on"):
@@ -1101,7 +1151,7 @@ macro importComponent*(body: untyped): untyped =
                         )
                       ))
                     else:
-                      call[^1][^1].add(newNimNode(nnkExprEqExpr).add(newStrLitNode(key), newStrLitNode(val)))
+                      call[^1][^1].add(newNimNode(nnkExprEqExpr).add(newLit(key), newLit(val)))
                   elif key.startsWith("h-on"):
                     eventHandlers.add(newCall(
                       newNimNode(nnkPrefix).add(ident"@", ident(key[4..^1])), ident"event", newStmtList(
@@ -1109,7 +1159,7 @@ macro importComponent*(body: untyped): untyped =
                       )
                     ))
                   else:
-                    call.add(newNimNode(nnkExprEqExpr).add(newStrLitNode(key), newStrLitNode(val)))
+                    call.add(newNimNode(nnkExprEqExpr).add(newLit(key), newLit(val)))
           elif name.len > 0:
             call = newNimNode(nnkCommand).add(ident"component", ident(name))
           else:
@@ -1163,7 +1213,7 @@ macro importComponent*(body: untyped): untyped =
       newNimNode(nnkAccQuoted).add(ident"script"),
       newStmtList(newNimNode(nnkPragma).add(newNimNode(nnkExprColonExpr).add(
         ident"emit",
-        newStrLitNode(componentData[scriptJSSource[0].group(0)])
+        newLit(componentData[scriptJSSource[0].group(0)])
       )))
     ))
   elif scriptNimSource.len > 0:

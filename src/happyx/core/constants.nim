@@ -8,12 +8,10 @@
 ## | `-d:micro`           | enables MicroAsyncHttpServer as alternative HTTP Server ⚡    | ❌         |
 ## | `-d:translate`       | enables automatic translate for returns 🌐                     | ❌         |
 ## | `-d:debug`           | enables debug logging 💻                                      | ❌         |
-## | `-d:oldRenderer`     | enables old renderer for SPA 🍍                               | ❌         |
 ## | `-d:cryptoMethod`    | choose crypto method for `generate_password` methods 🔐       | ✅         |
 ## | `-d:numThreads`      | choose number of threads (httpx/httpbeast) ⌛                 |  ✅        |
 ## | `-d:sessionIdLength` | choose length of session ID ✍                                |  ✅        |
 ## | `-d:disableApiDoc`   | disables built-in API documentation 📕                        | ❌         |
-## | `-d:disableORM`      | disables built-in ORM 📑                                      | ❌         |
 ## | `-d:appName`         | choose name of application (SSR/SSG) 📕                       | ✅         |
 ## | `-d:apiDocsPath`     | choose path for API documentation 📕                          |  ✅        |
 ## | `-d:noliveviews`     | Disables LiveViews at SSR/SSG (It helpful for components) 📕  |  ❌        |
@@ -96,7 +94,7 @@ const
   nim_2_0_0* = (NimMajor, NimMinor, NimPatch) >= (2, 0, 0)
   # Framework version
   HpxMajor* = 3
-  HpxMinor* = 9
+  HpxMinor* = 10
   HpxPatch* = 0
   HpxVersion* = $HpxMajor & "." & $HpxMinor & "." & $HpxPatch
 

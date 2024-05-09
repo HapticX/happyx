@@ -174,7 +174,7 @@ macro elem*(name: untyped): untyped =
       )),
       newNimNode(nnkPragma).add(newNimNode(nnkExprColonExpr).add(
         ident"emit",
-        newStrLitNode(fmt"`{uniqName}` = document.getElementById('{nameStr}');")
+        newLit(fmt"`{uniqName}` = document.getElementById('{nameStr}');")
       )),
       ident(uniqName)
     )
@@ -262,18 +262,9 @@ else:
 when defined(js):
   proc renderVdom*(app: App, tag: TagRef, force: bool = false) =
     ## Rerender DOM with VDOM
-    # compile with `-d:oldRenderer` to work with old renderer
-    when enableOldRenderer:
-      document.getElementById(app.appId).innerHTML = $tag
-    else:
-      let elem = document.getElementById(app.appId)
-      var
-        realDom = elem.Node
-        virtualDom = tag.toDom().n
-      # echo virtualDom.innerHTML
-      # echo realDom.innerHTML
-      # compareEdit(realDom, virtualDom)
-    realDom.innerHTML = virtualDom.innerHTML
+    var realDom = document.getElementById(app.appId).Node
+    realDom.innerHTML = ""
+    realDom.appendChild(tag)
     if force:
       for comp in createdComponentsList:
         comp.exited(comp, nil)
@@ -587,7 +578,7 @@ macro routes*(app: App, body: untyped): untyped =
 
   for key, val in sugarRoutes.pairs():
     if ($val[0]).toLower() in ["build", "page", "any"]:
-      body.add(newCall(newStrLitNode(key), val[1]))
+      body.add(newCall(newLit(key), val[1]))
   
   var
     cookiesInVar = newDotExpr(ident"document", ident"cookie")
@@ -719,14 +710,14 @@ macro routes*(app: App, body: untyped): untyped =
       newStmtList(
         newNimNode(nnkPragma).add(newNimNode(nnkExprColonExpr).add(
           ident"emit",
-          newStrLitNode(
+          newLit(
             "window.addEventListener('beforeunload', (e) => {"
           )
         )),
         finalize,
         newNimNode(nnkPragma).add(newNimNode(nnkExprColonExpr).add(
           ident"emit",
-          newStrLitNode(
+          newLit(
             "});"
           )
         )

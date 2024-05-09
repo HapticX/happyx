@@ -11,7 +11,7 @@ component HelloWorld:
       button:
         "Increase"
         @click:
-          echo self.counter
+          echo self.counter, " -> ", self.uniqCompId
           self.counter += 1.0
       button:
         "Go to /visit"
@@ -21,8 +21,8 @@ component HelloWorld:
   # @updated:
   #   echo self.render()
   
-  `script`:
-    echo self.counter
+  # `script`:
+  #   echo self.counter
   
   `style`:
     buildStyle:

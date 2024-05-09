@@ -10,7 +10,8 @@ import
     create_command, build_command,
     dev_command, serve_command,
     html2tag_command, help_command,
-    update_command, project_info_command
+    update_command, project_info_command,
+    flags_command
   ]
 
 import illwill except
@@ -25,6 +26,7 @@ proc html2tagCommandAux(output: string = "", args: seq[string]): int = html2tagC
 proc updateCommandAux(args: seq[string]): int = updateCommand(args)
 proc serveCommandAux(host: string = "0.0.0.0", port: int = 80): int = serveCommand(host, port)
 proc projectInfoCommandAux(): int = projectInfoCommand()
+proc flagsCommandAux(): int = flagsCommand()
 proc devCommandAux(host: string = "127.0.0.1", port: int = 5000,
                    reload: bool = false): int =
   devCommand(host, port, reload)
@@ -34,6 +36,7 @@ proc createCommandAux(name: string = "", kind: string = "", templates: bool = fa
 
 
 proc mainCommand(version = false): int =
+  ## HappyX main command
   if version:
     styledEcho "HappyX ", fgGreen, HpxVersion
   else:
@@ -52,6 +55,7 @@ when isMainModule:
     [createCommandAux, cmdName = "create"],
     [html2tagCommandAux, cmdName = "html2tag"],
     [updateCommandAux, cmdName = "update"],
+    [flagsCommandAux, cmdName = "flags"],
     [
       mainCommand,
       short = {"version": 'v'}
@@ -77,6 +81,8 @@ when isMainModule:
   case subcmd
   of "build":
     quit(dispatchbuild(cmdline = pars[1..^1]))
+  of "flags":
+    quit(dispatchflags(cmdline = pars[1..^1]))
   of "dev":
     quit(dispatchdev(cmdline = pars[1..^1]))
   of "serve":
@@ -152,6 +158,10 @@ when isMainModule:
       styledEcho "\nUsage:"
       styledEcho fgMagenta, "  hpx info"
       styledEcho fgYellow, "Use ", fgMagenta, "--no-emoji", fgYellow, " flag to disable emoji"
+    of "flags":
+      styledEcho fgBlue, "HappyX", fgMagenta, " flags ", fgWhite, "command displays all HappyX Nim flags."
+      styledEcho "\nUsage:"
+      styledEcho fgMagenta, "  hpx flags"
     else:
       styledEcho fgRed, "Unknown subcommand: ", fgWhite, subcmdHelp
     shutdownCli()

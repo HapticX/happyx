@@ -27,9 +27,9 @@ proc fetchPathParams*(route: var string): tuple[pathParams, models: NimNode] =
   for i in routeData.pathParams:
     params.add(newCall(
       "newPathParamObj",
-      newStrLitNode(i.name),
-      newStrLitNode(i.paramType),
-      newStrLitNode(i.defaultValue),
+      newLit(i.name),
+      newLit(i.paramType),
+      newLit(i.defaultValue),
       newLit(i.optional),
       newLit(i.mutable),
     ))
@@ -37,9 +37,9 @@ proc fetchPathParams*(route: var string): tuple[pathParams, models: NimNode] =
   for i in routeData.requestModels:
     models.add(newCall(
       "newRequestModelObj",
-      newStrLitNode(i.name),
-      newStrLitNode(i.typeName),
-      newStrLitNode(i.target),
+      newLit(i.name),
+      newLit(i.typeName),
+      newLit(i.target),
       newLit(i.mutable),
     ))
   
@@ -62,7 +62,7 @@ proc fetchModelFields*(): NimNode =
     for field in val:
       tableConstr.add(newNimNode(nnkExprColonExpr).add(field[0], field[1]))
     if tableConstr.len > 0:
-      res.add(newNimNode(nnkExprColonExpr).add(newStrLitNode(key), newCall("newStringTable", tableConstr)))
+      res.add(newNimNode(nnkExprColonExpr).add(newLit(key), newCall("newStringTable", tableConstr)))
 
   if res.len > 0:
     newCall("toTable", res)
@@ -113,7 +113,7 @@ proc genApiDoc*(body: var NimNode): NimNode =
         ))
       
   # Get all documentation
-  body.add(newNimNode(nnkCommand).add(ident"get", newStrLitNode(
+  body.add(newNimNode(nnkCommand).add(ident"get", newLit(
     if apiDocsPath.startsWith("/"):
       apiDocsPath
     else:
@@ -122,7 +122,7 @@ proc genApiDoc*(body: var NimNode): NimNode =
     newCall("answerHtml", ident"req", newCall("renderDocsProcedure")),
   )))
   when not exportPython:
-    body.add(newNimNode(nnkCommand).add(ident"get", newStrLitNode(
+    body.add(newNimNode(nnkCommand).add(ident"get", newLit(
       if apiDocsPath.startsWith("/"):
         apiDocsPath & "/openapi.json"
       else:
@@ -225,7 +225,7 @@ proc procApiDocs*(docsData: NimNode): NimNode =
 proc happyxDocs*(docsData: NimNode): NimNode =
   ## Procedure that helps to generate docs route for HappyX
   procApiDocs(docsData).add(
-    newCall("compileTemplateStr", newStrLitNode(IndexApiDocPageTemplate))
+    newCall("compileTemplateStr", newLit(IndexApiDocPageTemplate))
   )
 
 

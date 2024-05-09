@@ -19,11 +19,19 @@ component Test:
   someValue : string = "test"
   `template`:
     tDiv:
-      tInput(id = "test", "type" = "text", value=self.someValue):
-        @keyup(event):
-          self.someValue = $event.target.value
+      tInput(id = "test", type = "text", value=self.someValue):
+        @keyup:
+          echo 123
+          echo $ev.target.value
+          self.someValue = $ev.target.value
+        @input:
+          echo $ev.target.value
+        @click:
+          echo "input focused"
       tButton():
         "Click me"
+        @click:
+          echo 1
       tDiv():
         {self.someValue}
 
