@@ -100,7 +100,7 @@ template reRenderTmpl*() =
     var
       current = document.querySelector("[data-" & self.uniqCompId & "]")
       elements = newSeq[Element]()
-    for tag in compTmpData.children:
+    for tag in compTmpData.childNodes:
       if not current.isNil:
         elements.add(current)
         current = current.nextSibling.Element
@@ -108,16 +108,16 @@ template reRenderTmpl*() =
     for i in countdown(elements.len-1, 0, 1):
       let
         elem = elements[i]
-        tag = compTmpData.children[i]
+        tag = compTmpData.childNodes[i]
         parent = elem.parentElement
         idx = index(elem)
-        length = parent.children.len
+        length = parent.childNodes.len
       # echo idx, ", ", length
       elem.remove()
       if length-1 == idx:
         parent.appendChild(tag)
       else:
-        parent.insertBefore(tag, parent.children[idx])
+        parent.insertBefore(tag, parent.childNodes[idx])
     if activeElement.hasAttribute("id"):
       let actElem = document.getElementById(activeElement.id)
       if not actElem.isNil:
