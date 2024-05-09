@@ -9,11 +9,9 @@ component ComponentFor:
       for i in 0..self.counter:
         tButton(class="rounded-full px-8 py-2 my-1 bg-neutral-300 hover:bg-neutral-400 transition-colors"):
           "{i}"
-          nim:
-            let iTmp = i
           @click:
             self.counter += 1
-            echo iTmp
+            echo i
   
   @created:
     echo "created!"
