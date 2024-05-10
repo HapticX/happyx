@@ -1,2 +1,0 @@
-nimTitle	spa_utils	happyx/spa/spa_utils.html	module src/happyx/spa/spa_utils		0
-nim	eventListener	happyx/spa/spa_utils.html#eventListener.m,untyped,string,untyped	macro eventListener(obj: untyped; event: string; body: untyped): untyped		5
