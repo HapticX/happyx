@@ -11,6 +11,7 @@ component ComponentFor:
           "{i}"
           @click:
             self.counter += 1
+            {.emit: "console.log(`i`, `ev`)".}
             echo i
       !debugCurrent
   

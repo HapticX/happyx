@@ -33,7 +33,13 @@ elif exportJvm:
     ../bindings/java_types
 
 
-const declaredPathParams = CacheTable"HappyXDeclaredPathParams"
+const
+  declaredPathParams = CacheTable"HappyXDeclaredPathParams"
+  onException* = CacheTable"HappyXOnException"
+
+
+static:
+  onException["e"] = newStmtList()
 
 
 type
@@ -520,7 +526,7 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode =
                   newCall("echo", newCall("fmt", newLit"json parse error: {getCurrentExceptionMsg()}"))
                 else:
                   newEmptyNode(),
-                newCall("__onException", urlPath, body, newCall"getCurrentException"),
+                onException["e"],
                 newCall(
                   "answerJson",
                   ident"req",
@@ -537,7 +543,7 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode =
                   newCall("echo", newCall("fmt", newLit"json kind error: {getCurrentExceptionMsg()}"))
                 else:
                   newEmptyNode(),
-                newCall("__onException", urlPath, body, newCall"getCurrentException"),
+                onException["e"],
                 newCall(
                   "answerJson",
                   ident"req",
@@ -554,7 +560,7 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode =
                   newCall("echo", newCall("fmt", newLit"json unknown error: {getCurrentExceptionMsg()}"))
                 else:
                   newEmptyNode(),
-                newCall("__onException", urlPath, body, newCall"getCurrentException"),
+                onException["e"],
                 newCall(
                   "answerJson",
                   ident"req",
