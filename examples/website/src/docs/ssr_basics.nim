@@ -40,7 +40,7 @@ component SsrBasics:
       tH2: {translate"Helpful Routes 🔌"}
       if currentLanguage == "Nim":
         tP:
-          {translate"HappyX has additional helpful routes - setup, middleware, notfound, and staticDir"}
+          {translate"HappyX has additional useful routes - setup, middleware, notfound, onException, and staticDir"}
       else:
         tP:
           {translate"HappyX has additional helpful routes - middleware, notfound and static directories"}

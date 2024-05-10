@@ -1154,12 +1154,12 @@ translatable:
     "zh" -> "有用的路由 🔌"
     "fr" -> "Itinéraires utiles 🔌"
     "ko" -> "도움말 라우트 🔌"
-  "HappyX has additional helpful routes - setup, middleware, notfound, and staticDir":
-    "ru" -> "У HappyX есть дополнительные полезные маршруты - setup, middleware, notfound и staticDir"
-    "ja" -> "HappyXには追加の便利なルートがあります - setup、middleware、notfound、およびstaticDir"
-    "zh" -> "HappyX具有额外的有用路由 - setup、middleware、notfound和staticDir"
-    "fr" -> "HappyX dispose de routes supplémentaires utiles - setup, middleware, notfound et staticDir"
-    "ko" -> "HappyX에는 추가로 유용한 라우트가 있습니다 - setup, middleware, notfound 및 staticDir"
+  "HappyX has additional useful routes - setup, middleware, notfound, onException, and staticDir":
+    "ru" -> "У HappyX есть дополнительные полезные маршруты - setup, middleware, notfound, onException и staticDir"
+    "ja" -> "HappyXには追加の便利なルートがあります - setup、middleware、notfound、onException、およびstaticDir"
+    "zh" -> "HappyX还有其他有用的路由 - setup、middleware、notfound、onException和staticDir"
+    "fr" -> "HappyX dispose de routes supplémentaires utiles - setup, middleware, notfound, onException et staticDir"
+    "ko" -> "HappyX에는 추가로 유용한 경로가 있습니다 - setup, middleware, notfound, onException 및 staticDir"
   "HappyX has additional helpful routes - middleware, notfound and static directories":
     "ru" -> "У HappyX есть дополнительные полезные маршруты - middleware, notfound и статические каталоги"
     "ja" -> "HappyXには追加の便利なルートがあります - ミドルウェア、notfound、および静的ディレクトリ"

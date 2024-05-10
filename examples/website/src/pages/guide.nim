@@ -19,11 +19,11 @@ mount UserGuide:
       # Header
       tDiv(class = "w-full sticky top-0 z-20"):
         Header(drawer = drawer_comp)
-      tDiv(class = "flex w-full h-full gap-8 px-4"):
+      tDiv(class = "flex w-full h-full gap-8"):
         # SideBar
-        tDiv(class = "fixed top-0 pt-16 w-80"):
+        tDiv(class = "fixed top-0 pt-16 w-96"):
           SideBar
-        tDiv(class = "pl-0 xl:pl-80 w-full"):
+        tDiv(class = "pl-0 xl:pl-96 w-full"):
           GuidePage(link)
       tStyle:
         {fmt"""
