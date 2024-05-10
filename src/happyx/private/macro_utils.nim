@@ -882,18 +882,40 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
             cycleVar = " + " & cycleTmpVar  & ")}"
             registerEvent = fmt"registerEventScoped{uniqueId.value}{uniqueId.value+2}"
             callRegister = newCall(registerEvent)
-          var procParams = @[ident"ComponentEventHandler"]
+          when defined(js):
+            var procParams: seq[string] = @[]
+          else:
+            var procParams = @[ident"ComponentEventHandler"]
           for i in cycleVars:
-            procParams.add(newIdentDefs(i, ident"auto"))
+            when defined(js):
+              procParams.add("`" & $i & "`")
+            else:
+              procParams.add(newIdentDefs(i, ident"auto"))
             callRegister.add(i)
           when defined(js):
-            events.add(
-              newCall(
-                "addEventListener",
-                newDotExpr(ident("__el" & $elemEventId), ident"Element"),
-                newLit(event), procedure
+            procedure.body.insert(0, newNimNode(nnkPragma).add(
+              newNimNode(nnkExprColonExpr).add(
+                ident"emit", newLit("`" & $args[^1][0] & "` = event;")
               )
-            )
+            ))
+            procedure.body.insert(0, newNimNode(nnkVarSection).add(
+              newIdentDefs(args[^1][0], ident"Event", newEmptyNode())
+            ))
+            events.add(newStmtList(
+              newNimNode(nnkPragma).add(
+                newNimNode(nnkExprColonExpr).add(
+                  ident"emit", newLit("const __elSc" & $elemEventId & " = (" & procParams.join(",") & ") => {")
+                )
+              ),
+              newCall(
+                "eventListener", ident("__el" & $elemEventId), newLit(event), procedure.body
+              ),
+              newNimNode(nnkPragma).add(
+                newNimNode(nnkExprColonExpr).add(
+                  ident"emit", newLit("};\n__elSc" & $elemEventId & "(" & procParams.join(",") & ");")
+                )
+              ),
+            ))
           else:
             result.addAttribute(
               newLit(evname),
@@ -921,12 +943,19 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
         # In component and not in cycle
         else:
           when defined(js):
-            events.add(
-              newCall(
-                "addEventListener",
-                newDotExpr(ident("__el" & $elemEventId), ident"Element"),
-                newLit(event), procedure
+            procedure.body.insert(0, newNimNode(nnkPragma).add(
+              newNimNode(nnkExprColonExpr).add(
+                ident"emit", newLit("`" & $args[^1][0] & "` = event;")
               )
+            ))
+            procedure.body.insert(0, newNimNode(nnkVarSection).add(
+              newIdentDefs(args[^1][0], ident"Event", newEmptyNode())
+            ))
+            events.add(
+              newCall("eventListener", ident("__el" & $elemEventId), newLit(event),
+              newNimNode(nnkBlockStmt).add(
+                newEmptyNode(), procedure.body
+              ))
             )
           else:
             result.addAttribute(
@@ -953,18 +982,40 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
             cycleVar = " + " & cycleTmpVar  & ")}"
             registerEvent = fmt"registerEventScoped{uniqueId.value}{uniqueId.value+2}"
             callRegister = newCall(registerEvent)
-          var procParams = @[ident"AppEventHandler"]
+          when defined(js):
+            var procParams: seq[string] = @[]
+          else:
+            var procParams = @[ident"AppEventHandler"]
           for i in cycleVars:
-            procParams.add(newIdentDefs(i, ident"any"))
+            when defined(js):
+              procParams.add("`" & $i & "`")
+            else:
+              procParams.add(newIdentDefs(i, ident"auto"))
             callRegister.add(i)
           when defined(js):
-            events.add(
-              newCall(
-                "addEventListener",
-                newDotExpr(ident("__el" & $elemEventId), ident"Element"),
-                newLit(event), procedure
+            procedure.body.insert(0, newNimNode(nnkPragma).add(
+              newNimNode(nnkExprColonExpr).add(
+                ident"emit", newLit("`" & $args[^1][0] & "` = event;")
               )
-            )
+            ))
+            procedure.body.insert(0, newNimNode(nnkVarSection).add(
+              newIdentDefs(args[^1][0], ident"Event", newEmptyNode())
+            ))
+            events.add(newStmtList(
+              newNimNode(nnkPragma).add(
+                newNimNode(nnkExprColonExpr).add(
+                  ident"emit", newLit("const __elSc" & $elemEventId & " = (" & procParams.join(",") & ") => {")
+                )
+              ),
+              newCall(
+                "eventListener", ident("__el" & $elemEventId), newLit(event), procedure.body
+              ),
+              newNimNode(nnkPragma).add(
+                newNimNode(nnkExprColonExpr).add(
+                  ident"emit", newLit("};\n__elSc" & $elemEventId & "(" & procParams.join(",") & ");")
+                )
+              ),
+            ))
           else:
             result.addAttribute(
               newLit(evname),
@@ -989,12 +1040,19 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
         # not in component and not in cycle
         else:
           when defined(js):
-            events.add(
-              newCall(
-                "addEventListener",
-                newDotExpr(ident("__el" & $elemEventId), ident"Element"),
-                newLit(event), procedure
+            procedure.body.insert(0, newNimNode(nnkPragma).add(
+              newNimNode(nnkExprColonExpr).add(
+                ident"emit", newLit("`" & $args[^1][0] & "` = event;")
               )
+            ))
+            procedure.body.insert(0, newNimNode(nnkVarSection).add(
+              newIdentDefs(args[^1][0], ident"Event", newEmptyNode())
+            ))
+            events.add(
+              newCall("eventListener", ident("__el" & $elemEventId), newLit(event),
+              newNimNode(nnkBlockStmt).add(
+                newEmptyNode(), procedure.body
+              ))
             )
           else:
             result.addAttribute(
