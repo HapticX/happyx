@@ -104,6 +104,28 @@ proc add*(self: TagRef, tags: varargs[TagRef]) =
       tag.parent = self
 
 
+when defined(js):
+  proc setAttributes(name: string, e: TagRef, attrs: StringTableRef) =
+    if name.toLower() in ["svg", "path", "circle", "rect"]:
+      if attrs.hasKey("class"):
+        let a = cstring(attrs["class"])
+        {.emit: "`e`.setAttributeNS(null, 'class', `a`);".}
+      for key, val in attrs.pairs:
+        if key != "class":
+          e.setAttribute(cstring(key), cstring(val))
+    else:
+      for key, val in attrs.pairs:
+        e.setAttribute(cstring(key), cstring(val))
+
+  proc newElement(name: string): TagRef =
+    if name.toLower() in ["svg", "path", "circle", "rect"]:
+      result = TagRef()
+      let n = cstring(name)
+      {.emit: "`result` = document.createElementNS('http://www.w3.org/2000/svg', `n`)".}
+    else:
+      result = document.createElement(cstring(name)).TagRef
+
+
 proc initTag*(name: string, attrs: StringTableRef,
               children: seq[TagRef] = @[],
               onlyChildren: bool = false): TagRef =
@@ -117,10 +139,9 @@ proc initTag*(name: string, attrs: StringTableRef,
   ## Returns:
   ## - A reference to the newly created HTML tag.
   when defined(js):
-    result = document.createElement(cstring name).TagRef
+    result = newElement(name)
     result.onlyChildren = onlyChildren
-    for key, val in attrs.pairs:
-      result.setAttribute(cstring(key), cstring(val))
+    setAttributes(name, result, attrs)
     for child in children:
       if child.isNil:
         continue
@@ -146,7 +167,7 @@ proc initTag*(name: string, children: seq[TagRef] = @[],
   ## Returns:
   ## - A reference to the newly created HTML tag.
   when defined(js):
-    result = document.createElement(cstring(name)).TagRef
+    result = newElement(name)
     result.onlyChildren = onlyChildren
     for child in children:
       if not child.isNil:
@@ -178,10 +199,9 @@ proc initTag*(name: string, isText: bool, attrs: StringTableRef,
     if isText:
       result = document.createTextNode(cstring(name)).TagRef
     else:
-      result = document.createElement(cstring(name)).TagRef
+      result = newElement(name)
       result.onlyChildren = onlyChildren
-      for key, val in attrs.pairs:
-        result.setAttribute(cstring(key), cstring(val))
+      setAttributes(name, result, attrs)
       for child in children:
         if child.isNil:
           continue
@@ -203,7 +223,7 @@ proc initTag*(name: string, isText: bool, children: seq[TagRef] = @[],
     if isText:
       result = document.createTextNode(cstring(name)).TagRef
     else:
-      result = document.createElement(cstring(name)).TagRef
+      result = newElement(name)
       result.onlyChildren = onlyChildren
       for child in children:
         if child.isNil:
@@ -224,7 +244,7 @@ proc tag*(name: string): TagRef {.inline.} =
   runnableExamples:
     var root = tag"div"
   when defined(js):
-    result = document.createElement(cstring(name)).TagRef
+    result = newElement(name)
     result.onlyChildren = false
   else:
     TagRef(

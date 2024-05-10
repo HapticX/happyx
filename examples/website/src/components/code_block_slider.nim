@@ -83,12 +83,10 @@ component CodeBlockSlider:
           else:
             0
         )
-        {.emit: """//js
-        setTimeout(() => { `upd`() }, 5000);
-        """.}
-      {.emit: """//js
-      setTimeout(() => { `upd`() }, 5000);
-      """.}
+        withTimeout 5000, t:
+          upd()
+      withTimeout 5000, t:
+        upd()
 
     proc updateIndex(idx: int) =
       if self.index.isNil():

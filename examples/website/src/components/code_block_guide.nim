@@ -136,7 +136,6 @@ component CodeBlockGuide:
                           buildJs:
                             let codeBlock = document.getElementById(~id)
                             hljs.highlightElement(codeBlock)
-                        echo playResult.innerHTML
               tDiv(id = "{source.id}play_result", class = "w-full pb-4")
       if not haslanguage(self.CodeBlockGuide, currentLanguage.val):
         tCode(

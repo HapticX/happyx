@@ -1,6 +1,9 @@
 import
   std/macros,
-  std/strutils
+  std/strutils,
+  std/jsffi
+
+export jsffi
 
 
 macro eventListener*(obj: untyped, event: string, body: untyped): untyped =

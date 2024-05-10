@@ -155,6 +155,12 @@ serve "127.0.0.1", 5000:
   
   notfound:
     return "Oops, seems like this route is not available"
+  
+  onException:
+    echo e.msg
+    echo e.name
+    statusCode = 500
+    return "Oops, seems like some error was raised"
 
   staticDir "/path/to/directory" -> "directory"
 """
