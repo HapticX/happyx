@@ -302,10 +302,14 @@ when not defined(js):
 import
   happyx/core/[exceptions, constants, queries],
   happyx/sugar/[use, sgr, js, style],
-  happyx/spa/[renderer, state, components, translatable, tag, spa_utils],
+  happyx/spa/[renderer, state, components, translatable, tag],
   happyx/tmpl_engine/[engine],
   happyx/routing/[mounting, routing, decorators],
   happyx/ssr/utils
+
+when defined(js):
+  import happyx/spa/spa_utils
+  export spa_utils
 
 
 when enableApiDoc and not defined(js) and not exportPython and not exportJvm:
@@ -329,8 +333,7 @@ export
   mounting,
   sgr,
   js,
-  utils,
-  spa_utils
+  utils
 
 
 # Language bindings
