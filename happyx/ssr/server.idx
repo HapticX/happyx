@@ -15,9 +15,9 @@ nim	answerJson	happyx/ssr/server.html#answerJson.t,Request,untyped,HttpCode,Http
 nim	answerHtml	happyx/ssr/server.html#answerHtml.t,Request,,HttpCode,HttpHeaders	template answerHtml(req: Request; data: string | TagRef; code: HttpCode = Http200;\n    headers: HttpHeaders = newHttpHeaders(\n    [("Content-Type", "text/html; charset=utf-8")])): untyped		503
 nim	answerFile	happyx/ssr/server.html#answerFile,Request,string,HttpCode,int,bool,CustomHeaders	proc answerFile(req: Request; filename: string; code: HttpCode = Http200;\n           asAttachment = false; bufSize: int = 40960;\n           forceResponse: bool = false;\n           headers: CustomHeaders = newCustomHeaders()): owned(Future[void])		542
 nim	routes	happyx/ssr/server.html#routes.m,Server,untyped	macro routes(server: Server; body: untyped = newStmtList()): untyped		684
-nim	initServer	happyx/ssr/server.html#initServer.m,untyped	macro initServer(body: untyped): untyped		1681
-nim	serve	happyx/ssr/server.html#serve.m,string,int,untyped	macro serve(address: string; port: int; body: untyped): untyped		1709
-nim	liveview	happyx/ssr/server.html#liveview.m,untyped	macro liveview(body: untyped): untyped		1777
+nim	initServer	happyx/ssr/server.html#initServer.m,untyped	macro initServer(body: untyped): untyped		1671
+nim	serve	happyx/ssr/server.html#serve.m,string,int,untyped	macro serve(address: string; port: int; body: untyped): untyped		1699
+nim	liveview	happyx/ssr/server.html#liveview.m,untyped	macro liveview(body: untyped): untyped		1767
 heading	Available Path Params	happyx/ssr/server.html#custom-static-directory-⚙-available-path-params	    Available Path Params		0
 heading	Available Route Types	happyx/ssr/server.html#custom-static-directory-⚙-available-route-types	    Available Route Types		0
 heading	Route Scope:	happyx/ssr/server.html#custom-static-directory-⚙-route-scopecolon	    Route Scope:		0

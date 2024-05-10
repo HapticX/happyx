@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>src/happyx/ssr/handlers</title>
+<title>src/happyx/spa/spa_utils</title>
 
 <!-- Favicon -->
 <link rel="shortcut icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAUAAAAF////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAIAAABbAAAAlQAAAKIAAACbAAAAmwAAAKIAAACVAAAAWwAAAAL///8A////AP///wD///8A////AAAAABQAAADAAAAAYwAAAA3///8A////AP///wD///8AAAAADQAAAGMAAADAAAAAFP///wD///8A////AP///wAAAACdAAAAOv///wD///8A////AP///wD///8A////AP///wD///8AAAAAOgAAAJ3///8A////AP///wAAAAAnAAAAcP///wAAAAAoAAAASv///wD///8A////AP///wAAAABKAAAAKP///wAAAABwAAAAJ////wD///8AAAAAgQAAABwAAACIAAAAkAAAAJMAAACtAAAAFQAAABUAAACtAAAAkwAAAJAAAACIAAAAHAAAAIH///8A////AAAAAKQAAACrAAAAaP///wD///8AAAAARQAAANIAAADSAAAARf///wD///8AAAAAaAAAAKsAAACk////AAAAADMAAACcAAAAnQAAABj///8A////AP///wAAAAAYAAAAGP///wD///8A////AAAAABgAAACdAAAAnAAAADMAAAB1AAAAwwAAAP8AAADpAAAAsQAAAE4AAAAb////AP///wAAAAAbAAAATgAAALEAAADpAAAA/wAAAMMAAAB1AAAAtwAAAOkAAAD/AAAA/wAAAP8AAADvAAAA3gAAAN4AAADeAAAA3gAAAO8AAAD/AAAA/wAAAP8AAADpAAAAtwAAAGUAAAA/AAAA3wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAADfAAAAPwAAAGX///8A////AAAAAEgAAADtAAAAvwAAAL0AAADGAAAA7wAAAO8AAADGAAAAvQAAAL8AAADtAAAASP///wD///8A////AP///wD///8AAAAAO////wD///8A////AAAAAIcAAACH////AP///wD///8AAAAAO////wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A//8AAP//AAD4HwAA7/cAAN/7AAD//wAAoYUAAJ55AACf+QAAh+EAAAAAAADAAwAA4AcAAP5/AAD//wAA//8AAA=="/>
@@ -20,7 +20,7 @@
 <body>
   <div class="document" id="documentId">
     <div class="container">
-      <h1 class="title">src/happyx/ssr/handlers</h1>
+      <h1 class="title">src/happyx/spa/spa_utils</h1>
       <div class="row">
   <div class="three columns">
     <div class="theme-select-wrapper">
@@ -47,9 +47,17 @@
       </select>
     </div>
     <ul class="simple simple-toc" id="toc-list">
-  <li><a class="reference" id="request-handlers_toc" href="#request-handlers">Request Handlers</a></li>
-<li>
-  <a class="reference reference-toplevel" href="#6" id="56">Imports</a>
+  <li>
+  <details open>
+    <summary><a class="reference reference-toplevel" href="#17" id="67">Macros</a></summary>
+    <ul class="simple simple-toc-section">
+      <ul class="simple nested-toc-section">eventListener
+  <li><a class="reference" href="#eventListener.m%2Cuntyped%2Cstring%2Cuntyped" title="eventListener(obj: untyped; event: string; body: untyped): untyped">eventListener(obj: untyped; event: string; body: untyped): untyped</a></li>
+
+</ul>
+
+    </ul>
+  </details>
 </li>
 
 </ul>
@@ -59,12 +67,22 @@
     
     <div id="tocRoot"></div>
     
-    <p class="module-desc">
-<h1><a class="toc-backref" id="request-handlers" href="#request-handlers">Request Handlers</a></h1></p>
-    <div class="section" id="6">
-  <h1><a class="toc-backref" href="#6">Imports</a></h1>
+    <p class="module-desc"></p>
+    <div class="section" id="17">
+  <h1><a class="toc-backref" href="#17">Macros</a></h1>
   <dl class="item">
-    <a class="reference external" href="../core/constants.html">../core/constants</a>
+    <div id="eventListener-macros-all">
+  <div id="eventListener.m,untyped,string,untyped">
+  <dt><pre><span class="Keyword">macro</span> <a href="#eventListener.m%2Cuntyped%2Cstring%2Cuntyped"><span class="Identifier">eventListener</span></a><span class="Other">(</span><span class="Identifier">obj</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">;</span> <span class="Identifier">event</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">body</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+
+</div>
+
   </dl>
 </div>
 
@@ -74,7 +92,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2024-05-10 06:07:20 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2024-05-10 06:07:35 UTC</small>
       </div>
     </div>
   </div>
