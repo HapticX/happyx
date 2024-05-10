@@ -6,6 +6,11 @@ import
 export jsffi
 
 
+proc await*(x: JsObject): JsObject {.discardable, importjs: "(await #)".}
+proc clearTimeout*(x: JsObject): JsObject {.discardable, importjs: "clearTimeout(#)".}
+proc clearInterval*(x: JsObject): JsObject {.discardable, importjs: "clearInterval(#)".}
+
+
 macro eventListener*(obj: untyped, event: string, body: untyped): untyped =
   newStmtList(
     newNimNode(nnkPragma).add(
