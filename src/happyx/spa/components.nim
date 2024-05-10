@@ -527,7 +527,6 @@ macro component*(name, body: untyped): untyped =
             var declaration = statement.copy()
             declaration.body = newEmptyNode()
             declareMethodsStmtList.add(declaration)
-            echo statement.toStrLit
           else:
             throwDefect(
               HpxComponentDefect,

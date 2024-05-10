@@ -113,40 +113,30 @@ component CodeBlockGuide:
                     source = self.CodeBlockGuide.sources.val[i]
                     playButton = document.getElementById(fmt"{source.id}play_button{self.uniqCompId}")
                     playResult = document.getElementById(fmt"{source.id}play_result{self.uniqCompId}")
-                    playStates: seq[tuple[text, html, lang: cstring, waitMs: int]] = source.playResult.states
                   var idx = 0
 
                   playButton.classList.add("hidden")
                   playResult.classList.remove("hidden")
                   playResult.innerHTML = ""
-                
-                  proc hiddenProc(text, html, lang: cstring, waitMs: int) =
-                    if text.len == 0 and html.len == 0:
-                      playButton.classList.remove("hidden")
-                      playResult.classList.add("hidden")
-                    elif html.len != 0:
-                      playResult.innerHTML &= html
-                    else:
-                      playResult.innerHTML &= fmt"""<pre><code id="{self.uniqCompId}{lang}{idx}" language="{lang}" class="language-{lang}" style="padding-top: 0 !important; padding-bottom: 0 !important;">{text}</code></pre>"""
-                      let id: cstring = fmt"{self.uniqCompId}{lang}{idx}"
-                      inc idx
-                      buildJs:
-                        let codeBlock = document.getElementById(~id)
-                        hljs.highlightElement(codeBlock)
                   
-                  {.emit: """//js
-                  const playStates = [...`playStates`];
-                  let timeout = 0;
-
-                  playStates.forEach(state => {
-                    timeout += state.Field3;
-                    setTimeout(
-                      () => `hiddenProc`(state.Field0, state.Field1, state.Field2, state.Field3),
-                      timeout
-                    );
-                    console.log(state.Field0, state.Field1, state.Field2, state.Field3);
-                  });
-                  """.}
+                  var timeout = 0
+                  for j in self.CodeBlockGuide.sources.val[i].playResult.states:
+                    timeout += j.waitMs
+                    withVariables j:
+                      withTimeout timeout, t:
+                        if j.text.len == 0 and j.html.len == 0:
+                          playButton.classList.remove("hidden")
+                          playResult.classList.add("hidden")
+                        elif j.html.len != 0:
+                          playResult.innerHTML &= j.html
+                        else:
+                          playResult.innerHTML &= fmt"""<pre><code id="{self.uniqCompId}{j.lang}{idx}" language="{j.lang}" class="language-{j.lang}" style="padding-top: 0 !important; padding-bottom: 0 !important;">{j.text}</code></pre>"""
+                          let id: cstring = fmt"{self.uniqCompId}{j.lang}{idx}"
+                          inc idx
+                          buildJs:
+                            let codeBlock = document.getElementById(~id)
+                            hljs.highlightElement(codeBlock)
+                        echo playResult.innerHTML
               tDiv(id = "{source.id}play_result", class = "w-full pb-4")
       if not haslanguage(self.CodeBlockGuide, currentLanguage.val):
         tCode(
