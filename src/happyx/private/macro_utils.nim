@@ -908,7 +908,8 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
                 )
               ),
               newCall(
-                "eventListener", ident("__el" & $elemEventId), newLit(event), procedure.body
+                "eventListener", ident("__el" & $elemEventId), newLit(event),
+                newNimNode(nnkBlockStmt).add(newEmptyNode(), procedure.body)
               ),
               newNimNode(nnkPragma).add(
                 newNimNode(nnkExprColonExpr).add(
@@ -1008,7 +1009,8 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
                 )
               ),
               newCall(
-                "eventListener", ident("__el" & $elemEventId), newLit(event), procedure.body
+                "eventListener", ident("__el" & $elemEventId), newLit(event),
+                newNimNode(nnkBlockStmt).add(newEmptyNode(), procedure.body)
               ),
               newNimNode(nnkPragma).add(
                 newNimNode(nnkExprColonExpr).add(

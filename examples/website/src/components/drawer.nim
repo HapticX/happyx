@@ -109,21 +109,11 @@ component Drawer:
   
   [methods]:
     proc toggle*() =
-      enableRouting = false
       let
         drawerBack = document.getElementById("drawerBack" & self.uniqCompId)
         drawer = document.getElementById("drawer" & self.uniqCompId)
-      self.isOpen.set(not self.isOpen)
-      if self.isOpen:
-        drawerBack.classList.remove("opacity-0")
-        drawerBack.classList.add("opacity-100")
-        drawerBack.classList.remove("pointer-events-none")
-        drawer.classList.remove("translate-x-full")
-        drawer.classList.add("translate-x-0")
-      else:
-        drawerBack.classList.remove("opacity-100")
-        drawerBack.classList.add("opacity-0")
-        drawerBack.classList.add("pointer-events-none")
-        drawer.classList.remove("translate-x-0")
-        drawer.classList.add("translate-x-full")
-      enableRouting = true
+      drawerBack.classList.toggle("opacity-0")
+      drawerBack.classList.toggle("opacity-100")
+      drawerBack.classList.toggle("pointer-events-none")
+      drawer.classList.toggle("translate-x-full")
+      drawer.classList.toggle("translate-x-0")
