@@ -13,7 +13,7 @@ component GuidePage:
 
   `template`:
     tDiv(
-      class = "flex flex-col text-3xl lg:text-xl xl:text-base w-full h-full px-4 lg:px-12 xl:px-24 py-2 bg-[{BackgroundSecondary}] dark:bg-[{BackgroundSecondaryDark}] gap-8"
+      class = "flex flex-col text-3xl lg:text-xl xl:text-base w-full h-full px-4 lg:px-12 xl:px-16 py-2 bg-[{BackgroundSecondary}] dark:bg-[{BackgroundSecondaryDark}] gap-8"
     ):
       tDiv(class = "flex flex-col gap-4"):
         case currentGuidePage.val
