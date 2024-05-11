@@ -694,6 +694,20 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
               newCall(
                 "and",
                 newCall("declared", compName),
+                newCall("is", compName, newNimNode(nnkProcTy)),
+              ), newStmtList(
+                block:
+                  var call = newCall(compName)
+                  for i in statement[1..^2]:
+                    call.add(i)
+                  call.add(newCall("buildHtml", statement[^1]))
+                  call
+              )
+            ),
+            newNimNode(nnkElifBranch).add(
+              newCall(
+                "and",
+                newCall("declared", compName),
                 newCall("not", newCall("is", compName, ident"typedesc")),
               ),
               newStmtList(
@@ -734,7 +748,25 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
         whenStmt[0].add(useComponent(compStatement, inCycle, inComponent, cycleTmpVar, compTmpVar, cycleVars, constructor = true))
       # Component default constructor
       else:
-        whenStmt[0].add(useComponent(compStatement, inCycle, inComponent, cycleTmpVar, compTmpVar, cycleVars))
+        whenStmt[0].add(
+          newNimNode(nnkWhenStmt).add(
+            newNimNode(nnkElifBranch).add(
+              newCall(
+                "and",
+                newCall("declared", compName),
+                newCall("is", compName, newNimNode(nnkProcTy)),
+              ), newStmtList(
+                block:
+                  var call = newCall(compName)
+                  for i in statement[1..^1]:
+                    call.add(i)
+                  call
+              )
+            ), newNimNode(nnkElse).add(
+              useComponent(compStatement, inCycle, inComponent, cycleTmpVar, compTmpVar, cycleVars)
+            )
+          )
+        )
       
       result.add(whenStmt)
     
@@ -1128,6 +1160,17 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
               newCall("declared", statement),
               newCall("is", statement, ident"TagRef")
             ), newCall("tag", statement)
+          ),
+          newNimNode(nnkElifBranch).add(
+            newCall(
+              "and",
+              newCall("declared", compName),
+              newCall("is", compName, newNimNode(nnkProcTy)),
+            ), newStmtList(
+              block:
+                var call = newCall(compName)
+                call
+            )
           ),
           newNimNode(nnkElifBranch).add(
             newCall("not", newCall("is", compName, ident"typedesc")),
