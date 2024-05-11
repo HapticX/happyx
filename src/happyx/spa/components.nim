@@ -817,7 +817,7 @@ macro component*(name, body: untyped): untyped =
     componentConstructors,
     reRenderProc,
     newProc(
-      ident"script",
+      postfix(ident"script", "*"),
       [
         newEmptyNode(),
         newIdentDefs(ident"self", ident(componentName))
@@ -837,7 +837,7 @@ macro component*(name, body: untyped): untyped =
           newNimNode(nnkPragma).add(ident"gcsafe")
     ),
     newProc(
-      ident"style",
+      postfix(ident"style", "*"),
       [
         ident"string",
         newIdentDefs(ident"self", ident(componentName))
