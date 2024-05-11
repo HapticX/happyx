@@ -18,12 +18,18 @@ proc funcComp1(i: State[int], stmt: TagRef): TagRef =
 proc funcComp2(i: State[int]): TagRef =
   buildHtml:
     tDiv:
-      "second comp, so `i` is {i}"
+      "comp2, so `i` is {i}"
 
 proc funcComp3(): TagRef =
   buildHtml:
     tDiv:
-      "third comp without arguments"
+      "comp3 without arguments"
+
+proc funcComp4(stmt: TagRef): TagRef =
+  buildHtml:
+    tDiv:
+      "comp4 with body"
+      stmt
 
 
 component NormalComp:
@@ -46,4 +52,8 @@ appRoutes "app":
       funcComp2(someValue)
       funcComp3()
       funcComp3
+      funcComp4():
+        "Hello"
+      funcComp4:
+        "world"
       NormalComp(someValue)
