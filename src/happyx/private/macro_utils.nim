@@ -700,7 +700,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
                   var call = newCall(compName)
                   for i in statement[1..^2]:
                     call.add(i)
-                  call.add(newCall("buildHtml", statement[^1]))
+                  call.add(newNimNode(nnkExprEqExpr).add(ident"stmt", newCall("buildHtml", statement[^1])))
                   call
               )
             ),

@@ -39,10 +39,6 @@ component NormalComp:
       "And this is common component. i is {self.i}"
 
 
-# dumpTree:
-#   echo functionalComp is proc
-
-
 appRoutes "app":
   "/":
     tDiv:
