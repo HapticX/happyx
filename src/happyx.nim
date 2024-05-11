@@ -247,6 +247,7 @@
 ## - [components](happyx/spa/components.html) provides working with components.
 ## - [translatable](happyx/spa/translatable.html) provides working with translatable strings.
 ## - [state](happyx/spa/state.html) provides reactivity.
+## - [spa_utils](happyx/spa/spa_utils.html) provides JS sugar for SPA.
 ## - [tag](happyx/spa/tag.html) provides VDOM.
 ## 
 ## ### Server Side Rendering 🍍
