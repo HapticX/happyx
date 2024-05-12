@@ -4,6 +4,7 @@ import
 
 
 var someValue = remember 0
+var test = remember ""
 
 proc funcComp1(i: State[int], stmt: TagRef): TagRef =
   ## You can pass any amount of arguments.
@@ -25,12 +26,13 @@ proc funcComp3(): TagRef =
     tDiv:
       "comp3 without arguments"
 
-proc funcComp4(stmt: TagRef): TagRef =
-  static:
-    echo declared(stmt) and stmt is TagRef
+proc funcComp4(id = "", stmt: TagRef): TagRef =
   buildHtml:
     tDiv:
       "comp4 with body"
+      tInput(id = id, value = test.val):
+        @input:
+          test.set($ev.target.value)
       stmt
 
 
@@ -56,11 +58,11 @@ appRoutes "app":
       funcComp2(someValue)
       funcComp3()
       funcComp3
-      funcComp4():
+      funcComp4(id = "inp2"):
         "Hello"
         funcComp1(someValue):
           "This is functional component slot"
-      funcComp4:
+      funcComp4(id = "inp1"):
         "world"
       NormalComp(someValue)
       Button():
