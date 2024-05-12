@@ -113,6 +113,16 @@ mount RoadMap:
                 tUl(class = "list-disc"):
                   tLi: {translate"Generics 👶"}
                   tLi: {translate"More flexibility 📦"}
+          # v3.11.0
+          Card:
+            tDiv(class = "w-full flex flex-col items-center gap-2 p-4 lg:p-2 xl:p-0"):
+              tP(class = "text-4xl lg:text-2xl xl:text-lg font-semibold"):
+                "v3.11.0"
+              tP(class = "w-full text-2xl lg:text-lg xl:text-base"):
+                tUl(class = "list-disc"):
+                  tLi: {translate"New rendering system 🧪"}
+                  tLi: {translate"Functional components ✨"}
+                  tLi: {translate"Generics for request models 🔥"}
                 
           # Future
           Card:

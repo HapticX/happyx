@@ -34,6 +34,12 @@ proc funcComp4(stmt: TagRef): TagRef =
       stmt
 
 
+proc Button(stmt: TagRef): TagRef =
+  buildHtml:
+    tDiv():
+      stmt
+
+
 component NormalComp:
   i: State[int]
   html:
@@ -57,3 +63,7 @@ appRoutes "app":
       funcComp4:
         "world"
       NormalComp(someValue)
+      Button():
+        "Click me"
+      tButton():
+        "Click me"

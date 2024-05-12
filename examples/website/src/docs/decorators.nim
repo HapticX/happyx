@@ -7,8 +7,8 @@ import
   ]
 
 
-component Decorators:
-  `template`:
+proc Decorators*(): TagRef =
+  buildHtml:
     tDiv(class = "flex flex-col px-8 py-2 xl:h-fit gap-4"):
       tH1: {translate"Route Decorators 🔌"}
 

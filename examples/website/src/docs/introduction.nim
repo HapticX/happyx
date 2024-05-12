@@ -9,36 +9,30 @@ import
 var localStorage {.importc, nodecl.}: JsObject
 
 
-component IntroductionLanguageChooser:
-  lang: string
-  title: string
-  `template`:
+proc IntroductionLanguageChooser*(lang, title: string): TagRef =
+  buildHtml:
     tDiv(
       class =
-        if self.lang == currentLanguage:
+        if lang == currentLanguage:
           "text-center bg-yellow-400/20 dark:bg-yellow-300/25 px-4 py-2 select-none cursor-pointer rounded-md transition-all"
         else:
           "text-center bg-yellow-400/20 hover:bg-yellow-400/30 active:bg-yellow-400/40 dark:bg-yellow-200/10 px-4 py-2 select-none cursor-pointer rounded-md transition-all dark:hover:bg-yellow-200/20 dark:active:bg-yellow-300/10"
     ):
-      {self.title}
+      {title}
       @click:
-        var lang: cstring = $(self.IntroductionLanguageChooser.lang.val)
-        localStorage["happyx_programming_language"] = lang
-        currentLanguage.set(self.lang)
+        var language: cstring = $lang
+        localStorage["happyx_programming_language"] = language
+        currentLanguage.set(lang)
         route(currentRoute)
         application.router()
 
 
-component Contributor:
-  nickname: string
-  url: string
-  avatar: string
-
-  `template`:
-    tA(class = "flex flex-col justify-center items-center", href = "{self.url}"):
-      tImg(src = "{self.avatar}", class = "w-[96px] lg:w-[72px] xl:w-[64px] h-[96px] lg:h-[72px] xl:h-[64px] rounded-full", alt = "{self.nickname}")
+proc Contributor*(nickname, url, avatar: string): TagRef =
+  buildHtml:
+    tA(class = "flex flex-col justify-center items-center", href = url):
+      tImg(src = avatar, class = "w-[96px] lg:w-[72px] xl:w-[64px] h-[96px] lg:h-[72px] xl:h-[64px] rounded-full", alt = nickname)
       tP(class = "font-mono text-center h-8"):
-        {self.nickname}
+        {nickname}
 
 
 component Introduction:

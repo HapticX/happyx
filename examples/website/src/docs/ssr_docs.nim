@@ -7,8 +7,8 @@ import
   ]
 
 
-component SsrDocs:
-  `template`:
+proc SsrDocs*(): TagRef =
+  buildHtml:
     tDiv(class = "flex flex-col px-8 py-2 xl:h-fit gap-4"):
       tH1: {translate"Swagger and Redoc in HappyX 📕"}
 

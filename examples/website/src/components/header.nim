@@ -6,11 +6,8 @@ import
 
 
 # Declare component
-component Header:
-  drawer: Drawer = nil
-
-  # Declare HTML template
-  `template`:
+proc Header*(drawer: Drawer = nil): TagRef =
+  buildHtml:
     tDiv(class = "flex justify-between items-center px-8 py-2 backdrop-blur-md dark:backdrop-blur-sm dark:bg-black dark:bg-opacity-20 h-32 xl:h-fit"):
       tDiv(class = "flex"):
         tImg(src = "/happyx/public/icon.png", class = "h-24 md:h-16 xl:h-12 cursor-pointer select-none")
@@ -21,11 +18,11 @@ component Header:
         "≡"
         @click:
           enableRouting = false
-          if not (self.drawer->isNil()):
-            self.drawer->toggle()
+          if not drawer.isNil():
+            drawer.toggle()
           enableRouting = true
       tDiv(class = "hidden xl:flex gap-2 h-full"):  # buttons
-        component Button(
+        Button(
           action = proc() =
             {.emit:"""//js
             window.open('https://github.com/HapticX/happyx', '_blank').focus();
