@@ -676,7 +676,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
               ),
               if statement[^1].kind == nnkStmtList:
                 newStmtList(
-                  newVarStmt(ident"_anonymousTag", newCall("tag", statement[0])),
+                  newVarStmt(ident"_anonymousTag", statement[0]),
                   newCall(
                     "add",
                     ident"_anonymousTag",
@@ -688,7 +688,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
                   ident"_anonymousTag"
                 )
               else:
-                newCall("tag", statement[0])
+                statement[0]
             ),
             newNimNode(nnkElifBranch).add(
               newCall(
@@ -1159,7 +1159,9 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
               "and",
               newCall("declared", statement),
               newCall("is", statement, ident"TagRef")
-            ), newCall("tag", statement)
+            ), newStmtList(
+              statement
+            )
           ),
           newNimNode(nnkElifBranch).add(
             newCall(
