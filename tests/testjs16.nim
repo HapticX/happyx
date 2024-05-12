@@ -143,19 +143,6 @@ component ShowNum:
 randomize()
 
 
-var someValue = remember 0
-
-proc functionalComp(i: State[int], body: TagRef): TagRef =
-  ## You can pass any amount of arguments.
-  buildHtml:
-    tDiv:
-      "i is "
-      {i}
-      @click:
-        i += 1
-    body
-
-
 appRoutes "app":
   "/":
     for i in 1..5:
@@ -194,9 +181,3 @@ appRoutes "app":
       nim:
         echo inCycle, ", ", inComponent
         echo cycleCounter, ", ", compName, ", ", compCounter
-  
-  "/func-components":
-    tDiv:
-      "Here is functional components"
-      functionalComp(someValue):
-        "This is functional component slot"
