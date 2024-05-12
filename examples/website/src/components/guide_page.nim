@@ -4,14 +4,12 @@ import
   ../ui/[colors, translations],
   ../docs/docs,
   ./[button, drawer, sidebar, code_block_guide],
-  unicode,
-  json
+  std/unicode,
+  std/json
 
 
-component GuidePage:
-  current: string = ""
-
-  `template`:
+proc GuidePage*(current: string = ""): TagRef =
+  buildHtml:
     tDiv(
       class = "flex flex-col text-3xl lg:text-xl xl:text-base w-full h-full px-4 lg:px-12 xl:px-16 py-2 bg-[{BackgroundSecondary}] dark:bg-[{BackgroundSecondaryDark}] gap-8"
     ):

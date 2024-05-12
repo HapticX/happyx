@@ -10,12 +10,11 @@ type
     ttInfo
 
 
-component Tip:
-  mode: TipType = TipType.ttTip
-  `template`:
+proc Tip*(mode: TipType = TipType.ttTip, stmt: TagRef = nil): TagRef =
+  buildHtml:
     tDiv(
       class =
-        case self.mode.val
+        case mode
         of ttTip:
           "flex flex-col w-fit gap-2 border-l-4 rounded-r-md border-green-700 bg-green-200/25 dark:border-green-300 px-4 py-2"
         of ttWarning:
@@ -24,11 +23,12 @@ component Tip:
           "flex flex-col w-fit gap-2 border-l-4 rounded-r-md border-orange-700 bg-orange-200/25 dark:border-orange-300 px-4 py-2"
     ):
       tB:
-        case self.mode.val
+        case mode
         of ttTip:
           {translate"TIP"}
         of ttWarning:
           {translate"Warning"}
         of ttInfo:
           {translate"Info"}
-      slot
+      if not stmt.isNil:
+        stmt

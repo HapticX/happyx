@@ -91,37 +91,34 @@ var
   }
 
 
-component SideBarTitle:
-  `template`:
+proc SideBarTitle*(stmt: TagRef): TagRef =
+  buildHtml:
     tDiv(class = "flex flex-col gap-8 lg:gap-4 xl:gap-2 text-7xl lg:text-2xl xl:text-xl font-bold select-none"):
-      slot
+      stmt
 
 
-component SideBarFolder:
-  id: string
-  text: string
-  `template`:
+proc SideBarFolder*(id: string, text: string, stmt: TagRef): TagRef =
+  buildHtml:
     tDiv(class = "flex flex-col gap-4 lg:gap-2 xl:gap-0 text-5xl lg:text-xl xl:text-lg font-bold cursor-pointer select-none pl-2"):
       tDiv:
-        {translate(self.text)}
+        {translate(text)}
         @click:
-          route(fmt"/guide/{self.id}")
-      slot
+          route(fmt"/guide/{id}")
+      stmt
 
 
-component SideBarItem:
-  id: string
-  `template`:
+proc SideBarItem*(id: string, stmt: TagRef): TagRef =
+  buildHtml:
     tDiv(
       class =
-        if currentGuidePage.val == self.id:
+        if currentGuidePage.val == id:
           fmt"pl-12 lg:pl-8 xl:pl-4 text-4xl opacity-90 lg:text-lg xl:text-base cursor-pointer select-none bg-[{Foreground}]/25 dark:bg-[{ForegroundDark}]/25 duration-300"
         else:
           fmt"pl-12 lg:pl-8 xl:pl-4 text-4xl opacity-60 hover:opacity-70 active:opacity-80 lg:text-lg xl:text-base cursor-pointer select-none bg-[{Foreground}]/0 dark:bg-[{ForegroundDark}]/0 hover:bg-[{Foreground}]/[.10] dark:hover:bg-[{ForegroundDark}]/[.10] active:bg-[{Foreground}]/[.20] dark:active:bg-[{ForegroundDark}]/[.20] duration-300"
     ):
-      slot
+      stmt
       @click:
-        route(fmt"/guide/{self.id}")
+        route(fmt"/guide/{id}")
 
 
 # Declare component

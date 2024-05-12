@@ -24,7 +24,7 @@ component LanguageSpinner:
   # Declare HTML template
   `template`:
     tDiv(class = "dropdown relative inline-block"):
-      component Button:
+      Button:
         {translate"🌏 Language"}
       tDiv(class = "dropdown-items absolute w-full hidden overflow-hidden rounded-md"):
         tButton(class = "w-full px-1 text-4xl lg:text-2xl xl:text-base md:px-4 xl:px-8 py-1 text-[{Background}] dark:text-[{BackgroundDark}] bg-[{Orange}] dark:bg-[{Yellow}] opacity-90 hover:opacity-80 active:opacity-70 duration-300"):

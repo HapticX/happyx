@@ -262,7 +262,6 @@ else:
 when defined(js):
   proc renderVdom*(app: App, tag: TagRef, force: bool = false) =
     ## Rerender DOM with VDOM
-    echo 1
     var realDom = document.getElementById(app.appId).Node
     realDom.innerHTML = ""
     realDom.appendChild(tag)
