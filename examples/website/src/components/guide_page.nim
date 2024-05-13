@@ -29,6 +29,8 @@ proc GuidePage*(current: string = ""): TagRef =
           Reactivity
         of "components":
           Components
+        of "func_components":
+          FuncComponents
         of "ssr_basics":
           SsrBasics
         of "tailwind_and_other":

@@ -575,7 +575,11 @@ macro component*(name, body: untyped): untyped =
             styleStmtList = newStmtList(
               newAssignment(
                 ident"result",
-                newCall("fmt", newLit($css), newLit('<'), newLit('>'))
+                newCall("replace",
+                  newCall("fmt", newLit($css), newLit('<'), newLit('>')),
+                  newCall("re2", newLit("([\\S ]+?) *\\{")),
+                  newCall("fmt", newLit("$1[data-{self.uniqCompId}] {{"))
+                )
               )
             )
           elif s[^1][0].kind in [nnkStrLit, nnkTripleStrLit]:
@@ -583,7 +587,11 @@ macro component*(name, body: untyped): untyped =
             styleStmtList = newStmtList(
               newAssignment(
                 ident"result",
-                newCall("fmt", newLit($s[1][0]), newLit('<'), newLit('>'))
+                newCall("replace",
+                  newCall("fmt", newLit($s[1][0]), newLit('<'), newLit('>')),
+                  newCall("re2", newLit("([\\S ]+?) *\\{")),
+                  newCall("fmt", newLit("$1[data-{self.uniqCompId}] {{"))
+                )
               )
             )
           elif s[^1][0].kind == nnkCall and s[^1][0][0].kind == nnkIdent and $s[^1][0][0] == "buildStyle":
