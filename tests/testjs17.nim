@@ -56,6 +56,7 @@ appRoutes "app":
       funcComp1(someValue):
         "This is functional component slot"
       funcComp2(someValue)
+      funcComp2(i = someValue)
       funcComp3()
       funcComp3
       funcComp4(id = "inp2"):

@@ -1,4 +1,7 @@
+import std/strformat
+
 const
+  quotes = "\"\"\""
   spaExample* = """import happyx
 
 appRoutes "app":
@@ -258,4 +261,28 @@ component Button:
       "counter {self.value}"
       @click:
         self.value += 1
+"""
+  nimSpaComponentsProps* = """import happyx
+
+component Button:
+  value: int  # this property should be passed anyway
+  age: int = 18  # This property can be omitted
+  *name: string = "Mike"  # This property can be accessed externally
+  
+  # You can also omit adding the component body. it's not prohibited.
+"""
+  nimSpaComponentsScopedStyle* = fmt"""import happyx
+
+component Button:
+  color: string = "#d09dcd"
+
+  html:
+    tButton:
+      "Click me"
+  
+  `style`: {quotes}
+    button {{
+      background-color: <self.color>;
+    }}
+  {quotes}
 """

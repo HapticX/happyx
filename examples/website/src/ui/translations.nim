@@ -1802,6 +1802,42 @@ translatable:
     "zh" -> "新的渲染系统 🧪"
     "fr" -> "Nouveau système de rendu 🧪"
     "ko" -> "새로운 렌더링 시스템 🧪"
+  "Components can have an unlimited number of props. These props can have default values.":
+    "ru" -> "Компоненты могут иметь неограниченное количество свойств. Эти свойства могут иметь значения по умолчанию."
+    "ja" -> "コンポーネントには無制限のプロパティを持たせることができます。これらのプロパティにはデフォルト値を持たせることができます。"
+    "zh" -> "组件可以拥有无限数量的属性。这些属性可以有默认值。"
+    "fr" -> "Les composants peuvent avoir un nombre illimité de props. Ces props peuvent avoir des valeurs par défaut."
+    "ko" -> "컴포넌트는 무제한의 속성을 가질 수 있습니다. 이러한 속성은 기본값을 가질 수 있습니다."
+  "Component properties":
+    "ru" -> "Свойства компонентов"
+    "ja" -> "コンポーネントのプロパティ"
+    "zh" -> "组件属性"
+    "fr" -> "Propriétés des composants"
+    "ko" -> "컴포넌트 속성"
+  "It is worth remembering that each property is automatically wrapped in State[].":
+    "ru" -> "Стоит помнить, что каждое свойство автоматически оборачивается в State[]."
+    "ja" -> "各プロパティは自動的にState[]でラップされることを覚えておく価値があります。"
+    "zh" -> "值得记住的是，每个属性都会自动包装在State[]中。"
+    "fr" -> "Il est bon de se rappeler que chaque propriété est automatiquement enveloppée dans State[]."
+    "ko" -> "각 속성은 자동으로 State[]으로 래핑되는 것을 기억하는 것이 좋습니다."
+  "Component styles":
+    "ru" -> "Стили компонента"
+    "ja" -> "コンポーネントのスタイル"
+    "zh" -> "组件样式"
+    "fr" -> "Styles des composants"
+    "ko" -> "컴포넌트 스타일"
+  "Each component can have its own styles. They are isolated for each instance of the component.":
+    "ru" -> "Каждый компонент может иметь свои стили. Они изолированы для каждого экземпляра компонента."
+    "ja" -> "各コンポーネントには独自のスタイルがあります。それらはコンポーネントの各インスタンスに対して分離されています。"
+    "zh" -> "每个组件都可以有自己的样式。它们针对组件的每个实例进行了隔离。"
+    "fr" -> "Chaque composant peut avoir ses propres styles. Ils sont isolés pour chaque instance du composant."
+    "ko" -> "각 컴포넌트는 자체 스타일을 가질 수 있습니다. 이 스타일은 컴포넌트의 각 인스턴스에 대해 격리됩니다."
+  "In this case, styles are applied only to the buttons inside the component. You may also notice that component property values can be inserted into styles.":
+    "ru" -> "В данном случае стили применяются только для кнопок внутри компонента. Вы также можете заметить, что в стили можно вставлять значения свойств компонента."
+    "ja" -> "この場合、スタイルはコンポーネント内のボタンにのみ適用されます。また、コンポーネントのプロパティ値をスタイルに挿入することができることに気付くかもしれません。"
+    "zh" -> "在这种情况下，样式仅适用于组件内的按钮。您还可以注意到可以将组件属性值插入到样式中。"
+    "fr" -> "Dans ce cas, les styles sont appliqués uniquement aux boutons à l'intérieur du composant. Vous remarquerez également que les valeurs des propriétés du composant peuvent être insérées dans les styles."
+    "ko" -> "이 경우에는 스타일이 컴포넌트 내의 버튼에만 적용됩니다. 또한 컴포넌트 속성 값이 스타일에 삽입될 수 있다는 것을 알 수 있습니다."
 
 
 var spokenLang: cstring
