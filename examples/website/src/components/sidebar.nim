@@ -56,6 +56,11 @@ var
     "components": {
       "title": "Components 🔥",
       "prev": "reactivity",
+      "next": "func_components"
+    },
+    "func_components": {
+      "title": "Functional components 🧪",
+      "prev": "components",
       "next": "ssr_basics"
     },
     "ssr_basics": {
@@ -166,6 +171,8 @@ component SideBar:
                 {translate"Reactivity ⚡"}
               SideBarItem("components"):
                 {translate"Components 🔥"}
+              SideBarItem("func_components"):
+                {translate"Functional components 🧪"}
 
             SideBarFolder("ssr_basics", "Server-side Applications 🖥"):
               SideBarItem("ssr_basics"):

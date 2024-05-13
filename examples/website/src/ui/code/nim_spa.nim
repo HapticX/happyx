@@ -286,3 +286,28 @@ component Button:
     }}
   {quotes}
 """
+  nimSpaComponentsScript* = fmt"""import happyx
+
+component Button:
+  html:
+    tButton:
+      "Click me"
+  
+  `script`:
+    echo "Hello from Button component :)"
+"""
+  nimSpaFuncComp1* = fmt"""import happyx
+
+proc MyFuncComponent*(): TagRef =
+  echo "render functional component"
+  buildHtml:
+    "Hello from functional component"
+"""
+  nimSpaFuncComp2* = """import happyx
+
+proc MyFuncComponent*(i: int, stmt: TagRef): TagRef =
+  buildHtml:
+    tDiv:
+      "value of i is {i}"
+      stmt  # slot will be rendered here
+"""
