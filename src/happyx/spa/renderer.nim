@@ -263,6 +263,7 @@ when defined(js):
   proc renderVdom*(app: App, tag: TagRef, force: bool = false) =
     ## Rerender DOM with VDOM
     var realDom = document.getElementById(app.appId).Node
+    let activeElement = document.activeElement
     realDom.innerHTML = ""
     realDom.appendChild(tag)
     if force:
@@ -277,6 +278,15 @@ when defined(js):
       for comp in currentComponentsList:
         comp.updated(comp, nil)
     currentComponentsList.setLen(0)
+    if activeElement.hasAttribute("id"):
+      let actElem = document.getElementById(activeElement.id)
+      if not actElem.isNil:
+        actElem.focus()
+        if actElem.nodeName in ["INPUT".cstring, "TEXTAREA".cstring]:
+          let
+            oldActiveElem = activeElement.InputElement
+            currentActiveElem = actElem.InputElement
+          currentActiveElem.setSelectionRange(oldActiveElem.selectionStart, oldActiveElem.selectionEnd, oldActiveElem.selectionDirection)
 else:
   proc renderVdom*(app: App, tag: TagRef, force: bool = false) =
     ## Rerender DOM with VDOM
