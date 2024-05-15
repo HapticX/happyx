@@ -303,7 +303,7 @@ when not defined(js):
 import
   happyx/core/[exceptions, constants],
   happyx/sugar/[use, sgr, js, style],
-  happyx/spa/[renderer, state, translatable, tag, spa_utils],
+  happyx/spa/[renderer, state, translatable, tag],
   happyx/routing/[mounting, decorators],
   happyx/ssr/utils
 
@@ -338,7 +338,6 @@ export
   mounting,
   sgr,
   js,
-  spa_utils,
   utils
 
 when enableAppRouting:
