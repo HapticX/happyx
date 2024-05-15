@@ -290,7 +290,8 @@ when not defined(js):
     happyx/ssr/form_data,
     happyx/ssr/cors,
     happyx/ssr/session,
-    happyx/core/secure
+    happyx/core/secure,
+    std/sugar
 
   export
     server,
@@ -298,7 +299,8 @@ when not defined(js):
     form_data,
     cors,
     session,
-    secure
+    secure,
+    sugar
 
 import
   happyx/core/[exceptions, constants],
@@ -314,7 +316,10 @@ when enableAppRouting:
   import happyx/routing/routing
   import happyx/core/queries
 when enableDefaultComponents:
+  import regex
+  export regex
   import happyx/spa/components
+  export components
 
 when defined(js):
   import happyx/spa/spa_utils
@@ -342,8 +347,6 @@ export
 
 when enableAppRouting:
   export routing, queries
-when enableDefaultComponents:
-  export components
 when enableTemplateEngine:
   export engine
 
