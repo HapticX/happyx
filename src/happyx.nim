@@ -301,12 +301,20 @@ when not defined(js):
     secure
 
 import
-  happyx/core/[exceptions, constants, queries],
+  happyx/core/[exceptions, constants],
   happyx/sugar/[use, sgr, js, style],
-  happyx/spa/[renderer, state, components, translatable, tag],
-  happyx/tmpl_engine/[engine],
-  happyx/routing/[mounting, routing, decorators],
+  happyx/spa/[renderer, state, translatable, tag, spa_utils],
+  happyx/routing/[mounting, decorators],
   happyx/ssr/utils
+
+when enableTemplateEngine:
+  import happyx/tmpl_engine/engine
+
+when enableAppRouting:
+  import happyx/routing/routing
+  import happyx/core/queries
+when enableDefaultComponents:
+  import happyx/spa/components
 
 when defined(js):
   import happyx/spa/spa_utils
@@ -321,20 +329,24 @@ export
   exceptions,
   constants,
   use,
-  queries,
   renderer,
   state,
   decorators,
-  components,
   translatable,
   style,
-  engine,
   tag,
-  routing,
   mounting,
   sgr,
   js,
+  spa_utils,
   utils
+
+when enableAppRouting:
+  export routing, queries
+when enableDefaultComponents:
+  export components
+when enableTemplateEngine:
+  export engine
 
 
 # Language bindings

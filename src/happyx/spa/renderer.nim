@@ -21,10 +21,8 @@
 
 import
   std/macros,
-  std/logging,
   std/htmlgen,
   std/strtabs,
-  std/sugar,
   std/strutils,
   std/strformat,
   std/tables,
@@ -35,7 +33,11 @@ import
   ../sugar/[sgr, js],
   ../routing/[mounting, decorators]
 
-when enableRouting:
+when enableDebug:
+  import std/logging
+  export logging
+
+when enableAppRouting:
   import
     ../routing/routing,
     regex
@@ -51,15 +53,13 @@ when defined(js):
 
 export
   strformat,
-  logging,
   htmlgen,
   strtabs,
   strutils,
   tables,
-  sugar,
   tag
 
-when enableRouting:
+when enableAppRouting:
   import
     regex
 
@@ -67,7 +67,6 @@ when enableRouting:
 
 when defined(js):
   type
-    AppEventHandler* = proc(ev: Event = nil): void
     App* = ref object
       appId*: cstring
       router*: proc(force: bool = false)
@@ -122,11 +121,9 @@ else:
 # Global variables
 var
   application*: App = nil  ## global application variable
-  eventHandlers* = newTable[int, AppEventHandler]()
   currentRoute*: cstring = "/"  ## Current route path
 when enableDefaultComponents:
   var
-    componentEventHandlers* = newTable[int, ComponentEventHandler]()
     currentComponent* = ""  ## Current component unique ID
     currentComponentsList*: seq[BaseComponent] = @[]
     createdComponentsList*: seq[BaseComponent] = @[]
@@ -142,31 +139,6 @@ when enableDefaultComponents:
 
 when defined(js):
   const uniqueMacroIndex = CacheCounter"uniqueMacroIndex"
-  buildJs:
-    function callEventHandler(idx, event):
-      nim:
-        var
-          idx: int
-          ev: Event
-      ~idx = idx
-      ~ev = event
-      nim:
-        eventHandlers[idx](ev)
-  when enableDefaultComponents:
-    buildJs:
-      function callComponentEventHandler(componentId, idx, event):
-        nim:
-          var
-            callbackIdx: int
-            componentId: cstring
-            evComponent: Event
-        ~callbackIdx = idx
-        ~componentId = componentId
-        ~evComponent = event
-        nim:
-          componentEventHandlers[callbackIdx](components[componentId], evComponent)
-
-
 macro elem*(name: untyped): untyped =
   ## `elem` macro is just shortcut for
   ## 
@@ -481,38 +453,39 @@ macro buildHtml*(html: untyped): untyped =
     result.add(newLit(true))
 
 
-macro buildHtmlSlot*(html: untyped, inCycle, inComponent: static[bool]): untyped =
-  ## `buildHtml` macro provides building HTML tags with YAML-like syntax.
-  ## This macro doesn't generate Root tag
-  ## 
-  ## Args:
-  ## - `html`: YAML-like structure.
-  ## 
-  var cycleVars = newSeq[NimNode]()
-  result = buildHtmlProcedure(
-    ident"tDiv", html, cycleVars = cycleVars, inCycle = inCycle, inComponent = inComponent,
-    cycleTmpVar = "cycleCounter", compTmpVar = ident"compCounter"
-  ).add(newNimNode(nnkExprEqExpr).add(ident"onlyChildren", newLit(true)))
+when enableDefaultComponents:
+  macro buildHtmlSlot*(html: untyped, inCycle, inComponent: static[bool]): untyped =
+    ## `buildHtml` macro provides building HTML tags with YAML-like syntax.
+    ## This macro doesn't generate Root tag
+    ## 
+    ## Args:
+    ## - `html`: YAML-like structure.
+    ## 
+    var cycleVars = newSeq[NimNode]()
+    result = buildHtmlProcedure(
+      ident"tDiv", html, cycleVars = cycleVars, inCycle = inCycle, inComponent = inComponent,
+      cycleTmpVar = "cycleCounter", compTmpVar = ident"compCounter"
+    ).add(newNimNode(nnkExprEqExpr).add(ident"onlyChildren", newLit(true)))
 
 
-macro buildComponentHtml*(componentName, html: untyped): untyped =
-  ## `buildHtml` macro provides building HTML tags with YAML-like syntax.
-  ## This macro doesn't generate Root tag
-  ## 
-  ## Args:
-  ## - `html`: YAML-like structure.
-  ## 
-  var
-    h = html
-    cycleVars = newSeq[NimNode]()
-    node = h.replaceSelfComponent(componentName, convert = false)
-  if node.kind != nnkEmpty:
-    node.add(newCall("reRender", ident"self"))
-  result = buildHtmlProcedure(ident"tDiv", h, true, componentName, compTmpVar = newDotExpr(ident"self", ident(UniqueComponentId)), cycleVars = cycleVars)
-  if result[^1].kind == nnkCall and $result[^1][0] == "@":
-    result.add(newLit(true))
+  macro buildComponentHtml*(componentName, html: untyped): untyped =
+    ## `buildHtml` macro provides building HTML tags with YAML-like syntax.
+    ## This macro doesn't generate Root tag
+    ## 
+    ## Args:
+    ## - `html`: YAML-like structure.
+    ## 
+    var
+      h = html
+      cycleVars = newSeq[NimNode]()
+      node = h.replaceSelfComponent(componentName, convert = false)
+    if node.kind != nnkEmpty:
+      node.add(newCall("reRender", ident"self"))
+    result = buildHtmlProcedure(ident"tDiv", h, true, componentName, compTmpVar = newDotExpr(ident"self", ident(UniqueComponentId)), cycleVars = cycleVars)
+    if result[^1].kind == nnkCall and $result[^1][0] == "@":
+      result.add(newLit(true))
 
-when enableRouting:
+when enableAppRouting:
   macro routes*(app: App, body: untyped): untyped =
     ## Provides JS router for Single page application
     ## 

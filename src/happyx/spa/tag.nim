@@ -30,7 +30,6 @@ import
   std/strutils,
   std/strformat,
   std/strtabs,
-  std/sequtils,
   std/htmlparser,
   std/xmltree
 
@@ -377,10 +376,12 @@ proc toSeqIter*(self: TagRef): seq[TagRef] =
     result = @[self]
   when defined(js):
     for child in self.childNodes:
-      result = result.concat(child.TagRef.toSeqIter)
+      for i in child.TagRef.toSeqIter:
+        result.add(i)
   else:
     for child in self.children:
-      result = result.concat(child.TagRef.toSeqIter)
+      for i in child.TagRef.toSeqIter:
+        result.add(i)
   return result
 
 
@@ -748,7 +749,8 @@ when defined(js):
     else:
       result = @[self]
     for child in self.children:
-      result = result.concat(child.VmTagRef.toSeqIter)
+      for i in child.VmTagRef.toSeqIter:
+        result.add(i)
     return result
 
 

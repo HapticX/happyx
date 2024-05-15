@@ -56,7 +56,8 @@ const
   enableRoutingDebugMacro* = defined(routingDebug) or defined(happyxRoutingDebug) or defined(hpxRoutingDebug)
   enableDefaultDecorators* = not (defined(disableDefDeco) or defined(happyxDsableDefDeco) or defined(hpxDisableDefDeco))
   enableDefaultComponents* = not (defined(disableComp) or defined(happyxDisableComp) or defined(hpxDisableComp))
-  enableRouting* = not (defined(disableRouting) or defined(happyxDisableRouting) or defined(hpxDisableRouting))
+  enableAppRouting* = not (defined(disableRouting) or defined(happyxDisableRouting) or defined(hpxDisableRouting))
+  enableTemplateEngine* = not (defined(disableTemplateEngine) or defined(happyxTemplateEngine) or defined(hpxTemplateEngine))
   componentDebugTarget* {.strdefine.} = ""
   reqModelDebugTarget* {.strdefine.} = ""
   # Language bindings
