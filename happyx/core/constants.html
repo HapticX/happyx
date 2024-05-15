@@ -58,12 +58,14 @@
 <li><a class="reference" href="#componentDebugTarget" title="componentDebugTarget {.strdefine.} = &quot;&quot;">componentDebugTarget</a></li>
 <li><a class="reference" href="#cryptoMethod" title="cryptoMethod {.strdefine.} = &quot;sha512&quot;">cryptoMethod</a></li>
 <li><a class="reference" href="#enableApiDoc" title="enableApiDoc = true">enableApiDoc</a></li>
+<li><a class="reference" href="#enableAppRouting" title="enableAppRouting = true">enableAppRouting</a></li>
 <li><a class="reference" href="#enableAutoTranslate" title="enableAutoTranslate = false">enableAutoTranslate</a></li>
 <li><a class="reference" href="#enableDebug" title="enableDebug = false">enableDebug</a></li>
 <li><a class="reference" href="#enableDebugComponentMacro" title="enableDebugComponentMacro = false">enableDebugComponentMacro</a></li>
 <li><a class="reference" href="#enableDebugSpaMacro" title="enableDebugSpaMacro = false">enableDebugSpaMacro</a></li>
 <li><a class="reference" href="#enableDebugSsrMacro" title="enableDebugSsrMacro = false">enableDebugSsrMacro</a></li>
 <li><a class="reference" href="#enableDebugTreeComponentMacro" title="enableDebugTreeComponentMacro = false">enableDebugTreeComponentMacro</a></li>
+<li><a class="reference" href="#enableDefaultComponents" title="enableDefaultComponents = true">enableDefaultComponents</a></li>
 <li><a class="reference" href="#enableDefaultDecorators" title="enableDefaultDecorators = true">enableDefaultDecorators</a></li>
 <li><a class="reference" href="#enableHistoryApi" title="enableHistoryApi = false">enableHistoryApi</a></li>
 <li><a class="reference" href="#enableHttpBeast" title="enableHttpBeast = false">enableHttpBeast</a></li>
@@ -73,13 +75,14 @@
 <li><a class="reference" href="#enableRequestModelDebugMacro" title="enableRequestModelDebugMacro = false">enableRequestModelDebugMacro</a></li>
 <li><a class="reference" href="#enableRoutingDebugMacro" title="enableRoutingDebugMacro = false">enableRoutingDebugMacro</a></li>
 <li><a class="reference" href="#enableSafeRequests" title="enableSafeRequests = false">enableSafeRequests</a></li>
+<li><a class="reference" href="#enableTemplateEngine" title="enableTemplateEngine = true">enableTemplateEngine</a></li>
 <li><a class="reference" href="#enableUseCompDebugMacro" title="enableUseCompDebugMacro = false">enableUseCompDebugMacro</a></li>
 <li><a class="reference" href="#exportJvm" title="exportJvm = false">exportJvm</a></li>
 <li><a class="reference" href="#exportPython" title="exportPython = false">exportPython</a></li>
 <li><a class="reference" href="#HpxMajor" title="HpxMajor = 3">HpxMajor</a></li>
 <li><a class="reference" href="#HpxMinor" title="HpxMinor = 11">HpxMinor</a></li>
-<li><a class="reference" href="#HpxPatch" title="HpxPatch = 1">HpxPatch</a></li>
-<li><a class="reference" href="#HpxVersion" title="HpxVersion = &quot;3.11.1&quot;">HpxVersion</a></li>
+<li><a class="reference" href="#HpxPatch" title="HpxPatch = 2">HpxPatch</a></li>
+<li><a class="reference" href="#HpxVersion" title="HpxVersion = &quot;3.11.2&quot;">HpxVersion</a></li>
 <li><a class="reference" href="#htmlTagsList" title="htmlTagsList = [&quot;a&quot;, &quot;abbr&quot;, &quot;address&quot;, &quot;area&quot;, &quot;article&quot;, &quot;aside&quot;, &quot;audio&quot;,
                 &quot;b&quot;, &quot;base&quot;, &quot;bdi&quot;, &quot;bdo&quot;, &quot;blockquote&quot;, &quot;body&quot;, &quot;br&quot;, &quot;button&quot;,
                 &quot;canvas&quot;, &quot;caption&quot;, &quot;cite&quot;, &quot;code&quot;, &quot;col&quot;, &quot;colgroup&quot;, &quot;data&quot;,
@@ -132,6 +135,7 @@
 <tr><td><tt class="docutils literal"><span class="pre"><span class="Operator">-</span><span class="Identifier">d</span><span class="Punctuation">:</span><span class="Identifier">noliveviews</span></span></tt></td><td>Disables LiveViews at SSR/SSG (It helpful for components) 📕</td><td>❌</td></tr>
 <tr><td><tt class="docutils literal"><span class="pre"><span class="Operator">-</span><span class="Identifier">d</span><span class="Punctuation">:</span><span class="Identifier">safeRequests</span></span></tt></td><td>Enables requests safety (On error returns 500 with err msg) 📕</td><td>❌</td></tr>
 <tr><td><tt class="docutils literal"><span class="pre"><span class="Operator">-</span><span class="Identifier">d</span><span class="Punctuation">:</span><span class="Identifier">disableDefDeco</span></span></tt></td><td>Disables default decorators (<tt class="docutils literal"><span class="pre"><span class="Identifier">AuthBasic</span></span></tt>, <tt class="docutils literal"><span class="pre"><span class="Identifier">GetUserAgent</span></span></tt>) 👀</td><td>❌</td></tr>
+<tr><td><tt class="docutils literal"><span class="pre"><span class="Operator">-</span><span class="Identifier">d</span><span class="Punctuation">:</span><span class="Identifier">disableComp</span></span></tt></td><td>Disables default components. Only functional components will be enabled</td><td>❌</td></tr>
 </table>
 <h2><a class="toc-backref" id="constants-✨-dev-consts-👨‍💻" href="#constants-✨-dev-consts-👨‍💻">Dev Consts 👨‍💻</a></h2><table border="1" class="docutils"><tr><th>Flag</th><th>Description</th><th>Need Value</th></tr>
 <tr><td><tt class="docutils literal"><span class="pre"><span class="Operator">-</span><span class="Identifier">d</span><span class="Punctuation">:</span><span class="Identifier">compDebug</span></span></tt></td><td>enables debug logging for components</td><td>❌</td></tr>
@@ -186,6 +190,14 @@
     
   </dd>
 </div>
+<div id="enableAppRouting">
+  <dt><pre><a href="constants.html#enableAppRouting"><span class="Identifier">enableAppRouting</span></a> <span class="Other">=</span> <span class="DecNumber">true</span></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
 <div id="enableAutoTranslate">
   <dt><pre><a href="constants.html#enableAutoTranslate"><span class="Identifier">enableAutoTranslate</span></a> <span class="Other">=</span> <span class="DecNumber">false</span></pre></dt>
   <dd>
@@ -228,6 +240,14 @@
 </div>
 <div id="enableDebugTreeComponentMacro">
   <dt><pre><a href="constants.html#enableDebugTreeComponentMacro"><span class="Identifier">enableDebugTreeComponentMacro</span></a> <span class="Other">=</span> <span class="DecNumber">false</span></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+<div id="enableDefaultComponents">
+  <dt><pre><a href="constants.html#enableDefaultComponents"><span class="Identifier">enableDefaultComponents</span></a> <span class="Other">=</span> <span class="DecNumber">true</span></pre></dt>
   <dd>
     
     
@@ -306,6 +326,14 @@
     
   </dd>
 </div>
+<div id="enableTemplateEngine">
+  <dt><pre><a href="constants.html#enableTemplateEngine"><span class="Identifier">enableTemplateEngine</span></a> <span class="Other">=</span> <span class="DecNumber">true</span></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
 <div id="enableUseCompDebugMacro">
   <dt><pre><a href="constants.html#enableUseCompDebugMacro"><span class="Identifier">enableUseCompDebugMacro</span></a> <span class="Other">=</span> <span class="DecNumber">false</span></pre></dt>
   <dd>
@@ -347,7 +375,7 @@
   </dd>
 </div>
 <div id="HpxPatch">
-  <dt><pre><a href="constants.html#HpxPatch"><span class="Identifier">HpxPatch</span></a> <span class="Other">=</span> <span class="DecNumber">1</span></pre></dt>
+  <dt><pre><a href="constants.html#HpxPatch"><span class="Identifier">HpxPatch</span></a> <span class="Other">=</span> <span class="DecNumber">2</span></pre></dt>
   <dd>
     
     
@@ -355,7 +383,7 @@
   </dd>
 </div>
 <div id="HpxVersion">
-  <dt><pre><a href="constants.html#HpxVersion"><span class="Identifier">HpxVersion</span></a> <span class="Other">=</span> <span class="StringLit">&quot;3.11.1&quot;</span></pre></dt>
+  <dt><pre><a href="constants.html#HpxVersion"><span class="Identifier">HpxVersion</span></a> <span class="Other">=</span> <span class="StringLit">&quot;3.11.2&quot;</span></pre></dt>
   <dd>
     
     
@@ -444,7 +472,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2024-05-13 04:36:01 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2024-05-15 08:47:41 UTC</small>
       </div>
     </div>
   </div>
