@@ -116,6 +116,7 @@ else:
         pageShow*: ComponentEventHandler  ## Calls after every rendering
         beforeUpdated*: ComponentEventHandler  ## Calls before every rendering
         updated*: ComponentEventHandler  ## Calls after every DOM rendering
+  var eventHandlers* = newTable[int, AppEventHandler]()
 
 
 # Global variables
