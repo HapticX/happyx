@@ -42,11 +42,12 @@ proc Button(stmt: TagRef): TagRef =
       stmt
 
 
-component NormalComp:
-  i: State[int]
-  html:
-    tDiv:
-      "And this is common component. i is {self.i}"
+when enableDefaultComponents:
+  component NormalComp:
+    i: State[int]
+    html:
+      tDiv:
+        "And this is common component. i is {self.i}"
 
 
 appRoutes "app":
@@ -65,7 +66,8 @@ appRoutes "app":
           "This is functional component slot"
       funcComp4(id = "inp1"):
         "world"
-      NormalComp(someValue)
+      when enableDefaultComponents:
+        NormalComp(someValue)
       Button():
         "Click me"
       tButton():

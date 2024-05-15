@@ -3,7 +3,6 @@
 ## ## ⚠ Warning: This Module Is LOW-LEVEL API ⚠
 ## 
 import
-  regex,
   std/strutils,
   std/strformat,
   std/macros,
@@ -126,16 +125,16 @@ proc getTagName*(name: string): string =
   ## Checks tag name at compile time
   ## 
   ## tagDiv, tDiv, hDiv -> div
-  if re2"^tag[A-Z]" in name:
+  if name.len > 3 and name.startsWith("tag") and name[3].isAlphaAscii():
     name[3..^1].toLower()
-  elif re2"^[ht][A-Z]" in name:
+  elif name.len > 1 and name[0] in {'h', 't'} and name[1].isAlphaAscii():
     name[1..^1].toLower()
   else:
     name
 
 
 proc formatNode*(node: NimNode): NimNode =
-  if node.kind == nnkStrLit and ($node).contains(re2"\{[^\}\{]+\}"):
+  if node.kind == nnkStrLit and "{" in $node and "}" in $node:
     newCall("fmt", node)
   else:
     node
@@ -355,7 +354,17 @@ proc isExpr*(node: NimNode): bool =
   if node.kind in nnkCallKinds:
     if node[0].kind == nnkIdent:
       let fnName = $node[0]
-      if re2"^(answer|echo|styledEcho|styledWrite|write|await)" in fnName.toLower():
+      if "answer" in fnName:
+        return false
+      if "echo" in fnName:
+        return false
+      if "styledEcho" in fnName:
+        return false
+      if "styledWrite" in fnName:
+        return false
+      if "write" in fnName:
+        return false
+      if "await" in fnName:
         return false
       return true
   if node.kind in [nnkIfExpr, nnkIfStmt]:

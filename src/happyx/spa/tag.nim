@@ -30,10 +30,8 @@ import
   std/strutils,
   std/strformat,
   std/strtabs,
-  std/sequtils,
   std/htmlparser,
-  std/xmltree,
-  regex
+  std/xmltree
 
 
 when defined(js):
@@ -319,8 +317,7 @@ proc xml2Tag(xml: XmlNode): TagRef =
     else:
       result = initTag(xml.tag)
   of xnText:
-    if re2"\A\s+\z" notin xml.text:
-      result = initTag(xml.text.replace(re2" +\z", ""), true)
+    result = initTag(xml.text, true)
   else:
     discard
 
@@ -379,10 +376,12 @@ proc toSeqIter*(self: TagRef): seq[TagRef] =
     result = @[self]
   when defined(js):
     for child in self.childNodes:
-      result = result.concat(child.TagRef.toSeqIter)
+      for i in child.TagRef.toSeqIter:
+        result.add(i)
   else:
     for child in self.children:
-      result = result.concat(child.TagRef.toSeqIter)
+      for i in child.TagRef.toSeqIter:
+        result.add(i)
   return result
 
 
@@ -698,8 +697,7 @@ when defined(js):
       else:
         result = initTagVm(xml.tag)
     of xnText:
-      if re2"\A\s+\z" notin xml.text:
-        result = initTagVm(xml.text.replace(re2" +\z", ""), true)
+      result = initTagVm(xml.text, true)
     else:
       discard
 
@@ -751,7 +749,8 @@ when defined(js):
     else:
       result = @[self]
     for child in self.children:
-      result = result.concat(child.VmTagRef.toSeqIter)
+      for i in child.VmTagRef.toSeqIter:
+        result.add(i)
     return result
 
 

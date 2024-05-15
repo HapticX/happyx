@@ -17,6 +17,7 @@
 ## | `-d:noliveviews`     | Disables LiveViews at SSR/SSG (It helpful for components) 📕  |  ❌        |
 ## | `-d:safeRequests`    | Enables requests safety (On error returns 500 with err msg) 📕|  ❌        |
 ## | `-d:disableDefDeco`  | Disables default decorators (`AuthBasic`, `GetUserAgent`) 👀  |  ❌        |
+## | `-d:disableComp`     | Disables default components. Only functional components will be enabled |❌|
 ## 
 ## ## Dev Consts 👨‍💻
 ## 
@@ -54,6 +55,9 @@ const
   enableRequestModelDebugMacro* = defined(reqModelDebug) or defined(happyxReqModelDebug) or defined(hpxReqModelDebug)
   enableRoutingDebugMacro* = defined(routingDebug) or defined(happyxRoutingDebug) or defined(hpxRoutingDebug)
   enableDefaultDecorators* = not (defined(disableDefDeco) or defined(happyxDsableDefDeco) or defined(hpxDisableDefDeco))
+  enableDefaultComponents* = not (defined(disableComp) or defined(happyxDisableComp) or defined(hpxDisableComp))
+  enableAppRouting* = not (defined(disableRouting) or defined(happyxDisableRouting) or defined(hpxDisableRouting))
+  enableTemplateEngine* = not (defined(disableTemplateEngine) or defined(happyxTemplateEngine) or defined(hpxTemplateEngine))
   componentDebugTarget* {.strdefine.} = ""
   reqModelDebugTarget* {.strdefine.} = ""
   # Language bindings
@@ -95,7 +99,7 @@ const
   # Framework version
   HpxMajor* = 3
   HpxMinor* = 11
-  HpxPatch* = 1
+  HpxPatch* = 2
   HpxVersion* = $HpxMajor & "." & $HpxMinor & "." & $HpxPatch
 
 
