@@ -32,8 +32,7 @@ import
   std/strtabs,
   std/sequtils,
   std/htmlparser,
-  std/xmltree,
-  regex
+  std/xmltree
 
 
 when defined(js):
@@ -319,8 +318,7 @@ proc xml2Tag(xml: XmlNode): TagRef =
     else:
       result = initTag(xml.tag)
   of xnText:
-    if re2"\A\s+\z" notin xml.text:
-      result = initTag(xml.text.replace(re2" +\z", ""), true)
+    result = initTag(xml.text, true)
   else:
     discard
 
@@ -698,8 +696,7 @@ when defined(js):
       else:
         result = initTagVm(xml.tag)
     of xnText:
-      if re2"\A\s+\z" notin xml.text:
-        result = initTagVm(xml.text.replace(re2" +\z", ""), true)
+      result = initTagVm(xml.text, true)
     else:
       discard
 
