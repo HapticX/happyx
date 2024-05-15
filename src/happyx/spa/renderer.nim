@@ -124,6 +124,7 @@ var
   currentRoute*: cstring = "/"  ## Current route path
 when enableDefaultComponents:
   var
+    componentEventHandlers* = newTable[int, ComponentEventHandler]()
     currentComponent* = ""  ## Current component unique ID
     currentComponentsList*: seq[BaseComponent] = @[]
     createdComponentsList*: seq[BaseComponent] = @[]
