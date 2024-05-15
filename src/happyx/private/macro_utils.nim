@@ -125,9 +125,9 @@ proc getTagName*(name: string): string =
   ## Checks tag name at compile time
   ## 
   ## tagDiv, tDiv, hDiv -> div
-  if name.len > 4 and name.startsWith("tag") and name[3].isAlphaAscii():
+  if name.len > 3 and name.startsWith("tag") and name[3].isAlphaAscii():
     name[3..^1].toLower()
-  elif name.len > 2 and name[0] in {'h', 't'} and name[1].isAlphaAscii():
+  elif name.len > 1 and name[0] in {'h', 't'} and name[1].isAlphaAscii():
     name[1..^1].toLower()
   else:
     name
