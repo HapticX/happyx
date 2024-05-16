@@ -47,6 +47,8 @@ var html =
       for i in state2:  # FOR STMT
         "current tag is {i}"
         {i}
+    tagTextarea(style = "font-weight: 500; margin-bottom: 10px;"):
+      "Hello, world"
     # VARIABLES
     {state}
     {state1}
