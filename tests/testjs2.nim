@@ -18,6 +18,8 @@ app.routes:
     component HelloWorld(counter = 4.0)
     component HelloWorld(counter = 8.0)
     component HelloWorld(counter = 16.0)
+    tagTextarea(style = "font-weight: 500; margin-bottom: 10px;"):
+      "Hello, world"
   
   "/slots":
     component CompWithSlot:
