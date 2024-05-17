@@ -96,23 +96,37 @@ var
   }
 
 
+
+proc toggleDrawerMobile*() =
+  let
+    drawerBack = document.getElementById("drawerBack")
+    drawer = document.getElementById("drawer")
+  drawerBack.classList.toggle("opacity-0")
+  drawerBack.classList.toggle("opacity-100")
+  drawerBack.classList.toggle("pointer-events-none")
+  drawer.classList.toggle("translate-x-full")
+  drawer.classList.toggle("translate-x-0")
+
+
 proc SideBarTitle*(stmt: TagRef): TagRef =
   buildHtml:
     tDiv(class = "flex flex-col gap-8 lg:gap-4 xl:gap-2 text-7xl lg:text-2xl xl:text-xl font-bold select-none"):
       stmt
 
 
-proc SideBarFolder*(id: string, text: string, stmt: TagRef): TagRef =
+proc SideBarFolder*(id: string, text: string, isMobile: bool, stmt: TagRef): TagRef =
   buildHtml:
     tDiv(class = "flex flex-col gap-4 lg:gap-2 xl:gap-0 text-5xl lg:text-xl xl:text-lg font-bold cursor-pointer select-none pl-2"):
       tDiv:
         {translate(text)}
         @click:
           route(fmt"/guide/{id}")
+          if isMobile:
+            toggleDrawerMobile()
       stmt
 
 
-proc SideBarItem*(id: string, stmt: TagRef): TagRef =
+proc SideBarItem*(id: string, isMobile: bool, stmt: TagRef): TagRef =
   buildHtml:
     tDiv(
       class =
@@ -124,6 +138,8 @@ proc SideBarItem*(id: string, stmt: TagRef): TagRef =
       stmt
       @click:
         route(fmt"/guide/{id}")
+        if isMobile:
+          toggleDrawerMobile()
 
 
 # Declare component
@@ -146,46 +162,46 @@ component SideBar:
           SideBarTitle:
             {translate"User Guide 📖"}
 
-            SideBarFolder("introduction", "General 🍍"):
-              SideBarItem("introduction"):
+            SideBarFolder("introduction", "General 🍍", self.isMobile.val):
+              SideBarItem("introduction", self.isMobile.val):
                 {translate"Introduction ✌"}
-              SideBarItem("getting_started"):
+              SideBarItem("getting_started", self.isMobile.val):
                 {translate"Getting Started 💫"}
 
-            SideBarFolder("happyx_app", "Basics 📖"):
-              SideBarItem("happyx_app"):
+            SideBarFolder("happyx_app", "Basics 📖", self.isMobile.val):
+              SideBarItem("happyx_app", self.isMobile.val):
                 {translate"HappyX Application 🍍"}
-              SideBarItem("path_params"):
+              SideBarItem("path_params", self.isMobile.val):
                 {translate"Path Params 🔌"}
 
-            SideBarFolder("tailwind_and_other", "Advanced 🧪"):
-              SideBarItem("tailwind_and_other"):
+            SideBarFolder("tailwind_and_other", "Advanced 🧪", self.isMobile.val):
+              SideBarItem("tailwind_and_other", self.isMobile.val):
                 {translate"Tailwind And Other 🎴"}
-              SideBarItem("route_decorators"):
+              SideBarItem("route_decorators", self.isMobile.val):
                 {translate"Route Decorators 🔌"}
 
-            SideBarFolder("spa_basics", "Single-page Applications 🎴"):
-              SideBarItem("spa_basics"):
+            SideBarFolder("spa_basics", "Single-page Applications 🎴", self.isMobile.val):
+              SideBarItem("spa_basics", self.isMobile.val):
                 {translate"Single-page Applications Basics 🎴"}
-              SideBarItem("reactivity"):
+              SideBarItem("reactivity", self.isMobile.val):
                 {translate"Reactivity ⚡"}
-              SideBarItem("components"):
+              SideBarItem("components", self.isMobile.val):
                 {translate"Components 🔥"}
-              SideBarItem("func_components"):
+              SideBarItem("func_components", self.isMobile.val):
                 {translate"Functional components 🧪"}
 
-            SideBarFolder("ssr_basics", "Server-side Applications 🖥"):
-              SideBarItem("ssr_basics"):
+            SideBarFolder("ssr_basics", "Server-side Applications 🖥", self.isMobile.val):
+              SideBarItem("ssr_basics", self.isMobile.val):
                 {translate"Server-side Applications Basics 🖥"}
-              SideBarItem("db_access"):
+              SideBarItem("db_access", self.isMobile.val):
                 {translate"Database access 📦"}
-              SideBarItem("sqlite"):
+              SideBarItem("sqlite", self.isMobile.val):
                 {translate"SQLite 📦"}
-              SideBarItem("postgres"):
+              SideBarItem("postgres", self.isMobile.val):
                 {translate"PostgreSQL 📦"}
-              SideBarItem("mongo_db"):
+              SideBarItem("mongo_db", self.isMobile.val):
                 {translate"MongoDB 🍃"}
-              SideBarItem("ssr_docs"):
+              SideBarItem("ssr_docs", self.isMobile.val):
                 {translate"Swagger and Redoc in HappyX 📕"}
         tDiv(class = "flex"):
           Button(

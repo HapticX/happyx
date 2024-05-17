@@ -17,8 +17,7 @@ proc Header*(drawer: Drawer = nil): TagRef =
       tDiv(class = "flex xl:hidden text-8xl font-bold select-none cursor-pointer"):
         "≡"
         @click:
-          if not drawer.isNil():
-            drawer.toggle()
+          toggleDrawer()
       tDiv(class = "hidden xl:flex gap-2 h-full"):  # buttons
         Button(
           action = proc() =
