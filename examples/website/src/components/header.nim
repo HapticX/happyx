@@ -17,10 +17,8 @@ proc Header*(drawer: Drawer = nil): TagRef =
       tDiv(class = "flex xl:hidden text-8xl font-bold select-none cursor-pointer"):
         "≡"
         @click:
-          enableRouting = false
           if not drawer.isNil():
             drawer.toggle()
-          enableRouting = true
       tDiv(class = "hidden xl:flex gap-2 h-full"):  # buttons
         Button(
           action = proc() =

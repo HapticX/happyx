@@ -250,12 +250,59 @@ when enableDefaultComponents:
 
 
 when defined(js):
+  proc isSameTypes(a, b: Node): bool =
+    if a.nodeType == b.nodeType and a.nodeType == NodeType.ElementNode:
+      return ($a.nodeName).toLower() == ($b.nodeName).toLower()
+    return a.nodeType == b.nodeType
+  proc attrIndex(e: Node): TableRef[cstring, cstring] =
+    var attrs = newTable[cstring, cstring]()
+    if e.attributes.len == 0:
+      return attrs
+    for i in e.attributes:
+      attrs[i.nodeName] = i.nodeValue
+    return attrs
+  proc patchAttrs(dom, vdom: Node) =
+    var
+      domAttrs = dom.attrIndex
+      vdomAttrs = vdom.attrIndex
+    if domAttrs == vdomAttrs:
+      return
+    for key, val in vdomAttrs.pairs:
+      if not domAttrs.hasKey(key):
+        dom.setAttribute(key, val)
+      elif domAttrs[key] != val:
+        dom.setAttribute(key, val)
+    for key, val in domAttrs.pairs:
+      if not vdomAttrs.hasKey(key):
+        dom.removeAttribute(key)
+  proc diff*(vdom: TagRef, dom: Node) =
+    if not dom.hasChildNodes and vdom.hasChildNodes:
+      for t in vdom.childNodes:
+        dom.appendChild(t.cloneNode(true))
+    else:
+      {.emit: "if (`dom`.isEqualNode(`vdom`)){return}".}
+      if dom.childNodes.len > vdom.childNodes.len:
+        for i in 0..<(dom.childNodes.len - vdom.childNodes.len):
+          dom.childNodes[^1].remove()
+      let realLength = dom.childNodes.len
+      for i in 0..<vdom.childNodes.len:
+        if dom.childNodes[i].isNil:
+          dom.appendChild(vdom.childNodes[i].cloneNode(true))
+        elif dom.childNodes[i].isSameTypes(vdom.childNodes[i]):
+          if dom.childNodes[i].nodeType == NodeType.TextNode:
+            if dom.childNodes[i].textContent != vdom.childNodes[i].textContent:
+              dom.childNodes[i].textContent = vdom.childNodes[i].textContent
+          else:
+            dom.childNodes[i].patchAttrs(vdom.childNodes[i])
+        else:
+          dom.childNodes[i].replaceWith(vdom.childNodes[i].cloneNode(true))
+        if vdom.childNodes[i].nodeType != NodeType.TextNode:
+          diff(vdom.childNodes[i].TagRef, dom.childNodes[i])
   proc renderVdom*(app: App, tag: TagRef, force: bool = false) =
     ## Rerender DOM with VDOM
     var realDom = document.getElementById(app.appId).Node
     let activeElement = document.activeElement
-    realDom.innerHTML = ""
-    realDom.appendChild(tag)
+    tag.diff(realDom)
     when enableDefaultComponents:
       if force:
         for comp in createdComponentsList:

@@ -107,6 +107,13 @@ component Drawer:
           if ($currentRoute).startsWith("/guide/"):
             SideBar(isMobile = true)
   
+  @updated:
+    let
+      drawerBack = document.getElementById("drawerBack" & self.uniqCompId)
+      drawer = document.getElementById("drawer" & self.uniqCompId)
+    if not drawer.isNil and "translate-x-0" in $drawer.className:
+      self.toggle()
+  
   [methods]:
     proc toggle*() =
       let

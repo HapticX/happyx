@@ -77,6 +77,79 @@ const
   ]
 
 
+{.emit: """//js
+const _originAddEventListener = Element.prototype.addEventListener;
+const _originRemoveEventListener = Element.prototype.removeEventListener;
+const _originCloneNode = Element.prototype.cloneNode;
+const _eventListeners = [];
+
+Element.prototype.__getEventIndex = function(target, targetArgs) {
+  if (!this._eventListeners) {
+    this._eventListeners = [];
+  }
+  return this._eventListeners.findIndex(args => {
+    for (let i = 0; i < args.length; i++) {
+      if (targetArgs[i] !== args[i]) return false;
+    }
+    return true;
+  });
+};
+
+Element.prototype.getEventListeners = function() {
+  if (!this._eventListeners) {
+    this._eventListeners = [];
+  }
+  return this._eventListeners;
+}
+
+const cloneEvents = (source, element, deep) => {
+  for (const args of source.getEventListeners()) {
+    Element.prototype.addEventListener.apply(element, args)
+  }
+
+  if (deep) {
+    for (let i = 0; i < source.childNodes.length; i++) {
+      const sourceNode = source.childNodes[i];
+      const targetNode = element.childNodes[i];
+      if (sourceNode instanceof Element && targetNode instanceof Element) {
+        cloneEvents(sourceNode, targetNode, deep);
+      }
+    }
+  }
+};
+
+Element.prototype.addEventListener = function() {
+  if (!this._eventListeners) {
+    this._eventListeners = [];
+  }
+  this._eventListeners.push(arguments);
+  return _originAddEventListener.apply(this, arguments);
+};
+
+Element.prototype.removeEventListener = function() {
+  if (!this._eventListeners) {
+    this._eventListeners = [];
+  }
+  const eventIndex = this.__getEventIndex(arguments);
+  if (eventIndex !== -1) {
+    this._eventListeners.splice(eventIndex, 1);
+  }
+  return _originRemoveEventListener.apply(this, arguments);
+};
+
+Element.prototype.cloneNode = function(deep) {
+  if (!this._eventListeners) {
+    this._eventListeners = [];
+  }
+  const clonedNode = _originCloneNode.apply(this, arguments);
+  if (clonedNode instanceof Element) {
+    cloneEvents(this, clonedNode, deep);
+  }
+  return clonedNode;
+};
+""".}
+
+
 proc add*(self: TagRef, tags: varargs[TagRef]) =
   ## Adds `other` tag into `self` tag
   runnableExamples:
