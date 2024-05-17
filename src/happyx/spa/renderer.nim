@@ -288,7 +288,7 @@ when defined(js):
           dom.childNodes[^1].remove()
       let realLength = dom.childNodes.len
       for i in 0..<vdom.childNodes.len:
-        if dom.childNodes[i].isNil:
+        if i >= dom.childNodes.len:
           dom.appendChild(vdom.childNodes[i].cloneNode(true))
         elif dom.childNodes[i].isSameTypes(vdom.childNodes[i]):
           if dom.childNodes[i].nodeType == NodeType.TextNode:
