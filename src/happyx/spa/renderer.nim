@@ -67,6 +67,7 @@ when enableAppRouting:
 
 when defined(js):
   type
+    AppEventHandler* = proc(): void
     App* = ref object
       appId*: cstring
       router*: proc(force: bool = false)
@@ -121,6 +122,7 @@ else:
 
 # Global variables
 var
+  rendererHandlers* = newSeq[tuple[key: string, p: AppEventHandler]]()
   application*: App = nil  ## global application variable
   currentRoute*: cstring = "/"  ## Current route path
 when enableDefaultComponents:
@@ -302,7 +304,13 @@ when defined(js):
     ## Rerender DOM with VDOM
     var realDom = document.getElementById(app.appId).Node
     let activeElement = document.activeElement
+    for i in rendererHandlers:
+      if i.key == "beforeRendered":
+        i.p()
     tag.diff(realDom)
+    for i in rendererHandlers:
+      if i.key == "rendered":
+        i.p()
     when enableDefaultComponents:
       if force:
         for comp in createdComponentsList:

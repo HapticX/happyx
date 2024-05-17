@@ -10,21 +10,31 @@ proc chooseLang*(lang: cstring) =
     localStorage["happyx_spoken_language"] = ~lang
   route(currentRoute)
 
+proc toggleDrawer*() =
+  let
+    drawerBack = document.getElementById("drawerBack")
+    drawer = document.getElementById("drawer")
+  drawerBack.classList.toggle("opacity-0")
+  drawerBack.classList.toggle("opacity-100")
+  drawerBack.classList.toggle("pointer-events-none")
+  drawer.classList.toggle("translate-x-full")
+  drawer.classList.toggle("translate-x-0")
+
 
 component Drawer:
   isOpen: bool = false
 
   `template`:
     # Drawer background
-    tDiv(id = "drawerBack", class = "fixed duration-500 opacity-0 pointer-events-none transition-all w-screen h-screen z-40 bg-[#00000060]"):
+    tDiv(id = """drawerBack""", class = "fixed duration-500 opacity-0 pointer-events-none transition-all w-screen h-screen z-40 bg-[#00000060]"):
       @click:
-        self.toggle()
-    tDiv(id = "drawer", class = "fixed right-0 duration-300 transition-all ease-out w-2/3 translate-x-full h-screen z-50 bg-[{BackgroundSecondary}] dark:bg-[{BackgroundSecondaryDark}]"):
+        toggleDrawer()
+    tDiv(id = """drawer""", class = "fixed right-0 duration-300 transition-all ease-out w-2/3 translate-x-full h-screen z-50 bg-[{BackgroundSecondary}] dark:bg-[{BackgroundSecondaryDark}]"):
       tDiv(class = "w-full h-full flex flex-col gap-8 jusitfy-center items-center py-8 px-8 overflow-y-scroll"):
         tDiv(class = "w-full flex justify-end items-center"):
           Button(
             action = proc() =
-              self.toggle(),
+              toggleDrawer(),
             flat = true
           ):
             tP(class = "text-4xl"):
@@ -74,53 +84,35 @@ component Drawer:
             {translate"🌐 Language"}
           tDiv(class = "flex flex-col justify-center items-center gap-4"):
             Button(action = proc() =
-              self.toggle()
+              toggleDrawer()
               chooseLang(cstring"en")
             ):
               "English"
             Button(action = proc() =
-              self.toggle()
+              toggleDrawer()
               chooseLang(cstring"ru")
             ):
               "Русский"
             Button(action = proc() =
-              self.toggle()
+              toggleDrawer()
               chooseLang(cstring"ja")
             ):
               "日本語"
             Button(action = proc() =
-              self.toggle()
+              toggleDrawer()
               chooseLang(cstring"zh")
             ):
               "中文"
             Button(action = proc() =
-              self.toggle()
+              toggleDrawer()
               chooseLang(cstring"ko")
             ):
               "한국어"
             Button(action = proc() =
-              self.toggle()
+              toggleDrawer()
               chooseLang(cstring"fr")
             ):
               "Français"
         tDiv:
           if ($currentRoute).startsWith("/guide/"):
             SideBar(isMobile = true)
-  
-  @updated:
-    let
-      drawerBack = document.getElementById("drawerBack" & self.uniqCompId)
-      drawer = document.getElementById("drawer" & self.uniqCompId)
-    if not drawer.isNil and "translate-x-0" in $drawer.className:
-      self.toggle()
-  
-  [methods]:
-    proc toggle*() =
-      let
-        drawerBack = document.getElementById("drawerBack" & self.uniqCompId)
-        drawer = document.getElementById("drawer" & self.uniqCompId)
-      drawerBack.classList.toggle("opacity-0")
-      drawerBack.classList.toggle("opacity-100")
-      drawerBack.classList.toggle("pointer-events-none")
-      drawer.classList.toggle("translate-x-full")
-      drawer.classList.toggle("translate-x-0")
