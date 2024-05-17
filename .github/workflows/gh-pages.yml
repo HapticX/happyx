@@ -67,7 +67,7 @@ jobs:
         timeout-minutes: 2
         run: |
           cd ./examples/website/src/
-          nim js -d:production -d:release --opt:size --hints:off --warnings:off --out:main_full.js main
+          nim js -d:production -d:release --opt:size --hints:off --warnings:off --out:main.js main
           cd ../../..
           mkdir ./docs/happyx/public/
           mkdir ./docs/public/
