@@ -21,33 +21,20 @@ type
 var sponsor_list*: seq[Sponsor] = @[
   Sponsor(
     name: "HapticX", amount: 100.0, url: "https://github.com/HapticX",
-    avatarUrl: "https://avatars.githubusercontent.com/u/124334403?s=200&v=4", status: ssGold
+    avatarUrl: "https://avatars.githubusercontent.com/u/124334403?s=200&v=4", status: ssSilver
   ),
-  # Sponsor(
-  #   name: "Example sponsor", amount: 100.0, url: "https://thispersondoesnotexist.com/",
-  #   avatarUrl: "https://thispersondoesnotexist.com/", status: ssSilver
-  # ),
-  # Sponsor(
-  #   name: "Example sponsor", amount: 100.0, url: "https://montreally.com/wp-content/uploads/cache/images/man-2/man-2-3683696497.jpg",
-  #   avatarUrl: "https://montreally.com/wp-content/uploads/cache/images/man-2/man-2-3683696497.jpg", status: ssGold
-  # ),
-  # Sponsor(
-  #   name: "Example sponsor", amount: 100.0, url: "https://beatmaker.tv/Default/General/Image/136200?type=BeatImageOriginal&ver=1",
-  #   avatarUrl: "https://beatmaker.tv/Default/General/Image/136200?type=BeatImageOriginal&ver=1", status: ssGold
-  # ),
-  # Sponsor(
-  #   name: "Example sponsor", amount: 100.0, url: "https://dspncdn.com/a1/avatars/400x/4b/75/4b756433f80f0f1a4e0b335a56a74e79.jpg",
-  #   avatarUrl: "https://dspncdn.com/a1/avatars/400x/4b/75/4b756433f80f0f1a4e0b335a56a74e79.jpg", status: ssPlatinum
-  # ),
-  # Sponsor(
-  #   name: "Example sponsor", amount: 100.0, url: "https://i.ytimg.com/vi/YONXRJ3OOFw/maxresdefault.jpg",
-  #   avatarUrl: "https://i.ytimg.com/vi/YONXRJ3OOFw/maxresdefault.jpg", status: ssDefault
-  # ),
-  # Sponsor(
-  #   name: "Example sponsor", amount: 100.0, url: "https://i.imgflip.com/1ndfj0.jpg",
-  #   avatarUrl: "https://i.imgflip.com/1ndfj0.jpg", status: ssSilver
-  # ),
+  Sponsor(
+    name: "Popso AI", amount: 250.0, url: "https://popso.ru/",
+    avatarUrl: "https://avatars.githubusercontent.com/u/7116961?v=4", status: ssGold
+  )
 ]
+
+
+proc hasLevel*(sponsor_list: seq[Sponsor], lvl: SponsorStatus): bool =
+  for i in sponsor_list:
+    if i.status == lvl:
+      return true
+  false
 
 
 mount Sponsors:
@@ -61,31 +48,32 @@ mount Sponsors:
       tDiv(class = "flex flex-col gap-8 items-center w-full h-full px-8"):
         tP(class = "text-7xl lg:text-5xl xl:text-3xl font-bold"):
           {translate"🔥 Sponsors"}
-        Divider
-        # Platinum
-        tDiv(class = "flex flex-col items-center justify-center"):
-          tP(class = "flex items-center justify-center gap-4 text-5xl lg:text-3xl xl:text-xl font-semibold"):
-            tImg(src = "/happyx/public/medal_1.svg", class = "w-16 h-16 lg:w-12 lg:h-12 xl:w-8 xl:h-8")
-            "platinum"
-          SponsorsList(sponsor_list, ssPlatinum, PlatinumSponsor)
-        Divider
-        # Gold
-        tDiv(class = "flex flex-col items-center justify-center"):
-          tP(class = "flex items-center justify-center gap-4 text-5xl lg:text-3xl xl:text-xl font-semibold"):
-            tImg(src = "/happyx/public/medal_2.svg", class = "w-16 h-16 lg:w-12 lg:h-12 xl:w-8 xl:h-8")
-            "gold"
-          SponsorsList(sponsor_list, ssGold, GoldSponsor)
-        Divider
-        # Silver
-        tDiv(class = "flex flex-col items-center justify-center"):
-          tP(class = "flex items-center justify-center gap-4 text-5xl lg:text-3xl xl:text-xl font-semibold"):
-            tImg(src = "/happyx/public/medal_3.svg", class = "w-16 h-16 lg:w-12 lg:h-12 xl:w-8 xl:h-8")
-            "silver"
-          SponsorsList(sponsor_list, ssSilver, SilverSponsor)
-        Divider
-        # Other
-        tDiv(class = "flex flex-col items-center justify-center"):
-          tP(class = "flex items-center justify-center gap-4 text-5xl lg:text-3xl xl:text-xl font-semibold"):
-            "other"
-          SponsorsList(sponsor_list, ssDefault, DefaultSponsor)
+        if hasLevel(sponsor_list, ssPlatinum):
+          Divider
+          # Platinum
+          tDiv(class = "flex flex-col items-center justify-center"):
+            tP(class = "flex items-center justify-center gap-4 text-5xl lg:text-3xl xl:text-xl font-semibold"):
+              "🥇 platinum"
+            SponsorsList(sponsor_list, ssPlatinum, PlatinumSponsor)
+        if hasLevel(sponsor_list, ssGold):
+          Divider
+          # Gold
+          tDiv(class = "flex flex-col items-center justify-center"):
+            tP(class = "flex items-center justify-center gap-4 text-5xl lg:text-3xl xl:text-xl font-semibold"):
+              "🥈 gold"
+            SponsorsList(sponsor_list, ssGold, GoldSponsor)
+        if hasLevel(sponsor_list, ssSilver):
+          Divider
+          # Silver
+          tDiv(class = "flex flex-col items-center justify-center"):
+            tP(class = "flex items-center justify-center gap-4 text-5xl lg:text-3xl xl:text-xl font-semibold"):
+              "🥉 silver"
+            SponsorsList(sponsor_list, ssSilver, SilverSponsor)
+        if hasLevel(sponsor_list, ssDefault):
+          Divider
+          # Other
+          tDiv(class = "flex flex-col items-center justify-center"):
+            tP(class = "flex items-center justify-center gap-4 text-5xl lg:text-3xl xl:text-xl font-semibold"):
+              "🍕 other"
+            SponsorsList(sponsor_list, ssDefault, DefaultSponsor)
         tDiv(class = "h-12")
