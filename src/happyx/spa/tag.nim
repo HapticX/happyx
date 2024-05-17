@@ -85,28 +85,24 @@ when defined(js):
   const _eventListeners = [];
 
   Element.prototype.__getEventIndex = function(target, targetArgs) {
-    if (!this._eventListeners) {
+    if (!this._eventListeners)
       this._eventListeners = [];
-    }
     return this._eventListeners.findIndex(args => {
-      for (let i = 0; i < args.length; i++) {
+      for (let i = 0; i < args.length; i++)
         if (targetArgs[i] !== args[i]) return false;
-      }
       return true;
     });
   };
 
   Element.prototype.getEventListeners = function() {
-    if (!this._eventListeners) {
+    if (!this._eventListeners)
       this._eventListeners = [];
-    }
     return this._eventListeners;
   }
 
   const cloneEvents = (source, element, deep) => {
-    for (const args of source.getEventListeners()) {
+    for (const args of source.getEventListeners())
       Element.prototype.addEventListener.apply(element, args)
-    }
 
     if (deep) {
       for (let i = 0; i < source.childNodes.length; i++) {
@@ -120,32 +116,27 @@ when defined(js):
   };
 
   Element.prototype.addEventListener = function() {
-    if (!this._eventListeners) {
+    if (!this._eventListeners)
       this._eventListeners = [];
-    }
     this._eventListeners.push(arguments);
     return _originAddEventListener.apply(this, arguments);
   };
 
   Element.prototype.removeEventListener = function() {
-    if (!this._eventListeners) {
+    if (!this._eventListeners)
       this._eventListeners = [];
-    }
     const eventIndex = this.__getEventIndex(arguments);
-    if (eventIndex !== -1) {
+    if (eventIndex !== -1)
       this._eventListeners.splice(eventIndex, 1);
-    }
     return _originRemoveEventListener.apply(this, arguments);
   };
 
   Element.prototype.cloneNode = function(deep) {
-    if (!this._eventListeners) {
+    if (!this._eventListeners)
       this._eventListeners = [];
-    }
     const clonedNode = _originCloneNode.apply(this, arguments);
-    if (clonedNode instanceof Element) {
+    if (clonedNode instanceof Element)
       cloneEvents(this, clonedNode, deep);
-    }
     return clonedNode;
   };
   """.}
