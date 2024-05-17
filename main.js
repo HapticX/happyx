@@ -25556,7 +25556,7 @@ function diff_2164267767(vdom_2164267768, dom_2164267769) {
             Label11: while (true) {
             if (!(i_553732155 < colontmp__553732154)) break Label11;
               i_2164267826 = i_553732155;
-              if ((dom_2164267769.childNodes[chckIndx(i_2164267826, 0, (dom_2164267769.childNodes).length - 1)] == null)) {
+              if (((dom_2164267769.childNodes).length <= i_2164267826)) {
               dom_2164267769.appendChild(vdom_2164267768.childNodes[chckIndx(i_2164267826, 0, (vdom_2164267768.childNodes).length - 1)].cloneNode(true));
               }
               else {
