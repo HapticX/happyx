@@ -19,6 +19,7 @@ proc toggleDrawer*() =
   drawerBack.classList.toggle("pointer-events-none")
   drawer.classList.toggle("translate-x-full")
   drawer.classList.toggle("translate-x-0")
+  echo 1
 
 
 component Drawer:

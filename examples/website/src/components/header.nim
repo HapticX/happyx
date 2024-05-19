@@ -10,7 +10,7 @@ proc Header*(drawer: Drawer = nil): TagRef =
   buildHtml:
     tDiv(class = "flex justify-between items-center px-8 py-2 backdrop-blur-md dark:backdrop-blur-sm dark:bg-black dark:bg-opacity-20 h-32 xl:h-fit"):
       tDiv(class = "flex"):
-        tImg(src = "/happyx/public/icon.png", class = "h-24 md:h-16 xl:h-12 cursor-pointer select-none")
+        tImg(src = "/happyx/public/icon.webp", alt = "HappyX logo", class = "h-24 md:h-16 xl:h-12 cursor-pointer select-none")
         @click:
           route"/"
       # drawer here

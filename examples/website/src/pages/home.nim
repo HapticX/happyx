@@ -12,9 +12,9 @@ mount Home:
     tDiv(class = "flex flex-col gap-2 bg-[{Background}] dark:bg-[{BackgroundDark}] text-[{Foreground}] dark:text-[{ForegroundDark}]"):
       tDiv(id = "cover", class = "flex flex-col gap-2 relative justify-center items-center h-screen"):
         tImg(src = "/happyx/public/cover.svg", alt = "", class = "absolute h-screen w-screen object-cover pointer-events-none")
-        tImg(src = "/happyx/public/nim_logo.png", alt = "Nim logo", class = "z-10 pointer-events-none")
+        tImg(src = "/happyx/public/nim_logo.webp", alt = "Nim logo", class = "z-10 pointer-events-none")
         tImg(src = "/happyx/public/HappyX.svg", alt = "HappyX logo", class = "z-10 pointer-events-none")
-        tImg(src = "/happyx/public/desc.svg", alt = "HappyX description", class = "z-10 pointer-events-none")
+        tImg(src = "/happyx/public/desc.webp", alt = "HappyX description", class = "w-[700px] z-10 pointer-events-none")
       # Drawer
       drawer_comp
       # Main content
@@ -85,11 +85,11 @@ mount Home:
           Section:
             tP(class = "text-4xl lg:text-2xl xl:text-lg"): {translate("Here is core features ✌.")}
             tDiv(class = "flex flex-col lg:flex-row gap-6 py-8"):
-              Card(pathToImg = "/happyx/public/setting.svg"):
+              Card(pathToImg = "/happyx/public/setting.svg", alt = "Settings"):
                 {translate"Powerful DSLs"}
-              Card(pathToImg = "/happyx/public/routing.svg"):
+              Card(pathToImg = "/happyx/public/routing.svg", alt = "Routing"):
                 {translate"Powerful routing"}
-              Card(pathToImg = "/happyx/public/python.svg"):
+              Card(pathToImg = "/happyx/public/python.svg", alt = "Python icon"):
                 {translate"Language binds"}
 
           # SPA

@@ -79,9 +79,9 @@ const
 
 when defined(js):
   {.emit: """//js
-  globalThis.originAddEventListener = Element.prototype.addEventListener;
-  globalThis.originRemoveEventListener = Element.prototype.removeEventListener;
-  globalThis.originCloneNode = Element.prototype.cloneNode;
+  const _originAddEventListener = Element.prototype.addEventListener;
+  const _originRemoveEventListener = Element.prototype.removeEventListener;
+  const _originCloneNode = Element.prototype.cloneNode;
 
   Element.prototype.__getEventIndex = function(target, targetArgs) {
     if (!this._eventListeners)
@@ -99,7 +99,7 @@ when defined(js):
     return this._eventListeners;
   }
 
-  globalThis.cloneEvents = (source, element, deep) => {
+  const cloneEvents = (source, element, deep) => {
     for (const args of source.getEventListeners())
       Element.prototype.addEventListener.apply(element, args)
 
@@ -108,7 +108,7 @@ when defined(js):
         const sourceNode = source.childNodes[i];
         const targetNode = element.childNodes[i];
         if (sourceNode instanceof Element && targetNode instanceof Element) {
-          globalThis.cloneEvents(sourceNode, targetNode, deep);
+          cloneEvents(sourceNode, targetNode, deep);
         }
       }
     }
@@ -118,7 +118,7 @@ when defined(js):
     if (!this._eventListeners)
       this._eventListeners = [];
     this._eventListeners.push(arguments);
-    return globalThis.originAddEventListener.apply(this, arguments);
+    return _originAddEventListener.apply(this, arguments);
   };
 
   Element.prototype.removeEventListener = function() {
@@ -127,15 +127,15 @@ when defined(js):
     const eventIndex = this.__getEventIndex(arguments);
     if (eventIndex !== -1)
       this._eventListeners.splice(eventIndex, 1);
-    return globalThis.originRemoveEventListener.apply(this, arguments);
+    return _originRemoveEventListener.apply(this, arguments);
   };
 
   Element.prototype.cloneNode = function(deep) {
     if (!this._eventListeners)
       this._eventListeners = [];
-    const clonedNode = globalThis.originCloneNode.apply(this, arguments);
+    const clonedNode = _originCloneNode.apply(this, arguments);
     if (clonedNode instanceof Element)
-      globalThis.cloneEvents(this, clonedNode, deep);
+      cloneEvents(this, clonedNode, deep);
     return clonedNode;
   };
   """.}

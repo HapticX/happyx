@@ -57,7 +57,7 @@ component CodeBlockSlider:
                 updateIndex(self, idx)
               tDiv(
                 id = fmt"circle-{idx}-fill",
-                class = "w-0 h-full bg-[{Yellow}] dark:bg-[{Orange}] transition-all duration-[5000ms] rounded-full ease-linear z-40"
+                class = "w-0 h-full bg-[{Yellow}] dark:bg-[{Orange}] transition-all duration-[5000ms] ease-linear z-40"
               ):""
           else:
             tDiv(
@@ -68,7 +68,7 @@ component CodeBlockSlider:
                 updateIndex(self, idx)
               tDiv(
                 id = fmt"circle-{idx}-fill",
-                class = "w-0 h-full bg-[{Yellow}] dark:bg-[{Orange}] transition-all duration-[5000ms] rounded-full ease-linear z-40"
+                class = "w-0 h-full bg-[{Yellow}] dark:bg-[{Orange}] transition-all duration-[5000ms] ease-linear z-40"
               ):""
   
   @created:
