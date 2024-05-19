@@ -96,7 +96,7 @@ component GuidePage:
     var index = 0
     for i in headers:
       let item = buildHtml:
-        tDiv(class = "border-l border-white cursor-pointer pl-2 transition-all duration-300"):
+        tDiv(class = "border-l border-white cursor-pointer pl-2 transition-all duration-150"):
           {i.textContent}
       {.emit: """//js
       ((i) => {
@@ -113,12 +113,12 @@ component GuidePage:
       inc index
     navigation.appendChild(items.children[0])
     {.emit: """//js
-    window.onscroll = function() {
+    function updateHeaders() {
       const headers = document.querySelector("#guide").querySelectorAll("h1, h2, h3, h4, h5, h6");
       const navigation = document.querySelector("#navigation").children[0];
       let i = 0;
       headers.forEach(h => {
-        if (window.pageYOffset <= h.getBoundingClientRect().top + window.pageYOffset - 80) {
+        if (window.pageYOffset <= h.getBoundingClientRect().top + window.pageYOffset - 65) {
           navigation.children[i].classList.remove("opacity-50");
           navigation.children[i].classList.add("opacity-70");
         } else {
@@ -137,4 +137,6 @@ component GuidePage:
         navigation.children[i].classList.add("opacity-100");
       }
     }
+    window.onscroll = updateHeaders;
+    updateHeaders();
     """.}
