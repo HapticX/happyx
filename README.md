@@ -1,6 +1,6 @@
 <div align="center">
 
-<img height="190px" width="190px" src="https://raw.githubusercontent.com/HapticX/happyx/master/examples/website/src/happyx/public/icon.webp">
+<img height="128px" width="128px" src="https://raw.githubusercontent.com/HapticX/happyx/master/examples/website/src/happyx/public/icon.webp">
 
 ### Macro-oriented asynchronous full-stack web-framework written in Nim with ♥
 
