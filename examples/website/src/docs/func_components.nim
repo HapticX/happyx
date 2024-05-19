@@ -36,3 +36,7 @@ proc FuncComponents*(): TagRef =
       tP: {translate"Here's an example of a component using a slot:"}
 
       CodeBlock("nim", nimSpaFuncComp2, "func_comp_2")
+
+      tP: {translate"At the same time, using slots in functional components is almost no different from regular components. Here's how you can use the component we declared above:"}
+
+      CodeBlock("nim", nimSpaFuncComp3, "func_comp_3")

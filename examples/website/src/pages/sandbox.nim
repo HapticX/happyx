@@ -151,14 +151,12 @@ proc codeId*() {.exportc.} =
 
 proc codeLink*() {.exportc.} =
   if compiled:
-    {.emit: """//js
     writeLine(
-      "This code available at <a href='" +
-      `websiteBase` + "#/sandbox/" + `sandboxSessionId` +
-      "' class='underline duration-150 text-purple-200 hover:text-purple-300 active:text-purple-400'>" +
-      `websiteBase` + "#/sandbox/" + `sandboxSessionId` + "</a>"
-    );
-    """.}
+      "This code available at <a href='" &
+      websiteBase & "#/sandbox/" & $sandboxSessionId &
+      "' class='underline duration-150 text-purple-200 hover:text-purple-300 active:text-purple-400'>" &
+      websiteBase & "#/sandbox/"  & $sandboxSessionId & "</a>"
+    )
   else:
     writeLine(fmt"<span class='text-yellow-400'>Code link will available after compilation</span>")
 

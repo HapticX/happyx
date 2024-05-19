@@ -8,12 +8,14 @@ import
   std/json
 
 
-proc GuidePage*(current: string = ""): TagRef =
-  buildHtml:
+component GuidePage:
+  current: string = ""
+
+  html:
     tDiv(
-      class = "flex flex-col text-3xl lg:text-xl xl:text-base w-full h-full px-4 lg:px-12 xl:px-16 py-2 bg-[{BackgroundSecondary}] dark:bg-[{BackgroundSecondaryDark}] gap-8"
+      class = "flex flex-col text-3xl lg:text-xl xl:text-base w-full 2xl:w-3/4 h-full px-4 lg:px-12 xl:px-16 py-2 bg-[{BackgroundSecondary}] dark:bg-[{BackgroundSecondaryDark}] gap-8"
     ):
-      tDiv(class = "flex flex-col gap-4"):
+      tDiv(id = nu"guide", class = "flex flex-col gap-4"):
         case currentGuidePage.val
         of "introduction":
           Introduction
@@ -84,3 +86,57 @@ proc GuidePage*(current: string = ""): TagRef =
             {translate(guidePages[guidePages[currentGuidePage]["next"].getStr]["title"].getStr) & " 👉"}
         else:
           tDiv(class = "w-1 h-1 p-1")
+    tDiv(id = nu"navigation", class = "hidden 2xl:flex 2xl:w-1/5 pl-8 fixed right-0")
+  
+  @updated:
+    let headers = document.querySelector("#guide").querySelectorAll("h1, h2, h3, h4, h5, h6")
+    let navigation = document.querySelector("#navigation")
+    let items = buildHtml:
+      tDiv(class = "flex flex-col gap-2")
+    var index = 0
+    for i in headers:
+      let item = buildHtml:
+        tDiv(class = "border-l border-white cursor-pointer pl-2 transition-all duration-150"):
+          {i.textContent}
+      {.emit: """//js
+      ((i) => {
+        `item`.children[0].addEventListener('click', e => {
+          window.scrollTo({
+            top: i.getBoundingClientRect().top + window.pageYOffset - 100,
+            behavior: "smooth"
+          });
+        });
+      })(`i`)
+      """.}
+      i.classList.add(cstring(fmt"header-{index}{index+1}"))
+      items.children[0].appendChild(item.children[0])
+      inc index
+    navigation.appendChild(items.children[0])
+    {.emit: """//js
+    function updateHeaders() {
+      const headers = document.querySelector("#guide").querySelectorAll("h1, h2, h3, h4, h5, h6");
+      const navigation = document.querySelector("#navigation").children[0];
+      let i = 0;
+      headers.forEach(h => {
+        if (window.pageYOffset <= h.getBoundingClientRect().top + window.pageYOffset - 65) {
+          navigation.children[i].classList.remove("opacity-50");
+          navigation.children[i].classList.add("opacity-70");
+        } else {
+          navigation.children[i].classList.add("opacity-50");
+          navigation.children[i].classList.remove("opacity-70");
+        }
+        i++;
+      });
+      i = 0
+      for (let e of navigation.children) {
+        if (!e.classList.contains("opacity-50")) break;
+        i++;
+      }
+      if (i < navigation.children.length) {
+        navigation.children[i].classList.remove("opacity-70");
+        navigation.children[i].classList.add("opacity-100");
+      }
+    }
+    window.onscroll = updateHeaders;
+    updateHeaders();
+    """.}

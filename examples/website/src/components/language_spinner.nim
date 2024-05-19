@@ -24,7 +24,7 @@ let style = buildHtml:
       display: block;
     }
   """
-document.head.appendChild(style)
+document.head.appendChild(style.children[0])
 
 
 # Declare component
