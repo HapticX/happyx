@@ -23,7 +23,7 @@ mount UserGuide:
         # SideBar
         tDiv(class = "fixed top-0 pt-16 w-96"):
           SideBar
-        tDiv(class = "pl-0 xl:pl-96 w-full"):
+        tDiv(class = "flex pl-0 xl:pl-96 w-full"):
           GuidePage(link)
       tStyle:
         {fmt"""
