@@ -114,6 +114,9 @@ component GuidePage:
     navigation.appendChild(items.children[0])
     {.emit: """//js
     function updateHeaders() {
+      if (!document.querySelector("#guide")) {
+        return;
+      }
       const headers = document.querySelector("#guide").querySelectorAll("h1, h2, h3, h4, h5, h6");
       const navigation = document.querySelector("#navigation").children[0];
       let i = 0;
