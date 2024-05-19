@@ -44,7 +44,7 @@ proc SponsorsList*(data: seq[Sponsor], sponsorStatus: SponsorStatus = ssDefault,
               tDiv(
                 class = "flex mt-0 group-hover:mt-6 rounded-md text-center text-[{Foreground}] dark:text-[{ForegroundDark}] bg-[{Background}] dark:bg-[{BackgroundDark}] justify-content items-center pointer-events-none absolute delay-150 opacity-0 transition-all duration-300 group-hover:opacity-100"
               ):
-                {fmt"{sponsor.name}, ${sponsor.amount}"}
+                {fmt"{sponsor.name} ${sponsor.amount}"}
             tStyle: {fmt("""
               div.<className> {
                 -webkit-box-shadow: <color>;

@@ -18,11 +18,18 @@ proc setCurrentLanguage*(lang: string) =
   route(currentRoute)
 
 
-# Declare component
-component LanguageSpinner:
+let style = buildHtml:
+  tStyle: """
+    .dropdown:hover .dropdown-items {
+      display: block;
+    }
+  """
+document.head.appendChild(style)
 
-  # Declare HTML template
-  `template`:
+
+# Declare component
+proc LanguageSpinner*(): TagRef =
+  buildHtml:
     tDiv(class = "dropdown relative inline-block"):
       Button:
         {translate"🌏 Language"}
@@ -51,9 +58,3 @@ component LanguageSpinner:
           "Русский"
           @click:
             setCurrentLanguage("ru")
-
-  `style`: """
-    .dropdown:hover .dropdown-items {
-      display: block;
-    }
-    """
