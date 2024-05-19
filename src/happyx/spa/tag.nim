@@ -79,10 +79,9 @@ const
 
 when defined(js):
   {.emit: """//js
-  const _originAddEventListener = Element.prototype.addEventListener;
-  const _originRemoveEventListener = Element.prototype.removeEventListener;
-  const _originCloneNode = Element.prototype.cloneNode;
-  const _eventListeners = [];
+  globalThis.originAddEventListener = Element.prototype.addEventListener;
+  globalThis.originRemoveEventListener = Element.prototype.removeEventListener;
+  globalThis.originCloneNode = Element.prototype.cloneNode;
 
   Element.prototype.__getEventIndex = function(target, targetArgs) {
     if (!this._eventListeners)
@@ -119,7 +118,7 @@ when defined(js):
     if (!this._eventListeners)
       this._eventListeners = [];
     this._eventListeners.push(arguments);
-    return _originAddEventListener.apply(this, arguments);
+    return globalThis.originAddEventListener.apply(this, arguments);
   };
 
   Element.prototype.removeEventListener = function() {
@@ -128,13 +127,13 @@ when defined(js):
     const eventIndex = this.__getEventIndex(arguments);
     if (eventIndex !== -1)
       this._eventListeners.splice(eventIndex, 1);
-    return _originRemoveEventListener.apply(this, arguments);
+    return globalThis.originRemoveEventListener.apply(this, arguments);
   };
 
   Element.prototype.cloneNode = function(deep) {
     if (!this._eventListeners)
       this._eventListeners = [];
-    const clonedNode = _originCloneNode.apply(this, arguments);
+    const clonedNode = globalThis.originCloneNode.apply(this, arguments);
     if (clonedNode instanceof Element)
       cloneEvents(this, clonedNode, deep);
     return clonedNode;
