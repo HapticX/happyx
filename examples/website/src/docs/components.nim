@@ -97,3 +97,10 @@ component Components:
       tP: {translate"It looks like this:"}
 
       CodeBlock("nim", nimSpaComponentsSlot, "nim_comp_slot")
+
+      tP: {translate"It's quite simple to use them. It looks like this:"}
+
+      CodeBlock("nim", nimSpaComponentsUse, "nim_comp_slot_use")
+
+      tP: {translate"From this example, we can see that only HTML text is passed into the button slot. However, we can pass HTML of any complexity into the slot."}
+      

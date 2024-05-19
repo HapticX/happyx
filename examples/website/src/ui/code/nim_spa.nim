@@ -278,6 +278,12 @@ component Button:
     tDiv(class = " ... "):
       slot  # your HTML will be placed here
 """
+  nimSpaComponentsUse* = """
+appRoutes "app":
+  "/":
+    Button:
+      "Click me"
+"""
   nimSpaComponentsScopedStyle* = fmt"""import happyx
 
 component Button:
@@ -317,4 +323,10 @@ proc MyFuncComponent*(i: int, stmt: TagRef): TagRef =
     tDiv:
       "value of i is {i}"
       stmt  # slot will be rendered here
+"""
+  nimSpaFuncComp3* = """
+appRoutes "app":
+  "/":
+    MyFuncComponent(100):
+      "see! this is a slot"
 """

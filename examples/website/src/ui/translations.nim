@@ -2000,6 +2000,24 @@ translatable:
     "zh" -> "它看起来像这样："
     "fr" -> "Ça ressemble à ceci :"
     "ko" -> "다음과 같이 보입니다:"
+  "It's quite simple to use them. It looks like this:":
+    "ru" -> "Использовать их довольно просто. Выглядит это так:"
+    "ja" -> "使用するのは非常に簡単です。このようになります："
+    "zh" -> "使用它们非常简单。看起来像这样："
+    "fr" -> "Les utiliser est assez simple. Ça ressemble à ceci :"
+    "ko" -> "사용하는 것은 매우 간단합니다. 다음과 같이 보입니다:"
+  "From this example, we can see that only HTML text is passed into the button slot. However, we can pass HTML of any complexity into the slot.":
+    "ru" -> "Из этого примера мы можем увидеть, что в слот кнопки передается лишь HTML текст. Однако мы можем передавать HTML любой сложности внутрь слота."
+    "ja" -> "この例から、ボタンスロットにはHTMLテキストのみが渡されることがわかります。しかし、スロット内に任意の複雑なHTMLを渡すことができます。"
+    "zh" -> "从这个例子中，我们可以看到只有HTML文本被传递到按钮插槽。然而，我们可以将任何复杂的HTML传递到插槽中。"
+    "fr" -> "D'après cet exemple, nous pouvons voir que seul du texte HTML est passé dans le slot du bouton. Cependant, nous pouvons passer du HTML de n'importe quelle complexité dans le slot."
+    "ko" -> "이 예제에서 우리는 버튼 슬롯에 HTML 텍스트만 전달되는 것을 볼 수 있습니다. 그러나 슬롯에 복잡한 HTML을 전달할 수 있습니다."
+  "At the same time, using slots in functional components is almost no different from regular components. Here's how you can use the component we declared above:":
+    "ru" -> "При этом использование слотов в функциональных компонентах практически ничем не отличается от обычных. Вот как можно использовать компонент, который мы объявили выше:"
+    "ja" -> "同時に、機能コンポーネントでのスロットの使用は通常のコンポーネントとほとんど違いはありません。以下は、上記で宣言したコンポーネントの使用方法です："
+    "zh" -> "同时，在函数组件中使用插槽与常规组件几乎没有什么不同。以下是如何使用我们上面声明的组件："
+    "fr" -> "En même temps, l'utilisation des slots dans les composants fonctionnels est presque identique à celle des composants classiques. Voici comment utiliser le composant que nous avons déclaré ci-dessus :"
+    "ko" -> "동시에 함수형 컴포넌트에서 슬롯을 사용하는 것은 일반 컴포넌트와 거의 다르지 않습니다. 우리가 위에서 선언한 컴포넌트를 사용하는 방법은 다음과 같습니다:"
 
 
 var spokenLang: cstring
