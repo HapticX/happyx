@@ -271,6 +271,13 @@ component Button:
   
   # You can also omit adding the component body. it's not prohibited.
 """
+  nimSpaComponentsSlot* = """import happyx
+
+component Button:
+  html:
+    tDiv(class = " ... "):
+      slot  # your HTML will be placed here
+"""
   nimSpaComponentsScopedStyle* = fmt"""import happyx
 
 component Button:

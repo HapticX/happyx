@@ -88,3 +88,12 @@ component Components:
 
       tP: {translate"Here's how it all works together:"}
       tImg(src = "/happyx/public/component_lifecycle.jpg", class = "self-center rounded-xl")
+
+      tH3: {translate"About slots in components"}
+      tP:
+        {translate"You can pass HTML into the component at any time. This is quite simple to do. You need to add a special instruction inside the HTML -"}
+        " "
+        tCode: "slot"
+      tP: {translate"It looks like this:"}
+
+      CodeBlock("nim", nimSpaComponentsSlot, "nim_comp_slot")

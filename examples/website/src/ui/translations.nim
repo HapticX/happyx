@@ -1982,6 +1982,24 @@ translatable:
     "zh" -> "函数组件中的插槽"
     "fr" -> "Slots dans les composants fonctionnels"
     "ko" -> "함수형 컴포넌트의 슬롯"
+  "About slots in components":
+    "ru" -> "О слотах в компонентах"
+    "ja" -> "コンポーネントのスロットについて"
+    "zh" -> "关于组件中的插槽"
+    "fr" -> "À propos des slots dans les composants"
+    "ko" -> "컴포넌트의 슬롯에 대하여"
+  "You can pass HTML into the component at any time. This is quite simple to do. You need to add a special instruction inside the HTML -":
+    "ru" -> "Вы можете в любой момент передать HTML внутрь компонента. Сделать это довольно просто. Нужно добавить внутрь HTML специальную инструкцию -"
+    "ja" -> "コンポーネントにいつでもHTMLを渡すことができます。これは非常に簡単です。HTML内に特別な命令を追加する必要があります -"
+    "zh" -> "您可以随时将HTML传递到组件中。这相当简单。您需要在HTML中添加一个特殊指令 -"
+    "fr" -> "Vous pouvez passer du HTML dans le composant à tout moment. C'est assez simple à faire. Vous devez ajouter une instruction spéciale dans le HTML -"
+    "ko" -> "언제든지 컴포넌트에 HTML을 전달할 수 있습니다. 이는 매우 간단합니다. HTML 내부에 특별 지시문을 추가해야 합니다 -"
+  "It looks like this:":
+    "ru" -> "Выглядит это следующим образом:"
+    "ja" -> "このようになります："
+    "zh" -> "它看起来像这样："
+    "fr" -> "Ça ressemble à ceci :"
+    "ko" -> "다음과 같이 보입니다:"
 
 
 var spokenLang: cstring
