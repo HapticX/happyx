@@ -38,7 +38,7 @@ proc Contributor*(nickname, url, avatar: string): TagRef =
 component Introduction:
   `template`:
     tDiv(class = "flex flex-col px-8 py-2 xl:h-fit gap-4"):
-      tImg(src = "/happyx/public/icon.png", class = "self-center w-72 h-72")
+      tImg(src = "/happyx/public/icon.webp", alt = "happyx logo", class = "self-center w-72 h-72")
       tH1: {translate"Introduction ✌"}
       tTable:
         tTbody:
