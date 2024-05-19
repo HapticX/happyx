@@ -93,7 +93,7 @@ proc compile*() {.exportc.} =
           // add new function
           js = js.replace(/console\.log/g, 'hpx_log');
           js = 'function hpx_log(...data){console.log(...data);window.parent.writeLine(data.toString())}\n' + js;
-          scriptElem.innerHTML = js;
+          scriptElem.innerHTML = "(() => {" + js + "})()";
           // add children
           let output = json['response']['output'];
           output = output.replace(/\[([^\]]+)\]/g, '<span class="text-blue-400">[$1]</span>');
