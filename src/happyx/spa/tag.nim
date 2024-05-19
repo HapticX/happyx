@@ -99,7 +99,7 @@ when defined(js):
     return this._eventListeners;
   }
 
-  const cloneEvents = (source, element, deep) => {
+  globalThis.cloneEvents = (source, element, deep) => {
     for (const args of source.getEventListeners())
       Element.prototype.addEventListener.apply(element, args)
 
@@ -108,7 +108,7 @@ when defined(js):
         const sourceNode = source.childNodes[i];
         const targetNode = element.childNodes[i];
         if (sourceNode instanceof Element && targetNode instanceof Element) {
-          cloneEvents(sourceNode, targetNode, deep);
+          globalThis.cloneEvents(sourceNode, targetNode, deep);
         }
       }
     }
@@ -135,7 +135,7 @@ when defined(js):
       this._eventListeners = [];
     const clonedNode = globalThis.originCloneNode.apply(this, arguments);
     if (clonedNode instanceof Element)
-      cloneEvents(this, clonedNode, deep);
+      globalThis.cloneEvents(this, clonedNode, deep);
     return clonedNode;
   };
   """.}
