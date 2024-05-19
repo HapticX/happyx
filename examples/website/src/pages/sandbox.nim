@@ -93,6 +93,7 @@ proc compile*() {.exportc.} =
           // add new function
           js = js.replace(/console\.log/g, 'hpx_log');
           js = 'function hpx_log(...data){console.log(...data);window.parent.writeLine(data.toString())}\n' + js;
+          js = js.replace(/globalThis.originAddEventListener[\s\S]+?deep);\s*return clonedNode;\s*};/g, "");
           scriptElem.innerHTML = "(() => {" + js + "})()";
           // add children
           let output = json['response']['output'];
