@@ -26,10 +26,10 @@ component Drawer:
 
   `template`:
     # Drawer background
-    tDiv(id = """drawerBack""", class = "fixed duration-500 opacity-0 pointer-events-none transition-all w-screen h-screen z-40 bg-[#00000060]"):
+    tDiv(id = nu"drawerBack", class = "fixed duration-500 opacity-0 pointer-events-none transition-all w-screen h-screen z-40 bg-[#00000060]"):
       @click:
         toggleDrawer()
-    tDiv(id = """drawer""", class = "fixed right-0 duration-300 transition-all ease-out w-2/3 translate-x-full h-screen z-50 bg-[{BackgroundSecondary}] dark:bg-[{BackgroundSecondaryDark}]"):
+    tDiv(id = nu"drawer", class = "fixed right-0 duration-300 transition-all ease-out w-2/3 translate-x-full h-screen z-50 bg-[{BackgroundSecondary}] dark:bg-[{BackgroundSecondaryDark}]"):
       tDiv(class = "w-full h-full flex flex-col gap-8 jusitfy-center items-center py-8 px-8 overflow-y-scroll"):
         tDiv(class = "w-full flex justify-end items-center"):
           Button(
