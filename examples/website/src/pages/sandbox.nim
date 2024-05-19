@@ -125,7 +125,7 @@ proc compile*() {.exportc.} =
     {
       method: "POST",
       body: JSON.stringify({
-        "code": `sandboxCode`,
+        "code": "import happyx/spa/spa_utils\n" + `sandboxCode`,
         "id": `sandboxSessionId`
       }),
     }
