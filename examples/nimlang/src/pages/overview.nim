@@ -16,7 +16,7 @@ component Overview:
   ]
   html:
     tDiv(class = "flex flex-col bg-[{background}] pt-8 text-white justify-center items-center"):
-      tDiv(class = "flex gap-4 flex-col gap-4 pb-6 px-4 w-full overflow-hidden lg:flex-row lg:w-3/5"):
+      tDiv(class = "flex gap-4 flex-col gap-4 pb-6 px-4 w-full overflow-hidden lg:flex-row lg:w-4/5 2xl:!w-3/5"):
         # General
         tDiv(class = "flex flex-col gap-6 w-full lg:w-1/2"):
           tH1(class = "pb-4 text-[{yellow}] transition-all"):
@@ -43,7 +43,7 @@ component Overview:
           tDiv(class = "flex flex-col class font-medium"):
             Heading(3):
               "Efficient"
-            tUl(class = "opacity-90 pl-4 list-disc list-inside text-lg font-normal flex flex-col gap-2"):
+            tUl(class = "opacity-90 pl-4 list-inside text-lg font-normal flex flex-col gap-2"):
               tLi:
                 "Nim generates native dependency-free executables, not dependent on a virtual machine, which are small and allow easy redistribution."
               tLi:
@@ -57,7 +57,7 @@ component Overview:
           tDiv(class = "flex flex-col class font-medium"):
             Heading(3):
               "Expressive"
-            tUl(class = "opacity-90 pl-4 list-disc list-inside text-lg font-normal flex flex-col gap-2"):
+            tUl(class = "opacity-90 pl-4 list-inside text-lg font-normal flex flex-col gap-2"):
               tLi:
                 "Nim is self-contained: the compiler and the standard library are implemented in Nim."
               tLi:
@@ -65,20 +65,35 @@ component Overview:
           tDiv(class = "flex flex-col class font-medium"):
             Heading(3):
               "Elegant"
-            tUl(class = "opacity-90 pl-4 list-disc list-inside text-lg font-normal flex flex-col gap-2"):
+            tUl(class = "opacity-90 pl-4 list-inside text-lg font-normal flex flex-col gap-2"):
               tLi:
                 "Macros cannot change Nim's syntax because there is no need for it — the syntax is flexible enough."
               tLi:
                 "Modern type system with local type inference, tuples, generics and sum types."
               tLi:
                 "Statements are grouped by indentation but can span multiple lines."
+          tStyle: """
+            li::before {
+              content: "» ";
+              font-weight: bold;
+              margin-right: 8px;
+              color: #ffe953;
+            }
+          """
         # Code example
         tDiv(class = "flex flex-col w-full max-w-full lg:max-w-1/2 lg:w-1/2"):
-          tDiv(class = "w-full group text-black bg-[{gray}] rounded-t-sm rounded-b-sm hover:rounded-b-none relative w-fit flex justify-center items-center text-3xl lg:text-xl xl:text-2xl"):
+          tButton(class = "w-full group text-black bg-[{gray}] rounded-t-sm rounded-b-sm focus:rounded-b-none relative w-fit flex justify-center items-center text-3xl lg:text-xl xl:text-2xl"):
             tP(class = "select-none cursor-pointer px-4 py-1"):
               {self.data.val[self.choosed.val].name}
               " [choose]"
-            tDiv(class = "absolute w-full bg-[{gray}] overflow-hidden rounded-b-sm py-4 duration-300 scale-0 opacity-0 group-hover:scale-100 group-hover:opacity-100 group-hover:translate-y-1/2 mt-5"):
+            tDiv(class = "absolute w-full h-full flex justify-end items-center px-4"):
+              tSvg(width = "16", height = "16", viewBox = "0 -4.5 20 20", xmlns = "http://www.w3.org/2000/svg"):
+                tPath(
+                  d = "M.292.366c-.39.405-.39 1.06 0 1.464l8.264 8.563c.78.81 2.047.81 2.827 0l8.325-8.625c.385-.4.39-1.048.01-1.454a.976.976 0 0 0-1.425-.011l-7.617 7.893a.975.975 0 0 1-1.414 0L1.705.366a.974.974 0 0 0-1.413 0",
+                  fill = "#000",
+                  "fill-rule" = "evenodd"
+                )
+            tDiv(class = "absolute w-full bg-[{gray}] overflow-hidden rounded-b-sm py-4 duration-300 scale-y-0 opacity-0 group-focus:scale-y-100 group-focus:opacity-100 group-focus:translate-y-1/2 mt-5"):
               for i in 0..<self.data.len:
                 tDiv(class = "select-none px-4 cursor-pointer bg-black/0 hover:bg-black/10 active:bg-black/20 duration-300"):
                   {self.data.val[i].name}
