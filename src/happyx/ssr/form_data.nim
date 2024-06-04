@@ -40,7 +40,7 @@ proc parseFormData*(formData: string): (StringTableRef, TableRef[string, FormDat
   ## Parses `form-data` into `StringTableRef`
   result = (newStringTable(), newTable[string, FormDataItem]())
   let
-    formDataSeparator = re2"\-{6}\w+(\-{2})?\r\n"
+    formDataSeparator = re2"\-{2,}\w+(\-{2})?\r\n"
     lineSeparator = "\r\n"
     data = formData.split(formDataSeparator)
   for item in data:
@@ -52,6 +52,7 @@ proc parseFormData*(formData: string): (StringTableRef, TableRef[string, FormDat
       contentType = ""
       i = 0
     for line in lines:
+      if line == "": continue
       if line.startsWith("Content-Disposition"):
         # every param
         for param in line.split(re2"\s*;\s*"):
