@@ -4,21 +4,24 @@ import
 
 
 translatable:
-  "Hello":
-    # "Hello!" by default
-    "ru" -> "Привет"
-    "fr" -> "Bonjour"
+  "hello":
+    # "Hello, $#!" by default
+    "default" -> "Hello, $#!"
+    "ru" -> "Привет, $#!"
+    "fr" -> "Bonjour, $#!"
 
+echo translates
 
 appRoutes("app"):
   "/":
     component Pure
     tDiv:
       "Hello"
+      {translate"nothing"}
     nim:
       var
         x = 0
-        str = translate("Hello")
+        str = translate("hello", "username")
     tDiv(class = "flex flex-col gap-2"):
       while x <= 20:
         tDiv(class = "flex gap-2"):

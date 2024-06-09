@@ -112,33 +112,52 @@ macro translatable*(body: untyped): untyped =
   return translatesStatement
 
 
-macro translate*(self: string): string =
+macro translate*(self: string, variables: varargs[string]): string =
   ## Translates `self` string to current client language (SPA) or accept-language header (SSG/SSR)
   let
     language =
-      newNimNode(nnkIfExpr).add(
-        newNimNode(nnkElifBranch).add(
-          when defined(js):
-            newCall("==", newDotExpr(newDotExpr(ident"languageSettings", ident"val"), ident"lang"), newLit"auto")
-          else:
-            newCall("==", newDotExpr(ident"languageSettings", ident"lang"), newLit"auto"),
-          when defined(js):
-            newDotExpr(ident"navigator", ident"language")
-          else:
-            ident"acceptLanguage"
-        ), newNimNode(nnkElse).add(
-          when defined(js):
-            newDotExpr(newDotExpr(ident"languageSettings", ident"val"), ident"lang")
-          else:
-            newDotExpr(ident"languageSettings", ident"lang")
-        )
+      newCall("[]", newCall("$",
+        newNimNode(nnkIfExpr).add(
+          newNimNode(nnkElifBranch).add(
+            when defined(js):
+              newCall("==", newDotExpr(newDotExpr(ident"languageSettings", ident"val"), ident"lang"), newLit"auto")
+            else:
+              newCall("==", newDotExpr(ident"languageSettings", ident"lang"), newLit"auto"),
+            when defined(js):
+              newDotExpr(ident"navigator", ident"language")
+            else:
+              ident"acceptLanguage"
+          ), newNimNode(nnkElse).add(
+            when defined(js):
+              newDotExpr(newDotExpr(ident"languageSettings", ident"val"), ident"lang")
+            else:
+              newDotExpr(ident"languageSettings", ident"lang")
+          )
+        )),
+        newCall("..", newLit(0), newLit(1))
       )
-    source =
+    sourceRaw =
       when self is static[string]:
         newLit(self)
       else:
         self
     translations = ident"translates"
+    source = newCall("format", newNimNode(nnkBracketExpr).add(
+      newNimNode(nnkBracketExpr).add(
+        translations, sourceRaw
+      ),
+      language
+    ))
+    sourceDefault = newCall("format", newNimNode(nnkBracketExpr).add(
+      newNimNode(nnkBracketExpr).add(
+        translations, sourceRaw
+      ),
+      newLit"default"
+    ))
+  
+  for i in variables:
+    source.add(i)
+    sourceDefault.add(i)
   
   result = newNimNode(nnkIfStmt).add(
     newNimNode(nnkElifBranch).add(
@@ -146,24 +165,14 @@ macro translate*(self: string): string =
         newCall(
           "hasKey",
           newNimNode(nnkBracketExpr).add(
-            translations, source
+            translations, sourceRaw
           ),
           language
         )
       ),
-      newNimNode(nnkBracketExpr).add(
-        newNimNode(nnkBracketExpr).add(
-          translations, source
-        ),
-        newLit"default"
-      )
+      sourceDefault
     ), newNimNode(nnkElse).add(
-      newNimNode(nnkBracketExpr).add(
-        newNimNode(nnkBracketExpr).add(
-          translations, source
-        ),
-        language
-      )
+      source
     )
   )
   when not (self is static[string]):
@@ -171,8 +180,8 @@ macro translate*(self: string): string =
       newCall("not",
         newCall(
           "hasKey",
-          translations, source
+          translations, sourceRaw
         )
       ),
-      source
+      sourceRaw
     ))

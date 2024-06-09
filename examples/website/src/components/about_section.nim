@@ -3,10 +3,7 @@ import
   ../ui/colors
 
 
-type Data = seq[tuple[name, url: string]]
-
-
-proc AboutSection*(name: string, data: Data): TagRef =
+proc AboutSection*(name: string, data: seq[tuple[name, url: string]]): TagRef =
   buildHtml:
     tDiv(class = "flex flex-col gap-8 lg:gap-4"):
       tP(class = "font-semibold text-2xl lg:text-base"):
@@ -16,4 +13,4 @@ proc AboutSection*(name: string, data: Data): TagRef =
         for item in data:
           # Section link
           tA(href = item.url, class = "text-[{LinkForeground}] visited:text-[{LinkVisitedForeground}] hover:text-[{LinkActiveForeground}] translation-all"):
-            {name}
+            {item.name}

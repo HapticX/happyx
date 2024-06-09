@@ -343,13 +343,24 @@ proc openApiDocs*(docsData: NimNode): NimNode =
             for m in text.findAll(re2"(?m)^\s*(\w[\w\d_]*)\s*=\s*([^\n]+)$"):
               pathData[text[m.group(0)]] = %text[m.group(1)]
             # Params
+            for p in route.pathParams:
+              let param = %*{
+                "name": p.name,
+                "required": not p.optional,
+                "in": "path",
+                "schema": {
+                  "type": p.paramType
+                }
+              }
+              pathData["parameters"].add(param)
+
             var paramMatches: RegexMatch2
             if text.find(re2"@params\s*{((\s*\w[\w\d]*\!?\s*(:\s*\w+)?[^\n]+)+)\s*}", paramMatches):
-              let paramText = text[paramMatches.group(1)]
+              let paramText = text[paramMatches.group(0)]
               for m in paramText.findAll(
                 re2"(?m)^\s*(\w[\w\d_]*)(!)?\s*(:\s*\w[\w\d]*)?(\s*\-\s*[^\n]+)?"
               ):
-                pathData["parameters"].add(%*{
+                let param = %*{
                   "name": paramText[m.group(0)],
                   "required": m.group(1).len != 0,
                   "description":
@@ -365,18 +376,16 @@ proc openApiDocs*(docsData: NimNode): NimNode =
                       else:
                         "string"
                   }
-                })
-          
-          for p in route.pathParams:
-            let param = %*{
-              "name": p.name,
-              "required": not p.optional,
-              "in": "path",
-              "schema": {
-                "type": p.paramType
-              }
-            }
-            pathData["parameters"].add(param)
+                }
+                var hasParam = false
+                for p in 0..<pathData["parameters"].len:
+                  if pathData["parameters"][p]["name"] == param["name"]:
+                    pathData["parameters"][p]["schema"] = param["schema"]
+                    pathData["parameters"][p]["description"] = param["description"]
+                    hasParam = true
+                    break
+                if not hasParam:
+                  pathData["parameters"].add(param)
           
           for m in route.models:
             echo m

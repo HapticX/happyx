@@ -32,6 +32,22 @@ serve "127.0.0.1", 5000:
   var counter = 0
 
   get "/{title:string}/{left:float}/{right:float}":
+    ## Calculate left and right. Shows title.
+    ## 
+    ## @openapi {
+    ##  operationId = calculate
+    ##  summary = calculate left and right.
+    ##  
+    ##  @params {
+    ##    title: string - just title
+    ##    left: integer - left number
+    ##    right: integer - right number
+    ##  }
+    ##  
+    ##  @responses {
+    ##    asdad
+    ##  }
+    ## }
     req.answerHtml render(title, left, right)
   
   get "/":

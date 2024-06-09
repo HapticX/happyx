@@ -510,6 +510,33 @@ macro buildHtml*(html: untyped): untyped =
     result.add(newLit(true))
 
 
+template thunkHtml*(body: untyped): proc(): TagRef =
+  proc(): TagRef = buildHtml:
+    body
+
+
+template thunkHtmls*(body: untyped): seq[proc(): TagRef] =
+  block:
+    var res: seq[proc(): TagRef]
+    template html(b: untyped) =
+      res.add:
+        proc(): TagRef = buildHtml:
+          b
+    body
+    res
+
+
+template buildHtmls*(body: untyped): seq[TagRef] =
+  block:
+    var res: seq[TagRef]
+    template html(b: untyped) =
+      res.add:
+        buildHtml:
+          b
+    body
+    res
+
+
 when enableDefaultComponents:
   macro buildHtmlSlot*(html: untyped, inCycle, inComponent: static[bool]): untyped =
     ## `buildHtml` macro provides building HTML tags with YAML-like syntax.
