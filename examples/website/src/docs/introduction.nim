@@ -136,7 +136,7 @@ component Introduction:
           tH3:
             {translate"Contributors"}
             " *"
-          tDiv(class = "grid grid-cols-5 lg:grid-cols-10 xl:grid-cols-15 gap-x-2 gap-y-12"):
+          tDiv(class = "grid grid-cols-5 lg:grid-cols-10 xl:grid-cols-8 gap-x-2 gap-y-12"):
             Contributor("quimt", "https://github.com/quimt", "https://avatars.githubusercontent.com/u/126020181?v=4")
             Contributor("its5Q", "https://github.com/its5Q", "https://avatars.githubusercontent.com/u/12975646?v=4")
             Contributor("Lum", "https://github.com/not-lum", "https://avatars.githubusercontent.com/u/62594565?v=4")
@@ -163,6 +163,12 @@ component Introduction:
             Contributor("Александр Старочкин", "https://github.com/levovix0", "https://avatars.githubusercontent.com/u/53170138?v=4")
             Contributor("MouriKogorou", "https://github.com/MouriKogorou", "https://avatars.githubusercontent.com/u/43428806?v=4")
             Contributor("Devon", "https://github.com/winrid", "https://avatars.githubusercontent.com/u/1733933?v=4")
+            Contributor("Yuriy Balyuk", "https://github.com/veksha", "https://avatars.githubusercontent.com/u/275333?v=4")
+            Contributor("Damian Zaręba", "https://github.com/KhazAkar", "https://avatars.githubusercontent.com/u/12693890?v=4")
+            Contributor("bluemax75", "https://github.com/bluemax75", "https://avatars.githubusercontent.com/u/11153375?v=4")
+            Contributor("svbalogh", "https://github.com/svbalogh", "https://avatars.githubusercontent.com/u/46842029?v=4")
+            Contributor("MelonCodeUK", "https://github.com/MelonCodeUK", "https://avatars.githubusercontent.com/u/138726110?v=4")
+            Contributor("baseplate-admin", "https://github.com/baseplate-admin", "https://avatars.githubusercontent.com/u/61817579?v=4")
           tP(class = "text-base lg:text-sm xl:text-xs pt-4"):
             "* "
             {translate"This includes all members of the HappyX community who have contributed to its development (issues and pull requests)"}
