@@ -510,6 +510,17 @@ macro buildHtml*(html: untyped): untyped =
     result.add(newLit(true))
 
 
+template buildHtmls*(body: untyped): seq[TagRef] =
+  block:
+    var res: seq[TagRef]
+    template html(b: untyped) =
+      res.add:
+        buildHtml:
+          b
+    body
+    res
+
+
 when enableDefaultComponents:
   macro buildHtmlSlot*(html: untyped, inCycle, inComponent: static[bool]): untyped =
     ## `buildHtml` macro provides building HTML tags with YAML-like syntax.

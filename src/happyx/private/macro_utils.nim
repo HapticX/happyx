@@ -1234,6 +1234,11 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
           "is", statement[0], ident"TagRef"
         ),
         statement[0]
+      ), newNimNode(nnkElifBranch).add(
+        newCall("is", statement[0], newNimNode(nnkProcTy)),
+        block:
+          var call = newCall(statement[0])
+          call
       ), newNimNode(nnkElse).add(
         newCall("initTag", newCall("$", statement[0]), newLit(true))
       )))
