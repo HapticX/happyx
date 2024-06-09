@@ -35,7 +35,7 @@ mount Home:
                     {translate"modern and powerful ready-to-product web framework"}
                 tDiv(class = "cursor-pointer hover:scale-110 hover:z-10 transition-all duration-500 flex flex-col rounded-xl px-6 py-4 drop-shadow-2xl bg-gradient-to-r from-[{Background}] to-[{BackgroundSecondary}] dark:from-[{BackgroundDark}] dark:to-[{BackgroundSecondaryDark}]"):
                   tP(class = "text-5xl lg:text-xl xl:text-3xl font-semibold"):
-                    {translate"metaprogramming"}
+                    "metaprogramming"
                   tP(class = "text-3xl lg:text-base"):
                     {translate"HappyX based on metaprogramming"}
                   tP(class = "text-3xl lg:text-base"):
