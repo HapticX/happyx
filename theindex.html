@@ -410,6 +410,10 @@
                    compTmpVar: NimNode = newEmptyNode();
                    cycleVars: var seq[NimNode]; parent: NimNode = newEmptyNode()): NimNode</a></li>
           </ul></dd>
+<dt><a name="buildHtmls" href="#buildHtmls"><span>buildHtmls:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="renderer: template buildHtmls(body: untyped): seq[TagRef]" href="happyx/spa/renderer.html#buildHtmls.t%2Cuntyped">renderer: template buildHtmls(body: untyped): seq[TagRef]</a></li>
+          </ul></dd>
 <dt><a name="buildHtmlSlot" href="#buildHtmlSlot"><span>buildHtmlSlot:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="renderer: macro buildHtmlSlot(html: untyped; inCycle, inComponent: static[bool]): untyped" href="happyx/spa/renderer.html#buildHtmlSlot.m%2Cuntyped%2Cstatic%5Bbool%5D%2Cstatic%5Bbool%5D">renderer: macro buildHtmlSlot(html: untyped; inCycle, inComponent: static[bool]): untyped</a></li>
@@ -1254,6 +1258,14 @@
 <li><a class="reference external"
           data-doc-search-tag="exceptions: proc throwDefect(defect: typedesc; msg: string; lineInfo: LineInfo)" href="happyx/core/exceptions.html#throwDefect%2Ctypedesc%2Cstring%2CLineInfo">exceptions: proc throwDefect(defect: typedesc; msg: string; lineInfo: LineInfo)</a></li>
           </ul></dd>
+<dt><a name="thunkHtml" href="#thunkHtml"><span>thunkHtml:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="renderer: template thunkHtml(body: untyped): proc (): TagRef" href="happyx/spa/renderer.html#thunkHtml.t%2Cuntyped">renderer: template thunkHtml(body: untyped): proc (): TagRef</a></li>
+          </ul></dd>
+<dt><a name="thunkHtmls" href="#thunkHtmls"><span>thunkHtmls:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="renderer: template thunkHtmls(body: untyped): seq[proc (): TagRef]" href="happyx/spa/renderer.html#thunkHtmls.t%2Cuntyped">renderer: template thunkHtmls(body: untyped): seq[proc (): TagRef]</a></li>
+          </ul></dd>
 <dt><a name="toBool" href="#toBool"><span>toBool:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="state: converter toBool(self: State[bool]): bool" href="happyx/spa/state.html#toBool.c%2CState%5Bbool%5D">state: converter toBool(self: State[bool]): bool</a></li>
@@ -1330,7 +1342,7 @@
           </ul></dd>
 <dt><a name="translate" href="#translate"><span>translate:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="translatable: macro translate(self: string): string" href="happyx/spa/translatable.html#translate.m%2Cstring">translatable: macro translate(self: string): string</a></li>
+          data-doc-search-tag="translatable: macro translate(self: string; variables: varargs[string]): string" href="happyx/spa/translatable.html#translate.m%2Cstring%2Cvarargs%5Bstring%5D">translatable: macro translate(self: string; variables: varargs[string]): string</a></li>
           </ul></dd>
 <dt><a name="UnclosedTags" href="#UnclosedTags"><span>UnclosedTags:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -1378,7 +1390,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2024-06-04 09:13:46 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2024-06-09 16:21:06 UTC</small>
       </div>
     </div>
   </div>

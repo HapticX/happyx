@@ -30,10 +30,13 @@ nim	reRender	happyx/spa/renderer.html#reRender.e,BaseComponent	method reRender(s
 nim	start	happyx/spa/renderer.html#start.t,App	template start(app: App)		355
 nim	buildHtml	happyx/spa/renderer.html#buildHtml.m,untyped,untyped	macro buildHtml(root, html: untyped): untyped		397
 nim	buildHtml	happyx/spa/renderer.html#buildHtml.m,untyped	macro buildHtml(html: untyped): untyped		500
-nim	buildHtmlSlot	happyx/spa/renderer.html#buildHtmlSlot.m,untyped,static[bool],static[bool]	macro buildHtmlSlot(html: untyped; inCycle, inComponent: static[bool]): untyped		514
-nim	buildComponentHtml	happyx/spa/renderer.html#buildComponentHtml.m,untyped,untyped	macro buildComponentHtml(componentName, html: untyped): untyped		528
-nim	routes	happyx/spa/renderer.html#routes.m,App,untyped	macro routes(app: App; body: untyped): untyped		546
-nim	appRoutes	happyx/spa/renderer.html#appRoutes.m,string,untyped	macro appRoutes(name: string; body: untyped): untyped		793
+nim	thunkHtml	happyx/spa/renderer.html#thunkHtml.t,untyped	template thunkHtml(body: untyped): proc (): TagRef		513
+nim	thunkHtmls	happyx/spa/renderer.html#thunkHtmls.t,untyped	template thunkHtmls(body: untyped): seq[proc (): TagRef]		518
+nim	buildHtmls	happyx/spa/renderer.html#buildHtmls.t,untyped	template buildHtmls(body: untyped): seq[TagRef]		529
+nim	buildHtmlSlot	happyx/spa/renderer.html#buildHtmlSlot.m,untyped,static[bool],static[bool]	macro buildHtmlSlot(html: untyped; inCycle, inComponent: static[bool]): untyped		541
+nim	buildComponentHtml	happyx/spa/renderer.html#buildComponentHtml.m,untyped,untyped	macro buildComponentHtml(componentName, html: untyped): untyped		555
+nim	routes	happyx/spa/renderer.html#routes.m,App,untyped	macro routes(app: App; body: untyped): untyped		573
+nim	appRoutes	happyx/spa/renderer.html#appRoutes.m,string,untyped	macro appRoutes(name: string; body: untyped): untyped		820
 nimgrp	html	happyx/spa/renderer.html#html-procs-all	proc		204
 nimgrp	route	happyx/spa/renderer.html#route-procs-all	proc		200
 nimgrp	buildhtml	happyx/spa/renderer.html#buildHtml-macros-all	macro		397
