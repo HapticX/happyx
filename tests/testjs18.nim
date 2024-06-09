@@ -1,20 +1,5 @@
 import ../src/happyx
 
-
-template thunkHtml(body: untyped): proc(): TagRef =
-  proc(): TagRef = buildHtml:
-    body
-
-template thunkHtmls(body: untyped): seq[proc(): TagRef] =
-  block:
-    var res: seq[proc(): TagRef]
-    template html(b: untyped) =
-      res.add:
-        proc(): TagRef = buildHtml:
-          b
-    body
-    res
-
 let htmlProcs = thunkHtmls:
   html:
     tSpan: "front"
