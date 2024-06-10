@@ -109,29 +109,38 @@ macro translatable*(body: untyped): untyped =
         "Invalid translatable syntax: ",
         lineInfoObj(s)
       )
+  when defined(js):
+    translatesStatement.add(
+      quote("@") do:
+        proc translateImpl*(self: string, variables: varargs[string, `$`]): string =
+          if not translates.hasKey(self):
+            return self
+          let lang =
+            if languageSettings.val.lang == "auto":
+              ($navigator.language)[0..1]
+            else:
+              ($languageSettings.val.lang)[0..1]
+          if not translates[self].hasKey(lang):
+            format(translates[self]["default"], variables)
+          else:
+            format(translates[self][lang], variables)
+    )
   return translatesStatement
 
 
 macro translate*(self: string, variables: varargs[string]): string =
   ## Translates `self` string to current client language (SPA) or accept-language header (SSG/SSR)
+  when defined(js):
+    return newCall("translateImpl", self, variables)
   let
     language =
       newCall("[]", newCall("$",
         newNimNode(nnkIfExpr).add(
           newNimNode(nnkElifBranch).add(
-            when defined(js):
-              newCall("==", newDotExpr(newDotExpr(ident"languageSettings", ident"val"), ident"lang"), newLit"auto")
-            else:
-              newCall("==", newDotExpr(ident"languageSettings", ident"lang"), newLit"auto"),
-            when defined(js):
-              newDotExpr(ident"navigator", ident"language")
-            else:
-              ident"acceptLanguage"
+            newCall("==", newDotExpr(ident"languageSettings", ident"lang"), newLit"auto"),
+            ident"acceptLanguage"
           ), newNimNode(nnkElse).add(
-            when defined(js):
-              newDotExpr(newDotExpr(ident"languageSettings", ident"val"), ident"lang")
-            else:
-              newDotExpr(ident"languageSettings", ident"lang")
+            newDotExpr(ident"languageSettings", ident"lang")
           )
         )),
         newCall("..", newLit(0), newLit(1))
