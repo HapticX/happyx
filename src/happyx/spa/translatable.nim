@@ -36,8 +36,10 @@ macro translatable*(body: untyped): untyped =
   ## 
   ## .. code-block:: nim
   ##    translatable:
-  ##      # If lang is unknown than used "My own string"
+  ##      # If language is unknown than "default" key.
+  ##      # if it does not exists than used "My own string"
   ##      "My own string":
+  ##        "default" -> "this you can see by default"
   ##        "ru" -> "Моя собственная строка"
   ##        "fr" -> "..."
   ## 
@@ -130,6 +132,9 @@ macro translatable*(body: untyped): untyped =
 
 macro translate*(self: string, variables: varargs[string]): string =
   ## Translates `self` string to current client language (SPA) or accept-language header (SSG/SSR)
+  ## 
+  ## .. Note::
+  ##    in JS backend this works like procedure calling.
   when defined(js):
     return newCall("translateImpl", self, variables)
   let
