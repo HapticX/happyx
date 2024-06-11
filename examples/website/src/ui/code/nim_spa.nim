@@ -330,3 +330,25 @@ appRoutes "app":
     MyFuncComponent(100):
       "see! this is a slot"
 """
+  nimSpaRendering* = """import happyx
+
+var counter = remember 0
+
+appRoutes "app":
+  "/":
+    "Now counter is {counter}."
+    tButton:
+      "increase counter"
+      @click:
+        counter += 1
+    tButton:
+      "go to other route"
+      route "/other"
+  
+  "/other":
+    "Hey, counter is still {counter}"
+    tButton:
+      "go back"
+      @click:
+        route "/"
+"""

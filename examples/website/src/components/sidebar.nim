@@ -46,6 +46,11 @@ var
     "spa_basics": {
       "title": "Single-page Applications Basics 🎴",
       "prev": "route_decorators",
+      "next": "spa_rendering"
+    },
+    "spa_rendering": {
+      "title": "SPA Rendering 🧩",
+      "prev": "spa_basics",
       "next": "reactivity"
     },
     "reactivity": {
@@ -178,6 +183,8 @@ proc SideBar*(isMobile: bool = false): TagRef =
             SideBarFolder("spa_basics", "Single-page Applications 🎴", isMobile):
               SideBarItem("spa_basics", isMobile):
                 {translate"Single-page Applications Basics 🎴"}
+              SideBarItem("spa_rendering", isMobile):
+                {translate"SPA Rendering 🧩"}
               SideBarItem("reactivity", isMobile):
                 {translate"Reactivity ⚡"}
               SideBarItem("components", isMobile):

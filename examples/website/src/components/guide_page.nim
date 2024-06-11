@@ -27,6 +27,8 @@ component GuidePage:
           PathParams
         of "spa_basics":
           SpaBasics
+        of "spa_rendering":
+          SpaRendering
         of "reactivity":
           Reactivity
         of "components":
