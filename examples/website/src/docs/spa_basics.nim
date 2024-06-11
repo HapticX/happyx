@@ -15,7 +15,7 @@ proc SpaBasics*(): TagRef =
       tP: {translate"SPA means that all web-app logic runs at the client-side (e.g., browser)."}
 
       tH2: {translate"Features 📦"}
-      tP: {translate"Here is core single-page application features 👋"}
+      tP: {translate"Here are the main features of single-page applications 👋"}
 
       tUl:
         tLi: tDiv(class = "inline"):
@@ -29,7 +29,7 @@ proc SpaBasics*(): TagRef =
         tLi: tDiv(class = "inline"):
           tSpan(class = "font-bold text-pink-800 dark:text-pink-400"): {translate"Routes"}
           " "
-          tSpan: {translate"Routes allows to move between different pages"}
+          tSpan: {translate"Routes allow you to navigate between different pages."}
       
       tH2: {translate"Routing 🔌"}
       tP: {translate"Here is routing basics."}
