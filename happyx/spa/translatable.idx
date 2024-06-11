@@ -1,7 +1,7 @@
 nimTitle	translatable	happyx/spa/translatable.html	module src/happyx/spa/translatable		0
 nim	LanguageSettings	happyx/spa/translatable.html#LanguageSettings	object LanguageSettings		26
 nim	translatable	happyx/spa/translatable.html#translatable.m,untyped	macro translatable(body: untyped): untyped		30
-nim	translate	happyx/spa/translatable.html#translate.m,string,varargs[string]	macro translate(self: string; variables: varargs[string]): string		131
+nim	translate	happyx/spa/translatable.html#translate.m,string,varargs[string]	macro translate(self: string; variables: varargs[string]): string		133
 heading	Example	happyx/spa/translatable.html#example	 Example		0
 heading	Translatable strings ✨	happyx/spa/translatable.html#translatable-strings-✨	 Translatable strings ✨		0
 heading	Minimal Example 👨‍🔬	happyx/spa/translatable.html#translatable-strings-✨-minimal-example-👨‍🔬	  Minimal Example 👨‍🔬		0

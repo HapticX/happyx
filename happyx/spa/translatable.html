@@ -132,8 +132,10 @@
     Make translations for strings<blockquote class="markdown-quote"><p>Use standalone file with your translations for good practice.</p></blockquote>
 
 <h1><a class="toc-backref" id="example" href="#example">Example</a></h1><pre class="listing"><span class="Identifier">translatable</span><span class="Punctuation">:</span>
-  <span class="Comment"># If lang is unknown than used &quot;My own string&quot;</span>
+  <span class="Comment"># If language is unknown than &quot;default&quot; key.</span>
+  <span class="Comment"># if it does not exists than used &quot;My own string&quot;</span>
   <span class="StringLit">&quot;My own string&quot;</span><span class="Punctuation">:</span>
+    <span class="StringLit">&quot;default&quot;</span> <span class="Operator">-&gt;</span> <span class="StringLit">&quot;this you can see by default&quot;</span>
     <span class="StringLit">&quot;ru&quot;</span> <span class="Operator">-&gt;</span> <span class="StringLit">&quot;Моя собственная строка&quot;</span>
     <span class="StringLit">&quot;fr&quot;</span> <span class="Operator">-&gt;</span> <span class="StringLit">&quot;...&quot;</span></pre>
     
@@ -146,7 +148,9 @@
   <dt><pre><span class="Keyword">macro</span> <a href="#translate.m%2Cstring%2Cvarargs%5Bstring%5D"><span class="Identifier">translate</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">variables</span><span class="Other">:</span> <span class="Identifier">varargs</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span></pre></dt>
   <dd>
     
-    Translates <tt class="docutils literal"><span class="pre"><span class="Identifier">self</span></span></tt> string to current client language (SPA) or accept-language header (SSG/SSR)
+    Translates <tt class="docutils literal"><span class="pre"><span class="Identifier">self</span></span></tt> string to current client language (SPA) or accept-language header (SSG/SSR)<div class="admonition admonition-info"><span class="admonition-info-text"><b>Note:</b></span>
+in JS backend this works like procedure calling.</div>
+
     
   </dd>
 </div>
@@ -162,7 +166,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2024-06-10 12:20:24 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2024-06-11 13:52:44 UTC</small>
       </div>
     </div>
   </div>
