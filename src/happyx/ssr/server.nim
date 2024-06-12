@@ -657,7 +657,7 @@ proc detectReturnStmt(node: NimNode, replaceReturn: bool = false) =
   if replaceReturn or node.kind in AtomicNodes:
     return
   if node[^1].kind in [nnkCall, nnkCommand]:
-    if node[^1][0].kind == nnkIdent and re2"^(answer|echo|translate)" in $node[^1][0]:
+    if node[^1][0].kind == nnkIdent and $node[^1][0] in ["answer", "echo", "translate"]:
       return
     elif node[^1][0].kind == nnkDotExpr and ($node[^1][0][1]).toLower().startsWith("answer"):
       return
@@ -688,11 +688,10 @@ macro routes*(server: Server, body: untyped = newStmtList()): untyped =
   ## - `bool`: any boolean (`y`, `yes`, `on`, `1` and `true` for true; `n`, `no`, `off`, `0` and `false` for false).
   ## - `int`: any integer.
   ## - `float`: any float number.
-  ## - `word`: any word includes `re2"\w+"`.
+  ## - `word`: any word.
   ## - `string`: any string excludes `"/"`.
   ## - `enum(EnumName)`: any string excludes `"/"`. Converts into `EnumName`.
   ## - `path`: any float number includes `"/"`.
-  ## - `regex`: any regex pattern excludes groups. Usage - `"/path{pattern:/yourRegex/}"`
   ## 
   ## #### Available Route Types
   ## - `"/path/with/{args:path}"`: Just string with route path. Matches any request method

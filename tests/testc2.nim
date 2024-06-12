@@ -16,11 +16,7 @@ pathParams:
   arg6 int[m]
   arg7 = "100"
   arg8[m] = 100
-  arg9 re2"\d+"
-  arg10? re2"\d+"
-  arg11? re2"\d+"[m] = 100
-  arg12? re2"\d+"[m]
-  arg13 int:
+  arg9 int:
     type int
     optional
     mutable

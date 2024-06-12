@@ -253,7 +253,11 @@ macro buildStyle*(body: untyped): untyped =
   # formatting
   css = css.replace(re2"\{\{([^\}]+)\}\}", "<$1>")
   # UOMs
-  css = css.replace(re2"\.(px|rem|em)\b", "$1")
+  css = css.replace(".px", "px")
+           .replace(".rem", "rem")
+           .replace(".em", "em")
+           .replace(".vw", "vw")
+           .replace(".vh", "vh")
   # properties
   css = css.replace(re2"\s*\-\s*([a-zA-Z][a-zA-Z0-9_]*)", "-$1")
   newCall("fmt", newLit(css), newLit('<'), newLit('>'))

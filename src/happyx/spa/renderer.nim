@@ -511,8 +511,9 @@ macro buildHtml*(html: untyped): untyped =
 
 
 template thunkHtml*(body: untyped): proc(): TagRef =
-  proc(): TagRef = buildHtml:
-    body
+  proc(): TagRef =
+    result = buildHtml:
+      body
 
 
 template thunkHtmls*(body: untyped): seq[proc(): TagRef] =
@@ -520,8 +521,9 @@ template thunkHtmls*(body: untyped): seq[proc(): TagRef] =
     var res: seq[proc(): TagRef]
     template html(b: untyped) =
       res.add:
-        proc(): TagRef = buildHtml:
-          b
+        proc(): TagRef =
+          result = buildHtml:
+            b
     body
     res
 

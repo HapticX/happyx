@@ -5,6 +5,7 @@ import
   # stdlib
   std/strformat,
   std/strutils,
+  std/strscans,
   std/strtabs,
   std/macros,
   std/macrocache,
@@ -73,7 +74,8 @@ when exportPython:
   var registeredRouteParamTypes = newTable[string, RouteParamType]()
 
   proc registerRouteParamTypeAux*(name, pattern: string, creator: PyObject) =
-    if re2"^[a-zA-Z][a-zA-Z0-9_]*$" notin name:
+    var id: string
+    if not scanf(name, "$w$.", id):
       raise newException(
         ValueError,
         fmt"route param type name should be identifier (a-zA-Z0-9_), but got '{name}'"
@@ -107,7 +109,8 @@ elif defined(napibuild):
   var registeredRouteParamTypes = newTable[string, RouteParamType]()
 
   proc registerRouteParamTypeAux*(name, pattern, creator: string) =
-    if re2"^[a-zA-Z][a-zA-Z0-9_]*$" notin name:
+    var id: string
+    if not scanf(name, "$w$.", id):
       raise newException(
         ValueError,
         fmt"route param type name should be identifier (a-zA-Z0-9_), but got '{name}'"
@@ -128,7 +131,8 @@ elif exportJvm:
   var registeredRouteParamTypes* = newTable[string, RouteParamType]()
 
   proc registerRouteParamTypeAux*(name, pattern: string, creator: JavaMethod) =
-    if re2"^[a-zA-Z][a-zA-Z0-9_]*$" notin name:
+    var id: string
+    if not scanf(name, "$w$.", id):
       raise newException(
         ValueError,
         fmt"route param type name should be identifier (a-zA-Z0-9_), but got '{name}'"
@@ -140,7 +144,8 @@ else:
   const registeredRouteParamTypes = CacheTable"HappyXRegisteredRouteParamTypes"
 
   macro registerRouteParamType*(name, pattern: string, creator: untyped) =
-    if re2"^[a-zA-Z][a-zA-Z0-9_]*$" notin $name:
+    var id: string
+    if not scanf($name, "$w$.", id):
       raise newException(
         ValueError,
         fmt"route param type name should be identifier (a-zA-Z0-9_), but got '{name}'"
@@ -261,7 +266,7 @@ proc handleRoute*(route: string): RouteDataObj =
       name = path[pathParam.group(0)]
       isOptional = false
     # Detect optional value
-    if name.endsWith(re2"\?"):
+    if name.endsWith("?"):
       name = name[0..^2]
       isOptional = true
     elif defaultVal.len > 0:
@@ -923,10 +928,6 @@ when exportPython or defined(docgen) or defined(napibuild) or exportJvm:
 proc pathParamsBoilerplate(node: NimNode, kind, regexVal: var string) =
   if node.kind == nnkIdent:
     kind = $node
-  # regex type
-  elif node.kind == nnkCallStrLit and $node[0] == "re2":
-    kind = "regex"
-    regexVal = $node[1]
   elif node.kind == nnkExprEqExpr:
     kind = $(node[0].toStrLit)
   else:
@@ -949,12 +950,10 @@ macro pathParams*(body: untyped): untyped =
   ##      arg? int[m] = 5
   ##      # means that `arg1` of type `string` is optional mutable param with default value `"Hello"`
   ##      arg1[m] = "Hello"
-  ##      # means that `arg2` of type `string` is immutable regex param
-  ##      arg2 re2"\d+u"
-  ##      # means that `arg3` of type `float` is mutable param
-  ##      arg3 float[m]
-  ##      # means that `arg4` of type `int` is optional mutable param with default value `10`
-  ##      arg4:
+  ##      # means that `arg2` of type `float` is mutable param
+  ##      arg2 float[m]
+  ##      # means that `arg3` of type `int` is optional mutable param with default value `10`
+  ##      arg3:
   ##        type int
   ##        mutable
   ##        optional

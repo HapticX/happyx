@@ -8,7 +8,9 @@ import
   std/htmlparser,
   std/exitprocs,
   std/sequtils,
+  std/strscans,
   std/xmltree,
+  std/xmlparser,
   std/times,
   std/math,
   std/algorithm,
@@ -209,6 +211,15 @@ proc readConfig*(): ProjectData =
     result.name = cfg.getSectionValue("Main", "projectName", "")
 
 
+proc hasComp(tree: XmlNode, usage: var int, comp: string) =
+  if tree.tag.toLower().replace("-", "") == comp.toLower().replace("-", ""):
+    inc usage
+  for i in tree:
+    if i.kind in {xnText, xnComment}:
+      continue
+    i.hasComp(usage, comp)
+
+
 proc compileProject*(): ProjectData {. discardable .} =
   ## Compiling Project
   result = readConfig()
@@ -242,10 +253,13 @@ proc compileProject*(): ProjectData {. discardable .} =
         currentComponentName = currentComponent.rsplit('.', 1)[0].rsplit({DirSep, AltSep}, 1)[1]
       for otherComponent in componentNames:  # find it in other components
         if otherComponent != currentComponent:
+          # var data = loadXml(getCurrentDir() / result.srcDir / otherComponent)
+          # data.hasComp(usage, currentComponentName)
           var
             x = open(getCurrentDir() / result.srcDir / otherComponent)
             data = x.readAll()
           x.close()
+          # if currentComponentName in data:
           if re2(r"^\s*<\s*template\s*>[\s\S]+?<\s*" & currentComponentName) in data:
             inc usage
       usages.add((currentComponent, currentComponentName, usage))

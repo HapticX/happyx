@@ -12,11 +12,16 @@ let htmlTags = buildHtmls:
   html:
     tSpan: "left"
 
+
+echo htmlTags[0]
+echo htmlTags[0].onlyChildren
+echo htmlTags[0].children[0]
+echo htmlTags[0].children[0].TagRef.onlyChildren
+
 component FormatProcHtml:
   p: (proc (): TagRef) # parentheses needed in avoid "nested statements" error
   html:
-    em(style="color:blue"):
-      {self.p()}
+    em(style="color:blue"): {self.p()}
 
 component FormatTagHtml:
   t: TagRef

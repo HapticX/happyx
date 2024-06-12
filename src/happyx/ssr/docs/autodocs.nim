@@ -365,14 +365,14 @@ proc openApiDocs*(docsData: NimNode): NimNode =
                   "required": m.group(1).len != 0,
                   "description":
                     if m.group(3).len != 0:
-                      paramText[m.group(3)].replace(re2"\s*\-\s*", "")
+                      paramText[m.group(3)].replace("-", "").strip()
                     else:
                       "",
                   "in": "query",
                   "schema": {
                     "type":
                       if m.group(2).len != 0:
-                        paramText[m.group(2)].replace(re2":\s*", "")
+                        paramText[m.group(2)].replace(":", "").strip()
                       else:
                         "string"
                   }

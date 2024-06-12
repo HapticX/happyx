@@ -1,4 +1,5 @@
 import
+  std/strscans,
   ./utils
 
 
@@ -41,18 +42,19 @@ proc projectInfoCommand*(): int =
 
   var output = execProcess(
     "git rev-list --count master", getCurrentDir()
-  ).replace(re2"^\s*", "").replace(re2"\s*$", "")
+  ).strip()
+  var commit: int
 
-  if output.match(re2"^\d+$"):
+  if output.scanf("$i", commit):
     echo ""
     styledEcho fgBlue, styleBright, emoji["😸"](), " Git Story ", emoji["😸"]()
     styledEcho fgMagenta, styleBright, "🛠 Commit count: ", fgWhite, output
   
   output = execProcess(
     "git rev-parse HEAD", getCurrentDir()
-  ).replace(re2"^\s*", "").replace(re2"\s*$", "")
+  ).strip()
 
-  if output.len == 40 and output.match(re2"^[\S]+$"):
+  if output.len == 40:
     styledEcho fgMagenta, styleBright, emoji["✨"](), " Latest commit: ", fgWhite, output
 
   QuitSuccess

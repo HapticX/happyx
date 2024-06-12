@@ -449,47 +449,6 @@ proc toSeqIter*(self: TagRef): seq[TagRef] =
   return result
 
 
-# when defined(js):
-#   proc toDom*(self: TagRef): tuple[n: Node, b: bool] =
-#     return (n: self.Node, b: false)
-# elif defined(js):
-#   proc toDom*(self: TagRef): tuple[n: Node, b: bool] =
-#     ## converts tag into DOM Element
-#     if self.isText:
-#       # detect text node
-#       return (n: document.createTextNode(self.name), b: false)
-#     elif self.onlyChildren:
-#       # detect all children
-#       var res = document.createElement("div")
-#       # iter over all children
-#       for child in self.children:
-#         let dom = child.toDom()
-#         if dom.b:
-#           while dom.n.len > 0:
-#             res.appendChild(dom.n.childNodes[0])
-#         else:
-#           res.appendChild(dom.n)
-#       return (n: res, b: true)
-#     # normal tag
-#     var res = document.createElement(self.name)
-#     # attributes
-#     for key in self.attrs.keys():
-#       res.setAttribute(key, self.attrs[key])
-#     # args
-#     for arg in self.args:
-#       res.setAttribute(arg, "")
-#     # children
-#     for child in self.children:
-#       let dom = child.toDom()
-#       # only children
-#       if dom.b:
-#         while dom.n.len > 0:
-#           res.appendChild(dom.n.childNodes[0])
-#       else:
-#         res.appendChild(dom.n)
-#     return (n: res, b: false)
-
-
 func lvl*(self: TagRef): int =
   ## This function returns the level of nesting of the current tag within its parent tags.
   runnableExamples:

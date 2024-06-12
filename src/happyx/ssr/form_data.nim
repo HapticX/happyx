@@ -55,14 +55,14 @@ proc parseFormData*(formData: string): (StringTableRef, TableRef[string, FormDat
       if line == "": continue
       if line.startsWith("Content-Disposition"):
         # every param
-        for param in line.split(re2"\s*;\s*"):
-          let lparam = param.toLower()
+        for param in line.split(";"):
+          let lparam = param.toLower().strip()
           if lparam.startsWith("name"):
             key = param.split("\"")[1]
           elif lparam.startsWith("filename"):
             filename = param.split("\"")[1]
       elif line.startsWith("Content-Type"):
-        contentType = line.split(re2":\s*")[1]
+        contentType = line.split(":")[1]
       else:
         data &= line
         if i < lines.len:
@@ -71,7 +71,7 @@ proc parseFormData*(formData: string): (StringTableRef, TableRef[string, FormDat
     if key.len > 0 and data.len > 0:
       let d =
         if filename.len == 0:
-          data.replace(re2"\A\s+", "").replace(re2"\s+\z", "")
+          data.strip()
         else:
           data
       result[0][key] = d
@@ -103,7 +103,7 @@ proc iterateOverXml(tree: XmlNode, jsonNode: var JsonNode, path: var seq[string]
                   tree.attrs["type"]
                 else:
                   "string"
-              text = child.text.replace(re2"\A\s+", "").replace(re2"\s+\z", "")
+              text = child.text.strip()
             # Parse type
             current[p] =
               case nodeType.toLower()

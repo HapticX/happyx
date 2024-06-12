@@ -1,4 +1,5 @@
 import
+  std/strscans,
   ./utils
 
 
@@ -14,7 +15,11 @@ proc updateCommand*(args: seq[string]): int =
   of "head", "latest", "main", "master":
     updateHappyx("#head")
   else:
-    if re2"\A(\d+\.\d+\.\d+)\z" in v:
+    var
+      major: int
+      minor: int
+      patch: int
+    if scanf(v, "$i.$i.$i$.", major, minor, patch):
       updateHappyx(v)
     else:
       shutdownCli()
