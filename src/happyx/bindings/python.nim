@@ -157,10 +157,11 @@ proc headers*(self: HtmlResponseObj): PyObject {.exportpy.} = self.headers
 
 
 proc registerRouteParamType*(name, pattern: string): auto {.exportpy: "register_route_param_type".} =
-  proc hiddenHandler(callback: PyObject): PyObject =
-    registerRouteParamTypeAux(name, pattern, callback)
-    callback
-  hiddenHandler
+  {.warning: "Custom path params are deprecated. Will cause error in the future".}
+  # proc hiddenHandler(callback: PyObject): PyObject =
+  #   registerRouteParamTypeAux(name, pattern, callback)
+  #   callback
+  # hiddenHandler
 
 
 proc path*(serverId: int): string {.exportpy: "server_path".} =

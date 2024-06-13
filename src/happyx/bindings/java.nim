@@ -268,12 +268,14 @@ nativeMethods com.hapticx~Server:
   
   proc registerPathParamType(name: jstring, pattern: jstring, cb: jobject) =
     ## Register a new path param type
+    ## 
     initJNI(env)
-    let
-      jClass = env.GetObjectClass(env, cb)
-      methodId = env.GetMethodId(env, jClass, "handle", "(Ljava/lang/String;)Ljava/lang/Object;")
-      callback = env.initJavaMethod(jClass, methodId)
-    registerRouteParamTypeAux($name, $pattern, callback)
+    {.warning: "Custom path params are deprecated. Will cause error in the future".}
+    # let
+    #   jClass = env.GetObjectClass(env, cb)
+    #   methodId = env.GetMethodId(env, jClass, "handle", "(Ljava/lang/String;)Ljava/lang/Object;")
+    #   callback = env.initJavaMethod(jClass, methodId)
+    # registerRouteParamTypeAux($name, $pattern, callback)
   
   proc startServer(serverId: jint) =
     ## Starts a server at host and port

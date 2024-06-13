@@ -67,95 +67,95 @@ type
     path*: string
 
 
-when exportPython:
-  import tables
+# when exportPython:
+#   import tables
 
-  type RouteParamType = object
-    name: string
-    pattern: string
-    creator: PyObject
+  # type RouteParamType = object
+  #   name: string
+  #   pattern: string
+  #   creator: PyObject
 
 
-  var registeredRouteParamTypes = newTable[string, RouteParamType]()
+  # var registeredRouteParamTypes = newTable[string, RouteParamType]()
 
-  proc registerRouteParamTypeAux*(name, pattern: string, creator: PyObject) =
-    var id: string
-    if not scanf(name, "$w$.", id):
-      raise newException(
-        ValueError,
-        fmt"route param type name should be identifier (a-zA-Z0-9_), but got '{name}'"
-      )
-    registeredRouteParamTypes[name] = RouteParamType(
-      pattern: pattern, name: name, creator: creator
-    )
+  # proc registerRouteParamTypeAux*(name, pattern: string, creator: PyObject) =
+  #   var id: string
+  #   if not scanf(name, "$w$.", id):
+  #     raise newException(
+  #       ValueError,
+  #       fmt"route param type name should be identifier (a-zA-Z0-9_), but got '{name}'"
+  #     )
+  #   registeredRouteParamTypes[name] = RouteParamType(
+  #     pattern: pattern, name: name, creator: creator
+  #   )
   
-  proc hasObjectWithName*(self: TableRef[string, RouteParamType], name: string): bool =
-    {.gcsafe.}:
-      for v in registeredRouteParamTypes.values():
-        if $(v.creator.getAttr("__class__").getAttr("__name__")) == name or $(v.creator.getAttr("__name__")) == name:
-          return true
-      return false
+  # proc hasObjectWithName*(self: TableRef[string, RouteParamType], name: string): bool =
+  #   {.gcsafe.}:
+  #     for v in registeredRouteParamTypes.values():
+  #       if $(v.creator.getAttr("__class__").getAttr("__name__")) == name or $(v.creator.getAttr("__name__")) == name:
+  #         return true
+  #     return false
   
-  proc getObjectWithName*(self: TableRef[string, RouteParamType], name: string): RouteParamType =
-    {.gcsafe.}:
-      for v in registeredRouteParamTypes.values():
-        if $(v.creator.getAttr("__class__").getAttr("__name__")) == name or $(v.creator.getAttr("__name__")) == name:
-          return v
+  # proc getObjectWithName*(self: TableRef[string, RouteParamType], name: string): RouteParamType =
+  #   {.gcsafe.}:
+  #     for v in registeredRouteParamTypes.values():
+  #       if $(v.creator.getAttr("__class__").getAttr("__name__")) == name or $(v.creator.getAttr("__name__")) == name:
+  #         return v
 
-elif defined(napibuild):
-  import tables
+# elif defined(napibuild):
+#   import tables
 
-  type RouteParamType = object
-    name: string
-    pattern: string
-    creator: string
-
-
-  var registeredRouteParamTypes = newTable[string, RouteParamType]()
-
-  proc registerRouteParamTypeAux*(name, pattern, creator: string) =
-    var id: string
-    if not scanf(name, "$w$.", id):
-      raise newException(
-        ValueError,
-        fmt"route param type name should be identifier (a-zA-Z0-9_), but got '{name}'"
-      )
-    registeredRouteParamTypes[name] = RouteParamType(
-      pattern: pattern, name: name, creator: creator
-    )
-
-elif exportJvm:
-  import tables
-
-  type RouteParamType = object
-    name: string
-    pattern: string
-    creator: JavaMethod
+  # type RouteParamType = object
+  #   name: string
+  #   pattern: string
+  #   creator: string
 
 
-  var registeredRouteParamTypes* = newTable[string, RouteParamType]()
+  # var registeredRouteParamTypes = newTable[string, RouteParamType]()
 
-  proc registerRouteParamTypeAux*(name, pattern: string, creator: JavaMethod) =
-    var id: string
-    if not scanf(name, "$w$.", id):
-      raise newException(
-        ValueError,
-        fmt"route param type name should be identifier (a-zA-Z0-9_), but got '{name}'"
-      )
-    registeredRouteParamTypes[name] = RouteParamType(
-      pattern: pattern, name: name, creator: creator
-    )
-else:
-  const registeredRouteParamTypes = CacheTable"HappyXRegisteredRouteParamTypes"
+  # proc registerRouteParamTypeAux*(name, pattern, creator: string) =
+  #   var id: string
+  #   if not scanf(name, "$w$.", id):
+  #     raise newException(
+  #       ValueError,
+  #       fmt"route param type name should be identifier (a-zA-Z0-9_), but got '{name}'"
+  #     )
+  #   registeredRouteParamTypes[name] = RouteParamType(
+  #     pattern: pattern, name: name, creator: creator
+  #   )
 
-  macro registerRouteParamType*(name, pattern: string, creator: untyped) =
-    var id: string
-    if not scanf($name, "$w$.", id):
-      raise newException(
-        ValueError,
-        fmt"route param type name should be identifier (a-zA-Z0-9_), but got '{name}'"
-      )
-    registeredRouteParamTypes[$name] = newStmtList(name, pattern, creator)
+# elif exportJvm:
+#   import tables
+
+  # type RouteParamType = object
+  #   name: string
+  #   pattern: string
+  #   creator: JavaMethod
+
+
+  # var registeredRouteParamTypes* = newTable[string, RouteParamType]()
+
+  # proc registerRouteParamTypeAux*(name, pattern: string, creator: JavaMethod) =
+  #   var id: string
+  #   if not scanf(name, "$w$.", id):
+  #     raise newException(
+  #       ValueError,
+  #       fmt"route param type name should be identifier (a-zA-Z0-9_), but got '{name}'"
+  #     )
+  #   registeredRouteParamTypes[name] = RouteParamType(
+  #     pattern: pattern, name: name, creator: creator
+  #   )
+# else:
+#   const registeredRouteParamTypes = CacheTable"HappyXRegisteredRouteParamTypes"
+
+#   macro registerRouteParamType*(name, pattern: string, creator: untyped) =
+#     var id: string
+#     if not scanf($name, "$w$.", id):
+#       raise newException(
+#         ValueError,
+#         fmt"route param type name should be identifier (a-zA-Z0-9_), but got '{name}'"
+#       )
+#     registeredRouteParamTypes[$name] = newStmtList(name, pattern, creator)
 
 
 proc newPathParamObj*(name, paramType, defaultValue: string, optional: bool): PathParamObj =
@@ -518,26 +518,26 @@ proc handleRoute*(route: string): RouteDataObj =
   ## curly full: `{argument?:word=hello}`
   ## model full: `[argument:ModelName:json]`
   ## 
-  result = RouteDataObj(path: "", pathParams: @[], requestModels: @[])
-  result.path = route
-  var routePathStr = route
-  # custom patterns
-  var types = ""
-  {.gcsafe.}:
-    when defined(napibuild) or exportPython or exportJvm:
-      for routeParamType in registeredRouteParamTypes.values():
-        routePathStr = routePathStr.replace(
-          re2(r"\{[a-zA-Z][a-zA-Z0-9_]*(\??):" & routeParamType.name & r"(=\S+?)?\}"),
-          "(" & routeParamType.pattern & ")$1"
-        )
-        types &= "|" & routeParamType.name
-    else:
-      for key, routeParamType in registeredRouteParamTypes.pairs():
-        routePathStr = routePathStr.replace(
-          re2(r"\{[a-zA-Z][a-zA-Z0-9_]*(\??):" & $routeParamType[0] & r"(=\S+?)?\}"),
-          "(" & $routeParamType[1] & ")$1"
-        )
-        types &= "|" & $routeParamType[0]
+  result = RouteDataObj(path: route, pathParams: @[], requestModels: @[])
+  # result.path = route
+  # var routePathStr = route
+  # custom patterns [DEPRECATED]
+  # var types = ""
+  # {.gcsafe.}:
+  #   when defined(napibuild) or exportPython or exportJvm:
+  #     for routeParamType in registeredRouteParamTypes.values():
+  #       routePathStr = routePathStr.replace(
+  #         re2(r"\{[a-zA-Z][a-zA-Z0-9_]*(\??):" & routeParamType.name & r"(=\S+?)?\}"),
+  #         "(" & routeParamType.pattern & ")$1"
+  #       )
+  #       types &= "|" & routeParamType.name
+  #   else:
+  #     for key, routeParamType in registeredRouteParamTypes.pairs():
+  #       routePathStr = routePathStr.replace(
+  #         re2(r"\{[a-zA-Z][a-zA-Z0-9_]*(\??):" & $routeParamType[0] & r"(=\S+?)?\}"),
+  #         "(" & $routeParamType[1] & ")$1"
+  #       )
+  #       types &= "|" & $routeParamType[0]
   # Remove models
   # when exportPython:
   #   routePathStr = routePathStr.replace(re2"\[[a-zA-Z][a-zA-Z0-9_]*(:[a-zA-Z][a-zA-Z0-9_]*)?(:[a-zA-Z\\-]+)?\]", "")
@@ -1029,44 +1029,46 @@ when exportPython or defined(docgen) or defined(napibuild) or exportJvm:
           of "float":
             res[i.name] = parseFloatOrJString(foundGroup)
           else:
-            when exportPython:
-              {.gcsafe.}:
-                # custom type
-                if $i.paramType in registeredRouteParamTypes:
-                  var data = registeredRouteParamTypes[$i.paramType]
-                  res[i.name] = callObject(data.creator, foundGroup)
-                elif registeredRouteParamTypes.hasObjectWithName($paramType):
-                  var data = registeredRouteParamTypes.getObjectWithName($paramType)
-                  res[i.name] = callObject(data.creator, foundGroup)
-                # regex
-                else:
-                  res[i.name] = newJString(foundGroup)
-            elif exportJvm:
-              {.gcsafe.}:
-                # custom type
-                if $i.paramType in registeredRouteParamTypes:
-                  var data = registeredRouteParamTypes[$i.paramType]
-                  let creator = data.creator
-                  res[i.name] = theEnv.CallObjectMethod(
-                    theEnv, creator.class, creator.methodId,
-                    theEnv.NewStringUTF(theEnv, cstring(foundGroup))
-                  )
-                # regex
-                else:
-                  res[i.name] = newJString(foundGroup)
-            elif defined(napibuild):
-              {.gcsafe.}:
-                # custom type
-                if $i.paramType in registeredRouteParamTypes:
-                  var data = registeredRouteParamTypes[$i.paramType]
-                  let fn = getProperty(getGlobal(), data.creator)
-                  res[i.name] = callFunction(fn, [jsObj(foundGroup)]).toJsonNode()
-                # regex
-                else:
-                  res[i.name] = newJString(foundGroup)
-            # regex
-            else:
-              res[i.name] = newJString(foundGroup)
+            res[i.name] = newJString(foundGroup)
+            # [DEPRECATED]
+            # when exportPython:
+            #   {.gcsafe.}:
+            #     # custom type
+            #     if $i.paramType in registeredRouteParamTypes:
+            #       var data = registeredRouteParamTypes[$i.paramType]
+            #       res[i.name] = callObject(data.creator, foundGroup)
+            #     elif registeredRouteParamTypes.hasObjectWithName($paramType):
+            #       var data = registeredRouteParamTypes.getObjectWithName($paramType)
+            #       res[i.name] = callObject(data.creator, foundGroup)
+            #     # regex
+            #     else:
+            #       res[i.name] = newJString(foundGroup)
+            # elif exportJvm:
+            #   {.gcsafe.}:
+            #     # custom type
+            #     if $i.paramType in registeredRouteParamTypes:
+            #       var data = registeredRouteParamTypes[$i.paramType]
+            #       let creator = data.creator
+            #       res[i.name] = theEnv.CallObjectMethod(
+            #         theEnv, creator.class, creator.methodId,
+            #         theEnv.NewStringUTF(theEnv, cstring(foundGroup))
+            #       )
+            #     # regex
+            #     else:
+            #       res[i.name] = newJString(foundGroup)
+            # elif defined(napibuild):
+            #   {.gcsafe.}:
+            #     # custom type
+            #     if $i.paramType in registeredRouteParamTypes:
+            #       var data = registeredRouteParamTypes[$i.paramType]
+            #       let fn = getProperty(getGlobal(), data.creator)
+            #       res[i.name] = callFunction(fn, [jsObj(foundGroup)]).toJsonNode()
+            #     # regex
+            #     else:
+            #       res[i.name] = newJString(foundGroup)
+            # # regex
+            # else:
+            #   res[i.name] = newJString(foundGroup)
         else:
           # Detect type from route
           case i.paramType:
@@ -1079,41 +1081,43 @@ when exportPython or defined(docgen) or defined(napibuild) or exportJvm:
           of "word":
             condition(conditionOptional, conditionSecondOptional, foundGroup, defaultValue, newJString, void, res, name, "")
           else:
-            when exportPython:
-              {.gcsafe.}:
-                # custom type
-                if $i.paramType in registeredRouteParamTypes:
-                  var data = registeredRouteParamTypes[$i.paramType]
-                  res[i.name] = callObject(data.creator, foundGroup)
-                # regex
-                else:
-                  res[i.name] = newJString(foundGroup)
-            elif exportJvm:
-              {.gcsafe.}:
-                # custom type
-                if $i.paramType in registeredRouteParamTypes:
-                  var data = registeredRouteParamTypes[$i.paramType]
-                  let creator = data.creator
-                  res[i.name] = theEnv.CallObjectMethod(
-                    theEnv, creator.class, creator.methodId,
-                    theEnv.NewStringUTF(theEnv, cstring(foundGroup))
-                  )
-                # regex
-                else:
-                  res[i.name] = newJString(foundGroup)
-            elif defined(napibuild):
-              {.gcsafe.}:
-                # custom type
-                if $i.paramType in registeredRouteParamTypes:
-                  var data = registeredRouteParamTypes[$i.paramType]
-                  let fn = getProperty(getGlobal(), data.creator)
-                  res[i.name] = callFunction(fn, [jsObj(foundGroup)]).toJsonNode()
-                # regex
-                else:
-                  res[i.name] = newJString(foundGroup)
-            # regex
-            else:
-              res[i.name] = newJString(foundGroup)
+            res[i.name] = newJString(foundGroup)
+            # [DEPRECATED]
+            # when exportPython:
+            #   {.gcsafe.}:
+            #     # custom type
+            #     if $i.paramType in registeredRouteParamTypes:
+            #       var data = registeredRouteParamTypes[$i.paramType]
+            #       res[i.name] = callObject(data.creator, foundGroup)
+            #     # regex
+            #     else:
+            #       res[i.name] = newJString(foundGroup)
+            # elif exportJvm:
+            #   {.gcsafe.}:
+            #     # custom type
+            #     if $i.paramType in registeredRouteParamTypes:
+            #       var data = registeredRouteParamTypes[$i.paramType]
+            #       let creator = data.creator
+            #       res[i.name] = theEnv.CallObjectMethod(
+            #         theEnv, creator.class, creator.methodId,
+            #         theEnv.NewStringUTF(theEnv, cstring(foundGroup))
+            #       )
+            #     # regex
+            #     else:
+            #       res[i.name] = newJString(foundGroup)
+            # elif defined(napibuild):
+            #   {.gcsafe.}:
+            #     # custom type
+            #     if $i.paramType in registeredRouteParamTypes:
+            #       var data = registeredRouteParamTypes[$i.paramType]
+            #       let fn = getProperty(getGlobal(), data.creator)
+            #       res[i.name] = callFunction(fn, [jsObj(foundGroup)]).toJsonNode()
+            #     # regex
+            #     else:
+            #       res[i.name] = newJString(foundGroup)
+            # # regex
+            # else:
+            #   res[i.name] = newJString(foundGroup)
       elif i.paramType == "string":
         # Detect type from annotations
         case paramType
@@ -1124,44 +1128,46 @@ when exportPython or defined(docgen) or defined(napibuild) or exportJvm:
         of "float":
           res[i.name] = parseFloatOrJString(foundGroup)
         else:
-          when exportPython:
-            {.gcsafe.}:
-              # custom type
-              if $i.paramType in registeredRouteParamTypes:
-                var data = registeredRouteParamTypes[$i.paramType]
-                res[i.name] = callObject(data.creator, foundGroup)
-              elif registeredRouteParamTypes.hasObjectWithName($paramType):
-                var data = registeredRouteParamTypes.getObjectWithName($paramType)
-                res[i.name] = callObject(data.creator, foundGroup)
-              # regex
-              else:
-                res[i.name] = newJString(foundGroup)
-          elif exportJvm:
-            {.gcsafe.}:
-              # custom type
-              if $i.paramType in registeredRouteParamTypes:
-                var data = registeredRouteParamTypes[$i.paramType]
-                let creator = data.creator
-                res[i.name] = theEnv.CallObjectMethod(
-                  theEnv, creator.class, creator.methodId,
-                  theEnv.NewStringUTF(theEnv, cstring(foundGroup))
-                )
-              # regex
-              else:
-                res[i.name] = newJString(foundGroup)
-          elif defined(napibuild):
-            {.gcsafe.}:
-              # custom type
-              if $i.paramType in registeredRouteParamTypes:
-                var data = registeredRouteParamTypes[$i.paramType]
-                let fn = getProperty(getGlobal(), data.creator)
-                res[i.name] = callFunction(fn, [jsObj(foundGroup)]).toJsonNode()
-              # regex
-              else:
-                res[i.name] = newJString(foundGroup)
-          # regex
-          else:
-            res[i.name] = newJString(foundGroup)
+          res[i.name] = newJString(foundGroup)
+          # [DEPRECATED]
+          # when exportPython:
+          #   {.gcsafe.}:
+          #     # custom type
+          #     if $i.paramType in registeredRouteParamTypes:
+          #       var data = registeredRouteParamTypes[$i.paramType]
+          #       res[i.name] = callObject(data.creator, foundGroup)
+          #     elif registeredRouteParamTypes.hasObjectWithName($paramType):
+          #       var data = registeredRouteParamTypes.getObjectWithName($paramType)
+          #       res[i.name] = callObject(data.creator, foundGroup)
+          #     # regex
+          #     else:
+          #       res[i.name] = newJString(foundGroup)
+          # elif exportJvm:
+          #   {.gcsafe.}:
+          #     # custom type
+          #     if $i.paramType in registeredRouteParamTypes:
+          #       var data = registeredRouteParamTypes[$i.paramType]
+          #       let creator = data.creator
+          #       res[i.name] = theEnv.CallObjectMethod(
+          #         theEnv, creator.class, creator.methodId,
+          #         theEnv.NewStringUTF(theEnv, cstring(foundGroup))
+          #       )
+          #     # regex
+          #     else:
+          #       res[i.name] = newJString(foundGroup)
+          # elif defined(napibuild):
+          #   {.gcsafe.}:
+          #     # custom type
+          #     if $i.paramType in registeredRouteParamTypes:
+          #       var data = registeredRouteParamTypes[$i.paramType]
+          #       let fn = getProperty(getGlobal(), data.creator)
+          #       res[i.name] = callFunction(fn, [jsObj(foundGroup)]).toJsonNode()
+          #     # regex
+          #     else:
+          #       res[i.name] = newJString(foundGroup)
+          # # regex
+          # else:
+          #   res[i.name] = newJString(foundGroup)
       else:
         # Detect from route
         case i.paramType:
@@ -1174,41 +1180,43 @@ when exportPython or defined(docgen) or defined(napibuild) or exportJvm:
         of "path", "string", "word":
           res[i.name] = newJString(foundGroup)
         else:
-          when exportPython:
-            {.gcsafe.}:
-              # custom type
-              if $i.paramType in registeredRouteParamTypes:
-                var data = registeredRouteParamTypes[$i.paramType]
-                res[i.name] = callObject(data.creator, foundGroup)
-              # regex
-              else:
-                res[i.name] = newJString(foundGroup)
-          elif exportJvm:
-            {.gcsafe.}:
-              # custom type
-              if $i.paramType in registeredRouteParamTypes:
-                var data = registeredRouteParamTypes[$i.paramType]
-                let creator = data.creator
-                res[i.name] = theEnv.CallObjectMethod(
-                  theEnv, creator.class, creator.methodId,
-                  theEnv.NewStringUTF(theEnv, cstring(foundGroup))
-                )
-              # regex
-              else:
-                res[i.name] = newJString(foundGroup)
-          elif defined(napibuild):
-            {.gcsafe.}:
-              # custom type
-              if $i.paramType in registeredRouteParamTypes:
-                var data = registeredRouteParamTypes[$i.paramType]
-                let fn = getProperty(getGlobal(), data.creator)
-                res[i.name] = callFunction(fn, [jsObj(foundGroup)]).toJsonNode()
-              # regex
-              else:
-                res[i.name] = newJString(foundGroup)
-          # regex
-          else:
-            res[i.name] = newJString(foundGroup)
+          res[i.name] = newJString(foundGroup)
+          # [DEPRECATED]
+          # when exportPython:
+          #   {.gcsafe.}:
+          #     # custom type
+          #     if $i.paramType in registeredRouteParamTypes:
+          #       var data = registeredRouteParamTypes[$i.paramType]
+          #       res[i.name] = callObject(data.creator, foundGroup)
+          #     # regex
+          #     else:
+          #       res[i.name] = newJString(foundGroup)
+          # elif exportJvm:
+          #   {.gcsafe.}:
+          #     # custom type
+          #     if $i.paramType in registeredRouteParamTypes:
+          #       var data = registeredRouteParamTypes[$i.paramType]
+          #       let creator = data.creator
+          #       res[i.name] = theEnv.CallObjectMethod(
+          #         theEnv, creator.class, creator.methodId,
+          #         theEnv.NewStringUTF(theEnv, cstring(foundGroup))
+          #       )
+          #     # regex
+          #     else:
+          #       res[i.name] = newJString(foundGroup)
+          # elif defined(napibuild):
+          #   {.gcsafe.}:
+          #     # custom type
+          #     if $i.paramType in registeredRouteParamTypes:
+          #       var data = registeredRouteParamTypes[$i.paramType]
+          #       let fn = getProperty(getGlobal(), data.creator)
+          #       res[i.name] = callFunction(fn, [jsObj(foundGroup)]).toJsonNode()
+          #     # regex
+          #     else:
+          #       res[i.name] = newJString(foundGroup)
+          # # regex
+          # else:
+          #   res[i.name] = newJString(foundGroup)
       inc idx
 
     for i in routeData.requestModels:

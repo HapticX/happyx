@@ -2084,6 +2084,12 @@ translatable:
     "zh" -> "例子"
     "fr" -> "Exemple"
     "ko" -> "예시"
+  "Custom path parameters are currently deprecated and not used.":
+    "ru" -> "Кастомные параметры пути на данный момент устарели и не используются."
+    "ja" -> "カスタムパスパラメーターは現在非推奨で使用されていません。"
+    "zh" -> "自定义路径参数目前已被弃用，不再使用。"
+    "fr" -> "Les paramètres de chemin personnalisés sont actuellement obsolètes et ne sont pas utilisés."
+    "ko" -> "맞춤 경로 매개변수는 현재 사용되지 않으며 사용되지 않습니다."
 
 
 var spokenLang: cstring
