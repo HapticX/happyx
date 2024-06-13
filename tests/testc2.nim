@@ -8,54 +8,35 @@ proc render(title: string, left: float, right: float): string =
 
 
 pathParams:
-  arg1? int[m] = 100
+  arg1? int = 100
   arg2? int = 100
   arg3 int = 100
   arg4
   arg5 int
-  arg6 int[m]
+  arg6 int
   arg7 = "100"
-  arg8[m] = 100
+  arg8 = 100
   arg9 int:
     type int
     optional
-    mutable
     default = 100
 
 
 serve "127.0.0.1", 5000:
   let some = 100
   var counter = 0
-
-  get "/{title:string}/{left:float}/{right:float}":
-    ## Calculate left and right. Shows title.
-    ## 
-    ## @openapi {
-    ##  operationId = calculate
-    ##  summary = calculate left and right.
-    ##  
-    ##  @params {
-    ##    title: string - just title
-    ##    left: integer - left number
-    ##    right: integer - right number
-    ##  }
-    ##  
-    ##  @responses {
-    ##    asdad
-    ##  }
-    ## }
-    req.answerHtml render(title, left, right)
   
   get "/":
     inc counter
     "counter = {counter}"
   
-  get "/mutablePathParams/$arg[m]/<arg1>":
-    arg &= "00000000000"
-    arg1 += 100
-    "\"{arg}\" and \"{arg1}\""
+  get "/immutablePathParams/$arg/<arg1>":
+    let
+      argument = arg & "00000000000"
+      argument1 = arg1 + 100
+    "\"{argument}\" and \"{argument1}\""
   
-  get "/setCheckTo{arg:bool}":
+  get "/setCheckTo/{arg:bool}":
     if arg:
       "true!"
     else:
@@ -75,7 +56,7 @@ serve "127.0.0.1", 5000:
           "My name is {name}"
 
 
-  get "/optional/{arg?:bool}{arg1?:int}{arg2?:bool}{arg3?:float}{arg4?:string}":
+  get "/optional/{arg?:bool}/{arg1?:int}/{arg2?:bool}/{arg3?:float}/{arg4?:string}":
     buildHtml:
       tDiv:
         "arg is {arg}"
@@ -88,7 +69,7 @@ serve "127.0.0.1", 5000:
       tDiv:
         "arg4 is \"{arg4}\""
 
-  get "/default/{arg?:bool=true}{arg1:bool=true}{arg2?:int=123}{arg3:int=123123}{arg4:word=Hi}":
+  get "/default/{arg?:bool=true}/{arg1:bool=true}/{arg2?:int=123}/{arg3:int=123123}/{arg4:word=Hi}":
     buildHtml:
       tDiv:
         "arg is {arg}"
@@ -104,8 +85,27 @@ serve "127.0.0.1", 5000:
   get "/issue217/{p:path=filename}":
     return p
   
-  get "/issue219/{p:path=/}":
+  get "/issue219/{p:path}":
     return p
+
+  get "/{title:string}/{left:float}/{right:float}":
+    ## Calculate left and right. Shows title.
+    ## 
+    ## @openapi {
+    ##  operationId = calculate
+    ##  summary = calculate left and right.
+    ##  
+    ##  @params {
+    ##    title: string - just title
+    ##    left: integer - left number
+    ##    right: integer - right number
+    ##  }
+    ##  
+    ##  @responses {
+    ##    asdad
+    ##  }
+    ## }
+    req.answerHtml render(title, left, right)
   
   ws "/ws":
     await wsClient.send("hello")

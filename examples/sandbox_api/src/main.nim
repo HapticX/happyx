@@ -48,7 +48,7 @@ serve host, port:
       f.close()
       req.answerHtml(data)
 
-  post "/[task:Task[m]]":
+  post "/[task:Task]":
     {.gcsafe.}:
       if task.code.len > 2048:
         statusCode = 400

@@ -170,10 +170,7 @@
 ## In path params you can describe every param if you need. Here is syntax overview.
 ## - Required param: `{arg:type}`, `$arg:type`, `{arg}`, `$arg`
 ## - Optional param: `{arg?:type}`, `$arg?:type`, `{arg?}`, `$arg?`
-## - Mutable param: `{arg:type[m]}`, `$arg:type[m]`, `{arg[m]}`, `$arg[m]`
-## - Mutable optional param: `{arg?:type[m]}`, `$arg?:type[m]`, `{arg?[m]}`, `$arg?[m]`
 ## - Optional param with default value: `{arg:type=val}`, `$arg:type=val`, `{arg=val}`, `$arg=val`
-## - Mutable optional param with default value: `{arg?:type[m]=val}`, `$arg?:type[m]=val`, `{arg?[m]=val}`, `$arg?[m]=val`
 ## 
 ## ### Aliases 🎈
 ## 
@@ -192,19 +189,14 @@
 ## - `int`: any integer
 ## - `float`: any float
 ## - `path`: like `string` but includes `/` chars.
-## - regex pattern: any regex pattern translates in string. Usage: `/:patternHere:/`. Doesn't provides optional and default.
 ## 
-## ### (Im)mutable ⚙
-## 
-## Every path param by default is immutable, but you can change it to mutable by add `[m]` after param type:
-## 
-## | Immutable            | Mutable                 | Immutable Via Alias     | Mutable Via Alias          |
-## | :--:                 | :--:                    | :--:                    | :--:                       | 
-## | `{arg}`              | `{arg[m]}`              | `$arg`                  | `$arg[m]`                  |
-## | `{arg:type}`         | `{arg:type[m]}`         | `$arg:type`             | `$arg:type[m]`             |
-## | `{arg:type=default}` | `{arg:type[m]=default}` | `$arg:type=default`     | `$arg:type[m]=default`     |
-## | `{arg=default}`      | `{arg=default}`         | `$arg=default`          | `$arg[m]=default`          |
-## | `{arg?:type}`        | `{arg?:type[m]}`        | `$arg?:type`            | `$arg?:type[m]`            |
+## | Immutable            | Immutable Via Alias |
+## | :--:                 | :--:                | 
+## | `{arg}`              | `$arg`              |
+## | `{arg:type}`         | `$arg:type`         |
+## | `{arg:type=default}` | `$arg:type=default` |
+## | `{arg=default}`      | `$arg=default`      |
+## | `{arg?:type}`        | `$arg?:type`        |
 ## 
 ## ## Mounting 🔌
 ## 

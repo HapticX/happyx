@@ -50,7 +50,7 @@ serve "127.0.0.1", 5000:
   "/some":
     ## Hello, world
     return "Hi"
-  get "/calculate/$left:float[m]/$operator:string[m]/$right?:float[m]":
+  get "/calculate/$left:float/$operator:string/$right?:float":
     ## Some
     echo left
     echo right

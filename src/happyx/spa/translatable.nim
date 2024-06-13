@@ -137,65 +137,66 @@ macro translate*(self: string, variables: varargs[string]): string =
   ##    in JS backend this works like procedure calling.
   when defined(js):
     return newCall("translateImpl", self, variables)
-  let
-    language =
-      newCall("[]", newCall("$",
-        newNimNode(nnkIfExpr).add(
-          newNimNode(nnkElifBranch).add(
-            newCall("==", newDotExpr(ident"languageSettings", ident"lang"), newLit"auto"),
-            ident"acceptLanguage"
-          ), newNimNode(nnkElse).add(
-            newDotExpr(ident"languageSettings", ident"lang")
-          )
-        )),
-        newCall("..", newLit(0), newLit(1))
-      )
-    sourceRaw =
-      when self is static[string]:
-        newLit(self)
-      else:
-        self
-    translations = ident"translates"
-    source = newCall("format", newNimNode(nnkBracketExpr).add(
-      newNimNode(nnkBracketExpr).add(
-        translations, sourceRaw
-      ),
-      language
-    ))
-    sourceDefault = newCall("format", newNimNode(nnkBracketExpr).add(
-      newNimNode(nnkBracketExpr).add(
-        translations, sourceRaw
-      ),
-      newLit"default"
-    ))
-  
-  for i in variables:
-    source.add(i)
-    sourceDefault.add(i)
-  
-  result = newNimNode(nnkIfStmt).add(
-    newNimNode(nnkElifBranch).add(
-      newCall("not",
-        newCall(
-          "hasKey",
-          newNimNode(nnkBracketExpr).add(
-            translations, sourceRaw
-          ),
-          language
+  else:
+    let
+      language =
+        newCall("[]", newCall("$",
+          newNimNode(nnkIfExpr).add(
+            newNimNode(nnkElifBranch).add(
+              newCall("==", newDotExpr(ident"languageSettings", ident"lang"), newLit"auto"),
+              ident"acceptLanguage"
+            ), newNimNode(nnkElse).add(
+              newDotExpr(ident"languageSettings", ident"lang")
+            )
+          )),
+          newCall("..", newLit(0), newLit(1))
         )
-      ),
-      sourceDefault
-    ), newNimNode(nnkElse).add(
-      source
-    )
-  )
-  when not (self is static[string]):
-    result.insert(0, newNimNode(nnkElifBranch).add(
-      newCall("not",
-        newCall(
-          "hasKey",
+      sourceRaw =
+        when self is static[string]:
+          newLit(self)
+        else:
+          self
+      translations = ident"translates"
+      source = newCall("format", newNimNode(nnkBracketExpr).add(
+        newNimNode(nnkBracketExpr).add(
           translations, sourceRaw
-        )
-      ),
-      sourceRaw
-    ))
+        ),
+        language
+      ))
+      sourceDefault = newCall("format", newNimNode(nnkBracketExpr).add(
+        newNimNode(nnkBracketExpr).add(
+          translations, sourceRaw
+        ),
+        newLit"default"
+      ))
+    
+    for i in variables:
+      source.add(i)
+      sourceDefault.add(i)
+    
+    result = newNimNode(nnkIfStmt).add(
+      newNimNode(nnkElifBranch).add(
+        newCall("not",
+          newCall(
+            "hasKey",
+            newNimNode(nnkBracketExpr).add(
+              translations, sourceRaw
+            ),
+            language
+          )
+        ),
+        sourceDefault
+      ), newNimNode(nnkElse).add(
+        source
+      )
+    )
+    when not (self is static[string]):
+      result.insert(0, newNimNode(nnkElifBranch).add(
+        newCall("not",
+          newCall(
+            "hasKey",
+            translations, sourceRaw
+          )
+        ),
+        sourceRaw
+      ))

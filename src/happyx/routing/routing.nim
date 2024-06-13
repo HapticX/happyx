@@ -5,8 +5,8 @@ import
   # stdlib
   std/strformat,
   std/strutils,
-  std/strscans,
   std/strtabs,
+  std/unicode,
   std/macros,
   std/macrocache,
   std/json,
@@ -14,7 +14,11 @@ import
   regex,
   # happyx
   ../core/[exceptions, constants],
-  ../private/macro_utils
+  ../private/macro_utils,
+  ../private/scanutils
+
+
+export scanutils
 
 
 when exportPython or defined(docgen):
@@ -49,12 +53,10 @@ type
     paramType*: string
     defaultValue*: string
     optional*: bool
-    mutable*: bool
   RequestModelObj* = object
     name*: string
     typeName*: string
     target*: string  ## JSON/XML/FormData/X-www-formurlencoded
-    mutable*: bool
   RouteDataObj* = object
     pathParams*: seq[PathParamObj]
     requestModels*: seq[RequestModelObj]
@@ -153,12 +155,298 @@ else:
     registeredRouteParamTypes[$name] = newStmtList(name, pattern, creator)
 
 
-proc newPathParamObj*(name, paramType, defaultValue: string, optional, mutable: bool): PathParamObj =
-  PathParamObj(name: name, paramType: paramType, defaultValue: defaultValue,
-               optional: optional, mutable: mutable)
+proc newPathParamObj*(name, paramType, defaultValue: string, optional: bool): PathParamObj =
+  PathParamObj(name: name, paramType: paramType, defaultValue: defaultValue, optional: optional)
 
-proc newRequestModelObj*(name, typeName, target: string, mutable: bool): RequestModelObj =
-  RequestModelObj(name: name, typeName: typeName, target: target, mutable: mutable)
+proc newRequestModelObj*(name, typeName, target: string): RequestModelObj =
+  RequestModelObj(name: name, typeName: typeName, target: target)
+
+
+proc boolean*(input: string, boolVal: var bool, start: int, opt: bool = false): int =
+  let inp = input[start..^1]
+  if inp.startsWith("off"):
+    boolVal = false
+    return 3
+  elif inp.startsWith("false"):
+    boolVal = false
+    return 5
+  elif inp.startsWith("no"):
+    boolVal = false
+    return 2
+  elif inp.startsWith("on"):
+    boolVal = true
+    return 2
+  elif inp.startsWith("true"):
+    boolVal = true
+    return 4
+  elif inp.startsWith("yes"):
+    boolVal = true
+    return 3
+  if opt:
+    return 0
+  return -1
+
+
+proc word*(input: string, strVal: var string, start: int, opt: bool = false): int =
+  result = 0
+  if input.len <= start or not input.runeAt(start).isAlpha:
+    if opt:
+      return 0
+    return -1
+  var res = ""
+  for s in input[start..^1].runes:
+    if s.isAlpha:
+      res &= $s
+      inc result
+    else:
+      break
+  strVal = res
+
+
+proc str*(input: string, strVal: var string, start: int, opt: bool = false): int =
+  result = 0
+  if input.len <= start or input[start] == '/':
+    if opt:
+      return 0
+    return -1
+  var res = ""
+  for c in input[start..^1]:
+    if c != '/':
+      res &= c
+      inc result
+    else:
+      break
+  strVal = res
+
+
+proc enumerate*[T: enum](input: string, e: var T, start: int, opt: bool = false): int =
+  let inp = input[start..^1]
+  for i in T:
+    if inp.startsWith(i.symbolName):
+      e = i
+      return i.symbolName.len
+  if opt:
+    return 0
+  return -1
+
+
+proc integer*(input: string, intVal: var int, start: int, opt: bool = false): int =
+  result = 0
+  if input.len <= start or not input[start].isDigit:
+    if opt:
+      return 0
+    return -1
+  var res = ""
+  for c in input[start..^1]:
+    if c.isDigit:
+      res &= c
+      inc result
+    else:
+      break
+  intVal = res.parseInt
+
+
+proc realnum*(input: string, floatVal: var float, start: int, opt: bool = false): int =
+  result = 0
+  if input.len <= start or not input[start].isDigit:
+    if opt:
+      return 0
+    return -1
+  var res = ""
+  for c in input[start..^1]:
+    if c.isDigit or c == '.':
+      res &= c
+      inc result
+    else:
+      break
+  floatVal = res.parseFloat
+
+
+proc default*(input: string, strVal: var string, start: int): int =
+  result = 0
+  var i = 0
+  while start+i < input.len:
+    if input[start+i] == '}':
+      break
+    strVal &= input[start+i]
+    inc result
+    inc i
+
+
+proc kind*(input: string, strVal: var string, start: int): int =
+  result = 0
+  let inp = input[start..^1]
+  if inp.startsWith("int"):
+    strVal = "int"
+    inc result, 3
+  elif inp.startsWith("bool"):
+    strVal = "bool"
+    inc result, 4
+  elif inp.startsWith("path"):
+    strVal = "path"
+    inc result, 4
+  elif inp.startsWith("word"):
+    strVal = "word"
+    inc result, 4
+  elif inp.startsWith("float"):
+    strVal = "float"
+    inc result, 5
+  elif inp.startsWith("string"):
+    strVal = "string"
+    inc result, 6
+  elif inp.startsWith("enum"):
+    strVal = "enum:"
+    var opened = false
+    for i in inp[3..^1]:
+      if i == '(':
+        inc result
+        opened = true
+      elif i == ')':
+        inc result
+        break
+      elif opened:
+        strVal &= i
+        inc result
+    inc result, 4
+
+proc path*(input: string, strVal: var string, start: int): int =
+  strVal = input[start..^1]
+  strVal.len
+
+
+proc kind2scanable(kind: string, opt: bool): string =
+  if opt:
+    case kind
+    of "string":
+      "${str(true)}"
+    of "int":
+      "${integer(true)}"
+    of "float":
+      "${realnum(true)}"
+    of "bool":
+      "${boolean(true)}"
+    of "word":
+      "${word(true)}"
+    of "path":
+      "${path}"
+    else:
+      if kind.startsWith("enum"):
+        "${enumerate}"
+      else:
+        ""
+  else:
+    case kind
+    of "string":
+      "${str}"
+    of "int":
+      "$i"
+    of "float":
+      "$f"
+    of "bool":
+      "${boolean}"
+    of "word":
+      "${word}"
+    of "path":
+      "${path}"
+    else:
+      if kind.startsWith("enum"):
+        "${enumerate}"
+      else:
+        ""
+
+
+proc kind2tp(kind: string): string =
+  case kind
+  of "string", "word", "path":
+    "string"
+  of "int":
+    "int"
+  of "float":
+    "float"
+  of "bool":
+    "bool"
+  else:
+    if kind.startsWith("enum"):
+      kind.split(":", 1)[1]
+    else:
+      ""
+
+
+proc getDefaultValue(kind, value: string): NimNode =
+  case kind
+  of "string", "word", "path":
+    newLit(value)
+  of "int":
+    newLit(parseInt(value))
+  of "float":
+    newLit(parseFloat(value))
+  of "bool":
+    newLit(parseBool(value))
+  else:
+    if kind.startsWith("enum"):
+      ident(value)
+    else:
+      newEmptyNode()
+
+
+proc findParams(route: string, purePath: var string): seq[tuple[name, kind: string, opt: bool, def: string]] =
+  result = @[]
+  for part in route.split("/"):
+    var
+      name: string
+      kind: string = "string"
+      def: string
+    # {arg}
+    if part.scanf("{$w}$.", name) or part.scanf("$$$w$.", name):
+      result.add((name: name, kind: kind, opt: false, def: def))
+      purePath &= "/" & kind2scanable(kind, false)
+    # {arg?}
+    elif part.scanf("{$w?}$.", name) or part.scanf("$$$w?$.", name):
+      result.add((name: name, kind: kind, opt: true, def: def))
+      purePath &= "/" & kind2scanable(kind, true)
+    # {arg?:type}
+    elif part.scanf("{$w?:${kind}}$.", name, kind) or part.scanf("$$$w?:${kind}$.", name, kind):
+      result.add((name: name, kind: kind, opt: true, def: def))
+      purePath &= "/" & kind2scanable(kind, true)
+    # {arg?=default}
+    elif part.scanf("{$w?=${default}}$.", name, def) or part.scanf("$$$w?=${default}$.", name, def):
+      result.add((name: name, kind: kind, opt: true, def: def))
+      purePath &= "/" & kind2scanable(kind, true)
+    # {arg?:type=default}
+    elif part.scanf("{$w?:${kind}=${default}}$.", name, kind, def) or part.scanf("$$$w?:${kind}=${default}$.", name, kind, def):
+      result.add((name: name, kind: kind, opt: true, def: def))
+      purePath &= "/" & kind2scanable(kind, true)
+    # {arg:type}
+    elif part.scanf("{$w:${kind}}$.", name, kind) or part.scanf("$$$w:${kind}$.", name, kind):
+      result.add((name: name, kind: kind, opt: false, def: def))
+      purePath &= "/" & kind2scanable(kind, false)
+    # {arg=default}
+    elif part.scanf("{$w=${default}}$.", name, def) or part.scanf("$$$w=${default}$.", name, def):
+      result.add((name: name, kind: kind, opt: true, def: def))
+      purePath &= "/" & kind2scanable(kind, true)
+    # {arg:type=default}
+    elif part.scanf("{$w:${kind}=${default}}$.", name, kind, def) or part.scanf("$$$w:${kind}=${default}$.", name, kind, def):
+      result.add((name: name, kind: kind, opt: true, def: def))
+      purePath &= "/" & kind2scanable(kind, true)
+    else:
+      purePath &= "/" & part
+    # echo part, " -> ", name, ": ", kind, " = ", def
+  # echo result
+
+
+proc findModels(route: string): seq[tuple[name, kind, mode: string]] =
+  result = @[]
+  for part in route.split("/"):
+    var
+      name: string
+      kind: string
+      mode: string = "JSON"
+    # [arg:ModelName]
+    if part.scanf("[$w:$w]$.", name, kind):
+      result.add((name: name, kind: kind, mode: mode))
+    # [arg:ModelName:json]
+    elif part.scanf("[$w:$w:$w]$.", name, kind, mode):
+      result.add((name: name, kind: kind, mode: mode))
 
 
 proc handleRoute*(route: string): RouteDataObj =
@@ -166,147 +454,83 @@ proc handleRoute*(route: string): RouteDataObj =
   ## 
   ## ## Examples
   ## 
-  ## dollar full: `$argument?:word[m]=hello`
-  ## curvy full: `{argument?:word[m]=hello}`
+  ## dollar full: `$argument?:word=hello`
+  ## curly full: `{argument?:word=hello}`
   ## model full: `[argument:ModelName:json]`
   ## 
-  result = RouteDataObj(path: "", purePath: "", pathParams: @[], requestModels: @[])
-  let
-    dollarToCurvy = re2"\$([^:\/\{\}]+)(:enum\(\w+\)|:\w+|:\/[^\/]+\/)?(\[m\])?(=[^\/\{\}]+)?(m)?"
-    defaultWithoutQuestion = re2"\{([^:\/\{\}\?]+)(:enum\(\w+\)|:\w+|:\/[^\/]+\/)?(\[m\])?(=[^\}]+)\}"
-  var path = route
-  var m: RegexMatch2
-  if path.find(dollarToCurvy, m):
-    if path[m.group(1)] == ":path":
-      raise newException(ValueError, "path params doesn't support aliases")
-    elif path[m.group(1)].startsWith(":/"):
-      raise newException(ValueError, "regex params doesn't support aliases")
-  path = path.replace(dollarToCurvy, "{$1$2$3$4}")
-  path = path.replace(defaultWithoutQuestion, "{$1?$2$3$4}")
-  result.path = path
-  var routePathStr = path
-  # Here we replace TYPENAME to regex pattern
-  # boolean param
-  routePathStr = routePathStr.replace(re2"\{[a-zA-Z][a-zA-Z0-9_]*(\??):bool(\[m\])?(=\S+?)?\}", "(n|y|no|yes|true|false|1|0|on|off)$1")
-  # integer param
-  routePathStr = routePathStr.replace(re2"\{[a-zA-Z][a-zA-Z0-9_]*(\??):int(\[m\])?(=\S+?)?\}", "(\\d+)$1")
-  # float param
-  routePathStr = routePathStr.replace(re2"\{[a-zA-Z][a-zA-Z0-9_]*(\??):float(\[m\])?(=\S+?)?\}", "(\\d+\\.\\d+|\\d+)$1")
-  # word param
-  routePathStr = routePathStr.replace(re2"\{[a-zA-Z][a-zA-Z0-9_]*(\??):word(\[m\])?(=\S+?)?\}", "(\\w+)$1")
-  # string enum
-  routePathStr = routePathStr.replace(re2"\{[a-zA-Z][a-zA-Z0-9_]*(\??):enum\((\w+)\)(\[m\])?(=\S+?)?\}", "(\\w+)$1")
-  # string param
-  routePathStr = routePathStr.replace(re2"\{[a-zA-Z][a-zA-Z0-9_]*(\??):string(\[m\])?(=\S+?)?\}", "([^/]+)$1")
-  routePathStr = routePathStr.replace(re2"\{[a-zA-Z][a-zA-Z0-9_]*(\??)(\[m\])?(=\S+?)?\}", "([^/]+)$1")
-  # path param
-  routePathStr = routePathStr.replace(re2"\{[a-zA-Z][a-zA-Z0-9_]*(\??):path(\[m\])?(=\S+?)?\}", "([\\S]+)$1")
-  # regex param
-  routePathStr = routePathStr.replace(re2"\{[a-zA-Z][a-zA-Z0-9_]*:/([\s\S]+?)/(\[m\])?\}", "($1)")
+  result = RouteDataObj(path: "", pathParams: @[], requestModels: @[])
+  result.path = route
+  var routePathStr = route
   # custom patterns
   var types = ""
   {.gcsafe.}:
     when defined(napibuild) or exportPython or exportJvm:
       for routeParamType in registeredRouteParamTypes.values():
         routePathStr = routePathStr.replace(
-          re2(r"\{[a-zA-Z][a-zA-Z0-9_]*(\??):" & routeParamType.name & r"(\[m\])?(=\S+?)?\}"),
+          re2(r"\{[a-zA-Z][a-zA-Z0-9_]*(\??):" & routeParamType.name & r"(=\S+?)?\}"),
           "(" & routeParamType.pattern & ")$1"
         )
         types &= "|" & routeParamType.name
     else:
       for key, routeParamType in registeredRouteParamTypes.pairs():
         routePathStr = routePathStr.replace(
-          re2(r"\{[a-zA-Z][a-zA-Z0-9_]*(\??):" & $routeParamType[0] & r"(\[m\])?(=\S+?)?\}"),
+          re2(r"\{[a-zA-Z][a-zA-Z0-9_]*(\??):" & $routeParamType[0] & r"(=\S+?)?\}"),
           "(" & $routeParamType[1] & ")$1"
         )
         types &= "|" & $routeParamType[0]
   # Remove models
-  when exportPython:
-    routePathStr = routePathStr.replace(re2"\[[a-zA-Z][a-zA-Z0-9_]*(:[a-zA-Z][a-zA-Z0-9_]*)?(\[m\])?(:[a-zA-Z\\-]+)?\]", "")
-  else:
-    routePathStr = routePathStr.replace(re2"\[[a-zA-Z][a-zA-Z0-9_]*:[a-zA-Z][a-zA-Z0-9_]*(\[m\])?(:[a-zA-Z\\-]+)?\]", "")
-  let
-    foundPathParams = path.findAll(
-      re2(
-        r"\{([a-zA-Z][a-zA-Z0-9_]*\??)(:(bool|int|float|string|path|word|/[\s\S]+?/|enum\(\w+\)" &
-        types &
-        r"))?(\[m\])?(=(\S+?))?\}"
-      )
-    )
-    foundModels =
-      when exportPython:
-        path.findAll(
-          re2"\[([a-zA-Z][a-zA-Z0-9_]*)(:[a-zA-Z][a-zA-Z0-9_]*)?(\[m\])?(:[a-zA-Z\\-]+)?\]"
-        )
-      else:
-        path.findAll(
-          re2"\[([a-zA-Z][a-zA-Z0-9_]*):([a-zA-Z][a-zA-Z0-9_]*)(\[m\])?(:[a-zA-Z\\-]+)?\]"
-        )
+  # when exportPython:
+  #   routePathStr = routePathStr.replace(re2"\[[a-zA-Z][a-zA-Z0-9_]*(:[a-zA-Z][a-zA-Z0-9_]*)?(:[a-zA-Z\\-]+)?\]", "")
+  # else:
+  #   routePathStr = routePathStr.replace(re2"\[[a-zA-Z][a-zA-Z0-9_]*:[a-zA-Z][a-zA-Z0-9_]*(:[a-zA-Z\\-]+)?\]", "")
+  # let
+  #   foundModels =
+  #     when exportPython:
+  #       path.findAll(
+  #         re2"\[([a-zA-Z][a-zA-Z0-9_]*)(:[a-zA-Z][a-zA-Z0-9_]*)?(:[a-zA-Z\\-]+)?\]"
+  #       )
+  #     else:
+  #       path.findAll(
+  #         re2"\[([a-zA-Z][a-zA-Z0-9_]*):([a-zA-Z][a-zA-Z0-9_]*)(:[a-zA-Z\\-]+)?\]"
+  #       )
+    # foundPathParams = path.findParams()
+      # path.findAll(
+      #   re2(
+      #     r"\{([a-zA-Z][a-zA-Z0-9_]*\??)(:(bool|int|float|string|path|word|/[\s\S]+?/|enum\(\w+\)" &
+      #     types &
+      #     r"))?(\[m\])?(=(\S+?))?\}"
+      #   )
+      # )
+  
+  var purePath: string = ""
 
-  result.purePath = routePathStr
-
-  for pathParam in foundPathParams:
-    let
-      argTypeStr =
-        if pathParam.group(2).len == 0:
-          "string"
-        else:
-          path[pathParam.group(2)]
-      defaultVal =
-        if pathParam.group(5).len == 0:
-          if argTypeStr == "path":
-            "/"
-          else:
-            ""
-        else:
-          path[pathParam.group(5)]
-      isMutable = pathParam.group(3).len != 0
-    # Detect main data
-    var
-      name = path[pathParam.group(0)]
-      isOptional = false
-    # Detect optional value
-    if name.endsWith("?"):
-      name = name[0..^2]
-      isOptional = true
-    elif defaultVal.len > 0:
-      isOptional = true
-    result.pathParams.add(newPathParamObj(name, argTypeStr, defaultVal, isOptional, isMutable))
+  for p in route.findParams(purePath):
+    # echo p
+    result.pathParams.add(newPathParamObj(p.name, p.kind, p.def, p.opt))
     
-  for i in foundModels:
-    let
-      modelName = path[i.group(0)]
-      modelType =
-        when exportPython:
-          if i.group(1).len != 0:
-            path[i.group(1)][1..^1]
-          else:
-            ""
-        else:
-          path[i.group(1)]
-      modelTarget =
-        if i.group(3).len != 0:
-          path[i.group(3)][1..^1]
-        else:
-          "JSON"
-      isMutable = i.group(2).len != 0
-    result.requestModels.add(newRequestModelObj(modelName, modelType, modelTarget, isMutable))
+  for m in route.findModels():
+    # echo m
+    result.requestModels.add(newRequestModelObj(m.name, m.kind, m.mode))
+  if purePath.startsWith("//"):
+    purePath = purePath[1..^1]
+  result.purePath = purePath
 
 
 proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode =
   ## Finds and exports route arguments
   var path = $routePath
   # Find all declared path params
-  for i in path.findAll(re2"<([a-zA-Z][a-zA-Z0-9_]*)>"):
-    let name = path[i.group(0)]
-    if declaredPathParams.hasKey(name):
-      path = path.replace(fmt"<{name}>", $declaredPathParams[name])
-    else:
-      throwDefect(
-        HpxPathParamDefect,
-        "Unknown path param name: " & name & "\n" & $routePath.toStrLit,
-        lineInfoObj(routePath)
-      )
+  for part in path.split("/"):
+    var name: string
+    if scanf(part, "<$w>$.", name):
+      if declaredPathParams.hasKey(name):
+        path = path.replace(fmt"<{name}>", $declaredPathParams[name])
+      else:
+        throwDefect(
+          HpxPathParamDefect,
+          "Unknown path param name: " & name & "\n" & $routePath.toStrLit,
+          lineInfoObj(routePath)
+        )
   var
     routeData =
       when not exportPython and not defined(napibuild) and not exportJvm:
@@ -316,11 +540,12 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode =
     hasChildren = false
   let
     elifBranch = newNimNode(nnkElifBranch)
-    regExp = newCall("re2", newLit("^" & routeData.purePath & "$"))
-  elifBranch.add(newCall("contains", urlPath, newStmtList(
-    newLetStmt(ident"__regExp", regExp),
-    ident"__regExp"
-  )), body)
+    scanStmt = newCall("scanf", urlPath, newLit(routeData.purePath & "$."))
+    condition = newStmtList()
+  # elifBranch.add(newCall("contains", urlPath, newStmtList(
+  #   newLetStmt(ident"__regExp", regExp),
+  #   ident"__regExp"
+  # )), body)
   # re2"\{[a-zA-Z][a-zA-Z0-9_]*(\??):enum\((\w+)\)(\[m\])?(=\S+?)?\}"
   # Find all enums in route:
   # for found in routeData.purePath.findAll(re2"_ENUM_\[([a-zA-Z][a-zA-Z0-9_]*)\]"):
@@ -329,184 +554,203 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode =
   var idx = 0
   let paramsCount = routeData.pathParams.len
   for i in routeData.pathParams:
+    echo i
     if not body.isIdentUsed(ident(i.name)):
       continue
-    let
-      letSection = newNimNode(if i.mutable: nnkVarSection else: nnkLetSection).add(
-        newNimNode(nnkIdentDefs).add(ident(i.name), newEmptyNode())
-      )
-      group = newCall(
-        "group",
-        newNimNode(nnkBracketExpr).add(
-          if routeData.pathParams.len > 1:
-            ident"founded_regexp_matches"
-          else:
-            newCall("findAll", urlPath, ident"__regExp"),
-          newLit(0)
-        ),
-        newLit(idx)
-      )
-      groupForce = newCall(
-        "group",
-        newNimNode(nnkBracketExpr).add(
-          newCall("findAll", urlPath, ident"__regExp"), newLit(0)
-        ),
-        newLit(idx)
-      )
-      foundGroup = newCall("decodeUrl", newNimNode(nnkBracketExpr).add(urlPath, group))
-      foundGroupForce = newCall("decodeUrl", newNimNode(nnkBracketExpr).add(urlPath, groupForce))
-      # _groupLen < 1
-      conditionOptional = newCall("<", newCall("len", group), newLit(1))
-      # _foundGroupLen == 0
-      conditionSecondOptional = newCall("==", newCall("len", foundGroup), newLit(0))
-
-    if i.optional:
-      case i.paramType:
-      of "bool":
-        letSection[0].add(newNimNode(nnkIfStmt).add(
-            newNimNode(nnkElifBranch).add(
-              conditionOptional,
-              newLit(
-                if i.defaultValue == "": false else: parseBool(i.defaultValue)
-              )
-            ),
-            newNimNode(nnkElifBranch).add(
-              conditionSecondOptional,
-              newLit(
-                if i.defaultValue == "": false else: parseBool(i.defaultValue)
-              )
-            ),
-            newNimNode(nnkElse).add(newCall("parseBool", foundGroup))
-          )
-        )
-      of "int":
-        letSection[0].add(newNimNode(nnkIfStmt).add(
-            newNimNode(nnkElifBranch).add(
-              conditionOptional,
-              newLit(
-                if i.defaultValue == "": 0 else: parseInt(i.defaultValue)
-              )
-            ),
-            newNimNode(nnkElifBranch).add(
-              conditionSecondOptional,
-              newLit(
-                if i.defaultValue == "": 0 else: parseInt(i.defaultValue)
-              )
-            ),
-            newNimNode(nnkElse).add(newCall("parseInt", foundGroup))
-          )
-        )
-      of "float":
-        letSection[0].add(newNimNode(nnkIfStmt).add(
-            newNimNode(nnkElifBranch).add(
-              conditionOptional,
-              newLit(
-                if i.defaultValue == "": 0.0 else: parseFloat(i.defaultValue)
-              )
-            ),
-            newNimNode(nnkElifBranch).add(
-              conditionSecondOptional,
-              newLit(
-                if i.defaultValue == "": 0.0 else: parseFloat(i.defaultValue)
-              )
-            ),
-            newNimNode(nnkElse).add(newCall("parseFloat", foundGroup))
-          )
-        )
-      of "string", "word", "path":
-        letSection[0].add(newNimNode(nnkIfStmt).add(
-            newNimNode(nnkElifBranch).add(
-              conditionOptional,
-              newLit(
-                if i.defaultValue == "": "" else: i.defaultValue
-              )
-            ),
-            newNimNode(nnkElifBranch).add(
-              conditionSecondOptional,
-              newLit(
-                if i.defaultValue == "": "" else: i.defaultValue
-              )
-            ),
-            newNimNode(nnkElse).add(foundGroup)
+    condition.add(
+      if i.defaultValue.len > 0:
+        newNimNode(nnkVarSection).add(
+          newIdentDefs(
+            ident(i.name),
+            ident(i.paramType.kind2tp),
+            getDefaultValue(i.paramType, i.defaultValue)
           )
         )
       else:
-        # string Enum
-        if ($i.paramType).startsWith("enum"):
-          let enumName = ($i.paramType)[5..^2]
-          letSection[0].add(newNimNode(nnkIfStmt).add(
-              newNimNode(nnkElifBranch).add(
-                conditionOptional,
-                if i.defaultValue == "":
-                  newCall("default", ident(enumName))
-                else:
-                  newCall(newNimNode(nnkBracketExpr).add(ident"parseEnum", ident(enumName)), newLit(i.defaultValue))
-              ),
-              newNimNode(nnkElifBranch).add(
-                conditionSecondOptional,
-                if i.defaultValue == "":
-                  newCall("default", ident(enumName))
-                else:
-                  newCall(newNimNode(nnkBracketExpr).add(ident"parseEnum", ident(enumName)), newLit(i.defaultValue))
-              ),
-              newNimNode(nnkElse).add(
-                newCall(newNimNode(nnkBracketExpr).add(ident"parseEnum", ident(enumName)), foundGroupForce)
-              )
-            )
-          )
-          elifBranch[0] = newCall(
-            "and",
-            elifBranch[0].copy(),
-            newCall(newDotExpr(ident(enumName), ident"has"), foundGroup)
-          )
-        else:
-          # custom type
-          when defined(napibuild) or exportPython or exportJvm:
-              letSection[0].add(foundGroup)
-          else:
-            if $i.paramType in registeredRouteParamTypes:
-              var data = registeredRouteParamTypes[$i.paramType]
-              letSection[0].add(newCall(data[2], foundGroup))
-            # regex
-            else:
-              letSection[0].add(foundGroup)
-    else:
-      case i.paramType:
-      of "bool":
-        letSection[0].add(newCall("parseBool", foundGroup))
-      of "int":
-        letSection[0].add(newCall("parseInt", foundGroup))
-      of "float":
-        letSection[0].add(newCall("parseFloat", foundGroup))
-      of "path", "string", "word":
-        letSection[0].add(foundGroup)
-      else:
-        # string Enum
-        if ($i.paramType).startsWith("enum"):
-          let enumName = ($i.paramType)[5..^2]
-          # elifBranch.add(newCall("contains", urlPath, regExp), body)
-          letSection[0].add(newCall(newNimNode(nnkBracketExpr).add(ident"parseEnum", ident(enumName)), foundGroupForce))
-          elifBranch[0] = newCall(
-            "and",
-            elifBranch[0].copy(),
-            newCall(newDotExpr(ident(enumName), ident"has"), foundGroupForce)
-          )
-        else:
-          # custom type
-          when exportPython or defined(napibuild) or exportJvm:
-              letSection[0].add(foundGroup)
-          else:
-            if $i.paramType in registeredRouteParamTypes:
-              var data = registeredRouteParamTypes[$i.paramType]
-              letSection[0].add(newCall(data[2], foundGroup))
-            # regex
-            else:
-              letSection[0].add(foundGroup)
-    elifBranch[1].insert(0, letSection)
+        newNimNode(nnkVarSection).add(
+          newIdentDefs(ident(i.name), ident(i.paramType.kind2tp), newEmptyNode())
+        )
+    )
+    scanStmt.add(ident(i.name))
     hasChildren = true
-    inc idx
+  condition.add(scanStmt)
+  elifBranch.add(condition)
+    # let
+    #   letSection = newNimNode(nnkLetSection).add(
+    #     newNimNode(nnkIdentDefs).add(ident(i.name), newEmptyNode())
+    #   )
+    #   group = newCall(
+    #     "group",
+    #     newNimNode(nnkBracketExpr).add(
+    #       if routeData.pathParams.len > 1:
+    #         ident"founded_regexp_matches"
+    #       else:
+    #         newCall("findAll", urlPath, ident"__regExp"),
+    #       newLit(0)
+    #     ),
+    #     newLit(idx)
+    #   )
+    #   groupForce = newCall(
+    #     "group",
+    #     newNimNode(nnkBracketExpr).add(
+    #       newCall("findAll", urlPath, ident"__regExp"), newLit(0)
+    #     ),
+    #     newLit(idx)
+    #   )
+    #   foundGroup = newCall("decodeUrl", newNimNode(nnkBracketExpr).add(urlPath, group))
+    #   foundGroupForce = newCall("decodeUrl", newNimNode(nnkBracketExpr).add(urlPath, groupForce))
+    #   # _groupLen < 1
+    #   conditionOptional = newCall("<", newCall("len", group), newLit(1))
+    #   # _foundGroupLen == 0
+    #   conditionSecondOptional = newCall("==", newCall("len", foundGroup), newLit(0))
+
+    # if i.optional:
+    #   case i.paramType:
+    #   of "bool":
+    #     letSection[0].add(newNimNode(nnkIfStmt).add(
+    #         newNimNode(nnkElifBranch).add(
+    #           conditionOptional,
+    #           newLit(
+    #             if i.defaultValue == "": false else: parseBool(i.defaultValue)
+    #           )
+    #         ),
+    #         newNimNode(nnkElifBranch).add(
+    #           conditionSecondOptional,
+    #           newLit(
+    #             if i.defaultValue == "": false else: parseBool(i.defaultValue)
+    #           )
+    #         ),
+    #         newNimNode(nnkElse).add(newCall("parseBool", foundGroup))
+    #       )
+    #     )
+    #   of "int":
+    #     letSection[0].add(newNimNode(nnkIfStmt).add(
+    #         newNimNode(nnkElifBranch).add(
+    #           conditionOptional,
+    #           newLit(
+    #             if i.defaultValue == "": 0 else: parseInt(i.defaultValue)
+    #           )
+    #         ),
+    #         newNimNode(nnkElifBranch).add(
+    #           conditionSecondOptional,
+    #           newLit(
+    #             if i.defaultValue == "": 0 else: parseInt(i.defaultValue)
+    #           )
+    #         ),
+    #         newNimNode(nnkElse).add(newCall("parseInt", foundGroup))
+    #       )
+    #     )
+    #   of "float":
+    #     letSection[0].add(newNimNode(nnkIfStmt).add(
+    #         newNimNode(nnkElifBranch).add(
+    #           conditionOptional,
+    #           newLit(
+    #             if i.defaultValue == "": 0.0 else: parseFloat(i.defaultValue)
+    #           )
+    #         ),
+    #         newNimNode(nnkElifBranch).add(
+    #           conditionSecondOptional,
+    #           newLit(
+    #             if i.defaultValue == "": 0.0 else: parseFloat(i.defaultValue)
+    #           )
+    #         ),
+    #         newNimNode(nnkElse).add(newCall("parseFloat", foundGroup))
+    #       )
+    #     )
+    #   of "string", "word", "path":
+    #     letSection[0].add(newNimNode(nnkIfStmt).add(
+    #         newNimNode(nnkElifBranch).add(
+    #           conditionOptional,
+    #           newLit(
+    #             if i.defaultValue == "": "" else: i.defaultValue
+    #           )
+    #         ),
+    #         newNimNode(nnkElifBranch).add(
+    #           conditionSecondOptional,
+    #           newLit(
+    #             if i.defaultValue == "": "" else: i.defaultValue
+    #           )
+    #         ),
+    #         newNimNode(nnkElse).add(foundGroup)
+    #       )
+    #     )
+    #   else:
+    #     # string Enum
+    #     if ($i.paramType).startsWith("enum"):
+    #       let enumName = ($i.paramType)[5..^2]
+    #       letSection[0].add(newNimNode(nnkIfStmt).add(
+    #           newNimNode(nnkElifBranch).add(
+    #             conditionOptional,
+    #             if i.defaultValue == "":
+    #               newCall("default", ident(enumName))
+    #             else:
+    #               newCall(newNimNode(nnkBracketExpr).add(ident"parseEnum", ident(enumName)), newLit(i.defaultValue))
+    #           ),
+    #           newNimNode(nnkElifBranch).add(
+    #             conditionSecondOptional,
+    #             if i.defaultValue == "":
+    #               newCall("default", ident(enumName))
+    #             else:
+    #               newCall(newNimNode(nnkBracketExpr).add(ident"parseEnum", ident(enumName)), newLit(i.defaultValue))
+    #           ),
+    #           newNimNode(nnkElse).add(
+    #             newCall(newNimNode(nnkBracketExpr).add(ident"parseEnum", ident(enumName)), foundGroupForce)
+    #           )
+    #         )
+    #       )
+    #       elifBranch[0] = newCall(
+    #         "and",
+    #         elifBranch[0].copy(),
+    #         newCall(newDotExpr(ident(enumName), ident"has"), foundGroup)
+    #       )
+    #     else:
+    #       # custom type
+    #       when defined(napibuild) or exportPython or exportJvm:
+    #           letSection[0].add(foundGroup)
+    #       else:
+    #         if $i.paramType in registeredRouteParamTypes:
+    #           var data = registeredRouteParamTypes[$i.paramType]
+    #           letSection[0].add(newCall(data[2], foundGroup))
+    #         # regex
+    #         else:
+    #           letSection[0].add(foundGroup)
+    # else:
+    #   case i.paramType:
+    #   of "bool":
+    #     letSection[0].add(newCall("parseBool", foundGroup))
+    #   of "int":
+    #     letSection[0].add(newCall("parseInt", foundGroup))
+    #   of "float":
+    #     letSection[0].add(newCall("parseFloat", foundGroup))
+    #   of "path", "string", "word":
+    #     letSection[0].add(foundGroup)
+    #   else:
+    #     # string Enum
+    #     if ($i.paramType).startsWith("enum"):
+    #       let enumName = ($i.paramType)[5..^2]
+    #       # elifBranch.add(newCall("contains", urlPath, regExp), body)
+    #       letSection[0].add(newCall(newNimNode(nnkBracketExpr).add(ident"parseEnum", ident(enumName)), foundGroupForce))
+    #       elifBranch[0] = newCall(
+    #         "and",
+    #         elifBranch[0].copy(),
+    #         newCall(newDotExpr(ident(enumName), ident"has"), foundGroupForce)
+    #       )
+    #     else:
+    #       # custom type
+    #       when exportPython or defined(napibuild) or exportJvm:
+    #           letSection[0].add(foundGroup)
+    #       else:
+    #         if $i.paramType in registeredRouteParamTypes:
+    #           var data = registeredRouteParamTypes[$i.paramType]
+    #           letSection[0].add(newCall(data[2], foundGroup))
+    #         # regex
+    #         else:
+    #           letSection[0].add(foundGroup)
+    # elifBranch[1].insert(0, letSection)
+    # hasChildren = true
+    # inc idx
   
-  let body =
+  let reqBody =
     when enableHttpBeast or enableHttpx:
       newCall("get", newDotExpr(ident"req", ident"body"))
     else:
@@ -516,14 +760,14 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode =
   for i in routeData.requestModels:
     elifBranch[1].insert(
       0,
-      newNimNode(if i.mutable: nnkVarSection else: nnkLetSection).add(
+      newNimNode(nnkLetSection).add(
         newIdentDefs(
           ident(i.name),
           newEmptyNode(),
           case i.target.toLower():
           of "json":
             newNimNode(nnkTryStmt).add(
-              newCall("jsonTo" & i.typeName, newCall("parseJson", body))
+              newCall("jsonTo" & i.typeName, newCall("parseJson", reqBody))
             ).add(newNimNode(nnkExceptBranch).add(
               ident"JsonParsingError",
               newStmtList(
@@ -577,11 +821,11 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode =
               )
             ))
           of "urlencoded", "x-www-form-urlencoded", "xwwwformurlencoded":
-            newCall("xWwwUrlencodedTo" & i.typeName, body)
+            newCall("xWwwUrlencodedTo" & i.typeName, reqBody)
           of "form-data", "formdata":
-            newCall("formDataTo" & i.typeName, body)
+            newCall("formDataTo" & i.typeName, reqBody)
           of "xml":
-            newCall("xmlBodyTo" & i.typeName, body)
+            newCall("xmlBodyTo" & i.typeName, reqBody)
           else:
             newCall("jsonTo" & i.typeName, newCall("newJObject"))
         )
@@ -589,15 +833,20 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode =
     )
     hasChildren = true
   
+  elifBranch.add(body)
+  # echo treeRepr elifBranch
+  # echo elifBranch.toStrLit
+  # echo elifBranch.len
+
   if hasChildren:
-    if paramsCount > 1:
-      elifBranch[1].insert(
-        0, newNimNode(nnkLetSection).add(
-          newIdentDefs(
-            ident"founded_regexp_matches", newEmptyNode(), newCall("findAll", urlPath, ident"__regExp")
-          )
-        )
-      )
+    # if paramsCount > 1:
+    #   elifBranch[1].insert(
+    #     0, newNimNode(nnkLetSection).add(
+    #       newIdentDefs(
+    #         ident"founded_regexp_matches", newEmptyNode(), newCall("findAll", urlPath, ident"__regExp")
+    #       )
+    #     )
+    #   )
     when enableRoutingDebugMacro:
       echo elifBranch.toStrLit
     return elifBranch
@@ -946,16 +1195,15 @@ macro pathParams*(body: untyped): untyped =
   ## 
   ## .. code-block:: nim
   ##    pathParams:
-  ##      # means that `arg` of type `int` is optional mutable param with default value `5`
-  ##      arg? int[m] = 5
-  ##      # means that `arg1` of type `string` is optional mutable param with default value `"Hello"`
-  ##      arg1[m] = "Hello"
-  ##      # means that `arg2` of type `float` is mutable param
-  ##      arg2 float[m]
-  ##      # means that `arg3` of type `int` is optional mutable param with default value `10`
+  ##      # means that `arg` of type `int` is optional param with default value `5`
+  ##      arg? int = 5
+  ##      # means that `arg1` of type `string` is optional param with default value `"Hello"`
+  ##      arg1 = "Hello"
+  ##      # means that `arg2` of type `float` is param
+  ##      arg2 float
+  ##      # means that `arg3` of type `int` is optional param with default value `10`
   ##      arg3:
   ##        type int
-  ##        mutable
   ##        optional
   ##        default = 10
   ## 
@@ -964,7 +1212,6 @@ macro pathParams*(body: untyped): untyped =
       name = ""
       kind = "string"
       regexVal = ""
-      isMutable = false
       isOptional = false
       defaultVal = ""
     
@@ -973,36 +1220,15 @@ macro pathParams*(body: untyped): untyped =
       name = $statement
     
     # Assignment
-    # argument? type[m] = val
+    # argument? type = val
     elif statement.kind == nnkAsgn:
       if statement[0].kind == nnkInfix and $statement[0][0] == "?":
         # name
         name = $statement[0][1]
         # type
         if statement[0].len == 3:
-          # type[m]
-          if statement[0][2].kind == nnkBracketExpr and $statement[0][2][1] == "m":
-            isMutable = true
-            pathParamsBoilerplate(statement[0][2][0], kind, regexVal)
-          # type
-          else:
-            pathParamsBoilerplate(statement[0][2], kind, regexVal)
-            kind = $statement[0][2]
-        # default val
-        if statement[1].kind in AtomicNodes:
-          defaultVal = $statement[1].toStrLit
-          isOptional = true
-        else:
-          let current = $statement[1].toStrLit
-          throwDefect(
-            HpxPathParamDefect,
-            "Invalid path param default value (should be atomic const types)" & current,
-            lineInfoObj(statement[1])
-          )
-      # arg[m]
-      elif statement[0].kind == nnkBracketExpr and $statement[0][1] == "m":
-        isMutable = true
-        name = $statement[0][0]
+          pathParamsBoilerplate(statement[0][2], kind, regexVal)
+          kind = $statement[0][2]
         # default val
         if statement[1].kind in AtomicNodes:
           defaultVal = $statement[1].toStrLit
@@ -1023,23 +1249,12 @@ macro pathParams*(body: untyped): untyped =
       isOptional = true
       # type
       if statement.len == 3:
-        # type[m]
-        if statement[2].kind == nnkBracketExpr and $statement[2][1] == "m":
-          pathParamsBoilerplate(statement[2][0], kind, regexVal)
-        # type
-        else:
-          pathParamsBoilerplate(statement[2], kind, regexVal)
+        pathParamsBoilerplate(statement[2], kind, regexVal)
     
     # command
     elif statement.kind in [nnkCall, nnkCommand]:
       name = $statement[0]
-      # type[m]
-      if statement[1].kind == nnkBracketExpr and $statement[1][1] == "m":
-        isMutable = true
-        pathParamsBoilerplate(statement[1][0], kind, regexVal)
-      # type
-      else:
-        pathParamsBoilerplate(statement[1], kind, regexVal)
+      pathParamsBoilerplate(statement[1], kind, regexVal)
       # stmt list
       if statement[^1].kind == nnkStmtList:
         for child in statement[^1].children:
@@ -1049,8 +1264,6 @@ macro pathParams*(body: untyped): untyped =
             let childStr = $child
             if childStr == "optional":
               isOptional = true
-            elif childStr == "mutable":
-              isMutable = true
             else:
               throwDefect(
                 HpxPathParamDefect,
@@ -1082,12 +1295,7 @@ macro pathParams*(body: untyped): untyped =
       var res = "{" & name
       if isOptional:
         res &= "?"
-      if kind != "regex":
-        res &= ":" & kind
-      else:
-        res &= ":/" & regexVal & "/"
-      if isMutable:
-        res &= "[m]"
+      res &= ":" & kind
       if defaultVal.len > 0:
         res &= "=" & defaultVal
       if declaredPathParams.hasKey(name):

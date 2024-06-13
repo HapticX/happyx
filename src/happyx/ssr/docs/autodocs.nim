@@ -31,7 +31,6 @@ proc fetchPathParams*(route: var string): tuple[pathParams, models: NimNode] =
       newLit(i.paramType),
       newLit(i.defaultValue),
       newLit(i.optional),
-      newLit(i.mutable),
     ))
 
   for i in routeData.requestModels:
@@ -40,7 +39,6 @@ proc fetchPathParams*(route: var string): tuple[pathParams, models: NimNode] =
       newLit(i.name),
       newLit(i.typeName),
       newLit(i.target),
-      newLit(i.mutable),
     ))
   
   # Clear route
