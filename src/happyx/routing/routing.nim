@@ -9,6 +9,7 @@ import
   std/unicode,
   std/macros,
   std/macrocache,
+  std/enumutils,
   std/json,
   # deps
   regex,
@@ -18,7 +19,9 @@ import
   ../private/scanutils
 
 
-export scanutils
+export
+  scanutils,
+  enumutils
 
 
 when exportPython or defined(docgen):

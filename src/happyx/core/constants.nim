@@ -97,8 +97,8 @@ const
   nim_1_6_14* = (NimMajor, NimMajor, NimPatch) == (1, 6, 14)
   nim_2_0_0* = (NimMajor, NimMinor, NimPatch) >= (2, 0, 0)
   # Framework version
-  HpxMajor* = 3
-  HpxMinor* = 12
+  HpxMajor* = 4
+  HpxMinor* = 0
   HpxPatch* = 0
   HpxVersion* = $HpxMajor & "." & $HpxMinor & "." & $HpxPatch
 
