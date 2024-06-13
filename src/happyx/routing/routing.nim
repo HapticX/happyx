@@ -807,6 +807,7 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode =
     # hasChildren = true
     # inc idx
   
+  elifBranch.add(body)
   let reqBody =
     when enableHttpBeast or enableHttpx:
       newCall("get", newDotExpr(ident"req", ident"body"))
@@ -817,7 +818,7 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode =
   for i in routeData.requestModels:
     elifBranch[1].insert(
       0,
-      newNimNode(nnkLetSection).add(
+      newNimNode(nnkVarSection).add(
         newIdentDefs(
           ident(i.name),
           newEmptyNode(),
@@ -890,7 +891,6 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode =
     )
     hasChildren = true
   
-  elifBranch.add(body)
   # echo treeRepr elifBranch
   # echo elifBranch.toStrLit
   # echo elifBranch.len
