@@ -98,6 +98,6 @@ serve "127.0.0.1", 5000:
     ## Creates a new post
     return "Hello, world!"
 
-  put "/post$id:int":
+  put "/post/$id:int":
     ## Edits a post
     return "Hello, world!"

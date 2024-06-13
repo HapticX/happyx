@@ -391,62 +391,119 @@ proc getDefaultValue(kind, value: string): NimNode =
 
 proc findParams(route: string, purePath: var string): seq[tuple[name, kind: string, opt: bool, def: string]] =
   result = @[]
-  for part in route.split("/"):
+  var i = 0
+  while i < route.len:
+    let part = route[i..^1]
     var
       name: string
       kind: string = "string"
       def: string
-    # {arg}
-    if part.scanf("{$w}$.", name) or part.scanf("$$$w$.", name):
-      result.add((name: name, kind: kind, opt: false, def: def))
-      purePath &= "/" & kind2scanable(kind, false)
-    # {arg?}
-    elif part.scanf("{$w?}$.", name) or part.scanf("$$$w?$.", name):
-      result.add((name: name, kind: kind, opt: true, def: def))
-      purePath &= "/" & kind2scanable(kind, true)
-    # {arg?:type}
-    elif part.scanf("{$w?:${kind}}$.", name, kind) or part.scanf("$$$w?:${kind}$.", name, kind):
-      result.add((name: name, kind: kind, opt: true, def: def))
-      purePath &= "/" & kind2scanable(kind, true)
-    # {arg?=default}
-    elif part.scanf("{$w?=${default}}$.", name, def) or part.scanf("$$$w?=${default}$.", name, def):
-      result.add((name: name, kind: kind, opt: true, def: def))
-      purePath &= "/" & kind2scanable(kind, true)
     # {arg?:type=default}
-    elif part.scanf("{$w?:${kind}=${default}}$.", name, kind, def) or part.scanf("$$$w?:${kind}=${default}$.", name, kind, def):
+    if part.scanf("{$w?:${kind}=${default}}", name, kind, def):
       result.add((name: name, kind: kind, opt: true, def: def))
-      purePath &= "/" & kind2scanable(kind, true)
-    # {arg:type}
-    elif part.scanf("{$w:${kind}}$.", name, kind) or part.scanf("$$$w:${kind}$.", name, kind):
-      result.add((name: name, kind: kind, opt: false, def: def))
-      purePath &= "/" & kind2scanable(kind, false)
-    # {arg=default}
-    elif part.scanf("{$w=${default}}$.", name, def) or part.scanf("$$$w=${default}$.", name, def):
+      purePath &= kind2scanable(kind, true)
+      inc i, 5 + name.len + kind.len + def.len
+    # $arg?:type=default
+    elif part.scanf("$$$w?:${kind}=${default}", name, kind, def):
       result.add((name: name, kind: kind, opt: true, def: def))
-      purePath &= "/" & kind2scanable(kind, true)
+      purePath &= kind2scanable(kind, true)
+      inc i, 4 + name.len + kind.len + def.len
     # {arg:type=default}
-    elif part.scanf("{$w:${kind}=${default}}$.", name, kind, def) or part.scanf("$$$w:${kind}=${default}$.", name, kind, def):
+    elif part.scanf("{$w:${kind}=${default}}", name, kind, def):
       result.add((name: name, kind: kind, opt: true, def: def))
-      purePath &= "/" & kind2scanable(kind, true)
+      purePath &= kind2scanable(kind, true)
+      inc i, 4 + name.len + kind.len + def.len
+    # $arg:type=default
+    elif part.scanf("$$$w:${kind}=${default}", name, kind, def):
+      result.add((name: name, kind: kind, opt: true, def: def))
+      purePath &= kind2scanable(kind, true)
+      inc i, 3 + name.len + kind.len + def.len
+    # {arg=default}
+    elif part.scanf("{$w=${default}}", name, def):
+      result.add((name: name, kind: kind, opt: true, def: def))
+      purePath &= kind2scanable(kind, true)
+      inc i, 3 + name.len + kind.len + def.len
+    # $arg=default
+    elif part.scanf("$$$w=${default}", name, def):
+      result.add((name: name, kind: kind, opt: true, def: def))
+      purePath &= kind2scanable(kind, true)
+      inc i, 2 + name.len + kind.len + def.len
+    # {arg:type}
+    elif part.scanf("{$w:${kind}}", name, kind):
+      result.add((name: name, kind: kind, opt: false, def: def))
+      purePath &= kind2scanable(kind, false)
+      inc i, 3 + name.len + kind.len + def.len
+    # $arg:type
+    elif part.scanf("$$$w:${kind}", name, kind):
+      result.add((name: name, kind: kind, opt: false, def: def))
+      purePath &= kind2scanable(kind, false)
+      inc i, 2 + name.len + kind.len + def.len
+    # {arg?=default}
+    elif part.scanf("{$w?=${default}}", name, def):
+      result.add((name: name, kind: kind, opt: true, def: def))
+      purePath &= kind2scanable(kind, true)
+      inc i, 4 + name.len + kind.len + def.len
+    # $arg?=default
+    elif part.scanf("$$$w?=${default}", name, def):
+      result.add((name: name, kind: kind, opt: true, def: def))
+      purePath &= kind2scanable(kind, true)
+      inc i, 3 + name.len + kind.len + def.len
+    # {arg?:type}
+    elif part.scanf("{$w?:${kind}}", name, kind):
+      result.add((name: name, kind: kind, opt: true, def: def))
+      purePath &= kind2scanable(kind, true)
+      inc i, 4 + name.len + kind.len + def.len
+    # $arg?:type
+    elif part.scanf("$$$w?:${kind}", name, kind):
+      result.add((name: name, kind: kind, opt: true, def: def))
+      purePath &= kind2scanable(kind, true)
+      inc i, 3 + name.len + kind.len + def.len
+    # {arg?}
+    elif part.scanf("{$w?}", name, kind):
+      result.add((name: name, kind: kind, opt: true, def: def))
+      purePath &= kind2scanable(kind, true)
+      inc i, 3 + name.len + kind.len + def.len
+    # $arg?
+    elif part.scanf("$$$w?", name, kind):
+      result.add((name: name, kind: kind, opt: true, def: def))
+      purePath &= kind2scanable(kind, true)
+      inc i, 2 + name.len + kind.len + def.len
+    # {arg}
+    elif part.scanf("{$w}", name, kind):
+      result.add((name: name, kind: kind, opt: true, def: def))
+      purePath &= kind2scanable(kind, true)
+      inc i, 2 + name.len + kind.len + def.len
+    # $arg
+    elif part.scanf("$$$w", name, kind):
+      result.add((name: name, kind: kind, opt: true, def: def))
+      purePath &= kind2scanable(kind, true)
+      inc i, 1 + name.len + kind.len + def.len
     else:
-      purePath &= "/" & part
+      purePath &= route[i]
+      inc i
     # echo part, " -> ", name, ": ", kind, " = ", def
   # echo result
 
 
 proc findModels(route: string): seq[tuple[name, kind, mode: string]] =
   result = @[]
-  for part in route.split("/"):
+  var i = 0
+  while i < route.len:
+    let part = route[i..^1]
     var
       name: string
       kind: string
       mode: string = "JSON"
     # [arg:ModelName]
-    if part.scanf("[$w:$w]$.", name, kind):
+    if part.scanf("[$w:$w]", name, kind):
       result.add((name: name, kind: kind, mode: mode))
+      inc i, 3 + name.len + kind.len + mode.len
     # [arg:ModelName:json]
-    elif part.scanf("[$w:$w:$w]$.", name, kind, mode):
+    elif part.scanf("[$w:$w:$w]", name, kind, mode):
       result.add((name: name, kind: kind, mode: mode))
+      inc i, 4 + name.len + kind.len + mode.len
+    else:
+      inc i
 
 
 proc handleRoute*(route: string): RouteDataObj =

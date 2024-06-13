@@ -896,10 +896,10 @@ socketToSsr.onmessage=function(m){
     body.add(newCall(ident"get", path, getMethod))
 
   when enableHttpx or enableHttpBeast:
-    var path = newNimNode(nnkBracketExpr).add(
+    var path = newCall("decodeUrl", newNimNode(nnkBracketExpr).add(
       newCall("split", newCall("get", newCall("path", ident"req")), newLit"?"),
       newLit(0)
-    )
+    ))
     let
       reqMethod = newCall("get", newDotExpr(ident"req", ident"httpMethod"))
       hostname = newDotExpr(ident"req", ident"ip")
@@ -922,7 +922,7 @@ socketToSsr.onmessage=function(m){
         )
       )
   else:
-    var path = newDotExpr(newDotExpr(ident"req", ident"url"), ident"path")
+    var path = newCall("decodeUrl", newDotExpr(newDotExpr(ident"req", ident"url"), ident"path"))
     let
       reqMethod = newDotExpr(ident"req", ident"reqMethod")
       hostname = newDotExpr(ident"req", ident"hostname")

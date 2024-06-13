@@ -691,13 +691,13 @@ when enableAppRouting:
         elif statement.kind == nnkCall and statement[0].kind == nnkPrefix and $statement[0][0] == "@" and statement.len > 1:
           nextRouteDecorators.add(($statement[0][1], statement[1..^1]))
           
-        elif statement.len == 2 and statement[0].kind == nnkStrLit:
+        elif statement.len == 2 and statement[0].kind == nnkStrLit and statement[1].kind == nnkStmtList:
           for route in nextRouteDecorators:
             decorators[route.name](@[], $statement[0], statement[1], route.args)
           let exported = exportRouteArgs(
             iPath,
             statement[0],
-            statement[1]
+            statement[1].copy()
           )
           # Route contains params
           if exported.len > 0:

@@ -878,12 +878,6 @@ translatable:
     "zh" -> "解析参数为Nim枚举类型（仅允许字符串枚举）"
     "fr" -> "Analyse le paramètre comme un type énuméré Nim (autorise uniquement les énumérations de chaînes de caractères)"
     "ko" -> "매개변수를 Nim 열거형 타입으로 구문 분석합니다 (문자열 열거형만 허용)"
-  "Parses param as string with regex pattern":
-    "ru" -> "Разбирает параметр как строку с шаблоном регулярного выражения"
-    "ja" -> "paramを正規表現パターンを含む文字列として解析します"
-    "zh" -> "解析参数为带有正则表达式模式的字符串"
-    "fr" -> "Analyse le paramètre comme une chaîne de caractères avec un motif regex"
-    "ko" -> "매개변수를 정규식 패턴을 포함한 문자열로 구문 분석합니다"
   "In addition, you can define your own parameter types ✌":
     "ru" -> "Кроме того, вы можете определить собственные типы параметров ✌"
     "ja" -> "さらに、独自のパラメータータイプを定義することができます ✌"
@@ -1592,30 +1586,30 @@ translatable:
     "zh" -> "可选路径参数，类型为bool，默认值为false"
     "fr" -> "Paramètre de chemin optionnel typé en tant que booléen avec une valeur par défaut de false"
     "ko" -> "기본값이 false인 선택적으로 정의된 부울형 경로 매개변수"
-  "Optional mutable path param typed as float with default value 3.14":
-    "ru" -> "Необязательный изменяемый параметр пути с типом float и значением по умолчанию 3.14"
-    "ja" -> "デフォルト値3.14のオプションの変更可能なfloat型パスパラメータ"
-    "zh" -> "可选的可变路径参数，类型为float，默认值为3.14"
-    "fr" -> "Paramètre de chemin optionnel mutable typé en tant que float avec une valeur par défaut de 3.14"
-    "ko" -> "기본값이 3.14인 선택적으로 정의된 변경 가능한 부동 소수점형 경로 매개변수"
-  "mutable default float":
-    "ru" -> "Изменяемый параметр с типом float и значением по умолчанию"
-    "ja" -> "デフォルトのfloat型の変更可能なパラメータ"
-    "zh" -> "可变参数，类型为float，默认值"
-    "fr" -> "Paramètre mutable typé en tant que float avec une valeur par défaut"
-    "ko" -> "변경 가능한 부동 소수점형 매개변수, 기본값은"
-  "mutable string":
-    "ru" -> "Изменяемый параметр с типом string"
-    "ja" -> "変更可能なstring型パスパラメータ"
-    "zh" -> "可变参数，类型为字符串"
-    "fr" -> "Paramètre mutable typé en tant que chaîne de caractères"
-    "ko" -> "변경 가능한 문자열 형식의 매개변수"
-  "Mutable path param typed as string":
-    "ru" -> "Изменяемый параметр пути с типом string"
-    "ja" -> "変更可能なstring型のパスパラメータ"
-    "zh" -> "可变的路径参数，类型为字符串"
-    "fr" -> "Paramètre de chemin mutable typé en tant que chaîne de caractères"
-    "ko" -> "변경 가능한 문자열 형식의 경로 매개변수"
+  "Optional path param typed as float with default value 3.14":
+    "ru" -> "Необязательный параметр пути с типом float и значением по умолчанию 3.14"
+    "ja" -> "デフォルト値が3.14のfloat型オプションパスパラメーター"
+    "zh" -> "类型为float且默认值为3.14的可选路径参数"
+    "fr" -> "Paramètre de chemin optionnel de type float avec une valeur par défaut de 3,14"
+    "ko" -> "기본값이 3.14인 float형 선택 경로 매개변수"
+  "Default float":
+    "ru" -> "Значение по умолчанию float"
+    "ja" -> "デフォルトのfloat"
+    "zh" -> "默认float"
+    "fr" -> "Float par défaut"
+    "ko" -> "기본 float"
+  "string":
+    "ru" -> "строка"
+    "ja" -> "文字列"
+    "zh" -> "字符串"
+    "fr" -> "chaîne"
+    "ko" -> "문자열"
+  "Path param typed as string":
+    "ru" -> "Параметр пути с типом string"
+    "ja" -> "文字列型のパスパラメータ"
+    "zh" -> "类型为字符串的路径参数"
+    "fr" -> "Paramètre de chemin de type chaîne de caractères"
+    "ko" -> "문자열로 유형 지정된 경로 매개변수"
   "not available":
     "ru" -> "недоступно"
     "ja" -> "利用不可"

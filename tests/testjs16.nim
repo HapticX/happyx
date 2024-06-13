@@ -71,7 +71,6 @@ component B of A[int]:
 pathParams:
   paramName int:  # assign param name
     optional  # param is optional
-    mutable  # param is mutable variable
     default = 100  # default param value is 100
 
 

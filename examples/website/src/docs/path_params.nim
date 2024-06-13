@@ -189,23 +189,6 @@ proc PathParams*(): TagRef =
                 tSpan(class = "text-green-800 dark:text-green-400"):
                   "\""
             tTd(class = "text-center"): {translate"Parses param as Nim enum type (allow only for string enums)"}
-        # Regex
-        tTr:
-          tTd(class = "text-center"):
-            tSpan(class = "text-orange-800 dark:text-orange-400"):
-              "regex"
-          tTd(class = "text-center"):
-            tCode:
-              tSpan(class = "text-green-800 dark:text-green-400"):
-                "\"/"
-              tSpan(class = "text-purple-800 dark:text-purple-400"):
-                """{i:/REGEX/}"""
-              tSpan(class = "text-green-800 dark:text-green-400"):
-                "\""
-          tTd(class = "text-center"):
-            tCode:
-              {translate"not available"}
-          tTd(class = "text-center"): {translate"Parses param as string with regex pattern"}
       
       tP:
         {translate"In addition to using typed path parameters, you can explicitly specify that they are mutable and/or optional, and you can also specify a default value"}
@@ -248,29 +231,29 @@ proc PathParams*(): TagRef =
         # mutable default float
         tTr:
           tTd(class = "text-center"):
-            {translate"mutable default float"}
+            {translate"Default float"}
           tTd(class = "text-center"):
             tSpan(class = "text-orange-800 dark:text-orange-400"): "float"
           tTd(class = "text-center"):
             tCode:
               tSpan(class = "text-green-800 dark:text-green-400"): "\"/"
-              tSpan(class = "text-purple-800 dark:text-purple-400"): """{f:float[m]=3.14}"""
+              tSpan(class = "text-purple-800 dark:text-purple-400"): """{f:float=3.14}"""
               tSpan(class = "text-green-800 dark:text-green-400"): "\""
           tTd(class = "text-center"):
-            {translate"Optional mutable path param typed as float with default value 3.14"}
+            {translate"Optional path param typed as float with default value 3.14"}
         # mutable string
         tTr:
           tTd(class = "text-center"):
-            {translate"mutable string"}
+            {translate"string"}
           tTd(class = "text-center"):
             tSpan(class = "text-orange-800 dark:text-orange-400"): "string"
           tTd(class = "text-center"):
             tCode:
               tSpan(class = "text-green-800 dark:text-green-400"): "\"/"
-              tSpan(class = "text-purple-800 dark:text-purple-400"): """{s:string[m]}"""
+              tSpan(class = "text-purple-800 dark:text-purple-400"): """{s:string}"""
               tSpan(class = "text-green-800 dark:text-green-400"): "\""
           tTd(class = "text-center"):
-            {translate"Mutable path param typed as string"}
+            {translate"Path param typed as string"}
       
       tP:
         {translate"In addition, you can define your own parameter types ✌"}

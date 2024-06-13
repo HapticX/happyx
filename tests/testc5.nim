@@ -19,7 +19,7 @@ serve("127.0.0.1", 5000):
       "data": myModel.data
     }}
 
-  "/immutable[myModel:MyModel]":
+  "/immutable/[myModel:MyModel]":
     echo myModel.username, ", ", myModel.age, ", ", myModel.data
     myModel.age += 10
     return { "response": {
