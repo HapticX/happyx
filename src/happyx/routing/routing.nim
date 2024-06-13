@@ -124,8 +124,8 @@ type
   #     pattern: pattern, name: name, creator: creator
   #   )
 
-# elif exportJvm:
-#   import tables
+when exportJvm:
+  import tables
 
   # type RouteParamType = object
   #   name: string
