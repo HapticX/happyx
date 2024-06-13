@@ -422,62 +422,62 @@ proc findParams(route: string, purePath: var string): seq[tuple[name, kind: stri
     elif part.scanf("{$w=${default}}", name, def):
       result.add((name: name, kind: kind, opt: true, def: def))
       purePath &= kind2scanable(kind, true)
-      inc i, 3 + name.len + kind.len + def.len
+      inc i, 3 + name.len + def.len
     # $arg=default
     elif part.scanf("$$$w=${default}", name, def):
       result.add((name: name, kind: kind, opt: true, def: def))
       purePath &= kind2scanable(kind, true)
-      inc i, 2 + name.len + kind.len + def.len
+      inc i, 2 + name.len + def.len
     # {arg:type}
     elif part.scanf("{$w:${kind}}", name, kind):
       result.add((name: name, kind: kind, opt: false, def: def))
       purePath &= kind2scanable(kind, false)
-      inc i, 3 + name.len + kind.len + def.len
+      inc i, 3 + name.len + kind.len
     # $arg:type
     elif part.scanf("$$$w:${kind}", name, kind):
       result.add((name: name, kind: kind, opt: false, def: def))
       purePath &= kind2scanable(kind, false)
-      inc i, 2 + name.len + kind.len + def.len
+      inc i, 2 + name.len + kind.len
     # {arg?=default}
     elif part.scanf("{$w?=${default}}", name, def):
       result.add((name: name, kind: kind, opt: true, def: def))
       purePath &= kind2scanable(kind, true)
-      inc i, 4 + name.len + kind.len + def.len
+      inc i, 4 + name.len + def.len
     # $arg?=default
     elif part.scanf("$$$w?=${default}", name, def):
       result.add((name: name, kind: kind, opt: true, def: def))
       purePath &= kind2scanable(kind, true)
-      inc i, 3 + name.len + kind.len + def.len
+      inc i, 3 + name.len + def.len
     # {arg?:type}
     elif part.scanf("{$w?:${kind}}", name, kind):
       result.add((name: name, kind: kind, opt: true, def: def))
       purePath &= kind2scanable(kind, true)
-      inc i, 4 + name.len + kind.len + def.len
+      inc i, 4 + name.len + kind.len
     # $arg?:type
     elif part.scanf("$$$w?:${kind}", name, kind):
       result.add((name: name, kind: kind, opt: true, def: def))
       purePath &= kind2scanable(kind, true)
-      inc i, 3 + name.len + kind.len + def.len
+      inc i, 3 + name.len + kind.len
     # {arg?}
-    elif part.scanf("{$w?}", name, kind):
+    elif part.scanf("{$w?}", name):
       result.add((name: name, kind: kind, opt: true, def: def))
       purePath &= kind2scanable(kind, true)
-      inc i, 3 + name.len + kind.len + def.len
+      inc i, 3 + name.len
     # $arg?
-    elif part.scanf("$$$w?", name, kind):
+    elif part.scanf("$$$w?", name):
       result.add((name: name, kind: kind, opt: true, def: def))
       purePath &= kind2scanable(kind, true)
-      inc i, 2 + name.len + kind.len + def.len
+      inc i, 2 + name.len
     # {arg}
-    elif part.scanf("{$w}", name, kind):
+    elif part.scanf("{$w}", name):
       result.add((name: name, kind: kind, opt: true, def: def))
       purePath &= kind2scanable(kind, true)
-      inc i, 2 + name.len + kind.len + def.len
+      inc i, 2 + name.len
     # $arg
-    elif part.scanf("$$$w", name, kind):
+    elif part.scanf("$$$w", name):
       result.add((name: name, kind: kind, opt: true, def: def))
       purePath &= kind2scanable(kind, true)
-      inc i, 1 + name.len + kind.len + def.len
+      inc i, 1 + name.len
     else:
       purePath &= route[i]
       inc i
