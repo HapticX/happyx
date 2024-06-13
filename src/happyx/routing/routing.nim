@@ -614,9 +614,9 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode =
   var idx = 0
   let paramsCount = routeData.pathParams.len
   for i in routeData.pathParams:
-    echo i
-    if not body.isIdentUsed(ident(i.name)):
-      continue
+    # echo i
+    # if not body.isIdentUsed(ident(i.name)):
+    #   continue
     condition.add(
       if i.defaultValue.len > 0:
         newNimNode(nnkVarSection).add(
