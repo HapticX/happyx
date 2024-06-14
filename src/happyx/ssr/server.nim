@@ -68,8 +68,6 @@ import
   std/colors,
   std/json,
   std/os,
-  # Deps
-  regex,
   checksums/md5,
   # HappyX
   ./cors,
@@ -88,7 +86,6 @@ export
   logging,
   cookies,
   colors,
-  regex,
   json,
   terminal,
   os

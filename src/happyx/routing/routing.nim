@@ -11,8 +11,6 @@ import
   std/macrocache,
   std/enumutils,
   std/json,
-  # deps
-  regex,
   # happyx
   ../core/[exceptions, constants],
   ../private/macro_utils,
@@ -67,95 +65,8 @@ type
     path*: string
 
 
-# when exportPython:
-#   import tables
-
-  # type RouteParamType = object
-  #   name: string
-  #   pattern: string
-  #   creator: PyObject
-
-
-  # var registeredRouteParamTypes = newTable[string, RouteParamType]()
-
-  # proc registerRouteParamTypeAux*(name, pattern: string, creator: PyObject) =
-  #   var id: string
-  #   if not scanf(name, "$w$.", id):
-  #     raise newException(
-  #       ValueError,
-  #       fmt"route param type name should be identifier (a-zA-Z0-9_), but got '{name}'"
-  #     )
-  #   registeredRouteParamTypes[name] = RouteParamType(
-  #     pattern: pattern, name: name, creator: creator
-  #   )
-  
-  # proc hasObjectWithName*(self: TableRef[string, RouteParamType], name: string): bool =
-  #   {.gcsafe.}:
-  #     for v in registeredRouteParamTypes.values():
-  #       if $(v.creator.getAttr("__class__").getAttr("__name__")) == name or $(v.creator.getAttr("__name__")) == name:
-  #         return true
-  #     return false
-  
-  # proc getObjectWithName*(self: TableRef[string, RouteParamType], name: string): RouteParamType =
-  #   {.gcsafe.}:
-  #     for v in registeredRouteParamTypes.values():
-  #       if $(v.creator.getAttr("__class__").getAttr("__name__")) == name or $(v.creator.getAttr("__name__")) == name:
-  #         return v
-
-# elif defined(napibuild):
-#   import tables
-
-  # type RouteParamType = object
-  #   name: string
-  #   pattern: string
-  #   creator: string
-
-
-  # var registeredRouteParamTypes = newTable[string, RouteParamType]()
-
-  # proc registerRouteParamTypeAux*(name, pattern, creator: string) =
-  #   var id: string
-  #   if not scanf(name, "$w$.", id):
-  #     raise newException(
-  #       ValueError,
-  #       fmt"route param type name should be identifier (a-zA-Z0-9_), but got '{name}'"
-  #     )
-  #   registeredRouteParamTypes[name] = RouteParamType(
-  #     pattern: pattern, name: name, creator: creator
-  #   )
-
 when exportJvm:
   import tables
-
-  # type RouteParamType = object
-  #   name: string
-  #   pattern: string
-  #   creator: JavaMethod
-
-
-  # var registeredRouteParamTypes* = newTable[string, RouteParamType]()
-
-  # proc registerRouteParamTypeAux*(name, pattern: string, creator: JavaMethod) =
-  #   var id: string
-  #   if not scanf(name, "$w$.", id):
-  #     raise newException(
-  #       ValueError,
-  #       fmt"route param type name should be identifier (a-zA-Z0-9_), but got '{name}'"
-  #     )
-  #   registeredRouteParamTypes[name] = RouteParamType(
-  #     pattern: pattern, name: name, creator: creator
-  #   )
-# else:
-#   const registeredRouteParamTypes = CacheTable"HappyXRegisteredRouteParamTypes"
-
-#   macro registerRouteParamType*(name, pattern: string, creator: untyped) =
-#     var id: string
-#     if not scanf($name, "$w$.", id):
-#       raise newException(
-#         ValueError,
-#         fmt"route param type name should be identifier (a-zA-Z0-9_), but got '{name}'"
-#       )
-#     registeredRouteParamTypes[$name] = newStmtList(name, pattern, creator)
 
 
 proc newPathParamObj*(name, paramType, defaultValue: string, optional: bool): PathParamObj =
@@ -228,6 +139,9 @@ proc enumerate*[T: enum](input: string, e: var T, start: int, opt: bool = false)
     if inp.startsWith(i.symbolName):
       e = i
       return i.symbolName.len
+    elif inp.startsWith($i):
+      e = i
+      return len($i)
   if opt:
     return 0
   return -1
@@ -298,9 +212,9 @@ proc kind*(input: string, strVal: var string, start: int): int =
     strVal = "string"
     inc result, 6
   elif inp.startsWith("enum"):
-    strVal = "enum:"
+    strVal = "enum::"
     var opened = false
-    for i in inp[3..^1]:
+    for i in inp[4..^1]:
       if i == '(':
         inc result
         opened = true
@@ -370,7 +284,7 @@ proc kind2tp(kind: string): string =
     "bool"
   else:
     if kind.startsWith("enum"):
-      kind.split(":", 1)[1]
+      kind.split("::", 1)[1]
     else:
       ""
 
@@ -481,6 +395,12 @@ proc findParams(route: string, purePath: var string): seq[tuple[name, kind: stri
       result.add((name: name, kind: kind, opt: true, def: def))
       purePath &= kind2scanable(kind, true)
       inc i, 1 + name.len
+    # [arg:ModelName]
+    elif part.scanf("[$w:$w]", name, kind):
+      inc i, 3 + name.len + kind.len
+    # [arg:ModelName:json]
+    elif part.scanf("[$w:$w:$w]", name, kind, def):
+      inc i, 4 + name.len + kind.len + def.len
     else:
       purePath &= route[i]
       inc i
@@ -500,7 +420,7 @@ proc findModels(route: string): seq[tuple[name, kind, mode: string]] =
     # [arg:ModelName]
     if part.scanf("[$w:$w]", name, kind):
       result.add((name: name, kind: kind, mode: mode))
-      inc i, 3 + name.len + kind.len + mode.len
+      inc i, 3 + name.len + kind.len
     # [arg:ModelName:json]
     elif part.scanf("[$w:$w:$w]", name, kind, mode):
       result.add((name: name, kind: kind, mode: mode))
@@ -519,57 +439,13 @@ proc handleRoute*(route: string): RouteDataObj =
   ## model full: `[argument:ModelName:json]`
   ## 
   result = RouteDataObj(path: route, pathParams: @[], requestModels: @[])
-  # result.path = route
-  # var routePathStr = route
-  # custom patterns [DEPRECATED]
-  # var types = ""
-  # {.gcsafe.}:
-  #   when defined(napibuild) or exportPython or exportJvm:
-  #     for routeParamType in registeredRouteParamTypes.values():
-  #       routePathStr = routePathStr.replace(
-  #         re2(r"\{[a-zA-Z][a-zA-Z0-9_]*(\??):" & routeParamType.name & r"(=\S+?)?\}"),
-  #         "(" & routeParamType.pattern & ")$1"
-  #       )
-  #       types &= "|" & routeParamType.name
-  #   else:
-  #     for key, routeParamType in registeredRouteParamTypes.pairs():
-  #       routePathStr = routePathStr.replace(
-  #         re2(r"\{[a-zA-Z][a-zA-Z0-9_]*(\??):" & $routeParamType[0] & r"(=\S+?)?\}"),
-  #         "(" & $routeParamType[1] & ")$1"
-  #       )
-  #       types &= "|" & $routeParamType[0]
-  # Remove models
-  # when exportPython:
-  #   routePathStr = routePathStr.replace(re2"\[[a-zA-Z][a-zA-Z0-9_]*(:[a-zA-Z][a-zA-Z0-9_]*)?(:[a-zA-Z\\-]+)?\]", "")
-  # else:
-  #   routePathStr = routePathStr.replace(re2"\[[a-zA-Z][a-zA-Z0-9_]*:[a-zA-Z][a-zA-Z0-9_]*(:[a-zA-Z\\-]+)?\]", "")
-  # let
-  #   foundModels =
-  #     when exportPython:
-  #       path.findAll(
-  #         re2"\[([a-zA-Z][a-zA-Z0-9_]*)(:[a-zA-Z][a-zA-Z0-9_]*)?(:[a-zA-Z\\-]+)?\]"
-  #       )
-  #     else:
-  #       path.findAll(
-  #         re2"\[([a-zA-Z][a-zA-Z0-9_]*):([a-zA-Z][a-zA-Z0-9_]*)(:[a-zA-Z\\-]+)?\]"
-  #       )
-    # foundPathParams = path.findParams()
-      # path.findAll(
-      #   re2(
-      #     r"\{([a-zA-Z][a-zA-Z0-9_]*\??)(:(bool|int|float|string|path|word|/[\s\S]+?/|enum\(\w+\)" &
-      #     types &
-      #     r"))?(\[m\])?(=(\S+?))?\}"
-      #   )
-      # )
   
   var purePath: string = ""
 
   for p in route.findParams(purePath):
-    # echo p
     result.pathParams.add(newPathParamObj(p.name, p.kind, p.def, p.opt))
     
   for m in route.findModels():
-    # echo m
     result.requestModels.add(newRequestModelObj(m.name, m.kind, m.mode))
   if purePath.startsWith("//"):
     purePath = purePath[1..^1]
@@ -602,21 +478,8 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode =
     elifBranch = newNimNode(nnkElifBranch)
     scanStmt = newCall("scanf", urlPath, newLit(routeData.purePath & "$."))
     condition = newStmtList()
-  # elifBranch.add(newCall("contains", urlPath, newStmtList(
-  #   newLetStmt(ident"__regExp", regExp),
-  #   ident"__regExp"
-  # )), body)
-  # re2"\{[a-zA-Z][a-zA-Z0-9_]*(\??):enum\((\w+)\)(\[m\])?(=\S+?)?\}"
-  # Find all enums in route:
-  # for found in routeData.purePath.findAll(re2"_ENUM_\[([a-zA-Z][a-zA-Z0-9_]*)\]"):
-  #   echo routeData.purePath[found.group(0)]
 
-  var idx = 0
-  let paramsCount = routeData.pathParams.len
   for i in routeData.pathParams:
-    # echo i
-    # if not body.isIdentUsed(ident(i.name)):
-    #   continue
     condition.add(
       if i.defaultValue.len > 0:
         newNimNode(nnkVarSection).add(
@@ -633,184 +496,11 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode =
     )
     scanStmt.add(ident(i.name))
     hasChildren = true
+  
   condition.add(scanStmt)
   elifBranch.add(condition)
-    # let
-    #   letSection = newNimNode(nnkLetSection).add(
-    #     newNimNode(nnkIdentDefs).add(ident(i.name), newEmptyNode())
-    #   )
-    #   group = newCall(
-    #     "group",
-    #     newNimNode(nnkBracketExpr).add(
-    #       if routeData.pathParams.len > 1:
-    #         ident"founded_regexp_matches"
-    #       else:
-    #         newCall("findAll", urlPath, ident"__regExp"),
-    #       newLit(0)
-    #     ),
-    #     newLit(idx)
-    #   )
-    #   groupForce = newCall(
-    #     "group",
-    #     newNimNode(nnkBracketExpr).add(
-    #       newCall("findAll", urlPath, ident"__regExp"), newLit(0)
-    #     ),
-    #     newLit(idx)
-    #   )
-    #   foundGroup = newCall("decodeUrl", newNimNode(nnkBracketExpr).add(urlPath, group))
-    #   foundGroupForce = newCall("decodeUrl", newNimNode(nnkBracketExpr).add(urlPath, groupForce))
-    #   # _groupLen < 1
-    #   conditionOptional = newCall("<", newCall("len", group), newLit(1))
-    #   # _foundGroupLen == 0
-    #   conditionSecondOptional = newCall("==", newCall("len", foundGroup), newLit(0))
-
-    # if i.optional:
-    #   case i.paramType:
-    #   of "bool":
-    #     letSection[0].add(newNimNode(nnkIfStmt).add(
-    #         newNimNode(nnkElifBranch).add(
-    #           conditionOptional,
-    #           newLit(
-    #             if i.defaultValue == "": false else: parseBool(i.defaultValue)
-    #           )
-    #         ),
-    #         newNimNode(nnkElifBranch).add(
-    #           conditionSecondOptional,
-    #           newLit(
-    #             if i.defaultValue == "": false else: parseBool(i.defaultValue)
-    #           )
-    #         ),
-    #         newNimNode(nnkElse).add(newCall("parseBool", foundGroup))
-    #       )
-    #     )
-    #   of "int":
-    #     letSection[0].add(newNimNode(nnkIfStmt).add(
-    #         newNimNode(nnkElifBranch).add(
-    #           conditionOptional,
-    #           newLit(
-    #             if i.defaultValue == "": 0 else: parseInt(i.defaultValue)
-    #           )
-    #         ),
-    #         newNimNode(nnkElifBranch).add(
-    #           conditionSecondOptional,
-    #           newLit(
-    #             if i.defaultValue == "": 0 else: parseInt(i.defaultValue)
-    #           )
-    #         ),
-    #         newNimNode(nnkElse).add(newCall("parseInt", foundGroup))
-    #       )
-    #     )
-    #   of "float":
-    #     letSection[0].add(newNimNode(nnkIfStmt).add(
-    #         newNimNode(nnkElifBranch).add(
-    #           conditionOptional,
-    #           newLit(
-    #             if i.defaultValue == "": 0.0 else: parseFloat(i.defaultValue)
-    #           )
-    #         ),
-    #         newNimNode(nnkElifBranch).add(
-    #           conditionSecondOptional,
-    #           newLit(
-    #             if i.defaultValue == "": 0.0 else: parseFloat(i.defaultValue)
-    #           )
-    #         ),
-    #         newNimNode(nnkElse).add(newCall("parseFloat", foundGroup))
-    #       )
-    #     )
-    #   of "string", "word", "path":
-    #     letSection[0].add(newNimNode(nnkIfStmt).add(
-    #         newNimNode(nnkElifBranch).add(
-    #           conditionOptional,
-    #           newLit(
-    #             if i.defaultValue == "": "" else: i.defaultValue
-    #           )
-    #         ),
-    #         newNimNode(nnkElifBranch).add(
-    #           conditionSecondOptional,
-    #           newLit(
-    #             if i.defaultValue == "": "" else: i.defaultValue
-    #           )
-    #         ),
-    #         newNimNode(nnkElse).add(foundGroup)
-    #       )
-    #     )
-    #   else:
-    #     # string Enum
-    #     if ($i.paramType).startsWith("enum"):
-    #       let enumName = ($i.paramType)[5..^2]
-    #       letSection[0].add(newNimNode(nnkIfStmt).add(
-    #           newNimNode(nnkElifBranch).add(
-    #             conditionOptional,
-    #             if i.defaultValue == "":
-    #               newCall("default", ident(enumName))
-    #             else:
-    #               newCall(newNimNode(nnkBracketExpr).add(ident"parseEnum", ident(enumName)), newLit(i.defaultValue))
-    #           ),
-    #           newNimNode(nnkElifBranch).add(
-    #             conditionSecondOptional,
-    #             if i.defaultValue == "":
-    #               newCall("default", ident(enumName))
-    #             else:
-    #               newCall(newNimNode(nnkBracketExpr).add(ident"parseEnum", ident(enumName)), newLit(i.defaultValue))
-    #           ),
-    #           newNimNode(nnkElse).add(
-    #             newCall(newNimNode(nnkBracketExpr).add(ident"parseEnum", ident(enumName)), foundGroupForce)
-    #           )
-    #         )
-    #       )
-    #       elifBranch[0] = newCall(
-    #         "and",
-    #         elifBranch[0].copy(),
-    #         newCall(newDotExpr(ident(enumName), ident"has"), foundGroup)
-    #       )
-    #     else:
-    #       # custom type
-    #       when defined(napibuild) or exportPython or exportJvm:
-    #           letSection[0].add(foundGroup)
-    #       else:
-    #         if $i.paramType in registeredRouteParamTypes:
-    #           var data = registeredRouteParamTypes[$i.paramType]
-    #           letSection[0].add(newCall(data[2], foundGroup))
-    #         # regex
-    #         else:
-    #           letSection[0].add(foundGroup)
-    # else:
-    #   case i.paramType:
-    #   of "bool":
-    #     letSection[0].add(newCall("parseBool", foundGroup))
-    #   of "int":
-    #     letSection[0].add(newCall("parseInt", foundGroup))
-    #   of "float":
-    #     letSection[0].add(newCall("parseFloat", foundGroup))
-    #   of "path", "string", "word":
-    #     letSection[0].add(foundGroup)
-    #   else:
-    #     # string Enum
-    #     if ($i.paramType).startsWith("enum"):
-    #       let enumName = ($i.paramType)[5..^2]
-    #       # elifBranch.add(newCall("contains", urlPath, regExp), body)
-    #       letSection[0].add(newCall(newNimNode(nnkBracketExpr).add(ident"parseEnum", ident(enumName)), foundGroupForce))
-    #       elifBranch[0] = newCall(
-    #         "and",
-    #         elifBranch[0].copy(),
-    #         newCall(newDotExpr(ident(enumName), ident"has"), foundGroupForce)
-    #       )
-    #     else:
-    #       # custom type
-    #       when exportPython or defined(napibuild) or exportJvm:
-    #           letSection[0].add(foundGroup)
-    #       else:
-    #         if $i.paramType in registeredRouteParamTypes:
-    #           var data = registeredRouteParamTypes[$i.paramType]
-    #           letSection[0].add(newCall(data[2], foundGroup))
-    #         # regex
-    #         else:
-    #           letSection[0].add(foundGroup)
-    # elifBranch[1].insert(0, letSection)
-    # hasChildren = true
-    # inc idx
-  
   elifBranch.add(body)
+
   let reqBody =
     when enableHttpBeast or enableHttpx:
       newCall("get", newDotExpr(ident"req", ident"body"))
@@ -893,20 +583,8 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode =
       )
     )
     hasChildren = true
-  
-  # echo treeRepr elifBranch
-  # echo elifBranch.toStrLit
-  # echo elifBranch.len
 
   if hasChildren:
-    # if paramsCount > 1:
-    #   elifBranch[1].insert(
-    #     0, newNimNode(nnkLetSection).add(
-    #       newIdentDefs(
-    #         ident"founded_regexp_matches", newEmptyNode(), newCall("findAll", urlPath, ident"__regExp")
-    #       )
-    #     )
-    #   )
     when enableRoutingDebugMacro:
       echo elifBranch.toStrLit
     return elifBranch
@@ -1030,45 +708,6 @@ when exportPython or defined(docgen) or defined(napibuild) or exportJvm:
             res[i.name] = parseFloatOrJString(foundGroup)
           else:
             res[i.name] = newJString(foundGroup)
-            # [DEPRECATED]
-            # when exportPython:
-            #   {.gcsafe.}:
-            #     # custom type
-            #     if $i.paramType in registeredRouteParamTypes:
-            #       var data = registeredRouteParamTypes[$i.paramType]
-            #       res[i.name] = callObject(data.creator, foundGroup)
-            #     elif registeredRouteParamTypes.hasObjectWithName($paramType):
-            #       var data = registeredRouteParamTypes.getObjectWithName($paramType)
-            #       res[i.name] = callObject(data.creator, foundGroup)
-            #     # regex
-            #     else:
-            #       res[i.name] = newJString(foundGroup)
-            # elif exportJvm:
-            #   {.gcsafe.}:
-            #     # custom type
-            #     if $i.paramType in registeredRouteParamTypes:
-            #       var data = registeredRouteParamTypes[$i.paramType]
-            #       let creator = data.creator
-            #       res[i.name] = theEnv.CallObjectMethod(
-            #         theEnv, creator.class, creator.methodId,
-            #         theEnv.NewStringUTF(theEnv, cstring(foundGroup))
-            #       )
-            #     # regex
-            #     else:
-            #       res[i.name] = newJString(foundGroup)
-            # elif defined(napibuild):
-            #   {.gcsafe.}:
-            #     # custom type
-            #     if $i.paramType in registeredRouteParamTypes:
-            #       var data = registeredRouteParamTypes[$i.paramType]
-            #       let fn = getProperty(getGlobal(), data.creator)
-            #       res[i.name] = callFunction(fn, [jsObj(foundGroup)]).toJsonNode()
-            #     # regex
-            #     else:
-            #       res[i.name] = newJString(foundGroup)
-            # # regex
-            # else:
-            #   res[i.name] = newJString(foundGroup)
         else:
           # Detect type from route
           case i.paramType:
@@ -1082,42 +721,6 @@ when exportPython or defined(docgen) or defined(napibuild) or exportJvm:
             condition(conditionOptional, conditionSecondOptional, foundGroup, defaultValue, newJString, void, res, name, "")
           else:
             res[i.name] = newJString(foundGroup)
-            # [DEPRECATED]
-            # when exportPython:
-            #   {.gcsafe.}:
-            #     # custom type
-            #     if $i.paramType in registeredRouteParamTypes:
-            #       var data = registeredRouteParamTypes[$i.paramType]
-            #       res[i.name] = callObject(data.creator, foundGroup)
-            #     # regex
-            #     else:
-            #       res[i.name] = newJString(foundGroup)
-            # elif exportJvm:
-            #   {.gcsafe.}:
-            #     # custom type
-            #     if $i.paramType in registeredRouteParamTypes:
-            #       var data = registeredRouteParamTypes[$i.paramType]
-            #       let creator = data.creator
-            #       res[i.name] = theEnv.CallObjectMethod(
-            #         theEnv, creator.class, creator.methodId,
-            #         theEnv.NewStringUTF(theEnv, cstring(foundGroup))
-            #       )
-            #     # regex
-            #     else:
-            #       res[i.name] = newJString(foundGroup)
-            # elif defined(napibuild):
-            #   {.gcsafe.}:
-            #     # custom type
-            #     if $i.paramType in registeredRouteParamTypes:
-            #       var data = registeredRouteParamTypes[$i.paramType]
-            #       let fn = getProperty(getGlobal(), data.creator)
-            #       res[i.name] = callFunction(fn, [jsObj(foundGroup)]).toJsonNode()
-            #     # regex
-            #     else:
-            #       res[i.name] = newJString(foundGroup)
-            # # regex
-            # else:
-            #   res[i.name] = newJString(foundGroup)
       elif i.paramType == "string":
         # Detect type from annotations
         case paramType
@@ -1129,45 +732,6 @@ when exportPython or defined(docgen) or defined(napibuild) or exportJvm:
           res[i.name] = parseFloatOrJString(foundGroup)
         else:
           res[i.name] = newJString(foundGroup)
-          # [DEPRECATED]
-          # when exportPython:
-          #   {.gcsafe.}:
-          #     # custom type
-          #     if $i.paramType in registeredRouteParamTypes:
-          #       var data = registeredRouteParamTypes[$i.paramType]
-          #       res[i.name] = callObject(data.creator, foundGroup)
-          #     elif registeredRouteParamTypes.hasObjectWithName($paramType):
-          #       var data = registeredRouteParamTypes.getObjectWithName($paramType)
-          #       res[i.name] = callObject(data.creator, foundGroup)
-          #     # regex
-          #     else:
-          #       res[i.name] = newJString(foundGroup)
-          # elif exportJvm:
-          #   {.gcsafe.}:
-          #     # custom type
-          #     if $i.paramType in registeredRouteParamTypes:
-          #       var data = registeredRouteParamTypes[$i.paramType]
-          #       let creator = data.creator
-          #       res[i.name] = theEnv.CallObjectMethod(
-          #         theEnv, creator.class, creator.methodId,
-          #         theEnv.NewStringUTF(theEnv, cstring(foundGroup))
-          #       )
-          #     # regex
-          #     else:
-          #       res[i.name] = newJString(foundGroup)
-          # elif defined(napibuild):
-          #   {.gcsafe.}:
-          #     # custom type
-          #     if $i.paramType in registeredRouteParamTypes:
-          #       var data = registeredRouteParamTypes[$i.paramType]
-          #       let fn = getProperty(getGlobal(), data.creator)
-          #       res[i.name] = callFunction(fn, [jsObj(foundGroup)]).toJsonNode()
-          #     # regex
-          #     else:
-          #       res[i.name] = newJString(foundGroup)
-          # # regex
-          # else:
-          #   res[i.name] = newJString(foundGroup)
       else:
         # Detect from route
         case i.paramType:
@@ -1181,42 +745,6 @@ when exportPython or defined(docgen) or defined(napibuild) or exportJvm:
           res[i.name] = newJString(foundGroup)
         else:
           res[i.name] = newJString(foundGroup)
-          # [DEPRECATED]
-          # when exportPython:
-          #   {.gcsafe.}:
-          #     # custom type
-          #     if $i.paramType in registeredRouteParamTypes:
-          #       var data = registeredRouteParamTypes[$i.paramType]
-          #       res[i.name] = callObject(data.creator, foundGroup)
-          #     # regex
-          #     else:
-          #       res[i.name] = newJString(foundGroup)
-          # elif exportJvm:
-          #   {.gcsafe.}:
-          #     # custom type
-          #     if $i.paramType in registeredRouteParamTypes:
-          #       var data = registeredRouteParamTypes[$i.paramType]
-          #       let creator = data.creator
-          #       res[i.name] = theEnv.CallObjectMethod(
-          #         theEnv, creator.class, creator.methodId,
-          #         theEnv.NewStringUTF(theEnv, cstring(foundGroup))
-          #       )
-          #     # regex
-          #     else:
-          #       res[i.name] = newJString(foundGroup)
-          # elif defined(napibuild):
-          #   {.gcsafe.}:
-          #     # custom type
-          #     if $i.paramType in registeredRouteParamTypes:
-          #       var data = registeredRouteParamTypes[$i.paramType]
-          #       let fn = getProperty(getGlobal(), data.creator)
-          #       res[i.name] = callFunction(fn, [jsObj(foundGroup)]).toJsonNode()
-          #     # regex
-          #     else:
-          #       res[i.name] = newJString(foundGroup)
-          # # regex
-          # else:
-          #   res[i.name] = newJString(foundGroup)
       inc idx
 
     for i in routeData.requestModels:

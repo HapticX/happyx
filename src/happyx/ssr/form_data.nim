@@ -27,9 +27,7 @@ import
   std/uri,
   std/xmltree,
   std/xmlparser,
-  std/json,
-  # Thirdparty
-  regex
+  std/json
 
 
 type FormDataItem* = object
@@ -40,42 +38,46 @@ proc parseFormData*(formData: string): (StringTableRef, TableRef[string, FormDat
   ## Parses `form-data` into `StringTableRef`
   result = (newStringTable(), newTable[string, FormDataItem]())
   let
-    formDataSeparator = re2"\-{2,}\w+(\-{2})?\r\n"
     lineSeparator = "\r\n"
-    data = formData.split(formDataSeparator)
-  for item in data:
-    let lines = item.split(lineSeparator)
-    var
+    lines = formData.split("\r\n")
+  var
+    key = ""
+    data = ""
+    filename = ""
+    contentType = ""
+    i = 0
+  for line in lines:
+    if line == "": continue
+    if line.startsWith("--"):
+      if key.len > 0 and data.len > 0:
+        let d =
+          if filename.len == 0:
+            data.strip()
+          else:
+            data
+        result[0][key] = d
+        result[1][key] = FormDataItem(data: d, name: key, filename: filename, contentType: contentType)
       key = ""
       data = ""
       filename = ""
       contentType = ""
       i = 0
-    for line in lines:
-      if line == "": continue
-      if line.startsWith("Content-Disposition"):
-        # every param
-        for param in line.split(";"):
-          let lparam = param.toLower().strip()
-          if lparam.startsWith("name"):
-            key = param.split("\"")[1]
-          elif lparam.startsWith("filename"):
-            filename = param.split("\"")[1]
-      elif line.startsWith("Content-Type"):
-        contentType = line.split(":")[1]
-      else:
-        data &= line
-        if i < lines.len:
-          data &= "\r\n"
-      inc i
-    if key.len > 0 and data.len > 0:
-      let d =
-        if filename.len == 0:
-          data.strip()
-        else:
-          data
-      result[0][key] = d
-      result[1][key] = FormDataItem(data: d, name: key, filename: filename, contentType: contentType)
+      continue
+    if line.startsWith("Content-Disposition"):
+      # every param
+      for param in line.split(";"):
+        let lparam = param.toLower().strip()
+        if lparam.startsWith("name"):
+          key = param.split("\"")[1]
+        elif lparam.startsWith("filename"):
+          filename = param.split("\"")[1]
+    elif line.startsWith("Content-Type"):
+      contentType = line.split(":")[1]
+    else:
+      data &= line
+      if i < lines.len:
+        data &= "\r\n"
+    inc i
 
 
 proc iterateOverXml(tree: XmlNode, jsonNode: var JsonNode, path: var seq[string], parent: XmlNode = nil) =

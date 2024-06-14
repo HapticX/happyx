@@ -308,8 +308,6 @@ when enableAppRouting:
   import happyx/routing/routing
   import happyx/core/queries
 when enableDefaultComponents:
-  import regex
-  export regex
   import happyx/spa/components
   export components
 

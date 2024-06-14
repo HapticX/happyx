@@ -29,10 +29,12 @@ import
   std/strutils,
   std/macros,
   std/tables,
-  # Deps
-  regex,
   # HappyX
   ../core/[exceptions]
+
+
+when nimvm:
+  import regex
 
 
 proc buildJsProc(body: NimNode, src: var string, lvl: int = 0,

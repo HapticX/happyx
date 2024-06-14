@@ -8,14 +8,16 @@ import
   std/macrocache,
   std/strutils,
   std/json,
-  # thirdparty
-  regex,
   # happyx
   ../../routing/[routing, mounting],
   ../../private/macro_utils,
   ../../core/constants,
   ../request_models,
   ./api_doc_template
+
+
+when nimvm:
+  import regex
 
 
 

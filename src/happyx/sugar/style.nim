@@ -71,11 +71,13 @@ import
   std/strutils,
   std/strformat,
   std/macros,
-  # deps
-  regex,
   # HappyX
   ../core/[exceptions],
   ../private/[macro_utils]
+
+
+when nimvm:
+  import regex
 
 
 const nnkNumbers* = nnkIntLit..nnkFloat128Lit

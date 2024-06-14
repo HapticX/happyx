@@ -38,9 +38,7 @@ when enableDebug:
   export logging
 
 when enableAppRouting:
-  import
-    ../routing/routing,
-    regex
+  import ../routing/routing
 
 
 when defined(js):
@@ -58,10 +56,6 @@ export
   strutils,
   tables,
   tag
-
-when enableAppRouting:
-  import
-    regex
 
 {.experimental: "codeReordering".}
 
@@ -286,7 +280,6 @@ when defined(js):
       if dom.childNodes.len > vdom.childNodes.len:
         for i in 0..<(dom.childNodes.len - vdom.childNodes.len):
           dom.childNodes[^1].remove()
-      let realLength = dom.childNodes.len
       for i in 0..<vdom.childNodes.len:
         if i >= dom.childNodes.len:
           dom.appendChild(vdom.childNodes[i].cloneNode(true))

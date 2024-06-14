@@ -739,7 +739,7 @@ when defined(js):
     let xmlNode = parseHtml(source)
     result = initTagVm("div", @[], true)
     result.xmlTree2Tag(nil, xmlNode)
-    result = result.children[0].children[0].VmTagRef
+    result = result.children[0].children[0]
 
 
   proc addArg*(self: VmTagRef, arg: string) =
@@ -763,7 +763,7 @@ when defined(js):
     if self.args.len == 0:
       self.args.add(arg)
     for i in self.children:
-      i.VmTagRef.addArgIter(arg)
+      i.addArgIter(arg)
 
 
   proc toSeqIter*(self: VmTagRef): seq[VmTagRef] =
@@ -772,7 +772,7 @@ when defined(js):
     else:
       result = @[self]
     for child in self.children:
-      for i in child.VmTagRef.toSeqIter:
+      for i in child.toSeqIter:
         result.add(i)
     return result
 
@@ -805,7 +805,7 @@ when defined(js):
 
   func `[]`*(self: VmTagRef, index: int): VmTagRef =
     ## Returns tag by index
-    self.children[index].VmTagRef
+    self.children[index]
 
 
   func `[]=`*(self: VmTagRef, attrName: string, attrValue: string) =

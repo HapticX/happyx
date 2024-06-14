@@ -286,7 +286,6 @@ efficiency and perform different checks.
 
 
 import macros, parseutils
-import std/private/since
 
 when defined(nimPreviewSlimSystem):
   import std/assertions
