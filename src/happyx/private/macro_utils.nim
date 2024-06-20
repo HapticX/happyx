@@ -1229,19 +1229,32 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
     
     elif statement.kind == nnkCurly and statement.len == 1:
       # variables and procedures
+      echo statement.toStrLit
       result.add(newNimNode(nnkWhenStmt).add(newNimNode(nnkElifBranch).add(
         newCall(
           "is", statement[0], ident"TagRef"
         ),
+        # newStmtList(
+        #   newLetStmt(ident"_x", statement[0]),
+        #   newCall("echo", newDotExpr(ident"_x", ident"onlyChildren")),
+        #   newAssignment(newDotExpr(ident"_x", ident"onlyChildren"), newLit(true)),
+        #   newCall("echo", newLit($statement[0].toStrLit), newLit", ", ident"_x"),
+        #   ident"_x"
+        # )
         statement[0]
       ), newNimNode(nnkElifBranch).add(
         newCall("is", statement[0], newNimNode(nnkProcTy)),
-        block:
-          var call = newCall(statement[0])
-          call
+        # newStmtList(
+        #   newLetStmt(ident"_x", newCall(statement[0])),
+        #   newAssignment(newDotExpr(ident"_x", ident"onlyChildren"), newLit(true)),
+        #   newCall("echo", newLit($statement[0].toStrLit), newLit", ", ident"_x"),
+        #   ident"_x"
+        # )
+        newCall(statement[0])
       ), newNimNode(nnkElse).add(
         newCall("initTag", newCall("$", statement[0]), newLit(true))
       )))
+      echo result[^1].toStrLit
     
     # if-elif or case-of
     elif statement.kind in [nnkCaseStmt, nnkIfStmt, nnkIfExpr, nnkWhenStmt]:

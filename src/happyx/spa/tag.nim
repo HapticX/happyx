@@ -66,6 +66,18 @@ const
     "img", "isindex", "link", "meta", "param", "wbr", "source",
     "input", "!DOCTYPE"
   ]
+  SvgElements* = [
+    "animate", "animateMotion", "animateTransform", "circle", "clipPath",
+    "defs", "desc", "ellipse", "feBlend", "feColorMatrix", "feComponentTransfer",
+    "feComposite", "feConvolveMatrix", "feDiffuseLighting", "feDisplacementMap",
+    "feDistantLight", "feDropShadow", "feFlood", "feFuncA", "feFuncB", "feFuncG",
+    "feFuncR", "feGaussianBlur", "feImage", "feMerge", "feMergeNode", "feMorphology",
+    "feOffset", "fePointLight", "feSpecularLighting", "feSpotLight", "feTitle",
+    "feTurbulence", "filter", "foreignObject", "g", "image", "line", "linearGradient",
+    "marker", "mask", "metadata", "mpath", "path", "pattern", "polygon", "polyline",
+    "radialGradient", "rect", "set", "stop", "svg", "switch", "symbol", "text", "textPath",
+    "use", "view"
+  ]
   NimKeywords* = [
     "if", "elif", "else", "using", "type", "of", "in", "notin", "and",
     "binding", "mixin", "type", "div", "mod", "case", "while", "for",
@@ -155,9 +167,9 @@ proc add*(self: TagRef, tags: varargs[TagRef]) =
         continue
       if tag.onlyChildren:
         for i in tag.childNodes[0..^1]:
-          self.appendChild(i)
+          self.add(i.TagRef)
       else:
-        self.appendChild(tag)
+        self.appendChild(tag.cloneNode(true))
   else:
     for tag in tags:
       if tag.isNil():
@@ -168,7 +180,7 @@ proc add*(self: TagRef, tags: varargs[TagRef]) =
 
 when defined(js):
   proc setAttributes(name: string, e: TagRef, attrs: StringTableRef) =
-    if name.toLower() in ["svg", "path", "circle", "rect"]:
+    if name.toLower() in SvgElements:
       if attrs.hasKey("class"):
         let a = cstring(attrs["class"])
         {.emit: "`e`.setAttributeNS(null, 'class', `a`);".}
@@ -180,7 +192,7 @@ when defined(js):
         e.setAttribute(cstring(key), cstring(val))
 
   proc newElement(name: string): TagRef =
-    if name.toLower() in ["svg", "path", "circle", "rect"]:
+    if name.toLower() in ["svg", "path", "circle", "rect", "g", "defs", "animate", "ellipse", "polygon", "mask"]:
       result = TagRef()
       let n = cstring(name)
       {.emit: "`result` = document.createElementNS('http://www.w3.org/2000/svg', `n`)".}
