@@ -25,7 +25,7 @@ proc toggleDrawer*() =
 component Drawer:
   isOpen: bool = false
 
-  `template`:
+  html:
     # Drawer background
     tDiv(id = nu"drawerBack", class = "fixed duration-500 opacity-0 pointer-events-none transition-all w-screen h-screen z-40 bg-[#00000060]"):
       @click:
