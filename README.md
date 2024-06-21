@@ -53,7 +53,6 @@ HappyX is macro-oriented web framework so you mustn't write a lot of code ✨
 - Automatic translate with `-d:hpxTranslate` or `-d:translate` flags.
 - CLI tool for `creating`, `serving` and `building` your projects.
 - Hot code reloading (only for `SPA` projects as of now).
-- Built-in UI library (to enable compile with `-d:enableUi` flag).
 - [Python bindings](https://pypi.org/project/happyx/)
 - [NodeJS bindings](https://www.npmjs.com/package/happyx)
 
