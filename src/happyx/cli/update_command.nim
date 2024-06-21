@@ -1,5 +1,4 @@
 import
-  std/strscans,
   ./utils
 
 
