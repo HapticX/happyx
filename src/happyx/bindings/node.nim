@@ -246,10 +246,11 @@ init proc(module: Module) =
   
 
   proc hpxRegisterPathParamType(name: string, pattern: string, callback: napi_function) {. export_napi .} =
-    let funcUniqName = "jsCallbackFuncCustomPathParam_" & genSessionId()
-    registerRouteParamTypeAux(
-      args.get("name").getStr,
-      args.get("pattern").getStr,
-      funcUniqName
-    )
-    setProperty(getGlobal(), funcUniqName, args.get("callback"))
+    {.warning: "Custom path params are deprecated. Will cause error in the future".}
+    # let funcUniqName = "jsCallbackFuncCustomPathParam_" & genSessionId()
+    # registerRouteParamTypeAux(
+    #   args.get("name").getStr,
+    #   args.get("pattern").getStr,
+    #   funcUniqName
+    # )
+    # setProperty(getGlobal(), funcUniqName, args.get("callback"))

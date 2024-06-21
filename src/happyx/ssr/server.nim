@@ -68,8 +68,6 @@ import
   std/colors,
   std/json,
   std/os,
-  # Deps
-  regex,
   checksums/md5,
   # HappyX
   ./cors,
@@ -88,7 +86,6 @@ export
   logging,
   cookies,
   colors,
-  regex,
   json,
   terminal,
   os
@@ -657,7 +654,7 @@ proc detectReturnStmt(node: NimNode, replaceReturn: bool = false) =
   if replaceReturn or node.kind in AtomicNodes:
     return
   if node[^1].kind in [nnkCall, nnkCommand]:
-    if node[^1][0].kind == nnkIdent and re2"^(answer|echo|translate)" in $node[^1][0]:
+    if node[^1][0].kind == nnkIdent and $node[^1][0] in ["answer", "echo", "translate"]:
       return
     elif node[^1][0].kind == nnkDotExpr and ($node[^1][0][1]).toLower().startsWith("answer"):
       return
@@ -688,11 +685,10 @@ macro routes*(server: Server, body: untyped = newStmtList()): untyped =
   ## - `bool`: any boolean (`y`, `yes`, `on`, `1` and `true` for true; `n`, `no`, `off`, `0` and `false` for false).
   ## - `int`: any integer.
   ## - `float`: any float number.
-  ## - `word`: any word includes `re2"\w+"`.
+  ## - `word`: any word.
   ## - `string`: any string excludes `"/"`.
   ## - `enum(EnumName)`: any string excludes `"/"`. Converts into `EnumName`.
   ## - `path`: any float number includes `"/"`.
-  ## - `regex`: any regex pattern excludes groups. Usage - `"/path{pattern:/yourRegex/}"`
   ## 
   ## #### Available Route Types
   ## - `"/path/with/{args:path}"`: Just string with route path. Matches any request method
@@ -897,10 +893,10 @@ socketToSsr.onmessage=function(m){
     body.add(newCall(ident"get", path, getMethod))
 
   when enableHttpx or enableHttpBeast:
-    var path = newNimNode(nnkBracketExpr).add(
+    var path = newCall("decodeUrl", newNimNode(nnkBracketExpr).add(
       newCall("split", newCall("get", newCall("path", ident"req")), newLit"?"),
       newLit(0)
-    )
+    ))
     let
       reqMethod = newCall("get", newDotExpr(ident"req", ident"httpMethod"))
       hostname = newDotExpr(ident"req", ident"ip")
@@ -923,7 +919,7 @@ socketToSsr.onmessage=function(m){
         )
       )
   else:
-    var path = newDotExpr(newDotExpr(ident"req", ident"url"), ident"path")
+    var path = newCall("decodeUrl", newDotExpr(newDotExpr(ident"req", ident"url"), ident"path"))
     let
       reqMethod = newDotExpr(ident"req", ident"reqMethod")
       hostname = newDotExpr(ident"req", ident"hostname")

@@ -50,7 +50,7 @@ serve "127.0.0.1", 5000:
   "/some":
     ## Hello, world
     return "Hi"
-  get "/calculate/$left:float[m]/$operator:string[m]/$right?:float[m]":
+  get "/calculate/$left:float/$operator:string/$right?:float":
     ## Some
     echo left
     echo right
@@ -98,6 +98,6 @@ serve "127.0.0.1", 5000:
     ## Creates a new post
     return "Hello, world!"
 
-  put "/post$id:int":
+  put "/post/$id:int":
     ## Edits a post
     return "Hello, world!"

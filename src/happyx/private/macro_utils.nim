@@ -1229,6 +1229,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
     
     elif statement.kind == nnkCurly and statement.len == 1:
       # variables and procedures
+      # echo statement.toStrLit
       result.add(newNimNode(nnkWhenStmt).add(newNimNode(nnkElifBranch).add(
         newCall(
           "is", statement[0], ident"TagRef"
@@ -1236,12 +1237,11 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
         statement[0]
       ), newNimNode(nnkElifBranch).add(
         newCall("is", statement[0], newNimNode(nnkProcTy)),
-        block:
-          var call = newCall(statement[0])
-          call
+        newCall(statement[0])
       ), newNimNode(nnkElse).add(
         newCall("initTag", newCall("$", statement[0]), newLit(true))
       )))
+      # echo result[^1].toStrLit
     
     # if-elif or case-of
     elif statement.kind in [nnkCaseStmt, nnkIfStmt, nnkIfExpr, nnkWhenStmt]:

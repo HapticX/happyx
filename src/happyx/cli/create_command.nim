@@ -83,12 +83,12 @@ proc createCommand*(name: string = "", kind: string = "", templates: bool = fals
       styledEcho fgMagenta, "hpx create ", styleBright, "--name=app --kind=SPA"
       shutdownCli()
       return QuitFailure
-    while projectName.len < 1 or projectName.contains(re2"[,!\\/':@~`]"):
+    while projectName.len < 1 or projectName.contains({',', '!', '\\', '/', ':', '@', '~', '`'}):
       styledEcho fgRed, "Invalid name! It doesn't contains one of these symbols: , ! \\ / ' : @ ~ `"
       styledWrite stdout, fgYellow, align("Project name: ", 14)
       projectName = readLine(stdin)
   else:
-    if projectName.contains(re2"[,!\\/':@~`]"):
+    if projectName.contains({',', '!', '\\', '/', ':', '@', '~', '`'}):
       styledEcho fgRed, "Invalid name! It doesn't contains one of these symbols: , ! \\ / ' : @ ~ `"
       shutdownCli()
       return QuitFailure

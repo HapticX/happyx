@@ -9,10 +9,7 @@ import
   std/strformat,
   std/macros,
   std/macrocache,
-  std/htmlparser,
   std/os,
-  # Thirdparty
-  regex,
   # HappyX
   ./renderer,
   ./tag,
@@ -20,6 +17,8 @@ import
   ../core/[exceptions, constants],
   ../private/[macro_utils]
 
+when nimvm:
+  import regex
 
 const createdComponents = CacheTable"HappyXCreatedComponents"
 
@@ -146,6 +145,38 @@ proc compDefArg*[T](value: typedesc[T]): T =
       v = typeof(v).compDefArg()
   else:
     result = T.default()
+
+
+proc scopeCss*(source, uniqCompId: string): string =
+  let identifier = fmt"[data-{uniqCompId}]"
+  result = ""
+  var
+    i = 0
+    opened = false
+  while i < source.len:
+    if source[i] == '{' and not opened:
+      opened = true
+      result &= identifier & '{'
+      inc i
+    elif source[i] == '}' and opened:
+      opened = false
+      result &= '}'
+      inc i
+    elif not opened and source[i] in {' ', '\n'}:
+      inc i
+    else:
+      result &= source[i]
+      inc i
+  # styleStmtList = newStmtList(
+  #   newAssignment(
+  #     ident"result",
+  #     newCall("replace",
+  #       newCall("fmt", newLit($css), newLit('<'), newLit('>')),
+  #       newCall("re2", newLit("([\\S ]+?) *\\{")),
+  #       newCall("fmt", newLit("$1[data-{self.uniqCompId}] {{"))
+  #     )
+  #   )
+  # )
 
 
 macro component*(name, body: untyped): untyped =
@@ -575,10 +606,9 @@ macro component*(name, body: untyped): untyped =
             styleStmtList = newStmtList(
               newAssignment(
                 ident"result",
-                newCall("replace",
+                newCall("scopeCss",
                   newCall("fmt", newLit($css), newLit('<'), newLit('>')),
-                  newCall("re2", newLit("([\\S ]+?) *\\{")),
-                  newCall("fmt", newLit("$1[data-{self.uniqCompId}] {{"))
+                  newDotExpr(ident"self", ident"uniqCompId")
                 )
               )
             )
@@ -587,10 +617,9 @@ macro component*(name, body: untyped): untyped =
             styleStmtList = newStmtList(
               newAssignment(
                 ident"result",
-                newCall("replace",
+                newCall("scopeCss",
                   newCall("fmt", newLit($s[1][0]), newLit('<'), newLit('>')),
-                  newCall("re2", newLit("([\\S ]+?) *\\{")),
-                  newCall("fmt", newLit("$1[data-{self.uniqCompId}] {{"))
+                  newDotExpr(ident"self", ident"uniqCompId")
                 )
               )
             )
@@ -601,10 +630,9 @@ macro component*(name, body: untyped): untyped =
             styleStmtList = newStmtList(
               newAssignment(
                 ident"result",
-                newCall("replace",
+                newCall("scopeCss",
                   newCall("fmt", newLit($css), newLit('<'), newLit('>')),
-                  newCall("re2", newLit("([\\S ]+?) *\\{")),
-                  newCall("fmt", newLit("$1[data-{self.uniqCompId}] {{"))
+                  newDotExpr(ident"self", ident"uniqCompId")
                 )
               )
             )

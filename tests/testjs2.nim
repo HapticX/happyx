@@ -46,9 +46,9 @@ app.routes:
     button:
       "Go to /calc"
       @click:
-        route("/calc5%2b5")  # /calc5+5
+        route("/calc/5/%2b/5")  # /calc5+5
 
-  "/calc{left:int}{op:string}{right:int}":
+  "/calc/{left:int}/{op:string}/{right:int}":
     h1:
       "Result of {left} {op} {right}"
     h2:

@@ -24,7 +24,7 @@ model FighterCreate:
 
 
 serve "127.0.0.1", 5000:
-  post "/fighter[o:FighterCreate:json]":
+  post "/fighter/[o:FighterCreate:json]":
     echo "new fighter: ", o
     return {"response": {
       "name": o.name,

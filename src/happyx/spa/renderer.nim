@@ -38,9 +38,7 @@ when enableDebug:
   export logging
 
 when enableAppRouting:
-  import
-    ../routing/routing,
-    regex
+  import ../routing/routing
 
 
 when defined(js):
@@ -58,10 +56,6 @@ export
   strutils,
   tables,
   tag
-
-when enableAppRouting:
-  import
-    regex
 
 {.experimental: "codeReordering".}
 
@@ -286,7 +280,6 @@ when defined(js):
       if dom.childNodes.len > vdom.childNodes.len:
         for i in 0..<(dom.childNodes.len - vdom.childNodes.len):
           dom.childNodes[^1].remove()
-      let realLength = dom.childNodes.len
       for i in 0..<vdom.childNodes.len:
         if i >= dom.childNodes.len:
           dom.appendChild(vdom.childNodes[i].cloneNode(true))
@@ -511,8 +504,9 @@ macro buildHtml*(html: untyped): untyped =
 
 
 template thunkHtml*(body: untyped): proc(): TagRef =
-  proc(): TagRef = buildHtml:
-    body
+  proc(): TagRef =
+    result = buildHtml:
+      body
 
 
 template thunkHtmls*(body: untyped): seq[proc(): TagRef] =
@@ -520,8 +514,9 @@ template thunkHtmls*(body: untyped): seq[proc(): TagRef] =
     var res: seq[proc(): TagRef]
     template html(b: untyped) =
       res.add:
-        proc(): TagRef = buildHtml:
-          b
+        proc(): TagRef =
+          result = buildHtml:
+            b
     body
     res
 
@@ -689,13 +684,13 @@ when enableAppRouting:
         elif statement.kind == nnkCall and statement[0].kind == nnkPrefix and $statement[0][0] == "@" and statement.len > 1:
           nextRouteDecorators.add(($statement[0][1], statement[1..^1]))
           
-        elif statement.len == 2 and statement[0].kind == nnkStrLit:
+        elif statement.len == 2 and statement[0].kind == nnkStrLit and statement[1].kind == nnkStmtList:
           for route in nextRouteDecorators:
             decorators[route.name](@[], $statement[0], statement[1], route.args)
           let exported = exportRouteArgs(
             iPath,
             statement[0],
-            statement[1]
+            statement[1].copy()
           )
           # Route contains params
           if exported.len > 0:

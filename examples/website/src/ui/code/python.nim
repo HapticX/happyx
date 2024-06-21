@@ -473,3 +473,28 @@ def read_users():
     return response
 
 app.start()"""
+  pyMounting* = """from happyx import Server
+
+app = Server()
+profile = Server()
+
+app.mount('/profile', profile)
+
+
+@profile.get('/')
+def get_profile():
+  return 'Hello from /profile/'
+
+
+@profile.get('/{id}')
+def get_profile_by_id(id: int):
+  return f'Hello, user {id}! Route is /profile/{id}'
+
+
+@profile.get('/settings')
+def get_profile_by_id(id: int):
+  return f'Hello from /profile/settings'
+
+
+app.start()
+"""

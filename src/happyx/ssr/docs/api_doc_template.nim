@@ -177,7 +177,6 @@ const IndexApiDocPageTemplate* = fmt"""
                           <td class="px-2">Type</td>
                           <td class="px-2">Default Value</td>
                           <td class="px-2">Optional</td>
-                          <td class="px-2">Mutable</td>
                         </tr>
                       </thead>
                       <tbody>
@@ -195,9 +194,6 @@ const IndexApiDocPageTemplate* = fmt"""
                             <td class="px-2 {AccentColor} font-mono">{{{{param.defaultValue}}}}</td>
                             <td class="text-center align-middle px-2">
                               {{% if param.optional %}}✅{{% else %}}❌{{% endif %}}
-                            </td> 
-                            <td class="text-center align-middle px-2">
-                              {{% if param.mutable %}}✅{{% else %}}❌{{% endif %}}
                             </td>
                           </tr>
                         {{% endfor %}}
@@ -214,7 +210,6 @@ const IndexApiDocPageTemplate* = fmt"""
                           <td class="px-2">Name</td>
                           <td class="px-2">Type</td>
                           <td class="px-2">Target</td>
-                          <td class="px-2">Mutable</td>
                         </tr>
                       </thead>
                       <tbody>
@@ -234,9 +229,6 @@ const IndexApiDocPageTemplate* = fmt"""
                               </a>
                             </td>
                             <td class="px-2 {AccentColor} font-mono">{{{{model.target}}}}</td>
-                            <td class="text-center align-middle px-2">
-                              {{% if model.mutable %}}✅{{% else %}}❌{{% endif %}}
-                            </td>
                           </tr>
                         {{% endfor %}}
                       </tbody>

@@ -8,14 +8,16 @@ import
   std/macrocache,
   std/strutils,
   std/json,
-  # thirdparty
-  regex,
   # happyx
   ../../routing/[routing, mounting],
   ../../private/macro_utils,
   ../../core/constants,
   ../request_models,
   ./api_doc_template
+
+
+when nimvm:
+  import regex
 
 
 
@@ -31,7 +33,6 @@ proc fetchPathParams*(route: var string): tuple[pathParams, models: NimNode] =
       newLit(i.paramType),
       newLit(i.defaultValue),
       newLit(i.optional),
-      newLit(i.mutable),
     ))
 
   for i in routeData.requestModels:
@@ -40,7 +41,6 @@ proc fetchPathParams*(route: var string): tuple[pathParams, models: NimNode] =
       newLit(i.name),
       newLit(i.typeName),
       newLit(i.target),
-      newLit(i.mutable),
     ))
   
   # Clear route
@@ -365,14 +365,14 @@ proc openApiDocs*(docsData: NimNode): NimNode =
                   "required": m.group(1).len != 0,
                   "description":
                     if m.group(3).len != 0:
-                      paramText[m.group(3)].replace(re2"\s*\-\s*", "")
+                      strutils.strip(paramText[m.group(3)].replace("-", ""))
                     else:
                       "",
                   "in": "query",
                   "schema": {
                     "type":
                       if m.group(2).len != 0:
-                        paramText[m.group(2)].replace(re2":\s*", "")
+                        strutils.strip(paramText[m.group(2)].replace(":", ""))
                       else:
                         "string"
                   }

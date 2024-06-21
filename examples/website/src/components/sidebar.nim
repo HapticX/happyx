@@ -41,6 +41,11 @@ var
     "route_decorators": {
       "title": "Route Decorators 🔌",
       "prev": "tailwind_and_other",
+      "next": "mounting"
+    },
+    "mounting": {
+      "title": "Third-party routes 💫",
+      "prev": "route_decorators",
       "next": "spa_basics"
     },
     "spa_basics": {
@@ -179,6 +184,8 @@ proc SideBar*(isMobile: bool = false): TagRef =
                 {translate"Tailwind And Other 🎴"}
               SideBarItem("route_decorators", isMobile):
                 {translate"Route Decorators 🔌"}
+              SideBarItem("mounting", isMobile):
+                {translate"Third-party routes 💫"}
 
             SideBarFolder("spa_basics", "Single-page Applications 🎴", isMobile):
               SideBarItem("spa_basics", isMobile):

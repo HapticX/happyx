@@ -333,7 +333,7 @@ component SandBoxEditor:
 
 
 mount SandBox:
-  "/{sId?:string[m]}":
+  "/{sId?:string}":
     nim:
       {.emit: "monacoEditor = null;".}
       sandboxSessionId = genSessionId()

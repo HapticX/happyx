@@ -66,6 +66,18 @@ const
     "img", "isindex", "link", "meta", "param", "wbr", "source",
     "input", "!DOCTYPE"
   ]
+  SvgElements* = [
+    "animate", "animateMotion", "animateTransform", "circle", "clipPath",
+    "defs", "desc", "ellipse", "feBlend", "feColorMatrix", "feComponentTransfer",
+    "feComposite", "feConvolveMatrix", "feDiffuseLighting", "feDisplacementMap",
+    "feDistantLight", "feDropShadow", "feFlood", "feFuncA", "feFuncB", "feFuncG",
+    "feFuncR", "feGaussianBlur", "feImage", "feMerge", "feMergeNode", "feMorphology",
+    "feOffset", "fePointLight", "feSpecularLighting", "feSpotLight", "feTitle",
+    "feTurbulence", "filter", "foreignObject", "g", "image", "line", "linearGradient",
+    "marker", "mask", "metadata", "mpath", "path", "pattern", "polygon", "polyline",
+    "radialGradient", "rect", "set", "stop", "svg", "switch", "symbol", "text", "textPath",
+    "use", "view"
+  ]
   NimKeywords* = [
     "if", "elif", "else", "using", "type", "of", "in", "notin", "and",
     "binding", "mixin", "type", "div", "mod", "case", "while", "for",
@@ -155,9 +167,9 @@ proc add*(self: TagRef, tags: varargs[TagRef]) =
         continue
       if tag.onlyChildren:
         for i in tag.childNodes[0..^1]:
-          self.appendChild(i)
+          self.add(i.TagRef)
       else:
-        self.appendChild(tag)
+        self.appendChild(tag.cloneNode(true))
   else:
     for tag in tags:
       if tag.isNil():
@@ -168,7 +180,7 @@ proc add*(self: TagRef, tags: varargs[TagRef]) =
 
 when defined(js):
   proc setAttributes(name: string, e: TagRef, attrs: StringTableRef) =
-    if name.toLower() in ["svg", "path", "circle", "rect"]:
+    if name.toLower() in SvgElements:
       if attrs.hasKey("class"):
         let a = cstring(attrs["class"])
         {.emit: "`e`.setAttributeNS(null, 'class', `a`);".}
@@ -180,7 +192,7 @@ when defined(js):
         e.setAttribute(cstring(key), cstring(val))
 
   proc newElement(name: string): TagRef =
-    if name.toLower() in ["svg", "path", "circle", "rect"]:
+    if name.toLower() in ["svg", "path", "circle", "rect", "g", "defs", "animate", "ellipse", "polygon", "mask"]:
       result = TagRef()
       let n = cstring(name)
       {.emit: "`result` = document.createElementNS('http://www.w3.org/2000/svg', `n`)".}
@@ -447,47 +459,6 @@ proc toSeqIter*(self: TagRef): seq[TagRef] =
       for i in child.TagRef.toSeqIter:
         result.add(i)
   return result
-
-
-# when defined(js):
-#   proc toDom*(self: TagRef): tuple[n: Node, b: bool] =
-#     return (n: self.Node, b: false)
-# elif defined(js):
-#   proc toDom*(self: TagRef): tuple[n: Node, b: bool] =
-#     ## converts tag into DOM Element
-#     if self.isText:
-#       # detect text node
-#       return (n: document.createTextNode(self.name), b: false)
-#     elif self.onlyChildren:
-#       # detect all children
-#       var res = document.createElement("div")
-#       # iter over all children
-#       for child in self.children:
-#         let dom = child.toDom()
-#         if dom.b:
-#           while dom.n.len > 0:
-#             res.appendChild(dom.n.childNodes[0])
-#         else:
-#           res.appendChild(dom.n)
-#       return (n: res, b: true)
-#     # normal tag
-#     var res = document.createElement(self.name)
-#     # attributes
-#     for key in self.attrs.keys():
-#       res.setAttribute(key, self.attrs[key])
-#     # args
-#     for arg in self.args:
-#       res.setAttribute(arg, "")
-#     # children
-#     for child in self.children:
-#       let dom = child.toDom()
-#       # only children
-#       if dom.b:
-#         while dom.n.len > 0:
-#           res.appendChild(dom.n.childNodes[0])
-#       else:
-#         res.appendChild(dom.n)
-#     return (n: res, b: false)
 
 
 func lvl*(self: TagRef): int =
@@ -780,7 +751,7 @@ when defined(js):
     let xmlNode = parseHtml(source)
     result = initTagVm("div", @[], true)
     result.xmlTree2Tag(nil, xmlNode)
-    result = result.children[0].children[0].VmTagRef
+    result = result.children[0].children[0]
 
 
   proc addArg*(self: VmTagRef, arg: string) =
@@ -804,7 +775,7 @@ when defined(js):
     if self.args.len == 0:
       self.args.add(arg)
     for i in self.children:
-      i.VmTagRef.addArgIter(arg)
+      i.addArgIter(arg)
 
 
   proc toSeqIter*(self: VmTagRef): seq[VmTagRef] =
@@ -813,7 +784,7 @@ when defined(js):
     else:
       result = @[self]
     for child in self.children:
-      for i in child.VmTagRef.toSeqIter:
+      for i in child.toSeqIter:
         result.add(i)
     return result
 
@@ -846,7 +817,7 @@ when defined(js):
 
   func `[]`*(self: VmTagRef, index: int): VmTagRef =
     ## Returns tag by index
-    self.children[index].VmTagRef
+    self.children[index]
 
 
   func `[]=`*(self: VmTagRef, attrName: string, attrValue: string) =

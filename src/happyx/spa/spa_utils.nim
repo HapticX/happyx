@@ -4,10 +4,14 @@
 ## 
 import
   std/macros,
+  std/macrocache,
   std/strutils,
   std/jsffi
 
 export jsffi
+
+
+const utilCounter* = CacheCounter"HappyXUtilsCounter"
 
 
 proc await*(x: JsObject): JsObject {.discardable, importjs: "(await #)".}
@@ -20,13 +24,33 @@ proc clearInterval*(x: JsObject): JsObject {.discardable, importjs: "clearInterv
 
 macro eventListener*(obj: untyped, event: string, body: untyped): untyped =
   ## Creates an event listener in Nim that corresponds to `addEventListener` in JS.
+  ## 
+  ## ## Example
+  ## ```nim
+  ## var e = document.querySelector("#some-element-id")
+  ## e.eventListener("click"):
+  ##   echo "clicked!"
+  ## ```
   newStmtList(
-    newNimNode(nnkPragma).add(
-      newNimNode(nnkExprColonExpr).add(
-        ident"emit",
-        newLit("`" & $obj & "`.addEventListener('" & $event & "', (event) => {")
+    if obj.kind == nnkIdent:
+      newNimNode(nnkPragma).add(
+        newNimNode(nnkExprColonExpr).add(
+          ident"emit",
+          newLit("`" & $obj & "`.addEventListener('" & $event & "', (event) => {")
+        )
       )
-    ),
+    else:
+      let id = "__el_ev" & $utilCounter.value
+      inc utilCounter
+      newStmtList(
+        newVarStmt(ident(id), obj),
+        newNimNode(nnkPragma).add(
+          newNimNode(nnkExprColonExpr).add(
+            ident"emit",
+            newLit("`" & id & "`.addEventListener('" & $event & "', (event) => {")
+          )
+        )
+      ),
     body,
     newNimNode(nnkPragma).add(
       newNimNode(nnkExprColonExpr).add(
@@ -58,6 +82,13 @@ macro withVariables*(variables: varargs[untyped]): untyped =
 
 macro withTimeout*(time: int, id, body: untyped): untyped =
   ## Executes code after a specified timeout, similar to `setTimeout` in JS.
+  ## 
+  ## ## Example
+  ## ```nim
+  ## withTimeout 1000, t:
+  ##   clearInterval(t)
+  ##   {.emit: "res(true)".}
+  ## ```
   newNimNode(nnkBlockStmt).add(newEmptyNode(), newStmtList(
     newNimNode(nnkVarSection).add(
       newIdentDefs(ident"__timeoutTime", ident"cint", time)
@@ -107,6 +138,12 @@ macro js*(obj: untyped): untyped =
 macro withInterval*(time: static[int], ident, body: untyped): untyped =
   ## Executes code repeatedly with a specified interval, similar to `setInterval` in JS.
   ## 
+  ## ## Example
+  ## ```nim
+  ## withInterval 1000, i:
+  ##   clearInterval(i)
+  ##   {.emit: "res(true)".}
+  ## ```
   newNimNode(nnkBlockStmt).add(newEmptyNode(), newStmtList(
     newNimNode(nnkPragma).add(
       newNimNode(nnkExprColonExpr).add(
@@ -134,6 +171,14 @@ macro withInterval*(time: static[int], ident, body: untyped): untyped =
 
 macro withPromise*(ident, body: untyped): untyped =
   ## Executes code asynchronously and returns a promise, similar to creating a promise in JS.
+  ## 
+  ## ## Example
+  ## ```nim
+  ## let promise = withPromise res:
+  ##   withTimeout 1000, t:
+  ##     clearTimeout(t)
+  ##     {.emit: "res(true)".}
+  ## ```
   newNimNode(nnkBlockStmt).add(newEmptyNode(), newStmtList(
     newNimNode(nnkVarSection).add(
       newIdentDefs(

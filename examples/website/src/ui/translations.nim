@@ -878,12 +878,6 @@ translatable:
     "zh" -> "解析参数为Nim枚举类型（仅允许字符串枚举）"
     "fr" -> "Analyse le paramètre comme un type énuméré Nim (autorise uniquement les énumérations de chaînes de caractères)"
     "ko" -> "매개변수를 Nim 열거형 타입으로 구문 분석합니다 (문자열 열거형만 허용)"
-  "Parses param as string with regex pattern":
-    "ru" -> "Разбирает параметр как строку с шаблоном регулярного выражения"
-    "ja" -> "paramを正規表現パターンを含む文字列として解析します"
-    "zh" -> "解析参数为带有正则表达式模式的字符串"
-    "fr" -> "Analyse le paramètre comme une chaîne de caractères avec un motif regex"
-    "ko" -> "매개변수를 정규식 패턴을 포함한 문자열로 구문 분석합니다"
   "In addition, you can define your own parameter types ✌":
     "ru" -> "Кроме того, вы можете определить собственные типы параметров ✌"
     "ja" -> "さらに、独自のパラメータータイプを定義することができます ✌"
@@ -1592,30 +1586,30 @@ translatable:
     "zh" -> "可选路径参数，类型为bool，默认值为false"
     "fr" -> "Paramètre de chemin optionnel typé en tant que booléen avec une valeur par défaut de false"
     "ko" -> "기본값이 false인 선택적으로 정의된 부울형 경로 매개변수"
-  "Optional mutable path param typed as float with default value 3.14":
-    "ru" -> "Необязательный изменяемый параметр пути с типом float и значением по умолчанию 3.14"
-    "ja" -> "デフォルト値3.14のオプションの変更可能なfloat型パスパラメータ"
-    "zh" -> "可选的可变路径参数，类型为float，默认值为3.14"
-    "fr" -> "Paramètre de chemin optionnel mutable typé en tant que float avec une valeur par défaut de 3.14"
-    "ko" -> "기본값이 3.14인 선택적으로 정의된 변경 가능한 부동 소수점형 경로 매개변수"
-  "mutable default float":
-    "ru" -> "Изменяемый параметр с типом float и значением по умолчанию"
-    "ja" -> "デフォルトのfloat型の変更可能なパラメータ"
-    "zh" -> "可变参数，类型为float，默认值"
-    "fr" -> "Paramètre mutable typé en tant que float avec une valeur par défaut"
-    "ko" -> "변경 가능한 부동 소수점형 매개변수, 기본값은"
-  "mutable string":
-    "ru" -> "Изменяемый параметр с типом string"
-    "ja" -> "変更可能なstring型パスパラメータ"
-    "zh" -> "可变参数，类型为字符串"
-    "fr" -> "Paramètre mutable typé en tant que chaîne de caractères"
-    "ko" -> "변경 가능한 문자열 형식의 매개변수"
-  "Mutable path param typed as string":
-    "ru" -> "Изменяемый параметр пути с типом string"
-    "ja" -> "変更可能なstring型のパスパラメータ"
-    "zh" -> "可变的路径参数，类型为字符串"
-    "fr" -> "Paramètre de chemin mutable typé en tant que chaîne de caractères"
-    "ko" -> "변경 가능한 문자열 형식의 경로 매개변수"
+  "Optional path param typed as float with default value 3.14":
+    "ru" -> "Необязательный параметр пути с типом float и значением по умолчанию 3.14"
+    "ja" -> "デフォルト値が3.14のfloat型オプションパスパラメーター"
+    "zh" -> "类型为float且默认值为3.14的可选路径参数"
+    "fr" -> "Paramètre de chemin optionnel de type float avec une valeur par défaut de 3,14"
+    "ko" -> "기본값이 3.14인 float형 선택 경로 매개변수"
+  "Default float":
+    "ru" -> "Значение по умолчанию float"
+    "ja" -> "デフォルトのfloat"
+    "zh" -> "默认float"
+    "fr" -> "Float par défaut"
+    "ko" -> "기본 float"
+  "string":
+    "ru" -> "строка"
+    "ja" -> "文字列"
+    "zh" -> "字符串"
+    "fr" -> "chaîne"
+    "ko" -> "문자열"
+  "Path param typed as string":
+    "ru" -> "Параметр пути с типом string"
+    "ja" -> "文字列型のパスパラメータ"
+    "zh" -> "类型为字符串的路径参数"
+    "fr" -> "Paramètre de chemin de type chaîne de caractères"
+    "ko" -> "문자열로 유형 지정된 경로 매개변수"
   "not available":
     "ru" -> "недоступно"
     "ja" -> "利用不可"
@@ -2090,6 +2084,66 @@ translatable:
     "zh" -> "例子"
     "fr" -> "Exemple"
     "ko" -> "예시"
+  "Custom path parameters are currently deprecated and not used.":
+    "ru" -> "Кастомные параметры пути на данный момент устарели и не используются."
+    "ja" -> "カスタムパスパラメーターは現在非推奨で使用されていません。"
+    "zh" -> "自定义路径参数目前已被弃用，不再使用。"
+    "fr" -> "Les paramètres de chemin personnalisés sont actuellement obsolètes et ne sont pas utilisés."
+    "ko" -> "맞춤 경로 매개변수는 현재 사용되지 않으며 사용되지 않습니다."
+  "Third-party routes 💫":
+    "ru" -> "Сторонние маршруты 💫"
+    "ja" -> "サードパーティのルート 💫"
+    "zh" -> "第三方路由 💫"
+    "fr" -> "Routes tierces 💫"
+    "ko" -> "타사 경로 💫"
+  "Server applications typically have a large number of routes.":
+    "ru" -> "Обычно серверные приложения имеют большое количество маршрутов."
+    "ja" -> "通常、サーバーアプリケーションには多数のルートがあります。"
+    "zh" -> "服务器应用程序通常有大量的路由。"
+    "fr" -> "Les applications serveur ont généralement un grand nombre de routes."
+    "ko" -> "서버 애플리케이션에는 일반적으로 많은 경로가 있습니다."
+  "For convenience, it is customary to separate them.":
+    "ru" -> "Для удобства их принято разделять."
+    "ja" -> "便利のために、それらを分けるのが一般的です。"
+    "zh" -> "为了方便，通常会将它们分开。"
+    "fr" -> "Par commodité, il est d'usage de les séparer."
+    "ko" -> "편의를 위해 이들을 분리하는 것이 일반적입니다."
+  "In HappyX, this is done using mounting.":
+    "ru" -> "В HappyX это делается с помощью монтирования."
+    "ja" -> "HappyXでは、これがマウントを使用して行われます。"
+    "zh" -> "在HappyX中，这是通过挂载来完成的。"
+    "fr" -> "Dans HappyX, cela se fait en utilisant le montage."
+    "ko" -> "HappyX에서는 이 작업을 마운팅을 사용하여 수행합니다."
+  "Let's take a look at the example below:":
+    "ru" -> "Давайте взглянем на пример ниже:"
+    "ja" -> "以下の例を見てみましょう："
+    "zh" -> "让我们看看下面的例子："
+    "fr" -> "Jetons un coup d'œil à l'exemple ci-dessous :"
+    "ko" -> "아래 예제를 살펴보겠습니다:"
+  "Here we define additional routes that start with":
+    "ru" -> "Здесь мы задаем дополнительные маршруты, которые начинаются с"
+    "ja" -> "ここで、追加のルートを定義します。そのルートは以下から始まります"
+    "zh" -> "在这里，我们定义了以...开头的附加路由"
+    "fr" -> "Ici, nous définissons des routes supplémentaires qui commencent par"
+    "ko" -> "여기에서 시작하는 추가 경로를 정의합니다"
+  "It is important to note that such mounted routes can easily be moved to separate files and modules for greater convenience.":
+    "ru" -> "Важно отметить, что такие монтированные маршруты спокойно можно вынести в отдельные файлы и модули для большего удобства."
+    "ja" -> "このようなマウントされたルートは、より便利にするために別々のファイルやモジュールに簡単に移動できることに注意することが重要です。"
+    "zh" -> "重要的是要注意，这种挂载的路由可以轻松移动到单独的文件和模块中，以提高便利性。"
+    "fr" -> "Il est important de noter que de telles routes montées peuvent facilement être déplacées vers des fichiers et des modules séparés pour plus de commodité."
+    "ko" -> "이러한 마운트된 경로는 더 큰 편의를 위해 별도의 파일 및 모듈로 쉽게 이동할 수 있다는 점을 유의해야 합니다."
+  "A little sugar":
+    "ru" -> "Немного сахара"
+    "ja" -> "ちょっとした糖分"
+    "zh" -> "一点糖分"
+    "fr" -> "Un peu de sucre"
+    "ko" -> "약간의 설탕"
+  "Using Nim, you can also use syntactic sugar that allows you to define separate routes without resorting to mounting:":
+    "ru" -> "Используя Nim вы можете также использовать синтаксический сахар, который позволяет выносить отдельные маршруты не прибегая к монтированию:"
+    "ja" -> "Nimを使用すると、マウントに頼らずに別々のルートを定義できる構文シュガーも使用できます："
+    "zh" -> "使用Nim，您还可以使用语法糖，无需挂载即可定义单独的路由："
+    "fr" -> "En utilisant Nim, vous pouvez également utiliser du sucre syntaxique qui vous permet de définir des routes séparées sans avoir recours au montage :"
+    "ko" -> "Nim을 사용하면 마운팅을 사용하지 않고 별도의 경로를 정의할 수 있는 문법적 설탕도 사용할 수 있습니다:"
 
 
 var spokenLang: cstring

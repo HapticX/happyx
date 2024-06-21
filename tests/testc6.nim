@@ -35,7 +35,7 @@ serve("127.0.0.1", 5000):
     return "Hello, world!"
 
   @AuthBasic  # username and password will in your code.
-  get "/user{id}":
+  get "/user/{id}":
     echo username
     echo password
     return {"response": {
