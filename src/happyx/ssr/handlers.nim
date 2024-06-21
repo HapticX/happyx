@@ -5,6 +5,8 @@ import ../core/constants
 
 when defined(napibuild):
   import ./server
+  import regex
+  export regex
 
   # NodeJS Request Handlers
   template handleApiDoc*(self: Server) =
@@ -210,6 +212,8 @@ elif exportJvm:
     jnim,
     jnim/private/[jni_wrapper],
     ./server
+  import regex
+  export regex
 
   template handleJvmRequest*(self: server.Server, req: Request, urlPath: string) =
     var reqResponded {.inject.} = false
@@ -382,6 +386,8 @@ elif exportJvm:
 elif exportPython:
   import ./server
   import nimpy
+  import regex
+  export regex
 
   template handlePythonRequest*(self: server.Server, req: Request, urlPath: string) =
     {.gcsafe.}:
