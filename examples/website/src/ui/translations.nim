@@ -2090,6 +2090,60 @@ translatable:
     "zh" -> "自定义路径参数目前已被弃用，不再使用。"
     "fr" -> "Les paramètres de chemin personnalisés sont actuellement obsolètes et ne sont pas utilisés."
     "ko" -> "맞춤 경로 매개변수는 현재 사용되지 않으며 사용되지 않습니다."
+  "Third-party routes 💫":
+    "ru" -> "Сторонние маршруты 💫"
+    "ja" -> "サードパーティのルート 💫"
+    "zh" -> "第三方路由 💫"
+    "fr" -> "Routes tierces 💫"
+    "ko" -> "타사 경로 💫"
+  "Server applications typically have a large number of routes.":
+    "ru" -> "Обычно серверные приложения имеют большое количество маршрутов."
+    "ja" -> "通常、サーバーアプリケーションには多数のルートがあります。"
+    "zh" -> "服务器应用程序通常有大量的路由。"
+    "fr" -> "Les applications serveur ont généralement un grand nombre de routes."
+    "ko" -> "서버 애플리케이션에는 일반적으로 많은 경로가 있습니다."
+  "For convenience, it is customary to separate them.":
+    "ru" -> "Для удобства их принято разделять."
+    "ja" -> "便利のために、それらを分けるのが一般的です。"
+    "zh" -> "为了方便，通常会将它们分开。"
+    "fr" -> "Par commodité, il est d'usage de les séparer."
+    "ko" -> "편의를 위해 이들을 분리하는 것이 일반적입니다."
+  "In HappyX, this is done using mounting.":
+    "ru" -> "В HappyX это делается с помощью монтирования."
+    "ja" -> "HappyXでは、これがマウントを使用して行われます。"
+    "zh" -> "在HappyX中，这是通过挂载来完成的。"
+    "fr" -> "Dans HappyX, cela se fait en utilisant le montage."
+    "ko" -> "HappyX에서는 이 작업을 마운팅을 사용하여 수행합니다."
+  "Let's take a look at the example below:":
+    "ru" -> "Давайте взглянем на пример ниже:"
+    "ja" -> "以下の例を見てみましょう："
+    "zh" -> "让我们看看下面的例子："
+    "fr" -> "Jetons un coup d'œil à l'exemple ci-dessous :"
+    "ko" -> "아래 예제를 살펴보겠습니다:"
+  "Here we define additional routes that start with":
+    "ru" -> "Здесь мы задаем дополнительные маршруты, которые начинаются с"
+    "ja" -> "ここで、追加のルートを定義します。そのルートは以下から始まります"
+    "zh" -> "在这里，我们定义了以...开头的附加路由"
+    "fr" -> "Ici, nous définissons des routes supplémentaires qui commencent par"
+    "ko" -> "여기에서 시작하는 추가 경로를 정의합니다"
+  "It is important to note that such mounted routes can easily be moved to separate files and modules for greater convenience.":
+    "ru" -> "Важно отметить, что такие монтированные маршруты спокойно можно вынести в отдельные файлы и модули для большего удобства."
+    "ja" -> "このようなマウントされたルートは、より便利にするために別々のファイルやモジュールに簡単に移動できることに注意することが重要です。"
+    "zh" -> "重要的是要注意，这种挂载的路由可以轻松移动到单独的文件和模块中，以提高便利性。"
+    "fr" -> "Il est important de noter que de telles routes montées peuvent facilement être déplacées vers des fichiers et des modules séparés pour plus de commodité."
+    "ko" -> "이러한 마운트된 경로는 더 큰 편의를 위해 별도의 파일 및 모듈로 쉽게 이동할 수 있다는 점을 유의해야 합니다."
+  "A little sugar":
+    "ru" -> "Немного сахара"
+    "ja" -> "ちょっとした糖分"
+    "zh" -> "一点糖分"
+    "fr" -> "Un peu de sucre"
+    "ko" -> "약간의 설탕"
+  "Using Nim, you can also use syntactic sugar that allows you to define separate routes without resorting to mounting:":
+    "ru" -> "Используя Nim вы можете также использовать синтаксический сахар, который позволяет выносить отдельные маршруты не прибегая к монтированию:"
+    "ja" -> "Nimを使用すると、マウントに頼らずに別々のルートを定義できる構文シュガーも使用できます："
+    "zh" -> "使用Nim，您还可以使用语法糖，无需挂载即可定义单独的路由："
+    "fr" -> "En utilisant Nim, vous pouvez également utiliser du sucre syntaxique qui vous permet de définir des routes séparées sans avoir recours au montage :"
+    "ko" -> "Nim을 사용하면 마운팅을 사용하지 않고 별도의 경로를 정의할 수 있는 문법적 설탕도 사용할 수 있습니다:"
 
 
 var spokenLang: cstring

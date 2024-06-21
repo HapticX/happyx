@@ -53,17 +53,17 @@ app.get("/registered/{data:my_unique_id}", (req) => {
   return req.params.data;
 });
 
-app.start()
+app.start();
 """
   jsSsrAdvancedHelloWorld* = """import {Server} from "happyx";
 
 let server = new Server("127.0.0.1", 5000);
 
-server.get("/statusCode"), (req) => {
+server.get("/statusCode", (req) => {
   req.answer("This page not working because I want it :p", 404);
 });
 
-server.get("/customHeaders"), (req) => {
+server.get("/customHeaders", (req) => {
   req.answer(
     0, headers = {
       "Backend-Server": "HappyX"
@@ -71,7 +71,7 @@ server.get("/customHeaders"), (req) => {
   );
 });
 
-server.get("/customCookies"), (req) => {
+server.get("/customCookies", (req) => {
   req.answer(
     0, headers = {
       "Set-Cookie": "bestFramework=HappyX!"
@@ -79,7 +79,7 @@ server.get("/customCookies"), (req) => {
   );
 });
 
-server.get("/"), (req) => {
+server.get("/", (req) => {
   req.answer(
     1, 401, headers = {
       "Reason": "Auth Failed",
@@ -88,12 +88,12 @@ server.get("/"), (req) => {
   );
 });
 
-server.start()
+server.start();
 """
   jsSsrAdditionalRoutes* = """import {Server} from "happyx";
 
-const app = new Server("127.0.0.1", 5000)
-app.static("/path/to/directory", './directory')
+const app = new Server("127.0.0.1", 5000);
+app.static("/path/to/directory", './directory');
 
 app.notfound(() => {
   return "Oops, seems like this route is not available";
@@ -103,5 +103,26 @@ app.middleware((req) => {
   console.log(req);
 });
 
-app.start()
+app.start();
+"""
+  jsMounting* = """import {Server} from "happyx";
+
+const app = new Server("127.0.0.1", 5000);
+const profile = new Server();
+
+app.mount("/profile", profile);
+
+profile.get("/", () => {
+  return "Hello from /profile/";
+});
+
+profile.get("/{id:int}", (req) => {
+  return `Hello, user ${req.params.id}! Route is /profile/${req.params.id}`;
+});
+
+profile.get("/settings", () => {
+  return "Hello from /profile/settings";
+});
+
+app.start();
 """

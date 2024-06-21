@@ -352,3 +352,24 @@ appRoutes "app":
       @click:
         route "/"
 """
+  nimSpaMounting* = """import happyx
+
+mount Profile:
+  "/":
+    "Hello from /profile/"
+  "/{id:int}":
+    "Hello, user {id}! Route is /profile/{id}"
+  "/settings":
+    "Hello from /profile/settings"
+
+appRoutes "app":
+  mount "/profile" -> Profile
+"""
+  nimSpaMountingSugar* = """import happyx
+
+"/profile/id{id:int}" -> get:
+  "Hello, user id{id}"
+
+appRoutes "app":
+  discard
+"""

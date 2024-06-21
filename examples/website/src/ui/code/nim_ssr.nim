@@ -543,3 +543,24 @@ serve "127.0.0.1", 5000:
     ## Responds **"Hello, world!"**
     return "Hello, world!"
 """
+  nimSsrMounting* = """import happyx
+
+mount Profile:
+  "/":
+    "Hello from /profile/"
+  "/{id:int}":
+    "Hello, user {id}! Route is /profile/{id}"
+  "/settings":
+    "Hello from /profile/settings"
+
+serve "127.0.0.1", 5000:
+  mount "/profile" -> Profile
+"""
+  nimSsrMountingSugar* = """import happyx
+
+"/profile/id{id:int}" -> get:
+  "Hello, user id{id}"
+
+serve "127.0.0.1", 5000:
+  discard
+"""
