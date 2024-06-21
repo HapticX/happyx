@@ -1,5 +1,5 @@
 nimTitle	autodocs	happyx/ssr/docs/autodocs.html	module src/happyx/ssr/docs/autodocs		0
-nim	fetchPathParams	happyx/ssr/docs/autodocs.html#fetchPathParams,string	proc fetchPathParams(route: var string): tuple[pathParams, models: NimNode]		22
+nim	fetchPathParams	happyx/ssr/docs/autodocs.html#fetchPathParams,string	proc fetchPathParams(route: var string): tuple[pathParams, models: NimNode]		24
 nim	fetchModelFields	happyx/ssr/docs/autodocs.html#fetchModelFields	proc fetchModelFields(): NimNode		57
 nim	genApiDoc	happyx/ssr/docs/autodocs.html#genApiDoc,NimNode	proc genApiDoc(body: var NimNode): NimNode		74
 nim	procApiDocs	happyx/ssr/docs/autodocs.html#procApiDocs,NimNode	proc procApiDocs(docsData: NimNode): NimNode		136

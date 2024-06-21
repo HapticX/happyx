@@ -1,0 +1,6 @@
+nimTitle	scanutils	happyx/private/scanutils.html	module src/happyx/private/scanutils		0
+nim	scanf	happyx/private/scanutils.html#scanf.m,string,static[string],varargs[typed]	macro scanf(input: string; pattern: static[string]; results: varargs[typed]): bool		317
+idx	scanf	happyx/private/scanutils.html#scanf_1	Module scanutils		0
+heading	Startswith vs full match	happyx/private/scanutils.html#startswith-vs-full-match	 Startswith vs full match		0
+heading	User definable matchers	happyx/private/scanutils.html#user-definable-matchers	 User definable matchers		0
+heading	The scanp macro	happyx/private/scanutils.html#the-scanp-macro	 The scanp macro		0

@@ -459,11 +459,10 @@
 <h4><a class="toc-backref" id="custom-static-directory-⚙-available-path-params" href="#custom-static-directory-⚙-available-path-params">Available Path Params</a></h4><ul class="simple"><li><tt class="docutils literal"><span class="pre"><span class="Identifier">bool</span></span></tt>: any boolean (<tt class="docutils literal"><span class="pre"><span class="Identifier">y</span></span></tt>, <tt class="docutils literal"><span class="pre"><span class="Identifier">yes</span></span></tt>, <tt class="docutils literal"><span class="pre"><span class="Identifier">on</span></span></tt>, <tt class="docutils literal"><span class="pre"><span class="DecNumber">1</span></span></tt> and <tt class="docutils literal"><span class="pre"><span class="Identifier">true</span></span></tt> for true; <tt class="docutils literal"><span class="pre"><span class="Identifier">n</span></span></tt>, <tt class="docutils literal"><span class="pre"><span class="Identifier">no</span></span></tt>, <tt class="docutils literal"><span class="pre"><span class="Identifier">off</span></span></tt>, <tt class="docutils literal"><span class="pre"><span class="DecNumber">0</span></span></tt> and <tt class="docutils literal"><span class="pre"><span class="Identifier">false</span></span></tt> for false).</li>
 <li><tt class="docutils literal"><span class="pre"><span class="Identifier">int</span></span></tt>: any integer.</li>
 <li><tt class="docutils literal"><span class="pre"><span class="Identifier">float</span></span></tt>: any float number.</li>
-<li><tt class="docutils literal"><span class="pre"><span class="Identifier">word</span></span></tt>: any word includes <tt class="docutils literal"><span class="pre"><span class="RawData">re2&quot;\w+&quot;</span></span></tt>.</li>
+<li><tt class="docutils literal"><span class="pre"><span class="Identifier">word</span></span></tt>: any word.</li>
 <li><tt class="docutils literal"><span class="pre"><span class="Identifier">string</span></span></tt>: any string excludes <tt class="docutils literal"><span class="pre"><span class="StringLit">&quot;/&quot;</span></span></tt>.</li>
 <li><tt class="docutils literal"><span class="pre"><span class="Keyword">enum</span><span class="Punctuation">(</span><span class="Identifier">EnumName</span><span class="Punctuation">)</span></span></tt>: any string excludes <tt class="docutils literal"><span class="pre"><span class="StringLit">&quot;/&quot;</span></span></tt>. Converts into <tt class="docutils literal"><span class="pre"><span class="Identifier">EnumName</span></span></tt>.</li>
 <li><tt class="docutils literal"><span class="pre"><span class="Identifier">path</span></span></tt>: any float number includes <tt class="docutils literal"><span class="pre"><span class="StringLit">&quot;/&quot;</span></span></tt>.</li>
-<li><tt class="docutils literal"><span class="pre"><span class="Identifier">regex</span></span></tt>: any regex pattern excludes groups. Usage - <tt class="docutils literal"><span class="pre"><span class="StringLit">&quot;/path{pattern:/yourRegex/}&quot;</span></span></tt></li>
 </ul>
 
 <h4><a class="toc-backref" id="custom-static-directory-⚙-available-route-types" href="#custom-static-directory-⚙-available-route-types">Available Route Types</a></h4><ul class="simple"><li><tt class="docutils literal"><span class="pre"><span class="StringLit">&quot;/path/with/{args:path}&quot;</span></span></tt>: Just string with route path. Matches any request method</li>
@@ -639,7 +638,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2024-06-11 13:52:38 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2024-06-21 06:40:40 UTC</small>
       </div>
     </div>
   </div>

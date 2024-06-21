@@ -59,13 +59,11 @@
   name*: string
   paramType*: string
   defaultValue*: string
-  optional*: bool
-  mutable*: bool">PathParamObj</a></li>
+  optional*: bool">PathParamObj</a></li>
 <li><a class="reference" href="#RequestModelObj" title="RequestModelObj = object
   name*: string
   typeName*: string
-  target*: string            ## JSON/XML/FormData/X-www-formurlencoded
-  mutable*: bool">RequestModelObj</a></li>
+  target*: string            ## JSON/XML/FormData/X-www-formurlencoded">RequestModelObj</a></li>
 <li><a class="reference" href="#RouteDataObj" title="RouteDataObj = object
   pathParams*: seq[PathParamObj]
   requestModels*: seq[RequestModelObj]
@@ -89,8 +87,20 @@
   <details open>
     <summary><a class="reference reference-toplevel" href="#12" id="62">Procs</a></summary>
     <ul class="simple simple-toc-section">
-      <ul class="simple nested-toc-section">convertJson
+      <ul class="simple nested-toc-section">boolean
+  <li><a class="reference" href="#boolean%2Cstring%2Cbool%2Cint%2Cbool" title="boolean(input: string; boolVal: var bool; start: int; opt: bool = false): int">boolean(input: string; boolVal: var bool; start: int; opt: bool = false): int</a></li>
+
+</ul>
+<ul class="simple nested-toc-section">convertJson
   <li><a class="reference" href="#convertJson%2CRequestModelData%2Cstring" title="convertJson(self: RequestModelData; body: string): JsonNode">convertJson(self: RequestModelData; body: string): JsonNode</a></li>
+
+</ul>
+<ul class="simple nested-toc-section">default
+  <li><a class="reference" href="#default%2Cstring%2Cstring%2Cint" title="default(input: string; strVal: var string; start: int): int">default(input: string; strVal: var string; start: int): int</a></li>
+
+</ul>
+<ul class="simple nested-toc-section">enumerate
+  <li><a class="reference" href="#enumerate%2Cstring%2CT%2Cint%2Cbool" title="enumerate[T: enum](input: string; e: var T; start: int; opt: bool = false): int">enumerate[T: enum](input: string; e: var T; start: int; opt: bool = false): int</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">exportRouteArgs
@@ -109,12 +119,20 @@
   <li><a class="reference" href="#handleRoute%2Cstring" title="handleRoute(route: string): RouteDataObj">handleRoute(route: string): RouteDataObj</a></li>
 
 </ul>
+<ul class="simple nested-toc-section">integer
+  <li><a class="reference" href="#integer%2Cstring%2Cint%2Cint%2Cbool" title="integer(input: string; intVal: var int; start: int; opt: bool = false): int">integer(input: string; intVal: var int; start: int; opt: bool = false): int</a></li>
+
+</ul>
+<ul class="simple nested-toc-section">kind
+  <li><a class="reference" href="#kind%2Cstring%2Cstring%2Cint" title="kind(input: string; strVal: var string; start: int): int">kind(input: string; strVal: var string; start: int): int</a></li>
+
+</ul>
 <ul class="simple nested-toc-section">newPathParamObj
-  <li><a class="reference" href="#newPathParamObj%2Cstring%2Cstring%2Cstring%2Cbool%2Cbool" title="newPathParamObj(name, paramType, defaultValue: string; optional, mutable: bool): PathParamObj">newPathParamObj(name, paramType, defaultValue: string; optional, mutable: bool): PathParamObj</a></li>
+  <li><a class="reference" href="#newPathParamObj%2Cstring%2Cstring%2Cstring%2Cbool" title="newPathParamObj(name, paramType, defaultValue: string; optional: bool): PathParamObj">newPathParamObj(name, paramType, defaultValue: string; optional: bool): PathParamObj</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">newRequestModelObj
-  <li><a class="reference" href="#newRequestModelObj%2Cstring%2Cstring%2Cstring%2Cbool" title="newRequestModelObj(name, typeName, target: string; mutable: bool): RequestModelObj">newRequestModelObj(name, typeName, target: string; mutable: bool): RequestModelObj</a></li>
+  <li><a class="reference" href="#newRequestModelObj%2Cstring%2Cstring%2Cstring" title="newRequestModelObj(name, typeName, target: string): RequestModelObj">newRequestModelObj(name, typeName, target: string): RequestModelObj</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">parseBoolOrJString
@@ -129,6 +147,22 @@
   <li><a class="reference" href="#parseIntOrJString%2Cstring" title="parseIntOrJString(str: string): JsonNode">parseIntOrJString(str: string): JsonNode</a></li>
 
 </ul>
+<ul class="simple nested-toc-section">path
+  <li><a class="reference" href="#path%2Cstring%2Cstring%2Cint" title="path(input: string; strVal: var string; start: int): int">path(input: string; strVal: var string; start: int): int</a></li>
+
+</ul>
+<ul class="simple nested-toc-section">realnum
+  <li><a class="reference" href="#realnum%2Cstring%2Cfloat%2Cint%2Cbool" title="realnum(input: string; floatVal: var float; start: int; opt: bool = false): int">realnum(input: string; floatVal: var float; start: int; opt: bool = false): int</a></li>
+
+</ul>
+<ul class="simple nested-toc-section">str
+  <li><a class="reference" href="#str%2Cstring%2Cstring%2Cint%2Cbool" title="str(input: string; strVal: var string; start: int; opt: bool = false): int">str(input: string; strVal: var string; start: int; opt: bool = false): int</a></li>
+
+</ul>
+<ul class="simple nested-toc-section">word
+  <li><a class="reference" href="#word%2Cstring%2Cstring%2Cint%2Cbool" title="word(input: string; strVal: var string; start: int; opt: bool = false): int">word(input: string; strVal: var string; start: int; opt: bool = false): int</a></li>
+
+</ul>
 
     </ul>
   </details>
@@ -141,13 +175,12 @@
   <li><a class="reference" href="#pathParams.m%2Cuntyped" title="pathParams(body: untyped): untyped">pathParams(body: untyped): untyped</a></li>
 
 </ul>
-<ul class="simple nested-toc-section">registerRouteParamType
-  <li><a class="reference" href="#registerRouteParamType.m%2Cstring%2Cstring%2Cuntyped" title="registerRouteParamType(name, pattern: string; creator: untyped)">registerRouteParamType(name, pattern: string; creator: untyped)</a></li>
-
-</ul>
 
     </ul>
   </details>
+</li>
+<li>
+  <a class="reference reference-toplevel" href="#19" id="69">Exports</a>
 </li>
 
 </ul>
@@ -161,7 +194,7 @@
     <div class="section" id="6">
   <h1><a class="toc-backref" href="#6">Imports</a></h1>
   <dl class="item">
-    <a class="reference external" href="../core/exceptions.html">../core/exceptions</a>, <a class="reference external" href="../core/constants.html">../core/constants</a>, <a class="reference external" href="../private/macro_utils.html">../private/macro_utils</a>, <a class="reference external" href="../bindings/python_types.html">../bindings/python_types</a>
+    <a class="reference external" href="../core/exceptions.html">../core/exceptions</a>, <a class="reference external" href="../core/constants.html">../core/constants</a>, <a class="reference external" href="../private/macro_utils.html">../private/macro_utils</a>, <a class="reference external" href="../private/scanutils.html">../private/scanutils</a>, <a class="reference external" href="../bindings/python_types.html">../bindings/python_types</a>
   </dl>
 </div>
 <div class="section" id="7">
@@ -173,7 +206,6 @@
   <span class="Identifier">paramType</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
   <span class="Identifier">defaultValue</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
   <span class="Identifier">optional</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>
-  <span class="Identifier">mutable</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>
 </pre></dt>
   <dd>
     
@@ -186,8 +218,7 @@
   <span class="Identifier">name</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
   <span class="Identifier">typeName</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
   <span class="Identifier">target</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>            <span class="Comment">## JSON/XML/FormData/X-www-formurlencoded</span>
-  <span class="Identifier">mutable</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>
-</pre></dt>
+  </pre></dt>
   <dd>
     
     
@@ -235,7 +266,19 @@
 <div class="section" id="12">
   <h1><a class="toc-backref" href="#12">Procs</a></h1>
   <dl class="item">
-    <div id="convertJson-procs-all">
+    <div id="boolean-procs-all">
+  <div id="boolean,string,bool,int,bool">
+  <dt><pre><span class="Keyword">proc</span> <a href="#boolean%2Cstring%2Cbool%2Cint%2Cbool"><span class="Identifier">boolean</span></a><span class="Other">(</span><span class="Identifier">input</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">boolVal</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">bool</span><span class="Other">;</span> <span class="Identifier">start</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">;</span> <span class="Identifier">opt</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int</span> {.
+    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+
+</div>
+<div id="convertJson-procs-all">
   <div id="convertJson,RequestModelData,string">
   <dt><pre><span class="Keyword">proc</span> <a href="#convertJson%2CRequestModelData%2Cstring"><span class="Identifier">convertJson</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="../bindings/python_types.html#RequestModelData"><span class="Identifier">RequestModelData</span></a><span class="Other">;</span> <span class="Identifier">body</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">JsonNode</span> {.
     <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">IOError</span><span class="Other">,</span> <span class="Identifier">OSError</span><span class="Other">,</span> <span class="Identifier">KeyError</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span>
@@ -248,10 +291,33 @@
 </div>
 
 </div>
+<div id="default-procs-all">
+  <div id="default,string,string,int">
+  <dt><pre><span class="Keyword">proc</span> <a href="#default%2Cstring%2Cstring%2Cint"><span class="Identifier">default</span></a><span class="Other">(</span><span class="Identifier">input</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">strVal</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">start</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+
+</div>
+<div id="enumerate-procs-all">
+  <div id="enumerate,string,T,int,bool">
+  <dt><pre><span class="Keyword">proc</span> <a href="#enumerate%2Cstring%2CT%2Cint%2Cbool"><span class="Identifier">enumerate</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Keyword">enum</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">input</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">e</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">T</span><span class="Other">;</span> <span class="Identifier">start</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">;</span> <span class="Identifier">opt</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int</span></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+
+</div>
 <div id="exportRouteArgs-procs-all">
   <div id="exportRouteArgs,NimNode,NimNode,NimNode">
   <dt><pre><span class="Keyword">proc</span> <a href="#exportRouteArgs%2CNimNode%2CNimNode%2CNimNode"><span class="Identifier">exportRouteArgs</span></a><span class="Other">(</span><span class="Identifier">urlPath</span><span class="Other">,</span> <span class="Identifier">routePath</span><span class="Other">,</span> <span class="Identifier">body</span><span class="Other">:</span> <span class="Identifier">NimNode</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">NimNode</span> {.
-    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ValueError</span><span class="Other">,</span> <span class="Identifier">RegexError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
     Finds and exports route arguments
@@ -279,22 +345,33 @@
 </div>
 <div id="handleRoute-procs-all">
   <div id="handleRoute,string">
-  <dt><pre><span class="Keyword">proc</span> <a href="#handleRoute%2Cstring"><span class="Identifier">handleRoute</span></a><span class="Other">(</span><span class="Identifier">route</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <a href="routing.html#RouteDataObj"><span class="Identifier">RouteDataObj</span></a> {.
-    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ValueError</span><span class="Other">,</span> <span class="Identifier">RegexError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+  <dt><pre><span class="Keyword">proc</span> <a href="#handleRoute%2Cstring"><span class="Identifier">handleRoute</span></a><span class="Other">(</span><span class="Identifier">route</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <a href="routing.html#RouteDataObj"><span class="Identifier">RouteDataObj</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
     Handles route and receive route data object.
-<h2><a class="toc-backref" id="examples" href="#examples">Examples</a></h2><p>dollar full: <tt class="docutils literal"><span class="pre"><span class="Operator">$</span><span class="Identifier">argument</span><span class="Operator">?:</span><span class="Identifier">word</span><span class="Punctuation">[</span><span class="Identifier">m</span><span class="Punctuation">]</span><span class="Operator">=</span><span class="Identifier">hello</span></span></tt> curvy full: <tt class="docutils literal"><span class="pre"><span class="Punctuation">{</span><span class="Identifier">argument</span><span class="Operator">?:</span><span class="Identifier">word</span><span class="Punctuation">[</span><span class="Identifier">m</span><span class="Punctuation">]</span><span class="Operator">=</span><span class="Identifier">hello</span><span class="Punctuation">}</span></span></tt> model full: <tt class="docutils literal"><span class="pre"><span class="Punctuation">[</span><span class="Identifier">argument</span><span class="Punctuation">:</span><span class="Identifier">ModelName</span><span class="Punctuation">:</span><span class="Identifier">json</span><span class="Punctuation">]</span></span></tt> </p>
+<h2><a class="toc-backref" id="examples" href="#examples">Examples</a></h2><p>dollar full: <tt class="docutils literal"><span class="pre"><span class="Operator">$</span><span class="Identifier">argument</span><span class="Operator">?:</span><span class="Identifier">word</span><span class="Operator">=</span><span class="Identifier">hello</span></span></tt> curly full: <tt class="docutils literal"><span class="pre"><span class="Punctuation">{</span><span class="Identifier">argument</span><span class="Operator">?:</span><span class="Identifier">word</span><span class="Operator">=</span><span class="Identifier">hello</span><span class="Punctuation">}</span></span></tt> model full: <tt class="docutils literal"><span class="pre"><span class="Punctuation">[</span><span class="Identifier">argument</span><span class="Punctuation">:</span><span class="Identifier">ModelName</span><span class="Punctuation">:</span><span class="Identifier">json</span><span class="Punctuation">]</span></span></tt> </p>
 
     
   </dd>
 </div>
 
 </div>
-<div id="newPathParamObj-procs-all">
-  <div id="newPathParamObj,string,string,string,bool,bool">
-  <dt><pre><span class="Keyword">proc</span> <a href="#newPathParamObj%2Cstring%2Cstring%2Cstring%2Cbool%2Cbool"><span class="Identifier">newPathParamObj</span></a><span class="Other">(</span><span class="Identifier">name</span><span class="Other">,</span> <span class="Identifier">paramType</span><span class="Other">,</span> <span class="Identifier">defaultValue</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span>
-                     <span class="Identifier">optional</span><span class="Other">,</span> <span class="Identifier">mutable</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">)</span><span class="Other">:</span> <a href="routing.html#PathParamObj"><span class="Identifier">PathParamObj</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+<div id="integer-procs-all">
+  <div id="integer,string,int,int,bool">
+  <dt><pre><span class="Keyword">proc</span> <a href="#integer%2Cstring%2Cint%2Cint%2Cbool"><span class="Identifier">integer</span></a><span class="Other">(</span><span class="Identifier">input</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">intVal</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">int</span><span class="Other">;</span> <span class="Identifier">start</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">;</span> <span class="Identifier">opt</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int</span> {.
+    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+
+</div>
+<div id="kind-procs-all">
+  <div id="kind,string,string,int">
+  <dt><pre><span class="Keyword">proc</span> <a href="#kind%2Cstring%2Cstring%2Cint"><span class="Identifier">kind</span></a><span class="Other">(</span><span class="Identifier">input</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">strVal</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">start</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
     <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
@@ -304,9 +381,21 @@
 </div>
 
 </div>
+<div id="newPathParamObj-procs-all">
+  <div id="newPathParamObj,string,string,string,bool">
+  <dt><pre><span class="Keyword">proc</span> <a href="#newPathParamObj%2Cstring%2Cstring%2Cstring%2Cbool"><span class="Identifier">newPathParamObj</span></a><span class="Other">(</span><span class="Identifier">name</span><span class="Other">,</span> <span class="Identifier">paramType</span><span class="Other">,</span> <span class="Identifier">defaultValue</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">optional</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">)</span><span class="Other">:</span> <a href="routing.html#PathParamObj"><span class="Identifier">PathParamObj</span></a> {.
+    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+
+</div>
 <div id="newRequestModelObj-procs-all">
-  <div id="newRequestModelObj,string,string,string,bool">
-  <dt><pre><span class="Keyword">proc</span> <a href="#newRequestModelObj%2Cstring%2Cstring%2Cstring%2Cbool"><span class="Identifier">newRequestModelObj</span></a><span class="Other">(</span><span class="Identifier">name</span><span class="Other">,</span> <span class="Identifier">typeName</span><span class="Other">,</span> <span class="Identifier">target</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">mutable</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">)</span><span class="Other">:</span> <a href="routing.html#RequestModelObj"><span class="Identifier">RequestModelObj</span></a> {.
+  <div id="newRequestModelObj,string,string,string">
+  <dt><pre><span class="Keyword">proc</span> <a href="#newRequestModelObj%2Cstring%2Cstring%2Cstring"><span class="Identifier">newRequestModelObj</span></a><span class="Other">(</span><span class="Identifier">name</span><span class="Other">,</span> <span class="Identifier">typeName</span><span class="Other">,</span> <span class="Identifier">target</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <a href="routing.html#RequestModelObj"><span class="Identifier">RequestModelObj</span></a> {.
     <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
@@ -352,6 +441,54 @@
 </div>
 
 </div>
+<div id="path-procs-all">
+  <div id="path,string,string,int">
+  <dt><pre><span class="Keyword">proc</span> <a href="#path%2Cstring%2Cstring%2Cint"><span class="Identifier">path</span></a><span class="Other">(</span><span class="Identifier">input</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">strVal</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">start</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+
+</div>
+<div id="realnum-procs-all">
+  <div id="realnum,string,float,int,bool">
+  <dt><pre><span class="Keyword">proc</span> <a href="#realnum%2Cstring%2Cfloat%2Cint%2Cbool"><span class="Identifier">realnum</span></a><span class="Other">(</span><span class="Identifier">input</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">floatVal</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">float</span><span class="Other">;</span> <span class="Identifier">start</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">;</span> <span class="Identifier">opt</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int</span> {.
+    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+
+</div>
+<div id="str-procs-all">
+  <div id="str,string,string,int,bool">
+  <dt><pre><span class="Keyword">proc</span> <a href="#str%2Cstring%2Cstring%2Cint%2Cbool"><span class="Identifier">str</span></a><span class="Other">(</span><span class="Identifier">input</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">strVal</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">start</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">;</span> <span class="Identifier">opt</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int</span> {.
+    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+
+</div>
+<div id="word-procs-all">
+  <div id="word,string,string,int,bool">
+  <dt><pre><span class="Keyword">proc</span> <a href="#word%2Cstring%2Cstring%2Cint%2Cbool"><span class="Identifier">word</span></a><span class="Other">(</span><span class="Identifier">input</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">strVal</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">start</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">;</span> <span class="Identifier">opt</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int</span> {.
+    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+
+</div>
 
   </dl>
 </div>
@@ -366,18 +503,15 @@
     <p><tt class="docutils literal"><span class="pre"><span class="Identifier">pathParams</span></span></tt> provides path params assignment ✨.</p>
 <p>Simple usage:</p>
 <pre class="listing"><span class="Identifier">pathParams</span><span class="Punctuation">:</span>
-  <span class="Comment"># means that `arg` of type `int` is optional mutable param with default value `5`</span>
-  <span class="Identifier">arg</span><span class="Operator">?</span> <span class="Identifier">int</span><span class="Punctuation">[</span><span class="Identifier">m</span><span class="Punctuation">]</span> <span class="Operator">=</span> <span class="DecNumber">5</span>
-  <span class="Comment"># means that `arg1` of type `string` is optional mutable param with default value `&quot;Hello&quot;`</span>
-  <span class="Identifier">arg1</span><span class="Punctuation">[</span><span class="Identifier">m</span><span class="Punctuation">]</span> <span class="Operator">=</span> <span class="StringLit">&quot;Hello&quot;</span>
-  <span class="Comment"># means that `arg2` of type `string` is immutable regex param</span>
-  <span class="Identifier">arg2</span> <span class="RawData">re2&quot;\d+u&quot;</span>
-  <span class="Comment"># means that `arg3` of type `float` is mutable param</span>
-  <span class="Identifier">arg3</span> <span class="Identifier">float</span><span class="Punctuation">[</span><span class="Identifier">m</span><span class="Punctuation">]</span>
-  <span class="Comment"># means that `arg4` of type `int` is optional mutable param with default value `10`</span>
-  <span class="Identifier">arg4</span><span class="Punctuation">:</span>
+  <span class="Comment"># means that `arg` of type `int` is optional param with default value `5`</span>
+  <span class="Identifier">arg</span><span class="Operator">?</span> <span class="Identifier">int</span> <span class="Operator">=</span> <span class="DecNumber">5</span>
+  <span class="Comment"># means that `arg1` of type `string` is optional param with default value `&quot;Hello&quot;`</span>
+  <span class="Identifier">arg1</span> <span class="Operator">=</span> <span class="StringLit">&quot;Hello&quot;</span>
+  <span class="Comment"># means that `arg2` of type `float` is param</span>
+  <span class="Identifier">arg2</span> <span class="Identifier">float</span>
+  <span class="Comment"># means that `arg3` of type `int` is optional param with default value `10`</span>
+  <span class="Identifier">arg3</span><span class="Punctuation">:</span>
     <span class="Keyword">type</span> <span class="Identifier">int</span>
-    <span class="Identifier">mutable</span>
     <span class="Identifier">optional</span>
     <span class="Identifier">default</span> <span class="Operator">=</span> <span class="DecNumber">10</span></pre>
     
@@ -385,18 +519,13 @@
 </div>
 
 </div>
-<div id="registerRouteParamType-macros-all">
-  <div id="registerRouteParamType.m,string,string,untyped">
-  <dt><pre><span class="Keyword">macro</span> <a href="#registerRouteParamType.m%2Cstring%2Cstring%2Cuntyped"><span class="Identifier">registerRouteParamType</span></a><span class="Other">(</span><span class="Identifier">name</span><span class="Other">,</span> <span class="Identifier">pattern</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">creator</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span></pre></dt>
-  <dd>
-    
-    
-    
-  </dd>
-</div>
 
+  </dl>
 </div>
-
+<div class="section" id="19">
+  <h1><a class="toc-backref" href="#19">Exports</a></h1>
+  <dl class="item">
+    <a href="../private/scanutils.html#scanf.m,string,static[string],varargs[typed]"><span class="Identifier">scanf</span></a>
   </dl>
 </div>
 
@@ -406,7 +535,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2024-06-11 13:52:32 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2024-06-21 06:40:33 UTC</small>
       </div>
     </div>
   </div>

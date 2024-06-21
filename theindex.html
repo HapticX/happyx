@@ -21,7 +21,7 @@
   <div class="document" id="documentId">
     <div class="container">
       <h1 class="title">Index</h1>
-      Modules: <a href="happyx.html">happyx</a>, <a href="happyx/bindings/python_types.html">happyx/bindings/python_types</a>, <a href="happyx/core/constants.html">happyx/core/constants</a>, <a href="happyx/core/exceptions.html">happyx/core/exceptions</a>, <a href="happyx/core/queries.html">happyx/core/queries</a>, <a href="happyx/core/secure.html">happyx/core/secure</a>, <a href="happyx/private/macro_utils.html">happyx/private/macro_utils</a>, <a href="happyx/routing/decorators.html">happyx/routing/decorators</a>, <a href="happyx/routing/mounting.html">happyx/routing/mounting</a>, <a href="happyx/routing/routing.html">happyx/routing/routing</a>, <a href="happyx/spa/components.html">happyx/spa/components</a>, <a href="happyx/spa/renderer.html">happyx/spa/renderer</a>, <a href="happyx/spa/state.html">happyx/spa/state</a>, <a href="happyx/spa/tag.html">happyx/spa/tag</a>, <a href="happyx/spa/translatable.html">happyx/spa/translatable</a>, <a href="happyx/ssr/cors.html">happyx/ssr/cors</a>, <a href="happyx/ssr/docs/api_doc_template.html">happyx/ssr/docs/api_doc_template</a>, <a href="happyx/ssr/docs/autodocs.html">happyx/ssr/docs/autodocs</a>, <a href="happyx/ssr/docs/open_api.html">happyx/ssr/docs/open_api</a>, <a href="happyx/ssr/form_data.html">happyx/ssr/form_data</a>, <a href="happyx/ssr/handlers.html">happyx/ssr/handlers</a>, <a href="happyx/ssr/request_models.html">happyx/ssr/request_models</a>, <a href="happyx/ssr/server.html">happyx/ssr/server</a>, <a href="happyx/ssr/session.html">happyx/ssr/session</a>, <a href="happyx/ssr/utils.html">happyx/ssr/utils</a>, <a href="happyx/sugar/js.html">happyx/sugar/js</a>, <a href="happyx/sugar/sgr.html">happyx/sugar/sgr</a>, <a href="happyx/sugar/style.html">happyx/sugar/style</a>, <a href="happyx/sugar/use.html">happyx/sugar/use</a>, <a href="happyx/tmpl_engine/engine.html">happyx/tmpl_engine/engine</a>.<br/><p /><h2>API symbols</h2>
+      Modules: <a href="happyx.html">happyx</a>, <a href="happyx/bindings/python_types.html">happyx/bindings/python_types</a>, <a href="happyx/core/constants.html">happyx/core/constants</a>, <a href="happyx/core/exceptions.html">happyx/core/exceptions</a>, <a href="happyx/core/queries.html">happyx/core/queries</a>, <a href="happyx/core/secure.html">happyx/core/secure</a>, <a href="happyx/private/macro_utils.html">happyx/private/macro_utils</a>, <a href="happyx/private/scanutils.html">happyx/private/scanutils</a>, <a href="happyx/routing/decorators.html">happyx/routing/decorators</a>, <a href="happyx/routing/mounting.html">happyx/routing/mounting</a>, <a href="happyx/routing/routing.html">happyx/routing/routing</a>, <a href="happyx/spa/components.html">happyx/spa/components</a>, <a href="happyx/spa/renderer.html">happyx/spa/renderer</a>, <a href="happyx/spa/state.html">happyx/spa/state</a>, <a href="happyx/spa/tag.html">happyx/spa/tag</a>, <a href="happyx/spa/translatable.html">happyx/spa/translatable</a>, <a href="happyx/ssr/cors.html">happyx/ssr/cors</a>, <a href="happyx/ssr/docs/api_doc_template.html">happyx/ssr/docs/api_doc_template</a>, <a href="happyx/ssr/docs/autodocs.html">happyx/ssr/docs/autodocs</a>, <a href="happyx/ssr/docs/open_api.html">happyx/ssr/docs/open_api</a>, <a href="happyx/ssr/form_data.html">happyx/ssr/form_data</a>, <a href="happyx/ssr/handlers.html">happyx/ssr/handlers</a>, <a href="happyx/ssr/request_models.html">happyx/ssr/request_models</a>, <a href="happyx/ssr/server.html">happyx/ssr/server</a>, <a href="happyx/ssr/session.html">happyx/ssr/session</a>, <a href="happyx/ssr/utils.html">happyx/ssr/utils</a>, <a href="happyx/sugar/js.html">happyx/sugar/js</a>, <a href="happyx/sugar/sgr.html">happyx/sugar/sgr</a>, <a href="happyx/sugar/style.html">happyx/sugar/style</a>, <a href="happyx/sugar/use.html">happyx/sugar/use</a>, <a href="happyx/tmpl_engine/engine.html">happyx/tmpl_engine/engine</a>.<br/><p /><h2>API symbols</h2>
 <dl><dt><a name="%60%21%3D%60" href="#%60%21%3D%60"><span>`!=`:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="state: proc `!=`[T](self`gensym1, other`gensym1: State[T]): bool" href="happyx/spa/state.html#%21%3D%2C%2C">state: proc `!=`[T](self`gensym1, other`gensym1: State[T]): bool</a></li>
@@ -382,6 +382,10 @@
 <li><a class="reference external"
           data-doc-search-tag="renderer: object BaseComponentObj" href="happyx/spa/renderer.html#BaseComponentObj">renderer: object BaseComponentObj</a></li>
           </ul></dd>
+<dt><a name="boolean" href="#boolean"><span>boolean:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="routing: proc boolean(input: string; boolVal: var bool; start: int; opt: bool = false): int" href="happyx/routing/routing.html#boolean%2Cstring%2Cbool%2Cint%2Cbool">routing: proc boolean(input: string; boolVal: var bool; start: int; opt: bool = false): int</a></li>
+          </ul></dd>
 <dt><a name="bracket" href="#bracket"><span>bracket:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="macro_utils: proc bracket(node: seq[NimNode] | seq[string]): NimNode" href="happyx/private/macro_utils.html#bracket">macro_utils: proc bracket(node: seq[NimNode] | seq[string]): NimNode</a></li>
@@ -514,6 +518,10 @@
 <li><a class="reference external"
           data-doc-search-tag="decorators: var decorators" href="happyx/routing/decorators.html#decorators">decorators: var decorators</a></li>
           </ul></dd>
+<dt><a name="default" href="#default"><span>default:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="routing: proc default(input: string; strVal: var string; start: int): int" href="happyx/routing/routing.html#default%2Cstring%2Cstring%2Cint">routing: proc default(input: string; strVal: var string; start: int): int</a></li>
+          </ul></dd>
 <dt><a name="discardStmt" href="#discardStmt"><span>discardStmt:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="macro_utils: proc discardStmt(): NimNode" href="happyx/private/macro_utils.html#discardStmt">macro_utils: proc discardStmt(): NimNode</a></li>
@@ -609,6 +617,10 @@
 <dt><a name="endsWithBuildHtml" href="#endsWithBuildHtml"><span>endsWithBuildHtml:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="macro_utils: proc endsWithBuildHtml(statement: NimNode): bool" href="happyx/private/macro_utils.html#endsWithBuildHtml%2CNimNode">macro_utils: proc endsWithBuildHtml(statement: NimNode): bool</a></li>
+          </ul></dd>
+<dt><a name="enumerate" href="#enumerate"><span>enumerate:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="routing: proc enumerate[T: enum](input: string; e: var T; start: int; opt: bool = false): int" href="happyx/routing/routing.html#enumerate%2Cstring%2CT%2Cint%2Cbool">routing: proc enumerate[T: enum](input: string; e: var T; start: int; opt: bool = false): int</a></li>
           </ul></dd>
 <dt><a name="eventHandlers" href="#eventHandlers"><span>eventHandlers:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -870,6 +882,10 @@
 <li><a class="reference external"
           data-doc-search-tag="renderer: proc injectJs(host, script: string)" href="happyx/spa/renderer.html#injectJs%2Cstring%2Cstring">renderer: proc injectJs(host, script: string)</a></li>
           </ul></dd>
+<dt><a name="integer" href="#integer"><span>integer:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="routing: proc integer(input: string; intVal: var int; start: int; opt: bool = false): int" href="happyx/routing/routing.html#integer%2Cstring%2Cint%2Cint%2Cbool">routing: proc integer(input: string; intVal: var int; start: int; opt: bool = false): int</a></li>
+          </ul></dd>
 <dt><a name="isExpr" href="#isExpr"><span>isExpr:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="macro_utils: proc isExpr(node: NimNode): bool" href="happyx/private/macro_utils.html#isExpr%2CNimNode">macro_utils: proc isExpr(node: NimNode): bool</a></li>
@@ -889,6 +905,10 @@
 <dt><a name="JsonResponseObj" href="#JsonResponseObj"><span>JsonResponseObj:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="python_types: type JsonResponseObj" href="happyx/bindings/python_types.html#JsonResponseObj">python_types: type JsonResponseObj</a></li>
+          </ul></dd>
+<dt><a name="kind" href="#kind"><span>kind:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="routing: proc kind(input: string; strVal: var string; start: int): int" href="happyx/routing/routing.html#kind%2Cstring%2Cstring%2Cint">routing: proc kind(input: string; strVal: var string; start: int): int</a></li>
           </ul></dd>
 <dt><a name="LanguageSettings" href="#LanguageSettings"><span>LanguageSettings:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -964,11 +984,11 @@
           </ul></dd>
 <dt><a name="newPathParamObj" href="#newPathParamObj"><span>newPathParamObj:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="routing: proc newPathParamObj(name, paramType, defaultValue: string; optional, mutable: bool): PathParamObj" href="happyx/routing/routing.html#newPathParamObj%2Cstring%2Cstring%2Cstring%2Cbool%2Cbool">routing: proc newPathParamObj(name, paramType, defaultValue: string; optional, mutable: bool): PathParamObj</a></li>
+          data-doc-search-tag="routing: proc newPathParamObj(name, paramType, defaultValue: string; optional: bool): PathParamObj" href="happyx/routing/routing.html#newPathParamObj%2Cstring%2Cstring%2Cstring%2Cbool">routing: proc newPathParamObj(name, paramType, defaultValue: string; optional: bool): PathParamObj</a></li>
           </ul></dd>
 <dt><a name="newRequestModelObj" href="#newRequestModelObj"><span>newRequestModelObj:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="routing: proc newRequestModelObj(name, typeName, target: string; mutable: bool): RequestModelObj" href="happyx/routing/routing.html#newRequestModelObj%2Cstring%2Cstring%2Cstring%2Cbool">routing: proc newRequestModelObj(name, typeName, target: string; mutable: bool): RequestModelObj</a></li>
+          data-doc-search-tag="routing: proc newRequestModelObj(name, typeName, target: string): RequestModelObj" href="happyx/routing/routing.html#newRequestModelObj%2Cstring%2Cstring%2Cstring">routing: proc newRequestModelObj(name, typeName, target: string): RequestModelObj</a></li>
           </ul></dd>
 <dt><a name="newServer" href="#newServer"><span>newServer:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -1042,6 +1062,10 @@
 <li><a class="reference external"
           data-doc-search-tag="form_data: proc parseXWwwFormUrlencoded(data: string): StringTableRef" href="happyx/ssr/form_data.html#parseXWwwFormUrlencoded%2Cstring">form_data: proc parseXWwwFormUrlencoded(data: string): StringTableRef</a></li>
           </ul></dd>
+<dt><a name="path" href="#path"><span>path:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="routing: proc path(input: string; strVal: var string; start: int): int" href="happyx/routing/routing.html#path%2Cstring%2Cstring%2Cint">routing: proc path(input: string; strVal: var string; start: int): int</a></li>
+          </ul></dd>
 <dt><a name="PathParamObj" href="#PathParamObj"><span>PathParamObj:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="routing: object PathParamObj" href="happyx/routing/routing.html#PathParamObj">routing: object PathParamObj</a></li>
@@ -1062,6 +1086,10 @@
 <li><a class="reference external"
           data-doc-search-tag="python_types: proc processWebSocket(py, locals: PyObject)" href="happyx/bindings/python_types.html#processWebSocket%2CPyObject%2CPyObject">python_types: proc processWebSocket(py, locals: PyObject)</a></li>
           </ul></dd>
+<dt><a name="realnum" href="#realnum"><span>realnum:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="routing: proc realnum(input: string; floatVal: var float; start: int; opt: bool = false): int" href="happyx/routing/routing.html#realnum%2Cstring%2Cfloat%2Cint%2Cbool">routing: proc realnum(input: string; floatVal: var float; start: int; opt: bool = false): int</a></li>
+          </ul></dd>
 <dt><a name="regCORS" href="#regCORS"><span>regCORS:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="cors: macro regCORS(body: untyped): untyped" href="happyx/ssr/cors.html#regCORS.m%2Cuntyped">cors: macro regCORS(body: untyped): untyped</a></li>
@@ -1081,10 +1109,6 @@
 <dt><a name="registeredMounts" href="#registeredMounts"><span>registeredMounts:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="mounting: const registeredMounts" href="happyx/routing/mounting.html#registeredMounts">mounting: const registeredMounts</a></li>
-          </ul></dd>
-<dt><a name="registerRouteParamType" href="#registerRouteParamType"><span>registerRouteParamType:</span></a></dt><dd><ul class="simple">
-<li><a class="reference external"
-          data-doc-search-tag="routing: macro registerRouteParamType(name, pattern: string; creator: untyped)" href="happyx/routing/routing.html#registerRouteParamType.m%2Cstring%2Cstring%2Cuntyped">routing: macro registerRouteParamType(name, pattern: string; creator: untyped)</a></li>
           </ul></dd>
 <dt><a name="remember" href="#remember"><span>remember:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -1186,6 +1210,16 @@
           <li><a class="reference external"
           data-doc-search-tag="server: macro routes(server: Server; body: untyped = newStmtList()): untyped" href="happyx/ssr/server.html#routes.m%2CServer%2Cuntyped">server: macro routes(server: Server; body: untyped = newStmtList()): untyped</a></li>
           </ul></dd>
+<dt><a name="scanf" href="#scanf"><span>scanf:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="scanutils: macro scanf(input: string; pattern: static[string]; results: varargs[typed]): bool" href="happyx/private/scanutils.html#scanf.m%2Cstring%2Cstatic%5Bstring%5D%2Cvarargs%5Btyped%5D">scanutils: macro scanf(input: string; pattern: static[string]; results: varargs[typed]): bool</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="scanutils: Module scanutils" href="happyx/private/scanutils.html#scanf_1">scanutils: Module scanutils</a></li>
+          </ul></dd>
+<dt><a name="scopeCss" href="#scopeCss"><span>scopeCss:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="components: proc scopeCss(source, uniqCompId: string): string" href="happyx/spa/components.html#scopeCss%2Cstring%2Cstring">components: proc scopeCss(source, uniqCompId: string): string</a></li>
+          </ul></dd>
 <dt><a name="serve" href="#serve"><span>serve:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="server: macro serve(address: string; port: int; body: untyped): untyped" href="happyx/ssr/server.html#serve.m%2Cstring%2Cint%2Cuntyped">server: macro serve(address: string; port: int; body: untyped): untyped</a></li>
@@ -1228,9 +1262,17 @@
 <li><a class="reference external"
           data-doc-search-tag="state: type State" href="happyx/spa/state.html#State">state: type State</a></li>
           </ul></dd>
+<dt><a name="str" href="#str"><span>str:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="routing: proc str(input: string; strVal: var string; start: int; opt: bool = false): int" href="happyx/routing/routing.html#str%2Cstring%2Cstring%2Cint%2Cbool">routing: proc str(input: string; strVal: var string; start: int; opt: bool = false): int</a></li>
+          </ul></dd>
 <dt><a name="sugarRoutes" href="#sugarRoutes"><span>sugarRoutes:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="sgr: const sugarRoutes" href="happyx/sugar/sgr.html#sugarRoutes">sgr: const sugarRoutes</a></li>
+          </ul></dd>
+<dt><a name="SvgElements" href="#SvgElements"><span>SvgElements:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="tag: const SvgElements" href="happyx/spa/tag.html#SvgElements">tag: const SvgElements</a></li>
           </ul></dd>
 <dt><a name="tag" href="#tag"><span>tag:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -1386,11 +1428,15 @@
 <li><a class="reference external"
           data-doc-search-tag="python_types: enum WebSocketState" href="happyx/bindings/python_types.html#WebSocketState">python_types: enum WebSocketState</a></li>
           </ul></dd>
+<dt><a name="word" href="#word"><span>word:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="routing: proc word(input: string; strVal: var string; start: int; opt: bool = false): int" href="happyx/routing/routing.html#word%2Cstring%2Cstring%2Cint%2Cbool">routing: proc word(input: string; strVal: var string; start: int; opt: bool = false): int</a></li>
+          </ul></dd>
 </dl>
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2024-06-11 13:52:46 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2024-06-21 06:40:48 UTC</small>
       </div>
     </div>
   </div>

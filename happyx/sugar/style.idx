@@ -1,6 +1,6 @@
 nimTitle	style	happyx/sugar/style.html	module src/happyx/sugar/style		0
-nim	nnkNumbers	happyx/sugar/style.html#nnkNumbers	const nnkNumbers		81
-nim	buildStyle	happyx/sugar/style.html#buildStyle.m,untyped	macro buildStyle(body: untyped): untyped		205
+nim	nnkNumbers	happyx/sugar/style.html#nnkNumbers	const nnkNumbers		83
+nim	buildStyle	happyx/sugar/style.html#buildStyle.m,untyped	macro buildStyle(body: untyped): untyped		207
 heading	Style 🎴	happyx/sugar/style.html#style-🎴	 Style 🎴		0
 heading	Usage	happyx/sugar/style.html#style-🎴-usage	  Usage		0
 heading	Tags	happyx/sugar/style.html#usage-tags	   Tags		0
