@@ -4,7 +4,7 @@ Provides setup script
 from os import path, makedirs
 from setuptools import setup, find_packages, version
 
-import happyx.happyx as happyx
+import happyxpy.happyx as happyx
 
 
 # Load readme
