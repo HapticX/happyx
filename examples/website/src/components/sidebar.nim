@@ -131,7 +131,8 @@ proc SideBarFolder*(id: string, text: string, isMobile: bool, stmt: TagRef): Tag
         {translate(text)}
         @click:
           route(fmt"/guide/{id}")
-          toggleDrawerMobile()
+          if isMobile:
+            toggleDrawerMobile()
       stmt
 
 
@@ -147,7 +148,8 @@ proc SideBarItem*(id: string, isMobile: bool, stmt: TagRef): TagRef =
       stmt
       @click:
         route(fmt"/guide/{id}")
-        toggleDrawerMobile()
+        if isMobile:
+          toggleDrawerMobile()
 
 
 # Declare component
