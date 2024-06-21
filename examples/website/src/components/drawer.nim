@@ -11,6 +11,8 @@ proc chooseLang*(lang: cstring) =
   route(currentRoute)
 
 proc toggleDrawer*() =
+  if window.innerWidth > 1280:
+    return
   let
     drawerBack = document.getElementById("drawerBack")
     drawer = document.getElementById("drawer")
