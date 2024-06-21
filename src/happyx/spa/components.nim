@@ -80,22 +80,6 @@ template reRenderTmpl*() =
   compTmpData.addArgIter("data-" & self.uniqCompId)
   # echo tmpData
   when defined(js):
-    #   styleE = compTmpData.lastChild.cloneNode(true)
-    #   newE = current.cloneNode(true)
-    #   parent = current.parentElement
-    #   idx = index(current)
-    #   length = parent.children.len
-    # echo idx, ", ", length
-    # current.remove()
-    # compTmpData.lastChild.remove()
-    # if length-1 == idx:
-    #   parent.appendChild(compTmpData)
-    # else:
-    #   parent.insertBefore(compTmpData, parent.children[idx])
-    # compTmpData.appendChild(styleE)
-    # current.appendChild()
-    # current.innerHTML = ""
-    # current.appendChild()
     var
       current = document.querySelector("[data-" & self.uniqCompId & "]")
       elements = newSeq[Element]()
@@ -117,6 +101,7 @@ template reRenderTmpl*() =
         parent.appendChild(tag)
       else:
         parent.insertBefore(tag, parent.childNodes[idx])
+    # Save focus
     if activeElement.hasAttribute("id"):
       let actElem = document.getElementById(activeElement.id)
       if not actElem.isNil:
@@ -191,7 +176,7 @@ macro component*(name, body: untyped): untyped =
   ##      requiredField: int
   ##      optionalField: int = 100
   ##      
-  ##      `template`:
+  ##      html:
   ##        tDiv:
   ##          "requiredField is {self.requiredField}"
   ##        tDiv:
@@ -201,8 +186,7 @@ macro component*(name, body: untyped): untyped =
   ##        echo self.requiredField
   ##        echo self.optionalField
   ##      
-  ##      `style`:
-  ##        """
+  ##      `style`: """
   ##        div {
   ##          width: {self.requiredField}px;
   ##          height: {self.optionalField}px;
@@ -989,7 +973,8 @@ macro component*(name, body: untyped): untyped =
 macro importComponent*(body: untyped): untyped =
   ## Imports `.hpx` file as component.
   ## 
-  ##   Note: You can easily create these files with HappyX VS Code extension
+  ## .. Note::
+  ##    You can easily create these files with HappyX VS Code extension
   ## 
   ## ## Example
   ## 
@@ -1001,10 +986,12 @@ macro importComponent*(body: untyped): untyped =
   ##        Hello, world!
   ##      </div>
   ##    </template>
+  ##    
   ##    <script>
   ##    # Here is Nim code
   ##    echo "Hello, world!"
   ##    </script>
+  ##    
   ##    <style>
   ##    /* Here is scoped style */
   ##    div {
@@ -1287,4 +1274,4 @@ macro importComponent*(body: untyped): untyped =
     importStmts,
     newNimNode(nnkCommand).add(ident"component", componentName, stmtList)
   )
-  echo result.toStrLit
+  # echo result.toStrLit

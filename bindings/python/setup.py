@@ -13,7 +13,7 @@ with open('README.md', 'r', encoding='utf-8') as file:
 
 
 setup(
-    name='happyx',
+    name='happyxpy',
     description='HappyX web framework bindings for Python 🐍',
     long_description=long_description,
     long_description_content_type='text/markdown',

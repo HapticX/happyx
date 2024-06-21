@@ -4,7 +4,7 @@ from re import match
 
 from .constants import SWAGGER_HTML_SOURCE, REDOC_HTML_SOURCE
 
-import happyx.happyx as happyx
+import happyxpy.happyx as happyx
 
 
 Callback = Callable[[Any], Any]
