@@ -26,16 +26,19 @@ when exportPython or defined(docgen):
   import
     nimpy,
     nimpy/py_types,
+    regex,
     ../bindings/python_types
 elif defined(napibuild):
   import
     denim,
+    regex,
     ../bindings/node_types
 elif exportJvm:
   import
     jnim,
     jnim/private/[jni_wrapper],
     jnim/java/[lang, util],
+    regex,
     ../bindings/java_types
 
 
