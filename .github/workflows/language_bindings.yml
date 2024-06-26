@@ -19,13 +19,15 @@ on:
       - '**/constants.nim'
 
 jobs:
-  dependencies:
-    name: Install Dependencies 🔨
+  python:
+    name: Python bindings 🐍
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         os:
           - ubuntu-latest
+        python_version:
+          - '3.x'
         nim_version:
           - '2.0.6'
     env:
@@ -43,41 +45,7 @@ jobs:
           sudo mv -if nim-${{ matrix.nim_version }}/* /home/.nimble/
           export PATH=/home/.nimble/bin:$PATH
           nim -v
-
-      - name: Install dependencies 🔃
-        run: |
-          export PATH=/home/.nimble/bin:$PATH
-          nimble refresh
-          nimble install -y -d
-          nimble install -y jnim
-          nimble install -y checksums
-          nimble list --installed
-          nim -v
-      - uses: actions/cache@v4
-        with:
-          path: |
-            /home/.nimble
-          key: ${{ runner.os }}-nimble-${{ hashFiles('*.nimble') }}
-  
-  python:
-    name: Python bindings 🐍
-    needs: dependencies
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os:
-          - ubuntu-latest
-        python_version:
-          - '3.x'
-    env:
-      TIMEOUT_EXIT_STATUS: 124
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/cache@v4
-        with:
-          path: |
-            /home/.nimble
-          key: ${{ runner.os }}-nimble-${{ hashFiles('*.nimble') }}
+      
       - uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python_version }}
@@ -111,12 +79,13 @@ jobs:
   
   jvm:
     name: JVM Bindings ☕
-    needs: dependencies
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         os:
           - ubuntu-latest
+        nim_version:
+          - '2.0.6'
         java_version:
           - '16'
         gradle_version:
@@ -125,11 +94,17 @@ jobs:
       TIMEOUT_EXIT_STATUS: 124
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/cache@v4
-        with:
-          path: |
-            /home/.nimble
-          key: ${{ runner.os }}-nimble-${{ hashFiles('*.nimble') }}
+
+      - name: Install Nim 👑
+        run: |
+          sudo apt install xz-utils
+          curl https://nim-lang.org/download/nim-${{ matrix.nim_version }}-linux_x64.tar.xz --output nim.tar.xz
+          unxz nim.tar.xz
+          tar -xf nim.tar
+          sudo mkdir -p /home/.nimble
+          sudo mv -if nim-${{ matrix.nim_version }}/* /home/.nimble/
+          export PATH=/home/.nimble/bin:$PATH
+          nim -v
 
       - name: Install dependencies 🔃
         run: |
