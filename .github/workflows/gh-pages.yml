@@ -20,17 +20,10 @@ permissions:
   contents: write
 
 jobs:
-  before:
-    runs-on: windows-latest
-    if: "! contains(github.event.head_commit.message, '[skip ci]')"
-    steps:
-      - run: echo "not contains '[skip ci]'"
-
   docs:
     runs-on: windows-latest
-    needs: before
     env:
-      nim_version: '2.0.4'
+      nim_version: '2.0.6'
       node_version: '20'
     steps:
       - uses: actions/checkout@v4
@@ -44,28 +37,28 @@ jobs:
         run: |
           npm install uglify-js -g
 
-      - name: Cache nimble
-        id: cache-nimble
-        uses: actions/cache@v1
-        with:
-          path: ~/.nimble
-          key: ${{ runner.os }}-nimble-${{ hashFiles('*.nimble') }}
-      
-      - uses: jiro4989/setup-nim-action@v1
-        with:
-          nim-version: ${{ env.nim_version }}
-
-      - name: Install Dependencies 🔃
+      - name: Install Nim 👑
         run: |
+          sudo apt install xz-utils
+          curl https://nim-lang.org/download/nim-${{ env.nim_version }}-linux_x64.tar.xz --output nim.tar.xz
+          unxz nim.tar.xz
+          tar -xf nim.tar
+          sudo mkdir -p /home/.nimble
+          sudo mv -if nim-${{ env.nim_version }}/* /home/.nimble/
+          export PATH=/home/.nimble/bin:$PATH
+          nim -v
           nimble refresh
           nimble install -y
 
       - name: Generate API documents 📃
-        run: nim doc --index:on -d:docgen --project --out:docs --hints:off src/happyx.nim
+        run: |
+          export PATH=/home/.nimble/bin:$PATH
+          nim doc --index:on -d:docgen --project --out:docs --hints:off src/happyx.nim
       
       - name: Build HappyX website 🌐
         timeout-minutes: 2
         run: |
+          export PATH=/home/.nimble/bin:$PATH
           cd ./examples/website/src/
           nim js -d:production -d:release --opt:size --hints:off --warnings:off --out:main_full.js main
           uglifyjs main_full.js -c -m --mangle-props regex=/N[ST]I\w+/ -o main.js
