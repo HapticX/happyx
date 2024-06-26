@@ -92,7 +92,7 @@ jobs:
           echo "Win Module compiled with"
           echo "nim c --app:lib --out:../bindings/python/happyx/happyx.pyd -d:useRealtimeGC --mm:arc --tlsEmulation:off --passL:-static --t:-flto --l:-flto --opt:speed --threads:off -d:release -d:httpx -d:export2py happyx"
           echo "Linux module"
-          /home/runner/.nimble/bin/nim c --app:lib --out:../bindings/python/happyxpy/happyx.so -d:useRealtimeGC --mm:arc -t:-flto -l:-flto --opt:speed --threads:off -d:release -d:happyxDebug -x:off -a:off -d:beast -d:export2py happyx
+          /home/.nimble/bin/nim c --app:lib --out:../bindings/python/happyxpy/happyx.so -d:useRealtimeGC --mm:arc -t:-flto -l:-flto --opt:speed --threads:off -d:release -d:happyxDebug -x:off -a:off -d:beast -d:export2py happyx
         shell: bash
       - name: Build Python Package 🏗
         run: |
@@ -126,17 +126,11 @@ jobs:
       TIMEOUT_EXIT_STATUS: 124
     steps:
       - uses: actions/checkout@v4
-
-      - name: Install Nim 👑
-        run: |
-          sudo apt install xz-utils
-          curl https://nim-lang.org/download/nim-${{ matrix.nim_version }}-linux_x64.tar.xz --output nim.tar.xz
-          unxz nim.tar.xz
-          tar -xf nim.tar
-          sudo mkdir -p /home/.nimble
-          sudo mv -if nim-${{ matrix.nim_version }}/* /home/.nimble/
-          export PATH=/home/.nimble/bin:$PATH
-          nim -v
+      - uses: actions/cache@v4
+        with:
+          path: |
+            /home/.nimble
+          key: ${{ runner.os }}-nimble-${{ hashFiles('*.nimble') }}
 
       - name: Install dependencies 🔃
         run: |
