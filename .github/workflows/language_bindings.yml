@@ -32,11 +32,21 @@ jobs:
       TIMEOUT_EXIT_STATUS: 124
     steps:
       - uses: actions/checkout@v4
-      - uses: jiro4989/setup-nim-action@v1
-        with:
-          nim-version: ${{ matrix.nim_version }}
+
+      - name: Install Nim 👑
+        run: |
+          sudo apt install xz-utils
+          curl https://nim-lang.org/download/nim-${{ matrix.nim_version }}-linux_x64.tar.xz --output nim.tar.xz
+          unxz nim.tar.xz
+          tar -xf nim.tar
+          sudo mkdir -p /home/.nimble
+          sudo mv -if nim-${{ matrix.nim_version }}/* /home/.nimble/
+          export PATH=/home/.nimble/bin:$PATH
+          nim -v
+
       - name: Install dependencies 🔃
         run: |
+          export PATH=/home/.nimble/bin:$PATH
           nimble refresh
           nimble install -y -d
           nimble install -y jnim
@@ -46,8 +56,7 @@ jobs:
       - uses: actions/cache@v4
         with:
           path: |
-            ~/.nimble
-            ~/.choosenim
+            /home/.nimble
           key: ${{ runner.os }}-nimble-${{ hashFiles('*.nimble') }}
   
   python:
@@ -67,8 +76,7 @@ jobs:
       - uses: actions/cache@v4
         with:
           path: |
-            ~/.nimble
-            ~/.choosenim
+            /home/.nimble
           key: ${{ runner.os }}-nimble-${{ hashFiles('*.nimble') }}
       - uses: actions/setup-python@v4
         with:
@@ -118,11 +126,21 @@ jobs:
       TIMEOUT_EXIT_STATUS: 124
     steps:
       - uses: actions/checkout@v4
-      - uses: jiro4989/setup-nim-action@v1
-        with:
-          nim-version: ${{ matrix.nim_version }}
+
+      - name: Install Nim 👑
+        run: |
+          sudo apt install xz-utils
+          curl https://nim-lang.org/download/nim-${{ matrix.nim_version }}-linux_x64.tar.xz --output nim.tar.xz
+          unxz nim.tar.xz
+          tar -xf nim.tar
+          sudo mkdir -p /home/.nimble
+          sudo mv -if nim-${{ matrix.nim_version }}/* /home/.nimble/
+          export PATH=/home/.nimble/bin:$PATH
+          nim -v
+
       - name: Install dependencies 🔃
         run: |
+          export PATH=/home/.nimble/bin:$PATH
           nimble refresh
           nimble install -y -d
           nimble install -y jnim
