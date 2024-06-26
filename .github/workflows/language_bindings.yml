@@ -61,7 +61,7 @@ jobs:
           echo "Win Module compiled with"
           echo "nim c --app:lib --out:../bindings/python/happyx/happyx.pyd -d:useRealtimeGC --mm:arc --tlsEmulation:off --passL:-static --t:-flto --l:-flto --opt:speed --threads:off -d:release -d:httpx -d:export2py happyx"
           echo "Linux module"
-          nimble install -y checksums
+          nimble install -y checksums regex nimpy
           nim c --app:lib --out:../bindings/python/happyxpy/happyx.so -d:useRealtimeGC --mm:arc -t:-flto -l:-flto --opt:speed --threads:off -d:release -d:happyxDebug -x:off -a:off -d:beast -d:export2py happyx
         shell: bash
       - name: Build Python Package 🏗
