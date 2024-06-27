@@ -1,4 +1,4 @@
-from happyx import (
+from happyxpy import (
     FileResponse, HtmlResponse, JsonResponse, HttpRequest, WebSocket,
     Response, Server, reg_cors, RequestModelBase, __version__
 )

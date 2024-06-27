@@ -27,6 +27,12 @@ type
     lang*: string
 
 
+template i18n*(body: untyped): untyped =
+  ## Shorthand for `translatable macro<#translatable.m,untyped>`_
+  translatable:
+    body
+
+
 macro translatable*(body: untyped): untyped =
   ## Make translations for strings
   ## 
@@ -135,6 +141,16 @@ macro translate*(self: string, variables: varargs[string]): string =
   ## 
   ## .. Note::
   ##    in JS backend this works like procedure calling.
+  ## 
+  ## ### Example
+  ## ```nim
+  ## translatable:
+  ##   "hello_world":
+  ##     "default" -> "Hello, $1th world!"
+  ##     "ru" -> "Привет, $1ый мир!"
+  ## 
+  ## echo translate("hello_world", "10")  # Hello, 10th world!
+  ## ```
   when defined(js):
     return newCall("translateImpl", self, variables)
   else:
