@@ -507,6 +507,8 @@ template thunkHtml*(body: untyped): proc(): TagRef =
   proc(): TagRef =
     result = buildHtml:
       body
+    result = result.children[0].TagRef
+    result.onlyChildren = true
 
 
 template thunkHtmls*(body: untyped): seq[proc(): TagRef] =
@@ -517,6 +519,8 @@ template thunkHtmls*(body: untyped): seq[proc(): TagRef] =
         proc(): TagRef =
           result = buildHtml:
             b
+          result = result.children[0].TagRef
+          result.onlyChildren = true
     body
     res
 
@@ -528,6 +532,8 @@ template buildHtmls*(body: untyped): seq[TagRef] =
       res.add:
         buildHtml:
           b
+      res[^1] = res[^1].children[0].TagRef
+      res[^1].onlyChildren = true
     body
     res
 

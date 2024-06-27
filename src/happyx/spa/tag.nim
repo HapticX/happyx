@@ -166,7 +166,7 @@ proc add*(self: TagRef, tags: varargs[TagRef]) =
       if tag.isNil():
         continue
       if tag.onlyChildren:
-        for i in tag.childNodes[0..^1]:
+        for i in tag.childNodes:
           self.add(i.TagRef)
       else:
         self.appendChild(tag.cloneNode(true))
