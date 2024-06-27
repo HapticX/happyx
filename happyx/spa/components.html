@@ -12,10 +12,10 @@
 <link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAA3XAAAN1wFCKJt4AAAAB3RJTUUH4QQQEwksSS9ZWwAAAk1JREFUWMPtll2ITVEUx39nn/O7Y5qR8f05wtCUUr6ZIS++8pEnkZInPImneaCQ5METNdOkeFBKUhMPRIkHKfEuUZSUlGlKPN2TrgfncpvmnntnmlEyq1Z7t89/rf9a6+y99oZxGZf/XeIq61EdtgKXgdXA0xrYAvBjOIF1AI9zvjcC74BSpndrJPkBWDScTF8Aa4E3wDlgHbASaANmVqlcCnwHvgDvgVfAJ+AikAAvgfVZwLnSVZHZaOuKoQi3ZOMi4NkYkpe1p4J7A8BpYAD49hfIy/oqG0+hLomiKP2L5L+1ubn5115S+3OAn4EnwBlgMzCjyt6ZAnQCJ4A7wOs88iRJHvw50HoujuPBoCKwHWiosy8MdfZnAdcHk8dxXFJ3VQbQlCTJvRBCGdRbD4M6uc5glpY3eAihpN5S5w12diSEcCCEcKUO4ljdr15T76ur1FDDLIQQ3qv71EdDOe3Kxj3leRXyk+pxdWnFWod6Wt2bY3de3aSuUHcPBVimHs7mK9WrmeOF6lR1o9qnzskh2ar2qm1qizpfXaPeVGdlmGN5pb09qMxz1Xb1kLqgzn1RyH7JUXW52lr5e/Kqi9qpto7V1atuUzfnARrV7jEib1T76gG2qxdGmXyiekkt1GswPTtek0aBfJp6YySGBfWg2tPQ0FAYgf1stUfdmdcjarbYJEniKIq6gY/Aw+zWHAC+p2labGpqiorFYgGYCEzN7oQdQClN07O1/EfDyGgC0ALMBdYAi4FyK+4H3gLPsxfR1zRNi+NP7nH5J+QntnXe5B5mpfQAAAAASUVORK5CYII=">
 
 <!-- CSS -->
-<link rel="stylesheet" type="text/css" href="../../nimdoc.out.css?v=2.0.4">
+<link rel="stylesheet" type="text/css" href="../../nimdoc.out.css?v=2.0.6">
 
 <!-- JS -->
-<script type="text/javascript" src="../../dochack.js?v=2.0.4"></script>
+<script type="text/javascript" src="../../dochack.js?v=2.0.6"></script>
 </head>
 <body>
   <div class="document" id="documentId">
@@ -135,8 +135,8 @@
 </div>
 <div id="scopeCss-procs-all">
   <div id="scopeCss,string,string">
-  <dt><pre><span class="Keyword">proc</span> <a href="#scopeCss%2Cstring%2Cstring"><span class="Identifier">scopeCss</span></a><span class="Other">(</span><span class="Identifier">source</span><span class="Other">,</span> <span class="Identifier">uniqCompId</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span>
-    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+  <dt><pre><span class="Keyword">proc</span> <a href="#scopeCss%2Cstring%2Cstring"><span class="Identifier">scopeCss</span></a><span class="Other">(</span><span class="Identifier">source</span><span class="Other">,</span> <span class="Identifier">uniqCompId</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
     
@@ -163,7 +163,7 @@
   <span class="Identifier">requiredField</span><span class="Punctuation">:</span> <span class="Identifier">int</span>
   <span class="Identifier">optionalField</span><span class="Punctuation">:</span> <span class="Identifier">int</span> <span class="Operator">=</span> <span class="DecNumber">100</span>
   
-  <span class="Punctuation">`</span><span class="Keyword">template</span><span class="Punctuation">`</span><span class="Punctuation">:</span>
+  <span class="Identifier">html</span><span class="Punctuation">:</span>
     <span class="Identifier">tDiv</span><span class="Punctuation">:</span>
       <span class="StringLit">&quot;requiredField is {self.requiredField}&quot;</span>
     <span class="Identifier">tDiv</span><span class="Punctuation">:</span>
@@ -173,8 +173,7 @@
     <span class="Identifier">echo</span> <span class="Identifier">self</span><span class="Operator">.</span><span class="Identifier">requiredField</span>
     <span class="Identifier">echo</span> <span class="Identifier">self</span><span class="Operator">.</span><span class="Identifier">optionalField</span>
   
-  <span class="Punctuation">`</span><span class="Identifier">style</span><span class="Punctuation">`</span><span class="Punctuation">:</span>
-    <span class="LongStringLit">&quot;&quot;&quot;
+  <span class="Punctuation">`</span><span class="Identifier">style</span><span class="Punctuation">`</span><span class="Punctuation">:</span> <span class="LongStringLit">&quot;&quot;&quot;
     div {
       width: {self.requiredField}px;
       height: {self.optionalField}px;
@@ -232,8 +231,8 @@
   <dt><pre><span class="Keyword">macro</span> <a href="#importComponent.m%2Cuntyped"><span class="Identifier">importComponent</span></a><span class="Other">(</span><span class="Identifier">body</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
   <dd>
     
-    <p>Imports <tt class="docutils literal"><span class="pre"><span class="Operator">.</span><span class="Identifier">hpx</span></span></tt> file as component.</p>
-<p>Note: You can easily create these files with HappyX VS Code extension</p>
+    Imports <tt class="docutils literal"><span class="pre"><span class="Operator">.</span><span class="Identifier">hpx</span></span></tt> file as component.<div class="admonition admonition-info"><span class="admonition-info-text"><b>Note:</b></span>
+You can easily create these files with HappyX VS Code extension</div>
 
 <h2><a class="toc-backref" id="components-✨-example" href="#components-✨-example">Example</a></h2><p><tt class="docutils literal"><span class="pre"><span class="Identifier">component</span><span class="Operator">.</span><span class="Identifier">hpx</span></span></tt></p>
 <pre class="listing">&lt;template&gt;
@@ -241,10 +240,12 @@
     Hello, world!
   &lt;/div&gt;
 &lt;/template&gt;
+
 &lt;script&gt;
 # Here is Nim code
 echo &quot;Hello, world!&quot;
 &lt;/script&gt;
+
 &lt;style&gt;
 /* Here is scoped style */
 div {
@@ -284,7 +285,7 @@ div {
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2024-06-21 12:38:36 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2024-06-27 07:55:51 UTC</small>
       </div>
     </div>
   </div>

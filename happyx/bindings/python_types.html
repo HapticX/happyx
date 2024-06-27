@@ -12,10 +12,10 @@
 <link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAA3XAAAN1wFCKJt4AAAAB3RJTUUH4QQQEwksSS9ZWwAAAk1JREFUWMPtll2ITVEUx39nn/O7Y5qR8f05wtCUUr6ZIS++8pEnkZInPImneaCQ5METNdOkeFBKUhMPRIkHKfEuUZSUlGlKPN2TrgfncpvmnntnmlEyq1Z7t89/rf9a6+y99oZxGZf/XeIq61EdtgKXgdXA0xrYAvBjOIF1AI9zvjcC74BSpndrJPkBWDScTF8Aa4E3wDlgHbASaANmVqlcCnwHvgDvgVfAJ+AikAAvgfVZwLnSVZHZaOuKoQi3ZOMi4NkYkpe1p4J7A8BpYAD49hfIy/oqG0+hLomiKP2L5L+1ubn5115S+3OAn4EnwBlgMzCjyt6ZAnQCJ4A7wOs88iRJHvw50HoujuPBoCKwHWiosy8MdfZnAdcHk8dxXFJ3VQbQlCTJvRBCGdRbD4M6uc5glpY3eAihpN5S5w12diSEcCCEcKUO4ljdr15T76ur1FDDLIQQ3qv71EdDOe3Kxj3leRXyk+pxdWnFWod6Wt2bY3de3aSuUHcPBVimHs7mK9WrmeOF6lR1o9qnzskh2ar2qm1qizpfXaPeVGdlmGN5pb09qMxz1Xb1kLqgzn1RyH7JUXW52lr5e/Kqi9qpto7V1atuUzfnARrV7jEib1T76gG2qxdGmXyiekkt1GswPTtek0aBfJp6YySGBfWg2tPQ0FAYgf1stUfdmdcjarbYJEniKIq6gY/Aw+zWHAC+p2labGpqiorFYgGYCEzN7oQdQClN07O1/EfDyGgC0ALMBdYAi4FyK+4H3gLPsxfR1zRNi+NP7nH5J+QntnXe5B5mpfQAAAAASUVORK5CYII=">
 
 <!-- CSS -->
-<link rel="stylesheet" type="text/css" href="../../nimdoc.out.css?v=2.0.4">
+<link rel="stylesheet" type="text/css" href="../../nimdoc.out.css?v=2.0.6">
 
 <!-- JS -->
-<script type="text/javascript" src="../../dochack.js?v=2.0.4"></script>
+<script type="text/javascript" src="../../dochack.js?v=2.0.6"></script>
 </head>
 <body>
   <div class="document" id="documentId">
@@ -215,8 +215,7 @@
   <dt><pre><a href="python_types.html#FileResponseObj"><span class="Identifier">FileResponseObj</span></a> <span class="Other">=</span> <span class="Keyword">ref</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <span class="Identifier">PyNimObjectExperimental</span>
   <span class="Identifier">filename</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
   <span class="Identifier">statusCode</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int</span>
-  <span class="Identifier">asAttachment</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>
-</pre></dt>
+  <span class="Identifier">asAttachment</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span></pre></dt>
   <dd>
     
     
@@ -226,8 +225,7 @@
 <div id="HandlerParam">
   <dt><pre><a href="python_types.html#HandlerParam"><span class="Identifier">HandlerParam</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">name</span><span class="Operator">*</span><span class="Other">,</span> <span class="Identifier">paramType</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
-  <span class="Identifier">reserved</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>
-</pre></dt>
+  <span class="Identifier">reserved</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span></pre></dt>
   <dd>
     
     
@@ -238,8 +236,7 @@
   <dt><pre><a href="python_types.html#HtmlResponseObj"><span class="Identifier">HtmlResponseObj</span></a> <span class="Other">=</span> <span class="Keyword">ref</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <span class="Identifier">PyNimObjectExperimental</span>
   <span class="Identifier">data</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
   <span class="Identifier">statusCode</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int</span>
-  <span class="Identifier">headers</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">PyObject</span>
-</pre></dt>
+  <span class="Identifier">headers</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">PyObject</span></pre></dt>
   <dd>
     
     
@@ -251,8 +248,7 @@
   <span class="Identifier">path</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
   <span class="Identifier">body</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
   <span class="Identifier">httpMethod</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
-  <span class="Identifier">headers</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">PPyObject</span>
-</pre></dt>
+  <span class="Identifier">headers</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">PPyObject</span></pre></dt>
   <dd>
     
     
@@ -263,8 +259,7 @@
   <dt><pre><a href="python_types.html#JsonResponseObj"><span class="Identifier">JsonResponseObj</span></a> <span class="Other">=</span> <span class="Keyword">ref</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <span class="Identifier">PyNimObjectExperimental</span>
   <span class="Identifier">data</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">JsonNode</span>
   <span class="Identifier">statusCode</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int</span>
-  <span class="Identifier">headers</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">PyObject</span>
-</pre></dt>
+  <span class="Identifier">headers</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">PyObject</span></pre></dt>
   <dd>
     
     
@@ -275,8 +270,7 @@
   <dt><pre><a href="python_types.html#RequestModelData"><span class="Identifier">RequestModelData</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">name</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
   <span class="Identifier">pyClass</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">PyObject</span>
-  <span class="Identifier">fields</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Keyword">tuple</span><span class="Other">[</span><span class="Identifier">key</span><span class="Other">,</span> <span class="Identifier">val</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">]</span><span class="Other">]</span>
-</pre></dt>
+  <span class="Identifier">fields</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Keyword">tuple</span><span class="Other">[</span><span class="Identifier">key</span><span class="Other">,</span> <span class="Identifier">val</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">]</span><span class="Other">]</span></pre></dt>
   <dd>
     
     
@@ -285,8 +279,7 @@
 </div>
 <div id="RequestModels">
   <dt><pre><a href="python_types.html#RequestModels"><span class="Identifier">RequestModels</span></a> <span class="Other">=</span> <span class="Keyword">ref</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <span class="Identifier">PyNimObjectExperimental</span>
-  <span class="Identifier">requestModels</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="python_types.html#RequestModelData"><span class="Identifier">RequestModelData</span></a><span class="Other">]</span>
-</pre></dt>
+  <span class="Identifier">requestModels</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="python_types.html#RequestModelData"><span class="Identifier">RequestModelData</span></a><span class="Other">]</span></pre></dt>
   <dd>
     
     
@@ -297,8 +290,7 @@
   <dt><pre><a href="python_types.html#ResponseObj"><span class="Identifier">ResponseObj</span></a> <span class="Other">=</span> <span class="Keyword">ref</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <span class="Identifier">PyNimObjectExperimental</span>
   <span class="Identifier">data</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
   <span class="Identifier">statusCode</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int</span>
-  <span class="Identifier">headers</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">PyObject</span>
-</pre></dt>
+  <span class="Identifier">headers</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">PyObject</span></pre></dt>
   <dd>
     
     
@@ -316,8 +308,7 @@
   <span class="Identifier">posArgs</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">]</span>
   <span class="Identifier">params</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">JsonNode</span>
   <span class="Identifier">handlerParams</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="python_types.html#HandlerParam"><span class="Identifier">HandlerParam</span></a><span class="Other">]</span>
-  <span class="Identifier">isAsync</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>
-</pre></dt>
+  <span class="Identifier">isAsync</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span></pre></dt>
   <dd>
     
     
@@ -329,8 +320,7 @@
   <span class="Identifier">id</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint64</span>
   <span class="Identifier">ws</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">websocketx</span><span class="Other">.</span><span class="Identifier">WebSocket</span>
   <span class="Identifier">data</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
-  <span class="Identifier">state</span><span class="Operator">*</span><span class="Other">:</span> <a href="python_types.html#WebSocketState"><span class="Identifier">WebSocketState</span></a>
-</pre></dt>
+  <span class="Identifier">state</span><span class="Operator">*</span><span class="Other">:</span> <a href="python_types.html#WebSocketState"><span class="Identifier">WebSocketState</span></a></pre></dt>
   <dd>
     
     
@@ -495,7 +485,7 @@
   <dt><pre><span class="Keyword">proc</span> <a href="#initRoute%2Cstring%2Cstring%2Cseq%5Bstring%5D%2CRegex2%2CPyObject"><span class="Identifier">initRoute</span></a><span class="Other">(</span><span class="Identifier">path</span><span class="Other">,</span> <span class="Identifier">purePath</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">httpMethod</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">pattern</span><span class="Other">:</span> <span class="Identifier">Regex2</span><span class="Other">;</span>
                <span class="Identifier">handler</span><span class="Other">:</span> <span class="Identifier">PyObject</span><span class="Other">)</span><span class="Other">:</span> <a href="python_types.html#Route"><span class="Identifier">Route</span></a> {.
     <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">,</span> <span class="Identifier">OSError</span><span class="Other">,</span> <span class="Identifier">IOError</span><span class="Other">,</span> <span class="Identifier">EOFError</span><span class="Other">,</span> <span class="Identifier">KeyError</span><span class="Other">]</span><span class="Other">,</span>
-    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">,</span> <span class="Identifier">ReadDirEffect</span><span class="Other">,</span> <span class="Identifier">ReadEnvEffect</span><span class="Other">,</span> <span class="Identifier">ReadIOEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
     
@@ -588,7 +578,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2024-06-21 12:38:22 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2024-06-27 07:55:43 UTC</small>
       </div>
     </div>
   </div>

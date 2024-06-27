@@ -31,12 +31,12 @@ nim	start	happyx/spa/renderer.html#start.t,App	template start(app: App)		348
 nim	buildHtml	happyx/spa/renderer.html#buildHtml.m,untyped,untyped	macro buildHtml(root, html: untyped): untyped		390
 nim	buildHtml	happyx/spa/renderer.html#buildHtml.m,untyped	macro buildHtml(html: untyped): untyped		493
 nim	thunkHtml	happyx/spa/renderer.html#thunkHtml.t,untyped	template thunkHtml(body: untyped): proc (): TagRef		506
-nim	thunkHtmls	happyx/spa/renderer.html#thunkHtmls.t,untyped	template thunkHtmls(body: untyped): seq[proc (): TagRef]		512
-nim	buildHtmls	happyx/spa/renderer.html#buildHtmls.t,untyped	template buildHtmls(body: untyped): seq[TagRef]		524
-nim	buildHtmlSlot	happyx/spa/renderer.html#buildHtmlSlot.m,untyped,static[bool],static[bool]	macro buildHtmlSlot(html: untyped; inCycle, inComponent: static[bool]): untyped		536
-nim	buildComponentHtml	happyx/spa/renderer.html#buildComponentHtml.m,untyped,untyped	macro buildComponentHtml(componentName, html: untyped): untyped		550
-nim	routes	happyx/spa/renderer.html#routes.m,App,untyped	macro routes(app: App; body: untyped): untyped		568
-nim	appRoutes	happyx/spa/renderer.html#appRoutes.m,string,untyped	macro appRoutes(name: string; body: untyped): untyped		815
+nim	thunkHtmls	happyx/spa/renderer.html#thunkHtmls.t,untyped	template thunkHtmls(body: untyped): seq[proc (): TagRef]		514
+nim	buildHtmls	happyx/spa/renderer.html#buildHtmls.t,untyped	template buildHtmls(body: untyped): seq[TagRef]		528
+nim	buildHtmlSlot	happyx/spa/renderer.html#buildHtmlSlot.m,untyped,static[bool],static[bool]	macro buildHtmlSlot(html: untyped; inCycle, inComponent: static[bool]): untyped		542
+nim	buildComponentHtml	happyx/spa/renderer.html#buildComponentHtml.m,untyped,untyped	macro buildComponentHtml(componentName, html: untyped): untyped		556
+nim	routes	happyx/spa/renderer.html#routes.m,App,untyped	macro routes(app: App; body: untyped): untyped		574
+nim	appRoutes	happyx/spa/renderer.html#appRoutes.m,string,untyped	macro appRoutes(name: string; body: untyped): untyped		821
 nimgrp	html	happyx/spa/renderer.html#html-procs-all	proc		198
 nimgrp	route	happyx/spa/renderer.html#route-procs-all	proc		194
 nimgrp	buildhtml	happyx/spa/renderer.html#buildHtml-macros-all	macro		390

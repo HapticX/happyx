@@ -12,10 +12,10 @@
 <link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAA3XAAAN1wFCKJt4AAAAB3RJTUUH4QQQEwksSS9ZWwAAAk1JREFUWMPtll2ITVEUx39nn/O7Y5qR8f05wtCUUr6ZIS++8pEnkZInPImneaCQ5METNdOkeFBKUhMPRIkHKfEuUZSUlGlKPN2TrgfncpvmnntnmlEyq1Z7t89/rf9a6+y99oZxGZf/XeIq61EdtgKXgdXA0xrYAvBjOIF1AI9zvjcC74BSpndrJPkBWDScTF8Aa4E3wDlgHbASaANmVqlcCnwHvgDvgVfAJ+AikAAvgfVZwLnSVZHZaOuKoQi3ZOMi4NkYkpe1p4J7A8BpYAD49hfIy/oqG0+hLomiKP2L5L+1ubn5115S+3OAn4EnwBlgMzCjyt6ZAnQCJ4A7wOs88iRJHvw50HoujuPBoCKwHWiosy8MdfZnAdcHk8dxXFJ3VQbQlCTJvRBCGdRbD4M6uc5glpY3eAihpN5S5w12diSEcCCEcKUO4ljdr15T76ur1FDDLIQQ3qv71EdDOe3Kxj3leRXyk+pxdWnFWod6Wt2bY3de3aSuUHcPBVimHs7mK9WrmeOF6lR1o9qnzskh2ar2qm1qizpfXaPeVGdlmGN5pb09qMxz1Xb1kLqgzn1RyH7JUXW52lr5e/Kqi9qpto7V1atuUzfnARrV7jEib1T76gG2qxdGmXyiekkt1GswPTtek0aBfJp6YySGBfWg2tPQ0FAYgf1stUfdmdcjarbYJEniKIq6gY/Aw+zWHAC+p2labGpqiorFYgGYCEzN7oQdQClN07O1/EfDyGgC0ALMBdYAi4FyK+4H3gLPsxfR1zRNi+NP7nH5J+QntnXe5B5mpfQAAAAASUVORK5CYII=">
 
 <!-- CSS -->
-<link rel="stylesheet" type="text/css" href="../../nimdoc.out.css?v=2.0.4">
+<link rel="stylesheet" type="text/css" href="../../nimdoc.out.css?v=2.0.6">
 
 <!-- JS -->
-<script type="text/javascript" src="../../dochack.js?v=2.0.4"></script>
+<script type="text/javascript" src="../../dochack.js?v=2.0.6"></script>
 </head>
 <body>
   <div class="document" id="documentId">
@@ -48,7 +48,8 @@
     </div>
     <ul class="simple simple-toc" id="toc-list">
   <li><a class="reference" id="example_toc" href="#example">Example</a></li>
-<li><a class="reference" id="translatable-strings-✨_toc" href="#translatable-strings-✨">Translatable strings ✨</a></li>
+<ul class="simple"><li><a class="reference" id="example-example_toc" href="#example-example">Example</a></li>
+</ul><li><a class="reference" id="translatable-strings-✨_toc" href="#translatable-strings-✨">Translatable strings ✨</a></li>
 <ul class="simple"><li><a class="reference" id="translatable-strings-✨-minimal-example-👨‍🔬_toc" href="#translatable-strings-✨-minimal-example-👨‍🔬">Minimal Example 👨‍🔬</a></li>
 </ul><li>
   <a class="reference reference-toplevel" href="#6" id="56">Imports</a>
@@ -73,6 +74,18 @@
 </ul>
 <ul class="simple nested-toc-section">translate
   <li><a class="reference" href="#translate.m%2Cstring%2Cvarargs%5Bstring%5D" title="translate(self: string; variables: varargs[string]): string">translate(self: string; variables: varargs[string]): string</a></li>
+
+</ul>
+
+    </ul>
+  </details>
+</li>
+<li>
+  <details open>
+    <summary><a class="reference reference-toplevel" href="#18" id="68">Templates</a></summary>
+    <ul class="simple simple-toc-section">
+      <ul class="simple nested-toc-section">i18n
+  <li><a class="reference" href="#i18n.t%2Cuntyped" title="i18n(body: untyped): untyped">i18n(body: untyped): untyped</a></li>
 
 </ul>
 
@@ -110,8 +123,7 @@
   <dl class="item">
     <div id="LanguageSettings">
   <dt><pre><a href="translatable.html#LanguageSettings"><span class="Identifier">LanguageSettings</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
-  <span class="Identifier">lang</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
-</pre></dt>
+  <span class="Identifier">lang</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span></pre></dt>
   <dd>
     
     
@@ -151,6 +163,31 @@
     Translates <tt class="docutils literal"><span class="pre"><span class="Identifier">self</span></span></tt> string to current client language (SPA) or accept-language header (SSG/SSR)<div class="admonition admonition-info"><span class="admonition-info-text"><b>Note:</b></span>
 in JS backend this works like procedure calling.</div>
 
+<h3><a class="toc-backref" id="example-example" href="#example-example">Example</a></h3><p><pre class="listing">
+<span class="Identifier">translatable</span><span class="Punctuation">:</span>
+  <span class="StringLit">&quot;hello_world&quot;</span><span class="Punctuation">:</span>
+    <span class="StringLit">&quot;default&quot;</span> <span class="Operator">-&gt;</span> <span class="StringLit">&quot;Hello, $1th world!&quot;</span>
+    <span class="StringLit">&quot;ru&quot;</span> <span class="Operator">-&gt;</span> <span class="StringLit">&quot;Привет, $1ый мир!&quot;</span>
+
+<span class="Identifier">echo</span> <span class="Identifier">translate</span><span class="Punctuation">(</span><span class="StringLit">&quot;hello_world&quot;</span><span class="Punctuation">,</span> <span class="StringLit">&quot;10&quot;</span><span class="Punctuation">)</span>  <span class="Comment"># Hello, 10th world!</span></pre></p>
+
+    
+  </dd>
+</div>
+
+</div>
+
+  </dl>
+</div>
+<div class="section" id="18">
+  <h1><a class="toc-backref" href="#18">Templates</a></h1>
+  <dl class="item">
+    <div id="i18n-templates-all">
+  <div id="i18n.t,untyped">
+  <dt><pre><span class="Keyword">template</span> <a href="#i18n.t%2Cuntyped"><span class="Identifier">i18n</span></a><span class="Other">(</span><span class="Identifier">body</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
+  <dd>
+    
+    Shorthand for <a class="reference external" href="#translatable.m,untyped">translatable macro</a>
     
   </dd>
 </div>
@@ -166,7 +203,7 @@ in JS backend this works like procedure calling.</div>
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2024-06-21 12:38:34 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2024-06-27 07:55:50 UTC</small>
       </div>
     </div>
   </div>

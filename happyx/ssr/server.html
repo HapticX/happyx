@@ -12,10 +12,10 @@
 <link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAA3XAAAN1wFCKJt4AAAAB3RJTUUH4QQQEwksSS9ZWwAAAk1JREFUWMPtll2ITVEUx39nn/O7Y5qR8f05wtCUUr6ZIS++8pEnkZInPImneaCQ5METNdOkeFBKUhMPRIkHKfEuUZSUlGlKPN2TrgfncpvmnntnmlEyq1Z7t89/rf9a6+y99oZxGZf/XeIq61EdtgKXgdXA0xrYAvBjOIF1AI9zvjcC74BSpndrJPkBWDScTF8Aa4E3wDlgHbASaANmVqlcCnwHvgDvgVfAJ+AikAAvgfVZwLnSVZHZaOuKoQi3ZOMi4NkYkpe1p4J7A8BpYAD49hfIy/oqG0+hLomiKP2L5L+1ubn5115S+3OAn4EnwBlgMzCjyt6ZAnQCJ4A7wOs88iRJHvw50HoujuPBoCKwHWiosy8MdfZnAdcHk8dxXFJ3VQbQlCTJvRBCGdRbD4M6uc5glpY3eAihpN5S5w12diSEcCCEcKUO4ljdr15T76ur1FDDLIQQ3qv71EdDOe3Kxj3leRXyk+pxdWnFWod6Wt2bY3de3aSuUHcPBVimHs7mK9WrmeOF6lR1o9qnzskh2ar2qm1qizpfXaPeVGdlmGN5pb09qMxz1Xb1kLqgzn1RyH7JUXW52lr5e/Kqi9qpto7V1atuUzfnARrV7jEib1T76gG2qxdGmXyiekkt1GswPTtek0aBfJp6YySGBfWg2tPQ0FAYgf1stUfdmdcjarbYJEniKIq6gY/Aw+zWHAC+p2labGpqiorFYgGYCEzN7oQdQClN07O1/EfDyGgC0ALMBdYAi4FyK+4H3gLPsxfR1zRNi+NP7nH5J+QntnXe5B5mpfQAAAAASUVORK5CYII=">
 
 <!-- CSS -->
-<link rel="stylesheet" type="text/css" href="../../nimdoc.out.css?v=2.0.4">
+<link rel="stylesheet" type="text/css" href="../../nimdoc.out.css?v=2.0.6">
 
 <!-- JS -->
-<script type="text/javascript" src="../../dochack.js?v=2.0.4"></script>
+<script type="text/javascript" src="../../dochack.js?v=2.0.6"></script>
 </head>
 <body>
   <div class="document" id="documentId">
@@ -83,16 +83,13 @@
   middlewareCallback*: PyObject
   logger*: Logger
   when enableHttpx:
-      instance*: Settings
-
+    instance*: Settings
   elif enableHttpBeast:
-      instance*: Settings
-
+    instance*: Settings
   elif enableMicro:
-      instance*: MicroAsyncHttpServer
-
+    instance*: MicroAsyncHttpServer
   else:
-      instance*: AsyncHttpServer">Server</a></li>
+    instance*: AsyncHttpServer">Server</a></li>
 
     </ul>
   </details>
@@ -247,8 +244,7 @@
   <span class="Identifier">path</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
   <span class="Identifier">httpMethod</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">]</span>
   <span class="Identifier">pathParams</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="../routing/routing.html#PathParamObj"><span class="Identifier">PathParamObj</span></a><span class="Other">]</span>
-  <span class="Identifier">models</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="../routing/routing.html#RequestModelObj"><span class="Identifier">RequestModelObj</span></a><span class="Other">]</span>
-</pre></dt>
+  <span class="Identifier">models</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="../routing/routing.html#RequestModelObj"><span class="Identifier">RequestModelObj</span></a><span class="Other">]</span></pre></dt>
   <dd>
     
     
@@ -282,18 +278,13 @@
   <span class="Identifier">middlewareCallback</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">PyObject</span>
   <span class="Identifier">logger</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">Logger</span>
   <span class="Keyword">when</span> <span class="Identifier">enableHttpx</span><span class="Other">:</span>
-      <span class="Identifier">instance</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">Settings</span>
-
+    <span class="Identifier">instance</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">Settings</span>
   <span class="Keyword">elif</span> <span class="Identifier">enableHttpBeast</span><span class="Other">:</span>
-      <span class="Identifier">instance</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">Settings</span>
-
+    <span class="Identifier">instance</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">Settings</span>
   <span class="Keyword">elif</span> <span class="Identifier">enableMicro</span><span class="Other">:</span>
-      <span class="Identifier">instance</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">MicroAsyncHttpServer</span>
-
+    <span class="Identifier">instance</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">MicroAsyncHttpServer</span>
   <span class="Keyword">else</span><span class="Other">:</span>
-      <span class="Identifier">instance</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">AsyncHttpServer</span>
-
-  </pre></dt>
+    <span class="Identifier">instance</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">AsyncHttpServer</span></pre></dt>
   <dd>
     
     
@@ -340,8 +331,8 @@
 </div>
 <div id="fgColored-procs-all">
   <div id="fgColored,string,ForegroundColor">
-  <dt><pre><span class="Keyword">func</span> <a href="#fgColored%2Cstring%2CForegroundColor"><span class="Identifier">fgColored</span></a><span class="Other">(</span><span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">clr</span><span class="Other">:</span> <span class="Identifier">ForegroundColor</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> {.<span class="Identifier">inline</span><span class="Other">,</span>
-    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+  <dt><pre><span class="Keyword">func</span> <a href="#fgColored%2Cstring%2CForegroundColor"><span class="Identifier">fgColored</span></a><span class="Other">(</span><span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">clr</span><span class="Other">:</span> <span class="Identifier">ForegroundColor</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> {.<span class="Identifier">inline</span><span class="Other">,</span> <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
     <p>This function takes in a string of text and a ForegroundColor enum value and returns the same text with the specified color applied.</p>
@@ -387,7 +378,7 @@
 <div id="newServer-procs-all">
   <div id="newServer,string,int">
   <dt><pre><span class="Keyword">proc</span> <a href="#newServer%2Cstring%2Cint"><span class="Identifier">newServer</span></a><span class="Other">(</span><span class="Identifier">address</span><span class="Other">:</span> <span class="Identifier">string</span> <span class="Other">=</span> <span class="StringLit">&quot;127.0.0.1&quot;</span><span class="Other">;</span> <span class="Identifier">port</span><span class="Other">:</span> <span class="Identifier">int</span> <span class="Other">=</span> <span class="DecNumber">5000</span><span class="Other">)</span><span class="Other">:</span> <a href="server.html#Server"><span class="Identifier">Server</span></a> {.
-    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
     <p>This procedure creates and returns a new instance of the <tt class="docutils literal"><span class="pre"><span class="Identifier">Server</span></span></tt> object, which listens for incoming connections on the specified IP address and port. If no address is provided, it defaults to <tt class="docutils literal"><span class="pre"><span class="FloatNumber">127.0</span><span class="Operator">.</span><span class="FloatNumber">0.1</span></span></tt>, which is the local loopback address. If no port is provided, it defaults to <tt class="docutils literal"><span class="pre"><span class="DecNumber">5000</span></span></tt>.</p>
@@ -638,7 +629,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2024-06-21 12:38:28 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2024-06-27 07:55:47 UTC</small>
       </div>
     </div>
   </div>
