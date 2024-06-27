@@ -21,7 +21,7 @@ permissions:
 
 jobs:
   docs:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     env:
       nim_version: '2.0.6'
       node_version: '20'
@@ -39,11 +39,12 @@ jobs:
 
       - name: Install Nim 👑
         run: |
+          sudo apt install xz-utils
           curl https://nim-lang.org/download/nim-${{ env.nim_version }}-linux_x64.tar.xz --output nim.tar.xz
           unxz nim.tar.xz
           tar -xf nim.tar
-          mkdir -p /home/.nimble
-          mv -if nim-${{ env.nim_version }}/* /home/.nimble/
+          sudo mkdir -p /home/.nimble
+          sudo mv -if nim-${{ env.nim_version }}/* /home/.nimble/
           export PATH=/home/.nimble/bin:$PATH
           nim -v
           nimble refresh
@@ -58,7 +59,7 @@ jobs:
         timeout-minutes: 2
         run: |
           export PATH=/home/.nimble/bin:$PATH
-          cd ./examples/website/src/
+         cd ./examples/website/src/
           nim js -d:production -d:release --opt:size --hints:off --warnings:off --out:main_full.js main
           uglifyjs main_full.js -c -m --mangle-props regex=/N[ST]I\w+/ -o main.js
           cd ../../..
