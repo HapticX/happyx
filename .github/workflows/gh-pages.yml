@@ -54,12 +54,12 @@ jobs:
         run: |
           export PATH=/home/.nimble/bin:$PATH
           nim doc --index:on -d:docgen --project --out:docs --hints:off src/happyx.nim
-      
+
       - name: Build HappyX website 🌐
         timeout-minutes: 2
         run: |
           export PATH=/home/.nimble/bin:$PATH
-         cd ./examples/website/src/
+          cd ./examples/website/src/
           nim js -d:production -d:release --opt:size --hints:off --warnings:off --out:main_full.js main
           uglifyjs main_full.js -c -m --mangle-props regex=/N[ST]I\w+/ -o main.js
           cd ../../..
