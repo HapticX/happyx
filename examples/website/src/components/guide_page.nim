@@ -53,6 +53,8 @@ component GuidePage:
           SsrDocs
         of "mounting":
           Mounting
+        of "hpx_for_karax":
+          KaraxUsers
 
       tDiv(class = "hidden xl:flex justify-between items-center w-full pb-8"):
         if guidePages[currentGuidePage]["prev"].getStr != "":

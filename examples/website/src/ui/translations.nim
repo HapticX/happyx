@@ -2144,6 +2144,78 @@ translatable:
     "zh" -> "使用Nim，您还可以使用语法糖，无需挂载即可定义单独的路由："
     "fr" -> "En utilisant Nim, vous pouvez également utiliser du sucre syntaxique qui vous permet de définir des routes séparées sans avoir recours au montage :"
     "ko" -> "Nim을 사용하면 마운팅을 사용하지 않고 별도의 경로를 정의할 수 있는 문법적 설탕도 사용할 수 있습니다:"
+  "HappyX for ...":
+    "ru" -> "HappyX для ..."
+    "ja" -> "HappyXのための..."
+    "zh" -> "HappyX的..."
+    "fr" -> "HappyX pour ..."
+    "ko" -> "...를 위한 HappyX"
+  "Karax users 👑":
+    "ru" -> "пользователей Karax 👑"
+    "ja" -> "Karaxユーザー 👑"
+    "zh" -> "Karax用户 👑"
+    "fr" -> "utilisateurs de Karax 👑"
+    "ko" -> "Karax 사용자 👑"
+  "HappyX for Karax users 👑":
+    "ru" -> "HappyX для пользователей Karax 👑"
+    "ja" -> "KaraxユーザーのためのHappyX 👑"
+    "zh" -> "Karax用户的HappyX 👑"
+    "fr" -> "HappyX pour les utilisateurs de Karax 👑"
+    "ko" -> "Karax 사용자를 위한 HappyX 👑"
+  "This article discusses the differences between Karax and HappyX, as well as their pros and cons.":
+    "ru" -> "В этой статье рассматривается разница между Karax и HappyX, а также их плюсы и минусы."
+    "ja" -> "この記事では、KaraxとHappyXの違い、およびそれぞれの長所と短所について説明します。"
+    "zh" -> "本文讨论了Karax和HappyX之间的差异，以及它们的优缺点。"
+    "fr" -> "Cet article aborde les différences entre Karax et HappyX, ainsi que leurs avantages et inconvénients."
+    "ko" -> "이 기사에서는 Karax와 HappyX의 차이점과 장단점에 대해 설명합니다."
+  "I propose to consider the first example from the Karax README:":
+    "ru" -> "Предлагаю рассмотреть первый пример из README Karax:"
+    "ja" -> "Karax READMEの最初の例を検討しましょう："
+    "zh" -> "我建议考虑Karax README中的第一个示例："
+    "fr" -> "Je propose d'examiner le premier exemple du README de Karax :"
+    "ko" -> "Karax README의 첫 번째 예제를 살펴보겠습니다:"
+  "Here's how you can rewrite it using HappyX:":
+    "ru" -> "Вот, как это можно переписать, используя HappyX:"
+    "ja" -> "これをHappyXを使用して書き直す方法は次のとおりです："
+    "zh" -> "以下是使用HappyX重写它的方法："
+    "fr" -> "Voici comment le réécrire en utilisant HappyX :"
+    "ko" -> "다음은 HappyX를 사용하여 이를 다시 작성하는 방법입니다:"
+  "However, if you look again, you can see that the Karax example uses a function that returns VDOM.":
+    "ru" -> "Однако, если взглянуть еще раз - можно увидеть, что в примере с Karax используется функция, которая возвращает VDOM."
+    "ja" -> "しかし、もう一度見ると、Karaxの例ではVDOMを返す関数が使用されていることがわかります。"
+    "zh" -> "然而，如果再看一遍，你会发现Karax示例使用了一个返回VDOM的函数。"
+    "fr" -> "Cependant, si vous regardez à nouveau, vous pouvez voir que l'exemple de Karax utilise une fonction qui renvoie un VDOM."
+    "ko" -> "그러나 다시 보면 Karax 예제에서는 VDOM을 반환하는 함수를 사용하고 있음을 알 수 있습니다."
+  "In HappyX, you can also use functions to generate VDOM:":
+    "ru" -> "В HappyX также можно использовать функции для генерации VDOM:"
+    "ja" -> "HappyXでは、VDOMを生成するために関数を使用することもできます："
+    "zh" -> "在HappyX中，你也可以使用函数来生成VDOM："
+    "fr" -> "Dans HappyX, vous pouvez également utiliser des fonctions pour générer un VDOM :"
+    "ko" -> "HappyX에서는 VDOM을 생성하기 위해 함수도 사용할 수 있습니다:"
+  "The event model":
+    "ru" -> "Модель событий"
+    "ja" -> "イベントモデル"
+    "zh" -> "事件模型"
+    "fr" -> "Le modèle d'événement"
+    "ko" -> "이벤트 모델"
+  "Now let's consider the event model provided by HappyX and Karax.":
+    "ru" -> "Теперь рассмотрим модель событий, которую предоставляют HappyX и Karax."
+    "ja" -> "さて、HappyXとKaraxが提供するイベントモデルについて考えてみましょう。"
+    "zh" -> "现在让我们来看看HappyX和Karax提供的事件模型。"
+    "fr" -> "Maintenant, examinons le modèle d'événement proposé par HappyX et Karax."
+    "ko" -> "이제 HappyX와 Karax가 제공하는 이벤트 모델을 살펴보겠습니다."
+  "Unlike Karax, HappyX does not change the event model and allows you to embed as many events as you like on a single element.":
+    "ru" -> "В отличие от Karax, HappyX не изменяет модель событий и позволяет вам встраивать сколько угодно событий на один элемент."
+    "ja" -> "Karaxとは異なり、HappyXはイベントモデルを変更せず、1つの要素に複数のイベントを埋め込むことができます。"
+    "zh" -> "与Karax不同，HappyX不会改变事件模型，并允许您在单个元素上嵌入任意多的事件。"
+    "fr" -> "Contrairement à Karax, HappyX ne modifie pas le modèle d'événement et vous permet d'intégrer autant d'événements que vous le souhaitez sur un seul élément."
+    "ko" -> "Karax와는 달리 HappyX는 이벤트 모델을 변경하지 않으며 하나의 요소에 여러 이벤트를 임베드할 수 있습니다."
+  "You are also free to change the variable name responsible for the event:":
+    "ru" -> "Вы также вольны изменять название переменной, отвечающей за событие:"
+    "ja" -> "イベントに責任を持つ変数名を自由に変更することもできます："
+    "zh" -> "您还可以自由更改负责事件的变量名称："
+    "fr" -> "Vous êtes également libre de changer le nom de la variable responsable de l'événement :"
+    "ko" -> "이벤트를 처리하는 변수 이름을 자유롭게 변경할 수도 있습니다:"
 
 
 var spokenLang: cstring
