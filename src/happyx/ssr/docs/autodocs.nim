@@ -322,8 +322,9 @@ proc openApiDocs*(docsData: NimNode): NimNode =
           # Skip useless routes
           if route.httpMethod[0] in ["MIDDLEWARE", "STATICFILE", "STATIC", "NOTFOUND"]:
             continue
-          result["paths"][route.path] = %*{}
-          result["components"][route.path] = %*{}
+          if not result["paths"].hasKey(route.path):
+            result["paths"][route.path] = %*{}
+            result["components"][route.path] = %*{}
           let decscription = route.description.replace(
             re2"@openapi\s*\{(\s*\w+\s*[^\n]+|\s*@(params|responses)\s*\{[^\}]+?}\s*)+\s*\}", ""
           )

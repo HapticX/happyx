@@ -14,6 +14,13 @@ serve("127.0.0.1", 5000):
     echo data
     return ""
 
+  get "/issue287":
+    statusCode = 200
+    return 0
+  post "/issue287":
+    statusCode = 200
+    return 0
+
   onException:
     echo "Exception"
     echo e.name
