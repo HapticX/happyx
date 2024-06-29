@@ -27,6 +27,9 @@ jobs:
       node_version: '20'
     steps:
       - uses: actions/checkout@v4
+      - uses: jiro4989/setup-nim-action@v1.5.2
+        with:
+          nim-version: ${{ matrix.nim_version }}
 
       - name: Use Node.js ${{ env.node_version }}
         uses: actions/setup-node@v1
@@ -37,16 +40,8 @@ jobs:
         run: |
           npm install uglify-js -g
 
-      - name: Install Nim 👑
+      - name: Install deps 👑
         run: |
-          sudo apt install xz-utils
-          curl https://nim-lang.org/download/nim-${{ env.nim_version }}-linux_x64.tar.xz --output nim.tar.xz
-          unxz nim.tar.xz
-          tar -xf nim.tar
-          sudo mkdir -p /home/.nimble
-          sudo mv -if nim-${{ env.nim_version }}/* /home/.nimble/
-          export PATH=/home/.nimble/bin:$PATH
-          nim -v
           nimble refresh
           nimble install -y
 

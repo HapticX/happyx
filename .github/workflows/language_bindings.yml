@@ -34,17 +34,9 @@ jobs:
       TIMEOUT_EXIT_STATUS: 124
     steps:
       - uses: actions/checkout@v4
-
-      - name: Install Nim 👑
-        run: |
-          sudo apt install xz-utils
-          curl https://nim-lang.org/download/nim-${{ matrix.nim_version }}-linux_x64.tar.xz --output nim.tar.xz
-          unxz nim.tar.xz
-          tar -xf nim.tar
-          sudo mkdir -p /home/.nimble
-          sudo mv -if nim-${{ matrix.nim_version }}/* /home/.nimble/
-          export PATH=/home/.nimble/bin:$PATH
-          nim -v
+      - uses: jiro4989/setup-nim-action@v1.5.2
+        with:
+          nim-version: ${{ matrix.nim_version }}
       
       - uses: actions/setup-python@v4
         with:
@@ -55,7 +47,6 @@ jobs:
           pip install -U twine build packaging
       - name: Python Bindings 🐍
         run: |
-          export PATH=/home/.nimble/bin:$PATH
           nimble refresh
           nimble install -y -d
           nimble install -y checksums
@@ -98,21 +89,12 @@ jobs:
       TIMEOUT_EXIT_STATUS: 124
     steps:
       - uses: actions/checkout@v4
-
-      - name: Install Nim 👑
-        run: |
-          sudo apt install xz-utils
-          curl https://nim-lang.org/download/nim-${{ matrix.nim_version }}-linux_x64.tar.xz --output nim.tar.xz
-          unxz nim.tar.xz
-          tar -xf nim.tar
-          sudo mkdir -p /home/.nimble
-          sudo mv -if nim-${{ matrix.nim_version }}/* /home/.nimble/
-          export PATH=/home/.nimble/bin:$PATH
-          nim -v
+      - uses: jiro4989/setup-nim-action@v1.5.2
+        with:
+          nim-version: ${{ matrix.nim_version }}
 
       - name: Install dependencies 🔃
         run: |
-          export PATH=/home/.nimble/bin:$PATH
           nimble refresh
           nimble install -y -d
           nimble install -y jnim
@@ -131,7 +113,6 @@ jobs:
           cache: 'gradle'
       - name: JVM Bindings ☕
         run: |
-          export PATH=/home/.nimble/bin:$PATH
           cd src
           echo "Unix module"
           nim c -d:noSignalHandler -d:export2jvm -d:release -d:httpx --app:lib --threads:on --opt:speed --mm:arc --out:../bindings/java/src/main/resources/happyx.so happyx.nim
