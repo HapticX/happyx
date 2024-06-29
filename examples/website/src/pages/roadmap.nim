@@ -123,7 +123,14 @@ mount RoadMap:
                   tLi: {translate"New rendering system 🧪"}
                   tLi: {translate"Functional components ✨"}
                   tLi: {translate"Generics for request models 🔥"}
-                
+          # v4.0.0
+          Card:
+            tDiv(class = "w-full flex flex-col items-center gap-2 p-4 lg:p-2 xl:p-0"):
+              tP(class = "text-4xl lg:text-2xl xl:text-lg font-semibold"):
+                "v4.0.0"
+              tP(class = "w-full text-2xl lg:text-lg xl:text-base"):
+                # TODO: translation
+                {translate"Remove regex from routing 🔌"}
           # Future
           Card:
             tDiv(class = "w-full flex flex-col items-center gap-2 p-4 lg:p-2 xl:p-0"):

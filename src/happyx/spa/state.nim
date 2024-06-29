@@ -221,12 +221,22 @@ proc set*[T](self: State[T], value: T) =
     application.router()
 
 
-func `[]`*[T](self: State[openarray[T]], idx: int): T =
+func `[]`*[T, U](self: State[array[T, U]], idx: int): T =
   ## Returns State's item at `idx` index.
   self.val[idx]
 
 
-func `[]`*[T](self: State[openarray[T]], idx: State[int]): T =
+func `[]`*[T](self: State[seq[T]], idx: int): T =
+  ## Returns State's item at `idx` index.
+  self.val[idx]
+
+
+func `[]`*[T, U](self: State[array[T, U]], idx: State[int]): T =
+  ## Returns State's item at `idx` index.
+  self.val[idx.val]
+
+
+func `[]`*[T](self: State[seq[T]], idx: State[int]): T =
   ## Returns State's item at `idx` index.
   self.val[idx.val]
 
