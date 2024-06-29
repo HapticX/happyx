@@ -137,8 +137,8 @@ when enableDefaultComponents:
 
 when defined(js):
   const uniqueMacroIndex = CacheCounter"uniqueMacroIndex"
-macro elem*(name: untyped): untyped =
-  ## `elem` macro is just shortcut for
+macro rf*(name: untyped): untyped =
+  ## `rf` macro is just shortcut for
   ## 
   ## .. code-block::nim
   ##    block:
@@ -153,7 +153,7 @@ macro elem*(name: untyped): untyped =
     let
       nameStr = $name
       uniqName = fmt"_res{uniqueMacroIndex.value}"
-    newStmtList(
+    result = newStmtList(
       newNimNode(nnkVarSection).add(newIdentDefs(
         ident(uniqName), ident"Element"
       )),
@@ -266,8 +266,12 @@ when defined(js):
     for key, val in vdomAttrs.pairs:
       if not domAttrs.hasKey(key):
         dom.setAttribute(key, val)
+        if dom.nodeName == "INPUT" and key == "value":
+          dom.InputElement.value = val
       elif domAttrs[key] != val:
         dom.setAttribute(key, val)
+        if dom.nodeName == "INPUT" and key == "value":
+          dom.InputElement.value = val
     for key, val in domAttrs.pairs:
       if not vdomAttrs.hasKey(key):
         dom.removeAttribute(key)

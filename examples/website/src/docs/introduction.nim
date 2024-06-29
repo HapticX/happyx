@@ -82,8 +82,8 @@ component Introduction:
           tTr:
             tTd: "PyPI"
             tTd:
-              tA(href = "https://pypi.org/project/happyx/"):
-                tImg(class = "h-12 lg:h-10 xl:h-8", alt = "PyPI Downloads", src = "https://img.shields.io/pypi/dm/happyx?style=for-the-badge")
+              tA(href = "https://pypi.org/project/happyxpy/"):
+                tImg(class = "h-12 lg:h-10 xl:h-8", alt = "PyPI Downloads", src = "https://img.shields.io/pypi/dm/happyxpy?style=for-the-badge")
           tTr:
             tTd: "npm"
             tTd:
