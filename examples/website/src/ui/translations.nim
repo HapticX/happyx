@@ -2216,6 +2216,30 @@ translatable:
     "zh" -> "您还可以自由更改负责事件的变量名称："
     "fr" -> "Vous êtes également libre de changer le nom de la variable responsable de l'événement :"
     "ko" -> "이벤트를 처리하는 변수 이름을 자유롭게 변경할 수도 있습니다:"
+  "Regular expressions have been removed from routing 🔌":
+    "ru" -> "Регулярные выражения были убраны из роутинга 🔌"
+    "ja" -> "正規表現はルーティングから削除されました 🔌"
+    "zh" -> "正则表达式已从路由中删除 🔌"
+    "fr" -> "Les expressions régulières ont été supprimées du routage 🔌"
+    "ko" -> "정규 표현식이 라우팅에서 제거되었습니다 🔌"
+  "The Karax README also describes the reactivity model. Let's compare them:":
+    "ru" -> "В README Karax описана также модель реактивности. Сравним и их:"
+    "ja" -> "Karax READMEにはリアクティビティモデルについても記載されています。これらを比較してみましょう："
+    "zh" -> "Karax README中还描述了反应性模型。让我们比较一下它们："
+    "fr" -> "Le README de Karax décrit également le modèle de réactivité. Comparons-les :"
+    "ko" -> "Karax README에는 반응성 모델도 설명되어 있습니다. 비교해 봅시다:"
+  "As you can see, the reactivity model in HappyX is more simplified compared to Karax.":
+    "ru" -> "Как вы видите - модель реактивности в HappyX более упрощена, нежели в Karax."
+    "ja" -> "ご覧のとおり、HappyXのリアクティビティモデルはKaraxと比較してより簡素化されています。"
+    "zh" -> "如您所见，HappyX中的反应性模型比Karax更加简化。"
+    "fr" -> "Comme vous pouvez le voir, le modèle de réactivité dans HappyX est plus simplifié par rapport à Karax."
+    "ko" -> "보시다시피 HappyX의 반응성 모델은 Karax에 비해 더 단순화되어 있습니다."
+  "You are free to specify which variables should be reactive and which should be ordinary.":
+    "ru" -> "Вы сами вольны указывать, какие переменные должны быть реактивными, а какие обычными."
+    "ja" -> "どの変数をリアクティブにし、どの変数を通常のものにするかを自由に指定できます。"
+    "zh" -> "您可以自由指定哪些变量应该是反应性的，哪些应该是普通的。"
+    "fr" -> "Vous êtes libre de spécifier quelles variables doivent être réactives et lesquelles doivent être ordinaires."
+    "ko" -> "어떤 변수가 반응적이어야 하고 어떤 변수가 일반적이어야 하는지 자유롭게 지정할 수 있습니다."
 
 
 var spokenLang: cstring

@@ -12,7 +12,14 @@ proc KaraxUsers*(): TagRef =
     tDiv(class = "flex flex-col px-8 py-2 xl:h-fit gap-4"):
       tH1: {translate"HappyX for Karax users 👑"}
 
-      tP: {translate"This article discusses the differences between Karax and HappyX, as well as their pros and cons."}
+      tP:
+        {translate"This article discusses the differences between Karax and HappyX, as well as their pros and cons."}
+        " "
+        tA(
+          href = "https://github.com/karaxnim/karax",
+          target = "_blank"
+        ):
+          "Karax GitHub repository"
 
       tH2: "Hello, world!"
 
@@ -45,3 +52,15 @@ proc KaraxUsers*(): TagRef =
         {translate"You are also free to change the variable name responsible for the event:"}
       CodeBlock("nim", happyxVsKaraxEventModel1, "nim_vs_karax_happyx_ex4")
       
+      tH2: {translate"Reactivity ⚡"}
+
+      tP:
+        {translate"The Karax README also describes the reactivity model. Let's compare them:"}
+
+      CodeBlock("nim", karaxReactivity, "nim_vs_karax_karax_ex3")
+      CodeBlock("nim", happyxVsKaraxReactivity, "nim_vs_karax_happyx_ex5")
+
+      tP:
+        {translate"As you can see, the reactivity model in HappyX is more simplified compared to Karax."}
+        " "
+        {translate"You are free to specify which variables should be reactive and which should be ordinary."}

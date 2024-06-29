@@ -129,8 +129,7 @@ mount RoadMap:
               tP(class = "text-4xl lg:text-2xl xl:text-lg font-semibold"):
                 "v4.0.0"
               tP(class = "w-full text-2xl lg:text-lg xl:text-base"):
-                # TODO: translation
-                {translate"Remove regex from routing 🔌"}
+                {translate"Regular expressions have been removed from routing 🔌"}
           # Future
           Card:
             tDiv(class = "w-full flex flex-col items-center gap-2 p-4 lg:p-2 xl:p-0"):
