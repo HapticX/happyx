@@ -214,6 +214,16 @@ func len*[T](self: State[T]): int =
   self.val.len
 
 
+func low*[T](self: State[T]): int =
+  ## Returns state value length
+  self.val.low
+
+
+func high*[T](self: State[T]): int =
+  ## Returns state value length
+  self.val.high
+
+
 proc set*[T](self: State[T], value: T) =
   ## Changes state value and rerenders SPA
   self.val = value

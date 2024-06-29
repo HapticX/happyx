@@ -46,7 +46,7 @@ jobs:
       TIMEOUT_EXIT_STATUS: 124
     steps:
       - uses: actions/checkout@v4
-      - uses: jiro4989/setup-nim-action@v1
+      - uses: jiro4989/setup-nim-action@v1.5.2
         with:
           nim-version: ${{ matrix.nim_version }}
       - uses: actions/cache@v4
