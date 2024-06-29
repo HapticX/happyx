@@ -1544,11 +1544,12 @@ socketToSsr.onmessage=function(m){
       "handleJvmRequest", ident"self", ident"req", ident"urlPath"
     ))
 
-  var returnStmt = newStmtList(newNimNode(nnkReturnStmt).add(newLit""))
-  detectReturnStmt(returnStmt)
-  methodTable.mgetOrPut(
-    "OPTIONS", newNimNode(nnkIfStmt)
-  ).add(exportRouteArgs(pathIdent, newLit"/{p:path}", returnStmt))
+  when not (exportPython or exportJvm or defined(napibuild)):
+    var returnStmt = newStmtList(newNimNode(nnkReturnStmt).add(newLit""))
+    detectReturnStmt(returnStmt)
+    methodTable.mgetOrPut(
+      "OPTIONS", newNimNode(nnkIfStmt)
+    ).add(exportRouteArgs(pathIdent, newLit"/{p:path}", returnStmt))
 
   for key in methodTable.keys():
     caseRequestMethodsStmt.add(newNimNode(nnkOfBranch).add(
