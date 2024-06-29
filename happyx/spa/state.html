@@ -216,9 +216,11 @@
 </ul>
 <ul class="simple nested-toc-section">[]
   <li><a class="reference" href="#%5B%5D%2CState%5BStringTableRef%5D%2Cstring" title="`[]`(self: State[StringTableRef]; idx: string): string">`[]`(self: State[StringTableRef]; idx: string): string</a></li>
+<li><a class="reference" href="#%5B%5D%2CState%5Barray%5BT%2CU%5D%5D%2Cint" title="`[]`[T, U](self: State[array[T, U]]; idx: int): T">`[]`[T, U](self: State[array[T, U]]; idx: int): T</a></li>
+<li><a class="reference" href="#%5B%5D%2CState%5Barray%5BT%2CU%5D%5D%2CState%5Bint%5D" title="`[]`[T, U](self: State[array[T, U]]; idx: State[int]): T">`[]`[T, U](self: State[array[T, U]]; idx: State[int]): T</a></li>
 <li><a class="reference" href="#%5B%5D%2CState%5BTableRef%5BT%2CU%5D%5D%2CT" title="`[]`[T, U](self: State[TableRef[T, U]]; idx: T): U">`[]`[T, U](self: State[TableRef[T, U]]; idx: T): U</a></li>
-<li><a class="reference" href="#%5B%5D%2CState%5BopenArray%5BT%5D%5D%2Cint" title="`[]`[T](self: State[openArray[T]]; idx: int): T">`[]`[T](self: State[openArray[T]]; idx: int): T</a></li>
-<li><a class="reference" href="#%5B%5D%2CState%5BopenArray%5BT%5D%5D%2CState%5Bint%5D" title="`[]`[T](self: State[openArray[T]]; idx: State[int]): T">`[]`[T](self: State[openArray[T]]; idx: State[int]): T</a></li>
+<li><a class="reference" href="#%5B%5D%2CState%5Bseq%5BT%5D%5D%2Cint" title="`[]`[T](self: State[seq[T]]; idx: int): T">`[]`[T](self: State[seq[T]]; idx: int): T</a></li>
+<li><a class="reference" href="#%5B%5D%2CState%5Bseq%5BT%5D%5D%2CState%5Bint%5D" title="`[]`[T](self: State[seq[T]]; idx: State[int]): T">`[]`[T](self: State[seq[T]]; idx: State[int]): T</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">[]=
@@ -1046,6 +1048,22 @@
     
   </dd>
 </div>
+<div id="[],State[array[T,U]],int">
+  <dt><pre><span class="Keyword">func</span> <a href="#%5B%5D%2CState%5Barray%5BT%2CU%5D%5D%2Cint"><span class="Identifier">`[]`</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">,</span> <span class="Identifier">U</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="state.html#State"><span class="Identifier">State</span></a><span class="Other">[</span><span class="Identifier">array</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">,</span> <span class="Identifier">U</span><span class="Other">]</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">idx</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">T</span></pre></dt>
+  <dd>
+    
+    Returns State's item at <tt class="docutils literal"><span class="pre"><span class="Identifier">idx</span></span></tt> index.
+    
+  </dd>
+</div>
+<div id="[],State[array[T,U]],State[int]">
+  <dt><pre><span class="Keyword">func</span> <a href="#%5B%5D%2CState%5Barray%5BT%2CU%5D%5D%2CState%5Bint%5D"><span class="Identifier">`[]`</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">,</span> <span class="Identifier">U</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="state.html#State"><span class="Identifier">State</span></a><span class="Other">[</span><span class="Identifier">array</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">,</span> <span class="Identifier">U</span><span class="Other">]</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">idx</span><span class="Other">:</span> <a href="state.html#State"><span class="Identifier">State</span></a><span class="Other">[</span><span class="Identifier">int</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">T</span></pre></dt>
+  <dd>
+    
+    Returns State's item at <tt class="docutils literal"><span class="pre"><span class="Identifier">idx</span></span></tt> index.
+    
+  </dd>
+</div>
 <div id="[],State[TableRef[T,U]],T">
   <dt><pre><span class="Keyword">func</span> <a href="#%5B%5D%2CState%5BTableRef%5BT%2CU%5D%5D%2CT"><span class="Identifier">`[]`</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">,</span> <span class="Identifier">U</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="state.html#State"><span class="Identifier">State</span></a><span class="Other">[</span><span class="Identifier">TableRef</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">,</span> <span class="Identifier">U</span><span class="Other">]</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">idx</span><span class="Other">:</span> <span class="Identifier">T</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">U</span></pre></dt>
   <dd>
@@ -1054,16 +1072,16 @@
     
   </dd>
 </div>
-<div id="[],State[openArray[T]],int">
-  <dt><pre><span class="Keyword">func</span> <a href="#%5B%5D%2CState%5BopenArray%5BT%5D%5D%2Cint"><span class="Identifier">`[]`</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="state.html#State"><span class="Identifier">State</span></a><span class="Other">[</span><span class="Identifier">openArray</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">idx</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">T</span></pre></dt>
+<div id="[],State[seq[T]],int">
+  <dt><pre><span class="Keyword">func</span> <a href="#%5B%5D%2CState%5Bseq%5BT%5D%5D%2Cint"><span class="Identifier">`[]`</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="state.html#State"><span class="Identifier">State</span></a><span class="Other">[</span><span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">idx</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">T</span></pre></dt>
   <dd>
     
     Returns State's item at <tt class="docutils literal"><span class="pre"><span class="Identifier">idx</span></span></tt> index.
     
   </dd>
 </div>
-<div id="[],State[openArray[T]],State[int]">
-  <dt><pre><span class="Keyword">func</span> <a href="#%5B%5D%2CState%5BopenArray%5BT%5D%5D%2CState%5Bint%5D"><span class="Identifier">`[]`</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="state.html#State"><span class="Identifier">State</span></a><span class="Other">[</span><span class="Identifier">openArray</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">idx</span><span class="Other">:</span> <a href="state.html#State"><span class="Identifier">State</span></a><span class="Other">[</span><span class="Identifier">int</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">T</span></pre></dt>
+<div id="[],State[seq[T]],State[int]">
+  <dt><pre><span class="Keyword">func</span> <a href="#%5B%5D%2CState%5Bseq%5BT%5D%5D%2CState%5Bint%5D"><span class="Identifier">`[]`</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="state.html#State"><span class="Identifier">State</span></a><span class="Other">[</span><span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">idx</span><span class="Other">:</span> <a href="state.html#State"><span class="Identifier">State</span></a><span class="Other">[</span><span class="Identifier">int</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">T</span></pre></dt>
   <dd>
     
     Returns State's item at <tt class="docutils literal"><span class="pre"><span class="Identifier">idx</span></span></tt> index.
@@ -1506,7 +1524,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2024-06-27 07:55:50 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2024-06-29 03:41:26 UTC</small>
       </div>
     </div>
   </div>

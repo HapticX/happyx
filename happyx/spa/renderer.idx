@@ -15,7 +15,7 @@ nim	createdComponentsList	happyx/spa/renderer.html#createdComponentsList	var cre
 nim	components	happyx/spa/renderer.html#components	var components		133
 nim	requestResult	happyx/spa/renderer.html#requestResult	var requestResult		134
 nim	componentsResult	happyx/spa/renderer.html#componentsResult	var componentsResult		135
-nim	elem	happyx/spa/renderer.html#elem.m,untyped	macro elem(name: untyped): untyped		140
+nim	rf	happyx/spa/renderer.html#rf.m,untyped	macro rf(name: untyped): untyped		140
 nim	route	happyx/spa/renderer.html#route,string,string	proc route(host, path: string)		194
 nim	injectJs	happyx/spa/renderer.html#injectJs,string,string	proc injectJs(host, script: string)		196
 nim	html	happyx/spa/renderer.html#html,string,string	proc html(host, data: string)		198
@@ -24,22 +24,22 @@ nim	js	happyx/spa/renderer.html#js,BaseComponent,string	proc js(comp: BaseCompon
 nim	html	happyx/spa/renderer.html#html,BaseComponent,string	proc html(comp: BaseComponent; data: string)		205
 nim	registerApp	happyx/spa/renderer.html#registerApp,cstring	proc registerApp(appId: cstring = "app"): App		209
 nim	registerComponent	happyx/spa/renderer.html#registerComponent,string,BaseComponent	proc registerComponent(name: string; component: BaseComponent): BaseComponent		235
-nim	renderVdom	happyx/spa/renderer.html#renderVdom,App,TagRef,bool	proc renderVdom(app: App; tag: TagRef; force: bool = false)		330
-nim	render	happyx/spa/renderer.html#render.e,BaseComponent	method render(self: BaseComponent): TagRef		336
-nim	reRender	happyx/spa/renderer.html#reRender.e,BaseComponent	method reRender(self: BaseComponent)		341
-nim	start	happyx/spa/renderer.html#start.t,App	template start(app: App)		348
-nim	buildHtml	happyx/spa/renderer.html#buildHtml.m,untyped,untyped	macro buildHtml(root, html: untyped): untyped		390
-nim	buildHtml	happyx/spa/renderer.html#buildHtml.m,untyped	macro buildHtml(html: untyped): untyped		493
-nim	thunkHtml	happyx/spa/renderer.html#thunkHtml.t,untyped	template thunkHtml(body: untyped): proc (): TagRef		506
-nim	thunkHtmls	happyx/spa/renderer.html#thunkHtmls.t,untyped	template thunkHtmls(body: untyped): seq[proc (): TagRef]		514
-nim	buildHtmls	happyx/spa/renderer.html#buildHtmls.t,untyped	template buildHtmls(body: untyped): seq[TagRef]		528
-nim	buildHtmlSlot	happyx/spa/renderer.html#buildHtmlSlot.m,untyped,static[bool],static[bool]	macro buildHtmlSlot(html: untyped; inCycle, inComponent: static[bool]): untyped		542
-nim	buildComponentHtml	happyx/spa/renderer.html#buildComponentHtml.m,untyped,untyped	macro buildComponentHtml(componentName, html: untyped): untyped		556
-nim	routes	happyx/spa/renderer.html#routes.m,App,untyped	macro routes(app: App; body: untyped): untyped		574
-nim	appRoutes	happyx/spa/renderer.html#appRoutes.m,string,untyped	macro appRoutes(name: string; body: untyped): untyped		821
+nim	renderVdom	happyx/spa/renderer.html#renderVdom,App,TagRef,bool	proc renderVdom(app: App; tag: TagRef; force: bool = false)		334
+nim	render	happyx/spa/renderer.html#render.e,BaseComponent	method render(self: BaseComponent): TagRef		340
+nim	reRender	happyx/spa/renderer.html#reRender.e,BaseComponent	method reRender(self: BaseComponent)		345
+nim	start	happyx/spa/renderer.html#start.t,App	template start(app: App)		352
+nim	buildHtml	happyx/spa/renderer.html#buildHtml.m,untyped,untyped	macro buildHtml(root, html: untyped): untyped		394
+nim	buildHtml	happyx/spa/renderer.html#buildHtml.m,untyped	macro buildHtml(html: untyped): untyped		497
+nim	thunkHtml	happyx/spa/renderer.html#thunkHtml.t,untyped	template thunkHtml(body: untyped): proc (): TagRef		510
+nim	thunkHtmls	happyx/spa/renderer.html#thunkHtmls.t,untyped	template thunkHtmls(body: untyped): seq[proc (): TagRef]		518
+nim	buildHtmls	happyx/spa/renderer.html#buildHtmls.t,untyped	template buildHtmls(body: untyped): seq[TagRef]		532
+nim	buildHtmlSlot	happyx/spa/renderer.html#buildHtmlSlot.m,untyped,static[bool],static[bool]	macro buildHtmlSlot(html: untyped; inCycle, inComponent: static[bool]): untyped		546
+nim	buildComponentHtml	happyx/spa/renderer.html#buildComponentHtml.m,untyped,untyped	macro buildComponentHtml(componentName, html: untyped): untyped		560
+nim	routes	happyx/spa/renderer.html#routes.m,App,untyped	macro routes(app: App; body: untyped): untyped		578
+nim	appRoutes	happyx/spa/renderer.html#appRoutes.m,string,untyped	macro appRoutes(name: string; body: untyped): untyped		825
 nimgrp	html	happyx/spa/renderer.html#html-procs-all	proc		198
 nimgrp	route	happyx/spa/renderer.html#route-procs-all	proc		194
-nimgrp	buildhtml	happyx/spa/renderer.html#buildHtml-macros-all	macro		390
+nimgrp	buildhtml	happyx/spa/renderer.html#buildHtml-macros-all	macro		394
 heading	Basic Usage:	happyx/spa/renderer.html#renderer-✨-basic-usagecolon	  Basic Usage:		0
 heading	Usage:	happyx/spa/renderer.html#renderer-✨-usagecolon	  Usage:		0
 heading	Renderer ✨	happyx/spa/renderer.html#renderer-✨	 Renderer ✨		0

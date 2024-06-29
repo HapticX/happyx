@@ -240,9 +240,13 @@
           <li><a class="reference external"
           data-doc-search-tag="python_types: proc `[]`(params: seq[HandlerParam]; key: string): string" href="happyx/bindings/python_types.html#%5B%5D%2Cseq%5BHandlerParam%5D%2Cstring">python_types: proc `[]`(params: seq[HandlerParam]; key: string): string</a></li>
           <li><a class="reference external"
-          data-doc-search-tag="state: proc `[]`[T](self: State[openArray[T]]; idx: int): T" href="happyx/spa/state.html#%5B%5D%2CState%5BopenArray%5BT%5D%5D%2Cint">state: proc `[]`[T](self: State[openArray[T]]; idx: int): T</a></li>
+          data-doc-search-tag="state: proc `[]`[T, U](self: State[array[T, U]]; idx: int): T" href="happyx/spa/state.html#%5B%5D%2CState%5Barray%5BT%2CU%5D%5D%2Cint">state: proc `[]`[T, U](self: State[array[T, U]]; idx: int): T</a></li>
           <li><a class="reference external"
-          data-doc-search-tag="state: proc `[]`[T](self: State[openArray[T]]; idx: State[int]): T" href="happyx/spa/state.html#%5B%5D%2CState%5BopenArray%5BT%5D%5D%2CState%5Bint%5D">state: proc `[]`[T](self: State[openArray[T]]; idx: State[int]): T</a></li>
+          data-doc-search-tag="state: proc `[]`[T, U](self: State[array[T, U]]; idx: State[int]): T" href="happyx/spa/state.html#%5B%5D%2CState%5Barray%5BT%2CU%5D%5D%2CState%5Bint%5D">state: proc `[]`[T, U](self: State[array[T, U]]; idx: State[int]): T</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="state: proc `[]`[T](self: State[seq[T]]; idx: int): T" href="happyx/spa/state.html#%5B%5D%2CState%5Bseq%5BT%5D%5D%2Cint">state: proc `[]`[T](self: State[seq[T]]; idx: int): T</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="state: proc `[]`[T](self: State[seq[T]]; idx: State[int]): T" href="happyx/spa/state.html#%5B%5D%2CState%5Bseq%5BT%5D%5D%2CState%5Bint%5D">state: proc `[]`[T](self: State[seq[T]]; idx: State[int]): T</a></li>
           <li><a class="reference external"
           data-doc-search-tag="state: proc `[]`(self: State[StringTableRef]; idx: string): string" href="happyx/spa/state.html#%5B%5D%2CState%5BStringTableRef%5D%2Cstring">state: proc `[]`(self: State[StringTableRef]; idx: string): string</a></li>
           <li><a class="reference external"
@@ -525,10 +529,6 @@
 <dt><a name="discardStmt" href="#discardStmt"><span>discardStmt:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="macro_utils: proc discardStmt(): NimNode" href="happyx/private/macro_utils.html#discardStmt">macro_utils: proc discardStmt(): NimNode</a></li>
-          </ul></dd>
-<dt><a name="elem" href="#elem"><span>elem:</span></a></dt><dd><ul class="simple">
-<li><a class="reference external"
-          data-doc-search-tag="renderer: macro elem(name: untyped): untyped" href="happyx/spa/renderer.html#elem.m%2Cuntyped">renderer: macro elem(name: untyped): untyped</a></li>
           </ul></dd>
 <dt><a name="enableApiDoc" href="#enableApiDoc"><span>enableApiDoc:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -1190,6 +1190,10 @@
 <li><a class="reference external"
           data-doc-search-tag="python_types: type ResponseObj" href="happyx/bindings/python_types.html#ResponseObj">python_types: type ResponseObj</a></li>
           </ul></dd>
+<dt><a name="rf" href="#rf"><span>rf:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="renderer: macro rf(name: untyped): untyped" href="happyx/spa/renderer.html#rf.m%2Cuntyped">renderer: macro rf(name: untyped): untyped</a></li>
+          </ul></dd>
 <dt><a name="Route" href="#Route"><span>Route:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="python_types: type Route" href="happyx/bindings/python_types.html#Route">python_types: type Route</a></li>
@@ -1440,7 +1444,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2024-06-27 07:55:51 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2024-06-29 03:41:27 UTC</small>
       </div>
     </div>
   </div>
