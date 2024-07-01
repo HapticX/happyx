@@ -14,7 +14,7 @@ export jsffi
 const utilCounter* = CacheCounter"HappyXUtilsCounter"
 
 
-proc await*(x: JsObject): JsObject {.discardable, importjs: "(await #)".}
+proc awaitjs*(x: JsObject): JsObject {.discardable, importjs: "(await #)".}
   ## Waits for a promise to resolve before continuing execution, similar to `await` in JS.
 proc clearTimeout*(x: JsObject): JsObject {.discardable, importjs: "clearTimeout(#)".}
   ## Clears a timeout previously set with `withTimeout`.
