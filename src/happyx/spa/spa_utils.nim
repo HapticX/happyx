@@ -33,7 +33,6 @@ macro await*(p: untyped): untyped =
     ),
     ident(id)
   )
-  echo result.toStrLit
 proc clearTimeout*(x: JsObject): JsObject {.discardable, importjs: "clearTimeout(#)".}
   ## Clears a timeout previously set with `withTimeout`.
 proc clearInterval*(x: JsObject): JsObject {.discardable, importjs: "clearInterval(#)".}
@@ -228,7 +227,6 @@ macro withPromise*(ident, body: untyped): untyped =
     ),
     ident"__promise"
   )
-  echo result.toStrLit
 
 
 proc sleepAsyncJs*(time: int) {.async, discardable.} =
