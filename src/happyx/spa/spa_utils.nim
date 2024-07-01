@@ -6,16 +6,33 @@ import
   std/macros,
   std/macrocache,
   std/strutils,
+  std/asyncjs,
   std/jsffi
 
-export jsffi
+export
+  jsffi,
+  asyncjs
 
 
 const utilCounter* = CacheCounter"HappyXUtilsCounter"
 
-
-proc awaitjs*(x: JsObject): JsObject {.discardable, importjs: "(await #)".}
+proc await*(obj: JsObject): JsObject {.discardable, importjs: "(await #)".}
+macro await*(p: untyped): untyped =
   ## Waits for a promise to resolve before continuing execution, similar to `await` in JS.
+  let id = "__res" & $utilCounter.value
+  let callId = "__call" & $utilCounter.value
+  inc utilCounter
+  result = newStmtList(
+    newNimNode(nnkVarSection).add(newIdentDefs(ident(id), ident"JsObject", newEmptyNode())),
+    newVarStmt(ident(callId), p),
+    newNimNode(nnkPragma).add(
+      newNimNode(nnkExprColonExpr).add(
+        ident"emit",
+        newLit("`" & id & "` = await `" & callId & "`")
+      )
+    ),
+    ident(id)
+  )
 proc clearTimeout*(x: JsObject): JsObject {.discardable, importjs: "clearTimeout(#)".}
   ## Clears a timeout previously set with `withTimeout`.
 proc clearInterval*(x: JsObject): JsObject {.discardable, importjs: "clearInterval(#)".}
@@ -179,7 +196,7 @@ macro withPromise*(ident, body: untyped): untyped =
   ##     clearTimeout(t)
   ##     {.emit: "res(true)".}
   ## ```
-  newNimNode(nnkBlockStmt).add(newEmptyNode(), newStmtList(
+  result = newStmtList(
     newNimNode(nnkVarSection).add(
       newIdentDefs(
         ident"__promise",
@@ -209,4 +226,12 @@ macro withPromise*(ident, body: untyped): untyped =
       )
     ),
     ident"__promise"
-  ))
+  )
+
+
+proc sleepAsyncJs*(time: int) {.async, discardable.} =
+  await:
+    withPromise response:
+      withTimeout time, i:
+        {.emit: "`response`(true);".}
+        clearTimeout(i)

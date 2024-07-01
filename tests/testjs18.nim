@@ -1,4 +1,5 @@
 import ../src/happyx
+import std/asyncjs
 
 let htmlProcs = thunkHtmls:
   html:
@@ -36,10 +37,18 @@ component FormatTagHtml:
     em(style="color:blue"):
       {self.t.val}
 
+
+proc testAsync() {.async.} =
+  echo "Hello"
+
 appRoutes("app"):
   "/":
     for i in 1..5:
-      tDiv:{$htmlProcs[0]()}
+      tDiv:
+        {$htmlProcs[0]()}
+        @click:
+          discard await sleepAsyncJs(500)
+          discard await testAsync()
       FormatProcHtml(htmlProcs[1])
     for i in 1..5:
       tDiv:{$htmlTags[0]}
