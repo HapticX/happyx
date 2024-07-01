@@ -85,33 +85,35 @@ nim	`~=`	happyx/spa/state.html#~=,,T	proc `~=`[T](self`gensym27: State[T]; other
 nim	`->`	happyx/spa/state.html#->.m,State,untyped	macro `->`(self: State; field: untyped): untyped		142
 nim	get	happyx/spa/state.html#get,State[T]	proc get[T](self: State[T]): T		206
 nim	len	happyx/spa/state.html#len,State[T]	proc len[T](self: State[T]): int		212
-nim	set	happyx/spa/state.html#set,State[T],T	proc set[T](self: State[T]; value: T)		217
-nim	`[]`	happyx/spa/state.html#[],State[array[T,U]],int	proc `[]`[T, U](self: State[array[T, U]]; idx: int): T		224
-nim	`[]`	happyx/spa/state.html#[],State[seq[T]],int	proc `[]`[T](self: State[seq[T]]; idx: int): T		229
-nim	`[]`	happyx/spa/state.html#[],State[array[T,U]],State[int]	proc `[]`[T, U](self: State[array[T, U]]; idx: State[int]): T		234
-nim	`[]`	happyx/spa/state.html#[],State[seq[T]],State[int]	proc `[]`[T](self: State[seq[T]]; idx: State[int]): T		239
-nim	`[]`	happyx/spa/state.html#[],State[TableRef[T,U]],T	proc `[]`[T, U](self: State[TableRef[T, U]]; idx: T): U		244
-nim	`[]`	happyx/spa/state.html#[],State[StringTableRef],string	proc `[]`(self: State[StringTableRef]; idx: string): string		249
-nim	`[]=`	happyx/spa/state.html#[]=,State[seq[T]],int,T	proc `[]=`[T](self: State[seq[T]]; idx: int; value: T)		254
-nim	`[]=`	happyx/spa/state.html#[]=,State[array[T,U]],int,T	proc `[]=`[T, U](self: State[array[T, U]]; idx: int; value: T)		261
-nim	`[]=`	happyx/spa/state.html#[]=,State[TableRef[T,U]],T,U	proc `[]=`[T, U](self: State[TableRef[T, U]]; idx: T; value: U)		268
-nim	`[]=`	happyx/spa/state.html#[]=,State[StringTableRef],string,string	proc `[]=`(self: State[StringTableRef]; idx: string; value: string)		275
-nim	items	happyx/spa/state.html#items.i,State[openArray[T]]	iterator items[T](self: State[openArray[T]]): T		282
-nim	pairs	happyx/spa/state.html#pairs.i,State[TableRef[T,U]]	iterator pairs[T, U](self: State[TableRef[T, U]]): (T, U)		288
-nim	toBool	happyx/spa/state.html#toBool.c,State[bool]	converter toBool(self: State[bool]): bool		294
-nim	toString	happyx/spa/state.html#toString.c,State[string]	converter toString(self: State[string]): string		297
-nim	toCString	happyx/spa/state.html#toCString.c,State[cstring]	converter toCString(self: State[cstring]): cstring		300
-nim	toInt	happyx/spa/state.html#toInt.c,State[int]	converter toInt(self: State[int]): int		303
-nim	toFloat	happyx/spa/state.html#toFloat.c,State[float]	converter toFloat(self: State[float]): float		306
-nim	toChar	happyx/spa/state.html#toChar.c,State[char]	converter toChar(self: State[char]): char		309
-nim	toInt8	happyx/spa/state.html#toInt8.c,State[int8]	converter toInt8(self: State[int8]): int8		312
-nim	toInt16	happyx/spa/state.html#toInt16.c,State[int16]	converter toInt16(self: State[int16]): int16		315
-nim	toInt32	happyx/spa/state.html#toInt32.c,State[int32]	converter toInt32(self: State[int32]): int32		318
-nim	toInt64	happyx/spa/state.html#toInt64.c,State[int64]	converter toInt64(self: State[int64]): int64		321
-nim	toFloat32	happyx/spa/state.html#toFloat32.c,State[float32]	converter toFloat32(self: State[float32]): float32		324
-nim	toFloat64	happyx/spa/state.html#toFloat64.c,State[float64]	converter toFloat64(self: State[float64]): float64		327
-nim	toSeq	happyx/spa/state.html#toSeq.c,State[seq[T]]	converter toSeq[T](self: State[seq[T]]): seq[T]		330
-nim	set	happyx/spa/state.html#set,LanguageSettings,string	proc set(settings: var LanguageSettings; lang: string)		347
+nim	low	happyx/spa/state.html#low,State[T]	proc low[T](self: State[T]): int		217
+nim	high	happyx/spa/state.html#high,State[T]	proc high[T](self: State[T]): int		222
+nim	set	happyx/spa/state.html#set,State[T],T	proc set[T](self: State[T]; value: T)		227
+nim	`[]`	happyx/spa/state.html#[],State[array[T,U]],int	proc `[]`[T, U](self: State[array[T, U]]; idx: int): T		234
+nim	`[]`	happyx/spa/state.html#[],State[seq[T]],int	proc `[]`[T](self: State[seq[T]]; idx: int): T		239
+nim	`[]`	happyx/spa/state.html#[],State[array[T,U]],State[int]	proc `[]`[T, U](self: State[array[T, U]]; idx: State[int]): T		244
+nim	`[]`	happyx/spa/state.html#[],State[seq[T]],State[int]	proc `[]`[T](self: State[seq[T]]; idx: State[int]): T		249
+nim	`[]`	happyx/spa/state.html#[],State[TableRef[T,U]],T	proc `[]`[T, U](self: State[TableRef[T, U]]; idx: T): U		254
+nim	`[]`	happyx/spa/state.html#[],State[StringTableRef],string	proc `[]`(self: State[StringTableRef]; idx: string): string		259
+nim	`[]=`	happyx/spa/state.html#[]=,State[seq[T]],int,T	proc `[]=`[T](self: State[seq[T]]; idx: int; value: T)		264
+nim	`[]=`	happyx/spa/state.html#[]=,State[array[T,U]],int,T	proc `[]=`[T, U](self: State[array[T, U]]; idx: int; value: T)		271
+nim	`[]=`	happyx/spa/state.html#[]=,State[TableRef[T,U]],T,U	proc `[]=`[T, U](self: State[TableRef[T, U]]; idx: T; value: U)		278
+nim	`[]=`	happyx/spa/state.html#[]=,State[StringTableRef],string,string	proc `[]=`(self: State[StringTableRef]; idx: string; value: string)		285
+nim	items	happyx/spa/state.html#items.i,State[openArray[T]]	iterator items[T](self: State[openArray[T]]): T		292
+nim	pairs	happyx/spa/state.html#pairs.i,State[TableRef[T,U]]	iterator pairs[T, U](self: State[TableRef[T, U]]): (T, U)		298
+nim	toBool	happyx/spa/state.html#toBool.c,State[bool]	converter toBool(self: State[bool]): bool		304
+nim	toString	happyx/spa/state.html#toString.c,State[string]	converter toString(self: State[string]): string		307
+nim	toCString	happyx/spa/state.html#toCString.c,State[cstring]	converter toCString(self: State[cstring]): cstring		310
+nim	toInt	happyx/spa/state.html#toInt.c,State[int]	converter toInt(self: State[int]): int		313
+nim	toFloat	happyx/spa/state.html#toFloat.c,State[float]	converter toFloat(self: State[float]): float		316
+nim	toChar	happyx/spa/state.html#toChar.c,State[char]	converter toChar(self: State[char]): char		319
+nim	toInt8	happyx/spa/state.html#toInt8.c,State[int8]	converter toInt8(self: State[int8]): int8		322
+nim	toInt16	happyx/spa/state.html#toInt16.c,State[int16]	converter toInt16(self: State[int16]): int16		325
+nim	toInt32	happyx/spa/state.html#toInt32.c,State[int32]	converter toInt32(self: State[int32]): int32		328
+nim	toInt64	happyx/spa/state.html#toInt64.c,State[int64]	converter toInt64(self: State[int64]): int64		331
+nim	toFloat32	happyx/spa/state.html#toFloat32.c,State[float32]	converter toFloat32(self: State[float32]): float32		334
+nim	toFloat64	happyx/spa/state.html#toFloat64.c,State[float64]	converter toFloat64(self: State[float64]): float64		337
+nim	toSeq	happyx/spa/state.html#toSeq.c,State[seq[T]]	converter toSeq[T](self: State[seq[T]]): seq[T]		340
+nim	set	happyx/spa/state.html#set,LanguageSettings,string	proc set(settings: var LanguageSettings; lang: string)		357
 nimgrp	+=	happyx/spa/state.html#+=-procs-all	proc		83
 nimgrp	>=	happyx/spa/state.html#>=-procs-all	proc		98
 nimgrp	<=	happyx/spa/state.html#<=-procs-all	proc		98
@@ -120,8 +122,8 @@ nimgrp	$=	happyx/spa/state.html#$=-procs-all	proc		83
 nimgrp	&	happyx/spa/state.html#&-procs-all	proc		74
 nimgrp	~=	happyx/spa/state.html#~=-procs-all	proc		83
 nimgrp	<	happyx/spa/state.html#<-procs-all	proc		74
-nimgrp	[]=	happyx/spa/state.html#[]=-procs-all	proc		254
 nimgrp	|=	happyx/spa/state.html#|=-procs-all	proc		83
+nimgrp	[]=	happyx/spa/state.html#[]=-procs-all	proc		264
 nimgrp	^	happyx/spa/state.html#^-procs-all	proc		74
 nimgrp	*	happyx/spa/state.html#*-procs-all	proc		74
 nimgrp	>	happyx/spa/state.html#>-procs-all	proc		74
@@ -132,7 +134,7 @@ nimgrp	@	happyx/spa/state.html#@-procs-all	proc		74
 nimgrp	-=	happyx/spa/state.html#-=-procs-all	proc		83
 nimgrp	&=	happyx/spa/state.html#&=-procs-all	proc		83
 nimgrp	%=	happyx/spa/state.html#%=-procs-all	proc		83
-nimgrp	set	happyx/spa/state.html#set-procs-all	proc		217
+nimgrp	set	happyx/spa/state.html#set-procs-all	proc		227
 nimgrp	!=	happyx/spa/state.html#!=-procs-all	proc		98
 nimgrp	!	happyx/spa/state.html#!-procs-all	proc		74
 nimgrp	/=	happyx/spa/state.html#/=-procs-all	proc		83
@@ -140,7 +142,7 @@ nimgrp	^=	happyx/spa/state.html#^=-procs-all	proc		83
 nimgrp	==	happyx/spa/state.html#==-procs-all	proc		98
 nimgrp	+	happyx/spa/state.html#+-procs-all	proc		74
 nimgrp	*=	happyx/spa/state.html#*=-procs-all	proc		83
-nimgrp	[]	happyx/spa/state.html#[]-procs-all	proc		224
+nimgrp	[]	happyx/spa/state.html#[]-procs-all	proc		234
 nimgrp	%	happyx/spa/state.html#%-procs-all	proc		74
 heading	Examples:	happyx/spa/state.html#state-🍍-examplescolon	  Examples:		0
 heading	State 🍍	happyx/spa/state.html#state-🍍	 State 🍍		0
