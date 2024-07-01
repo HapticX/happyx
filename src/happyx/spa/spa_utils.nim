@@ -36,7 +36,7 @@ macro eventListener*(obj: untyped, event: string, body: untyped): untyped =
       newNimNode(nnkPragma).add(
         newNimNode(nnkExprColonExpr).add(
           ident"emit",
-          newLit("`" & $obj & "`.addEventListener('" & $event & "', (event) => {")
+          newLit("`" & $obj & "`.addEventListener('" & $event & "', async (event) => {")
         )
       )
     else:
@@ -47,7 +47,7 @@ macro eventListener*(obj: untyped, event: string, body: untyped): untyped =
         newNimNode(nnkPragma).add(
           newNimNode(nnkExprColonExpr).add(
             ident"emit",
-            newLit("`" & id & "`.addEventListener('" & $event & "', (event) => {")
+            newLit("`" & id & "`.addEventListener('" & $event & "', async (event) => {")
           )
         )
       ),

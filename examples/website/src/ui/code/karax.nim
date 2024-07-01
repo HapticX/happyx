@@ -66,3 +66,35 @@ appRoutes "app":
         console.log(event)  # event is event
         console.log("Goodbye, world!")
 """
+  karaxReactivity* = """include karax/prelude
+import karax/kdom except setInterval
+
+proc setInterval(cb: proc(), interval: int): Interval {.discardable.} =
+  kdom.setInterval(proc =
+    cb()
+    if not kxi.surpressRedraws: redraw(kxi)
+  , interval)
+
+var v = 10
+
+proc update =
+  v += 10
+
+setInterval(update, 200)
+
+proc main: VNode =
+  buildHtml(tdiv):
+    text $v
+
+setRenderer main
+"""
+  happyxVsKaraxReactivity* = """import happyx
+
+var v = remember 10
+withInterval i, 200:
+  v->inc()
+
+appRoutes "app":
+  "/":
+    {v}
+"""

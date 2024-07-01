@@ -947,7 +947,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
             events.add(newStmtList(
               newNimNode(nnkPragma).add(
                 newNimNode(nnkExprColonExpr).add(
-                  ident"emit", newLit("const __elSc" & $elemEventId & " = (" & procParams.join(",") & ") => {")
+                  ident"emit", newLit("const __elSc" & $elemEventId & " = async (" & procParams.join(",") & ") => {")
                 )
               ),
               newCall(
@@ -1048,7 +1048,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
             events.add(newStmtList(
               newNimNode(nnkPragma).add(
                 newNimNode(nnkExprColonExpr).add(
-                  ident"emit", newLit("const __elSc" & $elemEventId & " = (" & procParams.join(",") & ") => {")
+                  ident"emit", newLit("const __elSc" & $elemEventId & " = async (" & procParams.join(",") & ") => {")
                 )
               ),
               newCall(
