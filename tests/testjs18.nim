@@ -41,6 +41,13 @@ component FormatTagHtml:
 proc testAsync() {.async.} =
   echo "Hello"
 
+
+component PlainDiv:
+  html:
+    tDiv:
+      slot
+
+
 appRoutes("app"):
   "/":
     for i in 1..5:
@@ -53,3 +60,20 @@ appRoutes("app"):
     for i in 1..5:
       tDiv:{$htmlTags[0]}
       FormatTagHtml(htmlTags[1])
+  "/issues/304":
+    "in a div"
+    tDiv:
+      tDiv(class="no-print", id="trial1"):
+        "hello"
+      tDiv(id="trial2", class="no-print"):
+        "hello again"
+      tDiv(id="trial2", class="no-print", style="color: red"):
+        "hello again"
+    "in a component slot that goes into a div"
+    PlainDiv():
+      tDiv(class="no-print", id="trial1"):
+        "hello"
+      tDiv(id="trial2", class="no-print"):
+        "hello again"
+      tDiv(id="trial2", class="no-print", style="color: red"):
+        "hello again"

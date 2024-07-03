@@ -422,13 +422,37 @@ proc attribute*(attr: NimNode, inComponent: bool = false): NimNode =
           $attr[0].toStrLit
       v =
         if k.toLower() == "id" and attr[1].kind in {nnkStrLit, nnkTripleStrLit} and inComponent:
-          newLit($attr[1] & "{self.uniqCompId}")
+          newNimNode(nnkWhenStmt).add(
+            newNimNode(nnkElifBranch).add(
+              newCall("declared", ident"self"),
+              newLit($attr[1] & "{self.uniqCompId}")
+            ),
+            newNimNode(nnkElifBranch).add(
+              newCall("declared", ident"scopeSelf"),
+              newLit($attr[1] & "{scopeSelf.uniqCompId}")
+            ),
+            newNimNode(nnkElse).add(
+              attr[1]
+            )
+          )
         elif k.toLower() == "id" and attr[1].kind in CallNodes and attr[1][0] == ident"nu" and inComponent:
           newLit($attr[1][1])
         elif k.toLower() == "id" and attr[1].kind in CallNodes and attr[1][0] == ident"fmtnu" and inComponent:
           newCall("fmt", newLit($attr[1][1]))
         elif k.toLower() == "id" and attr[1].kind in CallNodes and attr[1][0] == ident"fmt" and inComponent:
-          newCall("fmt", newLit($attr[1][1] & "{self.uniqCompId}"))
+          newNimNode(nnkWhenStmt).add(
+            newNimNode(nnkElifBranch).add(
+              newCall("declared", ident"self"),
+              newCall("fmt", newLit($attr[1][1] & "{self.uniqCompId}"))
+            ),
+            newNimNode(nnkElifBranch).add(
+              newCall("declared", ident"scopeSelf"),
+              newCall("fmt", newLit($attr[1][1] & "{scopeSelf.uniqCompId}"))
+            ),
+            newNimNode(nnkElse).add(
+              newCall("fmt", attr[1][1])
+            )
+          )
         else:
           attr[1]
     newColonExpr(
@@ -446,13 +470,37 @@ proc addAttribute*(node, key, value: NimNode, inComponent: bool = false) =
         $key.toStrLit
     v =
       if k.toLower() == "id" and value.kind in {nnkStrLit, nnkTripleStrLit} and inComponent:
-        formatNode(newLit($value & "{self.uniqCompId}"))
+        newNimNode(nnkWhenStmt).add(
+          newNimNode(nnkElifBranch).add(
+            newCall("declared", ident"self"),
+            formatNode(newLit($value & "{self.uniqCompId}"))
+          ),
+          newNimNode(nnkElifBranch).add(
+            newCall("declared", ident"scopeSelf"),
+            formatNode(newLit($value & "{scopeSelf.uniqCompId}"))
+          ),
+          newNimNode(nnkElse).add(
+            formatNode(value)
+          )
+        )
       elif k.toLower() == "id" and value.kind in CallNodes and value[0] == ident"nu" and inComponent:
         formatNode(newLit($value[1]))
       elif k.toLower() == "id" and value.kind in CallNodes and value[0] == ident"fmtnu" and inComponent:
         formatNode(newLit($value[1]))
       elif k.toLower() == "id" and value.kind in CallNodes and value[0] == ident"fmt" and inComponent:
-        formatNode(newLit($value[1] & "{self.uniqCompId}"))
+        newNimNode(nnkWhenStmt).add(
+          newNimNode(nnkElifBranch).add(
+            newCall("declared", ident"self"),
+            formatNode(newLit($value[1] & "{self.uniqCompId}"))
+          ),
+          newNimNode(nnkElifBranch).add(
+            newCall("declared", ident"scopeSelf"),
+            formatNode(newLit($value[1] & "{scopeSelf.uniqCompId}"))
+          ),
+          newNimNode(nnkElse).add(
+            formatNode(value[1])
+          )
+        )
       else:
         value
   if node.kind == nnkCall:
