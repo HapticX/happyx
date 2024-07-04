@@ -119,6 +119,7 @@ var
   rendererHandlers* = newSeq[tuple[key: string, p: AppEventHandler]]()
   application*: App = nil  ## global application variable
   currentRoute*: cstring = "/"  ## Current route path
+  scopedCycleCounter*: int = 0
 when enableDefaultComponents:
   var
     componentEventHandlers* = newTable[int, ComponentEventHandler]()

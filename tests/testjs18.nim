@@ -48,6 +48,25 @@ component PlainDiv:
       slot
 
 
+var counter: int = 0
+proc nextCount(): int =
+  counter += 1
+  result = counter
+
+component ShowNextCount:
+  count: int = nextCount()
+  html:
+    {self.count}
+    " "
+    {self.uniqCompId}
+
+proc countFactory(): TagRef = buildHtml:
+  {nextCount()}
+
+proc countComponentFactory(): TagRef = buildHtml:
+  ShowNextCount
+
+
 appRoutes("app"):
   "/":
     for i in 1..5:
@@ -77,3 +96,16 @@ appRoutes("app"):
         "hello again"
       tDiv(id="trial2", class="no-print", style="color: red"):
         "hello again"
+  "/issues/303":
+    "counts as thunks:"
+    for i in 1..5:
+      tDiv: countFactory()
+    "counts as components in thunks:"
+    nim: counter = 0
+    for i in 1..5:
+      for j in 1..2:
+        tDiv: countComponentFactory()
+    "counts with just the components"
+    nim: counter = 0
+    for i in 1..5:
+      tDiv: ShowNextCount

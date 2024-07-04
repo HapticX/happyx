@@ -199,10 +199,20 @@ proc useComponent*(statement: NimNode, inCycle, inComponent: bool,
     componentData = "data_" & componentName
     stringId =
       when defined(js) or not enableLiveviews:
-        if inCycle or inComponent:
-          componentSlotIdent
-        else:
-          newLit(componentName)
+        newNimNode(nnkIfStmt).add(
+          newNimNode(nnkElifBranch).add(
+            newCall("==", ident"scopedCycleCounter", newLit(0)),
+            if inCycle or inComponent:
+              componentSlotIdent
+            else:
+              newLit(componentName)
+          ), newNimNode(nnkElse).add(
+            if inCycle or inComponent:
+              newCall("&", componentSlotIdent, newCall("$", ident"scopedCycleCounter"))
+            else:
+              newCall("&", newLit(componentName), newCall("$", ident"scopedCycleCounter"))
+          )
+        )
       else:
         if inCycle or inComponent:
           newCall("&", ident"hostname", componentSlotIdent)
@@ -1377,9 +1387,20 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
       for i in 0..statement.len-3:
         discard cycleVars.pop()
       if cycleTmpVar == "" or cycleTmpVar == "cycleCounter":
+        statement[^1].insert(0, newNimNode(nnkAsgn).add(
+          ident"scopedCycleCounter",
+          ident(unqn)
+        ))
         statement[^1].insert(0, newCall("inc", ident(unqn)))
       else:
+        statement[^1].insert(0, newNimNode(nnkAsgn).add(
+          ident"scopedCycleCounter",
+          ident(cycleTmpVar)
+        ))
         statement[^1].insert(0, newCall("inc", ident(cycleTmpVar)))
+      statement[^1].add(newNimNode(nnkAsgn).add(
+        ident"scopedCycleCounter", newLit(0)
+      ))
       result.add(
         newCall(
           "initTag",
