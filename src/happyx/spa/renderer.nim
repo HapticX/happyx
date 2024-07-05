@@ -120,6 +120,8 @@ var
   application*: App = nil  ## global application variable
   currentRoute*: cstring = "/"  ## Current route path
   scopedCycleCounter*: int = 0
+when enableLiveViews and not defined(js):
+  var liveviewRoutes* = newTable[string, proc(): TagRef]()
 when enableDefaultComponents:
   var
     componentEventHandlers* = newTable[int, ComponentEventHandler]()
@@ -196,14 +198,11 @@ else:
     requestResult[host] = %*{"action": "route", "data": path}
   proc injectJs*(host, script: string) =
     requestResult[host] = %*{"action": "script", "data": fmt"<script>{script}</script>"}
-  proc html*(host, data: string) =
-    requestResult[host] = %*{"action": "html", "data": data}
-  
   proc route*(comp: BaseComponent, path: string) =
     componentsResult[comp.uniqCompId] = %*{"action": "route", "data": path}
   proc js*(comp: BaseComponent, script: string) =
     componentsResult[comp.uniqCompId] = %*{"action": "script", "data": fmt"<script>{script}</script>"}
-  template rerender*() =
+  proc rerender*(hostname, urlPath: string) =
     requestResult[hostname] = %*{"action": "rerender", "data": $(liveviewRoutes[urlPath]())}
 
 

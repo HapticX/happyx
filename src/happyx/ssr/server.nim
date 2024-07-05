@@ -247,8 +247,6 @@ var
   pointerServer: ptr Server
   loggerCreated: bool = false
 const liveViews = CacheSeq"HappyXLiveViews"
-when enableLiveViews:
-  var liveviewRoutes* = newTable[string, proc(): TagRef]()
 
 
 when defined(napibuild):

@@ -29,7 +29,8 @@ import
   std/tables,
   std/strtabs,
   ./renderer,
-  ./translatable
+  ./translatable,
+  ../core/constants
 
 
 type
@@ -79,19 +80,31 @@ template operator(funcname, op: untyped): untyped =
     `op`(self.value, other)
 
 
-template reRenderOperator(funcname, op: untyped): untyped =
-  proc `funcname`*[T](self: State[T], other: State[T]) =
-    `op`(self.val, other.val)
-    if enableRouting and not application.isNil() and not application.router.isNil():
-      application.router()
-  proc `funcname`*[T](other: T, self: State[T]) =
-    `op`(self.val, other)
-    if enableRouting and not application.isNil() and not application.router.isNil():
-      application.router()
-  proc `funcname`*[T](self: State[T], other: T) =
-    `op`(self.val, other)
-    if enableRouting and not application.isNil() and not application.router.isNil():
-      application.router()
+when defined(js) or not enableLiveviews:
+  template reRenderOperator(funcname, op: untyped): untyped =
+    proc `funcname`*[T](self: State[T], other: State[T]) =
+      `op`(self.val, other.val)
+      if enableRouting and not application.isNil() and not application.router.isNil():
+        application.router()
+    proc `funcname`*[T](other: T, self: State[T]) =
+      `op`(self.val, other)
+      if enableRouting and not application.isNil() and not application.router.isNil():
+        application.router()
+    proc `funcname`*[T](self: State[T], other: T) =
+      `op`(self.val, other)
+      if enableRouting and not application.isNil() and not application.router.isNil():
+        application.router()
+else:
+  template reRenderOperator(funcname, op: untyped): untyped =
+    template `funcname`*[T](self: State[T], other: State[T]) =
+      `op`(self.val, other.val)
+      rerender(hostname, urlPath)
+    template `funcname`*[T](other: T, self: State[T]) =
+      `op`(self.val, other)
+      rerender(hostname, urlPath)
+    template `funcname`*[T](self: State[T], other: T) =
+      `op`(self.val, other)
+      rerender(hostname, urlPath)
 
 
 template boolOperator(funcname, op: untyped): untyped =
@@ -180,6 +193,8 @@ macro `->`*(self: State, field: untyped): untyped =
               # application.router()
               newCall(newDotExpr(ident"application", ident"router"))
             )),
+          ), newNimNode(nnkElse).add(
+            newCall("rerender", ident"hostname", ident"urlPath")
           )),
         )
       ), newNimNode(nnkElse).add(newStmtList(
@@ -193,6 +208,8 @@ macro `->`*(self: State, field: untyped): untyped =
             # application.router()
             newCall(newDotExpr(ident"application", ident"router"))
           )),
+        ), newNimNode(nnkElse).add(
+          newCall("rerender", ident"hostname", ident"urlPath")
         )),
         ident"_result"
       ))
@@ -224,11 +241,17 @@ func high*[T](self: State[T]): int =
   self.val.high
 
 
-proc set*[T](self: State[T], value: T) =
-  ## Changes state value and rerenders SPA
-  self.val = value
-  if enableRouting and not application.isNil() and not application.router.isNil():
-    application.router()
+when defined(js):
+  proc set*[T](self: State[T], value: T) =
+    ## Changes state value and rerenders SPA
+    self.val = value
+    if enableRouting and not application.isNil() and not application.router.isNil():
+      application.router()
+else:
+  template set*[T](self: State[T], value: T) =
+    ## Changes state value and rerenders SPA
+    self.val = value
+    rerender(hostname, urlPath)
 
 
 func `[]`*[T, U](self: State[array[T, U]], idx: int): T =
@@ -260,33 +283,60 @@ func `[]`*(self: State[StringTableRef], idx: string): string =
   ## Returns State's item at `idx` index.
   self.val[idx]
 
-
-proc `[]=`*[T](self: State[seq[T]], idx: int, value: T) =
-  ## Changes State's item at `idx` index.
-  self.val[idx] = value
-  if enableRouting and not application.isNil() and not application.router.isNil():
-    application.router()
-
-
-proc `[]=`*[T, U](self: State[array[T, U]], idx: int, value: T) =
-  ## Changes State's item at `idx` index.
-  self.val[idx] = value
-  if enableRouting and not application.isNil() and not application.router.isNil():
-    application.router()
+when defined(js):
+  proc `[]=`*[T](self: State[seq[T]], idx: int, value: T) =
+    ## Changes State's item at `idx` index.
+    self.val[idx] = value
+    if enableRouting and not application.isNil() and not application.router.isNil():
+      application.router()
 
 
-proc `[]=`*[T, U](self: State[TableRef[T, U]], idx: T, value: U) =
-  ## Changes State's item at `idx` index.
-  self.val[idx] = value
-  if enableRouting and not application.isNil() and not application.router.isNil():
-    application.router()
+  proc `[]=`*[T, U](self: State[array[T, U]], idx: int, value: T) =
+    ## Changes State's item at `idx` index.
+    self.val[idx] = value
+    if enableRouting and not application.isNil() and not application.router.isNil():
+      application.router()
 
 
-proc `[]=`*(self: State[StringTableRef], idx: string, value: string) =
-  ## Changes State's item at `idx` index.
-  self.val[idx] = value
-  if enableRouting and not application.isNil() and not application.router.isNil():
-    application.router()
+  proc `[]=`*[T, U](self: State[TableRef[T, U]], idx: T, value: U) =
+    ## Changes State's item at `idx` index.
+    self.val[idx] = value
+    if enableRouting and not application.isNil() and not application.router.isNil():
+      application.router()
+
+
+  proc `[]=`*(self: State[StringTableRef], idx: string, value: string) =
+    ## Changes State's item at `idx` index.
+    self.val[idx] = value
+    if enableRouting and not application.isNil() and not application.router.isNil():
+      application.router()
+else:
+  proc `[]=`*[T](self: State[seq[T]], idx: int, value: T) =
+    ## Changes State's item at `idx` index.
+    self.val[idx] = value
+    if enableRouting and not application.isNil() and not application.router.isNil():
+      application.router()
+
+
+  proc `[]=`*[T, U](self: State[array[T, U]], idx: int, value: T) =
+    ## Changes State's item at `idx` index.
+    self.val[idx] = value
+    if enableRouting and not application.isNil() and not application.router.isNil():
+      application.router()
+
+
+  proc `[]=`*[T, U](self: State[TableRef[T, U]], idx: T, value: U) =
+    ## Changes State's item at `idx` index.
+    self.val[idx] = value
+    if enableRouting and not application.isNil() and not application.router.isNil():
+      application.router()
+
+
+  proc `[]=`*(self: State[StringTableRef], idx: string, value: string) =
+    ## Changes State's item at `idx` index.
+    self.val[idx] = value
+    if enableRouting and not application.isNil() and not application.router.isNil():
+      application.router()
 
 
 iterator items*[T](self: State[openarray[T]]): T =
