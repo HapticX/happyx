@@ -53,7 +53,7 @@ when defined(js) or not enableLiveViews:
     if enableRouting and not application.isNil() and not application.router.isNil():
       application.router()
 else:
-  proc `val=`*[T](self: State[T], value: T) =
+  template `val=`*[T](self: State[T], value: T) =
     ## Changes state value
     self.val = value
     rerender(hostname, urlPath)
