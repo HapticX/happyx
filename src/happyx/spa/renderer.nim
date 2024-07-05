@@ -198,6 +198,8 @@ else:
     requestResult[host] = %*{"action": "script", "data": fmt"<script>{script}</script>"}
   proc html*(host, data: string) =
     requestResult[host] = %*{"action": "html", "data": data}
+  proc call*(host, funcName: string) =
+    requestResult[host] = %*{"action": "call", "data": funcName}
   
   proc route*(comp: BaseComponent, path: string) =
     componentsResult[comp.uniqCompId] = %*{"action": "route", "data": path}
@@ -205,6 +207,8 @@ else:
     componentsResult[comp.uniqCompId] = %*{"action": "script", "data": fmt"<script>{script}</script>"}
   proc html*(comp: BaseComponent, data: string) =
     componentsResult[comp.uniqCompId] = %*{"action": "html", "data": data}
+  proc call*(comp: BaseComponent, funcName: string) =
+    componentsResult[comp.uniqCompId] = %*{"action": "call", "data": funcName}
 
 
 proc registerApp*(appId: cstring = "app"): App {. discardable .} =

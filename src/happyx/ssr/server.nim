@@ -780,6 +780,14 @@ macro routes*(server: Server, body: untyped = newStmtList()): untyped =
     let
       path = liveView[0]
       statement = liveView[1]
+    var head = newCall("head", newStmtList(newCall("tTitle", newStmtList(newLit"HappyX Application"))))
+    for i in 0..<statement.len:
+      if statement[i].kind == nnkCall and ($statement[i][0]).toLower() == "thead":
+        head = statement[i].copy()
+        statement.del(i)
+        break
+    echo treeRepr head
+    let
       connection = newNimNode(nnkCurly).add(newCall(
         "&",
         newCall(
@@ -801,72 +809,90 @@ macro routes*(server: Server, body: untyped = newStmtList()): untyped =
         ),
         newLit("\")")
       ))
-      getMethod = quote do:
-        {.gcsafe.}:
-          var html = buildHtml:
-            tHead:
-              tTitle: "SSR Components are here!"
-              tScript(src = "https://cdn.tailwindcss.com")
-            tBody:
-              tDiv(id = "app"): `statement`
-              tDiv(id = "scripts")
-            tScript: `connection`
-            tScript: """
-const x=document.getElementById("scripts");
-const a=document.getElementById("app");
-socketToSsr.onmessage=function(m){
-  const res=JSON.parse(m.data);switch(res.action){
-    case"script":x.innerHTML="";const e1=document.createRange().createContextualFragment(res.data);x.append(e1);break;case"html":const e2=document.createRange().createContextualFragment(res.data);a.append(e2);break;case"route":window.location.replace(res.data);break;default:break}};
-  function isObjLiteral(_o) {
-    var _t=_o;
-    return typeof _o !=="object"||_o===null?false : function (){
-      while(!false) {
-        if(Object.getPrototypeOf(_t=Object.getPrototypeOf(_t))===null){break;}
-      }
-      return Object.getPrototypeOf(_o)===_t;
-    }()
-  }
+      script = quote do:
+        tScript:"""const x=document.getElementById("scripts");
+          const a=document.getElementById("app");
+          socketToSsr.onmessage=function(m){
+            const res=JSON.parse(m.data);switch(res.action){
+              case"script":
+                x.innerHTML="";
+                const e1=document.createRange().createContextualFragment(res.data);
+                x.append(e1);
+                break;
+              case"html":
+                const e2=document.createRange().createContextualFragment(res.data);
+                a.append(e2);
+                break;
+              case"route":
+                window.location.replace(res.data);
+                break;
+              case"call":
+                window.location.replace(res.data);
+                break;
+              default:
+                break}};
+            function isObjLiteral(_o) {
+              var _t=_o;
+              return typeof _o !=="object"||_o===null?false : function (){
+                while(!false) {
+                  if(Object.getPrototypeOf(_t=Object.getPrototypeOf(_t))===null){break;}
+                }
+                return Object.getPrototypeOf(_o)===_t;
+              }()
+            }
 
-  function complex(e) {
-    const i=typeof e === "function";
-    const j=typeof e === "object" && !isObjLiteral(e);
-    return i||j;
-  }
+            function complex(e) {
+              const i=typeof e === "function";
+              const j=typeof e === "object" && !isObjLiteral(e);
+              return i||j;
+            }
 
-  function se(e, x) {
-    const r={};
-    for(const k in e){
-      if(!e[k]){continue;}
-      if(typeof e[k] !== "function" && typeof e[k]!=="object"){
-        r[k]=e[k];
-      }else if(!(r[k] in x)&&x.length<2&&e[k]!=="function"){
-        r[k]=se(e[k],x.concat([e[k]]));
-      }
-    }
-    return r;
-  }
-  
-  function callEventHandler(i,e) {
-    let ev=se(e,[e]);
-    ev['eventName']=ev.constructor.name;
-    socketToSsr.send(JSON.stringify({
-      "action":"callEventHandler",
-      "idx":i,
-      "event":ev
-    }));
-  }
-  function callComponentEventHandler(c,i,e) {
-    let ev=se(e,[e]);
-    ev['eventName']=ev.constructor.name;
-    socketToSsr.send(JSON.stringify({
-      "action":"callComponentEventHandler",
-      "idx":i,
-      "event":ev,
-      "componentId":c
-    }));
-  }
-"""
-        return html
+            function se(e, x) {
+              const r={};
+              for(const k in e){
+                if(!e[k]){continue;}
+                if(typeof e[k] !== "function" && typeof e[k]!=="object"){
+                  r[k]=e[k];
+                }else if(!(r[k] in x)&&x.length<2&&e[k]!=="function"){
+                  r[k]=se(e[k],x.concat([e[k]]));
+                }
+              }
+              return r;
+            }
+            
+            function callEventHandler(i,e) {
+              let ev=se(e,[e]);
+              ev['eventName']=ev.constructor.name;
+              socketToSsr.send(JSON.stringify({
+                action:"callEventHandler",
+                idx:i,
+                event:ev
+              }));
+            }
+            function callComponentEventHandler(c,i,e) {
+              let ev=se(e,[e]);
+              ev['eventName']=ev.constructor.name;
+              socketToSsr.send(JSON.stringify({
+                action:"callComponentEventHandler",
+                idx:i,
+                event:ev,
+                componentId:c
+              }));
+            }"""
+      getMethod = pragmaBlock([ident"gcsafe"], newStmtList(
+        newVarStmt(ident"html", newCall(
+          "buildHtml", newStmtList(
+            head,
+            newCall("body", newStmtList(
+              newCall("tDiv", newNimNode(nnkExprEqExpr).add(ident"id", newLit"app"), statement),
+              newCall("tDiv", newNimNode(nnkExprEqExpr).add(ident"id", newLit"scripts")),
+              newCall("tScript", newStmtList(connection)),
+              script
+            ))
+          )
+        )),
+        newNimNode(nnkReturnStmt).add(ident"html")
+      ))
       wsMethod = quote do:
         ws `path`:
           var parsed = parseJson(wsData)
