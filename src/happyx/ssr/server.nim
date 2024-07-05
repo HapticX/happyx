@@ -782,11 +782,10 @@ macro routes*(server: Server, body: untyped = newStmtList()): untyped =
       statement = liveView[1]
     var head = newCall("head", newStmtList(newCall("tTitle", newStmtList(newLit"HappyX Application"))))
     for i in 0..<statement.len:
-      if statement[i].kind == nnkCall and ($statement[i][0]).toLower() == "thead":
+      if statement[i].kind == nnkCall and ($statement[i][0]).toLower() == "head":
         head = statement[i].copy()
         statement.del(i)
         break
-    echo treeRepr head
     let
       connection = newNimNode(nnkCurly).add(newCall(
         "&",

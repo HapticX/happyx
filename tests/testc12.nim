@@ -33,6 +33,8 @@ component Button:
 
 liveview:
   "/":
+    # Only one `head` tag allowed here.
+    # By default, `head` tag is <head><title>HappyX Application</title></head>
     head:
       tTitle: "SSR Components are here!"
       tScript(src = "https://cdn.tailwindcss.com")
