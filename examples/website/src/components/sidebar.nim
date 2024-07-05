@@ -101,11 +101,16 @@ var
     "ssr_docs": {
       "title": "Swagger and Redoc in HappyX 📕",
       "prev": "mongo_db",
+      "next": "liveviews"
+    },
+    "liveviews": {
+      "title": "LiveViews 🔥",
+      "prev": "ssr_docs",
       "next": "hpx_for_karax"
     },
     "hpx_for_karax": {
       "title": "Karax users 👑",
-      "prev": "ssr_docs",
+      "prev": "liveviews",
       "next": ""
     },
   }
@@ -219,6 +224,8 @@ proc SideBar*(isMobile: bool = false): TagRef =
                 {translate"MongoDB 🍃"}
               SideBarItem("ssr_docs", isMobile):
                 {translate"Swagger and Redoc in HappyX 📕"}
+              SideBarItem("liveviews", isMobile):
+                "LiveViews 🔥"
             SideBarFolder("hpx_for_karax", "HappyX for ...", isMobile):
               SideBarItem("hpx_for_karax", isMobile):
                 {translate"Karax users 👑"}

@@ -58,7 +58,7 @@ jobs:
           export PATH=/home/.nimble/bin:$PATH
           nimble refresh
           nimble install -y -d
-          nimble install -y checksums
+          nimble install -y checksums nimpy
           nimble list --installed
           cd src
           echo "Windows module"

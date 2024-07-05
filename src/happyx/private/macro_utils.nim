@@ -1030,7 +1030,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
               newCall(
                 "fmt",
                 newLit(
-                  "callComponentEventHandler('{self." & UniqueComponentId & "}', {-(" &
+                  "cceh('{self." & UniqueComponentId & "}', {-(" &
                   fmt"{uniqueId.value}" & cycleVar & ", event)"
                 )
               )
@@ -1071,7 +1071,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
               newCall(
                 "fmt",
                 newLit(
-                  "callComponentEventHandler('{self." & UniqueComponentId & "}', " & fmt"{uniqueId.value}, event)"
+                  "cceh('{self." & UniqueComponentId & "}', " & fmt"{uniqueId.value}, event)"
                 )
               )
             )
@@ -1130,7 +1130,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
               newLit(evname),
               newCall(
                 "fmt",
-                newLit("callEventHandler({-(" & fmt"{uniqueId.value}" & cycleVar & ", event)")
+                newLit("ceh({-(" & fmt"{uniqueId.value}" & cycleVar & ", event)")
               )
             )
             result.add(
@@ -1166,7 +1166,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
           else:
             result.addAttribute(
               newLit(evname),
-              newLit(fmt"callEventHandler({uniqueId.value}, event)")
+              newLit(fmt"ceh({uniqueId.value}, event)")
             )
             result.add(newStmtList(
               newCall("once",

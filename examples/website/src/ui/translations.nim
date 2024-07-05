@@ -2240,6 +2240,48 @@ translatable:
     "zh" -> "您可以自由指定哪些变量应该是反应性的，哪些应该是普通的。"
     "fr" -> "Vous êtes libre de spécifier quelles variables doivent être réactives et lesquelles doivent être ordinaires."
     "ko" -> "어떤 변수가 반응적이어야 하고 어떤 변수가 일반적이어야 하는지 자유롭게 지정할 수 있습니다."
+  "Besides single-page and server-side applications, you can also develop so-called liveviews.":
+    "ru" -> "Помимо одностраничных и серверных приложений вы также можете разрабатывать так называемые liveviews."
+    "ja" -> "シングルページアプリケーションやサーバーサイドアプリケーションの他に、いわゆるライブビューも開発できます。"
+    "zh" -> "除了单页和服务器端应用程序，您还可以开发所谓的实时视图。"
+    "fr" -> "Outre les applications monopages et côté serveur, vous pouvez également développer ce que l'on appelle des liveviews."
+    "ko" -> "단일 페이지 및 서버 측 애플리케이션 외에도 소위 라이브 뷰를 개발할 수 있습니다."
+  "Liveviews allow you to develop hybrid web applications where data processing and storage occur on the server side, while rendering happens on the client side.":
+    "ru" -> "liveviews позволяют вам разрабатывать гибридные веб приложения, обработка и хранение данных которых происходит на серверной части, а отрисовка на клиентской."
+    "ja" -> "ライブビューを使用すると、データの処理と保存がサーバー側で行われ、レンダリングがクライアント側で行われるハイブリッドWebアプリケーションを開発できます。"
+    "zh" -> "实时视图允许您开发混合web应用程序，其中数据处理和存储发生在服务器端，而渲染发生在客户端。"
+    "fr" -> "Les liveviews vous permettent de développer des applications web hybrides où le traitement et le stockage des données se font côté serveur, tandis que le rendu se fait côté client."
+    "ko" -> "라이브뷰를 통해 데이터 처리 및 저장은 서버 측에서, 렌더링은 클라이언트 측에서 이루어지는 하이브리드 웹 애플리케이션을 개발할 수 있습니다."
+  "Below is a diagram showing the behavior of a typical hybrid application written in HappyX.":
+    "ru" -> "Ниже приведена диаграмма, отображающая поведение типичного гибридного приложения, написанного на HappyX."
+    "ja" -> "以下は、HappyXで作成された典型的なハイブリッドアプリケーションの動作を示す図です。"
+    "zh" -> "下面是一个图表，显示了用HappyX编写的典型混合应用程序的行为。"
+    "fr" -> "Voici un diagramme montrant le comportement d'une application hybride typique écrite en HappyX."
+    "ko" -> "아래는 HappyX로 작성된 일반적인 하이브리드 애플리케이션의 동작을 보여주는 다이어그램입니다."
+  "Please note that liveviews are provided to developers as an experiment.":
+    "ru" -> "Прошу обратить внимание на то, что liveviews предоставляется разработчикам как эксперимент."
+    "ja" -> "ライブビューは実験として開発者に提供されていることに注意してください。"
+    "zh" -> "请注意，实时视图是作为实验提供给开发人员的。"
+    "fr" -> "Veuillez noter que les liveviews sont fournies aux développeurs à titre expérimental."
+    "ko" -> "라이브뷰는 실험적으로 개발자에게 제공된다는 점에 유의하십시오."
+  "In the future, the development of liveviews is likely to be modified.":
+    "ru" -> "В будущем скорее всего разработка liveviews будет видоизменена."
+    "ja" -> "将来的には、ライブビューの開発が変更される可能性があります。"
+    "zh" -> "未来，实时视图的开发很可能会被修改。"
+    "fr" -> "À l'avenir, le développement des liveviews sera probablement modifié."
+    "ko" -> "미래에는 라이브뷰 개발이 수정될 가능성이 큽니다."
+  "Counter App":
+    "ru" -> "Counter App"
+    "ja" -> "カウンターアプリ"
+    "zh" -> "计数器应用"
+    "fr" -> "Application de compteur"
+    "ko" -> "카운터 앱"
+  "Let's look at an example of a hybrid application using a counter as an example.":
+    "ru" -> "Давайте рассмотрим пример гибридного приложения на примере счетчика."
+    "ja" -> "カウンターを例にとって、ハイブリッドアプリケーションの例を見てみましょう。"
+    "zh" -> "让我们通过一个计数器的例子来看一个混合应用程序的例子。"
+    "fr" -> "Regardons un exemple d'application hybride en utilisant un compteur comme exemple."
+    "ko" -> "카운터를 예로 하여 하이브리드 애플리케이션의 예를 살펴보겠습니다."
 
 
 var spokenLang: cstring

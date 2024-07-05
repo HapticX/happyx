@@ -71,6 +71,7 @@ import
   checksums/md5,
   # HappyX
   ./cors,
+  ./liveviews_utils,
   ../spa/[tag, renderer],
   ../core/[exceptions, constants],
   ../private/[macro_utils],
@@ -246,6 +247,8 @@ var
   pointerServer: ptr Server
   loggerCreated: bool = false
 const liveViews = CacheSeq"HappyXLiveViews"
+when enableLiveViews:
+  var liveviewRoutes* = newTable[string, proc(): TagRef]()
 
 
 when defined(napibuild):
@@ -787,7 +790,7 @@ macro routes*(server: Server, body: untyped = newStmtList()): untyped =
         statement.del(i)
         break
     let
-      connection = newNimNode(nnkCurly).add(newCall(
+      connection = newCall(
         "&",
         newCall(
           "&",
@@ -806,91 +809,29 @@ macro routes*(server: Server, body: untyped = newStmtList()): untyped =
           ),
           path
         ),
-        newLit("\")")
-      ))
-      script = quote do:
-        tScript:"""const x=document.getElementById("scripts");
-          const a=document.getElementById("app");
-          socketToSsr.onmessage=function(m){
-            const res=JSON.parse(m.data);switch(res.action){
-              case"script":
-                x.innerHTML="";
-                const e1=document.createRange().createContextualFragment(res.data);
-                x.append(e1);
-                break;
-              case"html":
-                const e2=document.createRange().createContextualFragment(res.data);
-                a.append(e2);
-                break;
-              case"route":
-                window.location.replace(res.data);
-                break;
-              case"call":
-                window.location.replace(res.data);
-                break;
-              default:
-                break}};
-            function isObjLiteral(_o) {
-              var _t=_o;
-              return typeof _o !=="object"||_o===null?false : function (){
-                while(!false) {
-                  if(Object.getPrototypeOf(_t=Object.getPrototypeOf(_t))===null){break;}
-                }
-                return Object.getPrototypeOf(_o)===_t;
-              }()
-            }
-
-            function complex(e) {
-              const i=typeof e === "function";
-              const j=typeof e === "object" && !isObjLiteral(e);
-              return i||j;
-            }
-
-            function se(e, x) {
-              const r={};
-              for(const k in e){
-                if(!e[k]){continue;}
-                if(typeof e[k] !== "function" && typeof e[k]!=="object"){
-                  r[k]=e[k];
-                }else if(!(r[k] in x)&&x.length<2&&e[k]!=="function"){
-                  r[k]=se(e[k],x.concat([e[k]]));
-                }
-              }
-              return r;
-            }
-            
-            function callEventHandler(i,e) {
-              let ev=se(e,[e]);
-              ev['eventName']=ev.constructor.name;
-              socketToSsr.send(JSON.stringify({
-                action:"callEventHandler",
-                idx:i,
-                event:ev
-              }));
-            }
-            function callComponentEventHandler(c,i,e) {
-              let ev=se(e,[e]);
-              ev['eventName']=ev.constructor.name;
-              socketToSsr.send(JSON.stringify({
-                action:"callComponentEventHandler",
-                idx:i,
-                event:ev,
-                componentId:c
-              }));
-            }"""
+        newLit("\");")
+      )
+      script = liveViewScript()
+    script[1][0] = newNimNode(nnkCurly).add(newCall("&", connection, newLit(($script[1][0]).replace("\n", ""))))
+    let
       getMethod = pragmaBlock([ident"gcsafe"], newStmtList(
-        newVarStmt(ident"html", newCall(
-          "buildHtml", newStmtList(
-            head,
-            newCall("body", newStmtList(
-              newCall("tDiv", newNimNode(nnkExprEqExpr).add(ident"id", newLit"app"), statement),
-              newCall("tDiv", newNimNode(nnkExprEqExpr).add(ident"id", newLit"scripts")),
-              newCall("tScript", newStmtList(connection)),
-              script
-            ))
-          )
+        newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
+          newCall("not", newCall("hasKey", ident"liveviewRoutes", path)),
+          newNimNode(nnkAsgn).add(
+            newNimNode(nnkBracketExpr).add(ident"liveviewRoutes", path),
+            newLambda(newStmtList(
+              newCall("buildHtml", newStmtList(
+                head,
+                newCall("body", newStmtList(
+                  newCall("tDiv", newNimNode(nnkExprEqExpr).add(ident"id", newLit"app"), statement),
+                  newCall("tDiv", newNimNode(nnkExprEqExpr).add(ident"id", newLit"scripts")),
+                  script
+                ))
+              ))
+            ), @[ident"TagRef"])
+          ),
         )),
-        newNimNode(nnkReturnStmt).add(ident"html")
+        newNimNode(nnkReturnStmt).add(newCall(newNimNode(nnkBracketExpr).add(ident"liveviewRoutes", path)))
       ))
       wsMethod = quote do:
         ws `path`:
@@ -1691,7 +1632,7 @@ macro routes*(server: Server, body: untyped = newStmtList()): untyped =
       immutableVars.add(newIdentDefs(ident"reqMethod", newEmptyNode(), reqMethod))
   if stmtList.isIdentUsed(ident"headers"):
     immutableVars.add(newIdentDefs(ident"headers", newEmptyNode(), headers))
-  if stmtList.isIdentUsed(ident"startSession") or stmtList.isIdentUsed(ident"hostname"):
+  if stmtList.isIdentUsed(ident"startSession") or stmtList.isIdentUsed(ident"hostname") or liveviews.len > 0:
     immutableVars.add(newIdentDefs(ident"hostname", newEmptyNode(), hostname))
   when enableDebugSsrMacro:
     echo result.toStrLit

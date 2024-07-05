@@ -564,3 +564,18 @@ serve "127.0.0.1", 5000:
 serve "127.0.0.1", 5000:
   discard
 """
+  nimLiveViews1* = """import happyx
+
+var counter = 0
+
+liveview:
+  "/":
+    {counter}
+    tButton:
+      "click me!"
+      @click:
+        counter += 1
+
+serve "127.0.0.1", 5000:
+  discard
+"""

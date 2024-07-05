@@ -2,7 +2,7 @@
 
 description = "Macro-oriented asynchronous web-framework written with ♥"
 author = "HapticX"
-version = "4.0.2"
+version = "4.1.0"
 license = "MIT"
 srcDir = "src"
 installExt = @["nim"]
@@ -30,6 +30,3 @@ requires "websocket >= 0.5.2"
 requires "websocketx >= 0.1.2"
 # Security
 requires "nimcrypto >= 0.3.9"
-requires "oauth >= 0.10"
-# Language bindings
-requires "nimpy >= 0.2.0"

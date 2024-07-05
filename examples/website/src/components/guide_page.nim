@@ -55,6 +55,8 @@ component GuidePage:
           Mounting
         of "hpx_for_karax":
           KaraxUsers
+        of "liveviews":
+          LiveViews
 
       tDiv(class = "hidden xl:flex justify-between items-center w-full pb-8"):
         if guidePages[currentGuidePage]["prev"].getStr != "":
