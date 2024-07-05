@@ -46,11 +46,17 @@ func remember*[T](val: T): State[T] =
   State[T](val: val)
 
 
-proc `val=`*[T](self: State[T], value: T) =
-  ## Changes state value
-  self.val = value
-  if enableRouting and not application.isNil() and not application.router.isNil():
-    application.router()
+when defined(js) or not enableLiveViews:
+  proc `val=`*[T](self: State[T], value: T) =
+    ## Changes state value
+    self.val = value
+    if enableRouting and not application.isNil() and not application.router.isNil():
+      application.router()
+else:
+  proc `val=`*[T](self: State[T], value: T) =
+    ## Changes state value
+    self.val = value
+    rerender(hostname, urlPath)
 
 
 func `$`*[T](self: State[T]): string =
@@ -186,7 +192,7 @@ macro `->`*(self: State, field: untyped): untyped =
           call,
           # When defined JS
           newNimNode(nnkWhenStmt).add(newNimNode(nnkElifBranch).add(
-            newCall("defined", ident"js"),
+            newCall("or", newCall("defined", ident"js"), newCall("not", ident"enableLiveViews")),
             # If enableRouting and not application.isNil()
             newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
               newCall("and", ident"enableRouting", newCall("not", newCall("isNil", ident"application"))),
@@ -201,7 +207,7 @@ macro `->`*(self: State, field: untyped): untyped =
         newVarStmt(ident"_result", call),
         # When defined JS
         newNimNode(nnkWhenStmt).add(newNimNode(nnkElifBranch).add(
-          newCall("defined", ident"js"),
+          newCall("or", newCall("defined", ident"js"), newCall("not", ident"enableLiveViews")),
           # If enableRouting and not application.isNil()
           newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
             newCall("and", ident"enableRouting", newCall("not", newCall("isNil", ident"application"))),
@@ -283,7 +289,7 @@ func `[]`*(self: State[StringTableRef], idx: string): string =
   ## Returns State's item at `idx` index.
   self.val[idx]
 
-when defined(js):
+when defined(js) or not enableLiveViews:
   proc `[]=`*[T](self: State[seq[T]], idx: int, value: T) =
     ## Changes State's item at `idx` index.
     self.val[idx] = value
