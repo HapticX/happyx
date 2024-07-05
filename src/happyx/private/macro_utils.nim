@@ -658,6 +658,12 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
         statement[1],
         newCall("initTag", newLit"div", newCall("@", newNimNode(nnkBracket)), newLit(true))
       ))
+    elif statement.kind in {nnkVarSection, nnkLetSection, nnkProcDef, nnkFuncDef, nnkMethodDef, nnkBlockStmt, nnkBlockExpr, nnkTypeDef}:
+      # Real Nim code
+      result.add(newStmtList(
+        statement,
+        newCall("initTag", newLit"div", newCall("@", newNimNode(nnkBracket)), newLit(true))
+      ))
     
     elif statement.kind == nnkCall and statement[0] == ident"rawHtml":
       var node: NimNode

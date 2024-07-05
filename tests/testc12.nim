@@ -38,6 +38,7 @@ liveview:
     head:
       tTitle: "SSR Components are here!"
       tScript(src = "https://cdn.tailwindcss.com")
+    # All other tags placed in <body><div id="app"></div></body>
     component Button
     tScript: """
       function test() {
@@ -51,8 +52,7 @@ liveview:
       @click:
         route(hostname, "/")
   "/search":
-    nim:
-      let q = decodeUrl(query?q)
+    let q = decodeUrl(query?q)
     tP: "You search: {q}"
 
 
