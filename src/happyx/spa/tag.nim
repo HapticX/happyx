@@ -153,7 +153,7 @@ when defined(js):
   """.}
 
 
-proc add*(self: TagRef, tags: varargs[TagRef]) =
+proc add*(self: TagRef, tags: varargs[TagRef]) {.exportc: "tgadd".} =
   ## Adds `other` tag into `self` tag
   runnableExamples:
     var
@@ -179,7 +179,7 @@ proc add*(self: TagRef, tags: varargs[TagRef]) =
 
 
 when defined(js):
-  proc setAttributes(name: string, e: TagRef, attrs: StringTableRef) =
+  proc setAttributes(name: string, e: TagRef, attrs: StringTableRef) {.exportc: "stattrs".} =
     if name.toLower() in SvgElements:
       if attrs.hasKey("class"):
         let a = cstring(attrs["class"])
@@ -191,7 +191,7 @@ when defined(js):
       for key, val in attrs.pairs:
         e.setAttribute(cstring(key), cstring(val))
 
-  proc newElement(name: string): TagRef =
+  proc newElement(name: string): TagRef {.exportc: "nwelm".} =
     if name.toLower() in ["svg", "path", "circle", "rect", "g", "defs", "animate", "ellipse", "polygon", "mask"]:
       result = TagRef()
       let n = cstring(name)
@@ -202,7 +202,7 @@ when defined(js):
 
 proc initTag*(name: string, attrs: StringTableRef,
               children: seq[TagRef] = @[],
-              onlyChildren: bool = false): TagRef =
+              onlyChildren: bool = false): TagRef {.exportc: "tg1".} =
   ## Initializes a new HTML tag with the given name, attributes, and children.
   ## 
   ## Args:
@@ -231,7 +231,7 @@ proc initTag*(name: string, attrs: StringTableRef,
 
 
 proc initTag*(name: string, children: seq[TagRef] = @[],
-              onlyChildren: bool = false): TagRef =
+              onlyChildren: bool = false): TagRef {.exportc: "tg2".} =
   ## Initializes a new HTML tag without attributes but with children
   ## 
   ## Args:
@@ -258,7 +258,7 @@ proc initTag*(name: string, children: seq[TagRef] = @[],
 
 proc initTag*(name: string, isText: bool, attrs: StringTableRef,
               children: seq[TagRef] = @[],
-              onlyChildren: bool = false): TagRef =
+              onlyChildren: bool = false): TagRef {.exportc: "tg3".} =
   ## Initializes a new HTML tag with the given name, whether it's text or not, attributes, and children.
   ## 
   ## Args:
@@ -291,7 +291,7 @@ proc initTag*(name: string, isText: bool, attrs: StringTableRef,
 
 
 proc initTag*(name: string, isText: bool, children: seq[TagRef] = @[],
-              onlyChildren: bool = false): TagRef =
+              onlyChildren: bool = false): TagRef {.exportc: "tg4".} =
   ## Initializes a new HTML tag
   when defined(js):
     if isText:
