@@ -134,8 +134,8 @@ when enableDefaultComponents:
   else:
     var
       components* = newTable[string, BaseComponent]()
-      requestResult* = newTable[string, JsonNode]()
-      componentsResult* = newTable[string, JsonNode]()
+      requestResult* = newTable[string, string]()
+      componentsResult* = newTable[string, string]()
 
 
 when defined(js):
@@ -195,15 +195,19 @@ when defined(js):
     window.history.forward()
 else:
   proc route*(host, path: string) =
-    requestResult[host] = %*{"action": "route", "data": path}
+    requestResult[host] = "route:" & path
   proc injectJs*(host, script: string) =
-    requestResult[host] = %*{"action": "script", "data": fmt"<script>{script}</script>"}
+    requestResult[host] = "script:" & fmt"<script>{script}</script>"
   proc route*(comp: BaseComponent, path: string) =
-    componentsResult[comp.uniqCompId] = %*{"action": "route", "data": path}
+    componentsResult[comp.uniqCompId] = "route:" & path
   proc js*(comp: BaseComponent, script: string) =
-    componentsResult[comp.uniqCompId] = %*{"action": "script", "data": fmt"<script>{script}</script>"}
+    componentsResult[comp.uniqCompId] = "script:" & fmt"<script>{script}</script>"
   proc rerender*(hostname, urlPath: string) =
-    requestResult[hostname] = %*{"action": "rerender", "data": $(liveviewRoutes[urlPath]())}
+    requestResult[hostname] = "rerender:" & $(liveviewRoutes[urlPath]())
+  proc bck*(hostname, urlPath: string) =
+    requestResult[hostname] = "bck"
+  proc frwrd*(hostname, urlPath: string) =
+    requestResult[hostname] = "frwrd"
 
 
 proc registerApp*(appId: cstring = "app"): App {. discardable .} =

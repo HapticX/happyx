@@ -6,10 +6,13 @@ proc liveViewScript*(): NimNode = quote do:
   tScript:"""
 const x=document.getElementById("scripts");const a=document.getElementById("app");
 socketToSsr.onmessage=function(m){
-const res=JSON.parse(m.data);switch(res.action){
-case"script":x.innerHTML="";const e1=document.createRange().createContextualFragment(res.data);x.append(e1);break;
-case"rerender":const d=phtml(res.data).querySelector("#app");renderVdom(d);break;
-case"route":window.location.replace(res.data);break;
+const[ac,dt]=m.data.split(/:([\s\S]*)/);
+switch(ac){
+case"script":x.innerHTML="";const e1=document.createRange().createContextualFragment(dt);x.append(e1);break;
+case"rerender":const d=phtml(dt).querySelector("#app");renderVdom(d);break;
+case"route":window.location.replace(dt);break;
+case"bck":window.history.back();break;
+case"frwrd":window.history.forward();break;
 default:break}};
 function phtml(s){const d=new DOMParser().parseFromString(s,"text/html");cln(d.body);return d.body;}
 function cln(node){
@@ -25,16 +28,16 @@ function ist(a,b){
   return a.nodeType===b.nodeType;
 }
 function ai(e){
-  var attrs={};if(!e.attributes||e.attributes.length===0)return attrs;
-  for(let i of e.attributes)attrs[i.nodeName]=i.nodeValue;
-  return attrs;
+  const a={};if(!e.attributes||e.attributes.length===0)return a;
+  for(let i of e.attributes)a[i.nodeName]=i.nodeValue;
+  return a;
 }
 function pat(vd,d){
-  let vdomattrs=ai(vd);let domattrs=ai(d);if(vdomattrs==domattrs)return;
-  Object.keys(vdomattrs).forEach((k,i)=>{
-  if(!d.getAttribute(k)){d.setAttribute(k,vdomattrs[k]);
-  }else if(d.getAttribute(k)){if(vdomattrs[k]!=domattrs[k])d.setAttribute(k,vdomattrs[k]);}});
-  Object.keys(domattrs).forEach((k,i)=>{if(!vd.getAttribute(k))d.removeAttribute(k);});
+  let vda=ai(vd);let da=ai(d);if(vda==da)return;
+  Object.keys(vda).forEach((k,i)=>{
+  if(!d.getAttribute(k)){d.setAttribute(k,vda[k]);
+  }else if(d.getAttribute(k)){if(vda[k]!=da[k])d.setAttribute(k,vda[k]);}});
+  Object.keys(da).forEach((k,i)=>{if(!vd.getAttribute(k))d.removeAttribute(k);});
 }
 function diff(vd,d){
   if(!d.hasChildNodes()&&vd.hasChildNodes()){
@@ -58,14 +61,14 @@ function diff(vd,d){
   }
 }
 function renderVdom(vd,f){
-  let actv=document.activeElement;diff(vd,document.getElementById('app'));
-  if(actv.hasAttribute('id')){
-    let actvElem=document.getElementById(actv.id);
-    if(actvElem){
-      actvElem.focus();
-      if(actvElem.nodeName==="INPUT" || actvElem.nodeName==="TEXTAREA"){
-        let old=actv;let curr=actvElem;
-        curr.setSelectionRange(old.selectionStart,old.selectionEnd,old.selectionDirection);
+  let _a=document.activeElement;diff(vd,document.getElementById('app'));
+  if(_a.hasAttribute('id')){
+    let _ae=document.getElementById(_a.id);
+    if(_ae){
+      _ae.focus();
+      if(_ae.nodeName==="INPUT" || _ae.nodeName==="TEXTAREA"){
+        let _0=_a;let curr=_ae;
+        curr.setSelectionRange(_0.selectionStart,_0.selectionEnd,_0.selectionDirection);
       }
     }
   }
@@ -91,10 +94,10 @@ function se(e,x){
   return r;
 }
 function ceh(i,e){
-  let ev=se(e,[e]);ev['eventName']=ev.constructor.name;
-  socketToSsr.send(JSON.stringify({action:"callEventHandler",idx:i,event:ev}));
+  let o=se(e,[e]);o['eventName']=o.constructor.name;
+  socketToSsr.send(JSON.stringify({action:"callEventHandler",idx:i,event:o}));
 }
 function cceh(c,i,e){
-  let ev=se(e,[e]);ev['eventName']=ev.constructor.name;
-  socketToSsr.send(JSON.stringify({action:"callComponentEventHandler",idx:i,event:ev,componentId:c}));
+  let o=se(e,[e]);o['eventName']=o.constructor.name;
+  socketToSsr.send(JSON.stringify({action:"callComponentEventHandler",idx:i,event:o,componentId:c}));
 }"""
