@@ -203,7 +203,7 @@ else:
   proc js*(comp: BaseComponent, script: string) =
     componentsResult[comp.uniqCompId] = "script:" & fmt"<script>{script}</script>"
   proc rerender*(hostname, urlPath: string) =
-    requestResult[hostname] = "rerender:" & $(liveviewRoutes[urlPath]())
+    requestResult[hostname] = "rerender:" & liveviewRoutes[urlPath]().children[1].ugly()
   proc bck*(hostname, urlPath: string) =
     requestResult[hostname] = "bck"
   proc frwrd*(hostname, urlPath: string) =

@@ -798,7 +798,7 @@ macro routes*(server: Server, body: untyped = newStmtList()): untyped =
               "&",
               newCall(
                 "&",
-                newLit("var socketToSsr=new WebSocket(\"ws://"),
+                newLit("var _sc=new WebSocket(\"ws://"),
                 newDotExpr(ident"server", ident"address"),
               ),
               newLit":",
@@ -810,7 +810,11 @@ macro routes*(server: Server, body: untyped = newStmtList()): untyped =
         newLit("\");")
       )
       script = liveViewScript()
-    script[1][0] = newNimNode(nnkCurly).add(newCall("&", connection, newLit(($script[1][0]).replace("\n", ""))))
+    script[1][0] = newNimNode(nnkCurly).add(
+      newCall("&", connection, newLit(
+        ($script[1][0]).replace("\n", "")
+      ))
+    )
     let
       getMethod = pragmaBlock([ident"gcsafe"], newStmtList(
         newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
@@ -822,28 +826,29 @@ macro routes*(server: Server, body: untyped = newStmtList()): untyped =
                 head,
                 newCall("body", newStmtList(
                   newCall("tDiv", newNimNode(nnkExprEqExpr).add(ident"id", newLit"app"), statement),
-                  newCall("tDiv", newNimNode(nnkExprEqExpr).add(ident"id", newLit"scripts")),
-                  script
+                  newCall("tDiv", newNimNode(nnkExprEqExpr).add(ident"id", newLit"scripts"))
                 ))
               ))
             ), @[ident"TagRef"])
           ),
         )),
-        newNimNode(nnkReturnStmt).add(newCall(newNimNode(nnkBracketExpr).add(ident"liveviewRoutes", path)))
+        newLetStmt(ident"_html", newCall(newNimNode(nnkBracketExpr).add(ident"liveviewRoutes", path))),
+        newCall("add", newNimNode(nnkBracketExpr).add(ident"_html", newLit(1)), newCall("buildHtml", newStmtList(script))),
+        newNimNode(nnkReturnStmt).add(ident"_html"),
       ))
       wsMethod = quote do:
         ws `path`:
-          var parsed = parseJson(wsData)
+          let parsed = parseJson(wsData)
           {.gcsafe.}:
-            case parsed["action"].getStr
-            of "callComponentEventHandler":
-              let comp = components[parsed["componentId"].getStr]
-              componentEventHandlers[parsed["idx"].getInt](comp, parsed["event"])
+            case parsed["a"].getInt
+            of 2:
+              let comp = components[parsed["cid"].getStr]
+              componentEventHandlers[parsed["idx"].getInt](comp, parsed["ev"])
               if componentsResult.hasKey(comp.uniqCompId):
                 await wsClient.send($componentsResult[comp.uniqCompId])
                 componentsResult.del(comp.uniqCompId)
-            of "callEventHandler":
-              eventHandlers[parsed["idx"].getInt](parsed["event"])
+            of 1:
+              eventHandlers[parsed["idx"].getInt](parsed["ev"])
               when enableHttpBeast or enableHttpx:
                 let hostname = req.ip
                 if requestResult.hasKey(hostname):
@@ -853,6 +858,8 @@ macro routes*(server: Server, body: untyped = newStmtList()): untyped =
                 if requestResult.hasKey(req.hostname):
                   await wsClient.send($requestResult[req.hostname])
                   requestResult.del(req.hostname)
+            else:
+              discard
     body.add(wsMethod)
     body.add(newCall(ident"get", path, getMethod))
 

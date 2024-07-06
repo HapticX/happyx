@@ -5,7 +5,7 @@ import
 proc liveViewScript*(): NimNode = quote do:
   tScript:"""
 const x=document.getElementById("scripts");const a=document.getElementById("app");
-socketToSsr.onmessage=function(m){
+_sc.onmessage=function(m){
 const[ac,dt]=m.data.split(/:([\s\S]*)/);
 switch(ac){
 case"script":x.innerHTML="";const e1=document.createRange().createContextualFragment(dt);x.append(e1);break;
@@ -19,7 +19,7 @@ function cln(node){
   for(let n=0;n<node.childNodes.length;n++){
     let c=node.childNodes[n];
     if(c.nodeType === 8 || (c.nodeType===3 && !/\S/.test(c.nodeValue) && c.nodeValue.includes('\n'))){
-      node.removeChild(c);n--;
+    node.removeChild(c);n--;
     }else if(c.nodeType===1){cln(c);}
   }
 }
@@ -29,8 +29,7 @@ function ist(a,b){
 }
 function ai(e){
   const a={};if(!e.attributes||e.attributes.length===0)return a;
-  for(let i of e.attributes)a[i.nodeName]=i.nodeValue;
-  return a;
+  for(let i of e.attributes)a[i.nodeName]=i.nodeValue;return a;
 }
 function pat(vd,d){
   let vda=ai(vd);let da=ai(d);if(vda==da)return;
@@ -44,14 +43,14 @@ function diff(vd,d){
     for(var i=0;i<vd.childNodes.length;i++)d.append(vd.childNodes[i].cloneNode(true));
   }else{
     if(vd.isEqualNode(d))return;
-    if(d.childNodes.length > vd.childNodes.length) {
+    if(d.childNodes.length > vd.childNodes.length){
       let count=d.childNodes.length-vd.childNodes.length;
       if(count>0)for(;count>0;count--)d.childNodes[d.childNodes.length-count].remove();
     }
-    for(var i=0;i<vd.childNodes.length;i++) {
-      if (!d.childNodes[i]) {
+    for(var i=0;i<vd.childNodes.length;i++){
+      if (!d.childNodes[i]){
         d.append(vd.childNodes[i].cloneNode(true));
-      }else if(ist(vd.childNodes[i],d.childNodes[i])) {
+      }else if(ist(vd.childNodes[i],d.childNodes[i])){
         if(vd.childNodes[i].nodeType===3){
           if(vd.childNodes[i].textContent != d.childNodes[i].textContent)d.childNodes[i].textContent=vd.childNodes[i].textContent;
         }else{pat(vd.childNodes[i], d.childNodes[i])}
@@ -63,41 +62,31 @@ function diff(vd,d){
 function renderVdom(vd,f){
   let _a=document.activeElement;diff(vd,document.getElementById('app'));
   if(_a.hasAttribute('id')){
-    let _ae=document.getElementById(_a.id);
-    if(_ae){
-      _ae.focus();
-      if(_ae.nodeName==="INPUT" || _ae.nodeName==="TEXTAREA"){
+    let _ae=document.getElementById(_a.id);if(_ae){_ae.focus();
+      if(_ae.nodeName==="INPUT"||_ae.nodeName==="TEXTAREA"){
         let _0=_a;let curr=_ae;
         curr.setSelectionRange(_0.selectionStart,_0.selectionEnd,_0.selectionDirection);
       }
     }
   }
 }
-function isObjLiteral(_o){
-  var _t=_o;return typeof _o !=="object"||_o===null?false : function(){
+function isObjLiteral(o){
+  let t=o;return typeof o !=="object"||o===null?false:function(){
     while(!false){
-      if(Object.getPrototypeOf(_t=Object.getPrototypeOf(_t))===null)break;
-    }return Object.getPrototypeOf(_o)===_t;
-  }()
+    if(Object.getPrototypeOf(t=Object.getPrototypeOf(t))===null)break;
+    }return Object.getPrototypeOf(o)===t;
+  }();
 }
 function complex(e){const i=typeof e === "function";const j=typeof e === "object" && !isObjLiteral(e);return i||j;}
 function se(e,x){
-  const r={};
-  for(const k in e){
-    if(!e[k])continue;
-    if(typeof e[k] !== "function" && typeof e[k]!=="object"){
-      r[k]=e[k];
-    }else if(!(r[k] in x)&&x.length<2&&e[k]!=="function"){
-      r[k]=se(e[k],x.concat([e[k]]));
-    }
-  }
-  return r;
+  const r={};for(const k in e){if(!e[k])continue;
+    if(typeof e[k] !== "function" && typeof e[k]!=="object"){r[k]=e[k];}
+    else if(!(r[k] in x)&&x.length<2&&e[k]!=="function"){r[k]=se(e[k],x.concat([e[k]]));}
+  }return r;
 }
 function ceh(i,e){
-  let o=se(e,[e]);o['eventName']=o.constructor.name;
-  socketToSsr.send(JSON.stringify({action:"callEventHandler",idx:i,event:o}));
+let o=se(e,[e]);_sc.send(JSON.stringify({a:1,idx:i,ev:o}));
 }
 function cceh(c,i,e){
-  let o=se(e,[e]);o['eventName']=o.constructor.name;
-  socketToSsr.send(JSON.stringify({action:"callComponentEventHandler",idx:i,event:o,componentId:c}));
+let o=se(e,[e]);_sc.send(JSON.stringify({a:2,idx:i,ev:o,cid:c}));
 }"""
