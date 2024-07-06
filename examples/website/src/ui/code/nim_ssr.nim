@@ -566,7 +566,7 @@ serve "127.0.0.1", 5000:
 """
   nimLiveViews1* = """import happyx
 
-var counter = 0
+var counter = remember 0
 
 liveview:
   "/":

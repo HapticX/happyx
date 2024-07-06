@@ -32,3 +32,5 @@ proc LiveViews*(): TagRef =
       tP: {translate"Let's look at an example of a hybrid application using a counter as an example."}
 
       CodeBlock("nim", nimLiveViews1, "nim_liveviews_2")
+
+      tP: {translate"It is important to note that liveviews allow you to use the reactivity of single-page applications."}

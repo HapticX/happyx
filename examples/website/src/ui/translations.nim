@@ -2282,6 +2282,12 @@ translatable:
     "zh" -> "让我们通过一个计数器的例子来看一个混合应用程序的例子。"
     "fr" -> "Regardons un exemple d'application hybride en utilisant un compteur comme exemple."
     "ko" -> "카운터를 예로 하여 하이브리드 애플리케이션의 예를 살펴보겠습니다."
+  "It is important to note that liveviews allow you to use the reactivity of single-page applications.":
+    "ru" -> "Важно отметить, что liveviews позволяют пользоваться реактивностью одностраничных приложений."
+    "ja" -> "ライブビューを使用すると、シングルページアプリケーションのリアクティビティを利用できることに注意してください。"
+    "zh" -> "重要的是要注意，实时视图允许您使用单页应用程序的反应性。"
+    "fr" -> "Il est important de noter que les liveviews vous permettent d'utiliser la réactivité des applications monopages."
+    "ko" -> "라이브뷰는 단일 페이지 애플리케이션의 반응성을 사용할 수 있도록 해준다는 점을 유의하십시오."
 
 
 var spokenLang: cstring
