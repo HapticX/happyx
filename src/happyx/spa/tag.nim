@@ -595,32 +595,35 @@ func `$`*(self: TagRef): string =
 
 
 func ugly*(self: TagRef): string =
-  let argsStr = self.args.join(" ")
-  if self.isText:
-    return self.name
-    
-  var attrs = ""
-  for key, value in self.attrs.pairs():
-    if value.len > 0:
-      attrs &= " " & key & "=" & "\"" & value & "\""
-    else:
-      attrs &= " " & key
-
-  if self.onlyChildren:
-    var children = ""
-    for i in self.children:
-      children &= i.ugly()
-    return children
-
-  if self.children.len > 0:
-    var children = ""
-    for i in self.children:
-      children &= i.ugly()
-    fmt"<{self.name}{attrs} {argsStr}>{children}</{self.name}>"
-  elif self.name in UnclosedTags:
-    fmt"<{self.name}{attrs} {argsStr}>"
+  when defined(js):
+    return $self.outerHTML
   else:
-    fmt"<{self.name}{attrs} {argsStr}></{self.name}>"
+    let argsStr = self.args.join(" ")
+    if self.isText:
+      return self.name
+      
+    var attrs = ""
+    for key, value in self.attrs.pairs():
+      if value.len > 0:
+        attrs &= " " & key & "=" & "\"" & value & "\""
+      else:
+        attrs &= " " & key
+
+    if self.onlyChildren:
+      var children = ""
+      for i in self.children:
+        children &= i.ugly()
+      return children
+
+    if self.children.len > 0:
+      var children = ""
+      for i in self.children:
+        children &= i.ugly()
+      fmt"<{self.name}{attrs} {argsStr}>{children}</{self.name}>"
+    elif self.name in UnclosedTags:
+      fmt"<{self.name}{attrs} {argsStr}>"
+    else:
+      fmt"<{self.name}{attrs} {argsStr}></{self.name}>"
 
 
 when defined(js):
