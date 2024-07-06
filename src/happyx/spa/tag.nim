@@ -619,11 +619,20 @@ func ugly*(self: TagRef): string =
       var children = ""
       for i in self.children:
         children &= i.ugly()
-      fmt"<{self.name}{attrs} {argsStr}>{children}</{self.name}>"
+      if argsStr.len == 0:
+        fmt"<{self.name}{attrs}>{children}</{self.name}>"
+      else:
+        fmt"<{self.name}{attrs} {argsStr}>{children}</{self.name}>"
     elif self.name in UnclosedTags:
-      fmt"<{self.name}{attrs} {argsStr}>"
+      if argsStr.len == 0:
+        fmt"<{self.name}{attrs}>"
+      else:
+        fmt"<{self.name}{attrs} {argsStr}>"
     else:
-      fmt"<{self.name}{attrs} {argsStr}></{self.name}>"
+      if argsStr.len == 0:
+        fmt"<{self.name}{attrs}></{self.name}>"
+      else:
+        fmt"<{self.name}{attrs} {argsStr}></{self.name}>"
 
 
 when defined(js):
