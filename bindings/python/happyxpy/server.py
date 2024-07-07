@@ -1,10 +1,20 @@
 import asyncio
+import platform
 from typing import Callable, Any, List
 from re import match
 
 from .constants import SWAGGER_HTML_SOURCE, REDOC_HTML_SOURCE
 
-import happyxpy.happyx as happyx
+_cpu = platform.processor().lower()
+_platform = platform.system().lower()
+
+if _platform == 'windows':
+    import happyxpy.happyx_win as happyx
+else:
+    if _cpu == 'arm64':
+        import happyxpy.happyx_unix_arm64 as happyx
+    elif _cpu == 'amd64':
+        import happyxpy.happyx_unix_amd64 as happyx
 
 
 Callback = Callable[[Any], Any]

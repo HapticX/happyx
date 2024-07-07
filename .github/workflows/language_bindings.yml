@@ -63,8 +63,12 @@ jobs:
           echo "Windows module"
           echo "Win Module compiled with"
           echo "nim c --app:lib --out:../bindings/python/happyx/happyx.pyd -d:useRealtimeGC --mm:arc --tlsEmulation:off --passL:-static --t:-flto --l:-flto --opt:speed --threads:off -d:release -d:httpx -d:export2py happyx"
-          echo "Linux module"
-          nim c --app:lib --out:../bindings/python/happyxpy/happyx.so -d:useRealtimeGC --mm:arc -t:-flto -l:-flto --opt:speed --threads:off -d:release -d:happyxDebug -x:off -a:off -d:beast -d:export2py happyx
+          echo "Windows"
+          nim c --app:lib --cpu:amd64 --os:windows -d:mingw --out:../bindings/python/happyxpy/happyx_win.so -d:useRealtimeGC --mm:arc -t:-flto -l:-flto --opt:speed --threads:off -d:release -d:happyxDebug -x:off -a:off -d:beast -d:export2py happyx
+          echo "Linux arm64"
+          nim c --app:lib --out:../bindings/python/happyxpy/happyx_unix_amd64.so -d:useRealtimeGC --mm:arc -t:-flto -l:-flto --opt:speed --threads:off -d:release -d:happyxDebug -x:off -a:off -d:beast -d:export2py happyx
+          echo "Linux arm64"
+          nim c --app:lib --cpu:arm64 --out:../bindings/python/happyxpy/happyx_unix_arm64.so -d:useRealtimeGC --mm:arc -t:-flto -l:-flto --opt:speed --threads:off -d:release -d:happyxDebug -x:off -a:off -d:beast -d:export2py happyx
         shell: bash
       - name: Build Python Package 🏗
         run: |
