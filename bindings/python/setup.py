@@ -1,10 +1,24 @@
 """
 Provides setup script
 """
+import platform
 from os import path, makedirs
 from setuptools import setup, find_packages, version
 
-import happyxpy.happyx as happyx
+
+_cpu = platform.processor().lower()
+_platform = platform.system().lower()
+
+
+if _platform == 'windows':
+    import happyxpy.happyx_win as happyx
+else:
+    if _cpu == 'arm64':
+        import happyxpy.happyx_unix_arm64 as happyx
+    elif _cpu in ['amd64', 'x86_64']:
+        import happyxpy.happyx_unix_amd64 as happyx
+    else:
+        import happyxpy.happyx_unix_amd64 as happyx
 
 
 # Load readme
