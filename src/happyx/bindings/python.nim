@@ -21,9 +21,23 @@ import
   ./python_types
 
 
-pyExportModule(name = "happyx", doc = """
-HappyX web framework
-""")
+when defined(windows):
+  pyExportModule(name = "happyx_win", doc = """
+  HappyX web framework
+  """)
+else:
+  when hostCPU == "amd64":
+    pyExportModule(name = "happyx_unix_amd64", doc = """
+    HappyX web framework
+    """)
+  elif hostCPU == "arm64":
+    pyExportModule(name = "happyx_unix_arm64", doc = """
+    HappyX web framework
+    """)
+  else:
+    pyExportModule(name = "happyx", doc = """
+    HappyX web framework
+    """)
 
 
 var
