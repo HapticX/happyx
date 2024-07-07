@@ -58,6 +58,7 @@ jobs:
           nimble refresh
           nimble install -y -d
           nimble install -y checksums nimpy
+          sudo apt-get install gcc-aarch64-linux-gnu
           nimble list --installed
           cd src
           echo "Windows module"
