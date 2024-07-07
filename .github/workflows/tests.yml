@@ -53,7 +53,6 @@ jobs:
         with:
           path: |
             ~/.nimble
-            ~/.choosenim
           key: ${{ runner.os }}-nimble-v2-${{ hashFiles('*.nimble') }}
       - name: Install Dependencies 🔃
         run: |
@@ -75,7 +74,6 @@ jobs:
         with:
           path: |
             ~/.nimble
-            ~/.choosenim
           key: ${{ runner.os }}-nimble-v2-${{ hashFiles('*.nimble') }}
       - name: Build C tests (Default HTTP Server) ⚡
         run: |
@@ -127,7 +125,6 @@ jobs:
         with:
           path: |
             ~/.nimble
-            ~/.choosenim
           key: ${{ runner.os }}-nimble-v2-${{ hashFiles('*.nimble') }}
       - name: Build C tests (HttpX HTTP Server) ⚡
         run: |
@@ -153,7 +150,6 @@ jobs:
         with:
           path: |
             ~/.nimble
-            ~/.choosenim
           key: ${{ runner.os }}-nimble-v2-${{ hashFiles('*.nimble') }}
       - name: Build C tests (HttpBeast HTTP Server) ⚡
         run: |
@@ -179,7 +175,6 @@ jobs:
         with:
           path: |
             ~/.nimble
-            ~/.choosenim
           key: ${{ runner.os }}-nimble-v2-${{ hashFiles('*.nimble') }}
       - name: Build JS tests 🍍
         run: |
