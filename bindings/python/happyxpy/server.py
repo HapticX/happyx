@@ -8,6 +8,8 @@ from .constants import SWAGGER_HTML_SOURCE, REDOC_HTML_SOURCE
 _cpu = platform.processor().lower()
 _platform = platform.system().lower()
 
+print(_cpu, _platform)
+
 if _platform == 'windows':
     import happyxpy.happyx_win as happyx
 else:
