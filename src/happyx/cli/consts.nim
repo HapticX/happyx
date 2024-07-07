@@ -11,6 +11,21 @@ buildDir = build  # build directory in project root
 assetsDir = public  # assets directory in srcDir, will copied into build/public
 language = {lang}  # programming language
 """
+  readmeInstallNim* = """## Install
+```shell
+nimble install happyx@#head
+```
+"""
+  readmeInstallPy* = """## Install
+```shell
+pip install happyxpy
+```
+"""
+  readmeInstallJs* = """## Install
+```shell
+npm install happyx
+```
+"""
   readmeTemplate* = """<div align="center">
 
 # {projectName}
@@ -18,6 +33,99 @@ language = {lang}  # programming language
 ### {projectTypes[selected]} project written in HappyX with ❤
 
 </div>
+
+
+{readmeInstallNim}
+"""
+  readmeAdditional* = """### CLI
+To learn more about the CLI, use the help command:
+```shell
+hpx help
+```
+"""
+  readmeTemplateNimSpa* = """<div align="center">
+
+# {projectName}
+
+### {projectTypes[selected]} project written in HappyX with ❤
+
+</div>
+
+
+{readmeInstallNim}
+
+## Get Started
+
+### Local Development
+You can develop your application locally with hot code reloading using the following command:
+```shell
+hpx dev --reload
+```
+
+{readmeAdditional}
+"""
+  readmeTemplateNimSsr* = """<div align="center">
+
+# {projectName}
+
+### {projectTypes[selected]} project written in HappyX with ❤
+
+</div>
+
+
+{readmeInstallNim}
+
+## Get Started
+
+### Local Development
+You can develop your application locally with hot code reloading using the following command:
+```shell
+nim c -r src/main
+```
+
+{readmeAdditional}
+"""
+  readmeTemplatePy* = """<div align="center">
+
+# {projectName}
+
+### {projectTypes[selected]} project written in HappyX with ❤
+
+</div>
+
+
+{readmeInstallPy}
+
+## Get Started
+
+### Local Development
+You can develop your application locally with hot code reloading using the following command:
+```shell
+python src/main.py
+```
+
+{readmeAdditional}
+"""
+  readmeTemplateJs* = """<div align="center">
+
+# {projectName}
+
+### {projectTypes[selected]} project written in HappyX with ❤
+
+</div>
+
+
+{readmeInstallJs}
+
+## Get Started
+
+### Local Development
+You can develop your application locally with hot code reloading using the following command:
+```shell
+node src/index.js
+```
+
+{readmeAdditional}
 """
   nimGitignore* = """# Nimcache
 nimcache/
@@ -225,7 +333,7 @@ import
 appRoutes("app"):
   "/":
     # Component usage
-    component HelloWorld
+    HelloWorld
 """
   spaServiceWorkerTemplate* = """
 const web_cache = "web-app-cache-v1.0";
@@ -295,10 +403,10 @@ import happyx
 # Declare component
 component HelloWorld:
   # Declare HTML template
-  `template`:
+  html:
     tDiv(class = "someClass"):
       "Hello, world!"
-  `script`:
+  script:
     echo "Start coding!"
 """
   hpxTemplate* = """<template>

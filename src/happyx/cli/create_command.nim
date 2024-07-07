@@ -160,7 +160,17 @@ proc createCommand*(name: string = "", kind: string = "", templates: bool = fals
   styledEcho emoji["✨"](), " Initializing project ... |"
   # Create README.md
   f = open(projectName / "README.md", fmWrite)
-  f.write(fmt(readmeTemplate))
+  if lang == "nim":
+    if projectType == "SPA":
+      f.write(fmt(readmeTemplateNimSpa))
+    elif projectType in ["SSR", "SSG"]:
+      f.write(fmt(readmeTemplateNimSsr))
+    else:
+      f.write(fmt(readmeTemplate))
+  elif lang == "python":
+    f.write(fmt(readmeTemplatePy))
+  elif lang == "javascript" or lang == "typescript":
+    f.write(fmt(readmeTemplateJs))
   f.close()
   eraseLine(stdout)
   cursorUp(stdout)

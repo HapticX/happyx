@@ -120,6 +120,8 @@ var
   application*: App = nil  ## global application variable
   currentRoute*: cstring = "/"  ## Current route path
   scopedCycleCounter*: int = 0
+when enableLiveViews and not defined(js):
+  var liveviewRoutes* = newTable[string, proc(): TagRef]()
 when enableDefaultComponents:
   var
     componentEventHandlers* = newTable[int, ComponentEventHandler]()
@@ -132,8 +134,8 @@ when enableDefaultComponents:
   else:
     var
       components* = newTable[string, BaseComponent]()
-      requestResult* = newTable[string, JsonNode]()
-      componentsResult* = newTable[string, JsonNode]()
+      requestResult* = newTable[string, string]()
+      componentsResult* = newTable[string, string]()
 
 
 when defined(js):
@@ -169,7 +171,7 @@ macro rf*(name: untyped): untyped =
 {.push inline.}
 
 when defined(js):
-  proc route*(path: cstring) =
+  proc route*(path: cstring) {.exportc: "rt".} =
     ## Change current page to `path` and rerender
     when enableHistoryApi:
       {.emit: """
@@ -185,26 +187,27 @@ when defined(js):
     application.router(force)
     if force:
       window.scrollTo(0, 0)
-  proc back*() =
+  proc back*() {.exportc: "bck".} =
     ## Just calls [window.history.back procedure](https://nim-lang.org/docs/dom.html#back%2CHistory)
     window.history.back()
-  proc forward*() =
+  proc forward*() {.exportc: "frwrd".} =
     ## Just calls [window.history.forward procedure](https://nim-lang.org/docs/dom.html#back%2CHistory)
     window.history.forward()
 else:
   proc route*(host, path: string) =
-    requestResult[host] = %*{"action": "route", "data": path}
+    requestResult[host] = "route:" & path
   proc injectJs*(host, script: string) =
-    requestResult[host] = %*{"action": "script", "data": fmt"<script>{script}</script>"}
-  proc html*(host, data: string) =
-    requestResult[host] = %*{"action": "html", "data": data}
-  
+    requestResult[host] = "script:" & fmt"<script>{script}</script>"
   proc route*(comp: BaseComponent, path: string) =
-    componentsResult[comp.uniqCompId] = %*{"action": "route", "data": path}
+    componentsResult[comp.uniqCompId] = "route:" & path
   proc js*(comp: BaseComponent, script: string) =
-    componentsResult[comp.uniqCompId] = %*{"action": "script", "data": fmt"<script>{script}</script>"}
-  proc html*(comp: BaseComponent, data: string) =
-    componentsResult[comp.uniqCompId] = %*{"action": "html", "data": data}
+    componentsResult[comp.uniqCompId] = "script:" & fmt"<script>{script}</script>"
+  proc rerender*(hostname, urlPath: string) =
+    requestResult[hostname] = "rerender:" & liveviewRoutes[urlPath]().children[1].ugly()
+  proc bck*(hostname, urlPath: string) =
+    requestResult[hostname] = "bck"
+  proc frwrd*(hostname, urlPath: string) =
+    requestResult[hostname] = "frwrd"
 
 
 proc registerApp*(appId: cstring = "app"): App {. discardable .} =
@@ -221,7 +224,7 @@ proc registerApp*(appId: cstring = "app"): App {. discardable .} =
 
 when enableDefaultComponents:
   when defined(js):
-    proc registerComponent*(name: cstring, component: BaseComponent): BaseComponent =
+    proc registerComponent*(name: cstring, component: BaseComponent): BaseComponent {.exportc: "rgcmp".} =
       ## Register a new component.
       ## 
       ## ⚠ This is `Low-level API` ⚠
@@ -247,18 +250,18 @@ when enableDefaultComponents:
 
 
 when defined(js):
-  proc isSameTypes(a, b: Node): bool =
+  proc isSameTypes(a, b: Node): bool {.exportc: "ismtp".} =
     if a.nodeType == b.nodeType and a.nodeType == NodeType.ElementNode:
       return ($a.nodeName).toLower() == ($b.nodeName).toLower()
     return a.nodeType == b.nodeType
-  proc attrIndex(e: Node): TableRef[cstring, cstring] =
+  proc attrIndex(e: Node): TableRef[cstring, cstring] {.exportc: "aidx".} =
     var attrs = newTable[cstring, cstring]()
     if e.attributes.len == 0:
       return attrs
     for i in e.attributes:
       attrs[i.nodeName] = i.nodeValue
     return attrs
-  proc patchAttrs(dom, vdom: Node) =
+  proc patchAttrs(dom, vdom: Node) {.exportc: "patrs".} =
     var
       domAttrs = dom.attrIndex
       vdomAttrs = vdom.attrIndex
@@ -276,7 +279,7 @@ when defined(js):
     for key, val in domAttrs.pairs:
       if not vdomAttrs.hasKey(key):
         dom.removeAttribute(key)
-  proc diff*(vdom: TagRef, dom: Node) =
+  proc diff*(vdom: TagRef, dom: Node) {.exportc: "dff".} =
     if not dom.hasChildNodes and vdom.hasChildNodes:
       for t in vdom.childNodes:
         dom.appendChild(t.cloneNode(true))
@@ -298,7 +301,7 @@ when defined(js):
           dom.childNodes[i].replaceWith(vdom.childNodes[i].cloneNode(true))
         if vdom.childNodes[i].nodeType != NodeType.TextNode:
           diff(vdom.childNodes[i].TagRef, dom.childNodes[i])
-  proc renderVdom*(app: App, tag: TagRef, force: bool = false) =
+  proc renderVdom*(app: App, tag: TagRef, force: bool = false) {.exportc: "rndrvd".} =
     ## Rerender DOM with VDOM
     var realDom = document.getElementById(app.appId).Node
     let activeElement = document.activeElement

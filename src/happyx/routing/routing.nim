@@ -235,42 +235,76 @@ proc path*(input: string, strVal: var string, start: int): int =
 
 
 proc kind2scanable(kind: string, opt: bool): string =
-  if opt:
-    case kind
-    of "string":
-      "${str(true)}"
-    of "int":
-      "${integer(true)}"
-    of "float":
-      "${realnum(true)}"
-    of "bool":
-      "${boolean(true)}"
-    of "word":
-      "${word(true)}"
-    of "path":
-      "${path}"
+  when not exportPython and not exportJvm and not defined(napibuild):
+    if opt:
+      case kind
+      of "string":
+        "${str(true)}"
+      of "int":
+        "${integer(true)}"
+      of "float":
+        "${realnum(true)}"
+      of "bool":
+        "${boolean(true)}"
+      of "word":
+        "${word(true)}"
+      of "path":
+        "${path}"
+      else:
+        if kind.startsWith("enum"):
+          "${enumerate}"
+        else:
+          ""
     else:
-      if kind.startsWith("enum"):
-        "${enumerate}"
+      case kind
+      of "string":
+        "${str}"
+      of "int":
+        "$i"
+      of "float":
+        "$f"
+      of "bool":
+        "${boolean}"
+      of "word":
+        "${word}"
+      of "path":
+        "${path}"
+      else:
+        if kind.startsWith("enum"):
+          "${enumerate}"
+        else:
+          ""
+  else:
+    if opt:
+      case kind
+      of "string":
+        "([^/]+)?"
+      of "int":
+        "(\\d+)?"
+      of "float":
+        "(\\d+\\.\\d+)?"
+      of "bool":
+        "(true|false|on|off|yes|no)?"
+      of "word":
+        "(\\w+)?"
+      of "path":
+        "([\\S]+)?"
       else:
         ""
-  else:
-    case kind
-    of "string":
-      "${str}"
-    of "int":
-      "$i"
-    of "float":
-      "$f"
-    of "bool":
-      "${boolean}"
-    of "word":
-      "${word}"
-    of "path":
-      "${path}"
     else:
-      if kind.startsWith("enum"):
-        "${enumerate}"
+      case kind
+      of "string":
+        "([^/]+)"
+      of "int":
+        "(\\d+)"
+      of "float":
+        "(\\d+\\.\\d+)"
+      of "bool":
+        "(true|false|on|off|yes|no)"
+      of "word":
+        "(\\w+)"
+      of "path":
+        "([\\S]+)"
       else:
         ""
 

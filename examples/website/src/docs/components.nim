@@ -87,7 +87,7 @@ component Components:
             {translate"Called during the window.pagehide event."}
 
       tP: {translate"Here's how it all works together:"}
-      tImg(src = "/happyx/public/component_lifecycle.webp", alt = "components lifecycle", class = "self-center rounded-xl")
+      tImg(src = "/happyx/public/ComponentLifecycles.svg", alt = "components lifecycle", class = "self-center rounded-xl")
 
       tH3: {translate"About slots in components"}
       tP:

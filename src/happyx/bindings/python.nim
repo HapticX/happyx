@@ -187,6 +187,8 @@ proc startServerPy*(serverId: int) {.exportpy: "start_server_by_id".} =
       )
   let
     py = pyBuiltinsModule()
+  # for route in self.routes:
+  #   echo route.path, ", ", route.purePath
   serve(self.address, self.port):
     discard
 

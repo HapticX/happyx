@@ -71,6 +71,7 @@ import
   checksums/md5,
   # HappyX
   ./cors,
+  ./liveviews_utils,
   ../spa/[tag, renderer],
   ../core/[exceptions, constants],
   ../private/[macro_utils],
@@ -780,7 +781,14 @@ macro routes*(server: Server, body: untyped = newStmtList()): untyped =
     let
       path = liveView[0]
       statement = liveView[1]
-      connection = newNimNode(nnkCurly).add(newCall(
+    var head = newCall("head", newStmtList(newCall("tTitle", newStmtList(newLit"HappyX Application"))))
+    for i in 0..<statement.len:
+      if statement[i].kind == nnkCall and ($statement[i][0]).toLower() == "head":
+        head = statement[i].copy()
+        statement.del(i)
+        break
+    let
+      connection = newCall(
         "&",
         newCall(
           "&",
@@ -790,7 +798,7 @@ macro routes*(server: Server, body: untyped = newStmtList()): untyped =
               "&",
               newCall(
                 "&",
-                newLit("var socketToSsr=new WebSocket(\"ws://"),
+                newLit("var _sc=new WebSocket(\"ws://"),
                 newDotExpr(ident"server", ident"address"),
               ),
               newLit":",
@@ -799,87 +807,48 @@ macro routes*(server: Server, body: untyped = newStmtList()): untyped =
           ),
           path
         ),
-        newLit("\")")
+        newLit("\");")
+      )
+      script = liveViewScript()
+    script[1][0] = newNimNode(nnkCurly).add(
+      newCall("&", connection, newLit(
+        ($script[1][0]).replace("\n", "")
       ))
-      getMethod = quote do:
-        {.gcsafe.}:
-          var html = buildHtml:
-            tHead:
-              tTitle: "SSR Components are here!"
-              tScript(src = "https://cdn.tailwindcss.com")
-            tBody:
-              tDiv(id = "app"): `statement`
-              tDiv(id = "scripts")
-            tScript: `connection`
-            tScript: """
-const x=document.getElementById("scripts");
-const a=document.getElementById("app");
-socketToSsr.onmessage=function(m){
-  const res=JSON.parse(m.data);switch(res.action){
-    case"script":x.innerHTML="";const e1=document.createRange().createContextualFragment(res.data);x.append(e1);break;case"html":const e2=document.createRange().createContextualFragment(res.data);a.append(e2);break;case"route":window.location.replace(res.data);break;default:break}};
-  function isObjLiteral(_o) {
-    var _t=_o;
-    return typeof _o !=="object"||_o===null?false : function (){
-      while(!false) {
-        if(Object.getPrototypeOf(_t=Object.getPrototypeOf(_t))===null){break;}
-      }
-      return Object.getPrototypeOf(_o)===_t;
-    }()
-  }
-
-  function complex(e) {
-    const i=typeof e === "function";
-    const j=typeof e === "object" && !isObjLiteral(e);
-    return i||j;
-  }
-
-  function se(e, x) {
-    const r={};
-    for(const k in e){
-      if(!e[k]){continue;}
-      if(typeof e[k] !== "function" && typeof e[k]!=="object"){
-        r[k]=e[k];
-      }else if(!(r[k] in x)&&x.length<2&&e[k]!=="function"){
-        r[k]=se(e[k],x.concat([e[k]]));
-      }
-    }
-    return r;
-  }
-  
-  function callEventHandler(i,e) {
-    let ev=se(e,[e]);
-    ev['eventName']=ev.constructor.name;
-    socketToSsr.send(JSON.stringify({
-      "action":"callEventHandler",
-      "idx":i,
-      "event":ev
-    }));
-  }
-  function callComponentEventHandler(c,i,e) {
-    let ev=se(e,[e]);
-    ev['eventName']=ev.constructor.name;
-    socketToSsr.send(JSON.stringify({
-      "action":"callComponentEventHandler",
-      "idx":i,
-      "event":ev,
-      "componentId":c
-    }));
-  }
-"""
-        return html
+    )
+    let
+      getMethod = pragmaBlock([ident"gcsafe"], newStmtList(
+        newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
+          newCall("not", newCall("hasKey", ident"liveviewRoutes", path)),
+          newNimNode(nnkAsgn).add(
+            newNimNode(nnkBracketExpr).add(ident"liveviewRoutes", path),
+            newLambda(newStmtList(
+              newCall("buildHtml", newStmtList(
+                head,
+                newCall("body", newStmtList(
+                  newCall("tDiv", newNimNode(nnkExprEqExpr).add(ident"id", newLit"app"), statement),
+                  newCall("tDiv", newNimNode(nnkExprEqExpr).add(ident"id", newLit"scripts"))
+                ))
+              ))
+            ), @[ident"TagRef"])
+          ),
+        )),
+        newLetStmt(ident"_html", newCall(newNimNode(nnkBracketExpr).add(ident"liveviewRoutes", path))),
+        newCall("add", newNimNode(nnkBracketExpr).add(ident"_html", newLit(1)), newCall("buildHtml", newStmtList(script))),
+        newNimNode(nnkReturnStmt).add(ident"_html"),
+      ))
       wsMethod = quote do:
         ws `path`:
-          var parsed = parseJson(wsData)
+          let parsed = parseJson(wsData)
           {.gcsafe.}:
-            case parsed["action"].getStr
-            of "callComponentEventHandler":
-              let comp = components[parsed["componentId"].getStr]
-              componentEventHandlers[parsed["idx"].getInt](comp, parsed["event"])
+            case parsed["a"].getInt
+            of 2:
+              let comp = components[parsed["cid"].getStr]
+              componentEventHandlers[parsed["idx"].getInt](comp, parsed["ev"])
               if componentsResult.hasKey(comp.uniqCompId):
                 await wsClient.send($componentsResult[comp.uniqCompId])
                 componentsResult.del(comp.uniqCompId)
-            of "callEventHandler":
-              eventHandlers[parsed["idx"].getInt](parsed["event"])
+            of 1:
+              eventHandlers[parsed["idx"].getInt](parsed["ev"])
               when enableHttpBeast or enableHttpx:
                 let hostname = req.ip
                 if requestResult.hasKey(hostname):
@@ -889,6 +858,8 @@ socketToSsr.onmessage=function(m){
                 if requestResult.hasKey(req.hostname):
                   await wsClient.send($requestResult[req.hostname])
                   requestResult.del(req.hostname)
+            else:
+              discard
     body.add(wsMethod)
     body.add(newCall(ident"get", path, getMethod))
 
@@ -1666,7 +1637,7 @@ socketToSsr.onmessage=function(m){
       immutableVars.add(newIdentDefs(ident"reqMethod", newEmptyNode(), reqMethod))
   if stmtList.isIdentUsed(ident"headers"):
     immutableVars.add(newIdentDefs(ident"headers", newEmptyNode(), headers))
-  if stmtList.isIdentUsed(ident"startSession") or stmtList.isIdentUsed(ident"hostname"):
+  if stmtList.isIdentUsed(ident"startSession") or stmtList.isIdentUsed(ident"hostname") or liveviews.len > 0:
     immutableVars.add(newIdentDefs(ident"hostname", newEmptyNode(), hostname))
   when enableDebugSsrMacro:
     echo result.toStrLit
