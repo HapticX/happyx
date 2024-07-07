@@ -102,7 +102,6 @@ jobs:
         with:
           path: |
             ~/.nimble
-            ~/.choosenim
           key: ${{ runner.os }}-nimble-v2-${{ hashFiles('*.nimble') }}
       - name: Build C tests (MicroAsyncHttpServer) ⚡
         run: |
