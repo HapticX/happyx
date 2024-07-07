@@ -46,14 +46,15 @@ jobs:
       TIMEOUT_EXIT_STATUS: 124
     steps:
       - uses: actions/checkout@v4
-      - uses: jiro4989/setup-nim-action@v2
-        with:
-          nim-version: ${{ matrix.nim_version }}
       - uses: actions/cache@v4
         with:
           path: |
             ~/.nimble
+            .nim_runtime
           key: ${{ runner.os }}-nimble-v2-${{ hashFiles('*.nimble') }}
+      - uses: jiro4989/setup-nim-action@v2
+        with:
+          nim-version: ${{ matrix.nim_version }}
       - name: Install Dependencies 🔃
         run: |
           nimble refresh
@@ -74,9 +75,11 @@ jobs:
         with:
           path: |
             ~/.nimble
+            .nim_runtime
           key: ${{ runner.os }}-nimble-v2-${{ hashFiles('*.nimble') }}
       - name: Build C tests (Default HTTP Server) ⚡
         run: |
+          export PATH=$PATH:$PWD/.nim_runtime/bin
           cd tests
           echo "###===--- Default for" $file "---===###"
           for file in $(ls -v testc*.nim); do
@@ -100,9 +103,11 @@ jobs:
         with:
           path: |
             ~/.nimble
+            .nim_runtime
           key: ${{ runner.os }}-nimble-v2-${{ hashFiles('*.nimble') }}
       - name: Build C tests (MicroAsyncHttpServer) ⚡
         run: |
+          export PATH=$PATH:$PWD/.nim_runtime/bin
           cd tests
           for file in $(ls -v testc*.nim); do
             echo "###===--- C Test for " $file " via MicroAsyncHttpServer ---===###"
@@ -125,9 +130,11 @@ jobs:
         with:
           path: |
             ~/.nimble
+            .nim_runtime
           key: ${{ runner.os }}-nimble-v2-${{ hashFiles('*.nimble') }}
       - name: Build C tests (HttpX HTTP Server) ⚡
         run: |
+          export PATH=$PATH:$PWD/.nim_runtime/bin
           cd tests
           for file in $(ls -v testc*.nim); do
             echo "###===--- C Test for " $file " via Httpx ---===###"
@@ -150,9 +157,11 @@ jobs:
         with:
           path: |
             ~/.nimble
+            .nim_runtime
           key: ${{ runner.os }}-nimble-v2-${{ hashFiles('*.nimble') }}
       - name: Build C tests (HttpBeast HTTP Server) ⚡
         run: |
+          export PATH=$PATH:$PWD/.nim_runtime/bin
           cd tests
           for file in $(ls -v testc*.nim); do
             echo "###===--- C Test for " $file " via HttpBeast ---===###"
@@ -175,9 +184,11 @@ jobs:
         with:
           path: |
             ~/.nimble
+            .nim_runtime
           key: ${{ runner.os }}-nimble-v2-${{ hashFiles('*.nimble') }}
       - name: Build JS tests 🍍
         run: |
+          export PATH=$PATH:$PWD/.nim_runtime/bin
           cd tests
           for file in $(ls -v testjs*.nim); do
             echo "###===--- JS Test for " $file " ---===###"
