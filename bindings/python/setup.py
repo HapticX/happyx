@@ -6,7 +6,7 @@ from os import path, makedirs
 from setuptools import setup, find_packages, version
 
 
-_cpu = platform.processor().lower()
+_cpu = platform.machine().lower()
 _platform = platform.system().lower()
 
 

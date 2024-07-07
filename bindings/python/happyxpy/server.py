@@ -5,7 +5,7 @@ from re import match
 
 from .constants import SWAGGER_HTML_SOURCE, REDOC_HTML_SOURCE
 
-_cpu = platform.processor().lower()
+_cpu = platform.machine().lower()
 _platform = platform.system().lower()
 
 if _platform == 'windows':
