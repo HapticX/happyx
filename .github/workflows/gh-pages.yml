@@ -49,6 +49,7 @@ jobs:
           nim -v
           nimble refresh
           nimble install -y
+          nimble install nimpy -y
 
       - name: Generate API documents 📃
         run: |
