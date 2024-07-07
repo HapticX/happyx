@@ -79,12 +79,11 @@ jobs:
           key: ${{ runner.os }}-nimble-${{ hashFiles('*.nimble') }}
       - name: Build C tests (Default HTTP Server) ⚡
         run: |
-          export PATH=/home/runner/.nimble/bin:$PATH
           cd tests
           echo "###===--- Default for" $file "---===###"
           for file in $(ls -v testc*.nim); do
             echo "###===--- C Test for " $file " via stdlib ---===###"
-            /home/runner/.nimble/bin/nim c -d:debug --hints:off --warnings:off $file
+            nim c -d:debug --hints:off --warnings:off $file
           done
         shell: bash
   micro_async_http_server:
@@ -110,7 +109,7 @@ jobs:
           cd tests
           for file in $(ls -v testc*.nim); do
             echo "###===--- C Test for " $file " via MicroAsyncHttpServer ---===###"
-            /home/runner/.nimble/bin/nim c -d:micro -d:debug --hints:off --warnings:off $file
+            nim c -d:micro -d:debug --hints:off --warnings:off $file
           done
         shell: bash
   httpx:
@@ -136,7 +135,7 @@ jobs:
           cd tests
           for file in $(ls -v testc*.nim); do
             echo "###===--- C Test for " $file " via Httpx ---===###"
-            /home/runner/.nimble/bin/nim c -d:httpx -d:debug --hints:off --warnings:off $file
+            nim c -d:httpx -d:debug --hints:off --warnings:off $file
           done
         shell: bash
   httpbeast:
@@ -162,7 +161,7 @@ jobs:
           cd tests
           for file in $(ls -v testc*.nim); do
             echo "###===--- C Test for " $file " via HttpBeast ---===###"
-            /home/runner/.nimble/bin/nim c -d:beast -d:debug --hints:off --warnings:off $file
+            nim c -d:beast -d:debug --hints:off --warnings:off $file
           done
         shell: bash
   js:
@@ -188,6 +187,6 @@ jobs:
           cd tests
           for file in $(ls -v testjs*.nim); do
             echo "###===--- JS Test for " $file " ---===###"
-            /home/runner/.nimble/bin/nim js -d:debug --hints:off --warnings:off $file
+            nim js -d:debug --hints:off --warnings:off $file
           done
         shell: bash
