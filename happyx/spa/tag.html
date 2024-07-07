@@ -172,6 +172,10 @@
   <li><a class="reference" href="#toSeqIter%2CTagRef" title="toSeqIter(self: TagRef): seq[TagRef]">toSeqIter(self: TagRef): seq[TagRef]</a></li>
 
 </ul>
+<ul class="simple nested-toc-section">ugly
+  <li><a class="reference" href="#ugly%2CTagRef" title="ugly(self: TagRef): string">ugly(self: TagRef): string</a></li>
+
+</ul>
 
     </ul>
   </details>
@@ -319,8 +323,8 @@
 </div>
 <div id="add-procs-all">
   <div id="add,TagRef,varargs[TagRef]">
-  <dt><pre><span class="Keyword">proc</span> <a href="#add%2CTagRef%2Cvarargs%5BTagRef%5D"><span class="Identifier">add</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a><span class="Other">;</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Identifier">varargs</span><span class="Other">[</span><a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a><span class="Other">]</span><span class="Other">)</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
-    <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+  <dt><pre><span class="Keyword">proc</span> <a href="#add%2CTagRef%2Cvarargs%5BTagRef%5D"><span class="Identifier">add</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a><span class="Other">;</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Identifier">varargs</span><span class="Other">[</span><a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a><span class="Other">]</span><span class="Other">)</span> {.<span class="Identifier">exportc</span><span class="Other">:</span> <span class="StringLit">&quot;tgadd&quot;</span><span class="Other">,</span> <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
     Adds <tt class="docutils literal"><span class="pre"><span class="Identifier">other</span></span></tt> tag into <tt class="docutils literal"><span class="pre"><span class="Identifier">self</span></span></tt> tag
@@ -402,8 +406,8 @@
 <div id="initTag-procs-all">
   <div id="initTag,string,StringTableRef,seq[TagRef],bool">
   <dt><pre><span class="Keyword">proc</span> <a href="#initTag%2Cstring%2CStringTableRef%2Cseq%5BTagRef%5D%2Cbool"><span class="Identifier">initTag</span></a><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">attrs</span><span class="Other">:</span> <span class="Identifier">StringTableRef</span><span class="Other">;</span> <span class="Identifier">children</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a><span class="Other">]</span> <span class="Other">=</span> <span class="Operator">@</span><span class="Other">[</span><span class="Other">]</span><span class="Other">;</span>
-             <span class="Identifier">onlyChildren</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">)</span><span class="Other">:</span> <a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
-    <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+             <span class="Identifier">onlyChildren</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">)</span><span class="Other">:</span> <a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a> {.<span class="Identifier">exportc</span><span class="Other">:</span> <span class="StringLit">&quot;tg1&quot;</span><span class="Other">,</span> <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
     <p>Initializes a new HTML tag with the given name, attributes, and children.</p>
@@ -421,8 +425,8 @@
 </div>
 <div id="initTag,string,seq[TagRef],bool">
   <dt><pre><span class="Keyword">proc</span> <a href="#initTag%2Cstring%2Cseq%5BTagRef%5D%2Cbool"><span class="Identifier">initTag</span></a><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">children</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a><span class="Other">]</span> <span class="Other">=</span> <span class="Operator">@</span><span class="Other">[</span><span class="Other">]</span><span class="Other">;</span>
-             <span class="Identifier">onlyChildren</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">)</span><span class="Other">:</span> <a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
-    <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+             <span class="Identifier">onlyChildren</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">)</span><span class="Other">:</span> <a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a> {.<span class="Identifier">exportc</span><span class="Other">:</span> <span class="StringLit">&quot;tg2&quot;</span><span class="Other">,</span> <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
     <p>Initializes a new HTML tag without attributes but with children</p>
@@ -440,7 +444,7 @@
 <div id="initTag,string,bool,StringTableRef,seq[TagRef],bool">
   <dt><pre><span class="Keyword">proc</span> <a href="#initTag%2Cstring%2Cbool%2CStringTableRef%2Cseq%5BTagRef%5D%2Cbool"><span class="Identifier">initTag</span></a><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">isText</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">;</span> <span class="Identifier">attrs</span><span class="Other">:</span> <span class="Identifier">StringTableRef</span><span class="Other">;</span>
              <span class="Identifier">children</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a><span class="Other">]</span> <span class="Other">=</span> <span class="Operator">@</span><span class="Other">[</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">onlyChildren</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">)</span><span class="Other">:</span> <a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a> {.
-    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+    <span class="Identifier">exportc</span><span class="Other">:</span> <span class="StringLit">&quot;tg3&quot;</span><span class="Other">,</span> <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
     <p>Initializes a new HTML tag with the given name, whether it's text or not, attributes, and children.</p>
@@ -459,8 +463,8 @@
 </div>
 <div id="initTag,string,bool,seq[TagRef],bool">
   <dt><pre><span class="Keyword">proc</span> <a href="#initTag%2Cstring%2Cbool%2Cseq%5BTagRef%5D%2Cbool"><span class="Identifier">initTag</span></a><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">isText</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">;</span> <span class="Identifier">children</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a><span class="Other">]</span> <span class="Other">=</span> <span class="Operator">@</span><span class="Other">[</span><span class="Other">]</span><span class="Other">;</span>
-             <span class="Identifier">onlyChildren</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">)</span><span class="Other">:</span> <a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
-    <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+             <span class="Identifier">onlyChildren</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">)</span><span class="Other">:</span> <a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a> {.<span class="Identifier">exportc</span><span class="Other">:</span> <span class="StringLit">&quot;tg4&quot;</span><span class="Other">,</span> <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
     Initializes a new HTML tag
@@ -548,6 +552,17 @@
 </div>
 
 </div>
+<div id="ugly-procs-all">
+  <div id="ugly,TagRef">
+  <dt><pre><span class="Keyword">func</span> <a href="#ugly%2CTagRef"><span class="Identifier">ugly</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+
+</div>
 
   </dl>
 </div>
@@ -558,7 +573,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2024-07-05 01:58:11 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2024-07-07 06:46:56 UTC</small>
       </div>
     </div>
   </div>
