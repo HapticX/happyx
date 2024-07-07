@@ -52,6 +52,9 @@ jobs:
             ~/.nimble
             ~/.choosenim
           key: ${{ runner.os }}-nimble-v2-${{ hashFiles('*.nimble') }}
+      - uses: jiro4989/setup-nim-action@v2
+        with:
+          nim-version: ${{ matrix.nim_version }}
       - name: Install Dependencies 🔃
         run: |
           nimble refresh
