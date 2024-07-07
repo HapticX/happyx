@@ -9,7 +9,7 @@ _cpu = platform.processor().lower()
 _platform = platform.system().lower()
 
 if _platform == 'windows':
-    import happyxpy.happyx_win as happyx
+    import happyxpy.happyx as happyx
 else:
     if _cpu == 'arm64':
         import happyxpy.happyx_unix_arm64 as happyx
