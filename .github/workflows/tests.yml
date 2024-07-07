@@ -32,8 +32,8 @@ on:
       - '**/examples/website/**'
 
 jobs:
-  dependencies:
-    name: Install dependencies 🧩
+  async_http_server:
+    name: Test C via AsyncHttpServer 🧪
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -46,37 +46,16 @@ jobs:
       TIMEOUT_EXIT_STATUS: 124
     steps:
       - uses: actions/checkout@v4
-      - uses: jiro4989/setup-nim-action@v2
-        with:
-          nim-version: ${{ matrix.nim_version }}
       - uses: actions/cache@v4
         with:
           path: |
             ~/.nimble
             ~/.choosenim
-          key: ${{ runner.os }}-nimblev2-${{ hashFiles('*.nimble') }}
+          key: ${{ runner.os }}-nimble-v2-${{ hashFiles('*.nimble') }}
       - name: Install Dependencies 🔃
         run: |
           nimble refresh
           nimble install -y -d
-  async_http_server:
-    name: Test C via AsyncHttpServer 🧪
-    needs: dependencies
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os:
-          - ubuntu-latest
-    env:
-      TIMEOUT_EXIT_STATUS: 124
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/cache@v4
-        with:
-          path: |
-            ~/.nimble
-            ~/.choosenim
-          key: ${{ runner.os }}-nimblev2-${{ hashFiles('*.nimble') }}
       - name: Build C tests (Default HTTP Server) ⚡
         run: |
           export PATH=/home/runner/.nimble/bin:$PATH
@@ -89,12 +68,14 @@ jobs:
         shell: bash
   micro_async_http_server:
     name: Test C via MicroAsyncHttpServer 🧪
-    needs: dependencies
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         os:
           - ubuntu-latest
+        nim_version:
+          - '2.0.0'
+          - '2.0.6'
     env:
       TIMEOUT_EXIT_STATUS: 124
     steps:
@@ -104,7 +85,14 @@ jobs:
           path: |
             ~/.nimble
             ~/.choosenim
-          key: ${{ runner.os }}-nimblev2-${{ hashFiles('*.nimble') }}
+          key: ${{ runner.os }}-nimble-v2-${{ hashFiles('*.nimble') }}
+      - uses: jiro4989/setup-nim-action@v2
+        with:
+          nim-version: ${{ matrix.nim_version }}
+      - name: Install Dependencies 🔃
+        run: |
+          nimble refresh
+          nimble install -y -d
       - name: Build C tests (MicroAsyncHttpServer) ⚡
         run: |
           cd tests
@@ -115,12 +103,14 @@ jobs:
         shell: bash
   httpx:
     name: Test C via HttpX 🧪
-    needs: dependencies
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         os:
           - ubuntu-latest
+        nim_version:
+          - '2.0.0'
+          - '2.0.6'
     env:
       TIMEOUT_EXIT_STATUS: 124
     steps:
@@ -130,7 +120,14 @@ jobs:
           path: |
             ~/.nimble
             ~/.choosenim
-          key: ${{ runner.os }}-nimblev2-${{ hashFiles('*.nimble') }}
+          key: ${{ runner.os }}-nimble-v2-${{ hashFiles('*.nimble') }}
+      - uses: jiro4989/setup-nim-action@v2
+        with:
+          nim-version: ${{ matrix.nim_version }}
+      - name: Install Dependencies 🔃
+        run: |
+          nimble refresh
+          nimble install -y -d
       - name: Build C tests (HttpX HTTP Server) ⚡
         run: |
           cd tests
@@ -141,12 +138,14 @@ jobs:
         shell: bash
   httpbeast:
     name: Test C via HttpBeast 🧪
-    needs: dependencies
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         os:
           - ubuntu-latest
+        nim_version:
+          - '2.0.0'
+          - '2.0.6'
     env:
       TIMEOUT_EXIT_STATUS: 124
     steps:
@@ -156,7 +155,14 @@ jobs:
           path: |
             ~/.nimble
             ~/.choosenim
-          key: ${{ runner.os }}-nimblev2-${{ hashFiles('*.nimble') }}
+          key: ${{ runner.os }}-nimble-v2-${{ hashFiles('*.nimble') }}
+      - uses: jiro4989/setup-nim-action@v2
+        with:
+          nim-version: ${{ matrix.nim_version }}
+      - name: Install Dependencies 🔃
+        run: |
+          nimble refresh
+          nimble install -y -d
       - name: Build C tests (HttpBeast HTTP Server) ⚡
         run: |
           cd tests
@@ -167,12 +173,14 @@ jobs:
         shell: bash
   js:
     name: Test with JavaScript 🧪
-    needs: dependencies
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         os:
           - ubuntu-latest
+        nim_version:
+          - '2.0.0'
+          - '2.0.6'
     env:
       TIMEOUT_EXIT_STATUS: 124
     steps:
@@ -182,7 +190,14 @@ jobs:
           path: |
             ~/.nimble
             ~/.choosenim
-          key: ${{ runner.os }}-nimblev2-${{ hashFiles('*.nimble') }}
+          key: ${{ runner.os }}-nimble-v2-${{ hashFiles('*.nimble') }}
+      - uses: jiro4989/setup-nim-action@v2
+        with:
+          nim-version: ${{ matrix.nim_version }}
+      - name: Install Dependencies 🔃
+        run: |
+          nimble refresh
+          nimble install -y -d
       - name: Build JS tests 🍍
         run: |
           cd tests
