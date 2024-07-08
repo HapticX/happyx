@@ -25,7 +25,7 @@ proc SponsorsList*(data: seq[Sponsor], sponsorStatus: SponsorStatus = ssDefault,
       of ssSilver: "0px 5px 51px 0px rgba(226, 232, 240, 0.5)"
       of ssDefault: "0px 5px 51px 0px rgba(248, 250, 252, 0.5)"
   buildHtml:
-    tDiv(class = "w-full grid grid-cols-4 lg:grid-cols-6 xl:grid-cols-10 pt-4 gap-1"):
+    tDiv(class = "w-full grid grid-cols-4 lg:grid-cols-6 xl:grid-cols-10 pt-4 gap-4"):
       for sponsor in data:
         if sponsor.status == sponsorStatus:
           tDiv(
@@ -44,7 +44,10 @@ proc SponsorsList*(data: seq[Sponsor], sponsorStatus: SponsorStatus = ssDefault,
               tDiv(
                 class = "flex mt-0 group-hover:mt-6 rounded-md text-center text-[{Foreground}] dark:text-[{ForegroundDark}] bg-[{Background}] dark:bg-[{BackgroundDark}] justify-content items-center pointer-events-none absolute delay-150 opacity-0 transition-all duration-300 group-hover:opacity-100"
               ):
-                {fmt"{sponsor.name} ${sponsor.amount}"}
+                if sponsor.perMonth:
+                  {fmt"{sponsor.name} ${sponsor.amount}/month"}
+                else:
+                  {fmt"{sponsor.name} ${sponsor.amount}"}
             tStyle: {fmt("""
               div.<className> {
                 -webkit-box-shadow: <color>;

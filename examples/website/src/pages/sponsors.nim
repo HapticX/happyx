@@ -13,6 +13,7 @@ type
   Sponsor* = object
     name*: string
     amount*: float
+    perMonth*: bool
     url*: string
     avatarUrl*: string
     status*: SponsorStatus
@@ -24,8 +25,12 @@ var sponsor_list*: seq[Sponsor] = @[
     avatarUrl: "https://avatars.githubusercontent.com/u/124334403?s=200&v=4", status: ssSilver
   ),
   Sponsor(
-    name: "Popso AI", amount: 250.0, url: "https://popso.ru/",
+    name: "Popso AI", amount: 250.0, url: "https://popso.ru/", perMonth: true,
     avatarUrl: "https://avatars.githubusercontent.com/u/7116961?v=4", status: ssGold
+  ),
+  Sponsor(
+    name: "GoodModsLab", amount: 50.0, url: "https://goodmodslab.ru/",
+    avatarUrl: "https://i.postimg.cc/8kFP5bk1/ic-logo-app-foreground.png", status: ssSilver
   )
 ]
 
