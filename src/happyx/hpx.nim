@@ -167,6 +167,14 @@ when isMainModule:
       styledEcho fgBlue, "HappyX", fgMagenta, " flags ", fgWhite, "command displays all HappyX Nim flags."
       styledEcho "\nUsage:"
       styledEcho fgMagenta, "  hpx flags"
+    of "translate-csv":
+      styledEcho fgBlue, "HappyX", fgMagenta, " flags ", fgWhite, "command displays all HappyX Nim flags."
+      styledEcho "\nUsage:"
+      styledEcho fgMagenta, "  hpx translate-csv --filename translations.csv"
+      styledEcho "Arguments:"
+      styledEcho fgBlue, align("filename", 8), "|f", fgWhite, " - Input file (ex. --filename:translations.csv)"
+      styledEcho "Optional rguments:"
+      styledEcho fgBlue, align("output", 8), "|o", fgWhite, " - Output file (ex. --output:translations.nim)"
     else:
       styledEcho fgRed, "Unknown subcommand: ", fgWhite, subcmdHelp
     shutdownCli()
