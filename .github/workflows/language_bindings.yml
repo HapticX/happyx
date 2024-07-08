@@ -77,6 +77,7 @@ jobs:
       - name: Python Bindings 🐍
         run: |
           export PATH=$PATH:$PWD/.nim_runtime/bin
+          nimble install checksums jnim nimpy -y
           sudo apt-get install gcc-aarch64-linux-gnu
           cd src
           echo "Windows module"
@@ -138,6 +139,7 @@ jobs:
       - name: JVM Bindings ☕
         run: |
           export PATH=$PATH:$PWD/.nim_runtime/bin
+          nimble install checksums jnim nimpy -y
           cd src
           echo "Unix module"
           nim c -d:noSignalHandler -d:export2jvm -d:release -d:httpx --app:lib --threads:on --opt:speed --mm:arc --out:../bindings/java/src/main/resources/happyx.so happyx.nim
