@@ -15,7 +15,7 @@ import
   # nimja
   nimja,
   # HappyX
-  ../ssr/[server, cors],
+  ../ssr/[server, cors, utils],
   ../core/[constants, exceptions, queries],
   ../routing/[routing],
   ./python_types

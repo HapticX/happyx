@@ -89,7 +89,8 @@ export
   utils,
   json,
   os,
-  types
+  types,
+  liveviews
 
 
 when enableApiDoc:
