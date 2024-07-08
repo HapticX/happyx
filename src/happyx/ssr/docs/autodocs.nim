@@ -20,8 +20,22 @@ when nimvm:
   import regex
 
 
+type
+  ApiDocObject* = object
+    description*: string
+    path*: string
+    httpMethod*: seq[string]
+    pathParams*: seq[PathParamObj]
+    models*: seq[RequestModelObj]
+  
+proc newApiDocObject*(httpMethod: seq[string], description, path: string, pathParams: seq[PathParamObj],
+                      models: seq[RequestModelObj]): ApiDocObject =
+  ApiDocObject(httpMethod: httpMethod, description: description, path: path,
+                pathParams: pathParams, models: models)
+
 
 proc fetchPathParams*(route: var string): tuple[pathParams, models: NimNode] =
+  ## Retrieves all docstrings from the route and adds them to openapi.
   var
     params = newNimNode(nnkBracket)
     models = newNimNode(nnkBracket)

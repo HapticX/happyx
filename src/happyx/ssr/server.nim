@@ -70,8 +70,8 @@ import
   std/os,
   checksums/md5,
   # HappyX
-  ./cors,
-  ./liveviews_utils,
+  ./[cors, types, utils],
+  ./liveviews/[utils, liveviews],
   ../spa/[tag, renderer],
   ../core/[exceptions, constants],
   ../private/[macro_utils],
@@ -88,192 +88,24 @@ export
   cookies,
   colors,
   json,
-  terminal,
-  os
-
-
-when enableHttpx:
-  import
-    options,
-    httpx
-  export
-    options,
-    httpx
-elif enableHttpBeast:
-  import httpbeast, asyncnet
-  export httpbeast, asyncnet
-elif enableMicro:
-  import asyncnet
-  import microasynchttpserver, asynchttpserver
-  export microasynchttpserver, asynchttpserver
-else:
-  import asyncnet
-  import asynchttpserver
-  export asynchttpserver
-
-
-when enableHttpBeast:
-  import websocket
-  export websocket
-else:
-  import websocketx
-  export websocketx
+  os,
+  types
 
 
 when enableApiDoc:
-  import nimja
-
-
-type CustomHeaders* = StringTableRef
-
-proc newCustomHeaders*: CustomHeaders = newStringTable().CustomHeaders
-
-proc `[]=`*[T](self: CustomHeaders, key: string, value: T) =
-  when not (T is string):
-    self[key] = $value
-  else:
-    self[key] = value
-
-
-when exportPython or defined(docgen):
   import
-    nimpy,
-    ../bindings/python_types
-  
-  pyExportModule(name = "server", doc = """
-HappyX web framework [SSR/SSG Part]
-""")
-
-  type
-    Server* = ref object
-      address*: string
-      port*: int
-      routes*: seq[Route]
-      path*: string
-      parent*: Server
-      notFoundCallback*: PyObject
-      middlewareCallback*: PyObject
-      logger*: Logger
-      when enableHttpx:
-        instance*: Settings
-      elif enableHttpBeast:
-        instance*: Settings
-      elif enableMicro:
-        instance*: MicroAsyncHttpServer
-      else:
-        instance*: AsyncHttpServer
-      components: TableRef[string, BaseComponent]
-    ModelBase* = ref object of PyNimObjectExperimental
-elif exportJvm:
-  import ../bindings/java_types
-
-  type
-    Server* = ref object
-      address*: string
-      port*: int
-      logger*: Logger
-      path*: string
-      routes*: seq[Route]
-      parent*: Server
-      title*: string
-      when enableHttpx:
-        instance*: Settings
-      elif enableHttpBeast:
-        instance*: Settings
-      elif enableMicro:
-        instance*: MicroAsyncHttpServer
-      else:
-        instance*: AsyncHttpServer
-      components: TableRef[string, BaseComponent]
-    ModelBase* = object of RootObj
-elif defined(napibuild):
-  import denim except `%*`
-  import../bindings/node_types
-
-  type
-    Server* = ref object
-      address*: string
-      port*: int
-      logger*: Logger
-      path*: string
-      parent*: Server
-      routes*: seq[Route]
-      title*: string
-      environment*: napi_env
-      when enableHttpx:
-        instance*: Settings
-      elif enableHttpBeast:
-        instance*: Settings
-      elif enableMicro:
-        instance*: MicroAsyncHttpServer
-      else:
-        instance*: AsyncHttpServer
-      components: TableRef[string, BaseComponent]
-    ModelBase* = object of RootObj
-else:
-  type
-    Server* = object
-      address*: string
-      port*: int
-      logger*: Logger
-      when enableHttpx:
-        instance*: Settings
-      elif enableHttpBeast:
-        instance*: Settings
-      elif enableMicro:
-        instance*: MicroAsyncHttpServer
-      else:
-        instance*: AsyncHttpServer
-      components: TableRef[string, BaseComponent]
-    ModelBase* = object of RootObj
-
-
-when enableApiDoc:
-  type
-    ApiDocObject* = object
-      description*: string
-      path*: string
-      httpMethod*: seq[string]
-      pathParams*: seq[PathParamObj]
-      models*: seq[RequestModelObj]
-    
-  proc newApiDocObject*(httpMethod: seq[string], description, path: string, pathParams: seq[PathParamObj],
-                        models: seq[RequestModelObj]): ApiDocObject =
-    ApiDocObject(httpMethod: httpMethod, description: description, path: path,
-                 pathParams: pathParams, models: models)
+    nimja,
+    ./docs/autodocs
+  export autodocs
 
 
 var
   pointerServer: ptr Server
   loggerCreated: bool = false
-const liveViews = CacheSeq"HappyXLiveViews"
 
 
 when defined(napibuild):
-  import ./session
-
-  var
-    servers*: seq[Server] = @[]
-    requests* = newTable[string, Request]()
-    wsClients* = newTable[string, node_types.WebSocket]()
-  
-  proc registerWsClient*(wsClient: node_types.WebSocket): string {.gcsafe.} =
-    {.gcsafe.}:
-      result = genSessionId()
-      wsClients[result] = wsClient
-  
-  proc unregisterWsClient*(wsClientId: string) {.gcsafe.} =
-    {.gcsafe.}:
-      wsClients.del(wsClientId)
-  
-  proc registerRequest*(req: Request): string {.gcsafe.} =
-    {.gcsafe.}:
-      result = genSessionId()
-      requests[result] = req
-  
-  proc unregisterRequest*(reqId: string) {.gcsafe.} =
-    {.gcsafe.}:
-      requests.del(reqId)
+  import ./bindings/javascript
 elif not defined(docgen) and not nim_2_0_0:
   import std/exitprocs
 
@@ -293,21 +125,6 @@ elif not defined(docgen) and not nim_2_0_0:
 
 import ./handlers
 export handlers
-
-
-func fgColored*(text: string, clr: ForegroundColor): string {.inline.} =
-  ## This function takes in a string of text and a ForegroundColor enum
-  ## value and returns the same text with the specified color applied.
-  ## 
-  ## Arguments:
-  ## - `text`: A string value representing the text to apply color to.
-  ## - `clr`: A ForegroundColor enum value representing the color to apply to the text.
-  ## 
-  ## Return value:
-  ## - The function returns a string value with the specified color applied to the input text.
-  runnableExamples:
-    echo fgColored("Hello, world!", fgRed)
-  ansiForegroundColorCode(clr) & text & ansiResetCode
 
 
 proc newServer*(address: string = "127.0.0.1", port: int = 5000): Server =
@@ -777,91 +594,7 @@ macro routes*(server: Server, body: untyped = newStmtList()): untyped =
     finalize = newStmtList()
     setup = newStmtList()
   
-  for liveView in liveViews:
-    let
-      path = liveView[0]
-      statement = liveView[1]
-    var head = newCall("head", newStmtList(newCall("tTitle", newStmtList(newLit"HappyX Application"))))
-    for i in 0..<statement.len:
-      if statement[i].kind == nnkCall and ($statement[i][0]).toLower() == "head":
-        head = statement[i].copy()
-        statement.del(i)
-        break
-    let
-      connection = newCall(
-        "&",
-        newCall(
-          "&",
-          newCall(
-            "&",
-            newCall(
-              "&",
-              newCall(
-                "&",
-                newLit("var _sc=new WebSocket(\"ws://"),
-                newDotExpr(ident"server", ident"address"),
-              ),
-              newLit":",
-            ),
-            newCall("$", newDotExpr(ident"server", ident"port"))
-          ),
-          path
-        ),
-        newLit("\");")
-      )
-      script = liveViewScript()
-    script[1][0] = newNimNode(nnkCurly).add(
-      newCall("&", connection, newLit(
-        ($script[1][0]).replace("\n", "")
-      ))
-    )
-    let
-      getMethod = pragmaBlock([ident"gcsafe"], newStmtList(
-        newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
-          newCall("not", newCall("hasKey", ident"liveviewRoutes", path)),
-          newNimNode(nnkAsgn).add(
-            newNimNode(nnkBracketExpr).add(ident"liveviewRoutes", path),
-            newLambda(newStmtList(
-              newCall("buildHtml", newStmtList(
-                head,
-                newCall("body", newStmtList(
-                  newCall("tDiv", newNimNode(nnkExprEqExpr).add(ident"id", newLit"app"), statement),
-                  newCall("tDiv", newNimNode(nnkExprEqExpr).add(ident"id", newLit"scripts"))
-                ))
-              ))
-            ), @[ident"TagRef"])
-          ),
-        )),
-        newLetStmt(ident"_html", newCall(newNimNode(nnkBracketExpr).add(ident"liveviewRoutes", path))),
-        newCall("add", newNimNode(nnkBracketExpr).add(ident"_html", newLit(1)), newCall("buildHtml", newStmtList(script))),
-        newNimNode(nnkReturnStmt).add(ident"_html"),
-      ))
-      wsMethod = quote do:
-        ws `path`:
-          let parsed = parseJson(wsData)
-          {.gcsafe.}:
-            case parsed["a"].getInt
-            of 2:
-              let comp = components[parsed["cid"].getStr]
-              componentEventHandlers[parsed["idx"].getInt](comp, parsed["ev"])
-              if componentsResult.hasKey(comp.uniqCompId):
-                await wsClient.send($componentsResult[comp.uniqCompId])
-                componentsResult.del(comp.uniqCompId)
-            of 1:
-              eventHandlers[parsed["idx"].getInt](parsed["ev"])
-              when enableHttpBeast or enableHttpx:
-                let hostname = req.ip
-                if requestResult.hasKey(hostname):
-                  await wsClient.send($requestResult[hostname])
-                  requestResult.del(hostname)
-              else:
-                if requestResult.hasKey(req.hostname):
-                  await wsClient.send($requestResult[req.hostname])
-                  requestResult.del(req.hostname)
-            else:
-              discard
-    body.add(wsMethod)
-    body.add(newCall(ident"get", path, getMethod))
+  body.handleLiveViews()
 
   when enableHttpx or enableHttpBeast:
     var path = newCall("decodeUrl", newNimNode(nnkBracketExpr).add(
@@ -966,7 +699,7 @@ macro routes*(server: Server, body: untyped = newStmtList()): untyped =
           statement[^1].insert(0, newVarStmt(ident"statusCode", newLit(200)))
         if statement[^1].isIdentUsed(ident"outHeaders"):
           statement[^1].insert(0, newVarStmt(ident"outHeaders", newCall("newCustomHeaders")))
-        if statement[^1].isIdentUsed(ident"outCookies") or statement[^1].isIdentUsed(ident"startSession"):
+        if statement[^1].isIdentUsed(ident"outCookies") or statement[^1].isIdentUsed(ident"startSession") or statement[^1].isIdentUsed(ident"getSession"):
           statement[^1].insert(0, newVarStmt(ident"outCookies", cookiesOutVar))
       # Decorators
       if statement.kind == nnkPrefix and $statement[0] == "@" and statement[1].kind == nnkIdent:
@@ -1637,7 +1370,7 @@ macro routes*(server: Server, body: untyped = newStmtList()): untyped =
       immutableVars.add(newIdentDefs(ident"reqMethod", newEmptyNode(), reqMethod))
   if stmtList.isIdentUsed(ident"headers"):
     immutableVars.add(newIdentDefs(ident"headers", newEmptyNode(), headers))
-  if stmtList.isIdentUsed(ident"startSession") or stmtList.isIdentUsed(ident"hostname") or liveviews.len > 0:
+  if stmtList.isIdentUsed(ident"startSession") or stmtList.isIdentUsed(ident"hostname") or liveViewsCache.len > 0:
     immutableVars.add(newIdentDefs(ident"hostname", newEmptyNode(), hostname))
   when enableDebugSsrMacro:
     echo result.toStrLit
@@ -1665,10 +1398,6 @@ macro initServer*(body: untyped): untyped =
     newCall("main")
   )
   result[0].addPragma(ident"gcsafe")
-    
-
-when enableApiDoc:
-  import ./docs/autodocs
 
 
 macro serve*(address: string, port: int, body: untyped): untyped =
@@ -1738,8 +1467,3 @@ macro serve*(address: string, port: int, body: untyped): untyped =
   )
   result[0].addPragma(ident"gcsafe")
 
-
-macro liveview*(body: untyped): untyped =
-  for statement in body:
-    if statement.kind in nnkCallKinds and statement[0].kind in {nnkStrLit, nnkTripleStrLit} and statement[1].kind == nnkStmtList:
-      liveViews.add(newStmtList(statement[0], statement[1]))

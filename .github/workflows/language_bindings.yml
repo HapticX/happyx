@@ -18,32 +18,54 @@ on:
       - '**/constants.nim'
 
 jobs:
+  dependencies:
+    name: Install dependencies 🧩
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+        nim_version:
+          - '2.0.8'
+    env:
+      TIMEOUT_EXIT_STATUS: 124
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.nimble
+            .nim_runtime
+          key: ${{ runner.os }}-nimble-v2-${{ hashFiles('*.nimble') }}
+      - uses: jiro4989/setup-nim-action@v2
+        with:
+          nim-version: ${{ matrix.nim_version }}
+      - name: Install Dependencies 🔃
+        run: |
+          nimble refresh
+          nimble install -y -d
+          nimble install checksums -y
+
   python:
     name: Python bindings 🐍
     runs-on: ${{ matrix.os }}
+    needs: dependencies
     strategy:
       matrix:
         os:
           - ubuntu-latest
         python_version:
           - '3.x'
-        nim_version:
-          - '2.0.6'
     env:
       TIMEOUT_EXIT_STATUS: 124
     steps:
       - uses: actions/checkout@v4
-
-      - name: Install Nim 👑
-        run: |
-          sudo apt install xz-utils
-          curl https://nim-lang.org/download/nim-${{ matrix.nim_version }}-linux_x64.tar.xz --output nim.tar.xz
-          unxz nim.tar.xz
-          tar -xf nim.tar
-          sudo mkdir -p /home/.nimble
-          sudo mv -if nim-${{ matrix.nim_version }}/* /home/.nimble/
-          export PATH=/home/.nimble/bin:$PATH
-          nim -v
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.nimble
+            .nim_runtime
+          key: ${{ runner.os }}-nimble-v2-${{ hashFiles('*.nimble') }}
       
       - uses: actions/setup-python@v4
         with:
@@ -54,10 +76,7 @@ jobs:
           pip install -U twine build packaging
       - name: Python Bindings 🐍
         run: |
-          export PATH=/home/.nimble/bin:$PATH
-          nimble refresh
-          nimble install -y -d
-          nimble install -y checksums nimpy
+          nimble install -y nimpy
           sudo apt-get install gcc-aarch64-linux-gnu
           nimble list --installed
           cd src
@@ -86,12 +105,11 @@ jobs:
   jvm:
     name: JVM Bindings ☕
     runs-on: ${{ matrix.os }}
+    needs: dependencies
     strategy:
       matrix:
         os:
           - ubuntu-latest
-        nim_version:
-          - '2.0.6'
         java_version:
           - '16'
         gradle_version:
@@ -100,25 +118,17 @@ jobs:
       TIMEOUT_EXIT_STATUS: 124
     steps:
       - uses: actions/checkout@v4
-
-      - name: Install Nim 👑
-        run: |
-          sudo apt install xz-utils
-          curl https://nim-lang.org/download/nim-${{ matrix.nim_version }}-linux_x64.tar.xz --output nim.tar.xz
-          unxz nim.tar.xz
-          tar -xf nim.tar
-          sudo mkdir -p /home/.nimble
-          sudo mv -if nim-${{ matrix.nim_version }}/* /home/.nimble/
-          export PATH=/home/.nimble/bin:$PATH
-          nim -v
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.nimble
+            .nim_runtime
+          key: ${{ runner.os }}-nimble-v2-${{ hashFiles('*.nimble') }}
 
       - name: Install dependencies 🔃
         run: |
-          export PATH=/home/.nimble/bin:$PATH
-          nimble refresh
-          nimble install -y -d
+          export PATH=$PATH:$PWD/.nim_runtime/bin
           nimble install -y jnim
-          nimble install -y checksums
           nimble list --installed
           nim -v
       - uses: gradle/gradle-build-action@v3
@@ -133,7 +143,7 @@ jobs:
           cache: 'gradle'
       - name: JVM Bindings ☕
         run: |
-          export PATH=/home/.nimble/bin:$PATH
+          export PATH=$PATH:$PWD/.nim_runtime/bin
           cd src
           echo "Unix module"
           nim c -d:noSignalHandler -d:export2jvm -d:release -d:httpx --app:lib --threads:on --opt:speed --mm:arc --out:../bindings/java/src/main/resources/happyx.so happyx.nim
@@ -142,3 +152,47 @@ jobs:
         run: |
           cd bindings/java
           gradle build --scan
+  
+  node:
+    name: Node.js Bindings ✨
+    runs-on: ${{ matrix.os }}
+    needs: dependencies
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+        node_version:
+          - 20
+    env:
+      TIMEOUT_EXIT_STATUS: 124
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.nimble
+            .nim_runtime
+          key: ${{ runner.os }}-nimble-v2-${{ hashFiles('*.nimble') }}
+      
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node_version }}
+          cache: 'npm'
+
+      - name: Install dependencies 🔃
+        run: |
+          export PATH=$PATH:$PWD/.nim_runtime/bin
+          nimble refresh
+          nimble install -y denim@#head
+          nimble list --installed
+          nim -v
+          npm i node-gyp cmakejs
+
+      - name: Node.js Bindings ✨
+        run: |
+          export PATH=$PATH:$PWD/.nim_runtime/bin
+          cd src/happyx/bindings
+          denim build node.nim --verbose --yes
+          cp ./bin/node.node ../../bindings/node/src/bin/node.node
+          echo "Unix module"
+          cd ../../../
