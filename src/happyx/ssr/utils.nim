@@ -10,6 +10,9 @@ import
   std/strtabs
 
 
+export terminal
+
+
 type
   CustomHeaders* = StringTableRef
 

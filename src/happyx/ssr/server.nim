@@ -58,7 +58,6 @@ import
   std/segfaults,
   std/mimetypes,
   std/strutils,
-  std/terminal,
   std/strtabs,
   std/logging,
   std/cookies,
@@ -87,7 +86,7 @@ export
   logging,
   cookies,
   colors,
-  terminal,
+  utils,
   json,
   os,
   types

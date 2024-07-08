@@ -45,7 +45,6 @@ jobs:
           nimble refresh
           nimble install -y -d
           nimble install checksums jnim nimpy -y
-          nimble install denim@#head -y
 
   python:
     name: Python bindings 🐍
@@ -147,41 +146,3 @@ jobs:
         run: |
           cd bindings/java
           gradle build --scan
-  
-  node:
-    name: Node.js Bindings ✨
-    runs-on: ${{ matrix.os }}
-    needs: dependencies
-    strategy:
-      matrix:
-        os:
-          - ubuntu-latest
-        node_version:
-          - 20
-    env:
-      TIMEOUT_EXIT_STATUS: 124
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/cache@v4
-        with:
-          path: |
-            ~/.nimble
-            .nim_runtime
-          key: ${{ runner.os }}-nimble-v2-${{ hashFiles('*.nimble') }}
-      
-      - uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node_version }}
-
-      - name: Install dependencies 🔃
-        run: |
-          npm i node-gyp cmakejs
-
-      - name: Node.js Bindings ✨
-        run: |
-          export PATH=$PATH:$PWD/.nim_runtime/bin
-          cd src/happyx/bindings
-          denim build node.nim --verbose --yes
-          cp ./bin/node.node ../../bindings/node/src/bin/node.node
-          echo "Unix module"
-          cd ../../../
