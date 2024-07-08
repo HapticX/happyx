@@ -87,6 +87,7 @@ export
   logging,
   cookies,
   colors,
+  terminal,
   json,
   os,
   types
