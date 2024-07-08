@@ -44,7 +44,7 @@ jobs:
         run: |
           nimble refresh
           nimble install -y -d
-          nimble install checksums -y
+          nimble install checksums jnim denim@#head nimpy -y
 
   python:
     name: Python bindings 🐍
@@ -76,9 +76,8 @@ jobs:
           pip install -U twine build packaging
       - name: Python Bindings 🐍
         run: |
-          nimble install -y nimpy
+          export PATH=$PATH:$PWD/.nim_runtime/bin
           sudo apt-get install gcc-aarch64-linux-gnu
-          nimble list --installed
           cd src
           echo "Windows module"
           echo "Win Module compiled with"
@@ -125,12 +124,6 @@ jobs:
             .nim_runtime
           key: ${{ runner.os }}-nimble-v2-${{ hashFiles('*.nimble') }}
 
-      - name: Install dependencies 🔃
-        run: |
-          export PATH=$PATH:$PWD/.nim_runtime/bin
-          nimble install -y jnim
-          nimble list --installed
-          nim -v
       - uses: gradle/gradle-build-action@v3
         id: setup-gradle
         with:
@@ -141,6 +134,7 @@ jobs:
           distribution: 'temurin'
           architecture: x64
           cache: 'gradle'
+        
       - name: JVM Bindings ☕
         run: |
           export PATH=$PATH:$PWD/.nim_runtime/bin
@@ -180,11 +174,6 @@ jobs:
 
       - name: Install dependencies 🔃
         run: |
-          export PATH=$PATH:$PWD/.nim_runtime/bin
-          nimble refresh
-          nimble install -y denim@#head
-          nimble list --installed
-          nim -v
           npm i node-gyp cmakejs
 
       - name: Node.js Bindings ✨
