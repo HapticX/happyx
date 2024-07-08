@@ -6,11 +6,11 @@ import
   std/json,
   std/httpcore,
   std/options,
-  std/terminal,
   std/strtabs
 
-
-export terminal
+when not defined(js):
+  import std/terminal
+  export terminal
 
 
 type
@@ -48,16 +48,17 @@ proc toHttpHeaders*(json: JsonNode): HttpHeaders =
     result[k] = v.getStr
 
 
-func fgColored*(text: string, clr: ForegroundColor): string {.inline.} =
-  ## This function takes in a string of text and a ForegroundColor enum
-  ## value and returns the same text with the specified color applied.
-  ## 
-  ## Arguments:
-  ## - `text`: A string value representing the text to apply color to.
-  ## - `clr`: A ForegroundColor enum value representing the color to apply to the text.
-  ## 
-  ## Return value:
-  ## - The function returns a string value with the specified color applied to the input text.
-  runnableExamples:
-    echo fgColored("Hello, world!", fgRed)
-  ansiForegroundColorCode(clr) & text & ansiResetCode
+when not defined(js):
+  func fgColored*(text: string, clr: ForegroundColor): string {.inline.} =
+    ## This function takes in a string of text and a ForegroundColor enum
+    ## value and returns the same text with the specified color applied.
+    ## 
+    ## Arguments:
+    ## - `text`: A string value representing the text to apply color to.
+    ## - `clr`: A ForegroundColor enum value representing the color to apply to the text.
+    ## 
+    ## Return value:
+    ## - The function returns a string value with the specified color applied to the input text.
+    runnableExamples:
+      echo fgColored("Hello, world!", fgRed)
+    ansiForegroundColorCode(clr) & text & ansiResetCode
