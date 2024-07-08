@@ -44,7 +44,8 @@ jobs:
         run: |
           nimble refresh
           nimble install -y -d
-          nimble install checksums jnim denim@#head nimpy -y
+          nimble install checksums jnim nimpy -y
+          nimble install denim@#head -y
 
   python:
     name: Python bindings 🐍
