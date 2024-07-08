@@ -1,0 +1,2 @@
+nimTitle	utils	happyx/ssr/liveviews/utils.html	module src/happyx/ssr/liveviews/utils		0
+nim	liveViewScript	happyx/ssr/liveviews/utils.html#liveViewScript	proc liveViewScript(): NimNode		5

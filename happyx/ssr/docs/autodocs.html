@@ -53,6 +53,20 @@
 </li>
 <li>
   <details open>
+    <summary><a class="reference reference-toplevel" href="#7" id="57">Types</a></summary>
+    <ul class="simple simple-toc-section">
+      <li><a class="reference" href="#ApiDocObject" title="ApiDocObject = object
+  description*: string
+  path*: string
+  httpMethod*: seq[string]
+  pathParams*: seq[PathParamObj]
+  models*: seq[RequestModelObj]">ApiDocObject</a></li>
+
+    </ul>
+  </details>
+</li>
+<li>
+  <details open>
     <summary><a class="reference reference-toplevel" href="#12" id="62">Procs</a></summary>
     <ul class="simple simple-toc-section">
       <ul class="simple nested-toc-section">fetchModelFields
@@ -69,6 +83,12 @@
 </ul>
 <ul class="simple nested-toc-section">happyxDocs
   <li><a class="reference" href="#happyxDocs%2CNimNode" title="happyxDocs(docsData: NimNode): NimNode">happyxDocs(docsData: NimNode): NimNode</a></li>
+
+</ul>
+<ul class="simple nested-toc-section">newApiDocObject
+  <li><a class="reference" href="#newApiDocObject%2Cseq%5Bstring%5D%2Cstring%2Cstring%2Cseq%5BPathParamObj%5D%2Cseq%5BRequestModelObj%5D" title="newApiDocObject(httpMethod: seq[string]; description, path: string;
+                pathParams: seq[PathParamObj]; models: seq[RequestModelObj]): ApiDocObject">newApiDocObject(httpMethod: seq[string]; description, path: string;
+                pathParams: seq[PathParamObj]; models: seq[RequestModelObj]): ApiDocObject</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">openApiDocs
@@ -100,6 +120,25 @@
     <a class="reference external" href="../../routing/routing.html">../../routing/routing</a>, <a class="reference external" href="../../routing/mounting.html">../../routing/mounting</a>, <a class="reference external" href="../../private/macro_utils.html">../../private/macro_utils</a>, <a class="reference external" href="../../core/constants.html">../../core/constants</a>, <a class="reference external" href="../request_models.html">../request_models</a>, <a class="reference external" href="api_doc_template.html">api_doc_template</a>
   </dl>
 </div>
+<div class="section" id="7">
+  <h1><a class="toc-backref" href="#7">Types</a></h1>
+  <dl class="item">
+    <div id="ApiDocObject">
+  <dt><pre><a href="autodocs.html#ApiDocObject"><span class="Identifier">ApiDocObject</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
+  <span class="Identifier">description</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
+  <span class="Identifier">path</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
+  <span class="Identifier">httpMethod</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">]</span>
+  <span class="Identifier">pathParams</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="../../routing/routing.html#PathParamObj"><span class="Identifier">PathParamObj</span></a><span class="Other">]</span>
+  <span class="Identifier">models</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="../../routing/routing.html#RequestModelObj"><span class="Identifier">RequestModelObj</span></a><span class="Other">]</span></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+
+  </dl>
+</div>
 <div class="section" id="12">
   <h1><a class="toc-backref" href="#12">Procs</a></h1>
   <dl class="item">
@@ -120,7 +159,7 @@
     <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
-    
+    Retrieves all docstrings from the route and adds them to openapi.
     
   </dd>
 </div>
@@ -144,6 +183,19 @@
   <dd>
     
     Procedure that helps to generate docs route for HappyX
+    
+  </dd>
+</div>
+
+</div>
+<div id="newApiDocObject-procs-all">
+  <div id="newApiDocObject,seq[string],string,string,seq[PathParamObj],seq[RequestModelObj]">
+  <dt><pre><span class="Keyword">proc</span> <a href="#newApiDocObject%2Cseq%5Bstring%5D%2Cstring%2Cstring%2Cseq%5BPathParamObj%5D%2Cseq%5BRequestModelObj%5D"><span class="Identifier">newApiDocObject</span></a><span class="Other">(</span><span class="Identifier">httpMethod</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">description</span><span class="Other">,</span> <span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span>
+                     <span class="Identifier">pathParams</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="../../routing/routing.html#PathParamObj"><span class="Identifier">PathParamObj</span></a><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">models</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="../../routing/routing.html#RequestModelObj"><span class="Identifier">RequestModelObj</span></a><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <a href="autodocs.html#ApiDocObject"><span class="Identifier">ApiDocObject</span></a> {.
+    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+  <dd>
+    
+    
     
   </dd>
 </div>
@@ -181,7 +233,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2024-07-08 13:52:05 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2024-07-08 17:04:53 UTC</small>
       </div>
     </div>
   </div>

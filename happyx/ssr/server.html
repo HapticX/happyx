@@ -63,46 +63,9 @@
 </li>
 <li>
   <details open>
-    <summary><a class="reference reference-toplevel" href="#7" id="57">Types</a></summary>
-    <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#ApiDocObject" title="ApiDocObject = object
-  description*: string
-  path*: string
-  httpMethod*: seq[string]
-  pathParams*: seq[PathParamObj]
-  models*: seq[RequestModelObj]">ApiDocObject</a></li>
-<li><a class="reference" href="#CustomHeaders" title="CustomHeaders = StringTableRef">CustomHeaders</a></li>
-<li><a class="reference" href="#ModelBase" title="ModelBase = ref object of PyNimObjectExperimental">ModelBase</a></li>
-<li><a class="reference" href="#Server" title="Server = ref object
-  address*: string
-  port*: int
-  routes*: seq[Route]
-  path*: string
-  parent*: Server
-  notFoundCallback*: PyObject
-  middlewareCallback*: PyObject
-  logger*: Logger
-  when enableHttpx:
-    instance*: Settings
-  elif enableHttpBeast:
-    instance*: Settings
-  elif enableMicro:
-    instance*: MicroAsyncHttpServer
-  else:
-    instance*: AsyncHttpServer">Server</a></li>
-
-    </ul>
-  </details>
-</li>
-<li>
-  <details open>
     <summary><a class="reference reference-toplevel" href="#12" id="62">Procs</a></summary>
     <ul class="simple simple-toc-section">
-      <ul class="simple nested-toc-section">[]=
-  <li><a class="reference" href="#%5B%5D%3D%2CCustomHeaders%2Cstring%2CT" title="`[]=`[T](self: CustomHeaders; key: string; value: T)">`[]=`[T](self: CustomHeaders; key: string; value: T)</a></li>
-
-</ul>
-<ul class="simple nested-toc-section">answerFile
+      <ul class="simple nested-toc-section">answerFile
   <li><a class="reference" href="#answerFile%2CRequest%2Cstring%2CHttpCode%2Cint%2Cbool%2CCustomHeaders" title="answerFile(req: Request; filename: string; code: HttpCode = Http200;
            asAttachment = false; bufSize: int = 40960;
            forceResponse: bool = false;
@@ -110,20 +73,6 @@
            asAttachment = false; bufSize: int = 40960;
            forceResponse: bool = false;
            headers: CustomHeaders = newCustomHeaders()): owned(Future[void])</a></li>
-
-</ul>
-<ul class="simple nested-toc-section">fgColored
-  <li><a class="reference" href="#fgColored%2Cstring%2CForegroundColor" title="fgColored(text: string; clr: ForegroundColor): string">fgColored(text: string; clr: ForegroundColor): string</a></li>
-
-</ul>
-<ul class="simple nested-toc-section">newApiDocObject
-  <li><a class="reference" href="#newApiDocObject%2Cseq%5Bstring%5D%2Cstring%2Cstring%2Cseq%5BPathParamObj%5D%2Cseq%5BRequestModelObj%5D" title="newApiDocObject(httpMethod: seq[string]; description, path: string;
-                pathParams: seq[PathParamObj]; models: seq[RequestModelObj]): ApiDocObject">newApiDocObject(httpMethod: seq[string]; description, path: string;
-                pathParams: seq[PathParamObj]; models: seq[RequestModelObj]): ApiDocObject</a></li>
-
-</ul>
-<ul class="simple nested-toc-section">newCustomHeaders
-  <li><a class="reference" href="#newCustomHeaders" title="newCustomHeaders(): CustomHeaders">newCustomHeaders(): CustomHeaders</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">newServer
@@ -144,10 +93,6 @@
 </ul>
 <ul class="simple nested-toc-section">initServer
   <li><a class="reference" href="#initServer.m%2Cuntyped" title="initServer(body: untyped): untyped">initServer(body: untyped): untyped</a></li>
-
-</ul>
-<ul class="simple nested-toc-section">liveview
-  <li><a class="reference" href="#liveview.m%2Cuntyped" title="liveview(body: untyped): untyped">liveview(body: untyped): untyped</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">routes
@@ -198,6 +143,9 @@
     </ul>
   </details>
 </li>
+<li>
+  <a class="reference reference-toplevel" href="#19" id="69">Exports</a>
+</li>
 
 </ul>
 
@@ -232,88 +180,18 @@
     <div class="section" id="6">
   <h1><a class="toc-backref" href="#6">Imports</a></h1>
   <dl class="item">
-    <a class="reference external" href="cors.html">cors</a>, <a class="reference external" href="liveviews_utils.html">liveviews_utils</a>, <a class="reference external" href="../spa/tag.html">../spa/tag</a>, <a class="reference external" href="../spa/renderer.html">../spa/renderer</a>, <a class="reference external" href="../core/exceptions.html">../core/exceptions</a>, <a class="reference external" href="../core/constants.html">../core/constants</a>, <a class="reference external" href="../private/macro_utils.html">../private/macro_utils</a>, <a class="reference external" href="../routing/routing.html">../routing/routing</a>, <a class="reference external" href="../routing/mounting.html">../routing/mounting</a>, <a class="reference external" href="../routing/decorators.html">../routing/decorators</a>, <a class="reference external" href="../sugar/sgr.html">../sugar/sgr</a>, <a class="reference external" href="../bindings/python_types.html">../bindings/python_types</a>, <a class="reference external" href="handlers.html">handlers</a>, <a class="reference external" href="docs/autodocs.html">docs/autodocs</a>
-  </dl>
-</div>
-<div class="section" id="7">
-  <h1><a class="toc-backref" href="#7">Types</a></h1>
-  <dl class="item">
-    <div id="ApiDocObject">
-  <dt><pre><a href="server.html#ApiDocObject"><span class="Identifier">ApiDocObject</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
-  <span class="Identifier">description</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
-  <span class="Identifier">path</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
-  <span class="Identifier">httpMethod</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">]</span>
-  <span class="Identifier">pathParams</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="../routing/routing.html#PathParamObj"><span class="Identifier">PathParamObj</span></a><span class="Other">]</span>
-  <span class="Identifier">models</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="../routing/routing.html#RequestModelObj"><span class="Identifier">RequestModelObj</span></a><span class="Other">]</span></pre></dt>
-  <dd>
-    
-    
-    
-  </dd>
-</div>
-<div id="CustomHeaders">
-  <dt><pre><a href="server.html#CustomHeaders"><span class="Identifier">CustomHeaders</span></a> <span class="Other">=</span> <span class="Identifier">StringTableRef</span></pre></dt>
-  <dd>
-    
-    
-    
-  </dd>
-</div>
-<div id="ModelBase">
-  <dt><pre><a href="server.html#ModelBase"><span class="Identifier">ModelBase</span></a> <span class="Other">=</span> <span class="Keyword">ref</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <span class="Identifier">PyNimObjectExperimental</span></pre></dt>
-  <dd>
-    
-    
-    
-  </dd>
-</div>
-<div id="Server">
-  <dt><pre><a href="server.html#Server"><span class="Identifier">Server</span></a> <span class="Other">=</span> <span class="Keyword">ref</span> <span class="Keyword">object</span>
-  <span class="Identifier">address</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
-  <span class="Identifier">port</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int</span>
-  <span class="Identifier">routes</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="../bindings/python_types.html#Route"><span class="Identifier">Route</span></a><span class="Other">]</span>
-  <span class="Identifier">path</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
-  <span class="Identifier">parent</span><span class="Operator">*</span><span class="Other">:</span> <a href="server.html#Server"><span class="Identifier">Server</span></a>
-  <span class="Identifier">notFoundCallback</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">PyObject</span>
-  <span class="Identifier">middlewareCallback</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">PyObject</span>
-  <span class="Identifier">logger</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">Logger</span>
-  <span class="Keyword">when</span> <span class="Identifier">enableHttpx</span><span class="Other">:</span>
-    <span class="Identifier">instance</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">Settings</span>
-  <span class="Keyword">elif</span> <span class="Identifier">enableHttpBeast</span><span class="Other">:</span>
-    <span class="Identifier">instance</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">Settings</span>
-  <span class="Keyword">elif</span> <span class="Identifier">enableMicro</span><span class="Other">:</span>
-    <span class="Identifier">instance</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">MicroAsyncHttpServer</span>
-  <span class="Keyword">else</span><span class="Other">:</span>
-    <span class="Identifier">instance</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">AsyncHttpServer</span></pre></dt>
-  <dd>
-    
-    
-    
-  </dd>
-</div>
-
+    <a class="reference external" href="cors.html">cors</a>, <a class="reference external" href="types.html">types</a>, <a class="reference external" href="utils.html">utils</a>, <a class="reference external" href="liveviews/utils.html">liveviews/utils</a>, <a class="reference external" href="liveviews/liveviews.html">liveviews/liveviews</a>, <a class="reference external" href="../spa/tag.html">../spa/tag</a>, <a class="reference external" href="../spa/renderer.html">../spa/renderer</a>, <a class="reference external" href="../core/exceptions.html">../core/exceptions</a>, <a class="reference external" href="../core/constants.html">../core/constants</a>, <a class="reference external" href="../private/macro_utils.html">../private/macro_utils</a>, <a class="reference external" href="../routing/routing.html">../routing/routing</a>, <a class="reference external" href="../routing/mounting.html">../routing/mounting</a>, <a class="reference external" href="../routing/decorators.html">../routing/decorators</a>, <a class="reference external" href="../sugar/sgr.html">../sugar/sgr</a>, <a class="reference external" href="docs/autodocs.html">docs/autodocs</a>, <a class="reference external" href="handlers.html">handlers</a>
   </dl>
 </div>
 <div class="section" id="12">
   <h1><a class="toc-backref" href="#12">Procs</a></h1>
   <dl class="item">
-    <div id="[]=-procs-all">
-  <div id="[]=,CustomHeaders,string,T">
-  <dt><pre><span class="Keyword">proc</span> <a href="#%5B%5D%3D%2CCustomHeaders%2Cstring%2CT"><span class="Identifier">`[]=`</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="server.html#CustomHeaders"><span class="Identifier">CustomHeaders</span></a><span class="Other">;</span> <span class="Identifier">key</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">T</span><span class="Other">)</span></pre></dt>
-  <dd>
-    
-    
-    
-  </dd>
-</div>
-
-</div>
-<div id="answerFile-procs-all">
+    <div id="answerFile-procs-all">
   <div id="answerFile,Request,string,HttpCode,int,bool,CustomHeaders">
   <dt><pre><span class="Keyword">proc</span> <a href="#answerFile%2CRequest%2Cstring%2CHttpCode%2Cint%2Cbool%2CCustomHeaders"><span class="Identifier">answerFile</span></a><span class="Other">(</span><span class="Identifier">req</span><span class="Other">:</span> <span class="Identifier">Request</span><span class="Other">;</span> <span class="Identifier">filename</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">code</span><span class="Other">:</span> <span class="Identifier">HttpCode</span> <span class="Other">=</span> <span class="Identifier">Http200</span><span class="Other">;</span>
                 <span class="Identifier">asAttachment</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">;</span> <span class="Identifier">bufSize</span><span class="Other">:</span> <span class="Identifier">int</span> <span class="Other">=</span> <span class="DecNumber">40960</span><span class="Other">;</span>
                 <span class="Identifier">forceResponse</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">;</span>
-                <span class="Identifier">headers</span><span class="Other">:</span> <a href="server.html#CustomHeaders"><span class="Identifier">CustomHeaders</span></a> <span class="Other">=</span> <span class="Identifier">newCustomHeaders</span><span class="Other">(</span><span class="Other">)</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">owned</span><span class="Other">(</span>
+                <span class="Identifier">headers</span><span class="Other">:</span> <a href="utils.html#CustomHeaders"><span class="Identifier">CustomHeaders</span></a> <span class="Other">=</span> <span class="Identifier">newCustomHeaders</span><span class="Other">(</span><span class="Other">)</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">owned</span><span class="Other">(</span>
     <span class="Identifier">Future</span><span class="Other">[</span><span class="Identifier">void</span><span class="Other">]</span><span class="Other">)</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">stackTrace</span><span class="Other">:</span> <span class="DecNumber">false</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span>
                     <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
@@ -329,55 +207,9 @@
 </div>
 
 </div>
-<div id="fgColored-procs-all">
-  <div id="fgColored,string,ForegroundColor">
-  <dt><pre><span class="Keyword">func</span> <a href="#fgColored%2Cstring%2CForegroundColor"><span class="Identifier">fgColored</span></a><span class="Other">(</span><span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">clr</span><span class="Other">:</span> <span class="Identifier">ForegroundColor</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> {.<span class="Identifier">inline</span><span class="Other">,</span> <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
-    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
-  <dd>
-    
-    <p>This function takes in a string of text and a ForegroundColor enum value and returns the same text with the specified color applied.</p>
-<p>Arguments:</p>
-<ul class="simple"><li><tt class="docutils literal"><span class="pre"><span class="Identifier">text</span></span></tt>: A string value representing the text to apply color to.</li>
-<li><tt class="docutils literal"><span class="pre"><span class="Identifier">clr</span></span></tt>: A ForegroundColor enum value representing the color to apply to the text.</li>
-</ul>
-<p>Return value:</p>
-<ul class="simple"><li>The function returns a string value with the specified color applied to the input text.</li>
-</ul>
-
-<p><strong class="examples_text">Example:</strong></p>
-<pre class="listing"><span class="Identifier">echo</span> <span class="Identifier">fgColored</span><span class="Punctuation">(</span><span class="StringLit">&quot;Hello, world!&quot;</span><span class="Punctuation">,</span> <span class="Identifier">fgRed</span><span class="Punctuation">)</span></pre>
-    
-  </dd>
-</div>
-
-</div>
-<div id="newApiDocObject-procs-all">
-  <div id="newApiDocObject,seq[string],string,string,seq[PathParamObj],seq[RequestModelObj]">
-  <dt><pre><span class="Keyword">proc</span> <a href="#newApiDocObject%2Cseq%5Bstring%5D%2Cstring%2Cstring%2Cseq%5BPathParamObj%5D%2Cseq%5BRequestModelObj%5D"><span class="Identifier">newApiDocObject</span></a><span class="Other">(</span><span class="Identifier">httpMethod</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">description</span><span class="Other">,</span> <span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span>
-                     <span class="Identifier">pathParams</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="../routing/routing.html#PathParamObj"><span class="Identifier">PathParamObj</span></a><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">models</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="../routing/routing.html#RequestModelObj"><span class="Identifier">RequestModelObj</span></a><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <a href="server.html#ApiDocObject"><span class="Identifier">ApiDocObject</span></a> {.
-    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
-  <dd>
-    
-    
-    
-  </dd>
-</div>
-
-</div>
-<div id="newCustomHeaders-procs-all">
-  <div id="newCustomHeaders">
-  <dt><pre><span class="Keyword">proc</span> <a href="#newCustomHeaders"><span class="Identifier">newCustomHeaders</span></a><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <a href="server.html#CustomHeaders"><span class="Identifier">CustomHeaders</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
-  <dd>
-    
-    
-    
-  </dd>
-</div>
-
-</div>
 <div id="newServer-procs-all">
   <div id="newServer,string,int">
-  <dt><pre><span class="Keyword">proc</span> <a href="#newServer%2Cstring%2Cint"><span class="Identifier">newServer</span></a><span class="Other">(</span><span class="Identifier">address</span><span class="Other">:</span> <span class="Identifier">string</span> <span class="Other">=</span> <span class="StringLit">&quot;127.0.0.1&quot;</span><span class="Other">;</span> <span class="Identifier">port</span><span class="Other">:</span> <span class="Identifier">int</span> <span class="Other">=</span> <span class="DecNumber">5000</span><span class="Other">)</span><span class="Other">:</span> <a href="server.html#Server"><span class="Identifier">Server</span></a> {.
+  <dt><pre><span class="Keyword">proc</span> <a href="#newServer%2Cstring%2Cint"><span class="Identifier">newServer</span></a><span class="Other">(</span><span class="Identifier">address</span><span class="Other">:</span> <span class="Identifier">string</span> <span class="Other">=</span> <span class="StringLit">&quot;127.0.0.1&quot;</span><span class="Other">;</span> <span class="Identifier">port</span><span class="Other">:</span> <span class="Identifier">int</span> <span class="Other">=</span> <span class="DecNumber">5000</span><span class="Other">)</span><span class="Other">:</span> <a href="types.html#Server"><span class="Identifier">Server</span></a> {.
     <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
@@ -430,20 +262,9 @@
 </div>
 
 </div>
-<div id="liveview-macros-all">
-  <div id="liveview.m,untyped">
-  <dt><pre><span class="Keyword">macro</span> <a href="#liveview.m%2Cuntyped"><span class="Identifier">liveview</span></a><span class="Other">(</span><span class="Identifier">body</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
-  <dd>
-    
-    
-    
-  </dd>
-</div>
-
-</div>
 <div id="routes-macros-all">
   <div id="routes.m,Server,untyped">
-  <dt><pre><span class="Keyword">macro</span> <a href="#routes.m%2CServer%2Cuntyped"><span class="Identifier">routes</span></a><span class="Other">(</span><span class="Identifier">server</span><span class="Other">:</span> <a href="server.html#Server"><span class="Identifier">Server</span></a><span class="Other">;</span> <span class="Identifier">body</span><span class="Other">:</span> <span class="Identifier">untyped</span> <span class="Other">=</span> <span class="Identifier">newStmtList</span><span class="Other">(</span><span class="Other">)</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
+  <dt><pre><span class="Keyword">macro</span> <a href="#routes.m%2CServer%2Cuntyped"><span class="Identifier">routes</span></a><span class="Other">(</span><span class="Identifier">server</span><span class="Other">:</span> <a href="types.html#Server"><span class="Identifier">Server</span></a><span class="Other">;</span> <span class="Identifier">body</span><span class="Other">:</span> <span class="Identifier">untyped</span> <span class="Other">=</span> <span class="Identifier">newStmtList</span><span class="Other">(</span><span class="Other">)</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
   <dd>
     
     You can create routes with this marco
@@ -605,7 +426,7 @@
 </div>
 <div id="start-templates-all">
   <div id="start.t,Server">
-  <dt><pre><span class="Keyword">template</span> <a href="#start.t%2CServer"><span class="Identifier">start</span></a><span class="Other">(</span><span class="Identifier">server</span><span class="Other">:</span> <a href="server.html#Server"><span class="Identifier">Server</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
+  <dt><pre><span class="Keyword">template</span> <a href="#start.t%2CServer"><span class="Identifier">start</span></a><span class="Other">(</span><span class="Identifier">server</span><span class="Other">:</span> <a href="types.html#Server"><span class="Identifier">Server</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
   <dd>
     
     The <tt class="docutils literal"><span class="pre"><span class="Identifier">start</span></span></tt> template starts the given server and listens for incoming connections. Parameters:<ul class="simple"><li><tt class="docutils literal"><span class="pre"><span class="Identifier">server</span></span></tt>: A <tt class="docutils literal"><span class="pre"><span class="Identifier">Server</span></span></tt> instance that needs to be started.</li>
@@ -622,6 +443,12 @@
 
   </dl>
 </div>
+<div class="section" id="19">
+  <h1><a class="toc-backref" href="#19">Exports</a></h1>
+  <dl class="item">
+    <a href="liveviews/utils.html#liveViewScript"><span class="Identifier">liveViewScript</span></a>, <a href="types.html#Server"><span class="Identifier">Server</span></a>, <a href="types.html#ModelBase"><span class="Identifier">ModelBase</span></a>, <a href="docs/autodocs.html#fetchPathParams,string"><span class="Identifier">fetchPathParams</span></a>, <a href="docs/autodocs.html#happyxDocs,NimNode"><span class="Identifier">happyxDocs</span></a>, <a href="docs/autodocs.html#openApiDocs,NimNode"><span class="Identifier">openApiDocs</span></a>, <a href="docs/autodocs.html#ApiDocObject"><span class="Identifier">ApiDocObject</span></a>, <a href="docs/autodocs.html#genApiDoc,NimNode"><span class="Identifier">genApiDoc</span></a>, <a href="docs/autodocs.html#fetchModelFields"><span class="Identifier">fetchModelFields</span></a>, <a href="docs/autodocs.html#procApiDocs,NimNode"><span class="Identifier">procApiDocs</span></a>, <a href="docs/autodocs.html#newApiDocObject,seq[string],string,string,seq[PathParamObj],seq[RequestModelObj]"><span class="Identifier">newApiDocObject</span></a>
+  </dl>
+</div>
 
   </div>
 </div>
@@ -629,7 +456,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2024-07-08 13:52:08 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2024-07-08 17:04:56 UTC</small>
       </div>
     </div>
   </div>

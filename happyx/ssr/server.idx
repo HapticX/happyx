@@ -1,23 +1,14 @@
 nimTitle	server	happyx/ssr/server.html	module src/happyx/ssr/server		0
-nim	CustomHeaders	happyx/ssr/server.html#CustomHeaders	type CustomHeaders		127
-nim	newCustomHeaders	happyx/ssr/server.html#newCustomHeaders	proc newCustomHeaders(): CustomHeaders		129
-nim	`[]=`	happyx/ssr/server.html#[]=,CustomHeaders,string,T	proc `[]=`[T](self: CustomHeaders; key: string; value: T)		131
-nim	Server	happyx/ssr/server.html#Server	type Server		148
-nim	ModelBase	happyx/ssr/server.html#ModelBase	type ModelBase		166
-nim	ApiDocObject	happyx/ssr/server.html#ApiDocObject	object ApiDocObject		233
-nim	newApiDocObject	happyx/ssr/server.html#newApiDocObject,seq[string],string,string,seq[PathParamObj],seq[RequestModelObj]	proc newApiDocObject(httpMethod: seq[string]; description, path: string;\n                pathParams: seq[PathParamObj]; models: seq[RequestModelObj]): ApiDocObject		240
-nim	fgColored	happyx/ssr/server.html#fgColored,string,ForegroundColor	proc fgColored(text: string; clr: ForegroundColor): string		298
-nim	newServer	happyx/ssr/server.html#newServer,string,int	proc newServer(address: string = "127.0.0.1"; port: int = 5000): Server		313
-nim	start	happyx/ssr/server.html#start.t,Server	template start(server: Server): untyped		352
-nim	`.`	happyx/ssr/server.html#..m,JsonNode,untyped	macro `.`(obj: JsonNode; field: untyped): JsonNode		380
-nim	answer	happyx/ssr/server.html#answer.t,Request,,HttpCode,HttpHeaders,Option[int]	template answer(req: Request; message: string | int | float | bool | char;\n       code: HttpCode = Http200; headers: HttpHeaders = newHttpHeaders(\n    [("Content-Type", "text/plain; charset=utf-8")]);\n       contentLength: Option[int] = int.none)		384
-nim	answerJson	happyx/ssr/server.html#answerJson.t,Request,untyped,HttpCode,HttpHeaders	template answerJson(req: Request; data: untyped; code: HttpCode = Http200; headers: HttpHeaders = newHttpHeaders(\n    [("Content-Type", "application/json; charset=utf-8")])): untyped		480
-nim	answerHtml	happyx/ssr/server.html#answerHtml.t,Request,,HttpCode,HttpHeaders	template answerHtml(req: Request; data: string | TagRef; code: HttpCode = Http200;\n    headers: HttpHeaders = newHttpHeaders(\n    [("Content-Type", "text/html; charset=utf-8")])): untyped		501
-nim	answerFile	happyx/ssr/server.html#answerFile,Request,string,HttpCode,int,bool,CustomHeaders	proc answerFile(req: Request; filename: string; code: HttpCode = Http200;\n           asAttachment = false; bufSize: int = 40960;\n           forceResponse: bool = false;\n           headers: CustomHeaders = newCustomHeaders()): owned(Future[void])		540
-nim	routes	happyx/ssr/server.html#routes.m,Server,untyped	macro routes(server: Server; body: untyped = newStmtList()): untyped		682
-nim	initServer	happyx/ssr/server.html#initServer.m,untyped	macro initServer(body: untyped): untyped		1646
-nim	serve	happyx/ssr/server.html#serve.m,string,int,untyped	macro serve(address: string; port: int; body: untyped): untyped		1674
-nim	liveview	happyx/ssr/server.html#liveview.m,untyped	macro liveview(body: untyped): untyped		1742
+nim	newServer	happyx/ssr/server.html#newServer,string,int	proc newServer(address: string = "127.0.0.1"; port: int = 5000): Server		130
+nim	start	happyx/ssr/server.html#start.t,Server	template start(server: Server): untyped		169
+nim	`.`	happyx/ssr/server.html#..m,JsonNode,untyped	macro `.`(obj: JsonNode; field: untyped): JsonNode		197
+nim	answer	happyx/ssr/server.html#answer.t,Request,,HttpCode,HttpHeaders,Option[int]	template answer(req: Request; message: string | int | float | bool | char;\n       code: HttpCode = Http200; headers: HttpHeaders = newHttpHeaders(\n    [("Content-Type", "text/plain; charset=utf-8")]);\n       contentLength: Option[int] = int.none)		201
+nim	answerJson	happyx/ssr/server.html#answerJson.t,Request,untyped,HttpCode,HttpHeaders	template answerJson(req: Request; data: untyped; code: HttpCode = Http200; headers: HttpHeaders = newHttpHeaders(\n    [("Content-Type", "application/json; charset=utf-8")])): untyped		297
+nim	answerHtml	happyx/ssr/server.html#answerHtml.t,Request,,HttpCode,HttpHeaders	template answerHtml(req: Request; data: string | TagRef; code: HttpCode = Http200;\n    headers: HttpHeaders = newHttpHeaders(\n    [("Content-Type", "text/html; charset=utf-8")])): untyped		318
+nim	answerFile	happyx/ssr/server.html#answerFile,Request,string,HttpCode,int,bool,CustomHeaders	proc answerFile(req: Request; filename: string; code: HttpCode = Http200;\n           asAttachment = false; bufSize: int = 40960;\n           forceResponse: bool = false;\n           headers: CustomHeaders = newCustomHeaders()): owned(Future[void])		357
+nim	routes	happyx/ssr/server.html#routes.m,Server,untyped	macro routes(server: Server; body: untyped = newStmtList()): untyped		499
+nim	initServer	happyx/ssr/server.html#initServer.m,untyped	macro initServer(body: untyped): untyped		1379
+nim	serve	happyx/ssr/server.html#serve.m,string,int,untyped	macro serve(address: string; port: int; body: untyped): untyped		1403
 heading	Available Path Params	happyx/ssr/server.html#custom-static-directory-⚙-available-path-params	    Available Path Params		0
 heading	Available Route Types	happyx/ssr/server.html#custom-static-directory-⚙-available-route-types	    Available Route Types		0
 heading	Route Scope:	happyx/ssr/server.html#custom-static-directory-⚙-route-scopecolon	    Route Scope:		0
