@@ -11,7 +11,7 @@ import
     dev_command, serve_command,
     html2tag_command, help_command,
     update_command, project_info_command,
-    flags_command
+    flags_command, translate_csv_command
   ]
 
 import illwill except
@@ -27,6 +27,8 @@ proc updateCommandAux(args: seq[string]): int = updateCommand(args)
 proc serveCommandAux(host: string = "0.0.0.0", port: int = 80): int = serveCommand(host, port)
 proc projectInfoCommandAux(): int = projectInfoCommand()
 proc flagsCommandAux(): int = flagsCommand()
+proc translateCsvCommandAux(filename: string, output: string = ""): int =
+  translateCsvCommand(filename, output)
 proc devCommandAux(host: string = "127.0.0.1", port: int = 5000,
                    reload: bool = false): int =
   devCommand(host, port, reload)
@@ -56,6 +58,7 @@ when isMainModule:
     [html2tagCommandAux, cmdName = "html2tag"],
     [updateCommandAux, cmdName = "update"],
     [flagsCommandAux, cmdName = "flags"],
+    [translateCsvCommandAux, cmdName = "translatecsv"],
     [
       mainCommand,
       short = {"version": 'v'}
@@ -95,6 +98,8 @@ when isMainModule:
     quit(dispatchhtml2tag(cmdline = pars[1..^1]))
   of "update":
     quit(dispatchupdate(cmdline = pars[1..^1]))
+  of "translate-csv":
+    quit(dispatchtranslatecsv(cmdline = pars[1..^1]))
   of "help":
     let
       subcmdHelp =
