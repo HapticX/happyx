@@ -7,11 +7,7 @@ on:
   push:
     branches:
       - 'master'
-    paths:
-      - '**/language_bindings.yml'
-      - '**/bindings/**'
-      - '**/constants.nim'
-  pull_request:
+      - 'dev'
     paths:
       - '**/language_bindings.yml'
       - '**/bindings/**'
@@ -95,6 +91,7 @@ jobs:
       # TODO:
       #   account recovery
       - name: Publish Python package 📢
+        if: github.ref == 'refs/heads/master'
         uses: pypa/gh-action-pypi-publish@8cdc2ab67c943c5edf5fd9ae1995546b4b550602
         with:
           user: __token__
