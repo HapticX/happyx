@@ -1,0 +1,2 @@
+nimTitle	websockets	happyx/ssr/websockets.html	module src/happyx/ssr/websockets		0
+nim	handleWebsockets	happyx/ssr/websockets.html#handleWebsockets	proc handleWebsockets(): tuple[wsStmtList, insertWsList: NimNode]		7
