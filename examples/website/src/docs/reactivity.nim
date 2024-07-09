@@ -20,6 +20,10 @@ proc Reactivity*(): TagRef =
 
       CodeBlock("nim", nimSpaReactivity1, "nim_spa_reactivity_1")
 
+      tP: {translate"In the diagram below, you can see how state changes occur."}
+
+      tImg(src = "/happyx/public/HappyXReactivity.svg", alt = "HappyX Reactivity", class = "self-center rounded-xl")
+
       tP:
         {translate"As you can see in the above code example, a special syntax is used to call the "}
         tCode: "inc()"

@@ -2288,6 +2288,12 @@ translatable:
     "zh" -> "重要的是要注意，实时视图允许您使用单页应用程序的反应性。"
     "fr" -> "Il est important de noter que les liveviews vous permettent d'utiliser la réactivité des applications monopages."
     "ko" -> "라이브뷰는 단일 페이지 애플리케이션의 반응성을 사용할 수 있도록 해준다는 점을 유의하십시오."
+  "In the diagram below, you can see how state changes occur.":
+    "ru" -> "На диаграмме ниже вы можете видеть, как происходит изменение состояния."
+    "ja" -> "下の図では、状態の変化がどのように起こるかを確認できます。"
+    "zh" -> "在下面的图表中，您可以看到状态是如何变化的。"
+    "fr" -> "Dans le diagramme ci-dessous, vous pouvez voir comment les changements d'état se produisent."
+    "ko" -> "아래 다이어그램에서 상태 변경이 어떻게 발생하는지 볼 수 있습니다."
 
 
 var spokenLang: cstring
