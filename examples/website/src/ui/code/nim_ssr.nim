@@ -579,3 +579,18 @@ liveview:
 serve "127.0.0.1", 5000:
   discard
 """
+  nimReactivityWatchers* = """import happyx
+
+var counter = remember 0
+
+counter.watch(old, new):
+  echo "set counter to ", new, ", but before it be ", old
+
+appRoutes "app":
+  "/":
+    {counter}
+    tButton:
+      "increase"
+      @click:
+        counter += 1
+"""

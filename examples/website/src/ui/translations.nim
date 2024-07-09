@@ -2294,6 +2294,24 @@ translatable:
     "zh" -> "在下面的图表中，您可以看到状态是如何变化的。"
     "fr" -> "Dans le diagramme ci-dessous, vous pouvez voir comment les changements d'état se produisent."
     "ko" -> "아래 다이어그램에서 상태 변경이 어떻게 발생하는지 볼 수 있습니다."
+  "Watchers":
+    "ru" -> "Watchers"
+    "ja" -> "ウォッチャー"
+    "zh" -> "监视器"
+    "fr" -> "Observateurs"
+    "ko" -> "워처"
+  "Reactivity in HappyX allows you to attach so-called watchers to reactive variables.":
+    "ru" -> "Реактивность в HappyX позволяет вешать так называемые watcher'ы на реактивные переменные."
+    "ja" -> "HappyXのリアクティビティでは、リアクティブ変数にウォッチャーを付けることができます。"
+    "zh" -> "HappyX中的反应性允许您将所谓的监视器附加到反应变量上。"
+    "fr" -> "La réactivité dans HappyX vous permet d'attacher des observateurs aux variables réactives."
+    "ko" -> "HappyX의 반응성은 반응형 변수에 소위 워처를 부착할 수 있게 해줍니다."
+  "This allows you to work with the past and new values of the reactive variable.":
+    "ru" -> "Это позволяет работать с прошлым и новым значением реактивной переменной."
+    "ja" -> "これにより、リアクティブ変数の過去と新しい値を操作することができます。"
+    "zh" -> "这允许您使用反应变量的过去值和新值。"
+    "fr" -> "Cela vous permet de travailler avec les anciennes et nouvelles valeurs de la variable réactive."
+    "ko" -> "이를 통해 반응형 변수의 과거 값과 새로운 값을 작업할 수 있습니다."
 
 
 var spokenLang: cstring

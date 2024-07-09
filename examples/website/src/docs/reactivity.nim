@@ -114,3 +114,13 @@ proc Reactivity*(): TagRef =
         {translate" in one go."}
 
       CodeBlock("nim", nimSpaReactivity5, "nim_spa_reactivity_5")
+
+      tH2:
+        {translate"Watchers"}
+      
+      tP:
+        {translate"Reactivity in HappyX allows you to attach so-called watchers to reactive variables."}
+        " "
+        {translate"This allows you to work with the past and new values of the reactive variable."}
+
+      CodeBlock("nim", nimReactivityWatchers, "nim_spa_watchers")
