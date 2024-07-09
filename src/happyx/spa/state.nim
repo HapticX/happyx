@@ -30,12 +30,15 @@ import
   std/strtabs,
   ./renderer,
   ./translatable,
-  ../core/constants
+  ../core/constants,
+  ../private/macro_utils
 
 
 type
+  StateChangeHandler*[T] = proc(newVal, oldVal: T)
   State*[T] = ref object
     val*: T
+    watchers*: seq[StateChangeHandler[T]]
 
 
 var enableRouting* = true  ## `Low-level API` to disable/enable routing
@@ -46,15 +49,24 @@ func remember*[T](val: T): State[T] =
   State[T](val: val)
 
 
+func watchImpl[T](state: State[T], o, n: T) =
+  for w in state.watchers:
+    w(o, n)
+
+
 when defined(js) or not enableLiveViews:
   proc `val=`*[T](self: State[T], value: T) =
     ## Changes state value
+    if self.watchers.len > 0:
+      self.watchImpl(self.val, value)
     self.val = value
     if enableRouting and not application.isNil() and not application.router.isNil():
       application.router()
 else:
   template `val=`*[T](self: State[T], value: T) =
     ## Changes state value
+    if self.watchers.len > 0:
+      self.watchImpl(self.val, value)
     self.val = value
     rerender(hostname, urlPath)
 
@@ -89,27 +101,57 @@ template operator(funcname, op: untyped): untyped =
 when defined(js) or not enableLiveviews:
   template reRenderOperator(funcname, op: untyped): untyped =
     proc `funcname`*[T](self: State[T], other: State[T]) =
-      `op`(self.val, other.val)
+      if self.watchers.len > 0:
+        let before = self.val
+        `op`(self.val, other.val)
+        self.watchImpl(before, self.val)
+      else:
+        `op`(self.val, other.val)
       if enableRouting and not application.isNil() and not application.router.isNil():
         application.router()
     proc `funcname`*[T](other: T, self: State[T]) =
-      `op`(self.val, other)
+      if self.watchers.len > 0:
+        let before = self.val
+        `op`(self.val, other)
+        self.watchImpl(before, self.val)
+      else:
+        `op`(self.val, other)
       if enableRouting and not application.isNil() and not application.router.isNil():
         application.router()
     proc `funcname`*[T](self: State[T], other: T) =
-      `op`(self.val, other)
+      if self.watchers.len > 0:
+        let before = self.val
+        `op`(self.val, other)
+        self.watchImpl(before, self.val)
+      else:
+        `op`(self.val, other)
       if enableRouting and not application.isNil() and not application.router.isNil():
         application.router()
 else:
   template reRenderOperator(funcname, op: untyped): untyped =
     template `funcname`*[T](self: State[T], other: State[T]) =
-      `op`(self.val, other.val)
+      if self.watchers.len > 0:
+        let before = self.val
+        `op`(self.val, other.val)
+        self.watchImpl(before, self.val)
+      else:
+        `op`(self.val, other.val)
       rerender(hostname, urlPath)
     template `funcname`*[T](other: T, self: State[T]) =
-      `op`(self.val, other)
+      if self.watchers.len > 0:
+        let before = self.val
+        `op`(self.val, other)
+        self.watchImpl(before, self.val)
+      else:
+        `op`(self.val, other)
       rerender(hostname, urlPath)
     template `funcname`*[T](self: State[T], other: T) =
-      `op`(self.val, other)
+      if self.watchers.len > 0:
+        let before = self.val
+        `op`(self.val, other)
+        self.watchImpl(before, self.val)
+      else:
+        `op`(self.val, other)
       rerender(hostname, urlPath)
 
 
@@ -189,7 +231,18 @@ macro `->`*(self: State, field: untyped): untyped =
         # type(call()) is void
         newCall("is", newCall("type", call), ident"void"),
         newStmtList(
-          call,
+          newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
+            newCall(">", newCall("len", newDotExpr(self, ident"watchers")), newLit(0)),
+            newStmtList(
+              newNimNode(nnkLetSection).add(newIdentDefs(
+                ident"before", newEmptyNode(), newDotExpr(self, ident"val")
+              )),
+              call,
+              newCall("watchImpl", self, ident"before", newDotExpr(self, ident"val")),
+            )
+          ), newNimNode(nnkElse).add(
+            call
+          )),
           # When defined JS
           newNimNode(nnkWhenStmt).add(newNimNode(nnkElifBranch).add(
             newCall("or", newCall("defined", ident"js"), newCall("not", ident"enableLiveViews")),
@@ -204,7 +257,20 @@ macro `->`*(self: State, field: untyped): untyped =
           )),
         )
       ), newNimNode(nnkElse).add(newStmtList(
-        newVarStmt(ident"_result", call),
+        newVarStmt(ident"_result", 
+          newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
+            newCall(">", newCall("len", newDotExpr(self, ident"watchers")), newLit(0)),
+            newStmtList(
+              newNimNode(nnkLetSection).add(newIdentDefs(
+                ident"before", newEmptyNode(), newDotExpr(self, ident"val")
+              )),
+              newLetStmt(ident"__ret", call),
+              newCall("watchImpl", self, ident"before", newDotExpr(self, ident"val")),
+            )
+          ), newNimNode(nnkElse).add(
+            call
+          ))
+        ),
         # When defined JS
         newNimNode(nnkWhenStmt).add(newNimNode(nnkElifBranch).add(
           newCall("or", newCall("defined", ident"js"), newCall("not", ident"enableLiveViews")),
@@ -224,6 +290,17 @@ macro `->`*(self: State, field: untyped): untyped =
     result = newDotExpr(newDotExpr(self, ident"val"), field)
   else:
     result = newEmptyNode()
+
+
+macro watch*(state, newVal, oldVal, body: untyped): untyped =
+  ## Watch every value changing
+  result = newCall("add",
+    newDotExpr(state, ident"watchers"),
+    newLambda(
+      body,
+      @[newEmptyNode(), newIdentDefs(newVal, ident"auto"), newIdentDefs(oldVal, ident"auto")]
+    )
+  )
 
 
 func get*[T](self: State[T]): T =
@@ -250,12 +327,16 @@ func high*[T](self: State[T]): int =
 when defined(js):
   proc set*[T](self: State[T], value: T) =
     ## Changes state value and rerenders SPA
+    if self.watchers.len > 0:
+      self.watchImpl(self.val, value)
     self.val = value
     if enableRouting and not application.isNil() and not application.router.isNil():
       application.router()
 else:
   template set*[T](self: State[T], value: T) =
     ## Changes state value and rerenders SPA
+    if self.watchers.len > 0:
+      self.watchImpl(self.val, value)
     self.val = value
     rerender(hostname, urlPath)
 
@@ -292,55 +373,95 @@ func `[]`*(self: State[StringTableRef], idx: string): string =
 when defined(js) or not enableLiveViews:
   proc `[]=`*[T](self: State[seq[T]], idx: int, value: T) =
     ## Changes State's item at `idx` index.
-    self.val[idx] = value
+    if self.watchers.len > 0:
+      let before = self.val
+      self.val[idx] = value
+      self.watchImpl(before, self.val)
+    else:
+      self.val[idx] = value
     if enableRouting and not application.isNil() and not application.router.isNil():
       application.router()
 
 
   proc `[]=`*[T, U](self: State[array[T, U]], idx: int, value: T) =
     ## Changes State's item at `idx` index.
-    self.val[idx] = value
+    if self.watchers.len > 0:
+      let before = self.val
+      self.val[idx] = value
+      self.watchImpl(before, self.val)
+    else:
+      self.val[idx] = value
     if enableRouting and not application.isNil() and not application.router.isNil():
       application.router()
 
 
   proc `[]=`*[T, U](self: State[TableRef[T, U]], idx: T, value: U) =
     ## Changes State's item at `idx` index.
-    self.val[idx] = value
+    if self.watchers.len > 0:
+      let before = self.val
+      self.val[idx] = value
+      self.watchImpl(before, self.val)
+    else:
+      self.val[idx] = value
     if enableRouting and not application.isNil() and not application.router.isNil():
       application.router()
 
 
   proc `[]=`*(self: State[StringTableRef], idx: string, value: string) =
     ## Changes State's item at `idx` index.
-    self.val[idx] = value
+    if self.watchers.len > 0:
+      let before = self.val
+      self.val[idx] = value
+      self.watchImpl(before, self.val)
+    else:
+      self.val[idx] = value
     if enableRouting and not application.isNil() and not application.router.isNil():
       application.router()
 else:
   proc `[]=`*[T](self: State[seq[T]], idx: int, value: T) =
     ## Changes State's item at `idx` index.
-    self.val[idx] = value
+    if self.watchers.len > 0:
+      let before = self.val
+      self.val[idx] = value
+      self.watchImpl(before, self.val)
+    else:
+      self.val[idx] = value
     if enableRouting and not application.isNil() and not application.router.isNil():
       application.router()
 
 
   proc `[]=`*[T, U](self: State[array[T, U]], idx: int, value: T) =
     ## Changes State's item at `idx` index.
-    self.val[idx] = value
+    if self.watchers.len > 0:
+      let before = self.val
+      self.val[idx] = value
+      self.watchImpl(before, self.val)
+    else:
+      self.val[idx] = value
     if enableRouting and not application.isNil() and not application.router.isNil():
       application.router()
 
 
   proc `[]=`*[T, U](self: State[TableRef[T, U]], idx: T, value: U) =
     ## Changes State's item at `idx` index.
-    self.val[idx] = value
+    if self.watchers.len > 0:
+      let before = self.val
+      self.val[idx] = value
+      self.watchImpl(before, self.val)
+    else:
+      self.val[idx] = value
     if enableRouting and not application.isNil() and not application.router.isNil():
       application.router()
 
 
   proc `[]=`*(self: State[StringTableRef], idx: string, value: string) =
     ## Changes State's item at `idx` index.
-    self.val[idx] = value
+    if self.watchers.len > 0:
+      let before = self.val
+      self.val[idx] = value
+      self.watchImpl(before, self.val)
+    else:
+      self.val[idx] = value
     if enableRouting and not application.isNil() and not application.router.isNil():
       application.router()
 

@@ -67,6 +67,13 @@ proc countComponentFactory(): TagRef = buildHtml:
   ShowNextCount
 
 
+var testCounter = remember 0
+
+
+testCounter.watch(old, new):
+  echo "set testCounter from ", old, " to ", new
+
+
 appRoutes("app"):
   "/":
     for i in 1..5:
@@ -109,3 +116,9 @@ appRoutes("app"):
     nim: counter = 0
     for i in 1..5:
       tDiv: ShowNextCount
+  "/watchers":
+    {testCounter}
+    tButton:
+      "increase testCounter"
+      @click:
+        testCounter += 1
