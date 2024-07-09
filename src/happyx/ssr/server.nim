@@ -982,7 +982,7 @@ macro routes*(server: Server, body: untyped = newStmtList()): untyped =
         let exported = exportRouteArgs(pathIdent, statement[1], statement[2])
         # Handle websockets
         if name == "WS":
-          var (wsStmtList, insertWsList) = handleWebsockets()
+          var (wsStmtList, insertWsList) = handleWebsockets(wsClosedConnection)
           if not methodTable.hasKey("GET"):
             methodTable["GET"] = newNimNode(nnkIfStmt)
           if exported.len > 0:

@@ -4,7 +4,7 @@ import
   ../private/macro_utils
 
 
-proc handleWebsockets*(): tuple[wsStmtList, insertWsList: NimNode] =
+proc handleWebsockets*(wsClosedConnection: NimNode): tuple[wsStmtList, insertWsList: NimNode] =
   ## This is helpful function to work with websockets
   let wsClientI = ident"wsClient"
   var
