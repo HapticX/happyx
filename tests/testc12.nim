@@ -5,6 +5,11 @@ import
 
 var searchRemember = ""
 
+var counter = remember 0
+
+counter.watch(old, new):
+  echo "set counter to ", new, ", but before it be ", old
+
 
 component Button:
   html:
@@ -45,6 +50,12 @@ liveview:
         console.log("called test() from server");
       }
     """
+  "/liveviews-upgrade":
+    {counter}
+    tButton:
+      "click me!"
+      @click:
+        counter += 1
   "/hello":
     "Hello, world!"
     tButton:

@@ -20,6 +20,10 @@ proc Reactivity*(): TagRef =
 
       CodeBlock("nim", nimSpaReactivity1, "nim_spa_reactivity_1")
 
+      tP: {translate"In the diagram below, you can see how state changes occur."}
+
+      tImg(src = "/happyx/public/HappyXReactivity.svg", alt = "HappyX Reactivity", class = "self-center rounded-xl")
+
       tP:
         {translate"As you can see in the above code example, a special syntax is used to call the "}
         tCode: "inc()"
@@ -110,3 +114,13 @@ proc Reactivity*(): TagRef =
         {translate" in one go."}
 
       CodeBlock("nim", nimSpaReactivity5, "nim_spa_reactivity_5")
+
+      tH2:
+        {translate"Watchers"}
+      
+      tP:
+        {translate"Reactivity in HappyX allows you to attach so-called watchers to reactive variables."}
+        " "
+        {translate"This allows you to work with the past and new values of the reactive variable."}
+
+      CodeBlock("nim", nimReactivityWatchers, "nim_spa_watchers")
