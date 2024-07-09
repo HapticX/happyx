@@ -1,6 +1,7 @@
 import
   std/macros,
-  ../core/constants
+  ../core/constants,
+  ../private/macro_utils
 
 
 proc handleWebsockets*(): tuple[wsStmtList, insertWsList: NimNode] =
