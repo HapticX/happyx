@@ -59,6 +59,8 @@ jobs:
         run: |
           nimble refresh
           nimble install -y -d
+      - name: Run nim check with reviewdog
+        uses: reviewdog/action-nimlint@v1.15.0
   async_http_server:
     name: Test C via AsyncHttpServer 🧪
     needs: dependencies
