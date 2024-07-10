@@ -40,7 +40,7 @@ setup(
     packages=find_packages(),
     include_package_data=True,
     install_requires=['jinja2'],
-    py_modules=['happyx'],
+    py_modules=['happyxpy'],
     license='MIT',
     classifiers=[
         'Development Status :: 5 - Production/Stable',
