@@ -17,8 +17,6 @@ else:
         import happyxpy.happyx_unix_arm64 as happyx
     elif _cpu in ['amd64', 'x86_64']:
         import happyxpy.happyx_unix_amd64 as happyx
-    elif _cpu == 'sparc':
-        import happyxpy.happyx_unix_sparc as happyx
     else:
         import happyxpy.happyx_unix_amd64 as happyx
 
