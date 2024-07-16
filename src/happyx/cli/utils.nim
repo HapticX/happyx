@@ -281,7 +281,7 @@ proc compileProject*(): ProjectData {. discardable .} =
   case result.projectType:
   of ptSPA, ptSPA_PWA:
     result.components = findAllComponentsNim(getCurrentDir() / result.srcDir)
-    echo result.components
+    # echo result.components
     result.process = startProcess(
       "nim", getCurrentDir() / result.srcDir,
       [
