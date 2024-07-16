@@ -237,44 +237,44 @@ template answer*(
       h[key] = val
   # HTTPX
   when enableHttpx:
-    var headersArr: seq[string] = @[]
+    var headersArr = ""
     for key, value in h.pairs():
-      headersArr.add(key & ':' & value)
+      headersArr &= key & ':' & value & "\r\n"
     when declared(outCookies):
       for cookie in outCookies:
-        headersArr.add(cookie)
+        headersArr &= cookie & "\r\n"
     if contentLength.isSome:
       # useful for file answers
       when declared(statusCode):
         when statusCode is int:
-          req.send(statusCode.HttpCode, $message, contentLength, headersArr.join("\r\n"))
+          req.send(statusCode.HttpCode, $message, contentLength, headersArr)
         else:
-          req.send(code, $message, contentLength, headersArr.join("\r\n"))
+          req.send(code, $message, contentLength, headersArr)
       else:
-        req.send(code, $message, contentLength, headersArr.join("\r\n"))
+        req.send(code, $message, contentLength, headersArr)
     else:
       when declared(statusCode):
         when statusCode is int:
-          req.send(statusCode.HttpCode, $message, headersArr.join("\r\n"))
+          req.send(statusCode.HttpCode, $message, headersArr)
         else:
-          req.send(code, $message, headersArr.join("\r\n"))
+          req.send(code, $message, headersArr)
       else:
-        req.send(code, $message, headersArr.join("\r\n"))
+        req.send(code, $message, headersArr)
   # HTTP BEAST
   elif enableHttpBeast:
-    var headersArr: seq[string] = @[]
+    var headersArr = ""
     for key, value in h.pairs():
-      headersArr.add(key & ':' & value)
+      headersArr &= key & ':' & value & "\r\n"
     when declared(outCookies):
       for cookie in outCookies:
-        headersArr.add(cookie)
+        headersArr &= cookie & "\r\n"
     when declared(statusCode):
       when statusCode is int:
-        req.send(statusCode.HttpCode, $message, headersArr.join("\r\n"))
+        req.send(statusCode.HttpCode, $message, headersArr)
       else:
-        req.send(code, $message, headersArr.join("\r\n"))
+        req.send(code, $message, headersArr)
     else:
-      req.send(code, $message, headersArr.join("\r\n"))
+      req.send(code, $message, headersArr)
   # ASYNC HTTP SERVER / MICRO ASYNC HTTP SERVER
   else:
     when declared(outCookies):
@@ -579,6 +579,7 @@ macro routes*(server: Server, body: untyped = newStmtList()): untyped =
         ),
     )
     caseRequestMethodsStmt = newNimNode(nnkCaseStmt)
+    # caseRequestMethodsStmt = newNimNode(nnkIfStmt)
     methodTable = newTable[string, NimNode]()
     finalize = newStmtList()
     setup = newStmtList()
@@ -587,7 +588,7 @@ macro routes*(server: Server, body: untyped = newStmtList()): untyped =
 
   when enableHttpx or enableHttpBeast:
     var path = newCall("decodeUrl", newNimNode(nnkBracketExpr).add(
-      newCall("split", newCall("get", newCall("path", ident"req")), newLit"?"),
+      newCall("split", newCall("get", newCall("path", ident"req")), newLit('?')),
       newLit(0)
     ))
     let
@@ -1085,18 +1086,22 @@ macro routes*(server: Server, body: untyped = newStmtList()): untyped =
       "handleJvmRequest", ident"self", ident"req", ident"urlPath"
     ))
 
-  when not (exportPython or exportJvm or defined(napibuild)):
-    var returnStmt = newStmtList(newNimNode(nnkReturnStmt).add(newLit""))
-    detectReturnStmt(returnStmt)
-    methodTable.mgetOrPut(
-      "OPTIONS", newNimNode(nnkIfStmt)
-    ).add(exportRouteArgs(pathIdent, newLit"/{p:path}", returnStmt))
+  # when not (exportPython or exportJvm or defined(napibuild)):
+  #   var returnStmt = newStmtList(newNimNode(nnkReturnStmt).add(newLit""))
+  #   detectReturnStmt(returnStmt)
+  #   methodTable.mgetOrPut(
+  #     "OPTIONS", newNimNode(nnkIfStmt)
+  #   ).add(exportRouteArgs(pathIdent, newLit"/{p:path}", returnStmt))
 
   for key in methodTable.keys():
     caseRequestMethodsStmt.add(newNimNode(nnkOfBranch).add(
       newLit(parseEnum[HttpMethod](key)),
       methodTable[key]
     ))
+    # caseRequestMethodsStmt.add(newNimNode(nnkElifBranch).add(
+    #   newCall("==", reqMethod, newLit(parseEnum[HttpMethod](key))),
+    #   methodTable[key]
+    # ))
   
   for ifBranch in staticDirs:
     methodTable.mgetOrPut("GET", newNimNode(nnkIfStmt)).add(ifBranch)
@@ -1151,30 +1156,42 @@ macro routes*(server: Server, body: untyped = newStmtList()): untyped =
     else:
       newEmptyNode(),
     setup,
-    newProc(
-      ident"__wsError",
-      [newEmptyNode(), newIdentDefs(wsClientI, wsType)],
-      wsError,
-      nnkTemplateDef
-    ),
-    newProc(
-      ident"__wsClosed",
-      [newEmptyNode(), newIdentDefs(wsClientI, wsType)],
-      wsClosedConnection,
-      nnkTemplateDef
-    ),
-    newProc(
-      ident"__wsConnect",
-      [newEmptyNode(), newIdentDefs(wsClientI, wsType)],
-      wsNewConnection,
-      nnkTemplateDef
-    ),
-    newProc(
-      ident"__wsMismatchProtocol",
-      [newEmptyNode(), newIdentDefs(wsClientI, wsType)],
-      wsMismatchProtocol,
-      nnkTemplateDef
-    ),
+    if stmtList.isIdentUsed(ident"__wsError"):
+      newProc(
+        ident"__wsError",
+        [newEmptyNode(), newIdentDefs(wsClientI, wsType)],
+        wsError,
+        nnkTemplateDef
+      )
+    else:
+      newEmptyNode(),
+    if stmtList.isIdentUsed(ident"__wsClosed"):
+      newProc(
+        ident"__wsClosed",
+        [newEmptyNode(), newIdentDefs(wsClientI, wsType)],
+        wsClosedConnection,
+        nnkTemplateDef
+      )
+    else:
+      newEmptyNode(),
+    if stmtList.isIdentUsed(ident"__wsConnect"):
+      newProc(
+        ident"__wsConnect",
+        [newEmptyNode(), newIdentDefs(wsClientI, wsType)],
+        wsNewConnection,
+        nnkTemplateDef
+      )
+    else:
+      newEmptyNode(),
+    if stmtList.isIdentUsed(ident"__wsMismatchProtocol"):
+      newProc(
+        ident"__wsMismatchProtocol",
+        [newEmptyNode(), newIdentDefs(wsClientI, wsType)],
+        wsMismatchProtocol,
+        nnkTemplateDef
+      )
+    else:
+      newEmptyNode(),
     procStmt,
     newProc(
       ident"finalizeProgram",
