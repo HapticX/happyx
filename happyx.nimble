@@ -2,7 +2,7 @@
 
 description = "Macro-oriented asynchronous web-framework written with ♥"
 author = "HapticX"
-version = "4.3.1"
+version = "4.4.0"
 license = "MIT"
 srcDir = "src"
 installExt = @["nim"]
@@ -18,7 +18,7 @@ requires "checksums >= 0.1.0"
 requires "cligen >= 1.6.14"
 requires "illwill#2fe96f5c5a6e216e84554d92090ce3d47460667a"
 # Regular expressions (only compile time)
-requires "regex#199e696a1b0e0db72e2e5a657926e5b944e6ae2d"
+requires "regex#head"
 # alternative HTTP servers
 requires "httpx >= 0.3.7"
 requires "microasynchttpserver >= 0.11.0"

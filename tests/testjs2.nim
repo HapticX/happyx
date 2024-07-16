@@ -11,24 +11,35 @@ var d = t.Node
 echo d.TagRef.onlyChildren
 echo cast[TagRef](d).onlyChildren
 
+var lazyTest = buildHtml:
+  lazy:
+    "Hello, world!"
+    lazy:
+      "Other lazy"
+
 app.routes:
   "/":
-    component HelloWorld(counter = 1.0)
-    component HelloWorld(counter = 2.0)
-    component HelloWorld(counter = 4.0)
-    component HelloWorld(counter = 8.0)
-    component HelloWorld(counter = 16.0)
+    HelloWorld(counter = 1.0)
+    HelloWorld(counter = 2.0)
+    HelloWorld(counter = 4.0)
+    HelloWorld(counter = 8.0)
+    HelloWorld(counter = 16.0)
     tagTextarea(style = "font-weight: 500; margin-bottom: 10px;"):
       "Hello, world"
+    lazy:
+      "Hello, world!"
+      lazy:
+        "Other lazy"
+      {$lazyTest}
   
   "/slots":
-    component CompWithSlot:
+    CompWithSlot:
       "hello, world!"
-    component CompWithSlot(counter = 100):
+    CompWithSlot(counter = 100):
       "Hello"
   
   "/nested":
-    component NestedComponent2
+    NestedComponent2
 
   "/visit":
     script(src="https://cdn.tailwindcss.com")  # Tailwind CSS :D
@@ -75,7 +86,7 @@ app.routes:
           {i}
           @click:
             echo i
-      component ComponentFor(counter = 5)
+      ComponentFor(counter = 5)
       {someArg}
   
   "/asd":

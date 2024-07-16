@@ -165,7 +165,7 @@ proc useComponent*(statement: NimNode, inCycle, inComponent: bool,
       else:
         newEmptyNode()
     hasGenerics = generics.kind != nnkEmpty
-    componentName = fmt"comp{uniqueId.value}{uniqueId.value + 2}{uniqueId.value * 2}{uniqueId.value + 7}"
+    componentName = fmt"comp{uniqueId.value}"
     componentNameIdent =
       if cycleTmpVar == "" and compTmpVar.kind == nnkEmpty:
         newLit(componentName)
@@ -678,6 +678,26 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
           lineInfoObj(statement[1])
         )
       result.add(newCall("tagFromString", node))
+    
+    elif statement.kind == nnkCall and statement[0] == ident"lazy" and statement.len == 2 and statement[1].kind == nnkStmtList:
+      # result.add(newCall("initTag", newLit"div", newCall("@", newNimNode(nnkBracket).add(newStmtList(
+      #   newLetStmt(ident"_lazy", newCall("initTag", newLit"div")),
+      #   newNimNode(nnkAsgn).add(newDotExpr(ident"_lazy", ident"lazy"), newLit(true)),
+      #   newCall("add", ident"_lazy", newCall("buildHtml", statement[1])),
+      #   ident"_lazy"
+      # )))))
+      result.add(
+        # newCall("initTag", newLit"div", newCall("@", newNimNode(nnkBracket).add(
+          newCall("lazyTag", newLambda(
+            newStmtList(
+              # newCall("buildHtml", statement[1]),
+              buildHtmlProcedure(ident"tDiv", statement[1], inComponent, componentName, inCycle, cycleTmpVar, compTmpVar, cycleVars),
+            ),
+            @[ident"TagRef"])
+          )
+        )# ), newLit(true)
+      # ))
+      # echo result[^1].toStrLit
 
     elif statement.kind == nnkCall and statement[0].kind != nnkPrefix:
       let

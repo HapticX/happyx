@@ -51,6 +51,11 @@ type
     plPython = "python",
     plJavaScript = "javascript",
     plTypeScript = "typescript"
+  ComponentData* = object
+    name*: string
+    parent*: string
+    file*: string
+    fields*: seq[tuple[name, kind, default: string, optional: bool]]
   ProjectData* = object
     process*: Process
     mainFile*: string  ## Main file without extension
@@ -60,6 +65,7 @@ type
     assetsDir*: string  ## Assets directory
     buildDir*: string  ## Build directory
     language*: ProgrammingLanguage
+    components*: seq[ComponentData]
     name*: string
   GodEyeData* = object
     needReload*: ptr bool
@@ -220,6 +226,48 @@ proc hasComp(tree: XmlNode, usage: var int, comp: string) =
     i.hasComp(usage, comp)
 
 
+proc fetchComponentsNimFrom(source: string): seq[ComponentData] =
+  result = @[]
+  for i in source.findAll(re2"(\n|\A)(component[^:]+:[\s\S]+?)(?=(component|\z))"):
+    let comp = source[i.boundaries]
+    
+    var m: RegexMatch2
+    discard comp.find(re2"component\s*(\w+)\s*(of\s*(\w+))?", m)
+    var component = ComponentData(name: comp[m.group(0)])
+
+    for i in comp.findAll(re2(r"(\A|\n)[\t ]*(\*)?(\w+)[ \t]*:(?!=)[ \t]*(([^\n=]+)=([\t ]*[^\n]+)|([^\n]+))", {regexMultiline})):
+      let optional = i.group(1).len > 0
+      let name = comp[i.group(2)]
+      let kind =
+        if i.group(4).len > 0:
+          comp[i.group(4)]
+        else:
+          comp[i.group(6)]
+      let default =
+        if i.group(5).len > 0:
+          comp[i.group(5)]
+        else:
+          ""
+      component.fields.add((name: name, kind: kind, default: default, optional: optional))
+    
+    if m.group(2).len > 0:
+      component.parent = comp[m.group(2)]
+    result.add(component)
+
+proc findAllComponentsNim(folder: string): seq[ComponentData] =
+  result = @[]
+  var f: File
+  for file in walkDirRec(folder):
+    let (dir, name, ext) = file.splitFile()
+    if ext == ".nim":
+      f = open(file)
+      for i in fetchComponentsNimFrom(f.readAll()):
+        var c = i
+        c.file = file
+        result.add(c)
+      f.close()
+
+
 proc compileProject*(): ProjectData {. discardable .} =
   ## Compiling Project
   result = readConfig()
@@ -232,6 +280,8 @@ proc compileProject*(): ProjectData {. discardable .} =
 
   case result.projectType:
   of ptSPA, ptSPA_PWA:
+    result.components = findAllComponentsNim(getCurrentDir() / result.srcDir)
+    # echo result.components
     result.process = startProcess(
       "nim", getCurrentDir() / result.srcDir,
       [
