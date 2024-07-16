@@ -525,7 +525,7 @@ macro buildHtml*(html: untyped): untyped =
     result.add(newLit(true))
 
 
-template thunkHtml*(body: untyped): proc(): TagRef =
+template lazyHtml*(body: untyped): proc(): TagRef =
   proc(): TagRef =
     result = buildHtml:
       body
@@ -533,7 +533,7 @@ template thunkHtml*(body: untyped): proc(): TagRef =
     result.onlyChildren = true
 
 
-template thunkHtmls*(body: untyped): seq[proc(): TagRef] =
+template lazyHtmls*(body: untyped): seq[proc(): TagRef] =
   block:
     var res: seq[proc(): TagRef]
     template html(b: untyped) =

@@ -1,7 +1,7 @@
 import ../src/happyx
 import std/asyncjs
 
-let htmlProcs = thunkHtmls:
+let htmlProcs = lazyHtmls:
   html:
     tSpan: "front"
   html:
@@ -104,10 +104,10 @@ appRoutes("app"):
       tDiv(id="trial2", class="no-print", style="color: red"):
         "hello again"
   "/issues/303":
-    "counts as thunks:"
+    "counts as lazies:"
     for i in 1..5:
       tDiv: countFactory()
-    "counts as components in thunks:"
+    "counts as components in lazies:"
     nim: counter = 0
     for i in 1..5:
       for j in 1..2:
