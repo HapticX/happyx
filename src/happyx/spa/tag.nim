@@ -50,6 +50,8 @@ when defined(js):
       children*: seq[VmTagRef]
       isText*: bool  ## Ignore attributes and children when true
       onlyChildren*: bool  ## Ignore self and shows only children
+      lazyFunc*: proc(): TagRef
+      lazy*: bool
 else:
   type
     TagRef* = ref object
