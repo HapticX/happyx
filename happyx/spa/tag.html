@@ -61,7 +61,9 @@
   args*: seq[string]
   children*: seq[TagRef]
   isText*: bool              ## Ignore attributes and children when true
-  onlyChildren*: bool        ## Ignore self and shows only children">TagRef</a></li>
+  onlyChildren*: bool        ## Ignore self and shows only children
+  lazyFunc*: proc (): TagRef
+  lazy*: bool">TagRef</a></li>
 
     </ul>
   </details>
@@ -151,6 +153,10 @@
         onlyChildren: bool = false): TagRef</a></li>
 
 </ul>
+<ul class="simple nested-toc-section">lazyTag
+  <li><a class="reference" href="#lazyTag%2Cproc%29" title="lazyTag(lazy: proc (): TagRef): TagRef">lazyTag(lazy: proc (): TagRef): TagRef</a></li>
+
+</ul>
 <ul class="simple nested-toc-section">lvl
   <li><a class="reference" href="#lvl%2CTagRef" title="lvl(self: TagRef): int">lvl(self: TagRef): int</a></li>
 
@@ -213,7 +219,9 @@
   <span class="Identifier">args</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">]</span>
   <span class="Identifier">children</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a><span class="Other">]</span>
   <span class="Identifier">isText</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>              <span class="Comment">## Ignore attributes and children when true</span>
-  <span class="Identifier">onlyChildren</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>        <span class="Comment">## Ignore self and shows only children</span></pre></dt>
+  <span class="Identifier">onlyChildren</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>        <span class="Comment">## Ignore self and shows only children</span>
+  <span class="Identifier">lazyFunc</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a>
+  <span class="Identifier">lazy</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span></pre></dt>
   <dd>
     
     
@@ -473,6 +481,17 @@
 </div>
 
 </div>
+<div id="lazyTag-procs-all">
+  <div id="lazyTag,proc)">
+  <dt><pre><span class="Keyword">proc</span> <a href="#lazyTag%2Cproc%29"><span class="Identifier">lazyTag</span></a><span class="Other">(</span><span class="Identifier">lazy</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a><span class="Other">)</span><span class="Other">:</span> <a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+  <dd>
+    
+    Initializes a new lazy HTML tag
+    
+  </dd>
+</div>
+
+</div>
 <div id="lvl-procs-all">
   <div id="lvl,TagRef">
   <dt><pre><span class="Keyword">func</span> <a href="#lvl%2CTagRef"><span class="Identifier">lvl</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
@@ -573,7 +592,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2024-07-10 08:21:42 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2024-07-16 17:34:12 UTC</small>
       </div>
     </div>
   </div>
