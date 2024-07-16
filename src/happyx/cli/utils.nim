@@ -228,8 +228,8 @@ proc hasComp(tree: XmlNode, usage: var int, comp: string) =
 
 proc fetchComponentsNimFrom(source: string): seq[ComponentData] =
   result = @[]
-  for i in data.findAll(re2"(\n|\A)(component[^:]+:[\s\S]+?)(?=(component|\z))"):
-    let comp = data[i.boundaries]
+  for i in source.findAll(re2"(\n|\A)(component[^:]+:[\s\S]+?)(?=(component|\z))"):
+    let comp = source[i.boundaries]
     
     var m: RegexMatch2
     discard comp.find(re2"component\s*(\w+)\s*(of\s*(\w+))?", m)
@@ -262,8 +262,9 @@ proc findAllComponentsNim(folder: string): seq[ComponentData] =
     if ext == ".nim":
       f = open(file)
       for i in fetchComponentsNimFrom(f.readAll()):
-        i.file = file
-        result.add(i)
+        var c = i
+        c.file = file
+        result.add(c)
       f.close()
 
 
