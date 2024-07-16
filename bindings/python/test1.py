@@ -117,9 +117,10 @@ def on_not_found():
 
 @app.middleware
 def on_not_found(req: HttpRequest):
-    print(f"Middleware handled path at [{req.http_method()}]:", req.path())
-    print(f"Middleware detect these headers: {req.headers()}")
-    print(f"Middleware detect this body: {req.body()}")
+    # print(f"Middleware handled path at [{req.http_method()}]:", req.path())
+    # print(f"Middleware detect these headers: {req.headers()}")
+    # print(f"Middleware detect this body: {req.body()}")
+    pass
 
 
 app.start()

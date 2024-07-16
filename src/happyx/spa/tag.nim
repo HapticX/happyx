@@ -40,6 +40,8 @@ when defined(js):
   type
     TagRef* = ref object of Element
       onlyChildren*: bool  ## Ignore self and shows only children
+      lazyFunc*: proc(): TagRef
+      lazy*: bool
     VmTagRef* = ref object
       name*: string
       parent*: VmTagRef
@@ -91,11 +93,11 @@ const
 
 when defined(js):
   {.emit: """//js
-  const _originAddEventListener = Element.prototype.addEventListener;
-  const _originRemoveEventListener = Element.prototype.removeEventListener;
-  const _originCloneNode = Element.prototype.cloneNode;
+  const _originAddEventListener = Node.prototype.addEventListener;
+  const _originRemoveEventListener = Node.prototype.removeEventListener;
+  const _originCloneNode = Node.prototype.cloneNode;
 
-  Element.prototype.__getEventIndex = function(target, targetArgs) {
+  Node.prototype.__getEventIndex = function(target, targetArgs) {
     if (!this._eventListeners)
       this._eventListeners = [];
     return this._eventListeners.findIndex(args => {
@@ -105,7 +107,7 @@ when defined(js):
     });
   };
 
-  Element.prototype.getEventListeners = function() {
+  Node.prototype.getEventListeners = function() {
     if (!this._eventListeners)
       this._eventListeners = [];
     return this._eventListeners;
@@ -113,27 +115,32 @@ when defined(js):
 
   const cloneEvents = (source, element, deep) => {
     for (const args of source.getEventListeners())
-      Element.prototype.addEventListener.apply(element, args)
+      Node.prototype.addEventListener.apply(element, args)
+    
+    if (source.lazy && !element.lazy){
+      element.lazy = source.lazy;
+      element.lazyFunc = source.lazyFunc;
+    }
 
     if (deep) {
       for (let i = 0; i < source.childNodes.length; i++) {
         const sourceNode = source.childNodes[i];
         const targetNode = element.childNodes[i];
-        if (sourceNode instanceof Element && targetNode instanceof Element) {
+        if (sourceNode instanceof Node && targetNode instanceof Node) {
           cloneEvents(sourceNode, targetNode, deep);
         }
       }
     }
   };
 
-  Element.prototype.addEventListener = function() {
+  Node.prototype.addEventListener = function() {
     if (!this._eventListeners)
       this._eventListeners = [];
     this._eventListeners.push(arguments);
     return _originAddEventListener.apply(this, arguments);
   };
 
-  Element.prototype.removeEventListener = function() {
+  Node.prototype.removeEventListener = function() {
     if (!this._eventListeners)
       this._eventListeners = [];
     const eventIndex = this.__getEventIndex(arguments);
@@ -142,11 +149,11 @@ when defined(js):
     return _originRemoveEventListener.apply(this, arguments);
   };
 
-  Element.prototype.cloneNode = function(deep) {
+  Node.prototype.cloneNode = function(deep) {
     if (!this._eventListeners)
       this._eventListeners = [];
     const clonedNode = _originCloneNode.apply(this, arguments);
-    if (clonedNode instanceof Element)
+    if (clonedNode instanceof Node)
       cloneEvents(this, clonedNode, deep);
     return clonedNode;
   };
@@ -311,6 +318,21 @@ proc initTag*(name: string, isText: bool, children: seq[TagRef] = @[],
     )
     for child in children:
       result.add(child)
+
+
+proc lazyTag*(lazy: proc(): TagRef): TagRef =
+  ## Initializes a new lazy HTML tag
+  when defined(js):
+    result = document.createComment("").TagRef
+    result.onlyChildren = false
+    result.lazy = true
+    result.lazyFunc = lazy
+  else:
+    result = TagRef(
+      name: "div", isText: false, parent: nil,
+      attrs: newStringTable(), children: @[], args: @[],
+      onlyChildren: false, lazyFunc: lazy, lazy: true
+    )
 
 
 proc tag*(name: string): TagRef {.inline.} =
@@ -565,7 +587,7 @@ func `$`*(self: TagRef): string =
   ## and includes any attributes specified for the tag.
   ## If the tag is a text tag, the function simply returns the tag's name.
   when defined(js):
-    return $self.outerHTML
+    $self.outerHTML
   else:
     let
       level = "  ".repeat(self.lvl)

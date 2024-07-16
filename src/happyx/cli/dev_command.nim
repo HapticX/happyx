@@ -70,7 +70,7 @@ proc devCommand*(host: string = "127.0.0.1", port: int = 5000,
         "<script>" &
         fmt"let socket = new WebSocket('ws://' + window.location.host + '/hcr');" &
         "\nsocket.onmessage = (event) => {\n" &
-        "  if(event.data === 'true'){\n    window.location.reload();\n  }\n" &
+        "  if(event.data === '1'){\n    window.location.reload();\n  }\n" &
         "};\n\n" &
         "function intervalSending(){\n  socket.send('reload')\n}\n\n" &
         "setInterval(intervalSending, 1000);\n" &
@@ -82,9 +82,9 @@ proc devCommand*(host: string = "127.0.0.1", port: int = 5000,
       if wsData == "reload":
         if needReload:
           needReload = false
-          await wsClient.send("true")
+          await wsClient.send("1")
         else:
-          await wsClient.send("false")
+          await wsClient.send("0")
     
     get "/{file:path}":
       var result = ""

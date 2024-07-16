@@ -301,6 +301,16 @@ when defined(js):
           dom.childNodes[i].replaceWith(vdom.childNodes[i].cloneNode(true))
         if vdom.childNodes[i].nodeType != NodeType.TextNode:
           diff(vdom.childNodes[i].TagRef, dom.childNodes[i])
+  proc prerenderLazyProcs*(tag: TagRef) {.exportc: "prrndr".} =
+    echo tag.nodeType, ", ", tag.lazy
+    if tag.lazy:
+      let t = tag.lazyFunc()
+      t.prerenderLazyProcs()
+      tag.parentElement.insertBefore(t, tag)
+      tag.remove()
+    else:
+      for t in tag.childNodes:
+        t.TagRef.prerenderLazyProcs()
   proc renderVdom*(app: App, tag: TagRef, force: bool = false) {.exportc: "rndrvd".} =
     ## Rerender DOM with VDOM
     var realDom = document.getElementById(app.appId).Node
@@ -308,6 +318,10 @@ when defined(js):
     for i in rendererHandlers:
       if i.key == "beforeRendered":
         i.p()
+    # let tempTag = tag.cloneNode(true).TagRef
+    # tempTag.prerenderVdomProcs()
+    # tempTag.diff(realDom)
+    tag.prerenderLazyProcs()
     tag.diff(realDom)
     for i in rendererHandlers:
       if i.key == "rendered":
@@ -764,7 +778,6 @@ when enableAppRouting:
           newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
             newCall("hasAttribute", ident"activeElement", newLit"id"),
             newStmtList(
-              newCall("echo", newLit(100)),
               newLetStmt(
                 ident"_activeElement_",
                 newCall("getElementById", ident"document", newCall("id", ident"activeElement"))
