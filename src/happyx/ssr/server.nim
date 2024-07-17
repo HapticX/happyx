@@ -243,6 +243,8 @@ template answer*(
     when declared(outCookies):
       for cookie in outCookies:
         headersArr &= cookie & "\r\n"
+    if headersArr.len > 0:
+      headersArr = headersArr[0..^3]
     if contentLength.isSome:
       # useful for file answers
       when declared(statusCode):
@@ -268,6 +270,8 @@ template answer*(
     when declared(outCookies):
       for cookie in outCookies:
         headersArr &= cookie & "\r\n"
+    if headersArr.len > 0:
+      headersArr = headersArr[0..^3]
     when declared(statusCode):
       when statusCode is int:
         req.send(statusCode.HttpCode, $message, headersArr)
