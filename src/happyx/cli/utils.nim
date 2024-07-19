@@ -51,10 +51,14 @@ type
     plPython = "python",
     plJavaScript = "javascript",
     plTypeScript = "typescript"
+  ComponentKind* {.pure, size: sizeof(int8).} = enum
+    ckComponent,
+    ckFunctional
   ComponentData* = object
     name*: string
     parent*: string
     file*: string
+    kind*: ComponentKind
     fields*: seq[tuple[name, kind, default: string, optional: bool]]
   ProjectData* = object
     process*: Process
@@ -226,46 +230,87 @@ proc hasComp(tree: XmlNode, usage: var int, comp: string) =
     i.hasComp(usage, comp)
 
 
-proc fetchComponentsNimFrom(source: string): seq[ComponentData] =
-  result = @[]
-  for i in source.findAll(re2"(\n|\A)(component[^:]+:[\s\S]+?)(?=(component|\z))"):
-    let comp = source[i.boundaries]
+# proc fetchComponentsNimFrom(source: string): seq[ComponentData] =
+#   result = @[]
+#   for i in source.findAll(re2"(\n|\A)(component[^:]+:[\s\S]+?)(?=(component|\z))"):
+#     let comp = source[i.boundaries]
     
-    var m: RegexMatch2
-    discard comp.find(re2"component\s*(\w+)\s*(of\s*(\w+))?", m)
-    var component = ComponentData(name: comp[m.group(0)])
+#     var m: RegexMatch2
+#     discard comp.find(re2"component\s*(\w+)\s*(of\s*(\w+))?", m)
+#     var component = ComponentData(name: comp[m.group(0)], kind: ckComponent)
 
-    for i in comp.findAll(re2(r"(\A|\n)[\t ]*(\*)?(\w+)[ \t]*:(?!=)[ \t]*(([^\n=]+)=([\t ]*[^\n]+)|([^\n]+))", {regexMultiline})):
-      let optional = i.group(1).len > 0
-      let name = comp[i.group(2)]
-      let kind =
-        if i.group(4).len > 0:
-          comp[i.group(4)]
-        else:
-          comp[i.group(6)]
-      let default =
-        if i.group(5).len > 0:
-          comp[i.group(5)]
-        else:
-          ""
-      component.fields.add((name: name, kind: kind, default: default, optional: optional))
+#     for i in comp.findAll(re2(r"(\A|\n)[\t ]*(\*)?(\w+)[ \t]*:(?!=)[ \t]*(([^\n=]+)=([\t ]*[^\n]+)|([^\n]+))", {regexMultiline})):
+#       let optional = i.group(1).len > 0
+#       let name = comp[i.group(2)]
+#       let kind =
+#         if i.group(4).len > 0:
+#           comp[i.group(4)]
+#         else:
+#           comp[i.group(6)]
+#       let default =
+#         if i.group(5).len > 0:
+#           comp[i.group(5)]
+#         else:
+#           ""
+#       component.fields.add((name: name, kind: kind, default: default, optional: optional))
     
-    if m.group(2).len > 0:
-      component.parent = comp[m.group(2)]
-    result.add(component)
+#     if m.group(2).len > 0:
+#       component.parent = comp[m.group(2)]
+#     result.add(component)
+#   for i in source.findAll(re2"(\n|\A)(proc[^\)]+?\)\s*:\s*TagRef[\s\S]+?)(?=(proc|\z))"):
+#     let comp = source[i.boundaries]
+    
+#     var m: RegexMatch2
+#     discard comp.find(re2"proc\s*([^\(]+)\s*\(([^\)]*?)\)\s*:\s*TagRef", m)
+#     var component = ComponentData(name: comp[m.group(0)].replace("*", ""), kind: ckFunctional)
+#     let arguments = comp[m.group(1)]
 
-proc findAllComponentsNim(folder: string): seq[ComponentData] =
-  result = @[]
-  var f: File
-  for file in walkDirRec(folder):
-    let (dir, name, ext) = file.splitFile()
-    if ext == ".nim":
-      f = open(file)
-      for i in fetchComponentsNimFrom(f.readAll()):
-        var c = i
-        c.file = file
-        result.add(c)
-      f.close()
+
+#     for i in arguments.findAll(re2(r"(\w+(?=\s*:\s*\w+)|(?=,\s*|\A)\w+(?=,))(\s*:\s*([^,;=]+))?(\s*=\s*([\s\S]+?)(?=[;,]\s*\w|\z))?", {regexMultiline})):
+#       echo 0, " => ", arguments[i.group(0)]
+#       echo 1, " => ", arguments[i.group(1)]
+#       echo 2, " => ", arguments[i.group(2)]
+#       echo 3, " => ", arguments[i.group(3)]
+#       echo 4, " => ", arguments[i.group(4)]
+#       echo 5, " => ", arguments[i.group(5)]
+#       echo 6, " => ", arguments[i.group(6)]
+#       let optional = i.group(4).len > 0
+#       let name = arguments[i.group(0)]
+#       let kind =
+#         if i.group(2).len > 0:
+#           arguments[i.group(2)].strip()
+#         else:
+#           ""
+#       let default =
+#         if i.group(4).len > 0:
+#           arguments[i.group(4)]
+#         else:
+#           ""
+#       component.fields.add((name: name, kind: kind, default: default, optional: optional))
+    
+#     var lastKind = ""
+#     for i in countdown(component.fields.len-1, 0):
+#       if component.fields[i].kind == "" and lastKind != "":
+#         component.fields[i].kind = lastKind
+#       elif component.fields[i].kind != "":
+#         lastKind = component.fields[i].kind
+    
+#     if m.group(2).len > 0:
+#       component.parent = comp[m.group(2)]
+#     result.add(component)
+
+# proc findAllComponentsNim(folder: string): seq[ComponentData] =
+#   result = @[]
+#   var f: File
+#   for file in walkDirRec(folder):
+#     let (dir, name, ext) = file.splitFile()
+#     if ext == ".nim":
+#       f = open(file)
+#       for i in fetchComponentsNimFrom(f.readAll()):
+#         var c = i
+#         c.file = file
+#         result.add(c)
+#       f.close()
 
 
 proc compileProject*(): ProjectData {. discardable .} =
@@ -280,7 +325,7 @@ proc compileProject*(): ProjectData {. discardable .} =
 
   case result.projectType:
   of ptSPA, ptSPA_PWA:
-    result.components = findAllComponentsNim(getCurrentDir() / result.srcDir)
+    # result.components = findAllComponentsNim(getCurrentDir() / result.srcDir)
     # echo result.components
     result.process = startProcess(
       "nim", getCurrentDir() / result.srcDir,
