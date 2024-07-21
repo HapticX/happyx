@@ -152,6 +152,9 @@ macro js*(obj: untyped): untyped =
   ))
 
 
+macro `@>`*(body: untyped): untyped = newCall("js", body)
+
+
 macro withInterval*(time: static[int], ident, body: untyped): untyped =
   ## Executes code repeatedly with a specified interval, similar to `setInterval` in JS.
   ## 
