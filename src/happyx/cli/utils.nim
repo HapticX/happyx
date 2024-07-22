@@ -69,7 +69,7 @@ type
     assetsDir*: string  ## Assets directory
     buildDir*: string  ## Build directory
     language*: ProgrammingLanguage
-    components*: seq[ComponentData]
+    projectComponents*: seq[ComponentData]
     name*: string
   GodEyeData* = object
     needReload*: ptr bool
