@@ -2,6 +2,7 @@ import
   std/macros,
   std/macrocache,
   std/strutils,
+  ../../spa/renderer,
   ./utils,
   ../../private/macro_utils
 
