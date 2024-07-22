@@ -122,6 +122,7 @@ var
   scopedCycleCounter*: int = 0
 when enableLiveViews and not defined(js):
   var liveviewRoutes* = newTable[string, proc(): TagRef]()
+  var components* = newTable[string, BaseComponent]()
 when enableDefaultComponents:
   var
     componentEventHandlers* = newTable[int, ComponentEventHandler]()
@@ -133,7 +134,6 @@ when enableDefaultComponents:
     var components* = newTable[cstring, BaseComponent]()
   else:
     var
-      components* = newTable[string, BaseComponent]()
       requestResult* = newTable[string, string]()
       componentsResult* = newTable[string, string]()
 
