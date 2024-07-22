@@ -1,4 +1,4 @@
 nimTitle	liveviews	happyx/ssr/liveviews/liveviews.html	module src/happyx/ssr/liveviews/liveviews		0
-nim	liveViewsCache	happyx/ssr/liveviews/liveviews.html#liveViewsCache	const liveViewsCache		9
-nim	liveview	happyx/ssr/liveviews/liveviews.html#liveview.m,untyped	macro liveview(body: untyped): untyped		12
-nim	handleLiveViews	happyx/ssr/liveviews/liveviews.html#handleLiveViews,NimNode	proc handleLiveViews(body: NimNode)		18
+nim	liveViewsCache	happyx/ssr/liveviews/liveviews.html#liveViewsCache	const liveViewsCache		10
+nim	liveview	happyx/ssr/liveviews/liveviews.html#liveview.m,untyped	macro liveview(body: untyped): untyped		13
+nim	handleLiveViews	happyx/ssr/liveviews/liveviews.html#handleLiveViews,NimNode	proc handleLiveViews(body: NimNode)		19

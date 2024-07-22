@@ -10,11 +10,11 @@ nim	application	happyx/spa/renderer.html#application	var application		120
 nim	currentRoute	happyx/spa/renderer.html#currentRoute	var currentRoute		121
 nim	scopedCycleCounter	happyx/spa/renderer.html#scopedCycleCounter	var scopedCycleCounter		122
 nim	liveviewRoutes	happyx/spa/renderer.html#liveviewRoutes	var liveviewRoutes		124
-nim	componentEventHandlers	happyx/spa/renderer.html#componentEventHandlers	var componentEventHandlers		127
-nim	currentComponent	happyx/spa/renderer.html#currentComponent	var currentComponent		128
-nim	currentComponentsList	happyx/spa/renderer.html#currentComponentsList	var currentComponentsList		129
-nim	createdComponentsList	happyx/spa/renderer.html#createdComponentsList	var createdComponentsList		130
-nim	components	happyx/spa/renderer.html#components	var components		136
+nim	components	happyx/spa/renderer.html#components	var components		125
+nim	componentEventHandlers	happyx/spa/renderer.html#componentEventHandlers	var componentEventHandlers		128
+nim	currentComponent	happyx/spa/renderer.html#currentComponent	var currentComponent		129
+nim	currentComponentsList	happyx/spa/renderer.html#currentComponentsList	var currentComponentsList		130
+nim	createdComponentsList	happyx/spa/renderer.html#createdComponentsList	var createdComponentsList		131
 nim	requestResult	happyx/spa/renderer.html#requestResult	var requestResult		137
 nim	componentsResult	happyx/spa/renderer.html#componentsResult	var componentsResult		138
 nim	rf	happyx/spa/renderer.html#rf.m,untyped	macro rf(name: untyped): untyped		143
