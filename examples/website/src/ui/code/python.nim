@@ -1,5 +1,5 @@
 const
-  pythonHelloWorldExample* = """from happyxpy import Server
+  pythonHelloWorldExample* = """from happyx import Server
 
 # Create application
 app = Server('127.0.0.1', 5000)
@@ -41,7 +41,7 @@ def handle(user_id: int):
     print(user_id)
     return {'response': user_id}
 """
-  pythonCustomRouteParamType* = """from happyxpy import Server, register_route_param_type
+  pythonCustomRouteParamType* = """from happyx import Server, register_route_param_type
 
 
 app = Server()
@@ -62,7 +62,7 @@ def handle(data: MyUniqueIdentifier):
 
 app.start()
 """
-  pySsrAdvancedHelloWorld* = """from happyxpy import Server, JsonResponse, Response
+  pySsrAdvancedHelloWorld* = """from happyx import Server, JsonResponse, Response
 
 
 app = Server('127.0.0.1', 5000)
@@ -110,7 +110,7 @@ def test_all():
 
 app.start()
 """
-  pySsrAdditionalRoutes* = """from happyxpy import Server, HttpRequest
+  pySsrAdditionalRoutes* = """from happyx import Server, HttpRequest
 
 
 app = Server("127.0.0.1", 5000)
@@ -177,7 +177,7 @@ def read_users():
 
 app.start()
 """
-  pyMongoDb* = """from happyxpy import Server
+  pyMongoDb* = """from happyx import Server
 from pymongo import MongoClient
 from datetime import datetime
 
@@ -224,7 +224,7 @@ def read_users():
 
 app.start()
 """
-  pySqlalchemy* = """from happyxpy import Server
+  pySqlalchemy* = """from happyx import Server
 from sqlalchemy import create_engine, Column, Integer, DateTime
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
@@ -280,7 +280,7 @@ def read_users():
 
 app.start()
 """
-  pySqlalchemy1* = """from happyxpy import Server
+  pySqlalchemy1* = """from happyx import Server
 from sqlalchemy import create_engine, Column, Integer, DateTime
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
@@ -337,7 +337,7 @@ def read_users():
 app.start()
 """
   pyPostgreSql* = """import psycopg2
-from happyxpy import Server
+from happyx import Server
 from datetime import datetime
 
 # Connect to postgresql
@@ -407,7 +407,7 @@ def read_users():
 app.start()
 """
   pyPostgreSql1* = """import psycopg2
-from happyxpy import Server
+from happyx import Server
 from datetime import datetime
 
 # Connect to postgresql
@@ -473,7 +473,7 @@ def read_users():
     return response
 
 app.start()"""
-  pyMounting* = """from happyxpy import Server
+  pyMounting* = """from happyx import Server
 
 app = Server()
 profile = Server()

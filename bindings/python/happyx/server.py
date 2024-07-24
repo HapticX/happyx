@@ -1,6 +1,7 @@
 import asyncio
 import platform
-from typing import Callable, Any, List
+from threading import Thread
+from typing import Callable, Any, List, Awaitable
 from re import match
 
 from .constants import SWAGGER_HTML_SOURCE, REDOC_HTML_SOURCE
@@ -9,22 +10,23 @@ _cpu = platform.machine().lower()
 _platform = platform.system().lower()
 
 if _platform == 'windows':
-    import happyxpy.happyx_win as happyx
+    import happyx.happyx_win as happyx
 else:
     if _cpu == 'arm':
-        import happyxpy.happyx_unix_arm as happyx
+        import happyx.happyx_unix_arm as happyx
     elif _cpu in ['arm64', 'aarch64']:
-        import happyxpy.happyx_unix_arm64 as happyx
+        import happyx.happyx_unix_arm64 as happyx
     elif _cpu in ['amd64', 'x86_64']:
-        import happyxpy.happyx_unix_amd64 as happyx
+        import happyx.happyx_unix_amd64 as happyx
     else:
-        import happyxpy.happyx_unix_amd64 as happyx
+        import happyx.happyx_unix_amd64 as happyx
 
 
 Callback = Callable[[Any], Any]
+AsyncCallback = Awaitable[Any]
 
 
-class Server:
+class HappyX:
     """
     Provides HTTP Server made with HappyX
     """
@@ -64,6 +66,7 @@ class Server:
         self.host = host
         self.port = port
         self._server = happyx.new_server(host, port)
+        self._loop = None
         self.path = path
         # OpenAPI docs
         self._swagger_url = swagger_url
@@ -345,7 +348,7 @@ class Server:
         route {str} -- mounting path (default taken from other Server)
         other {Server} -- other server that should be mounted (default is None)
         """
-        if not isinstance(other, Server):
+        if not isinstance(other, HappyX):
             raise ValueError('mounting canceled! Other is not Server')
         if route is None:
             if other.path is None:

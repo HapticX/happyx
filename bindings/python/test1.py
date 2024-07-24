@@ -1,12 +1,12 @@
-from happyxpy import (
+from happyx import (
     FileResponse, HtmlResponse, JsonResponse, HttpRequest, WebSocket,
-    Response, Server, reg_cors, RequestModelBase, __version__
+    Response, HappyX, reg_cors, RequestModelBase, __version__
 )
 
 
-app = Server()
-user = Server()
-sub_user = Server()
+app = HappyX()
+user = HappyX()
+sub_user = HappyX()
 
 print(app)
 
@@ -33,7 +33,7 @@ class Auth(RequestModelBase):
 
 
 @app.websocket('/ws')
-def handle_websocket_connection(ws: WebSocket):
+async def handle_websocket_connection(ws: WebSocket):
     if ws.id() == 2:
         ws.send_text("failure")
         ws.close()
@@ -47,24 +47,24 @@ def handle_websocket_connection(ws: WebSocket):
 
 
 @user.get("/id{userId?}")
-def hello_from_user(userId: int):
+async def hello_from_user(userId: int):
     return f"Hello, {userId} user!"
 
 
 @user.route('/', ['get', 'post'])
-def handle():
+async def handle():
     return "You'll see it only on GET or POST"
 
 
 @user.post("/messages[u]")
-def get_messages(req: HttpRequest, u: User):
+async def get_messages(req: HttpRequest, u: User):
     print(u)
     print(u.first_name, u.identifier)
     return u.to_dict()
 
 
 @sub_user.get("/")
-def test():
+async def test():
     return "hi"
 
 
@@ -75,14 +75,14 @@ reg_cors(
 
 
 @app.get("/")
-def read_root(req: HttpRequest) -> dict:
+async def read_root(req: HttpRequest) -> dict:
     print(req)
     print(req.path())
     return {"Hello": "World"}
 
 
 @app.get("/calc/$i/$j")
-def read_root(i: int, j: int):
+async def read_root(i: int, j: int):
     print("i + j is", i + j)
     return JsonResponse(
         {"hello": "world"},
@@ -91,7 +91,7 @@ def read_root(i: int, j: int):
 
 
 @app.get("/hello_world")
-def read_root(req: HttpRequest, required: bool, optional = 5):
+async def read_root(req: HttpRequest, required: bool, optional = 5):
     """
     # Hello, world!
     Responds **Hello, world!**
@@ -106,7 +106,7 @@ def read_root(req: HttpRequest, required: bool, optional = 5):
 
 
 @app.notfound
-def on_not_found():
+async def on_not_found():
     return HtmlResponse(
         "<h1>Oops! Not found!</h1>",
         headers = {
@@ -116,11 +116,11 @@ def on_not_found():
 
 
 @app.middleware
-def on_not_found(req: HttpRequest):
+async def on_not_found(req: HttpRequest):
     # print(f"Middleware handled path at [{req.http_method()}]:", req.path())
     # print(f"Middleware detect these headers: {req.headers()}")
     # print(f"Middleware detect this body: {req.body()}")
     pass
 
 
-app.start()
+app.run()
