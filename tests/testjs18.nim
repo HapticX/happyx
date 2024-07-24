@@ -73,6 +73,18 @@ var testCounter = remember 0
 testCounter.watch(old, new):
   echo "set testCounter from ", old, " to ", new
 
+let A = buildHtml:
+  tSvg(viewBox="0 0 240 80"):
+    ttText(x="35",y="20", style="fill: black;"): "A: Anyone Here?"
+
+let B = buildHtml:
+  tSvg(viewBox="0 0 240 80"):
+    tText(x="35",y="20", style="fill: black;"): "B: Anyone Here?"
+
+let C = buildHtml:
+  tSvg(viewBox="0 0 240 80"):
+    text(x="35",y="20", style= "fill: black;"): "C: Anyone Here?"
+
 
 appRoutes("app"):
   "/":
@@ -86,6 +98,12 @@ appRoutes("app"):
     for i in 1..5:
       tDiv:{$htmlTags[0]}
       FormatTagHtml(htmlTags[1])
+    {$A}
+    {A}
+    {$B}
+    {B}
+    {$C}
+    {C}
   "/issues/304":
     "in a div"
     tDiv:
