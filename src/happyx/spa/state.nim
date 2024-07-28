@@ -49,7 +49,7 @@ func remember*[T](val: T): State[T] =
   State[T](val: val)
 
 
-func watchImpl[T](state: State[T], o, n: T) =
+func watchImpl*[T](state: State[T], o, n: T) =
   for w in state.watchers:
     w(o, n)
 
