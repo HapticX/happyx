@@ -57,22 +57,15 @@ proc handleLiveViews*(body: NimNode) =
     )
     let
       getMethod = pragmaBlock([ident"gcsafe"], newStmtList(
-        newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
-          newCall("not", newCall("hasKey", ident"liveviewRoutes", path)),
-          newNimNode(nnkAsgn).add(
-            newNimNode(nnkBracketExpr).add(ident"liveviewRoutes", path),
-            newLambda(newStmtList(
-              newCall("buildHtml", newStmtList(
-                head,
-                newCall("body", newStmtList(
-                  newCall("tDiv", newNimNode(nnkExprEqExpr).add(ident"id", newLit"app"), statement),
-                  newCall("tDiv", newNimNode(nnkExprEqExpr).add(ident"id", newLit"scripts"))
-                ))
-              ))
-            ), @[ident"TagRef"])
-          ),
+        newLetStmt(ident"_html", newStmtList(
+          newCall("buildHtml", newStmtList(
+            head,
+            newCall("body", newStmtList(
+              newCall("tDiv", newNimNode(nnkExprEqExpr).add(ident"id", newLit"app"), statement),
+              newCall("tDiv", newNimNode(nnkExprEqExpr).add(ident"id", newLit"scripts"))
+            ))
+          ))
         )),
-        newLetStmt(ident"_html", newCall(newNimNode(nnkBracketExpr).add(ident"liveviewRoutes", path))),
         newCall("add", newNimNode(nnkBracketExpr).add(ident"_html", newLit(1)), newCall("buildHtml", newStmtList(script))),
         newNimNode(nnkReturnStmt).add(ident"_html"),
       ))
