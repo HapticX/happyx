@@ -547,11 +547,11 @@ proc xml2Text*(xml: XmlNode): string =
       result &= "("
       var attrs: seq[string] = @[]
       for key, value in xml.attrs:
-        let k = if key notin NimKeywords: key else: "`" & key & "`"
+        var k = if key notin NimKeywords: key else: "`" & key & "`"
         if value == "":
-          attrs.add(k)
+          attrs.add("\"" & k & "\"")
         else:
-          attrs.add(k & " = \"" & value & "\"")
+          attrs.add("\"" & k & "\" = \"" & value & "\"")
       result &= attrs.join(", ") & ")"
     if xml.len > 0:
       result &= ":"
