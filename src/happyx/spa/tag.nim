@@ -192,12 +192,11 @@ proc add*(self: TagRef, tags: varargs[TagRef]) {.exportc: "tgadd".} =
 when defined(js):
   proc setAttributes(name: string, e: TagRef, attrs: StringTableRef) {.exportc: "stattrs".} =
     if name.toLower() in SvgElements:
-      if attrs.hasKey("class"):
-        let a = cstring(attrs["class"])
-        {.emit: "`e`.setAttributeNS(null, 'class', `a`);".}
       for key, val in attrs.pairs:
-        if key != "class":
-          e.setAttribute(cstring(key), cstring(val))
+        let
+          k = cstring(key)
+          v = cstring(val)
+        {.emit: "`e`.setAttributeNS(null, `k`, `v`);".}
     else:
       for key, val in attrs.pairs:
         e.setAttribute(cstring(key), cstring(val))
