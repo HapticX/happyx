@@ -195,10 +195,13 @@ when defined(js):
     {.emit: "`isSvgElem` = `e` instanceof SVGElement;".}
     if isSvgElem:
       for key, val in attrs.pairs:
-        let
-          k = cstring(key)
-          v = cstring(val)
-        {.emit: "`e`.setAttributeNS('http://www.w3.org/2000/svg', `k`, `v`);".}
+        if key notin ["xmlns"]:
+          let
+            k = cstring(key)
+            v = cstring(val)
+          {.emit: "`e`.setAttributeNS('http://www.w3.org/2000/svg', `k`, `v`);".}
+        else:
+          e.setAttribute(cstring(key), cstring(val))
     else:
       for key, val in attrs.pairs:
         e.setAttribute(cstring(key), cstring(val))
