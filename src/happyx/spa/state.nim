@@ -68,7 +68,7 @@ else:
     if self.watchers.len > 0:
       self.watchImpl(self.val, value)
     self.val = value
-    rerender(hostname, urlPath)
+    rerender(query, queryArr, reqMethod, inCookies, headers, hostname, urlPath)
 
 
 func `$`*[T](self: State[T]): string =
@@ -136,7 +136,7 @@ else:
         self.watchImpl(before, self.val)
       else:
         `op`(self.val, other.val)
-      rerender(hostname, urlPath)
+      rerender(query, queryArr, reqMethod, inCookies, headers, hostname, urlPath)
     template `funcname`*[T](other: T, self: State[T]) =
       if self.watchers.len > 0:
         let before = self.val
@@ -144,7 +144,7 @@ else:
         self.watchImpl(before, self.val)
       else:
         `op`(self.val, other)
-      rerender(hostname, urlPath)
+      rerender(query, queryArr, reqMethod, inCookies, headers, hostname, urlPath)
     template `funcname`*[T](self: State[T], other: T) =
       if self.watchers.len > 0:
         let before = self.val
@@ -152,7 +152,7 @@ else:
         self.watchImpl(before, self.val)
       else:
         `op`(self.val, other)
-      rerender(hostname, urlPath)
+      rerender(query, queryArr, reqMethod, inCookies, headers, hostname, urlPath)
 
 
 template boolOperator(funcname, op: untyped): untyped =
@@ -338,7 +338,7 @@ else:
     if self.watchers.len > 0:
       self.watchImpl(self.val, value)
     self.val = value
-    rerender(hostname, urlPath)
+    rerender(query, queryArr, reqMethod, inCookies, headers, hostname, urlPath)
 
 
 func `[]`*[T, U](self: State[array[T, U]], idx: int): T =
