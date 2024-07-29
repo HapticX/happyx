@@ -302,7 +302,6 @@ when defined(js):
         if vdom.childNodes[i].nodeType != NodeType.TextNode:
           diff(vdom.childNodes[i].TagRef, dom.childNodes[i])
   proc prerenderLazyProcs*(tag: TagRef) {.exportc: "prrndr".} =
-    echo tag.nodeType, ", ", tag.lazy
     if tag.lazy:
       let t = tag.lazyFunc()
       t.prerenderLazyProcs()
