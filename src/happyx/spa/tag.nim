@@ -190,8 +190,10 @@ proc add*(self: TagRef, tags: varargs[TagRef]) {.exportc: "tgadd".} =
 
 
 when defined(js):
-  proc setAttributes(name: string, e: TagRef, attrs: StringTableRef) {.exportc: "stattrs".} =
-    if name.toLower() in SvgElements:
+  proc setAttributes(e: TagRef, attrs: StringTableRef) {.exportc: "stattrs".} =
+    var isSvgElem: bool
+    {.emit: "`isSvgElem` = `e` instanceof SVGElement;".}
+    if isSvgElem:
       for key, val in attrs.pairs:
         let
           k = cstring(key)
@@ -225,7 +227,7 @@ proc initTag*(name: string, attrs: StringTableRef,
   when defined(js):
     result = newElement(name)
     result.onlyChildren = onlyChildren
-    setAttributes(name, result, attrs)
+    setAttributes(result, attrs)
     for child in children:
       if child.isNil:
         continue
@@ -285,7 +287,7 @@ proc initTag*(name: string, isText: bool, attrs: StringTableRef,
     else:
       result = newElement(name)
       result.onlyChildren = onlyChildren
-      setAttributes(name, result, attrs)
+      setAttributes(result, attrs)
       for child in children:
         if child.isNil:
           continue
