@@ -190,17 +190,13 @@ proc add*(self: TagRef, tags: varargs[TagRef]) {.exportc: "tgadd".} =
 
 
 when defined(js):
-  proc setAttributes(e: TagRef, attrs: StringTableRef) {.exportc: "stattrs".} =
-    var isSvgElem: bool
-    {.emit: "`isSvgElem` = `e` instanceof SVGElement;".}
-    if isSvgElem:
+  proc setAttributes(name: string, e: TagRef, attrs: StringTableRef) {.exportc: "stattrs".} =
+    if name.toLower() in SvgElements:
+      if attrs.hasKey("class"):
+        let a = cstring(attrs["class"])
+        {.emit: "`e`.setAttributeNS(null, 'class', `a`);".}
       for key, val in attrs.pairs:
-        if key notin ["xmlns"]:
-          let
-            k = cstring(key)
-            v = cstring(val)
-          {.emit: "`e`.setAttributeNS('http://www.w3.org/2000/svg', `k`, `v`);".}
-        else:
+        if key != "class":
           e.setAttribute(cstring(key), cstring(val))
     else:
       for key, val in attrs.pairs:
@@ -230,7 +226,7 @@ proc initTag*(name: string, attrs: StringTableRef,
   when defined(js):
     result = newElement(name)
     result.onlyChildren = onlyChildren
-    setAttributes(result, attrs)
+    setAttributes(name, result, attrs)
     for child in children:
       if child.isNil:
         continue
@@ -290,7 +286,7 @@ proc initTag*(name: string, isText: bool, attrs: StringTableRef,
     else:
       result = newElement(name)
       result.onlyChildren = onlyChildren
-      setAttributes(result, attrs)
+      setAttributes(name, result, attrs)
       for child in children:
         if child.isNil:
           continue
