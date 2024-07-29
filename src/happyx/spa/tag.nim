@@ -196,13 +196,13 @@ when defined(js):
         let
           k = cstring(key)
           v = cstring(val)
-        {.emit: "`e`.setAttributeNS(null, `k`, `v`);".}
+        {.emit: "`e`.setAttributeNS('http://www.w3.org/2000/svg', `k`, `v`);".}
     else:
       for key, val in attrs.pairs:
         e.setAttribute(cstring(key), cstring(val))
 
   proc newElement(name: string): TagRef {.exportc: "nwelm".} =
-    if name.toLower() in ["svg", "path", "circle", "rect", "g", "defs", "animate", "ellipse", "polygon", "mask"]:
+    if name.toLower() in SvgElements:
       result = TagRef()
       let n = cstring(name)
       {.emit: "`result` = document.createElementNS('http://www.w3.org/2000/svg', `n`)".}
