@@ -3,6 +3,7 @@ nim	StateChangeHandler	happyx/spa/state.html#StateChangeHandler	type StateChange
 nim	State	happyx/spa/state.html#State	type State		39
 nim	enableRouting	happyx/spa/state.html#enableRouting	var enableRouting		44
 nim	remember	happyx/spa/state.html#remember,T	proc remember[T](val: T): State[T]		47
+nim	watchImpl	happyx/spa/state.html#watchImpl,State[T],T,T	proc watchImpl[T](state: State[T]; o, n: T)		52
 nim	val=	happyx/spa/state.html#val=.t,State[T],T	template val=[T](self: State[T]; value: T)		66
 nim	`$`	happyx/spa/state.html#$,State[T]	proc `$`[T](self: State[T]): string		74
 nim	`==`	happyx/spa/state.html#==,,	proc `==`[T](self`gensym0, other`gensym0: State[T]): bool		159
@@ -120,8 +121,8 @@ nimgrp	>=	happyx/spa/state.html#>=-procs-all	proc		159
 nimgrp	<=	happyx/spa/state.html#<=-procs-all	proc		159
 nimgrp	/	happyx/spa/state.html#/-procs-all	proc		93
 nimgrp	&	happyx/spa/state.html#&-procs-all	proc		93
-nimgrp	[]=	happyx/spa/state.html#[]=-procs-all	proc		421
 nimgrp	<	happyx/spa/state.html#<-procs-all	proc		93
+nimgrp	[]=	happyx/spa/state.html#[]=-procs-all	proc		421
 nimgrp	^	happyx/spa/state.html#^-procs-all	proc		93
 nimgrp	*	happyx/spa/state.html#*-procs-all	proc		93
 nimgrp	>	happyx/spa/state.html#>-procs-all	proc		93
