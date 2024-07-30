@@ -22,9 +22,9 @@ import illwill except
 
 proc buildCommandAux(optSize: bool = false, no_compile: bool = false): int = buildCommand(optSize, no_compile)
 proc mainHelpMessageAux() = mainHelpMessage()
-proc html2tagCommandAux(output: string = "", args: seq[string]): int = html2tagCommand(output, args)
+proc html2tagCommandAux(output: string = "", toProc: bool = false, args: seq[string]): int = html2tagCommand(output, toProc, args)
 proc updateCommandAux(args: seq[string]): int = updateCommand(args)
-proc serveCommandAux(host: string = "0.0.0.0", port: int = 80): int = serveCommand(host, port)
+proc serveCommandAux(host: string = "0.0.0.0", port: int = 80, buildDirectory: string = "build"): int = serveCommand(host, port, buildDirectory)
 proc projectInfoCommandAux(): int = projectInfoCommand()
 proc flagsCommandAux(): int = flagsCommand()
 proc translateCsvCommandAux(filename: string, output: string = ""): int =

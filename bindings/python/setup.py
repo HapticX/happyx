@@ -11,14 +11,14 @@ _platform = platform.system().lower()
 
 
 if _platform == 'windows':
-    import happyxpy.happyx_win as happyx
+    import happyx.happyx_win as happyx
 else:
     if _cpu == 'arm64':
-        import happyxpy.happyx_unix_arm64 as happyx
+        import happyx.happyx_unix_arm64 as happyx
     elif _cpu in ['amd64', 'x86_64']:
-        import happyxpy.happyx_unix_amd64 as happyx
+        import happyx.happyx_unix_amd64 as happyx
     else:
-        import happyxpy.happyx_unix_amd64 as happyx
+        import happyx.happyx_unix_amd64 as happyx
 
 
 # Load readme
@@ -27,7 +27,7 @@ with open('README.md', 'r', encoding='utf-8') as file:
 
 
 setup(
-    name='happyxpy',
+    name='happyx',
     description='HappyX web framework bindings for Python 🐍',
     long_description=long_description,
     long_description_content_type='text/markdown',
@@ -40,7 +40,7 @@ setup(
     packages=find_packages(),
     include_package_data=True,
     install_requires=['jinja2'],
-    py_modules=['happyxpy'],
+    py_modules=['happyx'],
     license='MIT',
     classifiers=[
         'Development Status :: 5 - Production/Stable',

@@ -15,7 +15,7 @@
 
 You can install HappyX via `pypi`:
 ```bash
-pip install happyxpy
+pip install happyx
 ```
 
 ## Usage 🔌
@@ -23,7 +23,7 @@ pip install happyxpy
 ### Hello World 👋
 
 ```py
-from happyxpy import Server
+from happyx import Server
 
 
 app = Server('127.0.0.1', 5000)  # host and port are optional params
@@ -41,7 +41,7 @@ app.start()
 ### JSON/HTML/File Responses 🛠
 
 ```py
-from happyxpy import Server, JsonResponse, HtmlResponse, FileResponse
+from happyx import Server, JsonResponse, HtmlResponse, FileResponse
 
 
 app = Server()

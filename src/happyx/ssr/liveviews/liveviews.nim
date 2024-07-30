@@ -69,10 +69,20 @@ proc handleLiveViews*(body: NimNode) =
                   newCall("tDiv", newNimNode(nnkExprEqExpr).add(ident"id", newLit"scripts"))
                 ))
               ))
-            ), @[ident"TagRef"])
+            ), @[
+              ident"TagRef",
+              newIdentDefs(ident"query", ident"StringTableRef", newEmptyNode()),
+              newIdentDefs(ident"queryArr", newNimNode(nnkBracketExpr).add(ident"TableRef", ident"string", newNimNode(nnkBracketExpr).add(ident"seq", ident"string")), newEmptyNode()),
+              newIdentDefs(ident"reqMethod", ident"HttpMethod", newEmptyNode()),
+              newIdentDefs(ident"inCookies", ident"StringTableRef", newEmptyNode()),
+              newIdentDefs(ident"headers", ident"HttpHeaders", newEmptyNode()),
+            ])
           ),
         )),
-        newLetStmt(ident"_html", newCall(newNimNode(nnkBracketExpr).add(ident"liveviewRoutes", path))),
+        newLetStmt(ident"_html", newCall(
+          newNimNode(nnkBracketExpr).add(ident"liveviewRoutes", path),
+          ident"query", ident"queryArr", ident"reqMethod", ident"inCookies", ident"headers",
+        )),
         newCall("add", newNimNode(nnkBracketExpr).add(ident"_html", newLit(1)), newCall("buildHtml", newStmtList(script))),
         newNimNode(nnkReturnStmt).add(ident"_html"),
       ))

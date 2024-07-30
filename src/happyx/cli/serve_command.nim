@@ -2,7 +2,7 @@ import
   ./utils
 
 
-proc serveCommand*(host: string = "0.0.0.0", port: int = 80): int =
+proc serveCommand*(host: string = "0.0.0.0", port: int = 80, buildDirectory: string = "build"): int =
   ## Serve SPA for production
   var
     project = compileProject()
@@ -22,14 +22,14 @@ proc serveCommand*(host: string = "0.0.0.0", port: int = 80): int =
   
   serve host, port:
     get "/":
-      let f = open(getCurrentDir() / "build" / "index.html")
+      let f = open(getCurrentDir() / buildDirectory / "index.html")
       var data = f.readAll()
       f.close()
       req.answerHtml(data)
  
     get "/{file:path}":
       var result = ""
-      let path = getCurrentDir() / "build" / file.replace('\\', '/').replace('/', DirSep)
+      let path = getCurrentDir() / buildDirectory / file.replace('\\', '/').replace('/', DirSep)
       echo "File: ", file
       echo "Path: ", path
       if fileExists(path):

@@ -18,7 +18,7 @@ nimble install happyx@#head
 """
   readmeInstallPy* = """## Install
 ```shell
-pip install happyxpy
+pip install happyx
 ```
 """
   readmeInstallJs* = """## Install

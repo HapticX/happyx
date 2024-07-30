@@ -90,7 +90,7 @@ const
     "slot", "small", "source", "span", "strong", "style", "sub", "summary", "sup",
     "svg", "cicle", "path", "g",
     "table", "tbody", "td", "template", "textarea", "tfoot", "th", "thead", "time",
-    "title", "tr", "track", "u", "ul", "var", "video", "wbr",
+    "title", "tr", "track", "text", "u", "ul", "var", "video", "wbr",
   ]
   availableCryptoMethods = ["sha224", "sha256", "sha384", "sha512"]
   # Nim version
@@ -99,7 +99,7 @@ const
   # Framework version
   HpxMajor* = 4
   HpxMinor* = 4
-  HpxPatch* = 1
+  HpxPatch* = 2
   HpxVersion* = $HpxMajor & "." & $HpxMinor & "." & $HpxPatch
 
 

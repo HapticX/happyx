@@ -2,7 +2,7 @@ import
   ./utils
 
 
-proc html2tagCommand*(output: string = "", args: seq[string]): int =
+proc html2tagCommand*(output: string = "", toProc: bool = false, args: seq[string]): int =
   ## Converts HTML into `buildHtml` macro
   styledEcho fgGreen, emoji["🔨"](), " Convert HTML into happyx file"
   var o = output
@@ -33,7 +33,11 @@ proc html2tagCommand*(output: string = "", args: seq[string]): int =
 
   var
     tree = parseHtml(input)
-    outputData = "import happyx\n\n\nvar html = buildHtml:\n"
+    outputData =
+      if toProc:
+        "import happyx\n\n\nproc " & args[0].replace(re2"\-(\w|\d)", "_$1") & "*(): TagRef = buildHtml:"
+      else:
+        "import happyx\n\n\nvar html = buildHtml:\n"
   xmlTree2Text(outputData, tree, 2)
 
   outputData = outputData.replace(re2"""( +)(tScript.*?:)\s+(\"{3})\s*([\s\S]+?)(\"{3})""", "$1$2 $3\n  $1$4$1$5")

@@ -3,7 +3,7 @@ cd src
 
 nim c ^
   --app:lib ^
-  --out:../bindings/python/happyxpy/happyx_win.pyd ^
+  --out:../bindings/python/happyx/happyx_win.pyd ^
   --tlsEmulation:off ^
   --mm:arc ^
   --passL:-static ^

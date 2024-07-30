@@ -1,4 +1,4 @@
-from happyxpy import new_server, register_route_param_type
+from happyx import new_server, register_route_param_type
 
 
 app = new_server("127.0.0.1", 5000)

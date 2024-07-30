@@ -121,7 +121,14 @@ var
   currentRoute*: cstring = "/"  ## Current route path
   scopedCycleCounter*: int = 0
 when enableLiveViews and not defined(js):
-  var liveviewRoutes* = newTable[string, proc(): TagRef]()
+  import std/httpcore
+  var liveviewRoutes* = newTable[string, proc(
+    query: StringTableRef,
+    queryArr: TableRef[string, seq[string]],
+    reqMethod: HttpMethod,
+    inCookies: StringTableRef,
+    headers: HttpHeaders
+  ): TagRef]()
   var components* = newTable[string, BaseComponent]()
 when enableDefaultComponents:
   var
@@ -202,8 +209,10 @@ else:
     componentsResult[comp.uniqCompId] = "route:" & path
   proc js*(comp: BaseComponent, script: string) =
     componentsResult[comp.uniqCompId] = "script:" & fmt"<script>{script}</script>"
-  proc rerender*(hostname, urlPath: string) =
-    requestResult[hostname] = "rerender:" & liveviewRoutes[urlPath]().children[1].ugly()
+  proc rerender*(query, queryArr, reqMethod, inCookies, headers: auto, hostname, urlPath: string) =
+    requestResult[hostname] = "rerender:" & liveviewRoutes[urlPath](
+      query, queryArr, reqMethod, inCookies, headers
+    ).children[1].ugly()
   proc bck*(hostname, urlPath: string) =
     requestResult[hostname] = "bck"
   proc frwrd*(hostname, urlPath: string) =
@@ -302,7 +311,6 @@ when defined(js):
         if vdom.childNodes[i].nodeType != NodeType.TextNode:
           diff(vdom.childNodes[i].TagRef, dom.childNodes[i])
   proc prerenderLazyProcs*(tag: TagRef) {.exportc: "prrndr".} =
-    echo tag.nodeType, ", ", tag.lazy
     if tag.lazy:
       let t = tag.lazyFunc()
       t.prerenderLazyProcs()
