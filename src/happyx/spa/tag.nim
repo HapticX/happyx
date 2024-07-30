@@ -102,8 +102,11 @@ when defined(js):
   const _originCloneNode = Node.prototype.cloneNode;
 
   Node.prototype.__getEventIndex = function(target, targetArgs) {
-    if (!this._eventListeners)
+    if (!this._eventListeners) {
       this._eventListeners = [];
+      return -1;
+    }
+    if (!targetArgs) return -1;
     return this._eventListeners.findIndex(args => {
       for (let i = 0; i < args.length; i++)
         if (targetArgs[i] !== args[i]) return false;
