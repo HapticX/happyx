@@ -601,12 +601,12 @@ func `$`*(self: TagRef): string =
       argsStr = self.args.join(" ")
 
     if self.isText:
-      return self.name
+      return xmltree.escape(self.name)
     
     var attrs = ""
     for key, value in self.attrs.pairs():
       if value.len > 0:
-        attrs &= " " & key & "=" & "\"" & value & "\""
+        attrs &= " " & key & "=" & "\"" & value.replace("\"", "&quot;") & "\""
       else:
         attrs &= " " & key
 
@@ -935,12 +935,12 @@ when defined(js):
       argsStr = self.args.join(" ")
 
     if self.isText:
-      return self.name
+      return xmltree.escape(self.name)
     
     var attrs = ""
     for key, value in self.attrs.pairs():
       if value.len > 0:
-        attrs &= " " & key & "=" & "\"" & value & "\""
+        attrs &= " " & key & "=" & "\"" & value.replace("\"", "&quot;") & "\""
       else:
         attrs &= " " & key
 
