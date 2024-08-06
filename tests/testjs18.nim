@@ -86,8 +86,25 @@ let C = buildHtml:
     text(x="35",y="20", style= "fill: black;"): "C: Anyone Here?"
 
 
+component Hello:
+  html:
+    tDiv:
+      "hello"
+
+let b = buildHtml:
+  Hello
+
+let c = buildHtml:
+  tDiv:
+    "hello"
+
+
 appRoutes("app"):
   "/":
+    tDiv: {$b}
+    tDiv:
+      {$c}
+      c
     for i in 1..5:
       tDiv:
         {$htmlProcs[0]()}

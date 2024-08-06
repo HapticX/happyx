@@ -5,7 +5,7 @@ import
 
 regCORS:
   credentials: true
-  origins: "https://www.google.com"  # You can send request from this address
+  origins: "*" # "https://www.google.com"  # You can send request from this address
   methods: ["GET", "POST", "PUT"]
   headers: "*"
 

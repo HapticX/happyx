@@ -45,7 +45,13 @@ when not defined(js) and not (exportJvm or exportPython or defined(napibuild)):
       if `allowMethods`.len > 0:
         `headers`["Access-Control-Allow-Methods"] = `allowMethods`
       if `allowOrigins`.len > 0:
-        `headers`["Access-Control-Allow-Origin"] = `allowOrigins`
+        if `allowOrigins` == @["*"]:
+          when not enableHttpx and not enableHttpBeast:
+            `headers`["Access-Control-Allow-Origin"] = req.hostname
+          else:
+            `headers`["Access-Control-Allow-Origin"] = req.ip
+        else:
+          `headers`["Access-Control-Allow-Origin"] = `allowOrigins`
   
   macro regCORS*(body: untyped): untyped =
     ## Register CORS
@@ -148,7 +154,7 @@ else:
       if cors.allowOrigins.len > 0:
         for origin in cors.allowOrigins:
           if origin == "*":
-            `headers`["Access-Control-Allow-Origin"] = "*"
+            `headers`["Access-Control-Allow-Origin"] = host
             break
           elif origin == `host`:
             `headers`["Access-Control-Allow-Origin"] = origin
