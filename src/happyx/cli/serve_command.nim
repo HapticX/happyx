@@ -2,10 +2,14 @@ import
   ./utils
 
 
-proc serveCommand*(host: string = "0.0.0.0", port: int = 80, buildDirectory: string = "build"): int =
+proc serveCommand*(
+  host: string = "0.0.0.0",
+  port: int = 80,
+  buildDirectory: string = "build"
+): int =
   ## Serve SPA for production
   var
-    project = compileProject()
+    project = compileProject(@["-d:production"])
   
   if project.error.len > 0:
     return QuitFailure
@@ -16,6 +20,21 @@ proc serveCommand*(host: string = "0.0.0.0", port: int = 80, buildDirectory: str
     styledEcho fgMagenta, emoji["💡"](), " Compile and run your SSG server!"
     shutdownCli()
     return QuitSuccess
+
+  if execShellCmd("uglifyjs -v") == 0:
+    let path = getCurrentDir() / buildDirectory / (project.mainFile & ".js")
+    discard execShellCmd(
+      fmt"""uglifyjs "{path}" -c -m toplevel --mangle-props regex=/N[ST]I\w+/ -O semicolons -o "{path}" """
+    )
+  elif execShellCmd("terser --version") == 0:
+    let path = getCurrentDir() / buildDirectory / (project.mainFile & ".js")
+    discard execShellCmd(
+      fmt"""terser "{path}" -c -m -o "{path}" """
+    )
+  else:
+    styledEcho fgYellow, emoji["💡"](), " You can install terser or uglifyjs to decrease .js file size"
+    styledEcho fgMagenta, "    npm i uglify-js -g"
+    styledEcho fgMagenta, "    npm i terser -g"
 
   # Start SPA server
   styledEcho emoji["🔥"](), " Server launched at ", fgGreen, styleUnderscore, "http://", host, ":", $port, fgWhite

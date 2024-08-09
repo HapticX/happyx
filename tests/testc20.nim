@@ -9,6 +9,11 @@ model Obj:
   k: Kind
   st: string
 
+
+proc voidTest =
+  echo 1
+
+
 serve("127.0.0.1", 5000):
   post "/[data:Obj:json]":
     echo data
@@ -25,6 +30,9 @@ serve("127.0.0.1", 5000):
   post "/issue287":
     statusCode = 200
     return 0
+  
+  get "/hello":
+    voidTest()
 
   onException:
     echo "Exception"

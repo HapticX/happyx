@@ -472,21 +472,31 @@ proc detectReturnStmt(node: NimNode, replaceReturn: bool = false) =
   if not node[^1].isExpr:
     return
   if node[^1].kind == nnkCall and $node[^1][0] == "buildHtml":
-    node[^1] = newCall("answerHtml", ident"req", node[^1])
+    node[^1] = newCall("answerHtml", ident"req", node[^1].copy())
+    node.add(newNimNode(nnkBreakStmt).add(ident"__handleRequestBlock"))
+    return
   elif node[^1].kind == nnkTableConstr:
-    node[^1] = newCall("answerJson", ident"req", node[^1])
+    node[^1] = newCall("answerJson", ident"req", node[^1].copy())
   elif node[^1].kind in [nnkStrLit, nnkTripleStrLit]:
     when enableAutoTranslate:
-      node[^1] = newCall("answer", ident"req", formatNode(newCall("translate", node[^1])))
+      node[^1] = newCall("answer", ident"req", formatNode(newCall("translate", node[^1].copy())))
     else:
-      node[^1] = newCall("answer", ident"req", formatNode(node[^1]))
+      node[^1] = newCall("answer", ident"req", formatNode(node[^1].copy()))
   else:
     when enableAutoTranslate:
-      node[^1] = newCall("answer", ident"req", newCall("translate", node[^1]))
+      node[^1] = newCall("answer", ident"req", newCall("translate", node[^1].copy()))
     else:
-      node[^1] = newCall("answer", ident"req", node[^1])
-  # Really complete route after any return statement
-  node.add(newNimNode(nnkBreakStmt).add(ident"__handleRequestBlock"))
+      node[^1] = newCall("answer", ident"req", node[^1].copy())
+  node[^1] = newNimNode(nnkWhenStmt).add(newNimNode(nnkElifBranch).add(
+    newCall("is", newCall("type", node[^1][^1].copy()), ident"void"),
+    node[^1][^1].copy()
+  ), newNimNode(nnkElse).add(
+    newStmtList(
+      node[^1].copy(),
+      # Really complete route after any return statement
+      newNimNode(nnkBreakStmt).add(ident"__handleRequestBlock")
+    )
+  ))
 
 
 macro routes*(server: Server, body: untyped = newStmtList()): untyped =
