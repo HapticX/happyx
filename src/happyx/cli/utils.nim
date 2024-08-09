@@ -313,7 +313,7 @@ proc hasComp(tree: XmlNode, usage: var int, comp: string) =
 #       f.close()
 
 
-proc compileProject*(): ProjectData {. discardable .} =
+proc compileProject*(additionalOpts: seq[string] = @[]): ProjectData {. discardable .} =
   ## Compiling Project
   result = readConfig()
   let
@@ -327,12 +327,15 @@ proc compileProject*(): ProjectData {. discardable .} =
   of ptSPA, ptSPA_PWA:
     # result.components = findAllComponentsNim(getCurrentDir() / result.srcDir)
     # echo result.components
+    var opts = @[
+      "js", "-c", "--hints:off", "--warnings:off",
+      "--opt:size", "-d:danger", "-x:off", "-a:off", "--panics:off", "--lineDir:off",
+    ]
+    for i in additionalOpts:
+      opts.add i
+    opts.add result.mainFile
     result.process = startProcess(
-      "nim", getCurrentDir() / result.srcDir,
-      [
-        "js", "-c", "--hints:off", "--warnings:off",
-        "--opt:size", "-d:danger", "-x:off", "-a:off", "--panics:off", "--lineDir:off", result.mainFile
-      ], nil, PROCESS_OPTIONS
+      "nim", getCurrentDir() / result.srcDir, opts, nil, PROCESS_OPTIONS
     )
   of ptSPAHpx:
     let mainFile = getCurrentDir() / result.srcDir / result.mainFile & ".hpx"
@@ -422,20 +425,26 @@ proc compileProject*(): ProjectData {. discardable .} =
     # f = open(result.srcDir / result.mainFile & ".nim", fmRead)
     # echo f.readAll()
     # f.close()
+    var opts = @[
+      "js", "-c", "--hints:off", "--warnings:off",
+      "--opt:size", "-d:danger", "-x:off", "-a:off", "--panics:off", "--lineDir:off",
+    ]
+    for i in additionalOpts:
+      opts.add i
+    opts.add result.mainFile
     result.process = startProcess(
-      "nim", getCurrentDir() / result.srcDir,
-      [
-        "js", "-c", "--hints:off", "--warnings:off",
-        "--opt:size", "-d:danger", "-x:off", "-a:off", "--panics:off", "--lineDir:off", result.mainFile
-      ], nil, PROCESS_OPTIONS
+      "nim", getCurrentDir() / result.srcDir, opts, nil, PROCESS_OPTIONS
     )
   of ptSSR, ptSSG, ptSSR_PWA:
+    var opts = @[
+      "c", "--hints:off", "--warnings:off",
+      "--opt:size", "-d:danger", "-x:off", "-a:off", "--panics:off", "--lineDir:off",
+    ]
+    for i in additionalOpts:
+      opts.add i
+    opts.add result.mainFile
     result.process = startProcess(
-      "nim", getCurrentDir() / result.srcDir,
-      [
-        "c", "--hints:off", "--warnings:off",
-        "--opt:size", "-d:danger", "-x:off", "-a:off", "--panics:off", "--lineDir:off", result.mainFile
-      ], nil, PROCESS_OPTIONS
+      "nim", getCurrentDir() / result.srcDir, opts, nil, PROCESS_OPTIONS
     )
 
   styledEcho "Compiling ", fgMagenta, result.mainFile, fgWhite, " script ... /"
