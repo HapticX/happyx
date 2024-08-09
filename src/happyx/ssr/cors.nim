@@ -154,7 +154,7 @@ else:
       if cors.allowOrigins.len > 0:
         for origin in cors.allowOrigins:
           if origin == "*":
-            `headers`["Access-Control-Allow-Origin"] = host
+            `headers`["Access-Control-Allow-Origin"] = `host`
             break
           elif origin == `host`:
             `headers`["Access-Control-Allow-Origin"] = origin
