@@ -411,10 +411,11 @@ template start*(app: App) =
             echo "route from ", currentRoute, " to ", r
             route(r)
       window.addEventListener("hashchange", onHashChangeCallback)
-    if window.location.hash.len == 0:
-      route("/")
-    else:
-      {.emit : "if(window.location.hash[0]=='#'){`route`(window.location.hash.substr(1));}else{`route`(window.location.hash);}".}
+    when not defined(disableAutoMove):
+      if window.location.hash.len == 0:
+        route("/")
+      else:
+        {.emit : "if(window.location.hash[0]=='#'){`route`(window.location.hash.substr(1));}else{`route`(window.location.hash);}".}
 
 
 macro buildHtml*(root, html: untyped): untyped =
