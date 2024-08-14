@@ -24,7 +24,7 @@ requires "httpx >= 0.3.7"
 requires "microasynchttpserver >= 0.11.0"
 requires "httpbeast >= 0.4.2"
 # Template engines
-requires "nimja >= 0.8.7"
+requires "nimja == 0.8.7"
 # Websockets
 requires "websocket >= 0.5.2"
 requires "websocketx >= 0.1.2"
