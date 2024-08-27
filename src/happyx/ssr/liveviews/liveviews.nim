@@ -9,6 +9,10 @@ import
 
 const liveViewsCache* = CacheSeq"HappyXLiveViews"
 
+const
+  useWss* {.booldefine.}: bool = false
+  liveviewWsHost* {.strdefine.}: string = ""
+
 
 macro liveview*(body: untyped): untyped =
   for statement in body:
@@ -32,19 +36,27 @@ proc handleLiveViews*(body: NimNode) =
         "&",
         newCall(
           "&",
-          newCall(
-            "&",
+          if liveviewWsHost == "":
             newCall(
               "&",
               newCall(
                 "&",
-                newLit("var _sc=new WebSocket(\"ws://"),
-                newDotExpr(ident"server", ident"address"),
+                newCall(
+                  "&",
+                  if useWss:
+                    newLit("var _sc=new WebSocket(\"wss://")
+                  else:
+                    newLit("var _sc=new WebSocket(\"ws://"),
+                  newDotExpr(ident"server", ident"address"),
+                ),
+                newLit":",
               ),
-              newLit":",
-            ),
-            newCall("$", newDotExpr(ident"server", ident"port"))
-          ),
+              newCall("$", newDotExpr(ident"server", ident"port"))
+            )
+          elif useWss:
+            newLit("var _sc=new WebSocket(\"wss://" & liveviewWsHost)
+          else:
+            newLit("var _sc=new WebSocket(\"ws://" & liveviewWsHost),
           path
         ),
         newLit("\");")
