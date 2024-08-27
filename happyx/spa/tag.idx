@@ -24,7 +24,7 @@ nim	getAttribute	happyx/spa/tag.html#getAttribute,TagRef,string,string	proc getA
 nim	findByTag	happyx/spa/tag.html#findByTag,TagRef,string	proc findByTag(self: TagRef; tag: string): seq[TagRef]		557
 nim	get	happyx/spa/tag.html#get,TagRef,string	proc get(self: TagRef; tag: string): TagRef		577
 nim	`$`	happyx/spa/tag.html#$,TagRef	proc `$`(self: TagRef): string		591
-nim	ugly	happyx/spa/tag.html#ugly,TagRef	proc ugly(self: TagRef): string		626
+nim	ugly	happyx/spa/tag.html#ugly,TagRef	proc ugly(self: TagRef): string		629
 nimgrp	inittag	happyx/spa/tag.html#initTag-procs-all	proc		217
 nimgrp	tag	happyx/spa/tag.html#tag-procs-all	proc		345
 nimgrp	[]	happyx/spa/tag.html#[]-procs-all	proc		521
