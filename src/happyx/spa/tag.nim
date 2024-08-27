@@ -601,7 +601,10 @@ func `$`*(self: TagRef): string =
       argsStr = self.args.join(" ")
 
     if self.isText:
-      return xmltree.escape(self.name)
+      if self.parent.name.toLower() == "script":
+        return self.name
+      else:
+        return xmltree.escape(self.name)
     
     var attrs = ""
     for key, value in self.attrs.pairs():
