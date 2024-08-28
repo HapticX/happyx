@@ -85,7 +85,9 @@ when defined(js):
         beforeUpdated*: ComponentEventHandler  ## Calls before every rendering
         updated*: ComponentEventHandler  ## Calls after every DOM rendering
 else:
-  import json
+  import
+    std/json,
+    std/httpcore
 
   type
     AppEventHandler* = proc(ev: JsonNode = newJObject()): void
@@ -98,6 +100,12 @@ else:
       BaseComponent* = ref BaseComponentObj
       BaseComponentObj* {.inheritable.} = object
         uniqCompId*: string
+        urlPath*, hostname*: string
+        query*: StringTableRef
+        queryArr*: TableRef[string, seq[string]]
+        reqMethod*: HttpMethod
+        inCookies*: StringTableRef
+        headers*: HttpHeaders
         isCreated*: bool
         slot*: proc(
           scopeSelf: BaseComponent, inComponent: bool, compName: string,
@@ -121,13 +129,13 @@ var
   currentRoute*: cstring = "/"  ## Current route path
   scopedCycleCounter*: int = 0
 when enableLiveViews and not defined(js):
-  import std/httpcore
   var liveviewRoutes* = newTable[string, proc(
     query: StringTableRef,
     queryArr: TableRef[string, seq[string]],
     reqMethod: HttpMethod,
     inCookies: StringTableRef,
-    headers: HttpHeaders
+    headers: HttpHeaders,
+    component: BaseComponent
   ): TagRef]()
   var components* = newTable[string, BaseComponent]()
 when enableDefaultComponents:
@@ -210,8 +218,13 @@ else:
   proc js*(comp: BaseComponent, script: string) =
     componentsResult[comp.uniqCompId] = "script:" & fmt"<script>{script}</script>"
   proc rerender*(query, queryArr, reqMethod, inCookies, headers: auto, hostname, urlPath: string) =
+    echo "rerender for " & hostname
     requestResult[hostname] = "rerender:" & liveviewRoutes[urlPath](
-      query, queryArr, reqMethod, inCookies, headers
+      query, queryArr, reqMethod, inCookies, headers, nil
+    ).children[1].ugly()
+  proc rerenderWithComponent*(comp: BaseComponent) =
+    componentsResult[comp.uniqCompId] = "rerender:" & liveviewRoutes[comp.urlPath](
+      comp.query, comp.queryArr, comp.reqMethod, comp.inCookies, comp.headers, comp
     ).children[1].ugly()
   proc bck*(hostname, urlPath: string) =
     requestResult[hostname] = "bck"

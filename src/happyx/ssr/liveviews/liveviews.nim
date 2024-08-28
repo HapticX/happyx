@@ -88,12 +88,13 @@ proc handleLiveViews*(body: NimNode) =
               newIdentDefs(ident"reqMethod", ident"HttpMethod", newEmptyNode()),
               newIdentDefs(ident"inCookies", ident"StringTableRef", newEmptyNode()),
               newIdentDefs(ident"headers", ident"HttpHeaders", newEmptyNode()),
+              newIdentDefs(ident"component", ident"BaseComponent", newEmptyNode()),
             ])
           ),
         )),
         newLetStmt(ident"_html", newCall(
           newNimNode(nnkBracketExpr).add(ident"liveviewRoutes", path),
-          ident"query", ident"queryArr", ident"reqMethod", ident"inCookies", ident"headers",
+          ident"query", ident"queryArr", ident"reqMethod", ident"inCookies", ident"headers", newNilLit()
         )),
         newCall("add", newNimNode(nnkBracketExpr).add(ident"_html", newLit(1)), newCall("buildHtml", newStmtList(script))),
         newNimNode(nnkReturnStmt).add(ident"_html"),
@@ -111,15 +112,9 @@ proc handleLiveViews*(body: NimNode) =
                 componentsResult.del(comp.uniqCompId)
             of 1:
               eventHandlers[parsed["idx"].getInt](parsed["ev"])
-              when enableHttpBeast or enableHttpx:
-                let hostname = req.ip
-                if requestResult.hasKey(hostname):
-                  await wsClient.send($requestResult[hostname])
-                  requestResult.del(hostname)
-              else:
-                if requestResult.hasKey(req.hostname):
-                  await wsClient.send($requestResult[req.hostname])
-                  requestResult.del(req.hostname)
+              if requestResult.hasKey(hostname):
+                await wsClient.send($requestResult[hostname])
+                requestResult.del(hostname)
             else:
               discard
     body.add(wsMethod)

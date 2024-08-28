@@ -386,6 +386,87 @@ macro component*(name, body: untyped): untyped =
       ),
       nnkMethodDef
     )
+  when not defined(js) and enableLiveViews:
+    initObjConstr.add(
+      newColonExpr(
+        ident"urlPath",
+        newNimNode(nnkWhenStmt).add(newNimNode(nnkElifBranch).add(
+          newCall("declared", ident"urlPath"),
+          ident"urlPath"
+        ), newNimNode(nnkElifBranch).add(
+          newCall("declared", newDotExpr(ident"self", ident"urlPath")),
+          newDotExpr(ident"self", ident"urlPath")
+        ), newNimNode(nnkElse).add(
+          newLit""
+        ))
+      ), newColonExpr(
+        ident"hostname",
+        newNimNode(nnkWhenStmt).add(newNimNode(nnkElifBranch).add(
+          newCall("declared", ident"hostname"),
+          ident"hostname"
+        ), newNimNode(nnkElifBranch).add(
+          newCall("declared", newDotExpr(ident"self", ident"hostname")),
+          newDotExpr(ident"self", ident"hostname")
+        ), newNimNode(nnkElse).add(
+          newLit""
+        ))
+      ), newColonExpr(
+        ident"query",
+        newNimNode(nnkWhenStmt).add(newNimNode(nnkElifBranch).add(
+          newCall("declared", ident"query"),
+          ident"query"
+        ), newNimNode(nnkElifBranch).add(
+          newCall("declared", newDotExpr(ident"self", ident"query")),
+          newDotExpr(ident"self", ident"query")
+        ), newNimNode(nnkElse).add(
+          newLit""
+        ))
+      ), newColonExpr(
+        ident"queryArr",
+        newNimNode(nnkWhenStmt).add(newNimNode(nnkElifBranch).add(
+          newCall("declared", ident"queryArr"),
+          ident"queryArr"
+        ), newNimNode(nnkElifBranch).add(
+          newCall("declared", newDotExpr(ident"self", ident"queryArr")),
+          newDotExpr(ident"self", ident"queryArr")
+        ), newNimNode(nnkElse).add(
+          newLit""
+        ))
+      ), newColonExpr(
+        ident"reqMethod",
+        newNimNode(nnkWhenStmt).add(newNimNode(nnkElifBranch).add(
+          newCall("declared", ident"reqMethod"),
+          ident"reqMethod"
+        ), newNimNode(nnkElifBranch).add(
+          newCall("declared", newDotExpr(ident"self", ident"reqMethod")),
+          newDotExpr(ident"self", ident"reqMethod")
+        ), newNimNode(nnkElse).add(
+          newLit""
+        ))
+      ), newColonExpr(
+        ident"inCookies",
+        newNimNode(nnkWhenStmt).add(newNimNode(nnkElifBranch).add(
+          newCall("declared", ident"inCookies"),
+          ident"inCookies"
+        ), newNimNode(nnkElifBranch).add(
+          newCall("declared", newDotExpr(ident"self", ident"inCookies")),
+          newDotExpr(ident"self", ident"inCookies")
+        ), newNimNode(nnkElse).add(
+          newLit""
+        ))
+      ), newColonExpr(
+        ident"headers",
+        newNimNode(nnkWhenStmt).add(newNimNode(nnkElifBranch).add(
+          newCall("declared", ident"headers"),
+          ident"headers"
+        ), newNimNode(nnkElifBranch).add(
+          newCall("declared", newDotExpr(ident"self", ident"headers")),
+          newDotExpr(ident"self", ident"headers")
+        ), newNimNode(nnkElse).add(
+          newLit""
+        ))
+      ),
+    )
   initProc[2] = generics.copy()
   
   var
@@ -422,6 +503,17 @@ macro component*(name, body: untyped): untyped =
     initParams.add(genericsIdent, newIdentDefs(ident(UniqueComponentId), bindSym"string"))
   else:
     initParams.add(inherited, newIdentDefs(ident(UniqueComponentId), bindSym"string"))
+  
+  when not defined(js) and enableLiveViews:
+    initParams.add(
+      newIdentDefs(ident"urlPath", ident"string"),
+      newIdentDefs(ident"hostname", ident"string"),
+      newIdentDefs(ident"query", ident"StringTableRef"),
+      newIdentDefs(ident"queryArr", newNimNode(nnkBracketExpr).add(ident"TableRef", ident"string", newNimNode(nnkBracketExpr).add(ident"seq", ident"string",))),
+      newIdentDefs(ident"reqMethod", ident"HttpMethod"),
+      newIdentDefs(ident"inCookies", ident"StringTableRef"),
+      newIdentDefs(ident"headers", ident"HttpHeaders"),
+    )
 
   var
     fields: seq[string] = @[]
