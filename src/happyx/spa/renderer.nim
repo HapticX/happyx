@@ -218,6 +218,7 @@ else:
   proc js*(comp: BaseComponent, script: string) =
     componentsResult[comp.uniqCompId] = "script:" & fmt"<script>{script}</script>"
   proc rerender*(query, queryArr, reqMethod, inCookies, headers: auto, hostname, urlPath: string) =
+    echo "rerender for " & hostname
     requestResult[hostname] = "rerender:" & liveviewRoutes[urlPath](
       query, queryArr, reqMethod, inCookies, headers, nil
     ).children[1].ugly()

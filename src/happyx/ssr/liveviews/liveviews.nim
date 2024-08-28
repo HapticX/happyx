@@ -112,15 +112,9 @@ proc handleLiveViews*(body: NimNode) =
                 componentsResult.del(comp.uniqCompId)
             of 1:
               eventHandlers[parsed["idx"].getInt](parsed["ev"])
-              when enableHttpBeast or enableHttpx:
-                let hostname = $int(req.client)
-                if requestResult.hasKey(hostname):
-                  await wsClient.send($requestResult[hostname])
-                  requestResult.del(hostname)
-              else:
-                if requestResult.hasKey(req.hostname):
-                  await wsClient.send($requestResult[req.hostname])
-                  requestResult.del(req.hostname)
+              if requestResult.hasKey(hostname):
+                await wsClient.send($requestResult[hostname])
+                requestResult.del(hostname)
             else:
               discard
     body.add(wsMethod)
