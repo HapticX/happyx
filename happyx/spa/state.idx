@@ -4,148 +4,148 @@ nim	State	happyx/spa/state.html#State	type State		39
 nim	enableRouting	happyx/spa/state.html#enableRouting	var enableRouting		44
 nim	remember	happyx/spa/state.html#remember,T	proc remember[T](val: T): State[T]		47
 nim	watchImpl	happyx/spa/state.html#watchImpl,State[T],T,T	proc watchImpl[T](state: State[T]; o, n: T)		52
-nim	val=	happyx/spa/state.html#val=.t,State[T],T	template val=[T](self: State[T]; value: T)		66
-nim	`$`	happyx/spa/state.html#$,State[T]	proc `$`[T](self: State[T]): string		74
-nim	`==`	happyx/spa/state.html#==,,	proc `==`[T](self`gensym0, other`gensym0: State[T]): bool		159
-nim	`==`	happyx/spa/state.html#==,,T	proc `==`[T](self`gensym0: State[T]; other`gensym0: T): bool		170
-nim	`!=`	happyx/spa/state.html#!=,,	proc `!=`[T](self`gensym1, other`gensym1: State[T]): bool		159
-nim	`!=`	happyx/spa/state.html#!=,,T	proc `!=`[T](self`gensym1: State[T]; other`gensym1: T): bool		171
-nim	`>=`	happyx/spa/state.html#>=,,	proc `>=`[T](self`gensym2, other`gensym2: State[T]): bool		159
-nim	`>=`	happyx/spa/state.html#>=,,T	proc `>=`[T](self`gensym2: State[T]; other`gensym2: T): bool		172
-nim	`<=`	happyx/spa/state.html#<=,,	proc `<=`[T](self`gensym3, other`gensym3: State[T]): bool		159
-nim	`<=`	happyx/spa/state.html#<=,,T	proc `<=`[T](self`gensym3: State[T]; other`gensym3: T): bool		173
-nim	`not`	happyx/spa/state.html#not	proc `not`[T](self`gensym4: State[T]): bool		175
-nim	`&`	happyx/spa/state.html#&,,	proc `&`[T](self`gensym5, other`gensym5: State[T]): T		93
-nim	`&`	happyx/spa/state.html#&,T,	proc `&`[T](other`gensym5: T; self`gensym5: State[T]): T		95
-nim	`&`	happyx/spa/state.html#&,,T	proc `&`[T](self`gensym5: State[T]; other`gensym5: T): T		177
-nim	`+`	happyx/spa/state.html#+,,	proc `+`[T](self`gensym6, other`gensym6: State[T]): T		93
-nim	`+`	happyx/spa/state.html#+,T,	proc `+`[T](other`gensym6: T; self`gensym6: State[T]): T		95
-nim	`+`	happyx/spa/state.html#+,,T	proc `+`[T](self`gensym6: State[T]; other`gensym6: T): T		178
-nim	`-`	happyx/spa/state.html#-,,	proc `-`[T](self`gensym7, other`gensym7: State[T]): T		93
-nim	`-`	happyx/spa/state.html#-,T,	proc `-`[T](other`gensym7: T; self`gensym7: State[T]): T		95
-nim	`-`	happyx/spa/state.html#-,,T	proc `-`[T](self`gensym7: State[T]; other`gensym7: T): T		179
-nim	`*`	happyx/spa/state.html#*,,	proc `*`[T](self`gensym8, other`gensym8: State[T]): T		93
-nim	`*`	happyx/spa/state.html#*,T,	proc `*`[T](other`gensym8: T; self`gensym8: State[T]): T		95
-nim	`*`	happyx/spa/state.html#*,,T	proc `*`[T](self`gensym8: State[T]; other`gensym8: T): T		180
-nim	`/`	happyx/spa/state.html#/,,	proc `/`[T](self`gensym9, other`gensym9: State[T]): T		93
-nim	`/`	happyx/spa/state.html#/,T,	proc `/`[T](other`gensym9: T; self`gensym9: State[T]): T		95
-nim	`/`	happyx/spa/state.html#/,,T	proc `/`[T](self`gensym9: State[T]; other`gensym9: T): T		181
-nim	`!`	happyx/spa/state.html#!,,	proc `!`[T](self`gensym10, other`gensym10: State[T]): T		93
-nim	`!`	happyx/spa/state.html#!,T,	proc `!`[T](other`gensym10: T; self`gensym10: State[T]): T		95
-nim	`!`	happyx/spa/state.html#!,,T	proc `!`[T](self`gensym10: State[T]; other`gensym10: T): T		182
-nim	`^`	happyx/spa/state.html#^,,	proc `^`[T](self`gensym11, other`gensym11: State[T]): T		93
-nim	`^`	happyx/spa/state.html#^,T,	proc `^`[T](other`gensym11: T; self`gensym11: State[T]): T		95
-nim	`^`	happyx/spa/state.html#^,,T	proc `^`[T](self`gensym11: State[T]; other`gensym11: T): T		183
-nim	`%`	happyx/spa/state.html#%,,	proc `%`[T](self`gensym12, other`gensym12: State[T]): T		93
-nim	`%`	happyx/spa/state.html#%,T,	proc `%`[T](other`gensym12: T; self`gensym12: State[T]): T		95
-nim	`%`	happyx/spa/state.html#%,,T	proc `%`[T](self`gensym12: State[T]; other`gensym12: T): T		184
-nim	`@`	happyx/spa/state.html#@,,	proc `@`[T](self`gensym13, other`gensym13: State[T]): T		93
-nim	`@`	happyx/spa/state.html#@,T,	proc `@`[T](other`gensym13: T; self`gensym13: State[T]): T		95
-nim	`@`	happyx/spa/state.html#@,,T	proc `@`[T](self`gensym13: State[T]; other`gensym13: T): T		185
-nim	`>`	happyx/spa/state.html#>,,	proc `>`[T](self`gensym14, other`gensym14: State[T]): T		93
-nim	`>`	happyx/spa/state.html#>,T,	proc `>`[T](other`gensym14: T; self`gensym14: State[T]): T		95
-nim	`>`	happyx/spa/state.html#>,,T	proc `>`[T](self`gensym14: State[T]; other`gensym14: T): T		186
-nim	`<`	happyx/spa/state.html#<,,	proc `<`[T](self`gensym15, other`gensym15: State[T]): T		93
-nim	`<`	happyx/spa/state.html#<,T,	proc `<`[T](other`gensym15: T; self`gensym15: State[T]): T		95
-nim	`<`	happyx/spa/state.html#<,,T	proc `<`[T](self`gensym15: State[T]; other`gensym15: T): T		187
-nim	`*=`	happyx/spa/state.html#*=.t,,	template `*=`[T](self`gensym16: State[T]; other`gensym16: State[T])		132
-nim	`*=`	happyx/spa/state.html#*=.t,T,	template `*=`[T](other`gensym16: T; self`gensym16: State[T])		140
-nim	`*=`	happyx/spa/state.html#*=.t,,T	template `*=`[T](self`gensym16: State[T]; other`gensym16: T)		189
-nim	`+=`	happyx/spa/state.html#+=.t,,	template `+=`[T](self`gensym17: State[T]; other`gensym17: State[T])		132
-nim	`+=`	happyx/spa/state.html#+=.t,T,	template `+=`[T](other`gensym17: T; self`gensym17: State[T])		140
-nim	`+=`	happyx/spa/state.html#+=.t,,T	template `+=`[T](self`gensym17: State[T]; other`gensym17: T)		190
-nim	`-=`	happyx/spa/state.html#-=.t,,	template `-=`[T](self`gensym18: State[T]; other`gensym18: State[T])		132
-nim	`-=`	happyx/spa/state.html#-=.t,T,	template `-=`[T](other`gensym18: T; self`gensym18: State[T])		140
-nim	`-=`	happyx/spa/state.html#-=.t,,T	template `-=`[T](self`gensym18: State[T]; other`gensym18: T)		191
-nim	`/=`	happyx/spa/state.html#/=.t,,	template `/=`[T](self`gensym19: State[T]; other`gensym19: State[T])		132
-nim	`/=`	happyx/spa/state.html#/=.t,T,	template `/=`[T](other`gensym19: T; self`gensym19: State[T])		140
-nim	`/=`	happyx/spa/state.html#/=.t,,T	template `/=`[T](self`gensym19: State[T]; other`gensym19: T)		192
-nim	`^=`	happyx/spa/state.html#^=.t,,	template `^=`[T](self`gensym20: State[T]; other`gensym20: State[T])		132
-nim	`^=`	happyx/spa/state.html#^=.t,T,	template `^=`[T](other`gensym20: T; self`gensym20: State[T])		140
-nim	`^=`	happyx/spa/state.html#^=.t,,T	template `^=`[T](self`gensym20: State[T]; other`gensym20: T)		193
-nim	`&=`	happyx/spa/state.html#&=.t,,	template `&=`[T](self`gensym21: State[T]; other`gensym21: State[T])		132
-nim	`&=`	happyx/spa/state.html#&=.t,T,	template `&=`[T](other`gensym21: T; self`gensym21: State[T])		140
-nim	`&=`	happyx/spa/state.html#&=.t,,T	template `&=`[T](self`gensym21: State[T]; other`gensym21: T)		194
-nim	`%=`	happyx/spa/state.html#%=.t,,	template `%=`[T](self`gensym22: State[T]; other`gensym22: State[T])		132
-nim	`%=`	happyx/spa/state.html#%=.t,T,	template `%=`[T](other`gensym22: T; self`gensym22: State[T])		140
-nim	`%=`	happyx/spa/state.html#%=.t,,T	template `%=`[T](self`gensym22: State[T]; other`gensym22: T)		195
-nim	`$=`	happyx/spa/state.html#$=.t,,	template `$=`[T](self`gensym23: State[T]; other`gensym23: State[T])		132
-nim	`$=`	happyx/spa/state.html#$=.t,T,	template `$=`[T](other`gensym23: T; self`gensym23: State[T])		140
-nim	`$=`	happyx/spa/state.html#$=.t,,T	template `$=`[T](self`gensym23: State[T]; other`gensym23: T)		196
-nim	`@=`	happyx/spa/state.html#@=.t,,	template `@=`[T](self`gensym24: State[T]; other`gensym24: State[T])		132
-nim	`@=`	happyx/spa/state.html#@=.t,T,	template `@=`[T](other`gensym24: T; self`gensym24: State[T])		140
-nim	`@=`	happyx/spa/state.html#@=.t,,T	template `@=`[T](self`gensym24: State[T]; other`gensym24: T)		197
-nim	`:=`	happyx/spa/state.html#:=.t,,	template `:=`[T](self`gensym25: State[T]; other`gensym25: State[T])		132
-nim	`:=`	happyx/spa/state.html#:=.t,T,	template `:=`[T](other`gensym25: T; self`gensym25: State[T])		140
-nim	`:=`	happyx/spa/state.html#:=.t,,T	template `:=`[T](self`gensym25: State[T]; other`gensym25: T)		198
-nim	`|=`	happyx/spa/state.html#|=.t,,	template `|=`[T](self`gensym26: State[T]; other`gensym26: State[T])		132
-nim	`|=`	happyx/spa/state.html#|=.t,T,	template `|=`[T](other`gensym26: T; self`gensym26: State[T])		140
-nim	`|=`	happyx/spa/state.html#|=.t,,T	template `|=`[T](self`gensym26: State[T]; other`gensym26: T)		199
-nim	`~=`	happyx/spa/state.html#~=.t,,	template `~=`[T](self`gensym27: State[T]; other`gensym27: State[T])		132
-nim	`~=`	happyx/spa/state.html#~=.t,T,	template `~=`[T](other`gensym27: T; self`gensym27: State[T])		140
-nim	`~=`	happyx/spa/state.html#~=.t,,T	template `~=`[T](self`gensym27: State[T]; other`gensym27: T)		200
-nim	`->`	happyx/spa/state.html#->.m,State,untyped	macro `->`(self: State; field: untyped): untyped		203
-nim	watch	happyx/spa/state.html#watch.m,untyped,untyped,untyped,untyped	macro watch(state, newVal, oldVal, body: untyped): untyped		295
-nim	get	happyx/spa/state.html#get,State[T]	proc get[T](self: State[T]): T		306
-nim	len	happyx/spa/state.html#len,State[T]	proc len[T](self: State[T]): int		312
-nim	low	happyx/spa/state.html#low,State[T]	proc low[T](self: State[T]): int		317
-nim	high	happyx/spa/state.html#high,State[T]	proc high[T](self: State[T]): int		322
-nim	set	happyx/spa/state.html#set.t,State[T],T	template set[T](self: State[T]; value: T)		336
-nim	`[]`	happyx/spa/state.html#[],State[array[T,U]],int	proc `[]`[T, U](self: State[array[T, U]]; idx: int): T		344
-nim	`[]`	happyx/spa/state.html#[],State[seq[T]],int	proc `[]`[T](self: State[seq[T]]; idx: int): T		349
-nim	`[]`	happyx/spa/state.html#[],State[array[T,U]],State[int]	proc `[]`[T, U](self: State[array[T, U]]; idx: State[int]): T		354
-nim	`[]`	happyx/spa/state.html#[],State[seq[T]],State[int]	proc `[]`[T](self: State[seq[T]]; idx: State[int]): T		359
-nim	`[]`	happyx/spa/state.html#[],State[TableRef[T,U]],T	proc `[]`[T, U](self: State[TableRef[T, U]]; idx: T): U		364
-nim	`[]`	happyx/spa/state.html#[],State[StringTableRef],string	proc `[]`(self: State[StringTableRef]; idx: string): string		369
-nim	`[]=`	happyx/spa/state.html#[]=,State[seq[T]],int,T	proc `[]=`[T](self: State[seq[T]]; idx: int; value: T)		421
-nim	`[]=`	happyx/spa/state.html#[]=,State[array[T,U]],int,T	proc `[]=`[T, U](self: State[array[T, U]]; idx: int; value: T)		433
-nim	`[]=`	happyx/spa/state.html#[]=,State[TableRef[T,U]],T,U	proc `[]=`[T, U](self: State[TableRef[T, U]]; idx: T; value: U)		445
-nim	`[]=`	happyx/spa/state.html#[]=,State[StringTableRef],string,string	proc `[]=`(self: State[StringTableRef]; idx: string; value: string)		457
-nim	items	happyx/spa/state.html#items.i,State[openArray[T]]	iterator items[T](self: State[openArray[T]]): T		469
-nim	pairs	happyx/spa/state.html#pairs.i,State[TableRef[T,U]]	iterator pairs[T, U](self: State[TableRef[T, U]]): (T, U)		475
-nim	toBool	happyx/spa/state.html#toBool.c,State[bool]	converter toBool(self: State[bool]): bool		481
-nim	toString	happyx/spa/state.html#toString.c,State[string]	converter toString(self: State[string]): string		484
-nim	toCString	happyx/spa/state.html#toCString.c,State[cstring]	converter toCString(self: State[cstring]): cstring		487
-nim	toInt	happyx/spa/state.html#toInt.c,State[int]	converter toInt(self: State[int]): int		490
-nim	toFloat	happyx/spa/state.html#toFloat.c,State[float]	converter toFloat(self: State[float]): float		493
-nim	toChar	happyx/spa/state.html#toChar.c,State[char]	converter toChar(self: State[char]): char		496
-nim	toInt8	happyx/spa/state.html#toInt8.c,State[int8]	converter toInt8(self: State[int8]): int8		499
-nim	toInt16	happyx/spa/state.html#toInt16.c,State[int16]	converter toInt16(self: State[int16]): int16		502
-nim	toInt32	happyx/spa/state.html#toInt32.c,State[int32]	converter toInt32(self: State[int32]): int32		505
-nim	toInt64	happyx/spa/state.html#toInt64.c,State[int64]	converter toInt64(self: State[int64]): int64		508
-nim	toFloat32	happyx/spa/state.html#toFloat32.c,State[float32]	converter toFloat32(self: State[float32]): float32		511
-nim	toFloat64	happyx/spa/state.html#toFloat64.c,State[float64]	converter toFloat64(self: State[float64]): float64		514
-nim	toSeq	happyx/spa/state.html#toSeq.c,State[seq[T]]	converter toSeq[T](self: State[seq[T]]): seq[T]		517
-nim	set	happyx/spa/state.html#set,LanguageSettings,string	proc set(settings: var LanguageSettings; lang: string)		534
-nimgrp	>=	happyx/spa/state.html#>=-procs-all	proc		159
-nimgrp	<=	happyx/spa/state.html#<=-procs-all	proc		159
-nimgrp	/	happyx/spa/state.html#/-procs-all	proc		93
-nimgrp	&	happyx/spa/state.html#&-procs-all	proc		93
-nimgrp	<	happyx/spa/state.html#<-procs-all	proc		93
-nimgrp	[]=	happyx/spa/state.html#[]=-procs-all	proc		421
-nimgrp	^	happyx/spa/state.html#^-procs-all	proc		93
-nimgrp	*	happyx/spa/state.html#*-procs-all	proc		93
-nimgrp	>	happyx/spa/state.html#>-procs-all	proc		93
-nimgrp	-	happyx/spa/state.html#--procs-all	proc		93
-nimgrp	@	happyx/spa/state.html#@-procs-all	proc		93
-nimgrp	!=	happyx/spa/state.html#!=-procs-all	proc		159
-nimgrp	!	happyx/spa/state.html#!-procs-all	proc		93
-nimgrp	==	happyx/spa/state.html#==-procs-all	proc		159
-nimgrp	+	happyx/spa/state.html#+-procs-all	proc		93
-nimgrp	[]	happyx/spa/state.html#[]-procs-all	proc		344
-nimgrp	%	happyx/spa/state.html#%-procs-all	proc		93
-nimgrp	+=	happyx/spa/state.html#+=-templates-all	template		132
-nimgrp	~=	happyx/spa/state.html#~=-templates-all	template		132
-nimgrp	$=	happyx/spa/state.html#$=-templates-all	template		132
-nimgrp	|=	happyx/spa/state.html#|=-templates-all	template		132
-nimgrp	@=	happyx/spa/state.html#@=-templates-all	template		132
-nimgrp	:=	happyx/spa/state.html#:=-templates-all	template		132
-nimgrp	&=	happyx/spa/state.html#&=-templates-all	template		132
-nimgrp	-=	happyx/spa/state.html#-=-templates-all	template		132
-nimgrp	%=	happyx/spa/state.html#%=-templates-all	template		132
-nimgrp	^=	happyx/spa/state.html#^=-templates-all	template		132
-nimgrp	/=	happyx/spa/state.html#/=-templates-all	template		132
-nimgrp	*=	happyx/spa/state.html#*=-templates-all	template		132
+nim	val=	happyx/spa/state.html#val=.t,State[T],T	template val=[T](a: State[T]; value: T)		66
+nim	`$`	happyx/spa/state.html#$,State[T]	proc `$`[T](self: State[T]): string		78
+nim	`==`	happyx/spa/state.html#==,,	proc `==`[T](self`gensym0, b`gensym0: State[T]): bool		175
+nim	`==`	happyx/spa/state.html#==,,T	proc `==`[T](self`gensym0: State[T]; b`gensym0: T): bool		186
+nim	`!=`	happyx/spa/state.html#!=,,	proc `!=`[T](self`gensym1, b`gensym1: State[T]): bool		175
+nim	`!=`	happyx/spa/state.html#!=,,T	proc `!=`[T](self`gensym1: State[T]; b`gensym1: T): bool		187
+nim	`>=`	happyx/spa/state.html#>=,,	proc `>=`[T](self`gensym2, b`gensym2: State[T]): bool		175
+nim	`>=`	happyx/spa/state.html#>=,,T	proc `>=`[T](self`gensym2: State[T]; b`gensym2: T): bool		188
+nim	`<=`	happyx/spa/state.html#<=,,	proc `<=`[T](self`gensym3, b`gensym3: State[T]): bool		175
+nim	`<=`	happyx/spa/state.html#<=,,T	proc `<=`[T](self`gensym3: State[T]; b`gensym3: T): bool		189
+nim	`not`	happyx/spa/state.html#not	proc `not`[T](self`gensym4: State[T]): bool		191
+nim	`&`	happyx/spa/state.html#&,,	proc `&`[T](self`gensym5, b`gensym5: State[T]): T		97
+nim	`&`	happyx/spa/state.html#&,T,	proc `&`[T](b`gensym5: T; self`gensym5: State[T]): T		99
+nim	`&`	happyx/spa/state.html#&,,T	proc `&`[T](self`gensym5: State[T]; b`gensym5: T): T		193
+nim	`+`	happyx/spa/state.html#+,,	proc `+`[T](self`gensym6, b`gensym6: State[T]): T		97
+nim	`+`	happyx/spa/state.html#+,T,	proc `+`[T](b`gensym6: T; self`gensym6: State[T]): T		99
+nim	`+`	happyx/spa/state.html#+,,T	proc `+`[T](self`gensym6: State[T]; b`gensym6: T): T		194
+nim	`-`	happyx/spa/state.html#-,,	proc `-`[T](self`gensym7, b`gensym7: State[T]): T		97
+nim	`-`	happyx/spa/state.html#-,T,	proc `-`[T](b`gensym7: T; self`gensym7: State[T]): T		99
+nim	`-`	happyx/spa/state.html#-,,T	proc `-`[T](self`gensym7: State[T]; b`gensym7: T): T		195
+nim	`*`	happyx/spa/state.html#*,,	proc `*`[T](self`gensym8, b`gensym8: State[T]): T		97
+nim	`*`	happyx/spa/state.html#*,T,	proc `*`[T](b`gensym8: T; self`gensym8: State[T]): T		99
+nim	`*`	happyx/spa/state.html#*,,T	proc `*`[T](self`gensym8: State[T]; b`gensym8: T): T		196
+nim	`/`	happyx/spa/state.html#/,,	proc `/`[T](self`gensym9, b`gensym9: State[T]): T		97
+nim	`/`	happyx/spa/state.html#/,T,	proc `/`[T](b`gensym9: T; self`gensym9: State[T]): T		99
+nim	`/`	happyx/spa/state.html#/,,T	proc `/`[T](self`gensym9: State[T]; b`gensym9: T): T		197
+nim	`!`	happyx/spa/state.html#!,,	proc `!`[T](self`gensym10, b`gensym10: State[T]): T		97
+nim	`!`	happyx/spa/state.html#!,T,	proc `!`[T](b`gensym10: T; self`gensym10: State[T]): T		99
+nim	`!`	happyx/spa/state.html#!,,T	proc `!`[T](self`gensym10: State[T]; b`gensym10: T): T		198
+nim	`^`	happyx/spa/state.html#^,,	proc `^`[T](self`gensym11, b`gensym11: State[T]): T		97
+nim	`^`	happyx/spa/state.html#^,T,	proc `^`[T](b`gensym11: T; self`gensym11: State[T]): T		99
+nim	`^`	happyx/spa/state.html#^,,T	proc `^`[T](self`gensym11: State[T]; b`gensym11: T): T		199
+nim	`%`	happyx/spa/state.html#%,,	proc `%`[T](self`gensym12, b`gensym12: State[T]): T		97
+nim	`%`	happyx/spa/state.html#%,T,	proc `%`[T](b`gensym12: T; self`gensym12: State[T]): T		99
+nim	`%`	happyx/spa/state.html#%,,T	proc `%`[T](self`gensym12: State[T]; b`gensym12: T): T		200
+nim	`@`	happyx/spa/state.html#@,,	proc `@`[T](self`gensym13, b`gensym13: State[T]): T		97
+nim	`@`	happyx/spa/state.html#@,T,	proc `@`[T](b`gensym13: T; self`gensym13: State[T]): T		99
+nim	`@`	happyx/spa/state.html#@,,T	proc `@`[T](self`gensym13: State[T]; b`gensym13: T): T		201
+nim	`>`	happyx/spa/state.html#>,,	proc `>`[T](self`gensym14, b`gensym14: State[T]): T		97
+nim	`>`	happyx/spa/state.html#>,T,	proc `>`[T](b`gensym14: T; self`gensym14: State[T]): T		99
+nim	`>`	happyx/spa/state.html#>,,T	proc `>`[T](self`gensym14: State[T]; b`gensym14: T): T		202
+nim	`<`	happyx/spa/state.html#<,,	proc `<`[T](self`gensym15, b`gensym15: State[T]): T		97
+nim	`<`	happyx/spa/state.html#<,T,	proc `<`[T](b`gensym15: T; self`gensym15: State[T]): T		99
+nim	`<`	happyx/spa/state.html#<,,T	proc `<`[T](self`gensym15: State[T]; b`gensym15: T): T		203
+nim	`*=`	happyx/spa/state.html#*=.t,,	template `*=`[T](a`gensym16: State[T]; b`gensym16: State[T])		136
+nim	`*=`	happyx/spa/state.html#*=.t,T,	template `*=`[T](b`gensym16: T; a`gensym16: State[T])		148
+nim	`*=`	happyx/spa/state.html#*=.t,,T	template `*=`[T](a`gensym16: State[T]; b`gensym16: T)		205
+nim	`+=`	happyx/spa/state.html#+=.t,,	template `+=`[T](a`gensym17: State[T]; b`gensym17: State[T])		136
+nim	`+=`	happyx/spa/state.html#+=.t,T,	template `+=`[T](b`gensym17: T; a`gensym17: State[T])		148
+nim	`+=`	happyx/spa/state.html#+=.t,,T	template `+=`[T](a`gensym17: State[T]; b`gensym17: T)		206
+nim	`-=`	happyx/spa/state.html#-=.t,,	template `-=`[T](a`gensym18: State[T]; b`gensym18: State[T])		136
+nim	`-=`	happyx/spa/state.html#-=.t,T,	template `-=`[T](b`gensym18: T; a`gensym18: State[T])		148
+nim	`-=`	happyx/spa/state.html#-=.t,,T	template `-=`[T](a`gensym18: State[T]; b`gensym18: T)		207
+nim	`/=`	happyx/spa/state.html#/=.t,,	template `/=`[T](a`gensym19: State[T]; b`gensym19: State[T])		136
+nim	`/=`	happyx/spa/state.html#/=.t,T,	template `/=`[T](b`gensym19: T; a`gensym19: State[T])		148
+nim	`/=`	happyx/spa/state.html#/=.t,,T	template `/=`[T](a`gensym19: State[T]; b`gensym19: T)		208
+nim	`^=`	happyx/spa/state.html#^=.t,,	template `^=`[T](a`gensym20: State[T]; b`gensym20: State[T])		136
+nim	`^=`	happyx/spa/state.html#^=.t,T,	template `^=`[T](b`gensym20: T; a`gensym20: State[T])		148
+nim	`^=`	happyx/spa/state.html#^=.t,,T	template `^=`[T](a`gensym20: State[T]; b`gensym20: T)		209
+nim	`&=`	happyx/spa/state.html#&=.t,,	template `&=`[T](a`gensym21: State[T]; b`gensym21: State[T])		136
+nim	`&=`	happyx/spa/state.html#&=.t,T,	template `&=`[T](b`gensym21: T; a`gensym21: State[T])		148
+nim	`&=`	happyx/spa/state.html#&=.t,,T	template `&=`[T](a`gensym21: State[T]; b`gensym21: T)		210
+nim	`%=`	happyx/spa/state.html#%=.t,,	template `%=`[T](a`gensym22: State[T]; b`gensym22: State[T])		136
+nim	`%=`	happyx/spa/state.html#%=.t,T,	template `%=`[T](b`gensym22: T; a`gensym22: State[T])		148
+nim	`%=`	happyx/spa/state.html#%=.t,,T	template `%=`[T](a`gensym22: State[T]; b`gensym22: T)		211
+nim	`$=`	happyx/spa/state.html#$=.t,,	template `$=`[T](a`gensym23: State[T]; b`gensym23: State[T])		136
+nim	`$=`	happyx/spa/state.html#$=.t,T,	template `$=`[T](b`gensym23: T; a`gensym23: State[T])		148
+nim	`$=`	happyx/spa/state.html#$=.t,,T	template `$=`[T](a`gensym23: State[T]; b`gensym23: T)		212
+nim	`@=`	happyx/spa/state.html#@=.t,,	template `@=`[T](a`gensym24: State[T]; b`gensym24: State[T])		136
+nim	`@=`	happyx/spa/state.html#@=.t,T,	template `@=`[T](b`gensym24: T; a`gensym24: State[T])		148
+nim	`@=`	happyx/spa/state.html#@=.t,,T	template `@=`[T](a`gensym24: State[T]; b`gensym24: T)		213
+nim	`:=`	happyx/spa/state.html#:=.t,,	template `:=`[T](a`gensym25: State[T]; b`gensym25: State[T])		136
+nim	`:=`	happyx/spa/state.html#:=.t,T,	template `:=`[T](b`gensym25: T; a`gensym25: State[T])		148
+nim	`:=`	happyx/spa/state.html#:=.t,,T	template `:=`[T](a`gensym25: State[T]; b`gensym25: T)		214
+nim	`|=`	happyx/spa/state.html#|=.t,,	template `|=`[T](a`gensym26: State[T]; b`gensym26: State[T])		136
+nim	`|=`	happyx/spa/state.html#|=.t,T,	template `|=`[T](b`gensym26: T; a`gensym26: State[T])		148
+nim	`|=`	happyx/spa/state.html#|=.t,,T	template `|=`[T](a`gensym26: State[T]; b`gensym26: T)		215
+nim	`~=`	happyx/spa/state.html#~=.t,,	template `~=`[T](a`gensym27: State[T]; b`gensym27: State[T])		136
+nim	`~=`	happyx/spa/state.html#~=.t,T,	template `~=`[T](b`gensym27: T; a`gensym27: State[T])		148
+nim	`~=`	happyx/spa/state.html#~=.t,,T	template `~=`[T](a`gensym27: State[T]; b`gensym27: T)		216
+nim	`->`	happyx/spa/state.html#->.m,State,untyped	macro `->`(a: State; field: untyped): untyped		219
+nim	watch	happyx/spa/state.html#watch.m,untyped,untyped,untyped,untyped	macro watch(state, newVal, oldVal, body: untyped): untyped		341
+nim	get	happyx/spa/state.html#get,State[T]	proc get[T](self: State[T]): T		352
+nim	len	happyx/spa/state.html#len,State[T]	proc len[T](self: State[T]): int		358
+nim	low	happyx/spa/state.html#low,State[T]	proc low[T](self: State[T]): int		363
+nim	high	happyx/spa/state.html#high,State[T]	proc high[T](self: State[T]): int		368
+nim	set	happyx/spa/state.html#set.t,State[T],T	template set[T](a: State[T]; value: T)		382
+nim	`[]`	happyx/spa/state.html#[],State[array[T,U]],int	proc `[]`[T, U](self: State[array[T, U]]; idx: int): T		394
+nim	`[]`	happyx/spa/state.html#[],State[seq[T]],int	proc `[]`[T](self: State[seq[T]]; idx: int): T		399
+nim	`[]`	happyx/spa/state.html#[],State[array[T,U]],State[int]	proc `[]`[T, U](self: State[array[T, U]]; idx: State[int]): T		404
+nim	`[]`	happyx/spa/state.html#[],State[seq[T]],State[int]	proc `[]`[T](self: State[seq[T]]; idx: State[int]): T		409
+nim	`[]`	happyx/spa/state.html#[],State[TableRef[T,U]],T	proc `[]`[T, U](self: State[TableRef[T, U]]; idx: T): U		414
+nim	`[]`	happyx/spa/state.html#[],State[StringTableRef],string	proc `[]`(self: State[StringTableRef]; idx: string): string		419
+nim	`[]=`	happyx/spa/state.html#[]=.t,State[seq[T]],int,T	template `[]=`[T](a: State[seq[T]]; idx: int; value: T)		471
+nim	`[]=`	happyx/spa/state.html#[]=.t,State[array[T,U]],int,T	template `[]=`[T, U](a: State[array[T, U]]; idx: int; value: T)		486
+nim	`[]=`	happyx/spa/state.html#[]=.t,State[TableRef[T,U]],T,U	template `[]=`[T, U](a: State[TableRef[T, U]]; idx: T; value: U)		501
+nim	`[]=`	happyx/spa/state.html#[]=.t,State[StringTableRef],string,string	template `[]=`(a: State[StringTableRef]; idx: string; value: string)		516
+nim	items	happyx/spa/state.html#items.i,State[openArray[T]]	iterator items[T](self: State[openArray[T]]): T		531
+nim	pairs	happyx/spa/state.html#pairs.i,State[TableRef[T,U]]	iterator pairs[T, U](self: State[TableRef[T, U]]): (T, U)		537
+nim	toBool	happyx/spa/state.html#toBool.c,State[bool]	converter toBool(self: State[bool]): bool		543
+nim	toString	happyx/spa/state.html#toString.c,State[string]	converter toString(self: State[string]): string		546
+nim	toCString	happyx/spa/state.html#toCString.c,State[cstring]	converter toCString(self: State[cstring]): cstring		549
+nim	toInt	happyx/spa/state.html#toInt.c,State[int]	converter toInt(self: State[int]): int		552
+nim	toFloat	happyx/spa/state.html#toFloat.c,State[float]	converter toFloat(self: State[float]): float		555
+nim	toChar	happyx/spa/state.html#toChar.c,State[char]	converter toChar(self: State[char]): char		558
+nim	toInt8	happyx/spa/state.html#toInt8.c,State[int8]	converter toInt8(self: State[int8]): int8		561
+nim	toInt16	happyx/spa/state.html#toInt16.c,State[int16]	converter toInt16(self: State[int16]): int16		564
+nim	toInt32	happyx/spa/state.html#toInt32.c,State[int32]	converter toInt32(self: State[int32]): int32		567
+nim	toInt64	happyx/spa/state.html#toInt64.c,State[int64]	converter toInt64(self: State[int64]): int64		570
+nim	toFloat32	happyx/spa/state.html#toFloat32.c,State[float32]	converter toFloat32(self: State[float32]): float32		573
+nim	toFloat64	happyx/spa/state.html#toFloat64.c,State[float64]	converter toFloat64(self: State[float64]): float64		576
+nim	toSeq	happyx/spa/state.html#toSeq.c,State[seq[T]]	converter toSeq[T](self: State[seq[T]]): seq[T]		579
+nim	set	happyx/spa/state.html#set,LanguageSettings,string	proc set(settings: var LanguageSettings; lang: string)		596
+nimgrp	>=	happyx/spa/state.html#>=-procs-all	proc		175
+nimgrp	<=	happyx/spa/state.html#<=-procs-all	proc		175
+nimgrp	/	happyx/spa/state.html#/-procs-all	proc		97
+nimgrp	&	happyx/spa/state.html#&-procs-all	proc		97
+nimgrp	<	happyx/spa/state.html#<-procs-all	proc		97
+nimgrp	^	happyx/spa/state.html#^-procs-all	proc		97
+nimgrp	*	happyx/spa/state.html#*-procs-all	proc		97
+nimgrp	>	happyx/spa/state.html#>-procs-all	proc		97
+nimgrp	-	happyx/spa/state.html#--procs-all	proc		97
+nimgrp	@	happyx/spa/state.html#@-procs-all	proc		97
+nimgrp	!=	happyx/spa/state.html#!=-procs-all	proc		175
+nimgrp	!	happyx/spa/state.html#!-procs-all	proc		97
+nimgrp	==	happyx/spa/state.html#==-procs-all	proc		175
+nimgrp	+	happyx/spa/state.html#+-procs-all	proc		97
+nimgrp	[]	happyx/spa/state.html#[]-procs-all	proc		394
+nimgrp	%	happyx/spa/state.html#%-procs-all	proc		97
+nimgrp	+=	happyx/spa/state.html#+=-templates-all	template		136
+nimgrp	~=	happyx/spa/state.html#~=-templates-all	template		136
+nimgrp	$=	happyx/spa/state.html#$=-templates-all	template		136
+nimgrp	[]=	happyx/spa/state.html#[]=-templates-all	template		471
+nimgrp	|=	happyx/spa/state.html#|=-templates-all	template		136
+nimgrp	@=	happyx/spa/state.html#@=-templates-all	template		136
+nimgrp	:=	happyx/spa/state.html#:=-templates-all	template		136
+nimgrp	&=	happyx/spa/state.html#&=-templates-all	template		136
+nimgrp	-=	happyx/spa/state.html#-=-templates-all	template		136
+nimgrp	%=	happyx/spa/state.html#%=-templates-all	template		136
+nimgrp	^=	happyx/spa/state.html#^=-templates-all	template		136
+nimgrp	/=	happyx/spa/state.html#/=-templates-all	template		136
+nimgrp	*=	happyx/spa/state.html#*=-templates-all	template		136
 heading	Examples:	happyx/spa/state.html#state-🍍-examplescolon	  Examples:		0
 heading	State 🍍	happyx/spa/state.html#state-🍍	 State 🍍		0
 heading	Usage ⚡	happyx/spa/state.html#state-🍍-usage-⚡	  Usage ⚡		0

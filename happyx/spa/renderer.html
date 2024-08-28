@@ -66,6 +66,12 @@
 <li><a class="reference" href="#BaseComponent" title="BaseComponent = ref BaseComponentObj">BaseComponent</a></li>
 <li><a class="reference" href="#BaseComponentObj" title="BaseComponentObj {.inheritable.} = object
   uniqCompId*: string
+  urlPath*, hostname*: string
+  query*: StringTableRef
+  queryArr*: TableRef[string, seq[string]]
+  reqMethod*: HttpMethod
+  inCookies*: StringTableRef
+  headers*: HttpHeaders
   isCreated*: bool
   slot*: proc (scopeSelf: BaseComponent; inComponent: bool; compName: string;
                inCycle: bool; cycleCounter: var int; compCounter: string): TagRef
@@ -139,6 +145,10 @@
   <li><a class="reference" href="#rerender%2Cauto%2Cauto%2Cauto%2Cauto%2Cauto%2Cstring%2Cstring" title="rerender(query, queryArr, reqMethod, inCookies, headers: auto;
          hostname, urlPath: string)">rerender(query, queryArr, reqMethod, inCookies, headers: auto;
          hostname, urlPath: string)</a></li>
+
+</ul>
+<ul class="simple nested-toc-section">rerenderWithComponent
+  <li><a class="reference" href="#rerenderWithComponent%2CBaseComponent" title="rerenderWithComponent(comp: BaseComponent)">rerenderWithComponent(comp: BaseComponent)</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">route
@@ -283,6 +293,12 @@
 <div id="BaseComponentObj">
   <dt><pre><a href="renderer.html#BaseComponentObj"><span class="Identifier">BaseComponentObj</span></a> {.<span class="Identifier">inheritable</span>.} <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">uniqCompId</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
+  <span class="Identifier">urlPath</span><span class="Operator">*</span><span class="Other">,</span> <span class="Identifier">hostname</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
+  <span class="Identifier">query</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">StringTableRef</span>
+  <span class="Identifier">queryArr</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">TableRef</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">,</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">]</span><span class="Other">]</span>
+  <span class="Identifier">reqMethod</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">HttpMethod</span>
+  <span class="Identifier">inCookies</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">StringTableRef</span>
+  <span class="Identifier">headers</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">HttpHeaders</span>
   <span class="Identifier">isCreated</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>
   <span class="Identifier">slot</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">scopeSelf</span><span class="Other">:</span> <a href="renderer.html#BaseComponent"><span class="Identifier">BaseComponent</span></a><span class="Other">;</span> <span class="Identifier">inComponent</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">;</span> <span class="Identifier">compName</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span>
                <span class="Identifier">inCycle</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">;</span> <span class="Identifier">cycleCounter</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">int</span><span class="Other">;</span> <span class="Identifier">compCounter</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a>
@@ -516,6 +532,18 @@
   <div id="rerender,auto,auto,auto,auto,auto,string,string">
   <dt><pre><span class="Keyword">proc</span> <a href="#rerender%2Cauto%2Cauto%2Cauto%2Cauto%2Cauto%2Cstring%2Cstring"><span class="Identifier">rerender</span></a><span class="Other">(</span><span class="Identifier">query</span><span class="Other">,</span> <span class="Identifier">queryArr</span><span class="Other">,</span> <span class="Identifier">reqMethod</span><span class="Other">,</span> <span class="Identifier">inCookies</span><span class="Other">,</span> <span class="Identifier">headers</span><span class="Other">:</span> <span class="Identifier">auto</span><span class="Other">;</span>
               <span class="Identifier">hostname</span><span class="Other">,</span> <span class="Identifier">urlPath</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span> {.<span class="Identifier">inline</span>.}</pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+
+</div>
+<div id="rerenderWithComponent-procs-all">
+  <div id="rerenderWithComponent,BaseComponent">
+  <dt><pre><span class="Keyword">proc</span> <a href="#rerenderWithComponent%2CBaseComponent"><span class="Identifier">rerenderWithComponent</span></a><span class="Other">(</span><span class="Identifier">comp</span><span class="Other">:</span> <a href="renderer.html#BaseComponent"><span class="Identifier">BaseComponent</span></a><span class="Other">)</span> {.<span class="Identifier">inline</span><span class="Other">,</span>
+    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">,</span> <span class="Identifier">KeyError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
     
@@ -820,7 +848,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2024-08-27 11:40:59 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2024-08-28 13:28:56 UTC</small>
       </div>
     </div>
   </div>
