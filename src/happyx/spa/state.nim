@@ -63,12 +63,16 @@ when defined(js) or not enableLiveViews:
     if enableRouting and not application.isNil() and not application.router.isNil():
       application.router()
 else:
-  template `val=`*[T](self: State[T], value: T) =
+  template `val=`*[T](a: State[T], value: T) =
     ## Changes state value
-    if self.watchers.len > 0:
-      self.watchImpl(self.val, value)
-    self.val = value
-    rerender(query, queryArr, reqMethod, inCookies, headers, hostname, urlPath)
+    if a.watchers.len > 0:
+      a.watchImpl(a.val, value)
+    a.val = value
+    when declared(self):
+      when typeof(self) is BaseComponent:
+        rerenderWithComponent(self)
+    else:
+      rerender(query, queryArr, reqMethod, inCookies, headers, hostname, urlPath)
 
 
 func `$`*[T](self: State[T]): string =
@@ -90,76 +94,88 @@ func `$`*[T](self: State[T]): string =
 
 
 template operator(funcname, op: untyped): untyped =
-  func `funcname`*[T](self, other: State[T]): T =
-    `op`(self.value, other.value)
-  func `funcname`*[T](other: T, self: State[T]): T =
-    `op`(self.value, other)
-  func `funcname`*[T](self: State[T], other: T): T =
-    `op`(self.value, other)
+  func `funcname`*[T](self, b: State[T]): T =
+    `op`(self.value, b.value)
+  func `funcname`*[T](b: T, self: State[T]): T =
+    `op`(self.value, b)
+  func `funcname`*[T](self: State[T], b: T): T =
+    `op`(self.value, b)
 
 
 when defined(js) or not enableLiveviews:
   template reRenderOperator(funcname, op: untyped): untyped =
-    proc `funcname`*[T](self: State[T], other: State[T]) =
+    proc `funcname`*[T](self: State[T], b: State[T]) =
       if self.watchers.len > 0:
         let before = self.val
-        `op`(self.val, other.val)
+        `op`(self.val, b.val)
         self.watchImpl(before, self.val)
       else:
-        `op`(self.val, other.val)
+        `op`(self.val, b.val)
       if enableRouting and not application.isNil() and not application.router.isNil():
         application.router()
-    proc `funcname`*[T](other: T, self: State[T]) =
+    proc `funcname`*[T](b: T, self: State[T]) =
       if self.watchers.len > 0:
         let before = self.val
-        `op`(self.val, other)
+        `op`(self.val, b)
         self.watchImpl(before, self.val)
       else:
-        `op`(self.val, other)
+        `op`(self.val, b)
       if enableRouting and not application.isNil() and not application.router.isNil():
         application.router()
-    proc `funcname`*[T](self: State[T], other: T) =
+    proc `funcname`*[T](self: State[T], b: T) =
       if self.watchers.len > 0:
         let before = self.val
-        `op`(self.val, other)
+        `op`(self.val, b)
         self.watchImpl(before, self.val)
       else:
-        `op`(self.val, other)
+        `op`(self.val, b)
       if enableRouting and not application.isNil() and not application.router.isNil():
         application.router()
 else:
   template reRenderOperator(funcname, op: untyped): untyped =
-    template `funcname`*[T](self: State[T], other: State[T]) =
-      if self.watchers.len > 0:
-        let before = self.val
-        `op`(self.val, other.val)
-        self.watchImpl(before, self.val)
+    template `funcname`*[T](a: State[T], b: State[T]) =
+      if a.watchers.len > 0:
+        let before = a.val
+        `op`(a.val, b.val)
+        a.watchImpl(before, a.val)
       else:
-        `op`(self.val, other.val)
-      rerender(query, queryArr, reqMethod, inCookies, headers, hostname, urlPath)
-    template `funcname`*[T](other: T, self: State[T]) =
-      if self.watchers.len > 0:
-        let before = self.val
-        `op`(self.val, other)
-        self.watchImpl(before, self.val)
+        `op`(a.val, b.val)
+      when declared(self):
+        when typeof(self) is BaseComponent:
+          rerenderWithComponent(self)
       else:
-        `op`(self.val, other)
-      rerender(query, queryArr, reqMethod, inCookies, headers, hostname, urlPath)
-    template `funcname`*[T](self: State[T], other: T) =
-      if self.watchers.len > 0:
-        let before = self.val
-        `op`(self.val, other)
-        self.watchImpl(before, self.val)
+        rerender(query, queryArr, reqMethod, inCookies, headers, hostname, urlPath)
+    template `funcname`*[T](b: T, a: State[T]) =
+      if a.watchers.len > 0:
+        let before = a.val
+        `op`(a.val, b)
+        a.watchImpl(before, a.val)
       else:
-        `op`(self.val, other)
-      rerender(query, queryArr, reqMethod, inCookies, headers, hostname, urlPath)
+        `op`(a.val, b)
+      when declared(self):
+        when typeof(self) is BaseComponent:
+          rerenderWithComponent(self)
+      else:
+        rerender(query, queryArr, reqMethod, inCookies, headers, hostname, urlPath)
+    template `funcname`*[T](a: State[T], b: T) =
+      if a.watchers.len > 0:
+        let before = a.val
+        `op`(a.val, b)
+        a.watchImpl(before, a.val)
+      else:
+        `op`(a.val, b)
+      when declared(self):
+        when typeof(self) is BaseComponent:
+          rerenderWithComponent(self)
+      else:
+        rerender(query, queryArr, reqMethod, inCookies, headers, hostname, urlPath)
 
 
 template boolOperator(funcname, op: untyped): untyped =
-  proc `funcname`*[T](self, other: State[T]): bool =
-    `op`(self.val, other.val)
-  proc `funcname`*[T](self: State[T], other: T): bool =
-    `op`(self.val, other)
+  proc `funcname`*[T](self, b: State[T]): bool =
+    `op`(self.val, b.val)
+  proc `funcname`*[T](self: State[T], b: T): bool =
+    `op`(self.val, b)
 
 
 template unaryBoolOperator(funcname, op: untyped): untyped =
@@ -200,7 +216,7 @@ reRenderOperator(`|=`, `|=`)
 reRenderOperator(`~=`, `~=`)
 
 
-macro `->`*(self: State, field: untyped): untyped =
+macro `->`*(a: State, field: untyped): untyped =
   ## Call any function that available for state value
   ## 
   ## ## Examples:
@@ -220,7 +236,7 @@ macro `->`*(self: State, field: untyped): untyped =
   ##    echo num
   ## 
   if field.kind in nnkCallKinds:
-    let call = newCall(field[0], newDotExpr(self, ident"val"))
+    let call = newCall(field[0], newDotExpr(a, ident"val"))
     # Get func args
     if field.len > 1:
       for i in 1..<field.len:
@@ -232,13 +248,13 @@ macro `->`*(self: State, field: untyped): untyped =
         newCall("is", newCall("type", call), ident"void"),
         newStmtList(
           newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
-            newCall(">", newCall("len", newDotExpr(self, ident"watchers")), newLit(0)),
+            newCall(">", newCall("len", newDotExpr(a, ident"watchers")), newLit(0)),
             newStmtList(
               newNimNode(nnkLetSection).add(newIdentDefs(
-                ident"before", newEmptyNode(), newDotExpr(self, ident"val")
+                ident"before", newEmptyNode(), newDotExpr(a, ident"val")
               )),
               call,
-              newCall("watchImpl", self, ident"before", newDotExpr(self, ident"val")),
+              newCall("watchImpl", a, ident"before", newDotExpr(a, ident"val")),
             )
           ), newNimNode(nnkElse).add(
             call
@@ -253,19 +269,34 @@ macro `->`*(self: State, field: untyped): untyped =
               newCall(newDotExpr(ident"application", ident"router"))
             )),
           ), newNimNode(nnkElse).add(
-            newCall("rerender", ident"hostname", ident"urlPath")
+            newNimNode(nnkWhenStmt).add(
+              newNimNode(nnkElifBranch).add(
+                newCall("declared", ident"self")),
+                newNimNode(nnkWhenStmt).add(newNimNode(nnkElifBranch).add(
+                  newCall("is", newCall("typeof", ident"self"), ident"BaseComponent"),
+                  newCall("rerenderWithComponent", ident"self")
+                )
+              ), newNimNode(nnkElse).add(
+                newCall(
+                  "rerender",
+                  ident"query", ident"queryArr", ident"reqMethod",
+                  ident"inCookies", ident"headers", ident"hostname",
+                  ident"urlPath"
+                )
+              )
+            )
           )),
         )
       ), newNimNode(nnkElse).add(newStmtList(
         newVarStmt(ident"_result", 
           newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
-            newCall(">", newCall("len", newDotExpr(self, ident"watchers")), newLit(0)),
+            newCall(">", newCall("len", newDotExpr(a, ident"watchers")), newLit(0)),
             newStmtList(
               newNimNode(nnkLetSection).add(newIdentDefs(
-                ident"before", newEmptyNode(), newDotExpr(self, ident"val")
+                ident"before", newEmptyNode(), newDotExpr(a, ident"val")
               )),
               newLetStmt(ident"__ret", call),
-              newCall("watchImpl", self, ident"before", newDotExpr(self, ident"val")),
+              newCall("watchImpl", a, ident"before", newDotExpr(a, ident"val")),
             )
           ), newNimNode(nnkElse).add(
             call
@@ -281,13 +312,28 @@ macro `->`*(self: State, field: untyped): untyped =
             newCall(newDotExpr(ident"application", ident"router"))
           )),
         ), newNimNode(nnkElse).add(
-          newCall("rerender", ident"hostname", ident"urlPath")
+          newNimNode(nnkWhenStmt).add(
+            newNimNode(nnkElifBranch).add(
+              newCall("declared", ident"self")),
+              newNimNode(nnkWhenStmt).add(newNimNode(nnkElifBranch).add(
+                newCall("is", newCall("typeof", ident"self"), ident"BaseComponent"),
+                newCall("rerenderWithComponent", ident"self")
+              )
+            ), newNimNode(nnkElse).add(
+              newCall(
+                "rerender",
+                ident"query", ident"queryArr", ident"reqMethod",
+                ident"inCookies", ident"headers", ident"hostname",
+                ident"urlPath"
+              )
+            )
+          )
         )),
         ident"_result"
       ))
     )
   elif field.kind == nnkIdent:
-    result = newDotExpr(newDotExpr(self, ident"val"), field)
+    result = newDotExpr(newDotExpr(a, ident"val"), field)
   else:
     result = newEmptyNode()
 
@@ -333,12 +379,16 @@ when defined(js):
     if enableRouting and not application.isNil() and not application.router.isNil():
       application.router()
 else:
-  template set*[T](self: State[T], value: T) =
+  template set*[T](a: State[T], value: T) =
     ## Changes state value and rerenders SPA
-    if self.watchers.len > 0:
-      self.watchImpl(self.val, value)
-    self.val = value
-    rerender(query, queryArr, reqMethod, inCookies, headers, hostname, urlPath)
+    if a.watchers.len > 0:
+      a.watchImpl(a.val, value)
+    a.val = value
+    when declared(self):
+      when typeof(self) is BaseComponent:
+        rerenderWithComponent(self)
+    else:
+      rerender(query, queryArr, reqMethod, inCookies, headers, hostname, urlPath)
 
 
 func `[]`*[T, U](self: State[array[T, U]], idx: int): T =
@@ -418,52 +468,64 @@ when defined(js) or not enableLiveViews:
     if enableRouting and not application.isNil() and not application.router.isNil():
       application.router()
 else:
-  proc `[]=`*[T](self: State[seq[T]], idx: int, value: T) =
+  template `[]=`*[T](a: State[seq[T]], idx: int, value: T) =
     ## Changes State's item at `idx` index.
-    if self.watchers.len > 0:
-      let before = self.val
-      self.val[idx] = value
-      self.watchImpl(before, self.val)
+    if a.watchers.len > 0:
+      let before = a.val
+      a.val[idx] = value
+      a.watchImpl(before, a.val)
     else:
-      self.val[idx] = value
-    if enableRouting and not application.isNil() and not application.router.isNil():
-      application.router()
+      a.val[idx] = value
+    when declared(self):
+      when typeof(self) is BaseComponent:
+        rerenderWithComponent(self)
+    else:
+      rerender(query, queryArr, reqMethod, inCookies, headers, hostname, urlPath)
 
 
-  proc `[]=`*[T, U](self: State[array[T, U]], idx: int, value: T) =
+  template `[]=`*[T, U](a: State[array[T, U]], idx: int, value: T) =
     ## Changes State's item at `idx` index.
-    if self.watchers.len > 0:
-      let before = self.val
-      self.val[idx] = value
-      self.watchImpl(before, self.val)
+    if a.watchers.len > 0:
+      let before = a.val
+      a.val[idx] = value
+      a.watchImpl(before, a.val)
     else:
-      self.val[idx] = value
-    if enableRouting and not application.isNil() and not application.router.isNil():
-      application.router()
+      a.val[idx] = value
+    when declared(self):
+      when typeof(self) is BaseComponent:
+        rerenderWithComponent(self)
+    else:
+      rerender(query, queryArr, reqMethod, inCookies, headers, hostname, urlPath)
 
 
-  proc `[]=`*[T, U](self: State[TableRef[T, U]], idx: T, value: U) =
+  template `[]=`*[T, U](a: State[TableRef[T, U]], idx: T, value: U) =
     ## Changes State's item at `idx` index.
-    if self.watchers.len > 0:
-      let before = self.val
-      self.val[idx] = value
-      self.watchImpl(before, self.val)
+    if a.watchers.len > 0:
+      let before = a.val
+      a.val[idx] = value
+      a.watchImpl(before, a.val)
     else:
-      self.val[idx] = value
-    if enableRouting and not application.isNil() and not application.router.isNil():
-      application.router()
+      a.val[idx] = value
+    when declared(self):
+      when typeof(self) is BaseComponent:
+        rerenderWithComponent(self)
+    else:
+      rerender(query, queryArr, reqMethod, inCookies, headers, hostname, urlPath)
 
 
-  proc `[]=`*(self: State[StringTableRef], idx: string, value: string) =
+  template `[]=`*(a: State[StringTableRef], idx: string, value: string) =
     ## Changes State's item at `idx` index.
-    if self.watchers.len > 0:
-      let before = self.val
-      self.val[idx] = value
-      self.watchImpl(before, self.val)
+    if a.watchers.len > 0:
+      let before = a.val
+      a.val[idx] = value
+      a.watchImpl(before, a.val)
     else:
-      self.val[idx] = value
-    if enableRouting and not application.isNil() and not application.router.isNil():
-      application.router()
+      a.val[idx] = value
+    when declared(self):
+      when typeof(self) is BaseComponent:
+        rerenderWithComponent(self)
+    else:
+      rerender(query, queryArr, reqMethod, inCookies, headers, hostname, urlPath)
 
 
 iterator items*[T](self: State[openarray[T]]): T =
