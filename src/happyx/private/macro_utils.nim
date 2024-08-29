@@ -142,6 +142,18 @@ proc formatNode*(node: NimNode): NimNode =
     node
 
 
+proc liveviewParam*(name: string): NimNode =
+  newNimNode(nnkWhenStmt).add(newNimNode(nnkElifBranch).add(
+    newCall("declared", ident(name)),
+    ident(name)
+  ), newNimNode(nnkElifBranch).add(
+    newCall("declared", newDotExpr(ident"self", ident(name))),
+    newDotExpr(ident"self", ident(name))
+  ), newNimNode(nnkElse).add(
+    newLit""
+  ))
+
+
 proc useComponent*(statement: NimNode, inCycle, inComponent: bool,
                    cycleTmpVar: string, compTmpVar: NimNode, cycleVars: var seq[NimNode],
                    returnTagRef: bool = true, constructor: bool = false,
@@ -229,69 +241,13 @@ proc useComponent*(statement: NimNode, inCycle, inComponent: bool,
   objConstr.add(stringId)
   when not defined(js) and enableLiveViews:
     objConstr.add(
-      newNimNode(nnkWhenStmt).add(newNimNode(nnkElifBranch).add(
-        newCall("declared", ident"urlPath"),
-        ident"urlPath"
-      ), newNimNode(nnkElifBranch).add(
-        newCall("declared", newDotExpr(ident"self", ident"urlPath")),
-        newDotExpr(ident"self", ident"urlPath")
-      ), newNimNode(nnkElse).add(
-        newLit""
-      )),
-      newNimNode(nnkWhenStmt).add(newNimNode(nnkElifBranch).add(
-        newCall("declared", ident"hostname"),
-        ident"hostname"
-      ), newNimNode(nnkElifBranch).add(
-        newCall("declared", newDotExpr(ident"self", ident"hostname")),
-        newDotExpr(ident"self", ident"hostname")
-      ), newNimNode(nnkElse).add(
-        newLit""
-      )),
-      newNimNode(nnkWhenStmt).add(newNimNode(nnkElifBranch).add(
-        newCall("declared", ident"query"),
-        ident"query"
-      ), newNimNode(nnkElifBranch).add(
-        newCall("declared", newDotExpr(ident"self", ident"query")),
-        newDotExpr(ident"self", ident"query")
-      ), newNimNode(nnkElse).add(
-        newLit""
-      )),
-      newNimNode(nnkWhenStmt).add(newNimNode(nnkElifBranch).add(
-        newCall("declared", ident"queryArr"),
-        ident"queryArr"
-      ), newNimNode(nnkElifBranch).add(
-        newCall("declared", newDotExpr(ident"self", ident"queryArr")),
-        newDotExpr(ident"self", ident"queryArr")
-      ), newNimNode(nnkElse).add(
-        newLit""
-      )),
-      newNimNode(nnkWhenStmt).add(newNimNode(nnkElifBranch).add(
-        newCall("declared", ident"reqMethod"),
-        ident"reqMethod"
-      ), newNimNode(nnkElifBranch).add(
-        newCall("declared", newDotExpr(ident"self", ident"reqMethod")),
-        newDotExpr(ident"self", ident"reqMethod")
-      ), newNimNode(nnkElse).add(
-        newLit""
-      )),
-      newNimNode(nnkWhenStmt).add(newNimNode(nnkElifBranch).add(
-        newCall("declared", ident"inCookies"),
-        ident"inCookies"
-      ), newNimNode(nnkElifBranch).add(
-        newCall("declared", newDotExpr(ident"self", ident"inCookies")),
-        newDotExpr(ident"self", ident"inCookies")
-      ), newNimNode(nnkElse).add(
-        newLit""
-      )),
-      newNimNode(nnkWhenStmt).add(newNimNode(nnkElifBranch).add(
-        newCall("declared", ident"headers"),
-        ident"headers"
-      ), newNimNode(nnkElifBranch).add(
-        newCall("declared", newDotExpr(ident"self", ident"headers")),
-        newDotExpr(ident"self", ident"headers")
-      ), newNimNode(nnkElse).add(
-        newLit""
-      )),
+      liveviewParam("urlPath"),
+      liveviewParam("hostname"),
+      liveviewParam("query"),
+      liveviewParam("queryArr"),
+      liveviewParam("reqMethod"),
+      liveviewParam("inCookies"),
+      liveviewParam("headers"),
     )
   if statement[1].kind == nnkCall:
     for i in 1..<statement[1].len:

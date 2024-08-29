@@ -1,7 +1,10 @@
 import
   std/macros,
-  ../core/constants,
-  ../private/macro_utils
+  ../core/constants
+
+
+when enableHttpBeast:
+  import ../private/macro_utils
 
 
 proc handleWebsockets*(wsClosedConnection: NimNode): tuple[wsStmtList, insertWsList: NimNode] =

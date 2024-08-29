@@ -84,7 +84,6 @@ import
   # stdlib
   std/macros,
   std/macrocache,
-  std/strtabs,
   std/strutils,
   std/strformat,
   # Happyx

@@ -1,7 +1,7 @@
 import
   std/logging,
   std/tables,
-  ../spa/[tag, renderer],
+  ../spa/renderer,
   ../core/constants
 
 when enableHttpx:

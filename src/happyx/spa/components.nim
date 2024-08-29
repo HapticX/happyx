@@ -390,81 +390,25 @@ macro component*(name, body: untyped): untyped =
     initObjConstr.add(
       newColonExpr(
         ident"urlPath",
-        newNimNode(nnkWhenStmt).add(newNimNode(nnkElifBranch).add(
-          newCall("declared", ident"urlPath"),
-          ident"urlPath"
-        ), newNimNode(nnkElifBranch).add(
-          newCall("declared", newDotExpr(ident"self", ident"urlPath")),
-          newDotExpr(ident"self", ident"urlPath")
-        ), newNimNode(nnkElse).add(
-          newLit""
-        ))
+        liveviewParam("urlPath")
       ), newColonExpr(
         ident"hostname",
-        newNimNode(nnkWhenStmt).add(newNimNode(nnkElifBranch).add(
-          newCall("declared", ident"hostname"),
-          ident"hostname"
-        ), newNimNode(nnkElifBranch).add(
-          newCall("declared", newDotExpr(ident"self", ident"hostname")),
-          newDotExpr(ident"self", ident"hostname")
-        ), newNimNode(nnkElse).add(
-          newLit""
-        ))
+        liveviewParam("hostname")
       ), newColonExpr(
         ident"query",
-        newNimNode(nnkWhenStmt).add(newNimNode(nnkElifBranch).add(
-          newCall("declared", ident"query"),
-          ident"query"
-        ), newNimNode(nnkElifBranch).add(
-          newCall("declared", newDotExpr(ident"self", ident"query")),
-          newDotExpr(ident"self", ident"query")
-        ), newNimNode(nnkElse).add(
-          newLit""
-        ))
+        liveviewParam("query")
       ), newColonExpr(
         ident"queryArr",
-        newNimNode(nnkWhenStmt).add(newNimNode(nnkElifBranch).add(
-          newCall("declared", ident"queryArr"),
-          ident"queryArr"
-        ), newNimNode(nnkElifBranch).add(
-          newCall("declared", newDotExpr(ident"self", ident"queryArr")),
-          newDotExpr(ident"self", ident"queryArr")
-        ), newNimNode(nnkElse).add(
-          newLit""
-        ))
+        liveviewParam("queryArr")
       ), newColonExpr(
         ident"reqMethod",
-        newNimNode(nnkWhenStmt).add(newNimNode(nnkElifBranch).add(
-          newCall("declared", ident"reqMethod"),
-          ident"reqMethod"
-        ), newNimNode(nnkElifBranch).add(
-          newCall("declared", newDotExpr(ident"self", ident"reqMethod")),
-          newDotExpr(ident"self", ident"reqMethod")
-        ), newNimNode(nnkElse).add(
-          newLit""
-        ))
+        liveviewParam("reqMethod")
       ), newColonExpr(
         ident"inCookies",
-        newNimNode(nnkWhenStmt).add(newNimNode(nnkElifBranch).add(
-          newCall("declared", ident"inCookies"),
-          ident"inCookies"
-        ), newNimNode(nnkElifBranch).add(
-          newCall("declared", newDotExpr(ident"self", ident"inCookies")),
-          newDotExpr(ident"self", ident"inCookies")
-        ), newNimNode(nnkElse).add(
-          newLit""
-        ))
+        liveviewParam("inCookies")
       ), newColonExpr(
         ident"headers",
-        newNimNode(nnkWhenStmt).add(newNimNode(nnkElifBranch).add(
-          newCall("declared", ident"headers"),
-          ident"headers"
-        ), newNimNode(nnkElifBranch).add(
-          newCall("declared", newDotExpr(ident"self", ident"headers")),
-          newDotExpr(ident"self", ident"headers")
-        ), newNimNode(nnkElse).add(
-          newLit""
-        ))
+        liveviewParam("headers")
       ),
     )
   initProc[2] = generics.copy()

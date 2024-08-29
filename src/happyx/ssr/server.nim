@@ -758,6 +758,9 @@ macro routes*(server: Server, body: untyped = newStmtList()): untyped =
               ), statement[2]
             ))
         nextRouteDecorators = @[]
+      # mount ...
+      elif statement.kind == nnkCommand and statement[0] == ident"mount" and statement[1].kind == nnkInfix and statement[1][0] == ident"->":
+        nextRouteDecorators = @[]
       # reqMethod "/...":
       #   ...
       elif statement[0].kind == nnkIdent and statement[0] != ident"mount" and statement[1].kind in {nnkStrLit, nnkTripleStrLit, nnkInfix}:

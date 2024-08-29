@@ -37,9 +37,7 @@ type FormDataItem* = object
 proc parseFormData*(formData: string): (StringTableRef, TableRef[string, FormDataItem]) =
   ## Parses `form-data` into `StringTableRef`
   result = (newStringTable(), newTable[string, FormDataItem]())
-  let
-    lineSeparator = "\r\n"
-    lines = formData.split("\r\n")
+  let lines = formData.split("\r\n")
   var
     key = ""
     data = ""

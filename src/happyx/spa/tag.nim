@@ -441,7 +441,10 @@ proc tagFromString*(source: string): TagRef {.inline.} =
   let xmlNode = parseHtml(source)
   result = initTag("div", @[], true)
   result.xmlTree2Tag(nil, xmlNode)
-  result = result.children[0].children[0].TagRef
+  when defined(js):
+    result = result.children[0].children[0].TagRef
+  else:
+    result = result.children[0].children[0]
 
 
 proc addArg*(self: TagRef, arg: string) =
@@ -467,11 +470,13 @@ proc addArgIter*(self: TagRef, arg: string) =
   ## See also `addArg function #addArg,TagRef,string`_
   when defined(js):
     self.setAttribute(cstring(arg), "")
+    for i in self.children:
+      i.TagRef.addArgIter(arg)
   else:
     if self.args.len == 0:
       self.args.add(arg)
-  for i in self.children:
-    i.TagRef.addArgIter(arg)
+    for i in self.children:
+      i.addArgIter(arg)
 
 
 proc toSeqIter*(self: TagRef): seq[TagRef] =
@@ -485,7 +490,7 @@ proc toSeqIter*(self: TagRef): seq[TagRef] =
         result.add(i)
   else:
     for child in self.children:
-      for i in child.TagRef.toSeqIter:
+      for i in child.toSeqIter:
         result.add(i)
   return result
 
@@ -506,7 +511,10 @@ func lvl*(self: TagRef): int =
   var tag = self
   when defined(js):
     while not tag.parentElement.isNil:
-      tag = tag.parentElement.TagRef
+      when defined(js):
+        tag = tag.parentElement.TagRef
+      else:
+        tag = tag.parentElement
       if not tag.onlyChildren:
         inc result
   else:
@@ -527,7 +535,10 @@ func `[]`*(self: TagRef, attrName: string): string =
 
 func `[]`*(self: TagRef, index: int): TagRef =
   ## Returns tag by index
-  self.children[index].TagRef
+  when defined(js):
+    self.children[index].TagRef
+  else:
+    self.children[index]
 
 
 func `[]=`*(self: TagRef, attrName: string, attrValue: string) =
