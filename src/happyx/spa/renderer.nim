@@ -149,8 +149,10 @@ when enableDefaultComponents:
     var components* = newTable[cstring, BaseComponent]()
   else:
     var
-      requestResult* = newTable[string, string]()
-      componentsResult* = newTable[string, string]()
+      requestResult* {.threadvar.}: TableRef[string, string]
+      componentsResult* {.threadvar.}: TableRef[string, string]
+    requestResult = newTable[string, string]()
+    componentsResult = newTable[string, string]()
 
 
 when defined(js):
@@ -213,12 +215,13 @@ else:
     requestResult[host] = "route:" & path
   proc injectJs*(host, script: string) =
     requestResult[host] = "script:" & fmt"<script>{script}</script>"
+  proc js*(host, script: string) =
+    requestResult[host] = "script:" & fmt"<script>{script}</script>"
   proc route*(comp: BaseComponent, path: string) =
     componentsResult[comp.uniqCompId] = "route:" & path
   proc js*(comp: BaseComponent, script: string) =
     componentsResult[comp.uniqCompId] = "script:" & fmt"<script>{script}</script>"
   proc rerender*(query, queryArr, reqMethod, inCookies, headers: auto, hostname, urlPath: string) =
-    echo "rerender for " & hostname
     requestResult[hostname] = "rerender:" & liveviewRoutes[urlPath](
       query, queryArr, reqMethod, inCookies, headers, nil
     ).children[1].ugly()
