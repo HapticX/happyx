@@ -95,7 +95,7 @@
       <li><a class="reference" href="#application" title="application: App = nil">application</a></li>
 <li><a class="reference" href="#componentEventHandlers" title="componentEventHandlers = newTable(32)">componentEventHandlers</a></li>
 <li><a class="reference" href="#components" title="components = newTable(32)">components</a></li>
-<li><a class="reference" href="#componentsResult" title="componentsResult = newTable(32)">componentsResult</a></li>
+<li><a class="reference" href="#componentsResult" title="componentsResult {.threadvar.}: TableRef[string, string]">componentsResult</a></li>
 <li><a class="reference" href="#createdComponentsList" title="createdComponentsList: seq[BaseComponent] = @[]">createdComponentsList</a></li>
 <li><a class="reference" href="#currentComponent" title="currentComponent = &quot;&quot;">currentComponent</a></li>
 <li><a class="reference" href="#currentComponentsList" title="currentComponentsList: seq[BaseComponent] = @[]">currentComponentsList</a></li>
@@ -103,7 +103,7 @@
 <li><a class="reference" href="#eventHandlers" title="eventHandlers = newTable(32)">eventHandlers</a></li>
 <li><a class="reference" href="#liveviewRoutes" title="liveviewRoutes = newTable(32)">liveviewRoutes</a></li>
 <li><a class="reference" href="#rendererHandlers" title="rendererHandlers = newSeq(Natural(0))">rendererHandlers</a></li>
-<li><a class="reference" href="#requestResult" title="requestResult = newTable(32)">requestResult</a></li>
+<li><a class="reference" href="#requestResult" title="requestResult {.threadvar.}: TableRef[string, string]">requestResult</a></li>
 <li><a class="reference" href="#scopedCycleCounter" title="scopedCycleCounter: int = 0">scopedCycleCounter</a></li>
 
     </ul>
@@ -127,6 +127,7 @@
 </ul>
 <ul class="simple nested-toc-section">js
   <li><a class="reference" href="#js%2CBaseComponent%2Cstring" title="js(comp: BaseComponent; script: string)">js(comp: BaseComponent; script: string)</a></li>
+<li><a class="reference" href="#js%2Cstring%2Cstring" title="js(host, script: string)">js(host, script: string)</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">registerApp
@@ -355,7 +356,7 @@
   </dd>
 </div>
 <div id="componentsResult">
-  <dt><pre><a href="renderer.html#componentsResult"><span class="Identifier">componentsResult</span></a> <span class="Other">=</span> <span class="Identifier">newTable</span><span class="Other">(</span><span class="DecNumber">32</span><span class="Other">)</span></pre></dt>
+  <dt><pre><a href="renderer.html#componentsResult"><span class="Identifier">componentsResult</span></a> {.<span class="Identifier">threadvar</span>.}<span class="Other">:</span> <span class="Identifier">TableRef</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">,</span> <span class="Identifier">string</span><span class="Other">]</span></pre></dt>
   <dd>
     
     
@@ -419,7 +420,7 @@
   </dd>
 </div>
 <div id="requestResult">
-  <dt><pre><a href="renderer.html#requestResult"><span class="Identifier">requestResult</span></a> <span class="Other">=</span> <span class="Identifier">newTable</span><span class="Other">(</span><span class="DecNumber">32</span><span class="Other">)</span></pre></dt>
+  <dt><pre><a href="renderer.html#requestResult"><span class="Identifier">requestResult</span></a> {.<span class="Identifier">threadvar</span>.}<span class="Other">:</span> <span class="Identifier">TableRef</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">,</span> <span class="Identifier">string</span><span class="Other">]</span></pre></dt>
   <dd>
     
     
@@ -478,6 +479,14 @@
   <div id="js,BaseComponent,string">
   <dt><pre><span class="Keyword">proc</span> <a href="#js%2CBaseComponent%2Cstring"><span class="Identifier">js</span></a><span class="Other">(</span><span class="Identifier">comp</span><span class="Other">:</span> <a href="renderer.html#BaseComponent"><span class="Identifier">BaseComponent</span></a><span class="Other">;</span> <span class="Identifier">script</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span> {.<span class="Identifier">inline</span><span class="Other">,</span> <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
     <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+<div id="js,string,string">
+  <dt><pre><span class="Keyword">proc</span> <a href="#js%2Cstring%2Cstring"><span class="Identifier">js</span></a><span class="Other">(</span><span class="Identifier">host</span><span class="Other">,</span> <span class="Identifier">script</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span> {.<span class="Identifier">inline</span><span class="Other">,</span> <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
     
@@ -848,7 +857,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2024-08-28 13:28:56 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2024-08-29 10:20:45 UTC</small>
       </div>
     </div>
   </div>

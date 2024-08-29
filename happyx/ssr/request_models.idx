@@ -1,7 +1,7 @@
 nimTitle	request_models	happyx/ssr/request_models.html	module src/happyx/ssr/request_models		0
-nim	modelFields	happyx/ssr/request_models.html#modelFields	const modelFields		98
-nim	modelFieldsGenerics	happyx/ssr/request_models.html#modelFieldsGenerics	const modelFieldsGenerics		99
-nim	model	happyx/ssr/request_models.html#model.m,untyped,untyped	macro model(modelName, body: untyped): untyped		102
+nim	modelFields	happyx/ssr/request_models.html#modelFields	const modelFields		97
+nim	modelFieldsGenerics	happyx/ssr/request_models.html#modelFieldsGenerics	const modelFieldsGenerics		98
+nim	model	happyx/ssr/request_models.html#model.m,untyped,untyped	macro model(modelName, body: untyped): untyped		101
 heading	Example:	happyx/ssr/request_models.html#request-models-🔥-examplecolon	  Example:		0
 heading	Request Models 🔥	happyx/ssr/request_models.html#request-models-🔥	 Request Models 🔥		0
 heading	Example	happyx/ssr/request_models.html#request-models-🔥-example	  Example		0

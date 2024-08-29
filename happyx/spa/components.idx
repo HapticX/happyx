@@ -3,7 +3,7 @@ nim	reRenderTmpl	happyx/spa/components.html#reRenderTmpl.t	template reRenderTmpl
 nim	compDefArg	happyx/spa/components.html#compDefArg,typedesc[T]	proc compDefArg[T](value: typedesc[T]): T		126
 nim	scopeCss	happyx/spa/components.html#scopeCss,string,string	proc scopeCss(source, uniqCompId: string): string		135
 nim	component	happyx/spa/components.html#component.m,untyped,untyped	macro component(name, body: untyped): untyped		167
-nim	importComponent	happyx/spa/components.html#importComponent.m,untyped	macro importComponent(body: untyped): untyped		1065
+nim	importComponent	happyx/spa/components.html#importComponent.m,untyped	macro importComponent(body: untyped): untyped		1009
 heading	Basic Usage 🔨	happyx/spa/components.html#components-✨-basic-usage-🔨	  Basic Usage 🔨		0
 heading	Pure Css 🎈	happyx/spa/components.html#components-✨-pure-css-🎈	  Pure Css 🎈		0
 heading	Pure JavaScript ✌	happyx/spa/components.html#components-✨-pure-javascript-✌	  Pure JavaScript ✌		0
