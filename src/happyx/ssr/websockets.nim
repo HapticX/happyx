@@ -3,6 +3,10 @@ import
   ../core/constants
 
 
+when enableHttpBeast:
+  import ../private/macro_utils
+
+
 proc handleWebsockets*(wsClosedConnection: NimNode): tuple[wsStmtList, insertWsList: NimNode] =
   ## This is helpful function to work with websockets
   let wsClientI = ident"wsClient"
