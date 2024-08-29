@@ -26,9 +26,20 @@ decorator HelloWorld:
     statementList[0].del(statementList[0].len-1)
 
 
+mount Test:
+  get "/":
+    echo 1
+  
+  get "/test":
+    echo 1
+
+
 serve("127.0.0.1", 5000):
   "/":
     return "Hello, world!"
+  
+  @HelloWorld(1, 2, 3, req)
+  mount "/test" -> Test
   
   @HelloWorld(1, 2, 3, req)
   "/test-deco":
