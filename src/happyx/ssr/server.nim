@@ -146,17 +146,29 @@ proc newServer*(address: string = "127.0.0.1", port: int = 5000): Server =
     var s = newServer()
     assert s.address == "127.0.0.1"
   {.cast(gcsafe).}:
-    result = Server(
-      address: address,
-      port: port,
-      components: newTable[string, BaseComponent](),
-      logger:
-        if loggerCreated:
-          newConsoleLogger(lvlNone, fgColored("[$date at $time]:$levelname ", fgYellow))
-        else:
-          loggerCreated = true
-          newConsoleLogger(lvlInfo, fgColored("[$date at $time]:$levelname ", fgYellow))
-    )
+    when enableDefaultComponents:
+      result = Server(
+        address: address,
+        port: port,
+        components: newTable[string, BaseComponent](),
+        logger:
+          if loggerCreated:
+            newConsoleLogger(lvlNone, fgColored("[$date at $time]:$levelname ", fgYellow))
+          else:
+            loggerCreated = true
+            newConsoleLogger(lvlInfo, fgColored("[$date at $time]:$levelname ", fgYellow))
+      )
+    else:
+      result = Server(
+        address: address,
+        port: port,
+        logger:
+          if loggerCreated:
+            newConsoleLogger(lvlNone, fgColored("[$date at $time]:$levelname ", fgYellow))
+          else:
+            loggerCreated = true
+            newConsoleLogger(lvlInfo, fgColored("[$date at $time]:$levelname ", fgYellow))
+      )
   when enableHttpx or enableHttpBeast:
     result.instance = initSettings(Port(port), bindAddr=address, numThreads = numThreads)
   elif enableMicro:
