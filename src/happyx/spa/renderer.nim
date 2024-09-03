@@ -210,7 +210,7 @@ when defined(js):
   proc forward*() {.exportc: "frwrd".} =
     ## Just calls [window.history.forward procedure](https://nim-lang.org/docs/dom.html#back%2CHistory)
     window.history.forward()
-else:
+elif enableLiveViews:
   proc route*(host, path: string) =
     requestResult[host] = "route:" & path
   proc injectJs*(host, script: string) =
