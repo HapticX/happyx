@@ -67,6 +67,7 @@ const
   enableHistoryApi* = defined(historyApi) or defined(hpxHistoryApi) or defined(happyxHistoryApi)
   enableDebug* = defined(debug) or defined(happyxDebug) or defined(hpxDebug) or exportJvm or exportPython or defined(napibuild)
   enableApiDoc* = not defined(disableApiDoc)
+  enableColors* = not defined(disableColors) or not defined(happyxDisableColors) or not defined(hpxDisableColors)
   numThreads* {. intdefine .} = 0
   sessionIdLength* {.intdefine.} = 32
   appName* {.strdefine.} = "HappyX Application"
@@ -105,7 +106,7 @@ const
 
 when cryptoMethod notin availableCryptoMethods or (enableDebug and not defined(js)):
   import strformat
-when not defined(js) and enableDebug:
+when not defined(js) and enableDebug and enableColors:
   import terminal
 
 
@@ -126,8 +127,13 @@ when int(enableHttpx) + int(enableMicro) + int(enableHttpBeast) > 1:
 
 
 when enableDebug:
-  when not defined(js):
+  when not defined(js) and enableColors:
     styledEcho fgYellow, fmt"Enable auto translate:       {enableAutoTranslate}"
     styledEcho fgYellow, fmt"Enable httpbeast:            {enableHttpBeast}"
     styledEcho fgYellow, fmt"Enable httpx:                {enableHttpx}"
     styledEcho fgYellow, fmt"Enable MicroAsyncHttpServer: {enableMicro}"
+  elif not enableColors:
+    echo fmt"Enable auto translate:       {enableAutoTranslate}"
+    echo fmt"Enable httpbeast:            {enableHttpBeast}"
+    echo fmt"Enable httpx:                {enableHttpx}"
+    echo fmt"Enable MicroAsyncHttpServer: {enableMicro}"

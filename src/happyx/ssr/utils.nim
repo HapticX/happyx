@@ -6,9 +6,10 @@ import
   std/json,
   std/httpcore,
   std/options,
-  std/strtabs
+  std/strtabs,
+  ../core/constants
 
-when not defined(js):
+when not defined(js) and enableColors:
   import std/terminal
   export terminal
 
@@ -48,7 +49,7 @@ proc toHttpHeaders*(json: JsonNode): HttpHeaders =
     result[k] = v.getStr
 
 
-when not defined(js):
+when not defined(js) and enableColors:
   func fgColored*(text: string, clr: ForegroundColor): string {.inline.} =
     ## This function takes in a string of text and a ForegroundColor enum
     ## value and returns the same text with the specified color applied.

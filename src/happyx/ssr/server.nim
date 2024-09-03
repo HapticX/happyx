@@ -70,12 +70,25 @@ import
   checksums/md5,
   # HappyX
   ./[cors, types, utils, websockets],
-  ./liveviews/[utils, liveviews],
-  ../spa/[tag, renderer],
   ../core/[exceptions, constants],
   ../private/[macro_utils],
-  ../routing/[routing, mounting, decorators],
+  ../spa/tag,
+  ../routing/[routing, mounting],
   ../sugar/sgr
+
+
+when enableLiveViews:
+  import
+    ../spa/renderer,
+    ./liveviews/[utils, liveviews]
+  
+  export
+    liveviews
+
+
+when enableDefaultDecorators:
+  import ../routing/decorators
+
 
 export
   strutils,
@@ -89,8 +102,7 @@ export
   utils,
   json,
   os,
-  types,
-  liveviews
+  types
 
 
 when enableApiDoc:
@@ -152,22 +164,36 @@ proc newServer*(address: string = "127.0.0.1", port: int = 5000): Server =
         port: port,
         components: newTable[string, BaseComponent](),
         logger:
-          if loggerCreated:
-            newConsoleLogger(lvlNone, fgColored("[$date at $time]:$levelname ", fgYellow))
+          when enableColors:
+            if loggerCreated:
+              newConsoleLogger(lvlNone, fgColored("[$date at $time]:$levelname ", fgYellow))
+            else:
+              loggerCreated = true
+              newConsoleLogger(lvlInfo, fgColored("[$date at $time]:$levelname ", fgYellow))
           else:
-            loggerCreated = true
-            newConsoleLogger(lvlInfo, fgColored("[$date at $time]:$levelname ", fgYellow))
+            if loggerCreated:
+              newConsoleLogger(lvlNone, "[$date at $time]:$levelname ")
+            else:
+              loggerCreated = true
+              newConsoleLogger(lvlInfo, "[$date at $time]:$levelname ")
       )
     else:
       result = Server(
         address: address,
         port: port,
         logger:
-          if loggerCreated:
-            newConsoleLogger(lvlNone, fgColored("[$date at $time]:$levelname ", fgYellow))
+          when enableColors:
+            if loggerCreated:
+              newConsoleLogger(lvlNone, fgColored("[$date at $time]:$levelname ", fgYellow))
+            else:
+              loggerCreated = true
+              newConsoleLogger(lvlInfo, fgColored("[$date at $time]:$levelname ", fgYellow))
           else:
-            loggerCreated = true
-            newConsoleLogger(lvlInfo, fgColored("[$date at $time]:$levelname ", fgYellow))
+            if loggerCreated:
+              newConsoleLogger(lvlNone, "[$date at $time]:$levelname ")
+            else:
+              loggerCreated = true
+              newConsoleLogger(lvlInfo, "[$date at $time]:$levelname ")
       )
   when enableHttpx or enableHttpBeast:
     result.instance = initSettings(Port(port), bindAddr=address, numThreads = numThreads)
@@ -610,7 +636,8 @@ macro routes*(server: Server, body: untyped = newStmtList()): untyped =
     finalize = newStmtList()
     setup = newStmtList()
   
-  body.handleLiveViews()
+  when enableLiveViews:
+    body.handleLiveViews()
 
   when enableHttpx or enableHttpBeast:
     var path = newCall("decodeUrl", newNimNode(nnkBracketExpr).add(
@@ -730,8 +757,9 @@ macro routes*(server: Server, body: untyped = newStmtList()): untyped =
       # "/...": statement list
       elif statement[1].kind == nnkStmtList and statement[0].kind == nnkStrLit:
         detectReturnStmt(statement[1])
-        for route in nextRouteDecorators:
-          decorators[route.name](@["GET"], $statement[0], statement[1], route.args)
+        when enableDefaultDecorators:
+          for route in nextRouteDecorators:
+            decorators[route.name](@["GET"], $statement[0], statement[1], route.args)
         let exported = exportRouteArgs(pathIdent, statement[0], statement[1])
         if exported.len > 0:  # /my/path/with{custom:int}/{param:path}
           methodTable.mgetOrPut("GET", newNimNode(nnkIfStmt)).add(exported)
@@ -746,8 +774,9 @@ macro routes*(server: Server, body: untyped = newStmtList()): untyped =
         var httpMethods: seq[string] = @[]
         for i in statement[0]:
           httpMethods.add($i)
-        for route in nextRouteDecorators:
-          decorators[route.name](httpMethods, $statement[0], statement[1], route.args)
+        when enableDefaultDecorators:
+          for route in nextRouteDecorators:
+            decorators[route.name](httpMethods, $statement[0], statement[1], route.args)
         let exported = exportRouteArgs(pathIdent, statement[1], statement[2])
         var methods = newNimNode(nnkBracket)
         for i in statement[0]:
@@ -779,8 +808,9 @@ macro routes*(server: Server, body: untyped = newStmtList()): untyped =
         let
           name = ($statement[0]).toUpper()
           slash = newLit"/"
-        for route in nextRouteDecorators:
-          decorators[route.name](@[$statement[0]], $statement[1], statement[2], route.args)
+        when enableDefaultDecorators:
+          for route in nextRouteDecorators:
+            decorators[route.name](@[$statement[0]], $statement[1], statement[2], route.args)
         if name == "STATICDIR":
           # Just path
           var
@@ -1142,10 +1172,13 @@ macro routes*(server: Server, body: untyped = newStmtList()): untyped =
       elseStmtList.add(
         newCall(
           "warn",
-          newCall(
-            "fgColored", 
-            newCall("fmt", newLit"{urlPath} is not found."), ident"fgYellow"
-          )
+          when enableColors:
+            newCall(
+              "fgColored", 
+              newCall("fmt", newLit"{urlPath} is not found."), ident"fgYellow"
+            )
+          else:
+            newCall("fmt", newLit"{urlPath} is not found.")
         )
       )
     elseStmtList.add(
@@ -1253,8 +1286,12 @@ macro routes*(server: Server, body: untyped = newStmtList()): untyped =
       immutableVars.add(newIdentDefs(ident"reqMethod", newEmptyNode(), reqMethod))
   if stmtList.isIdentUsed(ident"headers"):
     immutableVars.add(newIdentDefs(ident"headers", newEmptyNode(), headers))
-  if stmtList.isIdentUsed(ident"startSession") or stmtList.isIdentUsed(ident"hostname") or liveViewsCache.len > 0:
-    immutableVars.add(newIdentDefs(ident"hostname", newEmptyNode(), hostname))
+  when enableLiveViews:
+    if stmtList.isIdentUsed(ident"startSession") or stmtList.isIdentUsed(ident"hostname") or liveViewsCache.len > 0:
+      immutableVars.add(newIdentDefs(ident"hostname", newEmptyNode(), hostname))
+  else:
+    if stmtList.isIdentUsed(ident"startSession") or stmtList.isIdentUsed(ident"hostname"):
+      immutableVars.add(newIdentDefs(ident"hostname", newEmptyNode(), hostname))
   when enableDebugSsrMacro:
     echo result.toStrLit
 
