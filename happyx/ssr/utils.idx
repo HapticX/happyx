@@ -1,8 +1,8 @@
 nimTitle	utils	happyx/ssr/utils.html	module src/happyx/ssr/utils		0
-nim	CustomHeaders	happyx/ssr/utils.html#CustomHeaders	type CustomHeaders		17
-nim	newCustomHeaders	happyx/ssr/utils.html#newCustomHeaders	proc newCustomHeaders(): CustomHeaders		20
-nim	`[]=`	happyx/ssr/utils.html#[]=,CustomHeaders,string,T	proc `[]=`[T](self: CustomHeaders; key: string; value: T)		24
-nim	toJsonNode	happyx/ssr/utils.html#toJsonNode	proc toJsonNode(headers: HttpHeaders | Option[HttpHeaders]): JsonNode		31
-nim	toHttpHeaders	happyx/ssr/utils.html#toHttpHeaders,JsonNode	proc toHttpHeaders(json: JsonNode): HttpHeaders		43
-nim	fgColored	happyx/ssr/utils.html#fgColored,string,ForegroundColor	proc fgColored(text: string; clr: ForegroundColor): string		52
+nim	CustomHeaders	happyx/ssr/utils.html#CustomHeaders	type CustomHeaders		18
+nim	newCustomHeaders	happyx/ssr/utils.html#newCustomHeaders	proc newCustomHeaders(): CustomHeaders		21
+nim	`[]=`	happyx/ssr/utils.html#[]=,CustomHeaders,string,T	proc `[]=`[T](self: CustomHeaders; key: string; value: T)		25
+nim	toJsonNode	happyx/ssr/utils.html#toJsonNode	proc toJsonNode(headers: HttpHeaders | Option[HttpHeaders]): JsonNode		32
+nim	toHttpHeaders	happyx/ssr/utils.html#toHttpHeaders,JsonNode	proc toHttpHeaders(json: JsonNode): HttpHeaders		44
+nim	fgColored	happyx/ssr/utils.html#fgColored,string,ForegroundColor	proc fgColored(text: string; clr: ForegroundColor): string		53
 heading	SSR Utils	happyx/ssr/utils.html#ssr-utils	 SSR Utils		0
