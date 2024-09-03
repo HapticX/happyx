@@ -218,13 +218,22 @@ template start*(server: Server): untyped =
     when not declared(handleRequest):
       proc handleRequest(req: Request): Future[void] {.async.} =
         discard
-    when enableHttpx:
-      run(handleRequest, `server`.instance)
-    elif enableHttpBeast:
-      {.cast(gcsafe).}:
+    when not defined(hpxServeAsync):
+      when enableHttpx:
         run(handleRequest, `server`.instance)
+      elif enableHttpBeast:
+        {.cast(gcsafe).}:
+          run(handleRequest, `server`.instance)
+      else:
+        waitFor `server`.instance.serve(Port(`server`.port), handleRequest, `server`.address)
     else:
-      waitFor `server`.instance.serve(Port(`server`.port), handleRequest, `server`.address)
+      when enableHttpx:
+        asyncCheck runAsync(handleRequest, `server`.instance)
+      elif enableHttpBeast:
+        {.cast(gcsafe).}:
+          run(handleRequest, `server`.instance)
+      else:
+        asyncCheck `server`.instance.serve(Port(`server`.port), handleRequest, `server`.address)
   except OSError:
     styledEcho fgYellow, "Try to use another port instead of ", $`server`.port
     echo getCurrentExceptionMsg()
