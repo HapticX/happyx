@@ -38,19 +38,41 @@ when not defined(js) and not (exportJvm or exportPython or defined(napibuild)):
       allowHeaders= currentCORS.allowHeaders
       allowOrigins= currentCORS.allowOrigins
       allowMethods= currentCORS.allowMethods
-    result = quote do:
+    result = newStmtList()
+    result.add quote do:
       `headers`["Access-Control-Allow-Credentials"] = $`allowCredentials`
-      if `allowHeaders`.len > 0:
+    if allowHeaders.len > 0:
+      result.add quote do:
         `headers`["Access-Control-Allow-Headers"] = `allowHeaders`
-      if `allowMethods`.len > 0:
-        `headers`["Access-Control-Allow-Methods"] = `allowMethods`
-      if `allowOrigins`.len > 0:
-        if `allowOrigins` == @["*"]:
-          when not enableHttpx and not enableHttpBeast:
-            `headers`["Access-Control-Allow-Origin"] = req.hostname
+    if allowMethods.len > 0:
+      if allowMethods == "*":
+        result.add quote do:
+          if req.reqMethod == HttpOptions:
+            `headers`["Access-Control-Allow-Methods"] = "OPTIONS"
           else:
-            `headers`["Access-Control-Allow-Origin"] = req.ip
-        else:
+            `headers`["Access-Control-Allow-Methods"] = $req.reqMethod & ",OPTIONS"
+      else:
+        result.add quote do:
+          `headers`["Access-Control-Allow-Methods"] = `allowMethods`
+    if allowOrigins.len > 0:
+      if allowOrigins == @["*"]:
+        result.add quote do:
+          when not enableHttpx and not enableHttpBeast:
+            let h = req.headers
+          else:
+            let h = req.headers.get()
+          if h.hasKey("Origin"):
+            `headers`["Access-Control-Allow-Origin"] = h["Origin"]
+          elif h.hasKey("Referer"):
+            let s = h["Referer"].split("/", 3)
+            `headers`["Access-Control-Allow-Origin"] = s[0] & "//" & s[2]
+          else:
+            when not enableHttpx and not enableHttpBeast:
+              `headers`["Access-Control-Allow-Origin"] = req.hostname
+            else:
+              `headers`["Access-Control-Allow-Origin"] = req.ip
+      else:
+        result.add quote do:
           `headers`["Access-Control-Allow-Origin"] = `allowOrigins`
   
   macro regCORS*(body: untyped): untyped =
