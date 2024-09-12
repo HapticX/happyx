@@ -46,11 +46,18 @@ when not defined(js) and not (exportJvm or exportPython or defined(napibuild)):
         `headers`["Access-Control-Allow-Headers"] = `allowHeaders`
     if allowMethods.len > 0:
       if allowMethods == "*":
-        result.add quote do:
-          if req.reqMethod == HttpOptions:
-            `headers`["Access-Control-Allow-Methods"] = "OPTIONS"
-          else:
-            `headers`["Access-Control-Allow-Methods"] = $req.reqMethod & ",OPTIONS"
+        when not enableHttpx and not enableHttpBeast:
+          result.add quote do:
+            if req.reqMethod == HttpOptions:
+              `headers`["Access-Control-Allow-Methods"] = "OPTIONS"
+            else:
+              `headers`["Access-Control-Allow-Methods"] = $req.reqMethod & ",OPTIONS"
+        else:
+          result.add quote do:
+            if req.httpMethod.get() == HttpOptions:
+              `headers`["Access-Control-Allow-Methods"] = "OPTIONS"
+            else:
+              `headers`["Access-Control-Allow-Methods"] = $req.httpMethod.get() & ",OPTIONS"
       else:
         result.add quote do:
           `headers`["Access-Control-Allow-Methods"] = `allowMethods`
