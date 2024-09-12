@@ -3,10 +3,17 @@ import
   macros
 
 
+# regCORS:
+#   credentials: true
+#   origins: "*" # "https://www.google.com"  # You can send request from this address
+#   methods: ["GET", "POST", "PUT"]
+#   headers: "*"
+
+
 regCORS:
   credentials: true
-  origins: "*" # "https://www.google.com"  # You can send request from this address
-  methods: ["GET", "POST", "PUT"]
+  origins: "*"
+  methods: "*"
   headers: "*"
 
 
