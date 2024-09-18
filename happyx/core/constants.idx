@@ -31,11 +31,12 @@ nim	apiDocsPath	happyx/core/constants.html#apiDocsPath	const apiDocsPath		74
 nim	cryptoMethod	happyx/core/constants.html#cryptoMethod	const cryptoMethod		75
 nim	httpMethods	happyx/core/constants.html#httpMethods	const httpMethods		76
 nim	htmlTagsList	happyx/core/constants.html#htmlTagsList	const htmlTagsList		79
-nim	nim_1_6_14	happyx/core/constants.html#nim_1_6_14	const nim_1_6_14		98
-nim	nim_2_0_0	happyx/core/constants.html#nim_2_0_0	const nim_2_0_0		99
-nim	HpxMajor	happyx/core/constants.html#HpxMajor	const HpxMajor		101
-nim	HpxMinor	happyx/core/constants.html#HpxMinor	const HpxMinor		102
-nim	HpxPatch	happyx/core/constants.html#HpxPatch	const HpxPatch		103
-nim	HpxVersion	happyx/core/constants.html#HpxVersion	const HpxVersion		104
+nim	htmlNonBoolAttrs	happyx/core/constants.html#htmlNonBoolAttrs	const htmlNonBoolAttrs		96
+nim	nim_1_6_14	happyx/core/constants.html#nim_1_6_14	const nim_1_6_14		105
+nim	nim_2_0_0	happyx/core/constants.html#nim_2_0_0	const nim_2_0_0		106
+nim	HpxMajor	happyx/core/constants.html#HpxMajor	const HpxMajor		108
+nim	HpxMinor	happyx/core/constants.html#HpxMinor	const HpxMinor		109
+nim	HpxPatch	happyx/core/constants.html#HpxPatch	const HpxPatch		110
+nim	HpxVersion	happyx/core/constants.html#HpxVersion	const HpxVersion		111
 heading	Constants ✨	happyx/core/constants.html#constants-✨	 Constants ✨		0
 heading	Dev Consts 👨‍💻	happyx/core/constants.html#constants-✨-dev-consts-👨‍💻	  Dev Consts 👨‍💻		0
