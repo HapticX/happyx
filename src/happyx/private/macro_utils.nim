@@ -490,6 +490,9 @@ proc attribute*(attr: NimNode, inComponent: bool = false): NimNode =
     v = newNimNode(nnkWhenStmt).add(newNimNode(nnkElifBranch).add(
       newCall("is", newCall("typeof", v), ident"bool"),
       newCall("$", formatNode(v))
+    ), newNimNode(nnkElifBranch).add(
+      newCall("is", newCall("typeof", v), newNimNode(nnkBracketExpr).add(ident"State", ident"bool")),
+      newCall("$", formatNode(v))
     ), newNimNode(nnkElse).add(
       formatNode(v)
     ))
@@ -544,7 +547,10 @@ proc addAttribute*(node, key, value: NimNode, inComponent: bool = false) =
   v = newNimNode(nnkWhenStmt).add(newNimNode(nnkElifBranch).add(
     newCall("is", newCall("typeof", v), ident"bool"),
     newCall("$", v)
-  ), newNimNode(nnkElse).add(
+  ), newNimNode(nnkElifBranch).add(
+      newCall("is", newCall("typeof", v), newNimNode(nnkBracketExpr).add(ident"State", ident"bool")),
+      newCall("$", v)
+    ), newNimNode(nnkElse).add(
     v
   ))
   if node.kind == nnkCall:

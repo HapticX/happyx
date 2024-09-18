@@ -4,6 +4,7 @@ import
 
 var
   counter = remember 0
+  isReadonly = remember true
 
 appRoutes("app"):
   "/":
@@ -16,5 +17,7 @@ appRoutes("app"):
       "click me"
       @click:
         counter += 1
+        isReadonly.set(not isReadonly.val)
     
     tInput(readonly = counter.val mod 2 == 0)
+    tInput(readonly = isReadonly)
