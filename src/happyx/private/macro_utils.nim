@@ -451,7 +451,7 @@ proc attribute*(attr: NimNode, inComponent: bool = false): NimNode =
         if attr[0].kind in [nnkStrLit, nnkTripleStrLit]:
           $attr[0]
         else:
-          $attr[0].toStrLit
+          ($attr[0].toStrLit).replace(" ", "")
       v =
         if k.toLower() == "id" and attr[1].kind in {nnkStrLit, nnkTripleStrLit} and inComponent:
           newNimNode(nnkWhenStmt).add(
@@ -508,7 +508,7 @@ proc addAttribute*(node, key, value: NimNode, inComponent: bool = false) =
       if key.kind in [nnkStrLit, nnkTripleStrLit]:
         $key
       else:
-        $key.toStrLit
+        ($key.toStrLit).replace(" ", "")
     v =
       if k.toLower() == "id" and value.kind in {nnkStrLit, nnkTripleStrLit} and inComponent:
         newNimNode(nnkWhenStmt).add(
