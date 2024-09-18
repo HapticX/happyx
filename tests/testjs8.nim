@@ -4,6 +4,7 @@ import
 
 var
   counter = remember 0
+  isReadonly = remember true
 
 appRoutes("app"):
   "/":
@@ -12,7 +13,11 @@ appRoutes("app"):
         tLi:
           "{i}st elem 🍍"
     
-    tButton:
+    tButton(data-happyx-ok = "Hello from HappyX"):
       "click me"
       @click:
         counter += 1
+        isReadonly.set(not isReadonly)
+    
+    tInput(readonly = counter.val mod 2 == 0)
+    tInput(readonly = isReadonly)

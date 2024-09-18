@@ -451,7 +451,7 @@ proc attribute*(attr: NimNode, inComponent: bool = false): NimNode =
         if attr[0].kind in [nnkStrLit, nnkTripleStrLit]:
           $attr[0]
         else:
-          $attr[0].toStrLit
+          ($attr[0].toStrLit).replace(" ", "")
       v =
         if k.toLower() == "id" and attr[1].kind in {nnkStrLit, nnkTripleStrLit} and inComponent:
           newNimNode(nnkWhenStmt).add(
@@ -487,9 +487,18 @@ proc attribute*(attr: NimNode, inComponent: bool = false): NimNode =
           )
         else:
           attr[1]
+    v = newNimNode(nnkWhenStmt).add(newNimNode(nnkElifBranch).add(
+      newCall("is", newCall("typeof", v), ident"bool"),
+      newCall("$", formatNode(v))
+    ), newNimNode(nnkElifBranch).add(
+      newCall("is", newCall("typeof", v), newNimNode(nnkBracketExpr).add(ident"State", ident"bool")),
+      newCall("$", formatNode(v))
+    ), newNimNode(nnkElse).add(
+      formatNode(v)
+    ))
     newColonExpr(
       newLit(k),
-      formatNode(v)
+      v
     )
 
 
@@ -499,7 +508,7 @@ proc addAttribute*(node, key, value: NimNode, inComponent: bool = false) =
       if key.kind in [nnkStrLit, nnkTripleStrLit]:
         $key
       else:
-        $key.toStrLit
+        ($key.toStrLit).replace(" ", "")
     v =
       if k.toLower() == "id" and value.kind in {nnkStrLit, nnkTripleStrLit} and inComponent:
         newNimNode(nnkWhenStmt).add(
@@ -535,6 +544,15 @@ proc addAttribute*(node, key, value: NimNode, inComponent: bool = false) =
         )
       else:
         value
+  v = newNimNode(nnkWhenStmt).add(newNimNode(nnkElifBranch).add(
+    newCall("is", newCall("typeof", v), ident"bool"),
+    newCall("$", v)
+  ), newNimNode(nnkElifBranch).add(
+      newCall("is", newCall("typeof", v), newNimNode(nnkBracketExpr).add(ident"State", ident"bool")),
+      newCall("$", v)
+    ), newNimNode(nnkElse).add(
+    v
+  ))
   if node.kind == nnkCall:
     if node.len == 2:
       node.add(newCall("newStringTable", newNimNode(nnkTableConstr).add(
