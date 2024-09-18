@@ -16,3 +16,5 @@ appRoutes("app"):
       "click me"
       @click:
         counter += 1
+    
+    tInput(readonly = counter.val mod 2 == 0)

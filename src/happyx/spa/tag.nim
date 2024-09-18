@@ -31,7 +31,8 @@ import
   std/strformat,
   std/strtabs,
   std/htmlparser,
-  std/xmltree
+  std/xmltree,
+  ../core/constants
 
 
 when defined(js):
@@ -200,10 +201,24 @@ when defined(js):
         {.emit: "`e`.setAttributeNS(null, 'class', `a`);".}
       for key, val in attrs.pairs:
         if key != "class":
-          e.setAttribute(cstring(key), cstring(val))
+          if key in htmlNonBoolAttrs:
+            e.setAttribute(cstring(key), cstring(val))
+          elif val.toLowerAscii() == "true":
+            e.setAttribute(cstring(key), "")
+          elif val.toLowerAscii() == "false":
+            discard
+          else:
+            e.setAttribute(cstring(key), cstring(val))
     else:
       for key, val in attrs.pairs:
-        e.setAttribute(cstring(key), cstring(val))
+        if key in htmlNonBoolAttrs:
+          e.setAttribute(cstring(key), cstring(val))
+        elif val.toLowerAscii() == "true":
+          e.setAttribute(cstring(key), "")
+        elif val.toLowerAscii() == "false":
+          discard
+        else:
+          e.setAttribute(cstring(key), cstring(val))
 
   proc newElement(name: string): TagRef {.exportc: "nwelm".} =
     if name.toLower() in SvgElements:

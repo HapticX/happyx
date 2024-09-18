@@ -93,6 +93,13 @@ const
     "table", "tbody", "td", "template", "textarea", "tfoot", "th", "thead", "time",
     "title", "tr", "track", "text", "u", "ul", "var", "video", "wbr",
   ]
+  htmlNonBoolAttrs* = [
+    "class", "id", "color", "border", "bgcolor", "charset", "accept", "accept-charset",
+    "action", "allow", "accesskey", "http-equip", "kind", "lang", "language", "itemprop",
+    "list", "type", "minlength", "maxlength", "placeholder", "role", "rows", "cols", "score",
+    "src", "srcdoc", "srclang", "href", "ref", "summary", "step", "title", "translate",
+    "width", "height", "wrap", "target", "srcset"
+  ]
   availableCryptoMethods = ["sha224", "sha256", "sha384", "sha512"]
   # Nim version
   nim_1_6_14* = (NimMajor, NimMajor, NimPatch) == (1, 6, 14)
@@ -123,7 +130,7 @@ when defined(js):
 
 
 when int(enableHttpx) + int(enableMicro) + int(enableHttpBeast) > 1:
-  {. error: "You can't use two alternative servers at one time!" .}
+  {. error: "You can't use two or more alternative servers at one time!" .}
 
 
 when enableDebug:

@@ -487,9 +487,15 @@ proc attribute*(attr: NimNode, inComponent: bool = false): NimNode =
           )
         else:
           attr[1]
+    v = newNimNode(nnkWhenStmt).add(newNimNode(nnkElifBranch).add(
+      newCall("is", newCall("typeof", v), ident"bool"),
+      newCall("$", formatNode(v))
+    ), newNimNode(nnkElse).add(
+      formatNode(v)
+    ))
     newColonExpr(
       newLit(k),
-      formatNode(v)
+      v
     )
 
 
@@ -535,6 +541,12 @@ proc addAttribute*(node, key, value: NimNode, inComponent: bool = false) =
         )
       else:
         value
+  v = newNimNode(nnkWhenStmt).add(newNimNode(nnkElifBranch).add(
+    newCall("is", newCall("typeof", v), ident"bool"),
+    newCall("$", v)
+  ), newNimNode(nnkElse).add(
+    v
+  ))
   if node.kind == nnkCall:
     if node.len == 2:
       node.add(newCall("newStringTable", newNimNode(nnkTableConstr).add(
