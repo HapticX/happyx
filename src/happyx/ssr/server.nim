@@ -1264,12 +1264,15 @@ macro routes*(server: Server, body: untyped = newStmtList()): untyped =
     else:
       newEmptyNode(),
     procStmt,
-    newProc(
-      ident"finalizeProgram",
-      [newEmptyNode()],
-      finalize,
-      pragmas = newNimNode(nnkPragma).add(ident"noconv")
-    )
+    if finalize.len > 0:
+      newProc(
+        ident"finalizeProgram",
+        [newEmptyNode()],
+        finalize,
+        pragmas = newNimNode(nnkPragma).add(ident"noconv")
+      )
+    else:
+      newEmptyNode()
   )
 
   for v in countdown(variables.len-1, 0, 1):
@@ -1320,7 +1323,10 @@ macro initServer*(body: untyped): untyped =
       ident"main",
       [newEmptyNode()],
       body.add(
-        newCall("addQuitProc", ident"finalizeProgram")
+        newNimNode(nnkWhenStmt).add(newNimNode(nnkElifBranch).add(
+          newCall("declared", ident"finalizeProgram"),
+          newCall("addQuitProc", ident"finalizeProgram"),
+        ))
       ),
       nnkProcDef
     ),
@@ -1388,7 +1394,10 @@ macro serve*(address: string, port: int, body: untyped): untyped =
           newEmptyNode(),
         newCall("routes", s, body),
         newCall("start", s),
-        newCall("addQuitProc", ident"finalizeProgram")
+        newNimNode(nnkWhenStmt).add(newNimNode(nnkElifBranch).add(
+          newCall("declared", ident"finalizeProgram"),
+          newCall("addQuitProc", ident"finalizeProgram"),
+        ))
       ),
       nnkProcDef
     ),
