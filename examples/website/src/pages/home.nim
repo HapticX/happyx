@@ -130,6 +130,5 @@ mount Home:
               data = @[
                 ("Telegram Channel", "https://t.me/hapticx"),
                 ("GitHub Discussions", "https://github.com/HapticX/happyx/discussions"),
-                ("StackOverflow", "https://stackoverflow.com/search?q=%5Bnim-lang%5D+HappyX"),
               ]
             )
