@@ -55,28 +55,6 @@ serve "127.0.0.1", 5000:
     echo userId
     return $userId
 """
-  nimCustomPathParamTypeSsr* = """import happyx
-
-type MyType* = object
-  first, second, third: string
-
-proc parseMyType*(data: string): MyType =
-  MyType(
-    first: data[0], second: data[1], third: data[2]
-  )
-
-registerRouteParamType(
-  "my_type",  # unique type identifier
-  "\d\w\d",  # type pattern
-  parseMyType  # proc/func that takes one string argument and returns any data
-)
-
-serve "127.0.0.1", 5000:
-  get "/{i:my_type}":
-    echo i.first
-    echo i.second
-    echo i.third
-"""
   nimAssignRouteParamsSsr* = """import happyx
 
 # declare path params

@@ -40,21 +40,6 @@ app.get("/user/id{userId}", (req) => {
   return {'response': userId};
 });
 """
-  jsCustomRouteParamType* = """import { newPathParamType, Server } from "happyx";
-
-const app = new Server();
-
-// Here is unique identifier, RegExp pattern and function object
-newPathParamType("my_unique_id", /\d+/, (data) => {
-  return Number(data);
-});
-
-app.get("/registered/{data:my_unique_id}", (req) => {
-  return req.params.data;
-});
-
-app.start();
-"""
   jsSsrAdvancedHelloWorld* = """import {Server} from "happyx";
 
 let server = new Server("127.0.0.1", 5000);

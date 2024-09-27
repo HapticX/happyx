@@ -70,28 +70,6 @@ appRoutes "app":
     tDiv:
       {userId}
 """
-  nimCustomPathParamTypeSpa* = """import happyx
-
-type MyType* = object
-  first, second, third: string
-
-proc parseMyType*(data: string): MyType =
-  MyType(
-    first: data[0], second: data[1], third: data[2]
-  )
-
-registerRouteParamType(
-  "my_type",  # unique type identifier
-  "\d\w\d",  # type pattern
-  parseMyType  # proc/func that takes one string argument and returns any data
-)
-
-appRoutes "app":
-  "/{i:my_type}":
-    echo i.first
-    echo i.second
-    echo i.third
-"""
   nimAssignRouteParamsSpa* = """import happyx
 
 # declare path params

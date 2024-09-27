@@ -254,22 +254,6 @@ proc PathParams*(): TagRef =
               tSpan(class = "text-green-800 dark:text-green-400"): "\""
           tTd(class = "text-center"):
             {translate"Path param typed as string"}
-      
-      Tip(ttWarning):
-        tDiv:
-          tP:
-            {translate"Custom path parameters are currently deprecated and not used."}
-
-          tP:
-            {translate"In addition, you can define your own parameter types ✌"}
-
-          CodeBlockGuide(@[
-            ("Nim", "nim", nimCustomPathParamTypeSsr, cstring"nim_import_ssr", newPlayResult()),
-            ("Nim (SPA)", "nim", nimCustomPathParamTypeSpa, cstring"nim_import_ssr", newPlayResult()),
-            ("Python", "python", pythonCustomRouteParamType, cstring"py_import", newPlayResult()),
-            ("JavaScript", "javascript", jsCustomRouteParamType, cstring"js_import", newPlayResult()),
-            ("TypeScript", "typescript", tsCustomRouteParamType, cstring"ts_import", newPlayResult()),
-          ])
 
       if currentLanguage.val in ["Nim", "Nim (SPA)"]:
         tH2: {translate"Assigning Route Params 🛠"}
