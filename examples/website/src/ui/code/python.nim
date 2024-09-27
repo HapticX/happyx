@@ -41,27 +41,6 @@ def handle(user_id: int):
     print(user_id)
     return {'response': user_id}
 """
-  pythonCustomRouteParamType* = """from happyx import Server, register_route_param_type
-
-
-app = Server()
-
-
-# Here is unique identifier, regex pattern and function/class object
-@register_route_param_type("my_unique_id", r"\d+")
-class MyUniqueIdentifier:
-    def __init__(self, data: str):
-        self.identifier = int(data)
-
-
-@app.get("/registered/{data}")
-def handle(data: MyUniqueIdentifier):
-    print(data.identifier)
-    return {'response': data.identifier}
-
-
-app.start()
-"""
   pySsrAdvancedHelloWorld* = """from happyx import Server, JsonResponse, Response
 
 

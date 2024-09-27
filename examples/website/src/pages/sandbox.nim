@@ -5,7 +5,7 @@ import
   regex,
   ../../../../src/happyx,
   ../path_params,
-  ../components/[header, smart_card, card, button, section, code_block, about_section, drawer],
+  ../components/[header, card, button, section, code_block, about_section, drawer],
   ../ui/[colors, translations]
 
 

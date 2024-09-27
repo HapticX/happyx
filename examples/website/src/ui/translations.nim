@@ -8,18 +8,6 @@ translatable:
   # zh - Chinese
   # ko - Korean
   # fr - French
-  "🌎 RoadMap":
-    "ru" -> "🌎 Дорожная Карта"
-    "ja" -> "🌎 ロードマップ"
-    "zh" -> "🌎 路线图"
-    "ko" -> "🌎 로드맵"
-    "fr" -> "🌎 Map Feuille de route"
-  "🔥 Sponsors":
-    "ru" -> "🔥 Спонсоры"
-    "ja" -> "🔥 スポンサー"
-    "zh" -> "🔥 赞助人"
-    "ko" -> "🔥 스폰서"
-    "fr" -> "🔥 Sponsors"
   "📕 Documentation":
     "ru" -> "📕 Документация"
     "ja" -> "📕 書"
@@ -56,18 +44,6 @@ translatable:
     "zh" -> "基于元编程的HappyX"
     "ko" -> "메타프로그래밍 기반 해픽스"
     "fr" -> "HappyX basé sur la métaprogrammation"
-  "so most part of code runs at compile-time.":
-    "ru" -> "таким образом, большая часть кода выполняется во время компиляции."
-    "ja" -> "したがって、コードのほとんどの部分はコンパイル時に実行されます。"
-    "zh" -> "所以大部分代码在编译时运行。"
-    "ko" -> "따라서 대부분의 코드는 컴파일 타임에 실행됩니다."
-    "fr" -> "ainsi, la majeure partie du code s'exécute au moment de la compilation."
-  "This means that HappyX is REALLY fastest web framework":
-    "ru" -> "Значительно ускоряя ваш код во время выполнения"
-    "ja" -> "これは、HappyXが本当に最速のwebフレームワークであることを意味します"
-    "zh" -> "这意味着HappyX真的是最快的web框架"
-    "ko" -> "이 해픽스는 정말 빠른 웹 프레임 워크를 의미합니다"
-    "fr" -> "Cela signifie que HappyX est le framework Web le plus rapide"
   "full-stack":
     "ru" -> "полнофункциональный"
     "ja" -> "フルスタック"
@@ -878,12 +854,12 @@ translatable:
     "zh" -> "解析参数为Nim枚举类型（仅允许字符串枚举）"
     "fr" -> "Analyse le paramètre comme un type énuméré Nim (autorise uniquement les énumérations de chaînes de caractères)"
     "ko" -> "매개변수를 Nim 열거형 타입으로 구문 분석합니다 (문자열 열거형만 허용)"
-  "In addition, you can define your own parameter types ✌":
-    "ru" -> "Кроме того, вы можете определить собственные типы параметров ✌"
-    "ja" -> "さらに、独自のパラメータータイプを定義することができます ✌"
-    "zh" -> "此外，您可以定义自己的参数类型 ✌"
-    "fr" -> "De plus, vous pouvez définir vos propres types de paramètres ✌"
-    "ko" -> "또한, 자체 매개변수 유형을 정의할 수 있습니다 ✌"
+  "so most part of code runs at compile-time.":
+    "ru" -> "таким образом, большая часть кода выполняется во время компиляции."
+    "ja" -> "したがって、コードのほとんどの部分はコンパイル時に実行されます。"
+    "zh" -> "所以大部分代码在编译时运行。"
+    "ko" -> "따라서 대부분의 코드는 컴파일 타임에 실행됩니다."
+    "fr" -> "ainsi, la majeure partie du code s'exécute au moment de la compilation."
   "Assigning Route Params 🛠":
     "ru" -> "Назначение параметров маршрута 🛠"
     "ja" -> "ルートパラメーターの割り当て 🛠"
@@ -2084,12 +2060,6 @@ translatable:
     "zh" -> "例子"
     "fr" -> "Exemple"
     "ko" -> "예시"
-  "Custom path parameters are currently deprecated and not used.":
-    "ru" -> "Кастомные параметры пути на данный момент устарели и не используются."
-    "ja" -> "カスタムパスパラメーターは現在非推奨で使用されていません。"
-    "zh" -> "自定义路径参数目前已被弃用，不再使用。"
-    "fr" -> "Les paramètres de chemin personnalisés sont actuellement obsolètes et ne sont pas utilisés."
-    "ko" -> "맞춤 경로 매개변수는 현재 사용되지 않으며 사용되지 않습니다."
   "Third-party routes 💫":
     "ru" -> "Сторонние маршруты 💫"
     "ja" -> "サードパーティのルート 💫"

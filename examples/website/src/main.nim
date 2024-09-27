@@ -5,9 +5,10 @@ import
   ./ui/[colors, code, play_states, translations, monaco],
   ./components/[
     button, card, code_block, header,
-    section, smart_card, about_section,
+    section, about_section,
     drawer, divider, sponsors_arr,
-    code_block_slider, sidebar, guide_page, language_spinner, tip
+    code_block_slider, sidebar, guide_page, language_spinner, tip,
+    icons
   ],
   ./pages/[home, sponsors, roadmap, guide, sandbox],
   json,

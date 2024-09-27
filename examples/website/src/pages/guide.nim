@@ -1,7 +1,7 @@
 import
   ../../../../src/happyx,
   ../path_params,
-  ../components/[header, smart_card, card, section, code_block, about_section, drawer, sidebar, guide_page],
+  ../components/[header, card, section, code_block, about_section, drawer, sidebar, guide_page],
   ../ui/colors,
   json,
   os

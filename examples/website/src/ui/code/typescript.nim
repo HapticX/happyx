@@ -41,21 +41,6 @@ app.get("/user/id{userId}", (req: Request) => {
   return {'response': userId};
 });
 """
-  tsCustomRouteParamType* = """import { newPathParamType, Server, Request } from "happyx";
-
-const app = new Server();
-
-// Here is unique identifier, RegExp pattern and function object
-newPathParamType("my_unique_id", /\d+/, (data: string) => {
-  return Number(data);
-});
-
-app.get("/registered/{data:my_unique_id}", (req: Request) => {
-  return req.params.data;
-});
-
-app.start()
-"""
   tsSsrAdvancedHelloWorld* = """import {Server, Request} from "happyx";
 
 let server = new Server("127.0.0.1", 5000);
