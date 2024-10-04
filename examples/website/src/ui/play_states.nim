@@ -74,7 +74,7 @@ Read docs: https://tailwindcss.com/docs/""", cstring"", cstring"shell", 250),
     (cstring"", cstring"", cstring"", 10000)
   ])
   playCalculatorAppSsr* = newPlayResult(@[
-    (cstring"$ curl -D- http://127.0.0.1:5000/calc/5/*/5", cstring"", cstring"shell", 250),
+    (cstring"$ curl -D- http://127.0.0.1:5000/calc/5/mul/5", cstring"", cstring"shell", 250),
     (cstring"""
 HTTP/1.1 200 OK
 Content-Type: text/plaintext
