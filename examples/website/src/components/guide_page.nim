@@ -57,6 +57,8 @@ component GuidePage:
           KaraxUsers
         of "liveviews":
           LiveViews
+        of "flags_list":
+          FlagsList
 
       tDiv(class = "hidden xl:flex justify-between items-center w-full pb-8"):
         if guidePages[currentGuidePage]["prev"].getStr != "":

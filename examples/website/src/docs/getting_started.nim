@@ -40,10 +40,7 @@ proc GettingStarted*(): TagRef =
       tH2: "Hello, World! 👋"
 
       tP:
-        {translate"There is our first application. I show you "}
-        tSpan(class = "text-green-800 dark:text-green-400"):
-          "\"Hello, world!\""
-        {translate" example."}
+        { translate("Let's create the first application. To do this, create a file $# and write the following code there:", "example.nim") }
 
       CodeBlockGuide(@[
         ("Nim", "nim", nimSsrHelloWorldExample, cstring"nim_ssr", newPlayResult()),

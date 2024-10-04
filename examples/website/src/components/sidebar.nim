@@ -31,6 +31,11 @@ var
     "path_params": {
       "title": "Path Params 🔌",
       "prev": "happyx_app",
+      "next": "flags_list"
+    },
+    "flags_list": {
+      "title": "Compilation flags 🔨",
+      "prev": "path_params",
       "next": "tailwind_and_other"
     },
     "tailwind_and_other": {
@@ -190,6 +195,8 @@ proc SideBar*(isMobile: bool = false): TagRef =
                 {translate"HappyX Application 🍍"}
               SideBarItem("path_params", isMobile):
                 {translate"Path Params 🔌"}
+              SideBarItem("flags_list", isMobile):
+                {translate"Compilation flags 🔨"}
 
             SideBarFolder("tailwind_and_other", "Advanced 🧪", isMobile):
               SideBarItem("tailwind_and_other", isMobile):

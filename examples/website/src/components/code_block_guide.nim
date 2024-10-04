@@ -127,22 +127,18 @@ component CodeBlockGuide:
                         if j.text.len == 0 and j.html.len == 0:
                           playButton.classList.remove("hidden")
                           playResult.classList.add("hidden")
-                          playResult.classList.remove(fmt"max-h-[{idx * 3}rem]")
-                          playResult.classList.add(fmt"max-h-[0rem]")
                         elif j.html.len != 0:
                           playResult.innerHTML &= j.html
                         else:
                           playResult.innerHTML &= fmt"""<pre><code id="{self.uniqCompId}{j.lang}{idx}" language="{j.lang}" class="language-{j.lang}" style="padding-top: 0 !important; padding-bottom: 0 !important;">{j.text}</code></pre>"""
                           let id: cstring = fmt"{self.uniqCompId}{j.lang}{idx}"
-                          playResult.classList.remove(fmt"max-h-[{idx * 3}rem]")
                           inc idx
                           buildJs:
                             let codeBlock = document.getElementById(~id)
                             hljs.highlightElement(codeBlock)
-                          playResult.classList.add(fmt"max-h-[{idx * 3}rem]")
               tDiv(
                 id = fmt"{source.id}play_result",
-                class = "w-full pb-4 duration-500 transition-all max-h-[0rem]",
+                class = "w-full pb-4 duration-500 transition-all",
               )
       if not haslanguage(self.CodeBlockGuide, currentLanguage.val):
         tCode(
