@@ -3,7 +3,7 @@ import
   ../../../../src/happyx,
   ../ui/[colors, translations],
   ../docs/docs,
-  ./[button, drawer, sidebar, code_block_guide],
+  ./[button, drawer, sidebar, code_block_guide, icons],
   std/unicode,
   std/json
 
@@ -57,41 +57,41 @@ component GuidePage:
           KaraxUsers
         of "liveviews":
           LiveViews
+        of "flags_list":
+          FlagsList
 
       tDiv(class = "hidden xl:flex justify-between items-center w-full pb-8"):
         if guidePages[currentGuidePage]["prev"].getStr != "":
-          Button(
-              action = proc() =
-                route(fmt"""/guide/{guidePages[currentGuidePage]["prev"].getStr}""")
-          ):
-            {"👈 " & translate(guidePages[guidePages[currentGuidePage]["prev"].getStr]["title"].getStr)}
+          tDiv(class = "flex items-center justify-center gap-1 select-none cursor-pointer"):
+            ArrowRight(fmt"w-8 h-8 stroke-[{Orange}] dark:stroke-[{Yellow}] rotate-180")
+            { translate(guidePages[guidePages[currentGuidePage]["prev"].getStr]["title"].getStr) }
+            @click:
+              route(fmt"""/guide/{guidePages[currentGuidePage]["prev"].getStr}""")
         else:
           tDiv(class = "w-1 h-1 p-1")
         if guidePages[currentGuidePage]["next"].getStr != "":
-          Button(
-              action = proc() =
-                route(fmt"""/guide/{guidePages[currentGuidePage]["next"].getStr}""")
-          ):
-            {translate(guidePages[guidePages[currentGuidePage]["next"].getStr]["title"].getStr) & " 👉"}
+          tDiv(class = "flex items-center justify-center gap-1 select-none cursor-pointer"):
+            { translate(guidePages[guidePages[currentGuidePage]["next"].getStr]["title"].getStr) }
+            ArrowRight(fmt"w-8 h-8 stroke-[{Orange}] dark:stroke-[{Yellow}]")
+            @click:
+              route(fmt"""/guide/{guidePages[currentGuidePage]["next"].getStr}""")
         else:
           tDiv(class = "w-1 h-1 p-1")
       tDiv(class = "flex xl:hidden justify-between items-center w-full pb-8"):
         if guidePages[currentGuidePage]["prev"].getStr != "":
-          Button(
-              action = proc() =
-                route(fmt"""/guide/{guidePages[currentGuidePage]["prev"].getStr}"""),
-              flat = true
-          ):
-            {"👈 " & translate(guidePages[guidePages[currentGuidePage]["prev"].getStr]["title"].getStr)}
+          tDiv(class = "flex items-center justify-center gap-1 select-none cursor-pointer"):
+            ArrowRight(fmt"w-10 h-10 stroke-[{Orange}] dark:stroke-[{Yellow}] rotate-180")
+            { translate(guidePages[guidePages[currentGuidePage]["prev"].getStr]["title"].getStr) }
+            @click:
+              route(fmt"""/guide/{guidePages[currentGuidePage]["prev"].getStr}""")
         else:
           tDiv(class = "w-1 h-1 p-1")
         if guidePages[currentGuidePage]["next"].getStr != "":
-          Button(
-              action = proc() =
-                route(fmt"""/guide/{guidePages[currentGuidePage]["next"].getStr}"""),
-              flat = true
-          ):
-            {translate(guidePages[guidePages[currentGuidePage]["next"].getStr]["title"].getStr) & " 👉"}
+          tDiv(class = "flex items-center justify-center gap-1 select-none cursor-pointer"):
+            { translate(guidePages[guidePages[currentGuidePage]["next"].getStr]["title"].getStr) }
+            ArrowRight(fmt"w-10 h-10 stroke-[{Orange}] dark:stroke-[{Yellow}]")
+            @click:
+              route(fmt"""/guide/{guidePages[currentGuidePage]["next"].getStr}""")
         else:
           tDiv(class = "w-1 h-1 p-1")
     tDiv(id = nu"navigation", class = "hidden 2xl:flex 2xl:w-1/5 pl-8 fixed right-0")

@@ -77,7 +77,7 @@ component CodeBlockGuide:
           let source = self.sources.val[i]
         if currentLanguage == source.title:
           tCode(
-            id = "{source.id}",
+            id = fmt"{source.id}",
             language = source.lang,
             class =
               if source.playResult.states.len > 0:
@@ -99,7 +99,7 @@ component CodeBlockGuide:
           if source.playResult.states.len > 0:
             tDiv(class = "flex bg-[#0d1117] rounded-b-md"):
               tDiv(
-                id = "{source.id}play_button",
+                id = fmt"{source.id}play_button",
                 class = "flex gap-2 justify-center items-center select-none cursor-pointer px-4 pb-2"
               ):
                 tSvg(class = "w-16 lg:w-8 h-16 lg:h-8 fill-white", viewBox = "0 0 24 24", fill = "none"):
@@ -136,7 +136,10 @@ component CodeBlockGuide:
                           buildJs:
                             let codeBlock = document.getElementById(~id)
                             hljs.highlightElement(codeBlock)
-              tDiv(id = "{source.id}play_result", class = "w-full pb-4")
+              tDiv(
+                id = fmt"{source.id}play_result",
+                class = "w-full pb-4 duration-500 transition-all",
+              )
       if not haslanguage(self.CodeBlockGuide, currentLanguage.val):
         tCode(
           id = "unknown_lang",

@@ -53,13 +53,13 @@ appRoutes "app":
   nimSpaCalc* = """appRoutes "app":
   "/calc/{left:float}/{op}/{right:float}":
     tDiv(class = "flex text-4xl justify-center items-center w-screen h-screen text-orange-200 bg-neutral-900"):
-      if op == "+":
+      if op == "add":
         {left + right}
-      elif op == "-":
+      elif op == "sub":
         {left - right}
-      elif op == "/":
+      elif op == "del":
         {left / right}
-      elif op == "*":
+      elif op == "mul":
         {left * right}
       else:
         "failure"

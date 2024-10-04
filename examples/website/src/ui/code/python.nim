@@ -22,13 +22,13 @@ app.start()
 """
   pythonSsrCalc* = """@app.get('/calc/{left}/{op}/{right}')
 def calculate(left: float, right: float, op: str):
-    if op == "+":
+    if op == "add":
         return left + right
-    elif op == "-":
+    elif op == "sub":
         return left - right
-    elif op == "/":
+    elif op == "del":
         return left / right
-    elif op == "*":
+    elif op == "mul":
         return left * right
     else:
         return Response("failure", status_code=404)

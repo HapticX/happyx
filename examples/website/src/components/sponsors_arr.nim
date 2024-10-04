@@ -39,7 +39,9 @@ proc SponsorsList*(data: seq[Sponsor], sponsorStatus: SponsorStatus = ssDefault,
               tImg(
                 src = sponsor.avatarUrl,
                 alt = fmt"{sponsor.name}, ${sponsor.amount}",
-                class = "border-[{colorBorder}] border-4 w-24 h-24 rounded-full"
+                class = "border-[{colorBorder}] border-4 w-24 h-24 rounded-full",
+                loading = "lazy",
+                decoding = "async"
               )
               tDiv(
                 class = "flex mt-0 group-hover:mt-6 rounded-md text-center text-[{Foreground}] dark:text-[{ForegroundDark}] bg-[{Background}] dark:bg-[{BackgroundDark}] justify-content items-center pointer-events-none absolute delay-150 opacity-0 transition-all duration-300 group-hover:opacity-100"
