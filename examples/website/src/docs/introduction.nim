@@ -30,15 +30,31 @@ proc IntroductionLanguageChooser*(lang, title: string): TagRef =
 proc Contributor*(nickname, url, avatar: string): TagRef =
   buildHtml:
     tA(class = "flex flex-col justify-center items-center", href = url):
-      tImg(src = avatar, class = "w-[96px] lg:w-[72px] xl:w-[64px] h-[96px] lg:h-[72px] xl:h-[64px] rounded-full", alt = nickname)
+      tImg(
+        src = avatar,
+        class = "w-[96px] lg:w-[72px] xl:w-[64px] h-[96px] lg:h-[72px] xl:h-[64px] rounded-full",
+        alt = nickname,
+        loading = "lazy",
+        decoding = "async"
+      )
       tP(class = "font-mono text-center h-8"):
         {nickname}
 
 
+proc Badge*(name, src: string): TagRef = buildHtml:
+  tImg(class = "h-12 lg:h-10 xl:h-8", alt = name, src = src, loading = "lazy", decoding = "async")
+
+
 component Introduction:
-  `template`:
+  html:
     tDiv(class = "flex flex-col px-8 py-2 xl:h-fit gap-4"):
-      tImg(src = "/happyx/public/icon.webp", alt = "happyx logo", class = "self-center w-72 h-72")
+      tImg(
+        src = "/happyx/public/icon.webp",
+        alt = "happyx logo",
+        class = "self-center w-72 h-72",
+        loading = "lazy",
+        decoding = "async"
+      )
       tH1: {translate"Introduction ✌"}
       tTable:
         tTbody:
@@ -46,49 +62,49 @@ component Introduction:
             tTd: "GitHub"
             tTd:
               tA(href = "https://github.com/HapticX/happyx"):
-                tImg(class = "h-12 lg:h-10 xl:h-8", alt = "Github Issues", src = "https://img.shields.io/github/issues/HapticX/happyx?style=for-the-badge")
+                Badge("Github Issues", "https://img.shields.io/github/issues/HapticX/happyx?style=for-the-badge")
               tA(href = "https://github.com/HapticX/happyx"):
-                tImg(class = "h-12 lg:h-10 xl:h-8", alt = "Github Closed Issues", src = "https://img.shields.io/github/issues-closed/HapticX/happyx?style=for-the-badge")
+                Badge("Github Closed Issues", "https://img.shields.io/github/issues-closed/HapticX/happyx?style=for-the-badge")
               tA(href = "https://github.com/HapticX/happyx"):
-                tImg(class = "h-12 lg:h-10 xl:h-8", alt = "Github Stars", src = "https://img.shields.io/github/stars/HapticX/happyx?style=for-the-badge")
+                Badge("Github Stars", "https://img.shields.io/github/stars/HapticX/happyx?style=for-the-badge")
           tTr:
             tTd: "Tests"
             tTd:
               tA(href = "https://github.com/HapticX/happyx/actions/workflows/tests.yml"):
-                tImg(class = "h-12 lg:h-10 xl:h-8", alt = "Github Issues", src = "https://img.shields.io/github/actions/workflow/status/HapticX/HappyX/tests.yml?label=Testing&logo=github&style=for-the-badge")
+                Badge("Github Issues", "https://img.shields.io/github/actions/workflow/status/HapticX/HappyX/tests.yml?label=Testing&logo=github&style=for-the-badge")
           tTr:
             tTd: "Languages"
             tTd:
               tA(href = "https://nim-lang.org"):
-                tImg(class = "h-12 lg:h-10 xl:h-8", alt = "Nim 👑", src = "https://img.shields.io/badge/>=1.6.14-1b1e2b?style=for-the-badge&logo=nim&logoColor=f1fa8c&label=Nim&labelColor=2b2e3b")
+                Badge("Nim 👑", "https://img.shields.io/badge/>=1.6.14-1b1e2b?style=for-the-badge&logo=nim&logoColor=f1fa8c&label=Nim&labelColor=2b2e3b")
               tA(href = "https://python.org"):
-                tImg(class = "h-12 lg:h-10 xl:h-8", alt = "Python 🐍", src = "https://img.shields.io/badge/>=3.7.x-1b1e2b?style=for-the-badge&logo=python&logoColor=f1fa8c&label=Python&labelColor=2b2e3b")
+                Badge("Python 🐍", "https://img.shields.io/badge/>=3.7.x-1b1e2b?style=for-the-badge&logo=python&logoColor=f1fa8c&label=Python&labelColor=2b2e3b")
               tA(href = "https://developer.mozilla.org/en-US/docs/Web/JavaScript"):
-                tImg(class = "h-12 lg:h-10 xl:h-8", alt = "JavaScript ✌", src = "https://img.shields.io/badge/ES6-1b1e2b?style=for-the-badge&logo=javascript&logoColor=f1fa8c&label=JavaScript&labelColor=2b2e3b")
+                Badge("JavaScript ✌", "https://img.shields.io/badge/ES6-1b1e2b?style=for-the-badge&logo=javascript&logoColor=f1fa8c&label=JavaScript&labelColor=2b2e3b")
               tA(href = "https://www.typescriptlang.org/"):
-                tImg(class = "h-12 lg:h-10 xl:h-8", alt = "TypeScript 🔥", src = "https://img.shields.io/badge/>=5.2.2-1b1e2b?style=for-the-badge&logo=typescript&logoColor=f1fa8c&label=TypeScript&labelColor=2b2e3b")
+                Badge("TypeScript 🔥", "https://img.shields.io/badge/>=5.2.2-1b1e2b?style=for-the-badge&logo=typescript&logoColor=f1fa8c&label=TypeScript&labelColor=2b2e3b")
           tTr:
             tTd: "Wakatime Stats"
             tTd:
               tA(href = "https://wakatime.com/badge/user/eaf11f95-5e2a-4b60-ae6a-38cd01ed317b/project/bbd13748-36e6-4383-ac40-9c4e72c060d1"):
-                tImg(class = "h-12 lg:h-10 xl:h-8", alt = "Wakatime", src = "https://wakatime.com/badge/user/eaf11f95-5e2a-4b60-ae6a-38cd01ed317b/project/bbd13748-36e6-4383-ac40-9c4e72c060d1.svg?style=for-the-badge")
+                Badge("Wakatime", "https://wakatime.com/badge/user/eaf11f95-5e2a-4b60-ae6a-38cd01ed317b/project/bbd13748-36e6-4383-ac40-9c4e72c060d1.svg?style=for-the-badge")
           tTr:
             tTd: "VS Code Plugin"
             tTd:
               tA(href = "https://github.com/HapticX/hpx-vs-code"):
-                tImg(class = "h-12 lg:h-10 xl:h-8", alt = "VS Code Plugin Repository", src = "https://img.shields.io/badge/Plugin-1b1e2b?style=for-the-badge&logo=visualstudiocode&logoColor=f1fa8c&label=VS%20Code&labelColor=2b2e3b")
+                Badge("VS Code Plugin Repository", "https://img.shields.io/badge/Plugin-1b1e2b?style=for-the-badge&logo=visualstudiocode&logoColor=f1fa8c&label=VS%20Code&labelColor=2b2e3b")
               tA(href = "https://marketplace.visualstudio.com/items?itemName=HapticX.happyx"):
-                tImg(class = "h-12 lg:h-10 xl:h-8", alt = "Visual Studio Marketplace Installs - Azure DevOps Extension", src = "https://img.shields.io/visual-studio-marketplace/azure-devops/installs/total/HapticX.happyx?style=for-the-badge")
+                Badge("Visual Studio Marketplace Installs - Azure DevOps Extension", "https://img.shields.io/visual-studio-marketplace/azure-devops/installs/total/HapticX.happyx?style=for-the-badge")
           tTr:
             tTd: "PyPI"
             tTd:
               tA(href = "https://pypi.org/project/happyx/"):
-                tImg(class = "h-12 lg:h-10 xl:h-8", alt = "PyPI Downloads", src = "https://img.shields.io/pypi/dm/happyx?style=for-the-badge")
+                Badge("PyPI Downloads", "https://img.shields.io/pypi/dm/happyx?style=for-the-badge")
           tTr:
             tTd: "npm"
             tTd:
               tA(href = "https://www.npmjs.com/package/happyx"):
-                tImg(class = "h-12 lg:h-10 xl:h-8", alt = "Npm Downloads", src = "https://img.shields.io/npm/dm/happyx?style=for-the-badge")
+                Badge("Npm Downloads", "https://img.shields.io/npm/dm/happyx?style=for-the-badge")
       tH2: {translate"What Is HappyX? 💡"}
       tP:
         tB: "HappyX"
