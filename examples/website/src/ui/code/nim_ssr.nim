@@ -41,10 +41,10 @@ serve "127.0.0.1", 5000:
   nimSsrCalc* = """serve "127.0.0.1", 5000:
   get "/calc/{left:float}/{op}/{right:float}":
     case op
-    of "+": return fmt"{left + right}"
-    of "-": return fmt"{left - right}"
-    of "/": return fmt"{left / right}"
-    of "*": return fmt"{left * right}"
+    of "add": return fmt"{left + right}"
+    of "sub": return fmt"{left - right}"
+    of "del": return fmt"{left / right}"
+    of "mul": return fmt"{left * right}"
     else:
       statusCode = 404
       return "failure"

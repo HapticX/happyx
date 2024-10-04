@@ -23,13 +23,13 @@ app.start();
 ├─ README.md
 """
   typeScriptSsrCalc* = """app.get("/calc/{left}/{op}/{right}", (req: Request) => {
-  if req.params.op == "+":
+  if req.params.op == "add":
     return req.params.left + req.params.right;
-  elif req.params.op == "-":
+  elif req.params.op == "sub":
     return req.params.left - req.params.right;
-  elif req.params.op == "/":
+  elif req.params.op == "del":
     return req.params.left / req.params.right;
-  elif req.params.op == "*":
+  elif req.params.op == "mul":
     return req.params.left * req.params.right;
   req.answer("failure", code=404);
 });
