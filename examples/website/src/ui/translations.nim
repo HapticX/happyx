@@ -2432,6 +2432,42 @@ translatable:
     "zh" -> "在程序编译阶段将请求模型的调试信息输出。"
     "fr" -> "Affiche des informations de débogage sur les modèles de requête lors de la phase de compilation du programme."
     "ko" -> "프로그램 컴파일 단계에서 요청 모델에 대한 디버그 정보를 출력합니다."
+  "These flags must be used in client applications.":
+    "ru" -> "Эти флаги необходимо использовать в клиентских приложениях."
+    "ja" -> "これらのフラグはクライアントアプリケーションで使用する必要があります。"
+    "zh" -> "这些标志必须在客户端应用程序中使用。"
+    "fr" -> "Ces drapeaux doivent être utilisés dans les applications clientes."
+    "ko" -> "이 플래그는 클라이언트 애플리케이션에서 사용해야 합니다."
+  "Enables the use of the History API instead of hashes for routing.":
+    "ru" -> "Включает использование History API вместо использования хэшей для маршрутизации."
+    "ja" -> "ルーティングのためにハッシュの代わりにHistory APIの使用を有効にします。"
+    "zh" -> "启用使用 History API 进行路由，而不是使用哈希。"
+    "fr" -> "Active l'utilisation de l'API History au lieu des hachages pour le routage."
+    "ko" -> "라우팅을 위해 해시 대신 History API 사용을 활성화합니다."
+  "Disables routing capabilities. This can be useful when developing browser extensions.":
+    "ru" -> "Отключает возможность маршрутизации. Может быть полезно при разработке браузерных расширений."
+    "ja" -> "ルーティング機能を無効にします。ブラウザ拡張機能の開発時に役立つ場合があります。"
+    "zh" -> "禁用路由功能。这在开发浏览器扩展时可能很有用。"
+    "fr" -> "Désactive les capacités de routage. Cela peut être utile lors du développement d'extensions de navigateur."
+    "ko" -> "라우팅 기능을 비활성화합니다. 브라우저 확장 프로그램을 개발할 때 유용할 수 있습니다."
+  "Disables components, while functional components remain available. This can be useful if your application does not require complex solutions.":
+    "ru" -> "Отключает компоненты, при этом функциональные компоненты остаются доступными. Может быть полезно, если ваше приложение не требует сложных решений."
+    "ja" -> "コンポーネントを無効にしますが、機能コンポーネントは利用可能なままです。アプリケーションが複雑な解決策を必要としない場合に便利です。"
+    "zh" -> "禁用组件，同时功能组件仍然可用。如果您的应用程序不需要复杂的解决方案，这可能很有用。"
+    "fr" -> "Désactive les composants, tandis que les composants fonctionnels restent disponibles. Cela peut être utile si votre application ne nécessite pas de solutions complexes."
+    "ko" -> "구성 요소를 비활성화하지만 기능 구성 요소는 계속 사용할 수 있습니다. 응용 프로그램이 복잡한 솔루션을 필요로 하지 않는 경우 유용할 수 있습니다."
+  "You can read about the use of compilation flags and other flags in the official Nim documentation.":
+    "ru" -> "Об использовании флагов компиляции, а также остальных флагах вы можете прочитать в официальной документации Nim."
+    "ja" -> "コンパイルフラグやその他のフラグの使用については、Nimの公式ドキュメントを参照できます。"
+    "zh" -> "您可以在Nim的官方文档中阅读有关编译标志和其他标志的使用。"
+    "fr" -> "Vous pouvez lire sur l'utilisation des drapeaux de compilation et d'autres drapeaux dans la documentation officielle de Nim."
+    "ko" -> "Nim의 공식 문서에서 컴파일 플래그 및 기타 플래그의 사용에 대해 읽을 수 있습니다."
+  "More details":
+    "ru" -> "Подробнее"
+    "ja" -> "詳細"
+    "zh" -> "更多细节"
+    "fr" -> "Plus de détails"
+    "ko" -> "자세한 내용"
 
 
 var spokenLang: cstring

@@ -60,7 +60,20 @@ proc FlagsList*(): TagRef =
           tTd: { translate"Enables safe requests. On errors, a status code 500 and an error message will be returned." }
           tTd: ""
 
-      # tH2: { translate"Client flags 🎴" }
+      tH2: { translate"Client flags 🎴" }
+      tP: { translate"These flags must be used in client applications." }
+      
+      tTable(
+        class = fmt"w-full rounded-md border-[1px] border-[{Foreground}] dark:border-[{ForegroundDark}]"
+      ):
+        tTr:
+          tTd: { translate"Flag" }
+          tTd: { translate"Description" }
+          tTd: { translate"Default value" }
+        tTr:
+          tTd: tCode(class = "text-nowrap"): "-d:historyApi"
+          tTd: tA(href = "https://developer.mozilla.org/en-US/docs/Web/API/History_API", target = "_blank"): { translate"Enables the use of the History API instead of hashes for routing." }
+          tTd: ""
 
 
       tH2: { translate"General purpose flags" }
@@ -76,6 +89,14 @@ proc FlagsList*(): TagRef =
         tTr:
           tTd: tCode(class = "text-nowrap"): "-d:disableDefDeco"
           tTd: { translate"Disables route decorators functionality." }
+          tTd: ""
+        tTr:
+          tTd: tCode(class = "text-nowrap"): "-d:disableRouting"
+          tTd: { translate"Disables routing capabilities. This can be useful when developing browser extensions." }
+          tTd: ""
+        tTr:
+          tTd: tCode(class = "text-nowrap"): "-d:disableComp"
+          tTd: { translate"Disables components, while functional components remain available. This can be useful if your application does not require complex solutions." }
           tTd: ""
         # tTr:
         #   tTd: tCode: "-d:disableDefDeco"
@@ -113,3 +134,8 @@ proc FlagsList*(): TagRef =
           tTd: tCode(class = "text-nowrap"): "-d:reqModelDebug"
           tTd: { translate"Outputs debug information about the request models during the program's compilation phase." }
           tTd: ""
+      
+      tP:
+        { translate"You can read about the use of compilation flags and other flags in the official Nim documentation." }
+        tA(href = "https://nim-lang.org/docs/nimc.html", target = "_blank", class = "px-2"):
+          { translate"More details" }
