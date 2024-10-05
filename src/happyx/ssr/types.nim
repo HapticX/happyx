@@ -32,9 +32,12 @@ else:
 when enableHttpBeast:
   import websocket
   export websocket
-else:
+elif not enableBuiltin:
   import websocketx
   export websocketx
+else:
+  import ws
+  export ws
 
 
 when enableDefaultComponents:
