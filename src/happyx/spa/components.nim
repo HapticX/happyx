@@ -1663,10 +1663,12 @@ macro importFuncComponent*(body: untyped): untyped =
     importStmts,
     function # newNimNode(nnkCommand).add(ident"component", componentName, stmtList)
   )
-  createdComponents[($componentName).toLower()[0..^8]] = newStmtList(
-    newEmptyNode(),
-    newEmptyNode(),
-    newEmptyNode(),
-    newEmptyNode(),
-  )
+  if ($componentName).toLower().endsWith("_happyx"):
+    createdComponents[($componentName).toLower()[0..^8]] = newStmtList(
+      newEmptyNode(), newEmptyNode(), newEmptyNode(), newEmptyNode(),
+    )
+  else:
+    createdComponents[($componentName).toLower()] = newStmtList(
+      newEmptyNode(), newEmptyNode(), newEmptyNode(), newEmptyNode(),
+    )
   echo result.toStrLit

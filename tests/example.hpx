@@ -1,26 +1,26 @@
 <template>
   <div>
-    Example component {self.age}
-    {self.test()}
+    Example component { age }
+    { test() }
     <slot></slot>
-    <div h-if="self.age < 20">
+    <div h-if="age < 20">
       You're young!
     </div>
-    <div h-elif="self.age < 35">
+    <div h-elif="age < 35">
       You're already young!
     </div>
     <div h-else>
       You're old!
     </div>
     <div h-for="i in [1, 2, 3, 4]">
-      {i}
+      { i }
     </div>
     <script lang="nim">
       var x = 10
     </script>
-    {x}
+    { x }
     <div h-while="x > 0" style="display: flex; gap: .2rem;">
-      {x}
+      { x }
       <script lang="nim">
         dec x
       </script>
