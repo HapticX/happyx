@@ -11,7 +11,7 @@ when enableHttpx:
   export
     options,
     httpx
-when enableBuiltin:
+elif enableBuiltin:
   import
     std/options,
     ./core
