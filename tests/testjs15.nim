@@ -75,7 +75,7 @@ component Exam:
       "..."
 
 
-importComponent "example.hpx" as Example
+# importComponent "example.hpx" as example_happyx
 # importComponent "button.hpx" as ButtonExample
 
 
