@@ -18,7 +18,7 @@ proc handleWebsockets*(wsClosedConnection: NimNode): tuple[wsStmtList, insertWsL
         ident"wsConnections",
         newCall("find", ident"wsConnections", wsClientI))
     )
-  when enableHttpx:
+  when enableHttpx or enableBuiltin:
     wsDelStmt.add(newCall("close", wsClientI))
   when enableHttpBeast:
     let asyncFd = newDotExpr(newDotExpr(ident"req", ident"client"), ident"AsyncFD")

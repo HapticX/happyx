@@ -37,9 +37,11 @@
 # Configuration via `-d`/`--define`
 const
   # Alternative HTTP Servers
-  enableHttpx* = defined(httpx) or defined(happyxHttpx) or defined(hpxHttpx)
   enableMicro* = defined(micro) or defined(happyxMicro) or defined(hpxMicro)
+  enableStd* = defined(stdserver) or defined(happyxStdserver) or defined(hpxStdserver)
+  enableHttpx* = defined(httpx) or defined(happyxHttpx) or defined(hpxHttpx)
   enableHttpBeast* = defined(beast) or defined(happyxBeast) or defined(hpxBeast)
+  enableBuiltin* = int(enableMicro) + int(enableStd) + int(enableHttpx) + int(enableHttpBeast) == 0
   # LiveViews
   enableLiveViews* = not (defined(noLiveviews) or defined(hpxNoLiveviews) or defined(happyxNoLiveviews))
   # Safe Requests

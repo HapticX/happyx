@@ -49,7 +49,7 @@ when not defined(js) and not (exportJvm or exportPython or defined(napibuild)):
         `headers`["Access-Control-Allow-Headers"] = `allowHeaders`
     if allowMethods.len > 0:
       if allowMethods == "*":
-        when not enableHttpx and not enableHttpBeast:
+        when not enableHttpx and not enableHttpBeast and not enableBuiltin:
           result.add quote do:
             if req.reqMethod == HttpOptions:
               `headers`["Access-Control-Allow-Methods"] = "OPTIONS"
@@ -67,7 +67,7 @@ when not defined(js) and not (exportJvm or exportPython or defined(napibuild)):
     if allowOrigins.len > 0:
       if allowOrigins == @["*"]:
         result.add quote do:
-          when not enableHttpx and not enableHttpBeast:
+          when not enableHttpx and not enableHttpBeast and not enableBuiltin:
             let h = req.headers
           else:
             let h = req.headers.get()
@@ -77,7 +77,7 @@ when not defined(js) and not (exportJvm or exportPython or defined(napibuild)):
             let s = h["Referer"].split("/", 3)
             `headers`["Access-Control-Allow-Origin"] = s[0] & "//" & s[2]
           else:
-            when not enableHttpx and not enableHttpBeast:
+            when not enableHttpx and not enableHttpBeast and not enableBuiltin:
               `headers`["Access-Control-Allow-Origin"] = req.hostname
             else:
               `headers`["Access-Control-Allow-Origin"] = req.ip

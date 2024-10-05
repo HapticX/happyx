@@ -539,7 +539,7 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode =
   elifBranch.add(body)
 
   let reqBody =
-    when enableHttpBeast or enableHttpx:
+    when enableHttpBeast or enableHttpx or enableBuiltin:
       newCall("get", newDotExpr(ident"req", ident"body"))
     else:
       newDotExpr(ident"req", ident"body")
