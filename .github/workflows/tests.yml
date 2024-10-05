@@ -90,7 +90,7 @@ jobs:
           cd tests
           echo "###===--- Default for" $file "---===###"
           for file in $(ls -v testc*.nim); do
-            echo "###===--- C Test for " $file " via stdlib ---===###"
+            echo "###===--- C Test for " $file " via built-in server ---===###"
             nim c -d:debug --hints:off --warnings:off $file
           done
         shell: bash
