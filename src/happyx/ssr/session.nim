@@ -19,6 +19,8 @@ when enableHttpBeast:
   import httpbeast
 elif enableHttpx:
   import httpx
+elif enableBuiltin:
+  import ./core
 elif enableMicro:
   import
     asynchttpserver,

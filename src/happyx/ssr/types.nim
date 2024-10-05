@@ -6,19 +6,26 @@ import
 
 when enableHttpx:
   import
-    options,
+    std/options,
     httpx
   export
     options,
     httpx
+when enableBuiltin:
+  import
+    std/options,
+    ./core
+  export
+    options,
+    core
 elif enableHttpBeast:
-  import httpbeast, asyncnet
+  import httpbeast, std/asyncnet
   export httpbeast, asyncnet
 elif enableMicro:
-  import asyncnet, microasynchttpserver, asynchttpserver
+  import std/asyncnet, microasynchttpserver, std/asynchttpserver
   export asyncnet, microasynchttpserver, asynchttpserver
 else:
-  import asyncnet, asynchttpserver
+  import std/asyncnet, std/asynchttpserver
   export asyncnet, asynchttpserver
 
 
@@ -50,7 +57,7 @@ when enableDefaultComponents:
         notFoundCallback*: PyObject
         middlewareCallback*: PyObject
         logger*: Logger
-        when enableHttpx:
+        when enableHttpx or enableBuiltin:
           instance*: Settings
         elif enableHttpBeast:
           instance*: Settings
@@ -72,7 +79,7 @@ when enableDefaultComponents:
         routes*: seq[Route]
         parent*: Server
         title*: string
-        when enableHttpx:
+        when enableHttpx or enableBuiltin:
           instance*: Settings
         elif enableHttpBeast:
           instance*: Settings
@@ -96,7 +103,7 @@ when enableDefaultComponents:
         routes*: seq[Route]
         title*: string
         environment*: napi_env
-        when enableHttpx:
+        when enableHttpx or enableBuiltin:
           instance*: Settings
         elif enableHttpBeast:
           instance*: Settings
@@ -112,7 +119,7 @@ when enableDefaultComponents:
         address*: string
         port*: int
         logger*: Logger
-        when enableHttpx:
+        when enableHttpx or enableBuiltin:
           instance*: Settings
         elif enableHttpBeast:
           instance*: Settings
@@ -142,7 +149,7 @@ else:
         notFoundCallback*: PyObject
         middlewareCallback*: PyObject
         logger*: Logger
-        when enableHttpx:
+        when enableHttpx or enableBuiltin:
           instance*: Settings
         elif enableHttpBeast:
           instance*: Settings
@@ -163,7 +170,7 @@ else:
         routes*: seq[Route]
         parent*: Server
         title*: string
-        when enableHttpx:
+        when enableHttpx or enableBuiltin:
           instance*: Settings
         elif enableHttpBeast:
           instance*: Settings
@@ -186,7 +193,7 @@ else:
         routes*: seq[Route]
         title*: string
         environment*: napi_env
-        when enableHttpx:
+        when enableHttpx or enableBuiltin:
           instance*: Settings
         elif enableHttpBeast:
           instance*: Settings
@@ -201,7 +208,7 @@ else:
         address*: string
         port*: int
         logger*: Logger
-        when enableHttpx:
+        when enableHttpx or enableBuiltin:
           instance*: Settings
         elif enableHttpBeast:
           instance*: Settings

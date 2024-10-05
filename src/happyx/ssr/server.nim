@@ -126,7 +126,7 @@ elif not defined(docgen) and not nim_2_0_0:
     quit(QuitSuccess)
   
   proc onQuit() {.noconv.} =
-    when int(enableHttpBeast) + int(enableHttpx) + int(enableMicro) == 0:
+    when int(enableHttpBeast) + int(enableHttpx) + int(enableMicro) + int(enableBuiltin) == 0:
       try:
         pointerServer[].instance.close()
       except:
@@ -195,7 +195,7 @@ proc newServer*(address: string = "127.0.0.1", port: int = 5000): Server =
               loggerCreated = true
               newConsoleLogger(lvlInfo, "[$date at $time]:$levelname ")
       )
-  when enableHttpx or enableHttpBeast:
+  when enableHttpx or enableHttpBeast or enableBuiltin:
     result.instance = initSettings(Port(port), bindAddr=address, numThreads = numThreads)
   elif enableMicro:
     result.instance = newMicroAsyncHttpServer()
@@ -219,7 +219,7 @@ template start*(server: Server): untyped =
       proc handleRequest(req: Request): Future[void] {.async.} =
         discard
     when not defined(hpxServeAsync):
-      when enableHttpx:
+      when enableHttpx or enableBuiltin:
         run(handleRequest, `server`.instance)
       elif enableHttpBeast:
         {.cast(gcsafe).}:
@@ -227,7 +227,7 @@ template start*(server: Server): untyped =
       else:
         waitFor `server`.instance.serve(Port(`server`.port), handleRequest, `server`.address)
     else:
-      when enableHttpx:
+      when enableHttpx or enableBuiltin:
         asyncCheck runAsync(handleRequest, `server`.instance)
       elif enableHttpBeast:
         {.cast(gcsafe).}:
@@ -277,7 +277,7 @@ template answer*(
     ])
   when corsRegistered.value > 0:
     when exportJvm or exportPython or defined(napibuild):
-      when enableHttpBeast or enableHttpx:
+      when enableHttpBeast or enableHttpx or enableBuiltin:
         addCORSHeaders(req.ip, h)
       else:
         addCORSHeaders(req.hostname, h)
@@ -287,7 +287,7 @@ template answer*(
     for key, val in outHeaders.pairs():
       h[key] = val
   # HTTPX
-  when enableHttpx:
+  when enableHttpx or enableBuiltin:
     when useHeaders:
       var headersArr = ""
       for key, value in h.pairs():
@@ -386,7 +386,7 @@ template answer*(
   var h = headers
   when corsRegistered.value > 0:
     when exportJvm or exportPython or defined(napibuild):
-      when enableHttpBeast or enableHttpx:
+      when enableHttpBeast or enableHttpx or enableBuiltin:
         addCORSHeaders(req.ip, h)
       else:
         addCORSHeaders(req.hostname, h)
@@ -396,7 +396,7 @@ template answer*(
     for key, val in outHeaders.pairs():
       h[key] = val
   # HTTPX
-  when enableHttpx:
+  when enableHttpx or enableBuiltin:
     var headersArr = ""
     for key, value in h.pairs():
       headersArr &= key & ':' & value & "\c\L"
@@ -544,7 +544,7 @@ template answerHtml*(req: Request, data: string | TagRef, code: HttpCode = Http2
     answer(req, $data, code, headers)
 
 
-when enableHttpx or enableHttpBeast:
+when enableHttpx or enableHttpBeast or enableBuiltin:
   proc send*(request: Request, content: string): Future[void] {.inline.} =
     ## Sends `content` to the client.
     request.unsafeSend(content)
@@ -595,7 +595,7 @@ proc answerFile*(req: Request, filename: string,
     while true:
       let val = await f.read(bufSize)
       if val.len > 0:
-        when enableHttpx or enableHttpBeast:
+        when enableHttpx or enableHttpBeast or enableBuiltin:
           await req.send(val)
         else:
           await req.client.send(val)
@@ -797,7 +797,7 @@ macro routes*(server: Server, body: untyped = newStmtList()): untyped =
   when enableLiveViews:
     body.handleLiveViews()
 
-  when enableHttpx or enableHttpBeast:
+  when enableHttpx or enableHttpBeast or enableBuiltin:
     var path = newCall("decodeUrl", newNimNode(nnkBracketExpr).add(
       newCall("split", newCall("get", newCall("path", ident"req")), newLit('?')),
       newLit(0)
