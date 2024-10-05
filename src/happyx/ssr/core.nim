@@ -366,7 +366,6 @@ template tryAcceptClient() =
         # Skip and try again next time.
         return
       if lastError.int32 == EMFILE:
-        warn("Ignoring EMFILE error: ", osErrorMsg(lastError))
         return
 
     raiseOSError(lastError)
