@@ -317,9 +317,10 @@ proc compileProject*(additionalOpts: seq[string] = @[]): ProjectData {. discarda
   ## Compiling Project
   result = readConfig()
   let
-    file1 = getCurrentDir() / result.srcDir / (result.mainFile & ".nim")
-    file2 = getCurrentDir() / result.srcDir / (result.mainFile)
-  if not (fileExists(file1) or fileExists(file2)):
+    fileNim = getCurrentDir() / result.srcDir / (result.mainFile & ".nim")
+    fileHpx = getCurrentDir() / result.srcDir / (result.mainFile & ".hpx")
+    file = getCurrentDir() / result.srcDir / (result.mainFile)
+  if not (fileExists(fileHpx) or fileExists(fileNim) or fileExists(file)):
     styledEcho fgRed, "current directory is not HappyX project."
     quit QuitFailure
 
@@ -375,7 +376,7 @@ proc compileProject*(additionalOpts: seq[string] = @[]): ProjectData {. discarda
     var f = open(result.srcDir / result.mainFile & ".nim", fmWrite)
     f.write("import happyx\n\n")
     for (path, name, lvl) in usages:
-      f.write(fmt"""importComponent "{path.replace("\\", "\\\\")}" as {name}""" & "\n")
+      f.write(fmt"""importFuncComponent "{path.replace("\\", "\\\\")}" as {name.toLower().replace("-", "")}_happyx""" & "\n")
     f.write("\nappRoutes \"app\":\n")
     for key, val in routerData.pairs():
       f.write(fmt"""  "{key}":""")
@@ -383,16 +384,21 @@ proc compileProject*(additionalOpts: seq[string] = @[]): ProjectData {. discarda
         compName: string = ""
         args = newJObject()
       if val.kind == JString:
-        compName = val.getStr
+        compName = val.getStr.toLower().replace("-", "")
       elif val.kind == JObject:
         if not val.hasKey("component"):
           raise newException(ValueError, fmt"route `{key}` routes should have `component`")
-        compName = val["component"].getStr
+        compName = val["component"].getStr.toLower().replace("-", "")
         args = val["args"]
       if compName.endsWith(".hpx"):
-        compName = compName[0..^5]
+        compName = compName[0..^5].toLower().replace("-", "")
+      compName &= "_happyx"
       f.write("\n")
-      f.write(fmt"    component {compName}(")
+      if args.len > 0:
+        f.write(fmt"    {compName}(")
+      else:
+        f.write(fmt"    {compName}")
+      # f.write(fmt"    component {compName}(")
       for key, arg in args.pairs():
         case arg.kind
         of JString:
@@ -419,7 +425,10 @@ proc compileProject*(additionalOpts: seq[string] = @[]): ProjectData {. discarda
             f.write(fmt"""{key}=queryArr?{arg["name"].getStr},""")
         else:
           raise newException(ValueError, fmt"Incorrect router.json structure at `{key}`")
-      f.write(")\n\n")
+      if args.len > 0:
+        f.write(")\n\n")
+      else:
+        f.write("\n\n")
     f.close()
     # just for debug
     # f = open(result.srcDir / result.mainFile & ".nim", fmRead)

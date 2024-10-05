@@ -48,8 +48,8 @@ component ConstructorChild of Constructor:
     }
   """
 
-importComponent "example.hpx" as Example
-importComponent "button.hpx" as ButtonExample
+importFuncComponent "example.hpx" as example_happyx
+importFuncComponent "button.hpx" as buttonexample_happyx
 
 var constructor = use:
   component Constructor->construct()
@@ -70,13 +70,13 @@ appRoutes "app":
     component Constructor->construct(val = 100):
       "Hello, world!"
     component ConstructorChild->construct()
-    component ButtonExample:
+    buttonexample_happyx:
       "Hello, world!"
   
   "/hpx-files":
-    component ButtonExample:
+    buttonexample_happyx:
       "Hello, world!"
-    component Example(age = 10)
+    example_happyx(age = 10)
   
   "/cookiesTest":
     tDiv:

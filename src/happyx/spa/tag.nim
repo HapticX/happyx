@@ -421,7 +421,7 @@ when defined(js):
       yield (key: $attrs[i].nodeName, val: $attrs[i].nodeValue)
 
 
-proc xml2Tag(xml: XmlNode): TagRef =
+proc xml2Tag*(xml: XmlNode): TagRef =
   case xml.kind
   of xnElement:
     if xml.attrsLen > 0:
@@ -442,7 +442,7 @@ proc xml2Tag(xml: XmlNode): TagRef =
     discard
 
 
-proc xmlTree2Tag(current, parent: TagRef, tree: XmlNode) =
+proc xmlTree2Tag*(current, parent: TagRef, tree: XmlNode) =
   let tag = tree.xml2Tag()
   if not tag.isNil():
     current.add(tag)
@@ -460,6 +460,14 @@ proc tagFromString*(source: string): TagRef {.inline.} =
     result = result.children[0].children[0].TagRef
   else:
     result = result.children[0].children[0]
+  
+
+proc findTagsAtTop*(tree: XmlNode, tag: string): seq[XmlNode] =
+  result = @[]
+  for i in tree:
+    if i.kind == xnElement and i.tag == tag:
+      result.add(i)
+  return result
 
 
 proc addArg*(self: TagRef, arg: string) =
@@ -818,7 +826,7 @@ when defined(js):
     )
 
 
-  proc xml2TagVm(xml: XmlNode): VmTagRef =
+  proc xml2TagVm*(xml: XmlNode): VmTagRef =
     case xml.kind
     of xnElement:
       if xml.attrsLen > 0:
@@ -836,7 +844,7 @@ when defined(js):
       discard
 
 
-  proc xmlTree2Tag(current, parent: VmTagRef, tree: XmlNode) =
+  proc xmlTree2Tag*(current, parent: VmTagRef, tree: XmlNode) =
     let tag = tree.xml2TagVm()
     if not tag.isNil():
       current.add(tag)

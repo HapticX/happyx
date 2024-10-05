@@ -351,3 +351,106 @@ appRoutes "app":
 appRoutes "app":
   discard
 """
+  nimHpxTemplateExample* = """<template>
+  <div>
+    Hello, world!
+    <div h-if="5 > 2">
+      omg, 5 is larger than 2
+    </div>
+    <div h-elif="2 < 5">
+      5 is less than 2??????
+    </div>
+    <div h-else>
+      why math isn't working lol
+    </div>
+    <div h-for="i in [0, 1, 2, 3]" >
+      { i }
+    </div>
+    <script>
+      # Here you can use Nim, not JS
+      var x = 0
+    </script>
+    <div h-while="x < 10">
+      Now x is { x }
+      <script>x += 1</script>
+    </div>
+  </div>
+</template>"""
+  nimHpxCreateProjectExample* = """hpx create --name hpx_project --kind HPX
+cd hpx_project"""
+  nimHpxScriptExample* = """<script>
+  proc myFunc(): string =
+    echo "Hello, world!"
+    return "ok man"
+
+  echo myFunc()
+</script>"""
+  nimHpxScriptExample_1* = """<template>
+  <div>
+    output of myFunc() is { myFunc() }
+  </div>
+</template>"""
+  nimHpxScriptJsExample* = """<script>
+  proc myFunc(): cstring {.exportc.} =
+    return "ok man"
+</script>
+
+<script lang="js">
+  console.log("call nim: ", myFunc());
+</script>"""
+  nimHpxStyleExample* = """<style>
+  div {
+    background-color: #212121;
+    color: #cfeced;
+    padding: 0.25rem;
+  }
+</style>"""
+  nimHpxEventsExample* = """<template>
+  <div>
+    <button h-onclick="handleClick(event)">
+      Click me!
+    </button>
+    <!-- input should be closable in .hpx files -->
+    <input h-oninput="handleInput(event)" />
+  </div>
+</template>
+
+<script>
+  proc handleClick(ev: Event) =
+    echo "button was clicked!"
+  proc handleInput(ev: Event) =
+    echo ev.target.InputElement.value
+</script>"""
+  nimHpxMainHpxExample* = """<template>
+  <div>
+    This is main page
+    <HelloWorld></HelloWorld>
+    <HelloWorld />
+  </div>
+</template>
+"""
+  nimHpxComponentsHelloWorldExample* = """<template>
+  <div>
+    Hello, world!
+  </div>
+</template>
+"""
+  nimHpxRouterExample* = """{
+  /* route path */
+  "/": "main",  /* just component name */
+  /* route path */
+  /* ex. /user7/asd */
+  "/user$id:int/$test?": {
+    /* just component name */
+    "component": "User",
+    /* arguments is component props */
+    "args": {
+      /* prop name: path param name */
+      "userId": "id",
+      /* query is query param named q */
+      "query": {"name": "q", "type": "query"},
+      /* pathParam is path param named test */
+      "pathParam": {"name": "test", "type": "pathParam"}
+    }
+  }
+}"""
