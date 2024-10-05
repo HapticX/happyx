@@ -18,7 +18,10 @@ import
   ../private/[macro_utils]
 
 when nimvm:
-  import regex
+  import htmlparser
+  import xmltree
+
+  const hpxComponentIndex = CacheCounter"HappyXComponentIndex"
 
 const createdComponents = CacheTable"HappyXCreatedComponents"
 
@@ -1064,20 +1067,21 @@ macro importComponent*(body: untyped): untyped =
     componentName = body[2]
   var
     componentData = staticRead(filePath)
-    templateSource = componentData.findAll(re2"(?<=<\s*template\s*>)([\s\S]+?)(?=</\s*template\s*>)")
-    scriptJSSource = componentData.findAll(re2"(?<=<\s*script\s*js\s*>)([\s\S]+?)(?=</\s*script\s*>)")
-    scriptNimSource = componentData.findAll(re2"(?<=<\s*script\s*>)([\s\S]+?)(?=</\s*script\s*>)")
-    styleSource = componentData.findAll(re2"(?<=<\s*style\s*>)([\s\S]+?)(?=</\s*style\s*>)")
+    componentHtml = parseHtml(componentData)
+    templateSource = componentHtml.findTagsAtTop("template")
+    scriptSource = componentHtml.findTagsAtTop("script")
+    styleSource = componentHtml.findTagsAtTop("style")
     stmtList = newStmtList()
+    props = newSeq[NimNode]()
     importStmts = newStmtList()
 
   # Handle errors
-  if (scriptNimSource.len > 0 and scriptJSSource.len > 0) or scriptNimSource.len > 1 or scriptJSSource.len > 1:
-    throwDefect(
-      HpxComponentDefect,
-      "Component should have only one <script> tag.",
-      lineInfoObj(body)
-    )
+  # if scriptSource.len > 1:
+  #   throwDefect(
+  #     HpxComponentDefect,
+  #     "Component should have only one <script> tag.",
+  #     lineInfoObj(body)
+  #   )
   if templateSource.len > 1:
     throwDefect(
       HpxComponentDefect,
@@ -1096,10 +1100,12 @@ macro importComponent*(body: untyped): untyped =
     var
       tagData = 
         when defined(js):
-          initTagVm("div", @[tagFromStringVm(componentData[templateSource[0].group(0)])], true)
+          initTagVm("div", @[], true)
         else:
-          initTag("div", @[tagFromString(componentData[templateSource[0].group(0)])], true)
+          initTag("div", @[], true)
       statements = newStmtList()
+    for tag in templateSource[0]:
+      tagData.xmlTree2Tag(nil, tag)
     
     proc inCreatedComponents(tag: string): string =
       if tag in htmlTagsList:
@@ -1266,17 +1272,17 @@ macro importComponent*(body: untyped): untyped =
     stmtList.add(newCall(newNimNode(nnkAccQuoted).add(ident"template"), statements))
   
   # Script tag
-  if scriptJSSource.len > 0:
+  if scriptSource.len > 0 and scriptSource[0].attr("lang") in ["js", "javascript"]:
     stmtList.add(newCall(
       newNimNode(nnkAccQuoted).add(ident"script"),
       newStmtList(newNimNode(nnkPragma).add(newNimNode(nnkExprColonExpr).add(
         ident"emit",
-        newLit(componentData[scriptJSSource[0].group(0)])
+        newLit(scriptSource[0].innerText)
       )))
     ))
-  elif scriptNimSource.len > 0:
+  elif scriptSource.len > 0 and scriptSource[0].attr("lang") in ["", "nim"]:
     var
-      statement = parseStmt(componentData[scriptNimSource[0].group(0)])
+      statement = parseStmt(scriptSource[0].innerText)
       methods = newCall(newNimNode(nnkBracket).add(ident"methods"), newStmtList())
     for i in 0..<statement.len:
       let s = statement[i]
@@ -1303,7 +1309,7 @@ macro importComponent*(body: untyped): untyped =
   # Style tag
   if styleSource.len > 0:
     var statement = newNimNode(nnkTripleStrLit)
-    statement.strVal = componentData[styleSource[0].group(0)]
+    statement.strVal = styleSource[0].innerText
     stmtList.add(newCall(newNimNode(nnkAccQuoted).add(ident"style"), newStmtList(statement)))
 
   result = newStmtList(
@@ -1311,3 +1317,356 @@ macro importComponent*(body: untyped): untyped =
     newNimNode(nnkCommand).add(ident"component", componentName, stmtList)
   )
   # echo result.toStrLit
+
+
+macro importFuncComponent*(body: untyped): untyped =
+  ## Imports `.hpx` file as component.
+  ## 
+  ## .. Note::
+  ##    You can easily create these files with HappyX VS Code extension
+  ## 
+  ## ## Example
+  ## 
+  ## `component.hpx`
+  ## 
+  ## .. code-block:: hpx
+  ##    <template>
+  ##      <div>
+  ##        Hello, world!
+  ##      </div>
+  ##    </template>
+  ##    
+  ##    <script>
+  ##    # Here is Nim code
+  ##    echo "Hello, world!"
+  ##    </script>
+  ##    
+  ##    <style>
+  ##    /* Here is scoped style */
+  ##    div {
+  ##      background: #feefee;
+  ##    }
+  ##    </style>
+  ## 
+  ## `main.nim`
+  ## 
+  ## .. code-block:: nim
+  ##    importFuncComponent "./component.hpx" as MyComponent
+  ## 
+  if body.kind != nnkInfix:
+    throwDefect(
+      HpxComponentDefect,
+      fmt"Invalid syntax for importComponent.",
+      lineInfoObj(body)
+    )
+  if body[0] != ident"as":
+    throwDefect(
+      HpxComponentDefect,
+      fmt"Invalid syntax for importComponent.",
+      lineInfoObj(body[0])
+    )
+  if body[1].kind notin {nnkStrLit, nnkTripleStrLit}:
+    throwDefect(
+      HpxComponentDefect,
+      fmt"Invalid syntax for importComponent.",
+      lineInfoObj(body[1])
+    )
+  
+  let
+    filePath = getProjectPath() / $body[1]
+    componentName = body[2]
+  var
+    componentData = staticRead(filePath)
+    componentHtml = parseHtml(componentData)
+    templateSource = componentHtml.findTagsAtTop("template")
+    scriptSource = componentHtml.findTagsAtTop("script")
+    styleSource = componentHtml.findTagsAtTop("style")
+    stmtList = newStmtList()
+    props = newSeq[NimNode]()
+    importStmts = newStmtList()
+
+  # Handle errors
+  # if scriptSource.len > 1:
+  #   throwDefect(
+  #     HpxComponentDefect,
+  #     "Component should have only one <script> tag.",
+  #     lineInfoObj(body)
+  #   )
+  if templateSource.len > 1:
+    throwDefect(
+      HpxComponentDefect,
+      "Component should have only one <template> tag.",
+      lineInfoObj(body)
+    )
+  if styleSource.len > 1:
+    throwDefect(
+      HpxComponentDefect,
+      "Component should have only one <style> tag.",
+      lineInfoObj(body)
+    )
+  
+  let
+    dataArg = fmt"data-{hpxComponentIndex.value+4}{hpxComponentIndex.value+1}{hpxComponentIndex.value}"
+    dataIndex = fmt"{hpxComponentIndex.value+4}{hpxComponentIndex.value+1}{hpxComponentIndex.value}"
+  inc hpxComponentIndex
+
+  # Template
+  if templateSource.len > 0:
+    var
+      tagData = 
+        when defined(js):
+          initTagVm("div", @[], true)
+        else:
+          initTag("div", @[], true)
+      statements = newStmtList()
+    for tag in templateSource[0]:
+      tagData.xmlTree2Tag(nil, tag)
+    
+    proc inCreatedComponents(tag: string): string =
+      if tag in htmlTagsList:
+        return ""
+      for key, val in createdComponents.pairs():
+        if key.toLower().capitalizeAscii() == tag.toLower().capitalizeAscii():
+          return key
+      ""
+    
+    when defined(js):
+      discard
+    else:
+      type VmTagRef = TagRef
+    
+    proc handle(tag: VmTagRef, parent: var NimNode) =
+      var ifStartIndex = -1
+      for child in tag.children:
+        # @click, @event, etc
+        var eventHandlers = newStmtList()
+        child.attrs[dataArg] = ""
+        if child.onlyChildren:
+          child.handle(parent)
+        elif child.isText:
+          if child.name.replace("\n", "").replace(" ", "") != "":
+            parent.add(newLit(child.name))
+        else:
+          var
+            call: NimNode
+            name = inCreatedComponents(child.name)
+            isIfStmt = false
+            scriptLanguage: string = "nim"
+          if child.attrs.len > 0 or child.children.len > 0:
+            if name.len > 0:
+              # Component usage
+              var callComp =
+                if child.attrs.len > 0:
+                  newCall(name & "_happyx")
+                else:
+                  ident(name & "_happyx")
+              for key, val in child.attrs.pairs():
+                if key == dataArg:
+                  continue
+                let property = key.split({':'}, 1)
+                if property.len == 2:
+                  callComp.add(newNimNode(nnkExprEqExpr).add(ident(property[0]), 
+                    case property[1].toLower()
+                    of "int":
+                      newLit(parseInt(val))
+                    of "float":
+                      newLit(parseFloat(val))
+                    of "bool":
+                      newLit(parseBool(val))
+                    of "string":
+                      newLit(val)
+                    of "nim":
+                      parseExpr(val)
+                    else:
+                      newLit(val)
+                  ))
+                else:
+                  callComp.add(newNimNode(nnkExprEqExpr).add(ident(property[0]), newLit(val)))
+              # call = newNimNode(nnkCommand).add(ident"component", callComp)
+              call = callComp
+            elif child.name == "slot":
+              call = ident"stmt"
+            else:
+              # Tag usage
+              if child.name == "script":
+                call = newCall"nim"
+              else:
+                call = newCall(child.name)
+              # parse args without values
+              for arg in child.args:
+                case arg
+                of "h-else":
+                  # If usage
+                  isIfStmt = true
+                  call = newNimNode(nnkElse).add(newStmtList(call.copy()))
+                else:
+                  discard
+              # parse args with values
+              for key, val in child.attrs.pairs():
+                if child.name == "script" and key == dataArg:
+                  continue
+                case key.toLower()
+                of "h-if":
+                  # If usage
+                  isIfStmt = true
+                  call = newNimNode(nnkElifBranch).add(parseExpr(val), newStmtList(call.copy()))
+                of "h-elif":
+                  # If usage
+                  isIfStmt = true
+                  call = newNimNode(nnkElifBranch).add(parseExpr(val), newStmtList(call.copy()))
+                of "h-for":
+                  # For stmt
+                  let expr = parseExpr(val)
+                  if expr.kind == nnkInfix and expr[0] == ident"in":
+                    call = newNimNode(nnkForStmt).add(expr[1], expr[2], newStmtList(call.copy()))
+                of "h-while":
+                  # For stmt
+                  let expr = parseExpr(val)
+                  call = newNimNode(nnkWhileStmt).add(expr, newStmtList(call.copy()))
+                of "lang":
+                  if child.name.toLower() == "script":
+                    scriptLanguage = val
+                  elif call.kind in [nnkElifBranch, nnkOfBranch, nnkElse, nnkForStmt, nnkWhileStmt]:
+                    call[^1][^1].add(newNimNode(nnkExprEqExpr).add(newLit(key), newLit(val)))
+                  else:
+                    call.add(newNimNode(nnkExprEqExpr).add(newLit(key), newLit(val)))
+                else:
+                  if call.kind in [nnkElifBranch, nnkOfBranch, nnkElse, nnkForStmt, nnkWhileStmt]:
+                    if key.startsWith("h-on"):
+                      eventHandlers.add(newCall(
+                        newNimNode(nnkPrefix).add(ident"@", ident(key[4..^1])), ident"event", newStmtList(
+                          parseExpr(val)
+                        )
+                      ))
+                    else:
+                      call[^1][^1].add(newNimNode(nnkExprEqExpr).add(newLit(key), newLit(val)))
+                  elif key.startsWith("h-on"):
+                    eventHandlers.add(newCall(
+                      newNimNode(nnkPrefix).add(ident"@", ident(key[4..^1])), ident"event", newStmtList(
+                        parseExpr(val)
+                      )
+                    ))
+                  else:
+                    call.add(newNimNode(nnkExprEqExpr).add(newLit(key), newLit(val)))
+          elif name.len > 0:
+            # call = newNimNode(nnkCommand).add(ident"component", ident(name))
+            call = ident(name & "_happyx")
+          elif child.name == "slot":
+            call = ident"stmt"
+          else:
+            call = ident(child.name)
+          # Add statement list
+          if child.children.len != 0:
+            var stmts = newStmtList()
+            child.handle(stmts)
+            # clear if nim stmt
+            if call.kind == nnkCall and call[0] == ident"nim":
+              stmts = newStmtList()
+            # add stmts to node
+            if call.kind in [nnkElifBranch, nnkOfBranch, nnkElse, nnkForStmt, nnkWhileStmt]:
+              call[^1][^1].add(stmts)
+            elif call[0] == ident"nim":
+              if not child.children[0].isText:
+                raise newException(ValueError, "script tag should have only text")
+              case scriptLanguage.toLower():
+              of "nim":
+                var source = ""
+                for i in child.children:
+                  source &= i.name
+                call.add(parseStmt(source.dedent()))
+              of "js", "javascript":
+                var source = ""
+                for i in child.children:
+                  source &= i.name
+                call.add(newStmtList(newNimNode(nnkPragma).add(newNimNode(nnkExprColonExpr).add(
+                  ident"emit",
+                  newLit(source.dedent())
+                ))))
+              else:
+                raise newException(ValueError, "script language can be javascript or nim only")
+            else:
+              call.add(stmts)
+          if eventHandlers.len > 0:
+            if call[^1].kind != nnkStmtList:
+              call.add(newStmtList())
+            for handler in eventHandlers:
+              call[^1].add(handler)
+          if isIfStmt:
+            if ifStartIndex == -1:
+              parent.add(newNimNode(nnkIfStmt).add(call))
+              ifStartIndex = parent.len-1
+            else:
+              parent[ifStartIndex].add(call)
+          else:
+            parent.add(call)
+    
+    tagData.handle(statements)
+
+    stmtList.add(newNimNode(nnkAsgn).add(
+      ident"result",
+      newCall(ident"buildHtml", newStmtList(statements)))
+    )
+  
+  # Script tag
+  for script in scriptSource:
+    if script.attr("lang") in ["js", "javascript"]:
+      stmtList.insert(0, newNimNode(nnkPragma).add(newNimNode(nnkExprColonExpr).add(
+          ident"emit",
+          newLit(script.innerText.dedent())
+        ))
+      )
+    elif script.attr("lang") in ["", "nim"]:
+      var
+        statement = parseStmt(script.innerText.dedent())
+        methods = newCall(newNimNode(nnkBracket).add(ident"methods"), newStmtList())
+      for i in 0..<statement.len:
+        let s = statement[i]
+        # Detect properties
+        if s.kind == nnkCall and s[0] == ident"props" and s[1].kind == nnkStmtList:
+          let propsBody = s[1]
+          for property in propsBody:
+            if property[1][0].kind == nnkAsgn:
+              props.add(newIdentDefs(property[0], property[1][0][0], property[1][0][1]))
+            elif property[1][0].kind == nnkIdent:
+              props.add(newIdentDefs(property[0], property[1][0]))
+          statement[i] = newEmptyNode()
+        # Detect methods
+        elif s.kind in {nnkProcDef, nnkMethodDef, nnkIteratorDef}:
+          methods[1].add(s.copy())
+          statement[i] = s.copy()
+        # imports
+        elif s.kind in {nnkImportAs, nnkImportExceptStmt, nnkFromStmt, nnkImportStmt}:
+          importStmts.add(s.copy())
+          statement[i] = newEmptyNode()
+      stmtList.insert(0, statement)
+  
+  # Style tag
+  if styleSource.len > 0:
+    var statement = newNimNode(nnkTripleStrLit)
+    statement.strVal = scopeCss(styleSource[0].innerText.dedent(), dataIndex)
+    stmtList[^1][^1][^1].add(newCall("tStyle", newStmtList(statement)))
+  
+  stmtList.add(newAssignment(newDotExpr(ident"result", ident"onlyChildren"), newLit(true)))
+  stmtList.add(newAssignment(newDotExpr(newNimNode(nnkBracketExpr).add(ident"result", newLit(0)), ident"onlyChildren"), newLit(true)))
+  
+  var params = @[ident"TagRef"]
+  var hasStmt: bool = false
+  for i in props:
+    params.add(i)
+    if $i[0] == "stmt":
+      hasStmt = true
+  if not hasStmt:
+    params.add(newIdentDefs(ident"stmt", ident"TagRef", newNilLit()))
+  var function = newProc(ident(($componentName).toLower()), params, stmtList)
+
+  result = newStmtList(
+    importStmts,
+    function # newNimNode(nnkCommand).add(ident"component", componentName, stmtList)
+  )
+  createdComponents[($componentName).toLower()[0..^8]] = newStmtList(
+    newEmptyNode(),
+    newEmptyNode(),
+    newEmptyNode(),
+    newEmptyNode(),
+  )
+  echo result.toStrLit

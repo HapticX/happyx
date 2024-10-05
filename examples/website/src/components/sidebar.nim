@@ -76,6 +76,11 @@ var
     "func_components": {
       "title": "Functional components 🧪",
       "prev": "components",
+      "next": "hpx_project_type"
+    },
+    "hpx_project_type": {
+      "title": "HPX project type 👀",
+      "prev": "func_components",
       "next": "ssr_basics"
     },
     "ssr_basics": {
@@ -217,6 +222,8 @@ proc SideBar*(isMobile: bool = false): TagRef =
                 {translate"Components 🔥"}
               SideBarItem("func_components", isMobile):
                 {translate"Functional components 🧪"}
+              SideBarItem("hpx_project_type", isMobile):
+                {translate"HPX project type 👀"}
 
             SideBarFolder("ssr_basics", "Server-side Applications 🖥", isMobile):
               SideBarItem("ssr_basics", isMobile):

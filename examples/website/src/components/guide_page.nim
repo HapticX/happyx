@@ -59,6 +59,8 @@ component GuidePage:
           LiveViews
         of "flags_list":
           FlagsList
+        of "hpx_project_type":
+          HpxProjectType
 
       tDiv(class = "hidden xl:flex justify-between items-center w-full pb-8"):
         if guidePages[currentGuidePage]["prev"].getStr != "":

@@ -10,25 +10,24 @@ import
 proc GettingStarted*(): TagRef =
   buildHtml:
     tDiv(class = "flex flex-col px-8 py-2 xl:h-fit gap-4"):
-      tH1: {translate"Getting Started 💫"}
+      tH1: { translate"Getting Started 💫" }
       tP:
-        {translate"Before you begin, please make sure you have"}
+        { translate"Before you begin, please make sure you have"}
         if currentLanguage in ["Nim", "Nim (SPA)"]:
           tCode: tA(href = "https://nim-lang.org"):
-            {translate"Nim programming language"}
-          {translate" version 1.6.14 or higher, or "}
+            { translate"Nim programming language" }
+          { translate" version 1.6.14 or higher, or " }
         elif currentLanguage == "Python":
           tCode: tA(href = "https://python.org"):
-            {translate"Python programming language"}
-          {translate" version 3.7 and above."}
+            { translate"Python programming language" }
+          { translate" version 3.7 and above." }
         elif currentLanguage in ["JavaScript", "TypeScript"]:
           tCode: tA(href = "https://nodejs.org/en"):
             "NodeJS"
-          {translate" version 16.13.0 and above."}
+          { translate" version 16.13.0 and above." }
       
-      tH2: {translate"Installing 📥"}
-      tP: {translate"To install HappyX you can write this command"}
-
+      tH2: { translate"Installing 📥" }
+      tP: { translate"To install HappyX you can write this command" }
       CodeBlockGuide(@[
         ("Nim", "shell", "nimble install happyx@#head", cstring"nimble_install", newPlayResult()),
         ("Nim (SPA)", "shell", "nimble install happyx@#head", cstring"nimble_install", newPlayResult()),
@@ -36,6 +35,9 @@ proc GettingStarted*(): TagRef =
         ("JavaScript", "shell", "npm install happyx", cstring"npm_js_install", newPlayResult()),
         ("TypeScript", "shell", "npm install happyx", cstring"npm_ts_install", newPlayResult()),
       ])
+
+      tP: { translate"Along with the library, you will also have the hpx CLI installed. With it, you can create HappyX projects and take advantage of hot code reloading. Use the command below for details." }
+      CodeBlock("shell", "hpx help", "hpx_help")
       
       tH2: "Hello, World! 👋"
 
