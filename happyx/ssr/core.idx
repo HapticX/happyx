@@ -1,0 +1,33 @@
+nimTitle	core	happyx/ssr/core.html	module src/happyx/ssr/core		0
+nim	parseHttpMethod	happyx/ssr/core.html#parseHttpMethod,string	proc parseHttpMethod(data: string): Option[HttpMethod]		51
+nim	parsePath	happyx/ssr/core.html#parsePath,string	proc parsePath(data: string): Option[string]		84
+nim	parseHeaders	happyx/ssr/core.html#parseHeaders,string	proc parseHeaders(data: string): Option[HttpHeaders]		108
+nim	parseContentLength	happyx/ssr/core.html#parseContentLength,string	proc parseContentLength(data: string): int		154
+nim	Request	happyx/ssr/core.html#Request	object Request		192
+nim	OnRequest	happyx/ssr/core.html#OnRequest	type OnRequest		204
+nim	Settings	happyx/ssr/core.html#Settings	object Settings		212
+nim	HttpxDefect	happyx/ssr/core.html#HttpxDefect	type HttpxDefect		230
+nim	httpxClientBufDefaultSize	happyx/ssr/core.html#httpxClientBufDefaultSize	const httpxClientBufDefaultSize		234
+nim	httpxClientBufSize	happyx/ssr/core.html#httpxClientBufSize	const httpxClientBufSize		238
+nim	initSettings	happyx/ssr/core.html#initSettings,string,int,Startup,Socket	proc initSettings(port = Port(8080); bindAddr = ""; numThreads = 0;\n             startup: Startup = doNothing(); listener: Socket = nil): Settings		256
+nim	closed	happyx/ssr/core.html#closed,Request	proc closed(req: Request): bool		289
+nim	unsafeSend	happyx/ssr/core.html#unsafeSend,Request,string	proc unsafeSend(req: Request; data: string)		293
+nim	send	happyx/ssr/core.html#send,Request,HttpCode,string,Option[int],string	proc send(req: Request; code: HttpCode; body: string; contentLength: Option[int];\n     headers = "")		307
+nim	send	happyx/ssr/core.html#send,Request,HttpCode,string,Option[string],string	proc send(req: Request; code: HttpCode; body: string; contentLength: Option[string];\n     headers = "")		334
+nim	send	happyx/ssr/core.html#send.t,Request,HttpCode,string,string	template send(req: Request; code: HttpCode; body: string; headers = "")		338
+nim	send	happyx/ssr/core.html#send,Request,HttpCode	proc send(req: Request; code: HttpCode)		344
+nim	send	happyx/ssr/core.html#send,Request,string	proc send(req: Request; body: string; code = Http200)		350
+nim	httpMethod	happyx/ssr/core.html#httpMethod,Request	proc httpMethod(req: Request): Option[HttpMethod]		667
+nim	path	happyx/ssr/core.html#path,Request	proc path(req: Request): Option[string]		671
+nim	headers	happyx/ssr/core.html#headers,Request	proc headers(req: Request): Option[HttpHeaders]		677
+nim	body	happyx/ssr/core.html#body,Request	proc body(req: Request): Option[string]		683
+nim	ip	happyx/ssr/core.html#ip,Request	proc ip(req: Request): string		698
+nim	forget	happyx/ssr/core.html#forget,Request	proc forget(req: Request)		702
+nim	run	happyx/ssr/core.html#run,OnRequest,Settings	proc run(onRequest: OnRequest; settings: Settings)		725
+nim	run	happyx/ssr/core.html#run,OnRequest	proc run(onRequest: OnRequest)		749
+nim	runAsync	happyx/ssr/core.html#runAsync,OnRequest,Settings	proc runAsync(onRequest: OnRequest; settings: Settings): owned(Future[void])		762
+nim	runAsync	happyx/ssr/core.html#runAsync,OnRequest	proc runAsync(onRequest: OnRequest): owned(Future[void])		788
+nim	newWebSocket	happyx/ssr/core.html#newWebSocket,Request	proc newWebSocket(req: Request): Future[WebSocket]		808
+nimgrp	run	happyx/ssr/core.html#run-procs-all	proc		725
+nimgrp	runasync	happyx/ssr/core.html#runAsync-procs-all	proc		762
+nimgrp	send	happyx/ssr/core.html#send-procs-all	proc		307

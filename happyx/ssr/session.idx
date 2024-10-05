@@ -1,11 +1,11 @@
 nimTitle	session	happyx/ssr/session.html	module src/happyx/ssr/session		0
-nim	Session	happyx/ssr/session.html#Session	object Session		31
-nim	genSessionId	happyx/ssr/session.html#genSessionId	proc genSessionId(): string		47
-nim	getSession	happyx/ssr/session.html#getSession,Request,string,seq[string],int64	proc getSession(req: Request; host: string; cookies: var seq[string];\n           timeout: int64 = 0): Session		56
-nim	startSession	happyx/ssr/session.html#startSession.t	template startSession(): Session		93
-nim	startSession	happyx/ssr/session.html#startSession.t,int64	template startSession(timeout: int64): Session		104
-nim	closeSession	happyx/ssr/session.html#closeSession.t,string	template closeSession(sessionId: string)		115
-nim	closeSession	happyx/ssr/session.html#closeSession.t,Session	template closeSession(session: Session)		123
-nimgrp	startsession	happyx/ssr/session.html#startSession-templates-all	template		93
-nimgrp	closesession	happyx/ssr/session.html#closeSession-templates-all	template		115
+nim	Session	happyx/ssr/session.html#Session	object Session		33
+nim	genSessionId	happyx/ssr/session.html#genSessionId	proc genSessionId(): string		49
+nim	getSession	happyx/ssr/session.html#getSession,Request,string,seq[string],int64	proc getSession(req: Request; host: string; cookies: var seq[string];\n           timeout: int64 = 0): Session		58
+nim	startSession	happyx/ssr/session.html#startSession.t	template startSession(): Session		95
+nim	startSession	happyx/ssr/session.html#startSession.t,int64	template startSession(timeout: int64): Session		106
+nim	closeSession	happyx/ssr/session.html#closeSession.t,string	template closeSession(sessionId: string)		117
+nim	closeSession	happyx/ssr/session.html#closeSession.t,Session	template closeSession(session: Session)		125
+nimgrp	startsession	happyx/ssr/session.html#startSession-templates-all	template		95
+nimgrp	closesession	happyx/ssr/session.html#closeSession-templates-all	template		117
 heading	Session 🔌	happyx/ssr/session.html#session-🔌	 Session 🔌		0
