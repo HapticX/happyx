@@ -135,6 +135,10 @@
   <li><a class="reference" href="#findByTag%2CTagRef%2Cstring" title="findByTag(self: TagRef; tag: string): seq[TagRef]">findByTag(self: TagRef; tag: string): seq[TagRef]</a></li>
 
 </ul>
+<ul class="simple nested-toc-section">findTagsAtTop
+  <li><a class="reference" href="#findTagsAtTop%2CXmlNode%2Cstring" title="findTagsAtTop(tree: XmlNode; tag: string): seq[XmlNode]">findTagsAtTop(tree: XmlNode; tag: string): seq[XmlNode]</a></li>
+
+</ul>
 <ul class="simple nested-toc-section">get
   <li><a class="reference" href="#get%2CTagRef%2Cstring" title="get(self: TagRef; tag: string): TagRef">get(self: TagRef; tag: string): TagRef</a></li>
 
@@ -183,6 +187,14 @@
 </ul>
 <ul class="simple nested-toc-section">ugly
   <li><a class="reference" href="#ugly%2CTagRef" title="ugly(self: TagRef): string">ugly(self: TagRef): string</a></li>
+
+</ul>
+<ul class="simple nested-toc-section">xml2Tag
+  <li><a class="reference" href="#xml2Tag%2CXmlNode" title="xml2Tag(xml: XmlNode): TagRef">xml2Tag(xml: XmlNode): TagRef</a></li>
+
+</ul>
+<ul class="simple nested-toc-section">xmlTree2Tag
+  <li><a class="reference" href="#xmlTree2Tag%2CTagRef%2CTagRef%2CXmlNode" title="xmlTree2Tag(current, parent: TagRef; tree: XmlNode)">xmlTree2Tag(current, parent: TagRef; tree: XmlNode)</a></li>
 
 </ul>
 
@@ -396,6 +408,18 @@
 </div>
 
 </div>
+<div id="findTagsAtTop-procs-all">
+  <div id="findTagsAtTop,XmlNode,string">
+  <dt><pre><span class="Keyword">proc</span> <a href="#findTagsAtTop%2CXmlNode%2Cstring"><span class="Identifier">findTagsAtTop</span></a><span class="Other">(</span><span class="Identifier">tree</span><span class="Other">:</span> <span class="Identifier">XmlNode</span><span class="Other">;</span> <span class="Identifier">tag</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">XmlNode</span><span class="Other">]</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+
+</div>
 <div id="get-procs-all">
   <div id="get,TagRef,string">
   <dt><pre><span class="Keyword">func</span> <a href="#get%2CTagRef%2Cstring"><span class="Identifier">get</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a><span class="Other">;</span> <span class="Identifier">tag</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
@@ -591,6 +615,29 @@
 </div>
 
 </div>
+<div id="xml2Tag-procs-all">
+  <div id="xml2Tag,XmlNode">
+  <dt><pre><span class="Keyword">proc</span> <a href="#xml2Tag%2CXmlNode"><span class="Identifier">xml2Tag</span></a><span class="Other">(</span><span class="Identifier">xml</span><span class="Other">:</span> <span class="Identifier">XmlNode</span><span class="Other">)</span><span class="Other">:</span> <a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+
+</div>
+<div id="xmlTree2Tag-procs-all">
+  <div id="xmlTree2Tag,TagRef,TagRef,XmlNode">
+  <dt><pre><span class="Keyword">proc</span> <a href="#xmlTree2Tag%2CTagRef%2CTagRef%2CXmlNode"><span class="Identifier">xmlTree2Tag</span></a><span class="Other">(</span><span class="Identifier">current</span><span class="Other">,</span> <span class="Identifier">parent</span><span class="Other">:</span> <a href="tag.html#TagRef"><span class="Identifier">TagRef</span></a><span class="Other">;</span> <span class="Identifier">tree</span><span class="Other">:</span> <span class="Identifier">XmlNode</span><span class="Other">)</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+
+</div>
 
   </dl>
 </div>
@@ -601,7 +648,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2024-10-04 15:19:38 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2024-10-05 06:40:02 UTC</small>
       </div>
     </div>
   </div>
