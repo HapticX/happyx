@@ -29,6 +29,9 @@ type
     allowMethods*: string
 
 
+const corsRegistered* = CacheCounter"HappyXCORSRegistered"
+
+
 
 when not defined(js) and not (exportJvm or exportPython or defined(napibuild)):
   var currentCORS {. compileTime .} = CORSObj()
@@ -81,6 +84,7 @@ when not defined(js) and not (exportJvm or exportPython or defined(napibuild)):
       else:
         result.add quote do:
           `headers`["Access-Control-Allow-Origin"] = `allowOrigins`
+    inc corsRegistered
   
   macro regCORS*(body: untyped): untyped =
     ## Register CORS

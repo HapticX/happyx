@@ -246,13 +246,125 @@ macro `.`*(obj: JsonNode, field: untyped): JsonNode =
   newCall("[]", obj, newLit($field.toStrLit))
 
 
+const defaultHeaders = "Content-Type: text/plain;charset=utf-8"
+
+
+template answer*(
+    req: Request,
+    message: string | int | float | bool | char,
+    code: HttpCode = Http200
+) =
+  ## Answers to the request
+  ## 
+  ## ⚠ `Low-level API` ⚠
+  ## 
+  ## Arguments:
+  ##   `req: Request`: An instance of the Request type, representing the request that we are responding to.
+  ##   `message: string`: The message that we want to include in the response body.
+  ##   `code: HttpCode = Http200`: The HTTP status code that we want to send in the response.
+  ##                               This argument is optional, with a default value of Http200 (OK).
+  ## 
+  ## Use this example instead
+  ## 
+  ## .. code-block::nim
+  ##    get "/":
+  ##      return "Hello, world!"
+  ## 
+  const useHeaders = declared(outHeaders) or declared(outCookies) or corsRegistered.value > 0
+  when useHeaders:
+    var h = newHttpHeaders([
+      ("Content-Type", "text/plain; charset=utf-8")
+    ])
+  when corsRegistered.value > 0:
+    when exportJvm or exportPython or defined(napibuild):
+      when enableHttpBeast or enableHttpx:
+        addCORSHeaders(req.ip, h)
+      else:
+        addCORSHeaders(req.hostname, h)
+    else:
+      h.addCORSHeaders()
+  when declared(outHeaders):
+    for key, val in outHeaders.pairs():
+      h[key] = val
+  # HTTPX
+  when enableHttpx:
+    when useHeaders:
+      var headersArr = ""
+      for key, value in h.pairs():
+        headersArr &= key & ':' & value & "\r\n"
+      when declared(outCookies):
+        for cookie in outCookies:
+          headersArr &= cookie & "\r\n"
+      if headersArr.len > 0:
+        headersArr.delete(headersArr.len-2..headersArr.len-1)
+    
+    # check safety requests
+    when enableSafeRequests:
+      when declared(statusCode):
+        when statusCode is int:
+          req.send(statusCode.HttpCode, $message, when useHeaders: headersArr else: defaultHeaders)
+        else:
+          req.send(code, $message, when useHeaders: headersArr else: defaultHeaders)
+      else:
+        req.send(code, $message, when useHeaders: headersArr else: defaultHeaders)
+    else:
+      # Use unsafeSend to improve speed
+      var data: string = "HTTP/1.1 "
+      when declared(statusCode):
+        when statusCode is int:
+          data &= $statusCode
+        else:
+          data &= $code
+      else:
+        data &= $code
+      when message is string:
+        data &= "\c\LContent-Length:" & $len(message)
+        data &= "\c\L" & (when useHeaders: headersArr else: defaultHeaders) & "\c\L\c\L" & message
+      else:
+        data &= "\c\LContent-Length:" & $len($message)
+        data &= "\c\L" & (when useHeaders: headersArr else: defaultHeaders) & "\c\L\c\L" & $message
+      req.unsafeSend(data)
+  # HTTP BEAST
+  elif enableHttpBeast:
+    when useHeaders:
+      var headersArr = ""
+      for key, value in h.pairs():
+        headersArr &= key & ':' & value & "\r\n"
+      when declared(outCookies):
+        for cookie in outCookies:
+          headersArr &= cookie & "\r\n"
+      if headersArr.len > 0:
+        headersArr.delete(headersArr.len-2..headersArr.len-1)
+    when declared(statusCode):
+      when statusCode is int:
+        req.send(statusCode.HttpCode, $message, when useHeaders: headersArr else: defaultHeaders)
+      else:
+        req.send(code, $message, when useHeaders: headersArr else: defaultHeaders)
+    else:
+      req.send(code, $message, when useHeaders: headersArr else: defaultHeaders)
+  # ASYNC HTTP SERVER / MICRO ASYNC HTTP SERVER
+  else:
+    when useHeaders:
+      when declared(outCookies):
+        for cookie in outCookies:
+          let data = cookie.split(":", 1)
+          h.add("Set-Cookie", data[1].strip())
+    else:
+      let h = newHttpHeaders([("Content-Type", "text/plain;charset=utf-8")])
+    when declared(statusCode):
+      when statusCode is int:
+        await req.respond(statusCode.HttpCode, $message, h)
+      else:
+        await req.respond(code, $message, h)
+    else:
+      await req.respond(code, $message, h)
+
+
 template answer*(
     req: Request,
     message: string | int | float | bool | char,
     code: HttpCode = Http200,
-    headers: HttpHeaders = newHttpHeaders([
-      ("Content-Type", "text/plain; charset=utf-8")
-    ]),
+    headers: HttpHeaders,
     contentLength: Option[int] = int.none
 ) =
   ## Answers to the request
@@ -272,13 +384,14 @@ template answer*(
   ##      return "Hello, world!"
   ## 
   var h = headers
-  when exportJvm or exportPython or defined(napibuild):
-    when enableHttpBeast or enableHttpx:
-      addCORSHeaders(req.ip, h)
+  when corsRegistered.value > 0:
+    when exportJvm or exportPython or defined(napibuild):
+      when enableHttpBeast or enableHttpx:
+        addCORSHeaders(req.ip, h)
+      else:
+        addCORSHeaders(req.hostname, h)
     else:
-      addCORSHeaders(req.hostname, h)
-  else:
-    h.addCORSHeaders()
+      h.addCORSHeaders()
   when declared(outHeaders):
     for key, val in outHeaders.pairs():
       h[key] = val
@@ -286,29 +399,65 @@ template answer*(
   when enableHttpx:
     var headersArr = ""
     for key, value in h.pairs():
-      headersArr &= key & ':' & value & "\r\n"
+      headersArr &= key & ':' & value & "\c\L"
     when declared(outCookies):
       for cookie in outCookies:
-        headersArr &= cookie & "\r\n"
+        headersArr &= cookie & "\c\L"
     if headersArr.len > 0:
-      headersArr = headersArr[0..^3]
+      headersArr.delete(headersArr.len-2..headersArr.len-1)
     if contentLength.isSome:
       # useful for file answers
-      when declared(statusCode):
-        when statusCode is int:
-          req.send(statusCode.HttpCode, $message, contentLength, headersArr)
+      when enableSafeRequests:
+        when declared(statusCode):
+          when statusCode is int:
+            req.send(statusCode.HttpCode, $message, contentLength, headersArr)
+          else:
+            req.send(code, $message, contentLength, headersArr)
         else:
           req.send(code, $message, contentLength, headersArr)
       else:
-        req.send(code, $message, contentLength, headersArr)
+        # Use unsafeSend to improve speed
+        var data: string = "HTTP/1.1 "
+        when declared(statusCode):
+          when statusCode is int:
+            data &= $statusCode
+          else:
+            data &= $code
+        else:
+          data &= $code
+        when message is string:
+          data &= "\c\LContent-Length:" & $contentLength.get()
+          data &= "\c\L" & headersArr & "\c\L\c\L" & message
+        else:
+          data &= "\c\LContent-Length:" & $contentLength.get()
+          data &= "\c\L" & headersArr & "\c\L\c\L" & $message
+        req.unsafeSend(data)
     else:
-      when declared(statusCode):
-        when statusCode is int:
-          req.send(statusCode.HttpCode, $message, headersArr)
+      when enableSafeRequests:
+        when declared(statusCode):
+          when statusCode is int:
+            req.send(statusCode.HttpCode, $message, headersArr)
+          else:
+            req.send(code, $message, headersArr)
         else:
           req.send(code, $message, headersArr)
       else:
-        req.send(code, $message, headersArr)
+        # Use unsafeSend to improve speed
+        var data: string = "HTTP/1.1 "
+        when declared(statusCode):
+          when statusCode is int:
+            data &= $statusCode
+          else:
+            data &= $code
+        else:
+          data &= $code
+        when message is string:
+          data &= "\c\LContent-Length:" & $len(message)
+          data &= "\c\L" & headersArr & "\c\L\c\L" & message
+        else:
+          data &= "\c\LContent-Length:" & $len($message)
+          data &= "\c\L" & headersArr & "\c\L\c\L" & $message
+        req.unsafeSend(data)
   # HTTP BEAST
   elif enableHttpBeast:
     var headersArr = ""
@@ -318,7 +467,7 @@ template answer*(
       for cookie in outCookies:
         headersArr &= cookie & "\r\n"
     if headersArr.len > 0:
-      headersArr = headersArr[0..^3]
+      headersArr.delete(headersArr.len-2..headersArr.len-1)
     when declared(statusCode):
       when statusCode is int:
         req.send(statusCode.HttpCode, $message, headersArr)
@@ -347,7 +496,7 @@ when enableHttpBeast:
 
 
 template answerJson*(req: Request, data: untyped, code: HttpCode = Http200,
-                     headers: HttpHeaders = newHttpHeaders([("Content-Type", "application/json; charset=utf-8")])): untyped =
+                     headers: HttpHeaders = newHttpHeaders([("Content-Type", "application/json;charset=utf-8")])): untyped =
   ## Answers to request with json data
   ## 
   ## ⚠ `Low-level API` ⚠
@@ -368,7 +517,7 @@ template answerJson*(req: Request, data: untyped, code: HttpCode = Http200,
 
 
 template answerHtml*(req: Request, data: string | TagRef, code: HttpCode = Http200,
-                     headers: HttpHeaders = newHttpHeaders([("Content-Type", "text/html; charset=utf-8")])): untyped =
+                     headers: HttpHeaders = newHttpHeaders([("Content-Type", "text/html;charset=utf-8")])): untyped =
   ## Answers to request with HTML data
   ## 
   ## ⚠ `Low-level API` ⚠
