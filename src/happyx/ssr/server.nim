@@ -298,6 +298,7 @@ template answer*(
       if headersArr.len > 0:
         headersArr.delete(headersArr.len-2..headersArr.len-1)
     
+    # check safety requests
     when enableSafeRequests:
       when declared(statusCode):
         when statusCode is int:
@@ -307,6 +308,7 @@ template answer*(
       else:
         req.send(code, $message, when useHeaders: headersArr else: defaultHeaders)
     else:
+      # Use unsafeSend to improve speed
       var data: string = "HTTP/1.1 "
       when declared(statusCode):
         when statusCode is int:
@@ -414,6 +416,7 @@ template answer*(
         else:
           req.send(code, $message, contentLength, headersArr)
       else:
+        # Use unsafeSend to improve speed
         var data: string = "HTTP/1.1 "
         when declared(statusCode):
           when statusCode is int:
@@ -439,6 +442,7 @@ template answer*(
         else:
           req.send(code, $message, headersArr)
       else:
+        # Use unsafeSend to improve speed
         var data: string = "HTTP/1.1 "
         when declared(statusCode):
           when statusCode is int:
