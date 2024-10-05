@@ -315,11 +315,13 @@
 <dt><a name="answer" href="#answer"><span>answer:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="server: template answer(req: Request; message: string | int | float | bool | char;
-       code: HttpCode = Http200; headers: HttpHeaders = newHttpHeaders(
-    [(&quot;Content-Type&quot;, &quot;text/plain; charset=utf-8&quot;)]);
+       code: HttpCode = Http200)" href="happyx/ssr/server.html#answer.t%2CRequest%2C%2CHttpCode">server: template answer(req: Request; message: string | int | float | bool | char;
+       code: HttpCode = Http200)</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="server: template answer(req: Request; message: string | int | float | bool | char;
+       code: HttpCode = Http200; headers: HttpHeaders;
        contentLength: Option[int] = int.none)" href="happyx/ssr/server.html#answer.t%2CRequest%2C%2CHttpCode%2CHttpHeaders%2COption%5Bint%5D">server: template answer(req: Request; message: string | int | float | bool | char;
-       code: HttpCode = Http200; headers: HttpHeaders = newHttpHeaders(
-    [(&quot;Content-Type&quot;, &quot;text/plain; charset=utf-8&quot;)]);
+       code: HttpCode = Http200; headers: HttpHeaders;
        contentLength: Option[int] = int.none)</a></li>
           </ul></dd>
 <dt><a name="answerFile" href="#answerFile"><span>answerFile:</span></a></dt><dd><ul class="simple">
@@ -336,15 +338,15 @@
 <li><a class="reference external"
           data-doc-search-tag="server: template answerHtml(req: Request; data: string | TagRef; code: HttpCode = Http200;
     headers: HttpHeaders = newHttpHeaders(
-    [(&quot;Content-Type&quot;, &quot;text/html; charset=utf-8&quot;)])): untyped" href="happyx/ssr/server.html#answerHtml.t%2CRequest%2C%2CHttpCode%2CHttpHeaders">server: template answerHtml(req: Request; data: string | TagRef; code: HttpCode = Http200;
+    [(&quot;Content-Type&quot;, &quot;text/html;charset=utf-8&quot;)])): untyped" href="happyx/ssr/server.html#answerHtml.t%2CRequest%2C%2CHttpCode%2CHttpHeaders">server: template answerHtml(req: Request; data: string | TagRef; code: HttpCode = Http200;
     headers: HttpHeaders = newHttpHeaders(
-    [(&quot;Content-Type&quot;, &quot;text/html; charset=utf-8&quot;)])): untyped</a></li>
+    [(&quot;Content-Type&quot;, &quot;text/html;charset=utf-8&quot;)])): untyped</a></li>
           </ul></dd>
 <dt><a name="answerJson" href="#answerJson"><span>answerJson:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="server: template answerJson(req: Request; data: untyped; code: HttpCode = Http200; headers: HttpHeaders = newHttpHeaders(
-    [(&quot;Content-Type&quot;, &quot;application/json; charset=utf-8&quot;)])): untyped" href="happyx/ssr/server.html#answerJson.t%2CRequest%2Cuntyped%2CHttpCode%2CHttpHeaders">server: template answerJson(req: Request; data: untyped; code: HttpCode = Http200; headers: HttpHeaders = newHttpHeaders(
-    [(&quot;Content-Type&quot;, &quot;application/json; charset=utf-8&quot;)])): untyped</a></li>
+    [(&quot;Content-Type&quot;, &quot;application/json;charset=utf-8&quot;)])): untyped" href="happyx/ssr/server.html#answerJson.t%2CRequest%2Cuntyped%2CHttpCode%2CHttpHeaders">server: template answerJson(req: Request; data: untyped; code: HttpCode = Http200; headers: HttpHeaders = newHttpHeaders(
+    [(&quot;Content-Type&quot;, &quot;application/json;charset=utf-8&quot;)])): untyped</a></li>
           </ul></dd>
 <dt><a name="ApiDocObject" href="#ApiDocObject"><span>ApiDocObject:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -489,6 +491,10 @@
 <dt><a name="CORSObj" href="#CORSObj"><span>CORSObj:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="cors: object CORSObj" href="happyx/ssr/cors.html#CORSObj">cors: object CORSObj</a></li>
+          </ul></dd>
+<dt><a name="corsRegistered" href="#corsRegistered"><span>corsRegistered:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="cors: const corsRegistered" href="happyx/ssr/cors.html#corsRegistered">cors: const corsRegistered</a></li>
           </ul></dd>
 <dt><a name="createdComponentsList" href="#createdComponentsList"><span>createdComponentsList:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -1548,7 +1554,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2024-10-05 06:40:13 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2024-10-05 11:15:40 UTC</small>
       </div>
     </div>
   </div>
