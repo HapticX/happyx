@@ -66,6 +66,34 @@ jobs:
           github_token: ${{ secrets.github_token }}
           reporter: github-pr-review # Change reporter.
           src: 'src/*.nim'
+  built_in_server:
+    name: Test C via built-in server 🧪
+    needs: dependencies
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+    env:
+      TIMEOUT_EXIT_STATUS: 124
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.nimble
+            .nim_runtime
+          key: ${{ runner.os }}-nimble-v2-${{ hashFiles('*.nimble') }}
+      - name: Build C tests (Default HTTP Server) ⚡
+        run: |
+          export PATH=$PATH:$PWD/.nim_runtime/bin
+          cd tests
+          echo "###===--- Default for" $file "---===###"
+          for file in $(ls -v testc*.nim); do
+            echo "###===--- C Test for " $file " via stdlib ---===###"
+            nim c -d:debug --hints:off --warnings:off $file
+          done
+        shell: bash
   async_http_server:
     name: Test C via AsyncHttpServer 🧪
     needs: dependencies
@@ -91,7 +119,7 @@ jobs:
           echo "###===--- Default for" $file "---===###"
           for file in $(ls -v testc*.nim); do
             echo "###===--- C Test for " $file " via stdlib ---===###"
-            nim c -d:debug --hints:off --warnings:off $file
+            nim c -d:debug -d:stdserver --hints:off --warnings:off $file
           done
         shell: bash
   micro_async_http_server:
