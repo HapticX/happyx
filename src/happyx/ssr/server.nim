@@ -297,13 +297,31 @@ template answer*(
           headersArr &= cookie & "\r\n"
       if headersArr.len > 0:
         headersArr.delete(headersArr.len-2..headersArr.len-1)
-    when declared(statusCode):
-      when statusCode is int:
-        req.send(statusCode.HttpCode, $message, when useHeaders: headersArr else: defaultHeaders)
+    
+    when enableSafeRequests:
+      when declared(statusCode):
+        when statusCode is int:
+          req.send(statusCode.HttpCode, $message, when useHeaders: headersArr else: defaultHeaders)
+        else:
+          req.send(code, $message, when useHeaders: headersArr else: defaultHeaders)
       else:
         req.send(code, $message, when useHeaders: headersArr else: defaultHeaders)
     else:
-      req.send(code, $message, when useHeaders: headersArr else: defaultHeaders)
+      var data: string = "HTTP/1.1 "
+      when declared(statusCode):
+        when statusCode is int:
+          data &= $statusCode
+        else:
+          data &= $code
+      else:
+        data &= $code
+      when message is string:
+        data &= "\c\LContent-Length:" & $len(message)
+        data &= "\c\L" & (when useHeaders: headersArr else: defaultHeaders) & "\c\L\c\L" & message
+      else:
+        data &= "\c\LContent-Length:" & $len($message)
+        data &= "\c\L" & (when useHeaders: headersArr else: defaultHeaders) & "\c\L\c\L" & $message
+      req.unsafeSend(data)
   # HTTP BEAST
   elif enableHttpBeast:
     when useHeaders:
@@ -330,7 +348,7 @@ template answer*(
           let data = cookie.split(":", 1)
           h.add("Set-Cookie", data[1].strip())
     else:
-      let h = newHttpHeaders([("Content-Type", "text/plain; charset=utf-8")])
+      let h = newHttpHeaders([("Content-Type", "text/plain;charset=utf-8")])
     when declared(statusCode):
       when statusCode is int:
         await req.respond(statusCode.HttpCode, $message, h)
@@ -379,29 +397,63 @@ template answer*(
   when enableHttpx:
     var headersArr = ""
     for key, value in h.pairs():
-      headersArr &= key & ':' & value & "\r\n"
+      headersArr &= key & ':' & value & "\c\L"
     when declared(outCookies):
       for cookie in outCookies:
-        headersArr &= cookie & "\r\n"
+        headersArr &= cookie & "\c\L"
     if headersArr.len > 0:
       headersArr.delete(headersArr.len-2..headersArr.len-1)
     if contentLength.isSome:
       # useful for file answers
-      when declared(statusCode):
-        when statusCode is int:
-          req.send(statusCode.HttpCode, $message, contentLength, headersArr)
+      when enableSafeRequests:
+        when declared(statusCode):
+          when statusCode is int:
+            req.send(statusCode.HttpCode, $message, contentLength, headersArr)
+          else:
+            req.send(code, $message, contentLength, headersArr)
         else:
           req.send(code, $message, contentLength, headersArr)
       else:
-        req.send(code, $message, contentLength, headersArr)
+        var data: string = "HTTP/1.1 "
+        when declared(statusCode):
+          when statusCode is int:
+            data &= $statusCode
+          else:
+            data &= $code
+        else:
+          data &= $code
+        when message is string:
+          data &= "\c\LContent-Length:" & $contentLength.get()
+          data &= "\c\L" & headersArr & "\c\L\c\L" & message
+        else:
+          data &= "\c\LContent-Length:" & $contentLength.get()
+          data &= "\c\L" & headersArr & "\c\L\c\L" & $message
+        req.unsafeSend(data)
     else:
-      when declared(statusCode):
-        when statusCode is int:
-          req.send(statusCode.HttpCode, $message, headersArr)
+      when enableSafeRequests:
+        when declared(statusCode):
+          when statusCode is int:
+            req.send(statusCode.HttpCode, $message, headersArr)
+          else:
+            req.send(code, $message, headersArr)
         else:
           req.send(code, $message, headersArr)
       else:
-        req.send(code, $message, headersArr)
+        var data: string = "HTTP/1.1 "
+        when declared(statusCode):
+          when statusCode is int:
+            data &= $statusCode
+          else:
+            data &= $code
+        else:
+          data &= $code
+        when message is string:
+          data &= "\c\LContent-Length:" & $len(message)
+          data &= "\c\L" & headersArr & "\c\L\c\L" & message
+        else:
+          data &= "\c\LContent-Length:" & $len($message)
+          data &= "\c\L" & headersArr & "\c\L\c\L" & $message
+        req.unsafeSend(data)
   # HTTP BEAST
   elif enableHttpBeast:
     var headersArr = ""
@@ -440,7 +492,7 @@ when enableHttpBeast:
 
 
 template answerJson*(req: Request, data: untyped, code: HttpCode = Http200,
-                     headers: HttpHeaders = newHttpHeaders([("Content-Type", "application/json; charset=utf-8")])): untyped =
+                     headers: HttpHeaders = newHttpHeaders([("Content-Type", "application/json;charset=utf-8")])): untyped =
   ## Answers to request with json data
   ## 
   ## ⚠ `Low-level API` ⚠
@@ -461,7 +513,7 @@ template answerJson*(req: Request, data: untyped, code: HttpCode = Http200,
 
 
 template answerHtml*(req: Request, data: string | TagRef, code: HttpCode = Http200,
-                     headers: HttpHeaders = newHttpHeaders([("Content-Type", "text/html; charset=utf-8")])): untyped =
+                     headers: HttpHeaders = newHttpHeaders([("Content-Type", "text/html;charset=utf-8")])): untyped =
   ## Answers to request with HTML data
   ## 
   ## ⚠ `Low-level API` ⚠
