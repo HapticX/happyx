@@ -10,7 +10,7 @@
 </template>
 
 
-<script js>
+<script lang="js">
 console.log("Hello, world!");
 </script>
 
