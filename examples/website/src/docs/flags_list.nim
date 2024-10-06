@@ -24,9 +24,13 @@ proc FlagsList*(): TagRef =
           tTd: { translate"Description" }
           tTd: { translate"Flag" }
         tTr:
-          tTd: tA(href = "https://nim-lang.org/docs/asynchttpserver.html", target = "_blank"): tCode: "asynchttpserver"
-          tTd: { translate"This server is part of the standard Nim library. It is used by default." }
+          tTd: tCode: "core"
+          tTd: { translate"This server is used by default and is built on top of httpx." }
           tTd: ""
+        tTr:
+          tTd: tA(href = "https://nim-lang.org/docs/asynchttpserver.html", target = "_blank"): tCode: "asynchttpserver"
+          tTd: { translate"This server is part of the Nim standard library." }
+          tTd: tCode(class = "text-nowrap"): "-d:stdserver"
         tTr:
           tTd: tA(href = "https://github.com/philip-wernersbach/microasynchttpserver", target = "_blank"): tCode: "microasynchttpserver"
           tTd: { translate"A reduced version of the default server." }

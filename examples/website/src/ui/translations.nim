@@ -2324,12 +2324,18 @@ translatable:
     "zh" -> "标志"
     "fr" -> "Drapeau"
     "ko" -> "플래그"
-  "This server is part of the standard Nim library. It is used by default.":
-    "ru" -> "Этот сервер находится в стандартной библиотеке Nim. Используется по умолчанию."
-    "ja" -> "このサーバーはNimの標準ライブラリの一部です。デフォルトで使用されます。"
-    "zh" -> "此服务器是Nim标准库的一部分。默认情况下使用。"
-    "fr" -> "Ce serveur fait partie de la bibliothèque standard de Nim. Il est utilisé par défaut."
-    "ko" -> "이 서버는 Nim의 표준 라이브러리의 일부입니다. 기본적으로 사용됩니다."
+  "This server is used by default and is built on top of httpx.":
+    "ru" -> "Этот сервер используется по умолчанию и построен на основе httpx."
+    "ja" -> "このサーバーはデフォルトで使用され、httpxの上に構築されています。"
+    "zh" -> "此服务器默认使用，并基于httpx构建。"
+    "fr" -> "Ce serveur est utilisé par défaut et est construit sur httpx."
+    "ko" -> "이 서버는 기본적으로 사용되며 httpx를 기반으로 구축됩니다."
+  "This server is part of the Nim standard library.":
+    "ru" -> "Этот сервер является частью стандартной библиотеки Nim."
+    "ja" -> "このサーバーはNim標準ライブラリの一部です。"
+    "zh" -> "该服务器是Nim标准库的一部分。"
+    "fr" -> "Ce serveur fait partie de la bibliothèque standard Nim."
+    "ko" -> "이 서버는 Nim 표준 라이브러리의 일부입니다."
   "A fairly fast server that does not work on Windows.":
     "ru" -> "Довольно быстрый сервер, не работает на Windows."
     "ja" -> "かなり速いサーバーですが、Windowsでは動作しません。"

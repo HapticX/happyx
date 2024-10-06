@@ -1671,4 +1671,4 @@ macro importFuncComponent*(body: untyped): untyped =
     createdComponents[($componentName).toLower()] = newStmtList(
       newEmptyNode(), newEmptyNode(), newEmptyNode(), newEmptyNode(),
     )
-  echo result.toStrLit
+  # echo result.toStrLit

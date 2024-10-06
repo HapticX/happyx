@@ -179,7 +179,7 @@ proc SideBar*(isMobile: bool = false): TagRef =
         if isMobile:
           "flex-col xl:flex gap-12 lg:gap-8 xl:gap-4 px-2 h-full"
         else:
-          "flex-col hidden xl:flex gap-12 lg:gap-8 xl:gap-4 px-2 pt-8 h-full"
+          "flex-col hidden xl:flex gap-12 lg:gap-8 xl:gap-4 px-2 pt-8 overflow-y-auto max-h-[95vh]"
     ):
       if not isMobile:
         tP(class = "text-5xl lg:text-3xl xl:text-2xl font-bold text-center w-max"):
