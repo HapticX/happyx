@@ -10,14 +10,14 @@ import
 proc SsrBasics*(): TagRef =
   buildHtml:
     tDiv(class = "flex flex-col px-8 py-2 xl:h-fit gap-4"):
-      tH1: {translate"Server-side Applications Basics 🖥"}
+      tH1: { translate"Server-side Applications Basics 🖥" }
 
-      tP: {translate"This section will provide you with an overview of the core features and capabilities of SSR within HappyX web framework. SSR is a powerful technique that allows you to render web pages on the server-side before sending them to the client, resulting in improved performance and SEO optimization."}
+      tP: { translate"This section will provide you with an overview of the core features and capabilities of SSR within HappyX web framework. SSR is a powerful technique that allows you to render web pages on the server-side before sending them to the client, resulting in improved performance and SEO optimization." }
 
-      tP: {translate"HappyX server-side allows to use it from Nim, Python and NodeJS!"}
+      tP: { translate"HappyX server-side allows to use it from Nim, Python and NodeJS!" }
 
       if currentLanguage.val in ["Nim", "Python", "TypeScript", "JavaScript"]:
-        tP: {translate"Minimal example in any supported language seems like that:"}
+        tP: { translate"Minimal example in any supported language seems like that:" }
         
         CodeBlockGuide(@[
           ("Nim", "nim", nimSsrHelloWorldExample, cstring"nim_import_ssr", newPlayResult()),
@@ -26,9 +26,9 @@ proc SsrBasics*(): TagRef =
           ("TypeScript", "typescript", tsHelloWorldExample, cstring"ts_import", newPlayResult()),
         ])
       
-      tH2: {translate"Headers, Status Code And Cookies 📦"}
+      tH2: { translate"Headers, Status Code And Cookies 📦" }
       tP:
-        {translate"In any web framework you can work with status code, headers, cookies, etc. So HappyX give you it!"}
+        { translate"In any web framework you can work with status code, headers, cookies, etc. So HappyX give you it!"}
       
       CodeBlockGuide(@[
         ("Nim", "nim", nimSsrAdvancedHelloWorld, cstring"nim_advanced", newPlayResult()),
@@ -37,13 +37,26 @@ proc SsrBasics*(): TagRef =
         ("TypeScript", "typescript", tsSsrAdvancedHelloWorld, cstring"ts_advanced", newPlayResult()),
       ])
 
-      tH2: {translate"Helpful Routes 🔌"}
+      
+      if currentLanguage == "Nim":
+        tH2: { translate"Hidden variables 👀" }
+
+        tP:
+          { translate"There are a number of variables whose declaration is hidden from the user and depends on their usage." }
+        tP:
+          { translate"This means that as long as you don't use these variables, they don't exist in your program. This is all thanks to Nim's metaprogramming." }
+        tP:
+          { translate"Below is a complete list of hidden variables that you can use when writing an application." }
+        
+        CodeBlock(language = "nim", source = nimHiddenVariables, id = "hidden_variables_list")
+
+      tH2: { translate"Helpful Routes 🔌" }
       if currentLanguage == "Nim":
         tP:
-          {translate"HappyX has additional useful routes - setup, middleware, notfound, onException, and staticDir"}
+          { translate"HappyX has additional useful routes - setup, middleware, notfound, onException, and staticDir" }
       else:
         tP:
-          {translate"HappyX has additional helpful routes - middleware, notfound and static directories"}
+          { translate"HappyX has additional helpful routes - middleware, notfound and static directories" }
       
       CodeBlockGuide(@[
         ("Nim", "nim", nimSsrAdditionalRoutes, cstring"nim_additional_routes", newPlayResult()),

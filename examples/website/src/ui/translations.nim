@@ -2630,6 +2630,30 @@ translatable:
     "zh" -> "您可以使用 router.json 文件声明路由。以下是该文件的示例。"
     "fr" -> "Vous pouvez déclarer des routes à l'aide du fichier router.json. Examinons un exemple de ce fichier ci-dessous."
     "ko" -> "router.json 파일을 사용하여 경로를 선언할 수 있습니다. 아래에서 해당 파일의 예를 살펴보겠습니다."
+  "Hidden variables 👀":
+    "ru" -> "Скрытые переменные 👀"
+    "ja" -> "隠し変数 👀"
+    "zh" -> "隐藏变量 👀"
+    "fr" -> "Variables cachées 👀"
+    "ko" -> "숨겨진 변수 👀"
+  "There are a number of variables whose declaration is hidden from the user and depends on their usage.":
+    "ru" -> "Существует ряд переменных, объявление которых скрыто от пользователя и зависит от их использования."
+    "ja" -> "宣言がユーザーから隠されており、使用状況に応じて変わる変数がいくつかあります。"
+    "zh" -> "有许多变量的声明对用户是隐藏的，并且取决于它们的使用。"
+    "fr" -> "Il existe un certain nombre de variables dont la déclaration est cachée à l'utilisateur et dépend de leur utilisation."
+    "ko" -> "선언이 사용자에게 숨겨져 있으며 사용에 따라 달라지는 여러 변수가 있습니다."
+  "This means that as long as you don't use these variables, they don't exist in your program. This is all thanks to Nim's metaprogramming.":
+    "ru" -> "Это означает, что пока вы не используете эти переменные - их не существует в вашей программе. Все благодаря метапрограммированию Nim."
+    "ja" -> "これらの変数を使用しない限り、プログラムには存在しません。これはすべてNimのメタプログラミングのおかげです。"
+    "zh" -> "这意味着只要您不使用这些变量，它们就不存在于您的程序中。这一切都要归功于Nim的元编程。"
+    "fr" -> "Cela signifie que tant que vous n'utilisez pas ces variables, elles n'existent pas dans votre programme. Tout cela grâce à la métaprogrammation de Nim."
+    "ko" -> "이 변수들을 사용하지 않는 한, 프로그램에 존재하지 않는다는 것을 의미합니다. 이는 모두 Nim의 메타프로그래밍 덕분입니다."
+  "Below is a complete list of hidden variables that you can use when writing an application.":
+    "ru" -> "Ниже представлен полный список скрытых переменных, которые вы можете использовать при написании приложения."
+    "ja" -> "以下は、アプリケーションを作成する際に使用できる隠し変数の完全なリストです。"
+    "zh" -> "下面是您在编写应用程序时可以使用的隐藏变量的完整列表。"
+    "fr" -> "Voici une liste complète des variables cachées que vous pouvez utiliser lors de l'écriture d'une application."
+    "ko" -> "애플리케이션을 작성할 때 사용할 수 있는 숨겨진 변수의 전체 목록입니다."
 
 
 var spokenLang: cstring
