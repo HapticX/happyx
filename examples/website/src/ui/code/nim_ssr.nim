@@ -572,3 +572,28 @@ appRoutes "app":
       @click:
         counter += 1
 """
+  nimHiddenVariables* = """serve "127.0.0.1", 5000:
+    get "/":
+      # request
+      echo req  # Request
+      # URL path
+      echo urlPath  # string
+      # request method
+      echo reqMethod  # HttpMethod
+      # path queries
+      echo query  # StringTableRef
+      echo queryArr  # TableRef[string, seq[string]]
+      # Request cookies
+      echo inCookies  # StringTableRef
+      # Request headers
+      echo headers  # HttpHeaders
+
+      # Response status code
+      statusCode = 404
+      # Response headers
+      outHeaders = {
+        "X-Created-At": 0
+      }
+      # Response cookies
+      outCookies.add(setCookie("Hello", "world"))
+"""

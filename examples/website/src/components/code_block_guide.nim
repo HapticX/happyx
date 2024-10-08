@@ -51,10 +51,10 @@ component CodeBlockGuide:
         languages.add(self.sources.val[i].title)
     tPre(class = "relative"):
       tDiv(class = "flex relative ml-4 justify-center w-fit group rounded-t-md bg-[{BackgroundSecondary}] dark:bg-[{BackgroundSecondaryDark}]"):
-        tDiv(class = "px-4 rounded-t-md bg-[#0d1117] cursor-pointer select-none text-2xl lg:text-xl xl:text-base"):
+        tDiv(class = "px-4 rounded-t-md bg-[#0d1117] cursor-pointer select-none text-2xl lg:text-xl xl:text-base text-[{ForegroundDark}]"):
           {currentLanguage}
           {translate" [change]"}
-        tDiv(class = "absolute scale-0 drop-shadow-xl pb-12 lg:pb-2 -z-10 pt-1 rounded-md pointer-events-none -translate-y-full lg:-translate-y-1/3 opacity-0 group-hover:opacity-100 group-hover:scale-100 group-hover:-translate-y-full group-hover:pointer-events-auto group-hover:z-10 duration-300"):
+        tDiv(class = "absolute scale-0 drop-shadow-xl pb-12 lg:pb-2 -z-10 pt-1 rounded-md pointer-events-none -translate-y-full lg:-translate-y-1/3 opacity-0 group-hover:opacity-100 group-hover:scale-100 group-hover:-translate-y-full group-hover:pointer-events-auto group-hover:z-[9999] duration-300"):
           tDiv(class = "bg-[{Orange}] dark:bg-[{Yellow}] overflow-hidden py-6 lg:py-4 xl:py-2"):
             if haslanguage(self.CodeBlockGuide, "Nim"):
               LanguageChooser("Nim")
