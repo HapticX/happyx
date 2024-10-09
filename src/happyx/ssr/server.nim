@@ -1265,11 +1265,19 @@ macro routes*(server: Server, body: untyped = newStmtList()): untyped =
           )
     elif statement.kind in [nnkVarSection, nnkLetSection]:
       variables.add(statement)
-  
+
   let
-    immutableVars = newNimNode(nnkLetSection).add(
-      newIdentDefs(ident"urlPath", newEmptyNode(), path),
-    )
+    immutableVars =
+      when enableBuiltin:
+        newNimNode(nnkLetSection).add(
+          newNimNode(nnkVarTuple).add(
+            ident"urlPath", ident"queryRaw", newEmptyNode(), newCall("get", newCall("pathWithQueries", ident"req"))
+          )
+        )
+      else:
+        newNimNode(nnkLetSection).add(
+          newIdentDefs(ident"urlPath", newEmptyNode(), path),
+        )
     mutableVars = newNimNode(nnkVarSection)
 
   # immutable variables

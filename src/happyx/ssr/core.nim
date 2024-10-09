@@ -105,6 +105,36 @@ func parsePath*(data: string): Option[string] =
   else:
     return none(string)
 
+func parsePathWithQueries*(data: string): Option[(string, string)] =
+  ## Parses the request path from the specified data.
+  if unlikely(data.len == 0):
+    return
+
+  # Find the first ' '.
+  # We can actually start ahead a little here. Since we know
+  # the shortest HTTP method: 'GET'/'PUT'.
+  var i = 2
+  while data[i] notin {' ', '\0'}:
+    inc i
+
+  if likely(data[i] == ' '):
+    # Find the second ' '.
+    inc i # Skip first ' '.
+    let start = i
+    var q = -1
+    while data[i] notin {' ', '\0'}:
+      if data[i] == '?':
+        q = i
+      inc i
+
+    if likely(data[i] == ' '):
+      if q == -1:
+        return some((data[start..<i], ""))
+      else:
+        return some((data[start..<q], data[(q+1)..<i]))
+  else:
+    return none((string, string))
+
 func parseHeaders*(data: string): Option[HttpHeaders] =
   if unlikely(data.len == 0):
     return
@@ -673,6 +703,12 @@ proc path*(req: Request): Option[string] {.inline.} =
   if unlikely(req.client notin req.selector):
     return
   parsePath(req.selector.getData(req.client).data)
+
+proc pathWithQueries*(req: Request): Option[(string, string)] {.inline.} =
+  ## Parses the request's data to find the request target.
+  if unlikely(req.client notin req.selector):
+    return
+  parsePathWithQueries(req.selector.getData(req.client).data)
 
 proc headers*(req: Request): Option[HttpHeaders] =
   ## Parses the request's data to get the headers.
