@@ -130,8 +130,16 @@
   <li><a class="reference" href="#parsePath%2Cstring" title="parsePath(data: string): Option[string]">parsePath(data: string): Option[string]</a></li>
 
 </ul>
+<ul class="simple nested-toc-section">parsePathWithQueries
+  <li><a class="reference" href="#parsePathWithQueries%2Cstring" title="parsePathWithQueries(data: string): Option[(string, string)]">parsePathWithQueries(data: string): Option[(string, string)]</a></li>
+
+</ul>
 <ul class="simple nested-toc-section">path
   <li><a class="reference" href="#path%2CRequest" title="path(req: Request): Option[string]">path(req: Request): Option[string]</a></li>
+
+</ul>
+<ul class="simple nested-toc-section">pathWithQueries
+  <li><a class="reference" href="#pathWithQueries%2CRequest" title="pathWithQueries(req: Request): Option[(string, string)]">pathWithQueries(req: Request): Option[(string, string)]</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">run
@@ -397,10 +405,34 @@
 </div>
 
 </div>
+<div id="parsePathWithQueries-procs-all">
+  <div id="parsePathWithQueries,string">
+  <dt><pre><span class="Keyword">func</span> <a href="#parsePathWithQueries%2Cstring"><span class="Identifier">parsePathWithQueries</span></a><span class="Other">(</span><span class="Identifier">data</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Option</span><span class="Other">[</span><span class="Other">(</span><span class="Identifier">string</span><span class="Other">,</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">]</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+  <dd>
+    
+    Parses the request path from the specified data.
+    
+  </dd>
+</div>
+
+</div>
 <div id="path-procs-all">
   <div id="path,Request">
   <dt><pre><span class="Keyword">proc</span> <a href="#path%2CRequest"><span class="Identifier">path</span></a><span class="Other">(</span><span class="Identifier">req</span><span class="Other">:</span> <a href="core.html#Request"><span class="Identifier">Request</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Option</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">]</span> {.<span class="Identifier">inline</span><span class="Other">,</span> <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
     <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+  <dd>
+    
+    Parses the request's data to find the request target.
+    
+  </dd>
+</div>
+
+</div>
+<div id="pathWithQueries-procs-all">
+  <div id="pathWithQueries,Request">
+  <dt><pre><span class="Keyword">proc</span> <a href="#pathWithQueries%2CRequest"><span class="Identifier">pathWithQueries</span></a><span class="Other">(</span><span class="Identifier">req</span><span class="Other">:</span> <a href="core.html#Request"><span class="Identifier">Request</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Option</span><span class="Other">[</span><span class="Other">(</span><span class="Identifier">string</span><span class="Other">,</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">]</span> {.<span class="Identifier">inline</span><span class="Other">,</span>
+    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
     Parses the request's data to find the request target.
@@ -554,7 +586,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2024-10-08 15:45:12 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2024-10-09 12:50:50 UTC</small>
       </div>
     </div>
   </div>
