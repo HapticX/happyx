@@ -273,7 +273,7 @@ template answer*(
   const useHeaders = declared(outHeaders) or declared(outCookies) or corsRegistered.value > 0
   when useHeaders:
     var h = newHttpHeaders([
-      ("Content-Type", "text/plain; charset=utf-8")
+      ("Content-Type", "text/plain;charset=utf-8")
     ])
   when corsRegistered.value > 0:
     when exportJvm or exportPython or defined(napibuild):
@@ -579,7 +579,7 @@ proc answerFile*(req: Request, filename: string,
   var
     f = openAsync(filename, fmRead)
     h = @[
-      ("Content-Type", fmt"{contentType}; charset=utf-8"),
+      ("Content-Type", fmt"{contentType};charset=utf-8"),
       ("Last-Modified", $lastModified),
       ("Etag", etag),
     ]
