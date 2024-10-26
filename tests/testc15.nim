@@ -7,6 +7,8 @@ type
     lNim = "nim",
     lPython = "python",
     lJavaScript = "javascript"
+  OptionsEncoding* = enum
+      encodingA, encodingB
 
 
 model TestModel:
@@ -19,6 +21,12 @@ model UploadImage:
   y: int
   # FormDataItem will parsed only on Form-Data mode
   img: FormDataItem
+
+
+model DataProcessRequest: 
+  data: string = ""
+  storage: OptionsEncoding = encodingA
+  xtemplate: string = "" 
 
 
 mount Issue84:
@@ -66,3 +74,7 @@ serve "127.0.0.1", 5000:
   get "/language/$lang?:enum(Language)":
     ## lang is lNim by default
     return fmt"Hello from {lang}"
+  
+  get "/language/[m:DataProcessRequest]":
+    ## lang is lNim by default
+    return fmt"Hello from {m}"

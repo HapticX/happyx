@@ -227,7 +227,7 @@ macro modelImplementation*(modelName: untyped, body: typed): untyped =
             if typeImpl[2][i].len == 2:
               modelFields[$name].add(newStmtList(typeImpl[2][i][0].toStrLit, typeImpl[2][i][1]))
             else:
-              modelFields[$name].add(newStmtList(typeImpl[2][i][0].toStrLit, typeImpl[2][i][0].toStrLit))
+              modelFields[$name].add(newStmtList(typeImpl[2][i].toStrLit, typeImpl[2][i].toStrLit))
       if argStr.toLower() != "formdataitem":
         # JSON raw data
         asgnStmt.add(newNimNode(nnkIfStmt).add(
@@ -346,6 +346,18 @@ macro modelImplementation*(modelName: untyped, body: typed): untyped =
         postfix(argName, "*"), argType
       ))
       modelFields[$modelName].add(newStmtList(argName.toStrLit, argType.toStrLit))
+      let argStr = $argType.toStrLit
+      if argStr.toLower notin builtinTypes:
+        let typeImpl = argType.getTypeImpl()[1].getImpl
+        if typeImpl[2].kind == nnkEnumTy:
+          let name = typeImpl[0].toStrLit
+          modelFields[$name] = newStmtList()
+          modelFieldsGenerics[$name] = newLit(true)
+          for i in 1..<typeImpl[2].len:
+            if typeImpl[2][i].len == 2:
+              modelFields[$name].add(newStmtList(typeImpl[2][i][0].toStrLit, typeImpl[2][i][1]))
+            else:
+              modelFields[$name].add(newStmtList(typeImpl[2][i].toStrLit, typeImpl[2][i].toStrLit))
       if ($argType.toStrLit).toLower() != "formdataitem":
         # JSON raw data
         asgnStmt.add(newNimNode(nnkIfStmt).add(
