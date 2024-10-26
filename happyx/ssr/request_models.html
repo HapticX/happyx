@@ -62,7 +62,10 @@
   <details open>
     <summary><a class="reference reference-toplevel" href="#10" id="60">Consts</a></summary>
     <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#modelFields" title="modelFields = r&quot;HappyXModelFields&quot;">modelFields</a></li>
+      <li><a class="reference" href="#builtinTypes" title="builtinTypes = [&quot;char&quot;, &quot;byte&quot;, &quot;int8&quot;, &quot;int16&quot;, &quot;int32&quot;, &quot;int64&quot;, &quot;int&quot;,
+                &quot;float&quot;, &quot;float32&quot;, &quot;float64&quot;, &quot;string&quot;, &quot;formdataitem&quot;,
+                &quot;cdouble&quot;, &quot;cfloat&quot;, &quot;cint&quot;, &quot;cstring&quot;]">builtinTypes</a></li>
+<li><a class="reference" href="#modelFields" title="modelFields = r&quot;HappyXModelFields&quot;">modelFields</a></li>
 <li><a class="reference" href="#modelFieldsGenerics" title="modelFieldsGenerics = r&quot;HappyXModelFieldsGenerics&quot;">modelFieldsGenerics</a></li>
 
     </ul>
@@ -73,7 +76,23 @@
     <summary><a class="reference reference-toplevel" href="#17" id="67">Macros</a></summary>
     <ul class="simple simple-toc-section">
       <ul class="simple nested-toc-section">model
-  <li><a class="reference" href="#model.m%2Cuntyped%2Cuntyped" title="model(modelName, body: untyped): untyped">model(modelName, body: untyped): untyped</a></li>
+  <li><a class="reference" href="#model.m%2Cuntyped%2Cuntyped" title="model(name, body: untyped): untyped">model(name, body: untyped): untyped</a></li>
+
+</ul>
+<ul class="simple nested-toc-section">modelImplementation
+  <li><a class="reference" href="#modelImplementation.m%2Cuntyped%2Cstatic%5Bbool%5D%2Cstatic%5Bseq%5Bstring%5D%5D%2Cuntyped%2Cuntyped%2Ctyped" title="modelImplementation(modelName: untyped; enableOptions: static[bool];
+                    options: static[seq[string]];
+                    generics, genericsBracket: untyped; body: typed): untyped">modelImplementation(modelName: untyped; enableOptions: static[bool];
+                    options: static[seq[string]];
+                    generics, genericsBracket: untyped; body: typed): untyped</a></li>
+
+</ul>
+<ul class="simple nested-toc-section">modelImplementationUntyped
+  <li><a class="reference" href="#modelImplementationUntyped.m%2Cuntyped%2Cstatic%5Bbool%5D%2Cstatic%5Bseq%5Bstring%5D%5D%2Cuntyped%2Cuntyped%2Cuntyped" title="modelImplementationUntyped(modelName: untyped; enableOptions: static[bool];
+                           options: static[seq[string]];
+                           generics, genericsBracket: untyped; body: untyped): untyped">modelImplementationUntyped(modelName: untyped; enableOptions: static[bool];
+                           options: static[seq[string]];
+                           generics, genericsBracket: untyped; body: untyped): untyped</a></li>
 
 </ul>
 
@@ -150,7 +169,17 @@
 <div class="section" id="10">
   <h1><a class="toc-backref" href="#10">Consts</a></h1>
   <dl class="item">
-    <div id="modelFields">
+    <div id="builtinTypes">
+  <dt><pre><a href="request_models.html#builtinTypes"><span class="Identifier">builtinTypes</span></a> <span class="Other">=</span> <span class="Other">[</span><span class="StringLit">&quot;char&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;byte&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;int8&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;int16&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;int32&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;int64&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;int&quot;</span><span class="Other">,</span>
+                <span class="StringLit">&quot;float&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;float32&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;float64&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;string&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;formdataitem&quot;</span><span class="Other">,</span>
+                <span class="StringLit">&quot;cdouble&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;cfloat&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;cint&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;cstring&quot;</span><span class="Other">]</span></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+<div id="modelFields">
   <dt><pre><a href="request_models.html#modelFields"><span class="Identifier">modelFields</span></a> <span class="Other">=</span> <span class="StringLit">r&quot;HappyXModelFields&quot;</span></pre></dt>
   <dd>
     
@@ -174,7 +203,7 @@
   <dl class="item">
     <div id="model-macros-all">
   <div id="model.m,untyped,untyped">
-  <dt><pre><span class="Keyword">macro</span> <a href="#model.m%2Cuntyped%2Cuntyped"><span class="Identifier">model</span></a><span class="Other">(</span><span class="Identifier">modelName</span><span class="Other">,</span> <span class="Identifier">body</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
+  <dt><pre><span class="Keyword">macro</span> <a href="#model.m%2Cuntyped%2Cuntyped"><span class="Identifier">model</span></a><span class="Other">(</span><span class="Identifier">name</span><span class="Other">,</span> <span class="Identifier">body</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
   <dd>
     
     <p>Creates a new request body model</p>
@@ -211,6 +240,34 @@
 </div>
 
 </div>
+<div id="modelImplementation-macros-all">
+  <div id="modelImplementation.m,untyped,static[bool],static[seq[string]],untyped,untyped,typed">
+  <dt><pre><span class="Keyword">macro</span> <a href="#modelImplementation.m%2Cuntyped%2Cstatic%5Bbool%5D%2Cstatic%5Bseq%5Bstring%5D%5D%2Cuntyped%2Cuntyped%2Ctyped"><span class="Identifier">modelImplementation</span></a><span class="Other">(</span><span class="Identifier">modelName</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">;</span> <span class="Identifier">enableOptions</span><span class="Other">:</span> <span class="Identifier">static</span><span class="Other">[</span><span class="Identifier">bool</span><span class="Other">]</span><span class="Other">;</span>
+                          <span class="Identifier">options</span><span class="Other">:</span> <span class="Identifier">static</span><span class="Other">[</span><span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">]</span><span class="Other">]</span><span class="Other">;</span>
+                          <span class="Identifier">generics</span><span class="Other">,</span> <span class="Identifier">genericsBracket</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">;</span> <span class="Identifier">body</span><span class="Other">:</span> <span class="Identifier">typed</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+
+</div>
+<div id="modelImplementationUntyped-macros-all">
+  <div id="modelImplementationUntyped.m,untyped,static[bool],static[seq[string]],untyped,untyped,untyped">
+  <dt><pre><span class="Keyword">macro</span> <a href="#modelImplementationUntyped.m%2Cuntyped%2Cstatic%5Bbool%5D%2Cstatic%5Bseq%5Bstring%5D%5D%2Cuntyped%2Cuntyped%2Cuntyped"><span class="Identifier">modelImplementationUntyped</span></a><span class="Other">(</span><span class="Identifier">modelName</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">;</span>
+                                 <span class="Identifier">enableOptions</span><span class="Other">:</span> <span class="Identifier">static</span><span class="Other">[</span><span class="Identifier">bool</span><span class="Other">]</span><span class="Other">;</span>
+                                 <span class="Identifier">options</span><span class="Other">:</span> <span class="Identifier">static</span><span class="Other">[</span><span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">]</span><span class="Other">]</span><span class="Other">;</span>
+                                 <span class="Identifier">generics</span><span class="Other">,</span> <span class="Identifier">genericsBracket</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">;</span>
+                                 <span class="Identifier">body</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+
+</div>
 
   </dl>
 </div>
@@ -221,7 +278,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2024-10-09 12:50:52 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2024-10-26 11:14:20 UTC</small>
       </div>
     </div>
   </div>

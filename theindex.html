@@ -444,6 +444,10 @@
 <li><a class="reference external"
           data-doc-search-tag="style: macro buildStyle(body: untyped): untyped" href="happyx/sugar/style.html#buildStyle.m%2Cuntyped">style: macro buildStyle(body: untyped): untyped</a></li>
           </ul></dd>
+<dt><a name="builtinTypes" href="#builtinTypes"><span>builtinTypes:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="request_models: const builtinTypes" href="happyx/ssr/request_models.html#builtinTypes">request_models: const builtinTypes</a></li>
+          </ul></dd>
 <dt><a name="check_password" href="#check_password"><span>check_password:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="secure: proc check_password(source, hash): bool" href="happyx/core/secure.html#check_password%2C%2C">secure: proc check_password(source, hash): bool</a></li>
@@ -1058,7 +1062,7 @@
           </ul></dd>
 <dt><a name="model" href="#model"><span>model:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="request_models: macro model(modelName, body: untyped): untyped" href="happyx/ssr/request_models.html#model.m%2Cuntyped%2Cuntyped">request_models: macro model(modelName, body: untyped): untyped</a></li>
+          data-doc-search-tag="request_models: macro model(name, body: untyped): untyped" href="happyx/ssr/request_models.html#model.m%2Cuntyped%2Cuntyped">request_models: macro model(name, body: untyped): untyped</a></li>
           </ul></dd>
 <dt><a name="ModelBase" href="#ModelBase"><span>ModelBase:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -1072,6 +1076,22 @@
 <li><a class="reference external"
           data-doc-search-tag="request_models: const modelFieldsGenerics" href="happyx/ssr/request_models.html#modelFieldsGenerics">request_models: const modelFieldsGenerics</a></li>
           </ul></dd>
+<dt><a name="modelImplementation" href="#modelImplementation"><span>modelImplementation:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="request_models: macro modelImplementation(modelName: untyped; enableOptions: static[bool];
+                    options: static[seq[string]];
+                    generics, genericsBracket: untyped; body: typed): untyped" href="happyx/ssr/request_models.html#modelImplementation.m%2Cuntyped%2Cstatic%5Bbool%5D%2Cstatic%5Bseq%5Bstring%5D%5D%2Cuntyped%2Cuntyped%2Ctyped">request_models: macro modelImplementation(modelName: untyped; enableOptions: static[bool];
+                    options: static[seq[string]];
+                    generics, genericsBracket: untyped; body: typed): untyped</a></li>
+          </ul></dd>
+<dt><a name="modelImplementationUntyped" href="#modelImplementationUntyped"><span>modelImplementationUntyped:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="request_models: macro modelImplementationUntyped(modelName: untyped; enableOptions: static[bool];
+                           options: static[seq[string]];
+                           generics, genericsBracket: untyped; body: untyped): untyped" href="happyx/ssr/request_models.html#modelImplementationUntyped.m%2Cuntyped%2Cstatic%5Bbool%5D%2Cstatic%5Bseq%5Bstring%5D%5D%2Cuntyped%2Cuntyped%2Cuntyped">request_models: macro modelImplementationUntyped(modelName: untyped; enableOptions: static[bool];
+                           options: static[seq[string]];
+                           generics, genericsBracket: untyped; body: untyped): untyped</a></li>
+          </ul></dd>
 <dt><a name="mount" href="#mount"><span>mount:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="mounting: macro mount(mountName, body: untyped): untyped" href="happyx/routing/mounting.html#mount.m%2Cuntyped%2Cuntyped">mounting: macro mount(mountName, body: untyped): untyped</a></li>
@@ -1082,8 +1102,8 @@
           </ul></dd>
 <dt><a name="newApiDocObject" href="#newApiDocObject"><span>newApiDocObject:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="autodocs: proc newApiDocObject(httpMethod: seq[string]; description, path: string;
-                pathParams: seq[PathParamObj]; models: seq[RequestModelObj]): ApiDocObject" href="happyx/ssr/docs/autodocs.html#newApiDocObject%2Cseq%5Bstring%5D%2Cstring%2Cstring%2Cseq%5BPathParamObj%5D%2Cseq%5BRequestModelObj%5D">autodocs: proc newApiDocObject(httpMethod: seq[string]; description, path: string;
+          data-doc-search-tag="autodocs: proc newApiDocObject(httpMethod: seq[string]; description, src, path: string;
+                pathParams: seq[PathParamObj]; models: seq[RequestModelObj]): ApiDocObject" href="happyx/ssr/docs/autodocs.html#newApiDocObject%2Cseq%5Bstring%5D%2Cstring%2Cstring%2Cstring%2Cseq%5BPathParamObj%5D%2Cseq%5BRequestModelObj%5D">autodocs: proc newApiDocObject(httpMethod: seq[string]; description, src, path: string;
                 pathParams: seq[PathParamObj]; models: seq[RequestModelObj]): ApiDocObject</a></li>
           </ul></dd>
 <dt><a name="newCast" href="#newCast"><span>newCast:</span></a></dt><dd><ul class="simple">
@@ -1680,7 +1700,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2024-10-09 12:50:59 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2024-10-26 11:14:27 UTC</small>
       </div>
     </div>
   </div>

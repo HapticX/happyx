@@ -1,7 +1,10 @@
 nimTitle	request_models	happyx/ssr/request_models.html	module src/happyx/ssr/request_models		0
 nim	modelFields	happyx/ssr/request_models.html#modelFields	const modelFields		97
 nim	modelFieldsGenerics	happyx/ssr/request_models.html#modelFieldsGenerics	const modelFieldsGenerics		98
-nim	model	happyx/ssr/request_models.html#model.m,untyped,untyped	macro model(modelName, body: untyped): untyped		101
+nim	builtinTypes	happyx/ssr/request_models.html#builtinTypes	const builtinTypes		99
+nim	modelImplementation	happyx/ssr/request_models.html#modelImplementation.m,untyped,static[bool],static[seq[string]],untyped,untyped,typed	macro modelImplementation(modelName: untyped; enableOptions: static[bool];\n                    options: static[seq[string]];\n                    generics, genericsBracket: untyped; body: typed): untyped		460
+nim	modelImplementationUntyped	happyx/ssr/request_models.html#modelImplementationUntyped.m,untyped,static[bool],static[seq[string]],untyped,untyped,untyped	macro modelImplementationUntyped(modelName: untyped; enableOptions: static[bool];\n                           options: static[seq[string]];\n                           generics, genericsBracket: untyped; body: untyped): untyped		464
+nim	model	happyx/ssr/request_models.html#model.m,untyped,untyped	macro model(name, body: untyped): untyped		468
 heading	Example:	happyx/ssr/request_models.html#request-models-🔥-examplecolon	  Example:		0
 heading	Request Models 🔥	happyx/ssr/request_models.html#request-models-🔥	 Request Models 🔥		0
 heading	Example	happyx/ssr/request_models.html#request-models-🔥-example	  Example		0

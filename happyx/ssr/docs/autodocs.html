@@ -57,6 +57,7 @@
     <ul class="simple simple-toc-section">
       <li><a class="reference" href="#ApiDocObject" title="ApiDocObject = object
   description*: string
+  src*: string
   path*: string
   httpMethod*: seq[string]
   pathParams*: seq[PathParamObj]
@@ -86,8 +87,8 @@
 
 </ul>
 <ul class="simple nested-toc-section">newApiDocObject
-  <li><a class="reference" href="#newApiDocObject%2Cseq%5Bstring%5D%2Cstring%2Cstring%2Cseq%5BPathParamObj%5D%2Cseq%5BRequestModelObj%5D" title="newApiDocObject(httpMethod: seq[string]; description, path: string;
-                pathParams: seq[PathParamObj]; models: seq[RequestModelObj]): ApiDocObject">newApiDocObject(httpMethod: seq[string]; description, path: string;
+  <li><a class="reference" href="#newApiDocObject%2Cseq%5Bstring%5D%2Cstring%2Cstring%2Cstring%2Cseq%5BPathParamObj%5D%2Cseq%5BRequestModelObj%5D" title="newApiDocObject(httpMethod: seq[string]; description, src, path: string;
+                pathParams: seq[PathParamObj]; models: seq[RequestModelObj]): ApiDocObject">newApiDocObject(httpMethod: seq[string]; description, src, path: string;
                 pathParams: seq[PathParamObj]; models: seq[RequestModelObj]): ApiDocObject</a></li>
 
 </ul>
@@ -126,6 +127,7 @@
     <div id="ApiDocObject">
   <dt><pre><a href="autodocs.html#ApiDocObject"><span class="Identifier">ApiDocObject</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">description</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
+  <span class="Identifier">src</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
   <span class="Identifier">path</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
   <span class="Identifier">httpMethod</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">]</span>
   <span class="Identifier">pathParams</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="../../routing/routing.html#PathParamObj"><span class="Identifier">PathParamObj</span></a><span class="Other">]</span>
@@ -189,8 +191,8 @@
 
 </div>
 <div id="newApiDocObject-procs-all">
-  <div id="newApiDocObject,seq[string],string,string,seq[PathParamObj],seq[RequestModelObj]">
-  <dt><pre><span class="Keyword">proc</span> <a href="#newApiDocObject%2Cseq%5Bstring%5D%2Cstring%2Cstring%2Cseq%5BPathParamObj%5D%2Cseq%5BRequestModelObj%5D"><span class="Identifier">newApiDocObject</span></a><span class="Other">(</span><span class="Identifier">httpMethod</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">description</span><span class="Other">,</span> <span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span>
+  <div id="newApiDocObject,seq[string],string,string,string,seq[PathParamObj],seq[RequestModelObj]">
+  <dt><pre><span class="Keyword">proc</span> <a href="#newApiDocObject%2Cseq%5Bstring%5D%2Cstring%2Cstring%2Cstring%2Cseq%5BPathParamObj%5D%2Cseq%5BRequestModelObj%5D"><span class="Identifier">newApiDocObject</span></a><span class="Other">(</span><span class="Identifier">httpMethod</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">description</span><span class="Other">,</span> <span class="Identifier">src</span><span class="Other">,</span> <span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span>
                      <span class="Identifier">pathParams</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="../../routing/routing.html#PathParamObj"><span class="Identifier">PathParamObj</span></a><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">models</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="../../routing/routing.html#RequestModelObj"><span class="Identifier">RequestModelObj</span></a><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <a href="autodocs.html#ApiDocObject"><span class="Identifier">ApiDocObject</span></a> {.
     <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
@@ -233,7 +235,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2024-10-09 12:50:52 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2024-10-26 11:14:20 UTC</small>
       </div>
     </div>
   </div>

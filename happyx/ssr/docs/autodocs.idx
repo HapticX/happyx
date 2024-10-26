@@ -1,10 +1,10 @@
 nimTitle	autodocs	happyx/ssr/docs/autodocs.html	module src/happyx/ssr/docs/autodocs		0
 nim	ApiDocObject	happyx/ssr/docs/autodocs.html#ApiDocObject	object ApiDocObject		24
-nim	newApiDocObject	happyx/ssr/docs/autodocs.html#newApiDocObject,seq[string],string,string,seq[PathParamObj],seq[RequestModelObj]	proc newApiDocObject(httpMethod: seq[string]; description, path: string;\n                pathParams: seq[PathParamObj]; models: seq[RequestModelObj]): ApiDocObject		31
-nim	fetchPathParams	happyx/ssr/docs/autodocs.html#fetchPathParams,string	proc fetchPathParams(route: var string): tuple[pathParams, models: NimNode]		37
-nim	fetchModelFields	happyx/ssr/docs/autodocs.html#fetchModelFields	proc fetchModelFields(): NimNode		71
-nim	genApiDoc	happyx/ssr/docs/autodocs.html#genApiDoc,NimNode	proc genApiDoc(body: var NimNode): NimNode		88
-nim	procApiDocs	happyx/ssr/docs/autodocs.html#procApiDocs,NimNode	proc procApiDocs(docsData: NimNode): NimNode		150
-nim	happyxDocs	happyx/ssr/docs/autodocs.html#happyxDocs,NimNode	proc happyxDocs(docsData: NimNode): NimNode		239
-nim	openApiDocs	happyx/ssr/docs/autodocs.html#openApiDocs,NimNode	proc openApiDocs(docsData: NimNode): NimNode		246
+nim	newApiDocObject	happyx/ssr/docs/autodocs.html#newApiDocObject,seq[string],string,string,string,seq[PathParamObj],seq[RequestModelObj]	proc newApiDocObject(httpMethod: seq[string]; description, src, path: string;\n                pathParams: seq[PathParamObj]; models: seq[RequestModelObj]): ApiDocObject		32
+nim	fetchPathParams	happyx/ssr/docs/autodocs.html#fetchPathParams,string	proc fetchPathParams(route: var string): tuple[pathParams, models: NimNode]		38
+nim	fetchModelFields	happyx/ssr/docs/autodocs.html#fetchModelFields	proc fetchModelFields(): NimNode		76
+nim	genApiDoc	happyx/ssr/docs/autodocs.html#genApiDoc,NimNode	proc genApiDoc(body: var NimNode): NimNode		94
+nim	procApiDocs	happyx/ssr/docs/autodocs.html#procApiDocs,NimNode	proc procApiDocs(docsData: NimNode): NimNode		164
+nim	happyxDocs	happyx/ssr/docs/autodocs.html#happyxDocs,NimNode	proc happyxDocs(docsData: NimNode): NimNode		253
+nim	openApiDocs	happyx/ssr/docs/autodocs.html#openApiDocs,NimNode	proc openApiDocs(docsData: NimNode): NimNode		260
 heading	AutoDocs Module 🐥	happyx/ssr/docs/autodocs.html#autodocs-module-🐥	 AutoDocs Module 🐥		0
