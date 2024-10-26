@@ -99,93 +99,12 @@ const
   builtinTypes* = [
     "char", "byte", "int8", "int16", "int32", "int64", "int",
     "float", "float32", "float64", "string", "formdataitem",
+    "cdouble", "cfloat", "cint", "cstring"
   ]
 
 
-macro modelImplementation*(modelName: untyped, body: typed): untyped =
-  ## Creates a new request body model
-  ## 
-  ## Allow:
-  ## - [x] JSON
-  ## - [x] XML
-  ## - [x] Form-Data
-  ## - [x] x-www-form-urlencoded
-  ## 
-  ## ## Example:
-  ## 
-  ## Simple user model.
-  ## Supports all models (JSON, XML, Form-Data and x-www-form-urlencoded).
-  ## ```nim
-  ## model User:
-  ##   id: int
-  ##   username: string
-  ## ```
-  ## 
-  ## Simple user model.
-  ## Supports `JSON` and `XML`.
-  ## ```nim
-  ## model User{JSON, XML}:
-  ##   id: int
-  ##   username: string
-  ## ```
-  ## 
-  ## Simple user model with **generics**.
-  ## Supports all models (JSON, XML, Form-Data and x-www-form-urlencoded).
-  ## ```nim
-  ## model User[T]:
-  ##   id: T
-  ##   username: string
-  ## ```
-  ## 
-  ## Simple user model with **generics**.
-  ## Supports JSON and XML.
-  ## ```nim
-  ## model User{JSON, XML}[T]:
-  ##   id: T
-  ##   username: string
-  ## ```
-  ## 
-  var
-    options: seq[string] = @[]
-    enableOptions = false
-    modelName = modelName
-    generics = newNimNode(nnkGenericParams)
-    genericsBracket = modelName.copy()
-  # detect generics
-  if modelName.kind == nnkBracketExpr:
-    # get generics
-    var nextGenericParam = newNimNode(nnkIdentDefs)
-    genericsBracket = modelName.copy()
-    for i in 1..<modelName.len:
-      let node = modelName[i]
-      if node.kind == nnkIdent:
-        nextGenericParam.add(node)
-        if i < modelName.len-1:
-          continue
-        else:
-          nextGenericParam.add(newEmptyNode())
-      if node.kind == nnkExprColonExpr:
-        nextGenericParam.add(node[0], node[1])
-      nextGenericParam.add(newEmptyNode())
-      generics.add(nextGenericParam.copy())
-      nextGenericParam = newNimNode(nnkIdentDefs)
-    # detect options
-    if modelName[0].kind == nnkCurlyExpr:
-      genericsBracket[0] = genericsBracket[0][0]
-      enableOptions = true
-      for i in 1..<modelName[0].len:
-        options.add ($modelName[0][i].toStrLit).toLower()
-      modelName = modelName[0][0]
-    elif modelname[0].kind == nnkIdent:
-      modelName = modelName[0]
-  # detect options
-  elif modelName.kind == nnkCurlyExpr:
-    enableOptions = true
-    for i in 1..<modelName.len:
-      options.add ($modelName[i].toStrLit).toLower()
-    modelName = modelName[0]
-  if generics.len == 0:
-    generics = newEmptyNode()
+proc modelImpl(modelName: NimNode, enableOptions: bool, options: seq[string], generics, genericsBracket, body: NimNode): NimNode =
+  ## Low-level API model implementation
   if modelName.kind != nnkIdent:
     throwDefect(
       HpxModelSyntaxDefect,
@@ -217,7 +136,7 @@ macro modelImplementation*(modelName: untyped, body: typed): untyped =
       ))
       modelFields[$modelName].add(newStmtList(argName.toStrLit, argType.toStrLit, newLit(true)))
       let argStr = $argType.toStrLit
-      if argStr.toLower notin builtinTypes:
+      if argStr.toLower notin builtinTypes and argType.typeKind != ntyNone:
         let typeImpl = argType.getTypeImpl()[1].getImpl
         if typeImpl[2].kind == nnkEnumTy:
           let name = typeImpl[0].toStrLit
@@ -347,7 +266,7 @@ macro modelImplementation*(modelName: untyped, body: typed): untyped =
       ))
       modelFields[$modelName].add(newStmtList(argName.toStrLit, argType.toStrLit))
       let argStr = $argType.toStrLit
-      if argStr.toLower notin builtinTypes:
+      if argStr.toLower notin builtinTypes and argType.typeKind != ntyNone:
         let typeImpl = argType.getTypeImpl()[1].getImpl
         if typeImpl[2].kind == nnkEnumTy:
           let name = typeImpl[0].toStrLit
@@ -536,8 +455,107 @@ macro modelImplementation*(modelName: untyped, body: typed): untyped =
       quit(QuitSuccess)
 
 
+macro modelImplementation*(modelName: untyped, enableOptions: static[bool], options: static[seq[string]], generics, genericsBracket: untyped, body: typed): untyped =
+  modelImpl(modelName, enableOptions, options, generics, genericsBracket, body)
+
+
+macro modelImplementationUntyped*(modelName: untyped, enableOptions: static[bool], options: static[seq[string]], generics, genericsBracket: untyped, body: untyped): untyped =
+  modelImpl(modelName, enableOptions, options, generics, genericsBracket, body)
+
+
 macro model*(name, body: untyped): untyped =
-  result = newCall("modelImplementation", name, newNimNode(nnkTupleConstr))
+  ## Creates a new request body model
+  ## 
+  ## Allow:
+  ## - [x] JSON
+  ## - [x] XML
+  ## - [x] Form-Data
+  ## - [x] x-www-form-urlencoded
+  ## 
+  ## ## Example:
+  ## 
+  ## Simple user model.
+  ## Supports all models (JSON, XML, Form-Data and x-www-form-urlencoded).
+  ## ```nim
+  ## model User:
+  ##   id: int
+  ##   username: string
+  ## ```
+  ## 
+  ## Simple user model.
+  ## Supports `JSON` and `XML`.
+  ## ```nim
+  ## model User{JSON, XML}:
+  ##   id: int
+  ##   username: string
+  ## ```
+  ## 
+  ## Simple user model with **generics**.
+  ## Supports all models (JSON, XML, Form-Data and x-www-form-urlencoded).
+  ## ```nim
+  ## model User[T]:
+  ##   id: T
+  ##   username: string
+  ## ```
+  ## 
+  ## Simple user model with **generics**.
+  ## Supports JSON and XML.
+  ## ```nim
+  ## model User{JSON, XML}[T]:
+  ##   id: T
+  ##   username: string
+  ## ```
+  ## 
+  var
+    options: seq[string] = @[]
+    genericsNames: seq[string] = @[]
+    enableOptions = false
+    modelName = name
+    generics = newNimNode(nnkGenericParams)
+    genericsBracket = name.copy()
+  # detect generics
+  if modelName.kind == nnkBracketExpr:
+    # get generics
+    var nextGenericParam = newNimNode(nnkIdentDefs)
+    genericsBracket = modelName.copy()
+    for i in 1..<modelName.len:
+      let node = modelName[i]
+      if node.kind == nnkIdent:
+        nextGenericParam.add(node)
+        genericsNames.add($node)
+        if i < modelName.len-1:
+          continue
+        else:
+          nextGenericParam.add(newEmptyNode())
+      if node.kind == nnkExprColonExpr:
+        genericsNames.add($node[0])
+        nextGenericParam.add(node[0], node[1])
+      nextGenericParam.add(newEmptyNode())
+      generics.add(nextGenericParam.copy())
+      nextGenericParam = newNimNode(nnkIdentDefs)
+    # detect options
+    if modelName[0].kind == nnkCurlyExpr:
+      genericsBracket[0] = genericsBracket[0][0]
+      enableOptions = true
+      for i in 1..<modelName[0].len:
+        options.add ($modelName[0][i].toStrLit).toLower()
+      modelName = modelName[0][0]
+    elif modelname[0].kind == nnkIdent:
+      modelName = modelName[0]
+  # detect options
+  elif modelName.kind == nnkCurlyExpr:
+    enableOptions = true
+    for i in 1..<modelName.len:
+      options.add ($modelName[i].toStrLit).toLower()
+    modelName = modelName[0]
+  if generics.len == 0:
+    generics = newEmptyNode()
+  
+  result = newCall(
+    "modelImplementation",
+    modelName, newLit(enableOptions), newLit(options), generics, genericsBracket,
+    newNimNode(nnkTupleConstr)
+  )
   for i in body:
     if i.kind == nnkCall and i.len == 2 and i[1].kind == nnkStmtList and i[1].len == 1:
       if i[1][0].kind == nnkAsgn:
@@ -545,11 +563,16 @@ macro model*(name, body: untyped): untyped =
           newNimNode(nnkBracket).add(i[1][0][0]),
           newNimNode(nnkBracket).add(i[1][0][1])
         )))
+        if ($i[1][0][1].toStrLit) in genericsNames:
+          result[0] = ident"modelImplementationUntyped"
       else:
         result[^1].add(newNimNode(nnkExprColonExpr).add(i[0], newNimNode(nnkBracket).add(i[1][0])))
+        if ($i[1][0].toStrLit) in genericsNames:
+          result[0] = ident"modelImplementationUntyped"
       continue
     throwDefect(
       HpxModelSyntaxDefect,
       "Wrong model syntax: ",
       lineInfoObj(i)
     )
+  echo result.toStrLit
