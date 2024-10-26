@@ -96,9 +96,13 @@ when not declared(macrocache.hasKey):
 const
   modelFields* = CacheTable"HappyXModelFields"
   modelFieldsGenerics* = CacheTable"HappyXModelFieldsGenerics"
+  builtinTypes* = [
+    "char", "byte", "int8", "int16", "int32", "int64", "int",
+    "float", "float32", "float64", "string", "formdataitem",
+  ]
 
 
-macro model*(modelName, body: untyped): untyped =
+macro modelImplementation*(modelName: untyped, body: typed): untyped =
   ## Creates a new request body model
   ## 
   ## Allow:
@@ -203,240 +207,245 @@ macro model*(modelName, body: untyped): untyped =
     )
   modelFields[$modelName] = newStmtList()
   modelFieldsGenerics[$modelName] = newLit(generics.kind != nnkEmpty)
-  
   for i in body:
-    if i.kind == nnkCall and i.len == 2 and i[1].kind == nnkStmtList and i[1].len == 1:
-      let argName = i[0]
-      # arg: type
-      if i[1][0].kind != nnkAsgn:
-        let argType = i[1][0]
-        params.add(newIdentDefs(
-          postfix(argName, "*"), argType
+    let argName = i[0]
+    # arg: type
+    if i[1].len == 1:
+      let argType = i[1][0]
+      params.add(newIdentDefs(
+        postfix(argName, "*"), argType
+      ))
+      modelFields[$modelName].add(newStmtList(argName.toStrLit, argType.toStrLit, newLit(true)))
+      let argStr = $argType.toStrLit
+      if argStr.toLower notin builtinTypes:
+        let typeImpl = argType.getTypeImpl()[1].getImpl
+        if typeImpl[2].kind == nnkEnumTy:
+          let name = typeImpl[0].toStrLit
+          modelFields[$name] = newStmtList()
+          modelFieldsGenerics[$name] = newLit(true)
+          for i in 1..<typeImpl[2].len:
+            if typeImpl[2][i].len == 2:
+              modelFields[$name].add(newStmtList(typeImpl[2][i][0].toStrLit, typeImpl[2][i][1]))
+            else:
+              modelFields[$name].add(newStmtList(typeImpl[2][i][0].toStrLit, typeImpl[2][i][0].toStrLit))
+      if argStr.toLower() != "formdataitem":
+        # JSON raw data
+        asgnStmt.add(newNimNode(nnkIfStmt).add(
+          newNimNode(nnkElifBranch).add(
+            newCall("hasKey", ident"node", newLit($argName)),
+            newAssignment(
+              newDotExpr(ident"result", argName),
+              newCall("to", newCall("[]", ident"node", newLit($argName)), argType)
+            )
+          ), newNimNode(nnkElse).add(
+            newAssignment(
+              newDotExpr(ident"result", argName),
+              newCall("default", argType)
+            )
+          )
         ))
-        modelFields[$modelName].add(newStmtList(argName.toStrLit, argType.toStrLit))
-        if ($argType.toStrLit).toLower() != "formdataitem":
-          # JSON raw data
-          asgnStmt.add(newNimNode(nnkIfStmt).add(
-            newNimNode(nnkElifBranch).add(
-              newCall("hasKey", ident"node", newLit($argName)),
-              newAssignment(
-                newDotExpr(ident"result", argName),
-                newCall("to", newCall("[]", ident"node", newLit($argName)), argType)
-              )
-            ), newNimNode(nnkElse).add(
-              newAssignment(
-                newDotExpr(ident"result", argName),
+        # x-www-form-urlencode
+        asgnUrlencoded.add(newNimNode(nnkIfStmt).add(
+          newNimNode(nnkElifBranch).add(
+            newCall("hasKey", ident"dataTable", newLit($argName)),
+            newAssignment(
+              newDotExpr(ident"result", argName),
+              case ($argType.toStrLit).toLower()
+              of "int":
+                newCall("parseInt", newCall("[]", ident"dataTable", newLit($argName)))
+              of "float":
+                newCall("parseFloat", newCall("[]", ident"dataTable", newLit($argName)))
+              of "bool":
+                newCall("parseBool", newCall("[]", ident"dataTable", newLit($argName)))
+              of "string":
+                newCall("[]", ident"dataTable", newLit($argName))
+              else:
                 newCall("default", argType)
-              )
             )
-          ))
-          # x-www-form-urlencode
-          asgnUrlencoded.add(newNimNode(nnkIfStmt).add(
-            newNimNode(nnkElifBranch).add(
-              newCall("hasKey", ident"dataTable", newLit($argName)),
+          ), newNimNode(nnkElse).add(
+            newAssignment(
+              newDotExpr(ident"result", argName),
+              newCall("default", argType)
+            )
+          )
+        ))
+        # XML
+        asgnXml.add(newNimNode(nnkIfStmt).add(
+          newNimNode(nnkElifBranch).add(
+            newCall("hasKey", ident"xmlBody", newLit($argName)),
+            newNimNode(nnkTryStmt).add(
               newAssignment(
                 newDotExpr(ident"result", argName),
-                case ($argType.toStrLit).toLower()
-                of "int":
-                  newCall("parseInt", newCall("[]", ident"dataTable", newLit($argName)))
-                of "float":
-                  newCall("parseFloat", newCall("[]", ident"dataTable", newLit($argName)))
-                of "bool":
-                  newCall("parseBool", newCall("[]", ident"dataTable", newLit($argName)))
-                of "string":
-                  newCall("[]", ident"dataTable", newLit($argName))
-                else:
-                  newCall("default", argType)
-              )
-            ), newNimNode(nnkElse).add(
-              newAssignment(
-                newDotExpr(ident"result", argName),
-                newCall("default", argType)
-              )
-            )
-          ))
-          # XML
-          asgnXml.add(newNimNode(nnkIfStmt).add(
-            newNimNode(nnkElifBranch).add(
-              newCall("hasKey", ident"xmlBody", newLit($argName)),
-              newNimNode(nnkTryStmt).add(
-                newAssignment(
-                  newDotExpr(ident"result", argName),
-                  newCall("to", newCall("[]", ident"xmlBody", newLit($argName)), argType)
-                ), newNimNode(nnkExceptBranch).add(
-                  ident"JsonKindError",
-                  newStmtList(
-                      newCall(
-                        "error", newCall(
-                          "fmt", newLit(
-                            fmt"Couldn't parse XML model ({modelName}.{argName}: {argType.toStrLit}) - " & "{getCurrentExceptionMsg()}"))
-                      ),
-                  )
+                newCall("to", newCall("[]", ident"xmlBody", newLit($argName)), argType)
+              ), newNimNode(nnkExceptBranch).add(
+                ident"JsonKindError",
+                newStmtList(
+                    newCall(
+                      "error", newCall(
+                        "fmt", newLit(
+                          fmt"Couldn't parse XML model ({modelName}.{argName}: {argType.toStrLit}) - " & "{getCurrentExceptionMsg()}"))
+                    ),
                 )
               )
-            ), newNimNode(nnkElse).add(
-              newAssignment(
-                newDotExpr(ident"result", argName),
-                newCall("default", argType)
-              )
-            ))
-          )
-        # form-data
-        asgnFormData.add(
-          if ($argType.toStrLit).toLower() != "formdataitem":
-            newNimNode(nnkIfStmt).add(
-              newNimNode(nnkElifBranch).add(
-              newCall("hasKey", ident"dataTable", newLit($argName)),
-              newAssignment(
-                newDotExpr(ident"result", argName),
-                case ($argType.toStrLit).toLower()
-                of "int":
-                  newCall("parseInt", newCall("[]", ident"dataTable", newLit($argName)))
-                of "float":
-                  newCall("parseFloat", newCall("[]", ident"dataTable", newLit($argName)))
-                of "bool":
-                  newCall("parseBool", newCall("[]", ident"dataTable", newLit($argName)))
-                of "string":
-                  newCall("[]", ident"dataTable", newLit($argName))
-                else:
-                  newCall("default", argType)
-              )
-            ), newNimNode(nnkElse).add(
-              newAssignment(
-                newDotExpr(ident"result", argName),
-                newCall("default", argType)
-              )
-            ))
-          else:
-            newNimNode(nnkIfStmt).add(
-              newNimNode(nnkElifBranch).add(
-              newCall("hasKey", ident"dataTable", newLit($argName)),
-              newAssignment(
-                newDotExpr(ident"result", argName),
-                newCall("[]", ident"formDataItemsTable", newLit($argName))
-              )
-            ), newNimNode(nnkElse).add(
-              newAssignment(
-                newDotExpr(ident"result", argName),
-                newCall("default", argType)
-              )
-            ))
+            )
+          ), newNimNode(nnkElse).add(
+            newAssignment(
+              newDotExpr(ident"result", argName),
+              newCall("default", argType)
+            )
+          ))
         )
-        continue
-      # arg: type = default
-      else:
-        let
-          argType = i[1][0][0]
-          argDefault = i[1][0][1]
-        params.add(newIdentDefs(
-          postfix(argName, "*"), argType
-        ))
-        modelFields[$modelName].add(newStmtList(argName.toStrLit, argType.toStrLit))
+      # form-data
+      asgnFormData.add(
         if ($argType.toStrLit).toLower() != "formdataitem":
-          # JSON raw data
-          asgnStmt.add(newNimNode(nnkIfStmt).add(
+          newNimNode(nnkIfStmt).add(
             newNimNode(nnkElifBranch).add(
-              newCall("hasKey", ident"node", newLit($argName)),
-              newAssignment(
-                newDotExpr(ident"result", argName),
-                newCall("to", newCall("[]", ident"node", newLit($argName)), argType)
-              )
-            ), newNimNode(nnkElse).add(
-              newAssignment(
-                newDotExpr(ident"result", argName),
-                argDefault
-              )
+            newCall("hasKey", ident"dataTable", newLit($argName)),
+            newAssignment(
+              newDotExpr(ident"result", argName),
+              case ($argType.toStrLit).toLower()
+              of "int":
+                newCall("parseInt", newCall("[]", ident"dataTable", newLit($argName)))
+              of "float":
+                newCall("parseFloat", newCall("[]", ident"dataTable", newLit($argName)))
+              of "bool":
+                newCall("parseBool", newCall("[]", ident"dataTable", newLit($argName)))
+              of "string":
+                newCall("[]", ident"dataTable", newLit($argName))
+              else:
+                newCall("default", argType)
+            )
+          ), newNimNode(nnkElse).add(
+            newAssignment(
+              newDotExpr(ident"result", argName),
+              newCall("default", argType)
             )
           ))
-          # x-www-form-urlencode
-          asgnUrlencoded.add(newNimNode(nnkIfStmt).add(
+        else:
+          newNimNode(nnkIfStmt).add(
             newNimNode(nnkElifBranch).add(
-              newCall("hasKey", ident"dataTable", newLit($argName)),
-              newAssignment(
-                newDotExpr(ident"result", argName),
-                case ($argType.toStrLit).toLower()
-                of "int":
-                  newCall("parseInt", newCall("[]", ident"dataTable", newLit($argName)))
-                of "float":
-                  newCall("parseFloat", newCall("[]", ident"dataTable", newLit($argName)))
-                of "bool":
-                  newCall("parseBool", newCall("[]", ident"dataTable", newLit($argName)))
-                of "string":
-                  newCall("[]", ident"dataTable", newLit($argName))
-                else:
-                  newCall("default", argType)
-              )
-            ), newNimNode(nnkElse).add(
-              newAssignment(
-                newDotExpr(ident"result", argName),
-                argDefault
-              )
+            newCall("hasKey", ident"dataTable", newLit($argName)),
+            newAssignment(
+              newDotExpr(ident"result", argName),
+              newCall("[]", ident"formDataItemsTable", newLit($argName))
+            )
+          ), newNimNode(nnkElse).add(
+            newAssignment(
+              newDotExpr(ident"result", argName),
+              newCall("default", argType)
             )
           ))
-          # XML
-          asgnXml.add(newNimNode(nnkIfStmt).add(
-            newNimNode(nnkElifBranch).add(
-              newCall("hasKey", ident"xmlBody", newLit($argName)),
-              newNimNode(nnkTryStmt).add(
-                newAssignment(
-                  newDotExpr(ident"result", argName),
-                  newCall("to", newCall("[]", ident"xmlBody", newLit($argName)), argType)
-                ), newNimNode(nnkExceptBranch).add(
-                  ident"JsonKindError",
-                  newStmtList(
-                      newCall(
-                        "error", newCall(
-                          "fmt", newLit(
-                            fmt"Couldn't parse XML model ({modelName}.{argName}: {argType.toStrLit}) - " & "{getCurrentExceptionMsg()}"))
-                      ),
-                  )
+      )
+      continue
+    # arg: type = default
+    else:
+      let
+        argType = i[1][0][0]
+        argDefault = i[1][1][0]
+      params.add(newIdentDefs(
+        postfix(argName, "*"), argType
+      ))
+      modelFields[$modelName].add(newStmtList(argName.toStrLit, argType.toStrLit))
+      if ($argType.toStrLit).toLower() != "formdataitem":
+        # JSON raw data
+        asgnStmt.add(newNimNode(nnkIfStmt).add(
+          newNimNode(nnkElifBranch).add(
+            newCall("hasKey", ident"node", newLit($argName)),
+            newAssignment(
+              newDotExpr(ident"result", argName),
+              newCall("to", newCall("[]", ident"node", newLit($argName)), argType)
+            )
+          ), newNimNode(nnkElse).add(
+            newAssignment(
+              newDotExpr(ident"result", argName),
+              argDefault
+            )
+          )
+        ))
+        # x-www-form-urlencode
+        asgnUrlencoded.add(newNimNode(nnkIfStmt).add(
+          newNimNode(nnkElifBranch).add(
+            newCall("hasKey", ident"dataTable", newLit($argName)),
+            newAssignment(
+              newDotExpr(ident"result", argName),
+              case ($argType.toStrLit).toLower()
+              of "int":
+                newCall("parseInt", newCall("[]", ident"dataTable", newLit($argName)))
+              of "float":
+                newCall("parseFloat", newCall("[]", ident"dataTable", newLit($argName)))
+              of "bool":
+                newCall("parseBool", newCall("[]", ident"dataTable", newLit($argName)))
+              of "string":
+                newCall("[]", ident"dataTable", newLit($argName))
+              else:
+                newCall("default", argType)
+            )
+          ), newNimNode(nnkElse).add(
+            newAssignment(
+              newDotExpr(ident"result", argName),
+              argDefault
+            )
+          )
+        ))
+        # XML
+        asgnXml.add(newNimNode(nnkIfStmt).add(
+          newNimNode(nnkElifBranch).add(
+            newCall("hasKey", ident"xmlBody", newLit($argName)),
+            newNimNode(nnkTryStmt).add(
+              newAssignment(
+                newDotExpr(ident"result", argName),
+                newCall("to", newCall("[]", ident"xmlBody", newLit($argName)), argType)
+              ), newNimNode(nnkExceptBranch).add(
+                ident"JsonKindError",
+                newStmtList(
+                    newCall(
+                      "error", newCall(
+                        "fmt", newLit(
+                          fmt"Couldn't parse XML model ({modelName}.{argName}: {argType.toStrLit}) - " & "{getCurrentExceptionMsg()}"))
+                    ),
                 )
               )
-            ), newNimNode(nnkElse).add(
-              newAssignment(
-                newDotExpr(ident"result", argName),
-                argDefault
-              )
-            ))
-          )
-        # form-data
-        asgnFormData.add(
-          if ($argType.toStrLit).toLower() != "formdataitem":
-            newNimNode(nnkIfStmt).add(
-              newNimNode(nnkElifBranch).add(
-              newCall("hasKey", ident"dataTable", newLit($argName)),
-              newAssignment(
-                newDotExpr(ident"result", argName),
-                case ($argType).toLower()
-                of "int":
-                  newCall("parseInt", newCall("[]", ident"dataTable", newLit($argName)))
-                of "float":
-                  newCall("parseFloat", newCall("[]", ident"dataTable", newLit($argName)))
-                of "bool":
-                  newCall("parseBool", newCall("[]", ident"dataTable", newLit($argName)))
-                of "string":
-                  newCall("[]", ident"dataTable", newLit($argName))
-                else:
-                  newCall("default", argType)
-              )
-            ))
-          else:
-            newNimNode(nnkIfStmt).add(
-              newNimNode(nnkElifBranch).add(
-              newCall("hasKey", ident"dataTable", newLit($argName)),
-              newAssignment(
-                newDotExpr(ident"result", argName),
-                newCall("[]", ident"formDataItemsTable", newLit($argName))
-              )
-            ))
+            )
+          ), newNimNode(nnkElse).add(
+            newAssignment(
+              newDotExpr(ident"result", argName),
+              argDefault
+            )
+          ))
         )
-        continue
-    throwDefect(
-      HpxModelSyntaxDefect,
-      "Wrong model syntax: ",
-      lineInfoObj(i)
-    )
-  
+      # form-data
+      asgnFormData.add(
+        if ($argType.toStrLit).toLower() != "formdataitem":
+          newNimNode(nnkIfStmt).add(
+            newNimNode(nnkElifBranch).add(
+            newCall("hasKey", ident"dataTable", newLit($argName)),
+            newAssignment(
+              newDotExpr(ident"result", argName),
+              case ($argType).toLower()
+              of "int":
+                newCall("parseInt", newCall("[]", ident"dataTable", newLit($argName)))
+              of "float":
+                newCall("parseFloat", newCall("[]", ident"dataTable", newLit($argName)))
+              of "bool":
+                newCall("parseBool", newCall("[]", ident"dataTable", newLit($argName)))
+              of "string":
+                newCall("[]", ident"dataTable", newLit($argName))
+              else:
+                newCall("default", argType)
+            )
+          ))
+        else:
+          newNimNode(nnkIfStmt).add(
+            newNimNode(nnkElifBranch).add(
+            newCall("hasKey", ident"dataTable", newLit($argName)),
+            newAssignment(
+              newDotExpr(ident"result", argName),
+              newCall("[]", ident"formDataItemsTable", newLit($argName))
+            )
+          ))
+      )
+      continue
+
   result = newStmtList(
     newNimNode(nnkTypeSection).add(
       newNimNode(nnkTypeDef).add(
@@ -513,3 +522,22 @@ macro model*(modelName, body: untyped): untyped =
     echo result.toStrLit
     if reqModelDebugTarget == $modelName:
       quit(QuitSuccess)
+
+
+macro model*(name, body: untyped): untyped =
+  result = newCall("modelImplementation", name, newNimNode(nnkTupleConstr))
+  for i in body:
+    if i.kind == nnkCall and i.len == 2 and i[1].kind == nnkStmtList and i[1].len == 1:
+      if i[1][0].kind == nnkAsgn:
+        result[^1].add(newNimNode(nnkExprColonExpr).add(i[0], newNimNode(nnkTupleConstr).add(
+          newNimNode(nnkBracket).add(i[1][0][0]),
+          newNimNode(nnkBracket).add(i[1][0][1])
+        )))
+      else:
+        result[^1].add(newNimNode(nnkExprColonExpr).add(i[0], newNimNode(nnkBracket).add(i[1][0])))
+      continue
+    throwDefect(
+      HpxModelSyntaxDefect,
+      "Wrong model syntax: ",
+      lineInfoObj(i)
+    )

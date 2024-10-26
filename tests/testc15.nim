@@ -2,6 +2,16 @@ import
   ../src/happyx
 
 
+type
+  Language = enum
+    lNim = "nim",
+    lPython = "python",
+    lJavaScript = "javascript"
+
+
+model TestModel:
+  lang: Language
+
 model MyModel:
   x: int = 100
 
@@ -18,19 +28,18 @@ mount Issue84:
     "Bye world"
 
 
-type
-  Language = enum
-    lNim = "nim",
-    lPython = "python",
-    lJavaScript = "javascript"
-
-
 serve "127.0.0.1", 5000:
   mount "/issue84" -> Issue84
 
   post "/urlencoded/[m:MyModel:urlencoded]":
     echo m.x
     return {"response": m.x}
+  
+  get "/teststatuscodes/{i:int}":
+    if i mod 2 == 0:
+      statusCode = 403  ## i is not even
+      return i
+    return i
   
   post "/formData/[m:UploadImage:formdata]":
     # ⚠ In other request model modes field `img` will be not parsed
@@ -47,13 +56,13 @@ serve "127.0.0.1", 5000:
     return {"response": m.x}
   
   post "/xml/[m:MyModel:xml]":
-    # Body:
-    # <MyModel>
-    #   <x type="int">10000</x>
-    # </MyModel>
+    ## Body:
+    ## <MyModel>
+    ##   <x type="int">10000</x>
+    ## </MyModel>
     echo m.x
     return {"response": m.x}
   
   get "/language/$lang?:enum(Language)":
-    # lang is lNim by default
+    ## lang is lNim by default
     return fmt"Hello from {lang}"

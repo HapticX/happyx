@@ -144,10 +144,10 @@ const IndexApiDocPageTemplate* = fmt"""
                 />
               </svg>
             </div>
-            <div id="httpMethod_{{{{httpMethod}}}}" class="flex flex-col gap-6 lg:gap-4 xl:gap-2 h-fit transition-all duration-300">
+            <div id="httpMethod_{{{{httpMethod}}}}" class="flex flex-col gap-6 lg:gap-4 xl:gap-2 max-h-[1000vh] transition-all duration-300">
             {{% for req in data %}}
               <div class="flex flex-col w-fit border-[2px] border-[{Fore}]/25 dark:border-[{ForeDark}]/25 rounded-md">
-                <div class="flex p-1 bg-[{BackCode}] dark:bg-[{BackCodeDark}] font-mono px-4 py-1 rounded-md font-semibold">
+                <div class="flex p-1 bg-[{BackCode}] dark:bg-[{BackCodeDark}] font-mono px-4 py-1 rounded-t-md font-semibold">
                   <p class="flex mr-4 {AccentColor} cursor-pointer select-none">
                     {{% if req.httpMethod.len == 0 %}}
                       ANY  <!-- HTTP Method -->
@@ -190,7 +190,15 @@ const IndexApiDocPageTemplate* = fmt"""
                           %}}
                           <tr class="{{{{color}}}} py-1">
                             <td class="px-2">{{{{param.name}}}}</td>
-                            <td class="px-2 {AccentColor} font-mono">{{{{param.paramType}}}}</td>
+                            <td class="px-2 {AccentColor} font-mono">
+                              {{% if modelsData.hasKey(param.paramType.replace("enum::", "")) %}}
+                                <a href="#Model_{{{{ param.paramType.replace("enum::", "") }}}}">
+                                  {{{{ param.paramType.replace("enum::", "") }}}}
+                                </a>
+                              {{% else %}}
+                                {{{{ param.paramType.replace("enum::", "") }}}}
+                              {{% endif %}}
+                            </td>
                             <td class="px-2 {AccentColor} font-mono">{{{{param.defaultValue}}}}</td>
                             <td class="text-center align-middle px-2">
                               {{% if param.optional %}}✅{{% else %}}❌{{% endif %}}
@@ -275,7 +283,7 @@ const IndexApiDocPageTemplate* = fmt"""
               <div id="Model_{{{{ key }}}}" class="flex flex-col justify-between items-center px-4 py-2 rounded-md border-[2px] border-[{Fore}]/25 dark:border-[{ForeDark}]/25">
                 <p class="text-3xl lg:text-xl xl:text-lg font-semibold">{{{{ key }}}}</p>
                 {{% for field in fields.keys() %}}
-                  <div class="text-xl lg:text-lg xl:text-base flex gap-8 lg:gap-4 xl:gap-2 justify-between w-full">
+                  <div class="text-xl lg:text-lg xl:text-base flex gap-8 lg:gap-6 xl:gap-4 justify-between w-full">
                     <p>{{{{ field }}}}</p>
                     {{% if modelsData.hasKey(fields[field]) %}}
                       <p class="font-mono font-black {RequestModelColor}">
@@ -295,7 +303,7 @@ const IndexApiDocPageTemplate* = fmt"""
         <div class="w-48 h-48 py-12">&nbsp;</div>
       </div>
 
-      <div class="text-3xl lg:text-xl xl:text-base fixed bottom-0 flex flex-col justify-center items-center w-full bg-[{BackCode}] dark:bg-[{BackCodeDark}] py-8">
+      <div class="text-3xl lg:text-xl xl:text-base fixed bottom-0 flex flex-col justify-center items-center w-full bg-[{BackCode}] dark:bg-[{BackCodeDark}] py-6">
         <p>
           Made with 
           <a href="https://github.com/HapticX/happyx" class="{Link}">
@@ -305,6 +313,20 @@ const IndexApiDocPageTemplate* = fmt"""
       </div>
     </div>
     <script>
+      function removeHash() {{
+        var scrollV, scrollH, loc = window.location;
+        if (history.pushState)
+          history.pushState("", document.title, loc.pathname + loc.search);
+        else {{
+          // Prevent scrolling by storing the page's current scroll offset
+          scrollV = document.body.scrollTop;
+          scrollH = document.body.scrollLeft;
+          loc.hash = "";
+          // Restore the scroll offset, should be flicker free
+          document.body.scrollTop = scrollV;
+          document.body.scrollLeft = scrollH;
+        }}
+      }}
       function changeHash() {{// clean
         let elements = document.querySelectorAll("[id]");
         elements.forEach((e) => {{
@@ -315,6 +337,10 @@ const IndexApiDocPageTemplate* = fmt"""
         let elem = document.getElementById(id);
         if (elem) {{
           elem.classList.add("highlight-animation");
+          const _t = setTimeout(() => {{
+            removeHash();
+            clearTimeout(_t);
+          }}, 1000);
         }}
       }}
 
@@ -331,17 +357,17 @@ const IndexApiDocPageTemplate* = fmt"""
             // show
             arw.classList.remove("rotate-90");
             arw.classList.add("rotate-0");
-            section.classList.remove("h-0");
+            section.classList.remove("max-h-0");
             section.classList.remove("opacity-0");
-            section.classList.add("h-fit");
+            section.classList.add("max-h-[1000vh]");
             section.classList.add("opacity-100");
           }} else {{
             // hide
             arw.classList.remove("rotate-0");
             arw.classList.add("rotate-90");
-            section.classList.remove("h-fit");
+            section.classList.remove("max-h-[1000vh]");
             section.classList.remove("opacity-100");
-            section.classList.add("h-0");
+            section.classList.add("max-h-0");
             section.classList.add("opacity-0");
           }}
         }} else {{
@@ -349,9 +375,9 @@ const IndexApiDocPageTemplate* = fmt"""
           // hide
           arw.classList.remove("rotate-0");
           arw.classList.add("rotate-90");
-          section.classList.remove("h-fit");
+          section.classList.remove("max-h-[1000vh]");
           section.classList.remove("opacity-100");
-          section.classList.add("h-0");
+          section.classList.add("max-h-0");
           section.classList.add("opacity-0");
         }}
       }}
