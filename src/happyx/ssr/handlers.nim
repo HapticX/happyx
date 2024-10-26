@@ -17,6 +17,7 @@ when defined(napibuild):
           apiDocData.add(newApiDocObject(
             @["GET"],
             "Fetch file from directory: " & route.purePath,
+            "",
             routeData.path,
             routeData.pathParams,
             routeData.requestModels,
@@ -25,6 +26,7 @@ when defined(napibuild):
           apiDocData.add(newApiDocObject(
             route.httpMethod,
             route.docs,
+            "",
             routeData.path,
             routeData.pathParams,
             routeData.requestModels,

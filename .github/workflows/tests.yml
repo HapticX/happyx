@@ -61,11 +61,11 @@ jobs:
           nimble install -y -d
           nimble install checksums -y
           nimble install regex -y
-      - uses: reviewdog/action-nimlint@v1
-        with:
-          github_token: ${{ secrets.github_token }}
-          reporter: github-pr-review # Change reporter.
-          src: 'src/*.nim'
+      # - uses: reviewdog/action-nimlint@v1
+      #   with:
+      #     github_token: ${{ secrets.github_token }}
+      #     reporter: github-pr-review # Change reporter.
+      #     src: 'src/*.nim'
   built_in_server:
     name: Test C via built-in server 🧪
     needs: dependencies

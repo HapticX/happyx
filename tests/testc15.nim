@@ -2,6 +2,18 @@ import
   ../src/happyx
 
 
+type
+  Language = enum
+    lNim = "nim",
+    lPython = "python",
+    lJavaScript = "javascript"
+  OptionsEncoding* = enum
+      encodingA, encodingB
+
+
+model TestModel:
+  lang: Language
+
 model MyModel:
   x: int = 100
 
@@ -11,6 +23,12 @@ model UploadImage:
   img: FormDataItem
 
 
+model DataProcessRequest: 
+  data: string = ""
+  storage: OptionsEncoding = encodingA
+  xtemplate: string = "" 
+
+
 mount Issue84:
   get "/":
     "Hello, world!"
@@ -18,19 +36,36 @@ mount Issue84:
     "Bye world"
 
 
-type
-  Language = enum
-    lNim = "nim",
-    lPython = "python",
-    lJavaScript = "javascript"
-
-
 serve "127.0.0.1", 5000:
   mount "/issue84" -> Issue84
+
+  # on GET HTTP method at http://127.0.0.1:5000/
+  get "/":
+    {.gcsafe.}:
+      return %*{
+        "response": "success",
+        "msg": "These are not the droids, you're looking for."
+      }
+
+  post "/api/process[r:DataProcessRequest:json]":
+    {.gcsafe.}:
+      # Return plain text
+
+      # process data here
+
+      return %*{
+        "response": "success"
+      }
 
   post "/urlencoded/[m:MyModel:urlencoded]":
     echo m.x
     return {"response": m.x}
+  
+  get "/teststatuscodes/{i:int}":
+    if i mod 2 == 0:
+      statusCode = 403  ## i is not even
+      return i
+    return i
   
   post "/formData/[m:UploadImage:formdata]":
     # ⚠ In other request model modes field `img` will be not parsed
@@ -47,13 +82,13 @@ serve "127.0.0.1", 5000:
     return {"response": m.x}
   
   post "/xml/[m:MyModel:xml]":
-    # Body:
-    # <MyModel>
-    #   <x type="int">10000</x>
-    # </MyModel>
+    ## Body:
+    ## <MyModel>
+    ##   <x type="int">10000</x>
+    ## </MyModel>
     echo m.x
     return {"response": m.x}
   
   get "/language/$lang?:enum(Language)":
-    # lang is lNim by default
+    ## lang is lNim by default
     return fmt"Hello from {lang}"

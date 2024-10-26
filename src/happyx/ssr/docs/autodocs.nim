@@ -23,15 +23,16 @@ when nimvm:
 type
   ApiDocObject* = object
     description*: string
+    src*: string
     path*: string
     httpMethod*: seq[string]
     pathParams*: seq[PathParamObj]
     models*: seq[RequestModelObj]
   
-proc newApiDocObject*(httpMethod: seq[string], description, path: string, pathParams: seq[PathParamObj],
+proc newApiDocObject*(httpMethod: seq[string], description, src, path: string, pathParams: seq[PathParamObj],
                       models: seq[RequestModelObj]): ApiDocObject =
   ApiDocObject(httpMethod: httpMethod, description: description, path: path,
-                pathParams: pathParams, models: models)
+               src: src, pathParams: pathParams, models: models)
 
 
 proc fetchPathParams*(route: var string): tuple[pathParams, models: NimNode] =
@@ -63,6 +64,10 @@ proc fetchPathParams*(route: var string): tuple[pathParams, models: NimNode] =
     re2"\{([a-zA-Z][a-zA-Z0-9_]*)\??(:(bool|int|float|string|path|word|/[\s\S]+?/|enum\(\w+\)))?(\[m\])?(=(\S+?))?\}",
     "{$1}"
   )
+  route = route.replace(
+    re2"\$([a-zA-Z][a-zA-Z0-9_]*)\??(:(bool|int|float|string|path|word|/[\s\S]+?/|enum\(\w+\)))?(\[m\])?(=(\S+?))?",
+    "{$1}"
+  )
   route = route.replace(re2"\[([a-zA-Z][a-zA-Z0-9_]*):([a-zA-Z][a-zA-Z0-9_]*)(\[m\])?(:[a-zA-Z\\-]+)?\]", "")
 
   (newCall("@", params), newCall("@", models))
@@ -85,6 +90,7 @@ proc fetchModelFields*(): NimNode =
       ident"initTable", ident"string", ident"StringTableRef"
     ))
 
+
 proc genApiDoc*(body: var NimNode): NimNode =
   ## Returns API route
   var
@@ -97,15 +103,19 @@ proc genApiDoc*(body: var NimNode): NimNode =
         ## HTTP Method
         var
           description = ""
+          src: seq[string] = @[]
           pathParam = $i[1]
           (params, models) = fetchPathParams(pathParam)
         for statement in i[2]:
           if statement.kind == nnkCommentStmt:
             description &= $statement & "\n"
+          else:
+            src.add($statement.toStrLit)
         docsData.add(newCall(
           "newApiDocObject",
           newCall("@", bracket(newLit(($i[0].toStrLit).toUpper()))),  # HTTP Method
           newLit(description),  # Description
+          newLit(src.join("\n")),  # Source code
           newLit(pathParam),  # Path
           params, models
         ))
@@ -113,15 +123,19 @@ proc genApiDoc*(body: var NimNode): NimNode =
         ## HTTP Method
         var
           description = ""
+          src: seq[string] = @[]
           pathParam = $i[0]
           (params, models) = fetchPathParams(pathParam)
         for statement in i[1]:
           if statement.kind == nnkCommentStmt:
             description &= $statement & "\n"
+          else:
+            src.add($statement.toStrLit)
         docsData.add(newCall(
           "newApiDocObject",
           newCall("@", bracket(newLit"")),  # HTTP Method
           newLit(description),  # Description
+          newLit(src.join("\n")),  # Source code
           newLit(pathParam),  # Path
           params, models
         ))
@@ -251,7 +265,10 @@ proc openApiDocs*(docsData: NimNode): NimNode =
   for k, v in modelFields.pairs():
     let table = newNimNode(nnkTableConstr)
     for s in v.children:
-      table.add(newColonExpr(s[0], s[1]))
+      if s.len == 3:
+        table.add(newColonExpr(s[0], bracket(s[1], s[2])))
+      else:
+        table.add(newColonExpr(s[0], s[1]))
     modelsTable.add(
       newNimNode(nnkExprColonExpr).add(
         newLit(k), table
@@ -283,7 +300,7 @@ proc openApiDocs*(docsData: NimNode): NimNode =
         return parseFile("openapi.json")
       else:
         result = %*{
-          "openapi": "3.1.0",
+          "openapi": "3.1.1",
           "swagger": "2.0",
           "info": {"title": "HappyX OpenAPI Docs", "version": "1.0.0"},
           "paths": {},
@@ -307,10 +324,17 @@ proc openApiDocs*(docsData: NimNode): NimNode =
         for k, v in modelsData.pairs:
           var schema = %*{
             "type": "object",
+            "required": [],
             "properties": {}
           }
           for name, value in v.pairs:
-            let strValue = value.getStr
+            let strValue =
+              if value.kind == JArray:
+                value[0].getStr
+              else:
+                value.getStr
+            if value.kind == JArray:
+              schema["required"].add(%name)
             # atomic types
             case strValue
             of "int8", "int16", "int32":
@@ -346,8 +370,38 @@ proc openApiDocs*(docsData: NimNode): NimNode =
             "description": decscription,
             "parameters": [],
             "requestBody": {},
-            "responses": {}
+            "responses": {
+              "200": {
+                "description": "",
+                "content": {}
+              }
+            }
           }
+
+          for m in route.src.findAll(re2"\bstatusCode\b\s*=\s*(\d+)(\s*#+\s*([^\n]+))?"):
+            let
+              statusCode = route.src[m.group(0)]
+              description = route.src[m.group(2)]
+            if statusCode != "200":
+              pathData["responses"][statusCode] = %*{
+                "description": description,
+                "headers": {},
+                "content": {}
+              }
+
+          # echo route.srcd
+
+          # Params
+          for p in route.pathParams:
+            let param = %*{
+              "name": p.name,
+              "required": not p.optional,
+              "in": "path",
+              "schema": {
+                "type": p.paramType
+              }
+            }
+            pathData["parameters"].add(param)
           
           if route.description.find(
             re2"@openapi\s*\{((\s*\w+\s*[^\n]+|\s*@(params|responses)\s*\{[^\}]+?}\s*)+)\s*\}",
@@ -357,17 +411,6 @@ proc openApiDocs*(docsData: NimNode): NimNode =
             # Additional data
             for m in text.findAll(re2"(?m)^\s*(\w[\w\d_]*)\s*=\s*([^\n]+)$"):
               pathData[text[m.group(0)]] = %text[m.group(1)]
-            # Params
-            for p in route.pathParams:
-              let param = %*{
-                "name": p.name,
-                "required": not p.optional,
-                "in": "path",
-                "schema": {
-                  "type": p.paramType
-                }
-              }
-              pathData["parameters"].add(param)
 
             var paramMatches: RegexMatch2
             if text.find(re2"@params\s*{((\s*\w[\w\d]*\!?\s*(:\s*\w+)?[^\n]+)+)\s*}", paramMatches):
@@ -403,7 +446,7 @@ proc openApiDocs*(docsData: NimNode): NimNode =
                   pathData["parameters"].add(param)
           
           for m in route.models:
-            echo m
+            # echo m
             let schema = %*{
               "schema": {
                 "$ref": "#/components/schemas/" & m.typeName
@@ -414,20 +457,20 @@ proc openApiDocs*(docsData: NimNode): NimNode =
                 }
               }
             }
-            case m.target
-            of "JSON":
+            case m.target.toLower()
+            of "json":
               pathData["requestBody"]["content"] = %{
                 "application/json": schema
               }
-            of "XML":
+            of "xml":
               pathData["requestBody"]["content"] = %{
                 "application/xml": schema
               }
-            of "Form-Data":
+            of "formdata", "form-data":
               pathData["requestBody"]["content"] = %{
                 "multipart/form-data": schema
               }
-            of "x-www-form-urlencoded":
+            of "x-www-form-urlencoded", "urlencoded":
               pathData["requestBody"]["content"] = %{
                 "application/x-www-form-urlencoded": schema
               }
