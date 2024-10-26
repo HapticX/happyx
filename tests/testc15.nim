@@ -39,6 +39,24 @@ mount Issue84:
 serve "127.0.0.1", 5000:
   mount "/issue84" -> Issue84
 
+  # on GET HTTP method at http://127.0.0.1:5000/
+  get "/":
+    {.gcsafe.}:
+      return %*{
+        "response": "success",
+        "msg": "These are not the droids, you're looking for."
+      }
+
+  post "/api/process[r:DataProcessRequest:json]":
+    {.gcsafe.}:
+      # Return plain text
+
+      # process data here
+
+      return %*{
+        "response": "success"
+      }
+
   post "/urlencoded/[m:MyModel:urlencoded]":
     echo m.x
     return {"response": m.x}
@@ -74,7 +92,3 @@ serve "127.0.0.1", 5000:
   get "/language/$lang?:enum(Language)":
     ## lang is lNim by default
     return fmt"Hello from {lang}"
-  
-  get "/language/[m:DataProcessRequest]":
-    ## lang is lNim by default
-    return fmt"Hello from {m}"
