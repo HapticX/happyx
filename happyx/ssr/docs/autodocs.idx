@@ -5,6 +5,6 @@ nim	fetchPathParams	happyx/ssr/docs/autodocs.html#fetchPathParams,string	proc fe
 nim	fetchModelFields	happyx/ssr/docs/autodocs.html#fetchModelFields	proc fetchModelFields(): NimNode		76
 nim	genApiDoc	happyx/ssr/docs/autodocs.html#genApiDoc,NimNode	proc genApiDoc(body: var NimNode): NimNode		94
 nim	procApiDocs	happyx/ssr/docs/autodocs.html#procApiDocs,NimNode	proc procApiDocs(docsData: NimNode): NimNode		164
-nim	happyxDocs	happyx/ssr/docs/autodocs.html#happyxDocs,NimNode	proc happyxDocs(docsData: NimNode): NimNode		253
-nim	openApiDocs	happyx/ssr/docs/autodocs.html#openApiDocs,NimNode	proc openApiDocs(docsData: NimNode): NimNode		260
+nim	happyxDocs	happyx/ssr/docs/autodocs.html#happyxDocs,NimNode	proc happyxDocs(docsData: NimNode): NimNode		255
+nim	openApiDocs	happyx/ssr/docs/autodocs.html#openApiDocs,NimNode	proc openApiDocs(docsData: NimNode): NimNode		262
 heading	AutoDocs Module 🐥	happyx/ssr/docs/autodocs.html#autodocs-module-🐥	 AutoDocs Module 🐥		0
