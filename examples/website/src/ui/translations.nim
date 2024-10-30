@@ -2654,6 +2654,24 @@ translatable:
     "zh" -> "下面是您在编写应用程序时可以使用的隐藏变量的完整列表。"
     "fr" -> "Voici une liste complète des variables cachées que vous pouvez utiliser lors de l'écriture d'une application."
     "ko" -> "애플리케이션을 작성할 때 사용할 수 있는 숨겨진 변수의 전체 목록입니다."
+  "Websockets 🔌":
+    "ru" -> "Вебсокеты 🔌"
+    "ja" -> "Webソケット 🔌"
+    "zh" -> "Websockets 🔌"
+    "fr" -> "Websockets 🔌"
+    "ko" -> "웹소켓 🔌"
+  "Like other web frameworks, in HappyX you can use websockets. Below is an example of usage.":
+    "ru" -> "Как и остальные веб-фреймворке, в HappyX вы можете использовать вебсокеты. Ниже приведен пример использования."
+    "ja" -> "他のWebフレームワークと同様に、HappyXではWebソケットを使用できます。以下に使用例を示します。"
+    "zh" -> "与其他网络框架一样，在HappyX中您可以使用Websockets。下面是一个使用示例。"
+    "fr" -> "Comme dans les autres frameworks web, dans HappyX, vous pouvez utiliser des websockets. Voici un exemple d'utilisation."
+    "ko" -> "다른 웹 프레임워크와 마찬가지로 HappyX에서 웹소켓을 사용할 수 있습니다. 아래는 사용 예시입니다."
+  "In addition to the routes used above, websockets have other routes as well. Here is the complete list of all routes:":
+    "ru" -> "Помимо выше использованных маршрутов вебсокеты имеют и другие маршруты. Вот полный список всех маршрутов:"
+    "ja" -> "上記で使用したルートに加えて、Webソケットには他のルートもあります。すべてのルートの完全なリストは以下の通りです。"
+    "zh" -> "除了上述使用的路由外，Websockets还具有其他路由。以下是所有路由的完整列表："
+    "fr" -> "En plus des routes utilisées ci-dessus, les websockets ont d'autres routes. Voici la liste complète de toutes les routes :"
+    "ko" -> "위에서 사용한 경로 외에도 웹소켓에는 다른 경로가 있습니다. 모든 경로의 전체 목록은 다음과 같습니다:"
 
 
 var spokenLang: cstring

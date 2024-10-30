@@ -86,11 +86,16 @@ var
     "ssr_basics": {
       "title": "Server-side Applications Basics 🖥",
       "prev": "reactivity",
+      "next": "websockets"
+    },
+    "websockets": {
+      "title": "Websockets 🔌",
+      "prev": "ssr_basics",
       "next": "db_access"
     },
     "db_access": {
       "title": "Database access 📦",
-      "prev": "ssr_basics",
+      "prev": "websockets",
       "next": "sqlite"
     },
     "sqlite": {
@@ -179,7 +184,7 @@ proc SideBar*(isMobile: bool = false): TagRef =
         if isMobile:
           "flex-col xl:flex gap-12 lg:gap-8 xl:gap-4 px-2 h-full"
         else:
-          "flex-col hidden xl:flex gap-12 lg:gap-8 xl:gap-4 px-2 pt-8 overflow-y-auto max-h-[95vh]"
+          "flex-col hidden xl:flex gap-12 lg:gap-8 xl:gap-4 px-2 pt-8 overflow-y-auto max-h-[93vh]"
     ):
       if not isMobile:
         tP(class = "text-5xl lg:text-3xl xl:text-2xl font-bold text-center w-max"):
@@ -228,6 +233,8 @@ proc SideBar*(isMobile: bool = false): TagRef =
             SideBarFolder("ssr_basics", "Server-side Applications 🖥", isMobile):
               SideBarItem("ssr_basics", isMobile):
                 {translate"Server-side Applications Basics 🖥"}
+              SideBarItem("websockets", isMobile):
+                {translate"Websockets 🔌"}
               SideBarItem("db_access", isMobile):
                 {translate"Database access 📦"}
               SideBarItem("sqlite", isMobile):
