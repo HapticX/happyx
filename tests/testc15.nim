@@ -10,7 +10,6 @@ type
   OptionsEncoding* = enum
       encodingA, encodingB
 
-
 model TestModel:
   lang: Language
 
@@ -62,8 +61,11 @@ serve "127.0.0.1", 5000:
     return {"response": m.x}
   
   get "/teststatuscodes/{i:int}":
+    ## you can test here status codes
+    outHeaders["Server"] = "HappyX " & HpxVersion   ## Here just a server
     if i mod 2 == 0:
-      statusCode = 403  ## i is not even
+      outHeaders["Reason"] = "bye world"   ## 403: error reason
+      statusCode = 403   ## i is not even
       return i
     return i
   

@@ -204,6 +204,7 @@ proc procApiDocs*(docsData: NimNode): NimNode =
                     "newApiDocObject",
                     newCall("@", bracket(newLit"GET")),
                     ident"documentation",
+                    newLit"",
                     newDotExpr(ident"routeData", ident"path"),
                     newDotExpr(ident"routeData", ident"pathParams"),
                     newDotExpr(ident"routeData", ident"requestModels"),
@@ -225,6 +226,7 @@ proc procApiDocs*(docsData: NimNode): NimNode =
                   "newApiDocObject",
                   newDotExpr(ident"route", ident"httpMethod"),
                   ident"documentation",
+                  newLit"",
                   newDotExpr(ident"routeData", ident"path"),
                   newDotExpr(ident"routeData", ident"pathParams"),
                   newDotExpr(ident"routeData", ident"requestModels"),
@@ -373,11 +375,13 @@ proc openApiDocs*(docsData: NimNode): NimNode =
             "responses": {
               "200": {
                 "description": "",
-                "content": {}
+                "content": {},
+                "headers": {},
               }
             }
           }
 
+          # Parse all status codes
           for m in route.src.findAll(re2"\bstatusCode\b\s*=\s*(\d+)(\s*#+\s*([^\n]+))?"):
             let
               statusCode = route.src[m.group(0)]
@@ -387,6 +391,22 @@ proc openApiDocs*(docsData: NimNode): NimNode =
                 "description": description,
                 "headers": {},
                 "content": {}
+              }
+
+          # Parse all outHeaders
+          for m in route.src.findAll(re2"""\boutHeaders\b\["([^\"\]]+)"\]\s*=\s*(.*#+\s*((\d+):\s*)?([^\n]+))?"""):
+            let
+              header = route.src[m.group(0)]
+              statusCode = route.src[m.group(3)]
+              description = route.src[m.group(4)]
+            if statusCode == "" or statusCode notin pathData["responses"]:
+              for code in pathData["responses"].keys():
+                pathData["responses"][code]["headers"][header] = %*{
+                  "description": description
+                }
+            else:
+              pathData["responses"][statusCode]["headers"][header] = %*{
+                "description": description
               }
 
           # echo route.srcd

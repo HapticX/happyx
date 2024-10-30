@@ -597,3 +597,54 @@ appRoutes "app":
       # Response cookies
       outCookies.add(setCookie("Hello", "world"))
 """
+  nimSsrWebsockets* = """import happyx
+
+
+type
+  Msg* = object
+    text: string
+    fromId: int
+
+
+serve "127.0.0.1", 5123:
+  wsConnect:
+    echo "Connected"
+  
+  ws "/listen":
+    try:
+      # wsData uses to fetch data from websocket connection
+      let message = wsData.parseJson().to(Msg)
+
+      # wsConnections is list of all active websocket connections
+      for connection in wsConnections:
+        if connection.readyState == Open:
+          await connection.send $(%*{
+            "text": message.text,
+            "fromId": message.fromId
+          })
+    except JsonParsingError:
+      # wsClient is current active websocket connection
+      await wsClient.send "failure"
+"""
+  nimSsrWebsocketsRoutes* = """serve "127.0.0.1", 5000:
+  # client-server messaging
+  ws "/ws":
+    await wsClient.send("hello")
+
+  # used only when the websocket client is connected
+  wsConnect:
+    echo "New connection!"
+    await wsClient.send("You're welcome!")
+  
+  # used when the websocket client triggers a protocol mismatch
+  wsMismatchProtocol:
+    echo "mismatch protocol"
+  
+  # used when the websocket client is disconnected
+  wsClosed:
+    echo "connect is closed"
+  
+  # used in other cases of websocket errors
+  wsError:
+    echo "unknown WS error"
+"""
