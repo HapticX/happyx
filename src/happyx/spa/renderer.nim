@@ -113,7 +113,8 @@ else:
           inCycle: bool, cycleCounter: var int, compCounter: string
         ): TagRef
         slotData*: TagRef
-        created*: ComponentEventHandler  ## Calls before first rendering
+        beforeCreated*: ComponentEventHandler  ## Calls before first rendering
+        created*: ComponentEventHandler  ## Calls after first rendering
         exited*: ComponentEventHandler  ## Calls after last rendering
         rendered*: ComponentEventHandler  ## Calls after every rendering
         pageHide*: ComponentEventHandler  ## Calls after every rendering
