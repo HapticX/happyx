@@ -77,7 +77,8 @@ when defined(js):
           inCycle: bool, cycleCounter: var int, compCounter: string
         ): TagRef
         slotData*: TagRef
-        created*: ComponentEventHandler  ## Calls before first rendering
+        beforeCreated*: ComponentEventHandler  ## Calls before first rendering
+        created*: ComponentEventHandler  ## Calls after first rendering
         exited*: ComponentEventHandler  ## Calls after last rendering
         rendered*: ComponentEventHandler  ## Calls after every rendering
         pageHide*: ComponentEventHandler  ## Calls after every rendering
@@ -357,10 +358,16 @@ when defined(js):
           components.del(comp.uniqCompId)
         for comp in currentComponentsList.mitems:
           comp = registerComponent(comp.uniqCompId, comp)
+          if not comp.isCreated:
+            comp.created(comp)
+            comp.isCreated = true
           comp.updated(comp, nil)
         createdComponentsList.setLen(0)
       else:
         for comp in currentComponentsList:
+          if not comp.isCreated:
+            comp.created(comp)
+            comp.isCreated = true
           comp.updated(comp, nil)
       currentComponentsList.setLen(0)
     if activeElement.hasAttribute("id"):

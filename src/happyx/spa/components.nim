@@ -438,6 +438,7 @@ macro component*(name, body: untyped): untyped =
     ]
     usedLifeCycles = {
       "created": false,  # at created
+      "beforeCreated": false,  # at created
       "updated": false,  # at HTML render end
       "rendered": false,  # at render/reRender end
       "beforeUpdated": false,  # before render/reRender
@@ -825,11 +826,11 @@ macro component*(name, body: untyped): untyped =
     newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
       newCall("==", newDotExpr(ident"self", ident"isCreated"), newLit(false)),
       newStmtList(
-        newCall(newDotExpr(ident"self", ident"created"), ident"self"),
-        newAssignment(
-          newDotExpr(ident"self", ident"isCreated"),
-          newLit(true)
-        )
+        newCall(newDotExpr(ident"self", ident"beforeCreated"), ident"self"),
+        # newAssignment(
+        #   newDotExpr(ident"self", ident"isCreated"),
+        #   newLit(true)
+        # )
       )
     ))
   ).add(
