@@ -798,7 +798,14 @@ macro routes*(server: Server, body: untyped = newStmtList()): untyped =
     body.handleLiveViews()
 
   when enableHttpx or enableHttpBeast or enableBuiltin:
-    var path = newCall("decodeUrl", ident"urlPath")
+    var path =
+      when enableBuiltin:
+        newCall("decodeUrl", ident"urlPath")
+      else:
+        newCall("decodeUrl", newNimNode(nnkBracketExpr).add(
+          newCall("split", newCall("get", newCall("path", ident"req")), newLit('?')),
+          newLit(0)
+        ))
     let
       reqMethod = newCall("get", newDotExpr(ident"req", ident"httpMethod"))
       hostname = newDotExpr(ident"req", ident"ip")
