@@ -9,8 +9,8 @@ nim	answerHtml	happyx/ssr/server.html#answerHtml.t,Request,,HttpCode,HttpHeaders
 nim	send	happyx/ssr/server.html#send,Request,string_2	proc send(request: Request; content: string): Future[void]		548
 nim	answerFile	happyx/ssr/server.html#answerFile,Request,string,HttpCode,int,bool,CustomHeaders	proc answerFile(req: Request; filename: string; code: HttpCode = Http200;\n           asAttachment = false; bufSize: int = 40960;\n           forceResponse: bool = false;\n           headers: CustomHeaders = newCustomHeaders()): owned(Future[void])		558
 nim	routes	happyx/ssr/server.html#routes.m,Server,untyped	macro routes(server: Server; body: untyped = newStmtList()): untyped		698
-nim	initServer	happyx/ssr/server.html#initServer.m,untyped	macro initServer(body: untyped): untyped		1468
-nim	serve	happyx/ssr/server.html#serve.m,string,int,untyped	macro serve(address: string; port: int; body: untyped): untyped		1495
+nim	initServer	happyx/ssr/server.html#initServer.m,untyped	macro initServer(body: untyped): untyped		1476
+nim	serve	happyx/ssr/server.html#serve.m,string,int,untyped	macro serve(address: string; port: int; body: untyped): untyped		1503
 nimgrp	answer	happyx/ssr/server.html#answer-templates-all	template		252
 heading	Available Path Params	happyx/ssr/server.html#custom-static-directory-⚙-available-path-params	    Available Path Params		0
 heading	Available Route Types	happyx/ssr/server.html#custom-static-directory-⚙-available-route-types	    Available Route Types		0
