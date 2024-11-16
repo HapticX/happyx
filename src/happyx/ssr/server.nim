@@ -798,10 +798,7 @@ macro routes*(server: Server, body: untyped = newStmtList()): untyped =
     body.handleLiveViews()
 
   when enableHttpx or enableHttpBeast or enableBuiltin:
-    var path = newCall("decodeUrl", newNimNode(nnkBracketExpr).add(
-      newCall("split", newCall("get", newCall("path", ident"req")), newLit('?')),
-      newLit(0)
-    ))
+    var path = newCall("decodeUrl", ident"urlPath")
     let
       reqMethod = newCall("get", newDotExpr(ident"req", ident"httpMethod"))
       hostname = newDotExpr(ident"req", ident"ip")
@@ -812,17 +809,21 @@ macro routes*(server: Server, body: untyped = newStmtList()): untyped =
         ), newLit(0)
       )
       val = ident(fmt"_val")
-      url = newStmtList(
-        newLetStmt(val, newCall("split", newCall("get", newCall("path", ident"req")), newLit"?")),
-        newNimNode(nnkIfStmt).add(
-          newNimNode(nnkElifBranch).add(
-            newCall(">=", newCall("len", val), newLit(2)),
-            newNimNode(nnkBracketExpr).add(val, newLit(1))
-          ), newNimNode(nnkElse).add(
-            newLit("")
+      url =
+        when enableBuiltin:
+          ident"queryRaw"
+        else:
+          newStmtList(
+            newLetStmt(val, newCall("split", ident"urlPath", newLit"?")),
+            newNimNode(nnkIfStmt).add(
+              newNimNode(nnkElifBranch).add(
+                newCall(">=", newCall("len", val), newLit(2)),
+                newNimNode(nnkBracketExpr).add(val, newLit(1))
+              ), newNimNode(nnkElse).add(
+                newLit("")
+              )
+            )
           )
-        )
-      )
   else:
     var path = newCall("decodeUrl", newDotExpr(newDotExpr(ident"req", ident"url"), ident"path"))
     let
