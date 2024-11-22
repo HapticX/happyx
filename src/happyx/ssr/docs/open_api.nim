@@ -51,3 +51,18 @@ import ../../sugar/sgr
     })
   </script>
 </body></html>""")
+
+"/docs/scalar" -> get:
+  req.answerHtml("""<head>
+  <title>HappyX x Scalar</title>
+  <style>
+    body {
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <script id="api-reference" data-url="/docs/openapi.json"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@scalar/api-reference"></script>
+</body>
+""")
