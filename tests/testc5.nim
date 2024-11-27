@@ -27,3 +27,9 @@ serve("127.0.0.1", 5000):
       "age": myModel.age,
       "data": myModel.data
     }}
+  
+  get "/get":
+    echo query  # StringTableRef
+    echo urlPath  # string
+    echo query?id  # string
+    return query?id

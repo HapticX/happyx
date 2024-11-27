@@ -821,7 +821,7 @@ macro routes*(server: Server, body: untyped = newStmtList()): untyped =
           ident"queryRaw"
         else:
           newStmtList(
-            newLetStmt(val, newCall("split", ident"urlPath", newLit"?")),
+            newLetStmt(val, newCall("split", newCall("decodeUrl", newCall("get", newCall("path", ident"req"))), newLit"?")),
             newNimNode(nnkIfStmt).add(
               newNimNode(nnkElifBranch).add(
                 newCall(">=", newCall("len", val), newLit(2)),
