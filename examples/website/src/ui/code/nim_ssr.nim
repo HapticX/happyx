@@ -648,3 +648,26 @@ serve "127.0.0.1", 5123:
   wsError:
     echo "unknown WS error"
 """
+  nimAuthBasic* = """serve ... :
+  @AuthBasic
+  get "/test/basic-auth":
+    echo username  # from @AuthBasic
+    echo password  # from @AuthBasic
+    return "Hello, {username}!"
+"""
+  nimAuthJWT* = """serve ... :
+  # Authorization: JWT_TOKEN
+  @AuthJWT(token)
+  post "/test/jwt":
+    if token.hasKey("name"):
+      return "Hello, " & token["name"].node.str
+    return "who are you???"
+"""
+  nimAuthBearerJWT* = """serve ... :
+  # Authorization: Bearer JWT_TOKEN
+  @AuthBearerJWT(token)
+  post "/test/jwt":
+    if token.hasKey("name"):
+      return "Hello, " & token["name"].node.str
+    return "who are you???"
+"""

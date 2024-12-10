@@ -1,5 +1,6 @@
 import
-  ../src/happyx
+  ../src/happyx,
+  jwt
 
 
 var x = generate_password("secret")
@@ -101,3 +102,25 @@ serve "127.0.0.1", 5000:
   put "/post/$id:int":
     ## Edits a post
     return "Hello, world!"
+
+  @AuthBasic
+  post "/test/basic-auth":
+    echo username  # from @AuthBasic
+    echo password  # from @AuthBasic
+    return "Hello, {username}!"
+
+  # You should install jwt library (https://github.com/yglukhov/nim-jwt)
+  # to use these decorators
+  # Authorization: JWT_TOKEN
+  @AuthJWT(token)
+  post "/test/jwt":
+    if token.hasKey("name"):
+      return "Hello, " & token["name"].node.str
+    return "who are you???"
+
+  # Authorization: Bearer JWT_TOKEN
+  @AuthBearerJWT(token)
+  post "/test/jwt-bearer":
+    if token.hasKey("name"):
+      return "Hello, " & token["name"].node.str
+    return "who are you???"
