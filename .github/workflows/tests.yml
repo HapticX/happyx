@@ -61,7 +61,7 @@ jobs:
           nimble install -y -d
           nimble install checksums -y
           nimble install regex -y
-          nimble install https://github.com/yglukhov/nim-jwt -y
+          nimble install jwt -y
       # - uses: reviewdog/action-nimlint@v1
       #   with:
       #     github_token: ${{ secrets.github_token }}
