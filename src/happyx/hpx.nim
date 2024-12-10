@@ -30,7 +30,7 @@ proc flagsCommandAux(): int = flagsCommand()
 proc translateCsvCommandAux(filename: string, output: string = ""): int =
   translateCsvCommand(filename, output)
 proc devCommandAux(host: string = "127.0.0.1", port: int = 5000,
-                   reload: bool = false): int =
+                   reload: bool = false, browser: bool = false): int =
   devCommand(host, port, reload)
 proc createCommandAux(name: string = "", kind: string = "", templates: bool = false,
                       pathParams: bool = false, useTailwind: bool = false, language: string = ""): int =
