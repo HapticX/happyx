@@ -58,9 +58,9 @@ jobs:
       - name: Install Dependencies 🔃
         run: |
           nimble refresh
-          nimble install -y -d
           nimble install checksums -y
           nimble install regex -y
+          nimble install -y -d
       # - uses: reviewdog/action-nimlint@v1
       #   with:
       #     github_token: ${{ secrets.github_token }}
@@ -87,6 +87,7 @@ jobs:
       - name: Build C tests (Default HTTP Server) ⚡
         run: |
           export PATH=$PATH:$PWD/.nim_runtime/bin
+          nimble install jwt -y
           cd tests
           echo "###===--- Default for" $file "---===###"
           for file in $(ls -v testc*.nim); do
@@ -115,6 +116,7 @@ jobs:
       - name: Build C tests (Default HTTP Server) ⚡
         run: |
           export PATH=$PATH:$PWD/.nim_runtime/bin
+          nimble install jwt -y
           cd tests
           echo "###===--- Default for" $file "---===###"
           for file in $(ls -v testc*.nim); do
@@ -143,6 +145,7 @@ jobs:
       - name: Build C tests (MicroAsyncHttpServer) ⚡
         run: |
           export PATH=$PATH:$PWD/.nim_runtime/bin
+          nimble install jwt -y
           cd tests
           for file in $(ls -v testc*.nim); do
             echo "###===--- C Test for " $file " via MicroAsyncHttpServer ---===###"
@@ -170,6 +173,7 @@ jobs:
       - name: Build C tests (HttpX HTTP Server) ⚡
         run: |
           export PATH=$PATH:$PWD/.nim_runtime/bin
+          nimble install jwt -y
           cd tests
           for file in $(ls -v testc*.nim); do
             echo "###===--- C Test for " $file " via Httpx ---===###"
@@ -197,6 +201,7 @@ jobs:
       - name: Build C tests (HttpBeast HTTP Server) ⚡
         run: |
           export PATH=$PATH:$PWD/.nim_runtime/bin
+          nimble install jwt -y
           cd tests
           for file in $(ls -v testc*.nim); do
             echo "###===--- C Test for " $file " via HttpBeast ---===###"

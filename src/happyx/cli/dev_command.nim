@@ -9,7 +9,7 @@ import illwill except
 
 
 proc devCommand*(host: string = "127.0.0.1", port: int = 5000,
-                 reload: bool = false): int =
+                 reload: bool = false, browser: bool = false): int =
   ## Serve
   var
     project = compileProject()
@@ -38,7 +38,8 @@ proc devCommand*(host: string = "127.0.0.1", port: int = 5000,
       host = data[m.group(0)]
       port = data[m.group(1)]
     styledEcho "⚡ Server launched at ", fgGreen, styleUnderscore, "http://" & host & ":" & port, fgWhite
-    openDefaultBrowser("http://" & host & ":" & port & "/")
+    if browser:
+      openDefaultBrowser("http://" & host & ":" & port & "/")
     while true:
       styledEcho fgYellow, "if you want to quit from program, please input [q] char"
       if stdin.readChar() == 'q':

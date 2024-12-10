@@ -2672,6 +2672,30 @@ translatable:
     "zh" -> "除了上述使用的路由外，Websockets还具有其他路由。以下是所有路由的完整列表："
     "fr" -> "En plus des routes utilisées ci-dessus, les websockets ont d'autres routes. Voici la liste complète de toutes les routes :"
     "ko" -> "위에서 사용한 경로 외에도 웹소켓에는 다른 경로가 있습니다. 모든 경로의 전체 목록은 다음과 같습니다:"
+  "Decorators out of the box 📦":
+    "ru" -> "Декораторы из коробки 📦"
+    "ja" -> "すぐに使えるデコレーター 📦"
+    "zh" -> "开箱即用的装饰器 📦"
+    "fr" -> "Décorateurs prêts à l'emploi 📦"
+    "ko" -> "바로 사용할 수 있는 데코레이터 📦"
+  "Basic Auth looks like this:":
+    "ru" -> "Basic Auth выглядит следующим образом:"
+    "ja" -> "Basic認証は次のようになります："
+    "zh" -> "Basic Auth 看起来如下："
+    "fr" -> "L'authentification de base ressemble à ceci :"
+    "ko" -> "Basic Auth는 다음과 같이 보입니다:"
+  "Authorization: JWT TOKEN and Authorization: Bearer JWT TOKEN look like this:":
+    "ru" -> "Authorization: JWT TOKEN и Authorization: Bearer JWT TOKEN выглядят следующим образом:"
+    "ja" -> "Authorization: JWT TOKENおよびAuthorization: Bearer JWT TOKENは次のようになります："
+    "zh" -> "Authorization: JWT TOKEN 和 Authorization: Bearer JWT TOKEN 如下所示："
+    "fr" -> "Authorization: JWT TOKEN et Authorization: Bearer JWT TOKEN ressemblent à ceci :"
+    "ko" -> "Authorization: JWT TOKEN 및 Authorization: Bearer JWT TOKEN은 다음과 같이 보입니다:"
+  "To use JWT, you need to install the library":
+    "ru" -> "Для использования JWT необходимо установить библиотеку"
+    "ja" -> "JWTを使用するには、ライブラリをインストールする必要があります"
+    "zh" -> "要使用JWT，您需要安装库"
+    "fr" -> "Pour utiliser JWT, vous devez installer la bibliothèque"
+    "ko" -> "JWT를 사용하려면 라이브러리를 설치해야 합니다"
 
 
 var spokenLang: cstring

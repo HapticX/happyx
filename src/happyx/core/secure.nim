@@ -24,7 +24,7 @@ using
   ] | string
 
 
-proc generate_password*(source): MDigest[
+func generate_password*(source): MDigest[
     when cryptoMethod == "sha256":
       256
     elif cryptoMethod == "sha224":
@@ -44,7 +44,7 @@ proc generate_password*(source): MDigest[
     sha3_512.digest(source)
 
 
-proc check_password*(source, hash): bool =
+func check_password*(source, hash): bool =
   when cryptoMethod == "sha256":
     $sha3_256.digest(source) == $hash
   elif cryptoMethod == "sha384":

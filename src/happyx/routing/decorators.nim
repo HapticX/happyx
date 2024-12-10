@@ -34,6 +34,7 @@
 import
   std/macros,
   std/tables,
+  std/strformat,
   std/base64,
   ../core/constants
 
@@ -85,6 +86,34 @@ else:
     let decoded = base64.decode(code).split(":", 1)
     (decoded[0], decoded[1])"""
     )
+  
+
+  proc authBearerJwtDecoratorImpl(httpMethods: seq[string], routePath: string, statementList: NimNode, arguments: seq[NimNode]) =
+    let variableName = if arguments.len > 0: arguments[0] else: ident"jwtToken"
+    statementList.insert(0, parseStmt(fmt"""
+var {variableName}: TableRef[system.string, claims.Claim]
+if not headers.hasKey("Authorization"):
+  var statusCode = 401
+  return {{"response": "failure", "reason": "You should to be authorized!"}}
+else:
+  if headers["Authorization"].startsWith("Bearer "):
+    {variableName} = headers["Authorization"][7..^1].toJWT.claims
+  else:
+    var statusCode = 401
+    return {{"response": "failure", "reason": "You should to be authorized!"}}""")
+    )
+  
+
+  proc authJwtDecoratorImpl(httpMethods: seq[string], routePath: string, statementList: NimNode, arguments: seq[NimNode]) =
+    let variableName = if arguments.len > 0: arguments[0] else: ident"jwtToken"
+    statementList.insert(0, parseStmt(fmt"""
+var {variableName}: TableRef[system.string, claims.Claim]
+if not headers.hasKey("Authorization"):
+  var statusCode = 401
+  return {{"response": "failure", "reason": "You should to be authorized!"}}
+else:
+  {variableName} = headers["Authorization"].toJWT.claims""")
+    )
 
 
   proc getUserAgentDecoratorImpl(httpMethods: seq[string], routePath: string, statementList: NimNode, arguments: seq[NimNode]) =
@@ -96,4 +125,6 @@ var userAgent = navigator.userAgent
 
   static:
     regDecorator("AuthBasic", authBasicDecoratorImpl)
+    regDecorator("AuthBearerJWT", authBearerJwtDecoratorImpl)
+    regDecorator("AuthJWT", authJwtDecoratorImpl)
     regDecorator("GetUserAgent", getUserAgentDecoratorImpl)
