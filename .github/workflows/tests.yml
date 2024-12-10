@@ -58,10 +58,10 @@ jobs:
       - name: Install Dependencies 🔃
         run: |
           nimble refresh
-          nimble install -y -d
+          nimble install jwt -y
           nimble install checksums -y
           nimble install regex -y
-          nimble install jwt -y
+          nimble install -y -d
       # - uses: reviewdog/action-nimlint@v1
       #   with:
       #     github_token: ${{ secrets.github_token }}
