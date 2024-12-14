@@ -18,3 +18,6 @@ serve("127.0.0.1", 5000):
 
   "/fileTest":
     return FileResponse("testdir" / "dudvmap.png")
+
+  get "/$p:path":
+    return FileResponse(p)
