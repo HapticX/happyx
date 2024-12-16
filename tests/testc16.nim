@@ -1,4 +1,5 @@
 import
+  std/asyncdispatch,
   ../src/happyx,
   jwt
 
@@ -102,6 +103,23 @@ serve "127.0.0.1", 5000:
   put "/post/$id:int":
     ## Edits a post
     return "Hello, world!"
+  
+  @Cached  # Expires in 60 seconds by default
+  get "/cached/{i:int}":
+    await sleepAsync(1000)
+    if true:
+      if (query?test) == "hello":
+        return 100
+    echo query?one
+    return i
+  
+  @Cached(120)  # Expires in 60 seconds by default
+  get "/cached/{x}":
+    await sleepAsync(1000)
+    if query.hasKey("key"):
+      return query["key"]
+    await sleepAsync(1000)
+    return x
 
   @AuthBasic
   post "/test/basic-auth":

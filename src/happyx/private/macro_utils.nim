@@ -60,6 +60,26 @@ proc isIdentUsed*(body, name: NimNode): bool =
   false
 
 
+proc findAllUses*(body, name: NimNode, uses: var seq[NimNode]) =
+  ## Рекурсивно ищет все использования идентификатора `name` в дереве AST `body`.
+  for statement in body:
+    if body.kind in {nnkIdentDefs, nnkExprEqExpr, nnkExprColonExpr} and statement == body[0]:
+      continue
+    if body.kind == nnkDotExpr and statement == body[1] and statement != body[0]:
+      continue
+    if statement == name:
+      uses.add(body)  # Добавляем узел, где найдено использование
+    elif statement.kind notin AtomicNodes:
+      findAllUses(statement, name, uses)
+
+
+proc getIdentUses*(body, name: NimNode): seq[NimNode] =
+  ## Возвращает все использования идентификатора `name` в дереве AST `body`.
+  var uses: seq[NimNode] = @[]
+  findAllUses(body, name, uses)
+  return uses
+
+
 proc newCast*(fromType, toType: NimNode): NimNode =
   newNimNode(nnkCast).add(toType, fromType)
 
