@@ -290,19 +290,20 @@ template answer*(
       h[key] = val
   
   # Cache result
-  when declared(thisRouteCanBeCached) and declared(routeKey) and not declared(thisIsCachedResponse):
-    cachedRoutes[routeKey] = CachedRoute(create_at: cpuTime())
-    when message is string:
-      cachedRoutes[routeKey].res = CachedResult(data: message)
-    else:
-      cachedRoutes[routeKey].res = CachedResult(data: $message)
-    cachedRoutes[routeKey].res.statusCode = code
-    when useHeaders:
-      cachedRoutes[routeKey].res.headers = h
-    else:
-      cachedRoutes[routeKey].res.headers = newHttpHeaders([
-        ("Content-Type", "text/plain;charset=utf-8")
-      ])
+  when enableCachedRoutes:
+    when declared(thisRouteCanBeCached) and declared(routeKey) and not declared(thisIsCachedResponse):
+      cachedRoutes[routeKey] = CachedRoute(create_at: cpuTime())
+      when message is string:
+        cachedRoutes[routeKey].res = CachedResult(data: message)
+      else:
+        cachedRoutes[routeKey].res = CachedResult(data: $message)
+      cachedRoutes[routeKey].res.statusCode = code
+      when useHeaders:
+        cachedRoutes[routeKey].res.headers = h
+      else:
+        cachedRoutes[routeKey].res.headers = newHttpHeaders([
+          ("Content-Type", "text/plain;charset=utf-8")
+        ])
 
   # HTTPX
   when enableHttpx or enableBuiltin:
@@ -415,14 +416,15 @@ template answer*(
       h[key] = val
   
   # Cache result
-  when declared(thisRouteCanBeCached) and declared(routeKey) and not declared(thisIsCachedResponse):
-    cachedRoutes[routeKey] = CachedRoute(create_at: cpuTime())
-    when message is string:
-      cachedRoutes[routeKey].res = CachedResult(data: message)
-    else:
-      cachedRoutes[routeKey].res = CachedResult(data: $message)
-    cachedRoutes[routeKey].res.statusCode = code
-    cachedRoutes[routeKey].res.headers = h
+  when enableCachedRoutes:
+    when declared(thisRouteCanBeCached) and declared(routeKey) and not declared(thisIsCachedResponse):
+      cachedRoutes[routeKey] = CachedRoute(create_at: cpuTime())
+      when message is string:
+        cachedRoutes[routeKey].res = CachedResult(data: message)
+      else:
+        cachedRoutes[routeKey].res = CachedResult(data: $message)
+      cachedRoutes[routeKey].res.statusCode = code
+      cachedRoutes[routeKey].res.headers = h
   
   # HTTPX
   when enableHttpx or enableBuiltin:
