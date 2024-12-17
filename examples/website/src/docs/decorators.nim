@@ -30,6 +30,10 @@ proc Decorators*(): TagRef =
       CodeBlock("nim", nimAuthJWT, "auth_jwt")
       CodeBlock("nim", nimAuthBearerJWT, "auth_bearer_jwt")
 
+      tP: { translate"You can also use the @Cached decorator to cache the result of your routes." }
+      
+      CodeBlock("nim", nimCachedDecorator, "cached_decorator")
+
       Tip:
         tDiv(class = "flex gap-2"):
           tP: { translate"To use JWT, you need to install the library" }
