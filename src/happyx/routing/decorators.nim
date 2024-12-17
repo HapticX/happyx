@@ -148,45 +148,59 @@ var userAgent = navigator.userAgent
       purePath = route.purePath.replace('{', '_').replace('}', '_')
 
     let expiresIn =
-      if arguments.len == 1:
-        arguments[0]
+      if arguments.len == 1 and arguments[0].kind in {nnkIntLit, nnkInt16Lit, nnkInt32Lit, nnkInt64Lit, nnkInt8Lit}:
+        newLit(arguments[0].intVal.int)
+      elif arguments.len == 1 and arguments[0].kind == nnkExprEqExpr and arguments[0][0] == ident"expires":
+        if arguments[0][1].kind in {nnkIntLit, nnkInt16Lit, nnkInt32Lit, nnkInt64Lit, nnkInt8Lit}:
+          newLit(arguments[0][1].intVal.int)
+        else:
+          newLit(60)
       else:
         newLit(60)
     
-    var routeKey = fmt"{purePath}:pp("
+    var routeKey = fmt"{purePath}("
     for i in route.pathParams:
       routeKey &= i.name & "={" & i.name & "}"
+    for i in route.requestModels:
+      routeKey &= i.name & "={" & i.name & ".repr}"
     routeKey &= ")"
-    echo routeKey
 
-    let
-      queryStmt = newStmtList()
-      queryArrStmt = newStmtList()
+    let queryStmt = newStmtList()
+    var usedVariables: seq[NimNode] = @[]
 
-    if statementList.isIdentUsed(ident"query"):
-      var usages = statementList.getIdentUses(ident"query")
-      for i in usages:
-        if i.kind == nnkInfix and i[0] == ident"?" and i[1] == ident"query" and i[2].kind == nnkIdent:
-          queryStmt.add parseStmt(fmt"""routeKey &= "{i[2]}" & "=" & query.getOrDefault("{i[2]}", "")""")
-        elif i.kind == nnkBracketExpr and i[0] == ident"query" and i[1].kind == nnkStrLit:
-          queryStmt.add parseStmt(fmt"""routeKey &= "{i[1].strVal}" & "=" & query.getOrDefault("{i[1].strVal}", "")""")
-        elif i.kind == nnkBracketExpr and i[0] == ident"query":
-          queryStmt.add parseStmt(fmt"""routeKey &= {i[1].toStrLit} & "=" & query.getOrDefault({i[1].toStrLit}, "")""")
-        else:
-          discard
-          # echo i.treeRepr
-    if statementList.isIdentUsed(ident"queryArr"):
-      var usages = statementList.getIdentUses(ident"queryArr")
-      for i in usages:
-        if i.kind == nnkInfix and i[0] == ident"?" and i[1] == ident"queryArr" and i[2].kind == nnkIdent:
-          queryStmt.add parseStmt(fmt"""routeKey &= "{i[2]}" & "=" & $queryArr.getOrDefault("{i[2]}", "")""")
-        elif i.kind == nnkBracketExpr and i[0] == ident"queryArr" and i[1].kind == nnkStrLit:
-          queryStmt.add parseStmt(fmt"""routeKey &= "{i[1].strVal}" & "=" & $queryArr.getOrDefault("{i[1].strVal}", "")""")
-        elif i.kind == nnkBracketExpr and i[0] == ident"queryArr":
-          queryStmt.add parseStmt(fmt"""routeKey &= {i[1].toStrLit} & "=" & $queryArr.getOrDefault({i[1].toStrLit}, "")""")
-        else:
-          discard
-          # echo i.treeRepr
+    for identName in ["query", "queryArr"]:
+      let idnt = ident(identName)
+      if statementList.isIdentUsed(idnt):
+        var usages = statementList.getIdentUses(idnt)
+        for i in usages:
+          # query?KEY
+          if i.kind == nnkInfix and i[0] == ident"?" and i[1] == idnt and i[2].kind == nnkIdent:
+            if i[2] notin usedVariables:
+              queryStmt.add parseStmt(
+                fmt"""routeKey &= "{i[2]}" & "=" & {identName}.getOrDefault("{i[2]}", "")"""
+              )
+              usedVariables.add i[2]
+          # query["KEY"]
+          elif i.kind == nnkBracketExpr and i[0] == idnt and i[1].kind == nnkStrLit:
+            if i[1] notin usedVariables:
+              queryStmt.add parseStmt(
+                fmt"""routeKey &= "{i[1].strVal}" & "=" & {identName}.getOrDefault("{i[1].strVal}", "")"""
+              )
+              usedVariables.add i[1]
+          # query[KEY]
+          elif i.kind == nnkBracketExpr and i[0] == idnt:
+            if i[1] notin usedVariables:
+              queryStmt.add parseStmt(
+                fmt"""routeKey &= {i[1].toStrLit} & "=" & {identName}.getOrDefault({i[1].toStrLit}, "")"""
+              )
+              usedVariables.add i[1]
+          # hasKey(query, KEY)
+          elif i.kind == nnkCall and i[0] == ident"hasKey" and i[1] == idnt and i.len == 3:
+            if i[2] notin usedVariables:
+              queryStmt.add parseStmt(
+                fmt"""routeKey &= {i[2].toStrLit} & "=" & {identName}.getOrDefault({i[2].toStrLit}, "")"""
+              )
+              usedVariables.add i[2]
 
     let cachedRoutesResult = newNimNode(nnkDotExpr).add(
       newNimNode(nnkBracketExpr).add(ident"cachedRoutes", ident"routeKey"), ident"res"
@@ -198,7 +212,6 @@ var userAgent = navigator.userAgent
     statementList.insert(0, newStmtList(
       newVarStmt(ident"routeKey", newCall("fmt", newLit(fmt"{routeKey}"))),
       queryStmt,
-      queryArrStmt,
       newConstStmt(ident"thisRouteCanBeCached", newLit(true)),
       newNimNode(nnkIfStmt).add(newNimNode(nnkElifBranch).add(
         newCall("hasKey", ident"cachedRoutes", ident"routeKey"),

@@ -116,10 +116,15 @@ serve "127.0.0.1", 5000:
   @Cached(120)  # Expires in 60 seconds by default
   get "/cached/{x}":
     await sleepAsync(1000)
-    if query.hasKey("key"):
+    if hasKey(query, "key"):
       return query["key"]
     await sleepAsync(1000)
     return x
+  
+  @Cached(expires = 120)  # Expires in 60 seconds by default
+  post "/cached/[m:TestModel]":
+    await sleepAsync(1000)
+    return m.username
 
   @AuthBasic
   post "/test/basic-auth":
