@@ -2702,6 +2702,12 @@ translatable:
     "zh" -> "您还可以使用@Cached装饰器来缓存您的路由结果。"
     "fr" -> "Vous pouvez également utiliser le décorateur @Cached pour mettre en cache le résultat de vos routes."
     "ko" -> "@Cached 데코레이터를 사용하여 경로의 결과를 캐시할 수도 있습니다."
+  "And many other people, thanks to whom HappyX continues to develop to this day! ❤":
+    "ru" -> "И многие другие люди, благодаря которым HappyX развивается по сей день! ❤"
+    "ja" -> "そして、HappyXが今日まで発展し続けているのは、他にも多くの人々のおかげです！ ❤"
+    "zh" -> "还有许多其他人，多亏了他们，HappyX得以发展至今！❤"
+    "fr" -> "Et de nombreuses autres personnes, grâce auxquelles HappyX continue de se développer jusqu'à ce jour ! ❤"
+    "ko" -> "그리고 HappyX가 오늘날까지 발전할 수 있었던 것은 많은 다른 사람들 덕분입니다! ❤"
 
 
 var spokenLang: cstring

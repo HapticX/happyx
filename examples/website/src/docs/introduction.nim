@@ -185,6 +185,14 @@ component Introduction:
             Contributor("svbalogh", "https://github.com/svbalogh", "https://avatars.githubusercontent.com/u/46842029?v=4")
             Contributor("MelonCodeUK", "https://github.com/MelonCodeUK", "https://avatars.githubusercontent.com/u/138726110?v=4")
             Contributor("baseplate-admin", "https://github.com/baseplate-admin", "https://avatars.githubusercontent.com/u/61817579?v=4")
+            Contributor("Yakumo-Yukari", "https://github.com/Yakumo-Yukari", "https://avatars.githubusercontent.com/u/12076232?v=4")
+            Contributor("Daniel Obiorah", "https://github.com/Beetroit", "https://avatars.githubusercontent.com/u/87917539?v=4")
+            Contributor("Basil Ajith", "https://github.com/bsljth", "https://avatars.githubusercontent.com/u/67640495?v=4")
+            Contributor("AxelRHD", "https://github.com/AxelRHD", "https://avatars.githubusercontent.com/u/16512322?v=4")
+
+          tP:
+            { translate"And many other people, thanks to whom HappyX continues to develop to this day! ❤" }  
+          
           tP(class = "text-base lg:text-sm xl:text-xs pt-4"):
             "* "
-            {translate"This includes all members of the HappyX community who have contributed to its development (issues and pull requests)"}
+            { translate"This includes all members of the HappyX community who have contributed to its development (issues and pull requests)" }
