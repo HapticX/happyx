@@ -65,6 +65,7 @@ import
   std/macros,
   std/tables,
   std/colors,
+  std/times,
   std/json,
   std/os,
   checksums/md5,
@@ -99,6 +100,7 @@ export
   logging,
   cookies,
   colors,
+  times,
   utils,
   json,
   os,
@@ -286,6 +288,23 @@ template answer*(
   when declared(outHeaders):
     for key, val in outHeaders.pairs():
       h[key] = val
+  
+  # Cache result
+  when enableCachedRoutes:
+    when declared(thisRouteCanBeCached) and declared(routeKey) and not declared(thisIsCachedResponse):
+      cachedRoutes[routeKey] = CachedRoute(create_at: cpuTime())
+      when message is string:
+        cachedRoutes[routeKey].res = CachedResult(data: message)
+      else:
+        cachedRoutes[routeKey].res = CachedResult(data: $message)
+      cachedRoutes[routeKey].res.statusCode = code
+      when useHeaders:
+        cachedRoutes[routeKey].res.headers = h
+      else:
+        cachedRoutes[routeKey].res.headers = newHttpHeaders([
+          ("Content-Type", "text/plain;charset=utf-8")
+        ])
+
   # HTTPX
   when enableHttpx or enableBuiltin:
     when useHeaders:
@@ -395,6 +414,18 @@ template answer*(
   when declared(outHeaders):
     for key, val in outHeaders.pairs():
       h[key] = val
+  
+  # Cache result
+  when enableCachedRoutes:
+    when declared(thisRouteCanBeCached) and declared(routeKey) and not declared(thisIsCachedResponse):
+      cachedRoutes[routeKey] = CachedRoute(create_at: cpuTime())
+      when message is string:
+        cachedRoutes[routeKey].res = CachedResult(data: message)
+      else:
+        cachedRoutes[routeKey].res = CachedResult(data: $message)
+      cachedRoutes[routeKey].res.statusCode = code
+      cachedRoutes[routeKey].res.headers = h
+  
   # HTTPX
   when enableHttpx or enableBuiltin:
     var headersArr = ""

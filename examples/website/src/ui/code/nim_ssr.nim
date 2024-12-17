@@ -671,3 +671,31 @@ serve "127.0.0.1", 5123:
       return "Hello, " & token["name"].node.str
     return "who are you???"
 """
+  nimCachedDecorator* = """
+model TestModel:
+  username: string
+  password: string
+
+serve ... :
+  @Cached  # Expires in 60 seconds by default
+  get "/cached/{i:int}":
+    await sleepAsync(1000)
+    if true:
+      if (query?test) == "hello":
+        return 100
+    echo query?one
+    return i
+  
+  @Cached(120)  # Will expires in 120 seconds
+  get "/cached/{x}":
+    await sleepAsync(1000)
+    if hasKey(query, "key"):
+      return query["key"]
+    await sleepAsync(1000)
+    return x
+  
+  @Cached(expires = 200)  # Will expires in 200 seconds
+  post "/cached/[m:TestModel]":
+    await sleepAsync(1000)
+    return m.username
+"""

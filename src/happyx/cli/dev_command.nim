@@ -9,8 +9,12 @@ import illwill except
 
 
 proc devCommand*(host: string = "127.0.0.1", port: int = 5000,
-                 reload: bool = false, browser: bool = false): int =
+                 reload: bool = false, browser: bool = false,
+                 disableApiDoc: bool = false): int =
   ## Serve
+  var options: seq[string] = @[]
+  if disableApiDoc:
+    options.add "-d:disableApiDoc"
   var
     project = compileProject()
     needReload = false
@@ -40,8 +44,8 @@ proc devCommand*(host: string = "127.0.0.1", port: int = 5000,
     styledEcho "⚡ Server launched at ", fgGreen, styleUnderscore, "http://" & host & ":" & port, fgWhite
     if browser:
       openDefaultBrowser("http://" & host & ":" & port & "/")
+    styledEcho fgYellow, "if you want to quit from program, please input [q] char"
     while true:
-      styledEcho fgYellow, "if you want to quit from program, please input [q] char"
       if stdin.readChar() == 'q':
         break
     if not project.process.isNil:
@@ -59,7 +63,8 @@ proc devCommand*(host: string = "127.0.0.1", port: int = 5000,
 
   # Start server for SPA
   styledEcho "⚡ Server launched at ", fgGreen, styleUnderscore, "http://127.0.0.1:", $port, fgWhite
-  openDefaultBrowser("http://127.0.0.1:" & $port & "/")
+  if browser:
+    openDefaultBrowser("http://127.0.0.1:" & $port & "/")
 
   serve host, port:
     get "/":

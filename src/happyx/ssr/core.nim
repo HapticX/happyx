@@ -45,7 +45,7 @@ else:
   import std/posix
   import std/osproc
 
-export httpcore
+export httpcore, times
 
 
 func parseHttpMethod*(data: string): Option[HttpMethod] =

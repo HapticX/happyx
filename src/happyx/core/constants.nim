@@ -56,7 +56,8 @@ const
   enableUseCompDebugMacro* = defined(useCompDebug) or defined(happyxUseCompDebug) or defined(hpxUseCompDebug)
   enableRequestModelDebugMacro* = defined(reqModelDebug) or defined(happyxReqModelDebug) or defined(hpxReqModelDebug)
   enableRoutingDebugMacro* = defined(routingDebug) or defined(happyxRoutingDebug) or defined(hpxRoutingDebug)
-  enableDefaultDecorators* = not (defined(disableDefDeco) or defined(happyxDsableDefDeco) or defined(hpxDisableDefDeco))
+  enableDefaultDecorators* = not (defined(disableDefDeco) or defined(happyxDisableDefDeco) or defined(hpxDisableDefDeco))
+  enableCachedRoutes* = not (defined(disableCachedRoutes) or defined(happyxDisableCachedRoutes) or defined(hpxDisabledCachedRoutes))
   enableDefaultComponents* = not (defined(disableComp) or defined(happyxDisableComp) or defined(hpxDisableComp))
   enableAppRouting* = not (defined(disableRouting) or defined(happyxDisableRouting) or defined(hpxDisableRouting))
   enableTemplateEngine* = not (defined(disableTemplateEngine) or defined(happyxTemplateEngine) or defined(hpxTemplateEngine))
@@ -108,8 +109,8 @@ const
   nim_2_0_0* = (NimMajor, NimMinor, NimPatch) >= (2, 0, 0)
   # Framework version
   HpxMajor* = 4
-  HpxMinor* = 6
-  HpxPatch* = 5
+  HpxMinor* = 7
+  HpxPatch* = 0
   HpxVersion* = $HpxMajor & "." & $HpxMinor & "." & $HpxPatch
 
 

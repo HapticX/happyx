@@ -2696,6 +2696,12 @@ translatable:
     "zh" -> "要使用JWT，您需要安装库"
     "fr" -> "Pour utiliser JWT, vous devez installer la bibliothèque"
     "ko" -> "JWT를 사용하려면 라이브러리를 설치해야 합니다"
+  "You can also use the @Cached decorator to cache the result of your routes.":
+    "ru" -> "Вы также можете использовать декоратор @Cached для того, чтобы кэшировать результат ваших маршрутов."
+    "ja" -> "また、@Cachedデコレーターを使用して、ルートの結果をキャッシュすることもできます。"
+    "zh" -> "您还可以使用@Cached装饰器来缓存您的路由结果。"
+    "fr" -> "Vous pouvez également utiliser le décorateur @Cached pour mettre en cache le résultat de vos routes."
+    "ko" -> "@Cached 데코레이터를 사용하여 경로의 결과를 캐시할 수도 있습니다."
 
 
 var spokenLang: cstring
