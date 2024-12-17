@@ -100,8 +100,16 @@
   <li><a class="reference" href="#endsWithBuildHtml%2CNimNode" title="endsWithBuildHtml(statement: NimNode): bool">endsWithBuildHtml(statement: NimNode): bool</a></li>
 
 </ul>
+<ul class="simple nested-toc-section">findAllUses
+  <li><a class="reference" href="#findAllUses%2CNimNode%2CNimNode%2Cseq%5BNimNode%5D" title="findAllUses(body, name: NimNode; uses: var seq[NimNode])">findAllUses(body, name: NimNode; uses: var seq[NimNode])</a></li>
+
+</ul>
 <ul class="simple nested-toc-section">formatNode
   <li><a class="reference" href="#formatNode%2CNimNode" title="formatNode(node: NimNode): NimNode">formatNode(node: NimNode): NimNode</a></li>
+
+</ul>
+<ul class="simple nested-toc-section">getIdentUses
+  <li><a class="reference" href="#getIdentUses%2CNimNode%2CNimNode" title="getIdentUses(body, name: NimNode): seq[NimNode]">getIdentUses(body, name: NimNode): seq[NimNode]</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">getTagName
@@ -306,12 +314,36 @@
 </div>
 
 </div>
+<div id="findAllUses-procs-all">
+  <div id="findAllUses,NimNode,NimNode,seq[NimNode]">
+  <dt><pre><span class="Keyword">proc</span> <a href="#findAllUses%2CNimNode%2CNimNode%2Cseq%5BNimNode%5D"><span class="Identifier">findAllUses</span></a><span class="Other">(</span><span class="Identifier">body</span><span class="Other">,</span> <span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">NimNode</span><span class="Other">;</span> <span class="Identifier">uses</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">NimNode</span><span class="Other">]</span><span class="Other">)</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+  <dd>
+    
+    Рекурсивно ищет все использования идентификатора <tt class="docutils literal"><span class="pre"><span class="Identifier">name</span></span></tt> в дереве AST <tt class="docutils literal"><span class="pre"><span class="Identifier">body</span></span></tt>.
+    
+  </dd>
+</div>
+
+</div>
 <div id="formatNode-procs-all">
   <div id="formatNode,NimNode">
   <dt><pre><span class="Keyword">proc</span> <a href="#formatNode%2CNimNode"><span class="Identifier">formatNode</span></a><span class="Other">(</span><span class="Identifier">node</span><span class="Other">:</span> <span class="Identifier">NimNode</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">NimNode</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
     
+    
+  </dd>
+</div>
+
+</div>
+<div id="getIdentUses-procs-all">
+  <div id="getIdentUses,NimNode,NimNode">
+  <dt><pre><span class="Keyword">proc</span> <a href="#getIdentUses%2CNimNode%2CNimNode"><span class="Identifier">getIdentUses</span></a><span class="Other">(</span><span class="Identifier">body</span><span class="Other">,</span> <span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">NimNode</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">NimNode</span><span class="Other">]</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+  <dd>
+    
+    Возвращает все использования идентификатора <tt class="docutils literal"><span class="pre"><span class="Identifier">name</span></span></tt> в дереве AST <tt class="docutils literal"><span class="pre"><span class="Identifier">body</span></span></tt>.
     
   </dd>
 </div>
@@ -476,7 +508,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2024-12-10 17:26:47 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2024-12-17 06:18:51 UTC</small>
       </div>
     </div>
   </div>

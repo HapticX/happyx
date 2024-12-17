@@ -57,7 +57,14 @@
   <details open>
     <summary><a class="reference reference-toplevel" href="#7" id="57">Types</a></summary>
     <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#DecoratorImpl" title="DecoratorImpl = proc (httpMethods: seq[string]; routePath: string;
+      <li><a class="reference" href="#CachedResult" title="CachedResult = object
+  data*: string
+  headers*: HttpHeaders
+  statusCode*: HttpCode">CachedResult</a></li>
+<li><a class="reference" href="#CachedRoute" title="CachedRoute = object
+  create_at*: float
+  res*: CachedResult">CachedRoute</a></li>
+<li><a class="reference" href="#DecoratorImpl" title="DecoratorImpl = proc (httpMethods: seq[string]; routePath: string;
                       statementList: NimNode; arguments: seq[NimNode])">DecoratorImpl</a></li>
 
     </ul>
@@ -67,7 +74,8 @@
   <details open>
     <summary><a class="reference reference-toplevel" href="#8" id="58">Vars</a></summary>
     <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#decorators" title="decorators {.compileTime.} = newTable(32)">decorators</a></li>
+      <li><a class="reference" href="#cachedRoutes" title="cachedRoutes {.threadvar.}: Table[string, CachedRoute]">cachedRoutes</a></li>
+<li><a class="reference" href="#decorators" title="decorators {.compileTime.} = newTable(32)">decorators</a></li>
 
     </ul>
   </details>
@@ -127,13 +135,34 @@
     <div class="section" id="6">
   <h1><a class="toc-backref" href="#6">Imports</a></h1>
   <dl class="item">
-    <a class="reference external" href="../core/constants.html">../core/constants</a>
+    <a class="reference external" href="../core/constants.html">../core/constants</a>, <a class="reference external" href="../private/macro_utils.html">../private/macro_utils</a>, <a class="reference external" href="routing.html">routing</a>
   </dl>
 </div>
 <div class="section" id="7">
   <h1><a class="toc-backref" href="#7">Types</a></h1>
   <dl class="item">
-    <div id="DecoratorImpl">
+    <div id="CachedResult">
+  <dt><pre><a href="decorators.html#CachedResult"><span class="Identifier">CachedResult</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
+  <span class="Identifier">data</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
+  <span class="Identifier">headers</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">HttpHeaders</span>
+  <span class="Identifier">statusCode</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">HttpCode</span></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+<div id="CachedRoute">
+  <dt><pre><a href="decorators.html#CachedRoute"><span class="Identifier">CachedRoute</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
+  <span class="Identifier">create_at</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">float</span>
+  <span class="Identifier">res</span><span class="Operator">*</span><span class="Other">:</span> <a href="decorators.html#CachedResult"><span class="Identifier">CachedResult</span></a></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+<div id="DecoratorImpl">
   <dt><pre><a href="decorators.html#DecoratorImpl"><span class="Identifier">DecoratorImpl</span></a> <span class="Other">=</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">httpMethods</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">routePath</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span>
                       <span class="Identifier">statementList</span><span class="Other">:</span> <span class="Identifier">NimNode</span><span class="Other">;</span> <span class="Identifier">arguments</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">NimNode</span><span class="Other">]</span><span class="Other">)</span></pre></dt>
   <dd>
@@ -148,7 +177,15 @@
 <div class="section" id="8">
   <h1><a class="toc-backref" href="#8">Vars</a></h1>
   <dl class="item">
-    <div id="decorators">
+    <div id="cachedRoutes">
+  <dt><pre><a href="decorators.html#cachedRoutes"><span class="Identifier">cachedRoutes</span></a> {.<span class="Identifier">threadvar</span>.}<span class="Other">:</span> <span class="Identifier">Table</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">,</span> <a href="decorators.html#CachedRoute"><span class="Identifier">CachedRoute</span></a><span class="Other">]</span></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+<div id="decorators">
   <dt><pre><a href="decorators.html#decorators"><span class="Identifier">decorators</span></a> {.<span class="Identifier">compileTime</span>.} <span class="Other">=</span> <span class="Identifier">newTable</span><span class="Other">(</span><span class="DecNumber">32</span><span class="Other">)</span></pre></dt>
   <dd>
     
@@ -201,7 +238,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2024-12-10 17:26:48 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2024-12-17 06:18:53 UTC</small>
       </div>
     </div>
   </div>
