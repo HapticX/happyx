@@ -25,11 +25,11 @@ var
   searchResults = remember newSeq[SearchResult]()
   shouldIndex = true
   savedPages = pagesIndexed.val
-  pageIndexVersion = cstring HpxVersion
+  pageIndexName = cstring ("pagesIndexed" & HpxVersion)
 
 
 {.emit: """//js
-`savedPages` = JSON.parse(localStorage.getItem("pagesIndexed" + `pageIndexVersion`)) || [];
+`savedPages` = JSON.parse(localStorage.getItem(`pageIndexName`)) || [];
 console.log(`savedPages`);
 if (`savedPages`.length !== 0) {
   `shouldIndex` = false;
@@ -102,7 +102,7 @@ const obj = [];
 for (let i of `savedPages`) {
   obj.push(i);
 }
-localStorage.setItem("pagesIndexed" + `pageIndexVersion`, JSON.stringify(obj));
+localStorage.setItem(`pageIndexName`, JSON.stringify(obj));
 """.}
 
 
@@ -129,7 +129,7 @@ proc searchPages*(searchText: cstring) =
         path: item["path"].to(cstring),
         isCode: item["isCode"].to(bool),
       )
-    if results.len > 10:
+    if results.len >= 20:
       break
   searchResults.set(results)
 
@@ -177,10 +177,7 @@ proc Header*(drawer: Drawer = nil): TagRef =
           placeholder = translate"Enter something",
           id = "search-popup-input"
         )
-          # @input(ev):
-          #   searchResults.set(searchPages($ev.target.InputElement.value))
-          #   echo searchResults.val
-        tDiv(class = "flex flex-col max-h-[70vh] xl:max-h-[50vh] overflow-y-auto"):
+        tDiv(class = "flex flex-col gap-2 max-h-[70vh] xl:max-h-[50vh] overflow-y-auto"):
           for i, result in searchResults.val.pairs:
             tDiv(class = "flex flex-col border border-[{Foreground}]/25 dark:border-[{ForegroundDark}]/25 rounded-md p-2 cursor-pointer"):
               tH2(class = ""):
