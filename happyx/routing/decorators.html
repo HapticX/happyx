@@ -66,6 +66,9 @@
   res*: CachedResult">CachedRoute</a></li>
 <li><a class="reference" href="#DecoratorImpl" title="DecoratorImpl = proc (httpMethods: seq[string]; routePath: string;
                       statementList: NimNode; arguments: seq[NimNode])">DecoratorImpl</a></li>
+<li><a class="reference" href="#RateLimitInfo" title="RateLimitInfo = object
+  amount*: int
+  update_at*: float">RateLimitInfo</a></li>
 
     </ul>
   </details>
@@ -76,6 +79,7 @@
     <ul class="simple simple-toc-section">
       <li><a class="reference" href="#cachedRoutes" title="cachedRoutes {.threadvar.}: Table[string, CachedRoute]">cachedRoutes</a></li>
 <li><a class="reference" href="#decorators" title="decorators {.compileTime.} = newTable(32)">decorators</a></li>
+<li><a class="reference" href="#rateLimits" title="rateLimits {.threadvar.}: Table[string, RateLimitInfo]">rateLimits</a></li>
 
     </ul>
   </details>
@@ -171,6 +175,16 @@
     
   </dd>
 </div>
+<div id="RateLimitInfo">
+  <dt><pre><a href="decorators.html#RateLimitInfo"><span class="Identifier">RateLimitInfo</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
+  <span class="Identifier">amount</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int</span>
+  <span class="Identifier">update_at</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">float</span></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
 
   </dl>
 </div>
@@ -187,6 +201,14 @@
 </div>
 <div id="decorators">
   <dt><pre><a href="decorators.html#decorators"><span class="Identifier">decorators</span></a> {.<span class="Identifier">compileTime</span>.} <span class="Other">=</span> <span class="Identifier">newTable</span><span class="Other">(</span><span class="DecNumber">32</span><span class="Other">)</span></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+<div id="rateLimits">
+  <dt><pre><a href="decorators.html#rateLimits"><span class="Identifier">rateLimits</span></a> {.<span class="Identifier">threadvar</span>.}<span class="Other">:</span> <span class="Identifier">Table</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">,</span> <a href="decorators.html#RateLimitInfo"><span class="Identifier">RateLimitInfo</span></a><span class="Other">]</span></pre></dt>
   <dd>
     
     
@@ -238,7 +260,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2024-12-17 06:18:53 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2024-12-18 14:43:43 UTC</small>
       </div>
     </div>
   </div>
