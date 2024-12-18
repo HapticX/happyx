@@ -68,6 +68,8 @@ proc findAndReplaceMount*(body: NimNode) =
         var mountBody = copy(registeredMounts[$name])
         mountBody.findAndReplaceMount()
 
+        echo mountBody.toStrLit
+
         var decoratorsOffset = 0
 
         for statement in mountBody:
@@ -77,11 +79,6 @@ proc findAndReplaceMount*(body: NimNode) =
               statement[0] = newLit($route & $statement[0])
             elif statement[1].kind in [nnkStrLit, nnkTripleStrLit]:
               statement[1] = newLit($route & $statement[1])
-          # Add mount decorators
-          for decorator in nextRouteDecorators:
-            body.insert(i, decorator)
-            inc offset
-          echo statement.treeRepr
           # Add mount routes
           # @Decorator
           if statement.kind == nnkPrefix and statement[0] == ident"@":
@@ -95,6 +92,10 @@ proc findAndReplaceMount*(body: NimNode) =
             inc decoratorsOffset
           # get / post / etc.
           elif statement.kind in [nnkCall, nnkCommand] and statement[0] != ident"mount":
+            # Add mount decorators
+            for decorator in nextRouteDecorators:
+              body.insert(i+decoratorsOffset, decorator)
+              inc offset
             body.insert(i+decoratorsOffset, statement)
             inc offset
             decoratorsOffset = 0
