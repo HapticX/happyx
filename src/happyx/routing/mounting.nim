@@ -42,14 +42,14 @@ proc findAndReplaceMount*(body: NimNode) =
   for i in 0..<body.len:
     let idx = i+offset
     # Decorators
-    if body[idx].kind == nnkPrefix and $body[idx][0] == "@" and body[idx][1].kind == nnkIdent:
+    if body[idx].kind == nnkPrefix and body[idx][0] == ident"@" and body[idx][1].kind == nnkIdent:
       # @Decorator
       nextRouteDecorators.add(body[idx].copy())
     # @Decorator()
-    elif body[idx].kind == nnkCall and body[idx][0].kind == nnkPrefix and $body[idx][0][0] == "@" and body[idx].len == 1:
+    elif body[idx].kind == nnkCall and body[idx][0].kind == nnkPrefix and body[idx][0][0] == ident"@" and body[idx].len == 1:
       nextRouteDecorators.add(body[idx].copy())
     # @Decorator(arg1, arg2, ...)
-    elif body[idx].kind == nnkCall and body[idx][0].kind == nnkPrefix and $body[idx][0][0] == "@" and body[idx].len > 1:
+    elif body[idx].kind == nnkCall and body[idx][0].kind == nnkPrefix and body[idx][0][0] == ident"@" and body[idx].len > 1:
       nextRouteDecorators.add(body[idx].copy())
     elif body[idx].kind == nnkCommand and body[idx][0] == ident"mount":
       if body[idx][1].kind == nnkInfix and body[idx][1][0] == ident"->":
@@ -68,6 +68,8 @@ proc findAndReplaceMount*(body: NimNode) =
         var mountBody = copy(registeredMounts[$name])
         mountBody.findAndReplaceMount()
 
+        var decoratorsOffset = 0
+
         for statement in mountBody:
           # Replace routes
           if statement.kind in [nnkCall, nnkCommand]:
@@ -75,17 +77,31 @@ proc findAndReplaceMount*(body: NimNode) =
               statement[0] = newLit($route & $statement[0])
             elif statement[1].kind in [nnkStrLit, nnkTripleStrLit]:
               statement[1] = newLit($route & $statement[1])
-          # Add mount routes
+          # Add mount decorators
           for decorator in nextRouteDecorators:
-            inc offset
             body.insert(i, decorator)
-          if (statement.kind in [nnkCall, nnkCommand] and statement[0] != ident"mount") or
-             (statement.kind == nnkPrefix and $statement[0] == "@"):
             inc offset
+          echo statement.treeRepr
+          # Add mount routes
+          # @Decorator
+          if statement.kind == nnkPrefix and statement[0] == ident"@":
             body.insert(i, statement)
+            inc offset
+            inc decoratorsOffset
+          # @Decorator(....)
+          elif statement.kind == nnkCall and statement[0].kind == nnkPrefix and statement[0][0] == ident"@":
+            body.insert(i, statement)
+            inc offset
+            inc decoratorsOffset
+          # get / post / etc.
+          elif statement.kind in [nnkCall, nnkCommand] and statement[0] != ident"mount":
+            body.insert(i+decoratorsOffset, statement)
+            inc offset
+            decoratorsOffset = 0
         nextRouteDecorators = @[]
-      else:
-        nextRouteDecorators = @[]
+      # else:
+      #   nextRouteDecorators = @[]
+  echo body.toStrLit
 
 
 macro mount*(mountName, body: untyped): untyped =
