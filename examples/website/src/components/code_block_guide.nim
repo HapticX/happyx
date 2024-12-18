@@ -160,10 +160,14 @@ component CodeBlockGuide:
   [methods]:
     proc highlight(id: cstring) =
       let id: cstring = $id & self.uniqCompId
-      buildJs:
-        let codeBlock = document.getElementById(~id)
-        if codeBlock:
-          hljs.highlightElement(codeBlock)
+      {.emit: """//js
+      const codeBlock = document.getElementById(`id`);
+      if (codeBlock && codeBlock.className) {
+        try {
+          hljs.highlightElement(codeBlock);
+        } catch(e) {}
+      }
+      """.}
     
     proc hasLanguage(lang: string): bool =
       for source in self.sources:

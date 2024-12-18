@@ -42,6 +42,16 @@ mount Profile:
     ## Profile settings
     return "Hello, world"
   
+  @RateLimit
+  get "/rate-limit-test":
+    ## Profile settings
+    return "Hello, world"
+  
+  @Cached(10)
+  get "/cached-test":
+    ## Profile settings
+    return "Hello, world"
+  
   post "/settings":
     ## Update profile settings
     return "Hello, world!"
@@ -92,6 +102,13 @@ serve "127.0.0.1", 5000:
     return "Hello, world!"
   
   get "/headers":
+    outHeaders["Test"] = 10
+    outHeaders["HappyXHeader"] = "Hello"
+    return "Hello, world!"
+  
+  # default values is perSecond=60, fromAll=false
+  @RateLimit(perSecond = 2, fromAll = true)
+  get "/test/rate-limit":
     outHeaders["Test"] = 10
     outHeaders["HappyXHeader"] = "Hello"
     return "Hello, world!"

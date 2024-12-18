@@ -79,7 +79,7 @@ proc findAndReplaceMount*(body: NimNode) =
           for decorator in nextRouteDecorators:
             inc offset
             body.insert(i, decorator)
-          if (statement.kind in [nnkCall, nnkCommand] and $statement[0] != "mount") or
+          if (statement.kind in [nnkCall, nnkCommand] and statement[0] != ident"mount") or
              (statement.kind == nnkPrefix and $statement[0] == "@"):
             inc offset
             body.insert(i, statement)

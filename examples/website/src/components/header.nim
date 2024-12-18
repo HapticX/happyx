@@ -1,13 +1,213 @@
 # Import HappyX
 import
+  std/algorithm,
+  std/jsffi,
   ../../../../src/happyx,
   ../ui/[colors, translations],
-  ./[button, drawer, sidebar, language_spinner]
+  ./[button, drawer, sidebar, language_spinner],
+  ../docs/docs
+
+
+type
+  SearchResult* = object
+    header*: string
+    fullText*: string
+    lastText*: string
+    path*: cstring
+    pageName*: string
+    isCode*: bool
+
+
+var
+  showSearchPopup = remember false
+  pages = remember newTable[string, TagRef]()
+  pagesIndexed = remember newSeq[JsObject]()
+  searchResults = remember newSeq[SearchResult]()
+  shouldIndex = true
+  savedPages = pagesIndexed.val
+  pageIndexName = cstring ("pagesIndexed" & HpxVersion)
+
+
+{.emit: """//js
+`savedPages` = JSON.parse(localStorage.getItem(`pageIndexName`)) || [];
+console.log(`savedPages`);
+if (`savedPages`.length !== 0) {
+  `shouldIndex` = false;
+  console.log("load saved indexed pages - ", `savedPages`.length);
+}
+""".}
+
+if savedPages.len > 0:
+  pagesIndexed.val = savedPages
+
+
+proc indexPage*(pageName, path: cstring, page: Element) =
+  let elements = page.querySelectorAll("p, h1, h2, h3, h4, h5, h6, code")
+  var
+    lastHeader: cstring = ""
+    lastP: cstring = ""
+  for element in elements:
+    if element.nodeName in [cstring"P", cstring"CODE"]:
+      let obj = newJsObject()
+      if element.nodeName == cstring"P":
+        lastP = element.textContent
+      obj["text"] = element.textContent
+      obj["lowerText"] = cstring ($element.textContent).toLower()
+      obj["header"] = lastHeader
+      obj["lastText"] = lastP
+      obj["page"] = pageName
+      obj["path"] = path
+      obj["isCode"] = element.nodeName == cstring"CODE"
+      pagesIndexed.val.add obj
+    else:
+      lastHeader = element.textContent
+  page.innerHTML = "";
+
+
+if shouldIndex:
+  indexPage(cstring translate"Introduction ✌", "/guide/", initIntroduction("blabla").render())
+  indexPage(cstring translate"Getting Started 💫", "/guide/getting_started", GettingStarted())
+  indexPage(cstring translate"HappyX Application 🍍", "/guide/happyx_app", HappyxApp())
+  indexPage(cstring translate"Path Params 🔌", "/guide/path_params", PathParams())
+  indexPage(cstring translate"Compilation flags 🔨", "/guide/flags_list", FlagsList())
+  indexPage(cstring translate"Tailwind And Other 🎴", "/guide/tailwind_and_other", TailwindAndOther())
+  indexPage(cstring translate"Route Decorators 🔌", "/guide/route_decorators", Decorators())
+  indexPage(cstring translate"Third-party routes 💫", "/guide/mounting", Mounting())
+  indexPage(cstring translate"Single-page Applications Basics 🎴", "/guide/spa_basics", SpaBasics())
+  indexPage(cstring translate"SPA Rendering 🧩", "/guide/spa_rendering", SpaRendering())
+  indexPage(cstring translate"Reactivity ⚡", "/guide/reactivity", Reactivity())
+  indexPage(cstring translate"Components 🔥", "/guide/components", initComponents("blablabla").render())
+  indexPage(cstring translate"Functional components 🧪", "/guide/func_components", FuncComponents())
+  indexPage(cstring translate"HPX project type 👀", "/guide/hpx_project_type", HpxProjectType())
+  indexPage(cstring translate"Server-side Applications Basics 🖥", "/guide/ssr_basics", SsrBasics())
+  indexPage(cstring translate"Websockets 🔌", "/guide/websockets", Websockets())
+  indexPage(cstring translate"Database access 📦", "/guide/db_access", initDbIntro("db").render())
+  indexPage(cstring translate"SQLite 📦", "/guide/sqlite", initSQLite("sqlite").render())
+  indexPage(cstring translate"PostgreSQL 📦", "/guide/postgres", initPostgres("postgres").render())
+  indexPage(cstring translate"MongoDB 🍃", "/guide/mongo_db", initMongoDB("mongo_db").render())
+  indexPage(cstring translate"Swagger and Redoc in HappyX 📕", "/guide/ssr_docs", SsrDocs())
+  indexPage(cstring translate"LiveViews 🔥", "/guide/liveviews", LiveViews())
+  indexPage(cstring translate"HappyX for Karax users 👑", "/guide/hpx_for_karax", KaraxUsers())
+
+
+  # Clear indexed components
+  components.clear()
+  createdComponentsList.setLen(0)
+  currentComponentsList.setLen(0)
+
+console.log("pages indexed: " & $pagesIndexed.val.len)
+savedPages = pagesIndexed.val
+{.emit: """//js
+const obj = [];
+for (let i of `savedPages`) {
+  obj.push(i);
+}
+localStorage.setItem(`pageIndexName`, JSON.stringify(obj));
+""".}
+
+
+proc searchPages*(searchText: cstring) =
+  var results = newSeq[SearchResult]()
+
+  if searchText.len == 0:
+    searchResults.set(results)
+    return
+
+  let lowerText = cstring ($searchText).toLower()
+
+  for item in pagesIndexed.val:
+    var index: cint = -1
+    {.emit: """//js
+    `index` = `item`.lowerText.indexOf(`lowerText`);
+    """.}
+    if index != -1:
+      results.add SearchResult(
+        header: $item["header"].to(cstring),
+        fullText: $item["text"].to(cstring),
+        lastText: $item["lastText"].to(cstring),
+        pageName: $item["page"].to(cstring),
+        path: item["path"].to(cstring),
+        isCode: item["isCode"].to(bool),
+      )
+    if results.len >= 20:
+      break
+  searchResults.set(results)
+
+
+{.emit: """//js
+let lastSavedText = "";
+const interval = setInterval(() => {
+  let input = document.querySelector('#search-popup-input');
+  if (!input)
+    return;
+  if (input.value === lastSavedText)
+    return;
+  `searchPages`(input.value);
+  lastSavedText = input.value;
+}, 250);
+""".}
 
 
 # Declare component
 proc Header*(drawer: Drawer = nil): TagRef =
   buildHtml:
+    tDiv(class = "fixed z-50 flex justify-center items-center left-0 right-0 top-0 bottom-0 pointer-events-none"):
+      tDiv(
+        class = "absolute z-10 left-0 right-0 bottom-0 top-0 backdrop-blur-sm bg-black/20 rounded-xl p-4 transition-all duration-300 " & (
+          if showSearchPopup:
+            "pointer-events-auto"
+          else:
+            "opacity-0 pointer-events-none"
+        )
+      ):
+        @click:
+          showSearchPopup.set(false)
+      tDiv(
+        class = fmt"flex flex-col gap-2 absolute z-20 drop-shadow-md rounded-xl p-8 min-w-[95vw] max-w-[95vw] xl:min-w-[50vw] xl:max-w-[50vw] bg-[{Background}] dark:bg-[{BackgroundDark}] transition-all duration-300 " & (
+          if showSearchPopup:
+            "pointer-events-auto"
+          else:
+            "pointer-events-none opacity-0 -translate-y-12 scale-90"
+        ),
+        id = "search-popup"
+      ):
+        tH2: { translate"Search" }
+        tInput(
+          class = "w-full outline-none border-none bg-[{BackgroundSecondary}] dark:bg-[{BackgroundSecondaryDark}] rounded-none py-2 px-4",
+          placeholder = translate"Enter something",
+          id = "search-popup-input"
+        )
+        tDiv(class = "flex flex-col gap-2 max-h-[70vh] xl:max-h-[50vh] overflow-y-auto"):
+          for i, result in searchResults.val.pairs:
+            tDiv(class = "flex flex-col border border-[{Foreground}]/25 dark:border-[{ForegroundDark}]/25 rounded-md p-2 cursor-pointer"):
+              tH2(class = ""):
+                {searchResults.val[i].pageName}
+              if searchResults.val[i].isCode:
+                if len(searchResults.val[i].lastText) != 0:
+                  tP(search = "true"):
+                    {searchResults.val[i].lastText}
+                tPre(class = "bg-[{BackgroundSecondary}] dark:bg-[{BackgroundSecondaryDark}] p-4"):
+                  tCode(search = "true"):
+                    {searchResults.val[i].fullText}
+              else:
+                tP(search = "true"):
+                  {searchResults.val[i].fullText}
+              @click:
+                route(searchResults.val[i].path)
+                showSearchPopup.set(false)
+                var text = cstring searchResults.val[i].fullText
+                {.emit: """//js
+                const tags = document.querySelectorAll("p, code");
+                for (var i = 0; i < tags.length; i++) {
+                  if (tags[i].textContent == `text` && tags[i].getAttribute("search") === null) {
+                    window.scrollTo({
+                      behavior: 'smooth',
+                      top: tags[i].getBoundingClientRect().top - 128
+                    });
+                    break;
+                  }
+                }
+                """.}
     tDiv(class = "flex justify-between items-center px-8 py-2 backdrop-blur-md dark:backdrop-blur-sm dark:bg-black dark:bg-opacity-20 h-32 xl:h-fit"):
       tDiv(class = "flex"):
         tImg(src = "/happyx/public/icon.webp", alt = "HappyX logo", class = "h-24 md:h-16 xl:h-12 cursor-pointer select-none")
@@ -19,6 +219,27 @@ proc Header*(drawer: Drawer = nil): TagRef =
         @click:
           toggleDrawer()
       tDiv(class = "hidden xl:flex gap-4 items-center h-full"):  # buttons
+        # Search
+        tSvg(
+          xmlns="http://www.w3.org/2000/svg",
+          width="48",
+          height="48",
+          viewBox="0 0 24 24",
+          class = "h-8 w-8 stroke-[{Orange}] dark:stroke-[{Yellow}] cursor-pointer"
+        ):
+          tPath(
+            fill="none",
+            stroke-linecap="round",
+            stroke-linejoin="round",
+            stroke-width="2",
+            d="M17.5 17.5L22 22m-2-11a9 9 0 1 0-18 0a9 9 0 0 0 18 0",
+          )
+          @click:
+            showSearchPopup.set(true)
+            {.emit: """//js
+            document.querySelector("#search-popup-input").value = "";
+            document.querySelector("#search-popup-input").focus();
+            """.}
         # Guide
         tSvg(
           "viewBox" = "0 0 24 24",

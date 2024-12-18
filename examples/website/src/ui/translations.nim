@@ -2702,6 +2702,30 @@ translatable:
     "zh" -> "您还可以使用@Cached装饰器来缓存您的路由结果。"
     "fr" -> "Vous pouvez également utiliser le décorateur @Cached pour mettre en cache le résultat de vos routes."
     "ko" -> "@Cached 데코레이터를 사용하여 경로의 결과를 캐시할 수도 있습니다."
+  "And many other people, thanks to whom HappyX continues to develop to this day! ❤":
+    "ru" -> "И многие другие люди, благодаря которым HappyX развивается по сей день! ❤"
+    "ja" -> "そして、HappyXが今日まで発展し続けているのは、他にも多くの人々のおかげです！ ❤"
+    "zh" -> "还有许多其他人，多亏了他们，HappyX得以发展至今！❤"
+    "fr" -> "Et de nombreuses autres personnes, grâce auxquelles HappyX continue de se développer jusqu'à ce jour ! ❤"
+    "ko" -> "그리고 HappyX가 오늘날까지 발전할 수 있었던 것은 많은 다른 사람들 덕분입니다! ❤"
+  "Search":
+    "ru" -> "Поиск"
+    "ja" -> "検索"
+    "zh" -> "搜索"
+    "fr" -> "Recherche"
+    "ko" -> "검색"
+  "Enter something":
+    "ru" -> "Введите что-нибудь"
+    "ja" -> "何か入力してください"
+    "zh" -> "请输入点什么"
+    "fr" -> "Entrez quelque chose"
+    "ko" -> "무언가를 입력하세요"
+  "Besides caching and authorization, HappyX also has a RateLimit decorator:":
+    "ru" -> "Помимо кэширования и авторизации HappyX имеет также декоратор RateLimit:"
+    "ja" -> "キャッシングや認証に加えて、HappyXにはRateLimitデコレーターもあります："
+    "zh" -> "除了缓存和授权，HappyX还具有RateLimit装饰器："
+    "fr" -> "En plus de la mise en cache et de l'autorisation, HappyX dispose également d'un décorateur RateLimit :"
+    "ko" -> "캐싱 및 인증 외에도 HappyX에는 RateLimit 데코레이터가 있습니다:"
 
 
 var spokenLang: cstring
