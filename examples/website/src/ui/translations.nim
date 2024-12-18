@@ -2708,6 +2708,18 @@ translatable:
     "zh" -> "还有许多其他人，多亏了他们，HappyX得以发展至今！❤"
     "fr" -> "Et de nombreuses autres personnes, grâce auxquelles HappyX continue de se développer jusqu'à ce jour ! ❤"
     "ko" -> "그리고 HappyX가 오늘날까지 발전할 수 있었던 것은 많은 다른 사람들 덕분입니다! ❤"
+  "Search":
+    "ru" -> "Поиск"
+    "ja" -> "検索"
+    "zh" -> "搜索"
+    "fr" -> "Recherche"
+    "ko" -> "검색"
+  "Enter something":
+    "ru" -> "Введите что-нибудь"
+    "ja" -> "何か入力してください"
+    "zh" -> "请输入点什么"
+    "fr" -> "Entrez quelque chose"
+    "ko" -> "무언가를 입력하세요"
 
 
 var spokenLang: cstring
