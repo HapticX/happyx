@@ -577,4 +577,4 @@ macro model*(name, body: untyped): untyped =
       "Wrong model syntax: ",
       lineInfoObj(i)
     )
-  echo result.toStrLit
+  # echo result.toStrLit

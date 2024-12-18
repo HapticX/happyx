@@ -42,6 +42,16 @@ mount Profile:
     ## Profile settings
     return "Hello, world"
   
+  @RateLimit
+  get "/rate-limit-test":
+    ## Profile settings
+    return "Hello, world"
+  
+  @Cached(10)
+  get "/cached-test":
+    ## Profile settings
+    return "Hello, world"
+  
   post "/settings":
     ## Update profile settings
     return "Hello, world!"
