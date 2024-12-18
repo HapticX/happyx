@@ -42,9 +42,10 @@ mount Profile:
     ## Profile settings
     return "Hello, world"
   
-  @RateLimit
+  @RateLimit(perSecond = 5)
   get "/rate-limit-test":
     ## Profile settings
+    # echo rateLimits[key]
     return "Hello, world"
   
   @Cached(10)
