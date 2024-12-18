@@ -40,6 +40,10 @@ proc Decorators*(): TagRef =
       
       CodeBlock("nim", nimCachedDecorator, "cached_decorator")
 
+      tP: { translate"Besides caching and authorization, HappyX also has a RateLimit decorator:" }
+      
+      CodeBlock("nim", nimRateLimitDecorator, "rate_limit_decorator")
+
       tH2: { translate"Custom Decorators 💡"}
       tP: { translate"You can create your own decorators also:" }
 

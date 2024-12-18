@@ -95,6 +95,13 @@ serve "127.0.0.1", 5000:
     outHeaders["Test"] = 10
     outHeaders["HappyXHeader"] = "Hello"
     return "Hello, world!"
+  
+  # default values is perSecond=60, fromAll=false
+  @RateLimit(perSecond = 2, fromAll = true)
+  get "/test/rate-limit":
+    outHeaders["Test"] = 10
+    outHeaders["HappyXHeader"] = "Hello"
+    return "Hello, world!"
 
   post "/post":
     ## Creates a new post

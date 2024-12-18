@@ -2720,6 +2720,12 @@ translatable:
     "zh" -> "请输入点什么"
     "fr" -> "Entrez quelque chose"
     "ko" -> "무언가를 입력하세요"
+  "Besides caching and authorization, HappyX also has a RateLimit decorator:":
+    "ru" -> "Помимо кэширования и авторизации HappyX имеет также декоратор RateLimit:"
+    "ja" -> "キャッシングや認証に加えて、HappyXにはRateLimitデコレーターもあります："
+    "zh" -> "除了缓存和授权，HappyX还具有RateLimit装饰器："
+    "fr" -> "En plus de la mise en cache et de l'autorisation, HappyX dispose également d'un décorateur RateLimit :"
+    "ko" -> "캐싱 및 인증 외에도 HappyX에는 RateLimit 데코레이터가 있습니다:"
 
 
 var spokenLang: cstring

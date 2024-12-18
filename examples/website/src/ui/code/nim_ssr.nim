@@ -699,3 +699,11 @@ serve ... :
     await sleepAsync(1000)
     return m.username
 """
+  nimRateLimitDecorator* = """serve ... :
+  # default values is perSecond=60, fromAll=false
+  @RateLimit(perSecond = 2, fromAll = true)
+  get "/test/rate-limit":
+    outHeaders["Test"] = 10
+    outHeaders["HappyXHeader"] = "Hello"
+    return "Hello, world!"
+"""
