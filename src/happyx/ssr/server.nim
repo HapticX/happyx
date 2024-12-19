@@ -294,14 +294,14 @@ template answer*(
     when declared(thisRouteCanBeCached) and declared(routeKey) and not declared(thisIsCachedResponse):
       cachedRoutes[routeKey] = CachedRoute(create_at: cpuTime())
       when message is string:
-        cachedRoutes[routeKey].res = CachedResult(data: message)
+        cachedRoutes[routeKey].cachedResult = CachedResult(cachedData: message)
       else:
-        cachedRoutes[routeKey].res = CachedResult(data: $message)
-      cachedRoutes[routeKey].res.statusCode = code
+        cachedRoutes[routeKey].cachedResult = CachedResult(cachedData: $message)
+      cachedRoutes[routeKey].cachedResult.cachedStatusCode = code
       when useHeaders:
-        cachedRoutes[routeKey].res.headers = h
+        cachedRoutes[routeKey].cachedResult.cachedHeaders = h
       else:
-        cachedRoutes[routeKey].res.headers = newHttpHeaders([
+        cachedRoutes[routeKey].cachedResult.cachedHeaders = newHttpHeaders([
           ("Content-Type", "text/plain;charset=utf-8")
         ])
 
@@ -420,11 +420,11 @@ template answer*(
     when declared(thisRouteCanBeCached) and declared(routeKey) and not declared(thisIsCachedResponse):
       cachedRoutes[routeKey] = CachedRoute(create_at: cpuTime())
       when message is string:
-        cachedRoutes[routeKey].res = CachedResult(data: message)
+        cachedRoutes[routeKey].cachedResult = CachedResult(cachedData: message)
       else:
-        cachedRoutes[routeKey].res = CachedResult(data: $message)
-      cachedRoutes[routeKey].res.statusCode = code
-      cachedRoutes[routeKey].res.headers = h
+        cachedRoutes[routeKey].cachedResult = CachedResult(cachedData: $message)
+      cachedRoutes[routeKey].cachedResult.cachedStatusCode = code
+      cachedRoutes[routeKey].cachedResult.cachedHeaders = h
   
   # HTTPX
   when enableHttpx or enableBuiltin:

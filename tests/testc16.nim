@@ -34,6 +34,8 @@ model Generics{JSON}[T]:
 
 
 mount Profile:
+  @AuthJWT
+  @RateLimit
   get "/":
     ## Profile main page
     return "Hello, world!"
@@ -48,7 +50,6 @@ mount Profile:
     # echo rateLimits[key]
     return "Hello, world"
   
-  @Cached(10)
   get "/cached-test":
     ## Profile settings
     return "Hello, world"
@@ -59,7 +60,9 @@ mount Profile:
 
 
 serve "127.0.0.1", 5000:
+  @Cached(10)
   mount "/profile" -> Profile
+
   "/some":
     ## Hello, world
     return "Hi"

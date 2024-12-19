@@ -54,12 +54,12 @@ type
     arguments: seq[NimNode]
   )
   CachedResult* = object
-    data*: string
-    headers*: HttpHeaders
-    statusCode*: HttpCode
+    cachedData*: string
+    cachedHeaders*: HttpHeaders
+    cachedStatusCode*: HttpCode
   CachedRoute* = object
     create_at*: float
-    res*: CachedResult
+    cachedResult*: CachedResult
   RateLimitInfo* = object
     amount*: int
     update_at*: float
@@ -251,7 +251,7 @@ if rateLimits[key].amount > {perSecond}:
               usedVariables.add i[2]
 
     let cachedRoutesResult = newNimNode(nnkDotExpr).add(
-      newNimNode(nnkBracketExpr).add(ident"cachedRoutes", ident"routeKey"), ident"res"
+      newNimNode(nnkBracketExpr).add(ident"cachedRoutes", ident"routeKey"), ident"cachedResult"
     )
     let cachedRoutesCreateAt = newNimNode(nnkDotExpr).add(
       newNimNode(nnkBracketExpr).add(ident"cachedRoutes", ident"routeKey"), ident"create_at"
@@ -270,9 +270,9 @@ if rateLimits[key].amount > {perSecond}:
             newCall(
               "answer",
               ident"req",
-              newNimNode(nnkDotExpr).add(cachedRoutesResult, ident"data"),
-              newNimNode(nnkDotExpr).add(cachedRoutesResult, ident"statusCode"),
-              newNimNode(nnkDotExpr).add(cachedRoutesResult, ident"headers"),
+              newNimNode(nnkDotExpr).add(cachedRoutesResult, ident"cachedData"),
+              newNimNode(nnkDotExpr).add(cachedRoutesResult, ident"cachedStatusCode"),
+              newNimNode(nnkDotExpr).add(cachedRoutesResult, ident"cachedHeaders"),
             ),
             newNimNode(nnkBreakStmt).add(ident"__handleRequestBlock")
           )
