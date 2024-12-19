@@ -58,12 +58,12 @@
     <summary><a class="reference reference-toplevel" href="#7" id="57">Types</a></summary>
     <ul class="simple simple-toc-section">
       <li><a class="reference" href="#CachedResult" title="CachedResult = object
-  data*: string
-  headers*: HttpHeaders
-  statusCode*: HttpCode">CachedResult</a></li>
+  cachedData*: string
+  cachedHeaders*: HttpHeaders
+  cachedStatusCode*: HttpCode">CachedResult</a></li>
 <li><a class="reference" href="#CachedRoute" title="CachedRoute = object
   create_at*: float
-  res*: CachedResult">CachedRoute</a></li>
+  cachedResult*: CachedResult">CachedRoute</a></li>
 <li><a class="reference" href="#DecoratorImpl" title="DecoratorImpl = proc (httpMethods: seq[string]; routePath: string;
                       statementList: NimNode; arguments: seq[NimNode])">DecoratorImpl</a></li>
 <li><a class="reference" href="#RateLimitInfo" title="RateLimitInfo = object
@@ -147,9 +147,9 @@
   <dl class="item">
     <div id="CachedResult">
   <dt><pre><a href="decorators.html#CachedResult"><span class="Identifier">CachedResult</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
-  <span class="Identifier">data</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
-  <span class="Identifier">headers</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">HttpHeaders</span>
-  <span class="Identifier">statusCode</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">HttpCode</span></pre></dt>
+  <span class="Identifier">cachedData</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
+  <span class="Identifier">cachedHeaders</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">HttpHeaders</span>
+  <span class="Identifier">cachedStatusCode</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">HttpCode</span></pre></dt>
   <dd>
     
     
@@ -159,7 +159,7 @@
 <div id="CachedRoute">
   <dt><pre><a href="decorators.html#CachedRoute"><span class="Identifier">CachedRoute</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">create_at</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">float</span>
-  <span class="Identifier">res</span><span class="Operator">*</span><span class="Other">:</span> <a href="decorators.html#CachedResult"><span class="Identifier">CachedResult</span></a></pre></dt>
+  <span class="Identifier">cachedResult</span><span class="Operator">*</span><span class="Other">:</span> <a href="decorators.html#CachedResult"><span class="Identifier">CachedResult</span></a></pre></dt>
   <dd>
     
     
@@ -260,7 +260,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2024-12-18 15:27:54 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2024-12-19 03:34:01 UTC</small>
       </div>
     </div>
   </div>

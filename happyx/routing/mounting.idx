@@ -1,7 +1,7 @@
 nimTitle	mounting	happyx/routing/mounting.html	module src/happyx/routing/mounting		0
 nim	registeredMounts	happyx/routing/mounting.html#registeredMounts	const registeredMounts		31
 nim	findAndReplaceMount	happyx/routing/mounting.html#findAndReplaceMount,NimNode	proc findAndReplaceMount(body: NimNode)		34
-nim	mount	happyx/routing/mounting.html#mount.m,untyped,untyped	macro mount(mountName, body: untyped): untyped		107
+nim	mount	happyx/routing/mounting.html#mount.m,untyped,untyped	macro mount(mountName, body: untyped): untyped		108
 heading	Usage	happyx/routing/mounting.html#mounting-🔌-usage	  Usage		0
 heading	Mounting 🔌	happyx/routing/mounting.html#mounting-🔌	 Mounting 🔌		0
 heading	Usage Example 🔨	happyx/routing/mounting.html#mounting-🔌-usage-example-🔨	  Usage Example 🔨		0
