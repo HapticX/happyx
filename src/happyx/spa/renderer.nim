@@ -289,7 +289,7 @@ when defined(js):
       attrs[i.nodeName] = i.nodeValue
     return attrs
   proc patchAttrs(dom, vdom: Node) {.exportc: "patrs".} =
-    var
+    let
       domAttrs = dom.attrIndex
       vdomAttrs = vdom.attrIndex
     if domAttrs == vdomAttrs:
@@ -344,9 +344,6 @@ when defined(js):
     for i in rendererHandlers:
       if i.key == "beforeRendered":
         i.p()
-    # let tempTag = tag.cloneNode(true).TagRef
-    # tempTag.prerenderVdomProcs()
-    # tempTag.diff(realDom)
     tag.prerenderLazyProcs()
     tag.diff(realDom)
     for i in rendererHandlers:
