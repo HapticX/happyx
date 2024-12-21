@@ -38,6 +38,16 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
                          cycleVars: var seq[NimNode], parent: NimNode = newEmptyNode()): NimNode
 
 
+proc enableWarning*(warnName: static[string], enable: static[bool]): NimNode =
+  newNimNode(nnkPragma).add(newNimNode(nnkExprColonExpr).add(
+    newNimNode(nnkBracketExpr).add(ident"warning", ident(warnName)),
+    if enable:
+      ident"on"
+    else:
+      ident"off"
+  ))
+
+
 proc bracket*(node: varargs[NimNode]): NimNode =
   result = newNimNode(nnkBracket)
   for i in node:

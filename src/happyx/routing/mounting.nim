@@ -68,8 +68,6 @@ proc findAndReplaceMount*(body: NimNode) =
         var mountBody = copy(registeredMounts[$name])
         mountBody.findAndReplaceMount()
 
-        echo mountBody.toStrLit
-
         var decoratorsOffset = 0
 
         for statement in mountBody:
