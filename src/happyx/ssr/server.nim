@@ -954,8 +954,8 @@ macro routes*(server: Server, body: untyped = newStmtList()): untyped =
       # "/...": statement list
       elif statement[1].kind == nnkStmtList and statement[0].kind == nnkStrLit:
         statement[1].insert(0, enableWarning("UnreachableCode", false))
-        statement[1].add(enableWarning("UnreachableCode", false))
         detectReturnStmt(statement[1])
+        statement[1].add(enableWarning("UnreachableCode", true))
         when enableDefaultDecorators:
           for route in nextRouteDecorators:
             decorators[route.name](@["GET"], $statement[0], statement[1], route.args)
@@ -1262,13 +1262,13 @@ macro routes*(server: Server, body: untyped = newStmtList()): untyped =
           methodTable[methodName] = newNimNode(nnkIfStmt)
         if exported.len > 0:  # /my/path/with{custom:int}/{param:path}
           exported[1].insert(0, enableWarning("UnreachableCode", false))
-          exported[1].add(enableWarning("UnreachableCode", false))
           detectReturnStmt(exported[1])
+          exported[1].add(enableWarning("UnreachableCode", true))
           methodTable[methodName].add(exported)
         else:  # /just-my-path
           statement[2].insert(0, enableWarning("UnreachableCode", false))
-          statement[2].add(enableWarning("UnreachableCode", false))
           detectReturnStmt(statement[2])
+          statement[2].add(enableWarning("UnreachableCode", true))
           methodTable[methodName].add(newNimNode(nnkElifBranch).add(
             newCall("==", pathIdent, statement[1]),
             statement[2]
@@ -1295,20 +1295,20 @@ macro routes*(server: Server, body: untyped = newStmtList()): untyped =
           setup = statement[1]
         of "notfound":
           statement[1].insert(0, enableWarning("UnreachableCode", false))
-          statement[1].add(enableWarning("UnreachableCode", false))
           detectReturnStmt(statement[1])
+          statement[1].add(enableWarning("UnreachableCode", true))
           notFoundNode = statement[1]
         of "onexception":
           statement[1].insert(0, enableWarning("UnreachableCode", false))
-          statement[1].add(enableWarning("UnreachableCode", false))
           detectReturnStmt(statement[1])
+          statement[1].add(enableWarning("UnreachableCode", true))
           statement[1].insert(0, newLetStmt(ident"e", newCall"getCurrentException"))
           onException["e"].add(statement[1])
           echo onException["e"].toStrLit
         of "middleware":
           statement[1].insert(0, enableWarning("UnreachableCode", false))
-          statement[1].add(enableWarning("UnreachableCode", false))
           detectReturnStmt(statement[1])
+          statement[1].add(enableWarning("UnreachableCode", true))
           stmtList.insert(0, statement[1])
         else:
           throwDefect(
@@ -1367,8 +1367,8 @@ macro routes*(server: Server, body: untyped = newStmtList()): untyped =
   when not (exportPython or exportJvm or defined(napibuild)):
     var returnStmt = newStmtList(newNimNode(nnkReturnStmt).add(newLit""))
     returnStmt.insert(0, enableWarning("UnreachableCode", false))
-    returnStmt.add(enableWarning("UnreachableCode", false))
     detectReturnStmt(returnStmt)
+    returnStmt.add(enableWarning("UnreachableCode", true))
     methodTable.mgetOrPut(
       "OPTIONS", newNimNode(nnkIfStmt)
     ).add(exportRouteArgs(pathIdent, newLit"/{p:path}", returnStmt))
