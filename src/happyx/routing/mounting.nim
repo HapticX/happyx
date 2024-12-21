@@ -102,7 +102,6 @@ proc findAndReplaceMount*(body: NimNode) =
         nextRouteDecorators = @[]
       # else:
       #   nextRouteDecorators = @[]
-  echo body.toStrLit
 
 
 macro mount*(mountName, body: untyped): untyped =
