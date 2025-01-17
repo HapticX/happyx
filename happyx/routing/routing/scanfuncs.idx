@@ -1,0 +1,14 @@
+nimTitle	scanfuncs	happyx/routing/routing/scanfuncs.html	module src/happyx/routing/routing/scanfuncs		0
+nim	boolean	happyx/routing/routing/scanfuncs.html#boolean,string,bool,int,bool	proc boolean(input: string; boolVal: var bool; start: int; opt: bool = false): int		8
+nim	word	happyx/routing/routing/scanfuncs.html#word,string,string,int,bool	proc word(input: string; strVal: var string; start: int; opt: bool = false): int		33
+nim	str	happyx/routing/routing/scanfuncs.html#str,string,string,int,bool	proc str(input: string; strVal: var string; start: int; opt: bool = false): int		49
+nim	enumerate	happyx/routing/routing/scanfuncs.html#enumerate,string,T,int,bool	proc enumerate[T: enum](input: string; e: var T; start: int; opt: bool = false): int		65
+nim	integer	happyx/routing/routing/scanfuncs.html#integer,string,int,int,bool	proc integer(input: string; intVal: var int; start: int; opt: bool = false): int		79
+nim	realnum	happyx/routing/routing/scanfuncs.html#realnum,string,float,int,bool	proc realnum(input: string; floatVal: var float; start: int; opt: bool = false): int		95
+nim	default	happyx/routing/routing/scanfuncs.html#default,string,string,int	proc default(input: string; strVal: var string; start: int): int		111
+nim	kind	happyx/routing/routing/scanfuncs.html#kind,string,string,int	proc kind(input: string; strVal: var string; start: int): int		122
+nim	path	happyx/routing/routing/scanfuncs.html#path,string,string,int	proc path(input: string; strVal: var string; start: int): int		159
+nim	kind2scanable	happyx/routing/routing/scanfuncs.html#kind2scanable,string,bool	proc kind2scanable(kind: string; opt: bool): string		164
+nim	kind2tp	happyx/routing/routing/scanfuncs.html#kind2tp,string	proc kind2tp(kind: string): string		239
+nim	findParams	happyx/routing/routing/scanfuncs.html#findParams,string,string	proc findParams(route: string; purePath: var string): seq[\n    tuple[name, kind: string, opt: bool, def: string]]		256
+nim	findModels	happyx/routing/routing/scanfuncs.html#findModels,string	proc findModels(route: string): seq[tuple[name, kind, mode: string]]		356

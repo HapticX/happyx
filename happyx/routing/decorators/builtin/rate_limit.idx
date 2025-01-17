@@ -1,0 +1,3 @@
+nimTitle	rate_limit	happyx/routing/decorators/builtin/rate_limit.html	module src/happyx/routing/decorators/builtin/rate_limit		0
+nim	RateLimitInfo	happyx/routing/decorators/builtin/rate_limit.html#RateLimitInfo	object RateLimitInfo		9
+nim	rateLimits	happyx/routing/decorators/builtin/rate_limit.html#rateLimits	var rateLimits		14

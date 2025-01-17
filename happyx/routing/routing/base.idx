@@ -1,0 +1,6 @@
+nimTitle	base	happyx/routing/routing/base.html	module src/happyx/routing/routing/base		0
+nim	declaredPathParams	happyx/routing/routing/base.html#declaredPathParams	const declaredPathParams		13
+nim	onException	happyx/routing/routing/base.html#onException	const onException		14
+nim	handleRoute	happyx/routing/routing/base.html#handleRoute,string	proc handleRoute(route: string): RouteDataObj		21
+nim	exportRouteArgs	happyx/routing/routing/base.html#exportRouteArgs,NimNode,NimNode,NimNode	proc exportRouteArgs(urlPath, routePath, body: NimNode): NimNode		61
+heading	Examples	happyx/routing/routing/base.html#examples	  Examples		0

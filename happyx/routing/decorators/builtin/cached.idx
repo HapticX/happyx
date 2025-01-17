@@ -1,0 +1,4 @@
+nimTitle	cached	happyx/routing/decorators/builtin/cached.html	module src/happyx/routing/decorators/builtin/cached		0
+nim	CachedResult	happyx/routing/decorators/builtin/cached.html#CachedResult	object CachedResult		13
+nim	CachedRoute	happyx/routing/decorators/builtin/cached.html#CachedRoute	object CachedRoute		17
+nim	cachedRoutes	happyx/routing/decorators/builtin/cached.html#cachedRoutes	var cachedRoutes		22

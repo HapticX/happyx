@@ -29,22 +29,22 @@ nim	bck	happyx/spa/renderer.html#bck,string,string	proc bck(hostname, urlPath: s
 nim	frwrd	happyx/spa/renderer.html#frwrd,string,string	proc frwrd(hostname, urlPath: string)		236
 nim	registerApp	happyx/spa/renderer.html#registerApp,cstring	proc registerApp(appId: cstring = "app"): App		240
 nim	registerComponent	happyx/spa/renderer.html#registerComponent,string,BaseComponent	proc registerComponent(name: string; component: BaseComponent): BaseComponent		266
-nim	renderVdom	happyx/spa/renderer.html#renderVdom,App,TagRef,bool	proc renderVdom(app: App; tag: TagRef; force: bool = false)		384
-nim	render	happyx/spa/renderer.html#render.e,BaseComponent	method render(self: BaseComponent): TagRef		390
-nim	reRender	happyx/spa/renderer.html#reRender.e,BaseComponent	method reRender(self: BaseComponent)		395
-nim	start	happyx/spa/renderer.html#start.t,App	template start(app: App)		402
-nim	buildHtml	happyx/spa/renderer.html#buildHtml.m,untyped,untyped	macro buildHtml(root, html: untyped): untyped		445
-nim	buildHtml	happyx/spa/renderer.html#buildHtml.m,untyped	macro buildHtml(html: untyped): untyped		548
-nim	lazyHtml	happyx/spa/renderer.html#lazyHtml.t,untyped	template lazyHtml(body: untyped): proc (): TagRef		561
-nim	lazyHtmls	happyx/spa/renderer.html#lazyHtmls.t,untyped	template lazyHtmls(body: untyped): seq[proc (): TagRef]		569
-nim	buildHtmls	happyx/spa/renderer.html#buildHtmls.t,untyped	template buildHtmls(body: untyped): seq[TagRef]		583
-nim	buildHtmlSlot	happyx/spa/renderer.html#buildHtmlSlot.m,untyped,static[bool],static[bool]	macro buildHtmlSlot(html: untyped; inCycle, inComponent: static[bool]): untyped		597
-nim	buildComponentHtml	happyx/spa/renderer.html#buildComponentHtml.m,untyped,untyped	macro buildComponentHtml(componentName, html: untyped): untyped		611
-nim	routes	happyx/spa/renderer.html#routes.m,App,untyped	macro routes(app: App; body: untyped): untyped		629
-nim	appRoutes	happyx/spa/renderer.html#appRoutes.m,string,untyped	macro appRoutes(name: string; body: untyped): untyped		875
+nim	renderVdom	happyx/spa/renderer.html#renderVdom,App,TagRef,bool	proc renderVdom(app: App; tag: TagRef; force: bool = false)		381
+nim	render	happyx/spa/renderer.html#render.e,BaseComponent	method render(self: BaseComponent): TagRef		387
+nim	reRender	happyx/spa/renderer.html#reRender.e,BaseComponent	method reRender(self: BaseComponent)		392
+nim	start	happyx/spa/renderer.html#start.t,App	template start(app: App)		399
+nim	buildHtml	happyx/spa/renderer.html#buildHtml.m,untyped,untyped	macro buildHtml(root, html: untyped): untyped		442
+nim	buildHtml	happyx/spa/renderer.html#buildHtml.m,untyped	macro buildHtml(html: untyped): untyped		545
+nim	lazyHtml	happyx/spa/renderer.html#lazyHtml.t,untyped	template lazyHtml(body: untyped): proc (): TagRef		558
+nim	lazyHtmls	happyx/spa/renderer.html#lazyHtmls.t,untyped	template lazyHtmls(body: untyped): seq[proc (): TagRef]		566
+nim	buildHtmls	happyx/spa/renderer.html#buildHtmls.t,untyped	template buildHtmls(body: untyped): seq[TagRef]		580
+nim	buildHtmlSlot	happyx/spa/renderer.html#buildHtmlSlot.m,untyped,static[bool],static[bool]	macro buildHtmlSlot(html: untyped; inCycle, inComponent: static[bool]): untyped		594
+nim	buildComponentHtml	happyx/spa/renderer.html#buildComponentHtml.m,untyped,untyped	macro buildComponentHtml(componentName, html: untyped): untyped		608
+nim	routes	happyx/spa/renderer.html#routes.m,App,untyped	macro routes(app: App; body: untyped): untyped		626
+nim	appRoutes	happyx/spa/renderer.html#appRoutes.m,string,untyped	macro appRoutes(name: string; body: untyped): untyped		872
 nimgrp	route	happyx/spa/renderer.html#route-procs-all	proc		216
 nimgrp	js	happyx/spa/renderer.html#js-procs-all	proc		220
-nimgrp	buildhtml	happyx/spa/renderer.html#buildHtml-macros-all	macro		445
+nimgrp	buildhtml	happyx/spa/renderer.html#buildHtml-macros-all	macro		442
 heading	Basic Usage:	happyx/spa/renderer.html#renderer-✨-basic-usagecolon	  Basic Usage:		0
 heading	Usage:	happyx/spa/renderer.html#renderer-✨-usagecolon	  Usage:		0
 heading	Renderer ✨	happyx/spa/renderer.html#renderer-✨	 Renderer ✨		0

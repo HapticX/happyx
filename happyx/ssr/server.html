@@ -83,6 +83,10 @@
   <li><a class="reference" href="#send%2CRequest%2Cstring_2" title="send(request: Request; content: string): Future[void]">send(request: Request; content: string): Future[void]</a></li>
 
 </ul>
+<ul class="simple nested-toc-section">sseSend
+  <li><a class="reference" href="#sseSend%2CRequest%2Cstring%2CT" title="sseSend[T](request: Request; eventName: string; content: T): Future[void]">sseSend[T](request: Request; eventName: string; content: T): Future[void]</a></li>
+
+</ul>
 
     </ul>
   </details>
@@ -119,11 +123,11 @@
   <li><a class="reference" href="#answer.t%2CRequest%2C%2CHttpCode" title="answer(req: Request; message: string | int | float | bool | char;
        code: HttpCode = Http200)">answer(req: Request; message: string | int | float | bool | char;
        code: HttpCode = Http200)</a></li>
-<li><a class="reference" href="#answer.t%2CRequest%2C%2CHttpCode%2CHttpHeaders%2COption%5Bint%5D" title="answer(req: Request; message: string | int | float | bool | char;
+<li><a class="reference" href="#answer.t%2CRequest%2C%2CHttpCode%2CHttpHeaders" title="answer(req: Request; message: string | int | float | bool | char;
        code: HttpCode = Http200; headers: HttpHeaders;
-       contentLength: Option[int] = int.none)">answer(req: Request; message: string | int | float | bool | char;
+       contentLength: Option[int] | Option[string] = int.none)">answer(req: Request; message: string | int | float | bool | char;
        code: HttpCode = Http200; headers: HttpHeaders;
-       contentLength: Option[int] = int.none)</a></li>
+       contentLength: Option[int] | Option[string] = int.none)</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">answerHtml
@@ -238,10 +242,22 @@
 <div id="send-procs-all">
   <div id="send,Request,string_2">
   <dt><pre><span class="Keyword">proc</span> <a href="#send%2CRequest%2Cstring_2"><span class="Identifier">send</span></a><span class="Other">(</span><span class="Identifier">request</span><span class="Other">:</span> <a href="core.html#Request"><span class="Identifier">Request</span></a><span class="Other">;</span> <span class="Identifier">content</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Future</span><span class="Other">[</span><span class="Identifier">void</span><span class="Other">]</span> {.<span class="Identifier">inline</span><span class="Other">,</span>
-    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">stackTrace</span><span class="Other">:</span> <span class="DecNumber">false</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
     Sends <tt class="docutils literal"><span class="pre"><span class="Identifier">content</span></span></tt> to the client.
+    
+  </dd>
+</div>
+
+</div>
+<div id="sseSend-procs-all">
+  <div id="sseSend,Request,string,T">
+  <dt><pre><span class="Keyword">proc</span> <a href="#sseSend%2CRequest%2Cstring%2CT"><span class="Identifier">sseSend</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">request</span><span class="Other">:</span> <a href="core.html#Request"><span class="Identifier">Request</span></a><span class="Other">;</span> <span class="Identifier">eventName</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">content</span><span class="Other">:</span> <span class="Identifier">T</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Future</span><span class="Other">[</span><span class="Identifier">void</span><span class="Other">]</span> {.
+    <span class="Identifier">inline</span><span class="Other">,</span> <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">stackTrace</span><span class="Other">:</span> <span class="DecNumber">false</span></span>.}</pre></dt>
+  <dd>
+    
+    
     
   </dd>
 </div>
@@ -387,10 +403,10 @@
     
   </dd>
 </div>
-<div id="answer.t,Request,,HttpCode,HttpHeaders,Option[int]">
-  <dt><pre><span class="Keyword">template</span> <a href="#answer.t%2CRequest%2C%2CHttpCode%2CHttpHeaders%2COption%5Bint%5D"><span class="Identifier">answer</span></a><span class="Other">(</span><span class="Identifier">req</span><span class="Other">:</span> <a href="core.html#Request"><span class="Identifier">Request</span></a><span class="Other">;</span> <span class="Identifier">message</span><span class="Other">:</span> <span class="Identifier">string</span> <span class="Operator">|</span> <span class="Identifier">int</span> <span class="Operator">|</span> <span class="Identifier">float</span> <span class="Operator">|</span> <span class="Identifier">bool</span> <span class="Operator">|</span> <span class="Identifier">char</span><span class="Other">;</span>
+<div id="answer.t,Request,,HttpCode,HttpHeaders">
+  <dt><pre><span class="Keyword">template</span> <a href="#answer.t%2CRequest%2C%2CHttpCode%2CHttpHeaders"><span class="Identifier">answer</span></a><span class="Other">(</span><span class="Identifier">req</span><span class="Other">:</span> <a href="core.html#Request"><span class="Identifier">Request</span></a><span class="Other">;</span> <span class="Identifier">message</span><span class="Other">:</span> <span class="Identifier">string</span> <span class="Operator">|</span> <span class="Identifier">int</span> <span class="Operator">|</span> <span class="Identifier">float</span> <span class="Operator">|</span> <span class="Identifier">bool</span> <span class="Operator">|</span> <span class="Identifier">char</span><span class="Other">;</span>
                 <span class="Identifier">code</span><span class="Other">:</span> <span class="Identifier">HttpCode</span> <span class="Other">=</span> <span class="Identifier">Http200</span><span class="Other">;</span> <span class="Identifier">headers</span><span class="Other">:</span> <span class="Identifier">HttpHeaders</span><span class="Other">;</span>
-                <span class="Identifier">contentLength</span><span class="Other">:</span> <span class="Identifier">Option</span><span class="Other">[</span><span class="Identifier">int</span><span class="Other">]</span> <span class="Other">=</span> <span class="Identifier">int</span><span class="Other">.</span><span class="Identifier">none</span><span class="Other">)</span></pre></dt>
+                <span class="Identifier">contentLength</span><span class="Other">:</span> <span class="Identifier">Option</span><span class="Other">[</span><span class="Identifier">int</span><span class="Other">]</span> <span class="Operator">|</span> <span class="Identifier">Option</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">]</span> <span class="Other">=</span> <span class="Identifier">int</span><span class="Other">.</span><span class="Identifier">none</span><span class="Other">)</span></pre></dt>
   <dd>
     
     <p>Answers to the request</p>
@@ -486,7 +502,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2024-12-19 03:34:06 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2025-01-17 06:14:49 UTC</small>
       </div>
     </div>
   </div>

@@ -4,5 +4,7 @@ nim	newCustomHeaders	happyx/ssr/utils.html#newCustomHeaders	proc newCustomHeader
 nim	`[]=`	happyx/ssr/utils.html#[]=,CustomHeaders,string,T	proc `[]=`[T](self: CustomHeaders; key: string; value: T)		25
 nim	toJsonNode	happyx/ssr/utils.html#toJsonNode	proc toJsonNode(headers: HttpHeaders | Option[HttpHeaders]): JsonNode		32
 nim	toHttpHeaders	happyx/ssr/utils.html#toHttpHeaders,JsonNode	proc toHttpHeaders(json: JsonNode): HttpHeaders		44
-nim	fgColored	happyx/ssr/utils.html#fgColored,string,ForegroundColor	proc fgColored(text: string; clr: ForegroundColor): string		53
+nim	toHttpHeaders	happyx/ssr/utils.html#toHttpHeaders,CustomHeaders	proc toHttpHeaders(customHeaders: CustomHeaders): HttpHeaders		52
+nim	fgColored	happyx/ssr/utils.html#fgColored,string,ForegroundColor	proc fgColored(text: string; clr: ForegroundColor): string		59
+nimgrp	tohttpheaders	happyx/ssr/utils.html#toHttpHeaders-procs-all	proc		44
 heading	SSR Utils	happyx/ssr/utils.html#ssr-utils	 SSR Utils		0

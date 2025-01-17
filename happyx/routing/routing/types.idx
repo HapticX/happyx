@@ -1,0 +1,7 @@
+nimTitle	types	happyx/routing/routing/types.html	module src/happyx/routing/routing/types		0
+nim	PathParamObj	happyx/routing/routing/types.html#PathParamObj	object PathParamObj		7
+nim	RequestModelObj	happyx/routing/routing/types.html#RequestModelObj	object RequestModelObj		12
+nim	RouteDataObj	happyx/routing/routing/types.html#RouteDataObj	object RouteDataObj		16
+nim	RouteObject	happyx/routing/routing/types.html#RouteObject	type RouteObject		51
+nim	newPathParamObj	happyx/routing/routing/types.html#newPathParamObj,string,string,string,bool	proc newPathParamObj(name, paramType, defaultValue: string; optional: bool): PathParamObj		54
+nim	newRequestModelObj	happyx/routing/routing/types.html#newRequestModelObj,string,string,string	proc newRequestModelObj(name, typeName, target: string): RequestModelObj		57

@@ -1,0 +1,8 @@
+nimTitle	base	happyx/routing/decorators/base.html	module src/happyx/routing/decorators/base		0
+nim	DecoratorImpl	happyx/routing/decorators/base.html#DecoratorImpl	type DecoratorImpl		49
+nim	decorators	happyx/routing/decorators/base.html#decorators	var decorators		57
+nim	regDecorator	happyx/routing/decorators/base.html#regDecorator,string,DecoratorImpl	proc regDecorator(decoratorName: string; decorator: DecoratorImpl)		60
+nim	decorator	happyx/routing/decorators/base.html#decorator.m,untyped,untyped	macro decorator(name, body: untyped): untyped		64
+heading	Decorators 🔌	happyx/routing/decorators/base.html#decorators-🔌	 Decorators 🔌		0
+heading	Decorator Usage Example ✨	happyx/routing/decorators/base.html#decorators-🔌-decorator-usage-example-✨	  Decorator Usage Example ✨		0
+heading	Own decorators	happyx/routing/decorators/base.html#decorators-🔌-own-decorators	  Own decorators		0

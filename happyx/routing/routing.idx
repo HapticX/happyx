@@ -1,26 +1,7 @@
 nimTitle	routing	happyx/routing/routing.html	module src/happyx/routing/routing		0
-nim	onException	happyx/routing/routing.html#onException	const onException		47
-nim	PathParamObj	happyx/routing/routing.html#PathParamObj	object PathParamObj		55
-nim	RequestModelObj	happyx/routing/routing.html#RequestModelObj	object RequestModelObj		60
-nim	RouteDataObj	happyx/routing/routing.html#RouteDataObj	object RouteDataObj		64
-nim	newPathParamObj	happyx/routing/routing.html#newPathParamObj,string,string,string,bool	proc newPathParamObj(name, paramType, defaultValue: string; optional: bool): PathParamObj		75
-nim	newRequestModelObj	happyx/routing/routing.html#newRequestModelObj,string,string,string	proc newRequestModelObj(name, typeName, target: string): RequestModelObj		78
-nim	boolean	happyx/routing/routing.html#boolean,string,bool,int,bool	proc boolean(input: string; boolVal: var bool; start: int; opt: bool = false): int		82
-nim	word	happyx/routing/routing.html#word,string,string,int,bool	proc word(input: string; strVal: var string; start: int; opt: bool = false): int		107
-nim	str	happyx/routing/routing.html#str,string,string,int,bool	proc str(input: string; strVal: var string; start: int; opt: bool = false): int		123
-nim	enumerate	happyx/routing/routing.html#enumerate,string,T,int,bool	proc enumerate[T: enum](input: string; e: var T; start: int; opt: bool = false): int		139
-nim	integer	happyx/routing/routing.html#integer,string,int,int,bool	proc integer(input: string; intVal: var int; start: int; opt: bool = false): int		153
-nim	realnum	happyx/routing/routing.html#realnum,string,float,int,bool	proc realnum(input: string; floatVal: var float; start: int; opt: bool = false): int		169
-nim	default	happyx/routing/routing.html#default,string,string,int	proc default(input: string; strVal: var string; start: int): int		185
-nim	kind	happyx/routing/routing.html#kind,string,string,int	proc kind(input: string; strVal: var string; start: int): int		196
-nim	path	happyx/routing/routing.html#path,string,string,int	proc path(input: string; strVal: var string; start: int): int		232
-nim	handleRoute	happyx/routing/routing.html#handleRoute,string	proc handleRoute(route: string): RouteDataObj		469
-nim	exportRouteArgs	happyx/routing/routing.html#exportRouteArgs,NimNode,NimNode,NimNode	proc exportRouteArgs(urlPath, routePath, body: NimNode): NimNode		492
-nim	parseBoolOrJString	happyx/routing/routing.html#parseBoolOrJString,string	proc parseBoolOrJString(str: string): JsonNode		632
-nim	parseIntOrJString	happyx/routing/routing.html#parseIntOrJString,string	proc parseIntOrJString(str: string): JsonNode		637
-nim	parseFloatOrJString	happyx/routing/routing.html#parseFloatOrJString,string	proc parseFloatOrJString(str: string): JsonNode		642
-nim	convertJson	happyx/routing/routing.html#convertJson,RequestModelData,string	proc convertJson(self: RequestModelData; body: string): JsonNode		671
-nim	RouteObject	happyx/routing/routing.html#RouteObject	type RouteObject		707
-nim	getRouteParams	happyx/routing/routing.html#getRouteParams,RouteDataObj,seq[RegexMatch2],string,seq[HandlerParam],string,bool	proc getRouteParams(routeData: RouteDataObj; found_regexp_matches: seq[RegexMatch2];\n               urlPath: string = ""; handlerParams: seq[HandlerParam] = @[];\n               body: string = ""; force: bool = false): RouteObject		709
-nim	pathParams	happyx/routing/routing.html#pathParams.m,untyped	macro pathParams(body: untyped): untyped		824
-heading	Examples	happyx/routing/routing.html#examples	  Examples		0
+nim	parseBoolOrJString	happyx/routing/routing.html#parseBoolOrJString,string	proc parseBoolOrJString(str: string): JsonNode		62
+nim	parseIntOrJString	happyx/routing/routing.html#parseIntOrJString,string	proc parseIntOrJString(str: string): JsonNode		67
+nim	parseFloatOrJString	happyx/routing/routing.html#parseFloatOrJString,string	proc parseFloatOrJString(str: string): JsonNode		72
+nim	convertJson	happyx/routing/routing.html#convertJson,RequestModelData,string	proc convertJson(self: RequestModelData; body: string): JsonNode		101
+nim	getRouteParams	happyx/routing/routing.html#getRouteParams,RouteDataObj,seq[RegexMatch2],string,seq[HandlerParam],string,bool	proc getRouteParams(routeData: RouteDataObj; found_regexp_matches: seq[RegexMatch2];\n               urlPath: string = ""; handlerParams: seq[HandlerParam] = @[];\n               body: string = ""; force: bool = false): RouteObject		131
+nim	pathParams	happyx/routing/routing.html#pathParams.m,untyped	macro pathParams(body: untyped): untyped		246
