@@ -20,19 +20,19 @@ type
     path*: string
 
 
-when exportPython or defined(docgen):
+when exportPython:
   import
     nimpy,
     nimpy/py_types,
     regex,
-    ../bindings/python_types
+    ../../bindings/python_types
   type
     RouteObject* = PyObject
 elif defined(napibuild):
   import
     denim,
     regex,
-    ../bindings/node_types
+    ../../bindings/node_types
   type
     RouteObject* = napi_value
 elif exportJvm:
@@ -41,7 +41,7 @@ elif exportJvm:
     jnim/private/[jni_wrapper],
     jnim/java/[lang, util],
     regex,
-    ../bindings/java_types
+    ../../bindings/java_types
   type
     RouteObject* = PathParam
 else:
