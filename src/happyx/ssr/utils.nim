@@ -49,6 +49,12 @@ proc toHttpHeaders*(json: JsonNode): HttpHeaders =
     result[k] = v.getStr
 
 
+proc toHttpHeaders*(customHeaders: CustomHeaders): HttpHeaders =
+  result = newHttpHeaders()
+  for k, v in customHeaders.pairs():
+    result[k] = v
+
+
 when not defined(js) and enableColors:
   func fgColored*(text: string, clr: ForegroundColor): string {.inline.} =
     ## This function takes in a string of text and a ForegroundColor enum
