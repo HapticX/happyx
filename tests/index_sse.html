@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SSE Demo with HTMX</title>
+    <script src="https://unpkg.com/htmx.org@2.0.4"></script>
+    <script src="https://unpkg.com/htmx-ext-sse@2.2.2/sse.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        #messages {
+            height: 400px;
+            width: 100%;
+            overflow-y: auto;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+            background: #f9f9f9;
+        }
+        .message {
+            margin: 5px 0;
+            padding: 8px;
+            border-bottom: 1px solid #eee;
+            background: white;
+            border-radius: 4px;
+            animation: fadeIn 0.5s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .timestamp {
+            color: #666;
+            font-size: 0.8em;
+        }
+        #status {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        .connected {
+            background-color: #dff0d8;
+            color: #3c763d;
+        }
+        .disconnected {
+            background-color: #f2dede;
+            color: #a94442;
+        }
+        .time-event { color: #31708f; }
+        .open-event { color: #3c763d; }
+        .heartbeat-event { color: #777; }
+        .price-event { color: #8f0a1a; }
+    </style>
+</head>
+<body>
+    <h1>Server-Sent Events Demo (HTMX)</h1>
+
+    <!-- Current Time -->
+    <div id="current-time"
+         class="message time-event"
+         hx-ext="sse"
+         sse-connect="http://127.0.0.1:5000/sse"
+         sse-swap="time">
+        Waiting for time update...
+    </div>
+
+    <script>
+      let source = new EventSource("http://127.0.0.1:5000/sse");
+
+      source.addEventListener('join', event => {
+        console.log(`${event.data}`);
+      });
+
+      source.addEventListener('message', event => {
+        console.log(`${event.data}`);
+      });
+
+      source.addEventListener('leave', event => {
+        console.log(`${event.data}`);
+      });
+    </script>
+
+</body>
+</html>
