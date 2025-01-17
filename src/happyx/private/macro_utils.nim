@@ -38,6 +38,16 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
                          cycleVars: var seq[NimNode], parent: NimNode = newEmptyNode()): NimNode
 
 
+proc enableWarning*(warnName: static[string], enable: static[bool]): NimNode =
+  newNimNode(nnkPragma).add(newNimNode(nnkExprColonExpr).add(
+    newNimNode(nnkBracketExpr).add(ident"warning", ident(warnName)),
+    if enable:
+      ident"on"
+    else:
+      ident"off"
+  ))
+
+
 proc bracket*(node: varargs[NimNode]): NimNode =
   result = newNimNode(nnkBracket)
   for i in node:
@@ -732,11 +742,7 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
       elif statement[1].kind == nnkStmtList and statement[1][0].kind in nnkStrLit..nnkTripleStrLit:
         node = statement[1][0]
       else:
-        throwDefect(
-          HpxBuildHtmlDefect,
-          "rawHtml allows only static string! ",
-          lineInfoObj(statement[1])
-        )
+        node = statement[1]
       result.add(newCall("tagFromString", node))
     
     elif statement.kind == nnkCall and statement[0] == ident"lazy" and statement.len == 2 and statement[1].kind == nnkStmtList:

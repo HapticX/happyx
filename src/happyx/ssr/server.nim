@@ -384,7 +384,7 @@ template answer*(
     message: string | int | float | bool | char,
     code: HttpCode = Http200,
     headers: HttpHeaders,
-    contentLength: Option[int] = int.none
+    contentLength: Option[int] | Option[string] = int.none
 ) =
   ## Answers to the request
   ## 
@@ -576,11 +576,34 @@ template answerHtml*(req: Request, data: string | TagRef, code: HttpCode = Http2
 
 
 when enableHttpx or enableHttpBeast or enableBuiltin:
-  proc send*(request: Request, content: string): Future[void] {.inline.} =
+  proc send*(request: Request, content: string): Future[void] {.async, inline.} =
     ## Sends `content` to the client.
     request.unsafeSend(content)
     result = newFuture[void]()
     complete(result)
+else:
+  proc send*(request: Request, content: string): Future[void] {.async, inline.} =
+    ## Sends `content` to the client.
+    await request.client.send(content)
+
+
+proc sseSend*[T](request: Request, eventName: string, content: T): Future[void] {.async, inline.} =
+  when content is string:
+    let data = "event: " & eventName & "\ndata: " & content & "\n\n"
+    when enableHttpx or enableHttpBeast or enableBuiltin:
+      request.unsafeSend(data)
+      result = newFuture[void]()
+      complete(result)
+    else:
+      await request.client.send(data)
+  else:
+    let data = "event: " & eventName & "\ndata: " & $content & "\n\n"
+    when enableHttpx or enableHttpBeast or enableBuiltin:
+      request.unsafeSend(data)
+      result = newFuture[void]()
+      complete(result)
+    else:
+      await request.client.send(data)
 
 
 proc answerFile*(req: Request, filename: string,
@@ -953,7 +976,9 @@ macro routes*(server: Server, body: untyped = newStmtList()): untyped =
         nextRouteDecorators.add(($statement[0][1], statement[1..^1]))
       # "/...": statement list
       elif statement[1].kind == nnkStmtList and statement[0].kind == nnkStrLit:
+        statement[1].insert(0, enableWarning("UnreachableCode", false))
         detectReturnStmt(statement[1])
+        statement[1].add(enableWarning("UnreachableCode", true))
         when enableDefaultDecorators:
           for route in nextRouteDecorators:
             decorators[route.name](@["GET"], $statement[0], statement[1], route.args)
@@ -967,6 +992,8 @@ macro routes*(server: Server, body: untyped = newStmtList()): untyped =
         nextRouteDecorators = @[]
       # [get, post, ...] "/...": statement list
       elif statement.len == 3 and statement[2].kind == nnkStmtList and statement[0].kind == nnkBracket and statement[1].kind == nnkStrLit and statement[0].len > 0:
+        statement[2].insert(0, enableWarning("UnreachableCode", false))
+        statement[2].add(enableWarning("UnreachableCode", false))
         detectReturnStmt(statement[2])
         var httpMethods: seq[string] = @[]
         for i in statement[0]:
@@ -1253,14 +1280,57 @@ macro routes*(server: Server, body: untyped = newStmtList()): untyped =
               wsStmtList
             ))
           continue
-        let methodName = $name
+        var methodName = $name
+        # Handle Server-sent Events
+        if name == "SSE":
+          methodName = "GET"
+          let injection = newStmtList(
+            if not statement[2].isIdentUsed(ident"outHeaders"):
+              newVarStmt(ident"outHeaders", newCall("newCustomHeaders"))
+            else:
+              newEmptyNode(),
+            newAssignment(
+              newNimNode(nnkBracketExpr).add(ident"outHeaders", newLit"Content-Type"),
+              newLit"text/event-stream; charset=utf-8"
+            ),
+            newAssignment(
+              newNimNode(nnkBracketExpr).add(ident"outHeaders", newLit"Connection"),
+              newLit"keep-alive"
+            ),
+            newAssignment(
+              newNimNode(nnkBracketExpr).add(ident"outHeaders", newLit"Cache-Control"),
+              newLit"no-cache"
+            ),
+            newCall(
+              newDotExpr(ident"req", ident"answer"),
+              newLit"",
+              ident"Http200",
+              newCall("toHttpHeaders", ident"outHeaders"),
+              newCall("some", newLit""),
+            )
+          )
+          if exported.len > 0:
+            exported[1].insert(0, injection)
+          else:
+            statement[2].insert(0, injection)
         if not methodTable.hasKey(methodName):
           methodTable[methodName] = newNimNode(nnkIfStmt)
         if exported.len > 0:  # /my/path/with{custom:int}/{param:path}
+          exported[1].insert(0, enableWarning("UnreachableCode", false))
           detectReturnStmt(exported[1])
+          exported[1].add(enableWarning("UnreachableCode", true))
           methodTable[methodName].add(exported)
         else:  # /just-my-path
-          detectReturnStmt(statement[2])
+          if statement[2].kind == nnkStmtList:
+            statement[2].insert(0, enableWarning("UnreachableCode", false))
+            detectReturnStmt(statement[2])
+            statement[2].add(enableWarning("UnreachableCode", true))
+          if statement[2].kind == nnkPragmaBlock and statement[2][1].kind == nnkStmtList:
+            statement[2][1].insert(0, enableWarning("UnreachableCode", false))
+            detectReturnStmt(statement[2])
+            statement[2][1].add(enableWarning("UnreachableCode", true))
+          else:
+            detectReturnStmt(statement[2])
           methodTable[methodName].add(newNimNode(nnkElifBranch).add(
             newCall("==", pathIdent, statement[1]),
             statement[2]
@@ -1286,15 +1356,21 @@ macro routes*(server: Server, body: untyped = newStmtList()): untyped =
         of "setup":
           setup = statement[1]
         of "notfound":
+          statement[1].insert(0, enableWarning("UnreachableCode", false))
           detectReturnStmt(statement[1])
+          statement[1].add(enableWarning("UnreachableCode", true))
           notFoundNode = statement[1]
         of "onexception":
+          statement[1].insert(0, enableWarning("UnreachableCode", false))
           detectReturnStmt(statement[1])
+          statement[1].add(enableWarning("UnreachableCode", true))
           statement[1].insert(0, newLetStmt(ident"e", newCall"getCurrentException"))
           onException["e"].add(statement[1])
           echo onException["e"].toStrLit
         of "middleware":
+          statement[1].insert(0, enableWarning("UnreachableCode", false))
           detectReturnStmt(statement[1])
+          statement[1].add(enableWarning("UnreachableCode", true))
           stmtList.insert(0, statement[1])
         else:
           throwDefect(
@@ -1352,7 +1428,9 @@ macro routes*(server: Server, body: untyped = newStmtList()): untyped =
 
   when not (exportPython or exportJvm or defined(napibuild)):
     var returnStmt = newStmtList(newNimNode(nnkReturnStmt).add(newLit""))
+    returnStmt.insert(0, enableWarning("UnreachableCode", false))
     detectReturnStmt(returnStmt)
+    returnStmt.add(enableWarning("UnreachableCode", true))
     methodTable.mgetOrPut(
       "OPTIONS", newNimNode(nnkIfStmt)
     ).add(exportRouteArgs(pathIdent, newLit"/{p:path}", returnStmt))

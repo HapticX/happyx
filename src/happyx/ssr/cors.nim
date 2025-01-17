@@ -84,7 +84,6 @@ when not defined(js) and not (exportJvm or exportPython or defined(napibuild)):
       else:
         result.add quote do:
           `headers`["Access-Control-Allow-Origin"] = `allowOrigins`
-    inc corsRegistered
   
   macro regCORS*(body: untyped): untyped =
     ## Register CORS
@@ -161,6 +160,7 @@ when not defined(js) and not (exportJvm or exportPython or defined(napibuild)):
         fmt"invalid regCORS syntax: ",
         lineInfoObj(statement)
       )
+    inc corsRegistered
 else:
   var currentCORSRuntime* = CORSObj()
   proc setCors*(allowOrigins: string = "*", allowMethods: string = "*",
