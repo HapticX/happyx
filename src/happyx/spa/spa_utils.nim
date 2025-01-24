@@ -48,7 +48,7 @@ macro eventListener*(obj: untyped, event: string, body: untyped): untyped =
   ## e.eventListener("click"):
   ##   echo "clicked!"
   ## ```
-  newStmtList(
+  result = newStmtList(
     if obj.kind == nnkIdent:
       newNimNode(nnkPragma).add(
         newNimNode(nnkExprColonExpr).add(

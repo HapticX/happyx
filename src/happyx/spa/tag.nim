@@ -157,6 +157,20 @@ when defined(js):
     return _originRemoveEventListener.apply(this, arguments);
   };
 
+  Node.prototype.cleanEventListeners = function() {
+    // this.replaceWith(_originCloneNode.apply(this, arguments));
+    if (this._eventListeners) {
+      for (let i = 0; i < this._eventListeners.length; i++) {
+        // _originRemoveEventListener.apply(node, node._eventListeners[i]);
+        const listener = this._eventListeners[i];
+        _originRemoveEventListener.apply(this, listener);
+        delete listener;
+        // this._eventListeners[i][1] = undefined;
+      }
+      this._eventListeners = [];
+    }
+  }
+
   Node.prototype.cloneNode = function(deep) {
     if (!this._eventListeners)
       this._eventListeners = [];
