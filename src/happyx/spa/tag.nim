@@ -164,7 +164,7 @@ when defined(js):
         // _originRemoveEventListener.apply(node, node._eventListeners[i]);
         const listener = this._eventListeners[i];
         _originRemoveEventListener.apply(this, listener);
-        delete listener;
+        listener = [];
         // this._eventListeners[i][1] = undefined;
       }
       this._eventListeners = [];
