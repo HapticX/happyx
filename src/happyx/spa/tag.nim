@@ -158,14 +158,12 @@ when defined(js):
   };
 
   Node.prototype.cleanEventListeners = function() {
-    // this.replaceWith(_originCloneNode.apply(this, arguments));
     if (this._eventListeners) {
       for (let i = 0; i < this._eventListeners.length; i++) {
-        // _originRemoveEventListener.apply(node, node._eventListeners[i]);
-        const listener = this._eventListeners[i];
+        let listener = this._eventListeners[i];
         _originRemoveEventListener.apply(this, listener);
+        listener[1] = undefined;
         listener = [];
-        // this._eventListeners[i][1] = undefined;
       }
       this._eventListeners = [];
     }
