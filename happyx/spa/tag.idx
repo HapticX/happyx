@@ -3,34 +3,34 @@ nim	TagRef	happyx/spa/tag.html#TagRef	type TagRef		58
 nim	UnclosedTags	happyx/spa/tag.html#UnclosedTags	const UnclosedTags		71
 nim	SvgElements	happyx/spa/tag.html#SvgElements	const SvgElements		76
 nim	NimKeywords	happyx/spa/tag.html#NimKeywords	const NimKeywords		88
-nim	add	happyx/spa/tag.html#add,TagRef,varargs[TagRef]	proc add(self: TagRef; tags: varargs[TagRef])		171
-nim	initTag	happyx/spa/tag.html#initTag,string,StringTableRef,seq[TagRef],bool	proc initTag(name: string; attrs: StringTableRef; children: seq[TagRef] = @[];\n        onlyChildren: bool = false): TagRef		232
-nim	initTag	happyx/spa/tag.html#initTag,string,seq[TagRef],bool	proc initTag(name: string; children: seq[TagRef] = @[]; onlyChildren: bool = false): TagRef		262
-nim	initTag	happyx/spa/tag.html#initTag,string,bool,StringTableRef,seq[TagRef],bool	proc initTag(name: string; isText: bool; attrs: StringTableRef;\n        children: seq[TagRef] = @[]; onlyChildren: bool = false): TagRef		288
-nim	initTag	happyx/spa/tag.html#initTag,string,bool,seq[TagRef],bool	proc initTag(name: string; isText: bool; children: seq[TagRef] = @[];\n        onlyChildren: bool = false): TagRef		322
-nim	lazyTag	happyx/spa/tag.html#lazyTag,proc)	proc lazyTag(lazy: proc (): TagRef): TagRef		345
-nim	tag	happyx/spa/tag.html#tag,string	proc tag(name: string): TagRef		360
-nim	tag	happyx/spa/tag.html#tag,TagRef	proc tag(tag: TagRef): TagRef		375
-nim	textTag	happyx/spa/tag.html#textTag,string	proc textTag(text: string): TagRef		391
-nim	xml2Tag	happyx/spa/tag.html#xml2Tag,XmlNode	proc xml2Tag(xml: XmlNode): TagRef		424
-nim	xmlTree2Tag	happyx/spa/tag.html#xmlTree2Tag,TagRef,TagRef,XmlNode	proc xmlTree2Tag(current, parent: TagRef; tree: XmlNode)		445
-nim	tagFromString	happyx/spa/tag.html#tagFromString,string	proc tagFromString(source: string): TagRef		454
-nim	findTagsAtTop	happyx/spa/tag.html#findTagsAtTop,XmlNode,string	proc findTagsAtTop(tree: XmlNode; tag: string): seq[XmlNode]		465
-nim	addArg	happyx/spa/tag.html#addArg,TagRef,string	proc addArg(self: TagRef; arg: string)		473
-nim	addArgIter	happyx/spa/tag.html#addArgIter,TagRef,string	proc addArgIter(self: TagRef; arg: string)		490
-nim	toSeqIter	happyx/spa/tag.html#toSeqIter,TagRef	proc toSeqIter(self: TagRef): seq[TagRef]		505
-nim	lvl	happyx/spa/tag.html#lvl,TagRef	proc lvl(self: TagRef): int		521
-nim	`[]`	happyx/spa/tag.html#[],TagRef,string	proc `[]`(self: TagRef; attrName: string): string		552
-nim	`[]`	happyx/spa/tag.html#[],TagRef,int	proc `[]`(self: TagRef; index: int): TagRef		559
-nim	`[]=`	happyx/spa/tag.html#[]=,TagRef,string,string	proc `[]=`(self: TagRef; attrName: string; attrValue: string)		567
-nim	getAttribute	happyx/spa/tag.html#getAttribute,TagRef,string,string	proc getAttribute(self: TagRef; attrName: string; default: string = ""): string		575
-nim	findByTag	happyx/spa/tag.html#findByTag,TagRef,string	proc findByTag(self: TagRef; tag: string): seq[TagRef]		591
-nim	get	happyx/spa/tag.html#get,TagRef,string	proc get(self: TagRef; tag: string): TagRef		611
-nim	`$`	happyx/spa/tag.html#$,TagRef	proc `$`(self: TagRef): string		625
-nim	ugly	happyx/spa/tag.html#ugly,TagRef	proc ugly(self: TagRef): string		663
-nimgrp	inittag	happyx/spa/tag.html#initTag-procs-all	proc		232
-nimgrp	tag	happyx/spa/tag.html#tag-procs-all	proc		360
-nimgrp	[]	happyx/spa/tag.html#[]-procs-all	proc		552
+nim	add	happyx/spa/tag.html#add,TagRef,varargs[TagRef]	proc add(self: TagRef; tags: varargs[TagRef])		185
+nim	initTag	happyx/spa/tag.html#initTag,string,StringTableRef,seq[TagRef],bool	proc initTag(name: string; attrs: StringTableRef; children: seq[TagRef] = @[];\n        onlyChildren: bool = false): TagRef		246
+nim	initTag	happyx/spa/tag.html#initTag,string,seq[TagRef],bool	proc initTag(name: string; children: seq[TagRef] = @[]; onlyChildren: bool = false): TagRef		276
+nim	initTag	happyx/spa/tag.html#initTag,string,bool,StringTableRef,seq[TagRef],bool	proc initTag(name: string; isText: bool; attrs: StringTableRef;\n        children: seq[TagRef] = @[]; onlyChildren: bool = false): TagRef		302
+nim	initTag	happyx/spa/tag.html#initTag,string,bool,seq[TagRef],bool	proc initTag(name: string; isText: bool; children: seq[TagRef] = @[];\n        onlyChildren: bool = false): TagRef		336
+nim	lazyTag	happyx/spa/tag.html#lazyTag,proc)	proc lazyTag(lazy: proc (): TagRef): TagRef		359
+nim	tag	happyx/spa/tag.html#tag,string	proc tag(name: string): TagRef		374
+nim	tag	happyx/spa/tag.html#tag,TagRef	proc tag(tag: TagRef): TagRef		389
+nim	textTag	happyx/spa/tag.html#textTag,string	proc textTag(text: string): TagRef		405
+nim	xml2Tag	happyx/spa/tag.html#xml2Tag,XmlNode	proc xml2Tag(xml: XmlNode): TagRef		438
+nim	xmlTree2Tag	happyx/spa/tag.html#xmlTree2Tag,TagRef,TagRef,XmlNode	proc xmlTree2Tag(current, parent: TagRef; tree: XmlNode)		459
+nim	tagFromString	happyx/spa/tag.html#tagFromString,string	proc tagFromString(source: string): TagRef		468
+nim	findTagsAtTop	happyx/spa/tag.html#findTagsAtTop,XmlNode,string	proc findTagsAtTop(tree: XmlNode; tag: string): seq[XmlNode]		479
+nim	addArg	happyx/spa/tag.html#addArg,TagRef,string	proc addArg(self: TagRef; arg: string)		487
+nim	addArgIter	happyx/spa/tag.html#addArgIter,TagRef,string	proc addArgIter(self: TagRef; arg: string)		504
+nim	toSeqIter	happyx/spa/tag.html#toSeqIter,TagRef	proc toSeqIter(self: TagRef): seq[TagRef]		519
+nim	lvl	happyx/spa/tag.html#lvl,TagRef	proc lvl(self: TagRef): int		535
+nim	`[]`	happyx/spa/tag.html#[],TagRef,string	proc `[]`(self: TagRef; attrName: string): string		566
+nim	`[]`	happyx/spa/tag.html#[],TagRef,int	proc `[]`(self: TagRef; index: int): TagRef		573
+nim	`[]=`	happyx/spa/tag.html#[]=,TagRef,string,string	proc `[]=`(self: TagRef; attrName: string; attrValue: string)		581
+nim	getAttribute	happyx/spa/tag.html#getAttribute,TagRef,string,string	proc getAttribute(self: TagRef; attrName: string; default: string = ""): string		589
+nim	findByTag	happyx/spa/tag.html#findByTag,TagRef,string	proc findByTag(self: TagRef; tag: string): seq[TagRef]		605
+nim	get	happyx/spa/tag.html#get,TagRef,string	proc get(self: TagRef; tag: string): TagRef		625
+nim	`$`	happyx/spa/tag.html#$,TagRef	proc `$`(self: TagRef): string		639
+nim	ugly	happyx/spa/tag.html#ugly,TagRef	proc ugly(self: TagRef): string		677
+nimgrp	inittag	happyx/spa/tag.html#initTag-procs-all	proc		246
+nimgrp	tag	happyx/spa/tag.html#tag-procs-all	proc		374
+nimgrp	[]	happyx/spa/tag.html#[]-procs-all	proc		566
 heading	Example	happyx/spa/tag.html#tag-✨-example	  Example		0
 heading	Tag ✨	happyx/spa/tag.html#tag-✨	 Tag ✨		0
 heading	Usage 🔨	happyx/spa/tag.html#tag-✨-usage-🔨	  Usage 🔨		0
