@@ -201,7 +201,7 @@ when defined(js):
       window.history.pushState({previous: window.location.href}, '', '#' + `path`);
       """ .}
     let force = currentRoute != path
-    echo force, ", ", currentRoute, ", ", path
+    # echo force, ", ", currentRoute, ", ", path
     currentRoute = path
     application.router(force)
     if force:
@@ -281,6 +281,7 @@ when defined(js):
     if a.nodeType == b.nodeType and a.nodeType == NodeType.ElementNode:
       return ($a.nodeName).toLower() == ($b.nodeName).toLower()
     return a.nodeType == b.nodeType
+
   proc attrIndex(e: Node): TableRef[cstring, cstring] {.exportc: "aidx".} =
     var attrs = newTable[cstring, cstring]()
     if e.attributes.len == 0:
@@ -288,6 +289,7 @@ when defined(js):
     for i in e.attributes:
       attrs[i.nodeName] = i.nodeValue
     return attrs
+
   proc patchAttrs(dom, vdom: Node) {.exportc: "patrs".} =
     let
       domAttrs = dom.attrIndex
@@ -306,12 +308,17 @@ when defined(js):
     for key, val in domAttrs.pairs:
       if not vdomAttrs.hasKey(key):
         dom.removeAttribute(key)
+
   proc diff*(vdom: TagRef, dom: Node) {.exportc: "dff".} =
     if not dom.hasChildNodes and vdom.hasChildNodes:
       for t in vdom.childNodes:
         dom.appendChild(t.cloneNode(true))
     else:
-      {.emit: "if (`dom`.isEqualNode(`vdom`)){return}".}
+      {.emit: """//js
+      if (`dom`.isEqualNode(`vdom`)){
+        return
+      }
+      """.}
       if dom.childNodes.len > vdom.childNodes.len:
         for i in 0..<(dom.childNodes.len - vdom.childNodes.len):
           dom.childNodes[^1].remove()
@@ -323,11 +330,21 @@ when defined(js):
             if dom.childNodes[i].textContent != vdom.childNodes[i].textContent:
               dom.childNodes[i].textContent = vdom.childNodes[i].textContent
           else:
+            let
+              dst = dom.childNodes[i]
+              src = vdom.childNodes[i]
+            {.emit: """//js
+            `dst`.cleanEventListeners();
+            cloneEvents(`src`, `dst`);
+            console.log("DST: ", `dst`._eventListeners);
+            console.log("SRC: ", `src`._eventListeners);
+            """.}
             dom.childNodes[i].patchAttrs(vdom.childNodes[i])
         else:
           dom.childNodes[i].replaceWith(vdom.childNodes[i].cloneNode(true))
         if vdom.childNodes[i].nodeType != NodeType.TextNode:
           diff(vdom.childNodes[i].TagRef, dom.childNodes[i])
+
   proc prerenderLazyProcs*(tag: TagRef) {.exportc: "prrndr".} =
     if tag.lazy:
       let t = tag.lazyFunc()
@@ -337,6 +354,7 @@ when defined(js):
     else:
       for t in tag.childNodes:
         t.TagRef.prerenderLazyProcs()
+
   proc renderVdom*(app: App, tag: TagRef, force: bool = false) {.exportc: "rndrvd".} =
     ## Rerender DOM with VDOM
     var realDom = document.getElementById(app.appId).Node
