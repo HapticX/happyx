@@ -456,18 +456,20 @@ proc xml2Tag*(xml: XmlNode): TagRef =
 
 proc xmlTree2Tag*(current, parent: TagRef, tree: XmlNode) =
   let tag = tree.xml2Tag()
-  if not tag.isNil():
-    current.add(tag)
   if tree.kind == xnElement:
     for child in tree.items:
       tag.xmlTree2Tag(current, child)
+  if not tag.isNil():
+    current.add(tag)
 
 
 proc tagFromString*(source: string): TagRef {.inline.} =
   ## Translates raw HTML string into TagRef
   let xmlNode = parseHtml(source)
   result = initTag("div", @[], true)
+  # for child in xmlNode:
   result.xmlTree2Tag(nil, xmlNode)
+  # result.xmlTree2Tag(nil, xmlNode)
   when defined(js):
     result = result.children[0].children[0].TagRef
   else:

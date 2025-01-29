@@ -3,6 +3,21 @@ import
   ../src/happyx
 
 
+var html =
+  buildHtml(tDiv):
+    rawHtml: """
+      <div>
+        <input type="password" />
+        <hr>
+        <script>
+          var x = "Hello, world!";
+        </script>
+      </div>
+      """
+
+echo html
+
+
 # Declare application with ID "app"
 appRoutes "app":
   "/page1":
