@@ -17,7 +17,7 @@ using
       256
     elif cryptoMethod == "sha224":
       224
-    elif cryptoMethod == "sha224":
+    elif cryptoMethod == "sha384":
       384
     else:
       512
@@ -29,7 +29,7 @@ func generate_password*(source): MDigest[
       256
     elif cryptoMethod == "sha224":
       224
-    elif cryptoMethod == "sha224":
+    elif cryptoMethod == "sha384":
       384
     else:
       512
