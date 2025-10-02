@@ -122,7 +122,7 @@ proc toHttpHeaders*(headers: PyObject): HttpHeaders =
   headersObj
 
 
-proc newHandlerParams*(args: openarray[string], annotations: JsonNode): seq[HandlerParam] =
+proc newHandlerParams*(args: openArray[string], annotations: JsonNode): seq[HandlerParam] =
   result = @[]
   for arg in args:
     if annotations.hasKey(arg):
@@ -174,7 +174,7 @@ proc initRoute*(path, purePath: string, httpMethod: seq[string], pattern: Regex2
       newAnnotations(result.handler.getAttr("__annotations__"))
     )
 
-proc hasHttpMethod*(self: Route, httpMethod: string | seq[string] | openarray[string]): bool =
+proc hasHttpMethod*(self: Route, httpMethod: string | seq[string] | openArray[string]): bool =
   when httpMethod is string:
     return self.httpMethod.contains(httpMethod)
   else:

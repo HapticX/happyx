@@ -353,7 +353,7 @@ proc openApiDocs*(docsData: NimNode): NimNode =
               schema["properties"][name] = %*{"type": "string"}
 
             # complex types
-            if strValue.find(re2"(seq|array|openarray|varargs)\[([^\]]+)\]", matches):
+            if strValue.find(re2"(seq|array|openArray|varargs)\[([^\]]+)\]", matches):
               schema["properties"][name] = %*{"type": "array", "items": {"type": strValue[matches.group(1)]}}
           
           result["components"]["schemas"][k] = schema

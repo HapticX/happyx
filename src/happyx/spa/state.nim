@@ -102,7 +102,7 @@ template operator(funcname, op: untyped): untyped =
     `op`(self.value, b)
 
 
-when defined(js) or not enableLiveviews:
+when defined(js) or not enableLiveViews:
   template reRenderOperator(funcname, op: untyped): untyped =
     proc `funcname`*[T](self: State[T], b: State[T]) =
       if self.watchers.len > 0:
@@ -528,7 +528,7 @@ else:
       rerender(query, queryArr, reqMethod, inCookies, headers, hostname, urlPath)
 
 
-iterator items*[T](self: State[openarray[T]]): T =
+iterator items*[T](self: State[openArray[T]]): T =
   ## Iterate over state items
   for item in self.val:
     yield item

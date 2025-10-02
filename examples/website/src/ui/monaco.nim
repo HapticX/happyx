@@ -27,7 +27,7 @@ monaco.languages.setMonarchTokensProvider('nim', {
     'uint', 'uint8', 'uint16', 'uint32', 'uint64',
     'float', 'float32', 'float64',
     'bool', 'char', 'string', 'cstring', 'pointer', 'range', 'seq', 'openArray',
-	  'void', 'openarray', 'varargs', 'cint', 'cfloat', 'cdouble', 'array',
+	  'void', 'openArray', 'varargs', 'cint', 'cfloat', 'cdouble', 'array',
   ],
 
   stdfuncs: [

@@ -445,7 +445,7 @@ template `[]=`*(param: PathParam, idx: string, val: jobject) =
   param.objVal[idx] = PathParam(kind: ppkJvm, name: idx, jvmVal: val)
 
 
-proc hasHttpMethod*(self: Route, httpMethod: string | seq[string] | openarray[string]): bool =
+proc hasHttpMethod*(self: Route, httpMethod: string | seq[string] | openArray[string]): bool =
   when httpMethod is string:
     return self.httpMethod.contains(httpMethod)
   else:
@@ -455,7 +455,7 @@ proc hasHttpMethod*(self: Route, httpMethod: string | seq[string] | openarray[st
     return false
 
 
-proc newHandlerParams*(args: openarray[string], annotations: JsonNode): seq[HandlerParam] =
+proc newHandlerParams*(args: openArray[string], annotations: JsonNode): seq[HandlerParam] =
   result = @[]
   for arg in args:
     if annotations.hasKey(arg):

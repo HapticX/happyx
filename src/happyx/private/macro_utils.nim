@@ -240,7 +240,7 @@ proc useComponent*(statement: NimNode, inCycle, inComponent: bool,
     componentNameTmp = "_" & componentName
     componentData = "data_" & componentName
     stringId =
-      when defined(js) or not enableLiveviews:
+      when defined(js) or not enableLiveViews:
         newNimNode(nnkIfStmt).add(
           newNimNode(nnkElifBranch).add(
             newCall("==", ident"scopedCycleCounter", newLit(0)),
