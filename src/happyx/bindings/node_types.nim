@@ -140,7 +140,7 @@ proc toHttpHeaders*(obj: napi_value): HttpHeaders =
 proc initRoute*(path, purePath: string, httpMethod: seq[string], pattern: Regex2, handler, docs: string): Route =
   Route(path: path, purePath: purePath, httpMethod: httpMethod, pattern: pattern, handler: handler, docs: docs)
 
-proc hasHttpMethod*(self: Route, httpMethod: string | seq[string] | openarray[string]): bool =
+proc hasHttpMethod*(self: Route, httpMethod: string | seq[string] | openArray[string]): bool =
   when httpMethod is string:
     return self.httpMethod.contains(httpMethod)
   else:
@@ -150,7 +150,7 @@ proc hasHttpMethod*(self: Route, httpMethod: string | seq[string] | openarray[st
     return false
 
 
-proc newHandlerParams*(args: openarray[string], annotations: JsonNode): seq[HandlerParam] =
+proc newHandlerParams*(args: openArray[string], annotations: JsonNode): seq[HandlerParam] =
   result = @[]
   for arg in args:
     if annotations.hasKey(arg):

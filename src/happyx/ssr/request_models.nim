@@ -542,7 +542,7 @@ macro model*(name, body: untyped): untyped =
       for i in 1..<modelName[0].len:
         options.add ($modelName[0][i].toStrLit).toLower()
       modelName = modelName[0][0]
-    elif modelname[0].kind == nnkIdent:
+    elif modelName[0].kind == nnkIdent:
       modelName = modelName[0]
   # detect options
   elif modelName.kind == nnkCurlyExpr:
