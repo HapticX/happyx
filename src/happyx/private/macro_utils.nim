@@ -172,15 +172,47 @@ proc formatNode*(node: NimNode): NimNode =
     node
 
 
+proc liveviewParamDefault*(name: string): NimNode =
+  case name
+  of "urlPath", "hostname":
+    newLit""
+  of "query", "inCookies":
+    newCall("newStringTable")
+  of "queryArr":
+    newCall(
+      newNimNode(nnkBracketExpr).add(
+        ident"newTable",
+        ident"string",
+        newNimNode(nnkBracketExpr).add(ident"seq", ident"string")
+      )
+    )
+  of "reqMethod":
+    ident"HttpGet"
+  of "headers":
+    newCall("newHttpHeaders")
+  else:
+    newLit""
+
+
 proc liveviewParam*(name: string): NimNode =
+  let
+    declaredCheck =
+      if name == "headers":
+        newCall(
+          "and",
+          newCall("declared", ident(name)),
+          newCall("not", newCall("is", ident(name), newNimNode(nnkProcTy)))
+        )
+      else:
+        newCall("declared", ident(name))
   newNimNode(nnkWhenStmt).add(newNimNode(nnkElifBranch).add(
-    newCall("declared", ident(name)),
+    declaredCheck,
     ident(name)
   ), newNimNode(nnkElifBranch).add(
     newCall("declared", newDotExpr(ident"self", ident(name))),
     newDotExpr(ident"self", ident(name))
   ), newNimNode(nnkElse).add(
-    newLit""
+    liveviewParamDefault(name)
   ))
 
 
@@ -240,7 +272,7 @@ proc useComponent*(statement: NimNode, inCycle, inComponent: bool,
     componentNameTmp = "_" & componentName
     componentData = "data_" & componentName
     stringId =
-      when defined(js) or not enableLiveviews:
+      when defined(js) or not enableLiveViews:
         newNimNode(nnkIfStmt).add(
           newNimNode(nnkElifBranch).add(
             newCall("==", ident"scopedCycleCounter", newLit(0)),
@@ -256,10 +288,24 @@ proc useComponent*(statement: NimNode, inCycle, inComponent: bool,
           )
         )
       else:
-        if inCycle or inComponent:
-          newCall("&", ident"hostname", componentSlotIdent)
-        else:
-          newCall("&", ident"hostname", newLit(componentName))
+        newNimNode(nnkIfStmt).add(
+          newNimNode(nnkElifBranch).add(
+            newCall("==", ident"scopedCycleCounter", newLit(0)),
+            if inCycle or inComponent:
+              newCall("&", liveviewParam("hostname"), componentSlotIdent)
+            else:
+              componentNameIdent
+          ), newNimNode(nnkElse).add(
+            if inCycle or inComponent:
+              newCall(
+                "&",
+                newCall("&", liveviewParam("hostname"), componentSlotIdent),
+                newCall("$", ident"scopedCycleCounter")
+              )
+            else:
+              newCall("&", componentNameIdent, newCall("$", ident"scopedCycleCounter"))
+          )
+        )
     componentSlot =
       if statement.len > 1 and statement[^1].kind == nnkStmtList:
         statement[^1]
@@ -269,7 +315,7 @@ proc useComponent*(statement: NimNode, inCycle, inComponent: bool,
         newStmtList(newNimNode(nnkDiscardStmt).add(newEmptyNode()))
   inc uniqueId
   objConstr.add(stringId)
-  when not defined(js) and enableLiveViews:
+  if not defined(js) and enableLiveViews:
     objConstr.add(
       liveviewParam("urlPath"),
       liveviewParam("hostname"),
@@ -612,6 +658,74 @@ proc endsWithBuildHtml*(statement: NimNode): bool =
   statement[^1].kind == nnkCall and statement[^1][0] == ident"buildHtml"
 
 
+func isCycleVarNode*(node: NimNode, cycleVars: seq[NimNode]): bool =
+  let name =
+    case node.kind
+    of nnkIdent, nnkSym:
+      $node
+    else:
+      ""
+  if name.len == 0:
+    return false
+  for v in cycleVars:
+    if v.kind in {nnkIdent, nnkSym} and $v == name:
+      return true
+  false
+
+
+proc functionalProcSlotHtml*(
+  statementList: NimNode, inComponent: bool, componentName: NimNode,
+  inCycle: bool, cycleTmpVar: string, compTmpVar: NimNode,
+  cycleVars: var seq[NimNode]
+): NimNode =
+  result = buildHtmlProcedure(
+    ident"tDiv", statementList, inComponent, componentName,
+    inCycle, cycleTmpVar, compTmpVar, cycleVars
+  )
+  result.add(newNimNode(nnkExprEqExpr).add(ident"onlyChildren", newLit(true)))
+
+
+proc emitProcCall*(
+  compName, statement: NimNode, inCycle: bool, cycleVars: seq[NimNode],
+  withSlot: bool, inComponent: bool, componentName: NimNode,
+  cycleTmpVar: string, compTmpVar: NimNode
+): NimNode =
+  let argLast =
+    if withSlot:
+      statement.len - 2
+    else:
+      statement.len - 1
+  var call = newCall(compName)
+  if inCycle and cycleVars.len > 0:
+    result = newStmtList()
+    for i in 1..argLast:
+      let arg = statement[i]
+      if isCycleVarNode(arg, cycleVars):
+        let tmp = ident(fmt"__hxArg{uniqueId.value}")
+        inc uniqueId
+        result.add(newLetStmt(tmp, arg))
+        call.add(tmp)
+      else:
+        call.add(arg)
+  else:
+    result = newEmptyNode()
+    for i in 1..argLast:
+      call.add(statement[i])
+  if withSlot:
+    var cv = cycleVars
+    call.add(newNimNode(nnkExprEqExpr).add(
+      ident"stmt",
+      functionalProcSlotHtml(
+        statement[^1], inComponent, componentName,
+        inCycle, cycleTmpVar, compTmpVar, cv
+      )
+    ))
+  if inCycle and cycleVars.len > 0:
+    result.add(call)
+  else:
+    result = call
+
+
 proc replaceSelfComponent*(statement, componentName: NimNode, parent: NimNode = nil,
                            convert: bool = false, is_constructor: bool = false,
                            is_field: bool = true): NimNode {.discardable.} =
@@ -856,13 +970,9 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
                 "and",
                 newCall("declared", compName),
                 newCall("is", compName, newNimNode(nnkProcTy)),
-              ), newStmtList(
-                block:
-                  var call = newCall(compName)
-                  for i in statement[1..^2]:
-                    call.add(i)
-                  call.add(newNimNode(nnkExprEqExpr).add(ident"stmt", newCall("buildHtml", statement[^1])))
-                  call
+              ), emitProcCall(
+                compName, statement, inCycle, cycleVars, true,
+                inComponent, componentName, cycleTmpVar, compTmpVar
               )
             ),
             newNimNode(nnkElifBranch).add(
@@ -916,12 +1026,9 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
                 "and",
                 newCall("declared", compName),
                 newCall("is", compName, newNimNode(nnkProcTy)),
-              ), newStmtList(
-                block:
-                  var call = newCall(compName)
-                  for i in statement[1..^1]:
-                    call.add(i)
-                  call
+              ), emitProcCall(
+                compName, statement, inCycle, cycleVars, false,
+                inComponent, componentName, cycleTmpVar, compTmpVar
               )
             ), newNimNode(nnkElse).add(
               useComponent(compStatement, inCycle, inComponent, cycleTmpVar, compTmpVar, cycleVars)

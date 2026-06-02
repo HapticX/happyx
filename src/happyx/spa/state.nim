@@ -102,7 +102,7 @@ template operator(funcname, op: untyped): untyped =
     `op`(self.value, b)
 
 
-when defined(js) or not enableLiveviews:
+when defined(js) or not enableLiveViews:
   template reRenderOperator(funcname, op: untyped): untyped =
     proc `funcname`*[T](self: State[T], b: State[T]) =
       if self.watchers.len > 0:

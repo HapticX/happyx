@@ -321,42 +321,92 @@ proc openApiDocs*(docsData: NimNode): NimNode =
         }
         `modelFieldsStatement`
         `examplesStatement`
+        const builtinSchemaTypes = [
+          "char", "byte", "int8", "int16", "int32", "int64", "int",
+          "float", "float32", "float64", "string", "bool", "formdataitem"
+        ]
+        proc schemaLookupKey(name: string): string =
+          if name.len > 0 and name[^1] == '*':
+            name[0 .. ^2]
+          else:
+            name
+        proc hasModelSchema(name: string): bool =
+          let k = schemaLookupKey(name)
+          modelsData.hasKey(k) or modelsData.hasKey(k & "*")
+        proc getModelSchema(name: string): JsonNode =
+          let k = schemaLookupKey(name)
+          if modelsData.hasKey(k):
+            modelsData[k]
+          else:
+            modelsData[k & "*"]
+        proc isEnumSchema(table: JsonNode): bool =
+          if table.kind != JObject or table.len == 0:
+            return false
+          for _, fieldType in table.pairs:
+            let t =
+              if fieldType.kind == JArray:
+                fieldType[0].getStr
+              else:
+                fieldType.getStr
+            if t in builtinSchemaTypes:
+              return false
+            if t.find("(seq") >= 0 or t.find("(array") >= 0 or
+                t.find("(openarray") >= 0 or t.find("(varargs") >= 0:
+              return false
+          true
         var matches: RegexMatch2
         # Components schema
         for k, v in modelsData.pairs:
-          var schema = %*{
-            "type": "object",
-            "required": [],
-            "properties": {}
-          }
-          for name, value in v.pairs:
-            let strValue =
+          let schemaKey = schemaLookupKey(k)
+          if isEnumSchema(v):
+            var enumVals = newJArray()
+            for ev, _ in v.pairs:
+              enumVals.add(%ev)
+            result["components"]["schemas"][schemaKey] = %*{"type": "string", "enum": enumVals}
+          else:
+            var schema = %*{
+              "type": "object",
+              "required": [],
+              "properties": {}
+            }
+            for name, value in v.pairs:
+              let strValue =
+                if value.kind == JArray:
+                  value[0].getStr
+                else:
+                  value.getStr
               if value.kind == JArray:
-                value[0].getStr
+                schema["required"].add(%name)
+              # atomic types
+              case strValue
+              of "int8", "int16", "int32":
+                schema["properties"][name] = %*{"type": "number", "format": "int32"}
+              of "int", "int64":
+                schema["properties"][name] = %*{"type": "number", "format": "int64"}
+              of "float", "float64":
+                schema["properties"][name] = %*{"type": "number", "format": "double"}
+              of "float32":
+                schema["properties"][name] = %*{"type": "number", "format": "float"}
+              of "bool":
+                schema["properties"][name] = %*{"type": "boolean"}
+              of "string":
+                schema["properties"][name] = %*{"type": "string"}
               else:
-                value.getStr
-            if value.kind == JArray:
-              schema["required"].add(%name)
-            # atomic types
-            case strValue
-            of "int8", "int16", "int32":
-              schema["properties"][name] = %*{"type": "number", "format": "int32"}
-            of "int", "int64":
-              schema["properties"][name] = %*{"type": "number", "format": "int64"}
-            of "float", "float64":
-              schema["properties"][name] = %*{"type": "number", "format": "double"}
-            of "float32":
-              schema["properties"][name] = %*{"type": "number", "format": "float"}
-            of "bool":
-              schema["properties"][name] = %*{"type": "boolean"}
-            of "string":
-              schema["properties"][name] = %*{"type": "string"}
+                if hasModelSchema(strValue) and isEnumSchema(getModelSchema(strValue)):
+                  var enumVals = newJArray()
+                  for ev, _ in getModelSchema(strValue).pairs:
+                    enumVals.add(%ev)
+                  schema["properties"][name] = %*{"type": "string", "enum": enumVals}
+                elif hasModelSchema(strValue) and not isEnumSchema(getModelSchema(strValue)):
+                  schema["properties"][name] = %*{
+                    "$ref": "#/components/schemas/" & schemaLookupKey(strValue)
+                  }
 
-            # complex types
-            if strValue.find(re2"(seq|array|openarray|varargs)\[([^\]]+)\]", matches):
-              schema["properties"][name] = %*{"type": "array", "items": {"type": strValue[matches.group(1)]}}
-          
-          result["components"]["schemas"][k] = schema
+              # complex types
+              if strValue.find(re2"(seq|array|openarray|varargs)\[([^\]]+)\]", matches):
+                schema["properties"][name] = %*{"type": "array", "items": {"type": strValue[matches.group(1)]}}
+
+            result["components"]["schemas"][k] = schema
 
         for route in apiDocData:
           # Skip useless routes

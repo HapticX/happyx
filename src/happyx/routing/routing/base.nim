@@ -82,8 +82,9 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode =
     hasChildren = false
   let
     elifBranch = newNimNode(nnkElifBranch)
-    scanStmt = newCall("scanf", urlPath, newLit(routeData.purePath & "$."))
     condition = newStmtList()
+  var
+    scanStmt = newCall("scanf", urlPath, newLit(routeData.purePath & "$."))
 
   for i in routeData.pathParams:
     condition.add(
@@ -103,6 +104,18 @@ proc exportRouteArgs*(urlPath, routePath, body: NimNode): NimNode =
     scanStmt.add(ident(i.name))
     hasChildren = true
   
+  # Fast literal prefix pre-check before scanf.
+  # purePath is built like "/users/$i/profile" — everything before the first "$"
+  # is a static prefix we can test with startsWith in O(k) instead of running scanf.
+  let dollarIdx = routeData.purePath.find('$')
+  if dollarIdx > 1:
+    let prefix = routeData.purePath[0 ..< dollarIdx]
+    # Replace the plain scanStmt with: startsWith(urlPath, prefix) and scanStmt
+    scanStmt = newCall("and",
+      newCall("startsWith", urlPath, newLit(prefix)),
+      scanStmt
+    )
+
   condition.add(scanStmt)
   elifBranch.add(condition)
   elifBranch.add(body)

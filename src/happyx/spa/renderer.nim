@@ -151,10 +151,8 @@ when enableDefaultComponents:
     var components* = newTable[cstring, BaseComponent]()
   else:
     var
-      requestResult* {.threadvar.}: TableRef[string, string]
-      componentsResult* {.threadvar.}: TableRef[string, string]
-    requestResult = newTable[string, string]()
-    componentsResult = newTable[string, string]()
+      requestResult*: TableRef[string, string] = newTable[string, string]()
+      componentsResult*: TableRef[string, string] = newTable[string, string]()
 
 
 when defined(js):
@@ -262,7 +260,7 @@ when enableDefaultComponents:
         return components[name]
       components[name] = component
       component
-  else:
+  elif enableLiveViews:
     proc registerComponent*(name: string, component: BaseComponent): BaseComponent =
       ## Register a new component.
       ## 
@@ -273,6 +271,10 @@ when enableDefaultComponents:
       if components.hasKey(name):
         return components[name]
       components[name] = component
+      component
+  else:
+    proc registerComponent*(name: string, component: BaseComponent): BaseComponent =
+      ## Register a new component (no registry when LiveViews are disabled).
       component
 
 

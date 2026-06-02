@@ -77,7 +77,11 @@ proc handleLiveViews*(body: NimNode) =
               newCall("buildHtml", newStmtList(
                 head,
                 newCall("body", newStmtList(
-                  newCall("tDiv", newNimNode(nnkExprEqExpr).add(ident"id", newLit"app"), statement),
+                  newCall(
+                    "tDiv",
+                    newNimNode(nnkExprEqExpr).add(ident"id", newLit"app"),
+                    newCall("buildHtmlSlot", statement, newLit(false), newLit(true))
+                  ),
                   newCall("tDiv", newNimNode(nnkExprEqExpr).add(ident"id", newLit"scripts"))
                 ))
               ))

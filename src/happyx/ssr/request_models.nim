@@ -96,11 +96,43 @@ when not declared(macrocache.hasKey):
 const
   modelFields* = CacheTable"HappyXModelFields"
   modelFieldsGenerics* = CacheTable"HappyXModelFieldsGenerics"
+  enumTypeNames* = CacheSeq"HappyXEnumTypeNames"
   builtinTypes* = [
     "char", "byte", "int8", "int16", "int32", "int64", "int",
     "float", "float32", "float64", "string", "formdataitem",
     "cdouble", "cfloat", "cint", "cstring"
   ]
+
+
+func stripExportStar*(name: string): string =
+  if name.len > 0 and name[^1] == '*':
+    name[0 .. ^2]
+  else:
+    name
+
+
+proc registerEnumSchema*(argType: NimNode) =
+  var typeImpl: NimNode
+  if argType.typeKind == ntyEnum:
+    typeImpl = argType.getTypeImpl()
+  else:
+    let ti = argType.getTypeImpl()
+    if ti.len < 2 or ti[1].kind != nnkSym:
+      return
+    typeImpl = ti[1].getImpl()
+  if typeImpl.len < 3 or typeImpl[2].kind != nnkEnumTy:
+    return
+  let enumName = stripExportStar($typeImpl[0])
+  if modelFields.hasKey(enumName):
+    return
+  modelFields[enumName] = newStmtList()
+  modelFieldsGenerics[enumName] = newLit(true)
+  enumTypeNames.add(typeImpl[0].toStrLit)
+  for i in 1..<typeImpl[2].len:
+    if typeImpl[2][i].len == 2:
+      modelFields[enumName].add(newStmtList(typeImpl[2][i][0].toStrLit, typeImpl[2][i][1]))
+    else:
+      modelFields[enumName].add(newStmtList(typeImpl[2][i].toStrLit, typeImpl[2][i].toStrLit))
 
 
 proc modelImpl(modelName: NimNode, enableOptions: bool, options: seq[string], generics, genericsBracket, body: NimNode): NimNode =
@@ -137,17 +169,7 @@ proc modelImpl(modelName: NimNode, enableOptions: bool, options: seq[string], ge
       modelFields[$modelName].add(newStmtList(argName.toStrLit, argType.toStrLit, newLit(true)))
       let argStr = $argType.toStrLit
       if argStr.toLower notin builtinTypes and argType.typeKind != ntyNone:
-        if argType.getTypeImpl()[1].kind == nnkSym:
-          let typeImpl = argType.getTypeImpl()[1].getImpl
-          if typeImpl[2].kind == nnkEnumTy:
-            let name = typeImpl[0].toStrLit
-            modelFields[$name] = newStmtList()
-            modelFieldsGenerics[$name] = newLit(true)
-            for i in 1..<typeImpl[2].len:
-              if typeImpl[2][i].len == 2:
-                modelFields[$name].add(newStmtList(typeImpl[2][i][0].toStrLit, typeImpl[2][i][1]))
-              else:
-                modelFields[$name].add(newStmtList(typeImpl[2][i].toStrLit, typeImpl[2][i].toStrLit))
+        registerEnumSchema(argType)
       if argStr.toLower() != "formdataitem":
         # JSON raw data
         asgnStmt.add(newNimNode(nnkIfStmt).add(
@@ -268,17 +290,7 @@ proc modelImpl(modelName: NimNode, enableOptions: bool, options: seq[string], ge
       modelFields[$modelName].add(newStmtList(argName.toStrLit, argType.toStrLit))
       let argStr = $argType.toStrLit
       if argStr.toLower notin builtinTypes and argType.typeKind != ntyNone:
-        if argType.getTypeImpl()[1].kind == nnkSym:
-          let typeImpl = argType.getTypeImpl()[1].getImpl
-          if typeImpl[2].kind == nnkEnumTy:
-            let name = typeImpl[0].toStrLit
-            modelFields[$name] = newStmtList()
-            modelFieldsGenerics[$name] = newLit(true)
-            for i in 1..<typeImpl[2].len:
-              if typeImpl[2][i].len == 2:
-                modelFields[$name].add(newStmtList(typeImpl[2][i][0].toStrLit, typeImpl[2][i][1]))
-              else:
-                modelFields[$name].add(newStmtList(typeImpl[2][i].toStrLit, typeImpl[2][i].toStrLit))
+        registerEnumSchema(argType)
       if ($argType.toStrLit).toLower() != "formdataitem":
         # JSON raw data
         asgnStmt.add(newNimNode(nnkIfStmt).add(

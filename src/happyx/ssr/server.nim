@@ -117,6 +117,7 @@ when enableApiDoc:
 var
   pointerServer: ptr Server
   loggerCreated: bool = false
+  defaultMimeTypes = newMimetypes()
 
 
 when defined(napibuild):
@@ -251,6 +252,39 @@ macro `.`*(obj: JsonNode, field: untyped): JsonNode =
 const defaultHeaders = "Content-Type: text/plain;charset=utf-8"
 
 
+template appendHeaderLines(headersArr: var string, h: HttpHeaders, lineEnding: string) =
+  for key, value in h.pairs():
+    headersArr.add(key)
+    headersArr.add(':')
+    headersArr.add(value)
+    headersArr.add(lineEnding)
+
+
+template appendCookieLines(headersArr: var string, cookies: untyped, lineEnding: string) =
+  for cookie in cookies:
+    headersArr.add(cookie)
+    headersArr.add(lineEnding)
+
+
+template trimLastHeaderLine(headersArr: var string) =
+  if headersArr.len > 0:
+    headersArr.setLen(headersArr.len - 2)
+
+
+template appendResponsePrefix(data: var string, code: HttpCode | int, contentLength: int | string) =
+  data.add("HTTP/1.1 ")
+  data.add($code)
+  data.add("\c\LContent-Length:")
+  data.add($contentLength)
+
+
+template appendResponseBody(data: var string, headers: string, body: string) =
+  data.add("\c\L")
+  data.add(headers)
+  data.add("\c\L\c\L")
+  data.add(body)
+
+
 template answer*(
     req: Request,
     message: string | int | float | bool | char,
@@ -309,13 +343,10 @@ template answer*(
   when enableHttpx or enableBuiltin:
     when useHeaders:
       var headersArr = ""
-      for key, value in h.pairs():
-        headersArr &= key & ':' & value & "\r\n"
+      headersArr.appendHeaderLines(h, "\r\n")
       when declared(outCookies):
-        for cookie in outCookies:
-          headersArr &= cookie & "\r\n"
-      if headersArr.len > 0:
-        headersArr.delete(headersArr.len-2..headersArr.len-1)
+        headersArr.appendCookieLines(outCookies, "\r\n")
+      headersArr.trimLastHeaderLine()
     
     # check safety requests
     when enableSafeRequests:
@@ -328,32 +359,31 @@ template answer*(
         req.send(code, $message, when useHeaders: headersArr else: defaultHeaders)
     else:
       # Use unsafeSend to improve speed
-      var data: string = "HTTP/1.1 "
       when declared(statusCode):
         when statusCode is int:
-          data &= $statusCode
+          let responseCode = statusCode
         else:
-          data &= $code
+          let responseCode = code
       else:
-        data &= $code
+        let responseCode = code
       when message is string:
-        data &= "\c\LContent-Length:" & $len(message)
-        data &= "\c\L" & (when useHeaders: headersArr else: defaultHeaders) & "\c\L\c\L" & message
+        var data = newStringOfCap(64 + (when useHeaders: headersArr.len else: defaultHeaders.len) + message.len)
+        data.appendResponsePrefix(responseCode, message.len)
+        data.appendResponseBody((when useHeaders: headersArr else: defaultHeaders), message)
       else:
-        data &= "\c\LContent-Length:" & $len($message)
-        data &= "\c\L" & (when useHeaders: headersArr else: defaultHeaders) & "\c\L\c\L" & $message
+        let body = $message
+        var data = newStringOfCap(64 + (when useHeaders: headersArr.len else: defaultHeaders.len) + body.len)
+        data.appendResponsePrefix(responseCode, body.len)
+        data.appendResponseBody((when useHeaders: headersArr else: defaultHeaders), body)
       req.unsafeSend(data)
   # HTTP BEAST
   elif enableHttpBeast:
     when useHeaders:
       var headersArr = ""
-      for key, value in h.pairs():
-        headersArr &= key & ':' & value & "\r\n"
+      headersArr.appendHeaderLines(h, "\r\n")
       when declared(outCookies):
-        for cookie in outCookies:
-          headersArr &= cookie & "\r\n"
-      if headersArr.len > 0:
-        headersArr.delete(headersArr.len-2..headersArr.len-1)
+        headersArr.appendCookieLines(outCookies, "\r\n")
+      headersArr.trimLastHeaderLine()
     when declared(statusCode):
       when statusCode is int:
         req.send(statusCode.HttpCode, $message, when useHeaders: headersArr else: defaultHeaders)
@@ -429,13 +459,10 @@ template answer*(
   # HTTPX
   when enableHttpx or enableBuiltin:
     var headersArr = ""
-    for key, value in h.pairs():
-      headersArr &= key & ':' & value & "\c\L"
+    headersArr.appendHeaderLines(h, "\c\L")
     when declared(outCookies):
-      for cookie in outCookies:
-        headersArr &= cookie & "\c\L"
-    if headersArr.len > 0:
-      headersArr.delete(headersArr.len-2..headersArr.len-1)
+      headersArr.appendCookieLines(outCookies, "\c\L")
+    headersArr.trimLastHeaderLine()
     if contentLength.isSome:
       # useful for file answers
       when enableSafeRequests:
@@ -448,20 +475,22 @@ template answer*(
           req.send(code, $message, contentLength, headersArr)
       else:
         # Use unsafeSend to improve speed
-        var data: string = "HTTP/1.1 "
         when declared(statusCode):
           when statusCode is int:
-            data &= $statusCode
+            let responseCode = statusCode
           else:
-            data &= $code
+            let responseCode = code
         else:
-          data &= $code
+          let responseCode = code
         when message is string:
-          data &= "\c\LContent-Length:" & $contentLength.get()
-          data &= "\c\L" & headersArr & "\c\L\c\L" & message
+          var data = newStringOfCap(64 + headersArr.len + message.len)
+          data.appendResponsePrefix(responseCode, contentLength.get())
+          data.appendResponseBody(headersArr, message)
         else:
-          data &= "\c\LContent-Length:" & $contentLength.get()
-          data &= "\c\L" & headersArr & "\c\L\c\L" & $message
+          let body = $message
+          var data = newStringOfCap(64 + headersArr.len + body.len)
+          data.appendResponsePrefix(responseCode, contentLength.get())
+          data.appendResponseBody(headersArr, body)
         req.unsafeSend(data)
     else:
       when enableSafeRequests:
@@ -474,31 +503,30 @@ template answer*(
           req.send(code, $message, headersArr)
       else:
         # Use unsafeSend to improve speed
-        var data: string = "HTTP/1.1 "
         when declared(statusCode):
           when statusCode is int:
-            data &= $statusCode
+            let responseCode = statusCode
           else:
-            data &= $code
+            let responseCode = code
         else:
-          data &= $code
+          let responseCode = code
         when message is string:
-          data &= "\c\LContent-Length:" & $len(message)
-          data &= "\c\L" & headersArr & "\c\L\c\L" & message
+          var data = newStringOfCap(64 + headersArr.len + message.len)
+          data.appendResponsePrefix(responseCode, message.len)
+          data.appendResponseBody(headersArr, message)
         else:
-          data &= "\c\LContent-Length:" & $len($message)
-          data &= "\c\L" & headersArr & "\c\L\c\L" & $message
+          let body = $message
+          var data = newStringOfCap(64 + headersArr.len + body.len)
+          data.appendResponsePrefix(responseCode, body.len)
+          data.appendResponseBody(headersArr, body)
         req.unsafeSend(data)
   # HTTP BEAST
   elif enableHttpBeast:
     var headersArr = ""
-    for key, value in h.pairs():
-      headersArr &= key & ':' & value & "\r\n"
+    headersArr.appendHeaderLines(h, "\r\n")
     when declared(outCookies):
-      for cookie in outCookies:
-        headersArr &= cookie & "\r\n"
-    if headersArr.len > 0:
-      headersArr.delete(headersArr.len-2..headersArr.len-1)
+      headersArr.appendCookieLines(outCookies, "\r\n")
+    headersArr.trimLastHeaderLine()
     when declared(statusCode):
       when statusCode is int:
         req.send(statusCode.HttpCode, $message, headersArr)
@@ -623,9 +651,8 @@ proc answerFile*(req: Request, filename: string,
   ##      return FileResponse("/publicFolder" / filename)
   ## 
   let
-    splitted = filename.split('.')
-    extension = if splitted.len > 1: splitted[^1] else: ""
-    contentType = newMimetypes().getMimetype(extension)
+    extension = filename.splitFile.ext
+    contentType = defaultMimeTypes.getMimetype(if extension.len > 1: extension[1..^1] else: "")
     info = getFileInfo(filename)
     fileSize = info.size.int
     lastModified = info.lastWriteTime
@@ -922,8 +949,8 @@ macro routes*(server: Server, body: untyped = newStmtList()): untyped =
         ),
         newCall(
           "and",
-          newCall("contains", newCall("[]", headers, newLit"connection"), newLit"upgrade"),
-          newCall("==", newCall("toLower", newCall("[]", headers, newLit"upgrade", newLit(0))), newLit"websocket"),
+          newCall("headerHasToken", headers, newLit"connection", newLit"upgrade"),
+          newCall("headerHasToken", headers, newLit"upgrade", newLit"websocket"),
         )
       )
     wsClientI = ident"wsClient"
@@ -1604,8 +1631,9 @@ macro initServer*(body: untyped): untyped =
       ),
       nnkProcDef
     ),
-    newCall("main")
   )
+  if not defined(happyxSkipServeMain):
+    result.add(newCall("main"))
   result[0].addPragma(ident"gcsafe")
 
 
@@ -1646,36 +1674,33 @@ macro serve*(address: string, port: int, body: untyped): untyped =
     else:
       ident"server"
 
-  result = newStmtList(
-    newProc(
-      ident"main",
-      [newEmptyNode()],
-      newStmtList(
-        when not exportPython:
-          newVarStmt(
-            ident"server",
-            newCall("newServer", address, port)
-          )
-        else:
-          newEmptyNode(),
-        when enableApiDoc:
-          newProc(ident"renderDocsProcedure", [ident"string"], happyxDocs(docsData))
-        else:
-          newEmptyNode(),
-        when enableApiDoc:
-          newProc(ident"openApiJson", [ident"JsonNode"], openApiDocs(docsData))
-        else:
-          newEmptyNode(),
-        newCall("routes", s, body),
-        newCall("start", s),
-        newNimNode(nnkWhenStmt).add(newNimNode(nnkElifBranch).add(
-          newCall("declared", ident"finalizeProgram"),
-          newCall("addQuitProc", ident"finalizeProgram"),
-        ))
-      ),
-      nnkProcDef
+  result = newStmtList()
+  when enableApiDoc:
+    result.add(newProc(ident"renderDocsProcedure", [ident"string"], happyxDocs(docsData)))
+  when enableApiDoc:
+    result.add(newProc(ident"openApiJson", [ident"JsonNode"], openApiDocs(docsData)))
+  let mainProc = newProc(
+    ident"main",
+    [newEmptyNode()],
+    newStmtList(
+      when not exportPython:
+        newVarStmt(
+          ident"server",
+          newCall("newServer", address, port)
+        )
+      else:
+        newEmptyNode(),
+      newCall("routes", s, body),
+      newCall("start", s),
+      newNimNode(nnkWhenStmt).add(newNimNode(nnkElifBranch).add(
+        newCall("declared", ident"finalizeProgram"),
+        newCall("addQuitProc", ident"finalizeProgram"),
+      ))
     ),
-    newCall("main")
+    nnkProcDef
   )
-  result[0].addPragma(ident"gcsafe")
+  mainProc.addPragma(ident"gcsafe")
+  result.add(mainProc)
+  if not defined(happyxSkipServeMain):
+    result.add(newCall("main"))
 

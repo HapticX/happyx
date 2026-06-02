@@ -7,6 +7,7 @@ import
   std/httpcore,
   std/options,
   std/strtabs,
+  std/strutils,
   ../core/constants
 
 when not defined(js) and enableColors:
@@ -53,6 +54,17 @@ proc toHttpHeaders*(customHeaders: CustomHeaders): HttpHeaders =
   result = newHttpHeaders()
   for k, v in customHeaders.pairs():
     result[k] = v
+
+
+proc headerHasToken*(headers: HttpHeaders, key, token: string): bool =
+  ## True when `token` appears in header `key` (comma-separated lists supported).
+  let want = token.toLowerAscii
+  for k, v in headers.pairs():
+    if k.cmpIgnoreCase(key) == 0:
+      for part in v.split(','):
+        if part.strip().toLowerAscii == want:
+          return true
+  false
 
 
 when not defined(js) and enableColors:
