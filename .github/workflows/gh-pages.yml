@@ -23,7 +23,7 @@ jobs:
   docs:
     runs-on: ubuntu-latest
     env:
-      nim_version: '2.0.6'
+      nim_version: '2.2.10'
       node_version: '20'
     steps:
       - uses: actions/checkout@v4

@@ -313,8 +313,8 @@ proc useComponent*(statement: NimNode, inCycle, inComponent: bool,
         statement[1][^1]
       else:
         newStmtList(newNimNode(nnkDiscardStmt).add(newEmptyNode()))
+  echo objConstr.toStrLit
   inc uniqueId
-  objConstr.add(stringId)
   if not defined(js) and enableLiveViews:
     objConstr.add(
       liveviewParam("urlPath"),
@@ -1011,7 +1011,10 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
                 ident(componentData)
               )),
             newNimNode(nnkElse).add(
-              useComponent(compStatement, inCycle, inComponent, cycleTmpVar, compTmpVar, cycleVars, true)
+              if statement.kind == nnkCall and statement[0] == ident"initTag":
+                statement
+              else:
+                useComponent(compStatement, inCycle, inComponent, cycleTmpVar, compTmpVar, cycleVars, true)
             )
           ))
       # Component constructor
@@ -1031,7 +1034,10 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
                 inComponent, componentName, cycleTmpVar, compTmpVar
               )
             ), newNimNode(nnkElse).add(
-              useComponent(compStatement, inCycle, inComponent, cycleTmpVar, compTmpVar, cycleVars)
+              if statement.kind == nnkCall and statement[0] == ident"initTag":
+                statement
+              else:
+                useComponent(compStatement, inCycle, inComponent, cycleTmpVar, compTmpVar, cycleVars)
             )
           )
         )
@@ -1474,7 +1480,10 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
               ident(componentData)
             )),
           newNimNode(nnkElse).add(
-            useComponent(compStatement, inCycle, inComponent, cycleTmpVar, compTmpVar, cycleVars, true)
+            if statement.kind == nnkCall and statement[0] == ident"initTag":
+              statement
+            else:
+              useComponent(compStatement, inCycle, inComponent, cycleTmpVar, compTmpVar, cycleVars, true)
           )
         ))
       
@@ -1498,7 +1507,6 @@ proc buildHtmlProcedure*(root, body: NimNode, inComponent: bool = false,
       ), newNimNode(nnkElse).add(
         newCall("initTag", newCall("$", statement[0]), newLit(true))
       )))
-      # echo result[^1].toStrLit
     
     # if-elif or case-of
     elif statement.kind in [nnkCaseStmt, nnkIfStmt, nnkIfExpr, nnkWhenStmt]:

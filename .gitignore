@@ -52,3 +52,4 @@ src/happyx/bindings/build_denim.sh
 
 # Garbage
 *.bin
+*.deps

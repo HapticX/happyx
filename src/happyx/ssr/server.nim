@@ -114,10 +114,20 @@ when enableApiDoc:
   export autodocs
 
 
+const defaultMimeTable = mimes.toTable()
+
 var
   pointerServer: ptr Server
   loggerCreated: bool = false
-  defaultMimeTypes = newMimetypes()
+
+
+func contentTypeForExt*(ext: string): string {.gcsafe.} =
+  ## Content-Type for a file extension (no leading dot).
+  if ext.len == 0:
+    return "text/plain"
+  result = defaultMimeTable.getOrDefault(ext.toLowerAscii(), "text/plain")
+  if result.len == 0:
+    result = "text/plain"
 
 
 when defined(napibuild):
@@ -637,7 +647,7 @@ proc sseSend*[T](request: Request, eventName: string, content: T): Future[void] 
 proc answerFile*(req: Request, filename: string,
                  code: HttpCode = Http200, asAttachment = false,
                  bufSize: int = 40960, forceResponse: bool = false,
-                 headers: CustomHeaders = newCustomHeaders()) {.async.} =
+                 headers: CustomHeaders = newCustomHeaders()) {.async, gcsafe.} =
   ## Respond file to request.
   ## 
   ## Automatically enables streaming response when file size is too big (> 1 000 000 bytes)
@@ -652,7 +662,7 @@ proc answerFile*(req: Request, filename: string,
   ## 
   let
     extension = filename.splitFile.ext
-    contentType = defaultMimeTypes.getMimetype(if extension.len > 1: extension[1..^1] else: "")
+    contentType = contentTypeForExt(if extension.len > 1: extension[1..^1] else: "")
     info = getFileInfo(filename)
     fileSize = info.size.int
     lastModified = info.lastWriteTime
@@ -879,14 +889,6 @@ macro routes*(server: Server, body: untyped = newStmtList()): untyped =
     body.handleLiveViews()
 
   when enableHttpx or enableHttpBeast or enableBuiltin:
-    var path =
-      when enableBuiltin:
-        newCall("decodeUrl", ident"urlPath")
-      else:
-        newCall("decodeUrl", newNimNode(nnkBracketExpr).add(
-          newCall("split", newCall("get", newCall("path", ident"req")), newLit('?')),
-          newLit(0)
-        ))
     let
       reqMethod = newCall("get", newDotExpr(ident"req", ident"httpMethod"))
       hostname = newDotExpr(ident"req", ident"ip")
@@ -896,7 +898,6 @@ macro routes*(server: Server, body: untyped = newStmtList()): untyped =
           "split", newNimNode(nnkBracketExpr).add(headers, newLit"accept-language"), newLit(',')
         ), newLit(0)
       )
-      val = ident(fmt"_val")
       url =
         when enableBuiltin:
           ident"queryRaw"

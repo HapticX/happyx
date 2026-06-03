@@ -48,6 +48,19 @@ component ConstructorChild of Constructor:
     }
   """
 
+# proc example_happyx(age: int; stmt: TagRef = nil): TagRef =
+#   proc test(): string =
+#     echo "test method"
+#     "..."
+
+#   result = buildHtml do:
+#     tdiv("data-410" = ""):
+#       if age < 20:
+#         tdiv("data-410" = ""):
+#           "You\'re young!\n    "
+#   result.onlyChildren = true
+#   result[0].onlyChildren = true
+
 importFuncComponent "example.hpx" as example_happyx
 importFuncComponent "button.hpx" as buttonexample_happyx
 

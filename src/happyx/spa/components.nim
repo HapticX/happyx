@@ -84,7 +84,7 @@ template reRenderTmpl*() =
   # echo tmpData
   when defined(js):
     var
-      current = document.querySelector("[data-" & self.uniqCompId & "]")
+      current = document.querySelector(cstring"[data-" & self.uniqCompId.cstring & cstring"]")
       elements = newSeq[Element]()
     for tag in compTmpData.childNodes:
       if not current.isNil:
@@ -115,13 +115,14 @@ template reRenderTmpl*() =
             currentActiveElem = actElem.InputElement
           currentActiveElem.setSelectionRange(oldActiveElem.selectionStart, oldActiveElem.selectionEnd, oldActiveElem.selectionDirection)
   else:
-    compTmpData.add(initTag("script", @[
+    let script = initTag("script", @[
       textTag(
         fmt"document.querySelector('[data-{self.uniqCompId}]').outerHTML = `" &
         $compTmpData &
         "`;"
       )
-    ]))
+    ])
+    compTmpData.add(script)
   self.updated(self)
   self.rendered(self)
 
@@ -1603,10 +1604,13 @@ macro importFuncComponent*(body: untyped): untyped =
     
     tagData.handle(statements)
 
+    var cycleVars = newSeq[NimNode]()
+
     stmtList.add(newNimNode(nnkAsgn).add(
       ident"result",
-      newCall(ident"buildHtml", newStmtList(statements)))
-    )
+      newCall("buildHtml", newStmtList(statements)),
+      # buildHtmlProcedure(ident"div", newStmtList(statements), cycleVars = cycleVars),
+    ))
   
   # Script tag
   for script in scriptSource:
@@ -1662,7 +1666,8 @@ macro importFuncComponent*(body: untyped): untyped =
 
   result = newStmtList(
     importStmts,
-    function # newNimNode(nnkCommand).add(ident"component", componentName, stmtList)
+    function
+    # newNimNode(nnkCommand).add(ident"component", componentName, stmtList)
   )
   if ($componentName).toLower().endsWith("_happyx"):
     createdComponents[($componentName).toLower()[0..^8]] = newStmtList(

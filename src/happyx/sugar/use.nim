@@ -11,8 +11,8 @@
 ##      component MyComponent(...):
 ##        ...
 ##    
-##    component.method()
-##    component.field += 1
+##    comp1.method()
+##    comp1.field += 1
 ##    
 ##    buildHtml:
 ##      component comp1
